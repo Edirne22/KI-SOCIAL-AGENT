@@ -62,7 +62,7 @@ def save_ideas(ideas):
     os.makedirs("content", exist_ok=True)
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     entry = f"\n\n## Ideen vom {timestamp}\n{ideas}\n"
-    with open("content/GENERATED_IDEAS.md", "a", encoding="utf-8") as f:
+    with open("content/IDEAS.md", "a", encoding="utf-8") as f:
         f.write(entry)
     print("Ideen gespeichert.")
 
