@@ -34,6 +34,9 @@ Kurze Beschreibung: ..."""
         return f"FEHLER bei API-Anfrage: {e}"
 
 def save_idea(idea):
+    # Sicherstellen, dass der content-Ordner existiert
+    os.makedirs("content", exist_ok=True)
+
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     entry = f"\n\n## Idee vom {timestamp}\n{idea}\n"
     try:
