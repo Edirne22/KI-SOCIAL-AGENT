@@ -61,3 +61,20 @@
 - Eigene Inhalte regelmäßig veröffentlichen
 - Motorrad- und Reise-Themen als feste Schwerpunkte etablieren
 - Später Kooperationen oder Einnahmen ermöglichen
+## Bisherige erfolgreiche Themen
+- Motorrad-Touren
+- Motorrad-Fotos nach Tuning
+- Reisebilder aus dem Urlaub
+
+## Erfolgreiche Formate
+- Reel
+- Foto
+- Story
+
+## Sprache
+- Deutsch und Türkisch (je nach Zielgruppe)
+- Hintergrund: Freundeskreis sowohl in Deutschland als auch in der Türkei
+
+## Engagement
+- Hohe Likes bei den genannten Themen
+- Ausbaufähig: Kommentare und Shares
