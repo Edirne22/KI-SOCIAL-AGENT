@@ -5,6 +5,9 @@ on:
     - cron: "0 8 * * *"  # läuft täglich um 08:00 UTC
   workflow_dispatch:      # ermöglicht manuelles Starten per Klick
 
+permissions:
+  contents: write         # erlaubt dem Workflow, Änderungen zu committen und zu pushen
+
 jobs:
   generate:
     runs-on: ubuntu-latest
