@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Liste der Modelle, die nacheinander getestet werden
 MODEL_LIST = [
-    "gemini-3.5-flash",      # hat zuverlässig funktioniert
+    "gemini-3.5-flash",
     "gemini-3.6-flash",
     "gemini-3.7-flash",
     "gemini-3.8-flash",
@@ -17,7 +17,7 @@ MODEL_LIST = [
 ]
 
 def try_generate(api_key, prompt):
-    """Probiert die Modelle der Reihe nach aus, bis eines antwortet."""
+    """Arbeitet die Modellliste in Schleifen ab, bis ein Modell antwortet."""
     headers = {
         "Content-Type": "application/json",
         "X-goog-api-key": api_key
@@ -26,26 +26,37 @@ def try_generate(api_key, prompt):
         "contents": [{"parts": [{"text": prompt}]}]
     }
 
-    for model in MODEL_LIST:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-        try:
-            response = requests.post(url, headers=headers, json=data, timeout=120)
-            if response.status_code == 200:
-                result = response.json()
-                text = result["candidates"][0]["content"]["parts"][0]["text"]
-                # Nur typische API-Key-Muster maskieren – keine normalen Zahlen
-                text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text)
-                text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
-                print(f"Erfolg mit Modell: {model}")
-                return text_clean.strip()
-            else:
-                print(f"Modell {model}: Status {response.status_code} – probiere nächstes...")
-                time.sleep(10)   # kurze Pause, um Rate-Limits zu vermeiden
-        except Exception as e:
-            print(f"Modell {model}: Fehler – {e}")
-            time.sleep(10)
+    max_rounds = 5              # komplette Durchläufe durch die Liste
+    pause_between_models = 10   # Sekunden Pause zwischen Modellen
+    pause_between_rounds = 90   # Sekunden Pause zwischen kompletten Durchläufen
 
-    return "FEHLER: Kein Modell verfügbar. Bitte später erneut versuchen."
+    for round_number in range(1, max_rounds + 1):
+        print(f"Starte Durchlauf {round_number} von {max_rounds}")
+        for model in MODEL_LIST:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+            try:
+                response = requests.post(url, headers=headers, json=data, timeout=120)
+                if response.status_code == 200:
+                    result = response.json()
+                    text = result["candidates"][0]["content"]["parts"][0]["text"]
+                    # Nur typische API-Key-Muster maskieren – keine normalen Zahlen
+                    text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text)
+                    text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
+                    print(f"Erfolg mit Modell: {model}")
+                    return text_clean.strip()
+                else:
+                    print(f"Modell {model}: Status {response.status_code} – probiere nächstes...")
+                    time.sleep(pause_between_models)
+            except Exception as e:
+                print(f"Modell {model}: Fehler – {e}")
+                time.sleep(pause_between_models)
+
+        # Nach jedem kompletten Durchlauf warten, falls kein Modell funktioniert hat
+        if round_number < max_rounds:
+            print(f"Durchlauf {round_number} beendet – warte {pause_between_rounds} Sekunden...")
+            time.sleep(pause_between_rounds)
+
+    return "FEHLER: Kein Modell verfügbar nach mehreren Durchläufen. Bitte später erneut versuchen."
 
 def generate_content_plan():
     api_key = os.environ.get("GEMINI_API_KEY")
