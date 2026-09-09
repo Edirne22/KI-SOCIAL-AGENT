@@ -31,24 +31,26 @@ Kurze Beschreibung: ..."""
         response.raise_for_status()
         result = response.json()
         text = result["candidates"][0]["content"]["parts"][0]["text"]
-        # Entferne alles, was wie ein API-Key aussieht (AIza...)
-        text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[GEHEIM]', text)
+
+        # Entferne alle langen alphanumerischen Strings (mögliche Secrets)
+        text_clean = re.sub(r'\b[A-Za-z0-9_\-]{20,}\b', '[ENTFERNT]', text)
+
+        # Zusätzlich typische Schlüssel-Muster maskieren
+        text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text_clean)
+        text_clean = re.sub(r'AKIA[0-9A-Z]{16}', '[ENTFERNT]', text_clean)
+        text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
+
         return text_clean.strip()
     except Exception as e:
         return f"FEHLER bei API-Anfrage: {e}"
 
 def save_idea(idea):
-    # Sicherstellen, dass der content-Ordner existiert
     os.makedirs("content", exist_ok=True)
-
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     entry = f"\n\n## Idee vom {timestamp}\n{idea}\n"
-    try:
-        with open("content/GENERATED_IDEAS.md", "a", encoding="utf-8") as f:
-            f.write(entry)
-        print("Idee gespeichert.")
-    except Exception as e:
-        print(f"Fehler beim Speichern: {e}")
+    with open("content/GENERATED_IDEAS.md", "a", encoding="utf-8") as f:
+        f.write(entry)
+    print("Idee gespeichert.")
 
 if __name__ == "__main__":
     idea = generate_idea()
