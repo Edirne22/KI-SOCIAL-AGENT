@@ -1,41 +1,8 @@
 import os
 import re
+import time
 import requests
 from datetime import datetime
-
-# Liste möglicher Modelle – wird der Reihe nach getestet, bis eines klappt
-MODEL_LIST = [
-    "gemini-3.5-flash",
-    "gemini-flash-latest",
-    "gemini-2.5-flash",
-    "gemini-2.5-pro",
-    "gemini-pro-latest",
-    "gemini-1.5-flash",
-]
-
-def try_generate_with_models(api_key, prompt):
-    """Probiert verschiedene Modelle nacheinander, bis eines antwortet."""
-    for model in MODEL_LIST:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-        headers = {
-            "Content-Type": "application/json",
-            "X-goog-api-key": api_key
-        }
-        data = {
-            "contents": [{"parts": [{"text": prompt}]}]
-        }
-        try:
-            response = requests.post(url, headers=headers, json=data, timeout=120)
-            if response.status_code == 200:
-                result = response.json()
-                text = result["candidates"][0]["content"]["parts"][0]["text"]
-                text_clean = re.sub(r'\b[A-Za-z0-9_\-]{20,}\b', '[ENTFERNT]', text)
-                return text_clean.strip()
-            else:
-                print(f"Modell {model}: Status {response.status_code} – versuche nächstes...")
-        except Exception as e:
-            print(f"Modell {model}: Fehler – {e}")
-    return "FEHLER: Kein verfügbares Modell gefunden. Bitte später erneut versuchen."
 
 def generate_content_plan():
     api_key = os.environ.get("GEMINI_API_KEY")
@@ -105,7 +72,31 @@ TikTok-Skript:
 ...
 """
 
-    return try_generate_with_models(api_key, prompt)
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"
+    headers = {
+        "Content-Type": "application/json",
+        "X-goog-api-key": api_key
+    }
+    data = {
+        "contents": [{"parts": [{"text": prompt}]}]
+    }
+
+    for attempt in range(3):
+        try:
+            response = requests.post(url, headers=headers, json=data, timeout=120)
+            if response.status_code == 200:
+                result = response.json()
+                text = result["candidates"][0]["content"]["parts"][0]["text"]
+                text_clean = re.sub(r'\b[A-Za-z0-9_\-]{20,}\b', '[ENTFERNT]', text)
+                return text_clean.strip()
+            else:
+                print(f"Versuch {attempt+1}: Status {response.status_code} – warte 60 Sekunden...")
+                time.sleep(60)
+        except Exception as e:
+            print(f"Versuch {attempt+1}: Fehler – {e}")
+            time.sleep(60)
+
+    return "FEHLER: Modell war dreimal nicht erreichbar. Bitte später erneut versuchen."
 
 def save_content_plan(content):
     os.makedirs("content", exist_ok=True)
