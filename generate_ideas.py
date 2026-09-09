@@ -20,7 +20,7 @@ Thema: ...
 Hook: ...
 Kurze Beschreibung: ..."""
 
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent"
+    url = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent"
     headers = {
         "Content-Type": "application/json",
         "X-goog-api-key": api_key
