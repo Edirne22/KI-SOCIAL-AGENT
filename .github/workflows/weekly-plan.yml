@@ -1,1 +1,41 @@
+name: Generate Weekly Content Plan
 
+on:
+  schedule:
+    - cron: "0 6 * * 0"   # läuft sonntags um 08:00 deutscher Zeit (Sommer)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run weekly planner
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python weekly_plan.py
+
+      - name: Commit and push weekly plan
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -f content/WOCHENPLAN.md ]; then
+            git add content/WOCHENPLAN.md
+            git commit -m "Auto: Wochenplan generiert" || echo "Keine Änderungen"
+            git push
+          else
+            echo "Keine Datei zum Committen vorhanden – überspringe Push."
+          fi
