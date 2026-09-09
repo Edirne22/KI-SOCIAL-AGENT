@@ -87,7 +87,8 @@ TikTok-Skript:
             if response.status_code == 200:
                 result = response.json()
                 text = result["candidates"][0]["content"]["parts"][0]["text"]
-                text_clean = re.sub(r'\b[A-Za-z0-9_\-]{20,}\b', '[ENTFERNT]', text)
+                text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text)
+                text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
                 return text_clean.strip()
             else:
                 print(f"Versuch {attempt+1}: Status {response.status_code} – warte 60 Sekunden...")
