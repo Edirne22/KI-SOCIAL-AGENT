@@ -23,6 +23,7 @@ Erstelle zu jeder Idee:
 - Instagram-Caption (kurz, mit Hashtags)
 - Facebook-Post (etwas ausführlicher, aber auf den Punkt)
 - TikTok-Skript (Hook + 3-4 Szenen + Call-to-Action)
+- Visuelle Idee (Bildkomposition / Videoidee)
 
 Formatiere die Antwort exakt so:
 
@@ -41,34 +42,7 @@ Facebook-Post:
 TikTok-Skript:
 ...
 
---- BEITRAG 2 ---
-Titel: ...
-Plattform: ...
-Thema: ...
-Hook: ...
-
-Instagram-Caption:
-...
-
-Facebook-Post:
-...
-
-TikTok-Skript:
-...
-
---- BEITRAG 3 ---
-Titel: ...
-Plattform: ...
-Thema: ...
-Hook: ...
-
-Instagram-Caption:
-...
-
-Facebook-Post:
-...
-
-TikTok-Skript:
+Visuelle Idee:
 ...
 """
 
@@ -87,6 +61,7 @@ TikTok-Skript:
             if response.status_code == 200:
                 result = response.json()
                 text = result["candidates"][0]["content"]["parts"][0]["text"]
+                # Nur typische API-Key-Muster maskieren – keine normalen Zahlen
                 text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text)
                 text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
                 return text_clean.strip()
