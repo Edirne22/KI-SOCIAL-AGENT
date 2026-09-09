@@ -4,6 +4,49 @@ import time
 import requests
 from datetime import datetime
 
+# Liste der Modelle, die nacheinander getestet werden
+MODEL_LIST = [
+    "gemini-3.5-flash",      # hat zuverlässig funktioniert
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.8-flash",
+    "gemini-flash-latest",
+    "gemini-2.5-flash",
+    "gemini-2.5-pro",
+    "gemini-pro-latest"
+]
+
+def try_generate(api_key, prompt):
+    """Probiert die Modelle der Reihe nach aus, bis eines antwortet."""
+    headers = {
+        "Content-Type": "application/json",
+        "X-goog-api-key": api_key
+    }
+    data = {
+        "contents": [{"parts": [{"text": prompt}]}]
+    }
+
+    for model in MODEL_LIST:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        try:
+            response = requests.post(url, headers=headers, json=data, timeout=120)
+            if response.status_code == 200:
+                result = response.json()
+                text = result["candidates"][0]["content"]["parts"][0]["text"]
+                # Nur typische API-Key-Muster maskieren – keine normalen Zahlen
+                text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text)
+                text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
+                print(f"Erfolg mit Modell: {model}")
+                return text_clean.strip()
+            else:
+                print(f"Modell {model}: Status {response.status_code} – probiere nächstes...")
+                time.sleep(10)   # kurze Pause, um Rate-Limits zu vermeiden
+        except Exception as e:
+            print(f"Modell {model}: Fehler – {e}")
+            time.sleep(10)
+
+    return "FEHLER: Kein Modell verfügbar. Bitte später erneut versuchen."
+
 def generate_content_plan():
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
@@ -111,33 +154,7 @@ Trend-Bezug:
 ...
 """
 
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"
-    headers = {
-        "Content-Type": "application/json",
-        "X-goog-api-key": api_key
-    }
-    data = {
-        "contents": [{"parts": [{"text": prompt}]}]
-    }
-
-    for attempt in range(3):
-        try:
-            response = requests.post(url, headers=headers, json=data, timeout=120)
-            if response.status_code == 200:
-                result = response.json()
-                text = result["candidates"][0]["content"]["parts"][0]["text"]
-                # Nur typische API-Key-Muster maskieren – keine normalen Zahlen
-                text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text)
-                text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
-                return text_clean.strip()
-            else:
-                print(f"Versuch {attempt+1}: Status {response.status_code} – warte 60 Sekunden...")
-                time.sleep(60)
-        except Exception as e:
-            print(f"Versuch {attempt+1}: Fehler – {e}")
-            time.sleep(60)
-
-    return "FEHLER: Modell war dreimal nicht erreichbar. Bitte später erneut versuchen."
+    return try_generate(api_key, prompt)
 
 def save_content_plan(content):
     os.makedirs("content", exist_ok=True)
