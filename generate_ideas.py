@@ -3,39 +3,72 @@ import re
 import requests
 from datetime import datetime
 
-def generate_ideas():
+def generate_content_plan():
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         return "FEHLER: Kein API-Key gefunden."
 
-    prompt = """Erstelle 3 verschiedene Content-Ideen für einen Social-Media-Agenten.
+    prompt = """Erstelle 3 komplette Content-Ideen für einen Social-Media-Agenten.
 Themen: Motorrad, Reisen, Lifestyle, Technik, KI, MotoGP.
 Zielgruppe: 18-65 Jahre, deutsch und türkisch, Motorradfahrer und Reisefreudige.
 Stil: locker, per Du, wenige Emojis, kurze Captions.
 Wichtig: Gib keine Zugangsdaten, Passwörter oder API-Schlüssel aus.
 
+Erstelle zu jeder Idee:
+- Titel
+- Plattform (Instagram/TikTok/Facebook/Reel/Story)
+- Thema
+- Hook
+- Instagram-Caption (kurz, mit Hashtags)
+- Facebook-Post (etwas ausführlicher, aber auf den Punkt)
+- TikTok-Skript (Hook + 3-4 Szenen + Call-to-Action)
+
 Formatiere die Antwort exakt so:
 
---- IDEE 1 ---
-Titel: ...
-Plattform: Instagram/TikTok/Facebook/Reel/Story
-Thema: ...
-Hook: ...
-Beschreibung: ...
-
---- IDEE 2 ---
+--- BEITRAG 1 ---
 Titel: ...
 Plattform: ...
 Thema: ...
 Hook: ...
-Beschreibung: ...
 
---- IDEE 3 ---
+Instagram-Caption:
+...
+
+Facebook-Post:
+...
+
+TikTok-Skript:
+...
+
+--- BEITRAG 2 ---
 Titel: ...
 Plattform: ...
 Thema: ...
 Hook: ...
-Beschreibung: ...
+
+Instagram-Caption:
+...
+
+Facebook-Post:
+...
+
+TikTok-Skript:
+...
+
+--- BEITRAG 3 ---
+Titel: ...
+Plattform: ...
+Thema: ...
+Hook: ...
+
+Instagram-Caption:
+...
+
+Facebook-Post:
+...
+
+TikTok-Skript:
+...
 """
 
     url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"
@@ -48,7 +81,7 @@ Beschreibung: ...
     }
 
     try:
-        response = requests.post(url, headers=headers, json=data, timeout=60)
+        response = requests.post(url, headers=headers, json=data, timeout=120)
         response.raise_for_status()
         result = response.json()
         text = result["candidates"][0]["content"]["parts"][0]["text"]
@@ -58,14 +91,14 @@ Beschreibung: ...
     except Exception as e:
         return f"FEHLER bei API-Anfrage: {e}"
 
-def save_ideas(ideas):
+def save_content_plan(content):
     os.makedirs("content", exist_ok=True)
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    entry = f"\n\n## Ideen vom {timestamp}\n{ideas}\n"
-    with open("content/IDEAS.md", "a", encoding="utf-8") as f:
+    entry = f"\n\n## Automatisch generierte Beiträge vom {timestamp}\n{content}\n"
+    with open("content/CONTENT_PLAN.md", "a", encoding="utf-8") as f:
         f.write(entry)
-    print("Ideen gespeichert.")
+    print("Content-Plan gespeichert.")
 
 if __name__ == "__main__":
-    ideas = generate_ideas()
-    save_ideas(ideas)
+    content = generate_content_plan()
+    save_content_plan(content)
