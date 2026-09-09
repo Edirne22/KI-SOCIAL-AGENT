@@ -3,6 +3,40 @@ import re
 import requests
 from datetime import datetime
 
+# Liste möglicher Modelle – wird der Reihe nach getestet, bis eines klappt
+MODEL_LIST = [
+    "gemini-3.5-flash",
+    "gemini-flash-latest",
+    "gemini-2.5-flash",
+    "gemini-2.5-pro",
+    "gemini-pro-latest",
+    "gemini-1.5-flash",
+]
+
+def try_generate_with_models(api_key, prompt):
+    """Probiert verschiedene Modelle nacheinander, bis eines antwortet."""
+    for model in MODEL_LIST:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        headers = {
+            "Content-Type": "application/json",
+            "X-goog-api-key": api_key
+        }
+        data = {
+            "contents": [{"parts": [{"text": prompt}]}]
+        }
+        try:
+            response = requests.post(url, headers=headers, json=data, timeout=120)
+            if response.status_code == 200:
+                result = response.json()
+                text = result["candidates"][0]["content"]["parts"][0]["text"]
+                text_clean = re.sub(r'\b[A-Za-z0-9_\-]{20,}\b', '[ENTFERNT]', text)
+                return text_clean.strip()
+            else:
+                print(f"Modell {model}: Status {response.status_code} – versuche nächstes...")
+        except Exception as e:
+            print(f"Modell {model}: Fehler – {e}")
+    return "FEHLER: Kein verfügbares Modell gefunden. Bitte später erneut versuchen."
+
 def generate_content_plan():
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
@@ -71,25 +105,7 @@ TikTok-Skript:
 ...
 """
 
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent"
-    headers = {
-        "Content-Type": "application/json",
-        "X-goog-api-key": api_key
-    }
-    data = {
-        "contents": [{"parts": [{"text": prompt}]}]
-    }
-
-    try:
-        response = requests.post(url, headers=headers, json=data, timeout=120)
-        response.raise_for_status()
-        result = response.json()
-        text = result["candidates"][0]["content"]["parts"][0]["text"]
-        # Entferne lange Strings, die wie Secrets aussehen könnten
-        text_clean = re.sub(r'\b[A-Za-z0-9_\-]{20,}\b', '[ENTFERNT]', text)
-        return text_clean.strip()
-    except Exception as e:
-        return f"FEHLER bei API-Anfrage: {e}"
+    return try_generate_with_models(api_key, prompt)
 
 def save_content_plan(content):
     os.makedirs("content", exist_ok=True)
