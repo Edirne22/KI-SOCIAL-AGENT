@@ -1,1 +1,37 @@
+name: Ride With Me Analysis
 
+on:
+  schedule:
+    - cron: "0 5 * * 1"   # läuft montags um 07:00 deutscher Zeit (Sommer)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Ride With Me analysis
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python ride_with_me.py
+
+      - name: Commit and push analysis
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add ride-with-me/FEATURE_IDEAS.md ride-with-me/USER_FEEDBACK.md
+          git commit -m "Auto: Ride With Me Analyse aktualisiert" || echo "Keine Änderungen"
+          git push
