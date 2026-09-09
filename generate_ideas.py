@@ -20,8 +20,11 @@ Thema: ...
 Hook: ...
 Kurze Beschreibung: ..."""
 
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + api_key
-    headers = {"Content-Type": "application/json"}
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent"
+    headers = {
+        "Content-Type": "application/json",
+        "X-goog-api-key": api_key
+    }
     data = {
         "contents": [{"parts": [{"text": prompt}]}]
     }
@@ -31,15 +34,8 @@ Kurze Beschreibung: ..."""
         response.raise_for_status()
         result = response.json()
         text = result["candidates"][0]["content"]["parts"][0]["text"]
-
-        # Entferne alle langen alphanumerischen Strings (mögliche Secrets)
+        # Entferne lange Strings, die wie Secrets aussehen könnten
         text_clean = re.sub(r'\b[A-Za-z0-9_\-]{20,}\b', '[ENTFERNT]', text)
-
-        # Zusätzlich typische Schlüssel-Muster maskieren
-        text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text_clean)
-        text_clean = re.sub(r'AKIA[0-9A-Z]{16}', '[ENTFERNT]', text_clean)
-        text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
-
         return text_clean.strip()
     except Exception as e:
         return f"FEHLER bei API-Anfrage: {e}"
