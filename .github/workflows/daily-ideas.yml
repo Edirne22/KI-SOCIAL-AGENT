@@ -2,7 +2,7 @@ name: Generate Daily Content Idea
 
 on:
   schedule:
-    - cron: "0 8 * * *"  # läuft täglich um 08:00 UTC
+        - cron: "0 6 * * *"  # läuft täglich um 08:00 deutscher Zeit (Sommer)
   workflow_dispatch:      # ermöglicht manuelles Starten per Klick
 
 permissions:
