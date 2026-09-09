@@ -35,3 +35,14 @@ jobs:
           git add content/GENERATED_IDEAS.md
           git commit -m "Auto: neue Content-Idee generiert" || echo "Keine Änderungen"
           git push
+      - name: Commit and push generated idea
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -f content/GENERATED_IDEAS.md ]; then
+            git add content/GENERATED_IDEAS.md
+            git commit -m "Auto: neue Content-Idee generiert" || echo "Keine Änderungen"
+            git push
+          else
+            echo "Keine Datei zum Committen vorhanden – überspringe Push."
+          fi
