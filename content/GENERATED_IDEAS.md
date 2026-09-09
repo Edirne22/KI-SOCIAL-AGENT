@@ -138,3 +138,30 @@ models/veo-3.1-lite-generate-preview
 models/gemini-3.5-transcribe-live
 models/gemini-2.5-flash-native-audio-latest
 models/gemini-2.5-flash-native-audio-preview-09-2025
+
+
+## Idee vom 2026-09-09 20:37:50
+**Titel:** KI plant deinen nächsten Roadtrip (München nach Istanbul)
+
+**Plattform:** Instagram Reel / TikTok
+
+**Thema:** Motorrad, Reisen, Tech, KI
+
+**Hook:** Planst du noch oder fährst du schon? So plant KI deine nächste Motorrad-Tour in 10 Sekunden.
+
+**Kurze Beschreibung:** 
+Das Video startet mit dem Blick auf ein Smartphone, das am Lenker eines Motorrads montiert ist. Man sieht, wie in einer KI-App (z. B. ChatGPT) per Spracheingabe eingegeben wird: „Plane mir die kurvenreichste Motorrad-Route von München nach Istanbul mit coolen Insider-Stopps.“ 
+Danach folgt ein schneller Schnitt auf spektakuläre [ENTFERNT] (POV) von Kurven auf dem Balkan und der Ankunft in Istanbul. 
+
+Am Ende blendest du den genauen Prompt (Befehl) ein, den die Zuschauer kopieren können. Der Beitrag wird zweisprachig (Deutsch/Türkisch) ausgespielt, um beide Zielgruppen direkt anzusprechen.
+
+**Caption (Bildunterschrift):**
+Keine Lust mehr auf stundenlange Routenplanung für den Sommerurlaub? Lass einfach die KI arbeiten. 
+
+Gib bei ChatGPT ein: „Plane eine 5-tägige Motorradtour von [Start] nach [Ziel] mit Fokus auf Pässen, wenig Autobahn und günstigen Biker-Unterkünften.“ 
+
+Fertig. Hast du es schon mal ausprobiert? Schreib es in die Kommentare.
+
+---
+
+*Yolculuk planlamakla vakit kaybetme, bırak yapay zeka senin için halletsin. ChatGPT'ye rotanı sor ve sadece sürüşün tadını çıkar. Hiç denedin mi?*
