@@ -33,7 +33,7 @@ Hook: ...
 Kurze Beschreibung: ..."""
 
     # Aktuell testen wir gemini-1.5-flash in v1beta – aber es könnte andere Modelle geben.
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
     headers = {
         "Content-Type": "application/json",
         "X-goog-api-key": api_key
