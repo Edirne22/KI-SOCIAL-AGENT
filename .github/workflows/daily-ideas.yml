@@ -1,0 +1,32 @@
+name: Generate Daily Content Idea
+
+on:
+  schedule:
+    - cron: "0 8 * * *"  # läuft täglich um 08:00 UTC
+  workflow_dispatch:      # ermöglicht manuelles Starten per Klick
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run idea generator
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python generate_ideas.py
+
+      - name: Commit and push generated idea
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/GENERATED_IDEAS.md
+          git commit -m "Auto: neue Content-Idee generiert" || echo "Keine Änderungen"
+          git push
