@@ -28,13 +28,13 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python generate_ideas.py
 
-      - name: Commit and push generated idea
+      - name: Commit and push generated content plan
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f content/IDEAS.md ]; then
-            git add content/IDEAS.md
-            git commit -m "Auto: neue Content-Idee generiert" || echo "Keine Änderungen"
+          if [ -f content/CONTENT_PLAN.md ]; then
+            git add content/CONTENT_PLAN.md
+            git commit -m "Auto: neuer Content-Plan generiert" || echo "Keine Änderungen"
             git push
           else
             echo "Keine Datei zum Committen vorhanden – überspringe Push."
