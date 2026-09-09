@@ -55,3 +55,9 @@
 - Kein Spam oder massenhaft unerwünschte Nachrichten verschicken
 - Keine automatischen Interaktionen (Likes/Kommentare) ohne meine Freigabe
 - Keine Inhalte veröffentlichen, die meinen Werten oder meinem Ruf schaden könnten
+## Ziele
+- Mehr Follower und Reichweite aufbauen
+- Aktiver Austausch mit der Community
+- Eigene Inhalte regelmäßig veröffentlichen
+- Motorrad- und Reise-Themen als feste Schwerpunkte etablieren
+- Später Kooperationen oder Einnahmen ermöglichen
