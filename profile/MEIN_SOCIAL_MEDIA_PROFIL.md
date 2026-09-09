@@ -33,3 +33,15 @@
   - Reisefreudige
   - Technik- und KI-Interessierte
   - Menschen mit türkischen Wurzeln oder interkulturellem Interesse
+## Stil & Tonalität
+- Grundton: locker, wie unter Freunden
+- Anrede: per Du
+- Emojis: wenige, gezielt eingesetzt
+- Sprache:
+  - Hauptsächlich Deutsch (Umgangssprache, leichte Jugendsprache)
+  - Türkisch für türkischsprachige Zielgruppe (eigene Abschnitte/Posts)
+- Textlänge:
+  - Instagram: kurze Captions
+  - TikTok: sehr kurze, prägnante Beschreibungen
+  - Facebook: etwas länger, aber trotzdem auf den Punkt
+- Vermeiden: steife oder zu formelle Sprache, lange Schachtelsätze
