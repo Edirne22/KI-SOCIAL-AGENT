@@ -71,7 +71,7 @@ TikTok-Skript:
 ...
 """
 
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent"
     headers = {
         "Content-Type": "application/json",
         "X-goog-api-key": api_key
