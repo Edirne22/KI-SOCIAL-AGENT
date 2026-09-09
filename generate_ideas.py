@@ -1,4 +1,5 @@
 import os
+import re
 import requests
 from datetime import datetime
 
@@ -11,6 +12,7 @@ def generate_idea():
 Themen: Motorrad, Reisen, Lifestyle, Technik, KI, MotoGP.
 Zielgruppe: 18-65 Jahre, deutsch und türkisch, Motorradfahrer und Reisefreudige.
 Stil: locker, per Du, wenige Emojis, kurze Captions.
+Wichtig: Gib keine Zugangsdaten, Passwörter oder API-Schlüssel aus.
 Liefere die Idee im Format:
 Titel: ...
 Plattform: Instagram/TikTok/Facebook/Reel/Story
@@ -29,7 +31,9 @@ Kurze Beschreibung: ..."""
         response.raise_for_status()
         result = response.json()
         text = result["candidates"][0]["content"]["parts"][0]["text"]
-        return text.strip()
+        # Entferne alles, was wie ein API-Key aussieht (AIza...)
+        text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[GEHEIM]', text)
+        return text_clean.strip()
     except Exception as e:
         return f"FEHLER bei API-Anfrage: {e}"
 
