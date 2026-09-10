@@ -5,6 +5,7 @@ Text: Mein erster Beitrag im neuen Format 10.09.2026! 🏍️ #motorrad #bikerli
 
 ## Instagram
 Text: Toprak Razgatlıoğlu greift am Wochenende in Misano an! 🏍️🇹🇷 Wer von euch drückt ihm die Daumen? #toprak #motogp #türkischerstolz
+Bild: auto-image-1084.jpg
 
 ## Story [GEPOSTET 2026-09-10 19:55]
 Bild: story-image.JPG
