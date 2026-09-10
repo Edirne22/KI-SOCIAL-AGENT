@@ -1,7 +1,7 @@
 ## Beitrag
 Plattform: Instagram
 Format: Story
-Status: FREIGEGEBEN
+Status: VERÖFFENTLICHT
 
 Text:
 Story-Test meines KI-Agenten 🏍️
