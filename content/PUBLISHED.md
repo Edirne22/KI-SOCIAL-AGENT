@@ -1,7 +1,7 @@
 # Freigegebene Beiträge
 
 ## Facebook
-Text: Mein erster Beitrag im neuen Format! 🏍️ #motorrad #bikerlife
+Text: Mein erster Beitrag im neuen Format 10.09.2026! 🏍️ #motorrad #bikerlife
 
 ## Instagram [GEPOSTET 2026-09-10 19:55]
 Text: Test im neuen Format – einfacher geht's nicht! 🎉 #motorrad
