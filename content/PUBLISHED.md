@@ -1,12 +1,12 @@
 ## Beitrag
 Plattform: Instagram
 Format: Story
-Status: VERÖFFENTLICHT
+Status: FREIGEGEBEN
 
 Text:
 Story-Test meines KI-Agenten 🏍️
 
-Bild-URL: https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/test-image.jpg
+Bild-URL: https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/story-image.jpg
 
 ## Beitrag
 Plattform: Facebook
