@@ -1,4 +1,14 @@
 ## Beitrag
+Plattform: Instagram
+Format: Story
+Status: FREIGEGEBEN
+
+Text:
+Story-Test meines KI-Agenten 🏍️
+
+Bild-URL: https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/test-image.jpg
+
+## Beitrag
 Plattform: Facebook
 Status: ENTWURF
 
