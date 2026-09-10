@@ -4,8 +4,7 @@
 Text: Mein erster Beitrag im neuen Format 10.09.2026! 🏍️ #motorrad #bikerlife
 
 ## Instagram
-Text: Toprak Razgatlıoğlu greift am Wochenende in Misano an! 🏍️🇹🇷 Wer von euch drückt ihm die Daumen? #toprak #motogp #türkischerstolz
-Bild: auto-image-1084.jpg
+Text: Toprak Razgatlıoğlu auf seiner Yamaha YZR-M1 – am Wochenende greift er in Misano an! 🏍️🇹🇷 #toprak #motogp
 
 ## Story [GEPOSTET 2026-09-10 19:55]
 Bild: story-image.JPG
