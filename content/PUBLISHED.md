@@ -14,7 +14,7 @@ Das ist ein freigegebener Testbeitrag – er sollte beim nächsten Lauf automati
 
 ## Beitrag
 Plattform: Instagram
-Status: FREIGEGEBEN
+Status: VERÖFFENTLICHT
 
 Text:
 Mein erster automatischer Instagram-Post über meinen KI-Agenten! 🏍️ #motorrad #ki #bikerlife
