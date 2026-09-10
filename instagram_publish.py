@@ -5,30 +5,31 @@ import requests
 from datetime import datetime
 
 def parse_published_file():
-    """Liest die PUBLISHED.md und sucht nach einem freigegebenen Instagram-Beitrag."""
+    """Sucht gezielt den ersten Instagram-Block mit Status FREIGEGEBEN."""
     with open("content/PUBLISHED.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Suche nach Block mit Plattform Instagram und Status FREIGEGEBEN
-    pattern = r"(## Beitrag.*?Plattform:\s*Instagram.*?Status:\s*FREIGEGEBEN.*?)(?=## Beitrag|$)"
-    match = re.search(pattern, content, re.DOTALL)
-    if not match:
-        return None, None, None, content
+    # Datei anhand von "## Beitrag" in einzelne Blöcke zerlegen
+    blocks = re.split(r"^## Beitrag\s*$", content, flags=re.MULTILINE)
 
-    block = match.group(1)
+    for block in blocks:
+        # Prüfe, ob Block Plattform Instagram + Status FREIGEGEBEN enthält
+        if re.search(r"Plattform:\s*Instagram", block) and re.search(r"Status:\s*FREIGEGEBEN", block):
+            # Text extrahieren (zwischen "Text:" und "Bild-URL:" oder Blockende)
+            text_match = re.search(r"Text:\s*(.*?)(?=\nBild-URL:|\Z)", block, re.DOTALL)
+            post_text = text_match.group(1).strip() if text_match else ""
 
-    # Text extrahieren
-    text_match = re.search(r"Text:\s*(.*?)(?=\nBild-URL:|\n##|\Z)", block, re.DOTALL)
-    post_text = text_match.group(1).strip() if text_match else ""
+            # Bild-URL extrahieren
+            url_match = re.search(r"Bild-URL:\s*(\S+)", block)
+            image_url = url_match.group(1).strip() if url_match else None
 
-    # Bild-URL extrahieren
-    url_match = re.search(r"Bild-URL:\s*(\S+)", block)
-    image_url = url_match.group(1).strip() if url_match else None
+            # Gesamten Original-Block für spätere Markierung zurückgeben
+            original_block = "## Beitrag" + block
+            return post_text, image_url, original_block, content
 
-    return post_text, image_url, block, content
+    return None, None, None, content
 
 def create_media_container(ig_user_id, access_token, image_url, caption):
-    """Erstellt einen Medien-Container für das Bild."""
     url = f"https://graph.instagram.com/v23.0/{ig_user_id}/media"
     params = {
         "image_url": image_url,
@@ -42,7 +43,6 @@ def create_media_container(ig_user_id, access_token, image_url, caption):
     return None
 
 def publish_media(ig_user_id, access_token, creation_id):
-    """Veröffentlicht den erstellten Medien-Container."""
     url = f"https://graph.instagram.com/v23.0/{ig_user_id}/media_publish"
     params = {
         "creation_id": creation_id,
@@ -55,7 +55,6 @@ def publish_media(ig_user_id, access_token, creation_id):
     return None
 
 def wait_for_container(creation_id, access_token, max_wait=60):
-    """Wartet, bis der Container fertig verarbeitet ist."""
     url = f"https://graph.instagram.com/v23.0/{creation_id}"
     params = {"fields": "status_code", "access_token": access_token}
     for _ in range(max_wait // 5):
@@ -69,8 +68,10 @@ def wait_for_container(creation_id, access_token, max_wait=60):
         time.sleep(5)
     return False
 
-def mark_as_published(content):
-    new_content = content.replace("Status: FREIGEGEBEN", "Status: VERÖFFENTLICHT", 1)
+def mark_as_published(content, original_block):
+    """Markiert nur den veröffentlichten Block als VERÖFFENTLICHT."""
+    new_block = original_block.replace("Status: FREIGEGEBEN", "Status: VERÖFFENTLICHT", 1)
+    new_content = content.replace(original_block, new_block, 1)
     with open("content/PUBLISHED.md", "w", encoding="utf-8") as f:
         f.write(new_content)
 
@@ -82,9 +83,9 @@ if __name__ == "__main__":
         print("Fehler: Instagram-Secrets fehlen.")
         exit(1)
 
-    post_text, image_url, block, content = parse_published_file()
+    post_text, image_url, original_block, content = parse_published_file()
 
-    if not post_text and not image_url:
+    if not original_block:
         print("Kein freigegebener Instagram-Beitrag gefunden.")
         exit(0)
 
@@ -93,6 +94,7 @@ if __name__ == "__main__":
         exit(1)
 
     print("Freigegebenen Instagram-Beitrag gefunden – veröffentliche jetzt...")
+    print(f"Caption: {post_text[:80]}...")
 
     creation_id = create_media_container(ig_user_id, access_token, image_url, post_text)
     if not creation_id:
@@ -107,6 +109,6 @@ if __name__ == "__main__":
     post_id = publish_media(ig_user_id, access_token, creation_id)
     if post_id:
         print(f"Erfolgreich veröffentlicht mit ID: {post_id}")
-        mark_as_published(content)
+        mark_as_published(content, original_block)
     else:
         print("Veröffentlichung fehlgeschlagen.")
