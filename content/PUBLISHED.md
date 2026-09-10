@@ -4,8 +4,9 @@
 Text: Mein erster Beitrag im neuen Format 10.09.2026! 🏍️ #motorrad #bikerlife
 
 ## Instagram
-Text: Toprak Razgatlıoğlu zeigt wieder, wie man Kurven liebt! 🏍️🔥 Der türkische Weltmeister ist unser Vorbild auf zwei Rädern. Wer von euch drückt ihm die Daumen für die nächste Saison? Motorrad-Tour durch die Berge bei Sonnenuntergang – genau sein Revier. #toprakrazgatlioglu #motorrad #superbike #türkischerstolz #biker #motogp
-Bild: auto-image-6498.jpg
+Text: Das Highlight-Wochenende steht an: MotoGP am Sachsenring! Alle Augen sind auf @toprakrazgatlioglu auf der Prima Pramac Yamaha gerichtet. Schafft er den Sprung aufs Treppchen? Schreib deinen Tipp in die Kommentare.
+
+Sachsenring'de MotoGP heyecanı başlıyor! Gözümüz Prima Pramac Yamaha ile piste çıkacak olan @toprakrazgatlioglu üzerinde. Sence podyum gelir mi? Yorumlarda buluşalım.
 
 ## Story [GEPOSTET 2026-09-10 19:55]
 Bild: story-image.JPG
