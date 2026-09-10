@@ -7,7 +7,7 @@ Das ist mein erster vorbereiteter Facebook-Post über meinen KI-Agenten. Er wird
 
 ## Beitrag
 Plattform: Facebook
-Status: FREIGEGEBEN
+Status: VERÖFFENTLICHT
 
 Text:
 Das ist ein freigegebener Testbeitrag – er sollte beim nächsten Lauf automatisch veröffentlicht werden.
