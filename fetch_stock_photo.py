@@ -3,40 +3,106 @@ import re
 import base64
 import requests
 
-GEMINI_API = "https://generativelanguage.googleapis.com/v1beta/models"
+GEMINI_API = "https://generativelanguage.googleapis.com/v1beta"
 PEXELS_API = "https://api.pexels.com/v1/search"
 
-# Bildmodelle von Gemini (in dieser Reihenfolge testen)
+# Bildmodelle von Gemini – BESTE zuerst
 IMAGE_MODELS = [
-    "gemini-3.1-flash-image",
-    "gemini-2.5-flash-image",
     "gemini-3-pro-image",
     "nano-banana-pro-preview",
+    "gemini-3.1-flash-image",
+    "gemini-2.5-flash-image",
 ]
 
-# Renn-Prompts: Keyword → Prompt für Gemini
+# Negativ-Anweisungen gegen Harley/Cruiser/Chopper
+NEGATIVE_PROMPT = (
+    " IMPORTANT: Modern MotoGP prototype racing motorcycle with full fairing, "
+    "sportbike design, aerodynamic winglets, racing slicks. "
+    "NO Harley Davidson, NO cruiser, NO chopper, NO touring bike, NO American flag, "
+    "NO cowboy style, NO vintage motorcycle, NO chrome, NO handlebar mustache. "
+    "European racing style, ultra realistic professional motorsport photography."
+)
+
 RACING_PROMPTS = {
-    "toprak": "Cinematic action photo of a modern MotoGP racing motorcycle in sharp cornering lean, Yamaha blue and black racing livery, number 07 visible, Misano race track at golden hour, Turkish flag waving in background, professional motorsport photography, ultra realistic",
-    "razgatlioglu": "Cinematic action photo of a modern MotoGP racing motorcycle leaning into a corner, Yamaha racing colors, number 07, professional motorsport photography, ultra realistic",
-    "deniz": "Professional photo of a Moto2 racing motorcycle on track, dynamic cornering, dark blue and white racing livery, motorsport photography, ultra realistic",
-    "öncü": "Professional photo of a racing motorcycle on track, action shot, blue and white racing colors, ultra realistic motorsport photography",
-    "oncu": "Professional photo of a racing motorcycle on track, action shot, blue and white racing colors, ultra realistic motorsport photography",
-    "bahattin": "Professional photo of a Superbike racing motorcycle on track, dynamic action, superbike racing livery, ultra realistic",
-    "sofuoglu": "Professional photo of a racing motorcycle on track, dynamic action, ultra realistic motorsport photography",
-    "kenan": "Cinematic portrait of a racing world champion standing beside a racing motorcycle, sunset lighting, professional motorsport photo",
-    "zayn": "A young talented go-kart driver racing on a karting track, small kart, Turkish flag on the suit, professional karting photography, ultra realistic",
-    "motogp": "Start grid of a MotoGP race, multiple modern prototype racing motorcycles lined up, packed grandstands, dramatic lighting, professional sports photography, ultra realistic",
-    "moto gp": "Start grid of a MotoGP race, multiple modern prototype racing motorcycles lined up, packed grandstands, dramatic lighting, professional sports photography, ultra realistic",
-    "sprint": "MotoGP sprint race action, motorcycle riders battling for position, dynamic speed blur, professional motorsport photography",
-    "podium": "Podium celebration at a MotoGP race, champagne spray, three riders on the podium, Turkish flag, dramatic lighting, professional sports photography",
-    "rennen": "Professional motorsport action shot, racing motorcycle on track, dynamic cornering, cinematic lighting",
-    "race day": "Professional motorsport action shot, racing motorcycle on track, dynamic cornering, cinematic lighting",
-    "startaufstellung": "MotoGP starting grid with multiple racing motorcycles, race track view, professional sports photography",
-    "rennfahrer": "Professional photo of a motorcycle racer in action on track, ultra realistic motorsport photography",
-    "_default": "Professional motorsport photography of a modern racing motorcycle on a scenic race track, dynamic action shot, cinematic lighting, ultra realistic",
+    "toprak": (
+        "Cinematic action photo of a modern MotoGP racing motorcycle in sharp cornering lean, "
+        "Yamaha blue and black racing livery with number 07, aerodynamic winglets, "
+        "Misano race track at golden hour, packed grandstands, "
+        "professional motorsport photography, ultra realistic"
+    ),
+    "razgatlioglu": (
+        "Cinematic action photo of a modern MotoGP racing motorcycle in sharp cornering lean, "
+        "Yamaha racing colors with number 07, aerodynamic winglets, "
+        "professional motorsport photography, ultra realistic"
+    ),
+    "deniz": (
+        "Professional photo of a modern Moto2 racing motorcycle on track, dynamic cornering, "
+        "dark blue and white racing livery, aerodynamic fairing, motorsport photography, ultra realistic"
+    ),
+    "öncü": (
+        "Professional photo of a modern racing motorcycle on track, action shot, "
+        "blue and white racing livery, aerodynamic fairing, ultra realistic motorsport photography"
+    ),
+    "oncu": (
+        "Professional photo of a modern racing motorcycle on track, action shot, "
+        "blue and white racing livery, aerodynamic fairing, ultra realistic motorsport photography"
+    ),
+    "bahattin": (
+        "Professional photo of a modern Superbike racing motorcycle on track, dynamic action, "
+        "sportbike with full fairing, racing slicks, ultra realistic"
+    ),
+    "sofuoglu": (
+        "Professional photo of a modern racing motorcycle on track, dynamic action, "
+        "sportbike with full fairing, ultra realistic motorsport photography"
+    ),
+    "kenan": (
+        "Cinematic portrait of a racing world champion standing beside a modern racing motorcycle, "
+        "sunset lighting, professional motorsport photo"
+    ),
+    "zayn": (
+        "A young talented go-kart driver racing on a karting track, small racing kart, "
+        "professional karting photography, ultra realistic"
+    ),
+    "motogp": (
+        "Start grid of a MotoGP race, multiple modern prototype racing motorcycles lined up, "
+        "full fairing sportbikes with aerodynamic winglets, packed grandstands, "
+        "dramatic lighting, professional sports photography, ultra realistic"
+    ),
+    "moto gp": (
+        "Start grid of a MotoGP race, multiple modern prototype racing motorcycles lined up, "
+        "full fairing sportbikes with aerodynamic winglets, packed grandstands, "
+        "dramatic lighting, professional sports photography, ultra realistic"
+    ),
+    "sprint": (
+        "MotoGP sprint race action, motorcycle riders battling for position, "
+        "modern prototype racing bikes, dynamic speed blur, professional motorsport photography"
+    ),
+    "podium": (
+        "Podium celebration at a MotoGP race, champagne spray, three riders on the podium, "
+        "modern racing suits, dramatic lighting, professional sports photography"
+    ),
+    "rennen": (
+        "Professional motorsport action shot, modern racing motorcycle on track, "
+        "dynamic cornering, full fairing sportbike, cinematic lighting"
+    ),
+    "race day": (
+        "Professional motorsport action shot, modern racing motorcycle on track, "
+        "dynamic cornering, full fairing sportbike, cinematic lighting"
+    ),
+    "startaufstellung": (
+        "MotoGP starting grid with multiple modern racing motorcycles, "
+        "full fairing sportbikes with winglets, race track view, professional sports photography"
+    ),
+    "rennfahrer": (
+        "Professional photo of a motorcycle racer in action on track, "
+        "modern full fairing racing bike, ultra realistic motorsport photography"
+    ),
+    "_default": (
+        "Professional motorsport photography of a modern racing motorcycle with full fairing "
+        "on a scenic race track, dynamic action shot, cinematic lighting, ultra realistic"
+    ),
 }
 
-# Pexels-Suchbegriffe für Nicht-Renn-Content
 PEXELS_KEYWORDS = {
     "reise": "motorcycle travel road",
     "roadtrip": "motorcycle road trip",
@@ -65,6 +131,10 @@ PEXELS_KEYWORDS = {
 def is_racing_content(text):
     """Erkennt, ob es ein Renn-Thema ist."""
     text_lower = text.lower()
+    NOT_RACING = ["harley", "cruiser", "chopper"]
+    for kw in NOT_RACING:
+        if kw in text_lower:
+            return False
     for kw in RACING_PROMPTS:
         if kw != "_default" and kw in text_lower:
             return True
@@ -73,12 +143,14 @@ def is_racing_content(text):
 def get_racing_prompt(text):
     """Ermittelt den besten Prompt für ein Renn-Thema."""
     text_lower = text.lower()
+    base_prompt = RACING_PROMPTS["_default"]
     for kw, prompt in RACING_PROMPTS.items():
         if kw == "_default":
             continue
         if kw in text_lower:
-            return prompt
-    return RACING_PROMPTS["_default"]
+            base_prompt = prompt
+            break
+    return base_prompt + NEGATIVE_PROMPT
 
 def get_pexels_query(text):
     """Ermittelt Suchbegriff für Pexels bei Alltags-Content."""
@@ -95,9 +167,8 @@ def generate_gemini_image(api_key, prompt):
         "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]}
     }
 
-    # Jetzt mit ?key= in der URL UND ohne X-goog-api-key Header (Bild-API mag das anders)
     for model in IMAGE_MODELS:
-        url = f"{GEMINI_API}/v1beta/models/{model}:generateContent?key={api_key}"
+        url = f"{GEMINI_API}/models/{model}:generateContent?key={api_key}"
         try:
             r = requests.post(url, json=data, timeout=180)
             print(f"{model}: Status {r.status_code}")
@@ -110,7 +181,6 @@ def generate_gemini_image(api_key, prompt):
                         return base64.b64decode(part["inlineData"]["data"])
                 print(f"{model}: Kein Bild in Antwort. Parts: {[list(p.keys()) for p in parts]}")
             else:
-                # Erste 300 Zeichen der Antwort ausgeben zur Diagnose
                 print(f"{model} Fehler-Antwort: {r.text[:300]}")
         except Exception as e:
             print(f"{model}: Exception – {e}")
