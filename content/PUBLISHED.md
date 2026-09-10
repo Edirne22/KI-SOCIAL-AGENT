@@ -11,3 +11,12 @@ Status: VERÖFFENTLICHT
 
 Text:
 Das ist ein freigegebener Testbeitrag – er sollte beim nächsten Lauf automatisch veröffentlicht werden.
+
+## Beitrag
+Plattform: Instagram
+Status: FREIGEGEBEN
+
+Text:
+Mein erster automatischer Instagram-Post über meinen KI-Agenten! 🏍️ #motorrad #ki #bikerlife
+
+Bild-URL: https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/test-image.jpg
