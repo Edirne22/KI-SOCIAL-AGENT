@@ -15,17 +15,39 @@ MODEL_LIST = [
     "gemini-pro-latest"
 ]
 
-def read_ride_with_me():
-    """Liest öffentliche Ride With Me Analysen, falls vorhanden."""
+def read_file(path, max_chars=3000):
+    """Liest eine Datei, falls vorhanden."""
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        return content[-max_chars:]
+    except FileNotFoundError:
+        return ""
+
+def read_knowledge():
+    """Liest alle relevanten Wissensdateien."""
     knowledge = ""
-    for path in ["ride-with-me/FEATURE_IDEAS.md", "ride-with-me/USER_FEEDBACK.md"]:
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                content = f.read()
-            # Nur den letzten Teil verwenden, um den Prompt nicht zu überladen
-            knowledge += f"\n\n--- Inhalt aus {path} ---\n{content[-3000:]}"
-        except FileNotFoundError:
-            pass
+
+    # Ride With Me
+    rwm = read_file("ride-with-me/FEATURE_IDEAS.md")
+    if rwm:
+        knowledge += f"\n\n--- Ride With Me Analyse ---\n{rwm}"
+
+    # Türkische Rennfahrer
+    racers = read_file("content/TURKISH_RACERS.md")
+    if racers:
+        knowledge += f"\n\n--- Türkische Rennfahrer ---\n{racers}"
+
+    # MotoGP-Kalender
+    calendar = read_file("content/MOTOGP_CALENDAR.md")
+    if calendar:
+        knowledge += f"\n\n--- MotoGP-Kalender ---\n{calendar}"
+
+    # Türkische Biker-Community
+    community = read_file("content/TURKISH_BIKER_COMMUNITY.md")
+    if community:
+        knowledge += f"\n\n--- Türkische Biker-Community ---\n{community}"
+
     return knowledge
 
 def try_generate(api_key, prompt):
@@ -72,9 +94,9 @@ def generate_content_plan():
     if not api_key:
         return "FEHLER: Kein API-Key gefunden."
 
-    ride_with_me_knowledge = read_ride_with_me()
-    if ride_with_me_knowledge:
-        knowledge_part = f"Berücksichtige bei der Ideenfindung auch folgende Informationen aus der Ride With Me Analyse:\n{ride_with_me_knowledge}\n"
+    knowledge = read_knowledge()
+    if knowledge:
+        knowledge_part = f"Berücksichtige bei der Ideenfindung folgende Wissensquellen:\n{knowledge}\n"
     else:
         knowledge_part = ""
 
@@ -86,6 +108,15 @@ Wichtig: Gib keine Zugangsdaten, Passwörter oder API-Schlüssel aus.
 
 {knowledge_part}
 
+BESONDERE PRIORITÄTEN:
+1. Wenn am kommenden Wochenende ein MotoGP-Rennen stattfindet (siehe MotoGP-Kalender),
+   baue mindestens einen Beitrag zum Rennwochenende ein.
+2. Türkische Rennfahrer haben IMMER Vorrang:
+   Toprak Razgatlıoğlu, Deniz Öncü, Can Öncü, Bahattin Sofuoğlu, Kenan Sofuoğlu, Zayn Sofuoğlu.
+   Erwähne sie namentlich und markiere wenn möglich ihre Instagram-Handles.
+3. Wenn es aktuelle News zu türkischen Fahrern gibt, baue diese ein.
+4. Community-Themen (Türkische Biker in Deutschland) sind willkommen.
+
 Erstelle zu jeder Idee:
 - Titel
 - Plattform (Instagram/TikTok/Facebook/Reel/Story)
@@ -96,7 +127,7 @@ Erstelle zu jeder Idee:
 - TikTok-Skript (Hook + 3-4 Szenen + Call-to-Action)
 - Visuelle Idee (Bildkomposition / Videoidee)
 - Hashtag-Vorschläge (für Instagram und TikTok, max. 8 pro Plattform)
-- Trend-Bezug (kurzer Hinweis, warum das Thema gerade relevant ist – nutze dein aktuelles Wissen über Trends im Motorrad-, Reise-, Tech- und KI-Bereich)
+- Trend-Bezug (kurzer Hinweis, warum das Thema gerade relevant ist)
 
 Formatiere die Antwort exakt so:
 
