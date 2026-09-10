@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-            - name: Run stock photo fetcher
+      - name: Run stock photo fetcher
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
@@ -34,5 +34,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add content/PUBLISHED.md auto-image-*.jpg || true
-          git commit -m "Auto: Stockfoto für offenen Beitrag hinzugefügt" || echo "Keine Änderungen"
+          git commit -m "Auto: Bild für offenen Beitrag hinzugefügt" || echo "Keine Änderungen"
           git push
