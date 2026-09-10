@@ -7,5 +7,5 @@ Text: Mein erster Beitrag im neuen Format! 🏍️ #motorrad #bikerlife
 Text: Test im neuen Format – einfacher geht's nicht! 🎉 #motorrad
 Bild: test-image.jpg
 
-## Story
+## Story [GEPOSTET 2026-09-10 19:55]
 Bild: story-image.JPG
