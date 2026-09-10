@@ -23,8 +23,9 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run stock photo fetcher
+            - name: Run stock photo fetcher
         env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: python fetch_stock_photo.py
 
