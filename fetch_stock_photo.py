@@ -90,19 +90,17 @@ def get_pexels_query(text):
 
 def generate_gemini_image(api_key, prompt):
     """Generiert ein Bild über Gemini. Gibt Bild-Bytes zurück oder None."""
-    headers = {
-        "Content-Type": "application/json",
-        "X-goog-api-key": api_key
-    }
     data = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]}
     }
 
+    # Jetzt mit ?key= in der URL UND ohne X-goog-api-key Header (Bild-API mag das anders)
     for model in IMAGE_MODELS:
-        url = f"{GEMINI_API}/v1beta/models/{model}:generateContent"
+        url = f"{GEMINI_API}/v1beta/models/{model}:generateContent?key={api_key}"
         try:
-            r = requests.post(url, headers=headers, json=data, timeout=180)
+            r = requests.post(url, json=data, timeout=180)
+            print(f"{model}: Status {r.status_code}")
             if r.status_code == 200:
                 result = r.json()
                 parts = result.get("candidates", [{}])[0].get("content", {}).get("parts", [])
@@ -110,11 +108,12 @@ def generate_gemini_image(api_key, prompt):
                     if "inlineData" in part:
                         print(f"Gemini-Bild erstellt mit {model}")
                         return base64.b64decode(part["inlineData"]["data"])
-                print(f"{model}: Kein Bild in Antwort")
+                print(f"{model}: Kein Bild in Antwort. Parts: {[list(p.keys()) for p in parts]}")
             else:
-                print(f"{model}: Status {r.status_code} – probiere nächstes...")
+                # Erste 300 Zeichen der Antwort ausgeben zur Diagnose
+                print(f"{model} Fehler-Antwort: {r.text[:300]}")
         except Exception as e:
-            print(f"{model}: Fehler – {e}")
+            print(f"{model}: Exception – {e}")
 
     return None
 
