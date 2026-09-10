@@ -4,10 +4,34 @@ import requests
 
 PEXELS_API = "https://api.pexels.com/v1/search"
 
-# Suchbegriffe je nach Thema (einfache Keyword-Erkennung)
+# Erweiterte Suchbegriffe je Thema
 KEYWORD_MAP = {
+    # Türkische Fahrer
+    "toprak": "yamaha motogp racing",
+    "razgatlioglu": "yamaha motogp racing",
+    "deniz öncü": "motorcycle racing track",
+    "deniz oncu": "motorcycle racing track",
+    "can öncü": "motorcycle racing sport",
+    "can oncu": "motorcycle racing sport",
+    "bahattin": "superbike racing",
+    "sofuoglu": "racing motorcycle",
+    "kenan": "motorcycle champion",
+    "zayn": "go kart racing",
+    # MotoGP allgemein
     "motogp": "motogp racing",
     "moto gp": "motogp racing",
+    "sprint": "motorcycle race start",
+    "rennen": "motorcycle race track",
+    "race day": "motorcycle racing sunset",
+    "podium": "motorsport podium celebration",
+    # Internationale Fahrer
+    "marquez": "ducati motogp",
+    "acosta": "ktm motogp",
+    "martin": "aprilia motogp",
+    "bezzecchi": "aprilia racing",
+    "miller": "yamaha racing",
+    "ogura": "motogp racing japan",
+    # Motorrad allgemein
     "tuning": "motorcycle tuning",
     "schrauber": "motorcycle mechanic",
     "werkstatt": "motorcycle garage",
@@ -28,19 +52,17 @@ KEYWORD_MAP = {
     "technik": "motorcycle technology",
     "sonnenuntergang": "motorcycle sunset",
     "biker": "biker motorcycle",
+    "community": "motorcycle group riders",
 }
 
 def detect_query(text):
-    """Sucht passende Pexels-Suchbegriffe anhand des Beitragstexts."""
     text_lower = text.lower()
     for keyword, query in KEYWORD_MAP.items():
         if keyword in text_lower:
             return query
-    # Fallback
     return "motorcycle biker"
 
 def search_pexels(api_key, query):
-    """Sucht bei Pexels nach einem passenden Foto."""
     headers = {"Authorization": api_key}
     params = {
         "query": query,
@@ -56,11 +78,9 @@ def search_pexels(api_key, query):
     photos = data.get("photos", [])
     if not photos:
         return None
-    # Erstes Ergebnis nehmen (Pexels sortiert nach Relevanz)
     return photos[0]["src"]["large2x"]
 
 def download_image(url, filename):
-    """Lädt das Bild herunter und speichert es im Repository."""
     r = requests.get(url, timeout=60)
     if r.status_code != 200:
         print(f"Download-Fehler: {r.status_code}")
@@ -71,15 +91,12 @@ def download_image(url, filename):
     return True
 
 def update_published(content, block, filename):
-    """Ergänzt die Bild-Zeile im entsprechenden Block."""
     if re.search(r"Bild:\s*\S+", block):
-        return content  # Block hat schon ein Bild
-
+        return content
     new_block = block.rstrip() + f"\nBild: {filename}\n"
     return content.replace(block, new_block, 1)
 
 def process_block(content, platform_header, api_key):
-    """Verarbeitet einen Block (Instagram oder Story), der noch kein Bild hat."""
     pattern = rf"({platform_header}\s*\n(.*?)(?=\n## |\Z))"
     for match in re.finditer(pattern, content, re.DOTALL):
         block = match.group(1)
@@ -91,7 +108,6 @@ def process_block(content, platform_header, api_key):
             print(f"Block hat schon ein Bild – überspringe.")
             continue
 
-        # Suchbegriff ermitteln
         text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\Z)", body, re.DOTALL)
         text = text_match.group(1).strip() if text_match else ""
         query = detect_query(text)
@@ -102,14 +118,13 @@ def process_block(content, platform_header, api_key):
             print("Kein Foto gefunden.")
             return content
 
-        # Eindeutiger Dateiname pro Block
         filename = f"auto-image-{abs(hash(block)) % 10000}.jpg"
         if not download_image(image_url, filename):
             return content
 
         content = update_published(content, block, filename)
         print(f"Bild eingefügt: {filename}")
-        return content  # nur ein Block pro Lauf
+        return content
 
     return content
 
@@ -122,7 +137,6 @@ if __name__ == "__main__":
     with open("content/PUBLISHED.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Zuerst Instagram, dann Story
     new_content = process_block(content, "## Instagram", api_key)
     if new_content == content:
         new_content = process_block(content, "## Story", api_key)
