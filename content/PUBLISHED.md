@@ -6,7 +6,7 @@ Status: FREIGEGEBEN
 Text:
 Story-Test meines KI-Agenten 🏍️
 
-Bild-URL: https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/story-image.jpg
+Bild-URL: https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/story-image.JPG
 
 ## Beitrag
 Plattform: Facebook
