@@ -25,8 +25,8 @@ KNOWLEDGE_FILES = [
     "content/TURKISH_RACERS.md",
     "content/MOTOGP_CALENDAR.md",
     "content/TURKISH_BIKER_COMMUNITY.md",
-    "rules/BRAND_RULES.md",
-    "rules/SAFETY_RULES.md",
+    "profile/content/rules/BRAND_RULES.md",
+    "profile/content/rules/SAFETY_RULES.md",
 ]
 
 def read_file(path, max_chars=2500):
