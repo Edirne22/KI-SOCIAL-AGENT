@@ -2,7 +2,7 @@ name: Generate Media with Agnes AI
 
 on:
   schedule:
-    - cron: "0 7 * * *"   # läuft täglich um 09:00 deutscher Zeit
+    - cron: "0 7 * * *"
   workflow_dispatch:
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: python generate_agnes_media.py
 
-            - name: Commit media and PUBLISHED.md
+      - name: Commit media and PUBLISHED.md
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -37,4 +37,3 @@ jobs:
           git commit -m "Auto: Medien für offene Beiträge generiert" || echo "Keine Änderungen"
           git pull --rebase origin main
           git push
-          
