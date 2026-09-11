@@ -8,4 +8,4 @@ Text: Toprak Razgatlıoğlu greift in Misano 2026 an – wer drückt ihm die Dau
 Bild: auto-image-8274.jpg
 
 ## Story
-video: test-agnes-video.mp4
+Video: test-agnes-video.mp4
