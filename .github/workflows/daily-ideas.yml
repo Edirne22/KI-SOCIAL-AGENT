@@ -33,7 +33,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           if [ -f content/CONTENT_PLAN.md ]; then
-            git add content/CONTENT_PLAN.md
+            git add content/CONTENT_PLAN.md memory/POST_HISTORY.md
             git commit -m "Auto: neuer Content-Plan generiert" || echo "Keine Änderungen"
             git push
           else
