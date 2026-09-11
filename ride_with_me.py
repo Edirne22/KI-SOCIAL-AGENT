@@ -37,7 +37,9 @@ def try_generate(api_key, prompt):
                     result = response.json()
                     text = result["candidates"][0]["content"]["parts"][0]["text"]
                     text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text)
+                    text_clean = re.sub(r'AQ\.[A-Za-z0-9_\-]{40,}', '[ENTFERNT]', text_clean)
                     text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
+                    text_clean = re.sub(r'\b[A-Za-z0-9_\-]{50,}\b', '[ENTFERNT]', text_clean)
                     print(f"Erfolg mit Modell: {model}")
                     return text_clean.strip()
                 else:
