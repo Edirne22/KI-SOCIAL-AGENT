@@ -6,16 +6,12 @@ from datetime import datetime
 
 # Liste der Modelle, die nacheinander getestet werden
 MODEL_LIST = [
-    "gemini-3.5-flash",
-    "gemini-3.6-flash",
-    "gemini-3.7-flash",
     "gemini-3.8-flash",
-    "gemini-flash-latest",
-    "gemini-2.5-flash",
-    "gemini-2.5-pro",
-    "gemini-pro-latest"
+    "gemini-3.7-flash",
+    "gemini-3.6-flash",
+    "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
 ]
-
 def try_generate(api_key, prompt):
     """Arbeitet die Modellliste in Schleifen ab, bis ein Modell antwortet."""
     headers = {
