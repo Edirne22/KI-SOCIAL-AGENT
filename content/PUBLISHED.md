@@ -7,5 +7,5 @@ Text: Mein erster Beitrag im neuen Format 11.09.2026! 🏍️ #motorrad #bikerli
 Text: Toprak Razgatlıoğlu greift in Misano 2026 an – wer drückt ihm die Daumen?
 Bild: auto-image-8274.jpg
 
-## Story [GEPOSTET 2026-09-11 10:42] 
-Bild: Toprak.jpg
+## Story
+video: test-agnes-video.mp4
