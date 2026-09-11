@@ -29,13 +29,12 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: python generate_agnes_media.py
 
-      - name: Commit media and PUBLISHED.md
+            - name: Commit media and PUBLISHED.md
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/PUBLISHED.md
-          git add auto-image-*.jpg 2>/dev/null || true
-          git add auto-image-*.mp4 2>/dev/null || true
+          git add -A
           git commit -m "Auto: Medien für offene Beiträge generiert" || echo "Keine Änderungen"
+          git pull --rebase origin main
           git push
           
