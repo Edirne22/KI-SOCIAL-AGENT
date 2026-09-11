@@ -17,8 +17,10 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          curl -s "https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}" > debug_models.json
-          echo "Antwort gespeichert."
+          curl --fail-with-body --silent --show-error \
+            -H "x-goog-api-key: ${GEMINI_API_KEY}" \
+            "https://generativelanguage.googleapis.com/v1beta/models" > debug_models.json
+          echo "Modellliste gespeichert."
 
       - name: Commit result
         run: |
