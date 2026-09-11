@@ -9,9 +9,8 @@ PEXELS_API = "https://api.pexels.com/v1/search"
 # Bildmodelle von Gemini – BESTE zuerst
 IMAGE_MODELS = [
     "gemini-3-pro-image",
-    "nano-banana-pro-preview",
     "gemini-3.1-flash-image",
-    "gemini-2.5-flash-image",
+    "gemini-3.1-flash-lite-image",
 ]
 
 # Negativ-Anweisungen gegen Harley/Cruiser/Chopper
@@ -167,10 +166,15 @@ def generate_gemini_image(api_key, prompt):
         "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]}
     }
 
+    headers = {
+        "Content-Type": "application/json",
+        "x-goog-api-key": api_key,
+    }
+
     for model in IMAGE_MODELS:
-        url = f"{GEMINI_API}/models/{model}:generateContent?key={api_key}"
+        url = f"{GEMINI_API}/models/{model}:generateContent"
         try:
-            r = requests.post(url, json=data, timeout=180)
+            r = requests.post(url, headers=headers, json=data, timeout=180)
             print(f"{model}: Status {r.status_code}")
             if r.status_code == 200:
                 result = r.json()
