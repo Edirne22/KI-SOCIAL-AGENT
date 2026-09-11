@@ -41,8 +41,14 @@ def try_generate(api_key, prompt):
                     print(f"Erfolg mit Modell: {model}")
                     return text_clean.strip()
                 else:
+                    if response.status_code in (401, 403):
+                        raise RuntimeError(
+                            f"Gemini-Authentifizierung oder -Berechtigung fehlgeschlagen (HTTP {response.status_code})."
+                        )
                     print(f"Modell {model}: Status {response.status_code} – probiere nächstes...")
                     time.sleep(pause_between_models)
+            except RuntimeError:
+                raise
             except Exception as e:
                 print(f"Modell {model}: Fehler – {e}")
                 time.sleep(pause_between_models)
@@ -51,7 +57,7 @@ def try_generate(api_key, prompt):
             print(f"Durchlauf {round_number} beendet – warte {pause_between_rounds} Sekunden...")
             time.sleep(pause_between_rounds)
 
-    return "FEHLER: Kein Modell verfügbar nach mehreren Durchläufen. Bitte später erneut versuchen."
+    raise RuntimeError("Kein Gemini-Modell war nach mehreren Versuchen verfügbar.")
 
 def analyze_ride_with_me():
     api_key = os.environ.get("GEMINI_API_KEY")
