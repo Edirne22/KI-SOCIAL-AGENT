@@ -126,14 +126,78 @@ def acknowledge_through(update_id: int) -> None:
     get_updates(offset=update_id + 1)
 
 
+
+TRACK_HELP = (
+    "Format: track: <Produkt> [max: X €] [min: Y] [netz: Z]\n"
+    "Beispiele:\n• track: Motorradhandschuhe max 50 €\n"
+    "• track: Handyvertrag 80GB D1 max 13 €"
+)
+
+
+def _named_command(text: str, names: tuple[str, ...]) -> str | None:
+    alternatives = "|".join(re.escape(name) for name in names)
+    match = re.match(rf"(?is)^\s*(?:{alternatives})\s*:?\s*(.*)$", text)
+    return match.group(1).strip() if match else None
+
+
+def parse_track_command(text: str) -> tuple[str, str] | None:
+    """Erkennt mobilfreundliche Track-Varianten ohne die Produktschreibweise zu verändern."""
+    value = _named_command(text, ("track",))
+    if value is None:
+        return None
+    if not value:
+        return "", ""
+
+    separator = re.search(r"[|,(]", value)
+    product_part = value[:separator.start()] if separator else value
+    criteria_part = value[separator.end():].rstrip(")") if separator else ""
+
+    patterns = (
+        ("max", re.compile(r"(?i)\b(?:max|bis|unter)\s*:?\s*(\d+(?:[.,]\d+)?)\s*€?")),
+        ("min", re.compile(r"(?i)\b(?:min|mindestens)\s*:?\s*(\d+(?:[.,]\d+)?)\s*(GB)?\b")),
+        ("netz", re.compile(r"(?i)\bnetz\s*:?\s*(D1|D2|O2)\b")),
+        ("netz", re.compile(r"(?i)\b(D1|D2|O2)\s+netz\b")),
+    )
+    matches = []
+    for label, pattern in patterns:
+        for match in pattern.finditer(value):
+            matches.append((match.start(), match.end(), label, match.group(1), match.group(0)))
+
+    if matches and not separator:
+        first_criterion = min(start for start, *_ in matches)
+        product_part = value[:first_criterion]
+        criteria_part = value[first_criterion:]
+
+    product_name = product_part.strip(" \t,|()")
+    if not product_name:
+        return "", ""
+
+    criteria = []
+    seen = set()
+    criteria_scope = criteria_part or value[len(product_part):]
+    for _, _, label, raw_value, raw_text in matches:
+        if raw_text not in criteria_scope and not separator:
+            continue
+        if label == "max":
+            item = f"max: {raw_value.replace(',', '.')} €"
+        elif label == "min":
+            unit = " GB" if "gb" in raw_text.lower() else ""
+            item = f"min: {raw_value.replace(',', '.')}{unit}"
+        else:
+            item = f"Netz: {raw_value.upper()}"
+        if item not in seen:
+            criteria.append(item)
+            seen.add(item)
+    return product_name, " | ".join(criteria)
+
+
+
 def parse_deal_command(text: str) -> tuple[str, str] | None:
-    lowered = text.strip().lower()
-    for prefix in ("deal:", "suche:"):
-        if lowered.startswith(prefix):
-            return "search", text.strip()[len(prefix):].strip()
-    if lowered.startswith("deal-test:"):
-        return "test", text.strip()[len("deal-test:"):].strip()
-    return None
+    deal_test = _named_command(text, ("deal-test",))
+    if deal_test is not None:
+        return "test", deal_test
+    query = _named_command(text, ("deal", "suche"))
+    return ("search", query) if query is not None else None
 
 
 def main() -> None:
@@ -180,23 +244,26 @@ def main() -> None:
             send_message("📋 Watchlist\n" + active[:3000])
             acknowledge_through(update_id)
             return
-        if lowered_command.startswith("track:"):
-            value = message_text.split(":", 1)[1].strip()
-            name, _, criteria = value.partition("|")
-            send_message(track_product(name, criteria))
-            acknowledge_through(update_id)
-            return
-        if lowered_command == "track":
-            from deal_hunter import LAST_QUERY_FILE
-            if LAST_QUERY_FILE.exists():
-                send_message(track_product(LAST_QUERY_FILE.read_text(encoding="utf-8").strip()))
+        track_command = parse_track_command(message_text)
+        if track_command is not None:
+            name, criteria = track_command
+            if not name:
+                from deal_hunter import LAST_QUERY_FILE
+                if LAST_QUERY_FILE.exists() and lowered_command == "track":
+                    send_message(track_product(LAST_QUERY_FILE.read_text(encoding="utf-8").strip()))
+                else:
+                    send_message(TRACK_HELP)
             else:
-                send_message("Bitte suche zuerst mit deal: <Produkt> oder nutze track: <Produkt> | max: X €.")
+                send_message(track_product(name, criteria))
             acknowledge_through(update_id)
             return
-        for prefix, completed in (("stop:", False), ("erledigt:", True)):
-            if lowered_command.startswith(prefix):
-                send_message(stop_tracking(message_text.split(":", 1)[1].strip(), completed))
+        for names, completed in ((("stop", "beenden"), False), (("erledigt", "gekauft"), True)):
+            product = _named_command(message_text, names)
+            if product is not None:
+                if not product:
+                    send_message("Bitte nenne ein Produkt, zum Beispiel: stop: Motorradhandschuhe")
+                else:
+                    send_message(stop_tracking(product, completed))
                 acknowledge_through(update_id)
                 return
 
