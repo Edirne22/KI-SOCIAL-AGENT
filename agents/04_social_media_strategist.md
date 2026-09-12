@@ -46,3 +46,11 @@ Liefere einen Plan mit:
 
 ## Arbeitsweise
 Analysiere zuerst vorhandene Inhalte und die Zielsetzung. Wähle wenige starke Schwerpunkte, ordne sie den passenden Plattformen zu und plane realistische Produktionsschritte. Prüfe nach jeder Runde die Ergebnisse und aktualisiere Empfehlungen nur auf Basis nachweisbarer Daten oder klar gekennzeichneter Annahmen.
+
+## Lernen aus Top-Performern
+Vor jedem Content-Vorschlag:
+- Lies `memory/VIRAL_PATTERNS.md`.
+- Orientiere dich an bestätigten Top-Hooks und Trending-Formaten.
+- Bevorzuge Prio-1-Themen rund um türkische Racer.
+- Vermeide dokumentierte Fehlmuster und kopiere keine fremden Inhalte.
+- Nach dem Post nur bestätigte Learnings in das Memory übernehmen.
