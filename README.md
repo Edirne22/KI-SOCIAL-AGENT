@@ -23,3 +23,16 @@ Der Morgen-Workflow speichert nur `memory/TELEGRAM_SESSION.md`. Der Empfangs-Wor
 - Teile Bot-Token und Chat-ID nicht; bei Verdacht auf Verlust den Token in BotFather sofort erneuern.
 - Der Bot akzeptiert Freigaben nur aus der als Secret hinterlegten Chat-ID.
 - Eine Telegram-Antwort ist eine Content-Freigabe, kein Auftrag zur automatischen Veröffentlichung.
+
+
+## Inspiration- und Trend-Agenten
+
+Optionale GitHub-Secrets für öffentliche Recherche:
+
+- `APIFY_API_TOKEN` – Apify-Adapter
+- `BRIGHTDATA_API_TOKEN` – Bright-Data-REST-Adapter
+- `CRAWLBASE_TOKEN` – Crawlbase-Adapter
+
+Für Bright Data können später zusätzlich `BRIGHTDATA_FACEBOOK_DATASET_ID` und `BRIGHTDATA_YOUTUBE_DATASET_ID` gesetzt werden. Tokens gehören ausschließlich in GitHub Secrets, niemals in Dateien.
+
+Die Telegram-Kommandos `inspiration`, `race` und `viral` starten getrennte Arbeitsabläufe. `go` gibt ausschließlich einen vorhandenen Rennposter-Entwurf frei; keine dieser Aktionen veröffentlicht automatisch.
