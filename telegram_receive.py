@@ -68,6 +68,21 @@ def parse_approval(text: str) -> list[int] | None:
     return None
 
 
+def _instagram_caption(draft: str) -> str:
+    """Holt nur die Instagram-Caption aus einem vollständigen Content-Entwurf."""
+    match = re.search(
+        r"^Instagram-Caption:\s*\n(.+?)(?=^\s*(?:Facebook-Post|TikTok-Skript|Visuelle Idee|Hashtags Instagram|Hashtags TikTok|Trend-Bezug):|\Z)",
+        draft,
+        re.MULTILINE | re.DOTALL,
+    )
+    return match.group(1).strip() if match else draft.strip()
+
+
+def _published_header(platform: str) -> str:
+    """Ordnet Reel-Entwürfe dem eindeutigen Reel-Publisher zu."""
+    return "Instagram Reel" if "reel" in platform.lower() else platform.strip()
+
+
 def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int], update_id: int) -> None:
     PUBLISHED_FILE.parent.mkdir(parents=True, exist_ok=True)
     existing = PUBLISHED_FILE.read_text(encoding="utf-8") if PUBLISHED_FILE.exists() else "# Freigegebene Beiträge\n"
@@ -76,20 +91,19 @@ def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int],
         print(f"Telegram-Update {update_id} wurde bereits verarbeitet.")
         return
 
-    approved_at = datetime.now().strftime("%Y-%m-%d %H:%M")
     entries = []
     for number in selected:
         post = posts[number]
+        header = _published_header(post["platform"])
         entries.extend(
             [
-                f"## {post['platform']} [FREIGEGEBEN {approved_at}]",
+                f"## {header}",
                 "Status: FREIGEGEBEN",
                 "Freigabe: Telegram",
                 marker,
-                f"Titel: {post['title']}",
-                f"Hook: {post['hook']}",
                 "Text:",
-                post["full_text"],
+                _instagram_caption(post["full_text"]),
+                "Video: auto" if header == "Instagram Reel" else "",
                 "",
             ]
         )
