@@ -2,6 +2,8 @@ import os
 import re
 import time
 import requests
+
+from asset_paths import asset_url
 from datetime import datetime
 
 REPO_RAW = "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/"
@@ -79,7 +81,7 @@ if __name__ == "__main__":
         print("Keine freigegebene Story gefunden.")
         exit(0)
 
-    file_url = REPO_RAW + filename
+    file_url = asset_url(filename, REPO_RAW)
     print(f"Story gefunden ({media_type}): {filename}")
 
     if media_type == "video":
