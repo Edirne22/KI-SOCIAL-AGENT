@@ -2,6 +2,8 @@ import os
 import re
 import time
 import requests
+
+from asset_paths import asset_url
 from datetime import datetime
 
 REPO_RAW = "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/"
@@ -70,7 +72,7 @@ if __name__ == "__main__":
         print("Kein freigegebener Instagram-Beitrag gefunden.")
         exit(0)
 
-    image_url = REPO_RAW + image_file
+    image_url = asset_url(image_file, REPO_RAW)
     print(f"Instagram-Beitrag gefunden – veröffentliche {image_file}...")
 
     creation_id = create_container(ig_user_id, token, image_url, text)
