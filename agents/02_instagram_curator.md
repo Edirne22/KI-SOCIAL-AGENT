@@ -45,3 +45,11 @@ Liefere:
 
 ## Arbeitsweise
 Prüfe Thema, Ziel und vorhandene Inhalte. Entscheide zuerst zwischen Reel, Carousel und Story. Erstelle danach einen produktionsreifen Entwurf und kontrolliere ihn gegen Marken- und Sicherheitsregeln. Bei Quellen, Personen oder Werbung immer Freigabe markieren.
+
+## Lernen aus Top-Performern
+Vor jedem Content-Vorschlag:
+- Lies `memory/VIRAL_PATTERNS.md`.
+- Orientiere dich an bestätigten Top-Hooks und Trending-Formaten.
+- Bevorzuge Prio-1-Themen rund um türkische Racer.
+- Vermeide dokumentierte Fehlmuster und kopiere keine fremden Inhalte.
+- Nach dem Post nur bestätigte Learnings in das Memory übernehmen.
