@@ -44,3 +44,12 @@
 - Eine Freigabe trägt Inhalte mit dem Status `FREIGEGEBEN` in `content/PUBLISHED.md` ein.
 - Der Telegram-Bot veröffentlicht niemals selbst auf sozialen Plattformen und startet keine Publisher-Aktion.
 - Bei fehlenden Secrets, ungültigen Antworten oder unbekannten Chats wird nichts freigegeben.
+
+## Deal-Hunter
+
+- Ausschließlich öffentliche Recherche und öffentlich bekannte Rabattcodes.
+- Kein automatischer Kauf, keine Bestellung und keine Anmeldung ohne ausdrückliche Erlaubnis.
+- Keine Zahlungsdaten speichern oder eingeben.
+- Keine Umgehung von Captchas, Bot-Schutz, Shop-Sperren oder technischen Schutzmaßnahmen.
+- Coupon-Tests erfordern eine Händler-Allowlist und ein dauerhaft gespeichertes Rate-Limit.
+- Bei fehlender Quelle, Shop-Sperre oder Unsicherheit: überspringen und Bülent informieren.
