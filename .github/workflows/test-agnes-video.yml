@@ -4,39 +4,29 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   test-video:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-
-      - name: Install dependencies
-        run: pip install requests
-
+      - run: pip install requests
       - name: Generate 9:16 Agnes test video
         env:
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
         run: |
           python - <<'PY'
           from test_agnes import test_video
-
           if not test_video():
               raise SystemExit("Agnes-Video konnte nicht erzeugt werden.")
           PY
-
-      - name: Commit portrait test video
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add test-agnes-video-portrait.mp4
-          git commit -m "Test: Agnes portrait video output" || echo "Keine Änderungen"
-          git pull --rebase origin main
-          git push
+      - name: Test-Video als Artifact sichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: agnes-test-video-portrait
+          path: assets/test/test-video-portrait.mp4
+          if-no-files-found: error
