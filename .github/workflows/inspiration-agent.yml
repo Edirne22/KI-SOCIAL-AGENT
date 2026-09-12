@@ -17,6 +17,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           APIFY_API_TOKEN: ${{ secrets.APIFY_API_TOKEN }}
           BRIGHTDATA_API_TOKEN: ${{ secrets.BRIGHTDATA_API_TOKEN }}
+          BRIGHTDATA_ZONE: ${{ secrets.BRIGHTDATA_ZONE }}
           CRAWLBASE_TOKEN: ${{ secrets.CRAWLBASE_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -28,6 +29,7 @@ jobs:
           git add memory/INSPIRATION_IDEAS.md 2>/dev/null || true
           git add memory/INSPIRATION_APIFY.md 2>/dev/null || true
           git add memory/INSPIRATION_BRIGHTDATA.md 2>/dev/null || true
+          git add memory/BRIGHTDATA_DEBUG.md 2>/dev/null || true
           git add memory/INSPIRATION_CRAWLBASE.md 2>/dev/null || true
           git add memory/INSPIRATION_LOG.md 2>/dev/null || true
           git add memory/INSPIRATION_ARCHIVE/ 2>/dev/null || true
