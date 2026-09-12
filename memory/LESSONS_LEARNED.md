@@ -28,3 +28,5 @@ Was der Agent aus Fehlern und Erfahrungen gelernt hat.
 - Bei Fehler immer Log im betroffenen Schritt prüfen
 
 - 2026-09-12: Viral-, Funnel- und Experiment-Learning aktualisiert.
+
+- 2026-09-12: Viral-, Funnel- und Experiment-Learning aktualisiert.
