@@ -20,7 +20,7 @@ Deutsch-türkische Motorrad- und Reiseinteressierte, die Inspiration, Tourenmome
 - `memory/POST_HISTORY.md` und `memory/` für Erfahrungen und bereits behandelte Themen.
 - `content/CONTENT_PLAN.md` und `content/` für den aktuellen Redaktionsplan.
 - `profile/MEIN_SOCIAL_MEDIA_PROFIL.md`.
-- `profile/content/rules/BRAND_RULES.md` und `profile/content/rules/SAFETY_RULES.md`.
+- `rules/BRAND_RULES.md` und `rules/SAFETY_RULES.md`.
 
 ## No-Gos
 - Keine automatischen Posts, Kommentare oder Direktnachrichten.
