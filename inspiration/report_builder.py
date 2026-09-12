@@ -1,13 +1,41 @@
-"""Erstellt einen kompakten, quellenbewussten Inspirationsreport."""
+"""Erstellt strukturierte, quellengebundene Inspirationsreports ohne erfundene Fakten."""
 from __future__ import annotations
+
+import re
 from datetime import datetime
-from pathlib import Path
-from .search_config import SEARCH_PRIORITIES
-MEM=Path("memory")
-def build(provider_reports:dict[str,str])->str:
- lines=["# Inspiration-Ideen",f"Stand: {datetime.now():%Y-%m-%d %H:%M}","","## Priorisierte Themen"]
- for priority,terms in SEARCH_PRIORITIES[:5]: lines.append(f"- {priority}: {', '.join(terms[:3])}")
- lines += ["","## Quellenstatus"]
- for name,report in provider_reports.items(): lines.append(f"- {name}: {'Daten vorhanden' if 'Nicht konfiguriert' not in report else 'nicht konfiguriert'}")
- lines += ["","## Content-Ideen für Bülent","1. Türkischer Racer: aktueller, belegter Anlass mit persönlichem Community-Hook.","2. Rennwochenende: Vorschau mit praktischer Frage an die Community.","3. Motorrad & KI: nützlicher Tipp statt reines Trend-Kopieren.","","Hinweis: Preise, Fakten und Meldungen vor Veröffentlichung an den Originalquellen prüfen."]
- return "\n".join(lines)+"\n"
+
+
+def evidence_count(reports: dict[str, str]) -> int:
+    return sum(len(re.findall(r"(?m)^### Datensatz \d+", report)) for report in reports.values())
+
+
+def build_evidence_text(reports: dict[str, str], limit_per_provider: int = 18000) -> str:
+    sections = []
+    for name, report in reports.items():
+        source = report.strip()
+        if len(source) > limit_per_provider:
+            source = source[:limit_per_provider] + "\n[Weitere Rohdaten wegen Prompt-Limit ausgelassen.]"
+        sections.append(f"## Datenquelle: {name}\n{source}")
+    return "\n\n".join(sections)
+
+
+def build(provider_reports: dict[str, str]) -> str:
+    count = evidence_count(provider_reports)
+    lines = [
+        "# Inspiration-Ideen",
+        f"Stand: {datetime.now():%Y-%m-%d %H:%M}",
+        "",
+        "## Datenstatus",
+        f"- Konkrete öffentliche Datensätze: {count}",
+    ]
+    for name, report in provider_reports.items():
+        if re.search(r"(?m)^### Datensatz \d+", report):
+            lines.append(f"- {name}: konkrete Daten vorhanden")
+        else:
+            lines.append(f"- {name}: keine konkreten Daten")
+    lines += ["", "## Report"]
+    if count == 0:
+        lines.append("Report eingeschränkt – keine konkreten öffentlichen Themen, URLs oder Engagement-Zahlen verfügbar. Es werden keine Fakten oder Ideen mit erfundenen Quellen ausgegeben.")
+    else:
+        lines.append("Strukturierte Rohdaten liegen vor. Für die detaillierte Auswertung ist Gemini-Zusammenfassung vorgesehen.")
+    return "\n".join(lines) + "\n"
