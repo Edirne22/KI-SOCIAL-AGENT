@@ -1,0 +1,31 @@
+name: Growth Report
+
+on:
+  schedule:
+    - cron: "0 17 * * 0" # Sonntag 19:00 deutscher Sommerzeit
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests
+      - env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python growth_report.py
+      - name: Commit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add memory/GROWTH_LOG.md 2>/dev/null || true
+          git commit -m "Auto: Wöchentlicher Growth-Report" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
