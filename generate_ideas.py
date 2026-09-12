@@ -4,6 +4,8 @@ import time
 import requests
 from datetime import datetime
 
+from llm_client import get_agent_context
+
 MODEL_LIST = [
     "gemini-3.8-flash",
     "gemini-3.7-flash",
@@ -25,8 +27,8 @@ KNOWLEDGE_FILES = [
     "content/TURKISH_RACERS.md",
     "content/MOTOGP_CALENDAR.md",
     "content/TURKISH_BIKER_COMMUNITY.md",
-    "profile/content/rules/BRAND_RULES.md",
-    "profile/content/rules/SAFETY_RULES.md",
+    "rules/BRAND_RULES.md",
+    "rules/SAFETY_RULES.md",
 ]
 
 def read_file(path, max_chars=2500):
@@ -124,6 +126,10 @@ def generate_content_plan():
     knowledge = read_all()
     knowledge_part = f"Berücksichtige folgende Wissens- und Gedächtnisquellen:\n{knowledge}\n" if knowledge else ""
 
+    # Agenten-Kontext: ergänzt Gedächtnis und Wissensdateien, ohne Veröffentlichungen auszulösen.
+    agent_context = get_agent_context(["01_content_creator", "04_social_media_strategist"])
+    agent_context_part = f"Beachte zusätzlich diesen Agenten-Kontext:\n{agent_context}\n" if agent_context else ""
+
     prompt = f"""Erstelle 3 komplette Content-Ideen für einen Social-Media-Agenten.
 Themen: Motorrad, Reisen, Lifestyle, Technik, KI, MotoGP.
 Zielgruppe: 18-65 Jahre, deutsch und türkisch, Motorradfahrer und Reisefreudige.
@@ -131,6 +137,7 @@ Stil: locker, per Du, wenige Emojis, kurze Captions.
 Wichtig: Gib keine Zugangsdaten, Passwörter oder API-Schlüssel aus.
 
 {knowledge_part}
+{agent_context_part}
 
 BESONDERE PRIORITÄTEN:
 1. Wenn am kommenden Wochenende ein MotoGP-Rennen stattfindet (siehe MotoGP-Kalender),
