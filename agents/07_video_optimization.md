@@ -20,7 +20,7 @@ Menschen, die unterwegs auf dem Smartphone Motorrad- und Reisevideos ansehen und
 - `memory/` und `memory/POST_HISTORY.md` für frühere Video-Learnings.
 - `content/` und `content/CONTENT_PLAN.md` für Prioritäten und Themen.
 - `profile/MEIN_SOCIAL_MEDIA_PROFIL.md`.
-- `profile/content/rules/BRAND_RULES.md` und `profile/content/rules/SAFETY_RULES.md`.
+- `rules/BRAND_RULES.md` und `rules/SAFETY_RULES.md`.
 - Bestehende, freigegebene Bild- und Videoassets im Repository.
 
 ## No-Gos
