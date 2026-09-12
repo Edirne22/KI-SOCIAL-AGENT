@@ -1,8 +1,8 @@
 """Bright-Data-Scraper-Adapter für fünf öffentliche Inspirationsquellen.
 
-Die Endpoint- und Input-Formate entsprechen den im Projekt dokumentierten
-Dashboard-Beispielen. Dieser Adapter rät nicht: Liefert ein synchroner Aufruf
-nur eine Job-ID, wird das diagnostiziert und nicht automatisch gepollt.
+Facebook, YouTube und TikTok werden über die von Bright Data gelieferte
+Snapshot-ID abgeholt, aber ausschließlich nach einer HTTP-202-Antwort.
+Instagram und X werden direkt ausgewertet.
 """
 from __future__ import annotations
 
@@ -21,65 +21,46 @@ OUT = Path("memory/INSPIRATION_BRIGHTDATA.md")
 DEBUG = Path("memory/BRIGHTDATA_DEBUG.md")
 ALERT_STATE = Path("memory/BRIGHTDATA_ALERT_STATE.md")
 API_ROOT = "https://api.brightdata.com/datasets/v3/scrape"
+SNAPSHOT_ROOT = "https://api.brightdata.com/datasets/v3"
 TZ = ZoneInfo("Europe/Berlin")
 RETRY_DELAYS = (30, 60, 120)
+ASYNC_PLATFORMS = {"facebook", "youtube", "tiktok"}
 
 PLATFORMS = {
     "instagram": {
-        "label": "Instagram",
-        "dataset": "gd_lk5ns7kz21pck8jpis",
+        "label": "Instagram", "dataset": "gd_lk5ns7kz21pck8jpis",
         "endpoint": f"{API_ROOT}?dataset_id=gd_lk5ns7kz21pck8jpis&notify=false&include_errors=true&type=discover_new&discover_by=url",
-        "date_format": "%m-%d-%Y",
-        "text": ("description",),
-        "date": ("date_posted",),
-        "url": ("url",),
+        "date_format": "%m-%d-%Y", "text": ("description",), "date": ("date_posted",), "url": ("url",),
         "engagement": (("Likes", ("likes",)), ("Kommentare", ("num_comments",))),
     },
     "facebook": {
-        "label": "Facebook",
-        "dataset": "gd_lkaxegm826bjpoo9m5",
+        "label": "Facebook", "dataset": "gd_lkaxegm826bjpoo9m5",
         "endpoint": f"{API_ROOT}?dataset_id=gd_lkaxegm826bjpoo9m5&notify=false&include_errors=true",
-        "date_format": "%m-%d-%Y",
-        "text": ("content",),
-        "date": ("date_posted",),
-        "url": ("url",),
+        "date_format": "%m-%d-%Y", "text": ("content",), "date": ("date_posted",), "url": ("url",),
         "engagement": (("Likes", ("num_likes_type",)), ("Kommentare", ("num_comments",)), ("Shares", ("num_shares",))),
     },
     "youtube": {
-        "label": "YouTube",
-        "dataset": "gd_lk56epmy2i5g7lzu0k",
+        "label": "YouTube", "dataset": "gd_lk56epmy2i5g7lzu0k",
         "endpoint": f"{API_ROOT}?dataset_id=gd_lk56epmy2i5g7lzu0k&notify=false&include_errors=true&type=discover_new&discover_by=keyword",
-        "date_format": "%m-%d-%Y",
-        "text": ("title",),
-        "date": ("date_posted",),
-        "url": ("url",),
+        "date_format": "%m-%d-%Y", "text": ("title",), "date": ("date_posted",), "url": ("url",),
         "engagement": (("Likes", ("likes",)), ("Kommentare", ("num_comments",)), ("Views", ("view_count",))),
     },
     "tiktok": {
-        "label": "TikTok",
-        "dataset": "gd_m7n5ixlw1gc4no56kx",
+        "label": "TikTok", "dataset": "gd_m7n5ixlw1gc4no56kx",
         "endpoint": f"{API_ROOT}?dataset_id=gd_m7n5ixlw1gc4no56kx&notify=false&include_errors=true",
-        "date_format": None,
-        "text": ("description",),
-        "date": ("date_posted",),
-        "url": ("url",),
+        "date_format": None, "text": ("description",), "date": ("date_posted",), "url": ("url",),
         "engagement": (("Likes", ("likes",)), ("Kommentare", ("num_comments",))),
     },
     "x": {
-        "label": "X",
-        "dataset": "gd_lwxkxvnf1cynvib9co",
+        "label": "X", "dataset": "gd_lwxkxvnf1cynvib9co",
         "endpoint": f"{API_ROOT}?dataset_id=gd_lwxkxvnf1cynvib9co&notify=false&include_errors=true&type=discover_new&discover_by=profile_url",
-        "date_format": "%Y-%m-%d",
-        "text": ("text",),
-        "date": ("date_posted",),
-        "url": ("url",),
+        "date_format": "%Y-%m-%d", "text": ("text",), "date": ("date_posted",), "url": ("url",),
         "engagement": (("Likes", ("likes",)), ("Antworten", ("replies",)), ("Retweets", ("retweets",))),
     },
 }
 
 
 def _dates() -> tuple[date, date]:
-    """Sieben abgeschlossene Kalendertage in der Zeitzone Europe/Berlin."""
     yesterday = datetime.now(TZ).date() - timedelta(days=1)
     return yesterday - timedelta(days=6), yesterday
 
@@ -88,7 +69,8 @@ def _redact(value: str, token: str) -> str:
     return (value or "").replace(token or "", "[REDACTED]")[:500]
 
 
-def _debug(platform: str, endpoint: str, status: str, records: int, error: str, response: str, token: str, first_url: str = "") -> None:
+def _debug(platform: str, endpoint: str, status: str, records: int, error: str, response: str, token: str, extra: dict | None = None, first_url: str = "") -> None:
+    """Schreibt einen begrenzten, von Zugangsdaten freien Plattform-Eintrag."""
     DEBUG.parent.mkdir(parents=True, exist_ok=True)
     old = DEBUG.read_text(encoding="utf-8") if DEBUG.exists() else "# Bright Data Debug\n"
     lines = [
@@ -98,19 +80,21 @@ def _debug(platform: str, endpoint: str, status: str, records: int, error: str, 
         f"- Records: {records}",
         f"- Fehler: {error or 'keine'}",
     ]
+    if extra:
+        for key, value in extra.items():
+            lines.append(f"- {key}: {value}")
     if first_url:
         lines.append(f"- Erste URL: {first_url}")
     lines.append(f"- Antwort (max. 500 Zeichen): {_redact(response, token)}")
-    DEBUG.write_text(old.rstrip() + "\n".join(lines) + "\n", encoding="utf-8")
+    entry = "\n".join(lines)
+    DEBUG.write_text(old.rstrip() + "\n" + entry[:2000] + "\n", encoding="utf-8")
 
 
 def _value(record: dict, keys: tuple[str, ...]) -> str:
     for key in keys:
         value = record.get(key)
         if value not in (None, "", [], {}):
-            if isinstance(value, (dict, list)):
-                return json.dumps(value, ensure_ascii=False)[:300]
-            return str(value)
+            return json.dumps(value, ensure_ascii=False)[:300] if isinstance(value, (dict, list)) else str(value)
     return "nicht verfügbar"
 
 
@@ -163,7 +147,7 @@ def _prepare_inputs(platform: str, inputs: list[dict]) -> tuple[list[dict] | Non
     for item in inputs:
         value = dict(item)
         if platform == "tiktok":
-            keyword = value.pop("keyword", "").strip()
+            keyword = str(value.pop("keyword", "")).strip()
             if not keyword:
                 return None, "TikTok-Input benötigt keyword"
             value["url"] = f"https://www.tiktok.com/search?lang=en&q={quote_plus(keyword)}&t={int(time.time() * 1000)}"
@@ -205,6 +189,53 @@ def _post_with_retry(endpoint: str, headers: dict, payload: dict) -> tuple[reque
     return None, "unbekannter Netzwerkfehler"
 
 
+def _poll_snapshot(snapshot_id: str, headers: dict, token: str) -> tuple[list[dict], str, dict, str]:
+    """Pollt maximal drei Minuten, alle zehn Sekunden, und lädt dann den Snapshot."""
+    started = time.monotonic()
+    attempts = 0
+    progress_endpoint = f"{SNAPSHOT_ROOT}/progress/{snapshot_id}"
+    last_status = "unbekannt"
+    last_response = ""
+    while time.monotonic() - started <= 180:
+        attempts += 1
+        try:
+            progress = requests.get(progress_endpoint, headers=headers, timeout=30)
+        except requests.Timeout:
+            last_status = "Timeout"
+            time.sleep(10)
+            continue
+        except requests.RequestException as error:
+            return [], type(error).__name__, {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": type(error).__name__, "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
+        last_response = progress.text
+        try:
+            payload = progress.json()
+        except ValueError:
+            payload = {}
+        last_status = str(payload.get("status", "unbekannt"))
+        if progress.status_code != 200:
+            return [], f"Polling HTTP {progress.status_code}", {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": last_status, "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
+        if last_status == "failed":
+            return [], _error_text(payload) or "Snapshot fehlgeschlagen", {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": "failed", "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
+        if last_status == "ready":
+            snapshot_endpoint = f"{SNAPSHOT_ROOT}/snapshot/{snapshot_id}"
+            try:
+                snapshot = requests.get(snapshot_endpoint, headers=headers, timeout=60)
+            except requests.RequestException as error:
+                return [], type(error).__name__, {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": "ready", "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
+            last_response = snapshot.text
+            try:
+                data = snapshot.json()
+            except ValueError:
+                data = {}
+            records = _records(data)
+            error = _error_text(data)
+            if snapshot.status_code != 200:
+                error = error or f"Snapshot HTTP {snapshot.status_code}"
+            return records, error, {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": "ready", "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
+        time.sleep(10)
+    return [], "Snapshot-Timeout nach 3 Minuten", {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": last_status, "Wartezeit": "180 Sekunden"}, last_response
+
+
 def _parse_posted_date(value: str) -> date | None:
     clean = value.strip().replace("Z", "+00:00")
     try:
@@ -217,18 +248,11 @@ def _parse_posted_date(value: str) -> date | None:
 
 
 def _filter_tiktok(records: list[dict]) -> tuple[list[dict], str]:
-    dated: list[dict] = []
-    unknown = False
     start, end = _dates()
-    for record in records:
-        posted = _parse_posted_date(str(record.get("date_posted", "")))
-        if posted is None:
-            unknown = True
-        elif start <= posted <= end:
-            dated.append(record)
-    if unknown:
+    dated = [_parse_posted_date(str(record.get("date_posted", ""))) for record in records]
+    if any(value is None for value in dated):
         return records, "Zeitfilter für TikTok nicht verfügbar – zeige aktuelle Suchergebnisse."
-    return dated, ""
+    return [record for record, posted in zip(records, dated) if start <= posted <= end], ""
 
 
 def _format_records(platform: str, records: list[dict], note: str = "") -> list[str]:
@@ -237,20 +261,13 @@ def _format_records(platform: str, records: list[dict], note: str = "") -> list[
     if note:
         lines.append(f"- Hinweis: {note}")
     for index, record in enumerate(records, 1):
-        lines += [
-            f"### Datensatz {index}",
-            f"- Titel: {_value(record, config['text'])[:500]}",
-            f"- Datum: {_value(record, config['date'])}",
-            f"- URL: {_value(record, config['url'])}",
-        ]
-        for label, keys in config["engagement"]:
-            lines.append(f"- {label}: {_value(record, keys)}")
+        lines += [f"### Datensatz {index}", f"- Titel: {_value(record, config['text'])[:500]}", f"- Datum: {_value(record, config['date'])}", f"- URL: {_value(record, config['url'])}"]
+        lines.extend(f"- {label}: {_value(record, keys)}" for label, keys in config["engagement"])
     return lines
 
 
 def _send_token_alert_once(status: int) -> None:
-    today = datetime.now(TZ).date().isoformat()
-    signature = f"{today}|{status}"
+    signature = f"{datetime.now(TZ).date().isoformat()}|{status}"
     previous = ALERT_STATE.read_text(encoding="utf-8") if ALERT_STATE.exists() else ""
     if signature in previous:
         return
@@ -261,6 +278,14 @@ def _send_token_alert_once(status: int) -> None:
         send_message(f"Bright Data: HTTP {status}. Bitte API-Token bzw. Zugriffsrechte prüfen.")
     except Exception:
         pass
+
+
+def _input_hint(platform: str, error: str) -> str:
+    if platform == "instagram" and error.startswith("HTTP 400"):
+        return "Instagram: Input-URL ungültig. Nur Profil-URLs erlaubt, z. B. https://www.instagram.com/motogp/; keine Hashtag-URL wie /explore/tags/."
+    if platform == "x" and "dead_page" in error:
+        return "X: Profil nicht gefunden oder keine Posts im Zeitraum. Username, Privatsphäre und Sperrung prüfen."
+    return error
 
 
 def _run_platform(platform: str, token: str) -> tuple[list[dict], str, str, str]:
@@ -276,24 +301,42 @@ def _run_platform(platform: str, token: str) -> tuple[list[dict], str, str, str]
     if response is None:
         _debug(platform, endpoint, request_error, 0, request_error, "", token)
         return [], request_error, request_error, ""
+
     try:
         payload = response.json()
     except ValueError:
         payload = {}
     records = _records(payload)
     error = _error_text(payload)
+    extra: dict = {}
+    response_text = response.text
+    status = str(response.status_code)
+
     if response.status_code in (401, 403):
         _send_token_alert_once(response.status_code)
-    if response.status_code == 200 and isinstance(payload, dict) and (payload.get("snapshot_id") or payload.get("id")) and not records:
+    if response.status_code == 202 and platform in ASYNC_PLATFORMS:
+        snapshot_id = payload.get("snapshot_id") if isinstance(payload, dict) else None
+        if not snapshot_id:
+            error = error or "HTTP 202 ohne Snapshot-ID"
+        else:
+            records, poll_error, extra, response_text = _poll_snapshot(str(snapshot_id), headers, token)
+            error = poll_error
+            status = "202 (asynchron)"
+    elif response.status_code == 202:
+        error = error or "Unerwartetes asynchrones Ergebnis für synchronen Scraper"
+    elif response.status_code != 200:
+        error = error or f"HTTP {response.status_code}"
+    elif isinstance(payload, dict) and (payload.get("snapshot_id") or payload.get("id")) and not records:
         error = "Synchroner Aufruf lieferte nur eine Snapshot-ID – Endpoint laut Dashboard-Beispiel prüfen. Kein automatisches Polling."
-    if response.status_code != 200 and not error:
-        error = f"HTTP {response.status_code}"
-    note = ""
-    if platform == "tiktok" and response.status_code == 200:
+
+    if platform == "tiktok" and response.status_code in (200, 202) and not error:
         records, note = _filter_tiktok(records)
+    else:
+        note = ""
+    error = _input_hint(platform, error)
     first_url = _value(records[0], PLATFORMS[platform]["url"]) if records else ""
-    _debug(platform, endpoint, str(response.status_code), len(records), error, response.text, token, first_url)
-    return records, str(response.status_code), error, note
+    _debug(platform, endpoint, status, len(records), error, response_text, token, extra, first_url)
+    return records, status, error, note
 
 
 def run() -> str:
@@ -314,16 +357,14 @@ def run() -> str:
                 lines.append(f"- Status: nicht verfügbar ({error})")
                 statuses.append(f"- {config['label']}: nicht verfügbar ({status})")
             elif not records:
-                message = "Keine aktuellen Posts in den letzten 7 Tagen." if platform != "tiktok" else (note or "Keine aktuellen Treffer.")
+                message = "Keine Daten im Zeitraum." if platform != "tiktok" else (note or "Keine aktuellen Treffer.")
                 lines.append(f"- Status: {message}")
                 statuses.append(f"- {config['label']}: 0 Records")
             else:
                 lines.append(f"- Status: {len(records)} Records verfügbar")
-                extra = " (Zeitfilter nicht verfügbar)" if note else ""
-                statuses.append(f"- {config['label']}: {len(records)} Records verfügbar{extra}")
+                statuses.append(f"- {config['label']}: {len(records)} Records verfügbar")
             lines.append("")
         lines += ["## Quellen", *statuses]
-
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
     return OUT.read_text(encoding="utf-8")
