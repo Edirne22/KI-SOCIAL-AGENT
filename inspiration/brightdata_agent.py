@@ -53,8 +53,8 @@ PLATFORMS = {
     "tiktok": {
         "label": "TikTok", "dataset": "gd_m7n5ixlw1gc4no56kx",
         "endpoint": f"{API_ROOT}?dataset_id=gd_m7n5ixlw1gc4no56kx&notify=false&include_errors=true",
-        "date_format": None, "text": ("description",), "date": ("date_posted",), "url": ("url",),
-        "engagement": (("Likes", ("likes",)), ("Kommentare", ("num_comments",))),
+        "date_format": None, "text": ("description",), "date": ("date_posted", "create_time"), "url": ("url",),
+        "engagement": (("Likes", ("likes", "digg_count")), ("Kommentare", ("num_comments", "comment_count")), ("Shares", ("share_count",)), ("Views", ("play_count",))),
     },
     "x": {
         "label": "X", "dataset": "gd_lwxkxvnf1cynvib9co",
@@ -116,9 +116,10 @@ def _records(payload: object) -> list[dict]:
     return []
 
 
-def _x_ndjson_records(text: str) -> list[dict]:
-    """Liest X-Antworten, die als zeilengetrenntes JSON geliefert werden."""
+def _ndjson_records(text: str) -> list[dict]:
+    """Liest zeilengetrennte JSON-Antworten und überspringt reine Fehlerzeilen."""
     records: list[dict] = []
+    data_fields = ("id", "description", "content", "title", "text", "date_posted", "create_time")
     for line in text.splitlines():
         if not line.strip():
             continue
@@ -126,7 +127,12 @@ def _x_ndjson_records(text: str) -> list[dict]:
             item = json.loads(line)
         except json.JSONDecodeError:
             continue
-        records.extend(_records(item))
+        candidates = _records(item)
+        for candidate in candidates:
+            has_data = any(candidate.get(field) not in (None, "") for field in data_fields)
+            only_error = ("error" in candidate or "error_code" in candidate) and not has_data
+            if has_data and not only_error:
+                records.append(candidate)
     return records
 
 
@@ -251,6 +257,8 @@ def _poll_snapshot(snapshot_id: str, headers: dict, timeout_seconds: int, interv
             except ValueError:
                 data = {}
             records = _records(data)
+            if not records:
+                records = _ndjson_records(last_response)
             error = _error_text(data)
             if snapshot.status_code != 200:
                 error = error or f"Snapshot HTTP {snapshot.status_code}"
@@ -332,7 +340,7 @@ def _run_platform(platform: str, token: str) -> tuple[list[dict], str, str, str]
         payload = {}
     records = _records(payload)
     if platform == "x" and not records:
-        records = _x_ndjson_records(response.text)
+        records = _ndjson_records(response.text)
     error = _error_text(payload)
     extra: dict = {"Body-Länge": f"{len(response.text)} Zeichen"}
     response_text = response.text
