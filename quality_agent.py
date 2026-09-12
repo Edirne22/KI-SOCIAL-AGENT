@@ -108,7 +108,7 @@ def check_gemini() -> list[dict[str, str]]:
         return [_result("OK", "Gemini", "Letzte Zusammenfassung war erfolgreich.")]
     status = re.search(r"- HTTP-Status: (.+)", latest)
     detail = status.group(1).strip() if status else "unbekannt"
-    return [_result("WARNUNG", "Gemini", f"Letzte Zusammenfassung nicht erfolgreich: {detail}."))
+    return [_result("WARNUNG", "Gemini", f"Letzte Zusammenfassung nicht erfolgreich: {detail}.")]
 
 
 def check_secret_hygiene() -> list[dict[str, str]]:
