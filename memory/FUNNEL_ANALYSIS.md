@@ -1,11 +1,14 @@
 # Conversion-Funnel
 
+Stand: 2026-09-12 13:57
+
 ## Letzte 7 Tage
 
-- Reichweite: nicht verfügbar
+- Reichweite: 0
+- Engagement: 0
 - Engagement-Rate: nicht verfügbar
-- Profilbesuche: nicht verfügbar
-- Neue Follower: nicht verfügbar
+- Profilbesuche: nicht verfügbar (Instagram-/Facebook-Insights liefern Profilbesuche und neue Follower derzeit nicht)
+- Neue Follower: nicht verfügbar (Instagram-/Facebook-Insights liefern Profilbesuche und neue Follower derzeit nicht)
 
 ## Conversion-Rates
 
@@ -16,4 +19,4 @@
 
 ## Größter Hebel
 
-- Noch nicht genügend vollständige Daten. Insights werden nicht geschätzt oder erfunden.
+- Erst weitere echte Post-Daten sammeln; es werden keine Conversion-Werte geschätzt.

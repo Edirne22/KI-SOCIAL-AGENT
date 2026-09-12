@@ -26,3 +26,5 @@ Was der Agent aus Fehlern und Erfahrungen gelernt hat.
 - Workflow-Dateien ohne Doppelpunkt am Dateinamen-Ende
 - Nach jedem Update: 30 Sek. warten, dann Actions neu laden
 - Bei Fehler immer Log im betroffenen Schritt prüfen
+
+- 2026-09-12: Viral-, Funnel- und Experiment-Learning aktualisiert.

@@ -1,11 +1,10 @@
 # Wettbewerber-Tracking
 
-## Status
+Stand: 2026-09-12 13:57
 
-Noch keine konkreten öffentlichen Vergleichs-Accounts konfiguriert. Der Agent bewertet ausschließlich öffentliche Recherche-Ergebnisse und kopiert keine Beiträge.
+## Öffentliche Beobachtung
+- Es liegen öffentliche Recherche-Reports vor. Ausgewertet werden nur wiederkehrende Themen, Video-Formate und Interaktionsmuster.
+- Konkrete Account- oder Leistungsbehauptungen werden erst gespeichert, wenn sie in den Reports eindeutig belegt sind.
 
-## Beobachtungsregeln
-
-- Analysiert werden nur Themen, Formate, Hooks und Interaktionsmuster.
-- Keine privaten Daten, kein Umgehen von Plattformregeln.
-- Erkenntnisse dienen der eigenen Adaption, nicht dem Kopieren.
+## Eigene Adaption
+- Keine Beiträge kopieren. Stattdessen eigene deutsch-türkische Motorrad- und Reiseerlebnisse mit klarer Haltung, Route oder Frage entwickeln.
