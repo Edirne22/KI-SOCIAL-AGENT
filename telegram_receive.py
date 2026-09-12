@@ -209,7 +209,7 @@ def main() -> None:
                 else:
                     send_message("Ich recherchiere – das kann ein bis zwei Minuten dauern.")
                     try:
-                        answer = compact_for_telegram(search_deal(value))
+                        answer = compact_for_telegram(search_deal(value, status_callback=send_message))
                         if get_auto_track():
                             answer += "\n\n✅ Wird automatisch beobachtet.\n" + track_product(value)
                         else:
