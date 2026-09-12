@@ -258,6 +258,42 @@ def create_carousel_draft(topic: str) -> str:
     return "Karussell-Entwurf erstellt. Drei Bilder werden durch den Mediengenerator erzeugt. Vor der Veröffentlichung ist weiterhin eine Freigabe nötig."
 
 
+
+EXPERIMENTS_FILE = Path("memory/EXPERIMENTS.md")
+FUNNEL_FILE = Path("memory/FUNNEL_ANALYSIS.md")
+GROWTH_FILE = Path("memory/GROWTH_LOG.md")
+COMPETITORS_FILE = Path("memory/COMPETITOR_TRACKING.md")
+
+
+def _memory_preview(path: Path, title: str) -> str:
+    if not path.exists():
+        return f"{title}: Noch keine Daten verfügbar."
+    return (title + "\n" + path.read_text(encoding="utf-8").strip())[:3500]
+
+
+def start_experiment(name: str) -> str:
+    name = re.sub(r"\s+", " ", name).strip()
+    if not name:
+        return "Bitte nutze: experiment: start <Name>"
+    content = EXPERIMENTS_FILE.read_text(encoding="utf-8") if EXPERIMENTS_FILE.exists() else "# A/B-Experimente\n\n## Laufende Experimente\n"
+    if name.lower() in content.lower():
+        return f"Experiment „{name}“ ist bereits dokumentiert."
+    block = (
+        f"\n### {name}\n"
+        f"- Start: {datetime.now():%Y-%m-%d}\n"
+        f"- Hypothese: Bitte vor dem ersten Beitrag konkret ergänzen.\n"
+        f"- Variante A: Bitte ergänzen\n"
+        f"- Variante B: Bitte ergänzen\n"
+        f"- Metrik: Kommentare pro Reichweite\n"
+        f"- Status: läuft\n"
+        f"- Ergebnis: –\n"
+    )
+    marker = "## Laufende Experimente"
+    content = content.replace(marker, marker + block, 1) if marker in content else content.rstrip() + "\n\n" + marker + block
+    EXPERIMENTS_FILE.write_text(content.rstrip() + "\n", encoding="utf-8")
+    return f"✅ Experiment „{name}“ gestartet. Ergänze Hypothese und Varianten vor dem ersten Vergleichspost."
+
+
 def main() -> None:
     allowed_chat_id = get_chat_id()
     updates = get_updates()
@@ -286,6 +322,11 @@ def main() -> None:
 
         auto_track_prefixes = ("auto-track:", "autotrack:", "auto track:")
         carousel_command = text_lower.startswith(("karussell:", "karussell ", "karussell\t"))
+        experiment_start = re.match(r"(?is)^experiment\s*:\s*start\s+(.+)$", message_text)
+        is_experiment = text_lower == "experiment"
+        is_funnel = text_lower == "funnel"
+        is_growth = text_lower == "growth"
+        is_competitors = text_lower in ("competitors", "wettbewerber")
         is_trend_command = text_lower.startswith(("trend:", "trend ", "trend\t"))
         is_track_command = text_lower == "track" or text_lower.startswith(("track:", "track ", "track\t"))
         deal_command = parse_deal_command(message_text)
@@ -306,6 +347,26 @@ def main() -> None:
                     if enabled
                     else "⏸️ Auto-Track aus. Bei deal:-Suche frage ich wieder nach."
                 )
+
+        elif experiment_start:
+            print(f"Empfangen: {message_text} → erkannt als: Experiment starten")
+            send_message(start_experiment(experiment_start.group(1)))
+
+        elif is_experiment:
+            print(f"Empfangen: {message_text} → erkannt als: Experimente")
+            send_message(_memory_preview(EXPERIMENTS_FILE, "🧪 A/B-Experimente"))
+
+        elif is_funnel:
+            print(f"Empfangen: {message_text} → erkannt als: Funnel")
+            send_message(_memory_preview(FUNNEL_FILE, "📊 Conversion-Funnel"))
+
+        elif is_growth:
+            print(f"Empfangen: {message_text} → erkannt als: Growth")
+            send_message(_memory_preview(GROWTH_FILE, "📈 Growth-Log"))
+
+        elif is_competitors:
+            print(f"Empfangen: {message_text} → erkannt als: Wettbewerber")
+            send_message(_memory_preview(COMPETITORS_FILE, "🔎 Wettbewerber-Tracking"))
 
         elif carousel_command:
             print(f"Empfangen: {message_text} → erkannt als: Karussell")
