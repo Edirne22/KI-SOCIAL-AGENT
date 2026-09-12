@@ -5,11 +5,9 @@ Text: Mein erster Beitrag im neuen Format 11.09.2026! 🏍️ #motorrad #bikerli
 
 ## Instagram [GEPOSTET 2026-09-12 10:21 | ID: 18622332598049380]
 Text: Toprak Razgatlıoğlu greift in Misano 2026 an – wer drückt ihm die Daumen?
-Bild: auto-image-8274.jpg
-
+Bild: assets/published/2026-09/2026-09-12-instagram-post-01.jpg
 ## Story [GEPOSTET 2026-09-12 10:39 | ID: 18109171781115264]
-Video: test-agnes-video.mp4
-
+Video: assets/published/2026-09/2026-09-12-story-story-01.mp4
 ## Instagram Reel
 Status: FREIGEGEBEN
 Freigabe: Telegram

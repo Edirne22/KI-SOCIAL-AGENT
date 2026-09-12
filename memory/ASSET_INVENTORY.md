@@ -1,6 +1,6 @@
 # Asset-Inventar
 
-Stand: 2026-09-12 15:45
+Stand: 2026-09-12 15:46
 
 | Datei | Typ | In PUBLISHED.md | Ziel-Pfad |
 |---|---|---|---|
