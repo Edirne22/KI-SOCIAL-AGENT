@@ -35,7 +35,8 @@ jobs:
           if [ -f content/WOCHENPLAN.md ]; then
             git add content/WOCHENPLAN.md
             git commit -m "Auto: Wochenplan generiert" || echo "Keine Änderungen"
-            git push
+            git pull --rebase origin main
+          git push
           else
             echo "Keine Datei zum Committen vorhanden – überspringe Push."
           fi
