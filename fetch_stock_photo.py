@@ -3,6 +3,8 @@ import re
 import base64
 import requests
 
+from asset_paths import get_image_path, slugify
+
 GEMINI_API = "https://generativelanguage.googleapis.com/v1beta"
 PEXELS_API = "https://api.pexels.com/v1/search"
 
@@ -207,13 +209,15 @@ def download_url(url, filename):
     r = requests.get(url, timeout=60)
     if r.status_code != 200:
         return False
-    with open(filename, "wb") as f:
+    filename.parent.mkdir(parents=True, exist_ok=True)
+    with filename.open("wb") as f:
         f.write(r.content)
     return True
 
 def save_bytes(data, filename):
     try:
-        with open(filename, "wb") as f:
+        filename.parent.mkdir(parents=True, exist_ok=True)
+        with filename.open("wb") as f:
             f.write(data)
         return True
     except Exception as e:
@@ -239,7 +243,7 @@ def process_block(content, platform_header, gemini_key, pexels_key):
         text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\Z)", body, re.DOTALL)
         text = text_match.group(1).strip() if text_match else ""
 
-        filename = f"auto-image-{abs(hash(block)) % 10000}.jpg"
+        filename = get_image_path(slugify(text), 1)
 
         # 1. Renn-Content → Gemini
         if is_racing_content(text):
@@ -247,7 +251,7 @@ def process_block(content, platform_header, gemini_key, pexels_key):
             print(f"Renn-Content erkannt. Gemini-Prompt: {prompt[:80]}...")
             image_bytes = generate_gemini_image(gemini_key, prompt)
             if image_bytes and save_bytes(image_bytes, filename):
-                content = update_published(content, block, filename)
+                content = update_published(content, block, filename.as_posix())
                 print(f"Gemini-Bild eingefügt: {filename}")
                 return content
             print("Gemini fehlgeschlagen – Fallback auf Pexels.")
