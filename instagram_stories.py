@@ -58,9 +58,9 @@ def wait(creation_id, token, max_wait=180):
         time.sleep(5)
     return False
 
-def mark_block(content, block):
+def mark_block(content, block, media_id):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-    new_block = block.replace("## Story", f"## Story [GEPOSTET {timestamp}]", 1)
+    new_block = block.replace("## Story", f"## Story [GEPOSTET {timestamp} | ID: {media_id}]", 1)
     return content.replace(block, new_block, 1)
 
 if __name__ == "__main__":
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     post_id = publish(ig_user_id, token, creation_id)
     if post_id:
         print(f"Story online: {post_id}")
-        content = mark_block(content, block)
+        content = mark_block(content, block, post_id)
         with open("content/PUBLISHED.md", "w", encoding="utf-8") as f:
             f.write(content)
     else:
