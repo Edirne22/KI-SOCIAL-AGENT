@@ -20,7 +20,7 @@ Bülent und seine Community, wenn verlässliche Inhalte zu Motorradreisen, Route
 - `memory/` für bereits bestätigte Projekt-Learnings.
 - `content/` und `content/CONTENT_PLAN.md` für den Anlass der Recherche.
 - `profile/MEIN_SOCIAL_MEDIA_PROFIL.md`.
-- `profile/content/rules/BRAND_RULES.md` und `profile/content/rules/SAFETY_RULES.md`.
+- `rules/BRAND_RULES.md` und `rules/SAFETY_RULES.md`.
 - Externe Primärquellen, offizielle Stellen und aktuelle Originaldokumente, wenn Recherche nötig ist.
 
 ## No-Gos
