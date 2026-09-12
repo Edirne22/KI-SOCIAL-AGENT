@@ -125,6 +125,8 @@ def _snapshot(snapshot_id: str, headers: dict, token: str) -> tuple[list[dict], 
             codes = sorted(set(codes + _error_codes(data)))
             details.update({"Snapshot-Status": "ready", "Records": len(records), "Errors": len(codes), "Error-Codes": ", ".join(codes) or "{}"})
             _write_debug(endpoint, str(result.status_code), result.text, token, details)
+            if result.status_code != 200:
+                details.update({"Errors": 1, "Error-Codes": f"HTTP {result.status_code}"})
             return records, details
         time.sleep(5)
     return [], details
@@ -172,7 +174,8 @@ def _run_dataset(platform: str, dataset: str, input_data: list, headers: dict, t
         return direct, str(response.status_code), details
     snapshot_id = payload.get("snapshot_id") or payload.get("id") if isinstance(payload, dict) else None
     if snapshot_id:
-        return (*_snapshot(str(snapshot_id), headers, token),) if False else _snapshot(str(snapshot_id), headers, token) + (str(response.status_code),)
+        records, snapshot_details = _snapshot(str(snapshot_id), headers, token)
+        return records, str(response.status_code), snapshot_details
     return [], str(response.status_code), details
 
 
