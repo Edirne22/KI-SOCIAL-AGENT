@@ -208,7 +208,7 @@ def save_bytes(data, filename):
 def insert_image_reference(block, filename):
     """Fügt die Bildzeile vor einer vorhandenen Video-Zeile ein."""
     if re.search(r"(?m)^Video:\s*", block):
-        return re.sub(r"(?m)^(Video:\s*)", f"Bild: {filename}\n\1", block, count=1)
+        return re.sub(r"(?m)^(Video:\s*)", f"Bild: {filename}\n\\1", block, count=1)
     return block.rstrip() + f"\nBild: {filename}\n"
 
 
