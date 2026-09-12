@@ -20,7 +20,7 @@ Mobile-first Motorradfans und Reisende, besonders Menschen, die schnelle Tipps, 
 - `memory/POST_HISTORY.md`, `memory/` und `content/` für Themenhistorie und Ideen.
 - `content/CONTENT_PLAN.md` für Prioritäten.
 - `profile/MEIN_SOCIAL_MEDIA_PROFIL.md`.
-- `profile/content/rules/BRAND_RULES.md` und `profile/content/rules/SAFETY_RULES.md`.
+- `rules/BRAND_RULES.md` und `rules/SAFETY_RULES.md`.
 
 ## No-Gos
 - Keine gefährlichen Fahrten oder Regelverstöße als Unterhaltung darstellen.
