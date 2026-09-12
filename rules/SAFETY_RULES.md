@@ -60,3 +60,4 @@
 - Maximal 15 aktive Beobachtungen.
 - Telegram-Nachrichten nur bei Preisänderungen; unsichere Preise sind als nicht bestätigt markiert.
 - `stop` und `erledigt` beenden eine Beobachtung sofort.
+- Der Auto-Track-Zustand wird ausschließlich in `memory/USER_PREFERENCES.md` gespeichert und kann jederzeit mit `auto-track: on` oder `auto-track: off` geändert werden.
