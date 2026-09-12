@@ -1,23 +1,23 @@
 # Inspiration · Bright Data
 
 ## Instagram
-- Status: nicht verfügbar (Invalid input provided, ['url', 'Value should match pattern ^https://(www.)?instagram.com/[a-zA-Z0-9._-]+(/?[a-zA-Z0-9._-]+/?)?$'])
+- Status: nicht verfügbar (Unerwartetes asynchrones Ergebnis für synchronen Scraper)
 
 ## Facebook
-- Status: nicht verfügbar (HTTP 202)
+- Status: Keine Daten im Zeitraum.
 
 ## YouTube
-- Status: Keine aktuellen Posts in den letzten 7 Tagen.
+- Status: Keine Daten im Zeitraum.
 
 ## TikTok
-- Status: nicht verfügbar (HTTP 202)
+- Status: nicht verfügbar (Snapshot-Timeout nach 3 Minuten)
 
 ## X
-- Status: Keine aktuellen Posts in den letzten 7 Tagen.
+- Status: Keine Daten im Zeitraum.
 
 ## Quellen
-- Instagram: nicht verfügbar (400)
-- Facebook: nicht verfügbar (202)
+- Instagram: nicht verfügbar (202)
+- Facebook: 0 Records
 - YouTube: 0 Records
-- TikTok: nicht verfügbar (202)
+- TikTok: nicht verfügbar (202 (asynchron))
 - X: 0 Records
