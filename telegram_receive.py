@@ -220,7 +220,9 @@ def main() -> None:
             continue
 
         lowered_command = message_text.strip().lower()
-        if lowered_command.startswith("auto-track:"):
+        auto_track_prefixes = ("auto-track:", "autotrack:", "auto track:")
+        if lowered_command.startswith(auto_track_prefixes):
+            print(f"Empfangen: {message_text} → erkannt als: Auto-Track")
             value = message_text.split(":", 1)[1].strip().lower()
             if value not in {"on", "off"}:
                 send_message("Bitte nutze: auto-track: on oder auto-track: off")
@@ -244,8 +246,10 @@ def main() -> None:
             send_message("📋 Watchlist\n" + active[:3000])
             acknowledge_through(update_id)
             return
-        track_command = parse_track_command(message_text)
+        is_track_command = lowered_command == "track" or lowered_command.startswith(("track:", "track ", "track\t"))
+        track_command = parse_track_command(message_text) if is_track_command else None
         if track_command is not None:
+            print(f"Empfangen: {message_text} → erkannt als: Track")
             name, criteria = track_command
             if not name:
                 from deal_hunter import LAST_QUERY_FILE
@@ -260,6 +264,7 @@ def main() -> None:
         for names, completed in ((("stop", "beenden"), False), (("erledigt", "gekauft"), True)):
             product = _named_command(message_text, names)
             if product is not None:
+                print(f"Empfangen: {message_text} → erkannt als: {'Erledigt' if completed else 'Stop'}")
                 if not product:
                     send_message("Bitte nenne ein Produkt, zum Beispiel: stop: Motorradhandschuhe")
                 else:
@@ -270,6 +275,7 @@ def main() -> None:
         deal_command = parse_deal_command(message_text)
         if deal_command:
             command, value = deal_command
+            print(f"Empfangen: {message_text} → erkannt als: {'Deal-Test' if command == 'test' else 'Deal-Suche'}")
             if command == "search":
                 if not value:
                     send_message("Bitte nutze: deal: <Produkt> oder suche: <Produkt>")
@@ -294,6 +300,7 @@ def main() -> None:
             acknowledge_through(update_id)
             return
 
+        print(f"Empfangen: {message_text} → erkannt als: Freigabe/Unbekannt")
         session_timestamp, posts = load_session()
         message_timestamp = message.get("date", 0)
         if message_timestamp < session_timestamp:
