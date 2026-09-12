@@ -20,7 +20,7 @@ Bestehende und neue Motorrad- und Reiseinteressierte mit deutsch-türkischem Bez
 - `memory/POST_HISTORY.md` und `memory/` für Learnings und vermiedene Wiederholungen.
 - `content/CONTENT_PLAN.md` und `content/` für vorhandene Vorhaben.
 - `profile/MEIN_SOCIAL_MEDIA_PROFIL.md`.
-- `profile/content/rules/BRAND_RULES.md` und `profile/content/rules/SAFETY_RULES.md`.
+- `rules/BRAND_RULES.md` und `rules/SAFETY_RULES.md`.
 
 ## No-Gos
 - Keine Erfolgsgarantien oder erfundenen Kennzahlen.
