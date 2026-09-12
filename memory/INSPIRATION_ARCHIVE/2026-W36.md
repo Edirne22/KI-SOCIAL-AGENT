@@ -1,5 +1,5 @@
 # Inspiration-Ideen
-Stand: 2026-09-12 13:58
+Stand: 2026-09-12 16:55
 
 ## Priorisierte Themen
 - Türkische Racer: toprak, razgatlioglu, öncü
@@ -9,9 +9,9 @@ Stand: 2026-09-12 13:58
 - KI-Prompting: ai prompting trends, ki content creation, gemini prompts
 
 ## Quellenstatus
-- Bright Data: nicht konfiguriert
-- Apify: nicht konfiguriert
 - Crawlbase: nicht konfiguriert
+- Apify: nicht konfiguriert
+- Bright Data: Daten vorhanden
 
 ## Content-Ideen für Bülent
 1. Türkischer Racer: aktueller, belegter Anlass mit persönlichem Community-Hook.

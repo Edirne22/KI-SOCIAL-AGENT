@@ -1,3 +1,10 @@
 # Inspiration · Bright Data
 
-Nicht konfiguriert: BRIGHTDATA_API_TOKEN fehlt.
+## instagram
+Übersprungen: HTTP 400.
+
+## facebook
+Übersprungen: Dataset-ID fehlt.
+
+## youtube
+Übersprungen: Dataset-ID fehlt.
