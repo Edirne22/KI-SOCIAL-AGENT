@@ -172,3 +172,56 @@ Noch keine API-Aufrufe protokolliert.
 - Body-Länge: 14258 Zeichen
 - Erste URL: https://x.com/worldsbk/status/2098732943917158803
 - Antwort (max. 500 Zeichen): {"id":"2098732943917158803","user_posted":"WorldSBK","name":"WorldSBK","description":"Summer was great. But we missed this 🥹🏁 \n\nWhat did you miss the most? 💭\n\n#FrenchWorldSBK 🇫🇷 #WorldSBK","date_posted":"2026-09-12T11:18:21.000Z","photos":["https://pbs.twimg.com/media/HSAyc_pW8AYfhHx.jpg","https://pbs.twimg.com/media/HSAydASawAAMV4A.jpg","https://pbs.twimg.com/media/HSAyc_2XoAACUIo.jpg","https://pbs.twimg.com/media/HSAydANakAEIBFj.jpg"],"url":"https://x.com/worldsbk/status/209873294391715880
+
+## Diagnose Instagram (2026-09-13 00:53)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lk5ns7kz21pck8jpis&notify=false&include_errors=true&type=discover_new&discover_by=url
+- HTTP-Status: 202 (asynchron)
+- Records: 0
+- Fehler: keine
+- Body-Länge: 378 Zeichen
+- Snapshot-ID: sd_mtyzd2ay28ou3jzjx8
+- Polling-Versuche: 3
+- Letzter Status: ready
+- Wartezeit: 20 Sekunden
+- Antwort (max. 500 Zeichen): {"url":"https://www.instagram.com/p/Dc-oelwiEUf/","user_posted":"motogp","description":"Save this one if you want to keep up with all the action 😉⏰\n\n#SanMarinoGP 🇸🇲 #MotoGP","hashtags":["#SanMarinoGP","#MotoGP"],"num_comments":38,"date_posted":"2026-09-07T08:00:02.000Z","likes":18041,"photos":["https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/793244879_18634751131027895_2707803452069001692_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5i
+
+## Diagnose Facebook (2026-09-13 00:56)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lkaxegm826bjpoo9m5&notify=false&include_errors=true
+- HTTP-Status: 202 (asynchron)
+- Records: 0
+- Fehler: keine
+- Body-Länge: 377 Zeichen
+- Snapshot-ID: sd_mtyzesjoff1z89px0
+- Polling-Versuche: 9
+- Letzter Status: ready
+- Wartezeit: 80 Sekunden
+- Antwort (max. 500 Zeichen): {"url":"https://www.facebook.com/MotoGP/posts/pfbid02rqrwkfVuU19enc5hVGFWjdBpFK8uXqfhDZLwuLm6rvRz7W8R12XxbVQcxnqbfNmZl","post_id":"1530570235770823","user_url":"https://www.facebook.com/MotoGP","user_username_raw":"MotoGP","content":"The best way to finish Super Saturday, with the best fans of the world! ❤️\n\n#SanMarinoGP🇸🇲 #MotoGP","date_posted":"2026-09-12T19:30:10.000Z","hashtags":["sanmarinogp","motogp"],"num_comments":7,"num_shares":12,"num_likes_type":{"type":"Like","num":368},"page_name"
+
+## Diagnose YouTube (2026-09-13 00:56)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lk56epmy2i5g7lzu0k&notify=false&include_errors=true&type=discover_new&discover_by=keyword
+- HTTP-Status: 200
+- Records: 0
+- Fehler: Leere Antwort – Plattform nicht verfügbar
+- Body-Länge: 0 Zeichen
+- Antwort (max. 500 Zeichen):
+
+## Diagnose TikTok (2026-09-13 00:59)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_m7n5ixlw1gc4no56kx&notify=false&include_errors=true
+- HTTP-Status: 202 (asynchron)
+- Records: 0
+- Fehler: keine
+- Body-Länge: 378 Zeichen
+- Snapshot-ID: sd_mtyzhz8o1bbkf7dlku
+- Polling-Versuche: 11
+- Letzter Status: ready
+- Wartezeit: 150 Sekunden
+- Antwort (max. 500 Zeichen): {"url":"https://www.tiktok.com/@motogp/video/7684273737302035734","post_id":"7684273737302035734","description":"Spotted in Misano 👀 #SanMarinoGP 🇸🇲 #MotoGP #SportsOnTikTok ","create_time":"2026-09-11T13:46:47.000Z","digg_count":57400,"share_count":"4678","collect_count":2941,"comment_count":1101,"play_count":551700,"video_duration":8,"hashtags":["sanmarinogp","motogp","sportsontiktok"],"original_sound":"Plantdaddy55: Ed bassmaster","profile_id":"6690198746083673094","profile_username":"MotoGP™"
+
+## Diagnose X (2026-09-13 01:00)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lwxkxvnf1cynvib9co&notify=false&include_errors=true&type=discover_new&discover_by=profile_url
+- HTTP-Status: 200
+- Records: 10
+- Fehler: keine
+- Body-Länge: 14258 Zeichen
+- Erste URL: https://x.com/worldsbk/status/2098305043715789037
+- Antwort (max. 500 Zeichen): {"id":"2098305043715789037","user_posted":"WorldSBK","name":"WorldSBK","description":"What better #FridayFeeling than celebrating an 11th career hat-trick? 🏆🔥\n\n#FrenchWorldSBK 🇮🇹 #WorldSBK","date_posted":"2026-09-11T06:58:01.000Z","photos":null,"url":"https://x.com/worldsbk/status/2098305043715789037","quoted_post":{"photos":null,"videos":null},"tagged_users":null,"replies":0,"reposts":2,"likes":100,"views":6947,"external_url":null,"hashtags":["FridayFeeling","FrenchWorldSBK","WorldSBK"],"foll
