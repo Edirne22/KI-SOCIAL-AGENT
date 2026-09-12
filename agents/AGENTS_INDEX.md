@@ -16,6 +16,7 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 | [06_reddit_community_builder.md](06_reddit_community_builder.md) | Entwirft hilfreiche, regelkonforme Reddit-Beiträge und Antworten. | Bei Reddit-Recherche, Community-Gesprächen und Antwortentwürfen. |
 | [07_video_optimization.md](07_video_optimization.md) | Erstellt Schnitt-, Untertitel- und Produktionsbriefe für Kurzvideos. | Bei Reel-, TikTok-, Video- oder Agnes-Asset-Briefings. |
 | [08_paid_social_strategist.md](08_paid_social_strategist.md) | Entwirft vorsichtige Paid-Social-Kampagnen und Messpläne. | Nur bei ausdrücklich gewünschter, bezahlter Reichweite. |
+| [09_quality_agent.md](09_quality_agent.md) | Prüft Workflow-Ergebnisse, Datenqualität und Sicherheitswarnungen. | Täglich nach den Analyse-Workflows oder manuell vor größeren Änderungen. |
 
 ## Geplante Agenten
 
