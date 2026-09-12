@@ -10,6 +10,7 @@ from pathlib import Path
 import requests
 
 MEMORY_FILE = Path("memory/DEALS_FOUND.md")
+LAST_QUERY_FILE = Path("memory/LAST_DEAL_QUERY.md")
 MODEL = "gemini-3.8-flash"
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 
@@ -64,6 +65,8 @@ Preise können sich ändern; nenne den Recherchezeitpunkt."""
             sources.append(f"- {web.get('title') or url}: {url}")
     result = answer + ("\n\nQuellen aus Search Grounding:\n" + "\n".join(dict.fromkeys(sources)) if sources else "\n\nQuellen: nicht verfügbar")
     save_result(query, result)
+    LAST_QUERY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    LAST_QUERY_FILE.write_text(query, encoding="utf-8")
     return result
 
 
