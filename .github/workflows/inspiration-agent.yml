@@ -39,6 +39,7 @@ jobs:
           git add memory/INSPIRATION_APIFY.md 2>/dev/null || true
           git add memory/INSPIRATION_BRIGHTDATA.md 2>/dev/null || true
           git add memory/BRIGHTDATA_DEBUG.md 2>/dev/null || true
+          git add memory/GEMINI_DEBUG.md 2>/dev/null || true
           git add memory/BRIGHTDATA_ALERT_STATE.md 2>/dev/null || true
           git add memory/INSPIRATION_CRAWLBASE.md 2>/dev/null || true
           git add memory/INSPIRATION_LOG.md 2>/dev/null || true
