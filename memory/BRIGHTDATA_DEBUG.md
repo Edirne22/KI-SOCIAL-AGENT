@@ -17,3 +17,30 @@ Noch keine API-Aufrufe protokolliert.
 - Endpunkt: https://api.brightdata.com/datasets/v3/snapshot/sd_mtyn1x2jxpdkglu70
 - Status: 200
 - Antwort (max. 500 Zeichen): []
+## 2026-09-12 17:34
+- Endpunkt: https://api.brightdata.com/datasets/v3/trigger?dataset_id=gd_...
+- HTTP-Status: 404
+- Antwort (max. 500 Zeichen): dataset does not exist
+- Snapshot-ID: nicht verfügbar
+- Snapshot-Status: nicht verfügbar
+- Records: 0
+- Errors: 0
+- Error-Codes: {}
+## 2026-09-12 17:34
+- Endpunkt: https://api.brightdata.com/datasets/v3/trigger?dataset_id=gd_...
+- HTTP-Status: 404
+- Antwort (max. 500 Zeichen): dataset does not exist
+- Snapshot-ID: nicht verfügbar
+- Snapshot-Status: nicht verfügbar
+- Records: 0
+- Errors: 0
+- Error-Codes: {}
+## 2026-09-12 17:34
+- Endpunkt: https://api.brightdata.com/datasets/v3/trigger?dataset_id=gd_...
+- HTTP-Status: 404
+- Antwort (max. 500 Zeichen): dataset does not exist
+- Snapshot-ID: nicht verfügbar
+- Snapshot-Status: nicht verfügbar
+- Records: 0
+- Errors: 0
+- Error-Codes: {}

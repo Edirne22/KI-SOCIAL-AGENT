@@ -1,14 +1,37 @@
 # Inspiration · Bright Data
 
-## instagram
-Keine konkreten Datensätze von instagram erhalten.
-Diagnose: Snapshot noch nicht bereit.
+## Instagram
+## Diagnose Instagram
+- Dataset-ID: gd_...
+- Input-JSON gültig: ja
+- HTTP-Status: 404
+- Snapshot-Status: nicht verfügbar
+- Records: 0
+- Errors: 0
+- Error-Codes: {}
+- Bewertung: Abruf nicht bestätigt – Debug-Log prüfen.
 
-## facebook
-Keine Daten von Bright Data: Dataset-ID fehlt.
+## Facebook
+## Diagnose Facebook
+- Dataset-ID: gd_...
+- Input-JSON gültig: ja
+- HTTP-Status: 404
+- Snapshot-Status: nicht verfügbar
+- Records: 0
+- Errors: 0
+- Error-Codes: {}
+- Bewertung: Abruf nicht bestätigt – Debug-Log prüfen.
 
-## youtube
-Keine Daten von Bright Data: Dataset-ID fehlt.
+## Youtube
+## Diagnose Youtube
+- Dataset-ID: gd_...
+- Input-JSON gültig: ja
+- HTTP-Status: 404
+- Snapshot-Status: nicht verfügbar
+- Records: 0
+- Errors: 0
+- Error-Codes: {}
+- Bewertung: Abruf nicht bestätigt – Debug-Log prüfen.
 
 ## Web Unlocker-Test
-Übersprungen: BRIGHTDATA_ZONE fehlt. Keine Zone wird geraten.
+Deaktiviert: BRIGHTDATA_ENABLE_UNLOCKER_FALLBACK=false.
