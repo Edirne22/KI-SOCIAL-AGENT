@@ -204,11 +204,7 @@ def run() -> str:
                 lines.append("")
                 continue
             try:
-                result = _run_dataset(platform, dataset, input_data, headers, token)
-                if len(result) == 3 and isinstance(result[1], dict):
-                    records, details, status = result
-                else:
-                    records, status, details = result
+                records, status, details = _run_dataset(platform, dataset, input_data, headers, token)
                 lines.extend(_format_records(platform, records))
                 lines.extend(_diagnosis(platform, dataset, True, status, details))
                 lines.append("")
