@@ -17,7 +17,10 @@ class AssetResolutionError(ValueError):
 
 
 def slugify(text: str, max_length: int = 50) -> str:
-    value = (text or "").lower().translate(_TRANSLATION)
+    value = (text or "").lower()
+    # Häufige türkische Eigennamen bleiben in ihrer geläufigen ASCII-Schreibweise lesbar.
+    value = value.replace("öncü", "oncu")
+    value = value.translate(_TRANSLATION)
     value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
     value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
     return (value[:max_length].strip("-") or "motorrad-content")
