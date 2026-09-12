@@ -24,7 +24,8 @@ def reserve_destination(target: Path, reserved: set[str]) -> Path:
     candidate = target
     index = 2
     while candidate.exists() or candidate.as_posix() in reserved:
-        candidate = target.with_name(f"{target.stem}-{index:02d}{target.suffix}")
+        base_stem = re.sub(r"-\\d{2}$", "", target.stem)
+        candidate = target.with_name(f"{base_stem}-{index:02d}{target.suffix}")
         index += 1
     reserved.add(candidate.as_posix())
     return candidate
