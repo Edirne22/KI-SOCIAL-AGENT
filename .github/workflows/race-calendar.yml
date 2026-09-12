@@ -1,0 +1,30 @@
+name: Race Calendar
+on:
+  schedule:
+    - cron: "0 6 * * 4"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.10"}
+      - run: pip install requests pillow
+      - env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+        run: python -m race.race_calendar
+      - name: Commit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add memory/RACE_WEEKEND.md 2>/dev/null || true
+          git add memory/RACE_POSTERS_LOG.md 2>/dev/null || true
+          git add memory/RACE_ARCHIVE/ 2>/dev/null || true
+          git add race-posters/ 2>/dev/null || true
+          git add content/PUBLISHED.md 2>/dev/null || true
+          git commit -m "Auto: Rennkalender und Poster" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
