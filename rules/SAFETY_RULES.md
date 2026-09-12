@@ -53,3 +53,10 @@
 - Keine Umgehung von Captchas, Bot-Schutz, Shop-Sperren oder technischen Schutzmaßnahmen.
 - Coupon-Tests erfordern eine Händler-Allowlist und ein dauerhaft gespeichertes Rate-Limit.
 - Bei fehlender Quelle, Shop-Sperre oder Unsicherheit: überspringen und Bülent informieren.
+
+## Preis-Tracking
+
+- Nur öffentliche Recherche, kein automatischer Kauf und keine Anmeldung.
+- Maximal 15 aktive Beobachtungen.
+- Telegram-Nachrichten nur bei Preisänderungen; unsichere Preise sind als nicht bestätigt markiert.
+- `stop` und `erledigt` beenden eine Beobachtung sofort.
