@@ -6,6 +6,8 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+from deal_hunter import compact_for_telegram, search_deal
+from deal_hunter_browser import test_coupon
 from telegram_bot import get_chat_id, get_updates, send_message
 
 SESSION_FILE = Path("memory/TELEGRAM_SESSION.md")
@@ -116,8 +118,17 @@ def acknowledge_through(update_id: int) -> None:
     get_updates(offset=update_id + 1)
 
 
+def parse_deal_command(text: str) -> tuple[str, str] | None:
+    lowered = text.strip().lower()
+    for prefix in ("deal:", "suche:"):
+        if lowered.startswith(prefix):
+            return "search", text.strip()[len(prefix):].strip()
+    if lowered.startswith("deal-test:"):
+        return "test", text.strip()[len("deal-test:"):].strip()
+    return None
+
+
 def main() -> None:
-    session_timestamp, posts = load_session()
     allowed_chat_id = get_chat_id()
     updates = get_updates()
 
@@ -125,7 +136,6 @@ def main() -> None:
         update_id = update.get("update_id")
         message = update.get("message") or {}
         chat = message.get("chat") or {}
-        message_timestamp = message.get("date", 0)
         message_text = message.get("text")
 
         if not isinstance(update_id, int):
@@ -133,13 +143,41 @@ def main() -> None:
         if str(chat.get("id", "")) != str(allowed_chat_id):
             acknowledge_through(update_id)
             continue
-        if not isinstance(message_text, str) or message_timestamp < session_timestamp:
+        if not isinstance(message_text, str):
+            acknowledge_through(update_id)
+            continue
+
+        deal_command = parse_deal_command(message_text)
+        if deal_command:
+            command, value = deal_command
+            if command == "search":
+                if not value:
+                    send_message("Bitte nutze: deal: <Produkt> oder suche: <Produkt>")
+                else:
+                    send_message("Ich recherchiere – das kann ein bis zwei Minuten dauern.")
+                    try:
+                        send_message(compact_for_telegram(search_deal(value)))
+                    except (RuntimeError, ValueError) as error:
+                        send_message(f"Deal-Recherche nicht möglich: {error}")
+            else:
+                parts = value.split(maxsplit=1)
+                if len(parts) != 2:
+                    send_message("Bitte nutze: deal-test: <HTTPS-URL> <CODE>")
+                else:
+                    result = test_coupon(parts[0], parts[1])
+                    send_message(f"Code-Test: {result['status']} – {result['reason']}")
+            acknowledge_through(update_id)
+            return
+
+        session_timestamp, posts = load_session()
+        message_timestamp = message.get("date", 0)
+        if message_timestamp < session_timestamp:
             acknowledge_through(update_id)
             continue
 
         selected = parse_approval(message_text)
         if selected is None:
-            send_message("Danke! Bitte antworte mit 1,3, alle, ✅, nein oder ❌.")
+            send_message("Danke! Bitte antworte mit 1,3, alle, ✅, nein oder ❌; für Recherche: deal: <Produkt>.")
             acknowledge_through(update_id)
             return
 
