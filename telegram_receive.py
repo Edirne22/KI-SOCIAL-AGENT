@@ -237,6 +237,27 @@ def parse_deal_command(text: str) -> tuple[str, str] | None:
     return ("search", query) if query is not None else None
 
 
+
+def create_carousel_draft(topic: str) -> str:
+    """Legt einen kontrollierten Karussell-Entwurf an; eine Freigabe bleibt erforderlich."""
+    cleaned = re.sub(r"\s+", " ", topic).strip()
+    if not cleaned:
+        return "Bitte nutze: karussell: <Thema>"
+    PUBLISHED_FILE.parent.mkdir(parents=True, exist_ok=True)
+    existing = PUBLISHED_FILE.read_text(encoding="utf-8") if PUBLISHED_FILE.exists() else ""
+    caption = f"{cleaned}\n\nWelcher Slide gefällt dir am besten? 🏍️"
+    block = (
+        f"\n\n## Instagram Karussell\n"
+        f"Status: ENTWURF\n"
+        f"Freigabe: Telegram\n"
+        f"Titel: {cleaned}\n"
+        f"Text: {caption}\n"
+        f"Bilder: auto\n"
+    )
+    PUBLISHED_FILE.write_text(existing.rstrip() + block, encoding="utf-8")
+    return "Karussell-Entwurf erstellt. Drei Bilder werden durch den Mediengenerator erzeugt. Vor der Veröffentlichung ist weiterhin eine Freigabe nötig."
+
+
 def main() -> None:
     allowed_chat_id = get_chat_id()
     updates = get_updates()
@@ -264,6 +285,7 @@ def main() -> None:
         print(f"DEBUG: match_watchlist={text_lower.strip() in ('watchlist', 'liste')}")
 
         auto_track_prefixes = ("auto-track:", "autotrack:", "auto track:")
+        carousel_command = text_lower.startswith(("karussell:", "karussell ", "karussell\t"))
         is_trend_command = text_lower.startswith(("trend:", "trend ", "trend\t"))
         is_track_command = text_lower == "track" or text_lower.startswith(("track:", "track ", "track\t"))
         deal_command = parse_deal_command(message_text)
@@ -284,6 +306,11 @@ def main() -> None:
                     if enabled
                     else "⏸️ Auto-Track aus. Bei deal:-Suche frage ich wieder nach."
                 )
+
+        elif carousel_command:
+            print(f"Empfangen: {message_text} → erkannt als: Karussell")
+            topic = re.sub(r"(?is)^\s*karussell\s*:?[ \t]*", "", message_text).strip()
+            send_message(create_carousel_draft(topic))
 
         elif is_trend_command:
             print(f"Empfangen: {message_text} → erkannt als: Trend")
