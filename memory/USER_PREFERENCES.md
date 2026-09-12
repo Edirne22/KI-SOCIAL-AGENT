@@ -25,3 +25,6 @@ Speichert, was Bülent mag und was nicht – basierend auf Freigaben, Ablehnunge
 - Türkische Passagen für türkische Zielgruppe
 - Du-Anrede
 - Wenige Emojis
+
+## Deal-Hunter
+- Auto-Track: off
