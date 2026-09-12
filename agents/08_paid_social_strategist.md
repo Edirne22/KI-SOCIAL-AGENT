@@ -20,7 +20,7 @@ Potenzielle und bestehende Community-Mitglieder mit Interesse an Motorrädern, R
 - `memory/` und `memory/POST_HISTORY.md` für bestätigte Learnings.
 - `content/` und `content/CONTENT_PLAN.md` für verfügbare Assets und Themen.
 - `profile/MEIN_SOCIAL_MEDIA_PROFIL.md`.
-- `profile/content/rules/BRAND_RULES.md` und `profile/content/rules/SAFETY_RULES.md`.
+- `rules/BRAND_RULES.md` und `rules/SAFETY_RULES.md`.
 - Aktuelle Plattformrichtlinien und rechtliche Kennzeichnungsvorgaben, wenn eine Kampagne konkret geplant wird.
 
 ## No-Gos
