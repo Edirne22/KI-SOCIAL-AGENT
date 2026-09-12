@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       apply_migration:
-        description: "Erst nach Inventar-Prüfung aktivieren: Dateien verschieben und Referenzen aktualisieren"
+        description: "Echte Migration ausführen? (Vorschau bleibt deaktiviert)"
         required: true
         default: false
         type: boolean
@@ -26,7 +26,7 @@ jobs:
           python-version: "3.10"
       - name: Inventar oder bestätigte Migration ausführen
         run: |
-          if [ "${{ inputs.apply_migration }}" = "true" ]; then
+          if [ "${{ github.event.inputs.apply_migration }}" = "true" ]; then
             python migrate_assets.py --apply
           else
             python migrate_assets.py
