@@ -30,7 +30,7 @@ jobs:
           fi
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add memory/PERFORMANCE.md
+          git add memory/PERFORMANCE.md 2>/dev/null || true
           git commit -m "Auto: Performance-Insights aktualisiert" || echo "Keine Änderungen"
           git pull --rebase origin main
           git push
