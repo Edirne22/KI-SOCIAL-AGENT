@@ -107,10 +107,29 @@ def history_for_product(product_name: str) -> list[tuple[datetime, float]]:
     return sorted(entries, key=lambda item: item[0])
 
 
-def trend_message(product_name: str) -> str:
+def find_product_in_watchlist(query: str) -> list[str]:
+    """Findet aktive Produkte, wenn die Anfrage Teil des gespeicherten Namens ist."""
+    normalized = query.strip().lower()
+    if not normalized:
+        return []
+    return [product for product, _ in active_products() if normalized in product.lower()]
+
+
+def trend_message(query: str) -> str:
+    matches = find_product_in_watchlist(query)
+    if not matches:
+        return "Kein Produkt gefunden. Nutze track: <Produkt> zum Starten."
+    if len(matches) > 1:
+        options = "\n".join(f"{index}. {product}" for index, product in enumerate(matches, 1))
+        return f"Mehrere Produkte gefunden:\n{options}\nBitte präzisiere deine Trend-Anfrage."
+
+    product_name = matches[0]
     entries = history_for_product(product_name)
     if not entries:
-        return "Kein Tracking aktiv. Nutze track: <Produkt> zum Starten."
+        return (
+            f"📊 Für '{product_name}' liegen noch keine Preisdaten vor. "
+            "Die erste Preisprüfung erfolgt beim nächsten geplanten Lauf."
+        )
 
     rows = [
         f"📊 Preis-Historie: {product_name}",
