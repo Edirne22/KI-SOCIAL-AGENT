@@ -1,0 +1,26 @@
+name: Viral Analysis
+on:
+  schedule:
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.10"}
+      - run: pip install requests
+      - run: python -m viral.pattern_detector
+      - name: Commit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add memory/VIRAL_PATTERNS.md 2>/dev/null || true
+          git add memory/HOOKS_THAT_WORK.md 2>/dev/null || true
+          git add memory/LESSONS_LEARNED.md 2>/dev/null || true
+          git commit -m "Auto: Viral-Muster aktualisiert" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
