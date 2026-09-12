@@ -1,10 +1,11 @@
 # Inspiration · Bright Data
 
 ## instagram
-Übersprungen: HTTP 400.
+Keine Daten von Bright Data: JSONDecodeError.
+
 
 ## facebook
-Übersprungen: Dataset-ID fehlt.
+Keine Daten von Bright Data: Dataset-ID fehlt.
 
 ## youtube
-Übersprungen: Dataset-ID fehlt.
+Keine Daten von Bright Data: Dataset-ID fehlt.

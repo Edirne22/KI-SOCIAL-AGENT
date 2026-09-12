@@ -1,21 +1,23 @@
 # Inspiration-Ideen
-Stand: 2026-09-12 16:55
 
-## Priorisierte Themen
-- Türkische Racer: toprak, razgatlioglu, öncü
-- MotoGP: motogp top 10, motogp standings, motogp news
-- WorldSBK: worldsbk, superbike wm, worldsbk standings
-- Formel 1: formel 1, formula 1, f1 race weekend
-- KI-Prompting: ai prompting trends, ki content creation, gemini prompts
+## Top-5 Trending Themen (mit Belegen)
 
-## Quellenstatus
-- Crawlbase: nicht konfiguriert
-- Apify: nicht konfiguriert
-- Bright Data: Daten vorhanden
+Report eingeschränkt – nur 0 belegte Themen gefunden.
 
-## Content-Ideen für Bülent
-1. Türkischer Racer: aktueller, belegter Anlass mit persönlichem Community-Hook.
-2. Rennwochenende: Vorschau mit praktischer Frage an die Community.
-3. Motorrad & KI: nützlicher Tipp statt reines Trend-Kopieren.
+In den bereitgestellten Rohdaten konnten aufgrund fehlender API-Konfigurationen und technischer Abruffehler (JSONDecodeError, HTTPError, fehlende Tokens/IDs) über alle Datenquellen hinweg keine Beiträge, URLs, Daten oder Engagement-Werte erfasst werden. Da keine Daten erfunden werden dürfen, können derzeit keine Trending-Themen abgeleitet werden.
 
-Hinweis: Preise, Fakten und Meldungen vor Veröffentlichung an den Originalquellen prüfen.
+---
+
+## 3 konkrete Content-Ideen für Bülent
+
+Da in den bereitgestellten Daten keine belegten Quellen existieren und laut Vorgabe keine Quellen oder Platzhalter erfunden werden dürfen:
+
+- **Idee 1:** nicht erstellt
+- **Idee 2:** nicht erstellt
+- **Idee 3:** nicht erstellt
+
+---
+
+## Quellen
+
+Keine Quellen verfügbar (in den bereitgestellten Rohdaten waren keine gültigen URLs enthalten).
