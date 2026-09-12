@@ -19,12 +19,12 @@ MEMORY = ROOT / "memory"
 REPORT = MEMORY / "QUALITY_REPORT.md"
 HISTORY = MEMORY / "QUALITY_HISTORY.md"
 GITHUB_API = "https://api.github.com"
-CRITICAL_WORKFLOWS = {
-    "Generate Daily Content Idea",
-    "Inspiration Agent",
-    "Analytics Fetch",
-    "Analytics Report",
-    "Telegram Receive Approval",
+WORKFLOW_MAX_AGE_HOURS = {
+    "Generate Daily Content Idea": 36,
+    "Inspiration Agent": 96,
+    "Analytics Fetch": 36,
+    "Analytics Report": 36,
+    "Telegram Receive Approval": 36,
 }
 SECRET_PATTERNS = (
     re.compile(r"AIza[0-9A-Za-z_-]{20,}"),
@@ -146,9 +146,8 @@ def check_workflows() -> list[dict[str, str]]:
     except requests.RequestException as error:
         return [_result("WARNUNG", "Workflow-Status", f"GitHub-Statusprüfung nicht möglich: {type(error).__name__}.")]
     runs = response.json().get("workflow_runs", [])
-    cutoff = _now() - timedelta(hours=36)
     results: list[dict[str, str]] = []
-    for name in sorted(CRITICAL_WORKFLOWS):
+    for name in sorted(WORKFLOW_MAX_AGE_HOURS):
         matching = [run for run in runs if run.get("name") == name]
         if not matching:
             results.append(_result("WARNUNG", name, "Kein letzter Lauf in der GitHub-Antwort gefunden."))
@@ -156,6 +155,7 @@ def check_workflows() -> list[dict[str, str]]:
         latest = matching[0]
         created = latest.get("created_at", "")
         try:
+            cutoff = _now() - timedelta(hours=WORKFLOW_MAX_AGE_HOURS[name])
             recent = datetime.fromisoformat(created.replace("Z", "+00:00")) >= cutoff
         except ValueError:
             recent = True
@@ -168,7 +168,7 @@ def check_workflows() -> list[dict[str, str]]:
         elif recent and conclusion == "success":
             results.append(_result("OK", name, "Letzter Lauf erfolgreich."))
         else:
-            results.append(_result("WARNUNG", name, "Letzter Lauf ist älter als 36 Stunden."))
+            results.append(_result("WARNUNG", name, f"Letzter Lauf ist älter als {WORKFLOW_MAX_AGE_HOURS[name]} Stunden."))
     return results
 
 
