@@ -1,0 +1,32 @@
+name: Analytics Fetch
+
+on:
+  schedule:
+    - cron: "0 17 * * *" # 19:00 Uhr deutscher Sommerzeit
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests
+      - name: Fetch published post insights
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+        run: python analytics_fetch.py
+      - name: Commit performance memory
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add memory/PERFORMANCE.md
+          git commit -m "Auto: Performance-Insights aktualisiert" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
