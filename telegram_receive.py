@@ -1,0 +1,150 @@
+"""Verarbeitet Telegram-Freigaben und schreibt nur freigegebene Entwürfe nach PUBLISHED.md."""
+
+from __future__ import annotations
+
+import re
+from datetime import datetime
+from pathlib import Path
+
+from telegram_bot import get_chat_id, get_updates, send_message
+
+SESSION_FILE = Path("memory/TELEGRAM_SESSION.md")
+PUBLISHED_FILE = Path("content/PUBLISHED.md")
+
+
+def load_session() -> tuple[int, dict[int, dict[str, str]]]:
+    if not SESSION_FILE.is_file():
+        raise FileNotFoundError(
+            "Keine Telegram-Sitzung gefunden. Zuerst muss telegram_morning.py erfolgreich laufen."
+        )
+
+    content = SESSION_FILE.read_text(encoding="utf-8")
+    timestamp_match = re.search(r"(?m)^Session-Timestamp:\s*(\d+)\s*$", content)
+    if not timestamp_match:
+        raise RuntimeError("Telegram-Sitzung enthält keinen gültigen Session-Timestamp.")
+
+    posts: dict[int, dict[str, str]] = {}
+    matches = list(
+        re.finditer(
+            r"^## Beitrag\s+([1-3])\s*\n(.*?)(?=^## Beitrag\s+[1-3]\s*$|\Z)",
+            content,
+            re.MULTILINE | re.DOTALL,
+        )
+    )
+    for match in matches:
+        number = int(match.group(1))
+        section = match.group(2).strip()
+        full_match = re.search(r"^### Vollständiger Entwurf\s*\n(.*)$", section, re.MULTILINE | re.DOTALL)
+        if not full_match:
+            continue
+        full_text = full_match.group(1).strip()
+        posts[number] = {
+            "title": _field(section, "Titel"),
+            "hook": _field(section, "Hook"),
+            "platform": _field(section, "Plattform"),
+            "full_text": full_text,
+        }
+
+    if len(posts) != 3:
+        raise RuntimeError("Telegram-Sitzung enthält nicht drei lesbare Beiträge.")
+    return int(timestamp_match.group(1)), posts
+
+
+def _field(text: str, name: str) -> str:
+    match = re.search(rf"(?m)^{re.escape(name)}:\s*(.+)$", text)
+    return match.group(1).strip() if match else "–"
+
+
+def parse_approval(text: str) -> list[int] | None:
+    normalized = text.strip().lower()
+    if normalized in {"alle", "✅"}:
+        return [1, 2, 3]
+    if normalized in {"nein", "❌"}:
+        return []
+
+    compact = re.sub(r"\s+", "", normalized)
+    if re.fullmatch(r"[1-3](,[1-3])*", compact):
+        return sorted({int(number) for number in compact.split(",")})
+    return None
+
+
+def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int], update_id: int) -> None:
+    PUBLISHED_FILE.parent.mkdir(parents=True, exist_ok=True)
+    existing = PUBLISHED_FILE.read_text(encoding="utf-8") if PUBLISHED_FILE.exists() else "# Freigegebene Beiträge\n"
+    marker = f"Telegram-Update-ID: {update_id}"
+    if marker in existing:
+        print(f"Telegram-Update {update_id} wurde bereits verarbeitet.")
+        return
+
+    approved_at = datetime.now().strftime("%Y-%m-%d %H:%M")
+    entries = []
+    for number in selected:
+        post = posts[number]
+        entries.extend(
+            [
+                f"## {post['platform']} [FREIGEGEBEN {approved_at}]",
+                "Status: FREIGEGEBEN",
+                "Freigabe: Telegram",
+                marker,
+                f"Titel: {post['title']}",
+                f"Hook: {post['hook']}",
+                "Text:",
+                post["full_text"],
+                "",
+            ]
+        )
+    PUBLISHED_FILE.write_text(existing.rstrip() + "\n\n" + "\n".join(entries).rstrip() + "\n", encoding="utf-8")
+    print(f"{len(selected)} freigegebene Beiträge nach {PUBLISHED_FILE} geschrieben.")
+
+
+def acknowledge_through(update_id: int) -> None:
+    # Telegram verwirft Updates mit kleinerer ID nach diesem Aufruf.
+    get_updates(offset=update_id + 1)
+
+
+def main() -> None:
+    session_timestamp, posts = load_session()
+    allowed_chat_id = get_chat_id()
+    updates = get_updates()
+
+    for update in sorted(updates, key=lambda item: item.get("update_id", 0)):
+        update_id = update.get("update_id")
+        message = update.get("message") or {}
+        chat = message.get("chat") or {}
+        message_timestamp = message.get("date", 0)
+        message_text = message.get("text")
+
+        if not isinstance(update_id, int):
+            continue
+        if str(chat.get("id", "")) != str(allowed_chat_id):
+            acknowledge_through(update_id)
+            continue
+        if not isinstance(message_text, str) or message_timestamp < session_timestamp:
+            acknowledge_through(update_id)
+            continue
+
+        selected = parse_approval(message_text)
+        if selected is None:
+            send_message("Danke! Bitte antworte mit 1,3, alle, ✅, nein oder ❌.")
+            acknowledge_through(update_id)
+            return
+
+        if not selected:
+            send_message("Keine Beiträge freigegeben. In PUBLISHED.md wurde nichts eingetragen.")
+            acknowledge_through(update_id)
+            return
+
+        append_approved_posts(posts, selected, update_id)
+        selected_text = "+".join(str(number) for number in selected)
+        send_message(
+            f"Beitrag {selected_text} freigegeben – für 12:00 vorgemerkt. "
+            "Die Veröffentlichung bleibt manuell."
+        )
+        acknowledge_through(update_id)
+        return
+
+    print("Keine neue Telegram-Antwort für die aktuelle Sitzung.")
+
+
+if __name__ == "__main__":
+    main()
