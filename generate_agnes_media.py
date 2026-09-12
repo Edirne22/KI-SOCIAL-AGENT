@@ -207,15 +207,15 @@ def save_bytes(data, filename):
 
 def insert_image_reference(block, filename):
     """Fügt die Bildzeile vor einer vorhandenen Video-Zeile ein."""
-    if re.search(r"(?m)^Video:\\s*", block):
-        return re.sub(r"(?m)^(Video:\\s*)", f"Bild: {filename}\\n\\1", block, count=1)
-    return block.rstrip() + f"\\nBild: {filename}\\n"
+    if re.search(r"(?m)^Video:\s*", block):
+        return re.sub(r"(?m)^(Video:\s*)", f"Bild: {filename}\n\1", block, count=1)
+    return block.rstrip() + f"\nBild: {filename}\n"
 
 
 def replace_auto_video_reference(block, filename):
     """Ersetzt ausschließlich die Anforderung Video: auto durch den Dateinamen."""
     return re.sub(
-        r"(?im)^Video:\\s*auto\\s*$",
+        r"(?im)^Video:\s*auto\s*$",
         f"Video: {filename}",
         block,
         count=1,
@@ -223,11 +223,11 @@ def replace_auto_video_reference(block, filename):
 
 
 def wants_video(body):
-    return bool(re.search(r"Video:\\s*auto", body, re.IGNORECASE))
+    return bool(re.search(r"Video:\s*auto", body, re.IGNORECASE))
 
 
 def process_block(content, platform_header, want_video_check=True):
-    pattern = rf"({platform_header}\\s*\\n(.*?)(?=\\n## |\\Z))"
+    pattern = rf"({platform_header}\s*\n(.*?)(?=\n## |\Z))"
     for match in re.finditer(pattern, content, re.DOTALL):
         block = match.group(1)
         body = match.group(2)
@@ -235,12 +235,12 @@ def process_block(content, platform_header, want_video_check=True):
         if "[GEPOSTET" in block:
             continue
 
-        has_image = bool(re.search(r"Bild:\\s*\\S+", body))
+        has_image = bool(re.search(r"Bild:\s*\S+", body))
         video_requested = wants_video(body)
         if has_image and not video_requested:
             continue
 
-        text_match = re.search(r"Text:\\s*(.+?)(?=\\nBild:|\\nVideo:|\\Z)", body, re.DOTALL)
+        text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\nVideo:|\Z)", body, re.DOTALL)
         text = text_match.group(1).strip() if text_match else ""
         suffix = f"{abs(hash(block)) % 10000:04d}"
         image_filename = f"auto-image-{suffix}.jpg"
