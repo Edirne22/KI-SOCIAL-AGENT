@@ -81,3 +81,11 @@
 - Kein Clickbait ohne inhaltliche Einlösung.
 - A/B-Tests starten nur nach Bülents ausdrücklicher Freigabe.
 - Wettbewerber-Analyse verwendet ausschließlich öffentliche Daten und kopiert keine Inhalte.
+
+## Qualitäts-Agent
+
+- Der Qualitäts-Agent prüft und berichtet ausschließlich; er veröffentlicht nichts und startet keine Workflows neu.
+- Er darf keine Inhalte, Freigaben, Watchlists oder Memory-Daten automatisch verändern.
+- Telegram-Nachrichten gehen ausschließlich an die hinterlegte `TELEGRAM_CHAT_ID`.
+- Qualitätsberichte enthalten keine Tokens, Cookies, Header, vollständigen Rohdaten oder privaten Informationen.
+- Kritische Befunde werden klar dokumentiert und brauchen Bülents Entscheidung, bevor eine Reparatur erfolgt.
