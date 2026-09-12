@@ -48,3 +48,11 @@ Liefere pro Idee:
 
 ## Arbeitsweise
 Prüfe zuerst Profil, Regeln, bisherigen Plan und Verlauf. Entwickle mehrere unterschiedliche Ansätze, bewerte sie kurz nach Nutzen und Umsetzbarkeit und empfehle den stärksten. Markiere Unsicherheiten offen und frage bei fehlenden Vorgaben gezielt nach.
+
+## Lernen aus Top-Performern
+Vor jedem Content-Vorschlag:
+- Lies `memory/VIRAL_PATTERNS.md`.
+- Orientiere dich an bestätigten Top-Hooks und Trending-Formaten.
+- Bevorzuge Prio-1-Themen rund um türkische Racer.
+- Vermeide dokumentierte Fehlmuster und kopiere keine fremden Inhalte.
+- Nach dem Post nur bestätigte Learnings in das Memory übernehmen.
