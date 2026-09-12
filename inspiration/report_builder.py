@@ -9,11 +9,11 @@ def evidence_count(reports: dict[str, str]) -> int:
     return sum(len(re.findall(r"(?m)^### Datensatz \d+", report)) for report in reports.values())
 
 
-def build_evidence_text(reports: dict[str, str], limit_per_provider: int = 18000) -> str:
+def build_evidence_text(reports: dict[str, str], limit_per_provider: int | None = None) -> str:
     sections = []
     for name, report in reports.items():
         source = report.strip()
-        if len(source) > limit_per_provider:
+        if limit_per_provider is not None and len(source) > limit_per_provider:
             source = source[:limit_per_provider] + "\n[Weitere Rohdaten wegen Prompt-Limit ausgelassen.]"
         sections.append(f"## Datenquelle: {name}\n{source}")
     return "\n\n".join(sections)
