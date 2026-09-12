@@ -25,7 +25,7 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 4. Der Social Media Strategist plant Reihenfolgen und Wochenziele; er ersetzt nicht die Erstellung einzelner Beiträge.
 5. Der Paid Social Strategist erstellt ausschließlich Entwürfe. Er startet weder Anzeigen noch Ausgaben.
 6. Der Reddit Community Builder erstellt nur Vorschläge. Beiträge, Kommentare und Nachrichten werden nie automatisch versendet.
-7. Jeder Agent liest vor der Arbeit mindestens die passenden Informationen aus `memory/`, `content/` und den Regeln unter `profile/content/rules/`.
+7. Jeder Agent liest vor der Arbeit mindestens die passenden Informationen aus `memory/`, `content/` und den Regeln unter `rules/`.
 8. Jeder Output ist ein Entwurf. Veröffentlichung, externe Kommunikation, Budgeteinsatz, Buchungen und Kontoveränderungen brauchen immer Bülents ausdrückliche Freigabe.
 
 ## Empfohlene Reihenfolgen
