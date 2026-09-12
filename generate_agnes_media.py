@@ -144,7 +144,7 @@ def agnes_generate_video(prompt, max_wait=300):
         "model": "agnes-video-v2.0",
         "prompt": prompt,
         "duration": 5,
-        "size": "1280x720"
+        "size": "720x1280"
     }
     try:
         r = requests.post(url, headers=get_agnes_headers(), json=payload, timeout=60)
@@ -205,70 +205,93 @@ def save_bytes(data, filename):
         f.write(data)
     return True
 
-def update_published(content, block, filename, media_type="Bild"):
-    new_block = block.rstrip() + f"\n{media_type}: {filename}\n"
-    return content.replace(block, new_block, 1)
+def insert_image_reference(block, filename):
+    """Fügt die Bildzeile vor einer vorhandenen Video-Zeile ein."""
+    if re.search(r"(?m)^Video:\\s*", block):
+        return re.sub(r"(?m)^(Video:\\s*)", f"Bild: {filename}\\n\\1", block, count=1)
+    return block.rstrip() + f"\\nBild: {filename}\\n"
+
+
+def replace_auto_video_reference(block, filename):
+    """Ersetzt ausschließlich die Anforderung Video: auto durch den Dateinamen."""
+    return re.sub(
+        r"(?im)^Video:\\s*auto\\s*$",
+        f"Video: {filename}",
+        block,
+        count=1,
+    )
+
 
 def wants_video(body):
-    return bool(re.search(r"Video:\s*auto", body, re.IGNORECASE))
+    return bool(re.search(r"Video:\\s*auto", body, re.IGNORECASE))
+
 
 def process_block(content, platform_header, want_video_check=True):
-    pattern = rf"({platform_header}\s*\n(.*?)(?=\n## |\Z))"
+    pattern = rf"({platform_header}\\s*\\n(.*?)(?=\\n## |\\Z))"
     for match in re.finditer(pattern, content, re.DOTALL):
         block = match.group(1)
         body = match.group(2)
 
         if "[GEPOSTET" in block:
             continue
-        if re.search(r"Bild:\s*\S+", body):
+
+        has_image = bool(re.search(r"Bild:\\s*\\S+", body))
+        video_requested = wants_video(body)
+        if has_image and not video_requested:
             continue
 
-        text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\nVideo:|\Z)", body, re.DOTALL)
+        text_match = re.search(r"Text:\\s*(.+?)(?=\\nBild:|\\nVideo:|\\Z)", body, re.DOTALL)
         text = text_match.group(1).strip() if text_match else ""
+        suffix = f"{abs(hash(block)) % 10000:04d}"
+        image_filename = f"auto-image-{suffix}.jpg"
+        video_filename = f"auto-video-{suffix}.mp4"
+        updated_block = block
 
-        filename = f"auto-image-{abs(hash(block)) % 10000}.jpg"
-        video_requested = wants_video(body)
-
-        # === 1) BILD via Agnes ===
-        if is_racing_content(text):
-            prompt = get_racing_prompt(text)
-        else:
-            prompt = f"Realistic motorcycle photograph related to: {text[:200]}. Professional photography, ultra realistic, cinematic lighting."
-
-        print(f"Agnes Bild-Prompt: {prompt[:100]}...")
-        img_bytes = agnes_generate_image(prompt)
-
-        if img_bytes:
-            save_bytes(img_bytes, filename)
-            content = update_published(content, block, filename, "Bild")
-            print(f"Agnes-Bild gespeichert: {filename}")
-        else:
-            print("Agnes-Bild fehlgeschlagen.")
-            if PEXELS_FALLBACK:
-                query = get_pexels_query(text)
-                url = pexels_search(query)
-                if url:
-                    data = download_bytes(url)
-                    if data:
-                        save_bytes(data, filename)
-                        content = update_published(content, block, filename, "Bild")
-                        print(f"Pexels-Fallback gespeichert: {filename}")
+        # === 1) BILD via Agnes (nur wenn im Block noch keines vorhanden ist) ===
+        if not has_image:
+            if is_racing_content(text):
+                prompt = get_racing_prompt(text)
             else:
-                print("→ KEIN Fallback aktiv. Bitte manuell ein Bild einfügen.")
+                prompt = f"Realistic motorcycle photograph related to: {text[:200]}. Professional photography, ultra realistic, cinematic lighting."
 
-        # === 2) VIDEO (nur wenn angefordert) ===
+            print(f"Agnes Bild-Prompt: {prompt[:100]}...")
+            img_bytes = agnes_generate_image(prompt)
+
+            if img_bytes:
+                save_bytes(img_bytes, image_filename)
+                updated_block = insert_image_reference(updated_block, image_filename)
+                print(f"Agnes-Bild gespeichert: {image_filename}")
+            else:
+                print("Agnes-Bild fehlgeschlagen.")
+                if PEXELS_FALLBACK:
+                    query = get_pexels_query(text)
+                    url = pexels_search(query)
+                    if url:
+                        data = download_bytes(url)
+                        if data:
+                            save_bytes(data, image_filename)
+                            updated_block = insert_image_reference(updated_block, image_filename)
+                            print(f"Pexels-Fallback gespeichert: {image_filename}")
+                else:
+                    print("→ KEIN Fallback aktiv. Bitte manuell ein Bild einfügen.")
+
+        # === 2) VIDEO (nur bei exakt Video: auto) ===
         if video_requested:
-            video_prompt = f"Cinematic shot: {text[:200]}. 5 seconds, ultra realistic."
-            vid_filename = filename.replace(".jpg", ".mp4")
+            video_prompt = (
+                f"Cinematic vertical 9:16 shot: {text[:200]}. "
+                "5 seconds, ultra realistic, composed for Instagram Stories and Reels."
+            )
             print(f"Agnes Video-Prompt: {video_prompt[:100]}...")
             vid_bytes = agnes_generate_video(video_prompt)
             if vid_bytes:
-                save_bytes(vid_bytes, vid_filename)
-                content = update_published(content, block, vid_filename, "Video")
-                print(f"Agnes-Video gespeichert: {vid_filename}")
+                save_bytes(vid_bytes, video_filename)
+                updated_block = replace_auto_video_reference(updated_block, video_filename)
+                print(f"Agnes-Video gespeichert: {video_filename}")
             else:
-                print("Agnes-Video fehlgeschlagen – kein Fallback.")
+                print("Agnes-Video fehlgeschlagen – Video: auto bleibt für einen späteren Versuch stehen.")
 
+        if updated_block != block:
+            return content.replace(block, updated_block, 1)
         return content
 
     return content
