@@ -9,6 +9,8 @@ from datetime import datetime
 
 import requests
 
+from asset_paths import asset_url
+
 REPO_RAW = "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/"
 GRAPH_API = "https://graph.instagram.com/v23.0"
 TRANSIENT_STATUS_CODES = {408, 429, 500, 502, 503, 504}
@@ -133,7 +135,7 @@ def main() -> None:
         print("Kein freigegebenes Instagram Reel mit fertigem Video gefunden.")
         return
 
-    video_url = REPO_RAW + video_file
+    video_url = asset_url(video_file, REPO_RAW)
     print(f"Freigegebenes Reel gefunden: {video_file}")
     creation_id = create_reel_container(ig_user_id, token, video_url, caption)
     if not creation_id:
