@@ -1,0 +1,44 @@
+name: Migrate Assets – Phase 1
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply_migration:
+        description: "Erst nach Inventar-Prüfung aktivieren: Dateien verschieben und Referenzen aktualisieren"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: asset-migration
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Inventar oder bestätigte Migration ausführen
+        run: |
+          if [ "${{ inputs.apply_migration }}" = "true" ]; then
+            python migrate_assets.py --apply
+          else
+            python migrate_assets.py
+          fi
+      - name: Änderungen validieren und committen
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/PUBLISHED.md 2>/dev/null || true
+          git add memory/ASSET_INVENTORY.md memory/MIGRATION_LOG.md 2>/dev/null || true
+          git add assets 2>/dev/null || true
+          git add -f assets/test 2>/dev/null || true
+          git commit -m "Maintenance: Asset-Struktur Phase 1 migriert" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
