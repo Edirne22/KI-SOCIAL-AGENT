@@ -13,7 +13,10 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.10"}
       - run: pip install requests
-      - run: python -m viral.pattern_detector
+      - env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m viral.pattern_detector
       - name: Commit
         run: |
           git config --global user.name "github-actions[bot]"
@@ -21,6 +24,9 @@ jobs:
           git add memory/VIRAL_PATTERNS.md 2>/dev/null || true
           git add memory/HOOKS_THAT_WORK.md 2>/dev/null || true
           git add memory/LESSONS_LEARNED.md 2>/dev/null || true
+          git add memory/EXPERIMENTS.md 2>/dev/null || true
+          git add memory/FUNNEL_ANALYSIS.md 2>/dev/null || true
+          git add memory/COMPETITOR_TRACKING.md 2>/dev/null || true
           git commit -m "Auto: Viral-Muster aktualisiert" || echo "Keine Änderungen"
           git pull --rebase origin main
           git push
