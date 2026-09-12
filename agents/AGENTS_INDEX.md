@@ -17,6 +17,12 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 | [07_video_optimization.md](07_video_optimization.md) | Erstellt Schnitt-, Untertitel- und Produktionsbriefe für Kurzvideos. | Bei Reel-, TikTok-, Video- oder Agnes-Asset-Briefings. |
 | [08_paid_social_strategist.md](08_paid_social_strategist.md) | Entwirft vorsichtige Paid-Social-Kampagnen und Messpläne. | Nur bei ausdrücklich gewünschter, bezahlter Reichweite. |
 
+## Geplante Agenten
+
+| Name | Zweck | Reihenfolge | Sicherheitsregel |
+| --- | --- | --- | --- |
+| System-Neustart-Agent | Prüft Workflow-Zustände, startet ausschließlich freigegebene Wartungs- und Analyse-Workflows zeitversetzt und meldet einen Gesamtstatus. | Nach dem Qualitäts-Agenten. | Publisher, Telegram-Empfang, Medienerzeugung, Migrationen und alle extern wirkenden Workflows bleiben gesperrt, bis Bülent sie ausdrücklich einzeln freigibt. |
+
 ## Aktivierungs-Logik
 
 1. Ordne den Auftrag zuerst einem Hauptagenten zu. Aktiviere nur einen zweiten Agenten, wenn dessen Fachwissen wirklich nötig ist.
