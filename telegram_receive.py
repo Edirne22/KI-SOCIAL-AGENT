@@ -8,7 +8,14 @@ from pathlib import Path
 
 from deal_hunter import compact_for_telegram, search_deal
 from deal_hunter_browser import test_coupon
-from price_tracking import WATCHLIST, stop_tracking, track_product
+from price_tracking import (
+    WATCHLIST,
+    get_auto_track,
+    set_auto_track,
+    stop_tracking,
+    track_product,
+    trend_message,
+)
 from telegram_bot import get_chat_id, get_updates, send_message
 
 SESSION_FILE = Path("memory/TELEGRAM_SESSION.md")
@@ -149,6 +156,25 @@ def main() -> None:
             continue
 
         lowered_command = message_text.strip().lower()
+        if lowered_command.startswith("auto-track:"):
+            value = message_text.split(":", 1)[1].strip().lower()
+            if value not in {"on", "off"}:
+                send_message("Bitte nutze: auto-track: on oder auto-track: off")
+            else:
+                enabled = value == "on"
+                set_auto_track(enabled)
+                send_message(
+                    "✅ Auto-Track aktiv. Alle zukünftigen deal:-Suchen werden automatisch beobachtet."
+                    if enabled
+                    else "⏸️ Auto-Track aus. Bei deal:-Suche frage ich wieder nach."
+                )
+            acknowledge_through(update_id)
+            return
+        if lowered_command.startswith("trend:"):
+            product = message_text.split(":", 1)[1].strip()
+            send_message(trend_message(product) if product else "Bitte nutze: trend: <Produkt>")
+            acknowledge_through(update_id)
+            return
         if lowered_command == "watchlist":
             active = WATCHLIST.read_text(encoding="utf-8") if WATCHLIST.exists() else "Keine Watchlist vorhanden."
             send_message("📋 Watchlist\n" + active[:3000])
@@ -183,7 +209,12 @@ def main() -> None:
                 else:
                     send_message("Ich recherchiere – das kann ein bis zwei Minuten dauern.")
                     try:
-                        send_message(compact_for_telegram(search_deal(value)))
+                        answer = compact_for_telegram(search_deal(value))
+                        if get_auto_track():
+                            answer += "\n\n✅ Wird automatisch beobachtet.\n" + track_product(value)
+                        else:
+                            answer += "\n\n💡 Soll ich das beobachten? Antworte mit track."
+                        send_message(answer)
                     except (RuntimeError, ValueError) as error:
                         send_message(f"Deal-Recherche nicht möglich: {error}")
             else:
