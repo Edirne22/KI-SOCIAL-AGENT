@@ -32,7 +32,7 @@ def _month(day: date | None = None) -> str:
 
 def get_image_path(slug: str, number: int = 1, day: date | None = None) -> Path:
     stamp = day or date.today()
-    clean_slug = re.sub(r"-\\d{2}$", "", slugify(slug))
+    clean_slug = re.sub(r"-\d{2}$", "", slugify(slug))
     return ASSETS / "images" / _month(stamp) / f"{stamp:%Y-%m-%d}-{clean_slug}-{number:02d}.jpg"
 
 
