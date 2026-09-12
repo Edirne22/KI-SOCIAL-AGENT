@@ -236,8 +236,10 @@ def main() -> None:
                 )
             acknowledge_through(update_id)
             return
-        if lowered_command.startswith("trend:"):
-            product = message_text.split(":", 1)[1].strip()
+        is_trend_command = lowered_command.startswith(("trend:", "trend ", "trend\t"))
+        if is_trend_command:
+            print(f"Empfangen: {message_text} → erkannt als: Trend")
+            product = re.sub(r"(?is)^\s*trend\s*:?\s*", "", message_text).strip()
             send_message(trend_message(product) if product else "Bitte nutze: trend: <Produkt>")
             acknowledge_through(update_id)
             return
