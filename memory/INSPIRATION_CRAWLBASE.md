@@ -1,3 +1,3 @@
 # Inspiration · Crawlbase
 
-Noch kein Lauf.
+Nicht konfiguriert: CRAWLBASE_TOKEN fehlt.

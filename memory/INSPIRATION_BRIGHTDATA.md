@@ -1,3 +1,3 @@
 # Inspiration · Bright Data
 
-Noch kein Lauf.
+Nicht konfiguriert: BRIGHTDATA_API_TOKEN fehlt.

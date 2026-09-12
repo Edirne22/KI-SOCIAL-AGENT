@@ -1,3 +1,3 @@
 # Inspiration · Apify
 
-Noch kein Lauf.
+Nicht konfiguriert: APIFY_API_TOKEN fehlt.
