@@ -1,37 +1,23 @@
 # Inspiration · Bright Data
 
 ## Instagram
-## Diagnose Instagram
-- Dataset-ID: gd_...
-- Input-JSON gültig: ja
-- HTTP-Status: 404
-- Snapshot-Status: nicht verfügbar
-- Records: 0
-- Errors: 0
-- Error-Codes: {}
-- Bewertung: Abruf nicht bestätigt – Debug-Log prüfen.
+- Status: nicht verfügbar (Invalid input provided, ['url', 'Value should match pattern ^https://(www.)?instagram.com/[a-zA-Z0-9._-]+(/?[a-zA-Z0-9._-]+/?)?$'])
 
 ## Facebook
-## Diagnose Facebook
-- Dataset-ID: gd_...
-- Input-JSON gültig: ja
-- HTTP-Status: 404
-- Snapshot-Status: nicht verfügbar
-- Records: 0
-- Errors: 0
-- Error-Codes: {}
-- Bewertung: Abruf nicht bestätigt – Debug-Log prüfen.
+- Status: nicht verfügbar (HTTP 202)
 
-## Youtube
-## Diagnose Youtube
-- Dataset-ID: gd_...
-- Input-JSON gültig: ja
-- HTTP-Status: 404
-- Snapshot-Status: nicht verfügbar
-- Records: 0
-- Errors: 0
-- Error-Codes: {}
-- Bewertung: Abruf nicht bestätigt – Debug-Log prüfen.
+## YouTube
+- Status: Keine aktuellen Posts in den letzten 7 Tagen.
 
-## Web Unlocker-Test
-Deaktiviert: BRIGHTDATA_ENABLE_UNLOCKER_FALLBACK=false.
+## TikTok
+- Status: nicht verfügbar (HTTP 202)
+
+## X
+- Status: Keine aktuellen Posts in den letzten 7 Tagen.
+
+## Quellen
+- Instagram: nicht verfügbar (400)
+- Facebook: nicht verfügbar (202)
+- YouTube: 0 Records
+- TikTok: nicht verfügbar (202)
+- X: 0 Records

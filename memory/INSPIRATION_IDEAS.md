@@ -4,13 +4,13 @@
 
 Report eingeschränkt – nur 0 belegte Themen gefunden.
 
-In den bereitgestellten Datenquellen konnten für die letzten 7 Tage keine Datensätze, URLs oder Engagement-Zahlen erfasst werden (API-Fehler bzw. fehlende Konfigurationen).
+In den bereitgestellten Datenquellen konnten für die letzten 7 Tage keine Posts, Messwerte oder gültigen URLs erfasst werden (APIs nicht konfiguriert, Fehler bei Datenabrufen bzw. 0 Treffer auf YouTube und X).
 
 ---
 
 ## 3 konkrete Content-Ideen für Bülent
 
-Aufgrund fehlender Daten und Belege gemäß den Vorgaben nicht erstellt:
+Da keine belegten Quellen in den Daten vorliegen, können gemäß Vorgabe keine Ideen mit verifizierter Quellenangabe generiert werden:
 
 - **Idee 1:** nicht erstellt (Keine belegte Quelle in den Daten vorhanden)
 - **Idee 2:** nicht erstellt (Keine belegte Quelle in den Daten vorhanden)
@@ -20,4 +20,4 @@ Aufgrund fehlender Daten und Belege gemäß den Vorgaben nicht erstellt:
 
 ## Quellen
 
-Keine verwertbaren Quellen in den bereitgestellten Rohdaten enthalten.
+Keine Quellen verfügbar (in den gelieferten Rohdaten sind keine verwertbaren URLs enthalten).
