@@ -2,7 +2,10 @@ import os
 import re
 import time
 import base64
+from pathlib import Path
 import requests
+
+from asset_paths import get_carousel_dir, get_image_path, get_video_path, slugify
 
 AGNES_BASE = "https://apihub.agnes-ai.com/v1"
 PEXELS_API = "https://api.pexels.com/v1/search"
@@ -201,7 +204,9 @@ def download_bytes(url):
     return r.content
 
 def save_bytes(data, filename):
-    with open(filename, "wb") as f:
+    path = Path(filename)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("wb") as f:
         f.write(data)
     return True
 
@@ -237,7 +242,7 @@ def process_carousel_block(content):
 
         text_match = re.search(r"(?ms)^Text:\s*(.*?)(?=^Bilder:|\Z)", body)
         topic = text_match.group(1).strip() if text_match else "Motorrad und Reise"
-        suffix = f"{abs(hash(block)) % 10000:04d}"
+        carousel_dir = get_carousel_dir(slugify(topic))
         variants = (
             ("Hauptmotiv", "dynamic main subject, clear story, cinematic motorcycle photography"),
             ("Detail", "close-up detail of motorcycle, equipment or road texture, cinematic photography"),
@@ -245,7 +250,7 @@ def process_carousel_block(content):
         )
         filenames = []
         for number, (label, direction) in enumerate(variants, start=1):
-            filename = f"carousel-{suffix}-{number}.jpg"
+            filename = carousel_dir / f"slide-{number}.jpg"
             prompt = (
                 f"Vertical 4:5 social media carousel image. Theme: {topic[:220]}. "
                 f"Slide {number}: {label}. {direction}. No text or watermark."
@@ -256,7 +261,7 @@ def process_carousel_block(content):
                 print("Karussell-Generierung fehlgeschlagen – Bilder: auto bleibt unverändert.")
                 return content
             save_bytes(image_bytes, filename)
-            filenames.append(filename)
+            filenames.append(filename.as_posix())
 
         references = "Bilder:\n" + "\n".join(f"- {filename}" for filename in filenames)
         updated = re.sub(r"(?mi)^Bilder:\s*auto\s*$", references, block, count=1)
@@ -282,9 +287,8 @@ def process_block(content, platform_header, want_video_check=True):
 
         text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\nVideo:|\Z)", body, re.DOTALL)
         text = text_match.group(1).strip() if text_match else ""
-        suffix = f"{abs(hash(block)) % 10000:04d}"
-        image_filename = f"auto-image-{suffix}.jpg"
-        video_filename = f"auto-video-{suffix}.mp4"
+        image_filename = get_image_path(slugify(text), 1)
+        video_filename = get_video_path(slugify(text))
         updated_block = block
 
         # === 1) BILD via Agnes (nur wenn im Block noch keines vorhanden ist) ===
@@ -299,7 +303,7 @@ def process_block(content, platform_header, want_video_check=True):
 
             if img_bytes:
                 save_bytes(img_bytes, image_filename)
-                updated_block = insert_image_reference(updated_block, image_filename)
+                updated_block = insert_image_reference(updated_block, image_filename.as_posix())
                 print(f"Agnes-Bild gespeichert: {image_filename}")
             else:
                 print("Agnes-Bild fehlgeschlagen.")
@@ -325,7 +329,7 @@ def process_block(content, platform_header, want_video_check=True):
             vid_bytes = agnes_generate_video(video_prompt)
             if vid_bytes:
                 save_bytes(vid_bytes, video_filename)
-                updated_block = replace_auto_video_reference(updated_block, video_filename)
+                updated_block = replace_auto_video_reference(updated_block, video_filename.as_posix())
                 print(f"Agnes-Video gespeichert: {video_filename}")
             else:
                 print("Agnes-Video fehlgeschlagen – Video: auto bleibt für einen späteren Versuch stehen.")
