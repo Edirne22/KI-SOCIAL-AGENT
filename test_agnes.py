@@ -3,6 +3,13 @@ import time
 import base64
 import requests
 
+from asset_paths import get_test_path
+
+def test_file(name):
+    path = get_test_path(name)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    return path
+
 AGNES_BASE = "https://apihub.agnes-ai.com/v1"
 
 def get_headers():
@@ -54,13 +61,13 @@ def test_image():
                 print("Bild-URL:", item["url"])
                 # Herunterladen und speichern
                 img = requests.get(item["url"], timeout=60)
-                with open("test-agnes-image.jpg", "wb") as f:
+                with open(test_file("test-image.jpg"), "wb") as f:
                     f.write(img.content)
-                print("Gespeichert: test-agnes-image.jpg")
+                print("Gespeichert: assets/test/test-image.jpg")
             elif "b64_json" in item:
                 with open("test-agnes-image.jpg", "wb") as f:
                     f.write(base64.b64decode(item["b64_json"]))
-                print("Gespeichert: test-agnes-image.jpg (base64)")
+                print("Gespeichert: assets/test/test-image.jpg (base64)")
         return True
     print("Fehler:", r.text[:500])
     return False
@@ -108,9 +115,9 @@ def test_video():
             if video_url:
                 print(f"Video-URL: {video_url}")
                 vid = requests.get(video_url, timeout=120)
-                with open("test-agnes-video-portrait.mp4", "wb") as f:
+                with open(test_file("test-video-portrait.mp4"), "wb") as f:
                     f.write(vid.content)
-                print("Gespeichert: test-agnes-video-portrait.mp4")
+                print("Gespeichert: assets/test/test-video-portrait.mp4")
             else:
                 print("Status fertig, aber keine URL gefunden:", str(st)[:300])
             return True
