@@ -1,0 +1,36 @@
+name: Test Agent Context
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-agents:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Load configured agent context
+        run: |
+          python - <<'PY'
+          from llm_client import get_agent_context
+
+          agent_names = ["01_content_creator", "04_social_media_strategist"]
+          context = get_agent_context(agent_names)
+
+          print("Geladene Agenten:")
+          for agent_name in agent_names:
+              print(f"- {agent_name}")
+          print(f"Agenten-Kontext erfolgreich erstellt ({len(context)} Zeichen).")
+          PY
