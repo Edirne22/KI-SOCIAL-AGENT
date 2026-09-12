@@ -8,6 +8,7 @@ from pathlib import Path
 
 from deal_hunter import compact_for_telegram, search_deal
 from deal_hunter_browser import test_coupon
+from price_tracking import WATCHLIST, stop_tracking, track_product
 from telegram_bot import get_chat_id, get_updates, send_message
 
 SESSION_FILE = Path("memory/TELEGRAM_SESSION.md")
@@ -146,6 +147,32 @@ def main() -> None:
         if not isinstance(message_text, str):
             acknowledge_through(update_id)
             continue
+
+        lowered_command = message_text.strip().lower()
+        if lowered_command == "watchlist":
+            active = WATCHLIST.read_text(encoding="utf-8") if WATCHLIST.exists() else "Keine Watchlist vorhanden."
+            send_message("📋 Watchlist\n" + active[:3000])
+            acknowledge_through(update_id)
+            return
+        if lowered_command.startswith("track:"):
+            value = message_text.split(":", 1)[1].strip()
+            name, _, criteria = value.partition("|")
+            send_message(track_product(name, criteria))
+            acknowledge_through(update_id)
+            return
+        if lowered_command == "track":
+            from deal_hunter import LAST_QUERY_FILE
+            if LAST_QUERY_FILE.exists():
+                send_message(track_product(LAST_QUERY_FILE.read_text(encoding="utf-8").strip()))
+            else:
+                send_message("Bitte suche zuerst mit deal: <Produkt> oder nutze track: <Produkt> | max: X €.")
+            acknowledge_through(update_id)
+            return
+        for prefix, completed in (("stop:", False), ("erledigt:", True)):
+            if lowered_command.startswith(prefix):
+                send_message(stop_tracking(message_text.split(":", 1)[1].strip(), completed))
+                acknowledge_through(update_id)
+                return
 
         deal_command = parse_deal_command(message_text)
         if deal_command:
