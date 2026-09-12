@@ -118,3 +118,57 @@ Noch keine API-Aufrufe protokolliert.
 - Records: 0
 - Fehler: keine
 - Antwort (max. 500 Zeichen): {"id":"2098828989867376993","user_posted":"MotoGP","name":"MotoGP™🏁","description":"You can't miss what the riders said after today's intense Sprint at Misano! 👀\n\n#SanMarinoGP🇸🇲\n","date_posted":"2026-09-12T17:40:00.000Z","photos":null,"url":"https://x.com/motogp/status/2098828989867376993","quoted_post":{"photos":null,"videos":null},"tagged_users":null,"replies":1,"reposts":4,"likes":33,"views":15800,"external_url":"https://www.motogp.com/en/videos/2026/09/12/word-on-the-grid-a-super-saturday
+
+## Diagnose Instagram (2026-09-13 00:42)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lk5ns7kz21pck8jpis&notify=false&include_errors=true&type=discover_new&discover_by=url
+- HTTP-Status: 202 (asynchron)
+- Records: 0
+- Fehler: keine
+- Body-Länge: 377 Zeichen
+- Snapshot-ID: sd_mtyyxlopq13cbhj13
+- Polling-Versuche: 5
+- Letzter Status: ready
+- Wartezeit: 41 Sekunden
+- Antwort (max. 500 Zeichen): {"url":"https://www.instagram.com/p/DdLv2MDiJdc/","user_posted":"motogp","description":"It’s going to be a red-hot #TissotSprint 🔥\n\n#SanMarinoGP 🇸🇲 #MotoGP","hashtags":["#TissotSprint","#SanMarinoGP","#MotoGP"],"num_comments":126,"date_posted":"2026-09-12T10:14:52.000Z","likes":29125,"photos":["https://scontent-muc2-1.cdninstagram.com/v/t51.82787-15/806159997_18637538671027895_3601682347454655251_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VT
+
+## Diagnose Facebook (2026-09-13 00:43)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lkaxegm826bjpoo9m5&notify=false&include_errors=true
+- HTTP-Status: 202 (asynchron)
+- Records: 0
+- Fehler: keine
+- Body-Länge: 377 Zeichen
+- Snapshot-ID: sd_mtyyztnsj9p03wbqx
+- Polling-Versuche: 5
+- Letzter Status: ready
+- Wartezeit: 41 Sekunden
+- Antwort (max. 500 Zeichen): {"url":"https://www.facebook.com/MotoGP/posts/pfbid02rqrwkfVuU19enc5hVGFWjdBpFK8uXqfhDZLwuLm6rvRz7W8R12XxbVQcxnqbfNmZl","post_id":"1530570235770823","user_url":"https://www.facebook.com/MotoGP","user_username_raw":"MotoGP","content":"The best way to finish Super Saturday, with the best fans of the world! ❤️\n\n#SanMarinoGP🇸🇲 #MotoGP","date_posted":"2026-09-12T19:30:10.000Z","hashtags":["sanmarinogp","motogp"],"num_comments":7,"num_shares":12,"num_likes_type":{"type":"Like","num":355},"page_name"
+
+## Diagnose YouTube (2026-09-13 00:43)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lk56epmy2i5g7lzu0k&notify=false&include_errors=true&type=discover_new&discover_by=keyword
+- HTTP-Status: 200
+- Records: 0
+- Fehler: Leere Antwort – Plattform nicht verfügbar
+- Body-Länge: 0 Zeichen
+- Antwort (max. 500 Zeichen):
+
+## Diagnose TikTok (2026-09-13 00:49)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_m7n5ixlw1gc4no56kx&notify=false&include_errors=true
+- HTTP-Status: 202 (asynchron)
+- Records: 0
+- Fehler: keine
+- Body-Länge: 378 Zeichen
+- Snapshot-ID: sd_mtyz25sv1beopch6gc
+- Polling-Versuche: 18
+- Letzter Status: ready
+- Wartezeit: 259 Sekunden
+- Antwort (max. 500 Zeichen): {"timestamp":"2026-09-12T22:44:29.577Z","input":{"url":"https://www.tiktok.com/search?lang=en&q=motogp&t=1789253034862","num_of_posts":10,"country":""},"error":"Couldn't find this hashtag","error_code":"dead_page"}
+{"url":"https://www.tiktok.com/@motogp/video/7684273737302035734","post_id":"7684273737302035734","description":"Spotted in Misano 👀 #SanMarinoGP 🇸🇲 #MotoGP #SportsOnTikTok ","create_time":"2026-09-11T13:46:47.000Z","digg_count":57300,"share_count":"4676","collect_count":2939,"comment
+
+## Diagnose X (2026-09-13 00:49)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lwxkxvnf1cynvib9co&notify=false&include_errors=true&type=discover_new&discover_by=profile_url
+- HTTP-Status: 200
+- Records: 10
+- Fehler: keine
+- Body-Länge: 14258 Zeichen
+- Erste URL: https://x.com/worldsbk/status/2098732943917158803
+- Antwort (max. 500 Zeichen): {"id":"2098732943917158803","user_posted":"WorldSBK","name":"WorldSBK","description":"Summer was great. But we missed this 🥹🏁 \n\nWhat did you miss the most? 💭\n\n#FrenchWorldSBK 🇫🇷 #WorldSBK","date_posted":"2026-09-12T11:18:21.000Z","photos":["https://pbs.twimg.com/media/HSAyc_pW8AYfhHx.jpg","https://pbs.twimg.com/media/HSAydASawAAMV4A.jpg","https://pbs.twimg.com/media/HSAyc_2XoAACUIo.jpg","https://pbs.twimg.com/media/HSAydANakAEIBFj.jpg"],"url":"https://x.com/worldsbk/status/209873294391715880

@@ -1,12 +1,11 @@
 # Inspiration-Ideen
-Stand: 2026-09-12 22:12
+Stand: 2026-09-12 22:49
 
 ## Datenstatus
-- Konkrete öffentliche Datensätze: 0
+- Konkrete öffentliche Datensätze: 10
 - Apify: keine konkreten Daten
 - Crawlbase: keine konkreten Daten
-- Bright Data: keine konkreten Daten
-- Gemini Search Grounding: keine konkreten Daten
+- Bright Data: konkrete Daten vorhanden
 
 ## Report
-Report eingeschränkt – keine konkreten öffentlichen Themen, URLs oder Engagement-Zahlen verfügbar. Es werden keine Fakten oder Ideen mit erfundenen Quellen ausgegeben.
+Strukturierte Rohdaten liegen vor. Für die detaillierte Auswertung ist Gemini-Zusammenfassung vorgesehen.
