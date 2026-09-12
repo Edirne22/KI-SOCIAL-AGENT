@@ -19,32 +19,35 @@ def blocks(content: str):
     return re.finditer(r"(?ms)^(## .+?)(?:\n(.*?))(?=^## |\Z)", content)
 
 
-def unique_destination(target: Path) -> Path:
-    if not target.exists():
-        return target
-    stem, suffix = target.stem, target.suffix
+def reserve_destination(target: Path, reserved: set[str]) -> Path:
+    """Reserviert Zielnamen schon während der Vorschau, nicht erst beim Verschieben."""
+    candidate = target
     index = 2
-    while True:
-        candidate = target.with_name(f"{stem}-{index:02d}{suffix}")
-        if not candidate.exists():
-            return candidate
+    while candidate.exists() or candidate.as_posix() in reserved:
+        candidate = target.with_name(f"{target.stem}-{index:02d}{target.suffix}")
         index += 1
+    reserved.add(candidate.as_posix())
+    return candidate
 
 
-def published_destination(header: str, source: Path) -> Path:
+def published_destination(header: str, source: Path, reserved: set[str]) -> Path:
     posted = re.search(r"\[GEPOSTET\s+(\d{4}-\d{2}-\d{2})", header)
-    day = date.fromisoformat(posted.group(1)) if posted else date.today()
+    if not posted:
+        raise ValueError("Nur nachweislich gepostete Blöcke dürfen nach assets/published/ wandern.")
+    day = date.fromisoformat(posted.group(1))
     platform = "instagram" if "instagram" in header.lower() else "facebook" if "facebook" in header.lower() else "story"
     media_type = "story" if "story" in header.lower() else "reel" if "reel" in header.lower() else "post"
-    return unique_destination(get_published_path(day, platform, media_type, extension=source.suffix.lstrip(".")))
+    target = get_published_path(day, platform, media_type, extension=source.suffix.lower().lstrip("."))
+    return reserve_destination(target, reserved)
 
 
 def plan_migration(content: str):
     planned: list[dict[str, object]] = []
     referenced: set[str] = set()
+    reserved: set[str] = set()
     for match in blocks(content):
         header, body = match.group(1), match.group(2) or ""
-        is_posted = "[GEPOSTET" in header
+        is_posted = bool(re.search(r"\[GEPOSTET\s+\d{4}-\d{2}-\d{2}", header))
         title_match = re.search(r"(?m)^Titel:\s*(.+)$", body) or re.search(r"(?ms)^Text:\s*(.+?)(?=^(?:Bild|Video|Bilder|Status|Freigabe):|\Z)", body)
         title = title_match.group(1).strip().splitlines()[0] if title_match else "legacy-media"
         for field, filename in re.findall(r"(?m)^(Bild|Video):\s*([^\s]+)", body):
@@ -53,11 +56,11 @@ def plan_migration(content: str):
             source = Path(filename)
             referenced.add(source.name.lower())
             if is_posted:
-                target = published_destination(header, source)
+                target = published_destination(header, source, reserved)
             elif field == "Video":
-                target = unique_destination(get_video_path(slugify(title)))
+                target = reserve_destination(get_video_path(slugify(title)), reserved)
             else:
-                target = unique_destination(get_image_path(slugify(title)))
+                target = reserve_destination(get_image_path(slugify(title)), reserved)
             planned.append({"source": source, "target": target, "reference": filename, "posted": is_posted})
 
     for source in Path(".").iterdir():
@@ -65,13 +68,14 @@ def plan_migration(content: str):
             continue
         lower = source.name.lower()
         if lower.startswith("test-agnes-"):
-            target = get_test_path(source.name.replace("test-agnes-", "test-"))
+            candidate = get_test_path(source.name.replace("test-agnes-", "test-"))
+            target = reserve_destination(candidate, reserved)
         elif lower.startswith("auto-image-"):
-            target = unique_destination(get_image_path("legacy-content"))
+            target = reserve_destination(get_image_path("legacy-content"), reserved)
         elif lower.startswith("auto-video-"):
-            target = unique_destination(get_video_path("legacy-content"))
+            target = reserve_destination(get_video_path("legacy-content"), reserved)
         else:
-            target = Path("assets/user-assets") / source.name.lower()
+            target = reserve_destination(Path("assets/user-assets") / (source.stem.lower() + source.suffix.lower()), reserved)
         planned.append({"source": source, "target": target, "reference": None, "posted": False})
     return planned
 
