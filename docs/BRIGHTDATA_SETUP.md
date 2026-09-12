@@ -9,7 +9,7 @@ Der Inspiration Agent nutzt die Bright-Data-Scraper-API für öffentliche Inhalt
 1. Öffne das Bright-Data-Dashboard und wähle **Web Scraper / Scraper API**.
 2. Prüfe für jede Plattform den dort gezeigten API-Beispielaufruf.
 3. Die im Projekt hinterlegten Dataset-IDs und Endpoints dürfen nur verwendet werden, wenn sie mit deinem Dashboard-Beispiel übereinstimmen.
-4. Facebook, YouTube und TikTok dürfen nach einer HTTP-202-Antwort mit Snapshot-ID bis zu drei Minuten gepollt werden. Instagram und X werden direkt ausgewertet. Liefert ein synchroner Scraper unerwartet nur eine Job-ID, wird dies als Diagnose gemeldet.
+4. Facebook, YouTube, TikTok und Instagram dürfen nach einer HTTP-202-Antwort mit Snapshot-ID gepollt werden. Facebook und YouTube warten höchstens drei Minuten im Zehn-Sekunden-Takt; Instagram höchstens fünf Minuten im Zehn-Sekunden-Takt; TikTok höchstens fünf Minuten im 15-Sekunden-Takt. X wird direkt ausgewertet.
 
 ## 2. GitHub-Secrets
 
@@ -86,4 +86,4 @@ TikTok unterstützt in diesem Aufbau keinen Datumsfilter. Hat ein Treffer ein le
 3. Prüfe `memory/INSPIRATION_BRIGHTDATA.md`: Records und Quellenstatus je Plattform.
 4. Prüfe `memory/INSPIRATION_IDEAS.md`: konkrete, belegte Themen und Ideen.
 
-HTTP 400, 401, 403 und 404 werden nicht wiederholt. Bei 429, Timeout oder 5xx erfolgen höchstens drei Wiederholungen mit Wartezeiten. Facebook, YouTube und TikTok pollen einen gültigen HTTP-202-Snapshot alle zehn Sekunden, höchstens drei Minuten. Bei einem Token- bzw. Rechtefehler gibt es höchstens eine Telegram-Meldung pro Tag.
+HTTP 400, 401, 403 und 404 werden nicht wiederholt. Bei 429, Timeout oder 5xx erfolgen höchstens drei Wiederholungen mit Wartezeiten. Facebook und YouTube pollen einen gültigen HTTP-202-Snapshot alle zehn Sekunden, höchstens drei Minuten. Instagram pollt bis fünf Minuten; TikTok bis fünf Minuten im 15-Sekunden-Takt. Bei einem Token- bzw. Rechtefehler gibt es höchstens eine Telegram-Meldung pro Tag.
