@@ -126,7 +126,7 @@ def _start_agnes_video(prompt: str, provider: dict[str, Any], api_key: str) -> d
         "POST",
         f"{provider['base_url']}/videos",
         {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-        {"model": provider["video_model"], "prompt": prompt, "duration": 5, "size": "1280x720"},
+        {"model": provider["video_model"], "prompt": prompt, "duration": 5, "size": "720x1280"},
         provider["timeout_seconds"],
     )
 
