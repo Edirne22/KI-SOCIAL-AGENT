@@ -61,3 +61,16 @@
 - Telegram-Nachrichten nur bei Preisänderungen; unsichere Preise sind als nicht bestätigt markiert.
 - `stop` und `erledigt` beenden eine Beobachtung sofort.
 - Der Auto-Track-Zustand wird ausschließlich in `memory/USER_PREFERENCES.md` gespeichert und kann jederzeit mit `auto-track: on` oder `auto-track: off` geändert werden.
+
+## Inspiration Agent
+- Nur öffentliche Daten, keine Logins oder privaten Profile.
+- Quellen verlinken, Inhalte nicht kopieren und maximal zehn Anfragen je Anbieter/Plattform/Lauf.
+- Bei Ausfall eines Anbieters laufen andere Adapter unabhängig weiter.
+
+## Race Calendar
+- Nur öffentliche Kalenderquellen nutzen und Zeiten als prüfpflichtig markieren, wenn sie nicht bestätigt sind.
+- Poster bleiben Entwürfe; Veröffentlichung erst nach ausdrücklichem Telegram-Befehl `go`.
+
+## Viral-Learning
+- Nur öffentliche Daten und eigene Performance analysieren.
+- Muster erkennen, keine fremden Posts kopieren; keine gekauften oder künstlichen Interaktionen.
