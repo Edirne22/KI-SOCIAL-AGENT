@@ -8,6 +8,8 @@ from pathlib import Path
 
 import requests
 
+from asset_paths import asset_url
+
 GRAPH_BASE = "https://graph.facebook.com/v24.0"
 PUBLISHED_PATH = Path("content/PUBLISHED.md")
 REPO_RAW = os.getenv("REPO_RAW", "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/")
@@ -55,7 +57,7 @@ def publish_carousel(caption, images, page_id, token):
     media = []
     for image in images:
         response = request_with_retry("POST", f"{GRAPH_BASE}/{page_id}/photos", data={
-            "url": REPO_RAW.rstrip("/") + "/" + image.lstrip("/"),
+            "url": asset_url(image, REPO_RAW),
             "published": "false",
             "access_token": token,
         }).json()
