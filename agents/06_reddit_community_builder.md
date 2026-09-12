@@ -20,7 +20,7 @@ Motorrad- und Reise-Communities auf Reddit, besonders deutschsprachige, türkisc
 - `memory/` und `memory/POST_HISTORY.md` für Erfahrungen und bereits genutzte Themen.
 - `content/` und `content/CONTENT_PLAN.md` als Kontext, nicht als Werbevorlage.
 - `profile/MEIN_SOCIAL_MEDIA_PROFIL.md`.
-- `profile/content/rules/BRAND_RULES.md` und `profile/content/rules/SAFETY_RULES.md`.
+- `rules/BRAND_RULES.md` und `rules/SAFETY_RULES.md`.
 - Die Regeln, Wiki-Seiten und angepinnten Beiträge des jeweiligen Subreddits.
 
 ## No-Gos
