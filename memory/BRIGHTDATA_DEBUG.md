@@ -225,3 +225,58 @@ Noch keine API-Aufrufe protokolliert.
 - Body-Länge: 14258 Zeichen
 - Erste URL: https://x.com/worldsbk/status/2098305043715789037
 - Antwort (max. 500 Zeichen): {"id":"2098305043715789037","user_posted":"WorldSBK","name":"WorldSBK","description":"What better #FridayFeeling than celebrating an 11th career hat-trick? 🏆🔥\n\n#FrenchWorldSBK 🇮🇹 #WorldSBK","date_posted":"2026-09-11T06:58:01.000Z","photos":null,"url":"https://x.com/worldsbk/status/2098305043715789037","quoted_post":{"photos":null,"videos":null},"tagged_users":null,"replies":0,"reposts":2,"likes":100,"views":6947,"external_url":null,"hashtags":["FridayFeeling","FrenchWorldSBK","WorldSBK"],"foll
+
+## Diagnose Instagram (2026-09-13 01:23)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lk5ns7kz21pck8jpis&notify=false&include_errors=true&type=discover_new&discover_by=url
+- HTTP-Status: 202 (asynchron)
+- Records: 22
+- Fehler: keine
+- Body-Länge: 378 Zeichen
+- Snapshot-ID: sd_mtz0fb1n2i3ek6xad9
+- Polling-Versuche: 5
+- Letzter Status: ready
+- Wartezeit: 41 Sekunden
+- Erste URL: https://www.instagram.com/p/DdJ7mqdCADq/
+- Antwort (max. 500 Zeichen): {"url":"https://www.instagram.com/p/DdJ7mqdCADq/","user_posted":"pramacracing","description":"@toprakrazgatlioglu7 - P21 💬\nSanMarinoGP - PRACTICE 🇸🇲\n\nToday was a very strange day. This morning, with the medium tyre, the bike felt really good and I was feeling very positive. I did my best lap time on a used medium tyre, so I was expecting to make a big step with the soft. Instead, when we put the soft tyre on, the bike completely changed. It felt almost like I was riding a rental bike! I was r
+
+## Diagnose Facebook (2026-09-13 01:25)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lkaxegm826bjpoo9m5&notify=false&include_errors=true
+- HTTP-Status: 202 (asynchron)
+- Records: 141
+- Fehler: keine
+- Body-Länge: 377 Zeichen
+- Snapshot-ID: sd_mtz0hiqn2xllbk1y9
+- Polling-Versuche: 5
+- Letzter Status: ready
+- Wartezeit: 41 Sekunden
+- Erste URL: https://www.facebook.com/MotoGP/posts/pfbid02rqrwkfVuU19enc5hVGFWjdBpFK8uXqfhDZLwuLm6rvRz7W8R12XxbVQcxnqbfNmZl
+- Antwort (max. 500 Zeichen): {"url":"https://www.facebook.com/MotoGP/posts/pfbid02rqrwkfVuU19enc5hVGFWjdBpFK8uXqfhDZLwuLm6rvRz7W8R12XxbVQcxnqbfNmZl","post_id":"1530570235770823","user_url":"https://www.facebook.com/MotoGP","user_username_raw":"MotoGP","content":"The best way to finish Super Saturday, with the best fans of the world! ❤️\n\n#SanMarinoGP🇸🇲 #MotoGP","date_posted":"2026-09-12T19:30:10.000Z","hashtags":["sanmarinogp","motogp"],"num_comments":8,"num_shares":12,"num_likes_type":{"type":"Like","num":385},"page_name"
+
+## Diagnose YouTube (2026-09-13 01:25)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lk56epmy2i5g7lzu0k&notify=false&include_errors=true&type=discover_new&discover_by=keyword
+- HTTP-Status: 200
+- Records: 0
+- Fehler: Leere Antwort – Plattform nicht verfügbar
+- Body-Länge: 0 Zeichen
+- Antwort (max. 500 Zeichen):
+
+## Diagnose TikTok (2026-09-13 01:31)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_m7n5ixlw1gc4no56kx&notify=false&include_errors=true
+- HTTP-Status: 202 (asynchron)
+- Records: 0
+- Fehler: Snapshot-Timeout nach 5 Minuten
+- Body-Länge: 377 Zeichen
+- Snapshot-ID: sd_mtz0jw9vss162ep06
+- Polling-Versuche: 20
+- Letzter Status: running
+- Wartezeit: 300 Sekunden
+- Antwort (max. 500 Zeichen): {"status":"running","snapshot_id":"sd_mtz0jw9vss162ep06","dataset_id":"gd_m7n5ixlw1gc4no56kx","running_time":349672}
+
+## Diagnose X (2026-09-13 01:32)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lwxkxvnf1cynvib9co&notify=false&include_errors=true&type=discover_new&discover_by=profile_url
+- HTTP-Status: 200
+- Records: 10
+- Fehler: keine
+- Body-Länge: 14258 Zeichen
+- Erste URL: https://x.com/worldsbk/status/2098381043334000720
+- Antwort (max. 500 Zeichen): {"id":"2098381043334000720","user_posted":"WorldSBK","name":"WorldSBK","description":"Early drama! 💥 \n\nJorge Navarro was pushing hard at the front when it all came undone 😬\n\n#FrenchWorldSBK 🇫🇷 #WorldSBK","date_posted":"2026-09-11T12:00:01.000Z","photos":null,"url":"https://x.com/worldsbk/status/2098381043334000720","quoted_post":{"photos":null,"videos":null},"tagged_users":null,"replies":0,"reposts":4,"likes":89,"views":11263,"external_url":null,"hashtags":["FrenchWorldSBK","WorldSBK"],"foll
