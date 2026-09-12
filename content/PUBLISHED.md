@@ -9,7 +9,6 @@ Bild: auto-image-8274.jpg
 
 ## Story
 Video: test-agnes-video.mp4
-Bild: auto-image-1613.jpg
 
 ## Instagram Reel / TikTok [FREIGEGEBEN 2026-09-12 09:25]
 Status: FREIGEGEBEN
