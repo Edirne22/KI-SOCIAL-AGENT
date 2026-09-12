@@ -73,7 +73,7 @@ def test_video():
         "model": "agnes-video-v2.0",
         "prompt": "Cinematic shot of a motorcycle riding on a winding mountain road at sunset, ultra realistic",
         "duration": 5,
-        "size": "1280x720"
+        "size": "720x1280"
     }
     r = requests.post(url, headers=get_headers(), json=payload, timeout=60)
     print(f"Status: {r.status_code}")
@@ -108,9 +108,9 @@ def test_video():
             if video_url:
                 print(f"Video-URL: {video_url}")
                 vid = requests.get(video_url, timeout=120)
-                with open("test-agnes-video.mp4", "wb") as f:
+                with open("test-agnes-video-portrait.mp4", "wb") as f:
                     f.write(vid.content)
-                print("Gespeichert: test-agnes-video.mp4")
+                print("Gespeichert: test-agnes-video-portrait.mp4")
             else:
                 print("Status fertig, aber keine URL gefunden:", str(st)[:300])
             return True
