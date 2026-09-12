@@ -24,7 +24,12 @@ API_ROOT = "https://api.brightdata.com/datasets/v3/scrape"
 SNAPSHOT_ROOT = "https://api.brightdata.com/datasets/v3"
 TZ = ZoneInfo("Europe/Berlin")
 RETRY_DELAYS = (30, 60, 120)
-ASYNC_PLATFORMS = {"facebook", "youtube", "tiktok"}
+ASYNC_SETTINGS = {
+    "facebook": (180, 10),
+    "youtube": (180, 10),
+    "tiktok": (300, 15),
+    "instagram": (300, 10),
+}
 
 PLATFORMS = {
     "instagram": {
@@ -54,8 +59,8 @@ PLATFORMS = {
     "x": {
         "label": "X", "dataset": "gd_lwxkxvnf1cynvib9co",
         "endpoint": f"{API_ROOT}?dataset_id=gd_lwxkxvnf1cynvib9co&notify=false&include_errors=true&type=discover_new&discover_by=profile_url",
-        "date_format": "%Y-%m-%d", "text": ("text",), "date": ("date_posted",), "url": ("url",),
-        "engagement": (("Likes", ("likes",)), ("Antworten", ("replies",)), ("Retweets", ("retweets",))),
+        "date_format": "%Y-%m-%d", "text": ("description", "text"), "date": ("date_posted",), "url": ("url",),
+        "engagement": (("Likes", ("likes",)), ("Antworten", ("replies",)), ("Reposts", ("reposts", "retweets")), ("Views", ("views",))),
     },
 }
 
@@ -106,7 +111,23 @@ def _records(payload: object) -> list[dict]:
             value = payload.get(key)
             if isinstance(value, list):
                 return [item for item in value if isinstance(item, dict)]
+        if any(key in payload for key in ("id", "url", "description", "text", "title")):
+            return [payload]
     return []
+
+
+def _x_ndjson_records(text: str) -> list[dict]:
+    """Liest X-Antworten, die als zeilengetrenntes JSON geliefert werden."""
+    records: list[dict] = []
+    for line in text.splitlines():
+        if not line.strip():
+            continue
+        try:
+            item = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        records.extend(_records(item))
+    return records
 
 
 def _error_text(payload: object) -> str:
@@ -189,39 +210,41 @@ def _post_with_retry(endpoint: str, headers: dict, payload: dict) -> tuple[reque
     return None, "unbekannter Netzwerkfehler"
 
 
-def _poll_snapshot(snapshot_id: str, headers: dict, token: str) -> tuple[list[dict], str, dict, str]:
-    """Pollt maximal drei Minuten, alle zehn Sekunden, und lädt dann den Snapshot."""
+def _poll_snapshot(snapshot_id: str, headers: dict, timeout_seconds: int, interval_seconds: int) -> tuple[list[dict], str, dict, str]:
+    """Pollt einen bestätigten Async-Snapshot mit plattformspezifischem Zeitfenster."""
     started = time.monotonic()
     attempts = 0
     progress_endpoint = f"{SNAPSHOT_ROOT}/progress/{snapshot_id}"
     last_status = "unbekannt"
     last_response = ""
-    while time.monotonic() - started <= 180:
+    while time.monotonic() - started <= timeout_seconds:
         attempts += 1
         try:
             progress = requests.get(progress_endpoint, headers=headers, timeout=30)
         except requests.Timeout:
             last_status = "Timeout"
-            time.sleep(10)
+            time.sleep(interval_seconds)
             continue
         except requests.RequestException as error:
-            return [], type(error).__name__, {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": type(error).__name__, "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
+            details = {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": type(error).__name__, "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}
+            return [], type(error).__name__, details, last_response
         last_response = progress.text
         try:
             payload = progress.json()
         except ValueError:
             payload = {}
         last_status = str(payload.get("status", "unbekannt"))
+        details = {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": last_status, "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}
         if progress.status_code != 200:
-            return [], f"Polling HTTP {progress.status_code}", {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": last_status, "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
+            return [], f"Polling HTTP {progress.status_code}", details, last_response
         if last_status == "failed":
-            return [], _error_text(payload) or "Snapshot fehlgeschlagen", {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": "failed", "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
+            return [], _error_text(payload) or "Snapshot fehlgeschlagen", details, last_response
         if last_status == "ready":
             snapshot_endpoint = f"{SNAPSHOT_ROOT}/snapshot/{snapshot_id}"
             try:
                 snapshot = requests.get(snapshot_endpoint, headers=headers, timeout=60)
             except requests.RequestException as error:
-                return [], type(error).__name__, {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": "ready", "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
+                return [], type(error).__name__, details, last_response
             last_response = snapshot.text
             try:
                 data = snapshot.json()
@@ -231,9 +254,10 @@ def _poll_snapshot(snapshot_id: str, headers: dict, token: str) -> tuple[list[di
             error = _error_text(data)
             if snapshot.status_code != 200:
                 error = error or f"Snapshot HTTP {snapshot.status_code}"
-            return records, error, {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": "ready", "Wartezeit": f"{int(time.monotonic() - started)} Sekunden"}, last_response
-        time.sleep(10)
-    return [], "Snapshot-Timeout nach 3 Minuten", {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": last_status, "Wartezeit": "180 Sekunden"}, last_response
+            return records, error, details, last_response
+        time.sleep(interval_seconds)
+    details = {"Snapshot-ID": snapshot_id, "Polling-Versuche": attempts, "Letzter Status": last_status, "Wartezeit": f"{timeout_seconds} Sekunden"}
+    return [], f"Snapshot-Timeout nach {timeout_seconds // 60} Minuten", details, last_response
 
 
 def _parse_posted_date(value: str) -> date | None:
@@ -307,25 +331,31 @@ def _run_platform(platform: str, token: str) -> tuple[list[dict], str, str, str]
     except ValueError:
         payload = {}
     records = _records(payload)
+    if platform == "x" and not records:
+        records = _x_ndjson_records(response.text)
     error = _error_text(payload)
-    extra: dict = {}
+    extra: dict = {"Body-Länge": f"{len(response.text)} Zeichen"}
     response_text = response.text
     status = str(response.status_code)
 
     if response.status_code in (401, 403):
         _send_token_alert_once(response.status_code)
-    if response.status_code == 202 and platform in ASYNC_PLATFORMS:
-        snapshot_id = payload.get("snapshot_id") if isinstance(payload, dict) else None
+    if response.status_code == 202 and platform in ASYNC_SETTINGS:
+        snapshot_id = (payload.get("snapshot_id") or payload.get("id")) if isinstance(payload, dict) else None
         if not snapshot_id:
             error = error or "HTTP 202 ohne Snapshot-ID"
         else:
-            records, poll_error, extra, response_text = _poll_snapshot(str(snapshot_id), headers, token)
+            timeout_seconds, interval_seconds = ASYNC_SETTINGS[platform]
+            records, poll_error, poll_details, response_text = _poll_snapshot(str(snapshot_id), headers, timeout_seconds, interval_seconds)
+            extra.update(poll_details)
             error = poll_error
             status = "202 (asynchron)"
     elif response.status_code == 202:
         error = error or "Unerwartetes asynchrones Ergebnis für synchronen Scraper"
     elif response.status_code != 200:
         error = error or f"HTTP {response.status_code}"
+    elif platform == "youtube" and not response.text.strip():
+        error = "Leere Antwort – Plattform nicht verfügbar"
     elif isinstance(payload, dict) and (payload.get("snapshot_id") or payload.get("id")) and not records:
         error = "Synchroner Aufruf lieferte nur eine Snapshot-ID – Endpoint laut Dashboard-Beispiel prüfen. Kein automatisches Polling."
 
