@@ -35,4 +35,5 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add content/PUBLISHED.md
           git commit -m "Auto: Instagram-Story als veröffentlicht markiert" || echo "Keine Änderungen"
+          git pull --rebase origin main
           git push
