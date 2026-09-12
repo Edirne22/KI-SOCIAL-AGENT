@@ -20,6 +20,8 @@ jobs:
           BRIGHTDATA_INPUT_INSTAGRAM: ${{ secrets.BRIGHTDATA_INPUT_INSTAGRAM }}
           BRIGHTDATA_INPUT_FACEBOOK: ${{ secrets.BRIGHTDATA_INPUT_FACEBOOK }}
           BRIGHTDATA_INPUT_YOUTUBE: ${{ secrets.BRIGHTDATA_INPUT_YOUTUBE }}
+          BRIGHTDATA_INPUT_TIKTOK: ${{ secrets.BRIGHTDATA_INPUT_TIKTOK }}
+          BRIGHTDATA_INPUT_X: ${{ secrets.BRIGHTDATA_INPUT_X }}
           BRIGHTDATA_DATASET_INSTAGRAM: ${{ vars.BRIGHTDATA_DATASET_INSTAGRAM }}
           BRIGHTDATA_DATASET_FACEBOOK: ${{ vars.BRIGHTDATA_DATASET_FACEBOOK }}
           BRIGHTDATA_DATASET_YOUTUBE: ${{ vars.BRIGHTDATA_DATASET_YOUTUBE }}
@@ -37,6 +39,7 @@ jobs:
           git add memory/INSPIRATION_APIFY.md 2>/dev/null || true
           git add memory/INSPIRATION_BRIGHTDATA.md 2>/dev/null || true
           git add memory/BRIGHTDATA_DEBUG.md 2>/dev/null || true
+          git add memory/BRIGHTDATA_ALERT_STATE.md 2>/dev/null || true
           git add memory/INSPIRATION_CRAWLBASE.md 2>/dev/null || true
           git add memory/INSPIRATION_LOG.md 2>/dev/null || true
           git add memory/INSPIRATION_ARCHIVE/ 2>/dev/null || true
