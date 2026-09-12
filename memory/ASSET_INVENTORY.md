@@ -1,6 +1,6 @@
 # Asset-Inventar
 
-Stand: 2026-09-12 15:35 (Zielnamen-Fix)
+Stand: 2026-09-12 15:45
 
 | Datei | Typ | In PUBLISHED.md | Ziel-Pfad |
 |---|---|---|---|
