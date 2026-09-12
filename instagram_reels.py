@@ -107,11 +107,11 @@ def publish_reel(ig_user_id: str, token: str, creation_id: str) -> str | None:
     return response.json().get("id") if response else None
 
 
-def mark_block(content: str, block: str) -> str:
+def mark_block(content: str, block: str, media_id: str) -> str:
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
     updated_block = re.sub(
         r"^## (Instagram Reel|Reel)(?:\s+\[[^\]]+\])?",
-        lambda match: f"## {match.group(1)} [GEPOSTET {timestamp}]",
+        lambda match: f"## {match.group(1)} [GEPOSTET {timestamp} | ID: {media_id}]",
         block,
         count=1,
         flags=re.MULTILINE,
@@ -148,7 +148,7 @@ def main() -> None:
         raise RuntimeError("Instagram hat das Reel nicht veröffentlicht.")
 
     with open("content/PUBLISHED.md", "w", encoding="utf-8") as handle:
-        handle.write(mark_block(content, block))
+        handle.write(mark_block(content, block, post_id))
     print(f"Instagram Reel veröffentlicht: {post_id}")
 
 
