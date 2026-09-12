@@ -27,4 +27,4 @@ Speichert, was Bülent mag und was nicht – basierend auf Freigaben, Ablehnunge
 - Wenige Emojis
 
 ## Deal-Hunter
-- Auto-Track: on
+- Auto-Track: off
