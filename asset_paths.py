@@ -32,7 +32,8 @@ def _month(day: date | None = None) -> str:
 
 def get_image_path(slug: str, number: int = 1, day: date | None = None) -> Path:
     stamp = day or date.today()
-    return ASSETS / "images" / _month(stamp) / f"{stamp:%Y-%m-%d}-{slugify(slug)}-{number:02d}.jpg"
+    clean_slug = re.sub(r"-\\d{2}$", "", slugify(slug))
+    return ASSETS / "images" / _month(stamp) / f"{stamp:%Y-%m-%d}-{clean_slug}-{number:02d}.jpg"
 
 
 def get_video_path(slug: str, day: date | None = None) -> Path:
