@@ -14,6 +14,7 @@ jobs:
         with: {python-version: "3.10"}
       - run: pip install requests pillow
       - env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
         run: python -m race.race_calendar
       - name: Commit
