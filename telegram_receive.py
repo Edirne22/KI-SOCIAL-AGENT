@@ -219,9 +219,22 @@ def main() -> None:
             acknowledge_through(update_id)
             continue
 
-        lowered_command = message_text.strip().lower()
+        text_lower = message_text.strip().lower()
+        print(f"DEBUG: Text='{message_text}'")
+        print(f"DEBUG: lower='{text_lower}'")
+        print(f"DEBUG: match_trend={text_lower.startswith('trend:')}")
+        print(f"DEBUG: match_track={text_lower.startswith('track:')}")
+        print(f"DEBUG: match_watchlist={text_lower.strip() in ('watchlist', 'liste')}")
+
         auto_track_prefixes = ("auto-track:", "autotrack:", "auto track:")
-        if lowered_command.startswith(auto_track_prefixes):
+        is_trend_command = text_lower.startswith(("trend:", "trend ", "trend\t"))
+        is_track_command = text_lower == "track" or text_lower.startswith(("track:", "track ", "track\t"))
+        deal_command = parse_deal_command(message_text)
+        stop_product = _named_command(message_text, ("stop", "beenden"))
+        done_product = _named_command(message_text, ("erledigt", "gekauft"))
+
+        # Exklusive Reihenfolge: Eine Telegram-Nachricht kann nur einen Handler erreichen.
+        if text_lower.startswith(auto_track_prefixes):
             print(f"Empfangen: {message_text} → erkannt als: Auto-Track")
             value = message_text.split(":", 1)[1].strip().lower()
             if value not in {"on", "off"}:
@@ -234,48 +247,25 @@ def main() -> None:
                     if enabled
                     else "⏸️ Auto-Track aus. Bei deal:-Suche frage ich wieder nach."
                 )
-            acknowledge_through(update_id)
-            return
-        is_trend_command = lowered_command.startswith(("trend:", "trend ", "trend\t"))
-        if is_trend_command:
+
+        elif is_trend_command:
             print(f"Empfangen: {message_text} → erkannt als: Trend")
             product = re.sub(r"(?is)^\s*trend\s*:?\s*", "", message_text).strip()
             send_message(trend_message(product) if product else "Bitte nutze: trend: <Produkt>")
-            acknowledge_through(update_id)
-            return
-        if lowered_command == "watchlist":
-            active = WATCHLIST.read_text(encoding="utf-8") if WATCHLIST.exists() else "Keine Watchlist vorhanden."
-            send_message("📋 Watchlist\n" + active[:3000])
-            acknowledge_through(update_id)
-            return
-        is_track_command = lowered_command == "track" or lowered_command.startswith(("track:", "track ", "track\t"))
-        track_command = parse_track_command(message_text) if is_track_command else None
-        if track_command is not None:
+
+        elif is_track_command:
             print(f"Empfangen: {message_text} → erkannt als: Track")
-            name, criteria = track_command
+            name, criteria = parse_track_command(message_text) or ("", "")
             if not name:
                 from deal_hunter import LAST_QUERY_FILE
-                if LAST_QUERY_FILE.exists() and lowered_command == "track":
+                if LAST_QUERY_FILE.exists() and text_lower == "track":
                     send_message(track_product(LAST_QUERY_FILE.read_text(encoding="utf-8").strip()))
                 else:
                     send_message(TRACK_HELP)
             else:
                 send_message(track_product(name, criteria))
-            acknowledge_through(update_id)
-            return
-        for names, completed in ((("stop", "beenden"), False), (("erledigt", "gekauft"), True)):
-            product = _named_command(message_text, names)
-            if product is not None:
-                print(f"Empfangen: {message_text} → erkannt als: {'Erledigt' if completed else 'Stop'}")
-                if not product:
-                    send_message("Bitte nenne ein Produkt, zum Beispiel: stop: Motorradhandschuhe")
-                else:
-                    send_message(stop_tracking(product, completed))
-                acknowledge_through(update_id)
-                return
 
-        deal_command = parse_deal_command(message_text)
-        if deal_command:
+        elif deal_command:
             command, value = deal_command
             print(f"Empfangen: {message_text} → erkannt als: {'Deal-Test' if command == 'test' else 'Deal-Suche'}")
             if command == "search":
@@ -299,33 +289,47 @@ def main() -> None:
                 else:
                     result = test_coupon(parts[0], parts[1])
                     send_message(f"Code-Test: {result['status']} – {result['reason']}")
-            acknowledge_through(update_id)
-            return
 
-        print(f"Empfangen: {message_text} → erkannt als: Freigabe/Unbekannt")
-        session_timestamp, posts = load_session()
-        message_timestamp = message.get("date", 0)
-        if message_timestamp < session_timestamp:
-            acknowledge_through(update_id)
-            continue
+        elif stop_product is not None:
+            print(f"Empfangen: {message_text} → erkannt als: Stop")
+            if not stop_product:
+                send_message("Bitte nenne ein Produkt, zum Beispiel: stop: Motorradhandschuhe")
+            else:
+                send_message(stop_tracking(stop_product, False))
 
-        selected = parse_approval(message_text)
-        if selected is None:
-            send_message("Danke! Bitte antworte mit 1,3, alle, ✅, nein oder ❌; für Recherche: deal: <Produkt>.")
-            acknowledge_through(update_id)
-            return
+        elif done_product is not None:
+            print(f"Empfangen: {message_text} → erkannt als: Erledigt")
+            if not done_product:
+                send_message("Bitte nenne ein Produkt, zum Beispiel: erledigt: Motorradhandschuhe")
+            else:
+                send_message(stop_tracking(done_product, True))
 
-        if not selected:
-            send_message("Keine Beiträge freigegeben. In PUBLISHED.md wurde nichts eingetragen.")
-            acknowledge_through(update_id)
-            return
+        elif text_lower in ("watchlist", "liste"):
+            print(f"Empfangen: {message_text} → erkannt als: Watchlist")
+            active = WATCHLIST.read_text(encoding="utf-8") if WATCHLIST.exists() else "Keine Watchlist vorhanden."
+            send_message("📋 Watchlist\n" + active[:3000])
 
-        append_approved_posts(posts, selected, update_id)
-        selected_text = "+".join(str(number) for number in selected)
-        send_message(
-            f"Beitrag {selected_text} freigegeben – für 12:00 vorgemerkt. "
-            "Die Veröffentlichung bleibt manuell."
-        )
+        else:
+            print(f"DEBUG: Kein Kommando erkannt für: {message_text}")
+            session_timestamp, posts = load_session()
+            message_timestamp = message.get("date", 0)
+            if message_timestamp < session_timestamp:
+                acknowledge_through(update_id)
+                continue
+
+            selected = parse_approval(message_text)
+            if selected is None:
+                send_message("Danke! Bitte antworte mit 1,3, alle, ✅, nein oder ❌; für Recherche: deal: <Produkt>.")
+            elif not selected:
+                send_message("Keine Beiträge freigegeben. In PUBLISHED.md wurde nichts eingetragen.")
+            else:
+                append_approved_posts(posts, selected, update_id)
+                selected_text = "+".join(str(number) for number in selected)
+                send_message(
+                    f"Beitrag {selected_text} freigegeben – für 12:00 vorgemerkt. "
+                    "Die Veröffentlichung bleibt manuell."
+                )
+
         acknowledge_through(update_id)
         return
 
