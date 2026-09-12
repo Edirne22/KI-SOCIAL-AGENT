@@ -27,17 +27,18 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python telegram_receive.py
 
       - name: Commit approved posts only
         run: |
-          if git diff --quiet -- content/PUBLISHED.md; then
-            echo "Keine Freigabe – PUBLISHED.md bleibt unverändert."
+          if git diff --quiet -- content/PUBLISHED.md memory/DEALS_FOUND.md; then
+            echo "Keine Freigabe oder Deal-Recherche – keine Änderungen."
             exit 0
           fi
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/PUBLISHED.md
-          git commit -m "Telegram: Beiträge freigegeben"
+          git add content/PUBLISHED.md memory/DEALS_FOUND.md 2>/dev/null || true
+          git commit -m "Telegram: Freigabe oder Deal-Recherche"
           git pull --rebase origin main
           git push
