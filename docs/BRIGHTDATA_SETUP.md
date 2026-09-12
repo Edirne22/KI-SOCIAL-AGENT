@@ -1,57 +1,89 @@
-# Bright Data Setup
+# Bright Data: fünf Plattformen einrichten
 
 ## Zweck
 
-Bright Data liefert öffentliche Social-Media-Daten für den Inspiration Agent. Bright Data bietet je nach Produkt und Tarif einen kostenlosen Einstieg. Den aktuellen Umfang und monatliche Freikontingente bitte im eigenen Bright-Data-Dashboard prüfen.
+Der Inspiration Agent nutzt die Bright-Data-Scraper-API für öffentliche Inhalte von Instagram, Facebook, YouTube, TikTok und X. Die aktuelle Preis- und Kontingent-Anzeige im eigenen Bright-Data-Dashboard ist maßgeblich.
 
-## 1. Account und Datasets
+## 1. Zugang im Bright-Data-Dashboard prüfen
 
-1. Öffne [Bright Data](https://brightdata.com) und melde dich an.
-2. Öffne im Dashboard **Web Scraper** → **Datasets**.
-3. Wähle für Instagram, Facebook und YouTube jeweils ein passendes Dataset.
-4. Kopiere pro Dataset die Dataset-ID (beginnt mit gd_) sowie das vom Dashboard gezeigte Input-JSON.
+1. Öffne das Bright-Data-Dashboard und wähle **Web Scraper / Scraper API**.
+2. Prüfe für jede Plattform den dort gezeigten API-Beispielaufruf.
+3. Die im Projekt hinterlegten Dataset-IDs und Endpoints dürfen nur verwendet werden, wenn sie mit deinem Dashboard-Beispiel übereinstimmen.
+4. Falls ein Beispiel statt direkter Daten nur eine Job- oder Snapshot-ID liefert, nicht raten: Endpoint bzw. Produkt im Dashboard prüfen.
 
-Die Dataset-ID allein reicht nicht: Jedes Dataset erwartet ein eigenes JSON-Input-Format.
+## 2. GitHub-Secrets
 
-## 2. GitHub konfigurieren
+Öffne im Repository **Settings → Secrets and variables → Actions → Secrets** und hinterlege:
 
-Unter **Settings → Secrets and variables → Actions**:
+- `BRIGHTDATA_API_TOKEN`
+- `BRIGHTDATA_INPUT_INSTAGRAM`
+- `BRIGHTDATA_INPUT_FACEBOOK`
+- `BRIGHTDATA_INPUT_YOUTUBE`
+- `BRIGHTDATA_INPUT_TIKTOK`
+- `BRIGHTDATA_INPUT_X`
 
-### Variables
+Jedes Plattform-Secret enthält ausschließlich eine JSON-Liste. Der Agent ergänzt nur die dokumentierten Zeitraumfelder; für TikTok baut er aus dem Keyword eine Such-URL mit aktuellem Millisekunden-Zeitstempel.
 
-- BRIGHTDATA_DATASET_INSTAGRAM
-- BRIGHTDATA_DATASET_FACEBOOK
-- BRIGHTDATA_DATASET_YOUTUBE
-- BRIGHTDATA_ZONE – Name einer vorhandenen Unlocker-/SERP-Zone
-- BRIGHTDATA_ENABLE_UNLOCKER_FALLBACK – standardmäßig false
+### Instagram
 
-### Secrets
+```json
+[
+  {"url":"https://www.instagram.com/toprakrazgatlioglu/","num_of_posts":10,"post_type":"Post"},
+  {"url":"https://www.instagram.com/motogp/","num_of_posts":10,"post_type":"Post"}
+]
+```
 
-- BRIGHTDATA_API_TOKEN
-- BRIGHTDATA_INPUT_INSTAGRAM
-- BRIGHTDATA_INPUT_FACEBOOK
-- BRIGHTDATA_INPUT_YOUTUBE
+### Facebook
 
-Die Input-Secrets müssen gültiges JSON enthalten und werden unverändert an Bright Data gesendet. Beispiele:
+```json
+[
+  {"url":"https://www.facebook.com/MotoGP/","num_of_posts":10},
+  {"url":"https://www.facebook.com/WorldSBK/","num_of_posts":10}
+]
+```
 
-    [{"url":"https://www.instagram.com/explore/tags/motogp/"}]
+### YouTube
 
-    [{"url":"https://www.facebook.com/MotoGP"}]
+```json
+[
+  {"keyword":"MotoGP Toprak Razgatlioglu","num_of_posts":10,"include_shorts":true},
+  {"keyword":"WorldSBK 2026 Highlights","num_of_posts":10,"include_shorts":true}
+]
+```
 
-    [{"keyword":"Toprak Razgatlioglu","num_of_posts":10}]
+### TikTok
 
-Das korrekte Format stammt immer aus dem Input-Beispiel des tatsächlich ausgewählten Datasets.
+```json
+[
+  {"keyword":"motogp","num_of_posts":10},
+  {"keyword":"toprak razgatlioglu","num_of_posts":10}
+]
+```
 
-## 3. Test und Diagnose
+TikTok unterstützt in diesem Aufbau keinen Datumsfilter. Hat ein Treffer ein lesbares Datum, filtert der Agent lokal auf die letzten sieben vollen Kalendertage. Fehlt ein Datum, kennzeichnet der Report dies offen.
 
-Starte **Actions → Inspiration Agent → Run workflow**. Prüfe danach:
+### X
 
-- memory/BRIGHTDATA_DEBUG.md für Endpunkt, HTTP-Status, Snapshot-Status, Records und Error-Codes;
-- memory/INSPIRATION_BRIGHTDATA.md für die Diagnose je Plattform;
-- memory/INSPIRATION_IDEAS.md für die daraus abgeleiteten, belegten Ideen.
+```json
+[
+  {"url":"https://x.com/toprakrazgatlioglu"},
+  {"url":"https://x.com/MotoGP"}
+]
+```
 
-0 Datensätze ist nur dann ein normales leeres Ergebnis, wenn keine Error-Codes vorliegen. Bei dead_page zuerst Input-URL und Input-Format prüfen; falls beides korrekt ist, Dataset-ID und Dataset-Status im Bright-Data-Dashboard prüfen.
+## 3. Zeitraum und Sicherheit
 
-## Web Unlocker
+- Zeitbasis: Europe/Berlin.
+- Zeitraum für Instagram, Facebook, YouTube und X: sieben abgeschlossene Kalendertage, von gestern bis sechs Tage davor.
+- Fehlende Werte werden als „nicht verfügbar“ ausgewiesen; es werden keine Inhalte, Daten oder Kennzahlen erfunden.
+- Der Agent akzeptiert kein altes SERP-Format mit `google_query`. Er meldet den Fehler klar, damit du das Secret ersetzen kannst.
+- Tokens, Cookies und Header werden niemals in Logs geschrieben.
 
-Der Web Unlocker ist standardmäßig deaktiviert. Setze BRIGHTDATA_ENABLE_UNLOCKER_FALLBACK nur bewusst auf true. Pro Workflow-Lauf wird dann maximal eine Testanfrage ausgeführt; ohne BRIGHTDATA_ZONE wird sie übersprungen.
+## 4. Test
+
+1. Starte **Actions → Inspiration Agent → Run workflow**.
+2. Prüfe `memory/BRIGHTDATA_DEBUG.md`: jede Plattform hat einen Status; Antworten sind auf 500 Zeichen und relevante Daten begrenzt.
+3. Prüfe `memory/INSPIRATION_BRIGHTDATA.md`: Records und Quellenstatus je Plattform.
+4. Prüfe `memory/INSPIRATION_IDEAS.md`: konkrete, belegte Themen und Ideen.
+
+HTTP 400, 401, 403 und 404 werden nicht wiederholt. Bei 429, Timeout oder 5xx erfolgen höchstens drei Wiederholungen mit Wartezeiten. Bei einem Token- bzw. Rechtefehler gibt es höchstens eine Telegram-Meldung pro Tag.
