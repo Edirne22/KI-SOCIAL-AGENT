@@ -31,3 +31,11 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 2: Diese KI-Funktion rettet deine Motorradtour, bevor der Regen kommt.
 - Titel 3: Türkish Bikers Club Stuttgart – Tradition auf zwei Rädern
 - Hook 3: Seit 1992 auf zwei Rädern: Wie eine Legende die türkische Biker-Szene aufgebaut hat.
+
+### 2026-09-12 23:48 | Entwurf generiert
+- Titel 1: Kenan & Zayn Sofuoğlu: Wie eine Rennfahrer-Dynastie entsteht
+- Hook 1: Was macht ein 7-Jähriger mit mehr Fahrzeugbeherrschung als die meisten Erwachsenen?
+- Titel 2: KI-Scout & Biker-POIs: Versteckte Strecken statt Touristenstau
+- Hook 2: Warum fährst du auf deiner Tour eigentlich noch den Massen hinterher?
+- Titel 3: Turkbirler: Fahren für die Seele statt für den Lärm
+- Hook 3: Fährst du für den Lärm – oder für deine Seele?
