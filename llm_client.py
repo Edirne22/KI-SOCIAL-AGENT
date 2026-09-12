@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import argparse
 import re
-from typing import Any
+from pathlib import Path
+from typing import Any, Sequence
 
 import requests
 
@@ -23,6 +24,41 @@ def redact_secrets(value: str) -> str:
     for pattern, replacement in SECRET_PATTERNS:
         value = pattern.sub(replacement, value)
     return value
+
+
+def load_agent(agent_file: str) -> str:
+    """Lädt eine Agenten-Anweisung aus dem lokalen Verzeichnis ``agents/``.
+
+    Es sind nur Dateinamen innerhalb von ``agents/`` erlaubt. Dadurch können
+    Prompt-Aufrufe keine beliebigen Dateien aus dem Runner lesen.
+    """
+    requested_name = agent_file.strip()
+    if requested_name.endswith(".md"):
+        requested_name = requested_name[:-3]
+
+    if not requested_name or "/" in requested_name or "\\" in requested_name or requested_name in {".", ".."}:
+        raise ValueError("Agenten-Datei muss als einfacher Name ohne Pfad angegeben werden.")
+
+    agents_dir = Path(__file__).resolve().parent / "agents"
+    agent_path = (agents_dir / f"{requested_name}.md").resolve()
+    if agent_path.parent != agents_dir.resolve():
+        raise ValueError("Ungültiger Agenten-Dateiname.")
+
+    try:
+        return agent_path.read_text(encoding="utf-8").strip()
+    except FileNotFoundError as error:
+        raise FileNotFoundError(f"Agenten-Datei nicht gefunden: {agent_path.name}") from error
+
+
+def get_agent_context(agent_names: Sequence[str]) -> str:
+    """Kombiniert die Anweisungen der angeforderten Agenten für einen Prompt."""
+    contexts: list[str] = []
+    for agent_name in agent_names:
+        normalized_name = agent_name[:-3] if agent_name.endswith(".md") else agent_name
+        content = load_agent(normalized_name)
+        contexts.append(f"--- Agent: {normalized_name} ---\n{content}")
+
+    return "\n\n".join(contexts)
 
 
 def _request_json(
