@@ -20,7 +20,7 @@ Motorradfans, Reisende und Community-Mitglieder mit Bezug zu Deutschland und/ode
 - `memory/POST_HISTORY.md` für bereits veröffentlichte Themen und Wiederholungen.
 - `memory/` für bestätigte Learnings, Vorlieben und Community-Kontext.
 - `content/CONTENT_PLAN.md` und `content/` für geplante Inhalte.
-- `profile/MEIN_SOCIAL_MEDIA_PROFIL.md` sowie `profile/content/rules/BRAND_RULES.md` und `profile/content/rules/SAFETY_RULES.md`.
+- `profile/MEIN_SOCIAL_MEDIA_PROFIL.md` sowie `rules/BRAND_RULES.md` und `rules/SAFETY_RULES.md`.
 
 ## No-Gos
 - Keine erfundenen Erlebnisse, Fakten, Preise oder Quellen.
