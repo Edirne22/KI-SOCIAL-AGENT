@@ -33,7 +33,8 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/PUBLISHED.md auto-image-*.jpg || true
+          git add content/PUBLISHED.md 2>/dev/null || true
+          git add assets/images 2>/dev/null || true
           git commit -m "Auto: Bild für offenen Beitrag hinzugefügt" || echo "Keine Änderungen"
           git pull --rebase origin main
           git push
