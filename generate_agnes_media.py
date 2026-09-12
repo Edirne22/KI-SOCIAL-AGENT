@@ -236,8 +236,9 @@ def process_block(content, platform_header, want_video_check=True):
             continue
 
         has_image = bool(re.search(r"Bild:\s*\S+", body))
+        has_video = bool(re.search(r"Video:\s*\S+", body))
         video_requested = wants_video(body)
-        if has_image and not video_requested:
+        if (has_image or has_video) and not video_requested:
             continue
 
         text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\nVideo:|\Z)", body, re.DOTALL)
@@ -248,7 +249,7 @@ def process_block(content, platform_header, want_video_check=True):
         updated_block = block
 
         # === 1) BILD via Agnes (nur wenn im Block noch keines vorhanden ist) ===
-        if not has_image:
+        if not has_image and not has_video:
             if is_racing_content(text):
                 prompt = get_racing_prompt(text)
             else:
