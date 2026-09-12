@@ -73,7 +73,8 @@ def resolve_asset(path_or_filename: str) -> str:
     """Löst neue Pfade sowie alte Dateinamen sicher und eindeutig auf."""
     candidate = _safe_relative(path_or_filename)
     if len(candidate.parts) > 1:
-        if candidate.parts[0] != "assets":
+        # assets/ ist das neue Format; race-posters/ bleibt bis zur Migration als Legacy-Pfad lesbar.
+        if candidate.parts[0] not in {"assets", "race-posters"}:
             raise AssetResolutionError("Vollständige Asset-Pfade müssen mit assets/ beginnen.")
         if not candidate.is_file():
             raise AssetResolutionError(f"Asset nicht gefunden: {candidate.as_posix()}")
