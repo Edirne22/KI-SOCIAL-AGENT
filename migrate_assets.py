@@ -111,20 +111,33 @@ def apply(plan, content: str):
     return moved, warnings
 
 
+def already_migrated_paths(content: str) -> list[str]:
+    paths = []
+    for value in re.findall(r"(?m)^(?:Bild|Video):\\s*(assets/[^\\s]+)", content):
+        if Path(value).is_file():
+            paths.append(value)
+    return sorted(set(paths))
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--apply", action="store_true", help="Verschiebt erst nach vorheriger Inventar-Prüfung.")
     args = parser.parse_args()
     content = PUBLISHED.read_text(encoding="utf-8") if PUBLISHED.exists() else ""
     plan = plan_migration(content)
+    already_migrated = already_migrated_paths(content)
     write_inventory(plan)
     if not args.apply:
         print(f"Vorschau erstellt: {len(plan)} Datei(en). Keine Datei wurde verschoben.")
+        for path in already_migrated:
+            print(f"Bereits migriert, überspringe: {path}")
         return
 
     moved, warnings = apply(plan, content)
     lines = ["# Migrationslog", "", f"Stand: {datetime.now():%Y-%m-%d %H:%M}", "", "## Verschoben"]
     lines.extend(f"- {entry}" for entry in moved) or lines.append("- Keine Dateien verschoben.")
+    if already_migrated:
+        lines += ["", "## Bereits migriert, übersprungen"] + [f"- {path}" for path in already_migrated]
     if warnings:
         lines += ["", "## Manuell prüfen"] + [f"- {entry}" for entry in warnings]
     LOG.write_text("\n".join(lines) + "\n", encoding="utf-8")
