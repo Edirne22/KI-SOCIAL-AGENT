@@ -26,9 +26,9 @@ def post_to_facebook(page_id, page_token, message):
     print(f"Fehler: {response.text}")
     return None
 
-def mark_block(content, block):
+def mark_block(content, block, post_id):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-    new_header = f"## Facebook [GEPOSTET {timestamp}]"
+    new_header = f"## Facebook [GEPOSTET {timestamp} | ID: {post_id}]"
     new_block = block.replace("## Facebook", new_header, 1)
     return content.replace(block, new_block, 1)
 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     if post_id:
         print(f"Erfolgreich veröffentlicht: {post_id}")
-        content = mark_block(content, block)
+        content = mark_block(content, block, post_id)
         with open("content/PUBLISHED.md", "w", encoding="utf-8") as f:
             f.write(content)
     else:
