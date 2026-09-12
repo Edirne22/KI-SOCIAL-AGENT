@@ -1,0 +1,43 @@
+name: Telegram Receive Approval
+
+on:
+  schedule:
+    - cron: "0,30 6-10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  receive-approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Read Telegram approval
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python telegram_receive.py
+
+      - name: Commit approved posts only
+        run: |
+          if git diff --quiet -- content/PUBLISHED.md; then
+            echo "Keine Freigabe – PUBLISHED.md bleibt unverändert."
+            exit 0
+          fi
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/PUBLISHED.md
+          git commit -m "Telegram: Beiträge freigegeben"
+          git pull --rebase origin main
+          git push
