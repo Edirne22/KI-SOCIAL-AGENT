@@ -226,13 +226,52 @@ def wants_video(body):
     return bool(re.search(r"Video:\s*auto", body, re.IGNORECASE))
 
 
+
+def process_carousel_block(content):
+    """Erzeugt für Karussell-Entwürfe mit Bilder: auto drei zusammenpassende Bilder."""
+    pattern = r"(## Instagram Karussell\s*\n(.*?)(?=\n## |\Z))"
+    for match in re.finditer(pattern, content, re.DOTALL):
+        block, body = match.group(1), match.group(2)
+        if "[GEPOSTET" in block or not re.search(r"(?mi)^Bilder:\s*auto\s*$", body):
+            continue
+
+        text_match = re.search(r"(?ms)^Text:\s*(.*?)(?=^Bilder:|\Z)", body)
+        topic = text_match.group(1).strip() if text_match else "Motorrad und Reise"
+        suffix = f"{abs(hash(block)) % 10000:04d}"
+        variants = (
+            ("Hauptmotiv", "dynamic main subject, clear story, cinematic motorcycle photography"),
+            ("Detail", "close-up detail of motorcycle, equipment or road texture, cinematic photography"),
+            ("Emotion", "authentic rider or community lifestyle moment, warm and realistic photography"),
+        )
+        filenames = []
+        for number, (label, direction) in enumerate(variants, start=1):
+            filename = f"carousel-{suffix}-{number}.jpg"
+            prompt = (
+                f"Vertical 4:5 social media carousel image. Theme: {topic[:220]}. "
+                f"Slide {number}: {label}. {direction}. No text or watermark."
+            )
+            print(f"Agnes Karussell-Bild {number}/3: {prompt[:100]}...")
+            image_bytes = agnes_generate_image(prompt)
+            if not image_bytes:
+                print("Karussell-Generierung fehlgeschlagen – Bilder: auto bleibt unverändert.")
+                return content
+            save_bytes(image_bytes, filename)
+            filenames.append(filename)
+
+        references = "Bilder:\n" + "\n".join(f"- {filename}" for filename in filenames)
+        updated = re.sub(r"(?mi)^Bilder:\s*auto\s*$", references, block, count=1)
+        print("Agnes-Karussell vollständig gespeichert: " + ", ".join(filenames))
+        return content.replace(block, updated, 1)
+    return content
+
+
 def process_block(content, platform_header, want_video_check=True):
     pattern = rf"({platform_header}\s*\n(.*?)(?=\n## |\Z))"
     for match in re.finditer(pattern, content, re.DOTALL):
         block = match.group(1)
         body = match.group(2)
 
-        if "[GEPOSTET" in block:
+        if "[GEPOSTET" in block or "Karussell" in block.splitlines()[0]:
             continue
 
         has_image = bool(re.search(r"Bild:\s*\S+", body))
@@ -305,8 +344,10 @@ if __name__ == "__main__":
     with open("content/PUBLISHED.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Instagram zuerst, dann Story
-    new_content = process_block(content, "## Instagram")
+    # Karussell zuerst, dann bisherige Instagram- und Story-Logik.
+    new_content = process_carousel_block(content)
+    if new_content == content:
+        new_content = process_block(content, "## Instagram")
     if new_content == content:
         new_content = process_block(content, "## Story")
 
