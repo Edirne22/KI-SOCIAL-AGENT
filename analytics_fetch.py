@@ -93,6 +93,7 @@ Gespeichert: {metrics['saved']}
 Reichweite: {metrics['reach']}
 Impressionen: {metrics['impressions']}
 Klicks: {metrics['clicks']}
+Viral-Rate: {((metrics['likes'] + metrics['comments'] + metrics['shares'] + metrics['saved']) / metrics['reach'] * 100) if metrics['reach'] else 0:.2f}%
 """
     PERFORMANCE_FILE.write_text(existing.rstrip() + entry + "\n", encoding="utf-8")
 
