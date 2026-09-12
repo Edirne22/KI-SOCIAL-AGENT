@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+import os
 import re
+
+import requests
 from datetime import datetime
 from pathlib import Path
 
@@ -125,6 +128,40 @@ def acknowledge_through(update_id: int) -> None:
     # Telegram verwirft Updates mit kleinerer ID nach diesem Aufruf.
     get_updates(offset=update_id + 1)
 
+
+
+WORKFLOW_COMMANDS = {
+    "inspiration": ("inspiration-agent.yml", "Inspiration-Analyse gestartet. Ich melde mich mit dem Ergebnis."),
+    "race": ("race-calendar.yml", "Rennkalender-Prüfung gestartet. Poster bleiben Entwürfe."),
+    "viral": ("viral-analysis.yml", "Viral-Analyse gestartet. Die Muster werden im Memory aktualisiert."),
+}
+
+
+def dispatch_workflow(workflow_file: str) -> None:
+    token = os.environ.get("GITHUB_TOKEN", "")
+    repository = os.environ.get("GITHUB_REPOSITORY", "")
+    if not token or not repository:
+        raise RuntimeError("GitHub-Workflow-Auslösung ist in diesem Lauf nicht konfiguriert.")
+    response = requests.post(
+        f"https://api.github.com/repos/{repository}/actions/workflows/{workflow_file}/dispatches",
+        headers={"Accept": "application/vnd.github+json", "Authorization": f"Bearer {token}"},
+        json={"ref": "main"},
+        timeout=30,
+    )
+    if response.status_code != 204:
+        raise RuntimeError(f"GitHub-Workflow konnte nicht gestartet werden (HTTP {response.status_code}).")
+
+
+def approve_race_draft() -> bool:
+    if not PUBLISHED_FILE.exists():
+        return False
+    content = PUBLISHED_FILE.read_text(encoding="utf-8")
+    pattern = r"(?ms)(## .*?Rennposter.*?\nStatus:\s*)ENTWURF(?=\n.*?Freigabe:\s*Rennkalender)"
+    updated, count = re.subn(pattern, r"\1FREIGEGEBEN", content, count=1)
+    if not count:
+        return False
+    PUBLISHED_FILE.write_text(updated, encoding="utf-8")
+    return True
 
 
 TRACK_HELP = (
@@ -303,6 +340,22 @@ def main() -> None:
                 send_message("Bitte nenne ein Produkt, zum Beispiel: erledigt: Motorradhandschuhe")
             else:
                 send_message(stop_tracking(done_product, True))
+
+        elif text_lower in WORKFLOW_COMMANDS:
+            workflow_file, confirmation = WORKFLOW_COMMANDS[text_lower]
+            print(f"Empfangen: {message_text} → erkannt als: Agenten-Workflow")
+            try:
+                dispatch_workflow(workflow_file)
+                send_message(confirmation)
+            except RuntimeError as error:
+                send_message(f"Analyse konnte nicht gestartet werden: {error}")
+
+        elif text_lower == "go":
+            print(f"Empfangen: {message_text} → erkannt als: Rennposter-Freigabe")
+            if approve_race_draft():
+                send_message("Rennposter freigegeben. Es bleibt bis zum Publisher-Lauf ein kontrollierter Entwurf.")
+            else:
+                send_message("Kein offener Rennposter-Entwurf gefunden.")
 
         elif text_lower in ("watchlist", "liste"):
             print(f"Empfangen: {message_text} → erkannt als: Watchlist")
