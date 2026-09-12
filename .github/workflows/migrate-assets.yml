@@ -35,10 +35,11 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/PUBLISHED.md 2>/dev/null || true
-          git add memory/ASSET_INVENTORY.md memory/MIGRATION_LOG.md 2>/dev/null || true
-          git add assets 2>/dev/null || true
+          # Alles stagen; ignorierte migrierte Testdateien ausdrücklich einschließen.
+          git add -A
           git add -f assets/test 2>/dev/null || true
+          git status --short
           git commit -m "Maintenance: Asset-Struktur Phase 1 migriert" || echo "Keine Änderungen"
+          # Ein Rebase-Fehler wird nicht ignoriert: Das schützt vor unbemerkt verlorenen Änderungen.
           git pull --rebase origin main
-          git push
+          git push || (echo "Push fehlgeschlagen, Retry in 5 Sek..." && sleep 5 && git pull --rebase origin main && git push)
