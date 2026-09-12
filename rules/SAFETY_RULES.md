@@ -74,3 +74,10 @@
 ## Viral-Learning
 - Nur öffentliche Daten und eigene Performance analysieren.
 - Muster erkennen, keine fremden Posts kopieren; keine gekauften oder künstlichen Interaktionen.
+
+## Growth-Hacker-Methodik
+- Nur ehrliche, nachvollziehbare Metriken; fehlende Werte werden nicht geschätzt.
+- Keine gekauften Follower, Likes oder künstlichen Interaktionen.
+- Kein Clickbait ohne inhaltliche Einlösung.
+- A/B-Tests starten nur nach Bülents ausdrücklicher Freigabe.
+- Wettbewerber-Analyse verwendet ausschließlich öffentliche Daten und kopiert keine Inhalte.
