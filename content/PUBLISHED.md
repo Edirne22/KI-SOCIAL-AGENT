@@ -9,3 +9,4 @@ Bild: auto-image-8274.jpg
 
 ## Story
 Video: test-agnes-video.mp4
+Bild: auto-image-1613.jpg
