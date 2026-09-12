@@ -20,6 +20,8 @@ MEMORY_FILES = [
     "memory/LESSONS_LEARNED.md",
     "memory/POST_HISTORY.md",
     "memory/RESEARCH_LOG.md",
+    "memory/INSPIRATION_IDEAS.md",
+    "memory/VIRAL_PATTERNS.md",
 ]
 
 KNOWLEDGE_FILES = [
@@ -29,6 +31,7 @@ KNOWLEDGE_FILES = [
     "content/TURKISH_BIKER_COMMUNITY.md",
     "rules/BRAND_RULES.md",
     "rules/SAFETY_RULES.md",
+    "rules/VIRAL_RULES.md",
 ]
 
 def read_file(path, max_chars=2500):
@@ -160,6 +163,7 @@ Erstelle zu jeder Idee:
 - Visuelle Idee
 - Hashtag-Vorschläge
 - Trend-Bezug
+- Viral-Score: X/10 (Faktoren: mindestens zwei der sechs Viral-Faktoren)
 
 Formatiere die Antwort exakt so:
 
