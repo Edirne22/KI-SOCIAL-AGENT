@@ -1,0 +1,30 @@
+name: Test Model Router
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-router:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Show configured routes
+        run: python router.py
+
+      - name: Test Gemini through the router
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python llm_client.py --task content_ideas --prompt "Nenne eine kurze Motorrad-Content-Idee auf Deutsch."
