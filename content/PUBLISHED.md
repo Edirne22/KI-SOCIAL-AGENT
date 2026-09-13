@@ -43,7 +43,7 @@ Misano’da nefesler tutuldu! Toprak yine sınırları zorluyor.
 Wer holt sich das Hauptrennen? Schreib es in die Kommentare.
 Bild: auto
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-13 11:43 | ID: 1285968257941776_122105301009469415]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34755153844-1
 Freigabe: Telegram
