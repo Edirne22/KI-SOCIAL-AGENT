@@ -16,6 +16,8 @@ def find_facebook_block(content):
         if not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", body):
             print("Facebook-Entwurf übersprungen (nicht freigegeben).")
             continue
+        if "Publication-Claim: IN_BEARBEITUNG" not in body:
+            continue
         text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\Z)", body, re.DOTALL)
         if text_match:
             return text_match.group(1).strip(), block
