@@ -14,7 +14,7 @@ Deal-Hunter nutzt zuerst öffentliche Google-Suchergebnisse über Apify. Es gibt
 
 ## Ergebnis
 
-Telegram zeigt direkte HTTPS-Links. Sie sind antippbar und führen auf die jeweilige öffentliche Händler- oder Informationsseite. Preisangaben aus Suchtreffern werden als **nicht bestätigt** gespeichert und müssen vor einem Kauf im Shop geprüft werden.
+Telegram zeigt direkte HTTPS-Links. Sie sind antippbar und führen auf die jeweilige öffentliche Händler- oder Informationsseite. Preisangaben werden nur gespeichert, wenn ein einzelner Treffer Preis, Link und alle erkannten Kriterien (z. B. D1/Telekom, 80 GB, Maximalpreis) sichtbar erfüllt. Sie bleiben **nicht bestätigt** und müssen vor einem Kauf im Shop geprüft werden.
 
 ## Fallback-Kette
 
