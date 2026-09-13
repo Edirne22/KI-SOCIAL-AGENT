@@ -124,6 +124,9 @@ def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int],
     entries = []
     for number in selected:
         post = posts[number]
+        source = _field(post["full_text"], "Inspirations-Quelle")
+        source_line = f"Quelle: {source}" if source.startswith(("https://", "http://")) else ""
+        media_status = "Medienstatus: QUELLE_PRÜFEN" if source_line else ""
         for header, media_line in _published_targets(post["platform"]):
             entries.extend(
                 [
@@ -133,6 +136,8 @@ def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int],
                     marker,
                     "Text:",
                     _instagram_caption(post["full_text"]),
+                    source_line,
+                    media_status,
                     media_line,
                     "",
                 ]
