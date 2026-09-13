@@ -39,7 +39,9 @@ Video: auto
 Status: FREIGEGEBEN
 Freigabe: Telegram
 Telegram-Update-ID: 279361645
-Medienstatus: QUELLE_PRÜFEN
+Medienstatus: QUELLE_BESTÄTIGT
+Nutzungsrecht: BESTÄTIGT
+Lizenznachweis: Persönliche Freigabe per Instagram-DM am 2026-09-13
 Medienhinweis: Reales Renn-/Personenthema – kein KI-Medium verwenden.
 Text:
 Misano brennt! @toprakrazgatlioglu7 zeigt in der MotoGP wieder einmal, was extrem späte Bremszonen bedeuten. Der Kampf auf der Strecke ist eröffnet.
@@ -47,7 +49,7 @@ Misano brennt! @toprakrazgatlioglu7 zeigt in der MotoGP wieder einmal, was extre
 Misano’da nefesler tutuldu! Toprak yine sınırları zorluyor.
 
 Wer holt sich das Hauptrennen? Schreib es in die Kommentare.
-Bild: auto
+Bild: assets/images/2026-09-13.jpg
 
 ## Facebook [GEPOSTET 2026-09-13 11:43 | ID: 1285968257941776_122105301009469415]
 Status: FREIGEGEBEN
