@@ -50,14 +50,18 @@ Misano’da nefesler tutuldu! Toprak yine sınırları zorluyor.
 Wer holt sich das Hauptrennen? Schreib es in die Kommentare.
 Bild: assets/images/2026-09/2026-09-13.jpg
 
-## Facebook [GEPOSTET 2026-09-13 15:09 | ID: 122105446689469415] 
+## Facebook
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34764757647-1
 Medienstatus: EIGENES_MATERIAL
 Text:
-Misano brennt! @toprakrazgatlioglu7 zeigt in der MotoGP wieder einmal, was extrem späte Bremszonen bedeuten. Der Kampf auf der Strecke ist eröffnet.
+Toprak Razgatlıoğlu:
 
-Misano’da nefesler tutuldu! Toprak yine sınırları zorluyor.
+Bu pisti iyi biliyorum ama Superbike’a kıyasla tamamen farklı bir motosiklet ve lastik kullandığımız için pek faydası olmadı. Her tur mücadele etmek zorunda kaldığım için yarış zordu. Düzlükte çok zaman kaybediyoruz, bu yüzden diğer sürücüleri geçiş yapamadan sadece frenajda yakalayabildim. Yarışın sonlarına doğru ön lastik daha da ısındı ve kilitlenme sorunlarıyla daha fazla boğuşmaya başladım.
 
-Wer holt sich das Hauptrennen? Schreib es in die Kommentare.
-Bild: assets/images/2026-09/2026-09-13.jpg
+İyi tarafı ise özellikle yarışın ikinci yarısından sonra tempomun çok güçlü olmasıydı. Hafta sonunun en iyi turu olan 1:31.7’lik bir derece yaptım ve Fabio’nun tur zamanını yakaladım. Zaten sınırları zorluyordum ama tempomuzun neredeyse aynı olması büyük bir artı. Yarışı 12. sırada bitirdim ama tempomun yedinciliğe veya sekizinciliğe daha yakın olduğuna inanıyorum.
+
+En büyük sorun hâlâ sıralama turları. Son sıradan başlamak, özellikle geçiş yapmanın zor olduğu bir pistte her şeyi çok daha karmaşık hale getiriyor. Eğer dokuzuncu veya onuncu sıralardan başlayabilseydim, ilk 10 içinde kalabileceğimi düşünüyorum. Bu yüzden Avusturya’da cuma gününe ve sıralama turlarına odaklanıp griddeki pozisyonumuzu geliştirmenin bir yolunu bulmamız gerekiyor.
+
+Genel olarak bugünden olumlu çıkarımlar yapıyorum. Büyük bir adım attık ve özellikle yarışın ikinci yarısından çok şey öğrendim. Şimdi bu motosikletle benim için yeni bir deneyim olacak Avusturya’ya gidiyoruz; orada neler yapabileceğimize bakacağız.
+Bild: assets/images/2026-09/2026-09-13-2.jpg
