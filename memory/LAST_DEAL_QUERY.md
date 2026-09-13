@@ -1,1 +1,1 @@
-deal: Handyvertrag 80 GB D1 max 13 €
+handyvertrag 80GB D1 maximal 13 euro

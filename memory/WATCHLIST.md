@@ -6,4 +6,6 @@
 
 - [ ] handyvertrag 80GB D1 | max: 13 € | seit 2026-09-12
 
+- [ ] handyvertrag 80GB D1 maximal 13 euro | keine Kriterien | seit 2026-09-13
+
 ## Erledigt / Beendet
