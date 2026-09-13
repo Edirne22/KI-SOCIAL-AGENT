@@ -13,3 +13,7 @@ MAX_REQUESTS_PER_PLATFORM = 10
 APIFY_ACTORS = {"instagram": "apify/instagram-hashtag-scraper", "facebook": "scrapier/facebook-pages-scraper", "youtube": "mighty_monk/youtube-channel-scraper"}
 # Bright-Data-IDs für Facebook/YouTube werden bewusst erst verwendet, wenn sie als Secret gesetzt sind.
 BRIGHTDATA_DATASETS = {"instagram": "gd_l1vikfch901nx3by4", "facebook": "", "youtube": ""}
+
+# YouTube-Apify-Fallback: maximal drei Suchbegriffe und zehn Detailvideos pro Lauf.
+YOUTUBE_SEARCH_QUERIES = ("MotoGP Highlights", "Toprak Razgatlioglu", "WorldSBK Highlights")
+YOUTUBE_MAX_ITEMS = 10
