@@ -348,8 +348,10 @@ if __name__ == "__main__":
     with open("content/PUBLISHED.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Karussell zuerst, dann bisherige Instagram- und Story-Logik.
+    # Karussell zuerst, dann Reel-, Instagram- und Story-Logik.
     new_content = process_carousel_block(content)
+    if new_content == content:
+        new_content = process_block(content, "## Instagram Reel")
     if new_content == content:
         new_content = process_block(content, "## Instagram")
     if new_content == content:
