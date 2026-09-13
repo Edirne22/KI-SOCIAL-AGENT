@@ -193,3 +193,68 @@ Beschreibung: Die Woche war lang, das Wetter passt. Wo geht deine Tour heute hin
 Hashtags Instagram: #sundayride #motorradliebe #bikercommunity #sonntagsrunde #motorrad #bikersofinstagram
 Hashtags TikTok: #sundayride #biker #motorrad #bikertok #moto #ride
 Visuelle Idee: Kurzer Clip vom Anlassen des Motors mit starkem Sound und dem anschließenden Anfahren in die Sonne.
+
+
+# Wochenplan vom 2026-09-13 06:17:11
+--- TAG 1: Montag ---
+Thema: KI & Reisen
+Plattform: Instagram Reel & TikTok
+Hook: KI plant deine nächste Motorrad-Tour in 10 Sekunden.
+Beschreibung: Wir haben eine KI gebeten, die kurvenreichste Strecke für das Wochenende zu finden. Das Ergebnis kann sich absolut sehen lassen.
+Hashtags Instagram: #Motorrad #KIRoute #MotoTravel #MotorradLiebe #AI #Biker
+Hashtags TikTok: #motorrad #fyp #ai #mototrip #motorcycle #bikertok
+Visuelle Idee: Split-Screen: Links tippt eine Hand den Prompt ins Smartphone, rechts schwenkt die Kamera über spektakuläre Serpentinen.
+
+--- TAG 2: Dienstag ---
+Thema: Technik
+Plattform: Instagram Karussell & Facebook
+Hook: 3 Gadgets, die deine Motorradtour sicherer machen.
+Beschreibung: Vom digitalen Reifendruckprüfer bis zum smarten Notfallsystem. Diese Tools gehören jetzt in jede Satteltasche.
+Hashtags Instagram: #MotorradTechnik #BikerGadgets #SafetyFirst #Motorrad #MotorcycleLife #Tech
+Hashtags TikTok: #bikergadgets #motorradtechnik #bikertok #motorcycle #safety #gadgets
+Visuelle Idee: Karussell-Karten mit klaren Nahaufnahmen der drei Gadgets und kurzen Stichpunkten zur Funktion.
+
+--- TAG 3: Mittwoch ---
+Thema: Reisen & Lifestyle
+Plattform: Instagram Reel & TikTok
+Hook: Küstenstraße in der Türkei oder Alpenpass in Europa?
+Beschreibung: Egal wo du unterwegs bist: Das Gefühl von Freiheit auf zwei Rädern ist überall gleich. Welches Ziel steht ganz oben auf deiner Liste?
+Hashtags Instagram: #MotorradReisen #MotoTravel #Türkei #Alpen #BikerTrip #Travel
+Hashtags TikTok: #mototravel #motorrad #gezi #bikertok #travel #motorcycle
+Visuelle Idee: Schneller Zusammenschnitt von zwei Touren: Blaue Küste der türkischen Ägäis im Wechsel mit grünen Alpenpässen.
+
+--- TAG 4: Donnerstag ---
+Thema: MotoGP
+Plattform: Instagram Story & TikTok
+Hook: Wie viel PS stecken wirklich in einem MotoGP-Bike?
+Beschreibung: Schätze die Leistung in der Umfrage. Die Auflösung und Technik-Details zeigen wir dir in der nächsten Story.
+Hashtags Instagram: #MotoGP #Racing #Motorrad #BikerWissen #Motorsport #TrackDay
+Hashtags TikTok: #motogp #racing #motorsport #motorcycle #speed #bikertok
+Visuelle Idee: Hochauflösendes Foto eines MotoGP-Bikes in extremer Schräglage mit interaktivem Umfrage-Sticker.
+
+--- TAG 5: Freitag ---
+Thema: Lifestyle
+Plattform: Instagram Post & Facebook
+Hook: Helm auf, Kopf aus. Feierabend.
+Beschreibung: Das Wochenende steht vor der Tür. Wer zieht heute Abend noch spontan eine Runde?
+Hashtags Instagram: #BikerLifestyle #Feierabend #Motorrad #WeekendVibes #Motorbike #Biker
+Hashtags TikTok: #bikerlifestyle #motorrad #wochenende #bikertok #rideout #motorcycle
+Visuelle Idee: Stimmungsvolles Foto eines Motorrads an einer Aussichtsplattform während des Sonnenuntergangs.
+
+--- TAG 6: Samstag ---
+Thema: Reisen & Technik
+Plattform: TikTok & Instagram Reel
+Hook: 5 Dinge, die du auf einem Roadtrip nie vergessen solltest.
+Beschreibung: Erspare dir Ärger unterwegs. Diese kompakten Essentials retten jede Pannen-Situation auf deiner Tour.
+Hashtags Instagram: #Roadtrip #MotorradReisen #BikerTips #Packliste #MotoTravel #Motorrad
+Hashtags TikTok: #roadtrip #bikertips #motorrad #mototravel #bikertok #travelhacks
+Visuelle Idee: Ich-Perspektive (POV): Gegenstände werden zügig und ordentlich in den Tankrucksack gepackt.
+
+--- TAG 7: Sonntag ---
+Thema: KI & Technik
+Plattform: Instagram Post & Facebook
+Hook: Werden Helme bald komplett von KI gesteuert?
+Beschreibung: Smart Helmets mit Heads-Up-Display und automatischer Gefahrenwarnung sind auf dem Vormarsch. Würdest du so einen Helm tragen?
+Hashtags Instagram: #FutureTech #SmartHelmet #Motorrad #KI #BikerLife #Innovation
+Hashtags TikTok: #smarthelmet #tech #motorrad #future #bikertok #ai
+Visuelle Idee: Nahaufnahme eines modernen, futuristischen Helms mit dezent eingeblendeten HUD-Elementen.
