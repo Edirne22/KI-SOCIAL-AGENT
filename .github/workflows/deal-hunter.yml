@@ -28,8 +28,9 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install requests
-      - name: Search public deals with Gemini Grounding
+      - name: Search public deals with Apify and fallbacks
         env:
+          APIFY_API_TOKEN: ${{ secrets.APIFY_API_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SEARXNG_URL: ${{ secrets.SEARXNG_URL }}
         run: python deal_hunter.py "${{ inputs.product_query }}"
