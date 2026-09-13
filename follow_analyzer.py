@@ -26,7 +26,7 @@ STATE = MEMORY / "FOLLOW_ANALYSIS_STATE.md"
 TZ = ZoneInfo("Europe/Berlin")
 MAX_ACCOUNTS = max(1, min(int(os.environ.get("FOLLOW_MAX_ACCOUNTS", "8")), 20))
 APIFY_ACTOR = "apify~instagram-scraper"
-BRIGHT_DATASET = os.environ.get("BRIGHTDATA_DATASET_INSTAGRAM", "gd_lk5ns7kz21pck8jpis")
+BRIGHT_DATASET = os.environ.get("BRIGHTDATA_DATASET_INSTAGRAM") or "gd_lk5ns7kz21pck8jpis"
 BRIGHT_ROOT = "https://api.brightdata.com/datasets/v3"
 
 
@@ -160,7 +160,8 @@ def apify_posts(username: str) -> tuple[list[dict], int, str]:
                 if not items.ok:
                     return [], 0, f"Apify Ergebnis HTTP {items.status_code}"
                 parsed = items.json()
-                return _posts(parsed if isinstance(parsed, list) else [])
+                posts, followers = _posts(parsed if isinstance(parsed, list) else [])
+                return posts, followers, "" if posts else "Apify: keine öffentlichen Posts"
             if state in {"FAILED", "ABORTED", "TIMED-OUT"}:
                 return [], 0, f"Apify-Lauf {state}"
             time.sleep(5)
