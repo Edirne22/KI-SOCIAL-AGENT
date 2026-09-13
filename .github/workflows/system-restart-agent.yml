@@ -1,0 +1,46 @@
+name: System Neustart Agent
+
+on:
+  schedule:
+    - cron: "45 18 * * *" # 20:45 Uhr deutsche Sommerzeit: Bericht, keine Neustarts
+  workflow_dispatch:
+    inputs:
+      restart_failed_safe_workflows:
+        description: "Nur fehlgeschlagene erlaubte Analyse-Workflows neu starten?"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  actions: write
+  contents: write
+
+concurrency:
+  group: system-maintenance-agent
+  cancel-in-progress: false
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Aktuellen Memory-Stand laden
+        run: git pull --rebase origin main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Systemstatus prüfen
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          ALLOW_SAFE_RESTART: ${{ inputs.restart_failed_safe_workflows || 'false' }}
+        run: python system_restart_agent.py --allow-safe-restart "$ALLOW_SAFE_RESTART"
+      - name: Systemstatus speichern
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add memory/SYSTEM_STATUS.md memory/AGENT_ROADMAP.md
+          git commit -m "Auto: Systemstatus aktualisiert" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
