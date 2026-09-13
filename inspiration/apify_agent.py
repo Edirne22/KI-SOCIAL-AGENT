@@ -20,7 +20,8 @@ API_ROOT = "https://api.apify.com/v2/acts"
 MAX_ITEMS = 10
 ACTORS = {
     "instagram": "apify~instagram-profile-scraper",
-    "facebook": "cleansyntax~facebook-profile-posts-scraper",
+    # Dieser Actor akzeptiert resultsLimit; die Kostenbremse wirkt damit vor dem Abruf.
+    "facebook": "khadinakbar~facebook-posts-scraper",
 }
 
 
@@ -167,14 +168,19 @@ def _facebook(token: str) -> tuple[list[dict], str]:
     end = datetime.now(timezone.utc).date()
     start = end - timedelta(days=7)
     payload = {
-        "endpoint": "profile_posts_by_url",
-        "profile_url": urls[0],
-        "start_date": start.isoformat(),
-        "end_date": end.isoformat(),
+        # Der Actor begrenzt die abgerufenen Ergebnisse selbst. Das ist wichtiger
+        # als ein nachträgliches posts[:MAX_ITEMS], das nur den Bericht begrenzt.
+        "startUrls": [{"url": urls[0]}],
+        "resultsLimit": MAX_ITEMS,
     }
     posts, status, detail = _call(ACTORS["facebook"], payload, token)
     posts = posts[:MAX_ITEMS]
-    _write_debug("facebook", status, len(posts), detail or "Apify ist Hauptquelle; Bright Data wird nur bei fehlenden Datensätzen genutzt.")
+    _write_debug(
+        "facebook",
+        status,
+        len(posts),
+        detail or f"Apify ist Hauptquelle; Actor-Limit: maximal {MAX_ITEMS} Facebook-Beiträge pro Lauf.",
+    )
     return posts, detail
 
 
