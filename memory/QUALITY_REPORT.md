@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-09-13 13:56
+Stand: 2026-09-13 14:04
 Gesamtstatus: **WARNUNG**
-- OK: 15
-- Warnungen: 6
+- OK: 17
+- Warnungen: 4
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -22,8 +22,8 @@ Gesamtstatus: **WARNUNG**
 - ⚠️ **Bright Data YouTube**: YouTube liefert bei Bright Data eine leere Antwort; Apify-Fallback wird geprüft.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
 - ✅ **Secret-Prüfung**: Keine typischen Zugangsschlüssel in Projektdateien erkannt.
-- ⚠️ **Analytics Fetch**: Kein letzter Lauf in der GitHub-Antwort gefunden.
-- ⚠️ **Analytics Report**: Kein letzter Lauf in der GitHub-Antwort gefunden.
+- ✅ **Analytics Fetch**: Letzter Lauf erfolgreich.
+- ✅ **Analytics Report**: Letzter Lauf erfolgreich.
 - ✅ **Generate Daily Content Idea**: Letzter Lauf erfolgreich.
 - ✅ **Inspiration Agent**: Letzter Lauf erfolgreich.
 - ✅ **Telegram Receive Approval**: Letzter Lauf erfolgreich.
