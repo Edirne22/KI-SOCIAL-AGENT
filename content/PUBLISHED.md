@@ -12,8 +12,7 @@ Video: assets/published/2026-09/2026-09-12-story-story-01.mp4
 Status: FREIGEGEBEN
 Freigabe: Telegram
 Text: Zwei Brüder, doppelte Power auf der Strecke. @denizoncou kämpft in der Moto2 um jeden Zentimeter, während @canoncu in der Supersport-WM wieder auf Siegkurs fährt. Unter den Augen von Mentor @kenansofuoglu wächst hier die nächste Weltklasse-Generation heran. Sürat ve tutku onların kanında var. Deniz ve Can Öncü pistlerde fırtına gibi esmeye devam ediyor. Welcher der beiden holt sich als Nächster den Sieg? #Moto2 #WorldSSP #DenizÖncü #CanÖncü #KenanSofuoğlu #Motorrad #Motorsport
-Video: auto
-
+Video: assets/videos/2026-09/2026-09-13-zwei-brueder-doppelte-power-auf-der-strecke-denizo.mp4
 ## Instagram Reel
 Status: FREIGEGEBEN
 Freigabe: Telegram
