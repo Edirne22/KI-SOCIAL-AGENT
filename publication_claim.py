@@ -12,6 +12,8 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
+from media_policy import media_publishable
+
 PUBLISHED = Path("content/PUBLISHED.md")
 DUPLICATES = Path("memory/PUBLICATION_DUPLICATES.md")
 CLAIM_READY = "Publication-Claim: BEREIT"
@@ -47,13 +49,20 @@ def _is_publishable(block: str, target: str) -> bool:
     if target == "facebook":
         return bool(re.search(r"(?ms)^Text:\s*\S+", block))
     if target == "instagram":
-        return bool(re.search(r"(?mi)^Bild:\s*(?!auto\s*$)\S+", block))
-    if target == "story":
-        return bool(re.search(r"(?mi)^(?:Bild|Video):\s*(?!auto\s*$)\S+", block))
-    if target == "reel":
-        return bool(re.search(r"(?mi)^Video:\s*(?!auto\s*$)\S+", block))
-    images = re.findall(r"(?mi)^\s*-\s*(\S+)", block)
-    return len(images) >= 2
+        ready = bool(re.search(r"(?mi)^Bild:\s*(?!auto\s*$)\S+", block))
+    elif target == "story":
+        ready = bool(re.search(r"(?mi)^(?:Bild|Video):\s*(?!auto\s*$)\S+", block))
+    elif target == "reel":
+        ready = bool(re.search(r"(?mi)^Video:\s*(?!auto\s*$)\S+", block))
+    else:
+        images = re.findall(r"(?mi)^\s*-\s*(\S+)", block)
+        ready = len(images) >= 2
+    if not ready:
+        return False
+    allowed, reason = media_publishable(block)
+    if not allowed:
+        print(reason)
+    return allowed
 
 
 def _text_key(block: str) -> str:
