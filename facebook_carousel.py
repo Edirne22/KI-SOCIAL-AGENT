@@ -47,6 +47,8 @@ def parse_blocks(content):
         block = match.group(1)
         if "[GEPOSTET " in block or not re.search(r"^Status:\s*FREIGEGEBEN\s*$", block, re.MULTILINE | re.IGNORECASE):
             continue
+        if "Publication-Claim: IN_BEARBEITUNG" not in block:
+            continue
         text_match = re.search(r"^Text:\s*(.*?)(?=^Bilder:|\Z)", block, re.MULTILINE | re.DOTALL)
         images_match = re.search(r"^Bilder:\s*\n((?:\s*-\s*[^\n]+\n?)+)", block, re.MULTILINE)
         images = [line.strip()[1:].strip() for line in images_match.group(1).splitlines()] if images_match else []
