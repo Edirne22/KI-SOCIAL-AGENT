@@ -109,11 +109,21 @@ def _gemini_answer(response: requests.Response) -> tuple[str, list[dict]]:
 
 
 def _gemini_grounded(query: str, api_key: str, status_callback: Callable[[str], None] | None) -> dict | None:
-    prompt = f"""Recherchiere dieses Produkt: {query}
+    prompt = f"""Recherchiere dieses Produkt mit allen genannten Kriterien: {query}
 
 Suche bevorzugt bei eBay, Amazon, AliExpress, Polo Motorrad, Louis, Reifen.com, Idealo, Geizhals und Google Shopping.
-Liefere nur durch die Websuche belegte Informationen: bestes Angebot, Alternativen, Versandhinweis, Verfügbarkeit, UVP/Ersparnis und öffentliche Rabattcodes mit Quelle.
-Erfinde keine Preise, Rabattcodes oder Links. Preise können sich ändern; nenne den Recherchezeitpunkt."""
+Erfinde keine Preise, Rabattcodes oder Links. Nenne nur aktuelle, durch die Websuche belegte Daten.
+
+Wenn ein eindeutiges, verifizierbares Angebot mit Preis, Händler und direktem Link vorliegt, beginne exakt mit diesem Block:
+BESTES_ANGEBOT:
+Preis: 123,45 €
+Händler: Name des Händlers
+URL: https://direkter-link-zum-angebot
+Belegt: ja
+
+Danach folgen Alternativen, Versand, Verfügbarkeit, UVP/Ersparnis und öffentliche Rabattcodes jeweils mit Quelle.
+Wenn kein Angebot vollständig belegbar ist, schreibe ausdrücklich: Kein verifiziertes Live-Angebot gefunden.
+Ein Preis ohne Händler, Direktlink und Belegt: ja darf niemals als bestes Angebot formatiert werden."""
     for attempt in range(len(RETRY_DELAYS) + 1):
         try:
             response = _gemini_request(api_key, prompt, grounded=True)
@@ -121,7 +131,11 @@ Erfinde keine Preise, Rabattcodes oder Links. Preise können sich ändern; nenne
             log_provider(query, "Gemini-Grounded", f"Netzwerkfehler: {type(error).__name__}", True)
             return None
         if response.status_code == 200:
-            answer, sources = _gemini_answer(response)
+            try:
+                answer, sources = _gemini_answer(response)
+            except ValueError:
+                log_provider(query, "Gemini-Grounded", "Antwort ohne verwertbaren Inhalt", True)
+                return None
             log_provider(query, "Gemini-Grounded", "Live-Websuche erfolgreich", True)
             return _result("Gemini-Grounded", True, sources, None, answer)
         if response.status_code != 429:
