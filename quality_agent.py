@@ -11,6 +11,7 @@ import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Callable
+from urllib.parse import urlparse
 
 import requests
 
@@ -25,6 +26,22 @@ WORKFLOW_MAX_AGE_HOURS = {
     "Analytics Fetch": 36,
     "Analytics Report": 36,
     "Telegram Receive Approval": 36,
+}
+MAX_INSPIRATION_AGE_DAYS = 7
+RECOGNIZED_SOURCE_HOSTS = (
+    "instagram.com",
+    "facebook.com",
+    "youtube.com",
+    "youtu.be",
+    "tiktok.com",
+    "x.com",
+    "twitter.com",
+)
+RECOGNIZED_YOUTUBE_CHANNELS = {
+    "motogp",
+    "worldsbk",
+    "bmw motorrad",
+    "red bull motorsports",
 }
 SECRET_PATTERNS = (
     re.compile(r"AIza[0-9A-Za-z_-]{20,}"),
@@ -44,6 +61,17 @@ def _result(level: str, title: str, detail: str) -> dict[str, str]:
 
 def _read(path: Path) -> str:
     return path.read_text(encoding="utf-8") if path.is_file() else ""
+
+
+def _urls(text: str) -> list[str]:
+    return [url.rstrip(".,;:!?)]}") for url in re.findall(r"https?://[^\s<>()\[\]]+", text)]
+
+
+def _parse_datetime(value: str) -> datetime | None:
+    try:
+        return datetime.fromisoformat(value.strip().replace("Z", "+00:00"))
+    except ValueError:
+        return None
 
 
 def check_required_files() -> list[dict[str, str]]:
@@ -66,8 +94,8 @@ def check_inspiration() -> list[dict[str, str]]:
     text = _read(MEMORY / "INSPIRATION_IDEAS.md")
     if not text:
         return [_result("WARNUNG", "Inspiration", "Kein Inspirationsreport zum Prüfen vorhanden.")]
-    urls = len(re.findall(r"https?://[^\s)]+", text))
-    ideas = len(re.findall(r"(?m)^### Idee\s+\d+", text))
+    urls = len(_urls(text))
+    ideas = len(re.findall(r"(?m)^### Idee\s+\d+|^\d+\.\s+\*\*Idee\s+\d+\*\*", text))
     results = []
     if urls:
         results.append(_result("OK", "Inspiration-Quellen", f"{urls} verlinkte Quellen im Report erkannt."))
@@ -80,6 +108,119 @@ def check_inspiration() -> list[dict[str, str]]:
     else:
         results.append(_result("WARNUNG", "Inspiration-Ideen", f"Nur {ideas} konkrete Ideen erkannt."))
     return results
+
+
+def check_youtube_fallback() -> list[dict[str, str]]:
+    """Prüft nur die technische und nachvollziehbare Qualität des YouTube-Fallbacks."""
+    source_text = _read(MEMORY / "INSPIRATION_YOUTUBE_APIFY.md")
+    report_text = _read(MEMORY / "INSPIRATION_IDEAS.md")
+    report_has_youtube = any("youtube.com/" in url or "youtu.be/" in url for url in _urls(report_text))
+    if not source_text:
+        if report_has_youtube:
+            return [_result("OK", "YouTube-Fallback", "YouTube-Quellen im Report vorhanden; separater Apify-Report war für diesen Lauf nicht nötig.")]
+        return [_result("WARNUNG", "YouTube-Fallback", "Kein YouTube-Quellreport und keine YouTube-Quelle im Inspirationsreport vorhanden.")]
+
+    blocks = re.split(r"(?m)(?=^### Datensatz\s+\d+)", source_text)
+    records = [block for block in blocks if re.search(r"(?m)^### Datensatz\s+\d+", block)]
+    if not records:
+        return [_result("WARNUNG", "YouTube-Fallback", "Apify-Quellreport vorhanden, aber keine verwertbaren Video-Datensätze erkannt.")]
+
+    results = [_result("OK", "YouTube-Fallback", f"{len(records)} YouTube-Datensätze aus dem Apify-Fallback erkannt.")]
+    urls = _urls(source_text)
+    unique_urls = {url.lower() for url in urls}
+    if len(urls) != len(unique_urls):
+        results.append(_result("WARNUNG", "YouTube-Duplikate", f"{len(urls) - len(unique_urls)} doppelte Video-URL(s) im Quellreport erkannt."))
+    else:
+        results.append(_result("OK", "YouTube-Duplikate", "Keine doppelten Video-URLs im Quellreport erkannt."))
+
+    channels = []
+    for block in records:
+        match = re.search(r"(?m)^- Kanal:\s*(.+)$", block)
+        if match:
+            channels.append(match.group(1).strip())
+    recognized = [channel for channel in channels if channel.lower() in RECOGNIZED_YOUTUBE_CHANNELS]
+    if recognized:
+        results.append(
+            _result(
+                "OK",
+                "YouTube-Quellenmix",
+                f"{len(recognized)} Datensatz/Datensätze von bekannten Primärkanälen erkannt ({', '.join(sorted(set(recognized)))}).",
+            )
+        )
+    else:
+        results.append(
+            _result(
+                "WARNUNG",
+                "YouTube-Quellenmix",
+                "Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.",
+            )
+        )
+    return results
+
+
+def check_source_quality() -> list[dict[str, str]]:
+    """Prüft Quellenstruktur und Wiederholungen, ohne externe Links aufzurufen."""
+    text = _read(MEMORY / "INSPIRATION_IDEAS.md")
+    if not text:
+        return []
+    urls = _urls(text)
+    if not urls:
+        return []
+
+    results = []
+    normalized = [url.lower() for url in urls]
+    duplicate_count = len(normalized) - len(set(normalized))
+    if duplicate_count:
+        results.append(_result("WARNUNG", "Inspiration-Duplikate", f"{duplicate_count} wiederholte Quellen-URL(s) im Report erkannt."))
+    else:
+        results.append(_result("OK", "Inspiration-Duplikate", "Keine doppelten Quellen-URLs im Report erkannt."))
+
+    unknown_hosts = sorted(
+        {
+            (urlparse(url).hostname or "").lower()
+            for url in urls
+            if not any((urlparse(url).hostname or "").lower().endswith(host) for host in RECOGNIZED_SOURCE_HOSTS)
+        }
+    )
+    if unknown_hosts:
+        results.append(_result("WARNUNG", "Quellenformat", "Unbekannte Quellen-Domain(s): " + ", ".join(unknown_hosts[:5]) + "."))
+    else:
+        results.append(_result("OK", "Quellenformat", "Alle Quellen stammen von erwarteten Social- oder Video-Plattformen."))
+
+    idea_sources = [
+        url.rstrip(".,;:!?)")
+        for url in re.findall(r"(?m)^\s*-\s+\*\*Inspirations-Quelle:\*\*\s*(https?://\S+)", text)
+    ]
+    sources_section = text.split("## Quellen", 1)[1] if "## Quellen" in text else ""
+    listed_sources = {url.lower() for url in _urls(sources_section)}
+    missing = [url for url in idea_sources if url.lower() not in listed_sources]
+    if missing:
+        results.append(_result("WARNUNG", "Ideen-Belege", f"{len(missing)} Ideenquelle(n) fehlen in der Quellenliste."))
+    elif idea_sources:
+        results.append(_result("OK", "Ideen-Belege", f"Alle {len(idea_sources)} Ideenquellen sind in der Quellenliste dokumentiert."))
+    return results
+
+
+def check_inspiration_age() -> list[dict[str, str]]:
+    """Warnt bei alten oder auffällig zukünftigen Quelldaten."""
+    texts = (
+        _read(MEMORY / "INSPIRATION_IDEAS.md"),
+        _read(MEMORY / "INSPIRATION_YOUTUBE_APIFY.md"),
+    )
+    values = re.findall(r"(?m)^-\s+\*\*?Datum:?\*\?\*?\s*(\d{4}-\d{2}-\d{2}T[0-9:.+-]+Z?)", "\n".join(texts))
+    dates = [parsed for value in values if (parsed := _parse_datetime(value))]
+    if not dates:
+        return [_result("WARNUNG", "Datenalter", "Keine auswertbaren Quelldaten gefunden.")]
+
+    now = _now()
+    stale = [date for date in dates if now - date > timedelta(days=MAX_INSPIRATION_AGE_DAYS)]
+    future = [date for date in dates if date - now > timedelta(hours=6)]
+    if future:
+        return [_result("WARNUNG", "Datenalter", f"{len(future)} Quelle(n) tragen ein auffällig zukünftiges Datum; Quelle prüfen.")]
+    if stale:
+        return [_result("WARNUNG", "Datenalter", f"{len(stale)} Quelle(n) sind älter als {MAX_INSPIRATION_AGE_DAYS} Tage.")]
+    newest = max(dates).astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    return [_result("OK", "Datenalter", f"{len(dates)} Quelldaten geprüft; alle innerhalb von {MAX_INSPIRATION_AGE_DAYS} Tagen (neueste: {newest}).")]
 
 
 def check_bright_data() -> list[dict[str, str]]:
@@ -95,7 +236,7 @@ def check_bright_data() -> list[dict[str, str]]:
     else:
         results.append(_result("OK", "Bright Data Zugang", "Keine aktuellen Zugriffsfehler erkannt."))
     if "Leere Antwort – Plattform nicht verfügbar" in latest:
-        results.append(_result("WARNUNG", "YouTube", "YouTube liefert aktuell eine leere Antwort; separat prüfen."))
+        results.append(_result("WARNUNG", "Bright Data YouTube", "YouTube liefert bei Bright Data eine leere Antwort; Apify-Fallback wird geprüft."))
     return results
 
 
@@ -213,9 +354,12 @@ def notify(report: str) -> None:
 
 
 def run(send_telegram: bool = False) -> str:
-    checks: list[Callable[[], list[dict[str, str]]]] = (
+    checks: tuple[Callable[[], list[dict[str, str]]], ...] = (
         check_required_files,
         check_inspiration,
+        check_youtube_fallback,
+        check_source_quality,
+        check_inspiration_age,
         check_bright_data,
         check_gemini,
         check_secret_hygiene,
