@@ -176,14 +176,16 @@ def dispatch_workflow(workflow_file: str, inputs: dict[str, str] | None = None) 
 
 
 def approve_race_draft() -> bool:
+    """Gibt alle drei zusammengehörigen eigenen Kalendergrafiken frei."""
     if not PUBLISHED_FILE.exists():
         return False
     content = PUBLISHED_FILE.read_text(encoding="utf-8")
-    pattern = r"(?ms)(## .*?Rennposter.*?\nStatus:\s*)ENTWURF(?=\n.*?Freigabe:\s*Rennkalender)"
-    updated, count = re.subn(pattern, r"\1FREIGEGEBEN", content, count=1)
+    pattern = r"(?ms)(^## .*?^Status:\s*)ENTWURF(?=\n.*?^Freigabe:\s*Rennkalender\s*$)"
+    updated, count = re.subn(pattern, r"\1FREIGEGEBEN", content)
     if not count:
         return False
     PUBLISHED_FILE.write_text(updated, encoding="utf-8")
+    print(f"{count} Rennposter-Formate freigegeben.")
     return True
 
 
