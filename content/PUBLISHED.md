@@ -49,7 +49,7 @@ Misano brennt! @toprakrazgatlioglu7 zeigt in der MotoGP wieder einmal, was extre
 Misano’da nefesler tutuldu! Toprak yine sınırları zorluyor.
 
 Wer holt sich das Hauptrennen? Schreib es in die Kommentare.
-Bild: assets/images/2026-09-13.jpg
+Bild: assets/images/2026-09/2026-09-13.jpg
 
 ## Facebook [GEPOSTET 2026-09-13 11:43 | ID: 1285968257941776_122105301009469415]
 Status: FREIGEGEBEN
