@@ -37,7 +37,7 @@ Video: auto
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34764112205-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361645
 Medienstatus: EIGENES_MATERIAL
