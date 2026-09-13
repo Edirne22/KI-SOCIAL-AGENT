@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-09-13 09:08
+Stand: 2026-09-13 13:56
 Gesamtstatus: **WARNUNG**
-- OK: 19
-- Warnungen: 3
+- OK: 15
+- Warnungen: 6
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -10,21 +10,20 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Freigabeplan**: Datei vorhanden und nicht leer.
 - ✅ **Inspiration-Report**: Datei vorhanden und nicht leer.
 - ✅ **Bright-Data-Debug**: Datei vorhanden und nicht leer.
-- ✅ **Inspiration-Quellen**: 13 verlinkte Quellen im Report erkannt.
-- ✅ **Inspiration-Ideen**: 3 konkrete Ideen erkannt.
+- ✅ **Inspiration-Quellen**: 20 verlinkte Quellen im Report erkannt.
+- ⚠️ **Inspiration-Ideen**: Gemini war nicht verfügbar; der Rohdaten-Fallback ist aktiv.
 - ✅ **YouTube-Fallback**: 10 YouTube-Datensätze aus dem Apify-Fallback erkannt.
 - ✅ **YouTube-Duplikate**: Keine doppelten Video-URLs im Quellreport erkannt.
-- ⚠️ **YouTube-Quellenmix**: Nur 1 Datensatz von einem bekannten Primärkanal erkannt (MotoGP). Weitere Quellen vor einer Veröffentlichung manuell prüfen.
-- ⚠️ **Inspiration-Duplikate**: 8 wiederholte Quellen-URL(s) im Report erkannt.
+- ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
+- ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
 - ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
-- ✅ **Ideen-Belege**: Alle 3 Ideenquellen sind in der Quellenliste dokumentiert.
-- ✅ **Datenalter**: 10 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-09-13 08:04 UTC).
+- ⚠️ **Datenalter**: 5 Quelle(n) sind älter als 7 Tage.
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ⚠️ **Bright Data YouTube**: YouTube liefert bei Bright Data eine leere Antwort; Apify-Fallback wird geprüft.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
 - ✅ **Secret-Prüfung**: Keine typischen Zugangsschlüssel in Projektdateien erkannt.
-- ✅ **Analytics Fetch**: Letzter Lauf erfolgreich.
-- ✅ **Analytics Report**: Letzter Lauf erfolgreich.
+- ⚠️ **Analytics Fetch**: Kein letzter Lauf in der GitHub-Antwort gefunden.
+- ⚠️ **Analytics Report**: Kein letzter Lauf in der GitHub-Antwort gefunden.
 - ✅ **Generate Daily Content Idea**: Letzter Lauf erfolgreich.
 - ✅ **Inspiration Agent**: Letzter Lauf erfolgreich.
 - ✅ **Telegram Receive Approval**: Letzter Lauf erfolgreich.
