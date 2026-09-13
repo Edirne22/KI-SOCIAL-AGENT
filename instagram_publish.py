@@ -22,7 +22,7 @@ def find_instagram_block(content):
         claim_token = os.environ.get("PUBLICATION_CLAIM_TOKEN", "")
         if not claim_token or f"Publication-Claim: IN_BEARBEITUNG {claim_token}" not in body:
             continue
-        text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\Z)", body, re.DOTALL)
+        text_match = re.search(r"Text:\s*(.+?)(?=\n(?:Bild|Video|Bilder|Quelle|Medienstatus|Nutzungsrecht):|\Z)", body, re.DOTALL)
         image_match = re.search(r"Bild:\s*(\S+)", body)
         if text_match and image_match:
             return text_match.group(1).strip(), image_match.group(1).strip(), block
