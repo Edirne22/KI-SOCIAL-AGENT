@@ -16,6 +16,7 @@ from telegram_bot import send_message
 
 MEM = Path("memory")
 GEMINI_DEBUG = MEM / "GEMINI_DEBUG.md"
+FOLLOW_REPORT = MEM / "FOLLOW_ANALYSIS.md"
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent"
 RETRY_DELAYS = (30, 60, 120)
 
@@ -158,6 +159,17 @@ def _fallback_with_raw_data(reports: dict[str, str], posts: list[dict[str, str |
     return base + "\n## Gemini-Status\nGemini nicht verfügbar – Rohdaten der wichtigsten Beiträge folgen.\n\n## Rohdaten\n" + _top_posts_text(posts) + "\n"
 
 
+def _follow_context() -> str:
+    """Übernimmt nur die eigene, begrenzte Erkenntnis-Sektion als Inspiration."""
+    if not FOLLOW_REPORT.exists():
+        return "Keine aktuelle Follow-Analyse verfügbar."
+    report = FOLLOW_REPORT.read_text(encoding="utf-8")
+    match = re.search(r"(?ms)^## Erkenntnisse für Bülent\s*\n(.*?)(?=^## |\Z)", report)
+    if not match:
+        return "Keine nutzbaren Follow-Erkenntnisse verfügbar."
+    return match.group(1).strip()[:1500]
+
+
 def summarize(reports: dict[str, str]) -> str:
     api_key = os.environ.get("GEMINI_API_KEY")
     posts = _top_posts(reports)
@@ -170,12 +182,12 @@ def summarize(reports: dict[str, str]) -> str:
         posts = _top_posts(enriched)
 
     evidence = _top_posts_text(posts)
+    follow_context = _follow_context()
     prompt = f"""Hier sind die bis zu 30 engagiertesten öffentlichen Social-Media- und Suchbeiträge der letzten 7 Tage. Die Daten sind strukturiert und quellengebunden.
 
 {evidence}
 
-Erstelle einen unmittelbar nutzbaren, deutschsprachigen Report für Bülents deutsch-türkische Motorrad-/Reise-Community.
-
+Erstelle einen unmittelbar nutzbaren, deutschsprachigen Report für Bülents deutsch-türkische Motorrad-/Reise-Community.\n\nZusätzliche, nicht als Fakten zu behandelnde Muster aus einer öffentlichen Follow-Stichprobe:\n{follow_context}\nNutze sie nur als kreative Orientierung. Kopiere keine fremden Texte und leite daraus keine unbelegten Tatsachen ab.\n
 ## Top-5 Trending Themen (mit Belegen)
 Für jedes Thema: Name, Quelle als vollständige URL, Datum und warum es trending ist. Nutze Engagement-Zahlen nur, wenn sie in den Daten stehen; sonst schreibe „Engagement: nicht verfügbar“. Wenn weniger als fünf belegte Themen vorliegen, schreibe deutlich: „Report eingeschränkt – nur X belegte Themen gefunden.“ Erfinde niemals Namen, Daten, URLs oder Zahlen.
 
