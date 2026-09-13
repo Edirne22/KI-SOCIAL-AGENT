@@ -52,7 +52,6 @@ Bild: assets/images/2026-09/2026-09-13.jpg
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 34764757647-1
 Medienstatus: EIGENES_MATERIAL
 Text:
 Toprak Razgatlıoğlu:
