@@ -19,7 +19,8 @@ def find_instagram_block(content):
         if not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", body):
             print("Instagram-Entwurf übersprungen (nicht freigegeben).")
             continue
-        if "Publication-Claim: IN_BEARBEITUNG" not in body:
+        claim_token = os.environ.get("PUBLICATION_CLAIM_TOKEN", "")
+        if not claim_token or f"Publication-Claim: IN_BEARBEITUNG {claim_token}" not in body:
             continue
         text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\Z)", body, re.DOTALL)
         image_match = re.search(r"Bild:\s*(\S+)", body)
