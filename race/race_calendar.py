@@ -63,15 +63,23 @@ Erfinde keine Zeiten."""
 
 
 def append_draft(series: str, details: str, posters: list[Path]) -> None:
-    if not posters:
+    """Legt getrennte, normale Publisher-Blöcke an; Freigabe bleibt bei Bülent."""
+    if len(posters) < 3:
         return
     existing = PUBLISHED.read_text(encoding="utf-8") if PUBLISHED.exists() else "# Freigegebene Beiträge\n"
     marker = f"Rennkalender: {datetime.now():%Y-W%W}-{series}"
     if marker in existing:
         return
+    source = SOURCES.get(series, ["https://www.motogp.com/"])[0]
+    common = (
+        f"Status: ENTWURF\nFreigabe: Rennkalender\n{marker}\n"
+        f"Titel: 🏁 {series} – Rennwochenende\nText: {details}\n"
+        f"Quelle: {source}\nMedienstatus: EIGENES_MATERIAL\n"
+    )
     entry = (
-        f"\n## Instagram Rennposter\nStatus: ENTWURF\nFreigabe: Rennkalender\n{marker}\n"
-        f"Titel: 🏁 {series} – Rennwochenende\nText: {details}\nBild: {posters[0].as_posix()}\n"
+        f"\n## Instagram\n{common}Bild: {posters[0].as_posix()}\n"
+        f"\n## Story\n{common}Bild: {posters[1].as_posix()}\n"
+        f"\n## Facebook\n{common}Bild: {posters[2].as_posix()}\n"
     )
     PUBLISHED.write_text(existing.rstrip() + "\n" + entry, encoding="utf-8")
 
