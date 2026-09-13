@@ -1,15 +1,20 @@
-"""Erzeugt eigene sachliche Rennkalender-Grafiken – keine KI-Rennbilder."""
+"""Erzeugt eigene Rennkalender-Grafiken mit optionalem abstraktem KI-Hintergrund."""
 from __future__ import annotations
 
+import base64
 import textwrap
 from datetime import datetime
+from io import BytesIO
 from pathlib import Path
 
+import requests
 from PIL import Image, ImageDraw, ImageFont
 
 from asset_paths import get_poster_path, slugify
+from .poster_style import research_style
 
 LOG = Path("memory/RACE_POSTERS_LOG.md")
+NANO_BANANA_MODEL = "gemini-3.1-flash-image"
 
 COLORS = {
     "motogp": ((17, 24, 39), (220, 38, 38)),
@@ -32,14 +37,50 @@ def _font(size: int, bold: bool = False):
     return ImageFont.load_default()
 
 
-def _draw_poster(series: str, details: str, size: tuple[int, int]) -> Image.Image:
+def _nano_background(series: str, brief: str) -> Image.Image | None:
+    """Erzeugt nur einen abstrakten Hintergrund, niemals Rennmaterial."""
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key:
+        return None
+    prompt = f"""Create an original abstract background for a motorsport weekend calendar graphic.
+Series context: {series}. Design brief: {brief}
+Strict requirements: abstract shapes, gradients and light trails only; no people,
+no motorcycle, no car, no track, no rider, no helmet, no team colors, no logos,
+no brand names, no text, no numbers, no watermark. It must not resemble an
+official poster or a photograph."""
+    try:
+        response = requests.post(
+            f"https://generativelanguage.googleapis.com/v1beta/models/{NANO_BANANA_MODEL}:generateContent",
+            headers={"Content-Type": "application/json", "X-goog-api-key": key},
+            json={"contents": [{"parts": [{"text": prompt}]}]},
+            timeout=120,
+        )
+        if response.status_code != 200:
+            print(f"Nano-Banana-Hintergrund nicht verfügbar: HTTP {response.status_code}")
+            return None
+        parts = response.json()["candidates"][0]["content"]["parts"]
+        for part in parts:
+            inline = part.get("inlineData") or part.get("inline_data")
+            if inline and inline.get("data"):
+                return Image.open(BytesIO(base64.b64decode(inline["data"]))).convert("RGB")
+    except (requests.RequestException, KeyError, IndexError, ValueError) as error:
+        print(f"Nano-Banana-Hintergrund nicht verfügbar: {error}")
+    return None
+
+
+def _draw_poster(series: str, details: str, size: tuple[int, int], background: Image.Image | None) -> Image.Image:
     key = "worldsbk" if "worldsbk" in series.lower() else "formel 1" if "formel" in series.lower() else "motogp"
-    background, accent = COLORS[key]
-    image = Image.new("RGB", size, background)
+    base_color, accent = COLORS[key]
+    if background:
+        image = background.resize(size)
+        overlay = Image.new("RGBA", size, base_color + (205,))
+        image = Image.alpha_composite(image.convert("RGBA"), overlay).convert("RGB")
+    else:
+        image = Image.new("RGB", size, base_color)
     draw = ImageDraw.Draw(image)
     width, height = size
 
-    # Eigenes grafisches Design: Linien, Typografie und Kalenderdaten statt Rennfoto.
+    # Exakte Fakten kommen aus Pillow, nicht aus dem Bildmodell.
     draw.rectangle((0, 0, width, int(height * 0.045)), fill=accent)
     draw.rectangle((int(width * 0.08), int(height * 0.19), int(width * 0.12), int(height * 0.76)), fill=accent)
     title_font = _font(max(28, width // 15), bold=True)
@@ -56,7 +97,7 @@ def _draw_poster(series: str, details: str, size: tuple[int, int]) -> Image.Imag
 
     draw.text(
         (int(width * 0.18), int(height * 0.86)),
-        "Kalendergrafik · Fakten vor dem Posten an offizieller Quelle prüfen",
+        "Eigene Kalendergrafik · Fakten vor dem Posten offiziell prüfen",
         font=small_font,
         fill=(200, 200, 200),
     )
@@ -64,19 +105,22 @@ def _draw_poster(series: str, details: str, size: tuple[int, int]) -> Image.Imag
 
 
 def create_poster(series: str, details: str) -> list[Path]:
-    """Erstellt eigene Informationsgrafiken ohne fremde oder KI-generierte Rennmotive."""
+    """Erstellt eigene Grafiken; Nano Banana ist nur optionaler Hintergrund."""
+    brief = research_style(series)
+    background = _nano_background(series, brief)
     week = datetime.now().isocalendar().week
     outputs: list[Path] = []
     for suffix, size in (("feed", (1080, 1350)), ("story", (1080, 1920)), ("facebook", (1200, 630))):
-        image = _draw_poster(series, details, size)
+        image = _draw_poster(series, details, size, background)
         path = get_poster_path(f"{slugify(series)}-{suffix}", week)
         path.parent.mkdir(parents=True, exist_ok=True)
         image.save(path, quality=92)
         outputs.append(path)
 
+    source = "Nano-Banana-Hintergrund" if background else "eigener Farbverlauf (Fallback)"
     old = LOG.read_text(encoding="utf-8") if LOG.exists() else "# Rennposter-Log\n"
     LOG.write_text(
-        old.rstrip() + f"\n- {datetime.now():%Y-%m-%d %H:%M}: eigene Kalendergrafiken für {series}\n",
+        old.rstrip() + f"\n- {datetime.now():%Y-%m-%d %H:%M}: eigene Kalendergrafiken für {series} ({source})\n",
         encoding="utf-8",
     )
     return outputs
