@@ -91,9 +91,26 @@ def _instagram_caption(draft: str) -> str:
     return match.group(1).strip() if match else draft.strip()
 
 
-def _published_header(platform: str) -> str:
-    """Ordnet Reel-Entwürfe dem eindeutigen Reel-Publisher zu."""
-    return "Instagram Reel" if "reel" in platform.lower() else platform.strip()
+def _published_targets(platform: str) -> list[tuple[str, str]]:
+    """Übersetzt eine Plattformangabe in eindeutig veröffentlichbare Formate.
+
+    Sammel-Angaben werden in getrennte Instagram- und Facebook-Blöcke geteilt.
+    TikTok wird bewusst nicht erzeugt: Dafür gibt es noch keinen getesteten
+    Publisher. Instagram-Feed-Posts erhalten Bild: auto für den Mediengenerator.
+    """
+    value = platform.strip().lower()
+    if "reel" in value:
+        return [("Instagram Reel", "Video: auto")]
+    targets: list[tuple[str, str]] = []
+    if "instagram" in value:
+        targets.append(("Instagram", "Bild: auto"))
+    if "facebook" in value:
+        targets.append(("Facebook", ""))
+    if "tiktok" in value:
+        print("TikTok in der Freigabe erkannt, aber ohne Publisher nicht angelegt.")
+    if targets:
+        return targets
+    return [(platform.strip(), "")]
 
 
 def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int], update_id: int) -> None:
@@ -107,19 +124,19 @@ def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int],
     entries = []
     for number in selected:
         post = posts[number]
-        header = _published_header(post["platform"])
-        entries.extend(
-            [
-                f"## {header}",
-                "Status: FREIGEGEBEN",
-                "Freigabe: Telegram",
-                marker,
-                "Text:",
-                _instagram_caption(post["full_text"]),
-                "Video: auto" if header == "Instagram Reel" else "",
-                "",
-            ]
-        )
+        for header, media_line in _published_targets(post["platform"]):
+            entries.extend(
+                [
+                    f"## {header}",
+                    "Status: FREIGEGEBEN",
+                    "Freigabe: Telegram",
+                    marker,
+                    "Text:",
+                    _instagram_caption(post["full_text"]),
+                    media_line,
+                    "",
+                ]
+            )
     PUBLISHED_FILE.write_text(existing.rstrip() + "\n\n" + "\n".join(entries).rstrip() + "\n", encoding="utf-8")
     print(f"{len(selected)} freigegebene Beiträge nach {PUBLISHED_FILE} geschrieben.")
 
