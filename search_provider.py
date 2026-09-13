@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import re
 import time
 from collections.abc import Callable
 from datetime import datetime
@@ -15,6 +16,9 @@ PROVIDER_LOG = Path("memory/SEARCH_PROVIDER_LOG.md")
 MODEL = "gemini-3.8-flash"
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 RETRY_DELAYS = (30, 60, 120)
+APIFY_API_ROOT = "https://api.apify.com/v2/acts"
+APIFY_DEAL_ACTOR = "datascraperes~google-serp-scraper"
+APIFY_DEAL_MAX_CHARGE_USD = 0.01
 
 
 def log_provider(query: str, provider: str, detail: str = "", live_search: bool | None = None) -> None:
@@ -38,6 +42,98 @@ def _result(provider: str, live_search: bool, results: list[dict], warning: str 
         "warning": warning,
         "answer": answer,
     }
+
+
+def _apify_charge_limit() -> float:
+    """Erlaubt eine kleinere Grenze per Variable, nie mehr als einen US-Cent."""
+    try:
+        configured = float(os.environ.get("APIFY_DEAL_MAX_CHARGE_USD", APIFY_DEAL_MAX_CHARGE_USD))
+    except ValueError:
+        configured = APIFY_DEAL_MAX_CHARGE_USD
+    return min(max(configured, 0.001), APIFY_DEAL_MAX_CHARGE_USD)
+
+
+def _price_from_snippet(value: str) -> float | None:
+    prices = [
+        float(match.group(1).replace(".", "").replace(",", "."))
+        for match in re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*(?:€|EUR)\b", value, re.IGNORECASE)
+    ]
+    return min(prices) if prices else None
+
+
+def _search_apify(query: str, token: str, num_results: int) -> dict:
+    """Sucht öffentliche Google-Treffer über Apify, ohne Shop-Login oder Kauf."""
+    actor = os.environ.get("APIFY_DEAL_ACTOR", APIFY_DEAL_ACTOR).strip() or APIFY_DEAL_ACTOR
+    limit = min(max(num_results, 1), 10)
+    payload = {
+        "queries": [query],
+        "startPage": 1,
+        "endPage": 1,
+        "language": "de",
+        "country": "de",
+    }
+    try:
+        response = requests.post(
+            f"{APIFY_API_ROOT}/{actor}/run-sync-get-dataset-items",
+            params={"maxTotalChargeUsd": f"{_apify_charge_limit():.3f}"},
+            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+            json=payload,
+            timeout=180,
+        )
+    except requests.RequestException as error:
+        raise RuntimeError(f"Netzwerkfehler: {type(error).__name__}") from error
+    if not response.ok:
+        raise RuntimeError(f"HTTP {response.status_code}")
+    try:
+        rows = response.json()
+    except ValueError as error:
+        raise RuntimeError("Actor lieferte kein JSON") from error
+    if not isinstance(rows, list):
+        raise RuntimeError("Actor lieferte kein Ergebnis-Array")
+
+    results: list[dict] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        url = str(row.get("url") or row.get("link") or "").strip()
+        if not url.startswith(("https://", "http://")):
+            continue
+        title = str(row.get("title") or url).strip()
+        snippet = str(row.get("description") or row.get("snippet") or "").strip()
+        results.append({"title": title, "url": url, "snippet": snippet})
+        if len(results) >= limit:
+            break
+    if not results:
+        raise RuntimeError("Keine verwertbaren öffentlichen Suchtreffer")
+
+    offers = []
+    for item in results:
+        price = _price_from_snippet(f"{item['title']} {item['snippet']}")
+        if price is not None:
+            domain = urlparse(item["url"]).netloc.removeprefix("www.")
+            offers.append((price, domain or "unbekannter Händler", item["url"]))
+    lines = ["Live-Suche über Apify (öffentliche Google-Treffer):"]
+    if offers:
+        price, retailer, url = min(offers, key=lambda offer: offer[0])
+        lines.extend(
+            [
+                "",
+                "BESTES_ANGEBOT:",
+                f"Preis: {price:.2f} €",
+                f"Händler: {retailer}",
+                f"URL: {url}",
+                "Belegt: ja",
+                "Hinweis: Preis stammt aus einem aktuellen Suchtreffer; bitte auf den Link tippen und im Shop prüfen.",
+            ]
+        )
+    else:
+        lines.append("Kein verifizierbarer Preis im Suchtreffer-Snippet gefunden – Links bitte direkt prüfen.")
+    lines.append("")
+    lines.append("Direkte Treffer (antippbar):")
+    for index, item in enumerate(results, 1):
+        snippet = f" – {item['snippet']}" if item["snippet"] else ""
+        lines.append(f"{index}. {item['title']}\n   {item['url']}{snippet}")
+    return _result("Apify-Google-Suche", True, results, None, "\n".join(lines))
 
 
 def _valid_searxng_url(value: str) -> str | None:
@@ -171,10 +267,21 @@ Beginne eindeutig mit: Keine Live-Websuche verfügbar."""
 
 
 def search(query: str, num_results: int = 10, status_callback: Callable[[str], None] | None = None) -> dict:
-    """Sucht SearXNG → Gemini Grounding → Gemini-Wissens-Fallback."""
+    """Sucht Apify → SearXNG → Gemini Grounding → Gemini-Wissens-Fallback."""
     query = query.strip()
     if not query:
         raise ValueError("Bitte nenne ein Produkt.")
+
+    apify_token = os.environ.get("APIFY_API_TOKEN", "").strip()
+    if apify_token:
+        try:
+            result = _search_apify(query, apify_token, num_results)
+            log_provider(query, "Apify-Google-Suche", f"${len(result['results'])} öffentliche Treffer; Kostenlimit ${_apify_charge_limit():.3f}", True)
+            return result
+        except RuntimeError as error:
+            log_provider(query, "Apify-Google-Suche", f"Fallback: {error}", True)
+    else:
+        log_provider(query, "Apify-Google-Suche", "Nicht konfiguriert", None)
 
     configured_url = os.environ.get("SEARXNG_URL", "")
     if configured_url:
