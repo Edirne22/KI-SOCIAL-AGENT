@@ -1,7 +1,7 @@
 # MASTER-SNAPSHOT – KI-SOCIAL-AGENT
 
 **Stand:** 13.09.2026  
-**Version:** v2  
+**Version:** v3  
 **Repository:** `Edirne22/KI-SOCIAL-AGENT`
 
 ---
@@ -59,14 +59,15 @@ Die Publisher verarbeiten nur geeignete, freigegebene Blöcke in `content/PUBLIS
 
 Der Inspiration-Agent sammelt öffentliche Trend- und Social-Daten für konkrete Ideen.
 
-- Bright Data als primäre Quelle für konfigurierte Plattformen
-- Apify als YouTube-Fallback, wenn Bright Data keine verwertbaren YouTube-Daten liefert
-- Gemini fasst die Daten in Themen und Ideen zusammen
+- **Apify ist Hauptquelle** für Instagram, Facebook und YouTube
+- Bright Data wird nur noch als gezielter Fallback genutzt; das Bright-Data-Konto war zuletzt ohne verfügbares Guthaben bzw. nicht aktiv
+- Gemini fasst belegte öffentliche Daten in Themen und Ideen zusammen
 - Ergebnisse: `memory/INSPIRATION_IDEAS.md`
-- YouTube-Rohdaten: `memory/INSPIRATION_YOUTUBE_APIFY.md`
-- Diagnose ohne Tokens: `memory/BRIGHTDATA_DEBUG.md` und `memory/INSPIRATION_YOUTUBE_APIFY_DEBUG.md`
+- Apify-Social-Rohdaten und Diagnose: `memory/INSPIRATION_APIFY.md`, `memory/INSPIRATION_APIFY_DEBUG.md`
+- YouTube-Rohdaten und Diagnose: `memory/INSPIRATION_YOUTUBE_APIFY.md`, `memory/INSPIRATION_YOUTUBE_APIFY_DEBUG.md`
+- Daily Ideas übernimmt jetzt zu mindestens einer Idee die konkrete Inspirationsquelle, wenn eine aktuelle Quelle verfügbar ist
 
-**Letzter bestätigter Stand:** Der YouTube-Apify-Fallback lieferte erfolgreich zehn Video-Datensätze und wurde in den Inspirationsreport übernommen.
+**Letzter bestätigter Stand:** Instagram und YouTube lieferten erfolgreich öffentliche Datensätze. Facebook scheiterte im letzten Lauf noch mit dem alten Actor (HTTP 400). Der neue Facebook-Actor ist auf maximal zehn Ergebnisse pro Lauf begrenzt und muss noch einmal manuell getestet werden.
 
 ### 4. Analytics, Viral Learning und Growth
 
@@ -171,16 +172,19 @@ Idee / Recherche
 
 ## Aktuelle offene Prioritäten
 
-1. **Qualitäts-Agent einmal manuell testen**  
+1. **Facebook-Apify einmal manuell testen**  
+   Der neue Facebook-Actor mit echtem `resultsLimit: 10` muss einen Lauf mit aktuellem Code abschließen. Im Apify-Dashboard muss danach „Facebook Posts Scraper“ erscheinen, nicht mehr der alte Profile-&-Posts-Actor.
+
+2. **Apify-Kosten beobachten**  
+   Der Free-Plan liegt aktuell bei einem $5-Monatslimit. Keine Upgrades oder Overages aktivieren; nur wenige manuelle Testläufe durchführen. Nach mehreren regulären Läufen den tatsächlichen Monatsdurchschnitt in Apify Billing prüfen.
+
+3. **Qualitäts-Agent einmal manuell testen**  
    Der neue Check für YouTube-Fallback, Quellenqualität und Datenalter soll einen ersten echten Report erstellen.
 
-2. **Inspiration-Quellen beobachten**  
-   Der Apify-Fallback funktioniert technisch. Die Qualität der einzelnen YouTube-Kanäle wird künftig im Qualitätsreport sichtbar und muss vor einer Veröffentlichung weiterhin menschlich beurteilt werden.
-
-3. **System-Neustart-Agent planen**  
+4. **System-Neustart-Agent planen**  
    Ein zukünftiger, rein technischer Wächter soll festgefahrene Workflows erkennen und zeitversetzt neu anstoßen. Er darf keine Inhalte veröffentlichen.
 
-4. **Stabilisieren vor Ausbau**  
+5. **Stabilisieren vor Ausbau**  
    Mehrere Tage echte Reports, Telegram-Freigaben und Publisher-Ergebnisse prüfen, bevor weitere große Funktionen dazukommen.
 
 ---
