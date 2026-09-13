@@ -1,304 +1,224 @@
-Perfekt, Bülent! Dann machen wir beides – Schritt für Schritt.
+# MASTER-SNAPSHOT – KI-SOCIAL-AGENT
 
-# 📝 Option 1: MASTER-SNAPSHOT.md anlegen
-
-## Schritt 1.1: Datei erstellen
-
-1. Öffne dein Repository:  
-   👉 **https://github.com/Edirne22/KI-SOCIAL-AGENT**
-
-2. Klicke auf **„Add file"** → **„Create new file"**
-
-3. Dateiname: `MASTER-SNAPSHOT.md`
-
-4. **Inhalt einfügen:**
-
-```markdown
-# 🤖 MASTER-SNAPSHOT – Persönliche KI-Agenten-Zentrale
-
-**Stand:** 11.09.2026  
-**Projekt:** KI-SOCIAL-AGENT  
-**Version:** v1
+**Stand:** 13.09.2026  
+**Version:** v2  
+**Repository:** `Edirne22/KI-SOCIAL-AGENT`
 
 ---
 
-## 🎯 LANGFRISTIGES HAUPTZIEL
+## Kurzbild
 
-Aus dem bestehenden KI-Social-Agent soll langfristig eine **persönliche KI-Agenten-Zentrale** entstehen.
+Der KI-SOCIAL-AGENT ist heute ein GitHub-Actions-basiertes System für Bülents deutsch-türkische Motorrad- und Reise-Community. Es erstellt, recherchiert, bewertet und bereitet Content vor. Veröffentlichungen bleiben an eine ausdrückliche menschliche Freigabe gebunden.
 
-Die Zentrale soll:
-- Aufgaben verstehen und planen
-- Recherchieren
-- Passende Spezial-Agenten auswählen
-- Ergebnisse prüfen
-- Aus Erfahrungen lernen
-- Dem Nutzer ein fertiges Ergebnis präsentieren
-
-**Beispiele:**
-- „Finde mir einen günstigen Handyvertrag mit SIM-Karte."
-- „Plane mir eine günstige Thailand-Reise."
-- „Finde zwei passende Motorradreifen."
-- „Erstelle fünf Social-Media-Posts und passende Bilder."
+> **Grundsatz:** Die KI darf recherchieren, Vorschläge erstellen und prüfen. Sie veröffentlicht, kauft oder bucht nichts ohne klaren Auftrag und Freigabe.
 
 ---
 
-## 🧠 GRUNDIDEE
-
-Die Zentrale funktioniert wie ein persönlicher digitaler Mitarbeiterstab:
-
-- **Orchestrator** (Koordination)
-- **Spezial-Agenten** (Aufgaben)
-- **Agent-Loops** (Wiederholung)
-- **Reviewer** (Qualitätsprüfung)
-- **Memory-System** (Gedächtnis)
-- **Model Router** (KI-Auswahl)
-- **Tools / APIs / Webzugriff**
-- **Nutzerfreigabe**
-
----
-
-## 🏗️ ZIELARCHITEKTUR
+## Architektur
 
 ```
-                         👤 NUTZER
-                            │
-                            ▼
-                    🧠 ORCHESTRATOR
-                            │
-             ┌──────────────┼──────────────┐
-             ▼              ▼              ▼
-        🧠 MEMORY      🎯 MODEL ROUTER   🔧 TOOLS
-             │              │              │
-             │       Gemini / Claude       │
-             │       Qwen / ChatGPT       │
-             │       DeepSeek / Kimi      │
-             │              │              │
-             └──────────────┼──────────────┘
-                            ▼
-                     👥 AGENTEN-TEAM
-                            │
-          ┌─────────────────┼─────────────────┐
-          ▼                 ▼                 ▼
-       SOCIAL             REISE             DEALS
-       RESEARCH           SHOPPING           WEITERE
-          │                 │                 │
-          └─────────────────┼─────────────────┘
-                            ▼
-                       🔄 AGENT LOOP
-                            │
-                            ▼
-                        🔍 REVIEW
-                            │
-                     ┌──────┴──────┐
-                     ▼             ▼
-                   FEHLER          OK
-                     │             │
-                     └──► LOOP     ▼
-                               🧠 MEMORY
-                                   │
-                                   ▼
-                              👤 FREIGABE
-                                   │
-                                   ▼
-                                ERGEBNIS
+Recherche & Trends ──┐
+Content-Planung ─────┼──► Memory & Qualitätsprüfung ─► Telegram-Freigabe ─► Publisher
+Medien-Erzeugung ────┘                                      │
+                                                            └──► nur Status: FREIGEGEBEN
 ```
 
+- **GitHub Actions** führt zeitgesteuerte und manuelle Abläufe aus.
+- **Telegram** ist der persönliche Steuerungs- und Freigabekanal.
+- **memory/** speichert nachvollziehbare Ergebnisse, Berichte und Lernstände.
+- **content/PUBLISHED.md** ist der kontrollierte Freigabeplan.
+- **GitHub Secrets/Variables** enthalten Zugangsdaten und Konfiguration; keine Schlüssel gehören in Dateien.
+
 ---
 
-## 🔄 AGENT-LOOP
+## Aktive Funktionsbereiche
+
+### 1. Content-Pipeline
+
+- Tägliche Content-Ideen und Wochenplanung
+- Gemeinsamer Agenten-Kontext aus `agents/`
+- Mediengenerierung mit Agnes: Bilder, optionale Hochformat-Videos und Karussellbilder
+- Asset-Struktur unter `assets/`
+- Morgen-Digest und Telegram-Freigabe
+- Einträge bleiben Entwurf, bis Bülent ausdrücklich freigibt
+
+### 2. Veröffentlichungs-Pipeline
+
+Vorhandene Publisher für:
+
+- Instagram-Posts
+- Instagram-Stories
+- Instagram-Reels
+- Instagram-Karussells
+- Facebook-Posts
+- Facebook-Karussells
+
+Die Publisher verarbeiten nur geeignete, freigegebene Blöcke in `content/PUBLISHED.md`. Erfolgreiche Posts werden mit Zeitpunkt und Plattform-ID dokumentiert.
+
+### 3. Inspiration- und Recherche-Agent
+
+Der Inspiration-Agent sammelt öffentliche Trend- und Social-Daten für konkrete Ideen.
+
+- Bright Data als primäre Quelle für konfigurierte Plattformen
+- Apify als YouTube-Fallback, wenn Bright Data keine verwertbaren YouTube-Daten liefert
+- Gemini fasst die Daten in Themen und Ideen zusammen
+- Ergebnisse: `memory/INSPIRATION_IDEAS.md`
+- YouTube-Rohdaten: `memory/INSPIRATION_YOUTUBE_APIFY.md`
+- Diagnose ohne Tokens: `memory/BRIGHTDATA_DEBUG.md` und `memory/INSPIRATION_YOUTUBE_APIFY_DEBUG.md`
+
+**Letzter bestätigter Stand:** Der YouTube-Apify-Fallback lieferte erfolgreich zehn Video-Datensätze und wurde in den Inspirationsreport übernommen.
+
+### 4. Analytics, Viral Learning und Growth
+
+- Instagram-/Facebook-Insights werden nach veröffentlichten Beiträgen gespeichert
+- Performance-Berichte und Telegram-Zusammenfassungen
+- Mustererkennung, Experimente, Funnel- und Growth-Auswertung
+- Wettbewerber- und Follow-Analyse auf Basis öffentlicher Daten
+
+Wichtig: Datenbasierte Empfehlungen sind Vorschläge, keine automatische Strategie- oder Veröffentlichungsentscheidung.
+
+### 5. Deal-Hunter und Preis-Tracking
+
+- Telegram-Kommandos für einmalige öffentliche Produktsuche
+- Watchlist mit Preisverlauf und Benachrichtigung bei Änderungen
+- Auto-Track kann ein- und ausgeschaltet werden
+- Kein Kauf, keine Anmeldung und kein Testen nichtöffentlicher Gutscheincodes
+
+### 6. Race- und Community-Funktionen
+
+- Rennkalender und Poster-Entwürfe
+- `race` erstellt nur einen Entwurf
+- `go` ist eine ausdrückliche Freigabe, keine automatische Veröffentlichung
+- Karussell-Entwürfe können per Telegram angelegt werden
+
+---
+
+## Agenten-Bibliothek
+
+In `agents/` liegen aktuell zehn dokumentierte Spezialrollen:
+
+1. Content Creator
+2. Instagram Curator
+3. TikTok Strategist
+4. Social Media Strategist
+5. Research Synthesist
+6. Reddit Community Builder
+7. Video Optimization
+8. Paid Social Strategist
+9. Quality Agent
+10. Follow Analysis Agent
+
+`agents/AGENTS_INDEX.md` beschreibt Rolle, Aktivierung und Einsatzgebiet. Nicht jede dokumentierte Rolle ist bereits ein vollständig automatisierter Workflow.
+
+---
+
+## Qualitäts- und Sicherheitsnetz
+
+Der Qualitäts-Agent prüft täglich bzw. manuell:
+
+- Vorhandensein zentraler Content- und Memory-Dateien
+- Inspirationsreport: Quellen und Anzahl konkreter Ideen
+- YouTube-Apify-Fallback: Datensätze, Duplikate und Quellenmix
+- doppelte Quellen-URLs und fehlende Belege
+- Datenalter der Recherche
+- Bright-Data- und Gemini-Diagnosen
+- typische versehentlich eingecheckte Zugangsschlüssel
+- Status ausgewählter GitHub-Workflows
+
+Er erzeugt `memory/QUALITY_REPORT.md` und `memory/QUALITY_HISTORY.md`.
+
+**Garantien des Qualitäts-Agenten:**
+
+- startet keine Workflows neu
+- veröffentlicht nichts
+- verändert keinen Content
+- meldet Warnungen nachvollziehbar statt still etwas zu reparieren
+
+---
+
+## Freigabe- und Sicherheitsprinzip
 
 ```
-Aufgabe → Planung → Agent auswählen → Agent arbeitet
-   → Ergebnis → Reviewer → OK? → Ja: nächster Agent
-                              → Nein: zurück zum Agenten
-   → Abschluss → Memory
+Idee / Recherche
+  → Entwurf
+  → Telegram-Nachricht an Bülent
+  → ausdrückliche Freigabe
+  → Status: FREIGEGEBEN
+  → passender Publisher
+  → Post-ID und Analytics
 ```
 
-**Wichtig für den Start:** Erst mit 1 Agent + 1 Reviewer beginnen.
+- Keine automatische Veröffentlichung aus Ideen, Trends oder Analysen
+- Kein Kauf, keine Buchung, keine Anmeldung durch Deal- oder spätere Reise-Agenten
+- Telegram akzeptiert nur den konfigurierten persönlichen Chat
+- API-Keys, Tokens und Chat-IDs bleiben GitHub Secrets
 
 ---
 
-## 👥 AGENTEN-ARCHITEKTUR
+## Wichtige Speicherorte
 
-**Fundament:** Agency Agents (github.com/msitarzewski/agency-agents)
-
-**Vorgehen:** Archiv analysieren → geeignete Spezialisten auswählen → anpassen → eigene Bibliothek aufbauen.
-
-**Struktur:** `agents/` mit 8 kuratierten Agenten + `AGENTS_INDEX.md`
-
----
-
-## 🧠 MEMORY – KERNBESTANDTEIL
-
-**Start-Struktur (verschlankt):**
-```
-memory/
-├── POST_HISTORY.md       (was wurde gepostet)
-├── PERFORMANCE.md        (was lief gut)
-├── HOOKS_THAT_WORK.md    (bewährte Hooks)
-├── USER_PREFERENCES.md   (Bülents Vorlieben)
-├── LESSONS_LEARNED.md    (Fehler und Erkenntnisse)
-└── RESEARCH_LOG.md       (Recherche-Historie)
-```
-
-**Später:** Memory Manager filtert, was wirklich gespeichert wird.
+| Bereich | Dateien/Ordner |
+| --- | --- |
+| Freigabeplan | `content/PUBLISHED.md` |
+| Ideenpool | `content/CONTENT_PLAN.md` |
+| Agentenrollen | `agents/` |
+| Regeln | `rules/BRAND_RULES.md`, `rules/SAFETY_RULES.md` |
+| Gedächtnis und Reports | `memory/` |
+| Medien | `assets/images/`, `assets/videos/`, `assets/published/` |
+| Workflow-Automationen | `.github/workflows/` |
 
 ---
 
-## 🎯 MODEL ROUTER
+## Aktuelle offene Prioritäten
 
-Entscheidet automatisch, welches KI-Modell für welche Aufgabe.
+1. **Qualitäts-Agent einmal manuell testen**  
+   Der neue Check für YouTube-Fallback, Quellenqualität und Datenalter soll einen ersten echten Report erstellen.
 
-**Konfiguration:** `config/model_router.json`
+2. **Inspiration-Quellen beobachten**  
+   Der Apify-Fallback funktioniert technisch. Die Qualität der einzelnen YouTube-Kanäle wird künftig im Qualitätsreport sichtbar und muss vor einer Veröffentlichung weiterhin menschlich beurteilt werden.
 
-```json
-{
-  "content_ideas":     "gemini",
-  "final_captions":    "claude",
-  "image_generation":  "gemini",
-  "translation_de_tr": "qwen",
-  "research":          "gemini",
-  "quality_check":     "claude"
-}
-```
+3. **System-Neustart-Agent planen**  
+   Ein zukünftiger, rein technischer Wächter soll festgefahrene Workflows erkennen und zeitversetzt neu anstoßen. Er darf keine Inhalte veröffentlichen.
 
-**Modelle:** Gemini, Claude, Qwen, ChatGPT, DeepSeek, Kimi
+4. **Stabilisieren vor Ausbau**  
+   Mehrere Tage echte Reports, Telegram-Freigaben und Publisher-Ergebnisse prüfen, bevor weitere große Funktionen dazukommen.
 
 ---
 
-## 📱 SOCIAL MEDIA – ERSTER PRAKTISCHER EINSATZ
+## Geplante Ausbaustufen
 
-**Plattformen:** Facebook, Instagram, TikTok (später)
+### Nächste Stufe
 
-**Funktionen:** Content-Ideen, Posts, Captions, Hooks, Hashtags, Bilder, Community, Recherche.
+- System-Neustart-Agent
+- Aktualisierte Projektdokumentation und konsolidierte Secrets-Dokumentation
+- Optional: VPS-Umzug für zuverlässigeren 24/7-Betrieb
+- Optional: SearXNG als konfigurierbarer Recherche-Fallback
+- Optional: zentraler Model Router / OmniRouter, erst nach Stabilisierung
 
-**Regel:** Keine automatische Veröffentlichung ohne Nutzerfreigabe.
+### Spätere Reise-Zentrale
 
-**Status:** Instagram (Post + Story) ✅, Facebook ✅, TikTok geplant.
+Ein Hauptagent koordiniert spezialisierte Agenten für:
 
----
+- Flugrecherche
+- Hotels
+- Mietwagen
+- Routen und Aktivitäten
+- Budget- und Terminvergleich
 
-## 🛒 DEAL HUNTER / SHOPPING (später)
-
-Recherche für Käufe: Produkt, Preis, Versand, Verfügbarkeit, Händler, Bewertungen, Rabatte.
-
-**Regel:** Transparent angeben, welche Quellen verwendet wurden. Keine Behauptung „ganzes Internet durchsucht".
-
----
-
-## ✈️ REISE-AGENT (später)
-
-Flüge, Hotels, Aktivitäten, Preise, Alternativen → Reisevorschlag.
-
-**Buchung erst nach Nutzerbestätigung.**
+Auch dort gilt: Recherche und Vorschläge automatisieren, Buchung erst nach Bülents ausdrücklicher Freigabe.
 
 ---
 
-## 🔐 SICHERHEITSPRINZIP
+## Was nicht behauptet wird
 
-```
-KI recherchiert → KI prüft → KI präsentiert
-   → 👤 NUTZER BESTÄTIGT → Aktion
-```
-
-**Kritische Aktionen:** Käufe, Buchungen, Veröffentlichungen, Verträge.
-
-**Zusätzlich:** Keine API-Keys in Markdown-Dateien, erweiterter Key-Filter, regelmäßige Prüfung.
+- Nicht jede Plattformdatenquelle liefert jederzeit gleich gute oder vollständige Daten.
+- Ein erfolgreiches Workflow-Grün ersetzt keine inhaltliche Quellenprüfung.
+- Dokumentierte Agentenrollen sind nicht automatisch gleichbedeutend mit vollständig autonomen Agenten.
+- GitHub Actions und externe APIs können zeitweise verzögert oder nicht erreichbar sein.
 
 ---
 
-## ☁️ LOKAL + CLOUD
+## Leitbild
 
-- **Lokal:** Qwen, einfache Aufgaben, interne Daten
-- **Cloud:** Gemini, Claude, OpenAI, DeepSeek
-- **Ziel:** Modelle austauschbar halten
+> **„Bülent entscheidet. Das System recherchiert, organisiert, prüft und bereitet sauber vor.“**
 
----
-
-## ☁️ 24/7-BETRIEB (später)
-
-VPS (3–5 €/Monat) für dauerhaften Betrieb. Laptop dient zur Steuerung.
-
----
-
-## 🧩 ENTWICKLUNGSPRINZIP
-
-Erst Kern: Orchestrator + 2–3 Agenten + Reviewer + Memory.
-Danach skalieren auf 5, 20 oder 50 Agenten.
-
----
-
-## 📌 AKTUELLER STATUS (11.09.2026)
-
-**Funktioniert:** Instagram (Post + Story), Facebook, Memory-System, Daily-Generator.
-
-**Offen:** Billing, Bild-Generierung, Model Router, Agenten-Dateien, Orchestrator.
-
----
-
-## 🏆 ENDVISION
-
-> **„Ich sage, was ich brauche – die Zentrale kümmert sich um den Rest."**
-
-Nicht eine einzelne KI, sondern: Orchestrator + Agenten + Tools + Model Router + Memory + Loops + Qualitätskontrolle.
-
----
-
-## 🔑 MERKSATZ
-
-> **„Wir bauen keinen einfachen Chatbot. Wir bauen langfristig einen persönlichen digitalen Mitarbeiterstab mit gemeinsamem Gedächtnis, der Aufgaben selbstständig plant, Spezialisten einsetzt, Ergebnisse kontrolliert und aus vergangenen Aufgaben lernt."**
-
----
-
-## 💾 BACKUP-REGEL
-
-Bei größeren Meilensteinen neue Version: MASTER-SNAPSHOT-v2, v3, ...
-
-**GitHub = Code.**  
-**Snapshot = Vision & Architektur.**
-
----
-
-**Ende MASTER-SNAPSHOT v1**
-```
-
-5. **„Commit changes"** unten klicken
-
----
-
-# 🔒 Option 2: Backup-Branch anlegen
-
-## Schritt 2.1: Branch erstellen
-
-1. Öffne:  
-   👉 **https://github.com/Edirne22/KI-SOCIAL-AGENT/branches**
-
-2. Klicke rechts oben auf **„New branch"** (grüner Button)
-
-3. **Branch name:** `backup-2026-09-11`
-
-4. **Source:** `main` (Standard-Branch)
-
-5. Klicke auf **„Create new branch"**
-
-## Schritt 2.2: Prüfen
-
-- Der Branch sollte in der Liste erscheinen
-- Er ist eine **exakte Kopie** von `main` zum aktuellen Zeitpunkt
-- Damit hast du einen **Wiederherstellungspunkt**, falls morgen etwas schiefgeht
-
----
-
-## ✅ Was danach wichtig ist
-
-**Ab jetzt:** Alle Änderungen werden weiter auf `main` gemacht – der Backup-Branch bleibt unangetastet als Sicherung.
-
-**Falls mal etwas schiefgeht:** Du kannst jederzeit zum Backup-Branch zurück oder einzelne Dateien von dort wiederherstellen.
-
----
-
-**Sag mir Bescheid, wenn beide Schritte erledigt sind:**
-1. ✅ MASTER-SNAPSHOT.md angelegt?
-2. ✅ Backup-Branch erstellt?
-
-Danach ist heute Abend wirklich Schluss – du hast fantastisch gearbeitet! 💪🏍️🇹🇷
