@@ -1,0 +1,27 @@
+# Follow-Analyse
+Stand: 2026-09-13 02:50
+
+## Zusammenfassung
+- Analysierte Accounts: 8
+- Erfolgreich: 0
+- Nicht analysierbar: 8
+- Hinweis: Top-Posts stammen aus einer aktuellen, begrenzten öffentlichen Stichprobe.
+
+## Verify-Ergebnisse
+- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data Snapshot Timeout
+- @denizoncu → ⚠️ @denizoncu | – | Bright Data: keine öffentlichen Posts
+- @canoncu → ⚠️ @canoncu | – | Bright Data: keine öffentlichen Posts
+- @kenansofuoglu → ⚠️ @kenansofuoglu | – | Bright Data Snapshot Timeout
+- @zaynsofuoglu → ⚠️ @zaynsofuoglu | – | Bright Data HTTP 400
+- @bahattinsofuoglu → ⚠️ @bahattinsofuoglu | – | Bright Data HTTP 400
+- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
+- @jackmilleraus → ⚠️ @jackmilleraus | – | Bright Data HTTP 400
+
+## Account-Ergebnisse
+
+## Erkenntnisse für Bülent
+Keine KI-Auswertung verfügbar; es liegen zu wenige öffentliche Beiträge vor.
+
+## Sicherheit
+- Nur öffentliche Inhalte; keine Kommentare-, Liker- oder Followerlisten gespeichert.
+- Erkenntnisse dienen als Inspiration. Fremde Beiträge werden nicht kopiert und nichts wird veröffentlicht.
