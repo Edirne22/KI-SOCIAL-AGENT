@@ -15,6 +15,9 @@ def find_story_block(content):
         if "[GEPOSTET" in block:
             continue
         body = match.group(1)
+        if not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", body):
+            print("Story-Entwurf übersprungen (nicht freigegeben).")
+            continue
         bild_match = re.search(r"Bild:\s*(\S+)", body)
         video_match = re.search(r"Video:\s*(\S+)", body)
         if bild_match:
