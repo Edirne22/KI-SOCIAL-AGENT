@@ -30,6 +30,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add memory/RACE_WEEKEND.md 2>/dev/null || true
           git add memory/RACE_POSTERS_LOG.md 2>/dev/null || true
+          git add memory/RACE_POSTER_STYLE.md 2>/dev/null || true
           git add memory/RACE_ARCHIVE/ 2>/dev/null || true
           git add race-posters/ 2>/dev/null || true
           git add content/PUBLISHED.md 2>/dev/null || true
