@@ -40,7 +40,7 @@ def parse_accounts() -> list[dict[str, object]]:
         if line.startswith("## "):
             category = re.sub(r"^##+\s*", "", line)
             found = re.search(r"Prio\s*([1-3])", category, re.I)
-            priority = int(found.group(1)) if found else priority
+            priority = int(found.group(1)) if found else None
             continue
         if line.startswith("- ") and priority:
             value = line[2:].split("#", 1)[0].strip()
