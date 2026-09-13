@@ -10,7 +10,7 @@ import time
 
 import requests
 
-from . import apify_agent, brightdata_agent, crawlbase_agent
+from . import apify_agent, brightdata_agent, crawlbase_agent, youtube_apify_agent
 from .report_builder import build, evidence_count
 from telegram_bot import send_message
 
@@ -207,6 +207,12 @@ Alle verwendeten URLs nummeriert. Verwende ausschließlich URLs, die in den obig
     return "# Inspiration-Ideen\n\n" + text + "\n" if text else _fallback_with_raw_data(enriched, posts)
 
 
+def _youtube_needs_fallback(report: str) -> bool:
+    """Bright-Data-YouTube ist nur dann ausreichend, wenn echte Datensätze vorliegen."""
+    section = re.search(r"(?ms)^## YouTube\s*\n(.*?)(?=^## |\Z)", report or "")
+    return not section or "### Datensatz" not in section.group(1)
+
+
 def main() -> None:
     jobs = {"Apify": apify_agent.run, "Bright Data": brightdata_agent.run, "Crawlbase": crawlbase_agent.run}
     reports: dict[str, str] = {}
@@ -218,6 +224,14 @@ def main() -> None:
                 reports[name] = task.result()
             except Exception as error:
                 reports[name] = f"# {name}\n\nKeine Daten: {type(error).__name__}.\n"
+
+    if _youtube_needs_fallback(reports.get("Bright Data", "")):
+        try:
+            reports["YouTube Apify"] = youtube_apify_agent.run()
+        except Exception as error:
+            reports["YouTube Apify"] = f"# YouTube Apify\\n\\nKeine Daten: {type(error).__name__}.\\n"
+    else:
+        reports["YouTube Apify"] = "# YouTube Apify\\n\\nNicht benötigt: Bright Data lieferte YouTube-Datensätze.\\n"
 
     report = summarize(reports)
     (MEM / "INSPIRATION_IDEAS.md").write_text(report, encoding="utf-8")
