@@ -55,7 +55,7 @@ def _apify_charge_limit() -> float:
 
 def _price_from_snippet(value: str) -> float | None:
     prices = []
-    for match in re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*(?:€|EUR)\b", value, re.IGNORECASE):
+    for match in re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*(?:€|EUR)", value, re.IGNORECASE):
         raw = match.group(1)
         # Deutsche und internationale Schreibweisen: 299,99 / 299.99 / 1.299,99.
         if "," in raw and "." in raw:
@@ -67,6 +67,26 @@ def _price_from_snippet(value: str) -> float | None:
         except ValueError:
             continue
     return min(prices) if prices else None
+
+
+def _offer_matches_query(item: dict, price: float, query: str) -> bool:
+    """Akzeptiert bei Kriterien nur Treffer, die diese selbst sichtbar belegen."""
+    text = f"{item['title']} {item['snippet']}".lower()
+    query_lower = query.lower()
+
+    maximum = re.search(r"\bmax\s*:?\s*([0-9]+(?:[.,][0-9]+)?)\s*(?:€|eur)", query_lower)
+    if maximum and price > float(maximum.group(1).replace(",", ".")):
+        return False
+
+    requested_gb = [int(value) for value in re.findall(r"\b([0-9]{1,4})\s*gb\b", query_lower)]
+    if requested_gb:
+        found_gb = [int(value) for value in re.findall(r"\b([0-9]{1,4})\s*gb\b", text)]
+        if not found_gb or max(found_gb) < max(requested_gb):
+            return False
+
+    if re.search(r"\b(?:d1|telekom)\b", query_lower) and not re.search(r"\b(?:d1|telekom)\b", text):
+        return False
+    return True
 
 
 def _search_apify(query: str, token: str, num_results: int) -> dict:
@@ -117,7 +137,7 @@ def _search_apify(query: str, token: str, num_results: int) -> dict:
     offers = []
     for item in results:
         price = _price_from_snippet(f"{item['title']} {item['snippet']}")
-        if price is not None:
+        if price is not None and _offer_matches_query(item, price, query):
             domain = urlparse(item["url"]).netloc.removeprefix("www.")
             offers.append((price, domain or "unbekannter Händler", item["url"]))
     lines = ["Live-Suche über Apify (öffentliche Google-Treffer):"]
@@ -135,7 +155,7 @@ def _search_apify(query: str, token: str, num_results: int) -> dict:
             ]
         )
     else:
-        lines.append("Kein verifizierbarer Preis im Suchtreffer-Snippet gefunden – Links bitte direkt prüfen.")
+        lines.append("Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.")
     lines.append("")
     lines.append("Direkte Treffer (antippbar):")
     for index, item in enumerate(results, 1):
