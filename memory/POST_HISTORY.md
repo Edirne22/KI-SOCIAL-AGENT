@@ -55,3 +55,11 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 2: Warum schickt dich deine Navi-App eigentlich immer auf die langweiligste Bundesstraße?
 - Titel 3: Das ungeschriebene Gesetz der Biker-Pause
 - Hook 3: Was ist das wichtigste Werkzeug in deiner Motorrad-Garage?
+
+### 2026-09-13 11:16 | Entwurf generiert
+- Titel 1: Toprak Razgatlıoğlu & der Kampf beim Misano Sprint
+- Hook 1: Was macht Toprak Razgatlıoğlu beim Misano-Sprint so unberechenbar?
+- Titel 2: KI-Kurvenscout für deinen nächsten Roadtrip
+- Hook 2: Schnelle Onboard-Einstellung vor einer engen Kurve in Misano. Text: "Warum bremst Toprak eigentlich immer später als alle anderen?"
+- Titel 3: Der Biker-Gruß und die Türkische Community
+- Hook 3: Wie findet die KI in 5 Sekunden die kurvigste Strecke deiner Region?
