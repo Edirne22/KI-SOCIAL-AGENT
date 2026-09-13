@@ -50,7 +50,8 @@ def find_reel_block(content: str) -> tuple[str | None, str | None, str | None]:
         body = match.group(1)
         if "[GEPOSTET" in block or not re.search(r"(?m)^Status:\s*FREIGEGEBEN\s*$", body):
             continue
-        if "Publication-Claim: IN_BEARBEITUNG" not in body:
+        claim_token = os.environ.get("PUBLICATION_CLAIM_TOKEN", "")
+        if not claim_token or f"Publication-Claim: IN_BEARBEITUNG {claim_token}" not in body:
             continue
 
         video_match = re.search(r"(?m)^Video:\s*(\S+)", body)
