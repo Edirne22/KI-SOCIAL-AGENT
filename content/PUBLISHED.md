@@ -52,9 +52,6 @@ Bild: assets/images/2026-09/2026-09-13.jpg
 
 ## Facebook 
 Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 34755153844-1
-Freigabe: Telegram
-Telegram-Update-ID: 279361645
 Medienstatus: EIGENES_MATERIAL
 Text:
 Misano brennt! @toprakrazgatlioglu7 zeigt in der MotoGP wieder einmal, was extrem späte Bremszonen bedeuten. Der Kampf auf der Strecke ist eröffnet.
