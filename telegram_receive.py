@@ -447,7 +447,7 @@ def main() -> None:
             workflow_file, confirmation = WORKFLOW_COMMANDS[text_lower]
             print(f"Empfangen: {message_text} → erkannt als: Agenten-Workflow")
             try:
-                dispatch_workflow(workflow_file)
+                dispatch_workflow(workflow_file, {"all_accounts": "true"} if text_lower == "follow-analyse" else None)
                 send_message(confirmation)
             except RuntimeError as error:
                 send_message(f"Analyse konnte nicht gestartet werden: {error}")
