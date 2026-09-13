@@ -35,13 +35,24 @@ def _blocks(content: str, target: str):
     return list(pattern.finditer(content))
 
 
-def _is_publishable(block: str) -> bool:
-    return (
-        "[GEPOSTET" not in block
-        and CLAIM_READY not in block
-        and CLAIM_ACTIVE not in block
-        and bool(re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", block))
-    )
+def _is_publishable(block: str, target: str) -> bool:
+    if (
+        "[GEPOSTET" in block
+        or CLAIM_READY in block
+        or CLAIM_ACTIVE in block
+        or not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", block)
+    ):
+        return False
+    if target == "facebook":
+        return bool(re.search(r"(?ms)^Text:\s*\S+", block))
+    if target == "instagram":
+        return bool(re.search(r"(?mi)^Bild:\s*(?!auto\s*$)\S+", block))
+    if target == "story":
+        return bool(re.search(r"(?mi)^(?:Bild|Video):\s*(?!auto\s*$)\S+", block))
+    if target == "reel":
+        return bool(re.search(r"(?mi)^Video:\s*(?!auto\s*$)\S+", block))
+    images = re.findall(r"(?mi)^\s*-\s*(\S+)", block)
+    return len(images) >= 2
 
 
 def claim(target: str) -> bool:
@@ -51,7 +62,7 @@ def claim(target: str) -> bool:
     content = PUBLISHED.read_text(encoding="utf-8")
     for match in _blocks(content, target):
         block = match.group(1)
-        if not _is_publishable(block):
+        if not _is_publishable(block, target):
             continue
         updated = re.sub(
             r"(?mi)^(Status:\s*FREIGEGEBEN\s*)$",
