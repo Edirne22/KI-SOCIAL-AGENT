@@ -89,3 +89,13 @@
 - Telegram-Nachrichten gehen ausschließlich an die hinterlegte `TELEGRAM_CHAT_ID`.
 - Qualitätsberichte enthalten keine Tokens, Cookies, Header, vollständigen Rohdaten oder privaten Informationen.
 - Kritische Befunde werden klar dokumentiert und brauchen Bülents Entscheidung, bevor eine Reparatur erfolgt.
+
+## Follow-Analyse-Agent
+
+- Analysiert ausschließlich manuell in `config/followed_accounts.md` freigegebene, öffentliche Profile; keine private Follow-Liste wird gelesen.
+- Keine Anmeldung, keine privaten Profile, keine Likes, Kommentare, Nachrichten oder Follow-Aktionen.
+- Es werden keine Listen von Followern, Likern oder Kommentierenden gespeichert.
+- Ein Username wird höchstens mit einem ausdrücklich in der Konfiguration hinterlegten Alias geprüft; keine freien Namens- oder Zahlenraten.
+- Engagement-Raten nur bei tatsächlich gelieferter Followerzahl berechnen; fehlende Werte klar kennzeichnen.
+- Fremde Inhalte nicht kopieren. Erkenntnisse sind nur Inspiration und lösen keine Veröffentlichung aus.
+- Bei Anbieterfehlern oder Unsicherheit wird abgebrochen und der Status ehrlich dokumentiert.
