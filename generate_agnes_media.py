@@ -282,6 +282,9 @@ def process_block(content, platform_header, want_video_check=True):
 
         if "[GEPOSTET" in block or "Karussell" in block.splitlines()[0]:
             continue
+        if not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", body):
+            print(f"{platform_header.removeprefix('## ')}-Entwurf übersprungen (nicht freigegeben).")
+            continue
 
         has_image = bool(re.search(r"Bild:\s*\S+", body))
         has_video = bool(re.search(r"Video:\s*\S+", body))
