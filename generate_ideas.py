@@ -20,7 +20,6 @@ MEMORY_FILES = [
     "memory/LESSONS_LEARNED.md",
     "memory/POST_HISTORY.md",
     "memory/RESEARCH_LOG.md",
-    "memory/INSPIRATION_IDEAS.md",
     "memory/VIRAL_PATTERNS.md",
 ]
 
@@ -33,6 +32,9 @@ KNOWLEDGE_FILES = [
     "rules/SAFETY_RULES.md",
     "rules/VIRAL_RULES.md",
 ]
+
+INSPIRATION_REPORT = "memory/INSPIRATION_IDEAS.md"
+
 
 def read_file(path, max_chars=2500):
     try:
@@ -50,6 +52,11 @@ def read_all():
         if content:
             parts.append(f"\n--- {path} ---\n{content}")
     return "\n".join(parts)
+
+
+def read_inspiration_report():
+    """Liest den aktuellen Inspirationsreport separat und vollständig genug für echte Quellen."""
+    return read_file(INSPIRATION_REPORT, max_chars=7000)
 
 def try_generate(api_key, prompt):
     headers = {
@@ -127,7 +134,14 @@ def generate_content_plan():
         return "FEHLER: Kein API-Key gefunden."
 
     knowledge = read_all()
+    inspiration = read_inspiration_report()
     knowledge_part = f"Berücksichtige folgende Wissens- und Gedächtnisquellen:\n{knowledge}\n" if knowledge else ""
+    inspiration_part = (
+        "AKTUELLER INSPIRATIONSREPORT – verwende nur darin enthaltene Fakten und URLs:\n"
+        f"{inspiration}\n"
+        if inspiration
+        else "Kein aktueller Inspirationsreport vorhanden. Erfinde keine Quellen.\n"
+    )
 
     # Agenten-Kontext: ergänzt Gedächtnis und Wissensdateien, ohne Veröffentlichungen auszulösen.
     agent_context = get_agent_context(["01_content_creator", "04_social_media_strategist"])
@@ -141,6 +155,7 @@ Wichtig: Gib keine Zugangsdaten, Passwörter oder API-Schlüssel aus.
 
 {knowledge_part}
 {agent_context_part}
+{inspiration_part}
 
 BESONDERE PRIORITÄTEN:
 1. Wenn am kommenden Wochenende ein MotoGP-Rennen stattfindet (siehe MotoGP-Kalender),
@@ -151,6 +166,11 @@ BESONDERE PRIORITÄTEN:
 3. Vermeide Wiederholungen – nutze POST_HISTORY.md, um schon behandelte Themen zu erkennen.
 4. Nutze bewährte Hooks aus HOOKS_THAT_WORK.md als Inspiration.
 5. Community-Themen (Türkische Biker in Deutschland) sind willkommen.
+6. Wenn der aktuelle Inspirationsreport Quellen enthält, muss mindestens EINE der drei Ideen
+   direkt darauf basieren. Für diese Idee übernimmst du die exakte URL und Plattform aus
+   dem Report. Erfinde niemals Quellen oder Zahlen.
+7. Für Ideen ohne passende aktuelle Quelle schreibe bei Inspirations-Quelle:
+   "Keine aktuelle externe Quelle verwendet." Verwende dort keine erfundene URL.
 
 Erstelle zu jeder Idee:
 - Titel
@@ -194,6 +214,12 @@ Hashtags TikTok:
 Trend-Bezug:
 ...
 
+Inspirations-Plattform:
+...
+
+Inspirations-Quelle:
+https://... oder Keine aktuelle externe Quelle verwendet.
+
 --- BEITRAG 2 ---
 Titel: ...
 Plattform: ...
@@ -221,6 +247,12 @@ Hashtags TikTok:
 Trend-Bezug:
 ...
 
+Inspirations-Plattform:
+...
+
+Inspirations-Quelle:
+https://... oder Keine aktuelle externe Quelle verwendet.
+
 --- BEITRAG 3 ---
 Titel: ...
 Plattform: ...
@@ -247,6 +279,12 @@ Hashtags TikTok:
 
 Trend-Bezug:
 ...
+
+Inspirations-Plattform:
+...
+
+Inspirations-Quelle:
+https://... oder Keine aktuelle externe Quelle verwendet.
 """
 
     return try_generate(api_key, prompt)
