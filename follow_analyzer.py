@@ -70,8 +70,8 @@ def choose_accounts(all_accounts: list[dict[str, object]]) -> list[dict[str, obj
         return candidates[:MAX_ACCOUNTS]
     cursor = 0
     if STATE.exists():
-        match = re.search(r"Cursor Prio (\d):\s*(\d+)", STATE.read_text(encoding="utf-8"))
-        cursor = int(match.group(2)) if match else 0
+        match = re.search(rf"Cursor Prio {priority}:\s*(\d+)", STATE.read_text(encoding="utf-8"))
+        cursor = int(match.group(1)) if match else 0
     selected = [candidates[(cursor + index) % len(candidates)] for index in range(min(MAX_ACCOUNTS, len(candidates)))]
     state = STATE.read_text(encoding="utf-8") if STATE.exists() else "# Follow-Analyse-Zustand\n"
     marker = f"Cursor Prio {priority}:"
