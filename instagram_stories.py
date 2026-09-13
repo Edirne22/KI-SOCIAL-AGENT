@@ -18,6 +18,8 @@ def find_story_block(content):
         if not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", body):
             print("Story-Entwurf übersprungen (nicht freigegeben).")
             continue
+        if "Publication-Claim: IN_BEARBEITUNG" not in body:
+            continue
         bild_match = re.search(r"Bild:\s*(\S+)", body)
         video_match = re.search(r"Video:\s*(\S+)", body)
         if bild_match:
