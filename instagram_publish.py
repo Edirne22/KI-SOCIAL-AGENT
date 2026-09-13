@@ -16,6 +16,9 @@ def find_instagram_block(content):
         if "[GEPOSTET" in block:
             continue
         body = match.group(1)
+        if not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", body):
+            print("Instagram-Entwurf übersprungen (nicht freigegeben).")
+            continue
         text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\Z)", body, re.DOTALL)
         image_match = re.search(r"Bild:\s*(\S+)", body)
         if text_match and image_match:
