@@ -6,6 +6,7 @@ from pathlib import Path
 import requests
 
 from asset_paths import get_carousel_dir, get_image_path, get_video_path, slugify
+from media_policy import ai_media_allowed
 
 AGNES_BASE = "https://apihub.agnes-ai.com/v1"
 PEXELS_API = "https://api.pexels.com/v1/search"
@@ -28,32 +29,8 @@ NEGATIVE_PROMPT = (
     "European racing style, ultra realistic professional motorsport photography."
 )
 
-RACING_KEYWORDS = [
-    "toprak", "razgatlioglu", "deniz", "öncü", "oncu", "bahattin",
-    "sofuoglu", "kenan", "zayn", "motogp", "moto gp", "sprint",
-    "podium", "rennen", "race day", "startaufstellung", "rennfahrer",
-]
-
-RACING_PROMPTS = {
-    "toprak": "Cinematic action photo of a modern MotoGP racing motorcycle in sharp cornering lean, Yamaha blue and black racing livery with number 07, aerodynamic winglets, race track at golden hour, packed grandstands, professional motorsport photography, ultra realistic",
-    "razgatlioglu": "Cinematic action photo of a modern MotoGP racing motorcycle in sharp cornering lean, Yamaha racing colors with number 07, aerodynamic winglets, professional motorsport photography, ultra realistic",
-    "deniz": "Professional photo of a modern Moto2 racing motorcycle on track, dynamic cornering, dark blue and white racing livery, aerodynamic fairing, motorsport photography, ultra realistic",
-    "öncü": "Professional photo of a modern racing motorcycle on track, action shot, blue and white racing livery, aerodynamic fairing, ultra realistic motorsport photography",
-    "oncu": "Professional photo of a modern racing motorcycle on track, action shot, blue and white racing livery, aerodynamic fairing, ultra realistic motorsport photography",
-    "bahattin": "Professional photo of a modern Superbike racing motorcycle on track, dynamic action, sportbike with full fairing, racing slicks, ultra realistic",
-    "sofuoglu": "Professional photo of a modern racing motorcycle on track, dynamic action, sportbike with full fairing, ultra realistic motorsport photography",
-    "kenan": "Cinematic portrait of a racing world champion standing beside a modern racing motorcycle, sunset lighting, professional motorsport photo",
-    "zayn": "A young talented go-kart driver racing on a karting track, small racing kart, professional karting photography, ultra realistic",
-    "motogp": "Start grid of a MotoGP race, multiple modern prototype racing motorcycles lined up, full fairing sportbikes with aerodynamic winglets, packed grandstands, dramatic lighting, professional sports photography, ultra realistic",
-    "moto gp": "Start grid of a MotoGP race, multiple modern prototype racing motorcycles lined up, full fairing sportbikes with aerodynamic winglets, packed grandstands, dramatic lighting, professional sports photography, ultra realistic",
-    "sprint": "MotoGP sprint race action, motorcycle riders battling for position, modern prototype racing bikes, dynamic speed blur, professional motorsport photography",
-    "podium": "Podium celebration at a MotoGP race, champagne spray, three riders on the podium, modern racing suits, dramatic lighting, professional sports photography",
-    "rennen": "Professional motorsport action shot, modern racing motorcycle on track, dynamic cornering, full fairing sportbike, cinematic lighting",
-    "race day": "Professional motorsport action shot, modern racing motorcycle on track, dynamic cornering, full fairing sportbike, cinematic lighting",
-    "startaufstellung": "MotoGP starting grid with multiple modern racing motorcycles, full fairing sportbikes with winglets, race track view, professional sports photography",
-    "rennfahrer": "Professional photo of a motorcycle racer in action on track, modern full fairing racing bike, ultra realistic motorsport photography",
-    "_default": "Professional motorsport photography of a modern racing motorcycle with full fairing on a scenic race track, dynamic action shot, cinematic lighting, ultra realistic",
-}
+# Reale Fahrer-, Team- und Rennmotive werden nicht per KI erzeugt.
+# Die Prüfung erfolgt zentral in media_policy.py.
 
 PEXELS_KEYWORDS = {
     "reise": "motorcycle travel road",
@@ -85,27 +62,6 @@ def get_agnes_headers():
     if not key:
         raise RuntimeError("AGNES_API_KEY fehlt.")
     return {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
-
-def is_racing_content(text):
-    text_lower = text.lower()
-    for kw in ["harley", "cruiser", "chopper"]:
-        if kw in text_lower:
-            return False
-    for kw in RACING_KEYWORDS:
-        if kw in text_lower:
-            return True
-    return False
-
-def get_racing_prompt(text):
-    text_lower = text.lower()
-    base = RACING_PROMPTS["_default"]
-    for kw, prompt in RACING_PROMPTS.items():
-        if kw == "_default":
-            continue
-        if kw in text_lower:
-            base = prompt
-            break
-    return base + NEGATIVE_PROMPT
 
 def get_pexels_query(text):
     text_lower = text.lower()
@@ -228,8 +184,11 @@ def replace_auto_video_reference(block, filename):
 
 
 def wants_video(body):
-    return bool(re.search(r"Video:\s*auto", body, re.IGNORECASE))
+    return bool(re.search(r"(?mi)^Video:\s*auto\s*$", body))
 
+
+def wants_image(body):
+    return bool(re.search(r"(?mi)^Bild:\s*auto\s*$", body))
 
 
 def process_carousel_block(content):
@@ -242,6 +201,11 @@ def process_carousel_block(content):
                 print("Instagram-Karussell-Entwurf übersprungen (nicht freigegeben).")
             continue
         if not re.search(r"(?mi)^Bilder:\s*auto\s*$", body):
+            continue
+
+        allowed, reason = ai_media_allowed(block)
+        if not allowed:
+            print(f"Agnes-Karussell übersprungen: {reason}")
             continue
 
         text_match = re.search(r"(?ms)^Text:\s*(.*?)(?=^Bilder:|\Z)", body)
@@ -286,51 +250,52 @@ def process_block(content, platform_header, want_video_check=True):
             print(f"{platform_header.removeprefix('## ')}-Entwurf übersprungen (nicht freigegeben).")
             continue
 
-        has_image = bool(re.search(r"Bild:\s*\S+", body))
-        has_video = bool(re.search(r"Video:\s*\S+", body))
+        image_requested = wants_image(body)
         video_requested = wants_video(body)
-        if (has_image or has_video) and not video_requested:
+        has_image = bool(re.search(r"(?mi)^Bild:\s*(?!auto\s*$)\S+", body))
+        has_video = bool(re.search(r"(?mi)^Video:\s*(?!auto\s*$)\S+", body))
+        if not image_requested and not video_requested:
+            continue
+        if has_image and not video_requested:
             continue
 
-        text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\nVideo:|\Z)", body, re.DOTALL)
+        allowed, reason = ai_media_allowed(block)
+        if not allowed:
+            print(f"Agnes übersprungen: {reason}")
+            continue
+
+        text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\nVideo:|\nQuelle:|\Z)", body, re.DOTALL)
         text = text_match.group(1).strip() if text_match else ""
         image_filename = get_image_path(slugify(text), 1)
         video_filename = get_video_path(slugify(text))
         updated_block = block
 
-        # === 1) BILD via Agnes (nur wenn im Block noch keines vorhanden ist) ===
-        if not has_image and not has_video:
-            if is_racing_content(text):
-                prompt = get_racing_prompt(text)
-            else:
-                prompt = f"Realistic motorcycle photograph related to: {text[:200]}. Professional photography, ultra realistic, cinematic lighting."
-
+        # Bild nur bei explizitem Bild: auto und nur für neutrale Themen.
+        if image_requested and not has_image:
+            prompt = (
+                f"Realistic motorcycle travel, lifestyle or technical photograph related to: {text[:200]}. "
+                "No real racer, no real team branding, no race-event claim, professional photography."
+            )
             print(f"Agnes Bild-Prompt: {prompt[:100]}...")
             img_bytes = agnes_generate_image(prompt)
-
             if img_bytes:
                 save_bytes(img_bytes, image_filename)
-                updated_block = insert_image_reference(updated_block, image_filename.as_posix())
+                updated_block = re.sub(
+                    r"(?mi)^Bild:\s*auto\s*$",
+                    f"Bild: {image_filename.as_posix()}",
+                    updated_block,
+                    count=1,
+                )
                 print(f"Agnes-Bild gespeichert: {image_filename}")
             else:
                 print("Agnes-Bild fehlgeschlagen.")
-                if PEXELS_FALLBACK:
-                    query = get_pexels_query(text)
-                    url = pexels_search(query)
-                    if url:
-                        data = download_bytes(url)
-                        if data:
-                            save_bytes(data, image_filename)
-                            updated_block = insert_image_reference(updated_block, image_filename)
-                            print(f"Pexels-Fallback gespeichert: {image_filename}")
-                else:
-                    print("→ KEIN Fallback aktiv. Bitte manuell ein Bild einfügen.")
 
-        # === 2) VIDEO (nur bei exakt Video: auto) ===
+        # Video nur bei exakt Video: auto und nur für neutrale Themen.
         if video_requested:
             video_prompt = (
                 f"Cinematic vertical 9:16 shot: {text[:200]}. "
-                "5 seconds, ultra realistic, composed for Instagram Stories and Reels."
+                "5 seconds, realistic motorcycle travel or lifestyle scene, no real racer, "
+                "no real team branding, no race-event claim."
             )
             print(f"Agnes Video-Prompt: {video_prompt[:100]}...")
             vid_bytes = agnes_generate_video(video_prompt)
