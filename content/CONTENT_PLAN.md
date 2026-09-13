@@ -795,12 +795,12 @@ Thema: Türkische Biker-Community, Lifestyle, Zusammenhalt
 Hook: Wir fahren nicht für den Lärm, sondern für unsere Seele.
 
 Instagram-Caption:
-Gemeinsam fahren, zusammen mitfiebern. Die türkische Biker-Community hält zusammen – ob bei gemeinsamen Ausfahrten oder beim Daumendrücken für @toprakrazgatlioglu und @denizoncou. Markiere deine Crew!
+Gemeinsam fahren, zusammen mitfiebern. Die türkische Biker-Community hält zusammen – ob bei gemeinsamen Ausfahrten oder beim Daumendrücken für @toprakrazgatlioglu und @denizoncu53. Markiere deine Crew!
 
 Birlikte sürüyor, birlikte heyecanlanıyoruz. Türk motorcu topluluğu her zaman omuz omuza. Sürüş ekibini yorumlarda etiketle!
 
 Facebook-Post:
-„Biz motoru gürültü için değil ruhumuz için süreriz" – das Motto der Community @turkbirler bringt es auf den Punkt. Motorradfahren verbindet Generationen und Kulturen. Egal ob beim Treffen im Ruhrgebiet oder beim gemeinsamen Mitfiebern, wenn Toprak Razgatlıoğlu (@toprakrazgatlioglu) und Deniz Öncü (@denizoncou) auf der Rennstrecke alles geben. Diese Leidenschaft verbindet uns alle auf den Straßen. Wer ist am Wochenende unterwegs?
+„Biz motoru gürültü için değil ruhumuz için süreriz" – das Motto der Community @turkbirler bringt es auf den Punkt. Motorradfahren verbindet Generationen und Kulturen. Egal ob beim Treffen im Ruhrgebiet oder beim gemeinsamen Mitfiebern, wenn Toprak Razgatlıoğlu (@toprakrazgatlioglu) und Deniz Öncü (@denizoncu53) auf der Rennstrecke alles geben. Diese Leidenschaft verbindet uns alle auf den Straßen. Wer ist am Wochenende unterwegs?
 
 Motor sevdası sınır tanımaz. Türk motorcu kulüpleri, sadece yolları değil, aynı zamanda dostluğu da paylaşıyor. @turkbirler grubunun da dediği gibi: Biz motoru gürültü için değil, ruhumuz için süreriz. Pistlerde gururumuz olan Toprak ve Deniz'i desteklerken de tek yüreğiz. Bu hafta sonu yollarda kimler var?
 
@@ -947,14 +947,14 @@ Thema: MotoGP & Türkische Racer
 Hook: Schafft Toprak Razgatlıoğlu am Wochenende den Sprung aufs Podium?
 
 Instagram-Caption:
-Toprak Razgatlıoğlu (@toprakrazgatlioglu) pusht die Prima Pramac Yamaha ans Limit. Was traust du ihm und Deniz Öncü (@denizoncou) an diesem Rennwochenende zu? Schreib deine Prognose in die Kommentare.
+Toprak Razgatlıoğlu (@toprakrazgatlioglu) pusht die Prima Pramac Yamaha ans Limit. Was traust du ihm und Deniz Öncü (@denizoncu53) an diesem Rennwochenende zu? Schreib deine Prognose in die Kommentare.
 
 Toprak Razgatlıoğlu bu hafta sonu podyuma çıkar mı? Tahminlerini yoruma yaz.
 
 #MotoGP #ToprakRazgatlioglu #YamahaRacing #DenizÖncü #TurkishRiders #RideWithMe
 
 Facebook-Post:
-Rennwochenende steht an: Toprak Razgatlıoğlu (@toprakrazgatlioglu) greift in der MotoGP mit Prima Pramac Racing an, während Deniz Öncü (@denizoncou) in der Moto2 für Furore sorgt. 
+Rennwochenende steht an: Toprak Razgatlıoğlu (@toprakrazgatlioglu) greift in der MotoGP mit Prima Pramac Racing an, während Deniz Öncü (@denizoncu53) in der Moto2 für Furore sorgt. 
 
 Die Leistungsdichte ist extrem hoch, aber wer Topraks Bremszonen-Skills kennt, weiß: Alles ist möglich. Auch Can Öncü und Bahattin Sofuoğlu zeigen regelmäßig, was auf zwei Rädern machbar ist.
 
@@ -1076,7 +1076,7 @@ Toprak Razgatlıoğlu bu hafta sonu podyuma çıkabilir mi? Yarış heyecanı ba
 Facebook-Post:
 Das MotoGP-Wochenende rollt an und die Biker-Welt blickt auf Toprak Razgatlıoğlu (@toprakrazgatlioglu). Der Schritt in die Königsklasse zeigt: Mit Präzision, Mut und extrem weiter Spätbremse ist alles möglich.
 
-Auch in der Moto2 drückt die Community Deniz Öncü (@denizoncou) die Daumen.
+Auch in der Moto2 drückt die Community Deniz Öncü (@denizoncu53) die Daumen.
 
 Was meinst du: Wo landet Toprak im Hauptrennen? Schreib deinen Tipp in die Kommentare!
 
@@ -1310,14 +1310,14 @@ Thema: Türkische Rennfahrer / Moto2 & WorldSSP / Talentförderung
 Hook: Zwei Brüder, ein Ziel: Wann stehen Can und Deniz Öncü zusammen oben?
 
 Instagram-Caption:
-Zwei Brüder, doppelte Power auf der Strecke. @denizoncou kämpft in der Moto2 um jeden Zentimeter, während @canoncu in der Supersport-WM wieder auf Siegkurs fährt. Unter den Augen von Mentor @kenansofuoglu wächst hier die nächste Weltklasse-Generation heran.
+Zwei Brüder, doppelte Power auf der Strecke. @denizoncu53 kämpft in der Moto2 um jeden Zentimeter, während @canoncu in der Supersport-WM wieder auf Siegkurs fährt. Unter den Augen von Mentor @kenansofuoglu wächst hier die nächste Weltklasse-Generation heran.
 
 Sürat ve tutku onların kanında var. Deniz ve Can Öncü pistlerde fırtına gibi esmeye devam ediyor.
 
 Welcher der beiden holt sich als Nächster den Sieg?
 
 Facebook-Post:
-Vom Talent im Nachwuchscup bis in die Weltmeisterschaft: Deniz Öncü (@denizoncou) in der Moto2 und Can Öncü (@canoncu) in der Supersport-WM zeigen der Welt, was türkischer Motorsport bedeutet. Gefördert von Fünffach-Weltmeister Kenan Sofuoğlu (@kenansofuoglu), schenken sich die Zwillinge auf der Strecke keinen Millimeter.
+Vom Talent im Nachwuchscup bis in die Weltmeisterschaft: Deniz Öncü (@denizoncu53) in der Moto2 und Can Öncü (@canoncu) in der Supersport-WM zeigen der Welt, was türkischer Motorsport bedeutet. Gefördert von Fünffach-Weltmeister Kenan Sofuoğlu (@kenansofuoglu), schenken sich die Zwillinge auf der Strecke keinen Millimeter.
 
 Sürat ve tutku onların kanında var. Deniz ve Can Öncü kardeşler pistlerde Türkiye'yi gururla temsil ediyor.
 
@@ -1325,7 +1325,7 @@ Folgst du der Moto2 und WorldSSP diese Saison? Wer ist dein Favorit auf der Stre
 
 TikTok-Skript:
 [0-3s Hook] Schneller Schnitt auf zwei Supersportler beim Start. Text-Overlay: "Zwei Brüder, ein Ziel: Wann stehen Can und Deniz Öncü zusammen oben?"
-[3-7s Szene 1] Kurze Highlight-Szenen von Deniz Öncü in extremer Moto2-Schräglage (@denizoncou).
+[3-7s Szene 1] Kurze Highlight-Szenen von Deniz Öncü in extremer Moto2-Schräglage (@denizoncu53).
 [7-11s Szene 2] Wechsel zu Can Öncü beim Zielleinlauf in der Supersport-WM (@canoncu).
 [11-15s CTA] Aufnahme von Kenan Sofuoğlu im Fahrerlager. Text: "Wann holt Deniz das erste Moto2-Podium? Schreib deine Prognose!"
 
@@ -1673,19 +1673,19 @@ Thema: MotoGP / Moto2 & Türkische Racer
 Hook: Warum bremst Deniz Öncü in der Moto2 gefühlt einen Kilometer später als der Rest?
 
 Instagram-Caption:
-Bremsen auf dem letzten Drücker: @denizoncou zeigt in der Moto2, wie viel Präzision und Mut hinter jedem Überholmanöver steckt. Wer späte Bremspunkte liebt, versteht diesen Fahrstil sofort.
-Son metreye kadar fren! @denizoncou Moto2'de sınırları zorlamaya devam ediyor.
+Bremsen auf dem letzten Drücker: @denizoncu53 zeigt in der Moto2, wie viel Präzision und Mut hinter jedem Überholmanöver steckt. Wer späte Bremspunkte liebt, versteht diesen Fahrstil sofort.
+Son metreye kadar fren! @denizoncu53 Moto2'de sınırları zorlamaya devam ediyor.
 Bremst du vor der Kurve lieber früh oder spät?
 
 Facebook-Post:
-In der Moto2 entscheidet oft der allerletzte Meter vor dem Einlenken. Deniz Öncü (@denizoncou) zeigt Rennwochenende für Rennwochenende, wie kompromisslose Bremstechnik aussieht. Das erfordert nicht nur perfektes Setup, sondern absolutes Vertrauen ins Vorderrad.
-Son metreye kadar fren! @denizoncou Moto2'de sınırları zorluyor.
+In der Moto2 entscheidet oft der allerletzte Meter vor dem Einlenken. Deniz Öncü (@denizoncu53) zeigt Rennwochenende für Rennwochenende, wie kompromisslose Bremstechnik aussieht. Das erfordert nicht nur perfektes Setup, sondern absolutes Vertrauen ins Vorderrad.
+Son metreye kadar fren! @denizoncu53 Moto2'de sınırları zorluyor.
 Wer von euch achtet bei Touren auf den perfekten Bremspunkt – und wer rollt lieber entspannt rein?
 
 TikTok-Skript:
 Hook (0-3s): Warum bremst Deniz Öncü in der Moto2 gefühlt einen Kilometer später als der Rest?
 Szene 1 (3-7s): Blicke auf die Telemetrie und Kurveneinfahrt einer Sportmaschine auf der Rennstrecke.
-Szene 2 (7-12s): Einblendung von Deniz Öncü (@denizoncou) beim harten Anbremsen vor dem Scheitelpunkt.
+Szene 2 (7-12s): Einblendung von Deniz Öncü (@denizoncu53) beim harten Anbremsen vor dem Scheitelpunkt.
 Szene 3 (12-16s): Kurzer Schnitt auf eine Schräglagen-Perspektive einer engen Landstraßenkurve.
 CTA (16-18s): Frühbremser oder Spätbremser? Schreib deine Meinung in die Kommentare.
 
@@ -1699,7 +1699,7 @@ Hashtags TikTok:
 #denizoncu #moto2 #motogp #biker #motorrad #motorcycle #rider
 
 Trend-Bezug:
-Aktuelle Moto2-Saison & Performance der Öncü-Brüder (@denizoncou & @canoncu).
+Aktuelle Moto2-Saison & Performance der Öncü-Brüder (@denizoncu53 & @canoncu).
 
 Viral-Score: 8/10 (Faktoren: Identität, Timing, Streitbarkeit)
 
