@@ -320,3 +320,35 @@ Noch keine API-Aufrufe protokolliert.
 - Fehler: HTTP 400
 - Body-Länge: 22 Zeichen
 - Antwort (max. 500 Zeichen): Customer is not active
+
+## Diagnose TikTok (2026-09-13 11:50)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_m7n5ixlw1gc4no56kx&notify=false&include_errors=true
+- HTTP-Status: 400
+- Records: 0
+- Fehler: HTTP 400
+- Body-Länge: 22 Zeichen
+- Antwort (max. 500 Zeichen): Customer is not active
+
+## Diagnose X (2026-09-13 11:50)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lwxkxvnf1cynvib9co&notify=false&include_errors=true&type=discover_new&discover_by=profile_url
+- HTTP-Status: 400
+- Records: 0
+- Fehler: HTTP 400
+- Body-Länge: 22 Zeichen
+- Antwort (max. 500 Zeichen): Customer is not active
+
+## Diagnose Facebook (2026-09-13 11:50)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lkaxegm826bjpoo9m5&notify=false&include_errors=true
+- HTTP-Status: 400
+- Records: 0
+- Fehler: HTTP 400
+- Body-Länge: 22 Zeichen
+- Antwort (max. 500 Zeichen): Customer is not active
+
+## Diagnose YouTube (2026-09-13 11:50)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lk56epmy2i5g7lzu0k&notify=false&include_errors=true&type=discover_new&discover_by=keyword
+- HTTP-Status: 400
+- Records: 0
+- Fehler: HTTP 400
+- Body-Länge: 22 Zeichen
+- Antwort (max. 500 Zeichen): Customer is not active
