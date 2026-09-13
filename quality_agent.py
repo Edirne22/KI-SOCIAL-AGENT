@@ -139,12 +139,20 @@ def check_youtube_fallback() -> list[dict[str, str]]:
         if match:
             channels.append(match.group(1).strip())
     recognized = [channel for channel in channels if channel.lower() in RECOGNIZED_YOUTUBE_CHANNELS]
-    if recognized:
+    if len(recognized) >= 2:
         results.append(
             _result(
                 "OK",
                 "YouTube-Quellenmix",
-                f"{len(recognized)} Datensatz/Datensätze von bekannten Primärkanälen erkannt ({', '.join(sorted(set(recognized)))}).",
+                f"{len(recognized)} Datensätze von bekannten Primärkanälen erkannt ({', '.join(sorted(set(recognized)))}).",
+            )
+        )
+    elif recognized:
+        results.append(
+            _result(
+                "WARNUNG",
+                "YouTube-Quellenmix",
+                f"Nur {len(recognized)} Datensatz von einem bekannten Primärkanal erkannt ({recognized[0]}). Weitere Quellen vor einer Veröffentlichung manuell prüfen.",
             )
         )
     else:
