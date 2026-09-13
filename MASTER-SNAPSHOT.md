@@ -150,6 +150,11 @@ Idee / Recherche
 ```
 
 - Keine automatische Veröffentlichung aus Ideen, Trends oder Analysen
+- Alle Medien-Generatoren und Publisher verlangen technisch `Status: FREIGEGEBEN`
+- Jeder Plattform-Post wird vor dem externen Aufruf als eindeutiger Veröffentlichungs-Claim in Git gespeichert
+- Ein unklar abgebrochener Claim wird nicht automatisch erneut gesendet; das verhindert Doppelposts
+- Gleiche freigegebene Inhalte werden in `memory/PUBLICATION_DUPLICATES.md` markiert und nicht automatisch veröffentlicht
+- Alle Workflows, die `content/PUBLISHED.md` verändern, teilen eine gemeinsame GitHub-Actions-Sperre
 - Kein Kauf, keine Buchung, keine Anmeldung durch Deal- oder spätere Reise-Agenten
 - Telegram akzeptiert nur den konfigurierten persönlichen Chat
 - API-Keys, Tokens und Chat-IDs bleiben GitHub Secrets
