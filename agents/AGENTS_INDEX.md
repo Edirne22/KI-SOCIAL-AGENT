@@ -17,6 +17,7 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 | [07_video_optimization.md](07_video_optimization.md) | Erstellt Schnitt-, Untertitel- und Produktionsbriefe für Kurzvideos. | Bei Reel-, TikTok-, Video- oder Agnes-Asset-Briefings. |
 | [08_paid_social_strategist.md](08_paid_social_strategist.md) | Entwirft vorsichtige Paid-Social-Kampagnen und Messpläne. | Nur bei ausdrücklich gewünschter, bezahlter Reichweite. |
 | [09_quality_agent.md](09_quality_agent.md) | Prüft Workflow-Ergebnisse, Datenqualität und Sicherheitswarnungen. | Täglich nach den Analyse-Workflows oder manuell vor größeren Änderungen. |
+| [10_follow_analysis_agent.md](10_follow_analysis_agent.md) | Erkennt aus freigegebenen öffentlichen Instagram-Profilen Formate, Themen und Hook-Muster. | Geplanter Analyse-Lauf oder Telegram: \`follow-analyse\`; kein Zugriff auf eine private Follow-Liste. |
 
 ## Geplante Agenten
 
@@ -41,6 +42,7 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 - **Wochenplanung:** Social Media Strategist → Content Creator → jeweiliger Plattform-Agent.
 - **Video:** Content Creator oder TikTok Strategist → Video Optimization → menschliche Freigabe.
 - **Recherche-Post:** Research Synthesist → Content Creator → Plattform-Agent.
+- **Follow-Analyse:** Follow-Analyse-Agent → Research Synthesist → Content Creator; Muster nur als Inspiration verwenden.
 - **Bezahlte Kampagne:** Paid Social Strategist → menschliche Freigabe → manuelle Einrichtung.
 
 ## Technischer Status
