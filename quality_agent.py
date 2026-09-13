@@ -207,7 +207,7 @@ def check_inspiration_age() -> list[dict[str, str]]:
         _read(MEMORY / "INSPIRATION_IDEAS.md"),
         _read(MEMORY / "INSPIRATION_YOUTUBE_APIFY.md"),
     )
-    values = re.findall(r"(?m)^-\s+\*\*?Datum:?\*\?\*?\s*(\d{4}-\d{2}-\d{2}T[0-9:.+-]+Z?)", "\n".join(texts))
+    values = re.findall(r"(?m)^-\s+(?:\*\*)?Datum(?:\*\*)?:\s*(\d{4}-\d{2}-\d{2}T[0-9:.+-]+Z?)", "\n".join(texts))
     dates = [parsed for value in values if (parsed := _parse_datetime(value))]
     if not dates:
         return [_result("WARNUNG", "Datenalter", "Keine auswertbaren Quelldaten gefunden.")]
