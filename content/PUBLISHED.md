@@ -18,6 +18,8 @@ Video: assets/videos/2026-09/2026-09-13-zwei-brueder-doppelte-power-auf-der-stre
 Status: FREIGEGEBEN
 Freigabe: Telegram
 Telegram-Update-ID: 279361642
+Medienstatus: QUELLE_PRÜFEN
+Medienhinweis: Reales Renn-/Personenthema – kein KI-Medium verwenden.
 Text:
 Wenn du @toprakrazgatlioglu auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
 Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fahrt ihr lieber oldschool nach Gefühl? Schreib es in die Kommentare.
@@ -26,6 +28,8 @@ Video: assets/videos/2026-09/2026-09-13-wenn-du-toprakrazgatlioglu-auf-der-yamah
 Status: FREIGEGEBEN
 Freigabe: Telegram
 Telegram-Update-ID: 279361643
+Medienstatus: QUELLE_PRÜFEN
+Medienhinweis: Reales Renn-/Personenthema – kein KI-Medium verwenden.
 Text:
 Wenn du @toprakrazgatlioglu auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
 Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fahrt ihr lieber oldschool nach Gefühl? Schreib es in die Kommentare.
@@ -35,6 +39,8 @@ Video: auto
 Status: FREIGEGEBEN
 Freigabe: Telegram
 Telegram-Update-ID: 279361645
+Medienstatus: QUELLE_PRÜFEN
+Medienhinweis: Reales Renn-/Personenthema – kein KI-Medium verwenden.
 Text:
 Misano brennt! @toprakrazgatlioglu7 zeigt in der MotoGP wieder einmal, was extrem späte Bremszonen bedeuten. Der Kampf auf der Strecke ist eröffnet.
 
