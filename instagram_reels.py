@@ -55,7 +55,7 @@ def find_reel_block(content: str) -> tuple[str | None, str | None, str | None]:
             continue
 
         video_match = re.search(r"(?m)^Video:\s*(\S+)", body)
-        text_match = re.search(r"(?ms)^Text:\s*(.+?)(?=^Video:|\Z)", body)
+        text_match = re.search(r"(?ms)^Text:\s*(.+?)(?=^(?:Bild|Video|Bilder|Quelle|Medienstatus|Nutzungsrecht):|\Z)", body)
         if not video_match or not text_match:
             continue
 
