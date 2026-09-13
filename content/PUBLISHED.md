@@ -39,10 +39,8 @@ Video: auto
 Status: FREIGEGEBEN
 Freigabe: Telegram
 Telegram-Update-ID: 279361645
-Medienstatus: QUELLE_BESTÄTIGT
-Nutzungsrecht: BESTÄTIGT
-Lizenznachweis: Persönliche Freigabe per Instagram-DM am 2026-09-13
-Medienhinweis: Reales Renn-/Personenthema – kein KI-Medium verwenden.
+Medienstatus: EIGENES_MATERIAL
+
 Text:
 Misano brennt! @toprakrazgatlioglu7 zeigt in der MotoGP wieder einmal, was extrem späte Bremszonen bedeuten. Der Kampf auf der Strecke ist eröffnet.
 
