@@ -237,7 +237,11 @@ def process_carousel_block(content):
     pattern = r"(## Instagram Karussell\s*\n(.*?)(?=\n## |\Z))"
     for match in re.finditer(pattern, content, re.DOTALL):
         block, body = match.group(1), match.group(2)
-        if "[GEPOSTET" in block or not re.search(r"(?mi)^Bilder:\s*auto\s*$", body):
+        if "[GEPOSTET" in block or not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", body):
+            if "[GEPOSTET" not in block:
+                print("Instagram-Karussell-Entwurf übersprungen (nicht freigegeben).")
+            continue
+        if not re.search(r"(?mi)^Bilder:\s*auto\s*$", body):
             continue
 
         text_match = re.search(r"(?ms)^Text:\s*(.*?)(?=^Bilder:|\Z)", body)
