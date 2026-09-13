@@ -377,14 +377,19 @@ def _run_platform(platform: str, token: str) -> tuple[list[dict], str, str, str]
     return records, status, error, note
 
 
-def run() -> str:
+def run(platforms: tuple[str, ...] | None = None) -> str:
+    """Lädt nur angeforderte Plattformen; so bleibt Bright Data ein gezielter Fallback."""
     token = os.environ.get("BRIGHTDATA_API_TOKEN")
     lines = ["# Inspiration · Bright Data", ""]
     if not token:
         lines.append("Bright Data: BRIGHTDATA_API_TOKEN fehlt.")
     else:
         statuses: list[str] = []
-        for platform, config in PLATFORMS.items():
+        selected = tuple(platforms or tuple(PLATFORMS))
+        for platform in selected:
+            if platform not in PLATFORMS:
+                continue
+            config = PLATFORMS[platform]
             records, status, error, note = _run_platform(platform, token)
             if status == "nicht konfiguriert":
                 lines += [f"## {config['label']}", f"- Status: nicht konfiguriert ({error})", ""]
