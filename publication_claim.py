@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 PUBLISHED = Path("content/PUBLISHED.md")
+DUPLICATES = Path("memory/PUBLICATION_DUPLICATES.md")
 CLAIM_READY = "Publication-Claim: BEREIT"
 CLAIM_ACTIVE = "Publication-Claim: IN_BEARBEITUNG"
 
@@ -55,14 +56,45 @@ def _is_publishable(block: str, target: str) -> bool:
     return len(images) >= 2
 
 
+def _text_key(block: str) -> str:
+    match = re.search(
+        r"(?ms)^Text:\s*(.*?)(?=^(?:Bild|Video|Bilder|Freigabe|Status|Publication-Claim):|\Z)",
+        block,
+    )
+    return re.sub(r"\s+", " ", match.group(1).strip().lower()) if match else ""
+
+
+def _write_duplicates(target: str, texts: list[str]) -> None:
+    if not texts:
+        return
+    DUPLICATES.parent.mkdir(parents=True, exist_ok=True)
+    old = DUPLICATES.read_text(encoding="utf-8") if DUPLICATES.exists() else "# Veröffentlichungs-Duplikate\n"
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    lines = [f"\n## {stamp} – {target}", "- Status: NICHT automatisch veröffentlicht", "- Grund: Mehrere freigegebene Blöcke haben denselben Text.", "- Bitte einen Block manuell behalten oder Inhalte unterscheiden.", ""]
+    for index, text in enumerate(texts, 1):
+        lines.append(f"- Duplikat {index}: {text[:180]}")
+    DUPLICATES.write_text(old.rstrip() + "\n" + "\n".join(lines) + "\n", encoding="utf-8")
+
+
 def claim(target: str) -> bool:
     if not PUBLISHED.exists():
         print("PUBLISHED.md nicht gefunden – keine Reservierung angelegt.")
         return False
     content = PUBLISHED.read_text(encoding="utf-8")
+    candidates = [match.group(1) for match in _blocks(content, target) if _is_publishable(match.group(1), target)]
+    duplicate_keys = {
+        key for key in (_text_key(block) for block in candidates)
+        if key and sum(_text_key(other) == key for other in candidates) > 1
+    }
+    if duplicate_keys:
+        _write_duplicates(target, [key for key in sorted(duplicate_keys)])
+
     for match in _blocks(content, target):
         block = match.group(1)
         if not _is_publishable(block, target):
+            continue
+        if _text_key(block) in duplicate_keys:
+            print(f"{target}: Duplikat erkannt – nicht automatisch reserviert.")
             continue
         updated = re.sub(
             r"(?mi)^(Status:\s*FREIGEGEBEN\s*)$",
