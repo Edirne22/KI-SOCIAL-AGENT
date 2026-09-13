@@ -19,9 +19,13 @@ def find_facebook_block(content):
         claim_token = os.environ.get("PUBLICATION_CLAIM_TOKEN", "")
         if not claim_token or f"Publication-Claim: IN_BEARBEITUNG {claim_token}" not in body:
             continue
-        text_match = re.search(r"Text:\s*(.+?)(?=\nBild:|\Z)", body, re.DOTALL)
+        text_match = re.search(r"Text:\s*(.+?)(?=\n(?:Bild|Video|Bilder|Quelle|Medienstatus|Nutzungsrecht):|\Z)", body, re.DOTALL)
         if text_match:
-            return text_match.group(1).strip(), block
+            message = text_match.group(1).strip()
+            source_match = re.search(r"(?mi)^Quelle:\s*(https?://\S+)", body)
+            if source_match:
+                message += f"\n\nQuelle: {source_match.group(1)}"
+            return message, block
     return None, None
 
 def post_to_facebook(page_id, page_token, message):
