@@ -171,6 +171,12 @@ BESONDERE PRIORITÄTEN:
    dem Report. Erfinde niemals Quellen oder Zahlen.
 7. Für Ideen ohne passende aktuelle Quelle schreibe bei Inspirations-Quelle:
    "Keine aktuelle externe Quelle verwendet." Verwende dort keine erfundene URL.
+8. Bei realen Fahrern, Teams, Rennen oder aktuellen Sportmeldungen: nutze eine
+   konkrete Quelle aus dem Inspirationsreport, bevorzugt MotoGP.com oder WorldSBK.
+   Schlage niemals ein KI-Bild oder KI-Video als echte Rennaufnahme vor.
+   Schreibe bei Medienvorschlag: QUELLE_PRÜFEN.
+9. Bei neutralen Reise-, Landschafts-, Biker- oder Technikthemen ohne reale
+   Rennbehauptung ist Medienvorschlag: KI_ERLAUBT zulässig.
 
 Erstelle zu jeder Idee:
 - Titel
@@ -181,6 +187,7 @@ Erstelle zu jeder Idee:
 - Facebook-Post (etwas ausführlicher)
 - TikTok-Skript (Hook + 3-4 Szenen + Call-to-Action)
 - Visuelle Idee
+- Medienvorschlag: QUELLE_PRÜFEN oder KI_ERLAUBT
 - Hashtag-Vorschläge
 - Trend-Bezug
 - Viral-Score: X/10 (Faktoren: mindestens zwei der sechs Viral-Faktoren)
