@@ -79,7 +79,7 @@ def assess_latest_run(run: dict | None) -> tuple[str, str]:
         return "OK", "Letzter Lauf erfolgreich."
     if conclusion in {"failure", "timed_out", "cancelled", "action_required"}:
         return "FEHLER", f"Letzter Lauf: {conclusion}."
-    return "UNBEKANNT", f"Status: {status}; Ergebnis: {conclusion or "offen"}."
+    return "UNBEKANNT", f"Status: {status}; Ergebnis: {conclusion or 'offen'}."
 
 
 def latest_run(workflow_file: str) -> tuple[str, str, dict | None]:
@@ -142,7 +142,7 @@ def run(allow_safe_restart: bool = False) -> Path:
     lines += [
         "",
         "## Modus",
-        f"- {"Freigegebene Fehler-Neustarts aktiv" if allow_safe_restart else "Nur Bericht; keine Neustarts ausgelöst"}.",
+        f"- {'Freigegebene Fehler-Neustarts aktiv' if allow_safe_restart else 'Nur Bericht; keine Neustarts ausgelöst'}.",
         "- Es werden keine Beiträge veröffentlicht, keine Telegram-Nachrichten verarbeitet und keine Medien erzeugt.",
     ]
     STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -155,4 +155,4 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--allow-safe-restart", choices=("true", "false"), default="false")
     args = parser.parse_args()
-    print(f"Systemstatus gespeichert: {run(args.allow_safe_restart == "true")}")
+    print(f"Systemstatus gespeichert: {run(args.allow_safe_restart == 'true')}")
