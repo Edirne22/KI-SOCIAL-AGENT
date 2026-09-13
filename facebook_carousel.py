@@ -50,7 +50,7 @@ def parse_blocks(content):
         claim_token = os.environ.get("PUBLICATION_CLAIM_TOKEN", "")
         if not claim_token or f"Publication-Claim: IN_BEARBEITUNG {claim_token}" not in block:
             continue
-        text_match = re.search(r"^Text:\s*(.*?)(?=^Bilder:|\Z)", block, re.MULTILINE | re.DOTALL)
+        text_match = re.search(r"^Text:\s*(.*?)(?=^(?:Bilder|Quelle|Medienstatus|Nutzungsrecht):|\Z)", block, re.MULTILINE | re.DOTALL)
         images_match = re.search(r"^Bilder:\s*\n((?:\s*-\s*[^\n]+\n?)+)", block, re.MULTILINE)
         images = [line.strip()[1:].strip() for line in images_match.group(1).splitlines()] if images_match else []
         yield match, block, (text_match.group(1).strip() if text_match else ""), images
