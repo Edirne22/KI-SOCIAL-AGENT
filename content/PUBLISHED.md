@@ -32,7 +32,19 @@ Wenn du @toprakrazgatlioglu auf der Yamaha zuschauen darfst, siehst du millimete
 Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fahrt ihr lieber oldschool nach Gefühl? Schreib es in die Kommentare.
 Video: auto
 
-## Instagram / TikTok / Facebook
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361645
+Text:
+Misano brennt! @toprakrazgatlioglu7 zeigt in der MotoGP wieder einmal, was extrem späte Bremszonen bedeuten. Der Kampf auf der Strecke ist eröffnet.
+
+Misano’da nefesler tutuldu! Toprak yine sınırları zorluyor.
+
+Wer holt sich das Hauptrennen? Schreib es in die Kommentare.
+Bild: auto
+
+## Facebook
 Status: FREIGEGEBEN
 Freigabe: Telegram
 Telegram-Update-ID: 279361645
