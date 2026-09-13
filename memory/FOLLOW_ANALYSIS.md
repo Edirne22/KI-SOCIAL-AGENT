@@ -1,5 +1,5 @@
 # Follow-Analyse
-Stand: 2026-09-13 02:50
+Stand: 2026-09-13 08:03
 
 ## Zusammenfassung
 - Analysierte Accounts: 8
@@ -8,10 +8,10 @@ Stand: 2026-09-13 02:50
 - Hinweis: Top-Posts stammen aus einer aktuellen, begrenzten öffentlichen Stichprobe.
 
 ## Verify-Ergebnisse
-- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data Snapshot Timeout
-- @denizoncu → ⚠️ @denizoncu | – | Bright Data: keine öffentlichen Posts
-- @canoncu → ⚠️ @canoncu | – | Bright Data: keine öffentlichen Posts
-- @kenansofuoglu → ⚠️ @kenansofuoglu | – | Bright Data Snapshot Timeout
+- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
+- @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
+- @canoncu → ⚠️ @canoncu | – | Bright Data HTTP 400
+- @kenansofuoglu → ⚠️ @kenansofuoglu | – | Bright Data HTTP 400
 - @zaynsofuoglu → ⚠️ @zaynsofuoglu | – | Bright Data HTTP 400
 - @bahattinsofuoglu → ⚠️ @bahattinsofuoglu | – | Bright Data HTTP 400
 - @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
