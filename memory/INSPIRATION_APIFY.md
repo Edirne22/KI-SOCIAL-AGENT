@@ -1,3 +1,10 @@
 # Inspiration · Apify
 
-Nicht konfiguriert: APIFY_API_TOKEN fehlt.
+## instagram
+Übersprungen: HTTP 404.
+
+## facebook
+Übersprungen: HTTP 404.
+
+## youtube
+Übersprungen: HTTP 404.

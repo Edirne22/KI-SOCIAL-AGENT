@@ -280,3 +280,43 @@ Noch keine API-Aufrufe protokolliert.
 - Body-Länge: 14258 Zeichen
 - Erste URL: https://x.com/worldsbk/status/2098381043334000720
 - Antwort (max. 500 Zeichen): {"id":"2098381043334000720","user_posted":"WorldSBK","name":"WorldSBK","description":"Early drama! 💥 \n\nJorge Navarro was pushing hard at the front when it all came undone 😬\n\n#FrenchWorldSBK 🇫🇷 #WorldSBK","date_posted":"2026-09-11T12:00:01.000Z","photos":null,"url":"https://x.com/worldsbk/status/2098381043334000720","quoted_post":{"photos":null,"videos":null},"tagged_users":null,"replies":0,"reposts":4,"likes":89,"views":11263,"external_url":null,"hashtags":["FrenchWorldSBK","WorldSBK"],"foll
+
+## Diagnose Instagram (2026-09-13 10:48)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lk5ns7kz21pck8jpis&notify=false&include_errors=true&type=discover_new&discover_by=url
+- HTTP-Status: 400
+- Records: 0
+- Fehler: Instagram: Input-URL ungültig. Nur Profil-URLs erlaubt, z. B. https://www.instagram.com/motogp/; keine Hashtag-URL wie /explore/tags/.
+- Body-Länge: 22 Zeichen
+- Antwort (max. 500 Zeichen): Customer is not active
+
+## Diagnose Facebook (2026-09-13 10:48)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lkaxegm826bjpoo9m5&notify=false&include_errors=true
+- HTTP-Status: 400
+- Records: 0
+- Fehler: HTTP 400
+- Body-Länge: 22 Zeichen
+- Antwort (max. 500 Zeichen): Customer is not active
+
+## Diagnose YouTube (2026-09-13 10:48)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lk56epmy2i5g7lzu0k&notify=false&include_errors=true&type=discover_new&discover_by=keyword
+- HTTP-Status: 400
+- Records: 0
+- Fehler: HTTP 400
+- Body-Länge: 22 Zeichen
+- Antwort (max. 500 Zeichen): Customer is not active
+
+## Diagnose TikTok (2026-09-13 10:48)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_m7n5ixlw1gc4no56kx&notify=false&include_errors=true
+- HTTP-Status: 400
+- Records: 0
+- Fehler: HTTP 400
+- Body-Länge: 22 Zeichen
+- Antwort (max. 500 Zeichen): Customer is not active
+
+## Diagnose X (2026-09-13 10:48)
+- Endpoint: https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lwxkxvnf1cynvib9co&notify=false&include_errors=true&type=discover_new&discover_by=profile_url
+- HTTP-Status: 400
+- Records: 0
+- Fehler: HTTP 400
+- Body-Länge: 22 Zeichen
+- Antwort (max. 500 Zeichen): Customer is not active
