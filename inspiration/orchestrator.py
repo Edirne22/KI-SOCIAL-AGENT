@@ -207,31 +207,47 @@ Alle verwendeten URLs nummeriert. Verwende ausschließlich URLs, die in den obig
     return "# Inspiration-Ideen\n\n" + text + "\n" if text else _fallback_with_raw_data(enriched, posts)
 
 
-def _youtube_needs_fallback(report: str) -> bool:
-    """Bright-Data-YouTube ist nur dann ausreichend, wenn echte Datensätze vorliegen."""
-    section = re.search(r"(?ms)^## YouTube\s*\n(.*?)(?=^## |\Z)", report or "")
-    return not section or "### Datensatz" not in section.group(1)
+def _platform_has_records(report: str, platform: str) -> bool:
+    """Erkennt ausschließlich strukturierte, verwertbare Datensätze einer Plattform."""
+    section = re.search(rf"(?ms)^## {re.escape(platform)}\s*\n(.*?)(?=^## |\Z)", report or "")
+    return bool(section and "### Datensatz" in section.group(1))
 
 
 def main() -> None:
-    jobs = {"Apify": apify_agent.run, "Bright Data": brightdata_agent.run, "Crawlbase": crawlbase_agent.run}
-    reports: dict[str, str] = {}
-    with ThreadPoolExecutor(max_workers=3) as pool:
-        future_to_name = {pool.submit(function): name for name, function in jobs.items()}
-        for task in as_completed(future_to_name):
-            name = future_to_name[task]
-            try:
-                reports[name] = task.result()
-            except Exception as error:
-                reports[name] = f"# {name}\n\nKeine Daten: {type(error).__name__}.\n"
+    """Apify ist Hauptquelle für Instagram, Facebook und YouTube.
 
-    if _youtube_needs_fallback(reports.get("Bright Data", "")):
-        try:
-            reports["YouTube Apify"] = youtube_apify_agent.run()
-        except Exception as error:
-            reports["YouTube Apify"] = f"# YouTube Apify\\n\\nKeine Daten: {type(error).__name__}.\\n"
-    else:
-        reports["YouTube Apify"] = "# YouTube Apify\\n\\nNicht benötigt: Bright Data lieferte YouTube-Datensätze.\\n"
+    Bright Data wird erst für fehlende Apify-Plattformen genutzt. TikTok und X
+    bleiben vorerst Bright-Data-Quellen, weil dafür noch kein kontrollierter
+    Apify-Adapter eingerichtet ist.
+    """
+    reports: dict[str, str] = {}
+    try:
+        reports["Apify"] = apify_agent.run()
+    except Exception as error:
+        reports["Apify"] = f"# Apify\n\nKeine Daten: {type(error).__name__}.\n"
+
+    try:
+        reports["YouTube Apify"] = youtube_apify_agent.run()
+    except Exception as error:
+        reports["YouTube Apify"] = f"# YouTube Apify\n\nKeine Daten: {type(error).__name__}.\n"
+
+    bright_fallbacks = ["tiktok", "x"]
+    if not _platform_has_records(reports["Apify"], "Instagram"):
+        bright_fallbacks.append("instagram")
+    if not _platform_has_records(reports["Apify"], "Facebook"):
+        bright_fallbacks.append("facebook")
+    if not _platform_has_records(reports["YouTube Apify"], "YouTube"):
+        bright_fallbacks.append("youtube")
+
+    try:
+        reports["Bright Data"] = brightdata_agent.run(tuple(dict.fromkeys(bright_fallbacks)))
+    except Exception as error:
+        reports["Bright Data"] = f"# Bright Data\n\nKeine Daten: {type(error).__name__}.\n"
+
+    try:
+        reports["Crawlbase"] = crawlbase_agent.run()
+    except Exception as error:
+        reports["Crawlbase"] = f"# Crawlbase\n\nKeine Daten: {type(error).__name__}.\n"
 
     report = summarize(reports)
     (MEM / "INSPIRATION_IDEAS.md").write_text(report, encoding="utf-8")
@@ -243,7 +259,7 @@ def main() -> None:
     old = log.read_text(encoding="utf-8") if log.exists() else "# Inspiration-Log\n"
     log.write_text(old + f"\n- {datetime.now():%Y-%m-%d %H:%M}: " + ", ".join(reports) + "\n", encoding="utf-8")
     try:
-        send_message("Inspiration-Analyse fertig. Der Report enthält nur belegte Themen und Quellen.")
+        send_message("Inspiration-Analyse fertig. Apify ist die Hauptquelle (max. 10 Beiträge je Instagram/Facebook); Bright Data lief nur für fehlende oder nicht unterstützte Quellen.")
     except RuntimeError as error:
         print(f"Telegram übersprungen: {error}")
 
