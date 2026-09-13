@@ -8,12 +8,19 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: published-plan-writers
+  cancel-in-progress: false
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Aktualisiere Arbeitsstand
+        run: git pull --rebase origin main
 
       - name: Set up Python
         uses: actions/setup-python@v5
