@@ -6,11 +6,12 @@ import re
 from datetime import datetime
 from pathlib import Path
 
-from deal_hunter import search_deal
+from deal_hunter import search_deal_with_offer
 from telegram_bot import send_message
 
 WATCHLIST = Path("memory/WATCHLIST.md")
 HISTORY = Path("memory/PRICE_HISTORY.md")
+TRACKING_LOG = Path("memory/PRICE_TRACKING_LOG.md")
 PREFERENCES = Path("memory/USER_PREFERENCES.md")
 MAX_ACTIVE = 15
 
@@ -84,9 +85,19 @@ def stop_tracking(product_name: str, completed: bool = False) -> str:
     return f"{product_name} wurde {status}."
 
 
-def price_from_result(text: str) -> float | None:
-    match = re.search(r"(\d{1,5}(?:[.,]\d{2})?)\s*€", text)
-    return float(match.group(1).replace(",", ".")) if match else None
+def _log_tracking(product: str, message: str) -> None:
+    TRACKING_LOG.parent.mkdir(parents=True, exist_ok=True)
+    existing = _read_text(TRACKING_LOG, "# Preis-Tracking-Protokoll\n")
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+    _write_text(TRACKING_LOG, existing.rstrip() + f"\n\n## {timestamp}\n- Produkt: {product}\n- Ergebnis: {message}\n")
+
+
+def _criteria_status(price: float, criteria: str) -> str:
+    maximum = re.search(r"(?i)max:\s*([0-9]+(?:[.,][0-9]+)?)\s*€", criteria)
+    if not maximum:
+        return "keine Preisgrenze"
+    limit = float(maximum.group(1).replace(",", "."))
+    return "Zielpreis erreicht" if price <= limit else f"über Zielpreis (max. {limit:.2f} €)"
 
 
 def history_for_product(product_name: str) -> list[tuple[datetime, float]]:
@@ -166,17 +177,31 @@ def send_alert_if_changed(product: str, old: float | None, price: float) -> None
 
 
 def check_prices() -> None:
+    """Prüft jedes Produkt unabhängig; nur strukturierte, belegte Angebote zählen."""
     existing = _read_text(HISTORY, "# Preis-Historie\n")
     for product, criteria in active_products():
-        result = search_deal(product)
-        price = price_from_result(result)
-        if price is None:
+        try:
+            outcome = search_deal_with_offer(product, criteria)
+        except (RuntimeError, ValueError) as error:
+            _log_tracking(product, f"Recherche nicht verfügbar: {error}")
             continue
+
+        offer = outcome.get("offer")
+        if not offer:
+            provider = outcome.get("provider", "unbekannt")
+            _log_tracking(product, f"Kein verifiziertes Live-Angebot von {provider}; nicht gespeichert.")
+            continue
+
+        price = float(offer["price"])
         previous = re.findall(rf"(?m)^Produkt: {re.escape(product)}\nPreis: ([0-9.]+)", existing)
         old = float(previous[-1]) if previous else None
+        status = _criteria_status(price, criteria)
         existing += (
-            f"\n## {datetime.now():%Y-%m-%d %H:%M}\nProdukt: {product}\nPreis: {price:.2f}\n"
-            f"Status: nicht bestätigt\nKriterien: {criteria}\n"
+            f"\n## {datetime.now():%Y-%m-%d %H:%M}\n"
+            f"Produkt: {product}\nPreis: {price:.2f}\nHändler: {offer['retailer']}\n"
+            f"Quelle: {offer['url']}\nStatus: nicht bestätigt – {status}\n"
+            f"Kriterien: {criteria}\nProvider: {outcome.get('provider', 'unbekannt')}\n"
         )
+        _log_tracking(product, f"{price:.2f} € bei {offer['retailer']} ({status}).")
         send_alert_if_changed(product, old, price)
     _write_text(HISTORY, existing)
