@@ -1,11 +1,11 @@
 # Follow-Verify
-Stand: 2026-09-13 10:22
+Stand: 2026-09-13 11:07
 
-- @toprakrazgatlioglu7 → ✅ @toprakrazgatlioglu7 | Apify | ok
-- @denizoncu → ✅ @denizoncu | Apify | ok
-- @canoncu → ✅ @canoncu | Apify | ok
-- @kenansofuoglu → ✅ @kenansofuoglu | Apify | ok
-- @zaynsofuoglu → ✅ @zaynsofuoglu | Apify | ok
-- @bahattinsofuoglu → ✅ @bahattinsofuoglu | Apify | ok
-- @toprakrazgatlioglu7 → ✅ @toprakrazgatlioglu7 | Apify | ok
-- @jackmilleraus → ✅ @jackmilleraus | Apify | ok
+- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
+- @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
+- @canoncu → ⚠️ @canoncu | – | Bright Data HTTP 400
+- @kenansofuoglu → ⚠️ @kenansofuoglu | – | Bright Data HTTP 400
+- @zaynsofuoglu → ⚠️ @zaynsofuoglu | – | Bright Data HTTP 400
+- @bahattinsofuoglu → ⚠️ @bahattinsofuoglu | – | Bright Data HTTP 400
+- @jackmilleraus → ⚠️ @jackmilleraus | – | Bright Data HTTP 400
+- @pecco63 → ⚠️ @pecco63 | – | Bright Data HTTP 400
