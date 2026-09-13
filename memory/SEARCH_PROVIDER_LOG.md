@@ -64,3 +64,8 @@ Technische Protokolle der Deal-Hunter-Suchwege. Keine Preise oder Zugangsdaten s
 - Provider: Keine Suche
 - Live-Suche: nein
 - Hinweis: Alle Suchanbieter nicht verfügbar
+## 2026-09-13 16:12
+- Anfrage: deal: Handyvertrag 80 GB D1 max 13 €
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: $10 öffentliche Treffer; Kostenlimit $0.010
