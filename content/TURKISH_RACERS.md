@@ -13,7 +13,7 @@
 - Serie: Moto2 – Elf Marc VDS Racing
 - Bike: Boscoscuro mit Triumph-Motor
 - Bestes Saisonergebnis 2026: 8. Platz (Silverstone), 10. Platz (Italien)
-- Instagram: @denizoncou
+- Instagram: @denizoncu53
 - Bruder: Can Öncü (Zwillingsbruder)
 
 ### Can Öncü
