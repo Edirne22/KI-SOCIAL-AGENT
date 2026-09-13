@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: publish-to-social
+  group: published-plan-writers
   cancel-in-progress: false
 
 jobs:
@@ -19,6 +19,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Aktualisiere Arbeitsstand
+        run: git pull --rebase origin main
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -27,10 +30,37 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      - name: Instagram-Story reservieren
+        run: python publication_claim.py --platform story --claim
+
+      - name: Reservierung speichern
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/PUBLISHED.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Auto: Veröffentlichung reserviert"
+          git pull --rebase origin main
+          git push
+
+      - name: Reservierung starten
+        run: python publication_claim.py --platform story --start --token "${{ github.run_id }}-${{ github.run_attempt }}"
+
+      - name: Startstatus speichern
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/PUBLISHED.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Auto: Veröffentlichung gestartet"
+          git pull --rebase origin main
+          git push
+
       - name: Run Instagram Stories publisher
         env:
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          PUBLICATION_CLAIM_TOKEN: ${{ github.run_id }}-${{ github.run_attempt }}
         run: python instagram_stories.py
 
       - name: Commit status update
