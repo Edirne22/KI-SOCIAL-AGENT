@@ -50,7 +50,7 @@ def search_deal_with_offer(
     criteria: str = "",
     status_callback: Callable[[str], None] | None = None,
 ) -> dict:
-    query = product_query.strip()
+    query = re.sub(r"(?is)^\s*(?:deal|suche)\s*:?\s*", "", product_query).strip()
     if not query:
         raise ValueError("Bitte nenne ein Produkt nach 'deal:' oder 'suche:'.")
 
