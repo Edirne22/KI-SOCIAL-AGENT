@@ -35,6 +35,7 @@ def collect() -> dict[str, list[str]]:
 def confirmed_weekend() -> tuple[str, str] | None:
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
+        print("[race] GEMINI_API_KEY fehlt - Recherche nicht moeglich.")
         return None
     prompt = """Prüfe anhand öffentlicher, offizieller Rennkalender das nächste MotoGP-, WorldSBK- oder Formel-1-Wochenende.
 Antworte nur exakt in diesem Format:
@@ -43,6 +44,7 @@ SERIE: MotoGP oder WorldSBK oder Formel 1
 DETAILS: Datum, Strecke und nur bestätigte Sessionzeiten
 Wenn ein Datum, eine Serie oder Zeiten nicht sicher belegt sind, antworte BESTÄTIGT: nein.
 Erfinde keine Zeiten."""
+    print(f"[race] Verwende Modell: {MODEL}")
     try:
         response = requests.post(
             f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
@@ -51,16 +53,25 @@ Erfinde keine Zeiten."""
             timeout=120,
         )
         if response.status_code != 200:
+            print(f"[race] Gemini-API-Fehler: HTTP {response.status_code}")
+            print(f"[race] Antwort-Body (gekuerzt): {response.text[:500]}")
             return None
         text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
-    except (requests.RequestException, KeyError, IndexError):
+    except (requests.RequestException, KeyError, IndexError) as e:
+        print(f"[race] Gemini-Exception: {type(e).__name__}: {e}")
         return None
     if not re.search(r"(?im)^BESTÄTIGT:\s*ja\s*$", text):
+        print("[race] Gemini-Antwort ohne BESTAETIGT: ja.")
+        print(f"[race] Antwort (gekuerzt): {text[:800]}")
         return None
     series = re.search(r"(?im)^SERIE:\s*(.+)$", text)
     details = re.search(r"(?im)^DETAILS:\s*(.+)$", text)
-    return (series.group(1).strip(), details.group(1).strip()) if series and details else None
-
+    if series and details:
+        print(f"[race] Bestaetigtes Rennwochenende: {series.group(1).strip()} / {details.group(1).strip()}")
+        return (series.group(1).strip(), details.group(1).strip())
+    print("[race] SERIE oder DETAILS fehlt in der Gemini-Antwort.")
+    print(f"[race] Antwort (gekuerzt): {text[:800]}")
+    return None
 
 def append_draft(series: str, details: str, posters: list[Path]) -> None:
     """Legt getrennte, normale Publisher-Blöcke an; Freigabe bleibt bei Bülent."""
