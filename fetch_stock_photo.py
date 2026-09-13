@@ -236,6 +236,9 @@ def process_block(content, platform_header, gemini_key, pexels_key):
 
         if "[GEPOSTET" in block:
             continue
+        if not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", body):
+            print(f"{platform_header.removeprefix('## ')}-Entwurf übersprungen (nicht freigegeben).")
+            continue
         if re.search(r"Bild:\s*\S+", body):
             print("Block hat schon ein Bild – überspringe.")
             continue
