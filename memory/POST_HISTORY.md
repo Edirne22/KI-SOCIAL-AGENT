@@ -47,3 +47,11 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 2: Warum steht mitten auf einer Motorrad-Messe eigentlich ein türkisches Plüschsofa?
 - Titel 3: Ohne Netz über den Pass – Warum dein digitales Fahrtenbuch Pflicht ist
 - Hook 3: Was machst du, wenn mitten im Gebirge das Netz weg ist und der Reifen schlappmacht?
+
+### 2026-09-13 09:17 | Entwurf generiert
+- Titel 1: Spätbremser-Analyse: Deniz Öncü in der Moto2
+- Hook 1: Warum bremst Deniz Öncü in der Moto2 gefühlt einen Kilometer später als der Rest?
+- Titel 2: KI-Kurvenscout: Nie wieder langweilige Strecken
+- Hook 2: Warum schickt dich deine Navi-App eigentlich immer auf die langweiligste Bundesstraße?
+- Titel 3: Das ungeschriebene Gesetz der Biker-Pause
+- Hook 3: Was ist das wichtigste Werkzeug in deiner Motorrad-Garage?
