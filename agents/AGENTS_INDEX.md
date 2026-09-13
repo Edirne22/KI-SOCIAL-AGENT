@@ -47,4 +47,4 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 
 ## Technischer Status
 
-Die Agenten-Bibliothek ist zunächst Dokumentation und Arbeitsgrundlage. Sie wird noch nicht automatisch durch `router.py`, `llm_client.py` oder GitHub Actions ausgeführt. Eine spätere Orchestrierung darf diese Dateien lesen, muss aber die Aktivierungs-Logik und die menschlichen Freigaben respektieren.
+Die Rollen bleiben Arbeitsgrundlage. Der Qualitäts-Agent und der Follow-Analyse-Agent haben zusätzlich klar begrenzte GitHub-Workflows. Alle übrigen Rollen werden nicht automatisch durch `router.py` oder `llm_client.py` ausgeführt. Jede spätere Orchestrierung muss die Aktivierungs-Logik und die menschlichen Freigaben respektieren.
