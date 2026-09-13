@@ -47,7 +47,14 @@ def _is_publishable(block: str, target: str) -> bool:
     ):
         return False
     if target == "facebook":
-        return bool(re.search(r"(?ms)^Text:\s*\S+", block))
+        if not re.search(r"(?ms)^Text:\s*\S+", block):
+            return False
+        if not re.search(r"(?mi)^Bild:\s*(?!auto\s*$)\S+", block):
+            return True
+        allowed, reason = media_publishable(block)
+        if not allowed:
+            print(reason)
+        return allowed
     if target == "instagram":
         ready = bool(re.search(r"(?mi)^Bild:\s*(?!auto\s*$)\S+", block))
     elif target == "story":
