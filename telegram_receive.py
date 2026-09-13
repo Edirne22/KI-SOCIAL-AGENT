@@ -134,10 +134,11 @@ WORKFLOW_COMMANDS = {
     "inspiration": ("inspiration-agent.yml", "Inspiration-Analyse gestartet. Ich melde mich mit dem Ergebnis."),
     "race": ("race-calendar.yml", "Rennkalender-Prüfung gestartet. Poster bleiben Entwürfe."),
     "viral": ("viral-analysis.yml", "Viral-Analyse gestartet. Die Muster werden im Memory aktualisiert."),
+    "follow-analyse": ("follow-analyzer.yml", "Follow-Analyse gestartet. Ich melde mich mit dem Ergebnis."),
 }
 
 
-def dispatch_workflow(workflow_file: str) -> None:
+def dispatch_workflow(workflow_file: str, inputs: dict[str, str] | None = None) -> None:
     token = os.environ.get("GITHUB_TOKEN", "")
     repository = os.environ.get("GITHUB_REPOSITORY", "")
     if not token or not repository:
@@ -145,7 +146,7 @@ def dispatch_workflow(workflow_file: str) -> None:
     response = requests.post(
         f"https://api.github.com/repos/{repository}/actions/workflows/{workflow_file}/dispatches",
         headers={"Accept": "application/vnd.github+json", "Authorization": f"Bearer {token}"},
-        json={"ref": "main"},
+        json={"ref": "main", "inputs": inputs or {}},
         timeout=30,
     )
     if response.status_code != 204:
@@ -327,6 +328,7 @@ def main() -> None:
         is_funnel = text_lower == "funnel"
         is_growth = text_lower == "growth"
         is_competitors = text_lower in ("competitors", "wettbewerber")
+        verify_username = _named_command(message_text, ("verify",))
         is_trend_command = text_lower.startswith(("trend:", "trend ", "trend\t"))
         is_track_command = text_lower == "track" or text_lower.startswith(("track:", "track ", "track\t"))
         deal_command = parse_deal_command(message_text)
@@ -428,6 +430,18 @@ def main() -> None:
                 send_message("Bitte nenne ein Produkt, zum Beispiel: erledigt: Motorradhandschuhe")
             else:
                 send_message(stop_tracking(done_product, True))
+
+        elif verify_username is not None:
+            print(f"Empfangen: {message_text} → erkannt als: Follow-Verify")
+            username = verify_username.lstrip("@").strip()
+            if not re.fullmatch(r"[A-Za-z0-9._-]{1,30}", username):
+                send_message("Bitte nutze: verify: <öffentlicher Instagram-Username>")
+            else:
+                try:
+                    dispatch_workflow("follow-analyzer.yml", {"verify_username": username})
+                    send_message(f"Profilprüfung für @{username} gestartet. Das Ergebnis kommt per Telegram.")
+                except RuntimeError as error:
+                    send_message(f"Profilprüfung konnte nicht gestartet werden: {error}")
 
         elif text_lower in WORKFLOW_COMMANDS:
             workflow_file, confirmation = WORKFLOW_COMMANDS[text_lower]
