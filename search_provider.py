@@ -54,10 +54,18 @@ def _apify_charge_limit() -> float:
 
 
 def _price_from_snippet(value: str) -> float | None:
-    prices = [
-        float(match.group(1).replace(".", "").replace(",", "."))
-        for match in re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*(?:€|EUR)\b", value, re.IGNORECASE)
-    ]
+    prices = []
+    for match in re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*(?:€|EUR)\b", value, re.IGNORECASE):
+        raw = match.group(1)
+        # Deutsche und internationale Schreibweisen: 299,99 / 299.99 / 1.299,99.
+        if "," in raw and "." in raw:
+            normalized = raw.replace(".", "").replace(",", ".") if raw.rfind(",") > raw.rfind(".") else raw.replace(",", "")
+        else:
+            normalized = raw.replace(",", ".")
+        try:
+            prices.append(float(normalized))
+        except ValueError:
+            continue
     return min(prices) if prices else None
 
 
