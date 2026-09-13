@@ -81,10 +81,19 @@ def claim(target: str) -> bool:
         print("PUBLISHED.md nicht gefunden – keine Reservierung angelegt.")
         return False
     content = PUBLISHED.read_text(encoding="utf-8")
-    candidates = [match.group(1) for match in _blocks(content, target) if _is_publishable(match.group(1), target)]
+    # Duplikate werden unabhängig von der Medienreife geprüft. Sonst könnten
+    # zwei gleiche Reel-Entwürfe an aufeinanderfolgenden Tagen durchrutschen.
+    approved = [
+        match.group(1)
+        for match in _blocks(content, target)
+        if "[GEPOSTET" not in match.group(1)
+        and CLAIM_READY not in match.group(1)
+        and CLAIM_ACTIVE not in match.group(1)
+        and re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", match.group(1))
+    ]
     duplicate_keys = {
-        key for key in (_text_key(block) for block in candidates)
-        if key and sum(_text_key(other) == key for other in candidates) > 1
+        key for key in (_text_key(block) for block in approved)
+        if key and sum(_text_key(other) == key for other in approved) > 1
     }
     if duplicate_keys:
         _write_duplicates(target, [key for key in sorted(duplicate_keys)])
