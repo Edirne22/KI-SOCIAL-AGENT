@@ -136,7 +136,10 @@ def main() -> None:
     args = parser.parse_args()
     if args.start and not args.token:
         parser.error("--start benötigt --token")
-    (claim if args.claim else start)(args.platform) if args.claim else start(args.platform, args.token)
+    if args.claim:
+        claim(args.platform)
+    else:
+        start(args.platform, args.token)
 
 
 if __name__ == "__main__":
