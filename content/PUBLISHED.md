@@ -13,3 +13,12 @@ Status: FREIGEGEBEN
 Freigabe: Telegram
 Text: Zwei Brüder, doppelte Power auf der Strecke. @denizoncou kämpft in der Moto2 um jeden Zentimeter, während @canoncu in der Supersport-WM wieder auf Siegkurs fährt. Unter den Augen von Mentor @kenansofuoglu wächst hier die nächste Weltklasse-Generation heran. Sürat ve tutku onların kanında var. Deniz ve Can Öncü pistlerde fırtına gibi esmeye devam ediyor. Welcher der beiden holt sich als Nächster den Sieg? #Moto2 #WorldSSP #DenizÖncü #CanÖncü #KenanSofuoğlu #Motorrad #Motorsport
 Video: auto
+
+## Instagram Reel
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361642
+Text:
+Wenn du @toprakrazgatlioglu auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
+Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fahrt ihr lieber oldschool nach Gefühl? Schreib es in die Kommentare.
+Video: auto
