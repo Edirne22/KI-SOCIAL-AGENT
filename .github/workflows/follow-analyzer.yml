@@ -1,0 +1,55 @@
+name: Follow Analyzer
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      all_accounts:
+        description: "Alle konfigurierten Accounts (maximal FOLLOW_MAX_ACCOUNTS) analysieren?"
+        required: false
+        default: false
+        type: boolean
+      verify_username:
+        description: "Optional: einen einzelnen öffentlichen Username prüfen"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: follow-analyzer
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests
+      - name: Öffentliche Follow-Analyse ausführen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          APIFY_API_TOKEN: ${{ secrets.APIFY_API_TOKEN }}
+          BRIGHTDATA_API_TOKEN: ${{ secrets.BRIGHTDATA_API_TOKEN }}
+          BRIGHTDATA_DATASET_INSTAGRAM: ${{ vars.BRIGHTDATA_DATASET_INSTAGRAM }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FOLLOW_ANALYZER_ALL: ${{ inputs.all_accounts || 'false' }}
+          FOLLOW_VERIFY_USERNAME: ${{ inputs.verify_username || '' }}
+          FOLLOW_MAX_ACCOUNTS: "8"
+        run: python -u follow_analyzer.py
+      - name: Ergebnisse speichern
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add memory/FOLLOW_ANALYSIS.md 2>/dev/null || true
+          git add memory/FOLLOW_VERIFY.md 2>/dev/null || true
+          git add memory/FOLLOW_ANALYSIS_STATE.md 2>/dev/null || true
+          git commit -m "Auto: Follow-Analyse aktualisiert" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
