@@ -66,7 +66,7 @@ def claim(target: str) -> bool:
     return False
 
 
-def start(target: str) -> bool:
+def start(target: str, token: str) -> bool:
     if not PUBLISHED.exists():
         print("PUBLISHED.md nicht gefunden – keine Reservierung gestartet.")
         return False
@@ -75,8 +75,7 @@ def start(target: str) -> bool:
         block = match.group(1)
         if CLAIM_READY not in block or CLAIM_ACTIVE in block:
             continue
-        stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-        updated = block.replace(CLAIM_READY, f"{CLAIM_ACTIVE} seit {stamp}", 1)
+        updated = block.replace(CLAIM_READY, f"{CLAIM_ACTIVE} {token}", 1)
         PUBLISHED.write_text(content[:match.start()] + updated + content[match.end():], encoding="utf-8")
         print(f"Veröffentlichung gestartet: {target}.")
         return True
@@ -90,8 +89,11 @@ def main() -> None:
     action = parser.add_mutually_exclusive_group(required=True)
     action.add_argument("--claim", action="store_true")
     action.add_argument("--start", action="store_true")
+    parser.add_argument("--token", help="Eindeutiger GitHub-Run-Token; erforderlich bei --start.")
     args = parser.parse_args()
-    (claim if args.claim else start)(args.platform)
+    if args.start and not args.token:
+        parser.error("--start benötigt --token")
+    (claim if args.claim else start)(args.platform) if args.claim else start(args.platform, args.token)
 
 
 if __name__ == "__main__":
