@@ -117,4 +117,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("query", nargs="+", help="Produktanfrage")
     args = parser.parse_args()
-    print(search_deal(" ".join(args.query)))
+    try:
+        print(search_deal(" ".join(args.query)))
+    except (RuntimeError, ValueError) as error:
+        # Ein ausfallender Suchanbieter ist ein erwartbarer Betriebszustand,
+        # kein Codefehler. search_provider.py hat die Ursache bereits protokolliert.
+        print(f"Deal-Recherche derzeit nicht möglich: {error}")
