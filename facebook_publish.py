@@ -20,17 +20,24 @@ def find_facebook_block(content):
         if not claim_token or f"Publication-Claim: IN_BEARBEITUNG {claim_token}" not in body:
             continue
         text_match = re.search(r"Text:\s*(.+?)(?=\n(?:Bild|Video|Bilder|Quelle|Medienstatus|Nutzungsrecht):|\Z)", body, re.DOTALL)
+        image_match = re.search(r"(?mi)^Bild:\s*(?!auto\s*$)(\S+)", body)
         if text_match:
             message = text_match.group(1).strip()
             source_match = re.search(r"(?mi)^Quelle:\s*(https?://\S+)", body)
             if source_match:
                 message += f"\n\nQuelle: {source_match.group(1)}"
-            return message, block
-    return None, None
+            return message, image_match.group(1) if image_match else None, block
+    return None, None, None
 
-def post_to_facebook(page_id, page_token, message):
-    url = f"https://graph.facebook.com/v26.0/{page_id}/feed"
-    response = requests.post(url, data={"message": message, "access_token": page_token}, timeout=30)
+def post_to_facebook(page_id, page_token, message, image_file=None):
+    if image_file:
+        from asset_paths import asset_url
+        url = f"https://graph.facebook.com/v26.0/{page_id}/photos"
+        payload = {"url": asset_url(image_file, REPO_RAW), "caption": message, "access_token": page_token}
+    else:
+        url = f"https://graph.facebook.com/v26.0/{page_id}/feed"
+        payload = {"message": message, "access_token": page_token}
+    response = requests.post(url, data=payload, timeout=30)
     if response.status_code == 200:
         return response.json().get("id")
     print(f"Fehler: {response.text}")
@@ -53,13 +60,13 @@ if __name__ == "__main__":
     with open("content/PUBLISHED.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    text, block = find_facebook_block(content)
+    text, image_file, block = find_facebook_block(content)
     if not text:
         print("Kein freigegebener Facebook-Beitrag gefunden.")
         exit(0)
 
     print("Facebook-Beitrag gefunden – veröffentliche jetzt...")
-    post_id = post_to_facebook(page_id, page_token, text)
+    post_id = post_to_facebook(page_id, page_token, text, image_file)
 
     if post_id:
         print(f"Erfolgreich veröffentlicht: {post_id}")
