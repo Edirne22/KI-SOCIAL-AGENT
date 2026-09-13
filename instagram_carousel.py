@@ -46,7 +46,8 @@ def parse_blocks(content):
         block = match.group(1)
         if "[GEPOSTET " in block or not re.search(r"^Status:\s*FREIGEGEBEN\s*$", block, re.MULTILINE | re.IGNORECASE):
             continue
-        if "Publication-Claim: IN_BEARBEITUNG" not in block:
+        claim_token = os.environ.get("PUBLICATION_CLAIM_TOKEN", "")
+        if not claim_token or f"Publication-Claim: IN_BEARBEITUNG {claim_token}" not in block:
             continue
         text_match = re.search(r"^Text:\s*(.*?)(?=^Bilder:|\Z)", block, re.MULTILINE | re.DOTALL)
         images_match = re.search(r"^Bilder:\s*\n((?:\s*-\s*[^\n]+\n?)+)", block, re.MULTILINE)
