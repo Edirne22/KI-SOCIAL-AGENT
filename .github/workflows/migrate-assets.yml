@@ -16,11 +16,18 @@ concurrency:
   group: asset-migration
   cancel-in-progress: false
 
+concurrency:
+  group: published-plan-writers
+  cancel-in-progress: false
 jobs:
   migrate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Aktualisiere Arbeitsstand
+        run: git pull --rebase origin main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
