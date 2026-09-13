@@ -52,7 +52,7 @@
 
 ### LCR Honda
 - johannzarco             #5 – Johann Zarco
-- diogomoreira11          #11 – Diogo Moreira (Rookie) ⚠️ testen
+- diogomoreira11 | alias: diogomoreira_10  #11 – Diogo Moreira (Rookie)
 
 ## Rennserien & Teams (Prio 2 – alle 2 Wochen)
 - motogp
@@ -74,5 +74,5 @@
 - (private Accounts)
 
 ## Hinweise
-- Diogo Moreira: `diogomoreira11` testen – Profil könnte noch `diogomoreira_10` sein
+- Diogo Moreira: zuerst `diogomoreira11`, dann der ausdrücklich hinterlegte Alias `diogomoreira_10`.
 - Alle anderen Usernames aus offiziellen Quellen verifiziert
