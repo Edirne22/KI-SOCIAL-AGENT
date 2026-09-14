@@ -2,7 +2,7 @@ name: System Neustart Agent
 
 on:
   schedule:
-    - cron: "45 18 * * *" # 20:45 Uhr deutsche Sommerzeit: Bericht, keine Neustarts
+    - cron: "45 0,6,12,18 * * *" # alle 6 Stunden: Bericht, keine Neustarts
   workflow_dispatch:
     inputs:
       restart_failed_safe_workflows:
