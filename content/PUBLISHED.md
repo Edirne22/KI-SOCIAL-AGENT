@@ -112,7 +112,7 @@ Bild: assets/images/2026-09/t-bikers.jpg
 
 ## Instagram
 Status: Freigegeben
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34882956075-1
 Freigabe: Rennkalender
 Rennkalender: 2026-W37-MotoGP
 Titel: 🏁 MotoGP – Rennwochenende
