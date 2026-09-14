@@ -183,3 +183,20 @@ Wen drückst du am Wochenende die Daumen?
 
 #MotoGP #AustrianGP #RedBullRing #ToprakRazgatlioglu #DenizOncu #Moto2 #MotoGPTurkiye #TurkMotorSporlari #BikerCommunity
 Bild: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
+
+## Instagram Reel
+Status: ENTWURF
+Freigabe: Rennkalender
+Racing-Reel: Red Bull Ring 2026
+Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
+Text:
+🏁 Runde 15 am Red Bull Ring: Toprak Razgatlıoğlu in der MotoGP, Deniz Öncü in der Moto2 — und die türkische Biker-Familie macht den T10 laut. 🇹🇷🔥
+
+Avusturya’da yalnız değiliz. T10 Tribünü hazır!
+
+Wen unterstützt du dieses Wochenende?
+
+#MotoGP #AustrianGP #RedBullRing #Spielberg #ToprakRazgatlioglu #DenizOncu #Moto2 #MotoGPTurkiye #TurkMotorSporlari #BikerCommunity
+Poster: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
+Video: WARTET_AUF_POSTER_REEL
+Musik: auto
