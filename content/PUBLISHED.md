@@ -141,7 +141,7 @@ Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W38-motogp-facebook.jpg
 
 ## Instagram
-Status: ENTWURF
+Status: Freigegeben
 Freigabe: Rennkalender
 Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
 Text:
@@ -166,7 +166,7 @@ Bild: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
 
 
 ## Facebook
-Status: ENTWURF
+Status: Freigegeben
 Freigabe: Rennkalender
 Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
 Text:
@@ -185,7 +185,7 @@ Wen drückst du am Wochenende die Daumen?
 Bild: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
 
 ## Instagram Reel
-Status: ENTWURF
+Status: Freigegeben
 Freigabe: Rennkalender
 Racing-Reel: Red Bull Ring 2026
 Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
