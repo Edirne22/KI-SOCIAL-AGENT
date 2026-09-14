@@ -104,7 +104,7 @@ Medienstatus: EIGENES_MATERIAL
 
 ## Facebook 
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34850116586-1
 Freigabe: Telegram
 Text:
 Im Ruhrgebiet zählt echte Loyalität. Die T-Bikers zeigen seit 2005, wie türkische Biker-Kultur und Pott-Mentalität zusammengehören: Benzingespräche, Çay bei der Pause und gegenseitiger Respekt.
