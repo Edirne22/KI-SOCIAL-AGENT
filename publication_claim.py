@@ -66,6 +66,9 @@ def _is_publishable(block: str, target: str) -> bool:
         ready = len(images) >= 2
     if not ready:
         return False
+    if target in {"story", "reel"} and re.search(r"(?mi)^Musik:\s*auto\s*$", block):
+        print(f"{target}: wartet noch auf die automatische Musikmischung.")
+        return False
     allowed, reason = media_publishable(block)
     if not allowed:
         print(reason)
