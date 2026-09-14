@@ -1,5 +1,5 @@
 # Follow-Verify
-Stand: 2026-09-13 11:07
+Stand: 2026-09-14 08:06
 
 - @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
 - @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
