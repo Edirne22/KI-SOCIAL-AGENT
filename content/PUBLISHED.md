@@ -109,3 +109,33 @@ Ruhr Bölgesi'nin köklü kulübü T-Bikers: 20 yılı aşkın süredir yollarda
 Quelle: https://www.facebook.com/TBIKERSTurkMotorKulubu
 Fährst du feste Touren mit deiner Crew oder lieber spontan?
 Bild: assets/images/2026-09/t-bikers.jpg
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: 2026-W37-MotoGP
+Titel: 🏁 MotoGP – Rennwochenende
+Text: Qatar Airways Grand Prix of Austria — Red Bull Ring, Spielberg — 18. bis 20. September 2026 | Quelle: https://tickets.motogp.com/en/21021-austria/
+Quelle: https://www.motogp.com/
+Medienstatus: EIGENES_MATERIAL
+Bild: assets/race-posters/2026-W38-motogp-feed.jpg
+
+## Story
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: 2026-W37-MotoGP
+Titel: 🏁 MotoGP – Rennwochenende
+Text: Qatar Airways Grand Prix of Austria — Red Bull Ring, Spielberg — 18. bis 20. September 2026 | Quelle: https://tickets.motogp.com/en/21021-austria/
+Quelle: https://www.motogp.com/
+Medienstatus: EIGENES_MATERIAL
+Bild: assets/race-posters/2026-W38-motogp-story.jpg
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: 2026-W37-MotoGP
+Titel: 🏁 MotoGP – Rennwochenende
+Text: Qatar Airways Grand Prix of Austria — Red Bull Ring, Spielberg — 18. bis 20. September 2026 | Quelle: https://tickets.motogp.com/en/21021-austria/
+Quelle: https://www.motogp.com/
+Medienstatus: EIGENES_MATERIAL
+Bild: assets/race-posters/2026-W38-motogp-facebook.jpg

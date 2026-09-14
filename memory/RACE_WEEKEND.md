@@ -1,5 +1,5 @@
 # Nächstes Rennwochenende
-Geprüft: 2026-09-14 18:06
+Geprüft: 2026-09-14 18:08
 
 > Zeiten bitte vor Veröffentlichung an der Originalquelle prüfen.
 
@@ -12,4 +12,6 @@ Geprüft: 2026-09-14 18:06
 ## Formel 1
 - Öffentliche Quellen erreichbar: 2
 
-Kein eindeutig bestätigtes Rennwochenende gefunden; kein Poster-Entwurf erzeugt.
+Bestätigt: MotoGP
+Details: Qatar Airways Grand Prix of Austria — Red Bull Ring, Spielberg — 18. bis 20. September 2026 | Quelle: https://tickets.motogp.com/en/21021-austria/
+Poster-Entwürfe: 3
