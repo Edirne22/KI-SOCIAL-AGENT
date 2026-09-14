@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-09-13 18:12
+Stand: 2026-09-14 18:12
 Gesamtstatus: **WARNUNG**
-- OK: 15
-- Warnungen: 6
+- OK: 16
+- Warnungen: 5
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -14,10 +14,10 @@ Gesamtstatus: **WARNUNG**
 - ⚠️ **Inspiration-Ideen**: Gemini war nicht verfügbar; der Rohdaten-Fallback ist aktiv.
 - ✅ **YouTube-Fallback**: 10 YouTube-Datensätze aus dem Apify-Fallback erkannt.
 - ✅ **YouTube-Duplikate**: Keine doppelten Video-URLs im Quellreport erkannt.
-- ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
+- ⚠️ **YouTube-Quellenmix**: Nur 1 Datensatz von einem bekannten Primärkanal erkannt (MotoGP). Weitere Quellen vor einer Veröffentlichung manuell prüfen.
 - ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
 - ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
-- ⚠️ **Datenalter**: 5 Quelle(n) sind älter als 7 Tage.
+- ✅ **Datenalter**: 30 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-09-14 04:26 UTC).
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ⚠️ **Bright Data YouTube**: YouTube liefert bei Bright Data eine leere Antwort; Apify-Fallback wird geprüft.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
