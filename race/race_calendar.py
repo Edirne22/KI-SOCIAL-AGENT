@@ -14,7 +14,7 @@ from .race_sources import SOURCES
 
 OUT = Path("memory/RACE_WEEKEND.md")
 PUBLISHED = Path("content/PUBLISHED.md")
-MODEL = "gemini-3.8-flash"
+MODELS = ("gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash")
 
 
 def collect() -> dict[str, list[str]]:
@@ -62,24 +62,27 @@ QUELLE: <vollständige offizielle URL>
 
 Wenn du keinen eindeutig bestätigten kommenden Termin findest, setze
 BESTÄTIGT: nein. Erfinde keine Daten, Sessionzeiten oder Quellen."""
-    print(f"[race] Verwende Modell: {MODEL}")
-    try:
-        response = requests.post(
-            f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
-            headers={"Content-Type": "application/json", "X-goog-api-key": key},
-            json={
-                "contents": [{"parts": [{"text": prompt}]}],
-                "tools": [{"google_search": {}}],
-            },
-            timeout=120,
-        )
-        if response.status_code != 200:
-            print(f"[race] Gemini-API-Fehler: HTTP {response.status_code}")
-            print(f"[race] Antwort-Body (gekuerzt): {response.text[:500]}")
-            return None
-        text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
-    except (requests.RequestException, KeyError, IndexError, ValueError) as error:
-        print(f"[race] Gemini-Exception: {type(error).__name__}: {error}")
+    text = ""
+    for model in MODELS:
+        print(f"[race] Prüfe Rennkalender mit Modell: {model}")
+        try:
+            response = requests.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                headers={"Content-Type": "application/json", "X-goog-api-key": key},
+                json={
+                    "contents": [{"parts": [{"text": prompt}]}],
+                    "tools": [{"google_search": {}}],
+                },
+                timeout=120,
+            )
+            if response.status_code == 200:
+                text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
+                break
+            print(f"[race] Modell {model}: HTTP {response.status_code}; nächstes Modell wird versucht.")
+        except (requests.RequestException, KeyError, IndexError, ValueError) as error:
+            print(f"[race] Modell {model}: {type(error).__name__}; nächstes Modell wird versucht.")
+    if not text:
+        print("[race] Rennkalender-Recherche derzeit nicht verfügbar; kein Entwurf erstellt.")
         return None
 
     confirmed = re.search(r"(?im)^\s*BESTÄTIGT\s*:\s*ja\s*$", text)
