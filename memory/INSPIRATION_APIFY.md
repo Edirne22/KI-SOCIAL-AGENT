@@ -5,113 +5,184 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: Misano Sprint recap 🇮🇹☀️
+- Titel: Silly season keeps moving! 🧩 One more rider is confirmed for 2027. Who’s next to make their move? 🚥
 
-#PrimaPramacYamaha #MotoGp
-- Datum: 2026-09-12T16:01:55.000Z
-- URL: https://www.instagram.com/p/DdMXSCkoyMB/
-- Likes: 10717
-- Kommentare: 64
+#WorldSBK
+- Datum: 2026-09-09T15:18:49.000Z
+- URL: https://www.instagram.com/p/DdEkPwCl1El/
+- Likes: 11064
+- Kommentare: 109
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: Bumping into an old friend 👀 🤝
+- Titel: Summer was great. But we missed this 🥹🏁 What did you miss the most? 💭
 
-#PrimaPramacYamaha #MotoGP
-- Datum: 2026-09-12T14:13:08.000Z
-- URL: https://www.instagram.com/p/DdMLDPEofnL/
-- Likes: 33773
-- Kommentare: 321
+#FrenchWorldSBK 🇫🇷 #WorldSBK
+- Datum: 2026-09-12T11:16:24.000Z
+- URL: https://www.instagram.com/p/DdL245uDsRF/
+- Likes: 595
+- Kommentare: 1
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: @toprakrazgatlioglu7 - P21 💬
-SanMarinoGP - PRACTICE 🇸🇲
+- Titel: Wheel-to-wheel for P7! 🔥😮‍💨 Making the move in a fierce fight for position ⚔️
 
-Today was a very strange day. This morning, with the medium tyre, the bike felt really good and I was feeling very positive. I did my best lap time on a used medium tyre, so I was expecting to make a big step with the soft. Instead, when we put the soft tyre on, the bike completely changed. It felt almost like I was riding a rental bike! I was really surprised.
-
-The biggest problem was that the bike was not stopping and I was also strugglin
-- Datum: 2026-09-11T17:19:07.000Z
-- URL: https://www.instagram.com/p/DdJ7mqdCADq/
-- Likes: 14129
-- Kommentare: 101
+#FrenchWorldSBK 🇫🇷 #WorldSBK
+- Datum: 2026-09-11T14:00:59.000Z
+- URL: https://www.instagram.com/p/DdJk459jcRU/
+- Likes: 1850
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: Ready for Misano!
+- Titel: Early drama! 💥 @jorge_navarro9 was pushing hard at the front when it all came undone 😬
 
-NEW @alpinestarsreserve DROP TODAY!
-- Datum: 2026-09-10T16:45:39.000Z
-- URL: https://www.instagram.com/p/DdHS-nFiKdW/
-- Likes: 30479
-- Kommentare: 172
+#FrenchWorldSBK 🇫🇷 #WorldSBK
+- Datum: 2026-09-11T12:02:20.000Z
+- URL: https://www.instagram.com/p/DdJXTEwCtYw/
+- Likes: 2675
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: Herkse selamlar ! 
-Bu sene Avusturya GP’de bana özel bir Toprak Tribünü olacak. Sizlerle beraber Red Bull Ring’de buluşacağımız için çok heyecanlıyım!
-Biletinizi almayı unutmayın. Aranızdan şanslı kişilerle de yarış hafta sonunda bir araya gelip tanışma fırsatımız da olacak ! 
-Hepinizi Avusturya’ya, bekliyorum.
-Red Bull Ring’de görüşürüz!
-- Datum: 2026-09-07T15:05:07.000Z
-- URL: https://www.instagram.com/p/Dc_Y7lqoMPz/
-- Likes: 24003
-- Kommentare: 336
+- Titel: Elbows out! 🔥 The battle for P5 was anything but easy ⚔️
+
+#FrenchWorldSBK 🇫🇷 #WorldSBK
+- Datum: 2026-09-11T10:01:30.000Z
+- URL: https://www.instagram.com/p/DdJJetljJQe/
+- Likes: 1568
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: Motocross after a long time 🙌 #yamaha #yz450f 
-@motocrossparkkartepe
-- Datum: 2026-09-06T11:21:35.000Z
-- URL: https://www.instagram.com/p/Dc8aavnR-eD/
-- Likes: 16750
-- Kommentare: 122
+- Titel: What better #FridayFeeling than celebrating an 11th career hat-trick? 🏆🔥
+
+#FrenchWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-11T06:49:33.000Z
+- URL: https://www.instagram.com/p/DdIzdGPO3mT/
+- Likes: 2558
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: @toprakrazgatlioglu7 - DNF 💬
-Aragon GP - RACE 
+- Titel: What you didn’t see! 👀🕵️‍♂️ Unseen moments, behind-the-scenes action and plenty of Magny-Cours drama in the latest @motul UNFILTERED on WorldSBK’s YouTube channel 🎥🍿
 
-For me, it was a positive weekend, especially because in Sunday’s race, even though we didn’t have a fantastic start, we were able to catch the guys ahead. At the beginning I didn’t have a good feeling, but after a few laps I found my rhythm and I was feeling really good on the bike.
-
-Unfortunately, towards the end the front tyre started to drop and it became difficult to keep the same pace. I was running wide in almost every corner because the bik
-- Datum: 2026-08-30T15:50:36.000Z
-- URL: https://www.instagram.com/p/Dcq3732CFDE/
-- Likes: 12161
-- Kommentare: 107
+#FrenchWorldSBK 🇫🇷 #WorldSBK #PoweredByMotul
+- Datum: 2026-09-10T15:56:26.000Z
+- URL: https://www.instagram.com/p/DdHNLYBIbCu/
+- Likes: 1274
+- Kommentare: 11
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: @toprakrazgatlioglu7 - P13 💬
-AragonGP - SPRINT
+- Titel: @jackmilleraus is ready for a new adventure! 🔥🇦🇺 The MotoGP star opens up on his move to Yamaha’s WorldSBK project for 2027 🔵 Read more on WorldSBK.com 🔗
 
-It wasn’t such a bad race. The biggest problem for all the Yamahas is the back straight. We lose a lot of time there, which makes overtaking very difficult. In the corners I can be strong, especially in Turn 7, but then I lose the gap again on the straight. I had to work quite hard to make the passes and that also used the rear tyre. Still, I think I did a good job and we showed that the pace is there.
-
-I made one mistake in the last corner when I 
-- Datum: 2026-08-29T17:14:32.000Z
-- URL: https://www.instagram.com/p/DcocvwqDFm4/
-- Likes: 9449
-- Kommentare: 116
+#WorldSBK
+- Datum: 2026-09-10T14:44:28.000Z
+- URL: https://www.instagram.com/p/DdHFAURotFh/
+- Likes: 2885
+- Kommentare: 40
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: @toprakrazgatlioglu7 - P21 💬
-AragonGP - PRACTICE 
+- Titel: Family affair for P3! ⚔️👬 This time, French edition 😉
 
-Today the beginning was not so bad, but in the end we couldn’t get a good lap time with the soft tyre. Still, we can see that the bike has potential, especially looking at Fabio’s lap time, which was very close to the front. So tomorrow we will try a different set-up to see if we can unlock more of that potential.
-
-I already feel quite strong under braking, but I’m still struggling to get the same feeling through the corners and with the rear gr
-- Datum: 2026-08-28T17:37:43.000Z
-- URL: https://www.instagram.com/p/Dcl6mr4CBYX/
-- Likes: 11392
-- Kommentare: 99
+#FrenchWorldSBK 🇫🇷 #WorldSBK
+- Datum: 2026-09-10T14:02:03.000Z
+- URL: https://www.instagram.com/p/DdHANWZDaeC/
+- Likes: 1753
+- Kommentare: 4
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: @toprakrazgatlioglu7 - P14 💬
-BritishGP - RACE 🇬🇧
-
-The fight with Pol was difficult, especially because I finished behind him! I made a couple of mistakes towards the end and lost some time, while his bike was very fast on the straights. I tried to pass him, but it was difficult, so we finished very close. Overall, it was a difficult race with the tyre management, although I felt better than yesterday.
-
-I learned a lot this weekend because this track is very different from my usual riding style. 
-- Datum: 2026-08-09T15:35:00.000Z
-- URL: https://www.instagram.com/p/Db0xdP8CENh/
-- Likes: 13587
-- Kommentare: 192
+- Titel: @bradbinder opens up about his move to #WorldSBK and reuniting with @88migueloliveira🎙️👀 Read more on WorldSBK.com
+- Datum: 2026-09-10T13:56:51.000Z
+- URL: https://www.instagram.com/p/DdG_gzDoo4w/
+- Likes: 4027
+- Kommentare: 67
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
-- Status: Keine öffentlichen Beiträge verfügbar.
-- Status: Actor lieferte HTTP 400.
+### Datensatz 1
+- Titel: Please don't miss Julia's reaction to Alex Marquez overtaking Martin! 😬
+
+#SanMarinoGP🇸🇲
+- Datum: 2026-09-13T19:00:54.000Z
+- URL: nicht verfügbar
+- Likes: 16121
+- Kommentare: 229
+- Shares: nicht verfügbar
+### Datensatz 2
+- Titel: No chance ➡️ In the game ➡️ There's a chance 
+
+Marc Márquez talks us through his mindset and his progression after he recovered 102 points over 7 Grands Prix 📈
+
+#SanMarinoGP 🇸🇲
+- Datum: 2026-09-13T18:15:03.000Z
+- URL: nicht verfügbar
+- Likes: 611
+- Kommentare: 23
+- Shares: nicht verfügbar
+### Datensatz 3
+- Titel: Facebook-Beitrag
+- Datum: 2026-09-13T18:01:04.000Z
+- URL: nicht verfügbar
+- Likes: 17864
+- Kommentare: 1680
+- Shares: nicht verfügbar
+### Datensatz 4
+- Titel: Marco Bezzecchi looks back on his Lap 1 blunder but insists the fight is still very much alive ⚔️
+
+#SanMarinoGP 🇸🇲
+- Datum: 2026-09-13T17:45:03.000Z
+- URL: nicht verfügbar
+- Likes: 483
+- Kommentare: 55
+- Shares: nicht verfügbar
+### Datensatz 5
+- Titel: Check out what the riders had to say after today's race 👀
+
+#SanMarinoGP 🇸🇲
+- Datum: 2026-09-13T17:15:02.000Z
+- URL: nicht verfügbar
+- Likes: 146
+- Kommentare: 0
+- Shares: nicht verfügbar
+### Datensatz 6
+- Titel: Marc capitalised on every moment to become the new championship leader ✊
+
+#SanMarinoGP 🇸🇲
+- Datum: 2026-09-13T17:01:26.000Z
+- URL: nicht verfügbar
+- Likes: 3630
+- Kommentare: 110
+- Shares: nicht verfügbar
+### Datensatz 7
+- Titel: An immense honour to have #MotoGP’s CEO Carmelo Ezpeleta waving the #F1 chequered flag at the Madring 🏁
+
+📸 Getty Images
+- Datum: 2026-09-13T16:47:53.000Z
+- URL: nicht verfügbar
+- Likes: 680
+- Kommentare: 19
+- Shares: nicht verfügbar
+### Datensatz 8
+- Titel: Facebook-Beitrag
+- Datum: 2026-09-13T16:46:20.000Z
+- URL: nicht verfügbar
+- Likes: 1225
+- Kommentare: 15
+- Shares: nicht verfügbar
+### Datensatz 9
+- Titel: It was looking like a good day for Jorge Martín Almoguera until some arm pump showed up 🫢
+
+#SanMarinoGP 🇸🇲
+- Datum: 2026-09-13T16:45:03.000Z
+- URL: nicht verfügbar
+- Likes: 271
+- Kommentare: 34
+- Shares: nicht verfügbar
+### Datensatz 10
+- Titel: The pre-race script went out the window immediately 👀
+
+There were many surprises in Misano straight away 🤯
+
+#SanMarinoGP 🇸🇲
+- Datum: 2026-09-13T16:30:18.000Z
+- URL: nicht verfügbar
+- Likes: 4698
+- Kommentare: 69
+- Shares: nicht verfügbar
+- Status: 10 öffentliche Beiträge verfügbar.

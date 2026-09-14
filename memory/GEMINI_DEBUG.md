@@ -17,3 +17,9 @@
 - Payload-Größe: 5.5 KB
 - Verarbeitete Posts: 20
 - Versuche: 4
+## Gemini-Zusammenfassung (2026-09-14 05:06)
+- HTTP-Status: 503
+- Fehler: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent
+- Payload-Größe: 6.2 KB
+- Verarbeitete Posts: 20
+- Versuche: 4
