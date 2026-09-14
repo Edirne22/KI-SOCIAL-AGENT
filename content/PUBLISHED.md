@@ -68,7 +68,7 @@ Bild: assets/images/2026-09/2026-09-13-2.jpg
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34854856771-1
 Medienstatus: QUELLE_BESTÄTIGT
 Nutzungsrecht: BESTÄTIGT
 Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
