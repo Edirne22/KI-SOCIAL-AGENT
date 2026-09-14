@@ -131,7 +131,7 @@ Quelle: https://www.motogp.com/
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W38-motogp-story.jpg
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-14 18:40 | ID: 122106531393469415]
 Status: Freigegeben
 Publication-Claim: IN_BEARBEITUNG 34882173373-1
 Freigabe: Rennkalender
