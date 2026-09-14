@@ -1,0 +1,7 @@
+{
+  "motoetkinlikcom": {
+    "label": "@motoetkinlikcom",
+    "status": "CONFIRMED_BY_BUELENT",
+    "allowed_media": ["image", "video", "carousel"]
+  }
+}
