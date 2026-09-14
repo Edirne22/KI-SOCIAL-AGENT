@@ -198,5 +198,5 @@ Wen unterstützt du dieses Wochenende?
 
 #MotoGP #AustrianGP #RedBullRing #Spielberg #ToprakRazgatlioglu #DenizOncu #Moto2 #MotoGPTurkiye #TurkMotorSporlari #BikerCommunity
 Poster: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
-Video: WARTET_AUF_POSTER_REEL
+Video: assets/videos/2026-09/2026-09-14-sterreich-ruft-toprak-deniz-am-red-bull-ring-reel.mp4
 Musik: auto
