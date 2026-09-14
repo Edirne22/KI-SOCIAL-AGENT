@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import re
 from datetime import datetime
@@ -14,6 +15,7 @@ from .race_sources import SOURCES
 
 OUT = Path("memory/RACE_WEEKEND.md")
 PUBLISHED = Path("content/PUBLISHED.md")
+EVENT_OVERRIDE = Path("config/RACE_EVENT_OVERRIDE.json")
 MODELS = ("gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash")
 
 
@@ -31,6 +33,24 @@ def collect() -> dict[str, list[str]]:
         data[series] = available
     return data
 
+
+
+def confirmed_override() -> tuple[str, str] | None:
+    """Liest einen zeitlich begrenzten, offiziell belegten Termin-Fallback."""
+    if not EVENT_OVERRIDE.exists():
+        return None
+    try:
+        event = json.loads(EVENT_OVERRIDE.read_text(encoding="utf-8"))
+        valid_until = datetime.strptime(event["valid_until"], "%Y-%m-%d").date()
+        if datetime.now().date() > valid_until:
+            return None
+        source = event["source"].strip()
+        details = f'{event["details"].strip()} | Quelle: {source}'
+        print(f"[race] Verwende bestätigten Termin-Fallback bis {valid_until}: {event['series']}")
+        return event["series"].strip(), details
+    except (OSError, KeyError, ValueError, json.JSONDecodeError) as error:
+        print(f"[race] Termin-Fallback ungültig, Online-Recherche wird verwendet: {error}")
+        return None
 
 def confirmed_weekend() -> tuple[str, str] | None:
     """Ermittelt das nächste Rennen ausschließlich mit belegbarer Quelle.
@@ -123,7 +143,7 @@ def append_draft(series: str, details: str, posters: list[Path]) -> None:
 
 def main() -> None:
     sources = collect()
-    found = confirmed_weekend()
+    found = confirmed_override() or confirmed_weekend()
     lines = ["# Nächstes Rennwochenende", f"Geprüft: {datetime.now():%Y-%m-%d %H:%M}", "", "> Zeiten bitte vor Veröffentlichung an der Originalquelle prüfen."]
     for series, urls in sources.items():
         lines += [f"\n## {series}", f"- Öffentliche Quellen erreichbar: {len(urls)}"]
