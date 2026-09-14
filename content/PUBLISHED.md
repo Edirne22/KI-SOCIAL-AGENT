@@ -77,6 +77,7 @@ Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gek
 Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
 Wie bewertest du sein Rennwochenende?
 #toprakrazgatlioglu7 #ToprakRazgatlioglu #Toprak #MotoGP #Misano #PrimaPramac #YamahaM1 #MilliMotorsikletçi #TürkMotoru #Motorrad #BikerCommunity #Rennsport #MotoGPTürkiye
+Bild: assets/images/2026-09/toprak2026-09-14.jpg
 
 ## Facebook [GEPOSTET 2026-09-14 10:05 | ID: 1285968257941776_122106131445469415]
 Status: FREIGEGEBEN
