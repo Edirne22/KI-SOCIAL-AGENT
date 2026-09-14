@@ -98,15 +98,13 @@ Telegram-Update-ID: 279361647
 Text:
 Im Ruhrgebiet zählt echte Loyalität. Die T-Bikers zeigen seit 2005, wie türkische Biker-Kultur und Pott-Mentalität zusammengehören: Benzingespräche, Çay bei der Pause und gegenseitiger Respekt.
 Ruhr Bölgesi'nin köklü kulübü T-Bikers: 20 yılı aşkın süredir yollarda kardeşlik ve saygı.
-
 Quelle: https://www.facebook.com/TBIKERSTurkMotorKulubu
-
 Fährst du feste Touren mit deiner Crew oder lieber spontan?
 Bild: assets/images/2026-09/t-bikers.jpg
 Medienstatus: EIGENES_MATERIAL
 
 
-## Facebook [GEPOSTET 2026-09-14 12:51 | ID: 1285968257941776_122106285753469415]
+## Facebook 
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34845723146-1
 Freigabe: Telegram
