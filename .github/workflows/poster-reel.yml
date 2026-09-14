@@ -1,0 +1,36 @@
+name: Generate Poster Reels
+on:
+  schedule:
+    - cron: "0,15,30,45 6-21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: published-plan-writers
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Aktualisiere Arbeitsstand
+        run: git pull --rebase origin main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Poster-Reels erzeugen
+        run: python poster_reel.py
+      - name: Änderungen speichern
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/PUBLISHED.md 2>/dev/null || true
+          git add assets/videos/ 2>/dev/null || true
+          git commit -m "Auto: Poster-Reel erzeugt" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
