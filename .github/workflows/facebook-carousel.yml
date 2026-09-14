@@ -2,7 +2,7 @@ name: Publish Facebook Carousel
 
 on:
   schedule:
-    - cron: "25 10 * * *" # 12:25 deutscher Sommerzeit
+    - cron: "8,23,38,53 6-21 * * *" # alle 15 Minuten, versetzt ab 08:08 deutscher Sommerzeit
   workflow_dispatch:
 
 permissions:
