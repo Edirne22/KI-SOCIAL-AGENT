@@ -24,8 +24,9 @@ Quelle erlaubt **nicht** automatisch, ihr Foto oder Video erneut hochzuladen.
 - Faktenquelle: öffentlicher Instagram-Account.
 - Vertrauensstufe: sekundär; wichtige Fakten vor Veröffentlichung mit einer
   Primärquelle prüfen.
-- Mediennutzung: nur mit ausdrücklicher Erlaubnis; Nennung oder Verlinkung
-  ersetzt keine Nutzungsfreigabe.
+- Mediennutzung: Bülent hat eine persönliche Erlaubnis bestätigt. Hochgeladene
+  Medien dieser Quelle werden über `assets/freigegeben/motoetkinlikcom/` und
+  `config/TRUSTED_MEDIA_SOURCES.json` einmalig freigegeben.
 
 ## Erlaubte Medienarten
 - EIGENES_MATERIAL: Bülents eigenes Foto oder Video.
@@ -33,3 +34,12 @@ Quelle erlaubt **nicht** automatisch, ihr Foto oder Video erneut hochzuladen.
 - LIZENZIERT: rechtmäßig erworbenes Stockmaterial mit Lizenznachweis.
 - KI_GENERIERT: nur für neutrale Reise-, Landschafts-, Biker- oder
   Technikstimmung; nie als reale Aufnahme eines Fahrers, Teams oder Rennens.
+
+
+## Vereinfachte Medienfreigabe
+
+- Fahrernamen oder Rennbegriffe im Text sind nie ein Freigabekriterium.
+- Eigenes Material unter `assets/eigenes-material/` ist ohne zusätzliche
+  Metadaten verwendbar.
+- Einmalig bestätigte Quellen werden unter `assets/freigegeben/<quelle>/`
+  abgelegt; die Quelle muss in `TRUSTED_MEDIA_SOURCES.json` stehen.
