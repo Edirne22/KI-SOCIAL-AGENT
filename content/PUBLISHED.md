@@ -139,3 +139,47 @@ Text: Qatar Airways Grand Prix of Austria — Red Bull Ring, Spielberg — 18. b
 Quelle: https://www.motogp.com/
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W38-motogp-facebook.jpg
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
+Text:
+🏁 Runde 15: Österreich ruft!
+
+Dieses Wochenende geht es für die MotoGP-Weltmeisterschaft an den Red Bull Ring in Spielberg. Auf der Strecke: unsere zwei türkischen Stolzträger in zwei Klassen.
+
+🇹🇷 TOPRAK RAZGATLIOĞLU #07
+🏁 Prima Pramac Yamaha MotoGP
+
+🇹🇷 DENİZ ÖNCÜ #53
+🏁 ELF Marc VDS Racing Team – Moto2
+
+Und im T10 ist die türkische Biker-Familie bereit: Die Toprak-Fans geben unserem Milli-Sporcu das ganze Wochenende Rückhalt. Auch für Deniz wird es laut.
+
+Avusturya’da yalnız değiliz. T10 Tribünü hazır! 🇹🇷🔥
+
+Wen unterstützt du dieses Wochenende vom T10 aus?
+
+#MotoGP #AustrianGP #RedBullRing #Spielberg #ToprakRazgatlioglu #DenizOncu #Moto2 #PrimaPramacYamaha #MarcVDS #MotoGPTurkiye #TurkMotorSporlari #TurkishRiders #BikerCommunity #Motorsport
+Bild: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
+
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
+Text:
+🏁 Dieses Wochenende geht es für Runde 15 der MotoGP-Weltmeisterschaft an den Red Bull Ring in Spielberg.
+
+🇹🇷 Toprak Razgatlıoğlu #07 fährt für Prima Pramac Yamaha in der MotoGP.
+🇹🇷 Deniz Öncü #53 kämpft mit ELF Marc VDS Racing in der Moto2.
+
+Im T10 wird es besonders: Die türkische Biker-Familie steht hinter Toprak – und natürlich auch hinter Deniz. Zwei nationale Stolzträger, zwei Kategorien, eine Stimme aus der Türkei und Deutschland.
+
+Avusturya’da yalnız değiliz. T10 Tribünü hazır! 🇹🇷🔥
+
+Wen drückst du am Wochenende die Daumen?
+
+#MotoGP #AustrianGP #RedBullRing #ToprakRazgatlioglu #DenizOncu #Moto2 #MotoGPTurkiye #TurkMotorSporlari #BikerCommunity
+Bild: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
