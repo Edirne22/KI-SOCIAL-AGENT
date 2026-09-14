@@ -69,11 +69,13 @@ Bild: assets/images/2026-09/2026-09-13-2.jpg
 ## Instagram
 Status: FREIGEGEBEN
 Freigabe: Telegram
-Telegram-Update-ID: 279361647
 Text:
-Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gekämpft wurde, sammelt @toprakrazgatlioglu auf der Yamaha M1 bei Prima Pramac wertvolle Daten für die Zukunft. Geduld zahlt sich aus.
+Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gekämpft wurde, sammelt @toprakrazgatlioglu7 auf der Yamaha M1 bei Prima Pramac wertvolle Daten für die Zukunft. Geduld zahlt sich aus.
 Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
 Wie bewertest du sein Rennwochenende?
+
+#toprakrazgatlioglu7 #ToprakRazgatlioglu #Toprak #MotoGP #Misano #PrimaPramac #YamahaM1 #MilliMotorsikletçi #TürkMotoru #Motorrad #BikerCommunity #Rennsport #MotoGPTürkiye
+
 Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
 Medienstatus: EIGENES_MATERIAL
 
