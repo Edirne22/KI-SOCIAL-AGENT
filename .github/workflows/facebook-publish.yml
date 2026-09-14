@@ -2,7 +2,7 @@ name: Publish Approved Facebook Posts
 
 on:
   schedule:
-    - cron: "0 10 * * *"   # läuft täglich um 12:00 deutscher Zeit (Sommer)
+    - cron: "0,15,30,45 6-21 * * *" # alle 15 Minuten, 08:00–23:45 deutsche Sommerzeit
   workflow_dispatch:
 
 permissions:
