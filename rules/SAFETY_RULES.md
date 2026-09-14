@@ -116,3 +116,11 @@
 - Zwischen mehreren erlaubten Neustarts liegen mindestens 45 Sekunden.
 - Publisher, Telegram, Medienerzeugung, Asset-Migrationen, Deal-Hunter, Preis-Check und alle extern wirkenden Workflows stehen nicht in der Allowlist und können durch diesen Agenten nicht gestartet werden.
 - Der Systemstatus enthält keine Tokens, Header, Cookies oder vollständigen Fehlerantworten.
+
+
+## Musik-Agent
+
+- Nur eigene, Public-Domain-, CC0- oder eindeutig dokumentiert lizenzierte Titel in `assets/musik/` verwenden.
+- Zu jedem Track gehören Pfad, Lizenz und Quellenangabe in `config/MUSIC_LIBRARY.json`.
+- `Musik: auto` blockiert nur den betroffenen Reel- oder Story-Post, bis die Mischung fertig ist.
+- Der Musik-Agent veröffentlicht selbst keine Inhalte.
