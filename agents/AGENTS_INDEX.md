@@ -19,12 +19,6 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 | [09_quality_agent.md](09_quality_agent.md) | Prüft Workflow-Ergebnisse, Datenqualität und Sicherheitswarnungen. | Täglich nach den Analyse-Workflows oder manuell vor größeren Änderungen. |
 | [10_follow_analysis_agent.md](10_follow_analysis_agent.md) | Erkennt aus freigegebenen öffentlichen Instagram-Profilen Formate, Themen und Hook-Muster. | Geplanter Analyse-Lauf oder Telegram: \`follow-analyse\`; kein Zugriff auf eine private Follow-Liste. |
 
-## Geplante Agenten
-
-| Name | Zweck | Reihenfolge | Sicherheitsregel |
-| --- | --- | --- | --- |
-| System-Neustart-Agent | Prüft Workflow-Zustände, startet ausschließlich freigegebene Wartungs- und Analyse-Workflows zeitversetzt und meldet einen Gesamtstatus. | Nach dem Qualitäts-Agenten. | Publisher, Telegram-Empfang, Medienerzeugung, Migrationen und alle extern wirkenden Workflows bleiben gesperrt, bis Bülent sie ausdrücklich einzeln freigibt. |
-
 ## Aktivierungs-Logik
 
 1. Ordne den Auftrag zuerst einem Hauptagenten zu. Aktiviere nur einen zweiten Agenten, wenn dessen Fachwissen wirklich nötig ist.
@@ -44,7 +38,8 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 - **Recherche-Post:** Research Synthesist → Content Creator → Plattform-Agent.
 - **Follow-Analyse:** Follow-Analyse-Agent → Research Synthesist → Content Creator; Muster nur als Inspiration verwenden.
 - **Bezahlte Kampagne:** Paid Social Strategist → menschliche Freigabe → manuelle Einrichtung.
+- **Betrieb:** Qualitäts-Agent → System-Neustart-Agent → nur bei ausdrücklich aktiviertem Neustart erlaubte Analyse-Workflows.
 
 ## Technischer Status
 
-Die Rollen bleiben Arbeitsgrundlage. Der Qualitäts-Agent und der Follow-Analyse-Agent haben zusätzlich klar begrenzte GitHub-Workflows. Alle übrigen Rollen werden nicht automatisch durch `router.py` oder `llm_client.py` ausgeführt. Jede spätere Orchestrierung muss die Aktivierungs-Logik und die menschlichen Freigaben respektieren.
+Die Rollen bleiben Arbeitsgrundlage. Der Qualitäts-Agent, der Follow-Analyse-Agent und der System-Neustart-Agent haben zusätzlich klar begrenzte GitHub-Workflows. Alle übrigen Rollen werden nicht automatisch durch `router.py` oder `llm_client.py` ausgeführt. Jede spätere Orchestrierung muss die Aktivierungs-Logik und die menschlichen Freigaben respektieren.
