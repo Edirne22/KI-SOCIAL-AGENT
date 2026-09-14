@@ -15,10 +15,6 @@ permissions:
 concurrency:
   group: asset-migration
   cancel-in-progress: false
-
-concurrency:
-  group: published-plan-writers
-  cancel-in-progress: false
 jobs:
   migrate:
     runs-on: ubuntu-latest
