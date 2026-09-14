@@ -7,9 +7,7 @@
 | Eigenes Foto oder eigenes Video | `assets/eigenes-material/bilder/` oder `assets/eigenes-material/videos/` | bei Bildern den Pfad aus `bilder/`, bei Videos den Pfad aus `videos/` |
 | Bild/Video einer einmalig bestätigten Quelle, z. B. @motoetkinlikcom | `assets/freigegeben/motoetkinlikcom/` | den vollständigen Pfad bei `Bild:` oder `Video:` |
 
-Ein Screenshot oder Ausschnitt ist technisch ein normales Bild. Er darf erst in
-den Quellenordner, wenn Bülent die Erlaubnis der Quelle hat. Es sind danach
-keine zusätzlichen Zeilen für Medienstatus oder Nutzungsrecht nötig.
+Ein Screenshot oder Ausschnitt ist technisch ein normales Bild. Für die Veröffentlichung zählt im System ausschließlich der eingetragene Medienpfad. Es sind nie zusätzliche Zeilen wie `Quelle:`, `Nutzungsrecht:` oder `Medienstatus:` nötig.
 
 ## Vorlagen
 
@@ -86,6 +84,6 @@ Bilder:
 ## Optional
 
 - Für eigene Bilder: `assets/eigenes-material/bilder/…`; für eigene Videos: `assets/eigenes-material/videos/…`.
-- `Quelle: https://...` kannst du für deine eigene Dokumentation ergänzen. Sie ist nicht nötig, damit ein Bild aus einem freigegebenen Ordner gepostet wird.
-- `Bild: auto` oder `Video: auto` nur für neutrale Stimmungsbilder. Für echte Fahrer und Rennen stattdessen ein hochgeladenes echtes Medium verwenden.
+- `Quelle:`, `Nutzungsrecht:` und `Medienstatus:` sind vollständig optional und werden nicht als Veröffentlichungsbedingung verwendet.
+- `Bild: auto` oder `Video: auto` wird niemals veröffentlicht, solange dort noch `auto` steht. Erst wenn die Medienerzeugung einen echten Pfad eingesetzt hat, ist der Block medienreif.
 - Telegram-Freigabe bleibt immer erforderlich. Ohne `Status: FREIGEGEBEN` veröffentlicht kein Publisher etwas.
