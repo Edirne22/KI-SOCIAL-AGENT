@@ -120,7 +120,7 @@ Quelle: https://www.motogp.com/
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W38-motogp-feed.jpg
 
-## Story
+## Story [GEPOSTET 2026-09-14 18:38 | ID: 18100793159122734]
 Status: Freigegeben
 Publication-Claim: IN_BEARBEITUNG 34881969414-1
 Freigabe: Rennkalender
