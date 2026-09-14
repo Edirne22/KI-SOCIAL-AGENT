@@ -75,7 +75,7 @@ Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gek
 Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
 Wie bewertest du sein Rennwochenende?
 Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
-Medienstatus: QUELLE_PRÜFEN
+Medienstatus: EUGENE_MATERIAL
 Bild: auto
 
 ## Facebook [GEPOSTET 2026-09-14 10:05 | ID: 1285968257941776_122106131445469415]
@@ -88,7 +88,7 @@ Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gek
 Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
 Wie bewertest du sein Rennwochenende?
 Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
-Medienstatus: QUELLE_PRÜFEN
+Medienstatus: EIGENES_MATERIAL
 
 
 ## Instagram
@@ -101,7 +101,6 @@ Ruhr Bölgesi'nin köklü kulübü T-Bikers: 20 yılı aşkın süredir yollarda
 Fährst du feste Touren mit deiner Crew oder lieber spontan?
 
 
-Bild: auto
 
 ## Facebook
 Status: FREIGEGEBEN
