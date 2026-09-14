@@ -145,6 +145,7 @@ Bild: assets/race-posters/2026-W38-motogp-facebook.jpg
 
 ## Instagram
 Status: Freigegeben
+Publication-Claim: BEREIT
 Freigabe: Rennkalender
 Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
 Text:
