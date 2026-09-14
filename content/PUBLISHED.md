@@ -78,7 +78,7 @@ Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
 Medienstatus: QUELLE_PRÜFEN
 Bild: auto
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-14 10:05 | ID: 1285968257941776_122106131445469415]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34831307992-1
 Freigabe: Telegram
