@@ -20,6 +20,7 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 | [10_follow_analysis_agent.md](10_follow_analysis_agent.md) | Erkennt aus freigegebenen öffentlichen Instagram-Profilen Formate, Themen und Hook-Muster. | Geplanter Analyse-Lauf oder Telegram: \`follow-analyse\`; kein Zugriff auf eine private Follow-Liste. |
 
 | [11_system_restart_agent.md](11_system_restart_agent.md) | Prüft sichere Workflow-Zustände und erstellt einen Betriebsstatus. | Täglich als Bericht oder manuell mit ausdrücklicher Freigabe für erlaubte Fehler-Neustarts. |
+| [12_music_agent.md](12_music_agent.md) | Wählt lizenzierte lokale Hintergrundmusik und mischt sie in freigegebene Reels und Stories. | Alle 15 Minuten bei `Musik: auto`; veröffentlicht selbst nie. |
 
 ## Aktivierungs-Logik
 
@@ -41,6 +42,7 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 - **Follow-Analyse:** Follow-Analyse-Agent → Research Synthesist → Content Creator; Muster nur als Inspiration verwenden.
 - **Bezahlte Kampagne:** Paid Social Strategist → menschliche Freigabe → manuelle Einrichtung.
 - **Betrieb:** Qualitäts-Agent → System-Neustart-Agent → nur bei ausdrücklich aktiviertem Neustart erlaubte Analyse-Workflows.
+- **Video mit Musik:** Video Optimization → menschliche Freigabe → Musik-Agent → Publisher.
 
 ## Technischer Status
 
