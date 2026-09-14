@@ -102,7 +102,7 @@ Fährst du feste Touren mit deiner Crew oder lieber spontan?
 
 
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-14 12:51 | ID: 1285968257941776_122106285753469415]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34845723146-1
 Freigabe: Telegram
