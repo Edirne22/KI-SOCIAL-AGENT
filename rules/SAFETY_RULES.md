@@ -101,12 +101,12 @@
 - Bei Anbieterfehlern oder Unsicherheit wird abgebrochen und der Status ehrlich dokumentiert.
 ## Medien- und Quellenprüfung
 
-- Reale Fahrer, Teams, Rennen und aktuelle Sportmeldungen erhalten niemals automatisch ein KI-generiertes Bild oder Video.
-- Öffentliche Beiträge und offizielle Websites sind Faktenquellen, aber keine automatische Erlaubnis, deren Medien herunterzuladen oder erneut hochzuladen.
-- Fremdes Medium braucht eine `Quelle:`-URL, `Medienstatus: QUELLE_BESTÄTIGT` und `Nutzungsrecht: BESTÄTIGT`.
-- Bülents eigenes Foto oder Video wird als `Medienstatus: EIGENES_MATERIAL` gekennzeichnet.
-- Fehlt diese Bestätigung, blockiert der Medienpublisher den Beitrag. Ein Facebook-Textbeitrag oder Link zur Originalquelle bleibt möglich.
-- KI-Medien sind nur für neutrale Reise-, Landschafts-, Biker- und Technikstimmung erlaubt und dürfen keine echte Rennaufnahme vortäuschen.
+- Reale Rennaufnahmen werden nicht automatisch per KI erzeugt, damit keine falschen Fahrer, Bikes oder Rennsituationen entstehen.
+- Fahrer-, Team- und Rennnamen im Beitragstext lösen keine Rechte- oder Quellenabfrage aus.
+- Bülents eigenes hochgeladenes Material unter `assets/eigenes-material/` ist direkt verwendbar.
+- Einmalig von Bülent bestätigte Fremdquellen liegen unter `assets/freigegeben/<quelle>/` und werden in `config/TRUSTED_MEDIA_SOURCES.json` registriert.
+- Der Agent lädt keine fremden Medien selbst herunter. Unbekannte Medienpfade bleiben gesperrt.
+- KI-Medien sind für neutrale Reise-, Landschafts-, Biker- und Technikstimmung erlaubt, dürfen aber keine echte Rennaufnahme vortäuschen.
 
 ## System-Neustart-Agent
 
