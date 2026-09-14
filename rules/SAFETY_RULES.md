@@ -108,3 +108,11 @@
 - Fehlt diese Bestätigung, blockiert der Medienpublisher den Beitrag. Ein Facebook-Textbeitrag oder Link zur Originalquelle bleibt möglich.
 - KI-Medien sind nur für neutrale Reise-, Landschafts-, Biker- und Technikstimmung erlaubt und dürfen keine echte Rennaufnahme vortäuschen.
 
+## System-Neustart-Agent
+
+- Standardmodus ist ausschließlich Prüfung und Bericht; geplante Läufe starten niemals andere Workflows.
+- Technisch erlaubte Fehler-Neustarts sind ausschließlich: Qualitäts-Agent, Analytics Fetch und Viral Analysis.
+- Auch diese Neustarts erfolgen nur bei einem fehlgeschlagenen letzten Lauf und nur, wenn Bülent den Workflow-Eingabeschalter ausdrücklich aktiviert.
+- Zwischen mehreren erlaubten Neustarts liegen mindestens 45 Sekunden.
+- Publisher, Telegram, Medienerzeugung, Asset-Migrationen, Deal-Hunter, Preis-Check und alle extern wirkenden Workflows stehen nicht in der Allowlist und können durch diesen Agenten nicht gestartet werden.
+- Der Systemstatus enthält keine Tokens, Header, Cookies oder vollständigen Fehlerantworten.
