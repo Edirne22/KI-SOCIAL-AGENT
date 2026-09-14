@@ -2,7 +2,7 @@ name: Publish Approved Instagram Stories
 
 on:
   schedule:
-    - cron: "30 10 * * *"   # läuft täglich um 12:30 deutscher Zeit
+    - cron: "10,25,40,55 6-21 * * *" # alle 15 Minuten, versetzt ab 08:10 deutscher Sommerzeit
   workflow_dispatch:
 
 permissions:
