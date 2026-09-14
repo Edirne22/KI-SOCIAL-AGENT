@@ -126,7 +126,7 @@ def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int],
         post = posts[number]
         source = _field(post["full_text"], "Inspirations-Quelle")
         source_line = f"Quelle: {source}" if source.startswith(("https://", "http://")) else ""
-        media_status = "Medienstatus: QUELLE_PRÜFEN" if source_line else ""
+        # Die Faktenquelle bleibt sichtbar. Die Medienfreigabe ergibt sich später allein aus dem hochgeladenen Medienpfad.
         for header, media_line in _published_targets(post["platform"]):
             entries.extend(
                 [
@@ -137,7 +137,6 @@ def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int],
                     "Text:",
                     _instagram_caption(post["full_text"]),
                     source_line,
-                    media_status,
                     media_line,
                     "",
                 ]
