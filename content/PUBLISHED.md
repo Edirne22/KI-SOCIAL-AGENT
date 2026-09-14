@@ -102,7 +102,7 @@ Bild: assets/images/2026-09/t-bikers.jpg
 Medienstatus: EIGENES_MATERIAL
 
 
-## Facebook 
+## Facebook [GEPOSTET 2026-09-14 13:35 | ID: 122106320493469415] 
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34850116586-1
 Freigabe: Telegram
