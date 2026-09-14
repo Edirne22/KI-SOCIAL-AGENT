@@ -1,0 +1,38 @@
+name: Musik-Agent
+
+on:
+  schedule:
+    - cron: "0,15,30,45 6-21 * * *" # alle 15 Minuten, 08:00–23:45 deutsche Sommerzeit
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: published-plan-writers
+  cancel-in-progress: false
+
+jobs:
+  mix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Aktualisiere Arbeitsstand
+        run: git pull --rebase origin main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Prüfe Video-Werkzeug
+        run: command -v ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+      - name: Musik in freigegebene Videos mischen
+        run: python music_agent.py
+      - name: Änderungen committen
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/PUBLISHED.md memory/MUSIC_LOG.md assets 2>/dev/null || true
+          git commit -m "Auto: Musik für freigegebene Videos gemischt" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
