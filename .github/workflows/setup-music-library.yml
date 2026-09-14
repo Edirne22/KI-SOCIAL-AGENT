@@ -1,0 +1,34 @@
+name: Musikbibliothek einrichten
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: music-library-setup
+  cancel-in-progress: false
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Aktualisiere Arbeitsstand
+        run: git pull --rebase origin main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: CC0-Startmusik herunterladen
+        run: python download_music_library.py
+      - name: Musikbibliothek committen
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/musik memory/MUSIC_LIBRARY_SETUP.md
+          git commit -m "Assets: CC0-Startmusikbibliothek ergänzt" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
