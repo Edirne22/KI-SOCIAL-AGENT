@@ -33,23 +33,44 @@ def collect() -> dict[str, list[str]]:
 
 
 def confirmed_weekend() -> tuple[str, str] | None:
+    """Ermittelt das nächste Rennen ausschließlich mit belegbarer Quelle.
+
+    Der Parser ist absichtlich tolerant: Gemini darf keine Markdown-Tabelle oder
+    zusätzlichen Fließtext erzeugen, ohne dass deshalb ein bestätigter Termin
+    verloren geht. Ohne positive Bestätigung wird weiterhin kein Entwurf erstellt.
+    """
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
         print("[race] GEMINI_API_KEY fehlt - Recherche nicht moeglich.")
         return None
-    prompt = """Prüfe anhand öffentlicher, offizieller Rennkalender das nächste MotoGP-, WorldSBK- oder Formel-1-Wochenende.
-Antworte nur exakt in diesem Format:
-BESTÄTIGT: ja oder nein
-SERIE: MotoGP oder WorldSBK oder Formel 1
-DETAILS: Datum, Strecke und nur bestätigte Sessionzeiten
-Wenn ein Datum, eine Serie oder Zeiten nicht sicher belegt sind, antworte BESTÄTIGT: nein.
-Erfinde keine Zeiten."""
+
+    source_hints = "\n".join(
+        f"- {series}: " + ", ".join(urls) for series, urls in SOURCES.items()
+    )
+    prompt = f"""Heute ist {datetime.now():%Y-%m-%d}. Ermittle das zeitlich nächste,
+noch nicht begonnene Rennwochenende von MotoGP, WorldSBK oder Formel 1.
+
+Nutze die Websuche und bestätige Datum, Strecke und Serie an einer offiziellen
+Quelle. Diese Quellen sind bevorzugt:
+{source_hints}
+
+Antworte ohne Markdown und exakt mit diesen vier Zeilen:
+BESTÄTIGT: ja
+SERIE: <MotoGP | WorldSBK | Formel 1>
+DETAILS: <offizieller Eventname> — <Strecke, Ort> — <TT. bis TT. Monat JJJJ>
+QUELLE: <vollständige offizielle URL>
+
+Wenn du keinen eindeutig bestätigten kommenden Termin findest, setze
+BESTÄTIGT: nein. Erfinde keine Daten, Sessionzeiten oder Quellen."""
     print(f"[race] Verwende Modell: {MODEL}")
     try:
         response = requests.post(
             f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
             headers={"Content-Type": "application/json", "X-goog-api-key": key},
-            json={"contents": [{"parts": [{"text": prompt}]}], "tools": [{"google_search": {}}]},
+            json={
+                "contents": [{"parts": [{"text": prompt}]}],
+                "tools": [{"google_search": {}}],
+            },
             timeout=120,
         )
         if response.status_code != 200:
@@ -57,21 +78,23 @@ Erfinde keine Zeiten."""
             print(f"[race] Antwort-Body (gekuerzt): {response.text[:500]}")
             return None
         text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
-    except (requests.RequestException, KeyError, IndexError) as e:
-        print(f"[race] Gemini-Exception: {type(e).__name__}: {e}")
+    except (requests.RequestException, KeyError, IndexError, ValueError) as error:
+        print(f"[race] Gemini-Exception: {type(error).__name__}: {error}")
         return None
-    if not re.search(r"(?im)^BESTÄTIGT:\s*ja\s*$", text):
-        print("[race] Gemini-Antwort ohne BESTAETIGT: ja.")
+
+    confirmed = re.search(r"(?im)^\s*BESTÄTIGT\s*:\s*ja\s*$", text)
+    series = re.search(r"(?im)^\s*SERIE\s*:\s*(.+?)\s*$", text)
+    details = re.search(r"(?im)^\s*DETAILS\s*:\s*(.+?)\s*$", text)
+    source = re.search(r"(?im)^\s*QUELLE\s*:\s*(https?://\S+)\s*$", text)
+    if not (confirmed and series and details and source):
+        print("[race] Kein ausreichend belegter kommender Renntermin gefunden; Entwurf übersprungen.")
         print(f"[race] Antwort (gekuerzt): {text[:800]}")
         return None
-    series = re.search(r"(?im)^SERIE:\s*(.+)$", text)
-    details = re.search(r"(?im)^DETAILS:\s*(.+)$", text)
-    if series and details:
-        print(f"[race] Bestaetigtes Rennwochenende: {series.group(1).strip()} / {details.group(1).strip()}")
-        return (series.group(1).strip(), details.group(1).strip())
-    print("[race] SERIE oder DETAILS fehlt in der Gemini-Antwort.")
-    print(f"[race] Antwort (gekuerzt): {text[:800]}")
-    return None
+
+    # Die Quelle wird in die Details übernommen und bleibt so im Entwurf sichtbar.
+    result_details = f"{details.group(1).strip()} | Quelle: {source.group(1).strip()}"
+    print(f"[race] Bestaetigtes Rennwochenende: {series.group(1).strip()} / {result_details}")
+    return (series.group(1).strip(), result_details)
 
 def append_draft(series: str, details: str, posters: list[Path]) -> None:
     """Legt getrennte, normale Publisher-Blöcke an; Freigabe bleibt bei Bülent."""
