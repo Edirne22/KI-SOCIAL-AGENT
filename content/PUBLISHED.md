@@ -31,7 +31,7 @@ Telegram-Update-ID: 279361643
 Medienstatus: QUELLE_PRÜFEN
 Medienhinweis: Reales Renn-/Personenthema – kein KI-Medium verwenden.
 Text:
-Wenn du @toprakrazgatlioglu auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
+Wenn du @toprakrazgatlioglu7 auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
 Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fahrt ihr lieber oldschool nach Gefühl? Schreib es in die Kommentare.
 Video: auto
 
@@ -103,7 +103,7 @@ Quelle: https://www.facebook.com/TBIKERSTurkMotorKulubu
 
 Fährst du feste Touren mit deiner Crew oder lieber spontan?
 Bild: assets/images/2026-09/t-bikers.jpg
-
+Medienstatus: EIGENES_MATERIAL
 
 
 ## Facebook [GEPOSTET 2026-09-14 12:51 | ID: 1285968257941776_122106285753469415]
