@@ -4,7 +4,7 @@
 
 | Dein Material | Hochladen nach | Im Beitrag eintragen |
 | --- | --- | --- |
-| Eigenes Foto oder eigenes Video | `assets/eigenes-material/` | den vollständigen Pfad bei `Bild:` oder `Video:` |
+| Eigenes Foto oder eigenes Video | `assets/eigenes-material/bilder/` oder `assets/eigenes-material/videos/` | bei Bildern den Pfad aus `bilder/`, bei Videos den Pfad aus `videos/` |
 | Bild/Video einer einmalig bestätigten Quelle, z. B. @motoetkinlikcom | `assets/freigegeben/motoetkinlikcom/` | den vollständigen Pfad bei `Bild:` oder `Video:` |
 
 Ein Screenshot oder Ausschnitt ist technisch ein normales Bild. Er darf erst in
@@ -85,6 +85,7 @@ Bilder:
 
 ## Optional
 
+- Für eigene Bilder: `assets/eigenes-material/bilder/…`; für eigene Videos: `assets/eigenes-material/videos/…`.
 - `Quelle: https://...` kannst du für deine eigene Dokumentation ergänzen. Sie ist nicht nötig, damit ein Bild aus einem freigegebenen Ordner gepostet wird.
 - `Bild: auto` oder `Video: auto` nur für neutrale Stimmungsbilder. Für echte Fahrer und Rennen stattdessen ein hochgeladenes echtes Medium verwenden.
 - Telegram-Freigabe bleibt immer erforderlich. Ohne `Status: FREIGEGEBEN` veröffentlicht kein Publisher etwas.
