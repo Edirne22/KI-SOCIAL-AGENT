@@ -2,7 +2,7 @@ name: Publish Approved Instagram Reels
 
 on:
   schedule:
-    - cron: "0 10 * * *" # 12:00 Uhr deutscher Sommerzeit
+    - cron: "2,17,32,47 6-21 * * *" # alle 15 Minuten, versetzt ab 08:02 deutscher Sommerzeit
   workflow_dispatch:
 
 permissions:
