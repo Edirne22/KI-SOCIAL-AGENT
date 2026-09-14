@@ -66,7 +66,7 @@ En büyük sorun hâlâ sıralama turları. Son sıradan başlamak, özellikle g
 Genel olarak bugünden olumlu çıkarımlar yapıyorum. Büyük bir adım attık ve özellikle yarışın ikinci yarısından çok şey öğrendim. Şimdi bu motosikletle benim için yeni bir deneyim olacak Avusturya’ya gidiyoruz; orada neler yapabileceğimize bakacağız.
 Bild: assets/images/2026-09/2026-09-13-2.jpg
 
-## Instagram
+## Instagram [GEPOSTET 2026-09-14 14:19 | ID: 18070641917757418]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34854856771-1
 Medienstatus: QUELLE_BESTÄTIGT
