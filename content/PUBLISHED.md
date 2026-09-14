@@ -76,7 +76,6 @@ Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
 Wie bewertest du sein Rennwochenende?
 Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
 Medienstatus: EIGENES_MATERIAL
-Bild: auto
 
 ## Facebook [GEPOSTET 2026-09-14 10:05 | ID: 1285968257941776_122106131445469415]
 Status: FREIGEGEBEN
