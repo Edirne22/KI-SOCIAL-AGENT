@@ -1,36 +1,39 @@
-# Medien- und Quellenfreigabe
+# Medien schnell verwenden
 
-## Ziel
+## Grundidee
 
-Renn-News müssen glaubwürdig bleiben. KI-Medien dürfen keine realen Fahrer,
-Teams, Motorräder oder Rennsituationen vortäuschen.
+Der Beitragstext wird niemals nach Fahrernamen, Teams oder Rennbegriffen gesperrt. 
+Entscheidend ist nur, wo das tatsächlich verwendete Bild oder Video abgelegt wurde.
 
-## Pflichtformat für reale Renn-News
+## Einfacher Ablauf
 
-```text
-## Instagram Reel
-Status: FREIGEGEBEN
-Text: ...
-Quelle: https://www.motogp.com/...
-Medienstatus: QUELLE_BESTÄTIGT
-Nutzungsrecht: BESTÄTIGT
-Video: assets/videos/eigenes-oder-freigegebenes-video.mp4
-```
-
-Alternativ für Bülents eigenes Material:
+1. Bild oder Video selbst in GitHub hochladen.
+2. Eine der beiden Ordnerarten wählen:
+   - Eigenes Material: `assets/eigenes-material/datei.jpg`
+   - Einmalig bestätigte Quelle: `assets/freigegeben/motoetkinlikcom/datei.jpg`
+3. Im Beitrag nur den Pfad eintragen:
 
 ```text
-Medienstatus: EIGENES_MATERIAL
-Bild: assets/images/mein-foto.jpg
+Bild: assets/freigegeben/motoetkinlikcom/misano-01.jpg
 ```
 
-## Regeln
+Keine zusätzliche Zeile für `Medienstatus`, `Nutzungsrecht` oder `Quelle` nötig.
 
-- Eine URL dokumentiert die Faktenquelle, ist aber keine Medienlizenz.
-- `QUELLE_PRÜFEN` blockiert eine Veröffentlichung mit Medium.
-- `QUELLE_BESTÄTIGT` benötigt eine URL und
-  `Nutzungsrecht: BESTÄTIGT`.
-- `EIGENES_MATERIAL` ist für Bülents eigene Aufnahmen vorgesehen.
-- Für neutrale Reise- und Biker-Themen darf weiter `Bild: auto` oder
-  `Video: auto` verwendet werden.
-- Bei Zweifeln: nur Text posten, zum Original verlinken oder Bülent fragen.
+## Einmalig freigegebene Quelle
+
+Die erlaubten Quellen liegen in `config/TRUSTED_MEDIA_SOURCES.json`. 
+Für eine weitere Quelle wird dort einmal ein Eintrag ergänzt, nachdem Bülent 
+die Erlaubnis bestätigt hat. Danach gelten alle Medien im passenden Quellenordner automatisch als vorgeprüft.
+
+## Reale Rennaufnahmen
+
+`Bild: auto` oder `Video: auto` erzeugt keine KI-Rennaufnahme mit realen Fahrern. 
+Das verhindert falsche Motorräder, Farben oder Fahrer. Für Toprak, MotoGP und 
+andere Renn-News einfach ein echtes hochgeladenes Medium aus einem der obigen 
+Ordner verwenden.
+
+## Was bleibt unverändert
+
+- Telegram-Freigabe entscheidet weiterhin, ob ein Beitrag veröffentlicht werden darf.
+- Der Agent lädt keine fremden Medien selbst herunter.
+- Ein unbekannter Medienpfad wird klar blockiert; der Beitragstext selbst nie.
