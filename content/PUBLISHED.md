@@ -104,7 +104,7 @@ Fährst du feste Touren mit deiner Crew oder lieber spontan?
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34845723146-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361647
 Text:
