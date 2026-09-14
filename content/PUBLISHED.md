@@ -190,7 +190,7 @@ Bild: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
 
 ## Instagram Reel
 Status: Freigegeben
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34883964016-1
 Freigabe: Rennkalender
 Racing-Reel: Red Bull Ring 2026
 Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
