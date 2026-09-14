@@ -14,25 +14,16 @@ Publication-Claim: IN_BEARBEITUNG 34754434293-1
 Freigabe: Telegram
 Text: Zwei Brüder, doppelte Power auf der Strecke. @denizoncou kämpft in der Moto2 um jeden Zentimeter, während @canoncu in der Supersport-WM wieder auf Siegkurs fährt. Unter den Augen von Mentor @kenansofuoglu wächst hier die nächste Weltklasse-Generation heran. Sürat ve tutku onların kanında var. Deniz ve Can Öncü pistlerde fırtına gibi esmeye devam ediyor. Welcher der beiden holt sich als Nächster den Sieg? #Moto2 #WorldSSP #DenizÖncü #CanÖncü #KenanSofuoğlu #Motorrad #Motorsport
 Video: assets/videos/2026-09/2026-09-13-zwei-brueder-doppelte-power-auf-der-strecke-denizo.mp4
-## Instagram Reel
-Status: FREIGEGEBEN
-Freigabe: Telegram
-Telegram-Update-ID: 279361642
-Medienstatus: QUELLE_PRÜFEN
-Medienhinweis: Reales Renn-/Personenthema – kein KI-Medium verwenden.
-Text:
-Wenn du @toprakrazgatlioglu auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
-Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fahrt ihr lieber oldschool nach Gefühl? Schreib es in die Kommentare.
-Video: assets/videos/2026-09/2026-09-13-wenn-du-toprakrazgatlioglu-auf-der-yamaha-zuschaue.mp4
+
+
 ## Instagram Reel
 Status: FREIGEGEBEN
 Freigabe: Telegram   
 Telegram-Update-ID: 279361643
-Medienstatus: QUELLE_BESTÄTIGT
-Nutzungsrecht: BESTÄTIGT
+Medienstatus: EIGENES_MATERIAL
 
 Text:
-Wenn du @toprakrazgatlioglu7 auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
+Wenn du auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
 Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fahrt ihr lieber oldschool nach Gefühl? Schreib es in die Kommentare.
 Bild: assets/images/2026-09/toprak2026-09-14.jpg
 
