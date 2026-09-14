@@ -143,7 +143,7 @@ Quelle: https://www.motogp.com/
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W38-motogp-facebook.jpg
 
-## Instagram
+## Instagram [GEPOSTET 2026-09-14 18:59 | ID: 18109546181144638]
 Status: Freigegeben
 Publication-Claim: IN_BEARBEITUNG 34884120890-1
 Freigabe: Rennkalender
