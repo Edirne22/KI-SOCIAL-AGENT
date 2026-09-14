@@ -65,3 +65,48 @@ En büyük sorun hâlâ sıralama turları. Son sıradan başlamak, özellikle g
 
 Genel olarak bugünden olumlu çıkarımlar yapıyorum. Büyük bir adım attık ve özellikle yarışın ikinci yarısından çok şey öğrendim. Şimdi bu motosikletle benim için yeni bir deneyim olacak Avusturya’ya gidiyoruz; orada neler yapabileceğimize bakacağız.
 Bild: assets/images/2026-09/2026-09-13-2.jpg
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361647
+Text:
+Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gekämpft wurde, sammelt @toprakrazgatlioglu auf der Yamaha M1 bei Prima Pramac wertvolle Daten für die Zukunft. Geduld zahlt sich aus.
+Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
+Wie bewertest du sein Rennwochenende?
+Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
+Medienstatus: QUELLE_PRÜFEN
+Bild: auto
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361647
+Text:
+Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gekämpft wurde, sammelt @toprakrazgatlioglu auf der Yamaha M1 bei Prima Pramac wertvolle Daten für die Zukunft. Geduld zahlt sich aus.
+Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
+Wie bewertest du sein Rennwochenende?
+Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
+Medienstatus: QUELLE_PRÜFEN
+
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361647
+Text:
+Im Ruhrgebiet zählt echte Loyalität. Die T-Bikers zeigen seit 2005, wie türkische Biker-Kultur und Pott-Mentalität zusammengehören: Benzingespräche, Çay bei der Pause und gegenseitiger Respekt.
+Ruhr Bölgesi'nin köklü kulübü T-Bikers: 20 yılı aşkın süredir yollarda kardeşlik ve saygı.
+Fährst du feste Touren mit deiner Crew oder lieber spontan?
+
+
+Bild: auto
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361647
+Text:
+Im Ruhrgebiet zählt echte Loyalität. Die T-Bikers zeigen seit 2005, wie türkische Biker-Kultur und Pott-Mentalität zusammengehören: Benzingespräche, Çay bei der Pause und gegenseitiger Respekt.
+Ruhr Bölgesi'nin köklü kulübü T-Bikers: 20 yılı aşkın süredir yollarda kardeşlik ve saygı.
+Fährst du feste Touren mit deiner Crew oder lieber spontan?
