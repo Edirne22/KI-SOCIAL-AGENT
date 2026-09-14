@@ -18,7 +18,7 @@ Video: assets/videos/2026-09/2026-09-13-zwei-brueder-doppelte-power-auf-der-stre
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34872929790-1
 Freigabe: Telegram   
 Telegram-Update-ID: 279361643
 Medienstatus: EIGENES_MATERIAL
