@@ -169,7 +169,7 @@ Bild: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34882628234-1
 Freigabe: Rennkalender
 Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
 Text:
