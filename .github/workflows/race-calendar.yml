@@ -32,7 +32,7 @@ jobs:
           git add memory/RACE_POSTERS_LOG.md 2>/dev/null || true
           git add memory/RACE_POSTER_STYLE.md 2>/dev/null || true
           git add memory/RACE_ARCHIVE/ 2>/dev/null || true
-          git add race-posters/ 2>/dev/null || true
+          git add assets/race-posters/ 2>/dev/null || true
           git add content/PUBLISHED.md 2>/dev/null || true
           git commit -m "Auto: Rennkalender und Poster" || echo "Keine Änderungen"
           git pull --rebase origin main
