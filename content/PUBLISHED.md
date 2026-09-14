@@ -93,7 +93,7 @@ Medienstatus: EIGENES_MATERIAL
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34848119917-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361647
 Text:
