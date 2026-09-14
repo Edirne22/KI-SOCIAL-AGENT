@@ -16,7 +16,7 @@ Text: Zwei Brüder, doppelte Power auf der Strecke. @denizoncou kämpft in der M
 Video: assets/videos/2026-09/2026-09-13-zwei-brueder-doppelte-power-auf-der-strecke-denizo.mp4
 
 
-## Instagram Story
+## Instagram
 Status: FREIGEGEBEN
 Freigabe: Telegram   
 Telegram-Update-ID: 279361643
