@@ -19,6 +19,8 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 | [09_quality_agent.md](09_quality_agent.md) | Prüft Workflow-Ergebnisse, Datenqualität und Sicherheitswarnungen. | Täglich nach den Analyse-Workflows oder manuell vor größeren Änderungen. |
 | [10_follow_analysis_agent.md](10_follow_analysis_agent.md) | Erkennt aus freigegebenen öffentlichen Instagram-Profilen Formate, Themen und Hook-Muster. | Geplanter Analyse-Lauf oder Telegram: \`follow-analyse\`; kein Zugriff auf eine private Follow-Liste. |
 
+| [11_system_restart_agent.md](11_system_restart_agent.md) | Prüft sichere Workflow-Zustände und erstellt einen Betriebsstatus. | Täglich als Bericht oder manuell mit ausdrücklicher Freigabe für erlaubte Fehler-Neustarts. |
+
 ## Aktivierungs-Logik
 
 1. Ordne den Auftrag zuerst einem Hauptagenten zu. Aktiviere nur einen zweiten Agenten, wenn dessen Fachwissen wirklich nötig ist.
