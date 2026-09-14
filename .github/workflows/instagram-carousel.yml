@@ -2,7 +2,7 @@ name: Publish Instagram Carousel
 
 on:
   schedule:
-    - cron: "20 10 * * *" # 12:20 deutscher Sommerzeit
+    - cron: "6,21,36,51 6-21 * * *" # alle 15 Minuten, versetzt ab 08:06 deutscher Sommerzeit
   workflow_dispatch:
 
 permissions:
