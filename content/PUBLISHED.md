@@ -75,7 +75,7 @@ Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gek
 Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
 Wie bewertest du sein Rennwochenende?
 Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
-Medienstatus: EUGENE_MATERIAL
+Medienstatus: EIGENES_MATERIAL
 Bild: auto
 
 ## Facebook [GEPOSTET 2026-09-14 10:05 | ID: 1285968257941776_122106131445469415]
@@ -98,7 +98,11 @@ Telegram-Update-ID: 279361647
 Text:
 Im Ruhrgebiet zählt echte Loyalität. Die T-Bikers zeigen seit 2005, wie türkische Biker-Kultur und Pott-Mentalität zusammengehören: Benzingespräche, Çay bei der Pause und gegenseitiger Respekt.
 Ruhr Bölgesi'nin köklü kulübü T-Bikers: 20 yılı aşkın süredir yollarda kardeşlik ve saygı.
+
+Quelle: https://www.facebook.com/TBIKERSTurkMotorKulubu
+
 Fährst du feste Touren mit deiner Crew oder lieber spontan?
+Bild: assets/images/2026-09/t-bikers.jpg
 
 
 
@@ -110,4 +114,6 @@ Telegram-Update-ID: 279361647
 Text:
 Im Ruhrgebiet zählt echte Loyalität. Die T-Bikers zeigen seit 2005, wie türkische Biker-Kultur und Pott-Mentalität zusammengehören: Benzingespräche, Çay bei der Pause und gegenseitiger Respekt.
 Ruhr Bölgesi'nin köklü kulübü T-Bikers: 20 yılı aşkın süredir yollarda kardeşlik ve saygı.
+Quelle: https://www.facebook.com/TBIKERSTurkMotorKulubu
 Fährst du feste Touren mit deiner Crew oder lieber spontan?
+Bild: assets/images/2026-09/t-bikers.jpg
