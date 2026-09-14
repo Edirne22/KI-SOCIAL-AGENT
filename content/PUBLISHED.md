@@ -28,12 +28,12 @@ Video: assets/videos/2026-09/2026-09-13-wenn-du-toprakrazgatlioglu-auf-der-yamah
 Status: FREIGEGEBEN
 Freigabe: Telegram
 Telegram-Update-ID: 279361643
-Medienstatus: QUELLE_PRÜFEN
+Medienstatus: EIGENES_MATERIAL
 Medienhinweis: Reales Renn-/Personenthema – kein KI-Medium verwenden.
 Text:
 Wenn du @toprakrazgatlioglu7 auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
 Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fahrt ihr lieber oldschool nach Gefühl? Schreib es in die Kommentare.
-Video: auto
+Bild: assets/images/2026-09/toprak2026-09-14.jpg
 
 ## Instagram [GEPOSTET 2026-09-13 14:56 | ID: 17943934899311740]
 Status: FREIGEGEBEN
