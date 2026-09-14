@@ -113,3 +113,111 @@ Quellen:
 - Handyvertrag ohne Handy - Jetzt vergleichen - CHECK24 Handytarife: https://handytarife.check24.de/vergleich
 - Handytarife im Telekom-Netz (D1) - PC-WELT: https://tarife.pcwelt.de/handytarife-vergleich/telekom-netz
 - Allnet Flat Handyverträge mit LTE » 4G Tarife im Preisvergleich: https://www.all-net-flat.de/tarife/allnet-flat-handytarife-mit-lte/
+## Suche vom 2026-09-14 06:09
+Anfrage: motorradhandschuhe
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 50 € | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+
+BESTES_ANGEBOT:
+Preis: 0.00 €
+Händler: mediaimpact.de
+URL: https://www.mediaimpact.de/wp-content/uploads/BILD-RED-STARS_2026_MIT_SUMMERDEAL.pdf
+Belegt: ja
+Hinweis: Preis stammt aus einem aktuellen Suchtreffer; bitte auf den Link tippen und im Shop prüfen.
+
+Direkte Treffer (antippbar):
+1. Rukka Airium 2.0 schwarz - Idealo
+   https://www.idealo.de/preisvergleich/OffersOfProduct/201927632_-airium-2-0-schwarz-rukka.html – 17.09. Rukka Airium 2.0 Motorrad Handschuhe, schwarz, 8. 114,14 €. 127,04 ... Fazit: Passform und Tragekomfort (max. 30 Punkte erreichbar): 28 Punkte ...
+2. Blue MTB Handschuhe MTN - The Motion Brand
+   https://themotionbrand.com/products/blue-mtb-handschuhe-mtn?srsltid=AfmBOorU3Dikws-I1ZMMVTDPZoVYQVzGTuc1TcE8LqPCePYt9301pf5U – Die Blue MTN Handschuhe MTB: Perfekter Fit für deine Bike-Ausflüge! ✔️ Bedienung des Handy-Displays durch E-Tip-Technologie ✔️ 3D-Silikon ...
+3. Ausschreibung 34. German Open 09.09.2026 - EWU-BUND
+   https://ewu-bund.com/wp-content/uploads/2026/07/Ausschreibung-GO_2026_End.pdf – 01.09.2026 ... - 50,00 €. DM. Ermäßigung LK 3 Sport Award A. -85,00 €. DM. Zuschlag JUPF, YS Jugend. 35,00 €. DM. Paid warm-up Jungpferde. 35,00 €. Camperplatz ...
+4. Trackday Bilster Berg Sa, 12.09.2026 buchen - Speed Factory
+   https://speedfactory.one/buchen/?e=bilster-berg-2026-09-12&srsltid=AfmBOoopanfK-gcDHnFcADy7EYaDasCAf3jDYMrtihIOsqSgdrh1tUig – vor 2 Tagen ... Ob als Ergänzung zu deinem Trackday oder als Geschenk, das im Kopf bleibt. 992 GT3 RS249 €249 € ... 50 %. Nach der Buchung. 1Zahlung bei ...
+5. Lagoon 50 Just Infinity - Pitter Yachtcharter
+   https://www.pitter-yachting.com/de/yacht/lagoon-50-just-infinity-corfu-gouvia-marina-griechenland/6083 – Max. Passagiere 12. WC 4 + 1. Großsegel Lattengroß. Genoa Selbstwende Fock ... pro Woche 50,00 €. Koch Bereitstellung der Besatzung durch den Charterer in ...
+6. Georgien: Reise- und Sicherheitshinweise - Auswärtiges Amt
+   https://www.auswaertiges-amt.de/de/reiseundsicherheit/georgiensicherheit-201918 – Die Anforderungen einzelner Fluggesellschaften an die von ihren ... 400 Stück oder 50 Zigarren/Zigarillos) und Alkohol (max. 4 l). Für Einfuhren ...
+7. Öffentliche Veranstaltungen an der Universität Hamburg : UHH
+   https://www.uni-hamburg.de/veranstaltungen.html – Wenn Sie eine größere Menge Äpfel haben, können Sie diese hier pressen lassen und den Saft für 7 € pro 5-Liter-Karton mitnehmen. ... Max. Teilnehmende: 50. Fanny ...
+8. Programm - Gemeinde Teningen
+   https://www.teningen.de/site/Teningen-2020/get/params_E-1211945195_Dattachment/1164966/Ferienspa%C3%9F-Flyer%202026.pdf – 31.07.2026 ... 17,50€. Max. TN-Zahl: 8 Personen. Anmeldeschluss: Fr., 24.07.2026. Angebots-Nr.: FS – 01. Page 5. Teninger Ferienspaß 2026. 4. Angebot FS - 02.
+9. FÜHRUNGEN UND RUNDFAHRTEN 2026
+   https://www.wfb-bremen.de/sixcms/media.php/49/Broschu%CC%88re%20Rundfahrten%20Fu%CC%88hrungen%202025_A5_Web.pdf – 01.05.2026 ... in der Bremen Information,. Böttcherstraße 4, gegen 50 €. Pfand und Ausweiskopie. Sitzmaße: 48 x 50 x 42 cm,. Rückenhöhe: 43 cm, max. Gewicht: ...
+10. BILD RED STARS 2026 - Media Impact
+   https://www.mediaimpact.de/wp-content/uploads/BILD-RED-STARS_2026_MIT_SUMMERDEAL.pdf – ganz groß und ganz laut die Kraft von Europas größter Tageszeitung spüren willst. 1/1-Seite BILD für 98.621€ N2. • 663.000€ brutto abzgl. 82,50% Cash-Rabatt + ...
+
+Quellen:
+- Rukka Airium 2.0 schwarz - Idealo: https://www.idealo.de/preisvergleich/OffersOfProduct/201927632_-airium-2-0-schwarz-rukka.html
+- Blue MTB Handschuhe MTN - The Motion Brand: https://themotionbrand.com/products/blue-mtb-handschuhe-mtn?srsltid=AfmBOorU3Dikws-I1ZMMVTDPZoVYQVzGTuc1TcE8LqPCePYt9301pf5U
+- Ausschreibung 34. German Open 09.09.2026 - EWU-BUND: https://ewu-bund.com/wp-content/uploads/2026/07/Ausschreibung-GO_2026_End.pdf
+- Trackday Bilster Berg Sa, 12.09.2026 buchen - Speed Factory: https://speedfactory.one/buchen/?e=bilster-berg-2026-09-12&srsltid=AfmBOoopanfK-gcDHnFcADy7EYaDasCAf3jDYMrtihIOsqSgdrh1tUig
+- Lagoon 50 Just Infinity - Pitter Yachtcharter: https://www.pitter-yachting.com/de/yacht/lagoon-50-just-infinity-corfu-gouvia-marina-griechenland/6083
+- Georgien: Reise- und Sicherheitshinweise - Auswärtiges Amt: https://www.auswaertiges-amt.de/de/reiseundsicherheit/georgiensicherheit-201918
+- Öffentliche Veranstaltungen an der Universität Hamburg : UHH: https://www.uni-hamburg.de/veranstaltungen.html
+- Programm - Gemeinde Teningen: https://www.teningen.de/site/Teningen-2020/get/params_E-1211945195_Dattachment/1164966/Ferienspa%C3%9F-Flyer%202026.pdf
+- FÜHRUNGEN UND RUNDFAHRTEN 2026: https://www.wfb-bremen.de/sixcms/media.php/49/Broschu%CC%88re%20Rundfahrten%20Fu%CC%88hrungen%202025_A5_Web.pdf
+- BILD RED STARS 2026 - Media Impact: https://www.mediaimpact.de/wp-content/uploads/BILD-RED-STARS_2026_MIT_SUMMERDEAL.pdf
+## Suche vom 2026-09-14 06:09
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. D1 Tarife – Die besten & günstigsten Handytarife im Telekom-Netz ...
+   https://www.handyhase.de/handytarife-telekom-netz/ – 01.12.2023 ... Allnet Flat 80 GB 5G (1 Mon.) 1 Monat. Netz. 80 GB 5G. max. 50 MBit/s.
+2. HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...
+   https://handytariftipp.de/ – iPhone 18 Pro Max mit Vertrag – 256GB für einmalig 480€ mit o2 unlimited Allnet Flat für 59.99€ monatlich. Bis maximal zum 17.09.2026 verfügbar, kann vorher ...
+3. Handy Deals und Schnäppchen (Apple und Samsung) 2026
+   https://www.mein-deal.com/handy-deals/ – Xiaomi Redmi Note 17 Pro Max für 89€ + Telekom Allnet 50GB für nur 20€ mtl. ... Die 15 besten Mobilfunk- & Datentarife unter 10€ monatlich Stand: 13.
+4. Allnet Flats im Vergleich - September 2026 - Internetanbieter.de
+   https://www.internetanbieter.de/allnet-flats/ – D1 D2 O2 1&1. Vodafone Logo. CallYa Start. Datenvolumen. 2 GB. Max ... Ø 10,13 €. 10,00 € monatlich. Zum Tarif ». blau Mobilfunk Logo. Allnet S ...
+5. iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-16 – 50 Mbit/s max. Telefon-Flat. SMS-Flat. Pro Monat. Handy ...
+6. Mobilfunk von EWE: Allnet-Tarife, Smartphones, Tablets
+   https://mobilfunk.ewe.de/ – Mindestvertragslaufzeit 24 Monate. Anschlusspreis einmalig 29,99 €. Internet-Flat mit 80 GB (bestehend aus 40 GB inkl. + 40 GB Aktionsvolumen) 5G-Datenvolumen ...
+7. Handyverträge - Dealgott.de
+   https://www.dealgott.de/category/mobilfunk/handyvertrage/ – Samsung Galaxy S26 FE (128 GB) für 1€ + Vodafone Smart Entry 55 GB für 29,99€/Monat (mit GigaKombi = 24,99€/Monat). 9. September 2026.
+8. Tarifgut | Alles zum Thema Tarif- und Top-Angebote
+   https://tarifgut.de/ – -13,05 €Effektivpreis / Monat ? ... Samsung Galaxy S26 Ultra 1024GB mit unlimited Datenvolumen o2 für 39,99€ mtl. akt. 13.09.2026 ...
+9. Mobil surfen bis 100 GB Datenvolumen / Monat - Handy
+   https://handy.preisvergleich.de/datenvolumen-100gb/ – * Angebot vom 12.09.2026 / Preis kann jetzt höher sein - Alle Angaben ohne Gewähr. ** Bei Tarifen mit Datenautomatik können bei Überschreitung des beinhalteten ...
+10. iPhone 16 Pro Max mit Vertrag im Vergleich - Apple - Handyhase.de
+   https://www.handyhase.de/apple/iphone-16-pro-max/ – Deals mit bis 240 € Cashback! Volle Power im besten Netz! iPhone 16 Pro Max + original Telekom-Tarif ab eff. 9,36 € mtl.
+
+Quellen:
+- D1 Tarife – Die besten & günstigsten Handytarife im Telekom-Netz ...: https://www.handyhase.de/handytarife-telekom-netz/
+- HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...: https://handytariftipp.de/
+- Handy Deals und Schnäppchen (Apple und Samsung) 2026: https://www.mein-deal.com/handy-deals/
+- Allnet Flats im Vergleich - September 2026 - Internetanbieter.de: https://www.internetanbieter.de/allnet-flats/
+- iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-16
+- Mobilfunk von EWE: Allnet-Tarife, Smartphones, Tablets: https://mobilfunk.ewe.de/
+- Handyverträge - Dealgott.de: https://www.dealgott.de/category/mobilfunk/handyvertrage/
+- Tarifgut | Alles zum Thema Tarif- und Top-Angebote: https://tarifgut.de/
+- Mobil surfen bis 100 GB Datenvolumen / Monat - Handy: https://handy.preisvergleich.de/datenvolumen-100gb/
+- iPhone 16 Pro Max mit Vertrag im Vergleich - Apple - Handyhase.de: https://www.handyhase.de/apple/iphone-16-pro-max/
+## Suche vom 2026-09-14 06:10
+Anfrage: handyvertrag 80GB D1 maximal 13 euro
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: keine Kriterien | seit 2026-09-13
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. Monatlich kündbare Handytarife im Vergleich - handyhaus.de
+   https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar – Benötigst du Hilfe? ... *Unsere Tarife werden mehrmals täglich automatisch und händisch überprüft, trotzdem können wir fehlerhafte Angaben nicht zu 100% ...
+
+Quellen:
+- Monatlich kündbare Handytarife im Vergleich - handyhaus.de: https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar
