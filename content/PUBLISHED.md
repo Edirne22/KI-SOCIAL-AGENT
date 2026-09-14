@@ -26,10 +26,11 @@ Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fa
 Video: assets/videos/2026-09/2026-09-13-wenn-du-toprakrazgatlioglu-auf-der-yamaha-zuschaue.mp4
 ## Instagram Reel
 Status: FREIGEGEBEN
-Freigabe: Telegram
+Freigabe: Telegram   
 Telegram-Update-ID: 279361643
-Medienstatus: EIGENES_MATERIAL
-Medienhinweis: Reales Renn-/Personenthema – kein KI-Medium verwenden.
+Medienstatus: QUELLE_BESTÄTIGT
+Nutzungsrecht: BESTÄTIGT
+
 Text:
 Wenn du @toprakrazgatlioglu7 auf der Yamaha zuschauen darfst, siehst du millimetergenaue Fahrzeugbeherrschung auf der Bremse. Das Geniale: Die IMU-Sensorik und Kurven-ABS aus der Rennserie stecken heute in fast jedem modernen Bike. Technik, die im Grenzbereich mitdenkt.
 Virajlarda güven her şeydir. Verlasst ihr euch voll auf die Elektronik oder fahrt ihr lieber oldschool nach Gefühl? Schreib es in die Kommentare.
