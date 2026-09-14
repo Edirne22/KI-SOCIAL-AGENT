@@ -111,7 +111,7 @@ Fährst du feste Touren mit deiner Crew oder lieber spontan?
 Bild: assets/images/2026-09/t-bikers.jpg
 
 ## Instagram
-Status: ENTWURF
+Status: Freigegeben
 Freigabe: Rennkalender
 Rennkalender: 2026-W37-MotoGP
 Titel: 🏁 MotoGP – Rennwochenende
@@ -121,7 +121,7 @@ Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W38-motogp-feed.jpg
 
 ## Story
-Status: ENTWURF
+Status: Freigegeben
 Freigabe: Rennkalender
 Rennkalender: 2026-W37-MotoGP
 Titel: 🏁 MotoGP – Rennwochenende
@@ -131,7 +131,7 @@ Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W38-motogp-story.jpg
 
 ## Facebook
-Status: ENTWURF
+Status: Freigegeben
 Freigabe: Rennkalender
 Rennkalender: 2026-W37-MotoGP
 Titel: 🏁 MotoGP – Rennwochenende
