@@ -122,6 +122,7 @@ Bild: assets/race-posters/2026-W38-motogp-feed.jpg
 
 ## Story
 Status: Freigegeben
+Publication-Claim: BEREIT
 Freigabe: Rennkalender
 Rennkalender: 2026-W37-MotoGP
 Titel: 🏁 MotoGP – Rennwochenende
