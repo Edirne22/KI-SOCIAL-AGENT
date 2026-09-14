@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "tracks": [
+    {
+      "id": "racing-beat",
+      "title": "Beat, electronic",
+      "category": "racing",
+      "path": "assets/musik/racing/beat-electronic.ogg",
+      "license": "Public Domain (dedicated by author)",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Beat_electronic.ogg"
+    },
+    {
+      "id": "travel-fairies",
+      "title": "Dance of the electronic fairies",
+      "category": "travel",
+      "path": "assets/musik/travel/dance-electronic-fairies.ogg",
+      "license": "CC0 1.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Monplaisir_-_03_-_Dance_of_the_electronic_fairies.ogg"
+    },
+    {
+      "id": "chill-ambient",
+      "title": "Hypnotic ambient electronic music",
+      "category": "chill",
+      "path": "assets/musik/chill/hypnotic-ambient.mp3",
+      "license": "Public Domain (as documented on Wikimedia Commons)",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Hypnotic_ambient_electronic_music_by_MusicLM.mp3"
+    }
+  ]
+}
