@@ -80,7 +80,7 @@ Bild: auto
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34831307992-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361647
 Text:
