@@ -68,7 +68,7 @@ Bild: assets/images/2026-09/2026-09-13-2.jpg
 
 ## Instagram
 Status: FREIGEGEBEN
-Freigabe: Telegram
+Freigabe: MANUELL
 Text:
 Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gekämpft wurde, sammelt @toprakrazgatlioglu7 auf der Yamaha M1 bei Prima Pramac wertvolle Daten für die Zukunft. Geduld zahlt sich aus.
 Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
@@ -92,9 +92,8 @@ Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
 Medienstatus: EIGENES_MATERIAL
 
 
-## Instagram [GEPOSTET 2026-09-14 13:36 | ID: 17904971511476782]
+## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 34850281143-1
 Freigabe: Telegram
 Text:
 Im Ruhrgebiet zählt echte Loyalität. Die T-Bikers zeigen seit 2005, wie türkische Biker-Kultur und Pott-Mentalität zusammengehören: Benzingespräche, Çay bei der Pause und gegenseitiger Respekt.
@@ -102,7 +101,7 @@ Ruhr Bölgesi'nin köklü kulübü T-Bikers: 20 yılı aşkın süredir yollarda
 Quelle: https://www.facebook.com/TBIKERSTurkMotorKulubu
 Fährst du feste Touren mit deiner Crew oder lieber spontan?
 Bild: assets/images/2026-09/t-bikers.jpg
-Medienstatus: EIGENES_MATERIAL
+
 
 
 ## Facebook [GEPOSTET 2026-09-14 13:35 | ID: 122106320493469415] 
