@@ -146,26 +146,32 @@ def run_v8():
  for t,u,s,r in racing_scout(80):
   u=canonical_url(u);key=story_key(t,u)
   if u in seen or key in known:continue
-  seen.add(u);raw.append((t,u));meta[u]={'series':s,'turkish_rider':r}
+  seen.add(u);raw.append((t,u));meta[u]={'series':s,**({'turkish_rider':r} if r else {})}
+ for t,u,r in turkish_scout(40):
+  u=canonical_url(u);key=story_key(t,u)
+  if u in seen or key in known:continue
+  seen.add(u);raw.append((t,u));meta[u]={'turkish_rider':r,'kind':('profile' if '/riders/' in u else 'news')}
+ for title,url in extract(get(NEWS),60)+extract(get(MARKET),30):
+  u=canonical_url(url);key=story_key(title,u)
+  if u in seen or key in known:continue
+  seen.add(u);raw.append((title,u))
  details=[]
- with ThreadPoolExecutor(max_workers=8) as ex:
-  jobs={ex.submit(fetch_article_details,t,u):(t,u) for t,u in raw}
-  for f in as_completed(jobs):
-   try:
-    x=f.result();u=x.get('url') or jobs[f][1];x.update({k:v for k,v in meta.get(u,{}).items() if v});details.append(enrich_turkish(x))
-   except Exception as e:print('Fetch FAIL:',type(e).__name__,str(e)[:120])
- now=datetime.now(timezone.utc);fresh=[x for x in details if current_news(x,now,7) and racing_relevant(x)]
- ranked=sorted(fresh,key=lambda x:editorial_score(x,names),reverse=True);pre=ranked[:20]
- qualified=qualify_parallel(pre,5);qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);save_top10(qualified,now)
- picks=smart_mix(qualified,names)
- if len(picks)<5:
-  fb=yesterday_fallback(now,{x.get('url') for x in picks});picks=smart_mix(picks+fb,names)
- final=[]
- for i,x in enumerate(picks,1):
-  if finish_item(x,i):final.append(x)
- picks=final
- turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in ('MotoGP','WorldSBK','WorldSSP')}
- OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency V8.4.5\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nDE+QM qualifiziert: {len(qualified)}\nTop-10 gespeichert: {min(10,len(qualified))}\nVortags-Fallbacks: {sum(bool(x.get("fallback_yesterday")) for x in picks)}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nHuman Writing Protocol: V1.0\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
+ for t,u in raw[:180]:
+  x=article_info(t,u);x.update(meta.get(u,{}));details.append(enrich_turkish(x))
+ now=datetime.now(timezone.utc);fresh=[x for x in details if current_news(x,now,7) and racing_relevant(x)];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
+ qualified=qualify_parallel(fresh[:20],5);qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);ranked=qualified[:10];save_top10(ranked,now);candidates=smart_mix(qualified,names)
+ if len(candidates)<5:
+  for x in yesterday_fallback(now,{p['url'] for p in candidates}):
+   if len(candidates)>=5:break
+   candidates.append(x)
+ if len(candidates)==5:
+  batch=review_batch(candidates);candidates=[x for x,(ok,_) in zip(candidates,batch) if ok]
+ picks=[]
+ if len(candidates)==5:
+  for i,x in enumerate(candidates,1):
+   if finish_item(x,i):picks.append(x)
+ turk=any(is_turkish_focus(x) for x in picks);fallbacks=sum(bool(x.get('fallback_yesterday')) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in ('MotoGP','WorldSBK','WorldSSP')}
+ OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency V8.4.5\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nDE+QM qualifiziert: {len(qualified)}\nTop-10 gespeichert: {len(ranked)}\nVortags-Fallbacks: {fallbacks}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nHuman Writing Protocol: V1.0\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
  if len(picks)==5:
   write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
  else:send_message(f'🏍️ Racing Agency V8.4.5: nur {len(picks)}/5 aktuelle relevante Racing-Pakete. Keine Promo-, Alt- oder sprachlich unsauberen Meldungen zum Auffüllen.')
