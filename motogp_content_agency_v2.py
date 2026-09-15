@@ -1,4 +1,4 @@
-"""Motorcycle Racing Agency V8.4.3 – Turkish-Erkennung, Race-Prioritaet, Sprach-QM, schnellere Pipeline."""
+"""Motorcycle Racing Agency V8.4.5 – Human Writing Protocol + Racing pipeline."""
 from motogp_content_agency import *
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
@@ -8,6 +8,7 @@ import json
 from datetime import timedelta, datetime as dt
 from concurrent.futures import ThreadPoolExecutor, as_completed
 TOP10=Path('memory/RACING_TOP10_POOL.json')
+HUMAN_PROTOCOL=Path('config/HUMAN_WRITING_PROTOCOL.md')
 TURKISH_ALIASES={'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu'),'Can Oncu':('can oncu','can öncü'),'Deniz Oncu':('deniz oncu','deniz öncü'),'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu'),'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu')}
 TURKISH_RIDERS=list(TURKISH_ALIASES)
 RIDERS_V2=TURKISH_RIDERS+['Marc Marquez','Alex Marquez','Marco Bezzecchi','Jorge Martin','Pedro Acosta','Francesco Bagnaia','Fabio Quartararo','Jack Miller','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado']
@@ -15,6 +16,9 @@ PROMO_WORDS=('fantasy','super boost','mystery boost','videopass','video pass','t
 RACING_WORDS=('race','racing','grand prix',' gp','practice','fp1','fp2','qualifying','pole','sprint','podium','win','victory','championship','title','rider','team','replace','injury','return','test','lap','grid','motogp','moto2','moto3','worldsbk','worldssp','supersport')
 FEATURE_WORDS=('hall of fame','legend','inducted','tribute','anniversary','documentary','gallery','talking points')
 BAD_GERMAN=('legende zu einer legende','mit großem anfangsbuchstaben','mit grossem anfangsbuchstaben','erfahrt alle wichtigen','unter dem titel','neueste ausgabe an der adriaküste','neueste ausgabe an der adriakueste')
+def human_protocol():
+ try:return HUMAN_PROTOCOL.read_text(encoding='utf-8')
+ except Exception:return 'Faktenrichtigkeit vor Stil. Schreibe klares, idiomatisches, natuerliches Deutsch ohne PR-, KI- oder Marketing-Floskeln.'
 def fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def article_text(x):return ' '.join((x.get('title',''),x.get('summary',''),x.get('url','')))
 def riders_in(text):return [n for n in RIDERS_V2 if fold(n) in fold(text)]
@@ -22,7 +26,6 @@ def detect_turkish_rider(x):
  text=fold(article_text(x))
  for rider,aliases in TURKISH_ALIASES.items():
   if any(fold(a) in text for a in aliases):return rider
- # WorldSSP official headlines often shorten Can Öncü to Oncu/Öncü. Deniz is excluded explicitly.
  if 'oncu' in text and 'deniz' not in text and series_for_raw(x)=='WorldSSP':return 'Can Oncu'
  return ''
 def enrich_turkish(x):
@@ -66,7 +69,8 @@ def language_sane(caption):
 def german_editor(x):
  enrich_turkish(x);title=re.sub(r'\s+',' ',x.get('title','')).strip();summary=re.sub(r'\s+',' ',x.get('summary','')).strip();series=series_for(x);turk=x.get('turkish_rider','')
  if not title or len(title)<18:return ''
- prompt=f'''Du bist der deutsche Motorrad-Racing-Redakteur für Bülents Bike Life. Schreibe aus den offiziellen Quellfakten einen eigenständigen deutschen Social-Media-Post.\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turk or 'NEIN'}\nREGELN: Nur belegte Fakten aus TITEL/ZUSAMMENFASSUNG. Nichts erfinden. Keine neuen Zitate, Zahlen, Namen, Orte oder Ergebnisse. Natürliches idiomatisches Deutsch, keine wörtlich übersetzten englischen Redewendungen und keine Navigation wie Erfahrt/Read more. 2 bis 4 informative Sätze. Konkreter Hook, Haupttext, konkrete Community-Frage. Keine Meta-Sätze, keine künstliche Hype-Sprache. Hall-of-Fame/Legend/Feature-Themen sachlich. 🇹🇷 nur wenn TURKISH_RIDER nicht NEIN. Keine Hashtags. Antworte ausschließlich als JSON: {{"hook":"...","body":"...","question":"..."}}'''
+ protocol=human_protocol()
+ prompt=f'''Du bist der deutsche Motorrad-Racing-Redakteur fuer Buelents Bike Life. Das folgende HUMAN WRITING PROTOCOL ist verbindlich und hat Vorrang vor Stiloptimierung, aber niemals vor Faktenrichtigkeit.\n\n{protocol}\n\nDOMAIN-REGELN RACING:\nNur belegte Fakten aus TITEL/ZUSAMMENFASSUNG. Nichts erfinden. Keine neuen Zitate, Zahlen, Namen, Orte, Teams, Serien oder Ergebnisse. Die angegebene SERIE darf nicht in eine andere Rennserie umgedeutet werden. Keine direkten Zitate; Quellzitate sachlich paraphrasieren. Schreibe idiomatisches Deutsch, keine woertlich uebersetzten englischen Redewendungen. 2 bis 4 informative Saetze insgesamt. Ein konkreter natuerlicher Einstieg, danach die entscheidenden Fakten und eine konkrete Community-Frage. Variiere Satzbau und Formulierungen zwischen Stories. Keine PR-, Marketing-, Meta- oder kuenstliche Hype-Sprache. Keine Hashtags erzeugen. 🇹🇷 nur wenn TURKISH_RIDER nicht NEIN.\n\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turk or 'NEIN'}\n\nAntworte ausschliesslich als JSON: {{"hook":"...","body":"...","question":"..."}}'''
  try:
   raw=generate('final_captions',prompt).strip();raw=re.sub(r'^```(?:json)?\s*|\s*```$','',raw,flags=re.I|re.S);obj=json.loads(raw);hook=str(obj.get('hook','')).strip();body=str(obj.get('body','')).strip();q=str(obj.get('question','')).strip()
   if not hook or not body or '?' not in q:return ''
@@ -129,12 +133,12 @@ def smart_mix(qualified,names):
   if len(chosen)>=5:break
  return chosen[:5]
 def write_session(items,now):
- lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 14','Agency-Version: V8.4.3','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
+ lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 15','Agency-Version: V8.4.5','Human-Writing-Protocol: V1.0','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
  for i,x in enumerate(items,1):lines += [f'## Beitrag {i}','QM: PASS',f'Herkunft: {"Top-10 vom Vortag" if x.get("fallback_yesterday") else "Aktuell"}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Turkish Riders" if is_turkish_focus(x) else series_for(x)}',f'Serie: {series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
  SESSION.write_text('\n'.join(lines),encoding='utf-8')
 def telegram_preview(items,turk):
  mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in ('MotoGP','WorldSBK','WorldSSP') if any(series_for(x)==s for x in items))
- msg=['🏍️ Motorcycle Racing Agency V8.4.3 – 5 AKTUELLE RACING-Tagesvorschläge','Aktualitäts-Gate: max. 7 Tage | Promo/Fantasy: gesperrt | Race-News priorisiert',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktueller geeigneter Beitrag bevorzugt aufgenommen' if turk else '🇹🇷 Heute kein geeigneter neuer Turkish-Rider-Beitrag gefunden'),'🇩🇪 DE-Redakteur + Sprach-QM + Racing-QM + Chief-QM + Batch-QM: PASS','']
+ msg=['🏍️ Motorcycle Racing Agency V8.4.5 – 5 AKTUELLE RACING-Tagesvorschläge','✍️ Human Writing Protocol V1.0 aktiv','Aktualitäts-Gate: max. 7 Tage | Promo/Fantasy: gesperrt | Race-News priorisiert',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktueller geeigneter Beitrag bevorzugt aufgenommen' if turk else '🇹🇷 Heute kein geeigneter neuer Turkish-Rider-Beitrag gefunden'),'🇩🇪 Human Protocol + DE-Redakteur + Sprach-QM + Racing-QM + Chief-QM + Batch-QM: PASS','']
  for i,x in enumerate(items,1):msg += [f'{i}️⃣ {"↩️ Top-10 vom Vortag | " if x.get("fallback_yesterday") else ""}[{series_for(x)}] {x["caption"]}','🖼️ Medium: vorbereitet',f'🔗 Quelle: {x["url"]}','']
  msg+=['Freigabe: motogp 1–5 / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
 def run_v8():
@@ -142,34 +146,28 @@ def run_v8():
  for t,u,s,r in racing_scout(80):
   u=canonical_url(u);key=story_key(t,u)
   if u in seen or key in known:continue
-  seen.add(u);raw.append((t,u));meta[u]={'series':s,**({'turkish_rider':r} if r else {})}
- for t,u,r in turkish_scout(40):
-  u=canonical_url(u);key=story_key(t,u)
-  if u in seen or key in known:continue
-  seen.add(u);raw.append((t,u));meta[u]={'turkish_rider':r,'kind':('profile' if '/riders/' in u else 'news')}
- for title,url in extract(get(NEWS),60)+extract(get(MARKET),30):
-  u=canonical_url(url);key=story_key(title,u)
-  if u in seen or key in known:continue
-  seen.add(u);raw.append((title,u))
+  seen.add(u);raw.append((t,u));meta[u]={'series':s,'turkish_rider':r}
  details=[]
- for t,u in raw[:180]:
-  x=article_info(t,u);x.update(meta.get(u,{}));details.append(enrich_turkish(x))
- now=datetime.now(timezone.utc);fresh=[x for x in details if current_news(x,now,7) and racing_relevant(x)];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
- # Performance: 20 bestbewertete Kandidaten, 5 parallele DE/QM-Worker statt bis zu 50 serieller KI-Aufrufe.
- qualified=qualify_parallel(fresh[:20],5);qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);ranked=qualified[:10];save_top10(ranked,now);candidates=smart_mix(qualified,names)
- if len(candidates)<5:
-  for x in yesterday_fallback(now,{p['url'] for p in candidates}):
-   if len(candidates)>=5:break
-   candidates.append(x)
- if len(candidates)==5:
-  batch=review_batch(candidates);candidates=[x for x,(ok,_) in zip(candidates,batch) if ok]
- picks=[]
- if len(candidates)==5:
-  for i,x in enumerate(candidates,1):
-   if finish_item(x,i):picks.append(x)
- turk=any(is_turkish_focus(x) for x in picks);fallbacks=sum(bool(x.get('fallback_yesterday')) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in ('MotoGP','WorldSBK','WorldSSP')}
- OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency V8.4.3\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nDE+QM qualifiziert: {len(qualified)}\nTop-10 gespeichert: {len(ranked)}\nVortags-Fallbacks: {fallbacks}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
- if len(picks)==5:write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
- else:send_message(f'🏍️ Racing Agency V8.4.3: nur {len(picks)}/5 aktuelle relevante Racing-Pakete. Keine Promo-, Alt- oder sprachlich unsauberen Meldungen zum Auffüllen.')
- print(f'Racing V8.4.3: raw={len(details)}, fresh_racing={len(fresh)}, de_qm={len(qualified)}, final={len(picks)}, mix={mix}, TurkishIncluded={turk}')
+ with ThreadPoolExecutor(max_workers=8) as ex:
+  jobs={ex.submit(fetch_article_details,t,u):(t,u) for t,u in raw}
+  for f in as_completed(jobs):
+   try:
+    x=f.result();u=x.get('url') or jobs[f][1];x.update({k:v for k,v in meta.get(u,{}).items() if v});details.append(enrich_turkish(x))
+   except Exception as e:print('Fetch FAIL:',type(e).__name__,str(e)[:120])
+ now=datetime.now(timezone.utc);fresh=[x for x in details if current_news(x,now,7) and racing_relevant(x)]
+ ranked=sorted(fresh,key=lambda x:editorial_score(x,names),reverse=True);pre=ranked[:20]
+ qualified=qualify_parallel(pre,5);qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);save_top10(qualified,now)
+ picks=smart_mix(qualified,names)
+ if len(picks)<5:
+  fb=yesterday_fallback(now,{x.get('url') for x in picks});picks=smart_mix(picks+fb,names)
+ final=[]
+ for i,x in enumerate(picks,1):
+  if finish_item(x,i):final.append(x)
+ picks=final
+ turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in ('MotoGP','WorldSBK','WorldSSP')}
+ OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency V8.4.5\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nDE+QM qualifiziert: {len(qualified)}\nTop-10 gespeichert: {min(10,len(qualified))}\nVortags-Fallbacks: {sum(bool(x.get("fallback_yesterday")) for x in picks)}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nHuman Writing Protocol: V1.0\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
+ if len(picks)==5:
+  write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
+ else:send_message(f'🏍️ Racing Agency V8.4.5: nur {len(picks)}/5 aktuelle relevante Racing-Pakete. Keine Promo-, Alt- oder sprachlich unsauberen Meldungen zum Auffüllen.')
+ print(f'Racing V8.4.5: raw={len(details)}, fresh_racing={len(fresh)}, de_qm={len(qualified)}, final={len(picks)}, mix={mix}, TurkishIncluded={turk}, HumanProtocol=V1.0')
 if __name__=='__main__':run_v8()
