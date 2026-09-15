@@ -303,7 +303,7 @@ https://www.motogp.com/en/news/2026/06/24/confirmed-acosta-joins-marc-marquez-at
 Quelle: https://www.motogp.com/en/news/2026/06/24/confirmed-acosta-joins-marc-marquez-at-ducati-for-2027-and-2028/1074819
 Link-Preview: offiziell
 
-## Instagram
+## Instagram [GEPOSTET 2026-09-15 16:11 | ID: 17907431292520579]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34993401251-1
 Freigabe: Telegram MotoGP
