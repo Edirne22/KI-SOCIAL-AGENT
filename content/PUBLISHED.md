@@ -323,7 +323,7 @@ Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-2-marc-marque
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34993246473-1
 Freigabe: Telegram MotoGP
 Telegram-Update-ID: 279361656
 MotoGP-Auswahl: 2
