@@ -1,1 +1,107 @@
-{"version":1,"days":{}}
+{
+  "version": 1,
+  "days": {
+    "2026-09-15": [
+      {
+        "story_key": "title:toprak-razgatlioglu-motogp-rider-profile-2026-rookie-campaign",
+        "title": "Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign",
+        "url": "https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "Toprak Razgatlioglu",
+        "kind": "profile"
+      },
+      {
+        "story_key": "motogp:1087032",
+        "title": "Marc Marquez out the traps quickest in Aragon FP1, Martin 18th The reigning World Champion leads Fernandez by 0.035s in the opening stint of the weekend at MotorLand",
+        "url": "https://www.motogp.com/en/news/2026/08/28/marc-marquez-out-the-traps-quickest-in-aragon-fp1-martin-18th/1087032",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1087035",
+        "title": "Bezzecchi beats Marc Marquez to pole in record-breaking Aragon Q2 Two 2026 heavyweights treat us to a qualifying fight to remember to set the scene for a Tissot Sprint and Grand Prix blockbuster",
+        "url": "https://www.motogp.com/en/news/2026/08/29/bezzecchi-beats-marc-marquez-to-pole-in-record-breaking-aragon-q2/1087035",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1076393",
+        "title": "Red Bull KTM confirm Di Giannantonio alongside Alex Marquez from 2027 The full Red Bull KTM Factory racing line-up for the new era is revealed",
+        "url": "https://www.motogp.com/en/news/2026/07/06/red-bull-ktm-confirm-di-giannantonio-alongside-alex-marquez-from-2027/1076393",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089344",
+        "title": "Marc Marquez denies Bezzecchi gold in tense Misano Sprint stand-off",
+        "url": "https://www.motogp.com/en/news/2026/09/12/marc-marquez-denies-bezzecchi-gold-in-tense-misano-sprint-stand-off/1089344",
+        "summary": "22 points cover the top three as the reigning World Champion does the business on Saturday afternoon",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/12/90d5aea9-2735-4cb4-8954-de5e21dc8e92/Reprot-MGP-SPR-RSM.jpg?width=1200&height=630",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089343",
+        "title": "Showstopper: Bezzecchi goes sub 90 seconds at Misano to beat Marquez to pole",
+        "url": "https://www.motogp.com/en/news/2026/09/12/showstopper-bezzecchi-goes-sub-90-seconds-at-misano-to-beat-marquez-to-pole/1089343",
+        "summary": "Lap record set, gauntlet thrown down – the #72 heads the #93 at Misano as the duel rolls on into Saturday",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/12/a96603cb-8fe5-47da-bb42-38a770800bd9/Report-MGP-QP-RSM.jpg?width=1200&height=630",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089342",
+        "title": "Bezzecchi strikes back to lead Marc Marquez in Friday Practice",
+        "url": "https://www.motogp.com/en/news/2026/09/11/bezzecchi-strikes-back-to-lead-marc-marquez-in-friday-practice/1089342",
+        "summary": "2025’s rivalry from Misano is well underway 12 months later as the home hero snatched P1 from the reigning World Champion to go 1-1 across day one action",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/11/06d2a40c-33aa-4258-99d8-0799b34305f1/Report-MGP-PR-RSM.jpg?width=1200&height=630",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089341",
+        "title": "Marc Marquez edges out Bezzecchi by 0.060s in Misano FP1",
+        "url": "https://www.motogp.com/en/news/2026/09/11/marc-marquez-edges-out-bezzecchi-by-0060s-in-misano-fp1/1089341",
+        "summary": "The top two from last year",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/11/89caee0b-eace-4248-a0ea-1d28de440239/Report-MGP-FP1-RSM.jpg?width=1200&height=630",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1081729",
+        "title": "Alex Marquez leads Bezzecchi in British GP FP1 It's Ducati fronting Aprilia and KTM as MotoGP revs back into life at Silverstone",
+        "url": "https://www.motogp.com/en/news/2026/08/07/alex-marquez-leads-bezzecchi-in-british-gp-fp1/1081729",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1076928",
+        "title": "Game on: Marc Marquez pockets perfect Sachsenring weekend to ignite title charge A 10th MotoGP win in Germany sees the reigning World Champion move up to P3 in the standings; SuperFile Trackhouse celebrate a double rostrum, while big Ducati names crash",
+        "url": "https://www.motogp.com/en/news/2026/07/12/game-on-marc-marquez-pockets-perfect-sachsenring-weekend-to-ignite-title-charge/1076928",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      }
+    ]
+  }
+}

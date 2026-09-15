@@ -14,3 +14,28 @@ Quelle: https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-
 Story-Key: motogp:1087036
 Titel: Marc Marquez retaliates to hold off Alex Marquez for Aragon gold
 Quelle: https://www.motogp.com/en/news/2026/08/29/marc-marquez-retaliates-to-hold-off-alex-marquez-for-aragon-gold/1087036
+
+## 2026-09-15 18:27 UTC – ANGEBOTEN
+Story-Key: title:toprak-razgatlioglu-motogp-rider-profile-2026-rookie-campaign
+Titel: Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign
+Quelle: https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e
+
+## 2026-09-15 18:27 UTC – ANGEBOTEN
+Story-Key: motogp:1087032
+Titel: Marc Marquez out the traps quickest in Aragon FP1, Martin 18th The reigning World Champion leads Fernandez by 0.035s in the opening stint of the weekend at MotorLand
+Quelle: https://www.motogp.com/en/news/2026/08/28/marc-marquez-out-the-traps-quickest-in-aragon-fp1-martin-18th/1087032
+
+## 2026-09-15 18:27 UTC – ANGEBOTEN
+Story-Key: motogp:1087035
+Titel: Bezzecchi beats Marc Marquez to pole in record-breaking Aragon Q2 Two 2026 heavyweights treat us to a qualifying fight to remember to set the scene for a Tissot Sprint and Grand Prix blockbuster
+Quelle: https://www.motogp.com/en/news/2026/08/29/bezzecchi-beats-marc-marquez-to-pole-in-record-breaking-aragon-q2/1087035
+
+## 2026-09-15 18:27 UTC – ANGEBOTEN
+Story-Key: motogp:1076393
+Titel: Red Bull KTM confirm Di Giannantonio alongside Alex Marquez from 2027 The full Red Bull KTM Factory racing line-up for the new era is revealed
+Quelle: https://www.motogp.com/en/news/2026/07/06/red-bull-ktm-confirm-di-giannantonio-alongside-alex-marquez-from-2027/1076393
+
+## 2026-09-15 18:27 UTC – ANGEBOTEN
+Story-Key: motogp:1089344
+Titel: Marc Marquez denies Bezzecchi gold in tense Misano Sprint stand-off
+Quelle: https://www.motogp.com/en/news/2026/09/12/marc-marquez-denies-bezzecchi-gold-in-tense-misano-sprint-stand-off/1089344

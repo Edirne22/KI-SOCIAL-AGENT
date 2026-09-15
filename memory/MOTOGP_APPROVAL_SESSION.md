@@ -1,59 +1,116 @@
-# MotoGP Telegram Approval Session
-Session-Version: 3
-Session-Timestamp: 1789487252
+# Motorcycle Racing Telegram Approval Session
+Session-Version: 10
+QM: PASS
+Session-Timestamp: 1789496871
 
-Antwort: `motogp 1`, `motogp 2`, `motogp 3`, `motogp alle` oder `motogp nein`.
+Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
 ## Beitrag 1
-Story-Key: motogp:1081732
-Titel: Martin soars to Silverstone Saturday gold as Aprilia clinch first Sprint 1-2-3
-Quelle: https://www.motogp.com/en/news/2026/08/08/martin-soars-to-silverstone-saturday-gold-as-aprilia-clinch-first-sprint-1-2-3/1081732
-Instagram-Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-1-martin-soars-to-silv-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/08/08/2c92fa03-68e1-439d-a073-fd49d4d2ce4a/Report-MGP-SPR-UK.jpg?width=1200&height=630
+QM: PASS
+Herkunft: Aktuell
+Kategorie: Turkish Riders
+Serie: MotoGP
+Story-Key: title:toprak-razgatlioglu-motogp-rider-profile-2026-rookie-campaign
+Titel: Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign
+Quelle: https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-toprak-razgatlioglu-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-🏁 Márquez schlägt zurück – der Titelkampf ist wieder völlig offen.
+🇹🇷 Toprak Razgatlioglu im MotoGP-Fokus.
 
-Marc Márquez hat in Misano maximal profitiert und sich mit dem Sieg wieder ganz nach vorne im Titelkampf geschoben. Der frühe Fehler von Marco Bezzecchi hat das Rennen entscheidend verändert.
+Toprak Razgatlioglu steht in der offiziellen MotoGP-Fahrerübersicht. Der Fahrer bleibt damit fest in unserem Racing-Radar.
 
-Wer hat für dich jetzt die besseren Karten im Titelkampf?
+Wie verfolgst du die Saison von Toprak Razgatlioglu?
 
-#MotoGP #MarcMarquez #AlexMarquez #Aprilia #MotorradRacing #MotoGPDeutschland
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
-Rechte-Gate: Instagram nutzt eine vor Freigabe eigens erzeugte generische Editorial-Grafik ohne reale Fahrer, Motorräder, Teams, Logos oder Marken. Facebook veröffentlicht den offiziellen Quellenlink für die Link-Vorschau. Keine langen Originalpassagen.
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 2
-Story-Key: motogp:1087037
-Titel: Marc Marquez fends off Acosta and Bezzecchi to underline title charge at Aragon
-Quelle: https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-and-bezzecchi-to-underline-title-charge-at-aragon/1087037
-Instagram-Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-2-marc-marquez-fends-o-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/08/30/aa21b073-ce82-4cca-a945-0c893dce05bb/Report-MGP-GP-ARA.jpg?width=1200&height=630
+QM: PASS
+Herkunft: Aktuell
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1087032
+Titel: Marc Marquez out the traps quickest in Aragon FP1, Martin 18th The reigning World Champion leads Fernandez by 0.035s in the opening stint of the weekend at MotorLand
+Quelle: https://www.motogp.com/en/news/2026/08/28/marc-marquez-out-the-traps-quickest-in-aragon-fp1-martin-18th/1087032
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-marc-marquez-out-the-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-🏍️ MotoGP im Fokus: Marc Marquez.
+🇹🇷 Marc Marquez: Marc Marquez out the traps quickest in Aragon FP1, Martin 18th The reigning World Champion leads Fernandez by 0.035s in the opening stint of the weekend at MotorLand
 
-Marc Marquez ist heute eines der relevanten MotoGP-Themen. Die Fakten stammen aus der offiziellen Meldung; der Social-Text wird bewusst eigenständig formuliert.
+Marc Marquez out the traps quickest in Aragon FP1, Martin 18th The reigning World Champion leads Fernandez by 0.035s in the opening stint of the weekend at MotorLand
 
-Was ist für dich der spannendste Punkt an dieser Story?
+Wie ordnest du diese MotoGP-Meldung ein?
 
-#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #MotoGPDeutschland
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
-Rechte-Gate: Instagram nutzt eine vor Freigabe eigens erzeugte generische Editorial-Grafik ohne reale Fahrer, Motorräder, Teams, Logos oder Marken. Facebook veröffentlicht den offiziellen Quellenlink für die Link-Vorschau. Keine langen Originalpassagen.
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 3
-Story-Key: motogp:1087036
-Titel: Marc Marquez retaliates to hold off Alex Marquez for Aragon gold
-Quelle: https://www.motogp.com/en/news/2026/08/29/marc-marquez-retaliates-to-hold-off-alex-marquez-for-aragon-gold/1087036
-Instagram-Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-3-marc-marquez-retalia-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/08/29/5ea58f51-1edd-45fe-9bc1-40540a181ed5/Report-MGP-SPR-ARA.jpg?width=1200&height=630
+QM: PASS
+Herkunft: Aktuell
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1087035
+Titel: Bezzecchi beats Marc Marquez to pole in record-breaking Aragon Q2 Two 2026 heavyweights treat us to a qualifying fight to remember to set the scene for a Tissot Sprint and Grand Prix blockbuster
+Quelle: https://www.motogp.com/en/news/2026/08/29/bezzecchi-beats-marc-marquez-to-pole-in-record-breaking-aragon-q2/1087035
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-bezzecchi-beats-marc-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-🏍️ MotoGP im Fokus: Marc Marquez.
+🇹🇷 Marc Marquez: Bezzecchi beats Marc Marquez to pole in record-breaking Aragon Q2 Two 2026 heavyweights treat us to a qualifying fight to remember to set the scene for a Tissot Sprint and Grand Prix blockbuster
 
-Marc Marquez ist heute eines der relevanten MotoGP-Themen. Die Fakten stammen aus der offiziellen Meldung; der Social-Text wird bewusst eigenständig formuliert.
+Bezzecchi beats Marc Marquez to pole in record-breaking Aragon Q2 Two 2026 heavyweights treat us to a qualifying fight to remember to set the scene for a Tissot Sprint and Grand Prix blockbuster
 
-Was ist für dich der spannendste Punkt an dieser Story?
+Wie ordnest du diese MotoGP-Meldung ein?
 
-#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #MotoGPDeutschland
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
-Rechte-Gate: Instagram nutzt eine vor Freigabe eigens erzeugte generische Editorial-Grafik ohne reale Fahrer, Motorräder, Teams, Logos oder Marken. Facebook veröffentlicht den offiziellen Quellenlink für die Link-Vorschau. Keine langen Originalpassagen.
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
+
+## Beitrag 4
+QM: PASS
+Herkunft: Aktuell
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1076393
+Titel: Red Bull KTM confirm Di Giannantonio alongside Alex Marquez from 2027 The full Red Bull KTM Factory racing line-up for the new era is revealed
+Quelle: https://www.motogp.com/en/news/2026/07/06/red-bull-ktm-confirm-di-giannantonio-alongside-alex-marquez-from-2027/1076393
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-red-bull-ktm-confirm-01.jpg
+Quellen-Preview: Zielseite/Plattform
+Plattformen: Instagram + Facebook
+Text:
+🇹🇷 Alex Marquez: Red Bull KTM confirm Di Giannantonio alongside Alex Marquez from 2027 The full Red Bull KTM Factory racing line-up for the new era is revealed
+
+Red Bull KTM confirm Di Giannantonio alongside Alex Marquez from 2027 The full Red Bull KTM Factory racing line-up for the new era is revealed
+
+Wie ordnest du diese MotoGP-Meldung ein?
+
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
+
+## Beitrag 5
+QM: PASS
+Herkunft: Aktuell
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1089344
+Titel: Marc Marquez denies Bezzecchi gold in tense Misano Sprint stand-off
+Quelle: https://www.motogp.com/en/news/2026/09/12/marc-marquez-denies-bezzecchi-gold-in-tense-misano-sprint-stand-off/1089344
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-marc-marquez-denies-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/12/90d5aea9-2735-4cb4-8954-de5e21dc8e92/Reprot-MGP-SPR-RSM.jpg?width=1200&height=630
+Plattformen: Instagram + Facebook
+Text:
+🇹🇷 Marc Marquez: Marc Marquez denies Bezzecchi gold in tense Misano Sprint stand-off
+
+22 points cover the top three as the reigning World Champion does the business on Saturday afternoon
+
+Wie ordnest du diese MotoGP-Meldung ein?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
