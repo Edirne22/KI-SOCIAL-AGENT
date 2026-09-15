@@ -19,6 +19,19 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install requests
+      - name: Preflight Python contracts
+        run: |
+          python -m py_compile motogp_content_agency_v2.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py
+          python - <<'PY'
+          from turkish_riders_scout import scout, racing_scout
+          a=scout(1)
+          b=racing_scout(1)
+          if a and len(a[0]) != 3:
+              raise SystemExit(f"Turkish scout contract invalid: {len(a[0])}")
+          if b and len(b[0]) != 4:
+              raise SystemExit(f"Racing scout contract invalid: {len(b[0])}")
+          print("Preflight contracts: PASS")
+          PY
       - name: Research → Voice → Domain-QM → Media → Chief-QM → Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -26,17 +39,19 @@ jobs:
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
         run: python -u motogp_content_agency_v2.py
       - name: Memory, QM-Audit, Medien und Session persistent speichern
+        if: always()
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Alle von der Agency erzeugten/geänderten Racing-Artefakte erfassen.
-          git add -A -- memory/ content/MOTOGP_ROSTER_NEXT.md assets/images/ 2>/dev/null || true
+          git add -A -- memory/ assets/images/
+          if [ -f content/MOTOGP_ROSTER_NEXT.md ]; then
+            git add -- content/MOTOGP_ROSTER_NEXT.md
+          fi
           if git diff --cached --quiet; then
             echo "Keine Agency-Änderungen zu speichern"
           else
-            git commit -m "Auto: MotoGP Paket nach Chief-QM"
+            git commit -m "Auto: Racing Agency Audit und Chief-QM"
           fi
-          # Vor Rebase darf kein unversionierter Agency-Output übrig bleiben.
           if ! git diff --quiet || ! git diff --cached --quiet; then
             echo "FEHLER: Arbeitsbaum nach Persistenz nicht sauber"
             git status --short
