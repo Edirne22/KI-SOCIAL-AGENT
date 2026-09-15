@@ -3,6 +3,7 @@ import re
 import time
 import requests
 from datetime import datetime
+from memory_engine import get_context
 
 MODEL_LIST=["gemini-3.8-flash","gemini-3.7-flash","gemini-3.6-flash","gemini-3.5-flash","gemini-3.5-flash-lite"]
 
@@ -31,20 +32,26 @@ def generate_weekly_plan():
     key=os.environ.get("GEMINI_API_KEY")
     if not key:return "FEHLER: Kein API-Key gefunden."
     roster=read("content/MOTOGP_ROSTER.md"); history=read("memory/POST_HISTORY.md",7000); viral=read("memory/VIRAL_PATTERNS.md",5000)
+    motogp_daily=read("memory/MOTOGP_DAILY_CONTENT.md",7000); learned=get_context(9000)
     prompt=f"""Erstelle einen Content-Plan für die kommenden 7 Tage für eine deutsch-türkische Motorrad-Community.
 
+GESCHLOSSENES MEMORY – VERBINDLICH:\n{learned}
 AKTUELL VERIFIZIERTER MOTOGP-ROSTER:\n{roster or 'Noch kein automatisch verifizierter Roster vorhanden.'}
+MOTOGP DAILY AGENCY:\n{motogp_daily or 'Kein aktuelles Tagesbriefing.'}
 POST-HISTORY:\n{history}
 VIRAL-MUSTER:\n{viral}
 
 Regeln:
-- MotoGP-Fahrer und Teams ausschließlich aus dem aktuellen MOTOGP_ROSTER verwenden; keine alten Saisonaufstellungen raten.
-- Mehrere Tage dürfen MotoGP behandeln, aber jeweils bevorzugt EINEN Fahrer in den Mittelpunkt stellen und Fahrer rotieren.
-- Türkische Racer bei starkem aktuellem Anlass priorisieren.
-- Ride With Me höchstens EINMAL in dieser gesamten Woche.
-- Professionelle, spezifische Hashtags: Fahrer, Team/Hersteller, MotoGP/GP und passende Community-Nische; kein Hashtag-Spam, max. 6 je Plattform.
-- POST_HISTORY zur Vermeidung von Wiederholungen verwenden.
-- Keine erfundenen Transfers, Ergebnisse oder Trending-Behauptungen.
+- MEMORY_CONTEXT zuerst anwenden: Nutzerkorrekturen/hart belegte Regeln > eigene Performance-Hypothesen > externe Inspiration.
+- MotoGP-Fahrer/Teams ausschließlich aus MOTOGP_ROSTER; aktuelle Themen aus MOTOGP_DAILY_CONTENT priorisieren.
+- Mehrere Tage dürfen MotoGP behandeln, aber bevorzugt EINEN Fahrer pro Inhalt und Fahrer rotieren.
+- Türkische Racer bei starkem aktuellem Anlass priorisieren, nicht künstlich erzwingen.
+- Ride With Me höchstens EINMAL in der Woche.
+- Professionelle spezifische Hashtags, max. 6 je Plattform; kein Spam.
+- POST_HISTORY und Memory-Failure-Patterns gegen Wiederholungen nutzen; keine identischen Hooks recyceln.
+- Quellen sind Faktenbasis, nie Textvorlage. Keine englischen Rohtexte/Metadaten oder Satz-für-Satz-Übersetzungen.
+- Performance nur aus echten Daten ableiten; fehlende Werte nicht schätzen und keine Erfolgsgarantie.
+- Keine erfundenen Transfers, Ergebnisse, Zitate oder Trending-Behauptungen.
 - Reale Rennmedien nicht künstlich als echte Aufnahme erzeugen.
 
 Für Montag bis Sonntag jeweils:
@@ -57,6 +64,7 @@ Beschreibung: ...
 Hashtags Instagram: ...
 Hashtags TikTok: ...
 Visuelle Idee: ...
+Memory-Bezug: welche bestätigte Regel/Hypothese wurde angewendet oder 'keine belastbare'
 """
     return try_generate(key,prompt)
 
