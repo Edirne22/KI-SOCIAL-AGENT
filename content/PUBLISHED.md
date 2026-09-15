@@ -399,7 +399,7 @@ Quelle: https://www.motogp.com/en/news/2026/09/14/umberto-masetti-officially-ind
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-umberto-masetti-offi-01.jpg
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-15 20:10 | ID: 1285968257941776_122107670889469415]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 35018012127-1
 Freigabe: Telegram Racing
