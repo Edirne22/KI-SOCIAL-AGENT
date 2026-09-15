@@ -342,7 +342,7 @@ https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-and-bezz
 Quelle: https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-and-bezzecchi-to-underline-title-charge-at-aragon/1087037
 Link-Preview: offiziell
 
-## Instagram
+## Instagram [GEPOSTET 2026-09-15 19:52 | ID: 17944029618076610]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 35016175136-1
 Freigabe: Telegram Racing
