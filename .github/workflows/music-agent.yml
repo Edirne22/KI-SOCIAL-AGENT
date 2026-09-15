@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "0,15,30,45 6-21 * * *" # alle 15 Minuten, 08:00–23:45 deutsche Sommerzeit
   workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Sicherer Testmodus: reserviertes Reel mischen, aber nicht veröffentlichen"
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -19,16 +25,42 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Aktualisiere Arbeitsstand
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.test_mode }}
         run: git pull --rebase origin main
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
+
       - name: Prüfe Video-Werkzeug
         run: command -v ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+
       - name: Musik in freigegebene Videos mischen
+        env:
+          MUSIC_AGENT_TEST_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.test_mode && '1' || '0' }}
         run: python music_agent.py
+
+      - name: Testergebnis als Artefakt bereitstellen
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_mode }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: musik-agent-test-${{ github.run_id }}
+          path: test-output/music-agent/*.mp4
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Testzusammenfassung
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_mode }}
+        run: |
+          echo "## Musik-Agent Dry-Run" >> "$GITHUB_STEP_SUMMARY"
+          echo "Reservierte Inhalte durften nur für den Test gemischt werden." >> "$GITHUB_STEP_SUMMARY"
+          echo "PUBLISHED.md wurde nicht verändert und kein Publisher wurde aufgerufen." >> "$GITHUB_STEP_SUMMARY"
+          find test-output/music-agent -maxdepth 1 -type f -name '*.mp4' -printf '- `%f`\n' >> "$GITHUB_STEP_SUMMARY"
+
       - name: Änderungen committen
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.test_mode }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
