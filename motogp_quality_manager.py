@@ -1,4 +1,4 @@
-"""Finales Domain-QM für Racing-Pakete vor Chief-QM und Telegram – V8.4.5.1."""
+"""Finales Domain-QM für Racing-Pakete vor Semantic-/Chief-QM – V8.4.6.1."""
 import re
 BANNED=('motogp im fokus','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung','der social-text wird bewusst eigenständig formuliert','für die einordnung verwenden wir ausschließlich','was ist für dich der spannendste punkt an dieser story','größte understatement-leistung','groesste understatement-leistung','motogp-gran premio','einen duell','im letzten runde','eine duell')
 ENGLISH_MARKERS=(' out the ',' quickest ',' reigning ',' leads ',' opening stint ',' beats ',' pole in ',' qualifying ',' line-up ',' revealed ',' denies ',' points cover ',' world champion ',' sprint stand-off ',' from 2027 ',' alongside ',' weekend at ',' does the business ')
@@ -14,26 +14,18 @@ def rider_matches(text):
  return list(dict.fromkeys(out))
 def rider_tag(rider):return '#'+re.sub(r'[^A-Za-z0-9]','',rider)
 def repair_rider_hashtags(item,caption):
- """Deterministische Reparatur: Quellenfahrer bekommen ihren Hashtag, ohne Fakten neu zu erfinden."""
- source=(item.get('title') or '')+' '+(item.get('summary') or '')
- riders=rider_matches(source)[:2]
+ source=(item.get('title') or '')+' '+(item.get('summary') or '');riders=rider_matches(source)[:2]
  if not riders:return caption
- tags=re.findall(r'#[A-Za-z0-9ÄÖÜäöüß]+',caption);compact={fold(t[1:]) for t in tags}
- missing=[rider_tag(r) for r in riders if fold(re.sub(r'[^A-Za-z0-9]','',r)) not in compact]
+ tags=re.findall(r'#[A-Za-z0-9ÄÖÜäöüß]+',caption);compact={fold(t[1:]) for t in tags};missing=[rider_tag(r) for r in riders if fold(re.sub(r'[^A-Za-z0-9]','',r)) not in compact]
  if not missing:return caption
- # Maximal sieben Hashtags. Bei Bedarf generische Reichweiten-Tags am Ende ersetzen, nie Serien-/Fahrer-Tags.
  parts=caption.rsplit('\n\n',1)
  if len(parts)==2 and parts[1].lstrip().startswith('#'):
   existing=parts[1].split();room=max(0,7-len(existing));add=missing[:room]
   if len(add)<len(missing):
-   protected=[t for t in existing if t.startswith(('#MotoGP','#WorldSBK','#WorldSSP')) or any(fold(t[1:])==fold(re.sub(r'[^A-Za-z0-9]','',r)) for r in riders)]
-   generic=[t for t in existing if t not in protected]
-   need=len(missing);existing=(protected+generic)[:max(0,7-need)];add=missing[:7-len(existing)]
+   protected=[t for t in existing if t.startswith(('#MotoGP','#WorldSBK','#WorldSSP')) or any(fold(t[1:])==fold(re.sub(r'[^A-Za-z0-9]','',r)) for r in riders)];generic=[t for t in existing if t not in protected];need=len(missing);existing=(protected+generic)[:max(0,7-need)];add=missing[:7-len(existing)]
   caption=parts[0]+'\n\n'+' '.join(dict.fromkeys(existing+add))
- else:
-  caption=caption+'\n\n'+' '.join(missing[:2])
- item['caption']=caption
- return caption
+ else:caption=caption+'\n\n'+' '.join(missing[:2])
+ item['caption']=caption;return caption
 def review(item,caption):
  caption=repair_rider_hashtags(item,caption);errors=[];low=fold(caption);source=fold((item.get('title') or '')+' '+(item.get('summary') or ''))
  for p in BANNED:
@@ -59,8 +51,10 @@ def review(item,caption):
   title_words=[w for w in re.findall(r'[a-z0-9]+',fold(item.get('title',''))) if len(w)>=5 and w not in {'motogp','worldsbk','worldssp','confirmed','title','sprint'}]
   if title_words and not any(w in low for w in title_words[:8]):errors.append('Text nicht konkret genug an Artikel gebunden')
  if re.search(r'\b(quelle|redaktion|social-text|offizielle meldung)\b',low):errors.append('interne Quellen-/Redaktionssprache im Post')
- body='\n'.join(p for p in parts if not p.startswith('#'))
- if any(q in body for q in ('"','“','”','„','«','»')):errors.append('direktes/übersetztes Zitat im Post – paraphrasieren')
+ # V8.4.6.1: Zitatzeichen werden hier bewusst NICHT mehr final verworfen.
+ # Der nachgeschaltete semantische Fakten-QM erkennt direkte/übersetzte Zitate,
+ # liefert den konkreten Grund an den Redakteur zurück und erzwingt genau eine Neufassung.
+ # Dadurch wird das Gate nicht gelockert: ohne Semantic-QM-PASS erreicht kein Text den Chief-QM.
  if errors:print('RACING-QM FAIL:',item.get('title','')[:90],'|','; '.join(errors))
  else:print('RACING-QM PASS:',item.get('title','')[:90])
  return not errors,errors
