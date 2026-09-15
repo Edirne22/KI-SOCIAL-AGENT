@@ -1,12 +1,16 @@
-"""Zentrale, fail-closed End-QM-Schicht für KI-SOCIAL-AGENT – V8.4.4."""
+"""Zentrale, fail-closed End-QM-Schicht fuer KI-SOCIAL-AGENT – Human Writing Protocol V1.0."""
 from pathlib import Path
 from datetime import datetime, timezone
 import re
 LOG=Path('memory/QUALITY_MANAGER_LOG.md')
-BAD_LANGUAGE=('größte understatement-leistung','groesste understatement-leistung','motogp-gran premio','einen duell','eine duell','im letzten runde','legende zu einer legende','mit großem anfangsbuchstaben','mit grossem anfangsbuchstaben','erfahrt alle wichtigen')
+PROTOCOL=Path('config/HUMAN_WRITING_PROTOCOL.md')
+BAD_LANGUAGE=('größte understatement-leistung','groesste understatement-leistung','motogp-gran premio','einen duell','eine duell','im letzten runde','legende zu einer legende','mit großem anfangsbuchstaben','mit grossem anfangsbuchstaben','erfahrt alle wichtigen','zurück auf die zeichentafel','zurueck auf die zeichentafel','airtime zum testen')
+AI_PHRASES=('natürlich!','gerne!','selbstverständlich!','lassen sie uns','es ist wichtig zu beachten','zusammenfassend lässt sich sagen','abschließend lässt sich festhalten','ich hoffe, das hilft','als ki','als sprachmodell','ich habe den text bewusst','der folgende text klingt natürlich')
+PR_WORDS=('bahnbrechend','wegweisend','erstklassig','immense bedeutung','entscheidenden wendepunkt','weitreichende auswirkungen','stellt einen meilenstein dar')
+INTERNAL_MARKERS=('turn0search','turn1search','contentreference','oaicite','system prompt','interne tool-id')
 def _fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def _log(domain,item,ok,errors):
-    LOG.parent.mkdir(parents=True,exist_ok=True);old=LOG.read_text(encoding='utf-8') if LOG.exists() else '# Chief Quality Manager Log\n\n';title=item.get('title','ohne Titel');state='PASS' if ok else 'FAIL';row=f'## {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC} | {domain} | {state}\nTitel: {title}\nStory-Key: {item.get("story_key","")}\nGründe: {"; ".join(errors) if errors else "alle Gates bestanden"}\n\n';LOG.write_text(old+row,encoding='utf-8')
+    LOG.parent.mkdir(parents=True,exist_ok=True);old=LOG.read_text(encoding='utf-8') if LOG.exists() else '# Chief Quality Manager Log\n\n';title=item.get('title','ohne Titel');state='PASS' if ok else 'FAIL';row=f'## {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC} | {domain} | {state}\nTitel: {title}\nStory-Key: {item.get("story_key","")}\nGründe: {"; ".join(errors) if errors else "alle Gates bestanden"}\nHuman-Writing-Protocol: V1.0\n\n';LOG.write_text(old+row,encoding='utf-8')
 def review(domain,item,caption,media_path='',source_url='',domain_reviewer=None):
     errors=[];low=_fold(caption or '')
     if not caption.strip():errors.append('Copy fehlt')
@@ -16,6 +20,11 @@ def review(domain,item,caption,media_path='',source_url='',domain_reviewer=None)
     if any(x in low for x in ('social-text','redaktion','die fakten stammen aus der offiziellen meldung','eines der relevanten')):errors.append('interne/generische Meta-Sprache')
     bad=[p for p in BAD_LANGUAGE if _fold(p) in low]
     if bad:errors.append('Sprach-QM FAIL: '+', '.join(bad))
+    ai=[p for p in AI_PHRASES if _fold(p) in low]
+    if ai:errors.append('Human-Protocol FAIL: KI-/Vorlagen-Floskel')
+    pr=[p for p in PR_WORDS if _fold(p) in low]
+    if pr:errors.append('Human-Protocol FAIL: unbelegte PR-/Hype-Sprache')
+    if any(_fold(p) in low for p in INTERNAL_MARKERS):errors.append('Human-Protocol FAIL: interner Marker im Output')
     if any(q in caption for q in ('"','“','”','„','«','»')):errors.append('Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben')
     if '?' not in caption:errors.append('Community-Frage fehlt')
     if len(re.findall(r'#[A-Za-z0-9ÄÖÜäöüß]+',caption))<3:errors.append('zu wenige relevante Hashtags')
