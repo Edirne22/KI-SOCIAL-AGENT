@@ -1,6 +1,6 @@
 # MotoGP Daily Content Agency
 
-**Recherche:** 2026-09-15 13:48 UTC
+**Recherche:** 2026-09-15 15:19 UTC
 **Primärquelle:** offizielle MotoGP-Seite
 **Closed-Loop Memory:** aktiv
 **Media-Gate:** Instagram-Medium muss vor Telegram vorhanden sein
@@ -42,30 +42,30 @@
 - Quellen-Metadaten: The top two from last year
 - Score inkl. Fahrerrotation: 13
 
-### 8. Bastianini joins SuperFile Trackhouse MotoGP team from 2027
+### 8. Game on: Marc Marquez overcomes the largest points deficit in history
+- Quelle: https://www.motogp.com/en/news/2026/09/15/game-on-marc-marquez-overcomes-the-largest-points-deficit-in-history/1090045
+- Quellen-Metadaten: A 102-point gap just seven rounds ago is now the championship lead – find out more about the #93’s Championship comeback so far as Aprilia reload for a response
+- Score inkl. Fahrerrotation: 9
+
+### 9. Bastianini joins SuperFile Trackhouse MotoGP team from 2027
 - Quelle: https://www.motogp.com/en/news/2026/08/24/bastianini-joins-superfile-trackhouse-motogp-team-from-2027/1086614
 - Quellen-Metadaten: The Italian is confirmed at the squad for the next two seasons, partnering Raul Fernandez
 - Score inkl. Fahrerrotation: 6
 
-### 9. Red Bull KTM welcomes Alex Marquez for 2027
+### 10. Red Bull KTM welcomes Alex Marquez for 2027
 - Quelle: https://www.motogp.com/en/news/2026/07/06/red-bull-ktm-welcomes-alex-marquez-for-2027/1076392
 - Quellen-Metadaten: The 2025 runner up is confirmed on a multi-year deal with KTM
 - Score inkl. Fahrerrotation: 10
 
-### 10. Martin and Ogura confirmed in all-new Yamaha line-up for 2027 and 2028
+### 11. Martin and Ogura confirmed in all-new Yamaha line-up for 2027 and 2028
 - Quelle: https://www.motogp.com/en/news/2026/07/01/martin-and-ogura-confirmed-in-all-new-yamaha-line-up-for-2027-and-2028/1075825
 - Quellen-Metadaten: Yamaha have announced the 2024 MotoGP World Champion and Japan’s first MotoGP winner in 22 years as their stars for the new era
 - Score inkl. Fahrerrotation: 9
 
-### 11. Bagnaia signs four-year Aprilia Racing deal from 2027
+### 12. Bagnaia signs four-year Aprilia Racing deal from 2027
 - Quelle: https://www.motogp.com/en/news/2026/06/25/bagnaia-signs-four-year-aprilia-racing-deal-from-2027/1074916
 - Quellen-Metadaten: The #63 will move to create an all-Italian Aprilia lineup alongside Bezzecchi next year
 - Score inkl. Fahrerrotation: 6
-
-### 12. Yamaha bid farewell to Quartararo and Rins at the end of 2026
-- Quelle: https://www.motogp.com/en/news/2026/06/30/yamaha-bid-farewell-to-quartararo-and-rins-at-the-end-of-2026/1075601
-- Quellen-Metadaten: It’s now officially confirmed that neither Monster Energy Yamaha MotoGP rider will remain with the marque next year
-- Score inkl. Fahrerrotation: 8
 
 ## Aktiver Memory-Kontext
 # Memory Context Packet
