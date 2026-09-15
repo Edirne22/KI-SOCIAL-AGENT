@@ -1,11 +1,11 @@
 # MASTER-SNAPSHOT – KI-SOCIAL-AGENT
 
 **Stand:** 15.09.2026  
-**Version:** v5  
+**Version:** v6  
 **Repository:** `Edirne22/KI-SOCIAL-AGENT`
 
 ## Leitbild
-Der KI-SOCIAL-AGENT recherchiert, prüft, formuliert, bereitet Medien vor und lernt aus Ergebnissen. Veröffentlichung bleibt hinter einer persönlichen Freigabe. Für MotoGP gilt jetzt: **eine Telegram-Freigabe pro ausgewähltem Content-Paket; danach darf die bestehende Publisher-Kette automatisch übernehmen.**
+Der KI-SOCIAL-AGENT recherchiert, prüft, formuliert, bereitet Medien vor, veröffentlicht nur nach persönlicher Freigabe und lernt anschließend aus Nutzerentscheidungen, eigenen Ergebnissen und technischen Fehlern. **Neu in v6: geschlossenes selbstlernendes Feedback-Memory mit Audit-Trail und Konfidenzregeln.**
 
 ## Architektur
 ```
@@ -13,99 +13,87 @@ Web / MotoGP / Trends
         ↓
 Quellenprüfung + Roster
         ↓
-Content Agency / Creator / Strategist
+MEMORY_CONTEXT + Creator / Strategist / MotoGP Agency
         ↓
-Profilformat + Quality + automatisches Rechte-Gate
+Profilformat + Quality + Rechte-Gate
         ↓
-Telegram-Vorschau
+Telegram-Vorschau → EINE Freigabe
         ↓
-EINE Freigabe
+PUBLISHED.md = FREIGEGEBEN → Publisher
         ↓
-content/PUBLISHED.md = FREIGEGEBEN
+Plattform-ID + Analytics + Quality + Fehler/Duplikate
         ↓
-Instagram-/Facebook-Publisher
+Agent 14 Memory Curator
         ↓
-Plattform-ID + Analytics + Learning
+MEMORY_EVENTS → LEARNED_RULES → MEMORY_CONTEXT
+        └──────────────────────────────► nächster Content-Lauf
 ```
 
+## Agent 14 – Closed-Loop Memory Curator
+Dateien: `agents/14_memory_curator.md`, `memory_engine.py`, `.github/workflows/memory-learning.yml`.
+
+### Vier Memory-Schichten
+- `memory/MEMORY_EVENTS.jsonl`: append-only Audit-Ereignisse (Nutzerkorrekturen, Publishing, Performance, Fehler, Wiederholungen).
+- `memory/LEARNED_RULES.md`: kuratierte Regeln mit Evidenz/Konfidenz.
+- `memory/MEMORY_CONTEXT.md`: kompaktes aktives Kontextpaket, das Content-Agenten vor der Erstellung lesen.
+- `memory/MEMORY_HEALTH.md`: Datenlage, Regel-/Eventstatus und Schutzprüfung.
+
+Bestehende Spezial-Memories wie `PERFORMANCE`, `POST_HISTORY`, `VIRAL_PATTERNS`, `HOOKS_THAT_WORK`, `USER_PREFERENCES`, `QUALITY_*`, `EXPERIMENTS` bleiben erhalten und dienen als Evidenzquellen.
+
+### Evidenz-/Lernregeln
+- Direkte Nutzerkorrektur und harte Sicherheits-/Freigaberegel: hohe Konfidenz, sofort nutzbar.
+- Eindeutig dokumentierter technischer Fehler/Duplikat: präventive Workflow-Regel.
+- Eigene Performance: nur mit echter Reichweite und mehreren vergleichbaren Datensätzen; Korrelation bleibt Hypothese, keine Kausalitätsbehauptung.
+- Externe Trends/Engagement: Inspiration, niemals automatisch persönliche Präferenz.
+- Fehlende Daten werden nicht geschätzt.
+- Konflikte werden nicht still überschrieben; Safety/Brand/Freigabe haben Vorrang.
+- Memory darf niemals `FREIGEGEBEN` setzen oder Publisher starten.
+
+### Aktuelle Bootstrap-Learnings
+Der erste MotoGP-Agency-Test vom 15.09.2026 hat bereits als direkte Nutzerkorrektur gelernt: Quelle ist Faktenbasis, nie Textvorlage; englische Rohtexte/Web-Metadaten entfernen; Social-Text komplett neu/natürlich auf Deutsch; keine Standard-Hook-/CTA-Dauerschablone. Zusätzlich wurden dokumentierte Textduplikate und wiederholte Hooks als präventive Regeln übernommen.
+
+## Content Creator / Strategist
+`generate_ideas.py` und `weekly_plan.py` lesen jetzt das Closed-Loop `MEMORY_CONTEXT`. Tagesideen lesen zusätzlich `memory/MOTOGP_DAILY_CONTENT.md`. Priorität: Safety/Brand/Quellen > Nutzerkorrektur > eigene kuratierte Performance > externe Inspiration. Wiederholte Hooks und Themen werden gegen POST_HISTORY geprüft; Performance wird nicht erfunden.
+
 ## MotoGP-Roster
-- `motogp_roster_updater.py` prüft den aktiven 2026-Roster direkt gegen offizielle MotoGP-Seiten plus unabhängigen Crosscheck; keine Gemini-Abhängigkeit für den aktiven Roster.
-- Erfolgreicher Real-Lauf am 15.09.2026: 22 Stammfahrer verifiziert und `content/MOTOGP_ROSTER.md` erzeugt.
-- `memory/MOTOGP_ROSTER_LOG.md` dokumentiert die Prüfung.
-- `content/MOTOGP_ROSTER_NEXT.md` führt bestätigte Meldungen zur nächsten Saison separat. Ein unvollständiger Zukunfts-Roster ersetzt niemals den aktiven Roster.
-- Gerüchte, Wildcards, Test- und Ersatzfahrer werden nicht als reguläre Stammfahrer übernommen.
+- `motogp_roster_updater.py` prüft den aktiven 2026-Roster gegen offizielle MotoGP-Seiten plus Crosscheck.
+- Erfolgreicher Real-Lauf 15.09.2026: 22 Stammfahrer verifiziert; `content/MOTOGP_ROSTER.md` erzeugt.
+- `MOTOGP_ROSTER_NEXT.md` bleibt separate Zukunftsvorschau; unvollständig ersetzt nie den aktiven Roster.
+- Gerüchte/Wildcards/Test-/Ersatzfahrer werden nicht als reguläre Stammfahrer übernommen.
 
 ## Agent 13 – MotoGP Content Agency
-Dateien: `agents/13_motogp_content_agency.md`, `motogp_content_agency.py`, `.github/workflows/motogp-content-agency.yml`.
+Die Agency liest jetzt `MEMORY_CONTEXT`, berücksichtigt jüngste Fahrer-/Themenhäufigkeit als Rotationssignal und besitzt ein zusätzliches Text-Qualitäts-Gate. Aktualität kann Rotation überstimmen. Quelle bleibt Faktenbasis; fertige Telegram-Texte müssen eigenständig deutsch sein.
 
-Täglich:
-- offizielle MotoGP-News und Rider-Market recherchieren;
-- Fahrer-/Titel-/Renn-/Technik-/Transfer-Themen priorisieren;
-- aktuellen Roster und Fahrerrotation berücksichtigen;
-- Toprak/türkische Racer bei echtem Anlass priorisieren;
-- bis zu 12 Themen analysieren und die stärksten 3 als Telegram-Pakete vorbereiten;
-- eigenständige deutschsprachige Captions im Profilstil erzeugen;
-- professionelle, thematische Hashtags ergänzen;
-- offizielle Quelle pro Paket erhalten;
-- Tagesbriefing und Archiv speichern;
-- Next-Season-Meldungen getrennt fortschreiben.
+Täglich: offizielle MotoGP-News/Rider Market → Roster/Memory/Rotation → bis 12 Themen analysieren → stärkste 3 sauber redigieren → Quellen-/Rechte-Gate → Telegram → eine Freigabe → Publisher.
 
-## Rechte- und Quellen-Gate
-Das Rechte-Gate läuft vor Telegram im Hintergrund und erzeugt keine routinemäßige zweite Nutzerabfrage:
-- Fakten eigenständig zusammenfassen, keine längeren fremden Artikeltexte kopieren.
-- Keine fremden Rennbilder/-videos ungeprüft als eigenes Medium verwenden.
-- Bei unklaren Medienrechten automatisch sichere eigene/zulässige Medienalternative wählen.
-- Facebook erhält die offizielle MotoGP-URL im Post, damit Meta – sofern von der Zielseite unterstützt – eine Link-Preview mit Vorschaubild/Titel/Domain erzeugen kann.
-- Instagram verwendet eigenes/zulässiges Medium; Quelle bleibt dokumentiert. Story-Link kann genutzt werden, sobald/sofern der Story-Publisher Link-Sticker technisch unterstützt.
+## Rechte-/Quellen-Gate
+Keine routinemäßige zweite Nutzerabfrage. Fakten eigenständig formulieren; fremde Rennmedien nicht ungeprüft übernehmen. Facebook nutzt bevorzugt offiziellen Link/Link-Preview; Instagram eigenes/zulässiges Medium. Unklare Medienrechte → sichere Alternative.
 
-## MotoGP Telegram Approval
-Dateien: `motogp_telegram_receive.py`, `.github/workflows/motogp-telegram-approval.yml`, `memory/MOTOGP_APPROVAL_SESSION.md`, `memory/MOTOGP_APPROVAL_STATE.md`.
-
-Befehle:
-- `motogp 1`, `motogp 2`, `motogp 3`
-- `motogp alle`
-- `motogp nein`
-
-Nach Freigabe entstehen getrennte Instagram- und Facebook-Blöcke mit `Status: FREIGEGEBEN` in `content/PUBLISHED.md`. Die bestehenden Publisher dürfen danach automatisch veröffentlichen. Es gibt keine zweite routinemäßige Text-/Rechte-/Plattformfreigabe.
+## Telegram / Publisher
+MotoGP: `motogp 1`, `motogp 2`, `motogp 3`, `motogp alle`, `motogp nein`. Nach Freigabe entstehen getrennte Instagram-/Facebook-Blöcke `FREIGEGEBEN`. Bestehende Publisher bleiben an Freigabe + Publication-Claims gebunden. Erfolgreiche Veröffentlichungen werden mit Plattform-ID dokumentiert.
 
 ## Content-Regeln
-- Ride With Me maximal 1x/Kalenderwoche.
-- MotoGP-Fahrer stärker und einzeln fokussieren; Roster rotieren.
-- Deutsch-türkische Motorrad-Community als Kernzielgruppe.
-- Locker, per Du, wenige Emojis, kein Marketing-Sprech/Clickbait.
-- Hashtags: Fahrer + Team/Hersteller + MotoGP/Event + Nische/Community; kein Spam.
-- `POST_HISTORY`, `VIRAL_PATTERNS`, `HOOKS_THAT_WORK` für Wiederholungsvermeidung und Optimierung.
+- Ride With Me max. 1x/Kalenderwoche.
+- MotoGP-Fahrer einzeln fokussieren und Roster rotieren.
+- Locker, menschlich, per Du; Deutsch als Basis, Türkisch gezielt.
+- Keine Nachrichtenagentur-/KI-Schablonensprache.
+- Professionelle relevante Hashtags; kein Spam.
+- Keine erfundenen Fakten, Ergebnisse, Transfers, Zitate, Trends oder Quellen.
 
-## Publisher
-Vorhanden: Instagram Posts, Stories, Reels, Karussells sowie Facebook Posts/Karussells/Video. Alle Publisher bleiben an `FREIGEGEBEN` und Publication-Claims gebunden. Erfolgreiche Veröffentlichungen werden mit Zeitpunkt und Plattform-ID dokumentiert.
-
-Facebook-Video-Pfad wurde am 15.09.2026 real erfolgreich bestätigt. Der Publisher erkennt `Video:` und darf einen fehlgeschlagenen Upload nicht als gepostet markieren.
-
-## Medien & Musik
-- Agnes-Medienpipeline für eigene/zulässige Bilder, optionale Videos und Karussells.
-- KI-generierte Szenen dürfen nicht als echte Rennaufnahmen ausgegeben werden.
-- Music Agent kann geeignete lokale Musik verarbeiten, veröffentlicht aber nicht selbst.
-
-## Recherche & Learning
-- Inspiration: Apify primär, Bright Data gezielter Fallback, weitere öffentliche Quellen quellengebunden.
-- Analytics, Viral Patterns, Hooks, Growth/Funnel und Follow Analyzer liefern Learnings.
-- Follow Analyzer untersucht konfigurierte öffentliche Profile, keine privaten Follower-/Likerlisten und führt keine Social-Interaktionen aus.
+## Automatisches Learning-Timing
+`Closed Loop Memory Learning` läuft täglich um 17:45 UTC nach den vorgesehenen Analytics-/Viral-Reports und ist zusätzlich manuell startbar. Er verändert ausschließlich Memory-Dateien, nicht Freigaben oder Publisher.
 
 ## Sicherheitsnetz
-- Keine erfundenen Ergebnisse, Transfers, Quellen oder Trending-Behauptungen.
-- Keine Veröffentlichung allein wegen eines Trends oder Roster-Updates.
-- Telegram-Freigabe nur aus dem hinterlegten persönlichen Chat.
-- Gemeinsame `published-plan-writers`-Concurrency schützt `content/PUBLISHED.md` vor konkurrierenden Schreibzugriffen.
-- Secrets/Tokens ausschließlich in GitHub Secrets/Variables.
-- Keine Käufe, Buchungen oder Anmeldungen durch Recherche-Agenten.
+Keine selbstmodifizierenden Safety-Regeln. Keine Secrets/private Chats im Learning-Memory. Keine automatische Veröffentlichung aus einem Lernsignal. Keine Käufe/Buchungen/Anmeldungen durch Recherche-Agenten. Externe Inhalte werden nicht kopiert.
 
 ## Aktuelle Prioritäten
-1. MotoGP Content Agency einmal real manuell testen: Recherche → Telegram → `motogp 1` → Publisher.
-2. Link-Preview auf Facebook im Real-Post prüfen; sie hängt zusätzlich von den Open-Graph-Daten/Meta-Regeln der offiziellen Zielseite ab.
-3. Instagram-Story-Link-Sticker als eigene Publisher-Funktion ergänzen/testen, bevor er als automatisch unterstützt gilt.
-4. Next-Season-Roster weiter aus offiziellen Bestätigungen aufbauen und erst bei vollständigem Grid aktivieren.
-5. `content/PUBLISHED.md`-Historie separat und verlustfrei reparieren.
-6. Follow-Analyse-Anbieterfehler weiter stabilisieren.
+1. Closed-Loop Memory ersten echten Workflow-Lauf prüfen und Event-/Regel-/Context-Ausgabe gegen Quellen validieren.
+2. Zweiten MotoGP-Agency-Test nach Redaktions- und Memory-Update durchführen.
+3. Eigene Analytics-Daten stabil befüllen; erst dann Performance-Hypothesen automatisch befördern.
+4. Telegram-Ablehnungen künftig noch feiner als explizite Feedback-Events mit Grund erfassen, sofern Nutzer einen Grund mitsendet.
+5. Facebook-Link-Preview im Real-Post prüfen.
+6. `content/PUBLISHED.md`-Historie separat verlustfrei reparieren.
+7. Follow-Analyse-Anbieterfehler stabilisieren.
 
 ## Leitbild
-> **„Bülent entscheidet einmal. Das System recherchiert, prüft, formuliert und veröffentlicht danach kontrolliert über die bestehende Freigabekette.“**
+> **„Bülent entscheidet. Das System merkt sich belegte Entscheidungen und Ergebnisse, lernt kontrolliert daraus und nutzt dieses Wissen beim nächsten Lauf – ohne Sicherheits- oder Freigaberegeln selbst abzuschwächen.“**
