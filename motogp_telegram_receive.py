@@ -1,6 +1,12 @@
-"""Verarbeitet MotoGP-Freigaben; nur vollständig medienreife Sessions dürfen in die Publisher-Kette."""
+"""Verarbeitet MotoGP-Freigaben; nur vollständig medienreife Sessions dürfen in die Publisher-Kette.
+
+Der zentrale Router übergibt genau EIN Telegram-Update per CLI. Dadurch gibt es
+keinen zweiten getUpdates()-Abruf mehr und keine Race-Condition zwischen Router
+und MotoGP-Receiver.
+"""
 from pathlib import Path
 import re
+import sys
 from telegram_bot import get_chat_id, get_updates, send_message
 
 SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md')
@@ -52,22 +58,41 @@ def publish(posts,chosen,update_id):
     if blocks:
         PUBLISHED.parent.mkdir(parents=True,exist_ok=True); PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
         print(f'DIAG: {len(blocks)} medienreife Plattform-Blöcke übergeben.')
+    return len(blocks)
+
+def handle_one(uid, chat, txt):
+    allowed=str(get_chat_id())
+    if chat != allowed or already(uid):
+        print(f'DIAG: Update {uid} nicht erlaubt oder bereits verarbeitet.'); return False
+    chosen=selection(txt)
+    if chosen is None:
+        print(f'DIAG: Update {uid} ist kein MotoGP-Freigabekommando.'); return False
+    posts=parse_session()
+    if chosen and (not posts or any(n not in posts for n in chosen)):
+        send_message('⛔ Diese MotoGP-Auswahl ist veraltet oder noch nicht medienreif und wird nicht veröffentlicht. Bitte die neue Tagesauswahl verwenden.')
+    elif chosen:
+        count=publish(posts,chosen,uid)
+        send_message(f'✅ MotoGP: {len(chosen)} Content-Paket(e) freigegeben. {count} Plattform-Blöcke wurden an die Publisher übergeben.')
+    else:
+        send_message('❌ MotoGP-Tagesauswahl verworfen. Es wird nichts veröffentlicht.')
+    STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(f'Update-ID: {uid}\nAntwort: {txt}\n',encoding='utf-8')
+    return True
 
 def main():
-    allowed=str(get_chat_id()); posts=parse_session()
-    updates=get_updates(); handled=False
-    for upd in sorted(updates,key=lambda x:x.get('update_id',0)):
+    # Neuer sicherer Pfad: Router übergibt uid/chat/text direkt.
+    if len(sys.argv) >= 4:
+        try: uid=int(sys.argv[1])
+        except ValueError: raise SystemExit('Ungültige Update-ID')
+        chat=sys.argv[2]; txt=sys.argv[3]
+        if not handle_one(uid,chat,txt): raise SystemExit(2)
+        return
+
+    # Nur für manuellen Legacy-Test; der Zeitplan darf ausschließlich den Router nutzen.
+    allowed=str(get_chat_id()); handled=False
+    for upd in sorted(get_updates(),key=lambda x:x.get('update_id',0)):
         uid=upd.get('update_id'); msg=upd.get('message') or {}; chat=str((msg.get('chat') or {}).get('id','')); txt=msg.get('text')
-        if not isinstance(uid,int) or not isinstance(txt,str): continue
-        chosen=selection(txt)
-        if chosen is None or chat!=allowed or already(uid): continue
-        if chosen and (not posts or any(n not in posts for n in chosen)):
-            send_message('⛔ Diese MotoGP-Auswahl ist veraltet oder noch nicht medienreif und wird nicht veröffentlicht. Bitte die neue Tagesauswahl verwenden.')
-        elif chosen:
-            publish(posts,chosen,uid); send_message(f'✅ MotoGP: {len(chosen)} Content-Paket(e) freigegeben. Instagram-Medium ist bereits vorbereitet; Facebook nutzt die offizielle Link-Vorschau.')
-        else:
-            send_message('❌ MotoGP-Tagesauswahl verworfen. Es wird nichts veröffentlicht.')
-        STATE.parent.mkdir(parents=True,exist_ok=True); STATE.write_text(f'Update-ID: {uid}\nAntwort: {txt}\n',encoding='utf-8'); handled=True
+        if isinstance(uid,int) and isinstance(txt,str) and chat==allowed and selection(txt) is not None:
+            handled=handle_one(uid,chat,txt) or handled
     if not handled: print('DIAG: Kein neues gültiges MotoGP-Freigabekommando gefunden.')
 
 if __name__=='__main__': main()
