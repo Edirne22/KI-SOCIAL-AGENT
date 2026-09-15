@@ -50,3 +50,28 @@ Titel: Game on: Marc Marquez pockets perfect Sachsenring weekend to ignite title
 Story-Key: motogp:1076928
 Gründe: alle Gates bestanden
 
+## 2026-09-15 19:05 UTC | Motorcycle Racing | PASS
+Titel: Pol Espargaro continues to replace Viñales at the Austrian GP
+Story-Key: motogp:1090085
+Gründe: alle Gates bestanden
+
+## 2026-09-15 19:06 UTC | Motorcycle Racing | PASS
+Titel: Artigas rattled the sabre after Race 2 win in France: “The goal is still to win the Championship”
+Story-Key: motogp:1090051
+Gründe: alle Gates bestanden
+
+## 2026-09-15 19:06 UTC | Motorcycle Racing | PASS
+Titel: NEWS 13h ago “One of the best results to have the podium” – Race 1 retirement to Sunday rostrum for Arenas in France The Spanish rider went from heartbreak to elation in the space of 24 hours following a rollercoaster weekend at Magny-Cours WorldSSP
+Story-Key: motogp:1090041
+Gründe: alle Gates bestanden
+
+## 2026-09-15 19:06 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Fantasy: Super Boost Now Available!
+Story-Key: motogp:1089174
+Gründe: alle Gates bestanden
+
+## 2026-09-15 19:06 UTC | Motorcycle Racing | PASS
+Titel: “Seeing my team in Parc Ferme waiting for me was amazing” – Seabright shines in maiden win at Magny-Cours
+Story-Key: motogp:1090014
+Gründe: alle Gates bestanden
+

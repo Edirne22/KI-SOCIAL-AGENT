@@ -1,8 +1,9 @@
-# Motorcycle Racing Daily Agency V8.4
+# Motorcycle Racing Daily Agency V8.4.1
 
-Stand: 2026-09-15 18:44 UTC
-Rohkandidaten: 158
-MotoGP: 86
+Stand: 2026-09-15 18:56 UTC
+Rohkandidaten: 153
+Aktuelle <=7 Tage: 27
+MotoGP: 81
 WorldSBK: 59
 WorldSSP: 13
 DE+QM qualifiziert: 10

@@ -64,3 +64,28 @@ Quelle: https://www.motogp.com/en/news/2026/08/07/alex-marquez-leads-bezzecchi-i
 Story-Key: motogp:1076928
 Titel: Game on: Marc Marquez pockets perfect Sachsenring weekend to ignite title charge A 10th MotoGP win in Germany sees the reigning World Champion move up to P3 in the standings; SuperFile Trackhouse celebrate a double rostrum, while big Ducati names crash
 Quelle: https://www.motogp.com/en/news/2026/07/12/game-on-marc-marquez-pockets-perfect-sachsenring-weekend-to-ignite-title-charge/1076928
+
+## 2026-09-15 18:56 UTC – ANGEBOTEN
+Story-Key: motogp:1090085
+Titel: Pol Espargaro continues to replace Viñales at the Austrian GP
+Quelle: https://www.motogp.com/en/news/2026/09/15/pol-espargaro-continues-to-replace-vinales-at-the-austrian-gp/1090085
+
+## 2026-09-15 18:56 UTC – ANGEBOTEN
+Story-Key: motogp:1090051
+Titel: Artigas rattled the sabre after Race 2 win in France: “The goal is still to win the Championship”
+Quelle: https://www.worldsbk.com/en/news/2026/09/15/artigas-rattled-the-sabre-after-race-2-win-in-france-the-goal-is-still-to-win-the-championship/1090051
+
+## 2026-09-15 18:56 UTC – ANGEBOTEN
+Story-Key: motogp:1090041
+Titel: NEWS 13h ago “One of the best results to have the podium” – Race 1 retirement to Sunday rostrum for Arenas in France The Spanish rider went from heartbreak to elation in the space of 24 hours following a rollercoaster weekend at Magny-Cours WorldSSP
+Quelle: https://www.worldsbk.com/en/news/2026/09/15/one-of-the-best-results-to-have-the-podium-race-1-retirement-to-sunday-rostrum-for-arenas-in-france/1090041
+
+## 2026-09-15 18:56 UTC – ANGEBOTEN
+Story-Key: motogp:1089174
+Titel: MotoGP Fantasy: Super Boost Now Available!
+Quelle: https://www.motogp.com/en/news/2026/09/15/motogp-fantasy-super-boost-now-available/1089174
+
+## 2026-09-15 18:56 UTC – ANGEBOTEN
+Story-Key: motogp:1090014
+Titel: “Seeing my team in Parc Ferme waiting for me was amazing” – Seabright shines in maiden win at Magny-Cours
+Quelle: https://www.worldsbk.com/en/news/2026/09/14/seeing-my-team-in-parc-ferme-waiting-for-me-was-amazing-seabright-shines-in-maiden-win-at-magny-cours/1090014

@@ -1,117 +1,122 @@
 # Motorcycle Racing Telegram Approval Session
-Session-Version: 11
-Agency-Version: V8.4
+Session-Version: 12
+Agency-Version: V8.4.1
 QM: PASS
-Session-Timestamp: 1789497868
+Session-Timestamp: 1789498588
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
 ## Beitrag 1
 QM: PASS
 Herkunft: Aktuell
+Artikelalter-Tage: 0.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1089343
-Titel: Showstopper: Bezzecchi goes sub 90 seconds at Misano to beat Marquez to pole
-Quelle: https://www.motogp.com/en/news/2026/09/12/showstopper-bezzecchi-goes-sub-90-seconds-at-misano-to-beat-marquez-to-pole/1089343
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-showstopper-bezzecch-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/12/a96603cb-8fe5-47da-bb42-38a770800bd9/Report-MGP-QP-RSM.jpg?width=1200&height=630
+Story-Key: motogp:1090085
+Titel: Pol Espargaro continues to replace Viñales at the Austrian GP
+Quelle: https://www.motogp.com/en/news/2026/09/15/pol-espargaro-continues-to-replace-vinales-at-the-austrian-gp/1090085
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-pol-espargaro-contin-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/15/ae60e496-8d51-4933-bc9c-212162913022/R1DC2031-copy.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Bezzecchi knackt in Misano die 90-Sekunden-Marke und holt die Pole!
+Pol Espargaro vertritt Viñales weiterhin in der MotoGP!
 
-In der MotoGP bleibt Bezzecchi in Misano unter 90 Sekunden und stellt einen neuen Rundenrekord auf. Die #72 holt sich damit die Pole-Position vor Marquez mit der #93. Der Fehdehandschuh ist geworfen und das Duell setzt sich am Samstag fort.
+Beim Austrian GP wird die #44 noch einmal für KTM in die Action zurückkehren. Pol Espargaro ersetzt Viñales damit ein weiteres Mal bei diesem Rennen. Es geht für die #44 somit erneut im MotoGP-Einsatz auf die Strecke.
 
-Wer hat am Samstag im Duell zwischen Bezzecchi und Marquez die Nase vorn?
+Was erwartet ihr von Pol Espargaro bei seinem erneuten Einsatz für KTM beim Austrian GP?
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #PolEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 2
 QM: PASS
 Herkunft: Aktuell
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1089342
-Titel: Bezzecchi strikes back to lead Marc Marquez in Friday Practice
-Quelle: https://www.motogp.com/en/news/2026/09/11/bezzecchi-strikes-back-to-lead-marc-marquez-in-friday-practice/1089342
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-bezzecchi-strikes-ba-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/11/06d2a40c-33aa-4258-99d8-0799b34305f1/Report-MGP-PR-RSM.jpg?width=1200&height=630
+Artikelalter-Tage: 0.8
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1090051
+Titel: Artigas rattled the sabre after Race 2 win in France: “The goal is still to win the Championship”
+Quelle: https://www.worldsbk.com/en/news/2026/09/15/artigas-rattled-the-sabre-after-race-2-win-in-france-the-goal-is-still-to-win-the-championship/1090051
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-artigas-rattled-the-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/06/318e6173-f500-483c-9b09-d53ba9f72e19/56445_JDR_R09_2026_Ambience.jpg
 Plattformen: Instagram + Facebook
 Text:
-Bezzecchi schlägt zurück und führt das Freitagstraining der MotoGP vor Marc Marquez an!
+Sieg in Frankreich: Artigas meldet sich ganz oben zurück und setzt ein klares Statement!
 
-Genau 12 Monate später ist die Misano-Rivalität von 2025 wieder voll im Gange. Der Heimheld schnappte sich im Freitagstraining P1 vom amtierenden Weltmeister. Nach der Action an Tag eins steht es somit direkt 1:1.
+Mit seinem Triumph in Rennen 2 stand die Startnummer 34 zum ersten Mal seit Aragon wieder auf der obersten Stufe des Podiums. Nach dem Erfolg stellte Artigas unmissverständlich klar, dass der Gewinn der Meisterschaft weiterhin das Ziel bleibt. Nun blickt er auf die beiden alles entscheidenden finalen Runden voraus.
 
-Wie wird dieses Duell nach dem ersten Tag weitergehen?
+Traut ihr Artigas in den letzten beiden Runden den Titelgewinn noch zu?
 
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 3
 QM: PASS
 Herkunft: Aktuell
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1089341
-Titel: Marc Marquez edges out Bezzecchi by 0.060s in Misano FP1
-Quelle: https://www.motogp.com/en/news/2026/09/11/marc-marquez-edges-out-bezzecchi-by-0060s-in-misano-fp1/1089341
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-marc-marquez-edges-o-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/11/89caee0b-eace-4248-a0ea-1d28de440239/Report-MGP-FP1-RSM.jpg?width=1200&height=630
+Artikelalter-Tage: 0.8
+Kategorie: WorldSSP
+Serie: WorldSSP
+Story-Key: motogp:1090041
+Titel: NEWS 13h ago “One of the best results to have the podium” – Race 1 retirement to Sunday rostrum for Arenas in France The Spanish rider went from heartbreak to elation in the space of 24 hours following a rollercoaster weekend at Magny-Cours WorldSSP
+Quelle: https://www.worldsbk.com/en/news/2026/09/15/one-of-the-best-results-to-have-the-podium-race-1-retirement-to-sunday-rostrum-for-arenas-in-france/1090041
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-news-13h-ago-one-of-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Was für ein unglaublich enges Duell in der MotoGP!
+Vom Ausfall in Rennen 1 direkt auf das Sonntags-Podium in Magny-Cours!
 
-Im Misano FP1 hat sich Marc Marquez hauchdünn gegen Bezzecchi durchgesetzt. Am Ende trennten die beiden Erstplatzierten vom letzten Jahr lediglich winzige 0,060 Sekunden. Dieser packende Schlagabtausch zeigt sofort wieder, wie eng die beiden an der Spitze beieinanderliegen.
+Nach einem Ausfall im ersten Rennen erlebte der spanische WorldSSP-Fahrer Arenas in Frankreich ein echtes Achterbahn-Wochenende. Innerhalb von nur 24 Stunden wandelte sich die Enttäuschung in pure Freude, als er am Sonntag den Sprung auf das Podest schaffte. Für ihn war dieser Erfolg auf dem Podium nach dem Rückschlag eines der besten Ergebnisse.
 
-Was sagt ihr zu diesem extrem knappen Abstand zwischen Marc Marquez und Bezzecchi?
+Was sagt ihr zu diesem Wandel von Arenas innerhalb von 24 Stunden?
 
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 4
 QM: PASS
 Herkunft: Aktuell
+Artikelalter-Tage: 0.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1081729
-Titel: Alex Marquez leads Bezzecchi in British GP FP1 It's Ducati fronting Aprilia and KTM as MotoGP revs back into life at Silverstone
-Quelle: https://www.motogp.com/en/news/2026/08/07/alex-marquez-leads-bezzecchi-in-british-gp-fp1/1081729
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-alex-marquez-leads-b-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Story-Key: motogp:1089174
+Titel: MotoGP Fantasy: Super Boost Now Available!
+Quelle: https://www.motogp.com/en/news/2026/09/15/motogp-fantasy-super-boost-now-available/1089174
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-motogp-fantasy-super-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/14/c240f344-bd3d-4242-911c-7722373ccdaf/02_Single-promo-inside-article-2500x1600-_Fantasy_3er-Mystery-Boost.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Alex Marquez setzt das erste Ausrufezeichen beim British GP in Silverstone!
+Neues Update für eure MotoGP Fantasy-Aufstellung: Der Super Boost ist da!
 
-Die MotoGP meldet sich zurück, und im FP1 sicherte sich Alex Marquez die Spitzenposition vor Bezzecchi. Damit behauptet sich Ducati an der Spitze vor den Verfolgern von Aprilia und KTM.
+Ab sofort steht euch der Super Boost in MotoGP Fantasy zur Verfügung. Nutzt jetzt den dritten Mystery Boost, um eure MotoGP Fantasy-Strategie auf das nächste Level zu heben.
 
-Traut ihr Aprilia oder KTM an diesem Wochenende zu, Ducati noch von Platz eins zu verdrängen?
+Setzt ihr den neuen Mystery Boost direkt in eurer MotoGP Fantasy-Strategie ein?
 
-#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 5
 QM: PASS
 Herkunft: Aktuell
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1076928
-Titel: Game on: Marc Marquez pockets perfect Sachsenring weekend to ignite title charge A 10th MotoGP win in Germany sees the reigning World Champion move up to P3 in the standings; SuperFile Trackhouse celebrate a double rostrum, while big Ducati names crash
-Quelle: https://www.motogp.com/en/news/2026/07/12/game-on-marc-marquez-pockets-perfect-sachsenring-weekend-to-ignite-title-charge/1076928
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-game-on-marc-marquez-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Artikelalter-Tage: 1.8
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1090014
+Titel: “Seeing my team in Parc Ferme waiting for me was amazing” – Seabright shines in maiden win at Magny-Cours
+Quelle: https://www.worldsbk.com/en/news/2026/09/14/seeing-my-team-in-parc-ferme-waiting-for-me-was-amazing-seabright-shines-in-maiden-win-at-magny-cours/1090014
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-seeing-my-team-in-pa-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/05/756f0d15-f198-4713-8979-9dc7d141beca/53678_JDR_R09_2026_Ambience.jpg
 Plattformen: Instagram + Facebook
 Text:
-Perfektes Wochenende am Sachsenring: Marc Marquez meldet sich im Titelkampf zurück!
+Seabright glänzte in der WorldSBK mit seinem ersten Sieg in Magny-Cours!
 
-Mit seinem zehnten MotoGP-Sieg in Deutschland rückt der amtierende Weltmeister auf Platz drei der Gesamtwertung vor. Während SuperFile Trackhouse ein doppeltes Podium feiert, gab es für große Ducati-Namen bittere Stürze.
+Der aufstrebende britische Star setzte seine starke Form mit zwei Podestplätzen in Frankreich weiter fort. Dabei feierte er seinen allerersten Sieg auf dem Kurs in Magny-Cours. Für Seabright war es schlichtweg fantastisch, sein Team im Parc Fermé auf sich warten zu sehen.
 
-Glaubt ihr, Marc Marquez kann von P3 aus jetzt voll nach dem Titel greifen?
+Wie habt ihr die zwei Podestplätze von Seabright in Frankreich erlebt?
 
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
