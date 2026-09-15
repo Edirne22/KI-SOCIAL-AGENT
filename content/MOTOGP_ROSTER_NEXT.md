@@ -1,6 +1,6 @@
 # MotoGP Roster 2027 – bestätigte Vorschau
 
-**Stand:** 2026-09-15 15:19 UTC
+**Stand:** 2026-09-15 15:47 UTC
 
 **Status:** UNVOLLSTÄNDIG – nur offizielle MotoGP-Meldungen; ersetzt den aktiven Roster nicht.
 

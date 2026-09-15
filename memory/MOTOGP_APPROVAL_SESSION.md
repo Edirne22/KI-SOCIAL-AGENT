@@ -1,14 +1,15 @@
 # MotoGP Telegram Approval Session
-Session-Version: 2
-Session-Timestamp: 1789485596
+Session-Version: 3
+Session-Timestamp: 1789487252
 
 Antwort: `motogp 1`, `motogp 2`, `motogp 3`, `motogp alle` oder `motogp nein`.
 
 ## Beitrag 1
-Titel: Marc Marquez capitalises on Bezzecchi error to seize title race lead
-Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
-Instagram-Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-1-marc-marquez-capital-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/13/f7ba6d01-be17-4add-b75b-3ff01e6ba411/Report-MGP-GP-RSM.jpg?width=1200&height=630
+Story-Key: motogp:1081732
+Titel: Martin soars to Silverstone Saturday gold as Aprilia clinch first Sprint 1-2-3
+Quelle: https://www.motogp.com/en/news/2026/08/08/martin-soars-to-silverstone-saturday-gold-as-aprilia-clinch-first-sprint-1-2-3/1081732
+Instagram-Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-1-martin-soars-to-silv-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/08/08/2c92fa03-68e1-439d-a073-fd49d4d2ce4a/Report-MGP-SPR-UK.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
 🏁 Márquez schlägt zurück – der Titelkampf ist wieder völlig offen.
@@ -22,35 +23,37 @@ Wer hat für dich jetzt die besseren Karten im Titelkampf?
 Rechte-Gate: Instagram nutzt eine vor Freigabe eigens erzeugte generische Editorial-Grafik ohne reale Fahrer, Motorräder, Teams, Logos oder Marken. Facebook veröffentlicht den offiziellen Quellenlink für die Link-Vorschau. Keine langen Originalpassagen.
 
 ## Beitrag 2
-Titel: Confirmed: Acosta joins Marc Marquez at Ducati for 2027 and 2028
-Quelle: https://www.motogp.com/en/news/2026/06/24/confirmed-acosta-joins-marc-marquez-at-ducati-for-2027-and-2028/1074819
-Instagram-Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-2-confirmed-acosta-joi-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/06/24/68ab0f06-6d8b-454d-9b01-c13e7b167a15/Acosta-joins-Ducati.webp?width=1200&height=630
+Story-Key: motogp:1087037
+Titel: Marc Marquez fends off Acosta and Bezzecchi to underline title charge at Aragon
+Quelle: https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-and-bezzecchi-to-underline-title-charge-at-aragon/1087037
+Instagram-Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-2-marc-marquez-fends-o-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/08/30/aa21b073-ce82-4cca-a945-0c893dce05bb/Report-MGP-GP-ARA.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-🔥 Ducati setzt für 2027 ein echtes Ausrufezeichen!
+🏍️ MotoGP im Fokus: Marc Marquez.
 
-Pedro Acosta fährt ab 2027 für das Ducati Lenovo Team. Damit bekommt Marc Márquez einen der stärksten jungen Fahrer im Feld als Teamkollegen.
+Marc Marquez ist heute eines der relevanten MotoGP-Themen. Die Fakten stammen aus der offiziellen Meldung; der Social-Text wird bewusst eigenständig formuliert.
 
-Acosta neben Márquez – wie schätzt du diese Kombination sportlich ein?
+Was ist für dich der spannendste Punkt an dieser Story?
 
-#MotoGP #MarcMarquez #AlexMarquez #Ducati #MotorradRacing #MotoGPDeutschland
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #MotoGPDeutschland
 
 Rechte-Gate: Instagram nutzt eine vor Freigabe eigens erzeugte generische Editorial-Grafik ohne reale Fahrer, Motorräder, Teams, Logos oder Marken. Facebook veröffentlicht den offiziellen Quellenlink für die Link-Vorschau. Keine langen Originalpassagen.
 
 ## Beitrag 3
-Titel: Showstopper: Bezzecchi goes sub 90 seconds at Misano to beat Marquez to pole
-Quelle: https://www.motogp.com/en/news/2026/09/12/showstopper-bezzecchi-goes-sub-90-seconds-at-misano-to-beat-marquez-to-pole/1089343
-Instagram-Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-3-showstopper-bezzecch-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/12/a96603cb-8fe5-47da-bb42-38a770800bd9/Report-MGP-QP-RSM.jpg?width=1200&height=630
+Story-Key: motogp:1087036
+Titel: Marc Marquez retaliates to hold off Alex Marquez for Aragon gold
+Quelle: https://www.motogp.com/en/news/2026/08/29/marc-marquez-retaliates-to-hold-off-alex-marquez-for-aragon-gold/1087036
+Instagram-Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-3-marc-marquez-retalia-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/08/29/5ea58f51-1edd-45fe-9bc1-40540a181ed5/Report-MGP-SPR-ARA.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-⏱️ Bezzecchi setzt in Misano ein richtig starkes Zeichen.
+🏍️ MotoGP im Fokus: Marc Marquez.
 
-Marco Bezzecchi hat in Misano mit einer extrem schnellen Runde die Pole geholt und Marc Márquez hinter sich gelassen.
+Marc Marquez ist heute eines der relevanten MotoGP-Themen. Die Fakten stammen aus der offiziellen Meldung; der Social-Text wird bewusst eigenständig formuliert.
 
-Wer ist für dich aktuell über eine schnelle Runde stärker: Bezzecchi oder Márquez?
+Was ist für dich der spannendste Punkt an dieser Story?
 
-#MotoGP #MarcMarquez #AlexMarquez #SanMarinoGP #MotorradRacing #MotoGPDeutschland
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #MotoGPDeutschland
 
 Rechte-Gate: Instagram nutzt eine vor Freigabe eigens erzeugte generische Editorial-Grafik ohne reale Fahrer, Motorräder, Teams, Logos oder Marken. Facebook veröffentlicht den offiziellen Quellenlink für die Link-Vorschau. Keine langen Originalpassagen.
