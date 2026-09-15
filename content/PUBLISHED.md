@@ -341,3 +341,151 @@ Was ist für dich der spannendste Punkt an dieser Story?
 https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-and-bezzecchi-to-underline-title-charge-at-aragon/1087037
 Quelle: https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-and-bezzecchi-to-underline-title-charge-at-aragon/1087037
 Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Telegram-Update-ID: 279361657
+MotoGP-Auswahl: 1
+Titel: Game on: Marc Marquez overcomes the largest points deficit in history
+Text:
+Marc Marquez holt den größten Punkterückstand der Geschichte auf und übernimmt die WM-Führung!
+
+Vor gerade einmal sieben Runden lag die Startnummer 93 noch mit 102 Zählern hinten, doch nun führt er die Meisterschaft an. Nach diesem historischen Comeback formiert sich Aprilia bereits neu, um eine passende Antwort im Titelkampf zu liefern.
+
+Traut ihr Aprilia zu, jetzt noch einmal gegen Marc Marquez zurückzuschlagen?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/15/game-on-marc-marquez-overcomes-the-largest-points-deficit-in-history/1090045
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-game-on-marc-marquez-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Telegram-Update-ID: 279361657
+MotoGP-Auswahl: 1
+Titel: Game on: Marc Marquez overcomes the largest points deficit in history
+Text:
+Marc Marquez holt den größten Punkterückstand der Geschichte auf und übernimmt die WM-Führung!
+
+Vor gerade einmal sieben Runden lag die Startnummer 93 noch mit 102 Zählern hinten, doch nun führt er die Meisterschaft an. Nach diesem historischen Comeback formiert sich Aprilia bereits neu, um eine passende Antwort im Titelkampf zu liefern.
+
+Traut ihr Aprilia zu, jetzt noch einmal gegen Marc Marquez zurückzuschlagen?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/15/game-on-marc-marquez-overcomes-the-largest-points-deficit-in-history/1090045
+Quelle: https://www.motogp.com/en/news/2026/09/15/game-on-marc-marquez-overcomes-the-largest-points-deficit-in-history/1090045
+Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Telegram-Update-ID: 279361657
+MotoGP-Auswahl: 3
+Titel: Umberto Masetti officially inducted into the MotoGP Hall of Fame
+Text:
+Große Ehre in der MotoGP: Umberto Masetti wurde offiziell in die MotoGP Hall of Fame aufgenommen!
+
+Der zweifache MotoGP-Weltmeister gehört damit nun ganz offiziell zu den verewigten Größen der Rennserie. Mit der Aufnahme von Umberto Masetti wird die beeindruckende Karriere des zweifachen Champions in der MotoGP gebührend gewürdigt.
+
+Was sagt ihr zur offiziellen Aufnahme von Umberto Masetti in die MotoGP Hall of Fame?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/14/umberto-masetti-officially-inducted-into-the-motogp-hall-of-fame/1089729
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-umberto-masetti-offi-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Telegram-Update-ID: 279361657
+MotoGP-Auswahl: 3
+Titel: Umberto Masetti officially inducted into the MotoGP Hall of Fame
+Text:
+Große Ehre in der MotoGP: Umberto Masetti wurde offiziell in die MotoGP Hall of Fame aufgenommen!
+
+Der zweifache MotoGP-Weltmeister gehört damit nun ganz offiziell zu den verewigten Größen der Rennserie. Mit der Aufnahme von Umberto Masetti wird die beeindruckende Karriere des zweifachen Champions in der MotoGP gebührend gewürdigt.
+
+Was sagt ihr zur offiziellen Aufnahme von Umberto Masetti in die MotoGP Hall of Fame?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/14/umberto-masetti-officially-inducted-into-the-motogp-hall-of-fame/1089729
+Quelle: https://www.motogp.com/en/news/2026/09/14/umberto-masetti-officially-inducted-into-the-motogp-hall-of-fame/1089729
+Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Telegram-Update-ID: 279361657
+MotoGP-Auswahl: 4
+Titel: Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13: “I’m happy that the hard work paid off”
+Text:
+Was für eine spektakuläre Aufholjagd von Oncu in der WorldSSP!
+
+Von P13 aus kämpfte sich die Startnummer 61 in Race 1 nach vorne und feierte seinen ersten WorldSSP-Sieg im Jahr 2026. Nach harter Arbeit über die Sommerpause zeigte Oncu mehr Gelassenheit auf seiner Yamaha R9 und freute sich, dass sich der harte Einsatz ausgezahlt hat. In Race 2 musste er allerdings noch einen kostspieligen Rückschlag hinnehmen.
+
+Was sagt ihr zu Oncus Sieg nach seinem Comeback von P13?
+
+#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-oncu-takes-first-202-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Telegram-Update-ID: 279361657
+MotoGP-Auswahl: 4
+Titel: Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13: “I’m happy that the hard work paid off”
+Text:
+Was für eine spektakuläre Aufholjagd von Oncu in der WorldSSP!
+
+Von P13 aus kämpfte sich die Startnummer 61 in Race 1 nach vorne und feierte seinen ersten WorldSSP-Sieg im Jahr 2026. Nach harter Arbeit über die Sommerpause zeigte Oncu mehr Gelassenheit auf seiner Yamaha R9 und freute sich, dass sich der harte Einsatz ausgezahlt hat. In Race 2 musste er allerdings noch einen kostspieligen Rückschlag hinnehmen.
+
+Was sagt ihr zu Oncus Sieg nach seinem Comeback von P13?
+
+#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992
+Quelle: https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992
+Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Telegram-Update-ID: 279361657
+MotoGP-Auswahl: 5
+Titel: Loris Capirossi becomes a MotoGP Legend
+Text:
+Loris Capirossi steigt offiziell zur MotoGP-Legende auf!
+
+Bei einer emotionalen Aufnahme in Misano wurde dem Italiener eine ganz besondere Ehre zuteil. Er stieg dabei von einer Legende zu einer Legende mit großem Anfangsbuchstaben in der MotoGP auf.
+
+Wie hat dieser emotionale Moment in Misano auf euch gewirkt?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/12/loris-capirossi-becomes-a-motogp-legend/1089616
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-loris-capirossi-beco-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Telegram-Update-ID: 279361657
+MotoGP-Auswahl: 5
+Titel: Loris Capirossi becomes a MotoGP Legend
+Text:
+Loris Capirossi steigt offiziell zur MotoGP-Legende auf!
+
+Bei einer emotionalen Aufnahme in Misano wurde dem Italiener eine ganz besondere Ehre zuteil. Er stieg dabei von einer Legende zu einer Legende mit großem Anfangsbuchstaben in der MotoGP auf.
+
+Wie hat dieser emotionale Moment in Misano auf euch gewirkt?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/12/loris-capirossi-becomes-a-motogp-legend/1089616
+Quelle: https://www.motogp.com/en/news/2026/09/12/loris-capirossi-becomes-a-motogp-legend/1089616
+Link-Preview: offiziell
