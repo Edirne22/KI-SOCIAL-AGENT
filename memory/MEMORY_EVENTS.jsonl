@@ -1,0 +1,3 @@
+{"confidence":1.0,"source":"user_correction_2026-09-15","subject":"source_is_facts_not_template","timestamp":"2026-09-15T12:36:44Z","type":"correction","value":"MotoGP-Quellen vollständig eigenständig auf Deutsch formulieren; Rohmetadaten/englische Textreste entfernen"}
+{"confidence":1.0,"source":"memory/PUBLICATION_DUPLICATES.md","subject":"duplicate_content","timestamp":"2026-09-15T12:41:21Z","type":"failure","value":"Textduplikate vor Freigabe und Publishing verhindern"}
+{"confidence":1.0,"source":"memory/POST_HISTORY.md","subject":"repeated_hook","timestamp":"2026-09-15T12:41:21Z","type":"failure","value":"Wortgleiche Hooks bei unterschiedlichen Themen vermeiden"}
