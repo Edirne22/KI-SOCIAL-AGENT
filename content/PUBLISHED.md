@@ -360,7 +360,7 @@ Quelle: https://www.motogp.com/en/news/2026/09/15/game-on-marc-marquez-overcomes
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-game-on-marc-marquez-01.jpg
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-15 19:52 | ID: 1285968257941776_122107651497469415]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 35016140842-1
 Freigabe: Telegram Racing
