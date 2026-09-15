@@ -48,14 +48,19 @@ def find_reel_block(content: str) -> tuple[str | None, str | None, str | None]:
     for match in re.finditer(pattern, content, re.MULTILINE | re.DOTALL):
         block = match.group(0)
         body = match.group(1)
-        if "[GEPOSTET" in block or not re.search(r"(?m)^Status:\s*FREIGEGEBEN\s*$", body):
+        # Statuswerte werden im Repository historisch sowohl als FREIGEGEBEN
+        # als auch als Freigegeben geschrieben. Beide Schreibweisen sind gültig.
+        if "[GEPOSTET" in block or not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", body):
             continue
         claim_token = os.environ.get("PUBLICATION_CLAIM_TOKEN", "")
         if not claim_token or f"Publication-Claim: IN_BEARBEITUNG {claim_token}" not in body:
             continue
 
         video_match = re.search(r"(?m)^Video:\s*(\S+)", body)
-        text_match = re.search(r"(?ms)^Text:\s*(.+?)(?=^(?:Bild|Video|Bilder|Quelle|Medienstatus|Nutzungsrecht):|\Z)", body)
+        text_match = re.search(
+            r"(?ms)^Text:\s*(.+?)(?=^(?:Bild|Poster|Video|Musik|Bilder|Quelle|Medienstatus|Nutzungsrecht):|\Z)",
+            body,
+        )
         if not video_match or not text_match:
             continue
 
@@ -83,7 +88,7 @@ def create_reel_container(ig_user_id: str, token: str, video_url: str, caption: 
 
 
 def wait_for_container(creation_id: str, token: str, max_wait: int = 300) -> bool:
-    """Wartet, bis Instagram die Videoverarbeitung abgeschlossen hat."""
+    """Wartet, bis Instagram die Videoverarbeitung abgeschlossen ist."""
     url = f"{GRAPH_API}/{creation_id}"
     for _ in range(max_wait // 5):
         response = request_with_retry(
