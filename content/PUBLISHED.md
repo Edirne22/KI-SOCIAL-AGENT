@@ -225,7 +225,7 @@ https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-
 Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
 Link-Preview: offiziell
 
-## Instagram
+## Instagram [GEPOSTET 2026-09-15 14:41 | ID: 18110414735113630]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34983328761-1
 Freigabe: Telegram MotoGP
