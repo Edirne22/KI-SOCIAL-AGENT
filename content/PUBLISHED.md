@@ -224,3 +224,77 @@ Wer hat für dich jetzt die besseren Karten im Titelkampf?
 https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
 Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
 Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram MotoGP
+Telegram-Update-ID: 279361654
+MotoGP-Auswahl: 1
+Titel: Marc Marquez capitalises on Bezzecchi error to seize title race lead
+Text:
+🏁 Márquez schlägt zurück – der Titelkampf ist wieder völlig offen.
+
+Marc Márquez hat in Misano maximal profitiert und sich mit dem Sieg wieder ganz nach vorne im Titelkampf geschoben. Der frühe Fehler von Marco Bezzecchi hat das Rennen entscheidend verändert.
+
+Wer hat für dich jetzt die besseren Karten im Titelkampf?
+
+#MotoGP #MarcMarquez #AlexMarquez #Aprilia #MotorradRacing #MotoGPDeutschland
+Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-1-marc-marquez-capital-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram MotoGP
+Telegram-Update-ID: 279361654
+MotoGP-Auswahl: 1
+Titel: Marc Marquez capitalises on Bezzecchi error to seize title race lead
+Text:
+🏁 Márquez schlägt zurück – der Titelkampf ist wieder völlig offen.
+
+Marc Márquez hat in Misano maximal profitiert und sich mit dem Sieg wieder ganz nach vorne im Titelkampf geschoben. Der frühe Fehler von Marco Bezzecchi hat das Rennen entscheidend verändert.
+
+Wer hat für dich jetzt die besseren Karten im Titelkampf?
+
+#MotoGP #MarcMarquez #AlexMarquez #Aprilia #MotorradRacing #MotoGPDeutschland
+
+https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram MotoGP
+Telegram-Update-ID: 279361654
+MotoGP-Auswahl: 2
+Titel: Confirmed: Acosta joins Marc Marquez at Ducati for 2027 and 2028
+Text:
+🔥 Ducati setzt für 2027 ein echtes Ausrufezeichen!
+
+Pedro Acosta fährt ab 2027 für das Ducati Lenovo Team. Damit bekommt Marc Márquez einen der stärksten jungen Fahrer im Feld als Teamkollegen.
+
+Acosta neben Márquez – wie schätzt du diese Kombination sportlich ein?
+
+#MotoGP #MarcMarquez #AlexMarquez #Ducati #MotorradRacing #MotoGPDeutschland
+Quelle: https://www.motogp.com/en/news/2026/06/24/confirmed-acosta-joins-marc-marquez-at-ducati-for-2027-and-2028/1074819
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-2-confirmed-acosta-joi-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram MotoGP
+Telegram-Update-ID: 279361654
+MotoGP-Auswahl: 2
+Titel: Confirmed: Acosta joins Marc Marquez at Ducati for 2027 and 2028
+Text:
+🔥 Ducati setzt für 2027 ein echtes Ausrufezeichen!
+
+Pedro Acosta fährt ab 2027 für das Ducati Lenovo Team. Damit bekommt Marc Márquez einen der stärksten jungen Fahrer im Feld als Teamkollegen.
+
+Acosta neben Márquez – wie schätzt du diese Kombination sportlich ein?
+
+#MotoGP #MarcMarquez #AlexMarquez #Ducati #MotorradRacing #MotoGPDeutschland
+
+https://www.motogp.com/en/news/2026/06/24/confirmed-acosta-joins-marc-marquez-at-ducati-for-2027-and-2028/1074819
+Quelle: https://www.motogp.com/en/news/2026/06/24/confirmed-acosta-joins-marc-marquez-at-ducati-for-2027-and-2028/1074819
+Link-Preview: offiziell
