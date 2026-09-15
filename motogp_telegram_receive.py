@@ -2,7 +2,7 @@
 from pathlib import Path
 import re,sys
 from telegram_bot import get_chat_id,get_updates,send_message
-SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md');MIN_SESSION_VERSION=9
+SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md');MIN_SESSION_VERSION=10
 RAW_BAD=('-->','by motogp.com','motogp-update:','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung')
 def parse_session():
     if not SESSION.exists():return {}
