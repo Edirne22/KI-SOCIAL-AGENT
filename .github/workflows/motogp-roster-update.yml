@@ -1,0 +1,43 @@
+name: MotoGP Roster Update
+
+on:
+  schedule:
+    - cron: "20 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      season:
+        description: "Optionales Saisonjahr, z. B. 2027"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: motogp-roster-update
+  cancel-in-progress: false
+
+jobs:
+  update-roster:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests
+      - name: Aktuelle MotoGP-Teams und Fahrer recherchieren
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MOTOGP_SEASON: ${{ inputs.season || '' }}
+        run: python -u motogp_roster_updater.py
+      - name: Verifizierten Roster und Log speichern
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/MOTOGP_ROSTER.md memory/MOTOGP_ROSTER_LOG.md 2>/dev/null || true
+          git commit -m "Auto: MotoGP-Roster verifiziert" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
