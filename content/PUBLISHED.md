@@ -175,7 +175,7 @@ Virajlı yolları keşfet, GPX olarak kaydet ve arkadaşlarınla paylaş!
 
 Video: auto
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-15 10:40 | ID: 1061438430139436]
 Status: Freigegeben
 Publication-Claim: IN_BEARBEITUNG 34959179215-1
 Freigabe: MANUELL
