@@ -1,4 +1,4 @@
-"""Motorcycle Racing Agency V8.1 – MotoGP + WorldSBK + WorldSSP, fail-closed 5er-Auswahl."""
+"""Motorcycle Racing Agency V8.2 – MotoGP + WorldSBK + WorldSSP, 5er-Auswahl; Turkish Rider bevorzugt, kein Zwang."""
 from motogp_content_agency import *
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
@@ -28,7 +28,7 @@ def generic_story(item):
  if len(fact)>360:fact=fact[:357].rsplit(' ',1)[0]+'…'
  hook=(f'🇹🇷 {r}: {title}' if r else f'🏁 {title}');return (fact,hook,f'Wie ordnest du diese {series}-Meldung ein?')
 def german_story(item):
- tl=fold(item.get('title',''));low=fold(item.get('title','')+' '+item.get('summary',''))
+ tl=fold(item.get('title',''))
  if 'game on' in tl and 'largest points deficit' in tl:return ('Marc Márquez hat einen Rückstand von 102 Punkten aufgeholt und daraus die Führung in der Weltmeisterschaft gemacht.','📈 102 Punkte aufgeholt: Márquez dreht den WM-Kampf komplett.','Ist das schon eine seiner stärksten Aufholjagden?')
  if 'pol espargaro' in tl and 'replace' in tl:return ('Pol Espargaró springt erneut für den verletzten Maverick Viñales ein und kehrt für KTM ins Renngeschehen zurück.','🔄 KTM setzt erneut auf Pol Espargaró.','Wie stark schätzt du Pol bei diesem Comeback ein?')
  if 'acosta' in tl and 'ducati' in tl:return ('Pedro Acosta fährt ab 2027 für das Ducati Lenovo Team und wird Teamkollege von Marc Márquez.','🔥 Ducati setzt für 2027 ein echtes Ausrufezeichen!','Wie schätzt du Acosta neben Márquez ein?')
@@ -51,19 +51,17 @@ def write_session(items,now):
  lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 10','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
  for i,x in enumerate(items,1):lines += [f'## Beitrag {i}','QM: PASS',f'Kategorie: {"Turkish Riders" if is_turkish_focus(x) else series_for(x)}',f'Serie: {series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
  SESSION.write_text('\n'.join(lines),encoding='utf-8')
-def telegram_preview(items):
- msg=['🏍️ Motorcycle Racing Agency – 5 QM-GEPRÜFTE Tagesvorschläge','Quellen: MotoGP + WorldSBK + WorldSSP','🇹🇷 Turkish-Riders-Slot: PASS','✅ Domain-QM + Chief QM + Batch-QM: PASS','']
+def telegram_preview(items,turkish_available):
+ msg=['🏍️ Motorcycle Racing Agency – 5 QM-GEPRÜFTE Tagesvorschläge','Quellen: MotoGP + WorldSBK + WorldSSP',('🇹🇷 Turkish-Rider: aktueller geeigneter Beitrag bevorzugt aufgenommen' if turkish_available else '🇹🇷 Heute kein geeigneter neuer Turkish-Rider-Beitrag gefunden – 5 beste Racing-Themen gewählt'),'✅ Domain-QM + Chief QM + Batch-QM: PASS','']
  for i,x in enumerate(items,1):msg += [f'{i}️⃣ [{series_for(x)}] {x["caption"]}','🖼️ Medium: vorbereitet',f'🔗 Quelle: {x["url"]}','']
  msg+=['Freigabe: motogp 1–5 / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
 def run_v8():
  names=roster_names();known=known_story_keys();raw=[];seen=set();meta={}
- # Vollständige offizielle Feeds: 4-Tupel (Titel, URL, Serie, erkannter türkischer Fahrer).
  for t,u,s,r in racing_scout(80):
   u=canonical_url(u);key=story_key(t,u)
   if u in seen or key in known:continue
   seen.add(u);raw.append((t,u));meta[u]={'series':s}
   if r:meta[u]['turkish_rider']=r
- # Turkish-Scout liefert bewusst 3-Tupel. Fallbacks werden hier sauber angereichert.
  for t,u,r in turkish_scout(40):
   u=canonical_url(u);key=story_key(t,u)
   if u in seen or key in known:continue
@@ -76,6 +74,7 @@ def run_v8():
  for t,u in raw[:160]:
   x=article_info(t,u);x.update(meta.get(u,{}));details.append(x)
  now=datetime.now(timezone.utc);candidates=[];turkish=[x for x in details if is_turkish_focus(x) and qualify_copy(x)]
+ # Turkish Rider ist Bonus/Priorität, niemals Pflicht. Fehlt ein aktueller geeigneter Beitrag, werden die 5 besten übrigen Racing-Themen gewählt.
  if turkish:candidates.append(turkish[0])
  for x in sorted(details,key=lambda z:score(z['title'],names),reverse=True):
   if len(candidates)>=5:break
@@ -87,10 +86,10 @@ def run_v8():
  if len(candidates)==5:
   for i,x in enumerate(candidates,1):
    if finish_item(x,i):picks.append(x)
- turk=bool(picks and is_turkish_focus(picks[0]));counts={s:sum(series_for(x)==s for x in details) for s in ('MotoGP','WorldSBK','WorldSSP')}
- OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nMotoGP: {counts["MotoGP"]}\nWorldSBK: {counts["WorldSBK"]}\nWorldSSP: {counts["WorldSSP"]}\nTurkish Copy-Kandidaten: {len(turkish)}\nBatch-QM Kandidaten: {len(candidates)}\nChief-QM PASS: {len(picks)}\nTurkish-Rider-Slot: {"PASS" if turk else "FAIL"}\n',encoding='utf-8')
- if len(picks)==5 and turk:
-  write_session(picks,now);remember_offered(picks,now);telegram_preview(picks)
- else:send_message(f'🏍️ Racing Agency: {len(picks)}/5 Chief-QM-Pakete, Turkish-Rider-Slot={"PASS" if turk else "FAIL"}. Keine unvollständige Auswahl gesendet.')
- print(f'Racing V8.1: raw={len(details)}, series={counts}, turkish_copy={len(turkish)}, batch={len(candidates)}, final={len(picks)}, Turkish={turk}')
+ turk=any(is_turkish_focus(x) for x in picks);counts={s:sum(series_for(x)==s for x in details) for s in ('MotoGP','WorldSBK','WorldSSP')}
+ OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nMotoGP: {counts["MotoGP"]}\nWorldSBK: {counts["WorldSBK"]}\nWorldSSP: {counts["WorldSSP"]}\nTurkish Copy-Kandidaten: {len(turkish)}\nBatch-QM Kandidaten: {len(candidates)}\nChief-QM PASS: {len(picks)}\nTurkish-Rider: {"INCLUDED" if turk else "NO-SUITABLE-CURRENT-STORY"}\n',encoding='utf-8')
+ if len(picks)==5:
+  write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
+ else:send_message(f'🏍️ Racing Agency: nur {len(picks)}/5 Chief-QM-Pakete. Keine unvollständige Auswahl gesendet.')
+ print(f'Racing V8.2: raw={len(details)}, series={counts}, turkish_copy={len(turkish)}, batch={len(candidates)}, final={len(picks)}, TurkishIncluded={turk}')
 if __name__=='__main__':run_v8()
