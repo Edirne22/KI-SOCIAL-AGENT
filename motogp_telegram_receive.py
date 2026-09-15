@@ -1,8 +1,8 @@
-"""Verarbeitet Racing-Freigaben für fünf Chief-QM-geprüfte Pakete."""
+"""Verarbeitet Motorcycle-Racing-Freigaben für fünf Chief-QM-geprüfte Pakete."""
 from pathlib import Path
 import re,sys
 from telegram_bot import get_chat_id,get_updates,send_message
-SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md');MIN_SESSION_VERSION=8
+SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md');MIN_SESSION_VERSION=9
 RAW_BAD=('-->','by motogp.com','motogp-update:','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung')
 def parse_session():
     if not SESSION.exists():return {}
@@ -32,7 +32,7 @@ def publish(posts,chosen,uid):
         if not p:continue
         marker=f'Telegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}'
         if marker in existing:continue
-        blocks += [f'## Instagram\nStatus: FREIGEGEBEN\nFreigabe: Telegram MotoGP\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\nText:\n{p["text"]}\nQuelle: {p["source"]}\nMedienstatus: EIGENE_KI_EDITORIALGRAFIK\nBild: {p["image"]}\n',f'## Facebook\nStatus: FREIGEGEBEN\nFreigabe: Telegram MotoGP\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\nText:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n']
+        blocks += [f'## Instagram\nStatus: FREIGEGEBEN\nFreigabe: Telegram Racing\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\nText:\n{p["text"]}\nQuelle: {p["source"]}\nMedienstatus: EIGENE_KI_EDITORIALGRAFIK\nBild: {p["image"]}\n',f'## Facebook\nStatus: FREIGEGEBEN\nFreigabe: Telegram Racing\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\nText:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n']
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
     return len(blocks)
 def handle_one(uid,chat,txt):
