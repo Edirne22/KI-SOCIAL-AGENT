@@ -19,10 +19,16 @@ def clean(s):return re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',s or '
 def fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def rider_for(text):
  low=fold(text)
- # Nur eindeutige Namen matchen: ein bloßes "Öncü" darf Can und Deniz nicht verwechseln.
  for rider in ('Deniz Oncu','Bahattin Sofuoglu','Zayn Sofuoglu','Toprak Razgatlioglu','Can Oncu'):
   if any(fold(k) in low for k in WATCHLIST[rider]):return rider
  return ''
+def classify_series(default_series,title,url):
+ """WorldSBK-Newsseite mischt Klassen; sichtbare Artikelmarker schlagen den Feed-Namen."""
+ text=fold((title or '')+' '+(url or ''))
+ if 'worldssp300' in text or 'worldssp 300' in text or 'wssp300' in text:return 'WorldSSP300'
+ if 'worldssp' in text or 'world supersport' in text or 'supersport' in text or 'wssp' in text:return 'WorldSSP'
+ if 'motogp' in text or 'moto2' in text or 'moto3' in text:return 'MotoGP'
+ return default_series
 def _anchors(series,base,limit):
  out=[];seen=set()
  try:
@@ -31,7 +37,7 @@ def _anchors(series,base,limit):
  for href,title in re.findall(r'href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',page,re.I|re.S):
   t=clean(title);u=urljoin(base,href)
   if len(t)<20 or u in seen or '/news/' not in u:continue
-  seen.add(u);out.append((t,u,series,rider_for(t)))
+  seen.add(u);out.append((t,u,classify_series(series,t,u),rider_for(t)))
   if len(out)>=limit:break
  return out
 def racing_scout(limit_per_source=50):
