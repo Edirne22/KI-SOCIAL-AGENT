@@ -5,12 +5,7 @@
       "enabled": true,
       "api_key_env": "GEMINI_API_KEY",
       "base_url": "https://generativelanguage.googleapis.com/v1beta",
-      "text_models": [
-        "gemini-3.8-flash",
-        "gemini-3.7-flash",
-        "gemini-3.6-flash",
-        "gemini-3.5-flash"
-      ],
+      "text_models": ["gemini-3.8-flash","gemini-3.7-flash","gemini-3.6-flash","gemini-3.5-flash"],
       "timeout_seconds": 120
     },
     "agnes": {
@@ -33,6 +28,7 @@
   "tasks": {
     "content_ideas": { "provider": "gemini", "response_type": "text" },
     "final_captions": { "provider": "agnes", "response_type": "text" },
+    "racing_semantic_qm": { "provider": "agnes", "response_type": "text" },
     "image_generation": { "provider": "agnes", "response_type": "image" },
     "video_generation": { "provider": "agnes", "response_type": "video" },
     "research": { "provider": "gemini", "response_type": "text" },
