@@ -130,6 +130,7 @@ Musik: Beat, electronic
 
 ## Facebook
 Status: Freigegeben
+Publication-Claim: BEREIT
 Freigabe: MANUELL
 Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
 Text:
