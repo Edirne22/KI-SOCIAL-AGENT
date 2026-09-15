@@ -121,7 +121,7 @@ Musik: Beat, electronic
 
 ## Story
 Status: Freigegeben
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34947887041-1
 Freigabe: MANUELL
 Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring
 Text: 🏁 Toprak & Deniz am Red Bull Ring 🇹🇷🔥 Avusturya’da yalnız değiliz. T10 Tribünü hazır!
