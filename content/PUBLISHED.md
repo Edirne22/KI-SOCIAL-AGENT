@@ -461,7 +461,7 @@ Link-Preview: offiziell
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 35020985912-1
 Freigabe: Telegram Racing
 Telegram-Update-ID: 279361657
 MotoGP-Auswahl: 5
