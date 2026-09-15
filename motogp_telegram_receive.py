@@ -1,35 +1,32 @@
-"""Verarbeitet MotoGP/Racing-Freigaben für bis zu fünf QM-geprüfte Pakete."""
+"""Verarbeitet Racing-Freigaben für fünf Chief-QM-geprüfte Pakete."""
 from pathlib import Path
 import re,sys
 from telegram_bot import get_chat_id,get_updates,send_message
-SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md');MIN_SESSION_VERSION=5
-
+SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md');MIN_SESSION_VERSION=8
+RAW_BAD=('-->','by motogp.com','motogp-update:','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung')
 def parse_session():
     if not SESSION.exists():return {}
     raw=SESSION.read_text(encoding='utf-8');vm=re.search(r'(?m)^Session-Version:\s*(\d+)\s*$',raw);version=int(vm.group(1)) if vm else 0
-    if version<MIN_SESSION_VERSION or not re.search(r'(?m)^QM:\s*PASS\s*$',raw):
-        print('DIAG: Session ohne gültigen Chief-QM-PASS gesperrt.');return {}
+    if version<MIN_SESSION_VERSION or not re.search(r'(?m)^QM:\s*PASS\s*$',raw):return {}
     posts={}
     for m in re.finditer(r'(?ms)^## Beitrag\s+([1-5])\s*$\n(.*?)(?=^## Beitrag\s+[1-5]\s*$|\Z)',raw):
         n=int(m.group(1));sec=m.group(2)
         def f(name):
             x=re.search(rf'(?m)^{re.escape(name)}:\s*(.*)$',sec);return x.group(1).strip() if x else ''
         tm=re.search(r'(?ms)^Text:\s*(.*?)(?=^\s*Rechte-Gate:)',sec);post={'title':f('Titel'),'source':f('Quelle'),'image':f('Instagram-Bild'),'text':tm.group(1).strip() if tm else ''}
-        if not re.search(r'(?m)^QM:\s*PASS\s*$',sec):continue
-        if not post['image'] or post['image'].lower()=='auto' or not Path(post['image']).exists():continue
+        low=post['text'].casefold()
+        if not re.search(r'(?m)^QM:\s*PASS\s*$',sec) or any(x in low for x in RAW_BAD):continue
+        if not post['source'].startswith('http') or not post['image'] or post['image'].lower()=='auto' or not Path(post['image']).is_file():continue
         posts[n]=post
     return posts
-
 def selection(text):
     v=re.sub(r'\s+',' ',text.strip().lower())
     if v in ('motogp alle','motogp ✅'):return [1,2,3,4,5]
     if v in ('motogp nein','motogp ❌'):return []
-    m=re.fullmatch(r'motogp\s+([1-5](?:\s*,\s*[1-5])*)',v)
-    return sorted({int(x.strip()) for x in m.group(1).split(',')}) if m else None
-
+    m=re.fullmatch(r'motogp\s+([1-5](?:\s*,\s*[1-5])*)',v);return sorted({int(x.strip()) for x in m.group(1).split(',')}) if m else None
 def already(uid):return STATE.exists() and f'Update-ID: {uid}' in STATE.read_text(encoding='utf-8')
 def publish(posts,chosen,uid):
-    existing=PUBLISHED.read_text(encoding='utf-8') if PUBLISHED.exists() else '# Freigegebene Beiträge\n';blocks=[]
+    PUBLISHED.parent.mkdir(parents=True,exist_ok=True);existing=PUBLISHED.read_text(encoding='utf-8') if PUBLISHED.exists() else '# Freigegebene Beiträge\n';blocks=[]
     for n in chosen:
         p=posts.get(n)
         if not p:continue
@@ -43,10 +40,10 @@ def handle_one(uid,chat,txt):
     chosen=selection(txt)
     if chosen is None:return False
     posts=parse_session()
-    if chosen and any(n not in posts for n in chosen):send_message('⛔ Auswahl veraltet oder nicht vollständig Chief-QM-geprüft. Nichts veröffentlicht.')
+    if chosen and (len(posts)!=5 or any(n not in posts for n in chosen)):send_message('⛔ Auswahl veraltet oder nicht vollständig Chief-QM-geprüft. Nichts veröffentlicht.')
     elif chosen:send_message(f'✅ Racing: {len(chosen)} Content-Paket(e) freigegeben. {publish(posts,chosen,uid)} Plattform-Blöcke wurden übergeben.')
     else:send_message('❌ Tagesauswahl verworfen. Es wird nichts veröffentlicht.')
-    STATE.write_text(f'Update-ID: {uid}\nAntwort: {txt}\n',encoding='utf-8');return True
+    STATE.parent.mkdir(parents=True,exist_ok=True);STATE.write_text(f'Update-ID: {uid}\nAntwort: {txt}\n',encoding='utf-8');return True
 def main():
     if len(sys.argv)>=4:
         if not handle_one(int(sys.argv[1]),sys.argv[2],sys.argv[3]):raise SystemExit(2)
