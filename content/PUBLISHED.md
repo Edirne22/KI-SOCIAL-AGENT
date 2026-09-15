@@ -478,7 +478,7 @@ Quelle: https://www.motogp.com/en/news/2026/09/12/loris-capirossi-becomes-a-moto
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-loris-capirossi-beco-01.jpg
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-15 20:40 | ID: 1285968257941776_122107689075469415]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 35021014764-1
 Freigabe: Telegram Racing
