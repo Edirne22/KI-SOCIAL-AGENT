@@ -1,10 +1,13 @@
 """Einziger Telegram-Poller/Routing-Einstiegspunkt.
 
 Nur dieser Router konsumiert getUpdates im Zeitplan. MotoGP erhält exakt das
-bereits gelesene Update als Argumente; kein zweiter Poll, keine Race-Condition.
+bereits gelesene Update als Argumente. Unbekannte Nachrichten werden still
+bestätigt, damit der alte allgemeine Receiver keine irreführende Freigabe-Hilfe
+mehr auf beliebige Nachrichten sendet.
 """
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
 from telegram_bot import get_chat_id, get_updates
@@ -12,6 +15,21 @@ from telegram_bot import get_chat_id, get_updates
 
 def _ack(update_id: int) -> None:
     get_updates(offset=update_id + 1)
+
+
+def _is_general_command(text: str) -> bool:
+    n = " ".join(text.strip().lower().split())
+    if n in {"alle", "✅", "nein", "❌", "watchlist", "liste", "track", "experiment", "funnel", "growth", "competitors", "wettbewerber", "inspiration", "race", "viral", "follow-analyse", "go"}:
+        return True
+    if re.fullmatch(r"[1-3](?:\s*,\s*[1-3])*", n):
+        return True
+    prefixes = (
+        "auto-track:", "autotrack:", "auto track:", "karussell:", "karussell ",
+        "experiment:", "trend:", "trend ", "track:", "track ", "deal:", "deal ",
+        "deal-test:", "suche:", "suche ", "stop:", "stop ", "beenden:", "beenden ",
+        "erledigt:", "erledigt ", "gekauft:", "gekauft ", "verify:", "verify "
+    )
+    return n.startswith(prefixes)
 
 
 def main() -> None:
@@ -46,10 +64,16 @@ def main() -> None:
             print(f"ROUTER: MotoGP Update {uid} erfolgreich verarbeitet und bestätigt.")
             return
 
-        print(f"ROUTER: Update {uid} -> allgemeiner Telegram Receiver")
-        result = subprocess.run([sys.executable, "-u", "telegram_receive.py"], check=False)
-        if result.returncode != 0:
-            raise RuntimeError(f"Allgemeiner Telegram-Receiver fehlgeschlagen (Exit {result.returncode}).")
+        if _is_general_command(text):
+            print(f"ROUTER: Update {uid} -> allgemeiner Telegram Receiver")
+            result = subprocess.run([sys.executable, "-u", "telegram_receive.py"], check=False)
+            if result.returncode != 0:
+                raise RuntimeError(f"Allgemeiner Telegram-Receiver fehlgeschlagen (Exit {result.returncode}).")
+            return
+
+        # Keine generische Fehlermeldung mehr für normale/alte/unbekannte Texte.
+        print(f"ROUTER: Update {uid} unbekannt; still bestätigt, keine irreführende Bot-Antwort.")
+        _ack(uid)
         return
 
     print("ROUTER: Kein verarbeitbares Update gefunden.")
