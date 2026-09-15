@@ -1,7 +1,8 @@
-name: MotoGP Telegram Approval
+name: MotoGP Telegram Approval (Diagnose)
 on:
-  schedule:
-    - cron: "*/5 6-21 * * *"
+  # Kein eigener Schedule mehr: derselbe Telegram-Bot darf nicht von zwei
+  # Workflows parallel gepollt werden. Der zentrale telegram-receive.yml Router
+  # leitet motogp-Kommandos an motogp_telegram_receive.py weiter.
   workflow_dispatch:
 permissions:
   contents: write
@@ -22,20 +23,18 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install requests
-      - name: MotoGP Telegram-Freigabe verarbeiten
+      - name: MotoGP Telegram-Freigabe diagnostisch verarbeiten
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: |
-          echo "Approval-Poll gestartet: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          python -u motogp_telegram_receive.py
+        run: python -u motogp_telegram_receive.py
       - name: Freigabe an Publisher-Plan übergeben
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add content/PUBLISHED.md memory/MOTOGP_APPROVAL_STATE.md 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "Keine neue Telegram-Freigabe in diesem Poll."
+            echo "Keine neue Telegram-Freigabe in diesem Diagnoselauf."
           else
             git commit -m "Auto: MotoGP Telegram-Freigabe"
             git pull --rebase origin main
