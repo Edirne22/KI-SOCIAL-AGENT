@@ -1,57 +1,6 @@
 {
   "version": 1,
   "days": {
-    "2026-09-15": [
-      {
-        "story_key": "motogp:1089216",
-        "title": "“There’s no way to go forward apart from continuing to push” – BMW reflect on a tough round at Magny-Cours",
-        "url": "https://www.worldsbk.com/en/news/2026/09/11/theres-no-way-to-go-forward-apart-from-continuing-to-push-bmw-reflect-on-a-tough-round-at-magny-cours/1089216",
-        "summary": "It will be back to the drawing board at the upcoming Cremona test for the factory BMW outfit after a bumpy weekend in France",
-        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/a16f6821-6ed6-49dd-82cb-e647c8558552/P90654493_highRes_04th-06th-september-.jpg",
-        "series": "WorldSBK",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1089347",
-        "title": "MEDIA DAY DISPATCH: a three-way shootout as MotoGP hits Misano",
-        "url": "https://www.motogp.com/en/news/2026/09/10/media-day-dispatch-a-three-way-shootout-as-motogp-hits-misano/1089347",
-        "summary": "The San Marino GP brings round 14 of 22 in 2026 and with nine GPs remaining, it’s looking like a three-rider scrap for the title",
-        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/10/4196176f-d2da-4947-b95c-9e713ff76678/R1DC3597.jpg?width=1200&height=630",
-        "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1089215",
-        "title": "Surra matches season highs at Magny-Cours: “Another fantastic result with the team!”",
-        "url": "https://www.worldsbk.com/en/news/2026/09/10/surra-matches-season-highs-at-magny-cours-another-fantastic-result-with-the-team/1089215",
-        "summary": "While he didn’t yet manage to land his maiden podium, Surra enjoyed a strong round from Friday to Sunday",
-        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/dc9a1e67-86bb-4b31-8c42-8aba861d171b/51932_JDR_R09_2026_Ambience.jpg",
-        "series": "WorldSBK",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1089366",
-        "title": "Miller on 2027 WorldSBK switch: “I’m extremely excited to see what the future holds in our story together”",
-        "url": "https://www.worldsbk.com/en/news/2026/09/10/miller-on-2027-worldsbk-switch-im-extremely-excited-to-see-what-the-future-holds-in-our-story-together/1089366",
-        "summary": "The Australian rider will have a new home next year as he joins Yamaha’s WorldSBK project",
-        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/96b8ab07-c33e-4623-b727-462fa333204d/GCM_497.jpg",
-        "series": "WorldSBK",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1089182",
-        "title": "FOLLOWING IN THEIR FOOTSTEPS: Bulega becomes the latest to move from WorldSBK to MotoGP",
-        "url": "https://www.worldsbk.com/en/news/2026/09/09/following-in-their-footsteps-bulega-becomes-the-latest-to-move-from-worldsbk-to-motogp/1089182",
-        "summary": "A handful of riders have made the jump from WorldSBK to MotoGP as Nicolo Bulega becomes the latest to do so",
-        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/07/16/a0d14b3b-1b91-47da-af91-ce8d5218f86a/56005_R2_JDR_WSBK_AMBIENCE.jpg",
-        "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      }
-    ]
+    "2026-09-15": []
   }
 }
