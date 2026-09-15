@@ -20,3 +20,10 @@
 {"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T12:53:40.819263+00:00", "type": "published", "value": "1061438430139436"}
 {"confidence": 1.0, "source": "memory/PUBLICATION_DUPLICATES.md", "subject": "duplicate_content", "timestamp": "2026-09-15T12:53:40.819268+00:00", "type": "failure", "value": "mehrere freigegebene blöcke haben denselben text."}
 {"confidence": 1.0, "count": 2, "source": "memory/POST_HISTORY.md", "subject": "repeated_hook", "timestamp": "2026-09-15T12:53:40.819273+00:00", "type": "failure", "value": "kann toprak razgatlıoğlu in misano wieder alle überraschen?"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T17:53:00.083942+00:00", "type": "published", "value": "1285968257941776_122107360995469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram", "timestamp": "2026-09-15T17:53:00.083957+00:00", "type": "published", "value": "18110414735113630"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T17:53:00.083962+00:00", "type": "published", "value": "1285968257941776_122107421415469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram", "timestamp": "2026-09-15T17:53:00.083967+00:00", "type": "published", "value": "18114206119812331"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T17:53:00.083971+00:00", "type": "published", "value": "1285968257941776_122107434699469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram", "timestamp": "2026-09-15T17:53:00.083975+00:00", "type": "published", "value": "17907431292520579"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T17:53:00.083979+00:00", "type": "published", "value": "1285968257941776_122107503015469415"}
