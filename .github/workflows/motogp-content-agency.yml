@@ -21,22 +21,27 @@ jobs:
       - run: pip install requests
       - name: Preflight Python contracts
         run: |
-          python -m py_compile motogp_content_agency_v2.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py
+          python -m py_compile motogp_content_agency_v2.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py llm_client.py router.py
           python - <<'PY'
           from turkish_riders_scout import scout, racing_scout
+          from router import get_task_config
           a=scout(1)
           b=racing_scout(1)
           if a and len(a[0]) != 3:
               raise SystemExit(f"Turkish scout contract invalid: {len(a[0])}")
           if b and len(b[0]) != 4:
               raise SystemExit(f"Racing scout contract invalid: {len(b[0])}")
-          print("Preflight contracts: PASS")
+          task=get_task_config('final_captions')
+          if task.get('response_type') != 'text':
+              raise SystemExit('final_captions route invalid')
+          print("Preflight contracts + DE editor route: PASS")
           PY
-      - name: Research → Voice → Domain-QM → Media → Chief-QM → Telegram
+      - name: Research → DE-Redakteur → Voice → Domain-QM → Media → Chief-QM → Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python -u motogp_content_agency_v2.py
       - name: Memory, QM-Audit, Medien und Session persistent speichern
         if: always()
