@@ -19,24 +19,24 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install requests
-      - name: Preflight Python contracts
+      - name: Preflight – komplette Racing-Kette und Agentenstandard
         run: |
-          python -m py_compile motogp_content_agency_v2.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py llm_client.py router.py
+          python -m py_compile motogp_content_agency_v2.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py llm_client.py router.py
+          python racing_pipeline_selftest.py
           python - <<'PY'
           from turkish_riders_scout import scout, racing_scout
           from router import get_task_config
-          a=scout(1)
-          b=racing_scout(1)
-          if a and len(a[0]) != 3:
-              raise SystemExit(f"Turkish scout contract invalid: {len(a[0])}")
-          if b and len(b[0]) != 4:
-              raise SystemExit(f"Racing scout contract invalid: {len(b[0])}")
-          task=get_task_config('final_captions')
-          if task.get('response_type') != 'text':
-              raise SystemExit('final_captions route invalid')
-          print("Preflight contracts + DE editor route: PASS")
+          from llm_client import global_professional_context
+          a=scout(1); b=racing_scout(1)
+          if a and len(a[0]) != 3: raise SystemExit(f"Turkish scout contract invalid: {len(a[0])}")
+          if b and len(b[0]) != 4: raise SystemExit(f"Racing scout contract invalid: {len(b[0])}")
+          for task in ('final_captions','racing_semantic_qm'):
+              if get_task_config(task).get('response_type') != 'text': raise SystemExit(f'{task} route invalid')
+          ctx=global_professional_context()
+          if 'PROFESSIONAL AGENT STANDARD' not in ctx or 'HUMAN WRITING PROTOCOL' not in ctx: raise SystemExit('global professional context missing')
+          print('Preflight contracts + professional standard + full QM chain: PASS')
           PY
-      - name: Research → DE-Redakteur → Voice → Domain-QM → Media → Chief-QM → Telegram
+      - name: Research → Redakteur → Racing-QM → Semantic-QM → Ersatzpool → Media → Chief-QM → Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -49,18 +49,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add -A -- memory/ assets/images/
-          if [ -f content/MOTOGP_ROSTER_NEXT.md ]; then
-            git add -- content/MOTOGP_ROSTER_NEXT.md
-          fi
-          if git diff --cached --quiet; then
-            echo "Keine Agency-Änderungen zu speichern"
-          else
-            git commit -m "Auto: Racing Agency Audit und Chief-QM"
-          fi
-          if ! git diff --quiet || ! git diff --cached --quiet; then
-            echo "FEHLER: Arbeitsbaum nach Persistenz nicht sauber"
-            git status --short
-            exit 1
-          fi
+          if [ -f content/MOTOGP_ROSTER_NEXT.md ]; then git add -- content/MOTOGP_ROSTER_NEXT.md; fi
+          if git diff --cached --quiet; then echo "Keine Agency-Änderungen zu speichern"; else git commit -m "Auto: Racing Agency Audit und Chief-QM"; fi
+          if ! git diff --quiet || ! git diff --cached --quiet; then echo "FEHLER: Arbeitsbaum nach Persistenz nicht sauber"; git status --short; exit 1; fi
           git pull --rebase origin main
           git push
