@@ -25,25 +25,33 @@ def find_facebook_block(content):
             continue
 
         text_match = re.search(
-            r"Text:\s*(.+?)(?=\n(?:Bild|Video|Bilder|Quelle|Medienstatus|Nutzungsrecht|Musik|Poster):|\Z)",
+            r"Text:\s*(.+?)(?=\n(?:Bild|Video|Bilder|Quelle|Medienstatus|Nutzungsrecht|Musik|Poster|Link-Preview):|\Z)",
             body,
             re.DOTALL,
         )
         image_match = re.search(r"(?mi)^Bild:\s*(?!auto\s*$)(\S+)", body)
         video_match = re.search(r"(?mi)^Video:\s*(?!auto\s*$)(\S+)", body)
+        source_match = re.search(r"(?mi)^Quelle:\s*(https?://\S+)", body)
+        link_preview = bool(re.search(r"(?mi)^Link-Preview:\s*offiziell\s*$", body))
 
         if text_match:
             message = text_match.group(1).strip()
-            source_match = re.search(r"(?mi)^Quelle:\s*(https?://\S+)", body)
-            if source_match:
-                message += f"\n\nQuelle: {source_match.group(1)}"
+            source_url = source_match.group(1) if source_match else None
+
+            # Bei offizieller Link-Preview wird die Quelle als echter Facebook-Link
+            # übergeben statt als zusätzliche sichtbare Quelle-Zeile. So kann Meta
+            # die Open-Graph-Vorschau der Originalseite erzeugen.
+            if source_url and not link_preview:
+                message += f"\n\nQuelle: {source_url}"
+
             return (
                 message,
                 image_match.group(1) if image_match else None,
                 video_match.group(1) if video_match else None,
+                source_url if link_preview else None,
                 block,
             )
-    return None, None, None, None
+    return None, None, None, None, None
 
 
 def _video_mime(path):
@@ -67,13 +75,7 @@ def post_video_to_facebook(page_id, page_token, message, video_file):
 
     try:
         with open(video_file, "rb") as handle:
-            files = {
-                "source": (
-                    os.path.basename(video_file),
-                    handle,
-                    _video_mime(video_file),
-                )
-            }
+            files = {"source": (os.path.basename(video_file), handle, _video_mime(video_file))}
             response = requests.post(url, data=payload, files=files, timeout=300)
     except OSError as exc:
         print(f"Fehler beim Lesen der Video-Datei: {exc}")
@@ -94,14 +96,13 @@ def post_video_to_facebook(page_id, page_token, message, video_file):
     return None
 
 
-def post_to_facebook(page_id, page_token, message, image_file=None, video_file=None):
-    # Video hat Vorrang, wenn ein freigegebener Block explizit Video: enthält.
+def post_to_facebook(page_id, page_token, message, image_file=None, video_file=None, link_url=None):
+    # Video hat Vorrang, danach explizites Bild. Link-Preview gilt fuer Text/Link-Posts.
     if video_file:
         return post_video_to_facebook(page_id, page_token, message, video_file)
 
     if image_file:
         from asset_paths import asset_url
-
         url = f"https://graph.facebook.com/v26.0/{page_id}/photos"
         payload = {
             "url": asset_url(image_file, REPO_RAW),
@@ -111,6 +112,9 @@ def post_to_facebook(page_id, page_token, message, image_file=None, video_file=N
     else:
         url = f"https://graph.facebook.com/v26.0/{page_id}/feed"
         payload = {"message": message, "access_token": page_token}
+        if link_url:
+            payload["link"] = link_url
+            print(f"Facebook-Link-Preview angefordert: {link_url}")
 
     try:
         response = requests.post(url, data=payload, timeout=30)
@@ -142,14 +146,14 @@ if __name__ == "__main__":
     with open("content/PUBLISHED.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    text, image_file, video_file, block = find_facebook_block(content)
+    text, image_file, video_file, link_url, block = find_facebook_block(content)
     if not text:
         print("Kein freigegebener Facebook-Beitrag gefunden.")
         exit(0)
 
-    media_type = "Video" if video_file else "Bild" if image_file else "Text"
+    media_type = "Video" if video_file else "Bild" if image_file else "Link" if link_url else "Text"
     print(f"Facebook-Beitrag gefunden – veröffentliche jetzt als {media_type}...")
-    post_id = post_to_facebook(page_id, page_token, text, image_file, video_file)
+    post_id = post_to_facebook(page_id, page_token, text, image_file, video_file, link_url)
 
     if post_id:
         print(f"Erfolgreich veröffentlicht: {post_id}")
