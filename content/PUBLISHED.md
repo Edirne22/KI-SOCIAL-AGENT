@@ -302,3 +302,40 @@ Acosta neben Márquez – wie schätzt du diese Kombination sportlich ein?
 https://www.motogp.com/en/news/2026/06/24/confirmed-acosta-joins-marc-marquez-at-ducati-for-2027-and-2028/1074819
 Quelle: https://www.motogp.com/en/news/2026/06/24/confirmed-acosta-joins-marc-marquez-at-ducati-for-2027-and-2028/1074819
 Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram MotoGP
+Telegram-Update-ID: 279361656
+MotoGP-Auswahl: 2
+Titel: Marc Marquez fends off Acosta and Bezzecchi to underline title charge at Aragon
+Text:
+🏍️ MotoGP im Fokus: Marc Marquez.
+
+Marc Marquez ist heute eines der relevanten MotoGP-Themen. Die Fakten stammen aus der offiziellen Meldung; der Social-Text wird bewusst eigenständig formuliert.
+
+Was ist für dich der spannendste Punkt an dieser Story?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #MotoGPDeutschland
+Quelle: https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-and-bezzecchi-to-underline-title-charge-at-aragon/1087037
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-2-marc-marquez-fends-o-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram MotoGP
+Telegram-Update-ID: 279361656
+MotoGP-Auswahl: 2
+Titel: Marc Marquez fends off Acosta and Bezzecchi to underline title charge at Aragon
+Text:
+🏍️ MotoGP im Fokus: Marc Marquez.
+
+Marc Marquez ist heute eines der relevanten MotoGP-Themen. Die Fakten stammen aus der offiziellen Meldung; der Social-Text wird bewusst eigenständig formuliert.
+
+Was ist für dich der spannendste Punkt an dieser Story?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #MotoGPDeutschland
+
+https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-and-bezzecchi-to-underline-title-charge-at-aragon/1087037
+Quelle: https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-and-bezzecchi-to-underline-title-charge-at-aragon/1087037
+Link-Preview: offiziell
