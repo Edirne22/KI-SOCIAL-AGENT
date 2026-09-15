@@ -420,7 +420,7 @@ https://www.motogp.com/en/news/2026/09/14/umberto-masetti-officially-inducted-in
 Quelle: https://www.motogp.com/en/news/2026/09/14/umberto-masetti-officially-inducted-into-the-motogp-hall-of-fame/1089729
 Link-Preview: offiziell
 
-## Instagram
+## Instagram [GEPOSTET 2026-09-15 20:26 | ID: 17980200875899970]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 35019609914-1
 Freigabe: Telegram Racing
