@@ -1,0 +1,31 @@
+name: Closed Loop Memory Learning
+on:
+  schedule:
+    - cron: "45 17 * * *" # nach Analytics/Viral-Learning
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: memory-learning
+  cancel-in-progress: false
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git pull --rebase origin main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Memory-Ereignisse kuratieren und Context Packet bauen
+        run: python -u memory_engine.py
+      - name: Memory speichern
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add memory/MEMORY_EVENTS.jsonl memory/LEARNED_RULES.md memory/MEMORY_CONTEXT.md memory/MEMORY_HEALTH.md 2>/dev/null || true
+          git commit -m "Auto: Closed-Loop Memory aktualisiert" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
