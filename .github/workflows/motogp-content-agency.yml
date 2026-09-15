@@ -29,8 +29,18 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add memory/MOTOGP_DAILY_CONTENT.md memory/MOTOGP_DAILY_ARCHIVE/ memory/MOTOGP_APPROVAL_SESSION.md memory/MOTOGP_STORY_MEMORY.md memory/MOTOGP_VOICE_RULES.md memory/QUALITY_MANAGER_LOG.md content/MOTOGP_ROSTER_NEXT.md 2>/dev/null || true
-          git add assets/images/ 2>/dev/null || true
-          git commit -m "Auto: MotoGP Paket nach Chief-QM" || echo "Keine Änderungen"
+          # Alle von der Agency erzeugten/geänderten Racing-Artefakte erfassen.
+          git add -A -- memory/ content/MOTOGP_ROSTER_NEXT.md assets/images/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Keine Agency-Änderungen zu speichern"
+          else
+            git commit -m "Auto: MotoGP Paket nach Chief-QM"
+          fi
+          # Vor Rebase darf kein unversionierter Agency-Output übrig bleiben.
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            echo "FEHLER: Arbeitsbaum nach Persistenz nicht sauber"
+            git status --short
+            exit 1
+          fi
           git pull --rebase origin main
           git push
