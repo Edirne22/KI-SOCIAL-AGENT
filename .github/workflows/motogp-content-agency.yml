@@ -19,13 +19,16 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install requests
-      - name: MotoGP Tagescontent sammeln
+      - name: MotoGP recherchieren, formulieren und an Telegram senden
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python -u motogp_content_agency.py
-      - name: Briefing, Archiv und Next-Roster speichern
+      - name: Briefing, Freigabe-Session, Archiv und Next-Roster speichern
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add memory/MOTOGP_DAILY_CONTENT.md memory/MOTOGP_DAILY_ARCHIVE/ content/MOTOGP_ROSTER_NEXT.md 2>/dev/null || true
+          git add memory/MOTOGP_DAILY_CONTENT.md memory/MOTOGP_DAILY_ARCHIVE/ memory/MOTOGP_APPROVAL_SESSION.md content/MOTOGP_ROSTER_NEXT.md 2>/dev/null || true
           git commit -m "Auto: MotoGP Daily Content Agency" || echo "Keine Änderungen"
           git pull --rebase origin main
           git push
