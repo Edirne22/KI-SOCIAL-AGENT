@@ -207,7 +207,7 @@ Bild: auto
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34977948922-1
 Freigabe: Telegram MotoGP
 Telegram-Update-ID: 279361652
 MotoGP-Auswahl: 1
