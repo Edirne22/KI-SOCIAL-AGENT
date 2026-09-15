@@ -114,3 +114,28 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worlds
 Story-Key: motogp:1089616
 Titel: Loris Capirossi becomes a MotoGP Legend
 Quelle: https://www.motogp.com/en/news/2026/09/12/loris-capirossi-becomes-a-motogp-legend/1089616
+
+## 2026-09-15 20:16 UTC – ANGEBOTEN
+Story-Key: motogp:1089370
+Titel: Binder looking forward to a new challenge in WorldSBK: “I want to achieve good things there”
+Quelle: https://www.worldsbk.com/en/news/2026/09/10/binder-looking-forward-to-a-new-challenge-in-worldsbk-im-looking-forward-to-the-next-adventure/1089370
+
+## 2026-09-15 20:16 UTC – ANGEBOTEN
+Story-Key: motogp:1089172
+Titel: BULEGA’S FUTURE CONFIRMED: The #11 secures MotoGP seat for 2027 with VR46 Ducati
+Quelle: https://www.worldsbk.com/en/news/2026/09/09/bulegas-future-confirmed-the-11-secures-motogp-seat-for-2027-with-vr46-ducati/1089172
+
+## 2026-09-15 20:16 UTC – ANGEBOTEN
+Story-Key: motogp:1089357
+Titel: Rins to leave MotoGP and two-wheeled racing at end of 2026
+Quelle: https://www.motogp.com/en/news/2026/09/10/rins-to-leave-motogp-and-two-wheeled-racing-at-end-of-2026/1089357
+
+## 2026-09-15 20:16 UTC – ANGEBOTEN
+Story-Key: motogp:1089984
+Titel: UNDER THE RADAR: Who deserved more credit at Magny-Cours?
+Quelle: https://www.worldsbk.com/en/news/2026/09/14/under-the-radar-who-deserved-more-credit-at-magny-cours/1089984
+
+## 2026-09-15 20:16 UTC – ANGEBOTEN
+Story-Key: motogp:1089217
+Titel: “I thought, ‘Now, it’s possible’” – Garcia reflects on maiden WorldSSP win
+Quelle: https://www.worldsbk.com/en/news/2026/09/11/i-thought-now-its-possible-garcia-reflects-on-maiden-worldssp-win/1089217

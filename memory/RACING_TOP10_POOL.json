@@ -1,6 +1,107 @@
 {
   "version": 1,
   "days": {
-    "2026-09-15": []
+    "2026-09-15": [
+      {
+        "story_key": "motogp:1089370",
+        "title": "Binder looking forward to a new challenge in WorldSBK: “I want to achieve good things there”",
+        "url": "https://www.worldsbk.com/en/news/2026/09/10/binder-looking-forward-to-a-new-challenge-in-worldsbk-im-looking-forward-to-the-next-adventure/1089370",
+        "summary": "The South African MotoGP race winner is looking energised after the announcement of his move to WorldSBK in the season to come",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/19f05ed4-4a0b-4d40-a8f2-62dfc2e4cacd/Binder_03.jpg",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089984",
+        "title": "UNDER THE RADAR: Who deserved more credit at Magny-Cours?",
+        "url": "https://www.worldsbk.com/en/news/2026/09/14/under-the-radar-who-deserved-more-credit-at-magny-cours/1089984",
+        "summary": "With Round 9 done and dusted, who were the standouts that didn’t quite get the fanfare they deserved?",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/14/9e2a2b17-3d7c-4e46-bad2-edad70e082cb/UNDERTHERADAR-FRA.jpg",
+        "series": "WorldSBK",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089172",
+        "title": "BULEGA’S FUTURE CONFIRMED: The #11 secures MotoGP seat for 2027 with VR46 Ducati",
+        "url": "https://www.worldsbk.com/en/news/2026/09/09/bulegas-future-confirmed-the-11-secures-motogp-seat-for-2027-with-vr46-ducati/1089172",
+        "summary": "‘Bulegas’ is having a season like no other in WorldSBK, and he will race in MotoGP next season",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/07/16/30f75b4f-5622-4ef9-b8d8-61e9c28218a8/18268_DCP_R07_2026_Ambience.jpg",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089217",
+        "title": "“I thought, ‘Now, it’s possible’” – Garcia reflects on maiden WorldSSP win",
+        "url": "https://www.worldsbk.com/en/news/2026/09/11/i-thought-now-its-possible-garcia-reflects-on-maiden-worldssp-win/1089217",
+        "summary": "The Spanish star came out on top in a last-lap fight to claim victory – a day after losing out in a final-lap scrap",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/06/767c4dfd-f5bf-43eb-b72d-d881d1560d9a/55787_JDR_R09_2026_Ambience.jpg",
+        "series": "WorldSSP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089216",
+        "title": "“There’s no way to go forward apart from continuing to push” – BMW reflect on a tough round at Magny-Cours",
+        "url": "https://www.worldsbk.com/en/news/2026/09/11/theres-no-way-to-go-forward-apart-from-continuing-to-push-bmw-reflect-on-a-tough-round-at-magny-cours/1089216",
+        "summary": "It will be back to the drawing board at the upcoming Cremona test for the factory BMW outfit after a bumpy weekend in France",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/a16f6821-6ed6-49dd-82cb-e647c8558552/P90654493_highRes_04th-06th-september-.jpg",
+        "series": "WorldSBK",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089357",
+        "title": "Rins to leave MotoGP and two-wheeled racing at end of 2026",
+        "url": "https://www.motogp.com/en/news/2026/09/10/rins-to-leave-motogp-and-two-wheeled-racing-at-end-of-2026/1089357",
+        "summary": "The six-time Grand Prix winner has confirmed he will step away from motorcycle racing at the end of the season to pursue a new project",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/10/7a8522e0-08c1-4ba5-afb5-913eb919b827/vlcsnap-2026-09-10-12h07m13s3482.jpg?width=1200&height=630",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089347",
+        "title": "MEDIA DAY DISPATCH: a three-way shootout as MotoGP hits Misano",
+        "url": "https://www.motogp.com/en/news/2026/09/10/media-day-dispatch-a-three-way-shootout-as-motogp-hits-misano/1089347",
+        "summary": "The San Marino GP brings round 14 of 22 in 2026 and with nine GPs remaining, it’s looking like a three-rider scrap for the title",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/10/4196176f-d2da-4947-b95c-9e713ff76678/R1DC3597.jpg?width=1200&height=630",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089215",
+        "title": "Surra matches season highs at Magny-Cours: “Another fantastic result with the team!”",
+        "url": "https://www.worldsbk.com/en/news/2026/09/10/surra-matches-season-highs-at-magny-cours-another-fantastic-result-with-the-team/1089215",
+        "summary": "While he didn’t yet manage to land his maiden podium, Surra enjoyed a strong round from Friday to Sunday",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/dc9a1e67-86bb-4b31-8c42-8aba861d171b/51932_JDR_R09_2026_Ambience.jpg",
+        "series": "WorldSBK",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089366",
+        "title": "Miller on 2027 WorldSBK switch: “I’m extremely excited to see what the future holds in our story together”",
+        "url": "https://www.worldsbk.com/en/news/2026/09/10/miller-on-2027-worldsbk-switch-im-extremely-excited-to-see-what-the-future-holds-in-our-story-together/1089366",
+        "summary": "The Australian rider will have a new home next year as he joins Yamaha’s WorldSBK project",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/96b8ab07-c33e-4623-b727-462fa333204d/GCM_497.jpg",
+        "series": "WorldSBK",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089204",
+        "title": "STATS ROUND-UP: Bulega closes in on Bautista’s wins-in-a-campaign record in WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/09/stats-round-up-bulega-closes-in-on-bautistas-wins-in-a-campaign-record-in-worldsbk/1089204",
+        "summary": "Catch up on all the big stats and broken records from WorldSBK’s visit to Magny-Cours",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/08/fb837040-e966-43a7-aa75-d44f336a6dfa/10837_DCP_R09_2026_Action.jpg",
+        "series": "WorldSBK",
+        "turkish_rider": "",
+        "kind": "news"
+      }
+    ]
   }
 }

@@ -100,3 +100,28 @@ Titel: Loris Capirossi becomes a MotoGP Legend
 Story-Key: motogp:1089616
 Gründe: alle Gates bestanden
 
+## 2026-09-15 20:16 UTC | Motorcycle Racing | PASS
+Titel: Binder looking forward to a new challenge in WorldSBK: “I want to achieve good things there”
+Story-Key: motogp:1089370
+Gründe: alle Gates bestanden
+
+## 2026-09-15 20:17 UTC | Motorcycle Racing | PASS
+Titel: BULEGA’S FUTURE CONFIRMED: The #11 secures MotoGP seat for 2027 with VR46 Ducati
+Story-Key: motogp:1089172
+Gründe: alle Gates bestanden
+
+## 2026-09-15 20:17 UTC | Motorcycle Racing | PASS
+Titel: Rins to leave MotoGP and two-wheeled racing at end of 2026
+Story-Key: motogp:1089357
+Gründe: alle Gates bestanden
+
+## 2026-09-15 20:17 UTC | Motorcycle Racing | PASS
+Titel: UNDER THE RADAR: Who deserved more credit at Magny-Cours?
+Story-Key: motogp:1089984
+Gründe: alle Gates bestanden
+
+## 2026-09-15 20:17 UTC | Motorcycle Racing | PASS
+Titel: “I thought, ‘Now, it’s possible’” – Garcia reflects on maiden WorldSSP win
+Story-Key: motogp:1089217
+Gründe: alle Gates bestanden
+
