@@ -19,18 +19,18 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install requests
-      - name: MotoGP recherchieren, Story-Memory prüfen, Instagram-Medium vorbereiten und an Telegram senden
+      - name: MotoGP recherchieren, Story-Memory prüfen, individuellen Text und Instagram-Medium vorbereiten
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
-        run: python -u motogp_content_agency.py
+        run: python -u motogp_content_agency_v2.py
       - name: Briefing, Story-Memory, Medien, Freigabe-Session, Archiv und Next-Roster speichern
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add memory/MOTOGP_DAILY_CONTENT.md memory/MOTOGP_DAILY_ARCHIVE/ memory/MOTOGP_APPROVAL_SESSION.md memory/MOTOGP_STORY_MEMORY.md content/MOTOGP_ROSTER_NEXT.md 2>/dev/null || true
           git add assets/images/ 2>/dev/null || true
-          git commit -m "Auto: MotoGP Daily Content Agency mit Story-Memory" || echo "Keine Änderungen"
+          git commit -m "Auto: MotoGP Daily Content Agency mit Story-Memory und Copy-Quality-Gate" || echo "Keine Änderungen"
           git pull --rebase origin main
           git push
