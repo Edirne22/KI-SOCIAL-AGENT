@@ -174,3 +174,15 @@ Virajlı yolları keşfet, GPX olarak kaydet ve arkadaşlarınla paylaş!
 #RideWithMe #MotorradTour #Kurvenjäger #KIRouten #BikerLife
 
 Video: auto
+
+## Facebook
+Status: Freigegeben
+Freigabe: MANUELL
+Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring — VIDEO
+Text:
+🏁 Runde 15 am Red Bull Ring: Toprak Razgatlıoğlu in der MotoGP, Deniz Öncü in der Moto2 — und die türkische Biker-Familie macht den T10 laut. 🇹🇷🔥
+Avusturya’da yalnız değiliz. T10 Tribünü hazır!
+Wen unterstützt du dieses Wochenende?
+#MotoGP #AustrianGP #RedBullRing #Spielberg #ToprakRazgatlioglu #DenizOncu #Moto2 #MotoGPTurkiye #TurkMotorSporlari #BikerCommunity
+Video: assets/videos/2026-09/2026-09-14-sterreich-ruft-toprak-deniz-am-red-bull-ring-reel-musik-racing-beat.mp4
+Musik: Beat, electronic
