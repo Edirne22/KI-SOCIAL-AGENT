@@ -1,0 +1,31 @@
+name: MotoGP Content Agency
+on:
+  schedule:
+    - cron: "15 4 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: motogp-content-agency
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests
+      - name: MotoGP Tagescontent sammeln
+        run: python -u motogp_content_agency.py
+      - name: Briefing, Archiv und Next-Roster speichern
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add memory/MOTOGP_DAILY_CONTENT.md memory/MOTOGP_DAILY_ARCHIVE/ content/MOTOGP_ROSTER_NEXT.md 2>/dev/null || true
+          git commit -m "Auto: MotoGP Daily Content Agency" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push
