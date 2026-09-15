@@ -1,8 +1,7 @@
 """Einziger Telegram-Poller/Routing-Einstiegspunkt.
 
-Wichtig: Nur dieser Router darf im Zeitplan getUpdates konsumieren. Dadurch
-konkurrieren allgemeine Freigaben und MotoGP-Freigaben nicht mehr um dieselbe
-Telegram-Bot-Queue.
+Nur dieser Router konsumiert getUpdates im Zeitplan. MotoGP erhält exakt das
+bereits gelesene Update als Argumente; kein zweiter Poll, keine Race-Condition.
 """
 from __future__ import annotations
 
@@ -22,8 +21,6 @@ def main() -> None:
         print("ROUTER: Keine neuen Telegram-Updates.")
         return
 
-    # Genau das älteste relevante Update routen. Der jeweilige Receiver arbeitet
-    # wie bisher; der nächste 5-Minuten-Lauf nimmt danach das nächste Update.
     for upd in updates:
         uid = upd.get("update_id")
         msg = upd.get("message") or {}
@@ -32,19 +29,21 @@ def main() -> None:
         if not isinstance(uid, int):
             continue
         if chat != allowed or not isinstance(text, str):
-            print(f"ROUTER: Update {uid} ist nicht aus dem erlaubten Text-Chat; bestätigt/übersprungen.")
+            print(f"ROUTER: Update {uid} nicht aus erlaubtem Text-Chat; bestätigt/übersprungen.")
             _ack(uid)
             return
 
         normalized = " ".join(text.strip().lower().split())
         if normalized.startswith("motogp ") or normalized in {"motogp", "motogp ✅", "motogp ❌"}:
-            print(f"ROUTER: Update {uid} -> MotoGP Approval")
-            result = subprocess.run([sys.executable, "-u", "motogp_telegram_receive.py"], check=False)
+            print(f"ROUTER: Update {uid} -> MotoGP Approval (atomare Übergabe)")
+            result = subprocess.run(
+                [sys.executable, "-u", "motogp_telegram_receive.py", str(uid), chat, text],
+                check=False,
+            )
             if result.returncode != 0:
-                raise RuntimeError(f"MotoGP-Receiver fehlgeschlagen (Exit {result.returncode}); Update bleibt zur Wiederholung offen.")
-            # Erst nach erfolgreichem MotoGP-Handler konsumieren. So kann der
-            # allgemeine Receiver dieselbe Nachricht nicht mehr stehlen.
+                raise RuntimeError(f"MotoGP-Receiver fehlgeschlagen (Exit {result.returncode}); Update bleibt offen.")
             _ack(uid)
+            print(f"ROUTER: MotoGP Update {uid} erfolgreich verarbeitet und bestätigt.")
             return
 
         print(f"ROUTER: Update {uid} -> allgemeiner Telegram Receiver")
