@@ -1,8 +1,8 @@
-"""Motorcycle Racing Agency V8 – MotoGP + WorldSBK + WorldSSP, 5 fail-closed QM-Pakete."""
+"""Motorcycle Racing Agency V8.1 – MotoGP + WorldSBK + WorldSSP, fail-closed 5er-Auswahl."""
 from motogp_content_agency import *
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
-from turkish_riders_scout import scout as turkish_scout, racing_pairs
+from turkish_riders_scout import scout as turkish_scout, racing_scout
 TURKISH_RIDERS=['Toprak Razgatlioglu','Can Oncu','Deniz Oncu','Bahattin Sofuoglu','Zayn Sofuoglu']
 RIDERS_V2=TURKISH_RIDERS+['Marc Marquez','Alex Marquez','Marco Bezzecchi','Jorge Martin','Pedro Acosta','Francesco Bagnaia','Fabio Quartararo','Jack Miller','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado']
 def fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
@@ -12,7 +12,7 @@ def is_turkish_focus(item):return bool(item.get('turkish_rider')) or any(fold(n)
 def series_for(item):
  if item.get('series'):return item['series']
  u=fold(item.get('url',''));text=fold(item.get('title','')+' '+item.get('summary',''))
- if 'worldsbk.com' in u:return 'WorldSSP' if 'worldssp' in text or '/ssp' in u else 'WorldSBK'
+ if 'worldsbk.com' in u:return 'WorldSSP' if any(x in text or x in u for x in ('worldssp','world supersport','supersport','/ssp')) else 'WorldSBK'
  return 'MotoGP'
 def hashtags(item):
  series=series_for(item);tags=['#WorldSSP' if series=='WorldSSP' else '#WorldSBK' if series=='WorldSBK' else '#MotoGP']
@@ -21,21 +21,14 @@ def hashtags(item):
  for n in names[:2]:tags.append('#'+re.sub(r'[^A-Za-z0-9]','',n))
  tags+=['#MotorradRacing','#RacingDeutschland','#BuelentsBikeLife'];return ' '.join(dict.fromkeys(tags))
 def generic_story(item):
- """Nur aus sichtbaren Primärquellen-Metadaten formulieren; keine Ergebnisse/Zahlen erfinden."""
  title=re.sub(r'\s+',' ',item.get('title','')).strip();summary=re.sub(r'\s+',' ',item.get('summary','')).strip();r=item.get('turkish_rider') or (riders_in(title+' '+summary)[:1] or [''])[0];series=series_for(item)
  if not title or len(title)<18:return ('','','')
- # Profile/Fallbacks sind bewusst als zeitstabile Fahrer-Info gekennzeichnet.
- if item.get('kind')=='profile' and r:
-  return (f'{r} steht in der offiziellen {series}-Fahrerübersicht. Damit bleibt der türkische Fahrer in unserer Racing-Beobachtung fest gesetzt.',f'🇹🇷 {r} bleibt bei uns im Racing-Fokus.',f'Wie verfolgst du die Saison von {r}?')
- # Für News wird der offizielle Titel als Faktanker verwendet; Summary nur wenn brauchbar.
+ if item.get('kind')=='profile' and r:return (f'{r} steht in der offiziellen {series}-Fahrerübersicht. Der Fahrer bleibt damit fest in unserem Racing-Radar.',f'🇹🇷 {r} im {series}-Fokus.',f'Wie verfolgst du die Saison von {r}?')
  fact=summary if len(summary)>=45 and not any(x in fold(summary) for x in ('cookie','javascript','privacy')) else title
  if len(fact)>360:fact=fact[:357].rsplit(' ',1)[0]+'…'
- hook=(f'🇹🇷 {r}: {title}' if r else f'🏁 {title}')
- question=f'Wie ordnest du diese {series}-Meldung ein?'
- return (fact,hook,question)
+ hook=(f'🇹🇷 {r}: {title}' if r else f'🏁 {title}');return (fact,hook,f'Wie ordnest du diese {series}-Meldung ein?')
 def german_story(item):
  tl=fold(item.get('title',''));low=fold(item.get('title','')+' '+item.get('summary',''))
- if 'can oncu' in low and ('first 2026 worldssp win' in low or ('p13' in low and ('win' in low or 'victory' in low))):return ('Can Öncü kämpft sich in Magny-Cours von Startplatz 13 bis zum Sieg in Rennen 1 und holt damit seinen ersten WorldSSP-Erfolg der Saison 2026. Die #61 meldet sich nach der Sommerpause eindrucksvoll zurück.','🇹🇷 Von P13 zum Sieg: Can Öncü liefert in Frankreich eine echte Aufholjagd.','Wie stark war für dich Cans Weg von P13 bis ganz nach vorne? 🔥')
  if 'game on' in tl and 'largest points deficit' in tl:return ('Marc Márquez hat einen Rückstand von 102 Punkten aufgeholt und daraus die Führung in der Weltmeisterschaft gemacht.','📈 102 Punkte aufgeholt: Márquez dreht den WM-Kampf komplett.','Ist das schon eine seiner stärksten Aufholjagden?')
  if 'pol espargaro' in tl and 'replace' in tl:return ('Pol Espargaró springt erneut für den verletzten Maverick Viñales ein und kehrt für KTM ins Renngeschehen zurück.','🔄 KTM setzt erneut auf Pol Espargaró.','Wie stark schätzt du Pol bei diesem Comeback ein?')
  if 'acosta' in tl and 'ducati' in tl:return ('Pedro Acosta fährt ab 2027 für das Ducati Lenovo Team und wird Teamkollege von Marc Márquez.','🔥 Ducati setzt für 2027 ein echtes Ausrufezeichen!','Wie schätzt du Acosta neben Márquez ein?')
@@ -64,23 +57,30 @@ def telegram_preview(items):
  msg+=['Freigabe: motogp 1–5 / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
 def run_v8():
  names=roster_names();known=known_story_keys();raw=[];seen=set();meta={}
- # Turkish Scout zuerst und Metadaten NICHT mehr wegwerfen.
- for t,u,r,s,k in turkish_scout(40):
-  u=canonical_url(u);meta[u]={'turkish_rider':r,'series':s,'kind':k};raw.append((t,u));seen.add(u)
- for title,url in racing_pairs(80)+extract(get(NEWS),60)+extract(get(MARKET),30):
+ # Vollständige offizielle Feeds: 4-Tupel (Titel, URL, Serie, erkannter türkischer Fahrer).
+ for t,u,s,r in racing_scout(80):
+  u=canonical_url(u);key=story_key(t,u)
+  if u in seen or key in known:continue
+  seen.add(u);raw.append((t,u));meta[u]={'series':s}
+  if r:meta[u]['turkish_rider']=r
+ # Turkish-Scout liefert bewusst 3-Tupel. Fallbacks werden hier sauber angereichert.
+ for t,u,r in turkish_scout(40):
+  u=canonical_url(u);key=story_key(t,u)
+  if u in seen or key in known:continue
+  seen.add(u);raw.append((t,u));meta[u]={'turkish_rider':r,'series':('WorldSSP' if 'worldssp' in fold(t+u) else 'WorldSBK' if 'worldsbk.com' in fold(u) else 'MotoGP'),'kind':('profile' if '/riders/' in u else 'news')}
+ for title,url in extract(get(NEWS),60)+extract(get(MARKET),30):
   u=canonical_url(url);key=story_key(title,u)
   if u in seen or key in known:continue
   seen.add(u);raw.append((title,u))
  details=[]
- for t,u in raw[:140]:
+ for t,u in raw[:160]:
   x=article_info(t,u);x.update(meta.get(u,{}));details.append(x)
  now=datetime.now(timezone.utc);candidates=[];turkish=[x for x in details if is_turkish_focus(x) and qualify_copy(x)]
  if turkish:candidates.append(turkish[0])
- if candidates:
-  for x in sorted(details,key=lambda z:score(z['title'],names),reverse=True):
-   if len(candidates)>=5:break
-   if any(p['url']==x['url'] for p in candidates) or not qualify_copy(x):continue
-   candidates.append(x)
+ for x in sorted(details,key=lambda z:score(z['title'],names),reverse=True):
+  if len(candidates)>=5:break
+  if any(p['url']==x['url'] for p in candidates) or not qualify_copy(x):continue
+  candidates.append(x)
  if len(candidates)==5:
   batch=review_batch(candidates);candidates=[x for x,(ok,_) in zip(candidates,batch) if ok]
  picks=[]
@@ -92,5 +92,5 @@ def run_v8():
  if len(picks)==5 and turk:
   write_session(picks,now);remember_offered(picks,now);telegram_preview(picks)
  else:send_message(f'🏍️ Racing Agency: {len(picks)}/5 Chief-QM-Pakete, Turkish-Rider-Slot={"PASS" if turk else "FAIL"}. Keine unvollständige Auswahl gesendet.')
- print(f'Racing V8: raw={len(details)}, series={counts}, turkish_copy={len(turkish)}, batch={len(candidates)}, final={len(picks)}, Turkish={turk}')
+ print(f'Racing V8.1: raw={len(details)}, series={counts}, turkish_copy={len(turkish)}, batch={len(candidates)}, final={len(picks)}, Turkish={turk}')
 if __name__=='__main__':run_v8()
