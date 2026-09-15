@@ -1,31 +1,32 @@
 # Motorcycle Racing Telegram Approval Session
-Session-Version: 14
-Agency-Version: V8.4.3
+Session-Version: 15
+Agency-Version: V8.4.5
+Human-Writing-Protocol: V1.0
 QM: PASS
-Session-Timestamp: 1789504043
+Session-Timestamp: 1789507191
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
 ## Beitrag 1
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 5.9
+Artikelalter-Tage: 6.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1089347
-Titel: MEDIA DAY DISPATCH: a three-way shootout as MotoGP hits Misano
-Quelle: https://www.motogp.com/en/news/2026/09/10/media-day-dispatch-a-three-way-shootout-as-motogp-hits-misano/1089347
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-media-day-dispatch-a-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/10/4196176f-d2da-4947-b95c-9e713ff76678/R1DC3597.jpg?width=1200&height=630
+Story-Key: motogp:1089177
+Titel: Bulega to join MotoGP with the Pertamina Enduro VR46 Racing Team in 2027 The Italian rider moves from WorldSBK to partner Aldeguer in fluo next season
+Quelle: https://www.motogp.com/en/news/2026/09/09/bulega-to-join-motogp-with-the-pertamina-enduro-vr46-racing-team-in-2027/1089177
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-bulega-to-join-motog-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Misano beschert uns die Spitzengruppe des Jahres.
+Der WorldSBK-Champion Fabio Bulega wechselt 2027 die Liga und steigt direkt in die MotoGP ein.
 
-Mit dem San Marino Grand Prix startet Runde 14 von 22 der MotoGP-Saison 2026. Neun Lauf stehen noch aus, und die Meisterschaft entwickelt sich zu einem Dreikampf – drei Fahrer liegen im Titelrennen eng beieinander.
+Er zieht für die Pertamina Enduro VR46 Racing Team in die Königsklasse, wo er mit Aldeguer auf zwei Fluo-Maschinen vertreten sein wird. Der Italiener wechselt damit von der Superbike-WM zu Marc Márquezs Rennstall.
 
-Wer von den drei Spitzenreitern gewinnt bei dir die Sympathie?
+Wie eingeschätzt – kann sich Bulega sofort in der MotoGP behaupten?
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife #FerminAldeguer #NicoloBulega
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -35,88 +36,88 @@ Herkunft: Aktuell
 Artikelalter-Tage: 6.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1089182
-Titel: FOLLOWING IN THEIR FOOTSTEPS: Bulega becomes the latest to move from WorldSBK to MotoGP
-Quelle: https://www.worldsbk.com/en/news/2026/09/09/following-in-their-footsteps-bulega-becomes-the-latest-to-move-from-worldsbk-to-motogp/1089182
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-following-in-their-f-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/07/16/a0d14b3b-1b91-47da-af91-ce8d5218f86a/56005_R2_JDR_WSBK_AMBIENCE.jpg
+Story-Key: motogp:1089205
+Titel: Ogura sidelined from Misano
+Quelle: https://www.motogp.com/en/news/2026/09/09/ogura-sidelined-from-misano/1089205
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-ogura-sidelined-from-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/09/a0aa9242-7dc5-436c-af92-fb4fa98bbbc6/R5DC6706.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Mit dem Wechsel zur MotoGP setzt Nicolo Bulega eine Tradition fort, die immer wieder für Gesprächsstoff sorgt.
+Keine Chance auf einen zweiten Bikes bei SuperFile Trackhouse in Misano.
 
-Bulega ist der aktuellste Fahrer, der aus dem WorldSBK ins MotoGP-Feld wechselt. Eine kleine, aber bemerkenswerte Gruppe von Piloten hat den Sprung zwischen den Klassen bereits geschafft.
+Hiromichi Ogura fehlt dem Team vorerst. Der #79 ist noch nicht fit genug für den Renneinsatz, weshalb das Team dieses Wochenende nur mit einem Motorrad an den Start geht.
 
-Welche Fahrer haben den Weg von der Superbike zur Weltmeisterschaft bereits vor ihm beschritten?
+Wer sollte Ogura vertreten, falls ein Ersatzfahrer nötig wird?
 
-#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife #AiOgura
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 3
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 4.9
+Artikelalter-Tage: 6.9
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1089216
-Titel: “There’s no way to go forward apart from continuing to push” – BMW reflect on a tough round at Magny-Cours
-Quelle: https://www.worldsbk.com/en/news/2026/09/11/theres-no-way-to-go-forward-apart-from-continuing-to-push-bmw-reflect-on-a-tough-round-at-magny-cours/1089216
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-theres-no-way-to-go-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/a16f6821-6ed6-49dd-82cb-e647c8558552/P90654493_highRes_04th-06th-september-.jpg
+Story-Key: motogp:1089204
+Titel: STATS ROUND-UP: Bulega closes in on Bautista’s wins-in-a-campaign record in WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/09/stats-round-up-bulega-closes-in-on-bautistas-wins-in-a-campaign-record-in-worldsbk/1089204
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-stats-round-up-buleg-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/08/fb837040-e966-43a7-aa75-d44f336a6dfa/10837_DCP_R09_2026_Action.jpg
 Plattformen: Instagram + Facebook
 Text:
-Holpriges Wochenende für BMW in Magny-Cours
+Alex Rins Bulega macht nach dem WM-Lauf in Magny-Cours Jagd auf einen der Bestmarken der Superbike-WM.
 
-Das BMW-Werksteam muss nach einem schwachen Auftritt in Frankreich nun neu ansetzen. Beim Test in Cremona geht es zurück auf die Zeichentafel, um die Probleme zu analysieren und Lösungsansätze zu finden. Der Weg nach vorn führt laut Team nur über konsequentes Weitermachen.
+Mit seinem Sieg beim französischen Grand Prix schließt Bulega nun auf Alvaro Bautistas Rekord für die meisten Rennsiege in einer einzigen WorldSBK-Saison ein. Die Statistik unterstreicht, wie konsequent der Italiener die aktuelle Kampagne dominiert hat. Magny-Cours war dabei der nächste Meilenstein in einer Serie überzeugender Auftritte.
 
-Wie bewertet ihr die Lage – ist Cremona der richtige Zeitpunkt für den Neuanfang oder fehlt noch Airtime zum Testen?
+Denkt ihr, dass Bulega den Sieg-Rekord von Bautista knacken kann – oder bleibt er darunter?
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife #NicoloBulega #AlvaroBautista
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 4
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 5.9
+Artikelalter-Tage: 6.9
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1089215
-Titel: Surra matches season highs at Magny-Cours: “Another fantastic result with the team!”
-Quelle: https://www.worldsbk.com/en/news/2026/09/10/surra-matches-season-highs-at-magny-cours-another-fantastic-result-with-the-team/1089215
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-surra-matches-season-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/dc9a1e67-86bb-4b31-8c42-8aba861d171b/51932_JDR_R09_2026_Ambience.jpg
+Story-Key: motogp:1073105
+Titel: 2027 SILLY SEASON: Bulega makes MotoGP switch for 2027, Miller and Binder join WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/09/2027-silly-season-who-is-signed-up-whos-moving-and-to-where-in-worldsbk/1073105
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-2027-silly-season-bu-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/06/16/747df427-3ba6-43d9-b656-9c5a868e779b/Silly-season-2027.jpg
 Plattformen: Instagram + Facebook
 Text:
-Surra zeigt Stärke auf der Strecke in Magny-Cours
+Bulega geht, Miller und Binder kommen – die WorldSBK 2027 bekommt ein neues Gesicht.
 
-Bei der WorldSBK-Runde in Magny-Cours hat Surra seine besten Saisonergebnisse erreicht und sich ein weiteres fantastisches Resultat mit dem Team gesichert. Trotz starker Auftritte vom Freitag bis Sonntag bleibt die erste Podestplatzierung weiter unerreichbar.
+Leon Haslams Teamkollege Nicolò Bulega verlässt die Serie und wechselt 2027 zu MotoGP. Als Ersatz sichert sich das Team Jack Miller von Ducati und der bisherige MotoGP-Pilot Brad Binder. Die beiden erfahrenen Fahrer sollen die Leerstelle des Italiener füllen, nachdem Bulega seine Karriere Richtung Premierklasse fortsetzt.
 
-Denkt ihr, dass Surra bald die nächste Schwelle überwindet und zum ersten Mal auf das Podium steigt?
+Wer von den beiden Neueinsteigern bringt deiner Meinung nach mehr Potenzial für die WorldSBK?
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife #BradBinder #NicoloBulega
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 5
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 5.9
+Artikelalter-Tage: 6.9
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1089366
-Titel: Miller on 2027 WorldSBK switch: “I’m extremely excited to see what the future holds in our story together”
-Quelle: https://www.worldsbk.com/en/news/2026/09/10/miller-on-2027-worldsbk-switch-im-extremely-excited-to-see-what-the-future-holds-in-our-story-together/1089366
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-miller-on-2027-world-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/96b8ab07-c33e-4623-b727-462fa333204d/GCM_497.jpg
+Story-Key: motogp:1089220
+Titel: NEW SIGNING: BMW secure Binder’s services for 2027 WorldSBK campaign
+Quelle: https://www.worldsbk.com/en/news/2026/09/09/new-signing-bmw-secure-binders-services-for-2027-worldsbk-campaign/1089220
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-new-signing-bmw-secu-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/ba21c567-53d4-4878-a70c-d785734553d1/Binder_03.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jack Miller wechselt 2027 zu Yamaha ins WorldSBK-Projekt.
+BMW geht in der WorldSBK 2027 eine Doppelspitze ein: Der Südafrikaner Binder wechselt zu den Münchnern.
 
-Der australische Rennfahrer sucht sich für die nächste Saison ein neues Team und schließt sich dem Yamaha-Werksteam in der Supersport-Weltmeisterschaft an. Miller zeigt sich beeindruckt von den Perspektiven und betont, wie gespannt er auf die gemeinsame Zukunft ist.
+Binder wird im kommenden Jahr sein WorldSBK-Debüt geben und an der Seite von Miguel Oliveira starten.
 
-Wie bewertet ihr Millers Wechsel von MotoGP zu WorldSBK bei Yamaha?
+Was denkt ihr – kann Binder gleich um Punkte mitfahren?
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife #BradBinder
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.

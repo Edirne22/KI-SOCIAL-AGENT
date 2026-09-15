@@ -1,6 +1,67 @@
 {
   "version": 1,
   "days": {
-    "2026-09-15": []
+    "2026-09-15": [
+      {
+        "story_key": "motogp:1089982",
+        "title": "“He knows the tyres and the new bike… this is the perfect time” – Rossi, Razgatlioglu and more on Bulega’s MotoGP switch",
+        "url": "https://www.worldsbk.com/en/news/2026/09/14/he-knows-the-tyres-and-the-new-bike-this-is-the-perfect-time-rossi-razgatlioglu-and-more-on-bulegas-motogp-switch/1089982",
+        "summary": "MotoGP Legends and World Champions headline the reactions to Bulega’s MotoGP switch for 2027",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/14/45dac811-fe53-47d6-86d9-9b717f5595f3/2026_14_RSM_MGP_SPR_CF.mxf.14_41_03_10.Still001-2.jpg",
+        "series": "MotoGP",
+        "turkish_rider": "Toprak Razgatlioglu",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089204",
+        "title": "STATS ROUND-UP: Bulega closes in on Bautista’s wins-in-a-campaign record in WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/09/stats-round-up-bulega-closes-in-on-bautistas-wins-in-a-campaign-record-in-worldsbk/1089204",
+        "summary": "Catch up on all the big stats and broken records from WorldSBK’s visit to Magny-Cours",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/08/fb837040-e966-43a7-aa75-d44f336a6dfa/10837_DCP_R09_2026_Action.jpg",
+        "series": "WorldSBK",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1073105",
+        "title": "2027 SILLY SEASON: Bulega makes MotoGP switch for 2027, Miller and Binder join WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/09/2027-silly-season-who-is-signed-up-whos-moving-and-to-where-in-worldsbk/1073105",
+        "summary": "Keep up to date with all the confirmed moves and rumours as the silly season rumours ramp up",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/06/16/747df427-3ba6-43d9-b656-9c5a868e779b/Silly-season-2027.jpg",
+        "series": "WorldSBK",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089177",
+        "title": "Bulega to join MotoGP with the Pertamina Enduro VR46 Racing Team in 2027 The Italian rider moves from WorldSBK to partner Aldeguer in fluo next season",
+        "url": "https://www.motogp.com/en/news/2026/09/09/bulega-to-join-motogp-with-the-pertamina-enduro-vr46-racing-team-in-2027/1089177",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089220",
+        "title": "NEW SIGNING: BMW secure Binder’s services for 2027 WorldSBK campaign",
+        "url": "https://www.worldsbk.com/en/news/2026/09/09/new-signing-bmw-secure-binders-services-for-2027-worldsbk-campaign/1089220",
+        "summary": "The South African star will make his WorldSBK debut next season alongside Miguel Oliveira",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/ba21c567-53d4-4878-a70c-d785734553d1/Binder_03.jpg",
+        "series": "WorldSBK",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089205",
+        "title": "Ogura sidelined from Misano",
+        "url": "https://www.motogp.com/en/news/2026/09/09/ogura-sidelined-from-misano/1089205",
+        "summary": "The #79 isn’t back to fitness yet so it’ll be a one-bike squad for SuperFile Trackhouse this weekend",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/09/a0aa9242-7dc5-436c-af92-fb4fa98bbbc6/R5DC6706.jpg?width=1200&height=630",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      }
+    ]
   }
 }

@@ -164,3 +164,28 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/10/surra-matches-season-highs-a
 Story-Key: motogp:1089366
 Titel: Miller on 2027 WorldSBK switch: “I’m extremely excited to see what the future holds in our story together”
 Quelle: https://www.worldsbk.com/en/news/2026/09/10/miller-on-2027-worldsbk-switch-im-extremely-excited-to-see-what-the-future-holds-in-our-story-together/1089366
+
+## 2026-09-15 21:19 UTC – ANGEBOTEN
+Story-Key: motogp:1089177
+Titel: Bulega to join MotoGP with the Pertamina Enduro VR46 Racing Team in 2027 The Italian rider moves from WorldSBK to partner Aldeguer in fluo next season
+Quelle: https://www.motogp.com/en/news/2026/09/09/bulega-to-join-motogp-with-the-pertamina-enduro-vr46-racing-team-in-2027/1089177
+
+## 2026-09-15 21:19 UTC – ANGEBOTEN
+Story-Key: motogp:1089205
+Titel: Ogura sidelined from Misano
+Quelle: https://www.motogp.com/en/news/2026/09/09/ogura-sidelined-from-misano/1089205
+
+## 2026-09-15 21:19 UTC – ANGEBOTEN
+Story-Key: motogp:1089204
+Titel: STATS ROUND-UP: Bulega closes in on Bautista’s wins-in-a-campaign record in WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/09/stats-round-up-bulega-closes-in-on-bautistas-wins-in-a-campaign-record-in-worldsbk/1089204
+
+## 2026-09-15 21:19 UTC – ANGEBOTEN
+Story-Key: motogp:1073105
+Titel: 2027 SILLY SEASON: Bulega makes MotoGP switch for 2027, Miller and Binder join WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/09/2027-silly-season-who-is-signed-up-whos-moving-and-to-where-in-worldsbk/1073105
+
+## 2026-09-15 21:19 UTC – ANGEBOTEN
+Story-Key: motogp:1089220
+Titel: NEW SIGNING: BMW secure Binder’s services for 2027 WorldSBK campaign
+Quelle: https://www.worldsbk.com/en/news/2026/09/09/new-signing-bmw-secure-binders-services-for-2027-worldsbk-campaign/1089220

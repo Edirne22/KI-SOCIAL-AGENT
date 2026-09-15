@@ -150,3 +150,33 @@ Titel: Miller on 2027 WorldSBK switch: “I’m extremely excited to see what th
 Story-Key: motogp:1089366
 Gründe: alle Gates bestanden
 
+## 2026-09-15 21:20 UTC | Motorcycle Racing | PASS
+Titel: Bulega to join MotoGP with the Pertamina Enduro VR46 Racing Team in 2027 The Italian rider moves from WorldSBK to partner Aldeguer in fluo next season
+Story-Key: motogp:1089177
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-15 21:20 UTC | Motorcycle Racing | PASS
+Titel: Ogura sidelined from Misano
+Story-Key: motogp:1089205
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-15 21:20 UTC | Motorcycle Racing | PASS
+Titel: STATS ROUND-UP: Bulega closes in on Bautista’s wins-in-a-campaign record in WorldSBK
+Story-Key: motogp:1089204
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-15 21:20 UTC | Motorcycle Racing | PASS
+Titel: 2027 SILLY SEASON: Bulega makes MotoGP switch for 2027, Miller and Binder join WorldSBK
+Story-Key: motogp:1073105
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-15 21:20 UTC | Motorcycle Racing | PASS
+Titel: NEW SIGNING: BMW secure Binder’s services for 2027 WorldSBK campaign
+Story-Key: motogp:1089220
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
