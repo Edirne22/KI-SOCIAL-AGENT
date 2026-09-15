@@ -6,306 +6,93 @@ from datetime import datetime
 
 from llm_client import get_agent_context
 
-MODEL_LIST = [
-    "gemini-3.8-flash",
-    "gemini-3.7-flash",
-    "gemini-3.6-flash",
-    "gemini-3.5-flash",
-    "gemini-3.5-flash-lite",
-]
-
-MEMORY_FILES = [
-    "memory/USER_PREFERENCES.md",
-    "memory/HOOKS_THAT_WORK.md",
-    "memory/LESSONS_LEARNED.md",
-    "memory/POST_HISTORY.md",
-    "memory/RESEARCH_LOG.md",
-    "memory/VIRAL_PATTERNS.md",
-]
-
-KNOWLEDGE_FILES = [
-    "ride-with-me/FEATURE_IDEAS.md",
-    "content/TURKISH_RACERS.md",
-    "content/MOTOGP_CALENDAR.md",
-    "content/TURKISH_BIKER_COMMUNITY.md",
-    "rules/BRAND_RULES.md",
-    "rules/SAFETY_RULES.md",
-    "rules/VIRAL_RULES.md",
-]
-
+MODEL_LIST = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash", "gemini-3.5-flash-lite"]
+MEMORY_FILES = ["memory/USER_PREFERENCES.md", "memory/HOOKS_THAT_WORK.md", "memory/LESSONS_LEARNED.md", "memory/POST_HISTORY.md", "memory/RESEARCH_LOG.md", "memory/VIRAL_PATTERNS.md"]
+KNOWLEDGE_FILES = ["content/MOTOGP_ROSTER.md", "content/TURKISH_RACERS.md", "content/MOTOGP_CALENDAR.md", "content/TURKISH_BIKER_COMMUNITY.md", "rules/BRAND_RULES.md", "rules/SAFETY_RULES.md", "rules/VIRAL_RULES.md"]
 INSPIRATION_REPORT = "memory/INSPIRATION_IDEAS.md"
 
-
-def read_file(path, max_chars=2500):
+def read_file(path, max_chars=3500):
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read()
-        return content[-max_chars:]
-    except FileNotFoundError:
-        return ""
+        with open(path, "r", encoding="utf-8") as f: return f.read()[-max_chars:]
+    except FileNotFoundError: return ""
 
 def read_all():
-    """Liest Gedächtnis + Wissensdateien für den Prompt."""
-    parts = []
+    parts=[]
     for path in MEMORY_FILES + KNOWLEDGE_FILES:
-        content = read_file(path)
-        if content:
-            parts.append(f"\n--- {path} ---\n{content}")
+        content=read_file(path)
+        if content: parts.append(f"\n--- {path} ---\n{content}")
     return "\n".join(parts)
 
-
-def read_inspiration_report():
-    """Liest den aktuellen Inspirationsreport separat und vollständig genug für echte Quellen."""
-    return read_file(INSPIRATION_REPORT, max_chars=7000)
-
 def try_generate(api_key, prompt):
-    headers = {
-        "Content-Type": "application/json",
-        "X-goog-api-key": api_key
-    }
-    data = {"contents": [{"parts": [{"text": prompt}]}]}
-
-    max_rounds = 5
-    pause_between_models = 10
-    pause_between_rounds = 90
-
-    for round_number in range(1, max_rounds + 1):
-        print(f"Starte Durchlauf {round_number} von {max_rounds}")
+    headers={"Content-Type":"application/json","X-goog-api-key":api_key}; data={"contents":[{"parts":[{"text":prompt}]}]}
+    for round_number in range(1,6):
         for model in MODEL_LIST:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
             try:
-                response = requests.post(url, headers=headers, json=data, timeout=120)
-                if response.status_code == 200:
-                    result = response.json()
-                    text = result["candidates"][0]["content"]["parts"][0]["text"]
-                    # Erweiterter Key-Filter
-                    text = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text)
-                    text = re.sub(r'AQ\.[A-Za-z0-9_\-]{40,}', '[ENTFERNT]', text)
-                    text = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text)
-                    text = re.sub(r'\b[A-Za-z0-9_\-]{50,}\b', '[ENTFERNT]', text)
-                    print(f"Erfolg mit Modell: {model}")
+                r=requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",headers=headers,json=data,timeout=120)
+                if r.status_code==200:
+                    text=r.json()["candidates"][0]["content"]["parts"][0]["text"]
+                    for pattern in (r'AIza[0-9A-Za-z_\-]{35}',r'AQ\.[A-Za-z0-9_\-]{40,}',r'sk-[A-Za-z0-9]{20,}',r'\b[A-Za-z0-9_\-]{50,}\b'): text=re.sub(pattern,'[ENTFERNT]',text)
                     return text.strip()
-                else:
-                    if response.status_code in (401, 403):
-                        raise RuntimeError(
-                            f"Gemini-Authentifizierung oder -Berechtigung fehlgeschlagen (HTTP {response.status_code})."
-                        )
-                    print(f"Modell {model}: Status {response.status_code} – probiere nächstes...")
-                    time.sleep(pause_between_models)
-            except RuntimeError:
-                raise
-            except Exception as e:
-                print(f"Modell {model}: Fehler – {e}")
-                time.sleep(pause_between_models)
-
-        if round_number < max_rounds:
-            print(f"Durchlauf {round_number} beendet – warte {pause_between_rounds} Sekunden...")
-            time.sleep(pause_between_rounds)
-
-    raise RuntimeError("Kein Gemini-Modell war nach mehreren Versuchen verfügbar.")
-
-def extract_titles(text):
-    """Zieht alle Titel aus der generierten Antwort."""
-    return re.findall(r"Titel:\s*(.+)", text)
-
-def extract_hooks(text):
-    """Zieht alle Hooks aus der generierten Antwort."""
-    return re.findall(r"Hook:\s*(.+)", text)
+                if r.status_code in (401,403): raise RuntimeError(f"Gemini HTTP {r.status_code}")
+                time.sleep(10)
+            except RuntimeError: raise
+            except Exception: time.sleep(10)
+        if round_number<5: time.sleep(90)
+    raise RuntimeError("Kein Gemini-Modell verfügbar.")
 
 def save_to_history(text):
-    """Schreibt generierte Beiträge in POST_HISTORY.md."""
-    titles = extract_titles(text)
-    hooks = extract_hooks(text)
-    if not titles:
-        return
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-    entry = f"\n### {timestamp} | Entwurf generiert\n"
-    for i, title in enumerate(titles, 1):
-        hook = hooks[i-1] if i <= len(hooks) else "–"
-        entry += f"- Titel {i}: {title.strip()}\n- Hook {i}: {hook.strip()}\n"
-
-    with open("memory/POST_HISTORY.md", "a", encoding="utf-8") as f:
-        f.write(entry)
-    print(f"POST_HISTORY.md aktualisiert ({len(titles)} Titel).")
+    titles=re.findall(r"Titel:\s*(.+)",text); hooks=re.findall(r"Hook:\s*(.+)",text)
+    if not titles:return
+    entry=f"\n### {datetime.now():%Y-%m-%d %H:%M} | Entwurf generiert\n"
+    for i,title in enumerate(titles): entry+=f"- Titel {i+1}: {title.strip()}\n- Hook {i+1}: {(hooks[i] if i<len(hooks) else '–').strip()}\n"
+    with open("memory/POST_HISTORY.md","a",encoding="utf-8") as f:f.write(entry)
 
 def generate_content_plan():
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        return "FEHLER: Kein API-Key gefunden."
+    api_key=os.environ.get("GEMINI_API_KEY")
+    if not api_key:return "FEHLER: Kein API-Key gefunden."
+    knowledge=read_all(); inspiration=read_file(INSPIRATION_REPORT,7000); agent_context=get_agent_context(["01_content_creator","04_social_media_strategist"])
+    prompt=f"""Erstelle 3 komplette Content-Ideen für Bülents deutsch-türkische Motorrad-Community.
+Stil locker, per Du, wenige Emojis, kurze Captions. Keine Zugangsdaten ausgeben.
 
-    knowledge = read_all()
-    inspiration = read_inspiration_report()
-    knowledge_part = f"Berücksichtige folgende Wissens- und Gedächtnisquellen:\n{knowledge}\n" if knowledge else ""
-    inspiration_part = (
-        "AKTUELLER INSPIRATIONSREPORT – verwende nur darin enthaltene Fakten und URLs:\n"
-        f"{inspiration}\n"
-        if inspiration
-        else "Kein aktueller Inspirationsreport vorhanden. Erfinde keine Quellen.\n"
-    )
+WISSEN/MEMORY:\n{knowledge}
+AGENTEN-KONTEXT:\n{agent_context}
+AKTUELLER INSPIRATIONSREPORT:\n{inspiration or 'Keine aktuelle externe Quelle.'}
 
-    # Agenten-Kontext: ergänzt Gedächtnis und Wissensdateien, ohne Veröffentlichungen auszulösen.
-    agent_context = get_agent_context(["01_content_creator", "04_social_media_strategist"])
-    agent_context_part = f"Beachte zusätzlich diesen Agenten-Kontext:\n{agent_context}\n" if agent_context else ""
+VERBINDLICHE CONTENT-STRATEGIE:
+1. `content/MOTOGP_ROSTER.md` ist die zentrale, automatisch im Web verifizierte Quelle für aktuelle MotoGP-Teams und Fahrer. Verwende bei MotoGP-Fahrerideen nur Fahrer/Teams aus diesem Roster. Keine veralteten Saisonlisten raten.
+2. Konzentriere MotoGP-Ideen bevorzugt auf EINEN einzelnen Fahrer: aktuelle News, Rennwochenende, Ergebnis, Duell, Technik, Rookie-Entwicklung, Comeback oder belegte Story.
+3. Rotiere durch den aktuellen Roster und nutze POST_HISTORY, damit nicht ständig dieselben Fahrer erscheinen. Türkische Racer bleiben bei starkem aktuellem Anlass Prio 1.
+4. Ride With Me maximal EINMAL pro Kalenderwoche. Prüfe POST_HISTORY; wenn diese Woche bereits Ride With Me vorkam, keine weitere Idee dazu.
+5. Hashtags professionell und relevant: Fahrername/Startnummer (wenn sinnvoll), Team/Hersteller, #MotoGP, aktueller GP/Rennort sowie passende Nischen-/Community-Tags. Keine erfundenen Trending-Hashtags, kein Spam und keine irrelevante Hashtag-Wolke.
+6. Nutze VIRAL_PATTERNS und HOOKS_THAT_WORK. Optimiere auf Besucher, Likes, Kommentare, Shares und Saves, aber gib keine Erfolgsgarantie.
+7. Reale Fahrer/Teams/Rennmeldungen benötigen eine konkrete belegte Quelle aus dem Inspirationsreport; bevorzuge offizielle MotoGP-Quellen. Keine KI-Rennaufnahme als echt darstellen; Medienvorschlag QUELLE_PRÜFEN.
+8. Wenn am kommenden Wochenende ein MotoGP-Rennen stattfindet, mindestens eine passende Fahreridee einbauen.
+9. Vermeide Wiederholungen und erfundene Zahlen, Quellen oder Transfers.
 
-    prompt = f"""Erstelle 3 komplette Content-Ideen für einen Social-Media-Agenten.
-Themen: Motorrad, Reisen, Lifestyle, Technik, KI, MotoGP.
-Zielgruppe: 18-65 Jahre, deutsch und türkisch, Motorradfahrer und Reisefreudige.
-Stil: locker, per Du, wenige Emojis, kurze Captions.
-Wichtig: Gib keine Zugangsdaten, Passwörter oder API-Schlüssel aus.
-
-{knowledge_part}
-{agent_context_part}
-{inspiration_part}
-
-BESONDERE PRIORITÄTEN:
-1. Wenn am kommenden Wochenende ein MotoGP-Rennen stattfindet (siehe MotoGP-Kalender),
-   baue mindestens einen Beitrag zum Rennwochenende ein.
-2. Türkische Rennfahrer haben IMMER Vorrang:
-   Toprak Razgatlıoğlu, Deniz Öncü, Can Öncü, Bahattin Sofuoğlu, Kenan Sofuoğlu, Zayn Sofuoğlu.
-   Erwähne sie namentlich und markiere wenn möglich ihre Instagram-Handles.
-3. Vermeide Wiederholungen – nutze POST_HISTORY.md, um schon behandelte Themen zu erkennen.
-4. Nutze bewährte Hooks aus HOOKS_THAT_WORK.md als Inspiration.
-5. Community-Themen (Türkische Biker in Deutschland) sind willkommen.
-6. Wenn der aktuelle Inspirationsreport Quellen enthält, muss mindestens EINE der drei Ideen
-   direkt darauf basieren. Für diese Idee übernimmst du die exakte URL und Plattform aus
-   dem Report. Erfinde niemals Quellen oder Zahlen.
-7. Für Ideen ohne passende aktuelle Quelle schreibe bei Inspirations-Quelle:
-   "Keine aktuelle externe Quelle verwendet." Verwende dort keine erfundene URL.
-8. Bei realen Fahrern, Teams, Rennen oder aktuellen Sportmeldungen: nutze eine
-   konkrete Quelle aus dem Inspirationsreport, bevorzugt MotoGP.com oder WorldSBK.
-   Schlage niemals ein KI-Bild oder KI-Video als echte Rennaufnahme vor.
-   Schreibe bei Medienvorschlag: QUELLE_PRÜFEN.
-9. Bei neutralen Reise-, Landschafts-, Biker- oder Technikthemen ohne reale
-   Rennbehauptung ist Medienvorschlag: KI_ERLAUBT zulässig.
-
-Erstelle zu jeder Idee:
-- Titel
-- Plattform (Instagram/TikTok/Facebook/Reel/Story)
-- Thema
-- Hook
-- Instagram-Caption (kurz, mit Hashtags)
-- Facebook-Post (etwas ausführlicher)
-- TikTok-Skript (Hook + 3-4 Szenen + Call-to-Action)
-- Visuelle Idee
-- Medienvorschlag: QUELLE_PRÜFEN oder KI_ERLAUBT
-- Hashtag-Vorschläge
-- Trend-Bezug
-- Viral-Score: X/10 (Faktoren: mindestens zwei der sechs Viral-Faktoren)
-
-Formatiere die Antwort exakt so:
-
---- BEITRAG 1 ---
+Für jede Idee exakt:
+--- BEITRAG X ---
 Titel: ...
-Plattform: ...
+Plattform: Instagram/TikTok/Facebook/Reel/Story
 Thema: ...
 Hook: ...
-
-Instagram-Caption:
-...
-
-Facebook-Post:
-...
-
-TikTok-Skript:
-...
-
-Visuelle Idee:
-...
-
-Hashtags Instagram:
-#...
-
-Hashtags TikTok:
-#...
-
-Trend-Bezug:
-...
-
-Inspirations-Plattform:
-...
-
-Inspirations-Quelle:
-https://... oder Keine aktuelle externe Quelle verwendet.
-
---- BEITRAG 2 ---
-Titel: ...
-Plattform: ...
-Thema: ...
-Hook: ...
-
-Instagram-Caption:
-...
-
-Facebook-Post:
-...
-
-TikTok-Skript:
-...
-
-Visuelle Idee:
-...
-
-Hashtags Instagram:
-#...
-
-Hashtags TikTok:
-#...
-
-Trend-Bezug:
-...
-
-Inspirations-Plattform:
-...
-
-Inspirations-Quelle:
-https://... oder Keine aktuelle externe Quelle verwendet.
-
---- BEITRAG 3 ---
-Titel: ...
-Plattform: ...
-Thema: ...
-Hook: ...
-
-Instagram-Caption:
-...
-
-Facebook-Post:
-...
-
-TikTok-Skript:
-...
-
-Visuelle Idee:
-...
-
-Hashtags Instagram:
-#...
-
-Hashtags TikTok:
-#...
-
-Trend-Bezug:
-...
-
-Inspirations-Plattform:
-...
-
-Inspirations-Quelle:
-https://... oder Keine aktuelle externe Quelle verwendet.
+Instagram-Caption: ...
+Facebook-Post: ...
+TikTok-Skript: ...
+Visuelle Idee: ...
+Medienvorschlag: QUELLE_PRÜFEN oder KI_ERLAUBT
+Hashtags Instagram: ...
+Hashtags TikTok: ...
+Trend-Bezug: ...
+Viral-Score: X/10
+Inspirations-Plattform: ...
+Inspirations-Quelle: vollständige URL oder Keine aktuelle externe Quelle verwendet.
 """
-
-    return try_generate(api_key, prompt)
+    return try_generate(api_key,prompt)
 
 def save_content_plan(content):
-    os.makedirs("content", exist_ok=True)
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    entry = f"\n\n## Automatisch generierte Beiträge vom {timestamp}\n{content}\n"
-    with open("content/CONTENT_PLAN.md", "a", encoding="utf-8") as f:
-        f.write(entry)
-    print("Content-Plan gespeichert.")
+    os.makedirs("content",exist_ok=True)
+    with open("content/CONTENT_PLAN.md","a",encoding="utf-8") as f:f.write(f"\n\n## Automatisch generierte Beiträge vom {datetime.now():%Y-%m-%d %H:%M:%S}\n{content}\n")
 
-if __name__ == "__main__":
-    content = generate_content_plan()
-    save_content_plan(content)
-    if not content.startswith("FEHLER"):
-        save_to_history(content)
+if __name__=="__main__":
+    content=generate_content_plan(); save_content_plan(content)
+    if not content.startswith("FEHLER"):save_to_history(content)
