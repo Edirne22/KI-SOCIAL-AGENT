@@ -206,3 +206,24 @@ Wen unterstützt du dieses Wochenende?
 Poster: assets/eigenes-material/racing-poster/Toprak-2026-09-14.jpg
 Video: assets/videos/2026-09/2026-09-14-sterreich-ruft-toprak-deniz-am-red-bull-ring-reel-musik-racing-beat.mp4
 Musik: Beat, electronic
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361649
+Text:
+Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gekämpft wurde, sammelt @toprakrazgatlioglu auf der Yamaha M1 bei Prima Pramac wertvolle Daten für die Zukunft. Geduld zahlt sich aus.
+Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
+Wie bewertest du sein Rennwochenende?
+Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
+Bild: auto
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361649
+Text:
+Der San Marino GP in Misano ist durch. Während an der Spitze um jeden Meter gekämpft wurde, sammelt @toprakrazgatlioglu auf der Yamaha M1 bei Prima Pramac wertvolle Daten für die Zukunft. Geduld zahlt sich aus.
+Misano geride kaldı. Toprak adım adım tecrübe kazanıyor.
+Wie bewertest du sein Rennwochenende?
+Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
