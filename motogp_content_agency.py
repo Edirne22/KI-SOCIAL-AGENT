@@ -1,16 +1,19 @@
-"""MotoGP Content Agency – source-first, learned-memory-aware, Telegram approval."""
+"""MotoGP Content Agency – source-first, memory-aware, media-ready before Telegram approval."""
 from datetime import datetime, timezone
 from pathlib import Path
 import html, re, requests
 from urllib.parse import urljoin
 from telegram_bot import send_message
 from memory_engine import get_context
+from generate_agnes_media import agnes_generate_image, save_bytes
+from asset_paths import get_image_path, slugify
 
 ROOT=Path('.')
 OUT=ROOT/'memory'/'MOTOGP_DAILY_CONTENT.md'; ARCH=ROOT/'memory'/'MOTOGP_DAILY_ARCHIVE'
 NEXT=ROOT/'content'/'MOTOGP_ROSTER_NEXT.md'; SESSION=ROOT/'memory'/'MOTOGP_APPROVAL_SESSION.md'
 UA={'User-Agent':'Mozilla/5.0 KI-SOCIAL-AGENT MotoGP research'}
 NEWS='https://www.motogp.com/en/news'; MARKET='https://www.motogp.com/en/news/rider-market'
+SESSION_VERSION=2
 
 def get(url):
  r=requests.get(url,headers=UA,timeout=30); r.raise_for_status(); return r.text
@@ -50,7 +53,6 @@ def score(title,names):
   if n.casefold() in low or n.casefold().split()[-1] in low:s+=4
  for k in ('win','victory','championship','title','sign','join','2027','injur','return','preview','record','marquez','razgatlioglu'):
   if k in low:s+=1
- # Memory-Rotation: jüngst oft genannte Fahrer bekommen einen kleinen Malus, Aktualität kann ihn überstimmen.
  hist=recent_history()
  for n in names:
   surname=n.casefold().split()[-1]
@@ -95,9 +97,27 @@ def own_caption(item):
 def quality_ok(caption):
  bad=('-->','By motogp.com','MotoGP-Update:')
  if any(x.casefold() in caption.casefold() for x in bad):return False
- # Fertiger Text muss überwiegend eigenständiges Deutsch sein; typische Roh-Metadaten blockieren.
  if re.search(r'\b(the|following|confirmed|joins|championship leader|lap record set)\b',caption,re.I):return False
  return True
+
+def prepare_instagram_media(item,index):
+ """Erzeugt VOR Telegram eine eigene neutrale Editorial-Grafik ohne reale Fahrer/Teams/Logos."""
+ caption=own_caption(item)
+ filename=get_image_path(slugify(f'motogp-editorial-{datetime.now(timezone.utc):%Y-%m-%d}-{index}-{item["title"]}'),1)
+ prompt=(
+  'Vertical 4:5 premium motorsport editorial social-media background. '
+  'Empty modern European motorcycle racing circuit at dramatic golden hour, asphalt, curbs, grandstands and speed atmosphere. '
+  'NO people, NO riders, NO motorcycles, NO helmets, NO team colors, NO manufacturer branding, NO sponsor logos, NO trademarks, NO readable text, NO watermark. '
+  'Original generic racing visual, photorealistic, high-end sports magazine photography, ample clean composition for a news post. '
+  f'Editorial mood derived from this topic only, without depicting named persons or brands: {caption[:220]}'
+ )
+ data=agnes_generate_image(prompt)
+ if not data:
+  print(f'MEDIA-GATE: Beitrag {index} gesperrt – keine Instagram-Grafik erzeugt.')
+  return ''
+ save_bytes(data,filename)
+ print(f'MEDIA-GATE: Beitrag {index} Instagram-Medium vorbereitet: {filename}')
+ return filename.as_posix()
 
 def next_roster(market_items):
  year=datetime.now(timezone.utc).year+1
@@ -107,15 +127,15 @@ def next_roster(market_items):
  NEXT.parent.mkdir(parents=True,exist_ok=True); NEXT.write_text('\n'.join(lines),encoding='utf-8')
 
 def write_session(items,now):
- lines=['# MotoGP Telegram Approval Session',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1`, `motogp 2`, `motogp 3`, `motogp alle` oder `motogp nein`.','']
+ lines=['# MotoGP Telegram Approval Session',f'Session-Version: {SESSION_VERSION}',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1`, `motogp 2`, `motogp 3`, `motogp alle` oder `motogp nein`.','']
  for i,item in enumerate(items,1):
   caption=own_caption(item)
-  lines += [f'## Beitrag {i}',f'Titel: {item["title"]}',f'Quelle: {item["url"]}',f'Preview-Bild: {item["preview"] or "von Zielseite/Plattform erzeugen"}','Plattformen: Instagram + Facebook',f'Text:\n{caption}','','Rechte-Gate: komplett neu auf Deutsch formuliert; Quelle dient als Faktenbasis. Keine langen Originalpassagen. Facebook: offizieller Link für Link-Preview. Instagram: eigenes/freigegebenes Medium.','']
+  lines += [f'## Beitrag {i}',f'Titel: {item["title"]}',f'Quelle: {item["url"]}',f'Instagram-Bild: {item["instagram_media"]}',f'Quellen-Preview: {item["preview"] or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{caption}','','Rechte-Gate: Instagram nutzt eine vor Freigabe eigens erzeugte generische Editorial-Grafik ohne reale Fahrer, Motorräder, Teams, Logos oder Marken. Facebook veröffentlicht den offiziellen Quellenlink für die Link-Vorschau. Keine langen Originalpassagen.','']
  SESSION.parent.mkdir(parents=True,exist_ok=True); SESSION.write_text('\n'.join(lines),encoding='utf-8')
 
 def telegram_preview(items):
- msg=['🏁 MotoGP Content Agency – Tagesauswahl','','3 fertig redigierte Vorschläge. Closed-Loop Memory, Fahrerrotation und offizielle Quellen berücksichtigt.','']
- for i,item in enumerate(items,1):msg += [f'{i}️⃣ {own_caption(item)}',f'🔗 Quelle: {item["url"]}','']
+ msg=['🏁 MotoGP Content Agency – Tagesauswahl','','3 fertig redigierte Vorschläge. Instagram-Medium bereits vorbereitet; Facebook nutzt die offizielle Link-Vorschau.','']
+ for i,item in enumerate(items,1):msg += [f'{i}️⃣ {own_caption(item)}','🖼️ Instagram-Medium: vorbereitet',f'🔗 Quelle: {item["url"]}','']
  msg += ['Freigabe: motogp 1 / motogp 2 / motogp 3 / motogp alle','Ablehnen: motogp nein']; send_message('\n'.join(msg)[:4000])
 
 def main():
@@ -123,14 +143,20 @@ def main():
  for item in news+market:
   if item[1] not in seen:seen.add(item[1]); merged.append(item)
  merged.sort(key=lambda x:score(x[0],names),reverse=True); details=[article_info(t,u) for t,u in merged[:12]]; now=datetime.now(timezone.utc)
- lines=['# MotoGP Daily Content Agency','',f'**Recherche:** {now:%Y-%m-%d %H:%M UTC}','**Primärquelle:** offizielle MotoGP-Seite','**Closed-Loop Memory:** aktiv','','## Analysierte Themen','']
+ lines=['# MotoGP Daily Content Agency','',f'**Recherche:** {now:%Y-%m-%d %H:%M UTC}','**Primärquelle:** offizielle MotoGP-Seite','**Closed-Loop Memory:** aktiv','**Media-Gate:** Instagram-Medium muss vor Telegram vorhanden sein','','## Analysierte Themen','']
  for i,item in enumerate(details,1):lines += [f'### {i}. {item["title"]}',f'- Quelle: {item["url"]}',f'- Quellen-Metadaten: {item["summary"] or "keine belastbare Meta-Zusammenfassung"}',f'- Score inkl. Fahrerrotation: {score(item["title"],names)}','']
- lines += ['## Aktiver Memory-Kontext',learned[:3000],'','## Redaktion','Quellendaten werden nicht als Caption übernommen. Vor Telegram: Metadaten säubern → Faktenkern → vollständig neu auf Deutsch → Memory-/Rotationscheck → Hook/Frage → Hashtags → Rechte-/Quellen-Gate.','']
+ lines += ['## Aktiver Memory-Kontext',learned[:3000],'','## Redaktion','Quellendaten werden nicht als Caption übernommen. Vor Telegram: Faktenkern → vollständig neu auf Deutsch → Hook/Frage → Hashtags → eigene neutrale Instagram-Grafik erzeugen → Media-Gate → Telegram. Facebook erhält den offiziellen Quellenlink.','']
  content='\n'.join(lines); OUT.parent.mkdir(parents=True,exist_ok=True); OUT.write_text(content,encoding='utf-8'); ARCH.mkdir(parents=True,exist_ok=True); (ARCH/f'{now:%Y-%m-%d}.md').write_text(content,encoding='utf-8'); next_roster(market)
+ candidates=[item for item in details if quality_ok(own_caption(item))]
  picks=[]
- for item in details:
-  if quality_ok(own_caption(item)):picks.append(item)
+ for item in candidates:
+  media=prepare_instagram_media(item,len(picks)+1)
+  if not media:continue
+  item['instagram_media']=media; picks.append(item)
   if len(picks)==3:break
- if picks:write_session(picks,now); telegram_preview(picks)
- print(f'MotoGP Content Agency: {len(details)} Themen analysiert, {len(picks)} nach Memory+Qualitäts-Gate zur Freigabe vorbereitet.')
+ if len(picks)==3:
+  write_session(picks,now); telegram_preview(picks)
+ else:
+  print(f'MEDIA-GATE: Nur {len(picks)}/3 Pakete medienreif. Keine unvollständige Telegram-Auswahl gesendet.')
+ print(f'MotoGP Content Agency: {len(details)} Themen analysiert, {len(picks)} vollständig medienreif vorbereitet.')
 if __name__=='__main__':main()
