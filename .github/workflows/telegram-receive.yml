@@ -2,7 +2,7 @@ name: Telegram Receive Approval
 
 on:
   schedule:
-    - cron: "*/5 6-21 * * *" # alle 5 Minuten, 08:00–23:00 deutsche Sommerzeit
+    - cron: "*/5 6-21 * * *" # zentraler Telegram-Poller
   workflow_dispatch:
 
 permissions:
@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Read Telegram approval
+      - name: Route Telegram command
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -39,7 +39,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SEARXNG_URL: ${{ secrets.SEARXNG_URL }}
           GITHUB_TOKEN: ${{ github.token }}
-        run: python telegram_receive.py
+        run: python -u telegram_router.py
 
       - name: Commit Telegram results
         run: |
@@ -54,6 +54,7 @@ jobs:
           git add memory/PRICE_HISTORY.md 2>/dev/null || true
           git add memory/TELEGRAM_SESSION.md 2>/dev/null || true
           git add memory/DEAL_TEST_LOG.md 2>/dev/null || true
+          git add memory/MOTOGP_APPROVAL_STATE.md 2>/dev/null || true
           git commit -m "Auto: Telegram-Verarbeitung aktualisiert" || echo "Keine Änderungen"
           git pull --rebase origin main
           git push
