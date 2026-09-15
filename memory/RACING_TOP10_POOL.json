@@ -3,56 +3,6 @@
   "days": {
     "2026-09-15": [
       {
-        "story_key": "title:toprak-razgatlioglu-motogp-rider-profile-2026-rookie-campaign",
-        "title": "Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign",
-        "url": "https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e",
-        "summary": "",
-        "preview": "",
-        "series": "MotoGP",
-        "turkish_rider": "Toprak Razgatlioglu",
-        "kind": "profile"
-      },
-      {
-        "story_key": "motogp:1087032",
-        "title": "Marc Marquez out the traps quickest in Aragon FP1, Martin 18th The reigning World Champion leads Fernandez by 0.035s in the opening stint of the weekend at MotorLand",
-        "url": "https://www.motogp.com/en/news/2026/08/28/marc-marquez-out-the-traps-quickest-in-aragon-fp1-martin-18th/1087032",
-        "summary": "",
-        "preview": "",
-        "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1087035",
-        "title": "Bezzecchi beats Marc Marquez to pole in record-breaking Aragon Q2 Two 2026 heavyweights treat us to a qualifying fight to remember to set the scene for a Tissot Sprint and Grand Prix blockbuster",
-        "url": "https://www.motogp.com/en/news/2026/08/29/bezzecchi-beats-marc-marquez-to-pole-in-record-breaking-aragon-q2/1087035",
-        "summary": "",
-        "preview": "",
-        "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1076393",
-        "title": "Red Bull KTM confirm Di Giannantonio alongside Alex Marquez from 2027 The full Red Bull KTM Factory racing line-up for the new era is revealed",
-        "url": "https://www.motogp.com/en/news/2026/07/06/red-bull-ktm-confirm-di-giannantonio-alongside-alex-marquez-from-2027/1076393",
-        "summary": "",
-        "preview": "",
-        "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1089344",
-        "title": "Marc Marquez denies Bezzecchi gold in tense Misano Sprint stand-off",
-        "url": "https://www.motogp.com/en/news/2026/09/12/marc-marquez-denies-bezzecchi-gold-in-tense-misano-sprint-stand-off/1089344",
-        "summary": "22 points cover the top three as the reigning World Champion does the business on Saturday afternoon",
-        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/12/90d5aea9-2735-4cb4-8954-de5e21dc8e92/Reprot-MGP-SPR-RSM.jpg?width=1200&height=630",
-        "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
         "story_key": "motogp:1089343",
         "title": "Showstopper: Bezzecchi goes sub 90 seconds at Misano to beat Marquez to pole",
         "url": "https://www.motogp.com/en/news/2026/09/12/showstopper-bezzecchi-goes-sub-90-seconds-at-misano-to-beat-marquez-to-pole/1089343",
@@ -98,6 +48,56 @@
         "url": "https://www.motogp.com/en/news/2026/07/12/game-on-marc-marquez-pockets-perfect-sachsenring-weekend-to-ignite-title-charge/1076928",
         "summary": "",
         "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1086614",
+        "title": "Bastianini joins SuperFile Trackhouse MotoGP team from 2027 The Italian is confirmed at the squad for the next two seasons, partnering Raul Fernandez",
+        "url": "https://www.motogp.com/en/news/2026/08/24/bastianini-joins-superfile-trackhouse-motogp-team-from-2027/1086614",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1076392",
+        "title": "Red Bull KTM welcomes Alex Marquez for 2027 The 2025 runner up is confirmed on a multi-year deal with KTM",
+        "url": "https://www.motogp.com/en/news/2026/07/06/red-bull-ktm-welcomes-alex-marquez-for-2027/1076392",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1074782",
+        "title": "Marc Marquez confirmed with the Ducati Lenovo Team in 2027 and 2028",
+        "url": "https://www.motogp.com/en/news/2026/06/23/marc-marquez-confirmed-with-the-ducati-lenovo-team-in-2027-and-2028/1074782",
+        "summary": "It’s official! The #93 will stay with Ducati as a new era of MotoGP begins next year",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/06/23/42f5ff69-57a0-4e3e-83c0-5c2c77ffb2be/fceee3d70b4c9d028f0672838928faf1-l.webp?width=1200&height=630",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1073105",
+        "title": "2027 SILLY SEASON: Bulega makes MotoGP switch for 2027, Miller and Binder join WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/09/2027-silly-season-who-is-signed-up-whos-moving-and-to-where-in-worldsbk/1073105",
+        "summary": "Keep up to date with all the confirmed moves and rumours as the silly season rumours ramp up",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/06/16/747df427-3ba6-43d9-b656-9c5a868e779b/Silly-season-2027.jpg",
+        "series": "WorldSBK",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090045",
+        "title": "Game on: Marc Marquez overcomes the largest points deficit in history",
+        "url": "https://www.motogp.com/en/news/2026/09/15/game-on-marc-marquez-overcomes-the-largest-points-deficit-in-history/1090045",
+        "summary": "A 102-point gap just seven rounds ago is now the championship lead – find out more about the #93’s Championship comeback so far as Aprilia reload for a response",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/15/8c2e8c43-a2ac-4d06-92cd-9833b0bdfff0/MMarquez-102-Points-THUMB.jpg?width=1200&height=630",
         "series": "MotoGP",
         "turkish_rider": "",
         "kind": "news"

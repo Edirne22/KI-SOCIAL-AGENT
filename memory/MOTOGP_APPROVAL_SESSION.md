@@ -1,29 +1,30 @@
 # Motorcycle Racing Telegram Approval Session
-Session-Version: 10
+Session-Version: 11
+Agency-Version: V8.4
 QM: PASS
-Session-Timestamp: 1789496871
+Session-Timestamp: 1789497868
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
 ## Beitrag 1
 QM: PASS
 Herkunft: Aktuell
-Kategorie: Turkish Riders
+Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:toprak-razgatlioglu-motogp-rider-profile-2026-rookie-campaign
-Titel: Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign
-Quelle: https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-toprak-razgatlioglu-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Story-Key: motogp:1089343
+Titel: Showstopper: Bezzecchi goes sub 90 seconds at Misano to beat Marquez to pole
+Quelle: https://www.motogp.com/en/news/2026/09/12/showstopper-bezzecchi-goes-sub-90-seconds-at-misano-to-beat-marquez-to-pole/1089343
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-showstopper-bezzecch-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/12/a96603cb-8fe5-47da-bb42-38a770800bd9/Report-MGP-QP-RSM.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-🇹🇷 Toprak Razgatlioglu im MotoGP-Fokus.
+Bezzecchi knackt in Misano die 90-Sekunden-Marke und holt die Pole!
 
-Toprak Razgatlioglu steht in der offiziellen MotoGP-Fahrerübersicht. Der Fahrer bleibt damit fest in unserem Racing-Radar.
+In der MotoGP bleibt Bezzecchi in Misano unter 90 Sekunden und stellt einen neuen Rundenrekord auf. Die #72 holt sich damit die Pole-Position vor Marquez mit der #93. Der Fehdehandschuh ist geworfen und das Duell setzt sich am Samstag fort.
 
-Wie verfolgst du die Saison von Toprak Razgatlioglu?
+Wer hat am Samstag im Duell zwischen Bezzecchi und Marquez die Nase vorn?
 
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -32,18 +33,18 @@ QM: PASS
 Herkunft: Aktuell
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1087032
-Titel: Marc Marquez out the traps quickest in Aragon FP1, Martin 18th The reigning World Champion leads Fernandez by 0.035s in the opening stint of the weekend at MotorLand
-Quelle: https://www.motogp.com/en/news/2026/08/28/marc-marquez-out-the-traps-quickest-in-aragon-fp1-martin-18th/1087032
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-marc-marquez-out-the-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Story-Key: motogp:1089342
+Titel: Bezzecchi strikes back to lead Marc Marquez in Friday Practice
+Quelle: https://www.motogp.com/en/news/2026/09/11/bezzecchi-strikes-back-to-lead-marc-marquez-in-friday-practice/1089342
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-bezzecchi-strikes-ba-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/11/06d2a40c-33aa-4258-99d8-0799b34305f1/Report-MGP-PR-RSM.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-🇹🇷 Marc Marquez: Marc Marquez out the traps quickest in Aragon FP1, Martin 18th The reigning World Champion leads Fernandez by 0.035s in the opening stint of the weekend at MotorLand
+Bezzecchi schlägt zurück und führt das Freitagstraining der MotoGP vor Marc Marquez an!
 
-Marc Marquez out the traps quickest in Aragon FP1, Martin 18th The reigning World Champion leads Fernandez by 0.035s in the opening stint of the weekend at MotorLand
+Genau 12 Monate später ist die Misano-Rivalität von 2025 wieder voll im Gange. Der Heimheld schnappte sich im Freitagstraining P1 vom amtierenden Weltmeister. Nach der Action an Tag eins steht es somit direkt 1:1.
 
-Wie ordnest du diese MotoGP-Meldung ein?
+Wie wird dieses Duell nach dem ersten Tag weitergehen?
 
 #MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -54,18 +55,18 @@ QM: PASS
 Herkunft: Aktuell
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1087035
-Titel: Bezzecchi beats Marc Marquez to pole in record-breaking Aragon Q2 Two 2026 heavyweights treat us to a qualifying fight to remember to set the scene for a Tissot Sprint and Grand Prix blockbuster
-Quelle: https://www.motogp.com/en/news/2026/08/29/bezzecchi-beats-marc-marquez-to-pole-in-record-breaking-aragon-q2/1087035
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-bezzecchi-beats-marc-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Story-Key: motogp:1089341
+Titel: Marc Marquez edges out Bezzecchi by 0.060s in Misano FP1
+Quelle: https://www.motogp.com/en/news/2026/09/11/marc-marquez-edges-out-bezzecchi-by-0060s-in-misano-fp1/1089341
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-marc-marquez-edges-o-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/11/89caee0b-eace-4248-a0ea-1d28de440239/Report-MGP-FP1-RSM.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-🇹🇷 Marc Marquez: Bezzecchi beats Marc Marquez to pole in record-breaking Aragon Q2 Two 2026 heavyweights treat us to a qualifying fight to remember to set the scene for a Tissot Sprint and Grand Prix blockbuster
+Was für ein unglaublich enges Duell in der MotoGP!
 
-Bezzecchi beats Marc Marquez to pole in record-breaking Aragon Q2 Two 2026 heavyweights treat us to a qualifying fight to remember to set the scene for a Tissot Sprint and Grand Prix blockbuster
+Im Misano FP1 hat sich Marc Marquez hauchdünn gegen Bezzecchi durchgesetzt. Am Ende trennten die beiden Erstplatzierten vom letzten Jahr lediglich winzige 0,060 Sekunden. Dieser packende Schlagabtausch zeigt sofort wieder, wie eng die beiden an der Spitze beieinanderliegen.
 
-Wie ordnest du diese MotoGP-Meldung ein?
+Was sagt ihr zu diesem extrem knappen Abstand zwischen Marc Marquez und Bezzecchi?
 
 #MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -76,18 +77,18 @@ QM: PASS
 Herkunft: Aktuell
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1076393
-Titel: Red Bull KTM confirm Di Giannantonio alongside Alex Marquez from 2027 The full Red Bull KTM Factory racing line-up for the new era is revealed
-Quelle: https://www.motogp.com/en/news/2026/07/06/red-bull-ktm-confirm-di-giannantonio-alongside-alex-marquez-from-2027/1076393
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-red-bull-ktm-confirm-01.jpg
+Story-Key: motogp:1081729
+Titel: Alex Marquez leads Bezzecchi in British GP FP1 It's Ducati fronting Aprilia and KTM as MotoGP revs back into life at Silverstone
+Quelle: https://www.motogp.com/en/news/2026/08/07/alex-marquez-leads-bezzecchi-in-british-gp-fp1/1081729
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-alex-marquez-leads-b-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-🇹🇷 Alex Marquez: Red Bull KTM confirm Di Giannantonio alongside Alex Marquez from 2027 The full Red Bull KTM Factory racing line-up for the new era is revealed
+Alex Marquez setzt das erste Ausrufezeichen beim British GP in Silverstone!
 
-Red Bull KTM confirm Di Giannantonio alongside Alex Marquez from 2027 The full Red Bull KTM Factory racing line-up for the new era is revealed
+Die MotoGP meldet sich zurück, und im FP1 sicherte sich Alex Marquez die Spitzenposition vor Bezzecchi. Damit behauptet sich Ducati an der Spitze vor den Verfolgern von Aprilia und KTM.
 
-Wie ordnest du diese MotoGP-Meldung ein?
+Traut ihr Aprilia oder KTM an diesem Wochenende zu, Ducati noch von Platz eins zu verdrängen?
 
 #MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -98,18 +99,18 @@ QM: PASS
 Herkunft: Aktuell
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1089344
-Titel: Marc Marquez denies Bezzecchi gold in tense Misano Sprint stand-off
-Quelle: https://www.motogp.com/en/news/2026/09/12/marc-marquez-denies-bezzecchi-gold-in-tense-misano-sprint-stand-off/1089344
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-marc-marquez-denies-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/12/90d5aea9-2735-4cb4-8954-de5e21dc8e92/Reprot-MGP-SPR-RSM.jpg?width=1200&height=630
+Story-Key: motogp:1076928
+Titel: Game on: Marc Marquez pockets perfect Sachsenring weekend to ignite title charge A 10th MotoGP win in Germany sees the reigning World Champion move up to P3 in the standings; SuperFile Trackhouse celebrate a double rostrum, while big Ducati names crash
+Quelle: https://www.motogp.com/en/news/2026/07/12/game-on-marc-marquez-pockets-perfect-sachsenring-weekend-to-ignite-title-charge/1076928
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-game-on-marc-marquez-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-🇹🇷 Marc Marquez: Marc Marquez denies Bezzecchi gold in tense Misano Sprint stand-off
+Perfektes Wochenende am Sachsenring: Marc Marquez meldet sich im Titelkampf zurück!
 
-22 points cover the top three as the reigning World Champion does the business on Saturday afternoon
+Mit seinem zehnten MotoGP-Sieg in Deutschland rückt der amtierende Weltmeister auf Platz drei der Gesamtwertung vor. Während SuperFile Trackhouse ein doppeltes Podium feiert, gab es für große Ducati-Namen bittere Stürze.
 
-Wie ordnest du diese MotoGP-Meldung ein?
+Glaubt ihr, Marc Marquez kann von P3 aus jetzt voll nach dem Titel greifen?
 
 #MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 

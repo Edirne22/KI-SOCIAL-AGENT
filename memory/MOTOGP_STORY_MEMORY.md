@@ -39,3 +39,28 @@ Quelle: https://www.motogp.com/en/news/2026/07/06/red-bull-ktm-confirm-di-gianna
 Story-Key: motogp:1089344
 Titel: Marc Marquez denies Bezzecchi gold in tense Misano Sprint stand-off
 Quelle: https://www.motogp.com/en/news/2026/09/12/marc-marquez-denies-bezzecchi-gold-in-tense-misano-sprint-stand-off/1089344
+
+## 2026-09-15 18:44 UTC – ANGEBOTEN
+Story-Key: motogp:1089343
+Titel: Showstopper: Bezzecchi goes sub 90 seconds at Misano to beat Marquez to pole
+Quelle: https://www.motogp.com/en/news/2026/09/12/showstopper-bezzecchi-goes-sub-90-seconds-at-misano-to-beat-marquez-to-pole/1089343
+
+## 2026-09-15 18:44 UTC – ANGEBOTEN
+Story-Key: motogp:1089342
+Titel: Bezzecchi strikes back to lead Marc Marquez in Friday Practice
+Quelle: https://www.motogp.com/en/news/2026/09/11/bezzecchi-strikes-back-to-lead-marc-marquez-in-friday-practice/1089342
+
+## 2026-09-15 18:44 UTC – ANGEBOTEN
+Story-Key: motogp:1089341
+Titel: Marc Marquez edges out Bezzecchi by 0.060s in Misano FP1
+Quelle: https://www.motogp.com/en/news/2026/09/11/marc-marquez-edges-out-bezzecchi-by-0060s-in-misano-fp1/1089341
+
+## 2026-09-15 18:44 UTC – ANGEBOTEN
+Story-Key: motogp:1081729
+Titel: Alex Marquez leads Bezzecchi in British GP FP1 It's Ducati fronting Aprilia and KTM as MotoGP revs back into life at Silverstone
+Quelle: https://www.motogp.com/en/news/2026/08/07/alex-marquez-leads-bezzecchi-in-british-gp-fp1/1081729
+
+## 2026-09-15 18:44 UTC – ANGEBOTEN
+Story-Key: motogp:1076928
+Titel: Game on: Marc Marquez pockets perfect Sachsenring weekend to ignite title charge A 10th MotoGP win in Germany sees the reigning World Champion move up to P3 in the standings; SuperFile Trackhouse celebrate a double rostrum, while big Ducati names crash
+Quelle: https://www.motogp.com/en/news/2026/07/12/game-on-marc-marquez-pockets-perfect-sachsenring-weekend-to-ignite-title-charge/1076928
