@@ -321,7 +321,7 @@ Quelle: https://www.motogp.com/en/news/2026/08/30/marc-marquez-fends-off-acosta-
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-2-marc-marquez-fends-o-01.jpg
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-15 16:10 | ID: 1285968257941776_122107503015469415]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34993246473-1
 Freigabe: Telegram MotoGP
