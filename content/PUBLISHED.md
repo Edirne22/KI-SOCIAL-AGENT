@@ -187,3 +187,39 @@ Wen unterstützt du dieses Wochenende?
 #MotoGP #AustrianGP #RedBullRing #Spielberg #ToprakRazgatlioglu #DenizOncu #Moto2 #MotoGPTurkiye #TurkMotorSporlari #BikerCommunity
 Video: assets/videos/2026-09/2026-09-14-sterreich-ruft-toprak-deniz-am-red-bull-ring-reel-musik-racing-beat.mp4
 Musik: Beat, electronic
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram MotoGP
+Telegram-Update-ID: 279361652
+MotoGP-Auswahl: 1
+Titel: Marc Marquez capitalises on Bezzecchi error to seize title race lead
+Text:
+🏁 Márquez schlägt zurück – der Titelkampf ist wieder völlig offen.
+
+Marc Márquez hat in Misano maximal profitiert und sich mit dem Sieg wieder ganz nach vorne im Titelkampf geschoben. Der frühe Fehler von Marco Bezzecchi hat das Rennen entscheidend verändert.
+
+Wer hat für dich jetzt die besseren Karten im Titelkampf?
+
+#MotoGP #MarcMarquez #AlexMarquez #Aprilia #MotorradRacing #MotoGPDeutschland
+Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+Bild: auto
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram MotoGP
+Telegram-Update-ID: 279361652
+MotoGP-Auswahl: 1
+Titel: Marc Marquez capitalises on Bezzecchi error to seize title race lead
+Text:
+🏁 Márquez schlägt zurück – der Titelkampf ist wieder völlig offen.
+
+Marc Márquez hat in Misano maximal profitiert und sich mit dem Sieg wieder ganz nach vorne im Titelkampf geschoben. Der frühe Fehler von Marco Bezzecchi hat das Rennen entscheidend verändert.
+
+Wer hat für dich jetzt die besseren Karten im Titelkampf?
+
+#MotoGP #MarcMarquez #AlexMarquez #Aprilia #MotorradRacing #MotoGPDeutschland
+
+https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+Link-Preview: offiziell
