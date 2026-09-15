@@ -4,122 +4,64 @@ import time
 import requests
 from datetime import datetime
 
-# Liste der Modelle, die nacheinander getestet werden
-MODEL_LIST = [
-    "gemini-3.8-flash",
-    "gemini-3.7-flash",
-    "gemini-3.6-flash",
-    "gemini-3.5-flash",
-    "gemini-3.5-flash-lite",
-]
-def try_generate(api_key, prompt):
-    """Arbeitet die Modellliste in Schleifen ab, bis ein Modell antwortet."""
-    headers = {
-        "Content-Type": "application/json",
-        "X-goog-api-key": api_key
-    }
-    data = {
-        "contents": [{"parts": [{"text": prompt}]}]
-    }
+MODEL_LIST=["gemini-3.8-flash","gemini-3.7-flash","gemini-3.6-flash","gemini-3.5-flash","gemini-3.5-flash-lite"]
 
-    max_rounds = 5
-    pause_between_models = 10
-    pause_between_rounds = 90
+def read(path,max_chars=10000):
+    try:
+        with open(path,"r",encoding="utf-8") as f:return f.read()[-max_chars:]
+    except FileNotFoundError:return ""
 
-    for round_number in range(1, max_rounds + 1):
-        print(f"Starte Durchlauf {round_number} von {max_rounds}")
+def try_generate(key,prompt):
+    headers={"Content-Type":"application/json","X-goog-api-key":key};data={"contents":[{"parts":[{"text":prompt}]}]}
+    for rnd in range(5):
         for model in MODEL_LIST:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
             try:
-                response = requests.post(url, headers=headers, json=data, timeout=120)
-                if response.status_code == 200:
-                    result = response.json()
-                    text = result["candidates"][0]["content"]["parts"][0]["text"]
-                    text_clean = re.sub(r'AIza[0-9A-Za-z_\-]{35}', '[ENTFERNT]', text)
-                    text_clean = re.sub(r'AQ\.[A-Za-z0-9_\-]{40,}', '[ENTFERNT]', text_clean)
-                    text_clean = re.sub(r'sk-[A-Za-z0-9]{20,}', '[ENTFERNT]', text_clean)
-                    text_clean = re.sub(r'\b[A-Za-z0-9_\-]{50,}\b', '[ENTFERNT]', text_clean)
-                    print(f"Erfolg mit Modell: {model}")
-                    return text_clean.strip()
-                else:
-                    if response.status_code in (401, 403):
-                        raise RuntimeError(
-                            f"Gemini-Authentifizierung oder -Berechtigung fehlgeschlagen (HTTP {response.status_code})."
-                        )
-                    print(f"Modell {model}: Status {response.status_code} – probiere nächstes...")
-                    time.sleep(pause_between_models)
-            except RuntimeError:
-                raise
-            except Exception as e:
-                print(f"Modell {model}: Fehler – {e}")
-                time.sleep(pause_between_models)
-
-        if round_number < max_rounds:
-            print(f"Durchlauf {round_number} beendet – warte {pause_between_rounds} Sekunden...")
-            time.sleep(pause_between_rounds)
-
-    raise RuntimeError("Kein Gemini-Modell war nach mehreren Versuchen verfügbar.")
+                r=requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",headers=headers,json=data,timeout=120)
+                if r.status_code==200:
+                    text=r.json()["candidates"][0]["content"]["parts"][0]["text"]
+                    return re.sub(r'AIza[0-9A-Za-z_\-]{35}|AQ\.[A-Za-z0-9_\-]{40,}|sk-[A-Za-z0-9]{20,}','[ENTFERNT]',text).strip()
+                if r.status_code in (401,403):raise RuntimeError(f"Gemini HTTP {r.status_code}")
+                time.sleep(10)
+            except RuntimeError:raise
+            except Exception:time.sleep(10)
+        if rnd<4:time.sleep(90)
+    raise RuntimeError("Kein Gemini-Modell verfügbar")
 
 def generate_weekly_plan():
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        return "FEHLER: Kein API-Key gefunden."
+    key=os.environ.get("GEMINI_API_KEY")
+    if not key:return "FEHLER: Kein API-Key gefunden."
+    roster=read("content/MOTOGP_ROSTER.md"); history=read("memory/POST_HISTORY.md",7000); viral=read("memory/VIRAL_PATTERNS.md",5000)
+    prompt=f"""Erstelle einen Content-Plan für die kommenden 7 Tage für eine deutsch-türkische Motorrad-Community.
 
-    prompt = """Erstelle einen kompletten Content-Plan für die kommenden 7 Tage (Montag bis Sonntag).
-Themen: Motorrad, Reisen, Lifestyle, Technik, KI, MotoGP.
-Zielgruppe: 18-65 Jahre, deutsch und türkisch, Motorradfahrer und Reisefreudige.
-Stil: locker, per Du, wenige Emojis, kurze Captions.
-Wichtig: Gib keine Zugangsdaten, Passwörter oder API-Schlüssel aus.
+AKTUELL VERIFIZIERTER MOTOGP-ROSTER:\n{roster or 'Noch kein automatisch verifizierter Roster vorhanden.'}
+POST-HISTORY:\n{history}
+VIRAL-MUSTER:\n{viral}
 
-Plane für jeden Tag:
-- Wochentag
-- Thema
-- Plattform (Instagram/TikTok/Facebook/Reel/Story – variiere sinnvoll)
-- Hook
-- Kurze Beschreibung (1-2 Sätze)
-- Hashtags (für Instagram und TikTok, max. 6 pro Plattform)
-- Visuelle Idee (kurz)
+Regeln:
+- MotoGP-Fahrer und Teams ausschließlich aus dem aktuellen MOTOGP_ROSTER verwenden; keine alten Saisonaufstellungen raten.
+- Mehrere Tage dürfen MotoGP behandeln, aber jeweils bevorzugt EINEN Fahrer in den Mittelpunkt stellen und Fahrer rotieren.
+- Türkische Racer bei starkem aktuellem Anlass priorisieren.
+- Ride With Me höchstens EINMAL in dieser gesamten Woche.
+- Professionelle, spezifische Hashtags: Fahrer, Team/Hersteller, MotoGP/GP und passende Community-Nische; kein Hashtag-Spam, max. 6 je Plattform.
+- POST_HISTORY zur Vermeidung von Wiederholungen verwenden.
+- Keine erfundenen Transfers, Ergebnisse oder Trending-Behauptungen.
+- Reale Rennmedien nicht künstlich als echte Aufnahme erzeugen.
 
-Formatiere die Antwort exakt so:
-
---- TAG 1: Montag ---
+Für Montag bis Sonntag jeweils:
+--- TAG X: Wochentag ---
 Thema: ...
-Plattform: ...
+Plattform: Instagram/TikTok/Facebook/Reel/Story
+Fahrer-Fokus: Name oder keiner
 Hook: ...
 Beschreibung: ...
 Hashtags Instagram: ...
 Hashtags TikTok: ...
 Visuelle Idee: ...
-
---- TAG 2: Dienstag ---
-...
-
---- TAG 3: Mittwoch ---
-...
-
---- TAG 4: Donnerstag ---
-...
-
---- TAG 5: Freitag ---
-...
-
---- TAG 6: Samstag ---
-...
-
---- TAG 7: Sonntag ---
-...
 """
-
-    return try_generate(api_key, prompt)
+    return try_generate(key,prompt)
 
 def save_weekly_plan(content):
-    os.makedirs("content", exist_ok=True)
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    entry = f"\n\n# Wochenplan vom {timestamp}\n{content}\n"
-    with open("content/WOCHENPLAN.md", "a", encoding="utf-8") as f:
-        f.write(entry)
-    print("Wochenplan gespeichert.")
+    os.makedirs("content",exist_ok=True)
+    with open("content/WOCHENPLAN.md","a",encoding="utf-8") as f:f.write(f"\n\n# Wochenplan vom {datetime.now():%Y-%m-%d %H:%M:%S}\n{content}\n")
 
-if __name__ == "__main__":
-    content = generate_weekly_plan()
-    save_weekly_plan(content)
+if __name__=="__main__":save_weekly_plan(generate_weekly_plan())
