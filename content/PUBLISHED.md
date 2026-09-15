@@ -177,7 +177,7 @@ Video: auto
 
 ## Facebook
 Status: Freigegeben
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 34959179215-1
 Freigabe: MANUELL
 Titel: 🏁 Österreich ruft: Toprak & Deniz am Red Bull Ring — VIDEO
 Text:
