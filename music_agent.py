@@ -3,11 +3,16 @@
 Nur ausdrücklich freigegebene Reel- und Story-Blöcke mit `Musik: auto` werden
 bearbeitet. Der Publisher wartet technisch auf die fertige Mischung. Dieses
 Skript veröffentlicht selbst nichts.
+
+Mit MUSIC_AGENT_TEST_MODE=1 darf ein bereits reservierter Block testweise
+verarbeitet werden. Dabei wird PUBLISHED.md nicht verändert; das Ergebnis
+landet ausschließlich unter test-output/music-agent/.
 """
 
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
 from datetime import datetime, timezone
@@ -16,10 +21,15 @@ from pathlib import Path
 PUBLISHED = Path("content/PUBLISHED.md")
 LIBRARY = Path("config/MUSIC_LIBRARY.json")
 LOG = Path("memory/MUSIC_LOG.md")
+TEST_OUTPUT = Path("test-output/music-agent")
 
 RACE_TERMS = ("motogp", "worldsbk", "rennen", "racer", "toprak", "yamaha", "ducati", "misano", "sprint")
 TRAVEL_TERMS = ("reise", "route", "ausfahrt", "tour", "türkei", "turkey", "urlaub", "landschaft")
 REQUIRED_TRACK_FIELDS = ("id", "title", "category", "path", "license", "source_page")
+
+
+def test_mode() -> bool:
+    return os.environ.get("MUSIC_AGENT_TEST_MODE", "").strip().lower() in {"1", "true", "yes", "on"}
 
 
 def log(message: str) -> None:
@@ -67,8 +77,6 @@ def desired_category(block: str) -> str:
 
 def choose_track(block: str, tracks: list[dict]) -> dict | None:
     desired = desired_category(block)
-    # Absichtlich kein Fallback auf eine falsche Stimmung: lieber warten als
-    # z. B. Chill-Musik in einen Rennsport-Clip mischen.
     return next((track for track in tracks if track.get("category") == desired), None)
 
 
@@ -154,6 +162,10 @@ def mix_music(video: Path, track: Path, output: Path) -> None:
 
 
 def process() -> int:
+    dry_run = test_mode()
+    if dry_run:
+        log("TESTMODUS aktiv: reservierte Blöcke dürfen gemischt werden; PUBLISHED.md und Publisher bleiben unangetastet.")
+
     if not PUBLISHED.exists():
         log("PUBLISHED.md fehlt – nichts zu bearbeiten.")
         return 0
@@ -170,7 +182,7 @@ def process() -> int:
         block = match.group(1)
         if "[GEPOSTET" in block or not re.search(r"(?mi)^Status:\s*FREIGEGEBEN\s*$", block):
             continue
-        if "Publication-Claim:" in block:
+        if "Publication-Claim:" in block and not dry_run:
             log("Block bereits für Veröffentlichung reserviert – Musik-Agent verändert ihn nicht.")
             continue
         if not re.search(r"(?mi)^Musik:\s*auto\s*$", block):
@@ -192,11 +204,24 @@ def process() -> int:
             continue
 
         track_path = Path(str(track["path"]))
-        output = video.with_name(f"{video.stem}-musik-{track['id']}.mp4")
+        if dry_run:
+            output = TEST_OUTPUT / f"{video.stem}-musik-{track['id']}-TEST.mp4"
+        else:
+            output = video.with_name(f"{video.stem}-musik-{track['id']}.mp4")
+
         try:
             mix_music(video, track_path, output)
         except (OSError, RuntimeError) as error:
             log(f"Musikmischung fehlgeschlagen für {video}: {error}")
+            continue
+
+        if dry_run:
+            changed += 1
+            log(
+                f"TEST ERFOLGREICH: {video.name} + {track['title']} → {output.as_posix()} | "
+                f"Kategorie: {track['category']} | Lizenz: {track['license']} | Quelle: {track['source_page']} | "
+                "PUBLISHED.md wurde nicht verändert."
+            )
             continue
 
         updated = re.sub(r"(?mi)^Video:\s*\S+", f"Video: {output.as_posix()}", block, count=1)
@@ -208,10 +233,10 @@ def process() -> int:
             f"Kategorie: {track['category']} | Lizenz: {track['license']} | Quelle: {track['source_page']}"
         )
 
-    if changed:
+    if changed and not dry_run:
         PUBLISHED.write_text(content, encoding="utf-8")
-    else:
-        print("Keine freigegebenen Videos mit Musik: auto gefunden.")
+    elif not changed:
+        print("Keine passenden freigegebenen Videos mit Musik: auto gefunden.")
     return changed
 
 
