@@ -2,28 +2,28 @@
 Session-Version: 14
 Agency-Version: V8.4.3
 QM: PASS
-Session-Timestamp: 1789503391
+Session-Timestamp: 1789504043
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
 ## Beitrag 1
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 5.8
+Artikelalter-Tage: 5.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1089370
-Titel: Binder looking forward to a new challenge in WorldSBK: “I want to achieve good things there”
-Quelle: https://www.worldsbk.com/en/news/2026/09/10/binder-looking-forward-to-a-new-challenge-in-worldsbk-im-looking-forward-to-the-next-adventure/1089370
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-binder-looking-forwa-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/19f05ed4-4a0b-4d40-a8f2-62dfc2e4cacd/Binder_03.jpg
+Story-Key: motogp:1089347
+Titel: MEDIA DAY DISPATCH: a three-way shootout as MotoGP hits Misano
+Quelle: https://www.motogp.com/en/news/2026/09/10/media-day-dispatch-a-three-way-shootout-as-motogp-hits-misano/1089347
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-media-day-dispatch-a-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/10/4196176f-d2da-4947-b95c-9e713ff76678/R1DC3597.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Binder wechselt von MotoGP zu WorldSBK
+Misano beschert uns die Spitzengruppe des Jahres.
 
-Der südafrikanische MotoGP-Rennsieger bestätigt seinen Einstieg in die Superbike-WM zur kommenden Saison. Er sagt, er sei voller Energie und Motivation und möchte dort gute Ergebnisse erzielen.
+Mit dem San Marino Grand Prix startet Runde 14 von 22 der MotoGP-Saison 2026. Neun Lauf stehen noch aus, und die Meisterschaft entwickelt sich zu einem Dreikampf – drei Fahrer liegen im Titelrennen eng beieinander.
 
-Wie seht ihr seine Chancen auf der neuen Maschine?
+Wer von den drei Spitzenreitern gewinnt bei dir die Sympathie?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -32,67 +32,67 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 ## Beitrag 2
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 6.8
+Artikelalter-Tage: 6.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1089172
-Titel: BULEGA’S FUTURE CONFIRMED: The #11 secures MotoGP seat for 2027 with VR46 Ducati
-Quelle: https://www.worldsbk.com/en/news/2026/09/09/bulegas-future-confirmed-the-11-secures-motogp-seat-for-2027-with-vr46-ducati/1089172
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-bulegas-future-confi-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/07/16/30f75b4f-5622-4ef9-b8d8-61e9c28218a8/18268_DCP_R07_2026_Ambience.jpg
+Story-Key: motogp:1089182
+Titel: FOLLOWING IN THEIR FOOTSTEPS: Bulega becomes the latest to move from WorldSBK to MotoGP
+Quelle: https://www.worldsbk.com/en/news/2026/09/09/following-in-their-footsteps-bulega-becomes-the-latest-to-move-from-worldsbk-to-motogp/1089182
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-following-in-their-f-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/07/16/a0d14b3b-1b91-47da-af91-ce8d5218f86a/56005_R2_JDR_WSBK_AMBIENCE.jpg
 Plattformen: Instagram + Facebook
 Text:
-Mit der VR46 Ducati geht Buléga 2027 endgültig ins MotoGP-Rennen.
+Mit dem Wechsel zur MotoGP setzt Nicolo Bulega eine Tradition fort, die immer wieder für Gesprächsstoff sorgt.
 
-Der #11 absolviert aktuell eine Saison wie keine andere im WorldSBK und sichert sich für die kommende MotoGP-Saison seinen Startplatz bei VR46 Ducati. Der Weg von der Superbike-Weltmeisterschaft in die Königsklasse ist damit offiziell besiegelt.
+Bulega ist der aktuellste Fahrer, der aus dem WorldSBK ins MotoGP-Feld wechselt. Eine kleine, aber bemerkenswerte Gruppe von Piloten hat den Sprung zwischen den Klassen bereits geschafft.
 
-Wie beurteilt ihr die Chancen von Buléga im MotoGP-Gran Premio?
+Welche Fahrer haben den Weg von der Superbike zur Weltmeisterschaft bereits vor ihm beschritten?
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 3
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 5.8
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1089357
-Titel: Rins to leave MotoGP and two-wheeled racing at end of 2026
-Quelle: https://www.motogp.com/en/news/2026/09/10/rins-to-leave-motogp-and-two-wheeled-racing-at-end-of-2026/1089357
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-rins-to-leave-motogp-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/10/7a8522e0-08c1-4ba5-afb5-913eb919b827/vlcsnap-2026-09-10-12h07m13s3482.jpg?width=1200&height=630
+Artikelalter-Tage: 4.9
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1089216
+Titel: “There’s no way to go forward apart from continuing to push” – BMW reflect on a tough round at Magny-Cours
+Quelle: https://www.worldsbk.com/en/news/2026/09/11/theres-no-way-to-go-forward-apart-from-continuing-to-push-bmw-reflect-on-a-tough-round-at-magny-cours/1089216
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-theres-no-way-to-go-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/a16f6821-6ed6-49dd-82cb-e647c8558552/P90654493_highRes_04th-06th-september-.jpg
 Plattformen: Instagram + Facebook
 Text:
-Ende einer Ära: Rins verabschiedet sich nach der Saison 2026.
+Holpriges Wochenende für BMW in Magny-Cours
 
-Der sechsmalige Grand-Prix-Sieger hat bestätigt, dass er zum Ende der aktuellen Saison aus der MotoGP und dem Motorradsport insgesamt zurücktritt. Der Grund liegt in einem neuen Projekt, das er künftig verfolgen möchte.
+Das BMW-Werksteam muss nach einem schwachen Auftritt in Frankreich nun neu ansetzen. Beim Test in Cremona geht es zurück auf die Zeichentafel, um die Probleme zu analysieren und Lösungsansätze zu finden. Der Weg nach vorn führt laut Team nur über konsequentes Weitermachen.
 
-Welcher Moment aus Rinss Karriere bleibt euch am besten in Erinnerung?
+Wie bewertet ihr die Lage – ist Cremona der richtige Zeitpunkt für den Neuanfang oder fehlt noch Airtime zum Testen?
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 4
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 1.8
+Artikelalter-Tage: 5.9
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1089984
-Titel: UNDER THE RADAR: Who deserved more credit at Magny-Cours?
-Quelle: https://www.worldsbk.com/en/news/2026/09/14/under-the-radar-who-deserved-more-credit-at-magny-cours/1089984
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-under-the-radar-who-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/14/9e2a2b17-3d7c-4e46-bad2-edad70e082cb/UNDERTHERADAR-FRA.jpg
+Story-Key: motogp:1089215
+Titel: Surra matches season highs at Magny-Cours: “Another fantastic result with the team!”
+Quelle: https://www.worldsbk.com/en/news/2026/09/10/surra-matches-season-highs-at-magny-cours-another-fantastic-result-with-the-team/1089215
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-surra-matches-season-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/dc9a1e67-86bb-4b31-8c42-8aba861d171b/51932_JDR_R09_2026_Ambience.jpg
 Plattformen: Instagram + Facebook
 Text:
-Magny-Cours liegt hinter uns – und einige Fahrer haben sich mehr Aufmerksamkeit verdient.
+Surra zeigt Stärke auf der Strecke in Magny-Cours
 
-Mit dem neunten Rennwochenende der WorldSBK-Saison ist die Strecke abgehakt. Doch nicht nur die Sieger standen im Rampenlicht; etliche Piloten überzeugten unter der Oberfläche, ohne den gebührenden Applaus zu erhalten.
+Bei der WorldSBK-Runde in Magny-Cours hat Surra seine besten Saisonergebnisse erreicht und sich ein weiteres fantastisches Resultat mit dem Team gesichert. Trotz starker Auftritte vom Freitag bis Sonntag bleibt die erste Podestplatzierung weiter unerreichbar.
 
-Wer eurer Meinung nach war bei Runde 9 in Magny-Cours die größte Understatement-Leistung?
+Denkt ihr, dass Surra bald die nächste Schwelle überwindet und zum ersten Mal auf das Podium steigt?
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -101,22 +101,22 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 ## Beitrag 5
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 4.8
-Kategorie: WorldSSP
-Serie: WorldSSP
-Story-Key: motogp:1089217
-Titel: “I thought, ‘Now, it’s possible’” – Garcia reflects on maiden WorldSSP win
-Quelle: https://www.worldsbk.com/en/news/2026/09/11/i-thought-now-its-possible-garcia-reflects-on-maiden-worldssp-win/1089217
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-i-thought-now-its-po-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/06/767c4dfd-f5bf-43eb-b72d-d881d1560d9a/55787_JDR_R09_2026_Ambience.jpg
+Artikelalter-Tage: 5.9
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1089366
+Titel: Miller on 2027 WorldSBK switch: “I’m extremely excited to see what the future holds in our story together”
+Quelle: https://www.worldsbk.com/en/news/2026/09/10/miller-on-2027-worldsbk-switch-im-extremely-excited-to-see-what-the-future-holds-in-our-story-together/1089366
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-miller-on-2027-world-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/10/96b8ab07-c33e-4623-b727-462fa333204d/GCM_497.jpg
 Plattformen: Instagram + Facebook
 Text:
-Garcia krönt sich zum ersten Mal Sieger in der WorldSSP-Serie.
+Jack Miller wechselt 2027 zu Yamaha ins WorldSBK-Projekt.
 
-Der spanische Star entschied einen Duell im letzten Runde für sich – und das nur einen Tag, nachdem er zuvor knapp in einer ähnlichen Situation unterlegen war. Sein Fazit: "Ich dachte mir, jetzt ist es möglich."
+Der australische Rennfahrer sucht sich für die nächste Saison ein neues Team und schließt sich dem Yamaha-Werksteam in der Supersport-Weltmeisterschaft an. Miller zeigt sich beeindruckt von den Perspektiven und betont, wie gespannt er auf die gemeinsame Zukunft ist.
 
-Wie wichtig sind für euch Last-Lap-Kämpfe im Vergleich zu konstanten Rundenzeiten?
+Wie bewertet ihr Millers Wechsel von MotoGP zu WorldSBK bei Yamaha?
 
-#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.

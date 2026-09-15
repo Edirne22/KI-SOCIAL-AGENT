@@ -125,3 +125,28 @@ Titel: “I thought, ‘Now, it’s possible’” – Garcia reflects on maiden
 Story-Key: motogp:1089217
 Gründe: alle Gates bestanden
 
+## 2026-09-15 20:27 UTC | Motorcycle Racing | PASS
+Titel: MEDIA DAY DISPATCH: a three-way shootout as MotoGP hits Misano
+Story-Key: motogp:1089347
+Gründe: alle Gates bestanden
+
+## 2026-09-15 20:27 UTC | Motorcycle Racing | PASS
+Titel: FOLLOWING IN THEIR FOOTSTEPS: Bulega becomes the latest to move from WorldSBK to MotoGP
+Story-Key: motogp:1089182
+Gründe: alle Gates bestanden
+
+## 2026-09-15 20:28 UTC | Motorcycle Racing | PASS
+Titel: “There’s no way to go forward apart from continuing to push” – BMW reflect on a tough round at Magny-Cours
+Story-Key: motogp:1089216
+Gründe: alle Gates bestanden
+
+## 2026-09-15 20:28 UTC | Motorcycle Racing | PASS
+Titel: Surra matches season highs at Magny-Cours: “Another fantastic result with the team!”
+Story-Key: motogp:1089215
+Gründe: alle Gates bestanden
+
+## 2026-09-15 20:28 UTC | Motorcycle Racing | PASS
+Titel: Miller on 2027 WorldSBK switch: “I’m extremely excited to see what the future holds in our story together”
+Story-Key: motogp:1089366
+Gründe: alle Gates bestanden
+

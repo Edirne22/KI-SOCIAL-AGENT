@@ -139,3 +139,28 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/14/under-the-radar-who-deserved
 Story-Key: motogp:1089217
 Titel: “I thought, ‘Now, it’s possible’” – Garcia reflects on maiden WorldSSP win
 Quelle: https://www.worldsbk.com/en/news/2026/09/11/i-thought-now-its-possible-garcia-reflects-on-maiden-worldssp-win/1089217
+
+## 2026-09-15 20:27 UTC – ANGEBOTEN
+Story-Key: motogp:1089347
+Titel: MEDIA DAY DISPATCH: a three-way shootout as MotoGP hits Misano
+Quelle: https://www.motogp.com/en/news/2026/09/10/media-day-dispatch-a-three-way-shootout-as-motogp-hits-misano/1089347
+
+## 2026-09-15 20:27 UTC – ANGEBOTEN
+Story-Key: motogp:1089182
+Titel: FOLLOWING IN THEIR FOOTSTEPS: Bulega becomes the latest to move from WorldSBK to MotoGP
+Quelle: https://www.worldsbk.com/en/news/2026/09/09/following-in-their-footsteps-bulega-becomes-the-latest-to-move-from-worldsbk-to-motogp/1089182
+
+## 2026-09-15 20:27 UTC – ANGEBOTEN
+Story-Key: motogp:1089216
+Titel: “There’s no way to go forward apart from continuing to push” – BMW reflect on a tough round at Magny-Cours
+Quelle: https://www.worldsbk.com/en/news/2026/09/11/theres-no-way-to-go-forward-apart-from-continuing-to-push-bmw-reflect-on-a-tough-round-at-magny-cours/1089216
+
+## 2026-09-15 20:27 UTC – ANGEBOTEN
+Story-Key: motogp:1089215
+Titel: Surra matches season highs at Magny-Cours: “Another fantastic result with the team!”
+Quelle: https://www.worldsbk.com/en/news/2026/09/10/surra-matches-season-highs-at-magny-cours-another-fantastic-result-with-the-team/1089215
+
+## 2026-09-15 20:27 UTC – ANGEBOTEN
+Story-Key: motogp:1089366
+Titel: Miller on 2027 WorldSBK switch: “I’m extremely excited to see what the future holds in our story together”
+Quelle: https://www.worldsbk.com/en/news/2026/09/10/miller-on-2027-worldsbk-switch-im-extremely-excited-to-see-what-the-future-holds-in-our-story-together/1089366
