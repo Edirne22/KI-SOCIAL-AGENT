@@ -1,8 +1,9 @@
 # MotoGP Daily Content Agency
 
-**Recherche:** 2026-09-15 13:04 UTC
+**Recherche:** 2026-09-15 13:48 UTC
 **Primärquelle:** offizielle MotoGP-Seite
 **Closed-Loop Memory:** aktiv
+**Media-Gate:** Instagram-Medium muss vor Telegram vorhanden sein
 
 ## Analysierte Themen
 
@@ -122,4 +123,4 @@ Speichert, was Bülent mag und was nicht – basierend auf Freigaben, Ablehnunge
 
 
 ## Redaktion
-Quellendaten werden nicht als Caption übernommen. Vor Telegram: Metadaten säubern → Faktenkern → vollständig neu auf Deutsch → Memory-/Rotationscheck → Hook/Frage → Hashtags → Rechte-/Quellen-Gate.
+Quellendaten werden nicht als Caption übernommen. Vor Telegram: Faktenkern → vollständig neu auf Deutsch → Hook/Frage → Hashtags → eigene neutrale Instagram-Grafik erzeugen → Media-Gate → Telegram. Facebook erhält den offiziellen Quellenlink.
