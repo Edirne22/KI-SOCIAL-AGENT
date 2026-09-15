@@ -1,8 +1,8 @@
 # Motorcycle Racing Telegram Approval Session
-Session-Version: 12
-Agency-Version: V8.4.1
+Session-Version: 13
+Agency-Version: V8.4.2
 QM: PASS
-Session-Timestamp: 1789498588
+Session-Timestamp: 1789499918
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -12,111 +12,111 @@ Herkunft: Aktuell
 Artikelalter-Tage: 0.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1090085
-Titel: Pol Espargaro continues to replace Viñales at the Austrian GP
-Quelle: https://www.motogp.com/en/news/2026/09/15/pol-espargaro-continues-to-replace-vinales-at-the-austrian-gp/1090085
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-pol-espargaro-contin-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/15/ae60e496-8d51-4933-bc9c-212162913022/R1DC2031-copy.jpg?width=1200&height=630
+Story-Key: motogp:1090045
+Titel: Game on: Marc Marquez overcomes the largest points deficit in history
+Quelle: https://www.motogp.com/en/news/2026/09/15/game-on-marc-marquez-overcomes-the-largest-points-deficit-in-history/1090045
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-game-on-marc-marquez-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/15/8c2e8c43-a2ac-4d06-92cd-9833b0bdfff0/MMarquez-102-Points-THUMB.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Pol Espargaro vertritt Viñales weiterhin in der MotoGP!
+Marc Marquez holt den größten Punkterückstand der Geschichte auf und übernimmt die WM-Führung!
 
-Beim Austrian GP wird die #44 noch einmal für KTM in die Action zurückkehren. Pol Espargaro ersetzt Viñales damit ein weiteres Mal bei diesem Rennen. Es geht für die #44 somit erneut im MotoGP-Einsatz auf die Strecke.
+Vor gerade einmal sieben Runden lag die Startnummer 93 noch mit 102 Zählern hinten, doch nun führt er die Meisterschaft an. Nach diesem historischen Comeback formiert sich Aprilia bereits neu, um eine passende Antwort im Titelkampf zu liefern.
 
-Was erwartet ihr von Pol Espargaro bei seinem erneuten Einsatz für KTM beim Austrian GP?
+Traut ihr Aprilia zu, jetzt noch einmal gegen Marc Marquez zurückzuschlagen?
 
-#MotoGP #PolEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 2
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1090051
-Titel: Artigas rattled the sabre after Race 2 win in France: “The goal is still to win the Championship”
-Quelle: https://www.worldsbk.com/en/news/2026/09/15/artigas-rattled-the-sabre-after-race-2-win-in-france-the-goal-is-still-to-win-the-championship/1090051
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-artigas-rattled-the-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/06/318e6173-f500-483c-9b09-d53ba9f72e19/56445_JDR_R09_2026_Ambience.jpg
+Artikelalter-Tage: 1.8
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1089989
+Titel: Talking Points: We can
+Quelle: https://www.motogp.com/en/news/2026/09/14/talking-points-we-cant-go-back-in-time/1089989
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-2-talking-points-we-ca-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/14/17bbd6ed-9d17-4293-a6ea-28de2391edc8/Talking_Points-San-Marino-GP.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Sieg in Frankreich: Artigas meldet sich ganz oben zurück und setzt ein klares Statement!
+Marc Marquez setzt sich durch und schreibt in Misano Geschichte!
 
-Mit seinem Triumph in Rennen 2 stand die Startnummer 34 zum ersten Mal seit Aragon wieder auf der obersten Stufe des Podiums. Nach dem Erfolg stellte Artigas unmissverständlich klar, dass der Gewinn der Meisterschaft weiterhin das Ziel bleibt. Nun blickt er auf die beiden alles entscheidenden finalen Runden voraus.
+Bei der neuesten MotoGP-Ausgabe an der Adriaküste hat sich Marc Marquez an die Spitze gesetzt und Geschichte geschrieben. Unter dem Titel „Talking Points: We can“ dreht sich alles um die heißesten Themen des Rennwochenendes in Misano. Erfahrt alle wichtigen Gesprächspunkte aus unserer jüngsten Ausgabe von der Adriaküste.
 
-Traut ihr Artigas in den letzten beiden Runden den Titelgewinn noch zu?
+Was war für euch das heißeste Thema dieser MotoGP-Runde in Misano?
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 3
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
-Kategorie: WorldSSP
-Serie: WorldSSP
-Story-Key: motogp:1090041
-Titel: NEWS 13h ago “One of the best results to have the podium” – Race 1 retirement to Sunday rostrum for Arenas in France The Spanish rider went from heartbreak to elation in the space of 24 hours following a rollercoaster weekend at Magny-Cours WorldSSP
-Quelle: https://www.worldsbk.com/en/news/2026/09/15/one-of-the-best-results-to-have-the-podium-race-1-retirement-to-sunday-rostrum-for-arenas-in-france/1090041
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-news-13h-ago-one-of-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Artikelalter-Tage: 1.8
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1089729
+Titel: Umberto Masetti officially inducted into the MotoGP Hall of Fame
+Quelle: https://www.motogp.com/en/news/2026/09/14/umberto-masetti-officially-inducted-into-the-motogp-hall-of-fame/1089729
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-3-umberto-masetti-offi-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/12/9f98e879-9e15-4e8e-acdb-1c55a600bcef/Masetti.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Vom Ausfall in Rennen 1 direkt auf das Sonntags-Podium in Magny-Cours!
+Große Ehre in der MotoGP: Umberto Masetti wurde offiziell in die MotoGP Hall of Fame aufgenommen!
 
-Nach einem Ausfall im ersten Rennen erlebte der spanische WorldSSP-Fahrer Arenas in Frankreich ein echtes Achterbahn-Wochenende. Innerhalb von nur 24 Stunden wandelte sich die Enttäuschung in pure Freude, als er am Sonntag den Sprung auf das Podest schaffte. Für ihn war dieser Erfolg auf dem Podium nach dem Rückschlag eines der besten Ergebnisse.
+Der zweifache MotoGP-Weltmeister gehört damit nun ganz offiziell zu den verewigten Größen der Rennserie. Mit der Aufnahme von Umberto Masetti wird die beeindruckende Karriere des zweifachen Champions in der MotoGP gebührend gewürdigt.
 
-Was sagt ihr zu diesem Wandel von Arenas innerhalb von 24 Stunden?
+Was sagt ihr zur offiziellen Aufnahme von Umberto Masetti in die MotoGP Hall of Fame?
 
-#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 4
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1089174
-Titel: MotoGP Fantasy: Super Boost Now Available!
-Quelle: https://www.motogp.com/en/news/2026/09/15/motogp-fantasy-super-boost-now-available/1089174
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-motogp-fantasy-super-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/14/c240f344-bd3d-4242-911c-7722373ccdaf/02_Single-promo-inside-article-2500x1600-_Fantasy_3er-Mystery-Boost.jpg?width=1200&height=630
+Artikelalter-Tage: 1.8
+Kategorie: WorldSSP
+Serie: WorldSSP
+Story-Key: motogp:1089992
+Titel: Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13: “I’m happy that the hard work paid off”
+Quelle: https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-4-oncu-takes-first-202-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/05/da813e9a-1a38-4f9c-87b5-0f4fcefbe74a/53908_JDR_R09_2026_Ambience.jpg
 Plattformen: Instagram + Facebook
 Text:
-Neues Update für eure MotoGP Fantasy-Aufstellung: Der Super Boost ist da!
+Was für eine spektakuläre Aufholjagd von Oncu in der WorldSSP!
 
-Ab sofort steht euch der Super Boost in MotoGP Fantasy zur Verfügung. Nutzt jetzt den dritten Mystery Boost, um eure MotoGP Fantasy-Strategie auf das nächste Level zu heben.
+Von P13 aus kämpfte sich die Startnummer 61 in Race 1 nach vorne und feierte seinen ersten WorldSSP-Sieg im Jahr 2026. Nach harter Arbeit über die Sommerpause zeigte Oncu mehr Gelassenheit auf seiner Yamaha R9 und freute sich, dass sich der harte Einsatz ausgezahlt hat. In Race 2 musste er allerdings noch einen kostspieligen Rückschlag hinnehmen.
 
-Setzt ihr den neuen Mystery Boost direkt in eurer MotoGP Fantasy-Strategie ein?
+Was sagt ihr zu Oncus Sieg nach seinem Comeback von P13?
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 5
 QM: PASS
 Herkunft: Aktuell
-Artikelalter-Tage: 1.8
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1090014
-Titel: “Seeing my team in Parc Ferme waiting for me was amazing” – Seabright shines in maiden win at Magny-Cours
-Quelle: https://www.worldsbk.com/en/news/2026/09/14/seeing-my-team-in-parc-ferme-waiting-for-me-was-amazing-seabright-shines-in-maiden-win-at-magny-cours/1090014
-Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-seeing-my-team-in-pa-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/05/756f0d15-f198-4713-8979-9dc7d141beca/53678_JDR_R09_2026_Ambience.jpg
+Artikelalter-Tage: 3.8
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1089616
+Titel: Loris Capirossi becomes a MotoGP Legend
+Quelle: https://www.motogp.com/en/news/2026/09/12/loris-capirossi-becomes-a-motogp-legend/1089616
+Instagram-Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-5-loris-capirossi-beco-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/12/e1fec514-afb8-42db-8904-ef24f3973592/DSC_7570.JPG?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Seabright glänzte in der WorldSBK mit seinem ersten Sieg in Magny-Cours!
+Loris Capirossi steigt offiziell zur MotoGP-Legende auf!
 
-Der aufstrebende britische Star setzte seine starke Form mit zwei Podestplätzen in Frankreich weiter fort. Dabei feierte er seinen allerersten Sieg auf dem Kurs in Magny-Cours. Für Seabright war es schlichtweg fantastisch, sein Team im Parc Fermé auf sich warten zu sehen.
+Bei einer emotionalen Aufnahme in Misano wurde dem Italiener eine ganz besondere Ehre zuteil. Er stieg dabei von einer Legende zu einer Legende mit großem Anfangsbuchstaben in der MotoGP auf.
 
-Wie habt ihr die zwei Podestplätze von Seabright in Frankreich erlebt?
+Wie hat dieser emotionale Moment in Misano auf euch gewirkt?
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.

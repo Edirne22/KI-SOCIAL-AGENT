@@ -75,3 +75,28 @@ Titel: “Seeing my team in Parc Ferme waiting for me was amazing” – Seabrig
 Story-Key: motogp:1090014
 Gründe: alle Gates bestanden
 
+## 2026-09-15 19:34 UTC | Motorcycle Racing | PASS
+Titel: Game on: Marc Marquez overcomes the largest points deficit in history
+Story-Key: motogp:1090045
+Gründe: alle Gates bestanden
+
+## 2026-09-15 19:34 UTC | Motorcycle Racing | PASS
+Titel: Talking Points: We can
+Story-Key: motogp:1089989
+Gründe: alle Gates bestanden
+
+## 2026-09-15 19:34 UTC | Motorcycle Racing | PASS
+Titel: Umberto Masetti officially inducted into the MotoGP Hall of Fame
+Story-Key: motogp:1089729
+Gründe: alle Gates bestanden
+
+## 2026-09-15 19:34 UTC | Motorcycle Racing | PASS
+Titel: Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13: “I’m happy that the hard work paid off”
+Story-Key: motogp:1089992
+Gründe: alle Gates bestanden
+
+## 2026-09-15 19:35 UTC | Motorcycle Racing | PASS
+Titel: Loris Capirossi becomes a MotoGP Legend
+Story-Key: motogp:1089616
+Gründe: alle Gates bestanden
+

@@ -89,3 +89,28 @@ Quelle: https://www.motogp.com/en/news/2026/09/15/motogp-fantasy-super-boost-now
 Story-Key: motogp:1090014
 Titel: “Seeing my team in Parc Ferme waiting for me was amazing” – Seabright shines in maiden win at Magny-Cours
 Quelle: https://www.worldsbk.com/en/news/2026/09/14/seeing-my-team-in-parc-ferme-waiting-for-me-was-amazing-seabright-shines-in-maiden-win-at-magny-cours/1090014
+
+## 2026-09-15 19:18 UTC – ANGEBOTEN
+Story-Key: motogp:1090045
+Titel: Game on: Marc Marquez overcomes the largest points deficit in history
+Quelle: https://www.motogp.com/en/news/2026/09/15/game-on-marc-marquez-overcomes-the-largest-points-deficit-in-history/1090045
+
+## 2026-09-15 19:18 UTC – ANGEBOTEN
+Story-Key: motogp:1089989
+Titel: Talking Points: We can
+Quelle: https://www.motogp.com/en/news/2026/09/14/talking-points-we-cant-go-back-in-time/1089989
+
+## 2026-09-15 19:18 UTC – ANGEBOTEN
+Story-Key: motogp:1089729
+Titel: Umberto Masetti officially inducted into the MotoGP Hall of Fame
+Quelle: https://www.motogp.com/en/news/2026/09/14/umberto-masetti-officially-inducted-into-the-motogp-hall-of-fame/1089729
+
+## 2026-09-15 19:18 UTC – ANGEBOTEN
+Story-Key: motogp:1089992
+Titel: Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13: “I’m happy that the hard work paid off”
+Quelle: https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992
+
+## 2026-09-15 19:18 UTC – ANGEBOTEN
+Story-Key: motogp:1089616
+Titel: Loris Capirossi becomes a MotoGP Legend
+Quelle: https://www.motogp.com/en/news/2026/09/12/loris-capirossi-becomes-a-motogp-legend/1089616
