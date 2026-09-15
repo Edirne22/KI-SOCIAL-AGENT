@@ -218,7 +218,7 @@ Wie bewertest du sein Rennwochenende?
 Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
 Bild: auto
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-15 06:37 | ID: 1285968257941776_122106981675469415]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34937724817-1
 Freigabe: Telegram
