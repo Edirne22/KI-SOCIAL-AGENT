@@ -283,7 +283,7 @@ Quelle: https://www.motogp.com/en/news/2026/06/24/confirmed-acosta-joins-marc-ma
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-15-motogp-editorial-2026-09-15-2-confirmed-acosta-joi-01.jpg
 
-## Facebook
+## Facebook [GEPOSTET 2026-09-15 14:57 | ID: 1285968257941776_122107434699469415]
 Status: FREIGEGEBEN
 Publication-Claim: IN_BEARBEITUNG 34985116866-1
 Freigabe: Telegram MotoGP
