@@ -4,8 +4,8 @@ from urllib.parse import urljoin
 UA={'User-Agent':'Mozilla/5.0 KI-SOCIAL-AGENT Motorcycle Racing Agency'}
 SOURCES=[('MotoGP','https://www.motogp.com/en/news'),('WorldSBK','https://www.worldsbk.com/en/news'),('WorldSSP','https://www.worldsbk.com/en/news/ssp')]
 WATCHLIST={
- 'Toprak Razgatlioglu':('toprak','razgatlioglu','razgatlıoğlu'),
- 'Can Oncu':('can oncu','can öncü','oncu','öncü'),
+ 'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu','razgatlioglu','razgatlıoğlu'),
+ 'Can Oncu':('can oncu','can öncü'),
  'Deniz Oncu':('deniz oncu','deniz öncü'),
  'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu'),
  'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu'),
@@ -19,6 +19,7 @@ def clean(s):return re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',s or '
 def fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def rider_for(text):
  low=fold(text)
+ # Nur eindeutige Namen matchen: ein bloßes "Öncü" darf Can und Deniz nicht verwechseln.
  for rider in ('Deniz Oncu','Bahattin Sofuoglu','Zayn Sofuoglu','Toprak Razgatlioglu','Can Oncu'):
   if any(fold(k) in low for k in WATCHLIST[rider]):return rider
  return ''
