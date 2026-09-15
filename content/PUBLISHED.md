@@ -362,6 +362,7 @@ Bild: assets/images/2026-09/2026-09-15-racing-editorial-2026-09-15-1-game-on-mar
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Telegram-Update-ID: 279361657
 MotoGP-Auswahl: 1
