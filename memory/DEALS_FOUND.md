@@ -221,3 +221,123 @@ Direkte Treffer (antippbar):
 
 Quellen:
 - Monatlich kündbare Handytarife im Vergleich - handyhaus.de: https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar
+## Suche vom 2026-09-15 06:08
+Anfrage: motorradhandschuhe
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 50 € | seit 2026-09-12
+Verifiziertes Angebot: ja
+Preis: 3.50 €
+Händler: blmk.de
+Quelle: https://www.blmk.de/kalender/
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+
+BESTES_ANGEBOT:
+Preis: 3.50 €
+Händler: blmk.de
+URL: https://www.blmk.de/kalender/
+Belegt: ja
+Hinweis: Preis stammt aus einem aktuellen Suchtreffer; bitte auf den Link tippen und im Shop prüfen.
+
+Direkte Treffer (antippbar):
+1. Alpinestars S-Max Drystar ab 57,56 € (September 2026) - Idealo
+   https://www.idealo.de/preisvergleich/OffersOfProduct/200016269_-s-max-drystar-alpinestars.html – Handschuhtypen, Touring Handschuhe, City Handschuhe. Aufbau. Jahreszeit, Frühling/Herbst. geeignet für, Herren. Außenmaterial, Leder. Stulpenlänge, kurz.
+2. Grey MTB Handschuhe MTN – Lukas Knopf - The Motion Brand
+   https://themotionbrand.com/products/grey-mtb-handschuhe-mtn?srsltid=AfmBOoo-bkZHuVGtMnJ8r_wganZUiiREG0rfo96xinhOy9R71YLNQ2dN – Grey MTB Handschuhe MTN. Normaler Preis€32,90. /. inkl. MwSt. zzgl ... - ab einem Bestellwert von 80€ versandkostenfrei! - bis zu einem Warenwert von 80€: 4,50 ...
+3. Historische Themen - Wirtschaft & Tourismus - Stadt Grafing
+   https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen – Preis: VVK 10,00€/Person, an der Tageskasse in bar 12,50€/Person; Treffpunkt: Bronzesäule hinter dem Rathaus (Marktplatz 28); Dauer: Ca. zwei Stunden; Max.
+4. DSG25 Programm - Deutsche Schlaganfall-Gesellschaft
+   https://www.dsg-info.de/kongress/programm/ – Max. TN-Zahl: 24. Gebühr: 50,00 €. → Zur Workshop-Buchung · WS 05. Interprofessionelle Therapie/Team is brain. Im Fokus unseres Workshops steht die These, dass ...
+5. Öko-Regelung 2 – Vielfältige Kulturen im Ackerbau
+   https://www.lwk-niedersachsen.de/lwk/news/41669_%C3%96ko-Regelung_2_-_Vielfaeltige_Kulturen_im_Ackerbau – 13.01.2026 ... Die Prämie von 60 €/ha wird für den Gesamtbetrieb (alle Ackerflächen ohne Brache) ausgezahlt. ... 50 %) sein muss, d.h. mind. 10 ...
+6. NACHFOLGE LOHNT SICH - IHK
+   https://www.ihk.de/blueprint/servlet/resource/blob/7164140/caa305c725da7b45b354ee24b226fe12/wirtschaft-region-limburg-weilburg-08-09-2026-data.pdf – vor 7 Tagen ... Dazu gehören u.a. der monatliche Sachbezug bis. 50 €, die Kostenübernahme für die Kinderbetreuung, die ... Anschlussgarantie, bis max.
+7. Registereintrag "Verband der Automobilindustrie e.V." - Lobbyregister
+   https://www.lobbyregister.bundestag.de/suche/R001243 – € und 25% auch außerhalb von EU-Fördergebieten. Dies soll ebenso für die ... Kriterien des GHG-Protokolls basieren. Zudem wird vorgeschlagen, anstelle ...
+8. Veranstaltungen – BLMK
+   https://www.blmk.de/kalender/ – Material Kinder 3,50 €, Erwachsene 7,50 € | max. 20 Teilnehmerinnen | für FamilienRathaushalleMarktplatz 115230 Frankfurt (Oder)+49 335 28396183MehrTeilen ...
+9. Wochen der Wärme 2026 - Klimaschutz
+   https://www.klimaschutz-niedersachsen.de/themen/waerme/2026-wochen-der-waerme.php – Der Energie-Effizienz-Experte Max ... 58 Großstädte können ihren Raumwärmebedarf zu mindestens 50 % aus der Fließgewässerwärme generieren, was 73 % aller ...
+10. Flug Berlin Miami von €585 RT - Air France
+   https://wwws.airfrance.de/de-de/fl%C3%BCge-von-berlin-nach-miami – ... max-price-aria-label €1.3K. Displaying fares for September-2026. BER–MIA: cmp ... sep. BER–MIA, 12/09/2026 – 19/09/2026: Ab €1.300. 12. Sa. BER–MIA, 13/09 ...
+
+Quellen:
+- Alpinestars S-Max Drystar ab 57,56 € (September 2026) - Idealo: https://www.idealo.de/preisvergleich/OffersOfProduct/200016269_-s-max-drystar-alpinestars.html
+- Grey MTB Handschuhe MTN – Lukas Knopf - The Motion Brand: https://themotionbrand.com/products/grey-mtb-handschuhe-mtn?srsltid=AfmBOoo-bkZHuVGtMnJ8r_wganZUiiREG0rfo96xinhOy9R71YLNQ2dN
+- Historische Themen - Wirtschaft & Tourismus - Stadt Grafing: https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen
+- DSG25 Programm - Deutsche Schlaganfall-Gesellschaft: https://www.dsg-info.de/kongress/programm/
+- Öko-Regelung 2 – Vielfältige Kulturen im Ackerbau: https://www.lwk-niedersachsen.de/lwk/news/41669_%C3%96ko-Regelung_2_-_Vielfaeltige_Kulturen_im_Ackerbau
+- NACHFOLGE LOHNT SICH - IHK: https://www.ihk.de/blueprint/servlet/resource/blob/7164140/caa305c725da7b45b354ee24b226fe12/wirtschaft-region-limburg-weilburg-08-09-2026-data.pdf
+- Registereintrag "Verband der Automobilindustrie e.V." - Lobbyregister: https://www.lobbyregister.bundestag.de/suche/R001243
+- Veranstaltungen – BLMK: https://www.blmk.de/kalender/
+- Wochen der Wärme 2026 - Klimaschutz: https://www.klimaschutz-niedersachsen.de/themen/waerme/2026-wochen-der-waerme.php
+- Flug Berlin Miami von €585 RT - Air France: https://wwws.airfrance.de/de-de/fl%C3%BCge-von-berlin-nach-miami
+## Suche vom 2026-09-15 06:08
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | seit 2026-09-12
+Verifiziertes Angebot: ja
+Preis: 10.61 €
+Händler: handyhase.de
+Quelle: https://www.handyhase.de/samsung-galaxy-s25-freenet-telekom/
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+
+BESTES_ANGEBOT:
+Preis: 10.61 €
+Händler: handyhase.de
+URL: https://www.handyhase.de/samsung-galaxy-s25-freenet-telekom/
+Belegt: ja
+Hinweis: Preis stammt aus einem aktuellen Suchtreffer; bitte auf den Link tippen und im Shop prüfen.
+
+Direkte Treffer (antippbar):
+1. HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...
+   https://handytariftipp.de/ – Samsung Galaxy S26 Ultra 256GB & Galaxy Watch9 für einmalig 199€ mit 50GB Allnet Flat & 50€ Wechselbonus bei Rufnummernmitnahme nur 44.99€ monatlich. Bis ...
+2. Allnet Flats im Vergleich - September 2026 - Internetanbieter.de
+   https://www.internetanbieter.de/allnet-flats/ – D1 D2 O2 1&1. Vodafone Logo. CallYa Start. Datenvolumen. 2 GB. Max ... Ø 10,13 €. 10,00 € monatlich. Zum Tarif ». blau Mobilfunk Logo. Allnet S ...
+3. Handyverträge - Dealgott.de
+   https://www.dealgott.de/category/mobilfunk/handyvertrage/ – Samsung Galaxy S26 FE (128 GB) für 1€ + Vodafone Smart Entry 55 GB für 29,99€/Monat (mit GigaKombi = 24,99€/Monat). 9. September 2026.
+4. iPhone 18 Pro Max für 1 € Zuzahlung: Wann der Vertrag zu teuer wird
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro-max/iphone-18-pro-max-ohne-zuzahlung – vor 3 Tagen ... Fuxxy findet für dich passende Handytarife – auf Wunsch auch mit neuem Smartphone. Häufige Anfragen. Günstig & flexibel. Top-Netz & viel Daten
+5. iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-16 – 50 Mbit/s max. Telefon-Flat. SMS-Flat. Pro Monat. Handy ...
+6. Mobil surfen bis 100 GB Datenvolumen / Monat - Handy
+   https://handy.preisvergleich.de/datenvolumen-100gb/ – * Angebot vom 12.09.2026 / Preis kann jetzt höher sein - Alle Angaben ohne Gewähr. ** Bei Tarifen mit Datenautomatik können bei Überschreitung des beinhalteten ...
+7. Galaxy S25 mit freenet-Allnet-Flat im Telekom-Netz eff. 10,61 € mtl.
+   https://www.handyhase.de/samsung-galaxy-s25-freenet-telekom/ – 19.08.2026 ... Wenn Du etwas mehr benötigst, kannst Du auch mehr GB erhalten. Für Vielsurfer gibt es auch die Tarifvarianten mit bis zu 80 GB monatlichem ...
+8. Samsung Galaxy S24 Plus mit Vertrag - handyhaus.de
+   https://handyhaus.de/smartphones/samsung/galaxy-s24-plus – inkl. Achtung: Nach 24 Monaten erhöht sich die Grundgebühr ( +1072,00 € mehr pro Monat - also rechtzeitig kündigen!)
+9. E-Autos: Hier gibt es ab sofort Geld für private Ladesäulen - Teltarif
+   https://www.teltarif.de/e-autos-ladesaeule-e-mobilitaet/news/103076.html – 19.04.2026 ... Ladestationen für E-Autos in Mehrfamilienhäusern sind auch heute noch ein strittiges Thema. Oft untersagen Vermieter, Hausverwaltung oder die ...
+10. iPhone 17 Pro mit Vertrag im Vergleich - TARIFFUXX
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-17-pro – Wir haben ein Maximum bei 600 € voreingestellt, du kannst es im iPhone 17 Pro Tarifrechner aber selbst nach Wunsch anpassen. 256 GB, 512 GB, 1 TB. 1.299 € ...
+
+Quellen:
+- HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...: https://handytariftipp.de/
+- Allnet Flats im Vergleich - September 2026 - Internetanbieter.de: https://www.internetanbieter.de/allnet-flats/
+- Handyverträge - Dealgott.de: https://www.dealgott.de/category/mobilfunk/handyvertrage/
+- iPhone 18 Pro Max für 1 € Zuzahlung: Wann der Vertrag zu teuer wird: https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro-max/iphone-18-pro-max-ohne-zuzahlung
+- iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-16
+- Mobil surfen bis 100 GB Datenvolumen / Monat - Handy: https://handy.preisvergleich.de/datenvolumen-100gb/
+- Galaxy S25 mit freenet-Allnet-Flat im Telekom-Netz eff. 10,61 € mtl.: https://www.handyhase.de/samsung-galaxy-s25-freenet-telekom/
+- Samsung Galaxy S24 Plus mit Vertrag - handyhaus.de: https://handyhaus.de/smartphones/samsung/galaxy-s24-plus
+- E-Autos: Hier gibt es ab sofort Geld für private Ladesäulen - Teltarif: https://www.teltarif.de/e-autos-ladesaeule-e-mobilitaet/news/103076.html
+- iPhone 17 Pro mit Vertrag im Vergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-17-pro
+## Suche vom 2026-09-15 06:11
+Anfrage: handyvertrag 80GB D1 maximal 13 euro
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: keine Kriterien | seit 2026-09-13
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. Monatlich kündbare Handytarife im Vergleich - handyhaus.de
+   https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar – Der Tarif verfügt über eine Allnet Flat und eine SMS Flat und nutzt das Telefónica-Netz. Für den Tarif Allnet 20 GB Flex haben wir insgesamt 8,6 von 10 ...
+
+Quellen:
+- Monatlich kündbare Handytarife im Vergleich - handyhaus.de: https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar
