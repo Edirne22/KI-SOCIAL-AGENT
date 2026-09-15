@@ -1,31 +1,52 @@
 # Memory Context Packet
 
-**Bootstrap:** 2026-09-15
-**Verwendung:** vor Content-Erstellung, Wochenplanung, MotoGP-Auswahl und Strategie lesen.
-
-## Priorität
-Safety/Brand/Quellenregeln > direkte Nutzerkorrektur > kuratierte eigene Performance > externe Inspiration.
+**Erzeugt:** 2026-09-15 12:53 UTC
+**Verwendung:** vor Content-Erstellung/Planung lesen; Regeln sind stärker als lose Beobachtungen.
 
 ## Aktive Lernregeln
-- Quelle ist Faktenbasis, niemals Textvorlage. HTML-/Web-Metadaten, englische Rohtexte, Datum/Byline und Navigationsreste nicht in fertige Posts übernehmen.
-- Social-Posts vollständig neu und natürlich auf Deutsch formulieren; keine Satz-für-Satz-Übersetzung oder lange Originalpassage.
-- Hook und Community-Frage konkret auf die Story zuschneiden; keine Dauerschablone.
-- Jüngste Hooks/Themen gegen POST_HISTORY prüfen; keine wortgleichen Hooks für unterschiedliche Beiträge.
-- Textduplikate vor Freigabe/Publishing vermeiden.
-- Fehlende Kennzahlen niemals schätzen. Ein einzelner guter Post ist noch keine allgemeine Erfolgsregel.
-- Eigene Performance und direkte Nutzerfreigaben/-korrekturen sind wichtiger als fremde Trenddaten.
-- Fahrerrotation berücksichtigen; aktuelle Relevanz darf Rotation überstimmen.
-- Ride With Me maximal einmal pro Kalenderwoche.
-- Memory darf niemals eine Telegram-Freigabe ersetzen oder selbst veröffentlichen.
+- Quelle ist Faktenbasis, niemals Textvorlage. Web-Metadaten, englische Rohtexte und Byline-Reste vor Social-Text entfernen.
+- Social-Posts vollständig neu und natürlich auf Deutsch formulieren; keine Satz-für-Satz-Übersetzung oder lange Originalpassagen.
+- Hooks und Community-Fragen müssen zum konkreten Thema passen; keine identische Dauerschablone.
+- Fehlende oder unklare Daten niemals schätzen. Schwache Evidenz bleibt Beobachtung und wird nicht als Lernregel befördert.
+- Eine explizite Telegram-Freigabe bleibt vor Social-Publishing erforderlich; Memory darf keine Freigabe ersetzen.
+- Vor Freigabe und Publication-Claim Textduplikate gegen bestehende/freigegebene Beiträge prüfen.
+- Hooks innerhalb kurzer Zeit nicht wortgleich wiederverwenden; Thema und Hook müssen semantisch zusammenpassen.
 
-## Dauerhafte Stilpräferenzen
-- Locker, menschlich, per Du, wenige gezielte Emojis.
-- Hauptsprache Deutsch; Türkisch gezielt bei echtem Community-Bezug.
-- Instagram kompakt; Facebook etwas ausführlicher, aber auf den Punkt.
-- Motorrad/MotoGP/Community/Reise/Technik als Kernfelder.
+## Nutzerpräferenzen (dauerhaft)
+# Bülents Präferenzen
+
+## Zweck
+Speichert, was Bülent mag und was nicht – basierend auf Freigaben, Ablehnungen und Feedback.
+
+## Mag ich
+- Türkische Racer (Toprak, Öncü-Brüder, Sofuoğlu-Familie)
+- MotoGP-Wochenend-Content
+- Zweisprachig (DE/TR)
+- Ride With Me Features (Kurven, Garage, Offline-Karten)
+- Biker-Community-Themen
+
+## Mag ich nicht
+- Harley Davidson / Cruiser-Bilder
+- US-Flaggen in Bildern
+- Zu formelle Sprache
+- Generische Stockfotos ohne Bezug
+
+## Bevorzugte Zeiten
+- Posten: 12:00–12:30 Uhr deutscher Zeit
+- Wochenend-Content: freitags/samstags/sonntags
+
+## Sprache
+- Hauptsächlich Deutsch
+- Türkische Passagen für türkische Zielgruppe
+- Du-Anrede
+- Wenige Emojis
+
+## Deal-Hunter
+- Auto-Track: on
+
 
 ## Datenlage
-- Eigene Analytics liefern derzeit noch nicht genug belastbare Performance-Snapshots für neue kausale Regeln.
-- `PUBLICATION_DUPLICATES.md` liefert harte Evidenz für Duplikatvermeidung.
-- `POST_HISTORY.md` liefert harte Evidenz für Wiederholungs-/Rotationsprüfung.
-- Externe Inspirationsdaten bleiben Inspiration; keine fremden Texte kopieren.
+- Performance-Snapshots mit echter Reichweite: 0
+- Audit-Events: 22
+- Fehlende Kennzahlen werden nicht geschätzt.
+- Externe Trenddaten sind Inspiration; eigene Performance + Nutzerfeedback haben Vorrang.

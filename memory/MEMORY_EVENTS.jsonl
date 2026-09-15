@@ -1,3 +1,22 @@
 {"confidence":1.0,"source":"user_correction_2026-09-15","subject":"source_is_facts_not_template","timestamp":"2026-09-15T12:36:44Z","type":"correction","value":"MotoGP-Quellen vollständig eigenständig auf Deutsch formulieren; Rohmetadaten/englische Textreste entfernen"}
 {"confidence":1.0,"source":"memory/PUBLICATION_DUPLICATES.md","subject":"duplicate_content","timestamp":"2026-09-15T12:41:21Z","type":"failure","value":"Textduplikate vor Freigabe und Publishing verhindern"}
 {"confidence":1.0,"source":"memory/POST_HISTORY.md","subject":"repeated_hook","timestamp":"2026-09-15T12:41:21Z","type":"failure","value":"Wortgleiche Hooks bei unterschiedlichen Themen vermeiden"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T12:53:40.819164+00:00", "type": "published", "value": "2026-09-11 19:51"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram", "timestamp": "2026-09-15T12:53:40.819182+00:00", "type": "published", "value": "18622332598049380"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Story", "timestamp": "2026-09-15T12:53:40.819187+00:00", "type": "published", "value": "18109171781115264"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram Reel", "timestamp": "2026-09-15T12:53:40.819192+00:00", "type": "published", "value": "18121511506911392"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram", "timestamp": "2026-09-15T12:53:40.819196+00:00", "type": "published", "value": "18094624721424209"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram", "timestamp": "2026-09-15T12:53:40.819200+00:00", "type": "published", "value": "17943934899311740"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T12:53:40.819203+00:00", "type": "published", "value": "122105643681469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram", "timestamp": "2026-09-15T12:53:40.819207+00:00", "type": "published", "value": "18196107082377194"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Story", "timestamp": "2026-09-15T12:53:40.819211+00:00", "type": "published", "value": "18100793159122734"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T12:53:40.819231+00:00", "type": "published", "value": "122106531393469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram", "timestamp": "2026-09-15T12:53:40.819239+00:00", "type": "published", "value": "18109546181144638"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T12:53:40.819243+00:00", "type": "published", "value": "122106534987469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Instagram Reel", "timestamp": "2026-09-15T12:53:40.819247+00:00", "type": "published", "value": "18024948932696886"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Story", "timestamp": "2026-09-15T12:53:40.819251+00:00", "type": "published", "value": "17888173773680933"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T12:53:40.819255+00:00", "type": "published", "value": "1285968257941776_122107086783469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T12:53:40.819259+00:00", "type": "published", "value": "1285968257941776_122106981675469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-15T12:53:40.819263+00:00", "type": "published", "value": "1061438430139436"}
+{"confidence": 1.0, "source": "memory/PUBLICATION_DUPLICATES.md", "subject": "duplicate_content", "timestamp": "2026-09-15T12:53:40.819268+00:00", "type": "failure", "value": "mehrere freigegebene blöcke haben denselben text."}
+{"confidence": 1.0, "count": 2, "source": "memory/POST_HISTORY.md", "subject": "repeated_hook", "timestamp": "2026-09-15T12:53:40.819273+00:00", "type": "failure", "value": "kann toprak razgatlıoğlu in misano wieder alle überraschen?"}
