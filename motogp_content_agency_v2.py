@@ -2,7 +2,7 @@
 from motogp_content_agency import *
 from motogp_quality_manager import review as motogp_review
 from chief_quality_manager import review as chief_review
-from turkish_riders_scout import scout as turkish_scout
+from turkish_riders_scout import legacy_pairs as turkish_scout
 
 TURKISH_RIDERS=['Toprak Razgatlioglu','Can Oncu','Deniz Oncu','Bahattin Sofuoglu','Zayn Sofuoglu']
 RIDERS_V2=TURKISH_RIDERS+['Marc Marquez','Alex Marquez','Marco Bezzecchi','Jorge Martin','Pedro Acosta','Francesco Bagnaia','Fabio Quartararo','Jack Miller','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado']
@@ -21,8 +21,6 @@ def hashtags(item):
 def german_story(item):
  t=item.get('title','');tl=fold(t);d=item.get('summary','');low=fold(t+' '+d)
  if 'can oncu' in low and ('first 2026' in low or 'p13' in low or 'race 1' in low):return ('Can Öncü kämpft sich von Startplatz 13 bis ganz nach vorne und holt seinen ersten WorldSSP-Sieg der Saison 2026. Damit setzt die #61 nach der Sommerpause ein starkes Ausrufezeichen.','🇹🇷 Can Öncü meldet sich mit einer starken Aufholjagd zurück!','Wie stark war für dich dieser Weg von P13 bis zum Sieg? 🔥')
- # Für Turkish-Rider-Artikel ohne belastbares, bekanntes Faktenmuster niemals generischen Text erfinden.
- # Sie werden vom Copy-Gate übersprungen, bis konkrete Fakten extrahiert werden können.
  if any(fold(n) in low for n in TURKISH_RIDERS):return ('','','')
  if 'martin soars to silverstone' in tl and 'sprint' in tl:return ('Jorge Martin gewinnt den Sprint in Silverstone vor Ai Ogura und Marco Bezzecchi. Für Aprilia wird der Samstag damit besonders stark.','🇬🇧 Aprilia räumt in Silverstone ab – Martin führt das Sprint-Podium an.','Ist Aprilia für dich inzwischen der stärkste Gegner im Titelkampf?')
  if 'fends off acosta and bezzecchi' in tl and 'aragon' in tl:return ('Marc Márquez setzt sich in Aragón gegen Pedro Acosta und Marco Bezzecchi durch. An der Spitze wird hart gekämpft.','🔥 Márquez behauptet sich in Aragón gegen Acosta und Bezzecchi.','Wer von den drei hat dich am meisten überzeugt?')
@@ -44,7 +42,6 @@ def write_session(items,now):
  for i,item in enumerate(items,1):lines += [f'## Beitrag {i}','QM: PASS',f'Kategorie: {"Turkish Riders" if is_turkish_focus(item) else "MotoGP"}',f'Story-Key: {story_key(item["title"],item["url"])}',f'Titel: {item["title"]}',f'Quelle: {item["url"]}',f'Instagram-Bild: {item["instagram_media"]}',f'Quellen-Preview: {item.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{item["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
  SESSION.write_text('\n'.join(lines),encoding='utf-8')
 def telegram_preview(items):
- names=', '.join(TURKISH_RIDERS)
  msg=['🏁 Racing Content Agency – 5 QM-GEPRÜFTE Tagesvorschläge','🇹🇷 Mindestens ein Turkish-Riders-Slot aus der KNN54-Watchlist','✅ Domain-QM + Chief QM: PASS','']
  for i,x in enumerate(items,1):msg += [f'{i}️⃣ {x["caption"]}','🖼️ Medium: vorbereitet',f'🔗 Quelle: {x["url"]}','']
  msg += ['Freigabe: motogp 1–5 / Kombination z.B. motogp 1,4 / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
@@ -66,10 +63,8 @@ def run_v5():
   if u in seen or key in known:continue
   seen.add(u);raw.append((x[0],u))
  details=[enrich(x) for x in raw[:50]];now=datetime.now(timezone.utc);picks=[]
- # 1) Turkish-Rider-Pflichtslot zuerst vollständig qualifizieren.
  for item in [x for x in details if is_turkish_focus(x)]:
   if qualify(item,1):picks.append(item);break
- # 2) Nur wenn Pflichtslot PASS ist, auf fünf auffüllen.
  if picks:
   for item in sorted(details,key=lambda x:score(x['title'],names),reverse=True):
    if len(picks)>=5:break
