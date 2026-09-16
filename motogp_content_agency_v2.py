@@ -1,4 +1,4 @@
-"""Motorcycle Racing Agency V8.4.6.2 – audited fail-closed editorial chain."""
+"""Motorcycle Racing Agency V8.4.6.3 – audited fail-closed editorial chain."""
 from motogp_content_agency import *
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
@@ -9,7 +9,7 @@ from pathlib import Path
 from datetime import timedelta,datetime as dt,timezone
 from concurrent.futures import ThreadPoolExecutor,as_completed
 import json,re
-VERSION='V8.4.6.2';TOP10=Path('memory/RACING_TOP10_POOL.json')
+VERSION='V8.4.6.3';TOP10=Path('memory/RACING_TOP10_POOL.json')
 TURKISH_ALIASES={'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu'),'Can Oncu':('can oncu','can öncü'),'Deniz Oncu':('deniz oncu','deniz öncü'),'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu'),'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu')}
 TURKISH_RIDERS=list(TURKISH_ALIASES)
 RIDERS_V2=TURKISH_RIDERS+['Marc Marquez','Alex Marquez','Marco Bezzecchi','Jorge Martin','Pedro Acosta','Francesco Bagnaia','Fabio Quartararo','Jack Miller','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado','Alvaro Bautista','Miguel Oliveira','Alberto Surra','Sergio Garcia','Iker Lecuona','Andrea Iannone','Sam Lowes','Alex Lowes','Jonathan Rea','Stefano Manzi','Jeremy Alcoba','Marcos Ramirez']
@@ -36,7 +36,6 @@ def enrich_turkish(x):
  return x
 def series_for_raw(x):
  u=fold(x.get('url',''));t=fold(article_text(x))
- # Zielserie aus Storytext hat Vorrang vor alter Herkunfts-Metadatenklassifikation.
  if 'worldssp300' in t or 'worldssp 300' in t:return 'WorldSSP300'
  if any(v in t for v in ('worldssp','world supersport','supersport')) and 'motogp' not in t:return 'WorldSSP'
  if 'worldsbk' in t or 'world superbike' in t:return 'WorldSBK'
@@ -74,7 +73,11 @@ def language_sane(caption):
 def _editor_prompt(x,repair_reasons=None):
  enrich_turkish(x);repair=''
  if repair_reasons:repair='\nEINMALIGE QM-KORREKTUR. Behebe exakt diese Fehler, ohne neue Fakten hinzuzufuegen:\n- '+'\n- '.join(repair_reasons[:10])+'\n'
- return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur auf Premium-Niveau. Mindestens zehn Jahre professionelle Erfahrung sind der Qualitaetsmassstab, keine zu behauptende Biografie.\n{global_professional_context()}\n\nRACING-PFLICHTEN: Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. Keine direkten Zitate. Quellzitate sachlich paraphrasieren. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein kuenstlicher Hype. 2–4 informative Saetze und danach eine konkrete Community-Frage. Keine Hashtags erzeugen.{repair}\nSERIE: {series_for(x)}\nTITEL: {re.sub(r'\s+',' ',x.get('title','')).strip()}\nZUSAMMENFASSUNG: {re.sub(r'\s+',' ',x.get('summary','')).strip()}\nTURKISH_RIDER: {x.get('turkish_rider') or 'NEIN'}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
+ title=' '.join(str(x.get('title','')).split())
+ summary=' '.join(str(x.get('summary','')).split())
+ series=series_for(x)
+ turkish=x.get('turkish_rider') or 'NEIN'
+ return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur auf Premium-Niveau. Mindestens zehn Jahre professionelle Erfahrung sind der Qualitaetsmassstab, keine zu behauptende Biografie.\n{global_professional_context()}\n\nRACING-PFLICHTEN: Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. Keine direkten Zitate. Quellzitate sachlich paraphrasieren. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein kuenstlicher Hype. 2–4 informative Saetze und danach eine konkrete Community-Frage. Keine Hashtags erzeugen.{repair}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
 def german_editor(x,repair_reasons=None):
  if len(re.sub(r'\s+',' ',x.get('title','')).strip())<18:return ''
  try:
@@ -84,7 +87,6 @@ def german_editor(x,repair_reasons=None):
   c=f'{hook}\n\n{body}\n\n{q}\n\n{hashtags(x)}';return c if language_sane(c) else ''
  except Exception as e:print('EDITOR EXCEPTION:',type(e).__name__,str(e)[:180]);return ''
 def qualify_copy(x):
- """Genau eine Neufassung maximal. Nach Neufassung laufen Racing- UND Semantic-QM erneut."""
  if not racing_relevant(x):return False
  repair_reasons=None
  for attempt in (1,2):
@@ -146,7 +148,6 @@ def ordered_pool(qualified,names):
  ordered += [x for x in pool if x not in ordered and not is_feature(x)]+[x for x in pool if x not in ordered]
  return ordered
 def select_and_finish(qualified,names):
- """Chief-/Media-FAIL wird durch naechsten bereits voll QM-geprueften Kandidaten ersetzt."""
  picks=[];seen_fp=set()
  for x in ordered_pool(qualified,names):
   if len(picks)>=5:break
@@ -154,7 +155,6 @@ def select_and_finish(qualified,names):
   if s!='MotoGP' and sum(series_for(y)==s for y in picks)>=3:continue
   fp=re.sub(r'#[^\s]+','',fold(x.get('caption','')));fp=re.sub(r'\s+',' ',fp).strip()
   if fp in seen_fp:continue
-  # Batch/Domain nochmals direkt vor teurer Medienerzeugung.
   b_ok,b_err=review_batch([x])[0]
   if not b_ok:continue
   if finish_item(x,len(picks)+1):picks.append(x);seen_fp.add(fp)
