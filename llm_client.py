@@ -1,6 +1,6 @@
 """Einheitlicher Client fuer konfigurierbare Text-, Bild- und Video-Aufgaben."""
 from __future__ import annotations
-import argparse,re
+import argparse,re,time,random
 from pathlib import Path
 from typing import Sequence
 import requests
@@ -29,10 +29,24 @@ def get_agent_context(agent_names:Sequence[str]):
  for agent_name in agent_names:
   n=agent_name[:-3] if agent_name.endswith('.md') else agent_name;contexts.append(f'--- Agent: {n} ---\n{load_agent(n)}')
  return '\n\n'.join(contexts)
-def _request_json(method,url,headers,payload,timeout):
- r=requests.request(method,url,headers=headers,json=payload,timeout=timeout)
- if not r.ok:raise RuntimeError(f"Provider-Anfrage fehlgeschlagen (HTTP {r.status_code}): {redact_secrets(r.text[:500])}")
- return r.json()
+def _retry_after_seconds(response,attempt):
+ raw=(response.headers.get('Retry-After') or '').strip()
+ try:return min(30.0,max(1.0,float(raw)))
+ except (TypeError,ValueError):return min(12.0,2.0*(2**attempt)+random.uniform(0.0,0.5))
+def _request_json(method,url,headers,payload,timeout,max_retries=2):
+ """Retry only transient provider failures. Permanent 4xx errors still fail immediately."""
+ last=None
+ for attempt in range(max_retries+1):
+  try:r=requests.request(method,url,headers=headers,json=payload,timeout=timeout)
+  except (requests.Timeout,requests.ConnectionError) as e:
+   last=e
+   if attempt>=max_retries:raise RuntimeError(f'Provider-Anfrage nach {attempt+1} Versuchen fehlgeschlagen: {type(e).__name__}') from e
+   time.sleep(min(12.0,2.0*(2**attempt)+random.uniform(0.0,0.5)));continue
+  if r.ok:return r.json()
+  last=RuntimeError(f"Provider-Anfrage fehlgeschlagen (HTTP {r.status_code}): {redact_secrets(r.text[:500])}")
+  if r.status_code not in (429,500,502,503,504) or attempt>=max_retries:raise last
+  time.sleep(_retry_after_seconds(r,attempt))
+ raise last or RuntimeError('Provider-Anfrage fehlgeschlagen')
 def _generate_gemini(prompt,provider,key):
  headers={'Content-Type':'application/json','X-goog-api-key':key};payload={'contents':[{'parts':[{'text':prompt}]}]};errors=[]
  for model in provider['text_models']:
