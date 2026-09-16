@@ -222,3 +222,27 @@ Story-Key: motogp:1089339
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 05:00 UTC | Motorcycle Racing | PASS
+Titel: Quiles denies Almansa in epic photo finish at Misano
+Story-Key: motogp:1089337
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 05:00 UTC | Motorcycle Racing | PASS
+Titel: Agius claims Misano lap record to beat Gonzalez to Friday honours
+Story-Key: motogp:1089338
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 05:00 UTC | Motorcycle Racing | PASS
+Titel: Agius storms to stunning Misano pole as Guevara receives six-place grid penalty
+Story-Key: motogp:1089339
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 05:01 UTC | Motorcycle Racing | PASS
+Titel: Almansa amazes Misano with dominant sixth pole of 2026
+Story-Key: motogp:1089336
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
