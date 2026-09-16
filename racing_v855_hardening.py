@@ -9,7 +9,7 @@ from racing_semantic_qm import reset_caption_cache
 from hashtag_database import contextual_hashtags
 
 VALID = tuple(SERIES)
-NATIONALITY_TRANSLATIONS = {"australian": ("australier", "australische", "australien"), "japanese": ("japaner", "japanische", "japan"), "spanish": ("spanier", "spanische", "spanien"), "turkish": ("türke", "türkische", "türkei"), "brazilian": ("brasilianer", "brasilianische", "brasilien"), "italian": ("italiener", "italienische", "italien")}
+NATIONALITY_GROUPS = {"australien": ("australier", "australische", "australien", "australian", "australia"), "japan": ("japaner", "japanische", "japan", "japanese"), "spanien": ("spanier", "spanische", "spanien", "spanish", "spaniard"), "türkei": ("türke", "türkische", "türkei", "turkish", "turk"), "brasilien": ("brasilianer", "brasilianische", "brasilien", "brazilian", "brazil"), "italien": ("italiener", "italienische", "italien", "italian", "italy"), "england": ("brite", "briten", "britische", "british", "britain", "england")}
 
 def _parse_patch_payload(raw):
     if not isinstance(raw, str) or not raw.strip(): raise ValueError('patch payload is empty')
@@ -23,11 +23,22 @@ def _parse_patch_payload(raw):
     raise ValueError('patch response is not a JSON object with patches only')
 
 def _relax_language_guard(errors, cfo, caption):
-    source = json.dumps(cfo.get('source', {}), ensure_ascii=False).casefold(); out=[]
+    source = json.dumps(cfo.get('source', {}), ensure_ascii=False).casefold()
+    out = []
     for error in errors:
-        lower=error.lower(); subject=error.rsplit(' ',1)[-1].casefold().strip('.,:;!?"')
-        if ('unsupported subject' in lower or 'changed source spelling' in lower) and any(subject in variants and source_key in source for source_key,variants in NATIONALITY_TRANSLATIONS.items()): continue
-        out.append(error)
+        lower = error.lower()
+        if 'unsupported subject' not in lower and 'changed source spelling' not in lower:
+            out.append(error)
+            continue
+        subject = error.rsplit(' ', 1)[-1].casefold().strip('.,:;!?"')
+        allowed = False
+        for variants in NATIONALITY_GROUPS.values():
+            if subject in variants:
+                if any(v in source for v in variants):
+                    allowed = True
+                    break
+        if not allowed:
+            out.append(error)
     return out
 
 def _contextual_guard(cfo, caption, rider_catalog=()):
@@ -63,7 +74,7 @@ def install(a):
     def fact_packet(x): return x.get('canonical_fact_object') or build_cfo(x,catalog)
     def whitelist_errors(x,caption): f=fact_packet(x); return validate_cfo(f,x,catalog)+_contextual_guard(f,caption,catalog)
     def repair_caption(x,caption,reasons):
-        p=f'''Repariere nur beanstandete Stellen des bestehenden deutschen Posts.\nKeine neue Story, keine Recherche, keine Fakten aus Vorwissen.\nNamen und Zahlen nur aus dem CFO. Keine komplette Neufassung.\nCFO: {json.dumps(fact_packet(x),ensure_ascii=False)}\nQM-FEHLER: {json.dumps((reasons or [])[:8],ensure_ascii=False)}\nBESTEHENDER POST: {json.dumps(caption,ensure_ascii=False)}\nAntworte ausschliesslich JSON: {{"patches":[{{"old":"exakter vorhandener Text","new":"Ersatz"}}]}}'''; audit={'before_sha256':__import__('hashlib').sha256(caption.encode()).hexdigest()}
+      Antworte ausschliesslich JSON: {{"patches":[{{"old":"exakter vorhandener Text","new":"Ersatz"}}]}}'''p=f'''Repariere nur beanstandete Stellen des bestehenden deutschen Posts.\nKeine neue Story, keine Recherche, keine Fakten aus Vorwissen.\nNamen und Zahlen nur aus dem CFO. Keine komplette Neufassung.\nCFO: {json.dumps(fact_packet(x),ensure_ascii=False)}\nQM-FEHLER: {json.dumps((reasons or [])[:8],ensure_ascii=False)}\nBESTEHENDER POST: {json.dumps(caption,ensure_ascii=False)}\nAntworte ausschliesslich JSON: {{"patches":[{{"old":"exakter vorhandener Text","new":"Ersatz"}}]}}'''; audit={'before_sha256':__import__('hashlib').sha256(caption.encode()).hexdigest()}
         try:
             payload=_parse_patch_payload(a.generate('final_captions',p)); repaired=apply_patch(caption,json.dumps(payload,ensure_ascii=False))
             if repaired==caption: raise ValueError('repair produced no text change')
