@@ -88,6 +88,7 @@ def _prompt(item, caption):
     facts = json.dumps(cfo, ensure_ascii=False) if cfo is not None else 'Keine CFO vorhanden.'
     return f'''Du bist unabhaengiger Senior-Faktenpruefer fuer Motorrad-Racing.
 Trenne HARTE FAKTENFEHLER strikt von REPARIERBARER SPRACHE.
+Reine Tippfehler, Gross-/Kleinschreibung, Kommasetzung und Grammatik gehoeren zu repair_reasons, NICHT zu hard_reasons.
 QUELLFAKTEN:
 SERIE: {infer_story_series(item)}
 TITEL: {title}
