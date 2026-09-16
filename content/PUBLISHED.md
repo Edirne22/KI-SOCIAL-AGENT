@@ -204,7 +204,7 @@ Wer hat für dich jetzt die besseren Karten im Titelkampf?
 
 #MotoGP #MarcMarquez #AlexMarquez #Aprilia #MotorradRacing #MotoGPDeutschland #MarcMarquez #Marquez #MM93 #93 #MarcMarquez93 #DucatiLenovo #Ducati #ForzaDucati #ComebackComplete #MoreThanANumber #MotoGP #MotoGP2026 #MarquezFan #Cervera
 Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
-Bild: assets/images/2026-09/marquez.jpg
+Bild: assets/eigenes-material/bilder/marquez.jpg
 
 ## Facebook [GEPOSTET 2026-09-15 13:53 | ID: 1285968257941776_122107360995469415]
 Status: FREIGEGEBEN
