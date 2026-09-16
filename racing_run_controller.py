@@ -1,10 +1,10 @@
-"""Racing Agency V8.5.4 run controller.
+"""Racing Agency V8.5.5 run controller.
 Deterministic orchestration state: duplicate protection, persistent batch identity and human approval boundary.
 """
 from pathlib import Path
 from datetime import datetime, timezone
 import hashlib,json,os,time
-STATE=Path('memory/RACING_RUN_STATE.json');ARCH_VERSION='V8.5.4';TERMINAL={'BLOCKED','READY_FOR_APPROVAL','APPROVED','PUBLISHED','CLOSED'};DUPLICATE_WINDOW_SECONDS=30*60
+STATE=Path('memory/RACING_RUN_STATE.json');ARCH_VERSION='V8.5.5';TERMINAL={'BLOCKED','READY_FOR_APPROVAL','APPROVED','PUBLISHED','CLOSED'};DUPLICATE_WINDOW_SECONDS=30*60
 def _now():return datetime.now(timezone.utc)
 def _load():
  try:return json.loads(STATE.read_text(encoding='utf-8'))
@@ -19,24 +19,18 @@ def batch_id(now=None):
  if event=='schedule':return f'racing-{now.date().isoformat()}-daily'
  if event=='workflow_dispatch':return f'racing-{now.date().isoformat()}-manual-{github_run_id()}'
  return f'racing-{now.date().isoformat()}-{event}-{github_run_id()}'
-def begin(now=None):
- now=now or _now();data=_load();bid=batch_id(now);ts=int(now.timestamp());runs=data.setdefault('runs',{})
- if event_name()=='schedule':
-  old=runs.get(bid,{})
-  if old.get('status') in TERMINAL and not force_new():return False,bid,f'daily batch already {old.get("status")}'
- recent=[r for r in runs.values() if ts-int(r.get('started_at',0))<DUPLICATE_WINDOW_SECONDS and r.get('status') in {'RUNNING','BLOCKED','READY_FOR_APPROVAL'}]
- if recent and not force_new():
-  newest=max(recent,key=lambda r:int(r.get('started_at',0)));return False,bid,f'duplicate window active after {newest.get("batch_id","previous run")} ({newest.get("status")})'
- runs[bid]={'batch_id':bid,'architecture':ARCH_VERSION,'event':event_name(),'github_run_id':github_run_id(),'started_at':ts,'updated_at':ts,'status':'RUNNING'}
- if len(runs)>40:
-  for k,_ in sorted(runs.items(),key=lambda kv:int(kv[1].get('started_at',0)))[:-40]:runs.pop(k,None)
- data['active_batch_id']=bid;_save(data);return True,bid,''
-def transition(bid,status,**fields):
- if status not in {'RUNNING','RESEARCHED','EDITED','QM_CHECKED','BLOCKED','READY_FOR_APPROVAL','APPROVED','PUBLISHED','CLOSED'}:raise ValueError(status)
- data=_load();run=data.setdefault('runs',{}).setdefault(bid,{'batch_id':bid});run.update(fields);run['status']=status;run['updated_at']=int(time.time());data['active_batch_id']=bid;_save(data)
-def notification_allowed(kind,message,now=None):
- now=now or _now();data=_load();fp=hashlib.sha256((kind+'\n'+message).encode()).hexdigest();last=int(data.get('last_notification_at',0))
- if data.get('last_notification_fingerprint')==fp and int(now.timestamp())-last<86400:return False
- if int(now.timestamp())-last<DUPLICATE_WINDOW_SECONDS:return False
- data['last_notification_at']=int(now.timestamp());data['last_notification_fingerprint']=fp;_save(data);return True
-def get_run(bid):return _load().get('runs',{}).get(bid,{})
+def begin():
+ data=_load();bid=batch_id();existing=data['runs'].get(bid)
+ if existing and existing.get('status') not in {'FAILED','BLOCKED'} and not force_new():return False,bid,'duplicate batch'
+ data['runs'][bid]={'status':'STARTED','started_at':_now().isoformat(),'updated_at':_now().isoformat(),'event':event_name(),'github_run_id':github_run_id(),'arch_version':ARCH_VERSION};data['active_batch_id']=bid;_save(data);return True,bid,'started'
+def transition(bid,status,error=''):
+ data=_load();run=data['runs'].setdefault(bid,{});run['status']=status;run['updated_at']=_now().isoformat()
+ if error:run['error']=error
+ if status in TERMINAL and data.get('active_batch_id')==bid:data['active_batch_id']=''
+ _save(data)
+def active_batch_id():return _load().get('active_batch_id','')
+def run_state(bid):return _load().get('runs',{}).get(bid,{})
+def notification_allowed(kind,payload,min_interval=120):
+ data=_load();now=time.time();fp=hashlib.sha256((kind+'|'+payload).encode()).hexdigest()
+ if fp==data.get('last_notification_fingerprint') and now-float(data.get('last_notification_at',0))<min_interval:return False
+ data['last_notification_fingerprint']=fp;data['last_notification_at']=now;_save(data);return True
