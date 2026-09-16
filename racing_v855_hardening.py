@@ -72,13 +72,7 @@ def install(a):
     def fact_packet(x): return x.get('canonical_fact_object') or build_cfo(x,catalog)
     def whitelist_errors(x,caption): f=fact_packet(x); return validate_cfo(f,x,catalog)+_contextual_guard(f,caption,catalog)
     def repair_caption(x,caption,reasons):
-        patch_rules = ('REGELN FUER PATCHES:\n'
-            '- old-Text muss im Post genau EINMAL vorkommen.\n'
-            '- old-Text max 2 Saetze.\n'
-            '- Bei mehrdeutigen Stellen laengeren Kontext waehlen.\n'
-            '- Nur punktuelle Ersetzungen, kein Neuschrieb.\n'
-            '- Bei duenner Quelle (nur Titel): KEINE erfundenen Sessions/Zeiten/Orte.')
-        p=f'''Repariere nur beanstandete Stellen des bestehenden deutschen Posts.\nKeine neue Story, keine Recherche, keine Fakten aus Vorwissen.\nNamen und Zahlen nur aus dem CFO. Keine komplette Neufassung.\nCFO: {json.dumps(fact_packet(x),ensure_ascii=False)}\nQM-FEHLER: {json.dumps((reasons or [])[:8],ensure_ascii=False)}\nBESTEHENDER POST: {json.dumps(caption,ensure_ascii=False)}\n{patch_rules}\nAntworte ausschliesslich JSON: {{"patches":[{{"old":"exakter vorhandener Text","new":"Ersatz"}}]}}'''
+        p=f'''Repariere nur beanstandete Stellen des bestehenden deutschen Posts.\nKeine neue Story, keine Recherche, keine Fakten aus Vorwissen.\nNamen und Zahlen nur aus dem CFO. Keine komplette Neufassung.\nCFO: {json.dumps(fact_packet(x),ensure_ascii=False)}\nQM-FEHLER: {json.dumps((reasons or [])[:8],ensure_ascii=False)}\nBESTEHENDER POST: {json.dumps(caption,ensure_ascii=False)}\nAntworte ausschliesslich JSON: {{"patches":[{{"old":"exakter vorhandener Text","new":"Ersatz"}}]}}'''
         audit={'before_sha256':__import__('hashlib').sha256(caption.encode()).hexdigest()}
         try:
             payload=_parse_patch_payload(a.generate('final_captions',p)); repaired=apply_patch(caption,json.dumps(payload,ensure_ascii=False))
