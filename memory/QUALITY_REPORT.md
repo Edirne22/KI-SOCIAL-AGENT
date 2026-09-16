@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-09-15 18:12
+Stand: 2026-09-16 18:13
 Gesamtstatus: **WARNUNG**
-- OK: 16
-- Warnungen: 5
+- OK: 15
+- Warnungen: 6
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -17,7 +17,7 @@ Gesamtstatus: **WARNUNG**
 - ⚠️ **YouTube-Quellenmix**: Nur 1 Datensatz von einem bekannten Primärkanal erkannt (MotoGP). Weitere Quellen vor einer Veröffentlichung manuell prüfen.
 - ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
 - ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
-- ✅ **Datenalter**: 30 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-09-14 04:26 UTC).
+- ⚠️ **Datenalter**: 4 Quelle(n) sind älter als 7 Tage.
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ⚠️ **Bright Data YouTube**: YouTube liefert bei Bright Data eine leere Antwort; Apify-Fallback wird geprüft.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
