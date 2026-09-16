@@ -27,14 +27,23 @@ jobs:
       - run: pip install requests
       - name: Preflight – V8.5 Orchestrator + komplette Racing-Kette
         run: |
-          python -m py_compile racing_v85.py racing_run_controller.py racing_v85_selftest.py motogp_content_agency_v2.py motogp_content_agency.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py motogp_telegram_receive_v85.py llm_client.py router.py telegram_bot.py memory_engine.py generate_agnes_media.py asset_paths.py media_policy.py
+          python -m py_compile racing_v85.py racing_v855_hardening.py racing_run_controller.py racing_v85_selftest.py motogp_content_agency_v2.py motogp_content_agency.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py motogp_telegram_receive_v85.py llm_client.py router.py telegram_bot.py memory_engine.py generate_agnes_media.py asset_paths.py media_policy.py
           python racing_pipeline_selftest.py
           python racing_v85_selftest.py
           python - <<'PY'
           from turkish_riders_scout import scout, racing_scout
           from router import get_task_config, get_provider_for_task
           from llm_client import global_professional_context
+          from racing_v855_hardening import install
+          import motogp_content_agency_v2 as hardened
           import motogp_telegram_receive_v85 as approval
+          install(hardened)
+          # V8.5.5 regression: lower-class facts override generic MotoGP metadata and stay frozen.
+          q={'title':'Quiles takes Moto3 pole at Misano','summary':'Moto3 qualifying','series':'MotoGP','source_series':'MotoGP'}
+          hardened.lock_source_series(q)
+          if q.get('trusted_series')!='Moto3' or hardened.series_for(q)!='Moto3': raise SystemExit('V8.5.5 immutable series lock failed')
+          q['series']='MotoGP'; hardened.lock_source_series(q)
+          if q.get('series')!='Moto3': raise SystemExit('V8.5.5 series lock did not survive mutation/feedback')
           a=scout(1); b=racing_scout(1)
           if a and len(a[0]) != 3: raise SystemExit(f"Turkish scout contract invalid: {len(a[0])}")
           if b and len(b[0]) != 4: raise SystemExit(f"Racing scout contract invalid: {len(b[0])}")
@@ -46,7 +55,7 @@ jobs:
           if approval.MIN_SESSION_VERSION != 18: raise SystemExit('V8.5 approval session minimum invalid')
           ctx=global_professional_context()
           if 'PROFESSIONAL AGENT STANDARD' not in ctx or 'HUMAN WRITING PROTOCOL' not in ctx: raise SystemExit('global professional context missing')
-          print('V8.5 preflight: orchestrator + provider routes + professional standard + full QM chain: PASS')
+          print('V8.5.5 preflight: immutable series + source-fact whitelist + technical QM retry: PASS')
           PY
       - name: V8.5 Run Controller → Research → Redaktion → QM → Media → Human Approval Gate
         env:
