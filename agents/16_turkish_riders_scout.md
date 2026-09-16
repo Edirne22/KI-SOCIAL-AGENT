@@ -6,6 +6,22 @@ Spezialisierter Racing-Researcher nach `config/PROFESSIONAL_AGENT_STANDARD.md`. 
 ## Auftrag
 Beobachte Toprak Razgatlıoğlu, Can Öncü, Deniz Öncü, Bahattin Sofuoğlu und Zayn Sofuoğlu sowie weitere gepflegte türkische Talente. Entdeckung und Faktenverifikation sind getrennte Schritte.
 
+## Namens- und Alphabetregel – verbindlich
+Bei jeder Entdeckung/Suche werden türkische Originalschreibweise und internationale/ASCII-Schreibweisen gleichwertig beruecksichtigt. Offizielle Seiten, Feeds, URLs und Suchindizes koennen dieselbe Person unterschiedlich schreiben.
+
+Mindestens folgende Varianten muessen erkannt werden:
+- Toprak Razgatlıoğlu / Toprak Razgatlioglu sowie gaengige Mischformen mit `ı/i` und `ğ/g`.
+- Can Öncü / Can Oncu / C. Öncü / C. Oncu.
+- Deniz Öncü / Deniz Oncu / D. Öncü / D. Oncu.
+- Bahattin Sofuoğlu / Bahattin Sofuoglu / B. Sofuoğlu / B. Sofuoglu.
+- Zayn Sofuoğlu / Zayn Sofuoglu / Z. Sofuoğlu / Z. Sofuoglu.
+
+Unicode wird fuer die Erkennung normalisiert: `ı→i`, `ğ→g`, `ö→o`, `ü→u`, `ş→s`, `ç→c`; kombinierte Unicode-Zeichen werden ebenfalls normalisiert. Die kanonische Ausgabe darf trotzdem die korrekte tuerkische Schreibweise verwenden.
+
+Wichtig: `Öncü/Oncu` allein ist mehrdeutig, weil Can und Deniz denselben Nachnamen tragen. Ein alleiniger Nachname darf deshalb nicht automatisch einem der beiden Fahrer zugeordnet werden. Vorname, Initiale oder ein anderer belastbarer Quellenhinweis muss die Person eindeutig machen. Keine Vermutung.
+
+Diese Regeln gelten nicht nur fuer Titel, sondern auch fuer URL-Slugs, Feed-Texte, Artikelzusammenfassungen und Suchtreffer. Regressionstests im Racing-Preflight pruefen die Varianten verbindlich.
+
 ## Tagesziel
 Die Racing Agency soll fuenf qualitaetsgepruefte Pakete liefern. Eine neue belastbare geeignete Turkish-Riders-Story wird bevorzugt aufgenommen. Existiert keine, wird keine alte oder schwache Story erfunden/recycelt, nur um eine Quote zu erfuellen.
 
