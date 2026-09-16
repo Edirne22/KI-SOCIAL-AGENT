@@ -1,15 +1,15 @@
-"""Agent 16 / Racing Scout: official MotoGP-, Moto2-, Moto3-, WorldSBK- and WorldSSP sources – V8.5.3."""
+"""Agent 16 / Racing Scout: official MotoGP-, Moto2-, Moto3-, WorldSBK- and WorldSSP sources – V8.5.4."""
 import re,requests,html,unicodedata
 from urllib.parse import urljoin
 UA={'User-Agent':'Mozilla/5.0 KI-SOCIAL-AGENT Motorcycle Racing Agency'}
-# Separate official class pages are intentional: the combined MotoGP news page only exposes a
-# small rotating subset. Class feeds create a deeper current reserve without relaxing freshness/QM.
+# Specific class feeds MUST run before generic umbrella feeds. racing_scout de-duplicates by URL,
+# therefore this order is the deterministic class lock for articles exposed on several pages.
 SOURCES=[
- ('MotoGP','https://www.motogp.com/en/news'),
  ('Moto2','https://www.motogp.com/en/news/Moto2'),
  ('Moto3','https://www.motogp.com/en/news/Moto3'),
- ('WorldSBK','https://www.worldsbk.com/en/news'),
- ('WorldSSP','https://www.worldsbk.com/en/news/ssp')]
+ ('MotoGP','https://www.motogp.com/en/news'),
+ ('WorldSSP','https://www.worldsbk.com/en/news/ssp'),
+ ('WorldSBK','https://www.worldsbk.com/en/news')]
 WATCHLIST={
  'Toprak Razgatlıoğlu':('Toprak Razgatlıoğlu','Toprak Razgatlioglu','Toprak Razgatlıoglu','Toprak Razgatliğlu','Razgatlıoğlu','Razgatlioglu'),
  'Can Öncü':('Can Öncü','Can Oncu','C. Öncü','C. Oncu','Öncü','Oncu'),
@@ -38,7 +38,6 @@ def classify_series(default_series,title,url):
  if re.search(r'\b(to|into|joins?|move[sd]? to|challenge in)\s+(the\s+)?worldsbk\b',text) or 'new challenge in worldsbk' in text:return 'WorldSBK'
  if re.search(r'\b(to|into|joins?|move[sd]? to|seat for)\s+(the\s+)?motogp\b',text) or 'motogp seat' in text:return 'MotoGP'
  if 'worldssp' in text or 'world supersport' in text or 'supersport' in text or 'wssp' in text:return 'WorldSSP'
- # Preserve the actual GP class. Do not collapse Moto2/Moto3 into MotoGP.
  if re.search(r'(?<![a-z0-9])moto3(?![a-z0-9])',text):return 'Moto3'
  if re.search(r'(?<![a-z0-9])moto2(?![a-z0-9])',text):return 'Moto2'
  if re.search(r'(?<![a-z0-9])motogp(?![a-z0-9])',text):return 'MotoGP'
