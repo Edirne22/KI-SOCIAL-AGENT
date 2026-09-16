@@ -270,3 +270,15 @@ Story-Key: motogp:1089982
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 06:30 UTC | Motorcycle Racing | PASS
+Titel: Agius claims Misano lap record to beat Gonzalez to Friday honours Liqui Moly Dynavolt Intact GP earn a perfect Friday as Alonso completes the top three in a closely fought Moto2 Practice
+Story-Key: motogp:1089338
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 06:30 UTC | Motorcycle Racing | PASS
+Titel: Almansa amazes Misano with dominant sixth pole of 2026 The Spaniard was untouchable in Q2, repeatedly improving at the front to beat Uriarte by 0.217s as Kelso grabbed the final front-row spot
+Story-Key: motogp:1089336
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
