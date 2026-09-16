@@ -384,3 +384,33 @@ Story-Key: motogp:1090222
 Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 11:38 UTC | Motorcycle Racing | PASS
+Titel: Ogura targets Austrian GP return
+Story-Key: motogp:1090162
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 11:38 UTC | Motorcycle Racing | FAIL
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto2; Final-Guard: Pflicht-Serienhashtag #moto2 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 11:40 UTC | Motorcycle Racing | FAIL
+Titel: Who is Senna Agius? Meet Australia’s new MotoGP star
+Story-Key: motogp:1090141
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto2; Final-Guard: Pflicht-Serienhashtag #moto2 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 11:41 UTC | Motorcycle Racing | FAIL
+Titel: NEWS 4h ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 11:43 UTC | Motorcycle Racing | PASS
+Titel: Agius claims Misano lap record to beat Gonzalez to Friday honours
+Story-Key: motogp:1089338
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
