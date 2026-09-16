@@ -31,10 +31,26 @@ def _relax_language_guard(errors, cfo, caption):
     return out
 
 def _contextual_guard(cfo, caption, rider_catalog=()):
-    errors=_relax_language_guard(cfo_guard_errors(cfo,caption,rider_catalog),cfo,caption); riders=[str(r.get('value','')) for r in cfo.get('riders',[])]; numbers={str(n.get('value','')).lower().lstrip('p q fp') for n in cfo.get('numbers',[])}; rider_present=any(re.search(r'(?i)(?<!\w)'+re.escape(r)+r'(?!\w)',str(caption)) for r in riders)
+    errors = _relax_language_guard(
+        cfo_guard_errors(cfo, caption, rider_catalog), cfo, caption
+    )
+    riders = [str(r.get('value', '')) for r in cfo.get('riders', [])]
+    numbers = {
+        str(n.get('value', '')).lower().lstrip('p q fp')
+        for n in cfo.get('numbers', [])
+    }
+    rider_present = any(
+        re.search(r'(?i)(?<!\w)' + re.escape(r) + r'(?!\w)', str(caption))
+        for r in riders
+    )
     for error in list(errors):
-                m=re.search(r'unsupported hashtag #([A-Za-z]*\d+)$',error)
-        if m and rider_present and m.group(1).lower() in numbers: errors.remove(error)
+        # Fix 1: Auch Kuerzel+Nummer und Namen mit Nummer akzeptieren
+        m = re.search(r'unsupported hashtag #([A-Za-z]*\d+)$', error)
+        if m and rider_present:
+            # nur Zahlen-Teil extrahieren: aus "#JM36" wird "36"
+            digit_match = re.search(r'\d+', m.group(1))
+            if digit_match and digit_match.group().lower() in numbers:
+                errors.remove(error)
     return sorted(set(errors))
 
 def install(a):
