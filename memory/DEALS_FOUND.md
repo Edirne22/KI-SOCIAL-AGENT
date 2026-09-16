@@ -341,3 +341,114 @@ Direkte Treffer (antippbar):
 
 Quellen:
 - Monatlich kündbare Handytarife im Vergleich - handyhaus.de: https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar
+## Suche vom 2026-09-16 06:08
+Anfrage: motorradhandschuhe
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 50 € | seit 2026-09-12
+Verifiziertes Angebot: ja
+Preis: 10.00 €
+Händler: grafing.de
+Quelle: https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+
+BESTES_ANGEBOT:
+Preis: 10.00 €
+Händler: grafing.de
+URL: https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen
+Belegt: ja
+Hinweis: Preis stammt aus einem aktuellen Suchtreffer; bitte auf den Link tippen und im Shop prüfen.
+
+Direkte Treffer (antippbar):
+1. Alpinestars S-Max Drystar ab 57,56 € (September 2026) - Idealo
+   https://www.idealo.de/preisvergleich/OffersOfProduct/200016269_-s-max-drystar-alpinestars.html – Handschuhtypen, Touring Handschuhe, City Handschuhe. Aufbau. Jahreszeit, Frühling/Herbst. geeignet für, Herren. Außenmaterial, Leder. Stulpenlänge, kurz.
+2. Blue MTB Handschuhe MTN - The Motion Brand
+   https://themotionbrand.com/products/blue-mtb-handschuhe-mtn?srsltid=AU7gw4U5byMB3kYN6crEmY5zAgSWQoGgTMwcOBB1D86am3AKevGg1vBZ – Blue MTB Handschuhe MTN. Normaler Preis€32,90. /. inkl. MwSt. zzgl ... - ab einem Bestellwert von 80€ versandkostenfrei! - bis zu einem Warenwert von 80€: 4,50 ...
+3. DSG25 Programm - Deutsche Schlaganfall-Gesellschaft
+   https://www.dsg-info.de/kongress/programm/ – Max. TN-Zahl: 24. Gebühr: 50,00 €. → Zur Workshop-Buchung · WS 05. Interprofessionelle Therapie/Team is brain. Im Fokus unseres Workshops steht die These, dass ...
+4. Historische Themen - Wirtschaft & Tourismus - Stadt Grafing
+   https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen – Preis: VVK 10,00€/Person, an der Tageskasse in bar 12,50€/Person; Treffpunkt: Bronzesäule hinter dem Rathaus (Marktplatz 28); Dauer: Ca. zwei Stunden; Max.
+5. Öko-Regelung 2 – Vielfältige Kulturen im Ackerbau
+   https://www.lwk-niedersachsen.de/lwk/news/41669_%C3%96ko-Regelung_2_-_Vielfaeltige_Kulturen_im_Ackerbau – 13.01.2026 ... Die Prämie von 60 €/ha wird für den Gesamtbetrieb (alle Ackerflächen ohne Brache) ausgezahlt. ... 50 %) sein muss, d.h. mind. 10 ...
+6. Wochen der Wärme 2026 - Klimaschutz
+   https://www.klimaschutz-niedersachsen.de/themen/waerme/2026-wochen-der-waerme.php – Der Energie-Effizienz-Experte Max ... 58 Großstädte können ihren Raumwärmebedarf zu mindestens 50 % aus der Fließgewässerwärme generieren, was 73 % aller ...
+7. AMTLICHES BEKANNTMACHUNGSBLATT - Gemeinde Beckingen
+   https://www.beckingen.de/wp-content/uploads/2026/09/KW37-2026.pdf – vor 7 Tagen ... von Fahrzeug, zu versteuerndem Haushaltsjahreseinkommen und Anzahl der Kinder; max ... 7 nur € 12,50 (Angebot gültig jeden Mittwoch im SEPTEMBER ...
+8. NACHFOLGE LOHNT SICH - IHK
+   https://www.ihk.de/blueprint/servlet/resource/blob/7164140/caa305c725da7b45b354ee24b226fe12/wirtschaft-region-limburg-weilburg-08-09-2026-data.pdf – vor 8 Tagen ... Dazu gehören u.a. der monatliche Sachbezug bis. 50 €, die Kostenübernahme für die Kinderbetreuung, die ... Anschlussgarantie, bis max.
+9. Viertägiges Yoga-Retreat & Malaketten-Workshop mit Angela Sauer ...
+   https://www.pforzheim.de/veranstaltungen/ansicht-veranstaltungen/event/eventDetail/2026-09-11_0830/yoga-retreat-malaketten-workshop.html – vor 5 Tagen ... ... Max: 13.55 °C. Klarer Himmel Niederschlag : 0 mm. Bewölkung : 0 ... 50 € je nach Materialwahl bis ca. 250 €. Anmeldeschluss ist der 15 ...
+10. Registereintrag "Verband der Automobilindustrie e.V." - Lobbyregister
+   https://www.lobbyregister.bundestag.de/suche/R001243 – € und 25% auch außerhalb von EU-Fördergebieten. Dies soll ebenso für die ... Kriterien des GHG-Protokolls basieren. Zudem wird vorgeschlagen, anstelle ...
+
+Quellen:
+- Alpinestars S-Max Drystar ab 57,56 € (September 2026) - Idealo: https://www.idealo.de/preisvergleich/OffersOfProduct/200016269_-s-max-drystar-alpinestars.html
+- Blue MTB Handschuhe MTN - The Motion Brand: https://themotionbrand.com/products/blue-mtb-handschuhe-mtn?srsltid=AU7gw4U5byMB3kYN6crEmY5zAgSWQoGgTMwcOBB1D86am3AKevGg1vBZ
+- DSG25 Programm - Deutsche Schlaganfall-Gesellschaft: https://www.dsg-info.de/kongress/programm/
+- Historische Themen - Wirtschaft & Tourismus - Stadt Grafing: https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen
+- Öko-Regelung 2 – Vielfältige Kulturen im Ackerbau: https://www.lwk-niedersachsen.de/lwk/news/41669_%C3%96ko-Regelung_2_-_Vielfaeltige_Kulturen_im_Ackerbau
+- Wochen der Wärme 2026 - Klimaschutz: https://www.klimaschutz-niedersachsen.de/themen/waerme/2026-wochen-der-waerme.php
+- AMTLICHES BEKANNTMACHUNGSBLATT - Gemeinde Beckingen: https://www.beckingen.de/wp-content/uploads/2026/09/KW37-2026.pdf
+- NACHFOLGE LOHNT SICH - IHK: https://www.ihk.de/blueprint/servlet/resource/blob/7164140/caa305c725da7b45b354ee24b226fe12/wirtschaft-region-limburg-weilburg-08-09-2026-data.pdf
+- Viertägiges Yoga-Retreat & Malaketten-Workshop mit Angela Sauer ...: https://www.pforzheim.de/veranstaltungen/ansicht-veranstaltungen/event/eventDetail/2026-09-11_0830/yoga-retreat-malaketten-workshop.html
+- Registereintrag "Verband der Automobilindustrie e.V." - Lobbyregister: https://www.lobbyregister.bundestag.de/suche/R001243
+## Suche vom 2026-09-16 06:08
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. iPhone 18 Pro Deals mit Unlimited-Flat: 300 € Zuzahlung reichen aus
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro/unlimited-flat-iphone-18-pro – vor 16 Stunden ... Fuxxy findet für dich passende Handytarife – auf Wunsch auch mit neuem Smartphone. Häufige Anfragen. Günstig & flexibel. Top-Netz & viel Daten
+2. Allnet Flats im Vergleich - September 2026 - Internetanbieter.de
+   https://www.internetanbieter.de/allnet-flats/ – D1 D2 O2 1&1. Vodafone Logo. CallYa Start. Datenvolumen. 2 GB. Max ... Ø 10,13 €. 10,00 € monatlich. Zum Tarif ». blau Mobilfunk Logo. Allnet S ...
+3. Handyverträge - Dealgott.de
+   https://www.dealgott.de/category/mobilfunk/handyvertrage/ – Samsung Galaxy S26 FE (128 GB) für 1€ + Vodafone Smart Entry 55 GB für 29,99€/Monat (mit GigaKombi = 24,99€/Monat). 9. September 2026.
+4. 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat
+   https://handytariftipp.de/50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat-congstar-kennenlernkarte-im-telekom-netz/ – 06.09.2026 ... Jahrelange Erfahrungen in der Mobilfunk-Branche haben dazu geführt diese Webseite ins Leben zu rufen. Ich möchte Dir einen besonderen Service ...
+5. Tarifgut | Alles zum Thema Tarif- und Top-Angebote
+   https://tarifgut.de/ – Apple iPhone 18 Pro 256GB mit unlimited Datenvolumen o2 für 39,99€ mtl. ... 12,82 €Effektivpreis / Monat ? ... Samsung Galaxy Z Flip 8 512GB mit 50GB Vodafone für ...
+6. Mobil surfen bis 100 GB Datenvolumen / Monat - Handy
+   https://handy.preisvergleich.de/datenvolumen-100gb/ – * Angebot vom 12.09.2026 / Preis kann jetzt höher sein - Alle Angaben ohne Gewähr. ** Bei Tarifen mit Datenautomatik können bei Überschreitung des beinhalteten ...
+7. iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-16 – 50 Mbit/s max. Telefon-Flat. SMS-Flat. Pro Monat. Handy ...
+8. Samsung Galaxy S24 Plus mit Vertrag - handyhaus.de
+   https://handyhaus.de/smartphones/samsung/galaxy-s24-plus – inkl. Achtung: Nach 24 Monaten erhöht sich die Grundgebühr ( +1072,00 € mehr pro Monat - also rechtzeitig kündigen!)
+9. HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...
+   https://handytariftipp.de/ – 45GB Allnet Flat im Vodafone Netz nur 6.99€ monatlich. Bis maximal zum 21.09.2026 verfügbar, kann vorher ausverkauft bzw. in der angegebenen beendet sein. Somit ...
+10. iPhone 17 Pro mit Vertrag im Vergleich - TARIFFUXX
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-17-pro – Wir haben ein Maximum bei 600 € voreingestellt, du kannst es im iPhone 17 Pro Tarifrechner aber selbst nach Wunsch anpassen. 256 GB, 512 GB, 1 TB. 1.299 € ...
+
+Quellen:
+- iPhone 18 Pro Deals mit Unlimited-Flat: 300 € Zuzahlung reichen aus: https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro/unlimited-flat-iphone-18-pro
+- Allnet Flats im Vergleich - September 2026 - Internetanbieter.de: https://www.internetanbieter.de/allnet-flats/
+- Handyverträge - Dealgott.de: https://www.dealgott.de/category/mobilfunk/handyvertrage/
+- 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat: https://handytariftipp.de/50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat-congstar-kennenlernkarte-im-telekom-netz/
+- Tarifgut | Alles zum Thema Tarif- und Top-Angebote: https://tarifgut.de/
+- Mobil surfen bis 100 GB Datenvolumen / Monat - Handy: https://handy.preisvergleich.de/datenvolumen-100gb/
+- iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-16
+- Samsung Galaxy S24 Plus mit Vertrag - handyhaus.de: https://handyhaus.de/smartphones/samsung/galaxy-s24-plus
+- HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...: https://handytariftipp.de/
+- iPhone 17 Pro mit Vertrag im Vergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-17-pro
+## Suche vom 2026-09-16 06:11
+Anfrage: handyvertrag 80GB D1 maximal 13 euro
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: keine Kriterien | seit 2026-09-13
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. Monatlich kündbare Handytarife im Vergleich - handyhaus.de
+   https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar – Da die Datennutzung ohne eine entsprechende Datenoption sehr teuer ist kein ein Prepaid Tarif auch schnell zur Kostenfalle werden und das Guthaben vom Handy ...
+
+Quellen:
+- Monatlich kündbare Handytarife im Vergleich - handyhaus.de: https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar

@@ -23,3 +23,15 @@
 ## 2026-09-15 06:11
 - Produkt: handyvertrag 80GB D1 maximal 13 euro
 - Ergebnis: Kein verifiziertes Live-Angebot von Apify-Google-Suche; nicht gespeichert.
+
+## 2026-09-16 06:08
+- Produkt: motorradhandschuhe
+- Ergebnis: 10.00 € bei grafing.de (Zielpreis erreicht).
+
+## 2026-09-16 06:08
+- Produkt: handyvertrag 80GB D1
+- Ergebnis: Kein verifiziertes Live-Angebot von Apify-Google-Suche; nicht gespeichert.
+
+## 2026-09-16 06:11
+- Produkt: handyvertrag 80GB D1 maximal 13 euro
+- Ergebnis: Kein verifiziertes Live-Angebot von Apify-Google-Suche; nicht gespeichert.
