@@ -6,7 +6,7 @@ from typing import Sequence
 import requests
 from router import get_api_key,get_provider_config,get_provider_for_task,get_task_config
 ROOT=Path(__file__).resolve().parent
-PRO_STANDARD=ROOT/'config'/'PROFESSIONAL_AGENT_STANDARD.md';HUMAN_STANDARD=ROOT/'config'/'HUMAN_WRITING_PROTOCOL.md'
+PRO_STANDARD=ROOT/'config'/'PROFESSIONAL_AGENT_STANDARD.md';HUMAN_STANDARD=ROOT/'config'/'HUMAN_WRITING_PROTOCOL.md';BBL_VOICE=ROOT/'memory'/'MOTOGP_VOICE_RULES.md'
 SECRET_PATTERNS=((re.compile(r"AIza[0-9A-Za-z_-]{35}"),"[ENTFERNT]"),(re.compile(r"AQ\.[A-Za-z0-9_-]{40,}"),"[ENTFERNT]"),(re.compile(r"sk-[A-Za-z0-9_-]{20,}"),"[ENTFERNT]"),(re.compile(r"\b[A-Za-z0-9_-]{50,}\b"),"[ENTFERNT]"))
 def redact_secrets(value):
  for p,r in SECRET_PATTERNS:value=p.sub(r,value)
@@ -14,7 +14,7 @@ def redact_secrets(value):
 def _read_standard(path):
  try:return path.read_text(encoding='utf-8').strip()
  except FileNotFoundError:return ''
-def global_professional_context():return '\n\n'.join(x for x in (_read_standard(PRO_STANDARD),_read_standard(HUMAN_STANDARD)) if x)
+def global_professional_context():return '\n\n'.join(x for x in (_read_standard(PRO_STANDARD),_read_standard(HUMAN_STANDARD),_read_standard(BBL_VOICE)) if x)
 def _with_global_standard(prompt):
  ctx=global_professional_context();return f"GLOBALER VERBINDLICHER PROFESSIONAL-/SCHREIBSTANDARD:\n{ctx}\n\nAUFGABE:\n{prompt}" if ctx else prompt
 def load_agent(agent_file):
