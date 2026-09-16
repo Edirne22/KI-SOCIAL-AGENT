@@ -190,7 +190,6 @@ Musik: Beat, electronic
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35155730825-1
 Freigabe: Telegram MotoGP
 Telegram-Update-ID: 279361652
 MotoGP-Auswahl: 1
