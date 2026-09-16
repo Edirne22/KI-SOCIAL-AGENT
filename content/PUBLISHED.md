@@ -164,7 +164,7 @@ Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
 
 ## Instagram Reel
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 35087705701-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361650
 Text:
