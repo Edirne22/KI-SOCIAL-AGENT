@@ -3,10 +3,95 @@ import re
 import time
 import requests
 
-from asset_paths import asset_url
+from pathlib import Path
+from PIL import Image
+from asset_paths import asset_url, resolve_asset
 from datetime import datetime
 
 REPO_RAW = "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/"
+
+def process_image_for_instagram(image_file):
+    """Prüft das Bild auf Instagram Feed-Konformität und führt ggf. Center-Crop durch."""
+    try:
+        resolved_str = resolve_asset(image_file)
+        local_path = Path(resolved_str)
+    except Exception as e:
+        print(f"Fehler: Bild-Pfad konnte nicht aufgelöst werden: {image_file} ({e})")
+        raise SystemExit(1)
+
+    if not local_path.is_file():
+        print(f"Fehler: Bilddatei existiert nicht: {local_path}")
+        raise SystemExit(1)
+
+    try:
+        with Image.open(local_path) as img:
+            img.verify()
+        img = Image.open(local_path)
+    except Exception as e:
+        print(f"Fehler: Bilddatei ist beschädigt oder kann nicht geöffnet werden: {local_path} ({e})")
+        raise SystemExit(1)
+
+    width, height = img.size
+    if width <= 0 or height <= 0:
+        print(f"Fehler: Ungültige Bild-Dimensionen ({width}x{height}) bei {local_path}")
+        raise SystemExit(1)
+
+    ratio = width / height
+
+    # Erlaubte Instagram-Formate (Quadrat 1:1, Hochformat 4:5, Querformat 1.91:1) mit ±2% Toleranz
+    targets = [
+        (1.0, "1:1"),
+        (0.8, "4:5"),
+        (1.91, "1.91:1"),
+    ]
+
+    is_compliant = any(abs(ratio - target_ratio) / target_ratio <= 0.02 for target_ratio, _ in targets)
+
+    if is_compliant:
+        print(f"INSTAGRAM IMAGE CHECK: {local_path.name} {width}x{height} ratio={ratio:.4f} → konform → unverändert")
+        return image_file
+
+    # Zielformat bestimmen: Center-Crop auf das am besten passende Format
+    if ratio < 0.8:
+        # Höher als 4:5 (z. B. 1080x1920 Story-Format) -> Crop auf 4:5
+        target_ratio, target_name = 0.8, "4:5"
+    elif ratio > 1.91:
+        # Breiter als 1.91:1 -> Crop auf 1.91:1
+        target_ratio, target_name = 1.91, "1.91:1"
+    else:
+        # Dazwischen (z. B. 3:2 = 1.5 oder 16:9 = 1.77) -> Nächstgelegenes erlaubtes Format
+        target_ratio, target_name = min(targets, key=lambda t: abs(ratio - t[0]))
+
+    if ratio < target_ratio:
+        # Bild ist zu hoch für das Zielverhältnis -> in der Höhe beschneiden
+        crop_width = width
+        crop_height = int(round(width / target_ratio))
+    else:
+        # Bild ist zu breit für das Zielverhältnis -> in der Breite beschneiden
+        crop_height = height
+        crop_width = int(round(height * target_ratio))
+
+    left = (width - crop_width) // 2
+    top = (height - crop_height) // 2
+    right = left + crop_width
+    bottom = top + crop_height
+
+    cropped_img = img.crop((left, top, right, bottom))
+    if cropped_img.mode in ("RGBA", "P"):
+        cropped_img = cropped_img.convert("RGB")
+
+    new_filename = f"{local_path.stem}-ig-resized.jpg"
+    new_local_path = local_path.parent / new_filename
+
+    cropped_img.save(new_local_path, "JPEG", quality=90)
+    out_w, out_h = cropped_img.size
+
+    print(f"INSTAGRAM IMAGE CHECK: {local_path.name} {width}x{height} ratio={ratio:.4f} → ausserhalb → crop auf {target_name} → {new_filename} {out_w}x{out_h}")
+
+    # Relative Pfadangabe basierend auf dem übergebenen image_file für asset_url zurückgeben
+    orig_path = Path(image_file)
+    new_relative_path = (orig_path.parent / new_filename).as_posix() if orig_path.parent != Path(".") else new_filename
+    return new_relative_path
 
 def find_instagram_block(content):
     """Sucht ersten Instagram-Feed-Block (ohne Format: Story), der noch nicht gepostet wurde."""
@@ -78,8 +163,9 @@ if __name__ == "__main__":
         print("Kein freigegebener Instagram-Beitrag gefunden.")
         exit(0)
 
-    image_url = asset_url(image_file, REPO_RAW)
-    print(f"Instagram-Beitrag gefunden – veröffentliche {image_file}...")
+    processed_image_file = process_image_for_instagram(image_file)
+    image_url = asset_url(processed_image_file, REPO_RAW)
+    print(f"Instagram-Beitrag gefunden – veröffentliche {processed_image_file}...")
 
     creation_id = create_container(ig_user_id, token, image_url, text)
     if not creation_id:
