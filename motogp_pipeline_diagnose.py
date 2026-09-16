@@ -1,5 +1,5 @@
 """Read-only Racing pipeline diagnostic runner.
-Mirrors collection/freshness/relevance and ranking without Telegram, publisher or memory writes.
+Mirrors collection/freshness/relevance, copy-QM and ranking without Telegram, publisher or memory writes.
 """
 from datetime import datetime,timezone
 from collections import Counter
@@ -11,15 +11,30 @@ from motogp_date_recovery_patch import install as install_date_recovery
 from motogp_pipeline_audit import new_run_id,stage,rejection,write_summary
 install_date_recovery(a)
 install(a)
-ARTIFACT_DIR=Path('artifacts');TOP10_ARTIFACT=ARTIFACT_DIR/'motogp-top10.json'
+ARTIFACT_DIR=Path('artifacts');TOP10_ARTIFACT=ARTIFACT_DIR/'motogp-top10.json';QM_ARTIFACT=ARTIFACT_DIR/'motogp-qm-results.json'
 
 def write_top10_artifact(run_id,items,names):
  ranked=sorted(items,key=lambda x:a.editorial_score(x,names),reverse=True);top=ranked[:10];rows=[]
  for rank,x in enumerate(top,1):
-  rows.append({'rank':rank,'score':a.editorial_score(x,names),'title':x.get('title',''),'url':x.get('url',''),'series':a.series_for(x),'turkish_rider':x.get('turkish_rider',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'original_record_id':x.get('original_record_id','')})
+  rows.append({'rank':rank,'score':a.editorial_score(x,names),'title':x.get('title',''),'url':x.get('url',''),'series':a.series_for(x),'turkish_rider':x.get('turkish_rider',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'original_record_id':x.get('original_record_id',''),'semantic_qm':x.get('semantic_qm'),'racing_qm':x.get('racing_qm'),'rewrite_count':x.get('rewrite_count',0)})
  ARTIFACT_DIR.mkdir(parents=True,exist_ok=True)
  TOP10_ARTIFACT.write_text(json.dumps({'run_id':run_id,'input_count':len(items),'top10_count':len(rows),'items':rows},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  return top
+
+def run_copy_qm(run_id,items):
+ qualified=[];rows=[];technical_defer=0
+ for x in items:
+  try:ok=a.qualify_copy(x)
+  except Exception as e:
+   ok=False;x['semantic_qm']='TECHNICAL-DEFER';x['technical_qm_deferred']=True;x['diagnostic_qm_exception']=f'{type(e).__name__}: {e}'
+  status='PASS' if ok else ('TECHNICAL-DEFER' if x.get('technical_qm_deferred') or x.get('semantic_qm')=='TECHNICAL-DEFER' else 'REJECT')
+  if ok:qualified.append(x)
+  elif status=='TECHNICAL-DEFER':technical_defer+=1;rejection(run_id,'copy_qm',x,'LOW_CONFIDENCE',x.get('diagnostic_qm_exception') or 'Semantic-QM provider technisch nicht verfuegbar','technical_defer')
+  else:rejection(run_id,'copy_qm',x,'QUALITY_FILTER','; '.join((x.get('qm_errors') or [])+(x.get('semantic_errors') or [])) or 'Copy-QM nicht bestanden','excluded')
+  rows.append({'status':status,'title':x.get('title',''),'url':x.get('url',''),'series':a.series_for(x),'semantic_qm':x.get('semantic_qm'),'racing_qm':x.get('racing_qm'),'rewrite_count':x.get('rewrite_count',0),'qm_errors':x.get('qm_errors',[]),'semantic_errors':x.get('semantic_errors',[]),'technical_error':x.get('diagnostic_qm_exception')})
+ ARTIFACT_DIR.mkdir(parents=True,exist_ok=True)
+ QM_ARTIFACT.write_text(json.dumps({'run_id':run_id,'input_count':len(items),'pass_count':len(qualified),'technical_defer_count':technical_defer,'reject_count':len(items)-len(qualified)-technical_defer,'items':rows},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ return qualified,technical_defer
 
 def main():
  run_id=new_run_id();st=[];names=a.roster_names();known=a.known_story_keys();raw=[];seen=set();meta={}
@@ -47,8 +62,10 @@ def main():
   else:rejection(run_id,'racing_relevance',x,'QUALITY_FILTER','not-racing-or-promo','excluded')
  st.append(stage(run_id,'racing_relevance',len(fresh),len(relevant),rejected_count=len(fresh)-len(relevant)))
  st.append(stage(run_id,'pre_qm_boundary',len(relevant),len(relevant),roster_checked_count=len(names)))
- top10=write_top10_artifact(run_id,relevant,names)
- st.append(stage(run_id,'ranking_top10',len(relevant),len(top10),rejected_count=max(0,len(relevant)-len(top10))))
+ qualified,technical_defer=run_copy_qm(run_id,relevant)
+ st.append(stage(run_id,'copy_qm',len(relevant),len(qualified),rejected_count=max(0,len(relevant)-len(qualified)-technical_defer),warning_count=technical_defer))
+ top10=write_top10_artifact(run_id,qualified,names)
+ st.append(stage(run_id,'post_qm_ranking_top10',len(qualified),len(top10),rejected_count=max(0,len(qualified)-len(top10))))
  write_summary(run_id,st+[{'freshness_reasons':dict(reason_counts)}])
- print('DIAG RUN',run_id,'raw',len(raw),'details',len(details),'fresh',len(fresh),'relevant',len(relevant),'top10',len(top10),'roster',len(names))
+ print('DIAG RUN',run_id,'raw',len(raw),'details',len(details),'fresh',len(fresh),'relevant',len(relevant),'qm_pass',len(qualified),'qm_defer',technical_defer,'top10',len(top10),'roster',len(names))
 if __name__=='__main__':main()
