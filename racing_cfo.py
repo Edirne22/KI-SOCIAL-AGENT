@@ -104,8 +104,60 @@ def validate_cfo(cfo, item, rider_catalog=()):
     return [] if cfo == build_cfo(item, rider_catalog) else ['CFO: source or canonical facts changed']
 
 def tags(cfo):
-    rider_tags = ['#' + re.sub(r'[^A-Za-z0-9]', '', fold(r['value']).title()) for r in cfo['riders'][:2]]
-    return ' '.join(dict.fromkeys((['#' + cfo['series']] if cfo['series'] else []) + rider_tags + list(GENERIC_TAGS)))
+    """Erzeugt alle erlaubten Hashtags aus dem CFO.
+    Fix 4: Locations, Teams, Hersteller und laengere Entities werden
+    ebenfalls als Hashtags akzeptiert, nicht nur Fahrer und Serie.
+    """
+    tags_set = set()
+
+    # 1) Serie
+    if cfo.get('series'):
+        tags_set.add('#' + str(cfo['series']))
+
+    # 2) Alle Fahrer (nicht nur die ersten zwei)
+    for r in cfo.get('riders', []) or []:
+        value = r.get('value') if isinstance(r, dict) else r
+        if value:
+            cleaned = re.sub(r'[^A-Za-z0-9]', '', fold(value).title())
+            if cleaned:
+                tags_set.add('#' + cleaned)
+
+    # 3) Alle Locations (z. B. #Misano, #RedBullRing)
+    for loc in cfo.get('locations', []) or []:
+        value = loc.get('value') if isinstance(loc, dict) else loc
+        if value:
+            cleaned = re.sub(r'[^A-Za-z0-9]', '', fold(value).title())
+            if cleaned:
+                tags_set.add('#' + cleaned)
+
+    # 4) Alle Teams (z. B. #Tech3)
+    for team in cfo.get('teams', []) or []:
+        value = team.get('value') if isinstance(team, dict) else team
+        if value:
+            cleaned = re.sub(r'[^A-Za-z0-9]', '', fold(value).title())
+            if cleaned:
+                tags_set.add('#' + cleaned)
+
+    # 5) Alle Hersteller (z. B. #Yamaha, #Ducati)
+    for mfr in cfo.get('manufacturers', []) or []:
+        value = mfr.get('value') if isinstance(mfr, dict) else mfr
+        if value:
+            cleaned = re.sub(r'[^A-Za-z0-9]', '', fold(value).title())
+            if cleaned:
+                tags_set.add('#' + cleaned)
+
+    # 6) Laengere Entities (>= 4 Zeichen), um kurze Woerter wie "The" zu vermeiden
+    for ent in cfo.get('entities', []) or []:
+        value = ent.get('value') if isinstance(ent, dict) else ent
+        if value and len(str(value)) >= 4:
+            cleaned = re.sub(r'[^A-Za-z0-9]', '', fold(value).title())
+            if cleaned:
+                tags_set.add('#' + cleaned)
+
+    # 7) Generische Community-Tags
+    tags_set.update(GENERIC_TAGS)
+
+    return ' '.join(sorted(tags_set))
 
 def guard_errors(cfo, caption, rider_catalog=()):
     source, errors = source_text(cfo['source']), []
