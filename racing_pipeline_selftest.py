@@ -44,16 +44,16 @@ def test_series_and_hashtags():
  for item,series,tag in cases:ok(a.series_for(item)==series,f'{item["title"]} -> {a.series_for(item)}');ok(tag in a.hashtags(item),f'missing {tag}')
  ok(a.is_gp_family(cases[0][0]) and a.is_gp_family(cases[1][0]),'Moto2/Moto3 must remain GP family')
 def test_final_truth_guard_live_regressions():
- bad=[
- ({'title':'Quiles denies Almansa in epic photo finish','summary':'Moto3 race at Misano','series':'MotoGP'},'Quiles gewinnt.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife','Moto3 mislabeled MotoGP'),
- ({'title':'WorldWCR duo rookie vs veteran','summary':'WorldWCR teammates Paola Ramos and Roberta Ponziani','series':'WorldSBK'},'Rookie trifft Veteran.\n\nWas meint ihr?\n\n#WorldSBK #Racing #BuelentsBikeLife','WorldWCR mislabeled WorldSBK'),
- ({'title':'Behind the scenes with Red Bull KTM','summary':'Catch up on 2026 so far in a Vlog series','series':'MotoGP'},'KTM zeigt den Vlog.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife','promo/vlog'),
- ({'title':'Rossi, Razgatlioglu and more on Bulega switch','summary':'Toprak Razgatlioglu comments on Bulega MotoGP switch','series':'MotoGP'},'Rahil Etgar Razgatlioglu spricht über Bulega.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife','corrupt rider name')]
+ bad=[({'title':'Quiles denies Almansa in epic photo finish','summary':'Moto3 race at Misano','series':'MotoGP'},'Quiles gewinnt.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife','Moto3 mislabeled MotoGP'),({'title':'WorldWCR duo rookie vs veteran','summary':'WorldWCR teammates Paola Ramos and Roberta Ponziani','series':'WorldSBK'},'Rookie trifft Veteran.\n\nWas meint ihr?\n\n#WorldSBK #Racing #BuelentsBikeLife','WorldWCR mislabeled WorldSBK'),({'title':'Behind the scenes with Red Bull KTM','summary':'Catch up on 2026 so far in a Vlog series','series':'MotoGP'},'KTM zeigt den Vlog.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife','promo/vlog'),({'title':'Rossi, Razgatlioglu and more on Bulega switch','summary':'Toprak Razgatlioglu comments on Bulega MotoGP switch','series':'MotoGP'},'Rahil Etgar Razgatlioglu spricht über Bulega.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife','corrupt rider name')]
  for item,caption,label in bad:
   passed,errs=final_guard.review(item,caption);ok(not passed and errs,f'Final Guard missed {label}')
  good={'title':'Agius fastest in Moto2 Practice','summary':'Moto2 Practice at Misano','series':'Moto2'};passed,errs=final_guard.review(good,'Agius setzt die Bestzeit.\n\nWie seht ihr das?\n\n#Moto2 #MotorradRacing #BuelentsBikeLife');ok(passed,f'Final Guard false positive: {errs}')
 def test_final_guard_is_last_mile_gate():
- src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');ok('from racing_final_guard import review as final_guard_review' in src,'Final Guard import missing');ok("final_guard_review(x,x['caption'])" in src,'Final Guard not called on final caption');ok(src.index("final_guard_review(x,x['caption'])")>src.index("chief_review('Motorcycle Racing'"),'Final Guard must execute after Chief-QM')
+ agency=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');chief=Path('chief_quality_manager.py').read_text(encoding='utf-8')
+ ok("chief_review('Motorcycle Racing'" in agency,'Agency does not call Chief-QM for Racing')
+ ok("if domain=='Motorcycle Racing':" in chief,'Chief-QM Racing branch missing')
+ ok('from racing_final_guard import review as final_truth_review' in chief,'Chief-QM Final Guard import missing')
+ ok('final_truth_review(item,caption)' in chief,'Chief-QM does not execute Final Guard on final caption')
 def test_article_date_metadata_contract():
  import motogp_content_agency as base
  html='''<html><head><meta property="article:published_time" content="2026-09-15T12:34:56Z"></head></html>''';ok(base.published_time(html)=='2026-09-15T12:34:56Z','article:published_time extraction broken');html2='''<script type="application/ld+json">{"datePublished":"2026-09-14T10:00:00+00:00"}</script>''';ok(base.published_time(html2)=='2026-09-14T10:00:00+00:00','JSON-LD datePublished extraction broken');html3='<time datetime="2026-09-13T09:00:00Z">13 Sep</time>';ok(base.published_time(html3)=='2026-09-13T09:00:00Z','time datetime extraction broken')
