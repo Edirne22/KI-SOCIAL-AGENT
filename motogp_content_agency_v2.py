@@ -1,4 +1,4 @@
-"""Motorcycle Racing Agency V8.5.1 – audited fail-closed editorial chain."""
+"""Motorcycle Racing Agency V8.5.2 – audited fail-closed editorial chain."""
 from motogp_content_agency import *
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
@@ -9,7 +9,7 @@ from pathlib import Path
 from datetime import timedelta,datetime as dt,timezone
 from concurrent.futures import ThreadPoolExecutor,as_completed
 import json,re,time
-VERSION='V8.5.1';TOP10=Path('memory/RACING_TOP10_POOL.json')
+VERSION='V8.5.2';TOP10=Path('memory/RACING_TOP10_POOL.json')
 TURKISH_ALIASES={'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu'),'Can Oncu':('can oncu','can öncü'),'Deniz Oncu':('deniz oncu','deniz öncü'),'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu'),'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu')}
 TURKISH_RIDERS=list(TURKISH_ALIASES)
 RIDERS_V2=TURKISH_RIDERS+['Marc Marquez','Alex Marquez','Marco Bezzecchi','Jorge Martin','Pedro Acosta','Francesco Bagnaia','Fabio Quartararo','Jack Miller','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado','Alvaro Bautista','Miguel Oliveira','Alberto Surra','Sergio Garcia','Iker Lecuona','Andrea Iannone','Sam Lowes','Alex Lowes','Jonathan Rea','Stefano Manzi','Jeremy Alcoba','Marcos Ramirez']
@@ -41,7 +41,6 @@ def series_for_raw(x):
  if 'worldssp300' in t or 'worldssp 300' in t:return 'WorldSSP300'
  if any(v in t for v in ('worldssp','world supersport','supersport')) and 'motogp' not in t:return 'WorldSSP'
  if 'worldsbk' in t or 'world superbike' in t:return 'WorldSBK'
- # Exact Grand Prix classes stay distinct. URL/title/summary evidence outranks generic source family.
  if re.search(r'(?<![a-z0-9])moto3(?![a-z0-9])',t):return 'Moto3'
  if re.search(r'(?<![a-z0-9])moto2(?![a-z0-9])',t):return 'Moto2'
  if re.search(r'(?<![a-z0-9])motogp(?![a-z0-9])',t):return 'MotoGP'
@@ -50,6 +49,7 @@ def series_for_raw(x):
  if 'worldsbk.com' in u:return 'WorldSBK'
  return 'MotoGP'
 def series_for(x):return series_for_raw(x)
+def is_gp_family(x):return series_for(x) in ('MotoGP','Moto2','Moto3')
 def is_turkish_focus(x):return bool(enrich_turkish(x).get('turkish_rider'))
 def article_date(x):
  for key in ('published_at','published','date','pub_date'):
@@ -81,7 +81,7 @@ def _editor_prompt(x,repair_reasons=None):
  enrich_turkish(x);repair=''
  if repair_reasons:repair='\nEINMALIGE QM-KORREKTUR. Behebe exakt diese Fehler, ohne neue Fakten hinzuzufuegen:\n- '+'\n- '.join(repair_reasons[:10])+'\n'
  title=' '.join(str(x.get('title','')).split());summary=' '.join(str(x.get('summary','')).split());series=series_for(x);turkish=x.get('turkish_rider') or 'NEIN'
- return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur auf Premium-Niveau. Mindestens zehn Jahre professionelle Erfahrung sind der Qualitaetsmassstab, keine zu behauptende Biografie.\n{global_professional_context()}\n\nRACING-PFLICHTEN: Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Vornamen, Teams, Hersteller, Nationalitaeten, Geschlechter, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine direkten oder frei uebersetzten Zitate; Zitatinhalt nur sachlich paraphrasieren. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein kuenstlicher Hype. 2–4 informative Saetze und danach eine konkrete Community-Frage. Eine Meinungsfrage darf offen spekulieren, solange sie keine unbelegte Tatsache als gegeben voraussetzt. Keine Hashtags erzeugen.{repair}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
+ return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur auf Premium-Niveau. Mindestens zehn Jahre professionelle Erfahrung sind der Qualitaetsmassstab, keine zu behauptende Biografie.\n{global_professional_context()}\n\nRACING-PFLICHTEN: Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Vornamen, Teams, Hersteller, Nationalitaeten, Geschlechter, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine direkten oder frei uebersetzten Zitate; Zitatinhalt nur sachlich paraphrasieren. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein kuenstlicher Hype. 2–4 informative Saetze und danach eine konkrete Community-Frage. Eine klar als Meinung formulierte Frage wie „Traut ihr X den Sieg zu?“ ist erlaubt und keine Tatsachenbehauptung. Eine Frage mit unbelegter Praemisse wie „Warum ist X klarer Favorit?“ ist verboten. Keine Hashtags erzeugen.{repair}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
 def _parse_editor_json(raw):
  raw=(raw or '').strip();raw=re.sub(r'^```(?:json)?\s*|\s*```$','',raw,flags=re.I|re.S);o=json.loads(raw);hook=str(o.get('hook','')).strip();body=str(o.get('body','')).strip();q=str(o.get('question','')).strip()
  if not hook or not body or '?' not in q:raise ValueError('editor JSON missing hook/body/question')
@@ -89,10 +89,9 @@ def _parse_editor_json(raw):
 def german_editor(x,repair_reasons=None):
  if len(re.sub(r'\s+',' ',x.get('title','')).strip())<18:return ''
  prompt=_editor_prompt(x,repair_reasons);last=None
- # One technical JSON retry; it is not the editorial QM rewrite.
  for technical_attempt in range(2):
   try:
-   hook,body,q=_parse_editor_json(generate('final_captions',prompt));
+   hook,body,q=_parse_editor_json(generate('final_captions',prompt))
    if not x.get('turkish_rider'):hook=hook.replace('🇹🇷','').strip()
    c=f'{hook}\n\n{body}\n\n{q}\n\n{hashtags(x)}';return c if language_sane(c) else ''
   except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:
@@ -119,7 +118,6 @@ def qualify_copy(x):
   if attempt==1:repair_reasons=reasons;print('QM REWRITE: genau eine kontrollierte Neufassung wird gestartet')
  x['semantic_qm']='FAIL';x['rewrite_count']=1;return False
 def qualify_parallel(items,max_workers=2):
- # Agnes text/QM calls are intentionally throttled: quality and quota stability over speed.
  out=[]
  with ThreadPoolExecutor(max_workers=max_workers) as ex:
   jobs={ex.submit(qualify_copy,x):x for x in items}
@@ -143,7 +141,7 @@ def load_pool():
  try:return json.loads(TOP10.read_text(encoding='utf-8'))
  except Exception:return {'version':1,'days':{}}
 def published_keys():
- p=Path('content/PUBLISHED.md');return set(re.findall(r'(?:motogp|worldsbk|worldssp):[A-Za-z0-9._:-]+',p.read_text(encoding='utf-8',errors='ignore'))) if p.exists() else set()
+ p=Path('content/PUBLISHED.md');return set(re.findall(r'(?:motogp|moto2|moto3|worldsbk|worldssp):[A-Za-z0-9._:-]+',p.read_text(encoding='utf-8',errors='ignore'))) if p.exists() else set()
 def save_top10(items,now):
  data=load_pool();day=now.date().isoformat();rows=[]
  for x in items[:10]:rows.append({'story_key':story_key(x['title'],x['url']),'title':x['title'],'url':x['url'],'summary':x.get('summary',''),'preview':x.get('preview',''),'series':series_for(x),'turkish_rider':x.get('turkish_rider',''),'kind':x.get('kind','news')})
@@ -158,46 +156,51 @@ def yesterday_raw(now,current_urls):
 def ordered_pool(qualified,names):
  pool=sorted(qualified,key=lambda x:editorial_score(x,names),reverse=True);ordered=[];turk=[x for x in pool if is_turkish_focus(x) and not is_feature(x)]
  if turk:ordered.append(turk[0])
- gp=[x for x in pool if series_for(x) in ('MotoGP','Moto2','Moto3') and not is_feature(x) and x not in ordered];ordered+=gp[:3]
+ gp=[x for x in pool if is_gp_family(x) and not is_feature(x) and x not in ordered];ordered+=gp[:3]
  ordered += [x for x in pool if x not in ordered and not is_feature(x)]+[x for x in pool if x not in ordered]
  return ordered
 def select_and_finish(qualified,names):
- picks=[];seen_fp=set();series_counts={}
+ picks=[];seen_fp=set()
  for x in ordered_pool(qualified,names):
   if len(picks)>=5:break
   s=series_for(x)
-  if s not in ('MotoGP','Moto2','Moto3') and series_counts.get(s,0)>=3:continue
-  fp=re.sub(r'\W+',' ',fold(x.get('caption',''))).strip()[:180]
+  if not is_gp_family(x) and sum(series_for(y)==s for y in picks)>=3:continue
+  fp=re.sub(r'#[^\s]+','',fold(x.get('caption','')));fp=re.sub(r'\s+',' ',fp).strip()
   if fp in seen_fp:continue
-  if not review_batch([x]):continue
-  if not finish_item(x,len(picks)+1):continue
-  picks.append(x);seen_fp.add(fp);series_counts[s]=series_counts.get(s,0)+1
+  batch=review_batch([x]);b_ok,b_err=batch[0]
+  if not b_ok:continue
+  if finish_item(x,len(picks)+1):picks.append(x);seen_fp.add(fp)
  return picks
+def write_session(items,now):
+ lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Semantic-Fakten-QM: PASS','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
+ for i,x in enumerate(items,1):lines += [f'## Beitrag {i}','QM: PASS','Racing-QM: PASS','Semantic-Fakten-QM: PASS',f'Neufassungen: {x.get("rewrite_count",0)}',f'Herkunft: {"Top-10 vom Vortag" if x.get("fallback_yesterday") else "Aktuell"}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Turkish Riders" if is_turkish_focus(x) else series_for(x)}',f'Serie: {series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
+ SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+def invalidate_session(now,reason,passed=0):
+ lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','QM: FAIL','Approval-Status: BLOCKED',f'Session-Timestamp: {int(now.timestamp())}',f'Bestandene-Pakete: {passed}/5',f'Grund: {reason}','','Keine Freigabe moeglich. Erst ein neuer Lauf mit 5/5 PASS erzeugt eine freigabefaehige Session.']
+ SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+def telegram_preview(items,turk):
+ mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in ('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300') if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – 5 qualitätsgeprüfte Tagesvorschläge','🎓 Professional Agent Standard V1.0','✍️ Human Writing Protocol V1.0','🔎 Racing-QM + Semantic-Fakten-QM + Chief-QM: PASS',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if turk else '🇹🇷 Heute keine geeignete neue Turkish-Rider-Story gefunden'),'']
+ for i,x in enumerate(items,1):msg += [f'{i}️⃣ {"↩️ Top-10 vom Vortag | " if x.get("fallback_yesterday") else ""}[{series_for(x)}] {x["caption"]}',f'🔗 Quelle: {x["url"]}','']
+ msg+=['Freigabe: motogp 1–5 / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
 def run_v8():
- global VERSION
- VERSION='V8.5.1';now=dt.now(timezone.utc);names=roster_names();known=known_story_keys();raw=[]
- for row in racing_scout(80):
-  try:title,url,preview,source=row;raw.append(enrich_turkish({'title':title,'url':url,'preview':preview,'source':source,'summary':'','kind':'news'}))
-  except Exception:pass
- for title,url,preview in turkish_scout(30):raw.append(enrich_turkish({'title':title,'url':url,'preview':preview,'source':'Agent16','summary':'','kind':'news'}))
- for title,url,preview in NEWS+MARKET:raw.append(enrich_turkish({'title':title,'url':url,'preview':preview,'source':'legacy','summary':'','kind':'news'}))
- uniq={}
- for x in raw:
-  if x.get('url') and x['url'] not in uniq:uniq[x['url']]=x
- detailed=[]
- for x in uniq.values():
-  try:
-   info=article_info(x['url']);x['title']=info.get('title') or x['title'];x['summary']=info.get('summary') or x.get('preview','');x['published_at']=info.get('published_at') or info.get('published') or x.get('published_at');enrich_turkish(x);detailed.append(x)
-  except Exception:continue
- fresh=[x for x in detailed if current_news(x,now,7) and racing_relevant(x) and story_key(x['title'],x['url']) not in known]
- fresh.sort(key=lambda x:editorial_score(x,names),reverse=True);current_q=qualify_parallel(fresh[:30]);fallback_q=[]
- if len(current_q)<8:
-  y=yesterday_raw(now,{x.get('url') for x in fresh});fallback_q=qualify_parallel(y[:10])
- qualified=current_q+fallback_q;save_top10(qualified,now);picks=select_and_finish(qualified,names)
- mix={k:sum(series_for(x)==k for x in picks) for k in ('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')};status=f'{VERSION}: raw={len(raw)}, fresh={len(fresh)}, current_q={len(current_q)}, fallback_q={len(fallback_q)}, final={len(picks)}, mix={mix}, Turkish={any(is_turkish_focus(x) for x in picks)}';print(status)
- if len(picks)==5:
-  write_session(picks,now);remember(picks);telegram_preview(picks,status)
+ names=roster_names();known=known_story_keys();raw=[];seen=set();meta={}
+ for t,u,s,r in racing_scout(100):
+  u=canonical_url(u);key=story_key(t,u)
+  if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'series':s,**({'turkish_rider':r} if r else {})}
+ for t,u,r in turkish_scout(50):
+  u=canonical_url(u);key=story_key(t,u)
+  if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'turkish_rider':r,'kind':('profile' if '/riders/' in u else 'news')}
+ for title,url in extract(get(NEWS),80)+extract(get(MARKET),40):
+  u=canonical_url(url);key=story_key(title,u)
+  if u not in seen and key not in known:seen.add(u);raw.append((title,u))
+ details=[]
+ for t,u in raw[:220]:
+  x=article_info(t,u);x.update(meta.get(u,{}));details.append(enrich_turkish(x))
+ now=dt.now(timezone.utc);fresh=[x for x in details if current_news(x,now,7) and racing_relevant(x)];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
+ current_q=qualify_parallel(fresh[:30],2);fallback_raw=yesterday_raw(now,{x.get('url') for x in current_q});fallback_q=qualify_parallel(fallback_raw[:10],2) if len(current_q)<8 else [];qualified=current_q+[x for x in fallback_q if x.get('url') not in {y.get('url') for y in current_q}];qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);save_top10(qualified,now);picks=select_and_finish(qualified,names);turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in ('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')}
+ OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency {VERSION}\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nAktuell voll Copy-QM qualifiziert: {len(current_q)}\nVortag voll Copy-QM qualifiziert: {len(fallback_q)}\nGesamtpool nach Racing+Semantic-QM: {len(qualified)}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nProfessional Agent Standard: V1.0\nHuman Writing Protocol: V1.0\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
+ if len(picks)==5:write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
  else:
-  invalidate_session(now,f'Fail-closed: nur {len(picks)}/5 Pakete bestanden die komplette Profi-QM-Kette.',len(picks));telegram_send(f'🏍️ Racing Agency {VERSION}: nur {len(picks)}/5 Pakete bestanden die komplette Profi-QM-Kette. Alte Freigabe-Session wurde gesperrt; kein unsicherer Beitrag wird aufgefüllt.')
- return picks
+  invalidate_session(now,'Komplette Profi-QM-Kette lieferte weniger als 5 freigabefaehige Pakete',len(picks));send_message(f'🏍️ Racing Agency {VERSION}: nur {len(picks)}/5 Pakete bestanden die komplette Profi-QM-Kette. Alte Freigabe-Session wurde gesperrt; kein unsicherer Beitrag wird aufgefüllt.')
+ print(f'{VERSION}: raw={len(details)}, fresh={len(fresh)}, current_q={len(current_q)}, fallback_q={len(fallback_q)}, final={len(picks)}, mix={mix}, Turkish={turk}')
 if __name__=='__main__':run_v8()
