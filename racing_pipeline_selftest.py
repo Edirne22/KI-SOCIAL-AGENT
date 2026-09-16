@@ -15,33 +15,34 @@ def ok(v,msg):
  if not v:raise AssertionError(msg)
 def sem_result(hard=True,language=True,hard_reasons=None,repair=None):return {'hard_ok':hard,'language_ok':language,'hard_reasons':hard_reasons or [],'repair_reasons':repair or []}
 def test_language_repair_chain():
- calls={'editor':0,'racing':0,'semantic':0};old=(a.german_editor,a.racing_review,a.semantic_review_detailed)
- try:
-  def editor(x,reasons=None):calls['editor']+=1;return 'Hook\n\nBody\n\nFrage?\n\n#MotoGP #Test #Racing #BuelentsBikeLife'
-  def racing(x,c):calls['racing']+=1;return True,[]
-  def sem(x,c):calls['semantic']+=1;return sem_result(True,calls['semantic']>1,repair=['holpriges Deutsch'] if calls['semantic']==1 else [])
-  a.german_editor,a.racing_review,a.semantic_review_detailed=editor,racing,sem;x={'title':'MotoGP race rider current test story','summary':'race rider','url':'https://example.com/2026/09/15/test'}
-  ok(a.qualify_copy(x),'language repair should pass');ok(calls=={'editor':2,'racing':2,'semantic':2},f'wrong repair chain {calls}')
- finally:a.german_editor,a.racing_review,a.semantic_review_detailed=old
+ from unittest.mock import patch
+ calls={'editor':0,'racing':0,'semantic':0}
+ def editor(x,reasons=None):
+  calls['editor']+=1
+  return 'Hook\n\nHolpriger Satz.\n\nFrage?\n\n#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife'
+ def racing(x,c):calls['racing']+=1;return True,[]
+ def sem(x,c):calls['semantic']+=1;return sem_result(True,'Holpriger' not in c,repair=['holpriges Deutsch'] if 'Holpriger' in c else [])
+ with patch.object(a,'german_editor',editor),patch.object(a,'racing_review',racing),patch.object(a,'semantic_review_detailed',sem),patch.object(a,'generate',return_value=json.dumps({'patches':[{'old':'Holpriger Satz.','new':'Guter Satz.'}]})) as repair:
+  x={'title':'MotoGP race rider current test story','summary':'race rider','url':'https://example.com/2026/09/15/test'}
+  ok(a.qualify_copy(x),'language patch should pass')
+  ok(calls=={'editor':1,'racing':2,'semantic':2} and repair.call_count==1,f'wrong patch chain {calls}')
+
 def test_hard_fact_feedback_then_pass():
- calls={'editor':0,'racing':0,'semantic':0,'research':0};old=(a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source)
- try:
-  a.german_editor=lambda x,reasons=None:(calls.__setitem__('editor',calls['editor']+1) or 'Hook\n\nBody\n\nFrage?\n\n#MotoGP #Racing #BuelentsBikeLife')
-  a.racing_review=lambda x,c:(calls.__setitem__('racing',calls['racing']+1) or (True,[]))
-  def sem(x,c):calls['semantic']+=1;return sem_result(calls['semantic']>1,True,['erfundene Zahl'] if calls['semantic']==1 else [])
-  def research(x,reasons):calls['research']+=1;x['research_retry_count']=calls['research'];return x
-  a.semantic_review_detailed,a.reanalyse_source=sem,research;x={'title':'MotoGP race rider fact test','summary':'race rider','url':'https://example.com/2026/09/15/fact'}
-  ok(a.qualify_copy(x),'hard fact should return through research/editor and recover');ok(calls=={'editor':2,'racing':2,'semantic':2,'research':1},f'feedback chain wrong {calls}')
- finally:a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source=old
+ from unittest.mock import patch
+ caption='Hook\n\nUnbelegte Aussage.\n\nFrage?\n\n#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife'
+ with patch.object(a,'german_editor',return_value=caption) as editor,patch.object(a,'racing_review',return_value=(True,[])),patch.object(a,'semantic_review_detailed',side_effect=[sem_result(False,True,['unbelegt']),sem_result()]) as semantic,patch.object(a,'reanalyse_source',side_effect=AssertionError('must not research')),patch.object(a,'generate',return_value=json.dumps({'patches':[{'old':'Unbelegte Aussage.','new':'Racing ist spannend.'}]})) as repair:
+  x={'title':'MotoGP race rider fact test','summary':'race rider'}
+  ok(a.qualify_copy(x),'fact patch should recover')
+  ok(editor.call_count==1 and repair.call_count==1 and semantic.call_count==2,'patch budget wrong')
+
 def test_hard_fact_still_fail_closed():
- calls={'semantic':0,'research':0};old=(a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source)
- try:
-  a.german_editor=lambda x,reasons=None:'Hook\n\nBody\n\nFrage?\n\n#MotoGP #Racing #BuelentsBikeLife';a.racing_review=lambda x,c:(True,[])
-  def sem(x,c):calls['semantic']+=1;return sem_result(False,True,['erfundene Zahl'])
-  def research(x,reasons):calls['research']+=1;return x
-  a.semantic_review_detailed,a.reanalyse_source=sem,research;x={'title':'MotoGP race rider fact test','summary':'race rider','url':'https://example.com/2026/09/15/fact'}
-  ok(not a.qualify_copy(x),'persistent hard fact must still fail closed');ok(calls=={'semantic':3,'research':2},f'wrong retry ceiling {calls}')
- finally:a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source=old
+ from unittest.mock import patch
+ caption='Hook\n\nBody\n\nFrage?\n\n#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife'
+ with patch.object(a,'german_editor',return_value=caption) as editor,patch.object(a,'racing_review',return_value=(True,[])),patch.object(a,'semantic_review_detailed',return_value=sem_result(False,True,['erfundene Beziehung'])) as semantic,patch.object(a,'generate',return_value='{}') as repair,patch.object(a,'reanalyse_source',side_effect=AssertionError('must not research')):
+  x={'title':'MotoGP race rider fact test','summary':'race rider'}
+  ok(not a.qualify_copy(x),'persistent hard fact must fail closed')
+  ok(semantic.call_count==3 and repair.call_count==2 and editor.call_count==1,'wrong retry ceiling')
+
 def test_series_and_hashtags():
  cases=[({'title':'Agius fastest in Moto2 Practice','summary':'Moto2 Practice at Misano','url':'https://www.motogp.com/en/news/2026/09/15/a'},'Moto2','#Moto2'),({'title':'Quiles takes Moto3 pole','summary':'Moto3 qualifying','url':'https://www.motogp.com/en/news/2026/09/15/b'},'Moto3','#Moto3'),({'title':'Brad Binder MotoGP update','summary':'Binder in MotoGP','url':'https://example.com/2026/09/15/c'},'MotoGP','#MotoGP')]
  for item,series,tag in cases:ok(a.series_for(item)==series,f'{item["title"]} -> {a.series_for(item)}');ok(tag in a.hashtags(item),f'missing {tag}')
@@ -71,14 +72,25 @@ def test_provider_backoff():
   llm.requests.request=lambda *args,**kwargs:(c.__setitem__('n',c['n']+1) or seq.pop(0));llm.time.sleep=lambda _:(c.__setitem__('sleep',c['sleep']+1));out=llm._request_json('POST','https://example.com',{}, {},1,max_retries=2);ok(out=={'ok':True} and c=={'n':2,'sleep':1},f'provider retry {c}')
  finally:llm.requests.request,llm.time.sleep=old_req,old_sleep
 def test_session_fail_closed():
- old=a.SESSION
- try:
-  with tempfile.TemporaryDirectory() as td:
-   a.SESSION=Path(td)/'session.md';a.SESSION.write_text('Approval-Status: READY\nQM: PASS\n## Beitrag 1\nALT',encoding='utf-8');a.invalidate_session(datetime(2026,9,16,tzinfo=timezone.utc),'nur 3/5',3);text=a.SESSION.read_text(encoding='utf-8');ok('QM: FAIL' in text and 'Approval-Status: BLOCKED' in text and '## Beitrag' not in text,'stale session survived')
- finally:a.SESSION=old
+ from unittest.mock import patch
+ x={'title':'MotoGP race current story','summary':'race rider','semantic_qm':'PASS','racing_qm':'PASS','technical_qm_deferred':True}
+ with patch.object(a,'german_editor',return_value=''),patch.object(a,'racing_relevant',return_value=True):
+  ok(not a.qualify_copy(x),'empty editor must reject')
+  ok(x['semantic_qm']=='FAIL' and x['racing_qm']=='FAIL' and not x['technical_qm_deferred'],'stale qualification status survived')
+
 def test_static_contracts():
- src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
- ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL RETRY' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
+ receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8')
+ workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8')
+ ok(a.VERSION=='V8.6','runtime version mismatch')
+ ok('MIN_SESSION_VERSION=18' in receiver,'approval compatibility changed')
+ ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow,'workflow preflight incomplete')
+ before=a._editor_prompt
+ install(a)
+ ok(a._editor_prompt is before,'installation must be idempotent')
+ item={'title':'Agius takes Moto2 pole','summary':'Agius fastest'}
+ prompt=a._editor_prompt(item)
+ ok('CANONICAL FACT OBJECT' in prompt and 'Senna' not in prompt,'editor facts expanded from roster')
+
 def main():
- test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
+ test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.6 + PATCH LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()

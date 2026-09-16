@@ -1,6 +1,15 @@
 """Offline tests for diagnostic audit. No network, LLM, Telegram, memory or publisher."""
 from pathlib import Path
 import tempfile,os
+from contextlib import contextmanager
+
+@contextmanager
+def working_directory(path):
+ old=Path.cwd()
+ try:
+  os.chdir(path)
+  yield
+ finally:os.chdir(old)
 import motogp_pipeline_audit as a
 
 def check(v,msg):
@@ -9,8 +18,8 @@ def check(v,msg):
 def row(pos,name=None,**kw):return {'position':pos,'rider':name or f'Rider {pos}','series':'MotoGP',**kw}
 
 def main():
- with tempfile.TemporaryDirectory() as d:
-  os.chdir(d);a.ART=Path('artifacts');a.AUDIT=a.ART/'motogp-pipeline-audit.jsonl';a.SUMMARY=a.ART/'motogp-stage-summary.json';a.REJECTIONS=a.ART/'motogp-rejections.jsonl';a.TOP10=a.ART/'motogp-top10.json'
+ with tempfile.TemporaryDirectory() as d, working_directory(d):
+  a.ART=Path('artifacts');a.AUDIT=a.ART/'motogp-pipeline-audit.jsonl';a.SUMMARY=a.ART/'motogp-stage-summary.json';a.REJECTIONS=a.ART/'motogp-rejections.jsonl';a.TOP10=a.ART/'motogp-top10.json'
   roster=[f'Rider {i}' for i in range(1,23)]
   # 270 raw records, including 22 valid riders. Duplicates must not prevent deterministic Top 10.
   rows=[row(i,f'Rider {i}') for i in range(1,23)]

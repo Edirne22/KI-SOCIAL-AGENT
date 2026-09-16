@@ -14,6 +14,7 @@ def rider_matches(text):
  return list(dict.fromkeys(out))
 def rider_tag(rider):return '#'+re.sub(r'[^A-Za-z0-9]','',rider)
 def repair_rider_hashtags(item,caption):
+ if item.get('canonical_fact_object') is not None:return caption
  source=(item.get('title') or '')+' '+(item.get('summary') or '');riders=rider_matches(source)[:2]
  if not riders:return caption
  tags=re.findall(r'#[A-Za-z0-9ÄÖÜäöüß]+',caption);compact={fold(t[1:]) for t in tags};missing=[rider_tag(r) for r in riders if fold(re.sub(r'[^A-Za-z0-9]','',r)) not in compact]
@@ -39,6 +40,9 @@ def review(item,caption):
  tags=re.findall(r'#[A-Za-z0-9ÄÖÜäöüß]+',caption)
  if not (4<=len(tags)<=7):errors.append('Hashtag-Anzahl nicht 4–7')
  source_riders=rider_matches(source);caption_riders=rider_matches(low)
+ if item.get('canonical_fact_object') is not None:
+  source_riders=[r['value'] for r in item['canonical_fact_object']['riders']]
+  caption_riders=[r for r in source_riders if re.search(r'(?<!\w)'+re.escape(fold(r))+r'(?!\w)',low)]
  if source_riders and not set(source_riders)&set(caption_riders):errors.append('Text nicht an den Fahrer der Quelle gebunden')
  compact={fold(t[1:]) for t in tags}
  for rider in source_riders[:2]:

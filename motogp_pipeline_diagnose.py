@@ -30,8 +30,8 @@ def run_copy_qm(run_id,items):
   status='PASS' if ok else ('TECHNICAL-DEFER' if x.get('technical_qm_deferred') or x.get('semantic_qm')=='TECHNICAL-DEFER' else 'REJECT')
   if ok:qualified.append(x)
   elif status=='TECHNICAL-DEFER':technical_defer+=1;rejection(run_id,'copy_qm',x,'LOW_CONFIDENCE',x.get('diagnostic_qm_exception') or 'Semantic-QM provider technisch nicht verfuegbar','technical_defer')
-  else:rejection(run_id,'copy_qm',x,'QUALITY_FILTER','; '.join((x.get('qm_errors') or [])+(x.get('semantic_errors') or [])) or 'Copy-QM nicht bestanden','excluded')
-  rows.append({'status':status,'title':x.get('title',''),'url':x.get('url',''),'series':a.series_for(x),'semantic_qm':x.get('semantic_qm'),'racing_qm':x.get('racing_qm'),'rewrite_count':x.get('rewrite_count',0),'qm_errors':x.get('qm_errors',[]),'semantic_errors':x.get('semantic_errors',[]),'technical_error':x.get('diagnostic_qm_exception')})
+  else:rejection(run_id,'copy_qm',x,'QUALITY_FILTER','; '.join((x.get('qm_errors') or [])+(x.get('semantic_errors') or [])+(x.get('guard_errors') or [])) or 'Copy-QM nicht bestanden','excluded')
+  rows.append({'status':status,'title':x.get('title',''),'url':x.get('url',''),'series':a.series_for(x),'semantic_qm':x.get('semantic_qm'),'racing_qm':x.get('racing_qm'),'rewrite_count':x.get('rewrite_count',0),'qm_errors':x.get('qm_errors',[]),'semantic_errors':x.get('semantic_errors',[]),'technical_error':x.get('diagnostic_qm_exception'),'pipeline_version':x.get('pipeline_version'),'canonical_fact_object':x.get('canonical_fact_object'),'guard_errors':x.get('guard_errors',[]),'guard_history':x.get('guard_history',[]),'repair_history':x.get('repair_history',[])})
  ARTIFACT_DIR.mkdir(parents=True,exist_ok=True)
  QM_ARTIFACT.write_text(json.dumps({'run_id':run_id,'input_count':len(items),'pass_count':len(qualified),'technical_defer_count':technical_defer,'reject_count':len(items)-len(qualified)-technical_defer,'items':rows},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  return qualified,technical_defer

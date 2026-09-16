@@ -15,6 +15,10 @@ jobs:
       - name: Offline deterministic audit tests
         run: |
           python -m py_compile motogp_pipeline_audit.py motogp_pipeline_audit_selftest.py motogp_pipeline_diagnose.py motogp_date_recovery_selftest.py
+          python -m py_compile racing_cfo.py racing_v855_hardening.py racing_cfo_selftest.py racing_semantic_qm.py motogp_quality_manager.py
+          python racing_cfo_selftest.py
+          python racing_pipeline_selftest.py
+          python racing_v85_selftest.py
           python motogp_pipeline_audit_selftest.py
           python motogp_date_recovery_selftest.py
       - name: Read-only live diagnostic through Copy-QM
