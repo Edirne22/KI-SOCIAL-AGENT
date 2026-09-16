@@ -5,7 +5,9 @@ from datetime import datetime,timezone
 from collections import Counter
 import motogp_content_agency_v2 as a
 from racing_v855_hardening import install
+from motogp_date_recovery_patch import install as install_date_recovery
 from motogp_pipeline_audit import new_run_id,stage,rejection,write_summary
+install_date_recovery(a)
 install(a)
 
 def main():
@@ -37,8 +39,7 @@ def main():
   if a.racing_relevant(x):relevant.append(x)
   else:rejection(run_id,'racing_relevance',x,'QUALITY_FILTER','not-racing-or-promo','excluded')
  st.append(stage(run_id,'racing_relevance',len(fresh),len(relevant),rejected_count=len(fresh)-len(relevant)))
- # Important boundary: do NOT call editor/QM here. This diagnostic proves the pre-QM loss independently.
  st.append(stage(run_id,'pre_qm_boundary',len(relevant),len(relevant),roster_checked_count=len(names)))
- summary=write_summary(run_id,st);summary['freshness_reasons']=dict(reason_counts);write_summary(run_id,st+[{'freshness_reasons':dict(reason_counts)}])
+ write_summary(run_id,st+[{'freshness_reasons':dict(reason_counts)}])
  print('DIAG RUN',run_id,'raw',len(raw),'details',len(details),'fresh',len(fresh),'relevant',len(relevant),'roster',len(names))
 if __name__=='__main__':main()
