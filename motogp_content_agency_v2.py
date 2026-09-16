@@ -1,4 +1,4 @@
-"""Motorcycle Racing Agency V8.5.3 – source-locked series, freshness diagnostics, fail-closed QM."""
+"""Motorcycle Racing Agency V8.5.4 – source-locked series, freshness diagnostics, QM feedback loop."""
 from motogp_content_agency import *
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
@@ -10,7 +10,7 @@ from datetime import timedelta,datetime as dt,timezone
 from concurrent.futures import ThreadPoolExecutor,as_completed
 from collections import Counter
 import json,re,time
-VERSION='V8.5.3';TOP10=Path('memory/RACING_TOP10_POOL.json')
+VERSION='V8.5.4';TOP10=Path('memory/RACING_TOP10_POOL.json')
 VALID_SERIES=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
 TURKISH_ALIASES={'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu'),'Can Oncu':('can oncu','can öncü'),'Deniz Oncu':('deniz oncu','deniz öncü'),'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu'),'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu')}
 RIDERS_V2=list(TURKISH_ALIASES)+['Marc Marquez','Alex Marquez','Marco Bezzecchi','Jorge Martin','Pedro Acosta','Francesco Bagnaia','Fabio Quartararo','Jack Miller','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado','Alvaro Bautista','Miguel Oliveira','Alberto Surra','Sergio Garcia','Iker Lecuona','Andrea Iannone','Sam Lowes','Alex Lowes','Jonathan Rea','Stefano Manzi','Jeremy Alcoba','Marcos Ramirez']
@@ -41,9 +41,7 @@ def _transfer_destination(story):
  if ('worldsbk' in s or 'world superbike' in s) and any(p in s for p in ('join worldsbk','joins worldsbk','to worldsbk','worldsbk switch','moves to worldsbk','move to worldsbk','switch to worldsbk')):return 'WorldSBK'
  return ''
 def lock_source_series(x,declared=None):
- """Lock a dedicated official feed's class BEFORE any editor/QM call."""
- d=(declared or x.get('source_series') or x.get('series') or '').strip()
- transfer=_transfer_destination(' '.join((x.get('title',''),x.get('summary',''))))
+ d=(declared or x.get('source_series') or x.get('series') or '').strip();transfer=_transfer_destination(' '.join((x.get('title',''),x.get('summary',''))))
  if transfer:x['series']=transfer;x['series_locked']=True;x['series_origin']='explicit-transfer';return x
  if d in VALID_SERIES:x['series']=d;x['source_series']=d;x['series_locked']=True;x['series_origin']='official-feed';return x
  return x
@@ -94,9 +92,7 @@ def freshness_diagnostics(items,now):
  reasons=Counter(freshness_reason(x,now) for x in items);by_series={}
  for s in VALID_SERIES:
   rows=[x for x in items if series_for(x)==s];by_series[s]={'raw':len(rows),'fresh':sum(freshness_reason(x,now)=='fresh' for x in rows),'missing_date':sum(freshness_reason(x,now)=='missing-date' for x in rows),'old':sum(freshness_reason(x,now)=='older-than-7d' for x in rows),'promo_irrelevant':sum(freshness_reason(x,now)=='not-racing-or-promo' for x in rows)}
- print('FRESHNESS DIAG reasons='+json.dumps(dict(reasons),ensure_ascii=False,sort_keys=True))
- print('FRESHNESS DIAG by_series='+json.dumps(by_series,ensure_ascii=False,sort_keys=True))
- return reasons,by_series
+ print('FRESHNESS DIAG reasons='+json.dumps(dict(reasons),ensure_ascii=False,sort_keys=True));print('FRESHNESS DIAG by_series='+json.dumps(by_series,ensure_ascii=False,sort_keys=True));return reasons,by_series
 def is_feature(x):return any(w in fold(article_text(x)) for w in FEATURE_WORDS)
 def racing_relevant(x):
  text=fold(article_text(x));return 'worldwcr' not in text and not any(w in text for w in PROMO_WORDS) and bool(riders_in(text) or detect_turkish_rider(x) or any(w in text for w in RACING_WORDS))
@@ -111,9 +107,9 @@ def language_sane(caption):
  low=fold(caption);return not any(fold(x) in low for x in BAD_GERMAN) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:'))
 def _editor_prompt(x,repair_reasons=None):
  enrich_turkish(x);repair=''
- if repair_reasons:repair='\nSPRACH-/STIL-REPARATUR. Behebe diese Punkte. FAKTEN DUERFEN WEDER ERGAENZT NOCH VERAENDERT WERDEN:\n- '+'\n- '.join(repair_reasons[:10])+'\n'
+ if repair_reasons:repair='\nRUECKGABE AUS DER QM-KETTE. Analysiere die Originalfakten erneut und behebe exakt diese Punkte. FAKTEN DUERFEN WEDER ERGAENZT NOCH VERAENDERT WERDEN:\n- '+'\n- '.join(repair_reasons[:10])+'\n'
  title=' '.join(str(x.get('title','')).split());summary=' '.join(str(x.get('summary','')).split());series=series_for(x);turkish=x.get('turkish_rider') or 'NEIN'
- return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine direkten oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein kuenstlicher Hype. 2–4 informative Saetze und danach eine konkrete Community-Frage. Keine Hashtags erzeugen.{repair}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
+ return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine direkten oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. 2–4 informative Saetze und danach eine konkrete Community-Frage. Keine Hashtags erzeugen.{repair}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
 def _parse_editor_json(raw):
  raw=(raw or '').strip();raw=re.sub(r'^```(?:json)?\s*|\s*```$','',raw,flags=re.I|re.S);o=json.loads(raw);hook=str(o.get('hook','')).strip();body=str(o.get('body','')).strip();q=str(o.get('question','')).strip()
  if not hook or not body or '?' not in q:raise ValueError('editor JSON missing hook/body/question')
@@ -129,25 +125,35 @@ def german_editor(x,repair_reasons=None):
   except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:last=e;time.sleep(.5)
   except Exception as e:last=e;break
  print('EDITOR EXCEPTION:',type(last).__name__,str(last)[:180]);return ''
-def qualify_copy(x):
+def reanalyse_source(x,reasons):
+ """Return a failed item to research, refresh official facts, preserve deterministic metadata, then resend to editor."""
+ keep={k:x.get(k) for k in ('source_series','series','series_locked','series_origin','turkish_rider','kind','fallback_yesterday') if x.get(k) not in (None,'')}
+ try:
+  fresh=article_info(x.get('title',''),x.get('url',''))
+  for k in ('title','summary','preview','published_at'):
+   if fresh.get(k):x[k]=fresh[k]
+ except Exception as e:print('SOURCE RE-ANALYSIS FETCH FAIL:',type(e).__name__,str(e)[:160])
+ x.update(keep);lock_source_series(x,keep.get('source_series') or keep.get('series'));x['research_retry_count']=x.get('research_retry_count',0)+1;x['last_qm_return']=list(reasons or [])[:10]
+ print(f'QM → RESEARCH → EDITOR retry={x["research_retry_count"]}:',x.get('title','')[:90]);return x
+def qualify_copy(x,initial_reasons=None):
  if not racing_relevant(x):return False
- # Freeze the class before the first editor prompt. No downstream stage may silently reclassify it.
- lock_source_series(x)
- repair_reasons=None
+ lock_source_series(x);repair_reasons=initial_reasons
  for attempt in (1,2,3):
   x['caption']=german_editor(x,repair_reasons)
   if not x['caption']:repair_reasons=['Redakteur lieferte keinen gueltigen strukturierten Text'];print(f'EDITOR REPAIR attempt={attempt}:',x.get('title','')[:90]);continue
   r_ok,r_err=racing_review(x,x['caption']);x['qm_errors']=r_err
   if not r_ok:
-   if attempt<3:repair_reasons=['Racing-QM: '+e for e in r_err];print(f'RACING-QM REPAIR attempt={attempt}:',x.get('title','')[:90],'|','; '.join(r_err)[:500]);continue
-   print('RACING-QM HARD REJECT:',x.get('title','')[:90],'|','; '.join(r_err)[:600]);break
+   if attempt<3:repair_reasons=['Racing-QM: '+e for e in r_err];reanalyse_source(x,repair_reasons);continue
+   print('RACING-QM HARD REJECT after feedback loop:',x.get('title','')[:90],'|','; '.join(r_err)[:600]);break
   sem=semantic_review_detailed(x,x['caption']);x['semantic_errors']=sem['hard_reasons']+sem['repair_reasons']
-  if not sem['hard_ok']:print(f'SEMANTIC HARD-FACT REJECT attempt={attempt}:',x.get('title','')[:90],'|','; '.join(sem['hard_reasons'])[:700]);break
+  if not sem['hard_ok']:
+   if attempt<3:repair_reasons=['Fakten-QM: '+e for e in sem['hard_reasons']];reanalyse_source(x,repair_reasons);continue
+   print(f'SEMANTIC HARD-FACT REJECT after feedback loop attempt={attempt}:',x.get('title','')[:90],'|','; '.join(sem['hard_reasons'])[:700]);break
   if not sem['language_ok']:
-   if attempt<3:repair_reasons=['Sprach-QM: '+e for e in sem['repair_reasons']];print(f'LANGUAGE REPAIR attempt={attempt}:',x.get('title','')[:90],'|','; '.join(sem['repair_reasons'])[:500]);continue
+   if attempt<3:repair_reasons=['Sprach-QM: '+e for e in sem['repair_reasons']];print(f'LANGUAGE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
    break
   if not language_sane(x['caption']):
-   if attempt<3:repair_reasons=['Deutsch/PR-Sprech deterministisch bereinigen'];continue
+   if attempt<3:repair_reasons=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
    break
   x['semantic_qm']='PASS';x['racing_qm']='PASS';x['rewrite_count']=attempt-1;print(f'FULL COPY-QM PASS attempt={attempt}:',x.get('title','')[:90]);return True
  x['semantic_qm']='FAIL';x['rewrite_count']=min(2,attempt-1);return False
@@ -169,8 +175,15 @@ def finish_item(x,i):
  x['instagram_media']=prepare_media(x,i)
  if not x['instagram_media']:return False
  x['story_key']=story_key(x['title'],x['url']);ok,errs=chief_review('Motorcycle Racing',x,x['caption'],x['instagram_media'],x['url'],racing_review);x['chief_errors']=errs
- if not ok:print('CHIEF-QM REJECT:',x.get('title','')[:90],'|','; '.join(errs)[:600])
- return ok
+ if ok:return True
+ print('CHIEF-QM → EDITOR RETURN:',x.get('title','')[:90],'|','; '.join(errs)[:600])
+ # One final controlled return. The complete Racing + Semantic + Chief chain is rerun; never auto-pass.
+ if x.get('chief_retry_count',0)>=1:return False
+ x['chief_retry_count']=1;reanalyse_source(x,['Chief-QM: '+e for e in errs])
+ if not qualify_copy(x,['Chief-QM: '+e for e in errs]):return False
+ ok2,errs2=chief_review('Motorcycle Racing',x,x['caption'],x['instagram_media'],x['url'],racing_review);x['chief_errors']=errs2
+ if not ok2:print('CHIEF-QM FINAL REJECT:',x.get('title','')[:90],'|','; '.join(errs2)[:600])
+ return ok2
 def load_pool():
  try:return json.loads(TOP10.read_text(encoding='utf-8'))
  except Exception:return {'version':1,'days':{}}
@@ -206,13 +219,13 @@ def select_and_finish(qualified,names):
   if b_ok and finish_item(x,len(picks)+1):picks.append(x);seen_fp.add(fp)
  return picks
 def write_session(items,now):
- lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Semantic-Fakten-QM: PASS','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
- for i,x in enumerate(items,1):lines += [f'## Beitrag {i}','QM: PASS','Racing-QM: PASS','Semantic-Fakten-QM: PASS',f'Neufassungen: {x.get("rewrite_count",0)}',f'Herkunft: {"Top-20 vom Vortag" if x.get("fallback_yesterday") else "Aktuell"}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Turkish Riders" if is_turkish_focus(x) else series_for(x)}',f'Serie: {series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
+ lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Buelents-Bike-Life-Voice: VERBINDLICH','Semantic-Fakten-QM: PASS','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
+ for i,x in enumerate(items,1):lines += [f'## Beitrag {i}','QM: PASS','Racing-QM: PASS','Semantic-Fakten-QM: PASS',f'Neufassungen: {x.get("rewrite_count",0)}',f'QM-Ruecklaeufe: {x.get("research_retry_count",0)+x.get("chief_retry_count",0)}',f'Herkunft: {"Top-20 vom Vortag" if x.get("fallback_yesterday") else "Aktuell"}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Turkish Riders" if is_turkish_focus(x) else series_for(x)}',f'Serie: {series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
  SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
 def invalidate_session(now,reason,passed=0):
  lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','QM: FAIL','Approval-Status: BLOCKED',f'Session-Timestamp: {int(now.timestamp())}',f'Bestandene-Pakete: {passed}/5',f'Grund: {reason}','','Keine Freigabe moeglich. Erst ein neuer Lauf mit 5/5 PASS erzeugt eine freigabefaehige Session.'];SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
 def telegram_preview(items,turk):
- mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – 5 qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Sprache: bis zu 2 Reparaturschleifen',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if turk else '🇹🇷 Heute keine geeignete neue Turkish-Rider-Story gefunden'),'']
+ mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – 5 qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Fehler gehen zurück an Research/Editor statt sofort verloren zu sein',f'✍️ Human Writing Protocol + Bülents Bike Life Voice: VERBINDLICH',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if turk else '🇹🇷 Heute keine geeignete neue Turkish-Rider-Story gefunden'),'']
  for i,x in enumerate(items,1):msg += [f'{i}️⃣ {"↩️ Top-20 vom Vortag | " if x.get("fallback_yesterday") else ""}[{series_for(x)}] {x["caption"]}',f'🔗 Quelle: {x["url"]}','']
  msg+=['Freigabe: motogp 1–5 / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
 def run_v8():
@@ -231,8 +244,8 @@ def run_v8():
   x=article_info(t,u);m=meta.get(u,{});x.update(m);lock_source_series(x,m.get('source_series'));details.append(enrich_turkish(x))
  now=dt.now(timezone.utc);diag,_=freshness_diagnostics(details,now);fresh=[x for x in details if freshness_reason(x,now)=='fresh'];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
  current_q=qualify_parallel(fresh[:60],3);fallback_raw=yesterday_raw(now,{x.get('url') for x in current_q});fallback_q=qualify_parallel(fallback_raw[:20],3) if len(current_q)<15 else [];qualified=current_q+[x for x in fallback_q if x.get('url') not in {y.get('url') for y in current_q}];qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);save_top10(qualified,now);picks=select_and_finish(qualified,names);turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in VALID_SERIES}
- OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency {VERSION}\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nFreshness missing-date: {diag.get("missing-date",0)}\nFreshness >7 Tage: {diag.get("older-than-7d",0)}\nFreshness Promo/irrelevant: {diag.get("not-racing-or-promo",0)}\nAktuell voll Copy-QM qualifiziert: {len(current_q)}\nVortag voll Copy-QM qualifiziert: {len(fallback_q)}\nGesamtpool nach Racing+Semantic-QM: {len(qualified)}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nFakten-QM: NULL-TOLERANZ\nSprachreparaturen: bis zu 2\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
+ OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency {VERSION}\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nFreshness missing-date: {diag.get("missing-date",0)}\nFreshness >7 Tage: {diag.get("older-than-7d",0)}\nFreshness Promo/irrelevant: {diag.get("not-racing-or-promo",0)}\nAktuell voll Copy-QM qualifiziert: {len(current_q)}\nVortag voll Copy-QM qualifiziert: {len(fallback_q)}\nGesamtpool nach Racing+Semantic-QM: {len(qualified)}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nFakten-QM: NULL-TOLERANZ + Rueckgabeschleife\nHuman Writing Protocol: VERBINDLICH\nBuelents Bike Life Voice: VERBINDLICH\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
  if len(picks)==5:write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
- else:invalidate_session(now,'Komplette Profi-QM-Kette lieferte weniger als 5 freigabefaehige Pakete',len(picks));send_message(f'🏍️ Racing Agency {VERSION}: nur {len(picks)}/5 Pakete bestanden. Fakten-QM bleibt Null-Toleranz; reparierbare Sprache erhielt bis zu zwei Korrekturschleifen.')
+ else:invalidate_session(now,'Komplette Profi-QM-Kette lieferte trotz Rueckgabeschleifen weniger als 5 freigabefaehige Pakete',len(picks));send_message(f'🏍️ Racing Agency {VERSION}: nur {len(picks)}/5 Pakete bestanden. Fehler wurden vor dem finalen Reject an Research/Editor zurückgegeben; Fakten-QM bleibt Null-Toleranz.')
  print(f'{VERSION}: raw={len(details)}, fresh={len(fresh)}, current_q={len(current_q)}, fallback_q={len(fallback_q)}, final={len(picks)}, mix={mix}, Turkish={turk}')
 if __name__=='__main__':run_v8()
