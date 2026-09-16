@@ -1,9 +1,15 @@
-"""Agent 16 / Racing Scout: official MotoGP-, WorldSBK- and WorldSSP sources – V8.4.6.5."""
+"""Agent 16 / Racing Scout: official MotoGP-, Moto2-, Moto3-, WorldSBK- and WorldSSP sources – V8.5.3."""
 import re,requests,html,unicodedata
 from urllib.parse import urljoin
 UA={'User-Agent':'Mozilla/5.0 KI-SOCIAL-AGENT Motorcycle Racing Agency'}
-SOURCES=[('MotoGP','https://www.motogp.com/en/news'),('WorldSBK','https://www.worldsbk.com/en/news'),('WorldSSP','https://www.worldsbk.com/en/news/ssp')]
-# Canonical Turkish spelling plus all common ASCII/international spellings used by official sites, URLs and feeds.
+# Separate official class pages are intentional: the combined MotoGP news page only exposes a
+# small rotating subset. Class feeds create a deeper current reserve without relaxing freshness/QM.
+SOURCES=[
+ ('MotoGP','https://www.motogp.com/en/news'),
+ ('Moto2','https://www.motogp.com/en/news/Moto2'),
+ ('Moto3','https://www.motogp.com/en/news/Moto3'),
+ ('WorldSBK','https://www.worldsbk.com/en/news'),
+ ('WorldSSP','https://www.worldsbk.com/en/news/ssp')]
 WATCHLIST={
  'Toprak Razgatlıoğlu':('Toprak Razgatlıoğlu','Toprak Razgatlioglu','Toprak Razgatlıoglu','Toprak Razgatliğlu','Razgatlıoğlu','Razgatlioglu'),
  'Can Öncü':('Can Öncü','Can Oncu','C. Öncü','C. Oncu','Öncü','Oncu'),
@@ -20,12 +26,10 @@ def fold(s):
  return ''.join(ch for ch in s if not unicodedata.combining(ch)).replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def rider_for(text):
  low=fold(text)
- # Full-name variants first so the shared surname Öncü/Oncu cannot confuse Can and Deniz.
  for rider,aliases in WATCHLIST.items():
   for alias in aliases:
    a=fold(alias)
    if ' ' in a and len(a)>=5 and re.search(r'(?<![a-z])'+re.escape(a)+r'(?![a-z])',low):return rider
- # Bare Öncü/Oncu is only safe when another clue identifies Can; otherwise do not guess.
  if re.search(r'(?<![a-z])(can|c\.)\s+oncu(?![a-z])',low):return 'Can Öncü'
  return ''
 def classify_series(default_series,title,url):
@@ -34,12 +38,16 @@ def classify_series(default_series,title,url):
  if re.search(r'\b(to|into|joins?|move[sd]? to|challenge in)\s+(the\s+)?worldsbk\b',text) or 'new challenge in worldsbk' in text:return 'WorldSBK'
  if re.search(r'\b(to|into|joins?|move[sd]? to|seat for)\s+(the\s+)?motogp\b',text) or 'motogp seat' in text:return 'MotoGP'
  if 'worldssp' in text or 'world supersport' in text or 'supersport' in text or 'wssp' in text:return 'WorldSSP'
- if 'motogp' in text or 'moto2' in text or 'moto3' in text:return 'MotoGP'
+ # Preserve the actual GP class. Do not collapse Moto2/Moto3 into MotoGP.
+ if re.search(r'(?<![a-z0-9])moto3(?![a-z0-9])',text):return 'Moto3'
+ if re.search(r'(?<![a-z0-9])moto2(?![a-z0-9])',text):return 'Moto2'
+ if re.search(r'(?<![a-z0-9])motogp(?![a-z0-9])',text):return 'MotoGP'
  return default_series
 def _anchors(series,base,limit):
  out=[];seen=set()
  try:r=requests.get(base,headers=UA,timeout=30);r.raise_for_status();page=r.text
- except Exception:return out
+ except Exception as e:
+  print(f'RACING SCOUT SOURCE FAIL {series}: {type(e).__name__}: {str(e)[:120]}');return out
  for href,title in re.findall(r'href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',page,re.I|re.S):
   t=clean(title);u=urljoin(base,href)
   if len(t)<20 or u in seen or '/news/' not in u:continue
@@ -49,7 +57,9 @@ def _anchors(series,base,limit):
 def racing_scout(limit_per_source=50):
  out=[];seen=set()
  for series,base in SOURCES:
-  for row in _anchors(series,base,limit_per_source):
+  rows=_anchors(series,base,limit_per_source)
+  print(f'RACING SCOUT {series}: {len(rows)} candidates')
+  for row in rows:
    if row[1] in seen:continue
    seen.add(row[1]);out.append(row)
  return out
