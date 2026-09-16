@@ -1,12 +1,36 @@
 """V8.6 runtime hardening, retaining the existing CFO architecture."""
 import copy
 import json
+import re
 import time
+
 from racing_cfo import (SERIES, build_cfo, validate_cfo, select_series,
                         guard_errors, apply_patch, tags)
 from racing_semantic_qm import reset_caption_cache
 
 VALID = tuple(SERIES)
+
+
+def _parse_patch_payload(raw):
+    """Parse a provider patch response into a strict {'patches': [...]} object."""
+    if not isinstance(raw, str):
+        raise ValueError('patch payload must be a string')
+    text = raw.strip()
+    if not text:
+        raise ValueError('patch payload is empty')
+    text = re.sub(r'```(?:json)?\s*', '', text, flags=re.I)
+    text = re.sub(r'\s*```\s*$', '', text, flags=re.I | re.S)
+    decoder = json.JSONDecoder()
+    for i, ch in enumerate(text):
+        if ch != '{':
+            continue
+        try:
+            value, _ = decoder.raw_decode(text[i:])
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, dict) and set(value.keys()) == {'patches'}:
+            return value
+    raise ValueError('patch response is not a JSON object with patches only')
 
 
 def install(a):
@@ -58,11 +82,15 @@ Antworte ausschliesslich JSON: {{"patches":[{{"old":"exakter vorhandener Text","
         audit = {'before_sha256': __import__('hashlib').sha256(caption.encode()).hexdigest()}
         try:
             raw = a.generate('final_captions', p)
-            result = apply_patch(caption, raw)
-            if result == caption:
+            payload = _parse_patch_payload(raw)
+            patches = payload['patches']
+            if not isinstance(patches, list) or not 1 <= len(patches) <= 8:
+                raise ValueError('patches must be a list with 1..8 items')
+            repaired = apply_patch(caption, json.dumps(payload, ensure_ascii=False))
+            if repaired == caption:
                 raise ValueError('repair produced no text change')
-            audit.update(applied=True, patches=json.loads(raw)['patches'])
-            return result
+            audit.update(applied=True, patches=patches)
+            return repaired
         except Exception as exc:
             audit.update(applied=False, error=f'{type(exc).__name__}: {str(exc)[:200]}')
             print('EDITOR PATCH REJECT:', audit['error'])
