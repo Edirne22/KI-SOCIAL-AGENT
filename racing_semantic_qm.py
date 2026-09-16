@@ -1,35 +1,38 @@
 """Independent semantic source-to-caption QM for Motorcycle Racing.
 
-The provider response is parsed fail-closed. Only a complete JSON object with the
-expected boolean fields is accepted; technical provider/format failures are
-reported separately from editorial failures.
+V8.6 minimal hardening: tolerant extraction of one complete JSON object,
+strict schema/boolean validation, and a per-run caption-result cache.
 """
+import hashlib
 import json
 import re
+
 from llm_client import generate
 
 BRAND_HASHTAGS = {'#buelentsbikelife'}
 
 
 def _clean_json(raw):
+    """Extract one complete JSON object without inventing missing content."""
     if not isinstance(raw, str):
         raise ValueError('semantic QM response must be a string')
     text = raw.strip()
     if not text:
         raise ValueError('semantic QM response is empty')
-    # Code fences are an explicitly supported presentation wrapper. No other
-    # prose is accepted before or after the JSON object.
-    if text.startswith('```'):
-        match = re.fullmatch(r'```(?:json)?\s*(.*?)\s*```', text, flags=re.I | re.S)
-        if not match:
-            raise ValueError('malformed JSON code fence')
-        text = match.group(1).strip()
-    if not text.startswith('{') or not text.endswith('}'):
-        raise ValueError('semantic QM response is not one JSON object')
-    value = json.loads(text)
-    if not isinstance(value, dict):
-        raise ValueError('semantic QM response must be a JSON object')
-    return value
+    # Fences are presentation only; surrounding prose is tolerated because the
+    # decoded object is schema-validated below. Truncated JSON still fails.
+    text = re.sub(r'```(?:json)?', '', text, flags=re.I).replace('```', '').strip()
+    decoder = json.JSONDecoder()
+    for start, char in enumerate(text):
+        if char != '{':
+            continue
+        try:
+            value, _ = decoder.raw_decode(text[start:])
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, dict):
+            return value
+    raise json.JSONDecodeError('no complete JSON object found', text, 0)
 
 
 def _fold(s):
@@ -49,6 +52,16 @@ def _caption_for_fact_review(caption, trusted_system_hashtags=None):
     return ' '.join(token for token in str(caption or '').split()
                     if token.casefold() not in BRAND_HASHTAGS
                     and token.casefold() not in trusted)
+
+
+def _caption_fingerprint(caption):
+    normalized = re.sub(r'#[^\s]+', '', str(caption or ''))
+    normalized = re.sub(r'\s+', ' ', normalized).strip().casefold()
+    return hashlib.sha256(normalized.encode('utf-8')).hexdigest()
+
+
+def reset_caption_cache():
+    review_detailed._caption_cache = {}
 
 
 def infer_story_series(item):
@@ -71,29 +84,30 @@ def infer_story_series(item):
 def _prompt(item, caption):
     title = str(item.get('title', '')).strip()
     summary = str(item.get('summary', '')).strip()
-    url = str(item.get('url', '')).strip()
     cfo = item.get('canonical_fact_object')
     facts = json.dumps(cfo, ensure_ascii=False) if cfo is not None else 'Keine CFO vorhanden.'
-    review_caption = _caption_for_fact_review(caption, _system_hashtags(caption))
-    return f'''Du bist unabhängiger Senior-Faktenprüfer für Motorrad-Racing.
-Trenne harte Faktenfehler strikt von reparierbarer Sprache.
+    return f'''Du bist unabhaengiger Senior-Faktenpruefer fuer Motorrad-Racing.
+Trenne HARTE FAKTENFEHLER strikt von REPARIERBARER SPRACHE.
 QUELLFAKTEN:
 SERIE: {infer_story_series(item)}
 TITEL: {title}
 ZUSAMMENFASSUNG: {summary}
-URL: {url}
+URL: {str(item.get('url', '')).strip()}
 CANONICAL FACT OBJECT: {facts}
-POST OHNE SYSTEM-HASHTAGS: {review_caption}
-Antworte ausschließlich als ein JSON-Objekt ohne Markdown und ohne Zusatztext:
+POST OHNE SYSTEM-HASHTAGS:
+{_caption_for_fact_review(caption, _system_hashtags(caption))}
+Jede Tatsachenbehauptung muss durch die Quelle oder das CFO gedeckt sein.
+Keine Ergaenzungen aus Vorwissen. P1 ist nicht Q1. Modalitaet erhalten.
+Antworte nur als JSON mit echten Boolean-Werten, ohne Markdown:
 {{"hard_fact_ok":true,"series_ok":true,"rider_team_ok":true,"quote_ok":true,"german_ok":true,"style_ok":true,"hard_reasons":[],"repair_reasons":[]}}'''
 
 
 def _validate_result(value):
+    if not isinstance(value, dict):
+        raise ValueError('semantic QM result must be an object')
     required = ('hard_fact_ok', 'series_ok', 'rider_team_ok', 'quote_ok', 'german_ok', 'style_ok')
-    if set(value) - set(required) - {'hard_reasons', 'repair_reasons'}:
-        raise ValueError('semantic QM response contains unknown fields')
     if any(type(value.get(key)) is not bool for key in required):
-        raise ValueError('semantic QM boolean fields must be real JSON booleans')
+        raise ValueError('semantic QM fields must contain real JSON booleans')
     for key in ('hard_reasons', 'repair_reasons'):
         reasons = value.get(key, [])
         if not isinstance(reasons, list) or any(not isinstance(x, str) for x in reasons):
@@ -102,9 +116,20 @@ def _validate_result(value):
 
 
 def review_detailed(item, caption):
+    fp = _caption_fingerprint(caption)
+    cache = getattr(review_detailed, '_caption_cache', None)
+    if cache is None:
+        reset_caption_cache()
+        cache = review_detailed._caption_cache
+    if fp in cache:
+        cached = dict(cache[fp])
+        cached['caption_cache_hit'] = True
+        print('SEMANTIC-QM CAPTION-CACHE HIT:', item.get('title', '')[:90])
+        return cached
+
     prompt = _prompt(item, caption)
     last = None
-    for _ in range(3):
+    for attempt in range(3):
         try:
             value = _validate_result(_clean_json(generate('racing_semantic_qm', prompt)))
             hard = all(value[key] is True for key in ('hard_fact_ok', 'series_ok', 'rider_team_ok', 'quote_ok'))
@@ -115,20 +140,22 @@ def review_detailed(item, caption):
                 hard_reasons = ['Harter Fakten-QM: Pflichtfeld FAIL']
             if hard and not language and not repair_reasons:
                 repair_reasons = ['Sprache/Stil reparieren']
-            return {'hard_ok': hard, 'language_ok': language,
-                    'hard_reasons': hard_reasons, 'repair_reasons': repair_reasons}
+            result = {'hard_ok': hard, 'language_ok': language,
+                      'hard_reasons': hard_reasons, 'repair_reasons': repair_reasons}
+            cache[fp] = result
+            return result
         except (json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
             last = exc
+            print(f'SEMANTIC-QM JSON-PARSE-FEHLER Versuch {attempt + 1}/3:', item.get('title', '')[:90], '|', type(exc).__name__, str(exc)[:200])
         except Exception as exc:
             last = exc
+            print('SEMANTIC-QM UNERWARTETER FEHLER:', item.get('title', '')[:90], '|', type(exc).__name__, str(exc)[:200])
             break
-    return {'hard_ok': False, 'language_ok': False,
-            'technical_error': True,
+    return {'hard_ok': False, 'language_ok': False, 'technical_error': True,
             'hard_reasons': [f'Semantischer Fakten-QM technisch ungueltig nach 3 Versuchen: {type(last).__name__}: {str(last)[:140]}'],
             'repair_reasons': []}
 
 
 def review(item, caption):
     result = review_detailed(item, caption)
-    ok = result['hard_ok'] and result['language_ok']
-    return ok, result['hard_reasons'] + result['repair_reasons']
+    return result['hard_ok'] and result['language_ok'], result['hard_reasons'] + result['repair_reasons']
