@@ -48,7 +48,7 @@ def main():
  st.append(stage(run_id,'racing_relevance',len(fresh),len(relevant),rejected_count=len(fresh)-len(relevant)))
  st.append(stage(run_id,'pre_qm_boundary',len(relevant),len(relevant),roster_checked_count=len(names)))
  top10=write_top10_artifact(run_id,relevant,names)
- st.append(stage(run_id,'ranking_top10',len(relevant),len(top10),rejected_count=max(0,len(relevant)-len(top10)))
+ st.append(stage(run_id,'ranking_top10',len(relevant),len(top10),rejected_count=max(0,len(relevant)-len(top10))))
  write_summary(run_id,st+[{'freshness_reasons':dict(reason_counts)}])
  print('DIAG RUN',run_id,'raw',len(raw),'details',len(details),'fresh',len(fresh),'relevant',len(relevant),'top10',len(top10),'roster',len(names))
 if __name__=='__main__':main()
