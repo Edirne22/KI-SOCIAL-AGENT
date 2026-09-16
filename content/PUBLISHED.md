@@ -201,7 +201,7 @@ Marc Márquez hat in Misano maximal profitiert und sich mit dem Sieg wieder ganz
 
 Wer hat für dich jetzt die besseren Karten im Titelkampf?
 
-#MotoGP #MarcMarquez #AlexMarquez #Aprilia #MotorradRacing #MotoGPDeutschland
+#MotoGP #MarcMarquez #AlexMarquez #Aprilia #MotorradRacing #MotoGPDeutschland #MarcMarquez #Marquez #MM93 #93 #MarcMarquez93 #DucatiLenovo #Ducati #ForzaDucati #ComebackComplete #MoreThanANumber #MotoGP #MotoGP2026 #MarquezFan #Cervera
 Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
 Bild: assets/images/2026-09/marquez.jpg
 
