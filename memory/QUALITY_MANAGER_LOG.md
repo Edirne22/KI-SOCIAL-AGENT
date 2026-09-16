@@ -354,3 +354,33 @@ Story-Key: motogp:1090222
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 09:18 UTC | Motorcycle Racing | FAIL
+Titel: Gonzalez grabs momentum-shifting victory in dramatic Misano race
+Story-Key: motogp:1089340
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto2; Final-Guard: Pflicht-Serienhashtag #moto2 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 09:19 UTC | Motorcycle Racing | FAIL
+Titel: Almansa fastest on Friday as Carpe faces Q1 hurdle at Misano Once again setting the pace, the #22 topped the timesheets on day one of Misano action whilst second in the Championship Carpe couldn’t crack the top 14
+Story-Key: motogp:1089335
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto3; Final-Guard: Pflicht-Serienhashtag #moto3 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 09:21 UTC | Motorcycle Racing | FAIL
+Titel: NEWS 2h ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 09:21 UTC | Motorcycle Racing | FAIL
+Titel: NEWS 2h ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 09:21 UTC | Motorcycle Racing | FAIL
+Titel: NEWS 2h ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
