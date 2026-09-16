@@ -1,4 +1,4 @@
-"""Independent semantic source-to-caption QM for Motorcycle Racing – fail closed."""
+"""Independent semantic source-to-caption QM for Motorcycle Racing – hard facts fail closed, language is repairable."""
 import json,re
 from llm_client import generate
 BRAND_HASHTAGS={'#buelentsbikelife'}
@@ -28,17 +28,18 @@ def infer_story_series(item):
  if re.search(r'(?<![a-z0-9])motogp(?![a-z0-9])',t):return 'MotoGP'
  return str(item.get('series','')).strip() or 'nicht eindeutig'
 def _prompt(item,caption):
- title=str(item.get('title','')).strip();summary=str(item.get('summary','')).strip();inferred=infer_story_series(item);declared=inferred;url=str(item.get('url','')).strip();trusted=_system_hashtags(caption);fact_caption=_caption_for_fact_review(caption,trusted)
- return f'''Du bist ein unabhaengiger Senior-Faktenpruefer fuer Motorrad-Racing auf Premium-Niveau. Pruefe den fertigen deutschen Social-Post SATZ FUER SATZ ausschliesslich gegen die gelieferten Quellenfakten.\n\nQUELLFAKTEN:\nAUFGELOESTE SERIE/KLASSE: {declared}\nUNABHAENGIGER SERIEN-HINWEIS AUS STORYTEXT: {inferred}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nURL: {url}\n\nSYSTEMGENERIERTE HASHTAGS (letzter reiner Hashtag-Block; separat durch deterministische Redaktion/Racing-QM geprueft): {trusted}\nPOST FUER DEN FAKTENCHECK:\n{fact_caption}\n\nHARTE REGELN:\n1. Jede Tatsachenbehauptung muss eindeutig durch Titel/Zusammenfassung/Metadaten gedeckt sein.\n2. Erfunden, vertauscht oder falsch zugeordnet bei Fahrer, Team, Hersteller, Serie/Klasse, Jahr, Ort, Ergebnis, Rekord, Zahl, Titel/Champion-Status oder Beziehung => FAIL.\n3. Transferstories: Herkunft und Zielserie sauber unterscheiden. MotoGP, Moto2 und Moto3 sind getrennte Klassen.\n4. Keine Schlussfolgerung als Tatsache, wenn die Quelle sie nicht sagt.\n5. Direkte oder frei uebersetzte Zitate => FAIL; gedeckte Paraphrase erlaubt.\n6. Natuerliches korrektes idiomatisches Deutsch ist Pflicht; Wortsalat, Grammatikfehler, Lehnuebersetzung, PR-Sprech oder kuenstlicher Hype => FAIL.\n7. Klar als Meinung/Prognose formulierte Community-Fragen wie „Traut ihr X den Sieg zu?“ oder „Wer sieht X als Favoriten?“ sind KEINE Tatsachenbehauptung. FAIL bei unbelegter Praemisse als Tatsache, z.B. „Warum ist X klarer Favorit?“.\n8. Hashtags ausserhalb des letzten systemgenerierten Hashtag-Blocks bleiben Teil des Faktenchecks. Der letzte Block darf nicht wegen eines aus kontrollierter Fahrer-Metadatenlogik ergaenzten Vornamens beanstandet werden.\n9. Bei Unsicherheit => FAIL.\nAntworte NUR mit syntaktisch gueltigem JSON, ohne Markdown: {{"pass":true|false,"reasons":["..."],"unsupported_claims":["..."],"series_ok":true|false,"rider_team_ok":true|false,"german_ok":true|false,"quote_ok":true|false}}'''
-def review(item,caption):
+ title=str(item.get('title','')).strip();summary=str(item.get('summary','')).strip();inferred=infer_story_series(item);url=str(item.get('url','')).strip();trusted=_system_hashtags(caption);fact_caption=_caption_for_fact_review(caption,trusted)
+ return f'''Du bist unabhaengiger Senior-Faktenpruefer fuer Motorrad-Racing. Trenne HARTE FAKTENFEHLER strikt von REPARIERBARER SPRACHE.\nQUELLFAKTEN:\nSERIE: {inferred}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nURL: {url}\nPOST:\n{fact_caption}\n\nNULL-TOLERANZ / HARD FAIL: Jede Tatsachenbehauptung muss durch Titel/Zusammenfassung/Metadaten gedeckt sein. Erfunden, vertauscht oder falsch bei Fahrer, Team, Hersteller, Serie, Jahr, Ort, Ergebnis, Rekord, Zahl, Titel/Champion-Status, Beziehung oder Zitat => hard_fact_ok=false. Schlussfolgerungen duerfen nicht als Fakten erfunden werden. P1 ist nicht Q1.\nREPARIERBAR: Tippfehler, Grammatik, holpriges Deutsch, Anglizismus, PR-Sprech, kuenstlicher Hype oder eine schlecht formulierte, aber nicht faktisch falsche Community-Frage => german_ok=false bzw. style_ok=false, aber NICHT hard_fact_ok=false.\nMeinungsfragen ohne behauptete Praemisse sind erlaubt. Letzten systemgenerierten Hashtag-Block nicht als neue Faktenquelle bewerten.\nAntworte NUR JSON: {{"hard_fact_ok":true|false,"series_ok":true|false,"rider_team_ok":true|false,"quote_ok":true|false,"german_ok":true|false,"style_ok":true|false,"hard_reasons":["..."],"repair_reasons":["..."]}}'''
+def review_detailed(item,caption):
  prompt=_prompt(item,caption);last=None
- for technical_attempt in range(2):
+ for technical_attempt in range(3):
   try:
-   o=_clean_json(generate('racing_semantic_qm',prompt));passed=all(bool(o.get(k)) for k in ('pass','series_ok','rider_team_ok','german_ok','quote_ok'));reasons=[str(x) for x in o.get('reasons',[]) if str(x).strip()];unsupported=[str(x) for x in o.get('unsupported_claims',[]) if str(x).strip()];reasons += ['Nicht belegt: '+x for x in unsupported]
-   if not passed and not reasons:reasons=['Semantischer Fakten-QM: nicht alle Pflichtfelder PASS']
-   return passed,reasons
-  except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:
-   last=e
-   if technical_attempt==0:continue
+   o=_clean_json(generate('racing_semantic_qm',prompt));hard=all(bool(o.get(k)) for k in ('hard_fact_ok','series_ok','rider_team_ok','quote_ok'));language=all(bool(o.get(k)) for k in ('german_ok','style_ok'));hard_reasons=[str(x) for x in o.get('hard_reasons',[]) if str(x).strip()];repair=[str(x) for x in o.get('repair_reasons',[]) if str(x).strip()]
+   if not hard and not hard_reasons:hard_reasons=['Harter Fakten-QM: Pflichtfeld FAIL']
+   if hard and not language and not repair:repair=['Sprache/Stil reparieren']
+   return {'hard_ok':hard,'language_ok':language,'hard_reasons':hard_reasons,'repair_reasons':repair}
+  except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:last=e;continue
   except Exception as e:last=e;break
- return False,[f'Semantischer Fakten-QM nicht verfuegbar/ungueltig nach technischem Retry: {type(last).__name__}: {str(last)[:140]}']
+ return {'hard_ok':False,'language_ok':False,'hard_reasons':[f'Semantischer Fakten-QM technisch ungueltig nach 3 Versuchen: {type(last).__name__}: {str(last)[:140]}'],'repair_reasons':[]}
+def review(item,caption):
+ r=review_detailed(item,caption);ok=r['hard_ok'] and r['language_ok'];return ok,(r['hard_reasons']+r['repair_reasons'])
