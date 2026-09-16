@@ -173,8 +173,7 @@ Virajlı yolları keşfet, GPX olarak kaydet ve arkadaşlarınla paylaş!
 
 #RideWithMe #MotorradTour #Kurvenjäger #KIRouten #BikerLife
 
-Video: auto
-
+Video: assets/videos/2026-09/2026-09-16-schluss-mit-geraden-bundesstrassen-und-ampelstaus.mp4
 ## Facebook [GEPOSTET 2026-09-15 10:40 | ID: 1061438430139436]
 Status: Freigegeben
 Publication-Claim: IN_BEARBEITUNG 34959179215-1
