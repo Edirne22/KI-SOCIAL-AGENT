@@ -45,12 +45,17 @@ def meta(page,name):
   if m:return clean(m.group(1))
  return ''
 def published_time(page):
- for name in ('article:published_time','date','datePublished','publish-date','pubdate'):
+ # Only publication/creation fields are accepted. dateModified/HTTP Last-Modified are deliberately excluded.
+ for name in ('article:published_time','date','datePublished','publish-date','pubdate','publication_date','publicationDate','dateCreated'):
   v=meta(page,name)
   if v:return v
- m=re.search(r'"datePublished"\s*:\s*"([^"]+)"',page,re.I)
- if m:return html.unescape(m.group(1))
+ for key in ('datePublished','publishedAt','published_at','publishDate','publishedDate','publicationDate','dateCreated','createdAt'):
+  m=re.search(r'["\']'+re.escape(key)+r'["\']\s*:\s*["\']([^"\']+)["\']',page,re.I)
+  if m:return html.unescape(m.group(1))
  m=re.search(r'<time[^>]+datetime=["\']([^"\']+)',page,re.I)
+ if m:return html.unescape(m.group(1))
+ # Some official pages embed an ISO publication timestamp in hydration attributes rather than JSON.
+ m=re.search(r'(?:published|publication|created)[-_ ]?(?:at|date|time)?[^>]{0,80}?(20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2}))',page,re.I)
  return html.unescape(m.group(1)) if m else ''
 def extract(page,limit=60):
  found=[];seen=set()
