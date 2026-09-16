@@ -312,3 +312,27 @@ Story-Key: motogp:1089982
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 08:18 UTC | Motorcycle Racing | FAIL
+Titel: Almansa fastest on Friday as Carpe faces Q1 hurdle at Misano Once again setting the pace, the #22 topped the timesheets on day one of Misano action whilst second in the Championship Carpe couldn’t crack the top 14
+Story-Key: motogp:1089335
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto3; Final-Guard: Pflicht-Serienhashtag #moto3 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 08:18 UTC | Motorcycle Racing | PASS
+Titel: Agius claims Misano lap record to beat Gonzalez to Friday honours Liqui Moly Dynavolt Intact GP earn a perfect Friday as Alonso completes the top three in a closely fought Moto2 Practice
+Story-Key: motogp:1089338
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 08:18 UTC | Motorcycle Racing | FAIL
+Titel: Agius storms to stunning Misano pole as Guevara receives six-place grid penalty The Australian clinches a second Saturday P1 of the season, while the rider second in the title fight has a mountain to climb on Sunday
+Story-Key: motogp:1089339
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto2; Final-Guard: Pflicht-Serienhashtag #moto2 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 08:18 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era”
+Story-Key: motogp:1090222
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
