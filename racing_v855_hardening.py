@@ -1,4 +1,4 @@
-"""V8.5.5 runtime hardening for the Racing chain.
+"""V8.5.6 runtime hardening for the Racing chain.
 Keeps source facts immutable across feedback loops, constrains editor facts, and separates provider failures from editorial rejects.
 """
 import re,time,json
@@ -51,13 +51,19 @@ def install(a):
         return errs
 
     def prompt(x,reasons=None):
-        lock(x);base=original_prompt(x,reasons);facts=json.dumps(fact_packet(x),ensure_ascii=False)
-        return base+'\n\nSOURCE-FACT-WHITELIST (GESCHLOSSEN): '+facts+'\nJede konkrete Person und jede Zahl im Post muss darin bzw. in TITEL/ZUSAMMENFASSUNG vorkommen. Orte, Teams und Hersteller nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG stehen. Nicht belegte Details weglassen, niemals aus Vorwissen ergaenzen.'
+        lock(x);base=original_prompt(x,reasons);facts=json.dumps(fact_packet(x),ensure_ascii=False);series=series_for(x)
+        guard=f'''\n\nV8.5.6 FACT-PRESERVATION-GUARD (HART):
+- GESPERRTE SERIE = {series}. Schreibe niemals den Namen einer anderen Rennserie in den Post. WorldSBK ist NICHT WorldSSP/Supersport; MotoGP ist NICHT Moto2/Moto3.
+- Keine semantische Faktenverschaerfung: Ein allgemeines "championship leader" darf nur als "Meisterschaftsfuehrender" wiedergegeben werden, NICHT eigenmaechtig als Moto2-/Moto3-/MotoGP-Meisterschaftsfuehrender, sofern die Klasse nicht wortwoertlich durch die Quelle belegt ist.
+- "fastest", "P1", "top of the timesheets", "fuehrt die Zeitenliste an" oder eine Tages-/Session-Fuehrung niemals in WM-/Meisterschafts-/Gesamtfuehrung umdeuten.
+- "targets", "set to", "expected", "aims" und vergleichbare Aussagen nicht in staerkere Motive, feste Zusagen oder sichere Zukunftsaussagen umformulieren. Keine Rueckkehr nach einem genannten Wochenende behaupten, wenn die Quelle sie nicht nennt.
+- Keine zeitliche Einordnung wie "diese Woche", "heute", "morgen" oder "aktuell", wenn sie nicht durch die bereitgestellten Quelldaten eindeutig gedeckt ist.
+- Keine Team-, Strecken-, Orts-, Nationalitaets-, Verletzungs-, Titel- oder Beziehungsdetails aus Motorsportwissen ergaenzen. "Heimrennen" nur verwenden, wenn die Quelle diesen Bezug explizit herstellt.
+- Wenn eine attraktive Formulierung einen Fakt praeziser, staerker oder spezifischer machen wuerde als die Quelle: die neutralere Formulierung waehlen oder das Detail weglassen.
+- QM-Rueckgaben sind Korrekturanweisungen, KEINE neue Faktenquelle. Eine Rueckgabe darf niemals zum Erfinden eines Ersatzdetails fuehren.'''
+        return base+'\n\nSOURCE-FACT-WHITELIST (GESCHLOSSEN): '+facts+'\nJede konkrete Person und jede Zahl im Post muss darin bzw. in TITEL/ZUSAMMENFASSUNG vorkommen. Orte, Teams und Hersteller nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG stehen. Nicht belegte Details weglassen, niemals aus Vorwissen ergaenzen.'+guard
 
     def semantic_technical_retry(x,caption):
-        # Resolve through the module at CALL TIME. This is intentional: offline
-        # regression tests replace a.semantic_review_detailed with a provider-free
-        # fake. Capturing it during install() made the selftest call Agnes.
         for n in (1,2,3):
             r=a.semantic_review_detailed(x,caption)
             joined=' '.join(r.get('hard_reasons',[])).lower()
@@ -100,5 +106,5 @@ def install(a):
 
     a.lock_source_series=lock;a.series_for_raw=series_for;a.series_for=series_for
     a._editor_prompt=prompt;a.fact_whitelist_errors=whitelist_errors;a.qualify_copy=qualify
-    a.VERSION='V8.5.5'
+    a.VERSION='V8.5.6'
     return a
