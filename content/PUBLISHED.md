@@ -497,3 +497,29 @@ Wie hat dieser emotionale Moment in Misano auf euch gewirkt?
 https://www.motogp.com/en/news/2026/09/12/loris-capirossi-becomes-a-motogp-legend/1089616
 Quelle: https://www.motogp.com/en/news/2026/09/12/loris-capirossi-becomes-a-motogp-legend/1089616
 Link-Preview: offiziell
+
+## Instagram Reel
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361658
+Text:
+Spannung pur in Misano! Rad-an-Rad-Kämpfe und millimetergenaue Manöver. Für Toprak Razgatlıoğlu (@toprakrazgatlioglu) zählt jeder Kilometer im neuen Setup, um Schritt für Schritt die Spitze zu attackieren. Wie hast du das Rennen erlebt?
+
+Misano’da nefes kesen mücadele! Toprak Razgatlıoğlu için her tur yeni bir tecrübe. Sen yarışı nasıl buldun?
+
+#MotoGP #ToprakRazgatlioglu #SanMarinoGP #BikerCommunity #Motorrad
+Quelle: https://www.youtube.com/watch?v=NekLDLj_zYc
+Video: auto
+
+## Instagram Reel
+Status: FREIGEGEBEN
+Freigabe: Telegram
+Telegram-Update-ID: 279361658
+Text:
+Schluss mit geraden Bundesstraßen und Ampelstaus. Lass dir von smarten KI-Algorithmen flüssige Kurvenkombinationen direkt in deiner Umgebung vorschlagen, erstelle dein digitales Fahrtenbuch und teile den GPX-Track mit deinen Jungs.
+
+Virajlı yolları keşfet, GPX olarak kaydet ve arkadaşlarınla paylaş!
+
+#RideWithMe #MotorradTour #Kurvenjäger #KIRouten #BikerLife
+
+Video: auto
