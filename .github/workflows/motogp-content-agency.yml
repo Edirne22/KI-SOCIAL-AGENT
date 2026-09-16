@@ -28,6 +28,7 @@ jobs:
       - name: Preflight – V8.5 Orchestrator + komplette Racing-Kette
         run: |
           python -m py_compile racing_v85.py racing_v855_hardening.py racing_run_controller.py racing_v85_selftest.py motogp_content_agency_v2.py motogp_content_agency.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py motogp_telegram_receive_v85.py llm_client.py router.py telegram_bot.py memory_engine.py generate_agnes_media.py asset_paths.py media_policy.py
+          python racing_final_guard_selftest.py
           python racing_pipeline_selftest.py
           python racing_v85_selftest.py
           python - <<'PY'

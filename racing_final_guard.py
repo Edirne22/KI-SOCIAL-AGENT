@@ -7,6 +7,16 @@ def fold(s):
  s=unicodedata.normalize('NFKD',str(s or '')).casefold().replace('ı','i');return ''.join(c for c in s if not unicodedata.combining(c))
 def source_text(item):return ' '.join((str(item.get('title','')),str(item.get('summary',''))))
 def expected_series(item):
+ # Explicit, unambiguous title class outranks summary/feed hints and rider history.
+ title=fold(item.get('title',''))
+ title_patterns=(
+  ('WorldWCR',r'\bworldwcr\b|women.s circuit|women.s championship'),
+  ('WorldSSP300',r'\bworldssp\s*300\b'),
+  ('WorldSSP',r'\bworldssp\b(?!\s*300)|\bworld supersport\b(?!\s*300)'),
+  ('WorldSBK',r'\bworldsbk\b|\bworld superbike\b'),
+  ('Moto3',r'\bmoto3\b'),('Moto2',r'\bmoto2\b'),('MotoGP',r'\bmotogp\b'))
+ title_series=[series for series,pattern in title_patterns if re.search(pattern,title)]
+ if len(title_series)==1:return title_series[0]
  t=fold(source_text(item))
  if re.search(r'\bworldwcr\b|women.s circuit|women.s championship',t):return 'WorldWCR'
  if re.search(r'\bworldssp300\b',t):return 'WorldSSP300'
