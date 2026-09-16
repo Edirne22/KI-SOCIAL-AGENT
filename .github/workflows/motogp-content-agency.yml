@@ -21,20 +21,23 @@ jobs:
       - run: pip install requests
       - name: Preflight – komplette Racing-Kette und Agentenstandard
         run: |
-          python -m py_compile motogp_content_agency_v2.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py llm_client.py router.py
+          python -m py_compile motogp_content_agency_v2.py motogp_content_agency.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py llm_client.py router.py telegram_bot.py memory_engine.py generate_agnes_media.py asset_paths.py media_policy.py
           python racing_pipeline_selftest.py
           python - <<'PY'
           from turkish_riders_scout import scout, racing_scout
-          from router import get_task_config
+          from router import get_task_config, get_provider_for_task
           from llm_client import global_professional_context
           a=scout(1); b=racing_scout(1)
           if a and len(a[0]) != 3: raise SystemExit(f"Turkish scout contract invalid: {len(a[0])}")
           if b and len(b[0]) != 4: raise SystemExit(f"Racing scout contract invalid: {len(b[0])}")
-          for task in ('final_captions','racing_semantic_qm'):
-              if get_task_config(task).get('response_type') != 'text': raise SystemExit(f'{task} route invalid')
+          expected={'final_captions':'agnes','racing_semantic_qm':'agnes'}
+          for task,provider in expected.items():
+              cfg=get_task_config(task)
+              if cfg.get('response_type') != 'text': raise SystemExit(f'{task} response_type invalid')
+              if get_provider_for_task(task) != provider: raise SystemExit(f'{task} provider invalid')
           ctx=global_professional_context()
           if 'PROFESSIONAL AGENT STANDARD' not in ctx or 'HUMAN WRITING PROTOCOL' not in ctx: raise SystemExit('global professional context missing')
-          print('Preflight contracts + professional standard + full QM chain: PASS')
+          print('Preflight contracts + provider routes + professional standard + full QM chain: PASS')
           PY
       - name: Research → Redakteur → Racing-QM → Semantic-QM → Ersatzpool → Media → Chief-QM → Telegram
         env:
