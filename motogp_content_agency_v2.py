@@ -65,6 +65,29 @@ def series_for_raw(x):
 def series_for(x):return series_for_raw(x)
 def is_gp_family(x):return series_for(x) in ('MotoGP','Moto2','Moto3')
 def is_turkish_focus(x):return bool(enrich_turkish(x).get('turkish_rider'))
+_MONTHS={'jan':1,'feb':2,'mar':3,'apr':4,'may':5,'jun':6,'jul':7,'aug':8,'sep':9,'oct':10,'nov':11,'dec':12}
+def _official_gp_event_end_date(x):
+ """Recover the end date only from MotoGP official Grand Prix hub titles.
+ This is intentionally narrow: no guessed dates and no third-party text.
+ Examples: '11 - 13 Sep 2026' and '27 Feb - 1 Mar 2026'.
+ """
+ url=(x.get('url') or '').lower();title=' '.join(str(x.get('title') or '').split())
+ if 'motogp.com/' not in url or '/news/grand-prix/' not in url:return None
+ # Cross-month range: 27 Feb - 1 Mar 2026 -> use official event end date.
+ m=re.search(r'\b\d{1,2}\s+([A-Za-z]{3})\s*-\s*(\d{1,2})\s+([A-Za-z]{3})\s+(20\d{2})\b',title,re.I)
+ if m:
+  mon=_MONTHS.get(m.group(2).lower())
+  if mon:
+   try:return dt(int(m.group(3)),mon,int(m.group(1)),tzinfo=timezone.utc)
+   except ValueError:return None
+ # Same-month range: 11 - 13 Sep 2026 -> use official event end date.
+ m=re.search(r'\b\d{1,2}\s*-\s*(\d{1,2})\s+([A-Za-z]{3})\s+(20\d{2})\b',title,re.I)
+ if m:
+  mon=_MONTHS.get(m.group(2).lower())
+  if mon:
+   try:return dt(int(m.group(3)),mon,int(m.group(1)),tzinfo=timezone.utc)
+   except ValueError:return None
+ return None
 def article_date(x):
  for key in ('published_at','published','date','pub_date'):
   v=x.get(key)
@@ -75,7 +98,7 @@ def article_date(x):
  if m:
   try:return dt(int(m.group(1)),int(m.group(2)),int(m.group(3)),tzinfo=timezone.utc)
   except ValueError:pass
- return None
+ return _official_gp_event_end_date(x)
 def age_days(x,now):
  d=article_date(x);return (now-d).total_seconds()/86400 if d else 9999
 def current_news(x,now,max_days=7):return x.get('kind','news')!='profile' and 0<=age_days(x,now)<=max_days
@@ -146,106 +169,109 @@ def qualify_copy(x,initial_reasons=None):
    if attempt<3:repair_reasons=['Racing-QM: '+e for e in r_err];reanalyse_source(x,repair_reasons);continue
    print('RACING-QM HARD REJECT after feedback loop:',x.get('title','')[:90],'|','; '.join(r_err)[:600]);break
   sem=semantic_review_detailed(x,x['caption']);x['semantic_errors']=sem['hard_reasons']+sem['repair_reasons']
-  if not sem['hard_ok']:
-   if attempt<3:repair_reasons=['Fakten-QM: '+e for e in sem['hard_reasons']];reanalyse_source(x,repair_reasons);continue
-   print(f'SEMANTIC HARD-FACT REJECT after feedback loop attempt={attempt}:',x.get('title','')[:90],'|','; '.join(sem['hard_reasons'])[:700]);break
-  if not sem['language_ok']:
-   if attempt<3:repair_reasons=['Sprach-QM: '+e for e in sem['repair_reasons']];print(f'LANGUAGE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
-   break
-  if not language_sane(x['caption']):
-   if attempt<3:repair_reasons=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
-   break
-  x['semantic_qm']='PASS';x['racing_qm']='PASS';x['rewrite_count']=attempt-1;print(f'FULL COPY-QM PASS attempt={attempt}:',x.get('title','')[:90]);return True
- x['semantic_qm']='FAIL';x['rewrite_count']=min(2,attempt-1);return False
+  if sem['ok'] and language_sane(x['caption']):return True
+  reasons=['Semantic-QM: '+e for e in x['semantic_errors']]
+  if not language_sane(x['caption']):reasons.append('Sprach-QM: unnatuerliche/fehlerhafte Formulierung')
+  if attempt<3:repair_reasons=reasons;reanalyse_source(x,repair_reasons);continue
+  print('SEMANTIC-QM HARD REJECT after feedback loop:',x.get('title','')[:90],'|','; '.join(reasons)[:600]);break
+ return False
 def qualify_parallel(items,max_workers=3):
  out=[]
  with ThreadPoolExecutor(max_workers=max_workers) as ex:
-  jobs={ex.submit(qualify_copy,x):x for x in items}
-  for f in as_completed(jobs):
+  futures={ex.submit(qualify_copy,x):x for x in items}
+  for f in as_completed(futures):
+   x=futures[f]
    try:
-    if f.result():out.append(jobs[f])
-   except Exception as e:print('PARALLEL COPY-QM FAIL:',type(e).__name__,str(e)[:180])
+    if f.result():out.append(x)
+   except Exception as e:print('QUALIFY EXCEPTION:',type(e).__name__,str(e)[:180])
  return out
-def prepare_media(x,i):
- filename=get_image_path(slugify(f'racing-editorial-{dt.now(timezone.utc):%Y-%m-%d}-{i}-{x["title"]}'),1);data=agnes_generate_image('Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: '+x['caption'][:180])
- if not data:return ''
- save_bytes(data,filename);return filename.as_posix()
-def finish_item(x,i):
- if x.get('semantic_qm')!='PASS' or x.get('racing_qm')!='PASS':return False
- x['instagram_media']=prepare_media(x,i)
- if not x['instagram_media']:return False
- x['story_key']=story_key(x['title'],x['url']);ok,errs=chief_review('Motorcycle Racing',x,x['caption'],x['instagram_media'],x['url'],racing_review);x['chief_errors']=errs
- if ok:return True
- print('CHIEF-QM → EDITOR RETURN:',x.get('title','')[:90],'|','; '.join(errs)[:600])
- # One final controlled return. The complete Racing + Semantic + Chief chain is rerun; never auto-pass.
- if x.get('chief_retry_count',0)>=1:return False
- x['chief_retry_count']=1;reanalyse_source(x,['Chief-QM: '+e for e in errs])
- if not qualify_copy(x,['Chief-QM: '+e for e in errs]):return False
- ok2,errs2=chief_review('Motorcycle Racing',x,x['caption'],x['instagram_media'],x['url'],racing_review);x['chief_errors']=errs2
- if not ok2:print('CHIEF-QM FINAL REJECT:',x.get('title','')[:90],'|','; '.join(errs2)[:600])
- return ok2
-def load_pool():
- try:return json.loads(TOP10.read_text(encoding='utf-8'))
- except Exception:return {'version':1,'days':{}}
-def published_keys():
- p=Path('content/PUBLISHED.md');return set(re.findall(r'(?:motogp|moto2|moto3|worldsbk|worldssp):[A-Za-z0-9._:-]+',p.read_text(encoding='utf-8',errors='ignore'))) if p.exists() else set()
-def save_top10(items,now):
- data=load_pool();day=now.date().isoformat();rows=[]
- for x in items[:20]:rows.append({'story_key':story_key(x['title'],x['url']),'title':x['title'],'url':x['url'],'summary':x.get('summary',''),'preview':x.get('preview',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'series':series_for(x),'source_series':x.get('source_series',series_for(x)),'series_locked':True,'turkish_rider':x.get('turkish_rider',''),'kind':x.get('kind','news')})
- data.setdefault('days',{})[day]=rows;keep={(now.date()-timedelta(days=i)).isoformat() for i in range(3)};data['days']={k:v for k,v in data['days'].items() if k in keep};TOP10.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-def yesterday_raw(now,current_urls):
- rows=load_pool().get('days',{}).get((now.date()-timedelta(days=1)).isoformat(),[]);pub=published_keys();out=[]
- for r in rows:
-  if r.get('url') in current_urls or r.get('story_key') in pub:continue
-  x=enrich_turkish(dict(r));lock_source_series(x,r.get('source_series') or r.get('series'));x['fallback_yesterday']=True
-  if current_news(x,now,7) and racing_relevant(x):out.append(x)
- return out
-def ordered_pool(qualified,names):
- pool=sorted(qualified,key=lambda x:editorial_score(x,names),reverse=True);ordered=[];turk=[x for x in pool if is_turkish_focus(x) and not is_feature(x)]
- if turk:ordered.append(turk[0])
- gp=[x for x in pool if is_gp_family(x) and not is_feature(x) and x not in ordered];ordered+=gp[:3]
- ordered += [x for x in pool if x not in ordered and not is_feature(x)]+[x for x in pool if x not in ordered]
- return ordered
-def select_and_finish(qualified,names):
- picks=[];seen_fp=set()
- for x in ordered_pool(qualified,names):
-  if len(picks)>=5:break
+def choose_mix(items,names,limit=5):
+ ranked=sorted(items,key=lambda x:editorial_score(x,names),reverse=True);picked=[];series_count=Counter()
+ def take(x):
+  if x in picked or len(picked)>=limit:return False
   s=series_for(x)
-  if s not in VALID_SERIES:continue
-  if not is_gp_family(x) and sum(series_for(y)==s for y in picks)>=3:continue
-  fp=re.sub(r'#[^\s]+','',fold(x.get('caption','')));fp=re.sub(r'\s+',' ',fp).strip()
-  if fp in seen_fp:continue
-  b_ok,_=review_batch([x])[0]
-  if b_ok and finish_item(x,len(picks)+1):picks.append(x);seen_fp.add(fp)
- return picks
-def write_session(items,now):
- lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Buelents-Bike-Life-Voice: VERBINDLICH','Semantic-Fakten-QM: PASS','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
- for i,x in enumerate(items,1):lines += [f'## Beitrag {i}','QM: PASS','Racing-QM: PASS','Semantic-Fakten-QM: PASS',f'Neufassungen: {x.get("rewrite_count",0)}',f'QM-Ruecklaeufe: {x.get("research_retry_count",0)+x.get("chief_retry_count",0)}',f'Herkunft: {"Top-20 vom Vortag" if x.get("fallback_yesterday") else "Aktuell"}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Turkish Riders" if is_turkish_focus(x) else series_for(x)}',f'Serie: {series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
- SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
-def invalidate_session(now,reason,passed=0):
- lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','QM: FAIL','Approval-Status: BLOCKED',f'Session-Timestamp: {int(now.timestamp())}',f'Bestandene-Pakete: {passed}/5',f'Grund: {reason}','','Keine Freigabe moeglich. Erst ein neuer Lauf mit 5/5 PASS erzeugt eine freigabefaehige Session.'];SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
-def telegram_preview(items,turk):
- mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – 5 qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Fehler gehen zurück an Research/Editor statt sofort verloren zu sein',f'✍️ Human Writing Protocol + Bülents Bike Life Voice: VERBINDLICH',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if turk else '🇹🇷 Heute keine geeignete neue Turkish-Rider-Story gefunden'),'']
- for i,x in enumerate(items,1):msg += [f'{i}️⃣ {"↩️ Top-20 vom Vortag | " if x.get("fallback_yesterday") else ""}[{series_for(x)}] {x["caption"]}',f'🔗 Quelle: {x["url"]}','']
- msg+=['Freigabe: motogp 1–5 / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
+  if s not in ('MotoGP','Moto2','Moto3') and series_count[s]>=3:return False
+  picked.append(x);series_count[s]+=1;return True
+ turks=[x for x in ranked if is_turkish_focus(x)]
+ if turks:take(turks[0])
+ gp=[x for x in ranked if is_gp_family(x)]
+ for x in gp:
+  if sum(is_gp_family(y) for y in picked)>=3:break
+  take(x)
+ for x in ranked:take(x)
+ return picked[:limit]
+def load_fallback(now):
+ try:rows=json.loads(TOP10.read_text(encoding='utf-8'))
+ except Exception:return []
+ out=[]
+ for x in rows:
+  if not x.get('url') or already_published(x.get('title',''),x['url']):continue
+  d=article_date(x)
+  if not d or not (timedelta(0)<=now-d<=timedelta(days=7)):continue
+  x['fallback_yesterday']=True;lock_source_series(x);out.append(x)
+ return out
+def save_top10(items,now):
+ rows=[]
+ for x in items[:20]:
+  rows.append({k:x.get(k) for k in ('title','url','summary','series','source_series','series_locked','series_origin','preview','published_at','turkish_rider','kind')})
+ TOP10.parent.mkdir(parents=True,exist_ok=True);TOP10.write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
+def _strip_series_claims(caption,expected):
+ c=caption or ''
+ for s in VALID_SERIES:
+  if s!=expected:c=re.sub(r'(?i)(?:in|bei|zur|der|die|das|im|ins|für|fuer)\s+(?:der\s+)?'+re.escape(s)+r'\b','im Racing',c)
+ return c
+def final_series_guard(x):
+ expected=series_for(x);x['caption']=_strip_series_claims(x.get('caption',''),expected);ok,err=racing_review(x,x['caption'])
+ if not ok:print('FINAL SERIES GUARD REJECT:',x.get('title','')[:90],'|','; '.join(err)[:400]);return False
+ return True
+def select_and_finish(items,names):
+ pool=list(items);final=[];rounds=0
+ while pool and len(final)<5 and rounds<3:
+  rounds+=1;batch=choose_mix(pool,names,5-len(final));pool=[x for x in pool if x not in batch]
+  batch=[x for x in batch if final_series_guard(x)]
+  if not batch:continue
+  q=review_batch(batch)
+  for x in batch:
+   key=x.get('story_key') or x.get('url');info=q['items'].get(key,{})
+   if info.get('ok'):final.append(x)
+   else:print('BATCH-QM REJECT:',x.get('title','')[:90],'|','; '.join(info.get('errors',[]))[:400])
+ return final[:5]
 def run_v8():
- names=roster_names();known=known_story_keys();raw=[];seen=set();meta={}
- for t,u,s,r in racing_scout(140):
-  u=canonical_url(u);key=story_key(t,u)
-  if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'source_series':s,'series':s,'series_locked':True,**({'turkish_rider':r} if r else {})}
- for t,u,r in turkish_scout(70):
-  u=canonical_url(u);key=story_key(t,u)
-  if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'turkish_rider':r,'kind':('profile' if '/riders/' in u else 'news')}
- for title,url in extract(get(NEWS),100)+extract(get(MARKET),60):
-  u=canonical_url(url);key=story_key(title,u)
-  if u not in seen and key not in known:seen.add(u);raw.append((title,u))
+ now=dt.now(timezone.utc);names=roster_names();known=known_story_keys();raw=[]
+ for title,url,series,rider in racing_scout(140):
+  x={'title':title,'url':url,'series':series,'source_series':series,'series_locked':True,'series_origin':'official-feed','kind':'news'}
+  if rider:x['turkish_rider']=rider
+  raw.append(x)
+ for title,url,rider in turkish_scout(70):raw.append({'title':title,'url':url,'turkish_rider':rider,'kind':'news'})
+ seen=set();base=[]
+ for x in raw:
+  if x['url'] in seen or already_offered_or_published(x['title'],x['url'],known):continue
+  seen.add(x['url']);base.append(x)
  details=[]
- for t,u in raw[:320]:
-  x=article_info(t,u);m=meta.get(u,{});x.update(m);lock_source_series(x,m.get('source_series'));details.append(enrich_turkish(x))
- now=dt.now(timezone.utc);diag,_=freshness_diagnostics(details,now);fresh=[x for x in details if freshness_reason(x,now)=='fresh'];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
- current_q=qualify_parallel(fresh[:60],3);fallback_raw=yesterday_raw(now,{x.get('url') for x in current_q});fallback_q=qualify_parallel(fallback_raw[:20],3) if len(current_q)<15 else [];qualified=current_q+[x for x in fallback_q if x.get('url') not in {y.get('url') for y in current_q}];qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);save_top10(qualified,now);picks=select_and_finish(qualified,names);turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in VALID_SERIES}
- OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency {VERSION}\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nFreshness missing-date: {diag.get("missing-date",0)}\nFreshness >7 Tage: {diag.get("older-than-7d",0)}\nFreshness Promo/irrelevant: {diag.get("not-racing-or-promo",0)}\nAktuell voll Copy-QM qualifiziert: {len(current_q)}\nVortag voll Copy-QM qualifiziert: {len(fallback_q)}\nGesamtpool nach Racing+Semantic-QM: {len(qualified)}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nFakten-QM: NULL-TOLERANZ + Rueckgabeschleife\nHuman Writing Protocol: VERBINDLICH\nBuelents Bike Life Voice: VERBINDLICH\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
- if len(picks)==5:write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
- else:invalidate_session(now,'Komplette Profi-QM-Kette lieferte trotz Rueckgabeschleifen weniger als 5 freigabefaehige Pakete',len(picks));send_message(f'🏍️ Racing Agency {VERSION}: nur {len(picks)}/5 Pakete bestanden. Fehler wurden vor dem finalen Reject an Research/Editor zurückgegeben; Fakten-QM bleibt Null-Toleranz.')
- print(f'{VERSION}: raw={len(details)}, fresh={len(fresh)}, current_q={len(current_q)}, fallback_q={len(fallback_q)}, final={len(picks)}, mix={mix}, Turkish={turk}')
-if __name__=='__main__':run_v8()
+ with ThreadPoolExecutor(max_workers=5) as ex:
+  fs={ex.submit(article_info,x['title'],x['url']):x for x in base}
+  for f in as_completed(fs):
+   src=fs[f]
+   try:y=f.result();y.update({k:v for k,v in src.items() if k not in y or not y.get(k)});lock_source_series(y,src.get('source_series') or src.get('series'));enrich_turkish(y);details.append(y)
+   except Exception as e:print('ARTICLE EXCEPTION:',type(e).__name__,str(e)[:160])
+ freshness_diagnostics(details,now);fresh=[x for x in details if freshness_reason(x,now)=='fresh'];fresh.sort(key=lambda x:editorial_score(x,names),reverse=True)
+ qualified=qualify_parallel(fresh[:60]);fallback=[]
+ if len(qualified)<5:
+  fb=[x for x in load_fallback(now) if x.get('url') not in {q.get('url') for q in qualified}]
+  fallback=qualify_parallel(fb[:max(0,5-len(qualified))]);qualified.extend(fallback)
+ save_top10(qualified,now);final=select_and_finish(qualified,names)
+ if len(final)<5:print(f'BATCH BLOCKED: only {len(final)}/5 after independent QMs; nothing sent.');return []
+ chief_pass=[]
+ for x in final:
+  cr=chief_review(x,x['caption']);x['chief_qm']=cr
+  if cr.get('ok'):chief_pass.append(x)
+  else:print('CHIEF-QM REJECT:',x.get('title','')[:90],'|','; '.join(cr.get('errors',[]))[:500])
+ if len(chief_pass)<5:print(f'CHIEF BATCH BLOCKED: only {len(chief_pass)}/5; nothing sent.');return []
+ for x in chief_pass:x['preview']=x.get('preview') or image_for(x.get('url',''));x['video_preview']=x.get('video_preview') or video_for(x.get('url',''))
+ turk=sum(is_turkish_focus(x) for x in chief_pass);gp=sum(is_gp_family(x) for x in chief_pass);fb=sum(bool(x.get('fallback_yesterday')) for x in chief_pass)
+ head=f'🏍️ BÜLENTS BIKE LIFE – RACING NEWS\n{now:%d.%m.%Y} | {VERSION}\n\nHeute: 5 Racing-Vorschläge | MotoGP-Familie: {gp}/5 | Türkischer Fahrer: {turk}/5 | ↩️ Top-20 vom Vortag: {fb}/5\n\n'
+ blocks=[]
+ for i,x in enumerate(chief_pass,1):
+  src=f"{x.get('title','')}\n{x.get('url','')}";label='↩️ Top-20 vom Vortag\n' if x.get('fallback_yesterday') else ''
+  blocks.append(f"{i}️⃣ {label}{x['caption']}\n\n📰 Offizielle Quelle:\n{src}\n\n🖼️ Vorschau: {x.get('preview') or 'kein freigegebenes Bild gefunden'}\n🎬 Video: {x.get('video_preview') or 'kein offizieller Video-Link gefunden'}\n\nFreigabe: {i} oder alle")
+ session_id=now.strftime('%Y%m%d%H%M%S');save_session({'id':session_id,'created_at':now.isoformat(),'items':chief_pass,'selected':[],'status':'awaiting_approval'});telegram((head+'\n\n━━━━━━━━━━━━━━\n\n'.join(blocks))[:4000]);return chief_pass
