@@ -2,37 +2,6 @@
   "version": 1,
   "days": {
     "2026-09-15": [],
-    "2026-09-16": [
-      {
-        "story_key": "motogp:1089337",
-        "title": "Quiles denies Almansa in epic photo finish at Misano 0.021s and counting in one of the closest finishes of 2026 but once again, the Championship leader times it to perfection",
-        "url": "https://www.motogp.com/en/news/2026/09/13/quiles-denies-almansa-in-epic-photo-finish-at-misano/1089337",
-        "summary": "",
-        "preview": "",
-        "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1089338",
-        "title": "Agius claims Misano lap record to beat Gonzalez to Friday honours Liqui Moly Dynavolt Intact GP earn a perfect Friday as Alonso completes the top three in a closely fought Moto2 Practice",
-        "url": "https://www.motogp.com/en/news/2026/09/11/agius-claims-misano-lap-record-to-beat-gonzalez-to-friday-honours/1089338",
-        "summary": "",
-        "preview": "",
-        "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1089339",
-        "title": "Agius storms to stunning Misano pole as Guevara receives six-place grid penalty The Australian clinches a second Saturday P1 of the season, while the rider second in the title fight has a mountain to climb on Sunday",
-        "url": "https://www.motogp.com/en/news/2026/09/12/agius-storms-to-stunning-misano-pole-as-guevara-receives-six-place-grid-penalty/1089339",
-        "summary": "",
-        "preview": "",
-        "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      }
-    ]
+    "2026-09-16": []
   }
 }
