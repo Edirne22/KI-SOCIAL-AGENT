@@ -189,3 +189,28 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/09/2027-silly-season-who-is-sig
 Story-Key: motogp:1089220
 Titel: NEW SIGNING: BMW secure Binder’s services for 2027 WorldSBK campaign
 Quelle: https://www.worldsbk.com/en/news/2026/09/09/new-signing-bmw-secure-binders-services-for-2027-worldsbk-campaign/1089220
+
+## 2026-09-16 07:29 UTC – ANGEBOTEN
+Story-Key: motogp:1089337
+Titel: Quiles denies Almansa in epic photo finish at Misano 0.021s and counting in one of the closest finishes of 2026 but once again, the Championship leader times it to perfection
+Quelle: https://www.motogp.com/en/news/2026/09/13/quiles-denies-almansa-in-epic-photo-finish-at-misano/1089337
+
+## 2026-09-16 07:29 UTC – ANGEBOTEN
+Story-Key: motogp:1090013
+Titel: Behind the scenes with Red Bull KTM: catch up on 2026 so far
+Quelle: https://www.motogp.com/en/news/2026/09/15/behind-the-scenes-with-red-bull-ktm-catch-up-on-2026-so-far/1090013
+
+## 2026-09-16 07:29 UTC – ANGEBOTEN
+Story-Key: motogp:1089336
+Titel: Almansa amazes Misano with dominant sixth pole of 2026 The Spaniard was untouchable in Q2, repeatedly improving at the front to beat Uriarte by 0.217s as Kelso grabbed the final front-row spot
+Quelle: https://www.motogp.com/en/news/2026/09/12/almansa-amazes-misano-with-dominant-sixth-pole-of-2026/1089336
+
+## 2026-09-16 07:29 UTC – ANGEBOTEN
+Story-Key: motogp:1090113
+Titel: WorldWCR DUO: Rookie vs veteran: teammates Paola Ramos and Roberta Ponziani
+Quelle: https://www.worldsbk.com/en/news/2026/09/15/worldwcr-duo-rookie-vs-veteran-teammates-paola-ramos-and-roberta-ponziani/1090113
+
+## 2026-09-16 07:29 UTC – ANGEBOTEN
+Story-Key: motogp:1089982
+Titel: “He knows the tyres and the new bike… this is the perfect time” – Rossi, Razgatlioglu and more on Bulega’s MotoGP switch
+Quelle: https://www.worldsbk.com/en/news/2026/09/14/he-knows-the-tyres-and-the-new-bike-this-is-the-perfect-time-rossi-razgatlioglu-and-more-on-bulegas-motogp-switch/1089982

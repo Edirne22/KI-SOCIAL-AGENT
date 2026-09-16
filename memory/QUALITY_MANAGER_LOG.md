@@ -282,3 +282,33 @@ Story-Key: motogp:1089336
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 07:33 UTC | Motorcycle Racing | PASS
+Titel: Quiles denies Almansa in epic photo finish at Misano 0.021s and counting in one of the closest finishes of 2026 but once again, the Championship leader times it to perfection
+Story-Key: motogp:1089337
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 07:33 UTC | Motorcycle Racing | PASS
+Titel: Behind the scenes with Red Bull KTM: catch up on 2026 so far
+Story-Key: motogp:1090013
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 07:33 UTC | Motorcycle Racing | PASS
+Titel: Almansa amazes Misano with dominant sixth pole of 2026 The Spaniard was untouchable in Q2, repeatedly improving at the front to beat Uriarte by 0.217s as Kelso grabbed the final front-row spot
+Story-Key: motogp:1089336
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 07:34 UTC | Motorcycle Racing | PASS
+Titel: WorldWCR DUO: Rookie vs veteran: teammates Paola Ramos and Roberta Ponziani
+Story-Key: motogp:1090113
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 07:34 UTC | Motorcycle Racing | PASS
+Titel: “He knows the tyres and the new bike… this is the perfect time” – Rossi, Razgatlioglu and more on Bulega’s MotoGP switch
+Story-Key: motogp:1089982
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

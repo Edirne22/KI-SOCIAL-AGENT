@@ -4,12 +4,35 @@
     "2026-09-15": [],
     "2026-09-16": [
       {
-        "story_key": "motogp:1089338",
-        "title": "Agius claims Misano lap record to beat Gonzalez to Friday honours Liqui Moly Dynavolt Intact GP earn a perfect Friday as Alonso completes the top three in a closely fought Moto2 Practice",
-        "url": "https://www.motogp.com/en/news/2026/09/11/agius-claims-misano-lap-record-to-beat-gonzalez-to-friday-honours/1089338",
+        "story_key": "motogp:1089337",
+        "title": "Quiles denies Almansa in epic photo finish at Misano 0.021s and counting in one of the closest finishes of 2026 but once again, the Championship leader times it to perfection",
+        "url": "https://www.motogp.com/en/news/2026/09/13/quiles-denies-almansa-in-epic-photo-finish-at-misano/1089337",
         "summary": "",
         "preview": "",
-        "series": "Moto2",
+        "published_at": null,
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090013",
+        "title": "Behind the scenes with Red Bull KTM: catch up on 2026 so far",
+        "url": "https://www.motogp.com/en/news/2026/09/15/behind-the-scenes-with-red-bull-ktm-catch-up-on-2026-so-far/1090013",
+        "summary": "Vlog party! Catch up with the season so far with all episodes of Red Bull KTM",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/15/f3143ae4-119a-4995-953c-b24544b8af70/LG9_9054.jpg?width=1200&height=630",
+        "published_at": null,
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090113",
+        "title": "WorldWCR DUO: Rookie vs veteran: teammates Paola Ramos and Roberta Ponziani",
+        "url": "https://www.worldsbk.com/en/news/2026/09/15/worldwcr-duo-rookie-vs-veteran-teammates-paola-ramos-and-roberta-ponziani/1090113",
+        "summary": "The Klint Racing Team have a mix of a rookie and an experienced rider in 2026, with the pair helping each other to get the best possible results",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/16/9449b773-000c-4899-aa9d-fe4203a8954a/ee5842ca-a4b0-5b7d-8e83-e2304f44f9ea.jpg",
+        "published_at": null,
+        "series": "WorldSBK",
         "turkish_rider": "",
         "kind": "news"
       },
@@ -19,6 +42,18 @@
         "url": "https://www.motogp.com/en/news/2026/09/12/almansa-amazes-misano-with-dominant-sixth-pole-of-2026/1089336",
         "summary": "",
         "preview": "",
+        "published_at": null,
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089982",
+        "title": "“He knows the tyres and the new bike… this is the perfect time” – Rossi, Razgatlioglu and more on Bulega’s MotoGP switch",
+        "url": "https://www.worldsbk.com/en/news/2026/09/14/he-knows-the-tyres-and-the-new-bike-this-is-the-perfect-time-rossi-razgatlioglu-and-more-on-bulegas-motogp-switch/1089982",
+        "summary": "MotoGP Legends and World Champions headline the reactions to Bulega’s MotoGP switch for 2027",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/14/45dac811-fe53-47d6-86d9-9b717f5595f3/2026_14_RSM_MGP_SPR_CF.mxf.14_41_03_10.Still001-2.jpg",
+        "published_at": null,
         "series": "MotoGP",
         "turkish_rider": "",
         "kind": "news"
