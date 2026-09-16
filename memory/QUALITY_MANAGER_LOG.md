@@ -336,3 +336,21 @@ Story-Key: motogp:1090222
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 08:56 UTC | Motorcycle Racing | FAIL
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto2; Final-Guard: Pflicht-Serienhashtag #moto2 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 08:56 UTC | Motorcycle Racing | FAIL
+Titel: Agius storms to stunning Misano pole as Guevara receives six-place grid penalty The Australian clinches a second Saturday P1 of the season, while the rider second in the title fight has a mountain to climb on Sunday
+Story-Key: motogp:1089339
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto2; Final-Guard: Pflicht-Serienhashtag #moto2 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 08:56 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era”
+Story-Key: motogp:1090222
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

@@ -11,28 +11,21 @@
         "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/16/9b7fe289-310f-4679-8ac6-4a297a91ad42/56179_R4_JDR_WSBK_AMBIENCE-2.jpg",
         "published_at": "2026-09-16T06:38:34+0000",
         "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
       },
       {
-        "story_key": "motogp:1089335",
-        "title": "Almansa fastest on Friday as Carpe faces Q1 hurdle at Misano Once again setting the pace, the #22 topped the timesheets on day one of Misano action whilst second in the Championship Carpe couldn’t crack the top 14",
-        "url": "https://www.motogp.com/en/news/2026/09/11/almansa-fastest-on-friday-as-carpe-faces-q1-hurdle-at-misano/1089335",
-        "summary": "",
-        "preview": "",
-        "published_at": null,
+        "story_key": "motogp:1090140",
+        "title": "Tech3 signs Agius for MotoGP debut from 2027",
+        "url": "https://www.motogp.com/en/news/2026/09/16/tech3-signs-agius-for-motogp-debut-from-2027/1090140",
+        "summary": "The Australian joins the team for the start of MotoGP’s new technical era",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/16/52226a9f-6590-45cb-a003-89b877d12ced/Senna-Agius_Red-Bull-KTM_Tech3_MotoGP-2.jpg?width=1200&height=630",
+        "published_at": "2026-09-16",
         "series": "MotoGP",
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1089338",
-        "title": "Agius claims Misano lap record to beat Gonzalez to Friday honours Liqui Moly Dynavolt Intact GP earn a perfect Friday as Alonso completes the top three in a closely fought Moto2 Practice",
-        "url": "https://www.motogp.com/en/news/2026/09/11/agius-claims-misano-lap-record-to-beat-gonzalez-to-friday-honours/1089338",
-        "summary": "",
-        "preview": "",
-        "published_at": null,
-        "series": "Moto2",
+        "source_series": "MotoGP",
+        "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
       },
@@ -44,6 +37,8 @@
         "preview": "",
         "published_at": null,
         "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
       }
