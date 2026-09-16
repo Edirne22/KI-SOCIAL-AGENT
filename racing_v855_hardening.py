@@ -55,10 +55,8 @@ def _contextual_guard(cfo, caption, rider_catalog=()):
         for r in riders
     )
     for error in list(errors):
-        # Fix 1: Auch Kuerzel+Nummer und Namen mit Nummer akzeptieren
         m = re.search(r'unsupported hashtag #([A-Za-z]*\d+)$', error)
         if m and rider_present:
-            # nur Zahlen-Teil extrahieren: aus "#JM36" wird "36"
             digit_match = re.search(r'\d+', m.group(1))
             if digit_match and digit_match.group().lower() in numbers:
                 errors.remove(error)
@@ -74,13 +72,24 @@ def install(a):
     def fact_packet(x): return x.get('canonical_fact_object') or build_cfo(x,catalog)
     def whitelist_errors(x,caption): f=fact_packet(x); return validate_cfo(f,x,catalog)+_contextual_guard(f,caption,catalog)
     def repair_caption(x,caption,reasons):
-      Antworte ausschliesslich JSON: {{"patches":[{{"old":"exakter vorhandener Text","new":"Ersatz"}}]}}'''p=f'''Repariere nur beanstandete Stellen des bestehenden deutschen Posts.\nKeine neue Story, keine Recherche, keine Fakten aus Vorwissen.\nNamen und Zahlen nur aus dem CFO. Keine komplette Neufassung.\nCFO: {json.dumps(fact_packet(x),ensure_ascii=False)}\nQM-FEHLER: {json.dumps((reasons or [])[:8],ensure_ascii=False)}\nBESTEHENDER POST: {json.dumps(caption,ensure_ascii=False)}\nAntworte ausschliesslich JSON: {{"patches":[{{"old":"exakter vorhandener Text","new":"Ersatz"}}]}}'''; audit={'before_sha256':__import__('hashlib').sha256(caption.encode()).hexdigest()}
+        patch_rules = ('REGELN FUER PATCHES:\n'
+            '- old-Text muss im Post genau EINMAL vorkommen.\n'
+            '- old-Text max 2 Saetze.\n'
+            '- Bei mehrdeutigen Stellen laengeren Kontext waehlen.\n'
+            '- Nur punktuelle Ersetzungen, kein Neuschrieb.\n'
+            '- Bei duenner Quelle (nur Titel): KEINE erfundenen Sessions/Zeiten/Orte.')
+        p=f'''Repariere nur beanstandete Stellen des bestehenden deutschen Posts.\nKeine neue Story, keine Recherche, keine Fakten aus Vorwissen.\nNamen und Zahlen nur aus dem CFO. Keine komplette Neufassung.\nCFO: {json.dumps(fact_packet(x),ensure_ascii=False)}\nQM-FEHLER: {json.dumps((reasons or [])[:8],ensure_ascii=False)}\nBESTEHENDER POST: {json.dumps(caption,ensure_ascii=False)}\n{patch_rules}\nAntworte ausschliesslich JSON: {{"patches":[{{"old":"exakter vorhandener Text","new":"Ersatz"}}]}}'''
+        audit={'before_sha256':__import__('hashlib').sha256(caption.encode()).hexdigest()}
         try:
             payload=_parse_patch_payload(a.generate('final_captions',p)); repaired=apply_patch(caption,json.dumps(payload,ensure_ascii=False))
             if repaired==caption: raise ValueError('repair produced no text change')
             audit.update(applied=True,patches=payload['patches']); return repaired
-        except Exception as exc: audit.update(applied=False,error=f'{type(exc).__name__}: {str(exc)[:200]}'); print('EDITOR PATCH REJECT:',audit['error']); return caption
-        finally: x.setdefault('repair_history',[]).append(audit)
+        except Exception as exc:
+            audit.update(applied=False,error=f'{type(exc).__name__}: {str(exc)[:200]}')
+            print('EDITOR PATCH REJECT:',audit['error'])
+            return caption
+        finally:
+            x.setdefault('repair_history',[]).append(audit)
     def prompt(x,reasons=None): return f'''Du schreibst einen deutschen Racing-Post fuer Buelents Bike Life.\n{a.global_professional_context()}\nV8.6: Das Canonical Fact Object ist die einzige Faktenbasis. Keine Ergaenzung aus Vorwissen.\nNamen exakt uebernehmen, keine Vornamen/Nationalitaeten/Teams/Orte ergaenzen.\nKeine Serienverwechslung, P1 ist weder Q1 noch Meisterschaftsfuehrung.\nModalitaet erhalten. Keine direkten oder frei uebersetzten Zitate.\nNatuerliches Deutsch, Hook, 2-4 informative Saetze und eine Community-Frage.\nKeine Hashtags erzeugen.\nCANONICAL FACT OBJECT: {json.dumps(fact_packet(x),ensure_ascii=False)}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
     def evaluate(x,caption,frozen):
         w=([] if x.get('canonical_fact_object')==frozen else ['CFO: object mutated'])+validate_cfo(frozen,x,catalog)+_contextual_guard(frozen,caption,catalog); x['guard_errors']=w
