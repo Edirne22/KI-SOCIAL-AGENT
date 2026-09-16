@@ -1,10 +1,10 @@
-"""Racing Agency V8.5.5 run controller.
+"""Racing Agency V8.5.4 run controller.
 Deterministic orchestration state: duplicate protection, persistent batch identity and human approval boundary.
 """
 from pathlib import Path
 from datetime import datetime, timezone
 import hashlib,json,os,time
-STATE=Path('memory/RACING_RUN_STATE.json');ARCH_VERSION='V8.5.5';TERMINAL={'BLOCKED','READY_FOR_APPROVAL','APPROVED','PUBLISHED','CLOSED'};DUPLICATE_WINDOW_SECONDS=30*60
+STATE=Path('memory/RACING_RUN_STATE.json');ARCH_VERSION='V8.5.4';TERMINAL={'BLOCKED','READY_FOR_APPROVAL','APPROVED','PUBLISHED','CLOSED'};DUPLICATE_WINDOW_SECONDS=30*60
 def _now():return datetime.now(timezone.utc)
 def _load():
  try:return json.loads(STATE.read_text(encoding='utf-8'))
