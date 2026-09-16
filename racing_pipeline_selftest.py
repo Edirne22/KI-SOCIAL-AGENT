@@ -4,6 +4,8 @@ from datetime import datetime,timezone
 import tempfile,json
 import motogp_content_agency_v2 as a
 import racing_semantic_qm as semantic
+import racing_final_guard as final_guard
+import racing_run_controller as rc
 import turkish_riders_scout as trs
 import llm_client as llm
 
@@ -16,8 +18,7 @@ def test_language_repair_chain():
   def editor(x,reasons=None):calls['editor']+=1;return 'Hook\n\nBody\n\nFrage?\n\n#MotoGP #Test #Racing #BuelentsBikeLife'
   def racing(x,c):calls['racing']+=1;return True,[]
   def sem(x,c):calls['semantic']+=1;return sem_result(True,calls['semantic']>1,repair=['holpriges Deutsch'] if calls['semantic']==1 else [])
-  a.german_editor,a.racing_review,a.semantic_review_detailed=editor,racing,sem
-  x={'title':'MotoGP race rider current test story','summary':'race rider','url':'https://example.com/2026/09/15/test'}
+  a.german_editor,a.racing_review,a.semantic_review_detailed=editor,racing,sem;x={'title':'MotoGP race rider current test story','summary':'race rider','url':'https://example.com/2026/09/15/test'}
   ok(a.qualify_copy(x),'language repair should pass');ok(calls=={'editor':2,'racing':2,'semantic':2},f'wrong repair chain {calls}');ok(x['rewrite_count']==1,'rewrite count')
  finally:a.german_editor,a.racing_review,a.semantic_review_detailed=old
 def test_hard_fact_zero_tolerance():
@@ -42,6 +43,20 @@ def test_series_and_hashtags():
  cases=[({'title':'Agius fastest in Moto2 Practice','summary':'Moto2 Practice at Misano','url':'https://www.motogp.com/en/news/2026/09/15/a'},'Moto2','#Moto2'),({'title':'Quiles takes Moto3 pole','summary':'Moto3 qualifying','url':'https://www.motogp.com/en/news/2026/09/15/b'},'Moto3','#Moto3'),({'title':'Brad Binder MotoGP update','summary':'Binder in MotoGP','url':'https://example.com/2026/09/15/c'},'MotoGP','#MotoGP'),({'title':'Bulega makes MotoGP switch for 2027','summary':'Bulega moves from WorldSBK to MotoGP','url':'https://www.worldsbk.com/en/news/2026/09/15/d'},'MotoGP','#MotoGP'),({'title':'Miller joins WorldSBK for 2027','summary':'Miller moves from MotoGP to WorldSBK','url':'https://www.motogp.com/en/news/2026/09/15/e'},'WorldSBK','#WorldSBK')]
  for item,series,tag in cases:ok(a.series_for(item)==series,f'{item["title"]} -> {a.series_for(item)}');ok(tag in a.hashtags(item),f'missing {tag}')
  ok(a.is_gp_family(cases[0][0]) and a.is_gp_family(cases[1][0]),'Moto2/Moto3 must remain GP family')
+def test_final_truth_guard_live_regressions():
+ bad=[
+ ({'title':'Quiles denies Almansa in epic photo finish','summary':'Moto3 race at Misano','series':'MotoGP'},'Quiles gewinnt.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife','Moto3 mislabeled MotoGP'),
+ ({'title':'WorldWCR duo rookie vs veteran','summary':'WorldWCR teammates Paola Ramos and Roberta Ponziani','series':'WorldSBK'},'Rookie trifft Veteran.\n\nWas meint ihr?\n\n#WorldSBK #Racing #BuelentsBikeLife','WorldWCR mislabeled WorldSBK'),
+ ({'title':'Behind the scenes with Red Bull KTM','summary':'Catch up on 2026 so far in a Vlog series','series':'MotoGP'},'KTM zeigt den Vlog.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife','promo/vlog'),
+ ({'title':'Rossi, Razgatlioglu and more on Bulega switch','summary':'Toprak Razgatlioglu comments on Bulega MotoGP switch','series':'MotoGP'},'Rahil Etgar Razgatlioglu spricht über Bulega.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife','corrupt rider name')]
+ for item,caption,label in bad:
+  passed,errs=final_guard.review(item,caption);ok(not passed and errs,f'Final Guard missed {label}')
+ good={'title':'Agius fastest in Moto2 Practice','summary':'Moto2 Practice at Misano','series':'Moto2'};passed,errs=final_guard.review(good,'Agius setzt die Bestzeit.\n\nWie seht ihr das?\n\n#Moto2 #MotorradRacing #BuelentsBikeLife');ok(passed,f'Final Guard false positive: {errs}')
+def test_final_guard_is_last_mile_gate():
+ src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');ok('from racing_final_guard import review as final_guard_review' in src,'Final Guard import missing');ok("final_guard_review(x,x['caption'])" in src,'Final Guard not called on final caption');ok(src.index("final_guard_review(x,x['caption'])")>src.index("chief_review('Motorcycle Racing'"),'Final Guard must execute after Chief-QM')
+def test_article_date_metadata_contract():
+ import motogp_content_agency as base
+ html='''<html><head><meta property="article:published_time" content="2026-09-15T12:34:56Z"></head></html>''';ok(base.published_time(html)=='2026-09-15T12:34:56Z','article:published_time extraction broken');html2='''<script type="application/ld+json">{"datePublished":"2026-09-14T10:00:00+00:00"}</script>''';ok(base.published_time(html2)=='2026-09-14T10:00:00+00:00','JSON-LD datePublished extraction broken');html3='<time datetime="2026-09-13T09:00:00Z">13 Sep</time>';ok(base.published_time(html3)=='2026-09-13T09:00:00Z','time datetime extraction broken')
 def test_editor_json_technical_retry():
  old_generate,old_sleep=a.generate,a.time.sleep;calls={'n':0}
  try:
@@ -75,7 +90,7 @@ def test_session_fail_closed():
  finally:a.SESSION=old
 def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');sem=Path('racing_semantic_qm.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8')
- ok(a.VERSION=='V8.5.3' and "VERSION='V8.5.3'" in src,'version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('hard_fact_ok' in sem and 'technical_attempt in range(3)' in sem,'V8.5.3 semantic contract missing');ok('429,500,502,503,504' in client and 'max_retries=2' in client,'provider retry missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow,'workflow preflight incomplete');ok('qualify_parallel(fresh[:60],3)' in src,'expanded fresh pool missing');ok('fallback_raw[:20]' in src,'Top20 fallback missing');ok(Path('config/PROFESSIONAL_AGENT_STANDARD.md').is_file() and Path('config/HUMAN_WRITING_PROTOCOL.md').is_file(),'global standards missing')
+ ok(a.VERSION=='V8.5.3' and rc.ARCH_VERSION=='V8.5.3','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('hard_fact_ok' in sem and 'technical_attempt in range(3)' in sem,'semantic contract missing');ok('429,500,502,503,504' in client and 'max_retries=2' in client,'provider retry missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow,'workflow preflight incomplete');ok('qualify_parallel(fresh[:60],3)' in src,'expanded fresh pool missing');ok('fallback_raw[:20]' in src,'Top20 fallback missing');ok(Path('racing_final_guard.py').is_file(),'Final Guard module missing');ok(Path('config/PROFESSIONAL_AGENT_STANDARD.md').is_file() and Path('config/HUMAN_WRITING_PROTOCOL.md').is_file(),'global standards missing')
 def main():
- test_language_repair_chain();test_hard_fact_zero_tolerance();test_racing_gate_repair_then_pass();test_series_and_hashtags();test_editor_json_technical_retry();test_turkish_aliases();test_semantic_json_retry();test_provider_backoff();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.3: PASS')
+ test_language_repair_chain();test_hard_fact_zero_tolerance();test_racing_gate_repair_then_pass();test_series_and_hashtags();test_final_truth_guard_live_regressions();test_final_guard_is_last_mile_gate();test_article_date_metadata_contract();test_editor_json_technical_retry();test_turkish_aliases();test_semantic_json_retry();test_provider_backoff();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.3 + FINAL TRUTH GUARD: PASS')
 if __name__=='__main__':main()
