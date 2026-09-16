@@ -1,6 +1,38 @@
 {
   "version": 1,
   "days": {
-    "2026-09-15": []
+    "2026-09-15": [],
+    "2026-09-16": [
+      {
+        "story_key": "motogp:1089335",
+        "title": "Almansa fastest on Friday as Carpe faces Q1 hurdle at Misano Once again setting the pace, the #22 topped the timesheets on day one of Misano action whilst second in the Championship Carpe couldn’t crack the top 14",
+        "url": "https://www.motogp.com/en/news/2026/09/11/almansa-fastest-on-friday-as-carpe-faces-q1-hurdle-at-misano/1089335",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089338",
+        "title": "Agius claims Misano lap record to beat Gonzalez to Friday honours Liqui Moly Dynavolt Intact GP earn a perfect Friday as Alonso completes the top three in a closely fought Moto2 Practice",
+        "url": "https://www.motogp.com/en/news/2026/09/11/agius-claims-misano-lap-record-to-beat-gonzalez-to-friday-honours/1089338",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089336",
+        "title": "Almansa amazes Misano with dominant sixth pole of 2026 The Spaniard was untouchable in Q2, repeatedly improving at the front to beat Uriarte by 0.217s as Kelso grabbed the final front-row spot",
+        "url": "https://www.motogp.com/en/news/2026/09/12/almansa-amazes-misano-with-dominant-sixth-pole-of-2026/1089336",
+        "summary": "",
+        "preview": "",
+        "series": "MotoGP",
+        "turkish_rider": "",
+        "kind": "news"
+      }
+    ]
   }
 }

@@ -180,3 +180,21 @@ Story-Key: motogp:1089220
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 03:22 UTC | Motorcycle Racing | PASS
+Titel: Almansa fastest on Friday as Carpe faces Q1 hurdle at Misano Once again setting the pace, the #22 topped the timesheets on day one of Misano action whilst second in the Championship Carpe couldn’t crack the top 14
+Story-Key: motogp:1089335
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 03:22 UTC | Motorcycle Racing | PASS
+Titel: Agius claims Misano lap record to beat Gonzalez to Friday honours Liqui Moly Dynavolt Intact GP earn a perfect Friday as Alonso completes the top three in a closely fought Moto2 Practice
+Story-Key: motogp:1089338
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 03:22 UTC | Motorcycle Racing | PASS
+Titel: Almansa amazes Misano with dominant sixth pole of 2026 The Spaniard was untouchable in Q2, repeatedly improving at the front to beat Uriarte by 0.217s as Kelso grabbed the final front-row spot
+Story-Key: motogp:1089336
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
