@@ -17,8 +17,9 @@ jobs:
       - run: pip install requests
       - name: Offline deterministic audit tests
         run: |
-          python -m py_compile motogp_pipeline_audit.py motogp_pipeline_audit_selftest.py motogp_pipeline_diagnose.py
+          python -m py_compile motogp_pipeline_audit.py motogp_pipeline_audit_selftest.py motogp_pipeline_diagnose.py motogp_date_recovery_selftest.py
           python motogp_pipeline_audit_selftest.py
+          python motogp_date_recovery_selftest.py
       - name: Read-only pre-QM live diagnostic
         env:
           PYTHONUNBUFFERED: '1'
