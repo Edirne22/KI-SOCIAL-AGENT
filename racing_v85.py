@@ -2,7 +2,10 @@
 import os,sys,traceback
 import motogp_content_agency_v2 as agency
 import racing_run_controller as rc
+from racing_v855_hardening import install as install_v855_hardening
 
+# Runtime hardening is installed before any Racing work starts.
+install_v855_hardening(agency)
 agency.VERSION=rc.ARCH_VERSION
 _orig_send=agency.send_message
 BATCH_ID=''
