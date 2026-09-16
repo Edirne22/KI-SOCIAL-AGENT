@@ -1,86 +1,86 @@
 # Inspiration · YouTube Apify
 
-Suchzeitraum ab: 2026-09-07
+Suchzeitraum ab: 2026-09-09
 Suchbegriffe: MotoGP Highlights, Toprak Razgatlioglu, WorldSBK Highlights
 Videos: 10
 
 ### Datensatz 1
-- Titel: MotoGP™ Race Highlights 🔥 _ 2024 _SpanishGP [1080p #1million #foryou # #trending #viralvideo
-- Kanal: General Creater Hub
-- Datum: 2026-09-14T04:26:48Z
-- URL: https://www.youtube.com/watch?v=N0EtPXEZNxw
-- Views: 7
-- Likes: 0
-- Kommentare: 0
+- Titel: Marc overcomes the LARGEST points deficit to a championship leader in history: 102 points ✅📈
+- Kanal: MotoGP
+- Datum: 2026-09-15T14:50:23Z
+- URL: https://www.youtube.com/watch?v=qvaag1BrLto
+- Views: 77860
+- Likes: 2154
+- Kommentare: 171
 ### Datensatz 2
-- Titel: The Comeback King Is Back 👑 #shorts #fyp #motogp #marcmarquez #comeback #highlights #racing
-- Kanal: Grid Gear
-- Datum: 2026-09-14T03:04:23Z
-- URL: https://www.youtube.com/watch?v=bnNEyR5JcRg
-- Views: 892
-- Likes: 34
+- Titel: MOTOGP HIGH SPEED RACE | MOTOGP RACER 🏍️🔥 #motogp #shorts
+- Kanal: MOTOGP RACER 🏍️
+- Datum: 2026-09-15T13:35:06Z
+- URL: https://www.youtube.com/watch?v=lWnI-e5MTr0
+- Views: 1152
+- Likes: nicht verfügbar
 - Kommentare: 0
 ### Datensatz 3
-- Titel: when this rider is in first position #racing #automobile #motorcycle #motogp
-- Kanal: SG
-- Datum: 2026-09-14T02:35:08Z
-- URL: https://www.youtube.com/watch?v=K5naJOtaS4c
-- Views: 987
-- Likes: nicht verfügbar
-- Kommentare: 3
-### Datensatz 4
-- Titel: QUILES TERUS MENDOMINASI MOTO3 - HIGHLIGHT MOTO3
-- Kanal: SakhaDut Gaming channel 
-- Datum: 2026-09-14T00:45:50Z
-- URL: https://www.youtube.com/watch?v=lRIe6DFJnYg
-- Views: 756
-- Likes: 14
+- Titel: 2025 MotoGP Round 9 – Italian Grand Prix | Sprint Race Highlights Explained by AI
+- Kanal: ばいくるまん
+- Datum: 2026-09-15T12:42:30Z
+- URL: https://www.youtube.com/watch?v=p1Haxkd_Ca4
+- Views: 5
+- Likes: 0
 - Kommentare: 0
-### Datensatz 5
-- Titel: motogp highlights #shorts #shortvideo #viral #viralvideo #racing #motogp #motogphighlights
-- Kanal: United Play Network-UPN Sports
-- Datum: 2026-09-14T00:16:51Z
-- URL: https://www.youtube.com/watch?v=4xdBt4uh-G4
-- Views: 727
-- Likes: 14
+### Datensatz 4
+- Titel: MotoGP Race Highlights #motogp #racing #motorcycle
+- Kanal: Bjdzzeeghh Kittvdssxvvfc
+- Datum: 2026-09-15T12:15:20Z
+- URL: https://www.youtube.com/watch?v=zh5874EVX_o
+- Views: 39420
+- Likes: 221
 - Kommentare: 1
+### Datensatz 5
+- Titel: [MotoGP] 2026 Highlights: 🔥Martin Merasa Belum Punya Kecepatan untuk Menang
+- Kanal: Viral01-TV
+- Datum: 2026-09-15T09:20:01Z
+- URL: https://www.youtube.com/watch?v=nXpsQ7to9_w
+- Views: 83
+- Likes: 0
+- Kommentare: 0
 ### Datensatz 6
-- Titel: RACE HIGHLIGHTS 🔴🏁 Mission King Of The Baggers Race 2 at Circuit of The Americas
-- Kanal: MotoAmerica
-- Datum: 2026-09-13T23:22:25Z
-- URL: https://www.youtube.com/watch?v=6dsrjyVbg2Q
-- Views: 616
-- Likes: 50
-- Kommentare: 5
+- Titel: Reaksi Dunia Terharu 'Mulianya Klarifikasi Veda' Lebih Salahkan Diri dari pd Kambing Hitamkan Motor!
+- Kanal: vibeSport News
+- Datum: 2026-09-15T05:50:50Z
+- URL: https://www.youtube.com/watch?v=rMj6kZDAdz0
+- Views: 10176
+- Likes: 62
+- Kommentare: 15
 ### Datensatz 7
-- Titel: Hasil Sprint Race Marquez #motogp #motogphariini #motogpcrash #marquez
-- Kanal: SPOTGP LIVE
-- Datum: 2026-09-13T22:55:51Z
-- URL: https://www.youtube.com/watch?v=0py4CooL3wI
-- Views: 105
-- Likes: 3
+- Titel: Giro CBM 2026 - Edição 33
+- Kanal: CBM TV OFICIAL
+- Datum: 2026-09-14T21:00:38Z
+- URL: https://www.youtube.com/watch?v=Ew_FIasO8HI
+- Views: 122
+- Likes: 5
 - Kommentare: 0
 ### Datensatz 8
-- Titel: 🔴Full Race Highlight Moto3 | San Marino Grand Prix | MotoGP 2026
-- Kanal: Cyvill-Sport
-- Datum: 2026-09-13T16:56:05Z
-- URL: https://www.youtube.com/watch?v=QZbO-O3f_hI
-- Views: 5838
-- Likes: 42
-- Kommentare: 6
+- Titel: Top 3 Craziest Motorcycle Racing Moments! 🤯 MotoGP & Beyond!
+- Kanal: MotorsportFive
+- Datum: 2026-09-14T19:50:37Z
+- URL: https://www.youtube.com/watch?v=ECFS7R7khFQ
+- Views: 1198
+- Likes: 28
+- Kommentare: 0
 ### Datensatz 9
-- Titel: Best MotoGP Moments 🔥 | 2026 San Marino GP
-- Kanal: MotoGP
-- Datum: 2026-09-13T16:30:12Z
-- URL: https://www.youtube.com/watch?v=NekLDLj_zYc
-- Views: 387236
-- Likes: 5831
-- Kommentare: 364
+- Titel: HIGHLIGHT MOTOGP MISANO: Dominasi Dingin Marc Marquez di Tengah Petaka Rider Italia
+- Kanal: OlivkuyGP
+- Datum: 2026-09-14T16:03:56Z
+- URL: https://www.youtube.com/watch?v=yZU43HatVek
+- Views: 104
+- Likes: nicht verfügbar
+- Kommentare: 0
 ### Datensatz 10
-- Titel: Marc Marquez TAKES BACK MotoGP Lead After Bezzecchi Crash! | San Marino GP 2026
-- Kanal: GP News
-- Datum: 2026-09-13T14:42:25Z
-- URL: https://www.youtube.com/watch?v=vzgkq44eboA
-- Views: 9371
-- Likes: 64
-- Kommentare: 5
+- Titel: 🏍️🔥 43 VS 43 — Who Will Win This Insane Battle? 😱🏆 | MOTOGP RACER | #motogp #shorts
+- Kanal: MOTOGP RACER 🏍️
+- Datum: 2026-09-14T15:54:21Z
+- URL: https://www.youtube.com/watch?v=qBsNEH_cIGI
+- Views: 1122
+- Likes: nicht verfügbar
+- Kommentare: 0

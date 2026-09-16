@@ -1,5 +1,5 @@
 # Inspiration-Ideen
-Stand: 2026-09-14 05:06
+Stand: 2026-09-16 05:06
 
 ## Datenstatus
 - Konkrete öffentliche Datensätze: 30
@@ -17,121 +17,121 @@ Gemini nicht verfügbar – Rohdaten der wichtigsten Beiträge folgen.
 ## Rohdaten
 ### Datensatz 1
 - Plattform: YouTube Apify
-- Titel: Best MotoGP Moments 🔥 | 2026 San Marino GP
-- Datum: 2026-09-13T16:30:12Z
-- URL: https://www.youtube.com/watch?v=NekLDLj_zYc
-- Engagement: 393431
+- Titel: Marc overcomes the LARGEST points deficit to a championship leader in history: 102 points ✅📈
+- Datum: 2026-09-15T14:50:23Z
+- URL: https://www.youtube.com/watch?v=qvaag1BrLto
+- Engagement: 80185
 ### Datensatz 2
 - Plattform: Apify
-- Titel: Silly season keeps moving! 🧩 One more rider is confirmed for 2027. Who’s next to make their move? 🚥
-- Datum: 2026-09-09T15:18:49.000Z
-- URL: https://www.instagram.com/p/DdEkPwCl1El/
-- Engagement: 11173
+- Titel: Bumping into an old friend 👀 🤝
+- Datum: 2026-09-12T14:13:08.000Z
+- URL: https://www.instagram.com/p/DdMLDPEofnL/
+- Engagement: 41234
 ### Datensatz 3
 - Plattform: YouTube Apify
-- Titel: Marc Marquez TAKES BACK MotoGP Lead After Bezzecchi Crash! | San Marino GP 2026
-- Datum: 2026-09-13T14:42:25Z
-- URL: https://www.youtube.com/watch?v=vzgkq44eboA
-- Engagement: 9440
+- Titel: MotoGP Race Highlights #motogp #racing #motorcycle
+- Datum: 2026-09-15T12:15:20Z
+- URL: https://www.youtube.com/watch?v=zh5874EVX_o
+- Engagement: 39642
 ### Datensatz 4
-- Plattform: YouTube Apify
-- Titel: 🔴Full Race Highlight Moto3 | San Marino Grand Prix | MotoGP 2026
-- Datum: 2026-09-13T16:56:05Z
-- URL: https://www.youtube.com/watch?v=QZbO-O3f_hI
-- Engagement: 5886
+- Plattform: Apify
+- Titel: Ready for Misano!
+- Datum: 2026-09-10T16:45:39.000Z
+- URL: https://www.instagram.com/p/DdHS-nFiKdW/
+- Engagement: 33920
 ### Datensatz 5
 - Plattform: Apify
-- Titel: @bradbinder opens up about his move to #WorldSBK and reuniting with @88migueloliveira🎙️👀 Read more on WorldSBK.com
-- Datum: 2026-09-10T13:56:51.000Z
-- URL: https://www.instagram.com/p/DdG_gzDoo4w/
-- Engagement: 4094
+- Titel: Herkse selamlar !
+- Datum: 2026-09-07T15:05:07.000Z
+- URL: https://www.instagram.com/p/Dc_Y7lqoMPz/
+- Engagement: 25388
 ### Datensatz 6
 - Plattform: Apify
-- Titel: @jackmilleraus is ready for a new adventure! 🔥🇦🇺 The MotoGP star opens up on his move to Yamaha’s WorldSBK project for 2027 🔵 Read more on WorldSBK.com 🔗
-- Datum: 2026-09-10T14:44:28.000Z
-- URL: https://www.instagram.com/p/DdHFAURotFh/
-- Engagement: 2925
+- Titel: P12 today! Let’s keep pushing 💪🏼🔥
+- Datum: 2026-09-13T12:57:27.000Z
+- URL: https://www.instagram.com/p/DdOm5nPoGi7/
+- Engagement: 18640
 ### Datensatz 7
 - Plattform: Apify
-- Titel: Early drama! 💥 @jorge_navarro9 was pushing hard at the front when it all came undone 😬
-- Datum: 2026-09-11T12:02:20.000Z
-- URL: https://www.instagram.com/p/DdJXTEwCtYw/
-- Engagement: 2678
+- Titel: Harika bir hafta sonu değildi ama bazı şeyleri daha iyi anladığımız ve en azından bir miktar ilerleme kaydettiğimiz bir hafta sonuydu. @kenansofuoglu Abime teşekkür ediyorum bu zorlu süreçte yalnız bırakmıyor beni
+- Datum: 2026-09-14T09:02:54.000Z
+- URL: https://www.instagram.com/p/DdQxM0yCGod/
+- Engagement: 18304
 ### Datensatz 8
 - Plattform: Apify
-- Titel: What better #FridayFeeling than celebrating an 11th career hat-trick? 🏆🔥
-- Datum: 2026-09-11T06:49:33.000Z
-- URL: https://www.instagram.com/p/DdIzdGPO3mT/
-- Engagement: 2566
+- Titel: Motocross after a long time 🙌 #yamaha #yz450f
+- Datum: 2026-09-06T11:21:35.000Z
+- URL: https://www.instagram.com/p/Dc8aavnR-eD/
+- Engagement: 17385
 ### Datensatz 9
 - Plattform: Apify
-- Titel: Wheel-to-wheel for P7! 🔥😮‍💨 Making the move in a fierce fight for position ⚔️
-- Datum: 2026-09-11T14:00:59.000Z
-- URL: https://www.instagram.com/p/DdJk459jcRU/
-- Engagement: 1858
+- Titel: @toprakrazgatlioglu7 - P21 💬
+- Datum: 2026-09-11T17:19:07.000Z
+- URL: https://www.instagram.com/p/DdJ7mqdCADq/
+- Engagement: 15348
 ### Datensatz 10
 - Plattform: Apify
-- Titel: Family affair for P3! ⚔️👬 This time, French edition 😉
-- Datum: 2026-09-10T14:02:03.000Z
-- URL: https://www.instagram.com/p/DdHANWZDaeC/
-- Engagement: 1757
+- Titel: @toprakrazgatlioglu7 - DNF 💬
+- Datum: 2026-08-30T15:50:36.000Z
+- URL: https://www.instagram.com/p/Dcq3732CFDE/
+- Engagement: 12333
 ### Datensatz 11
-- Plattform: Apify
-- Titel: Elbows out! 🔥 The battle for P5 was anything but easy ⚔️
-- Datum: 2026-09-11T10:01:30.000Z
-- URL: https://www.instagram.com/p/DdJJetljJQe/
-- Engagement: 1576
+- Plattform: YouTube Apify
+- Titel: Reaksi Dunia Terharu 'Mulianya Klarifikasi Veda' Lebih Salahkan Diri dari pd Kambing Hitamkan Motor!
+- Datum: 2026-09-15T05:50:50Z
+- URL: https://www.youtube.com/watch?v=rMj6kZDAdz0
+- Engagement: 10253
 ### Datensatz 12
 - Plattform: Apify
-- Titel: What you didn’t see! 👀🕵️‍♂️ Unseen moments, behind-the-scenes action and plenty of Magny-Cours drama in the latest @motul UNFILTERED on WorldSBK’s YouTube channel 🎥🍿
-- Datum: 2026-09-10T15:56:26.000Z
-- URL: https://www.instagram.com/p/DdHNLYBIbCu/
-- Engagement: 1285
+- Titel: @toprakrazgatlioglu7 - P13 💬
+- Datum: 2026-08-29T17:14:32.000Z
+- URL: https://www.instagram.com/p/DcocvwqDFm4/
+- Engagement: 9597
 ### Datensatz 13
-- Plattform: YouTube Apify
-- Titel: when this rider is in first position #racing #automobile #motorcycle #motogp
-- Datum: 2026-09-14T02:35:08Z
-- URL: https://www.youtube.com/watch?v=K5naJOtaS4c
-- Engagement: 990
+- Plattform: Apify
+- Titel: 🇮🇹 ➡️ 🇦🇹
+- Datum: 2026-09-13T17:16:50.000Z
+- URL: https://www.instagram.com/p/DdPEinbo3bA/
+- Engagement: 9281
 ### Datensatz 14
 - Plattform: YouTube Apify
-- Titel: The Comeback King Is Back 👑 #shorts #fyp #motogp #marcmarquez #comeback #highlights #racing
-- Datum: 2026-09-14T03:04:23Z
-- URL: https://www.youtube.com/watch?v=bnNEyR5JcRg
-- Engagement: 926
+- Titel: Top 3 Craziest Motorcycle Racing Moments! 🤯 MotoGP & Beyond!
+- Datum: 2026-09-14T19:50:37Z
+- URL: https://www.youtube.com/watch?v=ECFS7R7khFQ
+- Engagement: 1226
 ### Datensatz 15
 - Plattform: YouTube Apify
-- Titel: QUILES TERUS MENDOMINASI MOTO3 - HIGHLIGHT MOTO3
-- Datum: 2026-09-14T00:45:50Z
-- URL: https://www.youtube.com/watch?v=lRIe6DFJnYg
-- Engagement: 770
+- Titel: MOTOGP HIGH SPEED RACE | MOTOGP RACER 🏍️🔥 #motogp #shorts
+- Datum: 2026-09-15T13:35:06Z
+- URL: https://www.youtube.com/watch?v=lWnI-e5MTr0
+- Engagement: 1152
 ### Datensatz 16
 - Plattform: YouTube Apify
-- Titel: motogp highlights #shorts #shortvideo #viral #viralvideo #racing #motogp #motogphighlights
-- Datum: 2026-09-14T00:16:51Z
-- URL: https://www.youtube.com/watch?v=4xdBt4uh-G4
-- Engagement: 742
+- Titel: 🏍️🔥 43 VS 43 — Who Will Win This Insane Battle? 😱🏆 | MOTOGP RACER | #motogp #shorts
+- Datum: 2026-09-14T15:54:21Z
+- URL: https://www.youtube.com/watch?v=qBsNEH_cIGI
+- Engagement: 1122
 ### Datensatz 17
 - Plattform: YouTube Apify
-- Titel: RACE HIGHLIGHTS 🔴🏁 Mission King Of The Baggers Race 2 at Circuit of The Americas
-- Datum: 2026-09-13T23:22:25Z
-- URL: https://www.youtube.com/watch?v=6dsrjyVbg2Q
-- Engagement: 671
+- Titel: Giro CBM 2026 - Edição 33
+- Datum: 2026-09-14T21:00:38Z
+- URL: https://www.youtube.com/watch?v=Ew_FIasO8HI
+- Engagement: 127
 ### Datensatz 18
-- Plattform: Apify
-- Titel: Summer was great. But we missed this 🥹🏁 What did you miss the most? 💭
-- Datum: 2026-09-12T11:16:24.000Z
-- URL: https://www.instagram.com/p/DdL245uDsRF/
-- Engagement: 596
+- Plattform: YouTube Apify
+- Titel: HIGHLIGHT MOTOGP MISANO: Dominasi Dingin Marc Marquez di Tengah Petaka Rider Italia
+- Datum: 2026-09-14T16:03:56Z
+- URL: https://www.youtube.com/watch?v=yZU43HatVek
+- Engagement: 104
 ### Datensatz 19
 - Plattform: YouTube Apify
-- Titel: Hasil Sprint Race Marquez #motogp #motogphariini #motogpcrash #marquez
-- Datum: 2026-09-13T22:55:51Z
-- URL: https://www.youtube.com/watch?v=0py4CooL3wI
-- Engagement: 108
+- Titel: [MotoGP] 2026 Highlights: 🔥Martin Merasa Belum Punya Kecepatan untuk Menang
+- Datum: 2026-09-15T09:20:01Z
+- URL: https://www.youtube.com/watch?v=nXpsQ7to9_w
+- Engagement: 83
 ### Datensatz 20
 - Plattform: YouTube Apify
-- Titel: MotoGP™ Race Highlights 🔥 _ 2024 _SpanishGP [1080p #1million #foryou # #trending #viralvideo
-- Datum: 2026-09-14T04:26:48Z
-- URL: https://www.youtube.com/watch?v=N0EtPXEZNxw
-- Engagement: 7
+- Titel: 2025 MotoGP Round 9 – Italian Grand Prix | Sprint Race Highlights Explained by AI
+- Datum: 2026-09-15T12:42:30Z
+- URL: https://www.youtube.com/watch?v=p1Haxkd_Ca4
+- Engagement: 5
