@@ -1,6 +1,7 @@
 """Offline regression tests for the complete Racing editorial/QM chain. No provider calls."""
 from pathlib import Path
 from datetime import datetime, timezone
+import tempfile
 import motogp_content_agency_v2 as a
 import racing_semantic_qm as semantic
 
@@ -39,11 +40,9 @@ def test_second_failure_is_fail_closed():
     old=(a.german_editor,a.racing_review,a.semantic_review)
     try:
         a.german_editor=lambda x,reasons=None:'Hook\n\nBody\n\nFrage?\n\n#MotoGP #Test #Racing #BuelentsBikeLife'
-        a.racing_review=lambda x,c:(False,['immer falsch'])
-        a.semantic_review=lambda x,c:(True,[])
+        a.racing_review=lambda x,c:(False,['immer falsch']);a.semantic_review=lambda x,c:(True,[])
         x={'title':'MotoGP race rider fail closed test','summary':'race rider','url':'https://example.com/2026/09/15/test3'}
-        assert_true(not a.qualify_copy(x),'second failure must be blocked')
-        assert_true(x.get('rewrite_count')==1,'more than one rewrite must never occur')
+        assert_true(not a.qualify_copy(x),'second failure must be blocked');assert_true(x.get('rewrite_count')==1,'more than one rewrite must never occur')
     finally:a.german_editor,a.racing_review,a.semantic_review=old
 
 def test_entity_series_and_hashtag_contracts():
@@ -51,12 +50,25 @@ def test_entity_series_and_hashtag_contracts():
       ({'title':'Jack Miller WorldSBK test','summary':'Miller prepares for WorldSBK','url':'https://example.com/2026/09/15/a'},'WorldSBK','#JackMiller','#WorldSBK'),
       ({'title':'Brad Binder MotoGP update','summary':'Binder in MotoGP','url':'https://example.com/2026/09/15/b'},'MotoGP','#BradBinder','#MotoGP'),
       ({'title':'WorldSSP300 race update','summary':'WorldSSP300 grid','url':'https://example.com/2026/09/15/c'},'WorldSSP300',None,'#WorldSSP300'),
+      ({'title':'Bulega makes MotoGP switch for 2027','summary':'Bulega moves from WorldSBK to MotoGP','url':'https://www.worldsbk.com/en/news/2026/09/15/x'},'MotoGP','#NicoloBulega','#MotoGP'),
+      ({'title':'Miller joins WorldSBK for 2027','summary':'Miller moves from MotoGP to WorldSBK','url':'https://www.motogp.com/en/news/2026/09/15/y'},'WorldSBK','#JackMiller','#WorldSBK'),
     ]
     for item,series,rider_tag,series_tag in cases:
         assert_true(a.series_for(item)==series,f'series mismatch: {item["title"]}')
-        tags=a.hashtags(item)
-        assert_true(series_tag in tags,f'series hashtag missing: {tags}')
+        tags=a.hashtags(item);assert_true(series_tag in tags,f'series hashtag missing: {tags}')
         if rider_tag:assert_true(rider_tag in tags,f'rider hashtag missing: {tags}')
+
+def test_stale_approval_session_is_blocked():
+    old=a.SESSION
+    try:
+        with tempfile.TemporaryDirectory() as td:
+            a.SESSION=Path(td)/'session.md';a.SESSION.write_text('QM: PASS\n## Beitrag 1\nALT',encoding='utf-8')
+            a.invalidate_session(datetime(2026,9,16,tzinfo=timezone.utc),'nur 3/5',3)
+            text=a.SESSION.read_text(encoding='utf-8')
+            assert_true('QM: FAIL' in text and 'Approval-Status: BLOCKED' in text,'stale PASS session not blocked')
+            assert_true('Bestandene-Pakete: 3/5' in text,'blocked session count missing')
+            assert_true('## Beitrag' not in text,'old approvable posts survived invalidation')
+    finally:a.SESSION=old
 
 def test_freshness_and_semantic_fail_closed_contracts():
     now=datetime(2026,9,16,tzinfo=timezone.utc)
@@ -69,26 +81,14 @@ def test_freshness_and_semantic_fail_closed_contracts():
     assert_true(semantic._clean_json('```json\n{"pass": true}\n```')['pass'] is True,'semantic fenced JSON parser broken')
 
 def test_contracts():
-    src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8')
-    workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8')
-    receiver=Path('motogp_telegram_receive.py').read_text(encoding='utf-8')
-    assert_true(a.VERSION=='V8.4.6.3',f'version mismatch: {a.VERSION}')
-    assert_true("VERSION='V8.4.6.3'" in src,'source version mismatch')
-    assert_true('Session-Version: 17' in src,'session writer version mismatch')
+    src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive.py').read_text(encoding='utf-8')
+    assert_true(a.VERSION=='V8.4.6.4',f'version mismatch: {a.VERSION}');assert_true("VERSION='V8.4.6.4'" in src,'source version mismatch')
+    assert_true('Session-Version: 18' in src,'session writer version mismatch');assert_true('invalidate_session' in src,'stale approval invalidation missing')
     assert_true('MIN_SESSION_VERSION=10' in receiver,'receiver minimum session contract changed unexpectedly')
     assert_true('racing_pipeline_selftest.py' in workflow and 'racing_semantic_qm.py' in workflow,'workflow preflight incomplete')
-    assert_true('Professional Agent Standard: V1.0' in src,'professional standard missing')
-    assert_true('semantic_review' in src and 'chief_review' in src,'QM layers missing')
-    assert_true('fetch_article_details' not in src,'obsolete undefined research function returned')
-    assert_true(Path('config/PROFESSIONAL_AGENT_STANDARD.md').is_file(),'professional standard file missing')
-    assert_true(Path('config/HUMAN_WRITING_PROTOCOL.md').is_file(),'human protocol missing')
+    assert_true('Professional Agent Standard: V1.0' in src,'professional standard missing');assert_true('semantic_review' in src and 'chief_review' in src,'QM layers missing')
+    assert_true('fetch_article_details' not in src,'obsolete undefined research function returned');assert_true(Path('config/PROFESSIONAL_AGENT_STANDARD.md').is_file(),'professional standard file missing');assert_true(Path('config/HUMAN_WRITING_PROTOCOL.md').is_file(),'human protocol missing')
 
 def main():
-    test_racing_fail_gets_exactly_one_rewrite()
-    test_semantic_fail_rechecks_both_gates()
-    test_second_failure_is_fail_closed()
-    test_entity_series_and_hashtag_contracts()
-    test_freshness_and_semantic_fail_closed_contracts()
-    test_contracts()
-    print('RACING PIPELINE SELFTEST: PASS')
+    test_racing_fail_gets_exactly_one_rewrite();test_semantic_fail_rechecks_both_gates();test_second_failure_is_fail_closed();test_entity_series_and_hashtag_contracts();test_stale_approval_session_is_blocked();test_freshness_and_semantic_fail_closed_contracts();test_contracts();print('RACING PIPELINE SELFTEST: PASS')
 if __name__=='__main__':main()
