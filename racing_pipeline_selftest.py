@@ -49,7 +49,8 @@ def test_second_failure_is_fail_closed():
 
 def test_contracts():
     src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8')
-    assert_true("VERSION='V8.4.6.2'" in src,'version mismatch')
+    assert_true(a.VERSION=='V8.4.6.3',f'version mismatch: {a.VERSION}')
+    assert_true("VERSION='V8.4.6.3'" in src,'source version mismatch')
     assert_true('Professional Agent Standard: V1.0' in src,'professional standard missing')
     assert_true('semantic_review' in src and 'chief_review' in src,'QM layers missing')
     assert_true('fetch_article_details' not in src,'obsolete undefined research function returned')
