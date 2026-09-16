@@ -8,7 +8,6 @@ VALID=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
 
 def install(a):
     original_prompt=a._editor_prompt
-    original_semantic=a.semantic_review_detailed
 
     def transfer(x):
         s=a.fold(' '.join((x.get('title',''),x.get('summary',''))))
@@ -56,9 +55,11 @@ def install(a):
         return base+'\n\nSOURCE-FACT-WHITELIST (GESCHLOSSEN): '+facts+'\nJede konkrete Person und jede Zahl im Post muss darin bzw. in TITEL/ZUSAMMENFASSUNG vorkommen. Orte, Teams und Hersteller nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG stehen. Nicht belegte Details weglassen, niemals aus Vorwissen ergaenzen.'
 
     def semantic_technical_retry(x,caption):
-        last=None
+        # Resolve through the module at CALL TIME. This is intentional: offline
+        # regression tests replace a.semantic_review_detailed with a provider-free
+        # fake. Capturing it during install() made the selftest call Agnes.
         for n in (1,2,3):
-            r=original_semantic(x,caption);last=r
+            r=a.semantic_review_detailed(x,caption)
             joined=' '.join(r.get('hard_reasons',[])).lower()
             technical=('technisch ungueltig' in joined or 'http 429' in joined or 'rate limit' in joined or 'provider-anfrage' in joined or 'timeout' in joined)
             if not technical:return r
@@ -97,7 +98,6 @@ def install(a):
             x['semantic_qm']='PASS';x['racing_qm']='PASS';x['rewrite_count']=attempt-1;print(f'FULL COPY-QM PASS attempt={attempt}:',x.get('title','')[:90]);return True
         x['semantic_qm']='TECHNICAL-DEFER' if x.get('technical_qm_deferred') else 'FAIL';x['rewrite_count']=min(2,attempt-1);return False
 
-    # Patch module globals used by all downstream functions.
     a.lock_source_series=lock;a.series_for_raw=series_for;a.series_for=series_for
     a._editor_prompt=prompt;a.fact_whitelist_errors=whitelist_errors;a.qualify_copy=qualify
     a.VERSION='V8.5.5'
