@@ -79,3 +79,11 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 2: Wer beim San Marino GP nicht am Limit war, hatte keine Chance.
 - Titel 3: Garagen-Talk & Zusammenhalt: Was die Community wirklich ausmacht
 - Hook 3: Warum fährst du am Wochenende eigentlich immer noch dieselben überlaufenen Strecken?
+
+### 2026-09-16 06:06 | Entwurf generiert
+- Titel 1: Kampfgeist in Misano: Deniz Öncü gibt nicht auf
+- Hook 1: Wenn es mal nicht perfekt läuft, zeigt sich der wahre Champion.
+- Titel 2: Marc Marquez schreibt Geschichte: 102 Punkte Rückstand aufgeholt
+- Hook 2: Wer Marc Marquez abschreibt, hat MotoGP nie geliebt.
+- Titel 3: Kein Netz, keine Route? Nicht mit Offline-Karten
+- Hook 3: Was machst du, wenn mitten in den Bergen plötzlich das Netz weg ist?
