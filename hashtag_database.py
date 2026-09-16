@@ -23,6 +23,7 @@ HASHTAG_DATABASE = {
     "Marc Marquez": {"number": "93", "teams": ["Ducati Lenovo Team"], "series": ["MotoGP"], "hashtags": ["#MarcMarquez", "#Marquez", "#MM93", "#93", "#DucatiLenovo", "#Ducati", "#ForzaDucati", "#MotoGP"]},
     "Marco Bezzecchi": {"number": "72", "teams": ["Aprilia Racing"], "series": ["MotoGP"], "hashtags": ["#MarcoBezzecchi", "#Bezzecchi", "#MB72", "#72", "#Aprilia", "#ApriliaRacing", "#MotoGP"]},
     "Jorge Martin": {"number": "89", "teams": ["Aprilia Racing"], "series": ["MotoGP"], "hashtags": ["#JorgeMartin", "#Martin", "#JM89", "#89", "#Aprilia", "#ApriliaRacing", "#MotoGP"]},
+        "Can Öncü": {"number": "61", "teams": ["Pata Yamaha Ten Kate"], "series": ["WorldSSP"], "hashtags": ["#CanOncu", "#CanÖncü", "#CanOncu61", "#61", "#PataYamaha", "#TenKateRacing", "#YamahaR9", "#WorldSSP", "#MotoGP"]},
 }
 GLOBAL_HASHTAGS = ("#MotorradRacing", "#RacingDeutschland", "#BuelentsBikeLife")
 
