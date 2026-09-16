@@ -3,7 +3,8 @@ Session-Version: 18
 Agency-Version: V8.4.6.4
 QM: FAIL
 Approval-Status: BLOCKED
-Bestandene-Pakete: 3/5
-Grund: Der letzte Live-Lauf lieferte nur 3/5 vollständig qualitätsgeprüfte Pakete. Die alte V8.4.5-PASS-Session wurde deshalb sicherheitshalber ungültig gemacht.
+Session-Timestamp: 1789531416
+Bestandene-Pakete: 1/5
+Grund: Komplette Profi-QM-Kette lieferte weniger als 5 freigabefaehige Pakete
 
-Keine Freigabe möglich. Erst ein neuer Lauf mit 5/5 PASS erzeugt wieder eine freigabefähige Session.
+Keine Freigabe moeglich. Erst ein neuer Lauf mit 5/5 PASS erzeugt eine freigabefaehige Session.

@@ -198,3 +198,9 @@ Story-Key: motogp:1089336
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 04:04 UTC | Motorcycle Racing | PASS
+Titel: Almansa fastest on Friday as Carpe faces Q1 hurdle at Misano Once again setting the pace, the #22 topped the timesheets on day one of Misano action whilst second in the Championship Carpe couldn’t crack the top 14
+Story-Key: motogp:1089335
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
