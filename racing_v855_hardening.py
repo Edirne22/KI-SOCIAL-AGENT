@@ -65,6 +65,8 @@ im Original vorkommen. Keine komplette Neufassung. Unveraenderte Passagen nicht 
         try:
             raw = a.generate('final_captions', p)
             result = apply_patch(caption, raw)
+            if result == caption:
+                raise ValueError('repair produced no text change')
             audit.update(applied=True, patches=json.loads(raw)['patches'])
             return result
         except Exception as e:
@@ -149,7 +151,14 @@ im Original vorkommen. Keine komplette Neufassung. Unveraenderte Passagen nicht 
                 print(f'FULL COPY-QM PASS attempt={attempt}:', x.get('title', '')[:90])
                 return True
             if attempt < 3:
-                x['caption'] = repair_caption(x, x['caption'], reasons)
+                repaired = repair_caption(x, x['caption'], reasons)
+                if repaired == x['caption']:
+                    x.update(semantic_qm='FAIL', racing_qm='FAIL', technical_qm_deferred=False)
+                    x['guard_errors'] = ['CFO: repair returned unchanged text; no repeat QM without a factual change']
+                    x['guard_history'][-1]['errors'] = list(x['guard_errors'])
+                    print('COPY-QM HARD REJECT: no-op repair, unchanged caption rejected before re-evaluation:', x.get('title', '')[:90])
+                    return False
+                x['caption'] = repaired
         x['semantic_qm'] = 'FAIL'
         print('COPY-QM HARD REJECT after bounded patch repair:', x.get('title', '')[:90])
         return False
@@ -166,3 +175,4 @@ im Original vorkommen. Keine komplette Neufassung. Unveraenderte Passagen nicht 
     a.VERSION = 'V8.6'
     a._cfo_v86_installed = True
     return a
+

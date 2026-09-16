@@ -17,8 +17,8 @@ SERIES = {
     'WorldWCR': ('WorldWCR',),
 }
 LOCATIONS = ('San Marino', 'Mugello', 'Misano', 'Austria', 'Spielberg', 'Assen',
-             'Jerez', 'Silverstone', 'Barcelona', 'Aragon', 'Sepang', 'Phillip Island',
-             'Red Bull Ring', 'Portimao', 'Valencia', 'Sachsenring', 'Lusail')
+              'Jerez', 'Silverstone', 'Barcelona', 'Aragon', 'Sepang', 'Phillip Island',
+              'Red Bull Ring', 'Portimao', 'Valencia', 'Sachsenring', 'Lusail')
 TEAMS = ('Tech3', 'Pramac', 'Gresini', 'VR46', 'Trackhouse', 'Intact GP', 'Ajo')
 MANUFACTURERS = ('Ducati', 'Yamaha', 'Honda', 'KTM', 'Aprilia', 'BMW', 'Kawasaki', 'Triumph')
 GENERIC_TAGS = ('#MotorradRacing', '#RacingDeutschland', '#BuelentsBikeLife')
@@ -27,7 +27,7 @@ WORD = re.compile(r"[^\W\d_]+(?:[-'][^\W\d_]+)*", re.UNICODE)
 LEADER = re.compile(r'championship leader|championship lead|WM[- ]?F.hr|Weltmeisterschaftsf.hr|Meisterschaftsf.hr|Tabellenf.hr|f.hrt.{0,20}(?:WM|Meisterschaft)|Spitze.{0,20}(?:WM|Meisterschaft)', re.I)
 WEAK = re.compile(r'\b(targets?|aims?|expected|set to|could|may|might|hopes?|plans?)\b', re.I)
 STRONG = re.compile(r'\b(wird|garantiert|sicher|definitiv|best.tigt|steht fest)\b', re.I)
-STOP_ENTITIES = set('The A An And Of In On For To From With At As After Before Who Meet New Best How What This That He His Her It News Official Home Practice Qualifying Friday Saturday Sunday Monday Tuesday Wednesday Thursday GP P Q FP'.split())
+STOP_ENTITIES = set('The A An And Of In On For To From With At As After Before Who Meet New Best How What This That He His Her It News Official Home Practice Qualifying Friday Saturday Sunday Monday Tuesday Wednesday Thursday Saturday Sunday MotoGP WorldSBK WorldSSP WorldSSP300 Rider Race'.split())
 
 def fold(text):
     return ''.join(c for c in unicodedata.normalize('NFKD', str(text)).casefold().replace('ı', 'i') if not unicodedata.combining(c))
@@ -182,7 +182,7 @@ def guard_errors(cfo, caption, rider_catalog=()):
                 break
         if word[0].isupper() and i + 1 < len(words) and words[i + 1].group() in source_names:
             gap = text[m.end():words[i + 1].start()]
-            if gap == ' ' and word not in {'Der', 'Die', 'Das', 'Auch', 'Für', 'Bei', 'Mit', 'Ohne', 'Und', 'Doch', 'In', 'Nach', 'Vor', 'Während', 'Jetzt', 'Heute', 'Wieder', 'Nun', 'Kann', 'Wird'}:
+            if gap == ' ' and word not in {'Der', 'Die', 'Das', 'Auch', 'Für', 'Bei', 'Mit', 'Ohne', 'Und', 'Doch', 'In', 'Nach', 'Vor', 'Während', 'Jetzt', 'Heute', 'Wieder', 'Nun', 'Kann', 'W[...]
                 errors.append('CFO-Entity: unsupported name prefix ' + word)
     if LEADER.search(text) and not LEADER.search(source):
         errors.append('CFO-Claim: session position is not championship leadership')
@@ -190,11 +190,28 @@ def guard_errors(cfo, caption, rider_catalog=()):
         errors.append('CFO-Modality: possible strengthening of a qualified source claim')
     return sorted(set(errors))
 
+def _read_json_object(raw):
+    if not isinstance(raw, str):
+        raise ValueError('expected patch payload as string')
+    s = raw.strip()
+    if not s:
+        raise ValueError('patch payload is empty')
+    s = re.sub(r'^\s*```(?:json)?\s*', '', s, flags=re.I | re.S)
+    s = re.sub(r'\s*```\s*$', '', s, flags=re.I | re.S)
+    start = s.find('{')
+    end = s.rfind('}')
+    if start == -1 or end == -1 or end < start:
+        raise ValueError('no JSON object found in patch payload')
+    candidate = s[start:end + 1]
+    if s[:start].strip() or s[end + 1:].strip():
+        raise ValueError('patch JSON contains non-JSON wrapper text')
+    return json.loads(candidate)
+
 def apply_patch(caption, raw):
     """All edits address the original text; no cascading or partial application."""
     if not isinstance(raw, str) or len(raw) > 20000:
         raise ValueError('invalid patch payload')
-    obj = json.loads(raw)
+    obj = _read_json_object(raw)
     if not isinstance(obj, dict) or set(obj) != {'patches'}:
         raise ValueError('expected patches object only')
     patches = obj['patches']
@@ -224,3 +241,4 @@ def apply_patch(caption, raw):
     if not result.strip():
         raise ValueError('empty repaired caption')
     return result
+
