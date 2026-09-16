@@ -20,9 +20,10 @@ jobs:
           python -m py_compile motogp_pipeline_audit.py motogp_pipeline_audit_selftest.py motogp_pipeline_diagnose.py motogp_date_recovery_selftest.py
           python motogp_pipeline_audit_selftest.py
           python motogp_date_recovery_selftest.py
-      - name: Read-only pre-QM live diagnostic
+      - name: Read-only live diagnostic through Copy-QM
         env:
           PYTHONUNBUFFERED: '1'
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
         run: python -u motogp_pipeline_diagnose.py
       - name: Upload diagnostic artifacts
         if: always()
@@ -34,4 +35,5 @@ jobs:
             artifacts/motogp-pipeline-audit.jsonl
             artifacts/motogp-stage-summary.json
             artifacts/motogp-rejections.jsonl
+            artifacts/motogp-qm-results.json
             artifacts/motogp-top10.json
