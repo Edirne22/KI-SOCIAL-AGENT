@@ -204,3 +204,21 @@ Story-Key: motogp:1089335
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 04:25 UTC | Motorcycle Racing | PASS
+Titel: Quiles denies Almansa in epic photo finish at Misano 0.021s and counting in one of the closest finishes of 2026 but once again, the Championship leader times it to perfection
+Story-Key: motogp:1089337
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 04:26 UTC | Motorcycle Racing | PASS
+Titel: Agius claims Misano lap record to beat Gonzalez to Friday honours Liqui Moly Dynavolt Intact GP earn a perfect Friday as Alonso completes the top three in a closely fought Moto2 Practice
+Story-Key: motogp:1089338
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 04:26 UTC | Motorcycle Racing | PASS
+Titel: Agius storms to stunning Misano pole as Guevara receives six-place grid penalty The Australian clinches a second Saturday P1 of the season, while the rider second in the title fight has a mountain to climb on Sunday
+Story-Key: motogp:1089339
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
