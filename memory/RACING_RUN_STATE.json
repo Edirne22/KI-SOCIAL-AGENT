@@ -9,9 +9,18 @@
       "started_at": 1789534729,
       "updated_at": 1789534868,
       "status": "BLOCKED"
+    },
+    "racing-2026-09-16-manual-35061399768": {
+      "batch_id": "racing-2026-09-16-manual-35061399768",
+      "architecture": "V8.5.2",
+      "event": "workflow_dispatch",
+      "github_run_id": "35061399768",
+      "started_at": 1789538076,
+      "updated_at": 1789538349,
+      "status": "BLOCKED"
     }
   },
-  "last_notification_at": 1789534868,
-  "last_notification_fingerprint": "663dd0eddc3be3fef5536a30fd969ae74d7622823a9643d47450c7fc5e7338ce",
-  "active_batch_id": "racing-2026-09-16-manual-35057679764"
+  "last_notification_at": 1789538348,
+  "last_notification_fingerprint": "9ff46508a232d48139c5e89473bca63aebaa03a9f7fb7366e5597b2e78cad434",
+  "active_batch_id": "racing-2026-09-16-manual-35061399768"
 }

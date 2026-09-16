@@ -246,3 +246,27 @@ Story-Key: motogp:1089336
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 05:58 UTC | Motorcycle Racing | PASS
+Titel: Quiles denies Almansa in epic photo finish at Misano 0.021s and counting in one of the closest finishes of 2026 but once again, the Championship leader times it to perfection
+Story-Key: motogp:1089337
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 05:58 UTC | Motorcycle Racing | PASS
+Titel: Agius storms to stunning Misano pole as Guevara receives six-place grid penalty The Australian clinches a second Saturday P1 of the season, while the rider second in the title fight has a mountain to climb on Sunday
+Story-Key: motogp:1089339
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 05:58 UTC | Motorcycle Racing | PASS
+Titel: Almansa amazes Misano with dominant sixth pole of 2026 The Spaniard was untouchable in Q2, repeatedly improving at the front to beat Uriarte by 0.217s as Kelso grabbed the final front-row spot
+Story-Key: motogp:1089336
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 05:59 UTC | Motorcycle Racing | PASS
+Titel: “He knows the tyres and the new bike… this is the perfect time” – Rossi, Razgatlioglu and more on Bulega’s MotoGP switch
+Story-Key: motogp:1089982
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
