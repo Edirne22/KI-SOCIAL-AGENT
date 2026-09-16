@@ -3,6 +3,12 @@ on:
   schedule:
     - cron: "15 4 * * *"
   workflow_dispatch:
+    inputs:
+      force_new_run:
+        description: "V8.5: duplicate protection bewusst umgehen (nur fuer gezielten Test)"
+        required: false
+        default: false
+        type: boolean
 permissions:
   contents: write
 concurrency:
@@ -19,14 +25,16 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install requests
-      - name: Preflight – komplette Racing-Kette und Agentenstandard
+      - name: Preflight – V8.5 Orchestrator + komplette Racing-Kette
         run: |
-          python -m py_compile motogp_content_agency_v2.py motogp_content_agency.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py llm_client.py router.py telegram_bot.py memory_engine.py generate_agnes_media.py asset_paths.py media_policy.py
+          python -m py_compile racing_v85.py racing_run_controller.py racing_v85_selftest.py motogp_content_agency_v2.py motogp_content_agency.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py motogp_telegram_receive_v85.py llm_client.py router.py telegram_bot.py memory_engine.py generate_agnes_media.py asset_paths.py media_policy.py
           python racing_pipeline_selftest.py
+          python racing_v85_selftest.py
           python - <<'PY'
           from turkish_riders_scout import scout, racing_scout
           from router import get_task_config, get_provider_for_task
           from llm_client import global_professional_context
+          import motogp_telegram_receive_v85 as approval
           a=scout(1); b=racing_scout(1)
           if a and len(a[0]) != 3: raise SystemExit(f"Turkish scout contract invalid: {len(a[0])}")
           if b and len(b[0]) != 4: raise SystemExit(f"Racing scout contract invalid: {len(b[0])}")
@@ -35,25 +43,27 @@ jobs:
               cfg=get_task_config(task)
               if cfg.get('response_type') != 'text': raise SystemExit(f'{task} response_type invalid')
               if get_provider_for_task(task) != provider: raise SystemExit(f'{task} provider invalid')
+          if approval.MIN_SESSION_VERSION != 18: raise SystemExit('V8.5 approval session minimum invalid')
           ctx=global_professional_context()
           if 'PROFESSIONAL AGENT STANDARD' not in ctx or 'HUMAN WRITING PROTOCOL' not in ctx: raise SystemExit('global professional context missing')
-          print('Preflight contracts + provider routes + professional standard + full QM chain: PASS')
+          print('V8.5 preflight: orchestrator + provider routes + professional standard + full QM chain: PASS')
           PY
-      - name: Research → Redakteur → Racing-QM → Semantic-QM → Ersatzpool → Media → Chief-QM → Telegram
+      - name: V8.5 Run Controller → Research → Redaktion → QM → Media → Human Approval Gate
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python -u motogp_content_agency_v2.py
-      - name: Memory, QM-Audit, Medien und Session persistent speichern
+          INPUT_FORCE_NEW_RUN: ${{ inputs.force_new_run }}
+        run: python -u racing_v85.py
+      - name: V8.5 State, Memory, QM-Audit, Medien und Session persistent speichern
         if: always()
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add -A -- memory/ assets/images/
           if [ -f content/MOTOGP_ROSTER_NEXT.md ]; then git add -- content/MOTOGP_ROSTER_NEXT.md; fi
-          if git diff --cached --quiet; then echo "Keine Agency-Änderungen zu speichern"; else git commit -m "Auto: Racing Agency Audit und Chief-QM"; fi
+          if git diff --cached --quiet; then echo "Keine Agency-Änderungen zu speichern"; else git commit -m "Auto: Racing V8.5 state and audit"; fi
           if ! git diff --quiet || ! git diff --cached --quiet; then echo "FEHLER: Arbeitsbaum nach Persistenz nicht sauber"; git status --short; exit 1; fi
           git pull --rebase origin main
           git push
