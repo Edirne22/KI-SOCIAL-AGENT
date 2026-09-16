@@ -414,3 +414,33 @@ Story-Key: motogp:1089338
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-16 21:22 UTC | Motorcycle Racing | PASS
+Titel: Gonzalez grabs momentum-shifting victory in dramatic Misano race
+Story-Key: motogp:1089340
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 21:23 UTC | Motorcycle Racing | FAIL
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto2; Final-Guard: Pflicht-Serienhashtag #moto2 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 21:23 UTC | Motorcycle Racing | FAIL
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto2; Final-Guard: Pflicht-Serienhashtag #moto2 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 21:23 UTC | Motorcycle Racing | FAIL
+Titel: Who is Senna Agius? Meet Australia’s new MotoGP star It’s time to present our fifth rookie of 2027, beginning a new era Down Under and becoming a brand-new face at Tech3
+Story-Key: motogp:1090141
+Gründe: Final-Guard: Serien-Metadatum MotoGP widerspricht Quelle Moto2; Final-Guard: Pflicht-Serienhashtag #moto2 fehlt; Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-16 21:24 UTC | Motorcycle Racing | PASS
+Titel: Agius claims Misano lap record to beat Gonzalez to Friday honours
+Story-Key: motogp:1089338
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
