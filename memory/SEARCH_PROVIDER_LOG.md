@@ -134,3 +134,8 @@ Technische Protokolle der Deal-Hunter-Suchwege. Keine Preise oder Zugangsdaten s
 - Provider: Apify-Google-Suche
 - Live-Suche: ja
 - Hinweis: $1 öffentliche Treffer; Kostenlimit $0.010
+## 2026-09-17 18:57
+- Anfrage: handytarif 80GB D1 telekom maximal 13euro
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: 4 öffentliche Treffer; Kostenlimit $0.010
