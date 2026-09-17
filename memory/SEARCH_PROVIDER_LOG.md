@@ -119,3 +119,18 @@ Technische Protokolle der Deal-Hunter-Suchwege. Keine Preise oder Zugangsdaten s
 - Provider: Apify-Google-Suche
 - Live-Suche: ja
 - Hinweis: $1 öffentliche Treffer; Kostenlimit $0.010
+## 2026-09-17 06:08
+- Anfrage: motorradhandschuhe | Kriterien: max: 50 € | seit 2026-09-12
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: $10 öffentliche Treffer; Kostenlimit $0.010
+## 2026-09-17 06:08
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | seit 2026-09-12
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: $10 öffentliche Treffer; Kostenlimit $0.010
+## 2026-09-17 06:10
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: $1 öffentliche Treffer; Kostenlimit $0.010
