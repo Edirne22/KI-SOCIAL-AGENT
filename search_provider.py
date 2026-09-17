@@ -109,15 +109,29 @@ def _search_apify(query: str, token: str, num_results: int) -> dict:
             timeout=180,
         )
     except requests.RequestException as error:
-        raise RuntimeError(f"Netzwerkfehler: {type(error).__name__}") from error
+        status_info = f" (Status {error.response.status_code})" if getattr(error, "response", None) is not None else ""
+        detail = f"{type(error).__name__}{status_info}: {error}"
+        err_msg = f"SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=Netzwerkfehler, detail={detail}"
+        print(err_msg)
+        raise RuntimeError(err_msg) from error
+
     if not response.ok:
-        raise RuntimeError(f"HTTP {response.status_code}")
+        body_short = response.text[:200].replace("\n", " ").strip()
+        err_msg = f"SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP {response.status_code}, detail={body_short}"
+        print(err_msg)
+        raise RuntimeError(err_msg)
+
     try:
         rows = response.json()
     except ValueError as error:
-        raise RuntimeError("Actor lieferte kein JSON") from error
+        err_msg = f"SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=Ungültiges JSON, detail={error}"
+        print(err_msg)
+        raise RuntimeError(err_msg) from error
+
     if not isinstance(rows, list):
-        raise RuntimeError("Actor lieferte kein Ergebnis-Array")
+        err_msg = "SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=Ungültiges Antwortformat, detail=Antwort ist kein Array"
+        print(err_msg)
+        raise RuntimeError(err_msg)
 
     results: list[dict] = []
     for row in rows:
@@ -131,8 +145,16 @@ def _search_apify(query: str, token: str, num_results: int) -> dict:
         results.append({"title": title, "url": url, "snippet": snippet})
         if len(results) >= limit:
             break
+
     if not results:
-        raise RuntimeError("Keine verwertbaren öffentlichen Suchtreffer")
+        empty_msg = f"SEARCH-LEER: provider=Apify-Google-Suche, query={query}"
+        print(empty_msg)
+        log_provider(query, "Apify-Google-Suche", "0 Ergebnisse", True)
+        lines = [
+            "Live-Suche über Apify (öffentliche Google-Treffer):",
+            f"Keine Suchtreffer für '{query}' gefunden.",
+        ]
+        return _result("Apify-Google-Suche", True, [], None, "\n".join(lines))
 
     offers = []
     for item in results:
@@ -172,17 +194,42 @@ def _valid_searxng_url(value: str) -> str | None:
 
 
 def _search_searxng(query: str, base_url: str, num_results: int) -> dict:
-    response = requests.get(
-        f"{base_url}/search",
-        params={"q": query, "format": "json", "categories": "general"},
-        timeout=30,
-    )
+    try:
+        response = requests.get(
+            f"{base_url}/search",
+            params={"q": query, "format": "json", "categories": "general"},
+            timeout=30,
+        )
+    except requests.RequestException as error:
+        detail = f"{type(error).__name__}: {error}"
+        err_msg = f"SEARCH-FEHLER: provider=SearXNG, ursache=Netzwerkfehler, detail={detail}"
+        print(err_msg)
+        raise RuntimeError(err_msg) from error
+
     if response.status_code != 200:
-        raise RuntimeError(f"HTTP {response.status_code}")
-    data = response.json()
+        body_short = response.text[:200].replace("\n", " ").strip()
+        err_msg = f"SEARCH-FEHLER: provider=SearXNG, ursache=HTTP {response.status_code}, detail={body_short}"
+        print(err_msg)
+        raise RuntimeError(err_msg)
+
+    try:
+        data = response.json()
+    except ValueError as error:
+        err_msg = f"SEARCH-FEHLER: provider=SearXNG, ursache=Ungültiges JSON, detail={error}"
+        print(err_msg)
+        raise RuntimeError(err_msg) from error
+
     raw_results = data.get("results")
     if not isinstance(raw_results, list) or not raw_results:
-        raise ValueError("Keine verwertbaren Ergebnisse")
+        empty_msg = f"SEARCH-LEER: provider=SearXNG, query={query}"
+        print(empty_msg)
+        log_provider(query, "SearXNG", "0 Ergebnisse", True)
+        lines = [
+            "Live-Ergebnisse aus SearXNG:",
+            f"Keine Suchtreffer für '{query}' gefunden.",
+        ]
+        return _result("SearXNG", True, [], None, "\n".join(lines))
+
     results = []
     for item in raw_results[:num_results]:
         url = item.get("url")
@@ -195,8 +242,17 @@ def _search_searxng(query: str, base_url: str, num_results: int) -> dict:
                 "snippet": str(item.get("content") or item.get("snippet") or "").strip(),
             }
         )
+
     if not results:
-        raise ValueError("Keine gültigen Ergebnislinks")
+        empty_msg = f"SEARCH-LEER: provider=SearXNG, query={query}"
+        print(empty_msg)
+        log_provider(query, "SearXNG", "0 Ergebnisse", True)
+        lines = [
+            "Live-Ergebnisse aus SearXNG:",
+            f"Keine Suchtreffer für '{query}' gefunden.",
+        ]
+        return _result("SearXNG", True, [], None, "\n".join(lines))
+
     lines = ["Live-Ergebnisse aus SearXNG – Preise und Verfügbarkeit bitte direkt beim Händler prüfen:"]
     for index, item in enumerate(results, 1):
         snippet = f" – {item['snippet']}" if item["snippet"] else ""
@@ -252,25 +308,40 @@ Ein Preis ohne Händler, Direktlink und Belegt: ja darf niemals als bestes Angeb
         try:
             response = _gemini_request(api_key, prompt, grounded=True)
         except requests.RequestException as error:
-            log_provider(query, "Gemini-Grounded", f"Netzwerkfehler: {type(error).__name__}", True)
+            detail = f"{type(error).__name__}: {error}"
+            err_msg = f"SEARCH-FEHLER: provider=Gemini-Grounded, ursache=Netzwerkfehler, detail={detail}"
+            print(err_msg)
+            log_provider(query, "Gemini-Grounded", err_msg, True)
             return None
+
         if response.status_code == 200:
             try:
                 answer, sources = _gemini_answer(response)
-            except ValueError:
+            except ValueError as error:
+                empty_msg = f"SEARCH-LEER: provider=Gemini-Grounded, query={query}"
+                print(empty_msg)
                 log_provider(query, "Gemini-Grounded", "Antwort ohne verwertbaren Inhalt", True)
                 return None
             log_provider(query, "Gemini-Grounded", "Live-Websuche erfolgreich", True)
             return _result("Gemini-Grounded", True, sources, None, answer)
+
         if response.status_code != 429:
-            log_provider(query, "Gemini-Grounded", f"HTTP {response.status_code}", True)
+            body_short = response.text[:200].replace("\n", " ").strip()
+            err_msg = f"SEARCH-FEHLER: provider=Gemini-Grounded, ursache=HTTP {response.status_code}, detail={body_short}"
+            print(err_msg)
+            log_provider(query, "Gemini-Grounded", err_msg, True)
             return None
+
         log_provider(query, "Gemini-Grounded", f"Rate-Limit HTTP 429, Versuch {attempt + 1}", True)
         if attempt < len(RETRY_DELAYS):
             delay = RETRY_DELAYS[attempt]
             if status_callback:
                 status_callback(f"⏳ Warte kurz – Rate-Limit erreicht. Nächster Versuch in {delay} Sekunden.")
             time.sleep(delay)
+
+    rate_msg = f"SEARCH-FEHLER: provider=Gemini-Grounded, ursache=HTTP 429 Rate Limit, detail=Rate-Limit nach {len(RETRY_DELAYS)} Versuchen nicht behoben"
+    print(rate_msg)
+    log_provider(query, "Gemini-Grounded", rate_msg, True)
     return None
 
 
@@ -283,12 +354,24 @@ Beginne eindeutig mit: Keine Live-Websuche verfügbar."""
     try:
         response = _gemini_request(api_key, prompt, grounded=False)
         if response.status_code != 200:
-            log_provider(query, "Gemini-Fallback", f"HTTP {response.status_code}", False)
+            body_short = response.text[:200].replace("\n", " ").strip()
+            err_msg = f"SEARCH-FEHLER: provider=Gemini-Fallback, ursache=HTTP {response.status_code}, detail={body_short}"
+            print(err_msg)
+            log_provider(query, "Gemini-Fallback", err_msg, False)
             return None
         answer, _ = _gemini_answer(response)
-    except (requests.RequestException, ValueError):
-        log_provider(query, "Gemini-Fallback", "Fallback nicht verfügbar", False)
+    except requests.RequestException as error:
+        detail = f"{type(error).__name__}: {error}"
+        err_msg = f"SEARCH-FEHLER: provider=Gemini-Fallback, ursache=Netzwerkfehler, detail={detail}"
+        print(err_msg)
+        log_provider(query, "Gemini-Fallback", err_msg, False)
         return None
+    except ValueError as error:
+        err_msg = f"SEARCH-FEHLER: provider=Gemini-Fallback, ursache=Ungültige Antwort, detail={error}"
+        print(err_msg)
+        log_provider(query, "Gemini-Fallback", err_msg, False)
+        return None
+
     warning = "⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen."
     log_provider(query, "Gemini-Fallback", "Wissens-Fallback ohne Live-Websuche", False)
     return _result("Gemini-Fallback", False, [], warning, f"{warning}\n\n{answer}\n\nBitte in 10 Minuten erneut versuchen.")
@@ -300,21 +383,28 @@ def search(query: str, num_results: int = 10, status_callback: Callable[[str], N
     if not query:
         raise ValueError("Bitte nenne ein Produkt.")
 
+    errors_logged = []
+
     apify_token = os.environ.get("APIFY_API_TOKEN", "").strip()
     if apify_token:
         try:
             result = _search_apify(query, apify_token, num_results)
-            log_provider(query, "Apify-Google-Suche", f"${len(result['results'])} öffentliche Treffer; Kostenlimit ${_apify_charge_limit():.3f}", True)
+            log_provider(query, "Apify-Google-Suche", f"{len(result['results'])} öffentliche Treffer; Kostenlimit ${_apify_charge_limit():.3f}", True)
             return result
         except RuntimeError as error:
+            errors_logged.append(str(error))
             log_provider(query, "Apify-Google-Suche", f"Fallback: {error}", True)
     else:
+        unconfig_msg = "SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=Nicht konfiguriert, detail=APIFY_API_TOKEN fehlt"
+        errors_logged.append(unconfig_msg)
         log_provider(query, "Apify-Google-Suche", "Nicht konfiguriert", None)
 
     configured_url = os.environ.get("SEARXNG_URL", "")
     if configured_url:
         base_url = _valid_searxng_url(configured_url)
         if not base_url:
+            unconfig_msg = "SEARCH-FEHLER: provider=SearXNG, ursache=Ungültige URL, detail=SEARXNG_URL ungültig oder nicht HTTPS"
+            errors_logged.append(unconfig_msg)
             log_provider(query, "SearXNG", "Ungültige oder nicht sichere URL übersprungen", True)
         else:
             try:
@@ -322,18 +412,28 @@ def search(query: str, num_results: int = 10, status_callback: Callable[[str], N
                 log_provider(query, "SearXNG", f"{len(result['results'])} Ergebnisse", True)
                 return result
             except (requests.RequestException, ValueError, RuntimeError) as error:
+                errors_logged.append(str(error))
                 log_provider(query, "SearXNG", f"Fallback: {type(error).__name__}", True)
     else:
+        unconfig_msg = "SEARCH-FEHLER: provider=SearXNG, ursache=Nicht konfiguriert, detail=SEARXNG_URL fehlt"
+        errors_logged.append(unconfig_msg)
         log_provider(query, "SearXNG", "Nicht konfiguriert", None)
 
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        raise RuntimeError("Keine Live-Suche verfügbar: GEMINI_API_KEY fehlt und SearXNG ist nicht erreichbar.")
-    grounded = _gemini_grounded(query, api_key, status_callback)
-    if grounded:
-        return grounded
-    fallback = _gemini_knowledge_fallback(query, api_key)
-    if fallback:
-        return fallback
-    log_provider(query, "Keine Suche", "Alle Suchanbieter nicht verfügbar", False)
-    raise RuntimeError("⏳ Suche derzeit nicht möglich – bitte in 10 Minuten erneut versuchen.")
+        unconfig_msg = "SEARCH-FEHLER: provider=Gemini, ursache=Nicht konfiguriert, detail=GEMINI_API_KEY fehlt"
+        errors_logged.append(unconfig_msg)
+        log_provider(query, "Gemini", "Nicht konfiguriert", None)
+    else:
+        grounded = _gemini_grounded(query, api_key, status_callback)
+        if grounded:
+            return grounded
+        fallback = _gemini_knowledge_fallback(query, api_key)
+        if fallback:
+            return fallback
+
+    summary = " | ".join(errors_logged)
+    final_err = f"SEARCH-FEHLER: provider=Alle, ursache=Alle Suchanbieter fehlgeschlagen, detail={summary}"
+    print(final_err)
+    log_provider(query, "Keine Suche", final_err, False)
+    raise RuntimeError(f"⏳ Suche derzeit nicht möglich – bitte in 10 Minuten erneut versuchen.\n{final_err}")
