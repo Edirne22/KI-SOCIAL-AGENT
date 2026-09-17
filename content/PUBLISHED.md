@@ -514,7 +514,7 @@ Video: auto
 
 ## Instagram Reel
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 35194059526-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361658
 Text:
