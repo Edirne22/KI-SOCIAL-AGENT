@@ -522,3 +522,33 @@ Story-Key: motogp:1090122
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-17 17:12 UTC | Motorcycle Racing | PASS
+Titel: Gonzalez grabs momentum-shifting victory in dramatic Misano race
+Story-Key: motogp:1089340
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 17:12 UTC | Motorcycle Racing | PASS
+Titel: Ogura cleared for Austrian GP FP1, further review to follow
+Story-Key: motogp:1090473
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 17:13 UTC | Motorcycle Racing | PASS
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 17:13 UTC | Motorcycle Racing | PASS
+Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 17:13 UTC | Motorcycle Racing | PASS
+Titel: Who is Senna Agius? Meet Australia’s new MotoGP star It’s time to present our fifth rookie of 2027, beginning a new era Down Under and becoming a brand-new face at Tech3
+Story-Key: motogp:1090141
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

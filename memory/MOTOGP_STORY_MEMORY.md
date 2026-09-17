@@ -239,3 +239,13 @@ Quelle: https://www.motogp.com/en/news/2026/09/16/tech3-signs-agius-for-motogp-d
 Story-Key: motogp:1090141
 Titel: Who is Senna Agius? Meet Australia’s new MotoGP star It’s time to present our fifth rookie of 2027, beginning a new era Down Under and becoming a brand-new face at Tech3
 Quelle: https://www.motogp.com/en/news/2026/09/16/who-is-senna-agius-meet-australias-new-motogp-star/1090141
+
+## 2026-09-17 17:08 UTC – ANGEBOTEN
+Story-Key: motogp:1090473
+Titel: Ogura cleared for Austrian GP FP1, further review to follow
+Quelle: https://www.motogp.com/en/news/2026/09/17/ogura-cleared-for-austrian-gp-fp1-further-review-to-follow/1090473
+
+## 2026-09-17 17:08 UTC – ANGEBOTEN
+Story-Key: motogp:1090222
+Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rules-roadmap-updates-for-2027-and-onwards-we-welcome-this-new-era/1090222
