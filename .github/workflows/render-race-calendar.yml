@@ -1,0 +1,50 @@
+name: Render Race Calendar Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      series:
+        description: 'Rennserie / Name (z.B. MotoGP)'
+        required: true
+        default: 'MotoGP'
+      track:
+        description: 'Rennstrecke (z.B. Red Bull Ring)'
+        required: true
+        default: 'Red Bull Ring'
+      date_range:
+        description: 'Datum (z.B. 18.–20. September 2026)'
+        required: true
+        default: '18.–20. September 2026'
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'remotion/package-lock.json'
+
+      - name: Install dependencies
+        run: |
+          cd remotion
+          npm install
+
+      - name: Render Video
+        run: |
+          cd remotion
+          npx remotion render RaceCalendar out/race-calendar-video.mp4 \
+            --props="{\"series\":\"${{ github.event.inputs.series }}\",\"track\":\"${{ github.event.inputs.track }}\",\"dateRange\":\"${{ github.event.inputs.date_range }}\"}"
+
+      - name: Upload Video Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: race-calendar-video
+          path: remotion/out/race-calendar-video.mp4
+          retention-days: 7

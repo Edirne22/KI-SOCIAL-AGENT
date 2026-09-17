@@ -4,6 +4,11 @@ __pycache__/
 *.log
 .env
 
+# Node
+node_modules/
+remotion/node_modules/
+remotion/out/
+
 # Temporäre Test-Dateien (der Ordner selbst bleibt durch .gitkeep erhalten)
 assets/test/*.jpg
 assets/test/*.jpeg
