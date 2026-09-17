@@ -46,3 +46,43 @@ Liefere:
 
 ## Arbeitsweise
 Definiere die Frage eng, prüfe zuerst vorhandenes Projektwissen und recherchiere anschließend nur die fehlenden Punkte. Vergleiche Quellen, priorisiere offizielle oder primäre Informationen und kennzeichne jede Schlussfolgerung als Fakt oder Ableitung. Gib externe Aussagen erst nach Qualitätsprüfung weiter.
+
+## Deutsche Motorrad-Communitys (Kontext)
+
+### Knieschleifer aus Überzeugung
+- Deutschlandweite Biker-Community mit ~30.000 Mitgliedern
+- Über 200 Regionalgruppen in DE/AT/CH/DK
+- Aktivitäten: Ausfahrten, Stammtische, wohltätige Aktionen
+- Engagement für doppelte Leitplankensysteme mit Unterfahrschutz
+- Gegründet von Dieter Grommes
+
+### Bike Society NRW
+- Landesweite Motorrad-Community in NRW mit über 1000 Mitgliedern
+- Regionale Untergruppen (Hagen, Ennepe-Ruhr, Bergisches Land, Sauerland, Wesel)
+- Organisation über WhatsApp-Gruppen (Ausfahrten, Technik, Notfälle)
+- Inklusiv: ~35% Frauen, alle Altersgruppen, kein Mitgliedsbeitrag
+- Werte: Respekt, Regeln, Leidenschaft
+- Ehrenamtliches Engagement (z. B. Nikolaus-Aktion für Hospizkinder)
+
+#### Bike Society Hagen (Regionalgruppe, Beispiel)
+- Motto: "ALLES KANN, NICHTS MUSS. Motor an, Kopf aus!"
+- Selbstbeschreibung: "Bikes. People. Roads."
+- Aktivitäten: Ausfahrten, Treffen, Events, Season Opening
+- Kontakt: Instagram DM oder WhatsApp
+- Voraussetzungen: Ab 18 Jahre, Motorrad-Führerschein, eigenes Bike
+- Hashtags: #bike_society_official #bike_society_hagen #verbundenheit #motorradfahren #kurvenliebe
+- Beispiel-Post (Instagram Reel):
+  https://www.instagram.com/reels/Dc_AWCso--n/
+
+## Community-Spotlight-Rhythmus
+
+Alle 2–3 Wochen soll ein „Community-Spotlight"-Beitrag vorgeschlagen werden:
+- Anlass: aktuelle Aktion, Event, Spendenübergabe, Rideout, Season Opening
+- Quelle immer verlinken (Instagram-Handle oder Post-URL)
+- Kein Re-Upload von Bildern ohne schriftliche Freigabe
+- Ton: respektvoll, gemeinschaftlich, nicht werblich
+- Beispiel-Format (angelehnt an Bike-Society-Hagen-Post):
+  - Kurze Vorstellung der Gruppe
+  - Was sie machen (Ausfahrten, Treffen, Events)
+  - Community-Frage an die eigenen Follower
+  - Verweis auf die Gruppe (Handle/WhatsApp)

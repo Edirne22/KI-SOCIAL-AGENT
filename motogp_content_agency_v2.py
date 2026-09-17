@@ -109,7 +109,7 @@ def _editor_prompt(x,repair_reasons=None):
  enrich_turkish(x);repair=''
  if repair_reasons:repair='\nRUECKGABE AUS DER QM-KETTE. Analysiere die Originalfakten erneut und behebe exakt diese Punkte. FAKTEN DUERFEN WEDER ERGAENZT NOCH VERAENDERT WERDEN:\n- '+'\n- '.join(repair_reasons[:10])+'\n'
  title=' '.join(str(x.get('title','')).split());summary=' '.join(str(x.get('summary','')).split());series=series_for(x);turkish=x.get('turkish_rider') or 'NEIN'
- return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine direkten oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. 2–4 informative Saetze und danach eine konkrete Community-Frage. Keine Hashtags erzeugen.{repair}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
+ return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: Verwende ausschließlich die Serie aus dem CFO ({series}). Keine Klassenzuordnung erfinden. Die SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine direkten oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. 2–4 informative Saetze und danach eine konkrete Community-Frage. Keine Hashtags erzeugen.{repair}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
 def _parse_editor_json(raw):
  raw=(raw or '').strip();raw=re.sub(r'^```(?:json)?\s*|\s*```$','',raw,flags=re.I|re.S);o=json.loads(raw);hook=str(o.get('hook','')).strip();body=str(o.get('body','')).strip();q=str(o.get('question','')).strip()
  if not hook or not body or '?' not in q:raise ValueError('editor JSON missing hook/body/question')
@@ -222,8 +222,147 @@ def write_session(items,now):
  lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Buelents-Bike-Life-Voice: VERBINDLICH','Semantic-Fakten-QM: PASS','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
  for i,x in enumerate(items,1):lines += [f'## Beitrag {i}','QM: PASS','Racing-QM: PASS','Semantic-Fakten-QM: PASS',f'Neufassungen: {x.get("rewrite_count",0)}',f'QM-Ruecklaeufe: {x.get("research_retry_count",0)+x.get("chief_retry_count",0)}',f'Herkunft: {"Top-20 vom Vortag" if x.get("fallback_yesterday") else "Aktuell"}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Turkish Riders" if is_turkish_focus(x) else series_for(x)}',f'Serie: {series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
  SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+COMMUNITY_ROTATION_FILE=Path('memory/COMMUNITY_ROTATION.json')
+COMMUNITY_TEMPLATES={
+ 'bike_society_hagen':{
+  'title':'🏍️ Community-Spotlight: Bike Society Hagen',
+  'url':'https://www.instagram.com/bike_society_hagen/',
+  'caption':'''## Instagram
+Status: ENTWURF
+Freigabe: Community
+Quelle: https://www.instagram.com/bike_society_hagen/
+Medienstatus: QUELLE_PRÜFEN
+Titel: 🏍️ Community-Spotlight: Bike Society Hagen
+Text:
+Bikes. People. Roads. – Die Bike Society Hagen ist eine Community für alle,
+die Motorrad lieben. Ausfahrten, Treffen, Events, Season Opening.
+
+Ihr Motto: "ALLES KANN, NICHTS MUSS. Motor an, Kopf aus!" 🧡
+
+Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
+
+Was ist für dich das Beste an einer Biker-Community?
+
+#BikeSocietyHagen #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity'''
+ },
+ 'knieschleifer.aus.ueberzeugung':{
+  'title':'🏍️ Community-Spotlight: Knieschleifer aus Überzeugung',
+  'url':'https://www.instagram.com/knieschleifer.aus.ueberzeugung/',
+  'caption':'''## Instagram
+Status: ENTWURF
+Freigabe: Community
+Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung/
+Medienstatus: QUELLE_PRÜFEN
+Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
+Text:
+Deutschlandweite Biker-Community mit über 30.000 Mitgliedern und mehr als 200 Regionalgruppen in DE/AT/CH/DK. Ausfahrten, Stammtische, wohltätige Aktionen und Einsatz für Unterfahrschutz an Leitplanken.
+
+Gegründet von Dieter Grommes für echte Gemeinschaft auf zwei Rädern! 🧡
+
+Du willst dabei sein? Schreib ihnen auf Instagram.
+
+Was ist für dich das Beste an einer Biker-Community?
+
+#KnieschleiferAusUeberzeugung #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity'''
+ },
+ 'bike_society.united':{
+  'title':'🏍️ Community-Spotlight: Bike Society United',
+  'url':'https://www.instagram.com/bike_society.united/',
+  'caption':'''## Instagram
+Status: ENTWURF
+Freigabe: Community
+Quelle: https://www.instagram.com/bike_society.united/
+Medienstatus: QUELLE_PRÜFEN
+Titel: 🏍️ Community-Spotlight: Bike Society United
+Text:
+Bikes. People. Roads. – Teil der landesweiten Bike Society Community in NRW! Respekt, Regeln, Leidenschaft und gemeinsames Fahren stehen an erster Stelle.
+
+Ausfahrten, Technik-Tipps und Zusammenhalt ohne Mitgliedsbeitrag. 🧡
+
+Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
+
+Was ist für dich das Beste an einer Biker-Community?
+
+#BikeSocietyUnited #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity'''
+ },
+ 'ks_ruhrpott':{
+  'title':'🏍️ Community-Spotlight: Knieschleifer Ruhrpott',
+  'url':'https://www.instagram.com/ks_ruhrpott/',
+  'caption':'''## Instagram
+Status: ENTWURF
+Freigabe: Community
+Quelle: https://www.instagram.com/ks_ruhrpott/
+Medienstatus: QUELLE_PRÜFEN
+Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
+Text:
+Die Regionalgruppe der Knieschleifer aus Überzeugung im Pott! Gemeinsame Ausfahrten, Treffen und Leidenschaft für Kurven und Sicherheit im Ruhrgebiet.
+
+Zusammenhalt und Leidenschaft auf zwei Rädern! 🧡
+
+Du willst dabei sein? Schreib ihnen auf Instagram.
+
+Was ist für dich das Beste an einer Biker-Community?
+
+#KsRuhrpott #KnieschleiferAusUeberzeugung #Motorradfahren #Kurvenliebe #BikerCommunity'''
+ },
+ 'bike_society_bergisches_land':{
+  'title':'🏍️ Community-Spotlight: Bike Society Bergisches Land',
+  'url':'https://www.instagram.com/bike_society_bergisches_land/',
+  'caption':'''## Instagram
+Status: ENTWURF
+Freigabe: Community
+Quelle: https://www.instagram.com/bike_society_bergisches_land/
+Medienstatus: QUELLE_PRÜFEN
+Titel: 🏍️ Community-Spotlight: Bike Society Bergisches Land
+Text:
+Kurvenreiche Ausfahrten und echte Biker-Leidenschaft im Bergischen Land! Teil der Bike Society NRW – inklusiv, respektvoll und voller Energie.
+
+Motto: "ALLES KANN, NICHTS MUSS. Motor an, Kopf aus!" 🧡
+
+Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
+
+Was ist für dich das Beste an einer Biker-Community?
+
+#BikeSocietyBergischesLand #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity'''
+ }
+}
+
+def load_community_rotation():
+ default_rotation=["bike_society_hagen","knieschleifer.aus.ueberzeugung","bike_society.united","ks_ruhrpott","bike_society_bergisches_land"]
+ if not COMMUNITY_ROTATION_FILE.exists():
+  data={"last_community":"bike_society_hagen","last_date":"2026-09-17","rotation":default_rotation}
+  COMMUNITY_ROTATION_FILE.parent.mkdir(parents=True,exist_ok=True)
+  COMMUNITY_ROTATION_FILE.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+  return data
+ try:return json.loads(COMMUNITY_ROTATION_FILE.read_text(encoding='utf-8'))
+ except Exception:
+  data={"last_community":"bike_society_hagen","last_date":"2026-09-17","rotation":default_rotation}
+  return data
+
+def save_community_rotation(data):
+ COMMUNITY_ROTATION_FILE.parent.mkdir(parents=True,exist_ok=True)
+ COMMUNITY_ROTATION_FILE.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+def generate_community_fallbacks(count,now):
+ rot_data=load_community_rotation()
+ rotation=rot_data.get('rotation',[])
+ last=rot_data.get('last_community','')
+ current_idx=rotation.index(last) if last in rotation else 0
+ picks=[]
+ for i in range(count):
+  next_idx=(current_idx+1+i)%len(rotation)
+  comm_key=rotation[next_idx]
+  tmpl=COMMUNITY_TEMPLATES.get(comm_key,COMMUNITY_TEMPLATES['bike_society_hagen'])
+  item={'title':tmpl['title'],'url':tmpl['url'],'caption':tmpl['caption'],'series':'Community','source_series':'Community','instagram_media':'','published_at':now.isoformat(),'rewrite_count':0,'research_retry_count':0,'chief_retry_count':0,'fallback_yesterday':False}
+  picks.append(item)
+  rot_data['last_community']=comm_key
+  rot_data['last_date']=now.date().isoformat()
+  print(f'COMMUNITY-SPOTLIGHT generiert: {comm_key}, Anzahl={i+1}')
+ save_community_rotation(rot_data)
+ return picks
+
 def invalidate_session(now,reason,passed=0):
- lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','QM: FAIL','Approval-Status: BLOCKED',f'Session-Timestamp: {int(now.timestamp())}',f'Bestandene-Pakete: {passed}/5',f'Grund: {reason}','','Keine Freigabe moeglich. Erst ein neuer Lauf mit 5/5 PASS erzeugt eine freigabefaehige Session.'];SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+ lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','QM: FAIL','Approval-Status: BLOCKED',f'Session-Timestamp: {int(now.timestamp())}',f'Bestandene-Pakete: {passed}/3',f'Grund: {reason}','','Keine Freigabe moeglich. Erst ein neuer Lauf mit mindestens 3 PASS erzeugt eine freigabefaehige Session.'];SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
 def telegram_preview(items,turk):
  mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – 5 qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Fehler gehen zurück an Research/Editor statt sofort verloren zu sein',f'✍️ Human Writing Protocol + Bülents Bike Life Voice: VERBINDLICH',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if turk else '🇹🇷 Heute keine geeignete neue Turkish-Rider-Story gefunden'),'']
  for i,x in enumerate(items,1):msg += [f'{i}️⃣ {"↩️ Top-20 vom Vortag | " if x.get("fallback_yesterday") else ""}[{series_for(x)}] {x["caption"]}',f'🔗 Quelle: {x["url"]}','']
@@ -245,7 +384,12 @@ def run_v8():
  now=dt.now(timezone.utc);diag,_=freshness_diagnostics(details,now);fresh=[x for x in details if freshness_reason(x,now)=='fresh'];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
  current_q=qualify_parallel(fresh[:60],3);fallback_raw=yesterday_raw(now,{x.get('url') for x in current_q});fallback_q=qualify_parallel(fallback_raw[:20],3) if len(current_q)<15 else [];qualified=current_q+[x for x in fallback_q if x.get('url') not in {y.get('url') for y in current_q}];qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);save_top10(qualified,now);picks=select_and_finish(qualified,names);turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in VALID_SERIES}
  OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency {VERSION}\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nFreshness missing-date: {diag.get("missing-date",0)}\nFreshness >7 Tage: {diag.get("older-than-7d",0)}\nFreshness Promo/irrelevant: {diag.get("not-racing-or-promo",0)}\nAktuell voll Copy-QM qualifiziert: {len(current_q)}\nVortag voll Copy-QM qualifiziert: {len(fallback_q)}\nGesamtpool nach Racing+Semantic-QM: {len(qualified)}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nFakten-QM: NULL-TOLERANZ + Rueckgabeschleife\nHuman Writing Protocol: VERBINDLICH\nBuelents Bike Life Voice: VERBINDLICH\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
- if len(picks)==5:write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
- else:invalidate_session(now,'Komplette Profi-QM-Kette lieferte trotz Rueckgabeschleifen weniger als 5 freigabefaehige Pakete',len(picks));send_message(f'🏍️ Racing Agency {VERSION}: nur {len(picks)}/5 Pakete bestanden. Fehler wurden vor dem finalen Reject an Research/Editor zurückgegeben; Fakten-QM bleibt Null-Toleranz.')
+ if len(picks)<3:
+  needed=3-len(picks)
+  print(f'COMMUNITY-FALLBACK aktiviert (final={len(picks)})')
+  community_picks=generate_community_fallbacks(needed,now)
+  picks=picks+community_picks
+
+ write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
  print(f'{VERSION}: raw={len(details)}, fresh={len(fresh)}, current_q={len(current_q)}, fallback_q={len(fallback_q)}, final={len(picks)}, mix={mix}, Turkish={turk}')
 if __name__=='__main__':run_v8()

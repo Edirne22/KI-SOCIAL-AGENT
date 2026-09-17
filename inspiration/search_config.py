@@ -1,4 +1,13 @@
 """Zentrale, priorisierte Suchbegriffe und sichere Anbieter-Konfiguration."""
+COMMUNITY_BIKER_SEARCH = [
+    "Knieschleifer aus Überzeugung",
+    "Knieschleifer Ruhrpott",
+    "Bike Society NRW",
+    "Bike Society Hagen",
+    "Bike Society United",
+    "Bike Society Bergisches Land"
+]
+
 SEARCH_PRIORITIES = [
     ("Türkische Racer", ["toprak", "razgatlioglu", "öncü", "oncu", "sofuoglu", "türkische rennfahrer", "turkish riders motogp"]),
     ("MotoGP", ["motogp top 10", "motogp standings", "motogp news"]),
