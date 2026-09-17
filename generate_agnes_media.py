@@ -294,7 +294,7 @@ def process_block(content, platform_header, want_video_check=True):
         if video_requested:
             video_prompt = (
                 f"Cinematic vertical 9:16 shot: {text[:200]}. "
-                "5 seconds, realistic motorcycle travel or lifestyle scene, no real racer, "
+                "7 seconds, realistic motorcycle travel or lifestyle scene, no real racer, "
                 "no real team branding, no race-event claim."
             )
             print(f"Agnes Video-Prompt: {video_prompt[:100]}...")
