@@ -1,9 +1,9 @@
 # Qualitätsreport
-Stand: 2026-09-16 18:13
-Gesamtstatus: **WARNUNG**
-- OK: 15
+Stand: 2026-09-17 18:14
+Gesamtstatus: **KRITISCH**
+- OK: 14
 - Warnungen: 6
-- Kritisch: 0
+- Kritisch: 1
 
 ## Prüfergebnisse
 - ✅ **Content-Plan**: Datei vorhanden und nicht leer.
@@ -17,7 +17,7 @@ Gesamtstatus: **WARNUNG**
 - ⚠️ **YouTube-Quellenmix**: Nur 1 Datensatz von einem bekannten Primärkanal erkannt (MotoGP). Weitere Quellen vor einer Veröffentlichung manuell prüfen.
 - ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
 - ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
-- ⚠️ **Datenalter**: 4 Quelle(n) sind älter als 7 Tage.
+- ⚠️ **Datenalter**: 5 Quelle(n) sind älter als 7 Tage.
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ⚠️ **Bright Data YouTube**: YouTube liefert bei Bright Data eine leere Antwort; Apify-Fallback wird geprüft.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
@@ -26,7 +26,7 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Analytics Report**: Letzter Lauf erfolgreich.
 - ⚠️ **Generate Daily Content Idea**: Kein letzter Lauf in der GitHub-Antwort gefunden.
 - ⚠️ **Inspiration Agent**: Kein letzter Lauf in der GitHub-Antwort gefunden.
-- ✅ **Telegram Receive Approval**: Letzter Lauf erfolgreich.
+- ❌ **Telegram Receive Approval**: Letzter Lauf fehlgeschlagen.
 
 ## Sicherheitsregel
 Dieser Agent veröffentlicht nichts, startet keine Workflows neu und ändert keinen Content.
