@@ -62,6 +62,12 @@
 - turkiye.motogp
 
 ## Community & Clubs (Prio 3 – monatlich)
+- knieschleifer.aus.ueberzeugung
+- ks_ruhrpott
+- bike_society_official
+- bike_society_hagen
+- bike_society.united
+- bike_society_bergisches_land
 - turkbirler
 - trr_2010_
 - motoetkinlik

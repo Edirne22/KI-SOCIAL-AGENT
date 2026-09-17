@@ -41,6 +41,13 @@ def install(a):
 
     def whitelist_errors(x,caption):
         f=fact_packet(x);src=a.fold(f['title']+' '+f['summary']);cap=a.fold(re.sub(r'#[^\s]+','',caption or ''));errs=[]
+        cfo=f['series']
+        if cfo=='MotoGP' and ('moto2' in cap or 'moto3' in cap) and not ('moto2' in src or 'moto3' in src):
+            errs.append('Source-Fact-Whitelist: Falsche Serie Moto2/Moto3 im Text obwohl CFO MotoGP ist')
+        elif cfo=='Moto2' and ('motogp' in cap or 'moto3' in cap) and not ('motogp' in src or 'moto3' in src):
+            errs.append('Source-Fact-Whitelist: Falsche Serie MotoGP/Moto3 im Text obwohl CFO Moto2 ist')
+        elif cfo=='Moto3' and ('motogp' in cap or 'moto2' in cap) and not ('motogp' in src or 'moto2' in src):
+            errs.append('Source-Fact-Whitelist: Falsche Serie MotoGP/Moto2 im Text obwohl CFO Moto3 ist')
         allowed={a.fold(n) for n in f['riders']};allowed_last={n.split()[-1] for n in allowed}
         for n in a.RIDERS_V2:
             fn=a.fold(n);last=fn.split()[-1]

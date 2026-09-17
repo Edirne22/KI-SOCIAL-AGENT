@@ -28,6 +28,16 @@ Quelle erlaubt **nicht** automatisch, ihr Foto oder Video erneut hochzuladen.
   Medien dieser Quelle werden über `assets/freigegeben/motoetkinlikcom/` und
   `config/TRUSTED_MEDIA_SOURCES.json` einmalig freigegeben.
 
+### Knieschleifer aus Überzeugung (Community)
+- **Instagram** (öffentlich)
+  - Vertrauensstufe: sekundär; Fakten vor Veröffentlichung prüfen
+  - Mediennutzung: nur verlinken, kein Re-Upload ohne schriftliche Freigabe
+
+### Bike Society NRW (Community)
+- **Instagram/WhatsApp** (öffentlich)
+  - Vertrauensstufe: sekundär; Fakten vor Veröffentlichung prüfen
+  - Mediennutzung: nur verlinken, kein Re-Upload ohne schriftliche Freigabe
+
 ## Erlaubte Medienarten
 - EIGENES_MATERIAL: Bülents eigenes Foto oder Video.
 - QUELLE_BESTÄTIGT: fremdes Material mit URL und bestätigtem Nutzungsrecht.
