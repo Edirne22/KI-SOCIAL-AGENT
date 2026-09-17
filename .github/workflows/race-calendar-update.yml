@@ -1,0 +1,43 @@
+name: Update Race Calendar
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: race-calendar-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Aktualisiere Arbeitsstand
+        run: git pull --rebase origin main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - run: pip install requests
+
+      - env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/update_race_calendar.py
+
+      - name: Commit & Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add memory/RACE_CALENDAR.json 2>/dev/null || true
+          git commit -m "feat(race): monatlicher Update-Workflow für RACE_CALENDAR.json" || echo "Keine Änderungen"
+          git pull --rebase origin main
+          git push

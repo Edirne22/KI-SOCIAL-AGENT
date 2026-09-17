@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import os
-import re
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -16,7 +16,7 @@ from .race_sources import SOURCES
 OUT = Path("memory/RACE_WEEKEND.md")
 PUBLISHED = Path("content/PUBLISHED.md")
 EVENT_OVERRIDE = Path("config/RACE_EVENT_OVERRIDE.json")
-MODELS = ("gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash")
+CALENDAR_FILE = Path("memory/RACE_CALENDAR.json")
 
 
 def collect() -> dict[str, list[str]]:
@@ -32,7 +32,6 @@ def collect() -> dict[str, list[str]]:
                 continue
         data[series] = available
     return data
-
 
 
 def confirmed_override() -> tuple[str, str] | None:
@@ -52,72 +51,48 @@ def confirmed_override() -> tuple[str, str] | None:
         print(f"[race] Termin-Fallback ungültig, Online-Recherche wird verwendet: {error}")
         return None
 
+
 def confirmed_weekend() -> tuple[str, str] | None:
-    """Ermittelt das nächste Rennen ausschließlich mit belegbarer Quelle.
+    """Liest das nächste Rennwochenende aus memory/RACE_CALENDAR.json.
 
-    Der Parser ist absichtlich tolerant: Gemini darf keine Markdown-Tabelle oder
-    zusätzlichen Fließtext erzeugen, ohne dass deshalb ein bestätigter Termin
-    verloren geht. Ohne positive Bestätigung wird weiterhin kein Entwurf erstellt.
+    Prüft, ob heute oder in den nächsten 3 Tagen ein Event startet.
     """
-    key = os.environ.get("GEMINI_API_KEY")
-    if not key:
-        print("[race] GEMINI_API_KEY fehlt - Recherche nicht moeglich.")
-        return None
+    if not CALENDAR_FILE.exists():
+        print("RACE-CALENDAR: keine Daten in memory/RACE_CALENDAR.json")
+        sys.exit(0)
 
-    source_hints = "\n".join(
-        f"- {series}: " + ", ".join(urls) for series, urls in SOURCES.items()
-    )
-    prompt = f"""Heute ist {datetime.now():%Y-%m-%d}. Ermittle das zeitlich nächste,
-noch nicht begonnene Rennwochenende von MotoGP, WorldSBK oder Formel 1.
+    try:
+        data = json.loads(CALENDAR_FILE.read_text(encoding="utf-8"))
+        events = data.get("events", [])
+        if not isinstance(events, list) or not events:
+            print("RACE-CALENDAR: keine Daten in memory/RACE_CALENDAR.json")
+            sys.exit(0)
+    except (OSError, json.JSONDecodeError, ValueError):
+        print("RACE-CALENDAR: keine Daten in memory/RACE_CALENDAR.json")
+        sys.exit(0)
 
-Nutze die Websuche und bestätige Datum, Strecke und Serie an einer offiziellen
-Quelle. Diese Quellen sind bevorzugt:
-{source_hints}
-
-Antworte ohne Markdown und exakt mit diesen vier Zeilen:
-BESTÄTIGT: ja
-SERIE: <MotoGP | WorldSBK | Formel 1>
-DETAILS: <offizieller Eventname> — <Strecke, Ort> — <TT. bis TT. Monat JJJJ>
-QUELLE: <vollständige offizielle URL>
-
-Wenn du keinen eindeutig bestätigten kommenden Termin findest, setze
-BESTÄTIGT: nein. Erfinde keine Daten, Sessionzeiten oder Quellen."""
-    text = ""
-    for model in MODELS:
-        print(f"[race] Prüfe Rennkalender mit Modell: {model}")
+    today = datetime.now().date()
+    for event in events:
         try:
-            response = requests.post(
-                f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                headers={"Content-Type": "application/json", "X-goog-api-key": key},
-                json={
-                    "contents": [{"parts": [{"text": prompt}]}],
-                    "tools": [{"google_search": {}}],
-                },
-                timeout=120,
-            )
-            if response.status_code == 200:
-                text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
-                break
-            print(f"[race] Modell {model}: HTTP {response.status_code}; nächstes Modell wird versucht.")
-        except (requests.RequestException, KeyError, IndexError, ValueError) as error:
-            print(f"[race] Modell {model}: {type(error).__name__}; nächstes Modell wird versucht.")
-    if not text:
-        print("[race] Rennkalender-Recherche derzeit nicht verfügbar; kein Entwurf erstellt.")
-        return None
+            start_str = event.get("date_start", "")
+            if not start_str:
+                continue
+            start_date = datetime.strptime(start_str, "%Y-%m-%d").date()
+            delta = (start_date - today).days
+            if 0 <= delta <= 3:
+                series = event.get("series", "MotoGP").strip()
+                track = event.get("track", "").strip()
+                end_str = event.get("date_end", start_str).strip()
+                source = event.get("source", "").strip()
+                details = f"{track} — {start_str} bis {end_str} | Quelle: {source}"
+                print(f"[race] Bestätigtes Rennwochenende aus JSON: {series} / {details}")
+                return series, details
+        except (ValueError, TypeError):
+            continue
 
-    confirmed = re.search(r"(?im)^\s*BESTÄTIGT\s*:\s*ja\s*$", text)
-    series = re.search(r"(?im)^\s*SERIE\s*:\s*(.+?)\s*$", text)
-    details = re.search(r"(?im)^\s*DETAILS\s*:\s*(.+?)\s*$", text)
-    source = re.search(r"(?im)^\s*QUELLE\s*:\s*(https?://\S+)\s*$", text)
-    if not (confirmed and series and details and source):
-        print("[race] Kein ausreichend belegter kommender Renntermin gefunden; Entwurf übersprungen.")
-        print(f"[race] Antwort (gekuerzt): {text[:800]}")
-        return None
+    print("[race] Kein anstehendes Rennwochenende (Start in 0-3 Tagen) in memory/RACE_CALENDAR.json gefunden.")
+    return None
 
-    # Die Quelle wird in die Details übernommen und bleibt so im Entwurf sichtbar.
-    result_details = f"{details.group(1).strip()} | Quelle: {source.group(1).strip()}"
-    print(f"[race] Bestaetigtes Rennwochenende: {series.group(1).strip()} / {result_details}")
-    return (series.group(1).strip(), result_details)
 
 def append_draft(series: str, details: str, posters: list[Path]) -> None:
     """Legt getrennte, normale Publisher-Blöcke an; Freigabe bleibt bei Bülent."""
