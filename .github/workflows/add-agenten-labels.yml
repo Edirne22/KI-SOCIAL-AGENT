@@ -1,0 +1,33 @@
+name: Add Agenten Labels
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  add-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install Pillow
+
+      - name: Run script to add agent labels
+        run: python scripts/add_agenten_labels.py
+
+      - name: Commit output image if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/eigenes-material/agenten-team/agenten-team-2026-09-17-final.png
+          git commit -m "feat(agenten-team): Text-Overlay für Agenten-Team-Bild generiert" || echo "Keine Änderungen"
+          git push
