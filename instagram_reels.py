@@ -42,6 +42,18 @@ def request_with_retry(method: str, url: str, **kwargs) -> requests.Response | N
     return None
 
 
+def check_media_status_warning(block: str) -> None:
+    titel_match = re.search(r"(?mi)^Titel:\s*(.+)$", block)
+    block_title = titel_match.group(1).strip() if titel_match else block.splitlines()[0].strip()
+    ms_match = re.search(r"(?mi)^Medienstatus:\s*(.+)$", block)
+    nr_match = re.search(r"(?mi)^Nutzungsrecht:\s*(.+)$", block)
+    ms_val = ms_match.group(1).strip() if ms_match else "FEHLEND"
+    nr_val = nr_match.group(1).strip() if nr_match else None
+    known_statuses = {"EIGENES_MATERIAL", "EIGENE_KI_EDITORIALGRAFIK", "KI_ERLAUBT", "QUELLE_BESTÄTIGT"}
+    if ms_val == "QUELLE_PRÜFEN" or ms_val not in known_statuses or not nr_val:
+        print(f"WARNUNG: Block {block_title} hatte Medienstatus {ms_val} – trotzdem gepostet (durch Telegram-Freigabe gedeckt)")
+
+
 def find_reel_block(content: str) -> tuple[str | None, str | None, str | None]:
     """Findet den ersten ausdrücklich freigegebenen Reel-Block mit fertigem Video."""
     pattern = r"^## (?:Instagram Reel|Reel)(?:\s+\[[^\]]+\])?\s*\n(.*?)(?=^## |\Z)"
@@ -68,6 +80,7 @@ def find_reel_block(content: str) -> tuple[str | None, str | None, str | None]:
         if video_file.lower() == "auto":
             print("Reel wartet noch auf Video-Generierung.")
             continue
+        check_media_status_warning(block)
         return text_match.group(1).strip(), video_file, block
     return None, None, None
 
@@ -125,6 +138,16 @@ def mark_block(content: str, block: str, media_id: str) -> str:
         block,
         count=1,
         flags=re.MULTILINE,
+    )
+    updated_block = re.sub(
+        r"(?mi)^Status:\s*FREIGEGEBEN\s*$",
+        "Status: GEPOSTET",
+        updated_block,
+    )
+    updated_block = re.sub(
+        r"(?mi)^Publication-Claim:\s*IN_BEARBEITUNG[^\n]*\r?\n?",
+        "",
+        updated_block,
     )
     return content.replace(block, updated_block, 1)
 

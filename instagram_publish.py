@@ -93,6 +93,17 @@ def process_image_for_instagram(image_file):
     new_relative_path = (orig_path.parent / new_filename).as_posix() if orig_path.parent != Path(".") else new_filename
     return new_relative_path
 
+def check_media_status_warning(block: str) -> None:
+    titel_match = re.search(r"(?mi)^Titel:\s*(.+)$", block)
+    block_title = titel_match.group(1).strip() if titel_match else block.splitlines()[0].strip()
+    ms_match = re.search(r"(?mi)^Medienstatus:\s*(.+)$", block)
+    nr_match = re.search(r"(?mi)^Nutzungsrecht:\s*(.+)$", block)
+    ms_val = ms_match.group(1).strip() if ms_match else "FEHLEND"
+    nr_val = nr_match.group(1).strip() if nr_match else None
+    known_statuses = {"EIGENES_MATERIAL", "EIGENE_KI_EDITORIALGRAFIK", "KI_ERLAUBT", "QUELLE_BESTÄTIGT"}
+    if ms_val == "QUELLE_PRÜFEN" or ms_val not in known_statuses or not nr_val:
+        print(f"WARNUNG: Block {block_title} hatte Medienstatus {ms_val} – trotzdem gepostet (durch Telegram-Freigabe gedeckt)")
+
 def find_instagram_block(content):
     """Sucht ersten Instagram-Feed-Block (ohne Format: Story), der noch nicht gepostet wurde."""
     pattern = r"## Instagram\s*\n(.*?)(?=\n## |\Z)"
@@ -110,6 +121,7 @@ def find_instagram_block(content):
         text_match = re.search(r"Text:\s*(.+?)(?=\n(?:Bild|Video|Bilder|Quelle|Medienstatus|Nutzungsrecht):|\Z)", body, re.DOTALL)
         image_match = re.search(r"Bild:\s*(\S+)", body)
         if text_match and image_match:
+            check_media_status_warning(block)
             return text_match.group(1).strip(), image_match.group(1).strip(), block
     return None, None, None
 
@@ -144,7 +156,23 @@ def wait(creation_id, token, max_wait=60):
 
 def mark_block(content, block, media_id):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-    new_block = block.replace("## Instagram", f"## Instagram [GEPOSTET {timestamp} | ID: {media_id}]", 1)
+    new_block = re.sub(
+        r"^## Instagram(?:\s+\[[^\]]+\])?",
+        f"## Instagram [GEPOSTET {timestamp} | ID: {media_id}]",
+        block,
+        count=1,
+        flags=re.MULTILINE,
+    )
+    new_block = re.sub(
+        r"(?mi)^Status:\s*FREIGEGEBEN\s*$",
+        "Status: GEPOSTET",
+        new_block,
+    )
+    new_block = re.sub(
+        r"(?mi)^Publication-Claim:\s*IN_BEARBEITUNG[^\n]*\r?\n?",
+        "",
+        new_block,
+    )
     return content.replace(block, new_block, 1)
 
 if __name__ == "__main__":

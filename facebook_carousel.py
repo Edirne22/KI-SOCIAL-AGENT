@@ -41,6 +41,18 @@ def request_with_retry(method, url, **kwargs):
     return response
 
 
+def check_media_status_warning(block: str) -> None:
+    titel_match = re.search(r"(?mi)^Titel:\s*(.+)$", block)
+    block_title = titel_match.group(1).strip() if titel_match else block.splitlines()[0].strip()
+    ms_match = re.search(r"(?mi)^Medienstatus:\s*(.+)$", block)
+    nr_match = re.search(r"(?mi)^Nutzungsrecht:\s*(.+)$", block)
+    ms_val = ms_match.group(1).strip() if ms_match else "FEHLEND"
+    nr_val = nr_match.group(1).strip() if nr_match else None
+    known_statuses = {"EIGENES_MATERIAL", "EIGENE_KI_EDITORIALGRAFIK", "KI_ERLAUBT", "QUELLE_BESTÄTIGT"}
+    if ms_val == "QUELLE_PRÜFEN" or ms_val not in known_statuses or not nr_val:
+        print(f"WARNUNG: Block {block_title} hatte Medienstatus {ms_val} – trotzdem gepostet (durch Telegram-Freigabe gedeckt)")
+
+
 def parse_blocks(content):
     pattern = re.compile(r"(^## Facebook Karussell(?: \[GEPOSTET [^\]]+\])?\n.*?)(?=^## |\Z)", re.MULTILINE | re.DOTALL)
     for match in pattern.finditer(content):
@@ -53,7 +65,30 @@ def parse_blocks(content):
         text_match = re.search(r"^Text:\s*(.*?)(?=^(?:Bilder|Quelle|Medienstatus|Nutzungsrecht):|\Z)", block, re.MULTILINE | re.DOTALL)
         images_match = re.search(r"^Bilder:\s*\n((?:\s*-\s*[^\n]+\n?)+)", block, re.MULTILINE)
         images = [line.strip()[1:].strip() for line in images_match.group(1).splitlines()] if images_match else []
+        check_media_status_warning(block)
         yield match, block, (text_match.group(1).strip() if text_match else ""), images
+
+
+def mark_block(content: str, block: str, post_id: str) -> str:
+    stamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+    updated = re.sub(
+        r"^## Facebook Karussell(?:\s+\[[^\]]+\])?",
+        f"## Facebook Karussell [GEPOSTET {stamp} | ID: {post_id}]",
+        block,
+        count=1,
+        flags=re.MULTILINE,
+    )
+    updated = re.sub(
+        r"(?mi)^Status:\s*FREIGEGEBEN\s*$",
+        "Status: GEPOSTET",
+        updated,
+    )
+    updated = re.sub(
+        r"(?mi)^Publication-Claim:\s*IN_BEARBEITUNG[^\n]*\r?\n?",
+        "",
+        updated,
+    )
+    return content.replace(block, updated, 1)
 
 
 def publish_carousel(caption, images, page_id, token):
@@ -98,9 +133,7 @@ def main():
             notify("⚠️ Facebook-Karussell konnte nicht veröffentlicht werden. Bitte Workflow-Log prüfen.")
             print(f"Karussell-Fehler: {exc}")
             continue
-        stamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-        updated = re.sub(r"^## Facebook Karussell", f"## Facebook Karussell [GEPOSTET {stamp} | ID: {post_id}]", block, count=1)
-        content = content.replace(block, updated, 1)
+        content = mark_block(content, block, post_id)
         changed = True
         print(f"Facebook-Karussell veröffentlicht: {post_id}")
 

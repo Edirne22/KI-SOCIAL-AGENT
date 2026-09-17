@@ -8,6 +8,17 @@ from datetime import datetime
 
 REPO_RAW = "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/"
 
+def check_media_status_warning(block: str) -> None:
+    titel_match = re.search(r"(?mi)^Titel:\s*(.+)$", block)
+    block_title = titel_match.group(1).strip() if titel_match else block.splitlines()[0].strip()
+    ms_match = re.search(r"(?mi)^Medienstatus:\s*(.+)$", block)
+    nr_match = re.search(r"(?mi)^Nutzungsrecht:\s*(.+)$", block)
+    ms_val = ms_match.group(1).strip() if ms_match else "FEHLEND"
+    nr_val = nr_match.group(1).strip() if nr_match else None
+    known_statuses = {"EIGENES_MATERIAL", "EIGENE_KI_EDITORIALGRAFIK", "KI_ERLAUBT", "QUELLE_BESTÄTIGT"}
+    if ms_val == "QUELLE_PRÜFEN" or ms_val not in known_statuses or not nr_val:
+        print(f"WARNUNG: Block {block_title} hatte Medienstatus {ms_val} – trotzdem gepostet (durch Telegram-Freigabe gedeckt)")
+
 def find_story_block(content):
     pattern = r"## Story\s*\n(.*?)(?=\n## |\Z)"
     for match in re.finditer(pattern, content, re.DOTALL):
@@ -24,8 +35,10 @@ def find_story_block(content):
         bild_match = re.search(r"Bild:\s*(\S+)", body)
         video_match = re.search(r"Video:\s*(\S+)", body)
         if bild_match:
+            check_media_status_warning(block)
             return "image", bild_match.group(1).strip(), block
         if video_match:
+            check_media_status_warning(block)
             return "video", video_match.group(1).strip(), block
     return None, None, None
 
@@ -68,7 +81,23 @@ def wait(creation_id, token, max_wait=180):
 
 def mark_block(content, block, media_id):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-    new_block = block.replace("## Story", f"## Story [GEPOSTET {timestamp} | ID: {media_id}]", 1)
+    new_block = re.sub(
+        r"^## Story(?:\s+\[[^\]]+\])?",
+        f"## Story [GEPOSTET {timestamp} | ID: {media_id}]",
+        block,
+        count=1,
+        flags=re.MULTILINE,
+    )
+    new_block = re.sub(
+        r"(?mi)^Status:\s*FREIGEGEBEN\s*$",
+        "Status: GEPOSTET",
+        new_block,
+    )
+    new_block = re.sub(
+        r"(?mi)^Publication-Claim:\s*IN_BEARBEITUNG[^\n]*\r?\n?",
+        "",
+        new_block,
+    )
     return content.replace(block, new_block, 1)
 
 if __name__ == "__main__":
