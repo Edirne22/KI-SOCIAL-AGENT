@@ -526,7 +526,21 @@ def main() -> None:
 
         else:
             print(f"DEBUG: Kein Kommando erkannt für: {message_text}")
-            session_timestamp, posts = load_session()
+            # FIX 4: load_session() darf nicht crashen, wenn keine gültige Sitzung vorliegt.
+            try:
+                session_timestamp, posts = load_session()
+            except (FileNotFoundError, RuntimeError) as error:
+                print(f"DEBUG: load_session fehlgeschlagen ({type(error).__name__}): {error}")
+                send_message(
+                    "Danke! Ich kann deine Nachricht keinem Kommando zuordnen und es liegt "
+                    "keine gültige Freigabe-Sitzung vor.\n\n"
+                    "Verfügbare Kommandos: deal:, track:, trend:, karussell:, watchlist, "
+                    "experiment, funnel, growth, competitors, inspiration, race, viral, "
+                    "follow-analyse, verify:, go, stop:, erledigt:"
+                )
+                acknowledge_through(update_id)
+                continue
+
             message_timestamp = message.get("date", 0)
             if message_timestamp < session_timestamp:
                 acknowledge_through(update_id)
