@@ -523,4 +523,4 @@ Virajlı yolları keşfet, GPX olarak kaydet ve arkadaşlarınla paylaş!
 
 #RideWithMe #MotorradTour #Kurvenjäger #KIRouten #BikerLife
 
-Video: auto
+Video: assets/videos/2026-09/2026-09-17-schluss-mit-geraden-bundesstrassen-und-ampelstaus.mp4
