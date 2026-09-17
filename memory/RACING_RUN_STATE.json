@@ -79,9 +79,17 @@
       "event": "workflow_dispatch",
       "github_run_id": "35151695745",
       "arch_version": "V8.5.5"
+    },
+    "racing-2026-09-17-daily": {
+      "status": "BLOCKED",
+      "started_at": "2026-09-17T04:27:01.809060+00:00",
+      "updated_at": "2026-09-17T04:33:52.754219+00:00",
+      "event": "schedule",
+      "github_run_id": "35181945248",
+      "arch_version": "V8.5.5"
     }
   },
-  "last_notification_at": 1789593866.516622,
-  "last_notification_fingerprint": "1a817e0603fe16a54ed6efae230c3b43e9538b703db0a23c5f505926dee3c472",
+  "last_notification_at": 1789619632.1764264,
+  "last_notification_fingerprint": "566d85f950b3d1b0cc51918cd9bc85a5669f687281219bb7208675f16a3f2acb",
   "active_batch_id": ""
 }

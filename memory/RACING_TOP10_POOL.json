@@ -55,6 +55,60 @@
         "turkish_rider": "",
         "kind": "news"
       }
+    ],
+    "2026-09-17": [
+      {
+        "story_key": "motogp:1089340",
+        "title": "Gonzalez grabs momentum-shifting victory in dramatic Misano race",
+        "url": "https://www.motogp.com/en/news/2026/09/13/gonzalez-grabs-momentum-shifting-victory-in-dramatic-misano-race/1089340",
+        "summary": "The championship leader wins for the first time since June, Veijer and Baltus clinch podiums, as the top three on the grid crash at Turn 1",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/13/36f61997-1aff-4ec1-b4fc-c494d928f988/Report-M2-RACE-RSM.jpg?width=1200&height=630",
+        "published_at": "2026-09-13",
+        "series": "Moto2",
+        "source_series": "Moto2",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090140",
+        "title": "Tech3 signs Agius for MotoGP debut from 2027",
+        "url": "https://www.motogp.com/en/news/2026/09/16/tech3-signs-agius-for-motogp-debut-from-2027/1090140",
+        "summary": "The Australian joins the team for the start of MotoGP’s new technical era",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/16/52226a9f-6590-45cb-a003-89b877d12ced/Senna-Agius_Red-Bull-KTM_Tech3_MotoGP-2.jpg?width=1200&height=630",
+        "published_at": "2026-09-16",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090066",
+        "title": "TIME SCHEDULE: Qatar Airways Grand Prix of Austria",
+        "url": "https://www.motogp.com/en/news/2026/09/16/time-schedule-qatar-airways-grand-prix-of-austria/1090066",
+        "summary": "Calling at: Austria! Get ready for Round 15 of the season and take a look at all the important times this weekend",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/16/de318130-e1eb-4e80-a6a7-9748ea60a7bf/GRAN-PRIX-TIME-3_2-AUT-copy.jpg?width=1200&height=630",
+        "published_at": "2026-09-16",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1089338",
+        "title": "Agius claims Misano lap record to beat Gonzalez to Friday honours",
+        "url": "https://www.motogp.com/en/news/2026/09/11/agius-claims-misano-lap-record-to-beat-gonzalez-to-friday-honours/1089338",
+        "summary": "Liqui Moly Dynavolt Intact GP earn a perfect Friday as Alonso completes the top three in a closely fought Moto2 Practice",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/11/74833a4a-7678-46c0-9626-901b16bc53e5/Report-M2-FRY-RSM.jpg?width=1200&height=630",
+        "published_at": "2026-09-11",
+        "series": "Moto2",
+        "source_series": "Moto2",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      }
     ]
   }
 }
