@@ -87,3 +87,11 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 2: Wer Marc Marquez abschreibt, hat MotoGP nie geliebt.
 - Titel 3: Kein Netz, keine Route? Nicht mit Offline-Karten
 - Hook 3: Was machst du, wenn mitten in den Bergen plötzlich das Netz weg ist?
+
+### 2026-09-17 06:04 | Entwurf generiert
+- Titel 1: Can Öncüs Befreiungsschlag in Magny-Cours
+- Hook 1: Nach monatelanger harter Arbeit steht Can Öncü wieder ganz oben auf dem Treppchen.
+- Titel 2: Jack Miller und Toprak: Gegensätze bei Pramac Yamaha
+- Hook 2: Jack Miller und Toprak Razgatlıoğlu in einer Box: Chaotisch oder die perfekte Mischung?
+- Titel 3: Mehr als nur Auspuffklang: Die Seele des Fahrens
+- Hook 3: Drehst du den Gasgriff auf, um aufzufallen – oder um den Kopf freizubekommen?
