@@ -1,8 +1,9 @@
 """Einziger Telegram-Poller/Routing-Einstiegspunkt.
 
 Nur dieser Router konsumiert getUpdates im Zeitplan. MotoGP erhält exakt das
-bereits gelesene Update als Argumente. Unbekannte Nachrichten werden mit einer
-freundlichen Hilfe-Antwort quittiert.
+bereits gelesene Update als Argumente. Unbekannte Nachrichten werden still
+bestätigt, damit der alte allgemeine Receiver keine irreführende Freigabe-Hilfe
+mehr auf beliebige Nachrichten sendet.
 """
 from __future__ import annotations
 
@@ -12,44 +13,8 @@ import sys
 from telegram_bot import get_chat_id, get_updates, send_message
 
 
-HELP_TEXT = (
-    "🤖 Kommando nicht erkannt.\n\n"
-    "Verfügbare Kommandos (Beispiel):\n"
-    "• motogp 2,4  – MotoGP-Freigabe\n"
-    "• motogp ✅ / motogp ❌\n"
-    "• alle, liste, watchlist\n"
-    "• 1,2  – Auswahl"
-)
-
-
 def _ack(update_id: int) -> None:
     get_updates(offset=update_id + 1)
-
-
-def _send(chat_id: str, text: str) -> None:
-    """Telegram-Antwort senden, Fehler nur loggen – nie crashen."""
-    try:
-        send_message(chat_id, text)
-    except TypeError:
-        # Fallback, falls send_message(text) die Signatur ist
-        try:
-            send_message(text)
-        except Exception as e:
-            print(f"ROUTER: Antwort senden fehlgeschlagen: {e}")
-    except Exception as e:
-        print(f"ROUTER: Antwort senden fehlgeschlagen: {e}")
-
-
-def _normalize_motogp_args(text: str) -> str:
-    """FIX 1: Komma-/Leerzeichen-Varianten vereinheitlichen.
-
-    'motogp 2, 4'  -> 'motogp 2,4'
-    'motogp 2 ,4'  -> 'motogp 2,4'
-    'motogp 2 4'   -> 'motogp 2 4'  (unverändert)
-    """
-    cleaned = re.sub(r"\s*,\s*", ",", text)
-    cleaned = re.sub(r"\s+", " ", cleaned).strip()
-    return cleaned
 
 
 def _is_general_command(text: str) -> bool:
@@ -86,14 +51,11 @@ def main() -> None:
             _ack(uid)
             return
 
-        # FIX 2: Case-Insensitive für Routing-Vergleich
         normalized = " ".join(text.strip().lower().split())
         if normalized.startswith("motogp ") or normalized in {"motogp", "motogp ✅", "motogp ❌"}:
-            # FIX 1: Komma-Varianten vor Weitergabe vereinheitlichen
-            forward_text = _normalize_motogp_args(text)
             print(f"ROUTER: Update {uid} -> MotoGP Approval (atomare Übergabe)")
             result = subprocess.run(
-                [sys.executable, "-u", "motogp_telegram_receive.py", str(uid), chat, forward_text],
+                [sys.executable, "-u", "motogp_telegram_receive.py", str(uid), chat, text],
                 check=False,
             )
             if result.returncode != 0:
@@ -109,9 +71,15 @@ def main() -> None:
                 raise RuntimeError(f"Allgemeiner Telegram-Receiver fehlgeschlagen (Exit {result.returncode}).")
             return
 
-        # FIX 3: Freundliche Antwort statt stiller Bestätigung
+        # FIX 3: freundliche Antwort statt stille Bestätigung
         print(f"ROUTER: Update {uid} unbekannt; sende freundliche Hilfe.")
-        _send(chat, HELP_TEXT)
+        try:
+            send_message(
+                f"🤖 Kommando nicht erkannt: {text[:40]!r}\n"
+                "Beispiele: motogp 2,4 · motogp ✅ · motogp ❌ · alle · liste"
+            )
+        except Exception as e:
+            print(f"ROUTER: Hilfe senden fehlgeschlagen: {e}")
         _ack(uid)
         return
 
