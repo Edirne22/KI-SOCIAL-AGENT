@@ -36,7 +36,9 @@ def selection(text):
     v=re.sub(r'\s+',' ',text.strip().lower())
     if v in ('motogp alle','motogp ✅'):return [1,2,3,4,5]
     if v in ('motogp nein','motogp ❌'):return []
-    m=re.fullmatch(r'motogp\s+([1-5](?:\s*,\s*[1-5])*)',v);return sorted({int(x.strip()) for x in m.group(1).split(',')}) if m else None
+    m=re.fullmatch(r'motogp\s+([1-5](?:[\s,]+[1-5])*)',v)
+    if not m:return None
+    return sorted({int(x) for x in re.findall(r'[1-5]',m.group(1))})
 def already(uid):return STATE.exists() and f'Update-ID: {uid}' in STATE.read_text(encoding='utf-8')
 def _normalize_text(t):return re.sub(r'\s+',' ',t.strip()).casefold()
 def get_existing_published_texts():
