@@ -54,7 +54,28 @@ def search_deal_with_offer(
     if not query:
         raise ValueError("Bitte nenne ein Produkt nach 'deal:' oder 'suche:'.")
 
-    outcome = search(_research_query(query, criteria), status_callback=status_callback)
+    try:
+        outcome = search(_research_query(query, criteria), status_callback=status_callback)
+    except (RuntimeError, ValueError) as error:
+        err_text = str(error)
+        print(f"SEARCH-FEHLER abgefangen in deal_hunter: {err_text}")
+        answer = f"⚠️ Suche derzeit nicht verfügbar für '{query}'.\nUrsache: {err_text}\nBitte später erneut versuchen."
+        provider = "Keiner (Fehler)"
+        live_search = False
+        offer = None
+        save_result(query, provider, live_search, answer, criteria, offer)
+        LAST_QUERY_FILE.parent.mkdir(parents=True, exist_ok=True)
+        LAST_QUERY_FILE.write_text(query, encoding="utf-8")
+
+        # Versuche Telegram-Benachrichtigung, falls Token konfiguriert ist
+        try:
+            from telegram_bot import send_message
+            send_message(f"⚠️ Deal-Hunter-Hinweis für '{query}': Suche nicht möglich.\n{err_text}")
+        except Exception:
+            pass
+
+        return {"answer": answer, "offer": offer, "provider": provider, "live_search": live_search}
+
     answer = outcome["answer"].strip()
     sources = outcome.get("results") or []
     if sources:

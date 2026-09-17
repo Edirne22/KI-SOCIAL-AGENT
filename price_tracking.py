@@ -184,6 +184,10 @@ def check_prices() -> None:
             outcome = search_deal_with_offer(product, criteria)
         except (RuntimeError, ValueError) as error:
             _log_tracking(product, f"Recherche nicht verfügbar: {error}")
+            try:
+                send_message(f"⚠️ Preis-Check für '{product}' fehlgeschlagen:\n{error}")
+            except Exception:
+                pass
             continue
 
         offer = outcome.get("offer")
