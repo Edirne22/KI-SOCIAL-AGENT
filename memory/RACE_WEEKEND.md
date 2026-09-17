@@ -1,5 +1,5 @@
 # Nächstes Rennwochenende
-Geprüft: 2026-09-17 06:21
+Geprüft: 2026-09-17 19:02
 
 > Zeiten bitte vor Veröffentlichung an der Originalquelle prüfen.
 
