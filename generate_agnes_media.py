@@ -102,7 +102,7 @@ def agnes_generate_video(prompt, max_wait=300):
     payload = {
         "model": "agnes-video-v2.0",
         "prompt": prompt,
-        "duration": 5,
+        "duration": 7,
         "size": "720x1280"
     }
     try:
