@@ -8,6 +8,18 @@ REPO_RAW = "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/"
 VIDEO_EXTENSIONS = {".mp4", ".mov", ".m4v", ".3gp", ".avi", ".mkv", ".webm"}
 
 
+def check_media_status_warning(block: str) -> None:
+    titel_match = re.search(r"(?mi)^Titel:\s*(.+)$", block)
+    block_title = titel_match.group(1).strip() if titel_match else block.splitlines()[0].strip()
+    ms_match = re.search(r"(?mi)^Medienstatus:\s*(.+)$", block)
+    nr_match = re.search(r"(?mi)^Nutzungsrecht:\s*(.+)$", block)
+    ms_val = ms_match.group(1).strip() if ms_match else "FEHLEND"
+    nr_val = nr_match.group(1).strip() if nr_match else None
+    known_statuses = {"EIGENES_MATERIAL", "EIGENE_KI_EDITORIALGRAFIK", "KI_ERLAUBT", "QUELLE_BESTÄTIGT"}
+    if ms_val == "QUELLE_PRÜFEN" or ms_val not in known_statuses or not nr_val:
+        print(f"WARNUNG: Block {block_title} hatte Medienstatus {ms_val} – trotzdem gepostet (durch Telegram-Freigabe gedeckt)")
+
+
 def find_facebook_block(content):
     """Sucht den ersten freigegebenen, reservierten Facebook-Block."""
     pattern = r"## Facebook\s*\n(.*?)(?=\n## |\Z)"
@@ -44,6 +56,7 @@ def find_facebook_block(content):
             if source_url and not link_preview:
                 message += f"\n\nQuelle: {source_url}"
 
+            check_media_status_warning(block)
             return (
                 message,
                 image_match.group(1) if image_match else None,
@@ -130,8 +143,23 @@ def post_to_facebook(page_id, page_token, message, image_file=None, video_file=N
 
 def mark_block(content, block, post_id):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-    new_header = f"## Facebook [GEPOSTET {timestamp} | ID: {post_id}]"
-    new_block = block.replace("## Facebook", new_header, 1)
+    new_block = re.sub(
+        r"^## Facebook(?:\s+\[[^\]]+\])?",
+        f"## Facebook [GEPOSTET {timestamp} | ID: {post_id}]",
+        block,
+        count=1,
+        flags=re.MULTILINE,
+    )
+    new_block = re.sub(
+        r"(?mi)^Status:\s*FREIGEGEBEN\s*$",
+        "Status: GEPOSTET",
+        new_block,
+    )
+    new_block = re.sub(
+        r"(?mi)^Publication-Claim:\s*IN_BEARBEITUNG[^\n]*\r?\n?",
+        "",
+        new_block,
+    )
     return content.replace(block, new_block, 1)
 
 
