@@ -498,3 +498,27 @@ Story-Key: motogp:1090141
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-17 15:40 UTC | Motorcycle Racing | PASS
+Titel: HOT HEADLINES: all level as MotoGP readies for Spielberg thriller in Austria 14 down, 8 to go and it’s neck-and-neck at the top: a blockbuster awaits as the Styrian mountains come alive to the sound of MotoGP
+Story-Key: motogp:1090065
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 15:40 UTC | Motorcycle Racing | PASS
+Titel: Agius claims Misano lap record to beat Gonzalez to Friday honours
+Story-Key: motogp:1089338
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 15:40 UTC | Motorcycle Racing | FAIL
+Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 15:42 UTC | Motorcycle Racing | PASS
+Titel: NEWS 1d ago Superbike Advocates to continue with Bridewell in the 2027 WorldSBK campaign Bridewell’s strong first season as a full-time rider on the WorldSBK grid bears fruit as his Independent Ducati team will keep him in the saddle for 2027 WorldSBK
+Story-Key: motogp:1090122
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
