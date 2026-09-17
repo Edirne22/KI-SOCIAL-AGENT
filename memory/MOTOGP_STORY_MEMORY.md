@@ -214,3 +214,28 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/15/worldwcr-duo-rookie-vs-veter
 Story-Key: motogp:1089982
 Titel: “He knows the tyres and the new bike… this is the perfect time” – Rossi, Razgatlioglu and more on Bulega’s MotoGP switch
 Quelle: https://www.worldsbk.com/en/news/2026/09/14/he-knows-the-tyres-and-the-new-bike-this-is-the-perfect-time-rossi-razgatlioglu-and-more-on-bulegas-motogp-switch/1089982
+
+## 2026-09-17 05:17 UTC – ANGEBOTEN
+Story-Key: motogp:1089340
+Titel: Gonzalez grabs momentum-shifting victory in dramatic Misano race
+Quelle: https://www.motogp.com/en/news/2026/09/13/gonzalez-grabs-momentum-shifting-victory-in-dramatic-misano-race/1089340
+
+## 2026-09-17 05:17 UTC – ANGEBOTEN
+Story-Key: motogp:1090261
+Titel: Nakagami to replace Mir in Austria
+Quelle: https://www.motogp.com/en/news/2026/09/16/nakagami-to-replace-mir-in-austria/1090261
+
+## 2026-09-17 05:17 UTC – ANGEBOTEN
+Story-Key: motogp:1090162
+Titel: Ogura targets Austrian GP return The Japanese rider is set to return to action at the Red Bull Ring, pending a medical review on Thursday
+Quelle: https://www.motogp.com/en/news/2026/09/15/ogura-targets-austrian-gp-return/1090162
+
+## 2026-09-17 05:17 UTC – ANGEBOTEN
+Story-Key: motogp:1090140
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Quelle: https://www.motogp.com/en/news/2026/09/16/tech3-signs-agius-for-motogp-debut-from-2027/1090140
+
+## 2026-09-17 05:17 UTC – ANGEBOTEN
+Story-Key: motogp:1090141
+Titel: Who is Senna Agius? Meet Australia’s new MotoGP star It’s time to present our fifth rookie of 2027, beginning a new era Down Under and becoming a brand-new face at Tech3
+Quelle: https://www.motogp.com/en/news/2026/09/16/who-is-senna-agius-meet-australias-new-motogp-star/1090141

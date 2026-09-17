@@ -468,3 +468,33 @@ Story-Key: motogp:1089338
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-17 05:22 UTC | Motorcycle Racing | PASS
+Titel: Gonzalez grabs momentum-shifting victory in dramatic Misano race
+Story-Key: motogp:1089340
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 05:22 UTC | Motorcycle Racing | PASS
+Titel: Nakagami to replace Mir in Austria
+Story-Key: motogp:1090261
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 05:22 UTC | Motorcycle Racing | PASS
+Titel: Ogura targets Austrian GP return The Japanese rider is set to return to action at the Red Bull Ring, pending a medical review on Thursday
+Story-Key: motogp:1090162
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 05:22 UTC | Motorcycle Racing | PASS
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-17 05:23 UTC | Motorcycle Racing | PASS
+Titel: Who is Senna Agius? Meet Australia’s new MotoGP star It’s time to present our fifth rookie of 2027, beginning a new era Down Under and becoming a brand-new face at Tech3
+Story-Key: motogp:1090141
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
