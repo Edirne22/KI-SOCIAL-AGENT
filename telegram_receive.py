@@ -113,6 +113,28 @@ def _published_targets(platform: str) -> list[tuple[str, str]]:
     return [(platform.strip(), "")]
 
 
+def _normalize_text(t: str) -> str:
+    return re.sub(r"\s+", " ", t.strip()).casefold()
+
+
+def get_existing_published_texts() -> set[str]:
+    texts = set()
+    files = [PUBLISHED_FILE]
+    archive_dir = PUBLISHED_FILE.parent / "archive"
+    if archive_dir.exists():
+        files.extend(archive_dir.glob("*.md"))
+    pattern = r"(?ms)^Text:\s*(.*?)(?=^(?:Quelle:|Bild:|Video:|Bilder:|Medienstatus:|Link-Preview:|Status:|Freigabe:|Telegram-Update-ID:|Racing-Batch-ID:|MotoGP-Auswahl:|Titel:|## |\Z))"
+    for f in files:
+        if not f.exists():
+            continue
+        content = f.read_text(encoding="utf-8")
+        for m in re.findall(pattern, content):
+            norm = _normalize_text(m)
+            if norm:
+                texts.add(norm)
+    return texts
+
+
 def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int], update_id: int) -> None:
     PUBLISHED_FILE.parent.mkdir(parents=True, exist_ok=True)
     existing = PUBLISHED_FILE.read_text(encoding="utf-8") if PUBLISHED_FILE.exists() else "# Freigegebene Beiträge\n"
@@ -121,9 +143,22 @@ def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int],
         print(f"Telegram-Update {update_id} wurde bereits verarbeitet.")
         return
 
+    existing_texts = get_existing_published_texts()
     entries = []
+    skipped_count = 0
     for number in selected:
         post = posts[number]
+        caption = _instagram_caption(post["full_text"])
+        norm_caption = _normalize_text(caption)
+        if norm_caption and norm_caption in existing_texts:
+            title = post.get("title") or caption[:30]
+            print(f"DUPLIKAT ERKANNT: {title} bereits vorhanden, übersprungen")
+            skipped_count += 1
+            continue
+
+        if norm_caption:
+            existing_texts.add(norm_caption)
+
         source = _field(post["full_text"], "Inspirations-Quelle")
         source_line = f"Quelle: {source}" if source.startswith(("https://", "http://")) else ""
         # Die Faktenquelle bleibt sichtbar. Die Medienfreigabe ergibt sich später allein aus dem hochgeladenen Medienpfad.
@@ -135,14 +170,16 @@ def append_approved_posts(posts: dict[int, dict[str, str]], selected: list[int],
                     "Freigabe: Telegram",
                     marker,
                     "Text:",
-                    _instagram_caption(post["full_text"]),
+                    caption,
                     source_line,
                     media_line,
                     "",
                 ]
             )
-    PUBLISHED_FILE.write_text(existing.rstrip() + "\n\n" + "\n".join(entries).rstrip() + "\n", encoding="utf-8")
-    print(f"{len(selected)} freigegebene Beiträge nach {PUBLISHED_FILE} geschrieben.")
+    if entries:
+        PUBLISHED_FILE.write_text(existing.rstrip() + "\n\n" + "\n".join(entries).rstrip() + "\n", encoding="utf-8")
+    added_count = len(selected) - skipped_count
+    print(f"{added_count} freigegebene Beiträge nach {PUBLISHED_FILE} geschrieben ({skipped_count} Duplikate übersprungen).")
 
 
 def acknowledge_through(update_id: int) -> None:

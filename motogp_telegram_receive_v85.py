@@ -38,13 +38,32 @@ def selection(text):
     if v in ('motogp nein','motogp ❌'):return []
     m=re.fullmatch(r'motogp\s+([1-5](?:\s*,\s*[1-5])*)',v);return sorted({int(x.strip()) for x in m.group(1).split(',')}) if m else None
 def already(uid):return STATE.exists() and f'Update-ID: {uid}' in STATE.read_text(encoding='utf-8')
+def _normalize_text(t):return re.sub(r'\s+',' ',t.strip()).casefold()
+def get_existing_published_texts():
+    texts=set();files=[PUBLISHED]
+    archive_dir=PUBLISHED.parent/'archive'
+    if archive_dir.exists():files.extend(archive_dir.glob('*.md'))
+    pattern=r'(?ms)^Text:\s*(.*?)(?=^(?:Quelle:|Bild:|Video:|Bilder:|Medienstatus:|Link-Preview:|Status:|Freigabe:|Telegram-Update-ID:|Racing-Batch-ID:|MotoGP-Auswahl:|Titel:|## |\Z))'
+    for f in files:
+        if not f.exists():continue
+        content=f.read_text(encoding='utf-8')
+        for m in re.findall(pattern,content):
+            norm=_normalize_text(m)
+            if norm:texts.add(norm)
+    return texts
 def publish(posts,chosen,uid,batch):
     PUBLISHED.parent.mkdir(parents=True,exist_ok=True);existing=PUBLISHED.read_text(encoding='utf-8') if PUBLISHED.exists() else '# Freigegebene Beiträge\n';blocks=[]
+    existing_texts=get_existing_published_texts()
     for n in chosen:
         p=posts.get(n)
         if not p:continue
         marker=f'Racing-Batch-ID: {batch}\nMotoGP-Auswahl: {n}'
         if marker in existing:continue
+        norm_post_text=_normalize_text(p["text"])
+        if norm_post_text and norm_post_text in existing_texts:
+            print(f"DUPLIKAT ERKANNT: {p['title']} bereits vorhanden, übersprungen")
+            continue
+        if norm_post_text:existing_texts.add(norm_post_text)
         common=f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\nRacing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
         blocks += [f'## Instagram\n{common}Text:\n{p["text"]}\nQuelle: {p["source"]}\nMedienstatus: EIGENE_KI_EDITORIALGRAFIK\nBild: {p["image"]}\n',f'## Facebook\n{common}Text:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n']
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
