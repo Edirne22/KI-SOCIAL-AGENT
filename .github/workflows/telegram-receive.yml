@@ -9,8 +9,11 @@ permissions:
   contents: write
   actions: write
 
+# Eigene Concurrency-Gruppe: Der Telegram-Poller ist ein unabhängiger
+# Eingangskanal und darf nicht von Publisher-Schreibern verdrängt werden.
+# cancel-in-progress: false, damit ein laufender Poller nie abgebrochen wird.
 concurrency:
-  group: published-plan-writers
+  group: telegram-receive
   cancel-in-progress: false
 jobs:
   receive-approval:
