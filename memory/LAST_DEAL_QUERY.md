@@ -1,1 +1,1 @@
-handytarif 80GB D1 telekom maximal 13euro
+handyvertrag 80GB D1 maximal 13 euro

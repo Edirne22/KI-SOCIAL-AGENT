@@ -44,3 +44,12 @@ Quelle: https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet
 Status: nicht bestätigt – Zielpreis erreicht
 Kriterien: max: 13 € | seit 2026-09-12
 Provider: Apify-Google-Suche
+
+## 2026-09-18 06:08
+Produkt: motorradhandschuhe
+Preis: 3.50
+Händler: blmk.de
+Quelle: https://www.blmk.de/kalender/
+Status: nicht bestätigt – Zielpreis erreicht
+Kriterien: max: 50 € | seit 2026-09-12
+Provider: Apify-Google-Suche

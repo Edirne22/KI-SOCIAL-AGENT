@@ -596,3 +596,114 @@ Quellen:
 - Handytarife im Telekom-Netz (D1) - PC-WELT: https://tarife.pcwelt.de/handytarife-vergleich/telekom-netz
 - Handyvertrag unter 10 Euro im Monat - TARIFFUXX: https://www.tariffuxx.de/handytarife/10-euro
 - Ab Montag teurer: Telekom-Allnet mit 30 GB 5G für 9,99 Euro - Teltarif: https://www.teltarif.de/crash-telekom-30gb-5g/news/101031.html
+## Suche vom 2026-09-18 06:08
+Anfrage: motorradhandschuhe
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 50 € | seit 2026-09-12
+Verifiziertes Angebot: ja
+Preis: 3.50 €
+Händler: blmk.de
+Quelle: https://www.blmk.de/kalender/
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+
+BESTES_ANGEBOT:
+Preis: 3.50 €
+Händler: blmk.de
+URL: https://www.blmk.de/kalender/
+Belegt: ja
+Hinweis: Preis stammt aus einem aktuellen Suchtreffer; bitte auf den Link tippen und im Shop prüfen.
+
+Direkte Treffer (antippbar):
+1. Blue MTB Handschuhe MTN - The Motion Brand
+   https://themotionbrand.com/products/blue-mtb-handschuhe-mtn?srsltid=AU7gw4UwPKZoIfilFSrIAGm2QLIqXVS6vwE9nZ4640gji-2Jl6NadpHV – Blue MTB Handschuhe MTN. Normaler Preis€32,90. /. inkl. MwSt. zzgl ... - ab einem Bestellwert von 80€ versandkostenfrei! - bis zu einem Warenwert von 80€: 4,50 ...
+2. DSG25 Programm - Deutsche Schlaganfall-Gesellschaft
+   https://www.dsg-info.de/kongress/programm/ – Vorsitzende: Christine Vogl & Alexander Kollikowski. Max. TN-Zahl: 24. Gebühr: 50,00 €. → Zur Workshop-Buchung · WS 05. Interprofessionelle Therapie/Team is ...
+3. Historische Themen - Wirtschaft & Tourismus - Stadt Grafing
+   https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen – Preis: VVK 10,00€/Person, an der Tageskasse in bar 12,50€/Person; Treffpunkt: Bronzesäule hinter dem Rathaus (Marktplatz 28); Dauer: Ca. zwei Stunden; Max.
+4. Wochen der Wärme 2026 - Klimaschutz
+   https://www.klimaschutz-niedersachsen.de/themen/waerme/2026-wochen-der-waerme.php – Der Energie-Effizienz-Experte Max ... 58 Großstädte können ihren Raumwärmebedarf zu mindestens 50 % aus der Fließgewässerwärme generieren, was 73 % aller ...
+5. AMTLICHES BEKANNTMACHUNGSBLATT - Gemeinde Beckingen
+   https://www.beckingen.de/wp-content/uploads/2026/09/KW37-2026.pdf – vor 7 Tagen ... von Fahrzeug, zu versteuerndem Haushaltsjahreseinkommen und Anzahl der Kinder; max ... 7 nur € 12,50 (Angebot gültig jeden Mittwoch im SEPTEMBER ...
+6. Weiterbildungsprogramm - Norddeutsches Optik Colleg
+   https://www.ndoc.info/fileadmin/user_upload/Flyer_AO_2025_26_web.pdf – 05.11.2025 ... Gruppengröße: max. 20 Teilnehmer. Voraussetzung: keine. Referen%n: Thomas Nagel. Kursgebühr: 50,- € (59,50 € Bru" o) . Netzhaut-Beurteilung.
+7. Viertägiges Yoga-Retreat & Malaketten-Workshop mit Angela Sauer ...
+   https://www.pforzheim.de/veranstaltungen/ansicht-veranstaltungen/event/eventDetail/2026-09-11_0830/yoga-retreat-malaketten-workshop.html – vor 7 Tagen ... ... Max: 13.55 °C. Klarer Himmel Niederschlag : 0 mm. Bewölkung : 0 ... 50 € je nach Materialwahl bis ca. 250 €. Anmeldeschluss ist der 15 ...
+8. Umweltkalender - Stadt Meerbusch
+   https://meerbusch.de/fileadmin/Dateien/Buergerservice/Abfallberatung/Umweltkalender_2026.pdf – 24.06.2026 ... Bsp.: Eimer (1 Stk.), Tür (1 Stk.), 1 Sack. 10,00 €. 11,00 €. Reifen mit oder ohne Felgen. 7,50 € / Stk. ... Max-Ernst-Str. / Bommershöfer Weg.
+9. Veranstaltungen – BLMK
+   https://www.blmk.de/kalender/ – Material Kinder 3,50 €, Erwachsene 7,50 € | max. 20 Teilnehmerinnen | für FamilienRathaushalleMarktplatz 115230 Frankfurt (Oder)+49 335 28396183MehrTeilen ...
+10. VEREINSNACHRICHTEN - SC Victoria Hamburg
+   https://sc-victoria.de/wp-content/uploads/2026/09/post-ausgabe-3_2026_4c-fuer-das-internet.pdf – vor 7 Tagen ... - neue Mitglieder ohne eine andere SCV-Mitgliedschaft 150€. - ScV-Mitglieder 50€ ... zwei Väter und Max mit seinem Programm 2The Max. Wir ...
+
+Quellen:
+- Blue MTB Handschuhe MTN - The Motion Brand: https://themotionbrand.com/products/blue-mtb-handschuhe-mtn?srsltid=AU7gw4UwPKZoIfilFSrIAGm2QLIqXVS6vwE9nZ4640gji-2Jl6NadpHV
+- DSG25 Programm - Deutsche Schlaganfall-Gesellschaft: https://www.dsg-info.de/kongress/programm/
+- Historische Themen - Wirtschaft & Tourismus - Stadt Grafing: https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen
+- Wochen der Wärme 2026 - Klimaschutz: https://www.klimaschutz-niedersachsen.de/themen/waerme/2026-wochen-der-waerme.php
+- AMTLICHES BEKANNTMACHUNGSBLATT - Gemeinde Beckingen: https://www.beckingen.de/wp-content/uploads/2026/09/KW37-2026.pdf
+- Weiterbildungsprogramm - Norddeutsches Optik Colleg: https://www.ndoc.info/fileadmin/user_upload/Flyer_AO_2025_26_web.pdf
+- Viertägiges Yoga-Retreat & Malaketten-Workshop mit Angela Sauer ...: https://www.pforzheim.de/veranstaltungen/ansicht-veranstaltungen/event/eventDetail/2026-09-11_0830/yoga-retreat-malaketten-workshop.html
+- Umweltkalender - Stadt Meerbusch: https://meerbusch.de/fileadmin/Dateien/Buergerservice/Abfallberatung/Umweltkalender_2026.pdf
+- Veranstaltungen – BLMK: https://www.blmk.de/kalender/
+- VEREINSNACHRICHTEN - SC Victoria Hamburg: https://sc-victoria.de/wp-content/uploads/2026/09/post-ausgabe-3_2026_4c-fuer-das-internet.pdf
+## Suche vom 2026-09-18 06:08
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. iPhone 18 Pro Deals mit Unlimited-Flat: 300 € Zuzahlung reichen aus
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro/unlimited-flat-iphone-18-pro – vor 3 Tagen ... Fuxxy findet für dich passende Handytarife – auf Wunsch auch mit neuem Smartphone. Häufige Anfragen. Günstig & flexibel. Top-Netz & viel Daten
+2. Allnet Flats im Vergleich - September 2026 - Internetanbieter.de
+   https://www.internetanbieter.de/allnet-flats/ – D1 D2 O2 1&1. Vodafone Logo. CallYa Start. Datenvolumen. 2 GB. Max ... Ø 10,13 €. 10,00 € monatlich. Zum Tarif ». blau Mobilfunk Logo. Allnet S ...
+3. Über uns – HandyTarifTipp.de
+   https://handytariftipp.de/ueber-uns-handytariftipp-de/ – SIM-only-Tarife: Wenn Du bereits ein Smartphone besitzt und nur einen passenden Tarif benötigst, findest Du bei uns die besten SIM-only-Angebote. Ob Allnet-Flat ...
+4. iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-16 – 50 Mbit/s max. Telefon-Flat. SMS-Flat. Pro Monat. Handy ...
+5. Mobilfunk - Dealgott.de
+   https://www.dealgott.de/category/mobilfunk/ – Samsung Galaxy S26 FE (128 GB) für 1€ + Vodafone Smart Entry 55 GB für 29,99€/Monat (mit GigaKombi = 24,99€/Monat). 9. September 2026.
+6. Samsung Galaxy S24 Plus mit Vertrag - handyhaus.de
+   https://handyhaus.de/smartphones/samsung/galaxy-s24-plus – inkl. Achtung: Nach 24 Monaten erhöht sich die Grundgebühr ( +1072,00 € mehr pro Monat - also rechtzeitig kündigen!)
+7. Mobil surfen bis 100 GB Datenvolumen / Monat - Handy
+   https://handy.preisvergleich.de/datenvolumen-100gb/ – * Angebot vom 12.09.2026 / Preis kann jetzt höher sein - Alle Angaben ohne Gewähr. ** Bei Tarifen mit Datenautomatik können bei Überschreitung des beinhalteten ...
+8. Handy mit Vertrag – So findest du die besten Deals! - HandyTarifTipp
+   https://handytariftipp.de/handy-mit-vertrag-top-deals-guenstige-bundle-angebote/ – 12.05.2025 ... RSS-Feed: SmartphoneAmigo.de SmartphoneAmigo.de · Anzeige · * Hinweise zu den Angeboten · Mobilfunk Deals – WhatsApp Kanal · Angebote durchsuchen.
+9. Handyverträge - Dealgott.de
+   https://www.dealgott.de/category/mobilfunk/handyvertrage/ – Samsung Galaxy Z Flip 8 (256 GB) für 329€ + otelo Allnet Flat Classic (50 GB) für 19,99€/Monat + 50€ Bonus · Apple iPhone 18 Pro (256 GB) für 299,95€ + o2 Mobile ...
+10. iPhone 17 Pro mit Vertrag im Vergleich - TARIFFUXX
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-17-pro – Wir haben ein Maximum bei 600 € voreingestellt, du kannst es im iPhone 17 Pro Tarifrechner aber selbst nach Wunsch anpassen. 256 GB, 512 GB, 1 TB. 1.299 € ...
+
+Quellen:
+- iPhone 18 Pro Deals mit Unlimited-Flat: 300 € Zuzahlung reichen aus: https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro/unlimited-flat-iphone-18-pro
+- Allnet Flats im Vergleich - September 2026 - Internetanbieter.de: https://www.internetanbieter.de/allnet-flats/
+- Über uns – HandyTarifTipp.de: https://handytariftipp.de/ueber-uns-handytariftipp-de/
+- iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-16
+- Mobilfunk - Dealgott.de: https://www.dealgott.de/category/mobilfunk/
+- Samsung Galaxy S24 Plus mit Vertrag - handyhaus.de: https://handyhaus.de/smartphones/samsung/galaxy-s24-plus
+- Mobil surfen bis 100 GB Datenvolumen / Monat - Handy: https://handy.preisvergleich.de/datenvolumen-100gb/
+- Handy mit Vertrag – So findest du die besten Deals! - HandyTarifTipp: https://handytariftipp.de/handy-mit-vertrag-top-deals-guenstige-bundle-angebote/
+- Handyverträge - Dealgott.de: https://www.dealgott.de/category/mobilfunk/handyvertrage/
+- iPhone 17 Pro mit Vertrag im Vergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-17-pro
+## Suche vom 2026-09-18 06:10
+Anfrage: handyvertrag 80GB D1 maximal 13 euro
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: keine Kriterien | seit 2026-09-13
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. Monatlich kündbare Handytarife im Vergleich - handyhaus.de
+   https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar – Da die Datennutzung ohne eine entsprechende Datenoption sehr teuer ist kein ein Prepaid Tarif auch schnell zur Kostenfalle werden und das Guthaben vom Handy ...
+
+Quellen:
+- Monatlich kündbare Handytarife im Vergleich - handyhaus.de: https://handyhaus.de/tarife/ohne-vertragslaufzeit/monatlich-kuendbar
