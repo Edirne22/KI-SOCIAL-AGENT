@@ -1,1 +1,1 @@
-hunter
+handytarif 80GB D1 telekom maximal 13euro

@@ -749,3 +749,30 @@ Quellen:
 - Hunter (Fernsehserie) - Wikipedia: https://de.wikipedia.org/wiki/Hunter_(Fernsehserie)
 - Hunter Shop Bielefeld: https://www.hunter-shop.de/
 - HUNTER Second Hand Mode online kaufen | momox fashion: https://www.momoxfashion.com/collections/marke-hunter
+## Suche vom 2026-09-18 22:51
+Anfrage: handytarif 80GB D1 telekom maximal 13euro
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. Handytarife im Telekom-Netz vergleichen (09/2026) - Heise
+   https://www.heise.de/tarifrechner/handytarife/telekom-netz – Damit lassen sich D1-Tarife nach Preis, Datenvolumen, Laufzeit, Geschwindigkeit und Tarifart filtern. Wichtig ist nicht nur die monatliche Grundgebühr.
+2. Handytarife im Telekom-Netz (D1) - PC-WELT
+   https://tarife.pcwelt.de/handytarife-vergleich/telekom-netz – Handytarife im Telekom-Netz (D1) · 20 GB Highspeed-Internet für 9,99 €/Monat · Im besten Telekom 5G-Netz bis 50 Mbit/s · Aktion: 25€ Wechselbonus.
+3. Handyvertrag unter 10 Euro im Monat - TARIFFUXX
+   https://www.tariffuxx.de/handytarife/10-euro – Neben wechselnden Aktionstarifen gibt es auch einige Konstanten im 10-Euro-Markt, die vor allem in den D-Netz von Telekom und Vodafone besonders interessant ...
+4. Welchen Handyvertrag nutzt ihr aktuell? : r/Finanzen - Reddit
+   https://www.reddit.com/r/Finanzen/comments/1qaw59d/welchen_handyvertrag_nutzt_ihr_aktuell/ – 13.01.2026 ... 30GB plus den Übertrag aus dem Vormonat für umgerechnet 8,33€ pro Monat, plus Schweiz und ungedrosseltem 5G beim Anbieter mit der besten ...
+5. Ab Montag teurer: Telekom-Allnet mit 30 GB 5G für 9,99 Euro - Teltarif
+   https://www.teltarif.de/crash-telekom-30gb-5g/news/101031.html – 11.12.2025 ... Der Aktionspreis für die Rückkehr der Crash-Tarife ins 5G-Netz der Telekom läuft am Montag aus. Die monatliche Allnet-Flat mit 30 GB ist nur ...
+
+Quellen:
+- Handytarife im Telekom-Netz vergleichen (09/2026) - Heise: https://www.heise.de/tarifrechner/handytarife/telekom-netz
+- Handytarife im Telekom-Netz (D1) - PC-WELT: https://tarife.pcwelt.de/handytarife-vergleich/telekom-netz
+- Handyvertrag unter 10 Euro im Monat - TARIFFUXX: https://www.tariffuxx.de/handytarife/10-euro
+- Welchen Handyvertrag nutzt ihr aktuell? : r/Finanzen - Reddit: https://www.reddit.com/r/Finanzen/comments/1qaw59d/welchen_handyvertrag_nutzt_ihr_aktuell/
+- Ab Montag teurer: Telekom-Allnet mit 30 GB 5G für 9,99 Euro - Teltarif: https://www.teltarif.de/crash-telekom-30gb-5g/news/101031.html
