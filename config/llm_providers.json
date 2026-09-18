@@ -58,7 +58,7 @@
   "fallback_order": ["groq", "google", "openrouter", "nvidia", "cloudflare"],
   "task_routing": {
     "fast_chat": ["groq", "google", "nvidia"],
-    "reasoning": ["nvidia", "openrouter", "google"],
+    "reasoning": ["openrouter", "google", "nvidia"],
     "coding": ["openrouter", "nvidia", "groq"],
     "long_context": ["nvidia", "openrouter", "google"],
     "default": ["groq", "google", "openrouter", "nvidia", "cloudflare"]
