@@ -8,6 +8,7 @@ from collections.abc import Callable
 from datetime import datetime
 from pathlib import Path
 
+from llm_router import quick_chat
 from search_provider import search
 
 MEMORY_FILE = Path("memory/DEALS_FOUND.md")

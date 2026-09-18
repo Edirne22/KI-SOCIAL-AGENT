@@ -352,22 +352,10 @@ Nenne nur allgemeine, zeitunabhängige Hinweise zu möglichen Händlerarten, Pro
 Nenne keine aktuellen Preise, Rabattcodes, Verfügbarkeiten oder Links als Tatsachen.
 Beginne eindeutig mit: Keine Live-Websuche verfügbar."""
     try:
-        response = _gemini_request(api_key, prompt, grounded=False)
-        if response.status_code != 200:
-            body_short = response.text[:200].replace("\n", " ").strip()
-            err_msg = f"SEARCH-FEHLER: provider=Gemini-Fallback, ursache=HTTP {response.status_code}, detail={body_short}"
-            print(err_msg)
-            log_provider(query, "Gemini-Fallback", err_msg, False)
-            return None
-        answer, _ = _gemini_answer(response)
-    except requests.RequestException as error:
-        detail = f"{type(error).__name__}: {error}"
-        err_msg = f"SEARCH-FEHLER: provider=Gemini-Fallback, ursache=Netzwerkfehler, detail={detail}"
-        print(err_msg)
-        log_provider(query, "Gemini-Fallback", err_msg, False)
-        return None
-    except ValueError as error:
-        err_msg = f"SEARCH-FEHLER: provider=Gemini-Fallback, ursache=Ungültige Antwort, detail={error}"
+        from llm_router import quick_chat
+        answer = quick_chat(prompt, task_type="reasoning").strip()
+    except Exception as error:
+        err_msg = f"SEARCH-FEHLER: provider=LLMRouter-Fallback, ursache={type(error).__name__}, detail={error}"
         print(err_msg)
         log_provider(query, "Gemini-Fallback", err_msg, False)
         return None
