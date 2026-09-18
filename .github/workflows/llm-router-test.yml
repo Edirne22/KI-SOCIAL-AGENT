@@ -1,0 +1,37 @@
+name: LLM Router Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: pip install requests
+      - name: Router smoke test
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          python -u -c "
+          from llm_router import quick_chat
+          print('=== Test 1: default ===')
+          print(quick_chat('Sag nur das Wort OK'))
+          print('=== Test 2: reasoning ===')
+          print(quick_chat('Was ist 2+2? Antworte nur mit der Zahl.', task_type='reasoning'))
+          print('=== Test 3: fallback forced (groq fehlt absichtlich) ===')
+          import os
+          os.environ['GROQ_API_KEY'] = ''
+          print(quick_chat('Was ist die Hauptstadt von Deutschland?'))
+          "
