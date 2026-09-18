@@ -8,4 +8,6 @@
 
 - [ ] handyvertrag 80GB D1 maximal 13 euro | keine Kriterien | seit 2026-09-13
 
+- [ ] hunter | keine Kriterien | seit 2026-09-18
+
 ## Erledigt / Beendet

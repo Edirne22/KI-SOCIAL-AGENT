@@ -154,3 +154,8 @@ Technische Protokolle der Deal-Hunter-Suchwege. Keine Preise oder Zugangsdaten s
 - Provider: Apify-Google-Suche
 - Live-Suche: ja
 - Hinweis: 1 öffentliche Treffer; Kostenlimit $0.010
+## 2026-09-18 09:24
+- Anfrage: hunter
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: 10 öffentliche Treffer; Kostenlimit $0.010
