@@ -72,9 +72,18 @@ def main() -> None:
 
         if _is_general_command(text):
             print(f"ROUTER: Update {uid} -> allgemeiner Telegram Receiver")
-            result = subprocess.run([sys.executable, "-u", "telegram_receive.py"], check=False)
+            result = subprocess.run(
+                [sys.executable, "-u", "telegram_receive.py", str(uid), chat, text],
+                check=False,
+            )
+            if result.returncode == 2:
+                print(f"ROUTER: Allgemeines Update {uid} unverarbeitet (Exit 2); quittiert.")
+                _ack(uid)
+                return
             if result.returncode != 0:
                 raise RuntimeError(f"Allgemeiner Telegram-Receiver fehlgeschlagen (Exit {result.returncode}).")
+            _ack(uid)
+            print(f"ROUTER: Allgemeines Update {uid} erfolgreich verarbeitet und bestätigt.")
             return
 
         # FIX 3: freundliche Antwort statt stille Bestätigung
