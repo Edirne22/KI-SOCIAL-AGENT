@@ -612,3 +612,39 @@ Story-Key: motogp:1090141
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-18 17:23 UTC | Motorcycle Racing | PASS
+Titel: Ogura cleared for Austrian GP FP1, further review to follow
+Story-Key: motogp:1090473
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 17:23 UTC | Motorcycle Racing | PASS
+Titel: Almansa fastest from Quiles on Friday in Austria Less than a second covered the top 14 but it was a familiar story at the top of the timings
+Story-Key: motogp:1090398
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 17:24 UTC | Motorcycle Racing | PASS
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 17:24 UTC | Motorcycle Racing | FAIL
+Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 17:25 UTC | Motorcycle Racing | PASS
+Titel: HOT HEADLINES: all level as MotoGP readies for Spielberg thriller in Austria 14 down, 8 to go and it’s neck-and-neck at the top: a blockbuster awaits as the Styrian mountains come alive to the sound of MotoGP
+Story-Key: motogp:1090065
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 17:25 UTC | Motorcycle Racing | PASS
+Titel: DESTINATION AUSTRIA: MotoGP’s picture postcard Spielberg stunner The Euro summer comes to a close in the Styrian mountains and there really is no place like it
+Story-Key: motogp:1090277
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

@@ -274,3 +274,13 @@ Quelle: https://www.motogp.com/en/news/2026/09/17/acosta-leads-espargaro-as-ktm-
 Story-Key: motogp:1090122
 Titel: NEWS 2d ago Superbike Advocates to continue with Bridewell in the 2027 WorldSBK campaign Bridewell’s strong first season as a full-time rider on the WorldSBK grid bears fruit as his Independent Ducati team will keep him in the saddle for 2027 WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/16/superbike-advocates-to-continue-with-bridewell-in-the-2027-worldsbk-campaign/1090122
+
+## 2026-09-18 17:19 UTC – ANGEBOTEN
+Story-Key: motogp:1090398
+Titel: Almansa fastest from Quiles on Friday in Austria Less than a second covered the top 14 but it was a familiar story at the top of the timings
+Quelle: https://www.motogp.com/en/news/2026/09/18/almansa-fastest-from-quiles-on-friday-in-austria/1090398
+
+## 2026-09-18 17:19 UTC – ANGEBOTEN
+Story-Key: motogp:1090065
+Titel: HOT HEADLINES: all level as MotoGP readies for Spielberg thriller in Austria 14 down, 8 to go and it’s neck-and-neck at the top: a blockbuster awaits as the Styrian mountains come alive to the sound of MotoGP
+Quelle: https://www.motogp.com/en/news/2026/09/16/hot-headlines-all-level-as-motogp-readies-for-spielberg-thriller-in-austria/1090065
