@@ -15,8 +15,8 @@
       "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
       "api_key_env": "GEMINI_API_KEY",
       "models": {
-        "fast": "gemini-2.5-flash-lite",
-        "default": "gemini-2.5-flash"
+        "fast": "gemini-3.1-flash-lite",
+        "default": "gemini-3.6-flash"
       },
       "rate_limits": { "rpm": 15, "rpd": 1500 },
       "priority": 2
@@ -26,7 +26,7 @@
       "api_key_env": "OPENROUTER_API_KEY",
       "models": {
         "default": "openrouter/free",
-        "reasoning": "deepseek/deepseek-r1:free",
+        "reasoning": "openrouter/free",
         "coding": "qwen/qwen3-coder:free"
       },
       "rate_limits": { "rpm": 20, "rpd": 50 },
@@ -37,7 +37,7 @@
       "api_key_env": "NVIDIA_API_KEY",
       "models": {
         "default": "minimaxai/minimax-m3",
-        "reasoning": "deepseek-ai/deepseek-v4-pro",
+        "reasoning": "deepseek-ai/deepseek-v4-flash",
         "coding": "qwen/qwen3-next-80b-a3b-instruct"
       },
       "rate_limits": { "rpm": 40, "rpd": null },
@@ -58,9 +58,9 @@
   "fallback_order": ["groq", "google", "openrouter", "nvidia", "cloudflare"],
   "task_routing": {
     "fast_chat": ["groq", "google", "nvidia"],
-    "reasoning": ["openrouter", "nvidia", "google"],
+    "reasoning": ["nvidia", "openrouter", "google"],
     "coding": ["openrouter", "nvidia", "groq"],
-    "long_context": ["openrouter", "nvidia", "google"],
+    "long_context": ["nvidia", "openrouter", "google"],
     "default": ["groq", "google", "openrouter", "nvidia", "cloudflare"]
   }
 }
