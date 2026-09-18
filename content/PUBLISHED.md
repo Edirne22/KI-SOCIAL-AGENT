@@ -82,9 +82,8 @@ https://www.motogp.com/en/news/2026/09/17/ogura-cleared-for-austrian-gp-fp1-furt
 Quelle: https://www.motogp.com/en/news/2026/09/17/ogura-cleared-for-austrian-gp-fp1-further-review-to-follow/1090473
 Link-Preview: offiziell
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35375058406-1
+## Instagram [GEPOSTET 2026-09-18 17:34 | ID: 18097985714242604]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-18-manual-35373561588
 Telegram-Update-ID: 279361679
