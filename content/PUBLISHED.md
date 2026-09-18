@@ -261,3 +261,27 @@ Die Panigale V4 ist das reine Straßenabkömmling des Desmosedici GP – direkt 
 #RacingCalendar #BikeOfTheWeekend #Ducati #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 Medienstatus: HERSTELLER_PREVIEW
 Bild: assets/images/2026-09/2026-09-25-bike-ducati-panigale-v4.jpg
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: formel-1-2026-09-18
+Titel: 🏍️ Bike of the Race Weekend: KTM 1290 Super Duke R
+Text:
+KTM bringt die reine Rennleidenschaft Österreichs nach Suzuka — kein glattes Sponsorship, sondern echte Motorsport-DNA aus dem MotoGP- und F1-Bereich (RBPT-Motoren seit 2026). Die Community vor Ort liebt die rohe, direkte Art der Marke: hier zählt Können, nicht Marketing. Genau das, was ein Rennwochenende auf der Suzuka International Racing Course braucht.
+
+#RacingCalendar #BikeOfTheWeekend #KTM #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-09/2026-09-18-bike-ktm-1290-super-duke-r.jpg
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: formel-1-2026-09-18
+Titel: 🏍️ Bike of the Race Weekend: KTM 1290 Super Duke R
+Text:
+KTM bringt die reine Rennleidenschaft Österreichs nach Suzuka — kein glattes Sponsorship, sondern echte Motorsport-DNA aus dem MotoGP- und F1-Bereich (RBPT-Motoren seit 2026). Die Community vor Ort liebt die rohe, direkte Art der Marke: hier zählt Können, nicht Marketing. Genau das, was ein Rennwochenende auf der Suzuka International Racing Course braucht.
+
+#RacingCalendar #BikeOfTheWeekend #KTM #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-09/2026-09-18-bike-ktm-1290-super-duke-r.jpg
