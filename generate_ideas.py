@@ -1,13 +1,11 @@
 import os
 import re
-import time
-import requests
 from datetime import datetime
 
 from llm_client import get_agent_context
 from memory_engine import get_context
+from llm_router import quick_chat
 
-MODEL_LIST = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash", "gemini-3.5-flash-lite"]
 MEMORY_FILES = ["memory/USER_PREFERENCES.md", "memory/HOOKS_THAT_WORK.md", "memory/LESSONS_LEARNED.md", "memory/POST_HISTORY.md", "memory/RESEARCH_LOG.md", "memory/VIRAL_PATTERNS.md"]
 KNOWLEDGE_FILES = ["content/MOTOGP_ROSTER.md", "content/TURKISH_RACERS.md", "content/MOTOGP_CALENDAR.md", "content/TURKISH_BIKER_COMMUNITY.md", "rules/BRAND_RULES.md", "rules/SAFETY_RULES.md", "rules/VIRAL_RULES.md"]
 INSPIRATION_REPORT = "memory/INSPIRATION_IDEAS.md"
@@ -25,23 +23,6 @@ def read_all():
         if content: parts.append(f"\n--- {path} ---\n{content}")
     return "\n".join(parts)
 
-def try_generate(api_key, prompt):
-    headers={"Content-Type":"application/json","X-goog-api-key":api_key}; data={"contents":[{"parts":[{"text":prompt}]}]}
-    for round_number in range(1,6):
-        for model in MODEL_LIST:
-            try:
-                r=requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",headers=headers,json=data,timeout=120)
-                if r.status_code==200:
-                    text=r.json()["candidates"][0]["content"]["parts"][0]["text"]
-                    for pattern in (r'AIza[0-9A-Za-z_\-]{35}',r'AQ\.[A-Za-z0-9_\-]{40,}',r'sk-[A-Za-z0-9]{20,}',r'\b[A-Za-z0-9_\-]{50,}\b'): text=re.sub(pattern,'[ENTFERNT]',text)
-                    return text.strip()
-                if r.status_code in (401,403): raise RuntimeError(f"Gemini HTTP {r.status_code}")
-                time.sleep(10)
-            except RuntimeError: raise
-            except Exception: time.sleep(10)
-        if round_number<5: time.sleep(90)
-    raise RuntimeError("Kein Gemini-Modell verfügbar.")
-
 def save_to_history(text):
     titles=re.findall(r"Titel:\s*(.+)",text); hooks=re.findall(r"Hook:\s*(.+)",text)
     if not titles:return
@@ -50,8 +31,6 @@ def save_to_history(text):
     with open("memory/POST_HISTORY.md","a",encoding="utf-8") as f:f.write(entry)
 
 def generate_content_plan():
-    api_key=os.environ.get("GEMINI_API_KEY")
-    if not api_key:return "FEHLER: Kein API-Key gefunden."
     knowledge=read_all(); inspiration=read_file(INSPIRATION_REPORT,7000); motogp_daily=read_file(MOTOGP_DAILY,7000)
     learned=get_context(9000); agent_context=get_agent_context(["01_content_creator","04_social_media_strategist","14_memory_curator"])
     prompt=f"""Erstelle 3 komplette Content-Ideen für Bülents deutsch-türkische Motorrad-Community.
@@ -93,7 +72,13 @@ Viral-Score: X/10
 Inspirations-Plattform: ...
 Inspirations-Quelle: vollständige URL oder Keine aktuelle externe Quelle verwendet.
 """
-    return try_generate(api_key,prompt)
+    try:
+        text=quick_chat(prompt, task_type="reasoning").strip()
+        for pattern in (r'AIza[0-9A-Za-z_\-]{35}',r'AQ\.[A-Za-z0-9_\-]{40,}',r'sk-[A-Za-z0-9]{20,}',r'\b[A-Za-z0-9_\-]{50,}\b'):
+            text=re.sub(pattern,'[ENTFERNT]',text)
+        return text
+    except RuntimeError as error:
+        return f"FEHLER: {error}"
 
 def save_content_plan(content):
     os.makedirs("content",exist_ok=True)
