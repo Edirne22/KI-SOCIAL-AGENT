@@ -30,9 +30,10 @@ def begin(now=None):
    if 0<=age<DUPLICATE_WINDOW_SECONDS:return False,bid,'duplicate window'
  if existing and existing.get('status') not in {'FAILED','BLOCKED'} and not force_new():return False,bid,'duplicate batch'
  stamp=now.isoformat();data['runs'][bid]={'status':'STARTED','started_at':stamp,'updated_at':stamp,'event':event_name(),'github_run_id':github_run_id(),'arch_version':ARCH_VERSION};data['active_batch_id']=bid;_save(data);return True,bid,'started'
-def transition(bid,status,error=''):
+def transition(bid,status,error='',**kwargs):
  data=_load();run=data['runs'].setdefault(bid,{});run['status']=status;run['updated_at']=_now().isoformat()
  if error:run['error']=error
+ for k,v in kwargs.items():run[k]=v
  if status in TERMINAL and data.get('active_batch_id')==bid:data['active_batch_id']=''
  _save(data)
 def active_batch_id():return _load().get('active_batch_id','')

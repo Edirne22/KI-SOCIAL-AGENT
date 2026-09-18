@@ -10,28 +10,65 @@ def _active_batch():
     try:return rc._load().get('active_batch_id','')
     except Exception:return ''
 def parse_session():
-    if not SESSION.exists():return {}
-    raw=SESSION.read_text(encoding='utf-8');vm=re.search(r'(?m)^Session-Version:\s*(\d+)\s*$',raw);version=int(vm.group(1)) if vm else 0
-    if version<MIN_SESSION_VERSION:return {}
-    if not re.search(r'(?m)^Approval-Status:\s*READY\s*$',raw) or not re.search(r'(?m)^QM:\s*PASS\s*$',raw):return {}
-    tm=re.search(r'(?m)^Session-Timestamp:\s*(\d+)\s*$',raw)
-    if not tm:return {}
-    try:age=int(time.time())-int(tm.group(1))
-    except Exception:return {}
-    if age < -300 or age > MAX_SESSION_AGE_SECONDS:return {}
-    posts={}
-    for m in re.finditer(r'(?ms)^## Beitrag\s+([1-5])\s*$\n(.*?)(?=^## Beitrag\s+[1-5]\s*$|\Z)',raw):
-        n=int(m.group(1));sec=m.group(2)
+    if not SESSION.exists():
+        return {}, {}
+    raw = SESSION.read_text(encoding='utf-8')
+    vm = re.search(r'(?m)^Session-Version:\s*(\d+)\s*$', raw)
+    version = int(vm.group(1)) if vm else 0
+    if version < MIN_SESSION_VERSION:
+        return {}, {}
+    if not re.search(r'(?m)^Approval-Status:\s*READY\s*$', raw) or not re.search(r'(?m)^QM:\s*PASS\s*$', raw):
+        return {}, {}
+    tm = re.search(r'(?m)^Session-Timestamp:\s*(\d+)\s*$', raw)
+    if not tm:
+        return {}, {}
+    try:
+        age = int(time.time()) - int(tm.group(1))
+    except Exception:
+        return {}, {}
+    if age < -300 or age > MAX_SESSION_AGE_SECONDS:
+        return {}, {}
+    posts = {}
+    problems = {}
+    for m in re.finditer(r'(?ms)^## Beitrag\s+([1-5])\s*$\n(.*?)(?=^## Beitrag\s+[1-5]\s*$|\Z)', raw):
+        n = int(m.group(1))
+        sec = m.group(2)
         def f(name):
-            x=re.search(rf'(?m)^{re.escape(name)}:\s*(.*)$',sec);return x.group(1).strip() if x else ''
-        tx=re.search(r'(?ms)^Text:\s*(.*?)(?=^\s*Rechte-Gate:)',sec);post={'title':f('Titel'),'source':f('Quelle'),'image':f('Instagram-Bild'),'text':tx.group(1).strip() if tx else ''}
-        low=post['text'].casefold()
-        gates=('QM','Racing-QM','Semantic-Fakten-QM')
-        if any(not re.search(rf'(?m)^{re.escape(g)}:\s*PASS\s*$',sec) for g in gates):continue
-        if any(x in low for x in RAW_BAD):continue
-        if not post['source'].startswith('http') or not post['image'] or post['image'].lower()=='auto' or not Path(post['image']).is_file():continue
-        posts[n]=post
-    return posts if len(posts)==5 else {}
+            x = re.search(rf'(?m)^{re.escape(name)}:\s*(.*)$', sec)
+            return x.group(1).strip() if x else ''
+        tx = re.search(r'(?ms)^Text:\s*(.*?)(?=^\s*Rechte-Gate:)', sec)
+        post = {'title': f('Titel'), 'source': f('Quelle'), 'image': f('Instagram-Bild'), 'text': tx.group(1).strip() if tx else ''}
+
+        # (a) QM-Gates
+        failed_gate = next((g for g in ('QM', 'Racing-QM', 'Semantic-Fakten-QM')
+                            if not re.search(rf'(?m)^{re.escape(g)}:\s*PASS\s*$', sec)), None)
+        if failed_gate:
+            problems[n] = f"{failed_gate} != PASS"
+            continue
+
+        # (b) RAW_BAD
+        low = post['text'].casefold()
+        bad_hit = next((x for x in RAW_BAD if x in low), None)
+        if bad_hit:
+            problems[n] = f"RAW_BAD-Treffer: {bad_hit!r}"
+            continue
+
+        # (c) Quelle
+        if not post['source'].startswith('http'):
+            problems[n] = "Quelle fehlt oder ungültig"
+            continue
+
+        # (d) Bild
+        if not post['image'] or post['image'].lower() == 'auto':
+            problems[n] = "Bild-Referenz fehlt oder 'auto'"
+            continue
+        if not Path(post['image']).is_file():
+            problems[n] = f"Bilddatei fehlt: {post['image']}"
+            continue
+
+        posts[n] = post
+
+    return posts, problems
 def selection(text):
     v=re.sub(r'\s+',' ',text.strip().lower())
     if v in ('motogp alle','motogp ✅'):return [1,2,3,4,5]
@@ -88,16 +125,59 @@ def handle_one(uid, chat, txt):
         except Exception as e:
             print(f"MOTOGP: Hilfe senden fehlgeschlagen: {e}")
         return True
-    batch=_active_batch();run=rc.get_run(batch) if batch else {}
-    posts=parse_session()
+    batch = _active_batch()
+    run = rc.get_run(batch) if batch else {}
+    posts, problems = parse_session()
+
     if chosen:
-        if run.get('status')!='READY_FOR_APPROVAL' or len(posts)!=5 or any(n not in posts for n in chosen):send_message('⛔ Auswahl veraltet, bereits geschlossen oder nicht vollständig Chief-QM-geprüft. Nichts veröffentlicht.')
+        if not posts:
+            send_message(
+                '⛔ Session ungültig oder keine gültigen Beiträge gefunden. '
+                'Nichts veröffentlicht.'
+            )
+        elif run.get('status') != 'READY_FOR_APPROVAL':
+            send_message(
+                '⛔ Batch ist nicht im Status READY_FOR_APPROVAL. '
+                'Nichts veröffentlicht.'
+            )
         else:
-            rc.transition(batch,'APPROVED',telegram_update_id=uid,selection=chosen);count=publish(posts,chosen,uid,batch);rc.transition(batch,'PUBLISHED',platform_blocks=count);send_message(f'✅ Racing {batch}: {len(chosen)} Content-Paket(e) freigegeben. {count} Plattform-Blöcke wurden übergeben.')
+            valid_chosen = [n for n in chosen if n in posts]
+            missing_chosen = [n for n in chosen if n not in posts]
+
+            if not valid_chosen:
+                lines = ['⛔ Keiner deiner gewählten Beiträge ist verfügbar.']
+                for n in missing_chosen:
+                    lines.append(f'• Beitrag {n}: {problems.get(n, "unbekannt")}')
+                send_message('\n'.join(lines))
+            else:
+                rc.transition(
+                    batch, 'APPROVED',
+                    telegram_update_id=uid, selection=valid_chosen
+                )
+                count = publish(posts, valid_chosen, uid, batch)
+                rc.transition(batch, 'PUBLISHED', platform_blocks=count)
+
+                msg = (
+                    f'✅ Racing {batch}: {len(valid_chosen)} '
+                    f'Content-Paket(e) freigegeben. '
+                    f'{count} Plattform-Blöcke wurden übergeben.'
+                )
+                if missing_chosen:
+                    msg += f'\n\n⚠️ Übersprungen: {", ".join(map(str, missing_chosen))}'
+                    for n in missing_chosen:
+                        msg += f'\n• Beitrag {n}: {problems.get(n, "unbekannt")}'
+                send_message(msg)
     else:
-        if batch:rc.transition(batch,'CLOSED',decision='rejected_by_human')
+        if batch:
+            rc.transition(batch, 'CLOSED', decision='rejected_by_human')
         send_message('❌ Tagesauswahl verworfen. Es wird nichts veröffentlicht.')
-    STATE.parent.mkdir(parents=True,exist_ok=True);STATE.write_text(f'Update-ID: {uid}\nRacing-Batch-ID: {batch}\nAntwort: {txt}\n',encoding='utf-8');return True
+
+    STATE.parent.mkdir(parents=True, exist_ok=True)
+    STATE.write_text(
+        f'Update-ID: {uid}\nRacing-Batch-ID: {batch}\nAntwort: {txt}\n',
+        encoding='utf-8'
+    )
+    return True
 def main():
     if len(sys.argv) >= 4:
         # Unverarbeitete Updates werden quittiert, nicht als Fehler gewertet.
