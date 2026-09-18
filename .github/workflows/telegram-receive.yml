@@ -48,16 +48,16 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/PUBLISHED.md 2>/dev/null || true
-          git add memory/SEARCH_PROVIDER_LOG.md 2>/dev/null || true
-          git add memory/LAST_DEAL_QUERY.md 2>/dev/null || true
-          git add memory/WATCHLIST.md 2>/dev/null || true
-          git add memory/USER_PREFERENCES.md 2>/dev/null || true
-          git add memory/DEALS_FOUND.md 2>/dev/null || true
-          git add memory/PRICE_HISTORY.md 2>/dev/null || true
-          git add memory/TELEGRAM_SESSION.md 2>/dev/null || true
-          git add memory/DEAL_TEST_LOG.md 2>/dev/null || true
-          git add memory/MOTOGP_APPROVAL_STATE.md 2>/dev/null || true
-          git commit -m "Auto: Telegram-Verarbeitung aktualisiert" || echo "Keine Änderungen"
+
+          # Alle Änderungen erfassen – State-Dateien bleiben sonst unstaged
+          # und blockieren den anschließenden "git pull --rebase".
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen zu committen."
+          else
+            git commit -m "Auto: Telegram-Verarbeitung aktualisiert"
+          fi
+
           git pull --rebase origin main
           git push
