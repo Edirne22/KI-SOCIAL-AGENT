@@ -2,16 +2,19 @@
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import json
 import os
 import re
-import sys
 import time
 from datetime import datetime
-from pathlib import Path
-from urllib.parse import urljoin
 
 import requests
+from PIL import Image
 
 CALENDAR_FILE = Path("memory/RACE_CALENDAR.json")
 
@@ -19,17 +22,47 @@ AGNES_URL = "https://apihub.agnes-ai.com/v1/chat/completions"
 AGNES_MODEL = "agnes-2.5-flash"
 RETRY_DELAYS = [5, 15, 30]
 
-BRAND_FALLBACK_URLS = {
-    "Ducati": "https://www.ducati.com/de/de/home",
-    "Aprilia": "https://www.aprilia.com/de_DE/",
-    "KTM": "https://www.ktm.com/de-de.html",
-    "Honda": "https://www.honda.de/motorraeder.html",
-    "Yamaha": "https://www.yamaha-motor.eu/de/de/",
-    "BMW": "https://www.bmw-motorrad.de/de/home.html",
+BRAND_SOURCES = {
+    "Ducati": {
+        "racing_model": "Desmosedici GP",
+        "racing_url":   "https://www.ducati.com/ww/en/racing/motogp",
+        "street_model": "Panigale V4 R",
+        "street_url":   "https://www.ducati.com/de/de/motorraeder/panigale/panigale-v4-r",
+    },
+    "Aprilia": {
+        "racing_model": "RS-GP",
+        "racing_url":   "https://www.aprilia.com/de_DE/racing/motogp/",
+        "street_model": "RSV4 1100",
+        "street_url":   "https://www.aprilia.com/de_DE/modelle/rsv4/rsv4-1100-4t-4v-2025/",
+    },
+    "KTM": {
+        "racing_model": "RC16",
+        "racing_url":   "https://www.ktm.com/de-de/racing/motogp.html",
+        "street_model": "1290 Super Duke R",
+        "street_url":   "https://www.ktm.com/de-de/models/naked-bikes/1290-super-duke-r.html",
+    },
+    "Honda": {
+        "racing_model": "RC213V",
+        "racing_url":   "https://www.honda.racing/motogp",
+        "street_model": "CBR1000RR-R Fireblade SP",
+        "street_url":   "https://powersports.honda.com/motorcycle/supersport/cbr1000rr-r-fireblade-sp/2026/cbr1000rr-r-fireblade-sp",
+    },
+    "Yamaha": {
+        "racing_model": "YZR-M1",
+        "racing_url":   "https://www.yamaha-racing.com/series/grand-prix/motogp/bike/",
+        "street_model": "YZF-R1M",
+        "street_url":   "https://r1m.yamaha-motor.eu",
+    },
+    "BMW": {
+        "racing_model": "M1000RR",
+        "racing_url":   "https://www.bmw-motorrad.de/de/models/m/m1000rr.html",
+        "street_model": "M1000RR",
+        "street_url":   "https://www.bmw-motorrad.de/de/models/m/m1000rr.html",
+    },
 }
 
 MOTOGP_BRANDS = ["Ducati", "Aprilia", "KTM", "Honda", "Yamaha"]
-WSBK_BRANDS = ["BMW"]  # nur wenn Rennwochenende WorldSBK ist
+WSBK_BRANDS = MOTOGP_BRANDS + ["BMW"]
 
 
 def call_agnes_json(prompt: str, api_key: str) -> dict | None:
@@ -73,164 +106,216 @@ def call_agnes_json(prompt: str, api_key: str) -> dict | None:
     return None
 
 
-def slugify(text: str) -> str:
-    text = text.lower()
-    text = re.sub(r"[^a-z0-9]+", "-", text)
-    return text.strip("-")
-
-
-def extract_og_image(html: str, base_url: str) -> str | None:
-    pattern_prop_first = r'<meta\s+[^>]*property=["\'](og:image|og:image:secure_url)["\']\s+content=["\']([^"\']+)["\']'
-    match = re.search(pattern_prop_first, html, re.IGNORECASE)
-    if match:
-        return urljoin(base_url, match.group(2))
-
-    pattern_content_first = r'<meta\s+[^>]*content=["\']([^"\']+)["\']\s+property=["\'](og:image|og:image:secure_url)["\']'
-    match_rev = re.search(pattern_content_first, html, re.IGNORECASE)
-    if match_rev:
-        return urljoin(base_url, match_rev.group(1))
-
-    return None
-
-
-def verify_url(url: str) -> bool:
+def try_og_image(url: str) -> str | None:
     try:
-        resp = requests.head(
-            url,
-            timeout=10,
-            allow_redirects=True,
-            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"},
-        )
-        return resp.status_code == 200
-    except Exception as err:
-        print(f"[race-update] HEAD Request fehlgeschlagen für {url}: {err}")
+        r = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
+        if r.status_code != 200:
+            return None
+        m = re.search(
+            r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
+            r.text, re.I)
+        if not m:
+            m = re.search(
+                r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image["\']',
+                r.text, re.I)
+        return m.group(1) if m else None
+    except Exception:
+        return None
+
+
+def search_openverse(query: str) -> str | None:
+    """Openverse API – CC-lizenzierte Bilder, kein Key nötig."""
+    try:
+        url = "https://api.openverse.org/v1/images/"
+        params = {
+            "q": query,
+            "page_size": 5,
+            "license_type": "commercial,modification",
+            "mature": "false",
+        }
+        r = requests.get(url, params=params, timeout=15,
+                         headers={"User-Agent": "KI-SOCIAL-AGENT/1.0"})
+        if r.status_code != 200:
+            return None
+        for hit in r.json().get("results", []):
+            if hit.get("width", 0) >= 1000 and hit.get("height", 0) >= 1000:
+                return hit.get("url")
+        return None
+    except Exception:
+        return None
+
+
+def search_wikimedia(query: str) -> str | None:
+    """Wikimedia Commons – mit Status-Check (Review-Korrektur 1)."""
+    try:
+        api = "https://commons.wikimedia.org/w/api.php"
+        r = requests.get(api, timeout=10,
+                         headers={"User-Agent": "KI-SOCIAL-AGENT/1.0"},
+                         params={
+                             "action": "query",
+                             "list": "search",
+                             "srsearch": f"{query} filetype:bitmap",
+                             "srnamespace": 6,
+                             "srlimit": 5,
+                             "format": "json",
+                         })
+        if r.status_code != 200:
+            return None
+        for hit in r.json().get("query", {}).get("search", []):
+            r2 = requests.get(api, timeout=10,
+                              headers={"User-Agent": "KI-SOCIAL-AGENT/1.0"},
+                              params={
+                                  "action": "query",
+                                  "titles": hit["title"],
+                                  "prop": "imageinfo",
+                                  "iiprop": "url|size",
+                                  "format": "json",
+                              })
+            if r2.status_code != 200:
+                continue
+            for page in r2.json().get("query", {}).get("pages", {}).values():
+                for info in page.get("imageinfo", []):
+                    if info.get("width", 0) >= 1000 and info.get("height", 0) >= 1000:
+                        return info["url"]
+        return None
+    except Exception:
+        return None
+
+
+def download_image(url: str, path: str) -> bool:
+    try:
+        r = requests.get(url, timeout=20, stream=True,
+                         headers={"User-Agent": "Mozilla/5.0"})
+        if r.status_code != 200:
+            return False
+        with open(path, "wb") as f:
+            for chunk in r.iter_content(8192):
+                f.write(chunk)
+        return os.path.getsize(path) > 10240
+    except Exception:
         return False
+
+
+def slug(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+
+
+def normalize_bike_image(path: str) -> bool:
+    try:
+        img = Image.open(path).convert("RGB")
+        w, h = img.size
+        side = min(w, h)
+        left = (w - side) // 2
+        top = (h - side) // 2
+        img = img.crop((left, top, left + side, top + side))
+        img = img.resize((1080, 1080), Image.LANCZOS)
+        img.save(path, "JPEG", quality=92)
+        return True
+    except Exception as e:
+        print(f"[race-update] Bild-Normalisierung fehlgeschlagen: {e}")
+        return False
+
+
+def get_bike_image(brand: str, model: str, racing_url: str, street_url: str, date_str: str) -> tuple[str | None, str | None]:
+    os.makedirs(f"assets/images/{date_str[:7]}", exist_ok=True)
+    local_path = f"assets/images/{date_str[:7]}/{date_str}-bike-{slug(brand)}-{slug(model)}.jpg"
+
+    # 1. Rennsport-og:image
+    url = try_og_image(racing_url)
+    if url and download_image(url, local_path):
+        normalize_bike_image(local_path)
+        return local_path, "og:racing"
+
+    # 2. Straßen-og:image
+    url = try_og_image(street_url)
+    if url and download_image(url, local_path):
+        normalize_bike_image(local_path)
+        return local_path, "og:street"
+
+    # 3. Openverse
+    url = search_openverse(f"{brand} {model} motorcycle")
+    if url and download_image(url, local_path):
+        normalize_bike_image(local_path)
+        return local_path, "openverse"
+
+    # 4. Wikimedia
+    url = search_wikimedia(f"{brand} {model}")
+    if url and download_image(url, local_path):
+        normalize_bike_image(local_path)
+        return local_path, "wikimedia"
+
+    # 5. Agnes-Editorial
+    try:
+        from generate_agnes_media import agnes_generate_image
+        img_bytes = agnes_generate_image(
+            prompt=(f"Editorial motorcycle photo of {brand} {model}, "
+                    f"motorsport style, dramatic lighting, 1024x1024")
+        )
+        if img_bytes:
+            with open(local_path, "wb") as f:
+                f.write(img_bytes)
+            if os.path.exists(local_path) and os.path.getsize(local_path) > 10240:
+                normalize_bike_image(local_path)
+                return local_path, "agnes"
+    except Exception as e:
+        print(f"[race-update] Agnes-Fallback fehlgeschlagen: {e}")
+
+    return None, None
 
 
 def fetch_bike_of_weekend(event: dict, key: str) -> dict | None:
     series = event.get("series", "").strip()
-    if series == "MotoGP":
-        available_brands = MOTOGP_BRANDS
-    elif series in ("WorldSBK", "WSBK"):
+    if series in ("WorldSBK", "WSBK"):
         available_brands = WSBK_BRANDS
     else:
-        return None
+        available_brands = MOTOGP_BRANDS
 
     event_title = f"{series} {event.get('track', '')}".strip()
-    prompt = f"""Rennwochenende: {event_title}
-Strecke: {event.get('track', '')}
-Serie: {series}
-Verfügbare Hersteller: {', '.join(available_brands)}
+    prompt = f"""Wähle EINE Marke aus dieser festen Liste – keine Erfindungen:
 
-Aufgabe: Wähle EINEN Hersteller, der inhaltlich zum Rennwochenende passt
-(Heimrennen, aktuelle Performance, Serie). Recherchiere das passende aktuelle
-Supersport-/Supernaked-Modell dieses Herstellers (Baujahr 2025 oder 2026,
-Topmodell mit Rennsport-Bezug).
+{', '.join(available_brands)}
 
-Schreibe 2–3 Sätze in folgender Stimme: direkt, community-nah, Motorrad-
-Enthusiast, deutsch, ohne Marketingsprache. Erkläre in einem Satz, warum
-das Bike zu diesem GP passt.
-
-Liefere die offizielle Hersteller-Produktseite als source_url.
+Begründe in 2–3 Sätzen, warum diese Marke zum Rennwochenende ({event_title}) passt.
+Direkt, community-nah, deutsch, ohne Marketingsprache.
 
 Antworte NUR mit JSON:
-{{
-  "brand": "KTM",
-  "model": "1290 Super Duke R",
-  "category": "Supernaked",
-  "displacement_ccm": 1301,
-  "story": "2-3 Sätze in Bülents Stimme...",
-  "source_url": "https://www.ktm.com/de-de/models/naked-bikes/1290-super-duke-r.html"
-}}"""
+{{"brand": "KTM", "story": "..."}}"""
 
     bike_data = call_agnes_json(prompt, key)
-    if not isinstance(bike_data, dict) or not bike_data.get("brand") or not bike_data.get("model"):
-        print(f"[race-update] Warnung: Kein gültiges Bike von Agnes für Event {event_title} geliefert.")
-        return None
+    brand = None
+    story = ""
+    if isinstance(bike_data, dict):
+        brand = bike_data.get("brand")
+        story = str(bike_data.get("story", "")).strip()
 
-    brand = str(bike_data.get("brand", "")).strip()
-    model = str(bike_data.get("model", "")).strip()
-    category = str(bike_data.get("category", "")).strip()
-    displacement_ccm = bike_data.get("displacement_ccm")
-    story = str(bike_data.get("story", "")).strip()
-    source_url = str(bike_data.get("source_url", "")).strip()
-
-    verified_url = None
-    if source_url and verify_url(source_url):
-        verified_url = source_url
-    elif brand in BRAND_FALLBACK_URLS:
-        fallback_url = BRAND_FALLBACK_URLS[brand]
-        print(f"[race-update] source_url ungültig. Versuche Fallback-URL für {brand}: {fallback_url}")
-        if verify_url(fallback_url):
-            verified_url = fallback_url
+    if not brand or brand not in BRAND_SOURCES:
+        if brand:
+            print(f"[race-update] Unbekannte Marke '{brand}' geliefert. Fallback auf Ducati.")
         else:
-            print(f"[race-update] Warnung: Auch Fallback-URL für {brand} schlug fehl.")
+            print(f"[race-update] Keine Marke von Agnes geliefert. Fallback auf Ducati.")
+        brand = "Ducati"
 
-    if not verified_url:
-        print(f"[race-update] Warnung: Bike {brand} {model} hat keine verifizierte URL.")
+    brand_info = BRAND_SOURCES[brand]
+    model = brand_info["street_model"]
+    racing_url = brand_info["racing_url"]
+    street_url = brand_info["street_url"]
 
-    image_local = None
-    instagram_ok = False
+    date_str = event.get("date_start", "")
+    if not date_str:
+        date_str = datetime.now().strftime("%Y-%m-%d")
 
-    if verified_url:
-        try:
-            get_resp = requests.get(
-                verified_url,
-                timeout=15,
-                headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"},
-            )
-            if get_resp.status_code == 200:
-                og_image_url = extract_og_image(get_resp.text, verified_url)
-                if og_image_url:
-                    img_resp = requests.get(
-                        og_image_url,
-                        timeout=15,
-                        headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"},
-                    )
-                    if img_resp.status_code == 200 and img_resp.content:
-                        date_start = event.get("date_start", "")
-                        ym = date_start[:7] if len(date_start) >= 7 else datetime.now().strftime("%Y-%m")
-                        folder = Path("assets/images") / ym
-                        folder.mkdir(parents=True, exist_ok=True)
-
-                        brand_slug = slugify(brand)
-                        model_slug = slugify(model)
-                        filename = f"{date_start}-bike-{brand_slug}-{model_slug}.jpg"
-                        img_path = folder / filename
-                        img_path.write_bytes(img_resp.content)
-
-                        try:
-                            from PIL import Image
-
-                            with Image.open(img_path) as img:
-                                w, h = img.size
-                            if w < 1000 or h < 1000:
-                                instagram_ok = False
-                                print(f"[race-update] Bike-Bild zu klein ({w}x{h}); Instagram überspringen.")
-                            else:
-                                instagram_ok = True
-                            image_local = img_path.as_posix()
-                        except Exception as img_err:
-                            print(f"[race-update] Fehler bei Pillow Bildprüfung: {img_err}")
-                            image_local = img_path.as_posix()
-                            instagram_ok = False
-                else:
-                    print(f"[race-update] Warnung: Kein OpenGraph-Bild in {verified_url} gefunden.")
-        except Exception as err:
-            print(f"[race-update] Fehler bei OpenGraph-Extraktion/Bild-Download: {err}")
+    image_local, image_source = get_bike_image(brand, model, racing_url, street_url, date_str)
 
     bike_result = {
         "brand": brand,
         "model": model,
-        "category": category,
-        "displacement_ccm": displacement_ccm,
+        "category": "Rennsport oder Straße",
         "story": story,
+        "source_url": street_url,
     }
-    if verified_url:
-        bike_result["source_url"] = verified_url
     if image_local:
         bike_result["image_local"] = image_local
-        bike_result["instagram_ok"] = instagram_ok
+        bike_result["image_source"] = image_source
 
     return bike_result
 
@@ -284,16 +369,16 @@ Regeln:
                 "sessions": event.get("sessions", []) if isinstance(event.get("sessions"), list) else [],
                 "source": str(event.get("source", "https://www.motogp.com/en/calendar")).strip(),
             }
-
-            # Optional: Bike of the Race Weekend
-            bike = fetch_bike_of_weekend(event_obj, key)
-            if bike:
-                event_obj["bike_of_weekend"] = bike
-
             valid_events.append(event_obj)
 
     # Sortieren nach Startdatum
     valid_events.sort(key=lambda x: x["date_start"])
+
+    # Nur für das erste (nächste) Event den Bike-Block erzeugen (FIX 5)
+    if valid_events:
+        bike = fetch_bike_of_weekend(valid_events[0], key)
+        if bike:
+            valid_events[0]["bike_of_weekend"] = bike
 
     output = {"events": valid_events}
     CALENDAR_FILE.parent.mkdir(parents=True, exist_ok=True)

@@ -237,3 +237,27 @@ Was ist euer persönliches Highlight auf dem Red Bull Ring?
 https://www.motogp.com/en/news/2026/09/16/destination-austria-motogps-picture-postcard-spielberg-stunner/1090277
 Quelle: https://www.motogp.com/en/news/2026/09/16/destination-austria-motogps-picture-postcard-spielberg-stunner/1090277
 Link-Preview: offiziell
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-09-25
+Titel: 🏍️ Bike of the Race Weekend: Ducati Panigale V4
+Text:
+Die Panigale V4 ist das reine Straßenabkömmling des Desmosedici GP – direkt vom Weltmeisterkurs bis an die Grenze. Wer in Misano Beppe Schiavone nachjagt, macht das auf exakt derselben Maschine, die auch die MotoGP-Erfolge schreibt. Hier geht's nicht um Komfort, sondern um pure Rennsport-Performance.
+
+#RacingCalendar #BikeOfTheWeekend #Ducati #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-09/2026-09-25-bike-ducati-panigale-v4.jpg
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-09-25
+Titel: 🏍️ Bike of the Race Weekend: Ducati Panigale V4
+Text:
+Die Panigale V4 ist das reine Straßenabkömmling des Desmosedici GP – direkt vom Weltmeisterkurs bis an die Grenze. Wer in Misano Beppe Schiavone nachjagt, macht das auf exakt derselben Maschine, die auch die MotoGP-Erfolge schreibt. Hier geht's nicht um Komfort, sondern um pure Rennsport-Performance.
+
+#RacingCalendar #BikeOfTheWeekend #Ducati #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-09/2026-09-25-bike-ducati-panigale-v4.jpg

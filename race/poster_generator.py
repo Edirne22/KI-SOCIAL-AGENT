@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import base64
+import json
 import os
+import re
 import textwrap
 from datetime import datetime
 from io import BytesIO
@@ -16,6 +18,9 @@ from .poster_style import research_style
 
 LOG = Path("memory/RACE_POSTERS_LOG.md")
 NANO_BANANA_MODEL = "gemini-3.1-flash-image"
+
+CALENDAR_FILE = Path("memory/RACE_CALENDAR.json")
+PUBLISHED_FILE = Path("content/PUBLISHED.md")
 
 COLORS = {
     "motogp": ((17, 24, 39), (220, 38, 38)),
@@ -125,3 +130,62 @@ def create_poster(series: str, details: str) -> list[Path]:
         encoding="utf-8",
     )
     return outputs
+
+
+def calendar_id(event: dict) -> str:
+    return f"{slugify(event.get('series', ''))}-{event.get('date_start', '')}"
+
+
+def _bike_block(platform: str, block_id: str, bike: dict) -> str:
+    hashtags = (
+        f"#RacingCalendar #BikeOfTheWeekend #{bike.get('brand', '')} "
+        "#MotorradRacing #RacingDeutschland #BuelentsBikeLife"
+    )
+    return (
+        f"## {platform}\n"
+        f"Status: ENTWURF\n"
+        f"Freigabe: Rennkalender\n"
+        f"Rennkalender: {block_id}\n"
+        f"Titel: 🏍️ Bike of the Race Weekend: {bike.get('brand', '')} {bike.get('model', '')}\n"
+        f"Text:\n{bike.get('story', '')}\n"
+        f"\n{hashtags}\n"
+        f"Medienstatus: HERSTELLER_PREVIEW\n"
+        f"Bild: {bike.get('image_local', '')}\n"
+    )
+
+
+def append_bike_of_weekend_blocks() -> int:
+    if not CALENDAR_FILE.exists():
+        print("Rennkalender fehlt, keine Bike-Blöcke geschrieben.")
+        return 0
+    try:
+        calendar = json.loads(CALENDAR_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        print(f"Rennkalender nicht lesbar: {error}")
+        return 0
+
+    bike, event = {}, None
+    for entry in calendar.get("events", []):
+        candidate = entry.get("bike_of_weekend") or {}
+        if candidate.get("brand") and candidate.get("image_local"):
+            bike, event = candidate, entry
+            break
+    if not event:
+        print("Kein bike_of_weekend mit Bild im Rennkalender.")
+        return 0
+
+    block_id = calendar_id(event)
+    content = PUBLISHED_FILE.read_text(encoding="utf-8") if PUBLISHED_FILE.exists() else ""
+    if f"Rennkalender: {block_id}" in content:
+        print(f"Bike-Blöcke für {block_id} existieren bereits.")
+        return 0
+
+    blocks = _bike_block("Instagram", block_id, bike) + "\n" + _bike_block("Facebook", block_id, bike)
+    PUBLISHED_FILE.parent.mkdir(parents=True, exist_ok=True)
+    PUBLISHED_FILE.write_text(content.rstrip() + "\n\n" + blocks, encoding="utf-8")
+    print(f"Bike-Blöcke für {block_id} in content/PUBLISHED.md geschrieben.")
+    return 1
+
+
+if __name__ == "__main__":
+    append_bike_of_weekend_blocks()
