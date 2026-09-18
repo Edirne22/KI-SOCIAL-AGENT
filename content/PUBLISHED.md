@@ -179,9 +179,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/16/hot-headlines-all-level-as-mot
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-4-hot-headlines-all-le-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35378638714-1
+## Facebook [GEPOSTET 2026-09-18 18:11 | ID: 1285968257941776_122110526151469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-18-manual-35373561588
 Telegram-Update-ID: 279361679
