@@ -1,16 +1,86 @@
 {
   "events": [
     {
-      "date_start": "2026-09-18",
-      "date_end": "2026-09-20",
+      "date_start": "2026-09-25",
+      "date_end": "2026-09-27",
       "series": "MotoGP",
-      "track": "Red Bull Ring \u00b7 Spielberg",
+      "track": "Misano World Circuit Marco Simoncelli · Misano Adriatico, Italien",
       "sessions": [
         "Fr: Freies Training",
         "Sa: Qualifying & Sprint",
         "So: Hauptrennen"
       ],
-      "source": "https://www.motogp.com/en/calendar"
+      "source": "https://www.motogp.com/en/calendar",
+      "bike_of_weekend": {
+        "brand": "Ducati",
+        "model": "Panigale V4",
+        "category": "Supersport",
+        "displacement_ccm": 1103,
+        "story": "Die Panigale V4 ist das reine Straßenabkömmling des Desmosedici GP – direkt vom Weltmeisterkurs bis an die Grenze. Wer in Misano Beppe Schiavone nachjagt, macht das auf exakt derselben Maschine, die auch die MotoGP-Erfolge schreibt. Hier geht's nicht um Komfort, sondern um pure Rennsport-Performance.",
+        "source_url": "https://www.ducati.com/de/de/home",
+        "image_local": "assets/images/2026-09/2026-09-25-bike-ducati-panigale-v4.jpg",
+        "instagram_ok": false
+      }
+    },
+    {
+      "date_start": "2026-10-09",
+      "date_end": "2026-10-11",
+      "series": "MotoGP",
+      "track": "Circuito de Jerez · Jerez de la Frontera, Spanien",
+      "sessions": [
+        "Fr: Freies Training",
+        "Sa: Qualifying & Sprint",
+        "So: Hauptrennen"
+      ],
+      "source": "https://www.motogp.com/en/calendar",
+      "bike_of_weekend": {
+        "brand": "Aprilia",
+        "model": "RS 660",
+        "category": "Supersport",
+        "displacement_ccm": 659,
+        "story": "Die Aprilia RS 660 ist das Topmodell der Italiener im Supersport-Segment und gleichzeitig der direkte Straßenversion der WorldSSP-Werksmaschine – mit Alex Rins fährt ein Spanier für Aprilia im MotoGP-Kasten und hat auf dem Circuito de Jerez schon podienreife Leistungen gebracht. Das Bike steckt voller Rennkultur: TT-RS-Motor, Trellis-Rohrrahmen und eine Elektronik-Palette, die direkt aus dem Motorsport gespeist ist. Wenn du weißt, worauf es bei Jerez ankommt, bist du hier richtig."
+      }
+    },
+    {
+      "date_start": "2026-10-23",
+      "date_end": "2026-10-25",
+      "series": "MotoGP",
+      "track": "Circuit MotorLand Aragón · Alcañiz, Spanien",
+      "sessions": [
+        "Fr: Freies Training",
+        "Sa: Qualifying & Sprint",
+        "So: Hauptrennen"
+      ],
+      "source": "https://www.motogp.com/en/calendar",
+      "bike_of_weekend": {
+        "brand": "Ducati",
+        "model": "959 Panigale",
+        "category": "Supersport",
+        "displacement_ccm": 955,
+        "story": "Das 959 Panigale ist Ducatis direkter Ableger vom MotoGP-Kampf – die gleiche Philosophie, nur auf der Straße. Mit der gleichnamigen WorldSSP-Serie im Rücken und dem dominierenden Eindruck in Aragon passt das Bike wie diefaust aufs Auge. Wer das Team-Ducati im MotoPVerfolgen will, findet hier den passenden Straßenabkömmling.",
+        "source_url": "https://www.ducati.com/de/de/home",
+        "image_local": "assets/images/2026-10/2026-10-23-bike-ducati-959-panigale.jpg",
+        "instagram_ok": false
+      }
+    },
+    {
+      "date_start": "2026-11-13",
+      "date_end": "2026-11-15",
+      "series": "MotoGP",
+      "track": "Autódromo José Carlos Pace (Interlagos) · São Paulo, Brasilien",
+      "sessions": [
+        "Fr: Freies Training",
+        "Sa: Qualifying & Sprint",
+        "So: Hauptrennen"
+      ],
+      "source": "https://www.motogp.com/en/calendar",
+      "bike_of_weekend": {
+        "brand": "Aprilia",
+        "model": "RSV4 Factory",
+        "category": "Supersport",
+        "displacement_ccm": 1099,
+        "story": "Die RSV4 Factory ist das Bike, das 2025 wieder WorldSBK-Ehren rettet – und genau diesen Rennsport-Blutdruck spürt man in Brasilien jeden Sonntag auf den Straßen. Wenn du bei Interlagos die gleiche Adrenalinkurve willst wie in der MotoGP, ist das die Maschine, die nicht nur aussieht wie Racing, sondern sich auch so anfühlt."
+      }
     }
   ]
 }
