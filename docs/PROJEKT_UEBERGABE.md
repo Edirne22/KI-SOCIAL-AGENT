@@ -1,38 +1,61 @@
 # PROJEKT-ÜBERGABE – KI-SOCIAL-AGENT
 
-Stand: 2026-09-18 Abend
+Stand: 2026-09-18 Nacht
 
 ## ✅ Heute erledigt (gemergt)
 
-- P0 – Telegram Exit-2-Crash behoben
-- P1 – Telegram-Queue atomar (ein Update pro Lauf)
-- P2 – Concurrency entkoppelt (`telegram-receive` eigene Gruppe)
-- P3 – Gemini-Inventur (`docs/GEMINI_INVENTORY.md`)
-- P4 – V8.6-Promotionsplan (`docs/V8.6_PROMOTION_PLAN.md`)
+### Telegram-Stack
+- P0 – Exit-2-Crash behoben
+- P1 – Queue atomar (ein Update pro Lauf)
+- P2 – Concurrency entkoppelt
 - Parser-Robustheit (fehlende Posts blockieren nicht mehr)
 - active_batch_id-Fix (PR #17)
-- Workflow-Persistenz (`git add -A` statt selektiv)
+- Workflow-Persistenz (`git add -A`)
 - End-to-End-Test MotoGP → Instagram + Facebook erfolgreich
-- Remotion-Video gerendert und gefunden
+
+### Doku & Werkzeuge
+- P3 – Gemini-Inventur (`docs/GEMINI_INVENTORY.md`)
+- P4 – V8.6-Promotionsplan (`docs/V8.6_PROMOTION_PLAN.md`)
+- Race-Calendar-Pipeline V4 (6 Fixes + 3 Review-Korrekturen)
+- `AGENTS.md` (Jules-Regeln + i-have-adhd)
+- `docs/PROJEKT_UEBERGABE.md`
+
+### Multi-Modell-Router (Kern-Erfolg)
+- `llm_router.py` + `config/llm_providers.json` live
+- 5 Anbieter mit Auto-Fallback: Groq, Google, OpenRouter, NVIDIA, Cloudflare
+- Cooldown bei 429, Retry-After-Beachtung
+- Skip-Logik bei fehlendem Key
+- Config-Validierung, max_tokens=2000
+- **`follow_analyzer.py` auf Router umgestellt**
+- **Isolierter Test-Workflow `llm-router-test.yml`**
+- **Alle 3 Router-Tests grün** (default/reasoning/fallback)
+
+### Secrets in GitHub
+- `GROQ_API_KEY` ✅
+- `GEMINI_API_KEY` ✅ (vorher schon)
+- `OPENROUTER_API_KEY` ✅
+- `NVIDIA_API_KEY` ✅ (Ablauf 18.03.2027)
+- `CLOUDFLARE_API_TOKEN` ✅
+- `CLOUDFLARE_ACCOUNT_ID` ✅
 
 ## 🔄 Läuft gerade (Jules)
 
-- Race-Calendar-Pipeline V4 (6 Fixes + 3 Review-Korrekturen)
+- Deal-Hunter + Inspiration-Orchestrator auf Router umstellen
 
 ## ⏳ Offen / wartet
 
 | Aufgabe | Status |
 |---|---|
-| Race-Calendar PR prüfen + mergen | wartet auf Jules |
-| Race-Calendar-Workflow testen | nach Merge |
-| Multi-Modell-Router (Groq, Google, OpenRouter, NVIDIA, Cloudflare) | Auftrag fertig, wartet |
-| Follow-Analyzer auf Router | nach Router |
-| Inspiration-Orchestrator auf Router | nach Router |
-| Weekly-Plan, Ride-With-Me, Generate-Ideas auf Router | nach Router |
-| Search-Provider auf Router | nach Router |
-| Cloudflare-Bildgenerierung (FLUX + Leonardo) | Auftrag fertig, wartet |
-| Publisher-Workflow `git add -A` (Insta + FB) | klein, wartet |
-| VPS einrichten (Ubuntu 24.04) | nach Router |
+| Deal-Hunter + Inspiration auf Router | läuft in Jules |
+| Workflow-Env für deal-hunter.yml + inspiration-agent.yml | mit Auftrag |
+| Weekly-Plan, Ride-With-Me, Generate-Ideas auf Router | danach |
+| Search-Provider auf Router | später |
+| Racing-Pipeline auf Router (Agnes bleibt Bilder) | später |
+| **Serie-Filter** (Formel-1 → kein Bike-Block) | offen |
+| **Agnes-Story strenger** (erfundene Namen verhindern) | offen |
+| Cloudflare-Bildgenerierung (FLUX + Leonardo) | Auftrag fertig |
+| Publisher-Workflow `git add -A` (Insta + FB) | klein |
+| VPS einrichten (Ubuntu 24.04) | nach Router-Migration |
 | SearXNG auf VPS | nach VPS |
 | OmniRoute auf VPS | nach VPS |
 | Remotion + KI-Video (LTX, Wan, Hunyuan) | nach OmniRoute |
@@ -43,11 +66,27 @@ Stand: 2026-09-18 Abend
 
 Autonome Content-Fabrik: Agenten erstellen aus einem Prompt selbstständig Videos, Bilder und Texte. OmniRoute bündelt alle KI-Anbieter. Remotion rendert Videos. KI-Video-Modelle liefern Rohmaterial. Kinocut schneidet. Agent gibt Prompt → fertiger Reel.
 
+## 🧰 Router-Architektur (live)
+
+| Task-Typ | Reihenfolge |
+|---|---|
+| `fast_chat` | Groq → Google → NVIDIA |
+| `reasoning` | **OpenRouter** → Google → NVIDIA |
+| `coding` | OpenRouter → NVIDIA → Groq |
+| `long_context` | NVIDIA → OpenRouter → Google |
+| `default` | Groq → Google → OpenRouter → NVIDIA → Cloudflare |
+
+### Bekannte tote Modelle (nicht verwenden)
+- `deepseek/deepseek-r1:free` (nicht mehr kostenlos)
+- `deepseek-ai/deepseek-v4-pro` (EOL 07.08.2026)
+- `deepseek-ai/deepseek-v4-flash` (EOL 07.08.2026)
+- `gemini-2.5-flash` (nur für Bestandsnutzer)
+
 ## 🧰 Gemerkte Tools
 
 - **awesome-llm-apps** – Inspirationsquelle für Agenten/RAG
 - **OpenResearch** – parallele Recherche-Agenten
-- **i-have-adhd** – Coding-Agent-Regeln (in `AGENTS.md` eingebaut)
+- **i-have-adhd** – Coding-Agent-Regeln (in `AGENTS.md`)
 
 ## ⚠️ Kritische Regeln
 
@@ -55,6 +94,7 @@ Autonome Content-Fabrik: Agenten erstellen aus einem Prompt selbstständig Video
 - Debug-Branch `debug/motogp-pipeline-output`: nicht anfassen
 - Kein Auto-Merge, kein Auto-Publish
 - Secrets nur notieren, nie committen
+- NVIDIA-Key läuft am 18.03.2027 ab – rechtzeitig erneuern
 
 ## 📎 Links
 
@@ -64,15 +104,15 @@ Autonome Content-Fabrik: Agenten erstellen aus einem Prompt selbstständig Video
 - Gemini-Inventur: docs/GEMINI_INVENTORY.md
 - V8.6-Plan: docs/V8.6_PROMOTION_PLAN.md
 - Agenten-Regeln: AGENTS.md
+- Router-Test: Actions → LLM Router Test
 
-## 🚀 Nächste Schritte
+## 🚀 Nächste Schritte (morgen)
 
-1. Race-Calendar-PR prüfen + mergen
-2. Multi-Modell-Router rausschicken
-3. Follow-Analyzer + Inspiration migrieren
-4. Cloudflare-Bilder + Publisher-Fix
-5. VPS + SearXNG + OmniRoute
-6. Video-Pipeline (Remotion + KI-Modelle)
+1. Deal-Hunter + Inspiration PR mergen + testen
+2. Weekly/Ride/Generate-Ideas auf Router
+3. Search-Provider auf Router
+4. Serie-Filter + Agnes-Regeln strenger
+5. Cloudflare-Bilder + Publisher-Fix
 
 ## 📝 Hinweis für neue Chats
 
