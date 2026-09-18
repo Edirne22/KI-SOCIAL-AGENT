@@ -103,3 +103,11 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 2: Erst Schmerzen im Training, dann der rettende Checkup am Freitag – schafft Ogura rechtzeitig die Kurve?
 - Titel 3: Pedro Acosta und die Kälte am Red Bull Ring
 - Hook 3: Wenn am Red Bull Ring der Wind pfeift, hilft auch das beste KTM-Setup nicht gegen kalte Finger.
+
+### 2026-09-18 07:20 | Entwurf generiert
+- Titel 1: Marc Marquez und die irre Aufholjagd
+- Hook 1: Wer Marc Marquez nach dem Frühjahr abgeschrieben hat, versteht diesen Sport nicht.
+- Titel 2: Can Öncü feiert Befreiungsschlag in Magny-Cours
+- Hook 2: Helal olsun Can! Nach all den Rückschlägen endlich wieder ganz oben.
+- Titel 3: Ride With Me – Sicher durchs Funkloch
+- Hook 3: Was machst du, wenn mitten im Nirgendwo plötzlich dein Netz weg ist?
