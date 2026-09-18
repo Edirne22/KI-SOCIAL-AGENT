@@ -220,3 +220,58 @@ Dein Bike gehört nicht nur auf die Straße, sondern auch in deine digitale Gara
 
 **Caption (Türkisch):**
 Motosikletin sadece yollara değil, dijital garajına da ait. Şu an hangi modeli sürüyorsun? Uygulamaya ekle ve toplulukla paylaş.
+
+
+## Automatische Analyse
+# Ride With Me – Analyse
+
+**Stand:** Analyse basiert auf öffentlich zugänglichen Informationen (ridewithme.app, Google Play Store). Aktuelle Details können vom tatsächlichen App-Stand abweichen.
+
+---
+
+## 1) App-Zusammenfassung
+
+Ride With Me ist eine Mobile-App für Motorradfahrer, die unter ridewithme.app erreichbar ist und im Google Play Store als Android-App verfügbar ist. Die App positioniert sich als Plattform, die Motorradfahrer miteinander verbindet und das Motorradreisen erleichtern soll.
+
+Nach öffentlich einsehbaren Informationen bietet die App folgende Kernfunktionen:
+
+- **Route planen und teilen:** Nutzer können Motorradrouten erstellen und mit anderen teilen.
+- **GPS-Tracking:** Aufzeichnung von gefahrenen Strecken während einer Tour.
+- **Community:** Vernetzung mit anderen Motorradfahrern, unter anderem über Mitfahrgesuche oder gemeinsame Routen.
+- **Trip-Dokumentation:** Speicherung und Übersicht über absolvierte Fahrten und Reisen.
+
+Die App richtet sich an Motorradfahrer, die unterwegs nicht allein unterwegs sein wollen und eine Kombination aus Navigation, Reiseplanung und Community suchen. Im Play Store ist sie für Android-Geräte verfügbar.
+
+**Wichtiger Hinweis:** Konkrete Angaben zu Nutzerzahlen, Bewertungen, Erscheinungsdatum, Preisgestaltung oder verfügbaren In-App-Käufen konnten hier nicht unabhängig verifiziert werden. Für genaue aktuelle Details empfiehlt sich ein direkter Blick auf den Play Store und die Website.
+
+---
+
+## 2) Mögliche Nutzerbedürfnisse
+
+Diese Bedürfnisse ergeben sich aus der allgemeinen Situation der Zielgruppe – Motorradfahrer, die reisen und Kontakt suchen. Es ist nicht belegt, dass die App alle diese Bedürfnisse abdeckt:
+
+- **Unterwegs Gesellschaft finden:** Viele Motorradfahrer fahren gerne in Gruppen oder suchen auf langen Strecken nach Mitfahrern. Die Community-Funktion der App könnte hier einen Ansatz bieten, aber die tatsächliche Nutzeraktivität ist nicht belegbar.
+
+- **Geeignete Routen finden:** Motorradfahrer suchen häufig nach kurvenreichen, landschaftlich reizvollen oder kulturell interessanten Strecken – nicht nach der schnellsten Verbindung. Ob die App dafür spezifische Kurven- oder Landschaftsrouten anbietet, lässt sich aus den öffentlich sichtbaren Funktionen nicht sicher ableiten.
+
+- **Tour-Erinnerungen festhalten:** Viele Fahrer wollen ihre Touren nicht nur als GPS-Punktewolke speichern, sondern mit Fotos, Notizen oder Geschichten verbinden. Ob die App über reines GPS-Tracking hinausgeht, ist nicht verifiziert.
+
+- **Vertrauen beim Mitfahren:** Wer mit Unbekannten eine Tour macht, braucht Vertrauensanreize – Bewertungen, Referenzen, verifizierte Profile. Ob Ride With Me hier Lösungen bietet, ist aus den verfügbaren Informationen nicht ersichtlich.
+
+- **Offline-Funktionalität:** Auf langen Reisen, besonders in abgelegenen Gebieten, ist mobile Datenverbindung nicht garantiert. Offline-taugliche Karten und Routen sind ein häufiges Bedürfnis, dessen Umsetzung hier nicht bestätigt werden kann.
+
+- **Übersicht über eigene Fahrten:** Eine chronologische, gut lesbare Übersicht über absolvierte Touren mit Distanz, Dauer und Streckenverlauf ist ein nachvollziehbares Bedürfnis, das die Trip-Dokumentation abdecken könnte.
+
+---
+
+## 3) Feature-Ideen
+
+**Achtung:** Dies sind keine bestehenden App-Funktionen, sondern Ideen, die aus der Analyse allgemeiner Nutzersituationen entstanden sind. Keine dieser Ideen ist mit Ride With Me verknüpft oder von dort abgeleitet.
+
+- **Kurven-Rating-System:** Nutzer bewerten Streckenabschnitte nach Kurvenreichtum, Asphaltqualität und landschaftlicher Schönheit. So findet man auf Knopfdruck die besten Strecken in der Region.
+
+- **Touren-Teilen mit Geschichten:** Nicht nur der GPS-Track, sondern auch Fotos, Reisetagebucheinträge und persönliche Notizen lassen sich an eine Route heften. Andere können die Tour so nicht nur nachfahren, sondern erleben.
+
+- **Gruppen-Tour-Planer:** Mehrere Fahrer können gemeinsam eine Route planen, Etappenziege festlegen und ihre Positionen live sehen – auch offline.
+
+- **Motorrad-Profil:** Jedes Profil zeigt das eigene Bike (Marke, Modell, Baujahr), Erfahrung und bevorzugte Routentypen.
