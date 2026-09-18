@@ -5,204 +5,188 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: Harika bir hafta sonu değildi ama bazı şeyleri daha iyi anladığımız ve en azından bir miktar ilerleme kaydettiğimiz bir hafta sonuydu. @kenansofuoglu Abime teşekkür ediyorum bu zorlu süreçte yalnız bırakmıyor beni
-Takıma ve diğer herkese teşekkür etmek istiyorum zorlu bir hafta sonunun ardından, azda olsa mutlu bir şekilde bitirdik
-Tempo olarak güçlüydük ama sıralamada arkalardan kalkmak malesef yarışta iyi sonuçlar elde etmemize engel oluyor şuanki tek hedefimiz sıralamalarda iyi bir sonuç elde
-- Datum: 2026-09-14T09:02:54.000Z
-- URL: https://www.instagram.com/p/DdQxM0yCGod/
-- Likes: 18042
-- Kommentare: 262
+- Titel: Set your alarms for the final showdown before the flyaways ⏰‼️
+
+#AustrianGP 🇦🇹 #MotoGP
+- Datum: 2026-09-16T08:00:02.000Z
+- URL: https://www.instagram.com/p/DdV3DPJCGeB/
+- Likes: 12058
+- Kommentare: 26
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: 🇮🇹 ➡️ 🇦🇹
+- Titel: Chapter 15 of 22! 🔜 This weekend we’re racing at the Red Bull Ring! 🙌
 
-#PrimaPramacYamaha #MotoGp
-- Datum: 2026-09-13T17:16:50.000Z
-- URL: https://www.instagram.com/p/DdPEinbo3bA/
-- Likes: 9189
+#AustrianGP 🇦🇹 #MotoGP
+- Datum: 2026-09-16T05:00:04.000Z
+- URL: https://www.instagram.com/p/DdT5bg8ogtd/
+- Likes: 38536
 - Kommentare: 92
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: P12 today! Let’s keep pushing 💪🏼🔥
+- Titel: Mopeds took over the Red Bull Ring today. That's a wrap for the 3. 'MopedGP von Österreich' 🛵🇦🇹
 
-#PrimaPramacYamaha #MotoGP
-- Datum: 2026-09-13T12:57:27.000Z
-- URL: https://www.instagram.com/p/DdOm5nPoGi7/
-- Likes: 18225
-- Kommentare: 415
+#redbullring #MotoGP #AustrianGP
+- Datum: 2026-09-17T18:07:07.000Z
+- URL: https://www.instagram.com/p/DdZdtTdiiR2/
+- Likes: 43631
+- Kommentare: 247
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: Bumping into an old friend 👀 🤝
+- Titel: We gathered several quotes from the riders and asked them to guess who said each one 🗣️
 
-#PrimaPramacYamaha #MotoGP
-- Datum: 2026-09-12T14:13:08.000Z
-- URL: https://www.instagram.com/p/DdMLDPEofnL/
-- Likes: 40877
-- Kommentare: 357
+#AustrianGP 🇦🇹 #MotoGP
+- Datum: 2026-09-17T17:07:03.000Z
+- URL: https://www.instagram.com/p/DdZXDg5CPp3/
+- Likes: 15693
+- Kommentare: 57
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: @toprakrazgatlioglu7 - P21 💬
-SanMarinoGP - PRACTICE 🇸🇲
-
-Today was a very strange day. This morning, with the medium tyre, the bike felt really good and I was feeling very positive. I did my best lap time on a used medium tyre, so I was expecting to make a big step with the soft. Instead, when we put the soft tyre on, the bike completely changed. It felt almost like I was riding a rental bike! I was really surprised.
-
-The biggest problem was that the bike was not stopping and I was also strugglin
-- Datum: 2026-09-11T17:19:07.000Z
-- URL: https://www.instagram.com/p/DdJ7mqdCADq/
-- Likes: 15244
-- Kommentare: 104
+- Titel: The new #Moto2 and #Moto3 World Champion trophies revealed 🏆 Each step represents progress 💪
+- Datum: 2026-09-17T16:38:49.000Z
+- URL: https://www.instagram.com/p/DdZTwuHCNqF/
+- Likes: 17139
+- Kommentare: 73
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: Ready for Misano!
+- Titel: @diogomoreira_11 has his #MotoGPFantasy Golden Rider selections ready: Marc and Bez ✍ And you should get your picks done too 🫵
 
-NEW @alpinestarsreserve DROP TODAY!
-- Datum: 2026-09-10T16:45:39.000Z
-- URL: https://www.instagram.com/p/DdHS-nFiKdW/
-- Likes: 33738
-- Kommentare: 182
+#AustrianGP 🇦🇹 #MotoGP #DiogoMoreira
+- Datum: 2026-09-17T15:18:28.000Z
+- URL: https://www.instagram.com/p/DdZKbz3THET/
+- Likes: 10298
+- Kommentare: 58
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: Herkse selamlar ! 
-Bu sene Avusturya GP’de bana özel bir Toprak Tribünü olacak. Sizlerle beraber Red Bull Ring’de buluşacağımız için çok heyecanlıyım!
-Biletinizi almayı unutmayın. Aranızdan şanslı kişilerle de yarış hafta sonunda bir araya gelip tanışma fırsatımız da olacak ! 
-Hepinizi Avusturya’ya, bekliyorum.
-Red Bull Ring’de görüşürüz!
-- Datum: 2026-09-07T15:05:07.000Z
-- URL: https://www.instagram.com/p/Dc_Y7lqoMPz/
-- Likes: 25037
-- Kommentare: 351
+- Titel: It’s freezing and @37pedroacosta is not having it today! 🥶🙅‍♂️
+
+#AustrianGP 🇦🇹 #MotoGP #PedroAcosta
+- Datum: 2026-09-17T14:40:09.000Z
+- URL: https://www.instagram.com/p/DdZF_c6IOMU/
+- Likes: 28329
+- Kommentare: 243
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: Motocross after a long time 🙌 #yamaha #yz450f 
-@motocrossparkkartepe
-- Datum: 2026-09-06T11:21:35.000Z
-- URL: https://www.instagram.com/p/Dc8aavnR-eD/
-- Likes: 17263
-- Kommentare: 122
+- Titel: Proudly flying the Australian flag on the #MotoGP grid in 2027 🇦🇺
+
+#AustrianGP 🇦🇹 #SennaAgius
+- Datum: 2026-09-17T13:13:51.000Z
+- URL: https://www.instagram.com/p/DdY8Hj_IUTn/
+- Likes: 7337
+- Kommentare: 145
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: @toprakrazgatlioglu7 - DNF 💬
-Aragon GP - RACE 
+- Titel: @aiogura79 will take part in the first session of the weekend before another checkup tomorrow! 🩺
 
-For me, it was a positive weekend, especially because in Sunday’s race, even though we didn’t have a fantastic start, we were able to catch the guys ahead. At the beginning I didn’t have a good feeling, but after a few laps I found my rhythm and I was feeling really good on the bike.
-
-Unfortunately, towards the end the front tyre started to drop and it became difficult to keep the same pace. I was running wide in almost every corner because the bik
-- Datum: 2026-08-30T15:50:36.000Z
-- URL: https://www.instagram.com/p/Dcq3732CFDE/
-- Likes: 12226
-- Kommentare: 107
+#AustrianGP🇦🇹 #MotoGP #AiOgura
+- Datum: 2026-09-17T11:46:25.000Z
+- URL: https://www.instagram.com/p/DdYyN0wILWh/
+- Likes: 31873
+- Kommentare: 72
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: @toprakrazgatlioglu7 - P13 💬
-AragonGP - SPRINT
+- Titel: No language barrier when it comes to a 102-point recovery! 🌍 Here’s how the world heard @marcmarquez93’s heroic feat since May 📈🗣️
 
-It wasn’t such a bad race. The biggest problem for all the Yamahas is the back straight. We lose a lot of time there, which makes overtaking very difficult. In the corners I can be strong, especially in Turn 7, but then I lose the gap again on the straight. I had to work quite hard to make the passes and that also used the rear tyre. Still, I think I did a good job and we showed that the pace is there.
-
-I made one mistake in the last corner when I 
-- Datum: 2026-08-29T17:14:32.000Z
-- URL: https://www.instagram.com/p/DcocvwqDFm4/
-- Likes: 9481
-- Kommentare: 116
+#MotoGP
+- Datum: 2026-09-17T11:22:35.000Z
+- URL: https://www.instagram.com/p/DdYr44HoW3c/
+- Likes: 73007
+- Kommentare: 1075
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: Chapter 15 of 22! 🔜 This weekend we’re racing at the Red Bull Ring! 🙌
+- Titel: Last chance to secure your square on the 2026 Indonesian GP flag! 🇮🇩🏁
 
-#AustrianGP 🇦🇹 #MotoGP
-- Datum: 2026-09-16T05:00:08.000Z
+Visit #MotoGP Authentics to get your name on a piece of history! ➡️ tr.ee/NoFIndonesiaGP
+- Datum: 2026-09-17T20:32:19.000Z
 - URL: nicht verfügbar
-- Likes: 42
-- Kommentare: 0
+- Likes: 1086
+- Kommentare: 37
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: Chapter 15 of 22! 🔜
-
-This weekend we're racing at the Red Bull Ring! 🙌
+- Titel: Who said what? Get all the hot headlines from a rain-soaked Media Day 🗣️
 
 #AustrianGP 🇦🇹
-- Datum: 2026-09-16T05:00:05.000Z
+- Datum: 2026-09-17T17:45:02.000Z
 - URL: nicht verfügbar
-- Likes: 9
+- Likes: 161
 - Kommentare: 0
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: BREAKING: Ai Ogura is set to return to action at the #AustrianGP 🇦🇹 pending a final medical check on Thursday ✅
+- Titel: We gathered several quotes from the riders and asked them to guess who said each one 🗣️
 
-#MotoGP #AiOgura
-- Datum: 2026-09-15T20:31:13.000Z
+#AustrianGP 🇦🇹
+- Datum: 2026-09-17T17:01:28.000Z
 - URL: nicht verfügbar
-- Likes: 4296
-- Kommentare: 80
+- Likes: 1202
+- Kommentare: 13
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: She said YES! 💍 Philip proposed to Mallory in front of our guests and @fabiodiggia49 was there to witness it! 💛
+- Titel: The new #Moto2 and #Moto3 World Champion trophies revealed 🏆
 
-#MotoGP
-- Datum: 2026-09-15T18:00:20.000Z
+Each step represents progress 💪
+- Datum: 2026-09-17T16:39:08.000Z
 - URL: nicht verfügbar
-- Likes: 486
-- Kommentare: 22
+- Likes: 804
+- Kommentare: 27
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: Just seven rounds ago, Marc Marquez sat 102 points adrift of the Championship leader and now he's on top of the standings for the first time in 2026! 😎
+- Titel: Marc Márquez plays down suggestions that Austria gives him any special edge as the title fight resumes in Spielberg 👀
 
-You can tell Marc Marquez loves a comeback! 📈
-
-#SanMarinoGP🇸🇲
-- Datum: 2026-09-15T16:03:46.000Z
+#AustrianGP 🇦🇹
+- Datum: 2026-09-17T16:15:03.000Z
 - URL: nicht verfügbar
-- Likes: 1657
-- Kommentare: 31
+- Likes: 289
+- Kommentare: 14
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: 15 years later, the colours of the late Marco Simoncelli flew high on the podium at home once again ❤️
+- Titel: From all the riders who will swipe teams and teammates, and the new faces arriving at #MotoGP next year, who are they looking forward to seeing in action? 👀
 
-#SanMarinoGP 🇸🇲 #MotoGP
-- Datum: 2026-09-15T13:33:12.000Z
+#AustrianGP🇦🇹
+- Datum: 2026-09-17T15:50:02.000Z
 - URL: nicht verfügbar
-- Likes: 6398
-- Kommentare: 141
+- Likes: 127
+- Kommentare: 2
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: Lightning stars, an unexpected crash from the lead and plenty of overtakes! 🔥
+- Titel: A maiden win with KTM at their home GP? Pedro Acosta explains what it would mean to him🥹
 
-Relive the hectic opening lap of the #SanMarinoGP🇸🇲 from the riders' onboards! 👀
-
-#MotoGP | #SendIt
-- Datum: 2026-09-15T11:43:55.000Z
+#AustrianGP 🇦🇹
+- Datum: 2026-09-17T15:25:29.000Z
 - URL: nicht verfügbar
-- Likes: 3597
-- Kommentare: 15
+- Likes: 345
+- Kommentare: 26
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: A 102-point gap just seven rounds ago is now the championship lead! 📈
+- Titel: Moreira has his #MotoGPFantasy Golden Rider selections ready: Marc and Bez ✍
 
-Here's Marc Márquez's comeback in detail! 👀
+And you should get your picks done too 🫵 https://motogp.io/4xyDXDp
 
-#MotoGP
-- Datum: 2026-09-15T11:13:49.000Z
+#AustrianGP 🇦🇹
+- Datum: 2026-09-17T15:18:10.000Z
 - URL: nicht verfügbar
-- Likes: 430
-- Kommentare: 9
+- Likes: 913
+- Kommentare: 5
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: Jorge Martín's arm pump issue could have major implications for his title fight ⚠️
+- Titel: It’s freezing and Pedro Acosta is not having it today! 🥶🙅‍♂️
 
-#SanMarinoGP 🇸🇲
-- Datum: 2026-09-15T11:01:33.000Z
+#AustrianGP 🇦🇹 #MotoGP #PedroAcosta
+- Datum: 2026-09-17T14:40:24.000Z
 - URL: nicht verfügbar
-- Likes: 995
-- Kommentare: 71
+- Likes: 4058
+- Kommentare: 114
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Introducing 1957 World Champion Libero Liberati as the newest member of the Hall of Fame roster 🎖️
+- Titel: Will the riders guess which rider said the quotes we've gathered from this season? 🤔
 
-#MotoGP
-- Datum: 2026-09-15T10:15:02.000Z
+Join our #MotoGPSocial segment and find out! 🤝
+
+#AustrianGP 🇦🇹
+- Datum: 2026-09-17T14:14:40.000Z
 - URL: nicht verfügbar
-- Likes: 207
-- Kommentare: 2
+- Likes: 647
+- Kommentare: 16
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
