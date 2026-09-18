@@ -1,0 +1,66 @@
+{
+  "providers": {
+    "groq": {
+      "base_url": "https://api.groq.com/openai/v1",
+      "api_key_env": "GROQ_API_KEY",
+      "models": {
+        "fast": "llama-3.1-8b-instant",
+        "default": "openai/gpt-oss-120b",
+        "reasoning": "llama-3.3-70b-versatile"
+      },
+      "rate_limits": { "rpm": 30, "rpd": 14400 },
+      "priority": 1
+    },
+    "google": {
+      "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "api_key_env": "GEMINI_API_KEY",
+      "models": {
+        "fast": "gemini-3.1-flash-lite",
+        "default": "gemini-3.6-flash"
+      },
+      "rate_limits": { "rpm": 15, "rpd": 1500 },
+      "priority": 2
+    },
+    "openrouter": {
+      "base_url": "https://openrouter.ai/api/v1",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "models": {
+        "default": "openrouter/free",
+        "reasoning": "openrouter/free",
+        "coding": "qwen/qwen3-coder:free"
+      },
+      "rate_limits": { "rpm": 20, "rpd": 50 },
+      "priority": 3
+    },
+    "nvidia": {
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "api_key_env": "NVIDIA_API_KEY",
+      "models": {
+        "default": "minimaxai/minimax-m3",
+        "reasoning": "deepseek-ai/deepseek-v4-flash",
+        "coding": "qwen/qwen3-next-80b-a3b-instruct"
+      },
+      "rate_limits": { "rpm": 40, "rpd": null },
+      "priority": 4
+    },
+    "cloudflare": {
+      "base_url": "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1",
+      "api_key_env": "CLOUDFLARE_API_TOKEN",
+      "account_id_env": "CLOUDFLARE_ACCOUNT_ID",
+      "models": {
+        "default": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "reasoning": "@cf/qwen/qwen3-30b-a3b-fp8"
+      },
+      "rate_limits": { "neurons_per_day": 10000 },
+      "priority": 5
+    }
+  },
+  "fallback_order": ["groq", "google", "openrouter", "nvidia", "cloudflare"],
+  "task_routing": {
+    "fast_chat": ["groq", "google", "nvidia"],
+    "reasoning": ["nvidia", "openrouter", "google"],
+    "coding": ["openrouter", "nvidia", "groq"],
+    "long_context": ["nvidia", "openrouter", "google"],
+    "default": ["groq", "google", "openrouter", "nvidia", "cloudflare"]
+  }
+}
