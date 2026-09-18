@@ -1,7 +1,6 @@
 {
   "version": 1,
   "days": {
-    "2026-09-15": [],
     "2026-09-16": [
       {
         "story_key": "motogp:1089340",
@@ -183,6 +182,86 @@
         "published_at": "2026-09-12",
         "series": "Moto2",
         "source_series": "Moto2",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      }
+    ],
+    "2026-09-18": [
+      {
+        "story_key": "motogp:1090413",
+        "title": "MotoGP™ News MEDIA DAY DISPATCH: spirits not dampened as title race roars into the Ring Read Now",
+        "url": "https://www.motogp.com/en/news/2026/09/17/media-day-dispatch-spirits-not-dampened-as-title-race-roars-into-the-ring/1090413",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090473",
+        "title": "Ogura cleared for Austrian GP FP1, further review to follow",
+        "url": "https://www.motogp.com/en/news/2026/09/17/ogura-cleared-for-austrian-gp-fp1-further-review-to-follow/1090473",
+        "summary": "The Trackhouse rider has passed Thursday’s medical check and will return to action on Friday before being assessed again after FP1",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/17/181ab1c5-265e-424d-b80a-cf27f1eb2893/LG9_0243.jpg?width=1200&height=630",
+        "published_at": "2026-09-17",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090140",
+        "title": "Tech3 signs Agius for MotoGP debut from 2027",
+        "url": "https://www.motogp.com/en/news/2026/09/16/tech3-signs-agius-for-motogp-debut-from-2027/1090140",
+        "summary": "The Australian joins the team for the start of MotoGP’s new technical era",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/16/52226a9f-6590-45cb-a003-89b877d12ced/Senna-Agius_Red-Bull-KTM_Tech3_MotoGP-2.jpg?width=1200&height=630",
+        "published_at": "2026-09-16",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090066",
+        "title": "TIME SCHEDULE: Qatar Airways Grand Prix of Austria Calling at: Austria! Get ready for Round 15 of the season and take a look at all the important times this weekend",
+        "url": "https://www.motogp.com/en/news/2026/09/16/time-schedule-qatar-airways-grand-prix-of-austria/1090066",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090277",
+        "title": "DESTINATION AUSTRIA: MotoGP’s picture postcard Spielberg stunner",
+        "url": "https://www.motogp.com/en/news/2026/09/16/destination-austria-motogps-picture-postcard-spielberg-stunner/1090277",
+        "summary": "The Euro summer comes to a close in the Styrian mountains and there really is no place like it",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/16/6efb916c-6255-42e7-b1fe-f7852eebeede/AdobeStock_503414135.jpeg?width=1200&height=630",
+        "published_at": "2026-09-16",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1090065",
+        "title": "HOT HEADLINES: all level as MotoGP readies for Spielberg thriller in Austria",
+        "url": "https://www.motogp.com/en/news/2026/09/16/hot-headlines-all-level-as-motogp-readies-for-spielberg-thriller-in-austria/1090065",
+        "summary": "14 down, 8 to go and it’s neck-and-neck at the top: a blockbuster awaits as the Styrian mountains come alive to the sound of MotoGP",
+        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/15/482c1bb3-298a-4cab-ab31-f0b62aee08e4/MotoGP-2026-Posters-Austria-16.9-Final-3.jpg?width=1200&height=630",
+        "published_at": "2026-09-16",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"

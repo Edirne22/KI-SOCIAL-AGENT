@@ -249,3 +249,18 @@ Quelle: https://www.motogp.com/en/news/2026/09/17/ogura-cleared-for-austrian-gp-
 Story-Key: motogp:1090222
 Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rules-roadmap-updates-for-2027-and-onwards-we-welcome-this-new-era/1090222
+
+## 2026-09-18 04:27 UTC – ANGEBOTEN
+Story-Key: motogp:1090413
+Titel: MotoGP™ News MEDIA DAY DISPATCH: spirits not dampened as title race roars into the Ring Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/17/media-day-dispatch-spirits-not-dampened-as-title-race-roars-into-the-ring/1090413
+
+## 2026-09-18 04:27 UTC – ANGEBOTEN
+Story-Key: motogp:1090066
+Titel: TIME SCHEDULE: Qatar Airways Grand Prix of Austria Calling at: Austria! Get ready for Round 15 of the season and take a look at all the important times this weekend
+Quelle: https://www.motogp.com/en/news/2026/09/16/time-schedule-qatar-airways-grand-prix-of-austria/1090066
+
+## 2026-09-18 04:27 UTC – ANGEBOTEN
+Story-Key: motogp:1090277
+Titel: DESTINATION AUSTRIA: MotoGP’s picture postcard Spielberg stunner
+Quelle: https://www.motogp.com/en/news/2026/09/16/destination-austria-motogps-picture-postcard-spielberg-stunner/1090277

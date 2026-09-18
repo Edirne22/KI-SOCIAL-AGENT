@@ -552,3 +552,33 @@ Story-Key: motogp:1090141
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-18 04:33 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MEDIA DAY DISPATCH: spirits not dampened as title race roars into the Ring Read Now
+Story-Key: motogp:1090413
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 04:33 UTC | Motorcycle Racing | PASS
+Titel: Ogura cleared for Austrian GP FP1, further review to follow
+Story-Key: motogp:1090473
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 04:33 UTC | Motorcycle Racing | PASS
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 04:34 UTC | Motorcycle Racing | PASS
+Titel: TIME SCHEDULE: Qatar Airways Grand Prix of Austria Calling at: Austria! Get ready for Round 15 of the season and take a look at all the important times this weekend
+Story-Key: motogp:1090066
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 04:34 UTC | Motorcycle Racing | PASS
+Titel: DESTINATION AUSTRIA: MotoGP’s picture postcard Spielberg stunner
+Story-Key: motogp:1090277
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
