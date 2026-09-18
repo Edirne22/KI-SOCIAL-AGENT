@@ -140,9 +140,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/16/tech3-signs-agius-for-motogp-d
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-3-tech3-signs-agius-fo-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35376643752-1
+## Facebook [GEPOSTET 2026-09-18 17:50 | ID: 1285968257941776_122110518897469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-18-manual-35373561588
 Telegram-Update-ID: 279361679
