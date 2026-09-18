@@ -582,3 +582,33 @@ Story-Key: motogp:1090277
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-18 10:58 UTC | Motorcycle Racing | PASS
+Titel: Ogura cleared for Austrian GP FP1, further review to follow
+Story-Key: motogp:1090473
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 10:58 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News Acosta leads Espargaro as KTM kickstart home Grand Prix with FP1 1-2 Read Now
+Story-Key: motogp:1090414
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 10:58 UTC | Motorcycle Racing | PASS
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 10:58 UTC | Motorcycle Racing | PASS
+Titel: NEWS 2d ago Superbike Advocates to continue with Bridewell in the 2027 WorldSBK campaign Bridewell’s strong first season as a full-time rider on the WorldSBK grid bears fruit as his Independent Ducati team will keep him in the saddle for 2027 WorldSBK
+Story-Key: motogp:1090122
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-18 10:58 UTC | Motorcycle Racing | PASS
+Titel: Who is Senna Agius? Meet Australia’s new MotoGP star It’s time to present our fifth rookie of 2027, beginning a new era Down Under and becoming a brand-new face at Tech3
+Story-Key: motogp:1090141
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

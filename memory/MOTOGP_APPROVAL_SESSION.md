@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 Semantic-Fakten-QM: PASS
 QM: PASS
-Session-Timestamp: 1789705639
+Session-Timestamp: 1789728862
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,26 +15,26 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 1.2
+Neufassungen: 1
+QM-Ruecklaeufe: 1
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 1.5
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1090413
-Titel: MotoGP™ News MEDIA DAY DISPATCH: spirits not dampened as title race roars into the Ring Read Now
-Quelle: https://www.motogp.com/en/news/2026/09/17/media-day-dispatch-spirits-not-dampened-as-title-race-roars-into-the-ring/1090413
-Instagram-Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-1-motogp-news-media-da-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Story-Key: motogp:1090473
+Titel: Ogura cleared for Austrian GP FP1, further review to follow
+Quelle: https://www.motogp.com/en/news/2026/09/17/ogura-cleared-for-austrian-gp-fp1-further-review-to-follow/1090473
+Instagram-Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-1-ogura-cleared-for-au-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/17/181ab1c5-265e-424d-b80a-cf27f1eb2893/LG9_0243.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Die Titelkämpfe rollen an den Ring — und die Stimmung ist alles andere als gedämpft.
+Ai Ogura darf am Freitag wieder ins Cockpit.
 
-Nach dem Media Day der MotoGP ist klar: Kein Team, kein Fahrer lässt sich nachgeben. Die Spannung zwischen den Tops ist extrem hoch, jeder Punkt im Titelduell könnte sich später entscheidend auswirken. Das Tempo ist da, die Motivation ebenso.
+Der Trackhouse-Fahrer hat das medizinische Check-up am Donnerstag bestanden und wird beim Austrian GP direkt wieder an den Start gehen. Nach dem freien Training am Freitag folgt eine weitere ärztliche Untersuchung – erst dann steht fest, ob er durchgehend startberechtigt bleibt.
 
-Wer gewinnt für dich den nächsten Kampf am Red Bull Ring?
+Wie bewertet ihr die Regelung: sofort zurück ins Training oder lieber erst nach der Zusatzuntersuchung?
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #AiOgura #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -43,25 +43,25 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 1
-QM-Ruecklaeufe: 0
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 1.2
+QM-Ruecklaeufe: 1
+Herkunft: Aktuell
+Artikelalter-Tage: 1.5
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1090473
-Titel: Ogura cleared for Austrian GP FP1, further review to follow
-Quelle: https://www.motogp.com/en/news/2026/09/17/ogura-cleared-for-austrian-gp-fp1-further-review-to-follow/1090473
-Instagram-Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-2-ogura-cleared-for-au-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/17/181ab1c5-265e-424d-b80a-cf27f1eb2893/LG9_0243.jpg?width=1200&height=630
+Story-Key: motogp:1090414
+Titel: MotoGP™ News Acosta leads Espargaro as KTM kickstart home Grand Prix with FP1 1-2 Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/17/acosta-leads-espargaro-as-ktm-kickstart-home-grand-prix-with-fp1-1-2/1090414
+Instagram-Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-2-motogp-news-acosta-l-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Ai Ogura darf beim Österreich-GP wieder ins Cockpit – nach bestandener medizinischer Kontrolle.
+Bei den Österreichern lief am Freitag richtig was zusammen.
 
-Der Trackhouse-Rider hat den Check am Donnerstag bestanden und wird Freitag beim ersten Freien Training wieder dabei sein. Danach folgt eine weitere Bewertung.
+Beim ersten freien Training zum Heim-Grand-Prix in Spielberg belegten Pedro Acosta und Pol Espargaro die Plätze 1 und 2. KTM zeigte gleich zu Beginn, dass man auf der eigenen Strecke voll dabei sein will.
 
-Vertraut ihr darauf, dass er mit voller Leistung zurückkehrt?
+Wer von beiden fährt am Sonntag besser?
 
-#MotoGP #AiOgura #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #PedroAcosta #PolEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -72,7 +72,7 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 2.2
+Artikelalter-Tage: 2.5
 Kategorie: MotoGP
 Serie: MotoGP
 Story-Key: motogp:1090140
@@ -82,11 +82,11 @@ Instagram-Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-3-t
 Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/16/52226a9f-6590-45cb-a003-89b877d12ced/Senna-Agius_Red-Bull-KTM_Tech3_MotoGP-2.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Tech3 holt den Australier Agius für seine MotoGP-Premiere ab 2027.
+Tech3 macht den nächsten Schritt in die neue MotoGP-Ära – mit einem Australier.
 
-Der Australier Agius geht in die neue technische Ära der MotoGP und startet direkt bei Tech3. Für ihn ist das der Sprung in die Königsklasse, für das Team ein frischer Start im neuen Reglement.
+Das Team hat einen neuen Fahrer für die MotoGP-Debütsaison 2027 verpflichtet. Der Australier steht bereit, wenn die technische Neuauflage der Königsklasse startet. Genau das ist der Moment, auf den viele gewartet haben.
 
-Wer ist deiner Meinung nach der beste Einstieg in diese neue Ära?
+Wer soll eurer Meinung nach die erste Saison der neuen Tech3-Ära dominieren?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -99,23 +99,23 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.2
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1090066
-Titel: TIME SCHEDULE: Qatar Airways Grand Prix of Austria Calling at: Austria! Get ready for Round 15 of the season and take a look at all the important times this weekend
-Quelle: https://www.motogp.com/en/news/2026/09/16/time-schedule-qatar-airways-grand-prix-of-austria/1090066
-Instagram-Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-4-time-schedule-qatar-01.jpg
+Artikelalter-Tage: 2.5
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1090122
+Titel: NEWS 2d ago Superbike Advocates to continue with Bridewell in the 2027 WorldSBK campaign Bridewell’s strong first season as a full-time rider on the WorldSBK grid bears fruit as his Independent Ducati team will keep him in the saddle for 2027 WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/16/superbike-advocates-to-continue-with-bridewell-in-the-2027-worldsbk-campaign/1090122
+Instagram-Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-4-news-2d-ago-superbik-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Runde 15 der MotoGP-Saison kommt nach Österreich – der Qatar Airways Grand Prix of Austria gibt alle Zeiten für das Rennwochenende bekannt.
+Bridewell bleibt! Nach seinem ersten Vollzeitjahr im WorldSBK erhält der Reiter für die Saison 2027 eine Vertragsverlängerung.
 
-Die offizielle Zeitplanung steht: Diese Woche geht's in Österreich zur Sache. Alle wichtigen Zeiten für die Sessions des Rennwochenendes sind veröffentlicht. Für alle, die live dabei sein wollen oder die Übertragungen planen, lohnt sich ein Blick in den Schedule.
+Das Independent-Ducati-Team rund um Superbike Advocates setzt auf Kontinuität und plant mit Bridewell für die kommende Weltmeisterschaftskampagne.
 
-Wann und wo erlebst du die MotoGP-Rennen am liebsten – vor Ort in Österreich oder bequem von zu Hause?
+Wie schätzt ihr seine Chancen für die Saison 2027 ein?
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -123,24 +123,24 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 1
-Herkunft: Aktuell
-Artikelalter-Tage: 2.2
+Neufassungen: 0
+QM-Ruecklaeufe: 0
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 2.5
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1090277
-Titel: DESTINATION AUSTRIA: MotoGP’s picture postcard Spielberg stunner
-Quelle: https://www.motogp.com/en/news/2026/09/16/destination-austria-motogps-picture-postcard-spielberg-stunner/1090277
-Instagram-Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-5-destination-austria-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/16/6efb916c-6255-42e7-b1fe-f7852eebeede/AdobeStock_503414135.jpeg?width=1200&height=630
+Story-Key: motogp:1090141
+Titel: Who is Senna Agius? Meet Australia’s new MotoGP star It’s time to present our fifth rookie of 2027, beginning a new era Down Under and becoming a brand-new face at Tech3
+Quelle: https://www.motogp.com/en/news/2026/09/16/who-is-senna-agius-meet-australias-new-motogp-star/1090141
+Instagram-Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-5-who-is-senna-agius-m-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Der Sommer neigt sich dem Ende zu – und da gibt es keinen besseren Ort dafür als Spielberg.
+Australien hat einen neuen MotoGP-Star: Senna Agius kommt 2027 zu Tech3.
 
-Die Steiermark empfängt die MotoGP auf der Rennstrecke am Red Bull Ring. Die Kulisse aus den hügeligen Bergen rund um Spielberg macht den Grand Prix zu einem echten Highlight der Sommerrunde. Die Atmosphäre ist unverkennbar: warmes Wetter, klare Sicht und ein Streckenlayout, das Fahrern und Fans gleichermaßen gefällt.
+Der fünfte Rookie der MotoGP-Saison 2027 ist vorgestellt – und er startet eine neue Ära Down Under. Tech3 bekommt mit ihm ein brandneues Gesicht. Das Interesse gilt jetzt natürlich der Frage, wie sich der Australier auf der Weltspitze behaupten wird.
 
-Wer ist für euch der perfekte Streckenflair-Kandidat im MotoGP-Sommer?
+Wie einschätzen wir ihn als Rookie?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 

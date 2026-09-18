@@ -264,3 +264,13 @@ Quelle: https://www.motogp.com/en/news/2026/09/16/time-schedule-qatar-airways-gr
 Story-Key: motogp:1090277
 Titel: DESTINATION AUSTRIA: MotoGP’s picture postcard Spielberg stunner
 Quelle: https://www.motogp.com/en/news/2026/09/16/destination-austria-motogps-picture-postcard-spielberg-stunner/1090277
+
+## 2026-09-18 10:54 UTC – ANGEBOTEN
+Story-Key: motogp:1090414
+Titel: MotoGP™ News Acosta leads Espargaro as KTM kickstart home Grand Prix with FP1 1-2 Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/17/acosta-leads-espargaro-as-ktm-kickstart-home-grand-prix-with-fp1-1-2/1090414
+
+## 2026-09-18 10:54 UTC – ANGEBOTEN
+Story-Key: motogp:1090122
+Titel: NEWS 2d ago Superbike Advocates to continue with Bridewell in the 2027 WorldSBK campaign Bridewell’s strong first season as a full-time rider on the WorldSBK grid bears fruit as his Independent Ducati team will keep him in the saddle for 2027 WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/16/superbike-advocates-to-continue-with-bridewell-in-the-2027-worldsbk-campaign/1090122

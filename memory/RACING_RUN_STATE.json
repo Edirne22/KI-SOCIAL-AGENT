@@ -119,9 +119,17 @@
       "event": "schedule",
       "github_run_id": "35306914707",
       "arch_version": "V8.5.5"
+    },
+    "racing-2026-09-18-manual-35336874280": {
+      "status": "READY_FOR_APPROVAL",
+      "started_at": "2026-09-18T10:53:15.031850+00:00",
+      "updated_at": "2026-09-18T10:58:51.861102+00:00",
+      "event": "workflow_dispatch",
+      "github_run_id": "35336874280",
+      "arch_version": "V8.5.5"
     }
   },
-  "last_notification_at": 1789706060.626605,
-  "last_notification_fingerprint": "b8e9dd069bbb32cf8c434df6f3c9b42b231ff2a286e1e7000b4682e5b2b7b45c",
+  "last_notification_at": 1789729131.436202,
+  "last_notification_fingerprint": "06d1fd8edaad0bdc7e1d2ceee62369d63436a81cfc44c73e77c2d1920d4a5102",
   "active_batch_id": ""
 }
