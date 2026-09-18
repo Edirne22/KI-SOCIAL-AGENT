@@ -70,10 +70,24 @@ def publish(posts,chosen,uid,batch):
         blocks += [f'## Instagram\n{common}Text:\n{p["text"]}\nQuelle: {p["source"]}\nMedienstatus: EIGENE_KI_EDITORIALGRAFIK\nBild: {p["image"]}\n',f'## Facebook\n{common}Text:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n']
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
     return len(blocks)
-def handle_one(uid,chat,txt):
-    if chat!=str(get_chat_id()) or already(uid):return False
-    chosen=selection(txt)
-    if chosen is None:return False
+def handle_one(uid, chat, txt):
+    if chat != str(get_chat_id()):
+        print(f"MOTOGP: Update {uid} aus fremdem Chat; quittiert.")
+        return True
+    if already(uid):
+        print(f"MOTOGP: Update {uid} bereits verarbeitet; quittiert.")
+        return True
+    chosen = selection(txt)
+    if chosen is None:
+        print(f"MOTOGP: Update {uid} Kommando nicht erkannt; Text={txt!r}")
+        try:
+            send_message(
+                "🤖 MotoGP-Kommando nicht erkannt.\n"
+                "Beispiele: motogp 2,4 · motogp 2, 4 · motogp ✅ · motogp ❌ · motogp alle"
+            )
+        except Exception as e:
+            print(f"MOTOGP: Hilfe senden fehlgeschlagen: {e}")
+        return True
     batch=_active_batch();run=rc.get_run(batch) if batch else {}
     posts=parse_session()
     if chosen:
@@ -85,8 +99,9 @@ def handle_one(uid,chat,txt):
         send_message('❌ Tagesauswahl verworfen. Es wird nichts veröffentlicht.')
     STATE.parent.mkdir(parents=True,exist_ok=True);STATE.write_text(f'Update-ID: {uid}\nRacing-Batch-ID: {batch}\nAntwort: {txt}\n',encoding='utf-8');return True
 def main():
-    if len(sys.argv)>=4:
-        if not handle_one(int(sys.argv[1]),sys.argv[2],sys.argv[3]):raise SystemExit(2)
+    if len(sys.argv) >= 4:
+        # Unverarbeitete Updates werden quittiert, nicht als Fehler gewertet.
+        handle_one(int(sys.argv[1]), sys.argv[2], sys.argv[3])
         return
     for upd in sorted(get_updates(),key=lambda x:x.get('update_id',0)):
         uid=upd.get('update_id');msg=upd.get('message') or {};txt=msg.get('text');chat=str((msg.get('chat') or {}).get('id',''))

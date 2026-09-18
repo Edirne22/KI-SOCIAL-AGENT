@@ -58,6 +58,12 @@ def main() -> None:
                 [sys.executable, "-u", "motogp_telegram_receive.py", str(uid), chat, text],
                 check=False,
             )
+            if result.returncode == 2:
+                # Receiver hatte nichts zu tun (bereits verarbeitet oder Kommando unbekannt).
+                # Update trotzdem quittieren, damit es nicht in der Queue klebt.
+                print(f"ROUTER: MotoGP-Update {uid} unverarbeitet (Exit 2); quittiert.")
+                _ack(uid)
+                return
             if result.returncode != 0:
                 raise RuntimeError(f"MotoGP-Receiver fehlgeschlagen (Exit {result.returncode}); Update bleibt offen.")
             _ack(uid)
