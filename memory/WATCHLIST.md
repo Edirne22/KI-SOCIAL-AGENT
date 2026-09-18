@@ -10,4 +10,6 @@
 
 - [ ] hunter | keine Kriterien | seit 2026-09-18
 
+- [ ] . Handyvertrag 80GB D1 | max: 13 € | min: 50 GB | Netz: D1 | seit 2026-09-18
+
 ## Erledigt / Beendet
