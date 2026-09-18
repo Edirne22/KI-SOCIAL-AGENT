@@ -121,9 +121,8 @@ https://www.motogp.com/en/news/2026/09/18/almansa-fastest-from-quiles-on-friday-
 Quelle: https://www.motogp.com/en/news/2026/09/18/almansa-fastest-from-quiles-on-friday-in-austria/1090398
 Link-Preview: offiziell
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35375375303-1
+## Instagram [GEPOSTET 2026-09-18 17:37 | ID: 18101626040620742]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-18-manual-35373561588
 Telegram-Update-ID: 279361679
