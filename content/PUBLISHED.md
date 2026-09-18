@@ -160,9 +160,8 @@ https://www.motogp.com/en/news/2026/09/16/tech3-signs-agius-for-motogp-debut-fro
 Quelle: https://www.motogp.com/en/news/2026/09/16/tech3-signs-agius-for-motogp-debut-from-2027/1090140
 Link-Preview: offiziell
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35376710389-1
+## Instagram [GEPOSTET 2026-09-18 17:51 | ID: 17992553885843925]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-18-manual-35373561588
 Telegram-Update-ID: 279361679
