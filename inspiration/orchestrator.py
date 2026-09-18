@@ -10,6 +10,7 @@ import time
 
 import requests
 
+from llm_router import quick_chat
 from . import apify_agent, brightdata_agent, crawlbase_agent, youtube_apify_agent
 from .report_builder import build, evidence_count
 from telegram_bot import send_message
@@ -53,40 +54,6 @@ def _write_gemini_debug(status: str, error: str, prompt: str, posts: int, attemp
     GEMINI_DEBUG.write_text(old.rstrip() + "\n".join(entry) + "\n", encoding="utf-8")
 
 
-def _retry_after(response: requests.Response | None, fallback: int) -> int:
-    if response is None:
-        return fallback
-    try:
-        return max(fallback, int(response.headers.get("Retry-After", "0")))
-    except ValueError:
-        return fallback
-
-
-def _gemini_with_retry(prompt: str, api_key: str, posts: int) -> str | None:
-    for attempt in range(len(RETRY_DELAYS) + 1):
-        try:
-            text, _ = _gemini(prompt, api_key)
-            _write_gemini_debug("200", "", prompt, posts, attempt + 1)
-            return text or None
-        except requests.HTTPError as error:
-            response = error.response
-            status = str(response.status_code) if response is not None else "HTTP-Fehler"
-            retryable = status == "429" or (status.isdigit() and 500 <= int(status) <= 599)
-            if retryable and attempt < len(RETRY_DELAYS):
-                time.sleep(_retry_after(response, RETRY_DELAYS[attempt]) if status == "429" else RETRY_DELAYS[attempt])
-                continue
-            _write_gemini_debug(status, str(error), prompt, posts, attempt + 1)
-            return None
-        except requests.Timeout:
-            if attempt < len(RETRY_DELAYS):
-                time.sleep(RETRY_DELAYS[attempt])
-                continue
-            _write_gemini_debug("Timeout", "Zeitüberschreitung", prompt, posts, attempt + 1)
-            return None
-        except requests.RequestException as error:
-            _write_gemini_debug(type(error).__name__, str(error), prompt, posts, attempt + 1)
-            return None
-    return None
 
 
 def _grounded_evidence(api_key: str) -> str:
@@ -203,8 +170,13 @@ Keine abstrakten Platzhalter und keine Quelle erfinden. Falls es keine belegte Q
 ## Quellen
 Alle verwendeten URLs nummeriert. Verwende ausschließlich URLs, die in den obigen strukturierten Daten stehen.
 """
-    text = _gemini_with_retry(prompt, api_key, len(posts))
-    return "# Inspiration-Ideen\n\n" + text + "\n" if text else _fallback_with_raw_data(enriched, posts)
+    try:
+        text = quick_chat(prompt, task_type="reasoning").strip()
+        _write_gemini_debug("200", "", prompt, len(posts), 1)
+        return "# Inspiration-Ideen\n\n" + text + "\n" if text else _fallback_with_raw_data(enriched, posts)
+    except RuntimeError as error:
+        _write_gemini_debug("RuntimeError", str(error), prompt, len(posts), 1)
+        return _fallback_with_raw_data(enriched, posts)
 
 
 def _platform_has_records(report: str, platform: str) -> bool:
