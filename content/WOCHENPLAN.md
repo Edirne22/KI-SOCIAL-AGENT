@@ -258,3 +258,52 @@ Beschreibung: Smart Helmets mit Heads-Up-Display und automatischer Gefahrenwarnu
 Hashtags Instagram: #FutureTech #SmartHelmet #Motorrad #KI #BikerLife #Innovation
 Hashtags TikTok: #smarthelmet #tech #motorrad #future #bikertok #ai
 Visuelle Idee: Nahaufnahme eines modernen, futuristischen Helms mit dezent eingeblendeten HUD-Elementen.
+
+
+# Wochenplan vom 2026-09-18 23:36:26
+# Content-Plan Bülents Bike Life | 19.09.–25.09.2026
+
+**Planungsstand:** 18.09.2026 17:51 UTC  
+**Qualitätsbasis:** Racing Daily (7 aktuelle News ≤7 Tage, 3 Copy-QM PASS), Roster 2026 verifiziert, Post-History Sept 11–18 gelesen, Memory-Regeln aktiv.  
+**Redaktionsschluss pro Tag:** 10:00 Uhr DE – Freigabe via Telegram vor 12:00 Uhr Publication.  
+**Wiederholungsschutz:** Keine Hooks/Fahrer-Fokus-Themen aus den letzten 8 Tagen duplizieren (Toprak 6×, Marc Márquez 3×, Öncü 3×, Sofuoğlu 1×, KI-Features 4×, Community 4×).
+
+---
+
+## Montag, 19.09.2026
+| Feld | Inhalt |
+|------|--------|
+| **Thema** | MotoGP-Fahrermarkt 2027: Erste Bewegung hinter den Kulissen |
+| **Plattform** | Instagram (Carousel) + TikTok (Video 45s) |
+| **Fahrer-Fokus** | Kein Einzel-Fokus – Überblick Team-Wechsel-Gerüchte |
+| **Hook** | Während die WM läuft, werden im Hintergrund schon die Verträge für 2027 geschoben. |
+| **Beschreibung** | 3–4 Fakten aus verifizierten Quellen (z. B. Pramac-Yamaha Optionen, KTM-Junioren-Pipeline, VR46-Ducati-Verlängerung). Keine Spekulation – nur das, was offiziell bestätigt oder von mehreren unabhängigen Insidern genannt wird. Abschlussfrage: „Welcher Wechsel würde dich 2027 am meisten freuen?“ |
+| **Hashtags IG/TikTok** | #MotoGP2027 #Fahrermarkt #SillySeason #MotoGPNews #BülentsBikeLife |
+| **Visuelle Idee** | Carousel: 1. Titel-Slide „Silly Season 2027“, 2.–4. je ein Team-Logo + 1-satziger Status, 5. Community-Frage. TikTok: Screen-Record der Carousel-Slides mit Voiceover (du), Untertitel DE/TR. |
+| **Memory-Bezug** | Nutzerpräferenz: „Keine erfundenen Transfers“, „Du-Anrede“, „Wenige Emojis“, „Türkische Passagen für türkische Zielgruppe“ → kurzer TR-Satz im Caption: „2027 için hangi transfer en heyecanlı?“ |
+
+---
+
+## Dienstag, 20.09.2026
+| Feld | Inhalt |
+|------|--------|
+| **Thema** | Moto3: José Antonio Rueda – Der stille Titelfavorit |
+| **Plattform** | Instagram (Reel 60s) + TikTok |
+| **Fahrer-Fokus** | José Antonio Rueda (Red Bull KTM Ajo) |
+| **Hook** | Kein Lärm, nur Punkte: Rueda führt die Moto3-WM an, während alle auf die Großen schauen. |
+| **Beschreibung** | Aktueller WM-Stand (Quelle: motogp.com), Rennstil-Analyse (konstant, fehlerfrei), Vergleich zu früheren KTM-Ajo-Champions. Keine erfundenen Zitate. Frage: „Glaubst du, dass Konstanz in der Moto3 am Ende mehr zählt als ein einzelner Sieg?“ |
+| **Hashtags IG/TikTok** | #Moto3 #Rueda #KTM #WMFührung #BülentsBikeLife |
+| **Visuelle Idee** | Reel: Onboard-Schnitte (offizielles MotoGP-Material) + Grafik WM-Punkteverlauf. Text-Overlay DE/TR: „Sessiz ama etkili / Leise, aber effektiv“. |
+| **Memory-Bezug** | Racing Daily Mix enthält Moto3; Post-History: Moto3 noch nicht bespielt. Voice-Regel: „Starke, konkrete Hook mit echtem Ereignis“, „Keine Boulevard-Übertreibung“. |
+
+---
+
+## Mittwoch, 21.09.2026
+| Feld | Inhalt |
+|------|--------|
+| **Thema** | Ride With Me: Offline-Karten & SOS-Button im Alpen-Test |
+| **Plattform** | Instagram (Carousel + Story-Sequenz) + TikTok |
+| **Fahrer-Fokus** | Kein Fahrer – Feature-Fokus |
+| **Hook** | Kein Netz am Stelvio – und die App zeigt trotzdem jede Kurve und den nächsten Notruf. |
+| **Beschreibung** | Praxisbericht: Offline-Karten-Download vor der Tour, SOS-Button-Test (kein echter Notruf), Akku-Verbrauch nach 300 km. Ehrlich: Was gut lief, wo die App nachjustieren muss. Frage: „Welche Offline-Funktion fehlt dir noch?“ |
+| **Hashtags IG/TikTok** | #RideWithMe #Off
