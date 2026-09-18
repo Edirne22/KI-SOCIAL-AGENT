@@ -43,9 +43,8 @@ Quelle: https://www.motogp.com/
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W38-motogp-facebook.jpg
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35374892011-1
+## Instagram [GEPOSTET 2026-09-18 17:32 | ID: 18353315440175169]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-18-manual-35373561588
 Telegram-Update-ID: 279361679
