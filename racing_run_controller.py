@@ -34,7 +34,8 @@ def transition(bid,status,error='',**kwargs):
  data=_load();run=data['runs'].setdefault(bid,{});run['status']=status;run['updated_at']=_now().isoformat()
  if error:run['error']=error
  for k,v in kwargs.items():run[k]=v
- if status in TERMINAL and data.get('active_batch_id')==bid:data['active_batch_id']=''
+ if status=='READY_FOR_APPROVAL':data['active_batch_id']=bid
+ elif status in ('PUBLISHED','CLOSED','APPROVED','REJECTED'):data['active_batch_id']=''
  _save(data)
 def active_batch_id():return _load().get('active_batch_id','')
 def run_state(bid):return _load().get('runs',{}).get(bid,{})
