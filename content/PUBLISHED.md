@@ -181,7 +181,7 @@ Bild: assets/images/2026-09/2026-09-18-racing-editorial-2026-09-18-4-hot-headlin
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 35378638714-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-18-manual-35373561588
 Telegram-Update-ID: 279361679
