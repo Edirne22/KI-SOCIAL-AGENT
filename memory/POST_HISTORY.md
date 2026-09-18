@@ -95,3 +95,11 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 2: Jack Miller und Toprak Razgatlıoğlu in einer Box: Chaotisch oder die perfekte Mischung?
 - Titel 3: Mehr als nur Auspuffklang: Die Seele des Fahrens
 - Hook 3: Drehst du den Gasgriff auf, um aufzufallen – oder um den Kopf freizubekommen?
+
+### 2026-09-18 06:07 | Entwurf generiert
+- Titel 1: Marc Marquez und die WM-Führung nach San Marino
+- Hook 1: Wer Marquez nach dem schwachen Saisonstart im Frühjahr noch abgeschrieben hatte, schaut jetzt ganz genau hin.
+- Titel 2: Ai Oguras Fitness-Check vor dem Österreich-Wochenende
+- Hook 2: Erst Schmerzen im Training, dann der rettende Checkup am Freitag – schafft Ogura rechtzeitig die Kurve?
+- Titel 3: Pedro Acosta und die Kälte am Red Bull Ring
+- Hook 3: Wenn am Red Bull Ring der Wind pfeift, hilft auch das beste KTM-Setup nicht gegen kalte Finger.
