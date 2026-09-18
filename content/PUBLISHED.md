@@ -199,9 +199,8 @@ https://www.motogp.com/en/news/2026/09/16/hot-headlines-all-level-as-motogp-read
 Quelle: https://www.motogp.com/en/news/2026/09/16/hot-headlines-all-level-as-motogp-readies-for-spielberg-thriller-in-austria/1090065
 Link-Preview: offiziell
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35378791279-1
+## Instagram [GEPOSTET 2026-09-18 18:12 | ID: 17980492814905252]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-18-manual-35373561588
 Telegram-Update-ID: 279361679
