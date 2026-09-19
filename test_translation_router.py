@@ -26,10 +26,13 @@ def dependencies(monkeypatch):
 
 
 @pytest.mark.parametrize(
-    "text,source,target,translated",
-    [("Hallo", "de", "tr", "Merhaba"), ("Merhaba", "tr", "de", "Hallo")],
+    "text,source,target,source_name,target_name,translated",
+    [
+        ("Hallo", "de", "tr", "German", "Turkish", "Merhaba"),
+        ("Merhaba", "tr", "de", "Turkish", "German", "Hallo"),
+    ],
 )
-def test_primary(text, source, target, translated, dependencies):
+def test_primary(text, source, target, source_name, target_name, translated, dependencies):
     post, fallback, sleep = dependencies
     post.return_value = response(content=translated)
     assert TranslationRouter().translate(text, source, target) == translated
@@ -41,8 +44,10 @@ def test_primary(text, source, target, translated, dependencies):
             "messages": [
                 {"role": "system", "content": "You are a translation engine."},
                 {"role": "user", "content": (
-                    f"Translate from {source} to {target}. "
-                    f"Output only the translation.\n\n{text}"
+                    f"Translate the following text from {source_name} to {target_name}. "
+                    f"Output ONLY the translation in {target_name}. "
+                    f"Do not use any other language. Do not add explanations.\n\n"
+                    f"{text}"
                 )},
             ],
             "temperature": 0,
@@ -61,7 +66,9 @@ def test_http_error_fallback(status, dependencies):
     assert TranslationRouter().translate("Hallo", "de", "tr") == "Fallback translation"
     post.assert_called_once()
     fallback.assert_called_once_with(
-        "Translate from de to tr. Return ONLY the translation.\nText: Hallo"
+        "Translate the following text from German to Turkish. "
+        "Output ONLY the translation in Turkish. "
+        "Do not use any other language. Do not add explanations.\n\nHallo"
     )
     sleep.assert_not_called()
 
