@@ -26,10 +26,11 @@ def dependencies(monkeypatch):
 
 
 @pytest.mark.parametrize(
-    "text,source,target,translated",
-    [("Hallo", "de", "tr", "Merhaba"), ("Merhaba", "tr", "de", "Hallo")],
+    "text,source,target,translated,source_name,target_name",
+    [("Hallo", "de", "tr", "Merhaba", "German", "Turkish"),
+     ("Merhaba", "tr", "de", "Hallo", "Turkish", "German")],
 )
-def test_primary(text, source, target, translated, dependencies):
+def test_primary(text, source, target, translated, source_name, target_name, dependencies):
     post, fallback, sleep = dependencies
     post.return_value = response(content=translated)
     assert TranslationRouter().translate(text, source, target) == translated
@@ -41,8 +42,9 @@ def test_primary(text, source, target, translated, dependencies):
             "messages": [
                 {"role": "system", "content": "You are a translation engine."},
                 {"role": "user", "content": (
-                    f"Translate from {source} to {target}. "
-                    f"Output only the translation.\n\n{text}"
+                    f"Translate the following text from {source_name} to {target_name}.\n"
+                    f"Output ONLY the translation in {target_name}. Do not use any other "
+                    f"language. Do not add explanations.\n\nText: {text}"
                 )},
             ],
             "temperature": 0,
@@ -61,7 +63,9 @@ def test_http_error_fallback(status, dependencies):
     assert TranslationRouter().translate("Hallo", "de", "tr") == "Fallback translation"
     post.assert_called_once()
     fallback.assert_called_once_with(
-        "Translate from de to tr. Return ONLY the translation.\nText: Hallo"
+        "Translate the following text from German to Turkish.\n"
+        "Output ONLY the translation in Turkish. Do not use any other "
+        "language. Do not add explanations.\n\nText: Hallo"
     )
     sleep.assert_not_called()
 
@@ -142,4 +146,22 @@ def test_fallback_failure_propagates(monkeypatch, dependencies):
     with pytest.raises(RuntimeError, match="All providers failed"):
         TranslationRouter().translate("Hallo", "de", "tr")
     fallback.assert_called_once()
+    post.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    "source,target,source_name,target_name",
+    [("de", "tr", "German", "Turkish"), ("tr", "de", "Turkish", "German")],
+)
+def test_fallback_uses_full_language_names(
+    source, target, source_name, target_name, monkeypatch, dependencies
+):
+    post, fallback, sleep = dependencies
+    monkeypatch.delenv("NVIDIA_API_KEY")
+    TranslationRouter().translate("Sample text", source, target)
+    fallback.assert_called_once_with(
+        f"Translate the following text from {source_name} to {target_name}.\n"
+        f"Output ONLY the translation in {target_name}. Do not use any other "
+        "language. Do not add explanations.\n\nText: Sample text"
+    )
     post.assert_not_called()
