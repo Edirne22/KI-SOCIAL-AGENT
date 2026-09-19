@@ -357,3 +357,263 @@ Kinder. Für sie da sein. Ihnen ein besseres Leben ermöglichen.
 - **Stack:** Streamlit oder Next.js
 - **Features:** Kalender, Analytics, Content-Bibliothek, Multi-Account
 - **Aufwand:** 3–5 Jules-Tasks
+
+---
+
+## 📸 SNAPSHOT – 19.09.2026 (Ende Tag 1)
+
+### ✅ HEUTE ERLEDIGT
+
+**NVIDIA-Basis**
+- ✅ Kimi K3 in `config/llm_providers.json` (PR #29 + #30)
+  - `reasoning`, `coding`, `long_context`, `multimodal` → `moonshotai/kimi-k3`
+  - `ocr` → `nvidia/nemotron-ocr-v2`
+  - `default` → `minimaxai/minimax-m3`
+  - `deepseek-v4-flash` entfernt (EOL 22.09.2026)
+- ✅ Kimi K3 Testcall: HTTP 200, funktioniert
+- ✅ `NVIDIA_API_KEY` in Workflows verdrahtet
+
+**`image_router.py` (Priorität 1)**
+- ✅ Erstellt + gemergt (2. Versuch, mit Root-Pfad-Fix)
+- ✅ Bug-Fix 1: FLUX-Parameter pro Modell (schnell: steps=4 ohne cfg_scale/mode; dev: steps=50 mit mode=""/image=""/cfg_scale=5)
+- ✅ Bug-Fix 2: klein-4b aus Kette entfernt (Image-Editing, kein Text-zu-Bild)
+- ✅ Bug-Fix 3: Timeout 60 → 180s
+- ✅ Bug-Fix 4: Retry-Schleife entfernt (NVIDIA Free-Tier = 25 Requests/Monat)
+- ⏳ **Finaler Test läuft** (Actions → Test Image Router)
+
+**NVIDIA-Wissensbasis**
+- ✅ Free-Tier: 25 Requests/Monat pro Modell (nicht pro Tag)
+- ✅ „Using free API for development" = nutzbar
+- ✅ „Downloadable" = meist kein Free-Endpoint
+- ✅ „Upgrade" = kostenpflichtig → nicht klicken
+- ✅ Endpoints:
+  - Text/Vision: `https://integrate.api.nvidia.com/v1` (OpenAI-kompatibel)
+  - Bild (GenAI): `https://ai.api.nvidia.com/v1/genai/<model>` (eigenes Format)
+
+**API-Key-Verwaltung**
+- ✅ Alter Key (versehentlich gepostet) gelöscht
+- ✅ Neuer Key `KI-SOCIAL-AGENT-v2` in GitHub Secrets (`NVIDIA_API_KEY`)
+- ✅ Zweiter Key `NVIDIABuild-Autogen-65` gelöscht (sauber)
+- ✅ Keine offenen Sicherheitslücken
+
+**Doku**
+- ✅ `docs/PROJEKT_UEBERGABE.md` komplett neu strukturiert
+  - BÜLENTS CONTENT-VISION
+  - NVIDIA NIM Merkliste
+  - Aktueller Stand
+  - Wichtige Hinweise
+  - Quellen & Links
+
+---
+
+### 🔄 LÄUFT GERADE
+
+**Test Image Router**
+- Actions → „Test Image Router" → Run workflow
+- Ziel: `image_router: generated via flux.1-schnell`
+- Fallback-Erfolg: `generated via flux.1-dev` (auch okay)
+- Worst Case: `NVIDIA chain exhausted, using Agnes` (immer noch grün, aber kein NVIDIA)
+
+**Sobald Test fertig:** Log an Assistenten → Auswertung
+
+---
+
+### 🔴 OFFEN – PRIORITÄT 1 (nächste Tage)
+
+**NVIDIA-Router (Reihenfolge zwingend)**
+- 🔴 `vision_router.py` (nach image_router)
+  - `general` → `meta/llama-3.2-11b-vision-instruct` (Fallback: Kimi K3)
+  - `ocr` → `nvidia/nemotron-ocr-v2`
+  - `omni` → `nvidia/nemotron-3-nano-omni`
+  - Zweck: Instagram-Bilder analysieren + Finanzagent-Tabellen
+- 🔴 `translation_router.py`
+  - `Riva Translate 1.6b` → DE ↔ TR (36 Sprachen)
+  - Fallback: `llm_router` mit Übersetzungs-Prompt
+
+**Content Bülent**
+- 🔴 Erster Reel „10 Bikertreffs" – bauen + posten (1 Std, manuell)
+- 🔴 `followed_accounts.md` Header korrigieren (Mo/Mi/Fr)
+
+---
+
+### 🟡 OFFEN – PRIORITÄT 2 (2 Wochen)
+
+- 🟡 Memory-Embedding → `nvidia/nemotron-3-embed-1b`
+- 🟡 Safety-Check → `nvidia/nemotron-3-content-safety`
+- 🟡 Router-Erweiterung in `config/llm_providers.json` (Reserve-Modelle):
+  - `nvidia/nemotron-3.5-lightning-30b-a3b`
+  - `z-ai/glm-5-3`
+  - `google/gemma-4-31b-it`
+  - `meta/muse-glimmer-30b`
+  - `nvidia/nemotron-3-super-120b`
+  - `nvidia/nemotron-3-ultra-550b`
+  - `qwen/qwen-image-edit`
+- 🟡 Watchlist-Tracker
+- 🟡 Serie-Filter Rennkalender
+- 🟡 Agnes-Story strenger
+- 🟡 Deal-Hunter Transparenz
+- 🟡 Cloudflare-Bilder (FLUX + Leonardo)
+- 🟡 Publisher-Workflow `git add -A`
+- 🟡 Debug-Branch-Schutz
+- 🟡 Memory-Trennung (`.opencodeignore`)
+
+---
+
+### 🖥️ APPROVAL-DASHBOARD (geplant)
+
+**Stufe 1 – HEUTE:** ✅ Telegram-Approval (läuft)
+
+**Stufe 2 – KURZFRISTIG (1–2 Wochen):**
+- **Technik:** GitHub Pages, statische HTML
+- **Datenquelle:** `docs/approval/queue.json`
+- **Vorschau:** Bilder aus `assets/pending/`
+- **Freigabe:** Button → `workflow_dispatch` → Publisher
+- **Auth:** GitHub-Login
+- **Kosten:** 0 €
+- **Aufwand:** 1 Jules-Credit
+- **URL:** `edirne22.github.io/KI-SOCIAL-AGENT/`
+
+**Stufe 3 – NACH VPS (1–3 Monate):**
+- Streamlit oder Next.js
+- Kalender, Analytics, Content-Bibliothek, Multi-Account
+
+---
+
+### 📦 CLAWHUB-SKILLS (Social-Media-Automatisierung)
+
+**Empfohlen:**
+- **Phy Social Post** → Primär (Insta + FB + TikTok)
+  - `openclaw skills install @phy041/phy-social-post`
+- **Multi-Platform Scheduler** → Content-Kalender
+- **Outfeed** → Bulk-Publishing (25 Drafts)
+
+**Mit Vorsicht:**
+- **Postmoore** → Security-Risiken, nur mit Drafts
+
+**Nicht nutzen:**
+- **Social Media Autopilot** → FB + TikTok fehlen
+
+**Hinweis:** Bestehende Instagram + Facebook Pipeline läuft weiter. ClawHub nur für **TikTok-Erweiterung** und/oder Bulk-Scheduling.
+
+---
+
+### 🟢 OFFEN – NACH VPS
+
+- 🟢 VPS einrichten (Ubuntu 24.04)
+- 🟢 SearXNG installieren
+- 🟢 OmniRoute installieren
+- 🟢 `speech_router.py` (Nemotron ASR + Magpie TTS, Whisper-v3 als Alternative)
+- 🟢 `video_router.py` (Cosmos3 Nano, Transfer2.5, Reasoner, Super-Res, Relighting)
+- 🟢 Objekterkennung (`nemo-retriever-page-elements-v3`, PaddleOCR)
+- 🟢 Remotion + Video-Pipeline autonom
+
+---
+
+### 🟣 STRATEGISCH
+
+- 🟣 V8.6 Promotion Debug → main
+- 🟣 Debug-Workflow-Split auflösen
+- 🟣 OpenRouter 10 $ aufladen (nach Beobachtung)
+- 🟣 Autonome Content-Fabrik (Vision)
+
+---
+
+### ⚠️ WICHTIGE HINWEISE
+
+**NVIDIA API**
+- Free-Tier: **25 Requests/Monat** pro Modell
+- Rate-Limit: 40 RPM (theoretisch, aber Free-Tier limitiert)
+- Endpoints:
+  - Text: `https://integrate.api.nvidia.com/v1`
+  - Bild: `https://ai.api.nvidia.com/v1/genai/<model>`
+- Modell-Badges:
+  - „Using free API for development" → ✅ nutzbar
+  - „Downloadable" → ❌ meist kein Endpoint
+  - „Upgrade" → ⚠️ kostenpflichtig
+
+**API-Key**
+- Aktiver Key: `KI-SOCIAL-AGENT-v2` (in GitHub Secrets als `NVIDIA_API_KEY`)
+- Ablauf: **18.03.2027** → Reminder anlegen
+- Nur in GitHub Secrets gespeichert, nirgendwo sonst
+
+**Jules-Regeln**
+- Max **3 parallele Sessions**
+- Max **15 Credits/Tag**
+- Reset: **~02:00 deutscher Zeit** (00:00 UTC)
+- **Neuer Auftrag = neuer Chat**
+- Fix an gemergtem PR = neuer Chat
+- Credits verbrauchen pro Task-Run, nicht pro Prompt
+
+**Branches**
+- `main` = produktiv
+- `debug/motogp-pipeline-output` = nur Bülent + Codex
+
+**Telegram**
+- ✅ Router-Fix erledigt → Telegram funktioniert normal
+
+---
+
+### 📊 CREDIT-STAND (Ende Tag 1)
+
+- **Verbraucht heute:** ~14/15
+- **Übrig:** ~1
+- **Reset:** ~02:00 Uhr deutscher Zeit
+- **Morgen verfügbar:** 15
+
+**Heute verbraucht für:**
+- Kimi K3 Config (1)
+- image_router.py Versuch 1 (1, fehlgeschlagen – falscher Branch)
+- image_router.py Versuch 2 (1)
+- image_router.py Fix FLUX-Parameter (1)
+- image_router.py Fix Timeout + klein-4b (1)
+- Plus Reserve/Sonstiges
+
+---
+
+### 🎯 NÄCHSTE 3 TAGE
+
+**Tag 2 (morgen, 20.09.)**
+- 🚀 Test-Ergebnis auswerten (falls heute nicht fertig)
+- 🚀 `vision_router.py` (Jules, 1 Credit)
+- 🚀 `translation_router.py` (Jules, 1 Credit)
+- 🎬 Erster Reel „10 Bikertreffs" bauen
+
+**Tag 3 (21.09.)**
+- 🧠 Memory-Embedding einbinden
+- ⚙️ Router-Erweiterung (Config-Only)
+- 📊 Erste Zahlen aus Instagram/Facebook
+
+**Tag 4 (22.09.)**
+- 🖥️ Approval-Dashboard Stufe 2 (Jules, 1 Credit)
+- 📦 ClawHub-Skill Phy Social Post installieren (TikTok)
+
+---
+
+### 🚦 STAND DER AUTONOMIE
+
+**Aktuell: ~40 %**
+
+| Stufe | Status |
+|---|---|
+| 1. Planung (Weekly-Plan, Agents) | ✅ |
+| 2. Recherche (Follow-Analyzer, Deal-Hunter) | ✅ |
+| 3. Media-Generierung (Bild/Video/Audio) | 🔄 50 % (Bild in Arbeit, Video/Audio nach VPS) |
+| 4. Compose (Caption + Hashtags) | ⏳ teilweise |
+| 5. Approval (Telegram) | ✅ |
+| 6. Publishing (Insta + FB) | ✅ |
+| 7. Publishing (TikTok) | ❌ geplant |
+| 8. Autonomie-Kette (durchgehend) | 🔴 fehlt |
+
+**Ziel:** 100 % autonom = Agent macht alles, du gibst nur frei.
+
+---
+
+### 📎 QUELLEN & LINKS
+
+- **Repo:** https://github.com/Edirne22/KI-SOCIAL-AGENT
+- **PRs:** https://github.com/Edirne22/KI-SOCIAL-AGENT/pulls
+- **Actions:** https://github.com/Edirne22/KI-SOCIAL-AGENT/actions
+- **NVIDIA Build:** https://build.nvidia.com/models
+- **ClawHub:** https://clawhub.ai
+- **Handbuch:** `docs/HANDBUCH.md`
+- **Übergabe:** `docs/PROJEKT_UEBERGABE.md`
