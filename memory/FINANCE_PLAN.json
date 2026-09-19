@@ -1,0 +1,25 @@
+{
+  "investable_eur": 20000,
+  "cash_separate_eur": 5000,
+  "cash_tracked": false,
+  "max_banks": 2,
+  "preferred_banks": 1,
+  "festgeld_allowed": true,
+  "current_accounts": [
+    {
+      "bank": "Chase",
+      "product": "Tagesgeld",
+      "rate_percent": 4.0,
+      "rate_valid_until": "2026-12-26",
+      "rate_after_percent": 2.0,
+      "note": "FSA 337 € vorhanden – nicht löschen, nur belassen."
+    }
+  ],
+  "rules": [
+    "Keine Anlageberatung, nur Recherche-Zusammenfassung.",
+    "Keine Transfers auslösen.",
+    "Kein Login bei Banken.",
+    "FSA bei Chase (337 €) nicht anfassen.",
+    "Cash 5.000 € wird NICHT getrackt."
+  ]
+}
