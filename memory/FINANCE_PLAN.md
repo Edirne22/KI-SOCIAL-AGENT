@@ -18,4 +18,4 @@ Stand: 2026-09-19
 - Cash 5.000 € wird NICHT getrackt.
 
 ## Nächste Prüfung
-- 2026-09-26T00:12:39+00:00
+- 2026-09-26T00:38:46+00:00
