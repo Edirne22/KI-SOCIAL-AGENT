@@ -15,7 +15,8 @@ def create_mock_response(status_code, json_data=None, text=""):
     return resp
 
 
-def test_cloudflare_called_first_when_primary_cloudflare(monkeypatch):
+@pytest.mark.parametrize("options", [{}, {"width": 512, "height": 768, "seed": 42, "steps": 8}])
+def test_cloudflare_called_first_when_primary_cloudflare(monkeypatch, options):
     monkeypatch.setenv("IMAGE_PRIMARY", "cloudflare")
     monkeypatch.setenv("CLOUDFLARE_ACCOUNT_ID", "cf-acc-123")
     monkeypatch.setenv("CLOUDFLARE_API_TOKEN", "cf-tok-456")
@@ -27,7 +28,7 @@ def test_cloudflare_called_first_when_primary_cloudflare(monkeypatch):
     with patch("requests.post", return_value=resp_200) as mock_post, \
          patch("image_router.agnes_generate_image") as mock_agnes:
         router = ImageRouter()
-        res = router.generate_image("a racing motorcycle")
+        res = router.generate_image("a racing motorcycle", **options)
 
         assert res == fake_bytes
         assert mock_post.call_count == 1
@@ -35,9 +36,7 @@ def test_cloudflare_called_first_when_primary_cloudflare(monkeypatch):
         assert "api.cloudflare.com" in url
         assert "cf-acc-123" in url
         payload = mock_post.call_args[1]["json"]
-        assert payload["prompt"] == "a racing motorcycle"
-        assert payload["width"] == 1024
-        assert payload["height"] == 1024
+        assert payload == {"prompt": "a racing motorcycle"}
         mock_agnes.assert_not_called()
 
 

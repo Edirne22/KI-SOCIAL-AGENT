@@ -52,13 +52,7 @@ class ImageRouter:
             "Authorization": f"Bearer {api_token}",
             "Content-Type": "application/json",
         }
-        payload = {
-            "prompt": prompt,
-            "width": kwargs.get("width", 1024),
-            "height": kwargs.get("height", 1024),
-            "seed": kwargs.get("seed", 0),
-            "steps": kwargs.get("steps", 4),
-        }
+        payload = {"prompt": prompt}
 
         try:
             resp = requests.post(url, headers=headers, json=payload, timeout=120)
