@@ -654,3 +654,35 @@ Kinder. Für sie da sein. Ihnen ein besseres Leben ermöglichen.
 - `.github/workflows/test-image-router.yml` ✅
 - `.github/workflows/test-vision-router.yml` ✅
 - Translation-Test-Workflow: ⏳ fehlt
+### ✅ 19.09.2026 – Router-Stack komplett (Phase 1)
+
+**Alle Basis-Router live + getestet:**
+
+| Modul | Primär | Fallback | Status |
+|---|---|---|---|
+| `llm_router.py` | Groq/Google/OpenRouter/NVIDIA/Cloudflare | – | ✅ |
+| `image_router.py` | Pollinations | Cloudflare → Together → NVIDIA → Agnes | ✅ |
+| `vision_router.py` | Llama Vision (NVIDIA) | Kimi K3 | ✅ |
+| `translation_router.py` | Riva 4B (NVIDIA) | llm_router | ✅ |
+| `speech_router.py` | Nemotron ASR + Magpie TTS | – | 🟢 nach VPS |
+| `video_router.py` | Cosmos3 Nano | – | 🟢 nach VPS |
+
+**Live-Tests (19.09.2026):**
+- `image_router`: Pollinations → `BYTES: 374801`, 6 Sek
+- `vision_router`: Llama Vision → Modell antwortet (leeres Testbild)
+- `translation_router`: Riva 4B → `Merhaba, nasılsın?` / `Hallo, wie geht es dir?`
+
+**Test-Workflows:**
+- `.github/workflows/test-image-router.yml` ✅
+- `.github/workflows/test-vision-router.yml` ✅
+- `.github/workflows/test-translation-router.yml` ✅
+
+**Wichtige Env-Variablen:**
+- `IMAGE_PRIMARY` = `pollinations` (Standard)
+- `NVIDIA_IMAGE_API_STYLE` = `genai`
+
+**Nächste Schritte:**
+1. Erster Reel „10 Bikertreffs" bauen
+2. Vision in bestehende Pipeline einbinden (Instagram-Analyse)
+3. Approval-Dashboard Stufe 2 (GitHub Pages)
+4. TikTok-Integration (ClawHub Skill)
