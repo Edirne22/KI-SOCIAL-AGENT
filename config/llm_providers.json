@@ -37,8 +37,11 @@
       "api_key_env": "NVIDIA_API_KEY",
       "models": {
         "default": "minimaxai/minimax-m3",
-        "reasoning": "deepseek-ai/deepseek-v4-flash",
-        "coding": "qwen/qwen3-next-80b-a3b-instruct"
+        "reasoning": "moonshotai/kimi-k3",
+        "coding": "moonshotai/kimi-k3",
+        "long_context": "moonshotai/kimi-k3",
+        "multimodal": "moonshotai/kimi-k3",
+        "ocr": "nvidia/nemotron-ocr-v2"
       },
       "rate_limits": { "rpm": 40, "rpd": null },
       "priority": 4
