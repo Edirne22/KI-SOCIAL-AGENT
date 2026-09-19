@@ -334,3 +334,26 @@ Kinder. Für sie da sein. Ihnen ein besseres Leben ermöglichen.
 - **Handbuch:** `docs/HANDBUCH.md`
 - **Übergabe:** `docs/PROJEKT_UEBERGABE.md`
 - **NVIDIA Build:** https://build.nvidia.com/models
+
+## 🖥️ Approval-Dashboard (geplant)
+
+**Ziel:** Web-Oberfläche zur Freigabe von Content-Entwürfen.
+**Aktuell:** Freigabe läuft über Telegram.
+
+### Stufe 1 – HEUTE
+- ✅ Telegram-Approval (läuft)
+
+### Stufe 2 – KURZFRISTIG (1–2 Wochen)
+- **Technik:** GitHub Pages, statische HTML-Seite
+- **Datenquelle:** `docs/approval/queue.json` (vom Agent geschrieben)
+- **Vorschau:** Bilder aus `assets/pending/`
+- **Freigabe:** Button → `workflow_dispatch` → Publisher
+- **Auth:** GitHub-Login
+- **Kosten:** 0 €
+- **Aufwand:** 1 Jules-Credit
+- **URL:** `edirne22.github.io/KI-SOCIAL-AGENT/`
+
+### Stufe 3 – NACH VPS (1–3 Monate)
+- **Stack:** Streamlit oder Next.js
+- **Features:** Kalender, Analytics, Content-Bibliothek, Multi-Account
+- **Aufwand:** 3–5 Jules-Tasks
