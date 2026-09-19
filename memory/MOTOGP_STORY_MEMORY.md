@@ -294,3 +294,23 @@ Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-be
 Story-Key: motogp:1090571
 Titel: Revealed: brand new World Champion trophies for Moto2 and Moto3
 Quelle: https://www.motogp.com/en/news/2026/09/17/revealed-brand-new-world-champion-trophies-for-moto2-and-moto3/1090571
+
+## 2026-09-19 18:56 UTC – ANGEBOTEN
+Story-Key: motogp:1090418
+Titel: MotoGP™ News Title race leader Martin produces golden comeback to capitalise on Acosta error Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/19/title-race-leader-martin-produces-golden-comeback-to-capitalise-on-acosta-error/1090418
+
+## 2026-09-19 18:56 UTC – ANGEBOTEN
+Story-Key: motogp:1090399
+Titel: Uriarte usurps Almansa with heroic one-shot pole at the Red Bull Ring The Red Bull KTM Ajo rider delivers when it matters most to deny his Championship rival a third straight pole, with Carpe completing a double front row for the home factory
+Quelle: https://www.motogp.com/en/news/2026/09/19/uriarte-usurps-almansa-with-heroic-one-shot-pole-at-the-red-bull-ring/1090399
+
+## 2026-09-19 18:56 UTC – ANGEBOTEN
+Story-Key: motogp:1090417
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+
+## 2026-09-19 18:56 UTC – ANGEBOTEN
+Story-Key: motogp:1090415
+Titel: Acosta unbeatable in Austria for Friday honours at Red Bull Ring
+Quelle: https://www.motogp.com/en/news/2026/09/18/acosta-unbeatable-in-austria-for-friday-honours-at-red-bull-ring/1090415

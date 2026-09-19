@@ -690,3 +690,39 @@ Story-Key: motogp:1090222
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-19 18:59 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News Title race leader Martin produces golden comeback to capitalise on Acosta error Read Now
+Story-Key: motogp:1090418
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 19:00 UTC | Motorcycle Racing | PASS
+Titel: Uriarte usurps Almansa with heroic one-shot pole at the Red Bull Ring The Red Bull KTM Ajo rider delivers when it matters most to deny his Championship rival a third straight pole, with Carpe completing a double front row for the home factory
+Story-Key: motogp:1090399
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 19:00 UTC | Motorcycle Racing | PASS
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Story-Key: motogp:1090417
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 19:00 UTC | Motorcycle Racing | FAIL
+Titel: Acosta unbeatable in Austria for Friday honours at Red Bull Ring
+Story-Key: motogp:1090415
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben; Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 19:00 UTC | Motorcycle Racing | PASS
+Titel: Acosta unbeatable in Austria for Friday honours at Red Bull Ring
+Story-Key: motogp:1090415
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 19:00 UTC | Motorcycle Racing | PASS
+Titel: Almansa fastest from Quiles on Friday in Austria Less than a second covered the top 14 but it was a familiar story at the top of the timings
+Story-Key: motogp:1090398
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
