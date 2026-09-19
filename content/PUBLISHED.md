@@ -339,3 +339,81 @@ Wie stehen die neuen Regeländerungen zu deiner Meinung nach?
 https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rules-roadmap-updates-for-2027-and-onwards-we-welcome-this-new-era/1090222
 Quelle: https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rules-roadmap-updates-for-2027-and-onwards-we-welcome-this-new-era/1090222
 Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-19-manual-35462722952
+Telegram-Update-ID: 279361683
+MotoGP-Auswahl: 1
+Titel: MotoGP™ News Title race leader Martin produces golden comeback to capitalise on Acosta error Read Now
+Text:
+Jorge Martin hat den Titelkampf zurück an sich gerissen – Pedro Acosta hat sich die Chance selbst weggeworfen.
+
+Acostas Fehler kostete ihn wertvolle Punkte. Martin nutzte die Situation golden und ist wieder Tabellenführer. Das macht den Kampf um den Titel nochmal richtig spannend.
+
+Wer hat nach deinem Gefühl jetzt die Nase im Titelkampf länger drin?
+
+#MotoGP #JorgeMartin #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/19/title-race-leader-martin-produces-golden-comeback-to-capitalise-on-acosta-error/1090418
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-19-racing-editorial-2026-09-19-1-motogp-news-title-ra-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-19-manual-35462722952
+Telegram-Update-ID: 279361683
+MotoGP-Auswahl: 1
+Titel: MotoGP™ News Title race leader Martin produces golden comeback to capitalise on Acosta error Read Now
+Text:
+Jorge Martin hat den Titelkampf zurück an sich gerissen – Pedro Acosta hat sich die Chance selbst weggeworfen.
+
+Acostas Fehler kostete ihn wertvolle Punkte. Martin nutzte die Situation golden und ist wieder Tabellenführer. Das macht den Kampf um den Titel nochmal richtig spannend.
+
+Wer hat nach deinem Gefühl jetzt die Nase im Titelkampf länger drin?
+
+#MotoGP #JorgeMartin #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/19/title-race-leader-martin-produces-golden-comeback-to-capitalise-on-acosta-error/1090418
+Quelle: https://www.motogp.com/en/news/2026/09/19/title-race-leader-martin-produces-golden-comeback-to-capitalise-on-acosta-error/1090418
+Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-19-manual-35462722952
+Telegram-Update-ID: 279361683
+MotoGP-Auswahl: 3
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Text:
+Jorge Martin gewinnt das Pole-Duell in Österreich – drei Titelkämpfer auf der ersten Startreihe, knapp unter einer Zehntel auseinander.
+
+Die erste Reihe beim MotoGP-Qualifying in Österreich war zum Greifen nah beieinander: Jorge Martin sicherte sich die Pole vor Marc Marquez und Pedro Acosta – alle drei mit eigenen Punkten zu vergeben. Marco Bezzecchi rutschte nur knapp an ihnen vorbei auf Platz vier.
+
+Wer von den dreien hat nach der Pole die beste Ausgangslage für den Sonntag?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-19-racing-editorial-2026-09-19-3-electric-martin-beat-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-19-manual-35462722952
+Telegram-Update-ID: 279361683
+MotoGP-Auswahl: 3
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Text:
+Jorge Martin gewinnt das Pole-Duell in Österreich – drei Titelkämpfer auf der ersten Startreihe, knapp unter einer Zehntel auseinander.
+
+Die erste Reihe beim MotoGP-Qualifying in Österreich war zum Greifen nah beieinander: Jorge Martin sicherte sich die Pole vor Marc Marquez und Pedro Acosta – alle drei mit eigenen Punkten zu vergeben. Marco Bezzecchi rutschte nur knapp an ihnen vorbei auf Platz vier.
+
+Wer von den dreien hat nach der Pole die beste Ausgangslage für den Sonntag?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+Link-Preview: offiziell
