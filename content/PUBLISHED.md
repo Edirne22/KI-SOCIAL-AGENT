@@ -381,7 +381,7 @@ Link-Preview: offiziell
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 35463604283-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-19-manual-35462722952
 Telegram-Update-ID: 279361683
