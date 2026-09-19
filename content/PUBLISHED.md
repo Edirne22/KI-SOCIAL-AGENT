@@ -264,6 +264,7 @@ Bild: assets/images/2026-09/2026-09-25-bike-ducati-panigale-v4.jpg
 
 ## Instagram
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-19-daily
 Telegram-Update-ID: 279361681
