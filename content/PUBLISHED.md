@@ -261,4 +261,3 @@ Die Panigale V4 ist das reine Straßenabkömmling des Desmosedici GP – direkt 
 #RacingCalendar #BikeOfTheWeekend #Ducati #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 Medienstatus: HERSTELLER_PREVIEW
 Bild: assets/images/2026-09/2026-09-25-bike-ducati-panigale-v4.jpg
-
