@@ -281,9 +281,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-be
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-19-racing-editorial-2026-09-19-1-marc-marquez-capital-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35430416521-1
+## Facebook [GEPOSTET 2026-09-19 07:50 | ID: 1285968257941776_122110845777469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-19-daily
 Telegram-Update-ID: 279361681
