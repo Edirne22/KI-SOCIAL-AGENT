@@ -1,10 +1,10 @@
 # PROJEKT-ÜBERGABE – KI-SOCIAL-AGENT
 
-Stand: 2026-09-18/19 Nacht (Router-Migration abgeschlossen)
+Stand: 2026-09-19 (Router live, Finanzagent gebaut)
 
-## ✅ Heute erledigt (gemergt)
+## ✅ Erledigt (gemergt und live)
 
-### Telegram-Stack
+### Telegram-Stack (komplett saniert)
 - P0 – Exit-2-Crash behoben
 - P1 – Queue atomar (ein Update pro Lauf)
 - P2 – Concurrency entkoppelt
@@ -17,20 +17,19 @@ Stand: 2026-09-18/19 Nacht (Router-Migration abgeschlossen)
 ### Doku & Werkzeuge
 - P3 – Gemini-Inventur (`docs/GEMINI_INVENTORY.md`)
 - P4 – V8.6-Promotionsplan (`docs/V8.6_PROMOTION_PLAN.md`)
-- Race-Calendar-Pipeline V4 (6 Fixes + 3 Review-Korrekturen)
+- Race-Calendar-Pipeline V4 (6 Fixes + Review-Korrekturen)
 - `AGENTS.md` (Jules-Regeln + i-have-adhd)
-- `docs/PROJEKT_UEBERGABE.md`
 - `llm-router-test.yml` (isolierter Router-Smoketest)
 
-### Multi-Modell-Router (Kern-Erfolg)
-- `llm_router.py` + `config/llm_providers.json` live
+### Multi-Modell-Router (live)
+- `llm_router.py` + `config/llm_providers.json`
 - 5 Anbieter mit Auto-Fallback: Groq, Google, OpenRouter, NVIDIA, Cloudflare
 - Cooldown bei 429, Retry-After-Beachtung
 - Skip-Logik bei fehlendem Key
 - Config-Validierung, max_tokens=2000
-- **Alle 3 Router-Tests grün** (default/reasoning/fallback)
+- **Alle 3 Router-Tests grün**
 
-### Auf Router migriert (7 Agenten)
+### Agenten auf Router (7)
 - ✅ `follow_analyzer.py`
 - ✅ `deal_hunter.py` (search_provider)
 - ✅ `search_provider.py`
@@ -39,32 +38,109 @@ Stand: 2026-09-18/19 Nacht (Router-Migration abgeschlossen)
 - ✅ `ride_with_me.py` (getestet)
 - ✅ `generate_ideas.py` (getestet)
 
+### Finanzagent (Agent 15)
+- ✅ `finance_planner.py` + Workflow + 5 memory-Dateien
+- ✅ Cron: Montag 07:00 UTC
+- ⚠️ **Analyse aktuell leer** (nur „User Safety: safe") – Fix nötig
+
 ### Secrets in GitHub
-- `GROQ_API_KEY` ✅
-- `GEMINI_API_KEY` ✅
-- `OPENROUTER_API_KEY` ✅
-- `NVIDIA_API_KEY` ✅ (Ablauf 18.03.2027)
-- `CLOUDFLARE_API_TOKEN` ✅
-- `CLOUDFLARE_ACCOUNT_ID` ✅
+`GROQ_API_KEY`, `GEMINI_API_KEY`, `OPENROUTER_API_KEY`, `NVIDIA_API_KEY` (neu), `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `APIFY_API_TOKEN`
 
-## ⏳ Offene Baustellen
+## 🔴 AKUT OFFEN – sofort
 
-| Aufgabe | Priorität |
+| # | Aufgabe | Auftrag liegt bereit? |
+|---|---|---|
+| 1 | **Finanzagent-Fix** (Groq primär + Safety-Schutz) | ✅ ja, in Jules rausschicken |
+| 2 | `followed_accounts.md` Header korrigieren (Mo/Mi/Fr) | nein, manuell |
+| 3 | Watchlist-Tracker für Handy-Tracking bauen | ja, als Auftrag formulierbar |
+
+## 🟠 NVIDIA-Modelle einbinden (bald)
+
+### Text-to-Image
+| Modell | Calls/30d |
 |---|---|
-| `followed_accounts.md` Header korrigieren (Mo/Mi/Fr statt wöchentlich) | klein |
-| Watchlist-Tracker für Handy-Tracking (Cron mit Apify) | offen |
-| Deal-Hunter Transparenz (Provider-Anzeige im Log) | klein |
-| Serie-Filter (Formel 1 → kein Bike-Block) | mittel |
-| Agnes-Story strenger (erfundene Namen) | mittel |
-| Cloudflare-Bildgenerierung (FLUX + Leonardo) | Auftrag fertig |
-| Publisher-Workflow `git add -A` (Insta + FB) | klein |
-| Racing-Pipeline auf Router (Agnes bleibt Bilder) | später |
-| VPS einrichten (Ubuntu 24.04) | mittelfristig |
-| SearXNG auf VPS (kostenlose Websuche) | nach VPS |
-| OmniRoute auf VPS | nach VPS |
-| Remotion + KI-Video (LTX, Wan, Hunyuan) | nach OmniRoute |
-| Kinocut als Video-Editor | nach Video-Setup |
-| V8.6 Promotion Debug → main | Plan liegt vor |
+| `black-forest-labs/flux.2-klein-4b` | 338K |
+| `black-forest-labs/flux.1-dev` | 303K |
+| `black-forest-labs/flux.1-schnell` | 227K |
+| `black-forest-labs/flux.1-kontext-dev` | 7K |
+| `stabilityai/stable-diffusion-3.5-large` | – |
+| `qwen/qwen-image` | – |
+
+**Empfehlung:** `image_router.py` → FLUX.1-schnell primär, FLUX.1-dev Fallback, Agnes letzter Fallback.
+
+### Vision / Image-to-Text
+- `meta/llama-3.2-11b-vision-instruct`
+- `meta/llama-3.2-90b-vision-instruct`
+- `moonshotai/kimi-k3` (multimodal)
+- `nvidia/nemotron-3-nano-omni` (Bild+Video+Speech+Text)
+- `nvidia/nemotron-ocr-v2`
+- `google/paligemma`
+
+### Video
+- `nvidia/cosmos3-nano` (Video-Generierung)
+- `nvidia/cosmos3-nano-reasoner`
+- `nvidia/video-super-resolution`
+- `nvidia/relighting`
+- `nvidia/active-speaker-detection`
+- `nvidia/synthetic-video-detector`
+
+### Speech / Audio
+- NVIDIA Speech-to-Text (mehrere Modelle)
+- NVIDIA Text-to-Speech (Riva)
+
+### Übersetzung
+- NVIDIA Translation (37/36/12 Sprachen) → für DE ↔ TR
+
+### LLM (Router-Erweiterung)
+- `meta/llama-3.3-70b-instruct`
+- `google/gemma-4-31b-it`
+- `nvidia/nemotron-3-ultra-550b`
+- `nvidia/nemotron-3.5-lightning-30b`
+
+### Embedding / Safety
+- `nvidia/embedding-1b` (RAG/Memory)
+- `nvidia/nemotron-3.5-content-safety` (Post-Qualität)
+
+### ❌ Nicht relevant
+- ARC / Evo 2 (Biologie)
+- Drug Discovery
+- Route Optimization (cuOpt)
+
+### Technische Notizen NVIDIA NIM
+- **Text-API:** `https://integrate.api.nvidia.com/v1` (OpenAI-kompatibel)
+- **Bild-API:** `https://ai.api.nvidia.com/v1/genai/<model>` (eigenes Format)
+- **40 RPM, kostenlos, kein Token-Billing**
+
+## 🟡 Qualitäts-Fixes (offen)
+
+| # | Was |
+|---|---|
+| 4 | Serie-Filter (Formel 1 → kein Bike-Block) |
+| 5 | Agnes-Story strenger (erfundene Namen) |
+| 6 | Deal-Hunter Transparenz (Provider-Anzeige) |
+| 7 | Cloudflare-Bildgenerierung (FLUX + Leonardo) |
+| 8 | Publisher-Workflow `git add -A` (Insta + FB) |
+| 9 | Kimi K3 testen + in NVIDIA-Config aktivieren |
+
+## 🟢 Nach VPS-Setup
+
+| # | Was |
+|---|---|
+| 10 | VPS einrichten (Ubuntu 24.04) |
+| 11 | SearXNG (kostenlose Websuche) |
+| 12 | OmniRoute |
+| 13 | `speech_router.py` (TTS + STT) |
+| 14 | `translation_router.py` (DE ↔ TR) |
+| 15 | `video_router.py` (Cosmos3 Nano) |
+| 16 | Remotion + Video-Pipeline |
+
+## 🟣 Strategisch
+
+| # | Was |
+|---|---|
+| 17 | V8.6 Promotion Debug → main |
+| 18 | Debug-Workflow-Split auflösen |
+| 19 | Autonome Content-Fabrik (Vision) |
 
 ## 🎯 Vision
 
@@ -80,37 +156,30 @@ Autonome Content-Fabrik: Agenten erstellen aus einem Prompt selbstständig Video
 | `long_context` | NVIDIA → OpenRouter → Google |
 | `default` | Groq → Google → OpenRouter → NVIDIA → Cloudflare |
 
-### Bekannte tote Modelle (nicht verwenden)
+### Tote Modelle (nicht verwenden)
 - `deepseek/deepseek-r1:free` (nicht mehr kostenlos)
 - `deepseek-ai/deepseek-v4-pro` (EOL 07.08.2026)
-- `deepseek-ai/deepseek-v4-flash` (EOL 07.08.2026 – noch in Config, aber OpenRouter greift vorher)
-- `gemini-2.5-flash` (nur für Bestandsnutzer)
+- `deepseek-ai/deepseek-v4-flash` (EOL 07.08.2026)
+- `gemini-2.5-flash` (nur Bestandsnutzer)
 
-## 🧰 Gemerkte Tools
+## 🧾 Apify-Kosten
 
-- **awesome-llm-apps** – Inspirationsquelle für Agenten/RAG
-- **OpenResearch** – parallele Recherche-Agenten
-- **i-have-adhd** – Coding-Agent-Regeln (in `AGENTS.md`)
-
-## 🧾 Apify-Kosten – aktueller Verbraucher
-
-| Agent | Läuft wann | Apify pro Lauf |
+| Agent | Läuft | Apify |
 |---|---|---|
-| Follow-Analyzer | Mo/Mi/Fr (Cron) | bis 8 Accounts |
-| Deal-Hunter | nur bei `deal:` oder manuell | 1 Query |
-| Watchlist | keine automatische Prüfung | – |
+| Follow-Analyzer | Mo/Mi/Fr | bis 8 Accounts |
+| Deal-Hunter | manuell / Telegram | 1 Query |
+| Watchlist | nicht automatisch | – |
 
-**Follow-Analyzer ist der stille Kostentreiber.** Aktuell 3× pro Woche.
-Optionen: Frequenz senken, Bright Data testen, oder VPS + SearXNG.
+**Follow-Analyzer = Kostentreiber.** Frequenz senken oder VPS + SearXNG.
 
 ## ⚠️ Kritische Regeln
 
 - Jules: max 3 Sessions, max 15 Credits/Tag
-- Debug-Branch `debug/motogp-pipeline-output`: nicht anfassen
+- Debug-Branch: nicht anfassen
 - Kein Auto-Merge, kein Auto-Publish
 - Secrets nur notieren, nie committen
-- NVIDIA-Key läuft am 18.03.2027 ab – rechtzeitig erneuern
-- Router-Config-Datei nur direkt auf `main` pflegen (verhindert Merge-Konflikte)
+- NVIDIA-Key läuft 18.03.2027 ab
+- Router-Config nur direkt auf `main` pflegen
 
 ## 📎 Links
 
@@ -121,149 +190,8 @@ Optionen: Frequenz senken, Bright Data testen, oder VPS + SearXNG.
 - V8.6-Plan: docs/V8.6_PROMOTION_PLAN.md
 - Agenten-Regeln: AGENTS.md
 - Router-Test: Actions → LLM Router Test
+- NVIDIA Models: https://build.nvidia.com/models
 
-## 🚀 Nächste Schritte (nächste Session)
+## 📝 Für neue Chats
 
-1. `followed_accounts.md` Header korrigieren
-2. Watchlist-Tracker (Cron + Apify)
-3. Serie-Filter für Rennkalender
-4. Cloudflare-Bilder + Publisher-Fix
-5. VPS + SearXNG vorbereiten
-
-## 📝 Hinweis für neue Chats
-
-Wenn du in einem neuen Chat mit der KI startest, poste den Inhalt dieser Datei. Dann ist der Assistent sofort auf Stand.# PROJEKT-ÜBERGABE – KI-SOCIAL-AGENT
-
-Stand: 2026-09-18/19 Nacht (Router-Migration abgeschlossen)
-
-## ✅ Heute erledigt (gemergt)
-
-### Telegram-Stack
-- P0 – Exit-2-Crash behoben
-- P1 – Queue atomar (ein Update pro Lauf)
-- P2 – Concurrency entkoppelt
-- Parser-Robustheit (fehlende Posts blockieren nicht mehr)
-- active_batch_id-Fix (PR #17)
-- Workflow-Persistenz (`git add -A`)
-- Workflow-Env um alle 5 Router-Keys erweitert
-- End-to-End-Test MotoGP → Instagram + Facebook erfolgreich
-
-### Doku & Werkzeuge
-- P3 – Gemini-Inventur (`docs/GEMINI_INVENTORY.md`)
-- P4 – V8.6-Promotionsplan (`docs/V8.6_PROMOTION_PLAN.md`)
-- Race-Calendar-Pipeline V4 (6 Fixes + 3 Review-Korrekturen)
-- `AGENTS.md` (Jules-Regeln + i-have-adhd)
-- `docs/PROJEKT_UEBERGABE.md`
-- `llm-router-test.yml` (isolierter Router-Smoketest)
-
-### Multi-Modell-Router (Kern-Erfolg)
-- `llm_router.py` + `config/llm_providers.json` live
-- 5 Anbieter mit Auto-Fallback: Groq, Google, OpenRouter, NVIDIA, Cloudflare
-- Cooldown bei 429, Retry-After-Beachtung
-- Skip-Logik bei fehlendem Key
-- Config-Validierung, max_tokens=2000
-- **Alle 3 Router-Tests grün** (default/reasoning/fallback)
-
-### Auf Router migriert (7 Agenten)
-- ✅ `follow_analyzer.py`
-- ✅ `deal_hunter.py` (search_provider)
-- ✅ `search_provider.py`
-- ✅ `inspiration/orchestrator.py`
-- ✅ `weekly_plan.py` (getestet)
-- ✅ `ride_with_me.py` (getestet)
-- ✅ `generate_ideas.py` (getestet)
-
-### Secrets in GitHub
-- `GROQ_API_KEY` ✅
-- `GEMINI_API_KEY` ✅
-- `OPENROUTER_API_KEY` ✅
-- `NVIDIA_API_KEY` ✅ (Ablauf 18.03.2027)
-- `CLOUDFLARE_API_TOKEN` ✅
-- `CLOUDFLARE_ACCOUNT_ID` ✅
-
-## ⏳ Offene Baustellen
-
-| Aufgabe | Priorität |
-|---|---|
-| `followed_accounts.md` Header korrigieren (Mo/Mi/Fr statt wöchentlich) | klein |
-| Watchlist-Tracker für Handy-Tracking (Cron mit Apify) | offen |
-| Deal-Hunter Transparenz (Provider-Anzeige im Log) | klein |
-| Serie-Filter (Formel 1 → kein Bike-Block) | mittel |
-| Agnes-Story strenger (erfundene Namen) | mittel |
-| Cloudflare-Bildgenerierung (FLUX + Leonardo) | Auftrag fertig |
-| Publisher-Workflow `git add -A` (Insta + FB) | klein |
-| Racing-Pipeline auf Router (Agnes bleibt Bilder) | später |
-| VPS einrichten (Ubuntu 24.04) | mittelfristig |
-| SearXNG auf VPS (kostenlose Websuche) | nach VPS |
-| OmniRoute auf VPS | nach VPS |
-| Remotion + KI-Video (LTX, Wan, Hunyuan) | nach OmniRoute |
-| Kinocut als Video-Editor | nach Video-Setup |
-| V8.6 Promotion Debug → main | Plan liegt vor |
-
-## 🎯 Vision
-
-Autonome Content-Fabrik: Agenten erstellen aus einem Prompt selbstständig Videos, Bilder und Texte. OmniRoute bündelt alle KI-Anbieter. Remotion rendert Videos. KI-Video-Modelle liefern Rohmaterial. Kinocut schneidet. Agent gibt Prompt → fertiger Reel.
-
-## 🧰 Router-Architektur (live)
-
-| Task-Typ | Reihenfolge |
-|---|---|
-| `fast_chat` | Groq → Google → NVIDIA |
-| `reasoning` | OpenRouter → Google → NVIDIA |
-| `coding` | OpenRouter → NVIDIA → Groq |
-| `long_context` | NVIDIA → OpenRouter → Google |
-| `default` | Groq → Google → OpenRouter → NVIDIA → Cloudflare |
-
-### Bekannte tote Modelle (nicht verwenden)
-- `deepseek/deepseek-r1:free` (nicht mehr kostenlos)
-- `deepseek-ai/deepseek-v4-pro` (EOL 07.08.2026)
-- `deepseek-ai/deepseek-v4-flash` (EOL 07.08.2026 – noch in Config, aber OpenRouter greift vorher)
-- `gemini-2.5-flash` (nur für Bestandsnutzer)
-
-## 🧰 Gemerkte Tools
-
-- **awesome-llm-apps** – Inspirationsquelle für Agenten/RAG
-- **OpenResearch** – parallele Recherche-Agenten
-- **i-have-adhd** – Coding-Agent-Regeln (in `AGENTS.md`)
-
-## 🧾 Apify-Kosten – aktueller Verbraucher
-
-| Agent | Läuft wann | Apify pro Lauf |
-|---|---|---|
-| Follow-Analyzer | Mo/Mi/Fr (Cron) | bis 8 Accounts |
-| Deal-Hunter | nur bei `deal:` oder manuell | 1 Query |
-| Watchlist | keine automatische Prüfung | – |
-
-**Follow-Analyzer ist der stille Kostentreiber.** Aktuell 3× pro Woche.
-Optionen: Frequenz senken, Bright Data testen, oder VPS + SearXNG.
-
-## ⚠️ Kritische Regeln
-
-- Jules: max 3 Sessions, max 15 Credits/Tag
-- Debug-Branch `debug/motogp-pipeline-output`: nicht anfassen
-- Kein Auto-Merge, kein Auto-Publish
-- Secrets nur notieren, nie committen
-- NVIDIA-Key läuft am 18.03.2027 ab – rechtzeitig erneuern
-- Router-Config-Datei nur direkt auf `main` pflegen (verhindert Merge-Konflikte)
-
-## 📎 Links
-
-- Repo: https://github.com/Edirne22/KI-SOCIAL-AGENT
-- Actions: https://github.com/Edirne22/KI-SOCIAL-AGENT/actions
-- Handbuch: docs/HANDBUCH.md
-- Gemini-Inventur: docs/GEMINI_INVENTORY.md
-- V8.6-Plan: docs/V8.6_PROMOTION_PLAN.md
-- Agenten-Regeln: AGENTS.md
-- Router-Test: Actions → LLM Router Test
-
-## 🚀 Nächste Schritte (nächste Session)
-
-1. `followed_accounts.md` Header korrigieren
-2. Watchlist-Tracker (Cron + Apify)
-3. Serie-Filter für Rennkalender
-4. Cloudflare-Bilder + Publisher-Fix
-5. VPS + SearXNG vorbereiten
-
-## 📝 Hinweis für neue Chats
-
-Wenn du in einem neuen Chat mit der KI startest, poste den Inhalt dieser Datei. Dann ist der Assistent sofort auf Stand.
+Poste den Inhalt dieser Datei, dann ist der Assistent sofort auf Stand.
