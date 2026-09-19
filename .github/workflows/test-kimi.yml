@@ -1,1 +1,24 @@
 
+name: Test Kimi K3
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Kimi K3 via NVIDIA
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          curl -s -o response.json -w "HTTP_CODE:%{http_code}\n" \
+            https://integrate.api.nvidia.com/v1/chat/completions \
+            -H "Authorization: Bearer $NVIDIA_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "model": "moonshotai/kimi-k3",
+              "messages": [{"role":"user","content":"Sag nur OK"}],
+              "max_tokens": 10
+            }'
+          echo "--- RESPONSE ---"
+          cat response.json
