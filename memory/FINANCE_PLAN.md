@@ -1,5 +1,9 @@
 # Finanzplan – Stand 2026-09-19
 
+## Investierbar
+- 20000 € bei Chase
+- 5000 € Cash separat (nicht getrackt)
+
 ## Aktuelle Konten
 
 | Bank | Produkt | Zinssatz | Gültig bis | Zinssatz danach | Anmerkung |
