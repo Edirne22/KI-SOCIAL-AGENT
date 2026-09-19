@@ -1,1 +1,36 @@
 
+name: Test Vision Router
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Run vision_router smoke test
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          python -c "
+          from vision_router import VisionRouter
+          # Wir brauchen ein Testbild. Erzeuge ein minimales JPEG.
+          import base64
+          # 1x1 schwarzes JPEG
+          b64 = (
+            '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQI'
+            'CAkJCw4NDAoPEhAPDxETFxUVExMWFhkfHBscHhkZJConJyQqLy0tLR8k'
+            'NDg0LDgtLS3/wAALCAABAAEBAREA/8QAFAABAAAAAAAAAAAAAAAAAAAA'
+            'CP/EABQQAQAAAAAAAAAAAAAAAAAAAAD/2gAIAQEAAD8AKp//2Q=='
+          )
+          img_bytes = base64.b64decode(b64)
+          r = VisionRouter()
+          result = r.analyze(img_bytes, mode='general')
+          print('RESULT:', result)
+          assert 'description' in result or 'error' in result, 'Unexpected response'
+          print('OK')
+          "
