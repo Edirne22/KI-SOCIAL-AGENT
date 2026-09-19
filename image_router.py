@@ -1,7 +1,6 @@
 import os
 import base64
 import logging
-import time
 import requests
 
 from generate_agnes_media import agnes_generate_image
@@ -12,20 +11,16 @@ NVIDIA_MODELS = [
     {
         "name": "black-forest-labs/flux.1-schnell",
         "steps": 4,
-        "cfg_scale": 0,
-        "include_mode": True,
+        "extra": {},
     },
     {
         "name": "black-forest-labs/flux.1-dev",
-        "steps": 28,
-        "cfg_scale": 3.5,
-        "include_mode": True,
-    },
-    {
-        "name": "black-forest-labs/flux.2-klein-4b",
-        "steps": 4,
-        "cfg_scale": 0,
-        "include_mode": False,
+        "steps": 50,
+        "extra": {
+            "mode": "",
+            "image": "",
+            "cfg_scale": 5,
+        },
     },
 ]
 
@@ -45,8 +40,6 @@ class ImageRouter:
             "Content-Type": "application/json",
         }
 
-        backoff_delays = [1, 2, 4]
-
         for model_info in NVIDIA_MODELS:
             model_name = model_info["name"]
 
@@ -62,67 +55,49 @@ class ImageRouter:
                 url = f"https://ai.api.nvidia.com/v1/genai/{model_name}"
                 payload = {
                     "prompt": prompt,
-                    "samples": 1,
+                    "width": 1024,
+                    "height": 1024,
                     "seed": kwargs.get("seed", 0),
-                    "steps": kwargs.get("steps", model_info["steps"]),
-                    "cfg_scale": kwargs.get("cfg_scale", model_info["cfg_scale"]),
+                    "steps": model_info["steps"],
                 }
-                if model_info.get("include_mode"):
-                    payload["mode"] = "base"
+                payload.update(model_info["extra"])
 
-            model_failed = False
-            for attempt in range(4):  # initial attempt + up to 3 retries
+            try:
+                response = requests.post(url, headers=headers, json=payload, timeout=180)
+            except Exception as e:
+                logger.error(f"image_router: Network/timeout error for model {model_name}: {e}")
+                continue
+
+            if response.status_code == 200:
                 try:
-                    response = requests.post(url, headers=headers, json=payload, timeout=60)
-                except Exception as e:
-                    logger.error(f"image_router: Network error for model {model_name}: {e}")
-                    model_failed = True
-                    break
-
-                if response.status_code == 200:
-                    try:
-                        data = response.json()
-                        if api_style == "openai":
-                            b64_str = data["data"][0]["b64_json"]
-                        else:
-                            b64_str = data["artifacts"][0]["base64"]
-                        img_bytes = base64.b64decode(b64_str)
-                        logger.info(f"image_router: generated via {model_name}")
-                        return img_bytes
-                    except (KeyError, IndexError, TypeError, ValueError) as err:
-                        logger.error(f"image_router: Failed to parse response from {model_name}: {err}")
-                        model_failed = True
-                        break
-
-                elif response.status_code == 429:
-                    if attempt < 3:
-                        delay = backoff_delays[attempt]
-                        logger.warning(
-                            f"image_router: Rate limit 429 for model {model_name}. Retrying in {delay}s (attempt {attempt + 1}/3)..."
-                        )
-                        time.sleep(delay)
+                    data = response.json()
+                    if api_style == "openai":
+                        b64_str = data["data"][0]["b64_json"]
                     else:
-                        logger.warning(
-                            f"image_router: Rate limit 429 persisted for model {model_name} after 3 retries."
-                        )
-                        model_failed = True
-                        break
+                        b64_str = data["artifacts"][0]["base64"]
+                    img_bytes = base64.b64decode(b64_str)
+                    logger.info(f"image_router: generated via {model_name}")
+                    return img_bytes
+                except (KeyError, IndexError, TypeError, ValueError) as err:
+                    logger.error(f"image_router: Failed to parse response from {model_name}: {err}")
+                    continue
 
-                elif 500 <= response.status_code < 600:
-                    logger.error(
-                        f"image_router: Server error {response.status_code} for model {model_name}."
-                    )
-                    model_failed = True
-                    break
+            elif response.status_code == 429:
+                logger.warning(
+                    f"image_router: Rate limit 429 for model {model_name}. Moving to next model immediately."
+                )
+                continue
 
-                else:  # 4xx error (excluding 429) or other statuses
-                    logger.error(
-                        f"image_router: HTTP error {response.status_code} for model {model_name}: {response.text[:200]}"
-                    )
-                    model_failed = True
-                    break
+            elif 500 <= response.status_code < 600:
+                logger.error(
+                    f"image_router: Server error {response.status_code} for model {model_name}."
+                )
+                continue
 
-            if model_failed:
+            else:  # 4xx error (excluding 429) or other statuses
+                logger.error(
+                    f"image_router: HTTP error {response.status_code} for model {model_name}: {response.text[:200]}"
+                )
                 continue
 
         logger.warning("image_router: NVIDIA chain exhausted, using Agnes")
