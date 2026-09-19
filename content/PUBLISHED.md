@@ -379,9 +379,8 @@ https://www.motogp.com/en/news/2026/09/19/title-race-leader-martin-produces-gold
 Quelle: https://www.motogp.com/en/news/2026/09/19/title-race-leader-martin-produces-golden-comeback-to-capitalise-on-acosta-error/1090418
 Link-Preview: offiziell
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35463604283-1
+## Instagram [GEPOSTET 2026-09-19 19:12 | ID: 18006243032783026]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-19-manual-35462722952
 Telegram-Update-ID: 279361683
