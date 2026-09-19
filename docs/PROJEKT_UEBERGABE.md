@@ -686,3 +686,60 @@ Kinder. Für sie da sein. Ihnen ein besseres Leben ermöglichen.
 2. Vision in bestehende Pipeline einbinden (Instagram-Analyse)
 3. Approval-Dashboard Stufe 2 (GitHub Pages)
 4. TikTok-Integration (ClawHub Skill)
+---
+
+## 📸 SNAPSHOT – 19.09.2026 (Nachmittag)
+
+### ✅ Router-Stack fertig (Phase 1)
+
+| Modul | Primär | Fallback | Live getestet |
+|---|---|---|---|
+| `llm_router.py` | Groq/Google/OpenRouter/NVIDIA/Cloudflare | – | ✅ |
+| `image_router.py` | Pollinations | Cloudflare → Together → NVIDIA → Agnes | ✅ |
+| `vision_router.py` | Llama 3.2 Vision | Kimi K3 | ✅ |
+| `translation_router.py` | Riva 4B (NVIDIA) | llm_router | ✅ |
+| `speech_router.py` | – | – | 🟢 nach VPS |
+| `video_router.py` | – | – | 🟢 nach VPS |
+
+### 🔑 Wichtige Env-Variablen
+
+| Variable | Wert | Wo |
+|---|---|---|
+| `IMAGE_PRIMARY` | `pollinations` | test-image-router.yml |
+| `NVIDIA_IMAGE_API_STYLE` | `genai` | test-image-router.yml |
+| `CLOUDFLARE_ACCOUNT_ID` + `_API_TOKEN` | gesetzt | GitHub Secrets |
+| `TOGETHER_API_KEY` | gesetzt, aber Account read-only | GitHub Secrets |
+| `POLLINATIONS_API_KEY` | gesetzt | GitHub Secrets |
+| `NVIDIA_API_KEY` | `KI-SOCIAL-AGENT-v2` | GitHub Secrets |
+
+### 🧪 Test-Workflows (alle grün)
+
+| Workflow | Ergebnis |
+|---|---|
+| `test-image-router.yml` | `BYTES: 386374` in 9 Sek (Pollinations) |
+| `test-vision-router.yml` | `RESULT: {...}` (Llama Vision) |
+| `test-translation-router.yml` | DE→TR + TR→DE korrekt |
+
+### ⚠️ Provider-Status (aktuelle Erkenntnisse)
+
+- ✅ **Pollinations** – läuft zuverlässig, kein Key-Limit
+- ✅ **Cloudflare Workers AI** – nach Payload-Fix (`{"prompt": ...}` only) nutzbar
+- ❌ **Together AI** – Account im Read-only Mode, Deposit nötig
+- ❌ **NVIDIA FLUX** – Timeout/422, auf Eis
+- ✅ **NVIDIA Riva 4B** (Translation) – läuft
+- ✅ **NVIDIA Llama Vision** – läuft
+- ✅ **Agnes** – Fallback für Bilder
+
+### 🎬 Content-Phase gestartet
+
+- Erster Reel „Bikertreff-Runde Teil 1" – wird heute gedreht (Radevormwald + Biggesee)
+- **Konzept:** Serie mit „Teil 2 folgt"-Hook, 2–3 Spots pro Reel
+- Aufnahme: heute Nachmittag, Schnitt: heute Abend mit CapCut
+
+### 🔴 Nächste Schritte
+
+1. Ersten Reel bauen + posten
+2. Vision in bestehende Pipeline einbinden (Follow-Analyzer)
+3. Approval-Dashboard Stufe 2 (GitHub Pages)
+4. TikTok-Integration (ClawHub Skill)
+5. Nach VPS: speech_router, video_router
