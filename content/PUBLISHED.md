@@ -261,3 +261,81 @@ Die Panigale V4 ist das reine Straßenabkömmling des Desmosedici GP – direkt 
 #RacingCalendar #BikeOfTheWeekend #Ducati #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 Medienstatus: HERSTELLER_PREVIEW
 Bild: assets/images/2026-09/2026-09-25-bike-ducati-panigale-v4.jpg
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-19-daily
+Telegram-Update-ID: 279361681
+MotoGP-Auswahl: 1
+Titel: Marc Marquez capitalises on Bezzecchi error to seize title race lead A 78th MotoGP victory, following a Lap 1 crash for the Aprilia star, sees the reigning Champion jump level on points with Martin as the sun sets on a seismic San Marino GP
+Text:
+Marc Marquez feiert den 78. MotoGP-Sieg – und übernimmt die Titelrangliste.
+
+Bezzecchis Lap-1-Crash bei der Aprilia kostete ihn nicht nur die Führung im Rennen, sondern öffnete Marquez die Bühne. Der amtierende Weltmeister profitierte von dem Fehler und gewann das San Marino GP. Dadurch ist er jetzt punktgleich mit Martin in der WM-Tabelle.
+
+Wer hat für euch die bessere Chance auf den Titel: Marquez mit der Erfahrung oder Martin mit der Konstanz?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-19-racing-editorial-2026-09-19-1-marc-marquez-capital-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-19-daily
+Telegram-Update-ID: 279361681
+MotoGP-Auswahl: 1
+Titel: Marc Marquez capitalises on Bezzecchi error to seize title race lead A 78th MotoGP victory, following a Lap 1 crash for the Aprilia star, sees the reigning Champion jump level on points with Martin as the sun sets on a seismic San Marino GP
+Text:
+Marc Marquez feiert den 78. MotoGP-Sieg – und übernimmt die Titelrangliste.
+
+Bezzecchis Lap-1-Crash bei der Aprilia kostete ihn nicht nur die Führung im Rennen, sondern öffnete Marquez die Bühne. Der amtierende Weltmeister profitierte von dem Fehler und gewann das San Marino GP. Dadurch ist er jetzt punktgleich mit Martin in der WM-Tabelle.
+
+Wer hat für euch die bessere Chance auf den Titel: Marquez mit der Erfahrung oder Martin mit der Konstanz?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+Link-Preview: offiziell
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-19-daily
+Telegram-Update-ID: 279361681
+MotoGP-Auswahl: 5
+Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Text:
+WorldSBK stellt Regel-Updates für 2027 vor – die Teams sind begeistert.
+
+Die Rennserie hat den aktualisierten Reglements-Fahrplan für 2027 und darüber hinaus vorgestellt. Die Mannschaften reagieren durchweg positiv auf die geänderten Vorgaben. Das Motto 'We welcome this new era' spiegelt die grundsätzliche Zustimmung wider.
+
+Wie stehen die neuen Regeländerungen zu deiner Meinung nach?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rules-roadmap-updates-for-2027-and-onwards-we-welcome-this-new-era/1090222
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-19-racing-editorial-2026-09-19-5-news-1d-ago-worldsbk-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-19-daily
+Telegram-Update-ID: 279361681
+MotoGP-Auswahl: 5
+Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Text:
+WorldSBK stellt Regel-Updates für 2027 vor – die Teams sind begeistert.
+
+Die Rennserie hat den aktualisierten Reglements-Fahrplan für 2027 und darüber hinaus vorgestellt. Die Mannschaften reagieren durchweg positiv auf die geänderten Vorgaben. Das Motto 'We welcome this new era' spiegelt die grundsätzliche Zustimmung wider.
+
+Wie stehen die neuen Regeländerungen zu deiner Meinung nach?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rules-roadmap-updates-for-2027-and-onwards-we-welcome-this-new-era/1090222
+Quelle: https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rules-roadmap-updates-for-2027-and-onwards-we-welcome-this-new-era/1090222
+Link-Preview: offiziell
