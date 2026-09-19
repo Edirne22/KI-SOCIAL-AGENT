@@ -12,6 +12,19 @@ NVIDIA_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 NVIDIA_MODEL = "nvidia/riva-translate-4b-instruct-v2"
 SUPPORTED_LANGUAGES = ("de", "tr", "en", "fr", "es", "it", "nl", "pl", "ru", "ar")
 
+LANGUAGE_NAMES = {
+    "de": "German",
+    "tr": "Turkish",
+    "en": "English",
+    "fr": "French",
+    "es": "Spanish",
+    "it": "Italian",
+    "nl": "Dutch",
+    "pl": "Polish",
+    "ru": "Russian",
+    "ar": "Arabic",
+}
+
 
 class TranslationRouter:
     """Translate text using NVIDIA with the existing LLM router as fallback."""
@@ -21,6 +34,9 @@ class TranslationRouter:
             raise ValueError("Unsupported source or target language.")
         if source == target:
             raise ValueError("Source and target languages must differ.")
+
+        source_name = LANGUAGE_NAMES[source]
+        target_name = LANGUAGE_NAMES[target]
 
         api_key = os.environ.get("NVIDIA_API_KEY")
         if api_key:
@@ -35,8 +51,10 @@ class TranslationRouter:
                     {
                         "role": "user",
                         "content": (
-                            f"Translate from {source} to {target}. "
-                            f"Output only the translation.\n\n{text}"
+                            f"Translate the following text from {source_name} to {target_name}. "
+                            f"Output ONLY the translation in {target_name}. "
+                            f"Do not use any other language. Do not add explanations.\n\n"
+                            f"{text}"
                         ),
                     },
                 ],
@@ -79,6 +97,8 @@ class TranslationRouter:
 
         logger.info("translation_router: Using llm_router fallback.")
         return llm_router.quick_chat(
-            f"Translate from {source} to {target}. Return ONLY the translation.\n"
-            f"Text: {text}"
+            f"Translate the following text from {source_name} to {target_name}. "
+            f"Output ONLY the translation in {target_name}. "
+            f"Do not use any other language. Do not add explanations.\n\n"
+            f"{text}"
         )
