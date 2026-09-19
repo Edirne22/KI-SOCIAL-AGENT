@@ -22,7 +22,7 @@ def test_missing_nvidia_api_key(monkeypatch):
         router.generate_image("a test prompt")
 
 
-def test_schnell_used_on_200(monkeypatch):
+def test_schnell_payload_and_200(monkeypatch):
     monkeypatch.setenv("NVIDIA_API_KEY", "test-key")
     monkeypatch.setenv("NVIDIA_IMAGE_API_STYLE", "genai")
 
@@ -41,10 +41,17 @@ def test_schnell_used_on_200(monkeypatch):
         assert result == fake_bytes
         assert mock_post.call_count == 1
         assert "flux.1-schnell" in mock_post.call_args[0][0]
+        assert mock_post.call_args[1]["timeout"] == 180
+
         payload = mock_post.call_args[1]["json"]
+        assert payload["prompt"] == "a fast motorcycle"
+        assert payload["width"] == 1024
+        assert payload["height"] == 1024
+        assert payload["seed"] == 0
         assert payload["steps"] == 4
-        assert payload["cfg_scale"] == 0
-        assert payload["mode"] == "base"
+        assert "mode" not in payload
+        assert "image" not in payload
+        assert "cfg_scale" not in payload
         mock_agnes.assert_not_called()
 
 
@@ -60,8 +67,8 @@ def test_fallback_to_dev_on_429(monkeypatch):
         200, json_data={"artifacts": [{"base64": b64_data}]}
     )
 
-    # 4 attempts of 429 for schnell (1 initial + 3 retries), then 1 200 for dev
-    side_effects = [response_429, response_429, response_429, response_429, response_200]
+    # 1 attempt for schnell returns 429 -> immediate fallback to dev
+    side_effects = [response_429, response_200]
 
     with patch("requests.post", side_effect=side_effects) as mock_post, \
          patch("time.sleep") as mock_sleep, \
@@ -70,52 +77,23 @@ def test_fallback_to_dev_on_429(monkeypatch):
         result = router.generate_image("a fast motorcycle")
 
         assert result == fake_bytes
-        assert mock_post.call_count == 5
-        # Verify retries slept 1s, 2s, 4s
-        assert mock_sleep.call_args_list == [
-            ((1,),),
-            ((2,),),
-            ((4,),),
-        ]
+        assert mock_post.call_count == 2
+        mock_sleep.assert_not_called()  # No retries/sleep
+
         assert "flux.1-dev" in mock_post.call_args[0][0]
         dev_payload = mock_post.call_args[1]["json"]
-        assert dev_payload["steps"] == 28
-        assert dev_payload["cfg_scale"] == 3.5
-        assert dev_payload["mode"] == "base"
+        assert dev_payload["prompt"] == "a fast motorcycle"
+        assert dev_payload["width"] == 1024
+        assert dev_payload["height"] == 1024
+        assert dev_payload["seed"] == 0
+        assert dev_payload["steps"] == 50
+        assert dev_payload["mode"] == ""
+        assert dev_payload["image"] == ""
+        assert dev_payload["cfg_scale"] == 5
         mock_agnes.assert_not_called()
 
 
-def test_fallback_to_klein_when_first_two_fail(monkeypatch):
-    monkeypatch.setenv("NVIDIA_API_KEY", "test-key")
-    monkeypatch.setenv("NVIDIA_IMAGE_API_STYLE", "genai")
-
-    fake_bytes = b"fake_image_bytes_klein"
-    b64_data = base64.b64encode(fake_bytes).decode("utf-8")
-
-    response_500 = create_mock_response(500, text="Internal Server Error")
-    response_400 = create_mock_response(400, text="Bad Request")
-    response_200 = create_mock_response(
-        200, json_data={"artifacts": [{"base64": b64_data}]}
-    )
-
-    side_effects = [response_500, response_400, response_200]
-
-    with patch("requests.post", side_effect=side_effects) as mock_post, \
-         patch("image_router.agnes_generate_image") as mock_agnes:
-        router = ImageRouter()
-        result = router.generate_image("a fast motorcycle")
-
-        assert result == fake_bytes
-        assert mock_post.call_count == 3
-        assert "flux.2-klein-4b" in mock_post.call_args[0][0]
-        klein_payload = mock_post.call_args[1]["json"]
-        assert "mode" not in klein_payload
-        assert klein_payload["steps"] == 4
-        assert klein_payload["cfg_scale"] == 0
-        mock_agnes.assert_not_called()
-
-
-def test_fallback_to_agnes_when_all_flux_fail(monkeypatch, caplog):
+def test_fallback_to_agnes_when_both_fail(monkeypatch, caplog):
     monkeypatch.setenv("NVIDIA_API_KEY", "test-key")
     monkeypatch.setenv("NVIDIA_IMAGE_API_STYLE", "genai")
 
@@ -128,7 +106,7 @@ def test_fallback_to_agnes_when_all_flux_fail(monkeypatch, caplog):
         result = router.generate_image("a fast motorcycle")
 
         assert result == agnes_bytes
-        assert mock_post.call_count == 3  # 1 try for each of 3 models
+        assert mock_post.call_count == 2  # 1 try for schnell, 1 try for dev
         mock_agnes.assert_called_once_with("a fast motorcycle")
         assert "image_router: NVIDIA chain exhausted, using Agnes" in caplog.text
 
@@ -165,57 +143,3 @@ def test_both_api_styles_produce_bytes(monkeypatch):
         assert mock_post_openai.call_args[0][0] == "https://integrate.api.nvidia.com/v1/images/generations"
         json_body = mock_post_openai.call_args[1]["json"]
         assert json_body["model"] == "black-forest-labs/flux.1-schnell"
-
-
-def test_flux_2_klein_4b_payload_no_mode(monkeypatch):
-    """Verify that the payload sent to flux.2-klein-4b does NOT contain a 'mode' key."""
-    monkeypatch.setenv("NVIDIA_API_KEY", "test-key")
-    monkeypatch.setenv("NVIDIA_IMAGE_API_STYLE", "genai")
-
-    fake_bytes = b"klein_bytes"
-    b64_data = base64.b64encode(fake_bytes).decode("utf-8")
-
-    resp_500 = create_mock_response(500, text="error")
-    resp_200 = create_mock_response(200, json_data={"artifacts": [{"base64": b64_data}]})
-
-    with patch("requests.post", side_effect=[resp_500, resp_500, resp_200]) as mock_post:
-        router = ImageRouter()
-        result = router.generate_image("test prompt")
-
-        assert result == fake_bytes
-        # Third call is flux.2-klein-4b
-        call_args = mock_post.call_args_list[2]
-        call_url = call_args[0][0]
-        call_kwargs = call_args[1]
-        assert "flux.2-klein-4b" in call_url
-        payload = call_kwargs["json"]
-        assert "mode" not in payload
-        assert payload["steps"] == 4
-        assert payload["cfg_scale"] == 0
-
-
-def test_flux_1_dev_payload_params(monkeypatch):
-    """Verify that flux.1-dev is called with cfg_scale=3.5 and steps=28."""
-    monkeypatch.setenv("NVIDIA_API_KEY", "test-key")
-    monkeypatch.setenv("NVIDIA_IMAGE_API_STYLE", "genai")
-
-    fake_bytes = b"dev_bytes"
-    b64_data = base64.b64encode(fake_bytes).decode("utf-8")
-
-    resp_500 = create_mock_response(500, text="error")
-    resp_200 = create_mock_response(200, json_data={"artifacts": [{"base64": b64_data}]})
-
-    with patch("requests.post", side_effect=[resp_500, resp_200]) as mock_post:
-        router = ImageRouter()
-        result = router.generate_image("test prompt")
-
-        assert result == fake_bytes
-        # Second call is flux.1-dev
-        call_args = mock_post.call_args_list[1]
-        call_url = call_args[0][0]
-        call_kwargs = call_args[1]
-        assert "flux.1-dev" in call_url
-        payload = call_kwargs["json"]
-        assert payload["cfg_scale"] == 3.5
-        assert payload["steps"] == 28
-        assert payload["mode"] == "base"
