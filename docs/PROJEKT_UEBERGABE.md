@@ -636,3 +636,21 @@ Kinder. Für sie da sein. Ihnen ein besseres Leben ermöglichen.
 1. Test-Workflow für vision_router anlegen
 2. translation_router.py starten
 3. Erster Reel „10 Bikertreffs" bauen
+### ✅ 19.09.2026 – Router-Stack komplett (Phase 1)
+
+**Getestete & funktionierende Router:**
+- ✅ `llm_router.py` – 5 Provider (Groq, Google, OpenRouter, NVIDIA, Cloudflare)
+- ✅ `image_router.py` – Multi-Provider (Pollinations primär, Cloudflare/Together/NVIDIA/Agnes Fallback)
+- ✅ `vision_router.py` – Llama Vision (general), Nemotron OCR, Nemotron Omni
+- ⏳ `translation_router.py` – PR #38 offen (NVIDIA Riva 4B + llm_router Fallback)
+- ⏸️ `speech_router.py` – nach VPS
+- ⏸️ `video_router.py` – nach VPS
+
+**Env-Schalter:**
+- `IMAGE_PRIMARY` = `pollinations` (Standard)
+- `NVIDIA_IMAGE_API_STYLE` = `genai` (Standard)
+
+**Test-Workflows:**
+- `.github/workflows/test-image-router.yml` ✅
+- `.github/workflows/test-vision-router.yml` ✅
+- Translation-Test-Workflow: ⏳ fehlt
