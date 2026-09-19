@@ -340,9 +340,8 @@ https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rules-roadma
 Quelle: https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rules-roadmap-updates-for-2027-and-onwards-we-welcome-this-new-era/1090222
 Link-Preview: offiziell
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35463432882-1
+## Instagram [GEPOSTET 2026-09-19 19:09 | ID: 18109693549952247]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-19-manual-35462722952
 Telegram-Update-ID: 279361683
