@@ -617,3 +617,22 @@ Kinder. Für sie da sein. Ihnen ein besseres Leben ermöglichen.
 - **ClawHub:** https://clawhub.ai
 - **Handbuch:** `docs/HANDBUCH.md`
 - **Übergabe:** `docs/PROJEKT_UEBERGABE.md`
+### ✅ 19.09.2026 – Bild-Pipeline final
+
+**image_router.py – Multi-Provider-Chain:**
+- ✅ **Pollinations** = Primär (funktioniert, ~6 Sek, 374 KB, kein Key nötig)
+- ✅ **Cloudflare** = Payload-Fix gemergt (nur `prompt` senden)
+- ⚠️ **Together AI** = nicht verfügbar (Read-only Mode, Deposit nötig)
+- ⏸️ **NVIDIA** = Timeout/422 (auf Eis)
+- ✅ **Agnes** = letzte Instanz (funktioniert)
+
+**Env-Schalter:** `IMAGE_PRIMARY` = `pollinations` (Standard im Test-Workflow)
+
+**vision_router.py:**
+- ✅ Gemergt
+- Test-Workflow noch nicht angelegt
+
+**Nächste Schritte:**
+1. Test-Workflow für vision_router anlegen
+2. translation_router.py starten
+3. Erster Reel „10 Bikertreffs" bauen
