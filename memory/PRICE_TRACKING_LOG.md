@@ -59,3 +59,23 @@
 ## 2026-09-18 06:10
 - Produkt: handyvertrag 80GB D1 maximal 13 euro
 - Ergebnis: Kein verifiziertes Live-Angebot von Apify-Google-Suche; nicht gespeichert.
+
+## 2026-09-19 06:08
+- Produkt: motorradhandschuhe
+- Ergebnis: 3.50 € bei blmk.de (Zielpreis erreicht).
+
+## 2026-09-19 06:08
+- Produkt: handyvertrag 80GB D1
+- Ergebnis: 10.61 € bei handyhase.de (Zielpreis erreicht).
+
+## 2026-09-19 06:14
+- Produkt: handyvertrag 80GB D1 maximal 13 euro
+- Ergebnis: Kein verifiziertes Live-Angebot von Gemini-Fallback; nicht gespeichert.
+
+## 2026-09-19 06:15
+- Produkt: hunter
+- Ergebnis: Kein verifiziertes Live-Angebot von Apify-Google-Suche; nicht gespeichert.
+
+## 2026-09-19 06:15
+- Produkt: . Handyvertrag 80GB D1
+- Ergebnis: 1.00 € bei simdealz.de (Zielpreis erreicht).
