@@ -23,3 +23,8 @@ Quellen: Finanztip, Check24, Verivox, Biallo
 
 **4. Empfehlung für Bülent:**
 Bleib bis 26.12. bei Chase (4 % sind Top), FSA nicht anfassen. Danach Tagesgeld auf Gefa (2,4 %) oder Ayvens (2,3 %) umschichten, falls keine bessere Aktion winkt. Mit 20k bleibst du bei 1–2 Banken sauber im Einlagensicherungs-Rahmen. Cash (5k) separat parken wie geplant.
+## Lauf 2026-09-19 00:54 UTC
+
+Quellen: Finanztip, Check24, Verivox, Biallo
+
+Laut Finanztip (Stand 18. Sept 2026) sind die drei höchsten Tagesgeld‑Zinsen: Chase 4,0 % p.a. (4‑Monats‑Aktion), Ayvens Bank 4,0 % p.a. (3‑Monats‑Aktion) und Volkswagen Bank 3,5 % p.a. (6‑Monats‑Aktion). Check24 führt aktuell ein Höchstangebot von 3,82 % p.a. an, das unter den beiden 4‑%‑Aktionen liegt. Dein Chase‑Konto liefert bis 26.12.2026 den gleichen 4‑%‑Satz; danach sinkt der Zinssatz auf 2 % p.a., wodurch Ayvens Bank (4 % für 3 Monate) bzw. die unbefristeten 2,4 % der Gefa Bank attraktivere Alternativen wären. Für Bülent bleibt das aktuelle Chase‑Konto bis Ende 2026 konkurrenzfähig, während ein Blick auf Ayvens Bank oder Gefa Bank für die Zeit nach dem Zinssatzwechsel sinnvoll sein kann.
