@@ -284,3 +284,13 @@ Quelle: https://www.motogp.com/en/news/2026/09/18/almansa-fastest-from-quiles-on
 Story-Key: motogp:1090065
 Titel: HOT HEADLINES: all level as MotoGP readies for Spielberg thriller in Austria 14 down, 8 to go and it’s neck-and-neck at the top: a blockbuster awaits as the Styrian mountains come alive to the sound of MotoGP
 Quelle: https://www.motogp.com/en/news/2026/09/16/hot-headlines-all-level-as-motogp-readies-for-spielberg-thriller-in-austria/1090065
+
+## 2026-09-19 04:26 UTC – ANGEBOTEN
+Story-Key: motogp:1089345
+Titel: Marc Marquez capitalises on Bezzecchi error to seize title race lead A 78th MotoGP victory, following a Lap 1 crash for the Aprilia star, sees the reigning Champion jump level on points with Martin as the sun sets on a seismic San Marino GP
+Quelle: https://www.motogp.com/en/news/2026/09/13/marc-marquez-capitalises-on-bezzecchi-error-to-seize-title-race-lead/1089345
+
+## 2026-09-19 04:26 UTC – ANGEBOTEN
+Story-Key: motogp:1090571
+Titel: Revealed: brand new World Champion trophies for Moto2 and Moto3
+Quelle: https://www.motogp.com/en/news/2026/09/17/revealed-brand-new-world-champion-trophies-for-moto2-and-moto3/1090571

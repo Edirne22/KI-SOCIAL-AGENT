@@ -648,3 +648,45 @@ Story-Key: motogp:1090277
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-19 04:30 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez capitalises on Bezzecchi error to seize title race lead A 78th MotoGP victory, following a Lap 1 crash for the Aprilia star, sees the reigning Champion jump level on points with Martin as the sun sets on a seismic San Marino GP
+Story-Key: motogp:1089345
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 04:30 UTC | Motorcycle Racing | PASS
+Titel: Ogura cleared for Austrian GP FP1, further review to follow
+Story-Key: motogp:1090473
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 04:30 UTC | Motorcycle Racing | FAIL
+Titel: MotoGP™ News Acosta unbeatable in Austria for Friday honours at Red Bull Ring Read Now
+Story-Key: motogp:1090415
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 04:31 UTC | Motorcycle Racing | FAIL
+Titel: MotoGP™ News Acosta unbeatable in Austria for Friday honours at Red Bull Ring Read Now
+Story-Key: motogp:1090415
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 04:31 UTC | Motorcycle Racing | PASS
+Titel: Revealed: brand new World Champion trophies for Moto2 and Moto3
+Story-Key: motogp:1090571
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 04:32 UTC | Motorcycle Racing | PASS
+Titel: Tech3 signs Agius for MotoGP debut from 2027
+Story-Key: motogp:1090140
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-19 04:32 UTC | Motorcycle Racing | PASS
+Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
