@@ -47,6 +47,20 @@ def gather_all_sources() -> list[dict]:
     return results
 
 
+def _is_valid_analysis(text: str) -> bool:
+    """Prüft, ob die Antwort eine echte Analyse enthält."""
+    if not text or len(text.strip()) < 80:
+        return False
+    low = text.lower()
+    bad_markers = ["user safety", "safety: safe", "cannot provide", "kann nicht"]
+    if any(m in low for m in bad_markers):
+        return False
+    # Muss mindestens eine Zahl/Zinssatz enthalten
+    if not any(c.isdigit() for c in text):
+        return False
+    return True
+
+
 def analyze_with_router(plan: dict, sources: list[dict]) -> str:
     if not sources:
         return "Diese Woche konnten keine Zinsquellen abgerufen werden."
@@ -70,10 +84,23 @@ Aufgabe:
 3. Falls Chase schlechter wird (nach 26.12.2026): nenne eine Alternative.
 4. Formuliere eine kurze Empfehlung für Bülent (max. 4 Sätze, direkt, community-nah).
 
-WICHTIG: Keine Anlageberatung. Nur Recherche-Zusammenfassung.
+WICHTIG:
+- Keine Anlageberatung. Nur Recherche-Zusammenfassung.
+- Antworte NIEMALS nur mit Sicherheitshinweisen wie "User Safety: safe".
+- Liefere IMMER eine inhaltliche Analyse mit konkreten Zinssätzen, Anbietern und einem Vergleich zum Chase-Zins.
+- Falls du keine aktuellen Zinssätze aus den Quellen extrahieren kannst, schreibe das klar und nenne trotzdem die 3 aus deinem Wissen bekanntesten Tagesgeld-Anbieter mit ungefähren Zinssätzen.
+- Maximal 4 Sätze.
 Antworte auf Deutsch, kompakt.
 """
-    return quick_chat(prompt, task_type="reasoning").strip()
+    first_try = quick_chat(prompt, task_type="fast_chat").strip()
+    if _is_valid_analysis(first_try):
+        return first_try
+
+    second_try = quick_chat(prompt, task_type="default").strip()
+    if _is_valid_analysis(second_try):
+        return second_try
+
+    return "Analyse diese Woche nicht möglich. Bitte Quellen manuell prüfen: Finanztip, Check24, Verivox."
 
 
 def build_telegram_summary(analysis: str, plan: dict) -> str:
