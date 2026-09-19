@@ -359,9 +359,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/19/title-race-leader-martin-produ
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-19-racing-editorial-2026-09-19-1-motogp-news-title-ra-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35463539223-1
+## Facebook [GEPOSTET 2026-09-19 19:11 | ID: 1285968257941776_122111209743469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-19-manual-35462722952
 Telegram-Update-ID: 279361683
