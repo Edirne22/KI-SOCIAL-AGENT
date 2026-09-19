@@ -21,6 +21,7 @@ jobs:
           NVIDIA_IMAGE_API_STYLE: genai
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          IMAGE_PRIMARY: pollinations
         run: |
           python -c "
           from image_router import ImageRouter
