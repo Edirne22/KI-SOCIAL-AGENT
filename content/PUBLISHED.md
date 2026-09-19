@@ -320,9 +320,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/16/worldsbk-teams-react-to-rule
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-19-racing-editorial-2026-09-19-5-news-1d-ago-worldsbk-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35431282229-1
+## Facebook [GEPOSTET 2026-09-19 08:10 | ID: 1285968257941776_122110855893469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-19-daily
 Telegram-Update-ID: 279361681
