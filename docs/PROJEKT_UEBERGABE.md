@@ -495,3 +495,11 @@ Wenn eine bestehende Datei geändert werden soll:
   - Aktion: Workflow später/morgen erneut starten
   - Bei Erfolg: Telegram-Nachricht mit Strecken-Wetter
   - Bei weiterem 401: Key im Browser prüfen (siehe oben)
+
+---
+
+## 📸 SNAPSHOT – 20.09.2026 (Nacht)
+
+### 🎬 Video-Produktions-System aufgesetzt (Meilenstein)
+
+**Komplette Kette läuft:**
