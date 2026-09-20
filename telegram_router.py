@@ -7,10 +7,13 @@ mehr auf beliebige Nachrichten sendet.
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import subprocess
 import sys
+from datetime import datetime, timezone
+from pathlib import Path
 
 import requests
 
@@ -20,6 +23,16 @@ from vision_router import VisionRouter
 
 def _ack(update_id: int) -> None:
     get_updates(offset=update_id + 1)
+
+
+def _append_vision_log(entry: dict) -> None:
+    try:
+        path = Path("memory/VISION_LOG.jsonl")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    except Exception as e:
+        print(f"ROUTER: Vision-Log konnte nicht geschrieben werden: {e}")
 
 
 def _is_photo_message(update: dict) -> bool:
@@ -85,17 +98,47 @@ def _handle_photo(update: dict, chat: str) -> bool:
 
     image_bytes = _download_telegram_photo(photo, document)
     if not image_bytes:
-        send_message("❌ Vision-Fehler: Bild konnte nicht von Telegram geladen werden.")
+        error_message = "Bild konnte nicht von Telegram geladen werden."
+        _append_vision_log({
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "source": "telegram",
+            "mode": mode,
+            "model": None,
+            "result": None,
+            "tables_present": False,
+            "error": error_message,
+        })
+        send_message(f"❌ Vision-Fehler: {error_message}")
         return False
 
     try:
         result = VisionRouter().analyze(image_bytes, mode=mode)
     except Exception as e:
-        send_message(f"❌ Vision-Fehler: {e}")
+        error_message = str(e)
+        _append_vision_log({
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "source": "telegram",
+            "mode": mode,
+            "model": None,
+            "result": None,
+            "tables_present": False,
+            "error": error_message,
+        })
+        send_message(f"❌ Vision-Fehler: {error_message}")
         return False
 
     if result.get("error"):
-        send_message(f"❌ Vision-Fehler: {result['error']}")
+        error_message = str(result["error"])
+        _append_vision_log({
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "source": "telegram",
+            "mode": mode,
+            "model": None,
+            "result": None,
+            "tables_present": False,
+            "error": error_message,
+        })
+        send_message(f"❌ Vision-Fehler: {error_message}")
         return False
 
     description = result.get("description")
@@ -105,6 +148,16 @@ def _handle_photo(update: dict, chat: str) -> bool:
         tables = result.get("tables")
         if tables:
             description += f"\n\nTabellen: {tables}"
+
+    _append_vision_log({
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "source": "telegram",
+        "mode": mode,
+        "model": result.get("model_used"),
+        "result": result.get("description") or result.get("text", ""),
+        "tables_present": bool(result.get("tables")),
+        "error": None,
+    })
 
     send_message(
         f"🔍 Vision-Analyse:\n\n{description}\n\n"
