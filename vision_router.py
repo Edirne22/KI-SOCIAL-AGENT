@@ -19,8 +19,15 @@ NVIDIA_MODELS = {
 FALLBACK_MODEL = "moonshotai/kimi-k3"
 PROMPTS = {
     "general": (
-        "Describe this image in detail in German. Focus on "
-        "motorcycle content, riders, landscapes, brand logos."
+        "Analysiere diesen Screenshot auf Deutsch und antworte "
+        "ausschließlich auf Deutsch.\n"
+        "Beschreibe:\n\n"
+        "1. Was ist zu sehen? (Szene, Objekte, Personen)\n"
+        "2. Welcher Text ist im Bild sichtbar? (zitiere ihn wörtlich)\n"
+        "3. Welche Plattform/welcher Account? (falls erkennbar)\n"
+        "4. Zahlen/Daten, falls sichtbar (Likes, Kommentare, Datum)\n"
+        "Erfinde keine Details. Wenn etwas nicht erkennbar ist, "
+        "schreibe 'nicht erkennbar'."
     ),
     "ocr": (
         "Extract all text and table structures from this image. "
