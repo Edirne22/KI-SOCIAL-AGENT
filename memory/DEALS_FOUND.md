@@ -1006,3 +1006,233 @@ Quellen:
 - Handyhase.de - Die besten Handy-Schnäppchen im Netz: https://www.handyhase.de/
 - iPhone 18 Pro Max mit Vertrag im Vergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro-max
 - iPhone 17 Pro Max mit Vertrag ab 1 € | Angebote 2026 - SimDealz.de: https://www.simdealz.de/apple-iphone-17-pro-max-mit-vertrag/
+## Suche vom 2026-09-20 06:08
+Anfrage: motorradhandschuhe
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 50 € | seit 2026-09-12
+Verifiziertes Angebot: ja
+Preis: 3.50 €
+Händler: blmk.de
+Quelle: https://www.blmk.de/kalender/
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+
+BESTES_ANGEBOT:
+Preis: 3.50 €
+Händler: blmk.de
+URL: https://www.blmk.de/kalender/
+Belegt: ja
+Hinweis: Preis stammt aus einem aktuellen Suchtreffer; bitte auf den Link tippen und im Shop prüfen.
+
+Direkte Treffer (antippbar):
+1. All Black MTB Handschuhe MTN – Lukas Knopf - The Motion Brand
+   https://themotionbrand.com/products/all-black-mtn-handschuhe-mtb?srsltid=AU7gw4XSPPTcapV1PrBsIOORjteu_Qm8BGnDZOXGQCWEcOY9-bqZHuEH – All Black MTB Handschuhe MTN. Normaler Preis€32,90. /. inkl. MwSt. zzgl. Versandkosten. 64 Bewertungen. Kostenloser Versand. ab 80€ in DE. Bezahlen in 30 Tagen.
+2. Volkshochschule Spandau - Berlin.de
+   https://www.berlin.de/vhs/volkshochschulen/spandau/vhs_spandauherbst26.pdf?ts=1786628333 – 09.09.2026 ... € 50,00 (erm: € 25,50). 6-8 Teiln ... max. 25 Unterrichtseinheiten. Entgeltfrei. Weitere Informationen zum Projekt lesen rechnen. Beruf. Ich.
+3. Historische Themen - Wirtschaft & Tourismus - Stadt Grafing
+   https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen – Preis: VVK 10,00€/Person, an der Tageskasse in bar 12,50€/Person; Treffpunkt: Bronzesäule hinter dem Rathaus (Marktplatz 28); Dauer: Ca. zwei Stunden; Max.
+4. DSG25 Programm - Deutsche Schlaganfall-Gesellschaft
+   https://www.dsg-info.de/kongress/programm/ – Vorsitzende: Christine Vogl & Alexander Kollikowski. Max. TN-Zahl: 24. Gebühr: 50,00 €. → Zur Workshop-Buchung · WS 05. Interprofessionelle Therapie/Team is ...
+5. Wochen der Wärme 2026 - Klimaschutz
+   https://www.klimaschutz-niedersachsen.de/themen/waerme/2026-wochen-der-waerme.php – Ein Hausbesitzer berichtet über seine eigenen Erfahrungen nach drei Wintern mit einer Wärmepumpe in seinem rund 50 Jahre alten Haus. ... Kriterien erfüllen und ...
+6. Ausschreibung 34. German Open 09.09.2026 - EWU-BUND
+   https://ewu-bund.com/wp-content/uploads/2026/07/Ausschreibung-GO_2026_End.pdf – vor 3 Tagen ... Der Prüfungsort für die jeweiligen Prüfungen kann sich bis max. 2 ... Bei Campern ohne Vorzelt bitte die Ermäßigung (-50,00 €) dazu buchen.
+7. Registereintrag "Verband der Automobilindustrie e.V." - Lobbyregister
+   https://www.lobbyregister.bundestag.de/suche/R001243 – € und 25% auch außerhalb von EU-Fördergebieten. Dies soll ebenso für die ... Kriterien des GHG-Protokolls basieren. Zudem wird vorgeschlagen, anstelle ...
+8. Umweltkalender - Stadt Meerbusch
+   https://meerbusch.de/fileadmin/Dateien/Buergerservice/Abfallberatung/Umweltkalender_2026.pdf – 24.06.2026 ... Bsp.: Eimer (1 Stk.), Tür (1 Stk.), 1 Sack. 10,00 €. 11,00 €. Reifen mit oder ohne Felgen. 7,50 € / Stk. ... Max-Ernst-Str. / Bommershöfer Weg.
+9. Veranstaltungen – BLMK
+   https://www.blmk.de/kalender/ – Material Kinder 3,50 €, Erwachsene 7,50 € | max. 20 Teilnehmerinnen | für FamilienRathaushalleMarktplatz 115230 Frankfurt (Oder)+49 335 28396183MehrTeilen ...
+10. VEREINSNACHRICHTEN - SC Victoria Hamburg
+   https://sc-victoria.de/wp-content/uploads/2026/09/post-ausgabe-3_2026_4c-fuer-das-internet.pdf – vor 8 Tagen ... - neue Mitglieder ohne eine andere SCV-Mitgliedschaft 150€. - ScV-Mitglieder 50€ ... zwei Väter und Max mit seinem Programm 2The Max. Wir ...
+
+Quellen:
+- All Black MTB Handschuhe MTN – Lukas Knopf - The Motion Brand: https://themotionbrand.com/products/all-black-mtn-handschuhe-mtb?srsltid=AU7gw4XSPPTcapV1PrBsIOORjteu_Qm8BGnDZOXGQCWEcOY9-bqZHuEH
+- Volkshochschule Spandau - Berlin.de: https://www.berlin.de/vhs/volkshochschulen/spandau/vhs_spandauherbst26.pdf?ts=1786628333
+- Historische Themen - Wirtschaft & Tourismus - Stadt Grafing: https://www.grafing.de/wirtschaft-und-tourismus/tourismus/stadtfuehrungen/themen-termine-tickets/historische-themen
+- DSG25 Programm - Deutsche Schlaganfall-Gesellschaft: https://www.dsg-info.de/kongress/programm/
+- Wochen der Wärme 2026 - Klimaschutz: https://www.klimaschutz-niedersachsen.de/themen/waerme/2026-wochen-der-waerme.php
+- Ausschreibung 34. German Open 09.09.2026 - EWU-BUND: https://ewu-bund.com/wp-content/uploads/2026/07/Ausschreibung-GO_2026_End.pdf
+- Registereintrag "Verband der Automobilindustrie e.V." - Lobbyregister: https://www.lobbyregister.bundestag.de/suche/R001243
+- Umweltkalender - Stadt Meerbusch: https://meerbusch.de/fileadmin/Dateien/Buergerservice/Abfallberatung/Umweltkalender_2026.pdf
+- Veranstaltungen – BLMK: https://www.blmk.de/kalender/
+- VEREINSNACHRICHTEN - SC Victoria Hamburg: https://sc-victoria.de/wp-content/uploads/2026/09/post-ausgabe-3_2026_4c-fuer-das-internet.pdf
+## Suche vom 2026-09-20 06:08
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | seit 2026-09-12
+Verifiziertes Angebot: ja
+Preis: 11.99 €
+Händler: handytariftipp.de
+Quelle: https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet-flat-fuer-nur-11-99e-monatlich/
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+
+BESTES_ANGEBOT:
+Preis: 11.99 €
+Händler: handytariftipp.de
+URL: https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet-flat-fuer-nur-11-99e-monatlich/
+Belegt: ja
+Hinweis: Preis stammt aus einem aktuellen Suchtreffer; bitte auf den Link tippen und im Shop prüfen.
+
+Direkte Treffer (antippbar):
+1. Monatlich kündbar im Telekom Netz – 80GB Allnet Flat für nur 11.99 ...
+   https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet-flat-fuer-nur-11-99e-monatlich/ – vor 4 Tagen ... Monatlich kündbar im Netz der Telekom - 80GB Allnet Flatrate nur 11.99€ monatlich. Einmalige Anschlussgebühr 19.99,-€.
+2. Allnet Flats im Vergleich - September 2026 - Internetanbieter.de
+   https://www.internetanbieter.de/allnet-flats/ – D1 D2 O2 1&1. Vodafone Logo. CallYa Start. Datenvolumen. 2 GB. Max ... Ø 10,13 €. 10,00 € monatlich. Zum Tarif ». blau Mobilfunk Logo. Allnet S ...
+3. iPhone 18 Pro Deals mit Unlimited-Flat: 300 € Zuzahlung reichen aus
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro/unlimited-flat-iphone-18-pro – vor 5 Tagen ... Fuxxy findet für dich passende Handytarife – auf Wunsch auch mit neuem Smartphone. Häufige Anfragen. Günstig & flexibel. Top-Netz & viel Daten
+4. Über uns – HandyTarifTipp.de
+   https://handytariftipp.de/ueber-uns-handytariftipp-de/ – SIM-only-Tarife: Wenn Du bereits ein Smartphone besitzt und nur einen passenden Tarif benötigst, findest Du bei uns die besten SIM-only-Angebote. Ob Allnet-Flat ...
+5. Mobilfunk - Dealgott.de
+   https://www.dealgott.de/category/mobilfunk/ – Samsung Galaxy S26 FE (128 GB) für 1€ + Vodafone Smart Entry 55 GB für 29,99€/Monat (mit GigaKombi = 24,99€/Monat). 9. September 2026.
+6. Mobil surfen bis 100 GB Datenvolumen / Monat - Handy
+   https://handy.preisvergleich.de/datenvolumen-100gb/ – * Angebot vom 12.09.2026 / Preis kann jetzt höher sein - Alle Angaben ohne Gewähr. ** Bei Tarifen mit Datenautomatik können bei Überschreitung des beinhalteten ...
+7. iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-16 – Es tut uns leid! Die Tarife konnten nicht geladen werden. · iPhone 16 Angebote mit Vertrag vergleichen. Apple iPhone 16 ohne Vertrag ab 949 € (UVP) ...
+8. Handyverträge - Dealgott.de
+   https://www.dealgott.de/category/mobilfunk/handyvertrage/ – Samsung Galaxy Z Flip 8 (256 GB) für 329€ + otelo Allnet Flat Classic (50 GB) für 19,99€/Monat + 50€ Bonus · Apple iPhone 18 Pro (256 GB) für 299,95€ + o2 Mobile ...
+9. Handy mit Vertrag – So findest du die besten Deals! - HandyTarifTipp
+   https://handytariftipp.de/handy-mit-vertrag-top-deals-guenstige-bundle-angebote/ – 12.05.2025 ... RSS-Feed: SmartphoneAmigo.de SmartphoneAmigo.de · Anzeige · * Hinweise zu den Angeboten · Mobilfunk Deals – WhatsApp Kanal · Angebote durchsuchen.
+10. Samsung Galaxy S24 Plus mit Vertrag - handyhaus.de
+   https://handyhaus.de/smartphones/samsung/galaxy-s24-plus – inkl. Achtung: Nach 24 Monaten erhöht sich die Grundgebühr ( +1072,00 € mehr pro Monat - also rechtzeitig kündigen!)
+
+Quellen:
+- Monatlich kündbar im Telekom Netz – 80GB Allnet Flat für nur 11.99 ...: https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet-flat-fuer-nur-11-99e-monatlich/
+- Allnet Flats im Vergleich - September 2026 - Internetanbieter.de: https://www.internetanbieter.de/allnet-flats/
+- iPhone 18 Pro Deals mit Unlimited-Flat: 300 € Zuzahlung reichen aus: https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro/unlimited-flat-iphone-18-pro
+- Über uns – HandyTarifTipp.de: https://handytariftipp.de/ueber-uns-handytariftipp-de/
+- Mobilfunk - Dealgott.de: https://www.dealgott.de/category/mobilfunk/
+- Mobil surfen bis 100 GB Datenvolumen / Monat - Handy: https://handy.preisvergleich.de/datenvolumen-100gb/
+- iPhone 16 mit Vertrag im Preisvergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-16
+- Handyverträge - Dealgott.de: https://www.dealgott.de/category/mobilfunk/handyvertrage/
+- Handy mit Vertrag – So findest du die besten Deals! - HandyTarifTipp: https://handytariftipp.de/handy-mit-vertrag-top-deals-guenstige-bundle-angebote/
+- Samsung Galaxy S24 Plus mit Vertrag - handyhaus.de: https://handyhaus.de/smartphones/samsung/galaxy-s24-plus
+## Suche vom 2026-09-20 06:14
+Anfrage: handyvertrag 80GB D1 maximal 13 euro
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: keine Kriterien | seit 2026-09-13
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem Mobilfunktarif mit hohem Datenvolumen im Telekom-Netz (D1) bei geringem Budget:
+
+### 1. Händlerarten und Anbietertypen
+* **Submarken & Mobilfunk-Discounter (MVNOs):** Drittanbieter und Zweitmarken, die das Telekom-Netz nutzen, bieten meist deutlich günstigere Grundpreise als der Netzbetreiber selbst.
+* **Online-Reseller & Vermittler:** Unabhängige Tarif-Händler bieten häufig Sonderaktionen an, bei denen durch Einmalzahlungen, Startguthaben oder Hardware-Beigaben rechnerisch sehr niedrige Monats-Preise entstehen.
+* **Vergleichsportale:** Eignen sich gut, um den *effektiven Monatspreis* über die gesamte Mindestvertragslaufzeit unter Berücksichtigung aller Nebenkosten und Boni zu vergleichen.
+
+### 2. Produktfamilien & Tarifmodelle
+* **SIM-Only-Tarife:** Reine Tarife ohne Smartphone. Um sehr hohe Datenvolumina (wie 80 GB) in niedrigen Preisklassen zu erreichen, wird meist auf zeitlich begrenzte Rabattaktionen oder Boni gesetzt.
+* **Schubladenverträge / Bundle-Angebote:** Manchmal wird ein Tarif zusammen mit einem Smartphone angeboten. Verkauft man das Gerät weiter, sinkt der rechnerische Monatspreis des Tarifs oft drastisch.
+* **Kombi-Vorteile:** Wenn Sie bereits einen Festnetz- oder Internetanschluss beim selben Anbieter haben, gewähren viele Betreiber Rabatte oder verdoppeln das Datenvolumen.
+* **Junge-Leute-Tarife:** Für Personen unter einem bestimmten Alter (oft unter 28 Jahren) oder Studierende gibt es häufig Tarife mit mehr Datenvolumen zum gleichen Preis.
+
+### 3. Wichtige Auswahlkriterien
+* **Effektiver Monatspreis:** Rechnen Sie immer nach der Formel: *(24 × Grundgebühr + Anschlussgebühr - Boni/Gutschriften) ÷ 24*. Ein niedriger Effektivpreis entsteht oft erst durch Boni (z. B. für die Rufnummernmitnahme).
+* **Geschwindigkeit und Netzstandard:** Tarife von Drittanbietern sind im D1-Netz häufig bei der maximalen Bandbreite gedeckelt (z. B. 25 oder 50 Mbit/s) und enthalten nicht immer den Zugriff auf das 5G-Netz.
+* **Vertragslaufzeit:** 24-Monats-Verträge bieten meist die höchsten Rabatte. Beachten Sie jedoch, dass die Grundgebühr ab dem 25. Monat oft drastisch ansteigt (rechtzeitiges Kündigen oder Wechseln einplanen). Monatlich kündbare Tarife bieten mehr Flexibilität, haben aber seltener hohe Rabatte.
+* **Kostenfallen vermeiden:** Achten Sie darauf, ob der Tarif eine feste „Datenaut
+
+Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-09-20 06:14
+Anfrage: hunter
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: keine Kriterien | seit 2026-09-18
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. Definition of Done: Kriterien & Beispiele [2026] - Asana
+   https://asana.com/de/resources/definition-of-done – 18. September 2026. 8 Lesezeit (Minuten). facebook x-twitter linkedin ... Entscheidend ist, dass die Kriterien nicht für eine einzelne User Story erfunden ...
+2. Vier Hauptkriterien entscheiden über Schufa-Bonität - n-tv.de
+   https://www.n-tv.de/mediathek/videos/wirtschaft/Vier-Hauptkriterien-entscheiden-ueber-Schufa-Bonitaet-id30479872.html – 17.03.2026 ... Score wird neu berechnet: Vier Hauptkriterien entscheiden über Schufa-Bonität ; Screenshot 2026-09-18 161459. 00:47 min. Quittung für ...
+3. Förderkriterien für Seilbahnen aktualisiert | Alle News
+   https://news.provinz.bz.it/de/news/forderkriterien-fur-seilbahnen-aktualisiert – Förderkriterien für Seilbahnen aktualisiert. 18.09.2026, 10:19. Landesregierung beschließt Anpassungen bei Förderkriterien für Seilbahnanlagen.
+4. Organspende nach Hirntod: Medizinern ist das zu wenig - WDR
+   https://www1.wdr.de/nrw/ostwestfalen-lippe/kreis-minden-luebbecke/organspende-voraussetzung-herztod-patientenwille-100.html – vor 2 Tagen ... Die Organspende unterliegt in Deutschland strengen Regeln. Ärzte fordern eine Neubewertung der notwendigen Kriterien.
+5. „DSGVO – information privacy standard“ ist da! – Teil 1
+   https://www.dsn-group.de/datenschutz-notizen/dsgvo-information-privacy-standard-ist-da-teil-1-unser-weg-zur-urkunde-1351507 – 06.03.2025 ... Als Zertifizierungsstelle wenden wir ja normalerweise Kriterien an – meist internationale Standards. Und es ist für uns natürlich ein Privileg, ...
+6. Qualifikationskriterien 2026 - Deutscher Behindertensportverband e.V.
+   https://www.dbs-npc.de/files/dateien/Leistungssport/Qualifikationskriterien/2026/Quali-Kriterien%202026_Para%20Sportschie%C3%9Fen_paralympisch.pdf – 14.01.2026 ... Die Erfüllung der Qualifikationskriterien stellt eine notwendige, aber keine hinreichende Vo- ... -18.09.2026 in Changwon (Südkorea) aus-.
+7. CUP aktualisiert - Onkopedia
+   https://www.onkopedia.com/de/news/cup-aktualisiert – 12.06.2023 ... Kriterien zur Indikation von Immuncheckpointblockade bei “ungünstigen” Manifestationen ... 18. September 2026: VEXAS Syndrom 09.09.2026.
+8. Gesundheitliche Chancengleichheit: Startseite
+   https://www.gesundheitliche-chancengleichheit.de/ – Die Analyse von 30 schulischen Angeboten umfasste die Good Practice-Kriterien Zielgruppenbezug, Konzeption/Zielsetzung, Setting-Ansatz, Partizipation und ...
+9. ESRS 2.0 kurz vor der Veröffentlichung – Einspruchsfrist abgelaufen
+   https://www.taylorwessing.com/de/insights-and-events/insights/2026/09/esrs-2-kurz-vor-der-veroeffentlichung-einspruchsfrist-abgelaufen – 08.09.2026 ... ... (18. September 2026) eingehalten. Im Amtsblatt stehen beide bislang ... keine Übersetzung; keine besonderen Vorgaben für ausländische Mütter.
+10. Karriere Diplomatie - beim EDA
+   https://www.eda.admin.ch/de/karriere-diplomatie – Für gleichwertige Abschlüsse, welche diese Kriterien nicht erfüllen, muss dem Bewerbungsdossier zwingend eine Swiss ENIC Anerkennungsempfehlung beigelegt werden ...
+
+Quellen:
+- Definition of Done: Kriterien & Beispiele [2026] - Asana: https://asana.com/de/resources/definition-of-done
+- Vier Hauptkriterien entscheiden über Schufa-Bonität - n-tv.de: https://www.n-tv.de/mediathek/videos/wirtschaft/Vier-Hauptkriterien-entscheiden-ueber-Schufa-Bonitaet-id30479872.html
+- Förderkriterien für Seilbahnen aktualisiert | Alle News: https://news.provinz.bz.it/de/news/forderkriterien-fur-seilbahnen-aktualisiert
+- Organspende nach Hirntod: Medizinern ist das zu wenig - WDR: https://www1.wdr.de/nrw/ostwestfalen-lippe/kreis-minden-luebbecke/organspende-voraussetzung-herztod-patientenwille-100.html
+- „DSGVO – information privacy standard“ ist da! – Teil 1: https://www.dsn-group.de/datenschutz-notizen/dsgvo-information-privacy-standard-ist-da-teil-1-unser-weg-zur-urkunde-1351507
+- Qualifikationskriterien 2026 - Deutscher Behindertensportverband e.V.: https://www.dbs-npc.de/files/dateien/Leistungssport/Qualifikationskriterien/2026/Quali-Kriterien%202026_Para%20Sportschie%C3%9Fen_paralympisch.pdf
+- CUP aktualisiert - Onkopedia: https://www.onkopedia.com/de/news/cup-aktualisiert
+- Gesundheitliche Chancengleichheit: Startseite: https://www.gesundheitliche-chancengleichheit.de/
+- ESRS 2.0 kurz vor der Veröffentlichung – Einspruchsfrist abgelaufen: https://www.taylorwessing.com/de/insights-and-events/insights/2026/09/esrs-2-kurz-vor-der-veroeffentlichung-einspruchsfrist-abgelaufen
+- Karriere Diplomatie - beim EDA: https://www.eda.admin.ch/de/karriere-diplomatie
+## Suche vom 2026-09-20 06:14
+Anfrage: . Handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 50 GB | Netz: D1 | seit 2026-09-18
+Verifiziertes Angebot: ja
+Preis: 7.62 €
+Händler: handyhase.de
+Quelle: https://www.handyhase.de/samsung-galaxy-s26-ultra-telekom-magentamobil/
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+
+BESTES_ANGEBOT:
+Preis: 7.62 €
+Händler: handyhase.de
+URL: https://www.handyhase.de/samsung-galaxy-s26-ultra-telekom-magentamobil/
+Belegt: ja
+Hinweis: Preis stammt aus einem aktuellen Suchtreffer; bitte auf den Link tippen und im Shop prüfen.
+
+Direkte Treffer (antippbar):
+1. Verlängert: 80 GB im Telekom-Netz bei Klarmobil für 11,99 Euro
+   https://www.teltarif.de/allnet-flat-5g-klarmobil-telekom-netz-verlaengert/news/105409.html – 11.09.2026 ... klarmobil bietet zum Geburtstag bis zu 120 GB im Telekom-Netz ab 9,99 Euro. Die bereits terminierte Aktion läuft nun noch bis kommenden ...
+2. Top-Deals: Schnäppchentarife aus den Vergleichen - Heise
+   https://www.heise.de/tarifrechner/deals – Allnet Flat 40 GB 5G - Flex · 40 GB · 40 GB 5G im Vodafone-Netz bis 50 Mbit/s. monatlich kündbar. +1 ; Prepaid Allnet M · 33 GB · Aktion: 4,99 € Startpaket-Preis ...
+3. iPhone 18 Pro Max für 1 € Zuzahlung: Wann der Vertrag zu teuer wird
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro-max/iphone-18-pro-max-ohne-zuzahlung – vor 2 Tagen ... Wenn du konkrete Vorstellungen für deinen Handyvertrag hast (Wie viel Datenvolumen? Welches Netz?), frag doch einfach einmal „Fuxxy“ – unsere ...
+4. Provider im Überblick: Anbieter, Netze und Erfahrungen
+   https://www.handyhase.de/anbieter/ – klarmobil 40 GB im Vodafone Netz für 7,99 € mtl. 9.1 sensationell. 2 Kommentare; max. noch 1 Tag ...
+5. HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...
+   https://handytariftipp.de/ – Der Tarif bietet 240 GB 5G-Datenvolumen pro Jahr (20 GB monatlich) im Telekom 5G-Netz mit bis zu 100 Mbit/s sowie eine Telefonie- und SMS-Flat. Der Kartenpreis ...
+6. Handytarife unter 10 Euro Grundgebühr pro Monat - handyhaus.de
+   https://handyhaus.de/tarife/guenstig/unter-10-euro – Telekom-Netz Tarife „unter 10 € pro Monat“ ; Allnet-Flat 30 GB crash. Tarifdetails. 8,7, 24. Monate, Telekom-Netz Logo Telekom, 9,99 € 0,00 € ; Allnet Flat 20 GB ...
+7. Drillisch-Angebote: sim24, BIGSIM & Co. im Vergleich - Handyhase.de
+   https://www.handyhase.de/magazin/drillisch/ – Die Angebote von BLACKSIM, cyberSIM, sim24, sim.de, handyvertrag.de, simplytel, winSIM, PremiumSIM und Co. gehören ins 1&1-5G-Netz. Jeden Dienstag startet bei ...
+8. Mobilfunk von EWE: Allnet-Tarife, Smartphones, Tablets
+   https://mobilfunk.ewe.de/ – Mindestvertragslaufzeit 24 Monate. Anschlusspreis einmalig 29,99 €. Internet-Flat mit 80 GB (bestehend aus 40 GB inkl. + 40 GB Aktionsvolumen) 5G-Datenvolumen ...
+9. iPhone 18 Pro Max mit Vertrag im Vergleich - TARIFFUXX
+   https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro-max – ... Max. + All-Net-Flat M. 50 GB. 5G. 300 Mbit/s max. Telefon-Flat. SMS-Flat. Pro Monat. Handy Zuzahlung. Einmalig. 82,99 €. 0,00 €. 39,90 €. Durchschnitt p. Monat.
+10. Samsung Galaxy S26 Ultra mit Original-Telekom-Tarif eff. 7,62 € mtl.
+   https://www.handyhase.de/samsung-galaxy-s26-ultra-telekom-magentamobil/ – vor 3 Tagen ... Starker, neuer Top-Deal: Das Samsung Galaxy S26 Ultra (256 GB) erhältst Du hier bei Gomibo mit dem Telekom MagentaMobil S mit 30 GB im ...
+
+Quellen:
+- Verlängert: 80 GB im Telekom-Netz bei Klarmobil für 11,99 Euro: https://www.teltarif.de/allnet-flat-5g-klarmobil-telekom-netz-verlaengert/news/105409.html
+- Top-Deals: Schnäppchentarife aus den Vergleichen - Heise: https://www.heise.de/tarifrechner/deals
+- iPhone 18 Pro Max für 1 € Zuzahlung: Wann der Vertrag zu teuer wird: https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro-max/iphone-18-pro-max-ohne-zuzahlung
+- Provider im Überblick: Anbieter, Netze und Erfahrungen: https://www.handyhase.de/anbieter/
+- HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...: https://handytariftipp.de/
+- Handytarife unter 10 Euro Grundgebühr pro Monat - handyhaus.de: https://handyhaus.de/tarife/guenstig/unter-10-euro
+- Drillisch-Angebote: sim24, BIGSIM & Co. im Vergleich - Handyhase.de: https://www.handyhase.de/magazin/drillisch/
+- Mobilfunk von EWE: Allnet-Tarife, Smartphones, Tablets: https://mobilfunk.ewe.de/
+- iPhone 18 Pro Max mit Vertrag im Vergleich - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro-max
+- Samsung Galaxy S26 Ultra mit Original-Telekom-Tarif eff. 7,62 € mtl.: https://www.handyhase.de/samsung-galaxy-s26-ultra-telekom-magentamobil/
