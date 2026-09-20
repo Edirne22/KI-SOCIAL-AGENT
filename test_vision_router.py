@@ -42,7 +42,7 @@ def test_description(mode, http):
 
     args, kwargs = http.call_args
     assert args == (vision_router.NVIDIA_URL,)
-    assert kwargs["timeout"] == 180
+    assert kwargs["timeout"] == (240 if mode == "general" else 180)
     assert kwargs["headers"]["Authorization"] == "Bearer test-key"
     assert kwargs["json"]["model"] == NVIDIA_MODELS[mode]
 
@@ -197,3 +197,15 @@ def test_malformed_ocr(content, http):
 def test_invalid_image(http):
     assert "error" in VisionRouter().analyze("missing-image.jpg")
     http.assert_not_called()
+
+
+def test_general_uses_muse_glimmer_and_structured_german_prompt():
+    assert NVIDIA_MODELS["general"] == "meta/muse-glimmer-30b"
+    prompt = vision_router.PROMPTS["general"]
+    assert "ausschließlich auf Deutsch" in prompt
+    assert "1. Was ist zu sehen?" in prompt
+    assert "2. Welcher Text ist im Bild sichtbar?" in prompt
+    assert "3. Welche Plattform/welcher Account?" in prompt
+    assert "4. Zahlen/Daten" in prompt
+    assert "Erfinde keine Details" in prompt
+    assert "'nicht erkennbar'" in prompt
