@@ -118,7 +118,11 @@ def main() -> int:
 
         prompt = (
             f"Hier sind {len(entries)} Bild-Analysen der letzten 7 Tage.\n"
-            "Erstelle eine kompakte Zusammenfassung:\n"
+            "Erstelle eine kompakte Zusammenfassung auf Deutsch.\n"
+            "Antworte AUSSCHLIESSLICH auf Deutsch.\n"
+            "Verwende keine anderen Sprachen, keine chinesischen Zeichen, "
+            "keine englischen Wörter außer Fachbegriffen.\n"
+            "Struktur:\n"
             "- Welche Themen kommen häufig vor?\n"
             "- Welche Accounts/Posts wurden analysiert?\n"
             "- Auffällige Muster (z. B. ähnliche Hooks, CTAs)?\n"
