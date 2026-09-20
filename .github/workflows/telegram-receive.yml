@@ -2,7 +2,7 @@ name: Telegram Receive Approval
 
 on:
   schedule:
-    - cron: "*/5 6-21 * * *" # zentraler Telegram-Poller
+    - cron: "*/2 6-21 * * *" # zentraler Telegram-Poller
   workflow_dispatch:
 
 permissions:
