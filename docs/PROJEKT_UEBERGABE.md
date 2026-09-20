@@ -3,6 +3,8 @@
 **Stand:** 2026-09-20 (Nachmittag)
 **Repo:** https://github.com/Edirne22/KI-SOCIAL-AGENT
 **Ziel:** Autonome Content-Fabrik für Bülent (@edirnelibuelent) – 12–24 Monate zur KI-Agentur.
+**Repo-Typ:** 🌐 **Public** (unbegrenzte GitHub-Actions-Minuten)
+**Bedeutung:** Kein Limit bei Workflow-Frequenz – 2-Min-Cron ist okay
 
 ---
 
