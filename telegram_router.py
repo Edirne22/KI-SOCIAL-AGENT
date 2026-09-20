@@ -25,20 +25,29 @@ def _ack(update_id: int) -> None:
 def _is_photo_message(update: dict) -> bool:
     msg = update.get("message") or {}
     photo = msg.get("photo")
-    return isinstance(photo, list) and bool(photo)
+    document = msg.get("document") or {}
+    return (
+        (isinstance(photo, list) and bool(photo))
+        or (
+            isinstance(document, dict)
+            and str(document.get("mime_type", "")).startswith("image/")
+        )
+    )
 
 
-def _download_telegram_photo(photo_list: list) -> bytes | None:
-    if not photo_list:
+def _download_telegram_photo(photo_list: list, document: dict | None = None) -> bytes | None:
+    document = document or {}
+    if photo_list:
+        file_id = photo_list[-1].get("file_id")
+    else:
+        file_id = document.get("file_id")
+    if not file_id:
         return None
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not token:
         print("ROUTER: TELEGRAM_BOT_TOKEN fehlt.")
         return None
     try:
-        file_id = photo_list[-1].get("file_id")
-        if not file_id:
-            return None
         response = requests.get(
             f"https://api.telegram.org/bot{token}/getFile",
             params={"file_id": file_id},
@@ -63,6 +72,7 @@ def _download_telegram_photo(photo_list: list) -> bytes | None:
 def _handle_photo(update: dict, chat: str) -> bool:
     msg = update.get("message") or {}
     photo = msg.get("photo") or []
+    document = msg.get("document") or {}
     caption = msg.get("caption")
     normalized = " ".join(caption.strip().lower().split()) if isinstance(caption, str) else ""
 
@@ -73,7 +83,7 @@ def _handle_photo(update: dict, chat: str) -> bool:
     else:
         mode = "general"
 
-    image_bytes = _download_telegram_photo(photo)
+    image_bytes = _download_telegram_photo(photo, document)
     if not image_bytes:
         send_message("❌ Vision-Fehler: Bild konnte nicht von Telegram geladen werden.")
         return False
