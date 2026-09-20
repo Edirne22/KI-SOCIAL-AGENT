@@ -261,3 +261,42 @@ Alle Router arbeiten autonom, mit Fallback-Ketten und Logging.
 > „Lies `docs/PROJEKT_UEBERGABE.md` im Repo Edirne22/KI-SOCIAL-AGENT (raw: https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/docs/PROJEKT_UEBERGABE.md). Arbeite auf diesem Stand weiter."
 
 **Damit ist der Assistent in 10 Sekunden auf Stand.**
+### 📱 WhatsApp-Communities (Bülents Zielgruppe direkt)
+
+**Beigetreten:** 20.09.2026
+
+#### 1. TÜRKBiR (Türkische Biker-Community)
+- **Größe:** 36 Gruppen (bundesweit)
+- **Relevante Gruppen:**
+  - 🗺️ BERGISCHES LAND (regional)
+  - 🏍️ TÜRKBiR-Buluşmalar (Treffen)
+  - 🛣️ Tur ve buluşma bilgi (Touren)
+  - 📅 Etkinlikler (Events)
+  - 🤝 Welcome & Tanıtım (Vorstellung)
+
+#### 2. BIKE SOCIETY (Deutsche Biker-Community – 3 Regionen)
+- **United** → Ruhrgebiet + Ennepe-Ruhr-Kreis (13 Gruppen)
+- **Hagen** → Hagen (12 Gruppen)
+- **im Bergischen** → Bergisches Land (12 Gruppen)
+- **Relevante Gruppen je Region:**
+  - 📢 Ankündigungen (offizielle Infos)
+  - 💬 Laberecke (Smalltalk)
+  - 🏍️ Fahrten & Treffen (Touren)
+  - 👋 Vorstellungsgruppe (neue Mitglieder)
+  - 🗺️ Routen & Tourdaten (Strecken)
+
+#### 🎯 Nutzen für Bülent
+- **Direkter Zugang zur Zielgruppe** (Ruhrgebiet + Bergisches Land + türkische Szene)
+- **Content-Ideen aus erster Hand** (was fahren die Leute? wo treffen sie sich?)
+- **Community-Aufbau** für eigene Touren
+- **Bikertreff-Recherche** – die Gruppen kennen alle Treffs
+- **Kooperationen** mit Admins/Organisatoren
+
+#### 🚦 Nächste Schritte
+1. **2–3 Tage beobachten** (Ton, aktive Mitglieder, Themen)
+2. **Vorstellen** in „Vorstellungsgruppe" (pro Community)
+3. **Erste gemeinsame Tour** → Content für Reels
+4. **Erst danach:** eigene Inhalte teilen (Reels, Touren-Ideen)
+
+#### ⚠️ Regel
+Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern.
