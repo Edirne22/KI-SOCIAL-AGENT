@@ -141,7 +141,50 @@ Teil 2 folgt – was ist wohl passiert?
 - Bikertreff-Serie (Teil 1: Radevormwald + Biggesee, Teil 2: Hagen)
 
 ---
+---
 
+## 🎯 Pattern 7: Karussell als Cheat-Sheet
+
+**Beispiele:**
+- „UGC & Creator-Style Videos" (11 Prompts) – @karishmaticmarketer
+- „ChatGPT AI Image Commands" (11 Befehle) – @mauryavanshi_edits
+- „Interview Answers" (10 Antworten) – @careerwithamir
+
+**Quelle:** Instagram-Analysen via Telegram-Bot (20.09.2026)
+**Stats:** 591 Likes / 188 Kommentare / 1.465 Saves (bei @karishmaticmarketer)
+
+**Warum es funktioniert:**
+- Nutzer **speichern** den Post (Cheat-Sheet-Funktion = starkes Signal an Algorithmus)
+- **Karussell-Format** = mehr Verweildauer pro Nutzer
+- **Nummerierte Einträge** machen den Inhalt greifbar und vollständig
+- **Hohe Save-Rate** (1.465 Saves bei 591 Likes = >2x) → Post wird als Nachschlagewerk genutzt
+
+**Anwendung für Bülent:**
+- „11 MotoGP-Prompts für KI-Videos"
+- „7 Bikertreffs im Bergischen – Cheat-Sheet"
+- „12 Kurven, die du kennen musst" (mit Foto pro Slide)
+- „5 M1000R-Wartungstipps, die dir Geld sparen"
+
+**Wichtig:** Jede Slide muss **eigenständig funktionieren** – auch ohne die vorherigen.
+
+---
+
+## 🎯 Pattern 8: Slash-Command-Tags (Prompt-Sammlung)
+
+**Beispiele aus den Analysen:**
+- `/ugc:`, `/selfiecam:`, `/creatorvlog:` – @karishmaticmarketer
+- `/rain:`, `/storm:`, `/sunset:`, `/goldenhour:` – @mauryavanshi_edits
+- `/whyhireme:`, `/salaryanswer:`, `/failureanswer:` – @careerwithamir
+
+**Quelle:** Instagram-Analysen via Telegram-Bot (20.09.2026)
+
+**Warum es funktioniert:**
+- **Wiedererkennung:** Der Nutzer lernt die Tags – sie werden zur Sprache der Community
+- **Copy-Paste-fähig:** Direkt in KI-Tools einsetzbar
+- **Suchbar:** Slash-Tags in Reels → Nutzer suchen sie
+- **Skalierbar:** Ein Tag = eine Kategorie = beliebig erweiterbar
+
+**Template:**
 ## 📋 Regeln für die Bibliothek
 
 1. **Nur bewährte Patterns** – kein „könnte funktionieren"
