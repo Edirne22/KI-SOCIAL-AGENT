@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 NVIDIA_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 NVIDIA_MODELS = {
-    "general": "meta/llama-3.2-11b-vision-instruct",
+    "general": "meta/muse-glimmer-30b",
     "ocr": "nvidia/nemotron-ocr-v2",
     "omni": "nvidia/nemotron-3-nano-omni",
 }
@@ -87,7 +87,7 @@ class VisionRouter:
                     NVIDIA_URL,
                     headers=headers,
                     json=payload,
-                    timeout=180,
+                    timeout=240 if mode == "general" else 180,
                 )
 
                 if response.status_code == 429:
