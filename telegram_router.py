@@ -7,14 +7,100 @@ mehr auf beliebige Nachrichten sendet.
 """
 from __future__ import annotations
 
+import os
 import re
 import subprocess
 import sys
+
+import requests
+
 from telegram_bot import get_chat_id, get_updates, send_message
+from vision_router import VisionRouter
 
 
 def _ack(update_id: int) -> None:
     get_updates(offset=update_id + 1)
+
+
+def _is_photo_message(update: dict) -> bool:
+    msg = update.get("message") or {}
+    photo = msg.get("photo")
+    return isinstance(photo, list) and bool(photo)
+
+
+def _download_telegram_photo(photo_list: list) -> bytes | None:
+    if not photo_list:
+        return None
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    if not token:
+        print("ROUTER: TELEGRAM_BOT_TOKEN fehlt.")
+        return None
+    try:
+        file_id = photo_list[-1].get("file_id")
+        if not file_id:
+            return None
+        response = requests.get(
+            f"https://api.telegram.org/bot{token}/getFile",
+            params={"file_id": file_id},
+            timeout=30,
+        )
+        response.raise_for_status()
+        data = response.json()
+        file_path = (data.get("result") or {}).get("file_path")
+        if not data.get("ok") or not file_path:
+            return None
+        image_response = requests.get(
+            f"https://api.telegram.org/file/bot{token}/{file_path}",
+            timeout=60,
+        )
+        image_response.raise_for_status()
+        return image_response.content or None
+    except (requests.RequestException, ValueError, TypeError) as e:
+        print(f"ROUTER: Telegram-Bilddownload fehlgeschlagen: {e}")
+        return None
+
+
+def _handle_photo(update: dict, chat: str) -> bool:
+    msg = update.get("message") or {}
+    photo = msg.get("photo") or []
+    caption = msg.get("caption")
+    normalized = " ".join(caption.strip().lower().split()) if isinstance(caption, str) else ""
+
+    if normalized == "/ocr":
+        mode = "ocr"
+    elif normalized == "/omni":
+        mode = "omni"
+    else:
+        mode = "general"
+
+    image_bytes = _download_telegram_photo(photo)
+    if not image_bytes:
+        send_message("❌ Vision-Fehler: Bild konnte nicht von Telegram geladen werden.")
+        return False
+
+    try:
+        result = VisionRouter().analyze(image_bytes, mode=mode)
+    except Exception as e:
+        send_message(f"❌ Vision-Fehler: {e}")
+        return False
+
+    if result.get("error"):
+        send_message(f"❌ Vision-Fehler: {result['error']}")
+        return False
+
+    description = result.get("description")
+    if not isinstance(description, str):
+        # OCR liefert laut bestehendem vision_router.py text/tables statt description.
+        description = result.get("text", "")
+        tables = result.get("tables")
+        if tables:
+            description += f"\n\nTabellen: {tables}"
+
+    send_message(
+        f"🔍 Vision-Analyse:\n\n{description}\n\n"
+        f"Model: {result.get('model_used', 'unbekannt')}"
+    )
+    return True
 
 
 def _is_general_command(text: str) -> bool:
@@ -46,12 +132,47 @@ def main() -> None:
         text = msg.get("text")
         if not isinstance(uid, int):
             continue
+        if _is_photo_message(upd):
+            if chat != allowed:
+                _ack(uid)
+                return
+            _handle_photo(upd, chat)
+            _ack(uid)
+            return
         if chat != allowed or not isinstance(text, str):
             print(f"ROUTER: Update {uid} nicht aus erlaubtem Text-Chat; bestätigt/übersprungen.")
             _ack(uid)
             return
 
         normalized = " ".join(text.strip().lower().split())
+        if normalized in {"/help", "/hilfe", "hilfe"}:
+            send_message(
+                "🤖 Verfügbare Kommandos:\n\n"
+                "BILDER:\n"
+                "/vision – Bild analysieren (Standard)\n"
+                "/ocr – Text aus Bild extrahieren\n"
+                "/omni – Multimodale Analyse\n"
+                "(Bild einfach mit Caption senden)\n\n"
+                "MOTOGP:\n"
+                "motogp 2,4 – Rennen 2 und 4 freigeben\n"
+                "motogp ✅ – alle freigeben\n"
+                "motogp ❌ – alle ablehnen\n\n"
+                "ALLGEMEIN:\n"
+                "alle – alle Freigaben\n"
+                "liste – offene Aufgaben\n"
+                "watchlist – Watchlist anzeigen\n"
+                "follow-analyse – Follower-Analyse\n"
+                "race – Race-Kalender\n"
+                "inspiration – Inspiration-Posts\n\n"
+                "SYSTEM:\n"
+                "/help – Diese Hilfe"
+            )
+            _ack(uid)
+            return
+        if normalized in {"/vision", "/ocr", "/omni"}:
+            send_message("Bitte sende ein Bild mit dem Befehl /vision, /ocr oder /omni.")
+            _ack(uid)
+            return
         if normalized.startswith("motogp ") or normalized in {"motogp", "motogp ✅", "motogp ❌"}:
             print(f"ROUTER: Update {uid} -> MotoGP Approval (atomare Übergabe)")
             result = subprocess.run(
