@@ -12,15 +12,22 @@ logger = logging.getLogger(__name__)
 
 NVIDIA_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 NVIDIA_MODELS = {
-    "general": "meta/llama-3.2-11b-vision-instruct",
+    "general": "meta/muse-glimmer-30b",
     "ocr": "nvidia/nemotron-ocr-v2",
     "omni": "nvidia/nemotron-3-nano-omni",
 }
 FALLBACK_MODEL = "moonshotai/kimi-k3"
 PROMPTS = {
     "general": (
-        "Describe this image in detail in German. Focus on "
-        "motorcycle content, riders, landscapes, brand logos."
+        "Analysiere diesen Screenshot auf Deutsch und antworte "
+        "ausschließlich auf Deutsch.\n"
+        "Beschreibe:\n\n"
+        "1. Was ist zu sehen? (Szene, Objekte, Personen)\n"
+        "2. Welcher Text ist im Bild sichtbar? (zitiere ihn wörtlich)\n"
+        "3. Welche Plattform/welcher Account? (falls erkennbar)\n"
+        "4. Zahlen/Daten, falls sichtbar (Likes, Kommentare, Datum)\n"
+        "Erfinde keine Details. Wenn etwas nicht erkennbar ist, "
+        "schreibe 'nicht erkennbar'."
     ),
     "ocr": (
         "Extract all text and table structures from this image. "
@@ -87,7 +94,7 @@ class VisionRouter:
                     NVIDIA_URL,
                     headers=headers,
                     json=payload,
-                    timeout=180,
+                    timeout=240 if mode == "general" else 180,
                 )
 
                 if response.status_code == 429:
