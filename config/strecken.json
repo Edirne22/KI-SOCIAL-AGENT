@@ -1,0 +1,25 @@
+{
+  "strecken": [
+    {
+      "name": "Radevormwald",
+      "lat": 51.2034,
+      "lon": 7.3569,
+      "region": "Bergisches Land",
+      "notiz": ""
+    },
+    {
+      "name": "Biggesee",
+      "lat": 51.0877,
+      "lon": 7.9039,
+      "region": "Südwestfalen",
+      "notiz": ""
+    },
+    {
+      "name": "Sägewerk",
+      "lat": 51.15,
+      "lon": 7.6,
+      "region": "Bergisches Land",
+      "notiz": "ca. Koordinaten"
+    }
+  ]
+}
