@@ -1,6 +1,6 @@
 # PROJEKT-ÜBERGABE – KI-SOCIAL-AGENT
 
-**Stand:** 2026-09-20 (Abend)
+**Stand:** 2026-09-20 (Nacht)
 **Repo:** https://github.com/Edirne22/KI-SOCIAL-AGENT
 **Ziel:** Autonome Content-Fabrik für Bülent (@edirnelibuelent) – 12–24 Monate zur KI-Agentur.
 **Repo-Typ:** 🌐 Public (unbegrenzte GitHub-Actions-Minuten)
@@ -98,7 +98,6 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 - `general` → `meta/muse-glimmer-30b` (Fallback: Kimi K3)
   - Timeout 240 Sekunden
   - Deutscher, strukturierter Prompt (Szene / Text / Account / Zahlen)
-  - Liefert deutlich bessere Ergebnisse als das alte Modell
 - `ocr` → `nvidia/nemotron-ocr-v2` (liefert `text` + `tables`, Timeout 180s)
 - `omni` → `nvidia/nemotron-3-nano-omni` (Timeout 180s)
 
@@ -126,6 +125,7 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 | `PEXELS_API_KEY` | aktiv |
 | `TELEGRAM_BOT_TOKEN` | aktiv |
 | `TELEGRAM_CHAT_ID` | aktiv |
+| `OPENWEATHER_API_KEY` | aktiv (Weather Agent wartet auf Aktivierung) |
 
 ### Provider-Status
 - ✅ **Pollinations** – läuft, kein Key-Limit
@@ -133,10 +133,13 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 - ❌ **Together AI** – nicht nutzbar
 - ❌ **NVIDIA FLUX** – auf Eis
 - ✅ **NVIDIA Riva 4B** – läuft
-- ✅ **NVIDIA Muse Glimmer 30B** – läuft (Upgrade)
+- ✅ **NVIDIA Muse Glimmer 30B** – läuft
 - ✅ **Agnes** – Bild-Fallback
 - ✅ **Kimi K3** – Reasoning/Coding + Vision-Fallback
 - ⚠️ **DeepSeek v4-flash** – EOL 22.09.2026
+- ⚠️ **GLM-4.7** – EOL 14.05.2026
+- ⚠️ **Qwen3 Coder 480B** – EOL 11.06.2026
+- ✅ **Nemotron 3.5 Lightning 30B** – aktiv für Claude Code
 
 ### 🔒 Sicherheitsregel
 Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
@@ -178,8 +181,8 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 - **Workflow:** `.github/workflows/vision-summary.yml`
 - **Lauf:** alle 3 Tage um 08:00 UTC
 - **Erster regulärer Lauf:** 18.10.2026 (Guard-Clause)
-- **Force-Modus:** `workflow_dispatch` mit `force=true` (überspringt Guard)
-- **Output:** `memory/VISION_SUMMARY.md` (deutsche Zusammenfassung der letzten 7 Tage)
+- **Force-Modus:** `workflow_dispatch` mit `force=true`
+- **Output:** `memory/VISION_SUMMARY.md` (deutsche Zusammenfassung)
 
 ### Workflow
 ```
@@ -198,10 +201,29 @@ Screenshot → Telegram (/vision) → Vision-Router (Muse Glimmer)
 
 ---
 
+## 🌤️ WEATHER AGENT (Phase 1)
+
+**Status:** ✅ Code live, ⏳ Test wartet auf OpenWeatherMap-Aktivierung
+**Dateien:** `config/strecken.json`, `agents/weather_agent.py`, `.github/workflows/weather_agent.yml`
+
+### Was er macht
+- Liest Hausstrecken aus `config/strecken.json`
+- Ruft Wetter-API für jede Strecke auf
+- Filtert: Regen/Schnee/Sturm → „nicht empfohlen"
+- Sendet Telegram-Nachricht mit Strecken-Check
+- Cron: täglich 06:00 UTC
+
+### Problem (20.09.2026)
+Erster Testlauf: **401 Unauthorized** von OpenWeatherMap
+- Ursache: OWM aktiviert neue API-Keys erst nach 10 Min – 2 Std
+- Aktion: Workflow später/morgen erneut starten
+
+---
+
 ## 🎯 PATTERN LIBRARY (Instagram-Content-Bausteine)
 
 **Datei:** `config/PATTERN_LIBRARY.md`
-**Angelegt:** 20.09.2026 – 8 Patterns aktiv
+**Stand:** 20.09.2026 – 10 Patterns aktiv
 
 | # | Pattern | Quelle | Status |
 |---|---|---|---|
@@ -212,22 +234,17 @@ Screenshot → Telegram (/vision) → Vision-Router (Muse Glimmer)
 | 5 | POV | Recherche | 🟡 vorgemerkt |
 | 6 | Storytelling mit Ende offen | Recherche | 🟡 vorgemerkt |
 | 7 | Karussell als Cheat-Sheet | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ |
-| 8 | Slash-Command-Tags | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ |
-
-### Workflow
-```
-Instagram-Post gefällt
-    ↓
-Screenshot → Telegram-Bot (/vision)
-    ↓
-Analyse kommt zurück → Bülent prüft: neues Pattern?
-    ↓
-Wenn ja: in PATTERN_LIBRARY.md eintragen
-    ↓
-Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
-```
+| 8 | Slash-Command-Tags | @karishmaticmarketer, @mauryavanshi_edits | ✅ |
+| 9 | Fotografie-Stil-Prompts | @mauryavanshi_edits, @startup_rules | ✅ |
+| 10 | Skill-Karten-Raster (4x2) | @bitbyybit | ✅ |
 
 **Ziel:** 15–20 Patterns bis Ende Oktober 2026.
+
+**Referenz-Accounts zum Beobachten:**
+- @startup_rules (verifiziert) – AI-Bild-Commands
+- @mauryavanshi_edits – ChatGPT-Prompts
+- @karishmaticmarketer – UGC/Creator-Videos
+- @bitbyybit – KI-Skill-Sammlungen
 
 ---
 
@@ -244,8 +261,7 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 
 ### Wichtige Erkenntnisse (20.09.2026)
 - **MotoGP Telegram Approval läuft NICHT automatisch** (kein `schedule`)
-  - Der zentrale Router `telegram-receive.yml` übernimmt das Polling
-  - Bei Bedarf manuell starten
+  - Zentraler Router übernimmt Polling
 - **5 → 3 Stories möglich** wenn FRESHNESS DIAG alte/fehlende Stories filtert
   - NULL-TOLERANZ: nur frische Stories werden verwendet
   - Top-20-Fallback füllt Lücken bei manuellem Start
@@ -260,7 +276,94 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 
 ---
 
-## 🎬 CONTENT-MATERIAL (Bülent)
+## 🎬 VIDEO-PRODUKTIONS-SYSTEM (NEU – 20.09.2026)
+
+**Komplette Kette läuft:**
+```
+Claude Code → BudgetAI-Proxy (Nemotron) → Kaestral MCP → FFmpeg → Videos
+```
+
+### 🛠️ Installationen auf Bülents Laptop
+
+| Was | Version | Pfad |
+|---|---|---|
+| **Node.js** | v24.21.0 | C:\Program Files\nodejs\ |
+| **npm** | 11.19.0 | global |
+| **budgetai** (Proxy) | aktuell | C:\Users\Admin\.config\budgetai\ |
+| **Claude Code** | v2.1.278 | C:\Users\Admin\AppData\Roaming\npm\claude.cmd |
+| **FFmpeg** | 9.0.2-essentials | E:\ffmpeg\ffmpeg-9.0.2-essentials_build\bin |
+| **Kaestral** | 1.0.5 (via npx) | MCP-Server (lokal) |
+
+### 🔧 BudgetAI-Proxy Konfiguration
+
+**Datei:** `C:\Users\Admin\.config\budgetai\.env`
+
+```
+NVIDIA_NIM_API_KEY=nvapi-... (aus GitHub Secrets: KI-SOCIAL-AGENT-v2)
+NIM_MODEL=nvidia/nemotron-3.5-lightning-30b-a3b
+NIM_BASE_URL=https://integrate.api.nvidia.com/v1
+PORT=8082
+RATE_LIMIT=40
+RATE_LIMIT_WINDOW=60
+ENABLE_THINKING=false
+```
+
+**Achtung:** GLM-4.7 (EOL 14.05.2026), Qwen3 Coder 480B (EOL 11.06.2026) – nicht mehr nutzen!
+
+### 🚀 Claude Code Startsequenz (WICHTIG – immer so!)
+
+**Problem:** PowerShell öffnet bei Bülent **immer als Admin** → User-PATH wird nicht geladen.
+
+**Lösung – immer diese 4 Befehle in dieser Reihenfolge:**
+
+```
+cd C:\Users\Admin
+$env:ANTHROPIC_BASE_URL="http://localhost:8082"
+$env:ANTHROPIC_API_KEY="dummy"
+C:\Users\Admin\AppData\Roaming\npm\claude.cmd
+```
+
+**Voraussetzung:** Proxy-Fenster läuft (`budgetai start`).
+
+**Nicht aus `C:\Windows\System32` starten!** → „No, exit" wählen, dann `cd C:\Users\Admin`.
+
+### 🎬 Kaestral MCP-Server
+
+**Registriert als:** `kaestral`
+**Config:** `C:\Users\Admin\.claude.json` [project: C:\Users\Admin]
+**Tools:** 45+ (detect_scenes, add_clips, add_texts, add_captions, export_project, etc.)
+
+**Nicht verfügbar unter Windows:**
+- `search_media`, `inspect_color`, `sync_audio`
+
+**Kostenpflichtig (nicht ohne Freigabe):**
+- `generate_audio`, `generate_image`, `generate_video`, `upscale_media`
+
+**MCP-Server hinzufügen (Windows):**
+```
+claude mcp add kaestral -- cmd /c npx kaestral
+```
+**Niemals** `.claude.json` mit Notepad bearbeiten → JSON-Fehler.
+
+### 📁 MotoGP-Material-Pfad
+
+**Ordner:** `C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026`
+
+**Enthält:**
+- `gruppenselfieModerator.jpg` – Hook
+- `autogrammToprak.mp4` – Unterschrift auf Shirt
+- `toprak-selfie.jpg` – Selfie mit Weltmeister
+- `toprak-dankesagen.mp4` – Toprak sagt Danke auf Türkisch
+- `ich-herowalk.jpg` – Hero Walk
+- `strecke.jpg` / `vom berg.jpg` – Strecke
+- `MotoGP-ständer.jpg` – Merch-Stand
+- `ich+damian.jpg` – Damian + Bülent
+- `ich-damian-Jackmiller.jpg` – Zu dritt mit Jack
+- `jackmiller.jpg` + `Toprak.jpg` – Einzelaufnahmen
+
+---
+
+## 🎬 CONTENT-MATERIAL (Übersicht)
 
 ### 5 Foto-/Video-Ordner auf Laptop
 
@@ -278,13 +381,96 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 
 ### 🏆 Top-Material: MotoGP Assen 2026
 - 🎥 **Toprak-Video:** bedankt sich auf Türkisch, winkt in Kamera
+- 🎥 **Autogramm-Video:** Toprak unterschreibt Bülents Shirt
+- 🎥 **Moderator-Video:** Er spricht Englisch, „extra aus Türkei gekommen"
+- 📸 **Gruppenselfie:** Bülent + Damian + Moderator + Helfer
 - 📸 Selfies mit Toprak, Jack Miller, Morbidelli, Rins
-- 📸 Ai Ogura (von weitem)
 - 📸 Strecke + Stände
 
 **Virales Potenzial:** 3 Zielgruppen gleichzeitig
 
-### 🎯 Reel-Plan
+---
+
+## 🎯 MOTOGP-REEL – STORYBOARD (fertig)
+
+**Reihenfolge (8 Clips, ~59 Sek, 9:16):**
+
+| # | Datei | Dauer | KI-Stimme | Text-Overlay |
+|---|---|---|---|---|
+| 1 | gruppenselfieModerator.jpg | 4s | 🎙️ an | „Er fragte: Wollt ihr zu Toprak?" |
+| 2 | autogrammToprak.mp4 | 24s | 🎙️ an | „Der Moderator hat's möglich gemacht" |
+| 3 | toprak-selfie.jpg | 5s | 🎙️ an | „Toprak Razgatlioglu 🏆" |
+| 4 | toprak-dankesagen.mp4 | 7s | 🔇 **aus** | „Danke Toprak 🇹🇷" |
+| 5 | ich-herowalk.jpg | 5s | 🎙️ an | „Hero Walk – hautnah" |
+| 6 | strecke.jpg | 5s | 🎙️ an | „Assen 2026 – die Strecke" |
+| 7 | MotoGP-ständer.jpg | 4s | 🎙️ an | „Toprak-Merch" |
+| 8 | toprak-selfie.jpg (CTA) | 5s | 🎙️ an | „Teil 2 folgt – wer ist euer Favorit? 👇" |
+
+### 🎙️ KI-Voiceover-Skript
+
+```
+Ein Moderator kam auf uns zu.
+Er fragte: Wollt ihr zu Toprak?
+Aus Deutschland – aber er dachte, wir kommen extra aus der Türkei.
+Und dann hat er es möglich gemacht.
+Toprak unterschreibt mein Shirt.
+Selfie mit dem Weltmeister.
+Und dann sagt er Danke – auf Türkisch.
+Hero Walk. Die Strecke. Die Fans.
+Teil 2 folgt – wer ist euer Lieblingsfahrer?
+```
+
+### 📝 Instagram-Caption
+
+```
+Ein Moderator kam auf uns zu und fragte:
+„Wollt ihr zu Toprak?"
+
+Er hat es möglich gemacht. Hero Walk, Autogramm, Selfie.
+Und dann bedankt sich der Weltmeister bei mir – auf Türkisch 🇹🇷
+
+Mit meinem Buddy Damian in Assen 2026.
+Das war nicht nur ein Wochenende. Das war Gänsehaut. 🙏
+
+Wer ist euer Lieblingsfahrer? 👇
+Teil 2 folgt – mit Jack Miller.
+
+#motogp #assen #toprakrazgatlioglu #jackmiller #motogp2026 #biker #türkischerbiker #motorrad #motorsport #herowalk #buelentsbikelife
+```
+
+### 🚀 Prompt für Claude Code (morgen)
+
+```
+Baue einen Instagram-Reel im 9:16-Format aus den Dateien im Ordner
+C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026
+
+Reihenfolge:
+1. gruppenselfieModerator.jpg (4s)
+2. autogrammToprak.mp4 (24s, ganz lassen)
+3. toprak-selfie.jpg (5s)
+4. toprak-dankesagen.mp4 (7s, Original-Ton laut, keine KI)
+5. ich-herowalk.jpg (5s)
+6. strecke.jpg (5s)
+7. MotoGP-ständer.jpg (4s)
+8. toprak-selfie.jpg (5s, CTA)
+
+Text-Overlays (deutsch, untere Mitte):
+- 0-4s: "Er fragte: Wollt ihr zu Toprak?"
+- 4-28s: "Der Moderator hat's möglich gemacht"
+- 28-33s: "Toprak Razgatlioglu 🏆"
+- 33-40s: "Danke Toprak 🇹🇷"
+- 40-45s: "Hero Walk – hautnah"
+- 45-50s: "Assen 2026 – die Strecke"
+- 50-54s: "Toprak-Merch"
+- 54-59s: "Teil 2 folgt – wer ist euer Favorit? 👇"
+
+Harte Schnitte, kein Crossfade. Musik leise im Hintergrund.
+Export als MP4 (1080x1920, 30fps) nach:
+C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026\reel-fertig.mp4
+```
+
+### 🎯 Reel-Plan (alle)
+
 | # | Reel | Status |
 |---|---|---|
 | 1 | MotoGP Assen – „Toprak bedankt sich" | 🔴 Storyboard fertig |
@@ -292,14 +478,6 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 | 3 | Hagen Biker Treff / Bike Society Hagen | ⏸️ wartet |
 | 4 | M1000R-Realität | ⏸️ wartet |
 | 5 | BiggeGrill | ⏸️ wartet |
-
-### 🛠️ Video-Tool-Entscheidung
-- **CapCut:** ❌ zu groß für Laptop
-- **HeyGen:** ✅ kostenlos (3 Videos/Monat, 1 Min, Wasserzeichen)
-- **OpenReel:** ✅ Browser (kein Install)
-- **Empfehlung:**
-  - MotoGP-Reel: manuell (OpenReel)
-  - Andere: HeyGen für Rohschnitt
 
 ---
 
@@ -335,11 +513,12 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 ## 🔴 OFFENE PRIORITÄTEN
 
 ### Kurzfristig (diese Woche)
-- 🎬 MotoGP-Reel bauen + posten
+- 🎬 MotoGP-Reel bauen (mit Claude Code + Kaestral)
 - 🎬 Bikertreff-Reel (Radevormwald + Biggesee)
 - 📸 Instagram durchforsten → Patterns sammeln
 - 📱 TÜRKBiR beobachten → erste Interaktion
 - 📄 `config/MEDIA_TOOLS.md` anlegen
+- 🧪 Weather Agent testen (OWM-Key-Aktivierung)
 
 ### Mittelfristig (2 Wochen)
 - 🖥️ Approval-Dashboard Stufe 2
@@ -348,7 +527,6 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 - 🛡️ Safety-Check → `nvidia/nemotron-3-content-safety`
 - ⚙️ Router-Erweiterung
 - 🐛 Debug-Branch-Schutz
-- 📊 Analytics-Report Instagram/Facebook
 
 ### Nach VPS
 - 🟢 VPS einrichten
@@ -364,23 +542,28 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 
 ---
 
-## 🔧 TOOL-WORKFLOW (Jules + Codex)
+## 🔧 TOOL-WORKFLOW (Jules + Codex + Claude Code)
 
 ### Jules (Google)
 - 15 Sessions/Tag (rollierend 24h), max 3 parallel
 - Automatische PRs, GitHub-Integration
 - **Neuer Auftrag = neuer Chat**
-- **Fix an gemergtem PR = neuer Chat**
 
 ### Codex (ChatGPT Plus)
 - Nutzungslimit, Reset ~18:41 Uhr
 - Kann GitHub-PRs direkt anlegen (GitHub-Verbindung)
-- Selbst-enthaltende Aufträge (kein Chat-Gedächtnis)
+- Selbst-enthaltende Aufträge
+
+### Claude Code (lokal, über NVIDIA)
+- Kostenlos über NVIDIA Free Tier
+- Für Video-Schnitt (Kaestral) und lokale Projekte
+- **Startsequenz siehe oben**
 
 ### Aufteilung
 - **Jules:** Größere Tasks
-- **Codex:** Fixes, kleine PRs, parallel zu Jules
-- **Beide:** Nie dieselbe Datei gleichzeitig bearbeiten
+- **Codex:** Fixes, kleine PRs
+- **Claude Code:** Video, lokale Arbeit
+- **Nie dieselbe Datei gleichzeitig bearbeiten**
 
 ---
 
@@ -404,6 +587,13 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 - `main` = produktiv
 - `debug/motogp-pipeline-output` = nur Bülent + Codex
 
+### Bekannte technische Fallen
+- **NVIDIA NIM:** Modelle werden oft EOL → immer prüfen
+- **Windows npx-Problem:** `cmd /c`-Wrapper nötig
+- **Admin-PowerShell:** User-PATH wird nicht geladen → voller Pfad
+- **Notepad + JSON:** Niemals `.claude.json` mit Notepad bearbeiten
+- **C:-Speicher:** knapp → Downloads auf E: umleiten
+
 ---
 
 ## 📊 AUTONOMIE-STAND
@@ -417,7 +607,7 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 | 5. Approval (Telegram) | ✅ |
 | 6. Publishing (Insta + FB) | ✅ |
 | 7. Publishing (TikTok) | ❌ geplant |
-| 8. Media (Audio/Video) | 🟢 nach VPS |
+| 8. Media (Audio/Video) | ⚠️ Kaestral läuft lokal |
 | 9. Durchgehende Autonomie-Kette | 🔴 in Arbeit |
 
 **Aktuell: ~55 % autonom.**
@@ -431,6 +621,8 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 - **Actions:** https://github.com/Edirne22/KI-SOCIAL-AGENT/actions
 - **NVIDIA Build:** https://build.nvidia.com/models
 - **ClawHub:** https://clawhub.ai
+- **Kaestral:** https://github.com/prabindersinghh/Kaestral-pro
+- **OpenReel:** https://openreel.video
 - **Handbuch:** `docs/HANDBUCH.md`
 - **Bikertreffs:** `config/Bikertreffs.md`
 - **Pattern Library:** `config/PATTERN_LIBRARY.md`
@@ -486,20 +678,14 @@ Wenn eine bestehende Datei geändert werden soll:
 - **Immer die KOMPLETTE Datei** liefern (zum 1:1-Ersetzen)
 - **Niemals** nur Teil-Blöcke zum Einfügen
 - **Niemals** „ersetze Zeile X"
-- Grund: Copy-Paste-Fehler an Rändern (abgeschnittene Blöcke,
-  vergessene Statistik, doppelte Trenner) sind sonst unvermeidbar
+- Grund: Copy-Paste-Fehler an Rändern sind sonst unvermeidbar
 
-- ⏳ **Weather Agent prüfen** (nach OpenWeatherMap-Key-Aktivierung)
-  - Erster Testlauf: 20.09.2026 um 17:42 UTC → 401 Unauthorized
-  - Ursache: OWM aktiviert neue Keys erst nach 10 Min – 2 Std
-  - Aktion: Workflow später/morgen erneut starten
-  - Bei Erfolg: Telegram-Nachricht mit Strecken-Wetter
-  - Bei weiterem 401: Key im Browser prüfen (siehe oben)
+### 7. Bei jedem Tool: Öffnungs-Anleitung mitliefern
+Bülent ist kein Programmierer. Wenn ein Tool erwähnt wird
+(PowerShell, Notepad, Browser, Terminal), muss IMMER mitgeliefert werden:
+1. **Wie öffnen** (Windows-Taste → suchen → Enter)
+2. **Woran erkennen** (Prompt-Anzeige, Fensterfarbe)
+3. **Wie schließen** (Strg+C, /exit, X)
 
----
-
-## 📸 SNAPSHOT – 20.09.2026 (Nacht)
-
-### 🎬 Video-Produktions-System aufgesetzt (Meilenstein)
-
-**Komplette Kette läuft:**
+**Negativ-Beispiel:** „Öffne PowerShell" ❌
+**Positiv-Beispiel:** „Drücke Windows-Taste → tippe `powershell` → Enter. Der Prompt sollte `PS C:\Users\Admin>` zeigen." ✅
