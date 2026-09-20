@@ -324,3 +324,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/18/salac-soars-to-practice-p1-wit
 Story-Key: title:community-spotlight-bike-society-hagen
 Titel: 🏍️ Community-Spotlight: Bike Society Hagen
 Quelle: https://www.instagram.com/bike_society_hagen
+
+## 2026-09-20 10:23 UTC – ANGEBOTEN
+Story-Key: motogp:1090400
+Titel: Quiles cruises to Austrian GP victory
+Quelle: https://www.motogp.com/en/news/2026/09/20/m3-aut-sun-report/1090400
