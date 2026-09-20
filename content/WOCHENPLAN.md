@@ -307,3 +307,21 @@ Visuelle Idee: Nahaufnahme eines modernen, futuristischen Helms mit dezent einge
 | **Hook** | Kein Netz am Stelvio – und die App zeigt trotzdem jede Kurve und den nächsten Notruf. |
 | **Beschreibung** | Praxisbericht: Offline-Karten-Download vor der Tour, SOS-Button-Test (kein echter Notruf), Akku-Verbrauch nach 300 km. Ehrlich: Was gut lief, wo die App nachjustieren muss. Frage: „Welche Offline-Funktion fehlt dir noch?“ |
 | **Hashtags IG/TikTok** | #RideWithMe #Off
+
+
+# Wochenplan vom 2026-09-20 06:12:21
+Hier ist der strategische 7-Tage-Content-Plan für Bülents Bike Life. Der Plan berücksichtigt die verbindlichen Vorgaben: Faktenbindung gemäß Roster 2026, Maximal 1x *Ride With Me*-App-Feature, maximal 6 relevante Hashtags, keine KI-Floskeln oder leeren Floskeln, Vermeidung früherer Hooks aus der Post-History sowie strikte Einhaltung der Markenpräferenzen (keine Harleys/Cruiser, keine US-Flaggen, Fokus auf Sportbikes/Naked Bikes, Türkische Fahrer und echte Community-Themen).
+
+---
+
+# 7-Tage-Content-Plan: Bülents Bike Life
+
+**Sendezeitraum:** Montag bis Sonntag  
+**Uhrzeit-Standard:** 12:00 – 12:30 Uhr (MEZ)
+
+---
+
+### Montag
+* **Thema:** MotoGP-Technik & Fahrer-Setup
+* **Plattform:** Instagram & TikTok
+* **Fahrer-Fokus:** Toprak Razgatlıoğlu (#7) & Jack Miller (#43)
