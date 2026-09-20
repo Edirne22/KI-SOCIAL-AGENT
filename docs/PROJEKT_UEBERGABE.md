@@ -1,10 +1,10 @@
 # PROJEKT-ÜBERGABE – KI-SOCIAL-AGENT
 
-**Stand:** 2026-09-20 (Nachmittag)
+**Stand:** 2026-09-20 (Abend)
 **Repo:** https://github.com/Edirne22/KI-SOCIAL-AGENT
 **Ziel:** Autonome Content-Fabrik für Bülent (@edirnelibuelent) – 12–24 Monate zur KI-Agentur.
-**Repo-Typ:** 🌐 **Public** (unbegrenzte GitHub-Actions-Minuten)
-**Bedeutung:** Kein Limit bei Workflow-Frequenz – 2-Min-Cron ist okay
+**Repo-Typ:** 🌐 Public (unbegrenzte GitHub-Actions-Minuten)
+**Telegram-Polling:** alle 2 Min zwischen 06:00–21:00 Uhr
 
 ---
 
@@ -81,7 +81,7 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 |---|---|---|---|
 | `llm_router.py` | Groq/Google/OpenRouter/NVIDIA/Cloudflare | – | ✅ live |
 | `image_router.py` | Pollinations | Cloudflare → Together → NVIDIA → Agnes | ✅ live |
-| `vision_router.py` | Llama 3.2 Vision | Kimi K3 | ⚠️ Upgrade geplant |
+| `vision_router.py` | Muse Glimmer 30B (NVIDIA) | Kimi K3 | ✅ live |
 | `translation_router.py` | Riva 4B (NVIDIA) | llm_router | ✅ live |
 | `speech_router.py` | Nemotron ASR + Magpie TTS | – | 🟢 nach VPS |
 | `video_router.py` | Cosmos3 Nano | – | 🟢 nach VPS |
@@ -94,11 +94,13 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 - NVIDIA FLUX: **auf Eis** (Timeout/422)
 - Agnes: letzter Fallback, funktioniert
 
-### Vision-Router Details
-- `general` → `meta/llama-3.2-11b-vision-instruct` (Fallback: Kimi K3)
-  - ⚠️ **Upgrade geplant:** `meta/muse-glimmer-30b` (stärker für Screenshots)
-- `ocr` → `nvidia/nemotron-ocr-v2` (liefert `text` + `tables`)
-- `omni` → `nvidia/nemotron-3-nano-omni`
+### Vision-Router Details (Upgrade 20.09.2026)
+- `general` → `meta/muse-glimmer-30b` (Fallback: Kimi K3)
+  - Timeout 240 Sekunden
+  - Deutscher, strukturierter Prompt (Szene / Text / Account / Zahlen)
+  - Liefert deutlich bessere Ergebnisse als das alte Modell
+- `ocr` → `nvidia/nemotron-ocr-v2` (liefert `text` + `tables`, Timeout 180s)
+- `omni` → `nvidia/nemotron-3-nano-omni` (Timeout 180s)
 
 ### Translation-Router Details
 - Primär: `nvidia/riva-translate-4b-instruct-v2`
@@ -131,9 +133,9 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 - ❌ **Together AI** – nicht nutzbar
 - ❌ **NVIDIA FLUX** – auf Eis
 - ✅ **NVIDIA Riva 4B** – läuft
-- ✅ **NVIDIA Llama Vision** – läuft (Upgrade geplant)
+- ✅ **NVIDIA Muse Glimmer 30B** – läuft (Upgrade)
 - ✅ **Agnes** – Bild-Fallback
-- ✅ **Kimi K3** – Reasoning/Coding
+- ✅ **Kimi K3** – Reasoning/Coding + Vision-Fallback
 - ⚠️ **DeepSeek v4-flash** – EOL 22.09.2026
 
 ### 🔒 Sicherheitsregel
@@ -154,7 +156,7 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 ## 🤖 TELEGRAM VISION-BOT (Bild-Analyse)
 
 **Status:** ✅ live seit 20.09.2026
-**Dateien:** `telegram_router.py`, `memory/VISION_LOG.jsonl`
+**Dateien:** `telegram_router.py`, `memory/VISION_LOG.jsonl`, `memory/VISION_SUMMARY.md`
 
 ### Funktionen
 | Kommando | Wirkung |
@@ -166,41 +168,64 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 | `/help` / `/hilfe` | Kommando-Übersicht |
 | `/vision` ohne Bild | Hinweis |
 
-### NEU seit 20.09.: Vision-Log-Speicherung
+### Vision-Log-Speicherung (live)
 - Jede Analyse wird in `memory/VISION_LOG.jsonl` geschrieben
 - Format: `{timestamp, source, mode, model, result, tables_present, error}`
 - Auch Fehlerfälle werden geloggt
-- **Zweck:** Basis für automatische Auswertung
+
+### Vision-Summary-Agent (live)
+- **Datei:** `agents/vision_summary_agent.py`
+- **Workflow:** `.github/workflows/vision-summary.yml`
+- **Lauf:** alle 3 Tage um 08:00 UTC
+- **Erster regulärer Lauf:** 18.10.2026 (Guard-Clause)
+- **Force-Modus:** `workflow_dispatch` mit `force=true` (überspringt Guard)
+- **Output:** `memory/VISION_SUMMARY.md` (deutsche Zusammenfassung der letzten 7 Tage)
 
 ### Workflow
 ```
-Screenshot → Telegram (/vision) → Vision-Router → Analyse
+Screenshot → Telegram (/vision) → Vision-Router (Muse Glimmer)
                                        ↓
                                 VISION_LOG.jsonl
                                        ↓
-                          (später: Vision-Summary-Agent)
+                          Vision-Summary-Agent (alle 3 Tage)
+                                       ↓
+                                VISION_SUMMARY.md
 ```
 
-### Nächster Schritt (Auftrag vorbereitet)
-- **Vision-Summary-Agent** liest `VISION_LOG.jsonl`, schreibt `VISION_SUMMARY.md`
-- **Erster Lauf:** 18.10.2026 (Guard-Clause im Workflow)
-- **Danach:** alle 3 Tage um 08:00 UTC
+### Einschränkungen
+- Aktuell nur Bilder (keine Videos)
+- Nach VPS: Video-Frames + Audio-Transkription
 
 ---
 
 ## 🎯 PATTERN LIBRARY (Instagram-Content-Bausteine)
 
 **Datei:** `config/PATTERN_LIBRARY.md`
-**Angelegt:** 20.09.2026
+**Angelegt:** 20.09.2026 – 8 Patterns aktiv
 
-| # | Pattern | Quelle | Anwendung |
+| # | Pattern | Quelle | Status |
 |---|---|---|---|
-| 1 | Zahl + Nutzen im Hook | @aiwithshivang | Listen-Reels |
-| 2 | Kommentar-Trigger | @aiwithshivang | Reichweite |
-| 3 | Selfie mit VIP | Bülent (MotoGP) | Social Proof |
-| 4 | Vorher/Nachher | vorgemerkt | Transformation |
-| 5 | POV | vorgemerkt | Fahrt-Content |
-| 6 | Storytelling mit Ende offen | vorgemerkt | Serie |
+| 1 | Zahl + Nutzen im Hook | @aiwithshivang | ✅ |
+| 2 | Kommentar-Trigger | @aiwithshivang | ✅ |
+| 3 | Selfie mit VIP | Bülent (MotoGP) | ✅ |
+| 4 | Vorher/Nachher | Recherche | 🟡 vorgemerkt |
+| 5 | POV | Recherche | 🟡 vorgemerkt |
+| 6 | Storytelling mit Ende offen | Recherche | 🟡 vorgemerkt |
+| 7 | Karussell als Cheat-Sheet | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ |
+| 8 | Slash-Command-Tags | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ |
+
+### Workflow
+```
+Instagram-Post gefällt
+    ↓
+Screenshot → Telegram-Bot (/vision)
+    ↓
+Analyse kommt zurück → Bülent prüft: neues Pattern?
+    ↓
+Wenn ja: in PATTERN_LIBRARY.md eintragen
+    ↓
+Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
+```
 
 **Ziel:** 15–20 Patterns bis Ende Oktober 2026.
 
@@ -213,7 +238,7 @@ Screenshot → Telegram (/vision) → Vision-Router → Analyse
 |---|---|---|
 | `motogp-content-agency.yml` | schedule + workflow_dispatch | 5 Tagesvorschläge generieren |
 | `motogp-telegram-approval.yml` | **nur workflow_dispatch** | Empfängt MotoGP-Kommandos |
-| `telegram-receive.yml` | schedule (~alle 5 Min) | Zentraler Router für Telegram-Updates |
+| `telegram-receive.yml` | schedule alle 2 Min (6–21 Uhr) | Zentraler Router für Telegram-Updates |
 | `motogp-pipeline-diagnose.yml` | workflow_dispatch | Diagnose |
 | `motogp-roster-update.yml` | schedule | Fahrer-Roster aktualisieren |
 
@@ -315,17 +340,15 @@ Screenshot → Telegram (/vision) → Vision-Router → Analyse
 - 📸 Instagram durchforsten → Patterns sammeln
 - 📱 TÜRKBiR beobachten → erste Interaktion
 - 📄 `config/MEDIA_TOOLS.md` anlegen
-- 🧠 **Vision-Summary-Agent** (Auftrag vorbereitet, PR offen)
-- 🎯 **Vision-Modell-Upgrade** auf `meta/muse-glimmer-30b` (Auftrag vorbereitet)
 
 ### Mittelfristig (2 Wochen)
 - 🖥️ Approval-Dashboard Stufe 2
 - 📦 TikTok-Integration
-- 🧠 Vision in Pipeline einbinden
 - 🧠 Memory-Embedding → `nvidia/nemotron-3-embed-1b`
 - 🛡️ Safety-Check → `nvidia/nemotron-3-content-safety`
 - ⚙️ Router-Erweiterung
 - 🐛 Debug-Branch-Schutz
+- 📊 Analytics-Report Instagram/Facebook
 
 ### Nach VPS
 - 🟢 VPS einrichten
@@ -397,7 +420,7 @@ Screenshot → Telegram (/vision) → Vision-Router → Analyse
 | 8. Media (Audio/Video) | 🟢 nach VPS |
 | 9. Durchgehende Autonomie-Kette | 🔴 in Arbeit |
 
-**Aktuell: ~50 % autonom.**
+**Aktuell: ~55 % autonom.**
 
 ---
 
@@ -457,3 +480,11 @@ Wenn ein Modell oder Tool nicht das gewünschte Ergebnis liefert:
 ### 5. Ehrliche Einschätzung > höfliche Zustimmung
 Bei Schwächen, Risiken oder Fehlern: klar ansprechen.
 Nicht schönreden. Lieber unbequem ehrlich als bequem falsch.
+
+### 6. Komplette Dateien statt Teil-Blöcke
+Wenn eine bestehende Datei geändert werden soll:
+- **Immer die KOMPLETTE Datei** liefern (zum 1:1-Ersetzen)
+- **Niemals** nur Teil-Blöcke zum Einfügen
+- **Niemals** „ersetze Zeile X"
+- Grund: Copy-Paste-Fehler an Rändern (abgeschnittene Blöcke,
+  vergessene Statistik, doppelte Trenner) sind sonst unvermeidbar
