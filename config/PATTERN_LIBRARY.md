@@ -141,7 +141,6 @@ Teil 2 folgt – was ist wohl passiert?
 - Bikertreff-Serie (Teil 1: Radevormwald + Biggesee, Teil 2: Hagen)
 
 ---
----
 
 ## 🎯 Pattern 7: Karussell als Cheat-Sheet
 
@@ -158,6 +157,14 @@ Teil 2 folgt – was ist wohl passiert?
 - **Karussell-Format** = mehr Verweildauer pro Nutzer
 - **Nummerierte Einträge** machen den Inhalt greifbar und vollständig
 - **Hohe Save-Rate** (1.465 Saves bei 591 Likes = >2x) → Post wird als Nachschlagewerk genutzt
+
+**Template:**
+```
+Slide 1: Hook-Karte (Titel + Claim)
+Slides 2–N: nummerierte Einträge
+  Format je Slide: [Nummer] [Tag/Titel] [1-2 Zeilen Beschreibung]
+Letzter Slide: CTA ("Swipe →", "Speichern", "Folgen")
+```
 
 **Anwendung für Bülent:**
 - „11 MotoGP-Prompts für KI-Videos"
@@ -185,6 +192,32 @@ Teil 2 folgt – was ist wohl passiert?
 - **Skalierbar:** Ein Tag = eine Kategorie = beliebig erweiterbar
 
 **Template:**
+```
+/[tag]: [kurze Beschreibung, was der Tag auslöst]
+
+Beispiele:
+/ugc: create an authentic user-generated-content style video
+/selfiecam: simulate natural front-camera recording
+/sunset: warm sunset lighting
+```
+
+**Anwendung für Bülent:**
+- Eigene Tags für Reels einführen:
+  - `/strecke:` – Strecken-Doku
+  - `/schraeglage:` – Kurven-Content
+  - `/bikertreff:` – Community-Spot
+  - `/m1000r:` – Maschinen-Content
+  - `/bastel:` – Umbau/Wartung
+  - `/runde:` – Touren-Bericht
+- **Zweck:** Wiedererkennung + Struktur + Hashtag-Basis
+
+**Langfristiger Nutzen:**
+- Wenn du später KI-Video-Tools nutzt (Runway, Veo), kannst du Prompts mit diesen Tags bauen
+- Deine Community lernt die Tags → fragt gezielt nach bestimmten Themen
+- Eigene Marken-Sprache, die dich von anderen Bikern abhebt
+
+---
+
 ## 📋 Regeln für die Bibliothek
 
 1. **Nur bewährte Patterns** – kein „könnte funktionieren"
@@ -218,5 +251,7 @@ Teil 2 folgt – was ist wohl passiert?
 | 4. Vorher/Nachher | Recherche | 🟡 vorgemerkt |
 | 5. POV | Recherche | 🟡 vorgemerkt |
 | 6. Storytelling | Recherche | 🟡 vorgemerkt |
+| 7. Karussell als Cheat-Sheet | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ aktiv |
+| 8. Slash-Command-Tags | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ aktiv |
 
 **Ziel:** 15–20 Patterns bis Ende Oktober 2026.
