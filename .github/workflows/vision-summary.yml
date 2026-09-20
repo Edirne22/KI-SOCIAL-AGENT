@@ -33,16 +33,21 @@ jobs:
         run: pip install requests
 
       - name: Guard start date
+        id: guard
         run: |
           if [ $(date +%s) -lt $(date -d '2026-10-18' +%s) ]; then
             echo 'Summary-Agent startet erst am 18.10.2026.'
+            echo "run=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          echo "run=true" >> "$GITHUB_OUTPUT"
 
       - name: Generate vision summary
+        if: steps.guard.outputs.run == 'true'
         run: python agents/vision_summary_agent.py
 
       - name: Commit summary
+        if: steps.guard.outputs.run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -50,4 +55,5 @@ jobs:
           git commit -m "chore: vision summary update [skip ci]" || echo "nichts zu committen"
 
       - name: Push changes
+        if: steps.guard.outputs.run == 'true'
         run: git push
