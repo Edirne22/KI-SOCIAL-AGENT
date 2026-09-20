@@ -218,6 +218,83 @@ Beispiele:
 
 ---
 
+## 🎯 Pattern 9: Fotografie-Stil-Prompts (Atmosphäre)
+
+**Beispiele aus den Analysen:**
+- `/motion-blur`, `/long-exposure`, `/vintage`, `/retro`
+- `/rain:`, `/storm:`, `/snow:`, `/goldenhour:`, `/bluehour:`, `/moonlight:`
+- `/neonlights:`, `/cyberpunk:`, `/darkmoody:`
+
+**Quelle:** @mauryavanshi_edits, @startup_rules (verifiziert) – 20.09.2026
+
+**Warum es funktioniert:**
+- **Atmosphäre** verkauft das Bild – nicht nur das Motiv
+- **Direkt anwendbar** für Bildgenerierung (Pollinations, Agnes)
+- **Emotionale Wirkung** – Regen wirkt dramatisch, Golden Hour romantisch
+- **Einfache Sprache** – jeder versteht „/sunset:"
+
+**Template:**
+```
+/[stil]: [kurze Beschreibung der Atmosphäre/Wirkung]
+
+Beispiele:
+/rain: rainfall and wet atmospheric effects
+/goldenhour: warm, cinematic golden-hour light
+/motion-blur: fast movement with blurred edges
+```
+
+**Anwendung für Bülent:**
+- Für MotoGP-Reel und Bikertreff-Reel:
+  - `/schraeglage:` – dynamische Kurvenfahrt
+  - `/regen-fahrt:` – nasse Straße, dramatisch
+  - `/goldene-stunde:` – Sonnenuntergang auf der M1000R
+  - `/nebelstrecke:` – Bergisches Land im Morgennebel
+  - `/nacht-fahrt:` – Scheinwerfer bei Nacht
+- **Zweck:** Bilder für Reels konsistent und atmosphärisch generieren
+
+**Kombinierbar mit Pattern 8** – Tags als Marken-Sprache für deine Bildgenerierung.
+
+---
+
+## 🎯 Pattern 10: Skill-Karten-Raster (4x2 Grid)
+
+**Beispiel:** 8 Skill-Karten in 2 Spalten à 4 Reihen – @bitbyybit (mehrfach)
+**Quelle:** @bitbyybit, 20.09.2026 (5 Analysen)
+**Stats:** 79 Likes, 49 Kommentare, 7 Shares, 124 weitere Interaktionen
+
+**Warum es funktioniert:**
+- **Maximale Dichte** – 8 Inhalte in einem Slide
+- **Save-Rate hoch** – Nutzer speichern als Nachschlagewerk
+- **Karten-Struktur** (Icon + Titel + Kategorie + Beschreibung) = Wiedererkennung
+- **Konsistente Optik** – wirkt wie eine kuratierte Sammlung
+
+**Karten-Format:**
+```
+[Icon/Bild] | [Skill-Name]
+            | [Kategorie]
+            | [1-2 Zeilen Beschreibung]
+
+Layout:
+- 4 Reihen × 2 Spalten = 8 Karten
+- Hintergrund: hell (beige/weiß)
+- Farbige Akzente links an jeder Karte
+- Titel + Kategorie + Beschreibung je Karte
+- Slide-Indikator oben rechts (z. B. „5/7")
+- CTA unten („swipe →")
+```
+
+**Anwendung für Bülent:**
+- „8 KI-Tools für Biker-Reels" – Karten mit Tool-Name + Zweck + 1-Zeiler
+- „8 Must-have-Motorrad-Gadgets"
+- „8 MotoGP-Fahrer im Kurzporträt"
+- „8 Bergische Strecken-Highlights"
+
+**Format-Tipp:**
+- Wenn du nur einen Slide brauchst → nimm Pattern 10
+- Wenn du das Ganze als Serie planst → Pattern 7 (Karussell)
+
+---
+
 ## 📋 Regeln für die Bibliothek
 
 1. **Nur bewährte Patterns** – kein „könnte funktionieren"
@@ -253,5 +330,13 @@ Beispiele:
 | 6. Storytelling | Recherche | 🟡 vorgemerkt |
 | 7. Karussell als Cheat-Sheet | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ aktiv |
 | 8. Slash-Command-Tags | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ aktiv |
+| 9. Fotografie-Stil-Prompts | @mauryavanshi_edits, @startup_rules | ✅ aktiv |
+| 10. Skill-Karten-Raster | @bitbyybit | ✅ aktiv |
 
 **Ziel:** 15–20 Patterns bis Ende Oktober 2026.
+
+**Referenz-Accounts zum Beobachten:**
+- @startup_rules (verifiziert) – AI-Bild-Commands
+- @mauryavanshi_edits – ChatGPT-Prompts
+- @karishmaticmarketer – UGC/Creator-Videos
+- @bitbyybit – KI-Skill-Sammlungen
