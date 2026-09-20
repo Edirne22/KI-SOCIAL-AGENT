@@ -726,3 +726,15 @@ Story-Key: motogp:1090398
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-20 04:29 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News Title race leader Martin produces golden comeback to capitalise on Acosta error Read Now
+Story-Key: motogp:1090418
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-20 04:29 UTC | Motorcycle Racing | PASS
+Titel: Salač soars to Practice P1 with new lap record
+Story-Key: motogp:1090401
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

@@ -314,3 +314,13 @@ Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-
 Story-Key: motogp:1090415
 Titel: Acosta unbeatable in Austria for Friday honours at Red Bull Ring
 Quelle: https://www.motogp.com/en/news/2026/09/18/acosta-unbeatable-in-austria-for-friday-honours-at-red-bull-ring/1090415
+
+## 2026-09-20 04:26 UTC – ANGEBOTEN
+Story-Key: motogp:1090401
+Titel: Salač soars to Practice P1 with new lap record
+Quelle: https://www.motogp.com/en/news/2026/09/18/salac-soars-to-practice-p1-with-new-lap-record/1090401
+
+## 2026-09-20 04:26 UTC – ANGEBOTEN
+Story-Key: title:community-spotlight-bike-society-hagen
+Titel: 🏍️ Community-Spotlight: Bike Society Hagen
+Quelle: https://www.instagram.com/bike_society_hagen
