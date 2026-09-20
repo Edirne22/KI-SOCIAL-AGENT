@@ -1,6 +1,6 @@
 # PROJEKT-ÜBERGABE – KI-SOCIAL-AGENT
 
-**Stand:** 2026-09-20
+**Stand:** 2026-09-20 (Nachmittag)
 **Repo:** https://github.com/Edirne22/KI-SOCIAL-AGENT
 **Ziel:** Autonome Content-Fabrik für Bülent (@edirnelibuelent) – 12–24 Monate zur KI-Agentur.
 
@@ -20,7 +20,7 @@ Aus der Fabrik raus. Eigene KI-Agentur. Content, der autonom läuft.
 Einnahmen: Sponsoren + Agentur-Kunden. Zeitachse: 12–24 Monate.
 
 ### Content-Säulen
-1. **Strecken-Doku** – konkrete Strecken, Kurven, Bikertreffs (Ruhrgebiet/Bergisches)
+1. **Strecken-Doku** – konkrete Strecken, Kurven, Bikertreffs
 2. **M1000R-Realität** – ehrliche Berichte (Kosten, Wartung, Erfahrung)
 3. **Community** – gemeinsame Touren ab Radevormwald
 4. **Biker-Alltag** – Generationen-Content, echte Geschichten
@@ -47,36 +47,26 @@ Kinder. Für sie da sein. Ihnen ein besseres Leben ermöglichen.
 ### 1. TÜRKBiR (Türkische Biker-Community)
 - **Beigetreten:** 20.09.2026
 - **Größe:** 36 Gruppen (bundesweit)
-- **Status:** Vorstellung in „Welcome & Tanıtım" erfolgt (Türkisch, ohne Werbung)
-- **Relevante Gruppen:**
-  - 🗺️ BERGISCHES LAND (regional)
-  - 🏍️ TÜRKBiR-Buluşmalar (Treffen)
-  - 🛣️ Tur ve buluşma bilgi (Touren)
-  - 📅 Etkinlikler (Events)
+- **Status:** Vorstellung in „Welcome & Tanıtım" erfolgt
+- **Relevante Gruppen:** BERGISCHES LAND, Buluşmalar, Tur ve buluşma bilgi, Etkinlikler
 
 ### 2. BIKE SOCIETY (Deutsche Biker-Community – 3 Regionen)
 - **Status:** Seit mehreren Monaten Mitglied
 - **United** → Ruhrgebiet + Ennepe-Ruhr-Kreis (13 Gruppen)
 - **Hagen** → Hagen (12 Gruppen)
 - **im Bergischen** → Bergisches Land (12 Gruppen)
-- **Relevante Gruppen je Region:**
-  - 📢 Ankündigungen
-  - 💬 Laberecke
-  - 🏍️ Fahrten & Treffen
-  - 👋 Vorstellungsgruppe
-  - 🗺️ Routen & Tourdaten
+- **Relevante Gruppen:** Ankündigungen, Laberecke, Fahrten & Treffen, Vorstellungsgruppe, Routen & Tourdaten
 
 ### 🎯 Nutzen
-- Direkter Zugang zur Zielgruppe (Ruhrgebiet + Bergisches Land + türkische Szene)
+- Direkter Zugang zur Zielgruppe
 - Content-Ideen aus erster Hand
-- Bikertreff-Recherche (Gruppen kennen alle Treffs)
-- Community-Aufbau für eigene Touren
-- Kooperationsmöglichkeiten mit Admins/Organisatoren
+- Bikertreff-Recherche
+- Kooperationen
 
 ### 🚦 Nächste Schritte
 1. TÜRKBiR: 2–3 Tage beobachten → erste Interaktion
-2. BIKE SOCIETY: bereits etabliert → später eigene Inhalte teilen
-3. Beide: Screenshots von „Fahrten & Treffen"-Posts → Content-Recherche
+2. BIKE SOCIETY: eigene Inhalte später teilen
+3. Screenshots von „Fahrten & Treffen"-Posts → Content-Recherche
 
 ### ⚠️ Regel
 Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern.
@@ -89,7 +79,7 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 |---|---|---|---|
 | `llm_router.py` | Groq/Google/OpenRouter/NVIDIA/Cloudflare | – | ✅ live |
 | `image_router.py` | Pollinations | Cloudflare → Together → NVIDIA → Agnes | ✅ live |
-| `vision_router.py` | Llama 3.2 Vision (NVIDIA) | Kimi K3 | ✅ live |
+| `vision_router.py` | Llama 3.2 Vision | Kimi K3 | ⚠️ Upgrade geplant |
 | `translation_router.py` | Riva 4B (NVIDIA) | llm_router | ✅ live |
 | `speech_router.py` | Nemotron ASR + Magpie TTS | – | 🟢 nach VPS |
 | `video_router.py` | Cosmos3 Nano | – | 🟢 nach VPS |
@@ -97,20 +87,21 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 ### Bild-Router Details
 - **Env-Schalter:** `IMAGE_PRIMARY` = `pollinations` (Standard) | `cloudflare` | `together` | `nvidia` | `agnes`
 - Cloudflare-Payload: nur `{"prompt": ...}`
-- Together-Payload: OpenAI-kompatibel (`black-forest-labs/FLUX.1-schnell-Free`)
-- Pollinations: OpenAI-kompatibel, funktioniert **ohne** Key zuverlässig
-- NVIDIA FLUX: Timeout/422 → **auf Eis**
-- Agnes: letzter Fallback, funktioniert zuverlässig
+- Together: Read-only Mode, nicht nutzbar
+- Pollinations: läuft ohne Key zuverlässig
+- NVIDIA FLUX: **auf Eis** (Timeout/422)
+- Agnes: letzter Fallback, funktioniert
 
 ### Vision-Router Details
 - `general` → `meta/llama-3.2-11b-vision-instruct` (Fallback: Kimi K3)
-- `ocr` → `nvidia/nemotron-ocr-v2` (kein Fallback, liefert `text` + `tables`)
-- `omni` → `nvidia/nemotron-3-nano-omni` (kein Fallback)
+  - ⚠️ **Upgrade geplant:** `meta/muse-glimmer-30b` (stärker für Screenshots)
+- `ocr` → `nvidia/nemotron-ocr-v2` (liefert `text` + `tables`)
+- `omni` → `nvidia/nemotron-3-nano-omni`
 
 ### Translation-Router Details
-- Primär: `nvidia/riva-translate-4b-instruct-v2` (OpenAI-kompatibel)
+- Primär: `nvidia/riva-translate-4b-instruct-v2`
 - Fallback: `llm_router.quick_chat`
-- **Wichtig:** Sprach-Namen ausgeschrieben („German", „Turkish") statt ISO-Codes
+- **Wichtig:** Sprach-Namen ausgeschrieben („German", „Turkish")
 - Sprachen: DE, TR, EN, FR, ES, IT, NL, PL, RU, AR
 
 ---
@@ -122,7 +113,7 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 | `NVIDIA_API_KEY` | `KI-SOCIAL-AGENT-v2` |
 | `CLOUDFLARE_ACCOUNT_ID` | aktiv |
 | `CLOUDFLARE_API_TOKEN` | aktiv |
-| `TOGETHER_API_KEY` | gesetzt, aber Account read-only (nicht nutzbar) |
+| `TOGETHER_API_KEY` | gesetzt, aber nicht nutzbar |
 | `POLLINATIONS_API_KEY` | aktiv |
 | `GROQ_API_KEY` | aktiv |
 | `OPENROUTER_API_KEY` | aktiv |
@@ -132,19 +123,19 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 | `TELEGRAM_BOT_TOKEN` | aktiv |
 | `TELEGRAM_CHAT_ID` | aktiv |
 
-### ⚠️ Provider-Status
+### Provider-Status
 - ✅ **Pollinations** – läuft, kein Key-Limit
-- ✅ **Cloudflare Workers AI** – nach Payload-Fix, 10k Neuronen/Tag
-- ❌ **Together AI** – Read-only Mode, Deposit nötig → **nicht einplanen**
-- ❌ **NVIDIA FLUX** – Timeout/422 → **auf Eis**
-- ✅ **NVIDIA Riva 4B** (Translation) – läuft
-- ✅ **NVIDIA Llama Vision** – läuft
+- ✅ **Cloudflare Workers AI** – 10k Neuronen/Tag
+- ❌ **Together AI** – nicht nutzbar
+- ❌ **NVIDIA FLUX** – auf Eis
+- ✅ **NVIDIA Riva 4B** – läuft
+- ✅ **NVIDIA Llama Vision** – läuft (Upgrade geplant)
 - ✅ **Agnes** – Bild-Fallback
 - ✅ **Kimi K3** – Reasoning/Coding
-- ⚠️ **DeepSeek v4-flash** – EOL 22.09.2026, **nicht mehr nutzen**
+- ⚠️ **DeepSeek v4-flash** – EOL 22.09.2026
 
 ### 🔒 Sicherheitsregel
-Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren (alten löschen, neuen generieren).
+Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 
 ---
 
@@ -152,43 +143,46 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren (alten l
 
 | Workflow | Zweck | Letztes Ergebnis |
 |---|---|---|
-| `test-image-router.yml` | Bild-Generierung testen | `BYTES: 386374` in 9 Sek |
-| `test-vision-router.yml` | Vision-Analyse testen | `RESULT: {...}` |
-| `test-translation-router.yml` | DE↔TR testen | `Merhaba, nasılsın?` / `Hallo, wie geht es dir?` |
+| `test-image-router.yml` | Bild-Generierung | `BYTES: 386374` in 9 Sek |
+| `test-vision-router.yml` | Vision-Analyse | `RESULT: {...}` |
+| `test-translation-router.yml` | DE↔TR | `Merhaba, nasılsın?` |
 
 ---
 
 ## 🤖 TELEGRAM VISION-BOT (Bild-Analyse)
 
 **Status:** ✅ live seit 20.09.2026
-**Datei:** `telegram_router.py`
+**Dateien:** `telegram_router.py`, `memory/VISION_LOG.jsonl`
 
 ### Funktionen
 | Kommando | Wirkung |
 |---|---|
-| Bild + `/vision` | Bild analysieren (Standard) |
+| Bild + `/vision` | Bild analysieren |
 | Bild + `/ocr` | Text/Tabellen extrahieren |
 | Bild + `/omni` | Multimodale Analyse |
 | Bild ohne Caption | Standard = general |
-| `/help` / `/hilfe` / `hilfe` | Kommando-Übersicht |
-| `/vision` ohne Bild | Hinweis: „Bitte sende ein Bild" |
+| `/help` / `/hilfe` | Kommando-Übersicht |
+| `/vision` ohne Bild | Hinweis |
+
+### NEU seit 20.09.: Vision-Log-Speicherung
+- Jede Analyse wird in `memory/VISION_LOG.jsonl` geschrieben
+- Format: `{timestamp, source, mode, model, result, tables_present, error}`
+- Auch Fehlerfälle werden geloggt
+- **Zweck:** Basis für automatische Auswertung
 
 ### Workflow
 ```
-Screenshot von Instagram-Reel
-    ↓
-Telegram: Bild + Caption /vision
-    ↓
-Vision-Router (llama-3.2-11b-vision)
-    ↓
-Analyse kommt zurück in Telegram
-    ↓
-Bülent kopiert Analyse → KI-Chat → weitere Auswertung
+Screenshot → Telegram (/vision) → Vision-Router → Analyse
+                                       ↓
+                                VISION_LOG.jsonl
+                                       ↓
+                          (später: Vision-Summary-Agent)
 ```
 
-### Einschränkungen
-- Aktuell nur Bilder (keine Videos)
-- Nach VPS: Video-Frames + Audio-Transkription
+### Nächster Schritt (Auftrag vorbereitet)
+- **Vision-Summary-Agent** liest `VISION_LOG.jsonl`, schreibt `VISION_SUMMARY.md`
+- **Erster Lauf:** 18.10.2026 (Guard-Clause im Workflow)
+- **Danach:** alle 3 Tage um 08:00 UTC
 
 ---
 
@@ -197,7 +191,6 @@ Bülent kopiert Analyse → KI-Chat → weitere Auswertung
 **Datei:** `config/PATTERN_LIBRARY.md`
 **Angelegt:** 20.09.2026
 
-### Aktive Patterns
 | # | Pattern | Quelle | Anwendung |
 |---|---|---|---|
 | 1 | Zahl + Nutzen im Hook | @aiwithshivang | Listen-Reels |
@@ -207,35 +200,50 @@ Bülent kopiert Analyse → KI-Chat → weitere Auswertung
 | 5 | POV | vorgemerkt | Fahrt-Content |
 | 6 | Storytelling mit Ende offen | vorgemerkt | Serie |
 
-### Workflow
-```
-Instagram-Post gefällt
-    ↓
-Screenshot → Telegram-Bot (/vision)
-    ↓
-Analyse → Bülent prüft: neues Pattern?
-    ↓
-Wenn ja: in PATTERN_LIBRARY.md eintragen
-    ↓
-Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
-```
-
-### Ziel
-15–20 Patterns bis Ende Oktober 2026.
+**Ziel:** 15–20 Patterns bis Ende Oktober 2026.
 
 ---
 
-## 🎬 CONTENT-MATERIAL (Bülent, Stand 20.09.2026)
+## 📺 MOTOGP CONTENT PIPELINE (V8.5.5)
 
-### 4 Foto-/Video-Ordner auf Laptop
+### Workflows
+| Workflow | Trigger | Zweck |
+|---|---|---|
+| `motogp-content-agency.yml` | schedule + workflow_dispatch | 5 Tagesvorschläge generieren |
+| `motogp-telegram-approval.yml` | **nur workflow_dispatch** | Empfängt MotoGP-Kommandos |
+| `telegram-receive.yml` | schedule (~alle 5 Min) | Zentraler Router für Telegram-Updates |
+| `motogp-pipeline-diagnose.yml` | workflow_dispatch | Diagnose |
+| `motogp-roster-update.yml` | schedule | Fahrer-Roster aktualisieren |
 
-| Ordner | Inhalt | Reel-Potenzial |
+### Wichtige Erkenntnisse (20.09.2026)
+- **MotoGP Telegram Approval läuft NICHT automatisch** (kein `schedule`)
+  - Der zentrale Router `telegram-receive.yml` übernimmt das Polling
+  - Bei Bedarf manuell starten
+- **5 → 3 Stories möglich** wenn FRESHNESS DIAG alte/fehlende Stories filtert
+  - NULL-TOLERANZ: nur frische Stories werden verwendet
+  - Top-20-Fallback füllt Lücken bei manuellem Start
+- **FRESHNESS DIAG** filtert nach: fresh / old / missing_date / promo_irrelevant
+- **SERIES LOCK** in V8.5.5: immutable series + source-fact whitelist
+
+### Erwartete Telegram-Nachricht
+- 🏍️ 5 Tagesvorschläge (MotoGP, Moto2, Moto3, Turkish, Community)
+- 🔎 Fakten-QM: NULL-TOLERANZ
+- ✍️ Human Writing Protocol + Bülents Bike Life Voice
+- Freigabe via `motogp 1–5` / `motogp alle` / `motogp nein`
+
+---
+
+## 🎬 CONTENT-MATERIAL (Bülent)
+
+### 5 Foto-/Video-Ordner auf Laptop
+
+| Ordner | Inhalt | Potenzial |
 |---|---|---|
 | **MotoGP Assen 2026** | Toprak (Video + Selfies), Jack Miller, Morbidelli, Rins, Ai Ogura, Strecke, Stände | 🔥 **höchstes** |
 | **Radevormwald** | Fotos | mittel |
 | **BiggeGrill / Biggesee** | Fotos | mittel |
-| **Hagen Biker Treff** | Fotos | mittel |
-| **M1000R Übungsplatz** | Kreise fahren, Achten, Hinterreifen, Helm, Straße von oben | hoch |
+| **Hagen Biker Treff** | Fotos (auch Bike Society Hagen) | mittel |
+| **M1000R Übungsplatz** | Kreise, Achten, Hinterreifen, Helm, Straße | hoch |
 
 ### Bonus-Material
 - BMW-App-Screenshot: Route + Schräglagen (47° rechts / 44° links)
@@ -247,91 +255,86 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 - 📸 Ai Ogura (von weitem)
 - 📸 Strecke + Stände
 
-**Virales Potenzial:** 3 Zielgruppen gleichzeitig (Türken, MotoGP-Fans, Biker)
+**Virales Potenzial:** 3 Zielgruppen gleichzeitig
 
-### 🎯 Reel-Plan (priorisiert)
+### 🎯 Reel-Plan
 | # | Reel | Status |
 |---|---|---|
 | 1 | MotoGP Assen – „Toprak bedankt sich" | 🔴 Storyboard fertig |
 | 2 | Bikertreff-Runde (Radevormwald + Biggesee) | 🔴 Storyboard fertig |
-| 3 | Hagen Biker Treff | ⏸️ wartet |
-| 4 | M1000R-Realität (Reifen, Helm, Übungsplatz) | ⏸️ wartet |
+| 3 | Hagen Biker Treff / Bike Society Hagen | ⏸️ wartet |
+| 4 | M1000R-Realität | ⏸️ wartet |
 | 5 | BiggeGrill | ⏸️ wartet |
 
 ### 🛠️ Video-Tool-Entscheidung
 - **CapCut:** ❌ zu groß für Laptop
-- **HeyGen:** ✅ kostenloser Plan (3 Videos/Monat, 1 Min, 720p, Wasserzeichen)
-- **OpenReel:** ✅ Browser-Alternative (kein Install, kein Wasserzeichen)
+- **HeyGen:** ✅ kostenlos (3 Videos/Monat, 1 Min, Wasserzeichen)
+- **OpenReel:** ✅ Browser (kein Install)
 - **Empfehlung:**
-  - MotoGP-Reel: manuell (OpenReel) – emotionale Story
-  - Andere Reels: HeyGen für Rohschnitt
+  - MotoGP-Reel: manuell (OpenReel)
+  - Andere: HeyGen für Rohschnitt
 
 ---
 
 ## 🖥️ APPROVAL-DASHBOARD (geplant)
 
-**Aktuell:** Freigabe läuft über Telegram.
+**Aktuell:** Freigabe über Telegram.
 
 ### Stufe 2 – KURZFRISTIG (1–2 Wochen)
-- GitHub Pages, statische HTML-Seite
+- GitHub Pages, statische HTML
 - Datenquelle: `docs/approval/queue.json`
-- Vorschau: Bilder aus `assets/pending/`
 - Freigabe: Button → `workflow_dispatch` → Publisher
-- Auth: GitHub-Login
 - Kosten: 0 €
 - URL: `edirne22.github.io/KI-SOCIAL-AGENT/`
 
 ### Stufe 3 – NACH VPS
 - Streamlit oder Next.js
-- Kalender, Analytics, Content-Bibliothek, Multi-Account
+- Kalender, Analytics, Content-Bibliothek
 
 ---
 
 ## 📦 CLAWHUB-SKILLS (Social-Media-Automatisierung)
 
 **Empfohlen:**
-- **Phy Social Post** → Insta + FB + TikTok (Install: `openclaw skills install @phy041/phy-social-post`)
-- **Multi-Platform Scheduler** → Content-Kalender
-- **Outfeed** → Bulk-Publishing (max. 25 Drafts)
+- **Phy Social Post** → Insta + FB + TikTok
+- **Multi-Platform Scheduler**
+- **Outfeed** → Bulk-Publishing
 
 **Mit Vorsicht:**
-- **Postmoore** → Security-Risiken, nur mit Drafts
-
-**Hinweis:** Bestehende Instagram + Facebook Pipeline läuft weiter. ClawHub nur für **TikTok-Erweiterung** und/oder Bulk-Scheduling.
+- **Postmoore** → Security-Risiken
 
 ---
 
 ## 🔴 OFFENE PRIORITÄTEN
 
 ### Kurzfristig (diese Woche)
-- 🎬 MotoGP-Reel bauen + posten (Pattern 1 anwenden)
+- 🎬 MotoGP-Reel bauen + posten
 - 🎬 Bikertreff-Reel (Radevormwald + Biggesee)
 - 📸 Instagram durchforsten → Patterns sammeln
-- 📱 TÜRKBiR beobachten → erste Interaktion in 2–3 Tagen
-- 📄 `config/MEDIA_TOOLS.md` anlegen (nur manuelle Tools: CapCut, OpenReel, Canva, DaVinci, HeyGen)
+- 📱 TÜRKBiR beobachten → erste Interaktion
+- 📄 `config/MEDIA_TOOLS.md` anlegen
+- 🧠 **Vision-Summary-Agent** (Auftrag vorbereitet, PR offen)
+- 🎯 **Vision-Modell-Upgrade** auf `meta/muse-glimmer-30b` (Auftrag vorbereitet)
 
 ### Mittelfristig (2 Wochen)
-- 🖥️ Approval-Dashboard Stufe 2 (GitHub Pages)
-- 📦 TikTok-Integration (Apify + ClawHub)
-- 🧠 Vision in Pipeline einbinden (Follow-Analyzer nutzt Llama Vision)
+- 🖥️ Approval-Dashboard Stufe 2
+- 📦 TikTok-Integration
+- 🧠 Vision in Pipeline einbinden
 - 🧠 Memory-Embedding → `nvidia/nemotron-3-embed-1b`
 - 🛡️ Safety-Check → `nvidia/nemotron-3-content-safety`
-- ⚙️ Router-Erweiterung (Nemotron Ultra/Super, GLM-5, Gemma)
-- 🐛 Debug-Branch-Schutz (Branch-Protection)
-- 📊 Analytics-Report Instagram/Facebook
+- ⚙️ Router-Erweiterung
+- 🐛 Debug-Branch-Schutz
 
 ### Nach VPS
-- 🟢 VPS einrichten (Ubuntu 24.04)
-- 🟢 SearXNG installieren
-- 🟢 OmniRoute installieren
-- 🟢 `speech_router.py` (Nemotron ASR + Magpie TTS)
-- 🟢 `video_router.py` (Cosmos3 Nano, Transfer, Reasoner)
+- 🟢 VPS einrichten
+- 🟢 SearXNG, OmniRoute
+- 🟢 `speech_router.py`, `video_router.py`
 - 🟢 Remotion + Video-Pipeline autonom
 
 ### Strategisch
 - 🟣 V8.6 Promotion Debug → main
 - 🟣 Debug-Workflow-Split auflösen
-- 🟣 OpenRouter 10 $ aufladen (nach Beobachtung)
+- 🟣 OpenRouter 10 $ aufladen
 - 🟣 Autonome Content-Fabrik
 
 ---
@@ -339,18 +342,18 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 ## 🔧 TOOL-WORKFLOW (Jules + Codex)
 
 ### Jules (Google)
-- **Kontingent:** 15 Sessions/Tag (rollierend 24h), max 3 parallel
-- **Stärke:** Automatische PRs, GitHub-Integration
-- **Regel:** Neuer Auftrag = neuer Chat
+- 15 Sessions/Tag (rollierend 24h), max 3 parallel
+- Automatische PRs, GitHub-Integration
+- **Neuer Auftrag = neuer Chat**
 - **Fix an gemergtem PR = neuer Chat**
 
 ### Codex (ChatGPT Plus)
-- **Kontingent:** Nutzungslimit, Reset ~18:41 Uhr
-- **Stärke:** Kann GitHub-PRs direkt anlegen (GitHub-Verbindung)
-- **Regel:** Selbst-enthaltende Aufträge (kein Chat-Gedächtnis)
+- Nutzungslimit, Reset ~18:41 Uhr
+- Kann GitHub-PRs direkt anlegen (GitHub-Verbindung)
+- Selbst-enthaltende Aufträge (kein Chat-Gedächtnis)
 
 ### Aufteilung
-- **Jules:** Größere Tasks, mehrstufige Aufträge
+- **Jules:** Größere Tasks
 - **Codex:** Fixes, kleine PRs, parallel zu Jules
 - **Beide:** Nie dieselbe Datei gleichzeitig bearbeiten
 
@@ -365,7 +368,7 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 
 ### Content-Regeln
 - ✅ Immer Türkisch + Deutsch (Zielgruppe)
-- ✅ Nur öffentliche Infos verwenden
+- ✅ Nur öffentliche Infos
 - ✅ Respektvoll & positiv
 - ✅ Keine politischen Aussagen
 - ✅ Handles nur, wenn öffentlich sichtbar
@@ -376,19 +379,16 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 - `main` = produktiv
 - `debug/motogp-pipeline-output` = nur Bülent + Codex
 
-### Telegram
-- ✅ Router-Fix erledigt → funktioniert normal
-
 ---
 
 ## 📊 AUTONOMIE-STAND
 
 | Stufe | Status |
 |---|---|
-| 1. Planung (Weekly-Plan, Agents) | ✅ |
-| 2. Recherche (Follow-Analyzer, Deal-Hunter) | ✅ |
+| 1. Planung | ✅ |
+| 2. Recherche | ✅ |
 | 3. Media (Bild/Vision/Translation) | ✅ Phase 1 |
-| 4. Compose (Caption + Hashtags) | ⏳ teilweise |
+| 4. Compose | ⏳ teilweise |
 | 5. Approval (Telegram) | ✅ |
 | 6. Publishing (Insta + FB) | ✅ |
 | 7. Publishing (TikTok) | ❌ geplant |
