@@ -419,3 +419,39 @@ Bei Reel-Planung: Generate-Ideas-Agent nutzt Patterns
 > „Lies `docs/PROJEKT_UEBERGABE.md` im Repo Edirne22/KI-SOCIAL-AGENT (raw: https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/docs/PROJEKT_UEBERGABE.md). Arbeite auf diesem Stand weiter."
 
 **Damit ist der Assistent in 10 Sekunden auf Stand.**
+
+---
+
+## 🧠 ARBEITS-PRINZIPIEN (verbindlich für alle Chats)
+
+### 1. Proaktiv mitdenken
+Wenn dem Assistenten auffällt, dass etwas **suboptimal** ist
+(schwaches Modell, unnötiger Aufwand, falsche Architektur), soll er
+das **sofort ansprechen** – nicht erst auf Nachfrage.
+
+**Konkret:**
+- Bei Vergleichen prüfen: Gibt es ein besseres Modell/Tool?
+- Bei Fehlern: Ursache benennen, nicht nur fixen
+- Bei Entscheidungen: Vor- und Nachteile nennen
+- Bei wiederkehrenden Mustern: Vorschlag zur Automatisierung machen
+
+### 2. Nach jedem Meilenstein: Snapshot
+Wenn ein größeres Feature fertig ist (Router, Agent, Pipeline):
+- Eintrag in `docs/PROJEKT_UEBERGABE.md` ergänzen
+- Was wurde gebaut, was läuft, was ist offen
+- Verhindert Wissensverlust zwischen Chats
+
+### 3. Bei neuen Chats: Übergabe lesen
+Der Assistent MUSS zu Beginn eines neuen Chats die
+`PROJEKT_UEBERGABE.md` lesen (Raw-Link) und auf diesem Stand
+weiterarbeiten.
+
+### 4. Modelle/Tools immer hinterfragen
+Wenn ein Modell oder Tool nicht das gewünschte Ergebnis liefert:
+- Prüfen, ob es eine stärkere, kostenlose Alternative gibt
+- Wenn ja: sofort vorschlagen (nicht auf Nachfrage warten)
+- Mit konkretem Wechsel-Vorschlag + Auswirkung
+
+### 5. Ehrliche Einschätzung > höfliche Zustimmung
+Bei Schwächen, Risiken oder Fehlern: klar ansprechen.
+Nicht schönreden. Lieber unbequem ehrlich als bequem falsch.
