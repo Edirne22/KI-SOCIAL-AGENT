@@ -488,3 +488,10 @@ Wenn eine bestehende Datei geändert werden soll:
 - **Niemals** „ersetze Zeile X"
 - Grund: Copy-Paste-Fehler an Rändern (abgeschnittene Blöcke,
   vergessene Statistik, doppelte Trenner) sind sonst unvermeidbar
+
+- ⏳ **Weather Agent prüfen** (nach OpenWeatherMap-Key-Aktivierung)
+  - Erster Testlauf: 20.09.2026 um 17:42 UTC → 401 Unauthorized
+  - Ursache: OWM aktiviert neue Keys erst nach 10 Min – 2 Std
+  - Aktion: Workflow später/morgen erneut starten
+  - Bei Erfolg: Telegram-Nachricht mit Strecken-Wetter
+  - Bei weiterem 401: Key im Browser prüfen (siehe oben)
