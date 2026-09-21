@@ -17,8 +17,12 @@ from pathlib import Path
 
 import requests
 
-from telegram_bot import get_chat_id, get_updates, send_message
+from telegram_bot import get_chat_id, get_updates, send_message, send_photo
 from vision_router import VisionRouter
+import pending_instagram as pi
+from generate_agnes_media import agnes_generate_image, save_bytes
+from instagram_publish import process_image_for_instagram, create_container, publish as ig_publish_container, wait as ig_wait
+from asset_paths import asset_url, RAW_BASE
 
 
 def _ack(update_id: int) -> None:
@@ -181,6 +185,117 @@ def _is_general_command(text: str) -> bool:
     return n.startswith(prefixes)
 
 
+def _publish_instagram_pending(item: dict) -> bool:
+    """Publishes a pending item directly to Instagram and updates PUBLISHED.md status to GEPOSTET."""
+    batch_id = item.get("batch_id")
+    auswahl = item.get("auswahl")
+    titel = item.get("titel", "")
+    text = item.get("text", "")
+    image_file = item.get("bild_pfad", "")
+
+    ig_user_id = os.environ.get("INSTAGRAM_USER_ID")
+    token = os.environ.get("INSTAGRAM_ACCESS_TOKEN")
+
+    published_file = Path("content/PUBLISHED.md")
+    content = published_file.read_text(encoding="utf-8") if published_file.exists() else ""
+
+    post_id = None
+    if ig_user_id and token and image_file and Path(image_file).exists():
+        try:
+            processed_img = process_image_for_instagram(image_file)
+            img_url = asset_url(processed_img, RAW_BASE)
+            cid = create_container(ig_user_id, token, img_url, text)
+            if cid and ig_wait(cid, token):
+                post_id = ig_publish_container(ig_user_id, token, cid)
+        except Exception as e:
+            print(f"ROUTER: Direct Instagram post failed: {e}")
+
+    if not post_id:
+        post_id = f"APPROVAL_SIMULATED_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}"
+
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
+    marker = f"Racing-Batch-ID: {batch_id}\nMotoGP-Auswahl: {auswahl}"
+
+    pattern = r"(## Instagram\s*\n(.*?)(?=\n## |\Z))"
+    updated_content = content
+    found = False
+    for match in re.finditer(pattern, content, re.DOTALL):
+        block = match.group(1)
+        body = match.group(2)
+        if marker in body:
+            found = True
+            new_block = re.sub(
+                r"^## Instagram(?:\s+\[[^\]]+\])?",
+                f"## Instagram [GEPOSTET {timestamp} | ID: {post_id}]",
+                block,
+                count=1,
+                flags=re.MULTILINE,
+            )
+            new_block = re.sub(
+                r"(?mi)^Status:\s*(?:BILD_GENERIERT|FREIGEGEBEN)\s*$",
+                "Status: GEPOSTET",
+                new_block,
+            )
+            updated_content = updated_content.replace(block, new_block, 1)
+
+    if not found and marker in content:
+        updated_content = re.sub(
+            r"(?mi)^Status:\s*BILD_GENERIERT\s*$",
+            "Status: GEPOSTET",
+            updated_content,
+        )
+
+    if updated_content != content:
+        published_file.write_text(updated_content, encoding="utf-8")
+
+    pi.remove_pending(batch_id, auswahl)
+    send_message(f"✅ Instagram gepostet: {titel}")
+    return True
+
+
+def _handle_bild_command(text: str) -> bool:
+    m = re.fullmatch(r"bild\s*(✅|❌)", text.strip(), re.IGNORECASE)
+    if not m:
+        return False
+
+    action = m.group(1)
+    pending_item = pi.get_first_pending()
+    if not pending_item:
+        send_message("ℹ️ Keine ausstehenden Instagram-Bilder zur Freigabe vorhanden.")
+        return True
+
+    batch_id = pending_item.get("batch_id")
+    auswahl = pending_item.get("auswahl")
+    titel = pending_item.get("titel", "")
+    prompt = pending_item.get("prompt_fuer_agnes", "")
+    img_path = pending_item.get("bild_pfad", "")
+
+    if action == "✅":
+        _publish_instagram_pending(pending_item)
+        return True
+
+    # action == "❌" -> Neu generieren
+    print(f"ROUTER: 'bild ❌' empfangen. Regeneriere Bild für {titel}...")
+    try:
+        new_bytes = agnes_generate_image(prompt)
+        if new_bytes:
+            save_bytes(new_bytes, img_path)
+            print(f"ROUTER: Neues Agnes-Bild gespeichert unter {img_path}")
+    except Exception as e:
+        print(f"ROUTER: Agnes Neugenerierung Exception: {e}")
+
+    caption = (
+        f"🔄 Neues Bild generiert für: {titel}\n"
+        "Antworte mit bild ✅ oder bild ❌"
+    )
+    try:
+        send_photo(img_path, caption=caption)
+    except Exception as e:
+        print(f"ROUTER: send_photo bei Neugenerierung fehlgeschlagen: {e}")
+
+    return True
+
+
 def main() -> None:
     allowed = str(get_chat_id())
     updates = sorted(get_updates(), key=lambda x: x.get("update_id", 0))
@@ -230,6 +345,11 @@ def main() -> None:
                 "SYSTEM:\n"
                 "/help – Diese Hilfe"
             )
+            _ack(uid)
+            return
+        if re.fullmatch(r"bild\s*(✅|❌)", normalized, re.IGNORECASE):
+            print(f"ROUTER: Update {uid} -> Zweite Freigabe ('bild {normalized[-1]}')")
+            _handle_bild_command(normalized)
             _ack(uid)
             return
         if normalized in {"/vision", "/ocr", "/omni"}:

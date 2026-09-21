@@ -1,8 +1,10 @@
 """V8.5 human approval gate for Racing. QA PASS is never equal to human approval."""
 from pathlib import Path
 import re,sys,time
-from telegram_bot import get_chat_id,get_updates,send_message
+from telegram_bot import get_chat_id, get_updates, send_message, send_photo
 import racing_run_controller as rc
+from generate_agnes_media import agnes_generate_image, save_bytes
+from pending_instagram import add_pending
 SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md')
 MIN_SESSION_VERSION=18;MAX_SESSION_AGE_SECONDS=24*3600
 RAW_BAD=('-->','by motogp.com','motogp-update:','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung')
@@ -103,8 +105,46 @@ def publish(posts,chosen,uid,batch):
             print(f"DUPLIKAT ERKANNT: {p['title']} bereits vorhanden, übersprungen")
             continue
         if norm_post_text:existing_texts.add(norm_post_text)
-        common=f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\nRacing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
-        blocks += [f'## Instagram\n{common}Text:\n{p["text"]}\nQuelle: {p["source"]}\nMedienstatus: EIGENE_KI_EDITORIALGRAFIK\nBild: {p["image"]}\n',f'## Facebook\n{common}Text:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n']
+
+        prompt = f"Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: {p['text'][:180]}"
+        img_path = p["image"]
+        try:
+            img_bytes = agnes_generate_image(prompt)
+            if img_bytes:
+                save_bytes(img_bytes, img_path)
+                print(f"MOTOGP: Agnes-Bild generiert für Auswahl {n}: {img_path}")
+        except Exception as e:
+            print(f"MOTOGP: Agnes Bild-Generierung übersprungen / fehlgeschlagen: {e}")
+
+        add_pending(
+            batch_id=batch,
+            auswahl=n,
+            titel=p["title"],
+            text=p["text"],
+            bild_pfad=img_path,
+            prompt_fuer_agnes=prompt,
+        )
+
+        common_ig = f'Status: BILD_GENERIERT\nFreigabe: Telegram Racing\nRacing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
+        common_fb = f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\nRacing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
+
+        blocks += [
+            f'## Instagram\n{common_ig}Text:\n{p["text"]}\nQuelle: {p["source"]}\nMedienstatus: EIGENE_KI_EDITORIALGRAFIK\nBild: {img_path}\n',
+            f'## Facebook\n{common_fb}Text:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n'
+        ]
+
+        caption = (
+            f"🖼️ Instagram-Bild bereit für: {p['title']}\n"
+            f"Auswahl: {n} (Batch: {batch})\n\n"
+            f"Antworte mit:\n"
+            f"- bild ✅ – posten\n"
+            f"- bild ❌ – neu generieren"
+        )
+        try:
+            send_photo(img_path, caption=caption)
+        except Exception as e:
+            print(f"MOTOGP: send_photo fehlgeschlagen: {e}")
+
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
     return len(blocks)
 def handle_one(uid, chat, txt):
