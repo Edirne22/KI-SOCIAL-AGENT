@@ -53,7 +53,15 @@
   - Perfekt für Biker-Zielgruppe
   - Türkisch + Deutsch möglich
   - Sehr hohes Save-Potenzial
-    
+    - [ ] **Kinocut testen** (nächste Woche) – „Guardrailed" Video-MCP
+  - Installation: `pip install kinocut`
+  - Als MCP-Server registrieren
+  - Chance: robuster als claudeclip
+- [ ] **CutAI testen** (nächste Woche) – Agent Mode Video-Editor
+- [ ] **Kaestral reaktivieren** mit größerem Modell (Kimi K3, DeepSeek V4)
+- [ ] **yt-analysis-mcp** für Expert Agent – YouTube-Tutorials analysieren
+- [ ] **n8n auf VPS** – Workflow-Automatisierung
+
 ## 🟢 NACH VPS
 
 - [ ] VPS einrichten (Ubuntu 24.04)
