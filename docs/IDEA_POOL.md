@@ -49,7 +49,11 @@
 - [ ] Router-Erweiterung (Nemotron Ultra/Super, GLM-5, Gemma)
 - [ ] Memory-Embedding (nemotron-3-embed-1b)
 - [ ] Safety-Check (nemotron-3-content-safety)
-
+- [ ] **Pattern 15 nutzen:** „15 Fragen an KI vor Motorrad-Kauf" als Karussell
+  - Perfekt für Biker-Zielgruppe
+  - Türkisch + Deutsch möglich
+  - Sehr hohes Save-Potenzial
+    
 ## 🟢 NACH VPS
 
 - [ ] VPS einrichten (Ubuntu 24.04)
