@@ -457,9 +457,8 @@ https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acos
 Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
 Link-Preview: offiziell
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35570706901-1
+## Instagram [GEPOSTET 2026-09-21 06:58 | ID: 18103294976344039]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-21-daily
 Telegram-Update-ID: 279361716
