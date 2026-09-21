@@ -107,3 +107,30 @@ Quelle: https://www.handyhase.de/samsung-galaxy-s26-ultra-telekom-magentamobil/
 Status: nicht bestätigt – Zielpreis erreicht
 Kriterien: max: 13 € | min: 50 GB | Netz: D1 | seit 2026-09-18
 Provider: Apify-Google-Suche
+
+## 2026-09-21 06:09
+Produkt: motorradhandschuhe
+Preis: 3.50
+Händler: blmk.de
+Quelle: https://www.blmk.de/kalender/
+Status: nicht bestätigt – Zielpreis erreicht
+Kriterien: max: 50 € | seit 2026-09-12
+Provider: Apify-Google-Suche
+
+## 2026-09-21 06:09
+Produkt: handyvertrag 80GB D1
+Preis: 11.99
+Händler: handytariftipp.de
+Quelle: https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet-flat-fuer-nur-11-99e-monatlich/
+Status: nicht bestätigt – Zielpreis erreicht
+Kriterien: max: 13 € | seit 2026-09-12
+Provider: Apify-Google-Suche
+
+## 2026-09-21 06:15
+Produkt: . Handyvertrag 80GB D1
+Preis: 9.99
+Händler: teltarif.de
+Quelle: https://www.teltarif.de/allnet-flat-5g-klarmobil-telekom-netz-verlaengert/news/105409.html
+Status: nicht bestätigt – Zielpreis erreicht
+Kriterien: max: 13 € | min: 50 GB | Netz: D1 | seit 2026-09-18
+Provider: Apify-Google-Suche
