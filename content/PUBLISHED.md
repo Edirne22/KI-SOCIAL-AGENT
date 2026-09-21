@@ -437,9 +437,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-21-racing-editorial-2026-09-21-2-electric-martin-beat-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35569337602-1
+## Facebook [GEPOSTET 2026-09-21 06:38 | ID: 1285968257941776_122112142029469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-21-daily
 Telegram-Update-ID: 279361716
