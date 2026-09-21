@@ -153,155 +153,290 @@ Teil 2 folgt – was ist wohl passiert?
 **Stats:** 591 Likes / 188 Kommentare / 1.465 Saves (bei @karishmaticmarketer)
 
 **Warum es funktioniert:**
-- Nutzer **speichern** den Post (Cheat-Sheet-Funktion = starkes Signal an Algorithmus)
-- **Karussell-Format** = mehr Verweildauer pro Nutzer
-- **Nummerierte Einträge** machen den Inhalt greifbar und vollständig
-- **Hohe Save-Rate** (1.465 Saves bei 591 Likes = >2x) → Post wird als Nachschlagewerk genutzt
+- Nutzer **speichern** den Post (Cheat-Sheet-Funktion)
+- **Karussell-Format** = mehr Verweildauer
+- **Nummerierte Einträge** machen den Inhalt greifbar
+- **Hohe Save-Rate** (1.465 Saves bei 591 Likes = >2x)
 
 **Template:**
 ```
 Slide 1: Hook-Karte (Titel + Claim)
 Slides 2–N: nummerierte Einträge
-  Format je Slide: [Nummer] [Tag/Titel] [1-2 Zeilen Beschreibung]
 Letzter Slide: CTA ("Swipe →", "Speichern", "Folgen")
 ```
 
 **Anwendung für Bülent:**
 - „11 MotoGP-Prompts für KI-Videos"
 - „7 Bikertreffs im Bergischen – Cheat-Sheet"
-- „12 Kurven, die du kennen musst" (mit Foto pro Slide)
-- „5 M1000R-Wartungstipps, die dir Geld sparen"
-
-**Wichtig:** Jede Slide muss **eigenständig funktionieren** – auch ohne die vorherigen.
+- „12 Kurven, die du kennen musst"
 
 ---
 
 ## 🎯 Pattern 8: Slash-Command-Tags (Prompt-Sammlung)
 
-**Beispiele aus den Analysen:**
+**Beispiele:**
 - `/ugc:`, `/selfiecam:`, `/creatorvlog:` – @karishmaticmarketer
-- `/rain:`, `/storm:`, `/sunset:`, `/goldenhour:` – @mauryavanshi_edits
-- `/whyhireme:`, `/salaryanswer:`, `/failureanswer:` – @careerwithamir
+- `/rain:`, `/storm:`, `/sunset:` – @mauryavanshi_edits
+- `/whyhireme:`, `/salaryanswer:` – @careerwithamir
 
 **Quelle:** Instagram-Analysen via Telegram-Bot (20.09.2026)
 
 **Warum es funktioniert:**
-- **Wiedererkennung:** Der Nutzer lernt die Tags – sie werden zur Sprache der Community
+- **Wiedererkennung:** Tags werden zur Sprache der Community
 - **Copy-Paste-fähig:** Direkt in KI-Tools einsetzbar
 - **Suchbar:** Slash-Tags in Reels → Nutzer suchen sie
-- **Skalierbar:** Ein Tag = eine Kategorie = beliebig erweiterbar
 
 **Template:**
 ```
 /[tag]: [kurze Beschreibung, was der Tag auslöst]
-
-Beispiele:
-/ugc: create an authentic user-generated-content style video
-/selfiecam: simulate natural front-camera recording
-/sunset: warm sunset lighting
 ```
 
 **Anwendung für Bülent:**
-- Eigene Tags für Reels einführen:
-  - `/strecke:` – Strecken-Doku
-  - `/schraeglage:` – Kurven-Content
-  - `/bikertreff:` – Community-Spot
-  - `/m1000r:` – Maschinen-Content
-  - `/bastel:` – Umbau/Wartung
-  - `/runde:` – Touren-Bericht
-- **Zweck:** Wiedererkennung + Struktur + Hashtag-Basis
-
-**Langfristiger Nutzen:**
-- Wenn du später KI-Video-Tools nutzt (Runway, Veo), kannst du Prompts mit diesen Tags bauen
-- Deine Community lernt die Tags → fragt gezielt nach bestimmten Themen
-- Eigene Marken-Sprache, die dich von anderen Bikern abhebt
+- `/strecke:`, `/schraeglage:`, `/bikertreff:`, `/m1000r:`, `/bastel:`, `/runde:`
 
 ---
 
 ## 🎯 Pattern 9: Fotografie-Stil-Prompts (Atmosphäre)
 
-**Beispiele aus den Analysen:**
+**Beispiele:**
 - `/motion-blur`, `/long-exposure`, `/vintage`, `/retro`
-- `/rain:`, `/storm:`, `/snow:`, `/goldenhour:`, `/bluehour:`, `/moonlight:`
-- `/neonlights:`, `/cyberpunk:`, `/darkmoody:`
+- `/rain:`, `/storm:`, `/snow:`, `/goldenhour:`, `/bluehour:`
 
-**Quelle:** @mauryavanshi_edits, @startup_rules (verifiziert) – 20.09.2026
+**Quelle:** @mauryavanshi_edits, @startup_rules (20.09.2026)
 
 **Warum es funktioniert:**
-- **Atmosphäre** verkauft das Bild – nicht nur das Motiv
-- **Direkt anwendbar** für Bildgenerierung (Pollinations, Agnes)
-- **Emotionale Wirkung** – Regen wirkt dramatisch, Golden Hour romantisch
-- **Einfache Sprache** – jeder versteht „/sunset:"
-
-**Template:**
-```
-/[stil]: [kurze Beschreibung der Atmosphäre/Wirkung]
-
-Beispiele:
-/rain: rainfall and wet atmospheric effects
-/goldenhour: warm, cinematic golden-hour light
-/motion-blur: fast movement with blurred edges
-```
+- **Atmosphäre** verkauft das Bild
+- **Direkt anwendbar** für Bildgenerierung
+- **Emotionale Wirkung** – Regen dramatisch, Golden Hour romantisch
 
 **Anwendung für Bülent:**
-- Für MotoGP-Reel und Bikertreff-Reel:
-  - `/schraeglage:` – dynamische Kurvenfahrt
-  - `/regen-fahrt:` – nasse Straße, dramatisch
-  - `/goldene-stunde:` – Sonnenuntergang auf der M1000R
-  - `/nebelstrecke:` – Bergisches Land im Morgennebel
-  - `/nacht-fahrt:` – Scheinwerfer bei Nacht
-- **Zweck:** Bilder für Reels konsistent und atmosphärisch generieren
-
-**Kombinierbar mit Pattern 8** – Tags als Marken-Sprache für deine Bildgenerierung.
+- `/schraeglage:`, `/regen-fahrt:`, `/goldene-stunde:`, `/nebelstrecke:`
 
 ---
 
 ## 🎯 Pattern 10: Skill-Karten-Raster (4x2 Grid)
 
-**Beispiel:** 8 Skill-Karten in 2 Spalten à 4 Reihen – @bitbyybit (mehrfach)
-**Quelle:** @bitbyybit, 20.09.2026 (5 Analysen)
+**Beispiel:** 8 Skill-Karten in 2 Spalten à 4 Reihen – @bitbyybit
+**Quelle:** @bitbyybit, 20.09.2026
 **Stats:** 79 Likes, 49 Kommentare, 7 Shares, 124 weitere Interaktionen
 
 **Warum es funktioniert:**
 - **Maximale Dichte** – 8 Inhalte in einem Slide
-- **Save-Rate hoch** – Nutzer speichern als Nachschlagewerk
-- **Karten-Struktur** (Icon + Titel + Kategorie + Beschreibung) = Wiedererkennung
-- **Konsistente Optik** – wirkt wie eine kuratierte Sammlung
+- **Save-Rate hoch** – Nachschlagewerk
+- **Karten-Struktur** (Icon + Titel + Kategorie + Beschreibung)
 
-**Karten-Format:**
+**Anwendung für Bülent:**
+- „8 KI-Tools für Biker-Reels"
+- „8 Must-have-Motorrad-Gadgets"
+- „8 Bergische Strecken-Highlights"
+
+---
+
+## 🎯 Pattern 11: Tool-Stack-Karussell (Flow-Diagramm)
+
+**Beispiel:** „The Creator Toolkit" – 5 Slides mit Tool-Kategorien
+**Quelle:** @rakeshmahantiai (21.09.2026)
+**Stats:** 548 Likes, 15 Kommentare, 26 Shares, **697 Saves**
+
+**Warum es funktioniert:**
+- **Save-Rate > Likes** (127 %) → Referenz-Bibliothek
+- **Kategorien strukturieren die Masse**
+- **Verbindungslinien zwischen Tools** zeigen Workflow
+- **App-Screenshots** als Anker
+
+**Slide-Struktur:**
 ```
-[Icon/Bild] | [Skill-Name]
-            | [Kategorie]
-            | [1-2 Zeilen Beschreibung]
-
-Layout:
-- 4 Reihen × 2 Spalten = 8 Karten
-- Hintergrund: hell (beige/weiß)
-- Farbige Akzente links an jeder Karte
-- Titel + Kategorie + Beschreibung je Karte
-- Slide-Indikator oben rechts (z. B. „5/7")
-- CTA unten („swipe →")
+Slide 1: Hook + Titel ("The Creator Toolkit")
+Slides 2–4: Kategorien mit je 4 Tools (2×2 Grid, Flow-Linien)
+Slide 5: Abschluss/CTA
 ```
 
 **Anwendung für Bülent:**
-- „8 KI-Tools für Biker-Reels" – Karten mit Tool-Name + Zweck + 1-Zeiler
-- „8 Must-have-Motorrad-Gadgets"
-- „8 MotoGP-Fahrer im Kurzporträt"
-- „8 Bergische Strecken-Highlights"
+- „Mein KI-Stack für Biker-Content" – 5 Slides:
+  - Slide 1: Hook – „Wie ich als Biker KI nutze"
+  - Slide 2: Content-Tools (Kimi K3, Muse Glimmer, Riva Translate)
+  - Slide 3: Video-Tools (Kaestral, Claude Code, FFmpeg)
+  - Slide 4: Community-Tools (Apify, Instagram, Telegram)
+  - Slide 5: CTA – „Speichert für später"
 
-**Format-Tipp:**
-- Wenn du nur einen Slide brauchst → nimm Pattern 10
-- Wenn du das Ganze als Serie planst → Pattern 7 (Karussell)
+---
+
+## 🎯 Pattern 12: „Paid vs Free" Vergleich (Tool-Duell)
+
+**Beispiele:**
+- Runway ($76/Monat) vs. Wan 2.6 ($0) – Video
+- Plus AI ($20) vs. Gamma ($0) – Präsentationen
+- ElevenLabs ($99) vs. MiniMax ($0) – Audio
+- Google Veo 3 ($249) vs. Sora 2 ($0) – Video
+
+**Quelle:** @aitoolswithpritham (mehrfach, mind. 6 Posts)
+**Stats:** 119 Likes, 446 Shares, **11.9k Saves**
+
+**Warum es funktioniert:**
+- **Klare Kaufentscheidung** – Nutzer sparen Geld
+- **Free-Alternative** attraktiv
+- **Rote (Paid) vs. grüne (Free)** – visuell sofort verständlich
+- **Bullet-Points mit Häkchen**
+- **Nutzer speichern** das → Algorithmus belohnt
+
+**Anwendung für Bülent:**
+- „Runway vs. Wan 2.6 – Biker-Reels kostenlos schneiden"
+- „ElevenLabs vs. MiniMax – Biker-Voiceover ohne Abo"
+- „Premium-Tools vs. Free-Tools für Biker-Content"
+
+---
+
+## 🎯 Pattern 13: Step-by-Step Tutorial-Karussell
+
+**Beispiel:** „Build your Expert Agent" (8 Slides)
+**Quelle:** @aiagently (verifiziert, 21.09.2026)
+**Stats:** 209 Likes, 12 Shares, **539 Saves**
+
+**Warum es funktioniert:**
+- **Nutzer lernt aktiv**
+- **Sehr hohe Save-Rate** (539/209 = >2,5x)
+- **Nummerierte Schritte** (Step 01, 02, ...)
+- **Screenshots** als visuelle Anker
+
+**Anwendung für Bülent:**
+- „Wie ich meinen MotoGP-Reel in 10 Min baue"
+- „Mein Bikertreff-Video – Step by Step"
+- „So baue ich meine KI-Agenten"
+
+---
+
+## 🎯 Pattern 14: „X Free Tools"-Liste (Raster)
+
+**Beispiel:** „10 FREE AI Image Tools You Need to Try"
+**Quelle:** @infinity_digitals_official (11.09.2026)
+**Stats:** 135 Likes, 86 Kommentare, 9 Shares, 100 Saves
+
+**Warum es funktioniert:**
+- **Zahl im Hook** („10 Free") + Pattern 1
+- **Raster-Format** – alle 10 Tools auf einem Blick
+- **Bunte Nummerierung** (01–10) + Logos
+- **Trust-Badges unten** („100% FREE", „Easy to Use")
+
+**Anwendung für Bülent:**
+- „10 kostenlose KI-Tools für Biker-Reels"
+- „7 kostenlose Wetter-Apps für Biker"
+- „10 kostenlose Strecken-Planer"
+
+---
+
+## 🎯 Pattern 15: „X Fragen an KI vor dem Kauf" (Pre-Purchase-Check)
+
+**Beispiel:** „Bir Şey Satın Almadan Önce Yapay Zekaya Bunları Sor" (15 Fragen)
+**Quelle:** Türkisches Karussell (21.09.2026)
+**Format:** 15 Karten in 3 Spalten × 5 Reihen
+
+**Warum es funktioniert:**
+- **Sehr hoher praktischer Nutzen** – spart Geld
+- **Nummerierte Liste** (1–15) macht es greifbar
+- **Jeder Punkt eine konkrete Frage** (prompt-artig)
+- **Für türkische & deutsche Zielgruppe** perfekt
+- **Save-Rate sehr hoch** (Nachschlagewerk)
+
+**Die 15 Fragen (übersetzt):**
+1. Finde den günstigsten Anbieter
+2. Gibt es einen Gutscheincode?
+3. Finde günstigere Alternativen
+4. Analysiere den Preisverlauf
+5. Jetzt kaufen oder warten?
+6. Rechne alle Gebühren mit ein
+7. Ist die Werbung echt getrennt?
+8. Prüfe den Gebrauchtmarkt
+9. Vergleiche zwei Produkte
+10. Berechne die Gesamtkosten
+11. Ist der Verkäufer vertrauenswürdig?
+12. Gibt es Garantie/Service?
+13. Gibt es eine größere Option?
+14. Lies Nutzerbewertungen
+15. Sollte ich jetzt kaufen?
+
+**Template:**
+```
+Slide 1: Hook ("Bevor du kaufst – frag die KI das")
+Slides 2–15: je eine nummerierte Frage + kurze Erklärung
+Letzter Slide: CTA ("Speichern für den nächsten Kauf")
+```
+
+**Anwendung für Bülent:**
+- **„15 Fragen an die KI vor dem Motorrad-Kauf"** (Perfekt für Zielgruppe)
+- „KI-Check vor jedem Reifenkauf" (5 wichtigste Fragen)
+- „So prüfe ich Zubehör vor dem Kauf"
+- „10 Fragen vor dem Helm-Kauf"
+
+**Warum besonders wertvoll für Bülent:**
+- **Biker kaufen teuer** → Beratung zieht
+- **Positioniert als smart shopper**
+- **Community speichert das** → hohe Reichweite
+- **Perfekt für Türkisch + Deutsch** (deine Zielgruppe)
+
+---
+
+## 🛠️ KOSTENLOSE TOOL-ALTERNATIVEN (aus Pattern 12)
+
+### Video-Generierung
+- **Wan 2.5 / Wan 2.6** – Alternative zu Runway
+- **Sora 2** – OpenAI Video (Free laut Post)
+
+### Audio / Voiceover
+- **MiniMax Audio** – Voiceover kostenlos
+- **Magpie TTS** (NVIDIA) – 12 Sprachen, nach VPS
+
+### Avatar / Talking Head
+- **SadTalker** – Animate Fotos mit Sprache
+- **HeyGen Free** – 3 Videos/Monat
+
+### Bilder
+- **NanoBanana** – Bild-Generierung kostenlos
+- **Pollinations** – Läuft schon in image_router.py
+
+### Präsentationen
+- **Gamma** – Präsentationen kostenlos
+
+### Copywriting
+- **WriteSonic** – Marketing-Copy
+
+### Workflow-Automatisierung
+- **n8n** – Self-hosted Workflow-Builder
+
+---
+
+## 🧠 BONUS: KI-ROLLEN-BIBLIOTHEK (aus @alpedya)
+
+**15 Rollen für Prompts:**
+
+| # | Rolle (Türkisch) | Deutsch | Nutzen |
+|---|---|---|---|
+| 1 | Özel Öğretmen | Privatlehrer | Content-Strategie |
+| 2 | Eleştirel Düşünme Koçu | Kritischer-Denken-Coach | Reels hinterfragen |
+| 3 | Araştırma Asistanı | Recherche-Assistent | Strecken-Recherche |
+| 4 | Editör | Editor | Texte verbessern |
+| 5 | Mülakatçı | Interviewer | Community-Interviews |
+| 6 | CV Danışmanı | CV-Berater | Agentur-Aufbau |
+| 7 | Dil Öğretmeni | Sprachlehrer | TR/DE-Texte |
+| 8 | Seyahat Planlayıcısı | Reiseplaner | Touren planen |
+| 9 | Toplantı Asistanı | Meeting-Assistent | Community |
+| 10 | Veri Analisti | Datenanalyst | Analytics |
+| 11 | Satın Alma Danışmanı | Einkaufsberater | Gear-Vergleiche |
+| 12 | Şeytanın Avukatı | Teufels Advokat | Ideen-Kritik |
+| 13 | Proje Yöneticisi | Projektmanager | Projekt-Steuerung |
+| 14 | Sadeleştirme Uzmanı | Vereinfacher | Komplexes einfach |
+| 15 | Karar Asistanı | Entscheidungs-Assistent | Entscheidungen |
+
+**Anwendung:** Im Prompt voranstellen: „Handle als [Rolle]. Deine Aufgabe: ..."
 
 ---
 
 ## 📋 Regeln für die Bibliothek
 
 1. **Nur bewährte Patterns** – kein „könnte funktionieren"
-2. **Immer Quelle + Stats angeben** – damit nachvollziehbar ist, warum's funktioniert
-3. **Template + konkrete Bülent-Anwendung** – nicht nur abstrakt
-4. **Nach jedem analysierten Post ergänzen** – mindestens 1 neues Pattern
-5. **Veraltete Patterns markieren** – nicht löschen (zeigt Entwicklung)
+2. **Immer Quelle + Stats angeben**
+3. **Template + konkrete Bülent-Anwendung**
+4. **Nach jedem analysierten Post ergänzen**
+5. **Veraltete Patterns markieren**
 
 ---
 
@@ -328,15 +463,40 @@ Layout:
 | 4. Vorher/Nachher | Recherche | 🟡 vorgemerkt |
 | 5. POV | Recherche | 🟡 vorgemerkt |
 | 6. Storytelling | Recherche | 🟡 vorgemerkt |
-| 7. Karussell als Cheat-Sheet | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ aktiv |
-| 8. Slash-Command-Tags | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ aktiv |
-| 9. Fotografie-Stil-Prompts | @mauryavanshi_edits, @startup_rules | ✅ aktiv |
+| 7. Karussell als Cheat-Sheet | @karishmaticmarketer u. a. | ✅ aktiv |
+| 8. Slash-Command-Tags | @karishmaticmarketer u. a. | ✅ aktiv |
+| 9. Fotografie-Stil-Prompts | @mauryavanshi_edits | ✅ aktiv |
 | 10. Skill-Karten-Raster | @bitbyybit | ✅ aktiv |
+| 11. Tool-Stack-Karussell | @rakeshmahantiai | ✅ aktiv |
+| 12. Paid vs Free | @aitoolswithpritham | ✅ aktiv |
+| 13. Step-by-Step Tutorial | @aiagently | ✅ aktiv |
+| 14. X Free Tools-Liste | @infinity_digitals_official | ✅ aktiv |
+| 15. Pre-Purchase-Check | Türkisch (Karussell) | ✅ aktiv |
 
-**Ziel:** 15–20 Patterns bis Ende Oktober 2026.
+**Ziel:** 15–20 Patterns bis Ende Oktober 2026 – **aktuell 15/20.**
 
 **Referenz-Accounts zum Beobachten:**
 - @startup_rules (verifiziert) – AI-Bild-Commands
 - @mauryavanshi_edits – ChatGPT-Prompts
 - @karishmaticmarketer – UGC/Creator-Videos
 - @bitbyybit – KI-Skill-Sammlungen
+- @rakeshmahantiai – Tool-Stack-Karussells
+- @aitoolswithpritham (verifiziert) – Paid vs Free
+- @aiagently (verifiziert) – Step-by-Step Tutorials
+- @alpedya (türkisch) – KI-Rollen & Kauf-Beratung
+
+---
+
+## 🎯 Tool-Ideen für später
+
+| Tool | Kategorie | Status |
+|---|---|---|
+| **n8n** | Workflow-Automatisierung | 🟢 nach VPS |
+| **Wan 2.5/2.6** | Video-Generierung | 🟡 prüfen |
+| **MiniMax Audio** | Voiceover | 🟡 nach VPS |
+| **SadTalker** | Avatar-Videos | 🟡 prüfen |
+| **Replicate** | AI-Modelle Cloud | 🟡 prüfen |
+| **yt-analysis-mcp** | YouTube-Video-Analyse | 🔴 prüfen |
+| **Wispr Flow** | Sprechen-zu-Text | 🟡 prüfen |
+| **YouMind** | Prompt-Bibliothek (30k+) | ✅ recherchiert |
+| **PromptCreek** | Agent-Skills (350+) | ✅ recherchiert |
