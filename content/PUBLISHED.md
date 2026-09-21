@@ -478,7 +478,7 @@ Bild: assets/images/2026-09/2026-09-21-racing-editorial-2026-09-21-3-bouncing-ba
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 35570686027-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-21-daily
 Telegram-Update-ID: 279361716
