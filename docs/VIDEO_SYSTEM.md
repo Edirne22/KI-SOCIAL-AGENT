@@ -392,4 +392,52 @@ C:\Users\Admin\AppData\Roaming\npm\claude.cmd --model "nvidia/nvidia/nemotron-3.
 
 ---
 
+## 🎬 VIDEO-MCP-TOOLS – ROADMAP
+
+### ✅ Funktioniert (in diesem Setup)
+
+| Tool | Status | Tools | Notiz |
+|---|---|---|---|
+| **claudeclip** | ✅ live | 31 | **Primär** – getestet 21.09.2026 (3× erfolgreich) |
+| **Kaestral** | ⚠️ pausiert | 52 | Verwirrt Nemotron (zu viele Tools) → temporär entfernt |
+
+### 🔄 Zu testen (nächste Wochen)
+
+| Tool | Typ | Warum |
+|---|---|---|
+| **Kinocut** | MCP-Server (Python, pip install kinocut) | „Guardrailed" – typisierte FFmpeg-Tools, weniger Fehler |
+| **CutAI** | MCP-Server (Node) | „Agent Mode" mit Selbstbewertung |
+
+### ❌ Ausgeschlossen
+
+| Tool | Grund |
+|---|---|
+| **MakeMyClip/editor** | Repo existiert nicht |
+| **gptcc** | ChatGPT Plus + Codex-Modelle nicht kompatibel |
+| **Palmier Pro** | Nur macOS |
+
+### 🖥️ Fallback (kein MCP)
+
+| Tool | Typ | Wann |
+|---|---|---|
+| **OpenReel** | Browser (`openreel.video`) | Notfall wenn MCP ausfällt |
+
+### 🔗 Indirekt relevant
+
+| Tool | Zweck | Status |
+|---|---|---|
+| **OmniRoute** | Proxy für Claude Code | ✅ Port 20128 |
+| **yt-analysis-mcp** | YouTube-Video-Analyse für Expert Agent | 🔴 zu prüfen |
+| **n8n** | Workflow-Automatisierung | 🟢 nach VPS |
+
+### 📌 Erkenntnis 21.09.2026
+
+**Weniger MCP-Tools = zuverlässiger.** Nemotron 3.5 Lightning (30B) kann bis
+~35 Tools zuverlässig routen. Bei mehr (claudeclip 31 + kaestral 52 = 83) wird
+es verwirrt und halluziniert Skill-Namen wie `build-in-kaestral`.
+
+**Empfehlung:** Nur EINEN Video-MCP-Server gleichzeitig aktiv halten.
+
+**Falls größeres Modell verfügbar:** Kaestral reaktivieren und testen.
+
 **Ende Video-System-Dokumentation.**
