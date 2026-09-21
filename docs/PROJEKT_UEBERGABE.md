@@ -1,6 +1,6 @@
 # PROJEKT-ÜBERGABE – KI-SOCIAL-AGENT
 
-**Stand:** 2026-09-20 (Nacht)
+**Stand:** 2026-09-21 (Mittag)
 **Repo:** https://github.com/Edirne22/KI-SOCIAL-AGENT
 **Ziel:** Autonome Content-Fabrik für Bülent (@edirnelibuelent) – 12–24 Monate zur KI-Agentur.
 **Repo-Typ:** 🌐 Public (unbegrenzte GitHub-Actions-Minuten)
@@ -94,10 +94,10 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 - NVIDIA FLUX: **auf Eis** (Timeout/422)
 - Agnes: letzter Fallback, funktioniert
 
-### Vision-Router Details (Upgrade 20.09.2026)
+### Vision-Router Details
 - `general` → `meta/muse-glimmer-30b` (Fallback: Kimi K3)
   - Timeout 240 Sekunden
-  - Deutscher, strukturierter Prompt (Szene / Text / Account / Zahlen)
+  - Deutscher, strukturierter Prompt
 - `ocr` → `nvidia/nemotron-ocr-v2` (liefert `text` + `tables`, Timeout 180s)
 - `omni` → `nvidia/nemotron-3-nano-omni` (Timeout 180s)
 
@@ -125,10 +125,10 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 | `PEXELS_API_KEY` | aktiv |
 | `TELEGRAM_BOT_TOKEN` | aktiv |
 | `TELEGRAM_CHAT_ID` | aktiv |
-| `OPENWEATHER_API_KEY` | aktiv (Weather Agent wartet auf Aktivierung) |
+| `OPENWEATHER_API_KEY` | aktiv |
 
 ### Provider-Status
-- ✅ **Pollinations** – läuft, kein Key-Limit
+- ✅ **Pollinations** – läuft
 - ✅ **Cloudflare Workers AI** – 10k Neuronen/Tag
 - ❌ **Together AI** – nicht nutzbar
 - ❌ **NVIDIA FLUX** – auf Eis
@@ -173,8 +173,6 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 
 ### Vision-Log-Speicherung (live)
 - Jede Analyse wird in `memory/VISION_LOG.jsonl` geschrieben
-- Format: `{timestamp, source, mode, model, result, tables_present, error}`
-- Auch Fehlerfälle werden geloggt
 
 ### Vision-Summary-Agent (live)
 - **Datei:** `agents/vision_summary_agent.py`
@@ -182,69 +180,69 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 - **Lauf:** alle 3 Tage um 08:00 UTC
 - **Erster regulärer Lauf:** 18.10.2026 (Guard-Clause)
 - **Force-Modus:** `workflow_dispatch` mit `force=true`
-- **Output:** `memory/VISION_SUMMARY.md` (deutsche Zusammenfassung)
-
-### Workflow
-```
-Screenshot → Telegram (/vision) → Vision-Router (Muse Glimmer)
-                                       ↓
-                                VISION_LOG.jsonl
-                                       ↓
-                          Vision-Summary-Agent (alle 3 Tage)
-                                       ↓
-                                VISION_SUMMARY.md
-```
-
-### Einschränkungen
-- Aktuell nur Bilder (keine Videos)
-- Nach VPS: Video-Frames + Audio-Transkription
+- **Output:** `memory/VISION_SUMMARY.md`
 
 ---
 
-## 🌤️ WEATHER AGENT (Phase 1)
+## 🌤️ WEATHER AGENT
 
-**Status:** ✅ Code live, ⏳ Test wartet auf OpenWeatherMap-Aktivierung
+**Status:** ✅ live + getestet (21.09.2026)
 **Dateien:** `config/strecken.json`, `agents/weather_agent.py`, `.github/workflows/weather_agent.yml`
 
 ### Was er macht
 - Liest Hausstrecken aus `config/strecken.json`
-- Ruft Wetter-API für jede Strecke auf
+- **Nutzt Forecast-API** (nicht mehr Current-Weather)
+- Zeigt Vorhersage für **09:00 UTC = 11:00 deutsche Zeit**
 - Filtert: Regen/Schnee/Sturm → „nicht empfohlen"
-- Sendet Telegram-Nachricht mit Strecken-Check
+- Sendet Telegram-Nachricht
 - Cron: täglich 06:00 UTC
 
-### Problem (20.09.2026)
-Erster Testlauf: **401 Unauthorized** von OpenWeatherMap
-- Ursache: OWM aktiviert neue API-Keys erst nach 10 Min – 2 Std
-- Aktion: Workflow später/morgen erneut starten
+### Testausgabe (21.09.2026)
+```
+🏍️ Strecken-Check für heute (21.09.2026)
+✅ Radevormwald (11 Uhr): 11°C, Mäßig bewölkt, gute Bedingungen
+✅ Biggesee (11 Uhr): 10°C, Mäßig bewölkt, gute Bedingungen
+✅ Sägewerk (11 Uhr): 11°C, Mäßig bewölkt, gute Bedingungen
+```
 
 ---
 
 ## 🎯 PATTERN LIBRARY (Instagram-Content-Bausteine)
 
 **Datei:** `config/PATTERN_LIBRARY.md`
-**Stand:** 20.09.2026 – 10 Patterns aktiv
+**Stand:** 21.09.2026 – **14 Patterns aktiv**
 
-| # | Pattern | Quelle | Status |
-|---|---|---|---|
-| 1 | Zahl + Nutzen im Hook | @aiwithshivang | ✅ |
-| 2 | Kommentar-Trigger | @aiwithshivang | ✅ |
-| 3 | Selfie mit VIP | Bülent (MotoGP) | ✅ |
-| 4 | Vorher/Nachher | Recherche | 🟡 vorgemerkt |
-| 5 | POV | Recherche | 🟡 vorgemerkt |
-| 6 | Storytelling mit Ende offen | Recherche | 🟡 vorgemerkt |
-| 7 | Karussell als Cheat-Sheet | @karishmaticmarketer, @mauryavanshi_edits, @careerwithamir | ✅ |
-| 8 | Slash-Command-Tags | @karishmaticmarketer, @mauryavanshi_edits | ✅ |
-| 9 | Fotografie-Stil-Prompts | @mauryavanshi_edits, @startup_rules | ✅ |
-| 10 | Skill-Karten-Raster (4x2) | @bitbyybit | ✅ |
+| # | Pattern | Quelle |
+|---|---|---|
+| 1 | Zahl + Nutzen im Hook | @aiwithshivang |
+| 2 | Kommentar-Trigger | @aiwithshivang |
+| 3 | Selfie mit VIP | Bülent (MotoGP) |
+| 4 | Vorher/Nachher | vorgemerkt |
+| 5 | POV | vorgemerkt |
+| 6 | Storytelling | vorgemerkt |
+| 7 | Karussell als Cheat-Sheet | @karishmaticmarketer |
+| 8 | Slash-Command-Tags | @karishmaticmarketer |
+| 9 | Fotografie-Stil-Prompts | @mauryavanshi_edits |
+| 10 | Skill-Karten-Raster | @bitbyybit |
+| 11 | Tool-Stack-Karussell | @rakeshmahantiai |
+| 12 | Paid vs Free Vergleich | @aitoolswithpritham |
+| 13 | Step-by-Step Tutorial | @aiagently |
+| 14 | X Free Tools-Liste | @infinity_digitals_official |
 
 **Ziel:** 15–20 Patterns bis Ende Oktober 2026.
 
 **Referenz-Accounts zum Beobachten:**
-- @startup_rules (verifiziert) – AI-Bild-Commands
-- @mauryavanshi_edits – ChatGPT-Prompts
-- @karishmaticmarketer – UGC/Creator-Videos
-- @bitbyybit – KI-Skill-Sammlungen
+- @startup_rules (verifiziert)
+- @mauryavanshi_edits
+- @karishmaticmarketer
+- @bitbyybit
+- @rakeshmahantiai
+- @aitoolswithpritham (verifiziert)
+- @aiagently (verifiziert)
+
+**Bonus in Pattern Library:**
+- Tool-Alternativen-Sektion (kostenlose Tools)
+- KI-Rollen-Bibliothek (15 Rollen aus @alpedya)
 
 ---
 
@@ -255,30 +253,34 @@ Erster Testlauf: **401 Unauthorized** von OpenWeatherMap
 |---|---|---|
 | `motogp-content-agency.yml` | schedule + workflow_dispatch | 5 Tagesvorschläge generieren |
 | `motogp-telegram-approval.yml` | **nur workflow_dispatch** | Empfängt MotoGP-Kommandos |
-| `telegram-receive.yml` | schedule alle 2 Min (6–21 Uhr) | Zentraler Router für Telegram-Updates |
+| `telegram-receive.yml` | schedule alle 2 Min (6–21 Uhr) | Zentraler Router |
 | `motogp-pipeline-diagnose.yml` | workflow_dispatch | Diagnose |
 | `motogp-roster-update.yml` | schedule | Fahrer-Roster aktualisieren |
 
-### Wichtige Erkenntnisse (20.09.2026)
-- **MotoGP Telegram Approval läuft NICHT automatisch** (kein `schedule`)
-  - Zentraler Router übernimmt Polling
-- **5 → 3 Stories möglich** wenn FRESHNESS DIAG alte/fehlende Stories filtert
-  - NULL-TOLERANZ: nur frische Stories werden verwendet
-  - Top-20-Fallback füllt Lücken bei manuellem Start
+### Telegram-Befehle
+- `motogp 1–5` – einzelne Auswahlen freigeben
+- `motogp alle` – alle freigeben
+- `motogp nein` – alle ablehnen
+- **Wichtig:** Leerzeichen nach Komma (`motogp 2, 3`) → Bug bei `motogp 2,3`
+
+### Instagram Zwei-Stufen-Freigabe (NEU 21.09.2026)
+- **Facebook:** postet sofort nach Telegram-Freigabe
+- **Instagram:** wartet auf zweite Freigabe
+  1. Freigabe → Agnes generiert Bild
+  2. Bild kommt in Telegram
+  3. `bild ✅` → posten
+  4. `bild ❌` → neu generieren
+
+### Wichtige Erkenntnisse
+- **5 → 3 Stories möglich** wenn FRESHNESS DIAG filtert
 - **FRESHNESS DIAG** filtert nach: fresh / old / missing_date / promo_irrelevant
 - **SERIES LOCK** in V8.5.5: immutable series + source-fact whitelist
 
-### Erwartete Telegram-Nachricht
-- 🏍️ 5 Tagesvorschläge (MotoGP, Moto2, Moto3, Turkish, Community)
-- 🔎 Fakten-QM: NULL-TOLERANZ
-- ✍️ Human Writing Protocol + Bülents Bike Life Voice
-- Freigabe via `motogp 1–5` / `motogp alle` / `motogp nein`
-
 ---
 
-## 🎬 VIDEO-PRODUKTIONS-SYSTEM (NEU – 20.09.2026)
+## 🎬 VIDEO-PRODUKTIONS-SYSTEM
 
-**Komplette Kette läuft:**
+**Komplette Kette:**
 ```
 Claude Code → BudgetAI-Proxy (Nemotron) → Kaestral MCP → FFmpeg → Videos
 ```
@@ -308,13 +310,13 @@ RATE_LIMIT_WINDOW=60
 ENABLE_THINKING=false
 ```
 
-**Achtung:** GLM-4.7 (EOL 14.05.2026), Qwen3 Coder 480B (EOL 11.06.2026) – nicht mehr nutzen!
+**Achtung:** GLM-4.7, Qwen3 Coder 480B sind auf NVIDIA NIM **EOL**.
 
 ### 🚀 Claude Code Startsequenz (WICHTIG – immer so!)
 
 **Problem:** PowerShell öffnet bei Bülent **immer als Admin** → User-PATH wird nicht geladen.
 
-**Lösung – immer diese 4 Befehle in dieser Reihenfolge:**
+**Lösung – immer diese 4 Befehle:**
 
 ```
 cd C:\Users\Admin
@@ -349,18 +351,6 @@ claude mcp add kaestral -- cmd /c npx kaestral
 
 **Ordner:** `C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026`
 
-**Enthält:**
-- `gruppenselfieModerator.jpg` – Hook
-- `autogrammToprak.mp4` – Unterschrift auf Shirt
-- `toprak-selfie.jpg` – Selfie mit Weltmeister
-- `toprak-dankesagen.mp4` – Toprak sagt Danke auf Türkisch
-- `ich-herowalk.jpg` – Hero Walk
-- `strecke.jpg` / `vom berg.jpg` – Strecke
-- `MotoGP-ständer.jpg` – Merch-Stand
-- `ich+damian.jpg` – Damian + Bülent
-- `ich-damian-Jackmiller.jpg` – Zu dritt mit Jack
-- `jackmiller.jpg` + `Toprak.jpg` – Einzelaufnahmen
-
 ---
 
 ## 🎬 CONTENT-MATERIAL (Übersicht)
@@ -369,29 +359,23 @@ claude mcp add kaestral -- cmd /c npx kaestral
 
 | Ordner | Inhalt | Potenzial |
 |---|---|---|
-| **MotoGP Assen 2026** | Toprak (Video + Selfies), Jack Miller, Morbidelli, Rins, Ai Ogura, Strecke, Stände | 🔥 **höchstes** |
+| **MotoGP Assen 2026** | Toprak, Jack Miller, Morbidelli, Rins, Ai Ogura, Strecke, Stände | 🔥 höchstes |
 | **Radevormwald** | Fotos | mittel |
 | **BiggeGrill / Biggesee** | Fotos | mittel |
-| **Hagen Biker Treff** | Fotos (auch Bike Society Hagen) | mittel |
-| **M1000R Übungsplatz** | Kreise, Achten, Hinterreifen, Helm, Straße | hoch |
-
-### Bonus-Material
-- BMW-App-Screenshot: Route + Schräglagen (47° rechts / 44° links)
-- Calimoto (falls aufgezeichnet)
+| **Hagen Biker Treff** | Fotos | mittel |
+| **M1000R Übungsplatz** | Kreise, Achten, Reifen, Helm | hoch |
 
 ### 🏆 Top-Material: MotoGP Assen 2026
-- 🎥 **Toprak-Video:** bedankt sich auf Türkisch, winkt in Kamera
-- 🎥 **Autogramm-Video:** Toprak unterschreibt Bülents Shirt
-- 🎥 **Moderator-Video:** Er spricht Englisch, „extra aus Türkei gekommen"
-- 📸 **Gruppenselfie:** Bülent + Damian + Moderator + Helfer
+- 🎥 Toprak-Video (Dank auf Türkisch)
+- 🎥 Autogramm-Video (Unterschrift auf Shirt)
+- 🎥 Moderator-Video (Englisch)
+- 📸 Gruppenselfie mit Moderator + Helfer + Damian
 - 📸 Selfies mit Toprak, Jack Miller, Morbidelli, Rins
 - 📸 Strecke + Stände
 
-**Virales Potenzial:** 3 Zielgruppen gleichzeitig
-
 ---
 
-## 🎯 MOTOGP-REEL – STORYBOARD (fertig)
+## 🎯 MOTOGP-REEL – STORYBOARD
 
 **Reihenfolge (8 Clips, ~59 Sek, 9:16):**
 
@@ -420,25 +404,7 @@ Hero Walk. Die Strecke. Die Fans.
 Teil 2 folgt – wer ist euer Lieblingsfahrer?
 ```
 
-### 📝 Instagram-Caption
-
-```
-Ein Moderator kam auf uns zu und fragte:
-„Wollt ihr zu Toprak?"
-
-Er hat es möglich gemacht. Hero Walk, Autogramm, Selfie.
-Und dann bedankt sich der Weltmeister bei mir – auf Türkisch 🇹🇷
-
-Mit meinem Buddy Damian in Assen 2026.
-Das war nicht nur ein Wochenende. Das war Gänsehaut. 🙏
-
-Wer ist euer Lieblingsfahrer? 👇
-Teil 2 folgt – mit Jack Miller.
-
-#motogp #assen #toprakrazgatlioglu #jackmiller #motogp2026 #biker #türkischerbiker #motorrad #motorsport #herowalk #buelentsbikelife
-```
-
-### 🚀 Prompt für Claude Code (morgen)
+### 🚀 Prompt für Claude Code
 
 ```
 Baue einen Instagram-Reel im 9:16-Format aus den Dateien im Ordner
@@ -473,11 +439,41 @@ C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026\reel-fertig.mp
 
 | # | Reel | Status |
 |---|---|---|
-| 1 | MotoGP Assen – „Toprak bedankt sich" | 🔴 Storyboard fertig |
+| 1 | MotoGP Assen | 🔴 Storyboard fertig |
 | 2 | Bikertreff-Runde (Radevormwald + Biggesee) | 🔴 Storyboard fertig |
-| 3 | Hagen Biker Treff / Bike Society Hagen | ⏸️ wartet |
+| 3 | Hagen Biker Treff | ⏸️ wartet |
 | 4 | M1000R-Realität | ⏸️ wartet |
 | 5 | BiggeGrill | ⏸️ wartet |
+
+---
+
+## 🧠 EXPERT AGENT (Konzept)
+
+**Was es ist:**
+Ein Claude-Code-Skill, der aus 10 YouTube-Tutorials trainiert wird und dann bei Aufgaben angewendet wird.
+
+**Was es NICHT ist:**
+- Kein kontinuierlich lernender Agent
+- Kein autonom suchender Agent
+- Kein Feedback-Loop ohne Nutzer
+
+**Ablauf:**
+1. Nutzer sammelt 10 YouTube-Links zu einem Thema
+2. Claude Code studiert sie (yt-analysis-mcp + Gemini)
+3. Skill wird gebaut und als Datei gespeichert
+4. Nutzer testet + gibt Feedback
+5. Skill wird bei jedem Lauf angewendet
+
+**Geplantes Langzeitgedächtnis:**
+- `CLAUDE.md` im Repo-Root (Projekt-Kontext)
+- `memory/EXPERT_SKILLS/` Ordner mit pro Skill eine `.md`
+- `memory/EXPERT_EVENTS.jsonl` (chronologisches Log)
+- Basic Memory MCP (`@basic-memory/mcp-server`)
+
+**Erste Kandidaten:**
+- MotoGP-Reel-Schnitt
+- Bikertreff-Video-Stil
+- Hook-Writer für erste 3 Sek
 
 ---
 
@@ -488,8 +484,6 @@ C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026\reel-fertig.mp
 ### Stufe 2 – KURZFRISTIG (1–2 Wochen)
 - GitHub Pages, statische HTML
 - Datenquelle: `docs/approval/queue.json`
-- Freigabe: Button → `workflow_dispatch` → Publisher
-- Kosten: 0 €
 - URL: `edirne22.github.io/KI-SOCIAL-AGENT/`
 
 ### Stufe 3 – NACH VPS
@@ -498,60 +492,31 @@ C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026\reel-fertig.mp
 
 ---
 
-## 📦 CLAWHUB-SKILLS (Social-Media-Automatisierung)
+## 📦 CLAWHUB-SKILLS
 
 **Empfohlen:**
 - **Phy Social Post** → Insta + FB + TikTok
 - **Multi-Platform Scheduler**
 - **Outfeed** → Bulk-Publishing
 
-**Mit Vorsicht:**
-- **Postmoore** → Security-Risiken
-
 ---
 
-## 🔴 OFFENE PRIORITÄTEN
+## 🔴 OFFENE PRIORITÄTEN (siehe IDEA_POOL.md)
 
-### Kurzfristig (diese Woche)
-- 🎬 MotoGP-Reel bauen (mit Claude Code + Kaestral)
-- 🎬 Bikertreff-Reel (Radevormwald + Biggesee)
-- 📸 Instagram durchforsten → Patterns sammeln
-- 📱 TÜRKBiR beobachten → erste Interaktion
-- 📄 `config/MEDIA_TOOLS.md` anlegen
-- 🧪 Weather Agent testen (OWM-Key-Aktivierung)
-
-### Mittelfristig (2 Wochen)
-- 🖥️ Approval-Dashboard Stufe 2
-- 📦 TikTok-Integration
-- 🧠 Memory-Embedding → `nvidia/nemotron-3-embed-1b`
-- 🛡️ Safety-Check → `nvidia/nemotron-3-content-safety`
-- ⚙️ Router-Erweiterung
-- 🐛 Debug-Branch-Schutz
-
-### Nach VPS
-- 🟢 VPS einrichten
-- 🟢 SearXNG, OmniRoute
-- 🟢 `speech_router.py`, `video_router.py`
-- 🟢 Remotion + Video-Pipeline autonom
-
-### Strategisch
-- 🟣 V8.6 Promotion Debug → main
-- 🟣 Debug-Workflow-Split auflösen
-- 🟣 OpenRouter 10 $ aufladen
-- 🟣 Autonome Content-Fabrik
+Alle offenen Aufgaben sind ausgelagert in `docs/IDEA_POOL.md`.
 
 ---
 
 ## 🔧 TOOL-WORKFLOW (Jules + Codex + Claude Code)
 
 ### Jules (Google)
-- 15 Sessions/Tag (rollierend 24h), max 3 parallel
-- Automatische PRs, GitHub-Integration
+- 15 Sessions/Tag, max 3 parallel
+- Automatische PRs
 - **Neuer Auftrag = neuer Chat**
 
 ### Codex (ChatGPT Plus)
 - Nutzungslimit, Reset ~18:41 Uhr
-- Kann GitHub-PRs direkt anlegen (GitHub-Verbindung)
+- Kann GitHub-PRs anlegen
 - Selbst-enthaltende Aufträge
 
 ### Claude Code (lokal, über NVIDIA)
@@ -570,29 +535,28 @@ C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026\reel-fertig.mp
 ## ⚠️ WICHTIGE REGELN
 
 ### Verbotene Clubs (nie erwähnen, nie taggen)
-- ❌ Osmanen Germania (verboten 2018)
-- ❌ Turkos MC (aufgelöst 2018)
-- ❌ Black Jackets (kriminell)
+- ❌ Osmanen Germania
+- ❌ Turkos MC
+- ❌ Black Jackets
 
 ### Content-Regeln
-- ✅ Immer Türkisch + Deutsch (Zielgruppe)
+- ✅ Immer Türkisch + Deutsch
 - ✅ Nur öffentliche Infos
 - ✅ Respektvoll & positiv
 - ✅ Keine politischen Aussagen
-- ✅ Handles nur, wenn öffentlich sichtbar
 - ❌ Keine KI-Deepfakes von echten Personen
-- ❌ Kein Re-Upload ohne Freigabe
 
 ### Branches
 - `main` = produktiv
 - `debug/motogp-pipeline-output` = nur Bülent + Codex
 
 ### Bekannte technische Fallen
-- **NVIDIA NIM:** Modelle werden oft EOL → immer prüfen
-- **Windows npx-Problem:** `cmd /c`-Wrapper nötig
-- **Admin-PowerShell:** User-PATH wird nicht geladen → voller Pfad
+- **NVIDIA NIM:** Modelle oft EOL
+- **Windows npx-Problem:** `cmd /c`-Wrapper
+- **Admin-PowerShell:** User-PATH nicht geladen → voller Pfad
 - **Notepad + JSON:** Niemals `.claude.json` mit Notepad bearbeiten
 - **C:-Speicher:** knapp → Downloads auf E: umleiten
+- **Telegram-Komma:** `motogp 2, 3` mit Leerzeichen (Bug bei `2,3`)
 
 ---
 
@@ -623,7 +587,10 @@ C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026\reel-fertig.mp
 - **ClawHub:** https://clawhub.ai
 - **Kaestral:** https://github.com/prabindersinghh/Kaestral-pro
 - **OpenReel:** https://openreel.video
+- **YouMind:** https://youmind.com
+- **PromptCreek:** https://promptcreek.com
 - **Handbuch:** `docs/HANDBUCH.md`
+- **IDEA POOL:** `docs/IDEA_POOL.md`
 - **Bikertreffs:** `config/Bikertreffs.md`
 - **Pattern Library:** `config/PATTERN_LIBRARY.md`
 - **Jules Docs:** https://jules.google/docs/usage-limits/
@@ -635,57 +602,43 @@ C:\Users\Admin\Desktop\SnapShot-Agenten\20260919\MotoGP-Assen2026\reel-fertig.mp
 **Startprompt für neuen Chat:**
 > „Lies `docs/PROJEKT_UEBERGABE.md` im Repo Edirne22/KI-SOCIAL-AGENT (raw: https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/docs/PROJEKT_UEBERGABE.md). Arbeite auf diesem Stand weiter."
 
-**Damit ist der Assistent in 10 Sekunden auf Stand.**
-
 ---
 
 ## 🧠 ARBEITS-PRINZIPIEN (verbindlich für alle Chats)
 
 ### 1. Proaktiv mitdenken
-Wenn dem Assistenten auffällt, dass etwas **suboptimal** ist
-(schwaches Modell, unnötiger Aufwand, falsche Architektur), soll er
-das **sofort ansprechen** – nicht erst auf Nachfrage.
-
-**Konkret:**
-- Bei Vergleichen prüfen: Gibt es ein besseres Modell/Tool?
-- Bei Fehlern: Ursache benennen, nicht nur fixen
-- Bei Entscheidungen: Vor- und Nachteile nennen
-- Bei wiederkehrenden Mustern: Vorschlag zur Automatisierung machen
+Wenn dem Assistenten auffällt, dass etwas **suboptimal** ist, soll er das **sofort ansprechen** – nicht erst auf Nachfrage.
 
 ### 2. Nach jedem Meilenstein: Snapshot
-Wenn ein größeres Feature fertig ist (Router, Agent, Pipeline):
-- Eintrag in `docs/PROJEKT_UEBERGABE.md` ergänzen
-- Was wurde gebaut, was läuft, was ist offen
-- Verhindert Wissensverlust zwischen Chats
+Wenn ein größeres Feature fertig ist: Eintrag in Übergabe ergänzen.
 
 ### 3. Bei neuen Chats: Übergabe lesen
-Der Assistent MUSS zu Beginn eines neuen Chats die
-`PROJEKT_UEBERGABE.md` lesen (Raw-Link) und auf diesem Stand
-weiterarbeiten.
+Der Assistent MUSS zu Beginn die `PROJEKT_UEBERGABE.md` lesen.
 
 ### 4. Modelle/Tools immer hinterfragen
-Wenn ein Modell oder Tool nicht das gewünschte Ergebnis liefert:
-- Prüfen, ob es eine stärkere, kostenlose Alternative gibt
-- Wenn ja: sofort vorschlagen (nicht auf Nachfrage warten)
-- Mit konkretem Wechsel-Vorschlag + Auswirkung
+Wenn ein Modell/Tool nicht liefert: Bessere kostenlose Alternative prüfen.
 
 ### 5. Ehrliche Einschätzung > höfliche Zustimmung
 Bei Schwächen, Risiken oder Fehlern: klar ansprechen.
-Nicht schönreden. Lieber unbequem ehrlich als bequem falsch.
 
 ### 6. Komplette Dateien statt Teil-Blöcke
-Wenn eine bestehende Datei geändert werden soll:
-- **Immer die KOMPLETTE Datei** liefern (zum 1:1-Ersetzen)
-- **Niemals** nur Teil-Blöcke zum Einfügen
-- **Niemals** „ersetze Zeile X"
-- Grund: Copy-Paste-Fehler an Rändern sind sonst unvermeidbar
+Bei Änderungen: IMMER die komplette Datei liefern, nie Teil-Blöcke.
 
 ### 7. Bei jedem Tool: Öffnungs-Anleitung mitliefern
-Bülent ist kein Programmierer. Wenn ein Tool erwähnt wird
-(PowerShell, Notepad, Browser, Terminal), muss IMMER mitgeliefert werden:
-1. **Wie öffnen** (Windows-Taste → suchen → Enter)
-2. **Woran erkennen** (Prompt-Anzeige, Fensterfarbe)
-3. **Wie schließen** (Strg+C, /exit, X)
+Bülent ist kein Programmierer. Bei Tool-Erwähnung immer:
+1. Wie öffnen (Windows-Taste → suchen → Enter)
+2. Woran erkennen (Prompt-Anzeige, Fensterfarbe)
+3. Wie schließen (Strg+C, /exit, X)
 
-**Negativ-Beispiel:** „Öffne PowerShell" ❌
-**Positiv-Beispiel:** „Drücke Windows-Taste → tippe `powershell` → Enter. Der Prompt sollte `PS C:\Users\Admin>` zeigen." ✅
+**Negativ:** „Öffne PowerShell" ❌
+**Positiv:** „Drücke Windows-Taste → tippe `powershell` → Enter." ✅
+
+### 8. Konzepte klar abgrenzen
+Bei neuen Ideen (z.B. Expert Agent) IMMER:
+- Was es ist
+- Was es NICHT ist
+- Was der Nutzer tun muss
+- Was automatisch passiert
+
+### 9. „Pool" statt „To-Do"
+Aufgaben sind ein Pool zur Auswahl, kein Zwang. Datei: `docs/IDEA_POOL.md`.
