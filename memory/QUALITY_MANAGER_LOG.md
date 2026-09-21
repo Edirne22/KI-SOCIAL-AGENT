@@ -768,3 +768,45 @@ Story-Key: motogp:1090222
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-21 04:31 UTC | Motorcycle Racing | PASS
+Titel: Quiles cruises to Austrian GP victory
+Story-Key: motogp:1090400
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-21 04:31 UTC | Motorcycle Racing | PASS
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Story-Key: motogp:1090417
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-21 04:31 UTC | Motorcycle Racing | FAIL
+Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
+Story-Key: motogp:1090419
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-21 04:32 UTC | Motorcycle Racing | PASS
+Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
+Story-Key: motogp:1090419
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-21 04:32 UTC | Motorcycle Racing | PASS
+Titel: Salač stuns in Spielberg to end three-year pole drought
+Story-Key: motogp:1090402
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-21 04:32 UTC | Motorcycle Racing | FAIL
+Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
+## 2026-09-21 04:33 UTC | Motorcycle Racing | PASS
+Titel: NEWS 1d ago WorldSBK teams react to rules roadmap updates for 2027 and onwards: “We welcome this new era” WorldSBK
+Story-Key: motogp:1090222
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

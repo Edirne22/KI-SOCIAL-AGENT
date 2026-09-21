@@ -329,3 +329,13 @@ Quelle: https://www.instagram.com/bike_society_hagen
 Story-Key: motogp:1090400
 Titel: Quiles cruises to Austrian GP victory
 Quelle: https://www.motogp.com/en/news/2026/09/20/m3-aut-sun-report/1090400
+
+## 2026-09-21 04:28 UTC – ANGEBOTEN
+Story-Key: motogp:1090419
+Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
+Quelle: https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-fends-off-aprilia-charge-to-claim-dream-maiden-win/1090419
+
+## 2026-09-21 04:28 UTC – ANGEBOTEN
+Story-Key: motogp:1090402
+Titel: Salač stuns in Spielberg to end three-year pole drought
+Quelle: https://www.motogp.com/en/news/2026/09/19/salac-stuns-in-spielberg-to-end-three-year-pole-drought/1090402
