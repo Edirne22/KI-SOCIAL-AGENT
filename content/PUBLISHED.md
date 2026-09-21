@@ -476,9 +476,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-21-racing-editorial-2026-09-21-3-bouncing-back-flawle-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35570686027-1
+## Facebook [GEPOSTET 2026-09-21 06:57 | ID: 1285968257941776_122112169203469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-21-daily
 Telegram-Update-ID: 279361716
