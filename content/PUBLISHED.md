@@ -576,9 +576,8 @@ Link-Preview: offiziell
 
 ## Instagram
 Status: BILD_GENERIERT
-Freigabe: Telegram Racing
+Freigabe: FREIGEGEBEN
 Racing-Batch-ID: racing-2026-09-22-daily
-Telegram-Update-ID: 279361720
 MotoGP-Auswahl: 4
 Titel: PREVIEW 19h ago HISTORY AWAITS: Will Bulega be crowned WorldSBK Champion on home soil at Cremona? The #11 is on the verge of the title and the Italian can win the title at the 2026 Italian Round… WorldSBK
 Text:
