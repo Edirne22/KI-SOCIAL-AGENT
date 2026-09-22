@@ -21,6 +21,39 @@
 - [ ] Instagram durchforsten → Patterns sammeln
 - [ ] TÜRKBiR beobachten → erste Interaktion
 
+## 🧠 PRIO 1 – MULTI-KI CROSS-CHECK (Arbeitsweise)
+
+**Ziel:** Kein manuelles Copy-Paste mehr zwischen Chat und Claude Code. Mehrere KIs einbeziehen, deren Antworten vergleichen, bestes Ergebnis destillieren.
+
+**Warum jetzt (Anfangsphase):** Je früher mehrere Perspektiven im Boot sind, desto weniger blinde Flecken im Fundament. Später nachrüsten ist teurer.
+
+### Kandidaten (zu testen, Reihenfolge offen)
+
+**Ebene 1 – Text-Bridge (erst mal simpel)**
+- `claudelink-bridge` + Chrome-Extension → Browser-Text direkt an Claude Code, Antwort zurück in Browser
+- `ai-relay` → flexibler, mehrere CLIs anbindbar (Claude Code, Codex, Gemini)
+
+**Ebene 2 – Clipboard-Workflow**
+- `clipboard-ai-mcp` → strukturiertes Hin-und-Her via Clipboard, sessionsfähig
+
+**Ebene 3 – Multi-Modell-Council (Ziel-Vision)**
+- `llm-council-no-api` → `/council`-Befehl: gleiche Frage an Gemini + GPT, Claude vergleicht + urteilt
+- `cross-review` → MCP-Server für Cross-Review zwischen Claude Code, Codex, Gemini CLI
+- `codeagora` / `Triumvirate` / `llm-panel` → Multi-LLM-Review mit Konsens-Findings
+
+### Test-Reihenfolge (Vorschlag)
+1. `claudelink-bridge` – einfachster Einstieg, Browser bleibt Arbeitsumgebung
+2. `llm-council-no-api` – wenn Bridge läuft: direkt Multi-Modell testen
+3. `cross-review` – Vollausbau, wenn die ersten zwei tragen
+
+### Zeitpunkt
+**Noch offen.** Nicht heute Abend (Reel hat Vorrang). Erste Session nach Reel-Fertigstellung.
+
+### Erfolgskriterium
+- [ ] Text aus Browser → Claude Code ohne manuelles Kopieren
+- [ ] Mindestens 2 KIs liefern unabhängige Antwort → Vergleich sichtbar
+- [ ] Erste echte Entscheidung (Prompt, Plan, Code) wurde durch Cross-Check verbessert
+- [ ] 
 ## 🐛 BUGS (wenn Zeit ist)
 
 - [ ] Telegram-Komma-Parsing (`motogp 2,3` ohne Leerzeichen)
