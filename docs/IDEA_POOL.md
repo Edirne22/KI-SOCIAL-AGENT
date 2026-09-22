@@ -1,4 +1,7 @@
+## 🔴 HEUTE – 22.09.2026 Abend
 
+### Vor dem Reel (5–10 Min)
+- **Prio 1:** `public-apis` klonen → `D:\SnapShot-Agenten\refs\public-apis`
 # 💡 IDEA POOL – KI-SOCIAL-AGENT
 
 **Zweck:** Sammlung von Ideen, Aufgaben und Features. Kein Zwang – Auswahl nach Lust, Zeit und Priorität.
