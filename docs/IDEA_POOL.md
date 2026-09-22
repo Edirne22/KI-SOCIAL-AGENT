@@ -85,3 +85,61 @@
 ### 21.09.2026
 - ✅ Weather-Fix live (11-Uhr-Vorhersage)
 - ✅ Instagram Zwei
+
+## 🧠 Claude-Code-Skills – Merkliste
+
+**Quelle:** https://ozgurakanay.com/kutuphane/
+**Stand:** 22.09.2026
+
+### 🥇 Sofort relevant (diese Woche)
+
+1. **Planning with Files** (Othman Adi)
+   - Zweck: Nachtläufe überleben Session-Abbrüche
+   - Repo: github.com/OthmanAdi/planning-with-files (URL prüfen)
+   - Install: `npx skills add OthmanAdi/planning-with-files`
+
+2. **Türkçe Yazı Yazma** (Özgür Bulut Akanay)
+   - Zweck: KI-Geruch aus türkischen Texten entfernen
+   - Repo: (URL aus Kütüphane-Seite holen)
+   - Install: `npx skills add <autor>/turkce-yazi-yazma`
+
+3. **Marketing Skills** (Corey Haines)
+   - Zweck: Marketing-Agents (SEO, Ad-Copy, Strategie)
+   - Repo: (URL aus Kütüphane-Seite holen)
+   - Install: `npx skills add <autor>/marketing-skills`
+
+### 🥈 Bald relevant
+
+- **Stop Slop** (Hardik Pandya) – KI-Floskeln aus EN-Texten
+- **Context Engineering** (Murat Can Koylan) – Token-Verbrauch senken
+- **Anthropic Skills** (offiziell) – Word/Excel/PDF
+- **Superpowers** (Jesse Vincent) – strukturierte Workflows
+
+### 🟢 Nach VPS
+
+- **Remotion Skills** – Video aus Prompt
+- **Trail of Bits Skills** – Security-Audit
+- **Awesome Claude Skills** (Composio) – Meta-Liste
+
+### ❌ Nicht relevant
+
+- UI UX Pro Max, Impeccable (Web-UI)
+- Vercel Agent Skills (Next.js)
+- Supabase Agent Skills (DB)
+- Playwright Skill (Browser-Tests)
+
+### 📌 Wichtige Erkenntnis
+
+Skills **können NICHT über Jules installiert werden** – sie sind 
+lokale CLI-Installationen (`npx skills add ...`).
+
+- **Weg A:** Lokal installieren (schnell, funktioniert)
+- **Weg B:** Skill-Repos in eigenes Repo einchecken (via Jules, für Team)
+- **Weg C:** Zentrales Skill-Repo (nach VPS)
+
+### 🚦 Zeitplan
+
+- **Heute Abend:** Reel fertig (KEINE Skills)
+- **Diese Woche:** Planning with Files + Türkçe Yazı lokal installieren
+- **Nächste Woche:** Marketing Skills + Stop Slop
+- **Nach VPS:** Remotion Skills, Trail of Bits
