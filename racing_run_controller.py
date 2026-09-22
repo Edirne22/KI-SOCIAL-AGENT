@@ -4,7 +4,7 @@ Deterministic orchestration state: duplicate protection, persistent batch identi
 from pathlib import Path
 from datetime import datetime, timezone
 import hashlib,json,os,time
-STATE=Path('memory/RACING_RUN_STATE.json');ARCH_VERSION='V8.5.5';TERMINAL={'BLOCKED','READY_FOR_APPROVAL','APPROVED','PUBLISHED','CLOSED'};DUPLICATE_WINDOW_SECONDS=30*60
+STATE=Path('memory/RACING_RUN_STATE.json');ARCH_VERSION='V8.5.5';TERMINAL={'BLOCKED','READY_FOR_APPROVAL','FREIGEGEBEN','APPROVED','PUBLISHED','CLOSED'};DUPLICATE_WINDOW_SECONDS=30*60
 def _now():return datetime.now(timezone.utc)
 def _load():
  try:return json.loads(STATE.read_text(encoding='utf-8'))
@@ -34,7 +34,7 @@ def transition(bid,status,error='',**kwargs):
  data=_load();run=data['runs'].setdefault(bid,{});run['status']=status;run['updated_at']=_now().isoformat()
  if error:run['error']=error
  for k,v in kwargs.items():run[k]=v
- if status=='READY_FOR_APPROVAL':data['active_batch_id']=bid
+ if status in ('READY_FOR_APPROVAL', 'FREIGEGEBEN'):data['active_batch_id']=bid
  elif status in ('PUBLISHED','CLOSED','APPROVED','REJECTED'):data['active_batch_id']=''
  _save(data)
 def active_batch_id():return _load().get('active_batch_id','')

@@ -70,6 +70,8 @@ def _field(text: str, name: str) -> str:
 
 def parse_approval(text: str) -> list[int] | None:
     normalized = text.strip().lower()
+    if normalized.startswith("/"):
+        normalized = normalized[1:]
     if normalized in {"alle", "✅"}:
         return [1, 2, 3]
     if normalized in {"nein", "❌"}:
@@ -234,7 +236,7 @@ TRACK_HELP = (
 
 def _named_command(text: str, names: tuple[str, ...]) -> str | None:
     alternatives = "|".join(re.escape(name) for name in names)
-    match = re.match(rf"(?is)^\s*(?:{alternatives})\s*:?\s*(.*)$", text)
+    match = re.match(rf"(?is)^\s*/?(?:{alternatives})\s*:?\s*(.*)$", text)
     return match.group(1).strip() if match else None
 
 
@@ -368,7 +370,7 @@ def handle_one(update_id: int, chat_id: str, message_text: str, message: dict | 
     if message is None:
         message = {}
 
-    text_lower = message_text.strip().lower()
+    text_lower = message_text.strip().lower().lstrip("/")
     print(f"DEBUG: Text='{message_text}'")
     print(f"DEBUG: lower='{text_lower}'")
     print(f"DEBUG: match_trend={text_lower.startswith('trend:')}")
