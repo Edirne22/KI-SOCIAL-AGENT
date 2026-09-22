@@ -72,12 +72,20 @@ def parse_session():
 
     return posts, problems
 def selection(text):
-    v=re.sub(r'\s+',' ',text.strip().lower())
-    if v in ('motogp alle','motogp ✅'):return [1,2,3,4,5]
-    if v in ('motogp nein','motogp ❌'):return []
-    m=re.fullmatch(r'motogp\s+([1-5](?:[\s,]+[1-5])*)',v)
-    if not m:return None
-    return sorted({int(x) for x in re.findall(r'[1-5]',m.group(1))})
+    v = re.sub(r'\s+', ' ', text.strip().lower())
+    v = re.sub(r'/\s*', '', v)
+    if 'motogp' not in v:
+        return None
+    v_clean = re.sub(r'\bmotogp\b', '', v).strip()
+    v = f"motogp {v_clean}"
+    if v in ('motogp alle', 'motogp ✅'):
+        return [1, 2, 3, 4, 5]
+    if v in ('motogp nein', 'motogp ❌'):
+        return []
+    m = re.fullmatch(r'motogp\s+([1-5](?:[\s,]+[1-5])*)', v)
+    if not m:
+        return None
+    return sorted({int(x) for x in re.findall(r'[1-5]', m.group(1))})
 def already(uid):return STATE.exists() and f'Update-ID: {uid}' in STATE.read_text(encoding='utf-8')
 def _normalize_text(t):return re.sub(r'\s+',' ',t.strip()).casefold()
 def get_existing_published_texts():
@@ -175,7 +183,7 @@ def handle_one(uid, chat, txt):
                 '⛔ Session ungültig oder keine gültigen Beiträge gefunden. '
                 'Nichts veröffentlicht.'
             )
-        elif run.get('status') != 'READY_FOR_APPROVAL':
+        elif run.get('status') not in ('READY_FOR_APPROVAL', 'FREIGEGEBEN'):
             send_message(
                 '⛔ Batch ist nicht im Status READY_FOR_APPROVAL. '
                 'Nichts veröffentlicht.'

@@ -171,7 +171,7 @@ def _handle_photo(update: dict, chat: str) -> bool:
 
 
 def _is_general_command(text: str) -> bool:
-    n = " ".join(text.strip().lower().split())
+    n = " ".join(text.strip().lower().split()).lstrip("/")
     if n in {"alle", "✅", "nein", "❌", "watchlist", "liste", "track", "experiment", "funnel", "growth", "competitors", "wettbewerber", "inspiration", "race", "viral", "follow-analyse", "go"}:
         return True
     if re.fullmatch(r"[1-3](?:\s*,\s*[1-3])*", n):
@@ -323,7 +323,8 @@ def main() -> None:
             return
 
         normalized = " ".join(text.strip().lower().split())
-        if normalized in {"/help", "/hilfe", "hilfe"}:
+        cmd = normalized.lstrip("/")
+        if cmd in {"help", "hilfe"}:
             send_message(
                 "🤖 Verfügbare Kommandos:\n\n"
                 "BILDER:\n"
@@ -347,16 +348,16 @@ def main() -> None:
             )
             _ack(uid)
             return
-        if re.fullmatch(r"bild\s*(✅|❌)", normalized, re.IGNORECASE):
-            print(f"ROUTER: Update {uid} -> Zweite Freigabe ('bild {normalized[-1]}')")
-            _handle_bild_command(normalized)
+        if re.fullmatch(r"bild\s*(✅|❌)", cmd, re.IGNORECASE):
+            print(f"ROUTER: Update {uid} -> Zweite Freigabe ('bild {cmd[-1]}')")
+            _handle_bild_command(cmd)
             _ack(uid)
             return
-        if normalized in {"/vision", "/ocr", "/omni"}:
+        if cmd in {"vision", "ocr", "omni"}:
             send_message("Bitte sende ein Bild mit dem Befehl /vision, /ocr oder /omni.")
             _ack(uid)
             return
-        if normalized.startswith("motogp ") or normalized in {"motogp", "motogp ✅", "motogp ❌"}:
+        if "motogp" in cmd:
             print(f"ROUTER: Update {uid} -> MotoGP Approval (atomare Übergabe)")
             result = subprocess.run(
                 [sys.executable, "-u", "motogp_telegram_receive.py", str(uid), chat, text],

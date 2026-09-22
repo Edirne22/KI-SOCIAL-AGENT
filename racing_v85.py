@@ -20,7 +20,7 @@ def _controlled_send(message):
 def _session_status():
     try:
         raw=agency.SESSION.read_text(encoding='utf-8')
-        if 'Approval-Status: READY' in raw and 'QM: PASS' in raw:return 'READY_FOR_APPROVAL'
+        if ('Approval-Status: READY' in raw or 'Approval-Status: FREIGEGEBEN' in raw) and 'QM: PASS' in raw:return 'READY_FOR_APPROVAL'
     except Exception:pass
     return 'BLOCKED'
 
