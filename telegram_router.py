@@ -253,12 +253,48 @@ def _publish_instagram_pending(item: dict) -> bool:
     return True
 
 
-def _handle_bild_command(text: str) -> bool:
-    m = re.fullmatch(r"bild\s*(✅|❌)", text.strip(), re.IGNORECASE)
-    if not m:
+INSTAGRAM_APPROVE_SYNONYMS = {
+    "bild ✅",
+    "✅",
+    "bild posten",
+    "posten",
+    "ok",
+    "freigegeben",
+    "freigeben zum posten",
+    "freigeben",
+    "ja",
+}
+
+INSTAGRAM_REJECT_SYNONYMS = {
+    "bild ❌",
+    "❌",
+    "ablehnen",
+    "neu",
+    "neu generieren",
+    "nein",
+}
+
+
+def _get_bild_command_action(text: str) -> str | None:
+    if not isinstance(text, str):
+        return None
+    n = " ".join(text.strip().lower().split()).lstrip("/")
+    if n in INSTAGRAM_APPROVE_SYNONYMS:
+        return "✅"
+    if n in INSTAGRAM_REJECT_SYNONYMS:
+        return "❌"
+    return None
+
+
+def _handle_bild_command(text_or_action: str) -> bool:
+    action = (
+        text_or_action
+        if text_or_action in {"✅", "❌"}
+        else _get_bild_command_action(text_or_action)
+    )
+    if not action:
         return False
 
-    action = m.group(1)
     pending_item = pi.get_first_pending()
     if not pending_item:
         send_message("ℹ️ Keine ausstehenden Instagram-Bilder zur Freigabe vorhanden.")
@@ -275,7 +311,7 @@ def _handle_bild_command(text: str) -> bool:
         return True
 
     # action == "❌" -> Neu generieren
-    print(f"ROUTER: 'bild ❌' empfangen. Regeneriere Bild für {titel}...")
+    print(f"ROUTER: Bild-Ablehnung ('❌') empfangen. Regeneriere Bild für {titel}...")
     try:
         new_bytes = agnes_generate_image(prompt)
         if new_bytes:
@@ -286,7 +322,7 @@ def _handle_bild_command(text: str) -> bool:
 
     caption = (
         f"🔄 Neues Bild generiert für: {titel}\n"
-        "Antworte mit bild ✅ oder bild ❌"
+        "Antworte mit bild ✅ oder bild ❌ (oder ok/neu)"
     )
     try:
         send_photo(img_path, caption=caption)
@@ -348,11 +384,14 @@ def main() -> None:
             )
             _ack(uid)
             return
-        if re.fullmatch(r"bild\s*(✅|❌)", cmd, re.IGNORECASE):
-            print(f"ROUTER: Update {uid} -> Zweite Freigabe ('bild {cmd[-1]}')")
-            _handle_bild_command(cmd)
-            _ack(uid)
-            return
+        if pi.get_first_pending():
+            action = _get_bild_command_action(cmd)
+            if action:
+                print(f"ROUTER: Update {uid} -> Instagram Bild-Freigabe ('{action}')")
+                _handle_bild_command(action)
+                _ack(uid)
+                return
+
         if cmd in {"vision", "ocr", "omni"}:
             send_message("Bitte sende ein Bild mit dem Befehl /vision, /ocr oder /omni.")
             _ack(uid)
