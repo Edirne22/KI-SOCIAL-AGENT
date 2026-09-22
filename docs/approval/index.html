@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI Social Agent - Freigabe-Oberfläche</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-container">
+      <h1>KI Social Agent</h1>
+      <p class="subtitle">Freigabe-Oberfläche (Stufe 2)</p>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <section class="controls-section">
+      <div class="filter-group">
+        <span class="filter-label">Filter:</span>
+        <button class="filter-btn active" data-filter="alle">Alle</button>
+        <button class="filter-btn" data-filter="offen">Offen</button>
+        <button class="filter-btn" data-filter="freigegeben">Freigegeben</button>
+        <button class="filter-btn" data-filter="abgelehnt">Abgelehnt</button>
+      </div>
+      <div class="stats-summary" id="stats-summary">
+        <!-- Status-Zusammenfassung wird via app.js gerendert -->
+      </div>
+    </section>
+
+    <section class="queue-section">
+      <div class="queue-grid" id="queue-container">
+        <!-- Einträge werden via app.js gerendert -->
+      </div>
+      <div id="empty-state" class="empty-state hidden">
+        <p>Keine Einträge für den gewählten Filter vorhanden.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>KI Social Agent &bull; Statische Freigabe-Oberfläche &bull; Stufe 2</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
