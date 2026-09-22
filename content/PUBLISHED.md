@@ -517,7 +517,7 @@ Bild: assets/images/2026-09/2026-09-22-racing-editorial-2026-09-22-1-electric-ma
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 35693824156-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-22-daily
 Telegram-Update-ID: 279361720
