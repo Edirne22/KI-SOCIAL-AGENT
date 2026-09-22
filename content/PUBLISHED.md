@@ -593,9 +593,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/21/history-awaits-will-bulega-b
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-22-racing-editorial-2026-09-22-4-preview-19h-ago-hist-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35697101978-1
+## Facebook [GEPOSTET 2026-09-22 06:57 | ID: 1285968257941776_122112809001469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-22-daily
 Telegram-Update-ID: 279361720
