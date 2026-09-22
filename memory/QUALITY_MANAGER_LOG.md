@@ -810,3 +810,33 @@ Story-Key: motogp:1090222
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-22 04:29 UTC | Motorcycle Racing | PASS
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Story-Key: motogp:1090417
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-22 04:29 UTC | Motorcycle Racing | PASS
+Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
+Story-Key: motogp:1090419
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-22 04:29 UTC | Motorcycle Racing | PASS
+Titel: Salač stuns in Spielberg to end three-year pole drought
+Story-Key: motogp:1090402
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-22 04:29 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 19h ago HISTORY AWAITS: Will Bulega be crowned WorldSBK Champion on home soil at Cremona? The #11 is on the verge of the title and the Italian can win the title at the 2026 Italian Round… WorldSBK
+Story-Key: motogp:1091419
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-22 04:29 UTC | Motorcycle Racing | PASS
+Titel: Feature 4d ago MATCH POINTS IN ITALY: All the titles on the line in Cremona Silverware is in the air in Round 10 as the 2026 season charges towards its thrilling conclusion WorldSBK
+Story-Key: motogp:1090374
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

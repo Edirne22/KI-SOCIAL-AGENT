@@ -339,3 +339,13 @@ Quelle: https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-
 Story-Key: motogp:1090402
 Titel: Salač stuns in Spielberg to end three-year pole drought
 Quelle: https://www.motogp.com/en/news/2026/09/19/salac-stuns-in-spielberg-to-end-three-year-pole-drought/1090402
+
+## 2026-09-22 04:26 UTC – ANGEBOTEN
+Story-Key: motogp:1091419
+Titel: PREVIEW 19h ago HISTORY AWAITS: Will Bulega be crowned WorldSBK Champion on home soil at Cremona? The #11 is on the verge of the title and the Italian can win the title at the 2026 Italian Round… WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/history-awaits-will-bulega-be-crowned-worldsbk-champion-on-home-soil-at-cremona/1091419
+
+## 2026-09-22 04:26 UTC – ANGEBOTEN
+Story-Key: motogp:1090374
+Titel: Feature 4d ago MATCH POINTS IN ITALY: All the titles on the line in Cremona Silverware is in the air in Round 10 as the 2026 season charges towards its thrilling conclusion WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/17/match-points-in-italy-all-the-titles-on-the-line-in-cremona/1090374
