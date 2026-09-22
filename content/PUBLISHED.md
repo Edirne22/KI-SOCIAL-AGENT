@@ -575,7 +575,7 @@ Quelle: https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-
 Link-Preview: offiziell
 
 ## Instagram
-Status: BILD_GENERIERT
+Status: FREIGEGEBEN
 Freigabe: FREIGEGEBEN
 Racing-Batch-ID: racing-2026-09-22-daily
 MotoGP-Auswahl: 4
