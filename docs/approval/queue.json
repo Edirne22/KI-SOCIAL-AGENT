@@ -1,0 +1,29 @@
+{
+  "_comment": "Später gefüllt vom Instagram-Publisher-Workflow",
+  "items": [
+    {
+      "id": "post-101",
+      "title": "MotoGP GP Mugello - Sprintsieg Highlights",
+      "imageUrl": "https://picsum.photos/id/1070/600/600",
+      "date": "2025-05-31",
+      "status": "offen",
+      "caption": "Atemberaubende Szenen beim Grand Prix von Italien in Mugello. Wer holt sich die Pole?"
+    },
+    {
+      "id": "post-102",
+      "title": "Bike of the Weekend - Ducati Desmosedici GP25",
+      "imageUrl": "https://picsum.photos/id/1071/600/600",
+      "date": "2025-06-01",
+      "status": "offen",
+      "caption": "Das Bike des Wochenendes im Fokus: Maximale Performance auf der Zielgeraden."
+    },
+    {
+      "id": "post-103",
+      "title": "Community Spotlight - Top Fan Renders",
+      "imageUrl": "https://picsum.photos/id/1072/600/600",
+      "date": "2025-06-02",
+      "status": "offen",
+      "caption": "Eure besten Renders und Motive der Woche in unserer Community-Galerie."
+    }
+  ]
+}
