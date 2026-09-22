@@ -1,15 +1,6 @@
 {
   "pending": [
     {
-      "batch_id": "batch_1",
-      "auswahl": 1,
-      "titel": "MotoGP Post",
-      "text": "Toprak auf Pole Position in Spielberg!",
-      "bild_pfad": "img.jpg",
-      "prompt_fuer_agnes": "Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: Toprak auf Pole Position in Spielberg!",
-      "erstellt": "2026-09-21T09:20:16Z"
-    },
-    {
       "batch_id": "racing-2026-09-22-daily",
       "auswahl": 1,
       "titel": "Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth",
@@ -35,6 +26,15 @@
       "bild_pfad": "assets/images/2026-09/2026-09-22-racing-editorial-2026-09-22-4-preview-19h-ago-hist-01.jpg",
       "prompt_fuer_agnes": "Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: Nicolo Bulega steht kurz davor, auf heimischem Boden Weltmeister zu werden.\n\nBeim 2026 Italian Round in Cremona hat der #11 die Chance, den WorldSBK-Titel nach Italien zu holen. Hi",
       "erstellt": "2026-09-22T06:10:06Z"
+    },
+    {
+      "batch_id": "batch_1",
+      "auswahl": 1,
+      "titel": "MotoGP Post",
+      "text": "Toprak auf Pole Position in Spielberg!",
+      "bild_pfad": "img.jpg",
+      "prompt_fuer_agnes": "Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: Toprak auf Pole Position in Spielberg!",
+      "erstellt": "2026-09-22T19:36:31Z"
     }
   ]
 }

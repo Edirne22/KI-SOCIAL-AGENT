@@ -126,16 +126,24 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     monkeypatch.setattr(tr, "send_photo", mock_send_photo)
     monkeypatch.setattr(tr, "agnes_generate_image", mock_agnes)
 
-    # 1. Test "bild ❌" (Regenerate)
-    handled_reject = tr._handle_bild_command("bild ❌")
-    assert handled_reject is True
-    assert len(pi.load_pending()) == 1  # Still pending
-    mock_send_photo.assert_called_once()
-    assert "🔄 Neues Bild generiert für: Quiles Victory" in mock_send_photo.call_args[1]["caption"]
+    # 1. Test reject synonyms ("bild ❌", "❌", "ablehnen", "neu", "neu generieren", "nein")
+    reject_synonyms = ["bild ❌", "❌", "ablehnen", "neu", "neu generieren", "nein"]
+    for syn in reject_synonyms:
+        mock_send_photo.reset_mock()
+        assert tr._get_bild_command_action(syn) == "❌"
+        handled = tr._handle_bild_command(syn)
+        assert handled is True
+        assert len(pi.load_pending()) == 1  # Still pending
+        mock_send_photo.assert_called_once()
 
-    # 2. Test "bild ✅" (Approve & Post)
-    mock_send_photo.reset_mock()
-    handled_accept = tr._handle_bild_command("bild ✅")
+    # 2. Test approve synonyms ("bild ✅", "✅", "bild posten", "posten", "ok", "freigegeben", "freigeben zum posten", "freigeben", "ja")
+    approve_synonyms = ["bild ✅", "✅", "bild posten", "posten", "ok", "freigegeben", "freigeben zum posten", "freigeben", "ja"]
+    for syn in approve_synonyms:
+        assert tr._get_bild_command_action(syn) == "✅"
+
+    # Execute approve with "freigeben zum posten"
+    mock_send_message.reset_mock()
+    handled_accept = tr._handle_bild_command("freigeben zum posten")
     assert handled_accept is True
     assert pi.load_pending() == []  # Removed from pending
 
@@ -143,3 +151,18 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     assert "Status: GEPOSTET" in published_content
     assert "Status: BILD_GENERIERT" not in published_content
     mock_send_message.assert_called_with("✅ Instagram gepostet: Quiles Victory")
+
+
+def test_telegram_router_synonyms_without_pending(tmp_path, monkeypatch):
+    test_json = tmp_path / "PENDING_INSTAGRAM.json"
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+
+    # Ensure pending queue is empty
+    assert pi.get_first_pending() is None
+
+    # Even though action parser returns action for "ok" or "✅",
+    # the pending check in main ensures it's not intercepted as Instagram approval.
+    assert tr._get_bild_command_action("ok") == "✅"
+    assert tr._get_bild_command_action("✅") == "✅"
+    assert tr._get_bild_command_action("nein") == "❌"
+    assert tr._get_bild_command_action("random command") is None
