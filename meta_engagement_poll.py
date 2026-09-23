@@ -7,6 +7,7 @@ Keine Antworten, Likes, Follows oder Publisher-Aufrufe.
 from __future__ import annotations
 
 import os
+from pathlib import Path
 import requests
 
 import instagram_engagement
@@ -15,6 +16,7 @@ from telegram_bot import send_message
 
 IG_API = "https://graph.instagram.com/v23.0"
 FB_API = "https://graph.facebook.com/v26.0"
+INIT_FILE = Path("memory/META_ENGAGEMENT_POLL_INITIALIZED")
 
 
 def _get(url: str, token: str, **params):
@@ -25,7 +27,7 @@ def _get(url: str, token: str, **params):
     return r.json()
 
 
-def poll_instagram() -> tuple[int, list[str]]:
+def poll_instagram(notify: bool = True) -> tuple[int, list[str]]:
     user_id = os.environ.get("INSTAGRAM_USER_ID", "").strip()
     token = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "").strip()
     if not user_id or not token:
@@ -60,6 +62,8 @@ def poll_instagram() -> tuple[int, list[str]]:
             if event.get("status") == "DUPLICATE":
                 continue
             created += 1
+            if not notify:
+                continue
             send_message(
                 f"📩 Instagram {event['ticket_id']} | {event['category']}\n"
                 f"@{event.get('username') or 'unbekannt'}: {event.get('text','')[:500]}\n\n"
@@ -68,7 +72,7 @@ def poll_instagram() -> tuple[int, list[str]]:
     return created, notes
 
 
-def poll_facebook() -> tuple[int, list[str]]:
+def poll_facebook(notify: bool = True) -> tuple[int, list[str]]:
     page_id = os.environ.get("FACEBOOK_PAGE_ID", "").strip()
     token = os.environ.get("FACEBOOK_PAGE_TOKEN", "").strip()
     if not page_id or not token:
@@ -104,6 +108,8 @@ def poll_facebook() -> tuple[int, list[str]]:
             if event.get("status") == "DUPLICATE":
                 continue
             created += 1
+            if not notify:
+                continue
             send_message(
                 f"📩 Facebook {event['ticket_id']} | {event['category']}\n"
                 f"{event.get('actor_name') or 'unbekannt'}: {event.get('text','')[:500]}\n\n"
@@ -115,9 +121,13 @@ def poll_facebook() -> tuple[int, list[str]]:
 def main() -> int:
     failures = []
     total = 0
+    first_run = not INIT_FILE.exists()
+    if first_run:
+        print("FIRST RUN: vorhandene Kommentare werden nur als gesehen initialisiert; keine Telegram-Tickets.")
+
     for name, fn in (("Instagram", poll_instagram), ("Facebook", poll_facebook)):
         try:
-            count, notes = fn()
+            count, notes = fn(notify=not first_run)
             total += count
             print(f"{name}: {count} neue Interaktionen.")
             for note in notes:
@@ -126,7 +136,12 @@ def main() -> int:
             failures.append(f"{name}: {exc}")
             print("FEHLER:", failures[-1])
 
-    print(f"Engagement-Polling abgeschlossen: {total} neue Interaktionen.")
+    if first_run and not failures:
+        INIT_FILE.parent.mkdir(parents=True, exist_ok=True)
+        INIT_FILE.write_text("initialized\n", encoding="utf-8")
+        print(f"FIRST RUN abgeschlossen: {total} vorhandene Interaktionen initialisiert, 0 Telegram-Tickets.")
+    else:
+        print(f"Engagement-Polling abgeschlossen: {total} neue Interaktionen.")
     if failures:
         send_message("⚠️ Engagement-Polling teilweise fehlgeschlagen:\n" + "\n".join(failures))
         return 1
