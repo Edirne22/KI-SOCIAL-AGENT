@@ -150,8 +150,21 @@
 - **Context Engineering** (Murat Can Koylan) – Token-Verbrauch senken
 - **Anthropic Skills** (offiziell) – Word/Excel/PDF
 - **Superpowers** (Jesse Vincent) – strukturierte Workflows
+  - Zweck: Claude denkt wie Senior-Software-Engineer
+  - Wann: Nach VPS (braucht stabile Umgebung)
+  - Priorität: Mittel
+
+- **GEO/SEO Claude**
+  - Zweck: Optimiert Content für KI-Suchmaschinen
+  - Wann: Wenn Content-Strategie steht
+  - Priorität: Niedrig
 
 ### 🟢 Nach VPS
+
+- **AI Video Toolkit**
+  - Zweck: Vollständiger KI-Video-Produktions-Workflow
+  - Wann: Für Reel-Bau nach VPS
+  - Priorität: Hoch
 
 - **Remotion Skills** – Video aus Prompt
 - **Trail of Bits Skills** – Security-Audit
