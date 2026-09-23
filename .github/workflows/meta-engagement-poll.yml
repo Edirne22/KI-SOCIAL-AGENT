@@ -47,9 +47,16 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add memory/INSTAGRAM_ENGAGEMENT_QUEUE.jsonl memory/INSTAGRAM_ENGAGEMENT_SEEN.txt memory/INSTAGRAM_COMMUNITY.md \
-                  memory/FACEBOOK_ENGAGEMENT_QUEUE.jsonl memory/FACEBOOK_ENGAGEMENT_SEEN.txt memory/FACEBOOK_COMMUNITY.md \\
-                  memory/META_ENGAGEMENT_POLL_INITIALIZED 2>/dev/null || true
+          # Nur tatsächlich vorhandene State-Dateien aufnehmen. Beim First Run
+          # existieren Queue/Seen-Dateien ggf. noch nicht.
+          git add -A -- \
+            memory/INSTAGRAM_ENGAGEMENT_QUEUE.jsonl \
+            memory/INSTAGRAM_ENGAGEMENT_SEEN.txt \
+            memory/INSTAGRAM_COMMUNITY.md \
+            memory/FACEBOOK_ENGAGEMENT_QUEUE.jsonl \
+            memory/FACEBOOK_ENGAGEMENT_SEEN.txt \
+            memory/FACEBOOK_COMMUNITY.md \
+            memory/META_ENGAGEMENT_POLL_INITIALIZED 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Keine neuen Engagement-Daten."
           else
