@@ -20,6 +20,7 @@ import requests
 from telegram_bot import get_chat_id, get_updates, send_message, send_photo
 from vision_router import VisionRouter
 import pending_instagram as pi
+import instagram_engagement as instagram_engagement
 from generate_agnes_media import agnes_generate_image, save_bytes
 from instagram_publish import process_image_for_instagram, create_container, publish as ig_publish_container, wait as ig_wait
 from asset_paths import asset_url, RAW_BASE
@@ -379,6 +380,12 @@ def main() -> None:
                 "follow-analyse – Follower-Analyse\n"
                 "race – Race-Kalender\n"
                 "inspiration – Inspiration-Posts\n\n"
+                "ENGAGEMENT:\n"
+                "antwort IG-XXXXXXXX – Antwort freigeben\n"
+                "ändern IG-XXXXXXXX Text – Antwort ändern\n"
+                "ignorieren IG-XXXXXXXX – nichts senden\n"
+                "info IG-XXXXXXXX – Details\n"
+                "memory IG-XXXXXXXX – Interaktionshistorie\n\n"
                 "SYSTEM:\n"
                 "/help – Diese Hilfe"
             )
@@ -391,6 +398,12 @@ def main() -> None:
                 _handle_bild_command(action)
                 _ack(uid)
                 return
+
+        if re.match(r"^(?:antwort|ändern|ignorieren|info|memory)\\s+ig-[a-f0-9]{8}(?:\\s+.*)?$", cmd, re.I):
+            print(f"ROUTER: Update {uid} -> Instagram Engagement")
+            send_message(instagram_engagement.telegram_command(text))
+            _ack(uid)
+            return
 
         if cmd in {"vision", "ocr", "omni"}:
             send_message("Bitte sende ein Bild mit dem Befehl /vision, /ocr oder /omni.")
