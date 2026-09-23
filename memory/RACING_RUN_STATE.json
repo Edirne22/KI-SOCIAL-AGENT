@@ -221,9 +221,17 @@
     "batch-test": {
       "status": "CLOSED",
       "updated_at": "2026-09-22T19:36:31.340147+00:00"
+    },
+    "racing-2026-09-23-daily": {
+      "status": "READY_FOR_APPROVAL",
+      "started_at": "2026-09-23T04:26:31.062931+00:00",
+      "updated_at": "2026-09-23T04:37:34.654881+00:00",
+      "event": "schedule",
+      "github_run_id": "35818324688",
+      "arch_version": "V8.5.5"
     }
   },
-  "last_notification_at": 1790051397.7537706,
-  "last_notification_fingerprint": "a11fee7f4221a554a07986b2cc711e87602fa019b4e2af87d0bbed5436ce317f",
-  "active_batch_id": ""
+  "last_notification_at": 1790138254.2005484,
+  "last_notification_fingerprint": "f4c9650007a5eb9c6d19ec98ee1d8235951abe515ac73d7e11d82caac69fb584",
+  "active_batch_id": "racing-2026-09-23-daily"
 }

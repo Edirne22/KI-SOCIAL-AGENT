@@ -840,3 +840,51 @@ Story-Key: motogp:1090374
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-23 04:34 UTC | Motorcycle Racing | PASS
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Story-Key: motogp:1090417
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-23 04:34 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-23 04:34 UTC | Motorcycle Racing | PASS
+Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
+Story-Key: motogp:1090419
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-23 04:35 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
+Story-Key: motogp:1091578
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-23 04:35 UTC | Motorcycle Racing | FAIL
+Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
+Story-Key: motogp:1091425
+Gründe: Final-Guard: Serien-Metadatum WorldSBK widerspricht Quelle WorldSSP; Final-Guard: Pflicht-Serienhashtag #worldssp fehlt; Final-Guard: falscher Serienhashtag #worldsbk
+Human-Writing-Protocol: V1.0
+
+## 2026-09-23 04:36 UTC | Motorcycle Racing | FAIL
+Titel: PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK
+Story-Key: motogp:1091502
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-23 04:37 UTC | Motorcycle Racing | FAIL
+Titel: PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK
+Story-Key: motogp:1091502
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-23 04:37 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
+Story-Key: motogp:1091358
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

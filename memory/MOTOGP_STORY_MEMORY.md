@@ -349,3 +349,18 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/21/history-awaits-will-bulega-b
 Story-Key: motogp:1090374
 Titel: Feature 4d ago MATCH POINTS IN ITALY: All the titles on the line in Cremona Silverware is in the air in Round 10 as the 2026 season charges towards its thrilling conclusion WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/17/match-points-in-italy-all-the-titles-on-the-line-in-cremona/1090374
+
+## 2026-09-23 04:27 UTC – ANGEBOTEN
+Story-Key: motogp:1091638
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+
+## 2026-09-23 04:27 UTC – ANGEBOTEN
+Story-Key: motogp:1091578
+Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578
+
+## 2026-09-23 04:27 UTC – ANGEBOTEN
+Story-Key: motogp:1091358
+Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
