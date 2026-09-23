@@ -634,9 +634,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-pu
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-23-racing-editorial-2026-09-23-4-preview-22h-ago-prev-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35827416683-1
+## Facebook [GEPOSTET 2026-09-23 06:35 | ID: 1285968257941776_122113410003469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-23-daily
 Telegram-Update-ID: 279361729
