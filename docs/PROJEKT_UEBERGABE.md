@@ -720,6 +720,18 @@ Bevor komplexe Toolchains (MCP, KI-Agenten, Multi-Service-Setups) aktiviert werd
 - **Lehre vom 22.09.:** Stunden mit MCP verbracht → FFmpeg-Skript baute den Reel in 3 Minuten.
 - **Merksatz:** „Wenn's ein Einzeiler kann, nimm den Einzeiler."
 
+### 12. Free-Tools-Liste aktiv nutzen (NEU 23.09.2026)
+Bei jedem neuen Content-Stück (Reel, Karussell, Story) und bei
+jedem Agenten-Ausbau: prüfen, ob ein Tool aus
+`docs/FREE_TOOLS.md` genutzt werden kann.
+
+- **Vor Rückgriff auf kostenpflichtige Tools:** erst Free-Tools-Liste checken
+- **Bei jedem neuen Tool:** in die Liste eintragen (Kategorie + Free-Tier-Status)
+- **„Aktuell genutzt"-Sektion** oben in `FREE_TOOLS.md` pflegen
+- **Seriositäts-Check:** vor Nutzung 30 Sek Google-Suche (Scam-Verdacht ausschließen)
+- **Quarterly:** Liste durchgehen, was funktioniert / was nicht
+
+**Ziel:** 0-€-Philosophie halten, nicht in teure Abos rutschen.
 ---
 
 **Ende Übergabe – Stand 22.09.2026 Abend**
