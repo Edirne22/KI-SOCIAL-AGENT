@@ -60,7 +60,7 @@ Kommentiert euren [konkretes Ding] mit [Emoji]
 
 **Beispiel:** „4 MotoGP-Stars – einer bedankt sich 🇹🇷"
 **Quelle:** Bülent (MotoGP Assen 2026)
-**Status:** Noch nicht gepostet – Potenzial: hoch
+**Status:** ✅ gepostet (22.09.2026)
 
 **Warum es funktioniert:**
 - Social Proof (der Promi kennt mich)
@@ -75,7 +75,7 @@ Selfie mit [Name] – und dann macht er/sie DAS
 ```
 
 **Anwendung für Bülent:**
-- MotoGP-Reel (in Arbeit)
+- ✅ MotoGP-Reel (fertig + gepostet)
 - Später: Bikerclubs-Treffen, Rennfahrer-Begegnungen
 
 ---
@@ -375,6 +375,87 @@ Letzter Slide: CTA ("Speichern für den nächsten Kauf")
 
 ---
 
+## 🎯 Pattern 16: Tool-Steckbrief als Karussell
+
+**Beispiele:**
+- „Pictory – One Video Multiple Platforms" – @aiwithshivang
+- „Tana – A Second Brain Powered by AI" – @aiwithshivang
+
+**Quelle:** @aiwithshivang (19.–22.09.2026)
+**Stats:** 47 Likes, 65 Kommentare, 26 Saves (pro Slide)
+
+**Warum es funktioniert:**
+- **Tool wird in 3 Sekunden verständlich**
+- **Hero-Titel + Claim** sofort klar
+- **Icon-Spalte mit Features** – kein Text-Block
+- **Echter Screenshot** in der Mitte = Beweis statt Behauptung
+- **Trust-Zeile unten** gibt Glaubwürdigkeit
+
+**Struktur pro Slide:**
+1. **Hero-Titel** – Tool-Name groß + Claim (2 Zeilen)
+2. **URL-Badge** – Kurze URL in Pill-Form mit Schloss-Icon
+3. **Icon-Spalte links** – 5 Features mit Icon + 2-Wort-Label
+4. **Screenshot Mitte** – Tool in Aktion (echter Screenshot, nicht Render)
+5. **Trust-Zeile unten** – 4 Vorteile mit Icon + Claim
+6. **Footer** – Handle + evtl. CTA
+
+**Design-Regeln:**
+- Heller Hintergrund (weiß/creme)
+- 2 Hauptfarben (z.B. Schwarz + Lila)
+- Fette Sans-Serif Schrift
+- Handgezeichnete Pfeile als Akzente
+- Farbige Post-it-Notizen für Zusatz-Hinweise
+
+**Anwendung für Bülent:**
+- „KI-Social-Agent – Autonome Content-Fabrik für 0 €"
+- „Calimoto – Die Kurven-App für echte Biker"
+- „FFmpeg – Videos schneiden ohne Abo"
+- „MotoGP-App – Rennen live am Handy"
+
+---
+
+## 🎯 Pattern 17: „Paid vs Free" – Tool-Vergleich (NEU)
+
+**Beispiele:**
+- Video: Veo3 ($249) vs Sora 2 ($0)
+- Bild: Seedream 4 ($39) vs NanoBanana ($0)
+- Cinematic: RunwayML ($76) vs Wan 2.6 ($0)
+- Avatar: HeyGen ($39) vs SadTalker ($0)
+- Audio: ElevenLabs ($99) vs MiniMax ($0)
+- Copywriting: Rytr ($9) vs WriteSonic ($0)
+- Coding: Cursor Pro ($20) vs Cline ($0)
+- Video: Higgsfield ($49) vs Hailuo ($0)
+- Video: Higgsfield ($19) vs Artflow ($0)
+- Präsentationen: Plus AI ($20) vs Gamma AI ($0)
+
+**Quelle:** @aitoolswithpratham, @its_aaditya, @haroonaicreator (22.–23.09.2026)
+**Stats:** 119–159 Likes, 174–240 Saves (pro Slide)
+
+**Warum es funktioniert:**
+- **0-€-Philosophie direkt adressiert**
+- **Klarer Vergleich in 3 Sekunden verständlich**
+- **"Swipe to explore" → hohe Verweildauer**
+- **Nutzen für Zuschauer: spart Geld**
+
+**Unterschied zu Pattern 12:**
+- **Pattern 12:** Zwei Spalten auf EINEM Slide (Paid vs Free)
+- **Pattern 17:** EIN Tool-Paar pro Slide, mehr Erklärungen
+- **Pattern 17 = Detail-Version von Pattern 12**
+
+**Struktur pro Slide:**
+- Kategorie-Label oben (z.B. "Video Generation")
+- Karte 1 (Paid): Tool-Name + Preis + 3 Bulletpoints
+- Karte 2 (Free): Tool-Name + Preis + 3 Bulletpoints
+- Unten: "Swipe to explore"
+
+**Anwendung für Bülent:**
+- „Biker-Reels kostenlos schneiden: Runway vs Wan 2.6"
+- „Biker-Voiceover ohne Abo: ElevenLabs vs MiniMax"
+- „Bilder für MotoGP-Content: Seedream vs NanoBanana"
+- „10 Tool-Duelle für Biker-Content-Ersteller"
+
+---
+
 ## 🛠️ KOSTENLOSE TOOL-ALTERNATIVEN (aus Pattern 12)
 
 ### Video-Generierung
@@ -468,12 +549,14 @@ Letzter Slide: CTA ("Speichern für den nächsten Kauf")
 | 9. Fotografie-Stil-Prompts | @mauryavanshi_edits | ✅ aktiv |
 | 10. Skill-Karten-Raster | @bitbyybit | ✅ aktiv |
 | 11. Tool-Stack-Karussell | @rakeshmahantiai | ✅ aktiv |
-| 12. Paid vs Free | @aitoolswithpritham | ✅ aktiv |
+| 12. Paid vs Free (Kompakt) | @aitoolswithpritham | ✅ aktiv |
 | 13. Step-by-Step Tutorial | @aiagently | ✅ aktiv |
 | 14. X Free Tools-Liste | @infinity_digitals_official | ✅ aktiv |
 | 15. Pre-Purchase-Check | Türkisch (Karussell) | ✅ aktiv |
+| 16. Tool-Steckbrief | @aiwithshivang | ✅ aktiv |
+| 17. Paid vs Free (Detail) | @aitoolswithpratham u.a. | ✅ aktiv |
 
-**Ziel:** 15–20 Patterns bis Ende Oktober 2026 – **aktuell 15/20.**
+**Ziel:** 15–20 Patterns bis Ende Oktober 2026 – **aktuell 17/20.**
 
 **Referenz-Accounts zum Beobachten:**
 - @startup_rules (verifiziert) – AI-Bild-Commands
@@ -484,6 +567,9 @@ Letzter Slide: CTA ("Speichern für den nächsten Kauf")
 - @aitoolswithpritham (verifiziert) – Paid vs Free
 - @aiagently (verifiziert) – Step-by-Step Tutorials
 - @alpedya (türkisch) – KI-Rollen & Kauf-Beratung
+- @aiwithshivang (verifiziert) – Tool-Steckbriefe
+- @its_aaditya – Paid vs Free (Coding)
+- @haroonaicreator – Paid vs Free (Video)
 
 ---
 
@@ -500,3 +586,10 @@ Letzter Slide: CTA ("Speichern für den nächsten Kauf")
 | **Wispr Flow** | Sprechen-zu-Text | 🟡 prüfen |
 | **YouMind** | Prompt-Bibliothek (30k+) | ✅ recherchiert |
 | **PromptCreek** | Agent-Skills (350+) | ✅ recherchiert |
+| **Hailuo** | Video-Generierung | 🟡 prüfen |
+| **Cline** | Coding Assistant (VS Code) | 🟡 prüfen |
+| **Artflow** | Video mit Charakteren | 🟡 prüfen |
+
+---
+
+**Ende Pattern Library – Stand 23.09.2026**
