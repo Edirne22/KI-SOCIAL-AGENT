@@ -575,3 +575,120 @@ Denkst du, Bulega schafft den Titelgewinn in Cremona?
 https://www.worldsbk.com/en/news/2026/09/21/history-awaits-will-bulega-be-crowned-worldsbk-champion-on-home-soil-at-cremona/1091419
 Quelle: https://www.worldsbk.com/en/news/2026/09/21/history-awaits-will-bulega-be-crowned-worldsbk-champion-on-home-soil-at-cremona/1091419
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-23-daily
+Telegram-Update-ID: 279361729
+MotoGP-Auswahl: 2
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Text:
+Offizielles Signal: Valencia 2027 steht als MotoGP-Saisonfinale fest.
+
+Die MotoGP-WM bestätigt den Grand Prix von Valencia als letzten Renntag der Saison 2027. Der vollständige Kalender wird am Freitag veröffentlicht. Damit ist klar, wo und wann der Titelkampf seinen Höhepunkt erreicht.
+
+Wer wird nach eurer Einschätzung 2027 in Valencia Weltmeister?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-23-racing-editorial-2026-09-23-2-motogp-news-motogp-c-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-23-daily
+Telegram-Update-ID: 279361729
+MotoGP-Auswahl: 2
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Text:
+Offizielles Signal: Valencia 2027 steht als MotoGP-Saisonfinale fest.
+
+Die MotoGP-WM bestätigt den Grand Prix von Valencia als letzten Renntag der Saison 2027. Der vollständige Kalender wird am Freitag veröffentlicht. Damit ist klar, wo und wann der Titelkampf seinen Höhepunkt erreicht.
+
+Wer wird nach eurer Einschätzung 2027 in Valencia Weltmeister?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-23-daily
+Telegram-Update-ID: 279361729
+MotoGP-Auswahl: 4
+Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
+Text:
+Zwei Rennen noch – und in Cremona könnte der erste WorldSPB-Champion gekürt werden.
+
+Salvador versucht, die Titelentscheidung im WorldSBK vorzeitig zu sichern. In derselben Saison findet in Cremona zugleich das Finale der ersten WorldSPB-Kampagne statt, wo Artigas um den Titel mitfährt.
+
+Wer von beiden erwartet ihr mehr – Salvador mit Druck auf die Spitze oder Artigas mit Aufholjagd?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-23-racing-editorial-2026-09-23-4-preview-22h-ago-prev-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-23-daily
+Telegram-Update-ID: 279361729
+MotoGP-Auswahl: 4
+Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
+Text:
+Zwei Rennen noch – und in Cremona könnte der erste WorldSPB-Champion gekürt werden.
+
+Salvador versucht, die Titelentscheidung im WorldSBK vorzeitig zu sichern. In derselben Saison findet in Cremona zugleich das Finale der ersten WorldSPB-Kampagne statt, wo Artigas um den Titel mitfährt.
+
+Wer von beiden erwartet ihr mehr – Salvador mit Druck auf die Spitze oder Artigas mit Aufholjagd?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-23-daily
+Telegram-Update-ID: 279361729
+MotoGP-Auswahl: 5
+Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
+Text:
+Arenas muss sich in Cremona behaupten – und das geht um alles.
+
+Im WorldSSP gibt es drei Runden zu fahren, und alle drei Meisterschaften stehen auf dem Spiel. Cremona wird zum Wendepunkt für viele Teams, Fahrer und Hersteller. Für Arenas heißt das: die Konkurrenz halten und den eigenen Titelkampf nicht aus der Hand geben.
+
+Wer gewinnt eurer Meinung nach die Meisterschaft bei den verbleibenden Rennen?
+
+#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-23-racing-editorial-2026-09-23-5-preview-all-three-wo-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-23-daily
+Telegram-Update-ID: 279361729
+MotoGP-Auswahl: 5
+Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
+Text:
+Arenas muss sich in Cremona behaupten – und das geht um alles.
+
+Im WorldSSP gibt es drei Runden zu fahren, und alle drei Meisterschaften stehen auf dem Spiel. Cremona wird zum Wendepunkt für viele Teams, Fahrer und Hersteller. Für Arenas heißt das: die Konkurrenz halten und den eigenen Titelkampf nicht aus der Hand geben.
+
+Wer gewinnt eurer Meinung nach die Meisterschaft bei den verbleibenden Rennen?
+
+#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
+Link-Preview: offiziell
