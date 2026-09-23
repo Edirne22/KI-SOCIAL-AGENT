@@ -124,3 +124,12 @@
 - Zu jedem Track gehören Pfad, Lizenz und Quellenangabe in `config/MUSIC_LIBRARY.json`.
 - `Musik: auto` blockiert nur den betroffenen Reel- oder Story-Post, bis die Mischung fertig ist.
 - Der Musik-Agent veröffentlicht selbst keine Inhalte.
+
+## Instagram Engagement Agent
+- Verarbeitet nur Interaktionen, die über offizielle Instagram/Meta-Schnittstellen zulässig empfangen wurden.
+- V1 erstellt ausschließlich Freigabe-Entwürfe; keine automatischen Kommentare, DMs, Likes oder Follow-Aktionen.
+- Stille Profil- oder Post-Besucher werden weder identifiziert noch geschätzt.
+- Community-Memory enthält nur belegbare öffentliche Interaktionsmetadaten; keine sensiblen Eigenschaften oder privaten Nachrichteninhalte.
+- Events werden dedupliziert; Tokens, Secrets und vollständige Webhook-Payloads werden nicht im Memory gespeichert.
+- Eine spätere Sendefunktion benötigt weiterhin Bülents Freigabe und einen separaten, kontrollierten Reply-Adapter.
+
