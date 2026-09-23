@@ -375,6 +375,44 @@ Letzter Slide: CTA ("Speichern für den nächsten Kauf")
 
 ---
 
+## 🎯 Pattern 17: Paid vs Free – Tool-Vergleich
+
+**Quelle:** @aitoolswithpratham, @its_aaditya
+
+**Struktur pro Slide:**
+
+- Kategorie-Label oben (z.B. "Video Generation")
+- Zwei Karten (Paid / Free), je mit:
+  - Tool-Name
+  - Preis ($XX/month oder $0/month)
+  - 3 Bulletpoints was es kann
+- Unten: "Swipe to explore"
+
+**Beispiele:**
+
+- Video: Veo3 ($249) vs Sora 2 ($0)
+- Bild: Seedream 4 ($39) vs NanoBanana ($0)
+- Cinematic: RunwayML ($76) vs Wan 2.6 ($0)
+- Avatar: HeyGen ($39) vs SadTalker ($0)
+- Audio: ElevenLabs ($99) vs MiniMax ($0)
+- Copywriting: Rytr ($9) vs WriteSonic ($0)
+- Coding: Cursor Pro ($20) vs Cline ($0)
+- Video: Higgsfield ($49) vs Hailuo ($0)
+
+**Warum es funktioniert:**
+
+- 0-€-Philosophie direkt adressiert
+- Klarer Vergleich in 3 Sekunden verständlich
+- "Swipe to explore" → hohe Verweildauer
+
+**Anwendung für Bülent:**
+
+- Eigene Tool-Vergleiche für Biker-Tools
+- KI-Social-Agent: Pipeline vs. Konkurrenz
+- Free-Tools-Karussell aus docs/FREE_TOOLS.md
+
+---
+
 ## 🛠️ KOSTENLOSE TOOL-ALTERNATIVEN (aus Pattern 12)
 
 ### Video-Generierung
@@ -472,8 +510,9 @@ Letzter Slide: CTA ("Speichern für den nächsten Kauf")
 | 13. Step-by-Step Tutorial | @aiagently | ✅ aktiv |
 | 14. X Free Tools-Liste | @infinity_digitals_official | ✅ aktiv |
 | 15. Pre-Purchase-Check | Türkisch (Karussell) | ✅ aktiv |
+| 17. Paid vs Free – Tool-Vergleich | @aitoolswithpratham, @its_aaditya | ✅ aktiv |
 
-**Ziel:** 15–20 Patterns bis Ende Oktober 2026 – **aktuell 15/20.**
+**Ziel:** 15–20 Patterns bis Ende Oktober 2026 – **aktuell 16/20.**
 
 **Referenz-Accounts zum Beobachten:**
 - @startup_rules (verifiziert) – AI-Bild-Commands
