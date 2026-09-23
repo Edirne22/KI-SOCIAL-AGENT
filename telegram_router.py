@@ -21,6 +21,7 @@ from telegram_bot import get_chat_id, get_updates, send_message, send_photo
 from vision_router import VisionRouter
 import pending_instagram as pi
 import instagram_engagement as instagram_engagement
+import facebook_engagement as facebook_engagement
 from generate_agnes_media import agnes_generate_image, save_bytes
 from instagram_publish import process_image_for_instagram, create_container, publish as ig_publish_container, wait as ig_wait
 from asset_paths import asset_url, RAW_BASE
@@ -385,7 +386,8 @@ def main() -> None:
                 "ändern IG-XXXXXXXX Text – Antwort ändern\n"
                 "ignorieren IG-XXXXXXXX – nichts senden\n"
                 "info IG-XXXXXXXX – Details\n"
-                "memory IG-XXXXXXXX – Interaktionshistorie\n\n"
+                "memory IG-XXXXXXXX – Interaktionshistorie\n"
+                "antwort/ändern/ignorieren/info/memory FB-XXXXXXXX – Facebook\n\n"
                 "SYSTEM:\n"
                 "/help – Diese Hilfe"
             )
@@ -402,6 +404,12 @@ def main() -> None:
         if re.match(r"^(?:antwort|ändern|ignorieren|info|memory)\\s+ig-[a-f0-9]{8}(?:\\s+.*)?$", cmd, re.I):
             print(f"ROUTER: Update {uid} -> Instagram Engagement")
             send_message(instagram_engagement.telegram_command(text))
+            _ack(uid)
+            return
+
+        if re.match(r"^(?:antwort|ändern|ignorieren|info|memory)\\s+fb-[a-f0-9]{8}(?:\\s+.*)?$", cmd, re.I):
+            print(f"ROUTER: Update {uid} -> Facebook Engagement")
+            send_message(facebook_engagement.telegram_command(text))
             _ack(uid)
             return
 
