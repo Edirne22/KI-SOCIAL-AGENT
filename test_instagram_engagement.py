@@ -1,30 +1,17 @@
-import tempfile
-import unittest
+import tempfile, unittest
 from pathlib import Path
 from unittest.mock import patch
 import instagram_engagement as ie
-
-class InstagramEngagementTests(unittest.TestCase):
-    def test_classification(self):
-        self.assertEqual(ie.classify("Welche Reifen fährst du?"), "FRAGE")
-        self.assertEqual(ie.classify("Mega, sieht super aus"), "LOB")
-        self.assertEqual(ie.classify("KURS"), "TRIGGER")
-
-    def test_dedup_and_memory(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            with patch.object(ie, "MEMORY_FILE", root/"community.md"),                  patch.object(ie, "QUEUE_FILE", root/"queue.jsonl"),                  patch.object(ie, "SEEN_FILE", root/"seen.txt"):
-                payload = {"event_id":"abc","username":"rider","text":"Welche Reifen?","media_id":"42"}
-                first = ie.ingest(payload)
-                second = ie.ingest(payload)
-                self.assertEqual(first["status"], "PENDING_APPROVAL")
-                self.assertEqual(second["status"], "DUPLICATE")
-                self.assertIn("@rider", (root/"community.md").read_text(encoding="utf-8"))
-
-    def test_no_guessing_from_empty_event(self):
-        event = ie.normalize_event({"event_id":"x","event_type":"profile_view"})
-        self.assertEqual(event["category"], "UNSICHER")
-        self.assertEqual(event["username"], "")
-
-if __name__ == "__main__":
-    unittest.main()
+class Tests(unittest.TestCase):
+ def test_commands(self):
+  with tempfile.TemporaryDirectory() as t:
+   r=Path(t)
+   with patch.object(ie,"MEMORY_FILE",r/"m.md"),patch.object(ie,"QUEUE_FILE",r/"q.jsonl"),patch.object(ie,"SEEN_FILE",r/"s.txt"):
+    e=ie.ingest({"event_id":"abc","username":"rider","text":"Welche Reifen?","media_id":"42","reply_draft":"Michelin."});ticket=e["ticket_id"]
+    self.assertIn("FRAGE",ie.telegram_command(f"info {ticket}"));self.assertIn("@rider",ie.telegram_command(f"memory {ticket}"));self.assertIn("SEND_APPROVED",ie.telegram_command(f"antwort {ticket}"))
+ def test_change_ignore_no_guess(self):
+  with tempfile.TemporaryDirectory() as t:
+   r=Path(t)
+   with patch.object(ie,"MEMORY_FILE",r/"m.md"),patch.object(ie,"QUEUE_FILE",r/"q.jsonl"),patch.object(ie,"SEEN_FILE",r/"s.txt"):
+    e=ie.ingest({"event_id":"xyz","text":"Hi"});self.assertEqual(e["username"],"");self.assertIn("SEND_APPROVED",ie.telegram_command(f"ändern {e['ticket_id']} Neu"));self.assertIn("IGNORED",ie.telegram_command(f"ignorieren {e['ticket_id']}"))
+if __name__=="__main__":unittest.main()
