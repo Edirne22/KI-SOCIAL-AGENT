@@ -47,6 +47,8 @@ Diese Übersicht enthält eine gefilterte Auswahl bekannter und zuverlässiger e
 | Vimeo API | Videos suchen, Metadaten abrufen und verwalten | `OAuth2` | limitiert (Grundkontingent) | Ja | Ja | [Vimeo Developer](https://developer.vimeo.com/) |
 | Pexels Video API | Kostenlose Stock-Videos suchen und herunterladen | `apiKey` | limitiert (200 Calls/Stunde) | Ja | Ja | [Pexels API](https://www.pexels.com/api/) |
 | Pixabay API | Freie Videos und Bilder durchsuchen und abrufen | `apiKey` | limitiert (5.000 Calls/Stunde) | Ja | Ja | [Pixabay API](https://pixabay.com/api/docs/) |
+| Hailuo | Video-Generierung aus Text | – | ja (limitiert) | – | – | [Hailuo](https://hailuoai.video/) |
+| Artflow | Videos mit Charakteren | – | ja (limitiert) | – | – | [Artflow](https://artflow.ai/) |
 
 ---
 
@@ -69,3 +71,11 @@ Diese Übersicht enthält eine gefilterte Auswahl bekannter und zuverlässiger e
 | Tankerkönig API | Echtzeit-Kraftstoffpreise (Diesel, E5, E10) in Deutschland | `apiKey` | limitiert (Fair-Use) | Ja | Ja | [Tankerkönig](https://creativecommons.tankerkoenig.de/) |
 | Open Charge Map | Globale Datenbank für Elektrofahrzeug-Ladestationen | `apiKey` | limitiert (Fair-Use) | Ja | Ja | [Open Charge Map](https://openchargemap.org/site/develop/api) |
 | Bike Index API | Globale Fahrrad-Registrierungs- und Diebstahldatenbank | Nein | ja (unbegrenzt) | Ja | Ja | [Bike Index](https://bikeindex.org/documentation/api_v3) |
+
+---
+
+## Entwicklung
+
+| Name | Beschreibung | Auth | Kostenloser Tier | HTTPS | CORS | Link |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cline | Coding Assistant (VS Code, Open Source) | – | ja (unbegrenzt) | – | – | [Cline](https://cline.bot/) |
