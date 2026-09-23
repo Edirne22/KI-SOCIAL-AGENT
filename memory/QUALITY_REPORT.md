@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-09-22 18:14
+Stand: 2026-09-23 18:14
 Gesamtstatus: **WARNUNG**
-- OK: 13
-- Warnungen: 6
+- OK: 16
+- Warnungen: 5
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -10,12 +10,14 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Freigabeplan**: Datei vorhanden und nicht leer.
 - ✅ **Inspiration-Report**: Datei vorhanden und nicht leer.
 - ✅ **Bright-Data-Debug**: Datei vorhanden und nicht leer.
-- ⚠️ **Inspiration-Quellen**: Keine verlinkten Quellen im Report erkannt.
+- ✅ **Inspiration-Quellen**: 2 verlinkte Quellen im Report erkannt.
 - ⚠️ **Inspiration-Ideen**: Nur 0 konkrete Ideen erkannt.
 - ✅ **YouTube-Fallback**: 10 YouTube-Datensätze aus dem Apify-Fallback erkannt.
 - ✅ **YouTube-Duplikate**: Keine doppelten Video-URLs im Quellreport erkannt.
-- ⚠️ **YouTube-Quellenmix**: Nur 1 Datensatz von einem bekannten Primärkanal erkannt (MotoGP). Weitere Quellen vor einer Veröffentlichung manuell prüfen.
-- ✅ **Datenalter**: 10 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-09-21 00:00 UTC).
+- ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
+- ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
+- ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
+- ✅ **Datenalter**: 10 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-09-22 20:30 UTC).
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ⚠️ **Bright Data YouTube**: YouTube liefert bei Bright Data eine leere Antwort; Apify-Fallback wird geprüft.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
