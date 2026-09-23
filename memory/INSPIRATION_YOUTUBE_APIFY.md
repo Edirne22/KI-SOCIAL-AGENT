@@ -1,86 +1,86 @@
 # Inspiration · YouTube Apify
 
-Suchzeitraum ab: 2026-09-14
+Suchzeitraum ab: 2026-09-16
 Suchbegriffe: MotoGP Highlights, Toprak Razgatlioglu, WorldSBK Highlights
 Videos: 10
 
 ### Datensatz 1
-- Titel: MOTO3 .. ADUUUH..VEDA KENA LONG PENALTY,,😨//#Shorts#gp #moto3#vedaegapratama#motogp#trending
-- Kanal: sedulur manden 
-- Datum: 2026-09-21T00:00:24Z
-- URL: https://www.youtube.com/watch?v=Z7OtRyhABPA
-- Views: 18944
-- Likes: 193
-- Kommentare: 68
+- Titel: Bicycle Highlights#automobile #racing #motorcycle #motogp
+- Kanal: Bjdzzeeghh Kittvdssxvvfc
+- Datum: 2026-09-22T20:30:26Z
+- URL: https://www.youtube.com/watch?v=_4RjvdPFZbA
+- Views: 24865
+- Likes: 290
+- Kommentare: 0
 ### Datensatz 2
-- Titel: 2026 MotoGP Round 15 – Austrian Grand Prix  Race Highlights Explained by AI
-- Kanal: ばいくるまん
-- Datum: 2026-09-20T22:55:33Z
-- URL: https://www.youtube.com/watch?v=8LkFuGfqrOI
-- Views: 4
-- Likes: 1
+- Titel: Обгон Акосты признали лучшим на Гран-при Австрии #MotoGP #мотогонки #Acosta #KTM #RedBullRing #ГранП
+- Kanal: RED LINE GP
+- Datum: 2026-09-22T14:47:04Z
+- URL: https://www.youtube.com/watch?v=S7ie8XtRsPo
+- Views: 569
+- Likes: 5
 - Kommentare: 0
 ### Datensatz 3
-- Titel: 😍 Austrian GP Final Day Race Results MotoGP 2026 🏁 #shorts #f1 #motogp #race #motogp2026 #austriangp
-- Kanal: Best Of Month
-- Datum: 2026-09-20T22:17:45Z
-- URL: https://www.youtube.com/watch?v=65rPQ18XA8Y
-- Views: 1139
-- Likes: 16
+- Titel: MotoGP unstoppable #motogp#bikelover #fmx#rider#bmw #shorts
+- Kanal: D adventure 💫 Mints 
+- Datum: 2026-09-22T13:34:42Z
+- URL: https://www.youtube.com/watch?v=_t3Hk65Skfc
+- Views: 1080
+- Likes: 28
 - Kommentare: 0
 ### Datensatz 4
-- Titel: Mar Márquez RATTLED 😳 #shorts #fyp #motogp #racing #marcmarquez #ducati #motorsport #highlights
-- Kanal: Grid Gear
-- Datum: 2026-09-20T20:42:41Z
-- URL: https://www.youtube.com/watch?v=_21kOa-7yFU
-- Views: 1771
-- Likes: 25
+- Titel: Bicycle Highlights#automobile #racing #motorcycle #motogp
+- Kanal: Bjdzzeeghh Kittvdssxvvfc
+- Datum: 2026-09-22T13:00:03Z
+- URL: https://www.youtube.com/watch?v=uw7IMklaFis
+- Views: 22572
+- Likes: 226
 - Kommentare: 0
 ### Datensatz 5
-- Titel: CHE GARA ABBIAMO VISTO?! 😋#motogp #shorts #aftereffects #highlights
-- Kanal: GAS A MARTELLO 
-- Datum: 2026-09-20T18:15:00Z
-- URL: https://www.youtube.com/watch?v=wzzvwxFvW0g
-- Views: 1190
+- Titel: Veda libas rider KTM - MOTO3 HIGHLIGHT #motogp #beritamotogp #vedaegapratama #moto3 #racing
+- Kanal: SakhaDut Gaming channel 
+- Datum: 2026-09-22T12:44:52Z
+- URL: https://www.youtube.com/watch?v=NgfzwQBJIB4
+- Views: 1335
 - Likes: 4
 - Kommentare: 0
 ### Datensatz 6
-- Titel: 🔴VEDA EGA PRATAMA VS MUNOZ GEMPARKAN MOTOGP‼️BOS DORNA & FIM INVESTIGASI RACE MOTO3 | MOTOGP AUSTRIA
-- Kanal: BOBOLA TV
-- Datum: 2026-09-20T18:05:21Z
-- URL: https://www.youtube.com/watch?v=wnC0FWuN5-o
-- Views: 18331
-- Likes: 52
-- Kommentare: 17
+- Titel: Pedro Acosta is the Superstar that #MotoGP's Future NEEDS
+- Kanal: Motorsport101
+- Datum: 2026-09-22T10:34:25Z
+- URL: https://www.youtube.com/watch?v=GnsG4bpsGAU
+- Views: 151
+- Likes: 8
+- Kommentare: 1
 ### Datensatz 7
-- Titel: Best MotoGP Moments 🦈 | 2026 Austrian GP
-- Kanal: MotoGP
-- Datum: 2026-09-20T16:41:38Z
-- URL: https://www.youtube.com/watch?v=8ypX7J7taYU
-- Views: 396719
-- Likes: 5794
-- Kommentare: 274
+- Titel: highlight race MotoGP motegi 2025 Marc Marquez locked world champion and date MotoGP continue
+- Kanal: UppercutCircuitID
+- Datum: 2026-09-22T10:12:32Z
+- URL: https://www.youtube.com/watch?v=_n-NbjX93ZA
+- Views: 1388
+- Likes: 18
+- Kommentare: 0
 ### Datensatz 8
-- Titel: 💥🏍️Best Moments MotoGP Race Austria GP | 2026 Austria GP | Highlights MotoGP Spielberg | MotoGP 26
-- Kanal: Throttle and Crash Nation
-- Datum: 2026-09-20T16:02:06Z
-- URL: https://www.youtube.com/watch?v=TY2ywFbBDY4
-- Views: 49
-- Likes: 0
+- Titel: MotoGP™ 2026 Highlights:🔥Fakta Menarik Sirkuit Motegi Jepang 
+- Kanal: Viral01-TV
+- Datum: 2026-09-22T10:08:22Z
+- URL: https://www.youtube.com/watch?v=8q0foRitjhs
+- Views: 80
+- Likes: 3
 - Kommentare: 0
 ### Datensatz 9
-- Titel: Resumen del GP de Austria - MotoGP 2026
-- Kanal: Neumatico Intermedio
-- Datum: 2026-09-20T15:45:08Z
-- URL: https://www.youtube.com/watch?v=bIKH47R3CK0
-- Views: 11230
-- Likes: 73
-- Kommentare: 2
+- Titel: australian gp racing highlights #racing #automobile #motorcycle #motogp
+- Kanal: SG
+- Datum: 2026-09-22T08:03:03Z
+- URL: https://www.youtube.com/watch?v=bn3Q0SG5d0A
+- Views: 36598
+- Likes: nicht verfügbar
+- Kommentare: 10
 ### Datensatz 10
-- Titel: 🔴Live Race Moto3 Highlight AustrianGP 2026 | MotoGP Austrian Grand Prix 2026
-- Kanal: Cyvill-Sport
-- Datum: 2026-09-20T15:41:03Z
-- URL: https://www.youtube.com/watch?v=Ir9aONABVTE
-- Views: 71
-- Likes: 1
+- Titel: highlight celebration Pedro Acosta 😅 gp Austria 26 #motogp #austria #highlights
+- Kanal: UppercutCircuitID
+- Datum: 2026-09-22T06:58:27Z
+- URL: https://www.youtube.com/watch?v=i5-DSSbvAzw
+- Views: 1507
+- Likes: 8
 - Kommentare: 0

@@ -5,204 +5,196 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: @toprakrazgatlioglu7 - P20 💬
-Austrian GP - RACE 🇦🇹
+- Titel: Check out the full #ItalianWorldSBK Round schedule and get ready for every session, every race and every title-deciding moment! 🗓️🔥
 
-I‘m very frustrated because I still don‘t understand what happened today. Normally, with a new tyre, the first laps are when you have the most grip and can really push, but from the beginning I had almost no rear grip. I was already struggling in the first few laps, and every time I opened the throttle I was just spinning. It was very difficult to understand how I could manage the bike like that.
-
-Usually, if the tyre starts to drop after sever
-- Datum: 2026-09-20T16:29:08.000Z
-- URL: https://www.instagram.com/p/DdhBCfOFYmw/
-- Likes: 9455
-- Kommentare: 113
+#WorldSBK
+- Datum: 2026-09-21T08:23:53.000Z
+- URL: https://www.instagram.com/p/DdiuTQJjrWr/
+- Likes: 832
+- Kommentare: 1
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: Toprak, Grandstand’de hayranlarını selamladı 👋🥰
+- Titel: “Winning a title at home… there’s nothing better” 🇮🇹🏆 @maxbiaggiofficial did it in 2010, and now, 16 years later, @nicolo_bulega11 has the chance to repeat history at Cremona ❤️
 
-#redbull #kanatlandırııır
-- Datum: 2026-09-20T12:33:43.000Z
-- URL: https://www.instagram.com/p/Ddglw8RMcXJ/
-- Likes: 4407
-- Kommentare: 38
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-21T07:46:37.000Z
+- URL: https://www.instagram.com/p/Ddip9IjO6YG/
+- Likes: 804
+- Kommentare: 4
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: @toprakrazgatlioglu7 - P17 💬
-AustrianGP - SPRINT 🇦🇹
+- Titel: CREMONA, IT’S TIME! 🇮🇹 Race week is here and @nicolo_bulega11 has match point for the #WorldSBK title on home soil 🎯💥
 
-Today was better than qualifying and the feeling with the bike was much better. The beginning of the race was okay, although I lost some rhythm after fighting with another rider in the opening laps. After that I was able to find my pace, but it was very difficult to overtake because we lose a lot on the straights.
-
-Towards the end, the rear tyre dropped quite a lot and I lost some time, but overall the pace was not so bad. We also learned more
-- Datum: 2026-09-19T16:56:27.000Z
-- URL: https://www.instagram.com/p/DdefXmlCEeH/
-- Likes: 7850
-- Kommentare: 60
+#ItalianWorldSBK 🇮🇹
+- Datum: 2026-09-21T07:17:00.000Z
+- URL: https://www.instagram.com/p/DdimlL3OZla/
+- Likes: 4093
+- Kommentare: 17
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: Oyundan gerçek piste 👀
+- Titel: Wheel-to-wheel! 🔥 Giving it everything for that sixth place last year! 💪⚔️
 
-Toprak, MotoGP 26 oyununda tasarlanan bu kaskı neden seçtiğini anlatıyor. Kaskı hafta sonu #AustrianGP ’de Toprak’ta göreceğiz. 
-
-From the game to the real track! 👀
-
-Toprak explains why he chose this helmet, designed in MotoGP 26. He’ll be wearing it this weekend at the #AustrianGP.
-
-#RedBull #Kanatlandırııır #helmetdesigncontest
-- Datum: 2026-09-19T15:00:11.000Z
-- URL: https://www.instagram.com/p/DdeQ6_5sqSV/
-- Likes: 12408
-- Kommentare: 92
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-22T14:01:52.000Z
+- URL: https://www.instagram.com/p/Ddl5u8njWnR/
+- Likes: 1629
+- Kommentare: 5
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: @toprakrazgatlioglu7 is ready for the #AustrianGP in #MotoGP26 wearing this incredible helmet, created in-game by @roadracer_86 with the Helmet Editor, winner of our #HelmetDesignContest!
-- Datum: 2026-09-19T08:31:58.000Z
-- URL: https://www.instagram.com/p/Dddk42OirIK/
-- Likes: 7584
-- Kommentare: 92
+- Titel: Before the lights go out at Cremona... 🚥 Here are 5 stats you need to know ahead of Round 10 📊
+
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-22T11:16:15.000Z
+- URL: https://www.instagram.com/p/Ddlm0hxl47f/
+- Likes: 1179
+- Kommentare: 5
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: Mopet Race in Red Bull Ring 😀👊
-- Datum: 2026-09-17T17:12:16.000Z
-- URL: https://www.instagram.com/p/DdZXlvEiC6t/
-- Likes: 36865
-- Kommentare: 144
+- Titel: While @tarranmac95 continues to recover from his Donington Park injury, @lorisbaz returns with @mgm_racing_performance at Cremona 🏁 Wishing Tarran a speedy and full recovery 💪❤️‍🩹
+
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-22T09:02:15.000Z
+- URL: https://www.instagram.com/p/DdlXZtWu3ME/
+- Likes: 3396
+- Kommentare: 36
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: Harika bir hafta sonu değildi ama bazı şeyleri daha iyi anladığımız ve en azından bir miktar ilerleme kaydettiğimiz bir hafta sonuydu. @kenansofuoglu Abime teşekkür ediyorum bu zorlu süreçte yalnız bırakmıyor beni
-Takıma ve diğer herkese teşekkür etmek istiyorum zorlu bir hafta sonunun ardından, azda olsa mutlu bir şekilde bitirdik
-Tempo olarak güçlüydük ama sıralamada arkalardan kalkmak malesef yarışta iyi sonuçlar elde etmemize engel oluyor şuanki tek hedefimiz sıralamalarda iyi bir sonuç elde
-- Datum: 2026-09-14T09:02:54.000Z
-- URL: https://www.instagram.com/p/DdQxM0yCGod/
-- Likes: 21182
-- Kommentare: 283
+- Titel: On this episode of unconventional entrances... 🫠 Back to 2024, but definitely not the usual way for a pole sitter to enter parc ferme 😅
+
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-22T08:31:31.000Z
+- URL: https://www.instagram.com/p/DdlT5ArOMtY/
+- Likes: 4740
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: 🇮🇹 ➡️ 🇦🇹
+- Titel: ICONIC doesn’t even cover it ✨ Monza 2000. Troy Bayliss went from 5th to 1st in one breathtaking move 🤯
 
-#PrimaPramacYamaha #MotoGp
-- Datum: 2026-09-13T17:16:50.000Z
-- URL: https://www.instagram.com/p/DdPEinbo3bA/
-- Likes: 10404
-- Kommentare: 98
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-22T07:18:39.000Z
+- URL: https://www.instagram.com/p/DdlLh2-ummX/
+- Likes: 19274
+- Kommentare: 355
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: P12 today! Let’s keep pushing 💪🏼🔥
+- Titel: Three races. Three wins. ✨ Relive them through the best shots from a weekend to remember 🏆🏆🏆 Will history repeat itself this weekend? 👀🔥
 
-#PrimaPramacYamaha #MotoGP
-- Datum: 2026-09-13T12:57:27.000Z
-- URL: https://www.instagram.com/p/DdOm5nPoGi7/
-- Likes: 19214
-- Kommentare: 419
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-21T12:03:29.000Z
+- URL: https://www.instagram.com/p/DdjHbn4l6g-/
+- Likes: 822
+- Kommentare: 2
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Bumping into an old friend 👀 🤝
+- Titel: A hat-trick on home soil 🏆🏆🏆 Take a trip back to Cremona 2024, for a sensational triple victory in front of the home crowd 🇮🇹 🤩
 
-#PrimaPramacYamaha #MotoGP
-- Datum: 2026-09-12T14:13:08.000Z
-- URL: https://www.instagram.com/p/DdMLDPEofnL/
-- Likes: 42579
-- Kommentare: 368
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-21T10:10:52.000Z
+- URL: https://www.instagram.com/p/Ddi6adVub0U/
+- Likes: 2451
+- Kommentare: 20
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: What’s your mood after the GP? - 🤪
+- Titel: Any of these on your squad would bring you BIG points 🔥
+
+How did your #MotoGPFantasy team do? 🔮 https://motogp.io/4yIugmE
 
 #AustrianGP 🇦🇹
-
-What’s your mood after the GP? - 🍾🎉
-
-What’s your mood after the GP? - 😘
-
-Bonus one 😅
-- Datum: 2026-09-20T19:01:04.000Z
+- Datum: 2026-09-22T16:04:12.000Z
 - URL: nicht verfügbar
-- Likes: 1044
-- Kommentare: 19
+- Likes: 516
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: Find someone who talks about you like Trevathan about @37pedroacosta 🥹
+- Titel: 56 GPs and 15 podiums later, Pedro Acosta made his mark in #MotoGP as a Grand Prix Winner 🏆
 
-#AustrianGP🇦🇹 #MotoGP
-- Datum: 2026-09-20T18:30:26.000Z
+Relive The Shark's weekend as he turned race day into Shark Sunday 🦈
+
+#AustrianGP 🇦🇹
+- Datum: 2026-09-22T15:02:08.000Z
 - URL: nicht verfügbar
-- Likes: 3198
-- Kommentare: 48
+- Likes: 1171
+- Kommentare: 7
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Check out what the riders said after the end of their #AustrianGP 🇦🇹
+- Titel: #MotoGP confirms the #ValenciaGP 🏁 as the 2027 season finale, with the full calendar set to be revealed on Friday 🆕 🚨
 
-#MotoGP
-- Datum: 2026-09-20T18:15:04.000Z
+Further details 👉 https://motogp.io/4yad8q4
+- Datum: 2026-09-22T13:46:42.000Z
 - URL: nicht verfügbar
-- Likes: 137
-- Kommentare: 0
+- Likes: 1295
+- Kommentare: 19
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: From lights out to the chequered flag! 🏁
+- Titel: Warning: this video will increase your heart rate! 🔥
 
-The podium trio analyzed every single detail of the #AustrianGP 👀
+Jump onboard the fastest riders on earth and experience lights out at the Red Bull Ring! 👊✊
 
-#MotoGP
-- Datum: 2026-09-20T18:01:40.000Z
+#AustrianGP🇦🇹 | #SendIt
+- Datum: 2026-09-22T12:34:10.000Z
 - URL: nicht verfügbar
-- Likes: 3865
-- Kommentare: 39
+- Likes: 3187
+- Kommentare: 19
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: Just the weekend that Marco Bezzecchi needed after Misano 💪
+- Titel: This is your sign to renew your #MotoGP wardrobe! 👕👉 https://motogp.io/4yewIlk 
 
-#AustrianGP 🇦🇹
-- Datum: 2026-09-20T17:45:03.000Z
+Shop now and save up to 50%! 💸
+- Datum: 2026-09-22T11:00:38.000Z
 - URL: nicht verfügbar
-- Likes: 326
-- Kommentare: 6
+- Likes: 124
+- Kommentare: 1
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: A challenging one from start to finish, but @marcmarquez93 still brings home a top five finish 👊
+- Titel: Still not at 100% but Jorge Martín won't need surgery ahead of the flyaways 🦾
 
-#AustrianGP 🇦🇹 #MotoGP #MarcMarquez
-- Datum: 2026-09-20T17:30:26.000Z
+#MotoGP
+- Datum: 2026-09-22T10:46:04.000Z
 - URL: nicht verfügbar
-- Likes: 3702
-- Kommentare: 182
+- Likes: 226
+- Kommentare: 4
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: 56 GPs and 15 podiums later, the much-awaited first MotoGP win of Pedro Acosta finally arrived! 🏆
+- Titel: Winner of the #AustrianGP  and winner of the best overtake too! 😎
 
-#AustrianGP
-- Datum: 2026-09-20T17:16:20.000Z
+Acosta takes it all! 🦈
+
+#MotoGP
+- Datum: 2026-09-22T10:02:07.000Z
 - URL: nicht verfügbar
-- Likes: 2384
-- Kommentare: 64
+- Likes: 6220
+- Kommentare: 29
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: The cycle is completed 🔄
+- Titel: David Alonso extends his Triumph Triple Trophy lead to 10 points over Manu Gonzalez, while Izan Guevara joins a three-way tie for P3 🎯
 
-Pedro Acosta is thrilled to get a victory with KTM 🟠
-
-#AustrianGP 🇦🇹
-- Datum: 2026-09-20T17:15:03.000Z
+#AustrianGP 🇦🇹 | #PoweredByTriumph
+- Datum: 2026-09-22T08:50:17.000Z
 - URL: nicht verfügbar
-- Likes: 399
-- Kommentare: 8
+- Likes: 379
+- Kommentare: 4
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: The Shark bit the hardest today 🦈💥
+- Titel: BREAKING: Joan Mir will miss the next two Grands Prix as he continues his recovery 🚨
 
-Pedro Acosta claimed his maiden #MotoGP win as Jorge Martín strengthened his Championship lead at Spielberg 🦾
+Get well soon, Joan! 💪
 
-#AustrianGP 🇦🇹
-- Datum: 2026-09-20T17:01:28.000Z
+#MotoGP
+- Datum: 2026-09-22T08:04:00.000Z
 - URL: nicht verfügbar
-- Likes: 3014
-- Kommentare: 25
+- Likes: 1764
+- Kommentare: 82
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Facebook-Beitrag
-- Datum: 2026-09-20T16:39:28.000Z
+- Titel: This season sure has been crazy but it can get even crazier 🤯👀
+
+#MotoGP
+- Datum: 2026-09-22T07:00:18.000Z
 - URL: nicht verfügbar
-- Likes: 1109
-- Kommentare: 9
+- Likes: 765
+- Kommentare: 17
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
