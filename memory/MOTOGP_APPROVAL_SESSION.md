@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 Semantic-Fakten-QM: PASS
 QM: PASS
-Session-Timestamp: 1790272829
+Session-Timestamp: 1790275163
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,28 +15,26 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
+Artikelalter-Tage: 2.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1092228
-Titel: MotoGP to race in Portugal until 2029 The Algarve International Circuit will host the Portuguese Grand Prix for a further three years
-Quelle: https://www.motogp.com/en/news/2026/09/24/motogp-to-race-in-portugal-until-2029/1092228
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-motogp-to-race-in-po-01.jpg
+Story-Key: motogp:1091583
+Titel: Martin "not at 100%", but no surgery needed ahead of Japanese Grand Prix The championship leader won’t need to undergo arm pump surgery before a trip to Motegi after feeling much better in Austria than he did in Misano
+Quelle: https://www.motogp.com/en/news/2026/09/22/martin-not-at-100-but-no-surgery-needed-ahead-of-japanese-grand-prix/1091583
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-martin-not-at-100-bu-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Die MotoGP fährt auch künftig in Portugal.
+Jorge Martin spart sich die Arm-Pump-OP. Keine Operation vor dem Japan-GP – nach Österreich geht es direkt weiter.
 
-Der Algarve International Circuit bleibt für drei weitere Jahre Gastgeber des Großen Preises von Portugal.
+Der WM-Spitzenreiter fühlt sich in Österreich deutlich besser als noch in Misano, steht aber trotzdem nicht zu 100%. Keine OP, kein langes Warten – er packt wie geplant die Koffer für Motegi.
 
-Damit steht das Rennen auf dem Kurs bis einschließlich 2029 fest im Kalender.
+Ist für dich ‚besser als in Misano, aber nicht 100%' genug, um in Motegi voll konkurrenzfähig zu sein, oder muss der Mann erst wieder voll drin sein?
 
-Freut ihr euch darauf, dass der Algarve International Circuit bis 2029 im Kalender bleibt?
-
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -48,20 +46,20 @@ Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 1.8
-Kategorie: Moto2
-Serie: Moto2
-Story-Key: motogp:1092200
-Titel: Pitlane exit practice starts banned from 2027, Moto2 concessions updated: decisions of the Grand Prix Commission The latest GPC is short and sweet, with a few updates for 2027 and beyond
-Quelle: https://www.motogp.com/en/news/2026/09/23/pitlane-exit-practice-starts-banned-from-2027-moto2-concessions-updated-decisions-of-the-grand-prix-commission/1092200
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-2-pitlane-exit-practic-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1091526
+Titel: STEVE ENGLISH OPINION: Why WorldSBK now matters to MotoGP
+Quelle: https://www.worldsbk.com/en/news/2026/09/23/steve-english-opinion-why-worldsbk-now-matters-to-motogp/1091526
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-2-steve-english-opinio-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/23/41aadb1f-baca-4189-9e3e-437e4876e59f/Steve-preview-50677_JDR_R09_2026_Ambience-2.jpg
 Plattformen: Instagram + Facebook
 Text:
-Ab 2027 entfällt die Practice in der Boxenausfahrt – ein Beschluss der Grand Prix Commission. Gleichzeitig werden die Moto2 Concessions neu geregelt.
+Seit ihr euch schon sicher, ob ihr Nico Bulegas Wechsel nach WorldSBK für 2027 eine gute oder bedauerliche Entscheidung findet?
 
-Was haltet ihr von diesem Verbot? Mehr Sicherheit oder weniger Spannung?
+WorldSBK-Kommentator Steve English erklärt, warum die Superbike-WM für die MotoGP gerade jetzt wieder relevant ist. Der Auslöser ist die Nachricht, dass Nicolò Bulega ab 2027 zu WorldSBK wechselt. Eine Verbindung, die nicht von ungefähr kommt – und die zeigt, wie stark die Grenzen zwischen den Klassen gerade verschwimmen.
 
-#Moto2 #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -69,28 +67,24 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 0.8
-Kategorie: Moto3
-Serie: Moto3
-Story-Key: motogp:1091615
-Titel: 2027 Moto3™ grid announcements - what we know so far Check out the latest signings, deals and announcements as the 2027 Moto3 grid begins to become clear!
-Quelle: https://www.motogp.com/en/news/2026/09/24/2026-moto3-grid-announcements-what-we-know-so-far/1091615
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-3-2027-moto3-grid-anno-01.jpg
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 5.8
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1090417
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-3-electric-martin-beat-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Für die Moto3-Saison 2027 gibt es die ersten offiziellen Ankündigungen und Bestätigungen.
+Jorge Martin hat sich in Österreich die Pole-Position gesichert – mit weniger als einer Zehntelsekunde Vorsprung auf Marc Marquez und Pedro Acosta. Die ersten drei liegen hauchdünn beieinander, während Marco Bezzecchi als Vierter nur knapp hinter der Spitze wartet.
 
-Neue Unterschriften und Deals zeigen Schritt für Schritt, wie die Startaufstellung besetzt wird.
+Wer hat nach diesem Qualifying den besten Start in den Grand Prix?
 
-Das Moto3-Grid für 2027 wird mit den aktuellen Meldungen immer klarer.
-
-Bleibt dran für alle weiteren Updates zur Moto3.
-
-#Moto3 #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -98,26 +92,22 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Aktuell
+Neufassungen: 1
+QM-Ruecklaeufe: 1
+Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 2.8
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1091586
-Titel: NEWS 2d ago Baz replaces Mackenzie at MGM Ducati for Cremona The French rider returns to an old stomping ground for the Italian Round as he steps in for the still-recovering Mackenzie WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-4-news-2d-ago-baz-repl-01.jpg
+Story-Key: motogp:1091578
+Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-4-preview-22h-ago-prev-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Baz springt bei der Cremona-Runde für den noch verletzten Mackenzie bei MGM Ducati ein.
+Cremona kann am Wochenende zum Schauplatz der Krönung werden – die letzten beiden Runden entscheiden alles im ersten WorldSPB-Jahrgang. Die Spannung ist dabei riesig, denn auf der Strecke in Italien könnte zum ersten Mal ein WorldSPB-Meister gekürt werden.
 
-Der Franzose kehrt mit der Strecke nach Cremona zu einem alten Bekannten zurück.
-
-Mackenzie ist noch in der Genesung und lässt sich für das italienische Rennen vertreten.
-
-Wer ist euer Tip für die Runde in Cremona?
+Wer gewinnt für dich den Titel?
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -127,22 +117,24 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 3.8
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 2.8
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1091425
-Titel: NEWS 3d ago Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP The Turkish rider will join the Chinese manufacturer in World Supersport while Dutch rider Twan Smits joins the WorldSBK paddock WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-5-news-3d-ago-smits-re-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Story-Key: motogp:1091586
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-5-baz-replaces-mackenz-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
 Plattformen: Instagram + Facebook
 Text:
-Twan Smits wechselt zu Motoxracing Yamaha in die WorldSBK – der Niederländer übernimmt dort das Cockpit. Gleichzeitig geht ein türkischer Fahrer zu QJMOTOR in die WorldSSP. Der Wechsel innerhalb eines Teams und die parallele Neubelegung beider Klassen sorgen für Bewegung im Fahrermarkt.
+Baz fährt für MGM Ducati in Cremona – Mackenzie pausiert.
 
-Welcher Fahrer aus der Türkei folgt QJMOTOR – und was erwartet ihr von der Kombination in der WorldSSP?
+Der Franzose kehrt zu einem gewohnten Schauplatz zurück, als er seinen Teamkollegen ersetzt. Mackenzie erholt sich noch von seiner Verletzung, daher springt Baz für die italienische Runde ein. Das gibt der Mannschaft Erfahrung auf derselben Strecke, wo sie bereits erfolgreich war.
+
+Wie schätzt ihr Baz Chancen in Cremona ein?
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 

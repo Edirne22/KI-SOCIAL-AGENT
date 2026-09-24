@@ -960,3 +960,33 @@ Story-Key: motogp:1091425
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-24 18:57 UTC | Motorcycle Racing | PASS
+Titel: Martin "not at 100%", but no surgery needed ahead of Japanese Grand Prix The championship leader won’t need to undergo arm pump surgery before a trip to Motegi after feeling much better in Austria than he did in Misano
+Story-Key: motogp:1091583
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 18:57 UTC | Motorcycle Racing | PASS
+Titel: STEVE ENGLISH OPINION: Why WorldSBK now matters to MotoGP
+Story-Key: motogp:1091526
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 18:57 UTC | Motorcycle Racing | PASS
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Story-Key: motogp:1090417
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 18:58 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
+Story-Key: motogp:1091578
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 18:58 UTC | Motorcycle Racing | PASS
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Story-Key: motogp:1091586
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

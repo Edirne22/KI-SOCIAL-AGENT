@@ -429,3 +429,13 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mg
 Story-Key: motogp:1091425
 Titel: NEWS 3d ago Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP The Turkish rider will join the Chinese manufacturer in World Supersport while Dutch rider Twan Smits joins the WorldSBK paddock WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
+
+## 2026-09-24 18:39 UTC – ANGEBOTEN
+Story-Key: motogp:1091583
+Titel: Martin "not at 100%", but no surgery needed ahead of Japanese Grand Prix The championship leader won’t need to undergo arm pump surgery before a trip to Motegi after feeling much better in Austria than he did in Misano
+Quelle: https://www.motogp.com/en/news/2026/09/22/martin-not-at-100-but-no-surgery-needed-ahead-of-japanese-grand-prix/1091583
+
+## 2026-09-24 18:39 UTC – ANGEBOTEN
+Story-Key: motogp:1091526
+Titel: STEVE ENGLISH OPINION: Why WorldSBK now matters to MotoGP
+Quelle: https://www.worldsbk.com/en/news/2026/09/23/steve-english-opinion-why-worldsbk-now-matters-to-motogp/1091526
