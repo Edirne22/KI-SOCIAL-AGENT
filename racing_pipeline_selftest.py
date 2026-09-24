@@ -64,25 +64,35 @@ def test_semantic_json_retry():
  finally:semantic.generate=old
 def test_provider_backoff():
  class Resp:
-  def __init__(self,status,payload=None,retry_after=None):self.status_code=status;self.ok=status==200;self.text='rate';self.headers={'Retry-After':retry_after} if retry_after else {};self.payload=payload or {}
+  def __init__(self,status,payload=None,retry_after=None,text='rate'):self.status_code=status;self.ok=status==200;self.text=text;self.headers={'Retry-After':retry_after} if retry_after else {};self.payload=payload or {}
   def json(self):return self.payload
- old_req,old_mono=llm.requests.request,llm.time.monotonic;old_cd=dict(llm._PROVIDER_COOLDOWNS);clock=[100.0];calls=[]
+ old_req,old_mono,old_env=llm.requests.request,llm.time.monotonic,dict(llm.os.environ);old_cd=dict(llm._PROVIDER_COOLDOWNS);clock=[100.0]
  try:
-  llm._PROVIDER_COOLDOWNS.clear();llm.time.monotonic=lambda:clock[0]
-  def request(method,url,**kwargs):
-   calls.append(url)
-   if 'agnes-ai.com' in url:return Resp(429,retry_after='23')
-   return Resp(200,{'candidates':[{'content':{'parts':[{'text':'FALLBACK OK'}]}}]})
-  llm.requests.request=request
-  out=llm.generate('final_captions','rate-limit contract test')
-  ok(out=='FALLBACK OK','429 must fall back to Gemini')
-  ok(llm.provider_in_cooldown('agnes'),'Agnes cooldown missing after 429')
-  ok(sum('agnes-ai.com' in u for u in calls)==1,'429 provider must not be retried')
-  ok(any('generativelanguage.googleapis.com' in u for u in calls),'fallback provider was not called')
-  clock[0]=122.9;ok(llm.provider_in_cooldown('agnes'),'Retry-After cooldown ended too early')
-  clock[0]=123.1;ok(not llm.provider_in_cooldown('agnes'),'Retry-After cooldown not released')
+  llm.os.environ.update({'AGNES_API_KEY':'test-agnes','GEMINI_API_KEY':'test-gemini','NVIDIA_API_KEY':'test-nvidia'})
+  def run_mock(mode):
+   calls=[]
+   def request(method,url,**kwargs):
+    calls.append(url)
+    if 'agnes-ai.com' in url:
+     return Resp(401,text='auth') if mode=='auth' else Resp(429,retry_after='60')
+    if 'generativelanguage.googleapis.com' in url:
+     return Resp(429,retry_after='60') if mode=='all429' else Resp(200,{'candidates':[{'content':{'parts':[{'text':'FALLBACK OK'}]}}]})
+    if 'integrate.api.nvidia.com' in url:return Resp(429,retry_after='60')
+    raise AssertionError(f'unerwartete URL {url}')
+   llm.requests.request=request;return calls
+  llm._PROVIDER_COOLDOWNS.clear();calls=run_mock('fallback');out=llm.generate('final_captions','rate-limit contract test')
+  ok(out=='FALLBACK OK','429 must fall back to Gemini');ok(llm.provider_in_cooldown('agnes'),'Agnes cooldown missing after 429');ok(sum('agnes-ai.com' in u for u in calls)==1,'429 provider must not be retried');ok(any('generativelanguage.googleapis.com' in u for u in calls),'Gemini fallback was not called')
+  clock[0]=159.9;ok(llm.provider_in_cooldown('agnes'),'Retry-After cooldown ended too early');clock[0]=160.1;ok(not llm.provider_in_cooldown('agnes'),'Retry-After cooldown not released')
+  llm._PROVIDER_COOLDOWNS.clear();clock[0]=200.0;calls=run_mock('all429')
+  try:llm.generate('final_captions','all providers 429');raise AssertionError('all 429 must fail closed')
+  except RuntimeError as e:ok('fail-closed' in str(e),'all 429 must report fail-closed')
+  ok(all(llm.provider_in_cooldown(p) for p in ('agnes','gemini','nvidia')),'all 429 providers need cooldown')
+  llm._PROVIDER_COOLDOWNS.clear();calls=run_mock('auth')
+  try:llm.generate('final_captions','auth failure');raise AssertionError('401 must raise')
+  except RuntimeError as e:ok('HTTP 401' in str(e),'401 must surface immediately')
+  ok(len(calls)==1 and 'agnes-ai.com' in calls[0],'401 must not fall back')
  finally:
-  llm.requests.request,llm.time.monotonic=old_req,old_mono;llm._PROVIDER_COOLDOWNS.clear();llm._PROVIDER_COOLDOWNS.update(old_cd)
+  llm.requests.request,llm.time.monotonic=old_req,old_mono;llm.os.environ.clear();llm.os.environ.update(old_env);llm._PROVIDER_COOLDOWNS.clear();llm._PROVIDER_COOLDOWNS.update(old_cd)
 def test_retry_contract_separation():
  ok(2==2,'technischer Provider-Retry-Ceiling muss 2 Versuche bleiben')
  # Fachlicher QM-Repair-Retry bleibt separat bei drei qualify_copy-Durchlaeufen.
