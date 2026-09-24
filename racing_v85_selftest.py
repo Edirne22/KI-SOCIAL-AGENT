@@ -13,7 +13,7 @@ def main():
     old_state=rc.STATE;old_env={k:os.environ.get(k) for k in ('GITHUB_EVENT_NAME','GITHUB_RUN_ID','INPUT_FORCE_NEW_RUN','GITHUB_EVENT_PATH')}
     try:
         with tempfile.TemporaryDirectory() as td:
-            rc.STATE=Path(td)/'state.json';os.environ['GITHUB_EVENT_NAME']='workflow_dispatch';os.environ['GITHUB_RUN_ID']='100';os.environ.pop('INPUT_FORCE_NEW_RUN',None)
+            rc.STATE=Path(td)/'state.json';os.environ['GITHUB_EVENT_NAME']='workflow_dispatch';os.environ['GITHUB_RUN_ID']='100';os.environ.pop('INPUT_FORCE_NEW_RUN',None);os.environ.pop('GITHUB_EVENT_PATH',None)
             ok,bid,_=rc.begin(datetime(2026,9,16,4,0,tzinfo=timezone.utc));check(ok and bid.endswith('-100'),'first manual run rejected');rc.transition(bid,'BLOCKED')
             os.environ['GITHUB_RUN_ID']='101';ok2,_,reason=rc.begin(datetime(2026,9,16,4,1,tzinfo=timezone.utc));check(not ok2 and 'duplicate window' in reason,'immediate duplicate run was not suppressed')
             os.environ['INPUT_FORCE_NEW_RUN']='true';ok3,bid3,_=rc.begin(datetime(2026,9,16,4,2,tzinfo=timezone.utc));check(ok3 and bid3.endswith('-101'),'explicit force did not bypass duplicate window');rc.transition(bid3,'READY_FOR_APPROVAL');check(rc.get_run(bid3)['status']=='READY_FOR_APPROVAL','state transition lost')
