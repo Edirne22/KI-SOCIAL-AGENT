@@ -464,3 +464,67 @@ Technische Protokolle der Deal-Hunter-Suchwege. Keine Preise oder Zugangsdaten s
 - Provider: Apify-Google-Suche
 - Live-Suche: ja
 - Hinweis: 10 öffentliche Treffer; Kostenlimit $0.010
+## 2026-09-24 06:09
+- Anfrage: motorradhandschuhe | Kriterien: max: 50 € | seit 2026-09-12
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: 10 öffentliche Treffer; Kostenlimit $0.010
+## 2026-09-24 06:09
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | seit 2026-09-12
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: 10 öffentliche Treffer; Kostenlimit $0.010
+## 2026-09-24 06:11
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: Fallback: SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 400, detail={   "error": {     "type": "run-failed",     "message": "Actor run did not succeed (run ID: ifep3B0R4ucPl0pMk, status: FAILED)."   } }
+## 2026-09-24 06:11
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: SearXNG
+- Hinweis: Nicht konfiguriert
+## 2026-09-24 06:11
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 1
+## 2026-09-24 06:12
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 2
+## 2026-09-24 06:13
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 3
+## 2026-09-24 06:15
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 4
+## 2026-09-24 06:15
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: SEARCH-FEHLER: provider=Gemini-Grounded, ursache=HTTP 429 Rate Limit, detail=Rate-Limit nach 3 Versuchen nicht behoben
+## 2026-09-24 06:15
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: Gemini-Fallback
+- Live-Suche: nein
+- Hinweis: SEARCH-FEHLER: provider=LLMRouter-Fallback, ursache=RuntimeError, detail=Alle verfügbaren KI-Anbieter fehlgeschlagen (Rate-Limits oder Keys fehlen).
+## 2026-09-24 06:15
+- Anfrage: handyvertrag 80GB D1 maximal 13 euro | Kriterien: keine Kriterien | seit 2026-09-13
+- Provider: Keine Suche
+- Live-Suche: nein
+- Hinweis: SEARCH-FEHLER: provider=Alle, ursache=Alle Suchanbieter fehlgeschlagen, detail=SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 400, detail={   "error": {     "type": "run-failed",     "message": "Actor run did not succeed (run ID: ifep3B0R4ucPl0pMk, status: FAILED)."   } } | SEARCH-FEHLER: provider=SearXNG, ursache=Nicht konfiguriert, detail=SEARXNG_URL fehlt
+## 2026-09-24 06:15
+- Anfrage: hunter | Kriterien: keine Kriterien | seit 2026-09-18
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: 10 öffentliche Treffer; Kostenlimit $0.010
+## 2026-09-24 06:15
+- Anfrage: . Handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 50 GB | Netz: D1 | seit 2026-09-18
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: 10 öffentliche Treffer; Kostenlimit $0.010
