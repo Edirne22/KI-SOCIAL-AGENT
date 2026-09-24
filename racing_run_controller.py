@@ -13,7 +13,22 @@ def _save(data):
  STATE.parent.mkdir(parents=True,exist_ok=True);tmp=STATE.with_suffix('.tmp');tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');tmp.replace(STATE)
 def event_name():return os.getenv('GITHUB_EVENT_NAME','local')
 def github_run_id():return os.getenv('GITHUB_RUN_ID','local')
-def force_new():return os.getenv('INPUT_FORCE_NEW_RUN','').strip().lower() in {'1','true','yes','on'}
+def _truthy(value):return str(value or '').strip().lower() in {'1','true','yes','on'}
+def force_new():
+ # Primary path: workflow resolves the dispatch checkbox into this env var.
+ if _truthy(os.getenv('INPUT_FORCE_NEW_RUN','')):return True
+ # Defensive path: GitHub always exposes the original workflow_dispatch payload
+ # via GITHUB_EVENT_PATH. This prevents an env-mapping regression from silently
+ # turning an explicitly checked force_new_run into False.
+ if event_name()=='workflow_dispatch':
+  path=os.getenv('GITHUB_EVENT_PATH','').strip()
+  if path:
+   try:
+    payload=json.loads(Path(path).read_text(encoding='utf-8'))
+    return _truthy((payload.get('inputs') or {}).get('force_new_run'))
+   except (OSError,ValueError,TypeError):
+    pass
+ return False
 def batch_id(now=None):
  now=now or _now();event=event_name()
  if event=='schedule':return f'racing-{now.date().isoformat()}-daily'
