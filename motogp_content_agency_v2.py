@@ -30,6 +30,9 @@ def detect_turkish_rider(x):
  text=fold(article_text(x))
  for rider,aliases in TURKISH_ALIASES.items():
   if any(fold(a) in text for a in aliases):return rider
+ # Official WorldSBK headline shorthand: "Sofouglu" without first name.
+ # Keep surname-only matching contextual to avoid confusing other Sofuoğlu riders.
+ if re.search(r'(?<![a-z])sofouglu(?![a-z])',text) and any(k in text for k in ('motoxracing','qjmotor','worldssp')):return 'Bahattin Sofuoglu'
  return ''
 def enrich_turkish(x):
  r=x.get('turkish_rider') or detect_turkish_rider(x)
