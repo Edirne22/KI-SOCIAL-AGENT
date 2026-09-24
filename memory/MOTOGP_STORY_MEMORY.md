@@ -474,3 +474,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/20/guevara-strikes-back-to-clinch
 Story-Key: motogp:1091502
 Titel: PREVIEW 2d ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/22/form-guide-bulega-looks-to-snatch-one-of-worldsbks-most-impressive-records-from-bautista/1091502
+
+## 2026-09-24 21:16 UTC – ANGEBOTEN
+Story-Key: motogp:1091523
+Titel: PREVIEW 1d ago Pirelli bring new development SCX tyre to Cremona, SCQ also in the allocation WorldSBK’s Official Tyre Supplier are continuing their development with a new specification of the SCX tyre, dubbed the F0769 WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/23/pirelli-bring-new-development-scx-tyre-to-cremona-scq-also-in-the-allocation/1091523

@@ -1080,3 +1080,33 @@ Story-Key: motogp:1091358
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-24 21:25 UTC | Motorcycle Racing | PASS
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Story-Key: motogp:1090417
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 21:25 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 21:25 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK
+Story-Key: motogp:1091502
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 21:25 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
+Story-Key: motogp:1091358
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 21:26 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 1d ago Pirelli bring new development SCX tyre to Cremona, SCQ also in the allocation WorldSBK’s Official Tyre Supplier are continuing their development with a new specification of the SCX tyre, dubbed the F0769 WorldSBK
+Story-Key: motogp:1091523
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

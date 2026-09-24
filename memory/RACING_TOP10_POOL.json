@@ -241,34 +241,8 @@
     ],
     "2026-09-24": [
       {
-        "story_key": "motogp:1091586",
-        "title": "Baz replaces Mackenzie at MGM Ducati for Cremona",
-        "url": "https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586",
-        "summary": "The French rider returns to an old stomping ground for the Italian Round as he steps in for the still-recovering Mackenzie",
-        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg",
-        "published_at": "2026-09-22T09:00:00+0000",
-        "series": "WorldSBK",
-        "source_series": "WorldSBK",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1090403",
-        "title": "Guevara strikes back to clinch crucial Red Bull Ring victory",
-        "url": "https://www.motogp.com/en/news/2026/09/20/guevara-strikes-back-to-clinch-crucial-red-bull-ring-victory/1090403",
-        "summary": "The #28 reduced the gap to World Championship leader Gonzalez to under 40 points as Salač and Alonso earn Austrian GP podiums",
-        "preview": "https://resources.motogp.pulselive.com/photo-resources/2026/09/20/422ca220-2407-4806-b3c2-697aa556a8d9/TOP_AUT_M2_Race.jpg?width=1200&height=630",
-        "published_at": "2026-09-20",
-        "series": "Moto2",
-        "source_series": "Moto2",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
         "story_key": "motogp:1091502",
-        "title": "PREVIEW 2d ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK",
+        "title": "PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK",
         "url": "https://www.worldsbk.com/en/news/2026/09/22/form-guide-bulega-looks-to-snatch-one-of-worldsbks-most-impressive-records-from-bautista/1091502",
         "summary": "",
         "preview": "",
@@ -306,6 +280,19 @@
         "kind": "news"
       },
       {
+        "story_key": "motogp:1090417",
+        "title": "Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth",
+        "url": "https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
         "story_key": "motogp:1091638",
         "title": "MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now",
         "url": "https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638",
@@ -314,6 +301,19 @@
         "published_at": null,
         "series": "MotoGP",
         "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1091355",
+        "title": "PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
