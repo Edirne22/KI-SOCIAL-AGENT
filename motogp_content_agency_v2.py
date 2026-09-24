@@ -117,11 +117,11 @@ def choose_structure_variant():return random.choice(tuple(STRUCTURE_VARIANTS))
 def _editor_prompt(x,repair_reasons=None,structure_variant=None):
  enrich_turkish(x);repair='';variant=structure_variant or choose_structure_variant()
  if variant not in STRUCTURE_VARIANTS:raise ValueError(f'Unbekannte Struktur-Variante: {variant}')
- if repair_reasons:repair='\\nRUECKGABE AUS DER QM-KETTE. Analysiere die Originalfakten erneut und behebe exakt diese Punkte. FAKTEN DUERFEN WEDER ERGAENZT NOCH VERAENDERT WERDEN:\\n- '+'\\n- '.join(repair_reasons[:10])+'\\n'
+ if repair_reasons:repair='\nRUECKGABE AUS DER QM-KETTE. Analysiere die Originalfakten erneut und behebe exakt diese Punkte. FAKTEN DUERFEN WEDER ERGAENZT NOCH VERAENDERT WERDEN:\n- '+'\n- '.join(repair_reasons[:10])+'\n'
  title=' '.join(str(x.get('title','')).split());summary=' '.join(str(x.get('summary','')).split());series=series_for(x);turkish=x.get('turkish_rider') or 'NEIN';schema,instruction=STRUCTURE_VARIANTS[variant]
- return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\\n{global_professional_context()}\\nRACING-PFLICHTEN: Verwende ausschließlich die Serie aus dem CFO ({series}). Keine Klassenzuordnung erfinden. Die SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine erfundenen oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. Mindestens 2 natuerliche Saetze bzw. bei FACT_FACT_FACT mindestens 3 kompakte Fakten. Keine Hashtags erzeugen.{repair}\\nSTRUKTUR-VARIANTE: {variant}\\nSTRUKTUR-ANWEISUNG: {instruction}\\nSERIE: {series}\\nTITEL: {title}\\nZUSAMMENFASSUNG: {summary}\\nTURKISH_RIDER: {turkish}\\nAntworte nur JSON nach diesem Schema: {schema}'''
+ return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: Verwende ausschließlich die Serie aus dem CFO ({series}). Keine Klassenzuordnung erfinden. Die SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine erfundenen oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. Mindestens 2 natuerliche Saetze bzw. bei FACT_FACT_FACT mindestens 3 kompakte Fakten. Keine Hashtags erzeugen.{repair}\nSTRUKTUR-VARIANTE: {variant}\nSTRUKTUR-ANWEISUNG: {instruction}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON nach diesem Schema: {schema}'''
 def _parse_editor_json(raw,variant):
- raw=(raw or '').strip();raw=re.sub(r'^\`\`\`(?:json)?\\s*|\\s*\`\`\`$','',raw,flags=re.I|re.S);o=json.loads(raw)
+ raw=(raw or '').strip();raw=re.sub(r'^\`\`\`(?:json)?\s*|\s*\`\`\`$','',raw,flags=re.I|re.S);o=json.loads(raw)
  def need(name):
   value=str(o.get(name,'')).strip()
   if not value:raise ValueError(f'editor JSON missing {name}')
@@ -138,14 +138,14 @@ def _parse_editor_json(raw,variant):
  else:raise ValueError(f'Unbekannte Struktur-Variante: {variant}')
  return parts
 def german_editor(x,repair_reasons=None):
- if len(re.sub(r'\\s+',' ',x.get('title','')).strip())<18:return ''
+ if len(re.sub(r'\s+',' ',x.get('title','')).strip())<18:return ''
  last=None
  for technical_attempt in range(3):
   try:
    variant=choose_structure_variant();parts=_parse_editor_json(generate('final_captions',_editor_prompt(x,repair_reasons,variant)),variant)
    if not x.get('turkish_rider'):parts=[p.replace('🇹🇷','').strip() for p in parts]
    x['structure_variant']=variant
-   return '\\n\\n'.join(parts+[hashtags(x)])
+   return '\n\n'.join(parts+[hashtags(x)])
   except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:last=e;time.sleep(.5)
   except Exception as e:last=e;break
  print('EDITOR EXCEPTION:',type(last).__name__,str(last)[:180]);return ''
