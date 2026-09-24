@@ -9,6 +9,7 @@ def source_text(item):return ' '.join((str(item.get('title','')),str(item.get('s
 SERIES_PATTERNS=(
  ('WorldWCR',r'\bworldwcr\b|women.s circuit|women.s championship'),
  ('WorldSPB',r'\bworldspb\b|\bsportbike world championship\b|\bfim sportbike world championship\b'),
+ ('Moto4',r'\bmoto4\b'),
  ('WorldSSP300',r'\bworldssp\s*300\b'),
  ('WorldSSP',r'\bworldssp\b(?!\s*300)|\bworld supersport\b(?!\s*300)'),
  ('WorldSBK',r'\bworldsbk\b|\bworld superbike\b'),
@@ -53,7 +54,7 @@ def _caption_claims_destination(text,destination):
 def review(item,caption):
  errors=[];src=fold(source_text(item));cap=fold(caption);series=expected_series(item);declared=str(item.get('series','')).strip()
  if any(p in src for p in PROMO):errors.append('Final-Guard: Promo/Vlog/Marketing statt Racing-News')
- if series in ('WorldWCR','WorldSPB'):errors.append(f'Final-Guard: {series} ist derzeit nicht als freigegebene Racing-Serie konfiguriert')
+ if series in ('WorldWCR','WorldSPB','Moto4'):errors.append(f'Final-Guard: {series} ist derzeit nicht als freigegebene Racing-Serie konfiguriert')
  source_dest=_transfer_destination(src)
  if source_dest=='MotoGP' and _caption_claims_destination(cap,'WorldSBK'):errors.append('Final-Guard: Transfer-Richtung widerspricht Quelle (Quelle -> MotoGP, Text -> WorldSBK)')
  if source_dest=='WorldSBK' and _caption_claims_destination(cap,'MotoGP'):errors.append('Final-Guard: Transfer-Richtung widerspricht Quelle (Quelle -> WorldSBK, Text -> MotoGP)')
