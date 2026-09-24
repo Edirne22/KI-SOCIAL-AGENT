@@ -8,6 +8,7 @@ def fold(s):
 def source_text(item):return ' '.join((str(item.get('title','')),str(item.get('summary',''))))
 SERIES_PATTERNS=(
  ('WorldWCR',r'\bworldwcr\b|women.s circuit|women.s championship'),
+ ('WorldSPB',r'\bworldspb\b|\bsportbike world championship\b|\bfim sportbike world championship\b'),
  ('WorldSSP300',r'\bworldssp\s*300\b'),
  ('WorldSSP',r'\bworldssp\b(?!\s*300)|\bworld supersport\b(?!\s*300)'),
  ('WorldSBK',r'\bworldsbk\b|\bworld superbike\b'),
@@ -35,10 +36,27 @@ def expected_series(item):
  # 4. Fallback -> declared series or 'unknown'
  declared=str(item.get('series','')).strip()
  return declared if declared else 'unknown'
+def _transfer_destination(text):
+ text=fold(text)
+ if re.search(r'\b(to|into|joins?|join|move[sd]? to|switch(?:es|ed)? to|switch to|seat for)\s+(the\s+)?motogp\b',text) or 'motogp switch' in text:return 'MotoGP'
+ if re.search(r'\b(to|into|joins?|join|move[sd]? to|switch(?:es|ed)? to|switch to)\s+(the\s+)?worldsbk\b',text) or 'worldsbk switch' in text:return 'WorldSBK'
+ return ''
+
+def _caption_claims_destination(text,destination):
+ text=fold(text)
+ if destination=='MotoGP':
+  return bool(re.search(r'\b(wechsel(?:t)?|wechselt|wechseln|geht|gehts|zieht|move|moves|switch(?:es)?|join(?:s)?)\b.{0,30}\b(?:zu|zur|nach|in die|to)\s+motogp\b',text))
+ if destination=='WorldSBK':
+  return bool(re.search(r'\b(wechsel(?:t)?|wechselt|wechseln|geht|gehts|zieht|move|moves|switch(?:es)?|join(?:s)?)\b.{0,30}\b(?:zu|zur|nach|in die|to)\s+worldsbk\b',text))
+ return False
+
 def review(item,caption):
  errors=[];src=fold(source_text(item));cap=fold(caption);series=expected_series(item);declared=str(item.get('series','')).strip()
  if any(p in src for p in PROMO):errors.append('Final-Guard: Promo/Vlog/Marketing statt Racing-News')
- if series=='WorldWCR':errors.append('Final-Guard: WorldWCR ist derzeit nicht als freigegebene Racing-Serie konfiguriert')
+ if series in ('WorldWCR','WorldSPB'):errors.append(f'Final-Guard: {series} ist derzeit nicht als freigegebene Racing-Serie konfiguriert')
+ source_dest=_transfer_destination(src)
+ if source_dest=='MotoGP' and _caption_claims_destination(cap,'WorldSBK'):errors.append('Final-Guard: Transfer-Richtung widerspricht Quelle (Quelle -> MotoGP, Text -> WorldSBK)')
+ if source_dest=='WorldSBK' and _caption_claims_destination(cap,'MotoGP'):errors.append('Final-Guard: Transfer-Richtung widerspricht Quelle (Quelle -> WorldSBK, Text -> MotoGP)')
  if series and declared and declared!=series:errors.append(f'Final-Guard: Serien-Metadatum {declared} widerspricht Quelle {series}')
  tags={'MotoGP':'#motogp','Moto2':'#moto2','Moto3':'#moto3','WorldSBK':'#worldsbk','WorldSSP':'#worldssp','WorldSSP300':'#worldssp300'}
  if series in tags and tags[series] not in caption.casefold():errors.append(f'Final-Guard: Pflicht-Serienhashtag {tags[series]} fehlt')

@@ -47,6 +47,18 @@ def test_series_and_hashtags():
  for item,series,tag in cases:ok(a.series_for(item)==series,f'{item["title"]} -> {a.series_for(item)}');ok(tag in a.hashtags(item),f'missing {tag}')
 def test_source_priority_contract():
  ok([s for s,_ in trs.SOURCES][:3]==['Moto2','Moto3','MotoGP'],'specific GP feeds must precede umbrella MotoGP feed');ok([s for s,_ in trs.SOURCES][3:]==['WorldSSP','WorldSBK'],'WorldSSP must precede umbrella WorldSBK feed')
+def test_transfer_direction_and_unsupported_worldspb():
+ worldspb={'title':'Preview: title fight in first WorldSPB season','summary':'The first FIM Sportbike World Championship season could crown its champion at Cremona','series':'WorldSBK'}
+ passed,errs=final_guard.review(worldspb,'Cremona entscheidet die WorldSBK-Saison.\n\nWer holt den Titel?\n\n#WorldSBK #Racing #BuelentsBikeLife #MotorradRacing')
+ ok(not passed and any('WorldSPB' in e for e in errs),'WorldSPB must never be relabeled/passed as WorldSBK')
+ ok(trs.classify_series('WorldSBK','Preview: first WorldSPB title decider','https://www.worldsbk.com/en/news/2026/09/22/x')=='WorldSPB','scout must classify WorldSPB explicitly')
+ ok(a.series_for({'title':'WorldSPB title race at Cremona','summary':'first Sportbike World Championship season','series':'WorldSBK'})=='WorldSPB','agency must preserve unsupported WorldSPB identity')
+ ok(not a.racing_relevant({'title':'WorldSPB title race at Cremona','summary':'first Sportbike World Championship season','series':'WorldSBK'}),'WorldSPB must be rejected before copy generation')
+ source={'title':'Why WorldSBK matters to MotoGP','summary':'Nicolò Bulega will move to MotoGP in 2027','series':'MotoGP'}
+ bad='Nicolò Bulega wechselt 2027 nach WorldSBK.\n\nWas meint ihr?\n\n#MotoGP #NicoloBulega #Racing #BuelentsBikeLife'
+ passed,errs=final_guard.review(source,bad)
+ ok(not passed and any('Transfer-Richtung' in e for e in errs),'opposite transfer direction must fail closed')
+
 def test_final_truth_guard_live_regressions():
  bad=[({'title':'Quiles denies Almansa in epic photo finish','summary':'Moto3 race at Misano','series':'MotoGP'},'Quiles gewinnt.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife'),({'title':'WorldWCR duo rookie vs veteran','summary':'WorldWCR teammates','series':'WorldSBK'},'Rookie trifft Veteran.\n\nWas meint ihr?\n\n#WorldSBK #Racing #BuelentsBikeLife'),({'title':'Behind the scenes with Red Bull KTM','summary':'Catch up Vlog','series':'MotoGP'},'KTM Vlog.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife'),({'title':'Rossi, Razgatlioglu on Bulega switch','summary':'Toprak Razgatlioglu comments','series':'MotoGP'},'Rahil Etgar Razgatlioglu spricht.\n\nWas meint ihr?\n\n#MotoGP #Racing #BuelentsBikeLife')]
  for item,caption in bad:
@@ -109,5 +121,5 @@ def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
  ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL RETRY' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
 def main():
- test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
+ test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()

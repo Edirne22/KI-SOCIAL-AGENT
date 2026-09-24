@@ -34,6 +34,7 @@ def rider_for(text):
  return ''
 def classify_series(default_series,title,url):
  text=fold((title or '')+' '+(url or ''))
+ if 'worldspb' in text or 'sportbike world championship' in text:return 'WorldSPB'
  if 'worldssp300' in text or 'worldssp 300' in text or 'wssp300' in text:return 'WorldSSP300'
  if re.search(r'\b(to|into|joins?|move[sd]? to|challenge in)\s+(the\s+)?worldsbk\b',text) or 'new challenge in worldsbk' in text:return 'WorldSBK'
  if re.search(r'\b(to|into|joins?|move[sd]? to|seat for)\s+(the\s+)?motogp\b',text) or 'motogp seat' in text:return 'MotoGP'
