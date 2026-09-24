@@ -1,1 +1,39 @@
-\"\"\"Sendet ausschließlich explizit freigegebene Instagram-Kommentarantworten.\"\"\"\nfrom __future__ import annotations\nimport os\nimport requests\n\nAPI = \"https://graph.instagram.com/v23.0\"\n\ndef send_reply(comment_id: str, message: str) -> str:\n    token = os.environ.get(\"INSTAGRAM_ACCESS_TOKEN\", \"\").strip()\n    comment_id = str(comment_id or \"\").strip()\n    message = \" \".join(str(message or \"\").split()).strip()\n    if not token: raise RuntimeError(\"INSTAGRAM_ACCESS_TOKEN fehlt.\")\n    if not comment_id: raise RuntimeError(\"Instagram comment_id fehlt.\")\n    if not message: raise RuntimeError(\"Antworttext fehlt.\")\n    r = requests.post(f\"{API}/{comment_id}/replies\", data={\"message\": message, \"access_token\": token}, timeout=45)\n    if r.status_code not in (200, 201): raise RuntimeError(f\"Instagram Reply API {r.status_code}: {r.text[:500]}\")\n    reply_id = str(r.json().get(\"id\") or \"\")\n    if not reply_id: raise RuntimeError(\"Instagram Reply API lieferte keine Reply-ID.\")\n    return reply_id\n
+"""Sendet ausschließlich explizit freigegebene Instagram-Kommentarantworten."""
+from __future__ import annotations
+
+import os
+import requests
+
+API = "https://graph.instagram.com/v23.0"
+
+
+def send_reply(comment_id: str, message: str) -> str:
+    token = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "").strip()
+    comment_id = str(comment_id or "").strip()
+    message = " ".join(str(message or "").split()).strip()
+    if not token:
+        raise RuntimeError("INSTAGRAM_ACCESS_TOKEN fehlt.")
+    if not comment_id:
+        raise RuntimeError("Instagram comment_id fehlt.")
+    if not message:
+        raise RuntimeError("Antworttext fehlt.")
+
+    response = requests.post(
+        f"{API}/{comment_id}/replies",
+        data={"message": message, "access_token": token},
+        timeout=45,
+    )
+    if response.status_code not in (200, 201):
+        raise RuntimeError(
+            f"Instagram Reply API {response.status_code}: {response.text[:500]}"
+        )
+
+    try:
+        payload = response.json()
+    except ValueError as exc:
+        raise RuntimeError("Instagram Reply API lieferte kein gültiges JSON.") from exc
+
+    reply_id = str(payload.get("id") or "").strip()
+    if not reply_id:
+        raise RuntimeError("Instagram Reply API lieferte keine Reply-ID.")
+    return reply_id
