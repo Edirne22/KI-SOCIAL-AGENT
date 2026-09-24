@@ -166,9 +166,28 @@ def test_session_fail_closed():
   with tempfile.TemporaryDirectory() as td:
    a.SESSION=Path(td)/'session.md';a.SESSION.write_text('Approval-Status: READY\nQM: PASS\n## Beitrag 1\nALT',encoding='utf-8');a.invalidate_session(datetime(2026,9,16,tzinfo=timezone.utc),'nur 3/5',3);text=a.SESSION.read_text(encoding='utf-8');ok('QM: FAIL' in text and 'Approval-Status: BLOCKED' in text and '## Beitrag' not in text,'stale session survived')
  finally:a.SESSION=old
+def test_finalization_contract():
+ old_send=a.send_message
+ sent=[]
+ try:
+  a.send_message=lambda msg:sent.append(msg)
+  sample=[{'title':'T','caption':'Text.\n\nFrage?\n\n#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife','url':'https://example.com','series':'MotoGP'} for _ in range(4)]
+  a.telegram_preview(sample,False,[])
+  ok(sent and '– 4 qualitätsgeprüfte Tagesvorschläge' in sent[0],'Telegram header must report actual final count')
+  ok('motogp 1–4' in sent[0],'Telegram approval range must report actual final count')
+ finally:a.send_message=old_send
+ import chief_quality_manager as chief
+ old_log=chief._log
+ try:
+  chief._log=lambda *args,**kwargs:None
+  item={'title':'Valencia finale','series':'MotoGP'}
+  ok(not chief.review('Motorcycle Racing',item,'Die MotoGP hat die Bestätigung für Valencia als finales Rennen bestätigt.\n\nWas meint ihr?\n\n#MotoGP #MotorradRacing #RacingDeutschland','x','https://example.com')[0],'redundant bestätigt/bestätigt must fail final language gate')
+  ok(not chief.review('Motorcycle Racing',item,'Valencia bleibt das Finale.\n\nVerpasst nicht das entscheidende Rennen.\n\n#MotoGP #MotorradRacing #RacingDeutschland','x','https://example.com')[0],'Verpasst nicht CTA must fail final human protocol gate')
+ finally:chief._log=old_log
+
 def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
  ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL RETRY' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
 def main():
- test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
+ test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()
