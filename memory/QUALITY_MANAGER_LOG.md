@@ -930,3 +930,33 @@ Story-Key: motogp:1091355
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-24 18:19 UTC | Motorcycle Racing | PASS
+Titel: MotoGP to race in Portugal until 2029 The Algarve International Circuit will host the Portuguese Grand Prix for a further three years
+Story-Key: motogp:1092228
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 18:19 UTC | Motorcycle Racing | PASS
+Titel: Pitlane exit practice starts banned from 2027, Moto2 concessions updated: decisions of the Grand Prix Commission The latest GPC is short and sweet, with a few updates for 2027 and beyond
+Story-Key: motogp:1092200
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 18:19 UTC | Motorcycle Racing | PASS
+Titel: 2027 Moto3™ grid announcements - what we know so far Check out the latest signings, deals and announcements as the 2027 Moto3 grid begins to become clear!
+Story-Key: motogp:1091615
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 18:20 UTC | Motorcycle Racing | PASS
+Titel: NEWS 2d ago Baz replaces Mackenzie at MGM Ducati for Cremona The French rider returns to an old stomping ground for the Italian Round as he steps in for the still-recovering Mackenzie WorldSBK
+Story-Key: motogp:1091586
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 18:20 UTC | Motorcycle Racing | PASS
+Titel: NEWS 3d ago Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP The Turkish rider will join the Chinese manufacturer in World Supersport while Dutch rider Twan Smits joins the WorldSBK paddock WorldSBK
+Story-Key: motogp:1091425
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

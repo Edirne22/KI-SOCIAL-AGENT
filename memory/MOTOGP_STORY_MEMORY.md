@@ -404,3 +404,28 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehens
 Story-Key: title:community-spotlight-knieschleifer-aus-berzeugung
 Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
 Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung
+
+## 2026-09-24 18:00 UTC – ANGEBOTEN
+Story-Key: motogp:1092228
+Titel: MotoGP to race in Portugal until 2029 The Algarve International Circuit will host the Portuguese Grand Prix for a further three years
+Quelle: https://www.motogp.com/en/news/2026/09/24/motogp-to-race-in-portugal-until-2029/1092228
+
+## 2026-09-24 18:00 UTC – ANGEBOTEN
+Story-Key: motogp:1092200
+Titel: Pitlane exit practice starts banned from 2027, Moto2 concessions updated: decisions of the Grand Prix Commission The latest GPC is short and sweet, with a few updates for 2027 and beyond
+Quelle: https://www.motogp.com/en/news/2026/09/23/pitlane-exit-practice-starts-banned-from-2027-moto2-concessions-updated-decisions-of-the-grand-prix-commission/1092200
+
+## 2026-09-24 18:00 UTC – ANGEBOTEN
+Story-Key: motogp:1091615
+Titel: 2027 Moto3™ grid announcements - what we know so far Check out the latest signings, deals and announcements as the 2027 Moto3 grid begins to become clear!
+Quelle: https://www.motogp.com/en/news/2026/09/24/2026-moto3-grid-announcements-what-we-know-so-far/1091615
+
+## 2026-09-24 18:00 UTC – ANGEBOTEN
+Story-Key: motogp:1091586
+Titel: NEWS 2d ago Baz replaces Mackenzie at MGM Ducati for Cremona The French rider returns to an old stomping ground for the Italian Round as he steps in for the still-recovering Mackenzie WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
+
+## 2026-09-24 18:00 UTC – ANGEBOTEN
+Story-Key: motogp:1091425
+Titel: NEWS 3d ago Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP The Turkish rider will join the Chinese manufacturer in World Supersport while Dutch rider Twan Smits joins the WorldSBK paddock WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
