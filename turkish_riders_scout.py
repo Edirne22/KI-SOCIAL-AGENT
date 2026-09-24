@@ -14,7 +14,7 @@ WATCHLIST={
  'Toprak Razgatlıoğlu':('Toprak Razgatlıoğlu','Toprak Razgatlioglu','Toprak Razgatlıoglu','Toprak Razgatliğlu','Razgatlıoğlu','Razgatlioglu'),
  'Can Öncü':('Can Öncü','Can Oncu','C. Öncü','C. Oncu','Öncü','Oncu'),
  'Deniz Öncü':('Deniz Öncü','Deniz Oncu','D. Öncü','D. Oncu'),
- 'Bahattin Sofuoğlu':('Bahattin Sofuoğlu','Bahattin Sofuoglu','B. Sofuoğlu','B. Sofuoglu'),
+ 'Bahattin Sofuoğlu':('Bahattin Sofuoğlu','Bahattin Sofuoglu','Bahattin Sofouglu','B. Sofuoğlu','B. Sofuoglu','B. Sofouglu'),
  'Zayn Sofuoğlu':('Zayn Sofuoğlu','Zayn Sofuoglu','Z. Sofuoğlu','Z. Sofuoglu')}
 FALLBACK=[
  ('Toprak Razgatlıoğlu','Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign','https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e','MotoGP'),
@@ -35,6 +35,7 @@ def rider_for(text):
 def classify_series(default_series,title,url):
  text=fold((title or '')+' '+(url or ''))
  if 'worldspb' in text or 'sportbike world championship' in text:return 'WorldSPB'
+ if re.search(r'(?<![a-z0-9])moto4(?![a-z0-9])',text):return 'Moto4'
  if 'worldssp300' in text or 'worldssp 300' in text or 'wssp300' in text:return 'WorldSSP300'
  if re.search(r'\b(to|into|joins?|move[sd]? to|challenge in)\s+(the\s+)?worldsbk\b',text) or 'new challenge in worldsbk' in text:return 'WorldSBK'
  if re.search(r'\b(to|into|joins?|move[sd]? to|seat for)\s+(the\s+)?motogp\b',text) or 'motogp seat' in text:return 'MotoGP'
