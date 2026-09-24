@@ -31,6 +31,10 @@ def rider_for(text):
    a=fold(alias)
    if ' ' in a and len(a)>=5 and re.search(r'(?<![a-z])'+re.escape(a)+r'(?![a-z])',low):return rider
  if re.search(r'(?<![a-z])(can|c\.)\s+oncu(?![a-z])',low):return 'Can Öncü'
+ # The official WorldSBK headline currently abbreviates Bahattin to the
+ # misspelled surname "Sofouglu". Surname-only is ambiguous in general, so
+ # bind it only with the article's team/series context.
+ if re.search(r'(?<![a-z])sofouglu(?![a-z])',low) and any(k in low for k in ('motoxracing','qjmotor','worldssp')):return 'Bahattin Sofuoğlu'
  return ''
 def classify_series(default_series,title,url):
  text=fold((title or '')+' '+(url or ''))
