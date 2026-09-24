@@ -68,6 +68,7 @@ def test_provider_backoff():
   def json(self):return self.payload
  old_req,old_mono,old_env=llm.requests.request,llm.time.monotonic,dict(llm.os.environ);old_cd=dict(llm._PROVIDER_COOLDOWNS);clock=[100.0]
  try:
+  llm.time.monotonic=lambda:clock[0]
   llm.os.environ.update({'AGNES_API_KEY':'test-agnes','GEMINI_API_KEY':'test-gemini','NVIDIA_API_KEY':'test-nvidia'})
   def run_mock(mode):
    calls=[]
