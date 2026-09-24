@@ -1020,3 +1020,33 @@ Story-Key: motogp:1092226
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-24 20:20 UTC | Motorcycle Racing | PASS
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Story-Key: motogp:1090417
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 20:20 UTC | Motorcycle Racing | PASS
+Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
+Story-Key: motogp:1090419
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 20:21 UTC | Motorcycle Racing | PASS
+Titel: Siegert and Urlass sign off 2026 with Assen triumphs The Moto4 Northern Cup delivered an epic season finale in the Netherlands with Robin Siegert and Anina Urlass sharing top honours!
+Story-Key: motogp:1091423
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 20:21 UTC | Motorcycle Racing | PASS
+Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
+Story-Key: motogp:1091425
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 20:21 UTC | Motorcycle Racing | PASS
+Titel: NEWS 11h ago Bridewell declared fit for Italian Round at Cremona The #46 was injured in a crash at Magny-Cours but has been given the all-clear to compete this weekend in Italy WorldSBK
+Story-Key: motogp:1092328
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

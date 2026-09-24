@@ -454,3 +454,13 @@ Quelle: https://www.motogp.com/en/news/2026/09/23/motogp-strengthens-leadership-
 Story-Key: motogp:1092226
 Titel: PREVIEW 12h ago FAST FACTS: Easy guide and key numbers from WorldSBK’s last visit to Cremona! Get set for Round 10 of the 2026 season with this easy guide full of important facts and figures from Cremona last years WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/24/fast-facts-easy-guide-and-key-numbers-from-worldsbks-last-visit-to-cremona/1092226
+
+## 2026-09-24 20:08 UTC – ANGEBOTEN
+Story-Key: motogp:1091423
+Titel: Siegert and Urlass sign off 2026 with Assen triumphs The Moto4 Northern Cup delivered an epic season finale in the Netherlands with Robin Siegert and Anina Urlass sharing top honours!
+Quelle: https://www.motogp.com/en/news/2026/09/21/siegert-and-urlass-sign-off-2026-with-assen-triumphs/1091423
+
+## 2026-09-24 20:08 UTC – ANGEBOTEN
+Story-Key: motogp:1092328
+Titel: NEWS 11h ago Bridewell declared fit for Italian Round at Cremona The #46 was injured in a crash at Magny-Cours but has been given the all-clear to compete this weekend in Italy WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/24/bridewell-declared-fit-for-italian-round-at-cremona/1092328
