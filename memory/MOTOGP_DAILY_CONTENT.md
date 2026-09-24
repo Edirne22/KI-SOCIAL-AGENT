@@ -1,8 +1,8 @@
 # Motorcycle Racing Daily Agency V8.5.5
 
-Stand: 2026-09-24 13:43 UTC
-Rohkandidaten: 213
-Aktuelle Racing-News <=7 Tage: 13
+Stand: 2026-09-24 17:46 UTC
+Rohkandidaten: 215
+Aktuelle Racing-News <=7 Tage: 15
 Freshness missing-date: 15
 Freshness >7 Tage: 183
 Freshness Promo/irrelevant: 1
