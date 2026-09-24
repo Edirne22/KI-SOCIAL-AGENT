@@ -65,8 +65,12 @@ jobs:
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
-          INPUT_FORCE_NEW_RUN: ${{ inputs.force_new_run }}
-        run: python -u racing_v85.py
+          # workflow_dispatch boolean is also present as a string in github.event.inputs.
+          # Resolve from the event payload explicitly so a checked box cannot be lost.
+          INPUT_FORCE_NEW_RUN: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_new_run == 'true' && 'true' || 'false' }}
+        run: |
+          echo "force_new_run resolved=${INPUT_FORCE_NEW_RUN}"
+          python -u racing_v85.py
       - name: V8.5 State, Memory, QM-Audit, Medien und Session persistent speichern
         if: always()
         run: |
