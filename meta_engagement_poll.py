@@ -125,7 +125,13 @@ def main() -> int:
     if first_run:
         print("FIRST RUN: vorhandene Kommentare werden nur als gesehen initialisiert; keine Telegram-Tickets.")
 
-    for name, fn in (("Instagram", poll_instagram), ("Facebook", poll_facebook)):
+    pollers = [("Instagram", poll_instagram)]
+    if os.environ.get("ENABLE_FACEBOOK_ENGAGEMENT", "false").strip().lower() in {"1", "true", "yes", "on"}:
+        pollers.append(("Facebook", poll_facebook))
+    else:
+        print("Facebook Engagement: pausiert.")
+
+    for name, fn in pollers:
         try:
             count, notes = fn(notify=not first_run)
             total += count
