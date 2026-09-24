@@ -392,8 +392,13 @@ def generate_community_fallbacks(count,now):
 
 def invalidate_session(now,reason,passed=0):
  lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','QM: FAIL','Approval-Status: BLOCKED',f'Session-Timestamp: {int(now.timestamp())}',f'Bestandene-Pakete: {passed}/3',f'Grund: {reason}','','Keine Freigabe moeglich. Erst ein neuer Lauf mit mindestens 3 PASS erzeugt eine freigabefaehige Session.'];SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
-def telegram_preview(items,turk):
- mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – 5 qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Fehler gehen zurück an Research/Editor statt sofort verloren zu sein',f'✍️ Human Writing Protocol + Bülents Bike Life Voice: VERBINDLICH',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if turk else '🇹🇷 Heute keine geeignete neue Turkish-Rider-Story gefunden'),'']
+def turkish_status(items,qualified=None):
+ if any(is_turkish_focus(x) for x in items):return 'selected'
+ if qualified is not None and any(is_turkish_focus(x) for x in qualified):return 'qualified_not_selected'
+ return 'none_qualified'
+def telegram_preview(items,turk,qualified=None):
+ status=turkish_status(items,qualified)
+ mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – 5 qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Fehler gehen zurück an Research/Editor statt sofort verloren zu sein',f'✍️ Human Writing Protocol + Bülents Bike Life Voice: VERBINDLICH',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if status=='selected' else ('🇹🇷 Turkish-Rider: geeignete Story im QM-Pool, aber nicht in den finalen 5' if status=='qualified_not_selected' else '🇹🇷 Heute keine Turkish-Rider-Story durch das vollständige QM gekommen')),'']
  for i,x in enumerate(items,1):msg += [f'{i}️⃣ {"↩️ Top-20 vom Vortag | " if x.get("fallback_yesterday") else ""}[{series_for(x)}] {x["caption"]}',f'🔗 Quelle: {x["url"]}','']
  msg+=['Freigabe: motogp 1–5 / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
 def run_v8():
@@ -420,6 +425,6 @@ def run_v8():
   picks=picks+community_picks
 
  turk=any(is_turkish_focus(x) for x in picks)
- write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
+ write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk,qualified)
  print(f'{VERSION}: raw={len(details)}, fresh={len(fresh)}, current_q={len(current_q)}, fallback_q={len(fallback_q)}, final={len(picks)}, mix={mix}, Turkish={turk}')
 if __name__=='__main__':run_v8()
