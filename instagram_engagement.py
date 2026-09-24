@@ -1,12 +1,14 @@
 """Instagram Engagement V1: Queue, Community-Memory und Telegram-Kommandos."""
 from __future__ import annotations
-import hashlib, json, re
+import hashlib, json, os, re, time
 from instagram_reply_adapter import send_reply
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 MEMORY_FILE=Path("memory/INSTAGRAM_COMMUNITY.md"); QUEUE_FILE=Path("memory/INSTAGRAM_ENGAGEMENT_QUEUE.jsonl"); SEEN_FILE=Path("memory/INSTAGRAM_ENGAGEMENT_SEEN.txt")
 TRIGGERS={"kurs","info","link","mehr"}
+LOCK_DIR=Path("memory"); LOCK_TTL_SECONDS=300
+# Zustände: PENDING_APPROVAL/NEW -> SEND_APPROVED -> SENT (terminal); NEW -> IGNORED (terminal).
 def _clean(v:Any,limit:int=1000)->str:return re.sub(r"\s+"," ",str(v or "")).strip()[:limit]
 def classify(text:str)->str:
  v=text.casefold().strip(); words=set(re.findall(r"[\wäöüß]+",v))
@@ -36,16 +38,50 @@ def ingest(p):
  if not MEMORY_FILE.exists():MEMORY_FILE.write_text("# Instagram Community Memory\n",encoding="utf-8")
  with MEMORY_FILE.open("a",encoding="utf-8") as f:f.write(f"\n- {e['timestamp']} | @{e['username'] or 'unbekannt'} | {e['event_type']} | {e['category']} | Media: {e['media_id'] or '-'}\n")
  return e
-def telegram_command(command:str)->str:
+def _ticket_lock_path(ticket:str)->Path:return LOCK_DIR/f"TICKET_LOCK_{ticket}"
+def _acquire_ticket_lock(ticket:str,run_id:str="")->tuple[bool,Path]:
+ path=_ticket_lock_path(ticket);path.parent.mkdir(parents=True,exist_ok=True);now=time.time()
+ if path.exists():
+  try:data=json.loads(path.read_text(encoding="utf-8"));created=float(data.get("timestamp",0))
+  except (ValueError,TypeError,json.JSONDecodeError,OSError):created=0
+  if now-created<LOCK_TTL_SECONDS:
+   print(f"ENGAGEMENT LOCK: {ticket} bereits gesperrt");return False,path
+  print(f"ENGAGEMENT LOCK: {ticket} verwaist; wird überschrieben")
+  try:path.unlink()
+  except FileNotFoundError:pass
+ payload=json.dumps({"timestamp":now,"run_id":str(run_id or os.environ.get("GITHUB_RUN_ID","local"))})
+ try:
+  fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL)
+  with os.fdopen(fd,"w",encoding="utf-8") as handle:handle.write(payload)
+  return True,path
+ except FileExistsError:
+  print(f"ENGAGEMENT LOCK: {ticket} parallel gesperrt");return False,path
+def _release_ticket_lock(path:Path)->None:
+ try:path.unlink()
+ except FileNotFoundError:pass
+
+def telegram_command(command:str,run_id:str="")->str:
  m=re.match(r"^\s*(antwort|ändern|ignorieren|info|memory)\s+(IG-[A-F0-9]{8})(?:\s+(.*))?\s*$",command,re.I)
  if not m:return "FEHLER: Befehl unbekannt."
  action,ticket,arg=m.group(1).casefold(),m.group(2).upper(),_clean(m.group(3));items=_queue();event=next((x for x in items if x.get("ticket_id")==ticket),None)
  if not event:return f"FEHLER: {ticket} nicht gefunden."
+ if action in {"antwort","ändern"} and (event.get("status")=="SENT" or event.get("reply_id")):
+  return f"FEHLER: Bereits gesendet (reply_id: {event.get('reply_id') or '-'})"
  if action=="info":return f"{ticket} | @{event.get('username') or 'unbekannt'} | {event['category']} | {event['status']} | {event.get('text','')}"
  if action=="memory":
   if not event.get("username"):return f"{ticket}: kein öffentlicher Accountname vorhanden."
   lines=MEMORY_FILE.read_text(encoding="utf-8").splitlines() if MEMORY_FILE.exists() else [];hits=[x for x in lines if f"@{event['username']} |" in x]
   return "\n".join(hits[-10:]) or f"{ticket}: keine früheren belegbaren Interaktionen."
+ lock_path=None
+ if action in {"antwort","ändern","ignorieren"}:
+  acquired,lock_path=_acquire_ticket_lock(ticket,run_id)
+  if not acquired:return f"{ticket}: Verarbeitung läuft bereits (Lock < 5 Min)."
+ try:
+  return _telegram_mutation(action,ticket,arg,event,items)
+ finally:
+  if lock_path:_release_ticket_lock(lock_path)
+
+def _telegram_mutation(action,ticket,arg,event,items):
  if action=="ignorieren":event["status"]="IGNORED"
  elif action=="ändern":
   if not arg:return "FEHLER: Nach 'ändern' fehlt der neue Text."

@@ -7,6 +7,9 @@ on:
       - "instagram_engagement.py"
       - "instagram_reply_adapter.py"
       - "test_instagram_engagement.py"
+      - "test_instagram_reply_adapter.py"
+      - "test_telegram_router.py"
+      - "telegram_router.py"
       - ".github/workflows/instagram-reply-adapter-test.yml"
 
 permissions:
@@ -25,4 +28,4 @@ jobs:
       - name: Install test dependency
         run: python -m pip install requests
       - name: Run mocked Instagram reply unit tests
-        run: python -m unittest test_instagram_engagement.py -v
+        run: python -m unittest test_instagram_engagement.py test_instagram_reply_adapter.py test_telegram_router.py -v

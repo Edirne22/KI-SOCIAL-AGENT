@@ -26,9 +26,24 @@ from generate_agnes_media import agnes_generate_image, save_bytes
 from instagram_publish import process_image_for_instagram, create_container, publish as ig_publish_container, wait as ig_wait
 from asset_paths import asset_url, RAW_BASE
 
+TELEGRAM_LAST_UPDATE_FILE = Path("memory/TELEGRAM_LAST_UPDATE_ID")
+
+def _read_last_update_id() -> int | None:
+    if not TELEGRAM_LAST_UPDATE_FILE.exists():
+        return None
+    try:
+        return int(TELEGRAM_LAST_UPDATE_FILE.read_text(encoding="utf-8").strip())
+    except (ValueError, OSError):
+        return None
+
+def _write_last_update_id(update_id: int) -> None:
+    TELEGRAM_LAST_UPDATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    TELEGRAM_LAST_UPDATE_FILE.write_text(str(update_id) + "\n", encoding="utf-8")
+
 
 def _ack(update_id: int) -> None:
     get_updates(offset=update_id + 1)
+    _write_last_update_id(update_id)
 
 
 def _append_vision_log(entry: dict) -> None:
@@ -336,7 +351,17 @@ def _handle_bild_command(text_or_action: str) -> bool:
 
 def main() -> None:
     allowed = str(get_chat_id())
-    updates = sorted(get_updates(), key=lambda x: x.get("update_id", 0))
+    last_update_id = _read_last_update_id()
+    if last_update_id is None:
+        baseline = sorted(get_updates(), key=lambda x: x.get("update_id", 0))
+        ids = [x.get("update_id") for x in baseline if isinstance(x.get("update_id"), int)]
+        baseline_id = max(ids) if ids else 0
+        _write_last_update_id(baseline_id)
+        if ids:
+            get_updates(offset=baseline_id + 1)
+        print("ROUTER: First-Run Telegram-Offset initialisiert; keine Updates verarbeitet.")
+        return
+    updates = sorted(get_updates(offset=last_update_id + 1), key=lambda x: x.get("update_id", 0))
     if not updates:
         print("ROUTER: Keine neuen Telegram-Updates.")
         return
@@ -403,7 +428,7 @@ def main() -> None:
 
         if re.match(r"^(?:antwort|ändern|ignorieren|info|memory)\\s+ig-[a-f0-9]{8}(?:\\s+.*)?$", cmd, re.I):
             print(f"ROUTER: Update {uid} -> Instagram Engagement")
-            send_message(instagram_engagement.telegram_command(text))
+            send_message(instagram_engagement.telegram_command(text, run_id=os.environ.get("GITHUB_RUN_ID", "local")))
             _ack(uid)
             return
 
