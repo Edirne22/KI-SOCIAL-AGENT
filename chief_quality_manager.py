@@ -9,7 +9,7 @@ PR_WORDS=('bahnbrechend','wegweisend','erstklassig','immense bedeutung','entsche
 BAD_REDUNDANCY=(r'\bbestaetig\w*\b.{0,55}\bbestaetig\w*\b',r'\bbestatig\w*\b.{0,55}\bbestatig\w*\b')
 INTERNAL_MARKERS=('turn0search','turn1search','contentreference','oaicite','system prompt','interne tool-id')
 RACING_HUMAN_PATTERNS=((r'\bmake[- ]?or[- ]?break\b','unnötiger englischer Marketingausdruck: Make-or-Break'),(r'\bfrische impulse\b','unbelegte redaktionelle Wertung: frische Impulse'),(r'\bwer hat (?:euren|deinen) (?:personlichen )?favoriten\b','unidiomatische Community-Frage'),(r'\bkontur der titelkampfe\b','unnatürliche/Synonymakrobatik-Formulierung'))
-def _fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
+def _fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ä','a').replace('ş','s').replace('ç','c')
 def _log(domain,item,ok,errors):
  LOG.parent.mkdir(parents=True,exist_ok=True);old=LOG.read_text(encoding='utf-8') if LOG.exists() else '# Chief Quality Manager Log\n\n';title=item.get('title','ohne Titel');state='PASS' if ok else 'FAIL';row=f'## {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC} | {domain} | {state}\nTitel: {title}\nStory-Key: {item.get("story_key","")}\nGründe: {"; ".join(errors) if errors else "alle Gates bestanden"}\nHuman-Writing-Protocol: V1.0\n\n';LOG.write_text(old+row,encoding='utf-8')
 def review(domain,item,caption,media_path='',source_url='',domain_reviewer=None):
