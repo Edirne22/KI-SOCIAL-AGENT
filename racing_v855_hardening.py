@@ -5,7 +5,7 @@ import re,time,json
 from racing_final_guard import expected_series
 
 VALID=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
-UNSUPPORTED=('WorldWCR','WorldSPB')
+UNSUPPORTED=('WorldWCR','WorldSPB','Moto4')
 
 def install(a):
     original_prompt=a._editor_prompt

@@ -12,7 +12,7 @@ from collections import Counter
 import json,re,time,random
 VERSION='V8.5.4';TOP10=Path('memory/RACING_TOP10_POOL.json')
 VALID_SERIES=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
-TURKISH_ALIASES={'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu'),'Can Oncu':('can oncu','can öncü'),'Deniz Oncu':('deniz oncu','deniz öncü'),'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu'),'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu')}
+TURKISH_ALIASES={'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu'),'Can Oncu':('can oncu','can öncü'),'Deniz Oncu':('deniz oncu','deniz öncü'),'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu','bahattin sofouglu'),'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu')}
 RIDERS_V2=list(TURKISH_ALIASES)+['Marc Marquez','Alex Marquez','Marco Bezzecchi','Jorge Martin','Pedro Acosta','Francesco Bagnaia','Fabio Quartararo','Jack Miller','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado','Alvaro Bautista','Miguel Oliveira','Alberto Surra','Sergio Garcia','Iker Lecuona','Andrea Iannone','Sam Lowes','Alex Lowes','Jonathan Rea','Stefano Manzi','Jeremy Alcoba','Marcos Ramirez']
 PROMO_WORDS=('fantasy','super boost','mystery boost','videopass','video pass','tickets','ticket','store','merch','merchandise','shop','giveaway','promo code','promotion','behind the scenes','catch up on','vlog')
 RACING_WORDS=('race','racing','grand prix',' gp','practice','fp1','fp2','qualifying','pole','sprint','podium','win','victory','championship','title','rider','team','replace','injury','return','test','lap','grid','motogp','moto2','moto3','worldsbk','worldssp','supersport')
@@ -53,6 +53,7 @@ def series_for_raw(x):
  u=fold(x.get('url',''));t=fold(article_text(x))
  if 'worldwcr' in t:return 'WorldWCR'
  if 'worldspb' in t or 'sportbike world championship' in t:return 'WorldSPB'
+ if re.search(r'(?<![a-z0-9])moto4(?![a-z0-9])',t):return 'Moto4'
  if 'worldssp300' in t or 'worldssp 300' in t:return 'WorldSSP300'
  if any(v in t for v in ('worldssp','world supersport','supersport')) and 'motogp' not in t:return 'WorldSSP'
  if 'worldsbk' in t or 'world superbike' in t:return 'WorldSBK'
@@ -96,7 +97,7 @@ def freshness_diagnostics(items,now):
  print('FRESHNESS DIAG reasons='+json.dumps(dict(reasons),ensure_ascii=False,sort_keys=True));print('FRESHNESS DIAG by_series='+json.dumps(by_series,ensure_ascii=False,sort_keys=True));return reasons,by_series
 def is_feature(x):return any(w in fold(article_text(x)) for w in FEATURE_WORDS)
 def racing_relevant(x):
- text=fold(article_text(x));return 'worldwcr' not in text and 'worldspb' not in text and 'sportbike world championship' not in text and not any(w in text for w in PROMO_WORDS) and bool(riders_in(text) or detect_turkish_rider(x) or any(w in text for w in RACING_WORDS))
+ text=fold(article_text(x));return 'worldwcr' not in text and 'worldspb' not in text and 'sportbike world championship' not in text and not re.search(r'(?<![a-z0-9])moto4(?![a-z0-9])',text) and not any(w in text for w in PROMO_WORDS) and bool(riders_in(text) or detect_turkish_rider(x) or any(w in text for w in RACING_WORDS))
 def editorial_score(x,names):
  age=max(0,age_days(x,dt.now(timezone.utc)));fresh=max(0,80-int(age*10));text=fold(article_text(x));sport=sum(12 for w in ('win','victory','pole','podium','championship','title','race','sprint','qualifying','injury','return','replace') if w in text);live=35 if any(w in text for w in ('race','sprint','qualifying','practice','fp1','fp2','championship','standings','injury','return','replace')) else 0
  return fresh+score(x.get('title',''),names)+sport+live+(30 if is_turkish_focus(x) else 0)+(-45 if is_feature(x) else 0)
@@ -415,6 +416,7 @@ def run_v8():
   community_picks=generate_community_fallbacks(needed,now)
   picks=picks+community_picks
 
+ turk=any(is_turkish_focus(x) for x in picks)
  write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk)
  print(f'{VERSION}: raw={len(details)}, fresh={len(fresh)}, current_q={len(current_q)}, fallback_q={len(fallback_q)}, final={len(picks)}, mix={mix}, Turkish={turk}')
 if __name__=='__main__':run_v8()
