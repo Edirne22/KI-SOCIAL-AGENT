@@ -1,6 +1,7 @@
 """Instagram Engagement V1: Queue, Community-Memory und Telegram-Kommandos."""
 from __future__ import annotations
 import hashlib, json, re
+from instagram_reply_adapter import send_reply
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -52,4 +53,11 @@ def telegram_command(command:str)->str:
  elif action=="antwort":
   if not event.get("reply_draft"):return "FEHLER: Kein Antwortvorschlag vorhanden."
   event["status"]="SEND_APPROVED"
+ if event.get("status")=="SEND_APPROVED":
+  if event.get("reply_id"):return f"{ticket}: SENT | Reply-ID: {event['reply_id']}"
+  try:
+   reply_id=send_reply(event.get("event_id",""),event.get("reply_draft",""))
+  except Exception as exc:
+   _save(items);return f"{ticket}: SEND_APPROVED – Senden fehlgeschlagen: {exc}"
+  event["status"]="SENT";event["reply_id"]=reply_id;event["sent_at"]=datetime.now(timezone.utc).isoformat()
  _save(items);return f"{ticket}: {event['status']}"
