@@ -66,11 +66,30 @@ class InstagramReplyAdapterTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 adapter.send_reply("comment_1", "Text")
 
+    @patch.dict(os.environ, {"INSTAGRAM_ACCESS_TOKEN": "test-token"}, clear=False)
+    def test_timeout_is_ambiguous(self):
+        with patch.object(adapter.requests, "post", side_effect=adapter.requests.exceptions.Timeout):
+            with self.assertRaisesRegex(RuntimeError, "^AMBIGUOUS - manuell prüfen$"):
+                adapter.send_reply("comment_1", "Text")
+
+    @patch.dict(os.environ, {"INSTAGRAM_ACCESS_TOKEN": "test-token"}, clear=False)
+    def test_connection_error_is_ambiguous(self):
+        with patch.object(adapter.requests, "post", side_effect=adapter.requests.exceptions.ConnectionError):
+            with self.assertRaisesRegex(RuntimeError, "^AMBIGUOUS - manuell prüfen$"):
+                adapter.send_reply("comment_1", "Text")
+
     @patch.dict(os.environ, {}, clear=True)
     def test_missing_token_fails_before_http(self):
         with patch.object(adapter.requests, "post") as post:
             with self.assertRaisesRegex(RuntimeError, "^INSTAGRAM_ACCESS_TOKEN nicht gesetzt$"):
                 adapter.send_reply("comment_1", "Text")
+            post.assert_not_called()
+
+    @patch.dict(os.environ, {"INSTAGRAM_ACCESS_TOKEN": "test-token"}, clear=False)
+    def test_missing_comment_id_fails_before_http(self):
+        with patch.object(adapter.requests, "post") as post:
+            with self.assertRaisesRegex(RuntimeError, "^comment_id fehlt$"):
+                adapter.send_reply("", "Text")
             post.assert_not_called()
 
     @patch.dict(os.environ, {"INSTAGRAM_ACCESS_TOKEN": "test-token"}, clear=False)
