@@ -5,7 +5,12 @@
       "enabled": true,
       "api_key_env": "GEMINI_API_KEY",
       "base_url": "https://generativelanguage.googleapis.com/v1beta",
-      "text_models": ["gemini-3.8-flash","gemini-3.7-flash","gemini-3.6-flash","gemini-3.5-flash"],
+      "text_models": [
+        "gemini-3.8-flash",
+        "gemini-3.7-flash",
+        "gemini-3.6-flash",
+        "gemini-3.5-flash"
+      ],
       "timeout_seconds": 120
     },
     "agnes": {
@@ -23,18 +28,65 @@
       "base_url": "https://api.anthropic.com/v1",
       "model": "claude-sonnet-4-5",
       "timeout_seconds": 120
+    },
+    "nvidia": {
+      "enabled": true,
+      "api_key_env": "NVIDIA_API_KEY",
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "chat_model": "minimaxai/minimax-m3",
+      "timeout_seconds": 120
     }
   },
   "tasks": {
-    "content_ideas": { "provider": "gemini", "response_type": "text" },
-    "final_captions": { "provider": "agnes", "response_type": "text" },
-    "racing_semantic_qm": { "provider": "agnes", "response_type": "text" },
-    "image_generation": { "provider": "agnes", "response_type": "image" },
-    "video_generation": { "provider": "agnes", "response_type": "video" },
-    "research": { "provider": "gemini", "response_type": "text" },
-    "translation_de_tr": { "provider": "gemini", "response_type": "text" },
-    "weekly_plan": { "provider": "gemini", "response_type": "text" },
-    "ride_with_me": { "provider": "gemini", "response_type": "text" },
-    "quality_check": { "provider": "gemini", "response_type": "text" }
+    "content_ideas": {
+      "provider": "gemini",
+      "response_type": "text"
+    },
+    "final_captions": {
+      "provider": "agnes",
+      "primary": "agnes",
+      "fallback": [
+        "gemini",
+        "nvidia"
+      ],
+      "response_type": "text"
+    },
+    "racing_semantic_qm": {
+      "provider": "agnes",
+      "primary": "agnes",
+      "fallback": [
+        "gemini",
+        "nvidia"
+      ],
+      "response_type": "text"
+    },
+    "image_generation": {
+      "provider": "agnes",
+      "response_type": "image"
+    },
+    "video_generation": {
+      "provider": "agnes",
+      "response_type": "video"
+    },
+    "research": {
+      "provider": "gemini",
+      "response_type": "text"
+    },
+    "translation_de_tr": {
+      "provider": "gemini",
+      "response_type": "text"
+    },
+    "weekly_plan": {
+      "provider": "gemini",
+      "response_type": "text"
+    },
+    "ride_with_me": {
+      "provider": "gemini",
+      "response_type": "text"
+    },
+    "quality_check": {
+      "provider": "gemini",
+      "response_type": "text"
+    }
   }
 }
