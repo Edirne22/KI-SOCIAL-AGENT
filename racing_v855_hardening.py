@@ -65,7 +65,7 @@ def install(a):
         # Resolve through the module at CALL TIME. This is intentional: offline
         # regression tests replace a.semantic_review_detailed with a provider-free
         # fake. Capturing it during install() made the selftest call Agnes.
-        for n in (1,2,3):
+        for n in (1,2):
             r=a.semantic_review_detailed(x,caption)
             joined=' '.join(r.get('hard_reasons',[])).lower()
             technical=('technisch ungueltig' in joined or 'http 429' in joined or 'rate limit' in joined or 'provider-anfrage' in joined or 'timeout' in joined)
