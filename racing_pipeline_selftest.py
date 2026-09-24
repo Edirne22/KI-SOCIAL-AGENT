@@ -61,6 +61,13 @@ def test_moto4_and_turkish_rider_flagging():
  ok(a.detect_turkish_rider(turk)=='Bahattin Sofuoglu','agency must recognize Sofouglu alias')
  ok(a.is_turkish_focus(turk) and turk.get('turkish_rider')=='Bahattin Sofuoglu','selected Turkish Rider story must set persistent turkish_rider flag')
 
+def test_turkish_status_contract():
+ turk={'title':'Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP','summary':'The Turkish rider joins QJMOTOR in WorldSSP','series':'WorldSSP'}
+ normal={'title':'WorldSBK Cremona preview','summary':'WorldSBK race','series':'WorldSBK'}
+ ok(a.turkish_status([turk],[turk])=='selected','selected Turkish story must report selected')
+ ok(a.turkish_status([normal],[turk,normal])=='qualified_not_selected','qualified Turkish story omitted from final five must not be reported as no suitable story')
+ ok(a.turkish_status([normal],[normal])=='none_qualified','no qualified Turkish story must report none_qualified')
+
 def test_transfer_direction_and_unsupported_worldspb():
  worldspb={'title':'Preview: title fight in first WorldSPB season','summary':'The first FIM Sportbike World Championship season could crown its champion at Cremona','series':'WorldSBK'}
  passed,errs=final_guard.review(worldspb,'Cremona entscheidet die WorldSBK-Saison.\n\nWer holt den Titel?\n\n#WorldSBK #Racing #BuelentsBikeLife #MotorradRacing')
@@ -137,5 +144,5 @@ def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
  ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL RETRY' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
 def main():
- test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
+ test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()
