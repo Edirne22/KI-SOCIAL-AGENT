@@ -28,6 +28,9 @@ def riders_in(text):
  return list(dict.fromkeys(out))
 def detect_turkish_rider(x):
  text=fold(article_text(x))
+ # Match the official shortened/misspelt Bahattin headline without treating every
+ # surname-only Sofuoglu mention as Bahattin (Zayn shares the surname).
+ if re.search(r'(?<![a-z])sofouglu(?![a-z])',text) and any(k in text for k in ('smits','motoxracing','qjmotor','worldssp')):return 'Bahattin Sofuoglu'
  for rider,aliases in TURKISH_ALIASES.items():
   if any(fold(a) in text for a in aliases):return rider
  return ''

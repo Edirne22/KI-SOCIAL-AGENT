@@ -56,6 +56,7 @@ def test_moto4_and_turkish_rider_flagging():
  ok(not a.racing_relevant(dict(moto4)),'Moto4 must be rejected before copy generation')
  typo='Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP'
  ok(trs.rider_for(typo)=='Bahattin Sofuoğlu','scout must recognize source spelling Sofouglu as Bahattin Sofuoğlu')
+ ok(trs.rider_for('Zayn Sofuoğlu test day')=='Zayn Sofuoğlu','surname fallback must not steal explicit Zayn identity')
  turk={'title':typo,'summary':'The Turkish rider joins QJMOTOR in WorldSSP','series':'WorldSSP'}
  ok(a.detect_turkish_rider(turk)=='Bahattin Sofuoglu','agency must recognize Sofouglu alias')
  ok(a.is_turkish_focus(turk) and turk.get('turkish_rider')=='Bahattin Sofuoglu','selected Turkish Rider story must set persistent turkish_rider flag')
