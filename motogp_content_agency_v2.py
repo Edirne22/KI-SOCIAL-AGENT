@@ -140,7 +140,7 @@ def _parse_editor_json(raw,variant):
 def german_editor(x,repair_reasons=None):
  if len(re.sub(r'\s+',' ',x.get('title','')).strip())<18:return ''
  last=None
- for technical_attempt in range(3):
+ for technical_attempt in range(2):
   try:
    variant=choose_structure_variant();parts=_parse_editor_json(generate('final_captions',_editor_prompt(x,repair_reasons,variant)),variant)
    if not x.get('turkish_rider'):parts=[p.replace('🇹🇷','').strip() for p in parts]
