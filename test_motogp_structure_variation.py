@@ -43,3 +43,20 @@ class MotoGPStructureVariationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_racing_qm_accepts_variant_structure_contracts():
+ from motogp_quality_manager import review
+ base={'title':'Marc Marquez gewinnt MotoGP Rennen','summary':'Marc Marquez gewinnt das MotoGP Rennen.','series':'MotoGP'}
+ samples={
+  'HOOK_BODY_QUESTION':'Hook.\n\nFakt zum Rennen.\n\nWas meinst du?\n\n#MotoGP #MarcMarquez #MotorradRacing #BuelentsBikeLife',
+  'BODY_QUESTION':'Fakt zum Rennen.\n\nWas meinst du?\n\n#MotoGP #MarcMarquez #MotorradRacing #BuelentsBikeLife',
+  'STORY_QUESTION':'Marc Marquez gewinnt das Rennen.\n\nWie siehst du das?\n\n#MotoGP #MarcMarquez #MotorradRacing #BuelentsBikeLife',
+  'FACT_FACT_FACT':'Marc Marquez gewinnt.\n\nMotoGP Rennen entschieden.\n\nMarquez steht als Sieger fest.\n\nMehr Racing bei Buelents Bike Life.\n\n#MotoGP #MarcMarquez #MotorradRacing #BuelentsBikeLife',
+  'QUESTION_HOOK_BODY':'Was meinst du?\n\nMarc Marquez gewinnt das MotoGP Rennen.\n\n#MotoGP #MarcMarquez #MotorradRacing #BuelentsBikeLife',
+  'ZITAT_BODY':'Marc Marquez gewinnt.\n\nDer MotoGP-Sieg steht fest.\n\nWie siehst du das?\n\n#MotoGP #MarcMarquez #MotorradRacing #BuelentsBikeLife',
+ }
+ for variant,caption in samples.items():
+  item=dict(base,structure_variant=variant)
+  ok_,errors=review(item,caption)
+  assert ok_,(variant,errors)
