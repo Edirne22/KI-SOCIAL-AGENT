@@ -239,33 +239,6 @@
         "kind": "news"
       }
     ],
-    "2026-09-24": [
-      {
-        "story_key": "motogp:1091578",
-        "title": "PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB",
-        "url": "https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578",
-        "summary": "",
-        "preview": "",
-        "published_at": null,
-        "series": "WorldSBK",
-        "source_series": "WorldSBK",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1091355",
-        "title": "PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK",
-        "url": "https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355",
-        "summary": "",
-        "preview": "",
-        "published_at": null,
-        "series": "WorldSBK",
-        "source_series": "WorldSBK",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      }
-    ]
+    "2026-09-24": []
   }
 }

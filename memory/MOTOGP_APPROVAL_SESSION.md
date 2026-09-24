@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 Semantic-Fakten-QM: PASS
 QM: PASS
-Session-Timestamp: 1790256475
+Session-Timestamp: 1790257390
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -17,26 +17,33 @@ Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 2.6
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1091578
-Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-preview-22h-ago-prev-01.jpg
+Herkunft: Aktuell
+Artikelalter-Tage: 0.0
+Kategorie: Community
+Serie: Community
+Story-Key: title:community-spotlight-knieschleifer-aus-berzeugung
+Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
+Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung/
+Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Es sind noch zwei Runden im ersten WorldSPB-Jahr übrig.
+## Instagram
+Status: ENTWURF
+Freigabe: Community
+Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung/
+Medienstatus: QUELLE_PRÜFEN
+Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
+Text:
+Deutschlandweite Biker-Community mit über 30.000 Mitgliedern und mehr als 200 Regionalgruppen in DE/AT/CH/DK. Ausfahrten, Stammtische, wohltätige Aktionen und Einsatz für Unterfahrschutz an Leitplanken.
 
-In Cremona könnte der WorldSPB-Champion gekrönt werden.
+Gegründet von Dieter Grommes für echte Gemeinschaft auf zwei Rädern! 🧡
 
-Salvador will die Titelentscheidung endgültig herbeiführen.
+Du willst dabei sein? Schreib ihnen auf Instagram.
 
-Was denkt ihr – wird hier schon der Champion gefeiert?
+Was ist für dich das Beste an einer Biker-Community?
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#KnieschleiferAusUeberzeugung #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -44,28 +51,35 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.6
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1091355
-Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-2-preview-1d-ago-sched-01.jpg
+Neufassungen: 0
+QM-Ruecklaeufe: 0
+Herkunft: Aktuell
+Artikelalter-Tage: 0.0
+Kategorie: Community
+Serie: Community
+Story-Key: title:community-spotlight-bike-society-united
+Titel: 🏍️ Community-Spotlight: Bike Society United
+Quelle: https://www.instagram.com/bike_society.united/
+Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Cremona bringt das WorldSBK-Rennwochenende für Runde 10.
+## Instagram
+Status: ENTWURF
+Freigabe: Community
+Quelle: https://www.instagram.com/bike_society.united/
+Medienstatus: QUELLE_PRÜFEN
+Titel: 🏍️ Community-Spotlight: Bike Society United
+Text:
+Bikes. People. Roads. – Teil der landesweiten Bike Society Community in NRW! Respekt, Regeln, Leidenschaft und gemeinsames Fahren stehen an erster Stelle.
 
-Nach neun durchgeführten Läufen stehen noch drei Rennen bis zum Saisonende an.
+Ausfahrten, Technik-Tipps und Zusammenhalt ohne Mitgliedsbeitrag. 🧡
 
-In Cremona könnte ein neuer Weltmeister gekrönt werden.
+Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
 
-Worauf freut ihr euch am meisten am Wochenende?
+Was ist für dich das Beste an einer Biker-Community?
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#BikeSocietyUnited #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -79,9 +93,9 @@ Herkunft: Aktuell
 Artikelalter-Tage: 0.0
 Kategorie: Community
 Serie: Community
-Story-Key: title:community-spotlight-bike-society-hagen
-Titel: 🏍️ Community-Spotlight: Bike Society Hagen
-Quelle: https://www.instagram.com/bike_society_hagen/
+Story-Key: title:community-spotlight-knieschleifer-ruhrpott
+Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
+Quelle: https://www.instagram.com/ks_ruhrpott/
 Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
@@ -89,20 +103,19 @@ Text:
 ## Instagram
 Status: ENTWURF
 Freigabe: Community
-Quelle: https://www.instagram.com/bike_society_hagen/
+Quelle: https://www.instagram.com/ks_ruhrpott/
 Medienstatus: QUELLE_PRÜFEN
-Titel: 🏍️ Community-Spotlight: Bike Society Hagen
+Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
 Text:
-Bikes. People. Roads. – Die Bike Society Hagen ist eine Community für alle,
-die Motorrad lieben. Ausfahrten, Treffen, Events, Season Opening.
+Die Regionalgruppe der Knieschleifer aus Überzeugung im Pott! Gemeinsame Ausfahrten, Treffen und Leidenschaft für Kurven und Sicherheit im Ruhrgebiet.
 
-Ihr Motto: "ALLES KANN, NICHTS MUSS. Motor an, Kopf aus!" 🧡
+Zusammenhalt und Leidenschaft auf zwei Rädern! 🧡
 
-Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
+Du willst dabei sein? Schreib ihnen auf Instagram.
 
 Was ist für dich das Beste an einer Biker-Community?
 
-#BikeSocietyHagen #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity
+#KsRuhrpott #KnieschleiferAusUeberzeugung #Motorradfahren #Kurvenliebe #BikerCommunity
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
