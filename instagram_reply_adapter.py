@@ -18,11 +18,16 @@ def send_reply(comment_id: str, message: str) -> str:
     if not message:
         raise RuntimeError("message ist leer")
 
-    response = requests.post(
-        f"{API}/{comment_id}/replies",
-        data={"message": message, "access_token": token},
-        timeout=45,
-    )
+    try:
+        response = requests.post(
+            f"{API}/{comment_id}/replies",
+            data={"message": message, "access_token": token},
+            timeout=45,
+        )
+    except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as exc:
+        # TODO: Vor erneutem Senden Idempotenz-Check gegen Instagram einbauen.
+        print("AMBIGUOUS - manuell prüfen")
+        raise RuntimeError("AMBIGUOUS - manuell prüfen") from exc
     if response.status_code not in (200, 201):
         raise RuntimeError(
             f"Instagram Reply API {response.status_code}: {response.text[:500]}"
