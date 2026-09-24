@@ -21,10 +21,17 @@ BAD_GERMAN=('legende zu einer legende','mit großem anfangsbuchstaben','mit gros
 def fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def article_text(x):return ' '.join((x.get('title',''),x.get('summary',''),x.get('url','')))
 def riders_in(text):
- low=fold(text);out=[]
+ low=fold(text);out=[];full_hits=set()
+ # Full-name matches win first. A shared surname (Marquez, Lowes, Oncu,
+ # Sofuoglu...) must never identify every rider who owns that surname.
  for n in RIDERS_V2:
-  full=fold(n);last=full.split()[-1]
-  if full in low or (len(last)>=5 and re.search(r'(?<![a-z])'+re.escape(last)+r'(?![a-z])',low)):out.append(n)
+  full=fold(n)
+  if re.search(r'(?<![a-z])'+re.escape(full)+r'(?![a-z])',low):out.append(n);full_hits.add(n)
+ surname_map={}
+ for n in RIDERS_V2:surname_map.setdefault(fold(n).split()[-1],[]).append(n)
+ for last,owners in surname_map.items():
+  if len(last)<5 or len(owners)!=1:continue
+  if re.search(r'(?<![a-z])'+re.escape(last)+r'(?![a-z])',low) and owners[0] not in full_hits:out.append(owners[0])
  return list(dict.fromkeys(out))
 def detect_turkish_rider(x):
  text=fold(article_text(x))
@@ -150,7 +157,10 @@ def german_editor(x,repair_reasons=None):
    variant=choose_structure_variant();parts=_parse_editor_json(generate('final_captions',_editor_prompt(x,repair_reasons,variant)),variant)
    if not x.get('turkish_rider'):parts=[p.replace('🇹🇷','').strip() for p in parts]
    x['structure_variant']=variant
-   return '\n\n'.join(parts+[hashtags(x)])
+   # Hashtags must be computed from THIS editor attempt, never a stale caption
+   # left on the item by an earlier retry.
+   body='\n\n'.join(parts);x['caption']=body
+   return body+'\n\n'+hashtags(x)
   except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:last=e;time.sleep(.5)
   except Exception as e:last=e;break
  print('EDITOR EXCEPTION:',type(last).__name__,str(last)[:180]);return ''

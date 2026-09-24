@@ -72,6 +72,20 @@ def test_rounds_and_hashtag_fact_contract():
  tags=a.hashtags(h)
  ok('#AlexMarquez' not in tags,'hashtags must not pull unrelated riders from page noise')
  ok('#JorgeMartin' in tags or '#MarcMarquez' in tags,'hashtags should use riders actually present in caption/title/summary')
+ ok(a.riders_in('Marc Marquez attacks')==['Marc Marquez'],'shared Marquez surname must not invent Alex Marquez')
+ ok(a.riders_in('Alex Lowes attacks')==['Alex Lowes'],'shared Lowes surname must not invent Sam Lowes')
+ ok(a.riders_in('Can Oncu wins')==['Can Oncu'],'shared Oncu surname must not invent Deniz Oncu')
+ ok(a.riders_in('Bahattin Sofuoglu joins')==['Bahattin Sofuoglu'],'shared Sofuoglu surname must not invent Zayn Sofuoglu')
+ retry_item={'title':'Marc Marquez race update','summary':'Marc Marquez update','series':'MotoGP','caption':'ALT Alex Marquez'}
+ old_generate=a.generate;old_choose=a.choose_structure_variant
+ try:
+  a.choose_structure_variant=lambda:'BODY_QUESTION'
+  a.generate=lambda task,prompt:'{"body":"Marc Marquez ist im Fokus.","question":"Wie seht ihr das?"}'
+  generated=a.german_editor(retry_item)
+  ok('#AlexMarquez' not in generated and '#MarcMarquez' in generated,'editor retry must build hashtags from current body, not stale caption')
+ finally:a.generate,a.choose_structure_variant=old_generate,old_choose
+ ssp300={'title':'WorldSSP300 race update','summary':'WorldSSP300 race','series':'WorldSSP300'}
+ ok(final_guard.review(ssp300,'Rennupdate.\n\n#WorldSSP300 #MotorradRacing')[0],'WorldSSP300 hashtag must not be misread as WorldSSP')
 
 def test_turkish_status_contract():
  turk={'title':'Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP','summary':'The Turkish rider joins QJMOTOR in WorldSSP','series':'WorldSSP'}

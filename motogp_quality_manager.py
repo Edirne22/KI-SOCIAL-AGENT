@@ -7,10 +7,15 @@ RIDER_NAMES=('Marc Marquez','Alex Marquez','Pedro Acosta','Jorge Martin','Marco 
 RIDERS={re.sub(r'[^a-z0-9]','',n.casefold()):n for n in RIDER_NAMES}
 def fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def rider_matches(text):
- low=fold(text);out=[]
+ low=fold(text);out=[];full_hits=set()
  for n in RIDER_NAMES:
-  f=fold(n);last=f.split()[-1]
-  if f in low or (len(last)>=5 and re.search(r'(?<![a-z])'+re.escape(last)+r'(?![a-z])',low)):out.append(n)
+  f=fold(n)
+  if re.search(r'(?<![a-z])'+re.escape(f)+r'(?![a-z])',low):out.append(n);full_hits.add(n)
+ surname_map={}
+ for n in RIDER_NAMES:surname_map.setdefault(fold(n).split()[-1],[]).append(n)
+ for last,owners in surname_map.items():
+  if len(last)<5 or len(owners)!=1:continue
+  if re.search(r'(?<![a-z])'+re.escape(last)+r'(?![a-z])',low) and owners[0] not in full_hits:out.append(owners[0])
  return list(dict.fromkeys(out))
 def rider_tag(rider):return '#'+re.sub(r'[^A-Za-z0-9]','',rider)
 def repair_rider_hashtags(item,caption):

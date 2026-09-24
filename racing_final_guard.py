@@ -60,8 +60,9 @@ def review(item,caption):
  if source_dest=='WorldSBK' and _caption_claims_destination(cap,'MotoGP'):errors.append('Final-Guard: Transfer-Richtung widerspricht Quelle (Quelle -> WorldSBK, Text -> MotoGP)')
  if series and declared and declared!=series:errors.append(f'Final-Guard: Serien-Metadatum {declared} widerspricht Quelle {series}')
  tags={'MotoGP':'#motogp','Moto2':'#moto2','Moto3':'#moto3','WorldSBK':'#worldsbk','WorldSSP':'#worldssp','WorldSSP300':'#worldssp300'}
- if series in tags and tags[series] not in caption.casefold():errors.append(f'Final-Guard: Pflicht-Serienhashtag {tags[series]} fehlt')
- wrong=[tag for s,tag in tags.items() if s!=series and tag in caption.casefold()]
+ caption_tags={t.casefold() for t in re.findall(r'#[A-Za-z0-9]+',caption)}
+ if series in tags and tags[series] not in caption_tags:errors.append(f'Final-Guard: Pflicht-Serienhashtag {tags[series]} fehlt')
+ wrong=[tag for s,tag in tags.items() if s!=series and tag in caption_tags]
  if wrong:errors.append('Final-Guard: falscher Serienhashtag '+','.join(wrong))
  if 'razgatlioglu' in cap and 'rahil etgar' in cap:errors.append('Final-Guard: erfundener/korruptierter Fahrername vor Razgatlioglu')
  # A source stating remaining rounds/race weekends must not be compressed into the same number of individual races.
