@@ -41,6 +41,18 @@ class Tests(unittest.TestCase):
      self.assertIn("Bereits gesendet (reply_id: reply-terminal)",result)
      send.assert_not_called()
 
+ def test_parallel_lock_blocks_second_call(self):
+  with tempfile.TemporaryDirectory() as t:
+   r=Path(t)
+   with patch.object(ie,"MEMORY_FILE",r/"m.md"), patch.object(ie,"QUEUE_FILE",r/"q.jsonl"), patch.object(ie,"SEEN_FILE",r/"s.txt"), patch.object(ie,"LOCK_DIR",r):
+    e=ie.ingest({"event_id":"locked","text":"Hi","reply_draft":"Antwort"})
+    acquired,lock=ie._acquire_ticket_lock(e["ticket_id"],"run-1");self.assertTrue(acquired)
+    try:
+     with patch.object(ie,"send_reply") as send:
+      result=ie.telegram_command("antwort "+e["ticket_id"],run_id="run-2")
+      self.assertIn("Verarbeitung läuft bereits",result);send.assert_not_called()
+    finally:ie._release_ticket_lock(lock)
+
  def test_send_failure_keeps_approved_state(self):
   with tempfile.TemporaryDirectory() as t:
    r=Path(t)
