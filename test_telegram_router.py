@@ -1,7 +1,23 @@
+import sys
 import tempfile
+import types
 import unittest
 from pathlib import Path
 from unittest.mock import patch
+
+# Router-Abhängigkeiten stubben: Dieser Unit-Test prüft ausschließlich Offset-Persistenz.
+def _stub(name, **attrs):
+    module = types.ModuleType(name)
+    for key, value in attrs.items():
+        setattr(module, key, value)
+    sys.modules[name] = module
+
+_stub("vision_router", VisionRouter=object)
+_stub("pending_instagram")
+_stub("facebook_engagement")
+_stub("generate_agnes_media", agnes_generate_image=lambda *_: None, save_bytes=lambda *_: None)
+_stub("instagram_publish", process_image_for_instagram=lambda x: x, create_container=lambda *_: None, publish=lambda *_: None, wait=lambda *_: False)
+_stub("asset_paths", asset_url=lambda *_: "", RAW_BASE="")
 
 import telegram_router as tr
 
