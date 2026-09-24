@@ -8,6 +8,7 @@ AI_PHRASES=('natürlich!','gerne!','selbstverständlich!','lassen sie uns','es i
 PR_WORDS=('bahnbrechend','wegweisend','erstklassig','immense bedeutung','entscheidenden wendepunkt','weitreichende auswirkungen','stellt einen meilenstein dar','verpasst nicht')
 BAD_REDUNDANCY=(r'\bbestaetig\w*\b.{0,55}\bbestaetig\w*\b',r'\bbestatig\w*\b.{0,55}\bbestatig\w*\b')
 INTERNAL_MARKERS=('turn0search','turn1search','contentreference','oaicite','system prompt','interne tool-id')
+RACING_HUMAN_PATTERNS=((r'\bmake[- ]?or[- ]?break\b','unnötiger englischer Marketingausdruck: Make-or-Break'),(r'\bfrische impulse\b','unbelegte redaktionelle Wertung: frische Impulse'),(r'\bwer hat (?:euren|deinen) (?:persoenlichen )?favoriten\b','unidiomatische Community-Frage'),(r'\bkontur der titelkaempfe\b','unnatürliche/Synonymakrobatik-Formulierung'))
 def _fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def _log(domain,item,ok,errors):
  LOG.parent.mkdir(parents=True,exist_ok=True);old=LOG.read_text(encoding='utf-8') if LOG.exists() else '# Chief Quality Manager Log\n\n';title=item.get('title','ohne Titel');state='PASS' if ok else 'FAIL';row=f'## {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC} | {domain} | {state}\nTitel: {title}\nStory-Key: {item.get("story_key","")}\nGründe: {"; ".join(errors) if errors else "alle Gates bestanden"}\nHuman-Writing-Protocol: V1.0\n\n';LOG.write_text(old+row,encoding='utf-8')
@@ -33,6 +34,8 @@ def review(domain,item,caption,media_path='',source_url='',domain_reviewer=None)
   ok,de=domain_reviewer(item,caption)
   if not ok:errors.extend('Domain-QM: '+e for e in de)
  if domain=='Motorcycle Racing':
+  for pattern,reason in RACING_HUMAN_PATTERNS:
+   if re.search(pattern,low):errors.append('Human-Protocol FAIL: '+reason)
   from racing_final_guard import review as final_truth_review
   truth_ok,truth_errors=final_truth_review(item,caption)
   if not truth_ok:errors.extend(truth_errors)

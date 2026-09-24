@@ -166,6 +166,32 @@ def test_session_fail_closed():
   with tempfile.TemporaryDirectory() as td:
    a.SESSION=Path(td)/'session.md';a.SESSION.write_text('Approval-Status: READY\nQM: PASS\n## Beitrag 1\nALT',encoding='utf-8');a.invalidate_session(datetime(2026,9,16,tzinfo=timezone.utc),'nur 3/5',3);text=a.SESSION.read_text(encoding='utf-8');ok('QM: FAIL' in text and 'Approval-Status: BLOCKED' in text and '## Beitrag' not in text,'stale session survived')
  finally:a.SESSION=old
+def test_final_human_language_gate():
+ import chief_quality_manager as chief
+ old_log=chief._log
+ try:
+  chief._log=lambda *args,**kwargs:None
+  item={'title':'WorldSBK Cremona','summary':'Cremona round','series':'WorldSBK'}
+  cases=[
+   ('Baz übernimmt für Mackenzie. Die Equipe bekommt dadurch frische Impulse.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #RacingDeutschland','frische Impulse'),
+   ('Drei Runden stehen noch aus. Cremona wird zum Make-or-Break.\n\nWer holt den Titel?\n\n#WorldSBK #MotorradRacing #RacingDeutschland','Make-or-Break'),
+   ('Neun Runden sind gefahren, drei stehen noch aus.\n\nWer hat euren persönlichen Favoriten auf den Titel?\n\n#WorldSBK #MotorradRacing #RacingDeutschland','Favoriten'),
+   ('Cremona steht an. Wer die Kontur der Titelkämpfe klarer machen will, muss dort liefern.\n\nWer holt den Titel?\n\n#WorldSBK #MotorradRacing #RacingDeutschland','Kontur')
+  ]
+  for caption,label in cases:
+   passed,errs=chief.review('Motorcycle Racing',item,caption,'x','https://example.com')
+   ok(not passed and any('Human-Protocol FAIL' in e for e in errs),f'live human-language escape not blocked: {label}')
+ finally:chief._log=old_log
+ # Verify the new pre-media gate actually returns bad language to the editor.
+ calls={'editor':0};old=(a.german_editor,a.racing_review,a.semantic_review_detailed)
+ try:
+  texts=['Baz übernimmt. Frische Impulse für das Team.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife','Baz übernimmt für Mackenzie.\n\nWie seht ihr den Wechsel?\n\n#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife']
+  def editor(x,reasons=None):calls['editor']+=1;return texts[min(calls['editor']-1,1)]
+  a.german_editor=editor;a.racing_review=lambda x,c:(True,[]);a.semantic_review_detailed=lambda x,c:sem_result(True,True)
+  x={'title':'Baz replaces Mackenzie at Cremona','summary':'Baz replaces injured Mackenzie','series':'WorldSBK','url':'https://example.com/2026/09/24/baz'}
+  ok(a.qualify_copy(x),'human gate should repair before media stage');ok(calls['editor']==2,'human gate must return bad copy to editor exactly once in this regression')
+ finally:a.german_editor,a.racing_review,a.semantic_review_detailed=old
+
 def test_finalization_contract():
  old_send=a.send_message
  sent=[]
@@ -189,5 +215,5 @@ def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
  ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL RETRY' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
 def main():
- test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
+ test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_final_human_language_gate();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()

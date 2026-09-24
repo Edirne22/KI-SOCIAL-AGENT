@@ -194,6 +194,15 @@ def qualify_copy(x,initial_reasons=None):
   if not language_sane(x['caption']):
    if attempt<3:repair_reasons=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
    break
+  # Run the deterministic Human Writing gate BEFORE expensive media generation.
+  # Missing media is intentionally filtered here; finish_item repeats the complete
+  # Chief gate with the real generated asset before an item can become READY.
+  from chief_quality_manager import review as _chief_language_review
+  _lang_ok,_lang_err=_chief_language_review('Motorcycle Racing',x,x['caption'],'__language_precheck__',x.get('url',''),racing_review)
+  _lang_err=[e for e in _lang_err if e!='Medienpfad existiert nicht']
+  if _lang_err:
+   if attempt<3:repair_reasons=['Finales Human-Writing-Gate: '+e for e in _lang_err];print(f'HUMAN-GATE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
+   print('HUMAN-GATE FINAL REJECT:',x.get('title','')[:90],'|','; '.join(_lang_err)[:600]);break
   x['semantic_qm']='PASS';x['racing_qm']='PASS';x['rewrite_count']=attempt-1;print(f'FULL COPY-QM PASS attempt={attempt}:',x.get('title','')[:90]);return True
  x['semantic_qm']='FAIL';x['rewrite_count']=min(2,attempt-1);return False
 def qualify_parallel(items,max_workers=3):
