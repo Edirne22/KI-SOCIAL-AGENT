@@ -918,3 +918,15 @@ Story-Key: motogp:1091496
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-24 13:32 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
+Story-Key: motogp:1091578
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 13:32 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
+Story-Key: motogp:1091355
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

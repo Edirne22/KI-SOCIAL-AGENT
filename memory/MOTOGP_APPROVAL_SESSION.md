@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 Semantic-Fakten-QM: PASS
 QM: PASS
-Session-Timestamp: 1790254407
+Session-Timestamp: 1790256475
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -17,33 +17,26 @@ Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 0.0
-Kategorie: Community
-Serie: Community
-Story-Key: title:community-spotlight-bike-society-united
-Titel: 🏍️ Community-Spotlight: Bike Society United
-Quelle: https://www.instagram.com/bike_society.united/
-Instagram-Bild: 
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 2.6
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1091578
+Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-preview-22h-ago-prev-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-## Instagram
-Status: ENTWURF
-Freigabe: Community
-Quelle: https://www.instagram.com/bike_society.united/
-Medienstatus: QUELLE_PRÜFEN
-Titel: 🏍️ Community-Spotlight: Bike Society United
-Text:
-Bikes. People. Roads. – Teil der landesweiten Bike Society Community in NRW! Respekt, Regeln, Leidenschaft und gemeinsames Fahren stehen an erster Stelle.
+Es sind noch zwei Runden im ersten WorldSPB-Jahr übrig.
 
-Ausfahrten, Technik-Tipps und Zusammenhalt ohne Mitgliedsbeitrag. 🧡
+In Cremona könnte der WorldSPB-Champion gekrönt werden.
 
-Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
+Salvador will die Titelentscheidung endgültig herbeiführen.
 
-Was ist für dich das Beste an einer Biker-Community?
+Was denkt ihr – wird hier schon der Champion gefeiert?
 
-#BikeSocietyUnited #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -51,35 +44,28 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 0.0
-Kategorie: Community
-Serie: Community
-Story-Key: title:community-spotlight-knieschleifer-ruhrpott
-Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
-Quelle: https://www.instagram.com/ks_ruhrpott/
-Instagram-Bild: 
+Neufassungen: 1
+QM-Ruecklaeufe: 1
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 3.6
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1091355
+Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-2-preview-1d-ago-sched-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-## Instagram
-Status: ENTWURF
-Freigabe: Community
-Quelle: https://www.instagram.com/ks_ruhrpott/
-Medienstatus: QUELLE_PRÜFEN
-Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
-Text:
-Die Regionalgruppe der Knieschleifer aus Überzeugung im Pott! Gemeinsame Ausfahrten, Treffen und Leidenschaft für Kurven und Sicherheit im Ruhrgebiet.
+Cremona bringt das WorldSBK-Rennwochenende für Runde 10.
 
-Zusammenhalt und Leidenschaft auf zwei Rädern! 🧡
+Nach neun durchgeführten Läufen stehen noch drei Rennen bis zum Saisonende an.
 
-Du willst dabei sein? Schreib ihnen auf Instagram.
+In Cremona könnte ein neuer Weltmeister gekrönt werden.
 
-Was ist für dich das Beste an einer Biker-Community?
+Worauf freut ihr euch am meisten am Wochenende?
 
-#KsRuhrpott #KnieschleiferAusUeberzeugung #Motorradfahren #Kurvenliebe #BikerCommunity
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -93,9 +79,9 @@ Herkunft: Aktuell
 Artikelalter-Tage: 0.0
 Kategorie: Community
 Serie: Community
-Story-Key: title:community-spotlight-bike-society-bergisches-land
-Titel: 🏍️ Community-Spotlight: Bike Society Bergisches Land
-Quelle: https://www.instagram.com/bike_society_bergisches_land/
+Story-Key: title:community-spotlight-bike-society-hagen
+Titel: 🏍️ Community-Spotlight: Bike Society Hagen
+Quelle: https://www.instagram.com/bike_society_hagen/
 Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
@@ -103,19 +89,20 @@ Text:
 ## Instagram
 Status: ENTWURF
 Freigabe: Community
-Quelle: https://www.instagram.com/bike_society_bergisches_land/
+Quelle: https://www.instagram.com/bike_society_hagen/
 Medienstatus: QUELLE_PRÜFEN
-Titel: 🏍️ Community-Spotlight: Bike Society Bergisches Land
+Titel: 🏍️ Community-Spotlight: Bike Society Hagen
 Text:
-Kurvenreiche Ausfahrten und echte Biker-Leidenschaft im Bergischen Land! Teil der Bike Society NRW – inklusiv, respektvoll und voller Energie.
+Bikes. People. Roads. – Die Bike Society Hagen ist eine Community für alle,
+die Motorrad lieben. Ausfahrten, Treffen, Events, Season Opening.
 
-Motto: "ALLES KANN, NICHTS MUSS. Motor an, Kopf aus!" 🧡
+Ihr Motto: "ALLES KANN, NICHTS MUSS. Motor an, Kopf aus!" 🧡
 
 Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
 
 Was ist für dich das Beste an einer Biker-Community?
 
-#BikeSocietyBergischesLand #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity
+#BikeSocietyHagen #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
