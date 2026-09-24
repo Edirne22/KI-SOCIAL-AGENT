@@ -34,8 +34,16 @@ def review(item,caption):
  if len(hits)>=2:errors.append('Deutsch-Gate FAIL: englischer Nachrichtenblock erkannt')
  if '🇹🇷' in caption and not any(fold(n) in low for n in TURKISH):errors.append('Turkish-Flag ohne Turkish Rider')
  parts=[p.strip() for p in caption.split('\n\n') if p.strip()]
- if len(parts)<4:errors.append('Poststruktur unvollständig')
- if '?' not in caption:errors.append('keine Community-Frage')
+ variant=item.get('structure_variant')
+ if variant:
+  body_parts=[p for p in parts if not p.lstrip().startswith('#')]
+  min_parts={'HOOK_BODY_QUESTION':3,'BODY_QUESTION':2,'STORY_QUESTION':2,'FACT_FACT_FACT':4,'QUESTION_HOOK_BODY':2,'ZITAT_BODY':3}.get(variant)
+  if min_parts is None:errors.append('unbekannte Poststruktur: '+str(variant))
+  elif len(body_parts)<min_parts:errors.append('Poststruktur unvollständig')
+  if variant!='FACT_FACT_FACT' and '?' not in caption:errors.append('keine Community-Frage')
+ else:
+  if len(parts)<4:errors.append('Poststruktur unvollständig')
+  if '?' not in caption:errors.append('keine Community-Frage')
  tags=re.findall(r'#[A-Za-z0-9ÄÖÜäöüß]+',caption)
  if not (4<=len(tags)<=7):errors.append('Hashtag-Anzahl nicht 4–7')
  source_riders=rider_matches(source);caption_riders=rider_matches(low)
