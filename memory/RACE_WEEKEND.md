@@ -1,5 +1,5 @@
 # Nächstes Rennwochenende
-Geprüft: 2026-09-17 19:02
+Geprüft: 2026-09-24 06:20
 
 > Zeiten bitte vor Veröffentlichung an der Originalquelle prüfen.
 
@@ -12,6 +12,6 @@ Geprüft: 2026-09-17 19:02
 ## Formel 1
 - Öffentliche Quellen erreichbar: 2
 
-Bestätigt: MotoGP
-Details: Qatar Airways Grand Prix of Austria — Red Bull Ring, Spielberg — 18. bis 20. September 2026 | Quelle: https://tickets.motogp.com/en/21021-austria/
+Bestätigt: Formel 1
+Details: Shanghai International Circuit · Shanghai — 2026-09-25 bis 2026-09-27 | Quelle: https://www.formula1.com/en/calendar.html
 Poster-Entwürfe: 3
