@@ -439,3 +439,18 @@ Quelle: https://www.motogp.com/en/news/2026/09/22/martin-not-at-100-but-no-surge
 Story-Key: motogp:1091526
 Titel: STEVE ENGLISH OPINION: Why WorldSBK now matters to MotoGP
 Quelle: https://www.worldsbk.com/en/news/2026/09/23/steve-english-opinion-why-worldsbk-now-matters-to-motogp/1091526
+
+## 2026-09-24 19:24 UTC – ANGEBOTEN
+Story-Key: motogp:1092169
+Titel: NEWS 1d ago Chantra to make MotoGP return in replacement ride for Mir at Motegi With the Spanish rider out with injury, the Thai rider will return to the MotoGP paddock at one of his stronger circuits WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/23/chantra-to-make-motogp-return-in-replacement-ride-for-mir-at-motegi/1092169
+
+## 2026-09-24 19:24 UTC – ANGEBOTEN
+Story-Key: motogp:1092162
+Titel: MotoGP strengthens leadership team with executive hires Four executive appointments announced as MotoGP continues to build the team to drive the sport's next phase of global growth
+Quelle: https://www.motogp.com/en/news/2026/09/23/motogp-strengthens-leadership-team-with-executive-hires/1092162
+
+## 2026-09-24 19:24 UTC – ANGEBOTEN
+Story-Key: motogp:1092226
+Titel: PREVIEW 12h ago FAST FACTS: Easy guide and key numbers from WorldSBK’s last visit to Cremona! Get set for Round 10 of the 2026 season with this easy guide full of important facts and figures from Cremona last years WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/24/fast-facts-easy-guide-and-key-numbers-from-worldsbks-last-visit-to-cremona/1092226

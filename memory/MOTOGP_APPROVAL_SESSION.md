@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 Semantic-Fakten-QM: PASS
 QM: PASS
-Session-Timestamp: 1790275163
+Session-Timestamp: 1790277877
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,23 +18,21 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 1
 QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 2.8
+Artikelalter-Tage: 1.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1091583
-Titel: Martin "not at 100%", but no surgery needed ahead of Japanese Grand Prix The championship leader won’t need to undergo arm pump surgery before a trip to Motegi after feeling much better in Austria than he did in Misano
-Quelle: https://www.motogp.com/en/news/2026/09/22/martin-not-at-100-but-no-surgery-needed-ahead-of-japanese-grand-prix/1091583
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-martin-not-at-100-bu-01.jpg
+Story-Key: motogp:1092169
+Titel: NEWS 1d ago Chantra to make MotoGP return in replacement ride for Mir at Motegi With the Spanish rider out with injury, the Thai rider will return to the MotoGP paddock at one of his stronger circuits WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/23/chantra-to-make-motogp-return-in-replacement-ride-for-mir-at-motegi/1092169
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-news-1d-ago-chantra-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin spart sich die Arm-Pump-OP. Keine Operation vor dem Japan-GP – nach Österreich geht es direkt weiter.
+Chantra kehrt in die MotoGP zurück und übernimmt bei Motegi das Ersatz-Bike für Mir, der verletzt ausfällt. Für den thailändischen Rider ist der japanische Circuit einer seiner Stärkeren – da lohnt sich die Rückkehr ins MotoGP-Paddock allemal.
 
-Der WM-Spitzenreiter fühlt sich in Österreich deutlich besser als noch in Misano, steht aber trotzdem nicht zu 100%. Keine OP, kein langes Warten – er packt wie geplant die Koffer für Motegi.
+Wie einschätzen ihr Chantra-Chancen auf Motegi?
 
-Ist für dich ‚besser als in Misano, aber nicht 100%' genug, um in Motegi voll konkurrenzfähig zu sein, oder muss der Mann erst wieder voll drin sein?
-
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -42,24 +40,26 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 1.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1091526
-Titel: STEVE ENGLISH OPINION: Why WorldSBK now matters to MotoGP
-Quelle: https://www.worldsbk.com/en/news/2026/09/23/steve-english-opinion-why-worldsbk-now-matters-to-motogp/1091526
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-2-steve-english-opinio-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/23/41aadb1f-baca-4189-9e3e-437e4876e59f/Steve-preview-50677_JDR_R09_2026_Ambience-2.jpg
+Story-Key: motogp:1092162
+Titel: MotoGP strengthens leadership team with executive hires Four executive appointments announced as MotoGP continues to build the team to drive the sport's next phase of global growth
+Quelle: https://www.motogp.com/en/news/2026/09/23/motogp-strengthens-leadership-team-with-executive-hires/1092162
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-2-motogp-strengthens-l-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Seit ihr euch schon sicher, ob ihr Nico Bulegas Wechsel nach WorldSBK für 2027 eine gute oder bedauerliche Entscheidung findet?
+MotoGP packt das nächste Wachstum mit einer starken Personaloffensive an.
 
-WorldSBK-Kommentator Steve English erklärt, warum die Superbike-WM für die MotoGP gerade jetzt wieder relevant ist. Der Auslöser ist die Nachricht, dass Nicolò Bulega ab 2027 zu WorldSBK wechselt. Eine Verbindung, die nicht von ungefähr kommt – und die zeigt, wie stark die Grenzen zwischen den Klassen gerade verschwimmen.
+Vier neue Executive-Positionen wurden offiziell vorgestellt, um das Führungsteam zu verstärken. Ziel ist es, die globale Ausrichtung der Serie in die nächste Phase zu treiben. Die Veränderungen kommen nicht überraschend – mit dem expandierenden Kalender und der wachsenden Fangemeinde wird klar, warum hier jetzt nachgeschärft wird.
 
-#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie wichtig findest du verstärkte Führungsstrukturen für die globale Ausrichtung von MotoGP?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,8 +67,8 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 2
+QM-Ruecklaeufe: 2
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 5.8
 Kategorie: MotoGP
@@ -80,9 +80,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-3-e
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin hat sich in Österreich die Pole-Position gesichert – mit weniger als einer Zehntelsekunde Vorsprung auf Marc Marquez und Pedro Acosta. Die ersten drei liegen hauchdünn beieinander, während Marco Bezzecchi als Vierter nur knapp hinter der Spitze wartet.
+Jorge Martin startet in Österreich von der Pole Position – vor Marquez und Acosta, die beide weniger als eine Zehntelsekunde Rückstand haben. Marco Bezzecchi belegt den vierten Startplatz.
 
-Wer hat nach diesem Qualifying den besten Start in den Grand Prix?
+Wer setzt hier die besten Akzente und gewinnt den Lauf?
 
 #MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -98,16 +98,22 @@ Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 2.8
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1091578
-Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-4-preview-22h-ago-prev-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Story-Key: motogp:1091586
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-4-baz-replaces-mackenz-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
 Plattformen: Instagram + Facebook
 Text:
-Cremona kann am Wochenende zum Schauplatz der Krönung werden – die letzten beiden Runden entscheiden alles im ersten WorldSPB-Jahrgang. Die Spannung ist dabei riesig, denn auf der Strecke in Italien könnte zum ersten Mal ein WorldSPB-Meister gekürt werden.
+Baz übernimmt bei MGM Ducati für das Weltmeisterschaftsrennen in Cremona den Startplatz des noch verletzten Mackenzie.
 
-Wer gewinnt für dich den Titel?
+Der französische Fahrer kehrt zurück an eine Strecke, an der er bereits Erfahrung hat.
+
+Er fährt das italienische Rennen auf einer Ducati.
+
+Dadurch kommt Baz im WorldSBK-Kalender zu seinem Auftrag in Italien.
+
+Schauen wir mal, wie sich Baz auf der bekannten Strecke schlägt.
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -117,24 +123,22 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 2
 QM-Ruecklaeufe: 0
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 2.8
+Herkunft: Aktuell
+Artikelalter-Tage: 0.8
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1091586
-Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-5-baz-replaces-mackenz-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
+Story-Key: motogp:1092226
+Titel: PREVIEW 12h ago FAST FACTS: Easy guide and key numbers from WorldSBK’s last visit to Cremona! Get set for Round 10 of the 2026 season with this easy guide full of important facts and figures from Cremona last years WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/24/fast-facts-easy-guide-and-key-numbers-from-worldsbks-last-visit-to-cremona/1092226
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-5-preview-12h-ago-fast-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Baz fährt für MGM Ducati in Cremona – Mackenzie pausiert.
+Die WorldSBK kehrt nach Cremona zurück – und das mitten in der entscheidenden Phase der Saison 2026. Round 10 steht an, und die Organisatoren haben mal wieder die Fast Facts zusammengestellt: alle wichtigen Zahlen und Fakten vom letzten Besuch in Cremona auf einen Blick. Wer beim letzten Mal dabei war, weiß, warum diese Statistik-Reihe so beliebt ist.
 
-Der Franzose kehrt zu einem gewohnten Schauplatz zurück, als er seinen Teamkollegen ersetzt. Mackenzie erholt sich noch von seiner Verletzung, daher springt Baz für die italienische Runde ein. Das gibt der Mannschaft Erfahrung auf derselben Strecke, wo sie bereits erfolgreich war.
-
-Wie schätzt ihr Baz Chancen in Cremona ein?
+Welche Zahl aus den Fast Facts hat euch beim letzten Cremona-Besuch am meisten überrascht?
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 

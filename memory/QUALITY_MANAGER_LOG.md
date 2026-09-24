@@ -990,3 +990,33 @@ Story-Key: motogp:1091586
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-24 19:41 UTC | Motorcycle Racing | PASS
+Titel: NEWS 1d ago Chantra to make MotoGP return in replacement ride for Mir at Motegi With the Spanish rider out with injury, the Thai rider will return to the MotoGP paddock at one of his stronger circuits WorldSBK
+Story-Key: motogp:1092169
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 19:41 UTC | Motorcycle Racing | PASS
+Titel: MotoGP strengthens leadership team with executive hires Four executive appointments announced as MotoGP continues to build the team to drive the sport's next phase of global growth
+Story-Key: motogp:1092162
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 19:42 UTC | Motorcycle Racing | PASS
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Story-Key: motogp:1090417
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 19:42 UTC | Motorcycle Racing | PASS
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Story-Key: motogp:1091586
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 19:42 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 12h ago FAST FACTS: Easy guide and key numbers from WorldSBK’s last visit to Cremona! Get set for Round 10 of the 2026 season with this easy guide full of important facts and figures from Cremona last years WorldSBK
+Story-Key: motogp:1092226
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
