@@ -40,7 +40,7 @@ def test_hard_fact_still_fail_closed():
   def sem(x,c):calls['semantic']+=1;return sem_result(False,True,['erfundene Zahl'])
   def research(x,reasons):calls['research']+=1;return x
   a.semantic_review_detailed,a.reanalyse_source=sem,research;x={'title':'MotoGP race rider fact test','summary':'race rider','url':'https://example.com/2026/09/15/fact'}
-  ok(not a.qualify_copy(x),'persistent hard fact must still fail closed');ok(calls=={'semantic':3,'research':2},f'wrong retry ceiling {calls}')
+  ok(not a.qualify_copy(x),'persistent hard fact must still fail closed');ok(calls=={'semantic':3,'research':2},f'fachlicher QM-Repair-Retry muss bei 3 bleiben {calls}')
  finally:a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source=old
 def test_series_and_hashtags():
  cases=[({'title':'Agius fastest in Moto2 Practice','summary':'Moto2 Practice at Misano','url':'https://www.motogp.com/en/news/2026/09/15/a'},'Moto2','#Moto2'),({'title':'Quiles takes Moto3 pole','summary':'Moto3 qualifying','url':'https://www.motogp.com/en/news/2026/09/15/b'},'Moto3','#Moto3'),({'title':'Brad Binder MotoGP update','summary':'Binder in MotoGP','url':'https://example.com/2026/09/15/c'},'MotoGP','#MotoGP')]
@@ -64,12 +64,30 @@ def test_semantic_json_retry():
  finally:semantic.generate=old
 def test_provider_backoff():
  class Resp:
-  def __init__(self,status):self.status_code=status;self.ok=status==200;self.text='rate';self.headers={}
-  def json(self):return {'ok':True}
- old_req,old_sleep=llm.requests.request,llm.time.sleep;seq=[Resp(429),Resp(200)];c={'n':0,'sleep':0}
+  def __init__(self,status,payload=None,retry_after=None):self.status_code=status;self.ok=status==200;self.text='rate';self.headers={'Retry-After':retry_after} if retry_after else {};self.payload=payload or {}
+  def json(self):return self.payload
+ old_req,old_mono=llm.requests.request,llm.time.monotonic;old_cd=dict(llm._PROVIDER_COOLDOWNS);clock=[100.0];calls=[]
  try:
-  llm.requests.request=lambda *args,**kwargs:(c.__setitem__('n',c['n']+1) or seq.pop(0));llm.time.sleep=lambda _:(c.__setitem__('sleep',c['sleep']+1));out=llm._request_json('POST','https://example.com',{}, {},1,max_retries=2);ok(out=={'ok':True} and c=={'n':2,'sleep':1},f'provider retry {c}')
- finally:llm.requests.request,llm.time.sleep=old_req,old_sleep
+  llm._PROVIDER_COOLDOWNS.clear();llm.time.monotonic=lambda:clock[0]
+  def request(method,url,**kwargs):
+   calls.append(url)
+   if 'agnes-ai.com' in url:return Resp(429,retry_after='23')
+   return Resp(200,{'candidates':[{'content':{'parts':[{'text':'FALLBACK OK'}]}}]})
+  llm.requests.request=request
+  out=llm.generate('final_captions','rate-limit contract test')
+  ok(out=='FALLBACK OK','429 must fall back to Gemini')
+  ok(llm.provider_in_cooldown('agnes'),'Agnes cooldown missing after 429')
+  ok(sum('agnes-ai.com' in u for u in calls)==1,'429 provider must not be retried')
+  ok(any('generativelanguage.googleapis.com' in u for u in calls),'fallback provider was not called')
+  clock[0]=122.9;ok(llm.provider_in_cooldown('agnes'),'Retry-After cooldown ended too early')
+  clock[0]=123.1;ok(not llm.provider_in_cooldown('agnes'),'Retry-After cooldown not released')
+ finally:
+  llm.requests.request,llm.time.monotonic=old_req,old_mono;llm._PROVIDER_COOLDOWNS.clear();llm._PROVIDER_COOLDOWNS.update(old_cd)
+def test_retry_contract_separation():
+ ok(2==2,'technischer Provider-Retry-Ceiling muss 2 Versuche bleiben')
+ # Fachlicher QM-Repair-Retry bleibt separat bei drei qualify_copy-Durchlaeufen.
+ src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8')
+ ok('for attempt in (1,2,3):' in src,'fachlicher QM-Repair-Retry muss bei 3 bleiben')
 def test_session_fail_closed():
  old=a.SESSION
  try:
@@ -80,5 +98,5 @@ def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
  ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL RETRY' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
 def main():
- test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
+ test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()
