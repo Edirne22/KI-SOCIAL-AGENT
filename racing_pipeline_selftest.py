@@ -50,6 +50,7 @@ def test_source_priority_contract():
 def test_moto4_and_turkish_rider_flagging():
  moto4={'title':'Siegert and Urlass sign off 2026 with Moto4 Northern Cup Assen triumphs','summary':'Moto4 Northern Cup season finale at Assen','series':'MotoGP'}
  ok(trs.classify_series('MotoGP',moto4['title'],'https://www.motogp.com/en/news/2026/09/21/siegert-and-urlass-sign-off-2026-with-assen-triumphs/1091423')=='Moto4','scout must classify Moto4 explicitly')
+ ok(final_guard.expected_series(dict(moto4))=='Moto4','final guard must detect Moto4 before hardening series lock')
  ok(a.series_for(dict(moto4))=='Moto4','agency must preserve unsupported Moto4 identity')
  locked=dict(moto4);a.lock_source_series(locked);ok(locked.get('series')=='Moto4' and locked.get('source_series')=='Moto4','hardening lock must preserve unsupported Moto4 identity')
  ok(not a.racing_relevant(dict(moto4)),'Moto4 must be rejected before copy generation')
