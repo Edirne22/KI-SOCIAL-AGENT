@@ -464,3 +464,13 @@ Quelle: https://www.motogp.com/en/news/2026/09/21/siegert-and-urlass-sign-off-20
 Story-Key: motogp:1092328
 Titel: NEWS 11h ago Bridewell declared fit for Italian Round at Cremona The #46 was injured in a crash at Magny-Cours but has been given the all-clear to compete this weekend in Italy WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/24/bridewell-declared-fit-for-italian-round-at-cremona/1092328
+
+## 2026-09-24 21:02 UTC – ANGEBOTEN
+Story-Key: motogp:1090403
+Titel: Guevara strikes back to clinch crucial Red Bull Ring victory
+Quelle: https://www.motogp.com/en/news/2026/09/20/guevara-strikes-back-to-clinch-crucial-red-bull-ring-victory/1090403
+
+## 2026-09-24 21:02 UTC – ANGEBOTEN
+Story-Key: motogp:1091502
+Titel: PREVIEW 2d ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/form-guide-bulega-looks-to-snatch-one-of-worldsbks-most-impressive-records-from-bautista/1091502
