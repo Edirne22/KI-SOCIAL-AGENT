@@ -26,6 +26,9 @@ def fold(s):
  return ''.join(ch for ch in s if not unicodedata.combining(ch)).replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def rider_for(text):
  low=fold(text)
+ # Official WorldSBK headline can shorten Bahattin to the misspelt surname "Sofouglu".
+ # Keep the surname-only mapping context-bound so Zayn Sofuoglu is not misidentified.
+ if re.search(r'(?<![a-z])sofouglu(?![a-z])',low) and any(k in low for k in ('smits','motoxracing','qjmotor','worldssp')):return 'Bahattin Sofuoğlu'
  for rider,aliases in WATCHLIST.items():
   for alias in aliases:
    a=fold(alias)
