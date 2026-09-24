@@ -1,4 +1,3 @@
-
 **Übergangslösung (aktuell):** GitHub-Actions-Polling alle 3 Std statt Webhook.
 
 ---
