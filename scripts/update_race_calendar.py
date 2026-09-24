@@ -16,6 +16,8 @@ from datetime import datetime
 import requests
 from PIL import Image
 
+from race.race_sources import ALLOWED_SERIES, is_allowed_series
+
 CALENDAR_FILE = Path("memory/RACE_CALENDAR.json")
 
 AGNES_URL = "https://apihub.agnes-ai.com/v1/chat/completions"
@@ -265,6 +267,9 @@ def get_bike_image(brand: str, model: str, racing_url: str, street_url: str, dat
 
 def fetch_bike_of_weekend(event: dict, key: str) -> dict | None:
     series = event.get("series", "").strip()
+    if series not in ALLOWED_SERIES:
+        print(f"Event ignoriert: Serie {series or '-'} nicht erlaubt")
+        return None
     if series in ("WorldSBK", "WSBK"):
         available_brands = WSBK_BRANDS
     else:
@@ -327,7 +332,7 @@ def update_calendar() -> None:
         sys.exit(0)
 
     today_str = datetime.now().strftime("%Y-%m-%d")
-    prompt = f"""Heute ist {today_str}. Recherche die kommenden 4 Rennwochenenden von MotoGP, WorldSBK oder Formel 1.
+    prompt = f"""Heute ist {today_str}. Recherche die kommenden 4 Rennwochenenden von MotoGP, WorldSBK, WorldSSP oder WorldSPB.
 
 Gib ausschließlich ein valides JSON-Objekt zurück, das exakt folgender Struktur entspricht:
 
@@ -346,7 +351,7 @@ Gib ausschließlich ein valides JSON-Objekt zurück, das exakt folgender Struktu
 
 Regeln:
 - date_start und date_end müssen im Format YYYY-MM-DD sein.
-- series muss MotoGP, WorldSBK oder Formel 1 sein.
+- series muss MotoGP, WorldSBK, WorldSSP oder WorldSPB sein.
 - track muss Name der Rennstrecke und Ort enthalten.
 - source muss eine valide, offizielle URL sein.
 - Falls du unsicher bist oder weniger Events findest, gib so viele fundierte kommende Events wie möglich an.
@@ -361,6 +366,9 @@ Regeln:
     valid_events = []
     for event in data["events"]:
         if isinstance(event, dict) and "date_start" in event and "series" in event and "track" in event:
+            series = str(event.get("series", "")).strip()
+            if not is_allowed_series(series):
+                continue
             event_obj = {
                 "date_start": str(event.get("date_start", "")).strip(),
                 "date_end": str(event.get("date_end", event.get("date_start", ""))).strip(),
