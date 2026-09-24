@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 Semantic-Fakten-QM: PASS
 QM: PASS
-Session-Timestamp: 1790137652
+Session-Timestamp: 1790224053
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,26 +15,26 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 4.2
+Neufassungen: 0
+QM-Ruecklaeufe: 0
+Herkunft: Aktuell
+Artikelalter-Tage: 1.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1090417
-Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
-Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
-Instagram-Bild: assets/images/2026-09/2026-09-23-racing-editorial-2026-09-23-1-electric-martin-beat-01.jpg
+Story-Key: motogp:1092166
+Titel: Chantra set for MotoGP return in Motegi The Thai rider will replace Mir at Honda HRC Castrol for the Japanese GP 23 Sep 2026
+Quelle: https://www.motogp.com/en/news/2026/09/23/chantra-set-for-motogp-return-in-motegi/1092166
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-chantra-set-for-moto-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin holt sich die Pole-Position in Österreich – dicht gefolgt von Marc Marquez und Pedro Acosta.
+Chantra kehrt in Motegi zurück – für Honda HRC Castrol.
 
-Die erste Reihe ist durch weniger als ein Zehntel getrennt. Martin setzt sich gegen seine Konkurrenten durch, während Bezzecchi als Vierter hinter den ersten drei bleibt.
+Der Thai-Rider übernimmt das Seat von Mir beim Japanese GP am 23. September 2026. Das ist ein klarer Wechsel in der MotoGP-Weltmeisterschaft.
 
-Wer hat deiner Meinung nach die besten Chancen auf den Sieg?
+Wie bewertet ihr Chantras Perspektive in diesem Rennen?
 
-#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -42,24 +42,24 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.2
+Artikelalter-Tage: 2.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1091638
-Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
-Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Instagram-Bild: assets/images/2026-09/2026-09-23-racing-editorial-2026-09-23-2-motogp-news-motogp-c-01.jpg
+Story-Key: motogp:1091584
+Titel: Mir to miss Japanese and Indonesian Grands Prix The #36 will remain on the sidelines for the next two races, with a replacement TBC
+Quelle: https://www.motogp.com/en/news/2026/09/22/mir-to-miss-japanese-and-indonesian-grands-prix/1091584
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-2-mir-to-miss-japanese-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Offizielles Signal: Valencia 2027 steht als MotoGP-Saisonfinale fest.
+Mir fällt für die nächsten zwei Rennen aus – die #36 bleibt auf der Strecke.
 
-Die MotoGP-WM bestätigt den Grand Prix von Valencia als letzten Renntag der Saison 2027. Der vollständige Kalender wird am Freitag veröffentlicht. Damit ist klar, wo und wann der Titelkampf seinen Höhepunkt erreicht.
+Der Fahrer mit der Startnummer 36 verpasst den Großen Preis von Japan und den von Indonesien. Für beide Termine ist noch kein Ersatzfahrer gemeldet.
 
-Wer wird nach eurer Einschätzung 2027 in Valencia Weltmeister?
+Wie bewertet ihr die Ausfallzeit für Mir und das Team?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -72,23 +72,23 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 2
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.2
+Artikelalter-Tage: 2.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1090419
-Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
-Quelle: https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-fends-off-aprilia-charge-to-claim-dream-maiden-win/1090419
-Instagram-Bild: assets/images/2026-09/2026-09-23-racing-editorial-2026-09-23-3-bouncing-back-flawle-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/09/20/3ed6f4e6-151c-459b-a3f0-f0fd047834ad/TOP_AUT_MGP_Race_2.jpg?width=1200&height=630
+Story-Key: motogp:1091638
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-3-motogp-news-motogp-c-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Pedro Acosta hat gewonnen – sein erster MotoGP-Sieg!
+Valencia 2027 – das Saisonfinale steht fest.
 
-Die Aprilia-Angreifer kamen massiv heran, doch Acosta hat jede Attacke pariert und sein Ergebnis bis zur Ziellinie sauber verteidigt. Ein Traumdebüt, das direkt aufs Podium führt.
+Die MotoGP hat offiziell bestätigt, dass der Große Preis von Valencia die letzte Station der Kampagne 2027 sein wird. Am Freitag folgt der komplette Rennkalender – dann zeigt sich, wo die Straße in die neue Saison führt. Für alle, die den letzten Aufstellungskreis bei Ricardo Tormo lieben, fängt die Vorfreude jetzt wieder an.
 
-Wer eurer Meinung nach war der größte Gegner für Acosta an diesem Tag?
+Auf welche Rennstrecke freut ihr euch beim Saisonfinale am meisten?
 
-#MotoGP #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -98,22 +98,22 @@ Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 1.2
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 2.2
 Kategorie: WorldSBK
 Serie: WorldSBK
 Story-Key: motogp:1091578
 Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
 Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-put-the-title-race-to-bed-while-artigas-rides-for-worldspb-upset-at-cremona/1091578
-Instagram-Bild: assets/images/2026-09/2026-09-23-racing-editorial-2026-09-23-4-preview-22h-ago-prev-01.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-4-preview-22h-ago-prev-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Zwei Rennen noch – und in Cremona könnte der erste WorldSPB-Champion gekürt werden.
+Zwei Rennen bis zum Ende – Salvador und Artigas liefern sich in Cremona den Kampf um die WorldSPB-Meisterschaft.
 
-Salvador versucht, die Titelentscheidung im WorldSBK vorzeitig zu sichern. In derselben Saison findet in Cremona zugleich das Finale der ersten WorldSPB-Kampagne statt, wo Artigas um den Titel mitfährt.
+In der ersten Saison der WorldSPB droht die Krönung schon früh. Salvador will den Titel sichernd abschließen, während Artigas mit einem Sieg noch alles offen halten kann. Cremona bietet die Chance auf eine vorzeitige Entscheidung.
 
-Wer von beiden erwartet ihr mehr – Salvador mit Druck auf die Spitze oder Artigas mit Aufholjagd?
+Wie seht ihr die Chancen: Wird Salvador den Titel feiern oder schafft Artigas das große Aufsehen?
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -126,23 +126,23 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.2
-Kategorie: WorldSSP
-Serie: WorldSSP
-Story-Key: motogp:1091358
-Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
-Instagram-Bild: assets/images/2026-09/2026-09-23-racing-editorial-2026-09-23-5-preview-all-three-wo-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/21/97ebedac-6597-4980-a9ee-68ae57f36e50/42cd51ce-9037-7314-a4c5-74d7bd5a2533.jpg
+Artikelalter-Tage: 2.2
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1091496
+Titel: PREVIEW 1d ago BRAKING IN DETAIL: Crucial details from Brembo from Cremona Circuit WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/braking-in-detail-crucial-details-from-brembo-from-cremona-circuit/1091496
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-5-preview-1d-ago-braki-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Arenas muss sich in Cremona behaupten – und das geht um alles.
+Brembo hat auf dem Cremona Circuit im WorldSBK seine Bremsen-Technologie im Detail vorgestellt.
 
-Im WorldSSP gibt es drei Runden zu fahren, und alle drei Meisterschaften stehen auf dem Spiel. Cremona wird zum Wendepunkt für viele Teams, Fahrer und Hersteller. Für Arenas heißt das: die Konkurrenz halten und den eigenen Titelkampf nicht aus der Hand geben.
+Das Team liefert einen genauen Blick auf die eingesetzte Bremsanlage und die daraus abgeleiteten Einstellungen für die Strecke. Die Informationen helfen zu verstehen, wie die Hersteller und Teams die Anforderungen des Kurses technisch umsetzen.
 
-Wer gewinnt eurer Meinung nach die Meisterschaft bei den verbleibenden Rennen?
+Welcher Aspekt der Bremsen-Entwicklung ist für euch am spannendsten?
 
-#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

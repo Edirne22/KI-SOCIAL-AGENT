@@ -364,3 +364,18 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-salvador-looks-to-pu
 Story-Key: motogp:1091358
 Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
 Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
+
+## 2026-09-24 04:27 UTC – ANGEBOTEN
+Story-Key: motogp:1092166
+Titel: Chantra set for MotoGP return in Motegi The Thai rider will replace Mir at Honda HRC Castrol for the Japanese GP 23 Sep 2026
+Quelle: https://www.motogp.com/en/news/2026/09/23/chantra-set-for-motogp-return-in-motegi/1092166
+
+## 2026-09-24 04:27 UTC – ANGEBOTEN
+Story-Key: motogp:1091584
+Titel: Mir to miss Japanese and Indonesian Grands Prix The #36 will remain on the sidelines for the next two races, with a replacement TBC
+Quelle: https://www.motogp.com/en/news/2026/09/22/mir-to-miss-japanese-and-indonesian-grands-prix/1091584
+
+## 2026-09-24 04:27 UTC – ANGEBOTEN
+Story-Key: motogp:1091496
+Titel: PREVIEW 1d ago BRAKING IN DETAIL: Crucial details from Brembo from Cremona Circuit WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/braking-in-detail-crucial-details-from-brembo-from-cremona-circuit/1091496

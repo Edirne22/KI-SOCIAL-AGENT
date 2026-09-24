@@ -888,3 +888,33 @@ Story-Key: motogp:1091358
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-24 04:32 UTC | Motorcycle Racing | PASS
+Titel: Chantra set for MotoGP return in Motegi The Thai rider will replace Mir at Honda HRC Castrol for the Japanese GP 23 Sep 2026
+Story-Key: motogp:1092166
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 04:32 UTC | Motorcycle Racing | PASS
+Titel: Mir to miss Japanese and Indonesian Grands Prix The #36 will remain on the sidelines for the next two races, with a replacement TBC
+Story-Key: motogp:1091584
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 04:32 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 04:32 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 22h ago PREVIEW: Salvador looks to put the title race to bed while Artigas rides for WorldSPB upset at Cremona Just two rounds remain in the first-ever WorldSPB campaign, and Cremona may see a Champion crowned WorldSPB
+Story-Key: motogp:1091578
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-24 04:32 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 1d ago BRAKING IN DETAIL: Crucial details from Brembo from Cremona Circuit WorldSBK
+Story-Key: motogp:1091496
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
