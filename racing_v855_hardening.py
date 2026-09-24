@@ -57,8 +57,8 @@ def install(a):
         for n in sorted(capnums-srcnums):errs.append('Source-Fact-Whitelist: Zahl nicht in Quelle: '+n)
         return errs
 
-    def prompt(x,reasons=None):
-        lock(x);base=original_prompt(x,reasons);facts=json.dumps(fact_packet(x),ensure_ascii=False)
+    def prompt(x,reasons=None,structure_variant=None):
+        lock(x);base=original_prompt(x,reasons,structure_variant);facts=json.dumps(fact_packet(x),ensure_ascii=False)
         return base+'\n\nSOURCE-FACT-WHITELIST (GESCHLOSSEN): '+facts+'\nJede konkrete Person und jede Zahl im Post muss darin bzw. in TITEL/ZUSAMMENFASSUNG vorkommen. Orte, Teams und Hersteller nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG stehen. Nicht belegte Details weglassen, niemals aus Vorwissen ergaenzen.'
 
     def semantic_technical_retry(x,caption):
