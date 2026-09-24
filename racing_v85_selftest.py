@@ -10,13 +10,20 @@ import motogp_content_agency_v2 as agency
 def check(v,msg):
     if not v:raise AssertionError(msg)
 def main():
-    old_state=rc.STATE;old_env={k:os.environ.get(k) for k in ('GITHUB_EVENT_NAME','GITHUB_RUN_ID','INPUT_FORCE_NEW_RUN')}
+    old_state=rc.STATE;old_env={k:os.environ.get(k) for k in ('GITHUB_EVENT_NAME','GITHUB_RUN_ID','INPUT_FORCE_NEW_RUN','GITHUB_EVENT_PATH')}
     try:
         with tempfile.TemporaryDirectory() as td:
             rc.STATE=Path(td)/'state.json';os.environ['GITHUB_EVENT_NAME']='workflow_dispatch';os.environ['GITHUB_RUN_ID']='100';os.environ.pop('INPUT_FORCE_NEW_RUN',None)
             ok,bid,_=rc.begin(datetime(2026,9,16,4,0,tzinfo=timezone.utc));check(ok and bid.endswith('-100'),'first manual run rejected');rc.transition(bid,'BLOCKED')
             os.environ['GITHUB_RUN_ID']='101';ok2,_,reason=rc.begin(datetime(2026,9,16,4,1,tzinfo=timezone.utc));check(not ok2 and 'duplicate window' in reason,'immediate duplicate run was not suppressed')
             os.environ['INPUT_FORCE_NEW_RUN']='true';ok3,bid3,_=rc.begin(datetime(2026,9,16,4,2,tzinfo=timezone.utc));check(ok3 and bid3.endswith('-101'),'explicit force did not bypass duplicate window');rc.transition(bid3,'READY_FOR_APPROVAL');check(rc.get_run(bid3)['status']=='READY_FOR_APPROVAL','state transition lost')
+            # Regression: checked workflow_dispatch checkbox must survive even if
+            # the workflow env mapping accidentally resolves to "false".
+            event_file=Path(td)/'event.json';event_file.write_text('{"inputs":{"force_new_run":"true"}}',encoding='utf-8')
+            os.environ['INPUT_FORCE_NEW_RUN']='false';os.environ['GITHUB_EVENT_PATH']=str(event_file);os.environ['GITHUB_RUN_ID']='102'
+            check(rc.force_new(),'checked dispatch input was lost when env mapping was false')
+            ok_event,bid_event,_=rc.begin(datetime(2026,9,16,4,3,tzinfo=timezone.utc));check(ok_event and bid_event.endswith('-102'),'event-payload force did not bypass duplicate window')
+            os.environ.pop('GITHUB_EVENT_PATH',None)
             check(rc.notification_allowed('x','same',datetime(2026,9,16,5,0,tzinfo=timezone.utc)),'first notification rejected');check(not rc.notification_allowed('x','same',datetime(2026,9,16,5,1,tzinfo=timezone.utc)),'duplicate notification not suppressed')
             rc.STATE=Path(td)/'scheduled.json';os.environ['GITHUB_EVENT_NAME']='schedule';os.environ['GITHUB_RUN_ID']='200';os.environ.pop('INPUT_FORCE_NEW_RUN',None)
             ok4,daily,_=rc.begin(datetime(2026,9,16,6,0,tzinfo=timezone.utc));check(ok4 and daily=='racing-2026-09-16-daily','daily batch id not deterministic');rc.transition(daily,'READY_FOR_APPROVAL');ok5,_,_=rc.begin(datetime(2026,9,16,7,0,tzinfo=timezone.utc));check(not ok5,'terminal daily batch reran')
