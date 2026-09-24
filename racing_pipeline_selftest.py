@@ -52,7 +52,9 @@ def test_transfer_direction_and_unsupported_worldspb():
  passed,errs=final_guard.review(worldspb,'Cremona entscheidet die WorldSBK-Saison.\n\nWer holt den Titel?\n\n#WorldSBK #Racing #BuelentsBikeLife #MotorradRacing')
  ok(not passed and any('WorldSPB' in e for e in errs),'WorldSPB must never be relabeled/passed as WorldSBK')
  ok(trs.classify_series('WorldSBK','Preview: first WorldSPB title decider','https://www.worldsbk.com/en/news/2026/09/22/x')=='WorldSPB','scout must classify WorldSPB explicitly')
- ok(a.series_for({'title':'WorldSPB title race at Cremona','summary':'first Sportbike World Championship season','series':'WorldSBK'})=='WorldSPB','agency must preserve unsupported WorldSPB identity')
+ worldspb_item={'title':'WorldSPB title race at Cremona','summary':'first Sportbike World Championship season','series':'WorldSBK'}
+ ok(a.series_for(worldspb_item)=='WorldSPB','agency must preserve unsupported WorldSPB identity')
+ a.lock_source_series(worldspb_item);ok(worldspb_item.get('series')=='WorldSPB' and worldspb_item.get('source_series')=='WorldSPB','hardening lock must preserve unsupported WorldSPB identity')
  ok(not a.racing_relevant({'title':'WorldSPB title race at Cremona','summary':'first Sportbike World Championship season','series':'WorldSBK'}),'WorldSPB must be rejected before copy generation')
  source={'title':'Why WorldSBK matters to MotoGP','summary':'Nicolò Bulega will move to MotoGP in 2027','series':'MotoGP'}
  bad='Nicolò Bulega wechselt 2027 nach WorldSBK.\n\nWas meint ihr?\n\n#MotoGP #NicoloBulega #Racing #BuelentsBikeLife'

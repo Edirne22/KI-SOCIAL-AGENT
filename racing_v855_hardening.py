@@ -5,6 +5,7 @@ import re,time,json
 from racing_final_guard import expected_series
 
 VALID=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
+UNSUPPORTED=('WorldWCR','WorldSPB')
 
 def install(a):
     original_prompt=a._editor_prompt
@@ -23,6 +24,13 @@ def install(a):
         dest=transfer(x)
         inferred=expected_series(x)
         supplied=str(declared or x.get('source_series') or x.get('series') or '').strip()
+        if inferred in UNSUPPORTED:
+            # Preserve the real source class instead of collapsing an unsupported
+            # championship into the umbrella feed (e.g. WorldSPB -> WorldSBK).
+            x['series']=inferred;x['source_series']=inferred;x['series_locked']=True
+            x['series_origin']='source-fact-unsupported'
+            x.pop('trusted_series',None)
+            return x
         chosen=dest or (inferred if inferred in VALID else '') or (supplied if supplied in VALID else '')
         if chosen:
             x['trusted_series']=chosen;x['series']=chosen;x['source_series']=chosen;x['series_locked']=True
@@ -30,6 +38,10 @@ def install(a):
         return x
 
     def series_for(x):
+        inferred=expected_series(x)
+        if inferred in UNSUPPORTED:
+            lock(x)
+            return inferred
         frozen=str(x.get('trusted_series','')).strip()
         if frozen in VALID:return frozen
         lock(x)
