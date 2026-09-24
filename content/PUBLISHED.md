@@ -714,7 +714,7 @@ Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-chantra-set
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 35988453218-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-24-daily
 Telegram-Update-ID: 279361732
