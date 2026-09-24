@@ -32,7 +32,7 @@ def _prompt(item,caption):
  return f'''Du bist unabhaengiger Senior-Faktenpruefer fuer Motorrad-Racing. Trenne HARTE FAKTENFEHLER strikt von REPARIERBARER SPRACHE.\nQUELLFAKTEN:\nSERIE: {inferred}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nURL: {url}\nPOST:\n{fact_caption}\n\nWICHTIG: Prüfe den Post AUSSCHLIESSLICH gegen die oben angegebenen QUELLFAKTEN. Betrachte die Quelldaten und Daten in den Quellfakten als absolut wahr und aktuell. Verwende KEINEN eigenen Wissensstand-Cutoff (Knowledge Cutoff) und lehne Beiträge NIEMALS ab, weil ein Datum in der Zukunft liegt oder dein Kenntnisstand endet. Der Faktencheck erfolgt rein gegen die Quellfakten.\n\nNULL-TOLERANZ / HARD FAIL: Jede Tatsachenbehauptung muss durch Titel/Zusammenfassung/Metadaten gedeckt sein. Erfunden, vertauscht oder falsch bei Fahrer, Team, Hersteller, Serie, Jahr, Ort, Ergebnis, Rekord, Zahl, Titel/Champion-Status, Beziehung oder Zitat => hard_fact_ok=false. Schlussfolgerungen duerfen nicht als Fakten erfunden werden. P1 ist nicht Q1.\nREPARIERBAR: Tippfehler, Grammatik, holpriges Deutsch, Anglizismus, PR-Sprech, kuenstlicher Hype oder eine schlecht formulierte, aber nicht faktisch falsche Community-Frage => german_ok=false bzw. style_ok=false, aber NICHT hard_fact_ok=false.\nMeinungsfragen ohne behauptete Praemisse sind erlaubt. Letzten systemgenerierten Hashtag-Block nicht als neue Faktenquelle bewerten.\nAntworte NUR JSON: {{"hard_fact_ok":true|false,"series_ok":true|false,"rider_team_ok":true|false,"quote_ok":true|false,"german_ok":true|false,"style_ok":true|false,"hard_reasons":["..."],"repair_reasons":["..."]}}'''
 def review_detailed(item,caption):
  prompt=_prompt(item,caption);last=None
- for technical_attempt in range(3):
+ for technical_attempt in range(2):
   try:
    o=_clean_json(generate('racing_semantic_qm',prompt));hard_reasons=[str(x) for x in o.get('hard_reasons',[]) if str(x).strip()];repair=[str(x) for x in o.get('repair_reasons',[]) if str(x).strip()]
    # Safety filter: remove any hallucinated knowledge-cutoff / future date errors from LLM response
@@ -45,6 +45,6 @@ def review_detailed(item,caption):
    return {'hard_ok':hard,'language_ok':language,'hard_reasons':hard_reasons,'repair_reasons':repair}
   except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:last=e;continue
   except Exception as e:last=e;break
- return {'hard_ok':False,'language_ok':False,'hard_reasons':[f'Semantischer Fakten-QM technisch ungueltig nach 3 Versuchen: {type(last).__name__}: {str(last)[:140]}'],'repair_reasons':[]}
+ return {'hard_ok':False,'language_ok':False,'hard_reasons':[f'Semantischer Fakten-QM technisch ungueltig nach 2 Versuchen: {type(last).__name__}: {str(last)[:140]}'],'repair_reasons':[]}
 def review(item,caption):
  r=review_detailed(item,caption);ok=r['hard_ok'] and r['language_ok'];return ok,(r['hard_reasons']+r['repair_reasons'])

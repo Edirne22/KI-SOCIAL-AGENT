@@ -65,42 +65,42 @@ def install(a):
         # Resolve through the module at CALL TIME. This is intentional: offline
         # regression tests replace a.semantic_review_detailed with a provider-free
         # fake. Capturing it during install() made the selftest call Agnes.
-        for n in (1,2,3):
+        for n in (1,2):
             r=a.semantic_review_detailed(x,caption)
             joined=' '.join(r.get('hard_reasons',[])).lower()
             technical=('technisch ungueltig' in joined or 'http 429' in joined or 'rate limit' in joined or 'provider-anfrage' in joined or 'timeout' in joined)
             if not technical:return r
-            print(f'SEMANTIC-QM TECHNICAL RETRY {n}/3:',x.get('title','')[:90],'|',joined[:180])
-            if n<3:time.sleep(2*n)
+            print(f'SEMANTIC-QM TECHNICAL RETRY {n}/2:',x.get('title','')[:90],'|',joined[:180])
+            if n<2:time.sleep(2*n)
         return {'technical_error':True,'technical_reason':'Provider/QM nach technischen Retries nicht verfuegbar','hard_ok':False,'language_ok':False,'hard_reasons':[],'repair_reasons':[]}
 
     def qualify(x,initial_reasons=None):
         if not a.racing_relevant(x):return False
         lock(x);repair=initial_reasons
-        for attempt in (1,2,3):
+        for attempt in (1,2):
             lock(x);x['caption']=a.german_editor(x,repair);lock(x)
             if not x['caption']:
                 repair=['Redakteur lieferte keinen gueltigen strukturierten Text'];print(f'EDITOR REPAIR attempt={attempt}:',x.get('title','')[:90]);continue
             w=whitelist_errors(x,x['caption'])
             if w:
-                if attempt<3:repair=w;a.reanalyse_source(x,repair);lock(x);continue
+                if attempt<2:repair=w;a.reanalyse_source(x,repair);lock(x);continue
                 print('SOURCE-FACT-WHITELIST REJECT:',x.get('title','')[:90],'|','; '.join(w)[:600]);break
             r_ok,r_err=a.racing_review(x,x['caption']);x['qm_errors']=r_err
             if not r_ok:
-                if attempt<3:repair=['Racing-QM: '+e for e in r_err];a.reanalyse_source(x,repair);lock(x);continue
+                if attempt<2:repair=['Racing-QM: '+e for e in r_err];a.reanalyse_source(x,repair);lock(x);continue
                 print('RACING-QM HARD REJECT after feedback loop:',x.get('title','')[:90],'|','; '.join(r_err)[:600]);break
             sem=semantic_technical_retry(x,x['caption'])
             if sem.get('technical_error'):
                 x['technical_qm_deferred']=True;print('SEMANTIC-QM TECHNICAL DEFER – candidate not factually rejected:',x.get('title','')[:90]);break
             x['semantic_errors']=sem['hard_reasons']+sem['repair_reasons']
             if not sem['hard_ok']:
-                if attempt<3:repair=['Fakten-QM: '+e for e in sem['hard_reasons']];a.reanalyse_source(x,repair);lock(x);continue
+                if attempt<2:repair=['Fakten-QM: '+e for e in sem['hard_reasons']];a.reanalyse_source(x,repair);lock(x);continue
                 print(f'SEMANTIC HARD-FACT REJECT after feedback loop attempt={attempt}:',x.get('title','')[:90],'|','; '.join(sem['hard_reasons'])[:700]);break
             if not sem['language_ok']:
-                if attempt<3:repair=['Sprach-QM: '+e for e in sem['repair_reasons']];print(f'LANGUAGE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
+                if attempt<2:repair=['Sprach-QM: '+e for e in sem['repair_reasons']];print(f'LANGUAGE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
                 break
             if not a.language_sane(x['caption']):
-                if attempt<3:repair=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
+                if attempt<2:repair=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
                 break
             x['semantic_qm']='PASS';x['racing_qm']='PASS';x['rewrite_count']=attempt-1;print(f'FULL COPY-QM PASS attempt={attempt}:',x.get('title','')[:90]);return True
         x['semantic_qm']='TECHNICAL-DEFER' if x.get('technical_qm_deferred') else 'FAIL';x['rewrite_count']=min(2,attempt-1);return False
