@@ -751,9 +751,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/22/braking-in-detail-crucial-de
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-5-preview-1d-ago-braki-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 35988791188-1
+## Facebook [GEPOSTET 2026-09-24 10:43 | ID: 1285968257941776_122114144415469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-24-daily
 Telegram-Update-ID: 279361732
