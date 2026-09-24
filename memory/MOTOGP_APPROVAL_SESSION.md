@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 Semantic-Fakten-QM: PASS
 QM: PASS
-Session-Timestamp: 1790284598
+Session-Timestamp: 1790285843
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,32 +15,7 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 5.9
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1090417
-Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
-Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-electric-martin-beat-01.jpg
-Quellen-Preview: Zielseite/Plattform
-Plattformen: Instagram + Facebook
-Text:
-Jorge Martin hat in Österreich die Poleposition gefahren und damit Marc Marquez sowie Pedro Acosta hinter sich gelassen. Drei Fahrer, die jeweils eigene Punkte beweisen mussten, teilten sich die erste Reihe – Marco Bezzecchi wurde nur Vierter. So bleibt die Titelentscheidung im Meisterschaftskampf weiter offen.
-
-Wie entwickelt sich die Titelkonkurrenz nach Martins Pole in Österreich weiter?
-
-#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
-
-## Beitrag 2
-QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 2
 QM-Ruecklaeufe: 1
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 2.9
@@ -49,17 +24,44 @@ Serie: MotoGP
 Story-Key: motogp:1091638
 Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
 Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-2-motogp-news-motogp-c-01.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-motogp-news-motogp-c-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Die MotoGP bestätigt: Valencia bleibt 2027 das Saisonfinale.
+Der Grand Prix von Valencia ist das offizielle Saisonfinale der MotoGP im Jahr 2027.
 
-Damit steht zumindest einer der wichtigsten Termine für die kommende Saison fest. Den kompletten Rennkalender mit allen weiteren Grand-Prix-Stationen gibt die Serie erst am Freitag bekannt.
+Der vollständige Kalender wird am Freitag vorgestellt.
 
-Wie siehst du Valencia als Saisonfinale – ein Klassiker, der unbedingt bestehen bleiben sollte, oder ein Punkt, der überdacht werden könnte?
+Die MotoGP hat die Bestätigung für Valencia als finales Rennen bestätigt.
+
+Auf welchen Fahrer oder Moment im Finale freust du dich am meisten?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
+
+## Beitrag 2
+QM: PASS
+Racing-QM: PASS
+Semantic-Fakten-QM: PASS
+Neufassungen: 0
+QM-Ruecklaeufe: 0
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 2.9
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1091586
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
+Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-2-baz-replaces-mackenz-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
+Plattformen: Instagram + Facebook
+Text:
+Baz springt bei MGM Ducati für Mackenzie bei der Italiano Round in Cremona ein – der Franzose kehrt auf einen alten Platz zurück. Mackenzie erholt sich noch von einer Verletzung.
+
+Hast du Baz schon auf der Strecke in Cremona gesehen, oder ist das eure erste Begegnung mit ihm dort?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,7 +69,7 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 2
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 2.9
@@ -80,9 +82,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-3-p
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Bulega reist nach Cremona mit der realen Chance, einen WorldSBK-Record von Bautista zu knacken, der bisher für unantastbar galt. Der Titel ist gleichzeitig im Spiel – und wer diese Runde dominiert, kann beides für sich entscheiden.
+Nicolo Bulega steht bei Cremona vor einer großen Chance: Der Titel ist nicht das Einzige, worauf er spielt. Ein Rekord von Alvaro Bautista, den man in der WorldSBK lange für unknackbar hielt, könnte ebenfalls fallen.
 
-Glaubst du, Bulega nimmt hier Titel und Record auf einen Streich mit, oder wehrt sich Bautista?
+Denkt ihr, Bulega kann Bautistas Rekord knacken, oder hält der alte Wert?
 
 #WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -92,8 +94,8 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 2.9
 Kategorie: WorldSSP
@@ -105,38 +107,15 @@ Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-4-p
 Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/21/97ebedac-6597-4980-a9ee-68ae57f36e50/42cd51ce-9037-7314-a4c5-74d7bd5a2533.jpg
 Plattformen: Instagram + Facebook
 Text:
-Mit drei Rennen noch vor sich will Arenas bei Cremona die Titelchancen nicht aus der Hand geben.
+Bei den WorldSSP-Rennen in Cremona stehen alle drei Titel zur Auseinandersetzung.
 
-In Cremona geht es um die Krönung im WorldSSP. Drei Rennwochenenden stehen noch an – und gleich drei Meisterschaften sind auf dem Spiel. Arenas hält die Nase vorne, doch die Verfolger drängeln. Für Teams, Fahrer und Hersteller wird dieses Wochenende zum Make-or-Break.
+Mit drei Runden im Kalender ist Cremona entscheidend für die Titelchancen von Teams, Fahrern und Herstellern.
 
-Wer gewinnt den Showdown in Cremona?
+Der Fahrer Arenas versucht, seine Rivalen abzuwehren.
+
+Verpasst nicht das entscheidende Rennen.
 
 #WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
-
-## Beitrag 5
-QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 1.9
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1091523
-Titel: PREVIEW 1d ago Pirelli bring new development SCX tyre to Cremona, SCQ also in the allocation WorldSBK’s Official Tyre Supplier are continuing their development with a new specification of the SCX tyre, dubbed the F0769 WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/23/pirelli-bring-new-development-scx-tyre-to-cremona-scq-also-in-the-allocation/1091523
-Instagram-Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-5-preview-1d-ago-pirel-01.jpg
-Quellen-Preview: Zielseite/Plattform
-Plattformen: Instagram + Facebook
-Text:
-Pirelli liefert neue Entwicklungen für die nächste WorldSBK-Session in Cremona aus. Das neue SCX in der Spezifikation F0769 soll für mehr Performance auf der Strecke sorgen, während auch das SCQ-Setup wieder im Allocation enthalten ist.
-
-Wer freut sich auf den neuen Reifen bei Cremona?
-
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
