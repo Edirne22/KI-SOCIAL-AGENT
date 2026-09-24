@@ -63,5 +63,25 @@ class Tests(unittest.TestCase):
     self.assertIn("Senden fehlgeschlagen",result)
     self.assertIn("SEND_APPROVED",ie.telegram_command("info "+e["ticket_id"]))
 
+ def test_ingest_generates_reply_draft_and_ticket_contains_it(self):
+  with tempfile.TemporaryDirectory() as t:
+   r=Path(t)
+   with patch.object(ie,"MEMORY_FILE",r/"m.md"), patch.object(ie,"QUEUE_FILE",r/"q.jsonl"), patch.object(ie,"SEEN_FILE",r/"s.txt"), patch.object(ie,"quick_chat",return_value="Danke dir! Gute Fahrt."):
+    (r/"m.md").write_text("# Instagram Community Memory\n\n- früher | @rider | comment | LOB | Media: 1\n",encoding="utf-8")
+    e=ie.ingest({"event_id":"draft","username":"rider","text":"Mega!","media_id":"42"})
+    self.assertEqual(e["reply_draft"],"Danke dir! Gute Fahrt.")
+    ticket=ie.telegram_ticket(e)
+    self.assertIn("Kommentar: Mega!",ticket)
+    self.assertIn("Vorschlag: Danke dir! Gute Fahrt.",ticket)
+
+ def test_ingest_survives_llm_failure_without_draft(self):
+  with tempfile.TemporaryDirectory() as t:
+   r=Path(t)
+   with patch.object(ie,"MEMORY_FILE",r/"m.md"), patch.object(ie,"QUEUE_FILE",r/"q.jsonl"), patch.object(ie,"SEEN_FILE",r/"s.txt"), patch.object(ie,"quick_chat",side_effect=RuntimeError("LLM down")):
+    e=ie.ingest({"event_id":"draft-fail","username":"rider","text":"Welche Reifen?","media_id":"42"})
+    self.assertIsNone(e["reply_draft"])
+    self.assertEqual(ie._queue()[0]["ticket_id"],e["ticket_id"])
+    self.assertIn("Kein Vorschlag verfügbar – bitte ändern nutzen",ie.telegram_ticket(e))
+
 if __name__=="__main__":
  unittest.main()
