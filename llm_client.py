@@ -1,12 +1,13 @@
 """Einheitlicher Client fuer konfigurierbare Text-, Bild- und Video-Aufgaben."""
 from __future__ import annotations
-import argparse,re,time,random
+import argparse,re,time,random,os
 from pathlib import Path
 from typing import Sequence
 import requests
 from router import get_api_key,get_provider_config,get_provider_for_task,get_task_config
 ROOT=Path(__file__).resolve().parent
 PRO_STANDARD=ROOT/'config'/'PROFESSIONAL_AGENT_STANDARD.md';HUMAN_STANDARD=ROOT/'config'/'HUMAN_WRITING_PROTOCOL.md';BBL_VOICE=ROOT/'memory'/'MOTOGP_VOICE_RULES.md'
+_PROVIDER_COOLDOWNS={}
 SECRET_PATTERNS=((re.compile(r"AIza[0-9A-Za-z_-]{35}"),"[ENTFERNT]"),(re.compile(r"AQ\.[A-Za-z0-9_-]{40,}"),"[ENTFERNT]"),(re.compile(r"sk-[A-Za-z0-9_-]{20,}"),"[ENTFERNT]"),(re.compile(r"\b[A-Za-z0-9_-]{50,}\b"),"[ENTFERNT]"))
 def redact_secrets(value):
  for p,r in SECRET_PATTERNS:value=p.sub(r,value)
@@ -29,14 +30,26 @@ def get_agent_context(agent_names:Sequence[str]):
  for agent_name in agent_names:
   n=agent_name[:-3] if agent_name.endswith('.md') else agent_name;contexts.append(f'--- Agent: {n} ---\n{load_agent(n)}')
  return '\n\n'.join(contexts)
+def _cooldown_seconds(response):
+ raw=(response.headers.get('Retry-After') or '').strip()
+ try:return max(1.0,float(raw))
+ except (TypeError,ValueError):return 60.0
+def _set_provider_cooldown(provider_name,seconds):
+ if provider_name:_PROVIDER_COOLDOWNS[provider_name]=max(_PROVIDER_COOLDOWNS.get(provider_name,0.0),time.monotonic()+seconds)
+def provider_in_cooldown(provider_name):
+ until=_PROVIDER_COOLDOWNS.get(provider_name,0.0)
+ if until<=time.monotonic():
+  _PROVIDER_COOLDOWNS.pop(provider_name,None);return False
+ return True
 def _retry_after_seconds(response,attempt):
  raw=(response.headers.get('Retry-After') or '').strip()
  try:return min(30.0,max(1.0,float(raw)))
  except (TypeError,ValueError):return min(12.0,2.0*(2**attempt)+random.uniform(0.0,0.5))
-def _request_json(method,url,headers,payload,timeout,max_retries=2):
+def _request_json(method,url,headers,payload,timeout,max_retries=1,provider_name=None):
  """Retry only transient provider failures. Permanent 4xx errors still fail immediately."""
  last=None
  for attempt in range(max_retries+1):
+  if provider_name and provider_in_cooldown(provider_name):raise RuntimeError(f"Provider '{provider_name}' ist wegen HTTP 429 im Cooldown.")
   try:r=requests.request(method,url,headers=headers,json=payload,timeout=timeout)
   except (requests.Timeout,requests.ConnectionError) as e:
    last=e
@@ -44,31 +57,47 @@ def _request_json(method,url,headers,payload,timeout,max_retries=2):
    time.sleep(min(12.0,2.0*(2**attempt)+random.uniform(0.0,0.5)));continue
   if r.ok:return r.json()
   last=RuntimeError(f"Provider-Anfrage fehlgeschlagen (HTTP {r.status_code}): {redact_secrets(r.text[:500])}")
-  if r.status_code not in (429,500,502,503,504) or attempt>=max_retries:raise last
+  if r.status_code==429:
+   _set_provider_cooldown(provider_name,_cooldown_seconds(r));raise last
+  if r.status_code not in (500,502,503,504) or attempt>=max_retries:raise last
   time.sleep(_retry_after_seconds(r,attempt))
  raise last or RuntimeError('Provider-Anfrage fehlgeschlagen')
 def _generate_gemini(prompt,provider,key):
  headers={'Content-Type':'application/json','X-goog-api-key':key};payload={'contents':[{'parts':[{'text':prompt}]}]};errors=[]
  for model in provider['text_models']:
   try:
-   data=_request_json('POST',f"{provider['base_url']}/models/{model}:generateContent",headers,payload,provider['timeout_seconds']);return redact_secrets(data['candidates'][0]['content']['parts'][0]['text']).strip()
+   data=_request_json('POST',f"{provider['base_url']}/models/{model}:generateContent",headers,payload,provider['timeout_seconds'],provider_name='gemini');return redact_secrets(data['candidates'][0]['content']['parts'][0]['text']).strip()
   except (KeyError,IndexError,TypeError) as e:errors.append(f'{model}: unvollstaendige Antwort ({e})')
   except RuntimeError as e:errors.append(f'{model}: {e}')
  raise RuntimeError('Kein Gemini-Modell konnte die Aufgabe ausfuehren. '+' | '.join(errors))
 def _generate_agnes_text(prompt,provider,key):
- data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds']);return redact_secrets(data['choices'][0]['message']['content']).strip()
+ data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds'],provider_name='agnes');return redact_secrets(data['choices'][0]['message']['content']).strip()
+def _generate_openai_text(prompt,provider,key,provider_name):
+ data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds'],provider_name=provider_name);return redact_secrets(data['choices'][0]['message']['content']).strip()
 def _generate_agnes_image(prompt,provider,key):return _request_json('POST',f"{provider['base_url']}/images/generations",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['image_model'],'prompt':prompt,'size':'1024x1024','n':1},provider['timeout_seconds'])
 def _start_agnes_video(prompt,provider,key):return _request_json('POST',f"{provider['base_url']}/videos",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['video_model'],'prompt':prompt,'duration':5,'size':'720x1280'},provider['timeout_seconds'])
 def generate(task_name,prompt):
- task=get_task_config(task_name);provider_name=get_provider_for_task(task_name);provider=get_provider_config(provider_name);key=get_api_key(provider_name)
+ task=get_task_config(task_name);primary=get_provider_for_task(task_name);providers=[primary]+[p for p in task.get('fallback',[]) if p!=primary]
  if task['response_type']=='text':prompt=_with_global_standard(prompt)
- if provider_name=='gemini':
-  if task['response_type']!='text':raise ValueError(f"Gemini unterstuetzt im Router keine Aufgabe vom Typ {task['response_type']}.")
-  return _generate_gemini(prompt,provider,key)
- if provider_name=='agnes':
-  if task['response_type']=='text':return _generate_agnes_text(prompt,provider,key)
-  if task['response_type']=='image':return _generate_agnes_image(prompt,provider,key)
-  if task['response_type']=='video':return _start_agnes_video(prompt,provider,key)
- raise ValueError(f"Keine Client-Implementierung fuer Provider '{provider_name}'.")
+ errors=[]
+ for provider_name in providers:
+  if provider_in_cooldown(provider_name):errors.append(f"{provider_name}: Cooldown");continue
+  provider=get_provider_config(provider_name)
+  if not provider.get('enabled',False):errors.append(f"{provider_name}: deaktiviert");continue
+  env_name=provider.get('api_key_env')
+  if not env_name or not os.environ.get(env_name):errors.append(f"{provider_name}: Key fehlt");continue
+  key=get_api_key(provider_name)
+  try:
+   if provider_name=='gemini':
+    if task['response_type']!='text':raise ValueError(f"Gemini unterstuetzt im Router keine Aufgabe vom Typ {task['response_type']}.")
+    return _generate_gemini(prompt,provider,key)
+   if provider_name=='agnes':
+    if task['response_type']=='text':return _generate_agnes_text(prompt,provider,key)
+    if task['response_type']=='image':return _generate_agnes_image(prompt,provider,key)
+    if task['response_type']=='video':return _start_agnes_video(prompt,provider,key)
+   if provider_name=='nvidia' and task['response_type']=='text':return _generate_openai_text(prompt,provider,key,provider_name)
+   raise ValueError(f"Keine Client-Implementierung fuer Provider '{provider_name}'.")
+  except RuntimeError as e:errors.append(f"{provider_name}: {e}")
+ raise RuntimeError('Alle konfigurierten Provider fehlgeschlagen (fail-closed). '+' | '.join(errors))
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--task',default='content_ideas');p.add_argument('--prompt',default='Nenne eine kurze Motorrad-Content-Idee.');a=p.parse_args();r=generate(a.task,a.prompt);print(r if isinstance(r,str) else redact_secrets(str(r)))
