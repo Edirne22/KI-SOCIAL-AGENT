@@ -12,11 +12,11 @@ def send_reply(comment_id: str, message: str) -> str:
     comment_id = str(comment_id or "").strip()
     message = " ".join(str(message or "").split()).strip()
     if not token:
-        raise RuntimeError("INSTAGRAM_ACCESS_TOKEN fehlt.")
+        raise RuntimeError("INSTAGRAM_ACCESS_TOKEN nicht gesetzt")
     if not comment_id:
-        raise RuntimeError("Instagram comment_id fehlt.")
+        raise RuntimeError("comment_id fehlt")
     if not message:
-        raise RuntimeError("Antworttext fehlt.")
+        raise RuntimeError("message ist leer")
 
     response = requests.post(
         f"{API}/{comment_id}/replies",
