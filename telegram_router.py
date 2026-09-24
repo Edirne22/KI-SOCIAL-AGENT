@@ -355,9 +355,10 @@ def main() -> None:
     if last_update_id is None:
         baseline = sorted(get_updates(), key=lambda x: x.get("update_id", 0))
         ids = [x.get("update_id") for x in baseline if isinstance(x.get("update_id"), int)]
+        baseline_id = max(ids) if ids else 0
+        _write_last_update_id(baseline_id)
         if ids:
-            _write_last_update_id(max(ids))
-            get_updates(offset=max(ids) + 1)
+            get_updates(offset=baseline_id + 1)
         print("ROUTER: First-Run Telegram-Offset initialisiert; keine Updates verarbeitet.")
         return
     updates = sorted(get_updates(offset=last_update_id + 1), key=lambda x: x.get("update_id", 0))
