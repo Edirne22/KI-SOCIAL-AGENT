@@ -692,33 +692,3 @@ Wer gewinnt eurer Meinung nach die Meisterschaft bei den verbleibenden Rennen?
 https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
 Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
 Link-Preview: offiziell
-
-## Instagram
-Status: ENTWURF
-Freigabe: Rennkalender
-Rennkalender: 2026-W38-Formel 1
-Titel: 🏁 Formel 1 – Rennwochenende
-Text: Shanghai International Circuit · Shanghai — 2026-09-25 bis 2026-09-27 | Quelle: https://www.formula1.com/en/calendar.html
-Quelle: https://www.formula1.com/
-Medienstatus: EIGENES_MATERIAL
-Bild: assets/race-posters/2026-W39-formel-1-feed.jpg
-
-## Story
-Status: ENTWURF
-Freigabe: Rennkalender
-Rennkalender: 2026-W38-Formel 1
-Titel: 🏁 Formel 1 – Rennwochenende
-Text: Shanghai International Circuit · Shanghai — 2026-09-25 bis 2026-09-27 | Quelle: https://www.formula1.com/en/calendar.html
-Quelle: https://www.formula1.com/
-Medienstatus: EIGENES_MATERIAL
-Bild: assets/race-posters/2026-W39-formel-1-story.jpg
-
-## Facebook
-Status: ENTWURF
-Freigabe: Rennkalender
-Rennkalender: 2026-W38-Formel 1
-Titel: 🏁 Formel 1 – Rennwochenende
-Text: Shanghai International Circuit · Shanghai — 2026-09-25 bis 2026-09-27 | Quelle: https://www.formula1.com/en/calendar.html
-Quelle: https://www.formula1.com/
-Medienstatus: EIGENES_MATERIAL
-Bild: assets/race-posters/2026-W39-formel-1-facebook.jpg
