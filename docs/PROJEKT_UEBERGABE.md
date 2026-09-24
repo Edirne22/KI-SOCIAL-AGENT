@@ -1,6 +1,6 @@
 # PROJEKT-ÜBERGABE – KI-SOCIAL-AGENT
 
-**Stand:** 2026-09-22 (Abend)
+**Stand:** 2026-09-24 (Abend)
 **Repo:** https://github.com/Edirne22/KI-SOCIAL-AGENT
 **Ziel:** Autonome Content-Fabrik für Bülent (@edirnelibuelent) – 12–24 Monate zur KI-Agentur.
 **Repo-Typ:** 🌐 Public (unbegrenzte GitHub-Actions-Minuten)
@@ -107,13 +107,20 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 - **Wichtig:** Sprach-Namen ausgeschrieben („German", „Turkish")
 - Sprachen: DE, TR, EN, FR, ES, IT, NL, PL, RU, AR
 
+### Racing-LLM-Router (MotoGP-Pipeline)
+- Nutzt **eigenen Pfad** über `llm_client.py` + `config/model_router.json`
+- **Nicht** über `llm_router.py`
+- **Fallback-Kette (24.09.):** Agnes → Gemini → NVIDIA → fail-closed
+- **429-Cooldown:** Retry-After-Header oder 60 Sek, sonst fail-closed
+- **NVIDIA-Modell:** `nvidia/nemotron-3.5-lightning-30b-a3b` (alt: `minimaxai/minimax-m3` – abgekündigt, HTTP 410)
+
 ---
 
 ## 🔑 API-KEYS & SECRETS
 
 | Secret | Status |
 |---|---|
-| `NVIDIA_API_KEY` | `KI-SOCIAL-AGENT-v2` |
+| `NVIDIA_API_KEY` | `KI-SOCIAL-AGENT-v2` (im MotoGP-Workflow exponiert seit 24.09.) |
 | `CLOUDFLARE_ACCOUNT_ID` | aktiv |
 | `CLOUDFLARE_API_TOKEN` | aktiv |
 | `TOGETHER_API_KEY` | gesetzt, aber nicht nutzbar |
@@ -126,6 +133,12 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 | `TELEGRAM_BOT_TOKEN` | aktiv |
 | `TELEGRAM_CHAT_ID` | aktiv |
 | `OPENWEATHER_API_KEY` | aktiv |
+| `INSTAGRAM_USER_ID` | aktiv |
+| `INSTAGRAM_ACCESS_TOKEN` | aktiv |
+| `FACEBOOK_PAGE_ID` | aktiv |
+| `FACEBOOK_PAGE_TOKEN` | ⚠️ Problem (pages_read_engagement fehlt) |
+| `META_WEBHOOK_VERIFY_TOKEN` | geplant (nach VPS) |
+| `META_APP_SECRET` | geplant (nach VPS) |
 
 ### Provider-Status
 - ✅ **Pollinations** – läuft
@@ -134,12 +147,12 @@ Nicht mit Werbung starten. Erst Community-Mitglied werden, dann Mehrwert liefern
 - ❌ **NVIDIA FLUX** – auf Eis
 - ✅ **NVIDIA Riva 4B** – läuft
 - ✅ **NVIDIA Muse Glimmer 30B** – läuft
-- ✅ **Agnes** – Bild-Fallback
+- ✅ **Agnes** – Bild + Text (Free-Tier mit Rate-Limit)
 - ✅ **Kimi K3** – Reasoning/Coding + Vision-Fallback
 - ⚠️ **DeepSeek v4-flash** – EOL 22.09.2026
 - ⚠️ **GLM-4.7** – EOL 14.05.2026
 - ⚠️ **Qwen3 Coder 480B** – EOL 11.06.2026
-- ✅ **Nemotron 3.5 Lightning 30B** – aktiv für Claude Code (via OmniRoute)
+- ✅ **Nemotron 3.5 Lightning 30B** – aktiv für Claude Code (via OmniRoute) + Racing-Fallback
 
 ### 🔒 Sicherheitsregel
 Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
@@ -153,6 +166,8 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 | `test-image-router.yml` | Bild-Generierung | `BYTES: 386374` in 9 Sek |
 | `test-vision-router.yml` | Vision-Analyse | `RESULT: {...}` |
 | `test-translation-router.yml` | DE↔TR | `Merhaba, nasılsın?` |
+| `instagram-api-test.yml` | Instagram Endpoint-Check | 24.09.: 4/5 verfügbar |
+| `instagram-reply-adapter-test.yml` | Reply Adapter Mock | SUCCESS |
 
 ---
 
@@ -207,10 +222,112 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 
 ---
 
+## 💬 INSTAGRAM ENGAGEMENT AGENT (Agent 17)
+
+**Status:** ✅ aktiv seit 24.09.2026
+
+### Dateien
+- `agents/17_instagram_engagement_agent.md`
+- `instagram_engagement.py`
+- `test_instagram_engagement.py`
+- `memory/INSTAGRAM_COMMUNITY.md`
+
+### Was er macht
+- Verarbeitet **öffentliche Instagram-Kommentare** (via Meta Graph API Polling)
+- Klassifiziert: FRAGE / LOB / KRITIK / TRIGGER / SPAM / UNSICHER
+- Erzeugt Ticket-ID: `IG-XXXXXXXX` (deterministisch)
+- Sendet an Telegram
+- Dedupe + Community-Memory
+
+### Telegram-Steuerung
+```
+antwort IG-XXXXXXXX          → Antwortvorschlag freigeben + senden
+ändern IG-XXXXXXXX <Text>    → eigenen Text senden
+ignorieren IG-XXXXXXXX       → Ticket schließen
+info IG-XXXXXXXX             → Details
+memory IG-XXXXXXXX           → Community-Historie
+```
+
+### Was NICHT unterstützt wird
+- Likes einzelner User
+- Stiller Profil-/Post-Besucher
+- Mentions (HTTP 400, nur via Webhook)
+- Story-Replies (separater Test nötig)
+
+### Zwei-Stufen-Freigabe
+- Facebook postet sofort nach Telegram-Freigabe
+- Instagram wartet auf zweite Freigabe (Bild-Freigabe via `bild ✅` / `bild ❌`)
+
+---
+
+## 🔌 INSTAGRAM REPLY ADAPTER (PR #72)
+
+**Status:** ✅ auf main seit 24.09.2026
+
+### Dateien
+- `instagram_reply_adapter.py`
+- Änderungen in `instagram_engagement.py`
+
+### Funktioniert
+- `send_reply(comment_id, message)` → sendet via Instagram Graph API
+- Nur nach expliziter Telegram-Freigabe
+- SENT-Zustand terminal (kein Doppel-Senden)
+- Reply-ID wird gespeichert
+
+### Wichtige Logik
+- Kein automatischer Retry ohne Freigabe
+- Bei API-Fehler: SEND_APPROVED bleibt erhalten
+- 429-Cooldown greift (Retry-After, sonst 60 Sek)
+- Provider-Fallback Agnes → Gemini → NVIDIA
+- Fail-closed wenn alle Provider down
+
+---
+
+## 📡 INSTAGRAM-API-ENDPOINTS – LIVE-GEPRÜFT (24.09.2026)
+
+**Test-Workflow:** `.github/workflows/instagram-api-test.yml`
+**Script:** `scripts/test_instagram_endpoints.py`
+
+| Endpoint | Status | Verfügbar |
+|---|---|---|
+| `/{ig-user-id}` | 200 | ✅ Token gültig |
+| `/{ig-user-id}/media` | 200 | ✅ Eigene Posts abrufbar |
+| `/{ig-user-id}/tags` | 200 | ✅ Tagged Media (aktuell 0) |
+| `/{ig-user-id}/mentions` | **400** | ❌ Nur via Webhooks |
+| `/{ig-user-id}/stories` | 200 | ✅ Story-Liste (aktuell 0) |
+
+**Konsequenzen:**
+- Tagged-Media-Agent baubar, aber geringer Nutzen aktuell
+- Story-Replies: separater Test nötig
+- Mentions: nur via VPS/Webhook
+
+---
+
+## 🌐 FACEBOOK ENGAGEMENT AGENT (Agent 18) – PAUSIERT
+
+**Status:** ⏸️ vorbereitet, deaktiviert (24.09.2026)
+
+### Dateien
+- `agents/18_facebook_engagement_agent.md`
+- `facebook_engagement.py`
+- `memory/FACEBOOK_COMMUNITY.md`
+
+### Problem
+- Fehler `(#10) pages_read_engagement` trotz gesetztem Token
+- Verdacht: Page-Token vs. User-Token, Scopes, App-Modus
+- Wird später mit isoliertem Token-Test gelöst
+
+### Aktivierung
+- `ENABLE_FACEBOOK_ENGAGEMENT=true` setzen (nach Fix)
+- Vorher: Graph API Explorer, `/me/accounts`, Scopes prüfen
+
+---
+
 ## 🎯 PATTERN LIBRARY (Instagram-Content-Bausteine)
 
 **Datei:** `config/PATTERN_LIBRARY.md`
-**Stand:** 21.09.2026 – **14 Patterns aktiv**
+**Stand:** 23.09.2026 – **17 Patterns aktiv**
+**Ziel:** 20 Patterns bis Ende Oktober 2026
 
 | # | Pattern | Quelle |
 |---|---|---|
@@ -225,23 +342,23 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 | 9 | Fotografie-Stil-Prompts | @mauryavanshi_edits |
 | 10 | Skill-Karten-Raster | @bitbyybit |
 | 11 | Tool-Stack-Karussell | @rakeshmahantiai |
-| 12 | Paid vs Free Vergleich | @aitoolswithpritham |
+| 12 | Paid vs Free (kompakt) | @aitoolswithpritham |
 | 13 | Step-by-Step Tutorial | @aiagently |
 | 14 | X Free Tools-Liste | @infinity_digitals_official |
+| 15 | Pre-Purchase-Check | Türkisch |
+| 16 | Tool-Steckbrief als Karussell | @aiwithshivang |
+| 17 | Paid vs Free (Detail) | @aitoolswithpratham u.a. |
 
-**Ziel:** 15–20 Patterns bis Ende Oktober 2026.
+**Referenz-Accounts:**
+- @startup_rules, @mauryavanshi_edits, @karishmaticmarketer
+- @bitbyybit, @rakeshmahantiai, @aitoolswithpritham
+- @aiagently, @alpedya, @aiwithshivang
+- @trickplus.ai, @chatgptricks, @codescaptain
+- @its_aaditya, @haroonaicreator, @infinity_digitals_official
+- @hfnhq (NEU – KI + Social-Media, Türkisch)
 
-**Referenz-Accounts zum Beobachten:**
-- @startup_rules (verifiziert)
-- @mauryavanshi_edits
-- @karishmaticmarketer
-- @bitbyybit
-- @rakeshmahantiai
-- @aitoolswithpritham (verifiziert)
-- @aiagently (verifiziert)
-
-**Bonus in Pattern Library:**
-- Tool-Alternativen-Sektion (kostenlose Tools)
+**Bonus:**
+- Tool-Alternativen-Sektion
 - KI-Rollen-Bibliothek (15 Rollen aus @alpedya)
 
 ---
@@ -263,7 +380,7 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 - `motogp nein` – alle ablehnen
 - **Wichtig:** Leerzeichen nach Komma (`motogp 2, 3`) → Bug bei `motogp 2,3`
 
-### Instagram Zwei-Stufen-Freigabe (NEU 21.09.2026)
+### Instagram Zwei-Stufen-Freigabe
 - **Facebook:** postet sofort nach Telegram-Freigabe
 - **Instagram:** wartet auf zweite Freigabe
   1. Freigabe → Agnes generiert Bild
@@ -275,6 +392,47 @@ Keine Keys in Chats posten. Bei versehentlichem Posten: sofort rotieren.
 - **5 → 3 Stories möglich** wenn FRESHNESS DIAG filtert
 - **FRESHNESS DIAG** filtert nach: fresh / old / missing_date / promo_irrelevant
 - **SERIES LOCK** in V8.5.5: immutable series + source-fact whitelist
+- **6 Struktur-Varianten:** HOOK_BODY_QUESTION, BODY_QUESTION, STORY_QUESTION, FACT_FACT_FACT, QUESTION_HOOK_BODY, ZITAT_BODY
+- **QM erkennt alle 6 Varianten** (kein „Poststruktur unvollständig" mehr)
+- **Community-Fallback:** feuert zu aggressiv (offener Bug – siehe Abschnitt Racing-Pipeline)
+
+### `force_new_run` (Workflow-Input)
+- GitHub-Checkbox „V8.5: duplicate protection bewusst umgehen"
+- Bei gesetztem Haken: Doppelte Ausführung im selben Zeitfenster erlaubt
+- **Fix 24.09.:** Übergabe abgesichert (Workflow-YAML + GITHUB_EVENT_PATH Fallback)
+- Log-Zeile: `force_new_run resolved=true`
+
+---
+
+## 🔧 RACING-PIPELINE-FIXES – 24.09.2026
+
+### Behobene Bugs (7 PRs)
+
+| PR | Was |
+|---|---|
+| #78 | Signatur-Bug Strukturvariation (Wrapper) |
+| #79 | Rate-Limit-Hardening (Cooldown + Fallback) |
+| #83 | Preflight-Selftests an neuen Vertrag |
+| #85 | JSON-Fehler in model_router.json |
+| #88 | Test-Uhr für Retry-After |
+| #89 | NVIDIA-Modell + Structure-QM (6 Varianten) |
+| #90 | force_new_run Checkbox-Übergabe |
+
+### Rate-Limit-Hardening
+- **429-Cooldown:** Retry-After-Header, sonst 60 Sek
+- **Fallback-Kette:** Agnes → Gemini → NVIDIA
+- **HTTP-Retry:** reduziert auf 1 (statt 2)
+- **Editor/Technisch:** 2 Versuche (statt 3)
+- **Fachlich/Repair:** 3 Versuche (unverändert)
+- **Fail-closed:** wenn alle Provider down
+
+### Offene Bugs
+- **Community-Fallback feuert zu aggressiv**
+  - Aktuell: `if len(picks)<3` → Community
+  - Soll: nur bei `fresh=0` (nicht nur `current_q=0`)
+  - Bei vorhandenen Racing-News + 0 QM-PASS: fail-closed statt Community
+  - Fallback-Posts nicht gekennzeichnet (Herkunft: Aktuell → irreführend)
+  - Community-Templates sind statisch (`memory/COMMUNITY_ROTATION.json`)
 
 ---
 
@@ -545,8 +703,29 @@ Ein Claude-Code-Skill, der aus 10 YouTube-Tutorials trainiert wird und dann bei 
 - **Outfeed** → Bulk-Publishing
 
 ### Lokale Skills (nicht via Jules!)
-- **Sofort relevant:** Planning with Files, Türkçe Yazı Yazma, Marketing Skills
+- **Installiert:** `turkish-native`, `planning-with-files`
+- **Sofort relevant:** Marketing Skills (Corey Haines), Stop Slop
+- **Später:** Context Engineering, Anthropic Skills, Superpowers, Remotion, Trail of Bits
 - Installation: `npx skills add <autor>/<skill-name>`
+- **Speicherort:** `C:\Users\Admin\.agents\skills\`
+
+---
+
+## 🎨 HUMAN WRITING PROTOCOL
+
+**Datei:** `config/HUMAN_WRITING_PROTOCOL.md` (V1.0)
+
+**Zweck:** Verbindliche Regeln gegen KI-Sprech in allen Texten.
+**Aktiv eingebunden in:** `llm_client.py` (globaler Kontext für alle Text-Prompts).
+
+**Kernprinzip:** Natürlichkeit über Perfektion. Schreibe wie ein kompetenter Mensch, nicht wie ein Textgenerator.
+
+**Verwandte Dateien:**
+- `config/PROFESSIONAL_AGENT_STANDARD.md` – globale Agent-Regeln
+- `memory/MOTOGP_VOICE_RULES.md` – Bülent-Stil für MotoGP-Posts
+- `chief_quality_manager.py` – maschinelle Prüfung (KI-Floskeln, PR-Wörter)
+
+**Enforcement:** Nach dem Prompt wird deterministisch geprüft. Verstöße → Fail + Retry.
 
 ---
 
@@ -559,7 +738,7 @@ Alle offenen Aufgaben sind ausgelagert in `docs/IDEA_POOL.md`.
 ## 🔧 TOOL-WORKFLOW (Jules + Codex + Claude Code)
 
 ### Jules (Google)
-- 15 Sessions/Tag, max 3 parallel
+- 15 Sessions/Tag (rolling 24h), max 3 parallel
 - Automatische PRs
 - **Neuer Auftrag = neuer Chat**
 - **Prinzip:** Ein Auftrag nach dem anderen, Review vor dem nächsten
@@ -568,6 +747,7 @@ Alle offenen Aufgaben sind ausgelagert in `docs/IDEA_POOL.md`.
 - Nutzungslimit, Reset ~18:41 Uhr
 - Kann GitHub-PRs anlegen
 - Selbst-enthaltende Aufträge
+- **Aktuell Haupt-Tool für Fixes**
 
 ### Claude Code (lokal, über OmniRoute → NVIDIA)
 - Kostenlos über NVIDIA Free Tier
@@ -595,6 +775,8 @@ Alle offenen Aufgaben sind ausgelagert in `docs/IDEA_POOL.md`.
 - ✅ Respektvoll & positiv
 - ✅ Keine politischen Aussagen
 - ❌ Keine KI-Deepfakes von echten Personen
+- ❌ Keine gekauften Follower / Fake-Follower-Apps
+- ❌ Keine Mod-APKs aus unbekannten Quellen
 
 ### Branches
 - `main` = produktiv
@@ -619,6 +801,9 @@ Alle offenen Aufgaben sind ausgelagert in `docs/IDEA_POOL.md`.
 | **Kaestral + claudeclip gleichzeitig** | Verwirrt Nemotron → nur einen Video-MCP |
 | **OmniRoute Timeout** | Env-Vars `MAX_WAIT_MS` VOR Start setzen |
 | **Notepad + JSON** | Niemals `.claude.json` mit Notepad bearbeiten |
+| **Agnes Free-Tier 429** | Cooldown + Fallback (Agnes → Gemini → NVIDIA) |
+| **force_new_run Haken** | Log muss `resolved=true` zeigen (PR #90) |
+| **Preflight-Selftests** | Bei Logik-Änderungen mitpflegen – sie sind Verträge, keine Deko |
 
 ---
 
@@ -633,10 +818,12 @@ Alle offenen Aufgaben sind ausgelagert in `docs/IDEA_POOL.md`.
 | 5. Approval (Telegram + Dashboard Stufe 2) | ✅ |
 | 6. Publishing (Insta + FB) | ✅ |
 | 7. Publishing (TikTok) | ❌ geplant |
-| 8. Media (Audio/Video) | ✅ **FFmpeg-Skript funktioniert** |
-| 9. Durchgehende Autonomie-Kette | 🔴 in Arbeit |
+| 8. Media (Audio/Video) | ✅ FFmpeg-Skript funktioniert |
+| 9. Engagement (Instagram) | ✅ Agent 17 + Reply Adapter live |
+| 10. Engagement (Facebook) | ⏸️ pausiert (Token-Problem) |
+| 11. Durchgehende Autonomie-Kette | 🔴 in Arbeit |
 
-**Aktuell: ~60 % autonom.**
+**Aktuell: ~65 % autonom.**
 
 ---
 
@@ -657,9 +844,11 @@ Alle offenen Aufgaben sind ausgelagert in `docs/IDEA_POOL.md`.
 - **IDEA POOL:** `docs/IDEA_POOL.md`
 - **Snapshot 22.09. Abend:** `docs/SNAPSHOT_2026-09-22_ABEND.md`
 - **API-Referenz:** `docs/API_REFERENZ.md`
+- **Free-Tools-Liste:** `docs/FREE_TOOLS.md`
 - **Approval-Dashboard:** `docs/approval/`
 - **Bikertreffs:** `config/Bikertreffs.md`
 - **Pattern Library:** `config/PATTERN_LIBRARY.md`
+- **Human Writing Protocol:** `config/HUMAN_WRITING_PROTOCOL.md`
 - **Jules Docs:** https://jules.google/docs/usage-limits/
 
 ---
@@ -711,20 +900,16 @@ Bei neuen Ideen (z.B. Expert Agent) IMMER:
 Aufgaben sind ein Pool zur Auswahl, kein Zwang. Datei: `docs/IDEA_POOL.md`.
 
 ### 10. Multi-KI-Cross-Check (geplant)
-Bei wichtigen Entscheidungen (Prompts, Pläne, Code) mehrere KIs einbeziehen und die Antworten vergleichen. Tool-Auswahl + Setup siehe `docs/IDEA_POOL.md` → Prio 1 „Multi-KI Cross-Check". Ziel: Kein manuelles Copy-Paste mehr zwischen Chat und Claude Code.
+Bei wichtigen Entscheidungen (Prompts, Pläne, Code) mehrere KIs einbeziehen und die Antworten vergleichen. Tool-Auswahl + Setup siehe `docs/IDEA_POOL.md` → Prio 1 „Multi-KI Cross-Check".
 
 ### 11. Einfachster Weg zuerst ⚡ (NEU 22.09.2026)
 Bevor komplexe Toolchains (MCP, KI-Agenten, Multi-Service-Setups) aktiviert werden: **prüfen, ob ein FFmpeg/Shell-Einzeiler reicht.**
 - **FFmpeg direkt** bei: einmaligen Videos, Text-Overlays, Concat, Musik
 - **MCP** nur bei: interaktiven Anpassungen, vielen Varianten, Feedback-Schleifen
-- **Lehre vom 22.09.:** Stunden mit MCP verbracht → FFmpeg-Skript baute den Reel in 3 Minuten.
 - **Merksatz:** „Wenn's ein Einzeiler kann, nimm den Einzeiler."
 
 ### 12. Free-Tools-Liste aktiv nutzen (NEU 23.09.2026)
-Bei jedem neuen Content-Stück (Reel, Karussell, Story) und bei
-jedem Agenten-Ausbau: prüfen, ob ein Tool aus
-`docs/FREE_TOOLS.md` genutzt werden kann.
-
+Bei jedem neuen Content-Stück (Reel, Karussell, Story) und bei jedem Agenten-Ausbau: prüfen, ob ein Tool aus `docs/FREE_TOOLS.md` genutzt werden kann.
 - **Vor Rückgriff auf kostenpflichtige Tools:** erst Free-Tools-Liste checken
 - **Bei jedem neuen Tool:** in die Liste eintragen (Kategorie + Free-Tier-Status)
 - **„Aktuell genutzt"-Sektion** oben in `FREE_TOOLS.md` pflegen
@@ -732,6 +917,41 @@ jedem Agenten-Ausbau: prüfen, ob ein Tool aus
 - **Quarterly:** Liste durchgehen, was funktioniert / was nicht
 
 **Ziel:** 0-€-Philosophie halten, nicht in teure Abos rutschen.
+
+### 13. Preflight-Selftests sind Verträge (NEU 24.09.2026)
+Bei jeder Logik-Änderung (Signaturen, Retry-Anzahlen, Provider-Verhalten):
+- Bestehende Preflight-Selftests prüfen
+- Ggf. anpassen – aber **nicht die Logik zurückbauen**
+- Neue Selftests ergänzen für neue Verträge
+- **Regel:** Wenn der Preflight rot ist, ist der PR nicht merge-fähig
+- **Grund:** Der Preflight hat 24.09. mehrfach Bugs früh gefangen
+
+**Merksatz:** „Selftests dokumentieren den Vertrag – sie sind keine Deko."
+
 ---
 
-**Ende Übergabe – Stand 22.09.2026 Abend**
+## 📋 HEUTE (24.09.2026) – WAS PASSIERT IST
+
+### Insta Engagement live
+- Agent 17 aktiv, 3-Std-Polling
+- Reply Adapter auf main (PR #72)
+- Live-Test wartet auf erstes echtes IG-Ticket
+
+### Facebook pausiert
+- Agent 18 vorbereitet
+- Token-Problem (pages_read_engagement)
+- Wird später gelöst
+
+### Racing-Pipeline stabilisiert
+- 7 PRs gemergt (#78–#90)
+- Rate-Limit-Hardening + Struktur-QM + force_new_run-Fix
+- **Offen:** Community-Fallback feuert zu aggressiv
+
+### Idee für später
+- **Instagram DM-Automation** (aus @hfnhq-Karussell)
+- Blocker: 24-Std-Regel braucht Echtzeit → VPS
+- Ausbaustufen: Kommentar-Trigger → DM, DM-Assistent, Content-Analytics
+
+---
+
+**Ende Übergabe – Stand 24.09.2026 Abend**
