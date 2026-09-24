@@ -64,6 +64,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           INPUT_FORCE_NEW_RUN: ${{ inputs.force_new_run }}
         run: python -u racing_v85.py
       - name: V8.5 State, Memory, QM-Audit, Medien und Session persistent speichern
