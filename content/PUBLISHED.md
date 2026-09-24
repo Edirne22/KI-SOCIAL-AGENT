@@ -692,3 +692,81 @@ Wer gewinnt eurer Meinung nach die Meisterschaft bei den verbleibenden Rennen?
 https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
 Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-24-daily
+Telegram-Update-ID: 279361732
+MotoGP-Auswahl: 1
+Titel: Chantra set for MotoGP return in Motegi The Thai rider will replace Mir at Honda HRC Castrol for the Japanese GP 23 Sep 2026
+Text:
+Chantra kehrt in Motegi zurück – für Honda HRC Castrol.
+
+Der Thai-Rider übernimmt das Seat von Mir beim Japanese GP am 23. September 2026. Das ist ein klarer Wechsel in der MotoGP-Weltmeisterschaft.
+
+Wie bewertet ihr Chantras Perspektive in diesem Rennen?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/23/chantra-set-for-motogp-return-in-motegi/1092166
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-1-chantra-set-for-moto-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-24-daily
+Telegram-Update-ID: 279361732
+MotoGP-Auswahl: 1
+Titel: Chantra set for MotoGP return in Motegi The Thai rider will replace Mir at Honda HRC Castrol for the Japanese GP 23 Sep 2026
+Text:
+Chantra kehrt in Motegi zurück – für Honda HRC Castrol.
+
+Der Thai-Rider übernimmt das Seat von Mir beim Japanese GP am 23. September 2026. Das ist ein klarer Wechsel in der MotoGP-Weltmeisterschaft.
+
+Wie bewertet ihr Chantras Perspektive in diesem Rennen?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/23/chantra-set-for-motogp-return-in-motegi/1092166
+Quelle: https://www.motogp.com/en/news/2026/09/23/chantra-set-for-motogp-return-in-motegi/1092166
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-24-daily
+Telegram-Update-ID: 279361732
+MotoGP-Auswahl: 5
+Titel: PREVIEW 1d ago BRAKING IN DETAIL: Crucial details from Brembo from Cremona Circuit WorldSBK
+Text:
+Brembo hat auf dem Cremona Circuit im WorldSBK seine Bremsen-Technologie im Detail vorgestellt.
+
+Das Team liefert einen genauen Blick auf die eingesetzte Bremsanlage und die daraus abgeleiteten Einstellungen für die Strecke. Die Informationen helfen zu verstehen, wie die Hersteller und Teams die Anforderungen des Kurses technisch umsetzen.
+
+Welcher Aspekt der Bremsen-Entwicklung ist für euch am spannendsten?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/braking-in-detail-crucial-details-from-brembo-from-cremona-circuit/1091496
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-24-racing-editorial-2026-09-24-5-preview-1d-ago-braki-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-24-daily
+Telegram-Update-ID: 279361732
+MotoGP-Auswahl: 5
+Titel: PREVIEW 1d ago BRAKING IN DETAIL: Crucial details from Brembo from Cremona Circuit WorldSBK
+Text:
+Brembo hat auf dem Cremona Circuit im WorldSBK seine Bremsen-Technologie im Detail vorgestellt.
+
+Das Team liefert einen genauen Blick auf die eingesetzte Bremsanlage und die daraus abgeleiteten Einstellungen für die Strecke. Die Informationen helfen zu verstehen, wie die Hersteller und Teams die Anforderungen des Kurses technisch umsetzen.
+
+Welcher Aspekt der Bremsen-Entwicklung ist für euch am spannendsten?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.worldsbk.com/en/news/2026/09/22/braking-in-detail-crucial-details-from-brembo-from-cremona-circuit/1091496
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/braking-in-detail-crucial-details-from-brembo-from-cremona-circuit/1091496
+Link-Preview: offiziell
