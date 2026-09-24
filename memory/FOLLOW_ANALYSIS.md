@@ -1,18 +1,21 @@
 # Follow-Analyse
-Stand: 2026-09-23 08:05
+Stand: 2026-09-24 08:06
 
 ## Zusammenfassung
-- Analysierte Accounts: 5
+- Analysierte Accounts: 8
 - Erfolgreich: 0
-- Nicht analysierbar: 5
+- Nicht analysierbar: 8
 - Hinweis: Top-Posts stammen aus einer aktuellen, begrenzten öffentlichen Stichprobe.
 
 ## Verify-Ergebnisse
-- @motogp → ⚠️ @motogp | – | Bright Data HTTP 400
-- @worldsbk → ⚠️ @worldsbk | – | Bright Data HTTP 400
-- @pramacracing → ⚠️ @pramacracing | – | Bright Data HTTP 400
-- @f1 → ⚠️ @f1 | – | Bright Data HTTP 400
-- @turkiye.motogp → ⚠️ @turkiye.motogp | – | Bright Data HTTP 400
+- @jackmilleraus → ⚠️ @jackmilleraus | – | Bright Data HTTP 400
+- @pecco63 → ⚠️ @pecco63 | – | Bright Data HTTP 400
+- @marcmarquez93 → ⚠️ @marcmarquez93 | – | Bright Data HTTP 400
+- @89jorgemartin → ⚠️ @89jorgemartin | – | Bright Data HTTP 400
+- @marcobez72 → ⚠️ @marcobez72 | – | Bright Data HTTP 400
+- @bradbinder → ⚠️ @bradbinder | – | Bright Data HTTP 400
+- @pedroacosta37 → ⚠️ @pedroacosta37 | – | Bright Data HTTP 400
+- @fabioquartararo20 → ⚠️ @fabioquartararo20 | – | Bright Data HTTP 400
 
 ## Account-Ergebnisse
 
