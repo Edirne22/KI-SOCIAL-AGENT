@@ -403,7 +403,7 @@ def main() -> None:
 
         if re.match(r"^(?:antwort|ändern|ignorieren|info|memory)\\s+ig-[a-f0-9]{8}(?:\\s+.*)?$", cmd, re.I):
             print(f"ROUTER: Update {uid} -> Instagram Engagement")
-            send_message(instagram_engagement.telegram_command(text))
+            send_message(instagram_engagement.telegram_command(text, run_id=os.environ.get("GITHUB_RUN_ID", "local")))
             _ack(uid)
             return
 
