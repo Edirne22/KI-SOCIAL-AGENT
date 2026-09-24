@@ -105,7 +105,7 @@ def editorial_score(x,names):
  age=max(0,age_days(x,dt.now(timezone.utc)));fresh=max(0,80-int(age*10));text=fold(article_text(x));sport=sum(12 for w in ('win','victory','pole','podium','championship','title','race','sprint','qualifying','injury','return','replace') if w in text);live=35 if any(w in text for w in ('race','sprint','qualifying','practice','fp1','fp2','championship','standings','injury','return','replace')) else 0
  return fresh+score(x.get('title',''),names)+sport+live+(30 if is_turkish_focus(x) else 0)+(-45 if is_feature(x) else 0)
 def hashtags(x):
- s=series_for(x);series_tag={'Moto2':'#Moto2','Moto3':'#Moto3','WorldSSP':'#WorldSSP','WorldSSP300':'#WorldSSP300','WorldSBK':'#WorldSBK'}.get(s,'#MotoGP');names=riders_in(article_text(x));r=x.get('turkish_rider') or detect_turkish_rider(x)
+ s=series_for(x);series_tag={'Moto2':'#Moto2','Moto3':'#Moto3','WorldSSP':'#WorldSSP','WorldSSP300':'#WorldSSP300','WorldSBK':'#WorldSBK'}.get(s,'#MotoGP');names=riders_in(' '.join((x.get('caption',''),x.get('title',''),x.get('summary',''))));r=x.get('turkish_rider') or detect_turkish_rider(x)
  if r and r not in names:names.insert(0,r)
  tags=[series_tag]+['#'+re.sub(r'[^A-Za-z0-9]','',fold(n).title().replace(' ','')) for n in names[:2]]+['#MotorradRacing','#RacingDeutschland','#BuelentsBikeLife'];return ' '.join(dict.fromkeys(tags))
 def language_sane(caption):
