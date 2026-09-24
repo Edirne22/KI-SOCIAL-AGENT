@@ -21,7 +21,7 @@
       "enabled": true,
       "api_key_env": "NVIDIA_API_KEY",
       "base_url": "https://integrate.api.nvidia.com/v1",
-      "chat_model": "minimaxai/minimax-m3",
+      "chat_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
       "timeout_seconds": 120
     },
     "claude": {
