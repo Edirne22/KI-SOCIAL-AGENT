@@ -9,7 +9,7 @@ from pathlib import Path
 from datetime import timedelta,datetime as dt,timezone
 from concurrent.futures import ThreadPoolExecutor,as_completed
 from collections import Counter
-import json,re,time
+import json,re,time,random
 VERSION='V8.5.4';TOP10=Path('memory/RACING_TOP10_POOL.json')
 VALID_SERIES=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
 TURKISH_ALIASES={'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu'),'Can Oncu':('can oncu','can öncü'),'Deniz Oncu':('deniz oncu','deniz öncü'),'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu'),'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu')}
@@ -105,23 +105,47 @@ def hashtags(x):
  tags=[series_tag]+['#'+re.sub(r'[^A-Za-z0-9]','',fold(n).title().replace(' ','')) for n in names[:2]]+['#MotorradRacing','#RacingDeutschland','#BuelentsBikeLife'];return ' '.join(dict.fromkeys(tags))
 def language_sane(caption):
  low=fold(caption);return not any(fold(x) in low for x in BAD_GERMAN) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:'))
-def _editor_prompt(x,repair_reasons=None):
- enrich_turkish(x);repair=''
+STRUCTURE_VARIANTS={
+ 'HOOK_BODY_QUESTION':('{"hook":"...","body":"...","question":"..."}','Konkreter Hook, danach 2–5 natuerliche Saetze, am Ende eine konkrete Community-Frage.'),
+ 'BODY_QUESTION':('{"body":"...","question":"..."}','Ohne Hook direkt mit den Fakten einsteigen, danach eine konkrete Community-Frage.'),
+ 'STORY_QUESTION':('{"story":"...","question":"..."}','Die belegten Fakten als kurze emotionale, aber nicht dramatisierte Erzaehlung formulieren, danach eine konkrete Community-Frage.'),
+ 'FACT_FACT_FACT':('{"facts":["...","...","..."],"cta":"..."}','3–4 kompakte belegte Fakten, danach ein kurzer natuerlicher CTA ohne Fragepflicht.'),
+ 'QUESTION_HOOK_BODY':('{"question":"...","body":"..."}','Mit einer konkreten Community-Frage beginnen, danach die belegten Fakten erklaeren.'),
+ 'ZITAT_BODY':('{"quote":"...","body":"...","question":"..."}','Nur ein in TITEL/ZUSAMMENFASSUNG woertlich vorhandenes Fahrer-Zitat unveraendert im quote-Feld verwenden; im JSON-Wert selbst keine Anfuehrungszeichen hinzufuegen. Wenn kein woertliches Fahrer-Zitat vorhanden ist, die belegte Fahreraussage ohne erfundene Woertlichkeit formulieren. Danach Kontext und Community-Frage.'),
+}
+def choose_structure_variant():return random.choice(tuple(STRUCTURE_VARIANTS))
+def _editor_prompt(x,repair_reasons=None,structure_variant=None):
+ enrich_turkish(x);repair='';variant=structure_variant or choose_structure_variant()
+ if variant not in STRUCTURE_VARIANTS:raise ValueError(f'Unbekannte Struktur-Variante: {variant}')
  if repair_reasons:repair='\nRUECKGABE AUS DER QM-KETTE. Analysiere die Originalfakten erneut und behebe exakt diese Punkte. FAKTEN DUERFEN WEDER ERGAENZT NOCH VERAENDERT WERDEN:\n- '+'\n- '.join(repair_reasons[:10])+'\n'
- title=' '.join(str(x.get('title','')).split());summary=' '.join(str(x.get('summary','')).split());series=series_for(x);turkish=x.get('turkish_rider') or 'NEIN'
- return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: Verwende ausschließlich die Serie aus dem CFO ({series}). Keine Klassenzuordnung erfinden. Die SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine direkten oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. 2–4 informative Saetze und danach eine konkrete Community-Frage. Keine Hashtags erzeugen.{repair}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON: {{"hook":"...","body":"...","question":"..."}}'''
-def _parse_editor_json(raw):
- raw=(raw or '').strip();raw=re.sub(r'^```(?:json)?\s*|\s*```$','',raw,flags=re.I|re.S);o=json.loads(raw);hook=str(o.get('hook','')).strip();body=str(o.get('body','')).strip();q=str(o.get('question','')).strip()
- if not hook or not body or '?' not in q:raise ValueError('editor JSON missing hook/body/question')
- return hook,body,q
+ title=' '.join(str(x.get('title','')).split());summary=' '.join(str(x.get('summary','')).split());series=series_for(x);turkish=x.get('turkish_rider') or 'NEIN';schema,instruction=STRUCTURE_VARIANTS[variant]
+ return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: Verwende ausschließlich die Serie aus dem CFO ({series}). Keine Klassenzuordnung erfinden. Die SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine erfundenen oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. Mindestens 2 natuerliche Saetze bzw. bei FACT_FACT_FACT mindestens 3 kompakte Fakten. Keine Hashtags erzeugen.{repair}\nSTRUKTUR-VARIANTE: {variant}\nSTRUKTUR-ANWEISUNG: {instruction}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\nAntworte nur JSON nach diesem Schema: {schema}'''
+def _parse_editor_json(raw,variant):
+ raw=(raw or '').strip();raw=re.sub(r'^\`\`\`(?:json)?\s*|\s*\`\`\`$','',raw,flags=re.I|re.S);o=json.loads(raw)
+ def need(name):
+  value=str(o.get(name,'')).strip()
+  if not value:raise ValueError(f'editor JSON missing {name}')
+  return value
+ if variant=='HOOK_BODY_QUESTION':parts=[need('hook'),need('body'),need('question')]
+ elif variant=='BODY_QUESTION':parts=[need('body'),need('question')]
+ elif variant=='STORY_QUESTION':parts=[need('story'),need('question')]
+ elif variant=='FACT_FACT_FACT':
+  facts=o.get('facts')
+  if not isinstance(facts,list) or not 3<=len(facts)<=4 or any(not str(v).strip() for v in facts):raise ValueError('editor JSON missing 3-4 facts')
+  parts=[*(str(v).strip() for v in facts),need('cta')]
+ elif variant=='QUESTION_HOOK_BODY':parts=[need('question'),need('body')]
+ elif variant=='ZITAT_BODY':parts=[need('quote'),need('body'),need('question')]
+ else:raise ValueError(f'Unbekannte Struktur-Variante: {variant}')
+ return parts
 def german_editor(x,repair_reasons=None):
  if len(re.sub(r'\s+',' ',x.get('title','')).strip())<18:return ''
  last=None
  for technical_attempt in range(3):
   try:
-   hook,body,q=_parse_editor_json(generate('final_captions',_editor_prompt(x,repair_reasons)))
-   if not x.get('turkish_rider'):hook=hook.replace('🇹🇷','').strip()
-   return f'{hook}\n\n{body}\n\n{q}\n\n{hashtags(x)}'
+   variant=choose_structure_variant();parts=_parse_editor_json(generate('final_captions',_editor_prompt(x,repair_reasons,variant)),variant)
+   if not x.get('turkish_rider'):parts=[p.replace('🇹🇷','').strip() for p in parts]
+   x['structure_variant']=variant
+   return '\n\n'.join(parts+[hashtags(x)])
   except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:last=e;time.sleep(.5)
   except Exception as e:last=e;break
  print('EDITOR EXCEPTION:',type(last).__name__,str(last)[:180]);return ''
