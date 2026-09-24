@@ -15,7 +15,7 @@ class Tests(unittest.TestCase):
     with patch.object(ie,"send_reply",return_value="reply-1") as send:
      self.assertIn("SENT",ie.telegram_command(f"antwort {ticket}"))
      send.assert_called_once_with("abc","Michelin.")
-     self.assertIn("SENT",ie.telegram_command(f"antwort {ticket}"))
+     self.assertIn("Bereits gesendet (reply_id: reply-1)",ie.telegram_command(f"antwort {ticket}"))
      send.assert_called_once()
 
  def test_change_ignore_no_guess(self):
@@ -29,6 +29,17 @@ class Tests(unittest.TestCase):
      send.assert_called_once_with("xyz","Neu")
     e2=ie.ingest({"event_id":"ignore","text":"Hi"})
     self.assertIn("IGNORED",ie.telegram_command(f"ignorieren {e2['ticket_id']}"))
+
+ def test_sent_is_terminal(self):
+  with tempfile.TemporaryDirectory() as t:
+   r=Path(t)
+   with patch.object(ie,"MEMORY_FILE",r/"m.md"), patch.object(ie,"QUEUE_FILE",r/"q.jsonl"), patch.object(ie,"SEEN_FILE",r/"s.txt"):
+    e=ie.ingest({"event_id":"sent","text":"Hi","reply_draft":"Antwort"})
+    items=ie._queue();items[0]["status"]="SENT";items[0]["reply_id"]="reply-terminal";ie._save(items)
+    with patch.object(ie,"send_reply") as send:
+     result=ie.telegram_command("antwort "+e["ticket_id"])
+     self.assertIn("Bereits gesendet (reply_id: reply-terminal)",result)
+     send.assert_not_called()
 
  def test_send_failure_keeps_approved_state(self):
   with tempfile.TemporaryDirectory() as t:
