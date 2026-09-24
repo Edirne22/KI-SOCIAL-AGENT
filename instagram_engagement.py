@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 MEMORY_FILE=Path("memory/INSTAGRAM_COMMUNITY.md"); QUEUE_FILE=Path("memory/INSTAGRAM_ENGAGEMENT_QUEUE.jsonl"); SEEN_FILE=Path("memory/INSTAGRAM_ENGAGEMENT_SEEN.txt")
 TRIGGERS={"kurs","info","link","mehr"}
+# Zustände: PENDING_APPROVAL/NEW -> SEND_APPROVED -> SENT (terminal); NEW -> IGNORED (terminal).
 def _clean(v:Any,limit:int=1000)->str:return re.sub(r"\s+"," ",str(v or "")).strip()[:limit]
 def classify(text:str)->str:
  v=text.casefold().strip(); words=set(re.findall(r"[\wäöüß]+",v))
@@ -41,6 +42,8 @@ def telegram_command(command:str)->str:
  if not m:return "FEHLER: Befehl unbekannt."
  action,ticket,arg=m.group(1).casefold(),m.group(2).upper(),_clean(m.group(3));items=_queue();event=next((x for x in items if x.get("ticket_id")==ticket),None)
  if not event:return f"FEHLER: {ticket} nicht gefunden."
+ if action in {"antwort","ändern"} and (event.get("status")=="SENT" or event.get("reply_id")):
+  return f"FEHLER: Bereits gesendet (reply_id: {event.get('reply_id') or '-'})"
  if action=="info":return f"{ticket} | @{event.get('username') or 'unbekannt'} | {event['category']} | {event['status']} | {event.get('text','')}"
  if action=="memory":
   if not event.get("username"):return f"{ticket}: kein öffentlicher Accountname vorhanden."
