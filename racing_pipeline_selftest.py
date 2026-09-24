@@ -183,6 +183,7 @@ def test_final_human_language_gate():
    ok(not passed and any('Human-Protocol FAIL' in e for e in errs),f'live human-language escape not blocked: {label}')
   folded=chief._fold('Wer hat euren persönlichen Favoriten? Kontur der Titelkämpfe.')
   ok('personlichen' in folded and 'titelkampfe' in folded,'fold contract changed; Racing regex patterns must match folded text')
+  ok(chief._fold('ä ö ü Ä Ö Ü')=='a o u a o u','German umlaut fold must normalize ä/ö/ü symmetrically')
  finally:chief._log=old_log
  # Verify the new pre-media gate actually returns bad language to the editor.
  calls={'editor':0};old=(a.german_editor,a.racing_review,a.semantic_review_detailed)
