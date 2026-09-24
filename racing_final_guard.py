@@ -64,6 +64,12 @@ def review(item,caption):
  wrong=[tag for s,tag in tags.items() if s!=series and tag in caption.casefold()]
  if wrong:errors.append('Final-Guard: falscher Serienhashtag '+','.join(wrong))
  if 'razgatlioglu' in cap and 'rahil etgar' in cap:errors.append('Final-Guard: erfundener/korruptierter Fahrername vor Razgatlioglu')
+ # A source stating remaining rounds/race weekends must not be compressed into the same number of individual races.
+ # WorldSBK/WorldSSP rounds can contain multiple races, so that changes the fact.
+ round_count=re.search(r'\b(\d+|one|two|three|four|five)\s+(?:rounds|race weekends|race weekends)\b',src)
+ if round_count:
+  n=round_count.group(1);de={'one':'ein','two':'zwei','three':'drei','four':'vier','five':'funf'}.get(n,n)
+  if re.search(r'(?<![a-z0-9])'+re.escape(de)+r'\s+rennen\b',cap):errors.append('Final-Guard: Quelle nennt verbleibende Runden/Rennwochenenden, Text macht daraus einzelne Rennen')
  for de,en in (('spanier','spanish'),('italiener','italian'),('turke','turkish'),('tuerke','turkish')):
   if de in cap and en not in src and de not in src:errors.append(f'Final-Guard: Nationalitaet {de} nicht in Quellenfakten')
  return not errors,errors
