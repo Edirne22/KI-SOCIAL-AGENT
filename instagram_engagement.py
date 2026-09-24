@@ -2,6 +2,7 @@
 from __future__ import annotations
 import hashlib, json, os, re, time
 from instagram_reply_adapter import send_reply
+from llm_router import quick_chat
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -29,9 +30,40 @@ def _queue():
  return [json.loads(x) for x in QUEUE_FILE.read_text(encoding="utf-8").splitlines() if x.strip()]
 def _save(items):
  QUEUE_FILE.parent.mkdir(parents=True,exist_ok=True); QUEUE_FILE.write_text("".join(json.dumps(x,ensure_ascii=False)+"\n" for x in items),encoding="utf-8")
+def _community_history(username:str)->str:
+ if not username or not MEMORY_FILE.exists():return ""
+ lines=MEMORY_FILE.read_text(encoding="utf-8").splitlines()
+ return "\n".join(x for x in lines if f"@{username} |" in x)[-3000:]
+
+def _generate_reply_draft(e:dict[str,str])->str|None:
+ history=_community_history(e.get("username",""))
+ prompt=(
+  "Erstelle genau einen kurzen, freundlichen Instagram-Antwortvorschlag für Bülent.\n"
+  "Sprache: passend zum Kommentar Deutsch oder Türkisch; bei unklarer Sprache Deutsch. "
+  "Keine erfundenen Fakten, keine Versprechen, keine automatische Aktion. Nur den Antworttext ausgeben.\n"
+  f"Klassifizierung: {e.get('category','UNSICHER')}\n"
+  f"Kommentar: {e.get('text','')}\n"
+  f"Community-Historie dieses Users: {history or 'keine belegbare frühere Interaktion'}"
+ )
+ try:
+  draft=_clean(quick_chat(prompt,task_type="default"))
+  return draft or None
+ except Exception as exc:
+  print(f"ENGAGEMENT DRAFT: KI nicht verfügbar: {exc}")
+  return None
+
+def telegram_ticket(e:dict[str,str])->str:
+ draft=e.get("reply_draft") or "Kein Vorschlag verfügbar – bitte ändern nutzen"
+ return (
+  f"{e['ticket_id']} | @{e.get('username') or 'unbekannt'} | {e.get('category','UNSICHER')}\n"
+  f"Kommentar: {e.get('text','')}\n"
+  f"Vorschlag: {draft}"
+ )
+
 def ingest(p):
  e=normalize_event(p); seen=set(SEEN_FILE.read_text(encoding="utf-8").split()) if SEEN_FILE.exists() else set()
  if e["event_id"] in seen:return {**e,"status":"DUPLICATE"}
+ if not e.get("reply_draft"):e["reply_draft"]=_generate_reply_draft(e)
  items=_queue();items.append(e);_save(items);SEEN_FILE.parent.mkdir(parents=True,exist_ok=True)
  with SEEN_FILE.open("a",encoding="utf-8") as f:f.write(e["event_id"]+"\n")
  MEMORY_FILE.parent.mkdir(parents=True,exist_ok=True)
