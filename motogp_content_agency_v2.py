@@ -265,112 +265,19 @@ def select_and_finish(qualified,names):
   if b_ok and finish_item(x,len(picks)+1):picks.append(x);seen_fp.add(fp)
  return picks
 def write_session(items,now):
- lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Buelents-Bike-Life-Voice: VERBINDLICH','Semantic-Fakten-QM: PASS','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
- for i,x in enumerate(items,1):lines += [f'## Beitrag {i}','QM: PASS','Racing-QM: PASS','Semantic-Fakten-QM: PASS',f'Neufassungen: {x.get("rewrite_count",0)}',f'QM-Ruecklaeufe: {x.get("research_retry_count",0)+x.get("chief_retry_count",0)}',f'Herkunft: {"Top-20 vom Vortag" if x.get("fallback_yesterday") else "Aktuell"}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Turkish Riders" if is_turkish_focus(x) else series_for(x)}',f'Serie: {series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
+ lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Buelents-Bike-Life-Voice: VERBINDLICH','QM: PASS',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
+ for i,x in enumerate(items,1):
+  community=x.get('community_fallback')
+  lines += [f'## Beitrag {i}','QM: PASS',('Community-Human-QM: PASS' if community else 'Racing-QM: PASS'),('Semantic-Fakten-QM: N/A – Community-Fallback' if community else 'Semantic-Fakten-QM: PASS'),f'Neufassungen: {x.get("rewrite_count",0)}',f'QM-Ruecklaeufe: {x.get("research_retry_count",0)+x.get("chief_retry_count",0)}',f'Herkunft: {"Community-Fallback" if community else ("Top-20 vom Vortag" if x.get("fallback_yesterday") else "Aktuell")}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Community" if community else ("Turkish Riders" if is_turkish_focus(x) else series_for(x))}',f'Serie: {"Community" if community else series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
  SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+
 COMMUNITY_ROTATION_FILE=Path('memory/COMMUNITY_ROTATION.json')
 COMMUNITY_TEMPLATES={
- 'bike_society_hagen':{
-  'title':'🏍️ Community-Spotlight: Bike Society Hagen',
-  'url':'https://www.instagram.com/bike_society_hagen/',
-  'caption':'''## Instagram
-Status: ENTWURF
-Freigabe: Community
-Quelle: https://www.instagram.com/bike_society_hagen/
-Medienstatus: QUELLE_PRÜFEN
-Titel: 🏍️ Community-Spotlight: Bike Society Hagen
-Text:
-Bikes. People. Roads. – Die Bike Society Hagen ist eine Community für alle,
-die Motorrad lieben. Ausfahrten, Treffen, Events, Season Opening.
-
-Ihr Motto: "ALLES KANN, NICHTS MUSS. Motor an, Kopf aus!" 🧡
-
-Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
-
-Was ist für dich das Beste an einer Biker-Community?
-
-#BikeSocietyHagen #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity'''
- },
- 'knieschleifer.aus.ueberzeugung':{
-  'title':'🏍️ Community-Spotlight: Knieschleifer aus Überzeugung',
-  'url':'https://www.instagram.com/knieschleifer.aus.ueberzeugung/',
-  'caption':'''## Instagram
-Status: ENTWURF
-Freigabe: Community
-Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung/
-Medienstatus: QUELLE_PRÜFEN
-Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
-Text:
-Deutschlandweite Biker-Community mit über 30.000 Mitgliedern und mehr als 200 Regionalgruppen in DE/AT/CH/DK. Ausfahrten, Stammtische, wohltätige Aktionen und Einsatz für Unterfahrschutz an Leitplanken.
-
-Gegründet von Dieter Grommes für echte Gemeinschaft auf zwei Rädern! 🧡
-
-Du willst dabei sein? Schreib ihnen auf Instagram.
-
-Was ist für dich das Beste an einer Biker-Community?
-
-#KnieschleiferAusUeberzeugung #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity'''
- },
- 'bike_society.united':{
-  'title':'🏍️ Community-Spotlight: Bike Society United',
-  'url':'https://www.instagram.com/bike_society.united/',
-  'caption':'''## Instagram
-Status: ENTWURF
-Freigabe: Community
-Quelle: https://www.instagram.com/bike_society.united/
-Medienstatus: QUELLE_PRÜFEN
-Titel: 🏍️ Community-Spotlight: Bike Society United
-Text:
-Bikes. People. Roads. – Teil der landesweiten Bike Society Community in NRW! Respekt, Regeln, Leidenschaft und gemeinsames Fahren stehen an erster Stelle.
-
-Ausfahrten, Technik-Tipps und Zusammenhalt ohne Mitgliedsbeitrag. 🧡
-
-Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
-
-Was ist für dich das Beste an einer Biker-Community?
-
-#BikeSocietyUnited #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity'''
- },
- 'ks_ruhrpott':{
-  'title':'🏍️ Community-Spotlight: Knieschleifer Ruhrpott',
-  'url':'https://www.instagram.com/ks_ruhrpott/',
-  'caption':'''## Instagram
-Status: ENTWURF
-Freigabe: Community
-Quelle: https://www.instagram.com/ks_ruhrpott/
-Medienstatus: QUELLE_PRÜFEN
-Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
-Text:
-Die Regionalgruppe der Knieschleifer aus Überzeugung im Pott! Gemeinsame Ausfahrten, Treffen und Leidenschaft für Kurven und Sicherheit im Ruhrgebiet.
-
-Zusammenhalt und Leidenschaft auf zwei Rädern! 🧡
-
-Du willst dabei sein? Schreib ihnen auf Instagram.
-
-Was ist für dich das Beste an einer Biker-Community?
-
-#KsRuhrpott #KnieschleiferAusUeberzeugung #Motorradfahren #Kurvenliebe #BikerCommunity'''
- },
- 'bike_society_bergisches_land':{
-  'title':'🏍️ Community-Spotlight: Bike Society Bergisches Land',
-  'url':'https://www.instagram.com/bike_society_bergisches_land/',
-  'caption':'''## Instagram
-Status: ENTWURF
-Freigabe: Community
-Quelle: https://www.instagram.com/bike_society_bergisches_land/
-Medienstatus: QUELLE_PRÜFEN
-Titel: 🏍️ Community-Spotlight: Bike Society Bergisches Land
-Text:
-Kurvenreiche Ausfahrten und echte Biker-Leidenschaft im Bergischen Land! Teil der Bike Society NRW – inklusiv, respektvoll und voller Energie.
-
-Motto: "ALLES KANN, NICHTS MUSS. Motor an, Kopf aus!" 🧡
-
-Du willst dabei sein? Schreib ihnen auf Instagram oder per WhatsApp.
-
-Was ist für dich das Beste an einer Biker-Community?
-
-#BikeSocietyBergischesLand #Motorradfahren #Kurvenliebe #Verbundenheit #BikerCommunity'''
- }
+ 'bike_society_hagen':{'title':'🏍️ Community-Spotlight: Bike Society Hagen','url':'https://www.instagram.com/bike_society_hagen/','caption':'Heute im Community-Spotlight: Bike Society Hagen. Schaut euch das Profil direkt an und macht euch selbst ein Bild.\n\nWas macht für euch eine gute Motorrad-Community aus?\n\n#BikeSocietyHagen #Motorradfahren #BikerCommunity #BuelentsBikeLife'},
+ 'knieschleifer.aus.ueberzeugung':{'title':'🏍️ Community-Spotlight: Knieschleifer aus Überzeugung','url':'https://www.instagram.com/knieschleifer.aus.ueberzeugung/','caption':'Heute im Community-Spotlight: Knieschleifer aus Überzeugung. Schaut euch das Profil direkt an und macht euch selbst ein Bild.\n\nWas macht für euch eine gute Motorrad-Community aus?\n\n#KnieschleiferAusUeberzeugung #Motorradfahren #BikerCommunity #BuelentsBikeLife'},
+ 'bike_society.united':{'title':'🏍️ Community-Spotlight: Bike Society United','url':'https://www.instagram.com/bike_society.united/','caption':'Heute im Community-Spotlight: Bike Society United. Schaut euch das Profil direkt an und macht euch selbst ein Bild.\n\nWas macht für euch eine gute Motorrad-Community aus?\n\n#BikeSocietyUnited #Motorradfahren #BikerCommunity #BuelentsBikeLife'},
+ 'ks_ruhrpott':{'title':'🏍️ Community-Spotlight: Knieschleifer Ruhrpott','url':'https://www.instagram.com/ks_ruhrpott/','caption':'Heute im Community-Spotlight: Knieschleifer Ruhrpott. Schaut euch das Profil direkt an und macht euch selbst ein Bild.\n\nWas macht für euch eine gute Motorrad-Community aus?\n\n#KsRuhrpott #Motorradfahren #BikerCommunity #BuelentsBikeLife'},
+ 'bike_society_bergisches_land':{'title':'🏍️ Community-Spotlight: Bike Society Bergisches Land','url':'https://www.instagram.com/bike_society_bergisches_land/','caption':'Heute im Community-Spotlight: Bike Society Bergisches Land. Schaut euch das Profil direkt an und macht euch selbst ein Bild.\n\nWas macht für euch eine gute Motorrad-Community aus?\n\n#BikeSocietyBergischesLand #Motorradfahren #BikerCommunity #BuelentsBikeLife'}
 }
 
 def load_community_rotation():
@@ -399,8 +306,12 @@ def generate_community_fallbacks(count,now):
   next_idx=(current_idx+1+i)%len(rotation)
   comm_key=rotation[next_idx]
   tmpl=COMMUNITY_TEMPLATES.get(comm_key,COMMUNITY_TEMPLATES['bike_society_hagen'])
-  item={'title':tmpl['title'],'url':tmpl['url'],'caption':tmpl['caption'],'series':'Community','source_series':'Community','instagram_media':'','published_at':now.isoformat(),'rewrite_count':0,'research_retry_count':0,'chief_retry_count':0,'fallback_yesterday':False}
-  picks.append(item)
+  item={'title':tmpl['title'],'url':tmpl['url'],'caption':tmpl['caption'],'series':'Community','source_series':'Community','instagram_media':'','published_at':now.isoformat(),'rewrite_count':0,'research_retry_count':0,'chief_retry_count':0,'fallback_yesterday':False,'community_fallback':True,'community_qm':'PENDING'}
+  from chief_quality_manager import human_text_review
+  community_ok,community_err=human_text_review('Community',item,item['caption'])
+  if not community_ok:
+   print('COMMUNITY-FALLBACK HUMAN-QM REJECT:',comm_key,'|','; '.join(community_err)[:500]);continue
+  item['community_qm']='PASS';picks.append(item)
   rot_data['last_community']=comm_key
   rot_data['last_date']=now.date().isoformat()
   print(f'COMMUNITY-SPOTLIGHT generiert: {comm_key}, Anzahl={i+1}')
@@ -416,8 +327,11 @@ def turkish_status(items,qualified=None):
 def telegram_preview(items,turk,qualified=None):
  status=turkish_status(items,qualified)
  count=len(items)
- mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – {count} qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Fehler gehen zurück an Research/Editor statt sofort verloren zu sein',f'✍️ Human Writing Protocol + Bülents Bike Life Voice: VERBINDLICH',f'Serienmix: {mix}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if status=='selected' else ('🇹🇷 Turkish-Rider: geeignete Story im QM-Pool, aber nicht in den finalen 5' if status=='qualified_not_selected' else '🇹🇷 Heute keine Turkish-Rider-Story durch das vollständige QM gekommen')),'']
- for i,x in enumerate(items,1):msg += [f'{i}️⃣ {"↩️ Top-20 vom Vortag | " if x.get("fallback_yesterday") else ""}[{series_for(x)}] {x["caption"]}',f'🔗 Quelle: {x["url"]}','']
+ mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – {count} qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Fehler gehen zurück an Research/Editor statt sofort verloren zu sein',f'✍️ Human Writing Protocol + Bülents Bike Life Voice: VERBINDLICH',f'Racing-Serienmix: {mix or "keine Racing-Serie"}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if status=='selected' else ('🇹🇷 Turkish-Rider: geeignete Story im QM-Pool, aber nicht in den finalen 5' if status=='qualified_not_selected' else '🇹🇷 Heute keine Turkish-Rider-Story durch das vollständige QM gekommen')),'']
+ for i,x in enumerate(items,1):
+  origin='↩️ Top-20 vom Vortag | ' if x.get('fallback_yesterday') else ('🧩 Community-Fallback | ' if x.get('community_fallback') else '')
+  label='Community' if x.get('community_fallback') else series_for(x)
+  msg += [f'{i}️⃣ {origin}[{label}] {x["caption"]}',f'🔗 Quelle: {x["url"]}','']
  choices=f'1–{len(items)}' if items else 'keine'
  msg+=[f'Freigabe: motogp {choices} / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
 def run_v8():
