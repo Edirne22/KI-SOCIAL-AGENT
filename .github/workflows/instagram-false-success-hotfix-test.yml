@@ -1,0 +1,23 @@
+name: Instagram False Success Hotfix Test
+
+on:
+  pull_request:
+    paths:
+      - "telegram_router.py"
+      - "test_instagram_two_stage_approval.py"
+      - ".github/workflows/instagram-false-success-hotfix-test.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests pillow beautifulsoup4 pytest
+      - name: Compile
+        run: python -m py_compile telegram_router.py test_instagram_two_stage_approval.py
+      - name: Regression tests
+        run: pytest -q test_instagram_two_stage_approval.py
