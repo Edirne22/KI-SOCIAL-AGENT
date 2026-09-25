@@ -853,9 +853,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-motogp-news-motogp-c-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36173761823-1
+## Facebook [GEPOSTET 2026-09-25 18:29 | ID: 1285968257941776_122114881359469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-25-manual-36168455207
 Telegram-Update-ID: 279361743
