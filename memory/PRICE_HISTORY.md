@@ -188,3 +188,21 @@ Quelle: https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet
 Status: nicht bestätigt – Zielpreis erreicht
 Kriterien: max: 13 € | seit 2026-09-12
 Provider: Apify-Google-Suche
+
+## 2026-09-25 06:09
+Produkt: handyvertrag 80GB D1
+Preis: 11.99
+Händler: handytariftipp.de
+Quelle: https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet-flat-fuer-nur-11-99e-monatlich/
+Status: nicht bestätigt – Zielpreis erreicht
+Kriterien: max: 13 € | seit 2026-09-12
+Provider: Apify-Google-Suche
+
+## 2026-09-25 06:15
+Produkt: . Handyvertrag 80GB D1
+Preis: 1.00
+Händler: handyhase.de
+Quelle: https://www.handyhase.de/samsung-galaxy-s26-ultra-freenet-telekom/
+Status: nicht bestätigt – Zielpreis erreicht
+Kriterien: max: 13 € | min: 50 GB | Netz: D1 | seit 2026-09-18
+Provider: Apify-Google-Suche
