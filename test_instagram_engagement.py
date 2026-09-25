@@ -83,5 +83,32 @@ class Tests(unittest.TestCase):
     self.assertEqual(ie._queue()[0]["ticket_id"],e["ticket_id"])
     self.assertIn("Kein Vorschlag verfügbar – bitte ändern nutzen",ie.telegram_ticket(e))
 
+ def test_existing_reply_draft_is_not_overwritten(self):
+  with tempfile.TemporaryDirectory() as t:
+   r=Path(t)
+   with patch.object(ie,"MEMORY_FILE",r/"m.md"), patch.object(ie,"QUEUE_FILE",r/"q.jsonl"), patch.object(ie,"SEEN_FILE",r/"s.txt"), patch.object(ie,"quick_chat") as chat:
+    e=ie.ingest({"event_id":"draft-existing","username":"rider","text":"Mega!","reply_draft":"Schon vorhanden."})
+    self.assertEqual(e["reply_draft"],"Schon vorhanden.")
+    chat.assert_not_called()
+
+ def test_reply_prompt_contains_memory_and_binding_style(self):
+  with tempfile.TemporaryDirectory() as t:
+   r=Path(t);human=r/"human.md";voice=r/"voice.md"
+   human.write_text("HUMAN TEST RULE",encoding="utf-8");voice.write_text("VOICE TEST RULE",encoding="utf-8")
+   (r/"m.md").write_text("# Instagram Community Memory\n- früher | @rider | comment | LOB | Media: 1\n",encoding="utf-8")
+   with patch.object(ie,"MEMORY_FILE",r/"m.md"), patch.object(ie,"QUEUE_FILE",r/"q.jsonl"), patch.object(ie,"SEEN_FILE",r/"s.txt"), patch.object(ie,"HUMAN_PROTOCOL_FILE",human), patch.object(ie,"BBL_VOICE_FILE",voice), patch.object(ie,"quick_chat",return_value="Danke dir!") as chat:
+    ie.ingest({"event_id":"draft-context","username":"rider","text":"Mega!"})
+    prompt=chat.call_args.args[0]
+    self.assertIn("HUMAN TEST RULE",prompt);self.assertIn("VOICE TEST RULE",prompt)
+    self.assertIn("@rider",prompt);self.assertIn("1-2 Sätze",prompt)
+
+ def test_empty_llm_answer_uses_telegram_fallback(self):
+  with tempfile.TemporaryDirectory() as t:
+   r=Path(t)
+   with patch.object(ie,"MEMORY_FILE",r/"m.md"), patch.object(ie,"QUEUE_FILE",r/"q.jsonl"), patch.object(ie,"SEEN_FILE",r/"s.txt"), patch.object(ie,"quick_chat",return_value="   "):
+    e=ie.ingest({"event_id":"draft-empty","username":"rider","text":"Mega!"})
+    self.assertIsNone(e["reply_draft"])
+    self.assertIn("Kein Vorschlag verfügbar – bitte ändern nutzen",ie.telegram_ticket(e))
+
 if __name__=="__main__":
  unittest.main()
