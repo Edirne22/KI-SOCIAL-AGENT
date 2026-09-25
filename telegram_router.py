@@ -314,7 +314,7 @@ def _handle_bild_command(text_or_action: str) -> bool:
     if not action:
         return False
 
-    pending_item = pi.get_first_pending()
+    pending_item = pi.get_latest_pending()
     if not pending_item:
         send_message("ℹ️ Keine ausstehenden Instagram-Bilder zur Freigabe vorhanden.")
         return True
@@ -426,7 +426,7 @@ def main() -> None:
             )
             _ack(uid)
             return
-        if pi.get_first_pending():
+        if pi.get_latest_pending():
             action = _get_bild_command_action(cmd)
             if action:
                 print(f"ROUTER: Update {uid} -> Instagram Bild-Freigabe ('{action}')")
