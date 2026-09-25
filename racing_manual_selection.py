@@ -12,7 +12,8 @@ from urllib.parse import urlparse
 from telegram_bot import send_message
 import motogp_content_agency_v2 as agency
 
-OFFICIAL_HOSTS = ("motogp.com", "worldsbk.com")\nSELECTION_STATE = Path("memory/RACING_MANUAL_SELECTION.json")
+OFFICIAL_HOSTS = ("motogp.com", "worldsbk.com")
+SELECTION_STATE = Path("memory/RACING_MANUAL_SELECTION.json")
 
 def _norm(s):
     return agency.fold(str(s or ""))
