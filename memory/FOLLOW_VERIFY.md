@@ -1,11 +1,11 @@
 # Follow-Verify
-Stand: 2026-09-24 08:06
+Stand: 2026-09-25 08:06
 
-- @jackmilleraus → ⚠️ @jackmilleraus | – | Bright Data HTTP 400
-- @pecco63 → ⚠️ @pecco63 | – | Bright Data HTTP 400
-- @marcmarquez93 → ⚠️ @marcmarquez93 | – | Bright Data HTTP 400
-- @89jorgemartin → ⚠️ @89jorgemartin | – | Bright Data HTTP 400
-- @marcobez72 → ⚠️ @marcobez72 | – | Bright Data HTTP 400
-- @bradbinder → ⚠️ @bradbinder | – | Bright Data HTTP 400
-- @pedroacosta37 → ⚠️ @pedroacosta37 | – | Bright Data HTTP 400
-- @fabioquartararo20 → ⚠️ @fabioquartararo20 | – | Bright Data HTTP 400
+- @motoetkinlik → ⚠️ @motoetkinlik | – | Bright Data HTTP 400
+- @dominoracing → ⚠️ @dominoracing | – | Bright Data HTTP 400
+- @knieschleifer.aus.ueberzeugung → ⚠️ @knieschleifer.aus.ueberzeugung | – | Bright Data HTTP 400
+- @ks_ruhrpott → ⚠️ @ks_ruhrpott | – | Bright Data HTTP 400
+- @bike_society_official → ⚠️ @bike_society_official | – | Bright Data HTTP 400
+- @bike_society_hagen → ⚠️ @bike_society_hagen | – | Bright Data HTTP 400
+- @bike_society.united → ⚠️ @bike_society.united | – | Bright Data HTTP 400
+- @bike_society_bergisches_land → ⚠️ @bike_society_bergisches_land | – | Bright Data HTTP 400
