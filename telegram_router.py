@@ -228,7 +228,9 @@ def _publish_instagram_pending(item: dict) -> bool:
             print(f"ROUTER: Direct Instagram post failed: {e}")
 
     if not post_id:
-        post_id = f"APPROVAL_SIMULATED_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}"
+        print(f"ROUTER: Instagram-Veröffentlichung fehlgeschlagen für {titel}; Pending bleibt erhalten.")
+        send_message(f"❌ Instagram NICHT gepostet: {titel}\nVeröffentlichung fehlgeschlagen. Freigabe bleibt erhalten.")
+        return False
 
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
     marker = f"Racing-Batch-ID: {batch_id}\nMotoGP-Auswahl: {auswahl}"
