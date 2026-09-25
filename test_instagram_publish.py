@@ -99,10 +99,15 @@ class TestInstagramOgImage(unittest.TestCase):
     def test_buelent_caption_uses_llm_result(self, mock_quick_chat):
         mock_quick_chat.side_effect = ["Bülent-Stil Caption", "SAFE"]
         self.assertEqual(generate_buelent_caption("Facebook Caption"), "Bülent-Stil Caption")
-        prompt = mock_quick_chat.call_args.args[0]
-        self.assertIn("KEINE neue Tatsacheninformation", prompt)
-        self.assertIn("Facebook Caption", prompt)
-        self.assertIn("Bikern am Treff", prompt)
+        calls = mock_quick_chat.call_args_list
+        self.assertEqual(len(calls), 2)
+        rewrite_prompt = calls[0].args[0]
+        guard_prompt = calls[1].args[0]
+        self.assertIn("KEINE neue Tatsacheninformation", rewrite_prompt)
+        self.assertIn("Facebook Caption", rewrite_prompt)
+        self.assertIn("Bikern am Treff", rewrite_prompt)
+        self.assertIn("SAFE oder UNSAFE", guard_prompt)
+        self.assertIn("Bülent-Stil Caption", guard_prompt)
 
     @patch("llm_router.quick_chat")
     def test_caption_fact_guard_rejects_new_dramatization(self, mock_quick_chat):
