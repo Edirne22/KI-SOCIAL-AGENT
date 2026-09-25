@@ -9,7 +9,7 @@ from pathlib import Path
 from datetime import timedelta,datetime as dt,timezone
 from concurrent.futures import ThreadPoolExecutor,as_completed
 from collections import Counter
-from racing_language_rules import text as racing_language_lexicon, version as racing_lexicon_version, prompt_contract as racing_lexicon_contract
+from racing_language_rules import text as racing_language_lexicon, version as racing_lexicon_version, prompt_contract as racing_lexicon_contract, deterministic_errors as racing_lexicon_errors
 import json,re,time,random
 VERSION='V8.5.4';TOP10=Path('memory/RACING_TOP10_POOL.json')
 VALID_SERIES=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
@@ -18,7 +18,6 @@ RIDERS_V2=list(TURKISH_ALIASES)+['Marc Marquez','Alex Marquez','Marco Bezzecchi'
 PROMO_WORDS=('fantasy','super boost','mystery boost','videopass','video pass','tickets','ticket','store','merch','merchandise','shop','giveaway','promo code','promotion','behind the scenes','catch up on','vlog')
 RACING_WORDS=('race','racing','grand prix',' gp','practice','fp1','fp2','qualifying','pole','sprint','podium','win','victory','championship','title','rider','team','replace','injury','return','test','lap','grid','motogp','moto2','moto3','worldsbk','worldssp','supersport')
 FEATURE_WORDS=('hall of fame','legend','inducted','tribute','anniversary','documentary','gallery','talking points')
-BAD_GERMAN=('legende zu einer legende','mit großem anfangsbuchstaben','mit grossem anfangsbuchstaben','erfahrt alle wichtigen','zurück auf die zeichentafel','zurueck auf die zeichentafel','airtime zum testen')
 def fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def article_text(x):return ' '.join((x.get('title',''),x.get('summary',''),x.get('url','')))
 def riders_in(text):
@@ -117,7 +116,7 @@ def hashtags(x):
  if r and r not in names:names.insert(0,r)
  tags=[series_tag]+['#'+re.sub(r'[^A-Za-z0-9]','',fold(n).title().replace(' ','')) for n in names[:2]]+['#MotorradRacing','#RacingDeutschland','#BuelentsBikeLife'];return ' '.join(dict.fromkeys(tags))
 def language_sane(caption):
- low=fold(caption);return not any(fold(x) in low for x in BAD_GERMAN) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:'))
+ low=fold(caption);return not racing_lexicon_errors(caption) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:'))
 STRUCTURE_VARIANTS={
  'HOOK_BODY_QUESTION':('{"hook":"...","body":"...","question":"..."}','Konkreter Hook, danach 2–5 natuerliche Saetze, am Ende eine konkrete Community-Frage.'),
  'BODY_QUESTION':('{"body":"...","question":"..."}','Ohne Hook direkt mit den Fakten einsteigen, danach eine konkrete Community-Frage.'),
