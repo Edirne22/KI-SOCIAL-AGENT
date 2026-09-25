@@ -208,6 +208,19 @@ def test_human_text_gate_is_pre_media_only():
  ok('human_text_review as _chief_language_review' in src,'pre-media chain must call pure human text gate')
  ok("_lang_err=[e for e in _lang_err if e!='Medienpfad existiert nicht']" not in src,'pre-media gate must not hide full-Chief errors by string filtering')
 
+def test_community_fallback_contract():
+ from datetime import datetime,timezone
+ picks=a.generate_community_fallbacks(1,datetime(2026,9,25,tzinfo=timezone.utc))
+ ok(len(picks)==1,'community fallback must provide one Human-QM-passed item')
+ x=picks[0];cap=x['caption']
+ ok(x.get('community_fallback') and x.get('community_qm')=='PASS','community fallback must be explicitly marked and Human-QM passed')
+ for forbidden in ('## Instagram','Status: ENTWURF','Freigabe: Community','Medienstatus:','per WhatsApp','ohne Mitgliedsbeitrag','30.000 Mitgliedern'):
+  ok(forbidden not in cap,f'community fallback leaked metadata/unverified claim: {forbidden}')
+ ok('Schaut euch das Profil direkt an' in cap,'community fallback must defer profile facts to linked source')
+ src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8')
+ ok('Semantic-Fakten-QM: N/A – Community-Fallback' in src,'session must not falsely claim Racing semantic PASS for community fallback')
+ ok('Racing-Serienmix:' in src,'Telegram header must label racing-only mix honestly')
+
 def test_finalization_contract():
  old_send=a.send_message
  sent=[]
@@ -231,5 +244,5 @@ def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
  ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL RETRY' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
 def main():
- test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_final_human_language_gate();test_human_text_gate_is_pre_media_only();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
+ test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_final_human_language_gate();test_human_text_gate_is_pre_media_only();test_community_fallback_contract();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()
