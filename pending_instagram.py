@@ -65,7 +65,13 @@ def get_first_pending() -> dict[str, Any] | None:
     return items[0] if items else None
 
 
-def get_latest_pending() -> dict[str, Any] | None:\n    """Returns the newest pending item, matching the image most recently shown in Telegram."""\n    items = load_pending()\n    return items[-1] if items else None\n\n\ndef remove_pending(batch_id: str, auswahl: int) -> dict[str, Any] | None:
+def get_latest_pending() -> dict[str, Any] | None:
+    """Returns the newest pending item, matching the image most recently shown in Telegram."""
+    items = load_pending()
+    return items[-1] if items else None
+
+
+def remove_pending(batch_id: str, auswahl: int) -> dict[str, Any] | None:
     """Removes a pending item matching batch_id and auswahl."""
     pending = load_pending()
     removed = None
