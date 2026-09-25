@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 MEMORY_FILE=Path("memory/INSTAGRAM_COMMUNITY.md"); QUEUE_FILE=Path("memory/INSTAGRAM_ENGAGEMENT_QUEUE.jsonl"); SEEN_FILE=Path("memory/INSTAGRAM_ENGAGEMENT_SEEN.txt")
+HUMAN_PROTOCOL_FILE=Path("config/HUMAN_WRITING_PROTOCOL.md"); BBL_VOICE_FILE=Path("memory/MOTOGP_VOICE_RULES.md")
 TRIGGERS={"kurs","info","link","mehr"}
 LOCK_DIR=Path("memory"); LOCK_TTL_SECONDS=300
 # Zustände: PENDING_APPROVAL/NEW -> SEND_APPROVED -> SENT (terminal); NEW -> IGNORED (terminal).
@@ -35,15 +36,25 @@ def _community_history(username:str)->str:
  lines=MEMORY_FILE.read_text(encoding="utf-8").splitlines()
  return "\n".join(x for x in lines if f"@{username} |" in x)[-3000:]
 
+def _style_context()->str:
+ parts=[]
+ for path,label in ((HUMAN_PROTOCOL_FILE,"HUMAN WRITING PROTOCOL"),(BBL_VOICE_FILE,"BÜLENTS BIKE LIFE VOICE")):
+  try:content=path.read_text(encoding="utf-8").strip()
+  except (FileNotFoundError,OSError):content=""
+  if content:parts.append(f"--- {label} ---\n{content}")
+ return "\n\n".join(parts)
+
 def _generate_reply_draft(e:dict[str,str])->str|None:
  history=_community_history(e.get("username",""))
+ style=_style_context()
  prompt=(
-  "Erstelle genau einen kurzen, freundlichen Instagram-Antwortvorschlag für Bülent.\n"
-  "Sprache: passend zum Kommentar Deutsch oder Türkisch; bei unklarer Sprache Deutsch. "
+  "Erstelle genau einen kurzen Instagram-Antwortvorschlag für Bülent (1-2 Sätze).\n"
+  "Sprache: Deutsch. Nur wenn der Kommentar Türkisch ist, antworte Türkisch. Bei unklarer Sprache Deutsch. "
   "Keine erfundenen Fakten, keine Versprechen, keine automatische Aktion. Nur den Antworttext ausgeben.\n"
   f"Klassifizierung: {e.get('category','UNSICHER')}\n"
   f"Kommentar: {e.get('text','')}\n"
-  f"Community-Historie dieses Users: {history or 'keine belegbare frühere Interaktion'}"
+  f"Community-Historie dieses Users: {history or 'keine belegbare frühere Interaktion'}\n"
+  f"Verbindlicher Schreibstil:\n{style or 'keine zusätzlichen Stilregeln geladen'}"
  )
  try:
   draft=_clean(quick_chat(prompt,task_type="default"))
@@ -51,7 +62,6 @@ def _generate_reply_draft(e:dict[str,str])->str|None:
  except Exception as exc:
   print(f"ENGAGEMENT DRAFT: KI nicht verfügbar: {exc}")
   return None
-
 def telegram_ticket(e:dict[str,str])->str:
  draft=e.get("reply_draft") or "Kein Vorschlag verfügbar – bitte ändern nutzen"
  return (
