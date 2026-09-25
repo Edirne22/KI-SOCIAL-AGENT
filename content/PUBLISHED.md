@@ -890,7 +890,7 @@ Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-smits-repla
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 36191511207-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-25-manual-36190202175
 Telegram-Update-ID: 279361754
