@@ -202,19 +202,6 @@
     ],
     "2026-09-25": [
       {
-        "story_key": "motogp:1092272",
-        "title": "Mugello to remain home of MotoGP’s Italian Grand Prix as new five-year deal is confirmed The future of MotoGP at one of the championship's most iconic venues is now locked in for another five years 23 Sep 2026",
-        "url": "https://www.motogp.com/en/news/2026/09/24/mugello-to-remain-home-of-motogps-italian-grand-prix-as-new-five-year-deal-is-confirmed/1092272",
-        "summary": "",
-        "preview": "",
-        "published_at": null,
-        "series": "MotoGP",
-        "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
         "story_key": "motogp:1091586",
         "title": "Baz replaces Mackenzie at MGM Ducati for Cremona",
         "url": "https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586",
@@ -236,6 +223,19 @@
         "published_at": null,
         "series": "MotoGP",
         "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1091355",
+        "title": "PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"

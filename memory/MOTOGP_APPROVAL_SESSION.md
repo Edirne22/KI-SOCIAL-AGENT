@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790331689
+Session-Timestamp: 1790333721
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -17,20 +17,24 @@ Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 1.4
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 3.5
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1092272
-Titel: Mugello to remain home of MotoGP’s Italian Grand Prix as new five-year deal is confirmed The future of MotoGP at one of the championship's most iconic venues is now locked in for another five years 23 Sep 2026
-Quelle: https://www.motogp.com/en/news/2026/09/24/mugello-to-remain-home-of-motogps-italian-grand-prix-as-new-five-year-deal-is-confirmed/1092272
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-mugello-to-remain-ho-01.jpg
+Story-Key: motogp:1091638
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-motogp-news-motogp-c-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Mugello bleibt MotoGP-Heimat. Der italienische Grand Prix hat einen neuen Fünfjahresvertrag erhalten – die Serie bleibt auf einer ihrer ikonischsten Strecken.
+Die MotoGP hat bestätigt, dass das Rennen in Valencia 2027 als Saisonfinale läuft.
 
-Was haltet ihr von dieser Entscheidung?
+Den kompletten Kalender gibt es am Freitag offiziell.
+
+Valencia ist damit fest als letzter Aufmarsch der Saison bestätigt.
+
+Wie schätzt ihr die Planung der MotoGP für 2027 ein?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -40,26 +44,24 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 0
+Neufassungen: 2
+QM-Ruecklaeufe: 2
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.4
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1091638
-Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
-Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-motogp-news-motogp-c-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Artikelalter-Tage: 3.5
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1091586
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-baz-replaces-mackenz-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
 Plattformen: Instagram + Facebook
 Text:
-Valencia bleibt oder wechselt – wie seht ihr die Entscheidung?
+Baz springt in Cremona für MGM Ducati ein und ersetzt den noch genesenden Mackenzie. Der Franzose kehrt an eine Strecke zurück, die er schon kennt.
 
-Valencia ist als Saisonfinale 2027 bestätigt. Den kompletten Kalender gibt es erst am Freitag. Das heißt: Die Schlussrunde der MotoGP-Saison wird auch nächstes Jahr wieder in Spanien gefahren.
+Wie seht ihr den Wechsel?
 
-https://www.motogp.com
-
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -70,19 +72,25 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.4
+Artikelalter-Tage: 4.5
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1091586
-Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-baz-replaces-mackenz-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
+Story-Key: motogp:1091355
+Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-preview-1d-ago-sched-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Baz springt bei MGM Ducati für den noch genesenden Mackenzie bei der Cremona-Runde ein. Der französische Fahrer kehrt damit zu einer Strecke zurück, die er schon von früher kennt.
+Die entscheidende Runde 10 der WorldSBK findet in Cremona statt.
 
-Wie seht ihr den Wechsel?
+Nach neun Durchgängen stehen noch drei Runden aus.
+
+Cremona könnte zum Schauplatz werden, an dem ein neuer Meister gekrönt wird.
+
+Der komplette Zeitplan fürs Rennwochenende wurde veröffentlicht.
+
+Was erwartet ihr von der Runde in Cremona?
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
