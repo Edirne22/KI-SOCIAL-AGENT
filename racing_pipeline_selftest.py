@@ -120,7 +120,7 @@ def test_date_and_voice_contract():
 def test_semantic_json_retry():
  old=semantic.generate;calls={'n':0}
  try:
-  def fake(task,prompt):calls['n']+=1;return 'not-json' if calls['n']==1 else json.dumps({'hard_fact_ok':True,'series_ok':True,'rider_team_ok':True,'quote_ok':True,'german_ok':True,'style_ok':True,'hard_reasons':[],'repair_reasons':[]})
+  def fake(task,prompt):calls['n']+=1;return 'not-json' if calls['n']==1 else json.dumps({'contract_version':'SOURCE-FACT-CONTRACT-V1','coverage_complete':True,'claims':[{'claim':'Toprak tests a MotoGP bike','claim_type':'FACT','status':'SUPPORTED','source_evidence':[{'source_field':'summary','quote':'Toprak tests MotoGP bike'}]},{'claim':'Community opinion question','claim_type':'OPINION_QUESTION','status':'SUPPORTED','source_evidence':[]}],'german_ok':True,'style_ok':True,'repair_reasons':[]})
   semantic.generate=fake;r=semantic.review_detailed({'title':'Toprak Razgatlioglu MotoGP test','summary':'Toprak tests MotoGP bike','series':'MotoGP','url':'https://example.com/2026/09/15/x'},'Toprak testet.\n\nWas meint ihr?\n\n#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife');ok(r['hard_ok'] and r['language_ok'] and calls['n']==2,'semantic JSON retry broken')
  finally:semantic.generate=old
 def test_provider_backoff():
