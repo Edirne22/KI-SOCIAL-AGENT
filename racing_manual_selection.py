@@ -11,6 +11,7 @@ from urllib.parse import urlparse
 
 from telegram_bot import send_message
 import motogp_content_agency_v2 as agency
+import racing_run_controller as rc
 
 OFFICIAL_HOSTS = ("motogp.com", "worldsbk.com")
 SELECTION_STATE = Path("memory/RACING_MANUAL_SELECTION.json")
@@ -110,6 +111,26 @@ def _prepare_one(x):
         return False
     now=datetime.now(timezone.utc)
     agency.write_session([x],now)
+    # Manual pool selections do not run through racing_v85.begin(), therefore
+    # they must create their own approval batch before Telegram exposes the
+    # human approval command. Without this hand-off active_batch_id stays empty
+    # (or points at an older run) and motogp_telegram_receive_v85 correctly
+    # refuses publication.
+    bid = rc.batch_id(now)
+    data = rc._load()
+    stamp = now.isoformat()
+    data.setdefault("runs", {})[bid] = {
+        "status": "READY_FOR_APPROVAL",
+        "started_at": stamp,
+        "updated_at": stamp,
+        "event": rc.event_name(),
+        "github_run_id": rc.github_run_id(),
+        "arch_version": rc.ARCH_VERSION,
+        "origin": "manual_racing_selection",
+        "story_key": x.get("story_key", ""),
+    }
+    data["active_batch_id"] = bid
+    rc._save(data)
     agency.telegram_preview([x],agency.is_turkish_focus(x),[x])
     return True
 
