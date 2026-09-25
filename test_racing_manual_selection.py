@@ -35,3 +35,36 @@ def test_official_hosts():
     assert rms._official_url("https://www.motogp.com/en/news/x")
     assert rms._official_url("https://www.worldsbk.com/en/news/x")
     assert not rms._official_url("https://worldsbk.com.example.org/x")
+
+
+def test_article7_manual_qm_rewrites_until_real_pass(monkeypatch):
+    article7={
+        "story_key":"motogp:1091425",
+        "title":"Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP",
+        "url":"https://www.worldsbk.com/en/news/2026/09/21/x/1091425",
+        "summary":"The Turkish rider will join the Chinese manufacturer in World Supersport while Dutch rider Twan Smits joins the WorldSBK paddock",
+        "series":"WorldSBK","source_series":"WorldSBK","series_locked":True,"turkish_rider":"",
+    }
+    monkeypatch.setattr(rms.agency,"lock_source_series",lambda x,*a,**k:x)
+    monkeypatch.setattr(rms.agency,"enrich_turkish",lambda x:(x.update({"turkish_rider":"Bahattin Sofuoglu"}) or x))
+    monkeypatch.setattr(rms.agency,"article_info",lambda *a,**k:{})
+    calls=[]
+    def qualify(x,feedback=None):
+        calls.append(feedback)
+        if len(calls)==1:
+            x["qm_errors"]=["Text nicht an den Fahrer der Quelle gebunden"]
+            x["semantic_errors"]=[]
+            return False
+        x["caption"]="Bahattin Sofuoglu wechselt zu QJMOTOR in die WorldSSP.\n\nFakten aus der Quelle.\n\nWas meint ihr?\n\n#WorldSSP #BahattinSofuoglu #QJMOTOR #Racing"
+        x["semantic_qm"]="PASS"; x["racing_qm"]="PASS"
+        return True
+    monkeypatch.setattr(rms.agency,"qualify_copy",qualify)
+    monkeypatch.setattr(rms.agency,"reanalyse_source",lambda x,reasons:x)
+    monkeypatch.setattr(rms.agency,"review_batch",lambda items:[(True,[])])
+    monkeypatch.setattr(rms.agency,"finish_item",lambda x,i: x.get("semantic_qm")=="PASS" and x.get("racing_qm")=="PASS")
+    monkeypatch.setattr(rms.agency,"write_session",lambda *a,**k:None)
+    monkeypatch.setattr(rms.agency,"telegram_preview",lambda *a,**k:None)
+    monkeypatch.setattr(rms.agency,"is_turkish_focus",lambda x:True)
+    assert rms._prepare_one(article7) is True
+    assert len(calls)==2
+    assert "Text nicht an den Fahrer" in calls[1][0]

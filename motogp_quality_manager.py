@@ -46,7 +46,13 @@ def review(item,caption):
   if '?' not in caption:errors.append('keine Community-Frage')
  tags=re.findall(r'#[A-Za-z0-9ÄÖÜäöüß]+',caption)
  if not (4<=len(tags)<=7):errors.append('Hashtag-Anzahl nicht 4–7')
- source_riders=rider_matches(source);caption_riders=rider_matches(low)
+ source_riders=rider_matches(source)
+ # The official WorldSBK headline for Bahattin currently shortens/misspells
+ # Sofuoğlu as "Sofouglu". enrich_turkish() resolves that source context;
+ # make the deterministic Racing-QM consume the resolved identity too.
+ resolved_turkish=item.get('turkish_rider','')
+ if resolved_turkish in RIDER_NAMES and resolved_turkish not in source_riders:source_riders.append(resolved_turkish)
+ caption_riders=rider_matches(low)
  if source_riders and not set(source_riders)&set(caption_riders):errors.append('Text nicht an den Fahrer der Quelle gebunden')
  compact={fold(t[1:]) for t in tags}
  for rider in source_riders[:2]:
