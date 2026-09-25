@@ -233,7 +233,6 @@ def _publish_instagram_pending(item: dict) -> bool:
         return False
 
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
-    marker = f"Racing-Batch-ID: {batch_id}\nMotoGP-Auswahl: {auswahl}"
 
     pattern = r"(## Instagram\s*\n(.*?)(?=\n## |\Z))"
     updated_content = content
@@ -241,7 +240,15 @@ def _publish_instagram_pending(item: dict) -> bool:
     for match in re.finditer(pattern, content, re.DOTALL):
         block = match.group(1)
         body = match.group(2)
-        if marker in body:
+        batch_matches = re.search(
+            rf"(?mi)^Racing-Batch-ID:\s*{re.escape(str(batch_id))}\s*$",
+            body,
+        )
+        selection_matches = re.search(
+            rf"(?mi)^MotoGP-Auswahl:\s*{re.escape(str(auswahl))}\s*$",
+            body,
+        )
+        if batch_matches and selection_matches:
             found = True
             new_block = re.sub(
                 r"^## Instagram(?:\s+\[[^\]]+\])?",
@@ -257,18 +264,20 @@ def _publish_instagram_pending(item: dict) -> bool:
             )
             updated_content = updated_content.replace(block, new_block, 1)
 
-    if not found and marker in content:
-        updated_content = re.sub(
-            r"(?mi)^Status:\s*BILD_GENERIERT\s*$",
-            "Status: GEPOSTET",
-            updated_content,
+    if not found:
+        print(
+            "ROUTER: Instagram wurde bei Meta veröffentlicht, aber der passende "
+            f"PUBLISHED.md-Block fehlt: batch={batch_id} auswahl={auswahl} media_id={post_id}"
         )
+        send_message(
+            f"⚠️ Instagram bei Meta gepostet (Media-ID: {post_id}), aber lokaler "
+            f"Status konnte nicht aktualisiert werden: {titel}"
+        )
+        return False
 
-    if updated_content != content:
-        published_file.write_text(updated_content, encoding="utf-8")
-
+    published_file.write_text(updated_content, encoding="utf-8")
     pi.remove_pending(batch_id, auswahl)
-    send_message(f"✅ Instagram gepostet: {titel}")
+    send_message(f"✅ Instagram gepostet: {titel}\nMeta-Media-ID: {post_id}")
     return True
 
 
