@@ -1,6 +1,6 @@
 """Single source of truth for Racing language rules from Main to final Chief-QM."""
 from pathlib import Path
-import hashlib,re
+import hashlib
 
 LEXICON_PATH=Path('config/RACING_LANGUAGE_LEXICON.md')
 def text():
@@ -25,15 +25,23 @@ def _section(name):
  return '\n'.join(out)
 def blocked_phrases():
  return [x.strip()[2:] for x in _section('Vermeiden').splitlines() if x.strip().startswith('- ')]
-def _blocked_pattern(phrase):
- words=_fold(phrase).replace('…','').split();parts=[]
- for word in words:
-  clean=re.sub(r'[^a-z0-9_-]','',word)
-  m=re.match(r'^(.{4,}?)(e|en|em|er|es)$',clean)
-  parts.append(re.escape(m.group(1))+r'(?:e|en|em|er|es)' if m else re.escape(clean))
- return r'\b'+r'\s+'.join(parts)+r'\b'
+def _items(name):
+ return [x.strip()[2:] for x in _section(name).splitlines() if x.strip().startswith('- ')]
+def blocked_variants():
+ out={}
+ for row in _items('Deterministische BLOCKED-Varianten'):
+  if '=>' not in row:continue
+  canonical,raw=row.split('=>',1)
+  out[canonical.strip()]=[x.strip() for x in raw.split('|') if x.strip()]
+ return out
 def deterministic_errors(caption):
  low=_fold(caption);errs=[]
+ aliases=blocked_variants()
  for p in blocked_phrases():
-  if re.search(_blocked_pattern(p),low):errs.append('Racing-Lexikon BLOCKED: '+p)
+  variants=[p]+aliases.get(p,[])
+  if any(_fold(v) in low for v in variants):
+   errs.append('Racing-Lexikon BLOCKED: '+p)
+ english=[_fold(x) for x in _items('Englische Nachrichtenfragmente')]
+ hits=[x for x in english if x and x in low]
+ if len(hits)>=2:errs.append('Racing-Lexikon BLOCKED: englischer Nachrichtenblock')
  return errs
