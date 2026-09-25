@@ -1392,3 +1392,9 @@ Story-Key: motogp:1091425
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-25 21:13 UTC | Motorcycle Racing | PASS
+Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
+Story-Key: motogp:1091425
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790369608
+Session-Timestamp: 1790370802
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,8 +15,8 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 2
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 4.9
 Kategorie: Turkish Riders
@@ -28,9 +28,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-s
 Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/21/607d2097-4858-4d2a-ab39-9f4b2549f9c9/Twan-Smiths.jpg
 Plattformen: Instagram + Facebook
 Text:
-Der türkische Repräsentant Bahattin Sofuoglu wechselt von Motoxracing Yamaha zu QJMOTOR in der WorldSSP – ein kompletter Team- und Herstellerwechsel. Der Niederländer Twan Smits übernimmt den verwaisten Startplatz bei Motoxracing Yamaha und geht dafür in die WorldSBK.
+Hey ihr Lieben, ich hab was: Bahattin Sofuoglu wechselt zu QJMOTOR. Er verlässt Motoxracing Yamaha und startet für den chinesischen Hersteller in der WorldSSP. Und Twan Smits? Der zieht es ins WorldSBK-Paddock. 🏍️💨
 
-Was erwartet ihr von Sofuoglus Start bei QJMOTOR?
+Wie seht ihr den Wechsel?
 
 #WorldSSP #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
