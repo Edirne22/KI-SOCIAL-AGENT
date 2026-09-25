@@ -820,9 +820,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-news-6h-ago-what-can-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36167083935-1
+## Facebook [GEPOSTET 2026-09-25 17:26 | ID: 1285968257941776_122114853183469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-25-manual-36163516963
 Telegram-Update-ID: 279361742
