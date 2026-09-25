@@ -1,5 +1,5 @@
 # Follow-Analyse
-Stand: 2026-09-25 08:06
+Stand: 2026-09-25 08:54
 
 ## Zusammenfassung
 - Analysierte Accounts: 8
@@ -8,14 +8,14 @@ Stand: 2026-09-25 08:06
 - Hinweis: Top-Posts stammen aus einer aktuellen, begrenzten öffentlichen Stichprobe.
 
 ## Verify-Ergebnisse
-- @motoetkinlik → ⚠️ @motoetkinlik | – | Bright Data HTTP 400
-- @dominoracing → ⚠️ @dominoracing | – | Bright Data HTTP 400
-- @knieschleifer.aus.ueberzeugung → ⚠️ @knieschleifer.aus.ueberzeugung | – | Bright Data HTTP 400
-- @ks_ruhrpott → ⚠️ @ks_ruhrpott | – | Bright Data HTTP 400
-- @bike_society_official → ⚠️ @bike_society_official | – | Bright Data HTTP 400
-- @bike_society_hagen → ⚠️ @bike_society_hagen | – | Bright Data HTTP 400
-- @bike_society.united → ⚠️ @bike_society.united | – | Bright Data HTTP 400
-- @bike_society_bergisches_land → ⚠️ @bike_society_bergisches_land | – | Bright Data HTTP 400
+- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
+- @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
+- @canoncu → ⚠️ @canoncu | – | Bright Data HTTP 400
+- @kenansofuoglu → ⚠️ @kenansofuoglu | – | Bright Data HTTP 400
+- @zaynsofuoglu → ⚠️ @zaynsofuoglu | – | Bright Data HTTP 400
+- @bahattinsofuoglu → ⚠️ @bahattinsofuoglu | – | Bright Data HTTP 400
+- @jackmilleraus → ⚠️ @jackmilleraus | – | Bright Data HTTP 400
+- @pecco63 → ⚠️ @pecco63 | – | Bright Data HTTP 400
 
 ## Account-Ergebnisse
 
