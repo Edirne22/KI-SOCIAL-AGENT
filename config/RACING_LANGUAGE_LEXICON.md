@@ -72,6 +72,56 @@ Niemals aus Kontext oder Vorwissen ableiten:
 - jetzt wird es ernst
 - künstliche Synonyme nur zur Abwechslung
 
+- MotoGP im Fokus
+- eines der relevanten MotoGP-Themen
+- die Fakten stammen aus der offiziellen Meldung
+- der Social-Text wird bewusst eigenständig formuliert
+- Für die Einordnung verwenden wir ausschließlich
+- Was ist für dich der spannendste Punkt an dieser Story
+- größte Understatement-Leistung
+- groesste Understatement-Leistung
+- MotoGP-Gran Premio
+- einen Duell
+- eine Duell
+- im letzten Runde
+- Make-or-Break
+- Kontur der Titelkämpfe
+- Legende zu einer Legende
+- mit großem Anfangsbuchstaben
+- mit grossem Anfangsbuchstaben
+- erfahrt alle wichtigen
+- zurück auf die Zeichentafel
+- zurueck auf die Zeichentafel
+- Airtime zum Testen
+- sechster Pole
+- erfahrene Crewmitglied
+
+## Deterministische BLOCKED-Varianten
+Diese Varianten sind absichtlich explizit. Der Code darf keine deutschen Wortarten oder Flexionen erraten.
+- altes Stammgelände => alte Stammgelände | alten Stammgelände | altem Stammgelände | alter Stammgelände
+- Wer hat euren persönlichen Favoriten => Wer hat euren Favoriten | Wer hat deinen Favoriten | Wer hat deinen persönlichen Favoriten
+
+## Englische Nachrichtenfragmente
+Erst zwei oder mehr Treffer im selben Post ergeben einen deterministischen Fehler, damit etablierte einzelne Racing-Begriffe nicht pauschal verboten werden.
+- out the
+- quickest
+- reigning
+- leads
+- opening stint
+- beats
+- pole in
+- qualifying
+- line-up
+- revealed
+- denies
+- points cover
+- world champion
+- sprint stand-off
+- from 2027
+- alongside
+- weekend at
+- does the business
+
 ## Bülents Bike Life Voice
 - direkt und motorradnah
 - kurze bis mittlere aktive Sätze
