@@ -1182,3 +1182,33 @@ Story-Key: motogp:1091355
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-25 03:30 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 03:30 UTC | Motorcycle Racing | PASS
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Story-Key: motogp:1091586
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 03:30 UTC | Motorcycle Racing | FAIL
+Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
+Story-Key: motogp:1091358
+Gründe: Final-Guard: Quelle nennt verbleibende Runden/Rennwochenenden, Text macht daraus einzelne Rennen
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 03:31 UTC | Motorcycle Racing | FAIL
+Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
+Story-Key: motogp:1091358
+Gründe: Final-Guard: Quelle nennt verbleibende Runden/Rennwochenenden, Text macht daraus einzelne Rennen
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 03:31 UTC | Motorcycle Racing | FAIL
+Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
+Story-Key: motogp:1091358
+Gründe: Final-Guard: Quelle nennt verbleibende Runden/Rennwochenenden, Text macht daraus einzelne Rennen
+Human-Writing-Protocol: V1.0
+
