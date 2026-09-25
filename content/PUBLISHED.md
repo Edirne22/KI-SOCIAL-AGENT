@@ -757,3 +757,50 @@ Welcher Aspekt der Bremsen-Entwicklung ist für euch am spannendsten?
 https://www.worldsbk.com/en/news/2026/09/22/braking-in-detail-crucial-details-from-brembo-from-cremona-circuit/1091496
 Quelle: https://www.worldsbk.com/en/news/2026/09/22/braking-in-detail-crucial-details-from-brembo-from-cremona-circuit/1091496
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-25-manual-36126483733
+Telegram-Update-ID: 279361739
+MotoGP-Auswahl: 3
+Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
+Text:
+Die entscheidende Runde 10 der WorldSBK findet in Cremona statt.
+
+Nach neun Durchgängen stehen noch drei Runden aus.
+
+Cremona könnte zum Schauplatz werden, an dem ein neuer Meister gekrönt wird.
+
+Der komplette Zeitplan fürs Rennwochenende wurde veröffentlicht.
+
+Was erwartet ihr von der Runde in Cremona?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-preview-1d-ago-sched-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-25-manual-36126483733
+Telegram-Update-ID: 279361739
+MotoGP-Auswahl: 3
+Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
+Text:
+Die entscheidende Runde 10 der WorldSBK findet in Cremona statt.
+
+Nach neun Durchgängen stehen noch drei Runden aus.
+
+Cremona könnte zum Schauplatz werden, an dem ein neuer Meister gekrönt wird.
+
+Der komplette Zeitplan fürs Rennwochenende wurde veröffentlicht.
+
+Was erwartet ihr von der Runde in Cremona?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
+Link-Preview: offiziell
