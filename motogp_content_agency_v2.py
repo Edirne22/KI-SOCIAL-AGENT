@@ -194,12 +194,10 @@ def qualify_copy(x,initial_reasons=None):
   if not language_sane(x['caption']):
    if attempt<3:repair_reasons=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
    break
-  # Run the deterministic Human Writing gate BEFORE expensive media generation.
-  # Missing media is intentionally filtered here; finish_item repeats the complete
-  # Chief gate with the real generated asset before an item can become READY.
-  from chief_quality_manager import review as _chief_language_review
-  _lang_ok,_lang_err=_chief_language_review('Motorcycle Racing',x,x['caption'],'__language_precheck__',x.get('url',''),racing_review)
-  _lang_err=[e for e in _lang_err if e!='Medienpfad existiert nicht']
+  # Run only the deterministic Human Writing text gate before expensive media.
+  # finish_item later runs the complete Chief gate with source, domain truth and real media.
+  from chief_quality_manager import human_text_review as _chief_language_review
+  _lang_ok,_lang_err=_chief_language_review('Motorcycle Racing',x,x['caption'])
   if _lang_err:
    if attempt<3:repair_reasons=['Finales Human-Writing-Gate: '+e for e in _lang_err];print(f'HUMAN-GATE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
    print('HUMAN-GATE FINAL REJECT:',x.get('title','')[:90],'|','; '.join(_lang_err)[:600]);break
