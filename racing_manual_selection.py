@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 from telegram_bot import send_message
 import motogp_content_agency_v2 as agency
 
-OFFICIAL_HOSTS = ("motogp.com", "worldsbk.com")
+OFFICIAL_HOSTS = ("motogp.com", "worldsbk.com")\nSELECTION_STATE = Path("memory/RACING_MANUAL_SELECTION.json")
 
 def _norm(s):
     return agency.fold(str(s or ""))
@@ -88,12 +88,14 @@ def handle(command):
 
     m=re.fullmatch(r"racing\s+artikel\s+(\d+)",c,re.I)
     if m:
-        # Article numbers refer to the most recently requested list. To keep
-        # state deterministic across GitHub runners, require list type too when
-        # the number cannot be resolved from the current combined pool.
-        n=int(m.group(1)); pool=_all_rows()
+        n=int(m.group(1))
+        try:
+            state=json.loads(SELECTION_STATE.read_text(encoding="utf-8"))
+            pool=state.get("rows",[])
+        except Exception:
+            pool=[]
         if not 1<=n<=len(pool):
-            send_message("❌ Racing-Artikelnummer nicht vorhanden. Erst 'racing top20' senden.")
+            send_message("❌ Racing-Artikelnummer nicht vorhanden. Erst 'racing top20', 'racing gestern' oder 'racing suche …' senden.")
             return 0
         ok=_prepare_one(pool[n-1])
         send_message("❌ Artikel ist nicht durch die vollständige QM-Kette gekommen." if not ok else "✅ Artikel durch QM – bitte den neuen MotoGP-Vorschlag in Telegram freigeben.")
