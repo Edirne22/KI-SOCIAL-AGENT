@@ -1,0 +1,22 @@
+name: Manual Racing Selection Test
+
+on:
+  pull_request:
+    paths:
+      - "racing_manual_selection.py"
+      - "telegram_router.py"
+      - "test_racing_manual_selection.py"
+      - ".github/workflows/manual-racing-selection-test.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests Pillow beautifulsoup4 pytest
+      - run: python -m py_compile racing_manual_selection.py telegram_router.py
+      - run: pytest -q test_racing_manual_selection.py
