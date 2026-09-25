@@ -6,7 +6,7 @@ Professional-Agent-Standard: V1.0
 Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
-Session-Timestamp: 1790309684
+Session-Timestamp: 1790310467
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,20 +18,22 @@ Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 3.2
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1091638
-Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
-Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-motogp-news-motogp-c-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1091586
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-baz-replaces-mackenz-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
 Plattformen: Instagram + Facebook
 Text:
-Valencia ist 2027 der fixierte Saisonabschluss der MotoGP. Der komplette Rennkalender wird am Freitag vorgestellt.
+Baz springt in Cremona für Mackenzie beim MGM Ducati ein – und fährt an ein Gelände, das ihm nicht fremd ist.
 
-Seht ihr das Finale auf der Circuit Ricardo Tormo weiterhin als idealen Saisonhöhepunkt?
+Mackenzie steckt noch in der Reha und schafft die Italienrunde nicht. Also übernimmt der Franzose den Sattel, und zwar an einer Strecke, die für ihn kein Neuland ist. WorldSBK, Cremona – und ein Fahrer, der den Kurs schon in den Beinen hat.
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Glaubst du, dass ein bekanntes Gelände einem Ersatzfahrer direkt einen Vorteil bringt – oder muss er sich auch in Cremona erst mal wieder zurechtfinden?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -39,7 +41,7 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 3.2
@@ -52,11 +54,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-p
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Bulega jagt Bautistas Rekord – und Cremona könnte Geschichte schreiben.
+Nicolo Bulega tritt bei der Weltmeisterschafts-Runde in Cremona an – und zielt dabei auf eine der beeindruckendsten Statistiken der WorldSBK-Geschichte. Der Rekord hält: Alvaro Bautista. Wenn es nach Bulegas aktueller Form geht, könnte der italienische Rivalen-Duell diesmal anders enden als die letzten Male auf dieser Strecke.
 
-In der WorldSBK geht es in Cremona nicht nur um die Meisterschaft: Alvaro Bautista hält einen der beeindruckendsten Rekorde der Serie. Nicolo Bulega hat die Chance, ihn zu brechen.
-
-Denkt ihr, Bulega wird den Rekord knacken?
+Wer wird bei Cremona die Nase vorne haben – Bautista mit seiner Erfahrung oder Bulega mit seiner aktuellen Power?
 
 #WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -69,48 +69,23 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.2
-Kategorie: WorldSSP
-Serie: WorldSSP
-Story-Key: motogp:1091358
-Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-preview-all-three-wo-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/21/97ebedac-6597-4980-a9ee-68ae57f36e50/42cd51ce-9037-7314-a4c5-74d7bd5a2533.jpg
-Plattformen: Instagram + Facebook
-Text:
-Arenas hofft, sich gegen die Verfolger durchzusetzen.
-
-Die WorldSSP geht mit nur noch drei Läufen in die entscheidende Phase. In Cremona sind alle drei Titel noch nicht vergeben. Für zahlreiche Fahrer, Teams und Hersteller wird das Rennwochenende zur Wende im Meisterschaftskampf. Arenas muss frühzeitig Punkte sammeln, um den Anschluss an die Spitze zu wahren.
-
-Wer hat aus deiner Sicht die besten Chancen, den Titel in den letzten drei Läufen zu sichern?
-
-#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
-
-## Beitrag 4
-QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 4.2
 Kategorie: WorldSBK
 Serie: WorldSBK
 Story-Key: motogp:1091355
 Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-4-preview-1d-ago-sched-01.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-preview-1d-ago-sched-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Cremona wird zum Schauplatz der Titelentscheidung: Bei Runde 10 des WorldSBK kann der neue Champion gekrönt werden.
+Neun Runden der WorldSBK-Saison sind bereits absolviert, drei stehen noch aus.
 
-Neun Runden liegen bereits hinter uns, drei stehen noch aus. Der italienische Veranstaltungsort bietet den perfekten Rahmen für eine entscheidende Woche. Wer die Nase vorn hat, entscheidet sich auf der Rennstrecke.
+Round 10 findet in Cremona statt.
 
-Wem gebt ihr die größten Chancen auf den Titelgewinn in Cremona?
+Cremona könnte der Ort sein, an dem ein neuer Champion gekrönt wird.
+
+Wir freuen uns auf das Rennwochenende in Cremona.
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 

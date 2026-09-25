@@ -202,6 +202,19 @@
     ],
     "2026-09-25": [
       {
+        "story_key": "motogp:1091586",
+        "title": "Baz replaces Mackenzie at MGM Ducati for Cremona",
+        "url": "https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586",
+        "summary": "The French rider returns to an old stomping ground for the Italian Round as he steps in for the still-recovering Mackenzie",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg",
+        "published_at": "2026-09-22T09:00:00+0000",
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
         "story_key": "motogp:1091502",
         "title": "PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK",
         "url": "https://www.worldsbk.com/en/news/2026/09/22/form-guide-bulega-looks-to-snatch-one-of-worldsbks-most-impressive-records-from-bautista/1091502",
@@ -210,32 +223,6 @@
         "published_at": null,
         "series": "WorldSBK",
         "source_series": "WorldSBK",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1091358",
-        "title": "PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals",
-        "url": "https://www.worldsbk.com/en/news/2026/09/22/preview-all-three-worldssp-titles-on-the-line-at-cremona-as-arenas-hopes-to-hold-off-his-rivals/1091358",
-        "summary": "With three rounds left to ride, Cremona will be make or break for title hopes of many teams, riders and manufacturers",
-        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/21/97ebedac-6597-4980-a9ee-68ae57f36e50/42cd51ce-9037-7314-a4c5-74d7bd5a2533.jpg",
-        "published_at": "2026-09-22T06:07:00+0000",
-        "series": "WorldSSP",
-        "source_series": "WorldSSP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1091638",
-        "title": "MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now",
-        "url": "https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638",
-        "summary": "",
-        "preview": "",
-        "published_at": null,
-        "series": "MotoGP",
-        "source_series": "MotoGP",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"

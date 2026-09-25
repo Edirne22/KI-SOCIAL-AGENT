@@ -1236,3 +1236,21 @@ Story-Key: motogp:1091355
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-25 04:33 UTC | Motorcycle Racing | PASS
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Story-Key: motogp:1091586
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 04:33 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK
+Story-Key: motogp:1091502
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 04:33 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
+Story-Key: motogp:1091355
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
