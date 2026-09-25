@@ -193,6 +193,44 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     mock_send_message.assert_called_with("✅ Instagram gepostet: Quiles Victory")
 
 
+def test_instagram_publish_failure_never_reports_success_or_removes_pending(tmp_path, monkeypatch):
+    test_json = tmp_path / "PENDING_INSTAGRAM.json"
+    test_published = tmp_path / "PUBLISHED.md"
+    test_img = tmp_path / "quiles.jpg"
+    test_img.write_bytes(b"fake")
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    monkeypatch.setattr(tr, "Path", lambda p: test_published if p == "content/PUBLISHED.md" else Path(p))
+    test_published.write_text(
+        "## Instagram\nStatus: BILD_GENERIERT\nRacing-Batch-ID: batch-fail\n"
+        "MotoGP-Auswahl: 1\nTitel: Fail Test\nText:\nCaption\n",
+        encoding="utf-8",
+    )
+    pi.add_pending(
+        batch_id="batch-fail", auswahl=1, titel="Fail Test", text="Caption",
+        bild_pfad=str(test_img), prompt_fuer_agnes="Prompt",
+    )
+    monkeypatch.setenv("INSTAGRAM_USER_ID", "123")
+    monkeypatch.setenv("INSTAGRAM_ACCESS_TOKEN", "token")
+    monkeypatch.setattr(tr, "process_image_for_instagram", lambda p: p)
+    monkeypatch.setattr(tr, "asset_url", lambda *args: "https://example.com/image.jpg")
+    monkeypatch.setattr(tr, "create_container", lambda *args: "creation-1")
+    monkeypatch.setattr(tr, "ig_wait", lambda *args: True)
+    monkeypatch.setattr(tr, "ig_publish_container", lambda *args: None)
+    mock_send = MagicMock()
+    monkeypatch.setattr(tr, "send_message", mock_send)
+
+    result = tr._publish_instagram_pending(pi.get_first_pending())
+
+    assert result is False
+    assert len(pi.load_pending()) == 1
+    published = test_published.read_text(encoding="utf-8")
+    assert "Status: BILD_GENERIERT" in published
+    assert "Status: GEPOSTET" not in published
+    assert "APPROVAL_SIMULATED_" not in published
+    assert not any("✅ Instagram gepostet" in str(call) for call in mock_send.call_args_list)
+    assert any("❌ Instagram NICHT gepostet" in str(call) for call in mock_send.call_args_list)
+
+
 def test_telegram_router_synonyms_without_pending(tmp_path, monkeypatch):
     test_json = tmp_path / "PENDING_INSTAGRAM.json"
     monkeypatch.setattr(pi, "PENDING_FILE", test_json)
