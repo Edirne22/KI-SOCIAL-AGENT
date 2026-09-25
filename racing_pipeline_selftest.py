@@ -214,12 +214,17 @@ def test_lexicon_single_source_chain():
  ok('altes Stammgelände' in rules.blocked_phrases(),'central parser must read complete Vermeiden section through following ## heading')
  bad='Baz kehrt zu einem alten Stammgelände zurück. Mackenzie fällt aus.\n\nWie seht ihr den Wechsel?\n\n#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife'
  ok(any('altes Stammgelände' in e for e in rules.deterministic_errors(bad)),'central BLOCKED rule must reject live escape')
- ok(any('altes Stammgelände' in e for e in rules.deterministic_errors('Er fährt auf einem alten Stammgelände.')),'BLOCKED phrase must survive German adjective inflection')
+ ok(any('altes Stammgelände' in e for e in rules.deterministic_errors('Er fährt auf einem alten Stammgelände.')),'explicit BLOCKED variant must catch German adjective inflection')
+ ok(not rules.deterministic_errors('Er fährt auf einem Geländer.'),'lexicon matcher must not invent noun inflections / false positives')
+ ok(not hasattr(rules,'_blocked_pattern'),'central lexicon must not guess German morphology')
  files=('motogp_content_agency_v2.py','motogp_quality_manager.py','racing_semantic_qm.py','chief_quality_manager.py','racing_final_guard.py','racing_v855_hardening.py')
  contents={p:Path(p).read_text(encoding='utf-8') for p in files}
  for p in files:
   ok('racing_language_rules' in contents[p],f'{p} bypasses central Racing lexicon')
  ok("racing_lexicon_contract('EDITOR')" in contents['motogp_content_agency_v2.py'],'editor not bound to central lexicon')
+ ok('RACING_HUMAN_PATTERNS' not in contents['chief_quality_manager.py'],'Chief keeps a second Racing language authority')
+ ok('BANNED=' not in contents['motogp_quality_manager.py'] and 'ENGLISH_MARKERS=' not in contents['motogp_quality_manager.py'],'Racing-QM keeps local language blocklists')
+ ok('BAD_GERMAN=' not in contents['motogp_content_agency_v2.py'],'Agency keeps local Racing language blocklist')
  ok("racing_lexicon_contract('SEMANTIC-QM')" in contents['racing_semantic_qm.py'],'semantic QM not bound to central lexicon')
  ok("racing_lexicon_contract('V8.5.5-HARDENING')" in contents['racing_v855_hardening.py'],'runtime hardening not bound to central lexicon')
  ok('Racing-Lexikon-Version:' in contents['motogp_content_agency_v2.py'],'approval session must record lexicon version')
