@@ -872,3 +872,36 @@ Wie seht ihr das neue Finale?
 https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
 Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-25-manual-36190202175
+Telegram-Update-ID: 279361754
+MotoGP-Auswahl: 1
+Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
+Text:
+Leute, kurz was: Bahattin Sofuoglu sagt Tschüss zu Motoxracing Yamaha und steigt bei QJMOTOR in die WorldSSP ein. Und Twan Smits? Der geht jetzt ins WorldSBK‑Paddock. 🏍️💨 Was meint ihr zum Wechsel?  
+
+#WorldSSP #WorldSBK #BahattinSofuoglu #TwanSmits #BülentsBikeLife #MotorradRacing
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-smits-replaces-sofou-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-25-manual-36190202175
+Telegram-Update-ID: 279361754
+MotoGP-Auswahl: 1
+Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
+Text:
+Hey ihr Lieben, ich hab was: Bahattin Sofuoglu wechselt zu QJMOTOR. Er verlässt Motoxracing Yamaha und startet für den chinesischen Hersteller in der WorldSSP. Und Twan Smits? Der zieht es ins WorldSBK-Paddock. 🏍️💨
+
+Wie seht ihr den Wechsel?
+
+#WorldSSP #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
+Link-Preview: offiziell

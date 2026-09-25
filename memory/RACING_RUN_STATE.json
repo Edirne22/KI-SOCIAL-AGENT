@@ -452,17 +452,22 @@
       "platform_blocks": 2
     },
     "racing-2026-09-25-manual-36190202175": {
-      "status": "READY_FOR_APPROVAL",
+      "status": "PUBLISHED",
       "started_at": "2026-09-25T21:13:22.365558+00:00",
-      "updated_at": "2026-09-25T21:13:22.365558+00:00",
+      "updated_at": "2026-09-25T21:15:01.289937+00:00",
       "event": "workflow_dispatch",
       "github_run_id": "36190202175",
       "arch_version": "V8.5.5",
       "origin": "manual_racing_selection",
-      "story_key": "motogp:1091425"
+      "story_key": "motogp:1091425",
+      "telegram_update_id": 279361754,
+      "selection": [
+        1
+      ],
+      "platform_blocks": 2
     }
   },
   "last_notification_at": 1790359429.9576516,
   "last_notification_fingerprint": "9cd234e2ef4681e486ac5d14aaa1647827e84d823b7a4663bd7395516e974cfc",
-  "active_batch_id": "racing-2026-09-25-manual-36190202175"
+  "active_batch_id": ""
 }
