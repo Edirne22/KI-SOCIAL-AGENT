@@ -97,11 +97,28 @@ class TestInstagramOgImage(unittest.TestCase):
 
     @patch("llm_router.quick_chat")
     def test_buelent_caption_uses_llm_result(self, mock_quick_chat):
-        mock_quick_chat.return_value = "Bülent-Stil Caption"
+        mock_quick_chat.side_effect = ["Bülent-Stil Caption", "SAFE"]
         self.assertEqual(generate_buelent_caption("Facebook Caption"), "Bülent-Stil Caption")
         prompt = mock_quick_chat.call_args.args[0]
         self.assertIn("KEINE neue Tatsacheninformation", prompt)
         self.assertIn("Facebook Caption", prompt)
+        self.assertIn("Bikern am Treff", prompt)
+
+    @patch("llm_router.quick_chat")
+    def test_caption_fact_guard_rejects_new_dramatization(self, mock_quick_chat):
+        original = "Runde 10 der WorldSBK steht in Cremona an."
+        mock_quick_chat.side_effect = [
+            "Runde 10 in Cremona. Das Wochenende verspricht harte Kämpfe und jede Menge Action.",
+            "UNSAFE",
+        ]
+        self.assertEqual(generate_buelent_caption(original), original)
+        self.assertEqual(mock_quick_chat.call_count, 2)
+
+    @patch("llm_router.quick_chat")
+    def test_caption_fact_guard_fails_closed_on_empty_verdict(self, mock_quick_chat):
+        original = "Runde 10 der WorldSBK steht in Cremona an."
+        mock_quick_chat.side_effect = ["Cremona steht an 🏍️", ""]
+        self.assertEqual(generate_buelent_caption(original), original)
 
     @patch("llm_router.quick_chat")
     def test_caption_failure_falls_back_to_facebook_caption(self, mock_quick_chat):
