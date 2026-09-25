@@ -14,6 +14,7 @@ import motogp_content_agency_v2 as agency
 
 OFFICIAL_HOSTS = ("motogp.com", "worldsbk.com")
 SELECTION_STATE = Path("memory/RACING_MANUAL_SELECTION.json")
+MANUAL_QM_MAX_ROUNDS = 4
 
 def _norm(s):
     return agency.fold(str(s or ""))
@@ -76,10 +77,32 @@ def _prepare_one(x):
     for k in ("title","summary","preview","published_at"):
         if fresh.get(k):
             x[k]=fresh[k]
-    if not agency.qualify_copy(x):
+    # Manual selection is binding on the topic, never on the QM verdict.
+    # Keep returning concrete gate feedback to Research/Editor; PASS must still
+    # be earned by the unchanged Racing/Semantic/Chief gates.
+    copy_ok = False
+    feedback = None
+    for manual_round in range(1, MANUAL_QM_MAX_ROUNDS + 1):
+        copy_ok = agency.qualify_copy(x, feedback)
+        if copy_ok:
+            break
+        feedback = (
+            ["Manual-QM Racing: " + e for e in x.get("qm_errors", [])]
+            + ["Manual-QM Fakten: " + e for e in x.get("semantic_errors", [])]
+        ) or ["Manual-QM: Copy-QM ohne Detailgrund abgelehnt"]
+        x["manual_qm_round"] = manual_round
+        x["manual_qm_last_errors"] = feedback[:12]
+        print(f"MANUAL-QM RETURN round={manual_round}: {x.get('title','')[:90]} | {'; '.join(feedback)[:700]}")
+        if manual_round < MANUAL_QM_MAX_ROUNDS:
+            agency.reanalyse_source(x, feedback)
+    if not copy_ok:
         return False
-    b_ok,_=agency.review_batch([x])[0]
-    if not b_ok or not agency.finish_item(x,1):
+    b_ok,b_err=agency.review_batch([x])[0]
+    if not b_ok:
+        x["manual_qm_last_errors"]=["Batch-QM: " + e for e in b_err]
+        return False
+    if not agency.finish_item(x,1):
+        x["manual_qm_last_errors"]=["Chief-QM: " + e for e in x.get("chief_errors", [])] or ["Chief-QM/Media: keine Freigabe"]
         return False
     now=datetime.now(timezone.utc)
     agency.write_session([x],now)
@@ -103,8 +126,14 @@ def handle(command):
         if not 1<=n<=len(pool):
             send_message("❌ Racing-Artikelnummer nicht vorhanden. Erst 'racing top20', 'racing gestern' oder 'racing suche …' senden.")
             return 0
-        ok=_prepare_one(pool[n-1])
-        send_message("❌ Artikel ist nicht durch die vollständige QM-Kette gekommen." if not ok else "✅ Artikel durch QM – bitte den neuen MotoGP-Vorschlag in Telegram freigeben.")
+        selected=pool[n-1]
+        ok=_prepare_one(selected)
+        if not ok:
+            details=selected.get("manual_qm_last_errors",[]) if isinstance(selected,dict) else []
+            suffix=("\nLetzter QM-Grund: "+"; ".join(details[:3])) if details else ""
+            send_message("❌ Artikel ist nicht durch die vollständige QM-Kette gekommen."+suffix)
+        else:
+            send_message("✅ Artikel durch QM – bitte den neuen MotoGP-Vorschlag in Telegram freigeben.")
         return 1 if ok else 0
 
     m=re.fullmatch(r"racing\s+url\s+(https?://\S+)",c,re.I)
