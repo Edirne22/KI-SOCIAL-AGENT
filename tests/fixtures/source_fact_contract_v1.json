@@ -1,0 +1,103 @@
+{
+  "contract_version": "SOURCE-FACT-CONTRACT-V1",
+  "source_scope": {
+    "allowed": ["series", "title", "summary", "locked_metadata"],
+    "external_knowledge": false
+  },
+  "pass_rule": "coverage_complete == true AND every FACT.status == SUPPORTED AND no UNSUPPORTED claims",
+  "fixtures": [
+    {
+      "story_key": "motogp:1091638",
+      "series": "MotoGP",
+      "title": "MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now",
+      "summary": "",
+      "caption_under_test": "MotoGP bestätigt den Großen Preis von Valencia als Saisonfinale 2027. Damit steht fest, dass die Rennserie ihr Jahr traditionell auf der Strecke von Valencia ausklingen lässt. Was erwartet ihr vom Saisonfinale in Valencia?",
+      "expected_overall_status": "FAIL",
+      "expected_claims": [
+        {
+          "claim": "Valencia GP is the 2027 season finale",
+          "claim_type": "FACT",
+          "status": "SUPPORTED",
+          "evidence_field": "title",
+          "evidence": "MotoGP confirms Valencia GP as 2027 season finale"
+        },
+        {
+          "claim": "Valencia traditionally hosts/ends the season finale",
+          "claim_type": "FACT",
+          "status": "UNSUPPORTED",
+          "evidence_field": "NONE",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "story_key": "motogp:1091502",
+      "series": "WorldSBK",
+      "title": "PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK",
+      "summary": "",
+      "caption_under_test": "Nikolo Bulega jagt einen Rekord von Alvaro Bautista bei Cremona. Bei der WM-Runde in Cremona steht nicht nur die Fahrerweltmeisterschaft zur Debatte. Bulega will gleichzeitig einen der beeindruckendsten Rekorde der WorldSBK-Geschichte von Bautista knacken – ein Rekord, der lange als unantastbar galt.",
+      "expected_overall_status": "PASS",
+      "expected_claims": [
+        {
+          "claim": "Bulega targets a WorldSBK record from Bautista",
+          "claim_type": "FACT",
+          "status": "SUPPORTED",
+          "evidence_field": "title",
+          "evidence": "Bulega looks to snatch one of WorldSBK's most impressive records from Bautista"
+        },
+        {
+          "claim": "The record is described as one of WorldSBK's most impressive records",
+          "claim_type": "FACT",
+          "status": "SUPPORTED",
+          "evidence_field": "title",
+          "evidence": "one of WorldSBK's most impressive records"
+        },
+        {
+          "claim": "The record was once thought unassailable",
+          "claim_type": "FACT",
+          "status": "SUPPORTED",
+          "evidence_field": "title",
+          "evidence": "WorldSBK record once thought unassailable"
+        }
+      ]
+    },
+    {
+      "story_key": "motogp:1091358",
+      "series": "WorldSSP",
+      "title": "PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals",
+      "summary": "With three rounds left to ride, Cremona will be make or break for title hopes of many teams, riders and manufacturers",
+      "caption_under_test": "In der WorldSSP geht es in Cremona um alle drei Titel, während Arenas seine Rivalen auf Distanz halten will. Noch drei Runden stehen aus. Für die Titelhoffnungen vieler Fahrer, Teams und Hersteller geht es in Cremona um alles. Was erwartet ihr von der Runde in Cremona?",
+      "expected_overall_status": "PASS",
+      "expected_claims": [
+        {
+          "claim": "All three WorldSSP titles are on the line at Cremona",
+          "claim_type": "FACT",
+          "status": "SUPPORTED",
+          "evidence_field": "title",
+          "evidence": "All three WorldSSP titles on the line at Cremona"
+        },
+        {
+          "claim": "Three rounds remain",
+          "claim_type": "FACT",
+          "status": "SUPPORTED",
+          "evidence_field": "summary",
+          "evidence": "With three rounds left to ride"
+        },
+        {
+          "claim": "Cremona is make or break for the title hopes of many teams, riders and manufacturers",
+          "claim_type": "FACT",
+          "status": "SUPPORTED",
+          "evidence_field": "summary",
+          "evidence": "Cremona will be make or break for title hopes of many teams, riders and manufacturers"
+        },
+        {
+          "claim": "What does the community expect from the Cremona round?",
+          "claim_type": "OPINION_QUESTION",
+          "status": "SUPPORTED",
+          "evidence_field": "NONE",
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}
