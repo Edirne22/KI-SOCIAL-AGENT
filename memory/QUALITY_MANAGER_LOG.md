@@ -1374,3 +1374,15 @@ Story-Key: motogp:1091638
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-25 20:25 UTC | Motorcycle Racing | FAIL
+Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
+Story-Key: motogp:1091425
+Gründe: Final-Guard: Serien-Metadatum WorldSBK widerspricht Quelle WorldSSP; Final-Guard: Pflicht-Serienhashtag #worldssp fehlt; Final-Guard: falscher Serienhashtag #worldsbk
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 20:26 UTC | Motorcycle Racing | FAIL
+Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
+Story-Key: motogp:1091425
+Gründe: Final-Guard: Serien-Metadatum WorldSBK widerspricht Quelle WorldSSP; Final-Guard: Pflicht-Serienhashtag #worldssp fehlt; Final-Guard: falscher Serienhashtag #worldsbk
+Human-Writing-Protocol: V1.0
+
