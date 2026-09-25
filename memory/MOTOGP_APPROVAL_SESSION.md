@@ -6,7 +6,7 @@ Professional-Agent-Standard: V1.0
 Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
-Session-Timestamp: 1790310467
+Session-Timestamp: 1790312430
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -14,26 +14,24 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 2
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 3.2
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1091586
-Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-baz-replaces-mackenz-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1091638
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-motogp-news-motogp-c-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Baz springt in Cremona für Mackenzie beim MGM Ducati ein – und fährt an ein Gelände, das ihm nicht fremd ist.
+MotoGP hat den Valencia GP als Saisonfinale 2027 offiziell bestätigt – die komplette Kalenderübersicht folgt bereits am Freitag. Der letzte Lauf einer Saison hat immer etwas Besonderes, wenn es darum geht, wer am Ende die Titel gewinnt.
 
-Mackenzie steckt noch in der Reha und schafft die Italienrunde nicht. Also übernimmt der Franzose den Sattel, und zwar an einer Strecke, die für ihn kein Neuland ist. WorldSBK, Cremona – und ein Fahrer, der den Kurs schon in den Beinen hat.
+Wie seht ihr den Valencia GP als Saisonfinale – euer Favorit oder eher der Lauf, an dem die Meisterschaft schon vorher entschieden ist?
 
-Glaubst du, dass ein bekanntes Gelände einem Ersatzfahrer direkt einen Vorteil bringt – oder muss er sich auch in Cremona erst mal wieder zurechtfinden?
-
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -47,18 +45,18 @@ Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 3.2
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1091502
-Titel: PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/form-guide-bulega-looks-to-snatch-one-of-worldsbks-most-impressive-records-from-bautista/1091502
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-preview-21h-ago-form-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Story-Key: motogp:1091586
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-baz-replaces-mackenz-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
 Plattformen: Instagram + Facebook
 Text:
-Nicolo Bulega tritt bei der Weltmeisterschafts-Runde in Cremona an – und zielt dabei auf eine der beeindruckendsten Statistiken der WorldSBK-Geschichte. Der Rekord hält: Alvaro Bautista. Wenn es nach Bulegas aktueller Form geht, könnte der italienische Rivalen-Duell diesmal anders enden als die letzten Male auf dieser Strecke.
+Baz springt für den noch genesenden Mackenzie bei MGM Ducati ein. Der französische Reiter kehrt zu einem alten Stammgelände zurück – die italienische Runde in Cremona wartet.
 
-Wer wird bei Cremona die Nase vorne haben – Bautista mit seiner Erfahrung oder Bulega mit seiner aktuellen Power?
+Was erwartet ihr von seiner Rückkehr?
 
-#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -66,7 +64,7 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 4.2
@@ -79,13 +77,11 @@ Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-p
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Neun Runden der WorldSBK-Saison sind bereits absolviert, drei stehen noch aus.
+Runde 10 in Cremona könnte die Krone bescheren.
 
-Round 10 findet in Cremona statt.
+Neun Runden sind bereits erledigt, drei stehen noch aus. Das WorldSBK-Team trifft in Cremona auf einen Termin, bei dem die Meisterschaft eine neue Wendung nehmen könnte – hier könnte ein neuer Champion gekrönt werden.
 
-Cremona könnte der Ort sein, an dem ein neuer Champion gekrönt wird.
-
-Wir freuen uns auf das Rennwochenende in Cremona.
+Wie schätzt ihr die Lage im Titelkampf vor dem Rennen in Cremona ein?
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
