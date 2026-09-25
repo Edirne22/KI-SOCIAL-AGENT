@@ -208,6 +208,17 @@ def test_human_text_gate_is_pre_media_only():
  ok('human_text_review as _chief_language_review' in src,'pre-media chain must call pure human text gate')
  ok("_lang_err=[e for e in _lang_err if e!='Medienpfad existiert nicht']" not in src,'pre-media gate must not hide full-Chief errors by string filtering')
 
+def test_racing_language_lexicon_contract():
+ path=Path('config/RACING_LANGUAGE_LEXICON.md')
+ ok(path.is_file(),'Racing language lexicon missing')
+ lex=path.read_text(encoding='utf-8')
+ for phrase in ('springt für … ein','Nur mit ausdrücklicher Quellenstützung','kein Neuland','aktuelle Power','wir freuen uns auf …'):
+  ok(phrase in lex,f'Racing lexicon contract missing: {phrase}')
+ prompt=a._editor_prompt({'title':'Baz replaces Mackenzie at MGM Ducati for Cremona','summary':'Baz replaces injured Mackenzie for Cremona','series':'WorldSBK','source_series':'WorldSBK','series_locked':True},None,'BODY_QUESTION')
+ ok('VERBINDLICHES RACING-SPRACHLEXIKON' in prompt,'editor prompt must inject Racing lexicon')
+ ok('Das Lexikon ist NIEMALS eine Faktenquelle' in prompt,'editor must not treat lexicon as fact source')
+ ok('kein Neuland' in prompt and 'springt für … ein' in prompt,'editor did not receive lexicon content')
+
 def test_editor_natural_copy_contract():
  prompt=a._editor_prompt({'title':'Baz replaces Mackenzie at MGM Ducati for Cremona','summary':'Baz replaces injured Mackenzie for Cremona','series':'WorldSBK','source_series':'WorldSBK','series_locked':True},None,'BODY_QUESTION')
  for rule in ('altes Stammgelaende','verfuegbare Alternative','Community-Frage muss direkt aus dem belegten Kernthema'):
@@ -254,5 +265,5 @@ def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
  ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL RETRY' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
 def main():
- test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_final_human_language_gate();test_human_text_gate_is_pre_media_only();test_editor_natural_copy_contract();test_community_fallback_contract();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
+ test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_final_human_language_gate();test_human_text_gate_is_pre_media_only();test_racing_language_lexicon_contract();test_editor_natural_copy_contract();test_community_fallback_contract();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()
