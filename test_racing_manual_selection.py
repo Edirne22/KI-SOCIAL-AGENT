@@ -68,3 +68,20 @@ def test_article7_manual_qm_rewrites_until_real_pass(monkeypatch):
     assert rms._prepare_one(article7) is True
     assert len(calls)==2
     assert "Text nicht an den Fahrer" in calls[1][0]
+
+
+def test_article7_stale_worldsbk_lock_is_corrected_from_official_headline():
+    article7={
+        "story_key":"motogp:1091425",
+        "title":"Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP",
+        "url":"https://www.worldsbk.com/en/news/2026/09/21/x/1091425",
+        "summary":"The Turkish rider will join the Chinese manufacturer in World Supersport while Dutch rider Twan Smits joins the WorldSBK paddock",
+        "series":"WorldSBK","source_series":"WorldSBK","series_locked":True,
+    }
+    rms.agency.lock_source_series(article7)
+    assert article7["series"]=="WorldSSP"
+    assert article7["source_series"]=="WorldSSP"
+    assert article7["series_origin"]=="explicit-source"
+    assert rms.agency.series_for(article7)=="WorldSSP"
+    article7["caption"]="Fakten aus der Quelle."
+    assert rms.agency.hashtags(article7).split()[0]=="#WorldSSP"
