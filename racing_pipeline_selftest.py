@@ -212,6 +212,8 @@ def test_lexicon_single_source_chain():
  import racing_language_rules as rules
  ok(rules.version()!='missing','central Racing lexicon must be loadable')
  ok('altes Stammgelände' in rules.blocked_phrases(),'central parser must read complete Vermeiden section through following ## heading')
+ ok(rules._section('Vermeiden').lstrip().startswith('- kein Neuland'),'section parser must start at exact heading and stop only at next level-2 heading')
+ ok('Bülents Bike Life Voice' not in rules._section('Vermeiden'),'section parser must not consume following section')
  bad='Baz kehrt zu einem alten Stammgelände zurück. Mackenzie fällt aus.\n\nWie seht ihr den Wechsel?\n\n#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife'
  ok(any('altes Stammgelände' in e for e in rules.deterministic_errors(bad)),'central BLOCKED rule must reject live escape')
  files=('motogp_content_agency_v2.py','motogp_quality_manager.py','racing_semantic_qm.py','chief_quality_manager.py','racing_final_guard.py','racing_v855_hardening.py')
