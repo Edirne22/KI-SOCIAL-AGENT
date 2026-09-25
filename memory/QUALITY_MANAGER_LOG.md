@@ -1170,3 +1170,15 @@ Story-Key: motogp:1091355
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-25 03:17 UTC | Motorcycle Racing | PASS
+Titel: MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 03:17 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
+Story-Key: motogp:1091355
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
