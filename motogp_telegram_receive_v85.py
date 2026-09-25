@@ -4,6 +4,7 @@ import re,sys,time
 from telegram_bot import get_chat_id, get_updates, send_message, send_photo
 import racing_run_controller as rc
 from generate_agnes_media import agnes_generate_image, save_bytes
+from instagram_publish import download_og_image_for_instagram, generate_buelent_caption
 from pending_instagram import add_pending
 SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md')
 MIN_SESSION_VERSION=18;MAX_SESSION_AGE_SECONDS=24*3600
@@ -116,19 +117,28 @@ def publish(posts,chosen,uid,batch):
 
         prompt = f"Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: {p['text'][:180]}"
         img_path = p["image"]
-        try:
-            img_bytes = agnes_generate_image(prompt)
-            if img_bytes:
-                save_bytes(img_bytes, img_path)
-                print(f"MOTOGP: Agnes-Bild generiert für Auswahl {n}: {img_path}")
-        except Exception as e:
-            print(f"MOTOGP: Agnes Bild-Generierung übersprungen / fehlgeschlagen: {e}")
+        media_status = "QUELLE_BESTÄTIGT"
+        og_path = download_og_image_for_instagram(p["source"], img_path)
+        if og_path:
+            img_path = og_path
+            print(f"MOTOGP: og:image der Quelle verwendet für Auswahl {n}: {img_path}")
+        else:
+            media_status = "EIGENE_KI_EDITORIALGRAFIK"
+            try:
+                img_bytes = agnes_generate_image(prompt)
+                if img_bytes:
+                    save_bytes(img_bytes, img_path)
+                    print(f"MOTOGP: Kein og:image – Agnes-Fallback für Auswahl {n}: {img_path}")
+            except Exception as e:
+                print(f"MOTOGP: Agnes Bild-Generierung übersprungen / fehlgeschlagen: {e}")
+
+        instagram_text = generate_buelent_caption(p["text"])
 
         add_pending(
             batch_id=batch,
             auswahl=n,
             titel=p["title"],
-            text=p["text"],
+            text=instagram_text,
             bild_pfad=img_path,
             prompt_fuer_agnes=prompt,
         )
@@ -137,7 +147,7 @@ def publish(posts,chosen,uid,batch):
         common_fb = f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\nRacing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
 
         blocks += [
-            f'## Instagram\n{common_ig}Text:\n{p["text"]}\nQuelle: {p["source"]}\nMedienstatus: EIGENE_KI_EDITORIALGRAFIK\nBild: {img_path}\n',
+            f'## Instagram\n{common_ig}Text:\n{instagram_text}\nQuelle: {p["source"]}\nMedienstatus: {media_status}\nBild: {img_path}\n',
             f'## Facebook\n{common_fb}Text:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n'
         ]
 
