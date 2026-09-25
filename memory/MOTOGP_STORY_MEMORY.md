@@ -479,3 +479,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/22/form-guide-bulega-looks-to-s
 Story-Key: motogp:1091523
 Titel: PREVIEW 1d ago Pirelli bring new development SCX tyre to Cremona, SCQ also in the allocation WorldSBK’s Official Tyre Supplier are continuing their development with a new specification of the SCX tyre, dubbed the F0769 WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/23/pirelli-bring-new-development-scx-tyre-to-cremona-scq-also-in-the-allocation/1091523
+
+## 2026-09-25 10:21 UTC – ANGEBOTEN
+Story-Key: motogp:1092272
+Titel: Mugello to remain home of MotoGP’s Italian Grand Prix as new five-year deal is confirmed The future of MotoGP at one of the championship's most iconic venues is now locked in for another five years 23 Sep 2026
+Quelle: https://www.motogp.com/en/news/2026/09/24/mugello-to-remain-home-of-motogps-italian-grand-prix-as-new-five-year-deal-is-confirmed/1092272

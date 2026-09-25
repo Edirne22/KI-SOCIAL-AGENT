@@ -1320,3 +1320,21 @@ Story-Key: motogp:1091355
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-25 10:35 UTC | Motorcycle Racing | PASS
+Titel: Mugello to remain home of MotoGP’s Italian Grand Prix as new five-year deal is confirmed The future of MotoGP at one of the championship's most iconic venues is now locked in for another five years 23 Sep 2026
+Story-Key: motogp:1092272
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 10:35 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 10:36 UTC | Motorcycle Racing | PASS
+Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
+Story-Key: motogp:1091586
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
