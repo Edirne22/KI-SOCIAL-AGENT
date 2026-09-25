@@ -181,15 +181,31 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     for syn in approve_synonyms:
         assert tr._get_bild_command_action(syn) == "✅"
 
-    # Execute approve with "freigeben zum posten"
+    # Execute approve with "freigeben zum posten" on a successful Meta publish.
+    # The success-path test must provide a real media ID; failed publishes are
+    # covered separately and must remain pending.
+    monkeypatch.setenv("INSTAGRAM_USER_ID", "123")
+    monkeypatch.setenv("INSTAGRAM_ACCESS_TOKEN", "token")
+    test_image = tmp_path / "quiles.jpg"
+    test_image.write_bytes(b"fake")
+    pending = pi.get_first_pending()
+    pending["bild_pfad"] = str(test_image)
+    pi.save_pending([pending])
+    monkeypatch.setattr(tr, "process_image_for_instagram", lambda p: p)
+    monkeypatch.setattr(tr, "asset_url", lambda *args: "https://example.com/image.jpg")
+    monkeypatch.setattr(tr, "create_container", lambda *args: "creation-1")
+    monkeypatch.setattr(tr, "ig_wait", lambda *args: True)
+    monkeypatch.setattr(tr, "ig_publish_container", lambda *args: "media-123")
+
     mock_send_message.reset_mock()
     handled_accept = tr._handle_bild_command("freigeben zum posten")
     assert handled_accept is True
-    assert pi.load_pending() == []  # Removed from pending
+    assert pi.load_pending() == []
 
     published_content = test_published.read_text(encoding="utf-8")
     assert "Status: GEPOSTET" in published_content
     assert "Status: BILD_GENERIERT" not in published_content
+    assert "ID: media-123" in published_content
     mock_send_message.assert_called_with("✅ Instagram gepostet: Quiles Victory")
 
 
