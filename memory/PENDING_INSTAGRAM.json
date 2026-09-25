@@ -1,15 +1,6 @@
 {
   "pending": [
     {
-      "batch_id": "batch_1",
-      "auswahl": 1,
-      "titel": "MotoGP Post",
-      "text": "Toprak auf Pole Position in Spielberg!",
-      "bild_pfad": "img.jpg",
-      "prompt_fuer_agnes": "Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: Toprak auf Pole Position in Spielberg!",
-      "erstellt": "2026-09-22T19:36:31Z"
-    },
-    {
       "batch_id": "racing-2026-09-23-daily",
       "auswahl": 2,
       "titel": "MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now",
