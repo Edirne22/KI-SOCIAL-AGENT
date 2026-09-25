@@ -1,0 +1,22 @@
+name: Turkish Rider Name Test
+
+on:
+  pull_request:
+    paths:
+      - "turkish_rider_names.py"
+      - "turkish_riders_scout.py"
+      - "test_turkish_rider_names.py"
+      - ".github/workflows/turkish-rider-name-test.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests pytest
+      - run: python -m py_compile turkish_rider_names.py turkish_riders_scout.py
+      - run: pytest -q test_turkish_rider_names.py

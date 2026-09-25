@@ -1,5 +1,6 @@
 """Agent 16 / Racing Scout: official MotoGP-, Moto2-, Moto3-, WorldSBK- and WorldSSP sources – V8.5.4."""
 import re,requests,html,unicodedata
+from turkish_rider_names import CANONICAL_ALIASES, canonical_rider
 from urllib.parse import urljoin
 UA={'User-Agent':'Mozilla/5.0 KI-SOCIAL-AGENT Motorcycle Racing Agency'}
 # Specific class feeds MUST run before generic umbrella feeds. racing_scout de-duplicates by URL,
@@ -10,12 +11,7 @@ SOURCES=[
  ('MotoGP','https://www.motogp.com/en/news'),
  ('WorldSSP','https://www.worldsbk.com/en/news/ssp'),
  ('WorldSBK','https://www.worldsbk.com/en/news')]
-WATCHLIST={
- 'Toprak Razgatlıoğlu':('Toprak Razgatlıoğlu','Toprak Razgatlioglu','Toprak Razgatlıoglu','Toprak Razgatliğlu','Razgatlıoğlu','Razgatlioglu'),
- 'Can Öncü':('Can Öncü','Can Oncu','C. Öncü','C. Oncu','Öncü','Oncu'),
- 'Deniz Öncü':('Deniz Öncü','Deniz Oncu','D. Öncü','D. Oncu'),
- 'Bahattin Sofuoğlu':('Bahattin Sofuoğlu','Bahattin Sofuoglu','Bahattin Sofouglu','B. Sofuoğlu','B. Sofuoglu','B. Sofouglu'),
- 'Zayn Sofuoğlu':('Zayn Sofuoğlu','Zayn Sofuoglu','Z. Sofuoğlu','Z. Sofuoglu')}
+WATCHLIST=CANONICAL_ALIASES
 FALLBACK=[
  ('Toprak Razgatlıoğlu','Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign','https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e','MotoGP'),
  ('Can Öncü','Can Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13','https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992','WorldSSP'),
@@ -27,14 +23,8 @@ def fold(s):
 def rider_for(text):
  low=fold(text)
  # Official WorldSBK headline can shorten Bahattin to the misspelt surname "Sofouglu".
- # Keep the surname-only mapping context-bound so Zayn Sofuoglu is not misidentified.
  if re.search(r'(?<![a-z])sofouglu(?![a-z])',low) and any(k in low for k in ('smits','motoxracing','qjmotor','worldssp')):return 'Bahattin Sofuoğlu'
- for rider,aliases in WATCHLIST.items():
-  for alias in aliases:
-   a=fold(alias)
-   if ' ' in a and len(a)>=5 and re.search(r'(?<![a-z])'+re.escape(a)+r'(?![a-z])',low):return rider
- if re.search(r'(?<![a-z])(can|c\.)\s+oncu(?![a-z])',low):return 'Can Öncü'
- return ''
+ return canonical_rider(text)
 def classify_series(default_series,title,url):
  text=fold((title or '')+' '+(url or ''))
  if 'worldspb' in text or 'sportbike world championship' in text:return 'WorldSPB'
