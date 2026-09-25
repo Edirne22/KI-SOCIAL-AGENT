@@ -114,6 +114,14 @@ def install(a):
             if not a.language_sane(x['caption']):
                 if attempt<3:repair=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
                 break
+            # V8.5.5 replaces agency.qualify_copy at install time, so the same
+            # pre-media Human Writing gate must live in this runtime chain too.
+            # Keep this text-only: media/source/domain/final-truth stay in finish_item.
+            from chief_quality_manager import human_text_review
+            human_ok,human_err=human_text_review('Motorcycle Racing',x,x['caption'])
+            if not human_ok:
+                if attempt<3:repair=['Finales Human-Writing-Gate: '+e for e in human_err];print(f'HUMAN-GATE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
+                print('HUMAN-GATE FINAL REJECT:',x.get('title','')[:90],'|','; '.join(human_err)[:600]);break
             x['semantic_qm']='PASS';x['racing_qm']='PASS';x['rewrite_count']=attempt-1;print(f'FULL COPY-QM PASS attempt={attempt}:',x.get('title','')[:90]);return True
         x['semantic_qm']='TECHNICAL-DEFER' if x.get('technical_qm_deferred') else 'FAIL';x['rewrite_count']=min(2,attempt-1);return False
 
