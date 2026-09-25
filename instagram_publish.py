@@ -87,7 +87,10 @@ def generate_buelent_caption(facebook_caption):
 VERBINDLICH:
 - Nur umformulieren. KEINE neue Tatsacheninformation, Zahl, Person, Wertung, Behauptung oder Quelle einfuehren.
 - Vorhandene Quellenangabe/URL muss erhalten bleiben, falls sie im Ausgangstext steht.
-- Natuerliches Deutsch, direkt, motorradnah und communityorientiert.
+- Locker, entspannt und direkt wie ein Gespraech unter Bikern am Treff; NICHT wie Reporter, Presse oder PR.
+- Leichte Umgangssprache aus NRW/Ruhrgebiet/Bergischem Land/Sauerland ist erlaubt, aber keinen kuenstlichen Dialekt erzwingen.
+- 0-2 passende Emojis sind erlaubt (z. B. Motorrad/Racing), aber nur als Stilmittel und nicht als neue Tatsachenbehauptung.
+- Keine kuenstliche Spannung oder Reporterfloskeln wie "harte Kaempfe", "jede Menge Action", "verspricht Spannung", wenn das nicht im Ausgangstext steht.
 - Gib ausschliesslich die fertige Caption aus, keine Erklaerung.
 
 HUMAN WRITING PROTOCOL:
@@ -101,7 +104,25 @@ FACEBOOK-CAPTION:
 """
         result = quick_chat(prompt, task_type="final_captions")
         cleaned = (result or "").strip()
-        return cleaned if cleaned else base
+        if not cleaned:
+            return base
+
+        guard_prompt = f"""Pruefe ausschliesslich, ob die umformulierte Caption gegenueber dem Ausgangstext
+eine NEUE Tatsachenbehauptung, neue Wertung, neue Dramatisierung oder neue konkrete Information einfuehrt.
+Sprachstil, Umgangssprache und Emojis sind erlaubt, solange sie keine neue Sachbehauptung erzeugen.
+Antworte exakt mit SAFE oder UNSAFE. Im Zweifel UNSAFE.
+
+AUSGANGSTEXT:
+{base}
+
+UMFORMULIERTE CAPTION:
+{cleaned}
+"""
+        verdict = (quick_chat(guard_prompt, task_type="racing_semantic_qm") or "").strip().upper()
+        if verdict != "SAFE":
+            print(f"INSTAGRAM CAPTION: Fact-Guard {verdict or 'LEER'} -> Facebook-Caption bleibt unveraendert")
+            return base
+        return cleaned
     except Exception as exc:
         print(f"INSTAGRAM CAPTION: LLM fehlgeschlagen, Facebook-Caption wird verwendet: {exc}")
         return base
