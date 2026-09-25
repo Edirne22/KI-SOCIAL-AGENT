@@ -1,5 +1,10 @@
 from pathlib import Path
 import json
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+import racing_semantic_qm as semantic
 
 FIXTURE = Path(__file__).parent / "fixtures" / "source_fact_contract_v1.json"
 
@@ -12,6 +17,38 @@ def _fixture(data, story_key):
     return next(x for x in data["fixtures"] if x["story_key"] == story_key)
 
 
+def _model_response(x):
+    claims = []
+    for c in x["expected_claims"]:
+        evidence = []
+        if c["evidence_field"] != "NONE":
+            evidence = [{"source_field": c["evidence_field"], "quote": c["evidence"]}]
+        claims.append({
+            "claim": c["claim"],
+            "claim_type": c["claim_type"],
+            "status": c["status"],
+            "source_evidence": evidence,
+        })
+    return {
+        "contract_version": "SOURCE-FACT-CONTRACT-V1",
+        "coverage_complete": True,
+        "claims": claims,
+        "german_ok": True,
+        "style_ok": True,
+        "repair_reasons": [],
+    }
+
+
+def _run_real_fixture(x):
+    old = semantic.generate
+    try:
+        semantic.generate = lambda task, prompt: json.dumps(_model_response(x), ensure_ascii=False)
+        item = {"series": x["series"], "title": x["title"], "summary": x["summary"]}
+        return semantic.review_detailed(item, x["caption_under_test"])
+    finally:
+        semantic.generate = old
+
+
 def test_contract_shape_and_fail_closed_rule():
     data = _load()
     assert data["contract_version"] == "SOURCE-FACT-CONTRACT-V1"
@@ -19,49 +56,70 @@ def test_contract_shape_and_fail_closed_rule():
     assert data["source_scope"]["external_knowledge"] is False
     assert data["pass_rule"] == "coverage_complete == true AND every FACT.status == SUPPORTED AND no UNSUPPORTED claims"
     assert len(data["fixtures"]) == 3
+    assert "or (not hard_reasons)" not in (ROOT / "racing_semantic_qm.py").read_text(encoding="utf-8")
 
 
 def test_valencia_real_pipeline_fixture_is_fail():
     data = _load()
     x = _fixture(data, "motogp:1091638")
     assert x["summary"] == ""
-    assert "Valencia GP as 2027 season finale" in x["title"]
     assert x["expected_overall_status"] == "FAIL"
-    claims = x["expected_claims"]
-    assert any(c["status"] == "SUPPORTED" and "2027 season finale" in c["evidence"] for c in claims)
-    assert any(c["status"] == "UNSUPPORTED" and "traditionally" in c["claim"] for c in claims)
+    result = _run_real_fixture(x)
+    assert result["coverage_complete"] is True
+    assert result["hard_ok"] is False
+    assert any("traditionally" in reason for reason in result["hard_reasons"])
 
 
-def test_bulega_real_pipeline_fixture_is_pass():
+def test_bulega_real_pipeline_fixture_is_fail_closed_on_added_specificity():
     data = _load()
     x = _fixture(data, "motogp:1091502")
     assert x["summary"] == ""
     assert "one of WorldSBK's most impressive records from Bautista" in x["title"]
     assert "record once thought unassailable" in x["title"]
-    assert x["expected_overall_status"] == "PASS"
-    facts = [c for c in x["expected_claims"] if c["claim_type"] == "FACT"]
-    assert facts and all(c["status"] == "SUPPORTED" for c in facts)
+    assert x["expected_overall_status"] == "FAIL"
+    result = _run_real_fixture(x)
+    assert result["hard_ok"] is False
+    assert any("riders' championship specifically" in reason for reason in result["hard_reasons"])
+    assert any("for a long time" in reason for reason in result["hard_reasons"])
 
 
 def test_worldssp_real_pipeline_fixture_is_pass():
     data = _load()
     x = _fixture(data, "motogp:1091358")
-    assert "All three WorldSSP titles on the line at Cremona" in x["title"]
-    assert x["summary"] == "With three rounds left to ride, Cremona will be make or break for title hopes of many teams, riders and manufacturers"
     assert x["expected_overall_status"] == "PASS"
-    facts = [c for c in x["expected_claims"] if c["claim_type"] == "FACT"]
-    assert facts and all(c["status"] == "SUPPORTED" for c in facts)
-    questions = [c for c in x["expected_claims"] if c["claim_type"] == "OPINION_QUESTION"]
-    assert len(questions) == 1 and questions[0]["status"] == "SUPPORTED"
+    result = _run_real_fixture(x)
+    assert result["hard_ok"] is True
+    assert result["language_ok"] is True
+    assert result["hard_reasons"] == []
+
+
+def test_contract_rejects_missing_coverage_and_fake_evidence():
+    x = _fixture(_load(), "motogp:1091358")
+    item = {"series": x["series"], "title": x["title"], "summary": x["summary"]}
+    bad = _model_response(x)
+    bad["coverage_complete"] = False
+    try:
+        semantic._validate_contract(item, bad)
+        raise AssertionError("coverage_complete=false must fail closed")
+    except ValueError:
+        pass
+    bad = _model_response(x)
+    bad["claims"][0]["source_evidence"][0]["quote"] = "invented evidence not present in source"
+    try:
+        semantic._validate_contract(item, bad)
+        raise AssertionError("invented evidence quote must fail closed")
+    except ValueError:
+        pass
 
 
 def main():
     test_contract_shape_and_fail_closed_rule()
     test_valencia_real_pipeline_fixture_is_fail()
-    test_bulega_real_pipeline_fixture_is_pass()
+    test_bulega_real_pipeline_fixture_is_fail_closed_on_added_specificity()
     test_worldssp_real_pipeline_fixture_is_pass()
-    print('SOURCE-FACT-CONTRACT-V1 REAL FIXTURES: PASS')
+    test_contract_rejects_missing_coverage_and_fake_evidence()
+    print("SOURCE-FACT-CONTRACT-V1 PRODUCTION SEMANTIC-QM: PASS")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
