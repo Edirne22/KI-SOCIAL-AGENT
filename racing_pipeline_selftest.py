@@ -237,7 +237,7 @@ def test_racing_language_lexicon_contract():
   ok(phrase in lex,f'Racing lexicon contract missing: {phrase}')
  prompt=a._editor_prompt({'title':'Baz replaces Mackenzie at MGM Ducati for Cremona','summary':'Baz replaces injured Mackenzie for Cremona','series':'WorldSBK','source_series':'WorldSBK','series_locked':True},None,'BODY_QUESTION')
  ok('VERBINDLICHES RACING-SPRACHLEXIKON' in prompt,'editor prompt must inject Racing lexicon')
- ok('Das Lexikon ist NIEMALS eine Faktenquelle' in prompt,'editor must not treat lexicon as fact source')
+ ok('Es ist niemals eine Faktenquelle.' in prompt,'editor must not treat lexicon as fact source')
  ok('kein Neuland' in prompt and 'springt für … ein' in prompt,'editor did not receive lexicon content')
 
 def test_editor_natural_copy_contract():
