@@ -1,0 +1,26 @@
+name: Instagram OG Image Test
+
+on:
+  pull_request:
+    paths:
+      - "instagram_publish.py"
+      - "motogp_telegram_receive_v85.py"
+      - "test_instagram_publish.py"
+      - "test_instagram_two_stage_approval.py"
+      - ".github/workflows/instagram-og-image-test.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests Pillow beautifulsoup4 pytest
+      - name: Run Instagram og:image regressions
+        run: pytest -q test_instagram_publish.py test_instagram_two_stage_approval.py

@@ -70,6 +70,8 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
     mock_send_photo = MagicMock()
 
     monkeypatch.setattr(approval, "agnes_generate_image", mock_agnes)
+    monkeypatch.setattr(approval, "download_og_image_for_instagram", lambda source, target: str(test_img))
+    monkeypatch.setattr(approval, "generate_buelent_caption", lambda text: "Bülent: " + text)
     monkeypatch.setattr(approval, "send_photo", mock_send_photo)
 
     count = approval.publish(posts, [3], uid=1001, batch="batch-123")
@@ -80,16 +82,54 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
     assert "Status: BILD_GENERIERT" in published_content
     assert "## Facebook" in published_content
     assert "Status: FREIGEGEBEN" in published_content
+    assert "Medienstatus: QUELLE_BESTÄTIGT" in published_content
+    assert "Bülent: Great race in Austria!" in published_content
 
     pending = pi.load_pending()
     assert len(pending) == 1
     assert pending[0]["batch_id"] == "batch-123"
     assert pending[0]["auswahl"] == 3
 
+    mock_agnes.assert_not_called()
     mock_send_photo.assert_called_once()
+    self_photo_path = mock_send_photo.call_args.args[0]
+    assert self_photo_path == str(test_img)
     caption = mock_send_photo.call_args[1].get("caption", "")
     assert "🖼️ Instagram-Bild bereit für: Quiles Cruises To Victory" in caption
     assert "bild ✅" in caption
+
+
+
+def test_motogp_approval_falls_back_to_agnes_without_og_image(tmp_path, monkeypatch):
+    test_json = tmp_path / "PENDING_INSTAGRAM.json"
+    test_published = tmp_path / "PUBLISHED.md"
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    monkeypatch.setattr(approval, "PUBLISHED", test_published)
+
+    test_img = tmp_path / "fallback.jpg"
+    test_img.write_bytes(b"old")
+    posts = {
+        1: {
+            "title": "Fallback Test",
+            "source": "https://example.com/no-og",
+            "image": str(test_img),
+            "text": "Facebook Basistext",
+        }
+    }
+
+    mock_agnes = MagicMock(return_value=b"agnes bytes")
+    mock_save = MagicMock()
+    monkeypatch.setattr(approval, "download_og_image_for_instagram", lambda source, target: None)
+    monkeypatch.setattr(approval, "generate_buelent_caption", lambda text: text)
+    monkeypatch.setattr(approval, "agnes_generate_image", mock_agnes)
+    monkeypatch.setattr(approval, "save_bytes", mock_save)
+    monkeypatch.setattr(approval, "send_photo", MagicMock())
+
+    approval.publish(posts, [1], uid=1002, batch="batch-fallback")
+    mock_agnes.assert_called_once()
+    mock_save.assert_called_once()
+    published_content = test_published.read_text(encoding="utf-8")
+    assert "Medienstatus: EIGENE_KI_EDITORIALGRAFIK" in published_content
 
 
 def test_telegram_router_bild_commands(tmp_path, monkeypatch):

@@ -2,6 +2,9 @@ import os
 import re
 import time
 import requests
+from bs4 import BeautifulSoup
+from io import BytesIO
+from urllib.parse import urljoin
 
 from pathlib import Path
 from PIL import Image
@@ -9,6 +12,100 @@ from asset_paths import asset_url, resolve_asset
 from datetime import datetime
 
 REPO_RAW = "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/"
+
+HUMAN_WRITING_PROTOCOL = Path("config/HUMAN_WRITING_PROTOCOL.md")
+MOTOGP_VOICE_RULES = Path("memory/MOTOGP_VOICE_RULES.md")
+
+
+def extract_og_image_url(source_url):
+    """Liest og:image aus der Quellseite. Fehler liefern None, damit Agnes übernehmen kann."""
+    if not source_url or not source_url.startswith(("http://", "https://")):
+        return None
+    try:
+        response = requests.get(
+            source_url,
+            timeout=30,
+            headers={"User-Agent": "Mozilla/5.0 KI-SOCIAL-AGENT/1.0"},
+        )
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+        tag = soup.find("meta", attrs={"property": "og:image"})
+        if not tag:
+            tag = soup.find("meta", attrs={"name": "og:image"})
+        value = (tag.get("content") or "").strip() if tag else ""
+        return urljoin(source_url, value) if value else None
+    except (requests.RequestException, ValueError, TypeError) as exc:
+        print(f"INSTAGRAM OG IMAGE: Quelle nicht lesbar: {exc}")
+        return None
+
+
+def download_og_image_for_instagram(source_url, output_path):
+    """Lädt og:image und schreibt es ohne Crop als 1080x1350 JPEG mit schwarzem Padding."""
+    image_url = extract_og_image_url(source_url)
+    if not image_url:
+        return None
+    try:
+        response = requests.get(
+            image_url,
+            timeout=60,
+            headers={"User-Agent": "Mozilla/5.0 KI-SOCIAL-AGENT/1.0"},
+        )
+        response.raise_for_status()
+        with Image.open(BytesIO(response.content)) as source:
+            source.load()
+            image = source.convert("RGB")
+        image.thumbnail((1080, 1350), Image.Resampling.LANCZOS)
+        canvas = Image.new("RGB", (1080, 1350), "black")
+        x = (1080 - image.width) // 2
+        y = (1350 - image.height) // 2
+        canvas.paste(image, (x, y))
+
+        target = Path(output_path)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if target.suffix.lower() not in {".jpg", ".jpeg"}:
+            target = target.with_suffix(".jpg")
+        canvas.save(target, "JPEG", quality=92, optimize=True)
+        print(f"INSTAGRAM OG IMAGE: {image_url} -> {target} (1080x1350, Padding)")
+        return target.as_posix()
+    except (requests.RequestException, OSError, ValueError) as exc:
+        print(f"INSTAGRAM OG IMAGE: Download/Formatierung fehlgeschlagen: {exc}")
+        return None
+
+
+def generate_buelent_caption(facebook_caption):
+    """Formuliert nur den vorhandenen Facebook-Text um; bei LLM-Fehler bleibt er unverändert."""
+    base = (facebook_caption or "").strip()
+    if not base:
+        return base
+    try:
+        from llm_router import quick_chat
+
+        human = HUMAN_WRITING_PROTOCOL.read_text(encoding="utf-8") if HUMAN_WRITING_PROTOCOL.exists() else ""
+        voice = MOTOGP_VOICE_RULES.read_text(encoding="utf-8") if MOTOGP_VOICE_RULES.exists() else ""
+        prompt = f"""Schreibe die folgende deutsche Facebook-Caption fuer Instagram im Stil von Buelents Bike Life um.
+
+VERBINDLICH:
+- Nur umformulieren. KEINE neue Tatsacheninformation, Zahl, Person, Wertung, Behauptung oder Quelle einfuehren.
+- Vorhandene Quellenangabe/URL muss erhalten bleiben, falls sie im Ausgangstext steht.
+- Natuerliches Deutsch, direkt, motorradnah und communityorientiert.
+- Gib ausschliesslich die fertige Caption aus, keine Erklaerung.
+
+HUMAN WRITING PROTOCOL:
+{human}
+
+MOTOGP VOICE RULES:
+{voice}
+
+FACEBOOK-CAPTION:
+{base}
+"""
+        result = quick_chat(prompt, task_type="final_captions")
+        cleaned = (result or "").strip()
+        return cleaned if cleaned else base
+    except Exception as exc:
+        print(f"INSTAGRAM CAPTION: LLM fehlgeschlagen, Facebook-Caption wird verwendet: {exc}")
+        return base
+
 
 def process_image_for_instagram(image_file):
     """Prüft das Bild auf Instagram Feed-Konformität und führt ggf. Center-Crop durch."""

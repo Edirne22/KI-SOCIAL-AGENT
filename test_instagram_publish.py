@@ -1,10 +1,12 @@
 import unittest
 import tempfile
 import os
+from io import BytesIO
+from unittest.mock import MagicMock, patch
 from pathlib import Path
 from PIL import Image
 
-from instagram_publish import process_image_for_instagram
+from instagram_publish import process_image_for_instagram, extract_og_image_url, download_og_image_for_instagram, generate_buelent_caption
 
 class TestInstagramImageResize(unittest.TestCase):
     def setUp(self):
@@ -58,6 +60,54 @@ class TestInstagramImageResize(unittest.TestCase):
             w, h = res_img.size
             ratio = w / h
             self.assertAlmostEqual(ratio, 1.91, delta=0.02)
+
+
+class TestInstagramOgImage(unittest.TestCase):
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp_dir.cleanup)
+
+    @patch("instagram_publish.requests.get")
+    def test_og_image_present_is_used_and_padded_1080x1350(self, mock_get):
+        html = MagicMock()
+        html.text = '<html><head><meta property="og:image" content="/media/race.jpg"></head></html>'
+        html.raise_for_status.return_value = None
+
+        source = Image.new("RGB", (1600, 900), color="red")
+        payload = BytesIO()
+        source.save(payload, "JPEG")
+        image_response = MagicMock()
+        image_response.content = payload.getvalue()
+        image_response.raise_for_status.return_value = None
+        mock_get.side_effect = [html, image_response]
+
+        target = Path(self.temp_dir.name) / "og.jpg"
+        result = download_og_image_for_instagram("https://example.com/story", target)
+        self.assertEqual(result, target.as_posix())
+        with Image.open(target) as converted:
+            self.assertEqual(converted.size, (1080, 1350))
+
+    @patch("instagram_publish.requests.get")
+    def test_og_image_missing_returns_none_for_agnes_fallback(self, mock_get):
+        html = MagicMock()
+        html.text = "<html><head><title>No OG image</title></head></html>"
+        html.raise_for_status.return_value = None
+        mock_get.return_value = html
+        self.assertIsNone(extract_og_image_url("https://example.com/story"))
+
+    @patch("llm_router.quick_chat")
+    def test_buelent_caption_uses_llm_result(self, mock_quick_chat):
+        mock_quick_chat.return_value = "Bülent-Stil Caption"
+        self.assertEqual(generate_buelent_caption("Facebook Caption"), "Bülent-Stil Caption")
+        prompt = mock_quick_chat.call_args.args[0]
+        self.assertIn("KEINE neue Tatsacheninformation", prompt)
+        self.assertIn("Facebook Caption", prompt)
+
+    @patch("llm_router.quick_chat")
+    def test_caption_failure_falls_back_to_facebook_caption(self, mock_quick_chat):
+        mock_quick_chat.side_effect = RuntimeError("provider down")
+        original = "Facebook Caption mit Quelle: https://example.com"
+        self.assertEqual(generate_buelent_caption(original), original)
 
 if __name__ == "__main__":
     unittest.main()
