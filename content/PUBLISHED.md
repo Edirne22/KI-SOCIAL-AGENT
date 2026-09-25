@@ -837,3 +837,38 @@ Was erwartet ihr von der Runde in Cremona?
 https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
 Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-25-manual-36168455207
+Telegram-Update-ID: 279361743
+MotoGP-Auswahl: 1
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Text:
+Valencia ist jetzt das Saisonfinale 2027 – das hat MotoGP offiziell bestätigt. Der komplette Kalender kommt erst am Freitag. 🏍️💨 Was meint ihr, wie wird das letzte Rennen?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife #ValenciaGP #Saisonfinale
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-motogp-news-motogp-c-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-25-manual-36168455207
+Telegram-Update-ID: 279361743
+MotoGP-Auswahl: 1
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Text:
+Valencia ist das Saisonfinale 2027.
+
+MotoGP hat bestätigt, dass der Große Preis von Valencia 2027 als letztes Rennen der Saison läuft. Der komplette Kalender kommt erst am Freitag. 🏍️💨
+
+Wie seht ihr das neue Finale?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Link-Preview: offiziell
