@@ -14,8 +14,17 @@ def prompt_contract(stage):
 LEXIKON-KETTENREGEL: Dieses Lexikon ist fuer alle Racing-Stufen verbindlich. Es ist niemals eine Faktenquelle. PREFERRED steuert Formulierung; VERMEIDEN/BLOCKED darf nicht freigegeben werden; 'Nur mit ausdruecklicher Quellenstuetzung' darf nur verwendet werden, wenn TITEL/ZUSAMMENFASSUNG die Aussage tragen. Kein Folgeagent darf den Text gegen einen eigenen Stilstandard umschreiben oder eine Lexikon-Regel abschwaechen."""
 def _fold(s):
  return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ä','a').replace('ş','s').replace('ç','c')
+def _section(name):
+ raw=text();lines=raw.splitlines();out=[];inside=False
+ for line in lines:
+  if re.match(r'^##\\s+',line):
+   if inside:break
+   inside=(line.strip()==f'## {name}')
+   continue
+  if inside:out.append(line)
+ return '\n'.join(out)
 def blocked_phrases():
- raw=text();m=re.search(r'## Vermeiden\n(.*?)(?:\n## |\Z)',raw,re.S);return [x.strip()[2:] for x in (m.group(1).splitlines() if m else []) if x.strip().startswith('- ')]
+ return [x.strip()[2:] for x in _section('Vermeiden').splitlines() if x.strip().startswith('- ')]
 def deterministic_errors(caption):
  low=_fold(caption);errs=[]
  for p in blocked_phrases():
