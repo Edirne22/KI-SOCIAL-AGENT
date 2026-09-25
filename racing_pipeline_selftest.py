@@ -214,6 +214,7 @@ def test_lexicon_single_source_chain():
  ok('altes Stammgelände' in rules.blocked_phrases(),'central parser must read complete Vermeiden section through following ## heading')
  bad='Baz kehrt zu einem alten Stammgelände zurück. Mackenzie fällt aus.\n\nWie seht ihr den Wechsel?\n\n#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife'
  ok(any('altes Stammgelände' in e for e in rules.deterministic_errors(bad)),'central BLOCKED rule must reject live escape')
+ ok(any('altes Stammgelände' in e for e in rules.deterministic_errors('Er fährt auf einem alten Stammgelände.')),'BLOCKED phrase must survive German adjective inflection')
  files=('motogp_content_agency_v2.py','motogp_quality_manager.py','racing_semantic_qm.py','chief_quality_manager.py','racing_final_guard.py','racing_v855_hardening.py')
  contents={p:Path(p).read_text(encoding='utf-8') for p in files}
  for p in files:
