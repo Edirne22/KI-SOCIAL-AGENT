@@ -25,8 +25,16 @@ def _section(name):
  return '\n'.join(out)
 def blocked_phrases():
  return [x.strip()[2:] for x in _section('Vermeiden').splitlines() if x.strip().startswith('- ')]
+def _blocked_pattern(phrase):
+ words=_fold(phrase).replace('…','').split();parts=[]
+ for word in words:
+  clean=re.sub(r'[^a-z0-9_-]','',word)
+  m=re.match(r'^(.{4,}?)(e|en|em|er|es)
+,clean)
+  parts.append(re.escape(m.group(1))+r'(?:e|en|em|er|es)' if m else re.escape(clean))
+ return r'\\b'+r'\\s+'.join(parts)+r'\\b'
 def deterministic_errors(caption):
  low=_fold(caption);errs=[]
  for p in blocked_phrases():
-  if _fold(p) in low:errs.append('Racing-Lexikon BLOCKED: '+p)
+  if re.search(_blocked_pattern(p),low):errs.append('Racing-Lexikon BLOCKED: '+p)
  return errs
