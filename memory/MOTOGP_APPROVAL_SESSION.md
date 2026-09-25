@@ -1,13 +1,13 @@
 # Motorcycle Racing Telegram Approval Session
 Session-Version: 18
-Agency-Version: V8.5.5
+Agency-Version: V8.5.4
 Approval-Status: READY
 Professional-Agent-Standard: V1.0
 Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790358028
+Session-Timestamp: 1790369608
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,76 +15,24 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.7
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1091638
-Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
-Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-motogp-news-motogp-c-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Neufassungen: 2
+QM-Ruecklaeufe: 2
+Herkunft: Aktuell
+Artikelalter-Tage: 4.9
+Kategorie: Turkish Riders
+Serie: WorldSSP
+Story-Key: motogp:1091425
+Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-smits-replaces-sofou-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/21/607d2097-4858-4d2a-ab39-9f4b2549f9c9/Twan-Smiths.jpg
 Plattformen: Instagram + Facebook
 Text:
-Valencia ist das Saisonfinale 2027.
+Der türkische Repräsentant Bahattin Sofuoglu wechselt von Motoxracing Yamaha zu QJMOTOR in der WorldSSP – ein kompletter Team- und Herstellerwechsel. Der Niederländer Twan Smits übernimmt den verwaisten Startplatz bei Motoxracing Yamaha und geht dafür in die WorldSBK.
 
-MotoGP hat bestätigt, dass der Große Preis von Valencia 2027 als letztes Rennen der Saison läuft. Der komplette Kalender kommt erst am Freitag. 🏍️💨
+Was erwartet ihr von Sofuoglus Start bei QJMOTOR?
 
-Wie seht ihr das neue Finale?
-
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
-
-## Beitrag 2
-QM: PASS
-Community-Human-QM: PASS
-Semantic-Fakten-QM: N/A – Community-Fallback
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Community-Fallback
-Artikelalter-Tage: 0.0
-Kategorie: Community
-Serie: Community
-Story-Key: title:community-spotlight-knieschleifer-aus-berzeugung
-Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
-Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung/
-Instagram-Bild: 
-Quellen-Preview: Zielseite/Plattform
-Plattformen: Instagram + Facebook
-Text:
-Heute im Community-Spotlight: Knieschleifer aus Überzeugung. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
-
-Was macht für euch eine gute Motorrad-Community aus?
-
-#KnieschleiferAusUeberzeugung #Motorradfahren #BikerCommunity #BuelentsBikeLife
-
-Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
-
-## Beitrag 3
-QM: PASS
-Community-Human-QM: PASS
-Semantic-Fakten-QM: N/A – Community-Fallback
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Community-Fallback
-Artikelalter-Tage: 0.0
-Kategorie: Community
-Serie: Community
-Story-Key: title:community-spotlight-bike-society-united
-Titel: 🏍️ Community-Spotlight: Bike Society United
-Quelle: https://www.instagram.com/bike_society.united/
-Instagram-Bild: 
-Quellen-Preview: Zielseite/Plattform
-Plattformen: Instagram + Facebook
-Text:
-Heute im Community-Spotlight: Bike Society United. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
-
-Was macht für euch eine gute Motorrad-Community aus?
-
-#BikeSocietyUnited #Motorradfahren #BikerCommunity #BuelentsBikeLife
+#WorldSSP #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
