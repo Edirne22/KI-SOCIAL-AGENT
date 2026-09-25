@@ -1278,3 +1278,21 @@ Story-Key: motogp:1091355
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-25 07:35 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 07:35 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK
+Story-Key: motogp:1091502
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-25 07:35 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW: All three WorldSSP titles on the line at Cremona as Arenas hopes to hold off his rivals
+Story-Key: motogp:1091358
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

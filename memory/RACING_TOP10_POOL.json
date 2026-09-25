@@ -202,12 +202,12 @@
     ],
     "2026-09-25": [
       {
-        "story_key": "motogp:1091586",
-        "title": "Baz replaces Mackenzie at MGM Ducati for Cremona",
-        "url": "https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586",
-        "summary": "The French rider returns to an old stomping ground for the Italian Round as he steps in for the still-recovering Mackenzie",
-        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg",
-        "published_at": "2026-09-22T09:00:00+0000",
+        "story_key": "motogp:1091502",
+        "title": "PREVIEW 21h ago FORM GUIDE: Bulega looks to snatch one of WorldSBK's most impressive records from Bautista Not only is the title on the line, but there’s a chance that, yet another WorldSBK record once thought unassailable could be crushed at Cremona WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/22/form-guide-bulega-looks-to-snatch-one-of-worldsbks-most-impressive-records-from-bautista/1091502",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
         "series": "WorldSBK",
         "source_series": "WorldSBK",
         "series_locked": true,
@@ -236,19 +236,6 @@
         "published_at": null,
         "series": "MotoGP",
         "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:1091355",
-        "title": "PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK",
-        "url": "https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355",
-        "summary": "",
-        "preview": "",
-        "published_at": null,
-        "series": "WorldSBK",
-        "source_series": "WorldSBK",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
