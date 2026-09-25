@@ -260,3 +260,13 @@ def test_telegram_router_synonyms_without_pending(tmp_path, monkeypatch):
     assert tr._get_bild_command_action("✅") == "✅"
     assert tr._get_bild_command_action("nein") == "❌"
     assert tr._get_bild_command_action("random command") is None
+
+
+def test_latest_pending_targets_current_batch(monkeypatch, tmp_path):
+    import pending_instagram as pi
+    monkeypatch.setattr(pi, "FILE", tmp_path / "pending.json")
+    pi.add_pending({"batch_id": "old-batch", "auswahl": "1", "title": "Old"})
+    pi.add_pending({"batch_id": "current-batch", "auswahl": "1", "title": "Current"})
+    chosen = pi.get_latest_pending()
+    assert chosen["batch_id"] == "current-batch"
+    assert chosen["title"] == "Current"
