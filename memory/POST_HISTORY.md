@@ -121,3 +121,7 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 ### 2026-09-21 06:06 | Entwurf generiert
 - Titel 1: Toprak Razgatlıoğlu und der Kampf in der MotoGP
 - Hook 1: Was macht Toprak Razgatlıoğlu in der MotoGP so gefährlich für die Konkurrenz?
+
+### 2026-09-25 06:04 | Entwurf generiert
+- Titel 1: Toprak Razgatlıoğlu: Warum Geduld der echte Schlüssel in der MotoGP ist
+- Hook 1: –
