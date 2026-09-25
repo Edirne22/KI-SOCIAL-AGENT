@@ -195,6 +195,19 @@ def test_final_human_language_gate():
   ok(a.qualify_copy(x),'human gate should repair before media stage');ok(calls['editor']==2,'human gate must return bad copy to editor exactly once in this regression')
  finally:a.german_editor,a.racing_review,a.semantic_review_detailed=old
 
+def test_human_text_gate_is_pre_media_only():
+ import chief_quality_manager as chief
+ item={'title':'Baz replaces Mackenzie at Cremona','summary':'Baz replaces injured Mackenzie','series':'WorldSBK'}
+ good='Baz übernimmt für Mackenzie.\n\nWie seht ihr den Wechsel?\n\n#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife'
+ ok_text,errs=chief.human_text_review('Motorcycle Racing',item,good)
+ ok(ok_text and not errs,'pure human text gate must not require media, source URL or domain truth review')
+ bad='Baz übernimmt. Frische Impulse für das Team.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife'
+ bad_ok,bad_errs=chief.human_text_review('Motorcycle Racing',item,bad)
+ ok(not bad_ok and any('Human-Protocol FAIL' in e for e in bad_errs),'pure human text gate must still reject bad Racing language')
+ src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8')
+ ok('human_text_review as _chief_language_review' in src,'pre-media chain must call pure human text gate')
+ ok("_lang_err=[e for e in _lang_err if e!='Medienpfad existiert nicht']" not in src,'pre-media gate must not hide full-Chief errors by string filtering')
+
 def test_finalization_contract():
  old_send=a.send_message
  sent=[]
