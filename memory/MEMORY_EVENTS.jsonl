@@ -67,3 +67,6 @@
 {"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-23T17:52:27.323360+00:00", "type": "published", "value": "1285968257941776_122113418013469415"}
 {"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-24T17:52:53.367839+00:00", "type": "published", "value": "1285968257941776_122114143113469415"}
 {"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-24T17:52:53.367854+00:00", "type": "published", "value": "1285968257941776_122114144415469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-25T17:54:26.889102+00:00", "type": "published", "value": "1285968257941776_122114750907469415"}
+{"confidence": 1.0, "source": "content/PUBLISHED.md", "subject": "Facebook", "timestamp": "2026-09-25T17:54:26.889129+00:00", "type": "published", "value": "1285968257941776_122114853183469415"}
+{"confidence": 1.0, "count": 2, "source": "memory/POST_HISTORY.md", "subject": "repeated_hook", "timestamp": "2026-09-25T17:54:26.889186+00:00", "type": "failure", "value": "–"}
