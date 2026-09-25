@@ -888,9 +888,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-m
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-smits-replaces-sofou-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36191511207-1
+## Facebook [GEPOSTET 2026-09-25 21:26 | ID: 1285968257941776_122114946951469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-25-manual-36190202175
 Telegram-Update-ID: 279361754
