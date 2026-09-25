@@ -47,3 +47,9 @@
 - Payload-Größe: 6.5 KB
 - Verarbeitete Posts: 20
 - Versuche: 1
+## Gemini-Zusammenfassung (2026-09-25 05:04)
+- HTTP-Status: RuntimeError
+- Fehler: Alle verfügbaren KI-Anbieter fehlgeschlagen (Rate-Limits oder Keys fehlen).
+- Payload-Größe: 6.0 KB
+- Verarbeitete Posts: 20
+- Versuche: 1
