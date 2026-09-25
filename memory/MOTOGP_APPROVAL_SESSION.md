@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790333721
+Session-Timestamp: 1790355211
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,7 +18,7 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.5
+Artikelalter-Tage: 3.7
 Kategorie: MotoGP
 Serie: MotoGP
 Story-Key: motogp:1091638
@@ -28,13 +28,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-m
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Die MotoGP hat bestätigt, dass das Rennen in Valencia 2027 als Saisonfinale läuft.
+Valencia steht als Saisonfinale 2027 fest – das hat die MotoGP offiziell bestätigt. Den kompletten Kalender gibt es ab Freitag.
 
-Den kompletten Kalender gibt es am Freitag offiziell.
-
-Valencia ist damit fest als letzter Aufmarsch der Saison bestätigt.
-
-Wie schätzt ihr die Planung der MotoGP für 2027 ein?
+Wie seht ihr Valencia als letzten Lauf der Saison?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -44,22 +40,22 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 2
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.5
+Neufassungen: 1
+QM-Ruecklaeufe: 0
+Herkunft: Aktuell
+Artikelalter-Tage: 0.7
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1091586
-Titel: Baz replaces Mackenzie at MGM Ducati for Cremona
-Quelle: https://www.worldsbk.com/en/news/2026/09/22/baz-replaces-mackenzie-at-mgm-ducati-for-cremona/1091586
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-baz-replaces-mackenz-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/22/7cffdc77-2f79-40ae-85a6-040627b6502f/baz-P90521414_highRes_magny-cours-fra-10th.jpg
+Story-Key: motogp:1095140
+Titel: NEWS 6h ago What can be won at Cremona? Round 10 of 2026 is here and there are plenty of trophies up for grabs in Italy… WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-news-6h-ago-what-can-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Baz springt in Cremona für MGM Ducati ein und ersetzt den noch genesenden Mackenzie. Der Franzose kehrt an eine Strecke zurück, die er schon kennt.
+Runde 10 der WorldSBK-Saison 2026 steht an – und das auf der Strecke von Cremona in Italien. Bei diesem Rennwochenende gibt es gleich mehrere Trophäen zu gewinnen, nicht nur ein einziges Ergebnis zählt.
 
-Wie seht ihr den Wechsel?
+Was erwartet ihr von der Runde in Cremona?
 
 #WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -67,32 +63,26 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 
 ## Beitrag 3
 QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
+Community-Human-QM: PASS
+Semantic-Fakten-QM: N/A – Community-Fallback
 Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 4.5
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1091355
-Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-preview-1d-ago-sched-01.jpg
+Herkunft: Community-Fallback
+Artikelalter-Tage: 0.0
+Kategorie: Community
+Serie: Community
+Story-Key: title:community-spotlight-bike-society-bergisches-land
+Titel: 🏍️ Community-Spotlight: Bike Society Bergisches Land
+Quelle: https://www.instagram.com/bike_society_bergisches_land/
+Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Die entscheidende Runde 10 der WorldSBK findet in Cremona statt.
+Heute im Community-Spotlight: Bike Society Bergisches Land. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
-Nach neun Durchgängen stehen noch drei Runden aus.
+Was macht für euch eine gute Motorrad-Community aus?
 
-Cremona könnte zum Schauplatz werden, an dem ein neuer Meister gekrönt wird.
-
-Der komplette Zeitplan fürs Rennwochenende wurde veröffentlicht.
-
-Was erwartet ihr von der Runde in Cremona?
-
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#BikeSocietyBergischesLand #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

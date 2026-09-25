@@ -484,3 +484,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/23/pirelli-bring-new-developmen
 Story-Key: motogp:1092272
 Titel: Mugello to remain home of MotoGP’s Italian Grand Prix as new five-year deal is confirmed The future of MotoGP at one of the championship's most iconic venues is now locked in for another five years 23 Sep 2026
 Quelle: https://www.motogp.com/en/news/2026/09/24/mugello-to-remain-home-of-motogps-italian-grand-prix-as-new-five-year-deal-is-confirmed/1092272
+
+## 2026-09-25 16:53 UTC – ANGEBOTEN
+Story-Key: motogp:1095140
+Titel: NEWS 6h ago What can be won at Cremona? Round 10 of 2026 is here and there are plenty of trophies up for grabs in Italy… WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
