@@ -783,6 +783,7 @@ Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-preview-1d-
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-25-manual-36126483733
 Telegram-Update-ID: 279361739
