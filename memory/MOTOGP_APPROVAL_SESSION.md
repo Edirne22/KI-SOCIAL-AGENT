@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790321393
+Session-Timestamp: 1790330562
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,10 +15,10 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.3
+Artikelalter-Tage: 3.4
 Kategorie: MotoGP
 Serie: MotoGP
 Story-Key: motogp:1091638
@@ -28,9 +28,11 @@ Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-m
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-MotoGP bestätigt den Großen Preis von Valencia als Saisonfinale 2027. Der vollständige Kalender wird am Freitag offengelegt. Damit steht fest, dass die Rennserie ihr Jahr traditionell auf der Strecke von Valencia ausklingen lässt.
+Valencia bleibt der Schlusspunkt: Die MotoGP hat den Valencia GP als Saisonfinale für 2027 bestätigt.
 
-Was erwartet ihr vom Saisonfinale in Valencia?
+Damit steht der Austragungsort für das letzte Rennwochenende der Saison 2027 fest. Lange müssen Fans auf die weiteren Termine nicht warten. Der vollständige Kalender wird bereits an diesem Freitag veröffentlicht.
+
+Was haltet ihr von dieser Entscheidung für das Saisonfinale 2027?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -43,7 +45,7 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.3
+Artikelalter-Tage: 3.4
 Kategorie: WorldSBK
 Serie: WorldSBK
 Story-Key: motogp:1091502
@@ -53,13 +55,13 @@ Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-p
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Nikolo Bulega jagt einen Rekord von Alvaro Bautista bei Cremona.
+Bulega will Bautistas Rekord knacken – in Cremona.
 
-Bei der WM-Runde in Cremona steht nicht nur die Fahrerweltmeisterschaft zur Debatte. Bulega will gleichzeitig einen der beeindruckendsten Rekorde der WorldSBK-Geschichte von Bautista knacken – ein Rekord, der lange als unantastbar galt.
+Alvaro Bautista hat einen der beeindruckendsten Rekorde in der WorldSBK auf dem Buckel. Jetzt steht Nicolo Bulega vor der Chance, diesen Rekord zu brechen. Am Wochenende geht es in Cremona zur Titelentscheidung – nicht nur die Meisterschaft ist auf dem Spiel, sondern ein Record, der lange für unknackbar galt. Wer weiß, was da nach der letzten Runde steht.
 
-Wie seht ihr die Chancen, dass Bulega den Rekord von Bautista bricht?
+Wer bekommt den Rekord abgejagt? Bautista oder Bulega?
 
-#WorldSBK #AlvaroBautista #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,10 +69,10 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 3.3
+Artikelalter-Tage: 3.4
 Kategorie: WorldSSP
 Serie: WorldSSP
 Story-Key: motogp:1091358
@@ -80,13 +82,40 @@ Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-p
 Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/21/97ebedac-6597-4980-a9ee-68ae57f36e50/42cd51ce-9037-7314-a4c5-74d7bd5a2533.jpg
 Plattformen: Instagram + Facebook
 Text:
-In der WorldSSP geht es in Cremona um alle drei Titel, während Arenas seine Rivalen auf Distanz halten will.
+Drei WorldSSP-Titel stehen in Cremona auf dem Spiel. Noch drei Runden bleiben – und für viele Teams, Fahrer und Hersteller könnte genau dieses Wochenende den Unterschied machen. Pol Arenas hofft dabei, seine Rivalen auf Distanz zu halten.
 
-Noch drei Runden stehen aus. Für die Titelhoffnungen vieler Fahrer, Teams und Hersteller geht es in Cremona um alles.
+Wie schätzt ihr die Titelchancen in der aktuellen Phase der Saison ein?
+
+#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
+
+## Beitrag 4
+QM: PASS
+Racing-QM: PASS
+Semantic-Fakten-QM: PASS
+Neufassungen: 1
+QM-Ruecklaeufe: 0
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 4.4
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1091355
+Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
+Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-4-preview-1d-ago-sched-01.jpg
+Quellen-Preview: Zielseite/Plattform
+Plattformen: Instagram + Facebook
+Text:
+WorldSBK geht in Cremona in Runde 10 an den Start.
+
+Neun Runden sind bereits vorbei, drei stehen noch aus.
+
+In Cremona könnte die Weltmeisterschaft entschieden werden.
 
 Was erwartet ihr von der Runde in Cremona?
 
-#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

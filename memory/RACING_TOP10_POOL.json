@@ -239,6 +239,19 @@
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
+      },
+      {
+        "story_key": "motogp:1091355",
+        "title": "PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
       }
     ]
   }
