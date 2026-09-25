@@ -855,6 +855,7 @@ Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-motogp-news
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-25-manual-36168455207
 Telegram-Update-ID: 279361743
