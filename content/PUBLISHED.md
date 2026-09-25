@@ -804,3 +804,36 @@ Was erwartet ihr von der Runde in Cremona?
 https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
 Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-25-manual-36163516963
+Telegram-Update-ID: 279361742
+MotoGP-Auswahl: 2
+Titel: NEWS 6h ago What can be won at Cremona? Round 10 of 2026 is here and there are plenty of trophies up for grabs in Italy… WorldSBK
+Text:
+Runde 10 der WorldSBK 2026 rollt über die Cremona‑Strecke in Italien – hier gibt’s gleich mehrere Trophäen zu holen, nicht nur ein Ergebnis zählt. Das Wochenende verspricht harte Kämpfe und jede Menge Action. Welche Teams und Fahrer werdet ihr in Cremona im Blick haben?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-news-6h-ago-what-can-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-25-manual-36163516963
+Telegram-Update-ID: 279361742
+MotoGP-Auswahl: 2
+Titel: NEWS 6h ago What can be won at Cremona? Round 10 of 2026 is here and there are plenty of trophies up for grabs in Italy… WorldSBK
+Text:
+Runde 10 der WorldSBK-Saison 2026 steht an – und das auf der Strecke von Cremona in Italien. Bei diesem Rennwochenende gibt es gleich mehrere Trophäen zu gewinnen, nicht nur ein einziges Ergebnis zählt.
+
+Was erwartet ihr von der Runde in Cremona?
+
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
+Link-Preview: offiziell
