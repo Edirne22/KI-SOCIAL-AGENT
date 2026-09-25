@@ -99,6 +99,39 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
     assert "bild ✅" in caption
 
 
+
+def test_motogp_approval_falls_back_to_agnes_without_og_image(tmp_path, monkeypatch):
+    test_json = tmp_path / "PENDING_INSTAGRAM.json"
+    test_published = tmp_path / "PUBLISHED.md"
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    monkeypatch.setattr(approval, "PUBLISHED", test_published)
+
+    test_img = tmp_path / "fallback.jpg"
+    test_img.write_bytes(b"old")
+    posts = {
+        1: {
+            "title": "Fallback Test",
+            "source": "https://example.com/no-og",
+            "image": str(test_img),
+            "text": "Facebook Basistext",
+        }
+    }
+
+    mock_agnes = MagicMock(return_value=b"agnes bytes")
+    mock_save = MagicMock()
+    monkeypatch.setattr(approval, "download_og_image_for_instagram", lambda source, target: None)
+    monkeypatch.setattr(approval, "generate_buelent_caption", lambda text: text)
+    monkeypatch.setattr(approval, "agnes_generate_image", mock_agnes)
+    monkeypatch.setattr(approval, "save_bytes", mock_save)
+    monkeypatch.setattr(approval, "send_photo", MagicMock())
+
+    approval.publish(posts, [1], uid=1002, batch="batch-fallback")
+    mock_agnes.assert_called_once()
+    mock_save.assert_called_once()
+    published_content = test_published.read_text(encoding="utf-8")
+    assert "Medienstatus: EIGENE_KI_EDITORIALGRAFIK" in published_content
+
+
 def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     test_json = tmp_path / "PENDING_INSTAGRAM.json"
     test_published = tmp_path / "PUBLISHED.md"
