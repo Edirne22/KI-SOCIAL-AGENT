@@ -50,14 +50,25 @@ def _transfer_destination(story):
  if 'motogp' in s and any(p in s for p in ('join motogp','joins motogp','to motogp','motogp switch','moves to motogp','move to motogp','switch to motogp','motogp debut')):return 'MotoGP'
  if ('worldsbk' in s or 'world superbike' in s) and any(p in s for p in ('join worldsbk','joins worldsbk','to worldsbk','worldsbk switch','moves to worldsbk','move to worldsbk','switch to worldsbk')):return 'WorldSBK'
  return ''
+def _explicit_source_series(x):
+ text=fold(' '.join((x.get('title',''),x.get('summary',''))))
+ hits=[]
+ for series,pattern in (('WorldSSP300',r'worldssp\s*300'),('WorldSSP',r'worldssp(?!\s*300)|world supersport(?!\s*300)'),('WorldSBK',r'worldsbk|world superbike'),('Moto3',r'(?<![a-z0-9])moto3(?![a-z0-9])'),('Moto2',r'(?<![a-z0-9])moto2(?![a-z0-9])'),('MotoGP',r'(?<![a-z0-9])motogp(?![a-z0-9])')):
+  if re.search(pattern,text):hits.append(series)
+ return hits[0] if len(set(hits))==1 else ''
 def lock_source_series(x,declared=None):
- d=(declared or x.get('source_series') or x.get('series') or '').strip();transfer=_transfer_destination(' '.join((x.get('title',''),x.get('summary',''))))
- if transfer:x['series']=transfer;x['series_locked']=True;x['series_origin']='explicit-transfer';return x
+ d=(declared or x.get('source_series') or x.get('series') or '').strip();transfer=_transfer_destination(' '.join((x.get('title',''),x.get('summary',''))));explicit=_explicit_source_series(x)
+ if transfer:x['series']=transfer;x['source_series']=transfer;x['series_locked']=True;x['series_origin']='explicit-transfer';return x
+ # Explicit source text outranks stale persisted pool/feed metadata. This is the
+ # Article-7 production failure: a WorldSSP headline was cached as WorldSBK.
+ if explicit:x['series']=explicit;x['source_series']=explicit;x['series_locked']=True;x['series_origin']='explicit-source';return x
  if d in VALID_SERIES:x['series']=d;x['source_series']=d;x['series_locked']=True;x['series_origin']='official-feed';return x
  return x
 def series_for_raw(x):
  transfer=_transfer_destination(' '.join((x.get('title',''),x.get('summary',''))))
  if transfer:return transfer
+ explicit=_explicit_source_series(x)
+ if explicit:return explicit
  locked=str(x.get('source_series') or (x.get('series') if x.get('series_locked') else '')).strip()
  if locked in VALID_SERIES:return locked
  u=fold(x.get('url',''));t=fold(article_text(x))
