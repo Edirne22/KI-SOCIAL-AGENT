@@ -17,7 +17,7 @@ def sem_result(hard=True,language=True,hard_reasons=None,repair=None):return {'h
 def test_language_repair_chain():
  calls={'editor':0,'racing':0,'semantic':0};old=(a.german_editor,a.racing_review,a.semantic_review_detailed)
  try:
-  def editor(x,reasons=None):calls['editor']+=1;return 'Hook\n\nBody\n\nFrage?\n\n#MotoGP #Test #Racing #BuelentsBikeLife'
+  def editor(x,reasons=None):calls['editor']+=1;return 'MotoGP-Test läuft.\n\nDie Fakten bleiben unverändert.\n\nWie seht ihr das?\n\n#MotoGP #Test #Racing #BuelentsBikeLife'
   def racing(x,c):calls['racing']+=1;return True,[]
   def sem(x,c):calls['semantic']+=1;return sem_result(True,calls['semantic']>1,repair=['holpriges Deutsch'] if calls['semantic']==1 else [])
   a.german_editor,a.racing_review,a.semantic_review_detailed=editor,racing,sem;x={'title':'MotoGP race rider current test story','summary':'race rider','url':'https://example.com/2026/09/15/test'}
@@ -26,7 +26,7 @@ def test_language_repair_chain():
 def test_hard_fact_feedback_then_pass():
  calls={'editor':0,'racing':0,'semantic':0,'research':0};old=(a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source)
  try:
-  a.german_editor=lambda x,reasons=None:(calls.__setitem__('editor',calls['editor']+1) or 'Hook\n\nBody\n\nFrage?\n\n#MotoGP #Racing #BuelentsBikeLife')
+  a.german_editor=lambda x,reasons=None:(calls.__setitem__('editor',calls['editor']+1) or 'MotoGP-Test läuft.\n\nDie Fakten bleiben unverändert.\n\nWie seht ihr das?\n\n#MotoGP #Racing #BuelentsBikeLife')
   a.racing_review=lambda x,c:(calls.__setitem__('racing',calls['racing']+1) or (True,[]))
   def sem(x,c):calls['semantic']+=1;return sem_result(calls['semantic']>1,True,['erfundene Zahl'] if calls['semantic']==1 else [])
   def research(x,reasons):calls['research']+=1;x['research_retry_count']=calls['research'];return x
@@ -36,7 +36,7 @@ def test_hard_fact_feedback_then_pass():
 def test_hard_fact_still_fail_closed():
  calls={'semantic':0,'research':0};old=(a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source)
  try:
-  a.german_editor=lambda x,reasons=None:'Hook\n\nBody\n\nFrage?\n\n#MotoGP #Racing #BuelentsBikeLife';a.racing_review=lambda x,c:(True,[])
+  a.german_editor=lambda x,reasons=None:'MotoGP-Test läuft.\n\nDie Fakten bleiben unverändert.\n\nWie seht ihr das?\n\n#MotoGP #Racing #BuelentsBikeLife';a.racing_review=lambda x,c:(True,[])
   def sem(x,c):calls['semantic']+=1;return sem_result(False,True,['erfundene Zahl'])
   def research(x,reasons):calls['research']+=1;return x
   a.semantic_review_detailed,a.reanalyse_source=sem,research;x={'title':'MotoGP race rider fact test','summary':'race rider','url':'https://example.com/2026/09/15/fact'}
