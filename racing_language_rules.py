@@ -31,7 +31,7 @@ def _blocked_pattern(phrase):
   clean=re.sub(r'[^a-z0-9_-]','',word)
   m=re.match(r'^(.{4,}?)(e|en|em|er|es)$',clean)
   parts.append(re.escape(m.group(1))+r'(?:e|en|em|er|es)' if m else re.escape(clean))
- return r'\\b'+r'\\s+'.join(parts)+r'\\b'
+ return r'\b'+r'\s+'.join(parts)+r'\b'
 def deterministic_errors(caption):
  low=_fold(caption);errs=[]
  for p in blocked_phrases():
