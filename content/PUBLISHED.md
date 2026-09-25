@@ -781,9 +781,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehens
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-preview-1d-ago-sched-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36137836835-1
+## Facebook [GEPOSTET 2026-09-25 12:56 | ID: 1285968257941776_122114750907469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-25-manual-36126483733
 Telegram-Update-ID: 279361739
