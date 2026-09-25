@@ -69,6 +69,7 @@ def _official_url(url):
         return False
 
 def _prepare_one(x):
+    selected_ref=x
     x=dict(x)
     x.pop("_pool_day",None)
     agency.lock_source_series(x,x.get("source_series") or x.get("series"))
@@ -96,13 +97,16 @@ def _prepare_one(x):
         if manual_round < MANUAL_QM_MAX_ROUNDS:
             agency.reanalyse_source(x, feedback)
     if not copy_ok:
+        selected_ref["manual_qm_last_errors"]=x.get("manual_qm_last_errors",[])[:12]
         return False
     b_ok,b_err=agency.review_batch([x])[0]
     if not b_ok:
         x["manual_qm_last_errors"]=["Batch-QM: " + e for e in b_err]
+        selected_ref["manual_qm_last_errors"]=x["manual_qm_last_errors"][:12]
         return False
     if not agency.finish_item(x,1):
         x["manual_qm_last_errors"]=["Chief-QM: " + e for e in x.get("chief_errors", [])] or ["Chief-QM/Media: keine Freigabe"]
+        selected_ref["manual_qm_last_errors"]=x["manual_qm_last_errors"][:12]
         return False
     now=datetime.now(timezone.utc)
     agency.write_session([x],now)
