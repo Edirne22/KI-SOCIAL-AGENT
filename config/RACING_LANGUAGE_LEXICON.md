@@ -78,6 +78,7 @@ Niemals aus Kontext oder Vorwissen ableiten:
 - der Social-Text wird bewusst eigenständig formuliert
 - Für die Einordnung verwenden wir ausschließlich
 - Was ist für dich der spannendste Punkt an dieser Story
+- Wer hat euren persönlichen Favoriten
 - größte Understatement-Leistung
 - groesste Understatement-Leistung
 - MotoGP-Gran Premio
