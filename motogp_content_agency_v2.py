@@ -51,11 +51,13 @@ def _transfer_destination(story):
  if ('worldsbk' in s or 'world superbike' in s) and any(p in s for p in ('join worldsbk','joins worldsbk','to worldsbk','worldsbk switch','moves to worldsbk','move to worldsbk','switch to worldsbk')):return 'WorldSBK'
  return ''
 def _explicit_source_series(x):
- text=fold(' '.join((x.get('title',''),x.get('summary',''))))
- hits=[]
- for series,pattern in (('WorldSSP300',r'worldssp\s*300'),('WorldSSP',r'worldssp(?!\s*300)|world supersport(?!\s*300)'),('WorldSBK',r'worldsbk|world superbike'),('Moto3',r'(?<![a-z0-9])moto3(?![a-z0-9])'),('Moto2',r'(?<![a-z0-9])moto2(?![a-z0-9])'),('MotoGP',r'(?<![a-z0-9])motogp(?![a-z0-9])')):
-  if re.search(pattern,text):hits.append(series)
- return hits[0] if len(set(hits))==1 else ''
+ patterns=(('WorldSSP300',r'worldssp\s*300'),('WorldSSP',r'worldssp(?!\s*300)|world supersport(?!\s*300)'),('WorldSBK',r'worldsbk|world superbike'),('Moto3',r'(?<![a-z0-9])moto3(?![a-z0-9])'),('Moto2',r'(?<![a-z0-9])moto2(?![a-z0-9])'),('MotoGP',r'(?<![a-z0-9])motogp(?![a-z0-9])'))
+ # Mirror the final guard: an explicit series in the official headline outranks
+ # a secondary-series mention in the summary (e.g. "WorldSBK paddock").
+ for raw in (x.get('title',''),x.get('summary','')):
+  text=fold(raw);hits=[series for series,pattern in patterns if re.search(pattern,text)]
+  if len(set(hits))==1:return hits[0]
+ return ''
 def lock_source_series(x,declared=None):
  d=(declared or x.get('source_series') or x.get('series') or '').strip();transfer=_transfer_destination(' '.join((x.get('title',''),x.get('summary',''))));explicit=_explicit_source_series(x)
  if transfer:x['series']=transfer;x['source_series']=transfer;x['series_locked']=True;x['series_origin']='explicit-transfer';return x
