@@ -17,7 +17,7 @@ def _fold(s):
 def _section(name):
  raw=text();lines=raw.splitlines();out=[];inside=False
  for line in lines:
-  if re.match(r'^##\\s+',line):
+  if line.startswith('## '):
    if inside:break
    inside=(line.strip()==f'## {name}')
    continue
