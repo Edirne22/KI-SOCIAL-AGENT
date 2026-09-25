@@ -85,3 +85,34 @@ def test_article7_stale_worldsbk_lock_is_corrected_from_official_headline():
     assert rms.agency.series_for(article7)=="WorldSSP"
     article7["caption"]="Fakten aus der Quelle."
     assert rms.agency.hashtags(article7).split()[0]=="#WorldSSP"
+
+
+def test_prepare_one_registers_ready_batch_for_telegram_approval(monkeypatch,tmp_path):
+    article={
+        "story_key":"motogp:1091425",
+        "title":"Bahattin Sofuoglu joins QJMOTOR in WorldSSP",
+        "url":"https://www.worldsbk.com/en/news/x/1091425",
+        "summary":"Bahattin Sofuoglu joins QJMOTOR in WorldSSP",
+        "series":"WorldSSP","source_series":"WorldSSP","series_locked":True,
+    }
+    state=tmp_path/"RACING_RUN_STATE.json"
+    monkeypatch.setattr(rms.rc,"STATE",state)
+    monkeypatch.setattr(rms.rc,"event_name",lambda:"workflow_dispatch")
+    monkeypatch.setattr(rms.rc,"github_run_id",lambda:"article7-e2e")
+    monkeypatch.setattr(rms.agency,"lock_source_series",lambda x,*a,**k:x)
+    monkeypatch.setattr(rms.agency,"enrich_turkish",lambda x:x)
+    monkeypatch.setattr(rms.agency,"article_info",lambda *a,**k:{})
+    monkeypatch.setattr(rms.agency,"qualify_copy",lambda x,feedback=None:True)
+    monkeypatch.setattr(rms.agency,"review_batch",lambda items:[(True,[])])
+    monkeypatch.setattr(rms.agency,"finish_item",lambda x,i:True)
+    monkeypatch.setattr(rms.agency,"write_session",lambda *a,**k:None)
+    monkeypatch.setattr(rms.agency,"telegram_preview",lambda *a,**k:None)
+    monkeypatch.setattr(rms.agency,"is_turkish_focus",lambda x:True)
+
+    assert rms._prepare_one(article) is True
+    data=json.loads(state.read_text(encoding="utf-8"))
+    bid=data["active_batch_id"]
+    assert bid
+    assert data["runs"][bid]["status"]=="READY_FOR_APPROVAL"
+    assert data["runs"][bid]["origin"]=="manual_racing_selection"
+    assert data["runs"][bid]["story_key"]=="motogp:1091425"
