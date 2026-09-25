@@ -70,6 +70,8 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
     mock_send_photo = MagicMock()
 
     monkeypatch.setattr(approval, "agnes_generate_image", mock_agnes)
+    monkeypatch.setattr(approval, "download_og_image_for_instagram", lambda source, target: str(test_img))
+    monkeypatch.setattr(approval, "generate_buelent_caption", lambda text: "Bülent: " + text)
     monkeypatch.setattr(approval, "send_photo", mock_send_photo)
 
     count = approval.publish(posts, [3], uid=1001, batch="batch-123")
@@ -80,13 +82,18 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
     assert "Status: BILD_GENERIERT" in published_content
     assert "## Facebook" in published_content
     assert "Status: FREIGEGEBEN" in published_content
+    assert "Medienstatus: QUELLE_BESTÄTIGT" in published_content
+    assert "Bülent: Great race in Austria!" in published_content
 
     pending = pi.load_pending()
     assert len(pending) == 1
     assert pending[0]["batch_id"] == "batch-123"
     assert pending[0]["auswahl"] == 3
 
+    mock_agnes.assert_not_called()
     mock_send_photo.assert_called_once()
+    self_photo_path = mock_send_photo.call_args.args[0]
+    assert self_photo_path == str(test_img)
     caption = mock_send_photo.call_args[1].get("caption", "")
     assert "🖼️ Instagram-Bild bereit für: Quiles Cruises To Victory" in caption
     assert "bild ✅" in caption
