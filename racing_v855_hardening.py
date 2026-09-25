@@ -3,6 +3,7 @@ Keeps source facts immutable across feedback loops, constrains editor facts, and
 """
 import re,time,json
 from racing_final_guard import expected_series
+from racing_language_rules import prompt_contract as racing_lexicon_contract, deterministic_errors as racing_lexicon_errors
 
 VALID=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
 UNSUPPORTED=('WorldWCR','WorldSPB','Moto4')
@@ -52,7 +53,7 @@ def install(a):
         return {'series':series_for(x),'title':' '.join(str(x.get('title','')).split()),'summary':' '.join(str(x.get('summary','')).split()),'riders':a.riders_in(source),'numbers':sorted(set(re.findall(r'(?<![A-Za-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',source)))}
 
     def whitelist_errors(x,caption):
-        f=fact_packet(x);src=a.fold(f['title']+' '+f['summary']);cap=a.fold(re.sub(r'#[^\s]+','',caption or ''));errs=[]
+        f=fact_packet(x);errs=list(racing_lexicon_errors(caption));src=a.fold(f['title']+' '+f['summary']);cap=a.fold(re.sub(r'#[^\s]+','',caption or ''))
         cfo=f['series']
         if cfo=='MotoGP' and ('moto2' in cap or 'moto3' in cap) and not ('moto2' in src or 'moto3' in src):
             errs.append('Source-Fact-Whitelist: Falsche Serie Moto2/Moto3 im Text obwohl CFO MotoGP ist')
@@ -71,7 +72,7 @@ def install(a):
 
     def prompt(x,reasons=None,structure_variant=None):
         lock(x);base=original_prompt(x,reasons,structure_variant);facts=json.dumps(fact_packet(x),ensure_ascii=False)
-        return base+'\n\nSOURCE-FACT-WHITELIST (GESCHLOSSEN): '+facts+'\nJede konkrete Person und jede Zahl im Post muss darin bzw. in TITEL/ZUSAMMENFASSUNG vorkommen. Orte, Teams und Hersteller nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG stehen. Nicht belegte Details weglassen, niemals aus Vorwissen ergaenzen.'
+        return base+'\n\n'+racing_lexicon_contract('V8.5.5-HARDENING')+'\n\nSOURCE-FACT-WHITELIST (GESCHLOSSEN): '+facts+'\nJede konkrete Person und jede Zahl im Post muss darin bzw. in TITEL/ZUSAMMENFASSUNG vorkommen. Orte, Teams und Hersteller nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG stehen. Nicht belegte Details weglassen, niemals aus Vorwissen ergaenzen.'
 
     def semantic_technical_retry(x,caption):
         # Resolve through the module at CALL TIME. This is intentional: offline

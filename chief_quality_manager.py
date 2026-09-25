@@ -2,6 +2,7 @@
 from pathlib import Path
 from datetime import datetime,timezone
 import re
+from racing_language_rules import deterministic_errors as racing_lexicon_errors
 LOG=Path('memory/QUALITY_MANAGER_LOG.md');PROTOCOL=Path('config/HUMAN_WRITING_PROTOCOL.md')
 BAD_LANGUAGE=('größte understatement-leistung','groesste understatement-leistung','motogp-gran premio','einen duell','eine duell','im letzten runde','legende zu einer legende','mit großem anfangsbuchstaben','mit grossem anfangsbuchstaben','erfahrt alle wichtigen','zurück auf die zeichentafel','zurueck auf die zeichentafel','airtime zum testen','sechster pole','erfahrene crewmitglied')
 AI_PHRASES=('natürlich!','gerne!','selbstverständlich!','lassen sie uns','es ist wichtig zu beachten','zusammenfassend lässt sich sagen','abschließend lässt sich festhalten','ich hoffe, das hilft','als ki','als sprachmodell','ich habe den text bewusst','der folgende text klingt natürlich')

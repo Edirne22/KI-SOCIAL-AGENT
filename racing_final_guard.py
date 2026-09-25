@@ -1,5 +1,6 @@
 """Deterministic last-mile truth guard. No LLM may override these checks."""
 import re,unicodedata
+from racing_language_rules import deterministic_errors as racing_lexicon_errors
 PROMO=('behind the scenes','catch up','vlog','episode','episodes','fantasy','videopass','tickets','shop','giveaway')
 # Current lower-class names are deterministic disambiguators when official generic motogp.com URLs omit class metadata.
 MOTO3_NAMES=('quiles','almansa','uriarte','kelso','carpe');MOTO2_NAMES=('agius','gonzalez','canet','vietti','arbolino','holgado','moreira','oncu','öncü')
@@ -52,7 +53,7 @@ def _caption_claims_destination(text,destination):
  return False
 
 def review(item,caption):
- errors=[];src=fold(source_text(item));cap=fold(caption);series=expected_series(item);declared=str(item.get('series','')).strip()
+ errors=list(racing_lexicon_errors(caption));src=fold(source_text(item));cap=fold(caption);series=expected_series(item);declared=str(item.get('series','')).strip()
  if any(p in src for p in PROMO):errors.append('Final-Guard: Promo/Vlog/Marketing statt Racing-News')
  if series in ('WorldWCR','WorldSPB','Moto4'):errors.append(f'Final-Guard: {series} ist derzeit nicht als freigegebene Racing-Serie konfiguriert')
  source_dest=_transfer_destination(src)

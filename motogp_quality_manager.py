@@ -1,5 +1,6 @@
 """Finales Domain-QM für Racing-Pakete vor Semantic-/Chief-QM – V8.4.6.1."""
 import re
+from racing_language_rules import deterministic_errors as lexicon_errors
 BANNED=('motogp im fokus','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung','der social-text wird bewusst eigenständig formuliert','für die einordnung verwenden wir ausschließlich','was ist für dich der spannendste punkt an dieser story','größte understatement-leistung','groesste understatement-leistung','motogp-gran premio','einen duell','im letzten runde','eine duell')
 ENGLISH_MARKERS=(' out the ',' quickest ',' reigning ',' leads ',' opening stint ',' beats ',' pole in ',' qualifying ',' line-up ',' revealed ',' denies ',' points cover ',' world champion ',' sprint stand-off ',' from 2027 ',' alongside ',' weekend at ',' does the business ')
 TURKISH=('toprak razgatlioglu','can oncu','deniz oncu','bahattin sofuoglu','zayn sofuoglu')
@@ -32,7 +33,7 @@ def repair_rider_hashtags(item,caption):
  else:caption=caption+'\n\n'+' '.join(missing[:2])
  item['caption']=caption;return caption
 def review(item,caption):
- caption=repair_rider_hashtags(item,caption);errors=[];low=fold(caption);source=fold((item.get('title') or '')+' '+(item.get('summary') or ''))
+ caption=repair_rider_hashtags(item,caption);errors=list(lexicon_errors(caption));low=fold(caption);source=fold((item.get('title') or '')+' '+(item.get('summary') or ''))
  for p in BANNED:
   if fold(p) in low:errors.append('verbotener/unnatürlicher Stil: '+p)
  padded=' '+low+' ';hits=[m for m in ENGLISH_MARKERS if m in padded]
