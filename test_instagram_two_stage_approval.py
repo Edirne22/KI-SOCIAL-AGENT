@@ -143,6 +143,7 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
         "## Instagram\n"
         "Status: BILD_GENERIERT\n"
         "Racing-Batch-ID: batch-123\n"
+        "Telegram-Update-ID: 999\n"
         "MotoGP-Auswahl: 3\n"
         "Titel: Quiles Victory\n"
         "Text:\nGreat race\n",
@@ -206,7 +207,9 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     assert "Status: GEPOSTET" in published_content
     assert "Status: BILD_GENERIERT" not in published_content
     assert "ID: media-123" in published_content
-    mock_send_message.assert_called_with("✅ Instagram gepostet: Quiles Victory")
+    mock_send_message.assert_called_with(
+        "✅ Instagram gepostet: Quiles Victory\nMeta-Media-ID: media-123"
+    )
 
 
 def test_instagram_publish_failure_never_reports_success_or_removes_pending(tmp_path, monkeypatch):
