@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790355211
+Session-Timestamp: 1790358028
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,8 +15,8 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 3.7
 Kategorie: MotoGP
@@ -28,9 +28,11 @@ Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-m
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Valencia steht als Saisonfinale 2027 fest – das hat die MotoGP offiziell bestätigt. Den kompletten Kalender gibt es ab Freitag.
+Valencia ist das Saisonfinale 2027.
 
-Wie seht ihr Valencia als letzten Lauf der Saison?
+MotoGP hat bestätigt, dass der Große Preis von Valencia 2027 als letztes Rennen der Saison läuft. Der komplette Kalender kommt erst am Freitag. 🏍️💨
+
+Wie seht ihr das neue Finale?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -38,26 +40,26 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 
 ## Beitrag 2
 QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Community-Human-QM: PASS
+Semantic-Fakten-QM: N/A – Community-Fallback
+Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 0.7
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1095140
-Titel: NEWS 6h ago What can be won at Cremona? Round 10 of 2026 is here and there are plenty of trophies up for grabs in Italy… WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-news-6h-ago-what-can-01.jpg
+Herkunft: Community-Fallback
+Artikelalter-Tage: 0.0
+Kategorie: Community
+Serie: Community
+Story-Key: title:community-spotlight-knieschleifer-aus-berzeugung
+Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
+Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung/
+Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Runde 10 der WorldSBK-Saison 2026 steht an – und das auf der Strecke von Cremona in Italien. Bei diesem Rennwochenende gibt es gleich mehrere Trophäen zu gewinnen, nicht nur ein einziges Ergebnis zählt.
+Heute im Community-Spotlight: Knieschleifer aus Überzeugung. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
-Was erwartet ihr von der Runde in Cremona?
+Was macht für euch eine gute Motorrad-Community aus?
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#KnieschleiferAusUeberzeugung #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -71,18 +73,18 @@ Herkunft: Community-Fallback
 Artikelalter-Tage: 0.0
 Kategorie: Community
 Serie: Community
-Story-Key: title:community-spotlight-bike-society-bergisches-land
-Titel: 🏍️ Community-Spotlight: Bike Society Bergisches Land
-Quelle: https://www.instagram.com/bike_society_bergisches_land/
+Story-Key: title:community-spotlight-bike-society-united
+Titel: 🏍️ Community-Spotlight: Bike Society United
+Quelle: https://www.instagram.com/bike_society.united/
 Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Heute im Community-Spotlight: Bike Society Bergisches Land. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
+Heute im Community-Spotlight: Bike Society United. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
 Was macht für euch eine gute Motorrad-Community aus?
 
-#BikeSocietyBergischesLand #Motorradfahren #BikerCommunity #BuelentsBikeLife
+#BikeSocietyUnited #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
