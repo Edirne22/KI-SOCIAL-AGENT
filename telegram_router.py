@@ -398,7 +398,7 @@ def main() -> None:
                 "MOTOGP:\n"
                 "motogp 2,4 – Rennen 2 und 4 freigeben\n"
                 "motogp ✅ – alle freigeben\n"
-                "motogp ❌ – alle ablehnen\n\n"
+                "motogp ❌ – alle ablehnen\n\n"                "RACING MANUELL:\n"\n                "racing top10 / racing top20 – gespeicherten Pool anzeigen\n"\n                "racing gestern – gestrigen Pool anzeigen\n"\n                "racing suche Bahattin – gespeicherten Pool durchsuchen\n"\n                "racing artikel 3 – Nr. 3 der zuletzt angezeigten Liste durch QM schicken\n"\n                "racing url <Link> – offiziellen MotoGP-/WorldSBK-Link durch QM schicken\n\n"
                 "ALLGEMEIN:\n"
                 "alle – alle Freigaben\n"
                 "liste – offene Aufgaben\n"
@@ -442,6 +442,14 @@ def main() -> None:
             send_message("Bitte sende ein Bild mit dem Befehl /vision, /ocr oder /omni.")
             _ack(uid)
             return
+        if re.match(r"^racing\s+(?:top10|top20|gestern|suche\s+.+|artikel\s+\d+|url\s+https?://\S+)$", cmd, re.I):
+            print(f"ROUTER: Update {uid} -> manuelle Racing-Auswahl")
+            result = subprocess.run([sys.executable, "-u", "racing_manual_selection.py", text], check=False)
+            if result.returncode not in (0, 1):
+                raise RuntimeError(f"Manuelle Racing-Auswahl fehlgeschlagen (Exit {result.returncode}).")
+            _ack(uid)
+            return
+
         if "motogp" in cmd:
             print(f"ROUTER: Update {uid} -> MotoGP Approval (atomare Übergabe)")
             result = subprocess.run(
