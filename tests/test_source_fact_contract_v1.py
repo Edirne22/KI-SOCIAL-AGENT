@@ -53,3 +53,15 @@ def test_worldssp_real_pipeline_fixture_is_pass():
     assert facts and all(c["status"] == "SUPPORTED" for c in facts)
     questions = [c for c in x["expected_claims"] if c["claim_type"] == "OPINION_QUESTION"]
     assert len(questions) == 1 and questions[0]["status"] == "SUPPORTED"
+
+
+def main():
+    test_contract_shape_and_fail_closed_rule()
+    test_valencia_real_pipeline_fixture_is_fail()
+    test_bulega_real_pipeline_fixture_is_pass()
+    test_worldssp_real_pipeline_fixture_is_pass()
+    print('SOURCE-FACT-CONTRACT-V1 REAL FIXTURES: PASS')
+
+
+if __name__ == '__main__':
+    main()
