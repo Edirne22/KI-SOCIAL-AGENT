@@ -9,7 +9,7 @@ CANONICAL_ALIASES={
  "Can Öncü":("Can Öncü","Can Oncu","C. Öncü","C. Oncu"),
  "Deniz Öncü":("Deniz Öncü","Deniz Oncu","D. Öncü","D. Oncu"),
  "Bahattin Sofuoğlu":("Bahattin Sofuoğlu","Bahattin Sofuoglu","Bahattin Sofouglu","B. Sofuoğlu","B. Sofuoglu","B. Sofouglu"),
- "Zayn Sofuoğlu":("Zayn Sofuoğlu","Zayn Sofuoglu","Z. Sofuoğlu","Z. Sofuoglu"),,
+ "Zayn Sofuoğlu":("Zayn Sofuoğlu","Zayn Sofuoglu","Z. Sofuoğlu","Z. Sofuoglu"),
  "Oğuz Taşhan":("Oğuz Taşhan","Oguz Tashan","Oguz Tashan"),
  "İshak Demir Dönmez":("İshak Demir Dönmez","Ishak Demir Donmez","Demir Dönmez","Demir Donmez"),
  "Berkay Sarıay":("Berkay Sarıay","Berkay Sariay"),
