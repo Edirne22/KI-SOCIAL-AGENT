@@ -89,11 +89,16 @@ def selection(text):
     return sorted({int(x) for x in re.findall(r'[1-5]', m.group(1))})
 def turkish_selection(text):
     v=re.sub(r'\s+',' ',text.strip().lower());v=re.sub(r'/\s*','',v)
+    # Kurzform: T1, T2, T1,T3,T5, T alle/nein/Emoji.
+    m_short=re.fullmatch(r't\s*([1-5](?:[\s,]+(?:t\s*)?[1-5])*)',v)
+    if m_short:return sorted({int(x) for x in re.findall(r'[1-5]',m_short.group(1))})
+    if re.fullmatch(r't\s*(?:alle|✅)',v):return [1,2,3,4,5]
+    if re.fullmatch(r't\s*(?:nein|❌)',v):return []
     if 'turkish' not in v:return None
     v=re.sub(r'\bturkish\b','',v).strip()
     if v in ('alle','✅'):return [1,2,3,4,5]
     if v in ('nein','❌'):return []
-    m=re.fullmatch(r'([1-5](?:[\s,]+[1-5])*)',v)
+    m=re.fullmatch(r'(?:t\s*)?([1-5](?:[\s,]+(?:t\s*)?[1-5])*)',v)
     return sorted({int(x) for x in re.findall(r'[1-5]',m.group(1))}) if m else None
 
 def parse_turkish_session():
