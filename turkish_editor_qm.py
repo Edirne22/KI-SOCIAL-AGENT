@@ -75,15 +75,21 @@ def qualify(x,agency,max_attempts=3):
     agency.lock_source_series(x,x.get("source_series"));agency.enrich_turkish(x)
     if not _target_supported(x):
         x["turkish_qm_errors"]=["Turkish-Final-QM: ausgewaehlter Fahrer ist in den Quellenfakten nicht belegt"]
+        print("TURKISH FINAL-QM BLOCK precheck:",x.get("title","")[:90],"|","; ".join(x["turkish_qm_errors"]))
         return False
     reasons=None
     for attempt in range(1,max_attempts+1):
+        print(f"TURKISH EDITOR attempt={attempt}:",x.get("title","")[:90])
         if not edit(x,agency,reasons):
-            reasons=["Turkish Editor lieferte kein gueltiges JSON"];continue
+            reasons=["Turkish Editor lieferte kein gueltiges JSON"]
+            print(f"TURKISH EDITOR INVALID attempt={attempt}:","; ".join(reasons))
+            continue
         ok,errors=final_review(x,x["caption"],agency);x["turkish_qm_errors"]=errors
         if not ok:
             reasons=errors
+            print(f"TURKISH FINAL-QM BLOCK attempt={attempt}:",x.get("title","")[:90],"|","; ".join(errors)[:1000])
             if attempt<max_attempts:continue
+            print("TURKISH FINAL-QM HARD REJECT:",x.get("title","")[:90],"|","; ".join(errors)[:1000])
             return False
         sem=agency.semantic_review_detailed(x,x["caption"])
         hard=list(sem.get("hard_reasons") or []);repair=list(sem.get("repair_reasons") or [])
@@ -92,11 +98,15 @@ def qualify(x,agency,max_attempts=3):
         if hard and not technical:
             x["turkish_qm_errors"]=hard
             reasons=["Fakten-QM: "+e for e in hard]
+            print(f"TURKISH SEMANTIC-QM BLOCK attempt={attempt}:","; ".join(hard)[:1000])
             if attempt<max_attempts:continue
+            print("TURKISH SEMANTIC-QM HARD REJECT:","; ".join(hard)[:1000])
             return False
         if not sem.get("language_ok",True):
             reasons=["Sprach-QM: "+e for e in repair]
+            print(f"TURKISH LANGUAGE-QM BLOCK attempt={attempt}:","; ".join(repair)[:1000])
             if attempt<max_attempts:continue
+            print("TURKISH LANGUAGE-QM HARD REJECT:","; ".join(repair)[:1000])
             return False
         x["racing_qm"]="PASS";x["semantic_qm"]="DEGRADED-PASS" if technical else "PASS"
         x["turkish_final_qm"]="PASS";x["rewrite_count"]=attempt-1
@@ -107,7 +117,9 @@ def qualify(x,agency,max_attempts=3):
 def finish(x,i,agency):
     if x.get("turkish_final_qm")!="PASS":return False
     x["instagram_media"]=agency.prepare_media(x,i)
-    if not x["instagram_media"]:return False
+    if not x["instagram_media"]:
+        print("TURKISH MEDIA BLOCK:",x.get("title","")[:90],"| prepare_media lieferte kein Medium")
+        return False
     x["story_key"]=agency.story_key(x["title"],x["url"])
     reviewer=lambda item,caption:final_review(item,caption,agency)
     ok,errors=chief_review("Motorcycle Racing",x,x["caption"],x["instagram_media"],x["url"],reviewer)
