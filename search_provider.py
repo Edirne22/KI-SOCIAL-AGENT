@@ -194,7 +194,7 @@ def _search_apify(query: str, token: str, num_results: int) -> dict:
             [
                 "",
                 "BESTES_ANGEBOT:",
-                f"Preis: {price:.2f} €",
+                f"Preis: {price:.2f} €" + (" monatlich" if re.search(r"\\b(?:handyvertrag|mobilfunk|tarif|vertrag)\\b", query, re.IGNORECASE) else ""),
                 f"Händler: {retailer}",
                 f"URL: {url}",
                 "Belegt: ja",
@@ -317,7 +317,7 @@ def _gemini_grounded(query: str, api_key: str, status_callback: Callable[[str], 
     prompt = f"""Recherchiere dieses Produkt mit allen genannten Kriterien: {query}
 
 Suche bevorzugt bei eBay, Amazon, AliExpress, Polo Motorrad, Louis, Reifen.com, Idealo, Geizhals und Google Shopping.
-Erfinde keine Preise, Rabattcodes oder Links. Nenne nur aktuelle, durch die Websuche belegte Daten.
+Erfinde keine Preise, Rabattcodes oder Links. Nenne nur aktuelle, durch die Websuche belegte Daten.\nBei Mobilfunk-/Handyverträgen darf als Preis ausschließlich der monatliche Grundpreis verwendet werden; Einmalpreis, Geräte-Zuzahlung, Anschlussgebühr oder Hardwarepreis sind niemals der Angebotspreis.
 
 Wenn ein eindeutiges, verifizierbares Angebot mit Preis, Händler und direktem Link vorliegt, beginne exakt mit diesem Block:
 BESTES_ANGEBOT:
