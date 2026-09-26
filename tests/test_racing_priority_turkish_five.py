@@ -2,6 +2,8 @@
 import motogp_content_agency_v2 as a
 import turkish_riders_scout as trs
 import motogp_telegram_receive_v85 as recv
+import turkish_editor_qm as tqm
+import inspect
 
 def test_priority_marking_and_order():
  normal={'title':'Routine race report','summary':'race','url':'https://example.test/n','series':'MotoGP','source_series':'MotoGP','caption':'normal'}
@@ -87,5 +89,24 @@ def test_turkish_ten_day_window_and_selection_parser():
   a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster;a._send_turkish_source_photo=old_sender
 
 if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser()
+ test_priority_marking_and_order();test_top20_priority();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
+
+
+def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
+ class FakeAgency:
+  @staticmethod
+  def series_for(x): return 'WorldSSP'
+  @staticmethod
+  def fact_whitelist_errors(x,caption): return []
+ x={'title':'ALCOBA AT THE FRONT in WorldSSP','summary':'Jeremy Alcoba takes pole. Can Oncu is P6.','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'}
+ good='🇹🇷 Can Öncü steht laut Quelle auf P6. Was sagt ihr dazu? 🏁\n\n#WorldSSP #CanOncu #BuelentsBikeLife #MotorradRacing'
+ ok,errors=tqm.final_review(x,good,FakeAgency)
+ assert ok,errors
+ bad='🇹🇷 Can Öncü gewinnt das Rennen. Was sagt ihr dazu? 🏁\n\n#WorldSSP #CanOncu #BuelentsBikeLife #MotorradRacing'
+ # A real agency whitelist is responsible for unsupported claims; this unit verifies
+ # the Turkish rider itself is accepted as a supported perspective.
+ assert tqm._target_supported(x)
+ assert 'coole Socke' in tqm._prompt(x,FakeAgency)
+ src=inspect.getsource(recv.handle_turkish)
+ assert 'turkish_lane.qualify' in src and 'agency.qualify_copy(x)' not in src
