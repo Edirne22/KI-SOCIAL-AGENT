@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch, MagicMock
 
 import telegram_router as tr
+import deal_hunter
 import telegram_receive as trec
 import motogp_telegram_receive_v85 as motogp_rec
 import racing_run_controller as rc
@@ -84,6 +85,25 @@ class TestTelegramBotBugs(unittest.TestCase):
         query = "handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1"
         text = "iPhone mit 80 GB Telekom D1, Gerätepreis 1,00 €"
         self.assertIsNone(search_provider._price_from_snippet(text, query))
+
+
+
+    def test_verified_mobile_offer_requires_monthly_price_semantics(self):
+        bad = """BESTES_ANGEBOT:
+Preis: 1,00 €
+Händler: Beispiel
+URL: https://example.com/deal
+Belegt: ja"""
+        self.assertIsNone(deal_hunter.extract_verified_offer(bad, True, "handyvertrag 80GB D1"))
+
+        good = """BESTES_ANGEBOT:
+Preis: 11,99 € monatlich
+Händler: Beispiel
+URL: https://example.com/tarif
+Belegt: ja"""
+        offer = deal_hunter.extract_verified_offer(good, True, "handyvertrag 80GB D1")
+        self.assertIsNotNone(offer)
+        self.assertEqual(offer["price"], 11.99)
 
 
 
