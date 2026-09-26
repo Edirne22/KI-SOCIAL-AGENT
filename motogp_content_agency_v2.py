@@ -393,7 +393,12 @@ def telegram_preview(items,turk,qualified=None):
  msg+=[f'Freigabe: motogp {choices} / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
 def add_turkish_candidate(raw,seen,meta,title,url,rider):
  u=canonical_url(url)
- if u in seen:return False
+ if u in seen:
+  # The normal Racing scout may discover the URL first without resolving a Turkish rider.
+  # Preserve the independent Turkish scout's identity instead of silently dropping it.
+  meta.setdefault(u,{})['turkish_rider']=rider
+  meta[u].setdefault('kind',('profile' if '/riders/' in u else 'news'))
+  return False
  seen.add(u);raw.append((title,u));meta[u]={'turkish_rider':rider,'kind':('profile' if '/riders/' in u else 'news')}
  return True
 def run_v8():
