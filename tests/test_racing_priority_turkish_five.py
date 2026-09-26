@@ -28,6 +28,10 @@ def test_central_turkish_rider_source_registry():
  assert RIDER_CONTEXT['Can Öncü']['series']=='WorldSSP'
  assert RIDER_CONTEXT['Bahattin Sofuoğlu']['series']=='WorldSSP'
  assert all(v.get('official_sources') for v in RIDER_CONTEXT.values())
+ assert len(RIDER_CONTEXT)>=12
+ for rider in ('Oğuz Taşhan','İshak Demir Dönmez','Berkay Sarıay','Poyraz Bor','Orhan Karık','Alp Burak Albayrak','Efe Okur','Hasan Hüseyin Baş'):
+  assert rider in RIDER_CONTEXT
+  assert RIDER_CONTEXT[rider]['official_sources']
  assert trs.RIDER_SOURCES is RIDER_CONTEXT
 
 def test_surname_only_turkish_riders_use_series_context():
