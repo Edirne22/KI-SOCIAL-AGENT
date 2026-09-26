@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
+      - run: pip install requests Pillow beautifulsoup4
       - name: Syntax and duplicate-gate regression
         run: |
           python -m py_compile racing_run_controller.py tests/test_racing_manual_rerun.py
