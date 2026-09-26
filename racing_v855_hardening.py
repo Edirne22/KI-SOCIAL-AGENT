@@ -91,17 +91,20 @@ def install(a):
     def qualify(x,initial_reasons=None):
         if not a.racing_relevant(x):return False
         lock(x);repair=initial_reasons
-        for attempt in (1,2,3):
+        max_attempts=5 if x.get('priority_repair') else 3
+        attempts=range(1,max_attempts+1)
+        if x.get('priority_repair'):print('PRIORITY-REPAIR START max=5:',x.get('title','')[:90],'|',','.join(x.get('priority_reasons',[])))
+        for attempt in attempts:
             lock(x);x['caption']=a.german_editor(x,repair);lock(x)
             if not x['caption']:
                 repair=['Redakteur lieferte keinen gueltigen strukturierten Text'];print(f'EDITOR REPAIR attempt={attempt}:',x.get('title','')[:90]);continue
             w=whitelist_errors(x,x['caption'])
             if w:
-                if attempt<3:repair=w;a.reanalyse_source(x,repair);lock(x);continue
+                if attempt<max_attempts:repair=w;a.reanalyse_source(x,repair);lock(x);continue
                 print('SOURCE-FACT-WHITELIST REJECT:',x.get('title','')[:90],'|','; '.join(w)[:600]);break
             r_ok,r_err=a.racing_review(x,x['caption']);x['qm_errors']=r_err
             if not r_ok:
-                if attempt<3:repair=['Racing-QM: '+e for e in r_err];a.reanalyse_source(x,repair);lock(x);continue
+                if attempt<max_attempts:repair=['Racing-QM: '+e for e in r_err];a.reanalyse_source(x,repair);lock(x);continue
                 print('RACING-QM HARD REJECT after feedback loop:',x.get('title','')[:90],'|','; '.join(r_err)[:600]);break
             sem=semantic_technical_retry(x,x['caption'])
             if sem.get('technical_error'):
@@ -117,13 +120,13 @@ def install(a):
                 return True
             x['semantic_errors']=sem['hard_reasons']+sem['repair_reasons']
             if not sem['hard_ok']:
-                if attempt<3:repair=['Fakten-QM: '+e for e in sem['hard_reasons']];a.reanalyse_source(x,repair);lock(x);continue
+                if attempt<max_attempts:repair=['Fakten-QM: '+e for e in sem['hard_reasons']];a.reanalyse_source(x,repair);lock(x);continue
                 print(f'SEMANTIC HARD-FACT REJECT after feedback loop attempt={attempt}:',x.get('title','')[:90],'|','; '.join(sem['hard_reasons'])[:700]);break
             if not sem['language_ok']:
-                if attempt<3:repair=['Sprach-QM: '+e for e in sem['repair_reasons']];print(f'LANGUAGE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
+                if attempt<max_attempts:repair=['Sprach-QM: '+e for e in sem['repair_reasons']];print(f'LANGUAGE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
                 break
             if not a.language_sane(x['caption']):
-                if attempt<3:repair=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
+                if attempt<max_attempts:repair=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
                 break
             # V8.5.5 replaces agency.qualify_copy at install time, so the same
             # pre-media Human Writing gate must live in this runtime chain too.
@@ -131,10 +134,12 @@ def install(a):
             from chief_quality_manager import human_text_review
             human_ok,human_err=human_text_review('Motorcycle Racing',x,x['caption'])
             if not human_ok:
-                if attempt<3:repair=['Finales Human-Writing-Gate: '+e for e in human_err];print(f'HUMAN-GATE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
+                if attempt<max_attempts:repair=['Finales Human-Writing-Gate: '+e for e in human_err];print(f'HUMAN-GATE → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
                 print('HUMAN-GATE FINAL REJECT:',x.get('title','')[:90],'|','; '.join(human_err)[:600]);break
             x['semantic_qm']='PASS';x['racing_qm']='PASS';x['rewrite_count']=attempt-1;print(f'FULL COPY-QM PASS attempt={attempt}:',x.get('title','')[:90]);return True
-        x['semantic_qm']='TECHNICAL-DEFER' if x.get('technical_qm_deferred') else 'FAIL';x['rewrite_count']=min(2,attempt-1);return False
+        x['semantic_qm']='TECHNICAL-DEFER' if x.get('technical_qm_deferred') else 'FAIL';x['rewrite_count']=min(max_attempts-1,attempt-1)
+        if x.get('priority_repair'):print('PRIORITY BLOCKED after repair lane:',x.get('title','')[:90])
+        return False
 
     a.lock_source_series=lock;a.series_for_raw=series_for;a.series_for=series_for
     a._editor_prompt=prompt;a.fact_whitelist_errors=whitelist_errors;a.qualify_copy=qualify
