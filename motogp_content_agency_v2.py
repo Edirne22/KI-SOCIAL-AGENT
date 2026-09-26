@@ -394,7 +394,7 @@ def turkish_five_preview(details,now,max_days=10):
   for i,x in enumerate(candidates,1):
    payload['items'].append({'n':i,'title':x.get('title',''),'url':x.get('url',''),'summary':x.get('summary',''),'preview':x.get('preview',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'series':series_for(x),'source_series':x.get('source_series') or series_for(x),'turkish_rider':x.get('turkish_rider') or detect_turkish_rider(x),'kind':x.get('kind','news')})
   TURKISH_SESSION.parent.mkdir(parents=True,exist_ok=True);TURKISH_SESSION.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Suche rückwärts bis maximal 10 Tage; bereits früher angebotene Stories dürfen erneut erscheinen.','']
+  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche rückwärts bis maximal 10 Tage; bereits früher angebotene Stories dürfen erneut erscheinen.','']
   if len(candidates)<5:msg.append(f'⚠️ {len(candidates)} von 5 gefunden – Zeitraum bis {max_days} Tage vollständig aus dem aktuellen Scout-Pool geprüft.')
   else:msg.append('✅ 5 von 5 Kandidaten gefunden.')
   send_message('\n'.join(msg)[:4000])
