@@ -17,6 +17,12 @@ WATCHLIST=CANONICAL_ALIASES
 RIDER_SOURCES=RIDER_CONTEXT
 # Turkish specialist media are daily discovery sources for ALL registered riders.
 # They may nominate T1-T5 candidates, but are not promoted to primary fact authority.
+TURKISH_WEB_SOURCES=(
+ ('TMF','https://www.tmf.org.tr/Haberler/'),
+ ('AnadoluAjansi','https://www.aa.com.tr/tr/spor'),
+)
+# Open Turkish web sources are preferred over social scraping: crawlable, source-linked,
+# and suitable for the same downstream freshness/fact gates.
 TURKISH_MEDIA_SOURCES=(
  ('MotoEtkinlikcom','https://www.instagram.com/motoetkinlikcom/'),
  ('MotoEtkinlikRacing','https://www.instagram.com/motoetkinlikracing/'),
@@ -94,6 +100,25 @@ def rider_centered_scout(limit_per_source=120):
     if url in seen:continue
     seen.add(url);out.append((title,url,rider,detected_series or series))
  print(f'TURKISH RIDER-CENTERED SCOUT: {len(out)} candidates from {len(RIDER_SOURCES)} riders')
+ return out
+
+
+def turkish_web_scout(limit_per_source=120):
+ """Scan open Turkish .tr/.com.tr racing/news pages for every registered rider.
+
+ This lane is deliberately registry-driven: Unicode canonical names and ASCII aliases
+ are resolved by rider_for(); unknown does not become false. Returned URLs still pass
+ article freshness and fact/QM gates downstream.
+ """
+ out=[];seen=set()
+ for source,base in TURKISH_WEB_SOURCES:
+  rows=_anchors(source,base,limit_per_source)
+  for title,url,detected_series,rider in rows:
+   resolved=rider or rider_for(title+' '+url,detected_series or source)
+   if not resolved or resolved not in RIDER_SOURCES or url in seen:continue
+   series=detected_series if detected_series in ('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300','WorldSPB','Moto4') else RIDER_SOURCES[resolved].get('series','')
+   seen.add(url);out.append((title,url,resolved,series))
+ print(f'TURKISH WEB SCOUT: {len(out)} registered-rider candidates')
  return out
 
 def _search_fallback(source,base,limit):
