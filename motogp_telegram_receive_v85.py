@@ -1,12 +1,12 @@
 """V8.5 human approval gate for Racing. QA PASS is never equal to human approval."""
 from pathlib import Path
-import re,sys,time
+import re,sys,time,json
 from telegram_bot import get_chat_id, get_updates, send_message, send_photo
 import racing_run_controller as rc
 from generate_agnes_media import agnes_generate_image, save_bytes
 from instagram_publish import download_og_image_for_instagram, generate_buelent_caption
 from pending_instagram import add_pending
-SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md')
+SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');TURKISH_SESSION=Path('memory/TURKISH_RIDER_APPROVAL.json');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md')
 MIN_SESSION_VERSION=18;MAX_SESSION_AGE_SECONDS=24*3600
 RAW_BAD=('-->','by motogp.com','motogp-update:','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung')
 def _active_batch():
@@ -87,6 +87,50 @@ def selection(text):
     if not m:
         return None
     return sorted({int(x) for x in re.findall(r'[1-5]', m.group(1))})
+def turkish_selection(text):
+    v=re.sub(r'\s+',' ',text.strip().lower());v=re.sub(r'/\s*','',v)
+    if 'turkish' not in v:return None
+    v=re.sub(r'\bturkish\b','',v).strip()
+    if v in ('alle','✅'):return [1,2,3,4,5]
+    if v in ('nein','❌'):return []
+    m=re.fullmatch(r'([1-5](?:[\s,]+[1-5])*)',v)
+    return sorted({int(x) for x in re.findall(r'[1-5]',m.group(1))}) if m else None
+
+def parse_turkish_session():
+    try:data=json.loads(TURKISH_SESSION.read_text(encoding='utf-8'))
+    except Exception:return {}
+    if int(time.time())-int(data.get('created_at',0))>24*3600:return {}
+    return {int(x['n']):x for x in data.get('items',[]) if isinstance(x,dict) and str(x.get('n','')).isdigit()}
+
+def handle_turkish(uid,chat,txt):
+    if chat!=str(get_chat_id()):return True
+    if already(uid):return True
+    chosen=turkish_selection(txt)
+    if chosen is None:return False
+    if not chosen:
+        send_message('❌ Turkish-Rider-Auswahl verworfen. Es wird nichts veröffentlicht.')
+    else:
+        rows=parse_turkish_session()
+        selected=[n for n in chosen if n in rows]
+        if not selected:
+            send_message('⛔ Keiner der gewählten Turkish-Rider-Vorschläge ist in der aktuellen Session verfügbar.')
+        else:
+            import motogp_content_agency_v2 as agency
+            passed={};failed=[]
+            for n in selected:
+                x=dict(rows[n]);agency.lock_source_series(x,x.get('source_series'));agency.enrich_turkish(x);agency.mark_priority(x,'TURKISH_SELECTED')
+                if agency.qualify_copy(x) and agency.finish_item(x,n):
+                    passed[n]={'title':x['title'],'source':x['url'],'image':x['instagram_media'],'text':x['caption']}
+                else:failed.append(n)
+            batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR'
+            count=publish(passed,sorted(passed),uid,batch) if passed else 0
+            msg=f'🇹🇷 Turkish-Rider QM abgeschlossen: {len(passed)} PASS, {len(failed)} BLOCKED.'
+            if passed:msg+=f'\nFreigegeben: {", ".join("T"+str(n) for n in sorted(passed))} · {count} Plattform-Blöcke übergeben.'
+            if failed:msg+=f'\nNicht veröffentlicht: {", ".join("T"+str(n) for n in failed)}.'
+            send_message(msg)
+    STATE.parent.mkdir(parents=True,exist_ok=True);STATE.write_text(f'Update-ID: {uid}\nAntwort: {txt}\n',encoding='utf-8')
+    return True
+
 def already(uid):return STATE.exists() and f'Update-ID: {uid}' in STATE.read_text(encoding='utf-8')
 def _normalize_text(t):return re.sub(r'\s+',' ',t.strip()).casefold()
 def get_existing_published_texts():
@@ -166,6 +210,8 @@ def publish(posts,chosen,uid,batch):
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
     return len(blocks)
 def handle_one(uid, chat, txt):
+    if turkish_selection(txt) is not None:
+        return handle_turkish(uid,chat,txt)
     if chat != str(get_chat_id()):
         print(f"MOTOGP: Update {uid} aus fremdem Chat; quittiert.")
         return True
@@ -243,5 +289,5 @@ def main():
         return
     for upd in sorted(get_updates(),key=lambda x:x.get('update_id',0)):
         uid=upd.get('update_id');msg=upd.get('message') or {};txt=msg.get('text');chat=str((msg.get('chat') or {}).get('id',''))
-        if isinstance(uid,int) and isinstance(txt,str) and selection(txt) is not None:handle_one(uid,chat,txt)
+        if isinstance(uid,int) and isinstance(txt,str) and (selection(txt) is not None or turkish_selection(txt) is not None):handle_one(uid,chat,txt)
 if __name__=='__main__':main()
