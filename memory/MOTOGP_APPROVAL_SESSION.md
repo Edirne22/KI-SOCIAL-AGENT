@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790434000
+Session-Timestamp: 1790446455
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,10 +15,10 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 2
+QM-Ruecklaeufe: 1
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 4.6
+Artikelalter-Tage: 4.8
 Kategorie: MotoGP
 Serie: MotoGP
 Story-Key: motogp:1091638
@@ -28,9 +28,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-1-m
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Valencia ist als Saisonfinale 2027 bestätigt. Den kompletten Kalender gibt es freitags.
+Die MotoGP hat bestätigt, dass der Große Preis von Valencia 2027 als Saisonfinale läuft. Den kompletten Kalender gibt's am Freitag.
 
-Wie findet ihr die Idee, die Saison 2027 in Valencia ausklingen zu lassen?
+Wie schätzt ihr das Saisonfinale in Valencia ein?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -40,24 +40,28 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 4
+QM-Ruecklaeufe: 4
 Herkunft: Aktuell
-Artikelalter-Tage: 0.6
-Kategorie: WorldSSP
-Serie: WorldSSP
-Story-Key: motogp:1095355
-Titel: MAIDEN SUCCESSES: Alcoba takes first WorldSSP win ahead of Arenas and Farioli with a first-time podium
-Quelle: https://www.worldsbk.com/en/news/2026/09/26/maiden-successes-alcoba-takes-first-worldssp-win-ahead-of-arenas-and-farioli-with-a-first-time-podium/1095355
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-2-maiden-successes-alc-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/26/11b62847-5abe-488c-9d46-3851682b8aa3/WSS-RACE1-REPORT.jpg
+Artikelalter-Tage: 0.8
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1095362
+Titel: LECUONA ON TOP: #7 takes victory in Race 1 at Cremona ahead of Bulega, Sam Lowes completes podium
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/lecuona-on-top-7-takes-victory-in-race-1-at-cremona-ahead-of-bulega-sam-lowes-completes-podium/1095362
+Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-2-lecuona-on-top-7-tak-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/26/e52f1eb0-d142-4194-8af3-254c8712c9b1/WSBK-RACE1-REPORT-v1.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat seinen ersten WorldSSP-Sieg gefeiert 🏁 Arenas wurde Zweiter, Farioli komplettiert das Podium. Der aktuelle Meisterschaftsführende landet mit dem P2 aber nicht unbedingt am Ende vorn – bei Debise P4 sieht man, wie dicht die Titelkämpfe nochmal zusammenrücken. Die Krönung dürfte am Ende in Estoril fallen.
+Lecuona holt mit der Startnummer 7 am Samstag den Sieg im ersten WorldSBK-Rennen in Cremona.
 
-Was denkt ihr, wer in Estoril den Titel holt?
+Bulega sichert sich Rang zwei vor Sam Lowes, der das Podium komplettiert.
 
-#WorldSSP #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Surra stürzte aus den Podesträngen.
+
+Haut eure Meinung zu Lauf 1 in die Kommentare.
+
+#WorldSBK #SamLowes #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -65,24 +69,24 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.6
+Artikelalter-Tage: 0.8
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1092601
-Titel: REPORT 1d ago Lecuona beats Bulega by 0.119s in FP1 at Cremona, #11 crashes at Turn 10 The Spanish rider was just over a tenth clear of his teammate, while Championship leader Bulega crashed WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/25/lecuona-beats-bulega-by-0119s-in-fp1-at-cremona-11-crashes-at-turn-10/1092601
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-3-report-1d-ago-lecuon-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Story-Key: motogp:1095403
+Titel: “We will be there to fight” – Lecuona plans to fight to the end on Sunday at Cremona
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/we-will-be-there-to-fight-lecuona-plans-to-fight-to-the-end-on-sunday-at-cremona/1095403
+Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-3-we-will-be-there-to-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/26/92a14d83-165b-48f0-8161-b36ed07b39f8/LG9_1021.jpg
 Plattformen: Instagram + Facebook
 Text:
-Was haltet ihr von der Situation bei PATA Yamaha?
+Lecuona hat Samstag seinen zweiten Sieg in der WorldSBK gefeiert und will am Sonntag in Cremona weiterkämpfen. Für ihn ist erst Schluss, wenn alle Karten auf dem Tisch liegen – und da liegen noch ein Rennen mehr aus.
 
-FP1 in Cremona ist ganz anders gelaufen als erwartet. Lecuona war mit 0,119 Sekunden Vorsprung auf Bulega der Schnellste – genau ein Zehntel, nichtsdestotrotz klar vorne. Der Titelkämpfer Bulega hat indes bei Turn 10 den Anschluss verloren und ist gecrasht. Sein Teamkollege Lecuona macht sich in Sachen Pace schon mal ganz schön bemerkbar.
+Was erwartet ihr von Lecuona im abschließenden Lauf?
 
-#WorldSBK #NicoloBulega #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

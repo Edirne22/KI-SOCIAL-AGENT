@@ -544,3 +544,13 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/26/maiden-successes-alcoba-take
 Story-Key: motogp:1092601
 Titel: REPORT 1d ago Lecuona beats Bulega by 0.119s in FP1 at Cremona, #11 crashes at Turn 10 The Spanish rider was just over a tenth clear of his teammate, while Championship leader Bulega crashed WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/25/lecuona-beats-bulega-by-0119s-in-fp1-at-cremona-11-crashes-at-turn-10/1092601
+
+## 2026-09-26 18:14 UTC – ANGEBOTEN
+Story-Key: motogp:1095362
+Titel: LECUONA ON TOP: #7 takes victory in Race 1 at Cremona ahead of Bulega, Sam Lowes completes podium
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/lecuona-on-top-7-takes-victory-in-race-1-at-cremona-ahead-of-bulega-sam-lowes-completes-podium/1095362
+
+## 2026-09-26 18:14 UTC – ANGEBOTEN
+Story-Key: motogp:1095403
+Titel: “We will be there to fight” – Lecuona plans to fight to the end on Sunday at Cremona
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/we-will-be-there-to-fight-lecuona-plans-to-fight-to-the-end-on-sunday-at-cremona/1095403

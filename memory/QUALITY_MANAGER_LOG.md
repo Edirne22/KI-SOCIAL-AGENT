@@ -1548,3 +1548,39 @@ Story-Key: motogp:1092435
 Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
 Human-Writing-Protocol: V1.0
 
+## 2026-09-26 18:20 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 18:20 UTC | Motorcycle Racing | PASS
+Titel: LECUONA ON TOP: #7 takes victory in Race 1 at Cremona ahead of Bulega, Sam Lowes completes podium
+Story-Key: motogp:1095362
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 18:21 UTC | Motorcycle Racing | PASS
+Titel: “We will be there to fight” – Lecuona plans to fight to the end on Sunday at Cremona
+Story-Key: motogp:1095403
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 18:21 UTC | Motorcycle Racing | FAIL
+Titel: Feature 2d ago “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories” Catch up with all the hot topics from Thursday’s debrief as WorldSBK landed at Cremona for Round 10 WorldSBK
+Story-Key: motogp:1092435
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben; Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 18:22 UTC | Motorcycle Racing | FAIL
+Titel: Feature 2d ago “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories” Catch up with all the hot topics from Thursday’s debrief as WorldSBK landed at Cremona for Round 10 WorldSBK
+Story-Key: motogp:1092435
+Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 18:22 UTC | Motorcycle Racing | FAIL
+Titel: Feature 2d ago “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories” Catch up with all the hot topics from Thursday’s debrief as WorldSBK landed at Cremona for Round 10 WorldSBK
+Story-Key: motogp:1092435
+Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
