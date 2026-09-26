@@ -89,6 +89,23 @@ def test_rider_centered_scout_uses_registered_official_sources():
  finally:
   trs.RIDER_SOURCES=old_sources;trs._anchors=old_anchors
 
+def test_turkish_discovery_memory_does_not_auto_promote(tmp_path):
+ import turkish_rider_memory as mem
+ old_path=mem.MEMORY_PATH
+ try:
+  mem.MEMORY_PATH=tmp_path/'turkish.json'
+  row=mem.remember_candidate('New Turkish Rookie','Moto4','https://official.test/rookie','Turkish rookie result')
+  assert row['status']=='candidate'
+  data=mem.load()
+  assert 'New Turkish Rookie' in data['discovery_candidates']
+  assert 'New Turkish Rookie' not in data['riders']
+  mem.remember_verified('New Turkish Rookie','Moto4',('https://official.test/rider',),'https://official.test/result')
+  data=mem.load()
+  assert data['riders']['New Turkish Rookie']['status']=='verified'
+  assert 'New Turkish Rookie' not in data['discovery_candidates']
+ finally:
+  mem.MEMORY_PATH=old_path
+
 def test_turkish_ten_day_window_and_selection_parser():
  sent=[];old_send=a.send_message;old_photo=a.send_photo;old_og=a.extract_og_image_url;old_roster=a.roster_names;old_sender=a._send_turkish_source_photo
  try:
@@ -151,7 +168,7 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert callable(_production_agency.fact_whitelist_errors)
 
 if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
+ test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_turkish_discovery_memory_does_not_auto_promote(__import__('pathlib').Path('/tmp/turkish-memory-regression'));test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
