@@ -1,4 +1,4 @@
-name: Telegram Digest Price Regression
+name: TEST – Telegram Digest Price Regression
 
 on:
   workflow_dispatch:
