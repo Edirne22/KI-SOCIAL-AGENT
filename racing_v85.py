@@ -17,7 +17,7 @@ def _controlled_send(message):
     if rc.notification_allowed('racing-status',str(message)):
         TELEGRAM_OUTBOX.parent.mkdir(parents=True,exist_ok=True)
         with TELEGRAM_OUTBOX.open('a',encoding='utf-8') as fh:
-            fh.write(json.dumps(str(message),ensure_ascii=False)+'\\n')
+            fh.write(json.dumps(str(message),ensure_ascii=False)+'\n')
         print('V8.5 TELEGRAM DEFERRED: waiting for durable persistence')
         return None
     print('V8.5 TELEGRAM SUPPRESSED: duplicate/rate-limited Racing notification')
