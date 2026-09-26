@@ -21,13 +21,15 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # Reruns of an older Actions run must execute against the current production branch.
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
       - run: pip install requests Pillow beautifulsoup4
       - name: Preflight – V8.5 Orchestrator + komplette Racing-Kette
         run: |
-          python -m py_compile racing_v85.py racing_v855_hardening.py racing_run_controller.py racing_v85_selftest.py motogp_content_agency_v2.py motogp_content_agency.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py motogp_telegram_receive_v85.py llm_client.py router.py telegram_bot.py memory_engine.py generate_agnes_media.py asset_paths.py media_policy.py
+          python -m py_compile racing_v85.py racing_flush_notifications.py racing_v855_hardening.py racing_run_controller.py racing_v85_selftest.py motogp_content_agency_v2.py motogp_content_agency.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py motogp_telegram_receive_v85.py llm_client.py router.py telegram_bot.py memory_engine.py generate_agnes_media.py asset_paths.py media_policy.py
           python racing_final_guard_selftest.py
           python tests/test_source_fact_contract_v1.py
           python racing_pipeline_selftest.py
@@ -74,12 +76,10 @@ jobs:
           python -u racing_v85.py
       - name: V8.5 State, Memory, QM-Audit, Medien und Session persistent speichern
         if: always()
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A -- memory/ assets/images/
-          if [ -f content/MOTOGP_ROSTER_NEXT.md ]; then git add -- content/MOTOGP_ROSTER_NEXT.md; fi
-          if git diff --cached --quiet; then echo "Keine Agency-Änderungen zu speichern"; else git commit -m "Auto: Racing V8.5 state and audit"; fi
-          if ! git diff --quiet || ! git diff --cached --quiet; then echo "FEHLER: Arbeitsbaum nach Persistenz nicht sauber"; git status --short; exit 1; fi
-          git pull --rebase origin main
-          git push
+        run: bash scripts/persist_racing_state.sh
+      - name: Telegram-Freigabe erst nach erfolgreicher Persistenz senden
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python racing_flush_notifications.py
