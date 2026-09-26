@@ -85,9 +85,35 @@
     ],
     "2026-09-26": [
       {
+        "story_key": "motogp:1095246",
+        "title": "ALCOBA AT THE FRONT: #52 takes Kawasaki’s first WorldSSP pole since 2021 at Cremona",
+        "url": "https://www.worldsbk.com/en/news/2026/09/25/alcoba-at-the-front-52-takes-kawasakis-first-worldssp-pole-since-2021-at-cremona/1095246",
+        "summary": "Championship leader Albert Arenas will start from P2, ahead of title rivals Oncu in P6 and Debise in P8",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/25/006dbbcc-0fc1-40fa-9768-97cfc535fbba/52923_JDR_R10_2026_Action.JPG",
+        "published_at": "2026-09-25T15:27:53+0000",
+        "series": "WorldSSP",
+        "source_series": "WorldSSP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
         "story_key": "motogp:1095277",
-        "title": "REPORT 17h ago Okada on Pole by 0.005 seconds at Cremona It was as as close as possible as the Race 1 grid was set in the FIM Yamaha R3 BLU CRU World Cup R3 BLU CRU Champ",
+        "title": "REPORT 18h ago Okada on Pole by 0.005 seconds at Cremona It was as as close as possible as the Race 1 grid was set in the FIM Yamaha R3 BLU CRU World Cup R3 BLU CRU Champ",
         "url": "https://www.worldsbk.com/en/news/2026/09/25/okada-on-pole-by-0005-seconds-at-cremona/1095277",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1095295",
+        "title": "REPORT 1h ago SUPERPOLE BATTLE: Lecuona fends off late Bulega challenge for Cremona pole as Surra claims third The two factory Ducati riders finished 1-2 in Superpole at Cremona while rookie Surra battled for pole WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/26/superpole-battle-lecuona-fends-off-late-bulega-challenge-for-cremona-pole-as-surra-claims-third/1095295",
         "summary": "",
         "preview": "",
         "published_at": null,
@@ -124,6 +150,19 @@
         "kind": "news"
       },
       {
+        "story_key": "motogp:1092386",
+        "title": "PREVIEW 2d ago FIM Yamaha R3 BLU CRU World Cup title fight reaches penultimate round at Cremona It’s going to be another epic weekend of action as the field enters the penultimate round of 2026 R3 BLU CRU Champ",
+        "url": "https://www.worldsbk.com/en/news/2026/09/24/fim-yamaha-r3-blu-cru-world-cup-title-fight-reaches-penultimate-round-at-cremona/1092386",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
         "story_key": "motogp:1092589",
         "title": "MotoGP™ News 2027 MotoGP™ calendar revealed Read Now",
         "url": "https://www.motogp.com/en/news/2026/09/25/2027-motogp-calendar-revealed/1092589",
@@ -137,12 +176,12 @@
         "kind": "news"
       },
       {
-        "story_key": "motogp:1095197",
-        "title": "REPORT: Lecuona quickest on Friday at Cremona, Bulega second but crashes twice",
-        "url": "https://www.worldsbk.com/en/news/2026/09/25/report-lecuona-quickest-on-friday-at-cremona-bulega-second-but-crashes-twice/1095197",
-        "summary": "It’s advantage Lecuona at Cremona after Friday’s two sessions, but all eyes were on Bulega after he fell twice on Friday",
-        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/25/1cb2646f-c99e-4523-be3c-0de1713c35a4/00247_DCP_R10_2026_Action.jpg",
-        "published_at": "2026-09-25T14:17:25+0000",
+        "story_key": "motogp:1092435",
+        "title": "“I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories”",
+        "url": "https://www.worldsbk.com/en/news/2026/09/24/ill-remember-my-time-here-as-special-we-have-to-finish-this-season-so-maybe-ill-create-more-memories/1092435",
+        "summary": "Catch up with all the hot topics from Thursday’s debrief as WorldSBK landed at Cremona for Round 10",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/24/fccd714e-2478-4864-9bac-486d19aa1394/OUTSPOKEN.jpg",
+        "published_at": "2026-09-24T13:53:26+0000",
         "series": "WorldSBK",
         "source_series": "WorldSBK",
         "series_locked": true,

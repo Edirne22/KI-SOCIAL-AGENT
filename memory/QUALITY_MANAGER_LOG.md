@@ -1410,3 +1410,33 @@ Story-Key: motogp:1095197
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-26 11:31 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News 2027 MotoGP™ calendar revealed Read Now
+Story-Key: motogp:1092589
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 11:31 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 11:31 UTC | Motorcycle Racing | PASS
+Titel: ALCOBA AT THE FRONT: #52 takes Kawasaki’s first WorldSSP pole since 2021 at Cremona
+Story-Key: motogp:1095246
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 11:31 UTC | Motorcycle Racing | PASS
+Titel: REPORT 18h ago Okada on Pole by 0.005 seconds at Cremona It was as as close as possible as the Race 1 grid was set in the FIM Yamaha R3 BLU CRU World Cup R3 BLU CRU Champ
+Story-Key: motogp:1095277
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 11:32 UTC | Motorcycle Racing | PASS
+Titel: REPORT 1h ago SUPERPOLE BATTLE: Lecuona fends off late Bulega challenge for Cremona pole as Surra claims third The two factory Ducati riders finished 1-2 in Superpole at Cremona while rookie Surra battled for pole WorldSBK
+Story-Key: motogp:1095295
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

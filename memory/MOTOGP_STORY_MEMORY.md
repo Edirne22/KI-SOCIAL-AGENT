@@ -494,3 +494,23 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1
 Story-Key: motogp:1095197
 Titel: REPORT: Lecuona quickest on Friday at Cremona, Bulega second but crashes twice
 Quelle: https://www.worldsbk.com/en/news/2026/09/25/report-lecuona-quickest-on-friday-at-cremona-bulega-second-but-crashes-twice/1095197
+
+## 2026-09-26 11:09 UTC – ANGEBOTEN
+Story-Key: motogp:1092589
+Titel: MotoGP™ News 2027 MotoGP™ calendar revealed Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/25/2027-motogp-calendar-revealed/1092589
+
+## 2026-09-26 11:09 UTC – ANGEBOTEN
+Story-Key: motogp:1095246
+Titel: ALCOBA AT THE FRONT: #52 takes Kawasaki’s first WorldSSP pole since 2021 at Cremona
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/alcoba-at-the-front-52-takes-kawasakis-first-worldssp-pole-since-2021-at-cremona/1095246
+
+## 2026-09-26 11:09 UTC – ANGEBOTEN
+Story-Key: motogp:1095277
+Titel: REPORT 18h ago Okada on Pole by 0.005 seconds at Cremona It was as as close as possible as the Race 1 grid was set in the FIM Yamaha R3 BLU CRU World Cup R3 BLU CRU Champ
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/okada-on-pole-by-0005-seconds-at-cremona/1095277
+
+## 2026-09-26 11:09 UTC – ANGEBOTEN
+Story-Key: motogp:1095295
+Titel: REPORT 1h ago SUPERPOLE BATTLE: Lecuona fends off late Bulega challenge for Cremona pole as Surra claims third The two factory Ducati riders finished 1-2 in Superpole at Cremona while rookie Surra battled for pole WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/superpole-battle-lecuona-fends-off-late-bulega-challenge-for-cremona-pole-as-surra-claims-third/1095295
