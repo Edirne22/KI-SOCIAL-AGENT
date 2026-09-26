@@ -420,7 +420,7 @@ def turkish_five_preview(details,now,max_days=10):
     seen.add(key);candidates.append(x)
     if len(candidates)>=5:break
    if len(candidates)>=5:break
-    diag=[(y.get('turkish_rider') or detect_turkish_rider(y),y.get('title','')[:70],turkish_candidate_reason(y,now,max_days)) for y in details if is_turkish_focus(y)]
+  diag=[(y.get('turkish_rider') or detect_turkish_rider(y),y.get('title','')[:70],turkish_candidate_reason(y,now,max_days)) for y in details if is_turkish_focus(y)]
   print('TURKISH CANDIDATE-GATE DIAG '+json.dumps(diag,ensure_ascii=False))
   payload={'version':1,'created_at':int(now.timestamp()),'max_days':max_days,'window_used_days':window_used,'count':len(candidates),'items':[]}
   for i,x in enumerate(candidates,1):
