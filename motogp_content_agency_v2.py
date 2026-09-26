@@ -371,7 +371,12 @@ def _send_turkish_source_photo(og,caption):
     tmp.write(r.content);path=Path(tmp.name)
    send_photo(path,caption=caption);return True
   except Exception as e:
-   print('TURKISH-5 PREVIEW PHOTO FAIL:',type(e).__name__,str(e)[:160]);return False
+   print('TURKISH-5 PREVIEW DOWNLOAD FAIL:',type(e).__name__,str(e)[:160])
+   # Telegram can fetch a public image URL itself. Keep this as a real delivery
+   # fallback when the runner cannot resolve or download the source image.
+   try:send_photo(og,caption=caption);return True
+   except Exception as fallback:
+    print('TURKISH-5 PREVIEW PHOTO FAIL:',type(fallback).__name__,str(fallback)[:160]);return False
   finally:
    if path:
     try:path.unlink(missing_ok=True)
