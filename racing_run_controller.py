@@ -36,13 +36,9 @@ def batch_id(now=None):
  return f'racing-{now.date().isoformat()}-{event}-{github_run_id()}'
 def begin(now=None):
  now=now or _now();data=_load();bid=batch_id(now);existing=data['runs'].get(bid)
- # Preserve legacy duplicate-window behavior for distinct manual run ids while force_new remains an explicit bypass.
- if not force_new() and event_name()=='workflow_dispatch':
-  for old_bid,run in data.get('runs',{}).items():
-   if old_bid==bid:continue
-   try:started=datetime.fromisoformat(str(run.get('started_at','')).replace('Z','+00:00'));age=(now-started).total_seconds()
-   except Exception:continue
-   if 0<=age<DUPLICATE_WINDOW_SECONDS:return False,bid,'duplicate window'
+ # Every workflow_dispatch has its own GitHub run id and is an intentional manual E2E run.
+ # Do not suppress it merely because another Racing run happened within 30 minutes.
+ # Scheduled runs keep their stable daily batch id and are still protected below.
  if existing and existing.get('status') not in {'FAILED','BLOCKED'} and not force_new():return False,bid,'duplicate batch'
  stamp=now.isoformat();data['runs'][bid]={'status':'STARTED','started_at':stamp,'updated_at':stamp,'event':event_name(),'github_run_id':github_run_id(),'arch_version':ARCH_VERSION};data['active_batch_id']=bid;_save(data);return True,bid,'started'
 def transition(bid,status,error='',**kwargs):
