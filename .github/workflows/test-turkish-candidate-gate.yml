@@ -1,0 +1,21 @@
+name: TEST – Turkish Candidate Gate
+on:
+  pull_request:
+    paths:
+      - 'motogp_content_agency_v2.py'
+      - 'tests/test_turkish_candidate_gate.py'
+      - '.github/workflows/test-turkish-candidate-gate.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Syntax
+        run: python -m py_compile motogp_content_agency_v2.py tests/test_turkish_candidate_gate.py
+      - name: Regression
+        run: python tests/test_turkish_candidate_gate.py
