@@ -7,6 +7,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from telegram_bot import send_message
+from telegram_morning import load_latest_posts, save_session
 
 PUBLISHED_FILE = Path("content/PUBLISHED.md")
 CONTENT_PLAN_FILE = Path("content/CONTENT_PLAN.md")
@@ -55,31 +56,35 @@ def planned_posts(content: str) -> list[str]:
     return result
 
 
-def latest_ideas(content: str) -> list[str]:
-    titles = [match.group(1).strip() for match in re.finditer(r"(?m)^Titel:\s*(.+)$", content)]
-    return titles[-3:]
-
 
 def build_digest() -> str:
     published = PUBLISHED_FILE.read_text(encoding="utf-8") if PUBLISHED_FILE.exists() else ""
     plan = CONTENT_PLAN_FILE.read_text(encoding="utf-8") if CONTENT_PLAN_FILE.exists() else ""
     posted = yesterday_posts(published)
     planned = planned_posts(published)
-    ideas = latest_ideas(plan)
+    approval_posts = load_latest_posts() if plan else []
 
     lines = ["🌅 Guten Morgen, Bülent!", "", "📊 Gestern gepostet:"]
     lines.extend(posted or ["- Keine gespeicherten Beiträge von gestern."])
     lines.extend(["", "📅 Heute geplant:"])
     lines.extend(planned or ["- Noch keine freigegebenen Beiträge."])
-    lines.extend(["", "💡 Neue Ideen warten auf Freigabe:"])
-    lines.extend([f"{index}. {title}" for index, title in enumerate(ideas, start=1)] or ["- Keine neuen Ideen gefunden."])
-    lines.extend(["", "Antworten wie gewohnt: 1,3 / alle / nein"])
+    lines.extend(["", "💡 Allgemeine Content-Entwürfe zur Freigabe:"])
+    lines.extend([f"{post['number']}. {post['title']}" for post in approval_posts] or ["- Keine allgemeinen Non-Racing-Entwürfe offen."])
+    if approval_posts:
+        lines.extend(["", "Freigabe für genau diese Content-Entwürfe: 1,3 / alle / nein"])
+    lines.extend(["", "🏁 Racing-Content (MotoGP/Moto2/Moto3/WorldSBK/WorldSSP) läuft separat durch Racing-QM und wird hier nicht per Kurzantwort freigegeben."])
     return "\n".join(lines)
 
 
 def main() -> None:
+    plan = CONTENT_PLAN_FILE.read_text(encoding="utf-8") if CONTENT_PLAN_FILE.exists() else ""
+    approval_posts = load_latest_posts() if plan else []
     send_message(build_digest())
-    print("Daily Digest an Telegram gesendet.")
+    if approval_posts:
+        save_session(approval_posts)
+        print(f"Daily Digest gesendet; Freigabe-Session für {len(approval_posts)} allgemeine Content-Entwürfe gespeichert.")
+    else:
+        print("Daily Digest gesendet; keine allgemeine Content-Freigabe-Session erzeugt.")
 
 
 if __name__ == "__main__":
