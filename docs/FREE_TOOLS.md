@@ -94,3 +94,8 @@ Diese Anbieter NICHT nutzen – GPT-6 Astra existiert nicht offiziell:
 3. Quarterly Review: was funktioniert, was nicht
 4. "Aktuell genutzt"-Block aktuell halten
 5. Nur Tools aufnehmen, die 0-€-Philosophie unterstützen
+
+## Hashtag-Recherche
+- All Hashtag: all-hashtag.com (Hashtag-Generator)
+- InFlact: inflact.com (Instagram-Hashtag-Analyse)
+- Meta Hashtag: hashtag.meta.com (offiziell, Instagram-Fokus)
