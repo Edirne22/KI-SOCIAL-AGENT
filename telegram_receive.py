@@ -79,7 +79,7 @@ def parse_approval(text: str) -> list[int] | None:
 
     compact = re.sub(r"\s+", "", normalized)
     if re.fullmatch(r"[1-3](,[1-3])*", compact):
-        return sorted({int(number) for number in compact.split(",")})
+        selected = sorted({int(number) for number in compact.split(",")})\n        if available is not None and any(number not in allowed for number in selected):\n            return None\n        return selected
     return None
 
 
@@ -540,7 +540,7 @@ def handle_one(update_id: int, chat_id: str, message_text: str, message: dict | 
         if message_timestamp != 0 and message_timestamp < session_timestamp:
             return True
 
-        selected = parse_approval(message_text)
+        selected = parse_approval(message_text, tuple(posts))
         if selected is None:
             send_message("Danke! Bitte antworte mit 1,3, alle, ✅, nein oder ❌; für Recherche: deal: <Produkt>.")
         elif not selected:
