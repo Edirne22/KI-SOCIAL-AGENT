@@ -58,8 +58,8 @@ def load_session() -> tuple[int, dict[int, dict[str, str]]]:
             "full_text": full_text,
         }
 
-    if len(posts) != 3:
-        raise RuntimeError("Telegram-Sitzung enthält nicht drei lesbare Beiträge.")
+    if not posts or len(posts) > 3:
+        raise RuntimeError("Telegram-Sitzung enthält keine gültigen lesbaren Beiträge.")
     return int(timestamp_match.group(1)), posts
 
 
@@ -68,12 +68,13 @@ def _field(text: str, name: str) -> str:
     return match.group(1).strip() if match else "–"
 
 
-def parse_approval(text: str) -> list[int] | None:
+def parse_approval(text: str, available: list[int] | tuple[int, ...] | None = None) -> list[int] | None:
+    allowed = sorted(set(available)) if available is not None else [1, 2, 3]
     normalized = text.strip().lower()
     if normalized.startswith("/"):
         normalized = normalized[1:]
     if normalized in {"alle", "✅"}:
-        return [1, 2, 3]
+        return allowed
     if normalized in {"nein", "❌"}:
         return []
 
