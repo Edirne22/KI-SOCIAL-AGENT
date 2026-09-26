@@ -35,3 +35,39 @@ finally:
 # Media source names are discovery labels, never championship values.
 assert 'MotoEtkinlikcom' not in {ctx.get('series') for ctx in scout.RIDER_SOURCES.values()}
 print('TEST – Turkish Social 429 Fallback: PASS')
+
+
+# Open Turkish web lane: .tr/.com.tr sources and registry-driven rider resolution.
+web=dict(scout.TURKISH_WEB_SOURCES)
+assert web['TMF'].endswith('.org.tr/Haberler/')
+assert 'aa.com.tr' in web['AnadoluAjansi']
+class WebResp:
+ def __init__(self,text): self.text=text
+ def raise_for_status(self): pass
+old_get=scout.requests.get
+try:
+ scout.requests.get=lambda url,**k: WebResp('<a href="/Haberler/Can-oncu-Guncel/">Can Öncü Dünya Supersport Şampiyonası güncel yarış haberi</a>')
+ rows=scout.turkish_web_scout(20)
+ assert any(r[2]=='Can Öncü' for r in rows),rows
+ assert all(r[3] not in ('TMF','AnadoluAjansi') for r in rows),rows
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Open Web Scout: PASS')
+
+# AA uses /tr/spor/<slug>/<numeric-id>, not TMF's /Haberler/ route.
+old_get=scout.requests.get
+try:
+ def aa_page(url,**kwargs):
+  if 'aa.com.tr' not in url:return WebResp('')
+  return WebResp('''
+   <a href="/tr/spor/can-oncu-yarisa-hazir/1234567">Can Öncü Dünya Supersport yarışına hazır</a>
+   <a href="/tr/spor">Can Öncü spor haberleri kategorisi</a>
+   <a href="https://example.org/tr/spor/can-oncu/1234567">Can Öncü Dünya Supersport yarışına hazır</a>
+  ''')
+ scout.requests.get=aa_page
+ rows=scout.turkish_web_scout(20)
+ assert len(rows)==1,rows
+ assert rows[0][1]=='https://www.aa.com.tr/tr/spor/can-oncu-yarisa-hazir/1234567',rows
+ assert rows[0][2:] == ('Can Öncü','WorldSSP'),rows
+finally:
+ scout.requests.get=old_get
