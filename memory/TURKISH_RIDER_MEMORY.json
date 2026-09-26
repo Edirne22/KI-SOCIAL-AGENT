@@ -13,7 +13,7 @@
   "riders": {
     "Can Öncü": {
       "first_seen": "2026-09-26T18:12:58.658284+00:00",
-      "last_seen": "2026-09-26T21:29:52.179064+00:00",
+      "last_seen": "2026-09-26T22:07:26.134134+00:00",
       "last_seen_url": "https://www.worldsbk.com/en/news/2026/09/05/instant-classic-oncu-pips-garcia-in-epic-worldssp-race-1-arenas-crashes-out/1088573",
       "official_sources": [
         "https://www.worldsbk.com/en/riders/can-oncu/8482",
@@ -24,7 +24,7 @@
     },
     "Toprak Razgatlıoğlu": {
       "first_seen": "2026-09-26T18:12:58.559226+00:00",
-      "last_seen": "2026-09-26T21:29:52.075973+00:00",
+      "last_seen": "2026-09-26T22:07:26.045405+00:00",
       "last_seen_url": "https://www.motogp.com/en/news/2026/08/27/guevara-joins-prima-pramac-yamaha-motogp-for-2027/1087094",
       "official_sources": [
         "https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e",
@@ -34,6 +34,6 @@
       "status": "verified"
     }
   },
-  "updated_at": "2026-09-26T21:29:52.179113+00:00",
+  "updated_at": "2026-09-26T22:07:26.134162+00:00",
   "version": 1
 }
