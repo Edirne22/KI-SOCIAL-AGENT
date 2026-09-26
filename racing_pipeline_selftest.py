@@ -58,8 +58,8 @@ def test_moto4_and_turkish_rider_flagging():
  ok(trs.rider_for(typo)=='Bahattin Sofuoğlu','scout must recognize source spelling Sofouglu as Bahattin Sofuoğlu')
  ok(trs.rider_for('Zayn Sofuoğlu test day')=='Zayn Sofuoğlu','surname fallback must not steal explicit Zayn identity')
  turk={'title':typo,'summary':'The Turkish rider joins QJMOTOR in WorldSSP','series':'WorldSSP'}
- ok(a.detect_turkish_rider(turk)=='Bahattin Sofuoglu','agency must recognize Sofouglu alias')
- ok(a.is_turkish_focus(turk) and turk.get('turkish_rider')=='Bahattin Sofuoglu','selected Turkish Rider story must set persistent turkish_rider flag')
+ ok(a.detect_turkish_rider(turk)=='Bahattin Sofuoğlu','agency must recognize Sofouglu alias')
+ ok(a.is_turkish_focus(turk) and turk.get('turkish_rider')=='Bahattin Sofuoğlu','selected Turkish Rider story must set persistent turkish_rider flag')
 
 def test_rounds_and_hashtag_fact_contract():
  item={'title':'PREVIEW: All three WorldSSP titles on the line at Cremona','summary':'With three rounds left to ride, Cremona will be make or break','series':'WorldSSP'}
@@ -74,8 +74,8 @@ def test_rounds_and_hashtag_fact_contract():
  ok('#JorgeMartin' in tags or '#MarcMarquez' in tags,'hashtags should use riders actually present in caption/title/summary')
  ok(a.riders_in('Marc Marquez attacks')==['Marc Marquez'],'shared Marquez surname must not invent Alex Marquez')
  ok(a.riders_in('Alex Lowes attacks')==['Alex Lowes'],'shared Lowes surname must not invent Sam Lowes')
- ok(a.riders_in('Can Oncu wins')==['Can Oncu'],'shared Oncu surname must not invent Deniz Oncu')
- ok(a.riders_in('Bahattin Sofuoglu joins')==['Bahattin Sofuoglu'],'shared Sofuoglu surname must not invent Zayn Sofuoglu')
+ ok(a.riders_in('Can Oncu wins')==['Can Öncü'],'shared Oncu surname must resolve only canonical Can Öncü')
+ ok(a.riders_in('Bahattin Sofuoglu joins')==['Bahattin Sofuoğlu'],'shared Sofuoglu surname must resolve only canonical Bahattin Sofuoğlu')
  retry_item={'title':'Marc Marquez race update','summary':'Marc Marquez update','series':'MotoGP','caption':'ALT Alex Marquez'}
  old_generate=a.generate;old_choose=a.choose_structure_variant
  try:

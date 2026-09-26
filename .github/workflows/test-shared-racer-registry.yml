@@ -1,0 +1,24 @@
+name: TEST – Shared Racer Registry
+on:
+  pull_request:
+    paths:
+      - 'turkish_rider_names.py'
+      - 'motogp_content_agency_v2.py'
+      - 'turkish_riders_scout.py'
+      - 'turkish_editor_qm.py'
+      - 'tests/test_shared_racer_registry.py'
+      - '.github/workflows/test-shared-racer-registry.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests Pillow beautifulsoup4
+      - name: Syntax and registry regression
+        run: |
+          python -m py_compile turkish_rider_names.py motogp_content_agency_v2.py turkish_riders_scout.py turkish_editor_qm.py tests/test_shared_racer_registry.py
+          PYTHONPATH=. python tests/test_shared_racer_registry.py
