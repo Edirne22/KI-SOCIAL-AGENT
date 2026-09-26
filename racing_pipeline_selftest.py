@@ -58,8 +58,8 @@ def test_moto4_and_turkish_rider_flagging():
  ok(trs.rider_for(typo)=='Bahattin Sofuoğlu','scout must recognize source spelling Sofouglu as Bahattin Sofuoğlu')
  ok(trs.rider_for('Zayn Sofuoğlu test day')=='Zayn Sofuoğlu','surname fallback must not steal explicit Zayn identity')
  turk={'title':typo,'summary':'The Turkish rider joins QJMOTOR in WorldSSP','series':'WorldSSP'}
- ok(a.detect_turkish_rider(turk)=='Bahattin Sofuoglu','agency must recognize Sofouglu alias')
- ok(a.is_turkish_focus(turk) and turk.get('turkish_rider')=='Bahattin Sofuoglu','selected Turkish Rider story must set persistent turkish_rider flag')
+ ok(a.detect_turkish_rider(turk)=='Bahattin Sofuoğlu','agency must recognize Sofouglu alias')
+ ok(a.is_turkish_focus(turk) and turk.get('turkish_rider')=='Bahattin Sofuoğlu','selected Turkish Rider story must set persistent turkish_rider flag')
 
 def test_rounds_and_hashtag_fact_contract():
  item={'title':'PREVIEW: All three WorldSSP titles on the line at Cremona','summary':'With three rounds left to ride, Cremona will be make or break','series':'WorldSSP'}
