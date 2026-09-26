@@ -1,6 +1,7 @@
 """Regression: priority repair lane + independent Turkish-five preview."""
 import motogp_content_agency_v2 as a
 import turkish_riders_scout as trs
+import motogp_telegram_receive_v85 as recv
 
 def test_priority_marking_and_order():
  normal={'title':'Routine race report','summary':'race','url':'https://example.test/n','series':'MotoGP','source_series':'MotoGP','caption':'normal'}
@@ -58,6 +59,24 @@ def test_turkish_preview_is_separate_and_limited():
  finally:
   a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster
 
+def test_turkish_ten_day_window_and_selection_parser():
+ sent=[];old_send=a.send_message;old_photo=a.send_photo;old_og=a.extract_og_image_url;old_roster=a.roster_names;old_sender=a._send_turkish_source_photo
+ try:
+  a.send_message=lambda m:sent.append(m);a.send_photo=lambda *args,**kwargs:None;a.extract_og_image_url=lambda u:'';a.roster_names=lambda:[];a._send_turkish_source_photo=lambda og,caption:False
+  rows=[]
+  for i,day in enumerate((26,25,24,22,17,16)):
+   rows.append({'title':f'Can Oncu WorldSSP race news {i}','summary':'Can Oncu WorldSSP race','url':f'https://example.test/oncu{i}','published_at':f'2026-09-{day:02d}T10:00:00+00:00','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Oncu'})
+  from datetime import datetime,timezone
+  out=a.turkish_five_preview(rows,datetime(2026,9,26,12,0,tzinfo=timezone.utc),10)
+  assert len(out)==5
+  assert any('5 von 5' in m for m in sent)
+  assert recv.turkish_selection('turkish 1, 3,5')==[1,3,5]
+  assert recv.turkish_selection('turkish alle')==[1,2,3,4,5]
+  assert recv.turkish_selection('turkish nein')==[]
+  assert recv.turkish_selection('motogp 1') is None
+ finally:
+  a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster;a._send_turkish_source_photo=old_sender
+
 if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited()
+ test_priority_marking_and_order();test_top20_priority();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
