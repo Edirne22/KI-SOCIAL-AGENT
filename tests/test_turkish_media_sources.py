@@ -18,3 +18,20 @@ for rider in ('Toprak Razgatlıoğlu','Can Öncü','Deniz Öncü','Bahattin Sofu
  ctx=scout.RIDER_SOURCES[rider]
  assert ctx.get('rider_group')=='KNN54 Riders',rider
  assert ctx.get('mentor_manager')=='Kenan Sofuoğlu',rider
+
+
+# Regression: social indexed posts accept /p/ and /reel/ and never use media label as series.
+class Resp:
+ def __init__(self,text): self.text=text
+ def raise_for_status(self): pass
+old_get=scout.requests.get
+try:
+ scout.requests.get=lambda *a,**k: Resp('<a href="https://www.instagram.com/motoetkinlikcom/p/ABC123/">Toprak Razgatlioglu MotoGP yeni haber</a><a href="https://www.instagram.com/turkiyesbk/reel/XYZ789/">Can Oncu WorldSSP yarisi</a>')
+ rows=scout._search_fallback('MotoEtkinlikcom','https://www.instagram.com/motoetkinlikcom/',20)
+ assert any('/p/' in r[1] and r[3]=='Toprak Razgatlıoğlu' for r in rows),rows
+finally:
+ scout.requests.get=old_get
+
+# Media source names are discovery labels, never championship values.
+assert 'MotoEtkinlikcom' not in {ctx.get('series') for ctx in scout.RIDER_SOURCES.values()}
+print('TEST – Turkish Social 429 Fallback: PASS')
