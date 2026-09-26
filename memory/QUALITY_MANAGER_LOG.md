@@ -1608,3 +1608,27 @@ Story-Key: motogp:1092435
 Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
 Human-Writing-Protocol: V1.0
 
+## 2026-09-26 21:37 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 21:37 UTC | Motorcycle Racing | FAIL
+Titel: “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories”
+Story-Key: motogp:1092435
+Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 21:39 UTC | Motorcycle Racing | FAIL
+Titel: “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories”
+Story-Key: motogp:1092435
+Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 21:39 UTC | Motorcycle Racing | FAIL
+Titel: “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories”
+Story-Key: motogp:1092435
+Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+

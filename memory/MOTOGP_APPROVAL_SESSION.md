@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790448447
+Session-Timestamp: 1790458257
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,10 +15,10 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 4.8
+Artikelalter-Tage: 4.9
 Kategorie: MotoGP
 Serie: MotoGP
 Story-Key: motogp:1091638
@@ -28,9 +28,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-1-m
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Valencia steht als Saisonfinale 2027 fest – wie seht ihr das?
+Valencia steht als Saisonfinale 2027 fest. Der komplette MotoGP-Kalender dafür kommt Freitag raus.
 
-Die MotoGP hat bestätigt, dass der Große Preis von Valencia 2027 die letzte Rennveranstaltung der Saison wird 🏁 Der komplette Kalender für die kommende Saison folgt erst am Freitag – dann wissen wir, welche Rennwochenenden noch auf dem Programm stehen.
+Wie seht ihr Valencia als Saisonfinale?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -46,18 +46,18 @@ Herkunft: Community-Fallback
 Artikelalter-Tage: 0.0
 Kategorie: Community
 Serie: Community
-Story-Key: title:community-spotlight-knieschleifer-ruhrpott
-Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
-Quelle: https://www.instagram.com/ks_ruhrpott/
+Story-Key: title:community-spotlight-knieschleifer-aus-berzeugung
+Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
+Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung/
 Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Heute im Community-Spotlight: Knieschleifer Ruhrpott. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
+Heute im Community-Spotlight: Knieschleifer aus Überzeugung. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
 Was macht für euch eine gute Motorrad-Community aus?
 
-#KsRuhrpott #Motorradfahren #BikerCommunity #BuelentsBikeLife
+#KnieschleiferAusUeberzeugung #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -71,18 +71,18 @@ Herkunft: Community-Fallback
 Artikelalter-Tage: 0.0
 Kategorie: Community
 Serie: Community
-Story-Key: title:community-spotlight-bike-society-bergisches-land
-Titel: 🏍️ Community-Spotlight: Bike Society Bergisches Land
-Quelle: https://www.instagram.com/bike_society_bergisches_land/
+Story-Key: title:community-spotlight-bike-society-united
+Titel: 🏍️ Community-Spotlight: Bike Society United
+Quelle: https://www.instagram.com/bike_society.united/
 Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Heute im Community-Spotlight: Bike Society Bergisches Land. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
+Heute im Community-Spotlight: Bike Society United. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
 Was macht für euch eine gute Motorrad-Community aus?
 
-#BikeSocietyBergischesLand #Motorradfahren #BikerCommunity #BuelentsBikeLife
+#BikeSocietyUnited #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
