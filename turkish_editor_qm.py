@@ -103,6 +103,7 @@ def qualify(x,agency,max_attempts=3):
             print("TURKISH SEMANTIC-QM HARD REJECT:","; ".join(hard)[:1000])
             return False
         if not sem.get("language_ok",True):
+            repair=repair or ["Semantic-QM meldete language_ok=False ohne Begruendung"]
             reasons=["Sprach-QM: "+e for e in repair]
             print(f"TURKISH LANGUAGE-QM BLOCK attempt={attempt}:","; ".join(repair)[:1000])
             if attempt<max_attempts:continue
