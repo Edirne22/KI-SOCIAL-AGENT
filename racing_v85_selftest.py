@@ -20,8 +20,9 @@ def main():
         with tempfile.TemporaryDirectory() as td:
             rc.STATE=Path(td)/'state.json';os.environ['GITHUB_EVENT_NAME']='workflow_dispatch';os.environ['GITHUB_RUN_ID']='100';os.environ.pop('INPUT_FORCE_NEW_RUN',None);os.environ.pop('GITHUB_EVENT_PATH',None)
             ok,bid,_=rc.begin(datetime(2026,9,16,4,0,tzinfo=timezone.utc));check(ok and bid.endswith('-100'),'first manual run rejected');rc.transition(bid,'BLOCKED')
-            os.environ['GITHUB_RUN_ID']='101';ok2,_,reason=rc.begin(datetime(2026,9,16,4,1,tzinfo=timezone.utc));check(not ok2 and 'duplicate window' in reason,'immediate duplicate run was not suppressed')
-            os.environ['INPUT_FORCE_NEW_RUN']='true';ok3,bid3,_=rc.begin(datetime(2026,9,16,4,2,tzinfo=timezone.utc));check(ok3 and bid3.endswith('-101'),'explicit force did not bypass duplicate window');rc.transition(bid3,'READY_FOR_APPROVAL');check(rc.get_run(bid3)['status']=='READY_FOR_APPROVAL','state transition lost')
+            os.environ['GITHUB_RUN_ID']='101';ok2,bid2,_=rc.begin(datetime(2026,9,16,4,1,tzinfo=timezone.utc));check(ok2 and bid2.endswith('-101'),'intentional manual rerun was suppressed')
+            ok_duplicate,_,reason=rc.begin(datetime(2026,9,16,4,1,tzinfo=timezone.utc));check(not ok_duplicate and reason=='duplicate batch','identical manual batch was not suppressed')
+            os.environ['INPUT_FORCE_NEW_RUN']='true';ok3,bid3,_=rc.begin(datetime(2026,9,16,4,2,tzinfo=timezone.utc));check(ok3 and bid3.endswith('-101'),'explicit force did not bypass identical-batch protection');rc.transition(bid3,'READY_FOR_APPROVAL');check(rc.get_run(bid3)['status']=='READY_FOR_APPROVAL','state transition lost')
             # Regression: checked workflow_dispatch checkbox must survive even if
             # the workflow env mapping accidentally resolves to "false".
             event_file=Path(td)/'event.json';event_file.write_text('{"inputs":{"force_new_run":"true"}}',encoding='utf-8')
