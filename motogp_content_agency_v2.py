@@ -259,7 +259,7 @@ def yesterday_raw(now,current_urls):
  rows=load_pool().get('days',{}).get((now.date()-timedelta(days=1)).isoformat(),[]);pub=published_keys();out=[]
  for r in rows:
   if r.get('url') in current_urls or r.get('story_key') in pub:continue
-  x=enrich_turkish(dict(r));lock_source_series(x,r.get('source_series') or r.get('series'));x['fallback_yesterday']=True
+  x=enrich_turkish(dict(r));lock_source_series(x,r.get('source_series') or r.get('series'));x['fallback_yesterday']=True;mark_priority(x,'TOP20')
   if current_news(x,now,7) and racing_relevant(x):out.append(x)
  return out
 def ordered_pool(qualified,names):
@@ -340,6 +340,23 @@ def turkish_status(items,qualified=None):
  if any(is_turkish_focus(x) for x in items):return 'selected'
  if qualified is not None and any(is_turkish_focus(x) for x in qualified):return 'qualified_not_selected'
  return 'none_qualified'
+def turkish_five_preview(details,now):
+  candidates=[]
+  seen=set()
+  for x in sorted((y for y in details if is_turkish_focus(y) and freshness_reason(y,now)=='fresh' and not is_feature(y)),key=lambda y:editorial_score(y,roster_names()),reverse=True):
+   key=story_key(x.get('title',''),x.get('url',''))
+   if key in seen:continue
+   seen.add(key);candidates.append(x)
+   if len(candidates)>=5:break
+  msg=['🇹🇷 TURKISH RIDER – 5 AKTUELLE ZUSATZVORSCHLÄGE','Unabhängig von den 5 Racing-Top-News. Scout-Vorschläge – NICHT automatisch freigegeben und kein behaupteter QM-PASS.','']
+  if not candidates:msg+=['Heute wurden keine aktuellen Turkish-Rider-Quellen <=7 Tage gefunden.']
+  for i,x in enumerate(candidates,1):
+   msg += [f'T{i}️⃣ {x.get("turkish_rider") or "Turkish Rider"} | {x.get("title","")}',f'🔗 Quelle: {x.get("url","")}','']
+  msg += ['Diese T1–T5 bleiben Vorschläge. Vor Veröffentlichung müssen sie durch Priority-Repair + Fakten-QM.']
+  send_message('\n'.join(msg)[:4000])
+  print(f'TURKISH-5 PREVIEW sent={len(candidates)}')
+  return candidates
+
 def telegram_preview(items,turk,qualified=None):
  status=turkish_status(items,qualified)
  count=len(items)
@@ -364,7 +381,7 @@ def run_v8():
  details=[]
  for t,u in raw[:320]:
   x=article_info(t,u);m=meta.get(u,{});x.update(m);lock_source_series(x,m.get('source_series'));details.append(enrich_turkish(x))
- now=dt.now(timezone.utc);diag,_=freshness_diagnostics(details,now);fresh=[x for x in details if freshness_reason(x,now)=='fresh'];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
+ now=dt.now(timezone.utc);diag,_=freshness_diagnostics(details,now);fresh=[mark_priority(x) for x in details if freshness_reason(x,now)=='fresh'];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
  current_q=qualify_parallel(fresh[:60],3);fallback_raw=yesterday_raw(now,{x.get('url') for x in current_q});fallback_q=qualify_parallel(fallback_raw[:20],3) if len(current_q)<15 else [];qualified=current_q+[x for x in fallback_q if x.get('url') not in {y.get('url') for y in current_q}];qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);save_top10(qualified,now);picks=select_and_finish(qualified,names);turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in VALID_SERIES}
  OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency {VERSION}\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nFreshness missing-date: {diag.get("missing-date",0)}\nFreshness >7 Tage: {diag.get("older-than-7d",0)}\nFreshness Promo/irrelevant: {diag.get("not-racing-or-promo",0)}\nAktuell voll Copy-QM qualifiziert: {len(current_q)}\nVortag voll Copy-QM qualifiziert: {len(fallback_q)}\nGesamtpool nach Racing+Semantic-QM: {len(qualified)}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nFakten-QM: NULL-TOLERANZ + Rueckgabeschleife\nHuman Writing Protocol: VERBINDLICH\nBuelents Bike Life Voice: VERBINDLICH\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
  if len(picks)<3:
@@ -376,6 +393,6 @@ def run_v8():
  turk=any(is_turkish_focus(x) for x in picks)
  if len(picks)<3:
   invalidate_session(now,f'nur {len(picks)} finalisierte Racing-Pakete',len(picks));print(f'{VERSION}: BLOCKED final={len(picks)}');return
- write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk,qualified)
+ write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk,qualified);turkish_five_preview(details,now)
  print(f'{VERSION}: raw={len(details)}, fresh={len(fresh)}, current_q={len(current_q)}, fallback_q={len(fallback_q)}, final={len(picks)}, mix={mix}, Turkish={turk}')
 if __name__=='__main__':run_v8()
