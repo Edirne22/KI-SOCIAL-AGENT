@@ -5,6 +5,7 @@ on:
       - "motogp_content_agency_v2.py"
       - "racing_v855_hardening.py"
       - "motogp_telegram_receive_v85.py"
+      - "turkish_editor_qm.py"
       - "telegram_router.py"
       - "tests/test_racing_priority_turkish_five.py"
       - ".github/workflows/test-racing-priority-turkish-five.yml"
@@ -22,7 +23,7 @@ jobs:
       - run: pip install requests Pillow beautifulsoup4
       - name: Syntax, imports and targeted regressions
         run: |
-          python -m py_compile motogp_content_agency_v2.py racing_v855_hardening.py motogp_telegram_receive_v85.py telegram_router.py tests/test_racing_priority_turkish_five.py
+          python -m py_compile motogp_content_agency_v2.py racing_v855_hardening.py motogp_telegram_receive_v85.py turkish_editor_qm.py telegram_router.py tests/test_racing_priority_turkish_five.py
           PYTHONPATH=. python tests/test_racing_priority_turkish_five.py
           python racing_v85_selftest.py
           python racing_final_guard_selftest.py
