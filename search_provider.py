@@ -53,11 +53,18 @@ def _apify_charge_limit() -> float:
     return min(max(configured, 0.001), APIFY_DEAL_MAX_CHARGE_USD)
 
 
-def _price_from_snippet(value: str) -> float | None:
+def _price_from_snippet(value: str, query: str = "") -> float | None:
+    """Extrahiert bei Mobilfunktarifen nur eindeutig monatliche Grundpreise."""
+    tariff_query = bool(re.search(r"\\b(?:handyvertrag|mobilfunk|tarif|vertrag)\\b", query, re.IGNORECASE))
     prices = []
-    for match in re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*(?:€|EUR)", value, re.IGNORECASE):
+    for match in re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\\s*(?:€|EUR)", value, re.IGNORECASE):
+        if tariff_query:
+            context = value[max(0, match.start() - 45):min(len(value), match.end() + 55)].lower()
+            monthly = re.search(r"(?:monat|mtl\\.?|pro\\s+monat|/\\s*monat|monatlich)", context)
+            one_time = re.search(r"(?:einmalig|zuzahlung|anschluss(?:preis|gebühr)?|gerät(?:epreis)?|hardware)", context)
+            if not monthly or one_time:
+                continue
         raw = match.group(1)
-        # Deutsche und internationale Schreibweisen: 299,99 / 299.99 / 1.299,99.
         if "," in raw and "." in raw:
             normalized = raw.replace(".", "").replace(",", ".") if raw.rfind(",") > raw.rfind(".") else raw.replace(",", "")
         else:
@@ -67,7 +74,6 @@ def _price_from_snippet(value: str) -> float | None:
         except ValueError:
             continue
     return min(prices) if prices else None
-
 
 def _offer_matches_query(item: dict, price: float, query: str) -> bool:
     """Akzeptiert nur Treffer, die erkennbar zum gesuchten Produkt passen."""
@@ -177,7 +183,7 @@ def _search_apify(query: str, token: str, num_results: int) -> dict:
 
     offers = []
     for item in results:
-        price = _price_from_snippet(f"{item['title']} {item['snippet']}")
+        price = _price_from_snippet(f"{item['title']} {item['snippet']}", query)
         if price is not None and _offer_matches_query(item, price, query):
             domain = urlparse(item["url"]).netloc.removeprefix("www.")
             offers.append((price, domain or "unbekannter Händler", item["url"]))
