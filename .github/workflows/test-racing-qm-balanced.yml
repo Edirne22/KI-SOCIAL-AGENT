@@ -21,7 +21,7 @@ jobs:
       - name: Syntax imports and balanced Racing QM regression
         run: |
           python -m py_compile racing_semantic_qm.py racing_v855_hardening.py tests/test_racing_qm_balanced.py
-          python tests/test_racing_qm_balanced.py
+          PYTHONPATH=. python tests/test_racing_qm_balanced.py
           python racing_final_guard_selftest.py
           python tests/test_source_fact_contract_v1.py
           python racing_pipeline_selftest.py
