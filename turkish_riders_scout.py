@@ -11,7 +11,8 @@ SOURCES=[
  ('MotoGP','https://www.motogp.com/en/news'),
  ('WorldSSP','https://www.worldsbk.com/en/news/ssp'),
  ('WorldSBK','https://www.worldsbk.com/en/news')]
-WATCHLIST=CANONICAL_ALIASES\nRIDER_SOURCES=RIDER_CONTEXT
+WATCHLIST=CANONICAL_ALIASES
+RIDER_SOURCES=RIDER_CONTEXT
 FALLBACK=[
  ('Toprak Razgatlıoğlu','Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign','https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e','MotoGP'),
  ('Can Öncü','Can Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13','https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992','WorldSSP'),
