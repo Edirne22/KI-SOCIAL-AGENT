@@ -12,8 +12,8 @@ from datetime import timedelta,datetime as dt,timezone
 from concurrent.futures import ThreadPoolExecutor,as_completed
 from collections import Counter
 from racing_language_rules import text as racing_language_lexicon, version as racing_lexicon_version, prompt_contract as racing_lexicon_contract, deterministic_errors as racing_lexicon_errors
-import json,re,time,random
-VERSION='V8.5.4';TOP10=Path('memory/RACING_TOP10_POOL.json')
+import json,re,time,random,tempfile,requests
+VERSION='V8.5.4';TOP10=Path('memory/RACING_TOP10_POOL.json');TURKISH_SESSION=Path('memory/TURKISH_RIDER_APPROVAL.json')
 VALID_SERIES=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
 TURKISH_ALIASES={'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu'),'Can Oncu':('can oncu','can öncü'),'Deniz Oncu':('deniz oncu','deniz öncü'),'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu','bahattin sofouglu'),'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu')}
 RIDERS_V2=list(TURKISH_ALIASES)+['Marc Marquez','Alex Marquez','Marco Bezzecchi','Jorge Martin','Pedro Acosta','Francesco Bagnaia','Fabio Quartararo','Jack Miller','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado','Alvaro Bautista','Miguel Oliveira','Alberto Surra','Sergio Garcia','Iker Lecuona','Andrea Iannone','Sam Lowes','Alex Lowes','Jonathan Rea','Stefano Manzi','Jeremy Alcoba','Marcos Ramirez']
@@ -358,27 +358,53 @@ def turkish_status(items,qualified=None):
  if any(is_turkish_focus(x) for x in items):return 'selected'
  if qualified is not None and any(is_turkish_focus(x) for x in qualified):return 'qualified_not_selected'
  return 'none_qualified'
-def turkish_five_preview(details,now):
-  candidates=[]
-  seen=set()
-  for x in sorted((y for y in details if is_turkish_focus(y) and freshness_reason(y,now)=='fresh' and not is_feature(y)),key=lambda y:editorial_score(y,roster_names()),reverse=True):
+def _send_turkish_source_photo(og,caption):
+  if not og:return False
+  path=None
+  try:
+   r=requests.get(og,headers={'User-Agent':'Mozilla/5.0 KI-SOCIAL-AGENT'},timeout=20);r.raise_for_status()
+   suffix='.jpg'
+   ct=(r.headers.get('content-type') or '').lower()
+   if 'png' in ct:suffix='.png'
+   elif 'webp' in ct:suffix='.webp'
+   with tempfile.NamedTemporaryFile(prefix='turkish-rider-',suffix=suffix,delete=False) as tmp:
+    tmp.write(r.content);path=Path(tmp.name)
+   send_photo(path,caption=caption);return True
+  except Exception as e:
+   print('TURKISH-5 PREVIEW DOWNLOAD FAIL:',type(e).__name__,str(e)[:160])
+   # Telegram can fetch a public image URL itself. Keep this as a real delivery
+   # fallback when the runner cannot resolve or download the source image.
+   try:send_photo(og,caption=caption);return True
+   except Exception as fallback:
+    print('TURKISH-5 PREVIEW PHOTO FAIL:',type(fallback).__name__,str(fallback)[:160]);return False
+  finally:
+   if path:
+    try:path.unlink(missing_ok=True)
+    except Exception:pass
+
+def turkish_five_preview(details,now,max_days=10):
+  candidates=[];seen=set()
+  eligible=(y for y in details if is_turkish_focus(y) and current_news(y,now,max_days) and racing_relevant(y) and not is_feature(y))
+  for x in sorted(eligible,key=lambda y:editorial_score(y,roster_names()),reverse=True):
    key=story_key(x.get('title',''),x.get('url',''))
    if key in seen:continue
    seen.add(key);candidates.append(x)
    if len(candidates)>=5:break
-  msg=['🇹🇷 TURKISH RIDER – 5 AKTUELLE ZUSATZVORSCHLÄGE','Unabhängig von den 5 Racing-Top-News. Scout-Vorschläge – NICHT automatisch freigegeben und kein behaupteter QM-PASS.','']
-  if not candidates:msg+=['Heute wurden keine aktuellen Turkish-Rider-Quellen <=7 Tage gefunden.']
+  payload={'version':1,'created_at':int(now.timestamp()),'max_days':max_days,'count':len(candidates),'items':[]}
+  for i,x in enumerate(candidates,1):
+   payload['items'].append({'n':i,'title':x.get('title',''),'url':x.get('url',''),'summary':x.get('summary',''),'preview':x.get('preview',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'series':series_for(x),'source_series':x.get('source_series') or series_for(x),'turkish_rider':x.get('turkish_rider') or detect_turkish_rider(x),'kind':x.get('kind','news')})
+  TURKISH_SESSION.parent.mkdir(parents=True,exist_ok=True);TURKISH_SESSION.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche rückwärts bis maximal 10 Tage; bereits früher angebotene Stories dürfen erneut erscheinen.','']
+  if len(candidates)<5:msg.append(f'⚠️ {len(candidates)} von 5 gefunden – Zeitraum bis {max_days} Tage vollständig aus dem aktuellen Scout-Pool geprüft.')
+  else:msg.append('✅ 5 von 5 Kandidaten gefunden.')
   send_message('\n'.join(msg)[:4000])
   for i,x in enumerate(candidates,1):
    title=f'T{i}️⃣ {x.get("turkish_rider") or "Turkish Rider"} | {x.get("title","")}'
    source=x.get('url','');og=extract_og_image_url(source)
-   caption=f'{title}\n🔗 Quelle: {source}\nStatus: Scout-Vorschlag – vor Publish Priority-Repair + Fakten-QM'
-   if og:
-    try:send_photo(og,caption=caption)
-    except Exception as e:print('TURKISH-5 PREVIEW PHOTO FAIL:',type(e).__name__,str(e)[:160]);send_message(caption)
-   else:send_message(caption)
-  send_message('Diese T1–T5 bleiben Vorschläge. Vor Veröffentlichung müssen sie durch Priority-Repair + Fakten-QM. Quellenbild wird beim Publish bevorzugt; Facebook behält die offizielle Link-Vorschau.')
-  print(f'TURKISH-5 PREVIEW sent={len(candidates)}')
+   caption=f'{title}\n🔗 Quelle: {source}\nStatus: Scout-Vorschlag – Auswahl danach Priority-Repair + vollständiges Fakten-QM'
+   if not _send_turkish_source_photo(og,caption):send_message(caption)
+  send_message('Freigabe zur QM-Prüfung: turkish 1–5 / Kombination / turkish alle\nAblehnen: turkish nein')
+  print(f'TURKISH-5 PREVIEW sent={len(candidates)} max_days={max_days}')
   return candidates
 
 def telegram_preview(items,turk,qualified=None):
@@ -393,7 +419,12 @@ def telegram_preview(items,turk,qualified=None):
  msg+=[f'Freigabe: motogp {choices} / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
 def add_turkish_candidate(raw,seen,meta,title,url,rider):
  u=canonical_url(url)
- if u in seen:return False
+ if u in seen:
+  # The normal Racing scout may discover the URL first without resolving a Turkish rider.
+  # Preserve the independent Turkish scout's identity instead of silently dropping it.
+  meta.setdefault(u,{})['turkish_rider']=rider
+  meta[u].setdefault('kind',('profile' if '/riders/' in u else 'news'))
+  return False
  seen.add(u);raw.append((title,u));meta[u]={'turkish_rider':rider,'kind':('profile' if '/riders/' in u else 'news')}
  return True
 def run_v8():

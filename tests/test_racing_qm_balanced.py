@@ -26,6 +26,8 @@ def test_decimal_separator_equivalence():
           "title":"Lecuona beats Bulega by 0.119s in FP1 at Cremona","summary":"Lecuona led Bulega by 0.119s."}
     errs=agency.fact_whitelist_errors(item,"Lecuona liegt 0,119s vor Bulega.\n\n#WorldSBK #BuelentsBikeLife")
     assert not any("Zahl nicht in Quelle" in e for e in errs),errs
+    errs_unitless=agency.fact_whitelist_errors(item,"Lecuona liegt 0.119 vor Bulega.\n\n#WorldSBK #BuelentsBikeLife")
+    assert not any("Zahl nicht in Quelle" in e for e in errs_unitless),errs_unitless
     errs2=agency.fact_whitelist_errors(item,"Lecuona liegt 0,118s vor Bulega.\n\n#WorldSBK #BuelentsBikeLife")
     assert any("Zahl nicht in Quelle" in e for e in errs2),errs2
 
