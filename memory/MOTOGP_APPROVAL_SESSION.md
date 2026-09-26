@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790446455
+Session-Timestamp: 1790448447
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,7 +15,7 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
+Neufassungen: 1
 QM-Ruecklaeufe: 1
 Herkunft: Top-20 vom Vortag
 Artikelalter-Tage: 4.8
@@ -28,9 +28,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-1-m
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Die MotoGP hat bestätigt, dass der Große Preis von Valencia 2027 als Saisonfinale läuft. Den kompletten Kalender gibt's am Freitag.
+Valencia steht als Saisonfinale 2027 fest – wie seht ihr das?
 
-Wie schätzt ihr das Saisonfinale in Valencia ein?
+Die MotoGP hat bestätigt, dass der Große Preis von Valencia 2027 die letzte Rennveranstaltung der Saison wird 🏁 Der komplette Kalender für die kommende Saison folgt erst am Freitag – dann wissen wir, welche Rennwochenenden noch auf dem Programm stehen.
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -38,55 +38,51 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 
 ## Beitrag 2
 QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
-Neufassungen: 4
-QM-Ruecklaeufe: 4
-Herkunft: Aktuell
-Artikelalter-Tage: 0.8
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1095362
-Titel: LECUONA ON TOP: #7 takes victory in Race 1 at Cremona ahead of Bulega, Sam Lowes completes podium
-Quelle: https://www.worldsbk.com/en/news/2026/09/26/lecuona-on-top-7-takes-victory-in-race-1-at-cremona-ahead-of-bulega-sam-lowes-completes-podium/1095362
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-2-lecuona-on-top-7-tak-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/26/e52f1eb0-d142-4194-8af3-254c8712c9b1/WSBK-RACE1-REPORT-v1.jpg
+Community-Human-QM: PASS
+Semantic-Fakten-QM: N/A – Community-Fallback
+Neufassungen: 0
+QM-Ruecklaeufe: 0
+Herkunft: Community-Fallback
+Artikelalter-Tage: 0.0
+Kategorie: Community
+Serie: Community
+Story-Key: title:community-spotlight-knieschleifer-ruhrpott
+Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
+Quelle: https://www.instagram.com/ks_ruhrpott/
+Instagram-Bild: 
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Lecuona holt mit der Startnummer 7 am Samstag den Sieg im ersten WorldSBK-Rennen in Cremona.
+Heute im Community-Spotlight: Knieschleifer Ruhrpott. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
-Bulega sichert sich Rang zwei vor Sam Lowes, der das Podium komplettiert.
+Was macht für euch eine gute Motorrad-Community aus?
 
-Surra stürzte aus den Podesträngen.
-
-Haut eure Meinung zu Lauf 1 in die Kommentare.
-
-#WorldSBK #SamLowes #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#KsRuhrpott #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 3
 QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
+Community-Human-QM: PASS
+Semantic-Fakten-QM: N/A – Community-Fallback
 Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 0.8
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1095403
-Titel: “We will be there to fight” – Lecuona plans to fight to the end on Sunday at Cremona
-Quelle: https://www.worldsbk.com/en/news/2026/09/26/we-will-be-there-to-fight-lecuona-plans-to-fight-to-the-end-on-sunday-at-cremona/1095403
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-3-we-will-be-there-to-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/26/92a14d83-165b-48f0-8161-b36ed07b39f8/LG9_1021.jpg
+Herkunft: Community-Fallback
+Artikelalter-Tage: 0.0
+Kategorie: Community
+Serie: Community
+Story-Key: title:community-spotlight-bike-society-bergisches-land
+Titel: 🏍️ Community-Spotlight: Bike Society Bergisches Land
+Quelle: https://www.instagram.com/bike_society_bergisches_land/
+Instagram-Bild: 
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Lecuona hat Samstag seinen zweiten Sieg in der WorldSBK gefeiert und will am Sonntag in Cremona weiterkämpfen. Für ihn ist erst Schluss, wenn alle Karten auf dem Tisch liegen – und da liegen noch ein Rennen mehr aus.
+Heute im Community-Spotlight: Bike Society Bergisches Land. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
-Was erwartet ihr von Lecuona im abschließenden Lauf?
+Was macht für euch eine gute Motorrad-Community aus?
 
-#WorldSBK #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#BikeSocietyBergischesLand #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
