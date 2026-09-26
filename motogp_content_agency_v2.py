@@ -5,6 +5,7 @@ from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
 from racing_semantic_qm import review_detailed as semantic_review_detailed
 from turkish_riders_scout import scout as turkish_scout, racing_scout, rider_centered_scout, discovery_scout
+from turkish_rider_names import CANONICAL_ALIASES as SHARED_TURKISH_ALIASES, canonical_rider as registry_canonical_rider, context_for as registry_context_for
 from instagram_publish import extract_og_image_url
 from llm_client import generate,global_professional_context
 from pathlib import Path
@@ -15,7 +16,7 @@ from racing_language_rules import text as racing_language_lexicon, version as ra
 import json,re,time,random,tempfile,requests
 VERSION='V8.5.4';TOP10=Path('memory/RACING_TOP10_POOL.json');TURKISH_SESSION=Path('memory/TURKISH_RIDER_APPROVAL.json')
 VALID_SERIES=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
-TURKISH_ALIASES={'Toprak Razgatlioglu':('toprak razgatlioglu','toprak razgatlıoğlu'),'Can Oncu':('can oncu','can öncü'),'Deniz Oncu':('deniz oncu','deniz öncü'),'Bahattin Sofuoglu':('bahattin sofuoglu','bahattin sofuoğlu','bahattin sofouglu'),'Zayn Sofuoglu':('zayn sofuoglu','zayn sofuoğlu')}
+TURKISH_ALIASES=SHARED_TURKISH_ALIASES
 RIDERS_V2=list(TURKISH_ALIASES)+['Marc Marquez','Alex Marquez','Marco Bezzecchi','Jorge Martin','Pedro Acosta','Francesco Bagnaia','Fabio Quartararo','Jack Miller','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado','Alvaro Bautista','Miguel Oliveira','Alberto Surra','Sergio Garcia','Iker Lecuona','Andrea Iannone','Sam Lowes','Alex Lowes','Jonathan Rea','Stefano Manzi','Jeremy Alcoba','Marcos Ramirez']
 PROMO_WORDS=('fantasy','super boost','mystery boost','videopass','video pass','tickets','ticket','store','merch','merchandise','shop','giveaway','promo code','promotion','behind the scenes','catch up on','vlog')
 RACING_WORDS=('race','racing','grand prix',' gp','practice','fp1','fp2','qualifying','pole','sprint','podium','win','victory','championship','title','rider','team','replace','injury','return','test','lap','grid','motogp','moto2','moto3','worldsbk','worldssp','supersport')
@@ -36,12 +37,13 @@ def riders_in(text):
   if re.search(r'(?<![a-z])'+re.escape(last)+r'(?![a-z])',low) and owners[0] not in full_hits:out.append(owners[0])
  return list(dict.fromkeys(out))
 def detect_turkish_rider(x):
- text=fold(article_text(x))
- # Match the official shortened/misspelt Bahattin headline without treating every
- # surname-only Sofuoglu mention as Bahattin (Zayn shares the surname).
- if re.search(r'(?<![a-z])sofouglu(?![a-z])',text) and any(k in text for k in ('smits','motoxracing','qjmotor','worldssp')):return 'Bahattin Sofuoglu'
- for rider,aliases in TURKISH_ALIASES.items():
-  if any(fold(a) in text for a in aliases):return rider
+ text=article_text(x)
+ canonical=registry_canonical_rider(text)
+ if canonical:return canonical
+ # Official sources sometimes shorten Bahattin Sofuoglu to the misspelt surname
+ # "Sofouglu". Keep this guarded exception because Zayn shares the surname.
+ low=fold(text)
+ if re.search(r'(?<![a-z])sofouglu(?![a-z])',low) and any(k in low for k in ('smits','motoxracing','qjmotor','worldssp')):return 'Bahattin Sofuoğlu'
  return ''
 def enrich_turkish(x):
  r=x.get('turkish_rider') or detect_turkish_rider(x)
