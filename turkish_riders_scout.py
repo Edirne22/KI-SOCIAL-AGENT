@@ -19,6 +19,7 @@ RIDER_SOURCES=RIDER_CONTEXT
 TURKISH_MEDIA_SOURCES=(
  ('MotoEtkinlikcom','https://www.instagram.com/motoetkinlikcom/'),
  ('MotoEtkinlikRacing','https://www.instagram.com/motoetkinlikracing/'),
+ ('TurkiyeSBK','https://www.instagram.com/turkiyesbk/'),
 )
 FALLBACK=[
  ('Toprak Razgatlıoğlu','Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign','https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e','MotoGP'),
