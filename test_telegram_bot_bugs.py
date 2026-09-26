@@ -25,6 +25,9 @@ class TestTelegramBotBugs(unittest.TestCase):
         # telegram_receive parse_approval
         self.assertEqual(trec.parse_approval("/alle"), [1, 2, 3])
         self.assertEqual(trec.parse_approval("/1,3"), [1, 3])
+        self.assertEqual(trec.parse_approval("alle", [1]), [1])
+        self.assertEqual(trec.parse_approval("alle", [1, 2]), [1, 2])
+        self.assertIsNone(trec.parse_approval("1,3", [1]))
 
         # telegram_receive _named_command
         self.assertEqual(trec._named_command("/track: Motorrad", ("track",)), "Motorrad")
