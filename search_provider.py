@@ -55,14 +55,16 @@ def _apify_charge_limit() -> float:
 
 def _price_from_snippet(value: str, query: str = "") -> float | None:
     """Extrahiert bei Mobilfunktarifen nur eindeutig monatliche Grundpreise."""
-    tariff_query = bool(re.search(r"\\b(?:handyvertrag|mobilfunk|tarif|vertrag)\\b", query, re.IGNORECASE))
+    tariff_query = bool(re.search(r"\b(?:handyvertrag|mobilfunk|tarif|vertrag)\b", query, re.IGNORECASE))
     prices = []
     for match in re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\\s*(?:€|EUR)", value, re.IGNORECASE):
         if tariff_query:
             context = value[max(0, match.start() - 45):min(len(value), match.end() + 55)].lower()
-            monthly = re.search(r"(?:monat|mtl\\.?|pro\\s+monat|/\\s*monat|monatlich)", context)
-            one_time = re.search(r"(?:einmalig|zuzahlung|anschluss(?:preis|gebühr)?|gerät(?:epreis)?|hardware)", context)
-            if not monthly or one_time:
+            monthly = re.search(r"(?:monat|mtl\.?|pro\s+monat|/\s*monat|monatlich)", context)
+            if not monthly:
+                continue
+            local = value[max(0, match.start() - 24):min(len(value), match.end() + 24)].lower()
+            if re.search(r"(?:einmalig|zuzahlung|anschluss(?:preis|gebühr)?|gerät(?:epreis)?|hardware)", local) and not re.search(r"(?:monat|mtl\.?|pro\s+monat|/\s*monat|monatlich)", local):
                 continue
         raw = match.group(1)
         if "," in raw and "." in raw:
