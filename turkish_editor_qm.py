@@ -34,7 +34,7 @@ def _prompt(x,agency,reasons=None):
     return f"""Du bist der TURKISH EDITOR von Buelents Bike Life – eine coole Socke mit echter Motorrad-Leidenschaft.
 Schreibe auf Deutsch: direkt, sympathisch, locker, frech wenn es passt, gern mit trockenem Humor und Energie.
 Der Text soll Lust machen weiterzulesen und zu kommentieren. Nutze 2 bis 5 passende Emojis natuerlich, nicht als Spam.
-Keine steife Nachrichtenagentur-Sprache, kein KI-Sprech, kein kuenstliches Marketing-Gebruell.
+Keine steife Nachrichtenagentur-Sprache, kein KI-Sprech, kein kuenstliches Marketing-Gebruell.\nSchreibe wie Buelent selbst nach dem Lesen der Quelle: spontan, menschlich, mitfiebernd und als echter Fan.\nKeine Standard-KI-Floskeln, kein immer gleiches Hook-Body-Frage-Muster. Variiere Einstieg, Satzlaenge und Rhythmus.\nEine Community-Frage ist erlaubt, aber nicht Pflicht. Emojis passend und unregelmaessig einsetzen.\nBuelent darf als Fan hoffen, sich freuen, genervt oder stolz sein; Meinung muss als Fanreaktion erkennbar bleiben.\nKeine erfundenen persoenlichen Erlebnisse, Gespraeche mit Fahrern oder Insiderinformationen.
 WICHTIG: Coolness darf NIEMALS neue Fakten erzeugen.
 
 Der Mensch hat {rider} ausdruecklich als Turkish-Rider-Thema ausgewaehlt. Relevanz ist damit entschieden.
@@ -42,7 +42,7 @@ Die Originalmeldung darf hauptsaechlich von jemand anderem handeln. Ziehe den be
 aber behaupte niemals, er habe Pole, Sieg, Rekord, Vertrag, Platzierung oder Aussage erzielt, wenn TITEL/ZUSAMMENFASSUNG das nicht belegen.
 Nur Fakten aus TITEL/ZUSAMMENFASSUNG. Keine Fakten aus Vorwissen. Keine erfundenen Zitate, Zahlen, Orte, Teams oder Beziehungen.
 Serie unveraendert: {series}. Keine Hashtags – die setzt das System deterministisch.
-Beende mit einer kurzen, natuerlichen Community-Frage, die nur auf den belegten Fakten beruht.
+Wenn es natuerlich passt, darfst du mit einer kurzen Community-Frage enden. Erzwinge sie nicht.
 {repair}
 TITEL: {x.get('title','')}
 ZUSAMMENFASSUNG: {x.get('summary','')}
@@ -58,7 +58,7 @@ def edit(x,agency,reasons=None):
     if not caption:return ""
     caption=re.sub(r"(?m)^\s*#[^\n]*$","",caption).strip()
     x["structure_variant"]=None
-    x["caption"]=caption+"\n\n"+_hashtags(x,agency)
+    source=str(x.get("url","")).strip()\n    source_line=("\\n\\nQuelle / weitere Infos: "+source) if source else ""\n    x["caption"]=caption+"\\n\\n"+_hashtags(x,agency)+source_line
     return x["caption"]
 
 def final_review(x,caption,agency):
