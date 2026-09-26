@@ -1,0 +1,21 @@
+name: TEST – Turkish Media Sources
+on:
+  pull_request:
+    paths:
+      - 'turkish_riders_scout.py'
+      - 'motogp_content_agency_v2.py'
+      - 'tests/test_turkish_media_sources.py'
+      - '.github/workflows/test-turkish-media-sources.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests Pillow beautifulsoup4
+      - run: |
+          python -m py_compile turkish_riders_scout.py motogp_content_agency_v2.py tests/test_turkish_media_sources.py
+          PYTHONPATH=. python tests/test_turkish_media_sources.py
