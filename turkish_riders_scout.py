@@ -3,7 +3,7 @@ import re,requests,html,unicodedata
 from urllib.parse import quote_plus
 from turkish_rider_names import CANONICAL_ALIASES, RIDER_CONTEXT, canonical_rider
 from turkish_rider_memory import remember_verified, remember_candidate
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 UA={'User-Agent':'Mozilla/5.0 KI-SOCIAL-AGENT Motorcycle Racing Agency'}
 # Specific class feeds MUST run before generic umbrella feeds. racing_scout de-duplicates by URL,
 # therefore this order is the deterministic class lock for articles exposed on several pages.
@@ -69,7 +69,12 @@ def _anchors(series,base,limit):
   print(f'RACING SCOUT SOURCE FAIL {series}: {type(e).__name__}: {str(e)[:120]}');return out
  for href,title in re.findall(r'href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',page,re.I|re.S):
   t=clean(title);u=urljoin(base,href)
-  if len(t)<20 or u in seen or not ('/news/' in u.lower() or '/haberler/' in u.lower()):continue
+  parsed=urlsplit(u)
+  aa_article=(urlsplit(base).hostname in ('aa.com.tr','www.aa.com.tr')
+              and parsed.hostname in ('aa.com.tr','www.aa.com.tr')
+              and parsed.scheme in ('http','https')
+              and re.fullmatch(r'/tr/spor/[^/]+/[0-9]+/?',parsed.path) is not None)
+  if len(t)<20 or u in seen or not ('/news/' in u.lower() or '/haberler/' in u.lower() or aa_article):continue
   seen.add(u);out.append((t,u,classify_series(series,t,u),rider_for(t+' '+u,series)))
   if len(out)>=limit:break
  return out
