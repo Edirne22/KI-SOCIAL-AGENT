@@ -74,4 +74,6 @@ class TestTelegramBotBugs(unittest.TestCase):
         bad = {"title": "Alpenverein München Veranstaltung", "snippet": "Teilnahme 5,00 €"}
         self.assertFalse(search_provider._offer_matches_query(bad, 5.0, "motorradhandschuhe max: 50 €"))
 
+
+if __name__ == "__main__":
     unittest.main()
