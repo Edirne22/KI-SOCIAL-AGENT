@@ -21,7 +21,16 @@ def test_top20_priority():
  assert 'TOP20' in x['priority_reasons']
 
 
-def test_central_turkish_rider_source_registry():\n from turkish_rider_names import RIDER_CONTEXT\n assert RIDER_CONTEXT['Toprak Razgatlıoğlu']['series']=='MotoGP'\n assert RIDER_CONTEXT['Deniz Öncü']['series']=='Moto2'\n assert RIDER_CONTEXT['Can Öncü']['series']=='WorldSSP'\n assert RIDER_CONTEXT['Bahattin Sofuoğlu']['series']=='WorldSSP'\n assert all(v.get('official_sources') for v in RIDER_CONTEXT.values())\n assert trs.RIDER_SOURCES is RIDER_CONTEXT\n\ndef test_surname_only_turkish_riders_use_series_context():
+def test_central_turkish_rider_source_registry():
+ from turkish_rider_names import RIDER_CONTEXT
+ assert RIDER_CONTEXT['Toprak Razgatlıoğlu']['series']=='MotoGP'
+ assert RIDER_CONTEXT['Deniz Öncü']['series']=='Moto2'
+ assert RIDER_CONTEXT['Can Öncü']['series']=='WorldSSP'
+ assert RIDER_CONTEXT['Bahattin Sofuoğlu']['series']=='WorldSSP'
+ assert all(v.get('official_sources') for v in RIDER_CONTEXT.values())
+ assert trs.RIDER_SOURCES is RIDER_CONTEXT
+
+def test_surname_only_turkish_riders_use_series_context():
  assert trs.rider_for('Oncu and Debise complete the second row','WorldSSP')=='Can Öncü'
  assert trs.rider_for('Oncu takes Moto2 front row','Moto2')=='Deniz Öncü'
  assert trs.rider_for('Razgatlioglu prepares for rookie campaign','MotoGP')=='Toprak Razgatlıoğlu'
