@@ -106,6 +106,11 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert 'coole Socke' in tqm._prompt(x,FakeAgency)
  src=inspect.getsource(recv.handle_turkish)
  assert 'turkish_lane.qualify' in src and 'agency.qualify_copy(x)' not in src
+ assert 'install_v855_hardening(agency)' in src
+ from racing_v855_hardening import install as _install
+ import motogp_content_agency_v2 as _production_agency
+ _install(_production_agency)
+ assert callable(_production_agency.fact_whitelist_errors)
 
 if __name__=='__main__':
  test_priority_marking_and_order();test_top20_priority();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
