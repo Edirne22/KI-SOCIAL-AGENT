@@ -35,3 +35,21 @@ finally:
 # Media source names are discovery labels, never championship values.
 assert 'MotoEtkinlikcom' not in {ctx.get('series') for ctx in scout.RIDER_SOURCES.values()}
 print('TEST – Turkish Social 429 Fallback: PASS')
+
+
+# Open Turkish web lane: .tr/.com.tr sources and registry-driven rider resolution.
+web=dict(scout.TURKISH_WEB_SOURCES)
+assert web['TMF'].endswith('.org.tr/Haberler/')
+assert 'aa.com.tr' in web['AnadoluAjansi']
+class WebResp:
+ def __init__(self,text): self.text=text
+ def raise_for_status(self): pass
+old_get=scout.requests.get
+try:
+ scout.requests.get=lambda url,**k: WebResp('<a href="/Haberler/Can-oncu-Guncel/">Can Öncü Dünya Supersport Şampiyonası güncel yarış haberi</a>')
+ rows=scout.turkish_web_scout(20)
+ assert any(r[2]=='Can Öncü' for r in rows),rows
+ assert all(r[3] not in ('TMF','AnadoluAjansi') for r in rows),rows
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Open Web Scout: PASS')
