@@ -1,6 +1,6 @@
 # Learned Rules
 
-**Aktualisiert:** 2026-09-25 17:54 UTC
+**Aktualisiert:** 2026-09-26 17:52 UTC
 
 Nur Regeln mit klarer Evidenz werden hier eingespeist. Performance-Korrelationen bleiben als Hypothese markiert.
 
