@@ -514,3 +514,18 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/25/okada-on-pole-by-0005-second
 Story-Key: motogp:1095295
 Titel: REPORT 1h ago SUPERPOLE BATTLE: Lecuona fends off late Bulega challenge for Cremona pole as Surra claims third The two factory Ducati riders finished 1-2 in Superpole at Cremona while rookie Surra battled for pole WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/26/superpole-battle-lecuona-fends-off-late-bulega-challenge-for-cremona-pole-as-surra-claims-third/1095295
+
+## 2026-09-26 11:55 UTC – ANGEBOTEN
+Story-Key: motogp:1095154
+Titel: WorldSBK NEWS “Bringing Brad on board is a bit strategic” – Muir breaks down Binder’s appeal to BMW Read now
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/bringing-brad-on-board-is-a-bit-strategic-muir-breaks-down-binders-appeal-to-bmw/1095154
+
+## 2026-09-26 11:55 UTC – ANGEBOTEN
+Story-Key: motogp:1092386
+Titel: PREVIEW 2d ago FIM Yamaha R3 BLU CRU World Cup title fight reaches penultimate round at Cremona It’s going to be another epic weekend of action as the field enters the penultimate round of 2026 R3 BLU CRU Champ
+Quelle: https://www.worldsbk.com/en/news/2026/09/24/fim-yamaha-r3-blu-cru-world-cup-title-fight-reaches-penultimate-round-at-cremona/1092386
+
+## 2026-09-26 11:55 UTC – ANGEBOTEN
+Story-Key: motogp:1095249
+Titel: NEWS 19h ago “I’m just angry about Friday” – Bulega explains his two crashes at Cremona WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/im-just-angry-about-friday-bulega-explains-his-two-crashes-at-cremona/1095249

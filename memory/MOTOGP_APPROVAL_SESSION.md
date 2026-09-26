@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790420972
+Session-Timestamp: 1790423741
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,26 +15,24 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 1.5
+Neufassungen: 4
+QM-Ruecklaeufe: 2
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 4.5
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1092589
-Titel: MotoGP™ News 2027 MotoGP™ calendar revealed Read Now
-Quelle: https://www.motogp.com/en/news/2026/09/25/2027-motogp-calendar-revealed/1092589
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-1-motogp-news-2027-mot-01.jpg
+Story-Key: motogp:1091638
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-1-motogp-news-motogp-c-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Der offizielle MotoGP-Kalender für 2027 ist veröffentlicht worden.
+Valencia 2027 ist als Saisonfinale bestätigt 🏁
 
-Die Rennserie bestätigt damit den kompletten Saisonplan für das kommende Jahr.
+Die MotoGP hat jetzt offiziell geklärt: Das Rennen auf dem Circuit Ricardo Tormo in Valencia ist 2027 der Finale-Stop der Saison. Den kompletten Kalender dazu gibt es Freitag zu lesen.
 
-Firmenangaben folgen über die MotoGP-Veranstaltungsseite.
-
-Wann startet für euch die neue MotoGP-Saison?
+Wie seht ihr Valencia als Saisonfinale?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -44,24 +42,26 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 1
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 4.5
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1091638
-Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
-Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-2-motogp-news-motogp-c-01.jpg
+Neufassungen: 1
+QM-Ruecklaeufe: 3
+Herkunft: Aktuell
+Artikelalter-Tage: 1.5
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1095154
+Titel: WorldSBK NEWS “Bringing Brad on board is a bit strategic” – Muir breaks down Binder’s appeal to BMW Read now
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/bringing-brad-on-board-is-a-bit-strategic-muir-breaks-down-binders-appeal-to-bmw/1095154
+Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-2-worldsbk-news-bringi-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Wie seht ihr, dass Valencia 2027 wieder das Saisonfinale bestimmt?
+Bringing Brad on board is a bit strategic
 
-MotoGP hat bestätigt: Der Große Preis von Valencia bleibt 2027 das Saisonfinale. Der komplette Kalender steht ab Freitag zur Verfügung. Was erwartet ihr von der letzten Runde im Jahr?
+Muir hat auf den Punkt gebracht, warum Binder für BMW interessant ist. Ein Teamwechsel, bei dem es nicht nur um Schnelligkeit geht, sondern um die richtige Strategie. Für BMW kann der Südafrikaner genau da ansetzen, wo das Team noch etwas nach oben will.
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Was haltet ihr von Binders Wechsel zu BMW?
+
+#WorldSBK #BradBinder #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -69,26 +69,24 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 1.5
-Kategorie: WorldSSP
-Serie: WorldSSP
-Story-Key: motogp:1095246
-Titel: ALCOBA AT THE FRONT: #52 takes Kawasaki’s first WorldSSP pole since 2021 at Cremona
-Quelle: https://www.worldsbk.com/en/news/2026/09/25/alcoba-at-the-front-52-takes-kawasakis-first-worldssp-pole-since-2021-at-cremona/1095246
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-3-alcoba-at-the-front-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/25/006dbbcc-0fc1-40fa-9768-97cfc535fbba/52923_JDR_R10_2026_Action.JPG
+Artikelalter-Tage: 2.5
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1092386
+Titel: PREVIEW 2d ago FIM Yamaha R3 BLU CRU World Cup title fight reaches penultimate round at Cremona It’s going to be another epic weekend of action as the field enters the penultimate round of 2026 R3 BLU CRU Champ
+Quelle: https://www.worldsbk.com/en/news/2026/09/24/fim-yamaha-r3-blu-cru-world-cup-title-fight-reaches-penultimate-round-at-cremona/1092386
+Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-3-preview-2d-ago-fim-y-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat auf der Kawasaki für Cremona die Pole geholt – die erste für das Team in der WorldSSP seit 2021.
+Das FIM Yamaha R3 BLU CRU World Cup Championship geht nach Cremona – die vorletzte Runde der Saison 2026 steht an. Noch zwei Rennwochenenden, dann ist Schluss mit dem Titelkampf. 🏁
 
-Bei den Fans und der Crew auf der Strecke wird das sicher nicht unwichtig. Der Titelkandidat Albert Arenas startet von P2, während Oncu und Debise in P6 sowie P8 folgen. Das gibt am Sonntag richtig was her.
+Was erwartet ihr von den letzten beiden Runden in Cremona?
 
-Was haltet ihr von der Pole für Alcoba und Kawasaki?
-
-#WorldSSP #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -102,43 +100,20 @@ Herkunft: Aktuell
 Artikelalter-Tage: 1.5
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1095277
-Titel: REPORT 18h ago Okada on Pole by 0.005 seconds at Cremona It was as as close as possible as the Race 1 grid was set in the FIM Yamaha R3 BLU CRU World Cup R3 BLU CRU Champ
-Quelle: https://www.worldsbk.com/en/news/2026/09/25/okada-on-pole-by-0005-seconds-at-cremona/1095277
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-4-report-18h-ago-okada-01.jpg
+Story-Key: motogp:1095249
+Titel: NEWS 19h ago “I’m just angry about Friday” – Bulega explains his two crashes at Cremona WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/im-just-angry-about-friday-bulega-explains-his-two-crashes-at-cremona/1095249
+Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-4-news-19h-ago-im-just-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Wie knapp kann Pole wirklich sein?
+I'm just angry about Friday
 
-Okada steht mit hauchdünnen 0,005 Sekunden Vorsprung auf Pole 1 in Cremona. Das setzte sich im FIM Yamaha R3 BLU CRU World Cup durch. Die nächste Runde geht direkt ins Race 1. 🏁
+Nicolo Bulega hat am Freitag auf der Strecke in Cremona gleich zweimal den Kontakt zum Asphalt gesucht. Danach gab er zu, dass er selber sauer auf sich war. Ein Wochenende, das nicht so lief wie geplant.
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die Lage für Bulega am Samstag ein?
 
-Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
-
-## Beitrag 5
-QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 0.5
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1095295
-Titel: REPORT 1h ago SUPERPOLE BATTLE: Lecuona fends off late Bulega challenge for Cremona pole as Surra claims third The two factory Ducati riders finished 1-2 in Superpole at Cremona while rookie Surra battled for pole WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/26/superpole-battle-lecuona-fends-off-late-bulega-challenge-for-cremona-pole-as-surra-claims-third/1095295
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-5-report-1h-ago-superp-01.jpg
-Quellen-Preview: Zielseite/Plattform
-Plattformen: Instagram + Facebook
-Text:
-Iker Lecuona hat in Cremona die Superpole gewonnen und sich dabei gegen eine späte Herausforderung von Nicolo Bulega durchgesetzt. Die beiden Ducati-Werksfahrer belegten die Plätze 1 und 2. Alberto Surra sicherte sich als Rookie den dritten Startplatz.
-
-Wie schätzt ihr die Aufstellung für das Rennen ein?
-
-#WorldSBK #NicoloBulega #AlbertoSurra #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
+#WorldSBK #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

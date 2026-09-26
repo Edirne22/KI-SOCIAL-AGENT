@@ -1440,3 +1440,33 @@ Story-Key: motogp:1095295
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-26 12:13 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:13 UTC | Motorcycle Racing | FAIL
+Titel: WorldSBK NEWS “Bringing Brad on board is a bit strategic” – Muir breaks down Binder’s appeal to BMW Read now
+Story-Key: motogp:1095154
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:15 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK NEWS “Bringing Brad on board is a bit strategic” – Muir breaks down Binder’s appeal to BMW Read now
+Story-Key: motogp:1095154
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:15 UTC | Motorcycle Racing | PASS
+Titel: PREVIEW 2d ago FIM Yamaha R3 BLU CRU World Cup title fight reaches penultimate round at Cremona It’s going to be another epic weekend of action as the field enters the penultimate round of 2026 R3 BLU CRU Champ
+Story-Key: motogp:1092386
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:15 UTC | Motorcycle Racing | PASS
+Titel: NEWS 19h ago “I’m just angry about Friday” – Bulega explains his two crashes at Cremona WorldSBK
+Story-Key: motogp:1095249
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
