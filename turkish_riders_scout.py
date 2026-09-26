@@ -67,6 +67,26 @@ def racing_scout(limit_per_source=50):
    if row[1] in seen:continue
    seen.add(row[1]);out.append(row)
  return out
+def rider_centered_scout(limit_per_source=120):
+ """Search each registered rider's official sources instead of relying on umbrella feeds.
+
+ The returned candidates are still re-fetched by article_info(), so titles found here are
+ discovery hints only. Freshness is decided later from the source article date.
+ """
+ out=[];seen=set()
+ for rider,ctx in RIDER_SOURCES.items():
+  series=str(ctx.get('series') or '')
+  for base in ctx.get('official_sources') or ():
+   for title,url,detected_series,detected_rider in _anchors(series,base,limit_per_source):
+    resolved=detected_rider or rider_for(title+' '+url,series)
+    # A rider-specific official page may link generic stories. Keep only links whose
+    # visible source metadata resolves to this registered rider.
+    if resolved!=rider:continue
+    if url in seen:continue
+    seen.add(url);out.append((title,url,rider,detected_series or series))
+ print(f'TURKISH RIDER-CENTERED SCOUT: {len(out)} candidates from {len(RIDER_SOURCES)} riders')
+ return out
+
 def scout(limit=40):
  out=[];seen=set()
  for t,u,s,r in racing_scout(limit):
