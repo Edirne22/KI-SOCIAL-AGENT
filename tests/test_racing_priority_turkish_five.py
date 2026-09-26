@@ -18,9 +18,12 @@ def test_top20_priority():
 
 def test_turkish_preview_is_separate_and_limited():
  sent=[]
- old_send=a.send_message;old_roster=a.roster_names
+ old_send=a.send_message;old_photo=a.send_photo;old_og=a.extract_og_image_url;old_roster=a.roster_names
  try:
   a.send_message=lambda m:sent.append(m)
+  photos=[]
+  a.send_photo=lambda img,caption='':photos.append((img,caption))
+  a.extract_og_image_url=lambda u:'https://img.example/test.jpg'
   a.roster_names=lambda:[]
   rows=[]
   for i in range(7):
@@ -28,11 +31,12 @@ def test_turkish_preview_is_separate_and_limited():
   from datetime import datetime,timezone
   out=a.turkish_five_preview(rows,datetime(2026,9,26,12,0,tzinfo=timezone.utc))
   assert len(out)==5
-  assert len(sent)==1
+  assert len(photos)==5
+  assert len(sent)==2
   assert 'NICHT automatisch freigegeben' in sent[0]
-  assert 'T5' in sent[0] and 'T6' not in sent[0]
+  assert 'T5' in photos[-1][1] and all('T6' not in p[1] for p in photos)
  finally:
-  a.send_message=old_send;a.roster_names=old_roster
+  a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster
 
 if __name__=='__main__':
  test_priority_marking_and_order();test_top20_priority();test_turkish_preview_is_separate_and_limited()
