@@ -4,7 +4,7 @@ from telegram_bot import send_photo
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
 from racing_semantic_qm import review_detailed as semantic_review_detailed
-from turkish_riders_scout import scout as turkish_scout, racing_scout
+from turkish_riders_scout import scout as turkish_scout, racing_scout, rider_centered_scout
 from instagram_publish import extract_og_image_url
 from llm_client import generate,global_professional_context
 from pathlib import Path
@@ -432,6 +432,13 @@ def run_v8():
  for t,u,s,r in racing_scout(140):
   u=canonical_url(u);key=story_key(t,u)
   if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'source_series':s,'series':s,'series_locked':True,**({'turkish_rider':r} if r else {})}
+ for t,u,r,s in rider_centered_scout(120):
+  # Primary Turkish discovery path: walk every registered rider's official sources.
+  added=add_turkish_candidate(raw,seen,meta,t,u,r)
+  u=canonical_url(u)
+  meta.setdefault(u,{})['source_series']=s
+  meta[u]['series']=s
+  meta[u]['series_locked']=True
  for t,u,r in turkish_scout(70):
   # T1-T5 is deliberately independent from the normal offer history. A source
   # may already be known to the Top-5 lane and still belongs in this current
