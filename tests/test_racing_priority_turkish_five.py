@@ -107,6 +107,10 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  src=inspect.getsource(recv.handle_turkish)
  assert 'turkish_lane.qualify' in src and 'agency.qualify_copy(x)' not in src
  assert 'install_v855_hardening(agency)' in src
+ qsrc=inspect.getsource(tqm.qualify)
+ assert 'TURKISH FINAL-QM BLOCK attempt=' in qsrc
+ assert 'TURKISH SEMANTIC-QM BLOCK attempt=' in qsrc
+ assert 'TURKISH LANGUAGE-QM BLOCK attempt=' in qsrc
  from racing_v855_hardening import install as _install
  import motogp_content_agency_v2 as _production_agency
  _install(_production_agency)
