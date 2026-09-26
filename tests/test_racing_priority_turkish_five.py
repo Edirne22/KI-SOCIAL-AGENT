@@ -21,7 +21,7 @@ def test_top20_priority():
  assert 'TOP20' in x['priority_reasons']
 
 
-def test_surname_only_turkish_riders_use_series_context():
+def test_central_turkish_rider_source_registry():\n from turkish_rider_names import RIDER_CONTEXT\n assert RIDER_CONTEXT['Toprak Razgatlıoğlu']['series']=='MotoGP'\n assert RIDER_CONTEXT['Deniz Öncü']['series']=='Moto2'\n assert RIDER_CONTEXT['Can Öncü']['series']=='WorldSSP'\n assert RIDER_CONTEXT['Bahattin Sofuoğlu']['series']=='WorldSSP'\n assert all(v.get('official_sources') for v in RIDER_CONTEXT.values())\n assert trs.RIDER_SOURCES is RIDER_CONTEXT\n\ndef test_surname_only_turkish_riders_use_series_context():
  assert trs.rider_for('Oncu and Debise complete the second row','WorldSSP')=='Can Öncü'
  assert trs.rider_for('Oncu takes Moto2 front row','Moto2')=='Deniz Öncü'
  assert trs.rider_for('Razgatlioglu prepares for rookie campaign','MotoGP')=='Toprak Razgatlıoğlu'
@@ -120,7 +120,7 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert callable(_production_agency.fact_whitelist_errors)
 
 if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
+ test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
