@@ -26,7 +26,7 @@ RIDER_CONTEXT={
  "Toprak Razgatlıoğlu":{"series":"MotoGP","official_sources":("https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e","https://www.motogp.com/en/news")},
  "Deniz Öncü":{"series":"Moto2","official_sources":("https://www.motogp.com/en/riders/-/7f2593e1-d17e-4a83-9890-d9c383b29898","https://www.motogp.com/en/news/Moto2")},
  "Can Öncü":{"series":"WorldSSP","official_sources":("https://www.worldsbk.com/en/riders/can-oncu/8482","https://www.worldsbk.com/en/news/ssp")},
- "Bahattin Sofuoğlu":{"series":"WorldSSP","official_sources":("https://www.worldsbk.com/en/riders/bahattin-sofuoglu/8467","https://www.worldsbk.com/en/news/ssp")},,
+ "Bahattin Sofuoğlu":{"series":"WorldSSP","official_sources":("https://www.worldsbk.com/en/riders/bahattin-sofuoglu/8467","https://www.worldsbk.com/en/news/ssp")},
  "Oğuz Taşhan":{"series":"European SSP300 Cup","official_sources":("https://www.tmf.org.tr/Haberler/Silverstone-da-Milli-Mesai/","https://www.tmf.org.tr/Haberler/")},
  "İshak Demir Dönmez":{"series":"European SSP300 / BMU","official_sources":("https://www.tmf.org.tr/Haberler/Silverstone-da-Milli-Mesai/","https://www.tmf.org.tr/Haberler/")},
  "Berkay Sarıay":{"series":"MotoMini 190","official_sources":("https://www.tmf.org.tr/Haberler/Silverstone-da-Milli-Mesai/","https://www.tmf.org.tr/Haberler/")},
