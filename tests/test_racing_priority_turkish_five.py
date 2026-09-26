@@ -88,10 +88,6 @@ def test_turkish_ten_day_window_and_selection_parser():
  finally:
   a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster;a._send_turkish_source_photo=old_sender
 
-if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
- print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
-
 
 def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  class FakeAgency:
@@ -110,3 +106,8 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert 'coole Socke' in tqm._prompt(x,FakeAgency)
  src=inspect.getsource(recv.handle_turkish)
  assert 'turkish_lane.qualify' in src and 'agency.qualify_copy(x)' not in src
+
+if __name__=='__main__':
+ test_priority_marking_and_order();test_top20_priority();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
+ print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
+
