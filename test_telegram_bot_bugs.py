@@ -5,6 +5,8 @@ import telegram_router as tr
 import telegram_receive as trec
 import motogp_telegram_receive_v85 as motogp_rec
 import racing_run_controller as rc
+import daily_digest as digest
+import search_provider as search_provider
 
 
 class TestTelegramBotBugs(unittest.TestCase):
@@ -48,5 +50,25 @@ class TestTelegramBotBugs(unittest.TestCase):
         rc.transition("batch-test", "CLOSED")
 
 
-if __name__ == "__main__":
+    def test_daily_digest_creates_only_non_racing_approval_choices(self):
+        posts = [
+            {"number": "1", "title": "Ride With Me", "hook": "h", "platform": "Instagram", "description": "d", "full_text": "x", "source": "https://example.com"}
+        ]
+        with patch.object(digest, "load_latest_posts", return_value=posts):
+            message = digest.build_digest()
+        self.assertIn("Allgemeine Content-Entwürfe zur Freigabe", message)
+        self.assertIn("1. Ride With Me", message)
+        self.assertIn("Racing-Content", message)
+        self.assertNotIn("deal:", message)
+
+    def test_price_offer_rejects_unrelated_euro_snippet(self):
+        bad = {"title": "Kreis Unna PDF", "snippet": "Gebühr 1,00 € für eine Veranstaltung"}
+        self.assertFalse(search_provider._offer_matches_query(bad, 1.0, "motorradhandschuhe max: 50 €"))
+        good = {"title": "Alpinestars Motorradhandschuhe", "snippet": "Motorrad Handschuhe 49,99 €"}
+        self.assertTrue(search_provider._offer_matches_query(good, 49.99, "motorradhandschuhe max: 50 €"))
+
+    def test_price_offer_rejects_unrelated_calendar_price(self):
+        bad = {"title": "Alpenverein München Veranstaltung", "snippet": "Teilnahme 5,00 €"}
+        self.assertFalse(search_provider._offer_matches_query(bad, 5.0, "motorradhandschuhe max: 50 €"))
+
     unittest.main()
