@@ -89,11 +89,15 @@ def test_rider_centered_scout_uses_registered_official_sources():
  finally:
   trs.RIDER_SOURCES=old_sources;trs._anchors=old_anchors
 
-def test_turkish_discovery_memory_does_not_auto_promote(tmp_path):
+def test_turkish_discovery_memory_does_not_auto_promote(tmp_path=None):
  import turkish_rider_memory as mem
+ from pathlib import Path
  old_path=mem.MEMORY_PATH
+ tmp_path=tmp_path or Path('/tmp/turkish-memory-regression')
+ tmp_path.mkdir(parents=True,exist_ok=True)
  try:
   mem.MEMORY_PATH=tmp_path/'turkish.json'
+  if mem.MEMORY_PATH.exists(): mem.MEMORY_PATH.unlink()
   row=mem.remember_candidate('New Turkish Rookie','Moto4','https://official.test/rookie','Turkish rookie result')
   assert row['status']=='candidate'
   data=mem.load()
@@ -168,7 +172,7 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert callable(_production_agency.fact_whitelist_errors)
 
 if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_turkish_discovery_memory_does_not_auto_promote(__import__('pathlib').Path('/tmp/turkish-memory-regression'));test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
+ test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
