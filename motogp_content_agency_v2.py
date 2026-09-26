@@ -1,5 +1,6 @@
 """Motorcycle Racing Agency V8.5.4 – source-locked series, freshness diagnostics, QM feedback loop."""
 from motogp_content_agency import *
+from telegram_bot import send_photo
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
 from racing_semantic_qm import review_detailed as semantic_review_detailed
