@@ -1,0 +1,27 @@
+name: TEST – Racing Degraded Pass Finalization
+on:
+  pull_request:
+    paths:
+      - "motogp_content_agency_v2.py"
+      - "tests/test_racing_degraded_finalization.py"
+      - ".github/workflows/test-racing-degraded-finalization.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests Pillow beautifulsoup4
+      - name: Syntax imports and degraded-pass finalization regression
+        run: |
+          python -m py_compile motogp_content_agency_v2.py tests/test_racing_degraded_finalization.py
+          PYTHONPATH=. python tests/test_racing_degraded_finalization.py
+          python racing_final_guard_selftest.py
+          python tests/test_source_fact_contract_v1.py
+          python racing_pipeline_selftest.py
+          python racing_v85_selftest.py

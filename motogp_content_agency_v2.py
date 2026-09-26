@@ -230,7 +230,10 @@ def prepare_media(x,i):
  if not data:return ''
  save_bytes(data,filename);return filename.as_posix()
 def finish_item(x,i):
- if x.get('semantic_qm')!='PASS' or x.get('racing_qm')!='PASS':return False
+ # DEGRADED-PASS means the deterministic source whitelist + Racing-QM passed,
+ # while only the external Semantic-QM provider failed technically after retries.
+ # It must continue into media + Chief-QM; factual FAIL remains blocked.
+ if x.get('semantic_qm') not in ('PASS','DEGRADED-PASS') or x.get('racing_qm')!='PASS':return False
  x['instagram_media']=prepare_media(x,i)
  if not x['instagram_media']:return False
  x['story_key']=story_key(x['title'],x['url']);ok,errs=chief_review('Motorcycle Racing',x,x['caption'],x['instagram_media'],x['url'],racing_review);x['chief_errors']=errs
