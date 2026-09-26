@@ -88,19 +88,26 @@ def selection(text):
         return None
     return sorted({int(x) for x in re.findall(r'[1-5]', m.group(1))})
 def turkish_selection(text):
-    v=re.sub(r'\s+',' ',text.strip().lower());v=re.sub(r'/\s*','',v)
-    # Kurzform: T1, T2, T1,T3,T5, T alle/nein/Emoji.
-    m_short=re.fullmatch(r't\s*([1-5](?:[\s,]+(?:t\s*)?[1-5])*)',v)
-    if m_short:return sorted({int(x) for x in re.findall(r'[1-5]',m_short.group(1))})
-    if re.fullmatch(r't\s*(?:alle|✅)',v):return [1,2,3,4,5]
-    if re.fullmatch(r't\s*(?:nein|❌)',v):return []
-    if 'turkish' not in v:return None
-    v=re.sub(r'\bturkish\b','',v).strip()
-    if v in ('alle','✅'):return [1,2,3,4,5]
-    if v in ('nein','❌'):return []
-    m=re.fullmatch(r'(?:t\s*)?([1-5](?:[\s,]+(?:t\s*)?[1-5])*)',v)
-    return sorted({int(x) for x in re.findall(r'[1-5]',m.group(1))}) if m else None
+    """Parse Turkish-Rider approvals.
 
+    Long form: turkish 1,3 / turkish alle / turkish nein.
+    Mobile short form: T1 / T1,T3 / T alle / T nein.
+    """
+    v = re.sub(r'\\s+', ' ', text.strip().lower())
+    v = re.sub(r'^/\\s*', '', v)
+    if re.fullmatch(r't[1-5](?:\\s*,\\s*t?[1-5])*', v):
+        return sorted({int(x) for x in re.findall(r'[1-5]', v)})
+    m = re.fullmatch(r't(?:urkish)?\\s+(.+)', v)
+    if not m:
+        return None
+    choice = m.group(1).strip()
+    if choice in ('alle', '✅'):
+        return [1, 2, 3, 4, 5]
+    if choice in ('nein', '❌'):
+        return []
+    if re.fullmatch(r'[1-5](?:[\\s,]+[1-5])*', choice):
+        return sorted({int(x) for x in re.findall(r'[1-5]', choice)})
+    return None
 def parse_turkish_session():
     try:data=json.loads(TURKISH_SESSION.read_text(encoding='utf-8'))
     except Exception:return {}
