@@ -529,3 +529,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/24/fim-yamaha-r3-blu-cru-world-
 Story-Key: motogp:1095249
 Titel: NEWS 19h ago “I’m just angry about Friday” – Bulega explains his two crashes at Cremona WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/25/im-just-angry-about-friday-bulega-explains-his-two-crashes-at-cremona/1095249
+
+## 2026-09-26 12:44 UTC – ANGEBOTEN
+Story-Key: motogp:1095311
+Titel: REPORT 1h ago Victory for Bocanegra as title fight Intensifies in Cremona Race 1 It was an incredible race at Cremona as the championship raced closed up on Saturday R3 BLU CRU Champ
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/victory-for-bocanegra-as-title-fight-intensifies-in-cremona-race-1/1095311

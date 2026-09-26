@@ -1470,3 +1470,45 @@ Story-Key: motogp:1095249
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-26 12:52 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:52 UTC | Motorcycle Racing | FAIL
+Titel: REPORT 1h ago Victory for Bocanegra as title fight Intensifies in Cremona Race 1 It was an incredible race at Cremona as the championship raced closed up on Saturday R3 BLU CRU Champ
+Story-Key: motogp:1095311
+Gründe: Struktur-QM FAIL: mindestens 2 Sätze erforderlich
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:52 UTC | Motorcycle Racing | PASS
+Titel: REPORT 1h ago Victory for Bocanegra as title fight Intensifies in Cremona Race 1 It was an incredible race at Cremona as the championship raced closed up on Saturday R3 BLU CRU Champ
+Story-Key: motogp:1095311
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:52 UTC | Motorcycle Racing | PASS
+Titel: REPORT 1h ago Victory for Bocanegra as title fight Intensifies in Cremona Race 1 It was an incredible race at Cremona as the championship raced closed up on Saturday R3 BLU CRU Champ
+Story-Key: motogp:1095311
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:53 UTC | Motorcycle Racing | FAIL
+Titel: “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories”
+Story-Key: motogp:1092435
+Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:54 UTC | Motorcycle Racing | FAIL
+Titel: “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories”
+Story-Key: motogp:1092435
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben; Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 12:54 UTC | Motorcycle Racing | FAIL
+Titel: “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories”
+Story-Key: motogp:1092435
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben; Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
