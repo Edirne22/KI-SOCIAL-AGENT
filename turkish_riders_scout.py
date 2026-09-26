@@ -14,6 +14,12 @@ SOURCES=[
  ('WorldSBK','https://www.worldsbk.com/en/news')]
 WATCHLIST=CANONICAL_ALIASES
 RIDER_SOURCES=RIDER_CONTEXT
+# Turkish specialist media are daily discovery sources for ALL registered riders.
+# They may nominate T1-T5 candidates, but are not promoted to primary fact authority.
+TURKISH_MEDIA_SOURCES=(
+ ('MotoEtkinlikcom','https://www.instagram.com/motoetkinlikcom/'),
+ ('MotoEtkinlikRacing','https://www.instagram.com/motoetkinlikracing/'),
+)
 FALLBACK=[
  ('Toprak Razgatlıoğlu','Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign','https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e','MotoGP'),
  ('Can Öncü','Can Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13','https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992','WorldSSP'),
@@ -86,6 +92,22 @@ def rider_centered_scout(limit_per_source=120):
     if url in seen:continue
     seen.add(url);out.append((title,url,rider,detected_series or series))
  print(f'TURKISH RIDER-CENTERED SCOUT: {len(out)} candidates from {len(RIDER_SOURCES)} riders')
+ return out
+
+def turkish_media_scout(limit_per_source=80):
+ """Scan Turkish specialist racing media for stories about every registered rider.
+
+ These are discovery inputs only. Identity is resolved through the shared registry;
+ downstream fact/QM gates remain authoritative.
+ """
+ out=[];seen=set()
+ for source,base in TURKISH_MEDIA_SOURCES:
+  rows=_anchors(source,base,limit_per_source)
+  for title,url,detected_series,rider in rows:
+   resolved=rider or rider_for(title+' '+url,detected_series or source)
+   if not resolved or resolved not in RIDER_SOURCES or url in seen:continue
+   seen.add(url);out.append((title,url,resolved,detected_series or RIDER_SOURCES[resolved].get('series','')))
+ print(f'TURKISH MEDIA SCOUT: {len(out)} registered-rider candidates')
  return out
 
 def discovery_scout(limit_per_source=160):
