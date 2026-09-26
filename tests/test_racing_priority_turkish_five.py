@@ -103,7 +103,10 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  # A real agency whitelist is responsible for unsupported claims; this unit verifies
  # the Turkish rider itself is accepted as a supported perspective.
  assert tqm._target_supported(x)
- assert 'coole Socke' in tqm._prompt(x,FakeAgency)\n assert 'spontan, menschlich, mitfiebernd' in tqm._prompt(x,FakeAgency)\n assert 'Community-Frage ist erlaubt, aber nicht Pflicht' in tqm._prompt(x,FakeAgency)\n assert 'Keine erfundenen persoenlichen Erlebnisse' in tqm._prompt(x,FakeAgency)
+ assert 'coole Socke' in tqm._prompt(x,FakeAgency)
+ assert 'spontan, menschlich, mitfiebernd' in tqm._prompt(x,FakeAgency)
+ assert 'Community-Frage ist erlaubt, aber nicht Pflicht' in tqm._prompt(x,FakeAgency)
+ assert 'Keine erfundenen persoenlichen Erlebnisse' in tqm._prompt(x,FakeAgency)
  src=inspect.getsource(recv.handle_turkish)
  assert 'turkish_lane.qualify' in src and 'agency.qualify_copy(x)' not in src
  assert 'install_v855_hardening(agency)' in src
