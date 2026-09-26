@@ -21,7 +21,7 @@ def _research_query(product_query: str, criteria: str = "") -> str:
     return product_query.strip() if not criteria or criteria == "keine Kriterien" else f"{product_query.strip()} | Kriterien: {criteria}"
 
 
-def extract_verified_offer(answer: str, live_search: bool) -> dict | None:
+def extract_verified_offer(answer: str, live_search: bool, query: str = "") -> dict | None:
     """Übernimmt nur ein ausdrücklich als belegt formatiertes Live-Angebot."""
     if not live_search:
         return None
@@ -32,6 +32,11 @@ def extract_verified_offer(answer: str, live_search: bool) -> dict | None:
     if not match:
         return None
     block = match.group(1)
+    if re.search(r"\\b(?:handyvertrag|mobilfunk|tarif|vertrag)\\b", query, re.IGNORECASE):
+        if not re.search(r"\\b(?:monatlich|monat|mtl\\.?|pro\\s+monat)\\b", block, re.IGNORECASE):
+            return None
+        if re.search(r"\\b(?:einmalig|zuzahlung|anschluss(?:preis|gebühr)?|gerät(?:epreis)?|hardware)\\b", block, re.IGNORECASE):
+            return None
     price_match = re.search(r"(?im)^\s*[-*]?\s*(?:Preis|Bester Preis)\s*:\s*([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*€", block)
     retailer_match = re.search(r"(?im)^\s*[-*]?\s*(?:Händler|Shop)\s*:\s*(.+?)\s*$", block)
     url_match = re.search(r"https?://[^\s)>]+", block)
@@ -86,7 +91,7 @@ def search_deal_with_offer(
     if outcome.get("warning") and outcome["warning"] not in answer:
         answer = outcome["warning"] + "\n\n" + answer
 
-    offer = extract_verified_offer(answer, outcome["live_search"])
+    offer = extract_verified_offer(answer, outcome["live_search"], _research_query(query, criteria))
     save_result(query, outcome["provider"], outcome["live_search"], answer, criteria, offer)
     LAST_QUERY_FILE.parent.mkdir(parents=True, exist_ok=True)
     LAST_QUERY_FILE.write_text(query, encoding="utf-8")
