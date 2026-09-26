@@ -68,7 +68,10 @@ def _validate_contract(item,o):
   if not text or kind not in ('FACT','OPINION_QUESTION') or status not in ('SUPPORTED','UNSUPPORTED') or not isinstance(evidence,list):raise ValueError('claim schema invalid')
   if status=='SUPPORTED' and kind=='FACT':
    if not evidence or not all(isinstance(e,dict) and _evidence_exists(item,e) for e in evidence):raise ValueError(f'FACT evidence invalid: {text[:80]}')
-  if status=='UNSUPPORTED':
+  # Only unsupported factual assertions are hard failures. A genuinely open
+  # opinion/community question is not a source-fact claim and must not kill
+  # an otherwise verified Racing story.
+  if status=='UNSUPPORTED' and kind=='FACT':
    hard_reasons.append(f'UNSUPPORTED: {text}')
   normalized.append({'claim':text,'claim_type':kind,'status':status,'source_evidence':evidence})
  hard=not hard_reasons and all(c['status']=='SUPPORTED' for c in normalized if c['claim_type']=='FACT')

@@ -66,7 +66,8 @@ def install(a):
             fn=a.fold(n);last=fn.split()[-1]
             present=fn in cap or (len(last)>=5 and re.search(r'(?<![a-z])'+re.escape(last)+r'(?![a-z])',cap))
             if present and fn not in allowed and last not in allowed_last:errs.append('Source-Fact-Whitelist: Fahrer nicht in Quelle: '+n)
-        srcnums=set(re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',src));capnums=set(re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',cap))
+        normalize_number=lambda n:n.replace(',','.')
+        srcnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',src)};capnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',cap)}
         for n in sorted(capnums-srcnums):errs.append('Source-Fact-Whitelist: Zahl nicht in Quelle: '+n)
         return errs
 
@@ -104,7 +105,16 @@ def install(a):
                 print('RACING-QM HARD REJECT after feedback loop:',x.get('title','')[:90],'|','; '.join(r_err)[:600]);break
             sem=semantic_technical_retry(x,x['caption'])
             if sem.get('technical_error'):
-                x['technical_qm_deferred']=True;print('SEMANTIC-QM TECHNICAL DEFER – candidate not factually rejected:',x.get('title','')[:90]);break
+                # A provider/JSON outage is not a factual rejection. The candidate
+                # has already passed deterministic source whitelist + Racing-QM.
+                # Keep it eligible, but mark the semantic gate as degraded so the
+                # final Chief/domain gates still run and the audit trail is explicit.
+                x['technical_qm_deferred']=True
+                x['semantic_qm']='DEGRADED-PASS'
+                x['racing_qm']='PASS'
+                x['rewrite_count']=attempt-1
+                print('SEMANTIC-QM DEGRADED PASS – deterministic fact gates passed; provider unavailable:',x.get('title','')[:90])
+                return True
             x['semantic_errors']=sem['hard_reasons']+sem['repair_reasons']
             if not sem['hard_ok']:
                 if attempt<3:repair=['Fakten-QM: '+e for e in sem['hard_reasons']];a.reanalyse_source(x,repair);lock(x);continue
