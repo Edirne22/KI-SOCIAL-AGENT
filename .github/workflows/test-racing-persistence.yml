@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Syntax and approval-command regression
         run: |
+          pip install requests Pillow beautifulsoup4
           bash -n scripts/persist_racing_state.sh
           python -m py_compile racing_v85.py racing_flush_notifications.py motogp_telegram_receive_v85.py
           python - <<'PY'
