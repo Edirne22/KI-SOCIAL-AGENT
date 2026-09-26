@@ -99,6 +99,9 @@ def test_turkish_ten_day_window_and_selection_parser():
   from datetime import datetime,timezone
   out=a.turkish_five_preview(rows,datetime(2026,9,26,12,0,tzinfo=timezone.utc),10)
   assert len(out)==5
+  import json
+  session=json.loads(a.TURKISH_SESSION.read_text(encoding='utf-8'))
+  assert session['window_used_days']==10
   assert any('5 von 5' in m for m in sent)
   assert recv.turkish_selection('turkish 1, 3,5')==[1,3,5]
   assert recv.turkish_selection('turkish alle')==[1,2,3,4,5]
