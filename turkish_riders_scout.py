@@ -111,7 +111,7 @@ def _search_fallback(source,base,limit):
   r=requests.get(search_url,headers=UA,timeout=30);r.raise_for_status();page=r.text
  except Exception as e:
   print(f'TURKISH MEDIA FALLBACK FAIL {source}: {type(e).__name__}: {str(e)[:120]}');return out
- for href,title in re.findall(r'<a[^>]+href=["\\'](?:/url\\?q=)?([^"\\'&]+)[^>]*>(.*?)</a>',page,re.I|re.S):
+ for href,title in re.findall(r"<a[^>]+href=[\\\"'](?:/url\\?q=)?([^\\\"'&]+)[^>]*>(.*?)</a>",page,re.I|re.S):
   t=clean(title);u=html.unescape(href)
   if not u.startswith('http') or handle not in u or len(t)<10 or u in seen:continue
   if not ('/p/' in u or '/reel/' in u):continue
