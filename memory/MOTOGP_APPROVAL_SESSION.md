@@ -1,38 +1,88 @@
 # Motorcycle Racing Telegram Approval Session
 Session-Version: 18
-Agency-Version: V8.5.4
+Agency-Version: V8.5.5
 Approval-Status: READY
 Professional-Agent-Standard: V1.0
 Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790370802
+Session-Timestamp: 1790415206
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
 ## Beitrag 1
 QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
+Community-Human-QM: PASS
+Semantic-Fakten-QM: N/A – Community-Fallback
 Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 4.9
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: motogp:1091425
-Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
-Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
-Instagram-Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-smits-replaces-sofou-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/21/607d2097-4858-4d2a-ab39-9f4b2549f9c9/Twan-Smiths.jpg
+Herkunft: Community-Fallback
+Artikelalter-Tage: 0.0
+Kategorie: Community
+Serie: Community
+Story-Key: title:community-spotlight-knieschleifer-aus-berzeugung
+Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
+Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung/
+Instagram-Bild: 
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Hey ihr Lieben, ich hab was: Bahattin Sofuoglu wechselt zu QJMOTOR. Er verlässt Motoxracing Yamaha und startet für den chinesischen Hersteller in der WorldSSP. Und Twan Smits? Der zieht es ins WorldSBK-Paddock. 🏍️💨
+Heute im Community-Spotlight: Knieschleifer aus Überzeugung. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
-Wie seht ihr den Wechsel?
+Was macht für euch eine gute Motorrad-Community aus?
 
-#WorldSSP #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#KnieschleiferAusUeberzeugung #Motorradfahren #BikerCommunity #BuelentsBikeLife
+
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
+
+## Beitrag 2
+QM: PASS
+Community-Human-QM: PASS
+Semantic-Fakten-QM: N/A – Community-Fallback
+Neufassungen: 0
+QM-Ruecklaeufe: 0
+Herkunft: Community-Fallback
+Artikelalter-Tage: 0.0
+Kategorie: Community
+Serie: Community
+Story-Key: title:community-spotlight-bike-society-united
+Titel: 🏍️ Community-Spotlight: Bike Society United
+Quelle: https://www.instagram.com/bike_society.united/
+Instagram-Bild: 
+Quellen-Preview: Zielseite/Plattform
+Plattformen: Instagram + Facebook
+Text:
+Heute im Community-Spotlight: Bike Society United. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
+
+Was macht für euch eine gute Motorrad-Community aus?
+
+#BikeSocietyUnited #Motorradfahren #BikerCommunity #BuelentsBikeLife
+
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
+
+## Beitrag 3
+QM: PASS
+Community-Human-QM: PASS
+Semantic-Fakten-QM: N/A – Community-Fallback
+Neufassungen: 0
+QM-Ruecklaeufe: 0
+Herkunft: Community-Fallback
+Artikelalter-Tage: 0.0
+Kategorie: Community
+Serie: Community
+Story-Key: title:community-spotlight-knieschleifer-ruhrpott
+Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
+Quelle: https://www.instagram.com/ks_ruhrpott/
+Instagram-Bild: 
+Quellen-Preview: Zielseite/Plattform
+Plattformen: Instagram + Facebook
+Text:
+Heute im Community-Spotlight: Knieschleifer Ruhrpott. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
+
+Was macht für euch eine gute Motorrad-Community aus?
+
+#KsRuhrpott #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
