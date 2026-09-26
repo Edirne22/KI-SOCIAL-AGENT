@@ -200,7 +200,34 @@ Erste Session nach Racing-Pipeline-Stabilisierung.
   - Perfekt für Biker-Zielgruppe
   - Türkisch + Deutsch möglich
   - Sehr hohes Save-Potenzial
+### Agenten-Ausbau (aus Screenshots 26.09.2026)
 
+**Referenz:** @mycaptainofficial (Karussell-Serie „Advanced AI Agents")
+
+**Neu und nützlich:**
+- [ ] **Viral Hook Generator** – pro Post 3-5 Hook-Varianten generieren
+  - Integration in MotoGP-Agent (vor Editor)
+  - Priorität: Mittel
+  - Voraussetzung: stabiler Content-Flow
+- [ ] **Headline A/B Generator** – bei Karussell-Vorschlägen alternative Überschriften
+  - Integration in Telegram-Vorschau (mehrere Varianten zur Auswahl)
+  - Priorität: Niedrig
+  - Voraussetzung: Karussell-Workflow stabil
+
+**Nicht relevant für uns:**
+- Marketing Strategy Generator (kein Marketing-Bedarf)
+- AI Marketing Consultant (zu allgemein)
+- Multi-Agent Campaign Planner (zu komplex)
+- Blog SEO Optimiser (kein Blog)
+- Trending LinkedIn Post Finder (kein LinkedIn)
+- Engineering Learning Stack (nicht unser Feld)
+
+**Schon vorhanden (Screenshot-Bestätigung):**
+- ✅ Comment Reply Assistant (Agent 17)
+- ✅ Content Quality Reviewer (Chief QM)
+- ✅ Multi-Platform Caption Writer (Facebook + Instagram)
+- ✅ Daily Industry News Scanner (Racing Scout)
+- 
 ---
 
 ## 🟢 NACH VPS
