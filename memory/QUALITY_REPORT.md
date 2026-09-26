@@ -1,5 +1,5 @@
 # Qualitätsreport
-Stand: 2026-09-25 18:13
+Stand: 2026-09-26 18:13
 Gesamtstatus: **WARNUNG**
 - OK: 15
 - Warnungen: 6
@@ -17,7 +17,7 @@ Gesamtstatus: **WARNUNG**
 - ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
 - ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
 - ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
-- ⚠️ **Datenalter**: 4 Quelle(n) sind älter als 7 Tage.
+- ⚠️ **Datenalter**: 7 Quelle(n) sind älter als 7 Tage.
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ⚠️ **Bright Data YouTube**: YouTube liefert bei Bright Data eine leere Antwort; Apify-Fallback wird geprüft.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
