@@ -75,5 +75,17 @@ class TestTelegramBotBugs(unittest.TestCase):
         self.assertFalse(search_provider._offer_matches_query(bad, 5.0, "motorradhandschuhe max: 50 €"))
 
 
+    def test_mobile_plan_uses_monthly_price_not_device_payment(self):
+        query = "handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1"
+        text = "80 GB Telekom D1 Tarif: 1,00 € einmalige Zuzahlung, 11,99 € monatlich"
+        self.assertEqual(search_provider._price_from_snippet(text, query), 11.99)
+
+    def test_mobile_plan_rejects_price_without_monthly_context(self):
+        query = "handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1"
+        text = "iPhone mit 80 GB Telekom D1, Gerätepreis 1,00 €"
+        self.assertIsNone(search_provider._price_from_snippet(text, query))
+
+
+
 if __name__ == "__main__":
     unittest.main()
