@@ -1,0 +1,23 @@
+name: TEST – Racing Manual Rerun Gate
+on:
+  pull_request:
+    paths:
+      - "racing_run_controller.py"
+      - "tests/test_racing_manual_rerun.py"
+      - ".github/workflows/test-racing-manual-rerun.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Syntax and duplicate-gate regression
+        run: |
+          python -m py_compile racing_run_controller.py tests/test_racing_manual_rerun.py
+          PYTHONPATH=. python tests/test_racing_manual_rerun.py
+          python racing_v85_selftest.py
