@@ -4,7 +4,7 @@ from telegram_bot import send_photo
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
 from racing_semantic_qm import review_detailed as semantic_review_detailed
-from turkish_riders_scout import scout as turkish_scout, racing_scout, rider_centered_scout
+from turkish_riders_scout import scout as turkish_scout, racing_scout, rider_centered_scout, discovery_scout
 from instagram_publish import extract_og_image_url
 from llm_client import generate,global_professional_context
 from pathlib import Path
@@ -434,6 +434,9 @@ def add_turkish_candidate(raw,seen,meta,title,url,rider):
  return True
 def run_v8():
  names=roster_names();known=known_story_keys();raw=[];seen=set();meta={}
+ # Learn before editorial selection: verified riders refresh their memory and
+ # unknown Turkish leads are retained for later verification, never auto-published.
+ discovery_scout(160)
  for t,u,s,r in racing_scout(140):
   u=canonical_url(u);key=story_key(t,u)
   if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'source_series':s,'series':s,'series_locked':True,**({'turkish_rider':r} if r else {})}
