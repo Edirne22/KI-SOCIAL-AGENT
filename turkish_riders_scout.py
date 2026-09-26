@@ -1,6 +1,7 @@
 """Agent 16 / Racing Scout: official MotoGP-, Moto2-, Moto3-, WorldSBK- and WorldSSP sources – V8.5.4."""
 import re,requests,html,unicodedata
 from turkish_rider_names import CANONICAL_ALIASES, RIDER_CONTEXT, canonical_rider
+from turkish_rider_memory import remember_verified, remember_candidate
 from urllib.parse import urljoin
 UA={'User-Agent':'Mozilla/5.0 KI-SOCIAL-AGENT Motorcycle Racing Agency'}
 # Specific class feeds MUST run before generic umbrella feeds. racing_scout de-duplicates by URL,
@@ -86,6 +87,38 @@ def rider_centered_scout(limit_per_source=120):
     seen.add(url);out.append((title,url,rider,detected_series or series))
  print(f'TURKISH RIDER-CENTERED SCOUT: {len(out)} candidates from {len(RIDER_SOURCES)} riders')
  return out
+
+def discovery_scout(limit_per_source=160):
+ """Discovery lane for Turkish rookies/newcomers not yet in the registry.
+
+ It scans trusted federation/championship discovery pages. Unknown names are memory
+ candidates only; they are never auto-promoted into CANONICAL_ALIASES/RIDER_CONTEXT.
+ """
+ discovery_sources=[
+  ('TMF','https://www.tmf.org.tr/Haberler/'),
+  ('MotoGP','https://www.motogp.com/en/news'),
+  ('WorldSBK','https://www.worldsbk.com/en/news'),
+ ]
+ leads=[];seen=set()
+ turkish_markers=('turk','turkiye','türkiye','turkish','milli sporc','milli motosiklet')
+ for series,base in discovery_sources:
+  for title,url,detected_series,rider in _anchors(series,base,limit_per_source):
+   if rider:
+    ctx=RIDER_SOURCES.get(rider,{})
+    remember_verified(rider,ctx.get('series') or detected_series or series,ctx.get('official_sources') or (base,),url)
+    continue
+   low=fold(title+' '+url)
+   if not any(marker in low for marker in turkish_markers):continue
+   # Keep the lead auditable. Name extraction/verification is deliberately not guessed:
+   # a later verifier must establish identity from an official source.
+   key=url
+   if key in seen:continue
+   seen.add(key)
+   label=clean(title)[:160]
+   remember_candidate(label,detected_series or series,url,title)
+   leads.append((label,url,detected_series or series))
+ print(f'TURKISH DISCOVERY SCOUT: {len(leads)} unverified leads remembered')
+ return leads
 
 def scout(limit=40):
  out=[];seen=set()
