@@ -58,7 +58,9 @@ def edit(x,agency,reasons=None):
     if not caption:return ""
     caption=re.sub(r"(?m)^\s*#[^\n]*$","",caption).strip()
     x["structure_variant"]=None
-    source=str(x.get("url","")).strip()\n    source_line=("\\n\\nQuelle / weitere Infos: "+source) if source else ""\n    x["caption"]=caption+"\\n\\n"+_hashtags(x,agency)+source_line
+    source=str(x.get("url","")).strip()
+    source_line=("\n\nQuelle / weitere Infos: "+source) if source else ""
+    x["caption"]=caption+"\n\n"+_hashtags(x,agency)+source_line
     return x["caption"]
 
 def final_review(x,caption,agency):
