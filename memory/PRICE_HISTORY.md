@@ -206,3 +206,21 @@ Quelle: https://www.handyhase.de/samsung-galaxy-s26-ultra-freenet-telekom/
 Status: nicht bestätigt – Zielpreis erreicht
 Kriterien: max: 13 € | min: 50 GB | Netz: D1 | seit 2026-09-18
 Provider: Apify-Google-Suche
+
+## 2026-09-26 06:08
+Produkt: motorradhandschuhe
+Preis: 1.00
+Händler: kreis-unna.de
+Quelle: https://www.kreis-unna.de/loadDocument.phtml?FID=3674.11876.1&Ext=PDF
+Status: nicht bestätigt – Zielpreis erreicht
+Kriterien: max: 50 € | seit 2026-09-12
+Provider: Apify-Google-Suche
+
+## 2026-09-26 06:08
+Produkt: handyvertrag 80GB D1
+Preis: 11.99
+Händler: handytariftipp.de
+Quelle: https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet-flat-fuer-nur-11-99e-monatlich/
+Status: nicht bestätigt – Zielpreis erreicht
+Kriterien: max: 13 € | seit 2026-09-12
+Provider: Apify-Google-Suche
