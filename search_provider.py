@@ -70,9 +70,28 @@ def _price_from_snippet(value: str) -> float | None:
 
 
 def _offer_matches_query(item: dict, price: float, query: str) -> bool:
-    """Akzeptiert bei Kriterien nur Treffer, die diese selbst sichtbar belegen."""
+    """Akzeptiert nur Treffer, die erkennbar zum gesuchten Produkt passen."""
     text = f"{item['title']} {item['snippet']}".lower()
     query_lower = query.lower()
+
+    # Google-Treffer können irgendeinen Euro-Betrag im Snippet enthalten. Ein Preis
+    # ist erst ein Angebot, wenn der Treffer auch das gesuchte Produkt benennt.
+    product_query = re.split(r"\b(?:max|min|netz|seit)\s*:", query_lower, maxsplit=1)[0].strip()
+    product_query = re.sub(r"\b(?:maximal|mindestens|unter|bis)\b.*$", "", product_query).strip()
+    compact_product = re.sub(r"[^a-z0-9äöüß]+", "", product_query)
+    compact_text = re.sub(r"[^a-z0-9äöüß]+", "", text)
+    words = [word for word in re.findall(r"[a-z0-9äöüß]+", product_query) if len(word) >= 4]
+    category_roots = [
+        root for root in ("handschuh", "helm", "reifen", "stiefel", "jacke", "hose", "vertrag", "smartphone", "handy")
+        if root in compact_product
+    ]
+    product_match = bool(compact_product and compact_product in compact_text)
+    if words:
+        product_match = product_match or all(word in text for word in words)
+    if category_roots:
+        product_match = product_match or all(root in text for root in category_roots)
+    if not product_match:
+        return False
 
     maximum = re.search(r"\bmax\s*:?\s*([0-9]+(?:[.,][0-9]+)?)\s*(?:€|eur)", query_lower)
     if maximum and price > float(maximum.group(1).replace(",", ".")):
