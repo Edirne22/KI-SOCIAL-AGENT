@@ -221,3 +221,10 @@ Keine Secrets in Git, Logs, Dokumentation oder Chat. Bei versehentlichem Posten:
 ---
 
 **Ende Engagement-Detail-Übergabe – Stand 24.09.2026 Abend**
+
+---
+📖 NÄCHSTER TEIL:
+→ Lies jetzt: docs/PROJEKT_UEBERGABE_3_RACING.md
+
+Diese Datei ist Teil 2 von 3.
+---
