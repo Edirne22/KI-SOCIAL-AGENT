@@ -128,7 +128,11 @@ def handle_turkish(uid,chat,txt):
             send_message('⛔ Keiner der gewählten Turkish-Rider-Vorschläge ist in der aktuellen Session verfügbar.')
         else:
             import motogp_content_agency_v2 as agency
+            from racing_v855_hardening import install as install_v855_hardening
             import turkish_editor_qm as turkish_lane
+            # Telegram runs outside racing_v85.py, so install the same production
+            # hardening explicitly before the dedicated Turkish lane uses its fact gates.
+            install_v855_hardening(agency)
             passed={};failed=[]
             for n in selected:
                 x=dict(rows[n]);agency.lock_source_series(x,x.get('source_series'));agency.enrich_turkish(x);agency.mark_priority(x,'TURKISH_SELECTED')
