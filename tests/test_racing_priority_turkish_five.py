@@ -31,6 +31,10 @@ def test_turkish_candidate_is_independent_and_deduplicated():
  assert a.add_turkish_candidate(raw,seen,meta,'Oncu current report',url,'Can Öncü')
  assert not a.add_turkish_candidate(raw,seen,meta,'Oncu duplicate',url,'Can Öncü')
  assert len(raw)==1 and meta[url]['turkish_rider']=='Can Öncü'
+ # Regression: if Racing found the URL first, Turkish scout must still enrich metadata.
+ raw2=[('Generic WorldSSP title',url)];seen2={url};meta2={url:{'source_series':'WorldSSP'}}
+ assert not a.add_turkish_candidate(raw2,seen2,meta2,'Oncu current report',url,'Can Öncü')
+ assert meta2[url]['turkish_rider']=='Can Öncü'
 
 def test_turkish_preview_is_separate_and_limited():
  sent=[]
