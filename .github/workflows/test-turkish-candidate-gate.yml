@@ -17,4 +17,4 @@ jobs:
       - name: Syntax
         run: python -m py_compile motogp_content_agency_v2.py tests/test_turkish_candidate_gate.py
       - name: Regression
-        run: PYTHONPATH=. python tests/test_turkish_candidate_gate.py
+        run: PYTHONPATH=. PYTHONPATH=. python tests/test_turkish_candidate_gate.py
