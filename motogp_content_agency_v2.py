@@ -4,7 +4,7 @@ from telegram_bot import send_photo
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
 from racing_semantic_qm import review_detailed as semantic_review_detailed
-from turkish_riders_scout import scout as turkish_scout, racing_scout, rider_centered_scout, discovery_scout
+from turkish_riders_scout import scout as turkish_scout, racing_scout, rider_centered_scout, discovery_scout, turkish_media_scout
 from turkish_rider_names import CANONICAL_ALIASES as SHARED_TURKISH_ALIASES, canonical_rider as registry_canonical_rider, context_for as registry_context_for
 from instagram_publish import extract_og_image_url
 from llm_client import generate,global_professional_context
@@ -477,6 +477,15 @@ def run_v8():
   meta.setdefault(u,{})['source_series']=s
   meta[u]['series']=s
   meta[u]['series_locked']=True
+ for t,u,r,s in turkish_media_scout(80):
+  # Turkish specialist media are a daily discovery lane for all registered riders.
+  # They enter the same T1-T5 candidate pool; downstream fact/QM remains unchanged.
+  add_turkish_candidate(raw,seen,meta,t,u,r)
+  u=canonical_url(u)
+  meta.setdefault(u,{})['discovery_source']='turkish-specialist-media'
+  if s:
+   meta[u].setdefault('source_series',s)
+   meta[u].setdefault('series',s)
  for t,u,r in turkish_scout(70):
   # T1-T5 is deliberately independent from the normal offer history. A source
   # may already be known to the Top-5 lane and still belongs in this current
