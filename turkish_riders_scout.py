@@ -55,7 +55,7 @@ def _anchors(series,base,limit):
   print(f'RACING SCOUT SOURCE FAIL {series}: {type(e).__name__}: {str(e)[:120]}');return out
  for href,title in re.findall(r'href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',page,re.I|re.S):
   t=clean(title);u=urljoin(base,href)
-  if len(t)<20 or u in seen or '/news/' not in u:continue
+  if len(t)<20 or u in seen or not ('/news/' in u.lower() or '/haberler/' in u.lower()):continue
   seen.add(u);out.append((t,u,classify_series(series,t,u),rider_for(t+' '+u,series)))
   if len(out)>=limit:break
  return out
@@ -109,14 +109,14 @@ def discovery_scout(limit_per_source=160):
     continue
    low=fold(title+' '+url)
    if not any(marker in low for marker in turkish_markers):continue
-   # Keep the lead auditable. Name extraction/verification is deliberately not guessed:
-   # a later verifier must establish identity from an official source.
+   # A generic 'Turkish rider' headline is a story lead, not a person identity.
+   # Never store the article title itself as a rider candidate.
+   if not rider: continue
    key=url
    if key in seen:continue
    seen.add(key)
-   label=clean(title)[:160]
-   remember_candidate(label,detected_series or series,url,title)
-   leads.append((label,url,detected_series or series))
+   remember_candidate(rider,detected_series or series,url,title)
+   leads.append((rider,url,detected_series or series))
  print(f'TURKISH DISCOVERY SCOUT: {len(leads)} unverified leads remembered')
  return leads
 
