@@ -1,0 +1,42 @@
+name: TEST – Racing Persistence Regression
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/persist_racing_state.sh"
+      - ".github/workflows/motogp-content-agency.yml"
+      - ".github/workflows/test-racing-persistence.yml"
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Shell syntax
+        run: bash -n scripts/persist_racing_state.sh
+      - name: Reproduce concurrent main update
+        run: |
+          set -euo pipefail
+          ROOT="$(mktemp -d)"
+          git init --bare "$ROOT/origin.git"
+          git clone "$ROOT/origin.git" "$ROOT/work"
+          cd "$ROOT/work"
+          git config user.email test@example.invalid
+          git config user.name test
+          mkdir -p memory assets/images scripts
+          cp "$GITHUB_WORKSPACE/scripts/persist_racing_state.sh" scripts/
+          echo base > memory/MOTOGP_DAILY_CONTENT.md
+          git add . && git commit -m base
+          git branch -M main && git push -u origin main
+          echo generated > memory/MOTOGP_DAILY_CONTENT.md
+          git clone -b main "$ROOT/origin.git" "$ROOT/other"
+          cd "$ROOT/other"
+          git config user.email other@example.invalid
+          git config user.name other
+          echo concurrent > memory/MOTOGP_DAILY_CONTENT.md
+          git add . && git commit -m concurrent && git push origin main
+          cd "$ROOT/work"
+          bash scripts/persist_racing_state.sh
+          git fetch origin main
+          test "$(git show origin/main:memory/MOTOGP_DAILY_CONTENT.md)" = "generated"
