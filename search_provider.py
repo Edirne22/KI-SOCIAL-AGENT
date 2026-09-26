@@ -53,11 +53,20 @@ def _apify_charge_limit() -> float:
     return min(max(configured, 0.001), APIFY_DEAL_MAX_CHARGE_USD)
 
 
-def _price_from_snippet(value: str) -> float | None:
+def _price_from_snippet(value: str, query: str = "") -> float | None:
+    """Extrahiert bei Mobilfunktarifen nur eindeutig monatliche Grundpreise."""
+    tariff_query = bool(re.search(r"\b(?:handyvertrag|mobilfunk|tarif|vertrag)\b", query, re.IGNORECASE))
     prices = []
-    for match in re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*(?:€|EUR)", value, re.IGNORECASE):
+    matches = list(re.finditer(r"(?<![0-9])([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*(?:€|EUR)", value, re.IGNORECASE))
+    for index, match in enumerate(matches):
+        if tariff_query:
+            next_start = matches[index + 1].start() if index + 1 < len(matches) else min(len(value), match.end() + 80)
+            context = value[match.start():next_start].lower()
+            monthly = re.search(r"(?:monatlich|mtl\.?|pro\s+monat|/\s*monat)", context)
+            one_time = re.search(r"(?:einmalig|zuzahlung|anschluss(?:preis|gebühr)?|gerät(?:epreis)?|hardware)", context)
+            if not monthly or one_time:
+                continue
         raw = match.group(1)
-        # Deutsche und internationale Schreibweisen: 299,99 / 299.99 / 1.299,99.
         if "," in raw and "." in raw:
             normalized = raw.replace(".", "").replace(",", ".") if raw.rfind(",") > raw.rfind(".") else raw.replace(",", "")
         else:
@@ -68,11 +77,29 @@ def _price_from_snippet(value: str) -> float | None:
             continue
     return min(prices) if prices else None
 
-
 def _offer_matches_query(item: dict, price: float, query: str) -> bool:
-    """Akzeptiert bei Kriterien nur Treffer, die diese selbst sichtbar belegen."""
+    """Akzeptiert nur Treffer, die erkennbar zum gesuchten Produkt passen."""
     text = f"{item['title']} {item['snippet']}".lower()
     query_lower = query.lower()
+
+    # Google-Treffer können irgendeinen Euro-Betrag im Snippet enthalten. Ein Preis
+    # ist erst ein Angebot, wenn der Treffer auch das gesuchte Produkt benennt.
+    product_query = re.split(r"\b(?:max|min|netz|seit)\s*:", query_lower, maxsplit=1)[0].strip()
+    product_query = re.sub(r"\b(?:maximal|mindestens|unter|bis)\b.*$", "", product_query).strip()
+    compact_product = re.sub(r"[^a-z0-9äöüß]+", "", product_query)
+    compact_text = re.sub(r"[^a-z0-9äöüß]+", "", text)
+    words = [word for word in re.findall(r"[a-z0-9äöüß]+", product_query) if len(word) >= 4]
+    category_roots = [
+        root for root in ("handschuh", "helm", "reifen", "stiefel", "jacke", "hose", "vertrag", "smartphone", "handy")
+        if root in compact_product
+    ]
+    product_match = bool(compact_product and compact_product in compact_text)
+    if words:
+        product_match = product_match or all(word in text for word in words)
+    if category_roots:
+        product_match = product_match or all(root in text for root in category_roots)
+    if not product_match:
+        return False
 
     maximum = re.search(r"\bmax\s*:?\s*([0-9]+(?:[.,][0-9]+)?)\s*(?:€|eur)", query_lower)
     if maximum and price > float(maximum.group(1).replace(",", ".")):
@@ -158,7 +185,7 @@ def _search_apify(query: str, token: str, num_results: int) -> dict:
 
     offers = []
     for item in results:
-        price = _price_from_snippet(f"{item['title']} {item['snippet']}")
+        price = _price_from_snippet(f"{item['title']} {item['snippet']}", query)
         if price is not None and _offer_matches_query(item, price, query):
             domain = urlparse(item["url"]).netloc.removeprefix("www.")
             offers.append((price, domain or "unbekannter Händler", item["url"]))
@@ -169,7 +196,7 @@ def _search_apify(query: str, token: str, num_results: int) -> dict:
             [
                 "",
                 "BESTES_ANGEBOT:",
-                f"Preis: {price:.2f} €",
+                f"Preis: {price:.2f} €" + (" monatlich" if re.search(r"\\b(?:handyvertrag|mobilfunk|tarif|vertrag)\\b", query, re.IGNORECASE) else ""),
                 f"Händler: {retailer}",
                 f"URL: {url}",
                 "Belegt: ja",
@@ -292,7 +319,7 @@ def _gemini_grounded(query: str, api_key: str, status_callback: Callable[[str], 
     prompt = f"""Recherchiere dieses Produkt mit allen genannten Kriterien: {query}
 
 Suche bevorzugt bei eBay, Amazon, AliExpress, Polo Motorrad, Louis, Reifen.com, Idealo, Geizhals und Google Shopping.
-Erfinde keine Preise, Rabattcodes oder Links. Nenne nur aktuelle, durch die Websuche belegte Daten.
+Erfinde keine Preise, Rabattcodes oder Links. Nenne nur aktuelle, durch die Websuche belegte Daten.\nBei Mobilfunk-/Handyverträgen darf als Preis ausschließlich der monatliche Grundpreis verwendet werden; Einmalpreis, Geräte-Zuzahlung, Anschlussgebühr oder Hardwarepreis sind niemals der Angebotspreis.
 
 Wenn ein eindeutiges, verifizierbares Angebot mit Preis, Händler und direktem Link vorliegt, beginne exakt mit diesem Block:
 BESTES_ANGEBOT:

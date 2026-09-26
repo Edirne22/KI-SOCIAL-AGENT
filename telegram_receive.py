@@ -58,8 +58,8 @@ def load_session() -> tuple[int, dict[int, dict[str, str]]]:
             "full_text": full_text,
         }
 
-    if len(posts) != 3:
-        raise RuntimeError("Telegram-Sitzung enthält nicht drei lesbare Beiträge.")
+    if not posts or len(posts) > 3:
+        raise RuntimeError("Telegram-Sitzung enthält keine gültigen lesbaren Beiträge.")
     return int(timestamp_match.group(1)), posts
 
 
@@ -68,18 +68,22 @@ def _field(text: str, name: str) -> str:
     return match.group(1).strip() if match else "–"
 
 
-def parse_approval(text: str) -> list[int] | None:
+def parse_approval(text: str, available: list[int] | tuple[int, ...] | None = None) -> list[int] | None:
+    allowed = sorted(set(available)) if available is not None else [1, 2, 3]
     normalized = text.strip().lower()
     if normalized.startswith("/"):
         normalized = normalized[1:]
     if normalized in {"alle", "✅"}:
-        return [1, 2, 3]
+        return allowed
     if normalized in {"nein", "❌"}:
         return []
 
     compact = re.sub(r"\s+", "", normalized)
     if re.fullmatch(r"[1-3](,[1-3])*", compact):
-        return sorted({int(number) for number in compact.split(",")})
+        selected = sorted({int(number) for number in compact.split(",")})
+        if available is not None and any(number not in allowed for number in selected):
+            return None
+        return selected
     return None
 
 
@@ -540,7 +544,7 @@ def handle_one(update_id: int, chat_id: str, message_text: str, message: dict | 
         if message_timestamp != 0 and message_timestamp < session_timestamp:
             return True
 
-        selected = parse_approval(message_text)
+        selected = parse_approval(message_text, tuple(posts))
         if selected is None:
             send_message("Danke! Bitte antworte mit 1,3, alle, ✅, nein oder ❌; für Recherche: deal: <Produkt>.")
         elif not selected:
