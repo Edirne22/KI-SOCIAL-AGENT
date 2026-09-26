@@ -1,5 +1,6 @@
 """Regression: priority repair lane + independent Turkish-five preview."""
 import motogp_content_agency_v2 as a
+import turkish_riders_scout as trs
 
 def test_priority_marking_and_order():
  normal={'title':'Routine race report','summary':'race','url':'https://example.test/n','series':'MotoGP','source_series':'MotoGP','caption':'normal'}
@@ -15,6 +16,21 @@ def test_top20_priority():
  a.mark_priority(x,'TOP20')
  assert x['priority_repair'] is True
  assert 'TOP20' in x['priority_reasons']
+
+
+def test_surname_only_turkish_riders_use_series_context():
+ assert trs.rider_for('Oncu and Debise complete the second row','WorldSSP')=='Can Öncü'
+ assert trs.rider_for('Oncu takes Moto2 front row','Moto2')=='Deniz Öncü'
+ assert trs.rider_for('Razgatlioglu prepares for rookie campaign','MotoGP')=='Toprak Razgatlıoğlu'
+ assert trs.rider_for('Sofuoglu in R3 BLU CRU title fight','WorldSBK')=='Zayn Sofuoğlu'
+ assert trs.rider_for('Oncu update','')==''
+
+def test_turkish_candidate_is_independent_and_deduplicated():
+ raw=[];seen=set();meta={}
+ url='https://example.test/current-oncu'
+ assert a.add_turkish_candidate(raw,seen,meta,'Oncu current report',url,'Can Öncü')
+ assert not a.add_turkish_candidate(raw,seen,meta,'Oncu duplicate',url,'Can Öncü')
+ assert len(raw)==1 and meta[url]['turkish_rider']=='Can Öncü'
 
 def test_turkish_preview_is_separate_and_limited():
  sent=[]
@@ -39,5 +55,5 @@ def test_turkish_preview_is_separate_and_limited():
   a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster
 
 if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_turkish_preview_is_separate_and_limited()
+ test_priority_marking_and_order();test_top20_priority();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
