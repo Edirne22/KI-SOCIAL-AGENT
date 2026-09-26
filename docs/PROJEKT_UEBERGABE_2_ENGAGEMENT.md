@@ -179,7 +179,7 @@ Keine Secrets in Git, Logs, Dokumentation oder Chat. Bei versehentlichem Posten:
 3. **Facebook-Token:** Graph API Explorer, Page-Token isolieren
 4. **Facebook reaktivieren:** `ENABLE_FACEBOOK_ENGAGEMENT=true`
 5. **VPS/Webhook:** Echtzeit statt Polling
-6. **reply_draft-Lücke:** KI-generierte Antwortvorschläge
+6. ~~reply_draft-Lücke~~ ✅ erledigt 25.09.2026
 7. **Weitere Engagement-Quellen:** Tagged Media, Story-Replies
 
 ---
@@ -198,7 +198,7 @@ Keine Secrets in Git, Logs, Dokumentation oder Chat. Bei versehentlichem Posten:
 | Facebook Agent 18 | ⏸️ pausiert |
 | Meta Webhook | ✅ Foundation, nicht live |
 | VPS | ❌ nicht produktiv |
-| reply_draft | ⚠️ offen (Lücke §30) |
+| reply_draft | ✅ geschlossen 25.09.2026 (KI generiert Antwortvorschläge) |
 
 ---
 
