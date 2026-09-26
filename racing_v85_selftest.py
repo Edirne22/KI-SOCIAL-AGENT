@@ -6,6 +6,11 @@ import racing_run_controller as rc
 import motogp_telegram_receive_v85 as approval
 import turkish_riders_scout as scout
 import motogp_content_agency_v2 as agency
+from racing_v855_hardening import install as install_v855_hardening
+
+# Production installs V8.5.5 hardening in racing_v85 before executing the agency.
+# This selftest must exercise the same runtime chain instead of the un-hardened module.
+install_v855_hardening(agency)
 
 def check(v,msg):
     if not v:raise AssertionError(msg)
