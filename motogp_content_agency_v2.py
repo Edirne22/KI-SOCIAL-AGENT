@@ -393,6 +393,7 @@ def turkish_candidate_gate(x,now,max_days=10):
   rider=(x.get('turkish_rider') or detect_turkish_rider(x) or '').strip()
   if not rider:return False
   if x.get('kind','news')=='profile':return False
+  if not article_date(x):return False
   age=age_days(x,now)
   return 0<=age<=max_days
 

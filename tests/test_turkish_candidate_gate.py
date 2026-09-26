@@ -22,7 +22,7 @@ assert agency.turkish_candidate_reason(fresh,now,7)=='PASS'
 assert not agency.turkish_candidate_gate(item('Old supported rider update',11),now,10)
 assert agency.turkish_candidate_reason(item('Old supported rider update',11),now,10)=='older-than-window'
 assert not agency.turkish_candidate_gate(item('Rider profile',0,'profile'),now,10)
-missing=item('Missing date',0); missing.pop('published_at')
+missing=item('Missing date',0); missing.pop('published_at'); missing['url']='https://www.worldsbk.com/en/news/example-undated'
 assert not agency.turkish_candidate_gate(missing,now,10)
 assert agency.turkish_candidate_reason(missing,now,10)=='missing-date'
 no_rider=item('No rider',0); no_rider['turkish_rider']=''; no_rider['summary']='generic racing update'
