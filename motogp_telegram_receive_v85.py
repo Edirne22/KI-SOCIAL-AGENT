@@ -90,7 +90,7 @@ def selection(text):
 def turkish_selection(text):
     """Parse Turkish-Rider approvals.
 
-    Long form: turkish 1,3 / turkish alle / turkish nein.
+    Long form: turkish 1,3 / turkish T1,T3 / turkish alle / turkish nein.
     Mobile short form: T1 / T1,T3 / T alle / T nein.
     """
     v = re.sub(r'\s+', ' ', text.strip().lower())
@@ -105,7 +105,7 @@ def turkish_selection(text):
         return [1, 2, 3, 4, 5]
     if choice in ('nein', '❌'):
         return []
-    if re.fullmatch(r'[1-5](?:[\s,]+[1-5])*', choice):
+    if re.fullmatch(r'(?:t\s*)?[1-5](?:[\s,]+(?:t\s*)?[1-5])*', choice):
         return sorted({int(x) for x in re.findall(r'[1-5]', choice)})
     return None
 def parse_turkish_session():
