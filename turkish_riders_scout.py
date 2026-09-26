@@ -1,5 +1,6 @@
 """Agent 16 / Racing Scout: official MotoGP-, Moto2-, Moto3-, WorldSBK- and WorldSSP sources – V8.5.4."""
 import re,requests,html,unicodedata
+from urllib.parse import quote_plus
 from turkish_rider_names import CANONICAL_ALIASES, RIDER_CONTEXT, canonical_rider
 from turkish_rider_memory import remember_verified, remember_candidate
 from urllib.parse import urljoin
@@ -95,6 +96,29 @@ def rider_centered_scout(limit_per_source=120):
  print(f'TURKISH RIDER-CENTERED SCOUT: {len(out)} candidates from {len(RIDER_SOURCES)} riders')
  return out
 
+def _search_fallback(source,base,limit):
+ """Public web-index fallback for social profiles that reject direct HTTP scraping.
+
+ The social profile remains the discovery target; indexed result snippets are hints only.
+ Downstream article/source fact gates remain authoritative.
+ """
+ host='www.instagram.com'
+ handle=base.rstrip('/').split('/')[-1]
+ q=quote_plus(f'site:{host}/{handle} Turkish motorcycle racing')
+ search_url='https://www.google.com/search?q='+q+'&num='+str(min(limit,20))
+ out=[];seen=set()
+ try:
+  r=requests.get(search_url,headers=UA,timeout=30);r.raise_for_status();page=r.text
+ except Exception as e:
+  print(f'TURKISH MEDIA FALLBACK FAIL {source}: {type(e).__name__}: {str(e)[:120]}');return out
+ for href,title in re.findall(r'<a[^>]+href=["\\'](?:/url\\?q=)?([^"\\'&]+)[^>]*>(.*?)</a>',page,re.I|re.S):
+  t=clean(title);u=html.unescape(href)
+  if not u.startswith('http') or handle not in u or len(t)<10 or u in seen:continue
+  if not ('/p/' in u or '/reel/' in u):continue
+  seen.add(u);out.append((t,u,'',rider_for(t+' '+u,'')))
+  if len(out)>=limit:break
+ return out
+
 def turkish_media_scout(limit_per_source=80):
  """Scan Turkish specialist racing media for stories about every registered rider.
 
@@ -104,10 +128,15 @@ def turkish_media_scout(limit_per_source=80):
  out=[];seen=set()
  for source,base in TURKISH_MEDIA_SOURCES:
   rows=_anchors(source,base,limit_per_source)
+  if not rows:
+   rows=_search_fallback(source,base,limit_per_source)
+   if rows: print(f'TURKISH MEDIA FALLBACK {source}: {len(rows)} indexed candidates')
   for title,url,detected_series,rider in rows:
    resolved=rider or rider_for(title+' '+url,detected_series or source)
    if not resolved or resolved not in RIDER_SOURCES or url in seen:continue
-   seen.add(url);out.append((title,url,resolved,detected_series or RIDER_SOURCES[resolved].get('series','')))
+   # Specialist-media labels are not racing series. Prefer detected evidence, else registry context.
+   series=detected_series if detected_series in ('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300','WorldSPB','Moto4') else RIDER_SOURCES[resolved].get('series','')
+   seen.add(url);out.append((title,url,resolved,series))
  print(f'TURKISH MEDIA SCOUT: {len(out)} registered-rider candidates')
  return out
 
