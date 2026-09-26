@@ -391,14 +391,21 @@ def telegram_preview(items,turk,qualified=None):
   msg += [f'{i}️⃣ {origin}[{label}] {x["caption"]}',f'🔗 Quelle: {x["url"]}','']
  choices=f'1–{len(items)}' if items else 'keine'
  msg+=[f'Freigabe: motogp {choices} / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
+def add_turkish_candidate(raw,seen,meta,title,url,rider):
+ u=canonical_url(url)
+ if u in seen:return False
+ seen.add(u);raw.append((title,u));meta[u]={'turkish_rider':rider,'kind':('profile' if '/riders/' in u else 'news')}
+ return True
 def run_v8():
  names=roster_names();known=known_story_keys();raw=[];seen=set();meta={}
  for t,u,s,r in racing_scout(140):
   u=canonical_url(u);key=story_key(t,u)
   if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'source_series':s,'series':s,'series_locked':True,**({'turkish_rider':r} if r else {})}
  for t,u,r in turkish_scout(70):
-  u=canonical_url(u);key=story_key(t,u)
-  if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'turkish_rider':r,'kind':('profile' if '/riders/' in u else 'news')}
+  # T1-T5 is deliberately independent from the normal offer history. A source
+  # may already be known to the Top-5 lane and still belongs in this current
+  # seven-day Turkish-rider shortlist.
+  add_turkish_candidate(raw,seen,meta,t,u,r)
  for title,url in extract(get(NEWS),100)+extract(get(MARKET),60):
   u=canonical_url(url);key=story_key(title,u)
   if u not in seen and key not in known:seen.add(u);raw.append((title,u))

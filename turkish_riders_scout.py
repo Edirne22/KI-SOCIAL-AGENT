@@ -20,11 +20,20 @@ def clean(s):return re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',s or '
 def fold(s):
  s=unicodedata.normalize('NFKD',(s or '').casefold()).replace('ı','i')
  return ''.join(ch for ch in s if not unicodedata.combining(ch)).replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
-def rider_for(text):
- low=fold(text)
- # Official WorldSBK headline can shorten Bahattin to the misspelt surname "Sofouglu".
- if re.search(r'(?<![a-z])sofouglu(?![a-z])',low) and any(k in low for k in ('smits','motoxracing','qjmotor','worldssp')):return 'Bahattin Sofuoğlu'
- return canonical_rider(text)
+def rider_for(text,series=''):
+ low=fold(text);canonical=canonical_rider(text)
+ if canonical:return canonical
+ context=fold((series or '')+' '+text)
+ # Official headlines often use only a surname. Resolve it only where the
+ # championship context makes the identity deterministic.
+ if re.search(r'(?<![a-z])razgatlioglu(?![a-z])',low):return 'Toprak Razgatlıoğlu'
+ if re.search(r'(?<![a-z])oncu(?![a-z])',low):
+  if any(k in context for k in ('worldssp','supersport','wssp')):return 'Can Öncü'
+  if any(k in context for k in ('moto2','moto3')):return 'Deniz Öncü'
+ if re.search(r'(?<![a-z])sofuoglu(?![a-z])|(?<![a-z])sofouglu(?![a-z])',low):
+  if any(k in context for k in ('zayn','r3 blu cru','r3 world cup')):return 'Zayn Sofuoğlu'
+  if any(k in context for k in ('bahattin','smits','motoxracing','qjmotor','worldssp','worldsbk')):return 'Bahattin Sofuoğlu'
+ return ''
 def classify_series(default_series,title,url):
  text=fold((title or '')+' '+(url or ''))
  if 'worldspb' in text or 'sportbike world championship' in text:return 'WorldSPB'
@@ -45,7 +54,7 @@ def _anchors(series,base,limit):
  for href,title in re.findall(r'href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',page,re.I|re.S):
   t=clean(title);u=urljoin(base,href)
   if len(t)<20 or u in seen or '/news/' not in u:continue
-  seen.add(u);out.append((t,u,classify_series(series,t,u),rider_for(t+' '+u)))
+  seen.add(u);out.append((t,u,classify_series(series,t,u),rider_for(t+' '+u,series)))
   if len(out)>=limit:break
  return out
 def racing_scout(limit_per_source=50):
