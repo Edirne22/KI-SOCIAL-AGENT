@@ -79,7 +79,10 @@ def parse_approval(text: str) -> list[int] | None:
 
     compact = re.sub(r"\s+", "", normalized)
     if re.fullmatch(r"[1-3](,[1-3])*", compact):
-        selected = sorted({int(number) for number in compact.split(",")})\n        if available is not None and any(number not in allowed for number in selected):\n            return None\n        return selected
+        selected = sorted({int(number) for number in compact.split(",")})
+        if available is not None and any(number not in allowed for number in selected):
+            return None
+        return selected
     return None
 
 
