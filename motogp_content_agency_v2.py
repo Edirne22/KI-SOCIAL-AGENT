@@ -255,6 +255,18 @@ def save_top10(items,now):
  data=load_pool();day=now.date().isoformat();rows=[]
  for x in items[:20]:rows.append({'story_key':story_key(x['title'],x['url']),'title':x['title'],'url':x['url'],'summary':x.get('summary',''),'preview':x.get('preview',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'series':series_for(x),'source_series':x.get('source_series',series_for(x)),'series_locked':True,'turkish_rider':x.get('turkish_rider',''),'kind':x.get('kind','news')})
  data.setdefault('days',{})[day]=rows;keep={(now.date()-timedelta(days=i)).isoformat() for i in range(3)};data['days']={k:v for k,v in data['days'].items() if k in keep};TOP10.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+def mark_priority(x,reason=None):
+ reasons=list(x.get('priority_reasons') or [])
+ if reason:reasons.append(str(reason))
+ text=fold(article_text(x))
+ if is_turkish_focus(x):reasons.append('TURKISH_RIDER')
+ if riders_in(article_text(x)):reasons.append('RIDER')
+ if any(w in text for w in (' transfer','transfer ',' joins ',' join ',' moves to ',' move to ',' switch','wechselt','wechsel')):reasons.append('TRANSFER')
+ if any(w in text for w in ('calendar','schedule','kalender','rennkalender','termine')):reasons.append('CALENDAR')
+ if any(w in text for w in ('championship','world title','title fight','titelkampf','weltmeister','meisterschaft')):reasons.append('TITLE')
+ reasons=list(dict.fromkeys(reasons))
+ if reasons:x['priority_repair']=True;x['priority_reasons']=reasons
+ return x
 def yesterday_raw(now,current_urls):
  rows=load_pool().get('days',{}).get((now.date()-timedelta(days=1)).isoformat(),[]);pub=published_keys();out=[]
  for r in rows:
@@ -263,11 +275,15 @@ def yesterday_raw(now,current_urls):
   if current_news(x,now,7) and racing_relevant(x):out.append(x)
  return out
 def ordered_pool(qualified,names):
- pool=sorted(qualified,key=lambda x:editorial_score(x,names),reverse=True);ordered=[];turk=[x for x in pool if is_turkish_focus(x) and not is_feature(x)]
- if turk:ordered.append(turk[0])
- gp=[x for x in pool if is_gp_family(x) and not is_feature(x) and x not in ordered];ordered+=gp[:3]
- ordered += [x for x in pool if x not in ordered and not is_feature(x)]+[x for x in pool if x not in ordered]
- return ordered
+ def bucket(rows):
+  pool=sorted(rows,key=lambda x:editorial_score(x,names),reverse=True);ordered=[];turk=[x for x in pool if is_turkish_focus(x) and not is_feature(x)]
+  if turk:ordered.append(turk[0])
+  gp=[x for x in pool if is_gp_family(x) and not is_feature(x) and x not in ordered];ordered+=gp[:3]
+  ordered += [x for x in pool if x not in ordered and not is_feature(x)]+[x for x in pool if x not in ordered]
+  return ordered
+ priority=[x for x in qualified if x.get('priority_repair')]
+ normal=[x for x in qualified if not x.get('priority_repair')]
+ return bucket(priority)+bucket(normal)
 def select_and_finish(qualified,names):
  picks=[];seen_fp=set()
  for x in ordered_pool(qualified,names):
@@ -393,6 +409,7 @@ def run_v8():
  turk=any(is_turkish_focus(x) for x in picks)
  if len(picks)<3:
   invalidate_session(now,f'nur {len(picks)} finalisierte Racing-Pakete',len(picks));print(f'{VERSION}: BLOCKED final={len(picks)}');return
- write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk,qualified);turkish_five_preview(details,now)
+ turkish_five_preview(details,now)
+ write_session(picks,now);remember_offered(picks,now);telegram_preview(picks,turk,qualified)
  print(f'{VERSION}: raw={len(details)}, fresh={len(fresh)}, current_q={len(current_q)}, fallback_q={len(fallback_q)}, final={len(picks)}, mix={mix}, Turkish={turk}')
 if __name__=='__main__':run_v8()
