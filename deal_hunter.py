@@ -32,10 +32,8 @@ def extract_verified_offer(answer: str, live_search: bool, query: str = "") -> d
     if not match:
         return None
     block = match.group(1)
-    if re.search(r"\\b(?:handyvertrag|mobilfunk|tarif|vertrag)\\b", query, re.IGNORECASE):
-        if not re.search(r"\\b(?:monatlich|monat|mtl\\.?|pro\\s+monat)\\b", block, re.IGNORECASE):
-            return None
-        if re.search(r"\\b(?:einmalig|zuzahlung|anschluss(?:preis|gebühr)?|gerät(?:epreis)?|hardware)\\b", block, re.IGNORECASE):
+    if re.search(r"\b(?:handyvertrag|mobilfunk|tarif|vertrag)\b", query, re.IGNORECASE):
+        if not re.search(r"\b(?:monatlich|monat|mtl\.?|pro\s+monat)\b", block, re.IGNORECASE):
             return None
     price_match = re.search(r"(?im)^\s*[-*]?\s*(?:Preis|Bester Preis)\s*:\s*([0-9]{1,5}(?:[.,][0-9]{1,2})?)\s*€", block)
     retailer_match = re.search(r"(?im)^\s*[-*]?\s*(?:Händler|Shop)\s*:\s*(.+?)\s*$", block)
