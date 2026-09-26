@@ -128,10 +128,11 @@ def handle_turkish(uid,chat,txt):
             send_message('⛔ Keiner der gewählten Turkish-Rider-Vorschläge ist in der aktuellen Session verfügbar.')
         else:
             import motogp_content_agency_v2 as agency
+            import turkish_editor_qm as turkish_lane
             passed={};failed=[]
             for n in selected:
                 x=dict(rows[n]);agency.lock_source_series(x,x.get('source_series'));agency.enrich_turkish(x);agency.mark_priority(x,'TURKISH_SELECTED')
-                if agency.qualify_copy(x) and agency.finish_item(x,n):
+                if turkish_lane.qualify(x,agency) and turkish_lane.finish(x,n,agency):
                     passed[n]={'title':x['title'],'source':x['url'],'image':x['instagram_media'],'text':x['caption']}
                 else:failed.append(n)
             batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR'
