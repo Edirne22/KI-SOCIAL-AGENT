@@ -4,6 +4,7 @@ from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
 from racing_semantic_qm import review_detailed as semantic_review_detailed
 from turkish_riders_scout import scout as turkish_scout, racing_scout
+from instagram_publish import extract_og_image_url
 from llm_client import generate,global_professional_context
 from pathlib import Path
 from datetime import timedelta,datetime as dt,timezone
@@ -366,10 +367,16 @@ def turkish_five_preview(details,now):
    if len(candidates)>=5:break
   msg=['🇹🇷 TURKISH RIDER – 5 AKTUELLE ZUSATZVORSCHLÄGE','Unabhängig von den 5 Racing-Top-News. Scout-Vorschläge – NICHT automatisch freigegeben und kein behaupteter QM-PASS.','']
   if not candidates:msg+=['Heute wurden keine aktuellen Turkish-Rider-Quellen <=7 Tage gefunden.']
-  for i,x in enumerate(candidates,1):
-   msg += [f'T{i}️⃣ {x.get("turkish_rider") or "Turkish Rider"} | {x.get("title","")}',f'🔗 Quelle: {x.get("url","")}','']
-  msg += ['Diese T1–T5 bleiben Vorschläge. Vor Veröffentlichung müssen sie durch Priority-Repair + Fakten-QM.']
   send_message('\n'.join(msg)[:4000])
+  for i,x in enumerate(candidates,1):
+   title=f'T{i}️⃣ {x.get("turkish_rider") or "Turkish Rider"} | {x.get("title","")}'
+   source=x.get('url','');og=extract_og_image_url(source)
+   caption=f'{title}\n🔗 Quelle: {source}\nStatus: Scout-Vorschlag – vor Publish Priority-Repair + Fakten-QM'
+   if og:
+    try:send_photo(og,caption=caption)
+    except Exception as e:print('TURKISH-5 PREVIEW PHOTO FAIL:',type(e).__name__,str(e)[:160]);send_message(caption)
+   else:send_message(caption)
+  send_message('Diese T1–T5 bleiben Vorschläge. Vor Veröffentlichung müssen sie durch Priority-Repair + Fakten-QM. Quellenbild wird beim Publish bevorzugt; Facebook behält die offizielle Link-Vorschau.')
   print(f'TURKISH-5 PREVIEW sent={len(candidates)}')
   return candidates
 
