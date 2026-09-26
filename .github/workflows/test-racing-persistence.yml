@@ -13,8 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Shell syntax
-        run: bash -n scripts/persist_racing_state.sh
+      - name: Syntax and approval-command regression
+        run: |
+          bash -n scripts/persist_racing_state.sh
+          python -m py_compile racing_v85.py racing_flush_notifications.py motogp_telegram_receive_v85.py
+          python - <<'PY'
+          from motogp_telegram_receive_v85 import selection
+          expected = {
+              'motogp 1': [1],
+              'Motogp 1, 5': [1, 5],
+              'motogp 1,5': [1, 5],
+              'motogp alle': [1, 2, 3, 4, 5],
+              'motogp nein': [],
+          }
+          for command, want in expected.items():
+              got = selection(command)
+              assert got == want, (command, got, want)
+          print('Racing approval command parser: PASS')
+          PY
       - name: Reproduce concurrent main update
         run: |
           set -euo pipefail
