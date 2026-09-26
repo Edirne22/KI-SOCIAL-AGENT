@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790426666
+Session-Timestamp: 1790434000
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,7 +18,7 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 4.5
+Artikelalter-Tage: 4.6
 Kategorie: MotoGP
 Serie: MotoGP
 Story-Key: motogp:1091638
@@ -28,9 +28,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-1-m
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Valencia steht 2027 als Saisonfinale fest – das haben die von MotoGP offiziell bestätigt. Der komplette Kalender kommt erst am Freitag.🏁
+Valencia ist als Saisonfinale 2027 bestätigt. Den kompletten Kalender gibt es freitags.
 
-Was erwartet ihr von der Runde in Valencia?
+Wie findet ihr die Idee, die Saison 2027 in Valencia ausklingen zu lassen?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -40,24 +40,24 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 2
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.5
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1095311
-Titel: REPORT 1h ago Victory for Bocanegra as title fight Intensifies in Cremona Race 1 It was an incredible race at Cremona as the championship raced closed up on Saturday R3 BLU CRU Champ
-Quelle: https://www.worldsbk.com/en/news/2026/09/26/victory-for-bocanegra-as-title-fight-intensifies-in-cremona-race-1/1095311
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-3-report-1h-ago-victor-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Artikelalter-Tage: 0.6
+Kategorie: WorldSSP
+Serie: WorldSSP
+Story-Key: motogp:1095355
+Titel: MAIDEN SUCCESSES: Alcoba takes first WorldSSP win ahead of Arenas and Farioli with a first-time podium
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/maiden-successes-alcoba-takes-first-worldssp-win-ahead-of-arenas-and-farioli-with-a-first-time-podium/1095355
+Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-2-maiden-successes-alc-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/26/11b62847-5abe-488c-9d46-3851682b8aa3/WSS-RACE1-REPORT.jpg
 Plattformen: Instagram + Facebook
 Text:
-Bocanegra hat Race 1 in Cremona gewonnen. Damit hat er den Titelkampf wieder enger gemacht.
+Jeremy Alcoba hat seinen ersten WorldSSP-Sieg gefeiert 🏁 Arenas wurde Zweiter, Farioli komplettiert das Podium. Der aktuelle Meisterschaftsführende landet mit dem P2 aber nicht unbedingt am Ende vorn – bei Debise P4 sieht man, wie dicht die Titelkämpfe nochmal zusammenrücken. Die Krönung dürfte am Ende in Estoril fallen.
 
-Wie schätzt ihr die aktuelle Situation im Titelkampf ein?
+Was denkt ihr, wer in Estoril den Titel holt?
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -65,24 +65,24 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 2
+Neufassungen: 1
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.5
+Artikelalter-Tage: 1.6
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1095311
-Titel: REPORT 1h ago Victory for Bocanegra as title fight Intensifies in Cremona Race 1 It was an incredible race at Cremona as the championship raced closed up on Saturday R3 BLU CRU Champ
-Quelle: https://www.worldsbk.com/en/news/2026/09/26/victory-for-bocanegra-as-title-fight-intensifies-in-cremona-race-1/1095311
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-3-report-1h-ago-victor-01.jpg
+Story-Key: motogp:1092601
+Titel: REPORT 1d ago Lecuona beats Bulega by 0.119s in FP1 at Cremona, #11 crashes at Turn 10 The Spanish rider was just over a tenth clear of his teammate, while Championship leader Bulega crashed WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/lecuona-beats-bulega-by-0119s-in-fp1-at-cremona-11-crashes-at-turn-10/1092601
+Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-3-report-1d-ago-lecuon-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Bocanegra hat Race 1 in Cremona gewonnen. Damit hat er den Titelkampf wieder enger gemacht.
+Was haltet ihr von der Situation bei PATA Yamaha?
 
-Wie schätzt ihr die aktuelle Situation im Titelkampf ein?
+FP1 in Cremona ist ganz anders gelaufen als erwartet. Lecuona war mit 0,119 Sekunden Vorsprung auf Bulega der Schnellste – genau ein Zehntel, nichtsdestotrotz klar vorne. Der Titelkämpfer Bulega hat indes bei Turn 10 den Anschluss verloren und ist gecrasht. Sein Teamkollege Lecuona macht sich in Sachen Pace schon mal ganz schön bemerkbar.
 
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #NicoloBulega #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

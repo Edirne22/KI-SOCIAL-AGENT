@@ -534,3 +534,13 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/25/im-just-angry-about-friday-b
 Story-Key: motogp:1095311
 Titel: REPORT 1h ago Victory for Bocanegra as title fight Intensifies in Cremona Race 1 It was an incredible race at Cremona as the championship raced closed up on Saturday R3 BLU CRU Champ
 Quelle: https://www.worldsbk.com/en/news/2026/09/26/victory-for-bocanegra-as-title-fight-intensifies-in-cremona-race-1/1095311
+
+## 2026-09-26 14:46 UTC – ANGEBOTEN
+Story-Key: motogp:1095355
+Titel: MAIDEN SUCCESSES: Alcoba takes first WorldSSP win ahead of Arenas and Farioli with a first-time podium
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/maiden-successes-alcoba-takes-first-worldssp-win-ahead-of-arenas-and-farioli-with-a-first-time-podium/1095355
+
+## 2026-09-26 14:46 UTC – ANGEBOTEN
+Story-Key: motogp:1092601
+Titel: REPORT 1d ago Lecuona beats Bulega by 0.119s in FP1 at Cremona, #11 crashes at Turn 10 The Spanish rider was just over a tenth clear of his teammate, while Championship leader Bulega crashed WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/lecuona-beats-bulega-by-0119s-in-fp1-at-cremona-11-crashes-at-turn-10/1092601

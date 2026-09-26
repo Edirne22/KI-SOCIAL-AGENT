@@ -1512,3 +1512,39 @@ Story-Key: motogp:1092435
 Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben; Final-Guard: Promo/Vlog/Marketing statt Racing-News
 Human-Writing-Protocol: V1.0
 
+## 2026-09-26 14:55 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 14:56 UTC | Motorcycle Racing | PASS
+Titel: MAIDEN SUCCESSES: Alcoba takes first WorldSSP win ahead of Arenas and Farioli with a first-time podium
+Story-Key: motogp:1095355
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 14:56 UTC | Motorcycle Racing | PASS
+Titel: REPORT 1d ago Lecuona beats Bulega by 0.119s in FP1 at Cremona, #11 crashes at Turn 10 The Spanish rider was just over a tenth clear of his teammate, while Championship leader Bulega crashed WorldSBK
+Story-Key: motogp:1092601
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 14:56 UTC | Motorcycle Racing | FAIL
+Titel: Feature 2d ago “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories” Catch up with all the hot topics from Thursday’s debrief as WorldSBK landed at Cremona for Round 10 WorldSBK
+Story-Key: motogp:1092435
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben; Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 14:59 UTC | Motorcycle Racing | FAIL
+Titel: Feature 2d ago “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories” Catch up with all the hot topics from Thursday’s debrief as WorldSBK landed at Cremona for Round 10 WorldSBK
+Story-Key: motogp:1092435
+Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 14:59 UTC | Motorcycle Racing | FAIL
+Titel: Feature 2d ago “I’ll remember my time here as special… We have to finish this season so maybe I’ll create more memories” Catch up with all the hot topics from Thursday’s debrief as WorldSBK landed at Cremona for Round 10 WorldSBK
+Story-Key: motogp:1092435
+Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
+Human-Writing-Protocol: V1.0
+
