@@ -73,6 +73,15 @@ def test_turkish_ten_day_window_and_selection_parser():
   assert recv.turkish_selection('turkish 1, 3,5')==[1,3,5]
   assert recv.turkish_selection('turkish alle')==[1,2,3,4,5]
   assert recv.turkish_selection('turkish nein')==[]
+  assert recv.turkish_selection('T1')==[1]
+  assert recv.turkish_selection('t2')==[2]
+  assert recv.turkish_selection('T1,T3,T5')==[1,3,5]
+  assert recv.turkish_selection('T1, T3')==[1,3]
+  assert recv.turkish_selection('T alle')==[1,2,3,4,5]
+  assert recv.turkish_selection('T nein')==[]
+  assert recv.turkish_selection('T ✅')==[1,2,3,4,5]
+  assert recv.turkish_selection('T ❌')==[]
+  assert recv.turkish_selection('turkish T1,T4')==[1,4]
   assert recv.turkish_selection('motogp 1') is None
  finally:
   a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster;a._send_turkish_source_photo=old_sender

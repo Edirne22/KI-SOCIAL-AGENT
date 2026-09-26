@@ -409,7 +409,17 @@ def main() -> None:
                 "MOTOGP:\n"
                 "motogp 2,4 – Rennen 2 und 4 freigeben\n"
                 "motogp ✅ – alle freigeben\n"
-                "motogp ❌ – alle ablehnen\n\n"
+                "motogp ❌ – alle ablehnen\n"
+                "turkish 1,3 – Turkish-Rider T1 und T3 prüfen/freigeben\n"
+                "T1 / T2 / T3 / T4 / T5 – direkter Kurzaufruf\n"
+                "T1,T3 – mehrere Turkish-Rider-Vorschläge\n"
+                "turkish alle / T alle – alle T-Vorschläge prüfen\n"
+                "turkish nein / T nein – T-Auswahl ablehnen\n\n"
+                "TURKISH RIDER:\n"
+                "T1 / T2 / T1,T3 – Vorschläge auswählen\n"
+                "turkish 1,3 – ausgeschriebene Variante\n"
+                "T alle / turkish alle – alle T-Vorschläge auswählen\n"
+                "T nein / turkish nein – Turkish-Auswahl ablehnen\n\n"
                 "RACING MANUELL:\n"
                 "racing top10 / racing top20 – gespeicherten Pool anzeigen\n"
                 "racing gestern – gestrigen Pool anzeigen\n"
@@ -467,8 +477,13 @@ def main() -> None:
             _ack(uid)
             return
 
-        if "motogp" in cmd:
-            print(f"ROUTER: Update {uid} -> MotoGP Approval (atomare Übergabe)")
+        is_turkish_approval = bool(
+            re.fullmatch(r"turkish\s+(?:(?:t\s*)?[1-5](?:[\s,]+(?:t\s*)?[1-5])*|alle|nein|✅|❌)", cmd, re.I)
+            or re.fullmatch(r"t\s*(?:[1-5](?:[\s,]+(?:t\s*)?[1-5])*|alle|nein|✅|❌)", cmd, re.I)
+        )
+        if "motogp" in cmd or is_turkish_approval:
+            lane = "Turkish Rider" if is_turkish_approval else "MotoGP"
+            print(f"ROUTER: Update {uid} -> {lane} Approval (atomare Übergabe)")
             result = subprocess.run(
                 [sys.executable, "-u", "motogp_telegram_receive.py", str(uid), chat, text],
                 check=False,
@@ -506,7 +521,7 @@ def main() -> None:
         try:
             send_message(
                 f"🤖 Kommando nicht erkannt: {text[:40]!r}\n"
-                "Beispiele: motogp 2,4 · motogp ✅ · motogp ❌ · alle · liste"
+                "Beispiele: motogp 2,4 · T1 · T1,T3 · T alle · turkish 1,3 · alle · liste"
             )
         except Exception as e:
             print(f"ROUTER: Hilfe senden fehlgeschlagen: {e}")
