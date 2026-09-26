@@ -489,3 +489,8 @@ Quelle: https://www.motogp.com/en/news/2026/09/24/mugello-to-remain-home-of-moto
 Story-Key: motogp:1095140
 Titel: NEWS 6h ago What can be won at Cremona? Round 10 of 2026 is here and there are plenty of trophies up for grabs in Italy… WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
+
+## 2026-09-26 10:04 UTC – ANGEBOTEN
+Story-Key: motogp:1095197
+Titel: REPORT: Lecuona quickest on Friday at Cremona, Bulega second but crashes twice
+Quelle: https://www.worldsbk.com/en/news/2026/09/25/report-lecuona-quickest-on-friday-at-cremona-bulega-second-but-crashes-twice/1095197

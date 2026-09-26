@@ -83,6 +83,85 @@
         "kind": "news"
       }
     ],
-    "2026-09-26": []
+    "2026-09-26": [
+      {
+        "story_key": "motogp:1095277",
+        "title": "REPORT 17h ago Okada on Pole by 0.005 seconds at Cremona It was as as close as possible as the Race 1 grid was set in the FIM Yamaha R3 BLU CRU World Cup R3 BLU CRU Champ",
+        "url": "https://www.worldsbk.com/en/news/2026/09/25/okada-on-pole-by-0005-seconds-at-cremona/1095277",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1095154",
+        "title": "“Bringing Brad on board is a bit strategic” – Muir breaks down Binder’s appeal to BMW",
+        "url": "https://www.worldsbk.com/en/news/2026/09/25/bringing-brad-on-board-is-a-bit-strategic-muir-breaks-down-binders-appeal-to-bmw/1095154",
+        "summary": "With an unfortunate 2026 season winding down, BMW is hard at work to improve their bike and set the table for the South African’s 2027 arrival",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/25/d4b58e1d-29ed-4c47-86f7-3304e3784529/54158_JDR_R04_2026_Ambience.jpg",
+        "published_at": "2026-09-25T11:21:11+0000",
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1095249",
+        "title": "“I’m just angry about Friday” – Bulega explains his two crashes at Cremona",
+        "url": "https://www.worldsbk.com/en/news/2026/09/25/im-just-angry-about-friday-bulega-explains-his-two-crashes-at-cremona/1095249",
+        "summary": "Read {ArticleTitle} and get the latest news, quotes and updates from the WorldSBK paddock.",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/25/e0939848-d6a1-4973-a3af-3919ca784662/53668_JDR_R10_2026_Ambience.jpg",
+        "published_at": "2026-09-25T16:01:59+0000",
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1092589",
+        "title": "MotoGP™ News 2027 MotoGP™ calendar revealed Read Now",
+        "url": "https://www.motogp.com/en/news/2026/09/25/2027-motogp-calendar-revealed/1092589",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1095197",
+        "title": "REPORT: Lecuona quickest on Friday at Cremona, Bulega second but crashes twice",
+        "url": "https://www.worldsbk.com/en/news/2026/09/25/report-lecuona-quickest-on-friday-at-cremona-bulega-second-but-crashes-twice/1095197",
+        "summary": "It’s advantage Lecuona at Cremona after Friday’s two sessions, but all eyes were on Bulega after he fell twice on Friday",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/25/1cb2646f-c99e-4523-be3c-0de1713c35a4/00247_DCP_R10_2026_Action.jpg",
+        "published_at": "2026-09-25T14:17:25+0000",
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1091638",
+        "title": "MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now",
+        "url": "https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      }
+    ]
   }
 }

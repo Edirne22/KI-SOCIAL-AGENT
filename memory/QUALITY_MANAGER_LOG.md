@@ -1398,3 +1398,15 @@ Story-Key: motogp:1091425
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-26 10:20 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-26 10:20 UTC | Motorcycle Racing | PASS
+Titel: REPORT: Lecuona quickest on Friday at Cremona, Bulega second but crashes twice
+Story-Key: motogp:1095197
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
