@@ -382,19 +382,46 @@ def _send_turkish_source_photo(og,caption):
     try:path.unlink(missing_ok=True)
     except Exception:pass
 
+def turkish_candidate_gate(x,now,max_days=10):
+  """Dedicated pre-editor gate for the Turkish lane.
+
+  Human T1-T5 selection owns relevance later. Here we only require a resolved
+  Turkish rider, an actual news item and a source date inside the staged window.
+  The normal Racing relevance/feature gate must not discard a supported rider
+  story before the human gets to see it.
+  """
+  rider=(x.get('turkish_rider') or detect_turkish_rider(x) or '').strip()
+  if not rider:return False
+  if x.get('kind','news')=='profile':return False
+  age=age_days(x,now)
+  return 0<=age<=max_days
+
+def turkish_candidate_reason(x,now,max_days=10):
+  rider=(x.get('turkish_rider') or detect_turkish_rider(x) or '').strip()
+  if not rider:return 'no-rider'
+  if x.get('kind','news')=='profile':return 'profile'
+  d=article_date(x)
+  if not d:return 'missing-date'
+  age=age_days(x,now)
+  if age<0:return 'future-date'
+  if age>max_days:return 'older-than-window'
+  return 'PASS'
+
 def turkish_five_preview(details,now,max_days=10):
   candidates=[];seen=set();window_used=0
   # Deliberately widen only as needed: today -> 7 days -> 10 days.
   # This prevents an older high-scoring story from displacing today's rider news.
   for days in (1,7,max_days):
    window_used=days
-   eligible=(y for y in details if is_turkish_focus(y) and current_news(y,now,days) and racing_relevant(y) and not is_feature(y))
+   eligible=(y for y in details if turkish_candidate_gate(y,now,days))
    for x in sorted(eligible,key=lambda y:editorial_score(y,roster_names()),reverse=True):
     key=story_key(x.get('title',''),x.get('url',''))
     if key in seen:continue
     seen.add(key);candidates.append(x)
     if len(candidates)>=5:break
    if len(candidates)>=5:break
+  diag=[(y.get('turkish_rider') or detect_turkish_rider(y),y.get('title','')[:70],turkish_candidate_reason(y,now,max_days)) for y in details if is_turkish_focus(y)]
+  print('TURKISH CANDIDATE-GATE DIAG '+json.dumps(diag,ensure_ascii=False))
   payload={'version':1,'created_at':int(now.timestamp()),'max_days':max_days,'window_used_days':window_used,'count':len(candidates),'items':[]}
   for i,x in enumerate(candidates,1):
    payload['items'].append({'n':i,'title':x.get('title',''),'url':x.get('url',''),'summary':x.get('summary',''),'preview':x.get('preview',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'series':series_for(x),'source_series':x.get('source_series') or series_for(x),'turkish_rider':x.get('turkish_rider') or detect_turkish_rider(x),'kind':x.get('kind','news')})
