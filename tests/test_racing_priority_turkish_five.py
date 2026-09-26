@@ -89,6 +89,22 @@ def test_rider_centered_scout_uses_registered_official_sources():
  finally:
   trs.RIDER_SOURCES=old_sources;trs._anchors=old_anchors
 
+def test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people():
+ old_get=trs.requests.get;old_anchors=trs._anchors;old_remember=trs.remember_candidate
+ try:
+  class Response:
+   text='<a href="/Haberler/Turk-Milli-Sporcu-Yarisi/">Turkish national motorcycle racer weekend report</a>'
+   def raise_for_status(self): pass
+  trs.requests.get=lambda *args,**kwargs:Response()
+  rows=trs._anchors('TMF','https://www.tmf.org.tr/Haberler/',10)
+  assert rows and rows[0][1]=='https://www.tmf.org.tr/Haberler/Turk-Milli-Sporcu-Yarisi/'
+  trs._anchors=lambda *args:[('Turkish rider racing weekend report','https://www.tmf.org.tr/Haberler/generic/','TMF','')]
+  remembered=[];trs.remember_candidate=lambda *args:remembered.append(args)
+  assert trs.discovery_scout(10)==[]
+  assert remembered==[]
+ finally:
+  trs.requests.get=old_get;trs._anchors=old_anchors;trs.remember_candidate=old_remember
+
 def test_turkish_discovery_memory_does_not_auto_promote(tmp_path=None):
  import turkish_rider_memory as mem
  from pathlib import Path
@@ -172,7 +188,7 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert callable(_production_agency.fact_whitelist_errors)
 
 if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
+ test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
