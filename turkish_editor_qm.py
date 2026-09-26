@@ -103,12 +103,12 @@ def qualify(x,agency,max_attempts=3):
             print("TURKISH SEMANTIC-QM HARD REJECT:","; ".join(hard)[:1000])
             return False
         if not sem.get("language_ok",True):
+            # Turkish lane: human T-selection already owns relevance/style.
+            # Language feedback is repair guidance, never a final publication veto
+            # after deterministic source/fact gates have passed.
             repair=repair or ["Semantic-QM meldete language_ok=False ohne Begruendung"]
-            reasons=["Sprach-QM: "+e for e in repair]
-            print(f"TURKISH LANGUAGE-QM BLOCK attempt={attempt}:","; ".join(repair)[:1000])
-            if attempt<max_attempts:continue
-            print("TURKISH LANGUAGE-QM HARD REJECT:","; ".join(repair)[:1000])
-            return False
+            print(f"TURKISH LANGUAGE-QM ADVISORY attempt={attempt}:","; ".join(repair)[:1000])
+            x["turkish_language_advisory"]=repair
         x["racing_qm"]="PASS";x["semantic_qm"]="DEGRADED-PASS" if technical else "PASS"
         x["turkish_final_qm"]="PASS";x["rewrite_count"]=attempt-1
         print(f"TURKISH FINAL-QM PASS attempt={attempt}:",x.get("title","")[:90])
