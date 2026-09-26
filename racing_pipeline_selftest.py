@@ -144,7 +144,7 @@ def test_provider_backoff():
    llm.requests.request=request;return calls
   llm._PROVIDER_COOLDOWNS.clear();calls=run_mock('fallback');out=llm.generate('final_captions','rate-limit contract test')
   ok(out=='FALLBACK OK','429 must fall back to Gemini');ok(llm.provider_in_cooldown('agnes'),'Agnes cooldown missing after 429');ok(sum('agnes-ai.com' in u for u in calls)==1,'429 provider must not be retried');ok(any('generativelanguage.googleapis.com' in u for u in calls),'Gemini fallback was not called')
-  clock[0]=159.9;ok(llm.provider_in_cooldown('agnes'),'Retry-After cooldown ended too early');clock[0]=160.1;ok(not llm.provider_in_cooldown('agnes'),'Retry-After cooldown not released')
+  deadline=llm._PROVIDER_COOLDOWNS['agnes'];ok(abs((deadline-clock[0])-60.0)<0.001,'Retry-After 60 not applied');clock[0]=deadline-0.1;ok(llm.provider_in_cooldown('agnes'),'Retry-After cooldown ended too early');clock[0]=deadline+0.1;ok(not llm.provider_in_cooldown('agnes'),'Retry-After cooldown not released')
   llm._PROVIDER_COOLDOWNS.clear();clock[0]=200.0;calls=run_mock('all429')
   try:llm.generate('final_captions','all providers 429');raise AssertionError('all 429 must fail closed')
   except RuntimeError as e:ok('fail-closed' in str(e),'all 429 must report fail-closed')
