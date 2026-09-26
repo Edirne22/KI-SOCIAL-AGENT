@@ -1,0 +1,26 @@
+name: TEST – Racing Series Lock Regression
+on:
+  pull_request:
+    paths:
+      - "racing_v85_selftest.py"
+      - "racing_v855_hardening.py"
+      - ".github/workflows/test-racing-series-lock.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install requests Pillow beautifulsoup4
+      - name: Syntax imports and Racing regressions
+        run: |
+          python -m py_compile racing_v85_selftest.py racing_v855_hardening.py racing_v85.py
+          python racing_final_guard_selftest.py
+          python tests/test_source_fact_contract_v1.py
+          python racing_pipeline_selftest.py
+          python racing_v85_selftest.py
