@@ -74,6 +74,21 @@ def test_turkish_preview_is_separate_and_limited():
  finally:
   a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster
 
+def test_rider_centered_scout_uses_registered_official_sources():
+ old_sources=trs.RIDER_SOURCES;old_anchors=trs._anchors
+ try:
+  trs.RIDER_SOURCES={'Can Öncü':{'series':'WorldSSP','official_sources':('https://official.test/can',)}}
+  called=[]
+  def fake_anchors(series,base,limit):
+   called.append((series,base,limit))
+   return [('Can Oncu race report','https://official.test/news/can','WorldSSP','Can Öncü')]
+  trs._anchors=fake_anchors
+  rows=trs.rider_centered_scout(120)
+  assert called==[('WorldSSP','https://official.test/can',120)]
+  assert rows==[('Can Oncu race report','https://official.test/news/can','Can Öncü','WorldSSP')]
+ finally:
+  trs.RIDER_SOURCES=old_sources;trs._anchors=old_anchors
+
 def test_turkish_ten_day_window_and_selection_parser():
  sent=[];old_send=a.send_message;old_photo=a.send_photo;old_og=a.extract_og_image_url;old_roster=a.roster_names;old_sender=a._send_turkish_source_photo
  try:
@@ -133,7 +148,7 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert callable(_production_agency.fact_whitelist_errors)
 
 if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
+ test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
