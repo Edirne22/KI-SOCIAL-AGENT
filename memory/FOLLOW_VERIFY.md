@@ -1,11 +1,11 @@
 # Follow-Verify
-Stand: 2026-09-25 08:54
+Stand: 2026-09-26 08:06
 
-- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
-- @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
-- @canoncu → ⚠️ @canoncu | – | Bright Data HTTP 400
-- @kenansofuoglu → ⚠️ @kenansofuoglu | – | Bright Data HTTP 400
-- @zaynsofuoglu → ⚠️ @zaynsofuoglu | – | Bright Data HTTP 400
-- @bahattinsofuoglu → ⚠️ @bahattinsofuoglu | – | Bright Data HTTP 400
-- @jackmilleraus → ⚠️ @jackmilleraus | – | Bright Data HTTP 400
-- @pecco63 → ⚠️ @pecco63 | – | Bright Data HTTP 400
+- @alexrins → ⚠️ @alexrins | – | Bright Data HTTP 400
+- @joanmir36official → ⚠️ @joanmir36official | – | Bright Data HTTP 400
+- @lucamarini10 → ⚠️ @lucamarini10 | – | Bright Data HTTP 400
+- @alexmarquez73 → ⚠️ @alexmarquez73 | – | Bright Data HTTP 400
+- @ferminaldeguer_54 → ⚠️ @ferminaldeguer_54 | – | Bright Data HTTP 400
+- @fabiodiggia49 → ⚠️ @fabiodiggia49 | – | Bright Data HTTP 400
+- @frankymorbido → ⚠️ @frankymorbido | – | Bright Data HTTP 400
+- @bestia23 → ⚠️ @bestia23 | – | Bright Data HTTP 400
