@@ -62,6 +62,8 @@ def install(a):
         elif cfo=='Moto3' and ('motogp' in cap or 'moto2' in cap) and not ('motogp' in src or 'moto2' in src):
             errs.append('Source-Fact-Whitelist: Falsche Serie MotoGP/Moto2 im Text obwohl CFO Moto3 ist')
         allowed={a.fold(n) for n in f['riders']};allowed_last={n.split()[-1] for n in allowed}
+        # Turkish names can legitimately appear with/without diacritics (Öncü/Oncu,
+        # Sofuoğlu/Sofuoglu). Compare the same folded representation on both sides.
         for n in a.RIDERS_V2:
             fn=a.fold(n);last=fn.split()[-1]
             present=fn in cap or (len(last)>=5 and re.search(r'(?<![a-z])'+re.escape(last)+r'(?![a-z])',cap))
