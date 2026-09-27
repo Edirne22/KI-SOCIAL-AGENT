@@ -1,0 +1,20 @@
+name: TEST – Turkish Series + German Language Hardening
+on:
+  pull_request:
+    paths:
+      - 'motogp_content_agency_v2.py'
+      - 'tests/test_turkish_series_language_hardening.py'
+      - '.github/workflows/test-turkish-series-language-hardening.yml'
+  workflow_dispatch:
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax check
+        run: python -m py_compile motogp_content_agency_v2.py tests/test_turkish_series_language_hardening.py
+      - name: Regression
+        run: PYTHONPATH=. python tests/test_turkish_series_language_hardening.py
