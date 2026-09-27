@@ -9,7 +9,7 @@ from turkish_rider_names import CANONICAL_ALIASES as SHARED_TURKISH_ALIASES, can
 from motoparktv_video_ingest import discover as motoparktv_discover
 from motoparktv_runtime import collect as motoparktv_collect
 from instagram_publish import extract_og_image_url
-from llm_client import generate,global_professional_context
+from llm_client import generate,global_professional_context,ProviderUnavailableError
 from pathlib import Path
 from datetime import timedelta,datetime as dt,timezone
 from concurrent.futures import ThreadPoolExecutor,as_completed
@@ -183,6 +183,7 @@ def _parse_editor_json(raw,variant):
  else:raise ValueError(f'Unbekannte Struktur-Variante: {variant}')
  return parts
 def german_editor(x,repair_reasons=None):
+ x.pop('editor_technical_error',None)
  if len(re.sub(r'\s+',' ',x.get('title','')).strip())<18:return ''
  last=None
  for technical_attempt in range(2):
@@ -195,6 +196,8 @@ def german_editor(x,repair_reasons=None):
    body='\n\n'.join(parts);x['caption']=body
    return body+'\n\n'+hashtags(x)
   except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:last=e;time.sleep(.5)
+  except ProviderUnavailableError as e:
+   x['editor_technical_error']=str(e);last=e;break
   except Exception as e:last=e;break
  print('EDITOR EXCEPTION:',type(last).__name__,str(last)[:180]);return ''
 def reanalyse_source(x,reasons):
