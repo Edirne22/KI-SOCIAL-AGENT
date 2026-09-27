@@ -31,6 +31,27 @@ def test_decimal_separator_equivalence():
     errs2=agency.fact_whitelist_errors(item,"Lecuona liegt 0,118s vor Bulega.\n\n#WorldSBK #BuelentsBikeLife")
     assert any("Zahl nicht in Quelle" in e for e in errs2),errs2
 
+def test_turkish_t1_url_id_is_not_a_fact_number():
+    install(agency)
+    item={"series":"WorldSSP","source_series":"WorldSSP","trusted_series":"WorldSSP","series_locked":True,
+          "turkish_rider":"Can Öncü",
+          "title":"WSSP Cremona 2. yarış: Alcoba’dan üst üste ikinci zafer, Can Öncü 11., Bahattin Sofuoğlu 21. sırada",
+          "summary":"Jeremy Alcoba won the second Cremona WorldSSP race. Can Öncü finished 11th and Bahattin Sofuoğlu 21st."}
+    caption=("Jeremy Alcoba feierte in Cremona seinen zweiten Sieg. Can Öncü kam auf Platz 11 ins Ziel, "
+             "Bahattin Sofuoğlu auf Platz 21.\n\n#WorldSSP #CanOncu\n\n"
+             "Quelle / weitere Infos: https://tr.motorsport.com/supersport/news/story/10859593")
+    errs=agency.fact_whitelist_errors(item,caption)
+    assert not any("10859593" in e for e in errs),errs
+    bad=agency.fact_whitelist_errors(item,caption.replace("Platz 21","Platz 22"))
+    assert any("Zahl nicht in Quelle: 22" in e for e in bad),bad
+
+def test_turkish_t1_unsourced_nationality_stays_blocked():
+    from racing_final_guard import review
+    item={"title":"Can Öncü 11., Bahattin Sofuoğlu 21. sırada",
+          "summary":"Can Öncü finished 11th and Bahattin Sofuoğlu 21st."}
+    ok,errs=review(item,"Der Türke Can Öncü wurde Elfter.")
+    assert not ok and any("Nationalitaet" in e for e in errs),errs
+
 def test_semantic_provider_failure_degraded_pass():
     # install() is idempotent for production use, but tests in this module call it
     # more than once. Reload the hardening module so this case always exercises
