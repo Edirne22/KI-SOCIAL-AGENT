@@ -1,0 +1,22 @@
+name: TEST – WorldSSP Series Lock
+on:
+  pull_request:
+    paths:
+      - "racing_v855_hardening.py"
+      - "racing_final_guard.py"
+      - "tests/test_worldssp_series_lock_regression.py"
+      - ".github/workflows/test-worldssp-series-lock.yml"
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Syntax and WSSP regression
+        run: |
+          python -m py_compile racing_v855_hardening.py racing_final_guard.py tests/test_worldssp_series_lock_regression.py
+          PYTHONPATH=. python -u tests/test_worldssp_series_lock_regression.py
