@@ -24,6 +24,7 @@ import instagram_engagement as instagram_engagement
 import facebook_engagement as facebook_engagement
 from generate_agnes_media import agnes_generate_image, save_bytes
 from instagram_publish import process_image_for_instagram, create_container, publish as ig_publish_container, wait as ig_wait
+from publish_provenance import append_publish_provenance
 from asset_paths import asset_url, RAW_BASE
 
 TELEGRAM_LAST_UPDATE_FILE = Path("memory/TELEGRAM_LAST_UPDATE_ID")
@@ -261,6 +262,10 @@ def _publish_instagram_pending(item: dict) -> bool:
                 r"(?mi)^Status:\s*(?:BILD_GENERIERT|FREIGEGEBEN)\s*$",
                 "Status: GEPOSTET",
                 new_block,
+            )
+            new_block = append_publish_provenance(
+                new_block, "instagram", str(post_id),
+                creation_id=str(cid), published_media_id=str(post_id),
             )
             updated_content = updated_content.replace(block, new_block, 1)
 
