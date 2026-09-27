@@ -62,6 +62,13 @@ def install(a):
         elif cfo=='Moto3' and ('motogp' in cap or 'moto2' in cap) and not ('motogp' in src or 'moto2' in src):
             errs.append('Source-Fact-Whitelist: Falsche Serie MotoGP/Moto2 im Text obwohl CFO Moto3 ist')
         allowed={a.fold(n) for n in f['riders']};allowed_last={n.split()[-1] for n in allowed}
+        # Shared Turkish surnames (Öncü, Sofuoğlu) cannot be resolved by riders_in()
+        # from surname alone. Human-selected turkish_rider is safe only when that
+        # same folded surname is explicitly present in the source packet.
+        selected=a.fold(str(x.get('turkish_rider','')).strip())
+        selected_last=selected.split()[-1] if selected else ''
+        if selected_last and len(selected_last)>=4 and re.search(r'(?<![a-z])'+re.escape(selected_last)+r'(?![a-z])',src):
+            allowed.add(selected);allowed_last.add(selected_last)
         for n in a.RIDERS_V2:
             fn=a.fold(n);last=fn.split()[-1]
             present=fn in cap or (len(last)>=5 and re.search(r'(?<![a-z])'+re.escape(last)+r'(?![a-z])',cap))

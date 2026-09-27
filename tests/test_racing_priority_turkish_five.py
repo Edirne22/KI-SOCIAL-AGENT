@@ -186,6 +186,10 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  import motogp_content_agency_v2 as _production_agency
  _install(_production_agency)
  assert callable(_production_agency.fact_whitelist_errors)
+ alias_item={'title':'ALCOBA AT THE FRONT WorldSSP','summary':'Alcoba takes pole, ahead of title rival Oncu in P6','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'}
+ _production_agency.lock_source_series(alias_item,'WorldSSP')
+ alias_errors=_production_agency.fact_whitelist_errors(alias_item,'Can Öncü ist laut Quelle P6.\n\n#WorldSSP #CanOncu')
+ assert not any('Fahrer nicht in Quelle: Can Oncu' in e or 'Fahrer nicht in Quelle: Can Öncü' in e for e in alias_errors),alias_errors
 
 if __name__=='__main__':
  test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
