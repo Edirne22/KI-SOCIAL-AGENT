@@ -158,7 +158,8 @@ def _turkish_site_crawl(source,base,max_pages=30,depth=2):
    # Follow same-site category/index pages, but cap depth/pages to avoid an unbounded spider.
    route=path.lower()+'/'
    pagination=bool(re.search(r'(?:/page/|/sayfa/|[?&](?:page|sayfa)=)\d+',u,re.I))
-   category=any(k in route for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans','/yaris','/yarış','/motogp','/moto2','/moto3','/superbike','/worldsbk','/worldssp','/supersport')) or pagination
+   motorsport_dead_nav=(host=='tr.motorsport.com' and re.fullmatch(r'/[^/]+(?:/(?:news|schedule|videos|drivers|teams))?/?',parsed.path.lower()) is not None)
+   category=(any(k in route for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans','/yaris','/yarış','/motogp','/moto2','/moto3','/superbike','/worldsbk','/worldssp','/supersport')) or pagination) and not motorsport_dead_nav
    if d<depth and category and not article and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
  rows.sort(key=lambda x:racing_relevance(x[0]+' '+x[1]),reverse=True)
  print(f'TURKISH WEB CRAWL {source}: pages={len(visited)} candidates={len(rows)}')
