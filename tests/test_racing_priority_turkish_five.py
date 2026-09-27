@@ -27,6 +27,8 @@ def test_central_turkish_rider_source_registry():
  assert RIDER_CONTEXT['Deniz Öncü']['series']=='Moto2'
  assert RIDER_CONTEXT['Can Öncü']['series']=='WorldSSP'
  assert RIDER_CONTEXT['Bahattin Sofuoğlu']['series']=='WorldSSP'
+ assert RIDER_CONTEXT['Zayn Sofuoğlu']['series']=='Karting'
+ assert RIDER_CONTEXT['Zayn Sofuoğlu']['official_sources']==('https://www.iame-motorsport.com/iame-series-benelux',)
  assert all(v.get('official_sources') for v in RIDER_CONTEXT.values())
  assert len(RIDER_CONTEXT)>=12
  for rider in ('Oğuz Taşhan','İshak Demir Dönmez','Berkay Sarıay','Poyraz Bor','Orhan Karık','Alp Burak Albayrak','Efe Okur','Hasan Hüseyin Baş'):
@@ -152,6 +154,11 @@ def test_turkish_ten_day_window_and_selection_parser():
   assert recv.turkish_selection('T ✅')==[1,2,3,4,5]
   assert recv.turkish_selection('T ❌')==[]
   assert recv.turkish_selection('turkish T1,T4')==[1,4]
+  assert recv.turkish_selection('turkish 12')==[12]
+  assert recv.turkish_selection('T12,T17')==[12,17]
+  assert recv.turkish_selection('turkish 20')==[20]
+  assert recv.turkish_selection('turkish 21') is None
+  assert recv.turkish_list_requested('turkish liste')
   assert recv.turkish_selection('motogp 1') is None
  finally:
   a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster;a._send_turkish_source_photo=old_sender
@@ -192,7 +199,25 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert not any('Fahrer nicht in Quelle: Can Oncu' in e or 'Fahrer nicht in Quelle: Can Öncü' in e for e in alias_errors),alias_errors
 
 if __name__=='__main__':
- test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard()
+ test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
+
+
+def test_turkish_top20_history_keeps_preview_compact():
+ sent=[];old_send=a.send_message;old_photo=a.send_photo;old_og=a.extract_og_image_url;old_roster=a.roster_names;old_sender=a._send_turkish_source_photo
+ try:
+  a.send_message=lambda m:sent.append(m);a.send_photo=lambda *args,**kwargs:None;a.extract_og_image_url=lambda u:'';a.roster_names=lambda:[];a._send_turkish_source_photo=lambda og,caption:False
+  rows=[{'title':f'Can Öncü WorldSSP race result {i}','summary':'Can Öncü WorldSSP race','url':f'https://example.test/history{i}','published_at':'2026-09-26T10:00:00+00:00','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'} for i in range(20)]
+  from datetime import datetime,timezone
+  visible=a.turkish_five_preview(rows,datetime(2026,9,26,12,0,tzinfo=timezone.utc),10)
+  assert len(visible)==5
+  import json
+  session=json.loads(a.TURKISH_SESSION.read_text(encoding='utf-8'))
+  assert session['count']==20
+  assert len(session['items'])==20
+  assert session['items'][-1]['n']==20
+  assert any('turkish liste' in m for m in sent)
+ finally:
+  a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster;a._send_turkish_source_photo=old_sender
