@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790525797
+Session-Timestamp: 1790532660
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,7 +18,7 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.2
 Kategorie: Turkish Riders
 Serie: WorldSSP
 Story-Key: motogp:10859593
@@ -29,13 +29,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-1-w
 Quellen-Preview: https://cdn-4.motorsport.com/images/amp/YE9E5PMY/s6/alcoba-wssp.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat das zweite Rennen in Cremona gewonnen – sein zweiter Sieg in Folge.
+Jeremy Alcoba hat das zweite Rennen in Cremona gewonnen – und das schon zum zweiten Mal hintereinander. Can Öncü kam bei uns auf Platz 11 ins Ziel, Bahattin Sofuoğlu wurde 21.
 
-Can Öncü kam auf Platz 11 ins Ziel.
-
-Bahattin Sofuoğlu landete auf Position 21.
-
-Wie findet ihr die Performance von Öncü und Sofuoğlu an diesem Wochenende?
+Wie seht ihr die Leistungen unserer Jungs in Cremona?
 
 #WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -45,10 +41,10 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
+Artikelalter-Tage: 1.1
 Kategorie: Turkish Riders
 Serie: MotoGP
 Story-Key: title:toprak-razgatl-o-lu-bu-sezon-bana-sbk-daki-i-lk-y-l-m-hat-rlat-yor
@@ -59,13 +55,13 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-2-t
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/06/toprak-razgatlioglu-kenan-sofuoglu-cekya-gp-brno.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu sagte, dass seine MotoGP-Debütsaison ihn an seinen ersten WorldSBK-Jahr 2018 erinnert hat.
+Toprak Razgatlıoğlu vergleicht seine MotoGP-Debütsaison mit seinem ersten Jahr im WorldSBK 2018.
 
-Der türkische Fahrer gab zu, dass er in der schwierigen Zeit fast damit aufgehört hätte zu rennen.
+Der türkische Fahrer gab offen zu, damals sogar über einen Rücktritt aus dem Rennsport nachgedacht zu haben.
 
-Die Parallele zwischen den beiden Saisons zeigt, wie herausfordernd der Sprung in die Königsklasse sein kann.
+Die Parallele zwischen den beiden Serien begleitet ihn auch jetzt noch.
 
-Was denkt ihr — kann Toprak das Tempo in der MotoGP halten?
+Wie seht ihr den direkten Vergleich zu 2018?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -75,10 +71,10 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 2
+Neufassungen: 3
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 1.3
+Artikelalter-Tage: 1.4
 Kategorie: Turkish Riders
 Serie: MotoGP
 Story-Key: motogp:116150
@@ -89,9 +85,13 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-3-m
 Quellen-Preview: https://trf1.net/wp-content/uploads/2026/09/gng_1346519_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu hat eine sehr offene Aussage gemacht. Der türkische Pilot beschreibt seine schwere Rookie-Saison in der MotoGP als Spiegel seiner WorldSBK-Zeit im Jahr 2018 – mit Kawasaki auf der Piste kämpfte er seiner Meinung nach um dieselben Dinge: einfach nur vorn mitmischen zu können. In beiden Serien fiel der Einstieg ins höhere Feld schwer.
+Toprak Razgatlıoğlu hat überlegt, 2026 mit dem Rennfahren aufzuhören.
 
-Was haltet ihr davon, wie offen er über die Schwierigkeiten spricht?
+Seine erste MotoGP-Saison glich stark seiner 2018 WorldSBK-Debut-Saison.
+
+In beiden ersten Jahren hatte er Schwierigkeiten, vorne mitzufahren.
+
+Wie seht ihr seine Entwicklung?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -101,10 +101,10 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.9
+Artikelalter-Tage: 2.0
 Kategorie: Turkish Riders
 Serie: WorldSSP
 Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
@@ -115,9 +115,11 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-4-c
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Can Öncü hat beim Superpole-Training in Cremona in der WorldSSP den sechsten Platz belegt – mit nur 0,365 Sekunden Rückstand auf die Pole. Das ist sehr knapp und zeigt, dass er direkt vorne mitmischt. 🔥
+Can Öncü in Cremona: Sechster im Superpole – nur 0,365 Sekunden von der Pole.
 
-Wie schätzt ihr seine Chancen für den Renntag ein?
+Beim WorldSSP-Training in Cremona zeigte Can Öncü starke Runden und landete auf Platz sechs. Der Rückstand auf die Pole-Time belief sich auf 0,365 Sekunden. Die Basis für einen guten Rennstart ist gelegt.
+
+Wie schätzt ihr die Situation ein?
 
 #WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -127,10 +129,10 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.0
+Artikelalter-Tage: 2.1
 Kategorie: Turkish Riders
 Serie: WorldSSP
 Story-Key: motogp:10859078
@@ -141,9 +143,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-5-w
 Quellen-Preview: https://cdn-8.motorsport.com/images/amp/0R7BJNB2/s6/can-oncu-aragon.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat den Superpole-Lauf in Cremona gewonnen und Kawasaki nach 2021 wieder ganz oben platziert. Can Öncü landete auf Rang 6.
+Jeremy Alcoba hat sich bei WSSP in Cremona die Superpole gesichert – für Kawasaki zum ersten Mal seit 2021 dort an der Spitze. Can Öncü beendet das Superpole-Training auf Rang sechs.
 
-Wie seht ihr die Rückkehr von Kawasaki an die Spitze?
+Was meint ihr: Wie gut sieht es für die beiden im Rennen aus?
 
 #WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
