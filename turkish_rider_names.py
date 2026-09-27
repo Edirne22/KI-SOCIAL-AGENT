@@ -27,6 +27,7 @@ RIDER_CONTEXT={
  "Deniz Öncü":{"series":"Moto2","official_sources":("https://www.motogp.com/en/riders/-/7f2593e1-d17e-4a83-9890-d9c383b29898","https://www.motogp.com/en/news/Moto2"),"rider_group":"KNN54 Riders","mentor_manager":"Kenan Sofuoğlu"},
  "Can Öncü":{"series":"WorldSSP","official_sources":("https://www.worldsbk.com/en/riders/can-oncu/8482","https://www.worldsbk.com/en/news/ssp"),"rider_group":"KNN54 Riders","mentor_manager":"Kenan Sofuoğlu"},
  "Bahattin Sofuoğlu":{"series":"WorldSSP","official_sources":("https://www.worldsbk.com/en/riders/bahattin-sofuoglu/8467","https://www.worldsbk.com/en/news/ssp"),"rider_group":"KNN54 Riders","mentor_manager":"Kenan Sofuoğlu"},
+ "Zayn Sofuoğlu":{"series":"Karting","official_sources":("https://www.iame-motorsport.com/iame-series-benelux",)},
  "Oğuz Taşhan":{"series":"European SSP300 Cup","official_sources":("https://www.tmf.org.tr/Haberler/Silverstone-da-Milli-Mesai/","https://www.tmf.org.tr/Haberler/")},
  "İshak Demir Dönmez":{"series":"European SSP300 / BMU","official_sources":("https://www.tmf.org.tr/Haberler/Silverstone-da-Milli-Mesai/","https://www.tmf.org.tr/Haberler/")},
  "Berkay Sarıay":{"series":"MotoMini 190","official_sources":("https://www.tmf.org.tr/Haberler/Silverstone-da-Milli-Mesai/","https://www.tmf.org.tr/Haberler/")},
