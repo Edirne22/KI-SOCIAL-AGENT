@@ -1,0 +1,23 @@
+name: TEST – Semantic QM JSON Recovery
+
+on:
+  pull_request:
+    paths:
+      - 'racing_semantic_qm.py'
+      - 'tests/test_semantic_qm_json_recovery.py'
+      - '.github/workflows/test-semantic-qm-json-recovery.yml'
+  workflow_dispatch:
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests
+      - name: Syntax and semantic JSON regression
+        run: |
+          python -m py_compile racing_semantic_qm.py tests/test_semantic_qm_json_recovery.py
+          PYTHONPATH=. python tests/test_semantic_qm_json_recovery.py

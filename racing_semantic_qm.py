@@ -8,7 +8,29 @@ SOURCE_FACT_CONTRACT_VERSION='SOURCE-FACT-CONTRACT-V1'
 _ALLOWED_EVIDENCE_FIELDS={'series','title','summary'}
 
 def _clean_json(raw):
- raw=(raw or '').strip();raw=re.sub(r'^\`\`\`(?:json)?\s*|\s*\`\`\`$','',raw,flags=re.I|re.S);return json.loads(raw)
+ raw=(raw or '').strip()
+ raw=re.sub(r'^\`\`\`(?:json)?\s*|\s*\`\`\`$','',raw,flags=re.I|re.S).strip()
+ try:return json.loads(raw)
+ except json.JSONDecodeError as first:
+  # Recover one complete top-level JSON object from harmless provider prose.
+  start=raw.find('{')
+  if start<0:raise
+  depth=0;quoted=False;escaped=False
+  for i,ch in enumerate(raw[start:],start):
+   if quoted:
+    if escaped:escaped=False
+    elif ch=='\\':escaped=True
+    elif ch=='"':quoted=False
+    continue
+   if ch=='"':quoted=True
+   elif ch=='{':depth+=1
+   elif ch=='}':
+    depth-=1
+    if depth==0:
+     candidate=raw[start:i+1]
+     try:return json.loads(candidate)
+     except json.JSONDecodeError:raise first
+  raise first
 def _fold(s):return (s or '').casefold().replace('ı','i').replace('ğ','g').replace('ü','u').replace('ö','o').replace('ş','s').replace('ç','c')
 def _system_hashtags(caption):
  blocks=[b.strip() for b in str(caption or '').split('\n\n') if b.strip()]
