@@ -126,7 +126,7 @@ def rider_centered_scout(limit_per_source=120):
 
 def _turkish_site_crawl(source,base,max_pages=30,depth=2):
  """Breadth-first crawl of same-site landing/category pages; articles stay discovery-only."""
- host=(urlsplit(base).hostname or '').lower();queue=[(base,0)];visited=set();rows=[];seen_urls=set()
+ host=(urlsplit(base).hostname or '').lower().removeprefix('www.');queue=[(base,0)];visited=set();rows=[];seen_urls=set()
  while queue and len(visited)<max_pages:
   page_url,d=queue.pop(0)
   if page_url in visited:continue
@@ -136,7 +136,7 @@ def _turkish_site_crawl(source,base,max_pages=30,depth=2):
    print(f'TURKISH WEB CRAWL FAIL {source}: {type(e).__name__}: {str(e)[:100]}');continue
   for href,title in re.findall(r'href=["\\\']([^"\\\']+)["\\\'][^>]*>(.*?)</a>',page,re.I|re.S):
    u=urljoin(page_url,href);parsed=urlsplit(u);t=clean(title)
-   if (parsed.hostname or '').lower()!=host or parsed.scheme not in ('http','https'):continue
+   if (parsed.hostname or '').lower().removeprefix('www.')!=host or parsed.scheme not in ('http','https'):continue
    low=u.lower();path=parsed.path.rstrip('/')
    aa_article=(host in ('aa.com.tr','www.aa.com.tr') and
                re.fullmatch(r'/tr/spor/.+/[0-9]+',path) is not None)
@@ -157,7 +157,8 @@ def _turkish_site_crawl(source,base,max_pages=30,depth=2):
     seen_urls.add(u);rows.append((t,u,classify_series(source,t,u),rider_for(t+' '+u,source)))
    # Follow same-site category/index pages, but cap depth/pages to avoid an unbounded spider.
    route=path.lower()+'/'
-   category=any(k in route for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans','/motogp','/worldsbk'))
+   pagination=bool(re.search(r'(?:/page/|/sayfa/|[?&](?:page|sayfa)=)\\d+',u,re.I))
+   category=any(k in route for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans','/yaris','/yarış','/motogp','/moto2','/moto3','/superbike','/worldsbk','/worldssp','/supersport')) or pagination
    if d<depth and category and not article and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
  rows.sort(key=lambda x:racing_relevance(x[0]+' '+x[1]),reverse=True)
  print(f'TURKISH WEB CRAWL {source}: pages={len(visited)} candidates={len(rows)}')
