@@ -1920,3 +1920,51 @@ Story-Key: motogp:10859418
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-27 23:03 UTC | Motorcycle Racing | FAIL
+Titel: Toprak Razgatlıoğlu: “Bu Sezon Bana SBK'daki İlk Yılımı Hatırlatıyor”
+Story-Key: title:toprak-razgatl-o-lu-bu-sezon-bana-sbk-daki-i-lk-y-l-m-hat-rlat-yor
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 23:04 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu: “Bu Sezon Bana SBK'daki İlk Yılımı Hatırlatıyor”
+Story-Key: title:toprak-razgatl-o-lu-bu-sezon-bana-sbk-daki-i-lk-y-l-m-hat-rlat-yor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 23:04 UTC | Motorcycle Racing | FAIL
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 23:05 UTC | Motorcycle Racing | FAIL
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 23:05 UTC | Motorcycle Racing | PASS
+Titel: WSSP Cremona 2. yarış: Alcoba’dan üst üste ikinci zafer, Can Öncü 11., Bahattin Sofuoğlu 21. sırada
+Story-Key: motogp:10859593
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 23:05 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 23:05 UTC | Motorcycle Racing | PASS
+Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
+Story-Key: motogp:10859078
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 23:05 UTC | Motorcycle Racing | PASS
+Titel: REPORT 8h ago NEW CHAMPION: Bulega secures 2026 title with second place, Lecuona completes Cremona hat-trick The #7 rounded out his weekend with a hat-trick but the celebrations belonged to Bulega who was crowned World Champion WorldSBK
+Story-Key: motogp:1095556
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

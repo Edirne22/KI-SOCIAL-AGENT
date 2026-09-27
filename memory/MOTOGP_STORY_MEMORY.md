@@ -609,3 +609,8 @@ Quelle: https://motoetkinlik.com/toprak-razgatlioglu-bu-sezon-bana-sbkdaki-ilk-y
 Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
 Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
 Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
+
+## 2026-09-27 22:57 UTC – ANGEBOTEN
+Story-Key: motogp:1095556
+Titel: REPORT 8h ago NEW CHAMPION: Bulega secures 2026 title with second place, Lecuona completes Cremona hat-trick The #7 rounded out his weekend with a hat-trick but the celebrations belonged to Bulega who was crowned World Champion WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/27/new-champion-bulega-secures-2026-title-with-second-place-lecuona-completes-cremona-hat-trick/1095556
