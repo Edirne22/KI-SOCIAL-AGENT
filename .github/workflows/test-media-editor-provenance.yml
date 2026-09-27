@@ -1,0 +1,22 @@
+name: TEST – Media Editor Provenance
+on:
+  pull_request:
+    paths:
+      - "generate_agnes_media.py"
+      - "publish_provenance.py"
+      - "tests/test_media_editor_provenance.py"
+      - ".github/workflows/test-media-editor-provenance.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Preflight
+        run: python -m py_compile publish_provenance.py generate_agnes_media.py tests/test_media_editor_provenance.py
+      - name: Provenance contract
+        run: PYTHONPATH=. python -u tests/test_media_editor_provenance.py
