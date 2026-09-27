@@ -134,10 +134,22 @@ def hashtags(x):
  s=series_for(x);series_tag={'Moto2':'#Moto2','Moto3':'#Moto3','WorldSSP':'#WorldSSP','WorldSSP300':'#WorldSSP300','WorldSBK':'#WorldSBK'}.get(s,'#MotoGP');names=riders_in(' '.join((x.get('caption',''),x.get('title',''),x.get('summary',''))));r=x.get('turkish_rider') or detect_turkish_rider(x)
  if r and r not in names:names.insert(0,r)
  tags=[series_tag]+['#'+re.sub(r'[^A-Za-z0-9]','',fold(n).title().replace(' ','')) for n in names[:2]]+['#MotorradRacing','#RacingDeutschland','#BuelentsBikeLife'];return ' '.join(dict.fromkeys(tags))
+def turkish_language_leak(caption):
+ """Detect Turkish prose while allowing canonical Turkish rider names/diacritics."""
+ text=str(caption or '')
+ # Names are legitimate German copy; remove them before language-token inspection.
+ for rider in SHARED_TURKISH_ALIASES:
+  text=re.sub(re.escape(rider),' ',text,flags=re.I)
+ low=fold(text)
+ tokens=set(re.findall(r"[a-z]+",low))
+ strong={'dusundum','yarismayi','birakmayi','kazandi','bitirdi','cikti','sampiyonu','hatirlatiyor','temsilcimiz','sirada','puansiz'}
+ common={'yarisi','yaris','sezonu','icin','ikinci','birinci','oldu','ama','ile','podyum','zirvede'}
+ return bool(tokens & strong) or len(tokens & common)>=3
+
 def language_sane(caption):
  low=fold(caption)
  foreign_turkish=('puansiz','sirada bitirdi','yarisi kazandi','podyuma cikti')
- return not racing_lexicon_errors(caption) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:')) and not any(x in low for x in foreign_turkish)
+ return not racing_lexicon_errors(caption) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:')) and not any(x in low for x in foreign_turkish) and not turkish_language_leak(caption)
 STRUCTURE_VARIANTS={
  'HOOK_BODY_QUESTION':('{"hook":"...","body":"...","question":"..."}','Konkreter Hook, danach 2–5 natuerliche Saetze, am Ende eine konkrete Community-Frage.'),
  'BODY_QUESTION':('{"body":"...","question":"..."}','Ohne Hook direkt mit den Fakten einsteigen, danach eine konkrete Community-Frage.'),
@@ -146,13 +158,13 @@ STRUCTURE_VARIANTS={
  'QUESTION_HOOK_BODY':('{"question":"...","body":"..."}','Mit einer konkreten Community-Frage beginnen, danach die belegten Fakten erklaeren.'),
  'ZITAT_BODY':('{"quote":"...","body":"...","question":"..."}','Nur ein in TITEL/ZUSAMMENFASSUNG woertlich vorhandenes Fahrer-Zitat unveraendert im quote-Feld verwenden; im JSON-Wert selbst keine Anfuehrungszeichen hinzufuegen. Wenn kein woertliches Fahrer-Zitat vorhanden ist, die belegte Fahreraussage ohne erfundene Woertlichkeit formulieren. Danach Kontext und Community-Frage.'),
 }
-def choose_structure_variant():return random.choice(tuple(STRUCTURE_VARIANTS))
+def choose_structure_variant():return random.choice(tuple(k for k in STRUCTURE_VARIANTS if k!='QUESTION_HOOK_BODY'))
 def _editor_prompt(x,repair_reasons=None,structure_variant=None):
  enrich_turkish(x);repair='';variant=structure_variant or choose_structure_variant()
  if variant not in STRUCTURE_VARIANTS:raise ValueError(f'Unbekannte Struktur-Variante: {variant}')
  if repair_reasons:repair='\nRUECKGABE AUS DER QM-KETTE. Analysiere die Originalfakten erneut und behebe exakt diese Punkte. FAKTEN DUERFEN WEDER ERGAENZT NOCH VERAENDERT WERDEN:\n- '+'\n- '.join(repair_reasons[:10])+'\n'
  title=' '.join(str(x.get('title','')).split());summary=' '.join(str(x.get('summary','')).split());series=series_for(x);turkish=x.get('turkish_rider') or 'NEIN';schema,instruction=STRUCTURE_VARIANTS[variant]
- return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: Verwende ausschließlich die Serie aus dem CFO ({series}). Keine Klassenzuordnung erfinden. Die SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine erfundenen oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. Schreibe konkret statt mit erfundenen Metaphern oder Fuellsaetzen. Formulierungen wie 'altes Stammgelaende', 'verfuegbare Alternative', 'frische Impulse' oder aehnliche redaktionelle Ausschmueckungen sind verboten, wenn genau diese Aussage nicht in TITEL/ZUSAMMENFASSUNG belegt ist. Wenn eine Information nicht belegt ist, lasse sie weg statt sie plausibel klingen zu lassen. Die Community-Frage muss direkt aus dem belegten Kernthema des Posts entstehen und darf kein neues Teilthema wie Starts, Favoriten oder Strategie einfuehren, wenn TITEL/ZUSAMMENFASSUNG das nicht tragen. Mindestens 2 natuerliche Saetze bzw. bei FACT_FACT_FACT mindestens 3 kompakte Fakten. Keine Hashtags erzeugen.{repair}\nSTRUKTUR-VARIANTE: {variant}\nSTRUKTUR-ANWEISUNG: {instruction}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\n\n{racing_lexicon_contract('EDITOR')}\nAntworte nur JSON nach diesem Schema: {schema}'''
+ return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: Verwende ausschließlich die Serie aus dem CFO ({series}). Keine Klassenzuordnung erfinden. Die SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine erfundenen oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. Bei fremdsprachigen, besonders tuerkischen Quellen: zuerst Bedeutung und belegte Fakten erfassen, dann Titel/Hook/Body/CTA vollstaendig und idiomatisch auf Deutsch NEU formulieren; niemals tuerkischen Satzbau oder einen tuerkischen Quelltitel als fertigen Hook uebernehmen. Tuerkische Eigennamen und ihre korrekten Zeichen (z. B. Öncü, Sofuoğlu, Razgatlıoğlu) bleiben unveraendert. Der erste inhaltliche Satz muss das Thema/Faktum einordnen; keine generische Community-Frage vor dem eigentlichen Inhalt. Schreibe konkret statt mit erfundenen Metaphern oder Fuellsaetzen. Formulierungen wie 'altes Stammgelaende', 'verfuegbare Alternative', 'frische Impulse' oder aehnliche redaktionelle Ausschmueckungen sind verboten, wenn genau diese Aussage nicht in TITEL/ZUSAMMENFASSUNG belegt ist. Wenn eine Information nicht belegt ist, lasse sie weg statt sie plausibel klingen zu lassen. Die Community-Frage muss direkt aus dem belegten Kernthema des Posts entstehen und darf kein neues Teilthema wie Starts, Favoriten oder Strategie einfuehren, wenn TITEL/ZUSAMMENFASSUNG das nicht tragen. Mindestens 2 natuerliche Saetze bzw. bei FACT_FACT_FACT mindestens 3 kompakte Fakten. Keine Hashtags erzeugen.{repair}\nSTRUKTUR-VARIANTE: {variant}\nSTRUKTUR-ANWEISUNG: {instruction}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\n\n{racing_lexicon_contract('EDITOR')}\nAntworte nur JSON nach diesem Schema: {schema}'''
 def _parse_editor_json(raw,variant):
  raw=(raw or '').strip();raw=re.sub(r'^\`\`\`(?:json)?\s*|\s*\`\`\`$','',raw,flags=re.I|re.S);o=json.loads(raw)
  def need(name):
