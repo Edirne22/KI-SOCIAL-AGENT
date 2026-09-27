@@ -32,7 +32,7 @@ def _one_edit_or_transposition(a,b):
  return True
 def _editorial_text(caption):
  text=str(caption or '').split('Quelle / weitere Infos:',1)[0]
- return re.sub(r'(?m)^\\s*#[^\\n]*$','',text)
+ return '\n'.join(line for line in text.splitlines() if not line.strip().startswith('#')).strip()
 def _name_spelling_errors(item,caption):
  source_fold={_fold(n):n for n in _source_names(item)}
  source_text=_fold(' '.join(str(item.get(k,'')) for k in ('title','summary','video_transcript')))
