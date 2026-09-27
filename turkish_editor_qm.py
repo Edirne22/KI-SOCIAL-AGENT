@@ -76,7 +76,7 @@ def _copied_source_phrase(x,caption,min_words=9):
 def _editorial_text(caption):
     """Strip deterministic hashtags/source provenance before language/copy review."""
     text=str(caption or "").split("\n\nQuelle / weitere Infos:",1)[0]
-    text=re.sub(r"(?m)^\\s*#[^\\n]*$","",text)
+    text=re.sub(r"(?m)^\s*#[^\n]*$","",text)
     return text.strip()
 
 def final_review(x,caption,agency):
