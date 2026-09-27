@@ -88,6 +88,7 @@ def install(a):
         cap_facts=re.sub(r'https?://\S+',' ',cap)
         srcnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',src)}
         capnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',cap_facts)}
+        for n in sorted(capnums-srcnums):errs.append('Source-Fact-Whitelist: Zahl nicht in Quelle: '+n)
         return errs
 
     def prompt(x,reasons=None,structure_variant=None):
