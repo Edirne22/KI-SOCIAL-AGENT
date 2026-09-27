@@ -13,7 +13,7 @@ Bild: assets/generated/test.jpg
 Quelle: https://www.youtube.com/watch?v=abcdefghijk
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Nutzungsrecht: eigene KI-Editorialgrafik
-Quellen-Lineage: {"origin":"MotoParkTv","source_url":"https://www.youtube.com/watch?v=abcdefghijk","transcription":"local-whisper","original_wording_reuse":false}
+Quellen-Lineage: {{"origin":"MotoParkTv","source_url":"https://www.youtube.com/watch?v=abcdefghijk","transcription":"local-whisper","original_wording_reuse":false}}
 """
 
 ig_block=BASE.format(platform="Instagram")
