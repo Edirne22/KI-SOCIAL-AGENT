@@ -292,7 +292,8 @@ def process_block(content, platform_header, want_video_check=True):
                     updated_block,
                     count=1,
                 )
-                updated_block = append_media_provenance(\n                    updated_block,\n                    _media_provenance("image", image_filename, "agnes-image-2.1-flash"),\n                )\n                print(f"Agnes-Bild gespeichert: {image_filename}")
+                updated_block = append_media_provenance(updated_block, _media_provenance("image", image_filename, "agnes-image-2.1-flash"))
+                print(f"Agnes-Bild gespeichert: {image_filename}")
             else:
                 print("Agnes-Bild fehlgeschlagen.")
 
