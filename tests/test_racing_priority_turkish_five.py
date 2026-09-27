@@ -157,6 +157,14 @@ def test_turkish_ten_day_window_and_selection_parser():
   assert recv.turkish_selection('turkish 12')==[12]
   assert recv.turkish_selection('T12,T17')==[12,17]
   assert recv.turkish_selection('turkish 20')==[20]
+  assert recv.turkish_selection('T1')==[1]
+  assert recv.turkish_selection('T2')==[2]
+  assert recv.turkish_selection('T1-4')==[1,2,3,4]
+  assert recv.turkish_selection('T 1-4')==[1,2,3,4]
+  assert recv.turkish_selection('turkish 1-4')==[1,2,3,4]
+  assert recv.turkish_selection('T1-T4')==[1,2,3,4]
+  assert recv.turkish_selection('T1-4,T7,T10-12')==[1,2,3,4,7,10,11,12]
+  assert recv.turkish_selection('T4-1') is None
   assert recv.turkish_selection('turkish 21') is None
   assert recv.turkish_list_requested('turkish liste')
   assert recv.turkish_selection('motogp 1') is None
