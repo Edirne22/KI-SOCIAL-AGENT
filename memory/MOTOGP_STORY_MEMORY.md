@@ -584,3 +584,13 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/26/i-want-to-secure-the-champio
 Story-Key: motogp:1095432
 Titel: REPORT 4h ago SUNDAY WARM UP: Lecuona leads on Sunday morning as Bulega closes in ahead of Sam Lowes Margins are narrowing in Cremona on Sunday as the Championship trophy is in the paddock awaiting a new winner WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/27/sunday-warm-up-lecuona-leads-on-sunday-morning-as-bulega-closes-in-ahead-of-sam-lowes/1095432
+
+## 2026-09-27 13:51 UTC – ANGEBOTEN
+Story-Key: motogp:1095437
+Titel: REPORT 4h ago LECUONA DOUBLE: The #7 resists Bulega challenge for Superpole Race win, Surra claims first rostrum Bulega and Lecuona had alternative tyre options for the Superpole Race, while rookie Surra bounced back from his Race 1 fall WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/27/lecuona-double-the-7-resists-bulega-challenge-for-superpole-race-win-surra-claims-first-rostrum/1095437
+
+## 2026-09-27 13:51 UTC – ANGEBOTEN
+Story-Key: motogp:1095540
+Titel: ALCOBA DOUBLES UP: Alcoba closes Cremona in P1, Arenas, who sees the title decider delayed to Estoril
+Quelle: https://www.worldsbk.com/en/news/2026/09/27/alcoba-doubles-up-alcoba-closes-cremona-in-p1-arenas-who-sees-the-title-decider-delayed-to-estoril/1095540

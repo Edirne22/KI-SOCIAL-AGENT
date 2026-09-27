@@ -1782,3 +1782,45 @@ Story-Key: motogp:1095432
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-27 14:10 UTC | Motorcycle Racing | PASS
+Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
+Story-Key: motogp:10859078
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 14:10 UTC | Motorcycle Racing | PASS
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 14:10 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 14:10 UTC | Motorcycle Racing | PASS
+Titel: REPORT 4h ago LECUONA DOUBLE: The #7 resists Bulega challenge for Superpole Race win, Surra claims first rostrum Bulega and Lecuona had alternative tyre options for the Superpole Race, while rookie Surra bounced back from his Race 1 fall WorldSBK
+Story-Key: motogp:1095437
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 14:11 UTC | Motorcycle Racing | FAIL
+Titel: WSSP İtalya 1. yarış: Alcoba’dan Cremona’da WSSP zaferi, Can Öncü puansız ayrıldı, Bahattin Sofuoğlu 19. sırada bitirdi!
+Story-Key: motogp:10859418
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 14:13 UTC | Motorcycle Racing | FAIL
+Titel: WSSP İtalya 1. yarış: Alcoba’dan Cremona’da WSSP zaferi, Can Öncü puansız ayrıldı, Bahattin Sofuoğlu 19. sırada bitirdi!
+Story-Key: motogp:10859418
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 14:13 UTC | Motorcycle Racing | PASS
+Titel: ALCOBA DOUBLES UP: Alcoba closes Cremona in P1, Arenas, who sees the title decider delayed to Estoril
+Story-Key: motogp:1095540
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

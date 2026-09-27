@@ -59,19 +59,6 @@
     ],
     "2026-09-27": [
       {
-        "story_key": "motogp:1095414",
-        "title": "NEWS 19h ago “I want to secure the Championship here, so second was a clever position” – Bulega explains his Race 1 strategy The #11 finished 5.5 seconds down on teammate Lecuona in Race 1, but he’ll have another chance to win the title on Sunday WorldSBK",
-        "url": "https://www.worldsbk.com/en/news/2026/09/26/i-want-to-secure-the-championship-here-so-second-was-a-clever-position-bulega-explains-his-race-1-strategy/1095414",
-        "summary": "",
-        "preview": "",
-        "published_at": null,
-        "series": "WorldSBK",
-        "source_series": "WorldSBK",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
         "story_key": "motogp:1095334",
         "title": "TITLE BATTLE CONTINUES: Artigas pushes title decider to Jerez in P1 at Cremona beating out Dessoy and Salvador",
         "url": "https://www.worldsbk.com/en/news/2026/09/26/title-battle-continues-artigas-pushes-title-decider-to-jerez-in-p1-at-cremona-beating-out-dessoy-and-salvador/1095334",
@@ -85,9 +72,22 @@
         "kind": "news"
       },
       {
-        "story_key": "motogp:1095432",
-        "title": "REPORT 4h ago SUNDAY WARM UP: Lecuona leads on Sunday morning as Bulega closes in ahead of Sam Lowes Margins are narrowing in Cremona on Sunday as the Championship trophy is in the paddock awaiting a new winner WorldSBK",
-        "url": "https://www.worldsbk.com/en/news/2026/09/27/sunday-warm-up-lecuona-leads-on-sunday-morning-as-bulega-closes-in-ahead-of-sam-lowes/1095432",
+        "story_key": "motogp:1095437",
+        "title": "REPORT 4h ago LECUONA DOUBLE: The #7 resists Bulega challenge for Superpole Race win, Surra claims first rostrum Bulega and Lecuona had alternative tyre options for the Superpole Race, while rookie Surra bounced back from his Race 1 fall WorldSBK",
+        "url": "https://www.worldsbk.com/en/news/2026/09/27/lecuona-double-the-7-resists-bulega-challenge-for-superpole-race-win-surra-claims-first-rostrum/1095437",
+        "summary": "",
+        "preview": "",
+        "published_at": null,
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1095457",
+        "title": "REPORT 3h ago Takahira takes series lead by a point after Race 2 victory in Cremona The Japanese rider set up an Estoril showdown with victory in Italy, with one point separating the top two R3 BLU CRU Champ",
+        "url": "https://www.worldsbk.com/en/news/2026/09/27/takahira-takes-series-lead-by-a-point-after-race-2-victory-in-cremona/1095457",
         "summary": "",
         "preview": "",
         "published_at": null,
@@ -99,7 +99,7 @@
       },
       {
         "story_key": "motogp:1095427",
-        "title": "NEWS 5h ago Gardner ruled unfit to continue at Cremona The Australian Yamaha rider has been ruled out of competition in Italy as a result of a crash on Friday in FP2 WorldSBK",
+        "title": "NEWS 6h ago Gardner ruled unfit to continue at Cremona The Australian Yamaha rider has been ruled out of competition in Italy as a result of a crash on Friday in FP2 WorldSBK",
         "url": "https://www.worldsbk.com/en/news/2026/09/27/gardner-ruled-unfit-to-continue-at-cremona/1095427",
         "summary": "",
         "preview": "",
@@ -115,10 +115,10 @@
         "title": "WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi",
         "url": "https://tr.motorsport.com/supersport/news/wssp-superpole-italya-alcoba-cremonada-kawasaki-2021den-sonra-ilk-kez-zirvede-can-oncu-6-sirada-bit/10859078",
         "summary": "Supersport Dünya Şampiyonası’nın Cremona’da düzenlenen Superpole seansını Kawasaki sürücüsü Jeremy Alcoba kazandı.",
-        "preview": "https://cdn-5.motorsport.com/images/amp/0R7BJNB2/s6/can-oncu-aragon.jpg",
+        "preview": "https://cdn-8.motorsport.com/images/amp/0R7BJNB2/s6/can-oncu-aragon.jpg",
         "published_at": "2026-09-25T16:30:00Z",
-        "series": "Moto2",
-        "source_series": "Moto2",
+        "series": "WorldSSP",
+        "source_series": "WorldSSP",
         "series_locked": true,
         "turkish_rider": "Can Öncü",
         "kind": "news"
@@ -134,6 +134,19 @@
         "source_series": "WorldSSP",
         "series_locked": true,
         "turkish_rider": "Can Öncü",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:1095540",
+        "title": "ALCOBA DOUBLES UP: Alcoba closes Cremona in P1, Arenas, who sees the title decider delayed to Estoril",
+        "url": "https://www.worldsbk.com/en/news/2026/09/27/alcoba-doubles-up-alcoba-closes-cremona-in-p1-arenas-who-sees-the-title-decider-delayed-to-estoril/1095540",
+        "summary": "The #52 converted pole position to a pair of P1s in a picture-perfect weekend",
+        "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/27/c9044542-c5c1-4224-8220-f8a0ee2af6b9/SSP-RACE2-REPORT.jpg",
+        "published_at": "2026-09-27T13:13:30+0000",
+        "series": "WorldSSP",
+        "source_series": "WorldSSP",
+        "series_locked": true,
+        "turkish_rider": "",
         "kind": "news"
       },
       {

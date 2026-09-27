@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790512559
+Session-Timestamp: 1790517112
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,24 +18,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.8
+Artikelalter-Tage: 1.9
 Kategorie: Turkish Riders
-Serie: Moto2
+Serie: WorldSSP
 Story-Key: motogp:10859078
 Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
 Quelle: https://tr.motorsport.com/supersport/news/wssp-superpole-italya-alcoba-cremonada-kawasaki-2021den-sonra-ilk-kez-zirvede-can-oncu-6-sirada-bit/10859078
 Quellen-Lineage: {}
 Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-1-wssp-superpole-italy-01.jpg
-Quellen-Preview: https://cdn-5.motorsport.com/images/amp/0R7BJNB2/s6/can-oncu-aragon.jpg
+Quellen-Preview: https://cdn-8.motorsport.com/images/amp/0R7BJNB2/s6/can-oncu-aragon.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat in Cremona die Superpole gewonnen – und das mit einem Kawasaki. Erstmals seit 2021 stand hier wieder ein japanischer Zweiradhersteller ganz oben auf dem Podest der Bestenqualifikation.
+Alcoba gewinnt Superpole in Cremona – Kawasaki erstmals wieder an der Spitze seit 2021! Die Kawasaki-Piloten waren also wieder oben mit dabei. Can Öncu startet aus der sechsten Position.
 
-Can Öncü musste sich mit Platz sechs zufriedengeben – weit entfernt von der Spitzengruppe.
+Wie schätzt ihr die Chancen für den Rest des Rennwochenendes ein?
 
-Wie seht ihr die Kawasaki-Rückkehr an die Spitze der Supersport-Weltmeisterschaft?
-
-#Moto2 #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -44,7 +42,7 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 2
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 1.2
 Kategorie: Turkish Riders
@@ -57,13 +55,11 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-2-m
 Quellen-Preview: https://trf1.net/wp-content/uploads/2026/09/gng_1346519_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu fand seine erste MotoGP-Saison richtig hart.
+2026’da Yarışmayı Bırakmayı Düşündüm
 
-Sie erinnert ihn stark an seinen Start in der WorldSBK im Jahr 2018.
+Toprak Razgatlıoğlu vergleicht seine erste MotoGP-Saison mit seinem Debütjahr 2018 in der Superbike auf Kawasaki. In beiden Serien tat er sich in der Anfangsphase schwer, ganz vorne mitzumischen.
 
-In beiden Serien musste er in den Anfangsjahren um die vorderen Plätze kämpfen.
-
-Wie seht ihr den Vergleich zwischen den beiden Serien?
+Wie schätzt ihr die Situation ein?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -73,10 +69,10 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 5.5
+Artikelalter-Tage: 5.6
 Kategorie: MotoGP
 Serie: MotoGP
 Story-Key: motogp:1091638
@@ -87,9 +83,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-3-m
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Wo beendet ihr die MotoGP-Saison?
+MotoGP hat bestätigt: Valencia ist das Saisonfinale 2027.🏁 Wann der restliche Kalender für das Folgejahr kommt, erfahren wir bereits am Freitag – dann geht die ganze Liste raus.
 
-Valencia steht bereits als Saisonfinale 2027 fest – das hat die MotoGP offiziell bestätigt. Den kompletten Kalender gibt es ab Freitag. Wie schätzt ihr die Wahl ein?
+Was haltet ihr von Valencia als Schlusskampf?
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -99,25 +95,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 2
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.5
+Artikelalter-Tage: 0.6
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1095414
-Titel: NEWS 19h ago “I want to secure the Championship here, so second was a clever position” – Bulega explains his Race 1 strategy The #11 finished 5.5 seconds down on teammate Lecuona in Race 1, but he’ll have another chance to win the title on Sunday WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/26/i-want-to-secure-the-championship-here-so-second-was-a-clever-position-bulega-explains-his-race-1-strategy/1095414
+Story-Key: motogp:1095437
+Titel: REPORT 4h ago LECUONA DOUBLE: The #7 resists Bulega challenge for Superpole Race win, Surra claims first rostrum Bulega and Lecuona had alternative tyre options for the Superpole Race, while rookie Surra bounced back from his Race 1 fall WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/27/lecuona-double-the-7-resists-bulega-challenge-for-superpole-race-win-surra-claims-first-rostrum/1095437
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-4-news-19h-ago-i-want-01.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-4-report-4h-ago-lecuon-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Was haltet ihr von der Strategie, absichtlich Platz zwei zu fahren, um die Meisterschaft zu sichern?
+Lecuona gewinnt den Superpole Race vor Bulega, der mit alternativen Reifen dran blieb, aber nicht dicht genug herankam. rookie Surra holt sich nach seinem Sturz im Race 1 zum ersten Mal aufs Podium. 💨
 
-Bulega hat in Race 1 bewusst den zweiten Rang eingeplant. Seine Begründung: Wer die Titelchance hier festigen will, wählt den sicheren Weg. Mit 5,5 Sekunden Rückstand auf Teamkollege Lecuona geht es am Sonntag um den Sieg.
+Wie seht ihr Surras Comeback?
 
-#WorldSBK #NicoloBulega #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #NicoloBulega #AlbertoSurra #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -128,26 +124,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.5
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1095432
-Titel: REPORT 4h ago SUNDAY WARM UP: Lecuona leads on Sunday morning as Bulega closes in ahead of Sam Lowes Margins are narrowing in Cremona on Sunday as the Championship trophy is in the paddock awaiting a new winner WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/27/sunday-warm-up-lecuona-leads-on-sunday-morning-as-bulega-closes-in-ahead-of-sam-lowes/1095432
+Artikelalter-Tage: 0.6
+Kategorie: WorldSSP
+Serie: WorldSSP
+Story-Key: motogp:1095540
+Titel: ALCOBA DOUBLES UP: Alcoba closes Cremona in P1, Arenas, who sees the title decider delayed to Estoril
+Quelle: https://www.worldsbk.com/en/news/2026/09/27/alcoba-doubles-up-alcoba-closes-cremona-in-p1-arenas-who-sees-the-title-decider-delayed-to-estoril/1095540
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-5-report-4h-ago-sunday-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-5-alcoba-doubles-up-al-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/27/c9044542-c5c1-4224-8220-f8a0ee2af6b9/SSP-RACE2-REPORT.jpg
 Plattformen: Instagram + Facebook
 Text:
-Im WorldSBK-Warm-Up am Sonntagmorgen in Cremona setzte sich Lecuona an die Spitze.
+Wie seht ihr das?
 
-Bulega rückte dicht heran und platzierte sich vor Sam Lowes.
+Jeremy Alcoba mit der #52 hat in Cremona die Pole-Position direkt in zwei Rennsiege verwandelt. Damit schließt er die Veranstaltung in P1 ab und die Titelentscheidung rückt auf Estoril hinaus. 🏁
 
-Die Abstände in Cremona werden am Sonntag enger, während die Meisterschaftstrophäe im Fahrerlager auf einen neuen Sieger wartet.
-
-Schauen wir mal, wer sich die Trophäe in Cremona holt.
-
-#WorldSBK #SamLowes #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
