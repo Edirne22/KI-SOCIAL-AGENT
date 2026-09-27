@@ -51,6 +51,9 @@ def ingest(url,title,description,published_at,transcript=None):
  row={"source":"MotoParkTv","source_url":url,"url":url,"title":title,"summary":description,
       "published_at":published_at,"video_transcript":transcript,
       "freshness_score":freshness_score(freshness_hours(published_at)),
-      "riders":riders,"transcript":transcript}
+      "riders":riders,"transcript":transcript,
+      "source_lineage":{"version":1,"origin":"MotoParkTv","source_url":url,"published_at":published_at,
+                        "evidence_fields":["title","summary","video_transcript"],"transcription":"local-whisper",
+                        "original_wording_reuse":False}}
  remember_video(row)
  return row
