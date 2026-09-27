@@ -142,7 +142,7 @@ def post_to_facebook(page_id, page_token, message, image_file=None, video_file=N
     return None
 
 
-def mark_block(content, block, post_id):
+def mark_block(content, block, post_id, object_type=None):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
     new_block = re.sub(
         r"^## Facebook(?:\s+\[[^\]]+\])?",
@@ -161,7 +161,7 @@ def mark_block(content, block, post_id):
         "",
         new_block,
     )
-    new_block = append_publish_provenance(new_block, "facebook", post_id)
+    new_block = append_publish_provenance(new_block, "facebook", post_id, object_type=object_type, object_id=str(post_id))
     return content.replace(block, new_block, 1)
 
 
@@ -187,7 +187,7 @@ if __name__ == "__main__":
 
     if post_id:
         print(f"Erfolgreich veröffentlicht: {post_id}")
-        content = mark_block(content, block, post_id)
+        content = mark_block(content, block, post_id, media_type.lower())
         with open("content/PUBLISHED.md", "w", encoding="utf-8") as f:
             f.write(content)
     else:
