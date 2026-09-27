@@ -90,3 +90,27 @@ try:
 finally:
  scout.requests.get=old_get
 print('TEST – Turkish Rider-Centered Web Search: PASS')
+
+
+# Article links must not exhaust the crawl budget before a linked racing category.
+old_get=scout.requests.get
+try:
+ class CrawlResp:
+  def __init__(self,text):self.text=text
+  def raise_for_status(self):pass
+ def crawl_get(url,**kwargs):
+  if url.endswith('/tr/spor'):
+   football=''.join(
+    f'<a href="/tr/spor/futbol/mac-{i}/{1000000+i}">Futbol derbisi mac haberi {i}</a>'
+    for i in range(35)
+   )
+   return CrawlResp(football+'<a href="/tr/spor/motor-sporlari">Motor sporları haberleri</a>')
+  if url.endswith('/tr/spor/motor-sporlari'):
+   return CrawlResp('<a href="/tr/spor/motor-sporlari/can-oncu-cremona/9999999">Can Öncü Dünya Supersport yarış haberi</a>')
+  return CrawlResp('')
+ scout.requests.get=crawl_get
+ crawled=scout._turkish_site_crawl('AnadoluAjansi','https://www.aa.com.tr/tr/spor',max_pages=30,depth=2)
+ assert any(row[3]=='Can Öncü' for row in crawled),crawled
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Category Crawl Budget: PASS')

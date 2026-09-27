@@ -121,13 +121,17 @@ def _turkish_site_crawl(source,base,max_pages=30,depth=2):
   for href,title in re.findall(r'href=["\\\']([^"\\\']+)["\\\'][^>]*>(.*?)</a>',page,re.I|re.S):
    u=urljoin(page_url,href);parsed=urlsplit(u);t=clean(title)
    if (parsed.hostname or '').lower()!=host or parsed.scheme not in ('http','https'):continue
-   low=u.lower()
-   article=('/haberler/' in low or '/spor/' in low) and len(t)>=20
+   low=u.lower();path=parsed.path.rstrip('/')
+   aa_article=(host in ('aa.com.tr','www.aa.com.tr') and
+               re.fullmatch(r'/tr/spor/.+/[0-9]+',path) is not None)
+   tmf_article=(host in ('tmf.org.tr','www.tmf.org.tr') and
+                path.lower().startswith('/haberler/') and path.lower()!='/haberler')
+   article=(aa_article or tmf_article) and len(t)>=20
    if article and u not in seen_urls:
     seen_urls.add(u);rows.append((t,u,classify_series(source,t,u),rider_for(t+' '+u,source)))
    # Follow same-site category/index pages, but cap depth/pages to avoid an unbounded spider.
    category=any(k in low for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans'))
-   if d<depth and category and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
+   if d<depth and category and not article and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
  print(f'TURKISH WEB CRAWL {source}: pages={len(visited)} candidates={len(rows)}')
  return rows
 
@@ -137,20 +141,21 @@ def _turkish_web_search(rider,aliases,limit=20):
  terms=[]
  for name in (rider,)+tuple(aliases or ()):
   if name and fold(name) not in {fold(x) for x in terms}:terms.append(name)
- # Google is discovery only; candidate URLs must be Turkish domains and pass downstream fact/freshness gates.
- for name in terms[:3]:
-  q=quote_plus(f'"{name}" motosiklet site:tr OR site:com.tr')
-  url='https://www.google.com/search?q='+q+'&num='+str(min(limit,20))
-  try:
-   r=requests.get(url,headers=UA,timeout=30);r.raise_for_status();page=r.text
-  except Exception as e:
-   print(f'TURKISH WEB SEARCH FAIL {rider}: {type(e).__name__}: {str(e)[:100]}');continue
-  for href,title in re.findall(r"<a[^>]+href=[\\\"'](?:/url\\?q=)?([^\\\"'&]+)[^>]*>(.*?)</a>",page,re.I|re.S):
-   u=html.unescape(href);t=clean(title);host=(urlsplit(u).hostname or '').lower()
-   if not u.startswith('http') or not (host.endswith('.tr') or host.endswith('.com.tr')) or len(t)<10 or u in seen:continue
-   if rider_for(t+' '+u,'')!=rider:continue
-   seen.add(u);out.append((t,u,'',rider))
-   if len(out)>=limit:return out
+ # One query includes canonical and ASCII spellings, reducing throttling while keeping
+ # the shared identity check and Turkish-domain boundary.
+ names=' OR '.join(f'"{name}"' for name in terms[:3])
+ q=quote_plus(f'({names}) motosiklet site:.tr')
+ url='https://www.google.com/search?q='+q+'&num='+str(min(limit,20))
+ try:
+  r=requests.get(url,headers=UA,timeout=30);r.raise_for_status();page=r.text
+ except Exception as e:
+  print(f'TURKISH WEB SEARCH FAIL {rider}: {type(e).__name__}: {str(e)[:100]}');return out
+ for href,title in re.findall(r"<a[^>]+href=[\\\"'](?:/url\\?q=)?([^\\\"'&]+)[^>]*>(.*?)</a>",page,re.I|re.S):
+  u=html.unescape(href);t=clean(title);result_host=(urlsplit(u).hostname or '').lower()
+  if not u.startswith('http') or not result_host.endswith('.tr') or len(t)<10 or u in seen:continue
+  if rider_for(t+' '+u,'')!=rider:continue
+  seen.add(u);out.append((t,u,'',rider))
+  if len(out)>=limit:return out
  return out
 
 def turkish_web_scout(limit_per_source=120):
