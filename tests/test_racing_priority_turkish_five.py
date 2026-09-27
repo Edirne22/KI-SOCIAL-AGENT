@@ -208,7 +208,7 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  alias_errors=_production_agency.fact_whitelist_errors(alias_item,'Can Öncü ist laut Quelle P6.\n\n#WorldSSP #CanOncu')
  assert not any('Fahrer nicht in Quelle: Can Oncu' in e or 'Fahrer nicht in Quelle: Can Öncü' in e for e in alias_errors),alias_errors
 
-def test_turkish_top20_history_keeps_preview_compact();test_turkish_range_dispatches_all_selected_items():
+def test_turkish_top20_history_keeps_preview_compact():
  sent=[];old_send=a.send_message;old_photo=a.send_photo;old_og=a.extract_og_image_url;old_roster=a.roster_names;old_sender=a._send_turkish_source_photo
  try:
   a.send_message=lambda m:sent.append(m);a.send_photo=lambda *args,**kwargs:None;a.extract_og_image_url=lambda u:'';a.roster_names=lambda:[];a._send_turkish_source_photo=lambda og,caption:False
@@ -252,7 +252,7 @@ def test_turkish_range_dispatches_all_selected_items():
   if old_lane is not None:sys.modules['turkish_editor_qm']=old_lane
 
 
-if __name__=='__main__':
+if __name__=='__main__':;test_turkish_range_dispatches_all_selected_items()
  test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
