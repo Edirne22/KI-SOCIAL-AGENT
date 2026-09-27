@@ -574,3 +574,13 @@ Quelle: https://tr.motorsport.com/moto2/news/moto2-avusturya-gp-yaris-guevaradan
 Story-Key: motogp:10859418
 Titel: WSSP İtalya 1. yarış: Alcoba’dan Cremona’da WSSP zaferi, Can Öncü puansız ayrıldı, Bahattin Sofuoğlu 19. sırada bitirdi!
 Quelle: https://tr.motorsport.com/supersport/news/wssp-italya-1-yaris-alcobadan-cremonada-wssp-zaferi-can-oncu-puansiz-ayrildi-bahattin-sofuoglu-19-s/10859418
+
+## 2026-09-27 12:35 UTC – ANGEBOTEN
+Story-Key: motogp:1095414
+Titel: NEWS 19h ago “I want to secure the Championship here, so second was a clever position” – Bulega explains his Race 1 strategy The #11 finished 5.5 seconds down on teammate Lecuona in Race 1, but he’ll have another chance to win the title on Sunday WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/i-want-to-secure-the-championship-here-so-second-was-a-clever-position-bulega-explains-his-race-1-strategy/1095414
+
+## 2026-09-27 12:35 UTC – ANGEBOTEN
+Story-Key: motogp:1095432
+Titel: REPORT 4h ago SUNDAY WARM UP: Lecuona leads on Sunday morning as Bulega closes in ahead of Sam Lowes Margins are narrowing in Cremona on Sunday as the Championship trophy is in the paddock awaiting a new winner WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/27/sunday-warm-up-lecuona-leads-on-sunday-morning-as-bulega-closes-in-ahead-of-sam-lowes/1095432

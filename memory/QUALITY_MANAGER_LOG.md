@@ -1746,3 +1746,39 @@ Story-Key: motogp:10859418
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-27 13:04 UTC | Motorcycle Racing | PASS
+Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
+Story-Key: motogp:10859078
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 13:04 UTC | Motorcycle Racing | FAIL
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 13:05 UTC | Motorcycle Racing | PASS
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 13:05 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 13:06 UTC | Motorcycle Racing | PASS
+Titel: NEWS 19h ago “I want to secure the Championship here, so second was a clever position” – Bulega explains his Race 1 strategy The #11 finished 5.5 seconds down on teammate Lecuona in Race 1, but he’ll have another chance to win the title on Sunday WorldSBK
+Story-Key: motogp:1095414
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 13:06 UTC | Motorcycle Racing | PASS
+Titel: REPORT 4h ago SUNDAY WARM UP: Lecuona leads on Sunday morning as Bulega closes in ahead of Sam Lowes Margins are narrowing in Cremona on Sunday as the Championship trophy is in the paddock awaiting a new winner WorldSBK
+Story-Key: motogp:1095432
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

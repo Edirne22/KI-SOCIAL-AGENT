@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790499052
+Session-Timestamp: 1790512559
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,19 +18,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.7
+Artikelalter-Tage: 1.8
 Kategorie: Turkish Riders
 Serie: Moto2
 Story-Key: motogp:10859078
 Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
 Quelle: https://tr.motorsport.com/supersport/news/wssp-superpole-italya-alcoba-cremonada-kawasaki-2021den-sonra-ilk-kez-zirvede-can-oncu-6-sirada-bit/10859078
+Quellen-Lineage: {}
 Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-1-wssp-superpole-italy-01.jpg
 Quellen-Preview: https://cdn-5.motorsport.com/images/amp/0R7BJNB2/s6/can-oncu-aragon.jpg
 Plattformen: Instagram + Facebook
 Text:
-Wie schätzt ihr das Ergebnis von Cremona ein?
+Jeremy Alcoba hat in Cremona die Superpole gewonnen – und das mit einem Kawasaki. Erstmals seit 2021 stand hier wieder ein japanischer Zweiradhersteller ganz oben auf dem Podest der Bestenqualifikation.
 
-Kawasaki-Fahrer Jeremy Alcoba hat sich in Italien die Superpole in Cremona gesichert. Damit steht Kawasaki zum ersten Mal seit 2021 wieder ganz oben. Can Öncü beendete die Session auf dem 6. Platz. 🏍️💨
+Can Öncü musste sich mit Platz sechs zufriedengeben – weit entfernt von der Spitzengruppe.
+
+Wie seht ihr die Kawasaki-Rückkehr an die Spitze der Supersport-Weltmeisterschaft?
 
 #Moto2 #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -40,22 +43,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
+Artikelalter-Tage: 1.2
 Kategorie: Turkish Riders
 Serie: MotoGP
 Story-Key: motogp:116150
 Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150
+Quellen-Lineage: {}
 Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-2-motogp-toprak-razgat-01.jpg
 Quellen-Preview: https://trf1.net/wp-content/uploads/2026/09/gng_1346519_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Wie schätzt ihr die Situation von Toprak Razgatlıoğlu ein?
+Toprak Razgatlıoğlu fand seine erste MotoGP-Saison richtig hart.
 
-Toprak Razgatlıoğlu vergleicht seine schwierige Rookie-Saison in der MotoGP mit seinem WorldSBK-Einstieg 2018 auf Kawasaki. In beiden Rennserien tat sich der türkische Pilot zu Beginn schwer, an der Spitze mitzukämpfen. Zudem erklärte er, sogar über ein Karriereende 2026 nachgedacht zu haben.
+Sie erinnert ihn stark an seinen Start in der WorldSBK im Jahr 2018.
+
+In beiden Serien musste er in den Anfangsjahren um die vorderen Plätze kämpfen.
+
+Wie seht ihr den Vergleich zwischen den beiden Serien?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -67,24 +75,23 @@ Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
-Herkunft: Aktuell
-Artikelalter-Tage: 6.9
-Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: motogp:10857469
-Titel: Moto2 Avusturya GP yarış: Guevara’dan kritik zafer, Deniz Öncü ilk 10’da!
-Quelle: https://tr.motorsport.com/moto2/news/moto2-avusturya-gp-yaris-guevaradan-kritik-zafer-deniz-oncu-ilk-10da/10857469
-Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-3-moto2-avusturya-gp-y-01.jpg
-Quellen-Preview: https://cdn-5.motorsport.com/images/amp/YvKBK7G6/s6/izan-guevara-pramac-racing.jpg
+Herkunft: Top-20 vom Vortag
+Artikelalter-Tage: 5.5
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1091638
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
+Quellen-Lineage: {}
+Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-3-motogp-news-motogp-c-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Guevara hat in Österreich gewonnen – und der Titelkampf heizt sich weiter an.
+Wo beendet ihr die MotoGP-Saison?
 
-Izan Guevara hat den Sieg bei der Moto2-Runde in Österreich eingefahren. Bei der Sache selbst geht es um mehr als nur einen Rennsieg – in der WM-Tabelle brennt gerade richtig was. Auch Deniz Öncü hat mit einem Platzierung unter den ersten zehn solide mitgemischt.
+Valencia steht bereits als Saisonfinale 2027 fest – das hat die MotoGP offiziell bestätigt. Den kompletten Kalender gibt es ab Freitag. Wie schätzt ihr die Wahl ein?
 
-Wie schätzt ihr die aktuelle Titelkampfsituation in der Moto2 ein?
-
-#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -92,24 +99,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
-Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 5.4
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1091638
-Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
-Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-4-motogp-news-motogp-c-01.jpg
+Neufassungen: 2
+QM-Ruecklaeufe: 2
+Herkunft: Aktuell
+Artikelalter-Tage: 1.5
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1095414
+Titel: NEWS 19h ago “I want to secure the Championship here, so second was a clever position” – Bulega explains his Race 1 strategy The #11 finished 5.5 seconds down on teammate Lecuona in Race 1, but he’ll have another chance to win the title on Sunday WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/26/i-want-to-secure-the-championship-here-so-second-was-a-clever-position-bulega-explains-his-race-1-strategy/1095414
+Quellen-Lineage: {}
+Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-4-news-19h-ago-i-want-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Die MotoGP hat bestätigt, dass das Rennen in Valencia 2027 als Saisonfinale durchgeht. Der komplette Kalender für die nächste Saison wird am Freitag vorgestellt.
+Was haltet ihr von der Strategie, absichtlich Platz zwei zu fahren, um die Meisterschaft zu sichern?
 
-Was erwartet ihr von der Runde in Valencia?
+Bulega hat in Race 1 bewusst den zweiten Rang eingeplant. Seine Begründung: Wer die Titelchance hier festigen will, wählt den sicheren Weg. Mit 5,5 Sekunden Rückstand auf Teamkollege Lecuona geht es am Sonntag um den Sieg.
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #NicoloBulega #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -120,25 +128,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: motogp:10859418
-Titel: WSSP İtalya 1. yarış: Alcoba’dan Cremona’da WSSP zaferi, Can Öncü puansız ayrıldı, Bahattin Sofuoğlu 19. sırada bitirdi!
-Quelle: https://tr.motorsport.com/supersport/news/wssp-italya-1-yaris-alcobadan-cremonada-wssp-zaferi-can-oncu-puansiz-ayrildi-bahattin-sofuoglu-19-s/10859418
-Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-5-wssp-italya-1-yaris-01.jpg
-Quellen-Preview: https://cdn-3.motorsport.com/images/amp/0Zq8vGN6/s6/jeremy.jpg
+Artikelalter-Tage: 0.5
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1095432
+Titel: REPORT 4h ago SUNDAY WARM UP: Lecuona leads on Sunday morning as Bulega closes in ahead of Sam Lowes Margins are narrowing in Cremona on Sunday as the Championship trophy is in the paddock awaiting a new winner WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/27/sunday-warm-up-lecuona-leads-on-sunday-morning-as-bulega-closes-in-ahead-of-sam-lowes/1095432
+Quellen-Lineage: {}
+Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-5-report-4h-ago-sunday-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat bei Cremonas erstem WSSP-Rennen gewonnen – und sich seinen ersten WorldSSP-Sieg gesichert.
+Im WorldSBK-Warm-Up am Sonntagmorgen in Cremona setzte sich Lecuona an die Spitze.
 
-Can Öncü kam in derselben Veranstaltung puansız an.
+Bulega rückte dicht heran und platzierte sich vor Sam Lowes.
 
-Bahattin Sofuoğlu landete auf Rang 19.
+Die Abstände in Cremona werden am Sonntag enger, während die Meisterschaftstrophäe im Fahrerlager auf einen neuen Sieger wartet.
 
-Was meint ihr, hat Can noch Luft nach oben in dieser Saison?
+Schauen wir mal, wer sich die Trophäe in Cremona holt.
 
-#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #SamLowes #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
