@@ -18,6 +18,7 @@ NEWS_ENDPOINTS = {
     "Moto2": urljoin(BASE, "kategori/moto2/"),
     "Moto3": urljoin(BASE, "kategori/moto3/"),
     "WorldSBK": urljoin(BASE, "kategori/wsbk/"),
+    "WorldSSP": urljoin(BASE, "kategori/worldssp/"),
     "Racing": urljoin(BASE, "kategori/yaris/"),
     "Video": urljoin(BASE, "kategori/youtube/"),
 }
