@@ -87,9 +87,31 @@ def derive_events() -> list[dict]:
     out=[]
     # Published facts are strong operational evidence, not proof of content quality.
     pub=read(PUBLISHED)
-    for m in re.finditer(r'^## (.+?) \[GEPOSTET ([^|\]]+)(?: \| ID: ([^\]]+))?\]', pub, re.M):
-        platform, when, media_id=m.groups()
-        out.append({'type':'published','source':'content/PUBLISHED.md','subject':platform.strip(),'value':media_id or when.strip(),'confidence':1.0})
+    blocks=re.split(r'(?m)(?=^## )', pub)
+    for block in blocks:
+        first=block.splitlines()[0] if block.splitlines() else ''
+        marker=' [GEPOSTET '
+        if not first.startswith('## ') or marker not in first or not first.endswith(']'): continue
+        platform, meta=first[3:].split(marker,1)
+        meta=meta[:-1]
+        when, sep, media_id=meta.partition(' | ID: ')
+        media_id=media_id if sep else None
+        event={'type':'published','source':'content/PUBLISHED.md','subject':platform.strip(),
+               'value':media_id or when.strip(),'confidence':1.0}
+        provenance_line=next((line for line in block.splitlines() if line.startswith('Publish-Provenienz: ')), None)
+        if provenance_line:
+            try:
+                parsed=json.loads(provenance_line.split(': ',1)[1])
+                event['publish_provenance']=parsed
+                event['post_id']=str(parsed.get('post_id') or media_id or '')
+                event['media_kind']=parsed.get('media_kind','')
+                event['media_path']=parsed.get('media_path','')
+                event['source_url']=parsed.get('source_url','')
+                if isinstance(parsed.get('source_lineage'),dict):
+                    event['source_lineage']=parsed['source_lineage']
+            except json.JSONDecodeError:
+                pass
+        out.append(event)
     # Duplicate blocks are reliable failure events.
     dup=read(DUPLICATES)
     for m in re.finditer(r'(?m)^## ([^\n]+).*?^- Grund: ([^\n]+)', dup, re.S|re.M):
