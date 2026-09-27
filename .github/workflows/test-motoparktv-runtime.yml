@@ -1,0 +1,22 @@
+name: TEST – MotoParkTv Runtime
+on:
+  pull_request:
+    paths:
+      - 'motoparktv_runtime.py'
+      - 'motoparktv_video_ingest.py'
+      - 'motogp_content_agency_v2.py'
+      - '.github/workflows/motogp-content-agency.yml'
+      - 'tests/test_motoparktv_runtime.py'
+      - '.github/workflows/test-motoparktv-runtime.yml'
+  workflow_dispatch:
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests Pillow beautifulsoup4
+      - run: python -m py_compile motoparktv_runtime.py motoparktv_video_ingest.py motogp_content_agency_v2.py tests/test_motoparktv_runtime.py
+      - run: PYTHONPATH=. python tests/test_motoparktv_runtime.py

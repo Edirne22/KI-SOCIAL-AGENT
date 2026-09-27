@@ -6,6 +6,8 @@ from chief_quality_manager import review as chief_review
 from racing_semantic_qm import review_detailed as semantic_review_detailed
 from turkish_riders_scout import scout as turkish_scout, racing_scout, rider_centered_scout, discovery_scout, turkish_media_scout, turkish_web_scout
 from turkish_rider_names import CANONICAL_ALIASES as SHARED_TURKISH_ALIASES, canonical_rider as registry_canonical_rider, context_for as registry_context_for
+from motoparktv_video_ingest import discover as motoparktv_discover
+from motoparktv_runtime import collect as motoparktv_collect
 from instagram_publish import extract_og_image_url
 from llm_client import generate,global_professional_context
 from pathlib import Path
@@ -469,6 +471,20 @@ def run_v8():
  # Learn before editorial selection: verified riders refresh their memory and
  # unknown Turkish leads are retained for later verification, never auto-published.
  discovery_scout(160)
+ # Rider-close MotoParkTv lane: fresh YouTube audio is transcribed locally, remembered,
+ # then enters the SAME Turkish candidate/editor/QM chain. It is discovery evidence,
+ # never an automatic authority for contracts/results/injuries.
+ try:
+  for v in motoparktv_collect(motoparktv_discover(5)):
+   rider=(v.get('riders') or [''])[0]
+   if not rider:continue
+   u=canonical_url(v.get('source_url',''));title=v.get('title','')
+   if not u or not title:continue
+   add_turkish_candidate(raw,seen,meta,title,u,rider)
+   meta[u].update({'discovery_source':'motoparktv-video','published_at':v.get('published_at',''),
+                   'summary':v.get('transcript','')[:4000],'video_transcript':v.get('transcript',''),
+                   'source_reliability':'rider-close-discovery'})
+ except Exception as e:print('MOTOPARKTV DISCOVERY FAIL:',type(e).__name__,str(e)[:180])
  for t,u,s,r in racing_scout(140):
   u=canonical_url(u);key=story_key(t,u)
   if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'source_series':s,'series':s,'series_locked':True,**({'turkish_rider':r} if r else {})}
