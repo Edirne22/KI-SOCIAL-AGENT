@@ -90,13 +90,18 @@ def selection(text):
 def turkish_selection(text):
     """Parse Turkish-Rider approvals.
 
-    Long form: turkish 1,3 / turkish T1,T3 / turkish alle / turkish nein.
-    Mobile short form: T1 / T1,T3 / T alle / T nein.
+    Default preview remains T1-T5. Explicit T6-T20 selections are available after
+    turkish liste; turkish alle deliberately means the visible T1-T5 only.
     """
     v = re.sub(r'\s+', ' ', text.strip().lower())
     v = re.sub(r'^/\s*', '', v)
-    if re.fullmatch(r't[1-5](?:\s*,\s*t?[1-5])*', v):
-        return sorted({int(x) for x in re.findall(r'[1-5]', v)})
+    if v in ('turkish liste','t liste'):
+        return None
+    def numbers(value):
+        nums=[int(x) for x in re.findall(r'(?<!\d)(?:[1-9]|1\d|20)(?!\d)',value)]
+        return sorted({n for n in nums if 1<=n<=20})
+    if re.fullmatch(r't(?:[1-9]|1\d|20)(?:\s*,\s*t?(?:[1-9]|1\d|20))*', v):
+        return numbers(v)
     m = re.fullmatch(r't(?:urkish)?\s+(.+)', v)
     if not m:
         return None
@@ -105,9 +110,36 @@ def turkish_selection(text):
         return [1, 2, 3, 4, 5]
     if choice in ('nein', '❌'):
         return []
-    if re.fullmatch(r'(?:t\s*)?[1-5](?:[\s,]+(?:t\s*)?[1-5])*', choice):
-        return sorted({int(x) for x in re.findall(r'[1-5]', choice)})
+    if re.fullmatch(r'(?:t\s*)?(?:[1-9]|1\d|20)(?:[\s,]+(?:t\s*)?(?:[1-9]|1\d|20))*', choice):
+        return numbers(choice)
     return None
+
+def turkish_list_requested(text):
+    v=re.sub(r'\s+',' ',str(text or '').strip().lower())
+    v=re.sub(r'^/\s*','',v)
+    return v in ('turkish liste','t liste')
+
+def handle_turkish_list(uid,chat):
+    if chat!=str(get_chat_id()):return True
+    if already(uid):return True
+    rows=parse_turkish_session()
+    if not rows:
+        send_message('⛔ Keine aktuelle Turkish-Rider-Historie verfügbar.')
+        return True
+    lines=['🇹🇷 TURKISH RIDER – TOP-20 HISTORIE','Auswahl danach z. B.: turkish 12 oder T12,T17','']
+    for n in sorted(rows):
+        x=rows[n]
+        lines.append(f'T{n} | {x.get("turkish_rider") or "Turkish Rider"} | {x.get("title","")}\n🔗 {x.get("url","")}')
+    chunks=[];cur=''
+    for entry in lines:
+        add=entry+'\n'
+        if cur and len(cur)+len(add)>3900:
+            chunks.append(cur.rstrip());cur=''
+        cur+=add
+    if cur:chunks.append(cur.rstrip())
+    for chunk in chunks:send_message(chunk)
+    return True
+
 def parse_turkish_session():
     try:data=json.loads(TURKISH_SESSION.read_text(encoding='utf-8'))
     except Exception:return {}
@@ -227,6 +259,8 @@ def publish(posts,chosen,uid,batch):
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
     return len(blocks)
 def handle_one(uid, chat, txt):
+    if turkish_list_requested(txt):
+        return handle_turkish_list(uid,chat)
     if turkish_selection(txt) is not None:
         return handle_turkish(uid,chat,txt)
     if chat != str(get_chat_id()):
