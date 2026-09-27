@@ -11,8 +11,8 @@ SERIES_PATTERNS=(
  ('WorldWCR',r'\bworldwcr\b|women.s circuit|women.s championship'),
  ('WorldSPB',r'\bworldspb\b|\bsportbike world championship\b|\bfim sportbike world championship\b'),
  ('Moto4',r'\bmoto4\b'),
- ('WorldSSP300',r'\bworldssp\s*300\b'),
- ('WorldSSP',r'\bworldssp\b(?!\s*300)|\bworld supersport\b(?!\s*300)'),
+ ('WorldSSP300',r'\bworldssp\s*300\b|\bwssp\s*300\b'),
+ ('WorldSSP',r'\bworldssp\b(?!\s*300)|\bworld supersport\b(?!\s*300)|\bwssp\b(?!\s*300)'),
  ('WorldSBK',r'\bworldsbk\b|\bworld superbike\b'),
  ('Moto3',r'\bmoto3\b'),('Moto2',r'\bmoto2\b'),('MotoGP',r'\bmotogp\b'))
 

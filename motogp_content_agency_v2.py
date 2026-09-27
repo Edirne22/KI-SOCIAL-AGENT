@@ -449,13 +449,21 @@ def turkish_five_preview(details,now,max_days=10):
 def telegram_preview(items,turk,qualified=None):
  status=turkish_status(items,qualified)
  count=len(items)
- mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items));msg=[f'🏍️ Motorcycle Racing Agency {VERSION} – {count} qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Fehler gehen zurück an Research/Editor statt sofort verloren zu sein',f'✍️ Human Writing Protocol + Bülents Bike Life Voice: VERBINDLICH',f'Racing-Serienmix: {mix or "keine Racing-Serie"}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if status=='selected' else ('🇹🇷 Turkish-Rider: geeignete Story im QM-Pool, aber nicht in den finalen 5' if status=='qualified_not_selected' else '🇹🇷 Heute keine Turkish-Rider-Story durch das vollständige QM gekommen')),'']
+ mix=', '.join(f'{s} {sum(series_for(x)==s for x in items)}' for s in VALID_SERIES if any(series_for(x)==s for x in items))
+ header=[f'🏍️ Motorcycle Racing Agency {VERSION} – {count} qualitätsgeprüfte Tagesvorschläge','🔎 Fakten-QM: NULL-TOLERANZ | Fehler gehen zurück an Research/Editor statt sofort verloren zu sein','✍️ Human Writing Protocol + Bülents Bike Life Voice: VERBINDLICH',f'Racing-Serienmix: {mix or "keine Racing-Serie"}',('🇹🇷 Turkish-Rider: aktuelle geeignete Story aufgenommen' if status=='selected' else ('🇹🇷 Turkish-Rider: geeignete Story im QM-Pool, aber nicht in den finalen 5' if status=='qualified_not_selected' else '🇹🇷 Heute keine Turkish-Rider-Story durch das vollständige QM gekommen'))]
+ send_message('\n'.join(header))
  for i,x in enumerate(items,1):
   origin='↩️ Top-20 vom Vortag | ' if x.get('fallback_yesterday') else ('🧩 Community-Fallback | ' if x.get('community_fallback') else '')
   label='Community' if x.get('community_fallback') else series_for(x)
-  msg += [f'{i}️⃣ {origin}[{label}] {x["caption"]}',f'🔗 Quelle: {x["url"]}','']
+  caption=str(x.get('caption','')).strip()
+  if not caption:
+   raise RuntimeError(f'Human-Approval blockiert: finaler Redakteurstext fehlt fuer Vorschlag {i}')
+  card=f'{i}️⃣ {origin}[{label}]\n\n📝 FINALER REDAKTEURS-TEXT – GENAU DIESER TEXT WIRD FREIGEGEBEN:\n{caption}\n\n🔗 Quelle: {x["url"]}\n✅ QM: PASS'
+  if len(card)>4000:
+   raise RuntimeError(f'Human-Approval blockiert: finaler Redakteurstext fuer Vorschlag {i} ueberschreitet Telegram-Limit')
+  send_message(card)
  choices=f'1–{len(items)}' if items else 'keine'
- msg+=[f'Freigabe: motogp {choices} / Kombination / motogp alle','Ablehnen: motogp nein'];send_message('\n'.join(msg)[:4000])
+ send_message(f'👤 HUMAN APPROVAL – erst nach Sichtprüfung der obigen vollständigen Finaltexte\nFreigabe: motogp {choices} / Kombination / motogp alle\nAblehnen: motogp nein')
 def add_turkish_candidate(raw,seen,meta,title,url,rider):
  u=canonical_url(url)
  if u in seen:

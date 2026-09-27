@@ -19,11 +19,14 @@ def install(a):
 
     def lock(x,declared=None):
         frozen=str(x.get('trusted_series','')).strip()
-        if frozen in VALID:
-            x.update(series=frozen,source_series=frozen,series_locked=True)
-            return x
         dest=transfer(x)
         inferred=expected_series(x)
+        # Current explicit source facts outrank a stale trusted lock. A candidate
+        # can enter through an umbrella/misclassified feed and later gain a WSSP/
+        # WorldSBK/Moto* headline during source re-analysis.
+        if frozen in VALID and not dest and inferred not in VALID and inferred not in UNSUPPORTED:
+            x.update(series=frozen,source_series=frozen,series_locked=True)
+            return x
         supplied=str(declared or x.get('source_series') or x.get('series') or '').strip()
         if inferred in UNSUPPORTED:
             # Preserve the real source class instead of collapsing an unsupported
@@ -55,12 +58,18 @@ def install(a):
     def whitelist_errors(x,caption):
         f=fact_packet(x);errs=list(racing_lexicon_errors(caption));src=a.fold(f['title']+' '+f['summary']);cap=a.fold(re.sub(r'#[^\s]+','',caption or ''))
         cfo=f['series']
-        if cfo=='MotoGP' and ('moto2' in cap or 'moto3' in cap) and not ('moto2' in src or 'moto3' in src):
-            errs.append('Source-Fact-Whitelist: Falsche Serie Moto2/Moto3 im Text obwohl CFO MotoGP ist')
-        elif cfo=='Moto2' and ('motogp' in cap or 'moto3' in cap) and not ('motogp' in src or 'moto3' in src):
-            errs.append('Source-Fact-Whitelist: Falsche Serie MotoGP/Moto3 im Text obwohl CFO Moto2 ist')
-        elif cfo=='Moto3' and ('motogp' in cap or 'moto2' in cap) and not ('motogp' in src or 'moto2' in src):
-            errs.append('Source-Fact-Whitelist: Falsche Serie MotoGP/Moto2 im Text obwohl CFO Moto3 ist')
+        series_tokens={
+            'MotoGP': ('motogp',),
+            'Moto2': ('moto2',),
+            'Moto3': ('moto3',),
+            'WorldSBK': ('worldsbk','world superbike'),
+            'WorldSSP': ('worldssp','world supersport','wssp','supersport'),
+            'WorldSSP300': ('worldssp300','worldssp 300','wssp300','supersport 300'),
+        }
+        for other,tokens in series_tokens.items():
+            if other==cfo:continue
+            if any(re.search(r'(?<![a-z0-9])'+re.escape(token)+r'(?![a-z0-9])',cap) for token in tokens) and not any(re.search(r'(?<![a-z0-9])'+re.escape(token)+r'(?![a-z0-9])',src) for token in tokens):
+                errs.append(f'Source-Fact-Whitelist: Falsche Serie {other} im Text obwohl CFO {cfo} ist')
         allowed={a.fold(n) for n in f['riders']};allowed_last={n.split()[-1] for n in allowed}
         # Shared Turkish surnames (Öncü, Sofuoğlu) cannot be resolved by riders_in()
         # from surname alone. Human-selected turkish_rider is safe only when that
