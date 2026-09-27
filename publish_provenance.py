@@ -3,7 +3,7 @@ from __future__ import annotations
 import json,re
 
 def _json_line(block, label):
-    match=re.search(rf"(?mi)^{re.escape(label)}:\s*(\{.*\})\s*$",block)
+    match=re.search(r"(?mi)^"+re.escape(label)+r":\s*(\{.*\})\s*$",block)
     if not match:return None
     try:return json.loads(match.group(1))
     except json.JSONDecodeError:return None
