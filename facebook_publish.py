@@ -3,6 +3,7 @@ import re
 import mimetypes
 import requests
 from datetime import datetime
+from publish_provenance import append_publish_provenance
 
 REPO_RAW = "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/"
 VIDEO_EXTENSIONS = {".mp4", ".mov", ".m4v", ".3gp", ".avi", ".mkv", ".webm"}
@@ -160,6 +161,7 @@ def mark_block(content, block, post_id):
         "",
         new_block,
     )
+    new_block = append_publish_provenance(new_block, "facebook", post_id)
     return content.replace(block, new_block, 1)
 
 
