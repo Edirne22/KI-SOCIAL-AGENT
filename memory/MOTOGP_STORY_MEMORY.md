@@ -594,3 +594,18 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/27/lecuona-double-the-7-resists
 Story-Key: motogp:1095540
 Titel: ALCOBA DOUBLES UP: Alcoba closes Cremona in P1, Arenas, who sees the title decider delayed to Estoril
 Quelle: https://www.worldsbk.com/en/news/2026/09/27/alcoba-doubles-up-alcoba-closes-cremona-in-p1-arenas-who-sees-the-title-decider-delayed-to-estoril/1095540
+
+## 2026-09-27 16:16 UTC – ANGEBOTEN
+Story-Key: motogp:10859593
+Titel: WSSP Cremona 2. yarış: Alcoba’dan üst üste ikinci zafer, Can Öncü 11., Bahattin Sofuoğlu 21. sırada
+Quelle: https://tr.motorsport.com/supersport/news/wssp-cremona-2-yaris-alcobadan-ust-uste-ikinci-zafer-can-oncu-11-bahattin-sofuoglu-21-sirada/10859593
+
+## 2026-09-27 16:16 UTC – ANGEBOTEN
+Story-Key: title:toprak-razgatl-o-lu-bu-sezon-bana-sbk-daki-i-lk-y-l-m-hat-rlat-yor
+Titel: Toprak Razgatlıoğlu: “Bu Sezon Bana SBK'daki İlk Yılımı Hatırlatıyor”
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-bu-sezon-bana-sbkdaki-ilk-yilimi-hatirlatiyor
+
+## 2026-09-27 16:16 UTC – ANGEBOTEN
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
