@@ -554,3 +554,23 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/26/lecuona-on-top-7-takes-victo
 Story-Key: motogp:1095403
 Titel: “We will be there to fight” – Lecuona plans to fight to the end on Sunday at Cremona
 Quelle: https://www.worldsbk.com/en/news/2026/09/26/we-will-be-there-to-fight-lecuona-plans-to-fight-to-the-end-on-sunday-at-cremona/1095403
+
+## 2026-09-27 08:50 UTC – ANGEBOTEN
+Story-Key: motogp:10859078
+Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
+Quelle: https://tr.motorsport.com/supersport/news/wssp-superpole-italya-alcoba-cremonada-kawasaki-2021den-sonra-ilk-kez-zirvede-can-oncu-6-sirada-bit/10859078
+
+## 2026-09-27 08:50 UTC – ANGEBOTEN
+Story-Key: motogp:116150
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150
+
+## 2026-09-27 08:50 UTC – ANGEBOTEN
+Story-Key: motogp:10857469
+Titel: Moto2 Avusturya GP yarış: Guevara’dan kritik zafer, Deniz Öncü ilk 10’da!
+Quelle: https://tr.motorsport.com/moto2/news/moto2-avusturya-gp-yaris-guevaradan-kritik-zafer-deniz-oncu-ilk-10da/10857469
+
+## 2026-09-27 08:50 UTC – ANGEBOTEN
+Story-Key: motogp:10859418
+Titel: WSSP İtalya 1. yarış: Alcoba’dan Cremona’da WSSP zaferi, Can Öncü puansız ayrıldı, Bahattin Sofuoğlu 19. sırada bitirdi!
+Quelle: https://tr.motorsport.com/supersport/news/wssp-italya-1-yaris-alcobadan-cremonada-wssp-zaferi-can-oncu-puansiz-ayrildi-bahattin-sofuoglu-19-s/10859418

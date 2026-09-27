@@ -1704,3 +1704,45 @@ Story-Key: motogp:1092435
 Gründe: Final-Guard: Promo/Vlog/Marketing statt Racing-News
 Human-Writing-Protocol: V1.0
 
+## 2026-09-27 09:07 UTC | Motorcycle Racing | PASS
+Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
+Story-Key: motogp:10859078
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 09:07 UTC | Motorcycle Racing | PASS
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 09:07 UTC | Motorcycle Racing | PASS
+Titel: Moto2 Avusturya GP yarış: Guevara’dan kritik zafer, Deniz Öncü ilk 10’da!
+Story-Key: motogp:10857469
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 09:08 UTC | Motorcycle Racing | PASS
+Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
+Story-Key: motogp:1091638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 09:08 UTC | Motorcycle Racing | FAIL
+Titel: NEWS 16h ago “I want to secure the Championship here, so second was a clever position” – Bulega explains his Race 1 strategy The #11 finished 5.5 seconds down on teammate Lecuona in Race 1, but he’ll have another chance to win the title on Sunday WorldSBK
+Story-Key: motogp:1095414
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 09:11 UTC | Motorcycle Racing | FAIL
+Titel: NEWS 16h ago “I want to secure the Championship here, so second was a clever position” – Bulega explains his Race 1 strategy The #11 finished 5.5 seconds down on teammate Lecuona in Race 1, but he’ll have another chance to win the title on Sunday WorldSBK
+Story-Key: motogp:1095414
+Gründe: Quote-Safety FAIL: direkte/übersetzte Zitate nicht freigeben
+Human-Writing-Protocol: V1.0
+
+## 2026-09-27 09:11 UTC | Motorcycle Racing | PASS
+Titel: WSSP İtalya 1. yarış: Alcoba’dan Cremona’da WSSP zaferi, Can Öncü puansız ayrıldı, Bahattin Sofuoğlu 19. sırada bitirdi!
+Story-Key: motogp:10859418
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

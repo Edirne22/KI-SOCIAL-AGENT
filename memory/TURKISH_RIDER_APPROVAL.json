@@ -1,20 +1,68 @@
 {
   "version": 1,
-  "created_at": 1790483306,
+  "created_at": 1790499052,
   "max_days": 10,
-  "window_used_days": 10,
-  "count": 1,
+  "window_used_days": 7,
+  "count": 5,
   "items": [
     {
       "n": 1,
-      "title": "ALCOBA AT THE FRONT: #52 takes Kawasaki’s first WorldSSP pole since 2021 at Cremona",
-      "url": "https://www.worldsbk.com/en/news/2026/09/25/alcoba-at-the-front-52-takes-kawasakis-first-worldssp-pole-since-2021-at-cremona/1095246",
-      "summary": "Championship leader Albert Arenas will start from P2, ahead of title rivals Oncu in P6 and Debise in P8",
-      "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/25/006dbbcc-0fc1-40fa-9768-97cfc535fbba/52923_JDR_R10_2026_Action.JPG",
-      "published_at": "2026-09-25T15:27:53+0000",
+      "title": "WSSP İtalya 1. yarış: Alcoba’dan Cremona’da WSSP zaferi, Can Öncü puansız ayrıldı, Bahattin Sofuoğlu 19. sırada bitirdi!",
+      "url": "https://tr.motorsport.com/supersport/news/wssp-italya-1-yaris-alcobadan-cremonada-wssp-zaferi-can-oncu-puansiz-ayrildi-bahattin-sofuoglu-19-s/10859418",
+      "summary": "FIM Supersport Dünya Şampiyonası’nın Cremona’daki ilk yarışında Jeremy Alcoba, kariyerinin ilk WorldSSP zaferine ulaşarak önemli bir başarıya imza attı.",
+      "preview": "https://cdn-3.motorsport.com/images/amp/0Zq8vGN6/s6/jeremy.jpg",
+      "published_at": "2026-09-26T13:00:00Z",
       "series": "WorldSSP",
       "source_series": "WorldSSP",
       "turkish_rider": "Can Öncü",
+      "kind": "news"
+    },
+    {
+      "n": 2,
+      "title": "REPORT 1d ago ALCOBA AT THE FRONT: #52 takes Kawasaki’s first WorldSSP pole since 2021 at Cremona Championship leader Albert Arenas will start from P2, ahead of title rivals Oncu in P6 and Debise in P8 WorldSSP",
+      "url": "https://www.worldsbk.com/en/news/2026/09/25/alcoba-at-the-front-52-takes-kawasakis-first-worldssp-pole-since-2021-at-cremona/1095246",
+      "summary": "",
+      "preview": "",
+      "published_at": null,
+      "series": "WorldSSP",
+      "source_series": "WorldSSP",
+      "turkish_rider": "Can Öncü",
+      "kind": "news"
+    },
+    {
+      "n": 3,
+      "title": "WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi",
+      "url": "https://tr.motorsport.com/supersport/news/wssp-superpole-italya-alcoba-cremonada-kawasaki-2021den-sonra-ilk-kez-zirvede-can-oncu-6-sirada-bit/10859078",
+      "summary": "Supersport Dünya Şampiyonası’nın Cremona’da düzenlenen Superpole seansını Kawasaki sürücüsü Jeremy Alcoba kazandı.",
+      "preview": "https://cdn-5.motorsport.com/images/amp/0R7BJNB2/s6/can-oncu-aragon.jpg",
+      "published_at": "2026-09-25T16:30:00Z",
+      "series": "Moto2",
+      "source_series": "Moto2",
+      "turkish_rider": "Can Öncü",
+      "kind": "news"
+    },
+    {
+      "n": 4,
+      "title": "MotoGP - Toprak Razgatlıoğlu: \"2026’da Yarışmayı Bırakmayı Düşündüm\"",
+      "url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150",
+      "summary": "MotoGP - Toprak Razgatlıoğlu: MotoGP’deki Zorlu İlk Sezon, 2018’deki WorldSBK Başlangıcını Hatırlatıyor Toprak Razgatlıoğlu, MotoGP’de geçirdiği zorlu çaylak sezonunun, 2018’de WorldSBK’daki ilk yılıyla birçok açıdan benzerlik gösterdiğini söyledi. Türk pilot, hem Superbike hem de MotoGP kariyerlerinin ilk dönemlerinde ön sıralarda mücadele etmekte zorlandığını ifade etti. 2018’de Kawasaki ile ilk kez WorldSBK sahnesine çıkan Razgatlıoğlu, sezon boyunca genellikle",
+      "preview": "https://trf1.net/wp-content/uploads/2026/09/gng_1346519_hires_1600x900.jpg",
+      "published_at": "2026-09-26T08:07:37+00:00",
+      "series": "MotoGP",
+      "source_series": "MotoGP",
+      "turkish_rider": "Toprak Razgatlıoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 5,
+      "title": "Bahattin Sofuoğlu, Dünya Supersport Şampiyonası'na geçiyor",
+      "url": "https://tr.motorsport.com/supersport/news/bahattin-sofuoglu-world-supersport-sampiyonasina-geciyor/10857707",
+      "summary": "Motoxracing Yamaha takımı, sürücü değişikliğine gittiğini doğruladı. Bahattin Sofuoğlu QJ Motor takımıyla WSSP'de yarışacak.",
+      "preview": "https://cdn-6.motorsport.com/images/amp/6x7LGrmY/s6/bahattin-sofuoglu.jpg",
+      "published_at": "2026-09-21T13:40:02Z",
+      "series": "WorldSSP",
+      "source_series": "WorldSSP",
+      "turkish_rider": "Bahattin Sofuoğlu",
       "kind": "news"
     }
   ]
