@@ -207,6 +207,9 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     assert "Status: GEPOSTET" in published_content
     assert "Status: BILD_GENERIERT" not in published_content
     assert "ID: media-123" in published_content
+    assert '"platform": "instagram"' in published_content
+    assert '"creation_id": "creation-1"' in published_content
+    assert '"published_media_id": "media-123"' in published_content
     mock_send_message.assert_called_with(
         "✅ Instagram gepostet: Quiles Victory\nMeta-Media-ID: media-123"
     )
