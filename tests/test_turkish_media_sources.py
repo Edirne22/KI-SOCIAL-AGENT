@@ -222,7 +222,8 @@ assert REFERENCE_ENDPOINTS['results'].endswith('/motogp-yaris-sonuclari/')
 assert REFERENCE_ENDPOINTS['standings'].endswith('/motogp-puan-durumu/')
 assert REFERENCE_ENDPOINTS['riders'].endswith('/motogp-suruculeri/')
 assert REFERENCE_ENDPOINTS['calendar'].endswith('/motogp-yaris-takvimi/')
-assert not any(name.startswith('MotoEtkinlik') for name,_ in scout.TURKISH_WEB_SOURCES)
+from turkish_riders_scout_adapter import turkish_web_scout as adapter_web_scout
+assert agency.turkish_web_scout is adapter_web_scout
 print('TEST – MotoEtkinlik Dedicated Adapter Contract: PASS')
 
 # Production regression 2026-09-27: Turkish prose may be source material but never final German copy.
