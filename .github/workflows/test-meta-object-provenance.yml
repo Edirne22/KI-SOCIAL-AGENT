@@ -1,0 +1,24 @@
+name: TEST – Meta Object Provenance
+on:
+  pull_request:
+    paths:
+      - "publish_provenance.py"
+      - "instagram_publish.py"
+      - "facebook_publish.py"
+      - "tests/test_meta_object_provenance.py"
+      - ".github/workflows/test-meta-object-provenance.yml"
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests beautifulsoup4 Pillow
+      - name: Syntax and regression
+        run: |
+          python -m py_compile publish_provenance.py instagram_publish.py facebook_publish.py tests/test_meta_object_provenance.py
+          PYTHONPATH=. python -u tests/test_meta_object_provenance.py

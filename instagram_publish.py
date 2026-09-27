@@ -273,7 +273,7 @@ def wait(creation_id, token, max_wait=60):
         time.sleep(5)
     return False
 
-def mark_block(content, block, media_id):
+def mark_block(content, block, media_id, creation_id=None):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
     new_block = re.sub(
         r"^## Instagram(?:\s+\[[^\]]+\])?",
@@ -292,7 +292,7 @@ def mark_block(content, block, media_id):
         "",
         new_block,
     )
-    new_block = append_publish_provenance(new_block, "instagram", media_id)
+    new_block = append_publish_provenance(new_block, "instagram", media_id, creation_id=str(creation_id) if creation_id else None, published_media_id=str(media_id))
     return content.replace(block, new_block, 1)
 
 if __name__ == "__main__":
@@ -326,7 +326,7 @@ if __name__ == "__main__":
     post_id = publish(ig_user_id, token, creation_id)
     if post_id:
         print(f"Erfolgreich veröffentlicht: {post_id}")
-        content = mark_block(content, block, post_id)
+        content = mark_block(content, block, post_id, creation_id)
         with open("content/PUBLISHED.md", "w", encoding="utf-8") as f:
             f.write(content)
     else:
