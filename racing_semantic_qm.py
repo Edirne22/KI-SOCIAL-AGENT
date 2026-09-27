@@ -106,18 +106,18 @@ Antworte NUR JSON:
 {{"contract_version":"SOURCE-FACT-CONTRACT-V1","coverage_complete":true|false,"claims":[{{"claim":"...","claim_type":"FACT|OPINION_QUESTION","status":"SUPPORTED|UNSUPPORTED","source_evidence":[{{"source_field":"title|summary|series|locked_metadata.<key>","quote":"exakter Quelltext"}}]}}],"german_ok":true|false,"style_ok":true|false,"repair_reasons":["..."]}}'''
 
 def review_detailed(item,caption):
- prompt=_prompt(item,caption);last=None
- for technical_attempt in range(3):
-  try:
-   o=_clean_json(generate('racing_semantic_qm',prompt))
-   hard,hard_reasons,claims=_validate_contract(item,o)
-   language=all(o.get(k) is True for k in ('german_ok','style_ok'))
-   repair=[str(x) for x in o.get('repair_reasons',[]) if str(x).strip()]
-   if hard and not language and not repair:repair=['Sprache/Stil reparieren']
-   return {'hard_ok':hard,'language_ok':language,'hard_reasons':hard_reasons,'repair_reasons':repair,'claims':claims,'coverage_complete':True,'contract_version':SOURCE_FACT_CONTRACT_VERSION}
-  except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:last=e;continue
-  except Exception as e:last=e;break
- return {'hard_ok':False,'language_ok':False,'hard_reasons':[f'Semantischer Fakten-QM technisch ungueltig nach 3 Versuchen: {type(last).__name__}: {str(last)[:140]}'],'repair_reasons':[],'claims':[],'coverage_complete':False,'contract_version':SOURCE_FACT_CONTRACT_VERSION}
+ prompt=_prompt(item,caption)
+ try:
+  o=_clean_json(generate('racing_semantic_qm',prompt))
+  hard,hard_reasons,claims=_validate_contract(item,o)
+  language=all(o.get(k) is True for k in ('german_ok','style_ok'))
+  repair=[str(x) for x in o.get('repair_reasons',[]) if str(x).strip()]
+  if hard and not language and not repair:repair=['Sprache/Stil reparieren']
+  return {'hard_ok':hard,'language_ok':language,'hard_reasons':hard_reasons,'repair_reasons':repair,'claims':claims,'coverage_complete':True,'contract_version':SOURCE_FACT_CONTRACT_VERSION,'technical_error':False}
+ except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:
+  return {'hard_ok':False,'language_ok':False,'hard_reasons':[f'Semantischer Fakten-QM technisch ungueltig: {type(e).__name__}: {str(e)[:140]}'],'repair_reasons':[],'claims':[],'coverage_complete':False,'contract_version':SOURCE_FACT_CONTRACT_VERSION,'technical_error':True,'technical_reason':type(e).__name__}
+ except Exception as e:
+  return {'hard_ok':False,'language_ok':False,'hard_reasons':[f'Semantischer Fakten-QM Provider nicht verfuegbar: {type(e).__name__}: {str(e)[:140]}'],'repair_reasons':[],'claims':[],'coverage_complete':False,'contract_version':SOURCE_FACT_CONTRACT_VERSION,'technical_error':True,'technical_reason':type(e).__name__}
 
 def review(item,caption):
  r=review_detailed(item,caption);ok=r['hard_ok'] and r['language_ok'];return ok,(r['hard_reasons']+r['repair_reasons'])

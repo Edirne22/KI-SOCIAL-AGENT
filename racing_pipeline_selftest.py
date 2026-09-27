@@ -121,7 +121,7 @@ def test_semantic_json_retry():
  old=semantic.generate;calls={'n':0}
  try:
   def fake(task,prompt):calls['n']+=1;return 'not-json' if calls['n']==1 else json.dumps({'contract_version':'SOURCE-FACT-CONTRACT-V1','coverage_complete':True,'claims':[{'claim':'Toprak tests a MotoGP bike','claim_type':'FACT','status':'SUPPORTED','source_evidence':[{'source_field':'summary','quote':'Toprak tests MotoGP bike'}]},{'claim':'Community opinion question','claim_type':'OPINION_QUESTION','status':'SUPPORTED','source_evidence':[]}],'german_ok':True,'style_ok':True,'repair_reasons':[]})
-  semantic.generate=fake;r=semantic.review_detailed({'title':'Toprak Razgatlioglu MotoGP test','summary':'Toprak tests MotoGP bike','series':'MotoGP','url':'https://example.com/2026/09/15/x'},'Toprak testet.\n\nWas meint ihr?\n\n#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife');ok(r['hard_ok'] and r['language_ok'] and calls['n']==2,'semantic JSON retry broken')
+  semantic.generate=fake;source={'title':'Toprak Razgatlioglu MotoGP test','summary':'Toprak tests MotoGP bike','series':'MotoGP','url':'https://example.com/2026/09/15/x'};caption='Toprak testet.\n\nWas meint ihr?\n\n#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife';r=semantic.review_detailed(source,caption);ok(r.get('technical_error') is True and calls['n']==1,'semantic JSON failure must defer after one transaction');r=semantic.review_detailed(source,caption);ok(r['hard_ok'] and r['language_ok'] and calls['n']==2,'next independent semantic transaction must pass')
  finally:semantic.generate=old
 def test_provider_backoff():
  class Resp:
@@ -149,10 +149,9 @@ def test_provider_backoff():
   try:llm.generate('final_captions','all providers 429');raise AssertionError('all 429 must fail closed')
   except RuntimeError as e:ok('fail-closed' in str(e),'all 429 must report fail-closed')
   ok(all(llm.provider_in_cooldown(p) for p in ('agnes','gemini','nvidia')),'all 429 providers need cooldown')
-  llm._PROVIDER_COOLDOWNS.clear();calls=run_mock('auth')
-  try:llm.generate('final_captions','auth failure');raise AssertionError('401 must raise')
-  except RuntimeError as e:ok('HTTP 401' in str(e),'401 must surface immediately')
-  ok(len(calls)==1 and 'agnes-ai.com' in calls[0],'401 must not fall back')
+  llm._PROVIDER_COOLDOWNS.clear();calls=run_mock('auth');out=llm.generate('final_captions','auth failure')
+  ok(out=='FALLBACK OK','provider auth failure must route to configured fallback')
+  ok(len(calls)==2 and 'agnes-ai.com' in calls[0] and 'generativelanguage.googleapis.com' in calls[1],'401 fallback routing broken')
  finally:
   llm.requests.request,llm.time.monotonic=old_req,old_mono;llm.os.environ.clear();llm.os.environ.update(old_env);llm._PROVIDER_COOLDOWNS.clear();llm._PROVIDER_COOLDOWNS.update(old_cd)
 def test_retry_contract_separation():
@@ -287,7 +286,7 @@ def test_finalization_contract():
 
 def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
- ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL RETRY' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
+ ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL DEFER' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
 def main():
  test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_final_human_language_gate();test_human_text_gate_is_pre_media_only();test_lexicon_single_source_chain();test_racing_language_lexicon_contract();test_editor_natural_copy_contract();test_community_fallback_contract();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()

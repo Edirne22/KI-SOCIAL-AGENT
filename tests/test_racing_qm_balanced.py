@@ -32,12 +32,16 @@ def test_decimal_separator_equivalence():
     assert any("Zahl nicht in Quelle" in e for e in errs2),errs2
 
 def test_semantic_provider_failure_degraded_pass():
-    install(agency)
+    # install() is idempotent for production use, but tests in this module call it
+    # more than once. Reload the hardening module so this case always exercises
+    # the current production wrapper rather than a wrapper captured by a prior test.
+    import importlib, racing_v855_hardening
+    importlib.reload(racing_v855_hardening).install(agency)
     old_editor,old_review,old_sem,old_sane=agency.german_editor,agency.racing_review,agency.semantic_review_detailed,agency.language_sane
     try:
       agency.german_editor=lambda x,r=None:"Brad Binder wechselt zu BMW.\n\nWas haltet ihr davon?\n\n#WorldSBK #BradBinder #BuelentsBikeLife #Racing"
       agency.racing_review=lambda x,c:(True,[])
-      agency.semantic_review_detailed=lambda x,c:{"hard_ok":False,"language_ok":False,"hard_reasons":["Semantischer Fakten-QM technisch ungueltig nach 3 Versuchen: RuntimeError: ReadTimeout"],"repair_reasons":[]}
+      agency.semantic_review_detailed=lambda x,c:{"hard_ok":False,"language_ok":False,"hard_reasons":["Semantischer Fakten-QM Provider nicht verfuegbar: RuntimeError: ReadTimeout"],"repair_reasons":[],"technical_error":True,"technical_reason":"RuntimeError"}
       agency.language_sane=lambda c:True
       item={"series":"WorldSBK","source_series":"WorldSBK","trusted_series":"WorldSBK","series_locked":True,
             "title":"Brad Binder joins BMW in WorldSBK","summary":"Brad Binder joins BMW in WorldSBK."}

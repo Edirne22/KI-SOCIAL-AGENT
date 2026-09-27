@@ -12,8 +12,8 @@ def provider_in_cooldown(provider_name):
  return time.monotonic() < _PROVIDER_COOLDOWNS.get(provider_name,0.0)
 def _cooldown_seconds(response):
  raw=(response.headers.get('Retry-After') or '').strip()
- try:return max(1.0,float(raw))
- except (TypeError,ValueError):return 60.0
+ try:return min(60.0,max(1.0,float(raw)))
+ except (TypeError,ValueError):return 5.0
 def _set_provider_cooldown(provider_name,response):
  seconds=_cooldown_seconds(response);_PROVIDER_COOLDOWNS[provider_name]=max(_PROVIDER_COOLDOWNS.get(provider_name,0.0),time.monotonic()+seconds);return seconds
 SECRET_PATTERNS=((re.compile(r"AIza[0-9A-Za-z_-]{35}"),"[ENTFERNT]"),(re.compile(r"AQ\.[A-Za-z0-9_-]{40,}"),"[ENTFERNT]"),(re.compile(r"sk-[A-Za-z0-9_-]{20,}"),"[ENTFERNT]"),(re.compile(r"\b[A-Za-z0-9_-]{50,}\b"),"[ENTFERNT]"))
@@ -55,7 +55,13 @@ def _request_json(method,url,headers,payload,timeout,max_retries=1,provider_name
   if r.ok:return r.json()
   last=RuntimeError(f"Provider-Anfrage fehlgeschlagen (HTTP {r.status_code}): {redact_secrets(r.text[:500])}")
   if r.status_code==429 and provider_name:
+   # Do not hammer a rate-limited provider. Mark it unavailable so generate()
+   # can move to a configured fallback immediately.
    _set_provider_cooldown(provider_name,r);raise last
+  if r.status_code==402:
+   # Quota/payment/free-tier exhaustion is not transient for this request.
+   # Never spend another attempt on the same provider.
+   raise last
   if r.status_code not in (500,502,503,504) or attempt>=max_retries:raise last
   time.sleep(_retry_after_seconds(r,attempt))
  raise last or RuntimeError('Provider-Anfrage fehlgeschlagen')
@@ -99,8 +105,9 @@ def generate(task_name,prompt):
    raise ValueError(f"Keine Client-Implementierung fuer Provider '{provider_name}'.")
   except RuntimeError as e:
    errors.append(f"{provider_name}: {e}")
-   if provider_in_cooldown(provider_name):continue
-   raise
+   # Provider failures are routing events. Try the configured fallback once;
+   # callers must not create their own provider retry nests.
+   continue
  raise RuntimeError('Alle konfigurierten Provider nicht verfuegbar (fail-closed): '+' | '.join(errors))
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--task',default='content_ideas');p.add_argument('--prompt',default='Nenne eine kurze Motorrad-Content-Idee.');a=p.parse_args();r=generate(a.task,a.prompt);print(r if isinstance(r,str) else redact_secrets(str(r)))
