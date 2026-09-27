@@ -44,3 +44,16 @@ def remember_candidate(name,series,source_url,evidence=""):
 
 def known_names():
  data=load();return set(data["riders"])|set(data["discovery_candidates"])
+
+
+def remember_video(video):
+ """Persist rider-close video evidence without promoting it to official fact authority."""
+ path=Path("memory/MOTOPARKTV_VIDEO_MEMORY.json");path.parent.mkdir(parents=True,exist_ok=True)
+ try:data=json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"version":1,"videos":[]}
+ except (OSError,json.JSONDecodeError):data={"version":1,"videos":[]}
+ url=str(video.get("source_url",""))
+ rows=[r for r in data.get("videos",[]) if r.get("source_url")!=url]
+ safe={k:v for k,v in video.items() if k!="transcript"}
+ safe["transcript_excerpt"]=str(video.get("transcript",""))[:4000]
+ rows.append(safe);data["videos"]=rows[-200:];data["updated_at"]=_now();path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+ return safe
