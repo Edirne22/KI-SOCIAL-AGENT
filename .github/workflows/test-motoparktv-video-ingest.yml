@@ -1,0 +1,23 @@
+name: TEST – MotoParkTv Video Ingest
+on:
+  pull_request:
+    paths:
+      - 'motoparktv_video_ingest.py'
+      - 'turkish_rider_memory.py'
+      - 'turkish_editor_qm.py'
+      - 'tests/test_motoparktv_video_ingest.py'
+      - '.github/workflows/test-motoparktv-video-ingest.yml'
+  workflow_dispatch:
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - name: Syntax and imports
+        run: python -m py_compile motoparktv_video_ingest.py turkish_rider_memory.py turkish_editor_qm.py tests/test_motoparktv_video_ingest.py
+      - name: Regression
+        run: PYTHONPATH=. python tests/test_motoparktv_video_ingest.py
