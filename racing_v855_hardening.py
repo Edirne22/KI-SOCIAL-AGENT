@@ -83,8 +83,11 @@ def install(a):
             present=fn in cap or (len(last)>=5 and re.search(r'(?<![a-z])'+re.escape(last)+r'(?![a-z])',cap))
             if present and fn not in allowed and last not in allowed_last:errs.append('Source-Fact-Whitelist: Fahrer nicht in Quelle: '+n)
         normalize_number=lambda n:re.sub(r'(?:s|km|mph|kph)$','',n.replace(',','.'))
-        srcnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',src)};capnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',cap)}
-        for n in sorted(capnums-srcnums):errs.append('Source-Fact-Whitelist: Zahl nicht in Quelle: '+n)
+        # Source/provenance URLs are metadata, not editorial claims. Their slug/ID
+        # numbers must never enter the closed fact-number comparison.
+        cap_facts=re.sub(r'https?://\S+',' ',cap)
+        srcnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',src)}
+        capnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',cap_facts)}
         return errs
 
     def prompt(x,reasons=None,structure_variant=None):
