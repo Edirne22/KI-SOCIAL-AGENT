@@ -1,0 +1,22 @@
+name: TEST – Human Approval Final Caption
+on:
+  pull_request:
+    paths:
+      - "motogp_content_agency_v2.py"
+      - "tests/test_human_approval_final_caption.py"
+      - ".github/workflows/test-human-approval-final-caption.yml"
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests beautifulsoup4 Pillow
+      - name: Syntax and approval regression
+        run: |
+          python -m py_compile motogp_content_agency_v2.py tests/test_human_approval_final_caption.py
+          PYTHONPATH=. python -u tests/test_human_approval_final_caption.py
