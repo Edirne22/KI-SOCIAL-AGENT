@@ -210,33 +210,20 @@ assert agency.language_sane('Can Öncü blieb in Cremona ohne Punkte.'), 'Valid 
 print('TEST – Turkish Series + German Language Hardening: PASS')
 
 
-# MotoEtkinlik is a structured open-web discovery source, not a social-only hint.
-web=dict(scout.TURKISH_WEB_SOURCES)
-assert web['MotoEtkinlikMotoGP']=='https://motoetkinlik.com/kategori/motogp/'
-assert web['MotoEtkinlikMoto2']=='https://motoetkinlik.com/kategori/moto2/'
-assert web['MotoEtkinlikMoto3']=='https://motoetkinlik.com/kategori/moto3/'
-assert web['MotoEtkinlikWorldSBK']=='https://motoetkinlik.com/kategori/wsbk/'
-assert web['MotoEtkinlikWorldSSP']=='https://motoetkinlik.com/kategori/worldssp/'
-assert web['MotoEtkinlikYaris']=='https://motoetkinlik.com/kategori/yaris/'
-
-old_get=scout.requests.get
-try:
- class MotoEtkinlikResp:
-  def __init__(self,text): self.text=text
-  def raise_for_status(self): pass
- def motoetkinlik_get(url,**kwargs):
-  if '/kategori/worldssp/' in url:
-   return MotoEtkinlikResp('<a href="/can-oncu-cremona-worldssp/">Can Öncü Cremona WorldSSP Superpole’de 6. oldu</a>')
-  if '/kategori/yaris/' in url:
-   return MotoEtkinlikResp('<a href="/iame-benelux-zayn-sofuoglu/">IAME Benelux Mariembourg Finali: Zayn Sofuoğlu Kazanmak İçin Piste Çıkıyor</a>')
-  return MotoEtkinlikResp('')
- scout.requests.get=motoetkinlik_get
- wssp=scout._turkish_site_crawl('MotoEtkinlikWorldSSP','https://motoetkinlik.com/kategori/worldssp/',max_pages=3,depth=1)
- yaris=scout._turkish_site_crawl('MotoEtkinlikYaris','https://motoetkinlik.com/kategori/yaris/',max_pages=3,depth=1)
- assert wssp and wssp[0][3]=='Can Öncü',wssp
- assert yaris and yaris[0][3]=='Zayn Sofuoğlu',yaris
-finally:
- scout.requests.get=old_get
+# MotoEtkinlik discovery is owned by the dedicated adapter, not generic site crawling.
+from motoetkinlik_source import NEWS_ENDPOINTS,REFERENCE_ENDPOINTS
+assert NEWS_ENDPOINTS['MotoGP']=='https://motoetkinlik.com/kategori/motogp/'
+assert NEWS_ENDPOINTS['Moto2']=='https://motoetkinlik.com/kategori/moto2/'
+assert NEWS_ENDPOINTS['Moto3']=='https://motoetkinlik.com/kategori/moto3/'
+assert NEWS_ENDPOINTS['WorldSBK']=='https://motoetkinlik.com/kategori/wsbk/'
+assert NEWS_ENDPOINTS['Racing']=='https://motoetkinlik.com/kategori/yaris/'
+assert NEWS_ENDPOINTS['Video']=='https://motoetkinlik.com/kategori/youtube/'
+assert REFERENCE_ENDPOINTS['results'].endswith('/motogp-yaris-sonuclari/')
+assert REFERENCE_ENDPOINTS['standings'].endswith('/motogp-puan-durumu/')
+assert REFERENCE_ENDPOINTS['riders'].endswith('/motogp-suruculeri/')
+assert REFERENCE_ENDPOINTS['calendar'].endswith('/motogp-yaris-takvimi/')
+assert not any(name.startswith('MotoEtkinlik') for name,_ in scout.TURKISH_WEB_SOURCES)
+print('TEST – MotoEtkinlik Dedicated Adapter Contract: PASS')
 
 # Production regression 2026-09-27: Turkish prose may be source material but never final German copy.
 assert agency.turkish_language_leak("2026’da Yarışmayı Bırakmayı Düşündüm")
