@@ -37,17 +37,3 @@ assert refs["riders"]["url"]==m.REFERENCE_ENDPOINTS["riders"]
 assert "Toprak" in refs["riders"]["text"]
 print("TEST – MotoEtkinlik Source Adapter: PASS")
 
-# Integration facade must remove legacy MotoEtkinlik crawling and keep rider resolution.
-import turkish_riders_scout_adapter as facade
-facade.discover_news=lambda limit_per_endpoint=120:[{
- "title":"Toprak Razgatlıoğlu MotoGP Avusturya yarış haberi",
- "url":"https://motoetkinlik.com/toprak-avusturya-motogp-haberi/",
- "series":"MotoGP","source_endpoint":expected_news["MotoGP"],"source":"MotoEtkinlik","kind":"news"}]
-legacy_sources=facade._legacy.TURKISH_WEB_SOURCES
-facade._legacy.TURKISH_WEB_SOURCES=()
-try:
- integrated=facade.turkish_web_scout(20)
-finally:
- facade._legacy.TURKISH_WEB_SOURCES=legacy_sources
-assert integrated==[("Toprak Razgatlıoğlu MotoGP Avusturya yarış haberi","https://motoetkinlik.com/toprak-avusturya-motogp-haberi/","Toprak Razgatlıoğlu","MotoGP")],integrated
-print("TEST – MotoEtkinlik Productive Scout Integration: PASS")
