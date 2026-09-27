@@ -108,6 +108,28 @@ def rider_centered_scout(limit_per_source=120):
  return out
 
 
+def _turkish_web_search(rider,aliases,limit=20):
+ """Search the public Turkish web per registered rider instead of trusting portal front pages."""
+ out=[];seen=set()
+ terms=[]
+ for name in (rider,)+tuple(aliases or ()):
+  if name and fold(name) not in {fold(x) for x in terms}:terms.append(name)
+ # Google is discovery only; candidate URLs must be Turkish domains and pass downstream fact/freshness gates.
+ for name in terms[:3]:
+  q=quote_plus(f'"{name}" motosiklet site:tr OR site:com.tr')
+  url='https://www.google.com/search?q='+q+'&num='+str(min(limit,20))
+  try:
+   r=requests.get(url,headers=UA,timeout=30);r.raise_for_status();page=r.text
+  except Exception as e:
+   print(f'TURKISH WEB SEARCH FAIL {rider}: {type(e).__name__}: {str(e)[:100]}');continue
+  for href,title in re.findall(r"<a[^>]+href=[\\\"'](?:/url\\?q=)?([^\\\"'&]+)[^>]*>(.*?)</a>",page,re.I|re.S):
+   u=html.unescape(href);t=clean(title);host=(urlsplit(u).hostname or '').lower()
+   if not u.startswith('http') or not (host.endswith('.tr') or host.endswith('.com.tr')) or len(t)<10 or u in seen:continue
+   if rider_for(t+' '+u,'')!=rider:continue
+   seen.add(u);out.append((t,u,'',rider))
+   if len(out)>=limit:return out
+ return out
+
 def turkish_web_scout(limit_per_source=120):
  """Scan open Turkish .tr/.com.tr racing/news pages for every registered rider.
 
@@ -123,6 +145,13 @@ def turkish_web_scout(limit_per_source=120):
    if not resolved or resolved not in RIDER_SOURCES or url in seen:continue
    series=detected_series if detected_series in ('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300','WorldSPB','Moto4') else RIDER_SOURCES[resolved].get('series','')
    seen.add(url);out.append((title,url,resolved,series))
+ # Portal front pages are shallow (AA is mostly football; TMF may expose only a few cards).
+ # Fill discovery per rider/alias so current articles deeper in the site can be found.
+ for rider,aliases in CANONICAL_ALIASES.items():
+  for title,url,detected_series,resolved in _turkish_web_search(rider,aliases,20):
+   if url in seen:continue
+   series=classify_series(RIDER_SOURCES.get(rider,{}).get('series',''),title,url)
+   seen.add(url);out.append((title,url,rider,series))
  print(f'TURKISH WEB SCOUT: {len(out)} registered-rider candidates')
  return out
 
