@@ -208,3 +208,40 @@ assert wssp['source_series']=='WorldSSP',wssp
 assert not agency.language_sane('Can Öncü kam in Cremona puansız an.'), 'Turkish leakage accepted'
 assert agency.language_sane('Can Öncü blieb in Cremona ohne Punkte.'), 'Valid German rejected'
 print('TEST – Turkish Series + German Language Hardening: PASS')
+
+
+# MotoEtkinlik is a structured open-web discovery source, not a social-only hint.
+web=dict(scout.TURKISH_WEB_SOURCES)
+assert web['MotoEtkinlikMotoGP']=='https://motoetkinlik.com/kategori/motogp/'
+assert web['MotoEtkinlikMoto2']=='https://motoetkinlik.com/kategori/moto2/'
+assert web['MotoEtkinlikMoto3']=='https://motoetkinlik.com/kategori/moto3/'
+assert web['MotoEtkinlikWorldSBK']=='https://motoetkinlik.com/kategori/wsbk/'
+assert web['MotoEtkinlikWorldSSP']=='https://motoetkinlik.com/kategori/worldssp/'
+assert web['MotoEtkinlikYaris']=='https://motoetkinlik.com/kategori/yaris/'
+
+old_get=scout.requests.get
+try:
+ class MotoEtkinlikResp:
+  def __init__(self,text): self.text=text
+  def raise_for_status(self): pass
+ def motoetkinlik_get(url,**kwargs):
+  if '/kategori/worldssp/' in url:
+   return MotoEtkinlikResp('<a href="/can-oncu-cremona-worldssp/">Can Öncü Cremona WorldSSP Superpole’de 6. oldu</a>')
+  if '/kategori/yaris/' in url:
+   return MotoEtkinlikResp('<a href="/iame-benelux-zayn-sofuoglu/">IAME Benelux Mariembourg Finali: Zayn Sofuoğlu Kazanmak İçin Piste Çıkıyor</a>')
+  return MotoEtkinlikResp('')
+ scout.requests.get=motoetkinlik_get
+ wssp=scout._turkish_site_crawl('MotoEtkinlikWorldSSP','https://motoetkinlik.com/kategori/worldssp/',max_pages=3,depth=1)
+ yaris=scout._turkish_site_crawl('MotoEtkinlikYaris','https://motoetkinlik.com/kategori/yaris/',max_pages=3,depth=1)
+ assert wssp and wssp[0][3]=='Can Öncü',wssp
+ assert yaris and yaris[0][3]=='Zayn Sofuoğlu',yaris
+finally:
+ scout.requests.get=old_get
+
+# Production regression 2026-09-27: Turkish prose may be source material but never final German copy.
+assert agency.turkish_language_leak("2026’da Yarışmayı Bırakmayı Düşündüm")
+assert not agency.language_sane("2026’da Yarışmayı Bırakmayı Düşündüm\n\nToprak Razgatlıoğlu vergleicht seine Saison.")
+assert agency.language_sane("Toprak Razgatlıoğlu vergleicht seine erste MotoGP-Saison mit 2018.")
+assert agency.language_sane("Can Öncü startet aus der sechsten Position.")
+assert 'QUESTION_HOOK_BODY' not in [agency.choose_structure_variant() for _ in range(100)]
+print('TEST – MotoEtkinlik + Turkish German Localization: PASS')
