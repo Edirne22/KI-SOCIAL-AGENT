@@ -4,7 +4,7 @@ from telegram_bot import send_photo
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
 from racing_semantic_qm import review_detailed as semantic_review_detailed
-from turkish_riders_scout import scout as turkish_scout, racing_scout, rider_centered_scout, discovery_scout, turkish_media_scout, turkish_web_scout
+from turkish_riders_scout_adapter import scout as turkish_scout, racing_scout, rider_centered_scout, discovery_scout, turkish_media_scout, turkish_web_scout
 from turkish_rider_names import CANONICAL_ALIASES as SHARED_TURKISH_ALIASES, canonical_rider as registry_canonical_rider, context_for as registry_context_for
 from motoparktv_video_ingest import discover as motoparktv_discover
 from motoparktv_runtime import collect as motoparktv_collect
