@@ -170,6 +170,8 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
   def series_for(x): return 'WorldSSP'
   @staticmethod
   def fact_whitelist_errors(x,caption): return []
+  @staticmethod
+  def language_sane(caption): return a.language_sane(caption)
  x={'title':'ALCOBA AT THE FRONT in WorldSSP','summary':'Jeremy Alcoba takes pole. Can Oncu is P6.','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'}
  good='🇹🇷 Can Öncü steht laut Quelle auf P6. Was sagt ihr dazu? 🏁\n\n#WorldSSP #CanOncu #BuelentsBikeLife #MotorradRacing'
  ok,errors=tqm.final_review(x,good,FakeAgency)
