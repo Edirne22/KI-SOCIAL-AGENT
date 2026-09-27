@@ -5,6 +5,7 @@ import base64
 from pathlib import Path
 import requests
 
+from publish_provenance import append_media_provenance
 from asset_paths import get_carousel_dir, get_image_path, get_video_path, slugify
 from media_policy import ai_media_allowed
 
@@ -159,6 +160,11 @@ def download_bytes(url):
         return None
     return r.content
 
+def _media_provenance(kind, path, model, source="agnes-ai"):
+    return {"version":1,"media_kind":kind,"media_path":Path(path).as_posix(),
+            "origin":source,"generator":"generate_agnes_media.py","model":model,
+            "synthetic":True,"real_racer_generation":False}
+
 def save_bytes(data, filename):
     path = Path(filename)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -286,6 +292,7 @@ def process_block(content, platform_header, want_video_check=True):
                     updated_block,
                     count=1,
                 )
+                updated_block = append_media_provenance(updated_block, _media_provenance("image", image_filename, "agnes-image-2.1-flash"))
                 print(f"Agnes-Bild gespeichert: {image_filename}")
             else:
                 print("Agnes-Bild fehlgeschlagen.")
@@ -302,6 +309,8 @@ def process_block(content, platform_header, want_video_check=True):
             if vid_bytes:
                 save_bytes(vid_bytes, video_filename)
                 updated_block = replace_auto_video_reference(updated_block, video_filename.as_posix())
+                updated_block = append_media_provenance(updated_block, _media_provenance(
+                    "video", video_filename, "agnes-video-v2.0"))
                 print(f"Agnes-Video gespeichert: {video_filename}")
             else:
                 print("Agnes-Video fehlgeschlagen – Video: auto bleibt für einen späteren Versuch stehen.")

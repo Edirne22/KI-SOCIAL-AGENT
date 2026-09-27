@@ -2,6 +2,12 @@
 from __future__ import annotations
 import json,re
 
+def _json_line(block, label):
+    match=re.search(r"(?mi)^"+re.escape(label)+r":\s*(\{.*\})\s*$",block)
+    if not match:return None
+    try:return json.loads(match.group(1))
+    except json.JSONDecodeError:return None
+
 def media_origin(block):
     image=re.search(r"(?mi)^Bild:\s*(?!auto\s*$)(\S+)",block)
     video=re.search(r"(?mi)^Video:\s*(?!auto\s*$)(\S+)",block)
@@ -14,8 +20,18 @@ def media_origin(block):
             "media_status":status.group(1).strip() if status else "",
             "source_url":source.group(1) if source else ""}
 
+def append_media_provenance(block, provenance):
+    line="Media-Provenienz: "+json.dumps(provenance,ensure_ascii=False,sort_keys=True)
+    if re.search(r"(?mi)^Media-Provenienz:",block):
+        return re.sub(r"(?mi)^Media-Provenienz:.*$",line,block,count=1)
+    return block.rstrip()+"\n"+line+"\n"
+
 def append_publish_provenance(block,platform,post_id):
-    origin=media_origin(block)
+    explicit=_json_line(block,"Media-Provenienz")
+    origin=dict(explicit) if explicit else media_origin(block)
+    # Keep final block state authoritative while preserving editor/generator metadata.
+    current=media_origin(block)
+    origin.update({k:v for k,v in current.items() if v or k in ("media_kind","media_path")})
     lineage=re.search(r"(?mi)^Quellen-Lineage:\s*(\{.*\})\s*$",block)
     if lineage:
         try:origin["source_lineage"]=json.loads(lineage.group(1))
