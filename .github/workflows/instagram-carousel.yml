@@ -26,9 +26,27 @@ jobs:
           python-version: "3.10"
       - run: pip install requests
       - name: Instagram-Karussell reservieren
-        run: python publication_claim.py --platform instagram-carousel --claim
+        id: claim
+        shell: bash
+        run: |
+          set +e
+          python publication_claim.py --platform instagram-carousel --claim
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
+            echo "has_claim=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$rc" -eq 3 ]; then
+            echo "has_claim=false" >> "$GITHUB_OUTPUT"
+            echo "NO-WORK: Kein freigegebener, unreservierter instagram-carousel-Block vorhanden."
+            exit 0
+          fi
+          echo "publication_claim.py fehlgeschlagen (exit $rc)." >&2
+          exit "$rc"
 
       - name: Reservierung speichern
+        if: steps.claim.outputs.has_claim == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -40,9 +58,11 @@ jobs:
           git push
 
       - name: Reservierung starten
+        if: steps.claim.outputs.has_claim == 'true'
         run: python publication_claim.py --platform instagram-carousel --start --token "${{ github.run_id }}-${{ github.run_attempt }}"
 
       - name: Startstatus speichern
+        if: steps.claim.outputs.has_claim == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
