@@ -271,7 +271,10 @@ def test_finalization_contract():
   sample=[{'title':'T','caption':'Text.\n\nFrage?\n\n#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife','url':'https://example.com','series':'MotoGP'} for _ in range(4)]
   a.telegram_preview(sample,False,[])
   ok(sent and '– 4 qualitätsgeprüfte Tagesvorschläge' in sent[0],'Telegram header must report actual final count')
+  ok(len(sent)==6,'Telegram must send one header + four complete post cards + one approval message')
+  ok(all('FINALER REDAKTEURS-TEXT' in msg and 'QM: PASS' in msg for msg in sent[1:-1]),'every final post must be visible as its own approval card')
   ok('motogp 1–4' in sent[-1],'Telegram approval range must report actual final count in the final approval message')
+  ok('HUMAN APPROVAL' in sent[-1],'approval command must be a separate final message')
  finally:a.send_message=old_send
  import chief_quality_manager as chief
  old_log=chief._log
