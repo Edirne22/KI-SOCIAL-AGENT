@@ -1,6 +1,6 @@
 # Motorcycle Racing Daily Agency V8.5.5
 
-Stand: 2026-09-26 23:03 UTC
+Stand: 2026-09-27 04:28 UTC
 Rohkandidaten: 201
 Aktuelle Racing-News <=7 Tage: 3
 Freshness missing-date: 22

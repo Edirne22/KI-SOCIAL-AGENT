@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790463810
+Session-Timestamp: 1790483306
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,19 +18,19 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Top-20 vom Vortag
-Artikelalter-Tage: 5.0
+Artikelalter-Tage: 5.2
 Kategorie: MotoGP
 Serie: MotoGP
 Story-Key: motogp:1091638
 Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
 Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Instagram-Bild: assets/images/2026-09/2026-09-26-racing-editorial-2026-09-26-1-motogp-news-motogp-c-01.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-1-motogp-news-motogp-c-01.jpg
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-MotoGP bestätigt Valencia als Saisonfinale 2027. Der komplette Kalender kommt am Freitag raus.
+Was denkt ihr – passt Valencia als Saisonfinale?
 
-Was erwartet ihr von der letzten Runde in Valencia?
+Die MotoGP hat bestätigt, dass der Große Preis von Valencia 2027 als Saisonfinale läuft. Der komplette Kalender für die Saison kommt angeblich am Freitag raus. Die Strecke am Rande hat schon lange den Ruf, am Ende der Saison oft spannend zu entscheiden – mal sehen, ob das auch 2027 so ist. 🏍️
 
 #MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -46,18 +46,18 @@ Herkunft: Community-Fallback
 Artikelalter-Tage: 0.0
 Kategorie: Community
 Serie: Community
-Story-Key: title:community-spotlight-bike-society-united
-Titel: 🏍️ Community-Spotlight: Bike Society United
-Quelle: https://www.instagram.com/bike_society.united/
+Story-Key: title:community-spotlight-bike-society-hagen
+Titel: 🏍️ Community-Spotlight: Bike Society Hagen
+Quelle: https://www.instagram.com/bike_society_hagen/
 Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Heute im Community-Spotlight: Bike Society United. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
+Heute im Community-Spotlight: Bike Society Hagen. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
 Was macht für euch eine gute Motorrad-Community aus?
 
-#BikeSocietyUnited #Motorradfahren #BikerCommunity #BuelentsBikeLife
+#BikeSocietyHagen #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -71,18 +71,18 @@ Herkunft: Community-Fallback
 Artikelalter-Tage: 0.0
 Kategorie: Community
 Serie: Community
-Story-Key: title:community-spotlight-knieschleifer-ruhrpott
-Titel: 🏍️ Community-Spotlight: Knieschleifer Ruhrpott
-Quelle: https://www.instagram.com/ks_ruhrpott/
+Story-Key: title:community-spotlight-knieschleifer-aus-berzeugung
+Titel: 🏍️ Community-Spotlight: Knieschleifer aus Überzeugung
+Quelle: https://www.instagram.com/knieschleifer.aus.ueberzeugung/
 Instagram-Bild: 
 Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Heute im Community-Spotlight: Knieschleifer Ruhrpott. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
+Heute im Community-Spotlight: Knieschleifer aus Überzeugung. Schaut euch das Profil direkt an und macht euch selbst ein Bild.
 
 Was macht für euch eine gute Motorrad-Community aus?
 
-#KsRuhrpott #Motorradfahren #BikerCommunity #BuelentsBikeLife
+#KnieschleiferAusUeberzeugung #Motorradfahren #BikerCommunity #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
