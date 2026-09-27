@@ -1,0 +1,37 @@
+name: LIVE – MotoParkTv Runtime E2E
+on:
+  workflow_dispatch:
+    inputs:
+      video_url:
+        description: "Public MotoParkTv/YouTube video URL used for the real runtime smoke"
+        required: true
+        type: string
+      whisper_model:
+        description: "Local Whisper model"
+        required: false
+        default: "tiny"
+        type: choice
+        options: [tiny, base, small]
+permissions:
+  contents: read
+jobs:
+  live-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install real runtime
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          pip install yt-dlp openai-whisper
+      - name: Preflight
+        run: python -m py_compile motoparktv_runtime.py motoparktv_video_ingest.py turkish_rider_memory.py tests/live_motoparktv_runtime_e2e.py
+      - name: Real YouTube audio and local Whisper smoke
+        env:
+          MOTOPARKTV_LIVE_URL: ${{ inputs.video_url }}
+          WHISPER_MODEL: ${{ inputs.whisper_model }}
+        run: PYTHONPATH=. python -u tests/live_motoparktv_runtime_e2e.py
