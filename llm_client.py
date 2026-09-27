@@ -8,6 +8,9 @@ from router import get_api_key,get_provider_config,get_provider_for_task,get_tas
 ROOT=Path(__file__).resolve().parent
 PRO_STANDARD=ROOT/'config'/'PROFESSIONAL_AGENT_STANDARD.md';HUMAN_STANDARD=ROOT/'config'/'HUMAN_WRITING_PROTOCOL.md';BBL_VOICE=ROOT/'memory'/'MOTOGP_VOICE_RULES.md'
 _PROVIDER_COOLDOWNS={}
+class ProviderUnavailableError(RuntimeError):
+ """All configured providers for one task failed for technical reasons."""
+ pass
 def provider_in_cooldown(provider_name):
  return time.monotonic() < _PROVIDER_COOLDOWNS.get(provider_name,0.0)
 def _cooldown_seconds(response):
@@ -108,6 +111,6 @@ def generate(task_name,prompt):
    # Provider failures are routing events. Try the configured fallback once;
    # callers must not create their own provider retry nests.
    continue
- raise RuntimeError('Alle konfigurierten Provider nicht verfuegbar (fail-closed): '+' | '.join(errors))
+ raise ProviderUnavailableError('Alle konfigurierten Provider nicht verfuegbar (fail-closed): '+' | '.join(errors))
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--task',default='content_ideas');p.add_argument('--prompt',default='Nenne eine kurze Motorrad-Content-Idee.');a=p.parse_args();r=generate(a.task,a.prompt);print(r if isinstance(r,str) else redact_secrets(str(r)))
