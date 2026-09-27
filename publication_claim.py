@@ -72,5 +72,6 @@ def start(target,token):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--platform',choices=sorted(TARGETS),required=True);a=p.add_mutually_exclusive_group(required=True);a.add_argument('--claim',action='store_true');a.add_argument('--start',action='store_true');p.add_argument('--token');x=p.parse_args()
     if x.start and not x.token:p.error('--start benötigt --token')
-    ok=claim(x.platform) if x.claim else start(x.platform,x.token)\n    raise SystemExit(0 if ok else 3)
+    ok=claim(x.platform) if x.claim else start(x.platform,x.token)
+    raise SystemExit(0 if ok else 3)
 if __name__=='__main__':main()
