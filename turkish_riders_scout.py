@@ -22,6 +22,8 @@ TURKISH_WEB_SOURCES=(
  ('AnadoluAjansi','https://www.aa.com.tr/tr/spor'),
  ('Motoron','https://www.motoron.com.tr/kategori/yarislar/'),
  ('MotorsportTR','https://tr.motorsport.com/'),
+ ('TRMotoSports','https://www.trmotosports.com/'),
+ ('TRF1MotoGP','https://trf1.net/motor-sporlari/motogp/'),
 )
 # Open Turkish web sources are preferred over social scraping: crawlable, source-linked,
 # and suitable for the same downstream freshness/fact gates.
