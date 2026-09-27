@@ -41,11 +41,13 @@ Der Mensch hat {rider} ausdruecklich als Turkish-Rider-Thema ausgewaehlt. Releva
 Die Originalmeldung darf hauptsaechlich von jemand anderem handeln. Ziehe den belegten Blickwinkel auf {rider} heraus,
 aber behaupte niemals, er habe Pole, Sieg, Rekord, Vertrag, Platzierung oder Aussage erzielt, wenn TITEL/ZUSAMMENFASSUNG das nicht belegen.
 Nur Fakten aus TITEL/ZUSAMMENFASSUNG. Keine Fakten aus Vorwissen. Keine erfundenen Zitate, Zahlen, Orte, Teams oder Beziehungen.
+Wenn VIDEO_TRANSKRIPT vorhanden ist: nutze dessen belegten Inhalt als Quellenmaterial, aber formuliere vollstaendig neu.
+Keine laengeren Originalformulierungen aus Titel, Beschreibung oder Transkript uebernehmen.
 Serie unveraendert: {series}. Keine Hashtags – die setzt das System deterministisch.
 Wenn es natuerlich passt, darfst du mit einer kurzen Community-Frage enden. Erzwinge sie nicht.
 {repair}
 TITEL: {x.get('title','')}
-ZUSAMMENFASSUNG: {x.get('summary','')}
+ZUSAMMENFASSUNG: {x.get('summary','')}\nVIDEO_TRANSKRIPT: {x.get('video_transcript','')[:12000]}
 TURKISH_RIDER: {rider}
 
 Antworte nur als JSON: {{"caption":"..."}}"""
@@ -63,8 +65,17 @@ def edit(x,agency,reasons=None):
     x["caption"]=caption+"\n\n"+_hashtags(x,agency)+source_line
     return x["caption"]
 
+def _copied_source_phrase(x,caption,min_words=9):
+    def words(s):return re.findall(r"[A-Za-zÀ-ž0-9]+",fold(str(s)))
+    out=words(caption)
+    if len(out)<min_words:return False
+    src=words(" ".join((str(x.get("title","")),str(x.get("summary","")),str(x.get("video_transcript","")))))
+    grams={" ".join(src[i:i+min_words]) for i in range(max(0,len(src)-min_words+1))}
+    return any(" ".join(out[i:i+min_words]) in grams for i in range(max(0,len(out)-min_words+1)))
+
 def final_review(x,caption,agency):
     errors=[]
+    if _copied_source_phrase(x,caption):errors.append("Turkish-Final-QM: Originalformulierung aus Quellenmaterial uebernommen")
     if not _target_supported(x):errors.append("Turkish-Final-QM: ausgewaehlter Fahrer ist in den Quellenfakten nicht belegt")
     errors.extend(agency.fact_whitelist_errors(x,caption))
     ok,guard_errors=final_guard_review(x,caption)
