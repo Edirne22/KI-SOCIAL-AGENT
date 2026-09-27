@@ -427,7 +427,9 @@ def turkish_candidate_reason(x,now,max_days=10):
   return 'PASS'
 
 def turkish_five_preview(details,now,max_days=10):
-  candidates=[];seen=set();window_used=0
+  # Keep up to 20 selectable history candidates, but show only T1-T5 by default.
+  # This preserves the compact Telegram preview while enabling `turkish liste` + T6-T20.
+  candidates=[];seen=set();window_used=0;history_limit=20
   # Deliberately widen only as needed: today -> 7 days -> 10 days.
   # This prevents an older high-scoring story from displacing today's rider news.
   for days in (1,7,max_days):
@@ -437,26 +439,27 @@ def turkish_five_preview(details,now,max_days=10):
     key=story_key(x.get('title',''),x.get('url',''))
     if key in seen:continue
     seen.add(key);candidates.append(x)
-    if len(candidates)>=5:break
-   if len(candidates)>=5:break
+    if len(candidates)>=history_limit:break
+   if len(candidates)>=history_limit:break
   diag=[(y.get('turkish_rider') or detect_turkish_rider(y),y.get('title','')[:70],turkish_candidate_reason(y,now,max_days)) for y in details if is_turkish_focus(y)]
   print('TURKISH CANDIDATE-GATE DIAG '+json.dumps(diag,ensure_ascii=False))
   payload={'version':1,'created_at':int(now.timestamp()),'max_days':max_days,'window_used_days':window_used,'count':len(candidates),'items':[]}
   for i,x in enumerate(candidates,1):
    payload['items'].append({'n':i,'title':x.get('title',''),'url':x.get('url',''),'summary':x.get('summary',''),'preview':x.get('preview',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'series':series_for(x),'source_series':x.get('source_series') or series_for(x),'turkish_rider':x.get('turkish_rider') or detect_turkish_rider(x),'kind':x.get('kind','news')})
   TURKISH_SESSION.parent.mkdir(parents=True,exist_ok=True);TURKISH_SESSION.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche rückwärts bis maximal 10 Tage; bereits früher angebotene Stories dürfen erneut erscheinen.','']
+  visible=candidates[:5]
+  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche rückwärts bis maximal 10 Tage; bereits früher angebotene Stories dürfen erneut erscheinen.','',f'📚 Historie: {len(candidates)} auswählbare Kandidaten gespeichert. Für T6–T20: turkish liste','']
   if len(candidates)<5:msg.append(f'⚠️ {len(candidates)} von 5 gefunden – Zeitraum heute → 7 → {max_days} Tage aus den registrierten offiziellen Fahrerquellen geprüft.')
   else:msg.append('✅ 5 von 5 Kandidaten gefunden.')
   send_message('\n'.join(msg)[:4000])
-  for i,x in enumerate(candidates,1):
+  for i,x in enumerate(visible,1):
    title=f'T{i}️⃣ {x.get("turkish_rider") or "Turkish Rider"} | {x.get("title","")}'
    source=x.get('url','');og=extract_og_image_url(source)
    caption=f'{title}\n🔗 Quelle: {source}\nStatus: Scout-Vorschlag – Auswahl danach Priority-Repair + vollständiges Fakten-QM'
    if not _send_turkish_source_photo(og,caption):send_message(caption)
-  send_message('Freigabe zur QM-Prüfung: turkish 1–5 / Kombination / turkish alle\nAblehnen: turkish nein')
-  print(f'TURKISH-5 PREVIEW sent={len(candidates)} window_used_days={window_used} max_days={max_days}')
-  return candidates
+  send_message('Freigabe zur QM-Prüfung: turkish 1–5 / Kombination / turkish alle\nWeitere Kandidaten: turkish liste → danach z. B. turkish 12\nAblehnen: turkish nein')
+  print(f'TURKISH-5 PREVIEW sent={len(visible)} history={len(candidates)} window_used_days={window_used} max_days={max_days}')
+  return visible
 
 def telegram_preview(items,turk,qualified=None):
  status=turkish_status(items,qualified)
