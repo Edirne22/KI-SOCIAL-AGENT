@@ -1,1 +1,1 @@
-. Handyvertrag 80GB D1
+handyvertrag 80GB D1

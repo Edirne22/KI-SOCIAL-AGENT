@@ -2576,3 +2576,46 @@ Quellen:
 - iPhone 18 Pro Max ohne Zuzahlung zum Vertrag: https://www.tariffuxx.de/handyvertrag/apple/iphone-18-pro-max/iphone-18-pro-max-ohne-zuzahlung
 - Telekom-Netz: Allnet-Flat mit 500 MB drei Monate gratis - Teltarif: https://www.teltarif.de/blingmobile-kostenlos-trial-test/news/100980.html
 - iPhone Black Friday 2025: Die besten Apple-Deals - TARIFFUXX: https://www.tariffuxx.de/handyvertrag/apple/iphone-black-friday
+## Suche vom 2026-09-27 06:08
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. Monatlich kündbar im Telekom Netz – 80GB Allnet Flat für nur 11.99 ...
+   https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet-flat-fuer-nur-11-99e-monatlich/ – 16.09.2026 ... Monatlich kündbar im Netz der Telekom - 80GB Allnet Flatrate nur 11.99€ monatlich. Einmalige Anschlussgebühr 19.99,-€.
+2. HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...
+   https://handytariftipp.de/ – HandyTarifTipp Mobilfunk Deals · Congstar Kennenlernkarte im Netz der Telekom – 50GB Allnet Flat einmalig nur 1€ – endet · Prepaid Deal mit 45€ Bonusguthaben bei ...
+3. fraenk Freunde werben: Bis zu 125 GB für nur 10 €! - Handyhase.de
+   https://www.handyhase.de/magazin/fraenk-kundenwerbung/ – 03.03.2026 ... Dank Freundschaftswerbung max. 105 GB EXTRA ✔️ 125 GB für 10 € durch 20 geworbene Neukunden ✔️ 5 GB extra auch für Geworbene.
+4. Starlink Affiliate-Programm: 45 Euro mit Empfehlungen verdienen
+   https://handytariftipp.de/starlink-affiliate-programm-45-euro-mit-empfehlungen-verdienen/ – vor 7 Tagen ... Starlink Affiliate-Programm: So können Nutzer aktuell 45 € pro erfolgreicher Empfehlung verdienen und sich die Prämie auszahlen lassen.
+5. HandyTarifTipp DealAlarm
+   https://handytariftipp.de/handytariftipp-dealalarm/ – HandyTarifTipp DealAlarm · Allnet Flat 150GB monatlich kündbar im Vodafone Netz nur 14.99€ monatlich · Monatlich kündbar im Telekom Netz – 80GB Allnet Flat für ...
+6. D1 Netz Archives - HandyTarifTipp
+   https://handytariftipp.de/category/prepaid/d1/ – D1 Netz · Prepaid Jahrespaket für 79.95€ – 20GB Allnet Flat im Telekom Netz monatlich für effektiv nur 6.66€ · Prepaid Karte im Telekom Netz – 45GB Allnet ...
+7. 20GB Allnet Flat im Telekom Netz monatlich für effektiv nur 6.66
+   https://handytariftipp.de/prepaid-jahrespaket-fuer-79-95e-20gb-allnet-flat-im-telekom-netz-monatlich-fuer-effektiv-nur-6-66e/ – vor 8 Tagen ... Der Tarif bietet 240 GB 5G-Datenvolumen pro Jahr (20 GB monatlich) im Telekom 5G-Netz mit bis zu 100 Mbit/s sowie eine Telefonie- und ...
+8. Über uns – HandyTarifTipp.de
+   https://handytariftipp.de/ueber-uns-handytariftipp-de/ – SIM-only-Tarife: Wenn Du bereits ein Smartphone besitzt und nur einen passenden Tarif benötigst, findest Du bei uns die besten SIM-only-Angebote. Ob Allnet-Flat ...
+9. Handy mit Vertrag – So findest du die besten Deals! - HandyTarifTipp
+   https://handytariftipp.de/handy-mit-vertrag-top-deals-guenstige-bundle-angebote/ – 12.05.2025 ... RSS-Feed: SmartphoneAmigo.de SmartphoneAmigo.de · Anzeige · * Hinweise zu den Angeboten · Mobilfunk Deals – WhatsApp Kanal · Angebote durchsuchen.
+10. 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat
+   https://handytariftipp.de/50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat-congstar-kennenlernkarte-im-telekom-netz/ – 06.09.2026 ... Die congstar Kennenlernkarte ist ein starkes Aktionsangebot: 50 GB Datenvolumen, Allnet-Flat und SMS-Flat im Telekom-Netz für nur 1 €.
+
+Quellen:
+- Monatlich kündbar im Telekom Netz – 80GB Allnet Flat für nur 11.99 ...: https://handytariftipp.de/monatlich-kuendbar-im-telekom-netz-80gb-allnet-flat-fuer-nur-11-99e-monatlich/
+- HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...: https://handytariftipp.de/
+- fraenk Freunde werben: Bis zu 125 GB für nur 10 €! - Handyhase.de: https://www.handyhase.de/magazin/fraenk-kundenwerbung/
+- Starlink Affiliate-Programm: 45 Euro mit Empfehlungen verdienen: https://handytariftipp.de/starlink-affiliate-programm-45-euro-mit-empfehlungen-verdienen/
+- HandyTarifTipp DealAlarm: https://handytariftipp.de/handytariftipp-dealalarm/
+- D1 Netz Archives - HandyTarifTipp: https://handytariftipp.de/category/prepaid/d1/
+- 20GB Allnet Flat im Telekom Netz monatlich für effektiv nur 6.66: https://handytariftipp.de/prepaid-jahrespaket-fuer-79-95e-20gb-allnet-flat-im-telekom-netz-monatlich-fuer-effektiv-nur-6-66e/
+- Über uns – HandyTarifTipp.de: https://handytariftipp.de/ueber-uns-handytariftipp-de/
+- Handy mit Vertrag – So findest du die besten Deals! - HandyTarifTipp: https://handytariftipp.de/handy-mit-vertrag-top-deals-guenstige-bundle-angebote/
+- 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat: https://handytariftipp.de/50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat-congstar-kennenlernkarte-im-telekom-netz/
