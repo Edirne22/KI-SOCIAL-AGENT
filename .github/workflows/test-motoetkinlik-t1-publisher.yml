@@ -1,0 +1,32 @@
+name: TEST – MotoEtkinlik T1 Publisher Block
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'motoetkinlik_source.py'
+      - 'turkish_riders_scout.py'
+      - 'turkish_editor_qm.py'
+      - 'racing_v855_hardening.py'
+      - 'tests/test_motoetkinlik_source_adapter.py'
+      - 'tests/test_racing_qm_balanced.py'
+      - 'tests/test_publisher_no_work_workflows.py'
+      - '.github/workflows/*publish*.yml'
+      - '.github/workflows/instagram-reels.yml'
+      - '.github/workflows/instagram-stories.yml'
+      - '.github/workflows/*carousel.yml'
+      - '.github/workflows/test-motoetkinlik-t1-publisher.yml'
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests Pillow beautifulsoup4 pytest
+      - name: Syntax
+        run: python -m py_compile motoetkinlik_source.py turkish_riders_scout.py turkish_editor_qm.py racing_v855_hardening.py
+      - name: Targeted regressions
+        run: PYTHONPATH=. pytest -q tests/test_motoetkinlik_source_adapter.py tests/test_racing_qm_balanced.py tests/test_publisher_no_work_workflows.py
