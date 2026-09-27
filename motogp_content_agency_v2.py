@@ -308,7 +308,7 @@ def write_session(items,now):
  lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Buelents-Bike-Life-Voice: VERBINDLICH','QM: PASS',f'Racing-Lexikon-Version: {racing_lexicon_version()}',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
  for i,x in enumerate(items,1):
   community=x.get('community_fallback')
-  lines += [f'## Beitrag {i}','QM: PASS',('Community-Human-QM: PASS' if community else 'Racing-QM: PASS'),('Semantic-Fakten-QM: N/A – Community-Fallback' if community else 'Semantic-Fakten-QM: PASS'),f'Neufassungen: {x.get("rewrite_count",0)}',f'QM-Ruecklaeufe: {x.get("research_retry_count",0)+x.get("chief_retry_count",0)}',f'Herkunft: {"Community-Fallback" if community else ("Top-20 vom Vortag" if x.get("fallback_yesterday") else "Aktuell")}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Community" if community else ("Turkish Riders" if is_turkish_focus(x) else series_for(x))}',f'Serie: {"Community" if community else series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
+  lines += [f'## Beitrag {i}','QM: PASS',('Community-Human-QM: PASS' if community else 'Racing-QM: PASS'),('Semantic-Fakten-QM: N/A – Community-Fallback' if community else 'Semantic-Fakten-QM: PASS'),f'Neufassungen: {x.get("rewrite_count",0)}',f'QM-Ruecklaeufe: {x.get("research_retry_count",0)+x.get("chief_retry_count",0)}',f'Herkunft: {"Community-Fallback" if community else ("Top-20 vom Vortag" if x.get("fallback_yesterday") else "Aktuell")}',f'Artikelalter-Tage: {age_days(x,now):.1f}',f'Kategorie: {"Community" if community else ("Turkish Riders" if is_turkish_focus(x) else series_for(x))}',f'Serie: {"Community" if community else series_for(x)}',f'Story-Key: {story_key(x["title"],x["url"])}',f'Titel: {x["title"]}',f'Quelle: {x["url"]}',f'Quellen-Lineage: {json.dumps(x.get("source_lineage",{}),ensure_ascii=False,sort_keys=True)}',f'Instagram-Bild: {x["instagram_media"]}',f'Quellen-Preview: {x.get("preview") or "Zielseite/Plattform"}','Plattformen: Instagram + Facebook',f'Text:\n{x["caption"]}','','Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.','']
  SESSION.parent.mkdir(parents=True,exist_ok=True);SESSION.write_text('\n'.join(lines)+'\n',encoding='utf-8')
 
 COMMUNITY_ROTATION_FILE=Path('memory/COMMUNITY_ROTATION.json')
@@ -483,7 +483,7 @@ def run_v8():
    add_turkish_candidate(raw,seen,meta,title,u,rider)
    meta[u].update({'discovery_source':'motoparktv-video','published_at':v.get('published_at',''),
                    'summary':v.get('transcript','')[:4000],'video_transcript':v.get('transcript',''),
-                   'source_reliability':'rider-close-discovery'})
+                   'source_reliability':'rider-close-discovery','source_lineage':v.get('source_lineage',{})})
  except Exception as e:print('MOTOPARKTV DISCOVERY FAIL:',type(e).__name__,str(e)[:180])
  for t,u,s,r in racing_scout(140):
   u=canonical_url(u);key=story_key(t,u)
