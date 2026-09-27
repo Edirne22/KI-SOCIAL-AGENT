@@ -141,3 +141,20 @@ try:
 finally:
  scout.requests.get=old_get
 print('TEST – Turkish Specialist Article Routes: PASS')
+
+
+# Pagination regression: category -> page 2 -> hidden registered-rider article.
+old_get=scout.requests.get
+try:
+ def paged_get(url,**kwargs):
+  if url.rstrip('/')=='https://www.motoron.com.tr/kategori/yarislar':
+   return CrawlResp('<a href="/kategori/yarislar/page/2/">Sonraki yarış haberleri sayfası</a>')
+  if '/kategori/yarislar/page/2' in url:
+   return CrawlResp('<a href="/motosiklet-haber/can-oncu-worldssp/">Can Öncü WorldSSP podyum yarış haberi</a>')
+  return CrawlResp('')
+ scout.requests.get=paged_get
+ rows=scout._turkish_site_crawl('Motoron','https://www.motoron.com.tr/kategori/yarislar/',max_pages=5,depth=2)
+ assert any(r[3]=='Can Öncü' and '/motosiklet-haber/' in r[1] for r in rows),rows
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Pagination Crawl: PASS')
