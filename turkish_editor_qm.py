@@ -73,10 +73,17 @@ def _copied_source_phrase(x,caption,min_words=9):
     grams={" ".join(src[i:i+min_words]) for i in range(max(0,len(src)-min_words+1))}
     return any(" ".join(out[i:i+min_words]) in grams for i in range(max(0,len(out)-min_words+1)))
 
+def _editorial_text(caption):
+    """Strip deterministic hashtags/source provenance before language/copy review."""
+    text=str(caption or "").split("\n\nQuelle / weitere Infos:",1)[0]
+    text=re.sub(r"(?m)^\\s*#[^\\n]*$","",text)
+    return text.strip()
+
 def final_review(x,caption,agency):
     errors=[]
-    if _copied_source_phrase(x,caption):errors.append("Turkish-Final-QM: Originalformulierung aus Quellenmaterial uebernommen")
-    if not agency.language_sane(caption):errors.append("Turkish-Final-QM: finaler Text ist nicht vollstaendig idiomatisches Deutsch / enthaelt tuerkischen Sprachrest")
+    editorial=_editorial_text(caption)
+    if _copied_source_phrase(x,editorial):errors.append("Turkish-Final-QM: Originalformulierung aus Quellenmaterial uebernommen")
+    if not agency.language_sane(editorial):errors.append("Turkish-Final-QM: finaler Text ist nicht vollstaendig idiomatisches Deutsch / enthaelt tuerkischen Sprachrest")
     if not _target_supported(x):errors.append("Turkish-Final-QM: ausgewaehlter Fahrer ist in den Quellenfakten nicht belegt")
     errors.extend(agency.fact_whitelist_errors(x,caption))
     ok,guard_errors=final_guard_review(x,caption)
