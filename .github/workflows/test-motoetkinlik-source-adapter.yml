@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'motoetkinlik_source.py'
+      - 'turkish_riders_scout_adapter.py'
+      - 'motogp_content_agency_v2.py'
       - 'tests/test_motoetkinlik_source_adapter.py'
       - '.github/workflows/test-motoetkinlik-source-adapter.yml'
 jobs:
@@ -15,5 +17,5 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install requests
-      - run: python -m py_compile motoetkinlik_source.py tests/test_motoetkinlik_source_adapter.py
+      - run: python -m py_compile motoetkinlik_source.py turkish_riders_scout_adapter.py motogp_content_agency_v2.py tests/test_motoetkinlik_source_adapter.py
       - run: python tests/test_motoetkinlik_source_adapter.py
