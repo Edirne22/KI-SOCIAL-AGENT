@@ -40,7 +40,7 @@ WICHTIG: Coolness darf NIEMALS neue Fakten erzeugen.
 Der Mensch hat {rider} ausdruecklich als Turkish-Rider-Thema ausgewaehlt. Relevanz ist damit entschieden.
 Die Originalmeldung darf hauptsaechlich von jemand anderem handeln. Ziehe den belegten Blickwinkel auf {rider} heraus,
 aber behaupte niemals, er habe Pole, Sieg, Rekord, Vertrag, Platzierung oder Aussage erzielt, wenn TITEL/ZUSAMMENFASSUNG das nicht belegen.
-Nur Fakten aus TITEL/ZUSAMMENFASSUNG. Keine Fakten aus Vorwissen. Keine erfundenen Zitate, Zahlen, Orte, Teams oder Beziehungen.
+Nur Fakten aus TITEL/ZUSAMMENFASSUNG. Keine Fakten aus Vorwissen. Keine erfundenen Zitate, Zahlen, Orte, Teams, Nationalitaeten oder Beziehungen. Nationalitaeten nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG ausdruecklich belegt sind.
 Wenn VIDEO_TRANSKRIPT vorhanden ist: nutze dessen belegten Inhalt als Quellenmaterial, aber formuliere vollstaendig neu.
 Keine laengeren Originalformulierungen aus Titel, Beschreibung oder Transkript uebernehmen.
 Serie unveraendert: {series}. Keine Hashtags – die setzt das System deterministisch.
@@ -73,10 +73,17 @@ def _copied_source_phrase(x,caption,min_words=9):
     grams={" ".join(src[i:i+min_words]) for i in range(max(0,len(src)-min_words+1))}
     return any(" ".join(out[i:i+min_words]) in grams for i in range(max(0,len(out)-min_words+1)))
 
+def _editorial_text(caption):
+    """Strip deterministic hashtags/source provenance before language/copy review."""
+    text=str(caption or "").split("\n\nQuelle / weitere Infos:",1)[0]
+    text=re.sub(r"(?m)^\s*#[^\n]*$","",text)
+    return text.strip()
+
 def final_review(x,caption,agency):
     errors=[]
-    if _copied_source_phrase(x,caption):errors.append("Turkish-Final-QM: Originalformulierung aus Quellenmaterial uebernommen")
-    if not agency.language_sane(caption):errors.append("Turkish-Final-QM: finaler Text ist nicht vollstaendig idiomatisches Deutsch / enthaelt tuerkischen Sprachrest")
+    editorial=_editorial_text(caption)
+    if _copied_source_phrase(x,editorial):errors.append("Turkish-Final-QM: Originalformulierung aus Quellenmaterial uebernommen")
+    if not agency.language_sane(editorial):errors.append("Turkish-Final-QM: finaler Text ist nicht vollstaendig idiomatisches Deutsch / enthaelt tuerkischen Sprachrest")
     if not _target_supported(x):errors.append("Turkish-Final-QM: ausgewaehlter Fahrer ist in den Quellenfakten nicht belegt")
     errors.extend(agency.fact_whitelist_errors(x,caption))
     ok,guard_errors=final_guard_review(x,caption)

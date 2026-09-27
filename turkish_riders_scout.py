@@ -3,6 +3,7 @@ import re,requests,html,unicodedata
 from urllib.parse import quote_plus
 from turkish_rider_names import CANONICAL_ALIASES, RIDER_CONTEXT, canonical_rider
 from turkish_rider_memory import remember_verified, remember_candidate
+from motoetkinlik_source import discover_news as motoetkinlik_discover_news, reference_snapshots as motoetkinlik_reference_snapshots
 from urllib.parse import urljoin, urlsplit
 UA={'User-Agent':'Mozilla/5.0 KI-SOCIAL-AGENT Motorcycle Racing Agency'}
 # Specific class feeds MUST run before generic umbrella feeds. racing_scout de-duplicates by URL,
@@ -206,6 +207,16 @@ def turkish_web_scout(limit_per_source=120):
  article freshness and fact/QM gates downstream.
  """
  out=[];seen=set()
+ # Dedicated deterministic MotoEtkinlik adapter.  It preserves the verified
+ # category endpoint as lineage while all candidates still pass the normal
+ # rider registry, freshness and downstream Truth/QM gates.
+ for row in motoetkinlik_discover_news(limit_per_endpoint=min(limit_per_source,120)):
+  title,url=row.get('title',''),row.get('url','')
+  detected_series=row.get('series','')
+  resolved=rider_for(title+' '+url,detected_series or 'MotoEtkinlik')
+  if not resolved or resolved not in RIDER_SOURCES or url in seen:continue
+  series=detected_series if detected_series in ('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300','WorldSPB','Moto4') else RIDER_SOURCES[resolved].get('series','')
+  seen.add(url);out.append((title,url,resolved,series))
  for source,base in TURKISH_WEB_SOURCES:
   rows=_turkish_site_crawl(source,base,max_pages=30,depth=2)
   for title,url,detected_series,rider in rows:
@@ -310,3 +321,12 @@ def scout(limit=40):
  return out
 def legacy_pairs(limit=40):return [(t,u) for t,u,_ in scout(limit)]
 def racing_pairs(limit_per_source=50):return [(t,u) for t,u,_,_ in racing_scout(limit_per_source)]
+
+
+def motoetkinlik_reference_data():
+ """MotoEtkinlik structured reference pages with explicit source lineage.
+
+ These snapshots are corroborating source material only.  They do not bypass
+ Racing/Truth/QM authority or human approval.
+ """
+ return motoetkinlik_reference_snapshots()
