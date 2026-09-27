@@ -1,0 +1,21 @@
+name: TEST – Racing Editor Provider Defer
+on:
+  pull_request:
+    paths:
+      - 'llm_client.py'
+      - 'motogp_content_agency_v2.py'
+      - 'racing_v855_hardening.py'
+      - 'tests/test_racing_editor_provider_defer.py'
+      - '.github/workflows/test-racing-editor-provider-defer.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests
+      - run: python -m py_compile llm_client.py motogp_content_agency_v2.py racing_v855_hardening.py tests/test_racing_editor_provider_defer.py
+      - run: PYTHONPATH=. python tests/test_racing_editor_provider_defer.py
