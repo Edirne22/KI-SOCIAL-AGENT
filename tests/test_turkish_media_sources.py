@@ -114,3 +114,22 @@ try:
 finally:
  scout.requests.get=old_get
 print('TEST – Turkish Category Crawl Budget: PASS')
+
+
+# Every configured specialist source needs its own real article URL pattern.
+old_get=scout.requests.get
+try:
+ def specialist_get(url,**kwargs):
+  if 'motoron.com.tr' in url:
+   return CrawlResp('<a href="/motosiklet-haber/toprak-motogp-haberi/">Toprak Razgatlıoğlu MotoGP yarış haberi</a>')
+  if 'tr.motorsport.com' in url:
+   return CrawlResp('<a href="/motogp/news/toprak-yaris-aciklamasi/10999999/">Toprak Razgatlıoğlu MotoGP yarış açıklaması</a>')
+  return CrawlResp('')
+ scout.requests.get=specialist_get
+ motoron=scout._turkish_site_crawl('Motoron','https://www.motoron.com.tr/kategori/yarislar/')
+ motorsport=scout._turkish_site_crawl('MotorsportTR','https://tr.motorsport.com/')
+ assert motoron and motoron[0][3]=='Toprak Razgatlıoğlu',motoron
+ assert motorsport and motorsport[0][3]=='Toprak Razgatlıoğlu',motorsport
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Specialist Article Routes: PASS')

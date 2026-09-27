@@ -128,11 +128,16 @@ def _turkish_site_crawl(source,base,max_pages=30,depth=2):
                re.fullmatch(r'/tr/spor/.+/[0-9]+',path) is not None)
    tmf_article=(host in ('tmf.org.tr','www.tmf.org.tr') and
                 path.lower().startswith('/haberler/') and path.lower()!='/haberler')
-   article=(aa_article or tmf_article) and len(t)>=20
+   motoron_article=(host in ('motoron.com.tr','www.motoron.com.tr') and
+                    path.lower().startswith('/motosiklet-haber/'))
+   motorsport_article=(host=='tr.motorsport.com' and
+                       re.fullmatch(r'/[^/]+/news/.+/[0-9]+',path.lower()) is not None)
+   article=(aa_article or tmf_article or motoron_article or motorsport_article) and len(t)>=20
    if article and u not in seen_urls:
     seen_urls.add(u);rows.append((t,u,classify_series(source,t,u),rider_for(t+' '+u,source)))
    # Follow same-site category/index pages, but cap depth/pages to avoid an unbounded spider.
-   category=any(k in low for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans'))
+   route=path.lower()+'/'
+   category=any(k in route for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans','/motogp','/worldsbk'))
    if d<depth and category and not article and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
  print(f'TURKISH WEB CRAWL {source}: pages={len(visited)} candidates={len(rows)}')
  return rows
