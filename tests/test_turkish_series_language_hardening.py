@@ -8,7 +8,7 @@ ns={}
 # Load only deterministic helpers without importing production dependencies.
 start=src.index('def _explicit_source_series')
 end=src.index('def _editor_prompt')
-pre="import re, unicodedata\n"+"def fold(s):\n s=unicodedata.normalize('NFKD',str(s).replace('ı','i'));return ''.join(c for c in s if not unicodedata.combining(c)).lower()\n"+"def racing_lexicon_errors(c): return []\n"
+pre="import re, unicodedata\n"+"SHARED_TURKISH_ALIASES=('Toprak Razgatlıoğlu','Can Öncü','Deniz Öncü','Bahattin Sofuoğlu','Zayn Sofuoğlu')\n"+"def fold(s):\n s=unicodedata.normalize('NFKD',str(s).replace('ı','i'));return ''.join(c for c in s if not unicodedata.combining(c)).lower()\n"+"def racing_lexicon_errors(c): return []\n"
 exec(pre+src[start:end],ns)
 series=ns['_explicit_source_series']({'title':'WSSP Superpole İtalya: Alcoba Cremona’da, Can Öncü 6. sırada bitirdi','summary':''})
 assert series=='WorldSSP',series

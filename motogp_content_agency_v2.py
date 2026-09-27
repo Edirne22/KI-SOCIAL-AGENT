@@ -134,10 +134,22 @@ def hashtags(x):
  s=series_for(x);series_tag={'Moto2':'#Moto2','Moto3':'#Moto3','WorldSSP':'#WorldSSP','WorldSSP300':'#WorldSSP300','WorldSBK':'#WorldSBK'}.get(s,'#MotoGP');names=riders_in(' '.join((x.get('caption',''),x.get('title',''),x.get('summary',''))));r=x.get('turkish_rider') or detect_turkish_rider(x)
  if r and r not in names:names.insert(0,r)
  tags=[series_tag]+['#'+re.sub(r'[^A-Za-z0-9]','',fold(n).title().replace(' ','')) for n in names[:2]]+['#MotorradRacing','#RacingDeutschland','#BuelentsBikeLife'];return ' '.join(dict.fromkeys(tags))
+def turkish_language_leak(caption):
+ """Detect Turkish prose while allowing canonical Turkish rider names/diacritics."""
+ text=str(caption or '')
+ # Names are legitimate German copy; remove them before language-token inspection.
+ for rider in SHARED_TURKISH_ALIASES:
+  text=re.sub(re.escape(rider),' ',text,flags=re.I)
+ low=fold(text)
+ tokens=set(re.findall(r"[a-z]+",low))
+ strong={'dusundum','yarismayi','birakmayi','kazandi','bitirdi','cikti','sampiyonu','hatirlatiyor','temsilcimiz','sirada','puansiz'}
+ common={'yarisi','yaris','sezonu','icin','ikinci','birinci','oldu','ama','ile','podyum','zirvede'}
+ return bool(tokens & strong) or len(tokens & common)>=3
+
 def language_sane(caption):
  low=fold(caption)
  foreign_turkish=('puansiz','sirada bitirdi','yarisi kazandi','podyuma cikti')
- return not racing_lexicon_errors(caption) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:')) and not any(x in low for x in foreign_turkish)
+ return not racing_lexicon_errors(caption) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:')) and not any(x in low for x in foreign_turkish) and not turkish_language_leak(caption)
 STRUCTURE_VARIANTS={
  'HOOK_BODY_QUESTION':('{"hook":"...","body":"...","question":"..."}','Konkreter Hook, danach 2–5 natuerliche Saetze, am Ende eine konkrete Community-Frage.'),
  'BODY_QUESTION':('{"body":"...","question":"..."}','Ohne Hook direkt mit den Fakten einsteigen, danach eine konkrete Community-Frage.'),
@@ -146,13 +158,13 @@ STRUCTURE_VARIANTS={
  'QUESTION_HOOK_BODY':('{"question":"...","body":"..."}','Mit einer konkreten Community-Frage beginnen, danach die belegten Fakten erklaeren.'),
  'ZITAT_BODY':('{"quote":"...","body":"...","question":"..."}','Nur ein in TITEL/ZUSAMMENFASSUNG woertlich vorhandenes Fahrer-Zitat unveraendert im quote-Feld verwenden; im JSON-Wert selbst keine Anfuehrungszeichen hinzufuegen. Wenn kein woertliches Fahrer-Zitat vorhanden ist, die belegte Fahreraussage ohne erfundene Woertlichkeit formulieren. Danach Kontext und Community-Frage.'),
 }
-def choose_structure_variant():return random.choice(tuple(STRUCTURE_VARIANTS))
+def choose_structure_variant():return random.choice(tuple(k for k in STRUCTURE_VARIANTS if k!='QUESTION_HOOK_BODY'))
 def _editor_prompt(x,repair_reasons=None,structure_variant=None):
  enrich_turkish(x);repair='';variant=structure_variant or choose_structure_variant()
  if variant not in STRUCTURE_VARIANTS:raise ValueError(f'Unbekannte Struktur-Variante: {variant}')
  if repair_reasons:repair='\nRUECKGABE AUS DER QM-KETTE. Analysiere die Originalfakten erneut und behebe exakt diese Punkte. FAKTEN DUERFEN WEDER ERGAENZT NOCH VERAENDERT WERDEN:\n- '+'\n- '.join(repair_reasons[:10])+'\n'
  title=' '.join(str(x.get('title','')).split());summary=' '.join(str(x.get('summary','')).split());series=series_for(x);turkish=x.get('turkish_rider') or 'NEIN';schema,instruction=STRUCTURE_VARIANTS[variant]
- return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: Verwende ausschließlich die Serie aus dem CFO ({series}). Keine Klassenzuordnung erfinden. Die SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine erfundenen oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. Schreibe konkret statt mit erfundenen Metaphern oder Fuellsaetzen. Formulierungen wie 'altes Stammgelaende', 'verfuegbare Alternative', 'frische Impulse' oder aehnliche redaktionelle Ausschmueckungen sind verboten, wenn genau diese Aussage nicht in TITEL/ZUSAMMENFASSUNG belegt ist. Wenn eine Information nicht belegt ist, lasse sie weg statt sie plausibel klingen zu lassen. Die Community-Frage muss direkt aus dem belegten Kernthema des Posts entstehen und darf kein neues Teilthema wie Starts, Favoriten oder Strategie einfuehren, wenn TITEL/ZUSAMMENFASSUNG das nicht tragen. Mindestens 2 natuerliche Saetze bzw. bei FACT_FACT_FACT mindestens 3 kompakte Fakten. Keine Hashtags erzeugen.{repair}\nSTRUKTUR-VARIANTE: {variant}\nSTRUKTUR-ANWEISUNG: {instruction}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\n\n{racing_lexicon_contract('EDITOR')}\nAntworte nur JSON nach diesem Schema: {schema}'''
+ return f'''Du arbeitest als Senior-Motorrad-Racing-Redakteur fuer Buelents Bike Life auf Premium-Niveau.\n{global_professional_context()}\nRACING-PFLICHTEN: Verwende ausschließlich die Serie aus dem CFO ({series}). Keine Klassenzuordnung erfinden. Die SERIE ist deterministisch aus der offiziellen Quelle gesperrt und darf nicht umgedeutet werden. Die Quelle liefert nur Fakten – der fertige Post muss in Buelents eigener, direkten, leidenschaftlichen und natuerlichen Bike-Life-Stimme neu formuliert sein. Kein Kopieren der Quellensprache. Nur Tatsachen aus TITEL/ZUSAMMENFASSUNG verwenden. Keine Namen, Teams, Hersteller, Nationalitaeten, Serien, Orte, Jahre, Zahlen, Ergebnisse, Titel oder Beziehungen aus Vorwissen ergaenzen. P1 niemals als Q1 interpretieren. Keine erfundenen oder frei uebersetzten Zitate. Korrektes idiomatisches Deutsch, kein PR-Sprech, kein KI-Sprech, kein kuenstlicher Hype. Bei fremdsprachigen, besonders tuerkischen Quellen: zuerst Bedeutung und belegte Fakten erfassen, dann Titel/Hook/Body/CTA vollstaendig und idiomatisch auf Deutsch NEU formulieren; niemals tuerkischen Satzbau oder einen tuerkischen Quelltitel als fertigen Hook uebernehmen. Tuerkische Eigennamen und ihre korrekten Zeichen (z. B. Öncü, Sofuoğlu, Razgatlıoğlu) bleiben unveraendert. Der erste inhaltliche Satz muss das Thema/Faktum einordnen; keine generische Community-Frage vor dem eigentlichen Inhalt. Schreibe konkret statt mit erfundenen Metaphern oder Fuellsaetzen. Formulierungen wie 'altes Stammgelaende', 'verfuegbare Alternative', 'frische Impulse' oder aehnliche redaktionelle Ausschmueckungen sind verboten, wenn genau diese Aussage nicht in TITEL/ZUSAMMENFASSUNG belegt ist. Wenn eine Information nicht belegt ist, lasse sie weg statt sie plausibel klingen zu lassen. Die Community-Frage muss direkt aus dem belegten Kernthema des Posts entstehen und darf kein neues Teilthema wie Starts, Favoriten oder Strategie einfuehren, wenn TITEL/ZUSAMMENFASSUNG das nicht tragen. Mindestens 2 natuerliche Saetze bzw. bei FACT_FACT_FACT mindestens 3 kompakte Fakten. Keine Hashtags erzeugen.{repair}\nSTRUKTUR-VARIANTE: {variant}\nSTRUKTUR-ANWEISUNG: {instruction}\nSERIE: {series}\nTITEL: {title}\nZUSAMMENFASSUNG: {summary}\nTURKISH_RIDER: {turkish}\n\n{racing_lexicon_contract('EDITOR')}\nAntworte nur JSON nach diesem Schema: {schema}'''
 def _parse_editor_json(raw,variant):
  raw=(raw or '').strip();raw=re.sub(r'^\`\`\`(?:json)?\s*|\s*\`\`\`$','',raw,flags=re.I|re.S);o=json.loads(raw)
  def need(name):
@@ -415,7 +427,9 @@ def turkish_candidate_reason(x,now,max_days=10):
   return 'PASS'
 
 def turkish_five_preview(details,now,max_days=10):
-  candidates=[];seen=set();window_used=0
+  # Keep up to 20 selectable history candidates, but show only T1-T5 by default.
+  # This preserves the compact Telegram preview while enabling `turkish liste` + T6-T20.
+  candidates=[];seen=set();window_used=0;history_limit=20
   # Deliberately widen only as needed: today -> 7 days -> 10 days.
   # This prevents an older high-scoring story from displacing today's rider news.
   for days in (1,7,max_days):
@@ -425,26 +439,27 @@ def turkish_five_preview(details,now,max_days=10):
     key=story_key(x.get('title',''),x.get('url',''))
     if key in seen:continue
     seen.add(key);candidates.append(x)
-    if len(candidates)>=5:break
-   if len(candidates)>=5:break
+    if len(candidates)>=history_limit:break
+   if len(candidates)>=history_limit:break
   diag=[(y.get('turkish_rider') or detect_turkish_rider(y),y.get('title','')[:70],turkish_candidate_reason(y,now,max_days)) for y in details if is_turkish_focus(y)]
   print('TURKISH CANDIDATE-GATE DIAG '+json.dumps(diag,ensure_ascii=False))
   payload={'version':1,'created_at':int(now.timestamp()),'max_days':max_days,'window_used_days':window_used,'count':len(candidates),'items':[]}
   for i,x in enumerate(candidates,1):
    payload['items'].append({'n':i,'title':x.get('title',''),'url':x.get('url',''),'summary':x.get('summary',''),'preview':x.get('preview',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'series':series_for(x),'source_series':x.get('source_series') or series_for(x),'turkish_rider':x.get('turkish_rider') or detect_turkish_rider(x),'kind':x.get('kind','news')})
   TURKISH_SESSION.parent.mkdir(parents=True,exist_ok=True);TURKISH_SESSION.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche rückwärts bis maximal 10 Tage; bereits früher angebotene Stories dürfen erneut erscheinen.','']
+  visible=candidates[:5]
+  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche rückwärts bis maximal 10 Tage; bereits früher angebotene Stories dürfen erneut erscheinen.','',f'📚 Historie: {len(candidates)} auswählbare Kandidaten gespeichert. Für T6–T20: turkish liste','']
   if len(candidates)<5:msg.append(f'⚠️ {len(candidates)} von 5 gefunden – Zeitraum heute → 7 → {max_days} Tage aus den registrierten offiziellen Fahrerquellen geprüft.')
   else:msg.append('✅ 5 von 5 Kandidaten gefunden.')
   send_message('\n'.join(msg)[:4000])
-  for i,x in enumerate(candidates,1):
+  for i,x in enumerate(visible,1):
    title=f'T{i}️⃣ {x.get("turkish_rider") or "Turkish Rider"} | {x.get("title","")}'
    source=x.get('url','');og=extract_og_image_url(source)
    caption=f'{title}\n🔗 Quelle: {source}\nStatus: Scout-Vorschlag – Auswahl danach Priority-Repair + vollständiges Fakten-QM'
    if not _send_turkish_source_photo(og,caption):send_message(caption)
-  send_message('Freigabe zur QM-Prüfung: turkish 1–5 / Kombination / turkish alle\nAblehnen: turkish nein')
-  print(f'TURKISH-5 PREVIEW sent={len(candidates)} window_used_days={window_used} max_days={max_days}')
-  return candidates
+  send_message('Freigabe zur QM-Prüfung: turkish 1–5 / Kombination / turkish alle\nWeitere Kandidaten: turkish liste → danach z. B. turkish 12\nAblehnen: turkish nein')
+  print(f'TURKISH-5 PREVIEW sent={len(visible)} history={len(candidates)} window_used_days={window_used} max_days={max_days}')
+  return visible
 
 def telegram_preview(items,turk,qualified=None):
  status=turkish_status(items,qualified)

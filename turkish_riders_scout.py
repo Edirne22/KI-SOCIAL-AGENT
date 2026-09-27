@@ -24,6 +24,12 @@ TURKISH_WEB_SOURCES=(
  ('MotorsportTR','https://tr.motorsport.com/'),
  ('TRMotoSports','https://www.trmotosports.com/'),
  ('TRF1MotoGP','https://trf1.net/motor-sporlari/motogp/'),
+ ('MotoEtkinlikMotoGP','https://motoetkinlik.com/kategori/motogp/'),
+ ('MotoEtkinlikMoto2','https://motoetkinlik.com/kategori/moto2/'),
+ ('MotoEtkinlikMoto3','https://motoetkinlik.com/kategori/moto3/'),
+ ('MotoEtkinlikWorldSBK','https://motoetkinlik.com/kategori/wsbk/'),
+ ('MotoEtkinlikWorldSSP','https://motoetkinlik.com/kategori/worldssp/'),
+ ('MotoEtkinlikYaris','https://motoetkinlik.com/kategori/yaris/'),
 )
 # Open Turkish web sources are preferred over social scraping: crawlable, source-linked,
 # and suitable for the same downstream freshness/fact gates.
@@ -151,16 +157,20 @@ def _turkish_site_crawl(source,base,max_pages=30,depth=2):
                          path.lower() not in ('/motogp-izle','/worldsbk-izle'))
    trf1_article=(host in ('trf1.net','www.trf1.net') and
                  re.fullmatch(r'/motor-sporlari/[^/]+/.+/[0-9]+',path.lower()) is not None)
+   motoetkinlik_article=(host=='motoetkinlik.com' and
+                         re.fullmatch(r'/[^/]+',path.lower()) is not None and
+                         path.lower() not in ('/giris-yap','/kayit-ol','/forum','/iletisim'))
    article=(aa_article or tmf_article or motoron_article or motorsport_article or
-            trmotosports_article or trf1_article) and len(t)>=20
+            trmotosports_article or trf1_article or motoetkinlik_article) and len(t)>=20
    if article and u not in seen_urls:
     seen_urls.add(u);rows.append((t,u,classify_series(source,t,u),rider_for(t+' '+u,source)))
    # Follow same-site category/index pages, but cap depth/pages to avoid an unbounded spider.
    route=path.lower()+'/'
    pagination=bool(re.search(r'(?:/page/|/sayfa/|[?&](?:page|sayfa)=)\d+',u,re.I))
    motorsport_dead_nav=(host=='tr.motorsport.com' and re.fullmatch(r'/[^/]+(?:/(?:news|schedule|videos|drivers|teams))?/?',parsed.path.lower()) is not None)
+   motoetkinlik_nav=(host=='motoetkinlik.com' and any(path.lower().startswith('/kategori/'+k) for k in ('motogp','moto2','moto3','wsbk','worldssp','yaris')))
    category=(any(k in route for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans','/yaris','/yarış','/motogp','/moto2','/moto3','/superbike','/worldsbk','/worldssp','/supersport')) or pagination) and not motorsport_dead_nav
-   if d<depth and category and not article and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
+   if d<depth and (category or motoetkinlik_nav) and not article and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
  rows.sort(key=lambda x:racing_relevance(x[0]+' '+x[1]),reverse=True)
  print(f'TURKISH WEB CRAWL {source}: pages={len(visited)} candidates={len(rows)}')
  return rows
