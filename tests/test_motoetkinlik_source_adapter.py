@@ -5,6 +5,7 @@ expected_news={
  "Moto2":"https://motoetkinlik.com/kategori/moto2/",
  "Moto3":"https://motoetkinlik.com/kategori/moto3/",
  "WorldSBK":"https://motoetkinlik.com/kategori/wsbk/",
+ "WorldSSP":"https://motoetkinlik.com/kategori/worldssp/",
  "Racing":"https://motoetkinlik.com/kategori/yaris/",
  "Video":"https://motoetkinlik.com/kategori/youtube/",
 }
