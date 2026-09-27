@@ -6,7 +6,10 @@ from pathlib import Path
 from motoparktv_video_ingest import ingest
 
 def _run(args,timeout=1800):
- p=subprocess.run(args,capture_output=True,text=True,timeout=timeout,check=True)
+ p=subprocess.run(args,capture_output=True,text=True,timeout=timeout)
+ if p.returncode:
+  err=(p.stderr or p.stdout or "").strip()
+  raise RuntimeError(f"{Path(args[0]).name} failed ({p.returncode}): {err[-4000:]}")
  return p.stdout.strip()
 
 def metadata(url):
