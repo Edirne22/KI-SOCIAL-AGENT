@@ -157,7 +157,7 @@ def _turkish_site_crawl(source,base,max_pages=30,depth=2):
     seen_urls.add(u);rows.append((t,u,classify_series(source,t,u),rider_for(t+' '+u,source)))
    # Follow same-site category/index pages, but cap depth/pages to avoid an unbounded spider.
    route=path.lower()+'/'
-   pagination=bool(re.search(r'(?:/page/|/sayfa/|[?&](?:page|sayfa)=)\\d+',u,re.I))
+   pagination=bool(re.search(r'(?:/page/|/sayfa/|[?&](?:page|sayfa)=)\d+',u,re.I))
    category=any(k in route for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans','/yaris','/yarış','/motogp','/moto2','/moto3','/superbike','/worldsbk','/worldssp','/supersport')) or pagination
    if d<depth and category and not article and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
  rows.sort(key=lambda x:racing_relevance(x[0]+' '+x[1]),reverse=True)

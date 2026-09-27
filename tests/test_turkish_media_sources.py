@@ -158,3 +158,18 @@ try:
 finally:
  scout.requests.get=old_get
 print('TEST – Turkish Pagination Crawl: PASS')
+
+
+# A bare pagination route must be recognized by the pagination regex itself.
+old_get=scout.requests.get
+try:
+ def bare_paged_get(url,**kwargs):
+  if '/page/2/' in url:
+   return CrawlResp('<a href="/toprak-pagination-yaris-haberi/">Toprak Razgatlıoğlu MotoGP yarış sonucu</a>')
+  return CrawlResp('<a href="/page/2/">Sonraki yarış haberleri</a>')
+ scout.requests.get=bare_paged_get
+ bare_paged=scout._turkish_site_crawl('TRMotoSports','https://www.trmotosports.com/',depth=2)
+ assert bare_paged and bare_paged[0][3]=='Toprak Razgatlıoğlu',bare_paged
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Bare Pagination Route: PASS')
