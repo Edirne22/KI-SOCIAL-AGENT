@@ -73,20 +73,26 @@ def parse_session():
 
     return posts, problems
 def selection(text):
-    v = re.sub(r'\s+', ' ', text.strip().lower())
-    v = re.sub(r'/\s*', '', v)
-    if 'motogp' not in v:
-        return None
-    v_clean = re.sub(r'\bmotogp\b', '', v).strip()
-    v = f"motogp {v_clean}"
-    if v in ('motogp alle', 'motogp ✅'):
-        return [1, 2, 3, 4, 5]
-    if v in ('motogp nein', 'motogp ❌'):
-        return []
-    m = re.fullmatch(r'motogp\s+([1-5](?:[\s,]+[1-5])*)', v)
-    if not m:
-        return None
-    return sorted({int(x) for x in re.findall(r'[1-5]', m.group(1))})
+    """Parse MotoGP approvals 1-5, including inclusive ranges."""
+    v=re.sub(r'\s+',' ',str(text or '').strip().lower())
+    v=re.sub(r'^/\s*','',v)
+    m=re.fullmatch(r'motogp\s+(.+)',v)
+    if not m:return None
+    choice=m.group(1).strip()
+    if choice in ('alle','✅'):return [1,2,3,4,5]
+    if choice in ('nein','❌'):return []
+    choice=re.sub(r'\s*[-–—]\s*','-',choice)
+    choice=re.sub(r'\s*,\s*',',',choice)
+    if not re.fullmatch(r'[1-5](?:-[1-5])?(?:,[1-5](?:-[1-5])?)*',choice):return None
+    out=set()
+    for part in choice.split(','):
+        if '-' in part:
+            x,y=(int(n) for n in part.split('-',1))
+            if x>y:return None
+            out.update(range(x,y+1))
+        else:out.add(int(part))
+    return sorted(out)
+
 def turkish_selection(text):
     """Parse Turkish-Rider approvals T1-T20, including inclusive ranges.
 
