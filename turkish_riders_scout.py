@@ -108,6 +108,29 @@ def rider_centered_scout(limit_per_source=120):
  return out
 
 
+def _turkish_site_crawl(source,base,max_pages=30,depth=2):
+ """Breadth-first crawl of same-site landing/category pages; articles stay discovery-only."""
+ host=(urlsplit(base).hostname or '').lower();queue=[(base,0)];visited=set();rows=[];seen_urls=set()
+ while queue and len(visited)<max_pages:
+  page_url,d=queue.pop(0)
+  if page_url in visited:continue
+  visited.add(page_url)
+  try:r=requests.get(page_url,headers=UA,timeout=30);r.raise_for_status();page=r.text
+  except Exception as e:
+   print(f'TURKISH WEB CRAWL FAIL {source}: {type(e).__name__}: {str(e)[:100]}');continue
+  for href,title in re.findall(r'href=["\\\']([^"\\\']+)["\\\'][^>]*>(.*?)</a>',page,re.I|re.S):
+   u=urljoin(page_url,href);parsed=urlsplit(u);t=clean(title)
+   if (parsed.hostname or '').lower()!=host or parsed.scheme not in ('http','https'):continue
+   low=u.lower()
+   article=('/haberler/' in low or '/spor/' in low) and len(t)>=20
+   if article and u not in seen_urls:
+    seen_urls.add(u);rows.append((t,u,classify_series(source,t,u),rider_for(t+' '+u,source)))
+   # Follow same-site category/index pages, but cap depth/pages to avoid an unbounded spider.
+   category=any(k in low for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans'))
+   if d<depth and category and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
+ print(f'TURKISH WEB CRAWL {source}: pages={len(visited)} candidates={len(rows)}')
+ return rows
+
 def _turkish_web_search(rider,aliases,limit=20):
  """Search the public Turkish web per registered rider instead of trusting portal front pages."""
  out=[];seen=set()
@@ -139,7 +162,7 @@ def turkish_web_scout(limit_per_source=120):
  """
  out=[];seen=set()
  for source,base in TURKISH_WEB_SOURCES:
-  rows=_anchors(source,base,limit_per_source)
+  rows=_turkish_site_crawl(source,base,max_pages=30,depth=2)
   for title,url,detected_series,rider in rows:
    resolved=rider or rider_for(title+' '+url,detected_series or source)
    if not resolved or resolved not in RIDER_SOURCES or url in seen:continue
