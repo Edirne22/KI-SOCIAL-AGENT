@@ -10,6 +10,7 @@ from pathlib import Path
 from PIL import Image
 from asset_paths import asset_url, resolve_asset
 from datetime import datetime
+from publish_provenance import append_publish_provenance
 
 REPO_RAW = "https://raw.githubusercontent.com/Edirne22/KI-SOCIAL-AGENT/main/"
 
@@ -291,6 +292,7 @@ def mark_block(content, block, media_id):
         "",
         new_block,
     )
+    new_block = append_publish_provenance(new_block, "instagram", media_id)
     return content.replace(block, new_block, 1)
 
 if __name__ == "__main__":
