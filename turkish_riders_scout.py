@@ -146,7 +146,13 @@ def _turkish_site_crawl(source,base,max_pages=30,depth=2):
                     path.lower().startswith('/motosiklet-haber/'))
    motorsport_article=(host=='tr.motorsport.com' and
                        re.fullmatch(r'/[^/]+/news/.+/[0-9]+',path.lower()) is not None)
-   article=(aa_article or tmf_article or motoron_article or motorsport_article) and len(t)>=20
+   trmotosports_article=(host in ('trmotosports.com','www.trmotosports.com') and
+                         re.fullmatch(r'/[^/]+',path.lower()) is not None and
+                         path.lower() not in ('/motogp-izle','/worldsbk-izle'))
+   trf1_article=(host in ('trf1.net','www.trf1.net') and
+                 re.fullmatch(r'/motor-sporlari/[^/]+/.+/[0-9]+',path.lower()) is not None)
+   article=(aa_article or tmf_article or motoron_article or motorsport_article or
+            trmotosports_article or trf1_article) and len(t)>=20
    if article and u not in seen_urls:
     seen_urls.add(u);rows.append((t,u,classify_series(source,t,u),rider_for(t+' '+u,source)))
    # Follow same-site category/index pages, but cap depth/pages to avoid an unbounded spider.

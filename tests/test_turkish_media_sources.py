@@ -124,12 +124,20 @@ try:
    return CrawlResp('<a href="/motosiklet-haber/toprak-motogp-haberi/">Toprak Razgatlıoğlu MotoGP yarış haberi</a>')
   if 'tr.motorsport.com' in url:
    return CrawlResp('<a href="/motogp/news/toprak-yaris-aciklamasi/10999999/">Toprak Razgatlıoğlu MotoGP yarış açıklaması</a>')
+  if 'trmotosports.com' in url:
+   return CrawlResp('<a href="/toprak-razgatlioglu-motogp-haberi/">Toprak Razgatlıoğlu MotoGP yarış haberi</a>')
+  if 'trf1.net' in url:
+   return CrawlResp('<a href="/motor-sporlari/motogp/toprak-razgatlioglu-misano-motogp-yarisinda-12-oldu/113661/">Toprak Razgatlıoğlu Misano MotoGP yarış haberi</a>')
   return CrawlResp('')
  scout.requests.get=specialist_get
  motoron=scout._turkish_site_crawl('Motoron','https://www.motoron.com.tr/kategori/yarislar/')
  motorsport=scout._turkish_site_crawl('MotorsportTR','https://tr.motorsport.com/')
+ trmotosports=scout._turkish_site_crawl('TRMotoSports','https://www.trmotosports.com/')
+ trf1=scout._turkish_site_crawl('TRF1MotoGP','https://trf1.net/motor-sporlari/motogp/')
  assert motoron and motoron[0][3]=='Toprak Razgatlıoğlu',motoron
  assert motorsport and motorsport[0][3]=='Toprak Razgatlıoğlu',motorsport
+ assert trmotosports and trmotosports[0][3]=='Toprak Razgatlıoğlu',trmotosports
+ assert trf1 and trf1[0][3]=='Toprak Razgatlıoğlu',trf1
 finally:
  scout.requests.get=old_get
 print('TEST – Turkish Specialist Article Routes: PASS')
