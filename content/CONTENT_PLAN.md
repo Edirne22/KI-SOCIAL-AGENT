@@ -2501,3 +2501,12 @@ Thema: Toprak Razgatlı
 
 ## Automatisch generierte Beiträge vom 2026-09-26 06:04:23
 Hier sind 3 komplette Content-Ideen – alle prüfe ich intern gegen Memory, Roster und Post-History, bevor
+
+
+## Automatisch generierte Beiträge vom 2026-09-27 06:04:42
+ründü için değil...").
+    *   Ride With Me featured max 1 time? Yes (Idea 3 only).
+    *   Format structure exactly matches the specified key-value list? Yes.
+
+6.  **Final Formatting**: Clean text output without Meta-talk or conversational filler, starting directly with the requested ideas.--- BEITRAG 1 ---
+T
