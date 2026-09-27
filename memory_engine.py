@@ -87,15 +87,17 @@ def derive_events() -> list[dict]:
     out=[]
     # Published facts are strong operational evidence, not proof of content quality.
     pub=read(PUBLISHED)
-    block_pattern = r'^## (.+?) \\[GEPOSTET ([^|\\]]+)(?: \\| ID: ([^\\]]+))?\\](.*?)(?=^## |\\Z)'
-    for m in re.finditer(block_pattern, pub, re.M | re.S):
-        platform, when, media_id, body=m.groups()
+    blocks=re.split(r'(?m)(?=^## )', pub)
+    for block in blocks:
+        header=re.match(r'^## (.+?) \\[GEPOSTET ([^|\\]]+)(?: \\| ID: ([^\\]]+))?\\]', block)
+        if not header: continue
+        platform, when, media_id=header.groups()
         event={'type':'published','source':'content/PUBLISHED.md','subject':platform.strip(),
                'value':media_id or when.strip(),'confidence':1.0}
-        provenance=re.search(r'(?mi)^Publish-Provenienz:\\s*(\\{.*\\})\\s*$', body)
-        if provenance:
+        provenance_line=next((line for line in block.splitlines() if line.startswith('Publish-Provenienz: ')), None)
+        if provenance_line:
             try:
-                parsed=json.loads(provenance.group(1))
+                parsed=json.loads(provenance_line.split(': ',1)[1])
                 event['publish_provenance']=parsed
                 event['post_id']=str(parsed.get('post_id') or media_id or '')
                 event['media_kind']=parsed.get('media_kind','')
