@@ -554,3 +554,38 @@ Wie seht ihr den Wechsel?
 https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
 Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-27-manual-36318904621
+Telegram-Update-ID: 279361764
+MotoGP-Auswahl: 2
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Text:
+Toprak meint, die erste MotoGP‑Saison war richtig hart – fast wie sein Start in der WorldSBK 2018. In beiden Klassen musste er am Anfang um die vorderen Plätze kämpfen. Was sagt ihr, wie vergleichbar sind die beiden Serien? 🏍️ #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-2-motogp-toprak-razgat-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-27-manual-36318904621
+Telegram-Update-ID: 279361764
+MotoGP-Auswahl: 2
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Text:
+Toprak Razgatlıoğlu fand seine erste MotoGP-Saison richtig hart.
+
+Sie erinnert ihn stark an seinen Start in der WorldSBK im Jahr 2018.
+
+In beiden Serien musste er in den Anfangsjahren um die vorderen Plätze kämpfen.
+
+Wie seht ihr den Vergleich zwischen den beiden Serien?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150
+Link-Preview: offiziell
