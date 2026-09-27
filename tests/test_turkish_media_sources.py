@@ -71,3 +71,105 @@ try:
  assert rows[0][2:] == ('Can Öncü','WorldSSP'),rows
 finally:
  scout.requests.get=old_get
+
+
+# Deep Turkish web search must discover a registered rider beyond portal front-page anchors.
+class SearchResp:
+ def __init__(self,text): self.text=text
+ def raise_for_status(self): pass
+old_get=scout.requests.get
+try:
+ def fake_get(url,**kwargs):
+  if 'google.com/search' in url and ('Can' in url or 'Can%20' in url or 'Can%2B' in url):
+   return SearchResp('<a href="https://spor.example.com.tr/motosiklet/can-oncu-cremona">Can Öncü Cremona WorldSSP yarış haberi</a>')
+  return SearchResp('')
+ scout.requests.get=fake_get
+ deep=scout._turkish_web_search('Can Öncü',('Can Oncu',),20)
+ assert deep and deep[0][3]=='Can Öncü',deep
+ assert 'example.com.tr' in deep[0][1],deep
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Rider-Centered Web Search: PASS')
+
+
+# Article links must not exhaust the crawl budget before a linked racing category.
+old_get=scout.requests.get
+try:
+ class CrawlResp:
+  def __init__(self,text):self.text=text
+  def raise_for_status(self):pass
+ def crawl_get(url,**kwargs):
+  if url.endswith('/tr/spor'):
+   football=''.join(
+    f'<a href="/tr/spor/futbol/mac-{i}/{1000000+i}">Futbol derbisi mac haberi {i}</a>'
+    for i in range(35)
+   )
+   return CrawlResp(football+'<a href="/tr/spor/motor-sporlari">Motor sporları haberleri</a>')
+  if url.endswith('/tr/spor/motor-sporlari'):
+   return CrawlResp('<a href="/tr/spor/motor-sporlari/can-oncu-cremona/9999999">Can Öncü Dünya Supersport yarış haberi</a>')
+  return CrawlResp('')
+ scout.requests.get=crawl_get
+ crawled=scout._turkish_site_crawl('AnadoluAjansi','https://www.aa.com.tr/tr/spor',max_pages=30,depth=2)
+ assert any(row[3]=='Can Öncü' for row in crawled),crawled
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Category Crawl Budget: PASS')
+
+
+# Every configured specialist source needs its own real article URL pattern.
+old_get=scout.requests.get
+try:
+ def specialist_get(url,**kwargs):
+  if 'motoron.com.tr' in url:
+   return CrawlResp('<a href="/motosiklet-haber/toprak-motogp-haberi/">Toprak Razgatlıoğlu MotoGP yarış haberi</a>')
+  if 'tr.motorsport.com' in url:
+   return CrawlResp('<a href="/motogp/news/toprak-yaris-aciklamasi/10999999/">Toprak Razgatlıoğlu MotoGP yarış açıklaması</a>')
+  if 'trmotosports.com' in url:
+   return CrawlResp('<a href="/toprak-razgatlioglu-motogp-haberi/">Toprak Razgatlıoğlu MotoGP yarış haberi</a>')
+  if 'trf1.net' in url:
+   return CrawlResp('<a href="/motor-sporlari/motogp/toprak-razgatlioglu-misano-motogp-yarisinda-12-oldu/113661/">Toprak Razgatlıoğlu Misano MotoGP yarış haberi</a>')
+  return CrawlResp('')
+ scout.requests.get=specialist_get
+ motoron=scout._turkish_site_crawl('Motoron','https://www.motoron.com.tr/kategori/yarislar/')
+ motorsport=scout._turkish_site_crawl('MotorsportTR','https://tr.motorsport.com/')
+ trmotosports=scout._turkish_site_crawl('TRMotoSports','https://www.trmotosports.com/')
+ trf1=scout._turkish_site_crawl('TRF1MotoGP','https://trf1.net/motor-sporlari/motogp/')
+ assert motoron and motoron[0][3]=='Toprak Razgatlıoğlu',motoron
+ assert motorsport and motorsport[0][3]=='Toprak Razgatlıoğlu',motorsport
+ assert trmotosports and trmotosports[0][3]=='Toprak Razgatlıoğlu',trmotosports
+ assert trf1 and trf1[0][3]=='Toprak Razgatlıoğlu',trf1
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Specialist Article Routes: PASS')
+
+
+# Pagination regression: category -> page 2 -> hidden registered-rider article.
+old_get=scout.requests.get
+try:
+ def paged_get(url,**kwargs):
+  if url.rstrip('/')=='https://www.motoron.com.tr/kategori/yarislar':
+   return CrawlResp('<a href="/kategori/yarislar/page/2/">Sonraki yarış haberleri sayfası</a>')
+  if '/kategori/yarislar/page/2' in url:
+   return CrawlResp('<a href="/motosiklet-haber/can-oncu-worldssp/">Can Öncü WorldSSP podyum yarış haberi</a>')
+  return CrawlResp('')
+ scout.requests.get=paged_get
+ rows=scout._turkish_site_crawl('Motoron','https://www.motoron.com.tr/kategori/yarislar/',max_pages=5,depth=2)
+ assert any(r[3]=='Can Öncü' and '/motosiklet-haber/' in r[1] for r in rows),rows
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Pagination Crawl: PASS')
+
+
+# A bare pagination route must be recognized by the pagination regex itself.
+old_get=scout.requests.get
+try:
+ def bare_paged_get(url,**kwargs):
+  if '/page/2/' in url:
+   return CrawlResp('<a href="/toprak-pagination-yaris-haberi/">Toprak Razgatlıoğlu MotoGP yarış sonucu</a>')
+  return CrawlResp('<a href="/page/2/">Sonraki yarış haberleri</a>')
+ scout.requests.get=bare_paged_get
+ bare_paged=scout._turkish_site_crawl('TRMotoSports','https://www.trmotosports.com/',depth=2)
+ assert bare_paged and bare_paged[0][3]=='Toprak Razgatlıoğlu',bare_paged
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Bare Pagination Route: PASS')

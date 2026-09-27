@@ -20,6 +20,10 @@ RIDER_SOURCES=RIDER_CONTEXT
 TURKISH_WEB_SOURCES=(
  ('TMF','https://www.tmf.org.tr/Haberler/'),
  ('AnadoluAjansi','https://www.aa.com.tr/tr/spor'),
+ ('Motoron','https://www.motoron.com.tr/kategori/yarislar/'),
+ ('MotorsportTR','https://tr.motorsport.com/'),
+ ('TRMotoSports','https://www.trmotosports.com/'),
+ ('TRF1MotoGP','https://trf1.net/motor-sporlari/motogp/'),
 )
 # Open Turkish web sources are preferred over social scraping: crawlable, source-linked,
 # and suitable for the same downstream freshness/fact gates.
@@ -28,6 +32,18 @@ TURKISH_MEDIA_SOURCES=(
  ('MotoEtkinlikRacing','https://www.instagram.com/motoetkinlikracing/'),
  ('TurkiyeSBK','https://www.instagram.com/turkiyesbk/'),
 )
+TURKISH_RACING_TERMS=(
+ 'podyum','podyuma çıktı','kürsüye çıktı','birinci oldu','zirvede','şampiyon','şampiyonluk',
+ 'dama bayrak','zafer','kazandı','yarış','en hızlı tur','puan','sıralama turları','pole pozisyonu',
+ 'yarış öncesi','yarış sonrası','yarış dışı','nefes kesen yarış','tarihi başarı','tarih yazdı',
+ 'milli sporcu','milli gurur','pist','serbest antrenman','ısınma turu','viraj','lastik','kaza',
+ 'düşüş','ceza','kırmızı bayrak','sarı bayrak','mekanik arıza','minigp','juniorgp','talent cup',
+ 'motogp','moto2','moto3','worldsbk','wsbk','worldssp','ssp'
+)
+def racing_relevance(text):
+ low=fold(text)
+ return sum(1 for term in TURKISH_RACING_TERMS if fold(term) in low)
+
 FALLBACK=[
  ('Toprak Razgatlıoğlu','Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign','https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e','MotoGP'),
  ('Can Öncü','Can Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13','https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992','WorldSSP'),
@@ -108,6 +124,69 @@ def rider_centered_scout(limit_per_source=120):
  return out
 
 
+def _turkish_site_crawl(source,base,max_pages=30,depth=2):
+ """Breadth-first crawl of same-site landing/category pages; articles stay discovery-only."""
+ host=(urlsplit(base).hostname or '').lower().removeprefix('www.');queue=[(base,0)];visited=set();rows=[];seen_urls=set()
+ while queue and len(visited)<max_pages:
+  page_url,d=queue.pop(0)
+  if page_url in visited:continue
+  visited.add(page_url)
+  try:r=requests.get(page_url,headers=UA,timeout=30);r.raise_for_status();page=r.text
+  except Exception as e:
+   print(f'TURKISH WEB CRAWL FAIL {source}: {type(e).__name__}: {str(e)[:100]}');continue
+  for href,title in re.findall(r'href=["\\\']([^"\\\']+)["\\\'][^>]*>(.*?)</a>',page,re.I|re.S):
+   u=urljoin(page_url,href);parsed=urlsplit(u);t=clean(title)
+   if (parsed.hostname or '').lower().removeprefix('www.')!=host or parsed.scheme not in ('http','https'):continue
+   low=u.lower();path=parsed.path.rstrip('/')
+   aa_article=(host in ('aa.com.tr','www.aa.com.tr') and
+               re.fullmatch(r'/tr/spor/.+/[0-9]+',path) is not None)
+   tmf_article=(host in ('tmf.org.tr','www.tmf.org.tr') and
+                path.lower().startswith('/haberler/') and path.lower()!='/haberler')
+   motoron_article=(host in ('motoron.com.tr','www.motoron.com.tr') and
+                    path.lower().startswith('/motosiklet-haber/'))
+   motorsport_article=(host=='tr.motorsport.com' and
+                       re.fullmatch(r'/[^/]+/news/.+/[0-9]+',path.lower()) is not None)
+   trmotosports_article=(host in ('trmotosports.com','www.trmotosports.com') and
+                         re.fullmatch(r'/[^/]+',path.lower()) is not None and
+                         path.lower() not in ('/motogp-izle','/worldsbk-izle'))
+   trf1_article=(host in ('trf1.net','www.trf1.net') and
+                 re.fullmatch(r'/motor-sporlari/[^/]+/.+/[0-9]+',path.lower()) is not None)
+   article=(aa_article or tmf_article or motoron_article or motorsport_article or
+            trmotosports_article or trf1_article) and len(t)>=20
+   if article and u not in seen_urls:
+    seen_urls.add(u);rows.append((t,u,classify_series(source,t,u),rider_for(t+' '+u,source)))
+   # Follow same-site category/index pages, but cap depth/pages to avoid an unbounded spider.
+   route=path.lower()+'/'
+   pagination=bool(re.search(r'(?:/page/|/sayfa/|[?&](?:page|sayfa)=)\d+',u,re.I))
+   category=any(k in route for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans','/yaris','/yarış','/motogp','/moto2','/moto3','/superbike','/worldsbk','/worldssp','/supersport')) or pagination
+   if d<depth and category and not article and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
+ rows.sort(key=lambda x:racing_relevance(x[0]+' '+x[1]),reverse=True)
+ print(f'TURKISH WEB CRAWL {source}: pages={len(visited)} candidates={len(rows)}')
+ return rows
+
+def _turkish_web_search(rider,aliases,limit=20):
+ """Search the public Turkish web per registered rider instead of trusting portal front pages."""
+ out=[];seen=set()
+ terms=[]
+ for name in (rider,)+tuple(aliases or ()):
+  if name and fold(name) not in {fold(x) for x in terms}:terms.append(name)
+ # One query includes canonical and ASCII spellings, reducing throttling while keeping
+ # the shared identity check and Turkish-domain boundary.
+ names=' OR '.join(f'"{name}"' for name in terms[:3])
+ q=quote_plus(f'({names}) motosiklet site:.tr')
+ url='https://www.google.com/search?q='+q+'&num='+str(min(limit,20))
+ try:
+  r=requests.get(url,headers=UA,timeout=30);r.raise_for_status();page=r.text
+ except Exception as e:
+  print(f'TURKISH WEB SEARCH FAIL {rider}: {type(e).__name__}: {str(e)[:100]}');return out
+ for href,title in re.findall(r"<a[^>]+href=[\\\"'](?:/url\\?q=)?([^\\\"'&]+)[^>]*>(.*?)</a>",page,re.I|re.S):
+  u=html.unescape(href);t=clean(title);result_host=(urlsplit(u).hostname or '').lower()
+  if not u.startswith('http') or not result_host.endswith('.tr') or len(t)<10 or u in seen:continue
+  if rider_for(t+' '+u,'')!=rider:continue
+  seen.add(u);out.append((t,u,'',rider))
+  if len(out)>=limit:return out
+ return out
+
 def turkish_web_scout(limit_per_source=120):
  """Scan open Turkish .tr/.com.tr racing/news pages for every registered rider.
 
@@ -117,12 +196,19 @@ def turkish_web_scout(limit_per_source=120):
  """
  out=[];seen=set()
  for source,base in TURKISH_WEB_SOURCES:
-  rows=_anchors(source,base,limit_per_source)
+  rows=_turkish_site_crawl(source,base,max_pages=30,depth=2)
   for title,url,detected_series,rider in rows:
    resolved=rider or rider_for(title+' '+url,detected_series or source)
    if not resolved or resolved not in RIDER_SOURCES or url in seen:continue
    series=detected_series if detected_series in ('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300','WorldSPB','Moto4') else RIDER_SOURCES[resolved].get('series','')
    seen.add(url);out.append((title,url,resolved,series))
+ # Portal front pages are shallow (AA is mostly football; TMF may expose only a few cards).
+ # Fill discovery per rider/alias so current articles deeper in the site can be found.
+ for rider,aliases in CANONICAL_ALIASES.items():
+  for title,url,detected_series,resolved in _turkish_web_search(rider,aliases,20):
+   if url in seen:continue
+   series=classify_series(RIDER_SOURCES.get(rider,{}).get('series',''),title,url)
+   seen.add(url);out.append((title,url,rider,series))
  print(f'TURKISH WEB SCOUT: {len(out)} registered-rider candidates')
  return out
 
