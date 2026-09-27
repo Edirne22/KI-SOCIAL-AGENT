@@ -25,18 +25,10 @@ TURKISH_WEB_SOURCES=(
  ('MotorsportTR','https://tr.motorsport.com/'),
  ('TRMotoSports','https://www.trmotosports.com/'),
  ('TRF1MotoGP','https://trf1.net/motor-sporlari/motogp/'),
- ('MotoEtkinlikMotoGP','https://motoetkinlik.com/kategori/motogp/'),
- ('MotoEtkinlikMoto2','https://motoetkinlik.com/kategori/moto2/'),
- ('MotoEtkinlikMoto3','https://motoetkinlik.com/kategori/moto3/'),
- ('MotoEtkinlikWorldSBK','https://motoetkinlik.com/kategori/wsbk/'),
- ('MotoEtkinlikWorldSSP','https://motoetkinlik.com/kategori/worldssp/'),
- ('MotoEtkinlikYaris','https://motoetkinlik.com/kategori/yaris/'),
 )
 # Open Turkish web sources are preferred over social scraping: crawlable, source-linked,
 # and suitable for the same downstream freshness/fact gates.
 TURKISH_MEDIA_SOURCES=(
- ('MotoEtkinlikcom','https://www.instagram.com/motoetkinlikcom/'),
- ('MotoEtkinlikRacing','https://www.instagram.com/motoetkinlikracing/'),
  ('TurkiyeSBK','https://www.instagram.com/turkiyesbk/'),
 )
 TURKISH_RACING_TERMS=(
@@ -207,16 +199,7 @@ def turkish_web_scout(limit_per_source=120):
  article freshness and fact/QM gates downstream.
  """
  out=[];seen=set()
- # Dedicated deterministic MotoEtkinlik adapter.  It preserves the verified
- # category endpoint as lineage while all candidates still pass the normal
- # rider registry, freshness and downstream Truth/QM gates.
- for row in motoetkinlik_discover_news(limit_per_endpoint=min(limit_per_source,120)):
-  title,url=row.get('title',''),row.get('url','')
-  detected_series=row.get('series','')
-  resolved=rider_for(title+' '+url,detected_series or 'MotoEtkinlik')
-  if not resolved or resolved not in RIDER_SOURCES or url in seen:continue
-  series=detected_series if detected_series in ('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300','WorldSPB','Moto4') else RIDER_SOURCES[resolved].get('series','')
-  seen.add(url);out.append((title,url,resolved,series))
+ # MotoEtkinlik is injected by turkish_riders_scout_adapter exactly once.
  for source,base in TURKISH_WEB_SOURCES:
   rows=_turkish_site_crawl(source,base,max_pages=30,depth=2)
   for title,url,detected_series,rider in rows:
