@@ -109,6 +109,10 @@ def install(a):
         for attempt in attempts:
             lock(x);x['caption']=a.german_editor(x,repair);lock(x)
             if not x['caption']:
+                if x.pop('editor_technical_error',None):
+                    x['editor_qm']='TECHNICAL-DEFER';x['rewrite_count']=attempt-1
+                    print('EDITOR TECHNICAL DEFER – no editorial retry consumed:',x.get('title','')[:90])
+                    return False
                 repair=['Redakteur lieferte keinen gueltigen strukturierten Text'];print(f'EDITOR REPAIR attempt={attempt}:',x.get('title','')[:90]);continue
             w=whitelist_errors(x,x['caption'])
             if w:
