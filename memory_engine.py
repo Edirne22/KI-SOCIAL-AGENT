@@ -89,9 +89,13 @@ def derive_events() -> list[dict]:
     pub=read(PUBLISHED)
     blocks=re.split(r'(?m)(?=^## )', pub)
     for block in blocks:
-        header=re.match(r'^## (.+?) \\[GEPOSTET ([^|\\]]+)(?: \\| ID: ([^\\]]+))?\\]', block)
-        if not header: continue
-        platform, when, media_id=header.groups()
+        first=block.splitlines()[0] if block.splitlines() else ''
+        marker=' [GEPOSTET '
+        if not first.startswith('## ') or marker not in first or not first.endswith(']'): continue
+        platform, meta=first[3:].split(marker,1)
+        meta=meta[:-1]
+        when, sep, media_id=meta.partition(' | ID: ')
+        media_id=media_id if sep else None
         event={'type':'published','source':'content/PUBLISHED.md','subject':platform.strip(),
                'value':media_id or when.strip(),'confidence':1.0}
         provenance_line=next((line for line in block.splitlines() if line.startswith('Publish-Provenienz: ')), None)
