@@ -173,3 +173,26 @@ try:
 finally:
  scout.requests.get=old_get
 print('TEST – Turkish Bare Pagination Route: PASS')
+
+
+# MotorsportTR hardening: dead series navigation shells must not be requested.
+old_get=scout.requests.get
+try:
+ requested=[]
+ def motorsport_nav_get(url,**kwargs):
+  requested.append(url)
+  if url=='https://tr.motorsport.com/':
+   return CrawlResp('''
+    <a href="/moto3/">Moto3 haberleri ve sonuçları</a>
+    <a href="/moto3/news/">Moto3 son haberler ve gelişmeler</a>
+    <a href="/moto3/schedule/">Moto3 yarış takvimi ve saatleri</a>
+    <a href="/motogp/news/toprak-guncel/10999999/">Toprak Razgatlıoğlu MotoGP güncel yarış haberi</a>
+   ''')
+  return CrawlResp('')
+ scout.requests.get=motorsport_nav_get
+ rows=scout._turkish_site_crawl('MotorsportTR','https://tr.motorsport.com/',max_pages=10,depth=2)
+ assert len(requested)==1,requested
+ assert rows and rows[0][3]=='Toprak Razgatlıoğlu',rows
+finally:
+ scout.requests.get=old_get
+print('TEST – MotorsportTR Dead Navigation Filter: PASS')
