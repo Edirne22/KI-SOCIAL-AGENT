@@ -12,7 +12,7 @@ from chief_quality_manager import review as chief_review
 GENERIC_TAGS=("#BuelentsBikeLife","#MotorradRacing","#RacingDeutschland")
 
 def _source_text(x):
-    return " ".join((str(x.get("title","")),str(x.get("summary",""))))
+    return " ".join((str(x.get("title","")),str(x.get("summary","")),str(x.get("video_transcript",""))))
 
 def _target_supported(x):
     rider=str(x.get("turkish_rider","")).strip()
