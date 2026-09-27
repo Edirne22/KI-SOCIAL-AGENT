@@ -40,7 +40,7 @@ WICHTIG: Coolness darf NIEMALS neue Fakten erzeugen.
 Der Mensch hat {rider} ausdruecklich als Turkish-Rider-Thema ausgewaehlt. Relevanz ist damit entschieden.
 Die Originalmeldung darf hauptsaechlich von jemand anderem handeln. Ziehe den belegten Blickwinkel auf {rider} heraus,
 aber behaupte niemals, er habe Pole, Sieg, Rekord, Vertrag, Platzierung oder Aussage erzielt, wenn TITEL/ZUSAMMENFASSUNG das nicht belegen.
-Nur Fakten aus TITEL/ZUSAMMENFASSUNG. Keine Fakten aus Vorwissen. Keine erfundenen Zitate, Zahlen, Orte, Teams oder Beziehungen.
+Nur Fakten aus TITEL/ZUSAMMENFASSUNG. Keine Fakten aus Vorwissen. Keine erfundenen Zitate, Zahlen, Orte, Teams, Nationalitaeten oder Beziehungen. Nationalitaeten nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG ausdruecklich belegt sind.
 Wenn VIDEO_TRANSKRIPT vorhanden ist: nutze dessen belegten Inhalt als Quellenmaterial, aber formuliere vollstaendig neu.
 Keine laengeren Originalformulierungen aus Titel, Beschreibung oder Transkript uebernehmen.
 Serie unveraendert: {series}. Keine Hashtags – die setzt das System deterministisch.
