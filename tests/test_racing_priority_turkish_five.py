@@ -145,6 +145,13 @@ def test_turkish_ten_day_window_and_selection_parser():
   assert recv.turkish_selection('turkish 1, 3,5')==[1,3,5]
   assert recv.turkish_selection('turkish alle')==[1,2,3,4,5]
   assert recv.turkish_selection('turkish nein')==[]
+  assert recv.selection('motogp 1')==[1]
+  assert recv.selection('motogp 2')==[2]
+  assert recv.selection('motogp 1-4')==[1,2,3,4]
+  assert recv.selection('motogp 1 - 4')==[1,2,3,4]
+  assert recv.selection('motogp 1-3,5')==[1,2,3,5]
+  assert recv.selection('motogp 4-1') is None
+  assert recv.selection('motogp 6') is None
   assert recv.turkish_selection('T1')==[1]
   assert recv.turkish_selection('t2')==[2]
   assert recv.turkish_selection('T1,T3,T5')==[1,3,5]
@@ -157,6 +164,14 @@ def test_turkish_ten_day_window_and_selection_parser():
   assert recv.turkish_selection('turkish 12')==[12]
   assert recv.turkish_selection('T12,T17')==[12,17]
   assert recv.turkish_selection('turkish 20')==[20]
+  assert recv.turkish_selection('T1')==[1]
+  assert recv.turkish_selection('T2')==[2]
+  assert recv.turkish_selection('T1-4')==[1,2,3,4]
+  assert recv.turkish_selection('T 1-4')==[1,2,3,4]
+  assert recv.turkish_selection('turkish 1-4')==[1,2,3,4]
+  assert recv.turkish_selection('T1-T4')==[1,2,3,4]
+  assert recv.turkish_selection('T1-4,T7,T10-12')==[1,2,3,4,7,10,11,12]
+  assert recv.turkish_selection('T4-1') is None
   assert recv.turkish_selection('turkish 21') is None
   assert recv.turkish_list_requested('turkish liste')
   assert recv.turkish_selection('motogp 1') is None
@@ -218,7 +233,34 @@ def test_turkish_top20_history_keeps_preview_compact():
   a.send_message=old_send;a.send_photo=old_photo;a.extract_og_image_url=old_og;a.roster_names=old_roster;a._send_turkish_source_photo=old_sender
 
 
+def test_turkish_range_dispatches_all_selected_items():
+ rows={n:{'n':n,'title':f'Rider story {n}','url':f'https://example.test/{n}','summary':'Can Öncü WorldSSP','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'} for n in range(1,5)}
+ old_rows=recv.parse_turkish_session;old_already=recv.already;old_chat=recv.get_chat_id;old_active=recv._active_batch;old_publish=recv.publish;old_send=recv.send_message
+ import sys,types
+ fake_agency=types.SimpleNamespace(lock_source_series=lambda *a,**k:None,enrich_turkish=lambda *a,**k:None,mark_priority=lambda *a,**k:None)
+ fake_lane=types.SimpleNamespace(qualify=lambda x,a:True,finish=lambda x,n,a:(x.update(instagram_media=f'img{n}.jpg',caption=f'caption {n}') or True))
+ old_agency=sys.modules.get('motogp_content_agency_v2');old_lane=sys.modules.get('turkish_editor_qm')
+ captured={}
+ try:
+  recv.parse_turkish_session=lambda:rows;recv.already=lambda uid:False;recv.get_chat_id=lambda:'123';recv._active_batch=lambda:'batch'
+  recv.send_message=lambda m:None
+  recv.publish=lambda posts,chosen,uid,batch:(captured.update(chosen=list(chosen),posts=sorted(posts)) or len(chosen)*2)
+  sys.modules['motogp_content_agency_v2']=fake_agency;sys.modules['turkish_editor_qm']=fake_lane
+  # Hardening import happens inside handler; production module exists, but install must accept our fake.
+  import racing_v855_hardening
+  old_install=racing_v855_hardening.install;racing_v855_hardening.install=lambda a:None
+  try: assert recv.handle_turkish(991,'123','T 1-4')
+  finally: racing_v855_hardening.install=old_install
+  assert captured['chosen']==[1,2,3,4],captured
+  assert captured['posts']==[1,2,3,4],captured
+ finally:
+  recv.parse_turkish_session=old_rows;recv.already=old_already;recv.get_chat_id=old_chat;recv._active_batch=old_active;recv.publish=old_publish;recv.send_message=old_send
+  if old_agency is not None:sys.modules['motogp_content_agency_v2']=old_agency
+  if old_lane is not None:sys.modules['turkish_editor_qm']=old_lane
+
+
 if __name__=='__main__':
+ test_turkish_range_dispatches_all_selected_items()
  test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 

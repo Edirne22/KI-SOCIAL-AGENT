@@ -73,46 +73,60 @@ def parse_session():
 
     return posts, problems
 def selection(text):
-    v = re.sub(r'\s+', ' ', text.strip().lower())
-    v = re.sub(r'/\s*', '', v)
-    if 'motogp' not in v:
-        return None
-    v_clean = re.sub(r'\bmotogp\b', '', v).strip()
-    v = f"motogp {v_clean}"
-    if v in ('motogp alle', 'motogp ✅'):
-        return [1, 2, 3, 4, 5]
-    if v in ('motogp nein', 'motogp ❌'):
-        return []
-    m = re.fullmatch(r'motogp\s+([1-5](?:[\s,]+[1-5])*)', v)
-    if not m:
-        return None
-    return sorted({int(x) for x in re.findall(r'[1-5]', m.group(1))})
-def turkish_selection(text):
-    """Parse Turkish-Rider approvals.
+    """Parse MotoGP approvals 1-5, including inclusive ranges."""
+    v=re.sub(r'\s+',' ',str(text or '').strip().lower())
+    v=re.sub(r'^/\s*','',v)
+    m=re.fullmatch(r'motogp\s+(.+)',v)
+    if not m:return None
+    choice=m.group(1).strip()
+    if choice in ('alle','✅'):return [1,2,3,4,5]
+    if choice in ('nein','❌'):return []
+    choice=re.sub(r'\s*[-–—]\s*','-',choice)
+    choice=re.sub(r'\s*,\s*',',',choice)
+    if not re.fullmatch(r'[1-5](?:-[1-5])?(?:,[1-5](?:-[1-5])?)*',choice):return None
+    out=set()
+    for part in choice.split(','):
+        if '-' in part:
+            x,y=(int(n) for n in part.split('-',1))
+            if x>y:return None
+            out.update(range(x,y+1))
+        else:out.add(int(part))
+    return sorted(out)
 
-    Default preview remains T1-T5. Explicit T6-T20 selections are available after
-    turkish liste; turkish alle deliberately means the visible T1-T5 only.
+def turkish_selection(text):
+    """Parse Turkish-Rider approvals T1-T20, including inclusive ranges.
+
+    Examples: T1, T2, T1,T4, T1-4, T 1-4, turkish 1-4, turkish 12.
+    turkish alle deliberately means the visible T1-T5 only.
     """
-    v = re.sub(r'\s+', ' ', text.strip().lower())
-    v = re.sub(r'^/\s*', '', v)
+    v=re.sub(r'\s+',' ',str(text or '').strip().lower())
+    v=re.sub(r'^/\s*','',v)
     if v in ('turkish liste','t liste'):
         return None
-    def numbers(value):
-        nums=[int(x) for x in re.findall(r'(?<!\d)(?:[1-9]|1\d|20)(?!\d)',value)]
-        return sorted({n for n in nums if 1<=n<=20})
-    if re.fullmatch(r't(?:[1-9]|1\d|20)(?:\s*,\s*t?(?:[1-9]|1\d|20))*', v):
-        return numbers(v)
-    m = re.fullmatch(r't(?:urkish)?\s+(.+)', v)
-    if not m:
-        return None
-    choice = m.group(1).strip()
-    if choice in ('alle', '✅'):
-        return [1, 2, 3, 4, 5]
-    if choice in ('nein', '❌'):
+    if v in ('turkish alle','t alle','turkish ✅','t ✅'):
+        return [1,2,3,4,5]
+    if v in ('turkish nein','t nein','turkish ❌','t ❌'):
         return []
-    if re.fullmatch(r'(?:t\s*)?(?:[1-9]|1\d|20)(?:[\s,]+(?:t\s*)?(?:[1-9]|1\d|20))*', choice):
-        return numbers(choice)
-    return None
+
+    m=re.fullmatch(r'(?:turkish|t)\s*(.+)',v)
+    if not m:return None
+    choice=m.group(1).strip()
+    choice=re.sub(r'(?i)\bt\s*(?=\d)','',choice)
+    choice=re.sub(r'\s*[-–—]\s*','-',choice)
+    choice=re.sub(r'\s*,\s*',',',choice)
+    if not re.fullmatch(r'\d{1,2}(?:-\d{1,2})?(?:,\d{1,2}(?:-\d{1,2})?)*',choice):
+        return None
+    out=set()
+    for part in choice.split(','):
+        if '-' in part:
+            a,b=(int(x) for x in part.split('-',1))
+            if not (1<=a<=20 and 1<=b<=20) or a>b:return None
+            out.update(range(a,b+1))
+        else:
+            n=int(part)
+            if not 1<=n<=20:return None
+            out.add(n)
+    return sorted(out)
 
 def turkish_list_requested(text):
     v=re.sub(r'\s+',' ',str(text or '').strip().lower())
@@ -340,5 +354,5 @@ def main():
         return
     for upd in sorted(get_updates(),key=lambda x:x.get('update_id',0)):
         uid=upd.get('update_id');msg=upd.get('message') or {};txt=msg.get('text');chat=str((msg.get('chat') or {}).get('id',''))
-        if isinstance(uid,int) and isinstance(txt,str) and (selection(txt) is not None or turkish_selection(txt) is not None):handle_one(uid,chat,txt)
+        if isinstance(uid,int) and isinstance(txt,str) and (selection(txt) is not None or turkish_selection(txt) is not None or turkish_list_requested(txt)):handle_one(uid,chat,txt)
 if __name__=='__main__':main()
