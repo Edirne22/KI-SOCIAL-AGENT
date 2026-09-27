@@ -26,7 +26,7 @@ def append_media_provenance(block, provenance):
         return re.sub(r"(?mi)^Media-Provenienz:.*$",line,block,count=1)
     return block.rstrip()+"\n"+line+"\n"
 
-def append_publish_provenance(block,platform,post_id):
+def append_publish_provenance(block,platform,post_id,**meta):
     explicit=_json_line(block,"Media-Provenienz")
     origin=dict(explicit) if explicit else media_origin(block)
     # Keep final block state authoritative while preserving editor/generator metadata.
@@ -36,7 +36,7 @@ def append_publish_provenance(block,platform,post_id):
     if lineage:
         try:origin["source_lineage"]=json.loads(lineage.group(1))
         except json.JSONDecodeError:origin["source_lineage_raw"]=lineage.group(1)
-    origin["platform"]=platform;origin["post_id"]=str(post_id)
+    origin["platform"]=platform;origin["post_id"]=str(post_id)\n    origin.update({k:v for k,v in meta.items() if v is not None})
     line="Publish-Provenienz: "+json.dumps(origin,ensure_ascii=False,sort_keys=True)
     if re.search(r"(?mi)^Publish-Provenienz:",block):
         return re.sub(r"(?mi)^Publish-Provenienz:.*$",line,block,count=1)
