@@ -87,9 +87,25 @@ def derive_events() -> list[dict]:
     out=[]
     # Published facts are strong operational evidence, not proof of content quality.
     pub=read(PUBLISHED)
-    for m in re.finditer(r'^## (.+?) \[GEPOSTET ([^|\]]+)(?: \| ID: ([^\]]+))?\]', pub, re.M):
-        platform, when, media_id=m.groups()
-        out.append({'type':'published','source':'content/PUBLISHED.md','subject':platform.strip(),'value':media_id or when.strip(),'confidence':1.0})
+    block_pattern = r'^## (.+?) \\[GEPOSTET ([^|\\]]+)(?: \\| ID: ([^\\]]+))?\\](.*?)(?=^## |\\Z)'
+    for m in re.finditer(block_pattern, pub, re.M | re.S):
+        platform, when, media_id, body=m.groups()
+        event={'type':'published','source':'content/PUBLISHED.md','subject':platform.strip(),
+               'value':media_id or when.strip(),'confidence':1.0}
+        provenance=re.search(r'(?mi)^Publish-Provenienz:\\s*(\\{.*\\})\\s*$', body)
+        if provenance:
+            try:
+                parsed=json.loads(provenance.group(1))
+                event['publish_provenance']=parsed
+                event['post_id']=str(parsed.get('post_id') or media_id or '')
+                event['media_kind']=parsed.get('media_kind','')
+                event['media_path']=parsed.get('media_path','')
+                event['source_url']=parsed.get('source_url','')
+                if isinstance(parsed.get('source_lineage'),dict):
+                    event['source_lineage']=parsed['source_lineage']
+            except json.JSONDecodeError:
+                pass
+        out.append(event)
     # Duplicate blocks are reliable failure events.
     dup=read(DUPLICATES)
     for m in re.finditer(r'(?m)^## ([^\n]+).*?^- Grund: ([^\n]+)', dup, re.S|re.M):
