@@ -32,6 +32,18 @@ TURKISH_MEDIA_SOURCES=(
  ('MotoEtkinlikRacing','https://www.instagram.com/motoetkinlikracing/'),
  ('TurkiyeSBK','https://www.instagram.com/turkiyesbk/'),
 )
+TURKISH_RACING_TERMS=(
+ 'podyum','podyuma çıktı','kürsüye çıktı','birinci oldu','zirvede','şampiyon','şampiyonluk',
+ 'dama bayrak','zafer','kazandı','yarış','en hızlı tur','puan','sıralama turları','pole pozisyonu',
+ 'yarış öncesi','yarış sonrası','yarış dışı','nefes kesen yarış','tarihi başarı','tarih yazdı',
+ 'milli sporcu','milli gurur','pist','serbest antrenman','ısınma turu','viraj','lastik','kaza',
+ 'düşüş','ceza','kırmızı bayrak','sarı bayrak','mekanik arıza','minigp','juniorgp','talent cup',
+ 'motogp','moto2','moto3','worldsbk','wsbk','worldssp','ssp'
+)
+def racing_relevance(text):
+ low=fold(text)
+ return sum(1 for term in TURKISH_RACING_TERMS if fold(term) in low)
+
 FALLBACK=[
  ('Toprak Razgatlıoğlu','Toprak Razgatlioglu – MotoGP rider profile and 2026 rookie campaign','https://www.motogp.com/en/riders/toprak-razgatlioglu/c883a3b8-17ce-419d-b71b-32c252f6fc7e','MotoGP'),
  ('Can Öncü','Can Oncu takes first 2026 WorldSSP win in Race 1 comeback from P13','https://www.worldsbk.com/en/news/2026/09/14/oncu-takes-first-2026-worldssp-win-in-race-1-comeback-from-p13-im-happy-that-the-hard-work-paid-off/1089992','WorldSSP'),
@@ -141,6 +153,7 @@ def _turkish_site_crawl(source,base,max_pages=30,depth=2):
    route=path.lower()+'/'
    category=any(k in route for k in ('/haber','/spor','/motosiklet','/motor','/kategori','/brans','/motogp','/worldsbk'))
    if d<depth and category and not article and u not in visited and all(u!=q[0] for q in queue):queue.append((u,d+1))
+ rows.sort(key=lambda x:racing_relevance(x[0]+' '+x[1]),reverse=True)
  print(f'TURKISH WEB CRAWL {source}: pages={len(visited)} candidates={len(rows)}')
  return rows
 
