@@ -196,3 +196,15 @@ try:
 finally:
  scout.requests.get=old_get
 print('TEST – MotorsportTR Dead Navigation Filter: PASS')
+
+
+# Production regression: Turkish WSSP source must lock to WorldSSP, never Moto2.
+wssp={'title':'WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi','summary':'','url':'https://tr.motorsport.com/supersport/news/example/10859078','series':'Moto2','source_series':'Moto2','series_locked':True}
+agency.lock_source_series(wssp)
+assert agency.series_for(wssp)=='WorldSSP',wssp
+assert wssp['source_series']=='WorldSSP',wssp
+
+# German final text must not leak common Turkish result phrases.
+assert not agency.language_sane('Can Öncü kam in Cremona puansız an.'), 'Turkish leakage accepted'
+assert agency.language_sane('Can Öncü blieb in Cremona ohne Punkte.'), 'Valid German rejected'
+print('TEST – Turkish Series + German Language Hardening: PASS')
