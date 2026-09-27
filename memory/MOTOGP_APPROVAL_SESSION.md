@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790532660
+Session-Timestamp: 1790536569
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,7 +18,7 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 0.3
 Kategorie: Turkish Riders
 Serie: WorldSSP
 Story-Key: motogp:10859593
@@ -29,9 +29,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-1-w
 Quellen-Preview: https://cdn-4.motorsport.com/images/amp/YE9E5PMY/s6/alcoba-wssp.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat das zweite Rennen in Cremona gewonnen – und das schon zum zweiten Mal hintereinander. Can Öncü kam bei uns auf Platz 11 ins Ziel, Bahattin Sofuoğlu wurde 21.
+Jeremy Alcoba hat bei der WSSP in Cremona seinen zweiten Sieg in Folge gefeiert. Can Öncü kam auf Platz 11 ins Ziel, Bahattin Sofuoğlu landete auf Rang 21.
 
-Wie seht ihr die Leistungen unserer Jungs in Cremona?
+Wie findet ihr die Leistung von Can und Bahattin in Cremona?
 
 #WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -41,8 +41,8 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
 Artikelalter-Tage: 1.1
 Kategorie: Turkish Riders
@@ -55,13 +55,9 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-2-t
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/06/toprak-razgatlioglu-kenan-sofuoglu-cekya-gp-brno.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu vergleicht seine MotoGP-Debütsaison mit seinem ersten Jahr im WorldSBK 2018.
+Toprak Razgatlıoğlu vergleicht seine MotoGP-Rookie-Saison mit seinem ersten WorldSBK-Jahr 2018. Er sagte, dass die Erfahrung ihn an jene Zeit zurückgebracht hat, in der er sogar darüber nachdachte, mit dem Rennfahren aufzuhören. 🏍️
 
-Der türkische Fahrer gab offen zu, damals sogar über einen Rücktritt aus dem Rennsport nachgedacht zu haben.
-
-Die Parallele zwischen den beiden Serien begleitet ihn auch jetzt noch.
-
-Wie seht ihr den direkten Vergleich zu 2018?
+Wie seht ihr diesen Vergleich für seine Entwicklung im MotoGP-Klassement?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -71,10 +67,10 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 3
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.4
+Artikelalter-Tage: 1.5
 Kategorie: Turkish Riders
 Serie: MotoGP
 Story-Key: motogp:116150
@@ -85,13 +81,13 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-3-m
 Quellen-Preview: https://trf1.net/wp-content/uploads/2026/09/gng_1346519_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu hat überlegt, 2026 mit dem Rennfahren aufzuhören.
+Toprak Razgatlıoğlu hat seine schwierige MotoGP-Rookie-Saison mit seinem WorldSBK-Debüt 2018 verglichen.
 
-Seine erste MotoGP-Saison glich stark seiner 2018 WorldSBK-Debut-Saison.
+In beiden Serien musste er am Anfang schwer um vorne mitkämpfen.
 
-In beiden ersten Jahren hatte er Schwierigkeiten, vorne mitzufahren.
+Der türkische Pilot denkt daran, 2026 mit dem Rennen aufzuhören.
 
-Wie seht ihr seine Entwicklung?
+Wie schätzt ihr seine Entwicklung ein?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -104,7 +100,7 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.0
+Artikelalter-Tage: 2.1
 Kategorie: Turkish Riders
 Serie: WorldSSP
 Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
@@ -115,11 +111,11 @@ Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-4-c
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Can Öncü in Cremona: Sechster im Superpole – nur 0,365 Sekunden von der Pole.
+Can Öncü mischt in Cremona vorne mit!
 
-Beim WorldSSP-Training in Cremona zeigte Can Öncü starke Runden und landete auf Platz sechs. Der Rückstand auf die Pole-Time belief sich auf 0,365 Sekunden. Die Basis für einen guten Rennstart ist gelegt.
+In der WorldSSP-Superpole sicherte er sich den sechsten Platz. Auf die Pole-Position fehlten ihm am Ende lediglich 0,365 Sekunden.
 
-Wie schätzt ihr die Situation ein?
+Was erwartet ihr von Can Öncü in Cremona?
 
 #WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -129,25 +125,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 2.1
+Artikelalter-Tage: 1.3
 Kategorie: Turkish Riders
 Serie: WorldSSP
-Story-Key: motogp:10859078
-Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
-Quelle: https://tr.motorsport.com/supersport/news/wssp-superpole-italya-alcoba-cremonada-kawasaki-2021den-sonra-ilk-kez-zirvede-can-oncu-6-sirada-bit/10859078
+Story-Key: motogp:10859418
+Titel: WSSP İtalya 1. yarış: Alcoba’dan Cremona’da WSSP zaferi, Can Öncü puansız ayrıldı, Bahattin Sofuoğlu 19. sırada bitirdi!
+Quelle: https://tr.motorsport.com/supersport/news/wssp-italya-1-yaris-alcobadan-cremonada-wssp-zaferi-can-oncu-puansiz-ayrildi-bahattin-sofuoglu-19-s/10859418
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-5-wssp-superpole-italy-01.jpg
-Quellen-Preview: https://cdn-8.motorsport.com/images/amp/0R7BJNB2/s6/can-oncu-aragon.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-5-wssp-italya-1-yaris-01.jpg
+Quellen-Preview: https://cdn-9.motorsport.com/images/amp/0Zq8vGN6/s6/jeremy.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat sich bei WSSP in Cremona die Superpole gesichert – für Kawasaki zum ersten Mal seit 2021 dort an der Spitze. Can Öncü beendet das Superpole-Training auf Rang sechs.
+Jeremy Alcoba hat beim WSSP-Eröffnungsrennen in Cremona seinen ersten Sieg in der FIM Supersport-Weltmeisterschaft gefeiert. Can Öncü blieb bei seinem Start ohne Punkte, Bahattin Sofuoğlu landete auf Platz 19.
 
-Was meint ihr: Wie gut sieht es für die beiden im Rennen aus?
+Was denkt ihr über den Rennverlauf in Cremona?
 
-#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

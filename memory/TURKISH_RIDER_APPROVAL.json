@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "created_at": 1790532660,
+  "created_at": 1790536569,
   "max_days": 10,
   "window_used_days": 10,
   "count": 20,
@@ -19,23 +19,23 @@
     },
     {
       "n": 2,
-      "title": "IAME Benelux Mariembourg Finali: Zayn Sofuoğlu Kazanmak İçin Piste Çıkıyor",
-      "url": "https://motoetkinlik.com/iame-benelux-mariembourg-finali-zayn-sofuoglu-kazanmak-icin-piste-cikiyor",
-      "summary": "IAME Benelux Mariembourg finali 27 Eylül Pazar. Zayn Sofuoğlu 724 puanla ikinci, lider Bal'a fark 42 puan. Mini Rookie seans saatleri TSİ ve güncel puan durumu.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/961_22082026070559-1.webp",
-      "published_at": "2026-09-26T21:57:33+03:00",
-      "series": "Karting",
-      "source_series": "Karting",
-      "turkish_rider": "Zayn Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 3,
       "title": "REPORT 2d ago ALCOBA AT THE FRONT: #52 takes Kawasaki’s first WorldSSP pole since 2021 at Cremona Championship leader Albert Arenas will start from P2, ahead of title rivals Oncu in P6 and Debise in P8 WorldSSP",
       "url": "https://www.worldsbk.com/en/news/2026/09/25/alcoba-at-the-front-52-takes-kawasakis-first-worldssp-pole-since-2021-at-cremona/1095246",
       "summary": "",
       "preview": "",
       "published_at": null,
+      "series": "WorldSSP",
+      "source_series": "WorldSSP",
+      "turkish_rider": "Can Öncü",
+      "kind": "news"
+    },
+    {
+      "n": 3,
+      "title": "Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta",
+      "url": "https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu",
+      "summary": "Milli sporcumuz Can Öncü, Cremona WorldSSP Superpole seansını pole pozisyonunun sadece 0.365 saniye gerisinde altıncı tamamladı.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp",
+      "published_at": "2026-09-25T20:53:38+03:00",
       "series": "WorldSSP",
       "source_series": "WorldSSP",
       "turkish_rider": "Can Öncü",
@@ -55,14 +55,14 @@
     },
     {
       "n": 5,
-      "title": "Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta",
-      "url": "https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu",
-      "summary": "Milli sporcumuz Can Öncü, Cremona WorldSSP Superpole seansını pole pozisyonunun sadece 0.365 saniye gerisinde altıncı tamamladı.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp",
-      "published_at": "2026-09-25T20:53:38+03:00",
-      "series": "WorldSSP",
-      "source_series": "WorldSSP",
-      "turkish_rider": "Can Öncü",
+      "title": "IAME Benelux Mariembourg Finali: Zayn Sofuoğlu Kazanmak İçin Piste Çıkıyor",
+      "url": "https://motoetkinlik.com/iame-benelux-mariembourg-finali-zayn-sofuoglu-kazanmak-icin-piste-cikiyor",
+      "summary": "IAME Benelux Mariembourg finali 27 Eylül Pazar. Zayn Sofuoğlu 724 puanla ikinci, lider Bal'a fark 42 puan. Mini Rookie seans saatleri TSİ ve güncel puan durumu.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/961_22082026070559-1.webp",
+      "published_at": "2026-09-26T21:57:33+03:00",
+      "series": "Karting",
+      "source_series": "Karting",
+      "turkish_rider": "Zayn Sofuoğlu",
       "kind": "news"
     },
     {
@@ -151,18 +151,6 @@
     },
     {
       "n": 13,
-      "title": "Zayn Sofuoğlu Bursa'daki Finalde ANLAS MiniGP 110 Şampiyonu Oldu",
-      "url": "https://motoetkinlik.com/zayn-sofuoglu-bursadaki-finalde-anlas-minigp-110-sampiyonu-oldu",
-      "summary": "Zayn Sofuoğlu Bursa'daki final ayağında iki yarışı da kazanarak ANLAS MiniGP 110 şampiyonu oldu. Türkiye Süpermoto 5. ayağında yedi sınıf birden yarıştı.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bursa-supermoto-anlas-minigp-yarisi.webp",
-      "published_at": "2026-09-20T21:51:00+03:00",
-      "series": "Karting",
-      "source_series": "Karting",
-      "turkish_rider": "Zayn Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 14,
       "title": "MotoGP Avusturya Sprint: Martin'den İnanılmaz Zafer, Toprak Razgatlıoğlu'ndan Güçlü Performans!",
       "url": "https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans",
       "summary": "Jorge Martin, MotoGP Avusturya GP Sprint yarışını kazanarak şampiyona liderliğini yeniden aldı. Marc Márquez ikinci, Marco Bezzecchi üçüncü olurken Pedro Acosta kaza yaptı.",
@@ -174,7 +162,7 @@
       "kind": "news"
     },
     {
-      "n": 15,
+      "n": 14,
       "title": "Toprak Razgatlıoğlu Avusturya Cumartesi Günü Değerlendirmesi: \"Sıralama Sorununu Çözmeye Çalışıyoruz\"",
       "url": "https://motoetkinlik.com/toprak-razgatlioglu-avusturya-cumartesi-gunu-degerlendirmesi-siralama-sorununu-cozmeye-calisiyoruz",
       "summary": "Toprak Razgatlıoğlu, avusturya sprint yarışı sonrasında cumartesi günü hakkında açıklamalarda bulundu.",
@@ -186,7 +174,7 @@
       "kind": "news"
     },
     {
-      "n": 16,
+      "n": 15,
       "title": "Moto2 Avusturya GP'de Cuma Günü Tamamlandı: Filip Salac lider, Deniz Öncü 21. Sırada!",
       "url": "https://motoetkinlik.com/moto2-avusturya-gpde-cuma-gunu-tamamlandi-filip-salac-lider-deniz-oncu-21-sirada",
       "summary": "Filip Salač, Avusturya Moto2 Practice seansını yeni tur rekoruyla lider tamamladı. Ivan Ortolá ikinci, Daniel Holgado üçüncü oldu.",
@@ -198,7 +186,7 @@
       "kind": "news"
     },
     {
-      "n": 17,
+      "n": 16,
       "title": "Moto2 Avusturya Sıralama: Deniz Öncü'den Harika Performans, Pole Filip Salac'ın!",
       "url": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin",
       "summary": "Filip Salač, Avusturya GP Moto2 sıralama turlarında 1:32.381'lik yeni tur rekoruyla pole pozisyonunu aldı. Manuel Gonzalez ikinci, Alex Escrig üçüncü oldu.",
@@ -207,6 +195,18 @@
       "series": "Moto2",
       "source_series": "Moto2",
       "turkish_rider": "Deniz Öncü",
+      "kind": "news"
+    },
+    {
+      "n": 17,
+      "title": "Zayn Sofuoğlu Bursa'daki Finalde ANLAS MiniGP 110 Şampiyonu Oldu",
+      "url": "https://motoetkinlik.com/zayn-sofuoglu-bursadaki-finalde-anlas-minigp-110-sampiyonu-oldu",
+      "summary": "Zayn Sofuoğlu Bursa'daki final ayağında iki yarışı da kazanarak ANLAS MiniGP 110 şampiyonu oldu. Türkiye Süpermoto 5. ayağında yedi sınıf birden yarıştı.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bursa-supermoto-anlas-minigp-yarisi.webp",
+      "published_at": "2026-09-20T21:51:00+03:00",
+      "series": "Karting",
+      "source_series": "Karting",
+      "turkish_rider": "Zayn Sofuoğlu",
       "kind": "news"
     },
     {
@@ -223,11 +223,11 @@
     },
     {
       "n": 19,
-      "title": "Moto2 Avusturya GP yarış: Guevara’dan kritik zafer, Deniz Öncü ilk 10’da!",
-      "url": "https://tr.motorsport.com/moto2/news/moto2-avusturya-gp-yaris-guevaradan-kritik-zafer-deniz-oncu-ilk-10da/10857469",
-      "summary": "2026 Moto2 Dünya Şampiyonası’nda şampiyonluk mücadelesi tüm hızıyla devam ederken, sezonun Avusturya ayağında kazanan Izan Guevara oldu.",
-      "preview": "https://cdn-2.motorsport.com/images/amp/YvKBK7G6/s6/izan-guevara-pramac-racing.jpg",
-      "published_at": "2026-09-20T11:40:00Z",
+      "title": "Moto2 Avusturya Yarış: Deniz Öncü İlk 10'da, Guevara'dan Kritik Zafer!",
+      "url": "https://motoetkinlik.com/moto2-avusturya-yaris-deniz-oncu-ilk-10da-guevaradan-kritik-zafer",
+      "summary": "Izan Guevara, Moto2 Avusturya GP'sinde Filip Salač ve David Alonso'nun önünde kazanarak sezonun ikinci galibiyetini aldı. Manuel Gonzalez dördüncü olurken Deniz Öncü dokuzuncu sırada finiş gördü.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/deniz-oncu-moto2-sozlesme-yeniledi.webp",
+      "published_at": "2026-09-20T16:32:26+03:00",
       "series": "Moto2",
       "source_series": "Moto2",
       "turkish_rider": "Deniz Öncü",
@@ -235,11 +235,11 @@
     },
     {
       "n": 20,
-      "title": "Moto2 Avusturya Yarış: Deniz Öncü İlk 10'da, Guevara'dan Kritik Zafer!",
-      "url": "https://motoetkinlik.com/moto2-avusturya-yaris-deniz-oncu-ilk-10da-guevaradan-kritik-zafer",
-      "summary": "Izan Guevara, Moto2 Avusturya GP'sinde Filip Salač ve David Alonso'nun önünde kazanarak sezonun ikinci galibiyetini aldı. Manuel Gonzalez dördüncü olurken Deniz Öncü dokuzuncu sırada finiş gördü.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/deniz-oncu-moto2-sozlesme-yeniledi.webp",
-      "published_at": "2026-09-20T16:32:26+03:00",
+      "title": "Moto2 Avusturya GP yarış: Guevara’dan kritik zafer, Deniz Öncü ilk 10’da!",
+      "url": "https://tr.motorsport.com/moto2/news/moto2-avusturya-gp-yaris-guevaradan-kritik-zafer-deniz-oncu-ilk-10da/10857469",
+      "summary": "2026 Moto2 Dünya Şampiyonası’nda şampiyonluk mücadelesi tüm hızıyla devam ederken, sezonun Avusturya ayağında kazanan Izan Guevara oldu.",
+      "preview": "https://cdn-2.motorsport.com/images/amp/YvKBK7G6/s6/izan-guevara-pramac-racing.jpg",
+      "published_at": "2026-09-20T11:40:00Z",
       "series": "Moto2",
       "source_series": "Moto2",
       "turkish_rider": "Deniz Öncü",
