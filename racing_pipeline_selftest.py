@@ -271,7 +271,7 @@ def test_finalization_contract():
   sample=[{'title':'T','caption':'Text.\n\nFrage?\n\n#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife','url':'https://example.com','series':'MotoGP'} for _ in range(4)]
   a.telegram_preview(sample,False,[])
   ok(sent and '– 4 qualitätsgeprüfte Tagesvorschläge' in sent[0],'Telegram header must report actual final count')
-  ok('motogp 1–4' in sent[0],'Telegram approval range must report actual final count')
+  ok('motogp 1–4' in sent[-1],'Telegram approval range must report actual final count in the final approval message')
  finally:a.send_message=old_send
  import chief_quality_manager as chief
  old_log=chief._log
