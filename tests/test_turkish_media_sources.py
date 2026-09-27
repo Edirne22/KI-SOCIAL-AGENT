@@ -2,8 +2,8 @@ import turkish_riders_scout as scout
 import motogp_content_agency_v2 as agency
 
 urls=dict(scout.TURKISH_MEDIA_SOURCES)
-assert urls['MotoEtkinlikcom']=='https://www.instagram.com/motoetkinlikcom/'
-assert urls['MotoEtkinlikRacing']=='https://www.instagram.com/motoetkinlikracing/'
+assert 'MotoEtkinlikcom' not in urls
+assert 'MotoEtkinlikRacing' not in urls
 assert urls['TurkiyeSBK']=='https://www.instagram.com/turkiyesbk/'
 for text,expected in [
  ('Toprak Razgatlioglu yeni haber','Toprak Razgatlıoğlu'),
@@ -26,14 +26,16 @@ class Resp:
  def raise_for_status(self): pass
 old_get=scout.requests.get
 try:
- scout.requests.get=lambda *a,**k: Resp('<a href="https://www.instagram.com/motoetkinlikcom/p/ABC123/">Toprak Razgatlioglu MotoGP yeni haber</a><a href="https://www.instagram.com/turkiyesbk/reel/XYZ789/">Can Oncu WorldSSP yarisi</a>')
- rows=scout._search_fallback('MotoEtkinlikcom','https://www.instagram.com/motoetkinlikcom/',20)
- assert any('/p/' in r[1] and r[3]=='Toprak Razgatlıoğlu' for r in rows),rows
+ scout.requests.get=lambda *a,**k: Resp('<a href="https://www.instagram.com/turkiyesbk/reel/XYZ789/">Can Oncu WorldSSP yarisi</a>')
+ rows=scout._search_fallback('TurkiyeSBK','https://www.instagram.com/turkiyesbk/',20)
+ assert any('/reel/' in r[1] and r[3]=='Can Öncü' for r in rows),rows
 finally:
  scout.requests.get=old_get
 
 # Media source names are discovery labels, never championship values.
 assert 'MotoEtkinlikcom' not in {ctx.get('series') for ctx in scout.RIDER_SOURCES.values()}
+assert not any(name.startswith('MotoEtkinlik') for name,_ in scout.TURKISH_WEB_SOURCES)
+assert not any(name.startswith('MotoEtkinlik') for name,_ in scout.TURKISH_MEDIA_SOURCES)
 print('TEST – Turkish Social 429 Fallback: PASS')
 
 
