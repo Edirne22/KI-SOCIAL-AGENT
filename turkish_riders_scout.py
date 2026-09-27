@@ -20,6 +20,8 @@ RIDER_SOURCES=RIDER_CONTEXT
 TURKISH_WEB_SOURCES=(
  ('TMF','https://www.tmf.org.tr/Haberler/'),
  ('AnadoluAjansi','https://www.aa.com.tr/tr/spor'),
+ ('Motoron','https://www.motoron.com.tr/kategori/yarislar/'),
+ ('MotorsportTR','https://tr.motorsport.com/'),
 )
 # Open Turkish web sources are preferred over social scraping: crawlable, source-linked,
 # and suitable for the same downstream freshness/fact gates.
