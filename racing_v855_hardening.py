@@ -92,17 +92,13 @@ def install(a):
         return base+'\n\n'+racing_lexicon_contract('V8.5.5-HARDENING')+'\n\nSOURCE-FACT-WHITELIST (GESCHLOSSEN): '+facts+'\nJede konkrete Person und jede Zahl im Post muss darin bzw. in TITEL/ZUSAMMENFASSUNG vorkommen. Orte, Teams und Hersteller nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG stehen. Nicht belegte Details weglassen, niemals aus Vorwissen ergaenzen.'
 
     def semantic_technical_retry(x,caption):
-        # Resolve through the module at CALL TIME. This is intentional: offline
-        # regression tests replace a.semantic_review_detailed with a provider-free
-        # fake. Capturing it during install() made the selftest call Agnes.
-        for n in (1,2):
-            r=a.semantic_review_detailed(x,caption)
-            joined=' '.join(r.get('hard_reasons',[])).lower()
-            technical=('technisch ungueltig' in joined or 'http 429' in joined or 'rate limit' in joined or 'provider-anfrage' in joined or 'timeout' in joined)
-            if not technical:return r
-            print(f'SEMANTIC-QM TECHNICAL RETRY {n}/3:',x.get('title','')[:90],'|',joined[:180])
-            if n<3:time.sleep(2*n)
-        return {'technical_error':True,'technical_reason':'Provider/QM nach technischen Retries nicht verfuegbar','hard_ok':False,'language_ok':False,'hard_reasons':[],'repair_reasons':[]}
+        # Provider/backoff retries are centralized in llm_client. Semantic QM gets
+        # exactly one provider transaction so technical failures cannot multiply
+        # with editor/priority repair loops.
+        r=a.semantic_review_detailed(x,caption)
+        if r.get('technical_error'):
+            print('SEMANTIC-QM TECHNICAL DEFER:',x.get('title','')[:90],'|',str(r.get('technical_reason','provider'))[:180])
+        return r
 
     def qualify(x,initial_reasons=None):
         if not a.racing_relevant(x):return False
