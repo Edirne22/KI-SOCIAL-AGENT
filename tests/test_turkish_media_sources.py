@@ -71,3 +71,22 @@ try:
  assert rows[0][2:] == ('Can Öncü','WorldSSP'),rows
 finally:
  scout.requests.get=old_get
+
+
+# Deep Turkish web search must discover a registered rider beyond portal front-page anchors.
+class SearchResp:
+ def __init__(self,text): self.text=text
+ def raise_for_status(self): pass
+old_get=scout.requests.get
+try:
+ def fake_get(url,**kwargs):
+  if 'google.com/search' in url and ('Can' in url or 'Can%20' in url or 'Can%2B' in url):
+   return SearchResp('<a href="https://spor.example.com.tr/motosiklet/can-oncu-cremona">Can Öncü Cremona WorldSSP yarış haberi</a>')
+  return SearchResp('')
+ scout.requests.get=fake_get
+ deep=scout._turkish_web_search('Can Öncü',('Can Oncu',),20)
+ assert deep and deep[0][3]=='Can Öncü',deep
+ assert 'example.com.tr' in deep[0][1],deep
+finally:
+ scout.requests.get=old_get
+print('TEST – Turkish Rider-Centered Web Search: PASS')
