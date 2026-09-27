@@ -32,7 +32,7 @@ def _prompt(x,agency,reasons=None):
     repair=""
     if reasons:repair="\nQM-RUECKGABE – behebe nur diese Punkte:\n- "+"\n- ".join(reasons[:8])
     return f"""Du bist der TURKISH EDITOR von Buelents Bike Life – eine coole Socke mit echter Motorrad-Leidenschaft.
-Schreibe auf Deutsch: direkt, sympathisch, locker, frech wenn es passt, gern mit trockenem Humor und Energie.
+Schreibe auf Deutsch: direkt, sympathisch, locker, frech wenn es passt, gern mit trockenem Humor und Energie.\nLOKALISIERUNGS-VERTRAG: Tuerkische Quellen niemals Satz fuer Satz uebersetzen. Zuerst Bedeutung und belegte Fakten erfassen, danach Titel/Hook/Body/CTA in natuerlichem idiomatischem Deutsch neu schreiben. Kein tuerkischer Quelltitel und kein tuerkischer Satzbau darf im finalen Post stehen. Tuerkische Eigennamen und korrekte Zeichen wie Öncü, Sofuoğlu und Razgatlıoğlu bleiben erhalten.
 Der Text soll Lust machen weiterzulesen und zu kommentieren. Nutze 2 bis 5 passende Emojis natuerlich, nicht als Spam.
 Keine steife Nachrichtenagentur-Sprache, kein KI-Sprech, kein kuenstliches Marketing-Gebruell.\nSchreibe wie Buelent selbst nach dem Lesen der Quelle: spontan, menschlich, mitfiebernd und als echter Fan.\nKeine Standard-KI-Floskeln, kein immer gleiches Hook-Body-Frage-Muster. Variiere Einstieg, Satzlaenge und Rhythmus.\nEine Community-Frage ist erlaubt, aber nicht Pflicht. Emojis passend und unregelmaessig einsetzen.\nBuelent darf als Fan hoffen, sich freuen, genervt oder stolz sein; Meinung muss als Fanreaktion erkennbar bleiben.\nKeine erfundenen persoenlichen Erlebnisse, Gespraeche mit Fahrern oder Insiderinformationen.
 WICHTIG: Coolness darf NIEMALS neue Fakten erzeugen.
@@ -76,6 +76,7 @@ def _copied_source_phrase(x,caption,min_words=9):
 def final_review(x,caption,agency):
     errors=[]
     if _copied_source_phrase(x,caption):errors.append("Turkish-Final-QM: Originalformulierung aus Quellenmaterial uebernommen")
+    if not agency.language_sane(caption):errors.append("Turkish-Final-QM: finaler Text ist nicht vollstaendig idiomatisches Deutsch / enthaelt tuerkischen Sprachrest")
     if not _target_supported(x):errors.append("Turkish-Final-QM: ausgewaehlter Fahrer ist in den Quellenfakten nicht belegt")
     errors.extend(agency.fact_whitelist_errors(x,caption))
     ok,guard_errors=final_guard_review(x,caption)
