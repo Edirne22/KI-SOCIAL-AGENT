@@ -55,7 +55,7 @@ def _transfer_destination(story):
  if ('worldsbk' in s or 'world superbike' in s) and any(p in s for p in ('join worldsbk','joins worldsbk','to worldsbk','worldsbk switch','moves to worldsbk','move to worldsbk','switch to worldsbk')):return 'WorldSBK'
  return ''
 def _explicit_source_series(x):
- patterns=(('WorldSSP300',r'worldssp\s*300'),('WorldSSP',r'worldssp(?!\s*300)|world supersport(?!\s*300)'),('WorldSBK',r'worldsbk|world superbike'),('Moto3',r'(?<![a-z0-9])moto3(?![a-z0-9])'),('Moto2',r'(?<![a-z0-9])moto2(?![a-z0-9])'),('MotoGP',r'(?<![a-z0-9])motogp(?![a-z0-9])'))
+ patterns=(('WorldSSP300',r'worldssp\s*300'),('WorldSSP',r'worldssp(?!\s*300)|world supersport(?!\s*300)|(?<![a-z0-9])wssp(?![a-z0-9])'),('WorldSBK',r'worldsbk|world superbike'),('Moto3',r'(?<![a-z0-9])moto3(?![a-z0-9])'),('Moto2',r'(?<![a-z0-9])moto2(?![a-z0-9])'),('MotoGP',r'(?<![a-z0-9])motogp(?![a-z0-9])'))
  # Mirror the final guard: an explicit series in the official headline outranks
  # a secondary-series mention in the summary (e.g. "WorldSBK paddock").
  for raw in (x.get('title',''),x.get('summary','')):
@@ -133,7 +133,9 @@ def hashtags(x):
  if r and r not in names:names.insert(0,r)
  tags=[series_tag]+['#'+re.sub(r'[^A-Za-z0-9]','',fold(n).title().replace(' ','')) for n in names[:2]]+['#MotorradRacing','#RacingDeutschland','#BuelentsBikeLife'];return ' '.join(dict.fromkeys(tags))
 def language_sane(caption):
- low=fold(caption);return not racing_lexicon_errors(caption) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:'))
+ low=fold(caption)
+ foreign_turkish=('puansiz','sirada bitirdi','yarisi kazandi','podyuma cikti')
+ return not racing_lexicon_errors(caption) and not any(x in low for x in ('click here','read more','find out more','latest edition','talking points:')) and not any(x in low for x in foreign_turkish)
 STRUCTURE_VARIANTS={
  'HOOK_BODY_QUESTION':('{"hook":"...","body":"...","question":"..."}','Konkreter Hook, danach 2–5 natuerliche Saetze, am Ende eine konkrete Community-Frage.'),
  'BODY_QUESTION':('{"body":"...","question":"..."}','Ohne Hook direkt mit den Fakten einsteigen, danach eine konkrete Community-Frage.'),
