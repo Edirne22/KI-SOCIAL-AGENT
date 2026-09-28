@@ -94,3 +94,18 @@ def test_free_form_nlu_48h_marquez_schema(monkeypatch):
     monkeypatch.setattr(q,"all_rows",lambda:[])
     monkeypatch.setattr(q,"show",lambda found,label:label)
     assert "48 Stunden" in q.handle("Was wurde denn so in den letzten zwei Tagen alles über Marc Márquez geschrieben?")
+
+
+def test_spoken_turkish_approval_normalizes(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"approve","lane":"turkish","selections":[1],"riders":[]})
+    assert q.handle("Turkish Rider Nummer eins")==("approval","turkish 1")
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"approve","lane":"turkish","selections":[5],"riders":[]})
+    assert q.handle("Nimm bei den Turkish Ridern die fünf")==("approval","turkish 5")
+
+def test_spoken_motogp_multi_approval_normalizes(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"approve","lane":"motogp","selections":[3,4],"riders":[]})
+    assert q.handle("MotoGP die drei und vier posten")==("approval","motogp 3,4")
+
+def test_spoken_approval_rejects_out_of_range(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"approve","lane":"motogp","selections":[8],"riders":[]})
+    assert q.handle("MotoGP Nummer acht posten")==2
