@@ -25,8 +25,12 @@ def canonical_riders(values):
         compact=re.sub(r"[^a-z0-9]","",spoken)
         if not compact or compact=="can":
             continue
+        # Known speech-to-text substitutions are explicit and still registry-guarded.
+        spoken_alias={"alexrenz":"Alex Rins"}.get(compact)
         exact=[name for name in registry if re.sub(r"[^a-z0-9]","",norm(name))==compact]
-        if exact:
+        if spoken_alias in registry:
+            choice=spoken_alias
+        elif exact:
             choice=exact[0]
         else:
             scored=[]
