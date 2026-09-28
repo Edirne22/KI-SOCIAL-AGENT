@@ -646,9 +646,17 @@
       "event": "workflow_dispatch",
       "github_run_id": "36403769185",
       "arch_version": "V8.5.5"
+    },
+    "racing-2026-09-28-manual-36423212562": {
+      "status": "READY_FOR_APPROVAL",
+      "started_at": "2026-09-28T12:40:51.678156+00:00",
+      "updated_at": "2026-09-28T14:12:59.182500+00:00",
+      "event": "workflow_dispatch",
+      "github_run_id": "36423212562",
+      "arch_version": "V8.5.5"
     }
   },
-  "last_notification_at": 1790589837.5638802,
+  "last_notification_at": 1790604779.1809938,
   "last_notification_fingerprint": "8446a800fc7cfcb8d1d4ab44e86d2ec91a6b105a7605a29193805b82e3302970",
-  "active_batch_id": "racing-2026-09-28-manual-36403769185"
+  "active_batch_id": "racing-2026-09-28-manual-36423212562"
 }

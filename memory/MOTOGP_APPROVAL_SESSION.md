@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790588318
+Session-Timestamp: 1790600363
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,27 +15,25 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 4
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
 Artikelalter-Tage: 0.9
 Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: motogp:10859593
-Titel: WSSP Cremona 2. yarış: Alcoba’dan üst üste ikinci zafer, Can Öncü 11., Bahattin Sofuoğlu 21. sırada
-Quelle: https://tr.motorsport.com/supersport/news/wssp-cremona-2-yaris-alcobadan-ust-uste-ikinci-zafer-can-oncu-11-bahattin-sofuoglu-21-sirada/10859593
+Serie: MotoGP
+Story-Key: motogp:10859536
+Titel: Toprak: “2018’de yarış kariyerimi noktalamayı bile düşünmüştüm”
+Quelle: https://tr.motorsport.com/motogp/news/toprak-2018de-yaris-kariyerimi-noktalamayi-bile-dusunmustum/10859536
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-1-wssp-cremona-2-yaris-01.jpg
-Quellen-Preview: https://cdn-6.motorsport.com/images/amp/YE9E5PMY/s6/alcoba-wssp.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-1-toprak-2018de-yaris-01.jpg
+Quellen-Preview: https://cdn-6.motorsport.com/images/amp/YWKABqVY/s6/toprak-razgatlioglu-pramac-rac.jpg
 Plattformen: Instagram + Facebook
 Text:
-Alcoba zieht in Cremona erneut die Reißleine – zwei Siege in Folge!
+Toprak Razgatlıoğlu hatte in seiner ersten MotoGP-Saison lange Probleme, den Rhythmus zu finden. Was ihn damals traf, kannte er schon aus 2018 – seinem Debütjahr im WSBK. Damals überlegte er sogar, seine Rennkarriere zu beenden.
 
-Jeremy Alcoba hat beim zweiten Rennen von WSSP Cremona gewonnen und damit seinen zweiten Sieg am Stück gefeiert. Can Öncü landete auf Platz 11, Bahattin Sofuoğlu kam als 21. ins Ziel.
+Was meint ihr, wie es ihm jetzt in der MotoGP geht?
 
-Was denkt ihr über Alcobas Form in dieser Saison?
-
-#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -46,26 +44,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.7
-Kategorie: Turkish Riders
+Artikelalter-Tage: 0.0
+Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:toprak-razgatl-o-lu-bu-sezon-bana-sbk-daki-i-lk-y-l-m-hat-rlat-yor
-Titel: Toprak Razgatlıoğlu: “Bu Sezon Bana SBK'daki İlk Yılımı Hatırlatıyor”
-Quelle: https://motoetkinlik.com/toprak-razgatlioglu-bu-sezon-bana-sbkdaki-ilk-yilimi-hatirlatiyor
+Story-Key: motogp:10859765
+Titel: Quartararo, Honda’ya geçişiyle sponsor değiştirmek zorunda kalıyor
+Quelle: https://tr.motorsport.com/motogp/news/quartararo-hondaya-gecisiyle-sponsor-degistirmek-zorunda-kaliyor/10859765
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-2-toprak-razgatlioglu-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/06/toprak-razgatlioglu-kenan-sofuoglu-cekya-gp-brno.webp
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-2-quartararo-hondaya-g-01.jpg
+Quellen-Preview: https://cdn-3.motorsport.com/images/amp/25dLlel0/s6/fabio-quartararo-yamaha-factor.jpg
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu vergleicht seine MotoGP-Rookie-Saison mit seinem ersten WorldSBK-Jahr 2018.
+Quartararo und Honda ab 2027 – Monster Energy ist damit raus.
 
-Damals erwog er sogar, das Rennfahren zu beenden.
+Den Sponsor hatte er seit Anbeginn seiner Karriere. Mit dem Wechsel zu Honda ab 2027 muss er den Vertrag beenden.
 
-Sein erster Start in der WorldSBK fand 2018 statt.
+Was sagt ihr zum Sponsor-Wechsel wegen Honda?
 
-Ein offener Blick auf die Challenges, die Profis in neuen Serien durchlaufen.
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #FabioQuartararo #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -73,27 +69,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 2
 QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 2.1
+Artikelalter-Tage: 2.8
 Kategorie: Turkish Riders
-Serie: MotoGP
-Story-Key: motogp:116150
-Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
-Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150
+Serie: WorldSSP
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-3-motogp-toprak-razgat-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/09/gng_1346519_hires_1600x900.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-3-can-oncu-cremonada-o-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu hat über seine MotoGP-Debütsaison gesprochen – und die Vergleiche hauen raus.
+Can Öncü in der WorldSSP-Superpole in Cremona – sechster Platz, 0,365 Sekunden hinter der Pole. 🏍️
 
-Der MotoGP-Fahrer hat zugegeben, dass er im ersten Jahr in der Königsklasse hart kämpfen musste. Was ihn dabei am meisten beschäftigt: Die Situation fühlt sich genauso an wie sein Start in die WorldSBK im Jahr 2018 – auch da war er auf vorderen Rängen oft gegen die Wand gefahren. Zwei Karrierestarten, gleiche Erfahrung: oben mitreden wollte, aber erst mal Schluckauf hatte.
+Wie seht ihr den sechsten Platz in der Cremona-Superpole?
 
-Wie schätzt ihr ein, ob Toprak in der MotoGP bald besser zurechtkommt?
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -101,29 +95,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.4
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1095706
-Titel: Plan Your 2027 MotoGP Weekend The 2027 calendar is live. Now choose where you want to watch… and how close you want to get
-Quelle: https://www.motogp.com/en/news/2026/09/28/plan-your-2027-motogp-weekend/1095706
+Artikelalter-Tage: 2.0
+Kategorie: Turkish Riders
+Serie: WorldSSP
+Story-Key: title:jeremy-alcoba-cremona-da-kazand-can-nc-den-anss-z-yar
+Titel: Jeremy Alcoba Cremona'da Kazandı, Can Öncü'den Şanssız Yarış!
+Quelle: https://motoetkinlik.com/jeremy-alcoba-cremonada-kazandi-can-oncuden-sanssiz-yaris
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-4-plan-your-2027-motog-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-4-jeremy-alcoba-cremon-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/can-oncu-yamaha-supersport-most.webp
 Plattformen: Instagram + Facebook
 Text:
-Der offizielle MotoGP-Kalender für 2027 steht.
+Alcoba holt in Cremona den WorldSSP-Sieg – Kawasaki feiert nach drei Jahren mal wieder. 🏁
 
-Wer einzelne Rennwochenenden besuchen möchte, kann sich seine Favoriten zusammensuchen.
+Danach Arenas Zweiter, Farioli Dritter. Und Can Öncü ist im Rennen raus – da hat's einfach gekracht.
 
-Dabei kann man selbst bestimmen, wie nah man an der Strecke dabei sein möchte.
+Wie habt ihr das Öncü-Aus im Rennen aufgenommen?
 
-Wie plant ihr euren Trip durch die MotoGP-Saison?
-
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -131,27 +123,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 2
+Neufassungen: 3
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 0.4
+Artikelalter-Tage: 3.1
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: motogp:1095712
-Titel: Feature 3h ago PEAKS AND TROUGHS: Bulega’s Championship moment, Lecuona’s first hat-trick and more from Cremona All the attention was on Bulega after claiming the 2026 title, but there were other highs and some lows to come from Cremona WorldSBK
-Quelle: https://www.worldsbk.com/en/news/2026/09/28/peaks-and-troughs-bulegas-championship-moment-lecuonas-first-hat-trick-and-more-from-cremona/1095712
+Story-Key: title:cremona-da-fp1-lecuona-n-n-bulega-d-t-ducati-i-lk-alt-y-kapatt
+Titel: Cremona'da FP1 Lecuona'nın, Bulega Düştü, Ducati İlk Altıyı Kapattı!
+Quelle: https://motoetkinlik.com/cremonada-fp1-lecuonanin-bulega-dustu-ducati-ilk-altiyi-kapatti
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-5-feature-3h-ago-peaks-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-5-cremona-da-fp1-lecuo-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/07/iker-lecuona-ducati-superbike.webp
 Plattformen: Instagram + Facebook
 Text:
-Cremona war ein Wochenende voller Emotionen – Bulega sichert sich den Titel und Lecuona feiert seinen ersten Hattrick.
+Lecuona hat in Cremona die Spur offen gehalten – und dann kam der Dämpfer für Bulega.
 
-Die ganze Aufmerksamkeit galt nach dem Rennen natürlich Nicolò Bulega, der sich mit dem Sieg in Cremona den 2026er Titel sicherte. Doch es gab noch eine andere große Geschichte: Iker Lecuona legte einen Hattrick aus drei Rennsiegen vor und hat damit sein erstes Triple der Saison gefeiert. Nicht nur die Höhen, auch einige Rückschläge prägten das Wochenende in der Lombardei.
+Iker Lecuona ging bei WorldSBK FP1 in Cremona als Erster durchs Ziel. Zeit: 1:28.278. Auf Rang zwei lag Nicolo Bulega, aber der schloss die Runde nicht mehr sauber ab und ging am Ende der Session zu Boden. Die Ducati-Fahrer komplettierten immerhin den kompletten Top6.
 
-Wer von beiden euch am meisten überrascht?
+Wie seht ihr die Lage vor dem Sprint – Lecuona im Rausch oder eher Glück bei der Zeit?
 
-#WorldSBK #IkerLecuona #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #NicoloBulega #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

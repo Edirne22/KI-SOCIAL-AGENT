@@ -634,3 +634,23 @@ Quelle: https://www.motogp.com/en/news/2026/09/28/plan-your-2027-motogp-weekend/
 Story-Key: motogp:1095712
 Titel: Feature 3h ago PEAKS AND TROUGHS: Bulega’s Championship moment, Lecuona’s first hat-trick and more from Cremona All the attention was on Bulega after claiming the 2026 title, but there were other highs and some lows to come from Cremona WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/28/peaks-and-troughs-bulegas-championship-moment-lecuonas-first-hat-trick-and-more-from-cremona/1095712
+
+## 2026-09-28 12:59 UTC – ANGEBOTEN
+Story-Key: motogp:10859536
+Titel: Toprak: “2018’de yarış kariyerimi noktalamayı bile düşünmüştüm”
+Quelle: https://tr.motorsport.com/motogp/news/toprak-2018de-yaris-kariyerimi-noktalamayi-bile-dusunmustum/10859536
+
+## 2026-09-28 12:59 UTC – ANGEBOTEN
+Story-Key: motogp:10859765
+Titel: Quartararo, Honda’ya geçişiyle sponsor değiştirmek zorunda kalıyor
+Quelle: https://tr.motorsport.com/motogp/news/quartararo-hondaya-gecisiyle-sponsor-degistirmek-zorunda-kaliyor/10859765
+
+## 2026-09-28 12:59 UTC – ANGEBOTEN
+Story-Key: title:jeremy-alcoba-cremona-da-kazand-can-nc-den-anss-z-yar
+Titel: Jeremy Alcoba Cremona'da Kazandı, Can Öncü'den Şanssız Yarış!
+Quelle: https://motoetkinlik.com/jeremy-alcoba-cremonada-kazandi-can-oncuden-sanssiz-yaris
+
+## 2026-09-28 12:59 UTC – ANGEBOTEN
+Story-Key: title:cremona-da-fp1-lecuona-n-n-bulega-d-t-ducati-i-lk-alt-y-kapatt
+Titel: Cremona'da FP1 Lecuona'nın, Bulega Düştü, Ducati İlk Altıyı Kapattı!
+Quelle: https://motoetkinlik.com/cremonada-fp1-lecuonanin-bulega-dustu-ducati-ilk-altiyi-kapatti

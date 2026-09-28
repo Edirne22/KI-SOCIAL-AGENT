@@ -2100,3 +2100,57 @@ Story-Key: motogp:1095712
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-28 13:58 UTC | Motorcycle Racing | PASS
+Titel: Toprak: “2018’de yarış kariyerimi noktalamayı bile düşünmüştüm”
+Story-Key: motogp:10859536
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 13:58 UTC | Motorcycle Racing | PASS
+Titel: Quartararo, Honda’ya geçişiyle sponsor değiştirmek zorunda kalıyor
+Story-Key: motogp:10859765
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 13:59 UTC | Motorcycle Racing | FAIL
+Titel: WSBK İtalya superpole yarış: Lecuona Cremona’da duble yaptı, Surra ilk WSBK podyumunu aldı!
+Story-Key: motogp:10859544
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 14:01 UTC | Motorcycle Racing | FAIL
+Titel: WSBK İtalya superpole yarış: Lecuona Cremona’da duble yaptı, Surra ilk WSBK podyumunu aldı!
+Story-Key: motogp:10859544
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 14:01 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 14:12 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 14:12 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 14:12 UTC | Motorcycle Racing | PASS
+Titel: Jeremy Alcoba Cremona'da Kazandı, Can Öncü'den Şanssız Yarış!
+Story-Key: title:jeremy-alcoba-cremona-da-kazand-can-nc-den-anss-z-yar
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 14:12 UTC | Motorcycle Racing | PASS
+Titel: Cremona'da FP1 Lecuona'nın, Bulega Düştü, Ducati İlk Altıyı Kapattı!
+Story-Key: title:cremona-da-fp1-lecuona-n-n-bulega-d-t-ducati-i-lk-alt-y-kapatt
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
