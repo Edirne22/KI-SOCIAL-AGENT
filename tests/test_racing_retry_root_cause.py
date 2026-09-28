@@ -35,6 +35,13 @@ def run():
   assert r['hard_ok'] is False and r.get('technical_error') is False,r
   assert any('UNSUPPORTED' in x for x in r['hard_reasons']),r
 
+  from datetime import datetime,timezone
+  now=datetime(2026,9,28,tzinfo=timezone.utc)
+  assert agency.cheap_prefilter_reason('Formula 1 paddock update','https://example.test/f1',now)=='unsupported-discipline'
+  assert agency.cheap_prefilter_reason('MotoGP rider meets F1 driver','https://example.test/motogp-f1',now)==''
+  assert agency.cheap_prefilter_reason('Old MotoGP report','https://example.test/2026/09/01/old',now)=='old-url-date'
+  assert agency.cheap_prefilter_reason('Fresh MotoGP report','https://example.test/2026/09/28/new',now)==''
+
   cfg=get_task_config('racing_semantic_qm')
   assert cfg['timeout_seconds']==12,cfg
   assert cfg['request_max_retries']==0,cfg
