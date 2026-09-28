@@ -1,7 +1,7 @@
 """V8.5.5 runtime hardening for the Racing chain.
 Keeps source facts immutable across feedback loops, constrains editor facts, and separates provider failures from editorial rejects.
 """
-import re,time,json
+import re,threading,time,json
 from racing_final_guard import expected_series
 from racing_language_rules import prompt_contract as racing_lexicon_contract, deterministic_errors as racing_lexicon_errors
 
@@ -98,11 +98,41 @@ def install(a):
         lock(x);base=original_prompt(x,reasons,structure_variant);facts=json.dumps(fact_packet(x),ensure_ascii=False)
         return base+'\n\n'+racing_lexicon_contract('V8.5.5-HARDENING')+'\n\nSOURCE-FACT-WHITELIST (GESCHLOSSEN): '+facts+'\nJede konkrete Person und jede Zahl im Post muss darin bzw. in TITEL/ZUSAMMENFASSUNG vorkommen. Orte, Teams und Hersteller nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG stehen. Nicht belegte Details weglassen, niemals aus Vorwissen ergaenzen.'
 
+    semantic_state={'total':0,'success':0,'technical_defer':0,'degraded_pass':0,'consecutive_failures':0,'breaker_open':False}
+    semantic_lock=threading.Lock()
+    semantic_breaker_threshold=3
+
+    def semantic_runtime_summary():
+        with semantic_lock:
+            s=dict(semantic_state)
+        total=s['total']; degraded=s['degraded_pass']
+        s['degraded_ratio']=round((degraded/total),4) if total else 0.0
+        print('SEMANTIC-QM RUN STATS:',json.dumps(s,sort_keys=True))
+        return s
+
     def semantic_technical_retry(x,caption):
-        # Provider/backoff retries are centralized in llm_client. Semantic QM gets
-        # exactly one provider transaction so technical failures cannot multiply
-        # with editor/priority repair loops.
+        # Runtime guard: one bounded provider chain per candidate. After three
+        # consecutive technical outages, skip further provider waits in this run;
+        # deterministic fact gates remain mandatory and DEGRADED-PASS semantics
+        # stay unchanged.
+        with semantic_lock:
+            semantic_state['total']+=1
+            breaker_open=semantic_state['breaker_open']
+        if breaker_open:
+            with semantic_lock:
+                semantic_state['technical_defer']+=1
+            print('SEMANTIC-QM CIRCUIT OPEN – provider call skipped:',x.get('title','')[:90])
+            return {'hard_ok':False,'language_ok':False,'hard_reasons':['Semantischer Fakten-QM Provider nicht verfuegbar: CircuitBreakerOpen'],'repair_reasons':[],'technical_error':True,'technical_reason':'CircuitBreakerOpen'}
         r=a.semantic_review_detailed(x,caption)
+        with semantic_lock:
+            if r.get('technical_error'):
+                semantic_state['technical_defer']+=1
+                semantic_state['consecutive_failures']+=1
+                if semantic_state['consecutive_failures']>=semantic_breaker_threshold:
+                    semantic_state['breaker_open']=True
+            else:
+                semantic_state['success']+=1
+                semantic_state['consecutive_failures']=0
         if r.get('technical_error'):
             print('SEMANTIC-QM TECHNICAL DEFER:',x.get('title','')[:90],'|',str(r.get('technical_reason','provider'))[:180])
         return r
@@ -136,6 +166,7 @@ def install(a):
                 # Keep it eligible, but mark the semantic gate as degraded so the
                 # final Chief/domain gates still run and the audit trail is explicit.
                 x['technical_qm_deferred']=True
+                with semantic_lock:semantic_state['degraded_pass']+=1
                 x['semantic_qm']='DEGRADED-PASS'
                 x['racing_qm']='PASS'
                 x['rewrite_count']=attempt-1
@@ -166,5 +197,6 @@ def install(a):
 
     a.lock_source_series=lock;a.series_for_raw=series_for;a.series_for=series_for
     a._editor_prompt=prompt;a.fact_whitelist_errors=whitelist_errors;a.qualify_copy=qualify
+    a.semantic_runtime_summary=semantic_runtime_summary
     a.VERSION='V8.5.5'
     return a
