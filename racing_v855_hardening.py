@@ -4,6 +4,7 @@ Keeps source facts immutable across feedback loops, constrains editor facts, and
 import re,threading,time,json
 from racing_final_guard import expected_series
 from racing_event_contract import source_event_contract, session_errors
+from racing_source_claim_guard import claim_strength_errors
 from racing_language_rules import prompt_contract as racing_lexicon_contract, deterministic_errors as racing_lexicon_errors
 
 VALID=('MotoGP','Moto2','Moto3','WorldSBK','WorldSSP','WorldSSP300')
