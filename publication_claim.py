@@ -19,12 +19,25 @@ def _blocks(content,target):
 def _real_media(block,kind):
     return bool(re.search(rf'(?mi)^{kind}:\s*(?!auto\s*$)\S+',block))
 def _schedule_due(block,now=None):
-    m=re.search(r'(?mi)^Geplant-fuer:\s*(.+?)\s* in block or CLAIM_READY in block or CLAIM_ACTIVE in block or not re.search(r'(?mi)^Status:\s*FREIGEGEBEN\s*$',block):return False
-    # Facebook may intentionally be a text/link post. Other formats need resolved media.
+    m=re.search(r'(?mi)^Geplant-fuer:\\s*(.+?)\\s*$',block)
+    if not m:return True
+    raw=m.group(1).strip()
+    try:
+        scheduled=datetime.fromisoformat(raw)
+        if scheduled.tzinfo is None:scheduled=scheduled.replace(tzinfo=BERLIN)
+        current=now or datetime.now(BERLIN)
+        return scheduled.astimezone(timezone.utc)<=current.astimezone(timezone.utc)
+    except ValueError:
+        print(f'Ungueltiger Geplant-fuer-Zeitstempel: {raw!r} – fail closed.')
+        return False
+
+def _is_publishable(block,target,now=None):
+    if not _schedule_due(block,now):return False
+    if '[GEPOSTET' in block or CLAIM_READY in block or CLAIM_ACTIVE in block or not re.search(r'(?mi)^Status:\\s*FREIGEGEBEN\\s*$',block):return False
     if target=='facebook':
-        if not re.search(r'(?ms)^Text:\s*\S+',block):return False
+        if not re.search(r'(?ms)^Text:\\s*\\S+',block):return False
         has_media=_real_media(block,'Bild') or _real_media(block,'Video')
-        has_link=bool(re.search(r'(?mi)^Quelle:\s*https?://\S+',block) and re.search(r'(?mi)^Link-Preview:\s*offiziell\s*$',block))
+        has_link=bool(re.search(r'(?mi)^Quelle:\\s*https?://\\S+',block) and re.search(r'(?mi)^Link-Preview:\\s*offiziell\\s*$',block))
         if not (has_media or has_link):return False
     elif target=='instagram':
         if not _real_media(block,'Bild'):return False
@@ -33,9 +46,9 @@ def _schedule_due(block,now=None):
     elif target=='reel':
         if not _real_media(block,'Video'):return False
     else:
-        images=re.findall(r'(?mi)^\s*-\s*(\S+)',block)
+        images=re.findall(r'(?mi)^\\s*-\\s*(\\S+)',block)
         if len(images)<2:return False
-    if target in {'story','reel'} and re.search(r'(?mi)^Musik:\s*auto\s*$',block):return False
+    if target in {'story','reel'} and re.search(r'(?mi)^Musik:\\s*auto\\s*$',block):return False
     allowed,reason=media_publishable(block)
     if not allowed:print(reason)
     return allowed
