@@ -74,3 +74,22 @@ def test_natural_motorcycle_wording_positive_control():
     caption="Jeremy Alcoba gewinnt auch das zweite Rennen in Cremona. Damit beendet er das Wochenende mit zwei Siegen.\n\n#WorldSSP #JeremyAlcoba #BuelentsBikeLife"
     ok,errors=human_text_review("Motorcycle Racing",item,caption)
     assert not any("Werkswagen" in e or "Duble" in e or "Weekend" in e or "Double-Wochenende" in e for e in errors),errors
+
+
+def test_run139_can_oncu_language_regressions_are_blocked():
+    item={"title":"Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta",
+          "summary":"Can Öncü WorldSSP Superpole'de altıncı oldu."}
+    bad=[
+      "Can Öncü Superpole'de altıncı oldu. Ein enger Schnitt für den nationalen Sportler. Wie seht ihr das?\n\n#WorldSSP #CanOncu #BuelentsBikeLife",
+      "Can Öncü Superpole'de altıncı oldu. Wie einschätzen ihr die Chancen für das Rennen?\n\n#WorldSSP #CanOncu #BuelentsBikeLife",
+    ]
+    for caption in bad:
+        ok,errors=human_text_review("Motorcycle Racing",item,caption)
+        assert not ok,(caption,errors)
+
+def test_run139_natural_can_oncu_wording_positive_control():
+    item={"title":"Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta",
+          "summary":"Can Öncü WorldSSP Superpole'de altıncı oldu."}
+    caption="Can Öncü belegt in der WorldSSP-Superpole in Cremona Platz sechs. Wie schätzt ihr seine Chancen für das Rennen ein?\n\n#WorldSSP #CanOncu #BuelentsBikeLife"
+    ok,errors=human_text_review("Motorcycle Racing",item,caption)
+    assert not any("enger Schnitt" in e or "Nationalitaetsumschreibung" in e or "Community-Frage" in e for e in errors),errors
