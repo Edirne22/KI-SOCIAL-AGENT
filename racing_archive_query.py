@@ -18,7 +18,14 @@ def all_rows():
         for row in data["days"].get(day,[]):
             key=row.get("story_key") or row.get("url")
             if not key or key in seen: continue
-            seen.add(key); x=dict(row); x["_pool_day"]=day; out.append(x)
+            seen.add(key); x=dict(row); x["_pool_day"]=day
+            # Recompute archive display series with the hardened source-aware classifier.
+            detected=agency.series_for_raw(x)
+            if detected=="Unsupported" and agency._unsupported_racing_discipline(x):
+                x["series"]="Karting"
+            elif detected and detected!="Unsupported":
+                x["series"]=detected
+            out.append(x)
     return out
 
 def published(row):
@@ -74,7 +81,8 @@ def show(rows,label,initial_limit=None):
     if not rows:
         send_message("🏁 Racing %s: keine gespeicherten Treffer."%label); return 0
     STATE.parent.mkdir(parents=True,exist_ok=True)
-    visible=rows[:initial_limit] if initial_limit else rows
+    page_limit=10 if initial_limit is None else initial_limit
+    visible=rows[:page_limit]
     STATE.write_text(json.dumps({"label":label,"rows":rows,"offset":len(visible)},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     for off in range(0,len(visible),5):
         lines=["🏁 Racing %s (%d–%d/%d)"%(label,off+1,min(off+5,len(visible)),len(rows)),""]
@@ -83,7 +91,7 @@ def show(rows,label,initial_limit=None):
             lines += ["%d. [%s] %s"%(i,x.get("series","Racing")," ".join(str(x.get("title","")).split())[:180]),status,"🔗 "+x.get("url",""),""]
         if off+5>=len(visible):
             if len(visible)<len(rows): lines += ["Weitere Treffer: mehr · weiter · die nächsten 10"]
-            lines += ["Auswählen: T17 · poste 17 · nimm 17 · racing artikel 17"]
+            lines += ["Sag einfach z. B. „Nimm Nummer 4“ oder „Zeig mir mehr“."]
         send_message("\n".join(lines))
     return len(rows)
 
@@ -161,6 +169,10 @@ def show_more():
         lines += ["%d. [%s] %s"%(i,x.get("series","Racing")," ".join(str(x.get("title","")).split())[:180]),status,"🔗 "+x.get("url",""),""]
     state["offset"]=end
     STATE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    if end<len(rows):
+        lines += ["Sag einfach „Zeig mir mehr“ für die nächsten Treffer."]
+    else:
+        lines += ["Sag einfach z. B. „Nimm Nummer 4“."]
     send_message("\n".join(lines))
     return end-start
 
