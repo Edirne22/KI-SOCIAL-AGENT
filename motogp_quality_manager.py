@@ -2,6 +2,7 @@
 import re
 from racing_language_rules import deterministic_errors as lexicon_errors
 from racing_event_contract import session_errors
+from racing_source_claim_guard import claim_strength_errors
 TURKISH=('toprak razgatlioglu','can oncu','deniz oncu','bahattin sofuoglu','zayn sofuoglu')
 RIDER_NAMES=('Marc Marquez','Alex Marquez','Pedro Acosta','Jorge Martin','Marco Bezzecchi','Fabio Quartararo','Francesco Bagnaia','Toprak Razgatlioglu','Can Oncu','Deniz Oncu','Bahattin Sofuoglu','Zayn Sofuoglu','Brad Binder','Maverick Viñales','Enea Bastianini','Joan Mir','Luca Marini','Alex Rins','Franco Morbidelli','Fabio Di Giannantonio','Fermin Aldeguer','Ai Ogura','Raul Fernandez','Johann Zarco','Diogo Moreira','Pol Espargaro','Nicolo Bulega','Daniel Holgado','Iker Lecuona','Alvaro Bautista','Andrea Iannone','Sam Lowes','Alex Lowes','Jonathan Rea','Stefano Manzi','Jeremy Alcoba','Marcos Ramirez','Sergio Garcia','Alberto Surra')
 RIDERS={re.sub(r'[^a-z0-9]','',n.casefold()):n for n in RIDER_NAMES}
