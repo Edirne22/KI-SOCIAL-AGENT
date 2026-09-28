@@ -114,6 +114,30 @@ def test_uncertainty_preserved_passes():
     check(not claim_strength_errors(x,c),claim_strength_errors(x,c))
     check(final_guard.review(x,c)[0],final_guard.review(x,c)[1])
     print("E2E EXPECTED PASS: uncertainty preserved")
+def _degraded_single_caption_result(item,caption):
+    import importlib
+    import motogp_content_agency_v2 as agency
+    import racing_v855_hardening as hard
+    importlib.reload(agency);importlib.reload(hard).install(agency)
+    old=(agency.german_editor,agency.racing_review,agency.semantic_review_detailed,agency.reanalyse_source)
+    try:
+        agency.german_editor=lambda *a,**kw:caption
+        agency.racing_review=lambda item,cap:(True,[])
+        agency.reanalyse_source=lambda item,*a,**kw:item
+        agency.semantic_review_detailed=lambda item,cap:{"hard_ok":False,"language_ok":False,"hard_reasons":["provider unavailable"],"repair_reasons":[],"technical_error":True,"technical_reason":"ProviderUnavailableError"}
+        return agency.qualify_copy(item),item
+    finally:
+        agency.german_editor,agency.racing_review,agency.semantic_review_detailed,agency.reanalyse_source=old
+def test_probe_degraded_invented_place():
+    x=base("MotoGP: Fermin Aldeguer has surgery","Fermin Aldeguer had surgery before the Japan MotoGP round.","MotoGP")
+    c=post("MotoGP","Fermin Aldeguer wurde in Barcelona operiert.\n\nVor Japan musste er deshalb auf den OP-Tisch.")
+    ok,item=_degraded_single_caption_result(x,c)
+    check(not ok,("PRODUCTION BLIND SPOT: invented place reached DEGRADED-PASS",item))
+def test_probe_degraded_invented_team():
+    x=base("WorldSBK: Iker Lecuona wins","Iker Lecuona wins the WorldSBK race.")
+    c=post("WorldSBK","Iker Lecuona gewinnt für das Phoenix-Werksteam.\n\nDer Sieg fällt deutlich aus.")
+    ok,item=_degraded_single_caption_result(x,c)
+    check(not ok,("PRODUCTION BLIND SPOT: invented team reached DEGRADED-PASS",item))
 def test_degraded_semantic_outage_still_repairs_human_error():
     import importlib
     import motogp_content_agency_v2 as agency
@@ -140,7 +164,7 @@ def test_degraded_semantic_outage_still_repairs_human_error():
         agency.german_editor,agency.racing_review,agency.semantic_review_detailed,agency.reanalyse_source=old
 
 if __name__=="__main__":
-    tests=[test_run137_wrong_session,test_hallucinated_rider_name,test_hallucinated_second_rider,test_wrong_series_hashtag,test_unsupported_series_metadata,test_hallucinated_place_is_semantic_fail_when_available,test_hallucinated_team_boundary,test_run137_rumor_upgrade,test_run137_bad_german,test_fake_number_injected,test_wrong_series_injected,test_clean_realistic_control,test_uncertainty_preserved_passes,test_degraded_semantic_outage_still_repairs_human_error]
+    tests=[test_run137_wrong_session,test_hallucinated_rider_name,test_hallucinated_second_rider,test_wrong_series_hashtag,test_unsupported_series_metadata,test_hallucinated_place_is_semantic_fail_when_available,test_hallucinated_team_boundary,test_run137_rumor_upgrade,test_run137_bad_german,test_fake_number_injected,test_wrong_series_injected,test_clean_realistic_control,test_uncertainty_preserved_passes,test_degraded_semantic_outage_still_repairs_human_error,test_probe_degraded_invented_place,test_probe_degraded_invented_team]
     for t in tests:
         t();print("CONTROLLED E2E PASS:",t.__name__)
-    print("CONTROLLED RACING E2E REGRESSION: 14/14 PASS")
+    print("CONTROLLED RACING E2E REGRESSION: 16/16 PASS")
