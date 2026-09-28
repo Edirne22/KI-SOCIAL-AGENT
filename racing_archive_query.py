@@ -11,6 +11,36 @@ STATE=manual.SELECTION_STATE
 
 def norm(s): return agency.fold(str(s or ""))
 
+def canonical_riders(values):
+    """Resolve spoken rider names only to unambiguous registry entries."""
+    registry=[]
+    for name in list(getattr(agency,"RIDERS_V2",()))+list(getattr(agency,"SHARED_TURKISH_ALIASES",())):
+        if name and name not in registry:
+            registry.append(name)
+    resolved=[]
+    for value in values or []:
+        spoken=norm(value).strip()
+        if not spoken or len(spoken.split())<2:
+            continue
+        exact=[name for name in registry if norm(name)==spoken]
+        if exact:
+            choice=exact[0]
+        else:
+            scored=[]
+            spoken_first=spoken.split()[0]
+            for name in registry:
+                candidate=norm(name)
+                if candidate.split()[0]!=spoken_first:
+                    continue
+                scored.append((SequenceMatcher(None,spoken,candidate).ratio(),name))
+            scored.sort(reverse=True)
+            if not scored or scored[0][0]<0.86 or (len(scored)>1 and scored[0][0]-scored[1][0]<0.08):
+                continue
+            choice=scored[0][1]
+        if choice not in resolved:
+            resolved.append(choice)
+    return resolved
+
 def all_rows():
     data=agency.load_pool(); out=[]; seen=set()
     for day in sorted(data.get("days",{}),reverse=True):
