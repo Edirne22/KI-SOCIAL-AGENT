@@ -2,6 +2,7 @@
 import json,re
 from llm_client import generate,redact_secrets
 from racing_language_rules import prompt_contract as racing_lexicon_contract
+from racing_event_contract import source_event_contract, session_errors
 
 BRAND_HASHTAGS={'#buelentsbikelife'}
 SOURCE_FACT_CONTRACT_VERSION='SOURCE-FACT-CONTRACT-V1'
@@ -67,7 +68,7 @@ def infer_story_series(item):
  return str(item.get('series','')).strip() or 'nicht eindeutig'
 
 def _locked_metadata(item):
- out={}
+ out={'event_session':source_event_contract(item)}
  for key in ('source_series','trusted_series','riders','numbers'):
   value=item.get(key)
   if value not in (None,'',[],{}):out[key]=value
@@ -139,6 +140,9 @@ Antworte NUR JSON:
 {{"contract_version":"SOURCE-FACT-CONTRACT-V1","coverage_complete":true|false,"claims":[{{"claim":"...","claim_type":"FACT|OPINION_QUESTION","status":"SUPPORTED|UNSUPPORTED","source_evidence":[{{"source_field":"title|summary|series|locked_metadata.<key>","quote":"exakter Quelltext"}}]}}],"german_ok":true|false,"style_ok":true|false,"repair_reasons":["..."]}}'''
 
 def review_detailed(item,caption):
+ deterministic=session_errors(item,caption,'Semantic-QM')
+ if deterministic:
+  return {'hard_ok':False,'language_ok':True,'hard_reasons':deterministic,'repair_reasons':[],'claims':[],'coverage_complete':False,'contract_version':SOURCE_FACT_CONTRACT_VERSION,'technical_error':False}
  prompt=_prompt(item,caption);raw=''
  try:
   raw=generate('racing_semantic_qm',prompt)
