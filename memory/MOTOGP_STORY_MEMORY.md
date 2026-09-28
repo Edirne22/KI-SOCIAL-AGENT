@@ -614,3 +614,13 @@ Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
 Story-Key: motogp:1095556
 Titel: REPORT 8h ago NEW CHAMPION: Bulega secures 2026 title with second place, Lecuona completes Cremona hat-trick The #7 rounded out his weekend with a hat-trick but the celebrations belonged to Bulega who was crowned World Champion WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/27/new-champion-bulega-secures-2026-title-with-second-place-lecuona-completes-cremona-hat-trick/1095556
+
+## 2026-09-28 00:08 UTC – ANGEBOTEN
+Story-Key: title:zayn-sofuo-lu-mariembourg-u-kusursuz-kapatt-ampiyonada-6-puanla-farkla-i-kinci
+Titel: Zayn Sofuoğlu Mariembourg'u Kusursuz Kapattı, Şampiyonada 6 Puanla Farkla İkinci
+Quelle: https://motoetkinlik.com/zayn-sofuoglu-mariembourgu-kusursuz-kapatti-sampiyonada-6-puanla-farkla-ikinci
+
+## 2026-09-28 00:08 UTC – ANGEBOTEN
+Story-Key: motogp:1095427
+Titel: NEWS 15h ago Gardner ruled unfit to continue at Cremona The Australian Yamaha rider has been ruled out of competition in Italy as a result of a crash on Friday in FP2 WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/27/gardner-ruled-unfit-to-continue-at-cremona/1095427

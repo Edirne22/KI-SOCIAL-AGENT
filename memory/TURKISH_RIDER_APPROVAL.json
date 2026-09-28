@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "created_at": 1790549870,
+  "created_at": 1790554096,
   "max_days": 10,
   "window_used_days": 10,
   "count": 20,
@@ -31,11 +31,11 @@
     },
     {
       "n": 3,
-      "title": "ALCOBA AT THE FRONT: #52 takes Kawasaki’s first WorldSSP pole since 2021 at Cremona",
+      "title": "REPORT 2d ago ALCOBA AT THE FRONT: #52 takes Kawasaki’s first WorldSSP pole since 2021 at Cremona Championship leader Albert Arenas will start from P2, ahead of title rivals Oncu in P6 and Debise in P8 WorldSSP",
       "url": "https://www.worldsbk.com/en/news/2026/09/25/alcoba-at-the-front-52-takes-kawasakis-first-worldssp-pole-since-2021-at-cremona/1095246",
-      "summary": "Championship leader Albert Arenas will start from P2, ahead of title rivals Oncu in P6 and Debise in P8",
-      "preview": "https://resources.wsbk.pulselive.com/wsbk/photo/2026/09/25/006dbbcc-0fc1-40fa-9768-97cfc535fbba/52923_JDR_R10_2026_Action.JPG",
-      "published_at": "2026-09-25T15:27:53+0000",
+      "summary": "",
+      "preview": "",
+      "published_at": null,
       "series": "WorldSSP",
       "source_series": "WorldSSP",
       "turkish_rider": "Can Öncü",
@@ -211,18 +211,6 @@
     },
     {
       "n": 18,
-      "title": "Zayn Sofuoğlu Bursa'daki Finalde ANLAS MiniGP 110 Şampiyonu Oldu",
-      "url": "https://motoetkinlik.com/zayn-sofuoglu-bursadaki-finalde-anlas-minigp-110-sampiyonu-oldu",
-      "summary": "Zayn Sofuoğlu Bursa'daki final ayağında iki yarışı da kazanarak ANLAS MiniGP 110 şampiyonu oldu. Türkiye Süpermoto 5. ayağında yedi sınıf birden yarıştı.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bursa-supermoto-anlas-minigp-yarisi.webp",
-      "published_at": "2026-09-20T21:51:00+03:00",
-      "series": "Karting",
-      "source_series": "Karting",
-      "turkish_rider": "Zayn Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 19,
       "title": "Toprak Razgatlıoğlu İsyan Etti: \"Sadece Hayatta Kalmaya Çalıştım\"",
       "url": "https://motoetkinlik.com/toprak-razgatlioglu-kariyerimin-en-kotu-ikinci-yarisiydi-diyerek-isyan-etti-sadece-hayatta-kalmaya-calistim",
       "summary": "Avusturya GP pazar yarışında sıfır yol tutuş nedeniyle kabusu yaşayan Toprak Razgatlıoğlu: \"Kariyerimin en kötü ikinci yarışıydı, sadece hayatta kalmaya çalıştım.\"",
@@ -231,6 +219,18 @@
       "series": "MotoGP",
       "source_series": "MotoGP",
       "turkish_rider": "Toprak Razgatlıoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 19,
+      "title": "Zayn Sofuoğlu Bursa'daki Finalde ANLAS MiniGP 110 Şampiyonu Oldu",
+      "url": "https://motoetkinlik.com/zayn-sofuoglu-bursadaki-finalde-anlas-minigp-110-sampiyonu-oldu",
+      "summary": "Zayn Sofuoğlu Bursa'daki final ayağında iki yarışı da kazanarak ANLAS MiniGP 110 şampiyonu oldu. Türkiye Süpermoto 5. ayağında yedi sınıf birden yarıştı.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bursa-supermoto-anlas-minigp-yarisi.webp",
+      "published_at": "2026-09-20T21:51:00+03:00",
+      "series": "Karting",
+      "source_series": "Karting",
+      "turkish_rider": "Zayn Sofuoğlu",
       "kind": "news"
     },
     {
