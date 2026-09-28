@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "created_at": 1790570263,
+  "created_at": 1790588318,
   "max_days": 10,
   "window_used_days": 10,
   "count": 20,
@@ -12,7 +12,7 @@
       "summary": "Temsilcimiz Zayn Sofuoğlu IAME Benelux finalinde pole, iki eleme yarışı ve finali kazandı. Sezonu 836 puanla ikinci bitirdi, şampiyon Bal'ın 6 puan gerisinde.",
       "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/zayn-sofuoglu-iame-series-benelux-03.webp",
       "published_at": "2026-09-27T22:28:57+03:00",
-      "series": "MotoGP",
+      "series": "Unsupported",
       "source_series": "MotoGP",
       "turkish_rider": "Zayn Sofuoğlu",
       "kind": "news"
@@ -22,7 +22,7 @@
       "title": "WSSP Cremona 2. yarış: Alcoba’dan üst üste ikinci zafer, Can Öncü 11., Bahattin Sofuoğlu 21. sırada",
       "url": "https://tr.motorsport.com/supersport/news/wssp-cremona-2-yaris-alcobadan-ust-uste-ikinci-zafer-can-oncu-11-bahattin-sofuoglu-21-sirada/10859593",
       "summary": "Jeremy Alcoba, Cremona'daki ikinci yarışta da ilk sırayı alarak üst üste ikinci galibiyetini elde etti.",
-      "preview": "https://cdn-4.motorsport.com/images/amp/YE9E5PMY/s6/alcoba-wssp.jpg",
+      "preview": "https://cdn-6.motorsport.com/images/amp/YE9E5PMY/s6/alcoba-wssp.jpg",
       "published_at": "2026-09-27T13:00:00Z",
       "series": "WorldSSP",
       "source_series": "WorldSSP",
@@ -72,7 +72,7 @@
       "summary": "IAME Benelux Mariembourg finali 27 Eylül Pazar. Zayn Sofuoğlu 724 puanla ikinci, lider Bal'a fark 42 puan. Mini Rookie seans saatleri TSİ ve güncel puan durumu.",
       "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/961_22082026070559-1.webp",
       "published_at": "2026-09-26T21:57:33+03:00",
-      "series": "Karting",
+      "series": "Unsupported",
       "source_series": "Karting",
       "turkish_rider": "Zayn Sofuoğlu",
       "kind": "news"
@@ -106,7 +106,7 @@
       "title": "WSSP İtalya 1. yarış: Alcoba’dan Cremona’da WSSP zaferi, Can Öncü puansız ayrıldı, Bahattin Sofuoğlu 19. sırada bitirdi!",
       "url": "https://tr.motorsport.com/supersport/news/wssp-italya-1-yaris-alcobadan-cremonada-wssp-zaferi-can-oncu-puansiz-ayrildi-bahattin-sofuoglu-19-s/10859418",
       "summary": "FIM Supersport Dünya Şampiyonası’nın Cremona’daki ilk yarışında Jeremy Alcoba, kariyerinin ilk WorldSSP zaferine ulaşarak önemli bir başarıya imza attı.",
-      "preview": "https://cdn-9.motorsport.com/images/amp/0Zq8vGN6/s6/jeremy.jpg",
+      "preview": "https://cdn-6.motorsport.com/images/amp/0Zq8vGN6/s6/jeremy.jpg",
       "published_at": "2026-09-26T13:00:00Z",
       "series": "WorldSSP",
       "source_series": "WorldSSP",
@@ -139,18 +139,6 @@
     },
     {
       "n": 12,
-      "title": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport’a Dönüyor!",
-      "url": "https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-dunya-supersporta-donuyor-yeni-adresi-qj-motor",
-      "summary": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport'a dönüyor! Motoxracing Yamaha WorldSBK sonrası yeni adresi QJ Motor oldu. Tüm detaylar haberimizde.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bahattin-sofuoglu-QJ-Motor-worldssp.webp",
-      "published_at": "2026-09-21T15:21:06+03:00",
-      "series": "WorldSBK",
-      "source_series": "WorldSBK",
-      "turkish_rider": "Bahattin Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 13,
       "title": "Bahattin Sofuoğlu, Dünya Supersport Şampiyonası'na geçiyor",
       "url": "https://tr.motorsport.com/supersport/news/bahattin-sofuoglu-world-supersport-sampiyonasina-geciyor/10857707",
       "summary": "Motoxracing Yamaha takımı, sürücü değişikliğine gittiğini doğruladı. Bahattin Sofuoğlu QJ Motor takımıyla WSSP'de yarışacak.",
@@ -158,6 +146,18 @@
       "published_at": "2026-09-21T13:40:02Z",
       "series": "WorldSSP",
       "source_series": "WorldSSP",
+      "turkish_rider": "Bahattin Sofuoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 13,
+      "title": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport’a Dönüyor!",
+      "url": "https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-dunya-supersporta-donuyor-yeni-adresi-qj-motor",
+      "summary": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport'a dönüyor! Motoxracing Yamaha WorldSBK sonrası yeni adresi QJ Motor oldu. Tüm detaylar haberimizde.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bahattin-sofuoglu-QJ-Motor-worldssp.webp",
+      "published_at": "2026-09-21T15:21:06+03:00",
+      "series": "WorldSBK",
+      "source_series": "WorldSBK",
       "turkish_rider": "Bahattin Sofuoğlu",
       "kind": "news"
     },
@@ -223,18 +223,6 @@
     },
     {
       "n": 19,
-      "title": "Zayn Sofuoğlu Bursa'daki Finalde ANLAS MiniGP 110 Şampiyonu Oldu",
-      "url": "https://motoetkinlik.com/zayn-sofuoglu-bursadaki-finalde-anlas-minigp-110-sampiyonu-oldu",
-      "summary": "Zayn Sofuoğlu Bursa'daki final ayağında iki yarışı da kazanarak ANLAS MiniGP 110 şampiyonu oldu. Türkiye Süpermoto 5. ayağında yedi sınıf birden yarıştı.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bursa-supermoto-anlas-minigp-yarisi.webp",
-      "published_at": "2026-09-20T21:51:00+03:00",
-      "series": "Karting",
-      "source_series": "Karting",
-      "turkish_rider": "Zayn Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 20,
       "title": "Toprak Razgatlıoğlu, Quartararo ile arasındaki farkı buldu: “Yüzde 10 daha fazla”",
       "url": "https://motoetkinlik.com/toprak-razgatlioglu-quartararo-ile-arasindaki-farki-acikladi-bazi-virajlarda-yuzde-10-daha-fazla",
       "summary": "Milli sporcumuz Toprak Razgatlıoğlu, Avusturya MotoGP’de Fabio Quartararo’nun verilerini inceleyerek viraj çıkışındaki yüzde 10’luk farkı açıkladı.",
@@ -243,6 +231,18 @@
       "series": "MotoGP",
       "source_series": "MotoGP",
       "turkish_rider": "Toprak Razgatlıoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 20,
+      "title": "Zayn Sofuoğlu Bursa'daki Finalde ANLAS MiniGP 110 Şampiyonu Oldu",
+      "url": "https://motoetkinlik.com/zayn-sofuoglu-bursadaki-finalde-anlas-minigp-110-sampiyonu-oldu",
+      "summary": "Zayn Sofuoğlu Bursa'daki final ayağında iki yarışı da kazanarak ANLAS MiniGP 110 şampiyonu oldu. Türkiye Süpermoto 5. ayağında yedi sınıf birden yarıştı.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bursa-supermoto-anlas-minigp-yarisi.webp",
+      "published_at": "2026-09-20T21:51:00+03:00",
+      "series": "Karting",
+      "source_series": "Karting",
+      "turkish_rider": "Zayn Sofuoğlu",
       "kind": "news"
     }
   ]

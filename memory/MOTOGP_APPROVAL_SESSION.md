@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790570263
+Session-Timestamp: 1790588318
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,27 +15,27 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.4
+Artikelalter-Tage: 0.9
 Kategorie: Turkish Riders
-Serie: MotoGP
-Story-Key: title:zayn-sofuo-lu-mariembourg-u-kusursuz-kapatt-ampiyonada-6-puanla-farkla-i-kinci
-Titel: Zayn Sofuoğlu Mariembourg'u Kusursuz Kapattı, Şampiyonada 6 Puanla Farkla İkinci
-Quelle: https://motoetkinlik.com/zayn-sofuoglu-mariembourgu-kusursuz-kapatti-sampiyonada-6-puanla-farkla-ikinci
+Serie: WorldSSP
+Story-Key: motogp:10859593
+Titel: WSSP Cremona 2. yarış: Alcoba’dan üst üste ikinci zafer, Can Öncü 11., Bahattin Sofuoğlu 21. sırada
+Quelle: https://tr.motorsport.com/supersport/news/wssp-cremona-2-yaris-alcobadan-ust-uste-ikinci-zafer-can-oncu-11-bahattin-sofuoglu-21-sirada/10859593
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-1-zayn-sofuoglu-mariem-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/zayn-sofuoglu-iame-series-benelux-03.webp
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-1-wssp-cremona-2-yaris-01.jpg
+Quellen-Preview: https://cdn-6.motorsport.com/images/amp/YE9E5PMY/s6/alcoba-wssp.jpg
 Plattformen: Instagram + Facebook
 Text:
-Zayn Sofuoğlu hat das Saisonfinale in Mariembourg rund gemacht – Pole, beide Lauf-Entscheidungen und der Schlusslauf: alles gewonnen.
+Alcoba zieht in Cremona erneut die Reißleine – zwei Siege in Folge!
 
-Beim IAME Benelux stand unser Zayn mit einem perfekten Rennwochenende da. Über die gesamte Saison sammelte er 836 Punkte – sechs Stück hinter dem neuen Champion Bal. Ein knapper Kampf bis zum letzten Lauf.
+Jeremy Alcoba hat beim zweiten Rennen von WSSP Cremona gewonnen und damit seinen zweiten Sieg am Stück gefeiert. Can Öncü landete auf Platz 11, Bahattin Sofuoğlu kam als 21. ins Ziel.
 
-Wie schätzt ihr die Perspektive für Zayn bei den kommenden Rennen ein?
+Was denkt ihr über Alcobas Form in dieser Saison?
 
-#MotoGP #ZaynSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -46,7 +46,7 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.5
+Artikelalter-Tage: 1.7
 Kategorie: Turkish Riders
 Serie: MotoGP
 Story-Key: title:toprak-razgatl-o-lu-bu-sezon-bana-sbk-daki-i-lk-y-l-m-hat-rlat-yor
@@ -57,11 +57,13 @@ Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-2-t
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/06/toprak-razgatlioglu-kenan-sofuoglu-cekya-gp-brno.webp
 Plattformen: Instagram + Facebook
 Text:
-Bu Sezon Bana SBK'daki İlk Yılımı Hatırlatıyor
+Toprak Razgatlıoğlu vergleicht seine MotoGP-Rookie-Saison mit seinem ersten WorldSBK-Jahr 2018.
 
-Toprak Razgatlıoğlu meint, seine MotoGP-Debütsaison erinnert ihn an seinen ersten WorldSBK-Jahr 2018 – und das war alles andere als leicht. Der türkische Fahrer gab zu, dass er damals sogar damit spielte, den Motorsport ganz an den Nagel zu hängen. 🏍️
+Damals erwog er sogar, das Rennfahren zu beenden.
 
-Wie schätzt ihr Topraks Entwicklung ein – hat er die Hürde aus der Anfangszeit已überwunden oder ist das noch nicht vorbei?
+Sein erster Start in der WorldSBK fand 2018 statt.
+
+Ein offener Blick auf die Challenges, die Profis in neuen Serien durchlaufen.
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -74,7 +76,7 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 1.9
+Artikelalter-Tage: 2.1
 Kategorie: Turkish Riders
 Serie: MotoGP
 Story-Key: motogp:116150
@@ -85,11 +87,11 @@ Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-3-m
 Quellen-Preview: https://trf1.net/wp-content/uploads/2026/09/gng_1346519_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu hat gerade über seine erste MotoGP-Saison gesprochen, und ehrlich gesagt war das bei ihm gleich wie im ersten WorldSBK-Jahr 2018 — er hatte mit der Kawasaki schwer damit zu kämpfen, vorne mitzumischen. Der Mann stand die ganze Zeit unter Druck und hat offen gesagt, dass er 2026 sogar drüber nachgedacht hat, mit dem Rennsport aufzuhören. Jetzt geht's wieder bergauf, aber der Blick zurück zeigt, welch ein Berg das war.
+Toprak Razgatlıoğlu hat über seine MotoGP-Debütsaison gesprochen – und die Vergleiche hauen raus.
 
-Was denkt ihr — war dieser Karrierewendepunkt nötig?
+Der MotoGP-Fahrer hat zugegeben, dass er im ersten Jahr in der Königsklasse hart kämpfen musste. Was ihn dabei am meisten beschäftigt: Die Situation fühlt sich genauso an wie sein Start in die WorldSBK im Jahr 2018 – auch da war er auf vorderen Rängen oft gegen die Wand gefahren. Zwei Karrierestarten, gleiche Erfahrung: oben mitreden wollte, aber erst mal Schluckauf hatte.
 
-Was denkt ihr — war dieser Karrierewendepunkt nötig?
+Wie schätzt ihr ein, ob Toprak in der MotoGP bald besser zurechtkommt?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -99,25 +101,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 2.4
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
-Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
-Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
+Artikelalter-Tage: 0.4
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1095706
+Titel: Plan Your 2027 MotoGP Weekend The 2027 calendar is live. Now choose where you want to watch… and how close you want to get
+Quelle: https://www.motogp.com/en/news/2026/09/28/plan-your-2027-motogp-weekend/1095706
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-4-can-oncu-cremonada-o-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-4-plan-your-2027-motog-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Can Öncü hat in Cremona die WorldSSP-Superpole auf Rang sechs beendet – und lag nur 0,365 Sekunden vom Pole entfernt. Das ist haarsträubend knapp für die erste Reihe.
+Der offizielle MotoGP-Kalender für 2027 steht.
 
-Was denkt ihr, kann Can das im Rennen auf der Strecke in Cremona mitnehmen?
+Wer einzelne Rennwochenenden besuchen möchte, kann sich seine Favoriten zusammensuchen.
 
-#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Dabei kann man selbst bestimmen, wie nah man an der Strecke dabei sein möchte.
+
+Wie plant ihr euren Trip durch die MotoGP-Saison?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -126,26 +132,26 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 2.5
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: motogp:10859078
-Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
-Quelle: https://tr.motorsport.com/supersport/news/wssp-superpole-italya-alcoba-cremonada-kawasaki-2021den-sonra-ilk-kez-zirvede-can-oncu-6-sirada-bit/10859078
+Artikelalter-Tage: 0.4
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1095712
+Titel: Feature 3h ago PEAKS AND TROUGHS: Bulega’s Championship moment, Lecuona’s first hat-trick and more from Cremona All the attention was on Bulega after claiming the 2026 title, but there were other highs and some lows to come from Cremona WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/28/peaks-and-troughs-bulegas-championship-moment-lecuonas-first-hat-trick-and-more-from-cremona/1095712
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-5-wssp-superpole-italy-01.jpg
-Quellen-Preview: https://cdn-8.motorsport.com/images/amp/0R7BJNB2/s6/can-oncu-aragon.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-5-feature-3h-ago-peaks-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba holt für Kawasaki die WorldSSP-Superpole in Cremona!
+Cremona war ein Wochenende voller Emotionen – Bulega sichert sich den Titel und Lecuona feiert seinen ersten Hattrick.
 
-Damit steht Kawasaki in der Supersport-Klasse zum ersten Mal seit 2021 wieder ganz oben. Can Öncü beendete die Session in Italien auf dem sechsten Platz.
+Die ganze Aufmerksamkeit galt nach dem Rennen natürlich Nicolò Bulega, der sich mit dem Sieg in Cremona den 2026er Titel sicherte. Doch es gab noch eine andere große Geschichte: Iker Lecuona legte einen Hattrick aus drei Rennsiegen vor und hat damit sein erstes Triple der Saison gefeiert. Nicht nur die Höhen, auch einige Rückschläge prägten das Wochenende in der Lombardei.
 
-Wie schätzt ihr das Ergebnis von Alcoba und Öncü ein?
+Wer von beiden euch am meisten überrascht?
 
-#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #IkerLecuona #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

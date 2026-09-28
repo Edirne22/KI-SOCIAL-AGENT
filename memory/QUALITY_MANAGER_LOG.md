@@ -2058,3 +2058,45 @@ Story-Key: motogp:10859078
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-28 09:57 UTC | Motorcycle Racing | PASS
+Titel: WSSP Cremona 2. yarış: Alcoba’dan üst üste ikinci zafer, Can Öncü 11., Bahattin Sofuoğlu 21. sırada
+Story-Key: motogp:10859593
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 09:57 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu: “Bu Sezon Bana SBK'daki İlk Yılımı Hatırlatıyor”
+Story-Key: title:toprak-razgatl-o-lu-bu-sezon-bana-sbk-daki-i-lk-y-l-m-hat-rlat-yor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 09:57 UTC | Motorcycle Racing | FAIL
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: Sprach-QM FAIL: möglicher Namens-Tippfehler Türke (Quelle: Türk); Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 10:02 UTC | Motorcycle Racing | PASS
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 10:02 UTC | Motorcycle Racing | PASS
+Titel: Plan Your 2027 MotoGP Weekend The 2027 calendar is live. Now choose where you want to watch… and how close you want to get
+Story-Key: motogp:1095706
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 10:02 UTC | Motorcycle Racing | FAIL
+Titel: Feature 3h ago PEAKS AND TROUGHS: Bulega’s Championship moment, Lecuona’s first hat-trick and more from Cremona All the attention was on Bulega after claiming the 2026 title, but there were other highs and some lows to come from Cremona WorldSBK
+Story-Key: motogp:1095712
+Gründe: Struktur-QM FAIL: mindestens 2 Sätze erforderlich
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 10:03 UTC | Motorcycle Racing | PASS
+Titel: Feature 3h ago PEAKS AND TROUGHS: Bulega’s Championship moment, Lecuona’s first hat-trick and more from Cremona All the attention was on Bulega after claiming the 2026 title, but there were other highs and some lows to come from Cremona WorldSBK
+Story-Key: motogp:1095712
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

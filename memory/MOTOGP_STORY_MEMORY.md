@@ -624,3 +624,13 @@ Quelle: https://motoetkinlik.com/zayn-sofuoglu-mariembourgu-kusursuz-kapatti-sam
 Story-Key: motogp:1095427
 Titel: NEWS 15h ago Gardner ruled unfit to continue at Cremona The Australian Yamaha rider has been ruled out of competition in Italy as a result of a crash on Friday in FP2 WorldSBK
 Quelle: https://www.worldsbk.com/en/news/2026/09/27/gardner-ruled-unfit-to-continue-at-cremona/1095427
+
+## 2026-09-28 09:38 UTC – ANGEBOTEN
+Story-Key: motogp:1095706
+Titel: Plan Your 2027 MotoGP Weekend The 2027 calendar is live. Now choose where you want to watch… and how close you want to get
+Quelle: https://www.motogp.com/en/news/2026/09/28/plan-your-2027-motogp-weekend/1095706
+
+## 2026-09-28 09:38 UTC – ANGEBOTEN
+Story-Key: motogp:1095712
+Titel: Feature 3h ago PEAKS AND TROUGHS: Bulega’s Championship moment, Lecuona’s first hat-trick and more from Cremona All the attention was on Bulega after claiming the 2026 title, but there were other highs and some lows to come from Cremona WorldSBK
+Quelle: https://www.worldsbk.com/en/news/2026/09/28/peaks-and-troughs-bulegas-championship-moment-lecuonas-first-hat-trick-and-more-from-cremona/1095712
