@@ -57,7 +57,7 @@ def query(text):
     if turkish:
         rows=[x for x in rows if x.get("turkish_rider") or agency.detect_turkish_rider(x)]; label+=" · türkische Rider"
     named=[]
-    registry=list(getattr(agency,"RIDER_NAMES",()))+list(getattr(agency,"SHARED_TURKISH_ALIASES",()))
+    registry=list(getattr(agency,"RIDERS_V2",()))+list(getattr(agency,"SHARED_TURKISH_ALIASES",()))
     for rider in registry:
         if norm(rider) in low and rider not in named: named.append(rider)
     if named:
@@ -67,7 +67,7 @@ def query(text):
 
 def is_query(text):
     low=norm(text)
-    return bool(any(k in low for k in ("gestern","vorgestern","stunden","tag","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig","liste","ungepostet","gepostet","tuerk","turk","türk","motogp","moto2","moto3","worldsbk","worldssp","wsbk","wssp")) or any(norm(r) in low for r in list(getattr(agency,"RIDER_NAMES",()))+list(getattr(agency,"SHARED_TURKISH_ALIASES",()))))
+    return bool(any(k in low for k in ("gestern","vorgestern","stunden","tag","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig","liste","ungepostet","gepostet","tuerk","turk","türk","motogp","moto2","moto3","worldsbk","worldssp","wsbk","wssp")) or any(norm(r) in low for r in list(getattr(agency,"RIDERS_V2",()))+list(getattr(agency,"SHARED_TURKISH_ALIASES",()))))
 
 def show(rows,label):
     if not rows:
