@@ -7,7 +7,7 @@ a caption from using definitive future/transfer wording when the immutable sourc
 """
 import re,unicodedata
 
-VERSION="RACING-SOURCE-CLAIM-GUARD-V1.1"
+VERSION="RACING-SOURCE-CLAIM-GUARD-V1.2"
 
 def fold(value):
     s=unicodedata.normalize("NFKD",str(value or "")).casefold().replace("ı","i")
@@ -53,14 +53,13 @@ def source_has_uncertainty(item):
 
 def source_has_definitive_confirmation(item):
     title=fold(str(item.get("title","")))
-    # Run #138 invariant: an explicitly uncertain RAW title is the certainty
-    # ceiling.  An LLM/generated summary must never upgrade "strong signal"
-    # into "confirmed" and thereby license a definitive caption.
+    # The raw/source title is the certainty ceiling. Generated or refreshed
+    # summaries are useful context but may never license a stronger future/
+    # transfer claim. Definitive wording therefore requires an explicit
+    # confirmation marker in the title itself.
     if _any(_UNCERTAIN,title):
         return False
-    src=source_text(item)
-    # Explicit negation must not be mistaken for confirmation.
-    cleaned=re.sub(r"\bnot (?:yet )?(?:officially )?confirmed\b"," ",src)
+    cleaned=re.sub(r"\bnot (?:yet )?(?:officially )?confirmed\b"," ",title)
     cleaned=re.sub(r"\bresmen (?:henuz )?dogrulanmadi\b"," ",cleaned)
     return _any(_SOURCE_DEFINITIVE,cleaned)
 
