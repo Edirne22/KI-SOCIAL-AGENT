@@ -1,6 +1,8 @@
 """Natural-language Telegram query layer for the Racing archive."""
 from __future__ import annotations
-import json,re\nfrom difflib import SequenceMatcher\nfrom datetime import datetime,timezone,timedelta
+import json,re
+from difflib import SequenceMatcher
+from datetime import datetime,timezone,timedelta
 from pathlib import Path
 from telegram_bot import send_message
 import motogp_content_agency_v2 as agency
