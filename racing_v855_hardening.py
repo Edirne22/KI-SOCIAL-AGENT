@@ -42,6 +42,9 @@ def install(a):
         return x
 
     def series_for(x):
+        source=a.fold(' '.join((str(x.get('title','')),str(x.get('summary','')),str(x.get('url','')))))
+        if re.search(r'(?<![a-z0-9])(?:karting|kart|iame)(?![a-z0-9])',source):
+            return 'Unsupported'
         inferred=expected_series(x)
         if inferred in UNSUPPORTED:
             lock(x)

@@ -71,6 +71,35 @@ def test_semantic_provider_failure_degraded_pass():
     finally:
       agency.german_editor,agency.racing_review,agency.semantic_review_detailed,agency.language_sane=old_editor,old_review,old_sem,old_sane
 
+def test_stage3_blocks_cjk_duplicate_cta_and_karting_series_leak():
+    from chief_quality_manager import human_text_review
+    item={"series":"MotoGP","title":"Toprak rookie season","summary":"Toprak compares the season with 2018."}
+    cjk="Toprak blickt auf seine Saison zurück. Hat er die Hürde 已überwunden?\n\n#MotoGP #Toprak #BuelentsBikeLife"
+    ok,errs=human_text_review("Motorcycle Racing",item,cjk)
+    assert not ok and any("CJK" in e for e in errs),errs
+
+    duplicate=("Toprak blickt auf seine Saison zurück.\n\nWas denkt ihr — war dieser Karrierewendepunkt nötig?\n\n"
+               "Was denkt ihr — war dieser Karrierewendepunkt nötig?\n\n#MotoGP #Toprak #BuelentsBikeLife")
+    ok,errs=human_text_review("Motorcycle Racing",item,duplicate)
+    assert not ok and any("doppelt" in e for e in errs),errs
+
+    kart={"series":"MotoGP","source_series":"MotoGP","series_locked":True,
+          "title":"Zayn Sofuoğlu Mariembourg IAME Benelux karting final","summary":"IAME Benelux karting event."}
+    assert agency._unsupported_racing_discipline(kart) is True
+    assert agency.racing_relevant(kart) is False
+
+
+def test_stage3_time_claim_cannot_invent_2026_from_2018_source():
+    install(agency)
+    item={"series":"MotoGP","source_series":"MotoGP","trusted_series":"MotoGP","series_locked":True,
+          "title":"Toprak compares difficult MotoGP rookie season with 2018 WorldSBK start",
+          "summary":"In 2018 he thought about stopping racing before a podium changed things."}
+    bad=("Toprak dachte 2026 darüber nach, mit dem Rennsport aufzuhören. "
+         "2018 begann seine WorldSBK-Zeit.\n\n#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife")
+    errs=agency.fact_whitelist_errors(item,bad)
+    assert any("2026" in e for e in errs),errs
+
+
 if __name__=="__main__":
- test_opinion_question_not_hard_fail();test_unsupported_fact_still_fails();test_decimal_separator_equivalence();test_semantic_provider_failure_degraded_pass()
+ test_opinion_question_not_hard_fail();test_unsupported_fact_still_fails();test_decimal_separator_equivalence();test_semantic_provider_failure_degraded_pass();test_stage3_blocks_cjk_duplicate_cta_and_karting_series_leak();test_stage3_time_claim_cannot_invent_2026_from_2018_source()
  print("BALANCED RACING QM REGRESSION: PASS")
