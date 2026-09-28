@@ -12,7 +12,7 @@ on:
       - "motogp_content_agency_v2.py"
       - "config/model_router.json"
       - "tests/test_racing_retry_root_cause.py"
-      - "tests/test_racing_event_session_contract.py tests/test_racing_source_claim_strength.py"
+      - "tests/test_racing_event_session_contract.py"
       - "tests/test_racing_source_claim_strength.py"
       - ".github/workflows/test-racing-retry-root-cause.yml"
 jobs:
