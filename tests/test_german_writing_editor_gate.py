@@ -35,3 +35,17 @@ def test_clean_world_champion_sentence_passes_new_language_checks():
     caption = "Mit Platz zwei in Cremona sichert sich Bulega den WorldSBK-Weltmeistertitel 2026. Damit steht der neue Weltmeister fest.\n\n#WorldSBK #NicoloBulega #BuelentsBikeLife"
     ok, errors = human_text_review("Motorcycle Racing", item, caption)
     assert not any("Namens-Tippfehler" in e or "Weltmeister-Formulierung" in e or "Titel-/Serien-Wortstellung" in e for e in errors), errors
+
+
+def test_run137_vor_dem_renne_is_blocked():
+    item={"title":"Fermin Aldeguer Japonya MotoGP Öncesi Ameliyat Oldu","summary":"Aldeguer had surgery before the Japan MotoGP round."}
+    caption="Fermin Aldeguer musste kurz vor Japan operiert werden. So kurz vor dem Renne auf den OP-Tisch – wie seht ihr das?\n\n#MotoGP #FerminAldeguer #BuelentsBikeLife"
+    ok,errors=human_text_review("Motorcycle Racing",item,caption)
+    assert not ok
+    assert any("vor dem Renne" in e for e in errors),errors
+
+def test_correct_vor_dem_rennen_is_allowed():
+    item={"title":"Fermin Aldeguer Japonya MotoGP Öncesi Ameliyat Oldu","summary":"Aldeguer had surgery before the Japan MotoGP round."}
+    caption="Fermin Aldeguer musste kurz vor Japan operiert werden. So kurz vor dem Rennen auf den OP-Tisch – wie seht ihr das?\n\n#MotoGP #FerminAldeguer #BuelentsBikeLife"
+    ok,errors=human_text_review("Motorcycle Racing",item,caption)
+    assert not any("vor dem Renne" in e for e in errors),errors

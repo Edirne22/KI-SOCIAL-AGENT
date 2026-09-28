@@ -167,6 +167,16 @@ def install(a):
                 print('RACING-QM HARD REJECT after feedback loop:',x.get('title','')[:90],'|','; '.join(r_err)[:600]);break
             sem=semantic_technical_retry(x,x['caption'])
             if sem.get('technical_error'):
+                # DEGRADED-PASS may bypass only the unavailable semantic provider,
+                # never deterministic German/Human-Writing quality.
+                if not a.language_sane(x['caption']):
+                    if attempt<max_attempts:repair=['Deutsch/PR-/KI-Sprech deterministisch bereinigen'];continue
+                    break
+                from chief_quality_manager import human_text_review
+                human_ok,human_err=human_text_review('Motorcycle Racing',x,x['caption'])
+                if not human_ok:
+                    if attempt<max_attempts:repair=['Finales Human-Writing-Gate: '+e for e in human_err];print(f'HUMAN-GATE DEGRADED → EDITOR retry={attempt}:',x.get('title','')[:90]);continue
+                    print('HUMAN-GATE DEGRADED FINAL REJECT:',x.get('title','')[:90],'|','; '.join(human_err)[:600]);break
                 # A provider/JSON outage is not a factual rejection. The candidate
                 # has already passed deterministic source whitelist + Racing-QM.
                 # Keep it eligible, but mark the semantic gate as degraded so the
