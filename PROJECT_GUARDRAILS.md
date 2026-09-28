@@ -80,7 +80,7 @@ Bekannte Fallklassen umfassen u. a.:
 - Semantic-Ausfall + DEGRADED-PASS
 - Run #138: unsicherer Roh-Titel („starkes Signal“) darf durch ein generiertes Summary nicht zu „bestätigt“ hochgestuft werden
 - Run #138: Motorrad-Racing darf nicht „Werkswagen“ verwenden
-- Run #138: unnatürliche Übersetzungsartefakte wie „Duble“, „Weekend ... erledigt“ und „Double-Wochenende“ müssen ins Human-Writing-Retry
+- Run #138: unnatürliche Übersetzungsartefakte wie „Duble“, „Weekend ... erledigt“ und „Double-Wochenende“ müssen ins Human-Writing-Retry\n- Run #139: ein generiertes/aktualisiertes Summary darf einen Zukunfts-/Transfer-Titel ohne expliziten Bestätigungsmarker nicht zu einer definitiven Aussage hochstufen\n- Run #139: „Ein enger Schnitt für den nationalen Sportler“ und grammatisch falsche CTA wie „Wie einschätzen ihr ...?“ müssen ins Human-Writing-Retry
 
 ## 5. Source-Provenance / Wahrheitsprinzip
 
