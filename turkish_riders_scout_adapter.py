@@ -3,6 +3,8 @@ from turkish_riders_scout import *  # noqa: F401,F403
 import turkish_riders_scout as _legacy
 from motoetkinlik_source import discover_news, reference_snapshots
 
+_EDITORIAL_DISCOVERY_URLS=set()
+
 def turkish_web_scout(limit_per_source=120):
     rows=[];seen=set()
     for row in discover_news(limit_per_endpoint=min(limit_per_source,120)):
@@ -23,6 +25,13 @@ def turkish_web_scout(limit_per_source=120):
                 seen.add(item[1]);rows.append(item)
     finally:
         _legacy.TURKISH_WEB_SOURCES=original
+    round2={row[1] for row in rows}
+    if _EDITORIAL_DISCOVERY_URLS:
+        only2=round2-_EDITORIAL_DISCOVERY_URLS
+        overlap=round2&_EDITORIAL_DISCOVERY_URLS
+        print(f"DISCOVERY-COMPARE round1={len(_EDITORIAL_DISCOVERY_URLS)} round2={len(round2)} overlap={len(overlap)} only_round2={len(only2)}")
+        if only2:
+            print("DISCOVERY-COMPARE only_round2_urls="+str(sorted(only2)[:20]))
     print(f"TURKISH WEB SCOUT + MOTOETKINLIK ADAPTER: {len(rows)} registered-rider candidates")
     return rows
 
@@ -53,5 +62,8 @@ def racing_editorial_scout(limit_per_source=120):
             if _legacy.racing_relevance(title+" "+url)<=0:
                 continue
             seen.add(url);rows.append((title,url,series if series in valid else "",source))
+    global _EDITORIAL_DISCOVERY_URLS
+    _EDITORIAL_DISCOVERY_URLS={row[1] for row in rows}
     print(f"RACING EDITORIAL SCOUT: {len(rows)} general candidates")
+    print(f"DISCOVERY-SNAPSHOT round1_unique_urls={len(_EDITORIAL_DISCOVERY_URLS)}")
     return rows
