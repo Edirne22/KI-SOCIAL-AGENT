@@ -22,21 +22,24 @@ def canonical_riders(values):
     resolved=[]
     for value in values or []:
         spoken=norm(value).strip()
-        if not spoken or len(spoken.split())<2:
+        compact=re.sub(r"[^a-z0-9]","",spoken)
+        if not compact or compact=="can":
             continue
-        exact=[name for name in registry if norm(name)==spoken]
+        exact=[name for name in registry if re.sub(r"[^a-z0-9]","",norm(name))==compact]
         if exact:
             choice=exact[0]
         else:
             scored=[]
-            spoken_first=spoken.split()[0]
+            spoken_first=spoken.split()[0] if spoken.split() else ""
             for name in registry:
                 candidate=norm(name)
-                if candidate.split()[0]!=spoken_first:
+                candidate_compact=re.sub(r"[^a-z0-9]","",candidate)
+                # For two-token speech keep first-name affinity; compact speech such as aiogura is handled above.
+                if " " in spoken and candidate.split()[0]!=spoken_first:
                     continue
-                scored.append((SequenceMatcher(None,spoken,candidate).ratio(),name))
+                scored.append((SequenceMatcher(None,compact,candidate_compact).ratio(),name))
             scored.sort(reverse=True)
-            if not scored or scored[0][0]<0.86 or (len(scored)>1 and scored[0][0]-scored[1][0]<0.08):
+            if not scored or scored[0][0]<0.74 or (len(scored)>1 and scored[0][0]-scored[1][0]<0.08):
                 continue
             choice=scored[0][1]
         if choice not in resolved:
@@ -148,7 +151,8 @@ Nachricht: """+str(text)
 
 def query_intent(intent):
     rows=all_rows(); label="Archiv"
-    riders=canonical_riders(intent.get("riders",[]))
+    requested_riders=[str(x) for x in intent.get("riders",[]) if str(x).strip()]
+    riders=canonical_riders(requested_riders)
     nationality=norm(intent.get("nationality",""))
     series=[str(x) for x in intent.get("series",[]) if str(x).strip()]
     now=datetime.now(timezone.utc)
@@ -168,6 +172,9 @@ def query_intent(intent):
         rows=[x for x in rows if x.get("turkish_rider") or agency.detect_turkish_rider(x)]; label+=" · türkische Rider"
     if series:
         wanted={norm(x) for x in series}; rows=[x for x in rows if norm(x.get("series","")) in wanted]; label+=" · "+", ".join(series)
+    if requested_riders and not riders:
+        # Fail closed: an explicit rider request must never degrade into an unfiltered archive dump.
+        return [], label+" · "+", ".join(requested_riders)
     if riders:
         wanted=[norm(x) for x in riders]
         rows=[x for x in rows if any(r in norm(" ".join((x.get("title",""),x.get("summary",""),x.get("turkish_rider","")))) for r in wanted)]
