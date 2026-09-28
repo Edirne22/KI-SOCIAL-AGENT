@@ -112,12 +112,68 @@ def test_contract_rejects_missing_coverage_and_fake_evidence():
         pass
 
 
+def test_stage2_diagnostics_classify_validator_and_json_failures():
+    item = {"series": "MotoGP", "title": "Toprak test title", "summary": "Toprak test summary"}
+    base = {"contract_version": "SOURCE-FACT-CONTRACT-V1", "coverage_complete": True,
+            "claims": [{"claim": "Toprak test title", "claim_type": "FACT", "status": "SUPPORTED",
+                        "source_evidence": [{"source_field": "title", "quote": "Toprak test title"}]}],
+            "german_ok": True, "style_ok": True, "repair_reasons": []}
+    cases = [
+        ("contract_version", dict(base, contract_version="bad")),
+        ("coverage", dict(base, coverage_complete=False)),
+        ("claims", dict(base, claims=[])),
+    ]
+    for stage, payload in cases:
+        old = semantic.generate
+        try:
+            semantic.generate = lambda task, prompt, p=payload: json.dumps(p)
+            result = semantic.review_detailed(item, "Toprak test title")
+        finally:
+            semantic.generate = old
+        assert result["technical_error"] is True
+        assert result["technical_stage"] == stage
+
+    bad_evidence = json.loads(json.dumps(base))
+    bad_evidence["claims"][0]["source_evidence"][0]["quote"] = "not in source"
+    old = semantic.generate
+    try:
+        semantic.generate = lambda task, prompt: json.dumps(bad_evidence)
+        result = semantic.review_detailed(item, "Toprak test title")
+    finally:
+        semantic.generate = old
+    assert result["technical_stage"] == "evidence"
+
+    old = semantic.generate
+    try:
+        semantic.generate = lambda task, prompt: '{"contract_version":"SOURCE-FACT-CONTRACT-V1","claims":['
+        result = semantic.review_detailed(item, "Toprak test title")
+    finally:
+        semantic.generate = old
+    assert result["technical_reason"] == "JSONDecodeError"
+    assert result["technical_stage"] == "json_parse"
+    assert len(result["response_diagnostic"]) <= 240
+
+
+def test_stage2_json_recovery_and_diagnostic_redaction():
+    payload = {"contract_version": "SOURCE-FACT-CONTRACT-V1", "coverage_complete": True,
+               "claims": [{"claim": "Toprak test title", "claim_type": "FACT", "status": "SUPPORTED",
+                           "source_evidence": [{"source_field": "title", "quote": "Toprak test title"}]}],
+               "german_ok": True, "style_ok": True, "repair_reasons": []}
+    recovered = semantic._clean_json("Provider prose\n" + json.dumps(payload) + "\ntrailing prose")
+    assert recovered["coverage_complete"] is True
+    diagnostic = semantic._diag_response("line1\nline2 sk-" + "A"*30)
+    assert "\n" not in diagnostic
+    assert "sk-" + "A"*30 not in diagnostic
+
+
 def main():
     test_contract_shape_and_fail_closed_rule()
     test_valencia_real_pipeline_fixture_is_fail()
     test_bulega_real_pipeline_fixture_is_fail_closed_on_added_specificity()
     test_worldssp_real_pipeline_fixture_is_pass()
     test_contract_rejects_missing_coverage_and_fake_evidence()
+    test_stage2_diagnostics_classify_validator_and_json_failures()
+    test_stage2_json_recovery_and_diagnostic_redaction()
     print("SOURCE-FACT-CONTRACT-V1 PRODUCTION SEMANTIC-QM: PASS")
 
 
