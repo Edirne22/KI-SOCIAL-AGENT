@@ -43,9 +43,17 @@ def canonical_riders(values):
                     continue
                 scored.append((SequenceMatcher(None,compact,candidate_compact).ratio(),name))
             scored.sort(reverse=True)
-            if not scored or scored[0][0]<0.74 or (len(scored)>1 and scored[0][0]-scored[1][0]<0.08):
+            if not scored:
                 continue
-            choice=scored[0][1]
+            best_score,best_name=scored[0]
+            second_score=scored[1][0] if len(scored)>1 else 0.0
+            # Spoken full names with an exact first name may contain a badly transcribed surname
+            # (live case: Alex Renz -> Alex Rins). Accept only a unique registry candidate.
+            exact_first=(" " in spoken and norm(best_name).split()[0]==spoken_first)
+            min_score=0.70 if exact_first else 0.82
+            if best_score<min_score or (len(scored)>1 and best_score-second_score<0.08):
+                continue
+            choice=best_name
         if choice not in resolved:
             resolved.append(choice)
     return resolved
