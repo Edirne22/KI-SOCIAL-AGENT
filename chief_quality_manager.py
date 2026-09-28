@@ -50,7 +50,7 @@ def _german_sentence_errors(caption):
  low=_fold(_editorial_text(caption))
  patterns=((r'\bweltmeister\s+20\d{2}\s+(?:motogp|worldsbk|worldssp)\s+(?:fest|steht)\b','unidiomatische Titel-/Serien-Wortstellung'),(r'\bsteht\s+mit\s+platz\s+\w+\s+(?:plotzlich\s+)?als\s+weltmeister\b', 'unidiomatische Weltmeister-Formulierung'),(r'\bvor\s+dem\s+renne\b','falsche Dativform vor dem Renne'))
  errors=['Sprach-QM FAIL: '+label for pattern,label in patterns if re.search(pattern,low)]
- if 'vor dem renne' in low:errors.append('Sprach-QM FAIL: falsche Dativform vor dem Renne')
+ if re.search(r'\\bvor dem renne\\b',low):errors.append('Sprach-QM FAIL: falsche Dativform vor dem Renne')
  return errors
 
 def _foreign_script_errors(caption):
