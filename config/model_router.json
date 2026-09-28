@@ -35,7 +35,7 @@
   "tasks": {
     "content_ideas": { "provider": "gemini", "response_type": "text" },
     "final_captions": { "provider": "agnes", "primary": "agnes", "fallback": ["gemini", "nvidia"], "response_type": "text" },
-    "racing_semantic_qm": { "provider": "agnes", "primary": "agnes", "fallback": ["gemini", "nvidia"], "response_type": "text", "timeout_seconds": 12, "request_max_retries": 0 },
+    "racing_semantic_qm": { "provider": "agnes", "primary": "agnes", "fallback": ["gemini", "nvidia"], "response_type": "text", "timeout_seconds": 12, "request_max_retries": 0, "text_model_limit": 1 },
     "image_generation": { "provider": "agnes", "response_type": "image" },
     "video_generation": { "provider": "agnes", "response_type": "video" },
     "research": { "provider": "gemini", "response_type": "text" },
