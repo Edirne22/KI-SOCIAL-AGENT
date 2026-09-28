@@ -45,6 +45,32 @@ def test_hard_fact_still_fail_closed():
 def test_series_and_hashtags():
  cases=[({'title':'Agius fastest in Moto2 Practice','summary':'Moto2 Practice at Misano','url':'https://www.motogp.com/en/news/2026/09/15/a'},'Moto2','#Moto2'),({'title':'Quiles takes Moto3 pole','summary':'Moto3 qualifying','url':'https://www.motogp.com/en/news/2026/09/15/b'},'Moto3','#Moto3'),({'title':'Brad Binder MotoGP update','summary':'Binder in MotoGP','url':'https://example.com/2026/09/15/c'},'MotoGP','#MotoGP')]
  for item,series,tag in cases:ok(a.series_for(item)==series,f'{item["title"]} -> {a.series_for(item)}');ok(tag in a.hashtags(item),f'missing {tag}')
+def test_targeted_hashtag_repair_reruns_racing_qm_without_research():
+ calls={'editor':0,'racing':0,'semantic':0,'research':0};old=(a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source)
+ try:
+  def editor(x,reasons=None):
+   calls['editor']+=1
+   return 'Toprak fährt MotoGP.\n\nWie seht ihr das?\n\n#MotoGP #ToprakRazgatlioglu'
+  def racing(x,c):
+   calls['racing']+=1
+   tags=[t for t in c.split() if t.startswith('#')]
+   return (len(tags)>=4,[] if len(tags)>=4 else ['Hashtag-Anzahl nicht 4–7'])
+  def semantic(x,c):calls['semantic']+=1;return sem_result(True,True)
+  def research(x,reasons):calls['research']+=1;return x
+  a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source=editor,racing,semantic,research
+  x={'title':'Toprak Razgatlioglu MotoGP update','summary':'Toprak Razgatlioglu MotoGP','series':'MotoGP','url':'https://example.com/2026/09/28/toprak'}
+  ok(a.qualify_copy(x),'format-only hashtag repair should recover')
+  ok(calls=={'editor':1,'racing':2,'semantic':1,'research':0},f'targeted repair must rerun Racing-QM but skip research/editor loop: {calls}')
+  ok('#MotorradRacing' in x['caption'] and '#RacingDeutschland' in x['caption'],'deterministic system hashtags missing')
+ finally:a.german_editor,a.racing_review,a.semantic_review_detailed,a.reanalyse_source=old
+
+def test_event_fingerprint_dedupes_language_variants_but_not_distinct_sessions():
+ tr={'title':'WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!','summary':'Iker Lecuona Superpole seansında pole pozisyonunun sahibi oldu.','series':'WorldSBK'}
+ en={'title':'SUPERPOLE BATTLE: Lecuona fends off late Bulega challenge for Cremona pole','summary':'Lecuona and Bulega battle for pole in Superpole at Cremona','series':'WorldSBK'}
+ race={'title':'WSBK İtalya superpole yarış: Lecuona Cremona’da duble yaptı','summary':'Iker Lecuona Tissot Superpole yarışında zafere ulaştı.','series':'WorldSBK'}
+ ok(a.event_fingerprint(tr)==a.event_fingerprint(en),'same Superpole event in Turkish/English must share event fingerprint')
+ ok(a.event_fingerprint(tr)!=a.event_fingerprint(race),'Superpole qualifying and Superpole Race are distinct events')
+
 def test_source_priority_contract():
  ok([s for s,_ in trs.SOURCES][:3]==['Moto2','Moto3','MotoGP'],'specific GP feeds must precede umbrella MotoGP feed');ok([s for s,_ in trs.SOURCES][3:]==['WorldSSP','WorldSBK'],'WorldSSP must precede umbrella WorldSBK feed')
 def test_moto4_and_turkish_rider_flagging():
@@ -288,5 +314,5 @@ def test_static_contracts():
  src=Path('motogp_content_agency_v2.py').read_text(encoding='utf-8');workflow=Path('.github/workflows/motogp-content-agency.yml').read_text(encoding='utf-8');receiver=Path('motogp_telegram_receive_v85.py').read_text(encoding='utf-8');client=Path('llm_client.py').read_text(encoding='utf-8');hardening=Path('racing_v855_hardening.py').read_text(encoding='utf-8')
  ok(a.VERSION=='V8.5.5' and rc.ARCH_VERSION=='V8.5.5','agency/controller version mismatch');ok('Session-Version: 18' in src and 'Approval-Status: READY' in src,'session contract incomplete');ok('MIN_SESSION_VERSION=18' in receiver,'receiver v18 missing');ok('QM → RESEARCH → EDITOR' in src and 'CHIEF-QM → EDITOR RETURN' in src,'feedback loop contract missing');ok('qualify_parallel(fresh[:60],3)' in src and 'fallback_raw[:20]' in src,'pool contract missing');ok('trusted_series' in hardening and 'SOURCE-FACT-WHITELIST' in hardening and 'TECHNICAL DEFER' in hardening,'V8.5.5 hardening contract missing');ok('BBL_VOICE' in client,'BBL voice global binding missing');ok('racing_pipeline_selftest.py' in workflow and 'racing_v85_selftest.py' in workflow and 'racing_v855_hardening.py' in workflow,'workflow preflight incomplete')
 def main():
- test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_final_human_language_gate();test_human_text_gate_is_pre_media_only();test_lexicon_single_source_chain();test_racing_language_lexicon_contract();test_editor_natural_copy_contract();test_community_fallback_contract();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
+ test_targeted_hashtag_repair_reruns_racing_qm_without_research();test_event_fingerprint_dedupes_language_variants_but_not_distinct_sessions();test_language_repair_chain();test_hard_fact_feedback_then_pass();test_hard_fact_still_fail_closed();test_series_and_hashtags();test_source_priority_contract();test_moto4_and_turkish_rider_flagging();test_rounds_and_hashtag_fact_contract();test_turkish_status_contract();test_transfer_direction_and_unsupported_worldspb();test_final_truth_guard_live_regressions();test_date_and_voice_contract();test_semantic_json_retry();test_provider_backoff();test_retry_contract_separation();test_session_fail_closed();test_final_human_language_gate();test_human_text_gate_is_pre_media_only();test_lexicon_single_source_chain();test_racing_language_lexicon_contract();test_editor_natural_copy_contract();test_community_fallback_contract();test_finalization_contract();test_static_contracts();print('RACING PIPELINE SELFTEST V8.5.5 + FEEDBACK LOOP + BBL VOICE: PASS')
 if __name__=='__main__':main()
