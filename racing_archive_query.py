@@ -92,8 +92,9 @@ def interpret(text):
     """Map free German speech to a strict archive-query schema; deterministic parser remains fallback."""
     prompt="""Du bist nur ein Intent-Parser fuer ein Motorrad-Racing-Archiv.
 Extrahiere aus der Nutzernachricht ausschliesslich JSON mit:
-{"intent":"search|top|more|select|unknown","riders":[],"nationality":"","series":[],"hours":null,"days":null,"from_yesterday":false,"limit":null,"status":"all|posted|unposted","selection":null}
+{"intent":"search|top|more|select|approve|unknown","lane":"archive|motogp|turkish","riders":[],"nationality":"","series":[],"hours":null,"days":null,"from_yesterday":false,"limit":null,"status":"all|posted|unposted","selection":null,"selections":[]}
 Verstehe natuerliches, umgangssprachliches Deutsch und Tippfehler. Beispiele: 'die letzten drei von Toprak' => search, rider Toprak, limit 3; 'von gestern bis jetzt die türkischen Fahrer' => nationality Turkish, from_yesterday true; 'alles der letzten 48 Stunden ueber Marc Marquez' => rider Marc Marquez, hours 48.
+Bei Freigabe-/Posting-Saetzen extrahiere lane und selections: 'Turkish Rider Nummer eins' => approve,turkish,[1]; 'Turkish Rider fünf' => approve,turkish,[5]; 'MotoGP die drei und vier posten' => approve,motogp,[3,4]. Deutsche Zahlwoerter eins bis fünf verstehen. Niemals Nummern erfinden.
 Erfinde keine Fahrer, Zeitraeume oder Filter. 'Can' allein ist niemals ein Fahrername. Antworte NUR mit JSON.
 Nachricht: """+str(text)
     try:
@@ -181,6 +182,13 @@ def handle(text):
     parsed=interpret(c)
     if parsed:
         intent=parsed.get("intent")
+        if intent=="approve":
+            lane=str(parsed.get("lane","")).lower()
+            nums=[int(n) for n in parsed.get("selections",[]) if str(n).isdigit() and 1<=int(n)<=5]
+            if lane in ("motogp","turkish") and nums:
+                prefix="turkish " if lane=="turkish" else "motogp "
+                return ("approval",prefix+",".join(map(str,nums)))
+            return 2
         if intent=="more": return show_more()
         if intent=="select" and isinstance(parsed.get("selection"),int):
             return manual.handle("racing artikel "+str(parsed["selection"]))
