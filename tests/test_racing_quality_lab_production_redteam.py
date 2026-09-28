@@ -17,7 +17,7 @@ def ok(cond,label):
 # Controlled base with source-backed facts.
 src=item("WorldSBK Superpole Race in Cremona: Iker Lecuona wins for Ducati",
          "Iker Lecuona wins the Superpole Race in Cremona for Ducati.")
-base="Iker Lecuona gewinnt das Superpole Race in Cremona für Ducati."
+base="Iker Lecuona gewinnt das Superpole Race in Cremona für Ducati.\n\nEin starkes Ergebnis im WorldSBK-Wochenende.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #BuelentsBikeLife"
 
 attacks=(
  Mutation("session","session","Superpole Race","Superpole"),
@@ -40,13 +40,13 @@ ok(any("Team/Hersteller nicht in Quelle" in e for e in errs),"multi team not ide
 # Claim-strength attack.
 rumor=item("Strong signal about Morbidelli 2027 WorldSBK future",
            "A move is possible but not officially confirmed.")
-ok(blocked(rumor,"Morbidelli wechselt 2027 in die WorldSBK. Der Wechsel steht fest."),"rumor upgrade passed")
+ok(blocked(rumor,"Morbidelli wechselt 2027 in die WorldSBK.\n\nDer Wechsel steht fest.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #BuelentsBikeLife"),"rumor upgrade passed")
 
 # Human-writing attack.
-ok(blocked(src,"Iker Lecuona gewinnt. So kurz vor dem Renne war das stark."),"bad German passed")
+ok(blocked(src,"Iker Lecuona gewinnt.\n\nSo kurz vor dem Renne war das stark.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #BuelentsBikeLife"),"bad German passed")
 
 # Positive controls: exact supported facts and preserved uncertainty.
 ok(not blocked(src,base),"supported source facts overblocked")
-ok(not blocked(rumor,"Morbidelli könnte 2027 in die WorldSBK wechseln. Noch nicht bestätigt."),"uncertainty overblocked")
+ok(not blocked(rumor,"Morbidelli könnte 2027 in die WorldSBK wechseln.\n\nDer Wechsel ist noch nicht bestätigt.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #BuelentsBikeLife"),"uncertainty overblocked")
 
 print(f"PRODUCTION-GATE RED TEAM: {passed}/10 PASS")
