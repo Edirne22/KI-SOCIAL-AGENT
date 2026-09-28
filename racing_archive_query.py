@@ -166,6 +166,8 @@ def show_more():
 def handle(text):
     c=" ".join(str(text or "").strip().split())
     low=norm(c)
+    # Existing approval commands always belong to the approval router, never archive NLU.
+    if re.fullmatch(r"motogp\s+(?:[1-5]|alle|nein)",low,re.I): return 2
     # Natural-language aliases for the existing deterministic archive browser.
     m=re.fullmatch(r"(?:zeig(?:e)?|gib|liste)(?:\s+mir)?\s+(?:die\s+)?top\s*(10|20)(?:\s+(?:berichte|meldungen|artikel))?",low,re.I)
     if m:
