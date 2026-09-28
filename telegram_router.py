@@ -475,7 +475,7 @@ def main() -> None:
             _ack(uid)
             return
         archive_select = bool(re.fullmatch(r"(?:t\\s*|poste\\s+|nimm\\s+)\\d+", cmd, re.I))
-        archive_query = any(k in cmd for k in ("gestern","vorgestern","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig mir","ungepostet","schon gepostet","türk","tuerk","turk","worldsbk","worldssp","moto2","moto3","ai ogura","marc marquez","marc márquez","jack miller","toprak","deniz öncü","deniz oncu","can öncü","can oncu"))
+        archive_query = any(k in cmd for k in ("gestern","vorgestern","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig mir","zeig die","zeige mir","zeige die","liste","mehr","weiter","nächsten","naechsten","ungepostet","schon gepostet","türk","tuerk","turk","worldsbk","worldssp","moto2","moto3","ai ogura","marc marquez","marc márquez","jack miller","toprak","deniz öncü","deniz oncu","can öncü","can oncu"))
         if archive_select or archive_query:
             print(f"ROUTER: Update {uid} -> Racing Archiv/Manual")
             result = subprocess.run([sys.executable, "-u", "racing_archive_query.py", text], check=False)
