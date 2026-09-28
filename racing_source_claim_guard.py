@@ -48,7 +48,9 @@ def _any(patterns,text):
     return any(re.search(p,text) for p in patterns)
 
 def _title_has_explicit_confirmation(title):
-    return _title_has_explicit_confirmation(title)
+    cleaned=re.sub(r"\bnot (?:yet )?(?:officially )?confirmed\b"," ",title)
+    cleaned=re.sub(r"\bresmen (?:henuz )?dogrulanmadi\b"," ",cleaned)
+    return _any(_SOURCE_DEFINITIVE,cleaned)
 
 def _future_transfer_title(title):
     return bool(re.search(r"\b20\d{2}\b",title) and re.search(r"\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",title))
