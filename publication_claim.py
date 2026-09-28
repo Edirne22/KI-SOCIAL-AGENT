@@ -18,27 +18,36 @@ def _blocks(content,target):
     return list(re.compile(rf'(^## {TARGETS[target]}\s*\n.*?)(?=^## |\Z)',re.MULTILINE|re.DOTALL).finditer(content))
 def _real_media(block,kind):
     return bool(re.search(rf'(?mi)^{kind}:\s*(?!auto\s*$)\S+',block))
+def _field(block,name):
+    prefix=name.casefold()+":"
+    for line in block.splitlines():
+        if line.casefold().startswith(prefix):
+            return line.split(":",1)[1].strip()
+    return None
+
 def _schedule_due(block,now=None):
-    m=re.search(r'(?mi)^Geplant-fuer:\\s*(.+?)\\s*$',block)
-    if not m:return True
-    raw=m.group(1).strip()
+    raw=_field(block,"Geplant-fuer")
+    if raw is None:return True
     try:
         scheduled=datetime.fromisoformat(raw)
         if scheduled.tzinfo is None:scheduled=scheduled.replace(tzinfo=BERLIN)
         current=now or datetime.now(BERLIN)
         return scheduled.astimezone(timezone.utc)<=current.astimezone(timezone.utc)
-    except ValueError:
+    except (ValueError,TypeError):
         print(f'Ungueltiger Geplant-fuer-Zeitstempel: {raw!r} – fail closed.')
         return False
 
 def _is_publishable(block,target,now=None):
     if not _schedule_due(block,now):return False
-    if '[GEPOSTET' in block or CLAIM_READY in block or CLAIM_ACTIVE in block or not re.search(r'(?mi)^Status:\\s*FREIGEGEBEN\\s*$',block):return False
+    if '[GEPOSTET' in block or CLAIM_READY in block or CLAIM_ACTIVE in block:return False
+    if (_field(block,"Status") or "").casefold()!="freigegeben":return False
     if target=='facebook':
-        if not re.search(r'(?ms)^Text:\\s*\\S+',block):return False
+        text_value=block.split("Text:",1)[1].strip() if "Text:" in block else ""
+        if not text_value:return False
         has_media=_real_media(block,'Bild') or _real_media(block,'Video')
-        has_link=bool(re.search(r'(?mi)^Quelle:\\s*https?://\\S+',block) and re.search(r'(?mi)^Link-Preview:\\s*offiziell\\s*$',block))
-        if not (has_media or has_link):return False
+        source=_field(block,"Quelle") or ""
+        preview=(_field(block,"Link-Preview") or "").casefold()
+        if not (has_media or (source.startswith(("http://","https://")) and preview=="offiziell")):return False
     elif target=='instagram':
         if not _real_media(block,'Bild'):return False
     elif target=='story':
@@ -46,9 +55,9 @@ def _is_publishable(block,target,now=None):
     elif target=='reel':
         if not _real_media(block,'Video'):return False
     else:
-        images=re.findall(r'(?mi)^\\s*-\\s*(\\S+)',block)
+        images=[line.strip()[2:].strip() for line in block.splitlines() if line.strip().startswith("- ")]
         if len(images)<2:return False
-    if target in {'story','reel'} and re.search(r'(?mi)^Musik:\\s*auto\\s*$',block):return False
+    if target in {'story','reel'} and (_field(block,"Musik") or "").casefold()=="auto":return False
     allowed,reason=media_publishable(block)
     if not allowed:print(reason)
     return allowed
