@@ -156,6 +156,10 @@ def install(a):
                 if attempt<max_attempts:repair=w;a.reanalyse_source(x,repair);lock(x);continue
                 print('SOURCE-FACT-WHITELIST REJECT:',x.get('title','')[:90],'|','; '.join(w)[:600]);break
             r_ok,r_err=a.racing_review(x,x['caption']);x['qm_errors']=r_err
+            if not r_ok and a._format_only_hashtag_errors(r_err):
+                a._deterministic_hashtag_repair(x)
+                r_ok,r_err=a.racing_review(x,x['caption']);x['qm_errors']=r_err
+                print('TARGETED HASHTAG REPAIR '+('PASS' if r_ok else 'FAIL')+':',x.get('title','')[:90])
             if not r_ok:
                 if attempt<max_attempts:repair=['Racing-QM: '+e for e in r_err];a.reanalyse_source(x,repair);lock(x);continue
                 print('RACING-QM HARD REJECT after feedback loop:',x.get('title','')[:90],'|','; '.join(r_err)[:600]);break
