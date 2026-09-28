@@ -136,3 +136,14 @@ def test_live_more_returns_remaining_two_with_natural_help(monkeypatch,tmp_path)
     assert q.show_more()==2
     assert "11." in sent[-1] and "12." in sent[-1]
     assert "Nimm Nummer 4" in sent[-1]
+
+
+def test_spoken_rider_alias_is_canonicalized_without_invention():
+    got=q.canonical_riders(["Ai Ogura","Alex Rines"])
+    assert "Ai Ogura" in got
+    assert "Alex Rins" in got
+    assert "Alex Rines" not in got
+
+def test_unknown_or_ambiguous_rider_is_not_invented():
+    assert q.canonical_riders(["Can"])==[]
+    assert q.canonical_riders(["Definitely Not A Rider"])==[]
