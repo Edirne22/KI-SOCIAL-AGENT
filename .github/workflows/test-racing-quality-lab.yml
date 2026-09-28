@@ -18,4 +18,4 @@ jobs:
       - name: Compile
         run: python -m py_compile racing_quality_lab.py tests/test_racing_quality_lab.py
       - name: Eval + evidence regression
-        run: python tests/test_racing_quality_lab.py
+        run: python -m tests.test_racing_quality_lab
