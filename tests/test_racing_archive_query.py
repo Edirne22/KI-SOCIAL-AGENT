@@ -147,3 +147,27 @@ def test_spoken_rider_alias_is_canonicalized_without_invention():
 def test_unknown_or_ambiguous_rider_is_not_invented():
     assert q.canonical_riders(["Can"])==[]
     assert q.canonical_riders(["Definitely Not A Rider"])==[]
+
+
+def test_live_spoken_aliases_resolve_alex_renz_and_compact_aiogura():
+    got=q.canonical_riders(["Alex Renz","aiogura"])
+    assert got==["Alex Rins","Ai Ogura"]
+
+def test_explicit_unresolved_rider_filter_fails_closed(monkeypatch):
+    rows=[{"title":"Bulega wins","summary":"","series":"WorldSBK","_pool_day":"2026-09-28"}]
+    monkeypatch.setattr(q,"all_rows",lambda: rows)
+    result,label=q.query_intent({"riders":["Definitely Not A Rider"],"days":14})
+    assert result==[]
+    assert "Definitely Not A Rider" in label
+
+def test_live_14_day_rider_request_never_returns_foreign_pool(monkeypatch):
+    today=q.datetime.now(q.timezone.utc).date().isoformat()
+    rows=[
+      {"title":"Ai Ogura update","summary":"","series":"MotoGP","_pool_day":today},
+      {"title":"Alex Rins update","summary":"","series":"MotoGP","_pool_day":today},
+      {"title":"Bulega wins","summary":"","series":"WorldSBK","_pool_day":today},
+    ]
+    monkeypatch.setattr(q,"all_rows",lambda: rows)
+    result,label=q.query_intent({"riders":["Alex Renz","aiogura"],"days":14})
+    assert [x["title"] for x in result]==["Ai Ogura update","Alex Rins update"]
+    assert "Alex Rins" in label and "Ai Ogura" in label
