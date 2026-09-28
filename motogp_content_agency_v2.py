@@ -215,6 +215,14 @@ def reanalyse_source(x,reasons):
  except Exception as e:print('SOURCE RE-ANALYSIS FETCH FAIL:',type(e).__name__,str(e)[:160])
  x.update(keep);lock_source_series(x,keep.get('source_series') or keep.get('series'));x['research_retry_count']=x.get('research_retry_count',0)+1;x['last_qm_return']=list(reasons or [])[:10]
  print(f'QM → RESEARCH → EDITOR retry={x["research_retry_count"]}:',x.get('title','')[:90]);return x
+def _format_only_hashtag_errors(errors):
+ return bool(errors) and all(e=='Hashtag-Anzahl nicht 4–7' or e.startswith('Fahrer-Hashtag fehlt:') for e in errors)
+def _deterministic_hashtag_repair(x):
+ blocks=[p.strip() for p in str(x.get('caption','')).split('\n\n') if p.strip()]
+ if blocks and blocks[-1].startswith('#'):blocks=blocks[:-1]
+ body='\n\n'.join(blocks)
+ x['caption']=body+'\n\n'+hashtags(x)
+ return x['caption']
 def qualify_copy(x,initial_reasons=None):
  if not racing_relevant(x):return False
  lock_source_series(x);repair_reasons=initial_reasons
@@ -222,6 +230,10 @@ def qualify_copy(x,initial_reasons=None):
   x['caption']=german_editor(x,repair_reasons)
   if not x['caption']:repair_reasons=['Redakteur lieferte keinen gueltigen strukturierten Text'];print(f'EDITOR REPAIR attempt={attempt}:',x.get('title','')[:90]);continue
   r_ok,r_err=racing_review(x,x['caption']);x['qm_errors']=r_err
+  if not r_ok and _format_only_hashtag_errors(r_err):
+   _deterministic_hashtag_repair(x)
+   r_ok,r_err=racing_review(x,x['caption']);x['qm_errors']=r_err
+   print('TARGETED HASHTAG REPAIR '+('PASS' if r_ok else 'FAIL')+':',x.get('title','')[:90])
   if not r_ok:
    if attempt<3:repair_reasons=['Racing-QM: '+e for e in r_err];reanalyse_source(x,repair_reasons);continue
    print('RACING-QM HARD REJECT after feedback loop:',x.get('title','')[:90],'|','; '.join(r_err)[:600]);break
@@ -312,17 +324,30 @@ def ordered_pool(qualified,names):
  priority=[x for x in qualified if x.get('priority_repair')]
  normal=[x for x in qualified if not x.get('priority_repair')]
  return bucket(priority)+bucket(normal)
+def event_fingerprint(x):
+ text=fold(' '.join((x.get('title',''),x.get('summary',''))))
+ series=series_for(x)
+ event=''
+ for token in ('superpole race','superpole','race 1','race 2','fp1','fp2','practice','qualifying','sprint'):
+  if token in text:event=token;break
+ riders=sorted({fold(n).split()[-1] for n in riders_in(text)})[:3]
+ venues=[v for v in ('cremona','estoril','aragon','valencia','mugello','misano','jerez','assen','le mans','sachsenring') if v in text]
+ if not event or not (riders or venues):return ''
+ return '|'.join([series,event,','.join(riders),','.join(venues)])
 def select_and_finish(qualified,names):
- picks=[];seen_fp=set()
+ picks=[];seen_fp=set();seen_events=set()
  for x in ordered_pool(qualified,names):
   if len(picks)>=5:break
   s=series_for(x)
   if s not in VALID_SERIES:continue
   if not is_gp_family(x) and sum(series_for(y)==s for y in picks)>=3:continue
   fp=re.sub(r'#[^\s]+','',fold(x.get('caption','')));fp=re.sub(r'\s+',' ',fp).strip()
-  if fp in seen_fp:continue
+  event_fp=event_fingerprint(x)
+  if fp in seen_fp or (event_fp and event_fp in seen_events):continue
   b_ok,_=review_batch([x])[0]
-  if b_ok and finish_item(x,len(picks)+1):picks.append(x);seen_fp.add(fp)
+  if b_ok and finish_item(x,len(picks)+1):
+   picks.append(x);seen_fp.add(fp)
+   if event_fp:seen_events.add(event_fp)
  return picks
 def write_session(items,now):
  lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Buelents-Bike-Life-Voice: VERBINDLICH','QM: PASS',f'Racing-Lexikon-Version: {racing_lexicon_version()}',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
