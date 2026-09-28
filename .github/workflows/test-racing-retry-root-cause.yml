@@ -5,6 +5,8 @@ on:
       - "llm_client.py"
       - "racing_semantic_qm.py"
       - "racing_v855_hardening.py"
+      - "motogp_content_agency_v2.py"
+      - "config/model_router.json"
       - "tests/test_racing_retry_root_cause.py"
       - ".github/workflows/test-racing-retry-root-cause.yml"
 jobs:
@@ -15,6 +17,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-      - run: pip install requests
-      - run: python -m py_compile llm_client.py racing_semantic_qm.py racing_v855_hardening.py tests/test_racing_retry_root_cause.py
+      - run: pip install requests Pillow beautifulsoup4
+      - run: python -m py_compile llm_client.py racing_semantic_qm.py racing_v855_hardening.py motogp_content_agency_v2.py tests/test_racing_retry_root_cause.py
       - run: PYTHONPATH=. python tests/test_racing_retry_root_cause.py

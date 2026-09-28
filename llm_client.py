@@ -68,20 +68,21 @@ def _request_json(method,url,headers,payload,timeout,max_retries=1,provider_name
   if r.status_code not in (500,502,503,504) or attempt>=max_retries:raise last
   time.sleep(_retry_after_seconds(r,attempt))
  raise last or RuntimeError('Provider-Anfrage fehlgeschlagen')
+def _provider_request_retries(provider):return int(provider.get('request_max_retries',1))
 def _generate_gemini(prompt,provider,key):
  headers={'Content-Type':'application/json','X-goog-api-key':key};payload={'contents':[{'parts':[{'text':prompt}]}]};errors=[]
- for model in provider['text_models']:
+ for model in provider['text_models'][:int(provider.get('text_model_limit',len(provider['text_models'])))]:
   try:
-   data=_request_json('POST',f"{provider['base_url']}/models/{model}:generateContent",headers,payload,provider['timeout_seconds'],provider_name='gemini');return redact_secrets(data['candidates'][0]['content']['parts'][0]['text']).strip()
+   data=_request_json('POST',f"{provider['base_url']}/models/{model}:generateContent",headers,payload,provider['timeout_seconds'],max_retries=_provider_request_retries(provider),provider_name='gemini');return redact_secrets(data['candidates'][0]['content']['parts'][0]['text']).strip()
   except (KeyError,IndexError,TypeError) as e:errors.append(f'{model}: unvollstaendige Antwort ({e})')
   except RuntimeError as e:errors.append(f'{model}: {e}')
  raise RuntimeError('Kein Gemini-Modell konnte die Aufgabe ausfuehren. '+' | '.join(errors))
 def _generate_agnes_text(prompt,provider,key):
- data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds'],provider_name='agnes');return redact_secrets(data['choices'][0]['message']['content']).strip()
+ data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds'],max_retries=_provider_request_retries(provider),provider_name='agnes');return redact_secrets(data['choices'][0]['message']['content']).strip()
 def _generate_agnes_image(prompt,provider,key):return _request_json('POST',f"{provider['base_url']}/images/generations",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['image_model'],'prompt':prompt,'size':'1024x1024','n':1},provider['timeout_seconds'])
 def _start_agnes_video(prompt,provider,key):return _request_json('POST',f"{provider['base_url']}/videos",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['video_model'],'prompt':prompt,'duration':5,'size':'720x1280'},provider['timeout_seconds'])
 def _generate_openai_text(prompt,provider,key,provider_name):
- data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds'],provider_name=provider_name)
+ data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds'],max_retries=_provider_request_retries(provider),provider_name=provider_name)
  return redact_secrets(data['choices'][0]['message']['content']).strip()
 def _provider_key_if_available(provider_name):
  provider=get_provider_config(provider_name);env_name=provider.get('api_key_env')
@@ -93,7 +94,7 @@ def generate(task_name,prompt):
  for provider_name in providers:
   if provider_in_cooldown(provider_name):
    errors.append(f"{provider_name}: 429-Cooldown");continue
-  provider=get_provider_config(provider_name);key=_provider_key_if_available(provider_name)
+  provider=dict(get_provider_config(provider_name));provider['timeout_seconds']=min(float(provider.get('timeout_seconds',120)),float(task.get('timeout_seconds',provider.get('timeout_seconds',120))));provider['request_max_retries']=int(task.get('request_max_retries',provider.get('request_max_retries',1)));provider['text_model_limit']=int(task.get('text_model_limit',provider.get('text_model_limit',999)));key=_provider_key_if_available(provider_name)
   if not key:
    errors.append(f"{provider_name}: API-Key fehlt");continue
   try:

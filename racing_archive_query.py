@@ -30,10 +30,16 @@ def canonical_riders(values):
         # Known speech-to-text substitutions are explicit and still registry-guarded.
         spoken_alias={"alexrenz":"Alex Rins"}.get(compact)
         exact=[name for name in registry if re.sub(r"[^a-z0-9]","",norm(name))==compact]
+        first_exact=[name for name in registry if norm(name).split()[0]==spoken]
         if spoken_alias in registry:
             choice=spoken_alias
         elif exact:
             choice=exact[0]
+        elif len(first_exact)==1:
+            # Natural speech often names a uniquely identifiable rider by first name
+            # (live case: Toprak). Ambiguous first names still fail closed; "Can"
+            # remains explicitly blocked above.
+            choice=first_exact[0]
         else:
             scored=[]
             spoken_first=spoken.split()[0] if spoken.split() else ""

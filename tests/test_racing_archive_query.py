@@ -148,6 +148,15 @@ def test_unknown_or_ambiguous_rider_is_not_invented():
     assert q.canonical_riders(["Can"])==[]
     assert q.canonical_riders(["Definitely Not A Rider"])==[]
 
+def test_live_unique_first_name_toprak_resolves_and_finds_persisted_pool(monkeypatch):
+    today=q.datetime.now(q.timezone.utc).date().isoformat()
+    persisted={"title":"Toprak: 2018’de yarış kariyerimi noktalamayı bile düşünmüştüm","summary":"","series":"MotoGP","turkish_rider":"Toprak Razgatlıoğlu","_pool_day":today}
+    monkeypatch.setattr(q,"all_rows",lambda:[persisted])
+    assert q.canonical_riders(["Toprak"])==["Toprak Razgatlıoğlu"]
+    result,label=q.query_intent({"riders":["Toprak"],"days":14})
+    assert result==[persisted]
+    assert "Toprak Razgatlıoğlu" in label
+
 
 def test_live_spoken_aliases_resolve_alex_renz_and_compact_aiogura():
     got=q.canonical_riders(["Alex Renz","aiogura"])
