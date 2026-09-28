@@ -3,6 +3,7 @@ import json,re
 from llm_client import generate,redact_secrets
 from racing_language_rules import prompt_contract as racing_lexicon_contract
 from racing_event_contract import source_event_contract, session_errors
+from racing_source_claim_guard import claim_strength_errors
 
 BRAND_HASHTAGS={'#buelentsbikelife'}
 SOURCE_FACT_CONTRACT_VERSION='SOURCE-FACT-CONTRACT-V1'
