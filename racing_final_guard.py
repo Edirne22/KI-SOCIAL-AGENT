@@ -2,6 +2,7 @@
 import re,unicodedata
 from racing_language_rules import deterministic_errors as racing_lexicon_errors
 from racing_event_contract import session_errors
+from racing_source_claim_guard import claim_strength_errors
 PROMO=('behind the scenes','catch up','vlog','episode','episodes','fantasy','videopass','tickets','shop','giveaway')
 # Current lower-class names are deterministic disambiguators when official generic motogp.com URLs omit class metadata.
 MOTO3_NAMES=('quiles','almansa','uriarte','kelso','carpe');MOTO2_NAMES=('agius','gonzalez','canet','vietti','arbolino','holgado','moreira','oncu','öncü')
