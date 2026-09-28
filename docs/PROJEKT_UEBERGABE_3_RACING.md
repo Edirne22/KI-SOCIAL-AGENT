@@ -347,7 +347,8 @@ Der nach #142 gestartete End-to-End-Test entscheidet, ob Binder, Kalender und Bu
 
 ---
 
-✅ ENDE DER ÜBERGABE
-Alle Teile gelesen (1 bis 3).
-Du bist jetzt vollständig auf Stand.
+📖 NÄCHSTER TEIL:
+→ Lies jetzt: docs/PROJEKT_UEBERGABE_4_RUNTIME.md
+
+Diese Datei ist Teil 3 von 4.
 ---

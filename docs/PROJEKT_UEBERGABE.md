@@ -15,6 +15,7 @@
 | 1 | `PROJEKT_UEBERGABE.md` | Hauptübergabe (immer aktuell) |
 | 2 | `PROJEKT_UEBERGABE_2_ENGAGEMENT.md` | Agent 17 + 18, Meta Webhook, Reply Adapter |
 | 3 | `PROJEKT_UEBERGABE_3_RACING.md` | Racing-Pipeline-Hardening 26.09.2026 |
+| 4 | `PROJEKT_UEBERGABE_4_RUNTIME.md` | Racing Runtime-Hardening 27./28.09.2026 |
 
 ---
 
@@ -612,12 +613,13 @@ C:\Users\Admin\AppData\Roaming\npm\claude.cmd --model "nvidia/nvidia/nemotron-3.
 ## 🎯 FÜR NEUE CHATS
 
 **Startprompt:**
-> „Lies diese drei Dateien der Reihe nach:
+> „Lies diese vier Dateien der Reihe nach:
 > 1. docs/PROJEKT_UEBERGABE.md
 > 2. docs/PROJEKT_UEBERGABE_2_ENGAGEMENT.md
 > 3. docs/PROJEKT_UEBERGABE_3_RACING.md
+> 4. docs/PROJEKT_UEBERGABE_4_RUNTIME.md
 >
-> Arbeite auf diesem Stand weiter. Bitte alle drei lesen – nicht nach der ersten aufhören."
+> Arbeite auf diesem Stand weiter. Bitte alle vier lesen – nicht nach der ersten aufhören."
 
 ---
 
