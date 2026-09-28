@@ -109,3 +109,30 @@ def test_spoken_motogp_multi_approval_normalizes(monkeypatch):
 def test_spoken_approval_rejects_out_of_range(monkeypatch):
     monkeypatch.setattr(q,"interpret",lambda text:{"intent":"approve","lane":"motogp","selections":[8],"riders":[]})
     assert q.handle("MotoGP Nummer acht posten")==2
+
+
+def test_live_archive_reclassifies_iame_as_karting(monkeypatch):
+    monkeypatch.setattr(q.agency,"load_pool",lambda:{"days":{"2026-09-28":[{"story_key":"zayn","title":"Zayn Sofuoğlu Mariembourg IAME Benelux","summary":"Karting final","series":"MotoGP","url":"https://example.test/zayn"}]}})
+    got=q.all_rows()
+    assert got[0]["series"]=="Karting"
+
+def test_live_query_pages_first_ten_of_twelve(monkeypatch,tmp_path):
+    state=tmp_path/"state.json"; monkeypatch.setattr(q,"STATE",state)
+    data=[{"story_key":str(i),"title":"Story "+str(i),"series":"MotoGP","url":"https://example.test/"+str(i)} for i in range(12)]
+    sent=[]; monkeypatch.setattr(q,"send_message",sent.append); monkeypatch.setattr(q,"published",lambda row:False)
+    assert q.show(data,"letzte 48 Stunden · türkische Rider")==12
+    saved=__import__("json").loads(state.read_text(encoding="utf-8"))
+    assert saved["offset"]==10 and len(saved["rows"])==12
+    rendered="\n".join(sent)
+    assert "10." in rendered and "11." not in rendered
+    assert "Zeig mir mehr" in rendered
+    assert "racing artikel" not in rendered and "T17" not in rendered
+
+def test_live_more_returns_remaining_two_with_natural_help(monkeypatch,tmp_path):
+    state=tmp_path/"state.json"; monkeypatch.setattr(q,"STATE",state)
+    data=[{"story_key":str(i),"title":"Story "+str(i),"series":"MotoGP","url":"https://example.test/"+str(i)} for i in range(12)]
+    state.write_text(__import__("json").dumps({"label":"live","rows":data,"offset":10}),encoding="utf-8")
+    sent=[]; monkeypatch.setattr(q,"send_message",sent.append); monkeypatch.setattr(q,"published",lambda row:False)
+    assert q.show_more()==2
+    assert "11." in sent[-1] and "12." in sent[-1]
+    assert "Nimm Nummer 4" in sent[-1]
