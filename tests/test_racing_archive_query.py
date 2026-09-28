@@ -81,7 +81,10 @@ def test_free_form_nlu_last_three_toprak(monkeypatch):
 
 def test_free_form_nlu_turkish_since_yesterday(monkeypatch):
     monkeypatch.setattr(q,"interpret",lambda text:{"intent":"search","riders":[],"nationality":"Turkish","series":[],"hours":None,"days":None,"from_yesterday":True,"limit":None,"status":"all","selection":None})
-    monkeypatch.setattr(q,"all_rows",rows)
+    from datetime import datetime,timezone,timedelta
+    yesterday=(datetime.now(timezone.utc).date()-timedelta(days=1)).isoformat()
+    dynamic=[dict(rows()[0],_pool_day=yesterday)]
+    monkeypatch.setattr(q,"all_rows",lambda:dynamic)
     monkeypatch.setattr(q,"show",lambda found,label:(found,label))
     found,label=q.handle("Von gestern bis jetzt alles zu den türkischen Fahrern")
     assert len(found)==1 and "Toprak" in found[0]["title"]
