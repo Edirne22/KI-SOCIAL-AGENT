@@ -32,9 +32,9 @@ _SOURCE_DEFINITIVE=(
 )
 # German editorial wording that upgrades an uncertain source to a settled future fact.
 _CAPTION_DEFINITIVE=(
- r"\bsteht (?:fest|klar)\b",r"\bist (?:fix|bestaetigt)\b",r"\bwurde bestaetigt\b",
- r"\bhat (?:unterschrieben|bestaetigt)\b",
- r"\bwechselt\b",r"\bgeht .*\b an den start\b",r"\bfaehrt ab\b",
+ r"\bsteht (?:fest|klar)\b",r"\bist (?:fix|bestaetigt|bestatigt)\b",r"\bwurde (?:bestaetigt|bestatigt)\b",
+ r"\bhat (?:unterschrieben|bestaetigt|bestatigt)\b",r"\b(?:bestaetigt|bestatigt)\b",
+ r"\bwechselt\b",r"\bgeht .*\b an den start\b",r"\ban den start geht\b",r"\bfaehrt ab\b",
  r"\bwird (?:wechseln|fahren|starten|antreten)\b",r"\b20\d{2}\s+startet\b[^.!?\n]*\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",
  r"\bab \d{4} .*\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",
 )
