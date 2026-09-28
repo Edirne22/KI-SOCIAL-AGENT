@@ -52,3 +52,24 @@ if __name__=="__main__":
     test_not_confirmed_is_not_confirmation()
     test_plain_race_result_untouched()
     print("RACING SOURCE CLAIM STRENGTH REGRESSION: PASS")
+
+
+def test_run138_summary_cannot_upgrade_uncertain_raw_title():
+    x={"title":"Franco Morbidelli'den 2027 WorldSBK Geleceğine Dair Güçlü Sinyal",
+       "summary":"Franco Morbidelli hat seinen WorldSBK-Start 2027 bestätigt. Ducati ist noch nicht offiziell bestätigt.",
+       "series":"WorldSBK","source_series":"WorldSBK"}
+    check(source_has_uncertainty(x),x)
+    check(not source_has_definitive_confirmation(x),x)
+    bad=blocks("Franco Morbidelli hat in Cremona klar gesagt: 2027 startet er im WorldSBK. Der Ducati-Werkvertrag ist noch nicht offiziell bestätigt.")
+    check(claim_strength_errors(x,bad),claim_strength_errors(x,bad))
+
+def test_raw_confirmed_title_still_allows_definitive_caption():
+    x={"title":"OFFICIAL: Morbidelli confirmed for WorldSBK 2027",
+       "summary":"Morbidelli will race in WorldSBK in 2027.",
+       "series":"WorldSBK","source_series":"WorldSBK"}
+    check(source_has_definitive_confirmation(x),x)
+    check(not claim_strength_errors(x,blocks("Morbidelli wechselt 2027 in die WorldSBK.")),x)
+
+if __name__=="__main__":
+    test_run138_summary_cannot_upgrade_uncertain_raw_title()
+    test_raw_confirmed_title_still_allows_definitive_caption()
