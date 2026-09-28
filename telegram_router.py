@@ -474,6 +474,17 @@ def main() -> None:
             send_message("Bitte sende ein Bild mit dem Befehl /vision, /ocr oder /omni.")
             _ack(uid)
             return
+        archive_select = bool(re.fullmatch(r"(?:t\\s*|poste\\s+|nimm\\s+)\\d+", cmd, re.I))
+        archive_query = any(k in cmd for k in ("gestern","vorgestern","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig mir","ungepostet","schon gepostet","türk","tuerk","turk","worldsbk","worldssp","moto2","moto3","ai ogura","marc marquez","marc márquez","jack miller","toprak","deniz öncü","deniz oncu","can öncü","can oncu"))
+        if archive_select or archive_query:
+            print(f"ROUTER: Update {uid} -> Racing Archiv/Manual")
+            result = subprocess.run([sys.executable, "-u", "racing_archive_query.py", text], check=False)
+            if result.returncode not in (0, 1, 2):
+                raise RuntimeError(f"Racing Archiv fehlgeschlagen (Exit {result.returncode}).")
+            if result.returncode != 2:
+                _ack(uid)
+                return
+
         if re.match(r"^racing\s+(?:top10|top20|gestern|suche\s+.+|artikel\s+\d+|url\s+https?://\S+)$", cmd, re.I):
             print(f"ROUTER: Update {uid} -> manuelle Racing-Auswahl")
             result = subprocess.run([sys.executable, "-u", "racing_manual_selection.py", text], check=False)
