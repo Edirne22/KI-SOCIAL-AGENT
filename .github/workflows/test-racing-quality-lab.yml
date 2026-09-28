@@ -8,9 +8,10 @@ on:
       - "racing_model_jury.py"
       - "racing_release_gate.py"
       - "tests/test_racing_quality_lab.py"
-      - "tests/test_racing_quality_lab_stage2.py"
+      - "tests/test_racing_quality_lab_stage2.py tests/test_racing_quality_lab_redteam.py"
       - "tests/test_racing_model_jury.py"
       - "tests/test_racing_release_gate.py"
+      - "tests/test_racing_quality_lab_redteam.py"
       - ".github/workflows/test-racing-quality-lab.yml"
       - "docs/RACING_EVIDENCE_MAP.md"
   workflow_dispatch:
@@ -30,3 +31,4 @@ jobs:
           python -m tests.test_racing_quality_lab_stage2
           python -m tests.test_racing_model_jury
           python -m tests.test_racing_release_gate
+          python -m tests.test_racing_quality_lab_redteam
