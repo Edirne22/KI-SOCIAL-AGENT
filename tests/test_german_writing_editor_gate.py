@@ -49,3 +49,28 @@ def test_correct_vor_dem_rennen_is_allowed():
     caption="Fermin Aldeguer musste kurz vor Japan operiert werden. So kurz vor dem Rennen auf den OP-Tisch – wie seht ihr das?\n\n#MotoGP #FerminAldeguer #BuelentsBikeLife"
     ok,errors=human_text_review("Motorcycle Racing",item,caption)
     assert not any("vor dem Renne" in e for e in errors),errors
+
+
+def test_run138_werkswagen_is_blocked_for_motorcycle_racing():
+    item={"title":"Morbidelli WorldSBK 2027","summary":"Ducati factory deal is not official."}
+    caption="Morbidelli spricht über WorldSBK 2027. Ein Werkswagen von Ducati ist noch nicht bestätigt.\n\n#WorldSBK #FrancoMorbidelli #BuelentsBikeLife"
+    ok,errors=human_text_review("Motorcycle Racing",item,caption)
+    assert not ok
+    assert any("Werkswagen" in e for e in errors),errors
+
+def test_run138_translation_artifacts_are_blocked():
+    item={"title":"Alcoba wins Race 2","summary":"Jeremy Alcoba completes a double in Cremona."}
+    bad=[
+      "Jeremy Alcoba gewinnt Rennen zwei. Das Weekend in Cremona ist damit erledigt.\n\n#WorldSSP #JeremyAlcoba #BuelentsBikeLife",
+      "Jeremy Alcoba gewinnt Rennen zwei. Er beendet das Wochenende mit einem Duble.\n\n#WorldSSP #JeremyAlcoba #BuelentsBikeLife",
+      "Jeremy Alcoba gewinnt Rennen zwei. Wie findet ihr Alcobas Double-Wochenende?\n\n#WorldSSP #JeremyAlcoba #BuelentsBikeLife",
+    ]
+    for caption in bad:
+        ok,errors=human_text_review("Motorcycle Racing",item,caption)
+        assert not ok,(caption,errors)
+
+def test_natural_motorcycle_wording_positive_control():
+    item={"title":"Alcoba wins Race 2","summary":"Jeremy Alcoba completes a double in Cremona."}
+    caption="Jeremy Alcoba gewinnt auch das zweite Rennen in Cremona. Damit beendet er das Wochenende mit zwei Siegen.\n\n#WorldSSP #JeremyAlcoba #BuelentsBikeLife"
+    ok,errors=human_text_review("Motorcycle Racing",item,caption)
+    assert not any("Werkswagen" in e or "Duble" in e or "Weekend" in e or "Double-Wochenende" in e for e in errors),errors
