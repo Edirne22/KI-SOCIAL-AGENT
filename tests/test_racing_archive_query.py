@@ -70,3 +70,24 @@ def test_more_uses_active_session(monkeypatch,tmp_path):
 def test_natural_top_does_not_capture_approval_commands(monkeypatch):
     assert q.handle("motogp alle")==2
     assert q.handle("motogp 1")==2
+
+
+def test_free_form_nlu_last_three_toprak(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"search","riders":["Toprak Razgatlıoğlu"],"nationality":"","series":[],"hours":None,"days":None,"from_yesterday":False,"limit":3,"status":"all","selection":None})
+    monkeypatch.setattr(q,"all_rows",lambda:[dict(rows()[0],story_key=str(i)) for i in range(5)])
+    monkeypatch.setattr(q,"show",lambda found,label:(len(found),label))
+    result=q.handle("Gib mir mal die letzten drei Sachen, die du über Toprak gefunden hast")
+    assert result[0]==3 and "Toprak" in result[1]
+
+def test_free_form_nlu_turkish_since_yesterday(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"search","riders":[],"nationality":"Turkish","series":[],"hours":None,"days":None,"from_yesterday":True,"limit":None,"status":"all","selection":None})
+    monkeypatch.setattr(q,"all_rows",rows)
+    monkeypatch.setattr(q,"show",lambda found,label:(found,label))
+    found,label=q.handle("Von gestern bis jetzt alles zu den türkischen Fahrern")
+    assert len(found)==1 and "Toprak" in found[0]["title"]
+
+def test_free_form_nlu_48h_marquez_schema(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"search","riders":["Marc Marquez"],"nationality":"","series":[],"hours":48,"days":None,"from_yesterday":False,"limit":None,"status":"all","selection":None})
+    monkeypatch.setattr(q,"all_rows",lambda:[])
+    monkeypatch.setattr(q,"show",lambda found,label:label)
+    assert "48 Stunden" in q.handle("Was wurde denn so in den letzten zwei Tagen alles über Marc Márquez geschrieben?")
