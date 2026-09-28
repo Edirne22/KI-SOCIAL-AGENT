@@ -72,7 +72,12 @@ def lock_source_series(x,declared=None):
  if explicit:x['series']=explicit;x['source_series']=explicit;x['series_locked']=True;x['series_origin']='explicit-source';return x
  if d in VALID_SERIES:x['series']=d;x['source_series']=d;x['series_locked']=True;x['series_origin']='official-feed';return x
  return x
+def _unsupported_racing_discipline(x):
+ text=fold(article_text(x))
+ return bool(re.search(r'(?<![a-z0-9])(?:kart|karting|iame)(?![a-z0-9])',text))
+
 def series_for_raw(x):
+ if _unsupported_racing_discipline(x):return 'Unsupported'
  transfer=_transfer_destination(' '.join((x.get('title',''),x.get('summary',''))))
  if transfer:return transfer
  explicit=_explicit_source_series(x)
@@ -126,7 +131,7 @@ def freshness_diagnostics(items,now):
  print('FRESHNESS DIAG reasons='+json.dumps(dict(reasons),ensure_ascii=False,sort_keys=True));print('FRESHNESS DIAG by_series='+json.dumps(by_series,ensure_ascii=False,sort_keys=True));return reasons,by_series
 def is_feature(x):return any(w in fold(article_text(x)) for w in FEATURE_WORDS)
 def racing_relevant(x):
- text=fold(article_text(x));return 'worldwcr' not in text and 'worldspb' not in text and 'sportbike world championship' not in text and not re.search(r'(?<![a-z0-9])moto4(?![a-z0-9])',text) and not any(w in text for w in PROMO_WORDS) and bool(riders_in(text) or detect_turkish_rider(x) or any(w in text for w in RACING_WORDS))
+ text=fold(article_text(x));return not _unsupported_racing_discipline(x) and 'worldwcr' not in text and 'worldspb' not in text and 'sportbike world championship' not in text and not re.search(r'(?<![a-z0-9])moto4(?![a-z0-9])',text) and not any(w in text for w in PROMO_WORDS) and bool(riders_in(text) or detect_turkish_rider(x) or any(w in text for w in RACING_WORDS))
 def editorial_score(x,names):
  age=max(0,age_days(x,dt.now(timezone.utc)));fresh=max(0,80-int(age*10));text=fold(article_text(x));sport=sum(12 for w in ('win','victory','pole','podium','championship','title','race','sprint','qualifying','injury','return','replace') if w in text);live=35 if any(w in text for w in ('race','sprint','qualifying','practice','fp1','fp2','championship','standings','injury','return','replace')) else 0
  return fresh+score(x.get('title',''),names)+sport+live+(30 if is_turkish_focus(x) else 0)+(-45 if is_feature(x) else 0)
