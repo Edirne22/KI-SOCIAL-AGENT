@@ -475,10 +475,21 @@ def main() -> None:
             _ack(uid)
             return
         archive_select = bool(re.fullmatch(r"(?:t\\s*|poste\\s+|nimm\\s+)\\d+", cmd, re.I))
-        archive_query = any(k in cmd for k in ("gestern","vorgestern","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig mir","ungepostet","schon gepostet","türk","tuerk","turk","worldsbk","worldssp","moto2","moto3","ai ogura","marc marquez","marc márquez","jack miller","toprak","deniz öncü","deniz oncu","can öncü","can oncu"))
+        archive_query = any(k in cmd for k in ("gestern","vorgestern","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig mir","zeig die","zeige mir","zeige die","liste","mehr","weiter","nächsten","naechsten","ungepostet","schon gepostet","türk","tuerk","turk","worldsbk","worldssp","moto2","moto3","ai ogura","marc marquez","marc márquez","jack miller","toprak","deniz öncü","deniz oncu","can öncü","can oncu"))
         if archive_select or archive_query:
             print(f"ROUTER: Update {uid} -> Racing Archiv/Manual")
-            result = subprocess.run([sys.executable, "-u", "racing_archive_query.py", text], check=False)
+            result = subprocess.run([sys.executable, "-u", "racing_archive_query.py", text], check=False, capture_output=True, text=True)
+            if result.returncode == 3:
+                normalized=""
+                for line in (result.stdout or "").splitlines():
+                    if line.startswith("APPROVAL_COMMAND="): normalized=line.split("=",1)[1].strip()
+                if not normalized:
+                    raise RuntimeError("Racing Sprachfreigabe ohne normalisiertes Kommando.")
+                print(f"ROUTER: Sprachfreigabe -> {normalized}")
+                approved = subprocess.run([sys.executable, "-u", "motogp_telegram_receive.py", str(uid), chat, normalized], check=False)
+                if approved.returncode not in (0,2):
+                    raise RuntimeError(f"MotoGP-Receiver fehlgeschlagen (Exit {approved.returncode}); Update bleibt offen.")
+                _ack(uid); return
             if result.returncode not in (0, 1, 2):
                 raise RuntimeError(f"Racing Archiv fehlgeschlagen (Exit {result.returncode}).")
             if result.returncode != 2:

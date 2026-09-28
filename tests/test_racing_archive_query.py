@@ -37,3 +37,75 @@ def test_natural_query_detection():
     assert q.is_query("Was gab es gestern über Marc Márquez?")
     assert q.is_query("Gib mir die Berichte über Deniz Öncü")
     assert q.is_query("Neuigkeiten über Jack Miller?")
+
+
+def test_natural_top_lists_paginate_without_repeating(monkeypatch,tmp_path):
+    state=tmp_path/"state.json"; monkeypatch.setattr(q,"STATE",state)
+    data=[{"story_key":str(i),"title":"Story "+str(i),"series":"MotoGP","url":"https://example.test/"+str(i)} for i in range(20)]
+    sent=[]; monkeypatch.setattr(q,"all_rows",lambda:data); monkeypatch.setattr(q,"send_message",sent.append)
+    monkeypatch.setattr(q,"published",lambda row:False)
+    assert q.handle("Zeig mir die Top 10")==10
+    saved=__import__("json").loads(state.read_text(encoding="utf-8"))
+    assert saved["offset"]==10 and len(saved["rows"])==10
+    sent.clear()
+    assert q.handle("Gib mir die Top 20 Berichte")==20
+    saved=__import__("json").loads(state.read_text(encoding="utf-8"))
+    assert saved["offset"]==10 and len(saved["rows"])==20
+    rendered="\n".join(sent)
+    assert "1." in rendered and "10." in rendered and "11." not in rendered
+    sent.clear()
+    assert q.handle("mehr")==10
+    assert "11." in sent[-1] and "20." in sent[-1]
+
+def test_more_uses_active_session(monkeypatch,tmp_path):
+    state=tmp_path/"state.json"; monkeypatch.setattr(q,"STATE",state)
+    data=[{"story_key":str(i),"title":"Story "+str(i),"series":"MotoGP","url":"https://example.test/"+str(i)} for i in range(20)]
+    state.write_text(__import__("json").dumps({"label":"Top 20","rows":data,"offset":10}),encoding="utf-8")
+    sent=[]; monkeypatch.setattr(q,"send_message",sent.append); monkeypatch.setattr(q,"published",lambda row:False)
+    assert q.handle("mehr")==10
+    saved=__import__("json").loads(state.read_text(encoding="utf-8"))
+    assert saved["offset"]==20
+    assert "11." in sent[-1] and "20." in sent[-1]
+
+def test_natural_top_does_not_capture_approval_commands(monkeypatch):
+    assert q.handle("motogp alle")==2
+    assert q.handle("motogp 1")==2
+
+
+def test_free_form_nlu_last_three_toprak(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"search","riders":["Toprak Razgatlıoğlu"],"nationality":"","series":[],"hours":None,"days":None,"from_yesterday":False,"limit":3,"status":"all","selection":None})
+    monkeypatch.setattr(q,"all_rows",lambda:[dict(rows()[0],story_key=str(i)) for i in range(5)])
+    monkeypatch.setattr(q,"show",lambda found,label:(len(found),label))
+    result=q.handle("Gib mir mal die letzten drei Sachen, die du über Toprak gefunden hast")
+    assert result[0]==3 and "Toprak" in result[1]
+
+def test_free_form_nlu_turkish_since_yesterday(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"search","riders":[],"nationality":"Turkish","series":[],"hours":None,"days":None,"from_yesterday":True,"limit":None,"status":"all","selection":None})
+    from datetime import datetime,timezone,timedelta
+    yesterday=(datetime.now(timezone.utc).date()-timedelta(days=1)).isoformat()
+    dynamic=[dict(rows()[0],_pool_day=yesterday)]
+    monkeypatch.setattr(q,"all_rows",lambda:dynamic)
+    monkeypatch.setattr(q,"show",lambda found,label:(found,label))
+    found,label=q.handle("Von gestern bis jetzt alles zu den türkischen Fahrern")
+    assert len(found)==1 and "Toprak" in found[0]["title"]
+
+def test_free_form_nlu_48h_marquez_schema(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"search","riders":["Marc Marquez"],"nationality":"","series":[],"hours":48,"days":None,"from_yesterday":False,"limit":None,"status":"all","selection":None})
+    monkeypatch.setattr(q,"all_rows",lambda:[])
+    monkeypatch.setattr(q,"show",lambda found,label:label)
+    assert "48 Stunden" in q.handle("Was wurde denn so in den letzten zwei Tagen alles über Marc Márquez geschrieben?")
+
+
+def test_spoken_turkish_approval_normalizes(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"approve","lane":"turkish","selections":[1],"riders":[]})
+    assert q.handle("Turkish Rider Nummer eins")==("approval","turkish 1")
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"approve","lane":"turkish","selections":[5],"riders":[]})
+    assert q.handle("Nimm bei den Turkish Ridern die fünf")==("approval","turkish 5")
+
+def test_spoken_motogp_multi_approval_normalizes(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"approve","lane":"motogp","selections":[3,4],"riders":[]})
+    assert q.handle("MotoGP die drei und vier posten")==("approval","motogp 3,4")
+
+def test_spoken_approval_rejects_out_of_range(monkeypatch):
+    monkeypatch.setattr(q,"interpret",lambda text:{"intent":"approve","lane":"motogp","selections":[8],"riders":[]})
+    assert q.handle("MotoGP Nummer acht posten")==2
