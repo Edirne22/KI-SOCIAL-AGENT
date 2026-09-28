@@ -91,15 +91,15 @@ def test_hallucinated_place_is_semantic_fail_when_available():
     c=post("MotoGP","Fermin Aldeguer wurde in Barcelona operiert.\n\nVor Japan musste er deshalb auf den OP-Tisch.")
     # Place provenance is not a deterministic whitelist field today; Semantic SOURCE-FACT must reject it when available.
     # We assert the deterministic whitelist does NOT pretend to own this fact, documenting the fallback boundary.
-    e=_whitelist(x,c);check(not any("Barcelona" in z for z in e),("unexpected deterministic place ownership",e))
-    print("E2E BOUNDARY: invented place requires Semantic SOURCE-FACT verification:",e)
+    e=_whitelist(x,c);check(any("Ort nicht in Quelle: Barcelona" in z for z in e),("invented place not deterministically rejected",e))
+    print("E2E EXPECTED BLOCK: invented place | Entity Guard:",e)
 def test_hallucinated_team_boundary():
     x=base("WorldSBK: Iker Lecuona wins","Iker Lecuona wins the WorldSBK race.")
     c=post("WorldSBK","Iker Lecuona gewinnt für das erfundene Phoenix-Werksteam.\n\nDer Sieg fällt deutlich aus.")
     e=_whitelist(x,c)
     # Editor prompt forbids unsupported teams, but deterministic whitelist currently has no team extractor.
-    check(not any("Phoenix" in z for z in e),("unexpected deterministic team ownership",e))
-    print("E2E BOUNDARY: invented team requires Semantic SOURCE-FACT verification:",e)
+    check(any("Team/Hersteller nicht in Quelle" in z for z in e),("invented team not deterministically rejected",e))
+    print("E2E EXPECTED BLOCK: invented team | Entity Guard:",e)
 def test_clean_realistic_control():
     x=base("WorldSBK Superpole Race: Iker Lecuona wins","Iker Lecuona wins the Superpole Race. Nicolo Bulega finishes second.")
     c=post("WorldSBK","Iker Lecuona gewinnt das Superpole Race.\n\nNicolo Bulega wird Zweiter und komplettiert damit das Ergebnis.")
@@ -132,12 +132,12 @@ def test_probe_degraded_invented_place():
     x=base("MotoGP: Fermin Aldeguer has surgery","Fermin Aldeguer had surgery before the Japan MotoGP round.","MotoGP")
     c=post("MotoGP","Fermin Aldeguer wurde in Barcelona operiert.\n\nVor Japan musste er deshalb auf den OP-Tisch.")
     ok,item=_degraded_single_caption_result(x,c)
-    print("E2E PROBE invented place degraded result:",ok,item.get("semantic_qm")); check(ok,("expected reproduced place blind spot",item))
+    check(not ok,("invented place still reached DEGRADED-PASS",item)); print("E2E EXPECTED BLOCK: invented place survives Semantic outage? NO")
 def test_probe_degraded_invented_team():
     x=base("WorldSBK: Iker Lecuona wins","Iker Lecuona wins the WorldSBK race.")
     c=post("WorldSBK","Iker Lecuona gewinnt für das Phoenix-Werksteam.\n\nDer Sieg fällt deutlich aus.")
     ok,item=_degraded_single_caption_result(x,c)
-    print("E2E PROBE invented team degraded result:",ok,item.get("semantic_qm")); check(not ok,("PRODUCTION BLIND SPOT: invented team reached DEGRADED-PASS",item))
+    check(not ok,("invented team still reached DEGRADED-PASS",item)); print("E2E EXPECTED BLOCK: invented team survives Semantic outage? NO")
 def test_degraded_semantic_outage_still_repairs_human_error():
     import importlib
     import motogp_content_agency_v2 as agency
