@@ -28,3 +28,30 @@ def turkish_web_scout(limit_per_source=120):
 
 def motoetkinlik_reference_data():
     return reference_snapshots()
+
+
+def racing_editorial_scout(limit_per_source=120):
+    """General Racing discovery over the same stable web sources as Turkish Rider.
+
+    Unlike turkish_web_scout(), this lane deliberately does NOT require a registered
+    Turkish rider. It only discovers candidates; article fetch, freshness, series,
+    fact and QM gates remain downstream authorities.
+    """
+    rows=[];seen=set()
+    valid=("MotoGP","Moto2","Moto3","WorldSBK","WorldSSP","WorldSSP300","WorldSPB","Moto4")
+    for row in discover_news(limit_per_endpoint=min(limit_per_source,120)):
+        title,url,series=row["title"],row["url"],row.get("series","")
+        if url in seen:
+            continue
+        seen.add(url);rows.append((title,url,series if series in valid else "",row.get("source","MotoEtkinlik")))
+    for source,base in _legacy.TURKISH_WEB_SOURCES:
+        for title,url,series,_rider in _legacy._turkish_site_crawl(source,base,max_pages=30,depth=2):
+            if url in seen:
+                continue
+            # The crawler already applies source-specific article routes. Keep only
+            # racing-relevant candidates; unknown series is resolved from the article later.
+            if _legacy.racing_relevance(title+" "+url)<=0:
+                continue
+            seen.add(url);rows.append((title,url,series if series in valid else "",source))
+    print(f"RACING EDITORIAL SCOUT: {len(rows)} general candidates")
+    return rows

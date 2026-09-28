@@ -4,7 +4,7 @@ from telegram_bot import send_photo
 from motogp_quality_manager import review as racing_review, review_batch
 from chief_quality_manager import review as chief_review
 from racing_semantic_qm import review_detailed as semantic_review_detailed
-from turkish_riders_scout_adapter import scout as turkish_scout, racing_scout, rider_centered_scout, discovery_scout, turkish_media_scout, turkish_web_scout
+from turkish_riders_scout_adapter import scout as turkish_scout, racing_scout, rider_centered_scout, discovery_scout, turkish_media_scout, turkish_web_scout, racing_editorial_scout
 from turkish_rider_names import CANONICAL_ALIASES as SHARED_TURKISH_ALIASES, canonical_rider as registry_canonical_rider, context_for as registry_context_for
 from motoparktv_video_ingest import discover as motoparktv_discover
 from motoparktv_runtime import collect as motoparktv_collect
@@ -522,6 +522,10 @@ def run_v8():
                    'summary':v.get('transcript','')[:4000],'video_transcript':v.get('transcript',''),
                    'source_reliability':'rider-close-discovery','source_lineage':v.get('source_lineage',{})})
  except Exception as e:print('MOTOPARKTV DISCOVERY FAIL:',type(e).__name__,str(e)[:180])
+ for t,u,s,source in racing_editorial_scout(120):
+  u=canonical_url(u);key=story_key(t,u)
+  if u not in seen and key not in known:
+   seen.add(u);raw.append((t,u));meta[u]={'discovery_source':'racing-editorial:'+source,**({'source_series':s,'series':s,'series_locked':True} if s else {})}
  for t,u,s,r in racing_scout(140):
   u=canonical_url(u);key=story_key(t,u)
   if u not in seen and key not in known:seen.add(u);raw.append((t,u));meta[u]={'source_series':s,'series':s,'series_locked':True,**({'turkish_rider':r} if r else {})}

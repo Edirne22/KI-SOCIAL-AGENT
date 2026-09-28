@@ -38,3 +38,22 @@ assert refs["riders"]["url"]==m.REFERENCE_ENDPOINTS["riders"]
 assert "Toprak" in refs["riders"]["text"]
 print("TEST – MotoEtkinlik Source Adapter: PASS")
 
+
+
+def test_general_racing_editorial_lane_keeps_non_turkish_motogp(monkeypatch):
+ import turkish_riders_scout_adapter as a
+ fixture_rows=[
+  {"title":"Ai Ogura returns to MotoGP action in Austria","url":"https://motoetkinlik.com/ai-ogura-avusturya-motogp-donus/","series":"MotoGP","source":"MotoEtkinlik"},
+  {"title":"Alex Rins Spielberg MotoGP weekend update","url":"https://motoetkinlik.com/alex-rins-spielberg-motogp/","series":"MotoGP","source":"MotoEtkinlik"},
+ ]
+ monkeypatch.setattr(a,"discover_news",lambda limit_per_endpoint=120: fixture_rows)
+ monkeypatch.setattr(a._legacy,"TURKISH_WEB_SOURCES",())
+ rows=a.racing_editorial_scout(120)
+ assert [r[0] for r in rows]==[x["title"] for x in fixture_rows]
+ assert all(r[2]=="MotoGP" and r[3]=="MotoEtkinlik" for r in rows)
+ # Regression: this general lane must not require Turkish rider registration.
+ assert all(a._legacy.rider_for(r[0]+" "+r[1],r[2])=="" for r in rows)
+
+def test_motoetkinlik_category_path_contract():
+ assert m.NEWS_ENDPOINTS["MotoGP"]=="https://motoetkinlik.com/kategori/motogp/"
+ assert "/kategori/" in m.NEWS_ENDPOINTS["MotoGP"]
