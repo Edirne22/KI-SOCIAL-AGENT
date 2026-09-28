@@ -1,0 +1,30 @@
+name: TEST – Racing Quality Lab Production Gates
+on:
+  pull_request:
+    paths:
+      - "racing_quality_lab_production_adapter.py"
+      - "tests/test_racing_quality_lab_production.py tests/test_racing_quality_lab_production_redteam.py"
+      - "tests/test_racing_quality_lab_production_redteam.py"
+      - "racing_mutation_engine.py"
+      - "racing_event_contract.py"
+      - "racing_source_claim_guard.py"
+      - "racing_source_entity_guard.py"
+      - "chief_quality_manager.py"
+      - ".github/workflows/test-racing-quality-lab-production.yml"
+  workflow_dispatch:
+jobs:
+  production-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install production-test dependencies
+        run: pip install requests Pillow beautifulsoup4
+      - name: Compile
+        run: python -m py_compile racing_quality_lab_production_adapter.py tests/test_racing_quality_lab_production.py
+      - name: Evaluate real Racing truth gates
+        run: |
+          python -m tests.test_racing_quality_lab_production
+          python -m tests.test_racing_quality_lab_production_redteam
