@@ -10,7 +10,7 @@ def check(cond,msg):
 def item():
     return {
       "title":"WorldSBK EICMA Italian Round Superpole Yarışı: Lecuona Kazandı, Bulega İkinci",
-      "summary":"Iker Lecuona Superpole Race'i kazandı. Bulega 2,005 saniye geride ikinci oldu.",
+      "summary":"Cremona: Iker Lecuona Superpole Race'i kazandı. Bulega 2,005 saniye geride ikinci oldu.",
       "url":"https://motoetkinlik.com/worldsbk-eicma-italian-round-superpole-yarisi-lecuona-kazandi-bulega-ikinci",
       "series":"WorldSBK","source_series":"WorldSBK","trusted_series":"WorldSBK"
     }
