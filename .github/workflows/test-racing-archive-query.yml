@@ -21,4 +21,4 @@ jobs:
       - name: Syntax
         run: python -m py_compile racing_archive_query.py racing_manual_selection.py telegram_router.py motogp_content_agency_v2.py
       - name: Archive query regression
-        run: pytest -q tests/test_racing_archive_query.py
+        run: PYTHONPATH=. pytest -q tests/test_racing_archive_query.py
