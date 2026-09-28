@@ -69,17 +69,20 @@ def is_query(text):
     low=norm(text)
     return bool(any(k in low for k in ("gestern","vorgestern","stunden","tag","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig","liste","ungepostet","gepostet","tuerk","turk","türk","motogp","moto2","moto3","worldsbk","worldssp","wsbk","wssp")) or any(norm(r) in low for r in list(getattr(agency,"RIDERS_V2",()))+list(getattr(agency,"SHARED_TURKISH_ALIASES",()))))
 
-def show(rows,label):
+def show(rows,label,initial_limit=None):
     if not rows:
         send_message("🏁 Racing %s: keine gespeicherten Treffer."%label); return 0
     STATE.parent.mkdir(parents=True,exist_ok=True)
-    STATE.write_text(json.dumps({"label":label,"rows":rows,"offset":min(10,len(rows))},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    for off in range(0,len(rows),5):
-        lines=["🏁 Racing %s (%d–%d/%d)"%(label,off+1,min(off+5,len(rows)),len(rows)),""]
-        for i,x in enumerate(rows[off:off+5],off+1):
+    visible=rows[:initial_limit] if initial_limit else rows
+    STATE.write_text(json.dumps({"label":label,"rows":rows,"offset":len(visible)},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    for off in range(0,len(visible),5):
+        lines=["🏁 Racing %s (%d–%d/%d)"%(label,off+1,min(off+5,len(visible)),len(rows)),""]
+        for i,x in enumerate(visible[off:off+5],off+1):
             status="✅ bereits gepostet" if published(x) else "🟢 noch nicht gepostet"
             lines += ["%d. [%s] %s"%(i,x.get("series","Racing")," ".join(str(x.get("title","")).split())[:180]),status,"🔗 "+x.get("url",""),""]
-        if off+5>=len(rows): lines += ["Auswählen: T17 · poste 17 · nimm 17 · racing artikel 17"]
+        if off+5>=len(visible):
+            if len(visible)<len(rows): lines += ["Weitere Treffer: mehr · weiter · die nächsten 10"]
+            lines += ["Auswählen: T17 · poste 17 · nimm 17 · racing artikel 17"]
         send_message("\n".join(lines))
     return len(rows)
 
@@ -112,7 +115,8 @@ def handle(text):
     low=norm(c)
     # Natural-language aliases for the existing deterministic archive browser.
     m=re.fullmatch(r"(?:zeig(?:e)?|gib|liste)(?:\s+mir)?\s+(?:die\s+)?top\s*(10|20)(?:\s+(?:berichte|meldungen|artikel))?",low,re.I)
-    if m: return manual.handle("racing top"+m.group(1))
+    if m:
+        n=int(m.group(1)); return show(all_rows()[:n],"Top %d"%n,initial_limit=10)
     if re.fullmatch(r"(?:mehr|weiter|nachste(?:n)?(?:\s+10)?|die\s+nachsten\s+10)",low,re.I):
         return show_more()
     m=re.fullmatch(r"(?:t\s*|poste\s+|nimm\s+)(\d+)",c,re.I)
