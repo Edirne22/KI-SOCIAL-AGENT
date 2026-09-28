@@ -1,0 +1,34 @@
+name: TEST – Racing Quality Lab Foundation
+on:
+  pull_request:
+    paths:
+      - "racing_quality_lab.py"
+      - "racing_blind_validator.py"
+      - "racing_mutation_engine.py"
+      - "racing_model_jury.py"
+      - "racing_release_gate.py"
+      - "tests/test_racing_quality_lab.py"
+      - "tests/test_racing_quality_lab_stage2.py tests/test_racing_quality_lab_redteam.py"
+      - "tests/test_racing_model_jury.py"
+      - "tests/test_racing_release_gate.py"
+      - "tests/test_racing_quality_lab_redteam.py"
+      - ".github/workflows/test-racing-quality-lab.yml"
+      - "docs/RACING_EVIDENCE_MAP.md"
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile
+        run: python -m py_compile racing_quality_lab.py racing_blind_validator.py racing_mutation_engine.py racing_model_jury.py racing_release_gate.py tests/test_racing_quality_lab.py tests/test_racing_quality_lab_stage2.py
+      - name: Eval + evidence regression
+        run: |
+          python -m tests.test_racing_quality_lab
+          python -m tests.test_racing_quality_lab_stage2
+          python -m tests.test_racing_model_jury
+          python -m tests.test_racing_release_gate
+          python -m tests.test_racing_quality_lab_redteam
