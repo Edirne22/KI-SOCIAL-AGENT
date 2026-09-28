@@ -1,11 +1,22 @@
 """Independent semantic source-to-caption QM for Motorcycle Racing – SOURCE-FACT-CONTRACT-V1, fail closed."""
 import json,re
-from llm_client import generate
+from llm_client import generate,redact_secrets
 from racing_language_rules import prompt_contract as racing_lexicon_contract
 
 BRAND_HASHTAGS={'#buelentsbikelife'}
 SOURCE_FACT_CONTRACT_VERSION='SOURCE-FACT-CONTRACT-V1'
 _ALLOWED_EVIDENCE_FIELDS={'series','title','summary'}
+
+class SemanticContractError(ValueError):
+ def __init__(self,stage,reason):
+  super().__init__(reason);self.stage=stage
+
+def _diag_response(raw,limit=240):
+ text=redact_secrets(str(raw or '')).replace('\r',' ').replace('\n',' ')
+ text=re.sub(r'\s+',' ',text).strip()
+ return text[:limit]
+
+def _contract_error(stage,reason):raise SemanticContractError(stage,reason)
 
 def _clean_json(raw):
  raw=(raw or '').strip()
@@ -79,17 +90,17 @@ def _evidence_exists(item,evidence):
  return False
 
 def _validate_contract(item,o):
- if o.get('contract_version')!=SOURCE_FACT_CONTRACT_VERSION:raise ValueError('SOURCE-FACT-CONTRACT version missing/invalid')
- if o.get('coverage_complete') is not True:raise ValueError('coverage_complete must be true')
+ if o.get('contract_version')!=SOURCE_FACT_CONTRACT_VERSION:_contract_error('contract_version','SOURCE-FACT-CONTRACT version missing/invalid')
+ if o.get('coverage_complete') is not True:_contract_error('coverage','coverage_complete must be true')
  claims=o.get('claims')
- if not isinstance(claims,list) or not claims:raise ValueError('claims missing/empty')
+ if not isinstance(claims,list) or not claims:_contract_error('claims','claims missing/empty')
  hard_reasons=[];normalized=[]
  for claim in claims:
-  if not isinstance(claim,dict):raise ValueError('claim must be object')
+  if not isinstance(claim,dict):_contract_error('claim_schema','claim must be object')
   text=str(claim.get('claim','')).strip();kind=claim.get('claim_type');status=claim.get('status');evidence=claim.get('source_evidence',[])
-  if not text or kind not in ('FACT','OPINION_QUESTION') or status not in ('SUPPORTED','UNSUPPORTED') or not isinstance(evidence,list):raise ValueError('claim schema invalid')
+  if not text or kind not in ('FACT','OPINION_QUESTION') or status not in ('SUPPORTED','UNSUPPORTED') or not isinstance(evidence,list):_contract_error('claim_schema','claim schema invalid')
   if status=='SUPPORTED' and kind=='FACT':
-   if not evidence or not all(isinstance(e,dict) and _evidence_exists(item,e) for e in evidence):raise ValueError(f'FACT evidence invalid: {text[:80]}')
+   if not evidence or not all(isinstance(e,dict) and _evidence_exists(item,e) for e in evidence):_contract_error('evidence',f'FACT evidence invalid: {text[:80]}')
   # Only unsupported factual assertions are hard failures. A genuinely open
   # opinion/community question is not a source-fact claim and must not kill
   # an otherwise verified Racing story.
@@ -128,16 +139,19 @@ Antworte NUR JSON:
 {{"contract_version":"SOURCE-FACT-CONTRACT-V1","coverage_complete":true|false,"claims":[{{"claim":"...","claim_type":"FACT|OPINION_QUESTION","status":"SUPPORTED|UNSUPPORTED","source_evidence":[{{"source_field":"title|summary|series|locked_metadata.<key>","quote":"exakter Quelltext"}}]}}],"german_ok":true|false,"style_ok":true|false,"repair_reasons":["..."]}}'''
 
 def review_detailed(item,caption):
- prompt=_prompt(item,caption)
+ prompt=_prompt(item,caption);raw=''
  try:
-  o=_clean_json(generate('racing_semantic_qm',prompt))
+  raw=generate('racing_semantic_qm',prompt)
+  o=_clean_json(raw)
   hard,hard_reasons,claims=_validate_contract(item,o)
   language=all(o.get(k) is True for k in ('german_ok','style_ok'))
   repair=[str(x) for x in o.get('repair_reasons',[]) if str(x).strip()]
   if hard and not language and not repair:repair=['Sprache/Stil reparieren']
   return {'hard_ok':hard,'language_ok':language,'hard_reasons':hard_reasons,'repair_reasons':repair,'claims':claims,'coverage_complete':True,'contract_version':SOURCE_FACT_CONTRACT_VERSION,'technical_error':False}
  except (json.JSONDecodeError,KeyError,TypeError,ValueError) as e:
-  return {'hard_ok':False,'language_ok':False,'hard_reasons':[f'Semantischer Fakten-QM technisch ungueltig: {type(e).__name__}: {str(e)[:140]}'],'repair_reasons':[],'claims':[],'coverage_complete':False,'contract_version':SOURCE_FACT_CONTRACT_VERSION,'technical_error':True,'technical_reason':type(e).__name__}
+  stage=getattr(e,'stage','json_parse' if isinstance(e,json.JSONDecodeError) else 'response_validation')
+  reason=str(e)[:140];diag=_diag_response(raw)
+  return {'hard_ok':False,'language_ok':False,'hard_reasons':[f'Semantischer Fakten-QM technisch ungueltig: {type(e).__name__}: {reason}'],'repair_reasons':[],'claims':[],'coverage_complete':False,'contract_version':SOURCE_FACT_CONTRACT_VERSION,'technical_error':True,'technical_reason':type(e).__name__,'technical_stage':stage,'technical_detail':reason,'response_diagnostic':diag}
  except Exception as e:
   return {'hard_ok':False,'language_ok':False,'hard_reasons':[f'Semantischer Fakten-QM Provider nicht verfuegbar: {type(e).__name__}: {str(e)[:140]}'],'repair_reasons':[],'claims':[],'coverage_complete':False,'contract_version':SOURCE_FACT_CONTRACT_VERSION,'technical_error':True,'technical_reason':type(e).__name__}
 
