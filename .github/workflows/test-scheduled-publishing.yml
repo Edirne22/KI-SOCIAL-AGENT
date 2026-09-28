@@ -1,0 +1,21 @@
+name: TEST – Scheduled Publishing Queue
+on:
+  pull_request:
+    paths:
+      - 'publication_claim.py'
+      - 'racing_archive_query.py'
+      - 'motogp_telegram_receive_v85.py'
+      - 'tests/test_scheduled_publishing_queue.py'
+      - '.github/workflows/test-scheduled-publishing.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install pytest requests pillow beautifulsoup4
+      - run: python -m py_compile publication_claim.py racing_archive_query.py motogp_telegram_receive_v85.py
+      - run: pytest -q tests/test_scheduled_publishing_queue.py
