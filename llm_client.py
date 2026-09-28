@@ -71,7 +71,7 @@ def _request_json(method,url,headers,payload,timeout,max_retries=1,provider_name
 def _provider_request_retries(provider):return int(provider.get('request_max_retries',1))
 def _generate_gemini(prompt,provider,key):
  headers={'Content-Type':'application/json','X-goog-api-key':key};payload={'contents':[{'parts':[{'text':prompt}]}]};errors=[]
- for model in provider['text_models']:
+ for model in provider['text_models'][:int(provider.get('text_model_limit',len(provider['text_models']))):
   try:
    data=_request_json('POST',f"{provider['base_url']}/models/{model}:generateContent",headers,payload,provider['timeout_seconds'],max_retries=_provider_request_retries(provider),provider_name='gemini');return redact_secrets(data['candidates'][0]['content']['parts'][0]['text']).strip()
   except (KeyError,IndexError,TypeError) as e:errors.append(f'{model}: unvollstaendige Antwort ({e})')
@@ -94,7 +94,7 @@ def generate(task_name,prompt):
  for provider_name in providers:
   if provider_in_cooldown(provider_name):
    errors.append(f"{provider_name}: 429-Cooldown");continue
-  provider=dict(get_provider_config(provider_name));provider['timeout_seconds']=min(float(provider.get('timeout_seconds',120)),float(task.get('timeout_seconds',provider.get('timeout_seconds',120))));provider['request_max_retries']=int(task.get('request_max_retries',provider.get('request_max_retries',1)));key=_provider_key_if_available(provider_name)
+  provider=dict(get_provider_config(provider_name));provider['timeout_seconds']=min(float(provider.get('timeout_seconds',120)),float(task.get('timeout_seconds',provider.get('timeout_seconds',120))));provider['request_max_retries']=int(task.get('request_max_retries',provider.get('request_max_retries',1)));provider['text_model_limit']=int(task.get('text_model_limit',provider.get('text_model_limit',999)));key=_provider_key_if_available(provider_name)
   if not key:
    errors.append(f"{provider_name}: API-Key fehlt");continue
   try:
