@@ -63,4 +63,16 @@ fake_errs=agency.fact_whitelist_errors(rider_src,rider_fake)
 ok(not any("Fahrer nicht in Quelle" in e for e in good_errs),"Can Oncu -> Can Öncü alias overblocked")
 ok(any("Fahrer nicht in Quelle" in e for e in fake_errs),"invented Toprak rider passed")
 
-print(f"PRODUCTION-GATE RED TEAM: {passed}/12 PASS")
+# Run #139 attacks: a generated summary must not license a definitive future
+# transfer when the source title itself is not explicitly confirmed.
+run139=item("Franco Morbidelli ağzından kaçırdı: 2027’de WorldSBK’ye geliyor",
+            "Franco Morbidelli hat seinen WorldSBK-Start 2027 bestätigt. Ducati ist noch nicht offiziell bestätigt.")
+ok(blocked(run139,"Franco Morbidelli hat bestätigt, dass er 2027 in der WorldSBK an den Start geht.\n\nEin Ducati-Abkommen steht noch aus.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #BuelentsBikeLife"),"Run139 summary certainty poisoning passed")
+
+official=item("OFFICIAL: Morbidelli confirmed for WorldSBK 2027",
+              "Context about the confirmed move.")
+ok(not blocked(official,"Morbidelli wechselt 2027 in die WorldSBK.\n\nDer Wechsel ist offiziell bestätigt.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #BuelentsBikeLife"),"explicit official title overblocked")
+
+ok(blocked(rider_src,"Can Öncü wird Sechster.\n\nEin enger Schnitt für den nationalen Sportler.\n\nWie einschätzen ihr die Chancen?\n\n#WorldSSP #MotorradRacing #BuelentsBikeLife"),"Run139 bad German passed")
+
+print(f"PRODUCTION-GATE RED TEAM: {passed}/16 PASS")

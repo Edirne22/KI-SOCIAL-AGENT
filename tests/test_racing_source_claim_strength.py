@@ -73,3 +73,22 @@ def test_raw_confirmed_title_still_allows_definitive_caption():
 if __name__=="__main__":
     test_run138_summary_cannot_upgrade_uncertain_raw_title()
     test_raw_confirmed_title_still_allows_definitive_caption()
+
+
+def test_run139_summary_cannot_license_definitive_transfer_from_nonconfirmed_title():
+    x={"title":"Franco Morbidelli ağzından kaçırdı: 2027’de WorldSBK’ye geliyor",
+       "summary":"Franco Morbidelli hat seinen WorldSBK-Start 2027 bestätigt. Ducati ist noch nicht offiziell bestätigt.",
+       "series":"WorldSBK","source_series":"WorldSBK"}
+    check(not source_has_definitive_confirmation(x),x)
+    bad=blocks("Franco Morbidelli hat in Cremona bestätigt, dass er 2027 im WorldSBK-Kalender an den Start geht. Ein offizielles Ducati-Abkommen steht noch aus.")
+    check(claim_strength_errors(x,bad),claim_strength_errors(x,bad))
+
+def test_run139_explicit_official_title_remains_positive_control():
+    x={"title":"OFFICIAL: Morbidelli confirmed for WorldSBK 2027",
+       "summary":"Context about the move.","series":"WorldSBK","source_series":"WorldSBK"}
+    check(source_has_definitive_confirmation(x),x)
+    check(not claim_strength_errors(x,blocks("Morbidelli wechselt 2027 in die WorldSBK.")),x)
+
+if __name__=="__main__":
+    test_run139_summary_cannot_license_definitive_transfer_from_nonconfirmed_title()
+    test_run139_explicit_official_title_remains_positive_control()

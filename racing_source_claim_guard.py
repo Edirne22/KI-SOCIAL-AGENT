@@ -7,7 +7,7 @@ a caption from using definitive future/transfer wording when the immutable sourc
 """
 import re,unicodedata
 
-VERSION="RACING-SOURCE-CLAIM-GUARD-V1.1"
+VERSION="RACING-SOURCE-CLAIM-GUARD-V1.2"
 
 def fold(value):
     s=unicodedata.normalize("NFKD",str(value or "")).casefold().replace("ı","i")
@@ -32,35 +32,47 @@ _SOURCE_DEFINITIVE=(
 )
 # German editorial wording that upgrades an uncertain source to a settled future fact.
 _CAPTION_DEFINITIVE=(
- r"\bsteht (?:fest|klar)\b",r"\bist (?:fix|bestaetigt)\b",r"\bwurde bestaetigt\b",
- r"\bhat (?:unterschrieben|bestaetigt)\b",
- r"\bwechselt\b",r"\bgeht .*\b an den start\b",r"\bfaehrt ab\b",
+ r"\bsteht (?:fest|klar)\b",r"\bist (?:fix|bestaetigt|bestatigt)\b",r"\bwurde (?:bestaetigt|bestatigt)\b",
+ r"\bhat (?:unterschrieben|bestaetigt|bestatigt)\b",r"\b(?:bestaetigt|bestatigt)\b",
+ r"\bwechselt\b",r"\bgeht .*\b an den start\b",r"\ban den start geht\b",r"\bfaehrt ab\b",
  r"\bwird (?:wechseln|fahren|starten|antreten)\b",r"\b20\d{2}\s+startet\b[^.!?\n]*\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",
  r"\bab \d{4} .*\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",
 )
 _CAPTION_UNCERTAIN=(
- r"\bsignal\b",r"\bdeutet? .*\bhin\b",r"\bkoennte\b",r"\bduerfte\b",
- r"\bwird erwartet\b",r"\bmoeglich\b",r"\bwohl\b",r"\bvermutlich\b",
- r"\bnicht (?:offiziell )?bestaetigt\b",r"\bnoch nicht bestaetigt\b",
+ r"\bsignal\b",r"\bdeutet? .*\bhin\b",r"\b(?:koennte|konnte)\b",r"\bduerfte\b",
+ r"\bwird erwartet\b",r"\b(?:moeglich|moglich)\b",r"\bwohl\b",r"\bvermutlich\b",
+ r"\bnicht (?:offiziell )?(?:bestaetigt|bestatigt)\b",r"\bnoch nicht (?:bestaetigt|bestatigt)\b",
 )
 
 def _any(patterns,text):
     return any(re.search(p,text) for p in patterns)
 
+def _title_has_explicit_confirmation(title):
+    cleaned=re.sub(r"\bnot (?:yet )?(?:officially )?confirmed\b"," ",title)
+    cleaned=re.sub(r"\bresmen (?:henuz )?dogrulanmadi\b"," ",cleaned)
+    return _any(_SOURCE_DEFINITIVE,cleaned)
+
+def _future_transfer_title(title):
+    return bool(re.search(r"\b20\d{2}\b",title) and re.search(r"\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",title))
+
 def source_has_uncertainty(item):
     src=source_text(item)
-    return _any(_UNCERTAIN,src)
+    title=fold(str(item.get("title","")))
+    if _any(_UNCERTAIN,src):
+        return True
+    # Future-series/transfer headlines are not treated as officially confirmed
+    # merely because a generated summary uses definitive wording.
+    return _future_transfer_title(title) and not _title_has_explicit_confirmation(title)
 
 def source_has_definitive_confirmation(item):
     title=fold(str(item.get("title","")))
-    # Run #138 invariant: an explicitly uncertain RAW title is the certainty
-    # ceiling.  An LLM/generated summary must never upgrade "strong signal"
-    # into "confirmed" and thereby license a definitive caption.
+    # The raw/source title is the certainty ceiling. Generated or refreshed
+    # summaries are useful context but may never license a stronger future/
+    # transfer claim. Definitive wording therefore requires an explicit
+    # confirmation marker in the title itself.
     if _any(_UNCERTAIN,title):
         return False
-    src=source_text(item)
-    # Explicit negation must not be mistaken for confirmation.
-    cleaned=re.sub(r"\bnot (?:yet )?(?:officially )?confirmed\b"," ",src)
+    cleaned=re.sub(r"\bnot (?:yet )?(?:officially )?confirmed\b"," ",title)
     cleaned=re.sub(r"\bresmen (?:henuz )?dogrulanmadi\b"," ",cleaned)
     return _any(_SOURCE_DEFINITIVE,cleaned)
 
