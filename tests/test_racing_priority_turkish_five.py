@@ -259,8 +259,26 @@ def test_turkish_range_dispatches_all_selected_items():
   if old_lane is not None:sys.modules['turkish_editor_qm']=old_lane
 
 
+def test_turkish_visible_five_dedupes_racing_top5_and_backfills():
+ sent=[];old_send=a.send_message;old_sender=a._send_turkish_source_photo;old_roster=a.roster_names
+ try:
+  a.send_message=lambda m:sent.append(m);a._send_turkish_source_photo=lambda og,caption:False;a.roster_names=lambda:[]
+  rows=[{'title':f'Can Öncü WorldSSP story {i}','summary':'Can Öncü WorldSSP race','url':f'https://example.test/can-{i}','published_at':'2026-09-28T08:00:00+00:00','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'} for i in range(1,7)]
+  racing=[dict(rows[1])]  # Same report is already visible in the normal Racing Top 5.
+  from datetime import datetime,timezone
+  visible=a.turkish_five_preview(rows,datetime(2026,9,28,10,0,tzinfo=timezone.utc),10,exclude_items=racing)
+  assert len(visible)==5
+  assert all(x['url']!=racing[0]['url'] for x in visible)
+  assert rows[5]['url'] in {x['url'] for x in visible}  # next eligible report moved up
+  import json
+  session=json.loads(a.TURKISH_SESSION.read_text(encoding='utf-8'))
+  assert all(x['url']!=racing[0]['url'] for x in session['items'])
+ finally:
+  a.send_message=old_send;a._send_turkish_source_photo=old_sender;a.roster_names=old_roster
+
+
 if __name__=='__main__':
- test_turkish_range_dispatches_all_selected_items()
+ test_turkish_range_dispatches_all_selected_items();test_turkish_visible_five_dedupes_racing_top5_and_backfills()
  test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
