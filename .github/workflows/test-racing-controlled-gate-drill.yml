@@ -3,6 +3,11 @@ on:
   pull_request:
     paths:
       - 'tests/test_racing_controlled_gate_drill.py'
+      - 'racing_source_entity_guard.py'
+      - 'racing_v855_hardening.py'
+      - 'motogp_quality_manager.py'
+      - 'racing_semantic_qm.py'
+      - 'racing_final_guard.py'
       - '.github/workflows/test-racing-controlled-gate-drill.yml'
   workflow_dispatch:
 jobs:
@@ -14,5 +19,5 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install requests Pillow beautifulsoup4
-      - run: python -m py_compile tests/test_racing_controlled_gate_drill.py racing_event_contract.py racing_source_claim_guard.py motogp_quality_manager.py racing_semantic_qm.py racing_final_guard.py chief_quality_manager.py racing_v855_hardening.py
+      - run: python -m py_compile tests/test_racing_controlled_gate_drill.py racing_event_contract.py racing_source_claim_guard.py racing_source_entity_guard.py motogp_quality_manager.py racing_semantic_qm.py racing_final_guard.py chief_quality_manager.py racing_v855_hardening.py
       - run: PYTHONPATH=. python tests/test_racing_controlled_gate_drill.py
