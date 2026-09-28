@@ -47,7 +47,7 @@ def test_fake_number_injected():
     # Closed source whitelist owns exact number provenance. Reproduce it through production hardening binding.
     import motogp_content_agency_v2 as agency
     import racing_v855_hardening as hard
-    hard.apply(agency)
+    hard.install(agency)
     errs=agency.fact_whitelist_errors(x,c)
     check(any("Zahl nicht in Quelle" in e for e in errs),("fake number not rejected",errs))
     print("E2E EXPECTED BLOCK: invented number | Whitelist:",errs)
@@ -56,7 +56,7 @@ def test_wrong_series_injected():
     c=post("WorldSSP","Can Öncü fährt in der MotoGP auf Platz sechs.\n\nEin starkes Rennen von ihm.")
     import motogp_content_agency_v2 as agency
     import racing_v855_hardening as hard
-    hard.apply(agency)
+    hard.install(agency)
     errs=agency.fact_whitelist_errors(x,c)
     check(any("Falsche Serie MotoGP" in e for e in errs),("wrong series not rejected",errs))
     print("E2E EXPECTED BLOCK: injected wrong series | Whitelist:",errs)
