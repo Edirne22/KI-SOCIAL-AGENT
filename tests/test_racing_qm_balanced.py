@@ -85,7 +85,7 @@ def test_stage3_blocks_cjk_duplicate_cta_and_karting_series_leak():
 
     kart={"series":"MotoGP","source_series":"MotoGP","series_locked":True,
           "title":"Zayn Sofuoğlu Mariembourg IAME Benelux karting final","summary":"IAME Benelux karting event."}
-    assert agency.series_for_raw(kart)=="Unsupported"
+    assert agency._unsupported_racing_discipline(kart) is True
     assert agency.racing_relevant(kart) is False
 
 
