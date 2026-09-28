@@ -267,6 +267,19 @@
     ],
     "2026-09-28": [
       {
+        "story_key": "title:sporcumuz-o-uz-ta-han-avrupa-ampiyonu-trmotosports",
+        "title": "Sporcumuz Oğuz Taşhan Avrupa Şampiyonu - TRmotosports",
+        "url": "https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu",
+        "summary": "Sporcumuz Oğuz Taşhan Avrupa Şampiyonu - TRmotosports",
+        "preview": "https://www.trmotosports.com/wp-content/uploads/2026/09/54_tashan.jpeg",
+        "published_at": "2026-09-28T15:27:14+00:00",
+        "series": "European SSP300 Cup",
+        "source_series": "European SSP300 Cup",
+        "series_locked": true,
+        "turkish_rider": "Oğuz Taşhan",
+        "kind": "news"
+      },
+      {
         "story_key": "title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta",
         "title": "Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta",
         "url": "https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu",
@@ -306,25 +319,38 @@
         "kind": "news"
       },
       {
+        "story_key": "title:briatore-azerbaycan-gp-deki-kazan-n-ard-ndan-norris-ten-z-r-diledi-trmotosports",
+        "title": "Briatore, Azerbaycan GP'deki kazanın ardından Norris'ten özür diledi - TRmotosports",
+        "url": "https://www.trmotosports.com/briatore-azerbaycan-gpdeki-kazanin-ardindan-norristen-ozur-diledi",
+        "summary": "Briatore, Azerbaycan GP'deki kazanın ardından Norris'ten özür diledi - TRmotosports",
+        "preview": "https://www.trmotosports.com/wp-content/uploads/2026/09/briatore_azerbaycan_gp8217deki_kazanin_ardindan_norris8217ten_ozur_diledi.jpg",
+        "published_at": "2026-09-28T12:18:19+00:00",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "title:mekies-max-grid-cezas-yla-ilgili-hen-z-net-bir-durum-yok-trmotosports",
+        "title": "Mekies: \"Max’in grid cezasıyla ilgili henüz net bir durum yok\" - TRmotosports",
+        "url": "https://www.trmotosports.com/mekies-maxin-grid-cezasiyla-ilgili-henuz-net-bir-durum-yok",
+        "summary": "Mekies: \"Max’in grid cezasıyla ilgili henüz net bir durum yok\" - TRmotosports",
+        "preview": "https://www.trmotosports.com/wp-content/uploads/2026/09/mekies_8220maxin_grid_cezasiyla_ilgili_henuz_net_bir_durum_yok8221.jpg",
+        "published_at": "2026-09-28T10:18:25+00:00",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
         "story_key": "title:dall-igna-dan-bulega-n-n-ampiyonlu-u-sonras-ducati-vurgusu-t-m-yar-lar-kazand",
         "title": "Dall’Igna’dan Bulega’nın şampiyonluğu sonrası Ducati vurgusu: “Tüm yarışları kazandı”",
         "url": "https://motoetkinlik.com/gigi-dallignadan-sampiyonluk-sonrasi-ducati-vurgusu-bu-motosiklet-tum-yarislari-kazandi",
         "summary": "Nicolo Bulega 2026 WorldSBK şampiyonluğuna ulaşırken Gigi Dall’Igna, tüm yarışları kazanan Ducati Panigale V4 R’ın başarısına dikkat çekti.",
         "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/nicolo-bulega-gigi-dalligna-ducati-worldsbk-2026-1.webp",
         "published_at": "2026-09-28T09:27:35+03:00",
-        "series": "WorldSBK",
-        "source_series": "WorldSBK",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "title:nicolo-bulega-2026-world-sbk-ampiyonu-lecuona-cremona-da-hat-trick-yapt",
-        "title": "Nicolo Bulega 2026 WORLD SBK Şampiyonu, Lecuona Cremona'da HAT-TRICK Yaptı!",
-        "url": "https://motoetkinlik.com/nicolo-bulega-2026-world-sbk-sampiyonu-lecuona-cremonada-hat-trick-yapti",
-        "summary": "Nicolò Bulega, Cremona WorldSBK 2. Yarışı'nda ikinci olarak 2026 Dünya Şampiyonluğu'nu ilan etti. Iker Lecuona ise Cremona'da hat-trick yaptı.",
-        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/06/nicolo-bulega-misano-pole-pozisyonu-2026-scaled.webp",
-        "published_at": "2026-09-27T17:40:07+03:00",
         "series": "WorldSBK",
         "source_series": "WorldSBK",
         "series_locked": true,
@@ -345,6 +371,19 @@
         "kind": "news"
       },
       {
+        "story_key": "title:nicolo-bulega-2026-world-sbk-ampiyonu-lecuona-cremona-da-hat-trick-yapt",
+        "title": "Nicolo Bulega 2026 WORLD SBK Şampiyonu, Lecuona Cremona'da HAT-TRICK Yaptı!",
+        "url": "https://motoetkinlik.com/nicolo-bulega-2026-world-sbk-sampiyonu-lecuona-cremonada-hat-trick-yapti",
+        "summary": "Nicolò Bulega, Cremona WorldSBK 2. Yarışı'nda ikinci olarak 2026 Dünya Şampiyonluğu'nu ilan etti. Iker Lecuona ise Cremona'da hat-trick yaptı.",
+        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/06/nicolo-bulega-misano-pole-pozisyonu-2026-scaled.webp",
+        "published_at": "2026-09-27T17:40:07+03:00",
+        "series": "WorldSBK",
+        "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
         "story_key": "motogp:10859202",
         "title": "WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!",
         "url": "https://tr.motorsport.com/wsbk/news/wsbk-superpole-italya-lecuona-cremonada-buleganin-pole-serisini-sonlandirdi/10859202",
@@ -353,19 +392,6 @@
         "published_at": "2026-09-26T09:50:00Z",
         "series": "MotoGP",
         "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "title:wssp-i-talya-2-yar-cremona-da-hafta-sonu-tamamland-jeremy-alcoba-2-zaferini-elde-etti",
-        "title": "WSSP İtalya 2. Yarış: Cremona'da Hafta Sonu Tamamlandı, Jeremy Alcoba 2. Zaferini Elde Etti!",
-        "url": "https://motoetkinlik.com/wssp-italya-2-yaris-cremonada-hafta-sonu-tamamlandi-jeremy-alcoba-2-zaferini-elde-etti",
-        "summary": "Jeremy Alcoba, Cremona'daki WorldSSP 2. Yarışı'nı da kazanarak hafta sonunu dubleyle tamamladı. Albert Arenas ikinci, Tom Booth-Amos üçüncü oldu.",
-        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/04/Can-Oncu-2026-Dutch-GP-Assen-FP-scaled.webp",
-        "published_at": "2026-09-27T16:35:45+03:00",
-        "series": "WorldSSP",
-        "source_series": "WorldSSP",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
@@ -462,6 +488,19 @@
         "kind": "news"
       },
       {
+        "story_key": "motogp:10858494",
+        "title": "Resmi: MotoGP, Portekiz GP’sinin sözleşmesini 2029’a kadar uzattı",
+        "url": "https://tr.motorsport.com/motogp/news/resmi-motogp-portekiz-gpsinin-sozlesmesini-2029a-kadar-uzatti/10858494",
+        "summary": "MotoGP yönetimi, Portekiz Grand Prix'sinin en az 2029 yılı sonuna kadar şampiyona takviminde yer almaya devam edeceğini resmen duyurdu.",
+        "preview": "https://cdn-1.motorsport.com/images/amp/2Qe8vvO2/s6/race-start.jpg",
+        "published_at": "2026-09-24T11:10:03Z",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
         "story_key": "title:yamaha-n-n-850cc-motogp-motosikletinde-dikkat-eken-aero-detay",
         "title": "Yamaha’nın 850cc MotoGP motosikletinde dikkat çeken aero detayı",
         "url": "https://motoetkinlik.com/yamaha-850cc-motogp-doneminde-uc-kanatli-tasarimi-surdurebilir",
@@ -514,19 +553,6 @@
         "kind": "news"
       },
       {
-        "story_key": "motogp:10858494",
-        "title": "Resmi: MotoGP, Portekiz GP’sinin sözleşmesini 2029’a kadar uzattı",
-        "url": "https://tr.motorsport.com/motogp/news/resmi-motogp-portekiz-gpsinin-sozlesmesini-2029a-kadar-uzatti/10858494",
-        "summary": "MotoGP yönetimi, Portekiz Grand Prix'sinin en az 2029 yılı sonuna kadar şampiyona takviminde yer almaya devam edeceğini resmen duyurdu.",
-        "preview": "https://cdn-1.motorsport.com/images/amp/2Qe8vvO2/s6/race-start.jpg",
-        "published_at": "2026-09-24T11:10:03Z",
-        "series": "MotoGP",
-        "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
         "story_key": "motogp:10858131",
         "title": "Japonya GP'de Mir’in yerine Chantra piste çıkacak",
         "url": "https://tr.motorsport.com/motogp/news/japonyada-mirin-yerine-chantra-yarisacak/10858131",
@@ -566,6 +592,19 @@
         "kind": "news"
       },
       {
+        "story_key": "motogp:10857884",
+        "title": "Mir, sağlık sorunları nedeniyle Japonya ve Endonezya GP’lerine katılmayacak",
+        "url": "https://tr.motorsport.com/motogp/news/mir-saglik-sorunlari-nedeniyle-japonya-ve-endonezya-gplerine-katilmayacak/10857884",
+        "summary": "Honda, Joan Mir’in MotoGP Medikal Direktörü Dr. Angel Charte ve ekibinin tavsiyesi doğrultusunda önümüzdeki iki GP’de mücadele edemeyeceğini duyurdu.",
+        "preview": "https://cdn-3.motorsport.com/images/amp/25dLKXN0/s6/joan-mir-honda-hrc.jpg",
+        "published_at": "2026-09-22T10:15:02Z",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
         "story_key": "title:yamaha-850cc-nin-2027-motogp-aerodinami-i-ortaya-kt-daha-kompakt-kanatlar",
         "title": "Yamaha 850CC'nin 2027 MotoGP Aerodinamiği Ortaya Çıktı: DAHA KOMPAKT KANATLAR!",
         "url": "https://motoetkinlik.com/yamaha-850nin-2027-motogp-aerodinamigi-ortaya-cikti-daha-kompakt-kanatlar",
@@ -585,19 +624,6 @@
         "summary": "Marc Marquez, 2026 MotoGP şampiyonluk mücadelesinde en büyük silahının Ducati motosikleti ve takımı olduğunu söyledi. Son yedi yarış öncesi fark 12 puan.",
         "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/marc-marquez-ducati-motogp-sampiyonluk-2026.webp",
         "published_at": "2026-09-22T14:53:54+03:00",
-        "series": "MotoGP",
-        "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:10857884",
-        "title": "Mir, sağlık sorunları nedeniyle Japonya ve Endonezya GP’lerine katılmayacak",
-        "url": "https://tr.motorsport.com/motogp/news/mir-saglik-sorunlari-nedeniyle-japonya-ve-endonezya-gplerine-katilmayacak/10857884",
-        "summary": "Honda, Joan Mir’in MotoGP Medikal Direktörü Dr. Angel Charte ve ekibinin tavsiyesi doğrultusunda önümüzdeki iki GP’de mücadele edemeyeceğini duyurdu.",
-        "preview": "https://cdn-3.motorsport.com/images/amp/25dLKXN0/s6/joan-mir-honda-hrc.jpg",
-        "published_at": "2026-09-22T10:15:02Z",
         "series": "MotoGP",
         "source_series": "MotoGP",
         "series_locked": true,

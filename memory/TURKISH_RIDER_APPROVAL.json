@@ -1,12 +1,24 @@
 {
   "version": 1,
-  "created_at": 1790628646,
+  "created_at": 1790632310,
   "max_days": 10,
   "window_used_days": 10,
-  "count": 14,
+  "count": 15,
   "items": [
     {
       "n": 1,
+      "title": "Sporcumuz Oğuz Taşhan Avrupa Şampiyonu - TRmotosports",
+      "url": "https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu",
+      "summary": "Sporcumuz Oğuz Taşhan Avrupa Şampiyonu - TRmotosports",
+      "preview": "https://www.trmotosports.com/wp-content/uploads/2026/09/54_tashan.jpeg",
+      "published_at": "2026-09-28T15:27:14+00:00",
+      "series": "European SSP300 Cup",
+      "source_series": "European SSP300 Cup",
+      "turkish_rider": "Oğuz Taşhan",
+      "kind": "news"
+    },
+    {
+      "n": 2,
       "title": "Zayn Sofuoğlu Mariembourg'u Kusursuz Kapattı, Şampiyonada 6 Puanla Farkla İkinci",
       "url": "https://motoetkinlik.com/zayn-sofuoglu-mariembourgu-kusursuz-kapatti-sampiyonada-6-puanla-farkla-ikinci",
       "summary": "Temsilcimiz Zayn Sofuoğlu IAME Benelux finalinde pole, iki eleme yarışı ve finali kazandı. Sezonu 836 puanla ikinci bitirdi, şampiyon Bal'ın 6 puan gerisinde.",
@@ -18,7 +30,7 @@
       "kind": "news"
     },
     {
-      "n": 2,
+      "n": 3,
       "title": "IAME Benelux Mariembourg Finali: Zayn Sofuoğlu Kazanmak İçin Piste Çıkıyor",
       "url": "https://motoetkinlik.com/iame-benelux-mariembourg-finali-zayn-sofuoglu-kazanmak-icin-piste-cikiyor",
       "summary": "IAME Benelux Mariembourg finali 27 Eylül Pazar. Zayn Sofuoğlu 724 puanla ikinci, lider Bal'a fark 42 puan. Mini Rookie seans saatleri TSİ ve güncel puan durumu.",
@@ -30,7 +42,7 @@
       "kind": "news"
     },
     {
-      "n": 3,
+      "n": 4,
       "title": "EICMA Italian Round: Bahattin Sofuoğlu Cremona'da QJMOTOR ile Piste Çıkıyor",
       "url": "https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor",
       "summary": "EICMA Italian Round 25-27 Eylül'de Cremona'da koşulacak. Bahattin Sofuoğlu WorldSSP'ye geçti ve Can Öncü ile aynı sınıfta. Bulega şampiyonluğunu ilan edebilir.",
@@ -42,7 +54,7 @@
       "kind": "news"
     },
     {
-      "n": 4,
+      "n": 5,
       "title": "MotoGP Avusturya Sprint: Martin'den İnanılmaz Zafer, Toprak Razgatlıoğlu'ndan Güçlü Performans!",
       "url": "https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans",
       "summary": "Jorge Martin, MotoGP Avusturya GP Sprint yarışını kazanarak şampiyona liderliğini yeniden aldı. Marc Márquez ikinci, Marco Bezzecchi üçüncü olurken Pedro Acosta kaza yaptı.",
@@ -54,7 +66,7 @@
       "kind": "news"
     },
     {
-      "n": 5,
+      "n": 6,
       "title": "Toprak Razgatlıoğlu Avusturya Cumartesi Günü Değerlendirmesi: \"Sıralama Sorununu Çözmeye Çalışıyoruz\"",
       "url": "https://motoetkinlik.com/toprak-razgatlioglu-avusturya-cumartesi-gunu-degerlendirmesi-siralama-sorununu-cozmeye-calisiyoruz",
       "summary": "Toprak Razgatlıoğlu, avusturya sprint yarışı sonrasında cumartesi günü hakkında açıklamalarda bulundu.",
@@ -66,7 +78,7 @@
       "kind": "news"
     },
     {
-      "n": 6,
+      "n": 7,
       "title": "Moto2 Avusturya Sıralama: Deniz Öncü'den Harika Performans, Pole Filip Salac'ın!",
       "url": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin",
       "summary": "Filip Salač, Avusturya GP Moto2 sıralama turlarında 1:32.381'lik yeni tur rekoruyla pole pozisyonunu aldı. Manuel Gonzalez ikinci, Alex Escrig üçüncü oldu.",
@@ -75,18 +87,6 @@
       "series": "Moto2",
       "source_series": "Moto2",
       "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    },
-    {
-      "n": 7,
-      "title": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport’a Dönüyor!",
-      "url": "https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-dunya-supersporta-donuyor-yeni-adresi-qj-motor",
-      "summary": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport'a dönüyor! Motoxracing Yamaha WorldSBK sonrası yeni adresi QJ Motor oldu. Tüm detaylar haberimizde.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bahattin-sofuoglu-QJ-Motor-worldssp.webp",
-      "published_at": "2026-09-21T15:21:06+03:00",
-      "series": "WorldSBK",
-      "source_series": "WorldSBK",
-      "turkish_rider": "Bahattin Sofuoğlu",
       "kind": "news"
     },
     {
@@ -103,6 +103,18 @@
     },
     {
       "n": 9,
+      "title": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport’a Dönüyor!",
+      "url": "https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-dunya-supersporta-donuyor-yeni-adresi-qj-motor",
+      "summary": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport'a dönüyor! Motoxracing Yamaha WorldSBK sonrası yeni adresi QJ Motor oldu. Tüm detaylar haberimizde.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bahattin-sofuoglu-QJ-Motor-worldssp.webp",
+      "published_at": "2026-09-21T15:21:06+03:00",
+      "series": "WorldSBK",
+      "source_series": "WorldSBK",
+      "turkish_rider": "Bahattin Sofuoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 10,
       "title": "Toprak Razgatlıoğlu, Quartararo ile arasındaki farkı buldu: “Yüzde 10 daha fazla”",
       "url": "https://motoetkinlik.com/toprak-razgatlioglu-quartararo-ile-arasindaki-farki-acikladi-bazi-virajlarda-yuzde-10-daha-fazla",
       "summary": "Milli sporcumuz Toprak Razgatlıoğlu, Avusturya MotoGP’de Fabio Quartararo’nun verilerini inceleyerek viraj çıkışındaki yüzde 10’luk farkı açıkladı.",
@@ -114,7 +126,7 @@
       "kind": "news"
     },
     {
-      "n": 10,
+      "n": 11,
       "title": "Toprak Razgatlıoğlu İsyan Etti: \"Sadece Hayatta Kalmaya Çalıştım\"",
       "url": "https://motoetkinlik.com/toprak-razgatlioglu-kariyerimin-en-kotu-ikinci-yarisiydi-diyerek-isyan-etti-sadece-hayatta-kalmaya-calistim",
       "summary": "Avusturya GP pazar yarışında sıfır yol tutuş nedeniyle kabusu yaşayan Toprak Razgatlıoğlu: \"Kariyerimin en kötü ikinci yarışıydı, sadece hayatta kalmaya çalıştım.\"",
@@ -126,7 +138,7 @@
       "kind": "news"
     },
     {
-      "n": 11,
+      "n": 12,
       "title": "Toprak Razgatlıoğlu Avusturya GP'de Oyun Severlerin Tasarladığı Özel Kaskla Piste Çıkacak",
       "url": "https://motoetkinlik.com/toprak-razgatlioglu-avusturya-gpde-oyun-severlerin-tasarladigi-ozel-kaskla-piste-cikacak",
       "summary": "Toprak Razgatlıoğlu özel kask tasarımı ile Avusturya GP'de piste çıkacak. Oyun severlerin tasarladığı özel kask Red Bull Ring'de sergilendi.",
@@ -138,7 +150,7 @@
       "kind": "news"
     },
     {
-      "n": 12,
+      "n": 13,
       "title": "Moto2 Avusturya Yarış: Deniz Öncü İlk 10'da, Guevara'dan Kritik Zafer!",
       "url": "https://motoetkinlik.com/moto2-avusturya-yaris-deniz-oncu-ilk-10da-guevaradan-kritik-zafer",
       "summary": "Izan Guevara, Moto2 Avusturya GP'sinde Filip Salač ve David Alonso'nun önünde kazanarak sezonun ikinci galibiyetini aldı. Manuel Gonzalez dördüncü olurken Deniz Öncü dokuzuncu sırada finiş gördü.",
@@ -150,7 +162,7 @@
       "kind": "news"
     },
     {
-      "n": 13,
+      "n": 14,
       "title": "Deniz Öncü Kalex Şasiye Dönüyor: Moto2'de 2 Sezonluk Yeni Anlaşma",
       "url": "https://motoetkinlik.com/deniz-oncu-kalex-sasiye-donuyor-moto2de-2-sezonluk-yeni-anlasma",
       "summary": "Milli sporcumuz Deniz Öncü, RW Racing ile 2027 ve 2028 sezonları için anlaştı. Deniz Öncü Moto2 sözleşme detayları ve kariyer başarıları Motoetkinlik'te!",
@@ -162,7 +174,7 @@
       "kind": "news"
     },
     {
-      "n": 14,
+      "n": 15,
       "title": "Zayn Sofuoğlu Bursa'daki Finalde ANLAS MiniGP 110 Şampiyonu Oldu",
       "url": "https://motoetkinlik.com/zayn-sofuoglu-bursadaki-finalde-anlas-minigp-110-sampiyonu-oldu",
       "summary": "Zayn Sofuoğlu Bursa'daki final ayağında iki yarışı da kazanarak ANLAS MiniGP 110 şampiyonu oldu. Türkiye Süpermoto 5. ayağında yedi sınıf birden yarıştı.",

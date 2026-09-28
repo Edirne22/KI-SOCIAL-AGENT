@@ -689,3 +689,8 @@ Quelle: https://motoetkinlik.com/nicolo-bulega-2026-world-sbk-sampiyonu-lecuona-
 Story-Key: title:wssp-i-talya-2-yar-cremona-da-hafta-sonu-tamamland-jeremy-alcoba-2-zaferini-elde-etti
 Titel: WSSP İtalya 2. Yarış: Cremona'da Hafta Sonu Tamamlandı, Jeremy Alcoba 2. Zaferini Elde Etti!
 Quelle: https://motoetkinlik.com/wssp-italya-2-yaris-cremonada-hafta-sonu-tamamlandi-jeremy-alcoba-2-zaferini-elde-etti
+
+## 2026-09-28 21:51 UTC – ANGEBOTEN
+Story-Key: motogp:10858131
+Titel: Japonya GP'de Mir’in yerine Chantra piste çıkacak
+Quelle: https://tr.motorsport.com/motogp/news/japonyada-mirin-yerine-chantra-yarisacak/10858131

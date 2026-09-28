@@ -2298,3 +2298,57 @@ Story-Key: title:wssp-i-talya-2-yar-cremona-da-hafta-sonu-tamamland-jeremy-alcob
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-28 22:25 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 22:25 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp; Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 22:26 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 22:26 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Cremona 1. yarış: Lecuona lider, Bulega ikinci
+Story-Key: motogp:10859584
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 22:27 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Cremona 1. yarış: Lecuona lider, Bulega ikinci
+Story-Key: motogp:10859584
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 22:27 UTC | Motorcycle Racing | PASS
+Titel: Japonya GP'de Mir’in yerine Chantra piste çıkacak
+Story-Key: motogp:10858131
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 22:27 UTC | Motorcycle Racing | PASS
+Titel: Franco Morbidelli ağzından kaçırdı: 2027’de WorldSBK’ye geliyor
+Story-Key: title:franco-morbidelli-z-ndan-ka-rd-2027-de-worldsbk-ye-geliyor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 22:28 UTC | Motorcycle Racing | PASS
+Titel: Cremona Superpole: Lecuona Rekorla Pole'de
+Story-Key: title:cremona-superpole-lecuona-rekorla-pole-de
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 22:28 UTC | Motorcycle Racing | PASS
+Titel: Nicolo Bulega 2026 WORLD SBK Şampiyonu, Lecuona Cremona'da HAT-TRICK Yaptı!
+Story-Key: title:nicolo-bulega-2026-world-sbk-ampiyonu-lecuona-cremona-da-hat-trick-yapt
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
