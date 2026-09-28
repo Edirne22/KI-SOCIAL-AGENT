@@ -674,3 +674,18 @@ Quelle: https://motoetkinlik.com/worldsbk-eicma-italian-round-superpole-yarisi-l
 Story-Key: motogp:10859626
 Titel: WSBK İtalya 2. yarış: Bulega 2026 Dünya Superbike şampiyonu oldu, Lecuona Cremona’da üçte üç yaptı!
 Quelle: https://tr.motorsport.com/wsbk/news/wsbk-italya-2-yaris-bulega-2026-dunya-superbike-sampiyonu-oldu-lecuona-cremonada-ucte-uc-yapti/10859626
+
+## 2026-09-28 20:50 UTC – ANGEBOTEN
+Story-Key: title:cremona-superpole-lecuona-rekorla-pole-de
+Titel: Cremona Superpole: Lecuona Rekorla Pole'de
+Quelle: https://motoetkinlik.com/worldsbk-eicma-italian-round-superpole-lecuona-rekorla-polede-bulega-ikinci
+
+## 2026-09-28 20:50 UTC – ANGEBOTEN
+Story-Key: title:nicolo-bulega-2026-world-sbk-ampiyonu-lecuona-cremona-da-hat-trick-yapt
+Titel: Nicolo Bulega 2026 WORLD SBK Şampiyonu, Lecuona Cremona'da HAT-TRICK Yaptı!
+Quelle: https://motoetkinlik.com/nicolo-bulega-2026-world-sbk-sampiyonu-lecuona-cremonada-hat-trick-yapti
+
+## 2026-09-28 20:50 UTC – ANGEBOTEN
+Story-Key: title:wssp-i-talya-2-yar-cremona-da-hafta-sonu-tamamland-jeremy-alcoba-2-zaferini-elde-etti
+Titel: WSSP İtalya 2. Yarış: Cremona'da Hafta Sonu Tamamlandı, Jeremy Alcoba 2. Zaferini Elde Etti!
+Quelle: https://motoetkinlik.com/wssp-italya-2-yaris-cremonada-hafta-sonu-tamamlandi-jeremy-alcoba-2-zaferini-elde-etti
