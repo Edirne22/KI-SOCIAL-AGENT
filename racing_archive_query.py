@@ -3,6 +3,7 @@ from __future__ import annotations
 import json,re
 from difflib import SequenceMatcher
 from datetime import datetime,timezone,timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from telegram_bot import send_message
 import motogp_content_agency_v2 as agency
@@ -10,6 +11,7 @@ import racing_manual_selection as manual
 from llm_router import quick_chat
 
 STATE=manual.SELECTION_STATE
+SCHEDULE_STATE=Path('memory/RACING_SCHEDULE_REQUEST.json')
 
 def norm(s): return agency.fold(str(s or ""))
 
