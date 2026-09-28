@@ -73,7 +73,7 @@ def show(rows,label):
     if not rows:
         send_message("🏁 Racing %s: keine gespeicherten Treffer."%label); return 0
     STATE.parent.mkdir(parents=True,exist_ok=True)
-    STATE.write_text(json.dumps({"label":label,"rows":rows},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    STATE.write_text(json.dumps({"label":label,"rows":rows,"offset":min(10,len(rows))},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     for off in range(0,len(rows),5):
         lines=["🏁 Racing %s (%d–%d/%d)"%(label,off+1,min(off+5,len(rows)),len(rows)),""]
         for i,x in enumerate(rows[off:off+5],off+1):
@@ -83,8 +83,38 @@ def show(rows,label):
         send_message("\n".join(lines))
     return len(rows)
 
+def show_more():
+    try:
+        state=json.loads(STATE.read_text(encoding="utf-8"))
+        rows=state.get("rows",[]); label=state.get("label","Archiv")
+        offset=int(state.get("offset",0))
+    except Exception:
+        send_message("❌ Keine aktive Racing-Liste. Bitte zuerst z. B. „Zeig mir die Top 20“ senden.")
+        return 0
+    if not rows:
+        send_message("❌ Keine aktive Racing-Liste.")
+        return 0
+    start=offset; end=min(start+10,len(rows))
+    if start>=len(rows):
+        send_message("🏁 Ende der gespeicherten Racing-Liste erreicht.")
+        return 0
+    lines=["🏁 Racing %s (%d–%d/%d)"%(label,start+1,end,len(rows)),""]
+    for i,x in enumerate(rows[start:end],start+1):
+        status="✅ bereits gepostet" if published(x) else "🟢 noch nicht gepostet"
+        lines += ["%d. [%s] %s"%(i,x.get("series","Racing")," ".join(str(x.get("title","")).split())[:180]),status,"🔗 "+x.get("url",""),""]
+    state["offset"]=end
+    STATE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    send_message("\n".join(lines))
+    return end-start
+
 def handle(text):
     c=" ".join(str(text or "").strip().split())
+    low=norm(c)
+    # Natural-language aliases for the existing deterministic archive browser.
+    m=re.fullmatch(r"(?:zeig(?:e)?|gib|liste)(?:\s+mir)?\s+(?:die\s+)?top\s*(10|20)(?:\s+(?:berichte|meldungen|artikel))?",low,re.I)
+    if m: return manual.handle("racing top"+m.group(1))
+    if re.fullmatch(r"(?:mehr|weiter|nachste(?:n)?(?:\s+10)?|die\s+nachsten\s+10)",low,re.I):
+        return show_more()
     m=re.fullmatch(r"(?:t\s*|poste\s+|nimm\s+)(\d+)",c,re.I)
     if m: return manual.handle("racing artikel "+m.group(1))
     if not is_query(c): return 2
