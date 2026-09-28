@@ -74,8 +74,33 @@ def test_uncertainty_preserved_passes():
     check(not claim_strength_errors(x,c),claim_strength_errors(x,c))
     check(final_guard.review(x,c)[0],final_guard.review(x,c)[1])
     print("E2E EXPECTED PASS: uncertainty preserved")
+def test_degraded_semantic_outage_still_repairs_human_error():
+    import importlib
+    import motogp_content_agency_v2 as agency
+    import racing_v855_hardening as hard
+    importlib.reload(agency);importlib.reload(hard).install(agency)
+    x=base("Fermin Aldeguer has surgery before Japan MotoGP round","Fermin Aldeguer had surgery before the Japan MotoGP round.","MotoGP")
+    outputs=[post("MotoGP","Fermin Aldeguer musste kurz vor Japan operiert werden.\n\nSo kurz vor dem Renne auf den OP-Tisch."),
+             post("MotoGP","Fermin Aldeguer musste kurz vor Japan operiert werden.\n\nSo kurz vor dem Rennen auf den OP-Tisch.")]
+    calls={"n":0}
+    old=(agency.german_editor,agency.racing_review,agency.semantic_review_detailed,agency.reanalyse_source)
+    try:
+        def editor(item,reasons=None,*a,**kw):
+            i=min(calls["n"],1);calls["n"]+=1;return outputs[i]
+        agency.german_editor=editor
+        agency.racing_review=lambda item,cap:(True,[])
+        agency.reanalyse_source=lambda item,*a,**kw:item
+        agency.semantic_review_detailed=lambda item,cap:{"hard_ok":False,"language_ok":False,"hard_reasons":["provider unavailable"],"repair_reasons":[],"technical_error":True,"technical_reason":"ProviderUnavailableError"}
+        check(agency.qualify_copy(x) is True,x)
+        check(calls["n"]==2,calls)
+        check(x.get("semantic_qm")=="DEGRADED-PASS",x)
+        check("vor dem Rennen" in x["caption"] and "vor dem Renne " not in x["caption"],x["caption"])
+        print("E2E EXPECTED DEGRADED PASS: semantic outage only after deterministic human repair")
+    finally:
+        agency.german_editor,agency.racing_review,agency.semantic_review_detailed,agency.reanalyse_source=old
+
 if __name__=="__main__":
-    tests=[test_run137_wrong_session,test_run137_rumor_upgrade,test_run137_bad_german,test_fake_number_injected,test_wrong_series_injected,test_clean_realistic_control,test_uncertainty_preserved_passes]
+    tests=[test_run137_wrong_session,test_run137_rumor_upgrade,test_run137_bad_german,test_fake_number_injected,test_wrong_series_injected,test_clean_realistic_control,test_uncertainty_preserved_passes,test_degraded_semantic_outage_still_repairs_human_error]
     for t in tests:
         t();print("CONTROLLED E2E PASS:",t.__name__)
-    print("CONTROLLED RACING E2E REGRESSION: 7/7 PASS")
+    print("CONTROLLED RACING E2E REGRESSION: 8/8 PASS")
