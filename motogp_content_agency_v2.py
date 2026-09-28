@@ -434,8 +434,13 @@ def turkish_candidate_reason(x,now,max_days=10):
   if age>max_days:return 'older-than-window'
   return 'PASS'
 
-def turkish_five_preview(details,now,max_days=10):
+def turkish_five_preview(details,now,max_days=10,exclude_items=None):
   # Keep up to 20 selectable history candidates, but show only T1-T5 by default.
+  # Cross-lane dedupe: stories already visible in the final Racing Top 5 must
+  # not consume a Turkish T1-T5 slot; the next eligible Turkish story moves up.
+  exclude_items=exclude_items or []
+  excluded_keys={story_key(x.get('title',''),x.get('url','')) for x in exclude_items}
+  excluded_urls={canonical_url(x.get('url','')) for x in exclude_items if x.get('url')}
   # This preserves the compact Telegram preview while enabling `turkish liste` + T6-T20.
   candidates=[];seen=set();window_used=0;history_limit=20
   # Deliberately widen only as needed: today -> 7 days -> 10 days.
@@ -445,6 +450,7 @@ def turkish_five_preview(details,now,max_days=10):
    eligible=(y for y in details if turkish_candidate_gate(y,now,days))
    for x in sorted(eligible,key=lambda y:editorial_score(y,roster_names()),reverse=True):
     key=story_key(x.get('title',''),x.get('url',''))
+    if key in excluded_keys or canonical_url(x.get('url','')) in excluded_urls:continue
     if key in seen:continue
     seen.add(key);candidates.append(x)
     if len(candidates)>=history_limit:break
@@ -556,7 +562,7 @@ def run_v8():
  now=dt.now(timezone.utc);diag,_=freshness_diagnostics(details,now);fresh=[mark_priority(x) for x in details if freshness_reason(x,now)=='fresh'];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
  current_q=qualify_parallel(fresh[:60],3);fallback_raw=yesterday_raw(now,{x.get('url') for x in current_q});fallback_q=qualify_parallel(fallback_raw[:20],3) if len(current_q)<15 else [];qualified=current_q+[x for x in fallback_q if x.get('url') not in {y.get('url') for y in current_q}];qualified.sort(key=lambda x:editorial_score(x,names),reverse=True);save_top10(fresh,now);picks=select_and_finish(qualified,names);turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in VALID_SERIES}
  OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(f'# Motorcycle Racing Daily Agency {VERSION}\n\nStand: {now:%Y-%m-%d %H:%M UTC}\nRohkandidaten: {len(details)}\nAktuelle Racing-News <=7 Tage: {len(fresh)}\nFreshness missing-date: {diag.get("missing-date",0)}\nFreshness >7 Tage: {diag.get("older-than-7d",0)}\nFreshness Promo/irrelevant: {diag.get("not-racing-or-promo",0)}\nAktuell voll Copy-QM qualifiziert: {len(current_q)}\nVortag voll Copy-QM qualifiziert: {len(fallback_q)}\nGesamtpool nach Racing+Semantic-QM: {len(qualified)}\nFinaler Mix: {mix}\nTurkish-Rider erkannt: {turk}\nFakten-QM: NULL-TOLERANZ + Rueckgabeschleife\nHuman Writing Protocol: VERBINDLICH\nBuelents Bike Life Voice: VERBINDLICH\nChief-QM PASS: {len(picks)}\n',encoding='utf-8')
- turkish_five_preview(details,now)
+ turkish_five_preview(details,now,exclude_items=picks)
  if len(picks)<3:
   needed=3-len(picks)
   print(f'COMMUNITY-FALLBACK aktiviert (final={len(picks)})')
