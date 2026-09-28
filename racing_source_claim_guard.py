@@ -35,7 +35,7 @@ _CAPTION_DEFINITIVE=(
  r"\bsteht (?:fest|klar)\b",r"\bist (?:fix|bestaetigt)\b",r"\bwurde bestaetigt\b",
  r"\bhat (?:unterschrieben|bestaetigt)\b",
  r"\bwechselt\b",r"\bgeht .*\b an den start\b",r"\bfaehrt ab\b",
- r"\bwird (?:wechseln|fahren|starten|antreten)\b",
+ r"\bwird (?:wechseln|fahren|starten|antreten)\b",r"\b20\d{2}\s+startet\b[^.!?\n]*\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",
  r"\bab \d{4} .*\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",
 )
 _CAPTION_UNCERTAIN=(
