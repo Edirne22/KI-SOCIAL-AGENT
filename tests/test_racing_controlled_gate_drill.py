@@ -60,6 +60,46 @@ def test_wrong_series_injected():
     errs=agency.fact_whitelist_errors(x,c)
     check(any("Falsche Serie MotoGP" in e for e in errs),("wrong series not rejected",errs))
     print("E2E EXPECTED BLOCK: injected wrong series | Whitelist:",errs)
+def _whitelist(item,caption):
+    import importlib
+    import motogp_content_agency_v2 as agency
+    import racing_v855_hardening as hard
+    importlib.reload(agency);importlib.reload(hard).install(agency)
+    return agency.fact_whitelist_errors(item,caption)
+def test_hallucinated_rider_name():
+    x=base("WorldSBK Race 2: Iker Lecuona wins","Iker Lecuona wins Race 2. Nicolo Bulega finishes second.")
+    c=post("WorldSBK","Toprak Razgatlioglu gewinnt Race 2.\n\nNicolo Bulega wird Zweiter.")
+    e=_whitelist(x,c);check(any("Fahrer nicht in Quelle" in z for z in e),("hallucinated rider passed",e))
+    print("E2E EXPECTED BLOCK: hallucinated rider | Whitelist:",e)
+def test_hallucinated_second_rider():
+    x=base("WorldSSP Race 2: Can Oncu finishes sixth","Can Oncu finishes sixth in WorldSSP Race 2.","WorldSSP")
+    c=post("WorldSSP","Can Öncü wird Sechster.\n\nBahattin Sofuoğlu fährt direkt hinter ihm ins Ziel.")
+    e=_whitelist(x,c);check(any("Fahrer nicht in Quelle" in z for z in e),("invented second rider passed",e))
+    print("E2E EXPECTED BLOCK: invented second rider | Whitelist:",e)
+def test_wrong_series_hashtag():
+    x=base("WorldSBK Race 2: Iker Lecuona wins","Iker Lecuona wins WorldSBK Race 2.")
+    c="Iker Lecuona gewinnt Race 2.\n\nEin sauberer Sieg für Lecuona.\n\nWie seht ihr das?\n\n#MotoGP #IkerLecuona #MotorradRacing #BuelentsBikeLife"
+    ok,e=final_guard.review(x,c);check(not ok and any("Serienhashtag" in z for z in e),("wrong hashtag passed",e))
+    print("E2E EXPECTED BLOCK: wrong series hashtag | Final:",e)
+def test_unsupported_series_metadata():
+    x=base("WorldWCR Race: Test Rider wins","Test Rider wins the WorldWCR race.","WorldWCR")
+    c="Test Rider gewinnt das Rennen.\n\nEin kontrolliertes Ergebnis.\n\nWie seht ihr das?\n\n#WorldWCR #TestRider #MotorradRacing #BuelentsBikeLife"
+    ok,e=final_guard.review(x,c);check(not ok and any("nicht als freigegebene Racing-Serie" in z for z in e),("unsupported series passed",e))
+    print("E2E EXPECTED BLOCK: unsupported series | Final:",e)
+def test_hallucinated_place_is_semantic_fail_when_available():
+    x=base("MotoGP: Fermin Aldeguer has surgery","Fermin Aldeguer had surgery before the Japan MotoGP round.","MotoGP")
+    c=post("MotoGP","Fermin Aldeguer wurde in Barcelona operiert.\n\nVor Japan musste er deshalb auf den OP-Tisch.")
+    # Place provenance is not a deterministic whitelist field today; Semantic SOURCE-FACT must reject it when available.
+    # We assert the deterministic whitelist does NOT pretend to own this fact, documenting the fallback boundary.
+    e=_whitelist(x,c);check(not any("Barcelona" in z for z in e),("unexpected deterministic place ownership",e))
+    print("E2E BOUNDARY: invented place requires Semantic SOURCE-FACT verification:",e)
+def test_hallucinated_team_boundary():
+    x=base("WorldSBK: Iker Lecuona wins","Iker Lecuona wins the WorldSBK race.")
+    c=post("WorldSBK","Iker Lecuona gewinnt für das erfundene Phoenix-Werksteam.\n\nDer Sieg fällt deutlich aus.")
+    e=_whitelist(x,c)
+    # Editor prompt forbids unsupported teams, but deterministic whitelist currently has no team extractor.
+    check(not any("Phoenix" in z for z in e),("unexpected deterministic team ownership",e))
+    print("E2E BOUNDARY: invented team requires Semantic SOURCE-FACT verification:",e)
 def test_clean_realistic_control():
     x=base("WorldSBK Superpole Race: Iker Lecuona wins","Iker Lecuona wins the Superpole Race. Nicolo Bulega finishes second.")
     c=post("WorldSBK","Iker Lecuona gewinnt das Superpole Race.\n\nNicolo Bulega wird Zweiter und komplettiert damit das Ergebnis.")
@@ -100,7 +140,7 @@ def test_degraded_semantic_outage_still_repairs_human_error():
         agency.german_editor,agency.racing_review,agency.semantic_review_detailed,agency.reanalyse_source=old
 
 if __name__=="__main__":
-    tests=[test_run137_wrong_session,test_run137_rumor_upgrade,test_run137_bad_german,test_fake_number_injected,test_wrong_series_injected,test_clean_realistic_control,test_uncertainty_preserved_passes,test_degraded_semantic_outage_still_repairs_human_error]
+    tests=[test_run137_wrong_session,test_hallucinated_rider_name,test_hallucinated_second_rider,test_wrong_series_hashtag,test_unsupported_series_metadata,test_hallucinated_place_is_semantic_fail_when_available,test_hallucinated_team_boundary,test_run137_rumor_upgrade,test_run137_bad_german,test_fake_number_injected,test_wrong_series_injected,test_clean_realistic_control,test_uncertainty_preserved_passes,test_degraded_semantic_outage_still_repairs_human_error]
     for t in tests:
         t();print("CONTROLLED E2E PASS:",t.__name__)
-    print("CONTROLLED RACING E2E REGRESSION: 8/8 PASS")
+    print("CONTROLLED RACING E2E REGRESSION: 14/14 PASS")
