@@ -3,6 +3,7 @@ from __future__ import annotations
 import json,re
 from difflib import SequenceMatcher
 from datetime import datetime,timezone,timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from telegram_bot import send_message
 import motogp_content_agency_v2 as agency
@@ -10,6 +11,7 @@ import racing_manual_selection as manual
 from llm_router import quick_chat
 
 STATE=manual.SELECTION_STATE
+SCHEDULE_STATE=Path('memory/RACING_SCHEDULE_REQUEST.json')
 
 def norm(s): return agency.fold(str(s or ""))
 
@@ -226,9 +228,56 @@ def show_more():
     send_message("\n".join(lines))
     return end-start
 
+
+def parse_schedule_request(text):
+    """Deterministic German scheduling grammar for an active archive list."""
+    raw=" ".join(str(text or "").strip().split()); low=norm(raw)
+    nums=[]
+    msel=re.search(r"(?:nimm|poste|posten)\s+(?:die\s+)?(?:nummern?\s+)?([0-9 ,und]+)",low)
+    if msel:
+        nums=[int(x) for x in re.findall(r"\d+",msel.group(1))]
+    if not nums:return None
+    interval=60
+    mi=re.search(r"(?:alle|abstand(?:\s+von)?)\s+(\d+)\s*(minute|minuten|stunde|stunden)",low)
+    if mi:
+        interval=int(mi.group(1))*(60 if mi.group(2).startswith("stunde") else 1)
+    elif "jede stunde" in low or "stuendlich" in low or "stündlich" in raw.casefold():
+        interval=60
+    berlin=ZoneInfo("Europe/Berlin"); now=datetime.now(berlin)
+    day=now.date()+timedelta(days=1) if "morgen" in low else now.date()
+    mt=re.search(r"(?:ab|um)\s+(\d{1,2})(?::(\d{2}))?\s*(?:uhr)?",low)
+    if mt:
+        start=datetime(day.year,day.month,day.day,int(mt.group(1)),int(mt.group(2) or 0),tzinfo=berlin)
+    else:
+        start=now
+    return {"selections":nums,"start":start.isoformat(),"interval_minutes":interval,"timezone":"Europe/Berlin"}
+
+def schedule_from_active_list(text):
+    req=parse_schedule_request(text)
+    if not req:return 2
+    try:state=json.loads(STATE.read_text(encoding="utf-8")); rows=state.get("rows",[])
+    except Exception:
+        send_message("❌ Keine aktive Racing-Liste für eine Zeitplanung.");return 0
+    selected=[]
+    for n in req["selections"]:
+        if not 1<=n<=len(rows):
+            send_message(f"❌ Nummer {n} ist nicht in der aktiven Racing-Liste.");return 0
+        selected.append({"n":n,"row":rows[n-1]})
+    start=datetime.fromisoformat(req["start"])
+    req["items"]=[{"n":x["n"],"story_key":x["row"].get("story_key"),"title":x["row"].get("title",""),"url":x["row"].get("url",""),
+                   "scheduled_at":(start+timedelta(minutes=i*req["interval_minutes"])).isoformat()} for i,x in enumerate(selected)]
+    SCHEDULE_STATE.parent.mkdir(parents=True,exist_ok=True);SCHEDULE_STATE.write_text(json.dumps(req,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    lines=["🗓️ Publishing-Plan vorbereitet (Europe/Berlin):"]
+    lines += [f'{x["n"]}. {x["scheduled_at"][11:16]} · {x["title"][:90]}' for x in req["items"]]
+    lines += ["Die Artikel müssen weiterhin den bestehenden Manual-Editorial/QM- und Freigabeweg durchlaufen; erst danach werden die Zeiten an Instagram/Facebook übergeben."]
+    send_message("\n".join(lines));return 0
+
 def handle(text):
     c=" ".join(str(text or "").strip().split())
     low=norm(c)
+    if any(k in low for k in ("jede stunde","stuendlich","stündlich","abstand"," uhr")) and any(k in low for k in ("poste","posten","nimm")):
+        scheduled=schedule_from_active_list(c)
+        if scheduled!=2:return scheduled
     # Existing approval commands always belong to the approval router, never archive NLU.
     if re.fullmatch(r"motogp\s+(?:[1-5]|alle|nein)",low,re.I): return 2
     # Natural-language aliases for the existing deterministic archive browser.

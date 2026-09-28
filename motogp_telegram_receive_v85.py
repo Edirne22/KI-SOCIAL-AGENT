@@ -1,6 +1,8 @@
 """V8.5 human approval gate for Racing. QA PASS is never equal to human approval."""
 from pathlib import Path
 import re,sys,time,json
+from datetime import datetime,timedelta
+from zoneinfo import ZoneInfo
 from telegram_bot import get_chat_id, get_updates, send_message, send_photo
 import racing_run_controller as rc
 from generate_agnes_media import agnes_generate_image, save_bytes
@@ -208,7 +210,11 @@ def get_existing_published_texts():
             norm=_normalize_text(m)
             if norm:texts.add(norm)
     return texts
-def publish(posts,chosen,uid,batch):
+def _schedule_lines(schedule):
+    return f'Geplant-fuer: {schedule}\n' if schedule else ''
+
+def publish(posts,chosen,uid,batch,schedules=None):
+    schedules=schedules or {}
     PUBLISHED.parent.mkdir(parents=True,exist_ok=True);existing=PUBLISHED.read_text(encoding='utf-8') if PUBLISHED.exists() else '# Freigegebene Beiträge\n';blocks=[]
     existing_texts=get_existing_published_texts()
     for n in chosen:
@@ -250,8 +256,9 @@ def publish(posts,chosen,uid,batch):
             prompt_fuer_agnes=prompt,
         )
 
-        common_ig = f'Status: BILD_GENERIERT\nFreigabe: Telegram Racing\nRacing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
-        common_fb = f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\nRacing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
+        scheduled=_schedule_lines(schedules.get(n))
+        common_ig = f'Status: BILD_GENERIERT\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
+        common_fb = f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
 
         blocks += [
             f'## Instagram\n{common_ig}Text:\n{instagram_text}\nQuelle: {p["source"]}\nMedienstatus: {media_status}\nBild: {img_path}\n',
