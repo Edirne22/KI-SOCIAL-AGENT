@@ -39,9 +39,9 @@ _CAPTION_DEFINITIVE=(
  r"\bab \d{4} .*\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",
 )
 _CAPTION_UNCERTAIN=(
- r"\bsignal\b",r"\bdeutet? .*\bhin\b",r"\bkoennte\b",r"\bduerfte\b",
- r"\bwird erwartet\b",r"\bmoeglich\b",r"\bwohl\b",r"\bvermutlich\b",
- r"\bnicht (?:offiziell )?bestaetigt\b",r"\bnoch nicht bestaetigt\b",
+ r"\bsignal\b",r"\bdeutet? .*\bhin\b",r"\b(?:koennte|konnte)\b",r"\bduerfte\b",
+ r"\bwird erwartet\b",r"\b(?:moeglich|moglich)\b",r"\bwohl\b",r"\bvermutlich\b",
+ r"\bnicht (?:offiziell )?(?:bestaetigt|bestatigt)\b",r"\bnoch nicht (?:bestaetigt|bestatigt)\b",
 )
 
 def _any(patterns,text):
