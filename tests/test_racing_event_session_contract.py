@@ -16,7 +16,8 @@ def item():
     }
 
 def caption(session):
-    return (f"Iker Lecuona gewinnt das {session} in Cremona. Bulega wird mit 2,005 Sekunden Rückstand Zweiter.\n\n"
+    return (f"Iker Lecuona gewinnt das {session} in Cremona. 🏁\n\n"
+            "Bulega wird mit 2,005 Sekunden Rückstand Zweiter.\n\n"
             "Was erwartet ihr vom zweiten Rennen?\n\n"
             "#WorldSBK #IkerLecuona #NicoloBulega #MotorradRacing #BuelentsBikeLife")
 
