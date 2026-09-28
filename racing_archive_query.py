@@ -202,4 +202,8 @@ def handle(text):
 
 if __name__=="__main__":
     import sys
-    raise SystemExit(0 if handle(" ".join(sys.argv[1:])) != 2 else 2)
+    result=handle(" ".join(sys.argv[1:]))
+    if isinstance(result,tuple) and result and result[0]=="approval":
+        print("APPROVAL_COMMAND="+result[1])
+        raise SystemExit(3)
+    raise SystemExit(0 if result != 2 else 2)
