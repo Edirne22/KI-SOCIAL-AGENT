@@ -75,4 +75,4 @@ ok(not blocked(official,"Morbidelli wechselt 2027 in die WorldSBK.\n\nDer Wechse
 
 ok(blocked(rider_src,"Can Öncü wird Sechster.\n\nEin enger Schnitt für den nationalen Sportler.\n\nWie einschätzen ihr die Chancen?\n\n#WorldSSP #MotorradRacing #BuelentsBikeLife"),"Run139 bad German passed")
 
-print(f"PRODUCTION-GATE RED TEAM: {passed}/15 PASS")
+print(f"PRODUCTION-GATE RED TEAM: {passed}/16 PASS")
