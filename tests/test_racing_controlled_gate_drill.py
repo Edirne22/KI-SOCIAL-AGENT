@@ -133,6 +133,16 @@ def test_turkish_fake_place_is_blocked():
     c=post("WorldSSP","Can Öncü wird in Barcelona Sechster.\n\nEin starkes Ergebnis.")
     ok,e=_turkish_final(x,c);check(not ok and any("Ort nicht in Quelle: Barcelona" in z for z in e),("Turkish fake place passed",e))
     print("TURKISH E2E EXPECTED BLOCK: invented place:",e)
+def test_supported_place_is_allowed():
+    x=base("MotoGP Japan: Fermin Aldeguer has surgery","Fermin Aldeguer had surgery in Barcelona before the Japan MotoGP round.","MotoGP")
+    cap=post("MotoGP","Fermin Aldeguer wurde in Barcelona operiert.\n\nDanach geht es zur Japan-Runde.")
+    e=_whitelist(x,cap);check(not any("Ort nicht in Quelle" in z for z in e),("supported place false-positive",e))
+    print("E2E EXPECTED PASS: source-backed place")
+def test_supported_team_is_allowed():
+    x=base("WorldSBK: Iker Lecuona wins for Ducati","Iker Lecuona wins the WorldSBK race for Ducati.","WorldSBK")
+    cap=post("WorldSBK","Iker Lecuona gewinnt für Ducati.\n\nDer Sieg ist in der Quelle belegt.")
+    e=_whitelist(x,cap);check(not any("Team/Hersteller nicht in Quelle" in z for z in e),("supported manufacturer false-positive",e))
+    print("E2E EXPECTED PASS: source-backed team/manufacturer")
 def test_clean_realistic_control():
     x=base("WorldSBK Superpole Race: Iker Lecuona wins","Iker Lecuona wins the Superpole Race. Nicolo Bulega finishes second.")
     c=post("WorldSBK","Iker Lecuona gewinnt das Superpole Race.\n\nNicolo Bulega wird Zweiter und komplettiert damit das Ergebnis.")
@@ -197,7 +207,7 @@ def test_degraded_semantic_outage_still_repairs_human_error():
         agency.german_editor,agency.racing_review,agency.semantic_review_detailed,agency.reanalyse_source=old
 
 if __name__=="__main__":
-    tests=[test_run137_wrong_session,test_turkish_secondary_rider_relevance_passes_truth,test_turkish_fake_team_is_blocked,test_turkish_wrong_series_is_blocked,test_turkish_invented_rider_is_blocked,test_turkish_fake_place_is_blocked,test_hallucinated_rider_name,test_hallucinated_second_rider,test_wrong_series_hashtag,test_unsupported_series_metadata,test_hallucinated_place_is_semantic_fail_when_available,test_hallucinated_team_boundary,test_run137_rumor_upgrade,test_run137_bad_german,test_fake_number_injected,test_wrong_series_injected,test_clean_realistic_control,test_uncertainty_preserved_passes,test_degraded_semantic_outage_still_repairs_human_error,test_probe_degraded_invented_place,test_probe_degraded_invented_team]
+    tests=[test_run137_wrong_session,test_supported_place_is_allowed,test_supported_team_is_allowed,test_turkish_secondary_rider_relevance_passes_truth,test_turkish_fake_team_is_blocked,test_turkish_wrong_series_is_blocked,test_turkish_invented_rider_is_blocked,test_turkish_fake_place_is_blocked,test_hallucinated_rider_name,test_hallucinated_second_rider,test_wrong_series_hashtag,test_unsupported_series_metadata,test_hallucinated_place_is_semantic_fail_when_available,test_hallucinated_team_boundary,test_run137_rumor_upgrade,test_run137_bad_german,test_fake_number_injected,test_wrong_series_injected,test_clean_realistic_control,test_uncertainty_preserved_passes,test_degraded_semantic_outage_still_repairs_human_error,test_probe_degraded_invented_place,test_probe_degraded_invented_team]
     for t in tests:
         t();print("CONTROLLED E2E PASS:",t.__name__)
-    print("CONTROLLED RACING E2E REGRESSION: 21/21 PASS")
+    print("CONTROLLED RACING E2E REGRESSION: 23/23 PASS")
