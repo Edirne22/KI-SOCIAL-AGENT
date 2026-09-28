@@ -176,6 +176,8 @@ def handle(text):
         return show_more()
     m=re.fullmatch(r"(?:t\s*|poste\s+|nimm\s+)(\d+)",c,re.I)
     if m: return manual.handle("racing artikel "+m.group(1))
+    # Existing MotoGP approval commands belong to the approval receiver, never NLU.
+    if re.fullmatch(r"motogp(?:\s+(?:alle|nein|[1-5](?:[\s,]+[1-5])*|✅|❌))?",low,re.I): return 2
     parsed=interpret(c)
     if parsed:
         intent=parsed.get("intent")
@@ -184,7 +186,7 @@ def handle(text):
             return manual.handle("racing artikel "+str(parsed["selection"]))
         if intent=="top":
             limit=parsed.get("limit")
-            if limit in (10,20): return manual.handle("racing top"+str(limit))
+            if limit in (10,20): return show(all_rows()[:limit],"Top %d"%limit,initial_limit=10)
         if intent=="search":
             rows,label=query_intent(parsed); return show(rows,label)
     if not is_query(c): return 2
