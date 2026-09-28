@@ -51,6 +51,20 @@ def _german_sentence_errors(caption):
  patterns=((r'\bweltmeister\s+20\d{2}\s+(?:motogp|worldsbk|worldssp)\s+(?:fest|steht)\b','unidiomatische Titel-/Serien-Wortstellung'),(r'\bsteht\s+mit\s+platz\s+\w+\s+(?:plotzlich\s+)?als\s+weltmeister\b','unidiomatische Weltmeister-Formulierung'))
  return ['Sprach-QM FAIL: '+label for pattern,label in patterns if re.search(pattern,low)]
 
+def _foreign_script_errors(caption):
+ text=_editorial_text(caption)
+ if re.search(r'[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]',text):
+  return ['Sprach-QM FAIL: unerwartete CJK-Zeichen im deutschen Redakteurstext']
+ return []
+
+def _duplicate_cta_errors(caption):
+ questions=[re.sub(r'\s+',' ',q).strip().casefold() for q in re.findall(r'[^\n?]*\?',_editorial_text(caption)) if q.strip()]
+ seen=set()
+ for q in questions:
+  if q in seen:return ['Struktur-QM FAIL: identische Community-Frage/CTA doppelt']
+  seen.add(q)
+ return []
+
 def human_text_review(domain,item,caption):
  errors=[];low=_fold(caption or '')
  if not caption.strip():errors.append('Copy fehlt')
@@ -67,6 +81,8 @@ def human_text_review(domain,item,caption):
  if sentence_count<2:errors.append('Struktur-QM FAIL: mindestens 2 Sätze erforderlich')
  if len(re.findall(r'#[A-Za-z0-9ÄÖÜäöüß]+',caption))<3:errors.append('zu wenige relevante Hashtags')
  if domain=='Motorcycle Racing':
+  errors.extend(_foreign_script_errors(caption))
+  errors.extend(_duplicate_cta_errors(caption))
   errors.extend('Human-Protocol FAIL: '+e for e in racing_lexicon_errors(caption))
   errors.extend(_name_spelling_errors(item,caption))
   errors.extend(_german_sentence_errors(caption))
