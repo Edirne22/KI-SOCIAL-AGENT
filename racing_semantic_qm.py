@@ -141,7 +141,7 @@ Antworte NUR JSON:
 {{"contract_version":"SOURCE-FACT-CONTRACT-V1","coverage_complete":true|false,"claims":[{{"claim":"...","claim_type":"FACT|OPINION_QUESTION","status":"SUPPORTED|UNSUPPORTED","source_evidence":[{{"source_field":"title|summary|series|locked_metadata.<key>","quote":"exakter Quelltext"}}]}}],"german_ok":true|false,"style_ok":true|false,"repair_reasons":["..."]}}'''
 
 def review_detailed(item,caption):
- deterministic=session_errors(item,caption,'Semantic-QM')
+ deterministic=session_errors(item,caption,'Semantic-QM')+claim_strength_errors(item,caption,'Semantic-QM')
  if deterministic:
   return {'hard_ok':False,'language_ok':True,'hard_reasons':deterministic,'repair_reasons':[],'claims':[],'coverage_complete':False,'contract_version':SOURCE_FACT_CONTRACT_VERSION,'technical_error':False}
  prompt=_prompt(item,caption);raw=''
