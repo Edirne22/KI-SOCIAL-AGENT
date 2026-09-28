@@ -47,9 +47,20 @@ _CAPTION_UNCERTAIN=(
 def _any(patterns,text):
     return any(re.search(p,text) for p in patterns)
 
+def _title_has_explicit_confirmation(title):
+    return _title_has_explicit_confirmation(title)
+
+def _future_transfer_title(title):
+    return bool(re.search(r"\b20\d{2}\b",title) and re.search(r"\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",title))
+
 def source_has_uncertainty(item):
     src=source_text(item)
-    return _any(_UNCERTAIN,src)
+    title=fold(str(item.get("title","")))
+    if _any(_UNCERTAIN,src):
+        return True
+    # Future-series/transfer headlines are not treated as officially confirmed
+    # merely because a generated summary uses definitive wording.
+    return _future_transfer_title(title) and not _title_has_explicit_confirmation(title)
 
 def source_has_definitive_confirmation(item):
     title=fold(str(item.get("title","")))
