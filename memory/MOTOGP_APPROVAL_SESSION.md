@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790600363
+Session-Timestamp: 1790612838
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,25 +15,25 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 4
-QM-Ruecklaeufe: 3
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.9
+Artikelalter-Tage: 2.9
 Kategorie: Turkish Riders
-Serie: MotoGP
-Story-Key: motogp:10859536
-Titel: Toprak: “2018’de yarış kariyerimi noktalamayı bile düşünmüştüm”
-Quelle: https://tr.motorsport.com/motogp/news/toprak-2018de-yaris-kariyerimi-noktalamayi-bile-dusunmustum/10859536
+Serie: WorldSSP
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-1-toprak-2018de-yaris-01.jpg
-Quellen-Preview: https://cdn-6.motorsport.com/images/amp/YWKABqVY/s6/toprak-razgatlioglu-pramac-rac.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-1-can-oncu-cremonada-o-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu hatte in seiner ersten MotoGP-Saison lange Probleme, den Rhythmus zu finden. Was ihn damals traf, kannte er schon aus 2018 – seinem Debütjahr im WSBK. Damals überlegte er sogar, seine Rennkarriere zu beenden.
+Can Öncü hat im WorldSSP-Superpole in Cremona Platz sechs geholt. Bis zur Pole waren's nur 0,365 Sekunden. 🏍️
 
-Was meint ihr, wie es ihm jetzt in der MotoGP geht?
+Wie schätzt ihr die Situation für Can ein?
 
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -44,24 +44,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
+Artikelalter-Tage: 4.3
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10859765
-Titel: Quartararo, Honda’ya geçişiyle sponsor değiştirmek zorunda kalıyor
-Quelle: https://tr.motorsport.com/motogp/news/quartararo-hondaya-gecisiyle-sponsor-degistirmek-zorunda-kaliyor/10859765
+Story-Key: title:fermin-aldeguer-japonya-motogp-ncesi-ameliyat-oldu
+Titel: Fermin Aldeguer Japonya MotoGP öncesi ameliyat oldu
+Quelle: https://motoetkinlik.com/fermin-aldeguer-japonya-motogp-oncesi-ameliyat-oldu
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-2-quartararo-hondaya-g-01.jpg
-Quellen-Preview: https://cdn-3.motorsport.com/images/amp/25dLlel0/s6/fabio-quartararo-yamaha-factor.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-2-fermin-aldeguer-japo-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/fermin-aldeguer-ameliyat-japonya-motogp-2026-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Quartararo und Honda ab 2027 – Monster Energy ist damit raus.
+Fermin Aldeguer hat sich kurz vor der Japan-Runde operieren lassen. Schmerzen im linken Bein, eine Schraube, die raus musste – beim Gresini-Rider wurde das erledigt, bevor es weitergeht. 🏍️
 
-Den Sponsor hatte er seit Anbeginn seiner Karriere. Mit dem Wechsel zu Honda ab 2027 muss er den Vertrag beenden.
+So kurz vor dem Renne auf den OP-Tisch – wie seht ihr das?
 
-Was sagt ihr zum Sponsor-Wechsel wegen Honda?
-
-#MotoGP #FabioQuartararo #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #FerminAldeguer #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -69,25 +67,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 2
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.8
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
-Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
-Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
+Artikelalter-Tage: 0.4
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: title:franco-morbidelli-z-ndan-ka-rd-2027-de-worldsbk-ye-geliyor
+Titel: Franco Morbidelli ağzından kaçırdı: 2027’de WorldSBK’ye geliyor
+Quelle: https://motoetkinlik.com/franco-morbidelliden-2027-worldsbk-gelecegine-dair-guclu-sinyal
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-3-can-oncu-cremonada-o-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-3-franco-morbidelli-ag-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/franco-morbidelli-worldsbk-ducati-2027.webp
 Plattformen: Instagram + Facebook
 Text:
-Can Öncü in der WorldSSP-Superpole in Cremona – sechster Platz, 0,365 Sekunden hinter der Pole. 🏍️
+Morbidelli sagt's klar: 2027 WorldSBK. 🏁
 
-Wie seht ihr den sechsten Platz in der Cremona-Superpole?
+In Cremona hat er's deutlich gemacht – ab 2027 geht er in der WorldSBK an den Start. Der Ducati-Werkvertrag ist bis jetzt noch nicht offiziell bestätigt worden.
 
-#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr den Wechsel, und wie sicher ist eurer Meinung nach der Ducati-Vertrag?
+
+#WorldSBK #FrancoMorbidelli #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -98,24 +98,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.0
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:jeremy-alcoba-cremona-da-kazand-can-nc-den-anss-z-yar
-Titel: Jeremy Alcoba Cremona'da Kazandı, Can Öncü'den Şanssız Yarış!
-Quelle: https://motoetkinlik.com/jeremy-alcoba-cremonada-kazandi-can-oncuden-sanssiz-yaris
+Artikelalter-Tage: 1.3
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: title:worldsbk-eicma-italian-round-superpole-yar-lecuona-kazand-bulega-i-kinci
+Titel: WorldSBK EICMA Italian Round Superpole Yarışı: Lecuona Kazandı, Bulega İkinci
+Quelle: https://motoetkinlik.com/worldsbk-eicma-italian-round-superpole-yarisi-lecuona-kazandi-bulega-ikinci
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-4-jeremy-alcoba-cremon-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/can-oncu-yamaha-supersport-most.webp
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-4-worldsbk-eicma-itali-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/Iker-Lecuona-Balaton-Park-FP1-Lideri.webp
 Plattformen: Instagram + Facebook
 Text:
-Alcoba holt in Cremona den WorldSSP-Sieg – Kawasaki feiert nach drei Jahren mal wieder. 🏁
+Iker Lecuona holt sich die Superpole in Cremona – dahinter wird Bulega mit 2,005 Sekunden Rückstand Zweiter. Damit ist es schon Lecuonas zweiter Sieg an diesem Wochenende, und die Titelentscheidung rutscht ins zweite Rennen. 🏁
 
-Danach Arenas Zweiter, Farioli Dritter. Und Can Öncü ist im Rennen raus – da hat's einfach gekracht.
+Was erwartet ihr von der Titelentscheidung im zweiten Rennen?
 
-Wie habt ihr das Öncü-Aus im Rennen aufgenommen?
-
-#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #IkerLecuona #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -123,25 +121,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 3
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 3.1
+Artikelalter-Tage: 1.1
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: title:cremona-da-fp1-lecuona-n-n-bulega-d-t-ducati-i-lk-alt-y-kapatt
-Titel: Cremona'da FP1 Lecuona'nın, Bulega Düştü, Ducati İlk Altıyı Kapattı!
-Quelle: https://motoetkinlik.com/cremonada-fp1-lecuonanin-bulega-dustu-ducati-ilk-altiyi-kapatti
+Story-Key: motogp:10859626
+Titel: WSBK İtalya 2. yarış: Bulega 2026 Dünya Superbike şampiyonu oldu, Lecuona Cremona’da üçte üç yaptı!
+Quelle: https://tr.motorsport.com/wsbk/news/wsbk-italya-2-yaris-bulega-2026-dunya-superbike-sampiyonu-oldu-lecuona-cremonada-ucte-uc-yapti/10859626
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-5-cremona-da-fp1-lecuo-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/07/iker-lecuona-ducati-superbike.webp
+Instagram-Bild: assets/images/2026-09/2026-09-28-racing-editorial-2026-09-28-5-wsbk-italya-2-yaris-01.jpg
+Quellen-Preview: https://cdn-7.motorsport.com/images/amp/01QNMAr0/s6/nicolo-bulega-aruba-it-racing-2.jpg
 Plattformen: Instagram + Facebook
 Text:
-Lecuona hat in Cremona die Spur offen gehalten – und dann kam der Dämpfer für Bulega.
+Nicolo Bulega ist 2026er-Weltmeister geworden – sein erster WorldSBK-Titel.
 
-Iker Lecuona ging bei WorldSBK FP1 in Cremona als Erster durchs Ziel. Zeit: 1:28.278. Auf Rang zwei lag Nicolo Bulega, aber der schloss die Runde nicht mehr sauber ab und ging am Ende der Session zu Boden. Die Ducati-Fahrer komplettierten immerhin den kompletten Top6.
+Das gelang ihm beim zweiten Rennen in Cremona.
 
-Wie seht ihr die Lage vor dem Sprint – Lecuona im Rausch oder eher Glück bei der Zeit?
+Iker Lecuona hat in Cremona mit dem dritten Sieg einen Triple geholt.
+
+Was haltet ihr von Bulegas Titelgewinn – verdient oder eher überraschend?
 
 #WorldSBK #NicoloBulega #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 

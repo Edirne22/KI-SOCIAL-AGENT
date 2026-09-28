@@ -2154,3 +2154,75 @@ Story-Key: title:cremona-da-fp1-lecuona-n-n-bulega-d-t-ducati-i-lk-alt-y-kapatt
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-28 16:46 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:46 UTC | Motorcycle Racing | FAIL
+Titel: WSBK İtalya superpole yarış: Lecuona Cremona’da duble yaptı, Surra ilk WSBK podyumunu aldı!
+Story-Key: motogp:10859544
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:51 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp; Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:51 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:51 UTC | Motorcycle Racing | PASS
+Titel: Fermin Aldeguer Japonya MotoGP öncesi ameliyat oldu
+Story-Key: title:fermin-aldeguer-japonya-motogp-ncesi-ameliyat-oldu
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:51 UTC | Motorcycle Racing | PASS
+Titel: Franco Morbidelli ağzından kaçırdı: 2027’de WorldSBK’ye geliyor
+Story-Key: title:franco-morbidelli-z-ndan-ka-rd-2027-de-worldsbk-ye-geliyor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:52 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK EICMA Italian Round Superpole Yarışı: Lecuona Kazandı, Bulega İkinci
+Story-Key: title:worldsbk-eicma-italian-round-superpole-yar-lecuona-kazand-bulega-i-kinci
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:52 UTC | Motorcycle Racing | FAIL
+Titel: Dall’Igna’dan Bulega’nın şampiyonluğu sonrası Ducati vurgusu: “Tüm yarışları kazandı”
+Story-Key: title:dall-igna-dan-bulega-n-n-ampiyonlu-u-sonras-ducati-vurgusu-t-m-yar-lar-kazand
+Gründe: Sprach-QM FAIL: möglicher Namens-Tippfehler Dall'Igna (Quelle: Dall’Igna)
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:52 UTC | Motorcycle Racing | FAIL
+Titel: Dall’Igna’dan Bulega’nın şampiyonluğu sonrası Ducati vurgusu: “Tüm yarışları kazandı”
+Story-Key: title:dall-igna-dan-bulega-n-n-ampiyonlu-u-sonras-ducati-vurgusu-t-m-yar-lar-kazand
+Gründe: Sprach-QM FAIL: möglicher Namens-Tippfehler Dall'Igna (Quelle: Dall’Igna)
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:53 UTC | Motorcycle Racing | FAIL
+Titel: Nicolo Bulega 2026 WORLD SBK Şampiyonu, Lecuona Cremona'da HAT-TRICK Yaptı!
+Story-Key: title:nicolo-bulega-2026-world-sbk-ampiyonu-lecuona-cremona-da-hat-trick-yapt
+Gründe: Sprach-QM FAIL: möglicher Namens-Tippfehler Hattrick (Quelle: HAT-TRICK)
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:53 UTC | Motorcycle Racing | FAIL
+Titel: Nicolo Bulega 2026 WORLD SBK Şampiyonu, Lecuona Cremona'da HAT-TRICK Yaptı!
+Story-Key: title:nicolo-bulega-2026-world-sbk-ampiyonu-lecuona-cremona-da-hat-trick-yapt
+Gründe: Sprach-QM FAIL: möglicher Namens-Tippfehler Hattrick (Quelle: HAT-TRICK); Sprach-QM FAIL: möglicher Namens-Tippfehler Hattrick (Quelle: HAT-TRICK)
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 16:53 UTC | Motorcycle Racing | PASS
+Titel: WSBK İtalya 2. yarış: Bulega 2026 Dünya Superbike şampiyonu oldu, Lecuona Cremona’da üçte üç yaptı!
+Story-Key: motogp:10859626
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

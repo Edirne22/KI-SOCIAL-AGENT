@@ -654,3 +654,23 @@ Quelle: https://motoetkinlik.com/jeremy-alcoba-cremonada-kazandi-can-oncuden-san
 Story-Key: title:cremona-da-fp1-lecuona-n-n-bulega-d-t-ducati-i-lk-alt-y-kapatt
 Titel: Cremona'da FP1 Lecuona'nın, Bulega Düştü, Ducati İlk Altıyı Kapattı!
 Quelle: https://motoetkinlik.com/cremonada-fp1-lecuonanin-bulega-dustu-ducati-ilk-altiyi-kapatti
+
+## 2026-09-28 16:27 UTC – ANGEBOTEN
+Story-Key: title:fermin-aldeguer-japonya-motogp-ncesi-ameliyat-oldu
+Titel: Fermin Aldeguer Japonya MotoGP öncesi ameliyat oldu
+Quelle: https://motoetkinlik.com/fermin-aldeguer-japonya-motogp-oncesi-ameliyat-oldu
+
+## 2026-09-28 16:27 UTC – ANGEBOTEN
+Story-Key: title:franco-morbidelli-z-ndan-ka-rd-2027-de-worldsbk-ye-geliyor
+Titel: Franco Morbidelli ağzından kaçırdı: 2027’de WorldSBK’ye geliyor
+Quelle: https://motoetkinlik.com/franco-morbidelliden-2027-worldsbk-gelecegine-dair-guclu-sinyal
+
+## 2026-09-28 16:27 UTC – ANGEBOTEN
+Story-Key: title:worldsbk-eicma-italian-round-superpole-yar-lecuona-kazand-bulega-i-kinci
+Titel: WorldSBK EICMA Italian Round Superpole Yarışı: Lecuona Kazandı, Bulega İkinci
+Quelle: https://motoetkinlik.com/worldsbk-eicma-italian-round-superpole-yarisi-lecuona-kazandi-bulega-ikinci
+
+## 2026-09-28 16:27 UTC – ANGEBOTEN
+Story-Key: motogp:10859626
+Titel: WSBK İtalya 2. yarış: Bulega 2026 Dünya Superbike şampiyonu oldu, Lecuona Cremona’da üçte üç yaptı!
+Quelle: https://tr.motorsport.com/wsbk/news/wsbk-italya-2-yaris-bulega-2026-dunya-superbike-sampiyonu-oldu-lecuona-cremonada-ucte-uc-yapti/10859626
