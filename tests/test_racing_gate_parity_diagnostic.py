@@ -53,7 +53,8 @@ def audit_projection_split():
 def reproduce_run137_session_blind_spot():
     item=_worldsbk_superpole_race()
     bad=("Iker Lecuona holt sich die Superpole in Cremona – dahinter wird Bulega "
-         "mit 2,005 Sekunden Rückstand Zweiter.\\n\\n"\n         "Damit ist es schon Lecuonas zweiter "
+         "mit 2,005 Sekunden Rückstand Zweiter.\n\n"
+         "Damit ist es schon Lecuonas zweiter "
          "Sieg an diesem Wochenende, und die Titelentscheidung rutscht ins zweite Rennen.\n\n"
          "Was erwartet ihr von der Titelentscheidung im zweiten Rennen?\n\n"
          "#WorldSBK #IkerLecuona #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife")
