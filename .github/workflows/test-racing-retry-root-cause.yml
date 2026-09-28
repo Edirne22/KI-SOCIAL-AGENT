@@ -6,6 +6,7 @@ on:
       - "racing_semantic_qm.py"
       - "racing_event_contract.py"
       - "racing_source_claim_guard.py"
+      - "chief_quality_manager.py"
       - "racing_final_guard.py"
       - "motogp_quality_manager.py"
       - "racing_v855_hardening.py"
@@ -14,6 +15,7 @@ on:
       - "tests/test_racing_retry_root_cause.py"
       - "tests/test_racing_event_session_contract.py"
       - "tests/test_racing_source_claim_strength.py"
+      - "tests/test_german_writing_editor_gate.py"
       - ".github/workflows/test-racing-retry-root-cause.yml"
 jobs:
   test:
@@ -24,7 +26,8 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install requests Pillow beautifulsoup4
-      - run: python -m py_compile llm_client.py racing_event_contract.py racing_source_claim_guard.py racing_semantic_qm.py racing_final_guard.py motogp_quality_manager.py racing_v855_hardening.py motogp_content_agency_v2.py tests/test_racing_retry_root_cause.py tests/test_racing_event_session_contract.py
+      - run: python -m py_compile llm_client.py racing_event_contract.py racing_source_claim_guard.py racing_semantic_qm.py racing_final_guard.py motogp_quality_manager.py racing_v855_hardening.py motogp_content_agency_v2.py tests/test_racing_retry_root_cause.py tests/test_racing_event_session_contract.py tests/test_racing_source_claim_strength.py tests/test_german_writing_editor_gate.py
       - run: PYTHONPATH=. python tests/test_racing_retry_root_cause.py
       - run: PYTHONPATH=. python tests/test_racing_event_session_contract.py
       - run: PYTHONPATH=. python tests/test_racing_source_claim_strength.py
+      - run: PYTHONPATH=. python tests/test_german_writing_editor_gate.py

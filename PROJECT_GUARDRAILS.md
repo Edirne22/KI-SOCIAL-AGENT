@@ -78,6 +78,9 @@ Bekannte Fallklassen umfassen u. a.:
 - erfundenes Team (z. B. Phoenix-Werksteam)
 - falsche Serie / falscher Serien-Hashtag
 - Semantic-Ausfall + DEGRADED-PASS
+- Run #138: unsicherer Roh-Titel („starkes Signal“) darf durch ein generiertes Summary nicht zu „bestätigt“ hochgestuft werden
+- Run #138: Motorrad-Racing darf nicht „Werkswagen“ verwenden
+- Run #138: unnatürliche Übersetzungsartefakte wie „Duble“, „Weekend ... erledigt“ und „Double-Wochenende“ müssen ins Human-Writing-Retry
 
 ## 5. Source-Provenance / Wahrheitsprinzip
 

@@ -7,7 +7,7 @@ a caption from using definitive future/transfer wording when the immutable sourc
 """
 import re,unicodedata
 
-VERSION="RACING-SOURCE-CLAIM-GUARD-V1"
+VERSION="RACING-SOURCE-CLAIM-GUARD-V1.1"
 
 def fold(value):
     s=unicodedata.normalize("NFKD",str(value or "")).casefold().replace("ı","i")
@@ -35,7 +35,7 @@ _CAPTION_DEFINITIVE=(
  r"\bsteht (?:fest|klar)\b",r"\bist (?:fix|bestaetigt)\b",r"\bwurde bestaetigt\b",
  r"\bhat (?:unterschrieben|bestaetigt)\b",
  r"\bwechselt\b",r"\bgeht .*\b an den start\b",r"\bfaehrt ab\b",
- r"\bwird (?:wechseln|fahren|starten|antreten)\b",
+ r"\bwird (?:wechseln|fahren|starten|antreten)\b",r"\b20\d{2}\s+startet\b[^.!?\n]*\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",
  r"\bab \d{4} .*\b(?:worldsbk|worldssp|motogp|moto2|moto3)\b",
 )
 _CAPTION_UNCERTAIN=(
@@ -52,6 +52,12 @@ def source_has_uncertainty(item):
     return _any(_UNCERTAIN,src)
 
 def source_has_definitive_confirmation(item):
+    title=fold(str(item.get("title","")))
+    # Run #138 invariant: an explicitly uncertain RAW title is the certainty
+    # ceiling.  An LLM/generated summary must never upgrade "strong signal"
+    # into "confirmed" and thereby license a definitive caption.
+    if _any(_UNCERTAIN,title):
+        return False
     src=source_text(item)
     # Explicit negation must not be mistaken for confirmation.
     cleaned=re.sub(r"\bnot (?:yet )?(?:officially )?confirmed\b"," ",src)
