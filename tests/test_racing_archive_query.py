@@ -37,3 +37,26 @@ def test_natural_query_detection():
     assert q.is_query("Was gab es gestern über Marc Márquez?")
     assert q.is_query("Gib mir die Berichte über Deniz Öncü")
     assert q.is_query("Neuigkeiten über Jack Miller?")
+
+
+def test_natural_top_lists_delegate(monkeypatch):
+    seen=[]
+    monkeypatch.setattr(q.manual,"handle",lambda command: seen.append(command) or 10)
+    assert q.handle("Zeig mir die Top 10")==10
+    assert seen[-1]=="racing top10"
+    assert q.handle("Gib mir die Top 20 Berichte")==10
+    assert seen[-1]=="racing top20"
+
+def test_more_uses_active_session(monkeypatch,tmp_path):
+    state=tmp_path/"state.json"; monkeypatch.setattr(q,"STATE",state)
+    data=[{"story_key":str(i),"title":"Story "+str(i),"series":"MotoGP","url":"https://example.test/"+str(i)} for i in range(20)]
+    state.write_text(__import__("json").dumps({"label":"Top 20","rows":data,"offset":10}),encoding="utf-8")
+    sent=[]; monkeypatch.setattr(q,"send_message",sent.append); monkeypatch.setattr(q,"published",lambda row:False)
+    assert q.handle("mehr")==10
+    saved=__import__("json").loads(state.read_text(encoding="utf-8"))
+    assert saved["offset"]==20
+    assert "11." in sent[-1] and "20." in sent[-1]
+
+def test_natural_top_does_not_capture_approval_commands(monkeypatch):
+    assert q.handle("motogp alle")==2
+    assert q.handle("motogp 1")==2
