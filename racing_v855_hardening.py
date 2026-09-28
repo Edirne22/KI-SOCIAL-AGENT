@@ -61,7 +61,7 @@ def install(a):
         return {'series':series_for(x),'title':' '.join(str(x.get('title','')).split()),'summary':' '.join(str(x.get('summary','')).split()),'riders':a.riders_in(source),'numbers':sorted(set(re.findall(r'(?<![A-Za-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',source))),'event_session':source_event_contract(x)}
 
     def whitelist_errors(x,caption):
-        f=fact_packet(x);errs=list(racing_lexicon_errors(caption));errs.extend(session_errors(x,caption,'Source-Fact-Whitelist'));src=a.fold(f['title']+' '+f['summary']);cap=a.fold(re.sub(r'#[^\s]+','',caption or ''))
+        f=fact_packet(x);errs=list(racing_lexicon_errors(caption));errs.extend(session_errors(x,caption,'Source-Fact-Whitelist'));errs.extend(claim_strength_errors(x,caption,'Source-Fact-Whitelist'));src=a.fold(f['title']+' '+f['summary']);cap=a.fold(re.sub(r'#[^\s]+','',caption or ''))
         cfo=f['series']
         series_tokens={
             'MotoGP': ('motogp',),
