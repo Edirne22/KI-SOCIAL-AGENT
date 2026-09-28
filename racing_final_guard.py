@@ -55,7 +55,7 @@ def _caption_claims_destination(text,destination):
  return False
 
 def review(item,caption):
- errors=list(racing_lexicon_errors(caption));errors.extend(session_errors(item,caption,'Final-Guard'));src=fold(source_text(item));cap=fold(caption);series=expected_series(item);declared=str(item.get('series','')).strip()
+ errors=list(racing_lexicon_errors(caption));errors.extend(session_errors(item,caption,'Final-Guard'));errors.extend(claim_strength_errors(item,caption,'Final-Guard'));src=fold(source_text(item));cap=fold(caption);series=expected_series(item);declared=str(item.get('series','')).strip()
  if any(p in src for p in PROMO):errors.append('Final-Guard: Promo/Vlog/Marketing statt Racing-News')
  if series in ('WorldWCR','WorldSPB','Moto4'):errors.append(f'Final-Guard: {series} ist derzeit nicht als freigegebene Racing-Serie konfiguriert')
  source_dest=_transfer_destination(src)
