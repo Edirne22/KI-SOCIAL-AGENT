@@ -33,7 +33,7 @@ def repair_rider_hashtags(item,caption):
  else:caption=caption+'\n\n'+' '.join(missing[:2])
  item['caption']=caption;return caption
 def review(item,caption):
- caption=repair_rider_hashtags(item,caption);errors=list(lexicon_errors(caption));errors.extend(session_errors(item,caption,'Racing-QM'));low=fold(caption);source=fold((item.get('title') or '')+' '+(item.get('summary') or ''))
+ caption=repair_rider_hashtags(item,caption);errors=list(lexicon_errors(caption));errors.extend(session_errors(item,caption,'Racing-QM'));errors.extend(claim_strength_errors(item,caption,'Racing-QM'));low=fold(caption);source=fold((item.get('title') or '')+' '+(item.get('summary') or ''))
  if '🇹🇷' in caption and not any(fold(n) in low for n in TURKISH):errors.append('Turkish-Flag ohne Turkish Rider')
  parts=[p.strip() for p in caption.split('\n\n') if p.strip()]
  variant=item.get('structure_variant')
