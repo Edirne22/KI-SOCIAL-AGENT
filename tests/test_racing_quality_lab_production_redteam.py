@@ -49,4 +49,18 @@ ok(blocked(src,"Iker Lecuona gewinnt.\n\nSo kurz vor dem Renne war das stark.\n\
 ok(not blocked(src,base),"supported source facts overblocked")
 ok(not blocked(rumor,"Morbidelli könnte 2027 in die WorldSBK wechseln.\n\nDer Wechsel ist noch nicht bestätigt.\n\nWie seht ihr das?\n\n#WorldSBK #MotorradRacing #BuelentsBikeLife"),"uncertainty overblocked")
 
-print(f"PRODUCTION-GATE RED TEAM: {passed}/10 PASS")
+# Rider/name attacks through the full production whitelist (same truth basis used by Racing).
+import importlib
+import motogp_content_agency_v2 as agency
+import racing_v855_hardening as hard
+importlib.reload(agency); importlib.reload(hard).install(agency)
+
+rider_src=item("WorldSSP: Can Oncu finishes sixth","Can Oncu finishes sixth in WorldSSP.","WorldSSP")
+rider_good="Can Öncü wird Sechster.\n\nEin starkes Ergebnis.\n\nWie seht ihr das?\n\n#WorldSSP #MotorradRacing #BuelentsBikeLife"
+rider_fake="Can Öncü wird Sechster.\n\nToprak Razgatlıoğlu fährt direkt hinter ihm ins Ziel.\n\nWie seht ihr das?\n\n#WorldSSP #MotorradRacing #BuelentsBikeLife"
+good_errs=agency.fact_whitelist_errors(rider_src,rider_good)
+fake_errs=agency.fact_whitelist_errors(rider_src,rider_fake)
+ok(not any("Fahrer nicht in Quelle" in e for e in good_errs),"Can Oncu -> Can Öncü alias overblocked")
+ok(any("Fahrer nicht in Quelle" in e for e in fake_errs),"invented Toprak rider passed")
+
+print(f"PRODUCTION-GATE RED TEAM: {passed}/12 PASS")
