@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install pytest requests
+      - run: pip install requests Pillow beautifulsoup4 pytest
       - name: Syntax
         run: python -m py_compile racing_archive_query.py racing_manual_selection.py telegram_router.py motogp_content_agency_v2.py
       - name: Archive query regression
