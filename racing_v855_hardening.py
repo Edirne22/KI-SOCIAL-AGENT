@@ -197,6 +197,6 @@ def install(a):
 
     a.lock_source_series=lock;a.series_for_raw=series_for;a.series_for=series_for
     a._editor_prompt=prompt;a.fact_whitelist_errors=whitelist_errors;a.qualify_copy=qualify
-    a.semantic_runtime_summary=semantic_runtime_summary
+    a.semantic_runtime_summary=semantic_runtime_summary;a.semantic_technical_retry=semantic_technical_retry
     a.VERSION='V8.5.5'
     return a
