@@ -29,7 +29,7 @@ def test_bad_german():
     ok,e=human_text_review("Motorcycle Racing",x,c);check(not ok and any("vor dem Renne" in z for z in e),e)
 def test_clean_control():
     x=base("WorldSBK Superpole Race: Test Rider wins","Test Rider wins the Superpole Race. Rival finishes second.")
-    c="Test Rider gewinnt das Superpole Race. 🏁\\n\\nRival wird Zweiter und komplettiert damit das Ergebnis.\\n\\nWie seht ihr dieses Ergebnis?\\n\\n#WorldSBK #TestRider #MotorradRacing #BuelentsBikeLife"
+    c="Test Rider gewinnt das Superpole Race 🏁.\\n\\nRival wird Zweiter und komplettiert damit das Ergebnis.\\n\\nWie seht ihr dieses Ergebnis?\\n\\n#WorldSBK #TestRider #MotorradRacing #BuelentsBikeLife"
     check(not session_errors(x,c),session_errors(x,c));check(not claim_strength_errors(x,c),claim_strength_errors(x,c))
     check(human_text_review("Motorcycle Racing",x,c)[0],human_text_review("Motorcycle Racing",x,c)[1])
     check(racing_qm.review(x,c)[0],racing_qm.review(x,c)[1]);check(final_guard.review(x,c)[0],final_guard.review(x,c)[1])
