@@ -1,7 +1,6 @@
 """Natural-language Telegram query layer for the Racing archive."""
 from __future__ import annotations
-import json,re
-from datetime import datetime,timezone,timedelta
+import json,re\nfrom difflib import SequenceMatcher\nfrom datetime import datetime,timezone,timedelta
 from pathlib import Path
 from telegram_bot import send_message
 import motogp_content_agency_v2 as agency
@@ -117,7 +116,7 @@ Nachricht: """+str(text)
 
 def query_intent(intent):
     rows=all_rows(); label="Archiv"
-    riders=[str(x) for x in intent.get("riders",[]) if str(x).strip()]
+    riders=canonical_riders(intent.get("riders",[]))
     nationality=norm(intent.get("nationality",""))
     series=[str(x) for x in intent.get("series",[]) if str(x).strip()]
     now=datetime.now(timezone.utc)
