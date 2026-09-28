@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "created_at": 1790554096,
+  "created_at": 1790570263,
   "max_days": 10,
   "window_used_days": 10,
   "count": 20,
@@ -139,18 +139,6 @@
     },
     {
       "n": 12,
-      "title": "Bahattin Sofuoğlu, Dünya Supersport Şampiyonası'na geçiyor",
-      "url": "https://tr.motorsport.com/supersport/news/bahattin-sofuoglu-world-supersport-sampiyonasina-geciyor/10857707",
-      "summary": "Motoxracing Yamaha takımı, sürücü değişikliğine gittiğini doğruladı. Bahattin Sofuoğlu QJ Motor takımıyla WSSP'de yarışacak.",
-      "preview": "https://cdn-6.motorsport.com/images/amp/6x7LGrmY/s6/bahattin-sofuoglu.jpg",
-      "published_at": "2026-09-21T13:40:02Z",
-      "series": "WorldSSP",
-      "source_series": "WorldSSP",
-      "turkish_rider": "Bahattin Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 13,
       "title": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport’a Dönüyor!",
       "url": "https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-dunya-supersporta-donuyor-yeni-adresi-qj-motor",
       "summary": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport'a dönüyor! Motoxracing Yamaha WorldSBK sonrası yeni adresi QJ Motor oldu. Tüm detaylar haberimizde.",
@@ -158,6 +146,18 @@
       "published_at": "2026-09-21T15:21:06+03:00",
       "series": "WorldSBK",
       "source_series": "WorldSBK",
+      "turkish_rider": "Bahattin Sofuoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 13,
+      "title": "Bahattin Sofuoğlu, Dünya Supersport Şampiyonası'na geçiyor",
+      "url": "https://tr.motorsport.com/supersport/news/bahattin-sofuoglu-world-supersport-sampiyonasina-geciyor/10857707",
+      "summary": "Motoxracing Yamaha takımı, sürücü değişikliğine gittiğini doğruladı. Bahattin Sofuoğlu QJ Motor takımıyla WSSP'de yarışacak.",
+      "preview": "https://cdn-6.motorsport.com/images/amp/6x7LGrmY/s6/bahattin-sofuoglu.jpg",
+      "published_at": "2026-09-21T13:40:02Z",
+      "series": "WorldSSP",
+      "source_series": "WorldSSP",
       "turkish_rider": "Bahattin Sofuoğlu",
       "kind": "news"
     },
@@ -235,14 +235,14 @@
     },
     {
       "n": 20,
-      "title": "Moto2 Avusturya Yarış: Deniz Öncü İlk 10'da, Guevara'dan Kritik Zafer!",
-      "url": "https://motoetkinlik.com/moto2-avusturya-yaris-deniz-oncu-ilk-10da-guevaradan-kritik-zafer",
-      "summary": "Izan Guevara, Moto2 Avusturya GP'sinde Filip Salač ve David Alonso'nun önünde kazanarak sezonun ikinci galibiyetini aldı. Manuel Gonzalez dördüncü olurken Deniz Öncü dokuzuncu sırada finiş gördü.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/deniz-oncu-moto2-sozlesme-yeniledi.webp",
-      "published_at": "2026-09-20T16:32:26+03:00",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
+      "title": "Toprak Razgatlıoğlu, Quartararo ile arasındaki farkı buldu: “Yüzde 10 daha fazla”",
+      "url": "https://motoetkinlik.com/toprak-razgatlioglu-quartararo-ile-arasindaki-farki-acikladi-bazi-virajlarda-yuzde-10-daha-fazla",
+      "summary": "Milli sporcumuz Toprak Razgatlıoğlu, Avusturya MotoGP’de Fabio Quartararo’nun verilerini inceleyerek viraj çıkışındaki yüzde 10’luk farkı açıkladı.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/toprak-razgatlioglu-quartararo-avusturya-motogp-2026.webp",
+      "published_at": "2026-09-19T10:51:29+03:00",
+      "series": "MotoGP",
+      "source_series": "MotoGP",
+      "turkish_rider": "Toprak Razgatlıoğlu",
       "kind": "news"
     }
   ]

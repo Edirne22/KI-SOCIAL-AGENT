@@ -2010,3 +2010,51 @@ Story-Key: motogp:1095427
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-28 04:43 UTC | Motorcycle Racing | PASS
+Titel: Zayn Sofuoğlu Mariembourg'u Kusursuz Kapattı, Şampiyonada 6 Puanla Farkla İkinci
+Story-Key: title:zayn-sofuo-lu-mariembourg-u-kusursuz-kapatt-ampiyonada-6-puanla-farkla-i-kinci
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 04:43 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu: “Bu Sezon Bana SBK'daki İlk Yılımı Hatırlatıyor”
+Story-Key: title:toprak-razgatl-o-lu-bu-sezon-bana-sbk-daki-i-lk-y-l-m-hat-rlat-yor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 04:43 UTC | Motorcycle Racing | FAIL
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: Sprach-QM FAIL: möglicher Namens-Tippfehler Türke (Quelle: Türk); Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 04:44 UTC | Motorcycle Racing | PASS
+Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
+Story-Key: motogp:116150
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 04:44 UTC | Motorcycle Racing | FAIL
+Titel: WSSP Cremona 2. yarış: Alcoba’dan üst üste ikinci zafer, Can Öncü 11., Bahattin Sofuoğlu 21. sırada
+Story-Key: motogp:10859593
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 04:44 UTC | Motorcycle Racing | FAIL
+Titel: WSSP Cremona 2. yarış: Alcoba’dan üst üste ikinci zafer, Can Öncü 11., Bahattin Sofuoğlu 21. sırada
+Story-Key: motogp:10859593
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 04:44 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-28 04:44 UTC | Motorcycle Racing | PASS
+Titel: WSSP Superpole İtalya: Alcoba Cremona’da, Kawasaki 2021’den sonra ilk kez zirvede, Can Öncü 6. sırada bitirdi
+Story-Key: motogp:10859078
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
