@@ -550,9 +550,8 @@ Quelle: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu", "media_status": "", "object_id": "1285968257941776_122116854609469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122116854609469415", "source_url": "https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu", "version": 1}
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36606879045-1
+## Instagram [GEPOSTET 2026-09-29 17:43 | ID: 18175131181447894]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
 Telegram-Update-ID: 279361790
@@ -567,6 +566,7 @@ Quelle / weitere Infos: https://motoetkinlik.com/motogp-avusturya-sprint-martind
 Quelle: https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-29-turkish-human-3-toprak-razgatlioglu-01.jpg
+Publish-Provenienz: {"creation_id": "18009308051971550", "media_kind": "image", "media_path": "assets/images/2026-09/2026-09-29-turkish-human-3-toprak-razgatlioglu-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18175131181447894", "published_media_id": "18175131181447894", "source_url": "https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans", "version": 1}
 
 ## Facebook [GEPOSTET 2026-09-29 17:17 | ID: 1285968257941776_122116862691469415]
 Status: GEPOSTET
