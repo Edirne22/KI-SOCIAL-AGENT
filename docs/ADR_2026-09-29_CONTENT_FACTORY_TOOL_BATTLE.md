@@ -588,3 +588,93 @@ Erst anhand dieses PoC entscheiden wir, wie häufig OpenChatCut im Normalpfad be
 10. Voice/Avatar danach.
 
 Damit wird nicht zuerst ein eigener Videoeditor nachgebaut. Wir nutzen vorhandene spezialisierte Maschinen und konzentrieren eigene Entwicklung auf Orchestrierung, Faktenqualität, Bülent-Stil, Human Authority und den durchgängigen Produktionsworkflow.
+
+
+## Radar-Nachtrag: Discovery, Trend Intelligence und Generative Video
+
+Funde vom 29.09.2026 aus Bülents laufendem Tool-Radar. Diese Kandidaten erweitern den Beobachtungsraum, ändern aber bewusst **nicht** die aktuelle MVP-Priorität mit ProductionJob, R2, Job API, SupoClip und anschließend OpenChatCut.
+
+### Futurepedia – Discovery-Radar
+
+Rolle:
+- Verzeichnis/Entdeckungsquelle für neue KI-Tools, Modelle und Workflows.
+- Kann regelmäßig genutzt werden, um neue Kandidaten für Video, Audio, Automation, Coding und Agenten zu entdecken.
+
+Architekturentscheidung:
+- **RADAR / WATCH.**
+- Kein Runtime-Baustein und kein System of Record.
+- Interessante Funde werden einzeln gegen Lizenz, Self-Hosting, API/MCP, Kosten, Reifegrad und Nutzen für Edirne 22 geprüft.
+- Ziel ist nicht, möglichst viele Tools einzubauen, sondern früh bessere austauschbare Maschinen zu entdecken.
+
+### ViralityAI – Trend-/Content-Intelligence
+
+Potenzielle Rolle:
+- Recherche nach erfolgreichen Content-Ideen und Mustern auf Social-Plattformen.
+- Analyse von Hook, Lesbarkeit, Retention/Pacing, Shareability, CTA sowie Format-/Content-Signalen kann als zusätzliche Input-Schicht für Themenwahl und Storyboard dienen.
+
+Möglicher späterer Pfad:
+Racing Discovery
+→ Trend-/Virality-Signale
+→ Betriebsleiter
+→ Fact Check / Quellenvertrag
+→ Bülent Writing
+→ Reel Engine
+→ End-QM.
+
+Harte Grenze:
+- Virality-/Performance-Signale sind **keine Faktenquelle**.
+- Ein hoher Viralitätswert darf niemals Source-Fact-Contract, Series Lock, Fact Check oder Human Authority überstimmen.
+- Externe Scores werden höchstens als beratendes Signal im ProductionJob gespeichert.
+
+Architekturentscheidung:
+- **WATCH / LATER.**
+- Erst evaluieren, wenn der eigentliche Produktionspfad stabil ist.
+- Wenn integriert, ausschließlich hinter einem eigenen ContentIntelligenceAdapter.
+
+### Luma Agents / Luma AI – Generative Video und spätere Avatar-Stufe
+
+Potenzielle Rolle:
+- Generative Bilder/Video und agentisch erzeugte oder veränderte Szenen.
+- Interessant für spätere Edirne-22-Avatar-/Character-Animation, visuelle Inserts, Bewegungen, Lip-Sync-/Character-Szenen und generative Ergänzungen.
+- API-basierte Job-Ansteuerung passt grundsätzlich zum Adapter-/Betriebsleiter-Modell.
+
+Möglicher späterer Pfad:
+Betriebsleiter
+→ AvatarEngineAdapter / GenerativeVideoAdapter
+→ Luma oder alternativer Provider
+→ MediaStorage/R2
+→ VideoEditor/Reel Engine
+→ End-QM.
+
+Architekturentscheidung:
+- **LATER / WATCH**, nicht MVP 1.
+- Luma wird nicht System of Record und nicht fest in ProductionJob verdrahtet.
+- Kosten, API-Bedingungen, Nutzungs-/Outputrechte, DE/TR-Qualität, Character Consistency und Reproduzierbarkeit müssen vor produktiver Bindung separat geprüft werden.
+- Der Adapter muss einen späteren Wechsel zu einem anderen lokalen oder gehosteten Modell erlauben.
+
+### Nicht als Runtime-Bausteine priorisiert
+
+Nick Saraev / Liam Ottley:
+- mögliche Lern-/Architektur-/Workflow-Quellen für Agenten und Automatisierung.
+- **RADAR**, keine Runtime-Abhängigkeit.
+
+Cursor:
+- Entwicklungswerkzeug/IDE-Assistent.
+- derzeit kein Bestandteil der produktiven Content Factory und kein Ersatz für Betriebsleiter, GitHub-Workflow oder Runtime-Agenten.
+
+### Radar-Regel
+
+Bülent kann während des Aufbaus jederzeit neue Tools, Repositories, Videos, Screenshots oder Dienste einwerfen. Jeder Fund wird nach demselben Raster bewertet:
+1. Welche konkrete Maschinenrolle könnte er übernehmen?
+2. Spart er eigene Entwicklungsarbeit?
+3. Self-hosted/Open Source/API/MCP?
+4. Lizenz und mögliche kommerzielle Nutzung?
+5. Kosten und Infrastrukturbedarf?
+6. Reifegrad, Tests, Recovery und Wartbarkeit?
+7. Kann er hinter einen Edirne-22-Adapter?
+8. Ersetzt er eine bestehende Maschine oder ergänzt er nur?
+9. Gefährdet er Fakten-QM, Human Authority oder das kanonische ProductionJob-Modell?
+10. MVP, WATCH/LATER oder verwerfen?
+
+Leitprinzip bleibt:
+**Wir setzen unsere Fabrik über die besten verfügbaren Maschinen, statt jede Maschine unnötig selbst nachzubauen.**
