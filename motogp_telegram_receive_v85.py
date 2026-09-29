@@ -203,8 +203,9 @@ def handle_turkish(uid,chat,txt):
                 for pn,px,_ in escalated:
                     preview=px.get("preview","")
                     if preview:
-                        try:send_photo(preview,caption=f"Quell-Vorschau T{pn} - {px.get('turkish_rider','Turkish Rider')}")
-                        except Exception as e:print("TURKISH ESCALATE PREVIEW FAIL",pn,type(e).__name__,str(e)[:160])
+                        label=f"Quell-Vorschau T{pn} - {px.get('turkish_rider','Turkish Rider')}"
+                        if not agency._send_turkish_source_photo(preview,label):
+                            print("TURKISH ESCALATE PREVIEW FAIL",pn,"source preview not deliverable")
             for n,reasons in technical:
                 msg+=f'\n\n🛠️ T{n} technisch nicht fertig: {"; ".join(reasons[:4])}'
             send_message(msg)
