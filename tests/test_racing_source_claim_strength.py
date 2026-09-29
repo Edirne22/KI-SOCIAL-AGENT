@@ -92,3 +92,18 @@ def test_run139_explicit_official_title_remains_positive_control():
 if __name__=="__main__":
     test_run139_summary_cannot_license_definitive_transfer_from_nonconfirmed_title()
     test_run139_explicit_official_title_remains_positive_control()
+
+
+def test_agius_explicit_signing_title_is_positive_control():
+    x={"title":"Tech3 signs Agius for MotoGP debut from 2027",
+       "summary":"Agius moves from Moto2.","source_series":"Moto2","series":"MotoGP"}
+    check(source_has_definitive_confirmation(x),x)
+    check(not source_has_uncertainty(x),x)
+    caption=blocks("Agius startet ab 2027 bei Tech3 in der MotoGP.")
+    check(not claim_strength_errors(x,caption),claim_strength_errors(x,caption))
+    final_ok, final_errors=final_guard.review(x,"Agius startet ab 2027 bei Tech3 in der MotoGP. #MotoGP")
+    check(final_ok,final_errors)
+
+if __name__=="__main__":
+    test_agius_explicit_signing_title_is_positive_control()
+    print("AGIUS SIGNING POSITIVE CONTROL: PASS")

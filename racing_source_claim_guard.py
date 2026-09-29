@@ -26,7 +26,7 @@ _UNCERTAIN=(
 )
 _SOURCE_DEFINITIVE=(
  r"\bconfirmed\b",r"\bofficially confirmed\b",r"\bannounce[ds]?\b",
- r"\bwill (?:join|race|move|switch|ride|compete)\b",r"\bhas signed\b",r"\bsigned\b",
+ r"\bwill (?:join|race|move|switch|ride|compete)\b",r"\bhas signed\b",r"\bsign(?:s|ed)?\b",
  r"\bjoins?\b",r"\bsecures?\b",
  r"\bresmen\b",r"\bdogrulandi\b",r"\baciklandi\b",r"\bimzaladi\b",
 )
