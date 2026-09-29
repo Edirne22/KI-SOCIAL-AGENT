@@ -274,3 +274,141 @@ Eine Korrektur wie "Sekunde 23: anderes Bild" verändert nur den betroffenen Tei
 ## Architekturregel
 
 Kein externes Tool darf System of Record für unsere Fakten, Freigaben oder Production Jobs werden. Alle externen Tools werden über Adapter gekapselt und müssen austauschbar bleiben.
+
+
+## Vierte Architekturentscheidung: Factory Frontend + Job API + Media Storage
+
+Die fertige Fabrik darf nicht davon abhängen, dass Bülent einen ChatGPT-Chat öffnet. ChatGPT bleibt Entwicklungs-/Programmierpartner; die produktive Fabrik erhält eine eigene Bedienoberfläche.
+
+### Factory Frontend
+
+Ziel ist eine bewusst einfache Weboberfläche:
+- großes Auftragseingabefeld
+- Plus-Button für Bilder, Videos, Audio und Dokumente
+- Mikrofon-Button für freie Spracheingabe
+- sichtbares/korrigierbares Transkript vor Job-Übergabe
+- Senden/Produktion starten
+- Liste laufender Production Jobs und deren Status
+- Video-/Asset-Vorschau
+- Human-Approval-Aktionen: Ändern / Verwerfen / Posten
+- später Timeline-/Timestamp-Feedback, z. B. "00:23 anderes Bild"
+
+Die Oberfläche ist nur ein Client. Sie enthält keine eigene Fabriklogik.
+
+### Mehrere Eingänge, ein Betriebsleiter
+
+Alle Eingänge werden auf dasselbe Job-Protokoll normalisiert:
+
+Web-App
+Telegram
+spätere Clients
+→ Job API
+→ Python Betriebsleiter
+→ dieselbe Content-Fabrik.
+
+Telegram bleibt für mobile Kurzbefehle, Status, Preview und schnelle Freigaben erhalten. Die Web-App ist der primäre Arbeitsplatz für Upload, Spracheingabe, Projektansicht und detaillierte Korrekturen.
+
+### Spracheingabe
+
+Der Mikrofon-Button erzeugt zunächst eine Audioaufnahme.
+SpeechToTextAdapter:
+- transkribiert lokal oder über einen austauschbaren Provider
+- bevorzugt Whisper/faster-whisper für lokalen Betrieb
+- speichert Originalaudio + Transkript
+- zeigt das Transkript vor dem Start zur Korrektur
+- übergibt dem Betriebsleiter einen strukturierten Textauftrag
+
+Das Originalaudio bleibt als Job-Artefakt erhalten; der Text ist die maschinenlesbare Arbeitsanweisung.
+
+### Job API
+
+Die Job API ist die stabile Grenze zwischen Benutzeroberflächen und Fabrik.
+
+MVP-Endpunkte/Funktionen:
+- Production Job erstellen
+- Dateien registrieren/hochladen
+- Spracheingabe/Transkript anhängen
+- Jobstatus lesen
+- Preview/Artefakte abrufen
+- Änderungsauftrag mit optionalem Timestamp senden
+- Human Approval setzen
+- Publish-Handoff auslösen
+
+Frontend und Telegram dürfen keine internen Agenten direkt aufrufen.
+
+### Media Storage
+
+Große Binärdateien werden nicht regulär in Git versioniert.
+
+In Media Storage gehören:
+- Rohvideos
+- Bilder
+- Audio
+- extrahierte Frames
+- Proxy-Dateien
+- Voice-Ausgaben
+- Zwischenrenders
+- finale Videos
+
+Im Production Job werden stattdessen Media-ID/URI, Hash, Dateityp, Größe, Herkunft, Erstellungszeit und Version gespeichert.
+
+MediaStorageAdapter kapselt den Speicherort. Unterstützbare Backends:
+1. lokaler Arbeitsordner auf Windows für Entwicklung
+2. persistenter VPS-Speicher für Serverbetrieb
+3. NAS/SMB als optionaler Speicher
+4. S3-kompatibler Object Storage als spätere robuste Variante
+5. Router-USB-Speicher optional als Archiv/Backup/Übergabespeicher
+
+### Router-USB / externe Festplatte
+
+Eine 32/64-GB-USB-Platte am Heimrouter ist technisch als Netzwerkspeicher möglich, sofern der Router SMB/NAS-Freigaben zuverlässig bereitstellt. Sie ist jedoch nicht als primärer Production Storage vorgesehen.
+
+Gründe:
+- Router-USB/CPU kann bei großen Video-I/O-Operationen langsam sein
+- Heimnetz-/Internet-Ausfall würde entfernte Worker blockieren
+- SMB über das öffentliche Internet soll nicht direkt exponiert werden
+- konkurrierende Render-/Transkriptionsjobs benötigen robustere I/O-Eigenschaften
+- 32/64 GB sind für Rohvideo und Zwischenrenders schnell erschöpft
+
+Empfehlung:
+- Router-USB: Archiv, Backup oder manuelle Übergabe
+- externe SSD/HDD an dauerhaft laufendem PC/NAS: besser für lokalen großen Medienspeicher
+- VPS/Object Storage: besser für autonome 24/7-Serverjobs
+
+Falls Heim-NAS später vom VPS benötigt wird, Zugriff nur über einen sicheren privaten Tunnel/VPN und nicht durch öffentlich freigegebenes SMB.
+
+### Storage-Regel
+
+Agentencode, Konfiguration und kleine textuelle Job-Artefakte bleiben in Git/GitHub.
+Schwere Medien liegen im Media Storage.
+Die Fabrik referenziert Medien über MediaStorageAdapter und darf keinen festen lokalen Pfad als Architekturannahme einbauen.
+
+### Erweiterte Zielarchitektur
+
+Factory Web UI ─┐
+Telegram ───────┼→ Job API → Python Betriebsleiter → Production Job Store
+weitere Clients ┘                         │
+                                         ├→ MediaStorageAdapter
+                                         ├→ Transcription/Fact/Writing
+                                         ├→ VideoEditorAdapter
+                                         ├→ Voice/Avatar/Caption/Render
+                                         └→ End-QM
+                                                ↓
+                                      Repo/Web/Telegram Preview
+                                                ↓
+                                         Bülent Approval
+                                                ↓
+                                         PublisherAdapter
+
+### Auswirkung auf MVP-Reihenfolge
+
+Vor dem eigentlichen Video-PoC werden die stabilen Grenzen definiert:
+1. Production-Job-Schema + Statusmaschine.
+2. MediaStorageAdapter + lokales Development-Backend.
+3. Job-API-Vertrag.
+4. minimales Factory-Frontend für Textauftrag, Upload und Status.
+5. Spracheingabe/STT kann direkt danach ergänzt werden.
+6. VideoEditorAdapter/OpenChatCut-PoC.
+7. restliche Produktionskette wie oben.
+
+Damit kann die Fabrik später vom Windows-PC auf VPS/NAS/Object Storage umziehen, ohne Frontend, Agentenlogik oder Production Jobs neu zu entwerfen.
