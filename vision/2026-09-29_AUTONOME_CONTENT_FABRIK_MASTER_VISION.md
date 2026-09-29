@@ -169,3 +169,76 @@ Jede Stufe muss einzeln testbar und austauschbar bleiben.
 
 ## 15. Leitbild
 Bülent liefert Material und Idee. Die Agentenfabrik übernimmt Recherche, Transkription, Redaktion, Faktenprüfung, Regie, Visuals, Stimme, Avatar, Untertitel, Rendering und Qualitätsprüfung. Bülent erhält das fertige Ergebnis auf dem goldenen Tablett und entscheidet, ob veröffentlicht wird.
+
+
+## 16. Architekturfortschreibung 29.09.2026 – Fabrik über austauschbaren Maschinen
+
+Die Master-Vision wird durch den laufenden Tool-Battle konkretisiert:
+
+**Edirne 22 baut nicht jede technische Maschine selbst nach.** Der Betriebsleiter bleibt die übergeordnete Fabriksteuerung und delegiert klar abgegrenzte Aufgaben über Adapter an die jeweils beste verfügbare Maschine. Externe Werkzeuge dürfen weder ProductionJob noch Fakten-QM, Human Authority oder den finalen Approval State übernehmen.
+
+Aktuell vorgesehene Maschinenrollen:
+- SupoClip als primärer MVP-Kandidat für automatische Longform→Short-/Reel-Produktion, Segmentwahl, 9:16-Face-Crop, Hooks und Captions.
+- OpenChatCut für editierbares Masterprojekt und gezielte Targeted Repairs.
+- FFmpeg als stabile Low-Level-Media-/Render-Schicht und Fallback.
+- Cloudflare R2 als bevorzugtes persistentes Medienlager hinter MediaStorageAdapter.
+- weitere Werkzeuge nur hinter austauschbaren Adaptern.
+
+Leitprinzip:
+**Wir setzen unsere Fabrik über die besten verfügbaren Maschinen, statt jede Maschine unnötig selbst nachzubauen.**
+
+## 17. YouTube und Social Media als Tool-/Ideen-Radar
+
+YouTube, Instagram und ähnliche öffentliche Quellen dienen nicht nur als mögliche Themenquellen für spätere Posts. Sie werden zusätzlich als **Discovery-Radar für neue Werkzeuge, Modelle, Open-Source-Projekte und Produktionsmethoden** genutzt.
+
+Ablauf bei einem Fund:
+1. Bülent liefert Link, Screenshot oder Namen.
+2. Die Fabrik/Entwicklungsprüfung extrahiert die interessante Behauptung oder das genannte Werkzeug.
+3. Werbeversprechen werden nicht ungeprüft übernommen.
+4. Originalquelle, offizielle Dokumentation und/oder Repository werden gegengeprüft.
+5. Der Kandidat wird gegen die Edirne-22-Anforderungen bewertet.
+6. Ergebnis: MVP / WATCH-LATER / verwerfen.
+7. Geeignete Kandidaten werden einer klaren Maschinenrolle und einem Adapter zugeordnet.
+
+Damit kann die Architektur von neuen Open-Source-Entwicklungen profitieren, ohne jedem Trend hinterherzulaufen oder den stabilen MVP ständig umzubauen.
+
+## 18. GenerativeVideoAdapter – fehlende Szenen selbst erzeugen
+
+Neben der Verarbeitung vorhandenen Quellmaterials benötigt die spätere Fabrik eine eigene Schnittstelle für **generativ erzeugte Video-/Visual-Szenen**.
+
+Beispiel:
+Storyboard verlangt eine Szene oder visuelle Erklärung, für die kein eigenes oder legitim nutzbares Asset vorhanden ist.
+→ Betriebsleiter erzeugt einen Generative-Scene-Auftrag
+→ GenerativeVideoAdapter erhält Prompt, gewünschtes Format, Dauer und optionale Referenz-Assets
+→ Provider/Modell erzeugt das Asset
+→ Ergebnis wird mit Herkunft/Provider/Prompt/Version im MediaStorage registriert
+→ Video-/Reel-Maschine übernimmt das Asset
+→ End-QM prüft die fertige Fassung.
+
+Der ProductionJob kennt die Funktion, aber **nicht fest den Anbieter**. Dadurch können Modelle später ausgetauscht oder gegeneinander geroutet werden.
+
+Aktuelle WATCH/LATER-Kandidaten:
+- Luma Agents / Luma AI
+- Seedance 2.5
+- weitere zukünftige lokale oder gehostete Generative-Video-Modelle
+
+Seedance 2.5 wurde über einen YouTube-Radar-Fund entdeckt. Insbesondere Text-/Bild-/Referenz-zu-Video macht es als späteren Kandidaten für generative Inserts, Szenen und Character-/Avatar-nahe Aufgaben interessant. Aussagen wie „free/unlimited“ werden ausdrücklich **nicht** als Architekturannahme übernommen; Preise, Limits, API, Rechte und Verfügbarkeit müssen zum Zeitpunkt eines PoC erneut verifiziert werden.
+
+Luma und Seedance werden nicht vor SupoClip in den MVP gezogen. Sie gehören in eine spätere Generative-Video-/Avatar-Ausbaustufe.
+
+## 19. Tool-Radar bleibt dauerhaft offen
+
+Neue Werkzeuge dürfen während des gesamten Projekts eingebracht werden. Jeder Kandidat wird mindestens auf folgende Punkte geprüft:
+- konkrete Maschinenrolle
+- ersparte Eigenentwicklung
+- Open Source / Self-hosting / API / MCP
+- Lizenz und Nutzungsrechte
+- Kosten
+- Infrastrukturbedarf
+- Reifegrad und Wartbarkeit
+- Fehler-/Recovery-Verhalten
+- Adapterfähigkeit
+- Datenschutz/Prompt-Datenfluss
+- Auswirkungen auf Fakten-QM und Human Authority.
+
+Ein neuer Kandidat ersetzt einen funktionierenden Baustein nur nach nachvollziehbarem technischen Vorteil und einem isolierten PoC. Die Fabrik soll dadurch **lernfähig und austauschbar** bleiben, ohne ihre eigene Architekturhoheit zu verlieren.
