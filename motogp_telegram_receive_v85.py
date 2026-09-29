@@ -331,18 +331,27 @@ def _schedule_lines(schedule):
 
 def _migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_status):
     if not p.get('human_final'): return existing,False
-    pattern=re.compile(r'(^## Instagram\s*\n.*?)(?=^## |\Z)',re.MULTILINE|re.DOTALL)
     wanted=_normalize_text(p.get('text',''))
-    for m in pattern.finditer(existing):
-        block=m.group(1)
+    cursor=0
+    for section in existing.split('## '):
+        if not section.startswith('Instagram\n'): continue
+        block='## '+section
         if '-TR-HUMAN' not in block or 'Status: BILD_GENERIERT' not in block: continue
-        tm=re.search(r'(?ms)^Text:\s*(.*?)(?=^(?:Quelle|Medienstatus|Bild):|\Z)',block)
-        if not tm or _normalize_text(tm.group(1))!=wanted: continue
+        text_part=block.split('Text:',1)[1] if 'Text:' in block else ''
+        for stop in ('\nQuelle:','\nMedienstatus:','\nBild:'):
+            text_part=text_part.split(stop,1)[0]
+        if _normalize_text(text_part)!=wanted: continue
         updated=block.replace('Status: BILD_GENERIERT','Status: FREIGEGEBEN',1)
-        updated=re.sub(r'(?m)^Bild:\s*\S+\s*$',lambda _: f'Bild: {img_path}',updated,count=1)
-        updated=re.sub(r'(?m)^Medienstatus:\s*.*$',lambda _: f'Medienstatus: {media_status}',updated,count=1)
-        updated=re.sub(r'(?m)^Telegram-Update-ID:\s*.*$',lambda _: f'Telegram-Update-ID: {uid}',updated,count=1)
-        return existing[:m.start()]+updated+existing[m.end():],True
+        lines=[]
+        for line in updated.splitlines():
+            if line.startswith('Bild:'): line=f'Bild: {img_path}'
+            elif line.startswith('Medienstatus:'): line=f'Medienstatus: {media_status}'
+            elif line.startswith('Telegram-Update-ID:'): line=f'Telegram-Update-ID: {uid}'
+            lines.append(line)
+        updated='\n'.join(lines)
+        start=existing.find(block)
+        if start<0: continue
+        return existing[:start]+updated+existing[start+len(block):],True
     return existing,False
 
 def publish(posts,chosen,uid,batch,schedules=None):
