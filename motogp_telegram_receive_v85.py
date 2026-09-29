@@ -100,9 +100,9 @@ def turkish_action(text):
     """Natural command parser for human Turkish previews."""
     v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
     actions={
-      'post':r'\b(post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben)\b',
-      'edit':r'\b(ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten)\b',
       'drop':r'\b(nicht\s+posten|nicht\s+veröffentlichen|nicht\s+veroeffentlichen|verwerfen|löschen|loeschen)\b',
+      'edit':r'\b(ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten)\b',
+      'post':r'\b(post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben)\b',
     }
     action=next((a for a,p in actions.items() if re.search(p,v)),None)
     if not action:return None
