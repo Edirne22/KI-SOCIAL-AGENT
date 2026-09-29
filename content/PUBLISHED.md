@@ -552,6 +552,7 @@ Publish-Provenienz: {"media_kind": "link", "media_path": "https://www.trmotospor
 
 ## Instagram
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
 Telegram-Update-ID: 279361790
