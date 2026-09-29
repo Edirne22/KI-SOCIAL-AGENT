@@ -5,7 +5,7 @@ on:
     paths:
       - "content_factory_core.py"
       - "content_factory_service.py"
-      - "content_factory_handoff.py"
+      - "content_factory_handoff.py autonomous_editorial.py"
       - "media_storage.py"
       - "tests/test_content_factory_core.py"
       - ".github/workflows/test-content-factory-core.yml"
