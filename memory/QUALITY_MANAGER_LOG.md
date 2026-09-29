@@ -2352,3 +2352,57 @@ Story-Key: title:nicolo-bulega-2026-world-sbk-ampiyonu-lecuona-cremona-da-hat-tr
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-29 10:01 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-29 10:01 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-29 10:02 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-29 10:02 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Cremona 1. yarış: Lecuona lider, Bulega ikinci
+Story-Key: motogp:10859584
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-29 10:02 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Cremona 1. yarış: Lecuona lider, Bulega ikinci
+Story-Key: motogp:10859584
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-29 10:02 UTC | Motorcycle Racing | PASS
+Titel: Dall’Igna’dan Bulega’nın şampiyonluğu sonrası Ducati vurgusu: “Tüm yarışları kazandı”
+Story-Key: title:dall-igna-dan-bulega-n-n-ampiyonlu-u-sonras-ducati-vurgusu-t-m-yar-lar-kazand
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-29 10:03 UTC | Motorcycle Racing | PASS
+Titel: Cremona Superpole: Lecuona Rekorla Pole'de
+Story-Key: title:cremona-superpole-lecuona-rekorla-pole-de
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-29 10:03 UTC | Motorcycle Racing | PASS
+Titel: WSBK İtalya: Lecuona Cremona'da Kazandı, Bulega Şampiyonluk İçin Yarını Bekleyecek!
+Story-Key: title:wsbk-i-talya-lecuona-cremona-da-kazand-bulega-ampiyonluk-i-yar-n-bekleyecek
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-29 10:03 UTC | Motorcycle Racing | PASS
+Titel: EICMA Italian Round: Bahattin Sofuoğlu Cremona'da QJMOTOR ile Piste Çıkıyor
+Story-Key: title:eicma-italian-round-bahattin-sofuo-lu-cremona-da-qjmotor-ile-piste-k-yor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

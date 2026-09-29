@@ -694,3 +694,18 @@ Quelle: https://motoetkinlik.com/wssp-italya-2-yaris-cremonada-hafta-sonu-tamaml
 Story-Key: motogp:10858131
 Titel: Japonya GP'de Mir’in yerine Chantra piste çıkacak
 Quelle: https://tr.motorsport.com/motogp/news/japonyada-mirin-yerine-chantra-yarisacak/10858131
+
+## 2026-09-29 09:26 UTC – ANGEBOTEN
+Story-Key: title:dall-igna-dan-bulega-n-n-ampiyonlu-u-sonras-ducati-vurgusu-t-m-yar-lar-kazand
+Titel: Dall’Igna’dan Bulega’nın şampiyonluğu sonrası Ducati vurgusu: “Tüm yarışları kazandı”
+Quelle: https://motoetkinlik.com/gigi-dallignadan-sampiyonluk-sonrasi-ducati-vurgusu-bu-motosiklet-tum-yarislari-kazandi
+
+## 2026-09-29 09:26 UTC – ANGEBOTEN
+Story-Key: title:wsbk-i-talya-lecuona-cremona-da-kazand-bulega-ampiyonluk-i-yar-n-bekleyecek
+Titel: WSBK İtalya: Lecuona Cremona'da Kazandı, Bulega Şampiyonluk İçin Yarını Bekleyecek!
+Quelle: https://motoetkinlik.com/wsbk-italya-lecuona-cremonada-kazandi-bulega-sampiyonluk-icin-yarini-bekleyecek
+
+## 2026-09-29 09:26 UTC – ANGEBOTEN
+Story-Key: title:eicma-italian-round-bahattin-sofuo-lu-cremona-da-qjmotor-ile-piste-k-yor
+Titel: EICMA Italian Round: Bahattin Sofuoğlu Cremona'da QJMOTOR ile Piste Çıkıyor
+Quelle: https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor
