@@ -149,7 +149,7 @@ def process_manual_selection(x,i,agency,max_attempts=3):
             print(f"TURKISH MANUAL SEMANTIC REPAIR attempt={attempt}:","; ".join(reasons)[:1000])
             continue
         if not sem.get("language_ok",True):
-            latest_errors=["Sprach-QM: "+e for e in repair]
+            latest_errors=["Sprach-QM: "+e for e in repair] or ["Sprach-QM: Text ist nicht vollstaendig idiomatisches Deutsch; keine Detailgruende vom Semantic-QM geliefert"]
             reasons=latest_errors
             print(f"TURKISH MANUAL LANGUAGE REPAIR attempt={attempt}:","; ".join(reasons)[:1000])
             continue
