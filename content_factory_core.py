@@ -100,9 +100,15 @@ class ProductionJob:
 
     def approval_manifest(self) -> str:
         """Fingerprint the exact revision and immutable media set shown to the human."""
+        publish_metadata = {
+            key: self.metadata.get(key)
+            for key in ("caption", "platforms", "title", "requested_formats")
+            if key in self.metadata
+        }
         payload = {
             "job_id": self.job_id,
             "revision": self.revision,
+            "publish_metadata": publish_metadata,
             "media": [
                 {
                     "media_id": m.media_id, "uri": m.uri, "sha256": m.sha256,
