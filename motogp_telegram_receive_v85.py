@@ -198,7 +198,13 @@ def handle_turkish(uid,chat,txt):
             for n,x,reasons in escalated:
                 risk="; ".join(reasons[:6]) or "Chief/QM nach 3 Reparaturversuchen ohne PASS"
                 msg+=f'\n\n⚠️ MANUELLE ENTSCHEIDUNG ERFORDERLICH – T{n}\nGründe: {risk}\n\nAktueller Text:\n{x.get("caption","(kein belastbarer Caption-Text)")}'
-            if escalated:msg+='\n\nKein QM-PASS und keine automatische Veröffentlichung. Manueller Override wird separat protokolliert.'
+            if escalated:
+                msg+='\n\nKein QM-PASS und keine automatische Veröffentlichung. Manueller Override wird separat protokolliert.'
+                for pn,px,_ in escalated:
+                    preview=px.get("preview","")
+                    if preview:
+                        try:send_photo(preview,caption=f"Quell-Vorschau T{pn} - {px.get('turkish_rider','Turkish Rider')}")
+                        except Exception as e:print("TURKISH ESCALATE PREVIEW FAIL",pn,type(e).__name__,str(e)[:160])
             for n,reasons in technical:
                 msg+=f'\n\n🛠️ T{n} technisch nicht fertig: {"; ".join(reasons[:4])}'
             send_message(msg)
