@@ -96,19 +96,38 @@ def selection(text):
     return sorted(out)
 
 
-def turkish_action(text):
-    """Natural command parser for human Turkish previews."""
+def turkish_actions(text):
+    """Parse one or multiple human actions, scoped to their T-number groups."""
     v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
-    actions={
-      'drop':r'\b(nicht\s+posten|nicht\s+veröffentlichen|nicht\s+veroeffentlichen|verwerfen|löschen|loeschen)\b',
-      'edit':r'\b(ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten)\b',
-      'post':r'\b(post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben)\b',
-    }
-    action=next((a for a,p in actions.items() if re.search(p,v)),None)
-    if not action:return None
-    nums={int(n) for n in re.findall(r'(?i)\bt\s*([1-9]|1\d|20)\b',v)}
-    if not nums:return None
-    return action,sorted(nums)
+    pats=[
+      ('drop',r'nicht\s+posten|nicht\s+veröffentlichen|nicht\s+veroeffentlichen|verwerfen|löschen|loeschen'),
+      ('edit',r'ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten'),
+      ('post',r'post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben'),
+    ]
+    hits=[]
+    for action,pat in pats:
+        for m in re.finditer(r'\b(?:'+pat+r')\b',v):hits.append((m.start(),m.end(),action))
+    if not hits:return None
+    hits.sort()
+    assigned={};prev=0
+    for idx,(start,end,action) in enumerate(hits):
+        nxt=hits[idx+1][0] if idx+1<len(hits) else len(v)
+        segment=v[prev:nxt]
+        nums={int(n) for n in re.findall(r'(?i)\bt\s*([1-9]|1\d|20)\b',segment)}
+        for n in nums:
+            if n in assigned and assigned[n]!=action:return None
+            assigned[n]=action
+        prev=end
+    if not assigned:return None
+    out=[]
+    for action in ('post','edit','drop'):
+        nums=sorted(n for n,a in assigned.items() if a==action)
+        if nums:out.append((action,nums))
+    return out
+
+def turkish_action(text):
+    actions=turkish_actions(text)
+    return actions[0] if actions and len(actions)==1 else None
 
 def turkish_selection(text):
     """Parse Turkish-Rider approvals T1-T20, including inclusive ranges.
