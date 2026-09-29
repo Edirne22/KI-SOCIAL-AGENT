@@ -13,7 +13,7 @@ def _stub(name, **attrs):
     sys.modules[name] = module
 
 _stub("vision_router", VisionRouter=object)
-_stub("pending_instagram")
+_stub("pending_instagram", get_latest_pending=lambda: None)
 _stub("facebook_engagement")
 _stub("generate_agnes_media", agnes_generate_image=lambda *_: None, save_bytes=lambda *_: None)
 _stub("instagram_publish", process_image_for_instagram=lambda x: x, create_container=lambda *_: None, publish=lambda *_: None, wait=lambda *_: False)
