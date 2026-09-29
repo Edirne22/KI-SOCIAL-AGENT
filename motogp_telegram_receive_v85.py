@@ -109,15 +109,15 @@ def turkish_actions(text):
     if not hits:return None
     tnums=[(m.start(),int(m.group(1))) for m in re.finditer(r'(?i)\bt\s*([1-9]|1\d|20)\b',v)]
     if not tnums:return None
-    assigned={}
+    assigned={};cursor=0
+    for h in hits:
+        action=kind(h.group(0))
+        for pos,n in tnums:
+            if cursor<=pos<h.start(): assigned[n]=action
+        cursor=h.end()
+    last_action=kind(hits[-1].group(0))
     for pos,n in tnums:
-        distances=[]
-        for h in hits:
-            d=min(abs(pos-h.start()),abs(pos-h.end()))
-            distances.append((d,h.start(),kind(h.group(0))))
-        _,_,action=min(distances)
-        if n in assigned and assigned[n]!=action:return None
-        assigned[n]=action
+        if pos>=cursor: assigned[n]=last_action
     out=[]
     for action in ('post','edit','drop'):
         nums=sorted(n for n,a in assigned.items() if a==action)
