@@ -99,12 +99,13 @@ def selection(text):
 def turkish_actions(text):
     """Parse mixed human actions by nearest action phrase."""
     v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
-    action_pat=r'nicht\s+posten|nicht\s+veröffentlichen|nicht\s+veroeffentlichen|verwerfen|löschen|loeschen|ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten|post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben'
+    v=re.sub(r'nicht\s+(?:posten|veröffentlichen|veroeffentlichen)', ' NICHTPOSTEN ', v)
+    action_pat=r'NICHTPOSTEN|verwerfen|löschen|loeschen|ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten|post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben'
     def kind(word):
-        if re.fullmatch(r'nicht\s+posten|nicht\s+veröffentlichen|nicht\s+veroeffentlichen|verwerfen|löschen|loeschen',word):return 'drop'
+        if word=='NICHTPOSTEN' or re.fullmatch(r'verwerfen|löschen|loeschen',word):return 'drop'
         if re.fullmatch(r'ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten',word):return 'edit'
         return 'post'
-    hits=list(re.finditer(r'\b(?:'+action_pat+r')\b',v))
+    hits=list(re.finditer(r'(?i)\b(?:'+action_pat+r')\b',v))
     if not hits:return None
     tnums=[(m.start(),int(m.group(1))) for m in re.finditer(r'(?i)\bt\s*([1-9]|1\d|20)\b',v)]
     if not tnums:return None
