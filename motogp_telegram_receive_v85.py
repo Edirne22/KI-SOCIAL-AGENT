@@ -329,6 +329,29 @@ def get_existing_published_texts():
 def _schedule_lines(schedule):
     return f'Geplant-fuer: {schedule}\n' if schedule else ''
 
+def _migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_status):
+    if not p.get('human_final'): return existing,False
+    pos=0
+    while True:
+        start=existing.find('## Instagram\n',pos)
+        if start<0: break
+        next_header=existing.find('\n## ',start+1)
+        end=len(existing) if next_header<0 else next_header+1
+        block=existing[start:end]
+        pos=end
+        if '-TR-HUMAN' not in block or 'Status: BILD_GENERIERT' not in block: continue
+        if f'MotoGP-Auswahl: {n}' not in block: continue
+        updated=block.replace('Status: BILD_GENERIERT','Status: FREIGEGEBEN',1)
+        lines=[]
+        for line in updated.splitlines():
+            if line.startswith('Bild:'): line=f'Bild: {img_path}'
+            elif line.startswith('Medienstatus:'): line=f'Medienstatus: {media_status}'
+            elif line.startswith('Telegram-Update-ID:'): line=f'Telegram-Update-ID: {uid}'
+            lines.append(line)
+        updated='\n'.join(lines)+'\n'
+        return existing[:start]+updated+existing[end:],True
+    return existing,False
+
 def publish(posts,chosen,uid,batch,schedules=None):
     schedules=schedules or {}
     PUBLISHED.parent.mkdir(parents=True,exist_ok=True);existing=PUBLISHED.read_text(encoding='utf-8') if PUBLISHED.exists() else '# Freigegebene Beiträge\n';blocks=[]
@@ -339,10 +362,7 @@ def publish(posts,chosen,uid,batch,schedules=None):
         marker=f'Racing-Batch-ID: {batch}\nMotoGP-Auswahl: {n}'
         if marker in existing:continue
         norm_post_text=_normalize_text(p["text"])
-        if norm_post_text and norm_post_text in existing_texts:
-            print(f"DUPLIKAT ERKANNT: {p['title']} bereits vorhanden, übersprungen")
-            continue
-        if norm_post_text:existing_texts.add(norm_post_text)
+        is_existing_duplicate=bool(norm_post_text and norm_post_text in existing_texts)
 
         prompt = f"Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: {p['text'][:180]}"
         img_path = p["image"]
@@ -362,6 +382,15 @@ def publish(posts,chosen,uid,batch,schedules=None):
                 print(f"MOTOGP: Agnes Bild-Generierung übersprungen / fehlgeschlagen: {e}")
 
         instagram_text = p["text"] if p.get("caption_final") else generate_buelent_caption(p["text"])
+
+        existing,migrated=_migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_status)
+        if migrated:
+            print(f"TURKISH HUMAN MIGRATION: bestehender Instagram-Block T{n} -> FREIGEGEBEN ({img_path})")
+            continue
+        if is_existing_duplicate:
+            print(f"DUPLIKAT ERKANNT: {p['title']} bereits vorhanden, übersprungen")
+            continue
+        if norm_post_text:existing_texts.add(norm_post_text)
 
         if not p.get('human_final'):
             add_pending(
@@ -396,7 +425,9 @@ def publish(posts,chosen,uid,batch,schedules=None):
             except Exception as e:
                 print(f"MOTOGP: send_photo fehlgeschlagen: {e}")
 
+    original=PUBLISHED.read_text(encoding='utf-8') if PUBLISHED.exists() else '# Freigegebene Beiträge\n'
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
+    elif existing != original:PUBLISHED.write_text(existing,encoding='utf-8')
     return len(blocks)
 def handle_one(uid, chat, txt):
     if turkish_actions(txt) is not None:

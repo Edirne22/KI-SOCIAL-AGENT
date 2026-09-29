@@ -311,3 +311,41 @@ def test_latest_pending_targets_current_batch(monkeypatch, tmp_path):
     chosen = pi.get_latest_pending()
     assert chosen["batch_id"] == "current-batch"
     assert chosen["titel"] == "Current"
+
+
+def test_turkish_human_legacy_block_is_migrated_not_deduped(tmp_path, monkeypatch):
+    test_published = tmp_path / "PUBLISHED.md"
+    test_json = tmp_path / "pending.json"
+    monkeypatch.setattr(approval, "PUBLISHED", test_published)
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    monkeypatch.setattr(approval, "get_existing_published_texts", lambda: {"exakt bereits freigegebener turkish-human-text"})
+    text = "Exakt bereits freigegebener Turkish-Human-Text"
+    test_published.write_text(
+        "# Freigegebene Beiträge\n\n"
+        "## Instagram\nStatus: BILD_GENERIERT\nFreigabe: Telegram Racing\n"
+        "Racing-Batch-ID: old-TR-HUMAN\nTelegram-Update-ID: 1\nMotoGP-Auswahl: 1\n"
+        "Titel: Oğuz Test\nText:\n" + text + "\nQuelle: https://example.com/oguz\n"
+        "Medienstatus: QUELLE_BESTÄTIGT\nBild: memory/turkish-human-T1.jpg\n\n"
+        "## Facebook\nStatus: FREIGEGEBEN\nRacing-Batch-ID: old-TR-HUMAN\n"
+        "MotoGP-Auswahl: 1\nTitel: Oğuz Test\nText:\n" + text + "\n",
+        encoding="utf-8",
+    )
+    asset = tmp_path / "assets" / "images" / "2026-09" / "oguz.jpg"
+    asset.parent.mkdir(parents=True)
+    asset.write_bytes(b"jpeg")
+    posts = {1: {"title":"Oğuz Test","source":"https://example.com/oguz",
+                 "image":asset.as_posix(),"text":text,"caption_final":True,"human_final":True}}
+    monkeypatch.setattr(approval, "download_og_image_for_instagram", lambda source, target: target)
+    monkeypatch.setattr(approval, "send_photo", MagicMock())
+
+    count = approval.publish(posts,[1],uid=222,batch="new-TR-HUMAN")
+    assert count == 0
+    content = test_published.read_text(encoding="utf-8")
+    ig = content.split("## Instagram",1)[1].split("## Facebook",1)[0]
+    assert "Status: FREIGEGEBEN" in ig
+    assert "Status: BILD_GENERIERT" not in ig
+    assert f"Bild: {asset.as_posix()}" in ig
+    assert "Telegram-Update-ID: 222" in ig
+    assert content.count("## Facebook") == 1
+    assert content.count("## Instagram") == 1
+    assert pi.load_pending() == []
