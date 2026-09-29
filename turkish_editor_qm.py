@@ -34,7 +34,8 @@ def _prompt(x,agency,reasons=None):
     return f"""Du bist der TURKISH EDITOR von Buelents Bike Life – eine coole Socke mit echter Motorrad-Leidenschaft.
 Schreibe auf Deutsch: direkt, sympathisch, locker, frech wenn es passt, gern mit trockenem Humor und Energie.\nLOKALISIERUNGS-VERTRAG: Tuerkische Quellen niemals Satz fuer Satz uebersetzen. Zuerst Bedeutung und belegte Fakten erfassen, danach Titel/Hook/Body/CTA in natuerlichem idiomatischem Deutsch neu schreiben. Kein tuerkischer Quelltitel und kein tuerkischer Satzbau darf im finalen Post stehen. Tuerkische Eigennamen und korrekte Zeichen wie Öncü, Sofuoğlu und Razgatlıoğlu bleiben erhalten.
 Der Text soll Lust machen weiterzulesen und zu kommentieren. Nutze 2 bis 5 passende Emojis natuerlich, nicht als Spam.
-Keine steife Nachrichtenagentur-Sprache, kein KI-Sprech, kein kuenstliches Marketing-Gebruell.\nSchreibe wie Buelent selbst nach dem Lesen der Quelle: spontan, menschlich, mitfiebernd und als echter Fan.\nKeine Standard-KI-Floskeln, kein immer gleiches Hook-Body-Frage-Muster. Variiere Einstieg, Satzlaenge und Rhythmus.\nEine Community-Frage ist erlaubt, aber nicht Pflicht. Emojis passend und unregelmaessig einsetzen.\nBuelent darf als Fan hoffen, sich freuen, genervt oder stolz sein; Meinung muss als Fanreaktion erkennbar bleiben.\nKeine erfundenen persoenlichen Erlebnisse, Gespraeche mit Fahrern oder Insiderinformationen.
+Keine steife Nachrichtenagentur-Sprache, kein KI-Sprech, kein kuenstliches Marketing-Gebruell.\nSchreibe wie Buelent selbst nach dem Lesen der Quelle: spontan, menschlich, mitfiebernd und als echter Fan.
+EMOTION NACH SITUATION: Sieg, Podium, Punkte oder klar starkes Ergebnis duerfen echte Freude/Jubel tragen; bei Rueckschlag passend enttaeuscht oder angespannt; bei neutraler Meldung keine kuenstliche Jubelstimmung.\nKeine Standard-KI-Floskeln, kein immer gleiches Hook-Body-Frage-Muster. Variiere Einstieg, Satzlaenge und Rhythmus.\nEine Community-Frage ist erlaubt, aber nicht Pflicht. Emojis passend und unregelmaessig einsetzen.\nBuelent darf als Fan hoffen, sich freuen, genervt oder stolz sein; Meinung muss als Fanreaktion erkennbar bleiben.\nKeine erfundenen persoenlichen Erlebnisse, Gespraeche mit Fahrern oder Insiderinformationen.
 WICHTIG: Coolness darf NIEMALS neue Fakten erzeugen.
 
 Der Mensch hat {rider} ausdruecklich als Turkish-Rider-Thema ausgewaehlt. Relevanz ist damit entschieden.
@@ -91,6 +92,78 @@ def final_review(x,caption,agency):
     # Human selection owns relevance. Do not call normal Racing-QM here: it assumes
     # the selected rider must be one of the first/main source riders.
     return not errors,list(dict.fromkeys(errors))
+
+
+def process_manual_selection(x,i,agency,max_attempts=3):
+    """Bounded repair chain for an explicit Buelent T-selection.
+
+    Human selection owns topic/relevance. Deterministic/semantic/Chief findings
+    reject the current caption, never the selected topic. After bounded repair
+    the latest caption is escalated for an explicit human decision; escalation
+    is never recorded as a QM PASS.
+    """
+    agency.lock_source_series(x,x.get("source_series"));agency.enrich_turkish(x)
+    agency.mark_priority(x,"TURKISH_SELECTED")
+    x["manual_turkish_selection"]=True
+    if not _target_supported(x):
+        reasons=["FACT/SOURCE: ausgewaehlter Fahrer ist in den Quellenfakten nicht belegt"]
+        x["manual_decision_status"]="ESCALATE";x["manual_decision_reasons"]=reasons
+        return {"status":"ESCALATE","reasons":reasons,"item":x}
+
+    reasons=None
+    latest_errors=[]
+    for attempt in range(1,max_attempts+1):
+        print(f"TURKISH MANUAL REPAIR attempt={attempt}:",x.get("title","")[:90])
+        if not edit(x,agency,reasons):
+            latest_errors=["TECHNICAL: Turkish Editor lieferte kein gueltiges JSON"]
+            reasons=latest_errors
+            continue
+
+        ok,errors=final_review(x,x["caption"],agency)
+        latest_errors=list(errors)
+        if not ok:
+            reasons=latest_errors
+            print(f"TURKISH MANUAL FINAL-QM REPAIR attempt={attempt}:","; ".join(reasons)[:1000])
+            continue
+
+        sem=agency.semantic_review_detailed(x,x["caption"])
+        hard=list(sem.get("hard_reasons") or []);repair=list(sem.get("repair_reasons") or [])
+        joined=" ".join(hard).casefold()
+        technical=any(k in joined for k in ("technisch ungueltig","http 429","rate limit","provider-anfrage","timeout"))
+        if hard and not technical:
+            latest_errors=["FACT/SOURCE: "+e for e in hard]
+            reasons=latest_errors
+            print(f"TURKISH MANUAL SEMANTIC REPAIR attempt={attempt}:","; ".join(reasons)[:1000])
+            continue
+        if not sem.get("language_ok",True):
+            latest_errors=["Sprach-QM: "+e for e in repair]
+            reasons=latest_errors
+            print(f"TURKISH MANUAL LANGUAGE REPAIR attempt={attempt}:","; ".join(reasons)[:1000])
+            continue
+
+        x["instagram_media"]=agency.prepare_media(x,i)
+        if not x["instagram_media"]:
+            x["manual_decision_status"]="TECHNICAL"
+            x["manual_decision_reasons"]=["TECHNICAL: prepare_media lieferte kein Medium"]
+            return {"status":"TECHNICAL","reasons":x["manual_decision_reasons"],"item":x}
+        x["story_key"]=agency.story_key(x["title"],x["url"])
+        reviewer=lambda item,caption:final_review(item,caption,agency)
+        chief_ok,chief_errors=chief_review("Motorcycle Racing",x,x["caption"],x["instagram_media"],x["url"],reviewer)
+        if chief_ok:
+            x["racing_qm"]="PASS";x["semantic_qm"]="DEGRADED-PASS" if technical else "PASS"
+            x["turkish_final_qm"]="PASS";x["chief_qm"]="PASS"
+            x["rewrite_count"]=attempt-1;x["caption_final"]=True
+            x["manual_decision_status"]="PASS"
+            return {"status":"PASS","reasons":[],"item":x}
+        latest_errors=list(chief_errors)
+        reasons=["Chief-QM: "+e for e in latest_errors]
+        print(f"TURKISH MANUAL CHIEF REPAIR attempt={attempt}:","; ".join(reasons)[:1000])
+
+    x["manual_decision_status"]="ESCALATE"
+    x["manual_decision_reasons"]=latest_errors or ["Editor/QM konnte innerhalb der Reparaturgrenze keinen PASS erzeugen"]
+    # Deliberately do not set turkish_final_qm/chief_qm to PASS here.
+    return {"status":"ESCALATE","reasons":x["manual_decision_reasons"],"item":x}
+
 
 def qualify(x,agency,max_attempts=3):
     agency.lock_source_series(x,x.get("source_series"));agency.enrich_turkish(x)

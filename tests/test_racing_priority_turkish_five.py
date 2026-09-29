@@ -200,7 +200,7 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert 'Community-Frage ist erlaubt, aber nicht Pflicht' in tqm._prompt(x,FakeAgency)
  assert 'Keine erfundenen persoenlichen Erlebnisse' in tqm._prompt(x,FakeAgency)
  src=inspect.getsource(recv.handle_turkish)
- assert 'turkish_lane.qualify' in src and 'agency.qualify_copy(x)' not in src
+ assert 'turkish_lane.process_manual_selection' in src and 'agency.qualify_copy(x)' not in src
  assert 'install_v855_hardening(agency)' in src
  qsrc=inspect.getsource(tqm.qualify)
  assert 'TURKISH FINAL-QM BLOCK attempt=' in qsrc
@@ -238,7 +238,10 @@ def test_turkish_range_dispatches_all_selected_items():
  old_rows=recv.parse_turkish_session;old_already=recv.already;old_chat=recv.get_chat_id;old_active=recv._active_batch;old_publish=recv.publish;old_send=recv.send_message
  import sys,types
  fake_agency=types.SimpleNamespace(lock_source_series=lambda *a,**k:None,enrich_turkish=lambda *a,**k:None,mark_priority=lambda *a,**k:None)
- fake_lane=types.SimpleNamespace(qualify=lambda x,a:True,finish=lambda x,n,a:(x.update(instagram_media=f'img{n}.jpg',caption=f'caption {n}') or True))
+ def fake_process(x,n,a,max_attempts=3):
+  x.update(instagram_media=f'img{n}.jpg',caption=f'caption {n}',caption_final=True)
+  return {'status':'PASS','reasons':[],'item':x}
+ fake_lane=types.SimpleNamespace(process_manual_selection=fake_process)
  old_agency=sys.modules.get('motogp_content_agency_v2');old_lane=sys.modules.get('turkish_editor_qm')
  captured={}
  try:
@@ -277,9 +280,83 @@ def test_turkish_visible_five_dedupes_racing_top5_and_backfills():
   a.send_message=old_send;a._send_turkish_source_photo=old_sender;a.roster_names=old_roster
 
 
+def test_manual_turkish_redteam_never_promotes_fake_fact_to_pass():
+ class FakeAgency:
+  @staticmethod
+  def lock_source_series(*args,**kwargs): pass
+  @staticmethod
+  def enrich_turkish(*args,**kwargs): pass
+  @staticmethod
+  def mark_priority(*args,**kwargs): pass
+  @staticmethod
+  def series_for(x): return 'WorldSSP'
+  @staticmethod
+  def language_sane(caption): return True
+  @staticmethod
+  def fact_whitelist_errors(x,caption):
+   bad=[]
+   low=caption.casefold()
+   for token,label in [('99','Zahl'),('istanbul','Ort'),('ducati','Team'),('vertrag','Vertrag'),('motogp','Serie')]:
+    if token in low: bad.append(f'{label} nicht in Quelle: {token}')
+   return bad
+  @staticmethod
+  def semantic_review_detailed(x,caption): return {'hard_reasons':[],'repair_reasons':[],'language_ok':True}
+  @staticmethod
+  def prepare_media(x,i): return 'unused.jpg'
+  @staticmethod
+  def story_key(title,url): return 'story'
+
+ x={'title':'Can Öncü WorldSSP update','summary':'Can Öncü beendet das Rennen auf P6.','url':'https://example.test/oncu','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'}
+ old_edit=tqm.edit
+ try:
+  fake='Can Öncü gewinnt mit 99 Punkten in Istanbul für Ducati und unterschreibt einen Vertrag für MotoGP.\n\n#WorldSSP #CanOncu #BuelentsBikeLife'
+  tqm.edit=lambda item,agency,reasons=None:(item.update(caption=fake) or fake)
+  result=tqm.process_manual_selection(dict(x),1,FakeAgency,max_attempts=3)
+  assert result['status']=='ESCALATE',result
+  assert result['item'].get('turkish_final_qm')!='PASS'
+  assert any(('nicht in Quelle' in e) or ('FACT/SOURCE' in e) for e in result['reasons']),result
+ finally:
+  tqm.edit=old_edit
+
+
+def test_manual_turkish_positive_control_can_reach_chief():
+ class FakeAgency:
+  @staticmethod
+  def lock_source_series(*args,**kwargs): pass
+  @staticmethod
+  def enrich_turkish(*args,**kwargs): pass
+  @staticmethod
+  def mark_priority(*args,**kwargs): pass
+  @staticmethod
+  def series_for(x): return 'WorldSSP'
+  @staticmethod
+  def language_sane(caption): return True
+  @staticmethod
+  def fact_whitelist_errors(x,caption): return []
+  @staticmethod
+  def semantic_review_detailed(x,caption): return {'hard_reasons':[],'repair_reasons':[],'language_ok':True}
+  @staticmethod
+  def prepare_media(x,i): return 'unused.jpg'
+  @staticmethod
+  def story_key(title,url): return 'story'
+ x={'title':'Can Öncü WorldSSP update','summary':'Can Öncü beendet das Rennen auf P6.','url':'https://example.test/oncu','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'}
+ old_edit=tqm.edit;old_chief=tqm.chief_review;old_guard=tqm.final_guard_review
+ try:
+  good='Can Öncü beendet das Rennen laut Quelle auf P6. 🏁 Stark gekämpft! 💪 Was sagt ihr dazu?\n\n#WorldSSP #CanOncu #BuelentsBikeLife'
+  tqm.edit=lambda item,agency,reasons=None:(item.update(caption=good) or good)
+  tqm.final_guard_review=lambda item,caption:(True,[])
+  tqm.chief_review=lambda *args,**kwargs:(True,[])
+  result=tqm.process_manual_selection(dict(x),1,FakeAgency,max_attempts=3)
+  assert result['status']=='PASS',result
+  assert result['item']['turkish_final_qm']=='PASS'
+  assert result['item']['caption_final'] is True
+ finally:
+  tqm.edit=old_edit;tqm.chief_review=old_chief;tqm.final_guard_review=old_guard
+
+
 if __name__=='__main__':
  test_turkish_range_dispatches_all_selected_items();test_turkish_visible_five_dedupes_racing_top5_and_backfills()
- test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
+ test_manual_turkish_redteam_never_promotes_fake_fact_to_pass();test_manual_turkish_positive_control_can_reach_chief();test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
