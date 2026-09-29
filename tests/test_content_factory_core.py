@@ -255,5 +255,52 @@ class AutonomousEditorialTests(unittest.TestCase):
         self.assertEqual(JobStatus.CREATED, job.status)
 
 
+class AutonomousStaffellaufTests(unittest.TestCase):
+    def test_discovery_to_human_approval_to_publish_handoff(self):
+        from autonomous_editorial import AutonomousEditorialDesk, EditorialTrigger, TriggerKind
+        from content_factory_handoff import ToolResult, ToolTask, run_machine
+
+        class Machine:
+            def __init__(self, name, output):
+                self.name, self.output = name, output
+            def run(self, task):
+                return ToolResult(task.job_id, task.revision, task.task_id, [self.output], self.name)
+
+        service = InMemoryJobService()
+        desk = AutonomousEditorialDesk(service)
+        decision = desk.consider(EditorialTrigger(
+            "toprak-interview-nightshift", TriggerKind.EVENT,
+            "Toprak interview discovered overnight", "WorldSBK",
+            rider="Toprak", relevance=98, requested_formats=["reel"],
+        ))
+        job = service.get_job(decision.job_id)
+
+        source = MediaRef("source-video", "scratch://source/video.mp4", hashlib.sha256(b"source").hexdigest(), 6, "video/mp4", "discovery")
+        job.media.append(source)
+        job.transition(JobStatus.INGESTING)
+        job.transition(JobStatus.TRANSCRIBING)
+        job.transition(JobStatus.RESEARCHING)
+        job.transition(JobStatus.WRITING)
+        job.transition(JobStatus.STORYBOARDING)
+
+        clip = MediaRef("clip", "scratch://supoclip/clip.mp4", hashlib.sha256(b"clip").hexdigest(), 4, "video/mp4", "supoclip")
+        clip_result = run_machine(job, Machine("supoclip-adapter", clip), ToolTask(job.job_id, job.revision, "clip-task", [source]))
+
+        broll = MediaRef("broll", "scratch://pollo/broll.mp4", hashlib.sha256(b"broll").hexdigest(), 5, "video/mp4", "pollo")
+        run_machine(job, Machine("pollo-adapter", broll), ToolTask(job.job_id, job.revision, "broll-task", clip_result.outputs))
+
+        job.transition(JobStatus.RENDERING)
+        job.transition(JobStatus.QM)
+        job.transition(JobStatus.READY_FOR_HUMAN)
+        with self.assertRaises(PermissionError):
+            job.publish_handoff()
+
+        job.transition(JobStatus.APPROVED, actor="human")
+        handoff = job.publish_handoff()
+        self.assertEqual(JobStatus.PUBLISH_QUEUED, job.status)
+        self.assertEqual(handoff, job.publish_handoff())
+        self.assertIn(job.human_approved_manifest[:16], handoff)
+
+
 if __name__ == "__main__":
     unittest.main()
