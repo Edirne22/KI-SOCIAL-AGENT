@@ -318,6 +318,7 @@ def test_turkish_human_legacy_block_is_migrated_not_deduped(tmp_path, monkeypatc
     test_json = tmp_path / "pending.json"
     monkeypatch.setattr(approval, "PUBLISHED", test_published)
     monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    monkeypatch.setattr(approval, "get_existing_published_texts", lambda: {"exakt bereits freigegebener turkish-human-text"})
     text = "Exakt bereits freigegebener Turkish-Human-Text"
     test_published.write_text(
         "# Freigegebene Beiträge\n\n"
