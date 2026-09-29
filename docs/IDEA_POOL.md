@@ -74,6 +74,36 @@ Zu untersuchen:
 
 ---
 
+## 🛡️ P1 ISOLIERTER ARCHITEKTUR-/RED-TEAM-ABNAHMEVERTRAG
+
+**Zweck:** Pipecat/Postiz werden erst produktiv verdrahtet, wenn ein isolierter Spike diese Angriffe und Positivkontrollen nachweisbar besteht. Externe Frameworks sind Transport/Orchestrierung, niemals Wahrheitsinstanz.
+
+### Muss-PASS – Positivkontrollen
+- [ ] **Audio Happy Path:** verständliche DE/TR-Sprachnachricht → korrektes Transkript mit Sprache/Zeit/Quelle → bestehende QM → Telegram-Freigabe.
+- [ ] **Publisher Happy Path:** bereits freigegebener Post → genau einmal geplant/veröffentlicht → externe Post-ID + interner Status nachvollziehbar.
+- [ ] **Restart/Retry:** Neustart zwischen Freigabe und Publish erzeugt keinen Doppelpost.
+
+### Muss-BLOCK/FAIL-CLOSED – Red-Team
+- [ ] **Transkript-Manipulation:** erfundener Rider, Team, Zahl, Ort, Serie oder Vertragsstatus darf aus Audio nicht zur Tatsache werden.
+- [ ] **Unsicheres Audio:** niedrige STT-Konfidenz/unklare Passage darf nicht stillschweigend geglättet oder erfunden werden; markiert/erneut transkribiert/manuell geprüft.
+- [ ] **Cross-Language:** DE/TR/EN-Fragmente dürfen Namen, türkische Diakritika oder Claim-Stärke nicht verändern.
+- [ ] **Provenienzverlust:** kein Racing-Claim ohne rückverfolgbare Quelle/Audio-ID/Zeitraum bzw. vorhandenen Source-Fact-Beleg.
+- [ ] **QM-Bypass:** weder Pipecat noch Postiz dürfen direkt von Discovery/Transkript zu Publish springen.
+- [ ] **Approval-Bypass:** ohne gültige Telegram-/Approval-Freigabe kein Publish.
+- [ ] **Replay/Double-Publish:** identischer Approval-/Webhook-/Retry-Event darf höchstens einmal extern publizieren; Idempotency-Key/External-ID erforderlich.
+- [ ] **Wrong Destination:** IG-Inhalt darf nicht durch Mapping-/Retry-Fehler auf falschem Account/Netzwerk landen; Zielkonto ist Teil des Approval-Vertrags.
+- [ ] **Token/API-Ausfall:** 401/429/5xx/Timeout → kontrollierter Retry/Block, niemals künstliches SUCCESS.
+- [ ] **Partial Success:** Plattform A erfolgreich, B fehlgeschlagen → Status pro Plattform; kein globales falsches PASS und kein Doppelpost auf A beim Retry.
+- [ ] **Webhook Spoof/Replay:** eingehende Webhooks authentisieren/verifizieren und Replay-Schutz vorsehen.
+- [ ] **Framework-Ausfall:** Pipecat/Postiz down → bestehende Racing-QM bleibt intakt; keine Fakten-/Freigabe-Abkürzung als Fallback.
+- [ ] **Lizenzgrenze:** Postiz bleibt getrennte AGPL-Komponente/API-Grenze, bis eine bewusste Lizenzentscheidung dokumentiert ist; keine versehentliche Codekopie.
+
+### Evidence / Release Gate
+Für einen P1-POC müssen mindestens diese Evidenzen **PASS** sein:
+`architecture_contract`, `positive_control`, `hallucination_attack`, `provenance`, `approval_gate`, `idempotency`, `provider_outage`, `partial_failure`, `security_webhook`, `license_boundary`, `runtime_e2e`.
+
+Fehlende Evidenz zählt als **BLOCK**, nicht als PASS. Jeder im Spike gefundene neue Fehler wird als permanente Regression aufgenommen. Erst danach darf eine produktive Integration zur Merge-Freigabe vorgelegt werden.
+
 # 2. P2 – MEMORY, ORCHESTRIERUNG UND ENTWICKLUNG
 
 ## 🟡 AnythingLLM – Memory/RAG-Kandidat
