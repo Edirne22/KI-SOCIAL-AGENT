@@ -35,7 +35,7 @@ def errors(item,caption,prefix="Source-Entity-Guard"):
         if ef in _STOP or ef in src: continue
         # "bei Japan" etc is a place and already covered; here relationship nouns/capitalized
         # entities are fail-closed because the editor is forbidden to invent teams/manufacturers.
-        if any(k in ef for k in ("team","racing","werk")) or re.search(r"\b(?:fuer|für)\s+",m.group(0)):
+        if any(k in ef for k in ("team","racing","werk")) or (re.search(r"\b(?:fuer|für)\s+",m.group(0)) and re.search(r"\b(?:faehrt|fahrt|fährt|startet|wechselt|vertrag|unterschreibt|pilotiert)\b",text,re.I)):
             msg=f"{prefix}: Team/Hersteller nicht in Quelle: {ent}"
             if msg not in out: out.append(msg)
     return out
