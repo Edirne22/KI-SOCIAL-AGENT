@@ -678,3 +678,35 @@ Bülent kann während des Aufbaus jederzeit neue Tools, Repositories, Videos, Sc
 
 Leitprinzip bleibt:
 **Wir setzen unsere Fabrik über die besten verfügbaren Maschinen, statt jede Maschine unnötig selbst nachzubauen.**
+
+
+## Pollo MCP/CLI – GenerativeMediaAdapter-Kandidat
+
+**Entscheidung:** Pollo wird als konkreter PoC-Kandidat für die generative Medienmaschine aufgenommen; SupoClip bleibt der priorisierte Longform→Short/Reel-Kandidat.
+
+Maschinenaufteilung:
+- SupoClip: bestehendes Video → Segmentwahl, Hook, 9:16, Captions, Short/Reel.
+- Pollo MCP/CLI: neue Bilder/Videos/B-Roll bzw. fehlende generative Szenen hinter `GenerativeMediaAdapter`.
+- OpenChatCut: editierbarer Master/Targeted Repair.
+- FFmpeg: Low-Level/Fallback.
+
+Architekturgrenze:
+`Betriebsleiter → GenerativeMediaAdapter → Pollo → MediaStorageAdapter/R2 → nächste Maschine`.
+
+Keine Pollo-eigene Job-, Fakten-, Approval- oder Publisher-Hoheit. Ergebnisassets müssen vor Weitergabe in den kanonischen ProductionJob übernommen und mit Media-ID/URI/SHA-256/MIME/Größe/Provenienz/Revision gebunden werden.
+
+### Pollo-PoC-Gate
+1. MCP/CLI-Verbindung isoliert herstellen.
+2. Auftrag aus einem ProductionJob ableiten.
+3. Referenzasset über sicheren Storage-Handoff übergeben.
+4. Generierungsjob starten und Task-/Statuskorrelation prüfen.
+5. Timeout, Providerfehler und Retry ohne Doppeljob testen.
+6. Ergebnis in MediaStorage/R2 übernehmen statt Provider-URL zum dauerhaften System of Record zu machen.
+7. Hash, MIME, Größe, Provenienz und Revision prüfen.
+8. Ergebnis an nachfolgende Maschinenrolle übergeben.
+9. veraltete Revision und fremde Job-ID im Handoff blockieren.
+10. DE/TR, Kosten, Rechte/Lizenzbedingungen und Datenfluss prüfen.
+11. Staffellauf vom ersten Bülent-Befehl bis zum aktuell implementierten Endpunkt wiederholen.
+12. Pollo gegen alternative GenerativeMediaAdapter-Provider austauschbar halten.
+
+**Wichtig:** Eine Marketingaussage zu kostenlos/unbegrenzt oder zu einzelnen verfügbaren Modellen wird nicht als dauerhafte Architekturannahme behandelt. Preise, Limits, Modelle und Rechte werden beim PoC frisch verifiziert.
