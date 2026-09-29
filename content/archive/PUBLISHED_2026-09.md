@@ -1,5 +1,83 @@
 # Archiviert Beiträge 2026-09
 
+## Instagram [GEPOSTET 2026-09-21 06:37 | ID: 18018043985730287]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-21-daily
+Telegram-Update-ID: 279361716
+MotoGP-Auswahl: 2
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Text:
+Jorge Martin sichert sich die Pole-Position vor Marquez und Acosta – die Title-Fight geht in Österreich in die entscheidende Phase.
+
+Drei Fahrer mit eigenem Zählwert an den Punkten sperren die vordere Startreihe auf weniger als eine Zehntelsekunde zusammen. Martin liegt vorne, gefolgt von Marc Marquez und Pedro Acosta. Marco Bezzecchi hängt als Vierter nur knapp dahinter und lauert.
+
+Wer hat nach diesem Qualifying die besseren Chancen auf den Sieg?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-21-racing-editorial-2026-09-21-2-electric-martin-beat-01.jpg
+
+## Facebook [GEPOSTET 2026-09-21 06:38 | ID: 1285968257941776_122112142029469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-21-daily
+Telegram-Update-ID: 279361716
+MotoGP-Auswahl: 2
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Text:
+Jorge Martin sichert sich die Pole-Position vor Marquez und Acosta – die Title-Fight geht in Österreich in die entscheidende Phase.
+
+Drei Fahrer mit eigenem Zählwert an den Punkten sperren die vordere Startreihe auf weniger als eine Zehntelsekunde zusammen. Martin liegt vorne, gefolgt von Marc Marquez und Pedro Acosta. Marco Bezzecchi hängt als Vierter nur knapp dahinter und lauert.
+
+Wer hat nach diesem Qualifying die besseren Chancen auf den Sieg?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+Link-Preview: offiziell
+
+## Instagram [GEPOSTET 2026-09-21 06:58 | ID: 18103294976344039]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-21-daily
+Telegram-Update-ID: 279361716
+MotoGP-Auswahl: 3
+Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
+Text:
+Pedro Acosta hat den ersten MotoGP-Sieg seiner Karriere gefeiert!
+
+Nach einem Rückschlag zeigte Acosta eine makellose Leistung und wies die Angriffe der Aprilia-Piloten souverän ab. Der Durchbruch in der Königsklasse ist nun gelungen.
+
+Wer hat eurer Meinung nach die beste Saisonstrategie für die restlichen Rennen?
+
+#MotoGP #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-fends-off-aprilia-charge-to-claim-dream-maiden-win/1090419
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-09/2026-09-21-racing-editorial-2026-09-21-3-bouncing-back-flawle-01.jpg
+
+## Facebook [GEPOSTET 2026-09-21 06:57 | ID: 1285968257941776_122112169203469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-21-daily
+Telegram-Update-ID: 279361716
+MotoGP-Auswahl: 3
+Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
+Text:
+Pedro Acosta hat den ersten MotoGP-Sieg seiner Karriere gefeiert!
+
+Nach einem Rückschlag zeigte Acosta eine makellose Leistung und wies die Angriffe der Aprilia-Piloten souverän ab. Der Durchbruch in der Königsklasse ist nun gelungen.
+
+Wer hat eurer Meinung nach die beste Saisonstrategie für die restlichen Rennen?
+
+#MotoGP #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-fends-off-aprilia-charge-to-claim-dream-maiden-win/1090419
+Quelle: https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-fends-off-aprilia-charge-to-claim-dream-maiden-win/1090419
+Link-Preview: offiziell
+
 ## Instagram [GEPOSTET 2026-09-19 07:52 | ID: 18471296089115151]
 Status: GEPOSTET
 Freigabe: Telegram Racing
