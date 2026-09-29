@@ -50,6 +50,24 @@ class ProductionJobTests(unittest.TestCase):
 
 
 
+    def test_approval_blocks_caption_changed_after_human_signoff(self):
+        job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
+        job.metadata["caption"] = "Freigegebener Text"
+        job.metadata["platforms"] = ["instagram"]
+        job.transition(JobStatus.APPROVED, actor="human")
+        job.metadata["caption"] = "Manipulierter Text"
+        with self.assertRaises(PermissionError):
+            job.publish_handoff()
+
+    def test_approval_blocks_platform_changed_after_human_signoff(self):
+        job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
+        job.metadata["caption"] = "Final"
+        job.metadata["platforms"] = ["instagram"]
+        job.transition(JobStatus.APPROVED, actor="human")
+        job.metadata["platforms"] = ["instagram", "facebook"]
+        with self.assertRaises(PermissionError):
+            job.publish_handoff()
+
     def test_approval_blocks_media_changed_after_human_signoff(self):
         job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
         media = MediaRef("final", "scratch://x/final.mp4", hashlib.sha256(b"a").hexdigest(), 1, "video/mp4", "render")
