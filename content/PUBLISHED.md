@@ -587,9 +587,8 @@ Quelle: https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zaf
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans", "media_status": "", "object_id": "1285968257941776_122116862691469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122116862691469415", "source_url": "https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans", "version": 1}
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36608418810-1
+## Instagram [GEPOSTET 2026-09-29 17:56 | ID: 18107120189187358]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
 Telegram-Update-ID: 279361790
@@ -604,6 +603,7 @@ Quelle / weitere Infos: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-
 Quelle: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-29-turkish-human-5-deniz-oncu-01.jpg
+Publish-Provenienz: {"creation_id": "18009309863971550", "media_kind": "image", "media_path": "assets/images/2026-09/2026-09-29-turkish-human-5-deniz-oncu-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18107120189187358", "published_media_id": "18107120189187358", "source_url": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin", "version": 1}
 
 ## Facebook [GEPOSTET 2026-09-29 17:42 | ID: 1285968257941776_122116869387469415]
 Status: GEPOSTET
