@@ -451,8 +451,8 @@ def test_live_turkish_bad_copy_patterns_are_forbidden_by_editor_contract():
 def test_escalated_turkish_items_have_per_item_source_preview_path():
  import motogp_telegram_receive_v85 as recv
  src=inspect.getsource(recv.handle_turkish)
- assert 'Quell-Vorschau T{pn}' in src
- assert 'px.get("preview","")' in src
+ assert 'preview=x.get("preview","")' in src
+ assert 'agency._send_turkish_source_photo(preview,body)' in src
 
 
 def test_turkish_empty_semantic_language_diagnostic_is_not_valid_language_feedback():
@@ -464,7 +464,7 @@ def test_turkish_empty_semantic_language_diagnostic_is_not_valid_language_feedba
 def test_escalated_preview_uses_url_download_helper_not_local_path_send():
  import motogp_telegram_receive_v85 as recv
  src=inspect.getsource(recv.handle_turkish)
- assert 'agency._send_turkish_source_photo(preview,label)' in src
+ assert 'agency._send_turkish_source_photo(preview,body)' in src
  assert 'send_photo(preview' not in src
 
 
