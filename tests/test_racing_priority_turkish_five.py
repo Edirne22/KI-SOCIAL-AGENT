@@ -202,7 +202,7 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert 'Community-Frage ist erlaubt, aber nicht Pflicht' in tqm._prompt(x,FakeAgency)
  assert 'Keine erfundenen persoenlichen Erlebnisse' in tqm._prompt(x,FakeAgency)
  src=inspect.getsource(recv.handle_turkish)
- assert 'turkish_lane.process_manual_selection' in src and 'agency.qualify_copy(x)' not in src
+ assert 'turkish_lane.human_preview' in src and 'agency.qualify_copy(x)' not in src
  assert 'install_v855_hardening(agency)' in src
  qsrc=inspect.getsource(tqm.qualify)
  assert 'TURKISH FINAL-QM BLOCK attempt=' in qsrc
