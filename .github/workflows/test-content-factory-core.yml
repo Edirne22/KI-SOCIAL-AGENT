@@ -1,0 +1,24 @@
+name: Test Content Factory Core
+
+on:
+  pull_request:
+    paths:
+      - "content_factory_core.py"
+      - "content_factory_service.py"
+      - "media_storage.py"
+      - "tests/test_content_factory_core.py"
+      - ".github/workflows/test-content-factory-core.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Syntax and import check
+        run: python -m py_compile content_factory_core.py content_factory_service.py media_storage.py tests/test_content_factory_core.py
+      - name: Regression, red-team and positive controls
+        run: python -m unittest -v tests.test_content_factory_core
