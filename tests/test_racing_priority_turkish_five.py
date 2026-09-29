@@ -236,33 +236,28 @@ def test_turkish_top20_history_keeps_preview_compact():
 
 
 def test_turkish_range_dispatches_all_selected_items():
- rows={n:{'n':n,'title':f'Rider story {n}','url':f'https://example.test/{n}','summary':'Can Öncü WorldSSP','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'} for n in range(1,5)}
- old_rows=recv.parse_turkish_session;old_already=recv.already;old_chat=recv.get_chat_id;old_active=recv._active_batch;old_publish=recv.publish;old_send=recv.send_message
+ rows={n:{'n':n,'title':f'Rider story {n}','url':f'https://example.test/{n}','summary':'Can Öncü WorldSSP','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü','preview':''} for n in range(1,5)}
+ old_rows=recv.parse_turkish_session;old_already=recv.already;old_chat=recv.get_chat_id;old_send=recv.send_message
  import sys,types
- fake_agency=types.SimpleNamespace(lock_source_series=lambda *a,**k:None,enrich_turkish=lambda *a,**k:None,mark_priority=lambda *a,**k:None)
- def fake_process(x,n,a,max_attempts=3):
-  x.update(instagram_media=f'img{n}.jpg',caption=f'caption {n}',caption_final=True)
-  return {'status':'PASS','reasons':[],'item':x}
- fake_lane=types.SimpleNamespace(process_manual_selection=fake_process)
+ seen=[]
+ fake_agency=types.SimpleNamespace(_send_turkish_source_photo=lambda *a,**k:False)
+ def fake_preview(x,n,a):
+  seen.append(n);x['caption']=f'caption {n}'
+  return {'status':'HUMAN_PREVIEW','reasons':[],'item':x}
+ fake_lane=types.SimpleNamespace(human_preview=fake_preview)
  old_agency=sys.modules.get('motogp_content_agency_v2');old_lane=sys.modules.get('turkish_editor_qm')
- captured={}
  try:
-  recv.parse_turkish_session=lambda:rows;recv.already=lambda uid:False;recv.get_chat_id=lambda:'123';recv._active_batch=lambda:'batch'
-  recv.send_message=lambda m:None
-  recv.publish=lambda posts,chosen,uid,batch:(captured.update(chosen=list(chosen),posts=sorted(posts)) or len(chosen)*2)
+  recv.parse_turkish_session=lambda:rows;recv.already=lambda uid:False;recv.get_chat_id=lambda:'123';recv.send_message=lambda m:None
   sys.modules['motogp_content_agency_v2']=fake_agency;sys.modules['turkish_editor_qm']=fake_lane
-  # Hardening import happens inside handler; production module exists, but install must accept our fake.
   import racing_v855_hardening
   old_install=racing_v855_hardening.install;racing_v855_hardening.install=lambda a:None
   try: assert recv.handle_turkish(991,'123','T 1-4')
   finally: racing_v855_hardening.install=old_install
-  assert captured['chosen']==[1,2,3,4],captured
-  assert captured['posts']==[1,2,3,4],captured
+  assert seen==[1,2,3,4],seen
  finally:
-  recv.parse_turkish_session=old_rows;recv.already=old_already;recv.get_chat_id=old_chat;recv._active_batch=old_active;recv.publish=old_publish;recv.send_message=old_send
+  recv.parse_turkish_session=old_rows;recv.already=old_already;recv.get_chat_id=old_chat;recv.send_message=old_send
   if old_agency is not None:sys.modules['motogp_content_agency_v2']=old_agency
   if old_lane is not None:sys.modules['turkish_editor_qm']=old_lane
-
 
 def test_turkish_visible_five_dedupes_racing_top5_and_backfills():
  sent=[];old_send=a.send_message;old_sender=a._send_turkish_source_photo;old_roster=a.roster_names
