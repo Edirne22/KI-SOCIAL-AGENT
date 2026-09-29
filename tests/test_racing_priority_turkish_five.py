@@ -438,6 +438,7 @@ def test_motogp_geo_lexicon_keeps_austria_and_australia_distinct():
 
 
 def test_turkish_preview_uses_saved_preview_when_live_og_missing():
+ import motogp_content_agency_v2 as agency
  src=inspect.getsource(agency.turkish_five_preview)
  assert "extract_og_image_url(source) or x.get('preview','')" in src
  assert 'Quell-Vorschaubild nicht abrufbar' in src
