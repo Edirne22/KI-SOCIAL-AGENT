@@ -97,30 +97,26 @@ def selection(text):
 
 
 def turkish_actions(text):
-    """Parse one or multiple human actions, scoped to their T-number groups."""
+    """Parse mixed human actions by nearest action phrase."""
     v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
-    pats=[
-      ('drop',r'nicht\s+posten|nicht\s+veröffentlichen|nicht\s+veroeffentlichen|verwerfen|löschen|loeschen'),
-      ('edit',r'ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten'),
-      ('post',r'post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben'),
-    ]
-    hits=[]
-    for action,pat in pats:
-        for m in re.finditer(r'\b(?:'+pat+r')\b',v):hits.append((m.start(),m.end(),action))
+    action_pat=r'nicht\s+posten|nicht\s+veröffentlichen|nicht\s+veroeffentlichen|verwerfen|löschen|loeschen|ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten|post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben'
+    def kind(word):
+        if re.fullmatch(r'nicht\s+posten|nicht\s+veröffentlichen|nicht\s+veroeffentlichen|verwerfen|löschen|loeschen',word):return 'drop'
+        if re.fullmatch(r'ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten',word):return 'edit'
+        return 'post'
+    hits=list(re.finditer(r'\b(?:'+action_pat+r')\b',v))
     if not hits:return None
-    hits.sort()
-    drop_spans=[(a,b) for a,b,act in hits if act=='drop']
-    hits=[h for h in hits if h[2]!='post' or not any(a<=h[0] and h[1]<=b for a,b in drop_spans)]
-    assigned={};prev=0
-    for idx,(start,end,action) in enumerate(hits):
-        nxt=hits[idx+1][0] if idx+1<len(hits) else len(v)
-        segment=v[prev:nxt]
-        nums={int(n) for n in re.findall(r'(?i)\bt\s*([1-9]|1\d|20)\b',segment)}
-        for n in nums:
-            if n in assigned and assigned[n]!=action:return None
-            assigned[n]=action
-        prev=end
-    if not assigned:return None
+    tnums=[(m.start(),int(m.group(1))) for m in re.finditer(r'(?i)\bt\s*([1-9]|1\d|20)\b',v)]
+    if not tnums:return None
+    assigned={}
+    for pos,n in tnums:
+        distances=[]
+        for h in hits:
+            d=min(abs(pos-h.start()),abs(pos-h.end()))
+            distances.append((d,h.start(),kind(h.group(0))))
+        _,_,action=min(distances)
+        if n in assigned and assigned[n]!=action:return None
+        assigned[n]=action
     out=[]
     for action in ('post','edit','drop'):
         nums=sorted(n for n,a in assigned.items() if a==action)
