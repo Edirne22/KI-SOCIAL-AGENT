@@ -412,3 +412,26 @@ Vor dem eigentlichen Video-PoC werden die stabilen Grenzen definiert:
 7. restliche Produktionskette wie oben.
 
 Damit kann die Fabrik später vom Windows-PC auf VPS/NAS/Object Storage umziehen, ohne Frontend, Agentenlogik oder Production Jobs neu zu entwerfen.
+
+
+## Media-Storage-Entscheidung: Cloudflare R2 zuerst
+
+Für den ersten produktiven MediaStorageAdapter wird Cloudflare R2 als bevorzugtes Remote-Backend vorgesehen.
+
+Gründe:
+- S3-kompatible API
+- für unseren geplanten Start ausreichend attraktiver Free-Tier
+- niedrige Speicherkosten bei Wachstum
+- keine Architekturbindung, da Zugriff ausschließlich über MediaStorageAdapter erfolgt
+- geeignet für Originalmedien, relevante Job-Artefakte und finale Render-Ausgaben
+
+Betriebsmodell:
+- Windows-PC/VPS = aktive Werkbank für Download, Transkription, Proxies und Rendering
+- Cloudflare R2 = persistentes Medienlager
+- Git/GitHub = Code, Job-Metadaten, Skripte, Quellen-/QM-Dokumentation und kleine textuelle Artefakte
+- Router-USB/externe Platte = optionales zusätzliches Archiv/Backup
+
+Temporäre Frames, Proxies und Zwischenrenders sollen nach erfolgreichem Jobabschluss gemäß Retention-Regel automatisch bereinigt werden, damit Remote-Speicher nicht unnötig wächst.
+
+Fallbacks:
+Backblaze B2, andere S3-kompatible Anbieter, NAS oder lokaler/VPS-Speicher bleiben durch den Adapter austauschbar. R2 ist die Startentscheidung, kein Vendor-Lock-in.
