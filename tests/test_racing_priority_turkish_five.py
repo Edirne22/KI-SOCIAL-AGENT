@@ -202,7 +202,7 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
  assert 'Community-Frage ist erlaubt, aber nicht Pflicht' in tqm._prompt(x,FakeAgency)
  assert 'Keine erfundenen persoenlichen Erlebnisse' in tqm._prompt(x,FakeAgency)
  src=inspect.getsource(recv.handle_turkish)
- assert 'turkish_lane.process_manual_selection' in src and 'agency.qualify_copy(x)' not in src
+ assert 'turkish_lane.human_preview' in src and 'agency.qualify_copy(x)' not in src
  assert 'install_v855_hardening(agency)' in src
  qsrc=inspect.getsource(tqm.qualify)
  assert 'TURKISH FINAL-QM BLOCK attempt=' in qsrc
@@ -236,33 +236,28 @@ def test_turkish_top20_history_keeps_preview_compact():
 
 
 def test_turkish_range_dispatches_all_selected_items():
- rows={n:{'n':n,'title':f'Rider story {n}','url':f'https://example.test/{n}','summary':'Can Öncü WorldSSP','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü'} for n in range(1,5)}
- old_rows=recv.parse_turkish_session;old_already=recv.already;old_chat=recv.get_chat_id;old_active=recv._active_batch;old_publish=recv.publish;old_send=recv.send_message
+ rows={n:{'n':n,'title':f'Rider story {n}','url':f'https://example.test/{n}','summary':'Can Öncü WorldSSP','series':'WorldSSP','source_series':'WorldSSP','turkish_rider':'Can Öncü','preview':''} for n in range(1,5)}
+ old_rows=recv.parse_turkish_session;old_already=recv.already;old_chat=recv.get_chat_id;old_send=recv.send_message
  import sys,types
- fake_agency=types.SimpleNamespace(lock_source_series=lambda *a,**k:None,enrich_turkish=lambda *a,**k:None,mark_priority=lambda *a,**k:None)
- def fake_process(x,n,a,max_attempts=3):
-  x.update(instagram_media=f'img{n}.jpg',caption=f'caption {n}',caption_final=True)
-  return {'status':'PASS','reasons':[],'item':x}
- fake_lane=types.SimpleNamespace(process_manual_selection=fake_process)
+ seen=[]
+ fake_agency=types.SimpleNamespace(_send_turkish_source_photo=lambda *a,**k:False)
+ def fake_preview(x,n,a):
+  seen.append(n);x['caption']=f'caption {n}'
+  return {'status':'HUMAN_PREVIEW','reasons':[],'item':x}
+ fake_lane=types.SimpleNamespace(human_preview=fake_preview)
  old_agency=sys.modules.get('motogp_content_agency_v2');old_lane=sys.modules.get('turkish_editor_qm')
- captured={}
  try:
-  recv.parse_turkish_session=lambda:rows;recv.already=lambda uid:False;recv.get_chat_id=lambda:'123';recv._active_batch=lambda:'batch'
-  recv.send_message=lambda m:None
-  recv.publish=lambda posts,chosen,uid,batch:(captured.update(chosen=list(chosen),posts=sorted(posts)) or len(chosen)*2)
+  recv.parse_turkish_session=lambda:rows;recv.already=lambda uid:False;recv.get_chat_id=lambda:'123';recv.send_message=lambda m:None
   sys.modules['motogp_content_agency_v2']=fake_agency;sys.modules['turkish_editor_qm']=fake_lane
-  # Hardening import happens inside handler; production module exists, but install must accept our fake.
   import racing_v855_hardening
   old_install=racing_v855_hardening.install;racing_v855_hardening.install=lambda a:None
   try: assert recv.handle_turkish(991,'123','T 1-4')
   finally: racing_v855_hardening.install=old_install
-  assert captured['chosen']==[1,2,3,4],captured
-  assert captured['posts']==[1,2,3,4],captured
+  assert seen==[1,2,3,4],seen
  finally:
-  recv.parse_turkish_session=old_rows;recv.already=old_already;recv.get_chat_id=old_chat;recv._active_batch=old_active;recv.publish=old_publish;recv.send_message=old_send
+  recv.parse_turkish_session=old_rows;recv.already=old_already;recv.get_chat_id=old_chat;recv.send_message=old_send
   if old_agency is not None:sys.modules['motogp_content_agency_v2']=old_agency
   if old_lane is not None:sys.modules['turkish_editor_qm']=old_lane
-
 
 def test_turkish_visible_five_dedupes_racing_top5_and_backfills():
  sent=[];old_send=a.send_message;old_sender=a._send_turkish_source_photo;old_roster=a.roster_names
@@ -423,7 +418,7 @@ def test_turkish_german_place_alias_and_fuer_idiom_do_not_false_block():
 
 def test_turkish_language_failure_always_has_actionable_reason():
  src=inspect.getsource(tqm.process_manual_selection)
- assert 'keine Detailgruende vom Semantic-QM geliefert' in src
+ assert 'Semantic-QM meldet language_ok=false ohne konkreten repair_reason' in src
 
 
 def test_motogp_geo_lexicon_keeps_austria_and_australia_distinct():
@@ -456,12 +451,35 @@ def test_live_turkish_bad_copy_patterns_are_forbidden_by_editor_contract():
 def test_escalated_turkish_items_have_per_item_source_preview_path():
  import motogp_telegram_receive_v85 as recv
  src=inspect.getsource(recv.handle_turkish)
- assert 'Quell-Vorschau T{pn}' in src
- assert 'px.get("preview","")' in src
+ assert 'preview=x.get("preview","")' in src
+ assert 'agency._send_turkish_source_photo(preview,body)' in src
+
+
+def test_turkish_empty_semantic_language_diagnostic_is_not_valid_language_feedback():
+ src=inspect.getsource(tqm.process_manual_selection)
+ assert 'Semantic-QM meldet language_ok=false ohne konkreten repair_reason' in src
+ assert 'keine Detailgruende vom Semantic-QM geliefert' not in src
+
+
+def test_escalated_preview_uses_url_download_helper_not_local_path_send():
+ import motogp_telegram_receive_v85 as recv
+ src=inspect.getsource(recv.handle_turkish)
+ assert 'agency._send_turkish_source_photo(preview,body)' in src
+ assert 'send_photo(preview' not in src
+
+
+def test_manual_turkish_selection_is_human_preview_not_qm_permission_loop():
+ import motogp_telegram_receive_v85 as recv
+ src=inspect.getsource(recv.handle_turkish)
+ assert 'turkish_lane.human_preview(x,n,agency)' in src
+ assert 'process_manual_selection(x,n,agency,max_attempts=3)' not in src
+ assert 'publish(passed' not in src
+ assert 'Kein QM kann diese Vorschau blockieren' in src
+ assert 'posten / ändern / nicht posten' in src
 
 if __name__=='__main__':
  test_turkish_range_dispatches_all_selected_items();test_turkish_visible_five_dedupes_racing_top5_and_backfills()
- test_manual_turkish_redteam_never_promotes_fake_fact_to_pass();test_manual_turkish_positive_control_can_reach_chief();test_turkish_target_lock_blocks_other_rider_in_real_toprak_pattern();test_racing_number_guard_does_not_extract_numeric_suffix_from_alphanumeric_token();test_source_entity_guard_does_not_treat_aktion_as_place();test_turkish_german_place_alias_and_fuer_idiom_do_not_false_block();test_turkish_language_failure_always_has_actionable_reason();test_motogp_geo_lexicon_keeps_austria_and_australia_distinct();test_turkish_preview_uses_saved_preview_when_live_og_missing();test_live_turkish_bad_copy_patterns_are_forbidden_by_editor_contract();test_escalated_turkish_items_have_per_item_source_preview_path();test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
+ test_manual_turkish_redteam_never_promotes_fake_fact_to_pass();test_manual_turkish_positive_control_can_reach_chief();test_turkish_target_lock_blocks_other_rider_in_real_toprak_pattern();test_racing_number_guard_does_not_extract_numeric_suffix_from_alphanumeric_token();test_source_entity_guard_does_not_treat_aktion_as_place();test_turkish_german_place_alias_and_fuer_idiom_do_not_false_block();test_turkish_language_failure_always_has_actionable_reason();test_motogp_geo_lexicon_keeps_austria_and_australia_distinct();test_turkish_preview_uses_saved_preview_when_live_og_missing();test_live_turkish_bad_copy_patterns_are_forbidden_by_editor_contract();test_escalated_turkish_items_have_per_item_source_preview_path();test_turkish_empty_semantic_language_diagnostic_is_not_valid_language_feedback();test_escalated_preview_uses_url_download_helper_not_local_path_send();test_manual_turkish_selection_is_human_preview_not_qm_permission_loop();test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
