@@ -27,8 +27,8 @@ class ProductionJobTests(unittest.TestCase):
         key = job.publish_handoff()
         self.assertEqual(JobStatus.PUBLISH_QUEUED, job.status)
         self.assertEqual(f"{job.job_id}:r1", key)
-        with self.assertRaises(PermissionError):
-            job.publish_handoff()
+        retry_key = job.publish_handoff()
+        self.assertEqual(key, retry_key)
 
     def test_human_change_request_creates_new_revision(self):
         job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
@@ -46,6 +46,17 @@ class ProductionJobTests(unittest.TestCase):
         ):
             job.transition(status)
         self.assertEqual(JobStatus.READY_FOR_HUMAN, job.status)
+
+
+
+    def test_approval_blocks_media_changed_after_human_signoff(self):
+        job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
+        media = MediaRef("final", "scratch://x/final.mp4", hashlib.sha256(b"a").hexdigest(), 1, "video/mp4", "render")
+        job.media.append(media)
+        job.transition(JobStatus.APPROVED, actor="human")
+        job.media.append(MediaRef("swap", "scratch://x/swap.mp4", hashlib.sha256(b"b").hexdigest(), 1, "video/mp4", "attack"))
+        with self.assertRaises(PermissionError):
+            job.publish_handoff()
 
 
 class StorageRedTeamTests(unittest.TestCase):
@@ -86,6 +97,12 @@ class ServiceTests(unittest.TestCase):
         self.assertTrue(first.created)
         self.assertFalse(second.created)
         self.assertEqual(first.job.job_id, second.job.job_id)
+
+    def test_idempotency_key_conflict_is_blocked(self):
+        service = InMemoryJobService()
+        service.create_job("first command", idempotency_key="same")
+        with self.assertRaises(ValueError):
+            service.create_job("different command", idempotency_key="same")
 
 
 class FactoryHandoffTests(unittest.TestCase):
@@ -143,6 +160,30 @@ class FactoryHandoffTests(unittest.TestCase):
         with self.assertRaises(HandoffError):
             run_machine(job, EvilMachine(), ToolTask(job.job_id, job.revision, "attack"))
 
+
+    def test_noncanonical_input_is_blocked(self):
+        from content_factory_handoff import HandoffError, ToolResult, ToolTask, run_machine
+        job = ProductionJob("handoff")
+        canonical = self._ref("source", b"real")
+        job.media.append(canonical)
+        forged = MediaRef("source", canonical.uri, hashlib.sha256(b"forged").hexdigest(), 6, "video/mp4", "attack")
+        class Machine:
+            name = "supoclip-adapter"
+            def run(self, task):
+                return ToolResult(task.job_id, task.revision, task.task_id, [], self.name)
+        with self.assertRaises(HandoffError):
+            run_machine(job, Machine(), ToolTask(job.job_id, job.revision, "forged", [forged]))
+
+    def test_machine_cannot_spoof_provenance(self):
+        from content_factory_handoff import HandoffError, ToolResult, ToolTask, run_machine
+        job = ProductionJob("handoff")
+        class Machine:
+            name = "pollo-adapter"
+            def run(self, task):
+                return ToolResult(task.job_id, task.revision, task.task_id, [], "trusted-other-machine")
+        with self.assertRaises(HandoffError):
+            run_machine(job, Machine(), ToolTask(job.job_id, job.revision, "spoof"))
+
     def test_stale_revision_is_blocked(self):
         from content_factory_handoff import HandoffError, ToolResult, ToolTask, run_machine
 
@@ -158,6 +199,60 @@ class FactoryHandoffTests(unittest.TestCase):
 
         with self.assertRaises(HandoffError):
             run_machine(job, StaleMachine(), ToolTask(job.job_id, old_revision, "stale"))
+
+
+
+class AutonomousEditorialTests(unittest.TestCase):
+    def test_event_trigger_autonomously_creates_production_but_not_approval(self):
+        from autonomous_editorial import AutonomousEditorialDesk, EditorialTrigger, TriggerKind
+        service = InMemoryJobService()
+        desk = AutonomousEditorialDesk(service)
+        trigger = EditorialTrigger(
+            "news-ai-ogura-1", TriggerKind.EVENT, "New Ai Ogura interview",
+            "MotoGP", ["https://example.invalid/source"], rider="Ai Ogura",
+            relevance=92, requested_formats=["reel", "instagram-post"],
+        )
+        decision = desk.consider(trigger)
+        job = service.get_job(decision.job_id)
+        self.assertEqual("produce", decision.action)
+        self.assertTrue(decision.created)
+        self.assertEqual(JobStatus.CREATED, job.status)
+        self.assertTrue(job.metadata["human_approval_required"])
+        self.assertIsNone(job.human_approved_revision)
+
+    def test_same_discovery_does_not_create_duplicate_production(self):
+        from autonomous_editorial import AutonomousEditorialDesk, EditorialTrigger, TriggerKind
+        service = InMemoryJobService()
+        desk = AutonomousEditorialDesk(service)
+        trigger = EditorialTrigger("same-news", TriggerKind.EVENT, "Toprak update", "WorldSBK", rider="Toprak", relevance=90)
+        first = desk.consider(trigger)
+        second = desk.consider(trigger)
+        self.assertTrue(first.created)
+        self.assertFalse(second.created)
+        self.assertEqual(first.job_id, second.job_id)
+
+    def test_low_relevance_discovery_is_not_produced(self):
+        from autonomous_editorial import AutonomousEditorialDesk, EditorialTrigger, TriggerKind
+        service = InMemoryJobService()
+        desk = AutonomousEditorialDesk(service, production_threshold=70)
+        decision = desk.consider(EditorialTrigger("noise", TriggerKind.EVENT, "Old duplicate", "MotoGP", relevance=20))
+        self.assertEqual("skip", decision.action)
+        self.assertIsNone(decision.job_id)
+
+    def test_race_weekend_schedule_creates_preproduction_job(self):
+        from autonomous_editorial import AutonomousEditorialDesk, EditorialTrigger, TriggerKind
+        service = InMemoryJobService()
+        desk = AutonomousEditorialDesk(service)
+        trigger = EditorialTrigger(
+            "motogp-weekend-2026-x", TriggerKind.SCHEDULE, "Upcoming race weekend",
+            "MotoGP", event_name="Race Weekend", relevance=100,
+            requested_formats=["schedule-carousel", "weekend-preview-reel"],
+        )
+        decision = desk.consider(trigger)
+        job = service.get_job(decision.job_id)
+        self.assertEqual("schedule", job.metadata["trigger_kind"])
+        self.assertIn("schedule-carousel", job.metadata["requested_formats"])
+        self.assertEqual(JobStatus.CREATED, job.status)
 
 
 if __name__ == "__main__":
