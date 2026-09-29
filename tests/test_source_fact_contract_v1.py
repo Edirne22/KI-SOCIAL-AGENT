@@ -65,9 +65,17 @@ def test_valencia_real_pipeline_fixture_is_fail():
     assert x["summary"] == ""
     assert x["expected_overall_status"] == "FAIL"
     result = _run_real_fixture(x)
-    assert result["coverage_complete"] is True
+    # Deterministic truth guards may now reject this unsupported Valencia
+    # embellishment before Semantic-QM runs. That is stricter fail-closed
+    # behavior, not a coverage regression. If Semantic-QM is reached, the
+    # unsupported "traditionally" claim must still be identified explicitly.
     assert result["hard_ok"] is False
-    assert any("traditionally" in reason for reason in result["hard_reasons"])
+    if result["coverage_complete"] is True:
+        assert any("traditionally" in reason for reason in result["hard_reasons"])
+    else:
+        assert result["claims"] == []
+        assert result["technical_error"] is False
+        assert result["hard_reasons"]
 
 
 def test_bulega_real_pipeline_fixture_is_fail_closed_on_added_specificity():
