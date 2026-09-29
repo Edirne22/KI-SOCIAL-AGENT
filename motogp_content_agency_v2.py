@@ -493,9 +493,11 @@ def turkish_five_preview(details,now,max_days=10,exclude_items=None):
   send_message('\n'.join(msg)[:4000])
   for i,x in enumerate(visible,1):
    title=f'T{i}️⃣ {x.get("turkish_rider") or "Turkish Rider"} | {x.get("title","")}'
-   source=x.get('url','');og=extract_og_image_url(source)
+   source=x.get('url','');og=extract_og_image_url(source) or x.get('preview','')
    caption=f'{title}\n🔗 Quelle: {source}\nStatus: Scout-Vorschlag – Auswahl danach Priority-Repair + vollständiges Fakten-QM'
-   if not _send_turkish_source_photo(og,caption):send_message(caption)
+   if not _send_turkish_source_photo(og,caption):
+    print(f'TURKISH-5 PREVIEW TEXT-ONLY T{i}: no deliverable source preview')
+    send_message(caption+'\n🖼️ Quell-Vorschaubild nicht abrufbar.')
   send_message('Freigabe zur QM-Prüfung: turkish 1–5 / Kombination / turkish alle\nWeitere Kandidaten: turkish liste → danach z. B. turkish 12\nAblehnen: turkish nein')
   print(f'TURKISH-5 PREVIEW sent={len(visible)} history={len(candidates)} window_used_days={window_used} max_days={max_days}')
   return visible
