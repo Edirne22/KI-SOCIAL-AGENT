@@ -225,6 +225,106 @@ Gezielt falsche, widersprüchliche, erfundene und manipulierte Eingaben erzeugen
 BUILD → TEST → ATTACK → VERIFY → FIX → ATTACK AGAIN → CI GREEN → MERGE-FREIGABE
 ```
 
+
+## 12. End-to-End-/Staffellauf-Prinzip für neue Projektblöcke
+
+Bei jedem neuen Entwicklungsblock reicht es **nicht**, nur die neu hinzugefügte Funktion isoliert zu testen.
+
+Vor einer Merge-Freigabe muss der gesamte bereits aufgebaute Weg **vom ersten Nutzereingang bis zum aktuell erreichten Endpunkt des Systems** erneut geprüft werden.
+
+Für die Content-Fabrik bedeutet das mit wachsendem Ausbau sinngemäß:
+
+```text
+BÜLENTS BEFEHL / INPUT
+→ JOB API / EINGANG
+→ BETRIEBSLEITER / ORCHESTRATOR
+→ ZUSTÄNDIGE AGENTEN UND MASCHINEN
+→ MEDIA-/DATEN-STORAGE
+→ HANDOFF AN NÄCHSTE STUFE
+→ QM / FACT-CHECK / FINAL-GUARDS
+→ PREVIEW
+→ HUMAN AUTHORITY
+→ PUBLISHER
+→ PLATTFORM / NACHWEIS
+```
+
+Es wird jeweils nur bis zu dem Punkt getestet, der im Projekt bereits tatsächlich implementiert ist. Mit jedem neuen Block verlängert sich dieser verpflichtende Staffellauf.
+
+### 12.1 Schnittstellen und Handoffs sind Teil der Funktion
+
+Wenn Agenten, Tools oder Maschinen Dateien, Transkripte, Claims, Metadaten oder Statusinformationen untereinander weiterreichen, gehört die Übergabe selbst zur zu testenden Funktion.
+
+Insbesondere prüfen:
+
+- Job-ID bleibt über alle Stationen eindeutig erhalten.
+- Revision/Version bleibt korrekt gebunden; veraltete Ergebnisse dürfen aktuelle Arbeit nicht überschreiben.
+- Media-ID/URI/Hash/MIME/Größe/Provenienz bleiben nachvollziehbar.
+- Keine Maschine darf unkontrollierte lokale Pfade oder eigene geheime Zustände zum System of Record machen.
+- Ein Tool darf keine fremden Job-Ergebnisse in einen anderen Job einschleusen.
+- Doppelklicks, Retries oder wiederholte Events dürfen keine ungewollten Doppeljobs/Doppelpublikationen erzeugen.
+- Dateien dürfen beim Wechsel zwischen Storage, VPS und Werkzeugen nicht unbemerkt verändert, vertauscht oder verloren werden.
+- Externe Tools bleiben austauschbare Maschinen hinter definierten Adaptern.
+- Fakten-QM, Human Authority und kanonischer Approval State bleiben unter Kontrolle der Edirne-22-Fabrik.
+
+### 12.2 Fehler-, Recovery- und Resume-Prüfung
+
+Soweit für den jeweiligen Block relevant, muss zusätzlich geprüft werden:
+
+- Tool/Provider nicht erreichbar
+- Timeout
+- Prozess-/VPS-Neustart
+- unvollständige Datei
+- manipulierte Datei / Hash-Mismatch
+- veraltete Revision
+- doppeltes Event / Retry
+- Abbruch mitten im Handoff
+- Fehler nach Rendering, aber vor Speicherung
+- Fehler nach Freigabe, aber vor Veröffentlichung
+- erneuter Start/Resume nach Fehler.
+
+Ein Recovery darf nicht stillschweigend eine alte, ungeprüfte oder nicht mehr freigegebene Version veröffentlichen.
+
+### 12.3 Proaktive Architekturprüfung ist Pflicht
+
+Vor dem Build eines neuen Blocks muss aktiv gefragt werden:
+
+> Welche Schwachstellen, Abhängigkeiten, unnötigen Kopiervorgänge, Single Points of Failure, Sicherheitsprobleme oder späteren Sackgassen entstehen durch diesen Schritt?
+
+Die Entwicklungsarbeit soll nicht nur vorgegebene Einzelaufgaben ausführen. Sie soll **proaktiv**:
+
+- Schwachstellen suchen,
+- bessere technische Varianten erkennen,
+- unnötige Eigenentwicklung vermeiden,
+- geeignete bestehende Tools/Adapter empfehlen,
+- Kosten-/Speicher-/Netzwerk-/Performance-Folgen beachten,
+- Wartbarkeit und Austauschbarkeit prüfen,
+- gefundene Verbesserungen vorschlagen und bei sicherem Scope in den Entwicklungsblock einarbeiten.
+
+Beispiel: Wenn eine große Mediendatei zwischen VPS, Object Storage und mehreren Werkzeugen unnötig mehrfach übertragen würde, muss dies als Architekturproblem erkannt und eine effizientere Übergabe vorgeschlagen werden.
+
+### 12.4 Definition of Done für jeden neuen Block
+
+Ein neuer Block gilt erst als technisch vorbereitet für die Merge-Freigabe, wenn mindestens Folgendes erfolgt ist:
+
+```text
+ANALYSE DES GESAMTWEGS
+→ BUILD
+→ ISOLIERTE REGRESSION
+→ HANDOFF-/SCHNITTSTELLENTEST
+→ STAFFELLAUF VOM START BIS ZUM AKTUELLEN ENDPUNKT
+→ NEGATIV-/RED-TEAM-TESTS
+→ POSITIVKONTROLLEN
+→ FEHLER-/RETRY-/RESUME-PRÜFUNG, SOWEIT RELEVANT
+→ ROOT-CAUSE + FIX BEI FUND
+→ STAFFELLAUF ERNEUT
+→ CI GREEN
+→ ERGEBNIS / REST-RISIKEN TRANSPARENT ZEIGEN
+→ MERGE-FREIGABE DURCH BÜLENT
+```
+
+Ein grüner Einzeltest ersetzt **niemals** den Staffellauf. Ein simulierter Adaptertest darf **nicht** als echter Live-E2E-Test eines externen Tools ausgegeben werden.
+
+
 ---
 
 **Pflegeprinzip:** Neue dauerhaft relevante Fehlerklassen, Arbeitsregeln und Schutzmechanismen werden in dieser Datei ergänzt, damit sie unabhängig von einzelnen Chats und Handovers erhalten bleiben.
