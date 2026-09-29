@@ -509,9 +509,9 @@ def main() -> None:
             or re.fullmatch(r"t\s*(?:[1-5](?:[\s,]+(?:t\s*)?[1-5])*|alle|nein|✅|❌)", cmd, re.I)
         )
         is_turkish_human_action = bool(
-            re.search(r"(?i)(?:^|[^a-z0-9])t\\s*[1-5](?=$|[^0-9])", cmd)
+            re.search(r"(?i)(?:^|[^a-z0-9])t\s*[1-5](?=$|[^0-9])", cmd)
             and re.search(
-                r"(?i)\\b(?:post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben|ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten|verwerfen|löschen|loeschen)\\b|nicht\\s+(?:posten|veröffentlichen|veroeffentlichen)",
+                r"(?i)\b(?:post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben|ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten|verwerfen|löschen|loeschen)\b|nicht\s+(?:posten|veröffentlichen|veroeffentlichen)",
                 cmd,
             )
         )
