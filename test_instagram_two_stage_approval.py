@@ -100,6 +100,41 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
 
 
 
+
+def test_turkish_human_final_is_directly_instagram_publishable(tmp_path, monkeypatch):
+    test_json = tmp_path / "PENDING_INSTAGRAM.json"
+    test_published = tmp_path / "PUBLISHED.md"
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    monkeypatch.setattr(approval, "PUBLISHED", test_published)
+
+    asset = tmp_path / "assets" / "images" / "2026-09" / "turkish-human.jpg"
+    asset.parent.mkdir(parents=True)
+    asset.write_bytes(b"jpeg")
+    posts = {
+        1: {
+            "title": "Oğuz Test",
+            "source": "https://example.com/oguz",
+            "image": asset.as_posix(),
+            "text": "Exakt freigegebener Text",
+            "caption_final": True,
+            "human_final": True,
+        }
+    }
+    monkeypatch.setattr(approval, "download_og_image_for_instagram", lambda source, target: target)
+    send_photo = MagicMock()
+    monkeypatch.setattr(approval, "send_photo", send_photo)
+
+    count = approval.publish(posts, [1], uid=2001, batch="turkish-human-test")
+    assert count == 2
+    content = test_published.read_text(encoding="utf-8")
+    instagram = content.split("## Instagram", 1)[1].split("## Facebook", 1)[0]
+    assert "Status: FREIGEGEBEN" in instagram
+    assert "Status: BILD_GENERIERT" not in instagram
+    assert f"Bild: {asset.as_posix()}" in instagram
+    assert pi.load_pending() == []
+    send_photo.assert_not_called()
+
+
 def test_motogp_approval_falls_back_to_agnes_without_og_image(tmp_path, monkeypatch):
     test_json = tmp_path / "PENDING_INSTAGRAM.json"
     test_published = tmp_path / "PUBLISHED.md"
