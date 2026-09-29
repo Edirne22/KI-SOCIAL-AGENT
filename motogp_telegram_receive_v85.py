@@ -96,6 +96,21 @@ def selection(text):
     return sorted(out)
 
 
+
+def turkish_publish_interval(text):
+    v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
+    m=re.search(r'(?:alle|abstand(?:\s+von)?|im\s+abstand(?:\s+von)?)\s+(\d+)\s*(minute|minuten|stunde|stunden)',v)
+    if m:return int(m.group(1))*(60 if m.group(2).startswith('stunde') else 1)
+    if re.search(r'\b(jede\s+stunde|stündlich|stuendlich)\b',v):return 60
+    return None
+
+def turkish_t_order(text):
+    out=[]
+    for raw in re.findall(r'(?i)\bt\s*([1-9]|1\d|20)\b',str(text or '')):
+        n=int(raw)
+        if n not in out:out.append(n)
+    return out
+
 def turkish_actions(text):
     """Parse mixed human actions by nearest action phrase."""
     v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
