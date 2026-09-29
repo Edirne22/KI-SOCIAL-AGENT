@@ -321,3 +321,23 @@ Der PoC darf nicht nach einer Social-Media-Rangliste entschieden werden. Alle er
 Nur Bülents ausdrücklich autorisierte eigene Stimme darf als persönlicher Voice-Clone für die Fabrik verwendet werden. Die erzeugte Audiodatei wird wie jedes andere Produktionsasset mit Provider/Modell, Version, Hash und Provenienz im MediaStorage registriert.
 
 Block 7 ist nachgelagert und darf Block 1 nicht aufhalten. Die VoiceAdapter-Grenze wird so ausgelegt, dass Kandidaten später ohne Änderung an Human Authority, Fakten-QM, ProductionJob oder Publisher ausgetauscht werden können.
+
+
+### 21.1 AvatarAdapter und MotionAdapter
+
+Block 7 umfasst neben Voice auch eine optionale visuelle Sprecherstufe. Voice und Avatar bleiben getrennte Maschinen.
+
+Produktionsmodi:
+- `VOICE_ONLY`: Stimme über Racing-, Motorrad- und B-Roll-Visuals.
+- `REALISTIC_BULENT`: von Bülent freigegebener persönlicher Avatar für Moderation, News und Erklärstücke.
+- `BRAND_AVATAR`: Edirne-22-/Comic-/3D-Figur für stärker inszenierte Inhalte.
+
+Ablauf: finales Skript → VoiceAdapter → Audio → optional AvatarAdapter → MotionAdapter/Gesten → Lip-Sync → MediaStorage/R2 → Captions → Rendering → End-QM → Preview → Bülent.
+
+HeyGen wird als Cloud-PoC-/Benchmark-Kandidat für `REALISTIC_BULENT` aufgenommen und nicht fest in die Architektur eingebaut. Lokale Alternativen wie MuseTalk werden später über dieselbe Adaptergrenze verglichen.
+
+Der MotionAdapter soll wiederverwendbare Bewegungsprofile unterstützen: neutral erklären, begeistert reagieren, zeigen, Daumen hoch und auf eingeblendete Elemente zeigen.
+
+Vor produktiver Nutzung werden Rechte, Datenschutz, Referenzmaterial-Speicherung, Output-Rechte, API/Automation, Kosten, Wasserzeichen, DE/TR-Lip-Sync, Gestenqualität, Retry/Resume und Austauschbarkeit geprüft. Wasserzeichenentfernung ist keine Produktionsstrategie.
+
+Targeted Repair gilt auch hier: Änderungen an Stimme, Geste oder Avatarsequenz sollen nur den betroffenen Abschnitt neu erzeugen.
