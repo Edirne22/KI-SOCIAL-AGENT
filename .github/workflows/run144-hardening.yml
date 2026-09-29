@@ -21,4 +21,4 @@ jobs:
       - name: Run 144 regressions
         run: pytest -q tests/test_run144_hardening.py
       - name: Existing semantic and Turkish hardening regressions
-        run: pytest -q tests/test_semantic_qm_json_recovery.py tests/test_turkish_series_language_hardening.py
+        run: |\n          PYTHONPATH=. python tests/test_semantic_qm_json_recovery.py\n          PYTHONPATH=. python tests/test_turkish_series_language_hardening.py
