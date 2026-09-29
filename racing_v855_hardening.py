@@ -59,7 +59,7 @@ def install(a):
 
     def fact_packet(x):
         source=' '.join((str(x.get('title','')),str(x.get('summary',''))))
-        return {'series':series_for(x),'title':' '.join(str(x.get('title','')).split()),'summary':' '.join(str(x.get('summary','')).split()),'riders':a.riders_in(source),'numbers':sorted(set(re.findall(r'(?<![A-Za-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',source))),'event_session':source_event_contract(x)}
+        return {'series':series_for(x),'title':' '.join(str(x.get('title','')).split()),'summary':' '.join(str(x.get('summary','')).split()),'riders':a.riders_in(source),'numbers':sorted(set(re.findall(r'(?<![A-Za-z0-9])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',source))),'event_session':source_event_contract(x)}
 
     def whitelist_errors(x,caption):
         f=fact_packet(x);errs=list(racing_lexicon_errors(caption));errs.extend(session_errors(x,caption,'Source-Fact-Whitelist'));errs.extend(claim_strength_errors(x,caption,'Source-Fact-Whitelist'));errs.extend(source_entity_errors(x,caption,'Source-Fact-Whitelist'));src=a.fold(f['title']+' '+f['summary']);cap=a.fold(re.sub(r'#[^\s]+','',caption or ''))
@@ -92,8 +92,8 @@ def install(a):
         # Source/provenance URLs are metadata, not editorial claims. Their slug/ID
         # numbers must never enter the closed fact-number comparison.
         cap_facts=re.sub(r'https?://\S+',' ',cap)
-        srcnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',src)}
-        capnums={normalize_number(n) for n in re.findall(r'(?<![a-z])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',cap_facts)}
+        srcnums={normalize_number(n) for n in re.findall(r'(?<![a-z0-9])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',src)}
+        capnums={normalize_number(n) for n in re.findall(r'(?<![a-z0-9])\d+(?:[.,:]\d+)*(?:%|s|km|mph|kph)?',cap_facts)}
         for n in sorted(capnums-srcnums):errs.append('Source-Fact-Whitelist: Zahl nicht in Quelle: '+n)
         return errs
 
