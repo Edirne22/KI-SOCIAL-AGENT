@@ -111,8 +111,10 @@ def test_turkish_secondary_rider_relevance_passes_truth():
     x=base("WorldSSP Superpole: Alcoba takes pole","Jeremy Alcoba takes pole. Can Oncu is P6.","WorldSSP")
     x["turkish_rider"]="Can Öncü"
     c=post("WorldSSP","Jeremy Alcoba holt die Pole.\n\nCan Öncü steht laut Quelle auf P6.")
-    ok,e=_turkish_final(x,c);check(ok,("Turkish legitimate secondary-rider perspective blocked",e))
-    print("TURKISH E2E EXPECTED PASS: human relevance differs, truth remains supported")
+    ok,e=_turkish_final(x,c);check(not ok and any("Target-Lock verletzt" in z for z in e),("Turkish foreign-rider drift was not blocked",e))
+    c=post("WorldSSP","Can Öncü steht laut Quelle auf P6. 🇹🇷🏁")
+    ok,e=_turkish_final(x,c);check(ok,("Turkish rider-only positive control blocked",e))
+    print("TURKISH E2E TARGET-LOCK: foreign rider blocked, rider-only perspective passes")
 def test_turkish_fake_team_is_blocked():
     x=base("WorldSSP: Can Oncu finishes sixth","Can Oncu finishes sixth in WorldSSP.","WorldSSP");x["turkish_rider"]="Can Öncü"
     c=post("WorldSSP","Can Öncü wird Sechster für das Phoenix-Werksteam.\n\nEin starkes Ergebnis.")
