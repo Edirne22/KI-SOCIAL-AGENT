@@ -231,7 +231,10 @@ def handle_turkish_action(uid,chat,txt):
             synthetic=' '.join('T'+str(n) for n in chosen)+' '+({'post':'posten','edit':'überarbeiten','drop':'nicht posten'}[action])
             ok=handle_turkish_action(uid,chat,synthetic) and ok
         return ok
-    action,chosen=cmds[0];rows=_load_turkish_previews()
+    action,chosen=cmds[0]
+    order=[n for n in turkish_t_order(txt) if n in chosen]
+    chosen=order or chosen
+    rows=_load_turkish_previews()
     selected=[n for n in chosen if n in rows]
     if not selected:
         send_message('⛔ Keine passende aktuelle Turkish-Rider-Vorschau gefunden.')
@@ -242,8 +245,14 @@ def handle_turkish_action(uid,chat,txt):
             p=rows[n]
             posts[n]={'title':p.get('title',''),'source':p.get('source',''),'image':f'memory/turkish-human-T{n}.jpg','text':p.get('text',''),'caption_final':True}
         batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR-HUMAN'
-        count=publish(posts,selected,uid,batch)
-        send_message(f'✅ Deine Freigabe: {", ".join("T"+str(n) for n in selected)} · exakt die gezeigten Texte · {count} Plattform-Blöcke vorbereitet.')
+        interval=turkish_publish_interval(txt)
+        schedules={}
+        if interval is not None:
+            now=datetime.now(ZoneInfo('Europe/Berlin'))
+            schedules={n:(now+timedelta(minutes=i*interval)).isoformat() for i,n in enumerate(selected)}
+        count=publish(posts,selected,uid,batch,schedules=schedules)
+        plan=(' · '+ ' → '.join(f'T{n} {datetime.fromisoformat(schedules[n]).strftime("%H:%M")}' for n in selected)) if schedules else ''
+        send_message(f'✅ Deine Freigabe: {", ".join("T"+str(n) for n in selected)} · exakt die gezeigten Texte{plan} · {count} Plattform-Blöcke vorbereitet.')
         return True
     if action=='drop':
         for n in selected: rows.pop(n,None)
