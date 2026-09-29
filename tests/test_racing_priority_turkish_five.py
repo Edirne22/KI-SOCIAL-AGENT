@@ -293,6 +293,8 @@ def test_manual_turkish_redteam_never_promotes_fake_fact_to_pass():
   @staticmethod
   def language_sane(caption): return True
   @staticmethod
+  def riders_in(text): return ['Can Öncü'] if 'oncu' in tqm.fold(text) else []
+  @staticmethod
   def fact_whitelist_errors(x,caption):
    bad=[]
    low=caption.casefold()
@@ -331,6 +333,8 @@ def test_manual_turkish_positive_control_can_reach_chief():
   def series_for(x): return 'WorldSSP'
   @staticmethod
   def language_sane(caption): return True
+  @staticmethod
+  def riders_in(text): return ['Can Öncü'] if 'oncu' in tqm.fold(text) else []
   @staticmethod
   def fact_whitelist_errors(x,caption): return []
   @staticmethod
