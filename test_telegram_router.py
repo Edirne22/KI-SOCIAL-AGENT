@@ -48,5 +48,25 @@ class TelegramOffsetTests(unittest.TestCase):
         self.assertEqual(calls, [None, 43, 43])
 
 
+    def test_turkish_human_post_command_routes_to_racing_receiver(self):
+        update = {"update_id": 43, "message": {"chat": {"id": "1"}, "text": "T1,T3,T5 posten"}}
+        with tempfile.TemporaryDirectory() as tmp:
+            offset_file = Path(tmp) / "TELEGRAM_LAST_UPDATE_ID"
+            offset_file.write_text("42\n", encoding="utf-8")
+            def fake_get_updates(offset=None):
+                return [update] if offset == 43 else []
+            completed = types.SimpleNamespace(returncode=0)
+            with patch.object(tr, "TELEGRAM_LAST_UPDATE_FILE", offset_file), \
+                 patch.object(tr, "get_chat_id", return_value="1"), \
+                 patch.object(tr, "get_updates", side_effect=fake_get_updates), \
+                 patch.object(tr.subprocess, "run", return_value=completed) as run:
+                tr.main()
+            args = run.call_args.args[0]
+            self.assertEqual(args[1], "-u")
+            self.assertEqual(args[2], "motogp_telegram_receive.py")
+            self.assertEqual(args[-1], "T1,T3,T5 posten")
+            self.assertEqual(offset_file.read_text(encoding="utf-8").strip(), "43")
+
+
 if __name__ == "__main__":
     unittest.main()
