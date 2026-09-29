@@ -11,10 +11,15 @@ def fold(s):
 def source_text(item):
     return fold((item.get("title") or "")+" "+(item.get("summary") or "")+" "+(item.get("url") or ""))
 _STOP={"dem","der","den","das","die","einem","einer","einen","op","tisch","start","ziel","platz","spitze","rennen","race","runde","round","aktion"}
-_PLACE_ALIASES={"osterreich":("avusturya","austria"),"italien":("italya","italy"),"turkei":("turkiye","turkey"),"deutschland":("almanya","germany"),"spanien":("ispanya","spain")}
 def _place_supported(ent,src):
     ef=fold(ent)
-    return ef in src or any(alias in src for alias in _PLACE_ALIASES.get(ef,()))
+    if ef in src:return True
+    from racing_geo_lexicon import RACE_GEO
+    for de,row in RACE_GEO.items():
+      aliases=[de]+list(row.get("tr",[]))+list(row.get("en",[]))+list(row.get("circuits",[]))
+      folded=[fold(a) for a in aliases]
+      if ef in folded:return any(a in src for a in folded)
+    return False
 def _entity(raw):
     raw=re.sub(r"[^A-Za-zÄÖÜäöüßÇçĞğİıÖöŞşÜü0-9-]+$","",raw.strip())
     return raw
