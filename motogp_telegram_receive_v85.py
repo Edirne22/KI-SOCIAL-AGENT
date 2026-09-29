@@ -211,6 +211,11 @@ def handle_turkish(uid,chat,txt):
                 if preview and agency._send_turkish_source_photo(preview,body):
                     continue
                 send_message(body+"\n\n🖼️ Quell-Vorschaubild nicht abrufbar.")
+            saved={"created_at":int(time.time()),"items":{}}
+            for n,x,_ in previews:
+                saved["items"][str(n)]={"n":n,"title":x.get("title",""),"source":x.get("url",""),"preview":x.get("preview",""),"rider":x.get("turkish_rider",""),"text":x.get("caption","")}
+            TURKISH_PREVIEWS.parent.mkdir(parents=True,exist_ok=True)
+            TURKISH_PREVIEWS.write_text(json.dumps(saved,ensure_ascii=False,indent=2),encoding="utf-8")
             for n,reasons in technical:
                 send_message(f'🛠️ T{n} technisch nicht fertig: {"; ".join(reasons[:4])}')
     STATE.parent.mkdir(parents=True,exist_ok=True);STATE.write_text(f'Update-ID: {uid}\nAntwort: {txt}\n',encoding='utf-8')
