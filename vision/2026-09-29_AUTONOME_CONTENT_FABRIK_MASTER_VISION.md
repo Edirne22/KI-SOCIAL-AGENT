@@ -280,3 +280,44 @@ Pollo darf niemals System of Record für ProductionJob, Fakten-QM, Human Authori
 Vor produktiver Bindung ist ein isolierter PoC Pflicht. Zu prüfen sind mindestens: Auth/API/MCP/CLI, Modellwahl, Kosten vor Jobstart soweit verfügbar, Jobstatus/Timeout/Retry, lokale Datei vs. URL/R2-Handoff, Ergebnisdownload, Hash/Provenienz, DE/TR-Ausgaben, Nutzungs-/Output-Rechte, Fehler-/Resume-Verhalten und Austauschbarkeit gegen einen anderen Provider.
 
 Die Aufnahme von Pollo ändert nicht die MVP-Priorität von SupoClip. Beide Maschinen ergänzen sich.
+
+
+## 21. Block 7 – VoiceAdapter / Bülent-Stimme / DE-TR
+
+Die Voice-Stufe wird als austauschbare Maschinenrolle hinter einem `VoiceAdapter` gebaut. Kein einzelner TTS-/Voice-Cloning-Anbieter wird fest in den ProductionJob verdrahtet.
+
+Geplanter Handoff:
+
+```text
+ProductionJob + finales Skript
+→ VoiceAdapter
+→ ausgewählte Voice-Maschine
+→ Audio-Asset
+→ MediaStorageAdapter / R2
+→ SHA-256 + Provenienz + Revision
+→ Captions / Schnitt / End-QM
+→ Preview
+→ Bülent
+```
+
+Aktuelle Kandidaten aus dem Tool-Radar:
+
+- **Chatterbox Multilingual – PoC-Priorität:** erster lokaler Kandidat für Bülents spätere DE/TR-Stimme; insbesondere Natürlichkeit, Emotion, deutsche/türkische Aussprache und Voice-Cloning prüfen.
+- **GPT-SoVITS – Vergleichskandidat:** lokaler Few-Shot-/Voice-Cloning-Kandidat mit hoher Kontrolle; gegen Chatterbox mit denselben Referenzaufnahmen und Testtexten messen.
+- **OpenVoice V2 – Vergleich/Fallback:** Voice-Cloning und Style-Control interessant; DE/TR-Unterstützung vor Einsatz praktisch verifizieren und nicht aus Social-Media-Werbeaussagen ableiten.
+- **F5-TTS – WATCH/Lizenzprüfung:** technisch interessanter lokaler Kandidat; Modell-/Gewichts-Lizenz und kommerzielle Nutzbarkeit müssen vor produktiver Verwendung separat geprüft werden.
+- **Bark – WATCH/LATER:** für expressive generative Sprache interessant, aber nicht als primärer Bülent-Voice-Cloning-Kandidat einplanen.
+- **PlayHT – Cloud-Benchmark:** nur als gehosteter Qualitäts-/Kostenvergleich; keine feste Architekturabhängigkeit.
+- **Kokoro – bestehender Übergangskandidat:** bleibt für eine künstliche Übergangsstimme im Vergleich, solange Bülent-Voice-Cloning noch nicht produktionsreif ist.
+
+Der PoC darf nicht nach einer Social-Media-Rangliste entschieden werden. Alle ernsthaften Kandidaten erhalten denselben Testkorpus:
+- identische autorisierte Referenzaufnahmen von Bülent,
+- identische deutsche und türkische Texte,
+- Racing-Namen und Diakritika wie Toprak Razgatlıoğlu, Can Öncü und Kenan Sofuoğlu,
+- neutrale, begeisterte und erklärende Sprechweise,
+- Messung von Natürlichkeit, Aussprache, Stimmähnlichkeit, Emotionskontrolle, Latenz, CPU/GPU/RAM, Stabilität und Kosten,
+- Prüfung von Code-, Modell-, Trainingsdaten-/Output-Lizenz und kommerzieller Nutzbarkeit.
+
+Nur Bülents ausdrücklich autorisierte eigene Stimme darf als persönlicher Voice-Clone für die Fabrik verwendet werden. Die erzeugte Audiodatei wird wie jedes andere Produktionsasset mit Provider/Modell, Version, Hash und Provenienz im MediaStorage registriert.
+
+Block 7 ist nachgelagert und darf Block 1 nicht aufhalten. Die VoiceAdapter-Grenze wird so ausgelegt, dass Kandidaten später ohne Änderung an Human Authority, Fakten-QM, ProductionJob oder Publisher ausgetauscht werden können.
