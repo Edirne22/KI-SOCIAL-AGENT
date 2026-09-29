@@ -530,9 +530,8 @@ Quelle: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: memory/turkish-human-T1.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36601610132-1
+## Facebook [GEPOSTET 2026-09-29 16:59 | ID: 1285968257941776_122116854609469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
 Telegram-Update-ID: 279361788
@@ -548,6 +547,7 @@ Quelle / weitere Infos: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrup
 https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
 Quelle: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu", "media_status": "", "object_id": "1285968257941776_122116854609469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122116854609469415", "source_url": "https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
