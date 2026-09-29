@@ -53,9 +53,20 @@ def validate_result(job: ProductionJob, task: ToolTask, result: ToolResult) -> N
 def run_machine(job: ProductionJob, machine: FactoryMachine, task: ToolTask) -> ToolResult:
     if task.job_id != job.job_id or task.revision != job.revision:
         raise HandoffError("invalid task envelope")
+    canonical = {media.media_id: media for media in job.media}
+    for supplied in task.inputs:
+        known = canonical.get(supplied.media_id)
+        if known is None or known != supplied:
+            raise HandoffError("task input is not canonical job media")
     result = machine.run(task)
     validate_result(job, task, result)
+    if result.machine != machine.name:
+        raise HandoffError("machine provenance mismatch")
     for media in result.outputs:
-        if all(existing.media_id != media.media_id for existing in job.media):
+        known = canonical.get(media.media_id)
+        if known is not None and known != media:
+            raise HandoffError("immutable media id collision")
+        if known is None:
             job.media.append(media)
+            canonical[media.media_id] = media
     return result
