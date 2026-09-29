@@ -113,11 +113,15 @@ def turkish_actions(text):
     for h in hits:
         action=kind(h.group(0))
         for pos,n in tnums:
-            if cursor<=pos<h.start(): assigned[n]=action
+            if cursor<=pos<h.start():
+                if n in assigned and assigned[n]!=action:return None
+                assigned[n]=action
         cursor=h.end()
     last_action=kind(hits[-1].group(0))
     for pos,n in tnums:
-        if pos>=cursor: assigned[n]=last_action
+        if pos>=cursor:
+            if n in assigned and assigned[n]!=last_action:return None
+            assigned[n]=last_action
     out=[]
     for action in ('post','edit','drop'):
         nums=sorted(n for n,a in assigned.items() if a==action)
