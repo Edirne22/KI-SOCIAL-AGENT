@@ -109,6 +109,8 @@ def turkish_actions(text):
         for m in re.finditer(r'\b(?:'+pat+r')\b',v):hits.append((m.start(),m.end(),action))
     if not hits:return None
     hits.sort()
+    drop_spans=[(a,b) for a,b,act in hits if act=='drop']
+    hits=[h for h in hits if h[2]!='post' or not any(a<=h[0] and h[1]<=b for a,b in drop_spans)]
     assigned={};prev=0
     for idx,(start,end,action) in enumerate(hits):
         nxt=hits[idx+1][0] if idx+1<len(hits) else len(v)
