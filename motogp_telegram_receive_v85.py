@@ -8,7 +8,7 @@ import racing_run_controller as rc
 from generate_agnes_media import agnes_generate_image, save_bytes
 from instagram_publish import download_og_image_for_instagram, generate_buelent_caption
 from pending_instagram import add_pending
-SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');TURKISH_SESSION=Path('memory/TURKISH_RIDER_APPROVAL.json');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md')
+SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');TURKISH_SESSION=Path('memory/TURKISH_RIDER_APPROVAL.json');TURKISH_PREVIEWS=Path('memory/TURKISH_RIDER_HUMAN_PREVIEWS.json');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md')
 MIN_SESSION_VERSION=18;MAX_SESSION_AGE_SECONDS=24*3600
 RAW_BAD=('-->','by motogp.com','motogp-update:','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung')
 def _active_batch():
@@ -94,6 +94,21 @@ def selection(text):
             out.update(range(x,y+1))
         else:out.add(int(part))
     return sorted(out)
+
+
+def turkish_action(text):
+    """Natural command parser for human Turkish previews."""
+    v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
+    actions={
+      'post':r'\b(post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben)\b',
+      'edit':r'\b(ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten)\b',
+      'drop':r'\b(nicht\s+posten|nicht\s+veröffentlichen|nicht\s+veroeffentlichen|verwerfen|löschen|loeschen)\b',
+    }
+    action=next((a for a,p in actions.items() if re.search(p,v)),None)
+    if not action:return None
+    nums={int(n) for n in re.findall(r'(?i)\bt\s*([1-9]|1\d|20)\b',v)}
+    if not nums:return None
+    return action,sorted(nums)
 
 def turkish_selection(text):
     """Parse Turkish-Rider approvals T1-T20, including inclusive ranges.
