@@ -178,20 +178,29 @@ def handle_turkish(uid,chat,txt):
             import motogp_content_agency_v2 as agency
             from racing_v855_hardening import install as install_v855_hardening
             import turkish_editor_qm as turkish_lane
-            # Telegram runs outside racing_v85.py, so install the same production
-            # hardening explicitly before the dedicated Turkish lane uses its fact gates.
             install_v855_hardening(agency)
-            passed={};failed=[]
+            passed={};escalated=[];technical=[]
             for n in selected:
-                x=dict(rows[n]);agency.lock_source_series(x,x.get('source_series'));agency.enrich_turkish(x);agency.mark_priority(x,'TURKISH_SELECTED')
-                if turkish_lane.qualify(x,agency) and turkish_lane.finish(x,n,agency):
-                    passed[n]={'title':x['title'],'source':x['url'],'image':x['instagram_media'],'text':x['caption']}
-                else:failed.append(n)
+                x=dict(rows[n])
+                result=turkish_lane.process_manual_selection(x,n,agency,max_attempts=3)
+                status=result.get("status")
+                x=result.get("item") or x
+                if status=="PASS":
+                    passed[n]={'title':x['title'],'source':x['url'],'image':x['instagram_media'],'text':x['caption'],'caption_final':True}
+                elif status=="ESCALATE":
+                    escalated.append((n,x,list(result.get("reasons") or [])))
+                else:
+                    technical.append((n,list(result.get("reasons") or [])))
             batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR'
             count=publish(passed,sorted(passed),uid,batch) if passed else 0
-            msg=f'🇹🇷 Turkish-Rider QM abgeschlossen: {len(passed)} PASS, {len(failed)} BLOCKED.'
-            if passed:msg+=f'\nFreigegeben: {", ".join("T"+str(n) for n in sorted(passed))} · {count} Plattform-Blöcke übergeben.'
-            if failed:msg+=f'\nNicht veröffentlicht: {", ".join("T"+str(n) for n in failed)}.'
+            msg=f'🇹🇷 Manuelle Turkish-Auswahl: {len(passed)} VORSCHAU, {len(escalated)} MANUELLE ENTSCHEIDUNG, {len(technical)} TECHNISCHER FEHLER.'
+            if passed:msg+=f'\nZur Vorschau: {", ".join("T"+str(n) for n in sorted(passed))} · {count} Plattform-Blöcke vorbereitet.'
+            for n,x,reasons in escalated:
+                risk="; ".join(reasons[:6]) or "Chief/QM nach 3 Reparaturversuchen ohne PASS"
+                msg+=f'\n\n⚠️ MANUELLE ENTSCHEIDUNG ERFORDERLICH – T{n}\nGründe: {risk}\n\nAktueller Text:\n{x.get("caption","(kein belastbarer Caption-Text)")}'
+            if escalated:msg+='\n\nKein QM-PASS und keine automatische Veröffentlichung. Manueller Override wird separat protokolliert.'
+            for n,reasons in technical:
+                msg+=f'\n\n🛠️ T{n} technisch nicht fertig: {"; ".join(reasons[:4])}'
             send_message(msg)
     STATE.parent.mkdir(parents=True,exist_ok=True);STATE.write_text(f'Update-ID: {uid}\nAntwort: {txt}\n',encoding='utf-8')
     return True
@@ -245,7 +254,7 @@ def publish(posts,chosen,uid,batch,schedules=None):
             except Exception as e:
                 print(f"MOTOGP: Agnes Bild-Generierung übersprungen / fehlgeschlagen: {e}")
 
-        instagram_text = generate_buelent_caption(p["text"])
+        instagram_text = p["text"] if p.get("caption_final") else generate_buelent_caption(p["text"])
 
         add_pending(
             batch_id=batch,
