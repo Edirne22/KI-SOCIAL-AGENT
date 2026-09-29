@@ -102,7 +102,7 @@ def turkish_actions(text):
     v=re.sub(r'nicht\s+(?:posten|veröffentlichen|veroeffentlichen)', ' NICHTPOSTEN ', v)
     action_pat=r'NICHTPOSTEN|verwerfen|löschen|loeschen|ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten|post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben'
     def kind(word):
-        if word=='NICHTPOSTEN' or re.fullmatch(r'verwerfen|löschen|loeschen',word):return 'drop'
+        if word.casefold()=='nichtposten' or re.fullmatch(r'verwerfen|löschen|loeschen',word):return 'drop'
         if re.fullmatch(r'ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten',word):return 'edit'
         return 'post'
     hits=list(re.finditer(r'(?i)\b(?:'+action_pat+r')\b',v))
