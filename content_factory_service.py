@@ -26,7 +26,10 @@ class InMemoryJobService:
             raise ValueError("idempotency_key is required")
         existing_id = self._idempotency.get(key)
         if existing_id:
-            return CreateJobResult(self._jobs[existing_id], False)
+            existing = self._jobs[existing_id]
+            if existing.instruction != instruction:
+                raise ValueError("idempotency key reused with different instruction")
+            return CreateJobResult(existing, False)
         job = ProductionJob(instruction=instruction)
         self._jobs[job.job_id] = job
         self._idempotency[key] = job.job_id
