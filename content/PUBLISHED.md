@@ -566,9 +566,8 @@ Quelle: https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zaf
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: memory/turkish-human-T3.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36603766142-1
+## Facebook [GEPOSTET 2026-09-29 17:17 | ID: 1285968257941776_122116862691469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
 Telegram-Update-ID: 279361788
@@ -584,6 +583,7 @@ Quelle / weitere Infos: https://motoetkinlik.com/motogp-avusturya-sprint-martind
 https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans
 Quelle: https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans", "media_status": "", "object_id": "1285968257941776_122116862691469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122116862691469415", "source_url": "https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
