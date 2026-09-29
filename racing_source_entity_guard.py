@@ -10,7 +10,7 @@ def fold(s):
     return "".join(c for c in s if not unicodedata.combining(c)).casefold()
 def source_text(item):
     return fold((item.get("title") or "")+" "+(item.get("summary") or "")+" "+(item.get("url") or ""))
-_STOP={"dem","der","den","das","die","einem","einer","einen","op","tisch","start","ziel","platz","spitze","rennen","race","runde","round"}
+_STOP={"dem","der","den","das","die","einem","einer","einen","op","tisch","start","ziel","platz","spitze","rennen","race","runde","round","aktion"}
 def _entity(raw):
     raw=re.sub(r"[^A-Za-zÄÖÜäöüßÇçĞğİıÖöŞşÜü0-9-]+$","",raw.strip())
     return raw
