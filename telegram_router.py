@@ -508,7 +508,14 @@ def main() -> None:
             re.fullmatch(r"turkish\s+(?:(?:t\s*)?[1-5](?:[\s,]+(?:t\s*)?[1-5])*|alle|nein|✅|❌)", cmd, re.I)
             or re.fullmatch(r"t\s*(?:[1-5](?:[\s,]+(?:t\s*)?[1-5])*|alle|nein|✅|❌)", cmd, re.I)
         )
-        if "motogp" in cmd or is_turkish_approval:
+        is_turkish_human_action = bool(
+            re.search(r"(?i)\\bt\\s*[1-5]\\b", cmd)
+            and re.search(
+                r"(?i)\\b(?:post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben|ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten|verwerfen|löschen|loeschen)\\b|nicht\\s+(?:posten|veröffentlichen|veroeffentlichen)",
+                cmd,
+            )
+        )
+        if "motogp" in cmd or is_turkish_approval or is_turkish_human_action:
             lane = "Turkish Rider" if is_turkish_approval else "MotoGP"
             print(f"ROUTER: Update {uid} -> {lane} Approval (atomare Übergabe)")
             result = subprocess.run(
