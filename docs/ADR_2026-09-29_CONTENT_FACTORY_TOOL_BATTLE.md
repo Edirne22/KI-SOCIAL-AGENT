@@ -435,3 +435,156 @@ Temporäre Frames, Proxies und Zwischenrenders sollen nach erfolgreichem Jobabsc
 
 Fallbacks:
 Backblaze B2, andere S3-kompatible Anbieter, NAS oder lokaler/VPS-Speicher bleiben durch den Adapter austauschbar. R2 ist die Startentscheidung, kein Vendor-Lock-in.
+
+
+## Tool-Battle Nachtrag: SupoClip als Reel Automation Engine
+
+Fund vom 29.09.2026: FujiwaraChoki/supoclip wurde nach Repo/Dokumentation gegen OpenChatCut, FFmpeg und die geplante Edirne-22-Architektur geprüft.
+
+### SupoClip – Stärken
+
+SupoClip bildet bereits einen großen Teil einer automatischen Short-Video-Pipeline ab:
+- Longform-Video bzw. Upload/YouTube als Eingang
+- Transkription mit Wort-Timestamps
+- LLM-basierte Auswahl mehrerer clip-würdiger Segmente
+- Virality-/Hook-Bewertung
+- automatisches vertikales 9:16 Face-Cropping
+- wortgenaue animierte Untertitel
+- Hook-Titel
+- optional B-Roll/Transitions
+- integrierter Trim/Split/Merge-Editor
+- Reels/TikTok/Shorts-Export
+- asynchrone Verarbeitung und Live-Fortschritt
+- REST API
+- separater MCP-Server
+
+Self-host Architektur:
+Frontend (Next.js)
+→ FastAPI
+→ Redis Queue
+→ ARQ Worker
+→ FFmpeg/Video-Pipeline
+↔ PostgreSQL
+→ SSE Progress.
+
+Das passt sehr gut zum geplanten VPS-Betrieb und zu einem Betriebsleiter, der Jobs über eine API an eine spezialisierte Video-Maschine delegiert.
+
+### SupoClip – Grenzen/Risiken
+
+- Standard-Transkription benötigt derzeit AssemblyAI; Edirne 22 soll dies hinter TranscriptionAdapter kapseln und lokale/freie Alternativen ermöglichen.
+- SupoClip ist AGPL-3.0. Keine blinde Code-Übernahme in unseren Kern. Bevorzugt als klar abgegrenzter, separat deploybarer Dienst hinter Adapter/API betreiben und Lizenzpflichten einhalten.
+- Projekt ist jung; Dokumentation zum Testbestand ist nicht vollständig konsistent. Unsere eigenen Regression-, Recovery-, QM- und Red-Team-Gates bleiben verbindlich.
+- Clip-Auswahl/Virality-Scoring darf nicht System of Record für Racing-Fakten oder Bülent-Writing werden. Diese Verantwortung bleibt bei unseren bestehenden Agenten.
+- Die automatische Clip-Pipeline ersetzt noch nicht die fein steuerbare Targeted-Repair-Timeline.
+
+### Vergleich der drei Video-Maschinen
+
+#### SupoClip
+Rolle: automatische Reel/Shorts-Erzeugung aus längerem Quellmaterial.
+
+Ideal für:
+- Longform → 3–7 Short-Kandidaten
+- automatische Segmentwahl
+- Face Crop
+- schnelle 9:16-Produktion
+- Captions/Hook/B-Roll
+- serverseitige Queue-Verarbeitung
+
+#### OpenChatCut
+Rolle: agentisch steuerbarer, editierbarer Timeline-/Repair-Motor.
+
+Ideal für:
+- echte Timeline
+- präzise Änderungen
+- Agent/MCP-Kommandos auf dasselbe Projekt
+- Undo/traceable Commands
+- Effekte/Transitions/Multitrack
+- Targeted Repair wie "00:23 anderes Bild"
+- editierbares Masterprojekt
+- R2-fähige Media-Persistence
+
+#### FFmpeg
+Rolle: stabile unterste Medien-/Render-Schicht und Fallback.
+
+Ideal für:
+- Transcode
+- Audio/Video Extraktion
+- Concatenate/Crop/Scale
+- einfache Caption-/Overlay-Operationen
+- reproduzierbare Headless-Exports
+- Recovery/Fallback, wenn höherer Editor ausfällt
+
+### Neue Maschinenverteilung
+
+Die Tools werden nicht gegeneinander als Monolith ausgewählt. Sie bekommen getrennte Verantwortungen:
+
+Betriebsleiter
+→ Source/Transcription/Fact/Writing/Storyboard
+→ ReelEngineAdapter
+   → SupoClip primär für automatische Longform→Short-Produktion
+→ VideoEditorAdapter
+   → OpenChatCut für editierbares Masterprojekt und gezielte Reparaturen
+→ RenderAdapter
+   → FFmpeg als technische Basis/Fallback
+→ R2
+→ End-QM
+→ Bülent Approval
+→ Publisher.
+
+Wichtig: Für MVP muss nicht jeder Job zwingend durch beide Editoren laufen. Ein einfacher automatisch erzeugter Short darf SupoClip → QM → Preview nehmen. OpenChatCut wird dann eingesetzt, wenn ein editierbares Masterprojekt, aufwendigere Gestaltung oder Targeted Repair benötigt wird.
+
+### Was wir aus SupoClip übernehmen – und was nicht
+
+Übernehmen/integrieren:
+- Job-/Worker-Prinzip
+- REST/MCP-Ansteuerung
+- automatische Short-Kandidaten
+- Face Crop
+- Caption-/Hook-Pipeline
+- B-Roll-Konzept
+- Fortschrittsmodell als Referenz
+- serverseitige Docker-Deployment-Idee
+
+Nicht an SupoClip abgeben:
+- Racing Discovery
+- Quellenvertrag
+- Fact Check
+- Series Lock
+- Bülent Voice/Writing
+- Human Authority
+- endgültiger Approval State
+- Publisher-Entscheidung
+- ProductionJob als kanonisches System of Record
+
+### PoC-Gate vor tiefer Integration
+
+Vor produktiver Bindung wird ein isolierter SupoClip-PoC auf dem künftigen VPS durchgeführt:
+1. Docker-Stack starten.
+2. autorisiertes/lokales Testvideo einspeisen.
+3. REST API/MCP Job starten.
+4. Segmentauswahl prüfen.
+5. 9:16 Face Crop prüfen.
+6. DE/TR Captions und Sonderzeichen prüfen.
+7. Renderzeit, CPU/RAM und Scratch-Speicher messen.
+8. Job-Abbruch/Resume/Fehlerfall testen.
+9. Ausgabe in Cloudflare R2 übernehmen.
+10. Ergebnis durch Edirne-22 End-QM laufen lassen.
+11. prüfen, ob SupoClip-Ausgabe ohne OpenChatCut publikationsfähig ist.
+12. Targeted-Repair-Fall gegen OpenChatCut testen.
+
+Erst anhand dieses PoC entscheiden wir, wie häufig OpenChatCut im Normalpfad benötigt wird.
+
+### Aktualisierte MVP-Priorität
+
+1. ProductionJob + Statusmaschine.
+2. MediaStorageAdapter: Local/Scratch + Cloudflare R2.
+3. Job API/Betriebsleiter-Grenze.
+4. SupoClipAdapter + isolierter VPS-PoC.
+5. TranscriptionAdapter entkoppeln.
+6. bestehende Fact/Writing/Storyboard-Kette anbinden.
+7. SupoClip → R2 → End-QM → Preview E2E.
+8. OpenChatCutAdapter für editierbares Projekt/Targeted Repair.
+9. Human Approval + bestehender Publisher.
+10. Voice/Avatar danach.
+
+Damit wird nicht zuerst ein eigener Videoeditor nachgebaut. Wir nutzen vorhandene spezialisierte Maschinen und konzentrieren eigene Entwicklung auf Orchestrierung, Faktenqualität, Bülent-Stil, Human Authority und den durchgängigen Produktionsworkflow.
