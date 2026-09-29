@@ -377,3 +377,40 @@ Skills können **NICHT über Jules installiert werden** – sie sind lokale CLI-
 ---
 
 **Ende Ideen-Pool – Stand 24.09.2026 Abend**
+
+
+---
+
+## 📊 Instagram Feedback Loop / Composio-Radar – Fund 30.09.2026
+
+**Quelle:** Guide „Claude an dein Instagram anschliessen“, Dennis Bayo, Stand 06.08.2026.
+
+### JETZT / vorhandene Architektur nutzen
+- [ ] Bestehenden IG-Engagement-Agenten als führende Lösung behalten: Kommentare klassifizieren (Frage/Lob/Kritik/Spam), `reply_draft` erzeugen, kein Autosenden ohne Human Approval.
+- [ ] Bei späteren Analytics bereits einplanen, dass Performance-Daten regelmäßig in eigener Persistence archiviert werden; Instagram/Meta nicht als Langzeit-Memory behandeln.
+- [ ] Block 1 **nicht** durch Composio/Analytics erweitern.
+
+### SPÄTER – PerformanceLearning
+- [ ] `InstagramInsightsAdapter` als austauschbare Leseschicht für eigene Account-/Post-/Reel-Insights.
+- [ ] `PerformanceLearningAgent`: Views/Reichweite/Saves/Shares/Kommentare sowie verfügbare Watch-/Retention-Signale auswerten.
+- [ ] Hook-Analyse: erfolgreiche Einstiege gegen schwache Einstiege vergleichen.
+- [ ] Wochenreport: 7 Tage vs. vorherige 7 Tage; nur relevante Veränderungen und belastbare Muster.
+- [ ] `EditorialMemory`: Performance-Hypothesen mit Zeitraum, Stichprobe und Evidenz speichern; keine vorschnellen Regeln aus wenigen Posts.
+- [ ] Feedback Loop: Produktion → Human Approval → Publisher → Plattformdaten → Learning → Candidate Skill Revision.
+
+### PoC / Tool-Battle
+- [ ] **Composio** als möglicher Instagram-/Meta-Adapter prüfen, nicht als System of Record.
+- [ ] Gegen bestehenden direkten Meta-/Graph-API-Zugriff vergleichen: verfügbare Insights, Auth/Scopes, Stabilität, Kosten/Limits, Datenschutz, Retry, Webhooks, Vendor Lock-in.
+- [ ] Read-only Zugriff bevorzugen, wenn für Analytics ausreichend.
+- [ ] Drittanbieter darf weder Human Authority noch Publisher-Approval-State besitzen.
+
+### Verbindung zur Prompt-/Skill-Registry
+- [ ] Performance darf freigegebene Skills/Prompts **nicht selbst überschreiben**.
+- [ ] Learning erzeugt nur Candidate Revision + Begründung/Evidenz.
+- [ ] Candidate → Regression → Red-Team → Positive Control → Freigabe → neue gepinnte Skill-Version.
+- [ ] Produktionsjob speichert verwendete Skill-Version, damit Ergebnisse reproduzierbar bleiben.
+
+### ZUKUNFT / nicht jetzt bauen
+- [ ] Plattformübergreifender LearningAgent für Instagram/Facebook/TikTok/YouTube.
+- [ ] Format-/Hook-/Längen-/Themenvergleich pro Plattform.
+- [ ] Langfristig kontrollierte Experimente/A-B-Hypothesen, ohne Fakten-QM oder Bülent-Stil durch kurzfristige Engagement-Signale auszuhöhlen.
