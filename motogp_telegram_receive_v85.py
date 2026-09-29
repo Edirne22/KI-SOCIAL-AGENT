@@ -332,10 +332,12 @@ def _schedule_lines(schedule):
 def _migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_status):
     if not p.get('human_final'): return existing,False
     wanted=_normalize_text(p.get('text',''))
-    cursor=0
-    for section in existing.split('## '):
-        if not section.startswith('Instagram\n'): continue
-        block='## '+section
+    starts=[m.start() for m in re.finditer(r'(?m)^## ',existing)]
+    starts.append(len(existing))
+    for i,start in enumerate(starts[:-1]):
+        end=starts[i+1]
+        block=existing[start:end]
+        if not block.startswith('## Instagram\n'): continue
         if '-TR-HUMAN' not in block or 'Status: BILD_GENERIERT' not in block: continue
         text_part=block.split('Text:',1)[1] if 'Text:' in block else ''
         for stop in ('\nQuelle:','\nMedienstatus:','\nBild:'):
@@ -348,10 +350,8 @@ def _migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_stat
             elif line.startswith('Medienstatus:'): line=f'Medienstatus: {media_status}'
             elif line.startswith('Telegram-Update-ID:'): line=f'Telegram-Update-ID: {uid}'
             lines.append(line)
-        updated='\n'.join(lines)
-        start=existing.find(block)
-        if start<0: continue
-        return existing[:start]+updated+existing[start+len(block):],True
+        updated='\n'.join(lines)+'\n'
+        return existing[:start]+updated+existing[end:],True
     return existing,False
 
 def publish(posts,chosen,uid,batch,schedules=None):
