@@ -231,6 +231,27 @@ Erste Session nach Racing-Pipeline-Stabilisierung.
 ---
 
 
+
+## 🧭 TOOL-/OPEN-SOURCE-DISCOVERY – SCREENSHOTS 29.09.2026
+
+### Tool-/Open-Source-Discovery
+- [ ] **Avani Codes** – kuratierte Sammlung von 600+ Open-Source-Projekten als Fundgrube für neue Komponenten; nicht selbst Kernbaustein.
+- [ ] **Hackathon Tools / Hackathon Projects** – kuratierte Tool-, API-, Template- und Projekt-Sammlungen für gezielte Recherche nach wiederverwendbaren Komponenten.
+- [ ] **AlternativeTo** – bei kostenpflichtigen, geschlossenen oder ungeeigneten Tools gezielt nach freien/Open-Source-Alternativen suchen. Als Discovery-Werkzeug nutzen, nicht ungeprüft als technische Quelle übernehmen.
+
+### API-Discovery
+- [ ] **Public APIs / API-Verzeichnisse** (im Screenshot als API Layer/Public-APIs-Sammlung) – bei neuen Adaptern zuerst nach offiziellen bzw. belastbaren APIs suchen; Kandidaten anschließend einzeln auf Lizenz, Aktualität, Rate-Limits und Zuverlässigkeit prüfen.
+
+### Hosting-Alternativen für leichte Nebenservices
+- [ ] **Render, Railway, Fly.io, Deno Deploy** als mögliche Hosts für kleine APIs, Webhooks, Dashboards oder leichte Background-Services vergleichen.
+- [ ] Bei Bedarf zusätzlich **Vercel, Netlify, Cloudflare Pages, GitHub Pages, GitLab Pages, Kinsta, Replit** für Frontend/Static/Development-Sonderfälle prüfen.
+- [ ] Diese Dienste sind **kein Ersatz für den geplanten x86-VPS** der rechenintensiven Media-/Video-/Transkriptionspipeline. VPS-Entscheidung separat behandeln.
+
+### Beobachtete Alternative – kein geplanter Kernbaustein
+- [ ] **Poe.com** – Multi-Modell-/Bot-Plattform beobachten. Derzeit keine Architekturentscheidung und kein Ersatz für OmniRoute/eigene Modell-Orchestrierung; nur erneut bewerten, falls später ein konkreter Vorteil für Routing, Modellzugang oder Bot-Distribution entsteht.
+
+---
+
 ## 📡 SOCIAL-/REALTIME-DISCOVERY – IDEEN 29.09.2026
 
 **Status:** Ideenpool. Erst angehen, wenn die Kernpipeline über längere Zeit stabil autonom läuft.
