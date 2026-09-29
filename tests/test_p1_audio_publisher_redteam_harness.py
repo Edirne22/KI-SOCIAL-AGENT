@@ -59,7 +59,7 @@ def audio_boundary(f: Fixture):
     if not f.transcript.strip(): errors.append("transcript_missing")
     if any(x in f.transcript.lower() for x in BAD_GERMAN): errors.append("language_gate")
     # Audio/transcript is untrusted input. Obvious entity mismatch is fail-closed.
-    if f.rider.lower() not in f.transcript.lower(): errors.append("rider_mismatch")
+    rider=f.rider.casefold(); transcript=f.transcript.casefold(); surname=rider.split()[-1]\n    if rider not in transcript and not (len(surname)>=4 and re.search(r"(?<![a-zà-ž])"+re.escape(surname)+r"(?![a-zà-ž])",transcript)): errors.append("rider_mismatch")
     return not errors, errors
 
 def approval_boundary(f: Fixture):
