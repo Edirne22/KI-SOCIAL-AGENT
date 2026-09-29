@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict, List, Protocol
 
-from content_factory_core import MediaRef, ProductionJob
+from content_factory_core import JobStatus, MediaRef, ProductionJob
 
 
 @dataclass(frozen=True)
@@ -51,6 +51,11 @@ def validate_result(job: ProductionJob, task: ToolTask, result: ToolResult) -> N
 
 
 def run_machine(job: ProductionJob, machine: FactoryMachine, task: ToolTask) -> ToolResult:
+    if job.status in {
+        JobStatus.READY_FOR_HUMAN, JobStatus.APPROVED, JobStatus.PUBLISH_QUEUED,
+        JobStatus.PUBLISHED, JobStatus.REJECTED, JobStatus.FAILED,
+    }:
+        raise HandoffError(f"machine execution blocked in {job.status.value} state")
     if task.job_id != job.job_id or task.revision != job.revision:
         raise HandoffError("invalid task envelope")
     canonical = {media.media_id: media for media in job.media}
