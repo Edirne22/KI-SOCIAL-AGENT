@@ -603,9 +603,8 @@ Quelle: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-p
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-29-turkish-human-5-deniz-oncu-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36606767195-1
+## Facebook [GEPOSTET 2026-09-29 17:42 | ID: 1285968257941776_122116869387469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
 Telegram-Update-ID: 279361788
@@ -621,3 +620,4 @@ Quelle / weitere Infos: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-
 https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin
 Quelle: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin", "media_status": "", "object_id": "1285968257941776_122116869387469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122116869387469415", "source_url": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin", "version": 1}
