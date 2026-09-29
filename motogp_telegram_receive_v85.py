@@ -96,6 +96,21 @@ def selection(text):
     return sorted(out)
 
 
+
+def turkish_publish_interval(text):
+    v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
+    m=re.search(r'(?:alle|abstand(?:\s+von)?|im\s+abstand(?:\s+von)?)\s+(\d+)\s*(minute|minuten|stunde|stunden)',v)
+    if m:return int(m.group(1))*(60 if m.group(2).startswith('stunde') else 1)
+    if re.search(r'\b(jede\s+stunde|stündlich|stuendlich)\b',v):return 60
+    return None
+
+def turkish_t_order(text):
+    out=[]
+    for raw in re.findall(r'(?i)\bt\s*([1-9]|1\d|20)\b',str(text or '')):
+        n=int(raw)
+        if n not in out:out.append(n)
+    return out
+
 def turkish_actions(text):
     """Parse mixed human actions by nearest action phrase."""
     v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
@@ -216,7 +231,10 @@ def handle_turkish_action(uid,chat,txt):
             synthetic=' '.join('T'+str(n) for n in chosen)+' '+({'post':'posten','edit':'überarbeiten','drop':'nicht posten'}[action])
             ok=handle_turkish_action(uid,chat,synthetic) and ok
         return ok
-    action,chosen=cmds[0];rows=_load_turkish_previews()
+    action,chosen=cmds[0]
+    order=[n for n in turkish_t_order(txt) if n in chosen]
+    chosen=order or chosen
+    rows=_load_turkish_previews()
     selected=[n for n in chosen if n in rows]
     if not selected:
         send_message('⛔ Keine passende aktuelle Turkish-Rider-Vorschau gefunden.')
@@ -228,7 +246,8 @@ def handle_turkish_action(uid,chat,txt):
             posts[n]={'title':p.get('title',''),'source':p.get('source',''),'image':f'memory/turkish-human-T{n}.jpg','text':p.get('text',''),'caption_final':True}
         batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR-HUMAN'
         count=publish(posts,selected,uid,batch)
-        send_message(f'✅ Deine Freigabe: {", ".join("T"+str(n) for n in selected)} · exakt die gezeigten Texte · {count} Plattform-Blöcke vorbereitet.')
+        plan=' → '.join('T'+str(n) for n in selected)
+        send_message(f'✅ Deine Freigabe-Reihenfolge: {plan} · exakt die gezeigten Texte · je Publisher-Rundlauf der nächste Beitrag · {count} Plattform-Blöcke vorbereitet.')
         return True
     if action=='drop':
         for n in selected: rows.pop(n,None)
