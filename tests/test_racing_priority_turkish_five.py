@@ -445,7 +445,9 @@ def test_turkish_preview_uses_saved_preview_when_live_og_missing():
 
 
 def test_live_turkish_bad_copy_patterns_are_forbidden_by_editor_contract():
- class A:\n  def series_for(self,x):return 'European SSP300 Cup'\n p=tqm._prompt({'turkish_rider':'Oğuz Taşhan','title':'Oğuz Taşhan Avrupa Şampiyonu','summary':'Oğuz Taşhan European SSP300 Cup şampiyonu.','url':'https://example.test'},A())
+ class A:
+  def series_for(self,x):return 'European SSP300 Cup'
+ p=tqm._prompt({'turkish_rider':'Oğuz Taşhan','title':'Oğuz Taşhan Avrupa Şampiyonu','summary':'Oğuz Taşhan European SSP300 Cup şampiyonu.','url':'https://example.test'},A())
  for bad in ('harte Kaempfe','Podium','ganzes Feld hinter sich gelassen','dicht hinter Spitzenfahrern','Fans jubeln','ernstzunehmender Anwaerter'):
   assert bad in p
  assert '2-4 Saetze' in p and 'KEIN anderer Fahrername' in p
