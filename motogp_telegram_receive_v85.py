@@ -8,7 +8,7 @@ import racing_run_controller as rc
 from generate_agnes_media import agnes_generate_image, save_bytes
 from instagram_publish import download_og_image_for_instagram, generate_buelent_caption
 from pending_instagram import add_pending
-SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');TURKISH_SESSION=Path('memory/TURKISH_RIDER_APPROVAL.json');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md')
+SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');TURKISH_SESSION=Path('memory/TURKISH_RIDER_APPROVAL.json');TURKISH_PREVIEWS=Path('memory/TURKISH_RIDER_HUMAN_PREVIEWS.json');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md')
 MIN_SESSION_VERSION=18;MAX_SESSION_AGE_SECONDS=24*3600
 RAW_BAD=('-->','by motogp.com','motogp-update:','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung')
 def _active_batch():
@@ -95,6 +95,43 @@ def selection(text):
         else:out.add(int(part))
     return sorted(out)
 
+
+def turkish_actions(text):
+    """Parse mixed human actions by nearest action phrase."""
+    v=re.sub(r'\s+',' ',str(text or '').strip().casefold())
+    v=re.sub(r'nicht\s+(?:posten|veröffentlichen|veroeffentlichen)', ' nichtposten ', v)
+    action_pat=r'nichtposten|verwerfen|löschen|loeschen|ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten|post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben'
+    def kind(word):
+        if word.casefold()=='nichtposten' or re.fullmatch(r'verwerfen|löschen|loeschen',word):return 'drop'
+        if re.fullmatch(r'ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten',word):return 'edit'
+        return 'post'
+    hits=list(re.finditer(r'(?i)\b(?:'+action_pat+r')\b',v))
+    if not hits:return None
+    tnums=[(m.start(),int(m.group(1))) for m in re.finditer(r'(?i)\bt\s*([1-9]|1\d|20)\b',v)]
+    if not tnums:return None
+    assigned={};cursor=0
+    for h in hits:
+        action=kind(h.group(0))
+        for pos,n in tnums:
+            if cursor<=pos<h.start():
+                if n in assigned and assigned[n]!=action:return None
+                assigned[n]=action
+        cursor=h.end()
+    last_action=kind(hits[-1].group(0))
+    for pos,n in tnums:
+        if pos>=cursor:
+            if n in assigned and assigned[n]!=last_action:return None
+            assigned[n]=last_action
+    out=[]
+    for action in ('post','edit','drop'):
+        nums=sorted(n for n,a in assigned.items() if a==action)
+        if nums:out.append((action,nums))
+    return out
+
+def turkish_action(text):
+    actions=turkish_actions(text)
+    return actions[0] if actions and len(actions)==1 else None
+
 def turkish_selection(text):
     """Parse Turkish-Rider approvals T1-T20, including inclusive ranges.
 
@@ -162,6 +199,55 @@ def parse_turkish_session():
     if int(time.time())-int(data.get('created_at',0))>24*3600:return {}
     return {int(x['n']):x for x in data.get('items',[]) if isinstance(x,dict) and str(x.get('n','')).isdigit()}
 
+
+def _load_turkish_previews():
+    try:
+        data=json.loads(TURKISH_PREVIEWS.read_text(encoding='utf-8'))
+        if int(time.time())-int(data.get('created_at',0))>24*3600:return {}
+        return {int(k):v for k,v in data.get('items',{}).items()}
+    except Exception:return {}
+
+def handle_turkish_action(uid,chat,txt):
+    cmds=turkish_actions(txt)
+    if not cmds:return False
+    if len(cmds)>1:
+        ok=True
+        for action,chosen in cmds:
+            synthetic=' '.join('T'+str(n) for n in chosen)+' '+({'post':'posten','edit':'überarbeiten','drop':'nicht posten'}[action])
+            ok=handle_turkish_action(uid,chat,synthetic) and ok
+        return ok
+    action,chosen=cmds[0];rows=_load_turkish_previews()
+    selected=[n for n in chosen if n in rows]
+    if not selected:
+        send_message('⛔ Keine passende aktuelle Turkish-Rider-Vorschau gefunden.')
+        return True
+    if action=='post':
+        posts={}
+        for n in selected:
+            p=rows[n]
+            posts[n]={'title':p.get('title',''),'source':p.get('source',''),'image':f'memory/turkish-human-T{n}.jpg','text':p.get('text',''),'caption_final':True}
+        batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR-HUMAN'
+        count=publish(posts,selected,uid,batch)
+        send_message(f'✅ Deine Freigabe: {", ".join("T"+str(n) for n in selected)} · exakt die gezeigten Texte · {count} Plattform-Blöcke vorbereitet.')
+        return True
+    if action=='drop':
+        for n in selected: rows.pop(n,None)
+        TURKISH_PREVIEWS.write_text(json.dumps({'created_at':int(time.time()),'items':{str(k):v for k,v in rows.items()}},ensure_ascii=False,indent=2),encoding='utf-8')
+        send_message(f'❌ Nicht posten: {", ".join("T"+str(n) for n in selected)}.')
+        return True
+    import motogp_content_agency_v2 as agency
+    import turkish_editor_qm as turkish_lane
+    for n in selected:
+        source=dict(parse_turkish_session().get(n) or {})
+        if not source:continue
+        result=turkish_lane.human_preview(source,n,agency);x=result.get('item') or source
+        rows[n].update(text=x.get('caption',rows[n].get('text','')))
+        body=f'T{n} · ÜBERARBEITET · {x.get("turkish_rider","Turkish Rider")}\\n\\n{rows[n]["text"]}\\n\\nDanach: posten / überarbeiten / nicht posten'
+        preview=rows[n].get('preview','')
+        if not (preview and agency._send_turkish_source_photo(preview,body)):send_message(body)
+    TURKISH_PREVIEWS.write_text(json.dumps({'created_at':int(time.time()),'items':{str(k):v for k,v in rows.items()}},ensure_ascii=False,indent=2),encoding='utf-8')
+    return True
+
 def handle_turkish(uid,chat,txt):
     if chat!=str(get_chat_id()):return True
     if already(uid):return True
@@ -196,6 +282,11 @@ def handle_turkish(uid,chat,txt):
                 if preview and agency._send_turkish_source_photo(preview,body):
                     continue
                 send_message(body+"\n\n🖼️ Quell-Vorschaubild nicht abrufbar.")
+            saved={"created_at":int(time.time()),"items":{}}
+            for n,x,_ in previews:
+                saved["items"][str(n)]={"n":n,"title":x.get("title",""),"source":x.get("url",""),"preview":x.get("preview",""),"rider":x.get("turkish_rider",""),"text":x.get("caption","")}
+            TURKISH_PREVIEWS.parent.mkdir(parents=True,exist_ok=True)
+            TURKISH_PREVIEWS.write_text(json.dumps(saved,ensure_ascii=False,indent=2),encoding="utf-8")
             for n,reasons in technical:
                 send_message(f'🛠️ T{n} technisch nicht fertig: {"; ".join(reasons[:4])}')
     STATE.parent.mkdir(parents=True,exist_ok=True);STATE.write_text(f'Update-ID: {uid}\nAntwort: {txt}\n',encoding='utf-8')
@@ -285,6 +376,8 @@ def publish(posts,chosen,uid,batch,schedules=None):
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
     return len(blocks)
 def handle_one(uid, chat, txt):
+    if turkish_actions(txt) is not None:
+        return handle_turkish_action(uid,chat,txt)
     if turkish_list_requested(txt):
         return handle_turkish_list(uid,chat)
     if turkish_selection(txt) is not None:
@@ -366,5 +459,5 @@ def main():
         return
     for upd in sorted(get_updates(),key=lambda x:x.get('update_id',0)):
         uid=upd.get('update_id');msg=upd.get('message') or {};txt=msg.get('text');chat=str((msg.get('chat') or {}).get('id',''))
-        if isinstance(uid,int) and isinstance(txt,str) and (selection(txt) is not None or turkish_selection(txt) is not None or turkish_list_requested(txt)):handle_one(uid,chat,txt)
+        if isinstance(uid,int) and isinstance(txt,str) and (selection(txt) is not None or turkish_selection(txt) is not None or turkish_actions(txt) is not None or turkish_list_requested(txt)):handle_one(uid,chat,txt)
 if __name__=='__main__':main()
