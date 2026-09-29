@@ -1,342 +1,306 @@
-# 💡 IDEA POOL – KI-SOCIAL-AGENT
+# 💡 MASTER-IDEENPOOL – KI-SOCIAL-AGENT
 
-**Zweck:** Sammlung von Ideen, Aufgaben und Features. Kein Zwang – Auswahl nach Lust, Zeit und Priorität.
+**Version:** 2.0  
+**Stand:** 2026-09-29  
+**Zweck:** Eine einzige lebende Roadmap für Ideen, Ausbau, Experimente und bereits erledigte Vorhaben.
 
-**Regel:** Der Pool darf wachsen. Er ist ein Werkzeugkasten, keine Bürde.
+> **Pflegeregel:** Vor jeder größeren neuen Ausbaustufe diesen Master-Ideenpool prüfen. Neue Funde hier einordnen statt neue Ideenpool-Dateien anzulegen. Erledigte Punkte abhaken/ins Archiv verschieben; verworfene Ideen mit Grund markieren. Der Pool ist Werkzeugkasten und Projektgedächtnis, kein Zwang.
 
-**Letzte Aktualisierung:** 2026-09-24
+> **Guardrail:** `PROJECT_GUARDRAILS.md` bleibt für produktive Änderungen bindend. Externe Frameworks dürfen Racing-/Source-Fact-/Semantic-/Writing-/Chief-QM nicht umgehen oder abschwächen.
 
----
-
-## 🔴 HEUTE / DIESE WOCHE – AKTIV
-
-### Racing-Pipeline (Stand 24.09.2026)
-
-**Offene Bugs:**
-- [ ] **Community-Fallback feuert zu aggressiv** – bei vorhandenen Racing-News aber 0 QM-PASS statt fail-closed
-- [ ] **Fallback-Kennzeichnung** – „Herkunft: Aktuell" statt „COMMUNITY-FALLBACK" in write_session() + telegram_preview()
-
-**Wartet auf Test:**
-- [ ] **PR #94 mergen** → Live-Test mit `force_new_run=true`
-- [ ] **Live-Test MotoGP-Content-Agent** – Erwartung: 5 echte MotoGP-Posts
-- [ ] **Log prüfen:** `force_new_run resolved=true`, `RACING-QM PASS`, `turkish_rider=True`
-
-**Gerade gemergt (24.09.):**
-- [x] PR #78 – Signatur-Bug Strukturvariation
-- [x] PR #79 – Rate-Limit-Hardening (Cooldown + Fallback)
-- [x] PR #83 – Preflight-Selftests
-- [x] PR #85 – JSON-Fehler model_router.json
-- [x] PR #88 – Test-Uhr Retry-After
-- [x] PR #89 – NVIDIA-Modell + Structure-QM
-- [x] PR #90 – force_new_run Checkbox-Übergabe
-- [x] PR #94 – Moto4 + Turkish-Rider-Flag
-
-### Instagram Engagement (Stand 24.09.2026)
-
-**Wartet auf Live-Test:**
-- [ ] Erstes echtes `IG-XXXXXXXX`-Ticket abwarten
-- [ ] `info` → `memory` → dann `antwort` ODER `ändern`
-
-**Offen:**
-- [ ] **reply_draft-Lücke** – KI-generierte Antwortvorschläge integrieren (fehlt aktuell in `instagram_engagement.ingest()`)
-
-### Facebook (Stand 24.09.2026)
-
-**Pausiert:**
-- [ ] Facebook-Token-Problem: `pages_read_engagement` fehlt
-- [ ] Graph API Explorer → `/me/accounts` → Page-Token isolieren → Secret updaten → reaktivieren
+## Status-Legende
+- 🔴 **P0** = aktueller Produktions-/Qualitätsblocker
+- 🟠 **P1** = als Nächstes untersuchen/bauen
+- 🟡 **P2** = geplant nach P1/Stabilisierung
+- 🟢 **P3** = später / nach VPS
+- ✅ = erledigt bzw. bereits produktiv vorhanden
+- ⏸️ = bewusst pausiert
+- ❌ = verworfen/nicht relevant
 
 ---
 
-## 🎬 CONTENT (höchste Priorität wenn aktiv)
+# 1. SCHLACHTPLAN
 
-- [x] **MotoGP-Reel** – fertig + gepostet (22.09.2026)
-- [x] **MotoGP-Karussell** (12 Slides) – fertig + gepostet (22.09.2026)
-- [x] **BMW-App-Karussell** – fertig + gepostet (23.09.2026)
-- [ ] Bikertreff-Reel bauen (Radevormwald + Biggesee) – Storyboard steht
+## 🔴 P0 – Racing-Produktion wasserdicht halten
+
+**Aktueller Stand 29.09.2026:** Racing-Pipeline V8.5.x wurde seit dem alten Pool massiv gehärtet. Source-Fact-Contract, Series-/Session-/Entity-/Claim-Strength-Gates, Human-Writing-Gate, Semantic DEGRADED-PASS, Final Guard, Quality Lab, Red-Team und Positivkontrollen sind vorhanden.
+
+- [x] Source-Fact-Contract / claim-basierte Faktenprüfung
+- [x] Series-/Session-Locks und Final Guard
+- [x] Claim-Strength-Schutz gegen Unsicherheit → falsche Gewissheit
+- [x] Human-Writing-Gates für bekannte schlechte Formulierungen
+- [x] Quality Lab + Production Adapter + Red-Team/Positive Controls
+- [x] Türkische Rider T1–T5 mit eigener Relevanzschicht
+- [x] Telegram natürliche Racing-Archivabfragen inkl. Alias-/Tippfehlerarbeit
+- [ ] Aktuelle Produktions-Abnahme vollständig abschließen (Run #144, MIT HAKEN)
+- [ ] Weiterhin: jeder neu gefundene Halluzinations-/Sprachfehler wird permanente Regression
+- [ ] Telegram-QM-Transparenz prüfen: PASS vs Semantic DEGRADED-PASS sichtbar unterscheiden
+
+## 🟠 P1 – Audio/Voice + Publishing nicht neu erfinden
+
+### P1A – Pipecat: Audio-/Sprachstufe
+**Repo:** `pipecat-ai/pipecat`  
+**Ziel:** Prüfen, ob Pipecat die Infrastruktur für unsere geplante Audio-/Voice-Stufe liefert.
+
+Geplante Kette:
+`Telegram Voice / Video / Interview → Audio-Ingest → Pipecat/STT → Transkript → Rider/Themen-Erkennung → bestehender Racing/Research-Stack → bestehende QM`
+
+Zu untersuchen:
+- [ ] STT/TTS-Provider und lokale/self-hosted Optionen gegen Nemotron ASR / Magpie TTS vergleichen
+- [ ] WebSocket/WebRTC/Streaming nur dort einsetzen, wo Echtzeit echten Mehrwert hat
+- [ ] Telegram-Sprachnachricht als erster kleiner Spike
+- [ ] YouTube/Interview-Audio → Transkript → Zeitmarken → relevante Racing-Passagen
+- [ ] Multi-Agent/Parallel-Pipeline-Patterns prüfen
+- [ ] Failure Modes: unverständliches Audio, falsche Sprache, Rider-Verwechslung, Halluzinationsrisiko aus Transkript
+- [ ] Lizenz-/Update-Strategie dokumentieren
+- [ ] Kein Ersatz der Racing-QM: Transkript ist Quelleingang, nicht Wahrheit
+
+### P1B – Postiz: Publisher/Scheduling
+**Repo:** `gitroomhq/postiz-app`  
+**Ziel:** Prüfen, ob Postiz als getrenntes Self-Hosted Publishing-Backend Monate Eigenentwicklung spart.
+
+Zielarchitektur:
+`Edirne-22 Content/QM → Telegram-Freigabe → dünner Postiz-Adapter → Instagram / Facebook / TikTok / später weitere Plattformen`
+
+Zu untersuchen:
+- [ ] Public API und Webhooks
+- [ ] Instagram-/Facebook-/TikTok-Provider gegen unsere vorhandenen Adapter vergleichen
+- [ ] Scheduling/Kalender/Queue/Retry/Token-Refresh analysieren
+- [ ] Analytics-Rückkanal prüfen
+- [ ] Fehler- und Idempotenzverhalten beim Publishing vergleichen
+- [ ] Self-Hosted VPS-Ressourcen/Kosten prüfen
+- [ ] **AGPL-3.0 beachten:** bevorzugt getrennte Instanz + API-Adapter; keinen Postiz-Code blind in dieses Repo kopieren
+- [ ] Proof-of-Concept erst nach Architektur-/Lizenzvergleich
+
+---
+
+# 2. P2 – MEMORY, ORCHESTRIERUNG UND ENTWICKLUNG
+
+## 🟡 AnythingLLM – Memory/RAG-Kandidat
+**Repo:** `Mintplex-Labs/anything-llm`
+- [ ] Gegen heutiges Memory, OpenViking und Nemotron Embeddings vergleichen
+- [ ] Rider/Event/Source/Community-Memory evaluieren
+- [ ] Nutzen für natürliche Abfragen wie „letzte 14 Tage über Toprak/Ai Ogura/Alex Rins“ messen
+- [ ] Dokument-/Knowledge-Ingestion und lokale Modelle prüfen
+- [ ] Keine Migration ohne messbaren Retrieval-Vorteil
+
+## 🟡 CrewAI – Orchestrierungs-Referenz
+**Repo:** `crewAIInc/crewAI`
+- [ ] Handoffs, parallele Agenten, Retry/State/Observability untersuchen
+- [ ] Gegen bestehende Kette Scout → Research → Fact-QM → Editor → Chief-QM → Publisher → Engagement vergleichen
+- [ ] Nur Patterns übernehmen; funktionierenden Racing-Stack nicht ohne Nutzenbeweis migrieren
+
+## 🟡 Cline – Entwicklungswerkzeug
+**Repo:** `cline/cline`
+- [ ] Als CLI/IDE-Agent für Laptop/VPS prüfen
+- [ ] Gegen vorhandenen Claude/Codex/GitHub-Workflow vergleichen
+- [ ] Kein Runtime-Baustein des Racing-Agenten
+
+---
+
+# 3. DISCOVERY-/RESEARCH-SCHICHT
+
+## Bereits bekannte Fundgrube
+- [ ] `browser-use/browser-use`: Browser-Automation nur für zulässige externe Recherche; **nicht** als Meta-Bot
+- [ ] `yenanjing/awesome-harness-engineering`: Production-Agent-Patterns als Referenz
+- [ ] `Threesided-Studios/Agent-Memory`: Memory-Inspiration
+- [ ] `volcengine/OpenViking`: Memory + Knowledge + Skills nach VPS vergleichen
+- [ ] `cathrynlavery/diagram-design`: Nice-to-have für Architekturdiagramme
+- [x] Godmode-Patterns selektiv ausgewertet: Root-Cause-Debugging, Completion Verification, Agent Evaluation, Behavior Validation, Evidence Map, Mutation/Red-Team – passende Konzepte bereits in Quality-Lab/Arbeitsweise übernommen
+
+## Social-/Realtime-Discovery
+- [ ] **RSS-first:** Racing-RSS vor HTML-Crawling nutzen
+- [ ] Strukturierte MotoGP-/WorldSBK-Ergebnis-/Timing-Daten prüfen
+- [ ] Telegram: türkische Racing-News-/Fan-Kanäle als zusätzliche Discovery-Quelle evaluieren
+- [ ] X/Twitter: nur optionale Discovery-Schicht; keine Primär-Faktenquelle
+- [ ] Instagram: offizielle Schnittstellen bevorzugen; Apify/RapidAPI nur optional nach Kosten/Zuverlässigkeit/Datenschutz
+- [ ] Event-Klassifizierung: CRITICAL / RESULT / SESSION / CAREER / DISCOVERY / GENERAL
+- [ ] Racer Registry ausbauen: Startnummer, Serie/Team, Historie, Aliase, Quellenbeleg, `verified_at`
+- [ ] 1–2 Wochen Produktionsdaten als Grundlage für neue Discovery-Entscheidungen sammeln
+
+---
+
+# 4. MEMORY / MULTI-KI / QUALITY
+
+## Multi-KI Cross-Check
+Ursprüngliche Kandidaten: `claudelink-bridge`, `ai-relay`, `clipboard-ai-mcp`, `llm-council-no-api`, `cross-review`, `codeagora`, `Triumvirate`, `llm-panel`.
+
+- [x] Multi-Modell-Prinzip inzwischen teilweise produktiv: Agnes → Gemini/NVIDIA Provider-Fallback; Quality Lab / advisory Jury vorhanden
+- [ ] Echte providergebundene 3-Modell-Jury später kontrolliert live verdrahten; deterministische Gates bleiben vorrangig
+- [ ] Browser↔lokaler Coding-Workflow nur weiterverfolgen, wenn er gegenüber GitHub/Codex/Claude real Zeit spart
+
+## Memory
+- [x] Community-/Racing-Memory-Grundlagen vorhanden
+- [ ] Expert Agent Memory weiter ausbauen
+- [ ] Memory Embedding mit Nemotron prüfen
+- [ ] AnythingLLM ↔ OpenViking ↔ Eigenbau ↔ Embeddings benchmarken
+- [ ] Source-Memory mit Provenienz und Alter/verified_at stärker strukturieren
+
+---
+
+# 5. SOCIAL / ENGAGEMENT / PUBLISHER
+
+## Instagram
+- [x] Reply Adapter vorhanden
+- [x] `reply_draft` beim ingest() inzwischen umgesetzt
+- [x] Telegram-Freigabe vor Antworten
+- [ ] Echte Tickets weiter gegen info → memory → antwort/ändern prüfen
+- [ ] Erwähnungen über Webhooks/VPS
+- [ ] Story Replies separat testen
+- [ ] Tagged Media nur bei messbarem Nutzen
+
+## Facebook
+- ⏸️ Engagement wegen Berechtigungs-/Token-Thema pausiert; bei Postiz/Meta-Neubewertung erneut prüfen
+
+## DM-Automation – nach VPS
+Nur offizielle Meta API / Business/Creator + OAuth.
+1. Kommentar-Trigger → DM
+2. FAQ-DM-Assistent
+3. Content-Analytics
+4. Lead-Magnet
+- [ ] 24h-Regel und Webhook-Echtzeit sauber abbilden
+
+## Publisher
+- [x] Eigener Publisher grundsätzlich vorhanden
+- [ ] Statusmodell READY_FOR_APPROVAL vs FREIGEGEBEN weiter konsistent halten
+- [ ] Postiz P1-Vergleich entscheidet: Eigenbau behalten, Hybrid oder Postiz-Backend
+
+---
+
+# 6. CONTENT- UND CREATOR-AUSBAU
+
+## Bereits erledigt
+- [x] MotoGP-Reel gepostet (22.09.)
+- [x] MotoGP-Karussell 12 Slides gepostet (22.09.)
+- [x] BMW-App-Karussell gepostet (23.09.)
+- [x] Comment Reply Assistant vorhanden
+- [x] Content Quality Reviewer / Chief-QM vorhanden
+- [x] Multi-Platform Caption Writer vorhanden
+- [x] Daily Racing News Scanner vorhanden
+
+## Content-Backlog
+- [ ] Bikertreff-Reel Radevormwald + Biggesee
 - [ ] Hagen-Biker-Treff-Reel
-- [ ] M1000R-Realität-Reel (Reifen, Helm, Übungsplatz)
-- [ ] Instagram durchforsten → Patterns sammeln
-- [ ] TÜRKBiR beobachten → erste Interaktion
-- [ ] **Calimoto/Biker-App-Karussell** – weitere App-Vorstellungen
+- [ ] M1000R-Realität-Reel
+- [ ] Instagram-Patterns weiter sammeln
+- [ ] TÜRKBiR beobachten
+- [ ] Calimoto/Biker-App-Karussell
+
+## Pattern-/Generator-Ideen
+- [ ] Pattern 18: Content → DM → Conversion
+- [ ] Pattern 19: Sicher vs Riskant
+- [ ] Ziel: 20 belastbare Patterns
+- [ ] Viral Hook Generator: 3–5 Varianten, erst nach stabilem Flow
+- [ ] Headline A/B Generator für Karussell/Telegram
+- [ ] „15 Fragen an KI vor Motorrad-Kauf“ als DE/TR-Karussell
 
 ---
 
-## 🧠 PRIO 1 – MULTI-KI CROSS-CHECK (Arbeitsweise)
+# 7. AUDIO / VIDEO / MEDIA
 
-**Ziel:** Kein manuelles Copy-Paste mehr zwischen Chat und Claude Code. Mehrere KIs einbeziehen, deren Antworten vergleichen, bestes Ergebnis destillieren.
+## Vorhanden
+- [x] FFmpeg-Skript für Reels
+- [x] Video-/Audio-Ingestion als Projektziel und erste Runtime-Bausteine vorhanden
+- [x] yt-dlp/Transkriptionsrichtung in Racing-/Video-Roadmap aufgenommen
 
-**Warum jetzt (Anfangsphase):** Je früher mehrere Perspektiven im Boot sind, desto weniger blinde Flecken im Fundament.
-
-### Kandidaten (zu testen)
-
-**Ebene 1 – Text-Bridge (erst mal simpel)**
-- `claudelink-bridge` + Chrome-Extension → Browser-Text direkt an Claude Code
-- `ai-relay` → flexibler, mehrere CLIs anbindbar
-
-**Ebene 2 – Clipboard-Workflow**
-- `clipboard-ai-mcp` → strukturiertes Hin-und-Her via Clipboard
-
-**Ebene 3 – Multi-Modell-Council (Ziel-Vision)**
-- `llm-council-no-api` → `/council`-Befehl: Gemini + GPT, Claude urteilt
-- `cross-review` → MCP-Server für Cross-Review
-- `codeagora` / `Triumvirate` / `llm-panel` → Multi-LLM-Review
-
-### Test-Reihenfolge
-1. `claudelink-bridge`
-2. `llm-council-no-api`
-3. `cross-review`
-
-### Zeitpunkt
-Erste Session nach Racing-Pipeline-Stabilisierung.
-
-### Erfolgskriterium
-- [ ] Text aus Browser → Claude Code ohne manuelles Kopieren
-- [ ] Mindestens 2 KIs liefern unabhängige Antwort
-- [ ] Erste echte Entscheidung durch Cross-Check verbessert
+## Kandidaten
+- [ ] Pipecat – **P1, siehe Schlachtplan**
+- [ ] MiniMax Audio – Voiceover
+- [ ] Wan – Video-Generator evaluieren
+- [ ] SadTalker – Avatar nur bei echtem Content-Nutzen
+- [ ] CutAI – Agent-Videoeditor testen
+- [ ] Remotion + AI Video Toolkit – nach VPS
+- [ ] Cosmos/NVIDIA Video-Router nur nach Hardware-/Kostencheck
 
 ---
 
-## 🧠 KI-AGENT-REPOS – FUNDGRUBE (NEU 24.09.2026)
+# 8. VPS / INFRASTRUKTUR
 
-**Quelle:** @anklrtal Instagram-Serie „7 GitHub repos built for AI agents"
-
-| Repo | Was | Relevanz |
-|---|---|---|
-| **`browser-use/browser-use`** | Browser-Automation für KI-Agenten | 🟡 **Nur externe Sites** (MotoGP.com, Bikertreff-Recherche) – ⚠️ **NICHT für Instagram/Facebook** (Meta-ToS, Account-Sperre-Risiko) |
-| **`yenanjing/awesome-harness-engineering`** | Production-Agent-Patterns (Memory, Skills, Security, Evals, Orchestration) | 🔥 **Referenz-Lektüre** |
-| **`Threesided-Studios/Agent-Memory`** | Persistentes Memory über Sessions | 🟡 **Inspiration** für Agent 14 |
-| **`volcengine/OpenViking`** | Memory + Knowledge + Skills in einer DB | 🟢 **Ziel-Vision** nach VPS |
-| **`cathrynlavery/diagram-design`** | Architektur-Diagramme | 🟢 Nice-to-have |
-| `K-Dense-AI/scientific-agent-skills` | 160+ Research-Skills | ❌ nicht relevant |
-| `liptonj-eng/anthropic-cybersecurity-skills` | Cybersecurity | ❌ nicht relevant |
-
-### Nächste Schritte
-- [ ] `awesome-harness-engineering` durchlesen
-- [ ] `browser-use` lokal testen (nicht produktiv)
-- [ ] `OpenViking` nach VPS prüfen
-
----
-
-## 🐛 BUGS
-
-- [x] Telegram-Komma-Parsing (`motogp 2,3`) – gefixt 22.09.
-- [x] Telegram `/alle` mit Slash – gefixt 22.09.
-- [x] Batch-Status-Mismatch – gefixt 22.09.
-- [ ] Follow-Analyzer (0/8 Accounts auswertbar)
-- [ ] Publisher-Status (`READY_FOR_APPROVAL` vs `FREIGEGEBEN`)
-- [ ] Community-Fallback feuert zu aggressiv (siehe HEUTE)
-- [ ] Fallback-Posts nicht gekennzeichnet
-
----
-
-## 🛠️ SETUP
-
-- [x] OmniRoute läuft (Port 20128) – getestet 22.09.
-- [x] FFmpeg-Skript für Reels – läuft
-- [x] Kinocut installiert (Python 3.14, `kino doctor` grün)
-- [x] Skills: `turkish-native`, `planning-with-files` installiert
-- [ ] gptcc installieren ❌ (nicht nutzbar – ChatGPT Plus inkompatibel)
-- [ ] Expert Agent Memory aufbauen
-
----
-
-## 📄 DOKU
-
-- [x] `config/MEDIA_TOOLS.md` – offen (nicht angelegt?)
-- [x] `config/HUMAN_WRITING_PROTOCOL.md` – existiert (V1.0)
-- [x] `config/PATTERN_LIBRARY.md` – 17 Patterns (Stand 23.09.)
-- [x] `docs/FREE_TOOLS.md` – angelegt 23.09.
-- [x] `docs/API_REFERENZ.md` – erweitert 23.09.
-- [x] `docs/APPROVAL/` – Stufe 2 umgesetzt 22.09.
-- [x] `docs/ENGAGEMENT_AGENTS.md` – angelegt 24.09.
-- [x] Übergabe-Update mit aktuellen Erkenntnissen – 24.09. Abend
-
----
-
-## 🔮 ZUKUNFT (Ideen für später)
-
-### Content-Patterns
-- [ ] **Pattern 18**: „Content → DM → Conversion" (aus @hfnhq)
-- [ ] **Pattern 19**: „Sicher vs Riskant" (Meta-API-Doku-Stil)
-- [ ] Ziel: 20 Patterns bis Ende Oktober (aktuell 17)
-
-### Instagram DM-Automation (nach VPS)
-**Referenz:** @hfnhq Karussell „Instagram'ı Claude'a bağla"
-**Blocker:** 24-Std-Regel braucht Echtzeit → VPS
-
-**Ausbaustufen:**
-1. Kommentar-Trigger → DM (z. B. „📍 Bergisches" → Routen-DM)
-2. DM-Assistent (FAQs automatisch beantworten)
-3. Content-Analytics (welcher Reel bringt Follower?)
-4. Lead-Magnet (z. B. „LINK" → DM mit Link)
-
-**Wichtig:** Nur offizielle Meta API, Business/Creator Account + OAuth, keine Drittanbieter-Bots, 24-Std-Fenster respektieren.
-
-### Weitere Engagement-Quellen
-- [ ] Erwähnungen tracken (`/mentions` – braucht Webhooks/VPS)
-- [ ] Story-Replies (separater Test nötig)
-- [ ] Tagged-Media-Agent (Endpoint läuft, Nutzen gering)
-
-### Tools testen
-- [ ] Expert Agent Training (yt-analysis-mcp + Gemini)
-- [ ] TikTok-Integration (Apify + ClawHub)
-- [ ] Wan 2.5 als Video-Generator
-- [ ] MiniMax Audio als Voiceover
-- [ ] SadTalker als Avatar-Generator
-- [ ] n8n als Workflow-Alternative
-- [ ] YouMind (youmind.com) für Prompt-Inspiration
-- [ ] PromptCreek (promptcreek.com) für Agent-Skills
-- [ ] Router-Erweiterung (Nemotron Ultra/Super, GLM-5, Gemma)
-- [ ] Memory-Embedding (nemotron-3-embed-1b)
-- [ ] Safety-Check (nemotron-3-content-safety)
-- [ ] CutAI testen (Agent Mode Video-Editor)
-- [ ] Kaestral reaktivieren mit größerem Modell
-- [ ] yt-analysis-mcp für Expert Agent
-- [ ] n8n auf VPS
-
-### Pattern-Ideen
-- [ ] **Pattern 15 nutzen:** „15 Fragen an KI vor Motorrad-Kauf" als Karussell
-  - Perfekt für Biker-Zielgruppe
-  - Türkisch + Deutsch möglich
-  - Sehr hohes Save-Potenzial
-### Agenten-Ausbau (aus Screenshots 26.09.2026)
-
-**Referenz:** @mycaptainofficial (Karussell-Serie „Advanced AI Agents")
-
-**Neu und nützlich:**
-- [ ] **Viral Hook Generator** – pro Post 3-5 Hook-Varianten generieren
-  - Integration in MotoGP-Agent (vor Editor)
-  - Priorität: Mittel
-  - Voraussetzung: stabiler Content-Flow
-- [ ] **Headline A/B Generator** – bei Karussell-Vorschlägen alternative Überschriften
-  - Integration in Telegram-Vorschau (mehrere Varianten zur Auswahl)
-  - Priorität: Niedrig
-  - Voraussetzung: Karussell-Workflow stabil
-
-**Nicht relevant für uns:**
-- Marketing Strategy Generator (kein Marketing-Bedarf)
-- AI Marketing Consultant (zu allgemein)
-- Multi-Agent Campaign Planner (zu komplex)
-- Blog SEO Optimiser (kein Blog)
-- Trending LinkedIn Post Finder (kein LinkedIn)
-- Engineering Learning Stack (nicht unser Feld)
-
-**Schon vorhanden (Screenshot-Bestätigung):**
-- ✅ Comment Reply Assistant (Agent 17)
-- ✅ Content Quality Reviewer (Chief QM)
-- ✅ Multi-Platform Caption Writer (Facebook + Instagram)
-- ✅ Daily Industry News Scanner (Racing Scout)
-- 
----
-
-## 🟢 NACH VPS
-
-- [ ] VPS einrichten (Ubuntu 24.04)
+- [ ] VPS auswählen/einrichten; x86 bevorzugt
 - [ ] SearXNG installieren
 - [ ] OmniRoute auf VPS
-- [ ] `speech_router.py` (Nemotron ASR + Magpie TTS)
-- [ ] `video_router.py` (Cosmos3 Nano)
-- [ ] Remotion + Video-Pipeline autonom
-- [ ] Meta Webhook live (statt Polling)
-- [ ] Instagram DM-Automation (siehe ZUKUNFT)
+- [ ] Audio/Voice-Layer: Pipecat vs eigener `speech_router.py`
+- [ ] Video-Pipeline/Remotion
+- [ ] Meta Webhooks statt Polling
+- [ ] Postiz Self-Hosted POC, falls P1-Analyse positiv
+- [ ] n8n nur als Workflow-Alternative benchmarken, nicht zusätzlich ohne Nutzen
+- [ ] Security-Audit/Trail of Bits Skills nach VPS
 
 ---
 
-## 🟣 STRATEGISCH
+# 9. TOOLS / SKILLS – MERKLISTE
 
-- [ ] V8.6 Promotion Debug → main
-- [ ] Debug-Workflow-Split auflösen
-- [ ] OpenRouter 10 $ aufladen
-- [ ] Autonome Content-Fabrik
+## Bereits vorhanden
+- [x] OmniRoute lokal
+- [x] Planning with Files
+- [x] `turkish-native`
+- [x] Human Writing Protocol / Pattern Library
+- [x] API-/Engagement-/Media-Dokumentation
 
----
+## Prüfen
+- [ ] Marketing Skills
+- [ ] Stop Slop
+- [ ] Context Engineering
+- [ ] Superpowers – nach VPS
+- [ ] Anthropic Skills für Dokumentarbeit bei Bedarf
+- [ ] Expert Agent Training / yt-analysis-mcp
+- [ ] YouMind / PromptCreek nur als Inspirationsquelle
 
-## ✅ ERLEDIGT (Archiv)
-
-### 24.09.2026
-- ✅ PR #78–#94 (7 Racing-Pipeline-Fixes)
-- ✅ Instagram Reply Adapter (PR #72)
-- ✅ Instagram API Endpoint-Test
-- ✅ Test-Workflow Reply Adapter (PR #73)
-- ✅ Facebook Engagement pausiert (#71)
-- ✅ HUMAN_WRITING_PROTOCOL als Repo-Datei bestätigt
-- ✅ `docs/ENGAGEMENT_AGENTS.md` angelegt
-
-### 23.09.2026
-- ✅ Pattern 16 + 17 in PATTERN_LIBRARY
-- ✅ `docs/FREE_TOOLS.md` angelegt
-- ✅ `docs/API_REFERENZ.md` erweitert
-- ✅ `docs/IDEA_POOL.md` Skills erweitert
-- ✅ Ziffer 12 in Übergabe (Free-Tools aktiv nutzen)
-- ✅ BMW-App-Karussell gepostet
-
-### 22.09.2026
-- ✅ MotoGP-Reel fertig + gepostet
-- ✅ MotoGP-Karussell fertig + gepostet
-- ✅ API-Referenz (PR #55)
-- ✅ Approval-Dashboard Stufe 2
-- ✅ Telegram-Bugs gefixt
-- ✅ FFmpeg-Lehre (Ziffer 11 in Übergabe)
-- ✅ Skills installiert (turkish-native, planning-with-files)
-- ✅ public-apis geklont
-- ✅ Repo-Backup erstellt
-
-### 21.09.2026
-- ✅ Weather-Fix live (11-Uhr-Vorhersage)
-- ✅ Instagram Zwei-Stufen-Freigabe
+## Nicht relevant / verworfen
+- [x] gptcc: ChatGPT-Plus-Konstellation nicht nutzbar
+- ❌ UI UX Pro Max / Impeccable
+- ❌ Vercel Agent Skills
+- ❌ Supabase Agent Skills
+- ❌ Scientific-Agent-Skills
+- ❌ Cybersecurity-Skill-Sammlung als Kernfeature
+- ❌ allgemeiner Marketing Consultant / Blog SEO / LinkedIn Finder
 
 ---
 
-## 🧠 Claude-Code-Skills – Merkliste
+# 10. OFFENE ALTPUNKTE, DIE NICHT VERGESSEN WERDEN
 
-**Quelle:** https://ozgurakanay.com/kutuphane/
-**Stand:** 24.09.2026
-
-### ✅ Bereits installiert
-- **Planning with Files** (Othman Adi) – Nachtläufe überleben Session-Abbrüche
-- **Türkçe Yazı Yazma** (`turkish-native`) – KI-Geruch aus türkischen Texten
-
-### 🥇 Sofort relevant (diese Woche)
-- **Marketing Skills** (Corey Haines) – Marketing-Agents
-  - Install: `npx skills add <autor>/marketing-skills`
-- **Stop Slop** (Hardik Pandya) – KI-Floskeln aus EN-Texten
-
-### 🥈 Bald relevant
-- **Context Engineering** (Murat Can Koylan) – Token-Verbrauch senken
-- **Anthropic Skills** (offiziell) – Word/Excel/PDF
-- **Superpowers** (Jesse Vincent) – Claude denkt wie Senior-Software-Engineer
-  - Wann: Nach VPS
-  - Priorität: Mittel
-- **GEO/SEO Claude**
-  - Wann: Wenn Content-Strategie steht
-  - Priorität: Niedrig
-
-### 🟢 Nach VPS
-- **AI Video Toolkit** – vollständiger Video-Produktions-Workflow
-  - Priorität: Hoch
-- **Remotion Skills** – Video aus Prompt
-- **Trail of Bits Skills** – Security-Audit
-- **Awesome Claude Skills** (Composio) – Meta-Liste
-
-### ❌ Nicht relevant
-- UI UX Pro Max, Impeccable (Web-UI)
-- Vercel Agent Skills (Next.js)
-- Supabase Agent Skills (DB)
-- Playwright Skill (Browser-Tests)
-
-### 📌 Wichtige Erkenntnis
-Skills können **NICHT über Jules installiert werden** – sie sind lokale CLI-Installationen (`npx skills add ...`).
-- **Speicherort:** `C:\Users\Admin\.agents\skills\`
-- **Weg A:** Lokal installieren (schnell)
-- **Weg B:** Skill-Repos ins eigene Repo (via Jules)
-- **Weg C:** Zentrales Skill-Repo (nach VPS)
-
-### 🚦 Zeitplan
-- **Diese Woche:** Marketing Skills + Stop Slop
-- **Nach Racing-Stabilisierung:** Multi-KI-Cross-Check
-- **Nach VPS:** AI Video Toolkit, Remotion Skills, Trail of Bits
+- [ ] Follow-Analyzer: historische 0/8-Auswertbarkeit erneut prüfen, bevor weitergebaut wird
+- [ ] Community-Fallback/Fallback-Kennzeichnung gegen aktuellen Codezustand verifizieren; alte Notiz nicht ungeprüft als noch offenen Bug behandeln
+- [ ] Kaestral nur bei klarem Modell-/Kostenmehrwert reaktivieren
+- [ ] Router-Erweiterungen nur benchmarkbasiert
+- [ ] Safety-Modell als zusätzliche Schicht prüfen, niemals als Ersatz der deterministischen Racing-Gates
 
 ---
 
-**Ende Ideen-Pool – Stand 24.09.2026 Abend**
+# 11. ERLEDIGT / HISTORISCHER STAND
+
+## 29.09.2026
+- [x] PROJECT_GUARDRAILS.md als verbindliche Arbeitsregeln etabliert
+- [x] Racing Quality Lab + Production Adapter + Red-Team/Positivkontrollen
+- [x] Source-Fact-/Session-/Series-/Entity-/Claim-Strength-/Human-Writing-Hardening
+- [x] Agius False-Positive behoben (#209)
+- [x] Source-Fact-Preflight an deterministisches Fail-Closed angepasst (#210)
+- [x] Pipecat, Postiz, AnythingLLM, CrewAI und Cline als neue Open-Source-Kandidaten aufgenommen
+- [x] Zwei konkurrierende Ideenpools zu diesem Master zusammengeführt
+
+## 24.09.2026 und früher
+- [x] PR #78–#94 damalige Racing-Stabilisierungen
+- [x] Instagram Reply Adapter
+- [x] HUMAN_WRITING_PROTOCOL
+- [x] docs/ENGAGEMENT_AGENTS.md
+- [x] Pattern Library / Free Tools / API Referenz
+- [x] Telegram Parsing-/Batch-Bugs
+- [x] Approval Dashboard Stufe 2
+- [x] Repo-Backup / public-apis
+- [x] Wetter-/Instagram-Zwei-Stufen-Freigabe
+
+---
+
+# 12. VERBINDLICHE ARBEITSREGELN / NICHT VERGESSEN
+
+1. Vor größeren neuen Features **zuerst diesen Master-Ideenpool und PROJECT_GUARDRAILS.md prüfen**.
+2. Neue Ideen nicht in separaten Pool-Dateien verteilen.
+3. Bei Umsetzung Status hier aktualisieren: offen → aktiv → erledigt/verworfen.
+4. Externe Repos zuerst zerlegen: Lizenz, API, Failure Modes, Wartung, Ressourcen, Nutzen gegen Eigenbau.
+5. Fremdcode nicht blind kopieren; Adapter/saubere Trennung bevorzugen.
+6. Racing-QM bleibt unabhängig von Discovery-, Audio-, Memory- und Publisher-Frameworks.
+7. Produktive Änderungen folgen immer dem Guardrail-Finish:
+   **BUILD → REGRESSION → CI → RED-TEAM → POSITIVE CONTROL → ROOT-CAUSE/FIX → ATTACK AGAIN → CI GREEN → Merge-Freigabe.**
+8. Der Ideenpool wird bei Projekt-Handover/Snapshot mit geprüft, damit alte gute Ideen nicht erneut vergessen werden.
+
+**Nächster strategischer Fokus:** Produktions-Abnahme Racing abschließen → Pipecat technisch zerlegen → Postiz gegen bestehenden Publisher/API/Webhooks/Scheduling benchmarken → daraus P1-POC entscheiden.
