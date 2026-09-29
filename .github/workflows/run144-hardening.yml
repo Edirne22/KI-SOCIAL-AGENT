@@ -1,0 +1,24 @@
+name: Run144 Production Hardening
+on:
+  pull_request:
+    paths:
+      - chief_quality_manager.py
+      - racing_v855_hardening.py
+      - tests/test_run144_hardening.py
+      - .github/workflows/run144-hardening.yml
+  workflow_dispatch:
+jobs:
+  hardening:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pytest requests beautifulsoup4
+      - name: Syntax
+        run: python -m py_compile chief_quality_manager.py racing_v855_hardening.py racing_final_guard.py motogp_content_agency_v2.py
+      - name: Run 144 regressions
+        run: pytest -q tests/test_run144_hardening.py
+      - name: Existing semantic and Turkish hardening regressions
+        run: pytest -q tests/test_semantic_qm_json_recovery.py tests/test_turkish_series_language_hardening.py
