@@ -205,10 +205,15 @@ def _load_turkish_previews():
     except Exception:return {}
 
 def handle_turkish_action(uid,chat,txt):
-    cmd=turkish_action(txt)
-    if cmd is None:return False
-    if chat!=str(get_chat_id()):return True
-    action,chosen=cmd;rows=_load_turkish_previews()
+    cmds=turkish_actions(txt)
+    if not cmds:return False
+    if len(cmds)>1:
+        ok=True
+        for action,chosen in cmds:
+            synthetic=' '.join('T'+str(n) for n in chosen)+' '+({'post':'posten','edit':'überarbeiten','drop':'nicht posten'}[action])
+            ok=handle_turkish_action(uid,chat,synthetic) and ok
+        return ok
+    action,chosen=cmds[0];rows=_load_turkish_previews()
     selected=[n for n in chosen if n in rows]
     if not selected:
         send_message('⛔ Keine passende aktuelle Turkish-Rider-Vorschau gefunden.')
@@ -368,7 +373,7 @@ def publish(posts,chosen,uid,batch,schedules=None):
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
     return len(blocks)
 def handle_one(uid, chat, txt):
-    if turkish_action(txt) is not None:
+    if turkish_actions(txt) is not None:
         return handle_turkish_action(uid,chat,txt)
     if turkish_list_requested(txt):
         return handle_turkish_list(uid,chat)
@@ -451,5 +456,5 @@ def main():
         return
     for upd in sorted(get_updates(),key=lambda x:x.get('update_id',0)):
         uid=upd.get('update_id');msg=upd.get('message') or {};txt=msg.get('text');chat=str((msg.get('chat') or {}).get('id',''))
-        if isinstance(uid,int) and isinstance(txt,str) and (selection(txt) is not None or turkish_selection(txt) is not None or turkish_action(txt) is not None or turkish_list_requested(txt)):handle_one(uid,chat,txt)
+        if isinstance(uid,int) and isinstance(txt,str) and (selection(txt) is not None or turkish_selection(txt) is not None or turkish_actions(txt) is not None or turkish_list_requested(txt)):handle_one(uid,chat,txt)
 if __name__=='__main__':main()
