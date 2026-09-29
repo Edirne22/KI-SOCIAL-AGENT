@@ -101,6 +101,8 @@ def test_agius_explicit_signing_title_is_positive_control():
     check(not source_has_uncertainty(x),x)
     caption=blocks("Agius startet ab 2027 bei Tech3 in der MotoGP.")
     check(not claim_strength_errors(x,caption),claim_strength_errors(x,caption))
+    final_ok, final_errors=final_guard.review(x,"Agius startet ab 2027 bei Tech3 in der MotoGP. #MotoGP")
+    check(final_ok,final_errors)
 
 if __name__=="__main__":
     test_agius_explicit_signing_title_is_positive_control()
