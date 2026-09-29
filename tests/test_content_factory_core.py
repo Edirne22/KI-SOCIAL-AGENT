@@ -26,7 +26,8 @@ class ProductionJobTests(unittest.TestCase):
         job.transition(JobStatus.APPROVED, actor="human")
         key = job.publish_handoff()
         self.assertEqual(JobStatus.PUBLISH_QUEUED, job.status)
-        self.assertEqual(f"{job.job_id}:r1", key)
+        self.assertTrue(key.startswith(f"{job.job_id}:r1:"))
+        self.assertIn(job.human_approved_manifest[:16], key)
         retry_key = job.publish_handoff()
         self.assertEqual(key, retry_key)
 
