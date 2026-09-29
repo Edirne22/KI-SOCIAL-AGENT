@@ -2,7 +2,7 @@ name: Publish Approved Facebook Posts
 
 on:
   schedule:
-    - cron: "0,5,10,15,20,25,30,35,40,45,50,55 6-21 * * *" # alle 5 Minuten, faellige Queue-Eintraege
+    - cron: "0,15,30,45 6-21 * * *" # alle 15 Minuten, 08:00–23:45 deutsche Sommerzeit
   workflow_dispatch:
 
 permissions:
