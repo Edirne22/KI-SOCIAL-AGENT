@@ -411,9 +411,23 @@ def test_source_entity_guard_does_not_treat_aktion_as_place():
  x={'title':'Oğuz Taşhan Avrupa Şampiyonu','summary':'Oğuz Taşhan feiert den Titel.'}
  assert not any('Ort nicht in Quelle: Aktion' in e for e in errors(x,'Oğuz Taşhan ist in Aktion und wir feiern mit!'))
 
+
+def test_turkish_german_place_alias_and_fuer_idiom_do_not_false_block():
+ from racing_source_entity_guard import errors
+ x={'title':'MotoGP Avusturya Sprint: Toprak Razgatlıoğlu güçlü performans','summary':'Toprak Razgatlıoğlu Avusturya Sprint yarışında sürdü.'}
+ e=errors(x,'Toprak Razgatlıoğlu sorgt in Österreich für Aufsehen.')
+ assert not any('Österreich' in z or 'Aufsehen' in z for z in e),e
+ e=errors(x,'Toprak Razgatlıoğlu fährt in Mugello.')
+ assert any('Mugello' in z for z in e),e
+
+
+def test_turkish_language_failure_always_has_actionable_reason():
+ src=inspect.getsource(tqm.process_manual_selection)
+ assert 'keine Detailgruende vom Semantic-QM geliefert' in src
+
 if __name__=='__main__':
  test_turkish_range_dispatches_all_selected_items();test_turkish_visible_five_dedupes_racing_top5_and_backfills()
- test_manual_turkish_redteam_never_promotes_fake_fact_to_pass();test_manual_turkish_positive_control_can_reach_chief();test_turkish_target_lock_blocks_other_rider_in_real_toprak_pattern();test_racing_number_guard_does_not_extract_numeric_suffix_from_alphanumeric_token();test_source_entity_guard_does_not_treat_aktion_as_place();test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
+ test_manual_turkish_redteam_never_promotes_fake_fact_to_pass();test_manual_turkish_positive_control_can_reach_chief();test_turkish_target_lock_blocks_other_rider_in_real_toprak_pattern();test_racing_number_guard_does_not_extract_numeric_suffix_from_alphanumeric_token();test_source_entity_guard_does_not_treat_aktion_as_place();test_turkish_german_place_alias_and_fuer_idiom_do_not_false_block();test_turkish_language_failure_always_has_actionable_reason();test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
