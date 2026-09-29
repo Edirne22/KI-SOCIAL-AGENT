@@ -179,36 +179,25 @@ def handle_turkish(uid,chat,txt):
             from racing_v855_hardening import install as install_v855_hardening
             import turkish_editor_qm as turkish_lane
             install_v855_hardening(agency)
-            passed={};escalated=[];technical=[]
+            previews=[];technical=[]
             for n in selected:
                 x=dict(rows[n])
-                result=turkish_lane.process_manual_selection(x,n,agency,max_attempts=3)
-                status=result.get("status")
+                result=turkish_lane.human_preview(x,n,agency)
                 x=result.get("item") or x
-                if status=="PASS":
-                    passed[n]={'title':x['title'],'source':x['url'],'image':x['instagram_media'],'text':x['caption'],'caption_final':True}
-                elif status=="ESCALATE":
-                    escalated.append((n,x,list(result.get("reasons") or [])))
+                if result.get("status")=="HUMAN_PREVIEW":
+                    previews.append((n,x,list(result.get("reasons") or [])))
                 else:
                     technical.append((n,list(result.get("reasons") or [])))
-            batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR'
-            count=publish(passed,sorted(passed),uid,batch) if passed else 0
-            msg=f'🇹🇷 Manuelle Turkish-Auswahl: {len(passed)} VORSCHAU, {len(escalated)} MANUELLE ENTSCHEIDUNG, {len(technical)} TECHNISCHER FEHLER.'
-            if passed:msg+=f'\nZur Vorschau: {", ".join("T"+str(n) for n in sorted(passed))} · {count} Plattform-Blöcke vorbereitet.'
-            for n,x,reasons in escalated:
-                risk="; ".join(reasons[:6]) or "Chief/QM nach 3 Reparaturversuchen ohne PASS"
-                msg+=f'\n\n⚠️ MANUELLE ENTSCHEIDUNG ERFORDERLICH – T{n}\nGründe: {risk}\n\nAktueller Text:\n{x.get("caption","(kein belastbarer Caption-Text)")}'
-            if escalated:
-                msg+='\n\nKein QM-PASS und keine automatische Veröffentlichung. Manueller Override wird separat protokolliert.'
-                for pn,px,_ in escalated:
-                    preview=px.get("preview","")
-                    if preview:
-                        label=f"Quell-Vorschau T{pn} - {px.get('turkish_rider','Turkish Rider')}"
-                        if not agency._send_turkish_source_photo(preview,label):
-                            print("TURKISH ESCALATE PREVIEW FAIL",pn,"source preview not deliverable")
+            send_message(f'🇹🇷 Manuelle Turkish-Auswahl: {len(previews)} VORSCHAU, {len(technical)} TECHNISCHER FEHLER.\nDu entscheidest. Kein QM kann diese Vorschau blockieren; automatische Veröffentlichung bleibt aus.')
+            for n,x,warnings in previews:
+                preview=x.get("preview","")
+                warn=("\n\n⚠️ Hinweise: "+"; ".join(warnings[:6])) if warnings else ""
+                body=f'T{n} · {x.get("turkish_rider","Turkish Rider")}\n\n{x.get("caption","(kein Text)")}{warn}\n\nDanach: posten / ändern / nicht posten'
+                if preview and agency._send_turkish_source_photo(preview,body):
+                    continue
+                send_message(body+"\n\n🖼️ Quell-Vorschaubild nicht abrufbar.")
             for n,reasons in technical:
-                msg+=f'\n\n🛠️ T{n} technisch nicht fertig: {"; ".join(reasons[:4])}'
-            send_message(msg)
+                send_message(f'🛠️ T{n} technisch nicht fertig: {"; ".join(reasons[:4])}')
     STATE.parent.mkdir(parents=True,exist_ok=True);STATE.write_text(f'Update-ID: {uid}\nAntwort: {txt}\n',encoding='utf-8')
     return True
 
