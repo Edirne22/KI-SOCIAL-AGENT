@@ -245,14 +245,9 @@ def handle_turkish_action(uid,chat,txt):
             p=rows[n]
             posts[n]={'title':p.get('title',''),'source':p.get('source',''),'image':f'memory/turkish-human-T{n}.jpg','text':p.get('text',''),'caption_final':True}
         batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR-HUMAN'
-        interval=turkish_publish_interval(txt)
-        schedules={}
-        if interval is not None:
-            now=datetime.now(ZoneInfo('Europe/Berlin'))
-            schedules={n:(now+timedelta(minutes=i*interval)).isoformat() for i,n in enumerate(selected)}
-        count=publish(posts,selected,uid,batch,schedules=schedules)
-        plan=(' · '+ ' → '.join(f'T{n} {datetime.fromisoformat(schedules[n]).strftime("%H:%M")}' for n in selected)) if schedules else ''
-        send_message(f'✅ Deine Freigabe: {", ".join("T"+str(n) for n in selected)} · exakt die gezeigten Texte{plan} · {count} Plattform-Blöcke vorbereitet.')
+        count=publish(posts,selected,uid,batch)
+        plan=' → '.join('T'+str(n) for n in selected)
+        send_message(f'✅ Deine Freigabe-Reihenfolge: {plan} · exakt die gezeigten Texte · je Publisher-Rundlauf der nächste Beitrag · {count} Plattform-Blöcke vorbereitet.')
         return True
     if action=='drop':
         for n in selected: rows.pop(n,None)
