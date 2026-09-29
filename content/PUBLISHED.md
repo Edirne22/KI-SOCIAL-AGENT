@@ -513,9 +513,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarism
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150", "media_status": "", "object_id": "1285968257941776_122115781401469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122115781401469415", "source_url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150", "version": 1}
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36605211024-1
+## Instagram [GEPOSTET 2026-09-29 17:29 | ID: 18119496034821702]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
 Telegram-Update-ID: 279361790
@@ -530,6 +529,7 @@ Quelle / weitere Infos: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrup
 Quelle: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-29-turkish-human-1-oguz-tashan-01.jpg
+Publish-Provenienz: {"creation_id": "18009306716971550", "media_kind": "image", "media_path": "assets/images/2026-09/2026-09-29-turkish-human-1-oguz-tashan-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18119496034821702", "published_media_id": "18119496034821702", "source_url": "https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu", "version": 1}
 
 ## Facebook [GEPOSTET 2026-09-29 16:59 | ID: 1285968257941776_122116854609469415]
 Status: GEPOSTET
