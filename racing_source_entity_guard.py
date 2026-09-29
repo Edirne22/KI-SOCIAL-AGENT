@@ -11,6 +11,10 @@ def fold(s):
 def source_text(item):
     return fold((item.get("title") or "")+" "+(item.get("summary") or "")+" "+(item.get("url") or ""))
 _STOP={"dem","der","den","das","die","einem","einer","einen","op","tisch","start","ziel","platz","spitze","rennen","race","runde","round","aktion"}
+_PLACE_ALIASES={"osterreich":("avusturya","austria"),"italien":("italya","italy"),"turkei":("turkiye","turkey"),"deutschland":("almanya","germany"),"spanien":("ispanya","spain")}
+def _place_supported(ent,src):
+    ef=fold(ent)
+    return ef in src or any(alias in src for alias in _PLACE_ALIASES.get(ef,()))
 def _entity(raw):
     raw=re.sub(r"[^A-Za-zÄÖÜäöüßÇçĞğİıÖöŞşÜü0-9-]+$","",raw.strip())
     return raw
@@ -21,7 +25,7 @@ def errors(item,caption,prefix="Source-Entity-Guard"):
     for m in re.finditer(r"\b(?:in|bei|aus)\s+([A-ZÄÖÜÇĞİŞ][A-Za-zÄÖÜäöüßÇçĞğİıÖöŞşÜü-]{2,})\b",text):
         ent=_entity(m.group(1))
         if fold(ent) in _STOP: continue
-        if fold(ent) not in src: out.append(f"{prefix}: Ort nicht in Quelle: {ent}")
+        if not _place_supported(ent,src): out.append(f"{prefix}: Ort nicht in Quelle: {ent}")
     # Explicit team/manufacturer relationship. Require an obvious team/manufacturer noun
     # or a capitalized entity after für/bei; ordinary phrases remain untouched.
     patterns=[
