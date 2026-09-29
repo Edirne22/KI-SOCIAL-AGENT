@@ -88,5 +88,77 @@ class ServiceTests(unittest.TestCase):
         self.assertEqual(first.job.job_id, second.job.job_id)
 
 
+class FactoryHandoffTests(unittest.TestCase):
+    def _ref(self, name: str, payload: bytes) -> MediaRef:
+        return MediaRef(
+            media_id=name,
+            uri=f"scratch://{name}/{name}.mp4",
+            sha256=hashlib.sha256(payload).hexdigest(),
+            size_bytes=len(payload),
+            mime_type="video/mp4",
+            provenance="handoff-test",
+        )
+
+    def test_first_user_command_can_flow_machine_to_machine(self):
+        from content_factory_handoff import ToolResult, ToolTask, run_machine
+
+        class FakeMachine:
+            def __init__(self, name, output):
+                self.name, self.output = name, output
+            def run(self, task):
+                return ToolResult(task.job_id, task.revision, task.task_id, [self.output], self.name)
+
+        service = InMemoryJobService()
+        created = service.create_job(
+            "Nimm mein Video, finde die besten Stellen und baue ein Reel",
+            idempotency_key="buelent-command-1",
+        )
+        job = created.job
+        source = self._ref("source", b"raw-video")
+        job.media.append(source)
+
+        clip = self._ref("supoclip-output", b"vertical-clip")
+        task1 = ToolTask(job.job_id, job.revision, "clip-1", [source])
+        result1 = run_machine(job, FakeMachine("supoclip-adapter", clip), task1)
+
+        master = self._ref("edit-output", b"edited-master")
+        task2 = ToolTask(job.job_id, job.revision, "edit-1", result1.outputs)
+        result2 = run_machine(job, FakeMachine("openchatcut-adapter", master), task2)
+
+        self.assertEqual([clip], result1.outputs)
+        self.assertEqual([master], result2.outputs)
+        self.assertEqual({"source", "supoclip-output", "edit-output"}, {m.media_id for m in job.media})
+
+    def test_cross_job_output_is_blocked(self):
+        from content_factory_handoff import HandoffError, ToolResult, ToolTask, run_machine
+
+        job = ProductionJob("job one")
+        output = self._ref("foreign", b"x")
+
+        class EvilMachine:
+            name = "evil"
+            def run(self, task):
+                return ToolResult("another-job", task.revision, task.task_id, [output], self.name)
+
+        with self.assertRaises(HandoffError):
+            run_machine(job, EvilMachine(), ToolTask(job.job_id, job.revision, "attack"))
+
+    def test_stale_revision_is_blocked(self):
+        from content_factory_handoff import HandoffError, ToolResult, ToolTask, run_machine
+
+        job = ProductionJob("revision test", status=JobStatus.READY_FOR_HUMAN)
+        old_revision = job.revision
+        job.transition(JobStatus.CHANGES_REQUESTED, actor="human")
+        output = self._ref("stale", b"x")
+
+        class StaleMachine:
+            name = "slow-renderer"
+            def run(self, task):
+                return ToolResult(job.job_id, old_revision, task.task_id, [output], self.name)
+
+        with self.assertRaises(HandoffError):
+            run_machine(job, StaleMachine(), ToolTask(job.job_id, old_revision, "stale"))
+
+
 if __name__ == "__main__":
     unittest.main()
