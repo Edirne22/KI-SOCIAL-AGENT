@@ -242,3 +242,41 @@ Neue Werkzeuge dürfen während des gesamten Projekts eingebracht werden. Jeder 
 - Auswirkungen auf Fakten-QM und Human Authority.
 
 Ein neuer Kandidat ersetzt einen funktionierenden Baustein nur nach nachvollziehbarem technischen Vorteil und einem isolierten PoC. Die Fabrik soll dadurch **lernfähig und austauschbar** bleiben, ohne ihre eigene Architekturhoheit zu verlieren.
+
+
+## 20. Pollo MCP/CLI – GenerativeMedia-Maschine
+
+Pollo wird als geplanter Kandidat für die generative Medienmaschine in die Fabrik aufgenommen.
+
+Rollenverteilung:
+
+- **SupoClip**: vorhandenes Longform-/Quellmaterial analysieren und daraus Shorts/Reels erzeugen.
+- **Pollo MCP/CLI**: neue generative Medienbausteine erzeugen, insbesondere fehlende Szenen, B-Roll, Bilder und Video; Voice-/Audio-Funktionen werden separat auf Qualität, Rechte und Kosten geprüft.
+- **OpenChatCut**: editierbares Masterprojekt und gezielte Reparaturen.
+- **FFmpeg**: stabiler Low-Level-Render-/Transcode-/Fallback.
+
+Pollo wird hinter dem generischen `GenerativeMediaAdapter` angebunden. Der ProductionJob kennt nicht Pollo als feste Abhängigkeit, sondern nur den benötigten Medienauftrag.
+
+Geplanter Handoff:
+
+```text
+Bülents Befehl
+→ Job API
+→ Betriebsleiter
+→ Storyboard / Asset Request
+→ GenerativeMediaAdapter
+→ Pollo MCP/CLI
+→ erzeugtes Asset
+→ MediaStorageAdapter / R2
+→ SHA-256 + Provenienz + Revision
+→ SupoClip oder OpenChatCut / nächste Maschine
+→ End-QM
+→ Preview
+→ Bülent
+```
+
+Pollo darf niemals System of Record für ProductionJob, Fakten-QM, Human Authority oder finalen Approval-State werden.
+
+Vor produktiver Bindung ist ein isolierter PoC Pflicht. Zu prüfen sind mindestens: Auth/API/MCP/CLI, Modellwahl, Kosten vor Jobstart soweit verfügbar, Jobstatus/Timeout/Retry, lokale Datei vs. URL/R2-Handoff, Ergebnisdownload, Hash/Provenienz, DE/TR-Ausgaben, Nutzungs-/Output-Rechte, Fehler-/Resume-Verhalten und Austauschbarkeit gegen einen anderen Provider.
+
+Die Aufnahme von Pollo ändert nicht die MVP-Priorität von SupoClip. Beide Maschinen ergänzen sich.
