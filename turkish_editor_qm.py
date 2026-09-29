@@ -110,6 +110,25 @@ def final_review(x,caption,agency):
     return not errors,list(dict.fromkeys(errors))
 
 
+
+def human_preview(x,i,agency):
+    """Human-selected Turkish item: one editor pass, warnings only, never publish."""
+    agency.lock_source_series(x,x.get("source_series"));agency.enrich_turkish(x)
+    agency.mark_priority(x,"TURKISH_SELECTED")
+    x["manual_turkish_selection"]=True
+    warnings=[]
+    if not _target_supported(x):
+        warnings.append("FACT/SOURCE: ausgewaehlter Fahrer ist in den Quellenfakten nicht belegt")
+    if not edit(x,agency,None):
+        warnings.append("TECHNICAL: Turkish Editor lieferte keinen neuen Text; Quelltext-Vorschau verwenden")
+        x["caption"]=str(x.get("caption") or x.get("summary") or x.get("title") or "").strip()
+    if x.get("caption"):
+        _,errors=final_review(x,x["caption"],agency)
+        warnings.extend(errors)
+    x["manual_decision_status"]="HUMAN_PREVIEW"
+    x["manual_decision_reasons"]=list(dict.fromkeys(warnings))
+    return {"status":"HUMAN_PREVIEW","reasons":x["manual_decision_reasons"],"item":x}
+
 def process_manual_selection(x,i,agency,max_attempts=3):
     """Bounded repair chain for an explicit Buelent T-selection.
 
