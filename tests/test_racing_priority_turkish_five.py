@@ -184,6 +184,8 @@ def test_turkish_lane_owns_relevance_but_keeps_truth_guard():
   @staticmethod
   def series_for(x): return 'WorldSSP'
   @staticmethod
+  def riders_in(text): return ['Can Öncü'] if 'oncu' in tqm.fold(text) else []
+  @staticmethod
   def fact_whitelist_errors(x,caption): return []
   @staticmethod
   def language_sane(caption): return a.language_sane(caption)
