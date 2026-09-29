@@ -512,3 +512,108 @@ https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-bira
 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150", "media_status": "", "object_id": "1285968257941776_122115781401469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122115781401469415", "source_url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
+Telegram-Update-ID: 279361788
+MotoGP-Auswahl: 1
+Titel: Sporcumuz Oğuz Taşhan Avrupa Şampiyonu - TRmotosports
+Text:
+Boom! Unser Oğuz hat’s geschafft – er ist Europameister im SSP300 Cup! 🏍️🇹🇷 Der Titel ist ein fetter Erfolg für die türkische Motorradszene und wir könnten nicht stolzer sein. Jetzt heißt es: Weiter so, Oğuz! Was glaubt ihr, wie lange er an der Spitze bleibt? 🥳
+
+#OguzTashan #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
+Quelle: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: memory/turkish-human-T1.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
+Telegram-Update-ID: 279361788
+MotoGP-Auswahl: 1
+Titel: Sporcumuz Oğuz Taşhan Avrupa Şampiyonu - TRmotosports
+Text:
+Boom! Unser Oğuz hat’s geschafft – er ist Europameister im SSP300 Cup! 🏍️🇹🇷 Der Titel ist ein fetter Erfolg für die türkische Motorradszene und wir könnten nicht stolzer sein. Jetzt heißt es: Weiter so, Oğuz! Was glaubt ihr, wie lange er an der Spitze bleibt? 🥳
+
+#OguzTashan #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
+
+https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
+Quelle: https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
+Telegram-Update-ID: 279361788
+MotoGP-Auswahl: 3
+Titel: MotoGP Avusturya Sprint: Martin'den İnanılmaz Zafer, Toprak Razgatlıoğlu'ndan Güçlü Performans!
+Text:
+Der Sprint in Österreich war ein echter Kracher – während der Sieger das Podium erklomm, zeigte Toprak Razgatlıoğlu eine starke Performance, die die Herzen der türkischen Fans höher schlagen ließ. Er kämpfte sich aktiv um die vorderen Plätze und bewies, dass er zu den echten Herausforderern gehört. 🚀🏍️
+
+#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans
+Quelle: https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: memory/turkish-human-T3.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
+Telegram-Update-ID: 279361788
+MotoGP-Auswahl: 3
+Titel: MotoGP Avusturya Sprint: Martin'den İnanılmaz Zafer, Toprak Razgatlıoğlu'ndan Güçlü Performans!
+Text:
+Der Sprint in Österreich war ein echter Kracher – während der Sieger das Podium erklomm, zeigte Toprak Razgatlıoğlu eine starke Performance, die die Herzen der türkischen Fans höher schlagen ließ. Er kämpfte sich aktiv um die vorderen Plätze und bewies, dass er zu den echten Herausforderern gehört. 🚀🏍️
+
+#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans
+
+https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans
+Quelle: https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
+Telegram-Update-ID: 279361788
+MotoGP-Auswahl: 5
+Titel: Moto2 Avusturya Sıralama: Deniz Öncü'den Harika Performans, Pole Filip Salac'ın!
+Text:
+Deniz Öncü hat beim österreichischen Moto2‑Quali ordentlich Gas gegeben – ein echtes Highlight, das die Herzen der Fans höher schlagen lässt! 🚀💨 Was meint ihr, kann er das Tempo jetzt ins Rennen übersetzen?
+
+#Moto2 #DenizOncu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin
+Quelle: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: memory/turkish-human-T5.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
+Telegram-Update-ID: 279361788
+MotoGP-Auswahl: 5
+Titel: Moto2 Avusturya Sıralama: Deniz Öncü'den Harika Performans, Pole Filip Salac'ın!
+Text:
+Deniz Öncü hat beim österreichischen Moto2‑Quali ordentlich Gas gegeben – ein echtes Highlight, das die Herzen der Fans höher schlagen lässt! 🚀💨 Was meint ihr, kann er das Tempo jetzt ins Rennen übersetzen?
+
+#Moto2 #DenizOncu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin
+
+https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin
+Quelle: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin
+Link-Preview: offiziell
