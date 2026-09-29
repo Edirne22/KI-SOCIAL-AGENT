@@ -491,7 +491,7 @@ def test_turkish_natural_preview_action_variants():
 def test_turkish_post_action_uses_saved_preview_without_editor_or_qm():
  src=inspect.getsource(recv.handle_turkish_action)
  post=src[src.index("if action=='post'"):src.index("if action=='drop'")]
- assert 'publish(posts,selected,uid,batch)' in post
+ assert 'publish(posts,selected,uid,batch,schedules=schedules)' in post
  assert 'human_preview' not in post
  assert 'process_manual_selection' not in post
  assert 'semantic' not in post.casefold()
