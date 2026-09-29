@@ -53,6 +53,9 @@ def install(a):
             lock(x)
             return inferred
         frozen=str(x.get('trusted_series','')).strip()
+        if frozen in VALID and inferred in VALID and frozen!=inferred:
+            lock(x,inferred)
+            return str(x.get('trusted_series') or inferred)
         if frozen in VALID:return frozen
         lock(x)
         return str(x.get('trusted_series') or x.get('series') or 'MotoGP')
@@ -104,6 +107,7 @@ def install(a):
     semantic_state={'total':0,'success':0,'technical_defer':0,'degraded_pass':0,'consecutive_failures':0,'breaker_open':False}
     semantic_lock=threading.Lock()
     semantic_breaker_threshold=3
+    semantic_probe_every=8
 
     def semantic_runtime_summary():
         with semantic_lock:
@@ -121,11 +125,13 @@ def install(a):
         with semantic_lock:
             semantic_state['total']+=1
             breaker_open=semantic_state['breaker_open']
-        if breaker_open:
+            probe_due=breaker_open and semantic_state['technical_defer']>0 and semantic_state['technical_defer']%semantic_probe_every==0
+        if breaker_open and not probe_due:
             with semantic_lock:
                 semantic_state['technical_defer']+=1
             print('SEMANTIC-QM CIRCUIT OPEN – provider call skipped:',x.get('title','')[:90])
             return {'hard_ok':False,'language_ok':False,'hard_reasons':['Semantischer Fakten-QM Provider nicht verfuegbar: CircuitBreakerOpen'],'repair_reasons':[],'technical_error':True,'technical_reason':'CircuitBreakerOpen'}
+        if probe_due: print('SEMANTIC-QM CIRCUIT RECOVERY PROBE:',x.get('title','')[:90])
         r=a.semantic_review_detailed(x,caption)
         with semantic_lock:
             if r.get('technical_error'):
@@ -136,6 +142,7 @@ def install(a):
             else:
                 semantic_state['success']+=1
                 semantic_state['consecutive_failures']=0
+                semantic_state['breaker_open']=False
         if r.get('technical_error'):
             print('SEMANTIC-QM TECHNICAL DEFER:',x.get('title','')[:90],'|',str(r.get('technical_reason','provider'))[:180])
         return r
