@@ -331,12 +331,14 @@ def _schedule_lines(schedule):
 
 def _migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_status):
     if not p.get('human_final'): return existing,False
-    starts=[m.start() for m in re.finditer(r'(?m)^## ',existing)]
-    starts.append(len(existing))
-    for i,start in enumerate(starts[:-1]):
-        end=starts[i+1]
+    pos=0
+    while True:
+        start=existing.find('## Instagram\n',pos)
+        if start<0: break
+        next_header=existing.find('\n## ',start+1)
+        end=len(existing) if next_header<0 else next_header+1
         block=existing[start:end]
-        if not block.startswith('## Instagram\n'): continue
+        pos=end
         if '-TR-HUMAN' not in block or 'Status: BILD_GENERIERT' not in block: continue
         if f'MotoGP-Auswahl: {n}' not in block: continue
         updated=block.replace('Status: BILD_GENERIERT','Status: FREIGEGEBEN',1)
