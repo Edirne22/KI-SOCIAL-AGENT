@@ -9,6 +9,8 @@ from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List, Optional
+import hashlib
+import json
 from uuid import uuid4
 
 
@@ -87,6 +89,7 @@ class ProductionJob:
     metadata: Dict[str, Any] = field(default_factory=dict)
     human_approved_at: Optional[str] = None
     human_approved_revision: Optional[int] = None
+    human_approved_manifest: Optional[str] = None
     publish_handoff_key: Optional[str] = None
     created_at: str = field(default_factory=utc_now)
     updated_at: str = field(default_factory=utc_now)
@@ -94,6 +97,23 @@ class ProductionJob:
     def __post_init__(self) -> None:
         if not self.instruction.strip():
             raise ValueError("instruction must not be empty")
+
+    def approval_manifest(self) -> str:
+        """Fingerprint the exact revision and immutable media set shown to the human."""
+        payload = {
+            "job_id": self.job_id,
+            "revision": self.revision,
+            "media": [
+                {
+                    "media_id": m.media_id, "uri": m.uri, "sha256": m.sha256,
+                    "size_bytes": m.size_bytes, "mime_type": m.mime_type,
+                    "provenance": m.provenance, "version": m.version,
+                }
+                for m in sorted(self.media, key=lambda item: item.media_id)
+            ],
+        }
+        raw = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        return hashlib.sha256(raw).hexdigest()
 
     def transition(self, target: JobStatus, *, actor: str = "system") -> None:
         target = JobStatus(target)
@@ -108,19 +128,25 @@ class ProductionJob:
         if target == JobStatus.APPROVED:
             self.human_approved_at = self.updated_at
             self.human_approved_revision = self.revision
+            self.human_approved_manifest = self.approval_manifest()
         if target == JobStatus.CHANGES_REQUESTED:
             self.revision += 1
             self.human_approved_at = None
             self.human_approved_revision = None
+            self.human_approved_manifest = None
             self.publish_handoff_key = None
 
     def publish_handoff(self) -> str:
+        if self.status == JobStatus.PUBLISH_QUEUED and self.publish_handoff_key:
+            return self.publish_handoff_key
         if self.status != JobStatus.APPROVED:
             raise PermissionError("publish handoff requires explicit human approval")
         if self.human_approved_revision != self.revision:
             raise PermissionError("approved revision does not match current revision")
+        if self.human_approved_manifest != self.approval_manifest():
+            raise PermissionError("approved media manifest changed after human approval")
         if self.publish_handoff_key is None:
-            self.publish_handoff_key = f"{self.job_id}:r{self.revision}"
+            self.publish_handoff_key = f"{self.job_id}:r{self.revision}:{self.human_approved_manifest[:16]}"
         self.transition(JobStatus.PUBLISH_QUEUED)
         return self.publish_handoff_key
 
