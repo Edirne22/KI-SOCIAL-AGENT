@@ -362,10 +362,7 @@ def publish(posts,chosen,uid,batch,schedules=None):
         marker=f'Racing-Batch-ID: {batch}\nMotoGP-Auswahl: {n}'
         if marker in existing:continue
         norm_post_text=_normalize_text(p["text"])
-        if norm_post_text and norm_post_text in existing_texts:
-            print(f"DUPLIKAT ERKANNT: {p['title']} bereits vorhanden, übersprungen")
-            continue
-        if norm_post_text:existing_texts.add(norm_post_text)
+        is_existing_duplicate=bool(norm_post_text and norm_post_text in existing_texts)
 
         prompt = f"Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: {p['text'][:180]}"
         img_path = p["image"]
@@ -385,6 +382,15 @@ def publish(posts,chosen,uid,batch,schedules=None):
                 print(f"MOTOGP: Agnes Bild-Generierung übersprungen / fehlgeschlagen: {e}")
 
         instagram_text = p["text"] if p.get("caption_final") else generate_buelent_caption(p["text"])
+
+        existing,migrated=_migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_status)
+        if migrated:
+            print(f"TURKISH HUMAN MIGRATION: bestehender Instagram-Block T{n} -> FREIGEGEBEN ({img_path})")
+            continue
+        if is_existing_duplicate:
+            print(f"DUPLIKAT ERKANNT: {p['title']} bereits vorhanden, übersprungen")
+            continue
+        if norm_post_text:existing_texts.add(norm_post_text)
 
         if not p.get('human_final'):
             add_pending(
@@ -419,7 +425,9 @@ def publish(posts,chosen,uid,batch,schedules=None):
             except Exception as e:
                 print(f"MOTOGP: send_photo fehlgeschlagen: {e}")
 
+    original=PUBLISHED.read_text(encoding='utf-8') if PUBLISHED.exists() else '# Freigegebene Beiträge\n'
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
+    elif existing != original:PUBLISHED.write_text(existing,encoding='utf-8')
     return len(blocks)
 def handle_one(uid, chat, txt):
     if turkish_actions(txt) is not None:
