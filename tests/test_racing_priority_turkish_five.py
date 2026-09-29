@@ -423,7 +423,7 @@ def test_turkish_german_place_alias_and_fuer_idiom_do_not_false_block():
 
 def test_turkish_language_failure_always_has_actionable_reason():
  src=inspect.getsource(tqm.process_manual_selection)
- assert 'keine Detailgruende vom Semantic-QM geliefert' in src
+ assert 'Semantic-QM meldet language_ok=false ohne konkreten repair_reason' in src
 
 
 def test_motogp_geo_lexicon_keeps_austria_and_australia_distinct():
