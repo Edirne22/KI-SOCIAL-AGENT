@@ -1,8 +1,8 @@
 """Dedicated Turkish-Rider editorial lane after explicit human T1-T5 selection.
 
 Human selection decides relevance. This lane still enforces source truth, series, numbers,
-semantic hard facts and Chief-QM, but it does not require the selected Turkish rider to be
-the primary subject of the source article.
+semantic hard facts and Chief-QM. The selected Turkish rider is a hard editorial target:
+the final Turkish-Rider post must stay centered on that rider.
 """
 import json,re
 from llm_router import quick_chat
@@ -39,7 +39,8 @@ EMOTION NACH SITUATION: Sieg, Podium, Punkte oder klar starkes Ergebnis duerfen 
 WICHTIG: Coolness darf NIEMALS neue Fakten erzeugen.
 
 Der Mensch hat {rider} ausdruecklich als Turkish-Rider-Thema ausgewaehlt. Relevanz ist damit entschieden.
-Die Originalmeldung darf hauptsaechlich von jemand anderem handeln. Ziehe den belegten Blickwinkel auf {rider} heraus,
+TURKISH-RIDER TARGET-LOCK: Der fertige Post handelt ausschliesslich von {rider}. Andere Rennfahrer duerfen im finalen redaktionellen Text NICHT namentlich erzaehlt, gefeiert oder zum Hauptthema gemacht werden. Wenn die Quelle nicht genug belegte Fakten ueber {rider} fuer einen eigenstaendigen Post enthaelt, erfinde oder fuelle NICHT mit anderen Fahrern auf.
+Die Originalmeldung darf hauptsaechlich von jemand anderem handeln. Ziehe ausschliesslich den belegten Blickwinkel auf {rider} heraus,
 aber behaupte niemals, er habe Pole, Sieg, Rekord, Vertrag, Platzierung oder Aussage erzielt, wenn TITEL/ZUSAMMENFASSUNG das nicht belegen.
 Nur Fakten aus TITEL/ZUSAMMENFASSUNG. Keine Fakten aus Vorwissen. Keine erfundenen Zitate, Zahlen, Orte, Teams, Nationalitaeten oder Beziehungen. Nationalitaeten nur nennen, wenn sie in TITEL/ZUSAMMENFASSUNG ausdruecklich belegt sind.
 Wenn VIDEO_TRANSKRIPT vorhanden ist: nutze dessen belegten Inhalt als Quellenmaterial, aber formuliere vollstaendig neu.
@@ -80,12 +81,24 @@ def _editorial_text(caption):
     text=re.sub(r"(?m)^\s*#[^\n]*$","",text)
     return text.strip()
 
+def _target_focus_errors(x,caption,agency):
+    rider=str(x.get("turkish_rider","")).strip()
+    if not rider:return ["Turkish-Final-QM: Turkish-Rider Target-Lock ohne Ziel-Fahrer"]
+    target=fold(rider); target_last=target.split()[-1] if target else ""
+    others=[]
+    for name in agency.riders_in(_editorial_text(caption)):
+        fn=fold(name); last=fn.split()[-1] if fn else ""
+        if fn==target or (target_last and last==target_last):continue
+        if name not in others:others.append(name)
+    return ["Turkish-Final-QM: Target-Lock verletzt – anderer Fahrer im Turkish-Rider-Post: "+n for n in others]
+
 def final_review(x,caption,agency):
     errors=[]
     editorial=_editorial_text(caption)
     if _copied_source_phrase(x,editorial):errors.append("Turkish-Final-QM: Originalformulierung aus Quellenmaterial uebernommen")
     if not agency.language_sane(editorial):errors.append("Turkish-Final-QM: finaler Text ist nicht vollstaendig idiomatisches Deutsch / enthaelt tuerkischen Sprachrest")
     if not _target_supported(x):errors.append("Turkish-Final-QM: ausgewaehlter Fahrer ist in den Quellenfakten nicht belegt")
+    errors.extend(_target_focus_errors(x,editorial,agency))
     errors.extend(agency.fact_whitelist_errors(x,caption))
     ok,guard_errors=final_guard_review(x,caption)
     if not ok:errors.extend(guard_errors)
