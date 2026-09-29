@@ -341,3 +341,49 @@ Der MotionAdapter soll wiederverwendbare Bewegungsprofile unterstützen: neutral
 Vor produktiver Nutzung werden Rechte, Datenschutz, Referenzmaterial-Speicherung, Output-Rechte, API/Automation, Kosten, Wasserzeichen, DE/TR-Lip-Sync, Gestenqualität, Retry/Resume und Austauschbarkeit geprüft. Wasserzeichenentfernung ist keine Produktionsstrategie.
 
 Targeted Repair gilt auch hier: Änderungen an Stimme, Geste oder Avatarsequenz sollen nur den betroffenen Abschnitt neu erzeugen.
+
+
+### 21.2 PADDOCK_PRESENTER – virtueller Racing-Moderator
+
+Innerhalb von `REALISTIC_BULENT` wird der Produktionsmodus `PADDOCK_PRESENTER` vorgesehen. Ziel ist ein filmisch realistischer, aber bei synthetischen Ereignissen nicht irreführend als echte Anwesenheit ausgegebener Racing-Moderator.
+
+Beispielszenario:
+- virtueller Bülent läuft durch ein MotoGP-/WorldSBK-Fahrerlager,
+- die Kamera folgt ihm,
+- Bikes, Boxen, Teamtrucks und Arbeitsabläufe bilden die Umgebung,
+- Bülent dreht sich zur Kamera und moderiert die verifizierte Racing-Story,
+- MotionAdapter steuert Gehen, Blickrichtung, Zeigen, Reaktion und Winken,
+- VoiceAdapter liefert die autorisierte Bülent-Stimme,
+- Lip-Sync synchronisiert Sprache und Gesicht,
+- GenerativeMediaAdapter erzeugt fehlende oder vollständig synthetische Paddock-Szenen,
+- vorhandenes Fremdmaterial wird nur verwendet, wenn die konkrete Nutzung rechtlich zulässig ist.
+
+Der Betriebsleiter darf reale Fahrer, Teams, Motorräder und Ereignisse nur entsprechend dem Faktenpaket verwenden. Eine synthetisch erzeugte Begegnung – etwa ein Fahrer winkt Bülent zu und Bülent winkt zurück – darf nicht als tatsächlich stattgefundene persönliche Interaktion behauptet werden. Die Inszenierung muss die jeweils geltenden Kennzeichnungs-/Plattformanforderungen für synthetische Medien berücksichtigen.
+
+Geplanter Handoff:
+
+```text
+verifiziertes Racing-Faktenpaket + finales Skript
+→ REALISTIC_BULENT / PADDOCK_PRESENTER
+→ VoiceAdapter
+→ AvatarAdapter
+→ MotionAdapter
+→ GenerativeMediaAdapter / rechtmäßig nutzbare Paddock-Assets
+→ Lip-Sync + Composite
+→ Captions
+→ Rendering
+→ Racing-Fact-QM + End-QM
+→ Preview
+→ Bülent-Freigabe
+→ Publisher
+```
+
+Targeted Repair ist Pflicht. Beispiele:
+- „Sekunde 17: auf den Teamtruck statt auf das Bike zeigen“
+- „hier begeistert statt neutral reagieren“
+- „diesen Fahrer nicht einblenden“
+- „nur diese Geste/Winksequenz ändern“
+
+Solche Änderungen sollen ausschließlich die betroffene Szene bzw. Asset-Revision neu erzeugen und anschließend wieder durch Composite, End-QM und Preview laufen.
+
+Definition of Done für diesen Teil von Block 7 umfasst mindestens: stabile Identität über mehrere Shots, DE/TR-Lip-Sync, natürliche Lauf-/Dreh-/Zeigebewegungen, perspektivisch glaubwürdiges Compositing, Licht/Schatten/Kamerabewegung, konsistente Kleidung/Branding, Racing-Faktenbindung, sichere Rechte-/Consent-Grenzen, Retry/Resume, versionierte Assets und erfolgreichen Staffellauf bis zur Human Authority.
