@@ -354,9 +354,60 @@ def test_manual_turkish_positive_control_can_reach_chief():
   tqm.edit=old_edit;tqm.chief_review=old_chief;tqm.final_guard_review=old_guard
 
 
+
+def test_turkish_target_lock_blocks_other_rider_in_real_toprak_pattern():
+ class FakeAgency:
+  @staticmethod
+  def series_for(x): return 'MotoGP'
+  @staticmethod
+  def riders_in(text):
+   out=[]
+   for n in ('Toprak Razgatlıoğlu','Jorge Martin','Marc Márquez','Marco Bezzecchi','Pedro Acosta'):
+    if tqm.fold(n) in tqm.fold(text): out.append(n)
+   return out
+  @staticmethod
+  def fact_whitelist_errors(x,caption): return []
+  @staticmethod
+  def language_sane(caption): return True
+ x={'title':"MotoGP Avusturya Sprint: Martin'den İnanılmaz Zafer, Toprak Razgatlıoğlu'ndan Güçlü Performans!",
+    'summary':'Jorge Martin kazandı. Marc Márquez ikinci. Toprak Razgatlıoğlu güçlü performans gösterdi.',
+    'series':'MotoGP','source_series':'MotoGP','turkish_rider':'Toprak Razgatlıoğlu'}
+ drift='Jorge Martin gewinnt den Sprint. Toprak Razgatlıoğlu zeigt eine starke Leistung. 🏁'
+ errs=tqm._target_focus_errors(x,drift,FakeAgency)
+ assert any('Jorge Martin' in e for e in errs),errs
+ focused='Toprak Razgatlıoğlu zeigt laut Quelle eine starke Leistung. 🇹🇷🏁'
+ assert tqm._target_focus_errors(x,focused,FakeAgency)==[]
+ prompt=tqm._prompt(x,FakeAgency)
+ assert 'TARGET-LOCK' in prompt and 'ausschliesslich von Toprak Razgatlıoğlu' in prompt
+
+
+def test_racing_number_guard_does_not_extract_numeric_suffix_from_alphanumeric_token():
+ import racing_v855_hardening as hard
+ class FakeAgency:
+  RIDERS_V2=[]
+  @staticmethod
+  def fold(s): return tqm.fold(s)
+  @staticmethod
+  def riders_in(s): return []
+  @staticmethod
+  def _editor_prompt(*args,**kwargs): return ''
+  @staticmethod
+  def semantic_review_detailed(*args,**kwargs): return {'hard_reasons':[],'repair_reasons':[],'language_ok':True}
+ agency=FakeAgency()
+ hard.install(agency)
+ x={'title':'Oğuz Taşhan Avrupa Şampiyonu','summary':'Oğuz Taşhan Avrupa Şampiyonu','series':'MotoGP','source_series':'MotoGP'}
+ errs=agency.fact_whitelist_errors(x,'Oğuz Taşhan A00 gibi bir kod olmadan harika bir gün yaşadı. #MotoGP')
+ assert not any(e.endswith('Zahl nicht in Quelle: 00') for e in errs),errs
+
+
+def test_source_entity_guard_does_not_treat_aktion_as_place():
+ from racing_source_entity_guard import errors
+ x={'title':'Oğuz Taşhan Avrupa Şampiyonu','summary':'Oğuz Taşhan feiert den Titel.'}
+ assert not any('Ort nicht in Quelle: Aktion' in e for e in errors(x,'Oğuz Taşhan ist in Aktion und wir feiern mit!'))
+
 if __name__=='__main__':
  test_turkish_range_dispatches_all_selected_items();test_turkish_visible_five_dedupes_racing_top5_and_backfills()
- test_manual_turkish_redteam_never_promotes_fake_fact_to_pass();test_manual_turkish_positive_control_can_reach_chief();test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
+ test_manual_turkish_redteam_never_promotes_fake_fact_to_pass();test_manual_turkish_positive_control_can_reach_chief();test_turkish_target_lock_blocks_other_rider_in_real_toprak_pattern();test_racing_number_guard_does_not_extract_numeric_suffix_from_alphanumeric_token();test_source_entity_guard_does_not_treat_aktion_as_place();test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
