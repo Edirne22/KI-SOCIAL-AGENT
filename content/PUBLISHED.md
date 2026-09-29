@@ -605,7 +605,7 @@ Bild: assets/images/2026-09/2026-09-29-turkish-human-5-deniz-oncu-01.jpg
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 36606767195-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-29-manual-36548140854-TR-HUMAN
 Telegram-Update-ID: 279361788
