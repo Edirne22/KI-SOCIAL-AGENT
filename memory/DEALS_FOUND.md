@@ -2705,3 +2705,46 @@ Quellen:
 - Über uns – HandyTarifTipp.de: https://handytariftipp.de/ueber-uns-handytariftipp-de/
 - 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat: https://handytariftipp.de/50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat-congstar-kennenlernkarte-im-telekom-netz/
 - 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat: https://handytariftipp.de/congstar-kennenlernkarte-im-netz-der-telekom-50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat/
+## Suche vom 2026-09-30 06:09
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...
+   https://handytariftipp.de/ – HandyTarifTipp Mobilfunk Deals · Congstar Kennenlernkarte im Netz der Telekom – 50GB Allnet Flat einmalig nur 1€ – endet · Prepaid Deal mit 45€ Bonusguthaben bei ...
+2. fraenk Freunde werben: Bis zu 125 GB für nur 10 €! - Handyhase.de
+   https://www.handyhase.de/magazin/fraenk-kundenwerbung/ – 03.03.2026 ... Dank Freundschaftswerbung max. 105 GB EXTRA ✔️ 125 GB für 10 € durch 20 geworbene Neukunden ✔️ 5 GB extra auch für Geworbene.
+3. Starlink Affiliate-Programm: 45 Euro mit Empfehlungen verdienen
+   https://handytariftipp.de/starlink-affiliate-programm-45-euro-mit-empfehlungen-verdienen/ – 20.09.2026 ... Starlink Affiliate-Programm: So können Nutzer aktuell 45 € pro erfolgreicher Empfehlung verdienen und sich die Prämie auszahlen lassen.
+4. D1 Netz Archives - HandyTarifTipp
+   https://handytariftipp.de/category/prepaid/d1/ – Der Tarif bietet 240 GB 5G-Datenvolumen pro Jahr (20 GB monatlich) im Telekom 5G-Netz mit bis zu 100 Mbit/s sowie eine Telefonie- und SMS-Flat.
+5. 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat
+   https://handytariftipp.de/50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat-congstar-kennenlernkarte-im-telekom-netz/ – 06.09.2026 ... Die congstar Kennenlernkarte ist ein starkes Aktionsangebot: 50 GB Datenvolumen, Allnet-Flat und SMS-Flat im Telekom-Netz für nur 1 €.
+6. Handy Archives - HandyTarifTipp
+   https://handytariftipp.de/category/angebote/handy/ – Not Found · Allnet Flat 150GB monatlich kündbar im Vodafone Netz nur 14.99€ monatlich · Monatlich kündbar im Telekom Netz – 80GB Allnet Flat für nur 11.99€ ...
+7. 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat
+   https://handytariftipp.de/congstar-kennenlernkarte-im-netz-der-telekom-50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat/ – 13.09.2026 ... Die congstar Kennenlernkarte ist ein starkes Aktionsangebot: 50 GB Datenvolumen, Allnet-Flat und SMS-Flat im Telekom-Netz für nur 1 €.
+8. monatlich kündbar im Vodafone Netz – 35GB Allnet Flatrate nur 6.99 ...
+   https://handytariftipp.de/monatlich-kuendbar-im-vodafone-netz-35gb-allnet-flatrate-nur-6-99e-monatlich-0e-anschlusspreis/ – 07.09.2026 ... monatlich kündbar – 35GB Allnet Flatrate nur 6.99€ monatlich – 0€ Anschlusspreis. Bis maximal zum 15.09.2026 verfügbar, ...
+9. Starlink ändert Reise-Tarife: Neue 30-Tage-Regel im Ausland
+   https://handytariftipp.de/starlink-aendert-reise-tarife-30-tage-regel-im-ausland-kommt-ab-10-august/ – 17.07.2026 ... D1 Netz, D2 Netz, o2 Netz, ohne Laufzeit, D2 Netz, News ... Monatlich kündbar im Telekom Netz – 80GB Allnet Flat für nur 11.99€ monatlich.
+10. Ohne Laufzeit im Vodafone Netz – 100GB Allnet Flatrate nur 11.99 ...
+   https://handytariftipp.de/ohne-laufzeit-im-vodafone-netz-100gb-allnet-flatrate-nur-11-99e-monatlich-0e-anschlusspreis/ – 08.09.2026 ... monatlich kündbar im Vodafone Netz – 100GB Allnet Flat nur 11.99 Euro monatlich. Angebot gültig bei erfolgreicher Mitnahme der Nummer ...
+
+Quellen:
+- HandyTarifTipp.de - Mobilfunk Deals – Geschenke das ganze Jahr ...: https://handytariftipp.de/
+- fraenk Freunde werben: Bis zu 125 GB für nur 10 €! - Handyhase.de: https://www.handyhase.de/magazin/fraenk-kundenwerbung/
+- Starlink Affiliate-Programm: 45 Euro mit Empfehlungen verdienen: https://handytariftipp.de/starlink-affiliate-programm-45-euro-mit-empfehlungen-verdienen/
+- D1 Netz Archives - HandyTarifTipp: https://handytariftipp.de/category/prepaid/d1/
+- 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat: https://handytariftipp.de/50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat-congstar-kennenlernkarte-im-telekom-netz/
+- Handy Archives - HandyTarifTipp: https://handytariftipp.de/category/angebote/handy/
+- 50GB Allnet Flat einmalig nur 1€ – endet automatisch nach 1 Monat: https://handytariftipp.de/congstar-kennenlernkarte-im-netz-der-telekom-50gb-allnet-flat-einmalig-nur-1e-endet-automatisch-nach-1-monat/
+- monatlich kündbar im Vodafone Netz – 35GB Allnet Flatrate nur 6.99 ...: https://handytariftipp.de/monatlich-kuendbar-im-vodafone-netz-35gb-allnet-flatrate-nur-6-99e-monatlich-0e-anschlusspreis/
+- Starlink ändert Reise-Tarife: Neue 30-Tage-Regel im Ausland: https://handytariftipp.de/starlink-aendert-reise-tarife-30-tage-regel-im-ausland-kommt-ab-10-august/
+- Ohne Laufzeit im Vodafone Netz – 100GB Allnet Flatrate nur 11.99 ...: https://handytariftipp.de/ohne-laufzeit-im-vodafone-netz-100gb-allnet-flatrate-nur-11-99e-monatlich-0e-anschlusspreis/
