@@ -1,6 +1,6 @@
 # MASTER-SNAPSHOT – KI-SOCIAL-AGENT
 
-**Stand:** 30.09.2026, ca. 13:30 Europe/Berlin  
+**Stand:** 30.09.2026, ca. 22:49 Europe/Berlin  
 **Repository:** `Edirne22/KI-SOCIAL-AGENT`  
 **Funktion dieser Datei:** zentraler Einstieg / Inhaltsverzeichnis für den aktuellen Projektstand.
 
@@ -10,14 +10,15 @@
 
 **Aktueller verbindlicher Arbeits-Snapshot:**
 
-`snapshots/SNAPSHOT_2026-09-30_CONTENT_FACTORY_LIVE_MEDIA_CLOUD_WORKBENCH.md`
+`snapshots/SNAPSHOT_2026-09-30_OPENCHATCUT_BLOCK6_LIVE_CANDIDATE.md`
 
 Snapshot-Ausgangspunkt:
 - Factory Blocks 1–9 gemergt.
-- Cloudflare R2 als privates LIVE-Medienlager verifiziert.
-- ImageRouter → Factory → R2 LIVE verifiziert.
-- Agnes Video → Factory → R2 LIVE verifiziert.
-- nächster P1: OpenChatCut im Cloudflare Container als reale Werkbank evaluieren und integrieren.
+- R2, ImageRouter → R2 und Agnes Video → R2 LIVE verifiziert.
+- OpenChatCut Cloudflare-PoC deployed und als LIVE_CANDIDATE bis MCP/create_project/target_project real verifiziert.
+- begin_edit_session zeigte einen Cloudflare-Disconnect; PR #259 diagnostiziert Restart/State-Verlust vs. Transportproblem fail-closed.
+- aktueller Produktionslauf: 36773936472.
+- OpenChatCut bleibt bis Import/Edit/Headless-Render/R2/SHA/ffprobe/7-15-30s-Caption-Audio-Abnahme NICHT LIVE.
 - danach SupoClip LIVE integrieren und vollständige Video-Staffel testen.
 
 **Verbindliche Guardrails:**
