@@ -21,6 +21,7 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 
 | [11_system_restart_agent.md](11_system_restart_agent.md) | Prüft sichere Workflow-Zustände und erstellt einen Betriebsstatus. | Täglich als Bericht oder manuell mit ausdrücklicher Freigabe für erlaubte Fehler-Neustarts. |
 | [12_music_agent.md](12_music_agent.md) | Wählt lizenzierte lokale Hintergrundmusik und mischt sie in freigegebene Reels und Stories. | Alle 15 Minuten bei `Musik: auto`; veröffentlicht selbst nie. |
+| [18_tour_ride_story_agent.md](18_tour_ride_story_agent.md) | Verwandelt BMW-/Calimoto-/Kurviger-/Motobit-Ridedaten plus Tourmedien in ein evidenzgebundenes Story-Paket. | Bei Motorradtouren, Ride-Screenshots/GPX sowie Foto-/Video-Tourmaterial; kein Publish. |
 
 ## Aktivierungs-Logik
 
