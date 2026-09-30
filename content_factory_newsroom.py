@@ -142,6 +142,23 @@ class NewsroomContractError(ValueError):
     pass
 
 
+def attach_fact_package(job, package: FactPackage) -> None:
+    """Attach immutable newsroom output to a pre-human ProductionJob.
+
+    The newsroom has no authority to approve, queue, or publish. Existing
+    package data for the same job/revision cannot be silently replaced.
+    """
+    status = getattr(job.status, "value", str(job.status))
+    if status in ("ready_for_human", "approved", "publish_queued", "published", "rejected"):
+        raise NewsroomContractError("fact package cannot mutate a human/finalized job")
+    payload = package.to_dict()
+    slot = f"fact_package:r{job.revision}"
+    existing = job.metadata.get(slot)
+    if existing is not None and existing != payload:
+        raise NewsroomContractError("fact package replacement requires a new job revision")
+    job.metadata[slot] = payload
+
+
 class FactNewsroom:
     """Validates evidence supplied by research/extraction adapters.
 
