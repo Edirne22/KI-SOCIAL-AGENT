@@ -108,6 +108,21 @@ class NewsroomTests(unittest.TestCase):
         self.assertIn("rumor:transfer", package.warnings)
         self.assertFalse(package.publishable)
 
+    def test_verified_fact_plus_unresolved_rumor_is_not_publishable(self):
+        rumor_source = source(
+            "rumor2", "Transfer talk", "A rumor links Rider X with Team Y."
+        )
+        rumor = FactClaim(
+            "transfer2", "Rider X is linked with Team Y.", ClaimStatus.RUMOR,
+            (Evidence("rumor2", "rumor links Rider X with Team Y"),), series="WorldSBK",
+        )
+        package = self.room.build_package(
+            story_key="mixed", series="WorldSBK", sources=(self.s1, rumor_source),
+            claims=(self.verified(), rumor), coverage_complete=True,
+        )
+        self.assertEqual((self.verified(),), package.writer_facts)
+        self.assertFalse(package.publishable)
+
     def test_unsupported_claim_blocks_publishable(self):
         unsupported = FactClaim(
             "future", "Rider X will definitely win.", ClaimStatus.UNSUPPORTED,
