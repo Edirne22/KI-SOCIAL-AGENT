@@ -1,0 +1,43 @@
+name: Test Live Agnes Video R2
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "content_factory_media_production.py"
+      - "generate_agnes_media.py"
+      - "media_storage.py"
+      - "tests/test_content_factory_media_production.py"
+      - "scripts/agnes_video_r2_live_smoke.py"
+      - ".github/workflows/test-live-agnes-video-r2.yml"
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Syntax and imports
+        run: python -m py_compile content_factory_media_production.py generate_agnes_media.py media_storage.py scripts/agnes_video_r2_live_smoke.py tests/test_content_factory_media_production.py
+      - name: Blocks 1-6 regression
+        run: python -m unittest -v tests.test_content_factory_core tests.test_content_factory_persistence tests.test_content_factory_discovery tests.test_content_factory_newsroom tests.test_content_factory_creative tests.test_content_factory_media_production
+      - name: SOURCE-FACT-CONTRACT
+        run: python tests/test_source_fact_contract_v1.py
+  live-video-r2:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Generate Agnes video and persist privately to R2
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+        run: python -m scripts.agnes_video_r2_live_smoke

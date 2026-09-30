@@ -16,8 +16,26 @@ class Block6Tests(unittest.TestCase):
  def test_video_plan_prefers_supoclip_edit_ffmpeg(self):
   j=self.job(); j.media.append(ref("source")); p=MediaProductionPlanner().plan(j,brief())
   self.assertEqual(("supoclip","openchatcut","ffmpeg"),tuple(x.machine for x in p.steps))
- def test_video_without_source_uses_pollo(self):
-  p=MediaProductionPlanner().plan(self.job(),brief()); self.assertEqual("pollo",p.steps[0].machine)
+ def test_video_without_source_uses_live_agnes(self):
+  p=MediaProductionPlanner().plan(self.job(),brief()); self.assertEqual("agnes_video",p.steps[0].machine)
+  self.assertEqual("hook | angle | visual",dict(p.steps[0].parameters)["prompt"])
+ def test_live_agnes_video_adapter_stores_immutable_media(self):
+  calls=[]
+  def generator(prompt): calls.append(prompt); return b"mp4-bytes"
+  with tempfile.TemporaryDirectory() as td:
+   storage=LocalScratchStorage(Path(td)/"s"); a=AgnesVideoAdapter(storage,generator)
+   result=a.run(ToolTask("j",4,"generate",[],{"prompt":"vertical moto scene"})); media=result.outputs[0]
+   self.assertEqual(ExecutionTruth.LIVE,a.truth); self.assertEqual(["vertical moto scene"],calls)
+   self.assertEqual("video/mp4",media.mime_type); self.assertEqual("agnes_video:generate:r4",media.provenance)
+   self.assertEqual(hashlib.sha256(b"mp4-bytes").hexdigest(),media.sha256)
+   self.assertEqual(b"mp4-bytes",storage.resolve_local(media).read_bytes())
+ def test_live_agnes_video_rejects_inputs_empty_prompt_and_empty_result(self):
+  with tempfile.TemporaryDirectory() as td:
+   a=AgnesVideoAdapter(LocalScratchStorage(Path(td)/"s"),lambda p:b"x")
+   with self.assertRaises(MediaProductionError): a.run(ToolTask("j",1,"x",[ref("foreign")],{"prompt":"x"}))
+   with self.assertRaises(MediaProductionError): a.run(ToolTask("j",1,"x",[],{"prompt":" "}))
+   b=AgnesVideoAdapter(LocalScratchStorage(Path(td)/"s2"),lambda p:None)
+   with self.assertRaises(MediaProductionError): b.run(ToolTask("j",1,"x",[],{"prompt":"x"}))
  def test_image_without_source_uses_live_image_router(self):
   p=MediaProductionPlanner().plan(self.job(),brief(ContentFormat.IMAGE))
   self.assertEqual("image_router",p.steps[0].machine)
