@@ -29,6 +29,15 @@ Jede Quelle bleibt mit Herkunft verknüpft. Ein Screenshot ist kein vollständig
 
 Dramaturgie darf verbessert werden; keine Erlebnisse erfinden, die nicht belegt oder ausdrücklich als kreative Inszenierung beauftragt wurden.
 
+## Persönliche Biker-Treff-Seed-Liste
+- Lade bei jedem passenden Ride-Job `memory/BIKERTREFFS.md` als priorisierte POI-Seed-Liste.
+- Diese Einträge sind Bülents übliche/stammhafte Anlaufpunkte und erhalten bei Routen-Nähe höhere redaktionelle Relevanz als zufällige POIs.
+- Prüfe Route/Track gegen diese Treffpunkte; bei Treffer oder sinnvoller Nähe einen `biker_treff_candidate` erzeugen.
+- Vor einer aktuellen Story aktuelle Fakten wie Betrieb/Öffnung/Angebot sowie belastbare wiederkehrende Bewertungsmuster neu recherchieren; alte Memory-Beschreibungen nicht als aktuelle Tatsachen behandeln.
+- Wiederholungen vermeiden: vorhandene Story-/Post-Historie berücksichtigen und bei bekannten Treffpunkten nach einem neuen Winkel suchen.
+- Die Seed-Liste ist nicht exklusiv: Discovery darf weitere Biker-Treffs und interessante POIs entlang der Route finden.
+- Späteres Ride-Memory soll Besuche, eigene Medien und bereits verwendete Story-Winkel pro Treffpunkt nachvollziehbar speichern.
+
 ## Ride-Data-Quellen
 - Keine App hart voraussetzen.
 - BMW Motorrad Connected bevorzugen, wenn eine automatisch aufgezeichnete tatsächliche Fahrt vorliegt.
