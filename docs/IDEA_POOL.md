@@ -452,3 +452,27 @@ Instagram-Fund; Werbeaussagen **nicht als verifiziert übernehmen**. Vor Auswahl
 `Script/Bülent Writing → Voice Clone → Avatar/Digital Twin → SupoClip/OpenChatCut → FFmpeg → R2 → End-QM → Goldenes Tablett → Human Approval`
 
 **Nicht Teil des aktuellen OpenChatCut-/BLOCKRUN. Erst nach stabiler Media-Werkbank systematisch benchmarken.**
+
+
+---
+
+## 🔥 OPENCHATCUT / BLOCK 6 – AKTUELLER POOL (30.09.2026 ABEND)
+
+**Wahrheitsstatus:** OpenChatCut = `LIVE_CANDIDATE`, noch nicht LIVE.
+
+- [ ] Disconnect bei `begin_edit_session` mit frischem MCP-Transport + Projekt-Retargeting eindeutig als Restart/State-Verlust oder Transportproblem klassifizieren.
+- [ ] Bei Restart Container-/Prozess-/Persistenzpfad und stdout/stderr/Exit-Ursache instrumentieren; bei Transportproblem StreamableHTTP/Keep-Alive/Proxy reproduzierbar härten.
+- [ ] R2-Original als echten Input in die OpenChatCut-Werkbank bringen; Containerdisk nur temporär.
+- [ ] server-direct Import → editierbare Timeline → Commit nachweisen.
+- [ ] nativen `/export`-/`occ render`-Pfad ohne manuell verbundenen Editor-Browser abnehmen.
+- [ ] Benchmarks 720×1280/7 s, 1080×1920/15 s und 1080×1920/30 s jeweils mit Caption + Audio.
+- [ ] Wall-Time, Output-Größe und soweit verfügbar CPU/RAM/Disk protokollieren.
+- [ ] ffprobe: Codec, Decodierbarkeit, Dauer und Auflösung verifizieren.
+- [ ] privates R2: Upload → Download → SHA-256 identisch.
+- [ ] Negative Controls: kein/falscher Token, fremde/stale MediaRef, kaputtes/non-video Output, Hash-Mismatch.
+- [ ] Retry/Disconnect/Restart/Resume testen; keine falsche oder stale Revision darf weiterlaufen.
+- [ ] erst nach kompletter Abnahme Factory-Port SIMULATED → OpenChatCut LIVE umstellen.
+- [ ] danach SupoClip LIVE und Gesamtstaffel Source → SupoClip → OpenChatCut → FFmpeg/Export → R2 → Golden Tablet.
+- [ ] geschützten Video-Preview für Bülent bauen; R2 bleibt privat.
+
+**Architektur-Ideen:** Cloudflare-Container und späterer x86-VPS bleiben hinter derselben Adaptergrenze austauschbar. Native/server-direct Wege vor Browser-Automation bevorzugen; Headless-Browser nur bei nachgewiesener Notwendigkeit. R2 bleibt System of Record. Benchmarkwerte später 1:1 mit x86-VPS vergleichen. Bei Architekturunsicherheit zweite KI als Cross-Check nutzen und Aussagen gegen gepinnten Quellcode/echte Logs prüfen.
