@@ -620,6 +620,7 @@ Bild: assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-1-pedro-acost
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-30-daily
 Telegram-Update-ID: 279361793
