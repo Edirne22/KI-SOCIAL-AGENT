@@ -1,6 +1,9 @@
 # PROJEKT-ÜBERGABE – KI-SOCIAL-AGENT
 
-**Stand:** 2026-09-26
+> **AKTUELLER EINSTIEG – 30.09.2026:** Diese Datei enthält weiterhin wertvolle Basis-/Provider-/Racing-Details, ist aber nicht mehr die alleinige aktuelle Hauptübergabe. Für den aktuellen Factory-Stand zuerst `MASTER-SNAPSHOT.md` und `snapshots/SNAPSHOT_2026-09-30_CONTENT_FACTORY_LIVE_MEDIA_CLOUD_WORKBENCH.md` lesen. Aktuell: Factory Blocks 1–9 gemergt; R2, ImageRouter→R2 und Agnes Video→R2 LIVE verifiziert; P1 = OpenChatCut Cloudflare-Container-PoC → SupoClip LIVE → Gesamtstaffellauf. `PROJECT_GUARDRAILS.md` bleibt verbindlich.
+
+
+**Historischer Basisstand:** 2026-09-26
 **Repo:** https://github.com/Edirne22/KI-SOCIAL-AGENT
 **Ziel:** Autonome Content-Fabrik für Bülent (@edirnelibuelent) – 12–24 Monate zur KI-Agentur.
 **Repo-Typ:** 🌐 Public (unbegrenzte GitHub-Actions-Minuten)
@@ -12,7 +15,7 @@
 
 | # | Datei | Inhalt |
 |---|---|---|
-| 1 | `PROJEKT_UEBERGABE.md` | Hauptübergabe (immer aktuell) |
+| 1 | `PROJEKT_UEBERGABE.md` | Historische Haupt-/Basisübergabe; aktueller Einstieg über `MASTER-SNAPSHOT.md` |
 | 2 | `PROJEKT_UEBERGABE_2_ENGAGEMENT.md` | Agent 17 + 18, Meta Webhook, Reply Adapter |
 | 3 | `PROJEKT_UEBERGABE_3_RACING.md` | Racing-Pipeline-Hardening 26.09.2026 |
 | 4 | `PROJEKT_UEBERGABE_4_RUNTIME.md` | Racing Runtime-Hardening 27./28.09.2026 |
