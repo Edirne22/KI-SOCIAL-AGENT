@@ -90,6 +90,7 @@ class ProductionJob:
     human_approved_at: Optional[str] = None
     human_approved_revision: Optional[int] = None
     human_approved_manifest: Optional[str] = None
+    publish_payload: Dict[str, Any] = field(default_factory=dict)
     publish_handoff_key: Optional[str] = None
     created_at: str = field(default_factory=utc_now)
     updated_at: str = field(default_factory=utc_now)
@@ -100,15 +101,10 @@ class ProductionJob:
 
     def approval_manifest(self) -> str:
         """Fingerprint the exact revision and immutable media set shown to the human."""
-        publish_metadata = {
-            key: self.metadata.get(key)
-            for key in ("caption", "platforms", "title", "requested_formats")
-            if key in self.metadata
-        }
         payload = {
             "job_id": self.job_id,
             "revision": self.revision,
-            "publish_metadata": publish_metadata,
+            "publish_payload": self.publish_payload,
             "media": [
                 {
                     "media_id": m.media_id, "uri": m.uri, "sha256": m.sha256,
