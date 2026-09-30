@@ -1,5 +1,65 @@
 # Archiviert Beiträge 2026-09
 
+## Facebook [GEPOSTET 2026-09-22 06:13 | ID: 1285968257941776_122112783549469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-22-daily
+Telegram-Update-ID: 279361720
+MotoGP-Auswahl: 1
+Titel: Electric Martin beats Marquez and Acosta to pole as title fight heats up in Austria Three riders with their own points to prove in Austria lock out a front row covered by less than a tenth - with Bezzecchi lurking in fourth
+Text:
+Jorge Martin hat in Österreich die Pole geholt – und damit gleich zwei Namen vor sich überholt.
+
+Die Spitze war zum Greifen nah: Martin, Marc Marquez und Pedro Acosta trennten weniger als eine Zehntelsekunde. Drei Fahrer mit jeweils eigenen Punkten, die sie verteidigen wollten – und am Ende ging Martin als Schnellster durch. Marco Bezzecchi legte noch einmal nach und sicherte sich Platz vier, direkt hinter der Spitzengruppe.
+
+Wer von den drei führt die Titelkämpfe in eurem Kopf aktuell an?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+Quelle: https://www.motogp.com/en/news/2026/09/19/electric-martin-beats-marquez-and-acosta-to-pole-as-title-fight-heats-up-in-austria/1090417
+Link-Preview: offiziell
+
+## Facebook [GEPOSTET 2026-09-22 06:34 | ID: 1285968257941776_122112792969469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-22-daily
+Telegram-Update-ID: 279361720
+MotoGP-Auswahl: 2
+Titel: Bouncing back: flawless Acosta fends off Aprilia charge to claim dream maiden win
+Text:
+Pedro Acosta hat seinen ersten MotoGP-Sieg gefeiert – und das, ohne einen Fehler zu machen.
+
+Der Titel sagt es: Acosta musste die Angriffe von Aprilia abwehren und hat souverän standgehalten. Ein Maiden Win in der Königsklasse – für jeden Motorradfahrer ein Traum, der hier Wirklichkeit wurde.
+
+Wie wichtig ist für euch ein sauberer Sieg gegenüber einem knapp gewonnenen Kampf?
+
+#MotoGP #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-fends-off-aprilia-charge-to-claim-dream-maiden-win/1090419
+Quelle: https://www.motogp.com/en/news/2026/09/20/bouncing-back-flawless-acosta-fends-off-aprilia-charge-to-claim-dream-maiden-win/1090419
+Link-Preview: offiziell
+
+## Facebook [GEPOSTET 2026-09-22 06:57 | ID: 1285968257941776_122112809001469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-22-daily
+Telegram-Update-ID: 279361720
+MotoGP-Auswahl: 4
+Titel: PREVIEW 19h ago HISTORY AWAITS: Will Bulega be crowned WorldSBK Champion on home soil at Cremona? The #11 is on the verge of the title and the Italian can win the title at the 2026 Italian Round… WorldSBK
+Text:
+Nicolo Bulega steht kurz davor, auf heimischem Boden Weltmeister zu werden.
+
+Beim 2026 Italian Round in Cremona hat der #11 die Chance, den WorldSBK-Titel nach Italien zu holen. History awaits – ein Sieg dort würde seinen Namen fest in die Geschichte des Superbikes schreiben.
+
+Denkst du, Bulega schafft den Titelgewinn in Cremona?
+
+#WorldSBK #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://www.worldsbk.com/en/news/2026/09/21/history-awaits-will-bulega-be-crowned-worldsbk-champion-on-home-soil-at-cremona/1091419
+Quelle: https://www.worldsbk.com/en/news/2026/09/21/history-awaits-will-bulega-be-crowned-worldsbk-champion-on-home-soil-at-cremona/1091419
+Link-Preview: offiziell
+
 ## Instagram [GEPOSTET 2026-09-21 06:37 | ID: 18018043985730287]
 Status: GEPOSTET
 Freigabe: Telegram Racing
