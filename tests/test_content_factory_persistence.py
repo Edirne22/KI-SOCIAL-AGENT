@@ -2,7 +2,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from content_factory_core import JobStatus
+from content_factory_core import JobStatus, MediaRef
+import hashlib
 from content_factory_repository import (
     AttemptState, ConcurrentUpdateError, IdempotencyConflictError, SQLiteJobRepository,
 )
@@ -140,6 +141,42 @@ class SQLiteRepositoryTests(unittest.TestCase):
         key = loaded.job.publish_handoff()
         self.assertEqual(JobStatus.PUBLISH_QUEUED, loaded.job.status)
         self.assertTrue(key)
+
+    def test_media_and_approval_manifest_survive_restart_exactly(self):
+        stored, _ = self.repo.create_job("media approval", idempotency_key="media-approval")
+        media = MediaRef(
+            "asset-1", "r2://bucket/job/final.mp4", hashlib.sha256(b"final").hexdigest(),
+            5, "video/mp4", "render:final",
+        )
+        stored.job.media.append(media)
+        stored.job.status = JobStatus.READY_FOR_HUMAN
+        stored.job.publish_payload = {"caption": "Final", "platforms": ["instagram"]}
+        stored.job.transition(JobStatus.APPROVED, actor="human")
+        manifest = stored.job.human_approved_manifest
+        self.repo.save_job(stored.job, expected_store_version=stored.store_version)
+
+        loaded = SQLiteJobRepository(self.db).get_job(stored.job.job_id)
+        self.assertEqual([media], loaded.job.media)
+        self.assertEqual(manifest, loaded.job.approval_manifest())
+        self.assertEqual(manifest, loaded.job.human_approved_manifest)
+
+    def test_concurrent_human_change_cannot_overwrite_approved_revision(self):
+        stored, _ = self.repo.create_job("human race", idempotency_key="human-race")
+        stored.job.status = JobStatus.READY_FOR_HUMAN
+        self.repo.save_job(stored.job, expected_store_version=stored.store_version)
+
+        approval = self.repo.get_job(stored.job.job_id)
+        change = self.repo.get_job(stored.job.job_id)
+        approval.job.transition(JobStatus.APPROVED, actor="human")
+        self.repo.save_job(approval.job, expected_store_version=approval.store_version)
+
+        change.job.transition(JobStatus.CHANGES_REQUESTED, actor="human")
+        with self.assertRaises(ConcurrentUpdateError):
+            self.repo.save_job(change.job, expected_store_version=change.store_version)
+
+        final = self.repo.get_job(stored.job.job_id)
+        self.assertEqual(JobStatus.APPROVED, final.job.status)
+        self.assertEqual(1, final.job.revision)
 
     def test_full_persistent_staffellauf_survives_restart_before_publish(self):
         stored, _ = self.repo.create_job("autonomous racing reel", idempotency_key="story:toprak")
