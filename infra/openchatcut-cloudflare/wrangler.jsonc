@@ -1,0 +1,15 @@
+{
+  "name": "edirne22-openchatcut-poc",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-29",
+  "containers": [{
+    "class_name": "OpenChatCutContainer",
+    "image": "./Dockerfile",
+    "max_instances": 1,
+    "instance_type": "standard-2",
+    "constraints": { "regions": ["WEUR", "EEUR"], "jurisdiction": "eu" }
+  }],
+  "durable_objects": { "bindings": [{ "name": "OPENCHATCUT", "class_name": "OpenChatCutContainer" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["OpenChatCutContainer"] }],
+  "observability": { "enabled": true }
+}
