@@ -15,8 +15,12 @@ type Env = {
 
 export class OpenChatCutContainer extends Container {
   defaultPort = 5199;
-  sleepAfter = "30m";
+  sleepAfter = "5m";
   enableInternet = true;
+  async fetch(request: Request): Promise<Response> {
+    this.renewActivityTimeout();
+    return super.fetch(request);
+  }
   envVars = {
     OPENCHATCUT_MCP_TOKEN: env.OPENCHATCUT_MCP_TOKEN,
     __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "edirne22-openchatcut-poc.butupeli.workers.dev",
