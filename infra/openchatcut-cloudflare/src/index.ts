@@ -12,7 +12,7 @@ type Env = {
 
 export class OpenChatCutContainer extends Container {
   defaultPort = 5199;
-  sleepAfter = "5m";
+  sleepAfter = "30m";
   enableInternet = true;
   envVars = {
     OPENCHATCUT_MCP_TOKEN: env.OPENCHATCUT_MCP_TOKEN,
