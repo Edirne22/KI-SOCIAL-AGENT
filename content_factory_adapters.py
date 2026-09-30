@@ -10,6 +10,8 @@ import json
 import os
 import re
 import hashlib
+import html
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
 from content_factory_discovery import (
@@ -90,7 +92,7 @@ class TurkishRiderDiscoveryAdapter:
 
 
 class RSSFeedDiscoveryAdapter:
-    """Generic feed ingestion adapter with fault-tolerant parsing."""
+    """Generic RSS/Atom ingestion using a real XML parser, not regex."""
 
     name: str = "rss-feed-adapter"
     source_type: SourceType = SourceType.RSS
@@ -101,6 +103,39 @@ class RSSFeedDiscoveryAdapter:
             "https://www.worldsbk.com/en/news/rss",
         ]
 
+    @staticmethod
+    def _local(tag: str) -> str:
+        return tag.rsplit("}", 1)[-1].lower()
+
+    @staticmethod
+    def _text(element) -> str:
+        return "".join(element.itertext()).strip() if element is not None else ""
+
+    def _parse(self, raw: str, feed_url: str, limit: int) -> List[DiscoveryItem]:
+        root = ET.fromstring(raw)
+        entries = [e for e in root.iter() if self._local(e.tag) in ("item", "entry")]
+        items: List[DiscoveryItem] = []
+        for entry in entries[:limit]:
+            children = list(entry)
+            title_el = next((x for x in children if self._local(x.tag) == "title"), None)
+            desc_el = next((x for x in children if self._local(x.tag) in ("description", "summary", "content")), None)
+            link_el = next((x for x in children if self._local(x.tag) == "link"), None)
+            title = html.unescape(self._text(title_el)).strip()
+            desc = html.unescape(re.sub(r"<[^>]+>", "", self._text(desc_el))).strip()
+            link = ""
+            if link_el is not None:
+                link = (link_el.attrib.get("href") or self._text(link_el)).strip()
+            if not title or not link.startswith(("http://", "https://")):
+                continue
+            item_id = f"rss-{hashlib.sha256(f'{link}|{title}'.encode('utf-8')).hexdigest()[:12]}"
+            items.append(DiscoveryItem(
+                item_id=item_id,
+                source_id=f"rss-{hashlib.sha256(feed_url.encode('utf-8')).hexdigest()[:8]}",
+                url=link, title=title, text=desc[:1000],
+                source_type=self.source_type.value, provenance=f"rss:{feed_url}",
+            ))
+        return items
+
     def fetch_items(self, limit: int = 50) -> List[DiscoveryItem]:
         items: List[DiscoveryItem] = []
         for feed_url in self.feed_urls:
@@ -109,41 +144,11 @@ class RSSFeedDiscoveryAdapter:
                 resp = requests.get(feed_url, timeout=10, headers={"User-Agent": "KI-SOCIAL-AGENT/1.0"})
                 if not resp.ok:
                     continue
-                # Simple XML regex parse for <item> / <entry> without heavy dependencies
-                raw = resp.text
-                entries = re.findall(r"<item>(.*?)</item>", raw, re.DOTALL | re.IGNORECASE)
-                if not entries:
-                    entries = re.findall(r"<entry>(.*?)</entry>", raw, re.DOTALL | re.IGNORECASE)
-
-                for entry_str in entries[:limit]:
-                    t_match = re.search(r"<title>(.*?)</title>", entry_str, re.DOTALL | re.IGNORECASE)
-                    l_match = re.search(r"<link>(.*?)</link>", entry_str, re.DOTALL | re.IGNORECASE)
-                    d_match = re.search(r"<(description|summary)>(.*?)</\1>", entry_str, re.DOTALL | re.IGNORECASE)
-
-                    title = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", t_match.group(1)).strip() if t_match else ""
-                    link = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", l_match.group(1)).strip() if l_match else ""
-                    desc = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", d_match.group(2)).strip() if d_match else ""
-
-                    # Strip HTML tags from description
-                    desc = re.sub(r"<[^>]+>", "", desc)
-
-                    if not title or not link:
-                        continue
-
-                    item_id = f"rss-{hashlib.sha256(f'{link}|{title}'.encode('utf-8')).hexdigest()[:12]}"
-                    items.append(
-                        DiscoveryItem(
-                            item_id=item_id,
-                            source_id=f"rss-{hashlib.sha256(feed_url.encode('utf-8')).hexdigest()[:8]}",
-                            url=link,
-                            title=title,
-                            text=desc[:1000],
-                            source_type=self.source_type.value,
-                            provenance=f"rss:{feed_url}",
-                        )
-                    )
-            except Exception as exc:
+                items.extend(self._parse(resp.text, feed_url, max(0, limit - len(items))))
+            except (ET.ParseError, Exception) as exc:
                 print(f"[DISCOVERY] RSS adapter error ({feed_url}): {exc}")
+            if len(items) >= limit:
+                break
         return items[:limit]
 
 
