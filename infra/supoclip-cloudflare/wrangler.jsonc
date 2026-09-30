@@ -1,0 +1,15 @@
+{
+  "name": "edirne22-supoclip-poc",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-30",
+  "containers": [{
+    "class_name": "SupoClipContainer",
+    "image": "./Dockerfile",
+    "max_instances": 1,
+    "instance_type": "standard-2",
+    "constraints": { "regions": ["WEUR", "EEUR"], "jurisdiction": "eu" }
+  }],
+  "durable_objects": { "bindings": [{ "name": "SUPOCLIP", "class_name": "SupoClipContainer" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["SupoClipContainer"] }],
+  "observability": { "enabled": true }
+}
