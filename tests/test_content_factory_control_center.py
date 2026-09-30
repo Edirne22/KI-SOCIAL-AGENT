@@ -35,6 +35,19 @@ class Block9(unittest.TestCase):
   j=ProductionJob("x"); j.status=JobStatus.READY_FOR_HUMAN
   with self.assertRaises(ControlCenterError): ControlCenter().validate(j,ControlRequest("1","web","buelent","post",j.job_id,99))
  def test_contract_publisher_truth_explicit(self): self.assertEqual("SIMULATED",ContractPublisher.truth)
+ def test_full_golden_tablet_to_publish_proof_staffellauf(self):
+  j=ProductionJob("full-chain"); j.status=JobStatus.QM
+  j.metadata["creative_package:r1"]={"draft":{"caption":"Toprak gewann."}}
+  report=FinalQM().evaluate(j,[QMCheck("facts",True),QMCheck("render",True)])
+  tablet=present_golden_tablet(j,report)
+  ControlCenter().validate(j,ControlRequest("post-1","telegram","buelent","post",j.job_id,j.revision))
+  handoff=HumanDecisionService().post(j,tablet)
+  self.assertEqual(handoff,j.publish_handoff_key)
+  bridge=PublisherBridge(); receipt=bridge.publish(j,platform="instagram",publisher=ContractPublisher())
+  bridge.mark_complete(j,[receipt])
+  self.assertEqual(JobStatus.PUBLISHED,j.status)
+  self.assertEqual("SIMULATED_PUBLISH_PROOF",j.metadata["publish_proof:r1"][0]["proof"])
+
  def test_duplicate_publish_after_published_blocked(self):
   j=queued(); b=PublisherBridge(); r=b.publish(j,platform="instagram",publisher=ContractPublisher()); b.mark_complete(j,[r])
   with self.assertRaises(ControlCenterError): b.publish(j,platform="instagram",publisher=ContractPublisher())
