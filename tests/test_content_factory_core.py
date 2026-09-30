@@ -52,19 +52,31 @@ class ProductionJobTests(unittest.TestCase):
 
     def test_approval_blocks_caption_changed_after_human_signoff(self):
         job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
-        job.metadata["caption"] = "Freigegebener Text"
-        job.metadata["platforms"] = ["instagram"]
+        job.publish_payload["caption"] = "Freigegebener Text"
+        job.publish_payload["platforms"] = ["instagram"]
         job.transition(JobStatus.APPROVED, actor="human")
-        job.metadata["caption"] = "Manipulierter Text"
+        job.publish_payload["caption"] = "Manipulierter Text"
         with self.assertRaises(PermissionError):
             job.publish_handoff()
 
     def test_approval_blocks_platform_changed_after_human_signoff(self):
         job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
-        job.metadata["caption"] = "Final"
-        job.metadata["platforms"] = ["instagram"]
+        job.publish_payload["caption"] = "Final"
+        job.publish_payload["platforms"] = ["instagram"]
         job.transition(JobStatus.APPROVED, actor="human")
-        job.metadata["platforms"] = ["instagram", "facebook"]
+        job.publish_payload["platforms"] = ["instagram", "facebook"]
+        with self.assertRaises(PermissionError):
+            job.publish_handoff()
+
+    def test_approval_blocks_future_publish_field_changed_after_signoff(self):
+        job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
+        job.publish_payload.update({
+            "caption": "Final",
+            "platforms": ["instagram"],
+            "future_platform_option": {"cover_frame_ms": 1200},
+        })
+        job.transition(JobStatus.APPROVED, actor="human")
+        job.publish_payload["future_platform_option"]["cover_frame_ms"] = 2400
         with self.assertRaises(PermissionError):
             job.publish_handoff()
 
