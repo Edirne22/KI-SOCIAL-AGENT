@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone, timedelta
+from zoneinfo import ZoneInfo
 from enum import Enum
 import hashlib
 import json
@@ -254,6 +255,18 @@ class DiscoveryCoordinator:
         return clusters
 
     def _is_same_story(self, item: DiscoveryItem, cluster: DiscoveryCluster, time_window_hours: int) -> bool:
+        # Enforce the declared time window before semantic clustering.
+        try:
+            left = datetime.fromisoformat(item.published_at.replace("Z", "+00:00"))
+            right = datetime.fromisoformat(cluster.primary_item.published_at.replace("Z", "+00:00"))
+            if left.tzinfo is None:
+                left = left.replace(tzinfo=timezone.utc)
+            if right.tzinfo is None:
+                right = right.replace(tzinfo=timezone.utc)
+            if abs((left - right).total_seconds()) > time_window_hours * 3600:
+                return False
+        except (TypeError, ValueError):
+            return False
         # Same rider/entity or exact series + high title word overlap
         item_rider = next((e for e in item.entities if e in CANONICAL_ALIASES), None)
         cluster_rider = cluster.top_rider
@@ -360,7 +373,7 @@ class RaceWeekendScheduler:
             now_dt = datetime.now(timezone.utc)
 
         # Explicit timezone handling
-        berlin_tz = timezone(timedelta(hours=1))  # CET standard time offset (or ISO representation)
+        berlin_tz = ZoneInfo("Europe/Berlin")
         local_date = now_dt.astimezone(berlin_tz).date()
         weekday = local_date.weekday()  # 0=Mon, 1=Tue, 2=Wed, 3=Thu, 4=Fri, 5=Sat, 6=Sun
 
