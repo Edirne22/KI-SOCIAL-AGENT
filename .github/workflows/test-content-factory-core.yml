@@ -10,6 +10,7 @@ on:
       - "media_storage.py"
       - "tests/test_content_factory_core.py"
       - ".github/workflows/test-content-factory-core.yml"
+      - ".github/content-factory-block1-acceptance"
   workflow_dispatch:
 
 jobs:
