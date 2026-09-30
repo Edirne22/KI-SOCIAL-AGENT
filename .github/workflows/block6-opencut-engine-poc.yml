@@ -68,13 +68,54 @@ jobs:
           ffmpeg -hide_banner -loglevel error -y \
             -f lavfi -i "testsrc2=size=1280x720:rate=30" \
             -f lavfi -i "sine=frequency=880:sample_rate=48000" \
-            -t 5 -c:v libx264 -pix_fmt yuv420p -c:a aac -shortest public/facecam.mp4
+            -t 32 -c:v libx264 -pix_fmt yuv420p -c:a aac -shortest public/facecam.mp4
           test -s public/facecam.mp4
           ffprobe -v error -show_entries format=duration -of default=nw=1 public/facecam.mp4
+
+      - name: Prepare vertical caption acceptance composition
+        working-directory: /home/runner/work/_temp/opencut
+        shell: bash
+        run: |
+          set -euo pipefail
+          sed -i 's/width: 1920/width: 1080/' src/examples/quickstart/config.ts
+          sed -i 's/height: 1080/height: 1920/' src/examples/quickstart/config.ts
+          cat > src/examples/quickstart/timeline.ts <<'EOF'
+          import type { TimelineSegment } from "../../engine";
+          export const TIMELINE: TimelineSegment[] = [{
+            id: "factory-acceptance",
+            type: "facecam-full",
+            facecamStartSec: 0,
+            durationSec: 30,
+            faceBubble: "hidden",
+            showSubtitles: true,
+            showTitleCard: true,
+            showEndCard: true,
+            keywords: [{text:"EDIRNE 22",startSec:4,endSec:8}],
+          }];
+          EOF
+          cat > src/examples/quickstart/subtitles.ts <<'EOF'
+          import type { SubtitleSegment } from "../../engine";
+          export const SUBTITLE_SEGMENTS: SubtitleSegment[] = [
+            {start:0.5,end:4.5,text:"Block sechs echter Render Test",words:[
+              {word:"Block",start:0.5,end:1.2},{word:"sechs",start:1.2,end:2.0},
+              {word:"echter",start:2.0,end:2.8},{word:"Render",start:2.8,end:3.6},
+              {word:"Test",start:3.6,end:4.5}]},
+            {start:10,end:14,text:"Untertitel Audio Hochformat",words:[
+              {word:"Untertitel",start:10,end:11.3},{word:"Audio",start:11.3,end:12.5},
+              {word:"Hochformat",start:12.5,end:14}]}
+          ];
+          EOF
 
       - name: Real 5s headless render
         working-directory: /home/runner/work/_temp/opencut
         run: npm run test-render
+
+      - name: Real 15s and 30s vertical renders
+        working-directory: /home/runner/work/_temp/opencut
+        run: |
+          set -euo pipefail
+          timeout 10m npx remotion render src/examples/quickstart/index.ts Quickstart --frames=0-449 out/factory-15s.mp4
+          timeout 10m npx remotion render src/examples/quickstart/index.ts Quickstart --frames=0-899 out/factory-30s.mp4
 
       - name: Media acceptance
         working-directory: /home/runner/work/_temp/opencut
