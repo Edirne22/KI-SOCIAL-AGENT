@@ -31,4 +31,4 @@ jobs:
         working-directory: infra/openchatcut-cloudflare
         run: npm install && npx wrangler deploy --dry-run
       - name: Pinned OpenChatCut upstream exists
-        run: git ls-remote https://github.com/0xsline/OpenChatCut.git d1af1ade45521e8ed9a5be09e3acad823f269453 | grep d1af1ade45521e8ed9a5be09e3acad823f269453
+        run: test "$(git ls-remote https://github.com/0xsline/OpenChatCut.git refs/heads/main | cut -f1)" = "d1af1ade45521e8ed9a5be09e3acad823f269453"
