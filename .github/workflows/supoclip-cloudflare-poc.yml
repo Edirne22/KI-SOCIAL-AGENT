@@ -79,8 +79,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          code="$(curl -sS -o /dev/null -w '%{http_code}' "$BASE_URL/_factory/health" || true)"
-          test "$code" = "401"
+          body="$(mktemp)"
+          code="$(curl -sS -o "$body" -w '%{http_code}' "$BASE_URL/_factory/health" || true)"
+          echo "unauthenticated route probe: HTTP $code body=$(cat "$body")"
+          rm -f "$body"
+          case "$code" in
+            401) exit 0 ;;
+            404|000) echo "::error::SupoClip Worker route is not available yet (HTTP $code); this is deployment/readiness, not an auth-contract failure." ; exit 1 ;;
+            *) echo "::error::Expected 401 from deployed SupoClip Worker, got HTTP $code" ; exit 1 ;;
+          esac
       - name: Real SupoClip container readiness
         shell: bash
         run: |
