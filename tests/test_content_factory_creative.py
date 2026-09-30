@@ -24,8 +24,14 @@ class Block5Tests(unittest.TestCase):
             BuelentWritingEditor().finalize(b,p,caption="Toprak gewann mit 99 Sekunden Vorsprung.",used_claim_ids=["c1"])
     def test_writer_allows_verified_number(self):
         p=package(); b=CreativeDirector().create_brief(p,CreativeRequest())
-        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann. Der Vorsprung betrug 3 Sekunden.",hashtags=["#WorldSBK"],used_claim_ids=["c1","c2"])
+        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann. Der Vorsprung betrug 3 Sekunden.",hashtags=["#WorldSBK"],used_claim_ids=["c1","c2"],sentence_claim_map=[("Toprak gewann.",["c1"]),("Der Vorsprung betrug 3 Sekunden.",["c2"])])
         self.assertIn("3 Sekunden",d.caption)
+    def test_writer_rejects_ungrounded_nonnumeric_hallucination(self):
+        p=package(); b=CreativeDirector().create_brief(p,CreativeRequest())
+        with self.assertRaises(CreativeContractError):
+            BuelentWritingEditor().finalize(b,p,caption="Toprak gewann und wechselt zu Ducati.",used_claim_ids=["c1"],
+                sentence_claim_map=[("Toprak gewann.",["c1"])])
+
     def test_prompt_injection_leak_rejected(self):
         p=package(); b=CreativeDirector().create_brief(p,CreativeRequest())
         with self.assertRaises(CreativeContractError):
@@ -39,7 +45,7 @@ class Block5Tests(unittest.TestCase):
         s=ResearchSource("x","https://example.org/x","X","Can gewann.",series="WorldSSP")
         q=FactNewsroom().build_package(story_key="x",series="WorldSSP",sources=[s],claims=[FactClaim("x","Can gewann.",ClaimStatus.VERIFIED,(Evidence("x","Can gewann"),),series="WorldSSP")],coverage_complete=True)
         with self.assertRaises(CreativeContractError):
-            BuelentWritingEditor().finalize(b,q,caption="Toprak gewann.",used_claim_ids=["c1"])
+            BuelentWritingEditor().finalize(b,q,caption="Toprak gewann.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann.",["c1"])])
     def test_format_selection(self):
         d=CreativeDirector()
         self.assertEqual(ContentFormat.VIDEO,d.choose_format(CreativeRequest(preferred_format="video")))
@@ -56,7 +62,7 @@ class Block5Tests(unittest.TestCase):
             name="broken"
             def review(self,b,d): raise RuntimeError("provider down")
         p=package(); b=CreativeDirector().create_brief(p,CreativeRequest())
-        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"])
+        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann.",["c1"])])
         r=AudiencePanel([P(),Broken()]).review(job_id="j",revision=1,brief=b,draft=d)
         self.assertEqual("SIMULATED_AUDIENCE_FEEDBACK",r.label)
         self.assertEqual(("clarity","degraded"),tuple(x.kind for x in r.signals))
@@ -65,29 +71,29 @@ class Block5Tests(unittest.TestCase):
             name="evil"
             def review(self,b,d): return [FactClaim("evil","Fake",ClaimStatus.VERIFIED)]
         p=package(); b=CreativeDirector().create_brief(p,CreativeRequest())
-        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"])
+        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann.",["c1"])])
         r=AudiencePanel([Evil()]).review(job_id="j",revision=1,brief=b,draft=d)
         self.assertEqual("degraded",r.signals[0].kind)
     def test_attach_is_revision_bound_and_immutable(self):
         p=package(); b=CreativeDirector().create_brief(p,CreativeRequest())
-        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"])
+        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann.",["c1"])])
         j=ProductionJob("test"); attach_creative_artifacts(j,package=p,brief=b,draft=d)
         attach_creative_artifacts(j,package=p,brief=b,draft=d)
-        d2=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann das Rennen.",used_claim_ids=["c1"])
+        d2=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann das Rennen.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann das Rennen.",["c1"])])
         with self.assertRaises(CreativeContractError): attach_creative_artifacts(j,package=p,brief=b,draft=d2)
     def test_stale_audience_revision_rejected(self):
-        p=package(); b=CreativeDirector().create_brief(p,CreativeRequest()); d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"])
+        p=package(); b=CreativeDirector().create_brief(p,CreativeRequest()); d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann.",["c1"])])
         r=AudiencePanel().review(job_id="j",revision=1,brief=b,draft=d); j=ProductionJob("test"); j.revision=2
         with self.assertRaises(CreativeContractError): attach_creative_artifacts(j,package=p,brief=b,draft=d,audience_report=r)
     def test_human_finalized_job_cannot_mutate(self):
-        p=package(); b=CreativeDirector().create_brief(p,CreativeRequest()); d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"])
+        p=package(); b=CreativeDirector().create_brief(p,CreativeRequest()); d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann.",["c1"])])
         j=ProductionJob("test"); j.status=JobStatus.READY_FOR_HUMAN
         with self.assertRaises(CreativeContractError): attach_creative_artifacts(j,package=p,brief=b,draft=d)
     def test_staffellauf_block4_to_block5_to_storyboard(self):
         p=package(); j=ProductionJob("WorldSBK Toprak"); j.transition(JobStatus.INGESTING); j.transition(JobStatus.RESEARCHING)
         attach_fact_package(j,p); j.transition(JobStatus.WRITING)
         b=CreativeDirector().create_brief(p,CreativeRequest(has_video=True,platforms=("instagram","facebook")))
-        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann das Rennen. Was sagt ihr dazu?",hashtags=["#WorldSBK","#Toprak"],used_claim_ids=["c1"],discussion_question="Was sagt ihr dazu?")
+        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann das Rennen. Was sagt ihr dazu?",hashtags=["#WorldSBK","#Toprak"],used_claim_ids=["c1"],discussion_question="Was sagt ihr dazu?",sentence_claim_map=[("Toprak gewann das Rennen.",["c1"])])
         r=AudiencePanel().review(job_id=j.job_id,revision=j.revision,brief=b,draft=d)
         attach_creative_artifacts(j,package=p,brief=b,draft=d,audience_report=r)
         j.transition(JobStatus.STORYBOARDING)
