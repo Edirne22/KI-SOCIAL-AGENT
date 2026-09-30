@@ -18,6 +18,31 @@ class Block6Tests(unittest.TestCase):
   self.assertEqual(("supoclip","openchatcut","ffmpeg"),tuple(x.machine for x in p.steps))
  def test_video_without_source_uses_pollo(self):
   p=MediaProductionPlanner().plan(self.job(),brief()); self.assertEqual("pollo",p.steps[0].machine)
+ def test_image_without_source_uses_live_image_router(self):
+  p=MediaProductionPlanner().plan(self.job(),brief(ContentFormat.IMAGE))
+  self.assertEqual("image_router",p.steps[0].machine)
+  self.assertEqual("hook | angle | visual",dict(p.steps[0].parameters)["prompt"])
+ def test_live_image_router_adapter_stores_immutable_media(self):
+  class Router:
+   def generate_image(self,prompt):
+    self.prompt=prompt; return b"png-bytes"
+  with tempfile.TemporaryDirectory() as td:
+   router=Router(); storage=LocalScratchStorage(Path(td)/"s"); a=ImageRouterAdapter(storage,router)
+   t=ToolTask("j",3,"generate",[],{"prompt":"race image"})
+   result=a.run(t); media=result.outputs[0]
+   self.assertEqual(ExecutionTruth.LIVE,a.truth)
+   self.assertEqual("race image",router.prompt)
+   self.assertEqual("image/png",media.mime_type)
+   self.assertEqual("image_router:generate:r3",media.provenance)
+   self.assertEqual(hashlib.sha256(b"png-bytes").hexdigest(),media.sha256)
+   self.assertEqual(b"png-bytes",storage.resolve_local(media).read_bytes())
+ def test_live_image_router_rejects_inputs_and_empty_prompt(self):
+  with tempfile.TemporaryDirectory() as td:
+   class Router:
+    def generate_image(self,prompt): return b"x"
+   a=ImageRouterAdapter(LocalScratchStorage(Path(td)/"s"),Router())
+   with self.assertRaises(MediaProductionError): a.run(ToolTask("j",1,"x",[ref("foreign")],{"prompt":"x"}))
+   with self.assertRaises(MediaProductionError): a.run(ToolTask("j",1,"x",[],{"prompt":" "}))
  def test_post_needs_no_media_machine(self):
   self.assertEqual((),MediaProductionPlanner().plan(self.job(),brief(ContentFormat.POST)).steps)
  def test_plan_cross_job_rejected(self):
