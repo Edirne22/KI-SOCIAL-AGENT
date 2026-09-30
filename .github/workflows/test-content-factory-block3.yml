@@ -1,0 +1,31 @@
+name: Test Content Factory Block 3 Acceptance
+
+on:
+  pull_request:
+    paths:
+      - "content_factory_discovery.py"
+      - "content_factory_adapters.py"
+      - "tests/test_content_factory_discovery.py"
+      - ".github/workflows/test-content-factory-block3.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install existing runtime dependency
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Syntax and imports
+        run: python -m py_compile content_factory_discovery.py content_factory_adapters.py tests/test_content_factory_discovery.py
+      - name: Block 1 and 2 regression
+        run: python -m unittest -v tests.test_content_factory_core tests.test_content_factory_persistence
+      - name: Block 3 independent acceptance
+        run: python -m unittest -v tests.test_content_factory_discovery
+      - name: Block 4 regression
+        run: python -m unittest -v tests.test_content_factory_newsroom
+      - name: Existing SOURCE-FACT-CONTRACT-V1
+        run: python tests/test_source_fact_contract_v1.py
