@@ -112,8 +112,7 @@ jobs:
 
 
   live-acceptance:
-    if: github.event_name == 'workflow_dispatch'
-    needs: deploy
+    needs: contract
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
