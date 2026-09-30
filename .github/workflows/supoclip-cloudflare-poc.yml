@@ -1,0 +1,96 @@
+name: SupoClip Cloudflare PoC
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "infra/supoclip-cloudflare/**"
+      - ".github/workflows/supoclip-cloudflare-poc.yml"
+  pull_request:
+    paths:
+      - "infra/supoclip-cloudflare/**"
+      - ".github/workflows/supoclip-cloudflare-poc.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "24" }
+      - name: Install wrapper dependencies
+        working-directory: infra/supoclip-cloudflare
+        run: npm install
+      - name: Validate Wrangler configuration
+        working-directory: infra/supoclip-cloudflare
+        run: npx wrangler deploy --dry-run
+      - name: Verify pinned SupoClip upstream
+        run: git -c protocol.version=2 fetch --no-tags --depth=1 https://github.com/FujiwaraChoki/supoclip.git 3cbe23d25acdca15a3f46b28a9700a244559ab26 && git cat-file -e 3cbe23d25acdca15a3f46b28a9700a244559ab26^{commit}
+
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    needs: contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      SUPOCLIP_POC_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "24" }
+      - name: Install wrapper dependencies
+        working-directory: infra/supoclip-cloudflare
+        run: npm install
+      - name: Guard credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID SUPOCLIP_POC_TOKEN; do
+            test -n "${!name:-}" || { echo "::error::Missing required secret: $name"; exit 1; }
+          done
+      - name: Build private secret bundle
+        shell: bash
+        run: jq -n --arg token "$SUPOCLIP_POC_TOKEN" '{SUPOCLIP_POC_TOKEN:$token}' > "$RUNNER_TEMP/supoclip-secrets.json"
+      - name: Deploy SupoClip Worker and container
+        working-directory: infra/supoclip-cloudflare
+        run: npx wrangler deploy --secrets-file "$RUNNER_TEMP/supoclip-secrets.json"
+      - if: always()
+        run: rm -f "$RUNNER_TEMP/supoclip-secrets.json"
+      - name: Show container provisioning
+        working-directory: infra/supoclip-cloudflare
+        run: npx wrangler containers list
+
+  live-acceptance:
+    if: github.event_name != 'pull_request'
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      BASE_URL: https://edirne22-supoclip-poc.butupeli.workers.dev
+      TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+    steps:
+      - name: Negative auth control
+        shell: bash
+        run: |
+          set -euo pipefail
+          code="$(curl -sS -o /dev/null -w '%{http_code}' "$BASE_URL/_factory/health" || true)"
+          test "$code" = "401"
+      - name: Real SupoClip container readiness
+        shell: bash
+        run: |
+          set -euo pipefail
+          for i in {1..36}; do
+            body="$(mktemp)"
+            code="$(curl --max-time 20 -sS -o "$body" -w '%{http_code}' -H "Authorization: Bearer $TOKEN" "$BASE_URL/_factory/health" || true)"
+            echo "attempt=$i http=$code body=$(cat "$body")"
+            rm -f "$body"
+            [ "$code" = "200" ] && exit 0
+            sleep 10
+          done
+          exit 1
