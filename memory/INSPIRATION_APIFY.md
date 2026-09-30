@@ -5,186 +5,200 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: Introducing the 2027 calendar 📆 Five continents. Two new venues. Welcome to 2027! 🌍
+- Titel: REDEMPTION COMPLETE! 👑 From the lows to the top of the world, @nicolo_bulega11 is your 2026 #WorldSBK Champion 🏆
 
-#MotoGP
-- Datum: 2026-09-25T10:02:33.000Z
-- URL: https://www.instagram.com/p/DdtMNi1obVX/
-- Likes: 129625
-- Kommentare: 1000
+#Bu1egacy #ItalianWorldSBK 🇮🇹
+- Datum: 2026-09-27T17:35:00.000Z
+- URL: https://www.instagram.com/p/DdzJa0VOT3h/
+- Likes: 18964
+- Kommentare: 160
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: Should we bring back "Fabiokid" as a nickname? 😁
+- Titel: MADE HISTORY ⭐️⭐️ Only the second Italian ever to be crowned #WorldSBK Champion 🏆🔥
 
-#MotoGP #FabioDiGiannantonio
-- Datum: 2026-09-27T12:00:12.000Z
-- URL: https://www.instagram.com/p/Ddyj1lnCNqx/
-- Likes: 4872
-- Kommentare: 13
+#Bu1egacy #ItalianWorldSBK 🇮🇹
+- Datum: 2026-09-27T15:39:04.000Z
+- URL: https://www.instagram.com/p/Ddy8o-buURZ/
+- Likes: 7738
+- Kommentare: 58
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: A weekend made for fans ❤️🎉
+- Titel: 👑 @nicolo_bulega11 is the 2026 #WorldSBK CHAMPION! 🇮🇹🏆 A season of perfection, records and redemption ⭐️
 
-#AustrianGP 🇦🇹
-- Datum: 2026-09-27T09:01:00.000Z
-- URL: https://www.instagram.com/p/DdyPRZogeyr/
-- Likes: 5030
-- Kommentare: 19
+#Bu1egacy #ItalianWorldSBK 🇮🇹
+- Datum: 2026-09-27T14:04:47.000Z
+- URL: https://www.instagram.com/p/DdyxftRuz2K/
+- Likes: 27470
+- Kommentare: 425
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: Putting those cat-like reflexes to the test! 🚨 🔍
-
-#MotoGP #JorgeMartin #MarcoBezzecchi
-- Datum: 2026-09-27T07:00:10.000Z
-- URL: https://www.instagram.com/p/DdyBjyKgObO/
-- Likes: 9876
-- Kommentare: 40
+- Titel: Race weekends move fast. So does Xavi Vierge. 
+ 
+Between sessions, team meetings and everything the paddock demands, the Turbo Vado SL 2 helps Xavi move quickly and efficiently — while saving his energy for what matters most: racing.
+ 
+Lightweight, fast and always ready for what’s next, it’s part of how Xavi moves through race weekend.
+ 
+“On the Superbike, everything is intense. Speed, pressure, total focus. Between sessions, I still need to move, but I also need to reset. Riding my bike gets me
+- Datum: 2026-09-29T15:30:07.000Z
+- URL: https://www.instagram.com/p/Dd4FfgnMfGw/
+- Likes: 446
+- Kommentare: 17
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: A to Z… can @diogomoreira_11 & @johannzarco make it through the whole alphabet? 👀🔤🔥
+- Titel: Emotions, praises to a Champion and a very special Round 10 🌟 Catch all the Hot Headlines from Cremona now on WorldSBK.com 🍿🌶️
 
-#MotoGP
-- Datum: 2026-09-26T14:23:09.000Z
-- URL: https://www.instagram.com/p/DdyxkgvgI4e/
-- Likes: 4831
-- Kommentare: 87
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-29T14:58:49.000Z
+- URL: https://www.instagram.com/p/Dd4B21NDqnT/
+- Likes: 3133
+- Kommentare: 13
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: A pretty special one from Baku ✨ #MotoGP Hall of Famer @official_cs27 handed the #F1 pole position award to @georgerussell63 yesterday 🏆
+- Titel: Which was the best overtake from the #ItalianWorldSBK Round? 👀⚔️ You decide! 🗳️⬇️
 
-📸 Getty Images
-- Datum: 2026-09-26T10:21:22.000Z
-- URL: https://www.instagram.com/p/DdvzuJTCNqF/
-- Likes: 31829
-- Kommentare: 130
+#WorldSBK
+- Datum: 2026-09-29T14:45:31.000Z
+- URL: https://www.instagram.com/p/Dd4AVWUDpR2/
+- Likes: 847
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: The #AustrianGP 🇦🇹 grid, captured from every angle 📸
+- Titel: What a rollercoaster! 💥 @sam.lowes22 pulls of a stunning overtake on @alexlowes22 only to crash moments later 😱
 
-#MotoGP
-- Datum: 2026-09-26T09:00:05.000Z
-- URL: https://www.instagram.com/p/DdvqcDPCDui/
-- Likes: 34374
-- Kommentare: 64
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-29T13:04:15.000Z
+- URL: https://www.instagram.com/p/Dd30m_JubFJ/
+- Likes: 2245
+- Kommentare: 10
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: Stick with us and you will see everything...⁠
-⁠
-#TheDreamTheChallenge
-- Datum: 2026-09-26T07:03:14.000Z
-- URL: https://www.instagram.com/p/Ddvcw2tFTwV/
-- Likes: 12324
-- Kommentare: 62
+- Titel: 3 ROUNDS. 3 HAT-TRICKS. 🏆🏆🏆 Cremona Circuit is officially a hat-trick circuit! 🔥
+
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-29T12:46:28.000Z
+- URL: https://www.instagram.com/p/Dd3ysd-OT3y/
+- Likes: 2326
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: The A to Z Challenge, but make it multilingual, Aprilia edition 🌍🔥
+- Titel: Elbows out! 🔥 Four riders battle it out in Race 1 🍿⚔️
 
-#MotoGP #MarcoBezzecchi #JorgeMartin
-- Datum: 2026-09-26T07:00:12.000Z
-- URL: https://www.instagram.com/p/DdvcroYA19G/
-- Likes: 9469
-- Kommentare: 33
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-29T11:12:35.000Z
+- URL: https://www.instagram.com/p/Dd3n4Fau02n/
+- Likes: 2156
+- Kommentare: 5
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Postcards and passport stamps from the future 🔜 Which Grand(s) Prix are you planning on attending in 2027? 🗺️📍
+- Titel: The messages keep coming for the new World Champion! 🥹🏆👑
 
-#MotoGP
-- Datum: 2026-09-25T15:09:32.000Z
-- URL: https://www.instagram.com/p/Ddtv5x6CJba/
-- Likes: 25389
-- Kommentare: 104
+#Bu1egacy #ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-09-29T09:59:08.000Z
+- URL: https://www.instagram.com/p/Dd3fhi6uO3Z/
+- Likes: 3465
+- Kommentare: 22
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: Should we bring back "Fabiokid" as a nickname? 😁
+- Titel: Last year's #JapaneseGP🇯🇵 brings back good memories to Pecco 💯
+
+Here's where the "63" took his last #MotoGP victory! 🏆
 
 #MotoGP
-- Datum: 2026-09-27T12:01:43.000Z
+- Datum: 2026-09-30T05:01:01.000Z
 - URL: nicht verfügbar
-- Likes: 307
-- Kommentare: 4
+- Likes: 9
+- Kommentare: 0
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: A weekend made for fans ❤️🎉
+- Titel: From idolising Rossi, to working with him, to being labelled his successor... that’s a lot of pressure from a young age  💪 
 
-#AustrianGP 🇦🇹
-- Datum: 2026-09-27T09:00:59.000Z
+#MotoGP
+- Datum: 2026-09-29T16:00:49.000Z
 - URL: nicht verfügbar
-- Likes: 681
-- Kommentare: 8
+- Likes: 1549
+- Kommentare: 39
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Putting Bez and Martin's cat-like reflexes to the test! 🔍
+- Titel: Rivalries, history, legends. 💎
+
+The #JapaneseGP is packed with ICONIC moments that have shaped the sport ✨
 
 #MotoGP
-- Datum: 2026-09-27T07:01:01.000Z
+- Datum: 2026-09-29T15:00:53.000Z
 - URL: nicht verfügbar
-- Likes: 982
-- Kommentare: 16
-- Shares: nicht verfügbar
-### Datensatz 4
-- Titel: A to Z… can the LCR teammates make it through the whole alphabet? 👀🔤🔥
-
-#MotoGP
-- Datum: 2026-09-26T14:29:04.000Z
-- URL: nicht verfügbar
-- Likes: 559
-- Kommentare: 6
-- Shares: nicht verfügbar
-### Datensatz 5
-- Titel: Sync the #MotoGP calendar to yours and get race schedules, updates, where to watch, tickets and more – all in one place! 📆📲
-
-➡️ https://motogp.io/4z3KNlE
-- Datum: 2026-09-26T11:08:49.000Z
-- URL: nicht verfügbar
-- Likes: 207
-- Kommentare: 2
-- Shares: nicht verfügbar
-### Datensatz 6
-- Titel: A pretty special one from Baku ✨ #MotoGP Hall of Famer Casey Stoner AM handed the #F1 pole position award to George Russell yesterday 🏆
-
-📸 Getty Images
-- Datum: 2026-09-26T10:21:42.000Z
-- URL: nicht verfügbar
-- Likes: 2857
-- Kommentare: 31
-- Shares: nicht verfügbar
-### Datensatz 7
-- Titel: The #AustrianGP 🇦🇹 grid, captured from every angle 📸
-
-#MotoGP
-- Datum: 2026-09-26T09:00:14.000Z
-- URL: nicht verfügbar
-- Likes: 1744
-- Kommentare: 10
-- Shares: nicht verfügbar
-### Datensatz 8
-- Titel: The A to Z Challenge, but make it multilingual, Aprilia edition 🌍🔥
-
-#MotoGP
-- Datum: 2026-09-26T07:00:19.000Z
-- URL: nicht verfügbar
-- Likes: 1079
-- Kommentare: 12
-- Shares: nicht verfügbar
-### Datensatz 9
-- Titel: Almost… and almost… and almost... 👀
-
-Pedro Acosta had plenty of close calls before finally getting his hands on victory!🏆🔥
-- Datum: 2026-09-25T16:02:06.000Z
-- URL: nicht verfügbar
-- Likes: 6985
+- Likes: 2806
 - Kommentare: 29
 - Shares: nicht verfügbar
-### Datensatz 10
-- Titel: Postcards and passport stamps from the future 🔜 Which Grand(s) Prix are you planning on attending in 2027? 🗺️📍
+### Datensatz 4
+- Titel: Motegi memories that live rent free in our minds ✨
+
+#JapaneseGP🇯🇵 #MotoGP
+- Datum: 2026-09-29T13:00:13.000Z
+- URL: nicht verfügbar
+- Likes: 1392
+- Kommentare: 10
+- Shares: nicht verfügbar
+### Datensatz 5
+- Titel: The comeback completed 🏆 One year ago in Motegi, @marcmarquez93 completed one of the greatest comebacks in #MotoGP history 🤩
+
+#JapaneseGP 🇯🇵
+- Datum: 2026-09-29T12:00:32.000Z
+- URL: nicht verfügbar
+- Likes: 6139
+- Kommentare: 37
+- Shares: nicht verfügbar
+### Datensatz 6
+- Titel: One of the biggest comebacks in sporting history! ✨
+ 
+Relive Marc Márquez's seventh #MotoGP title by shopping his collection! 👑👉 https://tr.ee/2025TitleThrowback
+ 
+#MoreThanANumber | #JapaneseGP🇯🇵
+- Datum: 2026-09-29T11:31:44.000Z
+- URL: nicht verfügbar
+- Likes: 5516
+- Kommentare: 128
+- Shares: nicht verfügbar
+### Datensatz 7
+- Titel: Has the new grid layout and holeshot device ban made race starts safer? 🔎
+
+Race Director Graham Webber explains what the data shows so far as Marquez, Martin, Bezzecchi and more give their verdict 🛡️
 
 #MotoGP
-- Datum: 2026-09-25T15:09:51.000Z
+- Datum: 2026-09-29T10:31:54.000Z
 - URL: nicht verfügbar
-- Likes: 418
-- Kommentare: 13
+- Likes: 1144
+- Kommentare: 19
+- Shares: nicht verfügbar
+### Datensatz 8
+- Titel: Throwback to 2001, when things got a little heated between @valeyellow46 and @maxbiaggiofficial 👀
+
+#JapaneseGP 🇯🇵 #MotoGP
+- Datum: 2026-09-29T10:00:27.000Z
+- URL: nicht verfügbar
+- Likes: 18430
+- Kommentare: 618
+- Shares: nicht verfügbar
+### Datensatz 9
+- Titel: "Kong" Somkiat Chantra is back this weekend! 🇹🇭
+
+We sure missed his energy, both on and off track! 🔥
+
+#JapaneseGP 🇯🇵 #MotoGP
+- Datum: 2026-09-29T08:02:49.000Z
+- URL: nicht verfügbar
+- Likes: 5059
+- Kommentare: 85
+- Shares: nicht verfügbar
+### Datensatz 10
+- Titel: Will it be Martin or Marquez? 🟣🔴
+
+#JapaneseGP🇯🇵
+- Datum: 2026-09-29T07:00:34.000Z
+- URL: nicht verfügbar
+- Likes: 3435
+- Kommentare: 323
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.

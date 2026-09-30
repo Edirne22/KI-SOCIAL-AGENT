@@ -1,137 +1,79 @@
 # Inspiration-Ideen
-Stand: 2026-09-28 05:04
 
-## Datenstatus
-- Konkrete öffentliche Datensätze: 30
-- Apify: konkrete Daten vorhanden
-- YouTube Apify: konkrete Daten vorhanden
-- Bright Data: keine konkreten Daten
-- Crawlbase: keine konkreten Daten
+---
 
-## Report
-Strukturierte Rohdaten liegen vor. Für die detaillierte Auswertung ist Gemini-Zusammenfassung vorgesehen.
+# **Trending-Report für Bülent: Deutsche & Türkische Motorrad-Community**  
+*(Aktualisiert: 30.09.2026)*  
 
-## Gemini-Status
-Gemini nicht verfügbar – Rohdaten der wichtigsten Beiträge folgen.
+---
 
-## Rohdaten
-### Datensatz 1
-- Plattform: Apify
-- Titel: Introducing the 2027 calendar 📆 Five continents. Two new venues. Welcome to 2027! 🌍
-- Datum: 2026-09-25T10:02:33.000Z
-- URL: https://www.instagram.com/p/DdtMNi1obVX/
-- Engagement: 130625
-### Datensatz 2
-- Plattform: Apify
-- Titel: The #AustrianGP 🇦🇹 grid, captured from every angle 📸
-- Datum: 2026-09-26T09:00:05.000Z
-- URL: https://www.instagram.com/p/DdvqcDPCDui/
-- Engagement: 34438
-### Datensatz 3
-- Plattform: Apify
-- Titel: A pretty special one from Baku ✨ #MotoGP Hall of Famer @official_cs27 handed the #F1 pole position award to @georgerussell63 yesterday 🏆
-- Datum: 2026-09-26T10:21:22.000Z
-- URL: https://www.instagram.com/p/DdvzuJTCNqF/
-- Engagement: 31959
-### Datensatz 4
-- Plattform: Apify
-- Titel: Postcards and passport stamps from the future 🔜 Which Grand(s) Prix are you planning on attending in 2027? 🗺️📍
-- Datum: 2026-09-25T15:09:32.000Z
-- URL: https://www.instagram.com/p/Ddtv5x6CJba/
-- Engagement: 25493
-### Datensatz 5
-- Plattform: Apify
-- Titel: Stick with us and you will see everything...⁠
-- Datum: 2026-09-26T07:03:14.000Z
-- URL: https://www.instagram.com/p/Ddvcw2tFTwV/
-- Engagement: 12386
-### Datensatz 6
-- Plattform: YouTube Apify
-- Titel: InSane Crashes… ! 😱The Craziest Crashes Full action,  😱🏍️#motogp   #motogphighlights #motogp2026
-- Datum: 2026-09-27T16:57:39Z
-- URL: https://www.youtube.com/watch?v=8pTjGw2wmEE
-- Engagement: 10029
-### Datensatz 7
-- Plattform: Apify
-- Titel: Putting those cat-like reflexes to the test! 🚨 🔍
-- Datum: 2026-09-27T07:00:10.000Z
-- URL: https://www.instagram.com/p/DdyBjyKgObO/
-- Engagement: 9916
-### Datensatz 8
-- Plattform: Apify
-- Titel: The A to Z Challenge, but make it multilingual, Aprilia edition 🌍🔥
-- Datum: 2026-09-26T07:00:12.000Z
-- URL: https://www.instagram.com/p/DdvcroYA19G/
-- Engagement: 9502
-### Datensatz 9
-- Plattform: Apify
-- Titel: A weekend made for fans ❤️🎉
-- Datum: 2026-09-27T09:01:00.000Z
-- URL: https://www.instagram.com/p/DdyPRZogeyr/
-- Engagement: 5049
-### Datensatz 10
-- Plattform: Apify
-- Titel: A to Z… can @diogomoreira_11 & @johannzarco make it through the whole alphabet? 👀🔤🔥
-- Datum: 2026-09-26T14:23:09.000Z
-- URL: https://www.instagram.com/p/DdyxkgvgI4e/
-- Engagement: 4918
-### Datensatz 11
-- Plattform: Apify
-- Titel: Should we bring back "Fabiokid" as a nickname? 😁
-- Datum: 2026-09-27T12:00:12.000Z
-- URL: https://www.instagram.com/p/Ddyj1lnCNqx/
-- Engagement: 4885
-### Datensatz 12
-- Plattform: YouTube Apify
-- Titel: 🏍️ Highlights #Moto3 Jr WCh Race 2 | Round 6 Aragón | 2026 FIM MotoJunior™ World Championship
-- Datum: 2026-09-27T17:19:07Z
-- URL: https://www.youtube.com/watch?v=77qAOSDH5gc
-- Engagement: 3431
-### Datensatz 13
-- Plattform: YouTube Apify
-- Titel: Who Will Stand on the Motegi Podium in 2026? #shorts #motogp
-- Datum: 2026-09-27T14:00:01Z
-- URL: https://www.youtube.com/watch?v=JmtrkgEl6wM
-- Engagement: 1512
-### Datensatz 14
-- Plattform: YouTube Apify
-- Titel: THESE RIDERS PUSH THEIR BIKES TO THE LIMIT! 😱🔥 INSANE Motorcycle Racing #shorts #motogp
-- Datum: 2026-09-27T19:02:12Z
-- URL: https://www.youtube.com/watch?v=kLnbymhrIFM
-- Engagement: 1271
-### Datensatz 15
-- Plattform: YouTube Apify
-- Titel: motor gp #viral #viralvideo
-- Datum: 2026-09-27T20:49:41Z
-- URL: https://www.youtube.com/watch?v=jiuuJcjiKxA
-- Engagement: 1245
-### Datensatz 16
-- Plattform: YouTube Apify
-- Titel: RACE HIGHLIGHTS 🔴🏁  Supersport Race 2 at New Jersey Motorsports Park
-- Datum: 2026-09-27T21:57:58Z
-- URL: https://www.youtube.com/watch?v=8s9mCXuBqX0
-- Engagement: 1099
-### Datensatz 17
-- Plattform: YouTube Apify
-- Titel: RACE HIGHLIGHTS 🔴🏁 Quad Lock Superbike Race 3 at New Jersey Motorsports Park
-- Datum: 2026-09-27T20:38:04Z
-- URL: https://www.youtube.com/watch?v=BtVwAqtDRLc
-- Engagement: 775
-### Datensatz 18
-- Plattform: YouTube Apify
-- Titel: RACE HIGHLIGHTS 🔴🏁 Mission King Of The Baggers Race 2 at New Jersey Motorsports Park
-- Datum: 2026-09-27T22:11:23Z
-- URL: https://www.youtube.com/watch?v=3l4EA_HU8Ss
-- Engagement: 522
-### Datensatz 19
-- Plattform: YouTube Apify
-- Titel: XCC RACING: MotoGP 2026 Thailand: Race Weekend Highlights!
-- Datum: 2026-09-28T02:20:53Z
-- URL: https://www.youtube.com/watch?v=41iPKI_t3So
-- Engagement: 0
-### Datensatz 20
-- Plattform: YouTube Apify
-- Titel: XCC RACING: MotoGP 2026 Thailand: Sprint Race Weekend Highlights!
-- Datum: 2026-09-28T02:18:37Z
-- URL: https://www.youtube.com/watch?v=HFhOYW9X-9A
-- Engagement: 0
+## **Top-5 Trending Themen**  
+
+1. **Rossi Puji – Kritik an Steward Fehlern in MotoGP**  
+   - **Quelle**: [YouTube](https://www.youtube.com/watch?v=Sd1slLH2uY8)  
+   - **Datum**: 29.09.2026  
+   - **Warum trending**: Hohe Emotion und Diskussion über Regelungen in MotoGP.  
+   - **Engagement**: 141.068  
+
+2. **Nicolo Bulega – WorldSBK 2026 Champion**  
+   - **Quelle**: [Instagram](https://www.instagram.com/p/DdyxftRuz2K/)  
+   - **Datum**: 27.09.2026  
+   - **Warum trending**: Italienische Meisterung und Rekorde in der Saison.  
+   - **Engagement**: 27.895  
+
+3. **Marc Marquez – Crash-Highlights**  
+   - **Quelle**: [YouTube](https://www.youtube.com/watch?v=QqSEoiMEtDU)  
+   - **Datum**: 29.09.2026  
+   - **Warum trending**: Spannung durch Stürze und Rivalitäten in MotoGP.  
+   - **Engagement**: 16.361  
+
+4. **Bulega – Rehydration (Wiedergeburt) als Champion**  
+   - **Quelle**: [Instagram](https://www.instagram.com/p/DdzJa0VOT3h/)  
+   - **Datum**: 27.09.2026  
+   - **Warum trending**: Emotionale Story über Bulegas Weg vom Scheitern zur Krone.  
+   - **Engagement**: 19.124  
+
+5. **Cremona Circuit – Hat-Trick-Saison**  
+   - **Quelle**: [Instagram](https://www.instagram.com/p/Dd3ysd-OT3y/)  
+   - **Datum**: 29.09.2026  
+   - **Warum trending**: Drei Siege in einer Runde – seltenes Phänomen in WorldSBK.  
+   - **Engagement**: 2.329  
+
+---
+
+## **3 konkrete Content-Ideen für Bülent**  
+
+### **1. Titel**: *„Bulega: Vom Sturz ins Tal zur Krone – Die Wiedergeburt eines Champions“*  
+- **Format**: Reel  
+- **Hook**: *„@nicolo_bulega11 hat nicht nur die Meisterschaft gewonnen – er hat sich selbst überwunden.“*  
+- **Inspirations-Quelle**: [Instagram](https://www.instagram.com/p/DdzJa0VOT3h/)  
+- **Warum passend**: Emotionale Story mit Belegungszahlen (19.124) spricht deutsche und türkische Community, die Triumph über Hindernisse liebt.  
+
+---
+
+### **2. Titel**: *„MotoGP-Fehler? Rossi & Puji – Wenn Stewards die Regeln brechen“*  
+- **Format**: Post  
+- **Hook**: *„Rossi Puji: ‚Die Entscheidungen in MotoGP sind nicht immer fair – hier ist, warum es aufhören muss.‘“*  
+- **Inspirations-Quelle**: [YouTube](https://www.youtube.com/watch?v=Sd1slLH2uY8)  
+- **Warum passend**: Kontroverse Diskussion über Regelungen zieht deutsche und türkische Fans in die Kritik ein (141.068 Engagement).  
+
+---
+
+### **3. Titel**: *„Marc Marquez: Wenn der beste Fahrer stolpert – Die dunkelsten Momente 2026“*  
+- **Format**: Story  
+- **Hook**: *„Marc Marquez hat es geschafft, uns alle zu erschrecken – hier sind die gruseligsten Stürze seiner Karriere.“*  
+- **Inspirations-Quelle**: [YouTube](https://www.youtube.com/watch?v=QqSEoiMEtDU)  
+- **Warum passend**: Spannung durch Stürze und Rivalitäten (16.361 Engagement) spricht deutsche und türkische Motorfans, die Action lieben.  
+
+---
+
+## **Quellen**  
+1. [YouTube: Rossi Puji Veda, Soroti Kesalahan Steward MotoGP!](https://www.youtube.com/watch?v=Sd1slLH2uY8)  
+2. [YouTube: From Brutal Crashes To Ultimate Glory!](https://www.youtube.com/watch?v=PMYDcelfg4c)  
+3. [Instagram: @nicolo_bulega11 ist 2026 #WorldSBK CHAMPION!](https://www.instagram.com/p/DdyxftRuz2K/)  
+4. [Instagram: REDEMPTION COMPLETE!](https://www.instagram.com/p/DdzJa0VOT3h/)  
+5. [YouTube: marc marquez crashing highlights](https://www.youtube.com/watch?v=QqSEoiMEtDU)  
+
+--- 
+
+**Hinweis**: Alle Themen basieren auf echten Daten aus den letzten
