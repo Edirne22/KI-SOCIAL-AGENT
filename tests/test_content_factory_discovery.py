@@ -274,7 +274,9 @@ class IndependentAcceptanceTests(unittest.TestCase):
             datetime(2026, 10, 1, 22, 30, tzinfo=timezone.utc)
         )
         self.assertEqual(1, len(decisions))
-        self.assertIn("Practice", service.get_job(decisions[0].job_id).instruction)
+        job = service.get_job(decisions[0].job_id)
+        self.assertEqual("schedule", job.metadata["trigger_kind"])
+        self.assertIn("DST", job.metadata["event_name"])
 
     def test_discovery_trigger_idempotency_survives_block2_restart(self):
         import tempfile
