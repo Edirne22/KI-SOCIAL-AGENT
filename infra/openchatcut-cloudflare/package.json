@@ -1,0 +1,1 @@
+{"name":"edirne22-openchatcut-cloudflare","private":true,"type":"module","scripts":{"deploy":"wrangler deploy","check":"tsc --noEmit"},"dependencies":{"@cloudflare/containers":"latest"},"devDependencies":{"typescript":"latest","wrangler":"latest","@cloudflare/workers-types":"latest"}}
