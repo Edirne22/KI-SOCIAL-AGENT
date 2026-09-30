@@ -618,9 +618,8 @@ Quelle: https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-sur
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-1-pedro-acostada-ktmyi-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36685298209-1
+## Facebook [GEPOSTET 2026-09-30 07:44 | ID: 1285968257941776_122117167587469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-30-daily
 Telegram-Update-ID: 279361793
@@ -636,3 +635,4 @@ Wie seht ihr Acostas rasante Fortschritte – rein Talent oder die richtige Entw
 https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
 Quelle: https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar", "media_status": "", "object_id": "1285968257941776_122117167587469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122117167587469415", "source_url": "https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar", "version": 1}
