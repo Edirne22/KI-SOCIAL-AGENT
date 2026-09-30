@@ -14,6 +14,8 @@ async function http(path,headers={}){return fetch(base+path,{headers:{...headers
 let r=await http("/_factory/health"); assert(r.status===401,`no-token expected 401 got ${r.status}`);
 r=await http("/_factory/health",{Authorization:"Bearer definitely-wrong"}); assert(r.status===401,`wrong-token expected 401 got ${r.status}`);
 r=await http("/_factory/health",auth); assert(r.ok,`health failed ${r.status}`); console.log("protected health:",await r.text());
+const upstreamProbe=await fetch(base+"/api/external-mcp/mcp",{method:"POST",headers:{...auth,"content-type":"application/json","accept":"application/json, text/event-stream"},body:JSON.stringify({jsonrpc:"2.0",id:"probe",method:"initialize",params:{protocolVersion:"2025-06-18",capabilities:{},clientInfo:{name:"edirne22-probe",version:"1.0.0"}}}),signal:AbortSignal.timeout(15000)}).catch(error=>({probeError:error}));
+if(upstreamProbe?.probeError) console.log("MCP_RAW_INITIALIZE_PROBE",JSON.stringify({ok:false,error:String(upstreamProbe.probeError)})); else console.log("MCP_RAW_INITIALIZE_PROBE",JSON.stringify({ok:upstreamProbe.ok,status:upstreamProbe.status,sessionId:upstreamProbe.headers.get("mcp-session-id"),contentType:upstreamProbe.headers.get("content-type"),body:(await upstreamProbe.text()).slice(0,1000)}));
 
 const transport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
 let client=new Client({name:"edirne22-live-acceptance",version:"1.0.0"});
