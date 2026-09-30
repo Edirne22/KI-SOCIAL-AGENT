@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-import hashlib, shutil, subprocess
+import hashlib, shutil, subprocess, tempfile
 from typing import Protocol
 
 from content_factory_core import MediaRef, ProductionJob, JobStatus
@@ -34,7 +34,9 @@ class MediaProductionPlanner:
             steps.append(MediaStep("edit","edit","openchatcut",()))
             steps.append(MediaStep("render","render","ffmpeg",()))
         elif brief.content_format in (ContentFormat.IMAGE,ContentFormat.CAROUSEL):
-            if not ids: steps.append(MediaStep("generate","generate","pollo",()))
+            if not ids:
+                prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
+                steps.append(MediaStep("generate","generate","image_router",(),(("prompt",prompt),("language",brief.language))))
         return MediaProductionPlan(job.job_id,job.revision,brief.brief_id,tuple(steps))
 
 class ExternalMediaPort(Protocol):
@@ -47,6 +49,34 @@ class ContractMediaAdapter:
     truth=ExecutionTruth.SIMULATED
     def __init__(self,name:str,output:MediaRef): self.name=name; self.output=output
     def run(self,task): return ToolResult(task.job_id,task.revision,task.task_id,[self.output],self.name)
+
+class ImageRouterAdapter:
+    """LIVE bridge from the existing ImageRouter bytes API into factory storage."""
+    name="image_router"; truth=ExecutionTruth.LIVE
+    def __init__(self,storage:MediaStorageAdapter,router=None):
+        self.storage=storage
+        if router is None:
+            from image_router import ImageRouter
+            router=ImageRouter()
+        self.router=router
+    def run(self,task:ToolTask)->ToolResult:
+        if task.inputs:
+            raise MediaProductionError("image generation does not accept source media")
+        prompt=str(task.parameters.get("prompt","")).strip()
+        if not prompt:
+            raise MediaProductionError("image generation requires bound prompt")
+        image_bytes=self.router.generate_image(prompt)
+        if not isinstance(image_bytes,(bytes,bytearray)) or not image_bytes:
+            raise MediaProductionError("image router returned no image bytes")
+        with tempfile.TemporaryDirectory(prefix="factory-image-") as tmp:
+            out=Path(tmp)/f"{task.job_id}-{task.revision}-{task.task_id}.png"
+            out.write_bytes(bytes(image_bytes))
+            ref=self.storage.put_file(
+                out,
+                provenance=f"image_router:{task.task_id}:r{task.revision}",
+                mime_type="image/png",
+            )
+        return ToolResult(task.job_id,task.revision,task.task_id,[ref],self.name)
 
 class FFmpegAdapter:
     name="ffmpeg"; truth=ExecutionTruth.LIVE
