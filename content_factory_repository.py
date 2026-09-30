@@ -11,6 +11,7 @@ import json
 import sqlite3
 from pathlib import Path
 from typing import Optional
+from datetime import datetime, timedelta, timezone
 
 from content_factory_core import JobStatus, MediaRef, ProductionJob, utc_now
 
@@ -223,16 +224,21 @@ class SQLiteJobRepository:
             ).fetchone()
             return self._attempt(row)
 
-    def mark_interrupted_attempts_for_reconciliation(self) -> int:
-        """Crash recovery: never blindly replay an external side effect."""
-        now = utc_now()
+    def mark_interrupted_attempts_for_reconciliation(self, *, stale_after_seconds: int = 300) -> int:
+        """Mark only stale RUNNING attempts; never steal healthy concurrent work."""
+        if stale_after_seconds < 0:
+            raise ValueError("stale_after_seconds must not be negative")
+        now_dt = datetime.now(timezone.utc)
+        cutoff = (now_dt - timedelta(seconds=stale_after_seconds)).isoformat()
+        now = now_dt.isoformat()
         with self._connect() as conn:
             cursor = conn.execute(
-                "UPDATE attempts SET state=?,updated_at=?,error=COALESCE(error,?) WHERE state=?",
+                "UPDATE attempts SET state=?,updated_at=?,error=COALESCE(error,?) "
+                "WHERE state=? AND updated_at<=?",
                 (
                     AttemptState.RECONCILE.value, now,
-                    "process interrupted; external side effect must be reconciled before retry",
-                    AttemptState.RUNNING.value,
+                    "process interrupted or lease stale; external side effect must be reconciled before retry",
+                    AttemptState.RUNNING.value, cutoff,
                 ),
             )
             return cursor.rowcount
