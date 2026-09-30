@@ -38,9 +38,11 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Verify host media tools
+      - name: Install and verify host media tools
         run: |
           set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
           ffmpeg -version | head -1
           ffprobe -version | head -1
 
