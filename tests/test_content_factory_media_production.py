@@ -43,6 +43,15 @@ class Block6Tests(unittest.TestCase):
    a=ImageRouterAdapter(LocalScratchStorage(Path(td)/"s"),Router())
    with self.assertRaises(MediaProductionError): a.run(ToolTask("j",1,"x",[ref("foreign")],{"prompt":"x"}))
    with self.assertRaises(MediaProductionError): a.run(ToolTask("j",1,"x",[],{"prompt":" "}))
+ def test_image_router_staffellauf_attaches_output_to_job(self):
+  class Router:
+   def generate_image(self,prompt): return b"factory-image"
+  with tempfile.TemporaryDirectory() as td:
+   j=self.job(); p=MediaProductionPlanner().plan(j,brief(ContentFormat.IMAGE))
+   a=ImageRouterAdapter(LocalScratchStorage(Path(td)/"s"),Router())
+   out=MediaProductionRunner().execute(j,p,{"image_router":a})
+   self.assertEqual(1,len(out)); self.assertEqual(1,len(j.media))
+   self.assertEqual(out[0].outputs[0],j.media[0])
  def test_post_needs_no_media_machine(self):
   self.assertEqual((),MediaProductionPlanner().plan(self.job(),brief(ContentFormat.POST)).steps)
  def test_plan_cross_job_rejected(self):
