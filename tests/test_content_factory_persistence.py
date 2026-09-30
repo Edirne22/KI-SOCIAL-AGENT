@@ -88,7 +88,7 @@ class SQLiteRepositoryTests(unittest.TestCase):
             idempotency_key="external:r1",
         )
         restarted = SQLiteJobRepository(self.db)
-        self.assertEqual(1, restarted.mark_interrupted_attempts_for_reconciliation())
+        self.assertEqual(1, restarted.mark_interrupted_attempts_for_reconciliation(stale_after_seconds=0))
         attempt = restarted.get_attempt(
             job_id=stored.job.job_id, revision=1, step="external-render",
             idempotency_key="external:r1",
@@ -100,6 +100,20 @@ class SQLiteRepositoryTests(unittest.TestCase):
         )
         self.assertFalse(claimed)
         self.assertEqual(AttemptState.RECONCILE, retry.state)
+
+    def test_recovery_does_not_steal_fresh_running_attempt(self):
+        stored, _ = self.repo.create_job("render", idempotency_key="fresh")
+        self.repo.begin_attempt(
+            job_id=stored.job.job_id, revision=1, step="external-render",
+            idempotency_key="fresh:r1",
+        )
+        restarted = SQLiteJobRepository(self.db)
+        self.assertEqual(0, restarted.mark_interrupted_attempts_for_reconciliation(stale_after_seconds=3600))
+        attempt = restarted.get_attempt(
+            job_id=stored.job.job_id, revision=1, step="external-render",
+            idempotency_key="fresh:r1",
+        )
+        self.assertEqual(AttemptState.RUNNING, attempt.state)
 
     def test_stale_revision_attempt_is_blocked(self):
         stored, _ = self.repo.create_job("revise", idempotency_key="rev")
