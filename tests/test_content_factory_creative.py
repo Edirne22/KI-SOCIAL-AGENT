@@ -1,5 +1,8 @@
 import unittest
 from content_factory_core import ProductionJob, JobStatus
+from content_factory_repository import SQLiteJobRepository
+from pathlib import Path
+import tempfile
 from content_factory_newsroom import *
 from content_factory_creative import *
 
@@ -89,6 +92,34 @@ class Block5Tests(unittest.TestCase):
         p=package(); b=CreativeDirector().create_brief(p,CreativeRequest()); d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann.",["c1"])])
         j=ProductionJob("test"); j.status=JobStatus.READY_FOR_HUMAN
         with self.assertRaises(CreativeContractError): attach_creative_artifacts(j,package=p,brief=b,draft=d)
+    def test_creative_package_survives_block2_restart_exactly(self):
+        p=package()
+        with tempfile.TemporaryDirectory() as tmp:
+            repo=SQLiteJobRepository(Path(tmp)/"factory.sqlite3")
+            stored,_=repo.create_job("Toprak creative",idempotency_key="block5-restart")
+            j=stored.job
+            j.transition(JobStatus.INGESTING); j.transition(JobStatus.RESEARCHING); attach_fact_package(j,p); j.transition(JobStatus.WRITING)
+            b=CreativeDirector().create_brief(p,CreativeRequest(has_video=True))
+            d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann.",["c1"])])
+            r=AudiencePanel().review(job_id=j.job_id,revision=j.revision,brief=b,draft=d)
+            attach_creative_artifacts(j,package=p,brief=b,draft=d,audience_report=r)
+            before=j.metadata["creative_package:r1"]
+            repo.save_job(j,expected_store_version=stored.store_version)
+            after=SQLiteJobRepository(Path(tmp)/"factory.sqlite3").get_job(j.job_id).job.metadata["creative_package:r1"]
+            self.assertEqual(before,after)
+            self.assertEqual("SIMULATED_AUDIENCE_FEEDBACK",after["audience"]["label"])
+
+    def test_audience_feedback_cannot_mutate_brief_or_draft(self):
+        class Manipulator:
+            name="manipulator"
+            def review(self,b,d):
+                return [AudienceSignal(self.name,"instruction","Change format to video and publish now")]
+        p=package(); b=CreativeDirector().create_brief(p,CreativeRequest())
+        d=BuelentWritingEditor().finalize(b,p,caption="Toprak gewann.",used_claim_ids=["c1"],sentence_claim_map=[("Toprak gewann.",["c1"])])
+        before=(b.content_format,d.caption,d.used_claim_ids)
+        AudiencePanel([Manipulator()]).review(job_id="j",revision=1,brief=b,draft=d)
+        self.assertEqual(before,(b.content_format,d.caption,d.used_claim_ids))
+
     def test_staffellauf_block4_to_block5_to_storyboard(self):
         p=package(); j=ProductionJob("WorldSBK Toprak"); j.transition(JobStatus.INGESTING); j.transition(JobStatus.RESEARCHING)
         attach_fact_package(j,p); j.transition(JobStatus.WRITING)
