@@ -1,0 +1,42 @@
+name: Test Content Factory R2 Storage
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "media_storage.py"
+      - "tests/test_r2_storage.py"
+      - ".github/workflows/test-content-factory-r2-storage.yml"
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax
+        run: python -m py_compile media_storage.py tests/test_r2_storage.py
+      - name: R2 contract and attack regression
+        run: python -m unittest -v tests.test_r2_storage
+      - name: Existing Block 6 regression
+        run: python -m unittest -v tests.test_content_factory_media_production
+
+  live-r2:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check boto3
+      - name: Private R2 upload-download-integrity smoke
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+        run: python scripts/r2_live_smoke.py
