@@ -57,6 +57,10 @@ class Block6Tests(unittest.TestCase):
  def test_stale_revision_rejected(self):
   j=self.job(); p=MediaProductionPlanner().plan(j,brief()); j.revision+=1
   with self.assertRaises(MediaProductionError): MediaProductionRunner().execute(j,p,{})
+ def test_audience_or_creative_cannot_bypass_canonical_media(self):
+  j=self.job(); j.media.append(ref("source"))
+  p=MediaProductionPlan(j.job_id,j.revision,"b",(MediaStep("x",MediaStage.EDIT,"m",("forged",)),))
+  with self.assertRaises(MediaProductionError): MediaProductionRunner().execute(j,p,{"m":ContractMediaAdapter("m",ref("out"))})
  def test_ffmpeg_requires_input(self):
   with tempfile.TemporaryDirectory() as td:
    a=FFmpegAdapter(LocalScratchStorage(Path(td)/"s"),Path(td)/"w")
