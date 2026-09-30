@@ -325,6 +325,164 @@ ANALYSE DES GESAMTWEGS
 Ein grüner Einzeltest ersetzt **niemals** den Staffellauf. Ein simulierter Adaptertest darf **nicht** als echter Live-E2E-Test eines externen Tools ausgegeben werden.
 
 
+
+## 13. BLOCKRUN – verbindliche End-to-End-Durcharbeitung
+
+`/BLOCKRUN` ist die ausdrückliche Freigabe durch Bülent, einen benannten Entwicklungsblock oder einen benannten Bereich von Blöcken ohne freiwilliges Anhalten an normalen Zwischenständen bis zur vollständigen Definition of Done durchzuarbeiten.
+
+### 13.1 Umfang der Freigabe
+
+Mit `/BLOCKRUN Block X` umfasst die Arbeitsfreigabe innerhalb des benannten Scopes insbesondere:
+
+- aktuellen Repository-/main-/HEAD-Stand und diese Guardrails prüfen,
+- Architektur und vorhandene Komponenten analysieren,
+- Arbeitsbranch anlegen bzw. den autorisierten Branch verwenden,
+- Code bauen und fachlich notwendige Tests ergänzen,
+- Commits und Pushes auf dem Arbeitsbranch durchführen,
+- Pull Request erstellen/aktualisieren,
+- relevante Runs und CI verfolgen,
+- Logs bei Fehlern analysieren,
+- Root Cause bestimmen und fachlich korrekt reparieren,
+- Syntax-/Importprüfung, Regression, Positive und Negative Controls durchführen,
+- Red-Team-, Security-, Manipulations-, Retry-, Idempotenz-, Crash-/Resume- und Handoff-Prüfungen durchführen, soweit für den Block relevant,
+- vollständigen Staffellauf nach Abschnitt 12 durchführen,
+- nach jedem Fix die betroffenen Angriffe und die relevante Gesamtregression erneut ausführen,
+- den Block abschließend gegen seine Definition of Done prüfen.
+
+Besteht für den benannten Scope zusätzlich eine ausdrückliche Merge-Freigabe, darf nach vollständiger technischer Abnahme gemergt und der Merge-Stand anschließend verifiziert werden.
+
+### 13.2 Statusmeldung ist kein Stopp
+
+Während einer aktiven Arbeitsausführung darf nach normalen Zwischenschritten nicht freiwillig angehalten und auf einen neuen Anstoß gewartet werden.
+
+Insbesondere sind folgende Ereignisse nur Zwischenstände:
+
+- Code geschrieben,
+- Commit/Push erfolgt,
+- PR erstellt,
+- CI gestartet,
+- einzelner Test oder CI grün,
+- Regression grün,
+- Red-Team gestartet,
+- Finding gefunden,
+- Fix erstellt.
+
+Grundsatz:
+
+```text
+STATUS MELDEN → WEITERARBEITEN
+```
+
+Bei längerer aktiver Arbeit sollen kurze sichtbare Fortschrittsmeldungen nach dem Muster **Wo bin ich? → Was prüfe ich? → Was ist passiert? → Was mache ich jetzt?** gegeben werden. Die Fortschrittsmeldung beendet die Ausführung nicht.
+
+### 13.3 ROT erzwingt die Reparaturschleife
+
+Wird ein relevanter Test, Run oder CI-Lauf rot, gilt ohne erneute Freigabe:
+
+```text
+ROT
+→ LOGS UNTERSUCHEN
+→ ROOT CAUSE BESTIMMEN
+→ FACHLICH KORREKT REPARIEREN
+→ SYNTAX / IMPORTS PRÜFEN
+→ FIX COMMITTEN / PUSHEN
+→ BETROFFENEN TEST ERNEUT AUSFÜHREN
+→ ERGEBNIS PRÜFEN
+→ BEI ROT SCHLEIFE WIEDERHOLEN
+```
+
+Tests, Assertions, QM-, Security- oder Human-Authority-Prüfungen dürfen niemals abgeschwächt, umgangen oder entfernt werden, nur um ein grünes Ergebnis zu erzeugen.
+
+### 13.4 Grün bedeutet nicht automatisch fertig
+
+Ein grüner Einzeltest oder CI-Lauf beendet `/BLOCKRUN` nicht. Danach folgen die für den Scope relevanten Prüfungen aus Abschnitt 12, insbesondere Regression, Negative und Positive Controls, Red Team, Handoffs, Retry/Idempotenz, Crash/Resume, Staffellauf und Architektur-Review.
+
+Erst die vollständige Definition of Done beendet den Block.
+
+### 13.5 Red Team ist eine Angriffsschleife
+
+Red Team bedeutet aktives Brechen der Implementierung, nicht nur einmaliges Starten vorhandener Tests. Je nach Block sind insbesondere falsche Zustände, ungültige Übergänge, Cross-Job-/Cross-Series-Leaks, Race Conditions, Duplicate Events, Retries, stale revisions, manipulierte IDs/Medien/Hashes/Provenienz, Prompt Injection, Fake News/Halluzinationen, fehlende Quellen, falsche Zuordnungen, kaputte Providerantworten, Timeouts, Neustarts, Abbrüche zwischen Prozessschritten, doppelte Publish-Versuche und Umgehungsversuche der Human Authority anzugreifen.
+
+Jedes technisch lösbare Finding durchläuft:
+
+```text
+FINDING
+→ ROOT CAUSE
+→ FIX
+→ REGRESSIONSTEST FÜR DIE FEHLERKLASSE
+→ ANGRIFF ERNEUT
+→ RELEVANTE GESAMTREGRESSION ERNEUT
+```
+
+### 13.6 Human Authority bleibt unantastbar
+
+`/BLOCKRUN` erweitert niemals die fachlichen Rechte eines Agenten gegenüber der Human Authority. Kein Agent darf Bülents erforderliche endgültige Freigabe ersetzen oder eine gültige Human-Authority-Entscheidung durch einen späteren KI-Gate heimlich aufheben.
+
+### 13.7 Architektur vor Patchwork
+
+Vor einem lokalen Fix ist zu prüfen, ob nur ein Symptom oder die Root Cause behandelt wird. Root-Cause-Fixes sind Workarounds vorzuziehen. Zusätzlich sind vorhandene Komponenten, Doppelimplementierungen, Block-Abhängigkeiten, Datenverlust, Concurrency, Idempotenz, Recovery, Security, Provider-Coupling, Kostenfallen, Single Points of Failure und Rückwärtskompatibilität zu prüfen.
+
+### 13.8 Keine erfundenen Erfolge
+
+Es darf niemals behauptet werden, CI/Test/Live-E2E/Deployment/API/Plattformpost/Merge sei erfolgreich, wenn dies nicht tatsächlich verifiziert wurde.
+
+```text
+SIMULIERT = SIMULIERT
+LIVE = LIVE
+NICHT GEPRÜFT = NICHT GEPRÜFT
+```
+
+### 13.9 Nur echte externe Blocker dürfen unterbrechen
+
+Nur ein technisch nicht selbst behebbarer externer Blocker darf einen aktiven `/BLOCKRUN` vor der Definition of Done unterbrechen, z. B. fehlender API-Key/Zugang, notwendige Anmeldung oder 2FA, fehlende externe Berechtigung, notwendige Zahlung, Provider-Ausfall, fehlende Tool-/GitHub-Berechtigung oder eine nicht freigegebene irreversible bzw. kostenpflichtige externe Aktion.
+
+Eine Blockermeldung muss konkret enthalten:
+
+- **BLOCKER:** Was blockiert?
+- **BETROFFENER SCHRITT:** Wo steht der Lauf?
+- **BEREITS ERLEDIGT:** Was ist vollständig fertig?
+- **BENÖTIGT VON BÜLENT:** Welche konkrete Aktion/Entscheidung ist nötig?
+- **FORTSETZUNG:** Welcher Schritt folgt unmittelbar danach?
+
+### 13.10 Merge-Regel unter BLOCKRUN
+
+Besteht Merge-Freigabe, erfolgt der Merge erst nach vollständiger technischer Abnahme gemäß Abschnitt 12. Bei Merge-Konflikten wird nicht blind überschrieben: aktuellen main analysieren, Konflikt fachlich lösen, relevante Tests/CI/Red-Team-Prüfungen wiederholen und erst anschließend mergen. Der gemergte Stand wird danach erneut verifiziert.
+
+### 13.11 Mehrere freigegebene Blöcke
+
+Bei `/BLOCKRUN Block X bis Block Y` wird jeder Block vollständig nach seiner Definition of Done abgearbeitet. Nach Abschluss und ggf. autorisiertem Merge von Block X wird ohne neue Freigabe unmittelbar mit dem nächsten bereits freigegebenen Block fortgefahren. Ein fertiger Zwischenblock ist bei einer Mehrblock-Freigabe kein Stopp-Punkt.
+
+### 13.12 Laufzeit-Wahrheit und Hintergrundarbeit
+
+`/BLOCKRUN` erlaubt keine erfundene Hintergrundarbeit. Solange eine aktive Tool-/Arbeitsausführung möglich ist, wird nicht freiwillig an einem normalen Zwischenstand gestoppt.
+
+Wenn eine Chat-Ausführung technisch endet, darf nicht behauptet werden, ein normaler Chat arbeite heimlich stundenlang weiter. Verlangt Bülent ausdrücklich eine Weiterarbeit während seiner Abwesenheit oder über Nacht, muss dafür eine tatsächlich geeignete Hintergrund-/Automation-/Work-Ausführung eingerichtet und vor Verlassen des aktiven Laufs verifiziert werden. Ein solcher Hintergrundlauf muss seinen eigenen Fortschritt und Fehlerzustand nachvollziehbar machen.
+
+### 13.13 BLOCKRUN-Kurzform
+
+Die verbindliche Kurzform lautet:
+
+```text
+/BLOCKRUN Block X
+
+ANALYSIEREN
+→ BAUEN
+→ TESTEN
+→ FEHLER ANGREIFEN
+→ ROOT CAUSE
+→ REPARIEREN
+→ NEU TESTEN
+→ CI
+→ RED TEAM
+→ STAFFELLAUF
+→ ENDABNAHME
+→ MERGE, WENN FREIGEGEBEN
+→ MERGE VERIFIZIEREN
+→ BEI MEHREREN FREIGEGEBENEN BLÖCKEN SOFORT WEITER
+```
+
+**STATUSMELDUNG ≠ STOPP. GRÜN ≠ AUTOMATISCH FERTIG. ERST DIE DEFINITION OF DONE BEENDET DEN BLOCK.**
+
 ---
 
 **Pflegeprinzip:** Neue dauerhaft relevante Fehlerklassen, Arbeitsregeln und Schutzmechanismen werden in dieser Datei ergänzt, damit sie unabhängig von einzelnen Chats und Handovers erhalten bleiben.
