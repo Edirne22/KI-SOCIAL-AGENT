@@ -414,3 +414,12 @@ Skills können **NICHT über Jules installiert werden** – sie sind lokale CLI-
 - [ ] Plattformübergreifender LearningAgent für Instagram/Facebook/TikTok/YouTube.
 - [ ] Format-/Hook-/Längen-/Themenvergleich pro Plattform.
 - [ ] Langfristig kontrollierte Experimente/A-B-Hypothesen, ohne Fakten-QM oder Bülent-Stil durch kurzfristige Engagement-Signale auszuhöhlen.
+
+## Agent-Reach / Platform Discovery Adapter – geprüft 2026-09-30
+- Architektur-Kandidat für Block-3/9-Discovery, nicht eigener Fakten- oder Autonomie-Layer.
+- Pattern: Health-Checker/Router für austauschbare Plattform-Backends; eigentliche Abfragen über Upstream-Tools.
+- Priorität: YouTube-Suche, Metadaten und Untertitel via yt-dlp; zusätzlich X, Reddit, GitHub, RSS/Web je nach verfügbarem Backend.
+- Alle Funde laufen weiterhin durch Block 4 Research + Facts. Kein Discovery-Output darf VERIFIED-Status, Human Authority oder Publish-Rechte erzeugen.
+- Kein harter Runtime-Lock auf Agent-Reach. Backends bleiben einzeln austauschbar; doctor/health/fallback-Konzept übernehmen.
+- Vor produktiver Installation aktives kanonisches Upstream-Repo, Version/Lizenz, Server-/Cookie-Anforderungen und Plattformbedingungen erneut prüfen.
+
