@@ -105,3 +105,56 @@ Kein Einsatz zum Umgehen von Logins/Zugriffskontrollen oder zum Sammeln personen
 
 ### Cross-Guide-Erkenntnis
 Mehrere unabhängige Skill-Pakete wiederholen dieselben Rollen: Voice Profile, Hook, Humanizer, Planner, Repurpose, Audit/Performance, Comment/Reply. Diese Rollen deshalb nicht pro Plattform duplizieren. Ziel sind **plattformneutrale Edirne-22 Core Skills** plus dünne Plattformprofile/Adapter.
+
+
+## Guide-Kollektion II – Triage 30.09.2026
+
+### Cross-Model Code Review – hoher Nutzen als Entwicklungsprinzip
+Quelle: Guide „ChatGPT und Claude im Team“.
+Muster: Builder und Reviewer bewusst trennen; Reviewer bekommt konkreten Auftrag auf Security, Edge Cases, Performance und Soll-Verhalten; Builder bewertet Kritik einzeln statt blind alles zu übernehmen.
+Edirne-22-Nutzen:
+- passt direkt zu BUILD → CI → RED-TEAM → ROOT-CAUSE → FIX.
+- als `IndependentReviewer`-/Cross-Model-Review-Prinzip für kritische PRs vormerken.
+- kein Zwang zu einem konkreten OpenAI/Claude-Plugin; vorhandene GitHub-/CI-/Review-Werkzeuge bleiben austauschbar.
+- API-Kosten/Secrets und aktuelle Tool-Verfügbarkeit vor PoC verifizieren.
+
+### Knowledge Vault / RAW → WIKI → OUTPUT – hoher Nutzen als Memory-Muster
+Quelle: Guide „Claude + Obsidian: dein zweites Gehirn“.
+Übertragbares Prinzip:
+- RAW = unveränderte Rohbelege/Inputs,
+- WIKI = kuratiertes, verlinktes Wissen,
+- OUTPUT = generierte Ergebnisse strikt getrennt.
+Edirne-22-Abbildung:
+- `EvidenceRawStore` / Source Archive,
+- `EditorialKnowledge` / kuratierte Racing-/Brand-/Tool-Knowledge,
+- `GeneratedArtifacts` / Posts, Skripte, Storyboards, Reports.
+Wichtig: generierte Outputs dürfen nicht ungekennzeichnet zurück in Faktenwissen fließen (Self-Citation-/Feedback-Loop-Schutz).
+Obsidian selbst ist optionaler lokaler UI-/Knowledge-Client, nicht System of Record der 24/7-Fabrik.
+
+### ECC – Agent-/Skill-/Security-Radar
+Quelle: Guide „ECC installieren — 61 Agents für Claude Code“.
+Interessante Muster:
+- spezialisierte Agents statt Alleskönner,
+- Security Scan / Quality Gate / Plan / Loop / Harness Audit,
+- Skills nur bedarfsgerecht laden,
+- wiederkehrende Session-Muster als lokale Skill-Kandidaten extrahieren.
+Edirne-22:
+- gegen unsere PROJECT_GUARDRAILS, PR-Wächter, Skill Registry und Staffellauf prüfen.
+- besonders Security-/Injection-/Secrets-/Auth-Testideen als Red-Team-Testkandidaten evaluieren.
+- keine 61 Agents blind installieren/duplizieren.
+- Upstream, Lizenz, tatsächliche Regel-/Testanzahl, Private-Repo-Kosten und Integrationsweg vor Nutzung offiziell verifizieren.
+- „lernt mit“ nur als Candidate Skill Revision zulassen; nie ungeprüft produktiv aktivieren.
+
+### Grok Bot / Cloud Computer – WATCH, Architekturprinzip bereits vorhanden
+Nützliche Muster aus dem Guide:
+- Agent eng abgrenzen: Ergebnis, erlaubte Quellen, Grenzen, Lieferform, Haltepunkt.
+- Login/2FA/CAPTCHA bleibt Human Takeover.
+- externe Aktionen brauchen Approval-Haltepunkt.
+- Cloud-Rechner mit mehreren Bots als gemeinsame Trust Zone behandeln.
+Für unsere Fabrik bestätigt dies Job Contract + Human Authority + least privilege. Kein Bedarf, Grok Bot als Runtime-Abhängigkeit einzubauen.
+
+### ChatGPT-Free-Guide – kein Fabrikbaustein
+Tarif-/Produktinformation, keine relevante Runtime-/Agentenarchitektur. Nicht importieren.
+
+### Instagram/Composio – Duplikat
+Bereits im IDEA_POOL und vorheriger Triage erfasst. Nicht doppelt anlegen.
