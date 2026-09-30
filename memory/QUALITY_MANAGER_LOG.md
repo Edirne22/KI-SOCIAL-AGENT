@@ -2406,3 +2406,81 @@ Story-Key: title:eicma-italian-round-bahattin-sofuo-lu-cremona-da-qjmotor-ile-pi
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-09-30 05:06 UTC | Motorcycle Racing | PASS
+Titel: Pedro Acosta’da KTM’yi şaşırtan değişim: “Büyük sürücüler bunun için bir kışa ihtiyaç duyar”
+Story-Key: title:pedro-acosta-da-ktm-yi-rtan-de-i-im-b-y-k-s-r-c-ler-bunun-i-bir-k-ihtiya-duyar
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:07 UTC | Motorcycle Racing | FAIL
+Titel: WSBK İtalya superpole yarış: Lecuona Cremona’da duble yaptı, Surra ilk WSBK podyumunu aldı!
+Story-Key: motogp:10859544
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:08 UTC | Motorcycle Racing | FAIL
+Titel: WSBK İtalya superpole yarış: Lecuona Cremona’da duble yaptı, Surra ilk WSBK podyumunu aldı!
+Story-Key: motogp:10859544
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:08 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:09 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Superpole İtalya: Lecuona, Cremona’da Bulega’nın pole serisini sonlandırdı!
+Story-Key: motogp:10859202
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:09 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:09 UTC | Motorcycle Racing | FAIL
+Titel: Cremona Superpole: Lecuona Rekorla Pole'de
+Story-Key: title:cremona-superpole-lecuona-rekorla-pole-de
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:09 UTC | Motorcycle Racing | PASS
+Titel: Cremona Superpole: Lecuona Rekorla Pole'de
+Story-Key: title:cremona-superpole-lecuona-rekorla-pole-de
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:10 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Cremona 1. yarış: Lecuona lider, Bulega ikinci
+Story-Key: motogp:10859584
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:10 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Cremona 1. yarış: Lecuona lider, Bulega ikinci
+Story-Key: motogp:10859584
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:10 UTC | Motorcycle Racing | FAIL
+Titel: LECUONA: “Gelecek Yıl Ducati’de Her Şey Farklı Olacak!”
+Story-Key: title:lecuona-gelecek-y-l-ducati-de-her-ey-farkl-olacak
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:11 UTC | Motorcycle Racing | PASS
+Titel: LECUONA: “Gelecek Yıl Ducati’de Her Şey Farklı Olacak!”
+Story-Key: title:lecuona-gelecek-y-l-ducati-de-her-ey-farkl-olacak
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-09-30 05:11 UTC | Motorcycle Racing | PASS
+Titel: Bulega'dan Pol Espargaro'ya Yanıt: “DUCATI 850CC BENİM İÇİN YAPILMADI!”
+Story-Key: title:bulega-dan-pol-espargaro-ya-yan-t-ducati-850cc-beni-m-i-i-n-yapilmadi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "created_at": 1790674002,
+  "created_at": 1790743260,
   "max_days": 10,
   "window_used_days": 10,
-  "count": 12,
+  "count": 7,
   "items": [
     {
       "n": 1,
@@ -31,66 +31,6 @@
     },
     {
       "n": 3,
-      "title": "MotoGP Avusturya Sprint: Martin'den İnanılmaz Zafer, Toprak Razgatlıoğlu'ndan Güçlü Performans!",
-      "url": "https://motoetkinlik.com/motogp-avusturya-sprint-martinden-inanilmaz-zafer-toprak-razgatliogludan-guclu-performans",
-      "summary": "Jorge Martin, MotoGP Avusturya GP Sprint yarışını kazanarak şampiyona liderliğini yeniden aldı. Marc Márquez ikinci, Marco Bezzecchi üçüncü olurken Pedro Acosta kaza yaptı.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/05/Toprak-Razgatlioglu-Italya-GP-Mugello-2026.webp",
-      "published_at": "2026-09-19T16:46:27+03:00",
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Toprak Razgatlıoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 4,
-      "title": "Toprak Razgatlıoğlu Avusturya Cumartesi Günü Değerlendirmesi: \"Sıralama Sorununu Çözmeye Çalışıyoruz\"",
-      "url": "https://motoetkinlik.com/toprak-razgatlioglu-avusturya-cumartesi-gunu-degerlendirmesi-siralama-sorununu-cozmeye-calisiyoruz",
-      "summary": "Toprak Razgatlıoğlu, avusturya sprint yarışı sonrasında cumartesi günü hakkında açıklamalarda bulundu.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/06/Toprak-Razgatlioglu-Pramac-Yamaha-Brno-Sprint.webp",
-      "published_at": "2026-09-19T19:39:13+03:00",
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Toprak Razgatlıoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 5,
-      "title": "Moto2 Avusturya Sıralama: Deniz Öncü'den Harika Performans, Pole Filip Salac'ın!",
-      "url": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin",
-      "summary": "Filip Salač, Avusturya GP Moto2 sıralama turlarında 1:32.381'lik yeni tur rekoruyla pole pozisyonunu aldı. Manuel Gonzalez ikinci, Alex Escrig üçüncü oldu.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/05/Deniz-Oncu-Moto2-Italya-Mugello-Yarisi.webp",
-      "published_at": "2026-09-19T16:34:25+03:00",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    },
-    {
-      "n": 6,
-      "title": "Bahattin Sofuoğlu, Dünya Supersport Şampiyonası'na geçiyor",
-      "url": "https://tr.motorsport.com/supersport/news/bahattin-sofuoglu-world-supersport-sampiyonasina-geciyor/10857707",
-      "summary": "Motoxracing Yamaha takımı, sürücü değişikliğine gittiğini doğruladı. Bahattin Sofuoğlu QJ Motor takımıyla WSSP'de yarışacak.",
-      "preview": "https://cdn-2.motorsport.com/images/amp/6x7LGrmY/s6/bahattin-sofuoglu.jpg",
-      "published_at": "2026-09-21T13:40:02Z",
-      "series": "WorldSSP",
-      "source_series": "WorldSSP",
-      "turkish_rider": "Bahattin Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 7,
-      "title": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport’a Dönüyor!",
-      "url": "https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-dunya-supersporta-donuyor-yeni-adresi-qj-motor",
-      "summary": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport'a dönüyor! Motoxracing Yamaha WorldSBK sonrası yeni adresi QJ Motor oldu. Tüm detaylar haberimizde.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bahattin-sofuoglu-QJ-Motor-worldssp.webp",
-      "published_at": "2026-09-21T15:21:06+03:00",
-      "series": "WorldSBK",
-      "source_series": "WorldSBK",
-      "turkish_rider": "Bahattin Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 8,
       "title": "Toprak Razgatlıoğlu İsyan Etti: \"Sadece Hayatta Kalmaya Çalıştım\"",
       "url": "https://motoetkinlik.com/toprak-razgatlioglu-kariyerimin-en-kotu-ikinci-yarisiydi-diyerek-isyan-etti-sadece-hayatta-kalmaya-calistim",
       "summary": "Avusturya GP pazar yarışında sıfır yol tutuş nedeniyle kabusu yaşayan Toprak Razgatlıoğlu: \"Kariyerimin en kötü ikinci yarışıydı, sadece hayatta kalmaya çalıştım.\"",
@@ -102,19 +42,7 @@
       "kind": "news"
     },
     {
-      "n": 9,
-      "title": "Toprak Razgatlıoğlu Avusturya GP'de Oyun Severlerin Tasarladığı Özel Kaskla Piste Çıkacak",
-      "url": "https://motoetkinlik.com/toprak-razgatlioglu-avusturya-gpde-oyun-severlerin-tasarladigi-ozel-kaskla-piste-cikacak",
-      "summary": "Toprak Razgatlıoğlu özel kask tasarımı ile Avusturya GP'de piste çıkacak. Oyun severlerin tasarladığı özel kask Red Bull Ring'de sergilendi.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/Toprak-Red-Bull-Ring-Kask-Tasarimi-01.webp",
-      "published_at": "2026-09-19T15:15:28+03:00",
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Toprak Razgatlıoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 10,
+      "n": 4,
       "title": "Moto2 Avusturya Yarış: Deniz Öncü İlk 10'da, Guevara'dan Kritik Zafer!",
       "url": "https://motoetkinlik.com/moto2-avusturya-yaris-deniz-oncu-ilk-10da-guevaradan-kritik-zafer",
       "summary": "Izan Guevara, Moto2 Avusturya GP'sinde Filip Salač ve David Alonso'nun önünde kazanarak sezonun ikinci galibiyetini aldı. Manuel Gonzalez dördüncü olurken Deniz Öncü dokuzuncu sırada finiş gördü.",
@@ -126,19 +54,19 @@
       "kind": "news"
     },
     {
-      "n": 11,
-      "title": "Deniz Öncü Kalex Şasiye Dönüyor: Moto2'de 2 Sezonluk Yeni Anlaşma",
-      "url": "https://motoetkinlik.com/deniz-oncu-kalex-sasiye-donuyor-moto2de-2-sezonluk-yeni-anlasma",
-      "summary": "Milli sporcumuz Deniz Öncü, RW Racing ile 2027 ve 2028 sezonları için anlaştı. Deniz Öncü Moto2 sözleşme detayları ve kariyer başarıları Motoetkinlik'te!",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/deniz-oncu-moto2-sozlesme-yeniledi.webp",
-      "published_at": "2026-09-19T15:55:58+03:00",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
+      "n": 5,
+      "title": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport’a Dönüyor!",
+      "url": "https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-dunya-supersporta-donuyor-yeni-adresi-qj-motor",
+      "summary": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport'a dönüyor! Motoxracing Yamaha WorldSBK sonrası yeni adresi QJ Motor oldu. Tüm detaylar haberimizde.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bahattin-sofuoglu-QJ-Motor-worldssp.webp",
+      "published_at": "2026-09-21T15:21:06+03:00",
+      "series": "WorldSBK",
+      "source_series": "WorldSBK",
+      "turkish_rider": "Bahattin Sofuoğlu",
       "kind": "news"
     },
     {
-      "n": 12,
+      "n": 6,
       "title": "Zayn Sofuoğlu Bursa'daki Finalde ANLAS MiniGP 110 Şampiyonu Oldu",
       "url": "https://motoetkinlik.com/zayn-sofuoglu-bursadaki-finalde-anlas-minigp-110-sampiyonu-oldu",
       "summary": "Zayn Sofuoğlu Bursa'daki final ayağında iki yarışı da kazanarak ANLAS MiniGP 110 şampiyonu oldu. Türkiye Süpermoto 5. ayağında yedi sınıf birden yarıştı.",
@@ -147,6 +75,18 @@
       "series": "Karting",
       "source_series": "Karting",
       "turkish_rider": "Zayn Sofuoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 7,
+      "title": "Bahattin Sofuoğlu, Dünya Supersport Şampiyonası'na geçiyor",
+      "url": "https://tr.motorsport.com/supersport/news/bahattin-sofuoglu-world-supersport-sampiyonasina-geciyor/10857707",
+      "summary": "Motoxracing Yamaha takımı, sürücü değişikliğine gittiğini doğruladı. Bahattin Sofuoğlu QJ Motor takımıyla WSSP'de yarışacak.",
+      "preview": "https://cdn-3.motorsport.com/images/amp/6x7LGrmY/s6/bahattin-sofuoglu.jpg",
+      "published_at": "2026-09-21T13:40:02Z",
+      "series": "WorldSSP",
+      "source_series": "WorldSSP",
+      "turkish_rider": "Bahattin Sofuoğlu",
       "kind": "news"
     }
   ]

@@ -709,3 +709,18 @@ Quelle: https://motoetkinlik.com/wsbk-italya-lecuona-cremonada-kazandi-bulega-sa
 Story-Key: title:eicma-italian-round-bahattin-sofuo-lu-cremona-da-qjmotor-ile-piste-k-yor
 Titel: EICMA Italian Round: Bahattin Sofuoğlu Cremona'da QJMOTOR ile Piste Çıkıyor
 Quelle: https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor
+
+## 2026-09-30 04:41 UTC – ANGEBOTEN
+Story-Key: title:pedro-acosta-da-ktm-yi-rtan-de-i-im-b-y-k-s-r-c-ler-bunun-i-bir-k-ihtiya-duyar
+Titel: Pedro Acosta’da KTM’yi şaşırtan değişim: “Büyük sürücüler bunun için bir kışa ihtiyaç duyar”
+Quelle: https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
+
+## 2026-09-30 04:41 UTC – ANGEBOTEN
+Story-Key: title:lecuona-gelecek-y-l-ducati-de-her-ey-farkl-olacak
+Titel: LECUONA: “Gelecek Yıl Ducati’de Her Şey Farklı Olacak!”
+Quelle: https://motoetkinlik.com/lecuona-gelecek-yil-ducatide-her-sey-farkli-olacak
+
+## 2026-09-30 04:41 UTC – ANGEBOTEN
+Story-Key: title:bulega-dan-pol-espargaro-ya-yan-t-ducati-850cc-beni-m-i-i-n-yapilmadi
+Titel: Bulega'dan Pol Espargaro'ya Yanıt: “DUCATI 850CC BENİM İÇİN YAPILMADI!”
+Quelle: https://motoetkinlik.com/bulegadan-pol-espargaroya-yanit-ducati-850cc-benim-icin-yapilmadi

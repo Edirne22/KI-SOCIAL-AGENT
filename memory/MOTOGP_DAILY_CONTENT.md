@@ -1,15 +1,15 @@
 # Motorcycle Racing Daily Agency V8.5.5
 
-Stand: 2026-09-29 09:26 UTC
+Stand: 2026-09-30 04:41 UTC
 Rohkandidaten: 320
-Aktuelle Racing-News <=7 Tage: 33
+Aktuelle Racing-News <=7 Tage: 25
 Freshness missing-date: 15
-Freshness >7 Tage: 263
-Freshness Promo/irrelevant: 8
-Aktuell voll Copy-QM qualifiziert: 21
+Freshness >7 Tage: 268
+Freshness Promo/irrelevant: 12
+Aktuell voll Copy-QM qualifiziert: 15
 Vortag voll Copy-QM qualifiziert: 0
-Gesamtpool nach Racing+Semantic-QM: 21
-Finaler Mix: {'MotoGP': 0, 'Moto2': 0, 'Moto3': 0, 'WorldSBK': 3, 'WorldSSP': 2, 'WorldSSP300': 0}
+Gesamtpool nach Racing+Semantic-QM: 15
+Finaler Mix: {'MotoGP': 1, 'Moto2': 0, 'Moto3': 0, 'WorldSBK': 3, 'WorldSSP': 1, 'WorldSSP300': 0}
 Turkish-Rider erkannt: True
 Fakten-QM: NULL-TOLERANZ + Rueckgabeschleife
 Human Writing Protocol: VERBINDLICH

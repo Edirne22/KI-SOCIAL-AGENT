@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790674002
+Session-Timestamp: 1790743260
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,25 +15,25 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 3.6
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
-Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
-Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
+Artikelalter-Tage: 1.0
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: title:pedro-acosta-da-ktm-yi-rtan-de-i-im-b-y-k-s-r-c-ler-bunun-i-bir-k-ihtiya-duyar
+Titel: Pedro Acosta’da KTM’yi şaşırtan değişim: “Büyük sürücüler bunun için bir kışa ihtiyaç duyar”
+Quelle: https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-29-racing-editorial-2026-09-29-1-can-oncu-cremonada-o-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
+Instagram-Bild: assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-1-pedro-acostada-ktmyi-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/pedro-acosta-ktm-gelisim-paul-trevathan-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Can Öncü hat bei der WorldSSP Superpole in Cremona den sechsten Platz belegt – nur 0,365 Sekunden hinter der Pole-Position. 🏁
+Paul Trevathan hat einen klaren Vergleich gezogen: Während andere Top-Fahrer ihre Sprünge üblicherweise über den Winter machen, hat Pedro Acosta genau das in nur einer Sommersaison auf KTM hingekriegt. Das ist Tempo, das normalerweise mehr Zeit braucht. 🏍️💨
 
-Was erwartet ihr von Can Öncü im Rennen am Sonntag?
+Wie seht ihr Acostas rasante Fortschritte – rein Talent oder die richtige Entwicklungsumgebung?
 
-#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -41,25 +41,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.1
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: title:dall-igna-dan-bulega-n-n-ampiyonlu-u-sonras-ducati-vurgusu-t-m-yar-lar-kazand
-Titel: Dall’Igna’dan Bulega’nın şampiyonluğu sonrası Ducati vurgusu: “Tüm yarışları kazandı”
-Quelle: https://motoetkinlik.com/gigi-dallignadan-sampiyonluk-sonrasi-ducati-vurgusu-bu-motosiklet-tum-yarislari-kazandi
+Artikelalter-Tage: 4.4
+Kategorie: Turkish Riders
+Serie: WorldSSP
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-29-racing-editorial-2026-09-29-2-dallignadan-bulegani-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/nicolo-bulega-gigi-dalligna-ducati-worldsbk-2026-1.webp
+Instagram-Bild: assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-2-can-oncu-cremonada-o-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Nicolo Bulega ist 2026 WorldSBK-Weltmeister. Gigi Dall’Igna zeigte dabei auf den Sieg der Ducati Panigale V4 R – das Motorrad gewann sämtliche Rennen der Saison. Ein klarer Coup für Ducati im Titelkampf.
+Can Öncü hat beim WorldSSP-Superpole-Training in Cremona für eine ganze Menge Gesprächsstoff gesorgt. Der türkische Fahrer landete im Superpole auf dem sechsten Platz und lag nur 0,365 Sekunden hinter dem Pole – das ist wirklich nicht gerade weit weg.
 
-Was denkt ihr von dieser reinen Ducati-Dominanz?
+Was denkt ihr, kann Öncü beim Rennen in Cremona mitmischen?
 
-#WorldSBK #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,29 +67,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 3
+QM-Ruecklaeufe: 4
 Herkunft: Aktuell
-Artikelalter-Tage: 3.0
+Artikelalter-Tage: 3.8
 Kategorie: WorldSBK
 Serie: WorldSBK
 Story-Key: title:cremona-superpole-lecuona-rekorla-pole-de
 Titel: Cremona Superpole: Lecuona Rekorla Pole'de
 Quelle: https://motoetkinlik.com/worldsbk-eicma-italian-round-superpole-lecuona-rekorla-polede-bulega-ikinci
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-29-racing-editorial-2026-09-29-3-cremona-superpole-le-01.jpg
+Instagram-Bild: assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-3-cremona-superpole-le-01.jpg
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/07/iker-lecuona-ducati-superbike.webp
 Plattformen: Instagram + Facebook
 Text:
-Iker Lecuona hat in Cremona die Superpole gewonnen und dabei mit 1:27.253 gleichzeitig den Streckenrekord aufgestellt.
+Iker Lecuona hat in Cremona mit einer Rundenzit von 1:27.253 den Streckenrekord aufgestellt und die Superpole gewonnen.
 
-Nicolò Bulega landete mit 0,044 Sekunden Rückstand auf Platz zwei.
+Nicolo Bulega landete mit 0,044 Sekunden Rückstand auf Platz zwei.
 
-Damit ist Bulegas Serie von zehn aufeinanderfolgenden Pole-Positionen jetzt vorbei.
+Damit ist Bulegas Serie von zehn aufeinanderfolgenden Polen endlich vorbei.
 
-Was haltet ihr von Lecuonas Rekordschnellsten in Cremona?
+Wie seht ihr den gebrochenen Streak von Bulega — kommt Lecuona jetzt ins Fahrersitz-Momentum?
 
-#WorldSBK #IkerLecuona #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #NicoloBulega #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -98,26 +98,28 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 2.7
+Artikelalter-Tage: 4.8
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: title:wsbk-i-talya-lecuona-cremona-da-kazand-bulega-ampiyonluk-i-yar-n-bekleyecek
-Titel: WSBK İtalya: Lecuona Cremona'da Kazandı, Bulega Şampiyonluk İçin Yarını Bekleyecek!
-Quelle: https://motoetkinlik.com/wsbk-italya-lecuona-cremonada-kazandi-bulega-sampiyonluk-icin-yarini-bekleyecek
+Story-Key: title:lecuona-gelecek-y-l-ducati-de-her-ey-farkl-olacak
+Titel: LECUONA: “Gelecek Yıl Ducati’de Her Şey Farklı Olacak!”
+Quelle: https://motoetkinlik.com/lecuona-gelecek-yil-ducatide-her-sey-farkli-olacak
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-29-racing-editorial-2026-09-29-4-wsbk-italya-lecuona-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/07/iker-lecuona-aruba-it-ducati.webp
+Instagram-Bild: assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-4-lecuona-gelecek-yil-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/lecuona-macaristan-worldsbk-2026-favori-degil-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Lecuona hat in Cremona gezeigt, was er kann – und das von der grünen Flagge bis zum Ziel!
+Iker Lecuona wird 2027 auf der Ducati Panigale V4 R fahren.
 
-Iker Lecuona hat den ersten Lauf der WorldSBK in Cremona komplett dominiert und führte durchgehend durchs Ziel. Auf dem Podium folgten Nicolo Bulega auf Rang zwei und Sam Lowes auf Rang drei. Der Ducati-Pilot konnte die Titelfeier erst einmal bis zum Rennsonntag verschieben 🏍️💨
+Das Bike bekommt 2027 Michelin-Reifen.
 
-Wie schätzt ihr die Chancen für die Titelentscheidung am Sonntag ein?
+Lecuona sagt: Die Maschine wird dadurch einen anderen Charakter haben und sein Fahrstil muss sich anpassen.
 
-#WorldSBK #NicoloBulega #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife #SamLowes
+Was denkt ihr — kann Lecuona direkt mit Michelin punkten oder braucht er Zeit?
+
+#WorldSBK #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -125,27 +127,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 6.0
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:eicma-italian-round-bahattin-sofuo-lu-cremona-da-qjmotor-ile-piste-k-yor
-Titel: EICMA Italian Round: Bahattin Sofuoğlu Cremona'da QJMOTOR ile Piste Çıkıyor
-Quelle: https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor
+Artikelalter-Tage: 4.8
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: title:bulega-dan-pol-espargaro-ya-yan-t-ducati-850cc-beni-m-i-i-n-yapilmadi
+Titel: Bulega'dan Pol Espargaro'ya Yanıt: “DUCATI 850CC BENİM İÇİN YAPILMADI!”
+Quelle: https://motoetkinlik.com/bulegadan-pol-espargaroya-yanit-ducati-850cc-benim-icin-yapilmadi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-09/2026-09-29-racing-editorial-2026-09-29-5-eicma-italian-round-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/sbk-cremona-round-italya-yarisi-2026.webp
+Instagram-Bild: assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-5-bulega-dan-pol-espar-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/nicolo-bulega-ducati-850cc-motogp-mugello-test.webp
 Plattformen: Instagram + Facebook
 Text:
-Bahattin Sofuoğlu geht bei der EICMA Italian Round in Cremona mit QJMOTOR in der WorldSSP an den Start.
+Pol Espargaró meinte, die Ducati 850 sei extra für ihn gemacht worden. Da hat Nicolò Bulega direkt reagiert – die 850 wurde fürs Werksteam entwickelt, und er hat nur die Teile getestet, die ihm gegeben wurden. 🏁
 
-Das Rennwochenende in Cremona findet vom 25. bis 27. September statt. Sofuoğlu tritt damit in der gleichen Klasse wie Can Öncü an, während Bulega die Meisterschaft vorzeitig für sich entscheiden kann.
+Wie schätzt ihr das ein?
 
-Was erwartet ihr von Bahattin Sofuoğlu bei der Runde in Cremona?
-
-#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #PolEspargaro #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
