@@ -414,3 +414,16 @@ Skills können **NICHT über Jules installiert werden** – sie sind lokale CLI-
 - [ ] Plattformübergreifender LearningAgent für Instagram/Facebook/TikTok/YouTube.
 - [ ] Format-/Hook-/Längen-/Themenvergleich pro Plattform.
 - [ ] Langfristig kontrollierte Experimente/A-B-Hypothesen, ohne Fakten-QM oder Bülent-Stil durch kurzfristige Engagement-Signale auszuhöhlen.
+
+## Agent-Reach / Platform Discovery Adapter – geprüft 2026-09-30
+
+Kandidat für die bestehende Content-Factory-Discovery, nicht eigener Fakten- oder Autonomie-Layer.
+
+- Agent-Reach-Pattern: Installer/Health-Checker/Router für austauschbare Plattform-Backends; eigentliche Abfragen erfolgen über Upstream-Tools.
+- Besonders relevant: YouTube-Suche/Metadaten/Untertitel via yt-dlp; außerdem X, Reddit, GitHub, RSS und Web-Suche über jeweilige Backends.
+- Zielintegration: späterer `PlatformDiscoveryAdapter` für Block 3/9; gefundene Inhalte gehen weiterhin durch Block 4 Research + Facts.
+- Kein Agent-Reach-Output darf VERIFIED-Status, Human Authority oder Publish-Rechte erzeugen.
+- Kein harter Runtime-Lock auf Agent-Reach: Backends müssen einzeln austauschbar bleiben; Health/doctor-Konzept als Inspiration übernehmen.
+- YouTube-Discovery + Transcript ist priorisierter MVP-Kandidat, da yt-dlp im Projekt bereits vorgesehen ist.
+- Vor produktiver Installation: kanonisches aktives Upstream-Repo, Lizenz/Version, Server-/Cookie-Anforderungen und Plattformbedingungen erneut prüfen.
+
