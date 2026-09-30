@@ -74,9 +74,20 @@ jobs:
             jq -r 'if .success == true then "success=true" else (.errors // [] | map("CF_ERROR code=\(.code) message=\(.message)") | .[]) end' "$body" 2>/dev/null || true
             rm -f "$body"
           }
-          probe "token_verify" "$api/user/tokens/verify"
+          id_len="$(echo -n "$CLOUDFLARE_ACCOUNT_ID" | wc -c | tr -d ' ')"
+          echo "account_id_length: $id_len"
+          if echo -n "$CLOUDFLARE_ACCOUNT_ID" | grep -qv '[^0-9a-fA-F]'; then
+            echo "account_id_charset: hex"
+          else
+            echo "account_id_charset: invalid"
+          fi
+          probe "user_token_verify" "$api/user/tokens/verify"
+          probe "account_token_verify" "$api/accounts/$CLOUDFLARE_ACCOUNT_ID/tokens/verify"
+          probe "accounts_list" "$api/accounts"
           probe "account_access" "$api/accounts/$CLOUDFLARE_ACCOUNT_ID"
           probe "worker_script_access" "$api/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/edirne22-openchatcut-poc"
+          echo "wrangler_whoami:"
+          (cd infra/openchatcut-cloudflare && npx wrangler whoami) || true
       - name: Build private secret bundle outside repository
         shell: bash
         run: |
