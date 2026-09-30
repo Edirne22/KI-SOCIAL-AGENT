@@ -600,3 +600,38 @@ https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor
 Quelle: https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor", "media_status": "", "object_id": "1285968257941776_122117013039469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122117013039469415", "source_url": "https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-30-daily
+Telegram-Update-ID: 279361793
+MotoGP-Auswahl: 1
+Titel: Pedro Acosta’da KTM’yi şaşırtan değişim: “Büyük sürücüler bunun için bir kışa ihtiyaç duyar”
+Text:
+Paul Trevathan hat’s gesagt: Während die meisten Top‑Fahrer ihre Sprünge über den Winter schieben, hat Pedro Acosta das Ganze in einer einzigen Sommersaison auf KTM erledigt. Das geht nicht ohne Tempo. 🏍️💨  
+
+Was meint ihr – pure Begabung oder die perfekte Entwicklungsumgebung?  
+
+#MotoGP #PedroAcosta #KTM #RacingDeutschland #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-1-pedro-acostada-ktmyi-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-30-daily
+Telegram-Update-ID: 279361793
+MotoGP-Auswahl: 1
+Titel: Pedro Acosta’da KTM’yi şaşırtan değişim: “Büyük sürücüler bunun için bir kışa ihtiyaç duyar”
+Text:
+Paul Trevathan hat einen klaren Vergleich gezogen: Während andere Top-Fahrer ihre Sprünge üblicherweise über den Winter machen, hat Pedro Acosta genau das in nur einer Sommersaison auf KTM hingekriegt. Das ist Tempo, das normalerweise mehr Zeit braucht. 🏍️💨
+
+Wie seht ihr Acostas rasante Fortschritte – rein Talent oder die richtige Entwicklungsumgebung?
+
+#MotoGP #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
+Quelle: https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
+Link-Preview: offiziell
