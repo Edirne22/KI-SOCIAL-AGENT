@@ -16,9 +16,9 @@ r=await http("/_factory/health",{Authorization:"Bearer definitely-wrong"}); asse
 r=await http("/_factory/health",auth); assert(r.ok,`health failed ${r.status}`); console.log("protected health:",await r.text());
 
 const transport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
-const client=new Client({name:"edirne22-live-acceptance",version:"1.0.0"});
+let client=new Client({name:"edirne22-live-acceptance",version:"1.0.0"});
 await client.connect(transport);
-const call=async(name,args={})=>{console.log("MCP",name);const x=await client.callTool({name,arguments:args});if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x};
+let call=async(name,args={})=>{console.log("MCP",name);const x=await client.callTool({name,arguments:args});if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x};
 const data=x=>x.structuredContent??Object.assign({},...(x.content||[]).filter(c=>c.type==="text").map(c=>{try{return JSON.parse(c.text)}catch{return {text:c.text}}}));
 const status=await call("openchatcut_status"); console.log("status",JSON.stringify(data(status)));
 const created=data(await call("create_project",{name:`Edirne22 LIVE acceptance ${new Date().toISOString()}`,compositionWidth:720,compositionHeight:1280,fps:30}));
@@ -32,30 +32,29 @@ try {
   begun=data(await call("begin_edit_session",{approvalMode:"auto"}));
 } catch (error) {
   console.error("BEGIN_EDIT_SESSION_DISCONNECT", error?.stack || error);
-  // A fresh transport distinguishes a dead/restarted container from a broken
-  // StreamableHTTP connection. Re-targeting the just-created project proves
-  // whether OpenChatCut durable project state survived the disconnect.
-  let postDisconnect={health:null,status:null,projectSurvived:false,error:null};
-  try {
-    const hr=await http("/_factory/health",auth);
-    postDisconnect.health={status:hr.status,body:await hr.text()};
-    const probeTransport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
-    const probeClient=new Client({name:"edirne22-disconnect-probe",version:"1.0.0"});
-    await probeClient.connect(probeTransport);
-    const probeCall=async(name,args={})=>{const x=await probeClient.callTool({name,arguments:args});if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x};
-    postDisconnect.status=data(await probeCall("openchatcut_status"));
-    try {
-      await probeCall("target_project",{projectId});
-      postDisconnect.projectSurvived=true;
-    } catch (targetError) {
-      postDisconnect.targetError=String(targetError?.stack||targetError);
-    }
-    await probeClient.close();
-  } catch (probeError) {
-    postDisconnect.error=String(probeError?.stack||probeError);
-  }
-  console.error("POST_DISCONNECT_PROBE",JSON.stringify(postDisconnect));
-  throw error;
+  // Upstream OpenChatCut deliberately persists a disconnected owner's draft.
+  // Recover that orphan instead of re-targeting/re-beginning and colliding with
+  // the ownership claim that the failed HTTP response may already have created.
+  const hr=await http("/_factory/health",auth);
+  assert(hr.ok,`post-disconnect health failed ${hr.status}`);
+  const recoveryTransport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
+  const recoveryClient=new Client({name:"edirne22-disconnect-recovery",version:"1.0.0"});
+  await recoveryClient.connect(recoveryTransport);
+  const recoveryCall=async(name,args={})=>{console.log("MCP RECOVERY",name);const x=await recoveryClient.callTool({name,arguments:args});if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x};
+  const listed=data(await recoveryCall("list_edit_sessions",{}));
+  console.log("RECOVERY_SESSIONS",JSON.stringify(listed));
+  const sessions=Array.isArray(listed)?listed:(listed.sessions||listed.items||listed.result||[]);
+  const orphan=sessions.find(s=>s.orphaned===true && (s.recoveryActions||[]).includes("resume"));
+  assert(orphan,`begin_edit_session disconnected but no resumable orphan exists: ${JSON.stringify(listed)}`);
+  const orphanId=orphan.editSessionId||orphan.id;
+  assert(orphanId,"resumable orphan has no editSessionId");
+  begun=data(await recoveryCall("recover_edit_session",{editSessionId:orphanId,action:"resume"}));
+  begun={...begun,editSessionId:begun.editSessionId||begun.id||orphanId};
+  console.log("RECOVERY_RESUMED",JSON.stringify({editSessionId:begun.editSessionId}));
+  await client.close().catch(()=>{});
+  // Continue all subsequent calls on the transport that now owns the resumed draft.
+  client=recoveryClient;
+  call=async(name,args={})=>{console.log("MCP",name);const x=await client.callTool({name,arguments:args});if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x};
 }
 const editSessionId=begun.editSessionId||begun.id; assert(editSessionId,"no editSessionId");
 const templates=data(await call("list_templates",{})); console.log("templates",JSON.stringify(templates).slice(0,1500));
