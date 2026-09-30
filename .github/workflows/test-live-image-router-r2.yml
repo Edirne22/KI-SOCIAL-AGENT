@@ -1,0 +1,43 @@
+name: Test Live ImageRouter R2 Staffellauf
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "content_factory_media_production.py"
+      - "image_router.py"
+      - "media_storage.py"
+      - "scripts/image_router_r2_live_smoke.py"
+      - ".github/workflows/test-live-image-router-r2.yml"
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check requests
+      - run: python -m py_compile content_factory_media_production.py image_router.py media_storage.py scripts/image_router_r2_live_smoke.py
+      - run: python -m unittest -v tests.test_content_factory_media_production
+  live-image-r2:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Generate image and persist privately to R2
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+          POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+          IMAGE_PRIMARY: cloudflare
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+        run: python -m scripts.image_router_r2_live_smoke
