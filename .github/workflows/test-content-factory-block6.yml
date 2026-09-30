@@ -1,7 +1,7 @@
 name: Test Content Factory Block 6
 on:
   pull_request:
-    paths: ["content_factory_media_production.py","tests/test_content_factory_media_production.py",".github/workflows/test-content-factory-block6.yml"]
+    paths: ["content_factory_media_production.py","tests/test_content_factory_media_production.py","infra/openchatcut-cloudflare/**",".github/workflows/openchatcut-cloudflare-poc.yml",".github/workflows/test-content-factory-block6.yml"]
   workflow_dispatch:
 jobs:
   test:
@@ -25,3 +25,10 @@ jobs:
         run: python -m unittest -v tests.test_content_factory_media_production
       - name: SOURCE-FACT-CONTRACT
         run: python tests/test_source_fact_contract_v1.py
+      - uses: actions/setup-node@v4
+        with: {node-version: "24"}
+      - name: OpenChatCut Cloudflare contract
+        working-directory: infra/openchatcut-cloudflare
+        run: npm install && npx wrangler deploy --dry-run
+      - name: Pinned OpenChatCut upstream exists
+        run: git ls-remote https://github.com/0xsline/OpenChatCut.git d1af1ade45521e8ed9a5be09e3acad823f269453 | grep d1af1ade45521e8ed9a5be09e3acad823f269453
