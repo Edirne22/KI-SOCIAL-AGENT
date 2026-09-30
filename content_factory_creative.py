@@ -54,6 +54,7 @@ class WritingDraft:
     hashtags: tuple[str,...]
     used_claim_ids: tuple[str,...]
     discussion_question: str=""
+    sentence_claim_map: tuple[tuple[str, tuple[str,...]], ...]=()
 
 @dataclass(frozen=True)
 class AudienceSignal:
@@ -131,7 +132,7 @@ class BuelentWritingEditor:
             "source-fact","internal tool","[redacted_instruction]")
     def finalize(self, brief: CreativeBrief, package: FactPackage, *, caption: str,
                  hashtags: Iterable[str]=(), used_claim_ids: Iterable[str]=(),
-                 discussion_question: str="") -> WritingDraft:
+                 discussion_question: str="", sentence_claim_map: Iterable[tuple[str, Iterable[str]]]=()) -> WritingDraft:
         text=re.sub(r"\s+"," ",str(caption or "")).strip()
         if not text: raise CreativeContractError("caption required")
         low=text.casefold()
@@ -145,11 +146,29 @@ class BuelentWritingEditor:
         evidence_text=" ".join(verified[c].statement for c in used)
         for number in re.findall(r"(?<!\w)\d+(?:[.,]\d+)?(?:%|°)?",text):
             if number not in evidence_text: raise CreativeContractError("draft introduced unverified numeric precision")
+        mapping=tuple((re.sub(r"\\s+"," ",str(sentence)).strip(), tuple(dict.fromkeys(ids))) for sentence,ids in sentence_claim_map)
+        if not mapping: raise CreativeContractError("sentence-to-claim grounding required")
+        mapped_text=" ".join(sentence for sentence,_ in mapping)
+        factual_caption=text
+        if discussion_question and factual_caption.endswith(discussion_question):
+            factual_caption=factual_caption[:-len(discussion_question)].rstrip()
+        norm=lambda v: re.sub(r"[^a-z0-9äöüß]+"," ",v.casefold()).strip()
+        if norm(mapped_text) != norm(factual_caption):
+            raise CreativeContractError("every factual caption sentence must be explicitly grounded")
+        for sentence,ids in mapping:
+            if not sentence or not ids or not set(ids).issubset(set(used)):
+                raise CreativeContractError("invalid sentence claim mapping")
+            # Fail closed on novel named/factual vocabulary: each mapped sentence
+            # must share meaningful lexical support with its declared claims.
+            claim_text=" ".join(verified[i].statement for i in ids)
+            words=lambda v:{w for w in re.findall(r"[a-zäöüß]{4,}",v.casefold()) if w not in {"dass","eine","einer","einem","einen","oder","aber","auch","wurde","wird","sind","sein","hatte","haben"}}
+            if words(sentence) and not (words(sentence) & words(claim_text)):
+                raise CreativeContractError("sentence lacks lexical support from declared verified claim")
         tags=tuple(dict.fromkeys(str(h).strip() for h in hashtags if str(h).strip()))
         if len(tags)>7: raise CreativeContractError("too many hashtags")
-        canonical={"brief":brief.brief_id,"caption":text,"hashtags":tags,"claims":used,"question":discussion_question}
+        canonical={"brief":brief.brief_id,"caption":text,"hashtags":tags,"claims":used,"question":discussion_question,"mapping":mapping}
         draft_id=hashlib.sha256(json.dumps(canonical,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
-        return WritingDraft(draft_id,brief.brief_id,text,tags,used,discussion_question)
+        return WritingDraft(draft_id,brief.brief_id,text,tags,used,discussion_question,mapping)
 
 
 def attach_creative_artifacts(job, *, package: FactPackage, brief: CreativeBrief,
@@ -177,4 +196,5 @@ def _brief_dict(b):
             "allowed_claim_ids":list(b.allowed_claim_ids),"language":b.language}
 def _draft_dict(d):
     return {"draft_id":d.draft_id,"brief_id":d.brief_id,"caption":d.caption,"hashtags":list(d.hashtags),
-            "used_claim_ids":list(d.used_claim_ids),"discussion_question":d.discussion_question}
+            "used_claim_ids":list(d.used_claim_ids),"discussion_question":d.discussion_question,
+            "sentence_claim_map":[[s,list(ids)] for s,ids in d.sentence_claim_map]}
