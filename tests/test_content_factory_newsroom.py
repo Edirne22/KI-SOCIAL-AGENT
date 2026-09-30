@@ -2,8 +2,10 @@ import unittest
 
 from content_factory_newsroom import (
     ClaimStatus, Evidence, FactClaim, FactNewsroom, NewsroomContractError,
-    ResearchSource, SourceKind,
+    ResearchSource, SourceKind, attach_fact_package,
 )
+from content_factory_core import JobStatus
+from content_factory_repository import SQLiteJobRepository
 
 
 def source(source_id, title, text, *, series="WorldSBK", kind=SourceKind.ARTICLE):
@@ -167,6 +169,54 @@ class NewsroomTests(unittest.TestCase):
             claims=(claim,), coverage_complete=True,
         )
         self.assertTrue(package.publishable)
+
+    def test_fact_package_persists_through_block2_restart_without_authority(self):
+        import tempfile
+        from pathlib import Path
+        package = self.room.build_package(
+            story_key="persist", series="WorldSBK", sources=(self.s1,),
+            claims=(self.verified(),), coverage_complete=True,
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = SQLiteJobRepository(Path(tmp) / "factory.sqlite3")
+            stored, _ = repo.create_job("research story", idempotency_key="newsroom:persist")
+            stored.job.transition(JobStatus.INGESTING)
+            stored.job.transition(JobStatus.TRANSCRIBING)
+            stored.job.transition(JobStatus.RESEARCHING)
+            attach_fact_package(stored.job, package)
+            repo.save_job(stored.job, expected_store_version=stored.store_version)
+            loaded = SQLiteJobRepository(Path(tmp) / "factory.sqlite3").get_job(stored.job.job_id)
+            self.assertEqual(package.package_id, loaded.job.metadata["fact_package:r1"]["package_id"])
+            self.assertEqual(JobStatus.RESEARCHING, loaded.job.status)
+            self.assertIsNone(loaded.job.human_approved_revision)
+            self.assertIsNone(loaded.job.publish_handoff_key)
+
+    def test_fact_package_cannot_mutate_ready_or_approved_job(self):
+        from content_factory_core import ProductionJob
+        package = self.room.build_package(
+            story_key="locked", series="WorldSBK", sources=(self.s1,),
+            claims=(self.verified(),), coverage_complete=True,
+        )
+        job = ProductionJob("story")
+        job.status = JobStatus.READY_FOR_HUMAN
+        with self.assertRaises(NewsroomContractError):
+            attach_fact_package(job, package)
+
+    def test_same_revision_fact_package_cannot_be_silently_replaced(self):
+        from content_factory_core import ProductionJob
+        first = self.room.build_package(
+            story_key="one", series="WorldSBK", sources=(self.s1,),
+            claims=(self.verified(),), coverage_complete=True,
+        )
+        second = self.room.build_package(
+            story_key="two", series="WorldSBK", sources=(self.s1,),
+            claims=(self.verified(),), coverage_complete=True,
+        )
+        job = ProductionJob("story")
+        job.status = JobStatus.RESEARCHING
+        attach_fact_package(job, first)
+        with self.assertRaises(NewsroomContractError):
+            attach_fact_package(job, second)
 
 
 if __name__ == "__main__":
