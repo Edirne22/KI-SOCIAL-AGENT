@@ -624,8 +624,8 @@ Quelle: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-p
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin", "media_status": "", "object_id": "1285968257941776_122116869387469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122116869387469415", "source_url": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-09-30 00:27 | ID: 18097322672635871]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-29-manual-36548140854
 Telegram-Update-ID: 279361791
@@ -638,6 +638,7 @@ Bahattin Sofuoğlu startet beim EICMA Italian Round in Cremona für QJMOTOR in
 Quelle: https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-29-racing-editorial-2026-09-29-5-eicma-italian-round-01.jpg
+Publish-Provenienz: {"creation_id": "18009340406971550", "media_kind": "image", "media_path": "assets/images/2026-09/2026-09-29-racing-editorial-2026-09-29-5-eicma-italian-round-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18097322672635871", "published_media_id": "18097322672635871", "source_url": "https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
