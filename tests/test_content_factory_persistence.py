@@ -127,6 +127,36 @@ class SQLiteRepositoryTests(unittest.TestCase):
         self.assertEqual(JobStatus.PUBLISH_QUEUED, loaded.job.status)
         self.assertTrue(key)
 
+    def test_full_persistent_staffellauf_survives_restart_before_publish(self):
+        stored, _ = self.repo.create_job("autonomous racing reel", idempotency_key="story:toprak")
+        job = stored.job
+        for status in (
+            JobStatus.INGESTING, JobStatus.TRANSCRIBING, JobStatus.RESEARCHING,
+            JobStatus.WRITING, JobStatus.STORYBOARDING, JobStatus.RENDERING,
+            JobStatus.QM, JobStatus.READY_FOR_HUMAN,
+        ):
+            job.transition(status)
+        job.publish_payload = {"caption": "Final", "platforms": ["instagram"]}
+        job.transition(JobStatus.APPROVED, actor="human")
+        saved = self.repo.save_job(job, expected_store_version=stored.store_version)
+
+        restarted = SQLiteJobRepository(self.db)
+        loaded = restarted.get_job(job.job_id)
+        self.assertEqual(JobStatus.APPROVED, loaded.job.status)
+        self.assertEqual(job.human_approved_manifest, loaded.job.human_approved_manifest)
+        self.assertIsNone(loaded.job.publish_handoff_key)
+
+        handoff = loaded.job.publish_handoff()
+        queued = restarted.save_job(
+            loaded.job, expected_store_version=loaded.store_version
+        )
+        self.assertEqual(JobStatus.PUBLISH_QUEUED, queued.job.status)
+
+        restarted_again = SQLiteJobRepository(self.db)
+        final = restarted_again.get_job(job.job_id)
+        self.assertEqual(handoff, final.job.publish_handoff())
+        self.assertEqual(JobStatus.PUBLISH_QUEUED, final.job.status)
+
 
 class R2StorageTests(unittest.TestCase):
     def setUp(self):
