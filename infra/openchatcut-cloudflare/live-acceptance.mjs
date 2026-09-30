@@ -37,7 +37,7 @@ try {
   // the ownership claim that the failed HTTP response may already have created.
   const hr=await http("/_factory/health",auth);
   assert(hr.ok,`post-disconnect health failed ${hr.status}`);
-  const recoveryTransport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
+  const recoveryTransport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:{...auth,"x-openchatcut-tool-exposure":"full"}}});
   const recoveryClient=new Client({name:"edirne22-disconnect-recovery",version:"1.0.0"});
   await recoveryClient.connect(recoveryTransport);
   const recoveryCall=async(name,args={})=>{console.log("MCP RECOVERY",name);const x=await recoveryClient.callTool({name,arguments:args});if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x};
