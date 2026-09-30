@@ -16,6 +16,7 @@ from content_factory_discovery import (
     RaceWeekendScheduler, SourceType, normalize_url, sanitize_untrusted_text
 )
 from content_factory_service import InMemoryJobService
+from content_factory_repository import SQLiteJobRepository
 
 
 class DiscoveryContractTests(unittest.TestCase):
@@ -274,6 +275,23 @@ class IndependentAcceptanceTests(unittest.TestCase):
         )
         self.assertEqual(1, len(decisions))
         self.assertIn("Practice", service.get_job(decisions[0].job_id).instruction)
+
+    def test_discovery_trigger_idempotency_survives_block2_restart(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "factory.sqlite3"
+            repo = SQLiteJobRepository(db)
+            item = DiscoveryItem("p1", "s1", "https://example.com/toprak", "Toprak Razgatlıoğlu wins",
+                                 series="WorldSBK")
+            cluster = DiscoveryCoordinator().cluster_items([item])[0]
+            trigger = DiscoveryCoordinator().create_editorial_trigger(cluster)
+            key = f"discovery:{trigger.trigger_id}"
+            first, created = repo.create_job(trigger.title, idempotency_key=key)
+            self.assertTrue(created)
+            restarted = SQLiteJobRepository(db)
+            second, created = restarted.create_job(trigger.title, idempotency_key=key)
+            self.assertFalse(created)
+            self.assertEqual(first.job.job_id, second.job.job_id)
 
     def test_atom_href_link_is_parsed(self):
         xml = """<?xml version="1.0"?><feed xmlns="http://www.w3.org/2005/Atom">
