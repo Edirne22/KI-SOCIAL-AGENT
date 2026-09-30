@@ -623,3 +623,38 @@ https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performan
 Quelle: https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin", "media_status": "", "object_id": "1285968257941776_122116869387469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122116869387469415", "source_url": "https://motoetkinlik.com/moto2-avusturya-siralama-deniz-oncuden-harika-performans-pole-filip-salacin", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-29-manual-36548140854
+Telegram-Update-ID: 279361791
+MotoGP-Auswahl: 5
+Titel: EICMA Italian Round: Bahattin Sofuoğlu Cremona'da QJMOTOR ile Piste Çıkıyor
+Text:
+Bahattin Sofuoğlu startet beim EICMA Italian Round in Cremona für QJMOTOR in der WorldSSP. Das Wochenende läuft vom 25. bis 27. September und er fährt in derselben Klasse wie Can Öncü, während Bulega die Meisterschaft schon vorzeitig entscheiden kann. Was glaubt ihr, was Bahattin in Cremona rausholt? 🏍️  
+
+#WorldSSP #CanOncu #BahattinSofuoğlu #MotorradRacing #RacingDeutschland #BülentsBikeLife
+Quelle: https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-09/2026-09-29-racing-editorial-2026-09-29-5-eicma-italian-round-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-29-manual-36548140854
+Telegram-Update-ID: 279361791
+MotoGP-Auswahl: 5
+Titel: EICMA Italian Round: Bahattin Sofuoğlu Cremona'da QJMOTOR ile Piste Çıkıyor
+Text:
+Bahattin Sofuoğlu geht bei der EICMA Italian Round in Cremona mit QJMOTOR in der WorldSSP an den Start.
+
+Das Rennwochenende in Cremona findet vom 25. bis 27. September statt. Sofuoğlu tritt damit in der gleichen Klasse wie Can Öncü an, während Bulega die Meisterschaft vorzeitig für sich entscheiden kann.
+
+Was erwartet ihr von Bahattin Sofuoğlu bei der Runde in Cremona?
+
+#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor
+Quelle: https://motoetkinlik.com/eicma-italian-round-bahattin-sofuoglu-cremonada-qjmotor-ile-piste-cikiyor
+Link-Preview: offiziell
