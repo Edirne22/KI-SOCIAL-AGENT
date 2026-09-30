@@ -35,7 +35,7 @@ class MediaProductionPlanner:
             steps.append(MediaStep("render","render","ffmpeg",()))
         elif brief.content_format in (ContentFormat.IMAGE,ContentFormat.CAROUSEL):
             if not ids:
-                prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.text for b in brief.beats]) if str(x).strip())
+                prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
                 steps.append(MediaStep("generate","generate","image_router",(),(("prompt",prompt),("language",brief.language))))
         return MediaProductionPlan(job.job_id,job.revision,brief.brief_id,tuple(steps))
 
