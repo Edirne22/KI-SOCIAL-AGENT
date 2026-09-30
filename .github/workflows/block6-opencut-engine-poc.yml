@@ -48,7 +48,7 @@ jobs:
 
       - name: Install pinned engine
         working-directory: /home/runner/work/_temp/opencut
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
       - name: Upstream tests
         working-directory: /home/runner/work/_temp/opencut
