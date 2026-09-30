@@ -29,7 +29,7 @@ Pinned PoC commit:
 
 Die PoC-CI muss:
 1. den exakten Upstream-Commit auschecken,
-2. npm-Abhängigkeiten reproduzierbar installieren,
+2. npm-Abhängigkeiten installieren; fehlendes Upstream-Lockfile als Reproduzierbarkeitsrisiko festhalten,
 3. Upstream-Tests ausführen,
 4. TypeScript prüfen und bauen,
 5. einen echten headless 5-Sekunden-Render erzeugen,
@@ -38,3 +38,6 @@ Die PoC-CI muss:
 Erst danach folgt der Edirne-22-Adapter mit echtem Eingabemedium, 9:16/Caption/Audio, R2/SHA-256 und Golden-Tablet-Handoff.
 
 Status: **LIVE_CANDIDATE / PoC**, nicht LIVE.
+
+### Reproduzierbarkeits-Finding
+Der gepinnte floomhq/opencut-Commit enthält kein `package-lock.json`. `npm ci` ist deshalb nicht möglich. Der PoC verwendet `npm install` nur zur technischen Eignungsprüfung. Für eine produktive Übernahme muss Edirne-22 entweder einen geprüften Dependency-Lock/Snapshot besitzen oder der Kandidat wird verworfen.
