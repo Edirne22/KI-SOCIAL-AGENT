@@ -1,6 +1,11 @@
 name: Block 6 OpenCut Engine PoC
 
 on:
+  push:
+    branches: [feat/block6-opencut-engine-poc]
+    paths:
+      - ".github/workflows/block6-opencut-engine-poc.yml"
+      - "docs/BLOCK6_VIDEO_TOOL_BATTLE.md"
   pull_request:
     paths:
       - ".github/workflows/block6-opencut-engine-poc.yml"
