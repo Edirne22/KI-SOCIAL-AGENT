@@ -111,7 +111,10 @@ class FactPackage:
         return (
             self.coverage_complete
             and bool(self.writer_facts)
-            and not any(c.status in (ClaimStatus.CONFLICTED, ClaimStatus.UNSUPPORTED) for c in self.claims)
+            and not any(
+                c.status in (ClaimStatus.CONFLICTED, ClaimStatus.RUMOR, ClaimStatus.UNSUPPORTED)
+                for c in self.claims
+            )
         )
 
     def to_dict(self) -> dict:
