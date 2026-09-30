@@ -34,7 +34,9 @@ class MediaProductionPlanner:
             steps.append(MediaStep("edit","edit","openchatcut",()))
             steps.append(MediaStep("render","render","ffmpeg",()))
         elif brief.content_format in (ContentFormat.IMAGE,ContentFormat.CAROUSEL):
-            if not ids: steps.append(MediaStep("generate","generate","image_router",(),(("prompt",brief.visual_direction),)))
+            if not ids:
+                prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.text for b in brief.beats]) if str(x).strip())
+                steps.append(MediaStep("generate","generate","image_router",(),(("prompt",prompt),("language",brief.language))))
         return MediaProductionPlan(job.job_id,job.revision,brief.brief_id,tuple(steps))
 
 class ExternalMediaPort(Protocol):
