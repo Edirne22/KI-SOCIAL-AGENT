@@ -458,6 +458,84 @@ Bei `/BLOCKRUN Block X bis Block Y` wird jeder Block vollständig nach seiner De
 
 Wenn eine Chat-Ausführung technisch endet, darf nicht behauptet werden, ein normaler Chat arbeite heimlich stundenlang weiter. Verlangt Bülent ausdrücklich eine Weiterarbeit während seiner Abwesenheit oder über Nacht, muss dafür eine tatsächlich geeignete Hintergrund-/Automation-/Work-Ausführung eingerichtet und vor Verlassen des aktiven Laufs verifiziert werden. Ein solcher Hintergrundlauf muss seinen eigenen Fortschritt und Fehlerzustand nachvollziehbar machen.
 
+
+### 13.14 HARD RULE – sichtbare Meldungen dürfen die Ausführung niemals beenden
+
+Diese Regel hat innerhalb eines aktiven `/BLOCKRUN` Vorrang vor Komfort, Gesprächsrhythmus und dem Wunsch, nach einem Status auf eine Antwort zu warten.
+
+> **Eine an Bülent gesendete Status-, Fortschritts-, Fehler-, Diagnose-, Commit-, PR-, CI-, Deploy- oder Testergebnis-Meldung ist ausschließlich Telemetrie. Sie ist niemals ein impliziter Stopp, niemals eine Rückgabe der Arbeitsverantwortung an Bülent und niemals eine Aufforderung, den Agenten erneut anzustoßen.**
+
+Nach jeder sichtbaren Zwischenmeldung muss in derselben aktiven Arbeitsausführung unmittelbar die nächste technisch mögliche Aktion folgen.
+
+Verbotenes Muster:
+
+```text
+STATUS MELDEN
+→ Antwort beenden
+→ auf "mach weiter", "prüf", "und?", "grün?" oder ähnlichen neuen Nutzerimpuls warten
+```
+
+Verbindliches Muster:
+
+```text
+STATUS MELDEN
+→ NÄCHSTE TOOL-AKTION AUSFÜHREN
+→ ERGEBNIS AUSWERTEN
+→ BEI ROT LOGS HOLEN
+→ ROOT CAUSE BESTIMMEN
+→ FIX BAUEN
+→ TESTEN
+→ PUSH/PR/CI
+→ ERNEUT AUSWERTEN
+→ SCHLEIFE BIS DoD ODER ECHTEM EXTERNEN BLOCKER
+```
+
+Insbesondere gilt:
+
+- `ROT` ist ein **Arbeitsauftrag**, kein Berichtsendpunkt.
+- `queued` oder `in_progress` ist kein Grund, freiwillig aufzuhören, wenn parallel sinnvolle Prüf-, Analyse-, Dokumentations- oder Vorbereitungsschritte möglich sind.
+- Ein Finding ist kein Endergebnis. Es muss, soweit technisch selbst behebbar, bis Root Cause + Fix + Re-Test verfolgt werden.
+- Ein Fix ist kein Endergebnis. Der dadurch ausgelöste Test/CI-Lauf muss ausgewertet werden.
+- Ein grüner Einzeltest ist kein Endergebnis. Die restliche DoD wird weiter abgearbeitet.
+- Eine Statusmeldung darf nicht mit Formulierungen enden, die Bülents erneuten Startimpuls voraussetzen, solange kein echter externer Blocker vorliegt.
+- Die nächste Aktion darf nur dann nicht ausgeführt werden, wenn sie technisch gerade unmöglich ist, außerhalb des freigegebenen Scopes liegt, eine ausdrücklich vorbehaltene Human-Authority-Entscheidung benötigt oder unter Abschnitt 13.9 als echter externer Blocker fällt.
+
+**Selbstprüfung vor jeder Zwischenantwort in einem aktiven `/BLOCKRUN`:**
+
+```text
+1. Ist die Definition of Done erreicht?
+   JA → Abschlussstatus mit Nachweisen.
+   NEIN → weiter.
+
+2. Liegt ein echter externer Blocker nach 13.9 vor?
+   JA → konkrete Blockermeldung.
+   NEIN → weiter.
+
+3. Gibt es eine technisch mögliche nächste Aktion?
+   JA → TOOL/ACTION JETZT AUSFÜHREN; nicht auf Bülent warten.
+   NEIN → nur den tatsächlich unvermeidbaren Wartezustand transparent melden.
+
+4. Ist ein Lauf ROT?
+   JA → Logs JETZT holen und Reparaturschleife starten.
+
+5. Ist ein Lauf GRÜN?
+   JA → nächste DoD-Prüfung JETZT starten.
+```
+
+**Fail-safe-Leitsatz:**
+
+```text
+SOLANGE DoD = FALSE UND EXTERNAL_BLOCKER = FALSE:
+    STATUS IST NUR TELEMETRIE
+    NICHT PAUSIEREN
+    NÄCHSTE AKTION AUSFÜHREN
+    ROT => ZERLEGEN + REPARIEREN + NEU TESTEN
+    GRÜN => NÄCHSTE DoD-STUFE
+```
+
+Diese Regel soll ausdrücklich verhindern, dass Bülent durch wiederholte Nachrichten wie `mach weiter`, `prüf jetzt`, `und grün?` oder `starte den nächsten Schritt` einen bereits freigegebenen `/BLOCKRUN` künstlich am Leben halten muss.
+
+
 ### 13.13 BLOCKRUN-Kurzform
 
 Die verbindliche Kurzform lautet:
