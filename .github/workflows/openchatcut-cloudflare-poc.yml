@@ -1,0 +1,51 @@
+name: OpenChatCut Cloudflare PoC
+
+on:
+  push:
+    branches: [feat/openchatcut-cloudflare-poc]
+    paths:
+      - "infra/openchatcut-cloudflare/**"
+      - ".github/workflows/openchatcut-cloudflare-poc.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install wrapper dependencies
+        working-directory: infra/openchatcut-cloudflare
+        run: npm install
+      - name: Validate Wrangler configuration
+        working-directory: infra/openchatcut-cloudflare
+        run: npx wrangler deploy --dry-run
+      - name: Verify pinned upstream commit exists
+        run: git ls-remote https://github.com/0xsline/OpenChatCut.git d1af1ade45521e8ed9a5be09e3acad823f269453 | grep d1af1ade45521e8ed9a5be09e3acad823f269453
+
+  deploy:
+    needs: contract
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install wrapper dependencies
+        working-directory: infra/openchatcut-cloudflare
+        run: npm install
+      - name: Guard required Cloudflare credentials
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+      - name: Deploy Worker and OpenChatCut container
+        working-directory: infra/openchatcut-cloudflare
+        run: npx wrangler deploy
