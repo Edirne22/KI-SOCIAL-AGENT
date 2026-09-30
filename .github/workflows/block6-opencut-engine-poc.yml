@@ -1,0 +1,78 @@
+name: Block 6 OpenCut Engine PoC
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/block6-opencut-engine-poc.yml"
+      - "docs/BLOCK6_VIDEO_TOOL_BATTLE.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  opencut-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OPENCUT_REPO: https://github.com/floomhq/opencut.git
+      OPENCUT_COMMIT: 57dedbc606e17cc2013f2ca5fcbf8cc69266e488
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Checkout pinned OpenCut engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none "$OPENCUT_REPO" "$RUNNER_TEMP/opencut"
+          cd "$RUNNER_TEMP/opencut"
+          git checkout "$OPENCUT_COMMIT"
+          test "$(git rev-parse HEAD)" = "$OPENCUT_COMMIT"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: /home/runner/work/_temp/opencut/package-lock.json
+
+      - name: Verify host media tools
+        run: |
+          set -euo pipefail
+          ffmpeg -version | head -1
+          ffprobe -version | head -1
+
+      - name: Install pinned engine
+        working-directory: /home/runner/work/_temp/opencut
+        run: npm ci
+
+      - name: Upstream tests
+        working-directory: /home/runner/work/_temp/opencut
+        run: npm test
+
+      - name: Typecheck and build
+        working-directory: /home/runner/work/_temp/opencut
+        run: |
+          npm run typecheck
+          npm run build
+
+      - name: Real 5s headless render
+        working-directory: /home/runner/work/_temp/opencut
+        run: npm run test-render
+
+      - name: Media acceptance
+        working-directory: /home/runner/work/_temp/opencut
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s out/quickstart-test-5s.mp4
+          ffprobe -v error -select_streams v:0             -show_entries stream=codec_name,width,height,duration             -of json out/quickstart-test-5s.mp4 | tee "$RUNNER_TEMP/opencut-ffprobe.json"
+          python3 - <<'PY'
+          import json, os
+          p=os.environ["RUNNER_TEMP"]+"/opencut-ffprobe.json"
+          d=json.load(open(p,encoding="utf-8"))
+          s=d["streams"][0]
+          assert s["codec_name"] in {"h264","vp9","av1","hevc"}, s
+          assert int(s["width"]) > 0 and int(s["height"]) > 0, s
+          assert float(s.get("duration") or 0) > 0, s
+          print("OPENCUT_REAL_RENDER_PASS", s)
+          PY
