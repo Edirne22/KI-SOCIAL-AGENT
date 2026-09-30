@@ -4,47 +4,37 @@
 
 **Regel:** Der Pool darf wachsen. Er ist ein Werkzeugkasten, keine Bürde.
 
-**Letzte Aktualisierung:** 2026-09-29
+**Letzte Aktualisierung:** 2026-09-30
 
 ---
 
 ## 🔴 HEUTE / DIESE WOCHE – AKTIV
 
-### Racing-Pipeline (Stand 24.09.2026)
+### Content Factory / Media – P1 (Stand 30.09.2026)
 
-**Offene Bugs:**
-- [ ] **Community-Fallback feuert zu aggressiv** – bei vorhandenen Racing-News aber 0 QM-PASS statt fail-closed
-- [ ] **Fallback-Kennzeichnung** – „Herkunft: Aktuell" statt „COMMUNITY-FALLBACK" in write_session() + telegram_preview()
+**LIVE bestätigt:**
+- [x] Factory Blocks 1–9 auf main.
+- [x] Cloudflare R2 privates Medienlager: Upload → Download → SHA-256 PASS.
+- [x] ImageRouter → Factory Adapter → R2 LIVE.
+- [x] Agnes Video → Factory Adapter → R2 LIVE (Run 36706431947).
 
-**Wartet auf Test:**
-- [ ] **PR #94 mergen** → Live-Test mit `force_new_run=true`
-- [ ] **Live-Test MotoGP-Content-Agent** – Erwartung: 5 echte MotoGP-Posts
-- [ ] **Log prüfen:** `force_new_run resolved=true`, `RACING-QM PASS`, `turkish_rider=True`
+**Jetzt:**
+- [ ] OpenChatCut im Cloudflare Container als Beta-Werkbank PoC testen.
+- [ ] 720×1280/7s, 1080×1920/15s und 1080×1920/30s benchmarken.
+- [ ] Caption + Audio + Remotion/FFmpeg Export + R2 + SHA-256 + ffprobe prüfen.
+- [ ] OpenChatCutAdapter erst nach echtem Staffellauf von SIMULATED auf LIVE setzen.
+- [ ] Danach SupoClip echte API/Auth integrieren und LIVE abnehmen.
+- [ ] Gesamtweg: Source → SupoClip → OpenChatCut → FFmpeg → R2 → Golden Tablet.
+- [ ] Sicherer Bild-/Video-Preview für Bülent, ohne R2 öffentlich zu schalten.
 
-**Gerade gemergt (24.09.):**
-- [x] PR #78 – Signatur-Bug Strukturvariation
-- [x] PR #79 – Rate-Limit-Hardening (Cooldown + Fallback)
-- [x] PR #83 – Preflight-Selftests
-- [x] PR #85 – JSON-Fehler model_router.json
-- [x] PR #88 – Test-Uhr Retry-After
-- [x] PR #89 – NVIDIA-Modell + Structure-QM
-- [x] PR #90 – force_new_run Checkbox-Übergabe
-- [x] PR #94 – Moto4 + Turkish-Rider-Flag
+**Später:**
+- [ ] R2-Belegung/Alter/Medientypen statistisch erfassen; daraus 30/60/90-Tage-Temp-Lifecycle ableiten.
+- [ ] Final freigegebene/veröffentlichte Medien und bewusst archivierte Originale niemals per Temp-Cleanup löschen.
+- [ ] Cloudflare-Benchmarks später 1:1 gegen x86-VPS messen.
 
-### Instagram Engagement (Stand 24.09.2026)
+### Historische Racing-/Engagement-Punkte
 
-**Wartet auf Live-Test:**
-- [ ] Erstes echtes `IG-XXXXXXXX`-Ticket abwarten
-- [ ] `info` → `memory` → dann `antwort` ODER `ändern`
-
-**Offen:**
-- [ ] **reply_draft-Lücke** – KI-generierte Antwortvorschläge integrieren (fehlt aktuell in `instagram_engagement.ingest()`)
-
-### Facebook (Stand 24.09.2026)
-
-**Pausiert:**
-- [ ] Facebook-Token-Problem: `pages_read_engagement` fehlt
-- [ ] Graph API Explorer → `/me/accounts` → Page-Token isolieren → Secret updaten → reaktivieren
+Die früher hier gelisteten PR-#94-/24.09.-Aktivpunkte sind als aktuelle Aufgaben überholt. Racing-/Engagement-Historie bleibt in `docs/PROJEKT_UEBERGABE_2_ENGAGEMENT.md`, `docs/PROJEKT_UEBERGABE_3_RACING.md` und `docs/PROJEKT_UEBERGABE_4_RUNTIME.md`. Aktuelle Arbeit wird über `MASTER-SNAPSHOT.md` und den neuesten Factory-Snapshot gesteuert.
 
 ---
 
