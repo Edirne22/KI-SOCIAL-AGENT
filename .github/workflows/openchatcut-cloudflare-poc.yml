@@ -74,8 +74,8 @@ jobs:
             jq -r 'if .success == true then "success=true" else (.errors // [] | map("CF_ERROR code=\(.code) message=\(.message)") | .[]) end' "$body" 2>/dev/null || true
             rm -f "$body"
           }
-          id_len="$(printf %s "$CLOUDFLARE_ACCOUNT_ID" | wc -c | tr -d ' ')"
-          if printf %s "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9a-fA-F]{32}      - name: Build private secret bundle outside repository
+          id_len="$(printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | wc -c | tr -d ' ')"
+          if printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9a-fA-F]{32}      - name: Build private secret bundle outside repository
         shell: bash
         run: |
           set -euo pipefail
@@ -96,7 +96,11 @@ jobs:
       - name: Confirm deployed application exists
         working-directory: infra/openchatcut-cloudflare
         run: npx wrangler containers list
-; then id_shape=valid_32_hex; else id_shape=invalid; fi
+; then
+            id_shape="valid_32_hex"
+          else
+            id_shape="invalid"
+          fi
           echo "account_id_shape: length=$id_len format=$id_shape"
           probe "user_token_verify" "$api/user/tokens/verify"
           probe "account_token_verify" "$api/accounts/$CLOUDFLARE_ACCOUNT_ID/tokens/verify"
