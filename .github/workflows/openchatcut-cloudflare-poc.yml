@@ -74,34 +74,13 @@ jobs:
             jq -r 'if .success == true then "success=true" else (.errors // [] | map("CF_ERROR code=\(.code) message=\(.message)") | .[]) end' "$body" 2>/dev/null || true
             rm -f "$body"
           }
-          id_len="$(printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | wc -c | tr -d ' ')"
-          if printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | grep -Eq '^[0-9a-fA-F]{32}      - name: Build private secret bundle outside repository
-        shell: bash
-        run: |
-          set -euo pipefail
-          jq -n \
-            --arg mcp "$OPENCHATCUT_MCP_TOKEN" \
-            --arg account "$R2_ACCOUNT_ID" \
-            --arg access "$R2_ACCESS_KEY_ID" \
-            --arg secret "$R2_SECRET_ACCESS_KEY" \
-            --arg bucket "$R2_BUCKET_NAME" \
-            '{OPENCHATCUT_MCP_TOKEN:$mcp,R2_ACCOUNT_ID:$account,R2_ACCESS_KEY_ID:$access,R2_SECRET_ACCESS_KEY:$secret,R2_BUCKET_NAME:$bucket}' \
-            > "$RUNNER_TEMP/openchatcut-secrets.json"
-      - name: Deploy Worker, container and runtime secrets atomically
-        working-directory: infra/openchatcut-cloudflare
-        run: npx wrangler deploy --secrets-file "$RUNNER_TEMP/openchatcut-secrets.json"
-      - name: Remove temporary secret bundle
-        if: always()
-        run: rm -f "$RUNNER_TEMP/openchatcut-secrets.json"
-      - name: Confirm deployed application exists
-        working-directory: infra/openchatcut-cloudflare
-        run: npx wrangler containers list
-; then
-            id_shape="valid_32_hex"
+          id_len="$(echo -n "$CLOUDFLARE_ACCOUNT_ID" | wc -c | tr -d ' ')"
+          echo "account_id_length: $id_len"
+          if echo -n "$CLOUDFLARE_ACCOUNT_ID" | grep -qv '[^0-9a-fA-F]'; then
+            echo "account_id_charset: hex"
           else
-            id_shape="invalid"
+            echo "account_id_charset: invalid"
           fi
-          echo "account_id_shape: length=$id_len format=$id_shape"
           probe "user_token_verify" "$api/user/tokens/verify"
           probe "account_token_verify" "$api/accounts/$CLOUDFLARE_ACCOUNT_ID/tokens/verify"
           probe "accounts_list" "$api/accounts"
