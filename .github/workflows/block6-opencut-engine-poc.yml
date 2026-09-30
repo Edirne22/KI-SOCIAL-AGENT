@@ -37,8 +37,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-          cache-dependency-path: /home/runner/work/_temp/opencut/package-lock.json
 
       - name: Verify host media tools
         run: |
