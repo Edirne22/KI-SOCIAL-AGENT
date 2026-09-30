@@ -27,7 +27,37 @@ await call("target_project",{projectId});
 let tools=(await client.listTools()).tools; console.log("tool count",tools.length);
 const has=n=>tools.some(t=>t.name===n);
 for(const n of ["begin_edit_session","read_project","list_templates","add_motion_graphic","review_edit_session"]) assert(has(n),`required server-direct MCP tool missing: ${n}`);
-const begun=data(await call("begin_edit_session",{approvalMode:"auto"})); const editSessionId=begun.editSessionId||begun.id; assert(editSessionId,"no editSessionId");
+let begun;
+try {
+  begun=data(await call("begin_edit_session",{approvalMode:"auto"}));
+} catch (error) {
+  console.error("BEGIN_EDIT_SESSION_DISCONNECT", error?.stack || error);
+  // A fresh transport distinguishes a dead/restarted container from a broken
+  // StreamableHTTP connection. Re-targeting the just-created project proves
+  // whether OpenChatCut durable project state survived the disconnect.
+  let postDisconnect={health:null,status:null,projectSurvived:false,error:null};
+  try {
+    const hr=await http("/_factory/health",auth);
+    postDisconnect.health={status:hr.status,body:await hr.text()};
+    const probeTransport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
+    const probeClient=new Client({name:"edirne22-disconnect-probe",version:"1.0.0"});
+    await probeClient.connect(probeTransport);
+    const probeCall=async(name,args={})=>{const x=await probeClient.callTool({name,arguments:args});if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x};
+    postDisconnect.status=data(await probeCall("openchatcut_status"));
+    try {
+      await probeCall("target_project",{projectId});
+      postDisconnect.projectSurvived=true;
+    } catch (targetError) {
+      postDisconnect.targetError=String(targetError?.stack||targetError);
+    }
+    await probeClient.close();
+  } catch (probeError) {
+    postDisconnect.error=String(probeError?.stack||probeError);
+  }
+  console.error("POST_DISCONNECT_PROBE",JSON.stringify(postDisconnect));
+  throw error;
+}
+const editSessionId=begun.editSessionId||begun.id; assert(editSessionId,"no editSessionId");
 const templates=data(await call("list_templates",{})); console.log("templates",JSON.stringify(templates).slice(0,1500));
 const templateList=Array.isArray(templates)?templates:(templates.templates||templates.items||[]);
 assert(templateList.length,"OpenChatCut returned no built-in motion graphic templates");
