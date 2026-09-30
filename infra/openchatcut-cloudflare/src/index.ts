@@ -1,8 +1,15 @@
 import { Container, getContainer } from "@cloudflare/containers";
 import { env } from "cloudflare:workers";
 
-const WORKER_BOOT_ID = crypto.randomUUID();
-const WORKER_STARTED_AT = new Date().toISOString();
+let workerBootId: string | undefined;
+let workerStartedAt: string | undefined;
+function workerIdentity() {
+  if (!workerBootId) {
+    workerBootId = crypto.randomUUID();
+    workerStartedAt = new Date().toISOString();
+  }
+  return { workerBootId, workerStartedAt };
+}
 
 type Env = {
   OPENCHATCUT: DurableObjectNamespace<OpenChatCutContainer>;
@@ -46,12 +53,13 @@ export default {
 
     const url = new URL(request.url);
     if (url.pathname === "/_factory/health") {
-      return Response.json({ ok: true, service: "openchatcut", truth: "LIVE_CANDIDATE", workerBootId: WORKER_BOOT_ID, workerStartedAt: WORKER_STARTED_AT });
+      const identity = workerIdentity();
+      return Response.json({ ok: true, service: "openchatcut", truth: "LIVE_CANDIDATE", ...identity });
     }
 
     const container = getContainer(e.OPENCHATCUT, "buelent-single-user");
     const sessionId = request.headers.get("mcp-session-id") || "";
-    console.log(JSON.stringify({ event: "openchatcut_proxy", method: request.method, path: url.pathname, hasMcpSessionId: Boolean(sessionId), mcpSessionIdPrefix: sessionId.slice(0, 8), workerBootId: WORKER_BOOT_ID }));
+    console.log(JSON.stringify({ event: "openchatcut_proxy", method: request.method, path: url.pathname, hasMcpSessionId: Boolean(sessionId), mcpSessionIdPrefix: sessionId.slice(0, 8), workerBootId: workerIdentity().workerBootId }));
     return container.fetch(request);
   }
 };
