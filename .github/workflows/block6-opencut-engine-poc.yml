@@ -60,6 +60,18 @@ jobs:
           npm run typecheck
           npm run build
 
+      - name: Build deterministic input fixture
+        working-directory: /home/runner/work/_temp/opencut
+        run: |
+          set -euo pipefail
+          mkdir -p public
+          ffmpeg -hide_banner -loglevel error -y \
+            -f lavfi -i "testsrc2=size=1280x720:rate=30" \
+            -f lavfi -i "sine=frequency=880:sample_rate=48000" \
+            -t 5 -c:v libx264 -pix_fmt yuv420p -c:a aac -shortest public/facecam.mp4
+          test -s public/facecam.mp4
+          ffprobe -v error -show_entries format=duration -of default=nw=1 public/facecam.mp4
+
       - name: Real 5s headless render
         working-directory: /home/runner/work/_temp/opencut
         run: npm run test-render
