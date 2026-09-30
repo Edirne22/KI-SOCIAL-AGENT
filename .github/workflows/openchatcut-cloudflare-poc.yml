@@ -112,7 +112,8 @@ jobs:
 
 
   live-acceptance:
-    needs: contract
+    if: github.event_name != 'pull_request'
+    needs: deploy
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
