@@ -30,6 +30,8 @@ jobs:
    - name: Block 9
      run: python -m unittest -v tests.test_content_factory_control_center
    - name: Existing publisher no-work safety
-     run: python -m unittest -v tests.test_publisher_no_work_workflows
+     run: |
+       python -m pip install --disable-pip-version-check pytest
+       pytest -q tests/test_publisher_no_work_workflows.py
    - name: SOURCE-FACT
      run: python tests/test_source_fact_contract_v1.py
