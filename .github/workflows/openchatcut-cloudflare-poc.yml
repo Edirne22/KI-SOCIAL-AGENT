@@ -2,7 +2,7 @@ name: OpenChatCut Cloudflare PoC
 
 on:
   push:
-    branches: [feat/openchatcut-cloudflare-poc]
+    branches: [main, feat/openchatcut-cloudflare-poc]
     paths:
       - "infra/openchatcut-cloudflare/**"
       - ".github/workflows/openchatcut-cloudflare-poc.yml"
@@ -33,7 +33,7 @@ jobs:
         run: git ls-remote https://github.com/0xsline/OpenChatCut.git d1af1ade45521e8ed9a5be09e3acad823f269453 | grep d1af1ade45521e8ed9a5be09e3acad823f269453
 
   deploy:
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     needs: contract
     runs-on: ubuntu-latest
     env:
