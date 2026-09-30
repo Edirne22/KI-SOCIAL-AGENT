@@ -43,11 +43,6 @@ const exportResponse=await fetch(base+"/export",{method:"POST",headers:{...auth,
 if(!exportResponse.ok) throw new Error(`native headless /export failed ${exportResponse.status}: ${await exportResponse.text()}`);
 const bytes=Buffer.from(await exportResponse.arrayBuffer());
 assert(bytes.length>1000,"native headless /export returned empty/tiny output");
-function strings(o,out=[]){if(typeof o==="string")out.push(o);else if(Array.isArray(o))o.forEach(v=>strings(v,out));else if(o&&typeof o==="object")Object.values(o).forEach(v=>strings(v,out));return out}
-const urls=strings(exp).filter(s=>/^https?:\/\//.test(s)); let bytes=null;
-for(const u of urls){try{const q=await fetch(u,{headers:auth});if(q.ok){const b=Buffer.from(await q.arrayBuffer());if(b.length>1000){bytes=b;break}}}catch{}}
-if(!bytes && exp.path){const q=await fetch(base+`/api/result-download?path=${encodeURIComponent(exp.path)}`,{headers:auth});if(q.ok)bytes=Buffer.from(await q.arrayBuffer())}
-assert(bytes&&bytes.length>1000,"could not retrieve rendered MP4 from OpenChatCut export");
 await writeFile("/tmp/openchatcut-live.mp4",bytes);
 const fp=spawnSync("ffprobe",["-v","error","-show_entries","format=duration,format_name:stream=codec_name,width,height","-of","json","/tmp/openchatcut-live.mp4"],{encoding:"utf8"});
 assert(fp.status===0,`ffprobe failed: ${fp.stderr}`); const probe=JSON.parse(fp.stdout); console.log("ffprobe",JSON.stringify(probe)); assert((probe.streams||[]).some(s=>s.codec_name==="h264"||s.codec_name==="vp9"||s.codec_name==="av1"),"no video codec");
