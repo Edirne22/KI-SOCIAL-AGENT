@@ -30,7 +30,7 @@ jobs:
         working-directory: infra/openchatcut-cloudflare
         run: npx wrangler deploy --dry-run
       - name: Verify pinned upstream commit exists
-        run: git ls-remote https://github.com/0xsline/OpenChatCut.git | grep -Fq "d1af1ade45521e8ed9a5be09e3acad823f269453"
+        run: git -c protocol.version=2 fetch --no-tags --depth=1 https://github.com/0xsline/OpenChatCut.git d1af1ade45521e8ed9a5be09e3acad823f269453 && git cat-file -e d1af1ade45521e8ed9a5be09e3acad823f269453^{commit}
 
   deploy:
     if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
