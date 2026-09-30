@@ -145,3 +145,34 @@ jobs:
       - name: Real OpenChatCut render, ffprobe, private R2 roundtrip and negative controls
         working-directory: infra/openchatcut-cloudflare
         run: node live-acceptance.mjs
+
+  pr-live-acceptance:
+    if: github.event_name == 'pull_request'
+    needs: contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENCHATCUT_BASE_URL: https://edirne22-openchatcut-poc.butupeli.workers.dev
+      OPENCHATCUT_MCP_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Guard PR acceptance credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in OPENCHATCUT_MCP_TOKEN R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!name:-}" || { echo "::error::Missing required GitHub Actions secret: $name"; exit 1; }
+          done
+      - name: Install acceptance dependencies
+        working-directory: infra/openchatcut-cloudflare
+        run: npm install --no-save @modelcontextprotocol/sdk @aws-sdk/client-s3
+      - name: Real OpenChatCut acceptance against deployed LIVE_CANDIDATE
+        working-directory: infra/openchatcut-cloudflare
+        run: node live-acceptance.mjs

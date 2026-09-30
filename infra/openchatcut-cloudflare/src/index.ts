@@ -1,6 +1,9 @@
 import { Container, getContainer } from "@cloudflare/containers";
 import { env } from "cloudflare:workers";
 
+const WORKER_BOOT_ID = crypto.randomUUID();
+const WORKER_STARTED_AT = new Date().toISOString();
+
 type Env = {
   OPENCHATCUT: DurableObjectNamespace<OpenChatCutContainer>;
   OPENCHATCUT_MCP_TOKEN: string;
@@ -14,6 +17,10 @@ export class OpenChatCutContainer extends Container {
   defaultPort = 5199;
   sleepAfter = "5m";
   enableInternet = true;
+  async fetch(request: Request): Promise<Response> {
+    this.renewActivityTimeout();
+    return super.fetch(request);
+  }
   envVars = {
     OPENCHATCUT_MCP_TOKEN: env.OPENCHATCUT_MCP_TOKEN,
     __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "edirne22-openchatcut-poc.butupeli.workers.dev",
@@ -39,10 +46,12 @@ export default {
 
     const url = new URL(request.url);
     if (url.pathname === "/_factory/health") {
-      return Response.json({ ok: true, service: "openchatcut", truth: "LIVE_CANDIDATE" });
+      return Response.json({ ok: true, service: "openchatcut", truth: "LIVE_CANDIDATE", workerBootId: WORKER_BOOT_ID, workerStartedAt: WORKER_STARTED_AT });
     }
 
     const container = getContainer(e.OPENCHATCUT, "buelent-single-user");
+    const sessionId = request.headers.get("mcp-session-id") || "";
+    console.log(JSON.stringify({ event: "openchatcut_proxy", method: request.method, path: url.pathname, hasMcpSessionId: Boolean(sessionId), mcpSessionIdPrefix: sessionId.slice(0, 8), workerBootId: WORKER_BOOT_ID }));
     return container.fetch(request);
   }
 };
