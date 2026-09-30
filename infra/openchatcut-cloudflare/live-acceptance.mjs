@@ -24,20 +24,25 @@ const status=await call("openchatcut_status"); console.log("status",JSON.stringi
 const created=data(await call("create_project",{name:`Edirne22 LIVE acceptance ${new Date().toISOString()}`,compositionWidth:720,compositionHeight:1280,fps:30}));
 const projectId=created.id||created.projectId; assert(projectId,"create_project returned no id");
 await call("target_project",{projectId});
-for(const skill of ["create-motion-graphics","export","verification"]){try{await call("load_skill",{name:skill})}catch(e){console.log("skill optional:",skill,String(e))}}
 let tools=(await client.listTools()).tools; console.log("tool count",tools.length);
-const has=n=>tools.some(t=>t.name===n); for(const n of ["begin_edit_session","read_project","create_motion_graphic_from_code","edit_item","review_edit_session","submit_export"]) assert(has(n),`required MCP tool missing: ${n}`);
-const schema=n=>tools.find(t=>t.name===n)?.inputSchema||{};
-console.log("schemas",JSON.stringify(Object.fromEntries(["begin_edit_session","edit_item","submit_export"].map(n=>[n,schema(n)]))));
+const has=n=>tools.some(t=>t.name===n);
+for(const n of ["begin_edit_session","read_project","list_templates","add_motion_graphic","review_edit_session"]) assert(has(n),`required server-direct MCP tool missing: ${n}`);
 const begun=data(await call("begin_edit_session",{approvalMode:"auto"})); const editSessionId=begun.editSessionId||begun.id; assert(editSessionId,"no editSessionId");
-const project=data(await call("read_project",{editSessionId})); console.log("project read ok",JSON.stringify(project).slice(0,1000));
-const mg=data(await call("create_motion_graphic_from_code",{editSessionId,name:"Edirne22 acceptance card",width:720,height:1280,durationInSeconds:7,code:`export default function Composition(){return <div style={{width:'100%',height:'100%',background:'#111',display:'flex',alignItems:'center',justifyContent:'center',color:'white',fontSize:72,fontFamily:'sans-serif'}}><div>EDIRNE 22 · LIVE</div></div>}`}));
-const assetId=mg.assetId||mg.id; assert(assetId,`MG returned no asset id: ${JSON.stringify(mg)}`);
-let editArgs={editSessionId,adds:[{kind:"motion-graphic",assetId,startFrame:0,durationInFrames:210}]};
-try{await call("edit_item",editArgs)}catch(e){console.log("first edit shape failed",String(e)); await call("edit_item",{editSessionId,action:"add",kind:"motion-graphic",assetId,startFrame:0,durationInFrames:210})}
-await call("review_edit_session",{editSessionId});
-for(let i=0;i<20;i++){const s=data(await call("get_edit_session",{editSessionId})); if(s.status==="applied")break;if(["rejected","discarded"].includes(s.status))throw new Error("edit session "+s.status);await new Promise(q=>setTimeout(q,1000));if(i===19)throw new Error("edit session did not become applied")}
-const exp=data(await call("submit_export",{format:"video",codec:"h264",name:"edirne22-openchatcut-live-acceptance"})); console.log("export",JSON.stringify(exp));
+const templates=data(await call("list_templates",{})); console.log("templates",JSON.stringify(templates).slice(0,1500));
+const templateList=Array.isArray(templates)?templates:(templates.templates||templates.items||[]);
+assert(templateList.length,"OpenChatCut returned no built-in motion graphic templates");
+const templateName=templateList[0].name||templateList[0].title; assert(templateName,"template has no name");
+await call("add_motion_graphic",{editSessionId,templateName,track:"V1",startFrame:0});
+await call("review_edit_session",{editSessionId,summary:"Edirne22 native headless acceptance"});
+const committed=data(await call("read_project",{})); console.log("committed project",JSON.stringify(committed).slice(0,2000));
+const projectDoc=committed.project||committed.document||committed;
+const timelineId=projectDoc.activeTimelineId||(projectDoc.timelines&&projectDoc.timelines[0]&&projectDoc.timelines[0].id);
+assert(timelineId,"read_project returned no active timeline");
+console.log("HEADLESS_RENDER_PATH","OpenChatCut native /export -> Remotion/headless Chrome; no connected editor required");
+const exportResponse=await fetch(base+"/export",{method:"POST",headers:{...auth,"content-type":"application/json"},body:JSON.stringify({project:projectDoc,timelineId,format:"video",codec:"h264",name:"edirne22-openchatcut-live-acceptance.mp4"})});
+if(!exportResponse.ok) throw new Error(`native headless /export failed ${exportResponse.status}: ${await exportResponse.text()}`);
+const bytes=Buffer.from(await exportResponse.arrayBuffer());
+assert(bytes.length>1000,"native headless /export returned empty/tiny output");
 function strings(o,out=[]){if(typeof o==="string")out.push(o);else if(Array.isArray(o))o.forEach(v=>strings(v,out));else if(o&&typeof o==="object")Object.values(o).forEach(v=>strings(v,out));return out}
 const urls=strings(exp).filter(s=>/^https?:\/\//.test(s)); let bytes=null;
 for(const u of urls){try{const q=await fetch(u,{headers:auth});if(q.ok){const b=Buffer.from(await q.arrayBuffer());if(b.length>1000){bytes=b;break}}}catch{}}
