@@ -80,6 +80,12 @@ class ProductionJobTests(unittest.TestCase):
         with self.assertRaises(PermissionError):
             job.publish_handoff()
 
+    def test_non_json_publish_payload_is_rejected_before_approval(self):
+        job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
+        job.publish_payload["bad"] = object()
+        with self.assertRaises(ValueError):
+            job.transition(JobStatus.APPROVED, actor="human")
+
     def test_approval_blocks_media_changed_after_human_signoff(self):
         job = ProductionJob("make reel", status=JobStatus.READY_FOR_HUMAN)
         media = MediaRef("final", "scratch://x/final.mp4", hashlib.sha256(b"a").hexdigest(), 1, "video/mp4", "render")
@@ -94,6 +100,13 @@ class StorageRedTeamTests(unittest.TestCase):
     def test_media_ref_rejects_fake_hash(self):
         with self.assertRaises(ValueError):
             MediaRef("x", "scratch://x/a", "fake", 1, "text/plain", "test")
+
+    def test_media_ref_requires_provenance_and_mime(self):
+        digest = hashlib.sha256(b"x").hexdigest()
+        with self.assertRaises(ValueError):
+            MediaRef("x", "scratch://x/a", digest, 1, "", "source")
+        with self.assertRaises(ValueError):
+            MediaRef("x", "scratch://x/a", digest, 1, "video/mp4", "")
 
     def test_scratch_storage_sanitizes_name_and_checks_integrity(self):
         with tempfile.TemporaryDirectory() as tmp:
