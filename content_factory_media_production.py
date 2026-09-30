@@ -30,7 +30,9 @@ class MediaProductionPlanner:
         steps=[]
         if brief.content_format in (ContentFormat.REEL,ContentFormat.VIDEO):
             if ids: steps.append(MediaStep("clip","clip","supoclip",ids))
-            else: steps.append(MediaStep("generate","generate","pollo",()))
+            else:
+                prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
+                steps.append(MediaStep("generate","generate","agnes_video",(),(("prompt",prompt),("language",brief.language))))
             steps.append(MediaStep("edit","edit","openchatcut",()))
             steps.append(MediaStep("render","render","ffmpeg",()))
         elif brief.content_format in (ContentFormat.IMAGE,ContentFormat.CAROUSEL):
@@ -76,6 +78,30 @@ class ImageRouterAdapter:
                 provenance=f"image_router:{task.task_id}:r{task.revision}",
                 mime_type="image/png",
             )
+        return ToolResult(task.job_id,task.revision,task.task_id,[ref],self.name)
+
+class AgnesVideoAdapter:
+    """LIVE bridge from the existing Agnes video API into factory storage."""
+    name="agnes_video"; truth=ExecutionTruth.LIVE
+    def __init__(self,storage:MediaStorageAdapter,generator=None):
+        self.storage=storage
+        if generator is None:
+            from generate_agnes_media import agnes_generate_video
+            generator=agnes_generate_video
+        self.generator=generator
+    def run(self,task:ToolTask)->ToolResult:
+        if task.inputs:
+            raise MediaProductionError("Agnes video generation does not accept source media")
+        prompt=str(task.parameters.get("prompt","")).strip()
+        if not prompt:
+            raise MediaProductionError("video generation requires bound prompt")
+        video_bytes=self.generator(prompt)
+        if not isinstance(video_bytes,(bytes,bytearray)) or not video_bytes:
+            raise MediaProductionError("Agnes video generation returned no video bytes")
+        with tempfile.TemporaryDirectory(prefix="factory-video-") as tmp:
+            out=Path(tmp)/f"{task.job_id}-{task.revision}-{task.task_id}.mp4"
+            out.write_bytes(bytes(video_bytes))
+            ref=self.storage.put_file(out,provenance=f"agnes_video:{task.task_id}:r{task.revision}",mime_type="video/mp4")
         return ToolResult(task.job_id,task.revision,task.task_id,[ref],self.name)
 
 class FFmpegAdapter:
