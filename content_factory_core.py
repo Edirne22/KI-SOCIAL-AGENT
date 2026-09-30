@@ -69,6 +69,8 @@ class MediaRef:
     def __post_init__(self) -> None:
         if not self.media_id or not self.uri or not self.sha256:
             raise ValueError("media_id, uri and sha256 are required")
+        if not self.mime_type.strip() or not self.provenance.strip():
+            raise ValueError("mime_type and provenance are required")
         if self.size_bytes < 0 or self.version < 1:
             raise ValueError("invalid media size/version")
         if len(self.sha256) != 64:
@@ -114,7 +116,10 @@ class ProductionJob:
                 for m in sorted(self.media, key=lambda item: item.media_id)
             ],
         }
-        raw = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        try:
+            raw = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        except (TypeError, ValueError) as exc:
+            raise ValueError("publish payload must be JSON-serializable") from exc
         return hashlib.sha256(raw).hexdigest()
 
     def transition(self, target: JobStatus, *, actor: str = "system") -> None:
