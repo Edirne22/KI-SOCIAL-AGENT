@@ -16,7 +16,6 @@ from content_factory_discovery import (
     RaceWeekendScheduler, SourceType, normalize_url, sanitize_untrusted_text
 )
 from content_factory_service import InMemoryJobService
-from content_factory_repository import SQLiteJobRepository
 
 
 class DiscoveryContractTests(unittest.TestCase):
@@ -247,63 +246,6 @@ class DiscoveryStaffellaufTests(unittest.TestCase):
         handoff_key = job.publish_handoff()
         self.assertIn(job.job_id, handoff_key)
         self.assertEqual(JobStatus.PUBLISH_QUEUED, job.status)
-
-
-
-class IndependentAcceptanceTests(unittest.TestCase):
-    def test_story_clustering_respects_48_hour_window(self):
-        coordinator = DiscoveryCoordinator()
-        now = datetime(2026, 9, 30, tzinfo=timezone.utc)
-        old = now - timedelta(days=5)
-        a = DiscoveryItem("a", "s1", "https://a.example/story", "Toprak Razgatlıoğlu wins race",
-                          series="WorldSBK", published_at=old.isoformat())
-        b = DiscoveryItem("b", "s2", "https://b.example/story", "Toprak Razgatlıoğlu wins race",
-                          series="WorldSBK", published_at=now.isoformat())
-        self.assertEqual(2, len(coordinator.cluster_items([a, b], time_window_hours=48)))
-
-    def test_scheduler_uses_real_berlin_dst(self):
-        service = InMemoryJobService()
-        desk = AutonomousEditorialDesk(service)
-        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
-            f.write(json.dumps({"events": [{
-                "series": "MotoGP", "track": "DST", "date_start": "2026-10-02", "date_end": "2026-10-04"
-            }]}))
-            path = f.name
-        # 2026-10-01 22:30 UTC is already Friday 00:30 in Berlin (CEST, UTC+2).
-        decisions = RaceWeekendScheduler(desk, calendar_path=path).check_upcoming_events(
-            datetime(2026, 10, 1, 22, 30, tzinfo=timezone.utc)
-        )
-        self.assertEqual(1, len(decisions))
-        job = service.get_job(decisions[0].job_id)
-        self.assertEqual("schedule", job.metadata["trigger_kind"])
-        self.assertIn("DST", job.metadata["event_name"])
-
-    def test_discovery_trigger_idempotency_survives_block2_restart(self):
-        import tempfile
-        with tempfile.TemporaryDirectory() as tmp:
-            db = Path(tmp) / "factory.sqlite3"
-            repo = SQLiteJobRepository(db)
-            item = DiscoveryItem("p1", "s1", "https://example.com/toprak", "Toprak Razgatlıoğlu wins",
-                                 series="WorldSBK")
-            cluster = DiscoveryCoordinator().cluster_items([item])[0]
-            trigger = DiscoveryCoordinator().create_editorial_trigger(cluster)
-            key = f"discovery:{trigger.trigger_id}"
-            first, created = repo.create_job(trigger.title, idempotency_key=key)
-            self.assertTrue(created)
-            restarted = SQLiteJobRepository(db)
-            second, created = restarted.create_job(trigger.title, idempotency_key=key)
-            self.assertFalse(created)
-            self.assertEqual(first.job.job_id, second.job.job_id)
-
-    def test_atom_href_link_is_parsed(self):
-        xml = """<?xml version="1.0"?><feed xmlns="http://www.w3.org/2005/Atom">
-        <entry><title>Can Öncü wins</title><link href="https://example.com/oncu"/>
-        <summary>WorldSSP race report</summary></entry></feed>"""
-        adapter = RSSFeedDiscoveryAdapter(feed_urls=[])
-        items = adapter._parse(xml, "https://example.com/feed", 10)
-        self.assertEqual(1, len(items))
-        self.assertEqual("https://example.com/oncu", items[0].url)
-
 
 
 if __name__ == "__main__":

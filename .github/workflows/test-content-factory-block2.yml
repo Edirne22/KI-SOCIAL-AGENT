@@ -1,0 +1,29 @@
+name: Test Content Factory Block 2
+
+on:
+  pull_request:
+    paths:
+      - "content_factory_core.py"
+      - "content_factory_repository.py"
+      - "content_factory_persistent_service.py"
+      - "media_storage.py"
+      - "r2_storage.py"
+      - "tests/test_content_factory_core.py"
+      - "tests/test_content_factory_persistence.py"
+      - ".github/workflows/test-content-factory-block2.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Syntax and import check
+        run: |
+          python -m py_compile content_factory_core.py content_factory_repository.py content_factory_persistent_service.py media_storage.py r2_storage.py tests/test_content_factory_core.py tests/test_content_factory_persistence.py
+      - name: Block 1 regression plus Block 2 red-team and staffellauf
+        run: |
+          python -m unittest -v tests.test_content_factory_core tests.test_content_factory_persistence

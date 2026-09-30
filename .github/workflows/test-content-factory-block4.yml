@@ -1,0 +1,38 @@
+name: Test Content Factory Block 4
+
+on:
+  pull_request:
+    paths:
+      - "content_factory_newsroom.py"
+      - "tests/test_content_factory_newsroom.py"
+      - "racing_semantic_qm.py"
+      - "racing_final_guard.py"
+      - "tests/test_source_fact_contract_v1.py"
+      - "content_factory_repository.py"
+      - "tests/test_content_factory_persistence.py"
+      - ".github/workflows/test-content-factory-block4.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install existing Semantic-QM runtime dependency
+        run: |
+          python -m pip install --disable-pip-version-check requests
+      - name: Syntax and imports
+        run: |
+          python -m py_compile content_factory_newsroom.py tests/test_content_factory_newsroom.py
+      - name: Block 1 and Block 2 regression
+        run: |
+          python -m unittest -v tests.test_content_factory_core tests.test_content_factory_persistence
+      - name: Block 4 newsroom red-team and staffellauf
+        run: |
+          python -m unittest -v tests.test_content_factory_newsroom
+      - name: Existing SOURCE-FACT-CONTRACT-V1 regression
+        run: |
+          python tests/test_source_fact_contract_v1.py
