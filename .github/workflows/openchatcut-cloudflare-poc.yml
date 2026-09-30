@@ -6,6 +6,10 @@ on:
     paths:
       - "infra/openchatcut-cloudflare/**"
       - ".github/workflows/openchatcut-cloudflare-poc.yml"
+  pull_request:
+    paths:
+      - "infra/openchatcut-cloudflare/**"
+      - ".github/workflows/openchatcut-cloudflare-poc.yml"
   workflow_dispatch:
 
 permissions:
@@ -29,6 +33,7 @@ jobs:
         run: git ls-remote https://github.com/0xsline/OpenChatCut.git d1af1ade45521e8ed9a5be09e3acad823f269453 | grep d1af1ade45521e8ed9a5be09e3acad823f269453
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: contract
     runs-on: ubuntu-latest
     env:
