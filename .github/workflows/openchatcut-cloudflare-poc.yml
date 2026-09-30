@@ -60,19 +60,24 @@ jobs:
           for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID OPENCHATCUT_MCP_TOKEN R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
             test -n "${!name:-}" || { echo "::error::Missing required GitHub Actions secret: $name"; exit 1; }
           done
-      - name: Deploy Worker and OpenChatCut container
-        working-directory: infra/openchatcut-cloudflare
-        run: npx wrangler deploy
-      - name: Sync private runtime secrets to Cloudflare
-        working-directory: infra/openchatcut-cloudflare
+      - name: Build private secret bundle outside repository
         shell: bash
         run: |
           set -euo pipefail
-          printf '%s' "$OPENCHATCUT_MCP_TOKEN" | npx wrangler secret put OPENCHATCUT_MCP_TOKEN
-          printf '%s' "$R2_ACCOUNT_ID" | npx wrangler secret put R2_ACCOUNT_ID
-          printf '%s' "$R2_ACCESS_KEY_ID" | npx wrangler secret put R2_ACCESS_KEY_ID
-          printf '%s' "$R2_SECRET_ACCESS_KEY" | npx wrangler secret put R2_SECRET_ACCESS_KEY
-          printf '%s' "$R2_BUCKET_NAME" | npx wrangler secret put R2_BUCKET_NAME
+          jq -n \
+            --arg mcp "$OPENCHATCUT_MCP_TOKEN" \
+            --arg account "$R2_ACCOUNT_ID" \
+            --arg access "$R2_ACCESS_KEY_ID" \
+            --arg secret "$R2_SECRET_ACCESS_KEY" \
+            --arg bucket "$R2_BUCKET_NAME" \
+            '{OPENCHATCUT_MCP_TOKEN:$mcp,R2_ACCOUNT_ID:$account,R2_ACCESS_KEY_ID:$access,R2_SECRET_ACCESS_KEY:$secret,R2_BUCKET_NAME:$bucket}' \
+            > "$RUNNER_TEMP/openchatcut-secrets.json"
+      - name: Deploy Worker, container and runtime secrets atomically
+        working-directory: infra/openchatcut-cloudflare
+        run: npx wrangler deploy --secrets-file "$RUNNER_TEMP/openchatcut-secrets.json"
+      - name: Remove temporary secret bundle
+        if: always()
+        run: rm -f "$RUNNER_TEMP/openchatcut-secrets.json"
       - name: Confirm deployed application exists
         working-directory: infra/openchatcut-cloudflare
         run: npx wrangler containers list
