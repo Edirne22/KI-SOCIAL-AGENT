@@ -16,6 +16,7 @@ export class OpenChatCutContainer extends Container {
   enableInternet = true;
   envVars = {
     OPENCHATCUT_MCP_TOKEN: env.OPENCHATCUT_MCP_TOKEN,
+    __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "edirne22-openchatcut-poc.butupeli.workers.dev",
     R2_ACCOUNT_ID: env.R2_ACCOUNT_ID || "",
     R2_ACCESS_KEY_ID: env.R2_ACCESS_KEY_ID || "",
     R2_SECRET_ACCESS_KEY: env.R2_SECRET_ACCESS_KEY || "",
