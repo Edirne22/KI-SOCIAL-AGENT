@@ -17,7 +17,9 @@ r=await http("/_factory/health",auth); assert(r.ok,`health failed ${r.status}`);
 
 const transport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
 let client=new Client({name:"edirne22-live-acceptance",version:"1.0.0"});
+console.log("MCP_CONNECT_BEGIN");
 await client.connect(transport);
+console.log("MCP_CONNECT_OK",JSON.stringify({sessionId:transport.sessionId||null}));
 const sessionDiag=(phase)=>console.log("MCP_SESSION_DIAG",JSON.stringify({phase,sessionId:transport.sessionId||null}));
 let call=async(name,args={})=>{sessionDiag(`before:${name}`);console.log("MCP",name);try{const x=await client.callTool({name,arguments:args});sessionDiag(`after:${name}`);if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x}catch(error){sessionDiag(`error:${name}`);throw error}};
 const data=x=>x.structuredContent??Object.assign({},...(x.content||[]).filter(c=>c.type==="text").map(c=>{try{return JSON.parse(c.text)}catch{return {text:c.text}}}));
