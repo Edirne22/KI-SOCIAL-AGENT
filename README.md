@@ -1,6 +1,12 @@
 # KI-SOCIAL-AGENT
 Persönlicher Cloud-KI-Agent für Social Media &amp; mehr
 
+## Aktueller Projektstand
+
+**Stand: 30.09.2026.** Für neue Sessions und Projektübergaben zuerst `MASTER-SNAPSHOT.md` lesen. Der aktuelle Detailstand liegt in `snapshots/SNAPSHOT_2026-09-30_CONTENT_FACTORY_LIVE_MEDIA_CLOUD_WORKBENCH.md`; verbindliche Entwicklungsregeln stehen in `PROJECT_GUARDRAILS.md`.
+
+Aktuell verifiziert LIVE: Cloudflare R2 als privates Medienlager, ImageRouter → R2 und Agnes Video → R2. Nächster P1: OpenChatCut Cloudflare-Container-PoC, danach SupoClip-LIVE-Integration und vollständiger Video-Staffellauf. SIMULATED-Komponenten dürfen nicht als LIVE bezeichnet werden.
+
 ## Telegram-Bot einrichten
 
 Der Telegram-Bot dient ausschließlich zur persönlichen Content-Freigabe durch Bülent. Er veröffentlicht selbst nichts auf Instagram, Facebook, TikTok oder einer anderen Plattform.
