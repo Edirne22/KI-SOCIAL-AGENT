@@ -188,3 +188,78 @@ Der eingefrorene Backup-Branch `backup/2026-09-29-content-factory-milestone` ble
 
 Für eine neue Session:
 "Lies snapshots/SNAPSHOT_2026-09-30_CONTENT_FACTORY_NIGHT_BUILD.md, PROJECT_GUARDRAILS.md und den aktuellen Stand der offenen Content-Factory-PRs. Setze den Nachtbau ab dem ersten noch nicht vollständig abgenommenen Block fort. Keine Merge-Freigabe ohne vollständige Guardrail-Abnahme; die dokumentierte Nachtbau-Vollmacht gilt für technisch vollständig abgenommene Blöcke 1–9."
+
+## 13. MiroFish-Pattern vor Block 5 – Architektur-Inspiration, keine Codeübernahme
+
+Status: 2026-09-30, nach Abschluss/Merge der Content-Factory-Blöcke 1–4 und vor Start von Block 5.
+
+Referenz zur Architekturstudie:
+- Originalprojekt: `666ghj/MiroFish`
+- Nutzung ausschließlich als Architektur-/Pattern-Referenz.
+- Kein Fork, kein Vendor-Code, keine Imports, keine OASIS-Abhängigkeit und keine Übernahme von MiroFish-Implementierungscode in die Edirne-22 Content Factory.
+- Lizenzgrenze: MiroFish und sein Simulations-Stack werden nicht zu einer Runtime-Abhängigkeit unserer Factory. Die eigene Implementierung wird aus unseren bestehenden Contracts und Anforderungen neu entworfen.
+
+### 13.1 Übernommene Architekturideen
+
+**A. Audience Simulation / virtuelle Community**
+- Block 5 darf einen schlanken `AudienceSimulationAdapter` bzw. `AudiencePanel` erhalten.
+- Eingabe: ausschließlich bereits getrennte Fakten-/Story-/Creative-Artefakte.
+- Kleine, deterministisch konfigurierte Rollen statt tausender Agenten, z. B. Toprak-Fan, deutscher Racing-Fan, türkischer Racing-Fan, Technik-Fan, neutraler Gelegenheitszuschauer, Clickbait-Skeptiker.
+- Ausgabe: Reaktionshypothesen, Verständlichkeitsrisiken, mögliche Missverständnisse, Diskussionspunkte, Hook-/Caption-Kritik.
+- Keine Rolle erhält Publish-, Approval-, Fact-Verification- oder Job-State-Autorität.
+
+**B. Schlanker Community/Story Graph**
+- Eigene optionale Graph-Schicht auf unseren Datenmodellen, nicht MiroFish GraphRAG kopieren.
+- Kandidatenkanten: Rider→Series, Rider→Team, Story→Claim, Claim→Evidence/Source, Story→ProductionJob, ProductionJob→ApprovedRevision, Post→PublishProof.
+- Block 4 bleibt die einzige Fact-Promotion-Grenze. Graphdaten dürfen Provenance und ClaimStatus nicht verlieren.
+- Ein Graph darf keine simulierte Aussage in einen verifizierten Claim verwandeln.
+
+**C. Immutable Run Artifacts / nachvollziehbarer Produktionslauf**
+- Das Block-2-System-of-Record wird in den späteren Blöcken so erweitert, dass der Lauf rekonstruierbar bleibt:
+  Sources → FactPackage → CreativeBrief/Script → Storyboard → Assets → Render → QM → AudienceSimulationReport → Human Approval Manifest → Publish Proof.
+- Artefakte sind revisionsgebunden; spätere Änderungen dürfen frühere Approval-/Publish-Nachweise nicht still überschreiben.
+
+**D. Simulation strikt von Wahrheit trennen**
+- Harte Datenflussregel: `VERIFIED FACTS → SIMULATION` ist erlaubt.
+- `SIMULATION → VERIFIED FACTS` ist verboten.
+- Simulationsergebnisse tragen eine explizite Kennzeichnung wie `SIMULATED_AUDIENCE_FEEDBACK`.
+- Sie dürfen Creative Director oder End-QM beraten, aber niemals Block 4, Human Authority oder Publisher überstimmen.
+- Keine Aussagen wie „wird viral“, „Community wird so reagieren“ oder sonstige Prognosen als Tatsachen. Ausgabe bleibt Hypothese/Red-Team-Signal.
+
+### 13.2 Integration in Blockplan
+
+**Block 5 – Creative Director + Bülent Writing**
+- eigenes `AudiencePanel` als optionaler beratender Schritt nach erstem Creative Draft.
+- Feedback darf einen gezielten Creative-Repair anregen.
+- Bülent-Voice und Fakten bleiben getrennte Contracts.
+- Kosten-/Latenzbudget vorsehen: kleine Persona-Menge, begrenzte Runden, provider-unabhängiger Adapter, deterministische Test-Fixtures.
+
+**Block 8 – End-QM + Goldenes Tablett**
+- `AudienceRedTeam` auf der finalen Preview-Revision.
+- Prüft Missverständlichkeit, künstliche/robotische Sprache, Clickbait-Risiko, unklare Bezüge und erwartbare Community-Fragen.
+- Ergebnis ist Advisory. Es besitzt kein Veto nach gültiger Human-Authority-Freigabe.
+
+**Spätere Ausbaustufe – Community/Story Graph**
+- Erst einführen, wenn konkrete Abfragen/Memory/Dedupe davon profitieren.
+- Kein Graph nur „weil MiroFish einen Graph hat“; Nutzen, Speicher-/Recovery-Semantik und Provenance müssen vorher definiert sein.
+
+### 13.3 Guardrails für die eigene schlanke Implementierung
+
+1. Clean-room-artige Eigenimplementierung auf Basis unserer Contracts/Anforderungen; keine Übernahme von MiroFish/OASIS-Code.
+2. Provider-unabhängige Interfaces; kein neuer zentraler Vendor-Lock-in.
+3. Prompt-Injection aus Quellen darf Persona-/Simulation-Instruktionen nicht verändern.
+4. Simulation hat read-only Zugriff auf FactPackage; kein Schreibrecht auf ClaimStatus/Evidence.
+5. Kein autonomes Approval/Publish und keine Umgehung der Human Authority.
+6. Deterministische Run-ID, Persona-Konfiguration, Input-Revision und Ergebnis-Provenance speichern.
+7. Retry/Idempotenz: gleicher Job + gleiche Revision + gleiche Simulationskonfiguration erzeugt keinen zweiten autoritativen Lauf.
+8. Crash/Resume darf keine Ergebnisse verschiedener Revisionen vermischen.
+9. Cross-Series/Cross-Job-Leaks aktiv red-teamen.
+10. Tests müssen beweisen, dass erfundene Persona-Aussagen niemals als Source/Evidence/VERIFIED zurückfließen.
+11. Simulation ist optional/degradierbar: Provider-Ausfall darf die Fact-Schicht nicht beschädigen; Creative Flow kann mit klarer Kennzeichnung ohne Audience-Simulation fortfahren.
+12. Token-/Kostenbudget und maximale Persona-/Rundenzahl werden konfigurierbar begrenzt.
+
+### 13.4 Block-5-Startbedingung
+
+Beim Start von `/BLOCKRUN Block 5` ist dieses MiroFish-Pattern Teil der Architekturprüfung. Block 5 soll die schlanke eigene Audience-Simulation nur dort integrieren, wo sie Creative Direction messbar unterstützt. Die vollständige MiroFish-Architektur wird ausdrücklich NICHT nachgebaut.
+
+
