@@ -413,3 +413,42 @@ Skills können **NICHT über Jules installiert werden** – sie sind lokale CLI-
 - Kein harter Runtime-Lock auf Agent-Reach. Backends bleiben einzeln austauschbar; doctor/health/fallback-Konzept übernehmen.
 - Vor produktiver Installation aktives kanonisches Upstream-Repo, Version/Lizenz, Server-/Cookie-Anforderungen und Plattformbedingungen erneut prüfen.
 
+
+
+## Voice Clone + Privacy Avatar / Digital Twin – Fund & Zielbild 30.09.2026
+
+### Ziel
+- Bülent soll Content zunächst **ohne reale Kamera-Präsenz** produzieren können.
+- Wiedererkennbarer, hochwertiger **3D-/Comic-Avatar** als öffentliche Figur; reale Identität bleibt für Außenstehende im Hintergrund.
+- Später optional ein autorisierter **fotorealistischer Digital Twin**: KI-Video wirkt, als würde Bülent selbst sprechen, inklusive Lip-Sync.
+- Deutsch **und** Türkisch sind Pflichtsprachen; natürliche Aussprache, Rhythmus und Emotion wichtiger als bloße Sprachunterstützung.
+- Voice/Avatar bleiben Human-Authority-gebunden: nur Bülents eigene bzw. ausdrücklich autorisierte Stimme/Abbilder.
+
+### Voice-Datensatz / Aufnahme später
+- [ ] Tool-spezifische Aufnahmevorgaben erst nach Auswahl der Kandidaten festlegen.
+- [ ] Saubere Referenzaufnahmen DE + TR erstellen; ruhiger Raum, konstantes Mikrofon/Abstand/Pegel.
+- [ ] Phonetisch ausgewogene Sätze statt zufälliger Wörter; zusätzlich Eigennamen/Racing-Begriffe/Türkisch-Deutsch-Code-Switching testen.
+- [ ] Rohaufnahmen unverändert archivieren; Trainings-/Referenzclips versionieren und Einwilligungs-/Owner-Metadaten führen.
+- [ ] Vor Produktion Testset mit identischen DE/TR-Sätzen für alle Kandidaten: Natürlichkeit, Ähnlichkeit, Aussprache, Emotion, Latenz, VRAM/RAM, Lizenz/Kosten.
+
+### Voice-Kandidaten aus Screenshots 30.09.2026
+Instagram-Fund; Werbeaussagen **nicht als verifiziert übernehmen**. Vor Auswahl Originalrepo/Dokumentation/Lizenz prüfen.
+- [ ] Chatterbox (Resemble AI)
+- [ ] OpenVoice V2
+- [ ] GPT-SoVITS
+- [ ] F5-TTS
+- [ ] Bark
+- [ ] PlayHT (externer/kommerzieller Dienst; getrennt von lokalem Open-Source-Battle betrachten)
+- [ ] Gegen vorhandene NVIDIA/Nemotron/Magpie-Option vergleichen, bevor ein neuer kostenpflichtiger Anbieter gewählt wird.
+
+### Avatar / Video
+- [ ] Stufe A: stilisierter 3D-/Comic-Avatar von Bülent, hochwertig und wiedererkennbar, aber bewusst nicht fotorealistisch.
+- [ ] Stufe B: Avatar + Voice Clone + Lip-Sync/Gestik für Reels/Moderation.
+- [ ] Stufe C optional: fotorealistischer autorisierter Digital Twin („klone mich“) mit synchronisierter eigener Stimme.
+- [ ] Referenzbilder/-video, Identitätskonsistenz, Lip-Sync, Mimik, Hände/Gestik und 9:16-Ausgabe als Abnahmekriterien.
+- [ ] Frühere Avatar-/Clone-Screenshot-Funde bei der späteren Tool-Battle erneut gegen aktuelle Originalquellen prüfen.
+
+### Einordnung in Factory
+`Script/Bülent Writing → Voice Clone → Avatar/Digital Twin → SupoClip/OpenChatCut → FFmpeg → R2 → End-QM → Goldenes Tablett → Human Approval`
+
+**Nicht Teil des aktuellen OpenChatCut-/BLOCKRUN. Erst nach stabiler Media-Werkbank systematisch benchmarken.**
