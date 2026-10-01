@@ -1,5 +1,7 @@
 # MASTER-SNAPSHOT – KI-SOCIAL-AGENT
 
+> **BLOCK 8/9 VORARBEIT (01.10.2026):** `docs/BLOCK8_9_VORABPRUEFUNG_2026-10-01.md` – geprüfter main-Code für Golden Tablet, gemeinsame Web-/Telegram-Steuerung, bestehende Publisher, R2/Worker-Kompatibilitätsgrenzen, fehlender privater Preview, Auth-Kopplung und persistente Publish-Idempotenz; keine neuen Toolkosten oder unbestätigten LIVE-Claims.
+
 > **EINZIGER WERKZEUG-/ALTERNATIVENINDEX:** `docs/TOOL_INDEX.md`. Vor Toolauswahl und bei Toolfehler **immer dort beginnen**, nicht separat IDEA_POOL, FREE_TOOLS oder datierte Screenshot-Radare durchsuchen. Diese älteren Dateien sind Quellen/Archiv. Die Fallback-Matrix im zentralen Index gilt zusammen mit `PROJECT_GUARDRAILS.md` §14. Für neuen Chat oder `/BLOCKRUN` zuerst Index lesen und aktuelle E2E-Belege neu prüfen.
 
  > **HISTORISCHER FALLBACK-EINTRAG:** Die frühere Liste `docs/TOOL_RADAR_2026-10-01_27_SCREENSHOTS.md` wurde in den zentralen `docs/TOOL_INDEX.md` überführt. Ab sofort nur den neuen Index für die Werkzeugauswahl verwenden. Nach **Nutzerfunktion**, nicht Toolnamen, Ersatz auswählen; `RESEARCH_ONLY` nie als `LIVE` deklarieren. Siehe Guardrails §14.
