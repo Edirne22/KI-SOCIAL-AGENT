@@ -567,6 +567,8 @@ ANALYSIEREN
 
 ## 14. FUNKTION VOR WERKZEUG – DAUERHAFTE BÜLENT-VISION (01.10.2026)
 
+**HARTER KOSTEN-/LIZENZFILTER:** Neue Fallback-Maschinen müssen frei verfügbarer Open-Source-Code mit für unseren konkreten (ggf. kommerziellen) Einsatz erlaubter Lizenz und nachweislich kostenlosem Betrieb auf vorhandener/freigegebener Infrastruktur sein. Kein Kauf, Pflichtabo, kostenpflichtiger API-Key, Testguthaben als Schein-0-€-Lösung oder zusätzliche kostenpflichtige Hardware/Cloud ohne Bülents gesonderte Entscheidung. Proprietäre Freemium-Angebote und Kandidaten mit ungeklärter Software-/Modelllizenz oder Cloud-/GPU-Betriebskosten sind nur Archiv-/Rechercheeinträge, **keine automatischen Fallbacks**. GPL/AGPL ist nicht automatisch verboten, erfordert aber Prüfung der konkreten Weitergabe-/Netzwerk- und Modellpflichten. Bestehende bereits von Bülent freigegebene Dienste bleiben unberührt. Die verbindliche Prüfung und aktuelle Klassifizierung stehen in `docs/TOOL_INDEX.md` Abschnitt 0.
+
 **Eine maßgebliche Werkzeug- und Alternativenliste:** `docs/TOOL_INDEX.md`. Vor jeder neuen technischen Werkzeugentscheidung, jedem Provider-Fallback und beim Wiederaufnehmen von `/BLOCKRUN` diesen Index zusammen mit dem aktuellen Projektstand lesen. `docs/IDEA_POOL.md`, `docs/FREE_TOOLS.md`, datierte Tool-Radare und `config/MEDIA_TOOLS.md` sind ausschließlich historische/vertiefende Quellen; keine konkurrierenden aktuellen Entscheidungen dort pflegen. Alle neuen Toolkandidaten und Statusänderungen zentral im Index ergänzen. 
 
 
