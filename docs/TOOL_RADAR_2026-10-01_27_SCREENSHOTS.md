@@ -1,3 +1,5 @@
+**HINWEIS – ZENTRALE AUSWAHL:** [docs/TOOL_INDEX.md](TOOL_INDEX.md) ist die **einzige maßgebliche Werkzeug- und Alternativenliste**, nach Nutzerfunktionen sortiert. Diese Datei bleibt als historische Quelle bzw. Detailsammlung erhalten; bei Ausfall/Neuintegration zuerst den Index prüfen und nur ihn als aktuellen Auswahlstatus pflegen.
+
 # Sichtung: 27 Instagram-Screenshots – Werkzeug-Radar (01.10.2026)
  
 **Status:** Recherche und Ideenablage, NICHT Installation, Live-Integration, Kostenfreigabe oder Herstellerempfehlung. Quelle: Bülents 27 Screenshots aus drei Nachrichten am 01.10.2026; Instagram-Angaben (Sterne, „100 % kostenlos“, Leistungsversprechen) sind Werbeaussagen, keine Abnahmebelege. Bei neuen Erkenntnissen aktuelle Original-Repos erneut prüfen.
