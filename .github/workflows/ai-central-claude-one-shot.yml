@@ -1,9 +1,5 @@
 name: Claude Real Transport One-Shot Check
 on:
-  push:
-    branches: [feat/ai-central-model-skills-opencode]
-    paths:
-      - ".github/workflows/ai-central-claude-one-shot.yml"
   workflow_dispatch:
 permissions:
   contents: read
