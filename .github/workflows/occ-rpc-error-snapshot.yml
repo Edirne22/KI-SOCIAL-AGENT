@@ -1,0 +1,28 @@
+name: OpenChatCut Protected RPC Error Snapshot
+on:
+  push:
+    branches: [diag/openchatcut-in-container-port-inspection]
+    paths: ['.github/workflows/occ-rpc-error-snapshot.yml']
+permissions:
+  contents: read
+jobs:
+  read-only-rpc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      OPENCHATCUT_MCP_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+    steps:
+      - name: Retrieve limited protected diagnostic error only
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$OPENCHATCUT_MCP_TOKEN"
+          base=https://edirne22-openchatcut-poc.butupeli.workers.dev
+          for path in /_factory/health /_factory/container-diag; do
+            out=$(mktemp)
+            status=$(curl --silent --show-error --max-time 12 -o "$out" -w '%{http_code}' -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base$path" || true)
+            echo "RPC_SNAPSHOT path=$path http=$status"
+            head -c 500 "$out" | sed -E 's/(Bearer )[A-Za-z0-9._-]+/\\1[REDACTED]/g; s/[A-Fa-f0-9]{32,}/[ID_REDACTED]/g' || true
+            echo
+            rm -f "$out"
+          done
