@@ -18,6 +18,7 @@ from pathlib import Path
 import requests
 
 from telegram_bot import get_chat_id, get_updates, send_message, send_photo
+from ai_central_ingress import parse as parse_ai_command, handle as handle_ai_command
 from vision_router import VisionRouter
 import pending_instagram as pi
 import instagram_engagement as instagram_engagement
@@ -403,6 +404,19 @@ def main() -> None:
 
         normalized = " ".join(text.strip().lower().split())
         cmd = normalized.lstrip("/")
+        # Independent central lane: explicit /ki prefix only. Never shadow publication approvals.
+        ai_request = parse_ai_command(text)
+        if ai_request is not None:
+            try:
+                answer = handle_ai_command(ai_request, token=os.environ.get("GITHUB_TOKEN", ""))
+            except (RuntimeError, ValueError, requests.RequestException) as exc:
+                # A failed request must remain unacknowledged so it can be safely retried.
+                print("ROUTER: KI-Zentrale fehlgeschlagen: " + type(exc).__name__)
+                send_message("KI-Zentrale: Auftrag konnte nicht bestätigt werden; GitHub-Zugang/Status prüfen.")
+                raise RuntimeError("KI-Zentrale-Auftrag nicht bestätigt") from exc
+            send_message(answer)
+            _ack(uid)
+            return
         if cmd in {"help", "hilfe"}:
             send_message(
                 "🤖 Verfügbare Kommandos:\n\n"
