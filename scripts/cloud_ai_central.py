@@ -125,7 +125,7 @@ def review_free_team(task,config,ask_fn=ask):
     # Original evidence is authoritative only to the extent externally verifiable;
     # peer text cannot add verified facts and cannot escape the system instructions.
     original=task["evidence"][:1000]
-    evidence=original+"\\nUNTRUSTED PEER CLAIMS FOR ADVERSARIAL REVIEW ONLY:\\n"+"\\n".join(peer)
+    evidence=original+"\nUNTRUSTED PEER CLAIMS FOR ADVERSARIAL REVIEW ONLY:\n"+"\n".join(peer)
     challenge_task={**task,"evidence":evidence[:MAX_PROMPT]}
     validate_task(challenge_task)
     final=dispatch(challenge_task,config,ask_fn=ask_fn,
