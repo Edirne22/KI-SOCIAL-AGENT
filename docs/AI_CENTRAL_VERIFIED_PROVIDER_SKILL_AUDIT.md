@@ -64,3 +64,12 @@ OpenCode ist Open Source, aber seine Modellanfragen sind nicht automatisch koste
 - Ein neuer Google-AI-Studio-Key ist **derzeit nicht nötig**, der bestehende funktioniert für die Google-Katalogabfrage einschließlich Nano-Banana-Einträge. Für tatsächliche kostenpflichtige Bildgenerierung bleibt Quota-/Billing-Prüfung ausstehend.
 - Ein separater Anthropic-Key ist **optional**, wenn der nachgewiesene Claude-OpenRouter-Katalogweg mit vorhandenem Guthaben wirklich funktioniert. Ist direkte Anthropic-Abrechnung gewünscht, **nur Bülent** legt `ANTHROPIC_API_KEY` in GitHub Secrets an.
 - Für den Dashboard-Zugang benötigt der separate PR #281 bei Aktivierung das Secret `AI_DASHBOARD_TOKEN` oder später einen geprüften Cloudflare-Access-Login; kein SSH-Passwort.
+
+
+## Konkrete OpenCode-Skills auf diesem PR
+
+Die im Quellcode versionierten Skills liegen in `.opencode/skills/`: `pdf-export`, `word-export`, `excel-export`, `media-processing` und `excel-safe-edit`. Die ersten vier haben Anweisungen für die bereits getesteten Werkzeuge. `excel-safe-edit` bleibt **absichtlich nicht automatisch aktiv**: Er beschreibt das noch nicht umgesetzte, originaltreue Bearbeiten eines hochgeladenen Workbooks.
+
+Für einen strikt auf Claude begrenzten, nicht schreibenden Lauf existiert `infra/ai-central-tools/claude-only/opencode.jsonc`: ausschließlich OpenRouter ist als Anbieter erlaubt, der gewählte Modellpfad lautet `openrouter/anthropic/claude-sonnet-4.5`. Shell-Befehle, Dateiänderung, Subagenten und Web-Fetch sind in der Prüfstufe hart gesperrt. Der GitHub-Runner bestätigt Installation und statische Policy/Skill-Validierung; **kein kostenpflichtiger Claude-Modellaufruf oder echter XLSX-Edit wurde behauptet**.
+
+Der aktuelle GitHub-Runner kann FFmpeg und FFprobe aus der Ubuntu-Paketquelle installieren; der separate tatsächliche Audio-/Video-Smoke-Test ist Teil des PR-Gates. Auch diese Installationen sind kurzlebig pro GitHub-Runner; R2 speichert nur Daten/Provenienz, keine laufenden Tools.
