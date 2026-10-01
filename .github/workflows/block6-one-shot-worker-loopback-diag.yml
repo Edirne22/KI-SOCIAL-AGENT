@@ -1,0 +1,130 @@
+name: Block6 – one-time protected Worker-only container loopback diagnostic
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/block6-one-shot-worker-loopback-diag.yml"
+  push:
+    branches: [main]
+    # This is a one-shot controlled inspection, never a recurring container deploy.
+    paths:
+      - ".github/workflows/block6-one-shot-worker-loopback-diag.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: block6-one-shot-worker-only-diag
+  cancel-in-progress: false
+jobs:
+  validate-pinned-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Same-repository, immutable PR #278 HEAD (stacked #271 readiness + #278
+          # fixed, read-only protected container-loopback diagnostic).
+          ref: 73756825c8cd167e5997e24514e2c11e1170120b
+      - uses: actions/setup-node@v4
+        with: {node-version: "24"}
+      - name: Verify the pinned endpoint is protected and fixed-input
+        run: |
+          node - <<'JS'
+          const fs=require('fs'),assert=require('node:assert/strict');
+          const src=fs.readFileSync('infra/openchatcut-cloudflare/src/index.ts','utf8');
+          assert(src.includes('if (!expected || auth !=='));
+          assert(src.includes('url.pathname === "/_factory/container-diag"'));
+          assert(src.includes('request.method !== "GET"'));
+          assert(src.includes("const url='http://127.0.0.1:5199/api/external-mcp/mcp'"));
+          assert(src.includes('const runtime = this.ctx.container'));
+          console.log('PINNED_READ_ONLY_AUTHENTICATED_LOOPBACK_CONTRACT_PASS');
+          JS
+      - name: Offline typecheck and worker-only deployment dry-run
+        working-directory: infra/openchatcut-cloudflare
+        run: |
+          npm install
+          npm run check
+          npx wrangler deploy --dry-run --containers-rollout=none
+  deploy-worker-only-and-inspect:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: validate-pinned-diagnostic
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      OPENCHATCUT_MCP_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 73756825c8cd167e5997e24514e2c11e1170120b
+      - uses: actions/setup-node@v4
+        with: {node-version: "24"}
+      - name: Guard all required existing credentials before any deploy
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID OPENCHATCUT_MCP_TOKEN R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!name:-}" || { echo "BLOCK6_MISSING_CREDENTIAL_NAME=$name"; exit 1; }
+          done
+      - name: Install pinned wrapper and save existing instance inventory
+        working-directory: infra/openchatcut-cloudflare
+        shell: bash
+        run: |
+          npm install
+          npx wrangler containers list --json > "$RUNNER_TEMP/block6-container-before.json"
+      - name: Apply read-only protected diagnostic Worker WITHOUT container rollout
+        working-directory: infra/openchatcut-cloudflare
+        shell: bash
+        run: |
+          set -euo pipefail
+          bundle="$RUNNER_TEMP/block6-diag-secrets.json"
+          trap 'rm -f "$bundle"' EXIT
+          jq -n --arg t "$OPENCHATCUT_MCP_TOKEN" --arg a "$R2_ACCOUNT_ID" --arg k "$R2_ACCESS_KEY_ID" --arg s "$R2_SECRET_ACCESS_KEY" --arg b "$R2_BUCKET_NAME" \
+            '{OPENCHATCUT_MCP_TOKEN:$t,R2_ACCOUNT_ID:$a,R2_ACCESS_KEY_ID:$k,R2_SECRET_ACCESS_KEY:$s,R2_BUCKET_NAME:$b}' > "$bundle"
+          npx wrangler deploy --containers-rollout=none --secrets-file "$bundle"
+      - name: One bounded MCP initialize wake, then inspect application loopback
+        working-directory: infra/openchatcut-cloudflare
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=https://edirne22-openchatcut-poc.butupeli.workers.dev
+          h=$(curl -sS --max-time 12 -o "$RUNNER_TEMP/block6-worker-health.json" -w '%{http_code}' \
+            -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base/_factory/health" || true)
+          echo "BLOCK6_WORKER_HEALTH_HTTP=$h"
+          test "$h" = 200 || exit 1
+          wake=$(curl -sS --max-time 22 -o "$RUNNER_TEMP/block6-init-result" -w '%{http_code}' \
+            -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" \
+            -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+            -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"edirne22-verified-loopback-probe","version":"1"}}}' \
+            "$base/api/external-mcp/mcp" || true)
+          echo "BLOCK6_ONE_INITIALIZE_HTTP=$wake"
+          sleep 3
+          d=$(curl -sS --max-time 17 -o "$RUNNER_TEMP/block6-private-loopback.json" -w '%{http_code}' \
+            -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base/_factory/container-diag" || true)
+          echo "BLOCK6_PRIVATE_DIAG_HTTP=$d"
+          test "$d" = 200 || { echo 'BLOCK6_LOOPBACK_UNREACHABLE'; exit 1; }
+          node - <<'JS'
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+'/block6-private-loopback.json','utf8'));
+          const safe={scope:x.scope,containerRunning:x.containerRunning,probe:x.probe,httpStatus:x.httpStatus,errorCode:x.errorCode};
+          console.log('BLOCK6_ACTUAL_CONTAINER_LOOPBACK',JSON.stringify(safe));
+          if(x.scope!=='container-loopback'||x.probe!=='responding')process.exitCode=1;
+          JS
+      - name: Verify container inventory after Worker-only deploy
+        if: always()
+        working-directory: infra/openchatcut-cloudflare
+        shell: bash
+        run: |
+          npx wrangler containers list --json > "$RUNNER_TEMP/block6-container-after.json" || true
+          node - <<'JS'
+          const fs=require('node:fs');const root=process.env.RUNNER_TEMP;
+          let before,after;
+          try{before=JSON.parse(fs.readFileSync(root+'/block6-container-before.json','utf8'))}catch{}
+          try{after=JSON.parse(fs.readFileSync(root+'/block6-container-after.json','utf8'))}catch{}
+          // Never infer whether the same image/container stayed alive from list count alone.
+          console.log('BLOCK6_CONTAINER_INVENTORY_AVAILABLE',JSON.stringify({before:!!before,after:!!after}));
+          JS
