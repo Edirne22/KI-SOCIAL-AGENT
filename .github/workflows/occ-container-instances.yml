@@ -1,0 +1,28 @@
+name: OpenChatCut Read-only Container Instance Inventory
+on:
+  push:
+    branches: [diag/openchatcut-ai-root-cause-jury]
+    paths: ['.github/workflows/occ-container-instances.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "24"}
+      - run: npm install --no-save --ignore-scripts wrangler@4.107.0
+      - name: List actual Cloudflare apps and OpenChatCut instance state without deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN" && test -n "$CLOUDFLARE_ACCOUNT_ID"
+          echo "CF_APPLICATIONS_CURRENT"
+          npx wrangler containers list
+          echo "CF_OPENCHATCUT_INSTANCES_CURRENT"
+          npx wrangler containers instances a03c9f92-26ed-441d-bc13-a60ae2a91402 --json
