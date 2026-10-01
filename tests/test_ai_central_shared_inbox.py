@@ -29,6 +29,7 @@ class FakeR2:
     def list_objects_v2(self,**kw):
         return {"Contents":[{"Key":k} for k in self.objects if k.startswith(kw["Prefix"])]}
     def get_object(self,**kw):
+        if kw["Key"] not in self.objects:raise NotFound()
         return {"Body":io.BytesIO(self.objects[kw["Key"]]),"ETag":self.etags[kw["Key"]]}
 class Inbox(unittest.TestCase):
     def setUp(self):self.r2=FakeR2()
