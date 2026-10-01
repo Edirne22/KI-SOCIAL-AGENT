@@ -19,7 +19,7 @@ def parse_command(text: str):
     if not isinstance(text,str):
         return None
     normalized=text.strip()
-    match=re.fullmatch(r"/?zentrale\s+(status|hilfe|starten(?:\s+([a-zA-Z0-9_-]{10,64}))?|ergebnis(?:\s+([a-zA-Z0-9_-]{10,64}))?|auftrag(?:\s+(.+))?)",normalized,re.I|re.S)
+    match=re.fullmatch(r"/?zentrale\s+(status|hilfe|starten(?:\s+([a-zA-Z0-9_-]{10,64}))?|ergebnis(?:\s+([a-zA-Z0-9_-]{10,64}))?|auftrag(?:\s+(.+))?|team(?:\s+([a-zA-Z0-9_-]{10,64}))?)",normalized,re.I|re.S)
     if not match:
         return None
     name=match.group(1).split()[0].lower()
@@ -31,6 +31,10 @@ def parse_command(text: str):
         ident=match.group(3)
         if not ident:raise ValueError("Bitte /zentrale ergebnis <Auftrags-ID> eingeben.")
         return "ergebnis",ident
+    if name=="team":
+        ident=match.group(5)
+        if not ident:raise ValueError("Bitte /zentrale team <Auftrags-ID> eingeben.")
+        return "team",ident
     if name=="auftrag":
         message=(match.group(4) or "").strip()
         if not 3<=len(message)<=MAX_MESSAGE or _BLOCKED.search(message) or any(ord(c)<32 and c not in "\n\t" for c in message):
@@ -82,8 +86,10 @@ def recent(client,bucket,limit=6):
         result.append({k:item.get(k) for k in ("id","created_at","channel","kind","status","message")})
     return result
 
-def start_reviewed(client,bucket,task_id,token,post=requests.post):
+def start_reviewed(client,bucket,task_id,token,post=requests.post,mode="free-only"):
     """Authorized existing Telegram chat explicitly starts ONE $0 reviewed workflow."""
+    if mode not in ("free-only", "free-team"):
+        raise ValueError("Unzulässiger Modus.")
     if not re.fullmatch(r"[a-zA-Z0-9_-]{10,64}",task_id):
         raise ValueError("Ungültige Auftrags-ID.")
     if not token:
@@ -113,7 +119,8 @@ def start_reviewed(client,bucket,task_id,token,post=requests.post):
         raise ValueError("Auftragsdatum ungültig.")
     queued={**entry,"status":"QUEUED_FREE_REVIEW",
         "approved_at":datetime.now(timezone.utc).isoformat(),
-        "dispatch_target":"ai-central-inbox-agent.yml","inference_scope":"openrouter/free"}
+        "dispatch_target":"ai-central-inbox-agent.yml",
+        "inference_scope":"nvidia/free-team" if mode=="free-team" else "openrouter/free"}
     try:
         claimed=client.put_object(Bucket=bucket,Key=key,Body=json.dumps(queued,ensure_ascii=False).encode(),
             ContentType="application/json",IfMatch=etag)
@@ -130,7 +137,8 @@ def start_reviewed(client,bucket,task_id,token,post=requests.post):
         response=post("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/workflows/ai-central-inbox-agent.yml/dispatches",
             headers={"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json",
                 "X-GitHub-Api-Version":"2022-11-28"},
-            json={"ref":"main","inputs":{"inbox_date":day,"inbox_id":task_id}},timeout=20)
+            json={"ref":"main","inputs":dict({"inbox_date":day,"inbox_id":task_id},
+                  **({"team_mode":"free-team"} if mode=="free-team" else {}))},timeout=20)
     except requests.RequestException:
         # An HTTP timeout is ambiguous: GitHub may already be running this job.
         raise RuntimeError("GitHub-Start unklar. Auftrag bleibt gesperrt; GitHub prüfen statt erneut starten.")
@@ -197,12 +205,14 @@ def handle(text,update_id,chat_id,*,client=None,bucket=None):
     if parsed is None:return None
     op,message=parsed
     if op=="hilfe":
-        return "KI-Zentrale: /zentrale auftrag TEXT · /zentrale status · /zentrale starten AUFTRAGS-ID. keine automatische Ausführung ohne expliziten Start; kostenlose Modellroute. /zentrale ergebnis AUFTRAGS-ID zeigt echten R2-Status."
+        return "KI-Zentrale: /zentrale auftrag TEXT · /zentrale status · /zentrale starten AUFTRAGS-ID. keine automatische Ausführung ohne expliziten Start; kostenlose Modellroute. /zentrale team AUFTRAGS-ID startet die NVIDIA-Mannschaft ausdrücklich. /zentrale ergebnis AUFTRAGS-ID zeigt echten R2-Status."
     if client is None:
         client,bucket=client_from_env()
     if not bucket:raise ValueError("R2 bucket missing")
     if op=="ergebnis":
         return result_summary(client,bucket,message)
+    if op=="team":
+        return start_reviewed(client,bucket,message,os.environ.get("GITHUB_TOKEN",""),mode="free-team")
     if op=="starten":
         return start_reviewed(client,bucket,message,os.environ.get("GITHUB_TOKEN",""))
     if op=="status":
