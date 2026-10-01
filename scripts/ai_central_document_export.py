@@ -72,16 +72,29 @@ def export(data, output):
         story.append(table)
         SimpleDocTemplate(str(path),pagesize=A4,title=text(data["title"])).build(story)
     else:
-        from artifact_tool import Workbook,SpreadsheetFile
-        workbook=Workbook.create()
-        sheet=workbook.worksheets.add("Bericht")
-        sheet.get_range("A1").values=[[text(data["title"])]]
-        rows=[[spreadsheet_cell(v) for v in row] for row in data["table"]]
-        sheet.get_range_by_indexes(2,0,len(rows),len(rows[0])).values=rows
-        sheet.get_range_by_indexes(2,0,1,len(rows[0])).format={"fill":"#234D74","font":{"bold":True,"color":"#FFFFFF"}}
-        sheet.freeze_panes.freeze_rows(3)
-        sheet.get_range_by_indexes(2,0,len(rows),len(rows[0])).format.autofit_columns()
-        SpreadsheetFile.export_xlsx(workbook).save(str(path))
+        # Public hosted GitHub runner uses XlsxWriter for safe *new* workbook exports.
+        # Original uploaded Excel edits require a separate fidelity-tested editing lane.
+        import xlsxwriter
+        wb=xlsxwriter.Workbook(str(path),{"constant_memory":True,"strings_to_formulas":False,
+                                          "strings_to_urls":False})
+        ws=wb.add_worksheet("Bericht")
+        heading=wb.add_format({"bold":True,"font_size":16,"font_color":"#1C3658"})
+        header=wb.add_format({"bold":True,"font_color":"#FFFFFF","bg_color":"#234D74"})
+        ws.write_string(0,0,text(data["title"]),heading)
+        ws.freeze_panes(3,0)
+        for j,v in enumerate(data["table"][0]):
+            ws.write_string(2,j,text(v),header)
+        for i,row in enumerate(data["table"][1:],3):
+            for j,v in enumerate(row):
+                v=spreadsheet_cell(v)
+                if isinstance(v,str):ws.write_string(i,j,v)
+                elif v is None:ws.write_blank(i,j,None)
+                elif isinstance(v,bool):ws.write_boolean(i,j,v)
+                else:ws.write_number(i,j,v)
+        for j,col in enumerate(zip(*data["table"])):
+            width=min(48,max(14,max(len(text(v)) for v in col)+3))
+            ws.set_column(j,j,width)
+        wb.close()
     if not path.is_file() or path.stat().st_size<500:raise RuntimeError("invalid export artifact")
     return {"output":str(path),"format":ext,"bytes":path.stat().st_size,"validated":True}
 
