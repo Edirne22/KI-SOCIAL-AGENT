@@ -6,6 +6,12 @@ on:
         description: "Exact UTC date of reviewed R2 inbox task"
         required: true
         type: string
+      team_mode:
+        description: "Exact approved mode: free-only (legacy) or free-team (NVIDIA opt-in)"
+        required: false
+        type: choice
+        options: [free-only, free-team]
+        default: free-only
       inbox_id:
         description: "Exact user-approved text task ID"
         required: true
@@ -26,6 +32,9 @@ jobs:
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      TEAM_MODE: ${{ inputs.team_mode }}
+      AI_NVIDIA_DEVELOPER_FREE_VERIFIED: "true" # Only catalog-pinned, already manually live-proven NVIDIA endpoints
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -37,19 +46,30 @@ jobs:
         env:
           INBOX_DATE: ${{ inputs.inbox_date }}
           INBOX_ID: ${{ inputs.inbox_id }}
-        run: python -m scripts.ai_central_reviewed_inbox_dispatch --date "$INBOX_DATE" --id "$INBOX_ID" --require-queued
+        run: python -m scripts.ai_central_reviewed_inbox_dispatch --date "$INBOX_DATE" --id "$INBOX_ID" --require-queued --mode "$TEAM_MODE"
       - name: Block all inference unless separate free-tier audit authorizes it
         run: |
           test "$AI_CENTRAL_FREE_TIER_VERIFIED" = "true" || { echo "FREE_TIER_NOT_VERIFIED: no API called"; exit 1; }
+          if test "$TEAM_MODE" = "free-team"; then
+            test "$AI_NVIDIA_DEVELOPER_FREE_VERIFIED" = "true" || { echo "NVIDIA free endpoints not verified"; exit 1; }
+            test -n "$NVIDIA_API_KEY" || { echo "NVIDIA_API_KEY missing"; exit 1; }
+          elif test "$TEAM_MODE" != "free-only"; then
+            echo "Unknown mode"; exit 1
+          fi
           test -n "$OPENROUTER_API_KEY" || { echo "OPENROUTER_API_KEY missing"; exit 1; }
       - name: Persist actual validated GitHub job start in private R2
         env:
           INBOX_ID: ${{ inputs.inbox_id }}
         run: python scripts/ai_central_task_lifecycle.py --id "$INBOX_ID" --state RUNNING
-      - name: Run existing guarded advice, strictly openrouter/free $0 model only
+      - name: Run guarded explicitly approved free-only or NVIDIA team mode
         env:
           INBOX_ID: ${{ inputs.inbox_id }}
-        run: python scripts/cloud_ai_central.py --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-only
+        run: |
+          if test "$TEAM_MODE" = "free-team"; then
+            python scripts/cloud_ai_central.py --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-team
+          else
+            python scripts/cloud_ai_central.py --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-only
+          fi
       - name: Record final outcome only for a validated reviewed task
         if: always() && steps.inbox_gate.outcome == 'success'
         env:
