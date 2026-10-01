@@ -168,7 +168,7 @@ def result_summary(client,bucket,task_id):
         raise ValueError("Ungültige GitHub-Run-ID.")
     msg=f"KI-Zentrale · {task_id} · {state} · GitHub-Run {run}"
     if state!="PENDING_REVIEW":
-        return msg+"\\nNoch kein erfolgreich archivierter Prüfbericht."
+        return msg+"\nNoch kein erfolgreich archivierter Prüfbericht."
     # Stable exact report path: never scan another task's reports.
     report_key=f"ai-central/v1/tasks/{task_id}/runs/{run}/report.json"
     try:
@@ -177,7 +177,7 @@ def result_summary(client,bucket,task_id):
     except Exception as exc:
         code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
         if code in ("404","NoSuchKey","NotFound"):
-            return msg+"\\nPrüfbericht derzeit noch nicht abrufbar."
+            return msg+"\nPrüfbericht derzeit noch nicht abrufbar."
         raise
     if (report.get("schema")!="CLOUD-AI-CENTRAL-V1" or report.get("task_id")!=task_id
         or report.get("run_id")!=run or report.get("status")!="PENDING_REVIEW"):
@@ -190,7 +190,7 @@ def result_summary(client,bucket,task_id):
         if not re.fullmatch(r"[a-zA-Z_-]{2,24}",role) or state not in ("ANSWER","UNAVAILABLE"):
             raise ValueError("Ungültiges Rollenergebnis.")
         summary.append(f"{role}: {state}")
-    return msg+"\\n"+" · ".join(summary)+"\\nAntworttexte nur im geschützten Dashboard: https://edirne22-ai-central-dashboard.butupeli.workers.dev"
+    return msg+"\n"+" · ".join(summary)+"\nAntworttexte nur im geschützten Dashboard: https://edirne22-ai-central-dashboard.butupeli.workers.dev"
 
 def handle(text,update_id,chat_id,*,client=None,bucket=None):
     parsed=parse_command(text)
