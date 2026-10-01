@@ -54,7 +54,8 @@ export class OpenChatCutContainer extends Container {
     httpStatus?: number;
     errorCode?: string;
   }> {
-    if (!this.ctx.container.running) {
+    const runtime = this.ctx.container;
+    if (!runtime?.running) {
       return { containerRunning: false, probe: "not-running" };
     }
     // Intentionally fixed command. User/model input never reaches exec().
@@ -65,7 +66,7 @@ export class OpenChatCutContainer extends Container {
       ".catch(e=>console.log(JSON.stringify({probe:'fetch-error',errorCode:String(e?.cause?.code||e?.name||'unknown').slice(0,40)})));"
     ].join("");
     try {
-      const process = await this.ctx.container.exec(["node", "-e", script]);
+      const process = await runtime.exec(["node", "-e", script]);
       const output = await Promise.race([
         process.output(),
         new Promise<never>((_resolve, reject) =>
