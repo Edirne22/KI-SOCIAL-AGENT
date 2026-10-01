@@ -23,14 +23,14 @@ jobs:
       - name: Syntax and contract regression
         run: |
           python -m compileall -q scripts/cloud_ai_central.py scripts/ai_central_shared_inbox.py
-          python -m unittest tests.test_cloud_ai_central tests.test_ai_central_shared_inbox
+          python -m unittest discover -s tests -p 'test_cloud_ai_central.py'\n          python -m unittest discover -s tests -p 'test_ai_central_shared_inbox.py'
   omniroute-ephemeral-smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
       - name: Install independently version-pinned OmniRoute cloud router
         run: npm install -g omniroute@3.8.50
       - name: Verify binary and bounded isolated router start, without keys or paid providers
