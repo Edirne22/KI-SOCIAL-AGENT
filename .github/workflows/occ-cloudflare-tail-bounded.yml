@@ -1,0 +1,49 @@
+name: OpenChatCut Cloudflare Tail Bounded Retry
+on:
+  push:
+    branches: [diag/openchatcut-ai-root-cause-jury]
+    paths: [".github/workflows/occ-cloudflare-tail-bounded.yml"]
+permissions:
+  contents: read
+jobs:
+  tail-and-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      OPENCHATCUT_MCP_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "24"}
+      - run: npm install --no-save --ignore-scripts wrangler@4.107.0
+      - name: Bounded read-only Cloudflare tail and two probes
+        shell: bash
+        run: |
+          set -uo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN" && test -n "$CLOUDFLARE_ACCOUNT_ID" && test -n "$OPENCHATCUT_MCP_TOKEN"
+          (
+            timeout --signal=TERM --kill-after=3s 90s npx wrangler tail edirne22-openchatcut-poc --format json 2>/tmp/occ-tail-err |
+            python -u scripts/occ_cf_tail_filter.py > /tmp/occ-tail-safe
+          ) &
+          p=$!
+          sleep 10
+          url=https://edirne22-openchatcut-poc.butupeli.workers.dev/api/external-mcp/mcp
+          for i in 1 2; do
+            body=$(mktemp)
+            code=$(curl -sS --max-time 14 -o "$body" -w '%{http_code}' -X POST "$url" \
+              -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" \
+              -H 'Accept: application/json, text/event-stream' -H 'Content-Type: application/json' \
+              --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"cf-tail-bounded","version":"1"}}}' || true)
+            if grep -q '"protocolVersion"' "$body"; then valid=yes; else valid=no; fi
+            echo "CF_BOUNDED_PROBE $i HTTP=$code protocolVersion=$valid"
+            rm -f "$body"
+            sleep 6
+          done
+          wait "$p" || true
+          test -f /tmp/occ-tail-safe && cat /tmp/occ-tail-safe
+          if grep -Eqi 'unauthorized|permission|authentication|forbidden|denied' /tmp/occ-tail-err; then
+            echo "CF_TAIL_PERMISSION_REJECTED"
+          fi
+          echo "CF_TAIL_FINISHED"
