@@ -1,0 +1,53 @@
+name: OpenCode Real Claude One-Shot
+on:
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  read-only-claude:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      OPENCODE_CONFIG: ${{ github.workspace }}/infra/ai-central-tools/claude-only/opencode.jsonc
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - name: Validate only Claude and deny all modification
+        run: |
+          test -n "$OPENROUTER_API_KEY" || { echo "OpenRouter key not configured"; exit 1; }
+          node - <<'JS'
+          const fs=require('fs'),assert=require('assert');
+          const c=JSON.parse(fs.readFileSync(process.env.OPENCODE_CONFIG,'utf8'));
+          assert.deepStrictEqual(Object.keys(c.providers),['openrouter']);
+          assert.deepStrictEqual(Object.keys(c.providers.openrouter.models),['anthropic/claude-sonnet-4.5']);
+          assert(c.providers.openrouter.models['anthropic/claude-sonnet-4.5'].limit.output<=128);
+          assert(c.permissions.some(x=>x.action==='*'&&x.resource==='*'&&x.effect==='deny'));
+          assert(c.experimental.policies.some(x=>x.action==='provider.use'&&x.resource==='*'&&x.effect==='deny'));
+          assert(c.experimental.policies.some(x=>x.action==='provider.use'&&x.resource==='openrouter'&&x.effect==='allow'));
+          console.log('Verified allowlist and deny permissions');
+          JS
+      - name: Install OpenCode on ephemeral runner
+        run: npm install --global @opencode/cli && opencode --version
+      - name: Call exact Claude using OpenCode, read-only, 90-second cap
+        run: |
+          set +e
+          timeout 90s opencode run --model openrouter/anthropic/claude-sonnet-4.5 --format json "Do not call tools. Reply with the single text OPENCODE_CLAUDE_OK." > /tmp/oc-events.jsonl 2> /tmp/oc-err.txt
+          rc=$?
+          set -e
+          node - <<'JS'
+          const fs=require('fs');
+          const raw=fs.readFileSync('/tmp/oc-events.jsonl','utf8');
+          const lines=raw.split('\n').filter(Boolean);
+          let success=false,errors=[];
+          for(const line of lines){
+            try{
+              const x=JSON.parse(line);
+              if(x.type==='text' && x.part && typeof x.part.text==='string' && x.part.text.includes('OPENCODE_CLAUDE_OK'))success=true;
+              if(x.type==='error')errors.push(String(x.error?.name||x.error?.type||'error').slice(0,90));
+            }catch{}
+          }
+          console.log('OPENCODE_CLAUDE_RESULT',JSON.stringify({answer_marker:success,event_count:lines.length,error_types:errors.slice(0,3)}));
+          if(!success)process.exitCode=2;
+          JS
+          test "$rc" -eq 0 || { echo "OpenCode exited nonzero (details redacted)"; exit 1; }

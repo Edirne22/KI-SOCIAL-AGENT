@@ -88,7 +88,7 @@ class LLMRouter:
             "model": model,
             "messages": messages,
             "temperature": 0.7,
-            "max_tokens": MAX_TOKENS,
+            "max_tokens": min(MAX_TOKENS, 256) if provider == "claude_openrouter" else MAX_TOKENS,
         }
 
         try:
@@ -129,6 +129,17 @@ class LLMRouter:
         task_type: str = "default",
         model_override: str | None = None,
     ) -> str:
+        # Claude-only is a verified model-family lock, never a generic provider fallback.
+        if task_type == "claude_only":
+            allowed = "anthropic/claude-sonnet-4.5"
+            if model_override is not None and model_override != allowed:
+                raise ValueError("claude_only forbids a non-approved model override")
+            exact = self.config["task_routing"].get("claude_only")
+            if exact != ["claude_openrouter"]:
+                raise RuntimeError("Claude-only routing contract invalid")
+            cfg = self.config["providers"].get("claude_openrouter", {})
+            if cfg.get("models", {}).get("claude_only") != allowed:
+                raise RuntimeError("Claude-only model contract invalid")
         order = self.config["task_routing"].get(task_type, self.config["fallback_order"])
 
         for provider in order:

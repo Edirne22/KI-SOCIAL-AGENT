@@ -1,0 +1,63 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "openrouter/anthropic/claude-sonnet-4.5",
+  "providers": {
+    "openrouter": {
+      "name": "OpenRouter Claude-only",
+      "env": [
+        "OPENROUTER_API_KEY"
+      ],
+      "package": "@opencode/ai/providers/openrouter",
+      "models": {
+        "anthropic/claude-sonnet-4.5": {
+          "name": "Claude Sonnet 4.5",
+          "modelID": "anthropic/claude-sonnet-4.5",
+          "capabilities": {
+            "tools": false,
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "limit": {
+            "context": 200000,
+            "output": 128
+          }
+        }
+      }
+    }
+  },
+  "permissions": [
+    {
+      "action": "*",
+      "resource": "*",
+      "effect": "deny"
+    }
+  ],
+  "experimental": {
+    "policies": [
+      {
+        "action": "provider.use",
+        "resource": "*",
+        "effect": "deny"
+      },
+      {
+        "action": "provider.use",
+        "resource": "openrouter",
+        "effect": "allow"
+      },
+      {
+        "action": "permission",
+        "resource": "shell:*",
+        "effect": "deny"
+      },
+      {
+        "action": "permission",
+        "resource": "edit:*",
+        "effect": "deny"
+      }
+    ]
+  }
+}

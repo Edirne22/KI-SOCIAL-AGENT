@@ -1,0 +1,161 @@
+name: AI Central Model, OpenCode and Document Skills
+on:
+  pull_request:
+    paths:
+      - "scripts/ai_central_skill_router.py"
+      - "llm_router.py"
+      - "router.py"
+      - "config/model_router.json"
+      - "config/llm_providers.json"
+      - "tests/test_ai_central_claude_legacy_router.py"
+      - "scripts/ai_central_document_export.py"
+      - "scripts/ai_central_inventory.py"
+      - "scripts/ai_central_gemini_image.py"
+      - "config/ai_central_capabilities.json"
+      - "tests/test_ai_central_skills.py"
+      - "tests/test_ai_central_gemini_image.py"
+      - ".opencode/skills/**"
+      - "infra/ai-central-tools/**"
+      - ".github/workflows/ai-central-model-skills.yml"
+  workflow_dispatch:
+    inputs:
+      catalog_probe:
+        description: "Read model lists with configured keys (no inference or billing actions)"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  offline-skills:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install document skills
+        run: python -m pip install --disable-pip-version-check python-docx reportlab XlsxWriter requests
+      - name: Syntax and deterministic model-lock checks
+        run: |
+          python -m py_compile scripts/ai_central_skill_router.py scripts/ai_central_document_export.py scripts/ai_central_inventory.py scripts/ai_central_gemini_image.py
+          python -m unittest discover -s tests -p 'test_ai_central_skills.py' -v
+          python -m unittest discover -s tests -p 'test_ai_central_gemini_image.py' -v
+          python -m unittest discover -s tests -p 'test_ai_central_claude_probe.py' -v
+          python -m unittest discover -s tests -p 'test_ai_central_claude_legacy_router.py' -v
+      - name: Real PDF, DOCX and XLSX smoke exports
+        run: |
+          python - <<'PY'
+          import tempfile
+          from pathlib import Path
+          from scripts.ai_central_document_export import export
+          data={"title":"KI-Zentrale Format-Test","paragraphs":["Validierte Beispieldaten; keine KI-Ausführung."],
+                "table":[["Bereich","Status"],["PDF","OK"],["DOCX","OK"],["XLSX","OK"]]}
+          with tempfile.TemporaryDirectory() as d:
+              for ext in ("pdf","docx","xlsx"):
+                  item=export(data,Path(d)/("smoke."+ext))
+                  assert item["bytes"]>500,item
+                  print(ext,item["bytes"])
+          PY
+  opencode-cli-install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install open-source OpenCode CLI on hosted ephemeral runner
+        run: |
+          npm install -g @opencode/cli
+          command -v opencode
+          opencode --version
+      - name: Verify Claude model and deny rules plus five skills
+        run: |
+          node - <<'JS'
+          const fs=require("fs"),assert=require("assert");
+          const c=JSON.parse(fs.readFileSync("infra/ai-central-tools/claude-only/opencode.jsonc","utf8"));
+          assert.strictEqual(c.model,"openrouter/anthropic/claude-sonnet-4.5");
+          assert.deepStrictEqual(Object.keys(c.providers),["openrouter"]);
+          assert.deepStrictEqual(Object.keys(c.providers.openrouter.models),["anthropic/claude-sonnet-4.5"]);
+          assert(c.providers.openrouter.models["anthropic/claude-sonnet-4.5"].limit.output<=128);
+          assert(c.permissions.some(x=>x.action==="*"&&x.resource==="*"&&x.effect==="deny"));
+          assert(c.experimental.policies.some(x=>x.action==="provider.use"&&x.resource==="*"&&x.effect==="deny"));
+          assert(c.experimental.policies.some(x=>x.action==="provider.use"&&x.resource==="openrouter"&&x.effect==="allow"));
+          for(const n of ["pdf-export","word-export","excel-export","media-processing","excel-safe-edit"]){
+            const body=fs.readFileSync(".opencode/skills/"+n+"/SKILL.md","utf8");
+            assert(body.startsWith("---\n") && body.includes("description:"));
+          }
+          console.log("Claude-only config and five skill files PASS");
+          JS
+      - name: No model inference in installation probe
+        run: echo "OpenCode CLI starts; billable model calls are intentionally not active"
+  ffmpeg-media-tools-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Install open-source FFmpeg and ffprobe on ephemeral GitHub runner
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+      - name: Execute actual video and audio smoke test
+        run: |
+          command -v ffmpeg
+          command -v ffprobe
+          ffmpeg -hide_banner -loglevel error -y -f lavfi -i color=c=black:s=160x90:d=0.5 -c:v mpeg4 -pix_fmt yuv420p /tmp/ai-central-video.mp4
+          ffmpeg -hide_banner -loglevel error -y -f lavfi -i sine=frequency=440:duration=0.5 /tmp/ai-central-audio.wav
+          ffprobe -v error -show_entries stream=codec_type -of csv=p=0 /tmp/ai-central-video.mp4 | grep video
+          ffprobe -v error -show_entries stream=codec_type -of csv=p=0 /tmp/ai-central-audio.wav | grep audio
+          echo "FFmpeg video and audio paths actually execute"
+  catalog-inventory:
+    if: github.event_name == 'workflow_dispatch' && inputs.catalog_probe
+    needs: offline-skills
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+      TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+      POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Read-only inventories and secret-presence audit; never print secret values
+        run: python scripts/ai_central_inventory.py
+      - name: Optional private R2 archive of bounded JSON report
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          if not all(os.getenv(n) for n in ("R2_ACCOUNT_ID","R2_ACCESS_KEY_ID","R2_SECRET_ACCESS_KEY","R2_BUCKET_NAME")):
+              print("R2 skipped: optional credentials incomplete")
+          else:
+              import boto3
+              s=boto3.client("s3",endpoint_url="https://"+os.environ["R2_ACCOUNT_ID"]+".r2.cloudflarestorage.com",
+                  aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
+                  aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],region_name="auto")
+              key="ai-central/v1/inventory/github-run-"+os.environ["GITHUB_RUN_ID"]+".json"
+              s.put_object(Bucket=os.environ["R2_BUCKET_NAME"],Key=key,
+                  Body=Path("ai-capability-inventory.json").read_bytes(),ContentType="application/json")
+              print("Private R2 inventory archived:",key)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ai-central-model-audit-${{ github.run_id }}
+          path: ai-capability-inventory.json
+          if-no-files-found: warn
+          retention-days: 14

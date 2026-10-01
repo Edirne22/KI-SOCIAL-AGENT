@@ -1,0 +1,162 @@
+{
+  "schema": "AI-CENTRAL-CAPABILITIES-V1",
+  "note": "Candidate registry; never equate model catalog listing with inference availability or free quota.",
+  "providers": {
+    "google": {
+      "secret": "GEMINI_API_KEY",
+      "models": [
+        "gemini-3.6-flash",
+        "gemini-3.1-flash-image",
+        "gemini-3-pro-image",
+        "veo-3.1-fast-generate-preview"
+      ],
+      "state": "text-live-image-catalog-confirmed-inference-unverified"
+    },
+    "nvidia": {
+      "secret": "NVIDIA_API_KEY",
+      "models": [
+        "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "moonshotai/kimi-k3",
+        "black-forest-labs/flux.1-schnell",
+        "nvidia/nemotron-ocr-v2"
+      ],
+      "state": "catalog-live-model-specific"
+    },
+    "groq": {
+      "secret": "GROQ_API_KEY",
+      "models": [
+        "openai/gpt-oss-120b",
+        "llama-3.3-70b-versatile"
+      ],
+      "state": "catalog-live-model-specific"
+    },
+    "openrouter": {
+      "secret": "OPENROUTER_API_KEY",
+      "models": [
+        "openrouter/free",
+        "qwen/qwen3-coder:free"
+      ],
+      "state": "fallback-live-router-is-dynamic"
+    },
+    "claude": {
+      "secret": "ANTHROPIC_API_KEY",
+      "models": [
+        "claude-sonnet-4-5"
+      ],
+      "state": "disabled-no-verified-direct-key"
+    },
+    "agnes": {
+      "secret": "AGNES_API_KEY",
+      "models": [
+        "agnes-image-2.1-flash",
+        "agnes-video-v2.0"
+      ],
+      "state": "repo-integrated-not-central-live"
+    },
+    "cloudflare": {
+      "secret": "CLOUDFLARE_API_TOKEN",
+      "models": [
+        "@cf/black-forest-labs/flux-1-schnell"
+      ],
+      "state": "repo-integrated-not-central-live"
+    },
+    "claude_openrouter": {
+      "secret": "OPENROUTER_API_KEY",
+      "models": [
+        "anthropic/claude-sonnet-4.5",
+        "anthropic/claude-sonnet-4.6"
+      ],
+      "state": "catalog-listed-inference-unverified-may-cost"
+    }
+  },
+  "tasks": {
+    "reasoning": {
+      "providers": [
+        "google",
+        "openrouter",
+        "nvidia",
+        "groq"
+      ],
+      "model_by_provider": {
+        "google": "gemini-3.6-flash",
+        "openrouter": "openrouter/free",
+        "nvidia": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "groq": "openai/gpt-oss-120b"
+      },
+      "approval": false
+    },
+    "coding": {
+      "providers": [
+        "openrouter",
+        "nvidia",
+        "claude",
+        "claude_openrouter"
+      ],
+      "model_by_provider": {
+        "openrouter": "qwen/qwen3-coder:free",
+        "nvidia": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "claude": "claude-sonnet-4-5",
+        "claude_openrouter": "anthropic/claude-sonnet-4.5"
+      },
+      "approval": true
+    },
+    "document_edit": {
+      "providers": [
+        "claude",
+        "claude_openrouter",
+        "google"
+      ],
+      "model_by_provider": {
+        "claude": "claude-sonnet-4-5",
+        "google": "gemini-3.6-flash",
+        "claude_openrouter": "anthropic/claude-sonnet-4.5"
+      },
+      "approval": true
+    },
+    "image_generation": {
+      "providers": [
+        "google",
+        "agnes",
+        "cloudflare",
+        "nvidia"
+      ],
+      "model_by_provider": {
+        "google": "gemini-3.1-flash-image",
+        "agnes": "agnes-image-2.1-flash",
+        "cloudflare": "@cf/black-forest-labs/flux-1-schnell",
+        "nvidia": "black-forest-labs/flux.1-schnell"
+      },
+      "approval": true
+    },
+    "video_generation": {
+      "providers": [
+        "agnes"
+      ],
+      "model_by_provider": {
+        "agnes": "agnes-video-v2.0"
+      },
+      "approval": true
+    },
+    "image_ocr": {
+      "providers": [
+        "nvidia"
+      ],
+      "model_by_provider": {
+        "nvidia": "nvidia/nemotron-ocr-v2"
+      },
+      "approval": false
+    }
+  },
+  "document_skills": {
+    "pdf": "reportlab",
+    "docx": "python-docx",
+    "xlsx": "xlsxwriter-hosted-new-files-only"
+  },
+  "policies": {
+    "model_catalog_is_not_inference_tested": true,
+    "forced_provider_must_never_fallback": true,
+    "unverified_paid_inference_must_not_auto_run": true,
+    "generated_docs_require_validation": true,
+    "claude_only_may_use_exact_anthropic_model_on_openrouter_if_verified": true
+  }
+}
