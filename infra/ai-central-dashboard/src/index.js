@@ -187,12 +187,83 @@ async function taskStatus(req,env){
         status:a.status,text:typeof a.text==="string"?a.text.slice(0,5500):undefined}))}))});
 }
 
+
+/* Block 6: server-owned, private R2 preview index. Only the factory may create
+   manifests directly in R2, after media integrity + QM checks. The browser can
+   only read authenticated previews, never specify arbitrary R2 keys. */
+const PREVIEW_PREFIX="ai-central/v1/previews/";
+const MAX_PREVIEW_BYTES=32*1024*1024;
+const PREVIEW_ID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+function validPreview(d,id){
+  const m=d?.media;
+  return d?.schema==="FACTORY-MEDIA-PREVIEW-V1"&&d?.preview_id===id&&
+    d?.state==="READY_FOR_HUMAN"&&d?.qm_passed===true&&
+    typeof d.job_id==="string"&&d.job_id.length>=10&&Number.isSafeInteger(d.revision)&&d.revision>0&&
+    typeof d.manifest==="string"&&/^[a-f0-9]{64}$/.test(d.manifest)&&
+    typeof d.caption==="string"&&d.caption.length<=2500&&
+    m&&m.mime_type==="video/mp4"&&
+    typeof m.media_id==="string"&&m.media_id.length>=10&&
+    typeof m.key==="string"&&(m.key.startsWith("content-factory/")||/^media\/[0-9a-f-]{36}\/[^/]+$/.test(m.key))&&
+    !m.key.split("/").includes("..")&&!m.key.includes("\\")&&
+    Number.isSafeInteger(m.size_bytes)&&m.size_bytes>0&&m.size_bytes<=MAX_PREVIEW_BYTES&&
+    typeof m.sha256==="string"&&/^[a-f0-9]{64}$/.test(m.sha256);
+}
+async function previewManifest(env,id){
+  const obj=await env.AI_CENTRAL_R2.get(PREVIEW_PREFIX+id+".json");
+  if(!obj)return null;
+  let d;
+  try{d=await obj.json()}catch{return null}
+  return validPreview(d,id)?d:null;
+}
+async function listPreviews(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const result=await env.AI_CENTRAL_R2.list({prefix:PREVIEW_PREFIX,limit:80});
+  if(result.truncated)return json({error:"preview index too large; use pagination"},409);
+  const keys=result.objects.filter(x=>/^[0-9a-f-]{36}\.json$/.test(x.key.slice(PREVIEW_PREFIX.length))).slice(-30).reverse();
+  const items=[];
+  for(const k of keys){
+    const id=k.key.slice(PREVIEW_PREFIX.length,-5);
+    if(!PREVIEW_ID.test(id))continue;
+    const d=await previewManifest(env,id);
+    if(d)items.push({id,job_id:d.job_id,revision:d.revision,caption:d.caption,
+      mime_type:d.media.mime_type,size_bytes:d.media.size_bytes,manifest:d.manifest});
+  }
+  return json({schema:"FACTORY-PREVIEW-LIST-V1",items});
+}
+async function getPreviewVideo(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const id=new URL(req.url).searchParams.get("id")||"";
+  if(!PREVIEW_ID.test(id))return json({error:"invalid preview"},400);
+  const d=await previewManifest(env,id);
+  if(!d)return json({error:"preview not ready or unavailable"},404);
+  // Require an independent R2-stored SHA marker as well as the verified
+  // factory manifest. Never stream bytes solely because a JSON key says so.
+  const obj=await env.AI_CENTRAL_R2.get(d.media.key);
+  if(!obj)return json({error:"media unavailable"},404);
+  if(obj.size!==d.media.size_bytes||obj.httpMetadata?.contentType!=="video/mp4"||
+    obj.customMetadata?.sha256!==d.media.sha256)
+    return json({error:"media metadata mismatch"},409);
+  const data=await obj.arrayBuffer();
+  if(data.byteLength!==d.media.size_bytes)return json({error:"media size mismatch"},409);
+  const hash=[...new Uint8Array(await crypto.subtle.digest("SHA-256",data))]
+    .map(v=>v.toString(16).padStart(2,"0")).join("");
+  if(hash!==d.media.sha256)return json({error:"media integrity mismatch"},409);
+  return new Response(data,{headers:{
+    "content-type":"video/mp4","content-length":String(data.byteLength),
+    "cache-control":"private, no-store, max-age=0","x-content-type-options":"nosniff",
+    "content-disposition":"inline; filename=\"factory-preview.mp4\"",
+    "accept-ranges":"none"
+  }});
+}
+
 export default {async fetch(req,env){
   const path=new URL(req.url).pathname;
   if(!path.startsWith("/api/"))return env.ASSETS.fetch(req);
   if(!env.AI_CENTRAL_R2)return json({error:"storage unavailable"},503);
   if(!authenticated(req,env))return json({error:"unauthorized"},401);
   try{
+    if(path==="/api/previews")return await listPreviews(req,env);
+    if(path==="/api/preview-video")return await getPreviewVideo(req,env);
     if(path==="/api/inbox")return await inbox(req,env);
     if(path==="/api/upload")return await upload(req,env);
     if(path==="/api/dispatch")return await queueReviewed(req,env);
