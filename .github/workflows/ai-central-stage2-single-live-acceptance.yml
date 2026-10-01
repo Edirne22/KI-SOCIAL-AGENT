@@ -1,0 +1,88 @@
+name: AI Central – one-time Stage2 dashboard R2 NVIDIA acceptance
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/ai-central-stage2-single-live-acceptance.yml"
+      - "scripts/ai_central_stage2_live_acceptance.py"
+      - "tests/test_ai_central_stage2_live_acceptance.py"
+      - ".github/workflows/ai-central-inbox-agent.yml"
+  push:
+    branches: [main]
+    # The new workflow is its own one-time opt-in trigger, not a recurrent
+    # background redeploy for unrelated project changes.
+    paths:
+      - ".github/workflows/ai-central-stage2-single-live-acceptance.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ai-central-stage2-single-live-acceptance
+  cancel-in-progress: false
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Python syntax, bounded single-dispatch and anti-leak regressions
+        run: |
+          python -m compileall -q scripts/ai_central_stage2_live_acceptance.py
+          python -m unittest discover -s tests -p 'test_ai_central_stage2_live_acceptance.py'
+      - name: Full existing Dashboard and R2 security tests
+        working-directory: infra/ai-central-dashboard
+        run: npm test
+  deploy-and-live:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: offline
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      AI_DASHBOARD_TOKEN: ${{ secrets.AI_DASHBOARD_TOKEN }}
+      AI_GITHUB_DISPATCH_TOKEN: ${{ secrets.AI_GITHUB_DISPATCH_TOKEN }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Guard all existing dashboard credentials before touching deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo CLOUDFLARE_DEPLOY_TOKEN_MISSING; exit 1; }
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo CLOUDFLARE_ACCOUNT_MISSING; exit 1; }
+          test -n "$R2_BUCKET_NAME" || { echo PRIVATE_R2_BINDING_MISSING; exit 1; }
+          test "${#AI_DASHBOARD_TOKEN}" -ge 24 || { echo DASHBOARD_TOKEN_MISSING; exit 1; }
+          test -n "$AI_GITHUB_DISPATCH_TOKEN" || { echo DISPATCH_TOKEN_MISSING; exit 1; }
+      - name: Bind existing private R2 bucket to local Wrangler config
+        working-directory: infra/ai-central-dashboard
+        run: |
+          node -e 'const fs=require("fs");const f="wrangler.jsonc";const c=JSON.parse(fs.readFileSync(f));c.r2_buckets[0].bucket_name=process.env.R2_BUCKET_NAME;fs.writeFileSync(f,JSON.stringify(c,null,2));'
+      - name: Deploy tested updated Dashboard Worker and static UI
+        working-directory: infra/ai-central-dashboard
+        run: npx --yes wrangler@4 deploy --config wrangler.jsonc
+      - name: Restore preexisting private dashboard token
+        working-directory: infra/ai-central-dashboard
+        run: printf '%s' "$AI_DASHBOARD_TOKEN" | npx --yes wrangler@4 secret put AI_DASHBOARD_TOKEN --config wrangler.jsonc
+      - name: Restore preexisting GitHub dispatch credential
+        working-directory: infra/ai-central-dashboard
+        run: printf '%s' "$AI_GITHUB_DISPATCH_TOKEN" | npx --yes wrangler@4 secret put GITHUB_DISPATCH_TOKEN --config wrangler.jsonc
+      - name: Wait briefly for updated Worker and secret propagation
+        run: sleep 20
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: ONE real synthetic Dashboard to R2 to GitHub to NVIDIA to R2 and Telegram delivery
+        run: python -m scripts.ai_central_stage2_live_acceptance
