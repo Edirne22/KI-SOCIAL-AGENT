@@ -127,7 +127,7 @@ def handle(text,update_id,chat_id,*,client=None,bucket=None):
     if parsed is None:return None
     op,message=parsed
     if op=="hilfe":
-        return "KI-Zentrale: /zentrale auftrag TEXT · /zentrale status · /zentrale starten AUFTRAGS-ID. Nur explizite Freigabe; kostenlose Modellroute."
+        return "KI-Zentrale: /zentrale auftrag TEXT · /zentrale status · /zentrale starten AUFTRAGS-ID. keine automatische Ausführung ohne expliziten Start; kostenlose Modellroute."
     if client is None:
         client,bucket=client_from_env()
     if not bucket:raise ValueError("R2 bucket missing")
