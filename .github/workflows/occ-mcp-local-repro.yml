@@ -1,0 +1,21 @@
+name: OpenChatCut Isolated MCP Transport Repro
+on:
+  push:
+    branches: [diag/openchatcut-ai-root-cause-jury]
+    paths:
+      - ".github/workflows/occ-mcp-local-repro.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sdk-transport-offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --no-save --ignore-scripts @modelcontextprotocol/sdk@1.29.0 zod
+      - name: Verify isolated raw MCP sessions and connection-close behavior
+        run: node scripts/occ_transport_local.mjs
