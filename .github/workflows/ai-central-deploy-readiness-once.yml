@@ -1,8 +1,5 @@
 name: KI Central private deploy readiness (presence only)
 on:
-  push:
-    branches: [feat/ai-central-e2e-controlled-runner]
-    paths: [".github/workflows/ai-central-deploy-readiness-once.yml"]
   workflow_dispatch:
 permissions: {contents: read}
 jobs:
