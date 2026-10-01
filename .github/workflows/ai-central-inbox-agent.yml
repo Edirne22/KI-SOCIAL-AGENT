@@ -36,6 +36,10 @@ jobs:
           test "$AI_CENTRAL_FREE_TIER_VERIFIED" = "true" || { echo "FREE_TIER_NOT_VERIFIED: no API called"; exit 1; }
           test -n "$GROQ_API_KEY" || { echo "GROQ_API_KEY missing"; exit 1; }
       - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Persist actual GitHub job start in private R2
+        env:
+          INBOX_ID: ${{ inputs.inbox_id }}
+        run: python scripts/ai_central_task_lifecycle.py --id "$INBOX_ID" --state RUNNING
       - name: Validate exact approved R2 text draft and prepare bounded advisory
         env:
           INBOX_DATE: ${{ inputs.inbox_date }}
@@ -45,6 +49,21 @@ jobs:
         env:
           INBOX_ID: ${{ inputs.inbox_id }}
         run: python scripts/cloud_ai_central.py --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-only
+      - name: Record only truthful final outcome
+        if: always()
+        env:
+          INBOX_ID: ${{ inputs.inbox_id }}
+          PRIOR_RESULT: ${{ job.status }}
+        run: |
+          if test "$AI_CENTRAL_FREE_TIER_VERIFIED" != "true"; then
+            state=BLOCKED_FREE_TIER
+          elif test "$PRIOR_RESULT" = "success" && test -s ai-central-report.json; then
+            state=PENDING_REVIEW
+          else
+            state=FAILED
+          fi
+          python -m pip install --disable-pip-version-check boto3 -q
+          python scripts/ai_central_task_lifecycle.py --id "$INBOX_ID" --state "$state"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
