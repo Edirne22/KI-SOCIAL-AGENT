@@ -1,5 +1,6 @@
 import importlib.util
 import json
+from collections import Counter
 import pathlib
 import unittest
 from unittest.mock import patch
@@ -58,8 +59,9 @@ class Tests(unittest.TestCase):
         result=c.dispatch(TASK,cfg,ask_fn=fake,roles=c.FREE_TEAM_ROLES)
         self.assertEqual([x["role"] for x in result],["research","diagnosis","challenge"])
         self.assertTrue(all(x["status"]=="ANSWER" for x in result))
-        self.assertEqual([x[0] for x in attempts],
-            ["nvidia_nemotron","nvidia_kimi","openrouter","openrouter"])
+        self.assertEqual(Counter((name,role) for name,_,role in attempts),Counter({
+            ("nvidia_nemotron","research"):1,("nvidia_kimi","diagnosis"):1,
+            ("openrouter","diagnosis"):1,("openrouter","challenge"):1}))
         self.assertTrue(all(model in set(c.FREE_TEAM_MODELS.values())|{"openrouter/free"}
                             for _,model,_ in attempts))
     def test_free_team_refuses_provider_endpoint_mutation(self):
