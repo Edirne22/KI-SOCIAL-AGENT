@@ -37,3 +37,42 @@ test("only explicit API routes",async()=>{
  let e=env();assert.equal((await worker.fetch(request("/api/unknown"),e)).status,404);
  assert.equal((await worker.fetch(request("/"),e)).status,200);
 });
+
+
+test("dispatch rejected before verified free-tier flag without touching GitHub",async()=>{
+ let e=env(),calls=0; e.AI_CENTRAL_FREE_TIER_VERIFIED="false";e.GITHUB_DISPATCH_TOKEN="fake";
+ const old=globalThis.fetch;globalThis.fetch=async()=>{calls++;throw Error("must not call")};
+ try{
+  const res=await worker.fetch(request("/api/dispatch",{method:"POST",body:JSON.stringify({id:"1234567890abcdef",date:"2026-10-01"}),headers:{"content-type":"application/json","origin":"https://dashboard.example"}}),e);
+  assert.equal(res.status,409);assert.equal(calls,0);
+ }finally{globalThis.fetch=old}
+});
+test("exact approved draft starts only once and never claims task completion",async()=>{
+ let e=env();e.AI_CENTRAL_FREE_TIER_VERIFIED="true";e.GITHUB_DISPATCH_TOKEN="fake-dispatch-test-token";
+ const posted=await worker.fetch(request("/api/inbox",{method:"POST",body:JSON.stringify({message:"Review OpenChatCut startup logs"}),headers:{"content-type":"application/json","origin":"https://dashboard.example"}}),e);
+ const {id}=await posted.json();const date=new Date().toISOString().slice(0,10);let calls=0;
+ const old=globalThis.fetch;
+ globalThis.fetch=async(url,opts)=>{calls++;assert.match(url,/ai-central-inbox-agent.yml\/dispatches$/);const b=JSON.parse(opts.body);assert.equal(b.inputs.inbox_id,id);assert.equal(b.ref,"main");return {status:204}};
+ try{
+  let res=await worker.fetch(request("/api/dispatch",{method:"POST",body:JSON.stringify({id,date}),headers:{"content-type":"application/json","origin":"https://dashboard.example"}}),e);
+  assert.equal(res.status,202);
+  assert.equal((await res.json()).truth,"GITHUB_DISPATCH_ACCEPTED_NOT_EXECUTION_PROOF");
+  assert.equal(calls,1);
+  assert.equal(JSON.parse([...e.AI_CENTRAL_R2.items.values()][0]).status,"QUEUED_FREE_REVIEW");
+  res=await worker.fetch(request("/api/dispatch",{method:"POST",body:JSON.stringify({id,date}),headers:{"content-type":"application/json"}}),e);
+  assert.equal(res.status,409);assert.equal(calls,1);
+  const poll=await worker.fetch(request("/api/task?id="+id),e);
+  assert.equal((await poll.json()).status,"NO_REPORT_YET");
+ }finally{globalThis.fetch=old}
+});
+test("failed upstream dispatch restores the draft",async()=>{
+ let e=env();e.AI_CENTRAL_FREE_TIER_VERIFIED="true";e.GITHUB_DISPATCH_TOKEN="fake-dispatch-test-token";
+ const d=await worker.fetch(request("/api/inbox",{method:"POST",body:JSON.stringify({message:"Review safe container logs"}),headers:{"content-type":"application/json"}}),e);
+ const id=(await d.json()).id;const old=globalThis.fetch;
+ globalThis.fetch=async()=>({status:403});
+ try{
+  const res=await worker.fetch(request("/api/dispatch",{method:"POST",body:JSON.stringify({id,date:new Date().toISOString().slice(0,10)}),headers:{"content-type":"application/json"}}),e);
+  assert.equal(res.status,502);
+  assert.equal(JSON.parse([...e.AI_CENTRAL_R2.items.values()][0]).status,"DRAFT_REQUIRES_REVIEW");
+ }finally{globalThis.fetch=old}
+});
