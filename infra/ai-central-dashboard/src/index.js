@@ -84,8 +84,9 @@ async function queueReviewed(req,env){
   if(!env.GITHUB_DISPATCH_TOKEN)
     return json({error:"GitHub dispatch not configured"},503);
   let body;try{body=await req.json()}catch{return json({error:"invalid json"},400)}
-  const id=body?.id,date=body?.date;
-  if(Object.keys(body||{}).sort().join(",")!=="date,id"||
+  const id=body?.id,date=body?.date,mode=body?.mode||"free-only";
+  if(!["free-only","free-team"].includes(mode))return json({error:"invalid inference mode"},400);
+  if(!["date,id","date,id,mode"].includes(Object.keys(body||{}).sort().join(","))||
     typeof id!=="string"||!/^[A-Za-z0-9_-]{10,64}$/.test(id)||
     typeof date!=="string"||!/^20\d{2}-\d\d-\d\d$/.test(date)||
     !Number.isFinite(Date.parse(date+"T00:00:00Z"))||
@@ -111,7 +112,8 @@ async function queueReviewed(req,env){
     return json({error:"not an unprocessed text draft"},409);
   // Keep original message unchanged; state is an explicit user-approved intent.
   const queued={...d,status:"QUEUED_FREE_REVIEW",approved_at:new Date().toISOString(),
-    dispatch_target:"ai-central-inbox-agent.yml",inference_scope:"free-tier-opt-in-only"};
+    dispatch_target:"ai-central-inbox-agent.yml",
+    inference_scope:mode==="free-team"?"nvidia/free-team":"free-tier-opt-in-only"};
   if(typeof found.etag!=="string"||!found.etag)return json({error:"R2 optimistic locking unavailable"},503);
   const claimed=await env.AI_CENTRAL_R2.put(found.key,JSON.stringify(queued),{
     httpMetadata:{contentType:"application/json"},onlyIf:{etagMatches:found.etag}});
@@ -122,7 +124,7 @@ async function queueReviewed(req,env){
       method:"POST",headers:{"authorization":"Bearer "+env.GITHUB_DISPATCH_TOKEN,
         "accept":"application/vnd.github+json","x-github-api-version":"2022-11-28",
         "user-agent":"Edirne22-Private-AI-Central"},
-      body:JSON.stringify({ref:"main",inputs:{inbox_date:date,inbox_id:id}})});
+      body:JSON.stringify({ref:"main",inputs:{inbox_date:date,inbox_id:id,...(mode==="free-team"?{team_mode:"free-team"}:{})}})});
   }catch{
     // Network failure is ambiguous: GitHub may have accepted the job. NEVER
     // restore DRAFT or silently send a second potentially duplicated request.

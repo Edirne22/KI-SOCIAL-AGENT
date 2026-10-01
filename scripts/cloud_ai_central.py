@@ -14,6 +14,7 @@ import re
 from pathlib import Path
 from uuid import uuid4
 import requests
+from scripts.ai_central_token_budget import challenge_evidence
 
 ROOT=Path(__file__).resolve().parents[1]
 CONFIG=ROOT/"config"/"llm_providers.json"
@@ -124,9 +125,9 @@ def review_free_team(task,config,ask_fn=ask):
             peer.append(item["role"]+" (UNAVAILABLE): no independent answer")
     # Original evidence is authoritative only to the extent externally verifiable;
     # peer text cannot add verified facts and cannot escape the system instructions.
-    original=task["evidence"][:1000]
-    evidence=original+"\nUNTRUSTED PEER CLAIMS FOR ADVERSARIAL REVIEW ONLY:\n"+"\n".join(peer)
-    challenge_task={**task,"evidence":evidence[:MAX_PROMPT]}
+    # Preserve ALL original evidence; only expend remaining context on peer text.
+    evidence=challenge_evidence(task["evidence"],peer,MAX_PROMPT)
+    challenge_task={**task,"evidence":evidence}
     validate_task(challenge_task)
     final=dispatch(challenge_task,config,ask_fn=ask_fn,
                    roles={"challenge":FREE_TEAM_ROLES["challenge"]})
