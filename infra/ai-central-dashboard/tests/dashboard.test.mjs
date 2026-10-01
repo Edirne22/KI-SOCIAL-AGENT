@@ -149,3 +149,22 @@ test("reject task report with mismatched current run",async()=>{
  const response=await worker.fetch(request("/api/task?id="+id),e);
  assert.equal(response.status,502);
 });
+
+test("NVIDIA free-team is explicitly selected and cannot be double-dispatched",async()=>{
+ const e=env();e.AI_CENTRAL_FREE_TIER_VERIFIED="true";e.GITHUB_DISPATCH_TOKEN="fake";
+ const p=await worker.fetch(request("/api/inbox",{method:"POST",body:JSON.stringify({message:"Inspect actual MCP root cause"}),headers:{"content-type":"application/json"}}),e);
+ const id=(await p.json()).id,date=new Date().toISOString().slice(0,10);
+ const old=globalThis.fetch;let calls=[];
+ globalThis.fetch=async(url,opts)=>{calls.push(JSON.parse(opts.body));return {status:204}};
+ try{
+  const bad=await worker.fetch(request("/api/dispatch",{method:"POST",body:JSON.stringify({id,date,mode:"paid"}),headers:{"content-type":"application/json"}}),e);
+  assert.equal(bad.status,400);assert.equal(calls.length,0);
+  const result=await worker.fetch(request("/api/dispatch",{method:"POST",body:JSON.stringify({id,date,mode:"free-team"}),headers:{"content-type":"application/json"}}),e);
+  assert.equal(result.status,202);
+  assert.equal(calls.length,1);assert.equal(calls[0].inputs.team_mode,"free-team");
+  const item=JSON.parse([...e.AI_CENTRAL_R2.items.values()][0]);
+  assert.equal(item.inference_scope,"nvidia/free-team");
+  const retry=await worker.fetch(request("/api/dispatch",{method:"POST",body:JSON.stringify({id,date,mode:"free-only"}),headers:{"content-type":"application/json"}}),e);
+  assert.equal(retry.status,409);assert.equal(calls.length,1);
+ }finally{globalThis.fetch=old}
+});
