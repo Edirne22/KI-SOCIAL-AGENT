@@ -68,7 +68,7 @@ class ReviewBridgeTests(unittest.TestCase):
         gate=workflow.index("Validate exact explicitly approved R2 text task")
         require=workflow.index("--require-queued")
         status=workflow.index("Persist actual validated GitHub job start")
-        free=workflow.index("strictly openrouter/free")
+        free=workflow.index("Run guarded explicitly approved free-only or NVIDIA team mode")
         self.assertLess(gate,require)
         self.assertLess(require,status)
         self.assertLess(status,free)
