@@ -73,6 +73,81 @@ async function upload(req,env){
   await env.AI_CENTRAL_R2.put(objectKey(),JSON.stringify(task),{httpMetadata:{contentType:"application/json"}});
   return json({id,created_at,status:task.status,name},202);
 }
+
+// An explicit human click may queue ONE reviewed text task. No provider billing is
+// possible unless an independent admin has verified the free account/limit.
+async function queueReviewed(req,env){
+  if(req.method!=="POST")return json({error:"method"},405);
+  if(!sameOrigin(req))return json({error:"origin rejected"},403);
+  if(env.AI_CENTRAL_FREE_TIER_VERIFIED!=="true")
+    return json({error:"No verified free-tier inference budget: dispatch disabled"},409);
+  if(!env.GITHUB_DISPATCH_TOKEN)
+    return json({error:"GitHub dispatch not configured"},503);
+  let body;try{body=await req.json()}catch{return json({error:"invalid json"},400)}
+  const id=body?.id,date=body?.date;
+  if(Object.keys(body||{}).sort().join(",")!=="date,id"||
+    typeof id!=="string"||!/^[A-Za-z0-9_-]{10,64}$/.test(id)||
+    typeof date!=="string"||!/^20\d{2}-\d\d-\d\d$/.test(date)||
+    !Number.isFinite(Date.parse(date+"T00:00:00Z"))||
+    new Date(date+"T00:00:00Z").toISOString().slice(0,10)!==date)
+    return json({error:"invalid task reference"},400);
+  const listing=await env.AI_CENTRAL_R2.list({prefix:PREFIX+date+"/",limit:100});
+  if(listing.truncated)return json({error:"inbox scan limit reached"},409);
+  let found=null;
+  for(const entry of listing.objects){
+    if(!entry.key.endsWith(".json"))continue;
+    const obj=await env.AI_CENTRAL_R2.get(entry.key);
+    if(!obj)continue;
+    const v=await obj.json();
+    if(v.id!==id)continue;
+    if(found)return json({error:"ambiguous task reference"},409);
+    found={key:entry.key,doc:v};
+  }
+  if(!found)return json({error:"unknown task"},404);
+  const d=found.doc;
+  if(d.kind!=="message"||d.status!=="DRAFT_REQUIRES_REVIEW"||d.auto_dispatch!==false)
+    return json({error:"not an unprocessed text draft"},409);
+  // Keep original message unchanged; state is an explicit user-approved intent.
+  const queued={...d,status:"QUEUED_FREE_REVIEW",approved_at:new Date().toISOString(),
+    dispatch_target:"ai-central-inbox-agent.yml",inference_scope:"free-tier-opt-in-only"};
+  await env.AI_CENTRAL_R2.put(found.key,JSON.stringify(queued),{httpMetadata:{contentType:"application/json"}});
+  let response;
+  try{
+    response=await fetch("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/workflows/ai-central-inbox-agent.yml/dispatches",{
+      method:"POST",headers:{"authorization":"Bearer "+env.GITHUB_DISPATCH_TOKEN,
+        "accept":"application/vnd.github+json","x-github-api-version":"2022-11-28",
+        "user-agent":"Edirne22-Private-AI-Central"},
+      body:JSON.stringify({ref:"main",inputs:{inbox_date:date,inbox_id:id}})});
+  }catch{
+    await env.AI_CENTRAL_R2.put(found.key,JSON.stringify(d),{httpMetadata:{contentType:"application/json"}});
+    return json({error:"GitHub dispatch unavailable; original draft retained"},502);
+  }
+  if(response.status!==204){
+    await env.AI_CENTRAL_R2.put(found.key,JSON.stringify(d),{httpMetadata:{contentType:"application/json"}});
+    return json({error:"GitHub did not accept request; original draft retained",code:response.status},502);
+  }
+  return json({id,status:"QUEUED_FREE_REVIEW",truth:"GITHUB_DISPATCH_ACCEPTED_NOT_EXECUTION_PROOF"},202);
+}
+async function taskStatus(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const id=new URL(req.url).searchParams.get("id");
+  if(!id||!/^[A-Za-z0-9_-]{10,64}$/.test(id))return json({error:"invalid task id"},400);
+  const prefix="ai-central/v1/tasks/"+id+"/runs/";
+  const objects=await env.AI_CENTRAL_R2.list({prefix,limit:100});
+  const keys=objects.objects.filter(x=>x.key.endsWith("/report.json")).map(x=>x.key).sort().reverse();
+  if(!keys.length)return json({id,status:"NO_REPORT_YET",truth:"R2_REPORT_NOT_FOUND"});
+  const report=await env.AI_CENTRAL_R2.get(keys[0]);
+  if(!report)return json({id,status:"NO_REPORT_YET",truth:"R2_REPORT_NOT_FOUND"});
+  const data=await report.json();
+  if(data.schema!=="CLOUD-AI-CENTRAL-V1"||data.task_id!==id)
+    return json({error:"invalid stored report"},502);
+  // Avoid exposing other task messages; show only reviewed result states and sanitized AI text.
+  return json({id,status:data.status,truth:"R2_ARCHIVED_REPORT",run_id:data.run_id,
+    utc:data.utc,roles:(data.results||[]).map(v=>({role:v.role,status:v.status,
+      attempts:(v.attempts||[]).map(a=>({provider:a.provider,model:a.model||"",
+        status:a.status,text:typeof a.text==="string"?a.text.slice(0,5500):undefined}))}))});
+}
+
 export default {async fetch(req,env){
   const path=new URL(req.url).pathname;
   if(!path.startsWith("/api/"))return env.ASSETS.fetch(req);
@@ -81,6 +156,8 @@ export default {async fetch(req,env){
   try{
     if(path==="/api/inbox")return await inbox(req,env);
     if(path==="/api/upload")return await upload(req,env);
+    if(path==="/api/dispatch")return await queueReviewed(req,env);
+    if(path==="/api/task")return await taskStatus(req,env);
     if(path==="/api/runs"){
       const response=await fetch("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/runs?per_page=15",{
         headers:{"accept":"application/vnd.github+json","user-agent":"Edirne22-AI-Central-Dashboard",
