@@ -25,7 +25,7 @@ jobs:
           const endpoint="https://api.cloudflare.com/client/v4/accounts/"+account+"/workers/observability/telemetry/query";
           const windows=[["deploy","2026-10-01T10:16:00Z","2026-10-01T10:21:00Z"],["isolated","2026-10-01T10:43:45Z","2026-10-01T10:45:00Z"]];
           for (const [name,from,to] of windows) {
-            const body={queryId:"edirne22-openchatcut-historic-diag",timeframe:{from:Date.parse(from),to:Date.parse(to)},view:"events",limit:200,parameters:{datasets:[],filters:[{key:"$metadata.service",operation:"eq",type:"string",value:"edirne22-openchatcut-poc"}]},dry:true};
+            const body={queryId:"edirne22-openchatcut-historic-diag",timeframe:{from:Date.parse(from),to:Date.parse(to)},view:"events",limit:2000,parameters:{datasets:[],filters:[{key:"$metadata.service",operation:"eq",type:"string",value:"edirne22-openchatcut-poc"}]},dry:true};
             const result=await fetch(endpoint,{method:"POST",headers:{"Authorization":"Bearer "+token,"Content-Type":"application/json"},body:JSON.stringify(body),signal:AbortSignal.timeout(30000)});
             const payload=await result.json().catch(()=>({}));
             if(!result.ok||payload.success===false) {
@@ -34,12 +34,12 @@ jobs:
             }
             const events=payload.result?.events?.events||[];
             console.log(JSON.stringify({window:name,http:result.status,total:payload.result?.events?.count??null,returned:events.length}));
-            const interesting=/openchatcut_container_(start|stop|error)|not listening|suddenly disconnected|readiness_(ready|wait)|MCP session/i;
+            const interesting=/openchatcut_container_(start|stop|error)|not listening|suddenly disconnected|readiness_(ready|wait)|MCP session/i;\n            if(events[0])console.log("EVENT_SHAPE",JSON.stringify({window:name,keys:Object.keys(events[0]),metadataKeys:Object.keys(events[0].$metadata||{}),logsType:typeof events[0].logs,logsIsArray:Array.isArray(events[0].logs)}));
             for(const e of events) {
-              const meta=e.$metadata||{}, raw=String(meta.message||e.message||"");
+              const meta=e.$metadata||{}, raw=JSON.stringify(e);
               if(!interesting.test(raw))continue;
-              let parsed;try{parsed=JSON.parse(raw)}catch{parsed={event:"matched",message:raw.slice(0,180)}}
-              console.log("LIFECYCLE",JSON.stringify({window:name,time:meta.timestamp||meta.startTime||e.timestamp||null,event:parsed.event||"matched",exitCode:parsed.exitCode??null,reason:parsed.reason??null,message:String(parsed.message||"").slice(0,180)}));
+              const eventName=raw.match(/openchatcut_container_(?:start|stop|error)|openchatcut_readiness_(?:ready|wait)/)?.[0]||"matched"; const code=raw.match(/exitCode[^0-9]{1,12}(\\d+)/)?.[1]||null; const reason=raw.match(/reason[^a-zA-Z]{1,12}(runtime_signal|exit)/)?.[1]||null;
+              console.log("LIFECYCLE",JSON.stringify({window:name,time:meta.timestamp||meta.startTime||e.timestamp||null,event:eventName,exitCode:code,reason:reason,containsNotListening:raw.includes("not listening"),containsDisconnect:raw.includes("suddenly disconnected")}));
             }
           }
           NODE
