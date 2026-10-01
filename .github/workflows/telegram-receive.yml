@@ -32,7 +32,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install requests Pillow beautifulsoup4
+        run: pip install requests Pillow beautifulsoup4 boto3
 
       - name: Route Telegram command
         env:
@@ -49,6 +49,10 @@ jobs:
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
           GITHUB_TOKEN: ${{ github.token }}
         run: python -u telegram_router.py
 
