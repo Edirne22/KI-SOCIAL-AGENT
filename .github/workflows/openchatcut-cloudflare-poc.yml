@@ -102,7 +102,60 @@ jobs:
             > "$RUNNER_TEMP/openchatcut-secrets.json"
       - name: Deploy Worker, container and runtime secrets atomically
         working-directory: infra/openchatcut-cloudflare
-        run: npx wrangler deploy --secrets-file "$RUNNER_TEMP/openchatcut-secrets.json"
+        shell: bash
+        run: |
+          set -euo pipefail
+          mcp_url="https://edirne22-openchatcut-poc.butupeli.workers.dev/api/external-mcp/mcp"
+
+          wake_once() {
+            local label="$1" body code
+            body="$(mktemp)"
+            code="$(curl --max-time 20 -sS -o "$body" -w '%{http_code}' \
+              -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" \
+              -H 'Content-Type: application/json' \
+              -H 'Accept: application/json, text/event-stream' \
+              --data '{"jsonrpc":"2.0","id":"deploy-keepalive","method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"edirne22-deploy-keepalive","version":"1.0.0"}}}' \
+              "$mcp_url" || true)"
+            if [ "$code" = "200" ] && grep -q '"protocolVersion"' "$body"; then
+              echo "$label: MCP ready (HTTP 200)"
+              rm -f "$body"
+              return 0
+            fi
+            echo "$label: MCP not ready (HTTP $code)"
+            rm -f "$body"
+            return 1
+          }
+
+          echo "Pre-deploy wake-up"
+          ready=0
+          for attempt in 1 2 3; do
+            if wake_once "pre-deploy attempt $attempt"; then
+              ready=1
+              break
+            fi
+            [ "$attempt" -lt 3 ] && sleep 5
+          done
+          if [ "$ready" -ne 1 ]; then
+            echo "::error::OpenChatCut MCP could not be woken before deploy"
+            exit 1
+          fi
+
+          (
+            tick=0
+            while true; do
+              sleep 180
+              tick=$((tick + 1))
+              wake_once "deploy keep-alive $tick" || true
+            done
+          ) &
+          keepalive_pid=$!
+          cleanup_keepalive() {
+            kill "$keepalive_pid" 2>/dev/null || true
+            wait "$keepalive_pid" 2>/dev/null || true
+          }
+          trap cleanup_keepalive EXIT
+
+          npx wrangler deploy --secrets-file "$RUNNER_TEMP/openchatcut-secrets.json"
       - name: Remove temporary secret bundle
         if: always()
         run: rm -f "$RUNNER_TEMP/openchatcut-secrets.json"
