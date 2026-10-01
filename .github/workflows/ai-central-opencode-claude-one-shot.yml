@@ -19,11 +19,12 @@ jobs:
           node - <<'JS'
           const fs=require('fs'),assert=require('assert');
           const c=JSON.parse(fs.readFileSync(process.env.OPENCODE_CONFIG,'utf8'));
-          assert.deepStrictEqual(c.enabled_providers,['openrouter']);
-          assert.deepStrictEqual(Object.keys(c.provider.openrouter.models),['anthropic/claude-sonnet-4.5']);
-          assert.strictEqual(c.permission['*'],'deny');
-          assert.strictEqual(c.permission.bash,'deny');
-          assert.strictEqual(c.permission.edit,'deny');
+          assert.deepStrictEqual(Object.keys(c.providers),['openrouter']);
+          assert.deepStrictEqual(Object.keys(c.providers.openrouter.models),['anthropic/claude-sonnet-4.5']);
+          assert(c.providers.openrouter.models['anthropic/claude-sonnet-4.5'].limit.output<=128);
+          assert(c.permissions.some(x=>x.action==='*'&&x.resource==='*'&&x.effect==='deny'));
+          assert(c.experimental.policies.some(x=>x.action==='provider.use'&&x.resource==='*'&&x.effect==='deny'));
+          assert(c.experimental.policies.some(x=>x.action==='provider.use'&&x.resource==='openrouter'&&x.effect==='allow'));
           console.log('Verified allowlist and deny permissions');
           JS
       - name: Install OpenCode on ephemeral runner
