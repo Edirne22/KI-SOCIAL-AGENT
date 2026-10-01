@@ -23,7 +23,8 @@ jobs:
       - name: Syntax and contract regression
         run: |
           python -m compileall -q scripts/cloud_ai_central.py scripts/ai_central_shared_inbox.py
-          python -m unittest discover -s tests -p 'test_cloud_ai_central.py'\n          python -m unittest discover -s tests -p 'test_ai_central_shared_inbox.py'
+          python -m unittest discover -s tests -p 'test_cloud_ai_central.py'
+          python -m unittest discover -s tests -p 'test_ai_central_shared_inbox.py'
   omniroute-ephemeral-smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 8
