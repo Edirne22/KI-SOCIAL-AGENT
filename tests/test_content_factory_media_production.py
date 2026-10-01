@@ -114,7 +114,7 @@ class Block6Tests(unittest.TestCase):
   p=MediaProductionPlanner().plan(j,brief(),independent_ffmpeg=True)
   self.assertEqual(("ffmpeg",),tuple(x.machine for x in p.steps))
   self.assertEqual({"mode":"caption_audio","seconds":"15"},dict(p.steps[0].parameters))
-  self.assertEqual(("source",),p.steps[0].input_media_ids or ("source",))
+  self.assertEqual(("source",),p.steps[0].input_media_ids)
  def test_independent_ffmpeg_source_less_retains_agnes(self):
   j=self.job(); p=MediaProductionPlanner().plan(j,brief(),independent_ffmpeg=True)
   self.assertEqual(("agnes_video","ffmpeg"),tuple(x.machine for x in p.steps))
