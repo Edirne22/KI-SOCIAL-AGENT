@@ -26,7 +26,20 @@ export class OpenChatCutContainer extends Container {
   enableInternet = true;
   async fetch(request: Request): Promise<Response> {
     this.renewActivityTimeout();
+    const startedAt = Date.now();
+    console.log(JSON.stringify({ event: "openchatcut_container_readiness_start", port: this.defaultPort }));
+    await this.startAndWaitForPorts({ ports: [this.defaultPort] });
+    console.log(JSON.stringify({ event: "openchatcut_container_readiness_ready", port: this.defaultPort, durationMs: Date.now() - startedAt }));
     return super.fetch(request);
+  }
+  override onStart(): void {
+    console.log(JSON.stringify({ event: "openchatcut_container_start", at: new Date().toISOString() }));
+  }
+  override onStop(stopParams: { exitCode: number; reason: string }): void {
+    console.log(JSON.stringify({ event: "openchatcut_container_stop", at: new Date().toISOString(), ...stopParams }));
+  }
+  override onError(error: unknown): void {
+    console.error(JSON.stringify({ event: "openchatcut_container_error", at: new Date().toISOString(), error: String(error) }));
   }
   envVars = {
     OPENCHATCUT_MCP_TOKEN: env.OPENCHATCUT_MCP_TOKEN,
