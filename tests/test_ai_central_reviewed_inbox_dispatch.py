@@ -45,4 +45,20 @@ class ReviewBridgeTests(unittest.TestCase):
     def test_no_implicit_cross_date_scan(self):
         with self.assertRaises(ValueError):
             select_draft(FakeR2({KEY:draft()}),"private",date="2026-10-02",task_id=ID)
+
+    def test_execution_requires_explicit_queued_review_not_just_draft(self):
+        # Attack: guessing workflow_dispatch ID for a draft must not invoke a model.
+        with self.assertRaisesRegex(ValueError,"explicitly approved"):
+            select_draft(FakeR2({KEY:draft()}),"private",date=DAY,task_id=ID,require_queued=True)
+        approved=draft(status="QUEUED_FREE_REVIEW",approved_at="2026-10-01T12:05:00Z",
+            dispatch_target="ai-central-inbox-agent.yml",inference_scope="openrouter/free")
+        result=select_draft(FakeR2({KEY:approved}),"private",date=DAY,task_id=ID,require_queued=True)
+        self.assertEqual(result["inbox_id"],ID)
+        # Attack: mutate each approval field; execution must remain blocked.
+        for field,value in (("dispatch_target","rogue.yml"),("inference_scope","claude"),
+                            ("approved_at",None),("status","DRAFT_REQUIRES_REVIEW")):
+            with self.subTest(field=field),self.assertRaises(ValueError):
+                select_draft(FakeR2({KEY:{**approved,field:value}}),"private",date=DAY,
+                    task_id=ID,require_queued=True)
+
 if __name__=="__main__":unittest.main()
