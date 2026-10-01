@@ -34,7 +34,8 @@ jobs:
             }
             const events=payload.result?.events?.events||[];
             console.log(JSON.stringify({window:name,http:result.status,total:payload.result?.events?.count??null,returned:events.length}));
-            const interesting=/openchatcut_container_(start|stop|error)|not listening|suddenly disconnected|readiness_(ready|wait)|MCP session/i;\n            if(events[0])console.log("EVENT_SHAPE",JSON.stringify({window:name,keys:Object.keys(events[0]),metadataKeys:Object.keys(events[0].$metadata||{}),logsType:typeof events[0].logs,logsIsArray:Array.isArray(events[0].logs)}));
+            const interesting=/openchatcut_container_(start|stop|error)|not listening|suddenly disconnected|readiness_(ready|wait)|MCP session/i;
+            if(events[0])console.log("EVENT_SHAPE",JSON.stringify({window:name,keys:Object.keys(events[0]),metadataKeys:Object.keys(events[0].$metadata||{}),logsType:typeof events[0].logs,logsIsArray:Array.isArray(events[0].logs)}));
             for(const e of events) {
               const meta=e.$metadata||{}, raw=JSON.stringify(e);
               if(!interesting.test(raw))continue;
