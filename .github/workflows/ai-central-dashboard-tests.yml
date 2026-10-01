@@ -30,3 +30,7 @@ jobs:
       - name: Worker security and inbox contract tests
         working-directory: infra/ai-central-dashboard
         run: npm test
+      - name: Verify browser script parses
+        working-directory: infra/ai-central-dashboard
+        run: |
+          node -e 'const fs=require("fs"),vm=require("vm");const html=fs.readFileSync("public/index.html","utf8");const script=html.match(/<script>([\\s\\S]*?)<\\/script>/);if(!script)process.exit(1);new vm.Script(script[1]);console.log("Browser script syntax OK")'
