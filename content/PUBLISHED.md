@@ -595,7 +595,7 @@ Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-1-motogp-japo
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 36833178374-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-01-daily
 Telegram-Update-ID: 279361797
