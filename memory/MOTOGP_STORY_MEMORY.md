@@ -724,3 +724,23 @@ Quelle: https://motoetkinlik.com/lecuona-gelecek-yil-ducatide-her-sey-farkli-ola
 Story-Key: title:bulega-dan-pol-espargaro-ya-yan-t-ducati-850cc-beni-m-i-i-n-yapilmadi
 Titel: Bulega'dan Pol Espargaro'ya Yanıt: “DUCATI 850CC BENİM İÇİN YAPILMADI!”
 Quelle: https://motoetkinlik.com/bulegadan-pol-espargaroya-yanit-ducati-850cc-benim-icin-yapilmadi
+
+## 2026-10-01 04:44 UTC – ANGEBOTEN
+Story-Key: title:motogp-japonya-gp-2026-toprak-motegi-de-i-lk-motogp-yar-na-k-yor
+Titel: MotoGP Japonya GP 2026: Toprak Motegi'de İlk MotoGP Yarışına Çıkıyor
+Quelle: https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor
+
+## 2026-10-01 04:44 UTC – ANGEBOTEN
+Story-Key: title:quartararo-nun-honda-transferi-bir-d-nemi-bitiriyor-2019-dan-beri-s-ren-ortakl-k-sona-erecek
+Titel: Quartararo’nun Honda transferi bir dönemi bitiriyor: 2019’dan beri süren ortaklık sona erecek
+Quelle: https://motoetkinlik.com/fabio-quartararonun-honda-transferi-sponsor-degisikligini-de-beraberinde-getiriyor
+
+## 2026-10-01 04:44 UTC – ANGEBOTEN
+Story-Key: title:motogp-de-ampiyonluk-sava-alevleniyor-motegi-de-hata-pay-kalmad
+Titel: MotoGP’de şampiyonluk savaşı alevleniyor: Motegi’de hata payı kalmadı
+Quelle: https://motoetkinlik.com/motogpde-sampiyonluk-savasi-alevleniyor-motegide-hata-payi-kalmadi
+
+## 2026-10-01 04:44 UTC – ANGEBOTEN
+Story-Key: title:bulega-2027-ye-rakiplerinden-nce-haz-rlan-yor-ktm-avantaj-kabul-etti
+Titel: Bulega 2027’ye rakiplerinden önce hazırlanıyor: KTM avantajı kabul etti
+Quelle: https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti

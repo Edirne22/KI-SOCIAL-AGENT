@@ -2484,3 +2484,39 @@ Story-Key: title:bulega-dan-pol-espargaro-ya-yan-t-ducati-850cc-beni-m-i-i-n-yap
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-01 05:09 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Japonya GP 2026: Toprak Motegi'de İlk MotoGP Yarışına Çıkıyor
+Story-Key: title:motogp-japonya-gp-2026-toprak-motegi-de-i-lk-motogp-yar-na-k-yor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-01 05:09 UTC | Motorcycle Racing | FAIL
+Titel: MARC MARQUEZ: “Artık Daha Az Gücüm Olduğu İçin Pedrosa'yı Daha İyi Anlıyorum”
+Story-Key: title:marc-marquez-art-k-daha-az-g-c-m-oldu-u-i-pedrosa-y-daha-i-yi-anl-yorum
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-01 05:10 UTC | Motorcycle Racing | PASS
+Titel: Quartararo’nun Honda transferi bir dönemi bitiriyor: 2019’dan beri süren ortaklık sona erecek
+Story-Key: title:quartararo-nun-honda-transferi-bir-d-nemi-bitiriyor-2019-dan-beri-s-ren-ortakl-k-sona-erecek
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-01 05:10 UTC | Motorcycle Racing | PASS
+Titel: MotoGP’de şampiyonluk savaşı alevleniyor: Motegi’de hata payı kalmadı
+Story-Key: title:motogp-de-ampiyonluk-sava-alevleniyor-motegi-de-hata-pay-kalmad
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-01 05:10 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-01 05:10 UTC | Motorcycle Racing | PASS
+Titel: Bulega 2027’ye rakiplerinden önce hazırlanıyor: KTM avantajı kabul etti
+Story-Key: title:bulega-2027-ye-rakiplerinden-nce-haz-rlan-yor-ktm-avantaj-kabul-etti
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
