@@ -69,12 +69,10 @@ jobs:
           const fs=require("fs"),assert=require("assert");
           const c=JSON.parse(fs.readFileSync("infra/ai-central-tools/claude-only/opencode.jsonc","utf8"));
           assert.strictEqual(c.model,"openrouter/anthropic/claude-sonnet-4.5");
-          assert.deepStrictEqual(Object.keys(c.providers),["openrouter"]);
-          const p=c.experimental.policies;
-          for(const rule of ["shell:*","edit:*","subagent:*","webfetch:*"])
-            assert(p.some(x=>x.action==="permission" && x.resource===rule && x.effect==="deny"));
-          assert(p.some(x=>x.action==="provider.use" && x.resource==="*" && x.effect==="deny"));
-          assert(p.some(x=>x.action==="provider.use" && x.resource==="openrouter" && x.effect==="allow"));
+          assert.deepStrictEqual(c.enabled_providers,["openrouter"]);
+          assert.deepStrictEqual(Object.keys(c.provider),["openrouter"]);
+          assert.deepStrictEqual(Object.keys(c.provider.openrouter.models),["anthropic/claude-sonnet-4.5"]);
+          for(const rule of ["*","edit","bash","webfetch","task"])assert.strictEqual(c.permission[rule],"deny");
           for(const n of ["pdf-export","word-export","excel-export","media-processing","excel-safe-edit"]){
             const body=fs.readFileSync(".opencode/skills/"+n+"/SKILL.md","utf8");
             assert(body.startsWith("---\n") && body.includes("description:"));
