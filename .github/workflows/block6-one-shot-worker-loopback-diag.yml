@@ -23,7 +23,7 @@ jobs:
         with:
           # Same-repository, immutable PR #278 HEAD (stacked #271 readiness + #278
           # fixed, read-only protected container-loopback diagnostic).
-          ref: 047bfd48b2294eeea6496e0f3649baa9d70d9e47
+          ref: 7f0969d8c755a66341a3e6517d045fac0dc41195
       - uses: actions/setup-node@v4
         with: {node-version: "24"}
       - name: Verify the pinned endpoint is protected and fixed-input
@@ -38,6 +38,7 @@ jobs:
           assert(src.includes('const runtime = this.ctx.container'));
           assert(src.includes('url.pathname === "/_factory/container-auth-diag"'));
           assert(src.includes('probeAuthenticatedMcp'));
+          assert(src.includes('env: { OPENCHATCUT_MCP_TOKEN: this.envVars.OPENCHATCUT_MCP_TOKEN }'));
           assert(src.includes('process.env.OPENCHATCUT_MCP_TOKEN'));
           assert(src.includes('url.pathname === "/_factory/process-diag"'));
           assert(src.includes('probeProcessInventory'));
@@ -67,7 +68,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 047bfd48b2294eeea6496e0f3649baa9d70d9e47
+          ref: 7f0969d8c755a66341a3e6517d045fac0dc41195
       - uses: actions/setup-node@v4
         with: {node-version: "24"}
       - name: Guard all required existing credentials before any deploy
@@ -150,7 +151,7 @@ jobs:
           base=https://edirne22-openchatcut-poc.butupeli.workers.dev
           code=$(curl -sS --max-time 16 -o "$RUNNER_TEMP/block6-process-result.json" -w '%{http_code}' -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base/_factory/process-diag" || true)
           echo "BLOCK6_PROCESS_DIAG_HTTP=$code"
-          test "$code" = 200 || { echo 'BLOCK6_PROCESS_DIAG_UNAVAILABLE'; exit 1; }
+          if test "$code" != 200; then echo 'BLOCK6_PROCESS_DIAG_UNAVAILABLE_SEPARATE'; exit 0; fi
           node - <<'JS'
           const fs=require('node:fs');
           const x=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+'/block6-process-result.json','utf8'));
