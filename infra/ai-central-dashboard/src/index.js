@@ -101,16 +101,21 @@ async function queueReviewed(req,env){
     const v=await obj.json();
     if(v.id!==id)continue;
     if(found)return json({error:"ambiguous task reference"},409);
-    found={key:entry.key,doc:v};
+    found={key:entry.key,doc:v,etag:obj.etag};
   }
   if(!found)return json({error:"unknown task"},404);
   const d=found.doc;
-  if(d.kind!=="message"||d.status!=="DRAFT_REQUIRES_REVIEW"||d.auto_dispatch!==false)
+  if(d.kind!=="message"||!["web","telegram"].includes(d.channel)||
+    d.created_at?.slice(0,10)!==date||!validMessage(d.message)||
+    d.status!=="DRAFT_REQUIRES_REVIEW"||d.auto_dispatch!==false)
     return json({error:"not an unprocessed text draft"},409);
   // Keep original message unchanged; state is an explicit user-approved intent.
   const queued={...d,status:"QUEUED_FREE_REVIEW",approved_at:new Date().toISOString(),
     dispatch_target:"ai-central-inbox-agent.yml",inference_scope:"free-tier-opt-in-only"};
-  await env.AI_CENTRAL_R2.put(found.key,JSON.stringify(queued),{httpMetadata:{contentType:"application/json"}});
+  if(typeof found.etag!=="string"||!found.etag)return json({error:"R2 optimistic locking unavailable"},503);
+  const claimed=await env.AI_CENTRAL_R2.put(found.key,JSON.stringify(queued),{
+    httpMetadata:{contentType:"application/json"},onlyIf:{etagMatches:found.etag}});
+  if(!claimed)return json({error:"Another request already changed this task"},409);
   let response;
   try{
     response=await fetch("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/workflows/ai-central-inbox-agent.yml/dispatches",{
@@ -119,12 +124,20 @@ async function queueReviewed(req,env){
         "user-agent":"Edirne22-Private-AI-Central"},
       body:JSON.stringify({ref:"main",inputs:{inbox_date:date,inbox_id:id}})});
   }catch{
-    await env.AI_CENTRAL_R2.put(found.key,JSON.stringify(d),{httpMetadata:{contentType:"application/json"}});
-    return json({error:"GitHub dispatch unavailable; original draft retained"},502);
+    // Network failure is ambiguous: GitHub may have accepted the job. NEVER
+    // restore DRAFT or silently send a second potentially duplicated request.
+    return json({error:"Dispatch outcome uncertain; inspect GitHub before retry",status:"DISPATCH_UNCERTAIN"},502);
   }
   if(response.status!==204){
-    await env.AI_CENTRAL_R2.put(found.key,JSON.stringify(d),{httpMetadata:{contentType:"application/json"}});
-    return json({error:"GitHub did not accept request; original draft retained",code:response.status},502);
+    if(response.status>=500||response.status===429){
+      return json({error:"Dispatch outcome uncertain; inspect GitHub before retry",status:"DISPATCH_UNCERTAIN",code:response.status},502);
+    }
+    // Explicit rejection can be rolled back, only if another actor has not
+    // modified this claimed task in the meantime.
+    const restored=await env.AI_CENTRAL_R2.put(found.key,JSON.stringify(d),{
+      httpMetadata:{contentType:"application/json"},onlyIf:{etagMatches:claimed.etag}});
+    if(!restored)return json({error:"Dispatch rejected but task changed concurrently; inspect current state",code:response.status},409);
+    return json({error:"GitHub rejected request; original draft retained",code:response.status},502);
   }
   return json({id,status:"QUEUED_FREE_REVIEW",truth:"GITHUB_DISPATCH_ACCEPTED_NOT_EXECUTION_PROOF"},202);
 }
