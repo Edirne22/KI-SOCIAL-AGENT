@@ -25,7 +25,7 @@ jobs:
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -34,7 +34,7 @@ jobs:
       - name: Block all inference unless separate free-tier audit authorizes it
         run: |
           test "$AI_CENTRAL_FREE_TIER_VERIFIED" = "true" || { echo "FREE_TIER_NOT_VERIFIED: no API called"; exit 1; }
-          test -n "$GROQ_API_KEY" || { echo "GROQ_API_KEY missing"; exit 1; }
+          test -n "$OPENROUTER_API_KEY" || { echo "OPENROUTER_API_KEY missing"; exit 1; }
       - run: python -m pip install --disable-pip-version-check requests boto3
       - name: Persist actual GitHub job start in private R2
         env:
@@ -45,7 +45,7 @@ jobs:
           INBOX_DATE: ${{ inputs.inbox_date }}
           INBOX_ID: ${{ inputs.inbox_id }}
         run: python -m scripts.ai_central_reviewed_inbox_dispatch --date "$INBOX_DATE" --id "$INBOX_ID"
-      - name: Run existing guarded advice, Groq free-tier opt-in only
+      - name: Run existing guarded advice, strictly openrouter/free $0 model only
         env:
           INBOX_ID: ${{ inputs.inbox_id }}
         run: python scripts/cloud_ai_central.py --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-only
