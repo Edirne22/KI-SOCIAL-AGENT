@@ -23,13 +23,17 @@ def choose(task_type, *, forced_provider=None, forced_model=None, available=None
     if task_type not in tasks:raise RoutingError("unsupported task")
     task=tasks[task_type]
     if forced_provider:
-        names=[forced_provider.lower()]
-        if names[0] not in task["providers"]:
+        # "Claude" locks the MODEL FAMILY: direct Anthropic and the exact
+        # Anthropic Claude route via OpenRouter are both permitted transports.
+        # No non-Claude substitution, including Gemini, is allowed.
+        names=["claude","claude_openrouter"] if forced_provider.lower()=="claude" else [forced_provider.lower()]
+        if not set(names).intersection(task["providers"]):
             raise RoutingError("requested provider not permitted for task; no fallback")
     else:names=task["providers"]
     for provider in names:
         candidate=registry["providers"].get(provider)
         if not candidate:continue
+        if provider not in task["providers"]:continue
         if forced_model:
             if not forced_provider:
                 raise RoutingError("forced model requires forced provider")
