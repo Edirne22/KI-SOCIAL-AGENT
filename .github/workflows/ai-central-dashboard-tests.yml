@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-python@v5
         with: 
           python-version: "3.11"
+      - name: Install minimal shared inbox HTTP dependency
+        run: python -m pip install --disable-pip-version-check requests
       - name: Syntax and imports
         run: python -m py_compile telegram_router.py scripts/ai_central_shared_inbox.py tests/test_ai_central_shared_inbox.py
       - name: Telegram shared inbox unit tests
