@@ -47,4 +47,14 @@ Im exakt gepinnten Upstream `0xsline/OpenChatCut@d1af1ade45521e8ed9a5be09e3acad8
 
 In unserem Worker `infra/openchatcut-cloudflare/src/index.ts` steht die Fehlermeldung nicht. Dort sind `workerBootId` und `workerStartedAt` **modulweite Variablen des Cloudflare-Worker-Isolates**. Sie belegen keinen Startzeitpunkt des OpenChatCut-Containerprozesses und dürfen nicht als Crash-Indiz interpretiert werden.
 
-Konfiguration `wrangler.jsonc`: `instance_type = standard-2`, `max_instances = 1`, EU-Regionsvorgaben. 6-GiB-RAM-Klasse, aber OOM ohne Lifecycle-Exit-Evidenz nicht behaupten. Nächste harte Diagnose: Cloudflare Container-Lifecycle-Logs (onStart/onStop/onError und Exit-Grund) exakt rund um 10:15–10:18 UTC mit Upstream-MCP-Session-Init/Close korrelieren; keine Vergrößerung oder blinden Retries.
+Konfiguration `wrangler.jsonc`: `instance_type = standard-2`, `max_instances = 1`, EU-Regionsvorgaben. 6-GiB-RAM-Klasse, aber OOM ohne Lifecycle-Exit-Evidenz nicht behaupten. Nächste harte Diagnose: Cloudflare Container-Lifecycle-Logs (onStart/onStop/onError und Exit-Grund) im erweiterten Zeitfenster **10:16–10:21 UTC** mit Upstream-MCP-Session-Init/Close korrelieren; keine Vergrößerung oder blinden Retries.
+
+## Jules – verbindliche Diagnose-Ergänzung (01.10.2026)
+
+**Zeitfenster:** Cloudflare-Lifecycle- und Anwendungslogs **10:16–10:21 UTC** erfassen, einschließlich aller Zwischenstarts, onStart/onStop/onError, Exit-Codes, Rollout-/Proxy-Fehler und MCP-Sitzungsereignisse. Zeitangaben korrekt interpretieren: 10:17:48 UTC war die *geschützte Health-Anfrage* im GitHub-Live-Test und **kein nachgewiesener Containerstart**. MCP-Client-Sitzung um ca. 10:17:50 UTC eingerichtet, erster Werkzeugaufruf um 10:17:51 UTC mit -32001/Session not found gescheitert.
+
+**Beide Code-Fundstellen dokumentieren:** Unser Worker `infra/openchatcut-cloudflare/src/index.ts` (PR #271 / SHA 3324349b...) enthält die Zeichenfolge `MCP session not found or expired` **nicht**. Im exakt gepinnten Upstream `0xsline/OpenChatCut@d1af1ade45521e8ed9a5be09e3acad823f269453` liegt sie in `server/external-agent/mcp.ts`, innerhalb `handleMcpRequest` nach `pruneMcpSessions(now)` und fehlgeschlagenem `sessions.get(sessionId)`. Dort ist `sessions` eine Prozess-RAM-`Map`; `onsessioninitialized` registriert Sessions, `transport.onclose` / `pruneMcpSessions` können sie entfernen. Jules soll genau diese Mechanismen und Session-ID-Protokollierung gegen Logs prüfen, keine vorzeitige Ursache festlegen.
+
+**Boot-ID-Herkunft:** `workerBootId` wird in `workerIdentity()` in unserem Cloudflare Worker-Modul (`src/index.ts`) erstellt, nicht im Containerprozess. Die Boot-ID ist daher kein Nachweis für einen Container-Restart.
+
+**Änderungsstopp:** keine weitere Runtime-Änderung, Instanzvergrößerung oder zusätzlichen Retries vor gesichteter Lifecycle-/Session-Evidenz.
