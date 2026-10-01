@@ -59,6 +59,7 @@ def main():
     parser.add_argument("--date", required=True)
     parser.add_argument("--id", required=True)
     parser.add_argument("--output", default="reviewed-central-task.json")
+    parser.add_argument("--metadata-output", default="reviewed-central-meta.json")
     args = parser.parse_args()
     fields = ("R2_ACCOUNT_ID", "R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY", "R2_BUCKET_NAME")
     if not all(os.getenv(x) for x in fields):
@@ -70,6 +71,7 @@ def main():
     selected = select_draft(client, os.environ["R2_BUCKET_NAME"], date=args.date, task_id=args.id)
     # Public job logs carry only metadata; user question remains inside restricted job artifact.
     Path(args.output).write_text(json.dumps(selected["task"], ensure_ascii=False, indent=2), encoding="utf-8")
+    Path(args.metadata_output).write_text(json.dumps({"inbox_id": selected["inbox_id"], "inbox_key": selected["r2_inbox_key"], "channel": selected["channel"]}, indent=2), encoding="utf-8")
     print(json.dumps({"status": "REVIEWED_DRAFT_EXPORTED", "inbox_id": selected["inbox_id"],
                       "channel": selected["channel"], "r2_source": selected["r2_inbox_key"],
                       "execution": "NOT_STARTED", "billing": "NONE"}))
