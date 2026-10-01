@@ -61,4 +61,17 @@ class ReviewBridgeTests(unittest.TestCase):
                 select_draft(FakeR2({KEY:{**approved,field:value}}),"private",date=DAY,
                     task_id=ID,require_queued=True)
 
+
+    def test_production_workflow_validates_before_logging_or_inference(self):
+        from pathlib import Path
+        workflow=(Path(__file__).resolve().parents[1]/".github/workflows/ai-central-inbox-agent.yml").read_text()
+        gate=workflow.index("Validate exact explicitly approved R2 text task")
+        require=workflow.index("--require-queued")
+        status=workflow.index("Persist actual validated GitHub job start")
+        free=workflow.index("strictly openrouter/free")
+        self.assertLess(gate,require)
+        self.assertLess(require,status)
+        self.assertLess(status,free)
+        self.assertIn("if: always() && steps.inbox_gate.outcome == 'success'",workflow)
+
 if __name__=="__main__":unittest.main()
