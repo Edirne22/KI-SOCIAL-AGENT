@@ -115,10 +115,10 @@ export class OpenChatCutContainer extends Container {
       "async function run(){try{",
       "const a=await post({jsonrpc:'2.0',id:1,method:'initialize',params:{protocolVersion:'2025-06-18',capabilities:{},clientInfo:{name:'bounded-local-diagnostic',version:'1'}}});",
       "const sid=a.headers.get('mcp-session-id')||'';let next=0,lost=false;",
-      "if(sid&&a.ok){await a.body?.cancel().catch(()=>{});",
+      "if(sid&&a.ok){",
       "await post({jsonrpc:'2.0',method:'notifications/initialized',params:{}},{'mcp-session-id':sid}).then(r=>r.body?.cancel().catch(()=>{})).catch(()=>{});",
       "const b=await post({jsonrpc:'2.0',id:2,method:'tools/list',params:{}},{'mcp-session-id':sid});next=b.status;",
-      "if(b.status>=400){lost=(await b.text()).slice(0,5000).toLowerCase().includes('session not found');}else{await b.body?.cancel().catch(()=>{});}}",
+      "if(b.status>=400){lost=(await b.text()).slice(0,5000).toLowerCase().includes('session not found');}else{await b.body?.cancel().catch(()=>{});}await a.body?.cancel().catch(()=>{});}",
       "console.log(JSON.stringify({probe:'completed',initStatus:a.status,sessionHeaderPresent:!!sid,followupStatus:next,followupSessionLost:lost}));",
       "}catch(e){console.log(JSON.stringify({probe:'fetch-error',errorCode:String(e?.cause?.code||e?.name||'unknown').slice(0,40)}));}}run();"
     ].join("");
