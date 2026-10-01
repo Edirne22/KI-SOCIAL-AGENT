@@ -1,9 +1,5 @@
 name: OpenChatCut Read-only Cloudflare Live Tail
 on:
-  push:
-    branches: [diag/openchatcut-ai-root-cause-jury]
-    paths:
-      - ".github/workflows/occ-cloudflare-tail.yml"
   workflow_dispatch:
 permissions:
   contents: read
