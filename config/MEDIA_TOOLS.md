@@ -1,3 +1,5 @@
+**HINWEIS – ZENTRALE AUSWAHL:** [docs/TOOL_INDEX.md](../docs/TOOL_INDEX.md) ist die **einzige maßgebliche Werkzeug- und Alternativenliste**, nach Nutzerfunktionen sortiert. Diese Datei bleibt als historische Quelle bzw. Detailsammlung erhalten; bei Ausfall/Neuintegration zuerst den Index prüfen und nur ihn als aktuellen Auswahlstatus pflegen.
+
 
 Aufgabe: Lege die Datei config/MEDIA_TOOLS.md an.
 
