@@ -7,20 +7,28 @@ class NotFound(Exception):
     response={"Error":{"Code":"404"}}
 class Forbidden(Exception):
     response={"Error":{"Code":"403"}}
+class Conflict(Exception):
+    response={"Error":{"Code":"PreconditionFailed"}}
 class FakeR2:
     def __init__(self):
         self.objects={}
+        self.etags={}
+        self.serial=0
         self.head_error=None
     def head_object(self,**kw):
         if self.head_error:raise self.head_error
         if kw["Key"] not in self.objects:raise NotFound()
         return {"ContentLength":len(self.objects[kw["Key"]])}
     def put_object(self,**kw):
+        if "IfMatch" in kw and kw["IfMatch"]!=self.etags.get(kw["Key"]):raise Conflict()
         self.objects[kw["Key"]]=kw["Body"]
+        self.serial+=1
+        self.etags[kw["Key"]]=f"etag-{self.serial}"
+        return {"ETag":self.etags[kw["Key"]]}
     def list_objects_v2(self,**kw):
         return {"Contents":[{"Key":k} for k in self.objects if k.startswith(kw["Prefix"])]}
     def get_object(self,**kw):
-        return {"Body":io.BytesIO(self.objects[kw["Key"]])}
+        return {"Body":io.BytesIO(self.objects[kw["Key"]]),"ETag":self.etags[kw["Key"]]}
 class Inbox(unittest.TestCase):
     def setUp(self):self.r2=FakeR2()
     def test_commands_do_not_intercept_existing_router(self):
@@ -65,6 +73,30 @@ class Inbox(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             start_reviewed(self.r2,"private",draft["id"],"test-token",post=lambda *a,**kw:Failure())
         self.assertEqual(recent(self.r2,"private")[0]["status"],"DRAFT_REQUIRES_REVIEW")
+    def test_ambiguous_network_timeout_does_not_rollback_or_duplicate(self):
+        import requests,json
+        now=datetime(2026,10,1,12,0,tzinfo=timezone.utc)
+        task=submit(self.r2,"private",update_id=93,chat_id="123",message="Read actual MCP errors",now=now)
+        def timeout(*args,**kwargs):
+            raise requests.Timeout("upstream accepted? unknown")
+        with self.assertRaisesRegex(RuntimeError,"unklar"):
+            start_reviewed(self.r2,"private",task["id"],"fake-token",post=timeout)
+        key=next(iter(self.r2.objects))
+        self.assertEqual(json.loads(self.r2.objects[key])["status"],"QUEUED_FREE_REVIEW")
+        with self.assertRaises(ValueError):
+            start_reviewed(self.r2,"private",task["id"],"fake-token",post=timeout)
+    def test_conflicting_etag_prevents_second_dispatch(self):
+        now=datetime(2026,10,1,12,0,tzinfo=timezone.utc)
+        task=submit(self.r2,"private",update_id=94,chat_id="123",message="Read actual container status",now=now)
+        old_put=self.r2.put_object
+        def competing(**kw):
+            if "IfMatch" in kw:
+                # Simulate a concurrent browser claim between GET and conditional PUT.
+                self.r2.etags[kw["Key"]]="newer-concurrent-etag"
+            return old_put(**kw)
+        self.r2.put_object=competing
+        with self.assertRaisesRegex(ValueError,"bereits"):
+            start_reviewed(self.r2,"private",task["id"],"fake-token",post=lambda *a,**k:self.fail("should not dispatch"))
     def test_no_ack_if_storage_outage(self):
         self.r2.head_error=Forbidden()
         with self.assertRaises(Forbidden):
