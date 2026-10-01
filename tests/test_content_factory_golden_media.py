@@ -28,9 +28,9 @@ class GoldenRealMedia(unittest.TestCase):
         self.report = FinalQM().evaluate(self.job, [QMCheck("facts", True), QMCheck("render", True)])
 
     def preview(self, **kwargs):
+        kwargs.setdefault("allowed_uri_prefixes", ("scratch://",))
         return present_verified_golden_tablet(
-            self.job, self.report, storage=self.storage,
-            allowed_uri_prefixes=("scratch://",), **kwargs,
+            self.job, self.report, storage=self.storage, **kwargs,
         )
 
     def test_verified_bytes_manifest_and_human_authority(self):
