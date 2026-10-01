@@ -123,7 +123,9 @@ export class OpenChatCutContainer extends Container {
       "}catch(e){console.log(JSON.stringify({probe:'fetch-error',errorCode:String(e?.cause?.code||e?.name||'unknown').slice(0,40)}));}}run();"
     ].join("");
     try {
-      const process = await runtime.exec(["node", "-e", script]);
+      const process = await runtime.exec(["node", "-e", script], {
+        env: { OPENCHATCUT_MCP_TOKEN: this.envVars.OPENCHATCUT_MCP_TOKEN }
+      });
       const output = await Promise.race([
         process.output(),
         new Promise<never>((_resolve, reject) =>
