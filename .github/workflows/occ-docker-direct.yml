@@ -1,0 +1,53 @@
+name: OpenChatCut Direct Docker Isolation Test
+on:
+  push:
+    branches: [diag/openchatcut-ai-root-cause-jury]
+    paths: ['.github/workflows/occ-docker-direct.yml']
+permissions:
+  contents: read
+jobs:
+  docker-direct:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    env:
+      OPENCHATCUT_MCP_TOKEN: occ-local-only-test-token
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Build exactly configured OpenChatCut image, pinned upstream
+        run: docker build --progress=plain -t occ-direct-isolation -f infra/openchatcut-cloudflare/Dockerfile infra/openchatcut-cloudflare
+      - name: Start isolated Docker directly, without Cloudflare or R2
+        run: docker run --rm -d --name occ-direct -p 127.0.0.1:5199:5199 -e OPENCHATCUT_MCP_TOKEN occ-direct-isolation
+      - name: Wait for real MCP initialization, not just TCP readiness
+        shell: bash
+        run: |
+          set -uo pipefail
+          url=http://127.0.0.1:5199/api/external-mcp/mcp
+          for i in {1..22}; do
+            f=$(mktemp)
+            status=$(curl --silent --show-error --max-time 12 -o "$f" -w '%{http_code}' \
+              -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" \
+              -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+              -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"direct-docker-readiness","version":"1"}}}' "$url" || true)
+            if [ "$status" = 200 ] && grep -q '"protocolVersion"' "$f"; then
+              echo "DIRECT_DOCKER_READY attempt=$i"
+              rm -f "$f"
+              exit 0
+            fi
+            echo "DIRECT_DOCKER_NOT_READY attempt=$i http=$status"
+            rm -f "$f"
+            docker ps --filter name=occ-direct --format '{{.Status}}'
+            sleep 8
+          done
+          echo "::error::Direct Docker OpenChatCut never reached real MCP readiness"
+          exit 1
+      - name: Repeated raw MCP init, notification and status on same container
+        run: node scripts/occ_docker_direct_probe.mjs
+      - name: Container process and last logs
+        if: always()
+        run: |
+          docker inspect occ-direct --format 'CONTAINER_STATE={{.State.Status}} EXIT={{.State.ExitCode}} OOM={{.State.OOMKilled}}' || true
+          docker logs --tail 30 occ-direct 2>&1 | sed -E 's/(Bearer )[A-Za-z0-9._-]+/\\1[REDACTED]/g' || true
+          docker stop occ-direct >/dev/null 2>&1 || true
