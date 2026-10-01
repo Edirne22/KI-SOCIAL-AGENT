@@ -18,7 +18,7 @@ ID = re.compile(r"^[a-zA-Z0-9_-]{10,64}$")
 DATE = re.compile(r"^20[0-9]{2}-[01][0-9]-[0-3][0-9]$")
 MAX_SCAN = 100
 
-def select_draft(client, bucket, *, date, task_id, require_queued=False):
+def select_draft(client, bucket, *, date, task_id, require_queued=False, mode='free-only'):
     if not DATE.fullmatch(date) or dt.date.fromisoformat(date).isoformat() != date:
         raise ValueError("invalid inbox date")
     if not ID.fullmatch(task_id):
@@ -42,9 +42,12 @@ def select_draft(client, bucket, *, date, task_id, require_queued=False):
     key, draft = matches[0]
     if draft.get("schema") != "AI-INBOX-V1" or draft.get("status") not in ("DRAFT_REQUIRES_REVIEW", "QUEUED_FREE_REVIEW") or draft.get("auto_dispatch") is not False:
         raise ValueError("draft not eligible for manual review")
+    allowed_scope = ("nvidia/free-team",) if mode == "free-team" else ("openrouter/free", "free-tier-opt-in-only")
+    if mode not in ("free-only", "free-team"):
+        raise ValueError("invalid inference mode")
     if require_queued and (draft.get("status") != "QUEUED_FREE_REVIEW" or
         draft.get("dispatch_target") != "ai-central-inbox-agent.yml" or
-        draft.get("inference_scope") not in ("openrouter/free", "free-tier-opt-in-only") or
+        draft.get("inference_scope") not in allowed_scope or
         not isinstance(draft.get("approved_at"), str)):
         raise ValueError("inference requires explicitly approved and queued task")
     if draft.get("kind") != "message" or draft.get("channel") not in ("telegram", "web"):
@@ -66,6 +69,7 @@ def main():
     parser.add_argument("--output", default="reviewed-central-task.json")
     parser.add_argument("--metadata-output", default="reviewed-central-meta.json")
     parser.add_argument("--require-queued", action="store_true")
+    parser.add_argument("--mode", choices=("free-only","free-team"), default="free-only")
     args = parser.parse_args()
     fields = ("R2_ACCOUNT_ID", "R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY", "R2_BUCKET_NAME")
     if not all(os.getenv(x) for x in fields):
@@ -74,13 +78,13 @@ def main():
     client = boto3.client("s3", endpoint_url="https://" + os.environ["R2_ACCOUNT_ID"] + ".r2.cloudflarestorage.com",
         aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
         aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"], region_name="auto")
-    selected = select_draft(client, os.environ["R2_BUCKET_NAME"], date=args.date, task_id=args.id, require_queued=args.require_queued)
+    selected = select_draft(client, os.environ["R2_BUCKET_NAME"], date=args.date, task_id=args.id, require_queued=args.require_queued, mode=args.mode)
     # Public job logs carry only metadata; user question remains inside restricted job artifact.
     Path(args.output).write_text(json.dumps(selected["task"], ensure_ascii=False, indent=2), encoding="utf-8")
     Path(args.metadata_output).write_text(json.dumps({"inbox_id": selected["inbox_id"], "inbox_key": selected["r2_inbox_key"], "channel": selected["channel"]}, indent=2), encoding="utf-8")
     print(json.dumps({"status": "REVIEWED_DRAFT_EXPORTED", "inbox_id": selected["inbox_id"],
                       "channel": selected["channel"], "r2_source": selected["r2_inbox_key"],
-                      "execution": "NOT_STARTED", "billing": "NONE"}))
+                      "execution": "NOT_STARTED", "billing": "NONE", "mode": args.mode}))
 
 if __name__ == "__main__":
     main()
