@@ -118,7 +118,7 @@ export class OpenChatCutContainer extends Container {
       "if(sid&&a.ok){await a.body?.cancel().catch(()=>{});",
       "await post({jsonrpc:'2.0',method:'notifications/initialized',params:{}},{'mcp-session-id':sid}).then(r=>r.body?.cancel().catch(()=>{})).catch(()=>{});",
       "const b=await post({jsonrpc:'2.0',id:2,method:'tools/list',params:{}},{'mcp-session-id':sid});next=b.status;",
-      "lost=(await b.text()).slice(0,5000).toLowerCase().includes('session not found');}",
+      "if(b.status>=400){lost=(await b.text()).slice(0,5000).toLowerCase().includes('session not found');}else{await b.body?.cancel().catch(()=>{});}}",
       "console.log(JSON.stringify({probe:'completed',initStatus:a.status,sessionHeaderPresent:!!sid,followupStatus:next,followupSessionLost:lost}));",
       "}catch(e){console.log(JSON.stringify({probe:'fetch-error',errorCode:String(e?.cause?.code||e?.name||'unknown').slice(0,40)}));}}run();"
     ].join("");
