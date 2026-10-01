@@ -109,6 +109,31 @@ jobs:
       - name: Confirm deployed application exists
         working-directory: infra/openchatcut-cloudflare
         run: npx wrangler containers list
+      - name: Warm OpenChatCut container via protected MCP initialize
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://edirne22-openchatcut-poc.butupeli.workers.dev/api/external-mcp/mcp"
+          for attempt in {1..12}; do
+            body="$(mktemp)"
+            code="$(curl --max-time 20 -sS -o "$body" -w '%{http_code}' \
+              -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" \
+              -H 'Content-Type: application/json' \
+              -H 'Accept: application/json, text/event-stream' \
+              --data '{"jsonrpc":"2.0","id":"warmup","method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"edirne22-deploy-warmup","version":"1.0.0"}}}' \
+              "$url" || true)"
+            if [ "$code" = "200" ] && grep -q '"protocolVersion"' "$body"; then
+              echo "Container MCP initialized on attempt $attempt"
+              rm -f "$body"
+              exit 0
+            fi
+            echo "MCP warm-up not ready: attempt $attempt HTTP $code"
+            rm -f "$body"
+            sleep 5
+          done
+          echo "::error::OpenChatCut MCP not ready after deploy"
+          exit 1
+
 
 
   live-acceptance:
