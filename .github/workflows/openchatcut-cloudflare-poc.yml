@@ -2,7 +2,7 @@ name: OpenChatCut Cloudflare PoC
 
 on:
   push:
-    branches: [main]
+    branches: [main, diag/openchatcut-keepalive-live]
     paths:
       - "infra/openchatcut-cloudflare/**"
       - ".github/workflows/openchatcut-cloudflare-poc.yml"
@@ -33,7 +33,7 @@ jobs:
         run: git -c protocol.version=2 fetch --no-tags --depth=1 https://github.com/0xsline/OpenChatCut.git d1af1ade45521e8ed9a5be09e3acad823f269453 && git cat-file -e d1af1ade45521e8ed9a5be09e3acad823f269453^{commit}
 
   deploy:
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/diag/openchatcut-keepalive-live'))
     needs: contract
     runs-on: ubuntu-latest
     timeout-minutes: 30
