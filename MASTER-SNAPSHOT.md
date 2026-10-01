@@ -8,6 +8,19 @@
 
 **Live-Übergabe 01.10.2026 (neu):** `snapshots/SNAPSHOT_2026-10-01_OPENCHATCUT_DEPLOY_67_HANDOVER.md`. Dieser Zeitpunkt-Snapshot dokumentiert PR #271, den grünen Check #65 und den zum Erstellungszeitpunkt laufenden echten Deploy #67. Bei Wiederaufnahme **erst** aktuelle GitHub-Jobs/HEAD prüfen; den älteren 30.09.-Snapshot als Architektur-/Meilensteinbasis zusätzlich lesen.
 
+## AKTUELLER EINSTIEG – 01.10.2026, 18:40 MESZ – HANDOVER NR. 5
+
+**Neuester verifizierter Projektstand:** `docs/PROJEKT_UEBERGABE_5_2026-10-01.md`  
+**Aktueller Zeitpunkt-Snapshot:** `snapshots/SNAPSHOT_2026-10-01_AI_CENTRAL_LIVE_BLOCK6_HANDOVER_V5.md`  
+**Code-Wiederherstellungspunkt:** `backup/2026-10-01-ai-central-live-v5`, erstellt vom verifizierten `main` `efad1f9e7000864a20fc235b5b235be4760d2e06`. Backup-Branch nicht überschreiben; er ist nicht technisch schreibgeschützt.  
+**Backup-Protokoll:** `docs/BACKUP_PROTOKOLL_2026-10-01_V5.md`.
+
+Die KI-Zentrale ist seit heute nach sechs genehmigten PR-Merges als **privater Dashboard→GitHub→kostenloses Modell→R2→Dashboard-Pfad real E2E geprüft**; zweiter Diagnoseauftrag hatte allerdings nur **eine** erfolgreiche von zwei Rollen. Claude/OpenCode sind separat getestet, nicht als produktive Dashboard-Claude-Lane freigeschaltet. OpenChatCut/SupoClip bleiben im vollständigen Block-6-Medienweg NICHT LIVE. OpenChatCut-Diagnose #278 ist bereits gestapelt auf #271 vorbereitet, beide noch offen. Nicht erneut dieselben Experimente entwickeln.
+
+**Lesereihenfolge bei Chatwechsel:** `PROJECT_GUARDRAILS.md` → diese Datei → `docs/PROJEKT_UEBERGABE_5_2026-10-01.md` → aktueller V5-Snapshot → älterer OpenChatCut-Snapshot → live HEAD/PRs/Actions verifizieren. Der weiter unten stehende Einstieg vom 30.09. und Live-Handover zu Run #67 sind historische Arbeitsstände und dürfen die neuere Übergabe nicht übersteuern. Die ursprünglich erwähnte originale Übergabe Nr. 4 ist derzeit nicht eindeutig auffindbar; V5 kennzeichnet diese Archivlücke.
+
+---
+
 ## 1. Aktueller Einstieg
 
 **Aktueller verbindlicher Arbeits-Snapshot:**
