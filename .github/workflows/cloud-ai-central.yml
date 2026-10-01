@@ -1,8 +1,5 @@
 name: Cloud AI Central – guarded dispatch
 on:
-  push:
-    branches: [feat/cloud-ai-central-r2-control-plane]
-    paths: ['.github/workflows/cloud-ai-central.yml']
   pull_request:
     paths:
       - "scripts/cloud_ai_central.py"
@@ -38,7 +35,7 @@ jobs:
         run: python -c 'import json; from scripts.cloud_ai_central import validate_task; validate_task(json.load(open("ai-central/tasks/openchatcut-stability.json")))'
   live-advisory:
     needs: offline-contract
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/feat/cloud-ai-central-r2-control-plane')
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
@@ -58,7 +55,7 @@ jobs:
       - run: python -m pip install requests boto3
       - name: Run bounded parallel cloud reviewers and archive pending report in R2
         run: |
-          case "${{ inputs.task || 'openchatcut-stability' }}" in
+          case "${{ inputs.task }}" in
             openchatcut-stability) task=ai-central/tasks/openchatcut-stability.json ;;
             *) echo "Unsupported task" >&2; exit 1 ;;
           esac
