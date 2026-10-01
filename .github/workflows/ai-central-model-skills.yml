@@ -3,6 +3,11 @@ on:
   pull_request:
     paths:
       - "scripts/ai_central_skill_router.py"
+      - "llm_router.py"
+      - "router.py"
+      - "config/model_router.json"
+      - "config/llm_providers.json"
+      - "tests/test_ai_central_claude_legacy_router.py"
       - "scripts/ai_central_document_export.py"
       - "scripts/ai_central_inventory.py"
       - "scripts/ai_central_gemini_image.py"
@@ -36,6 +41,8 @@ jobs:
           python -m py_compile scripts/ai_central_skill_router.py scripts/ai_central_document_export.py scripts/ai_central_inventory.py scripts/ai_central_gemini_image.py
           python -m unittest discover -s tests -p 'test_ai_central_skills.py' -v
           python -m unittest discover -s tests -p 'test_ai_central_gemini_image.py' -v
+          python -m unittest discover -s tests -p 'test_ai_central_claude_probe.py' -v
+          python -m unittest discover -s tests -p 'test_ai_central_claude_legacy_router.py' -v
       - name: Real PDF, DOCX and XLSX smoke exports
         run: |
           python - <<'PY'
