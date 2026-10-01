@@ -1,5 +1,8 @@
 name: AI Central Model, OpenCode and Document Skills
 on:
+  push:
+    branches: [feat/ai-central-model-skills-opencode]
+    paths: ['.github/workflows/ai-central-model-skills.yml']
   pull_request:
     paths:
       - "scripts/ai_central_skill_router.py"
@@ -60,7 +63,7 @@ jobs:
       - name: No AI inference, no credentials, no repository writes
         run: echo "OpenCode installer smoke finished; model and coding permission deliberately not activated"
   catalog-inventory:
-    if: github.event_name == 'workflow_dispatch' && inputs.catalog_probe
+    if: (github.event_name == 'workflow_dispatch' && inputs.catalog_probe) || (github.event_name == 'push' && github.ref == 'refs/heads/feat/ai-central-model-skills-opencode')
     needs: offline-skills
     runs-on: ubuntu-latest
     timeout-minutes: 4
