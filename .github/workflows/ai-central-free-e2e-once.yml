@@ -1,8 +1,5 @@
 name: KI Central single zero-price R2 → Runner → R2 acceptance test
 on:
-  push:
-    branches: [feat/ai-central-e2e-controlled-runner]
-    paths: [".github/workflows/ai-central-free-e2e-once.yml"]
   workflow_dispatch:
 permissions: {contents: read}
 concurrency:
