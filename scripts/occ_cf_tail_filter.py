@@ -12,11 +12,14 @@ for line in sys.stdin:
     entries=packet.get("logs",[]) if isinstance(packet,dict) else []
     for entry in entries:
         message=entry.get("message") if isinstance(entry,dict) else None
-        if not isinstance(message,str):continue
-        try:data=json.loads(message)
-        except ValueError:continue
-        if data.get("event") not in ALLOWED:continue
-        obj={k:str(data[k])[:180] if isinstance(data[k],str) else data[k] for k in KEEP if k in data}
-        print("CF_LIFECYCLE",json.dumps(obj),flush=True)
-        count+=1
+        # Wrangler JSON documents the console message as an array, not a string.
+        parts=message if isinstance(message,list) else [message]
+        for raw in parts:
+            if not isinstance(raw,str):continue
+            try:data=json.loads(raw)
+            except ValueError:continue
+            if not isinstance(data,dict) or data.get("event") not in ALLOWED:continue
+            obj={k:str(data[k])[:180] if isinstance(data[k],str) else data[k] for k in KEEP if k in data}
+            print("CF_LIFECYCLE",json.dumps(obj),flush=True)
+            count+=1
 print("CF_LIFECYCLE_EVENT_COUNT",count,flush=True)
