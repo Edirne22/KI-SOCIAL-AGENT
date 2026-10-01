@@ -1,0 +1,57 @@
+name: Block6 – one-time CPU FFmpeg caption/audio private R2 benchmark
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/block6-one-shot-ffmpeg-r2-fallback.yml"
+      - "scripts/block6_ffmpeg_r2_fallback.py"
+      - "tests/test_block6_ffmpeg_r2_fallback.py"
+  push:
+    branches: [main]
+    # Single trigger on its own workflow, not every future unrelated commit.
+    paths:
+      - ".github/workflows/block6-one-shot-ffmpeg-r2-fallback.yml"
+permissions:
+  contents: read
+concurrency:
+  group: block6-one-shot-ffmpeg-r2
+  cancel-in-progress: false
+jobs:
+  offline-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Syntax, locked source and size/time-bound regression
+        run: |
+          python -m compileall -q scripts/block6_ffmpeg_r2_fallback.py
+          python -m unittest discover -s tests -p 'test_block6_ffmpeg_r2_fallback.py' -v
+  synthetic-live-r2:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: offline-security
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    env:
+      BLOCK6_SYNTHETIC_R2_TEST_APPROVED: "true"
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Validate R2 configuration and actual system FFmpeg/ffprobe
+        shell: bash
+        run: |
+          set -euo pipefail
+          for k in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!k:-}" || { echo "BLOCK6_MISSING_SECRET_NAME=$k"; exit 1; }
+          done
+          ffmpeg -hide_banner -version | head -n 1
+          ffprobe -hide_banner -version | head -n 1
+          test -s assets/test/test-video-portrait.mp4
+      - run: python -m pip install --disable-pip-version-check boto3
+      - name: Produce 7 15 30 second real CPU MP4 caption/audio and verify private R2 SHA/ffprobe
+        run: python -m scripts.block6_ffmpeg_r2_fallback --live-synthetic-r2
