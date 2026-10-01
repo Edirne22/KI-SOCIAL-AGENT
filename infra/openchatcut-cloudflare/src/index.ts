@@ -92,6 +92,64 @@ export class OpenChatCutContainer extends Container {
       return { containerRunning: true, probe: "exec-error" };
     }
   }
+  // Distinct, bounded follow-up to the read-only GET probe: test authenticated
+  // MCP session persistence INSIDE the existing container process only.
+  // Fixed commands/payloads; no external user input, secrets or response bodies leave it.
+  async probeAuthenticatedMcp(): Promise<{
+    containerRunning: boolean;
+    probe: "not-running" | "no-key" | "completed" | "fetch-error" | "exec-error";
+    initStatus?: number;
+    sessionHeaderPresent?: boolean;
+    followupStatus?: number;
+    followupSessionLost?: boolean;
+    errorCode?: string;
+  }> {
+    const runtime = this.ctx.container;
+    if (!runtime?.running) return { containerRunning: false, probe: "not-running" };
+    const script = [
+      "const token=process.env.OPENCHATCUT_MCP_TOKEN||'';",
+      "if(!token){console.log(JSON.stringify({probe:'no-key'}));process.exit(0)}",
+      "const url='http://127.0.0.1:5199/api/external-mcp/mcp';",
+      "const h={Authorization:'Bearer '+token,'Content-Type':'application/json',Accept:'application/json, text/event-stream','MCP-Protocol-Version':'2025-06-18'};",
+      "const post=(b,extra={})=>fetch(url,{method:'POST',headers:{...h,...extra},body:JSON.stringify(b),signal:AbortSignal.timeout(5000)});",
+      "async function run(){try{",
+      "const a=await post({jsonrpc:'2.0',id:1,method:'initialize',params:{protocolVersion:'2025-06-18',capabilities:{},clientInfo:{name:'bounded-local-diagnostic',version:'1'}}});",
+      "const sid=a.headers.get('mcp-session-id')||'';let next=0,lost=false;",
+      "if(sid&&a.ok){await a.body?.cancel().catch(()=>{});",
+      "await post({jsonrpc:'2.0',method:'notifications/initialized',params:{}},{'mcp-session-id':sid}).then(r=>r.body?.cancel().catch(()=>{})).catch(()=>{});",
+      "const b=await post({jsonrpc:'2.0',id:2,method:'tools/list',params:{}},{'mcp-session-id':sid});next=b.status;",
+      "lost=(await b.text()).slice(0,5000).toLowerCase().includes('session not found');}",
+      "console.log(JSON.stringify({probe:'completed',initStatus:a.status,sessionHeaderPresent:!!sid,followupStatus:next,followupSessionLost:lost}));",
+      "}catch(e){console.log(JSON.stringify({probe:'fetch-error',errorCode:String(e?.cause?.code||e?.name||'unknown').slice(0,40)}));}}run();"
+    ].join("");
+    try {
+      const process = await runtime.exec(["node", "-e", script]);
+      const output = await Promise.race([
+        process.output(),
+        new Promise<never>((_resolve, reject) =>
+          setTimeout(() => reject(new Error("probe_timeout")), 18000)
+        )
+      ]);
+      const value = JSON.parse(new TextDecoder().decode(output.stdout).trim()) as {
+        probe?: string; initStatus?: number; sessionHeaderPresent?: boolean;
+        followupStatus?: number; followupSessionLost?: boolean; errorCode?: string;
+      };
+      if (output.exitCode !== 0) return { containerRunning: true, probe: "exec-error" };
+      if (value.probe === "no-key") return { containerRunning: true, probe: "no-key" };
+      if (value.probe === "fetch-error") return {
+        containerRunning: true, probe: "fetch-error", errorCode: String(value.errorCode || "unknown").slice(0, 40)
+      };
+      if (value.probe === "completed" && Number.isInteger(value.initStatus)) return {
+        containerRunning: true, probe: "completed", initStatus: value.initStatus,
+        sessionHeaderPresent: value.sessionHeaderPresent === true,
+        followupStatus: Number.isInteger(value.followupStatus) ? value.followupStatus : 0,
+        followupSessionLost: value.followupSessionLost === true
+      };
+      return { containerRunning: true, probe: "exec-error" };
+    } catch {
+      return { containerRunning: true, probe: "exec-error" };
+    }
+  }
   envVars = {
     OPENCHATCUT_MCP_TOKEN: containerBindings.OPENCHATCUT_MCP_TOKEN,
     __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "edirne22-openchatcut-poc.butupeli.workers.dev",
@@ -126,6 +184,11 @@ export default {
       if (request.method !== "GET") return new Response("method not allowed", { status: 405 });
       const diagnosis = await container.probeLoopback5199();
       return Response.json({ service: "openchatcut", scope: "container-loopback", ...diagnosis });
+    }
+    if (url.pathname === "/_factory/container-auth-diag") {
+      if (request.method !== "GET") return new Response("method not allowed", { status: 405 });
+      const diagnosis = await container.probeAuthenticatedMcp();
+      return Response.json({ service: "openchatcut", scope: "authenticated-local-mcp", ...diagnosis });
     }
     const sessionId = request.headers.get("mcp-session-id") || "";
     console.log(JSON.stringify({ event: "openchatcut_proxy", method: request.method, path: url.pathname, hasMcpSessionId: Boolean(sessionId), mcpSessionIdPrefix: sessionId.slice(0, 8), workerBootId: workerIdentity().workerBootId }));
