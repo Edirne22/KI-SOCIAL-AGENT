@@ -22,6 +22,33 @@ ROLES={"research":("google","nvidia"),"diagnosis":("nvidia","openrouter"),
 # Two independent task prompts, one documented $0 route; diversity of actual models is
 # measured from provider response, never claimed merely because roles differ.
 FREE_ROLES={"research":("openrouter",),"challenge":("openrouter",)}
+# NVIDIA Build catalog explicitly marks these exact prototype API endpoints FREE.
+# Do not replace with unspecified provider defaults or billed Anthropic routes.
+# Separate, opt-in lane: legacy free-only remains unchanged until live E2E acceptance.
+FREE_TEAM_MODELS={
+  "nvidia_nemotron":"nvidia/nemotron-3.5-lightning-30b-a3b",
+  "nvidia_kimi":"moonshotai/kimi-k3"
+}
+FREE_TEAM_ROLES={
+  "research":("nvidia_nemotron","openrouter"),
+  "diagnosis":("nvidia_kimi","openrouter"),
+  "challenge":("openrouter",)
+}
+def free_team_config(config):
+    """Fail closed: pinned NVIDIA free catalog models + pinned OpenRouter free model."""
+    providers=config["providers"]
+    n=providers["nvidia"]
+    o=providers["openrouter"]
+    if (n.get("base_url")!="https://integrate.api.nvidia.com/v1"
+        or n.get("api_key_env")!="NVIDIA_API_KEY"
+        or o.get("base_url")!="https://openrouter.ai/api/v1"
+        or o.get("api_key_env")!="OPENROUTER_API_KEY"):
+        raise ValueError("FREE_TEAM_ROUTE_CONFIG_MISMATCH")
+    scoped={"openrouter":{**o,"models":{"default":"openrouter/free","reasoning":"openrouter/free"}}}
+    for name,model in FREE_TEAM_MODELS.items():
+        scoped[name]={**n,"models":{"default":model,"reasoning":model}}
+    return {"providers":scoped}
+
 MAX_PROMPT=2500
 MAX_RESPONSE=5500
 SCHEMA="CLOUD-AI-CENTRAL-V1"
@@ -96,7 +123,9 @@ def main():
     parser.add_argument("--task-file",required=True)
     parser.add_argument("--output",default="ai-central-report.json")
     parser.add_argument("--inbox-task-id",default="")
-    parser.add_argument("--free-only",action="store_true")
+    modes=parser.add_mutually_exclusive_group()
+    modes.add_argument("--free-only",action="store_true")
+    modes.add_argument("--free-team",action="store_true")
     args=parser.parse_args()
     task=validate_task(json.loads(Path(args.task_file).read_text(encoding="utf-8")))
     config=json.loads(CONFIG.read_text(encoding="utf-8"))
@@ -111,7 +140,15 @@ def main():
             raise SystemExit("FREE_ROUTE_CONFIG_MISMATCH: no inference attempted")
         openrouter["models"]={"default":"openrouter/free","reasoning":"openrouter/free"}
         config["providers"]={"openrouter":openrouter}
-    review=dispatch(task,config,roles=FREE_ROLES if args.free_only else None)
+    if args.free_team:
+        if (os.getenv("AI_CENTRAL_FREE_TIER_VERIFIED")!="true" or
+            os.getenv("AI_NVIDIA_DEVELOPER_FREE_VERIFIED")!="true"):
+            raise SystemExit("FREE_TEAM_NOT_VERIFIED: no model inference attempted")
+        if not os.getenv("NVIDIA_API_KEY") or not os.getenv("OPENROUTER_API_KEY"):
+            raise SystemExit("FREE_TEAM_KEYS_MISSING: no model inference attempted")
+        config=free_team_config(config)
+    review=dispatch(task,config,roles=(FREE_TEAM_ROLES if args.free_team else
+                                      FREE_ROLES if args.free_only else None))
     payload=packet(task,review,os.environ.get("GITHUB_RUN_ID","0"))
     if args.inbox_task_id:
         if not re.fullmatch(r"[a-zA-Z0-9_-]{10,64}",args.inbox_task_id):
