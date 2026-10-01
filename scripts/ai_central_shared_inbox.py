@@ -137,6 +137,6 @@ def handle(text,update_id,chat_id,*,client=None,bucket=None):
         items=recent(client,bucket)
         if not items:return "KI-Zentrale: noch keine gemeinsamen Web-/Telegram-Entwürfe."
         return "KI-Zentrale · letzte Entwürfe:\n"+"\n".join(
-            f"{x['channel']}: {str(x.get('message') or '[Datei]')[:65]} · {x['status']}" for x in items)
+            f"{x['channel']}: {str(x.get('message') or '[Datei]')[:65]} · {x['status']} · ID: {x['id']}" for x in items)
     out=submit(client,bucket,update_id=update_id,chat_id=chat_id,message=message)
     return ("Bereits gespeichert" if out["duplicate"] else "Entwurf gespeichert")+f" · {out['id']}. Im Dashboard sichtbar; noch kein KI-Start."
