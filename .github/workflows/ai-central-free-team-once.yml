@@ -4,6 +4,10 @@ on:
     paths:
       - "scripts/cloud_ai_central.py"
       - "tests/test_cloud_ai_central.py"
+      - "scripts/ai_central_token_budget.py"
+      - "tests/test_ai_central_token_budget.py"
+      - "tests/test_ai_central_team_binding.py"
+      - ".github/workflows/ai-central-inbox-agent.yml"
       - "scripts/ai_central_shared_inbox.py"
       - "tests/test_ai_central_shared_inbox.py"
       - ".github/workflows/ai-central-free-team-once.yml"
@@ -22,9 +26,12 @@ jobs:
       - run: python -m pip install --disable-pip-version-check requests
       - name: Syntax and contract regression
         run: |
-          python -m compileall -q scripts/cloud_ai_central.py scripts/ai_central_shared_inbox.py
+          python -m compileall -q scripts/cloud_ai_central.py scripts/ai_central_shared_inbox.py scripts/ai_central_token_budget.py scripts/ai_central_reviewed_inbox_dispatch.py
           python -m unittest discover -s tests -p 'test_cloud_ai_central.py'
           python -m unittest discover -s tests -p 'test_ai_central_shared_inbox.py'
+          python -m unittest discover -s tests -p 'test_ai_central_token_budget.py'
+          python -m unittest discover -s tests -p 'test_ai_central_team_binding.py'
+          python -m unittest discover -s tests -p 'test_ai_central_reviewed_inbox_dispatch.py'
   # Separate opt-in feasibility probe: NOT a production prerequisite for direct free-provider team.
   # Heavy Next.js/SQLite server takes multiple minutes on fresh runners; a version check alone is insufficient.
   omniroute-ephemeral-smoke:
