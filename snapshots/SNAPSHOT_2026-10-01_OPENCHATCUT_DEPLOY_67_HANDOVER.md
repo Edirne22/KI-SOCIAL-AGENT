@@ -29,3 +29,14 @@ Nach #67 mindestens echten Containerstart, stabiles MCP, `begin_edit_session`, I
 Nutzer Bülent wünscht Deutsch, direkte selbstständige Fehlerarbeit und sichtbare mobile Statusanzeige `Bestanden/Läuft/Wartet/Rot`. Zwischen aktiven Toolabfragen Status erneuern, aber niemals automatische Hintergrundüberwachung einer bestehenden Chat-Nachricht vortäuschen. Manuelle GitHub-Actions-Dispatch nur verlangen, wenn Connector nachweislich keine Dispatch-Aktion besitzt.
 
 **Nächster Schritt:** Jetzt Run #67 neu abfragen und bei Rot exakte Logs untersuchen; bei grün Readiness und echte Edit-Session verfolgen.
+
+## NACHTRAG 01.10.2026 – Ergebnis des echten Deploy #67 (ca. 10:26 UTC)
+
+**Run 36847153610 vollständig beendet:** contract SUCCESS; deploy SUCCESS; live-acceptance FAILURE. Damit wurde der Readiness-Code von PR #271 tatsächlich deployed. Keinen weiteren Blind-Deploy starten.
+
+- Wrangler Worker-Upload um ca. 10:11:53 UTC; Containeranwendung erfolgreich aktualisiert ca. 10:15:32 UTC.
+- Post-Deploy MCP-Readiness: Versuch 1 HTTP 200; 2 HTTP 500; 3/4 HTTP 200; 5 HTTP 500; 6/7/8 HTTP 200. Drei aufeinanderfolgende gültige Initialize-Antworten um 10:17:02 UTC bestätigt.
+- Live-Acceptance gegen die deployed Version um 10:17:48: geschützte Health 200 und MCP-Raw-Initialize 200. MCP Client connect um 10:17:50 erfolgreich, Session-ID erhalten; allererster Werkzeugaufruf `openchatcut_status` um 10:17:51 fehlgeschlagen mit `MCP session not found or expired` (JSON-RPC code -32001).
+- Medienimport/Edit/Render/R2 wurden NICHT erreicht. Readiness bestätigt nur kurzzeitige Erreichbarkeit, keine Session-Stabilität. Wiederholte HTTP 500 während Probe sind wesentlich.
+- Nächste Analyse: korreliere Session-ID/Container-Instanz und Lifecycle-Telemetrie zwischen erfolgreichem MCP Initialize und unmittelbar folgendem Tools-Call; prüfe OpenChatCut-MCP-Session-Store, Proxy-Routing und Cloudflare-Container-Neustart/Rollout. Keine Root Cause ohne weitere Evidenz behaupten.
+- Jules als unabhängigen Reviewer mit genau diesen neuen Daten aktualisieren. Nachweise aus GitHub: Run https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/36847153610 (Deploy-Job 110320684191; Live-Job 110323189461).
