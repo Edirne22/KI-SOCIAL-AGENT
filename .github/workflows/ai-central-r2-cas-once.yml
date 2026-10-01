@@ -1,0 +1,50 @@
+name: KI Central real R2 CAS one-shot without provider inference
+on:
+  push:
+    branches: [feat/ai-central-e2e-controlled-runner]
+    paths: ['.github/workflows/ai-central-r2-cas-once.yml']
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  real-r2-etag-cas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install --disable-pip-version-check boto3
+      - name: Prove R2 rejects stale concurrent conditional writer and remove synthetic object
+        run: |
+          python - <<'PY'
+          import os,boto3
+          from botocore.exceptions import ClientError
+          names=('R2_ACCOUNT_ID','R2_ACCESS_KEY_ID','R2_SECRET_ACCESS_KEY','R2_BUCKET_NAME')
+          if not all(os.getenv(n) for n in names):raise SystemExit('MISSING_R2_SECRET')
+          c=boto3.client('s3',endpoint_url='https://'+os.environ['R2_ACCOUNT_ID']+'.r2.cloudflarestorage.com',
+             aws_access_key_id=os.environ['R2_ACCESS_KEY_ID'],aws_secret_access_key=os.environ['R2_SECRET_ACCESS_KEY'],region_name='auto')
+          bucket=os.environ['R2_BUCKET_NAME']
+          key='ai-central/v1/tests/r2-cas-'+os.environ['GITHUB_RUN_ID']+'.json'
+          try:
+            original=c.put_object(Bucket=bucket,Key=key,Body=b'{"state":"DRAFT"}',ContentType='application/json')
+            etag=original.get('ETag')
+            if not etag:etag=c.head_object(Bucket=bucket,Key=key)['ETag']
+            first=c.put_object(Bucket=bucket,Key=key,Body=b'{"state":"QUEUED"}',ContentType='application/json',IfMatch=etag)
+            assert first['ETag']!=etag,'etag not updated'
+            try:
+              c.put_object(Bucket=bucket,Key=key,Body=b'{"state":"QUEUED_TWICE"}',ContentType='application/json',IfMatch=etag)
+              raise AssertionError('STALE_WRITER_NOT_REJECTED')
+            except ClientError as exc:
+              code=str(exc.response.get('Error',{}).get('Code',''))
+              assert code in ('PreconditionFailed','412','ConditionalRequestConflict','409'),code
+            value=c.get_object(Bucket=bucket,Key=key)['Body'].read(256)
+            assert value==b'{"state":"QUEUED"}','stale writer replaced current state'
+            print('REAL_PRIVATE_R2_ETAG_CAS_PASS: stale concurrent writer blocked')
+          finally:
+            c.delete_object(Bucket=bucket,Key=key)
+            print('SYNTHETIC_CAS_TEST_OBJECT_REMOVED')
+          PY
