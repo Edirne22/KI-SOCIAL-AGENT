@@ -46,7 +46,7 @@ jobs:
       - name: Install Chopify
         working-directory: /home/runner/work/_temp/chopify
         run: |
-          python -m pip install --disable-pip-version-check -r requirements.txt pytest
+          python -m pip install --disable-pip-version-check -r requirements.txt pytest "av<19"
 
       - name: Upstream regression
         working-directory: /home/runner/work/_temp/chopify
