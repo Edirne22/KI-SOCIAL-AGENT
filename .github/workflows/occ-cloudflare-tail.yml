@@ -1,0 +1,53 @@
+name: OpenChatCut Read-only Cloudflare Live Tail
+on:
+  push:
+    branches: [diag/openchatcut-ai-root-cause-jury]
+    paths:
+      - ".github/workflows/occ-cloudflare-tail.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read-only-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      OPENCHATCUT_MCP_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install pinned Wrangler
+        run: npm install --no-save --ignore-scripts wrangler@4.107.0
+      - name: Verify credentials present without printing them
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" && test -n "$CLOUDFLARE_ACCOUNT_ID" && test -n "$OPENCHATCUT_MCP_TOKEN"
+      - name: Start 85s read-only tail and send at most three authenticated MCP initialize probes
+        shell: bash
+        run: |
+          set -uo pipefail
+          npx wrangler tail edirne22-openchatcut-poc --format json 2> /tmp/occ-tail-error.log |
+            python -u scripts/occ_cf_tail_filter.py > /tmp/occ-tail-filtered.log &
+          tail_pid=$!
+          sleep 7
+          url=https://edirne22-openchatcut-poc.butupeli.workers.dev/api/external-mcp/mcp
+          for i in 1 2 3; do
+            response=$(mktemp)
+            http=$(curl -sS -o "$response" -w '%{http_code}' --max-time 16 -X POST "$url" \
+              -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" \
+              -H 'Accept: application/json, text/event-stream' -H 'Content-Type: application/json' \
+              --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"cf-live-tail-readonly","version":"1"}}}' || true)
+            printf 'CF_PROBE_%s HTTP_%s valid_initialize=%s\\n' "$i" "$http" "$(grep -q 'protocolVersion' "$response" && echo yes || echo no)"
+            rm -f "$response"
+            sleep 4
+          done
+          sleep 8
+          kill "$tail_pid" 2>/dev/null || true
+          wait "$tail_pid" || true
+          cat /tmp/occ-tail-filtered.log
+          if grep -Eqi 'not authorized|authentication|permission|failed' /tmp/occ-tail-error.log; then
+            echo 'CF_TAIL_AUTH_OR_RUNTIME_ERROR (redacted; check cloudflare permission)'
+          fi
