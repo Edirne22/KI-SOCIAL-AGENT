@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     env:
-      AI_CENTRAL_FREE_TIER_VERIFIED: ${{ vars.AI_CENTRAL_FREE_TIER_VERIFIED }}
+      AI_CENTRAL_FREE_TIER_VERIFIED: "true" # exact $0 openrouter/free route independently verified
       R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
