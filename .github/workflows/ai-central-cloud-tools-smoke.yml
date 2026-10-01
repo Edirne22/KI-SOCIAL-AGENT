@@ -1,9 +1,5 @@
 name: KI Central cloud coding bench – OpenCode and OmniRoute install smoke
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/ai-central-cloud-tools-smoke.yml"
-      - "infra/ai-central-tools/**"
   workflow_dispatch:
 permissions: {contents: read}
 jobs:
