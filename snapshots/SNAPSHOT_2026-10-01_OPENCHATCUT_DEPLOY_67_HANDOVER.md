@@ -40,3 +40,11 @@ Nutzer Bülent wünscht Deutsch, direkte selbstständige Fehlerarbeit und sichtb
 - Medienimport/Edit/Render/R2 wurden NICHT erreicht. Readiness bestätigt nur kurzzeitige Erreichbarkeit, keine Session-Stabilität. Wiederholte HTTP 500 während Probe sind wesentlich.
 - Nächste Analyse: korreliere Session-ID/Container-Instanz und Lifecycle-Telemetrie zwischen erfolgreichem MCP Initialize und unmittelbar folgendem Tools-Call; prüfe OpenChatCut-MCP-Session-Store, Proxy-Routing und Cloudflare-Container-Neustart/Rollout. Keine Root Cause ohne weitere Evidenz behaupten.
 - Jules als unabhängigen Reviewer mit genau diesen neuen Daten aktualisieren. Nachweise aus GitHub: Run https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/36847153610 (Deploy-Job 110320684191; Live-Job 110323189461).
+
+## NACHTRAG – Session-Fehler auf Codeebene lokalisiert (nach #67)
+
+Im exakt gepinnten Upstream `0xsline/OpenChatCut@d1af1ade45521e8ed9a5be09e3acad823f269453`, Datei `server/external-agent/mcp.ts`, steht die exakte Fehlermeldung `MCP session not found or expired`. `handleMcpRequest` liest Header `mcp-session-id`, prüft die pro Node-Prozess im RAM gehaltene `const sessions = new Map<string, McpSession>()` und gibt bei fehlendem Eintrag HTTP 404 / JSON-RPC -32001 zurück. Session wird bei `onsessioninitialized` eingetragen, bei `onclose`/Eviction verworfen. Das beweist **NICHT**, dass der Container neu gestartet wurde: Prozessrestart, Session-Close oder andere Session-Routing-Probleme sind getrennt zu untersuchen.
+
+In unserem Worker `infra/openchatcut-cloudflare/src/index.ts` steht die Fehlermeldung nicht. Dort sind `workerBootId` und `workerStartedAt` **modulweite Variablen des Cloudflare-Worker-Isolates**. Sie belegen keinen Startzeitpunkt des OpenChatCut-Containerprozesses und dürfen nicht als Crash-Indiz interpretiert werden.
+
+Konfiguration `wrangler.jsonc`: `instance_type = standard-2`, `max_instances = 1`, EU-Regionsvorgaben. 6-GiB-RAM-Klasse, aber OOM ohne Lifecycle-Exit-Evidenz nicht behaupten. Nächste harte Diagnose: Cloudflare Container-Lifecycle-Logs (onStart/onStop/onError und Exit-Grund) exakt rund um 10:15–10:18 UTC mit Upstream-MCP-Session-Init/Close korrelieren; keine Vergrößerung oder blinden Retries.
