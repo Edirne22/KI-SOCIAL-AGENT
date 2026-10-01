@@ -134,3 +134,38 @@ jobs:
           assert float(s.get("duration") or 0) > 0, s
           print("OPENCUT_REAL_RENDER_PASS", s)
           PY
+
+      - uses: actions/setup-python@v5
+        if: github.event_name == 'push'
+        with:
+          python-version: "3.12"
+
+      - name: Install R2 client
+        if: github.event_name == 'push'
+        run: python -m pip install --disable-pip-version-check boto3
+
+      - name: Real OpenCut render to private R2 with SHA roundtrip
+        if: github.event_name == 'push'
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          PYTHONPATH: ${{ github.workspace }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import tempfile
+          from media_storage import R2Storage
+          src=Path("/home/runner/work/_temp/opencut/out/factory-30s.mp4")
+          assert src.is_file() and src.stat().st_size > 0
+          with tempfile.TemporaryDirectory() as td:
+              store=R2Storage.from_env(cache_root=Path(td)/"cache")
+              ref=store.put_file(src,provenance="github-actions:block6-opencut-real-render",mime_type="video/mp4")
+              restored=store.resolve_local(ref)
+              assert restored.read_bytes()==src.read_bytes()
+              print("OPENCUT_R2_SHA_ROUNDTRIP_PASS",ref.media_id,ref.sha256,ref.size_bytes,ref.mime_type)
+          PY
