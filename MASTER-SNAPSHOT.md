@@ -1,6 +1,8 @@
 # MASTER-SNAPSHOT – KI-SOCIAL-AGENT
 
- > **VERBINDLICHE FALLBACK-NACHSCHLAGELISTE:** Bei externem Werkzeugausfall vor wiederholten Fehlversuchen sofort `docs/TOOL_RADAR_2026-10-01_27_SCREENSHOTS.md` → Abschnitt `FUNKTIONSBEZOGENE FALLBACK-MATRIX` prüfen. Nach **Nutzerfunktion**, nicht Toolnamen, Ersatz auswählen; `RESEARCH_ONLY` nie als `LIVE` deklarieren. Siehe Guardrails §14.
+> **EINZIGER WERKZEUG-/ALTERNATIVENINDEX:** `docs/TOOL_INDEX.md`. Vor Toolauswahl und bei Toolfehler **immer dort beginnen**, nicht separat IDEA_POOL, FREE_TOOLS oder datierte Screenshot-Radare durchsuchen. Diese älteren Dateien sind Quellen/Archiv. Die Fallback-Matrix im zentralen Index gilt zusammen mit `PROJECT_GUARDRAILS.md` §14. Für neuen Chat oder `/BLOCKRUN` zuerst Index lesen und aktuelle E2E-Belege neu prüfen.
+
+ > **HISTORISCHER FALLBACK-EINTRAG:** Die frühere Liste `docs/TOOL_RADAR_2026-10-01_27_SCREENSHOTS.md` wurde in den zentralen `docs/TOOL_INDEX.md` überführt. Ab sofort nur den neuen Index für die Werkzeugauswahl verwenden. Nach **Nutzerfunktion**, nicht Toolnamen, Ersatz auswählen; `RESEARCH_ONLY` nie als `LIVE` deklarieren. Siehe Guardrails §14.
 
 > **NEU: Tool-Radar aus 27 Screenshots (01.10.2026):** `docs/TOOL_RADAR_2026-10-01_27_SCREENSHOTS.md` enthält Quellenlinks, Dopplungen, Lizenz-/Kostenwarnungen und gezielte Kandidaten (Pixelle-Video, Agent-Reach, Crawl4AI, Codebase-Memory-MCP, OpenMontage nur als Architektur-Referenz). Nur Recherche: keine Installation, kein LIVE-Nachweis, keine Prioritätsumkehr gegenüber der offenen privaten Preview. 
 
