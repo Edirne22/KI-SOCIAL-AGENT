@@ -4,6 +4,10 @@ on:
     paths:
       - ".github/workflows/ai-central-stage2-single-live-acceptance.yml"
       - "scripts/ai_central_stage2_live_acceptance.py"
+      - "tests/test_ai_central_module_entrypoint.py"
+      - ".github/workflows/ai-central-inbox-agent.yml"
+      - ".github/workflows/ai-central-free-team-once.yml"
+      - ".github/workflows/cloud-ai-central.yml"
       - "tests/test_ai_central_stage2_live_acceptance.py"
       - ".github/workflows/ai-central-inbox-agent.yml"
   push:
@@ -35,6 +39,7 @@ jobs:
         run: |
           python -m compileall -q scripts/ai_central_stage2_live_acceptance.py
           python -m unittest discover -s tests -p 'test_ai_central_stage2_live_acceptance.py'
+          python -m unittest discover -s tests -p 'test_ai_central_module_entrypoint.py'
       - name: Full existing Dashboard and R2 security tests
         working-directory: infra/ai-central-dashboard
         run: npm test

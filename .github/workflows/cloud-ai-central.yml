@@ -59,7 +59,7 @@ jobs:
             openchatcut-stability) task=ai-central/tasks/openchatcut-stability.json ;;
             *) echo "Unsupported task" >&2; exit 1 ;;
           esac
-          python scripts/cloud_ai_central.py --task-file "$task"
+          python -m scripts.cloud_ai_central --task-file "$task"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
