@@ -1,0 +1,68 @@
+name: OpenChatCut Worker-only Loopback Diagnostic
+on:
+  push:
+    branches: [diag/openchatcut-in-container-port-inspection]
+    paths: ['.github/workflows/occ-worker-loopback-live.yml']
+permissions:
+  contents: read
+jobs:
+  controlled-loopback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      OPENCHATCUT_MCP_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    defaults:
+      run:
+        working-directory: infra/openchatcut-cloudflare
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "24"}
+      - name: Install identical wrapper dependencies
+        run: npm install
+      - name: Mandatory offline checks
+        run: |
+          npm run check
+          npx wrangler deploy --dry-run --containers-rollout=none
+      - name: Guard all existing deployment secrets
+        run: |
+          set -euo pipefail
+          for k in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID OPENCHATCUT_MCP_TOKEN R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!k:-}" || { echo "::error::Missing $k"; exit 1; }
+          done
+      - name: Record existing instance identity
+        run: npx wrangler containers instances a03c9f92-26ed-441d-bc13-a60ae2a91402 --json > "$RUNNER_TEMP/occ-before.json"
+      - name: Create temporary private secret bundle
+        run: |
+          set -euo pipefail
+          jq -n --arg t "$OPENCHATCUT_MCP_TOKEN" --arg a "$R2_ACCOUNT_ID" --arg k "$R2_ACCESS_KEY_ID" --arg s "$R2_SECRET_ACCESS_KEY" --arg b "$R2_BUCKET_NAME" \
+            '{OPENCHATCUT_MCP_TOKEN:$t,R2_ACCOUNT_ID:$a,R2_ACCESS_KEY_ID:$k,R2_SECRET_ACCESS_KEY:$s,R2_BUCKET_NAME:$b}' > "$RUNNER_TEMP/occ-diag-secrets.json"
+      - name: Deploy only protected diagnostic Worker code; no container rollout
+        run: npx wrangler deploy --containers-rollout=none --secrets-file "$RUNNER_TEMP/occ-diag-secrets.json"
+      - name: Remove private secrets bundle
+        if: always()
+        run: rm -f "$RUNNER_TEMP/occ-diag-secrets.json"
+      - name: Verify Worker and protected loopback result
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=https://edirne22-openchatcut-poc.butupeli.workers.dev
+          h=$(curl -sS --max-time 12 -o /tmp/occ-worker-h -w '%{http_code}' -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base/_factory/health")
+          echo "WORKER_HTTP=$h"
+          test "$h" = 200 || exit 1
+          d=$(curl -sS --max-time 15 -o /tmp/occ-diag-body -w '%{http_code}' -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base/_factory/container-diag" || true)
+          echo "DIAGNOSTIC_HTTP=$d"
+          if [ "$d" = 200 ]; then
+            node -e 'const fs=require("fs");const x=JSON.parse(fs.readFileSync("/tmp/occ-diag-body","utf8"));console.log("CONTAINER_LOOPBACK_RESULT",JSON.stringify({scope:x.scope,containerRunning:x.containerRunning,probe:x.probe,httpStatus:x.httpStatus,errorCode:x.errorCode}));'
+          else
+            echo "CONTAINER_LOOPBACK_UNAVAILABLE"
+          fi
+          npx wrangler containers instances a03c9f92-26ed-441d-bc13-a60ae2a91402 --json > "$RUNNER_TEMP/occ-after.json"
+          node -e 'const fs=require("fs");const a=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+"/occ-before.json"));const b=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+"/occ-after.json"));const id=x=>Array.isArray(x)?x.map(y=>({id:y.id,created:y.created,version:y.version})):[];console.log("INSTANCE_IDENTITIES",JSON.stringify({before:id(a),after:id(b),same:JSON.stringify(id(a))===JSON.stringify(id(b))}));'
+          test "$d" = 200 || exit 1
