@@ -65,3 +65,33 @@ for (let i = 1; i <= count; i++) {
 log({ event: "SUMMARY", pairs: count, ...tally });
 // Diagnostic failures are reported in logs. Do not treat failures as PASS or mark LIVE.
 if (tally.rawFail || tally.sdkFail) process.exitCode = 1;
+
+
+async function rawIdleProbe() {
+  const delayMs = 6000;
+  let sid;
+  try {
+    const r = await fetch(url, { method: "POST", headers: {...auth,"content-type":"application/json"},body:JSON.stringify(init), signal:AbortSignal.timeout(25000) });
+    sid = r.headers.get("mcp-session-id");
+    if (!r.ok || !sid) { log({path:"raw-idle",phase:"initialize",...(await readResponse(r))}); return false; }
+    await r.arrayBuffer();
+    const headers={...auth,"mcp-session-id":sid,"content-type":"application/json"};
+    const notify=await fetch(url,{method:"POST",headers,body:JSON.stringify({jsonrpc:"2.0",method:"notifications/initialized"}),signal:AbortSignal.timeout(25000)});
+    if (!notify.ok){log({path:"raw-idle",phase:"notification",...(await readResponse(notify))});return false;}
+    await notify.arrayBuffer();
+    const status=async id => fetch(url,{method:"POST",headers,body:JSON.stringify({jsonrpc:"2.0",id,method:"tools/call",params:{name:"openchatcut_status",arguments:{}}}),signal:AbortSignal.timeout(25000)});
+    const first=await status("idle-before");
+    const one=await readResponse(first);
+    if(first.status!==200 || !one.body.includes('"result"')){log({path:"raw-idle",phase:"before-idle",...one});return false;}
+    await new Promise(resolve=>setTimeout(resolve,delayMs));
+    const second=await status("idle-after");
+    const two=await readResponse(second);
+    const ok=second.status===200 && two.body.includes('"result"');
+    log({path:"raw-idle",phase:"after-idle",idleMs:delayMs,ok,...(ok?{status:second.status}:two)});
+    return ok;
+  } catch(e){log({path:"raw-idle",phase:"exception",message:String(e)});return false;}
+  finally {if(sid){try{await fetch(url,{method:"DELETE",headers:{...auth,"mcp-session-id":sid},signal:AbortSignal.timeout(5000)});}catch{}}}
+}
+const idleOk = await rawIdleProbe();
+log({ event:"IDLE_SUMMARY", idleMs:6000, rawIdlePass:idleOk?1:0, rawIdleFail:idleOk?0:1 });
+if (!idleOk) process.exitCode = 1;
