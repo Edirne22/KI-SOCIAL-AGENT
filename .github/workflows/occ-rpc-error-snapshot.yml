@@ -1,8 +1,6 @@
 name: OpenChatCut Protected RPC Error Snapshot
 on:
-  push:
-    branches: [diag/openchatcut-in-container-port-inspection]
-    paths: ['.github/workflows/occ-rpc-error-snapshot.yml']
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
