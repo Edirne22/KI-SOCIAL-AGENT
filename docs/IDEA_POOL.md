@@ -4,7 +4,19 @@
 
 **Regel:** Der Pool darf wachsen. Er ist ein Werkzeugkasten, keine Bürde.
 
-**Letzte Aktualisierung:** 2026-09-30
+**Letzte Aktualisierung:** 2026-10-01
+
+---
+
+## 📸 SCREENSHOT-SICHTUNG 01.10.2026 – 27 BILDER
+
+Vollständige, deduplizierte Auswertung mit Originalquellen, Lizenz-/Kostenprüfung und Einordnung in bestehende Adapter: [`docs/TOOL_RADAR_2026-10-01_27_SCREENSHOTS.md`](TOOL_RADAR_2026-10-01_27_SCREENSHOTS.md).
+
+- [ ] P1 bleibt **privater abspielbarer Video-Preview / kompletter Nutzer-Staffellauf** nach nachgewiesen grünem main-FFmpeg→R2-Workflow (#299); OpenChatCut/SupoClip keine Blocker.
+- [ ] Später isoliert Pixelle-Video als Video-Zusatzmaschine messen; Apache-2.0-Code, aber API-/Modell-/GPU-Kosten separat prüfen.
+- [ ] Erst bei konkreter Discovery-Lücke Agent-Reach oder Crawl4AI gegen RSS/offizielle API benchmarken. Nicht unzulässiges Social-Cookie-Scraping produktivieren.
+- [ ] Codebase-Memory-MCP nur isoliert/Security-Review; OpenMontage nur Architektur-/Lizenzreferenz, VoiceStudio Modell-/AGPL-/Consent-Kontrolle vor Einsatz.
+- [x] Wiederholte Collagen und kategoriefremde Posts aussortiert; OmniRoute weiterhin pausiert, keine neuen Programme installiert.
 
 ---
 
