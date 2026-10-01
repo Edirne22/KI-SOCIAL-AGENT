@@ -22,11 +22,28 @@ type Env = {
 
 export class OpenChatCutContainer extends Container {
   defaultPort = 5199;
+  requiredPorts = [5199];
   sleepAfter = "5m";
   enableInternet = true;
   async fetch(request: Request): Promise<Response> {
     this.renewActivityTimeout();
+    const startedAt = Date.now();
+    console.log(JSON.stringify({ event: "openchatcut_readiness_wait", port: this.defaultPort, at: new Date().toISOString() }));
+    await this.startAndWaitForPorts({
+      ports: [this.defaultPort],
+      cancellationOptions: { portReadyTimeoutMS: 30_000 }
+    });
+    console.log(JSON.stringify({ event: "openchatcut_readiness_ready", port: this.defaultPort, durationMs: Date.now() - startedAt, at: new Date().toISOString() }));
     return super.fetch(request);
+  }
+  override onStart(): void {
+    console.log(JSON.stringify({ event: "openchatcut_container_start", at: new Date().toISOString() }));
+  }
+  override onStop(stopParams: { exitCode: number; reason: string }): void {
+    console.log(JSON.stringify({ event: "openchatcut_container_stop", at: new Date().toISOString(), ...stopParams }));
+  }
+  override onError(error: unknown): void {
+    console.error(JSON.stringify({ event: "openchatcut_container_error", at: new Date().toISOString(), error: String(error) }));
   }
   envVars = {
     OPENCHATCUT_MCP_TOKEN: env.OPENCHATCUT_MCP_TOKEN,
