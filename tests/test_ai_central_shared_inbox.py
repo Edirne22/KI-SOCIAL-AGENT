@@ -126,7 +126,7 @@ class Inbox(unittest.TestCase):
         outcome=result_summary(self.r2,"private",task)
         self.assertIn("research: UNAVAILABLE",outcome)
         self.assertIn("challenge: ANSWER",outcome)
-        self.assertIn("\\n",outcome)
+        self.assertIn("\n",outcome)
         self.assertNotIn("private analysis content",outcome)
         self.assertNotIn("Bearer",outcome)
 
