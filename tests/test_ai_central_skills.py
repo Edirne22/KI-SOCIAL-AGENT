@@ -20,6 +20,14 @@ class Router(unittest.TestCase):
         self.assertEqual(x["provider"],"claude")
         self.assertTrue(x["no_fallback"])
         self.assertEqual(x["secret_name"],"ANTHROPIC_API_KEY")
+    def test_claude_only_can_use_verified_anthropic_openrouter_transport(self):
+        x=sr.choose("document_edit",forced_provider="claude",available={
+            "google":{"gemini-3.6-flash":"INFERENCE_OK"},
+            "claude_openrouter":{"anthropic/claude-sonnet-4.5":"INFERENCE_OK"}},registry=self.registry)
+        self.assertEqual(x["provider"],"claude_openrouter")
+        self.assertEqual(x["secret_name"],"OPENROUTER_API_KEY")
+        self.assertTrue(x["model"].startswith("anthropic/claude-"))
+        self.assertTrue(x["no_fallback"])
     def test_catalog_listing_not_equal_to_verified_inference(self):
         with self.assertRaises(sr.RoutingError):
             sr.choose("image_generation",forced_provider="google",
