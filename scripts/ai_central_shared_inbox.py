@@ -9,7 +9,6 @@ from hashlib import sha256
 import json
 import os
 import re
-from uuid import uuid4
 
 PREFIX = "ai-central/v1/inbox/"
 MAX_MESSAGE = 2500
@@ -52,8 +51,11 @@ def submit(client,bucket,*,update_id:int,chat_id:str,message:str,now=None):
     try:
         found=client.head_object(Bucket=bucket,Key=key)
         if found:return {"id":digest,"status":"DRAFT_REQUIRES_REVIEW","duplicate":True}
-    except client.exceptions.NoSuchKey:
-        pass
+    except Exception as exc:
+        # S3 HeadObject reports absent keys via ClientError(404/NoSuchKey).
+        code=str(getattr(exc, 'response', {}).get('Error', {}).get('Code',''))
+        if code not in {'404','NoSuchKey','NotFound'}:
+            raise
     task={"schema":"AI-INBOX-V1","id":digest,"created_at":now.isoformat(),
           "channel":"telegram","kind":"message","message":message,
           "status":"DRAFT_REQUIRES_REVIEW","auto_dispatch":False}
