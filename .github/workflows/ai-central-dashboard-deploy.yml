@@ -1,0 +1,40 @@
+name: AI Central Dashboard – private manual Cloudflare deploy
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deploy-private-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      AI_DASHBOARD_TOKEN: ${{ secrets.AI_DASHBOARD_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate prerequisites (no plaintext secrets)
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo "Cloudflare API token missing"; exit 1; }
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "Cloudflare account missing"; exit 1; }
+          test -n "$R2_BUCKET_NAME" || { echo "R2 bucket binding not configured"; exit 1; }
+          test "${#AI_DASHBOARD_TOKEN}" -ge 24 || { echo "AI_DASHBOARD_TOKEN must be configured in GitHub Secrets (>=24 chars)"; exit 1; }
+      - name: Offline Worker unit tests
+        working-directory: infra/ai-central-dashboard
+        run: npm test
+      - name: Configure R2 binding (no credentials in configuration file)
+        working-directory: infra/ai-central-dashboard
+        run: |
+          node -e 'const fs=require("fs");const f="wrangler.jsonc";const cfg=JSON.parse(fs.readFileSync(f));cfg.r2_buckets[0].bucket_name=process.env.R2_BUCKET_NAME;fs.writeFileSync(f,JSON.stringify(cfg,null,2));'
+      - name: Deploy Worker static assets and private R2 binding
+        working-directory: infra/ai-central-dashboard
+        run: npx --yes wrangler@4 deploy --config wrangler.jsonc
+      - name: Install required secret (API stays 401 while absent)
+        working-directory: infra/ai-central-dashboard
+        run: printf '%s' "$AI_DASHBOARD_TOKEN" | npx --yes wrangler@4 secret put AI_DASHBOARD_TOKEN --config wrangler.jsonc
+      - name: Completion note
+        run: echo "Dashboard deployed with private R2 binding and configured access token. No new model jobs triggered."
