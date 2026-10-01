@@ -88,7 +88,7 @@ class LLMRouter:
             "model": model,
             "messages": messages,
             "temperature": 0.7,
-            "max_tokens": MAX_TOKENS,
+            "max_tokens": min(MAX_TOKENS, 256) if provider == "claude_openrouter" else MAX_TOKENS,
         }
 
         try:
