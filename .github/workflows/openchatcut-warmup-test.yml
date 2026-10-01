@@ -1,0 +1,60 @@
+name: OpenChatCut Warm-up Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  warmup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      OPENCHATCUT_MCP_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+    steps:
+      - name: Guard MCP token
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${OPENCHATCUT_MCP_TOKEN:-}" || { echo "::error::Missing required GitHub Actions secret: OPENCHATCUT_MCP_TOKEN"; exit 1; }
+
+      - name: Wake OpenChatCut container via protected MCP initialize
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://edirne22-openchatcut-poc.butupeli.workers.dev/api/external-mcp/mcp"
+          overall_start="$(date +%s)"
+
+          for attempt in {1..12}; do
+            attempt_start="$(date +%s)"
+            echo "Warm-up attempt $attempt started at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+            body="$(mktemp)"
+            code="$(curl --max-time 20 -sS -o "$body" -w '%{http_code}' \
+              -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" \
+              -H 'Content-Type: application/json' \
+              -H 'Accept: application/json, text/event-stream' \
+              --data '{"jsonrpc":"2.0","id":"warmup","method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"edirne22-standalone-warmup","version":"1.0.0"}}}' \
+              "$url" || true)"
+
+            attempt_end="$(date +%s)"
+            attempt_seconds="$((attempt_end-attempt_start))"
+            total_seconds="$((attempt_end-overall_start))"
+
+            if [ "$code" = "200" ] && grep -q '"protocolVersion"' "$body"; then
+              echo "Container MCP initialized on attempt $attempt"
+              echo "Attempt duration: ${attempt_seconds}s"
+              echo "Total wake-up duration: ${total_seconds}s"
+              rm -f "$body"
+              exit 0
+            fi
+
+            echo "MCP warm-up not ready: attempt $attempt HTTP $code after ${attempt_seconds}s (total ${total_seconds}s)"
+            rm -f "$body"
+            [ "$attempt" -lt 12 ] && sleep 5
+          done
+
+          overall_end="$(date +%s)"
+          echo "::error::OpenChatCut MCP not ready after $((overall_end-overall_start))s"
+          exit 1
