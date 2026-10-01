@@ -6,10 +6,20 @@ on:
     paths:
       - ".github/workflows/block6-chopify-poc.yml"
       - "docs/BLOCK6_VIDEO_TOOL_BATTLE.md"
+      - "chopify_adapter.py"
+      - "scripts/chopify_local_bridge.py"
+      - "content_factory_media_production.py"
+      - "tests/test_chopify_adapter.py"
+      - "tests/test_content_factory_media_production.py"
   pull_request:
     paths:
       - ".github/workflows/block6-chopify-poc.yml"
       - "docs/BLOCK6_VIDEO_TOOL_BATTLE.md"
+      - "chopify_adapter.py"
+      - "scripts/chopify_local_bridge.py"
+      - "content_factory_media_production.py"
+      - "tests/test_chopify_adapter.py"
+      - "tests/test_content_factory_media_production.py"
   workflow_dispatch:
 
 permissions:
@@ -26,6 +36,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
+
+      - name: Factory syntax and Block 6 regression
+        run: |
+          python -m py_compile chopify_adapter.py scripts/chopify_local_bridge.py content_factory_media_production.py tests/test_chopify_adapter.py tests/test_content_factory_media_production.py
+          python -m unittest -v tests.test_chopify_adapter tests.test_content_factory_media_production
 
       - name: Install system media tools
         run: |
