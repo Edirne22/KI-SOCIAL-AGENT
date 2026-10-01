@@ -1,0 +1,5 @@
+{
+  "title": "OpenChatCut container and MCP incident",
+  "question": "Which isolated offline tests distinguish Cloudflare container restart or proxy failure from OpenChatCut MCP transport onclose, before any runtime deployment?",
+  "evidence": "Single Cloudflare Container ID, standard-2; postdeploy MCP readiness intermittently HTTP 200/500. Earlier raw 3/6 and SDK 1/6 status probes passed, with port 5199 sometimes not listening. New six raw/six SDK attempts all timed out. Worker health route does not contact container. Container lifecycle logs unavailable; do not claim restart or SDK as proven root cause."
+}
