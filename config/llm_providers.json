@@ -8,7 +8,10 @@
         "default": "openai/gpt-oss-120b",
         "reasoning": "llama-3.3-70b-versatile"
       },
-      "rate_limits": { "rpm": 30, "rpd": 14400 },
+      "rate_limits": {
+        "rpm": 30,
+        "rpd": 14400
+      },
       "priority": 1
     },
     "google": {
@@ -18,7 +21,10 @@
         "fast": "gemini-3.1-flash-lite",
         "default": "gemini-3.6-flash"
       },
-      "rate_limits": { "rpm": 15, "rpd": 1500 },
+      "rate_limits": {
+        "rpm": 15,
+        "rpd": 1500
+      },
       "priority": 2
     },
     "openrouter": {
@@ -29,7 +35,10 @@
         "reasoning": "openrouter/free",
         "coding": "qwen/qwen3-coder:free"
       },
-      "rate_limits": { "rpm": 20, "rpd": 50 },
+      "rate_limits": {
+        "rpm": 20,
+        "rpd": 50
+      },
       "priority": 3
     },
     "nvidia": {
@@ -43,7 +52,10 @@
         "multimodal": "moonshotai/kimi-k3",
         "ocr": "nvidia/nemotron-ocr-v2"
       },
-      "rate_limits": { "rpm": 40, "rpd": null },
+      "rate_limits": {
+        "rpm": 40,
+        "rpd": null
+      },
       "priority": 4
     },
     "cloudflare": {
@@ -54,16 +66,64 @@
         "default": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
         "reasoning": "@cf/qwen/qwen3-30b-a3b-fp8"
       },
-      "rate_limits": { "neurons_per_day": 10000 },
+      "rate_limits": {
+        "neurons_per_day": 10000
+      },
       "priority": 5
+    },
+    "claude_openrouter": {
+      "base_url": "https://openrouter.ai/api/v1",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "models": {
+        "default": "anthropic/claude-sonnet-4.5",
+        "claude_only": "anthropic/claude-sonnet-4.5",
+        "coding": "anthropic/claude-sonnet-4.5"
+      },
+      "rate_limits": {
+        "rpm": 1,
+        "rpd": 10
+      },
+      "priority": 6,
+      "notes": "Live proven exact Claude via OpenRouter, model may incur per-token charges; use claude_only route only"
     }
   },
-  "fallback_order": ["groq", "google", "openrouter", "nvidia", "cloudflare"],
+  "fallback_order": [
+    "groq",
+    "google",
+    "openrouter",
+    "nvidia",
+    "cloudflare"
+  ],
   "task_routing": {
-    "fast_chat": ["groq", "google", "nvidia"],
-    "reasoning": ["openrouter", "google", "nvidia"],
-    "coding": ["openrouter", "nvidia", "groq"],
-    "long_context": ["nvidia", "openrouter", "google"],
-    "default": ["groq", "google", "openrouter", "nvidia", "cloudflare"]
+    "fast_chat": [
+      "groq",
+      "google",
+      "nvidia"
+    ],
+    "reasoning": [
+      "openrouter",
+      "google",
+      "nvidia"
+    ],
+    "coding": [
+      "openrouter",
+      "nvidia",
+      "groq"
+    ],
+    "long_context": [
+      "nvidia",
+      "openrouter",
+      "google"
+    ],
+    "default": [
+      "groq",
+      "google",
+      "openrouter",
+      "nvidia",
+      "cloudflare"
+    ],
+    "claude_only": [
+      "claude_openrouter"
+    ]
   }
 }
