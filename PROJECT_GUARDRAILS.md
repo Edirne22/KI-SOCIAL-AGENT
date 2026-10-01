@@ -567,6 +567,9 @@ ANALYSIEREN
 
 ## 14. FUNKTION VOR WERKZEUG – DAUERHAFTE BÜLENT-VISION (01.10.2026)
 
+**Eine maßgebliche Werkzeug- und Alternativenliste:** `docs/TOOL_INDEX.md`. Vor jeder neuen technischen Werkzeugentscheidung, jedem Provider-Fallback und beim Wiederaufnehmen von `/BLOCKRUN` diesen Index zusammen mit dem aktuellen Projektstand lesen. `docs/IDEA_POOL.md`, `docs/FREE_TOOLS.md`, datierte Tool-Radare und `config/MEDIA_TOOLS.md` sind ausschließlich historische/vertiefende Quellen; keine konkurrierenden aktuellen Entscheidungen dort pflegen. Alle neuen Toolkandidaten und Statusänderungen zentral im Index ergänzen. 
+
+
 **Verbindlicher Produktauftrag:** Bülent spricht natürlich mit der KI-Zentrale und/oder lädt eigene Bilder, Videos und andere Quellen hoch. Die Content-Fabrik übernimmt Aufnahme, Recherche mit belegbarer Herkunft, kreative Bearbeitung, Medienerstellung, technische/Fakten-QM und präsentiert fertige, tatsächlich überprüfbare Ergebnisse zur menschlichen Entscheidung. Bülent soll **keine Tools auswählen, starten oder Fehlversuche manuell dirigieren müssen**. Veröffentlichung bleibt ausschließlich an seine Human Authority nach Abschnitt 5 und 13 gebunden.
 
 **Grundsatz: Die Nutzerfunktion ist fest, die ausführenden Maschinen und Provider sind austauschbar.** Keine Architektur darf unnötig an einen bestimmten Editor, Anbieter, Container oder Modellnamen gekettet werden. Ersatz hinter stabilen Adaptern wählen und nur nach echten Capability-/Qualitäts-/Sicherheits- und E2E-Nachweisen aktivieren. Der Betriebsleiter trifft die technische Routing-/Fallback-Entscheidung; Bülent gibt Ziele, Material und Veröffentlichungsentscheidungen vor.
