@@ -1,52 +1,26 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "openrouter/anthropic/claude-sonnet-4.5",
-  "providers": {
+  "enabled_providers": [
+    "openrouter"
+  ],
+  "provider": {
     "openrouter": {
-      "name": "Existing OpenRouter (Claude only for this worker)",
-      "env": [
-        "OPENROUTER_API_KEY"
-      ],
-      "package": "@opencode/ai/providers/openrouter",
       "models": {
-        "anthropic/claude-sonnet-4.5": {
-          "name": "Claude Sonnet 4.5 via OpenRouter"
-        }
+        "anthropic/claude-sonnet-4.5": {}
       }
     }
   },
-  "experimental": {
-    "policies": [
-      {
-        "action": "provider.use",
-        "resource": "*",
-        "effect": "deny"
-      },
-      {
-        "action": "provider.use",
-        "resource": "openrouter",
-        "effect": "allow"
-      },
-      {
-        "action": "permission",
-        "resource": "shell:*",
-        "effect": "deny"
-      },
-      {
-        "action": "permission",
-        "resource": "edit:*",
-        "effect": "deny"
-      },
-      {
-        "action": "permission",
-        "resource": "subagent:*",
-        "effect": "deny"
-      },
-      {
-        "action": "permission",
-        "resource": "webfetch:*",
-        "effect": "deny"
-      }
-    ]
+  "permission": {
+    "*": "deny",
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "skill": "allow",
+    "edit": "deny",
+    "bash": "deny",
+    "webfetch": "deny",
+    "task": "deny"
   }
 }
