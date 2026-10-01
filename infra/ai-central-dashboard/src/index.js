@@ -41,7 +41,7 @@ export default {
       if (len>4096)return respond({error:"payload too large"},413);
       let input;try{input=await request.json()}catch{return respond({error:"invalid json"},400)}
       if (!input || typeof input.text!=="string" || !input.text.trim() || input.text.length>2500 ||
-          /[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]/.test(input.text))
+          Array.from(input.text).some(ch => ch.charCodeAt(0) < 32))
         return respond({error:"invalid text"},400);
       const request_id=crypto.randomUUID();
       const data={schema:SCHEMA,request_id,channel:"web",source_id:null,
