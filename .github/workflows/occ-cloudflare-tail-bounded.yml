@@ -1,8 +1,6 @@
 name: OpenChatCut Cloudflare Tail Bounded Retry
 on:
-  push:
-    branches: [diag/openchatcut-ai-root-cause-jury]
-    paths: [".github/workflows/occ-cloudflare-tail-bounded.yml"]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
