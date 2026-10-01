@@ -1,0 +1,22 @@
+{
+  "name": "edirne22-ai-control-preview",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": false,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "r2_buckets": [
+    {
+      "binding": "AI_CENTRAL_R2",
+      "bucket_name": "SET_EXISTING_PRIVATE_R2_BUCKET_BEFORE_DEPLOY"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

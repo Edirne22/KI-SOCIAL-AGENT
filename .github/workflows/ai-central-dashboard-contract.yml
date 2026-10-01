@@ -1,0 +1,36 @@
+name: AI Central Dashboard + Telegram Integration Contract
+on:
+  pull_request:
+    paths:
+      - "ai_central_inbox.py"
+      - "telegram_router.py"
+      - ".github/workflows/telegram-receive.yml"
+      - "tests/test_ai_central_inbox.py"
+      - "infra/ai-central-dashboard/**"
+      - ".github/workflows/ai-central-dashboard-contract.yml"
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Shared Telegram schema and idempotency tests
+        run: python -m unittest discover -s tests -p test_ai_central_inbox.py -v
+      - name: Existing Block-9 web/Telegram approval regression
+        run: python -m unittest discover -s tests -p test_content_factory_control_center.py -v
+      - name: Telegram syntax
+        run: python -m py_compile telegram_router.py ai_central_inbox.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Dashboard API contract tests
+        working-directory: infra/ai-central-dashboard
+        run: npm test
+      - name: Check Worker source
+        working-directory: infra/ai-central-dashboard
+        run: node --check src/index.js

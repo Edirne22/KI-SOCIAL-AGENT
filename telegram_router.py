@@ -401,6 +401,15 @@ def main() -> None:
             _ack(uid)
             return
 
+        # Isolated KI-Central inbox; existing publishing/approval commands are unchanged.
+        if text.strip().lower().startswith(("/zentrale ", "zentrale ")):
+            from ai_central_inbox import save_telegram_message
+            body = text.strip().split(" ", 1)[1].strip()
+            # Fail closed: do not ACK the Telegram update unless R2 confirms writing.
+            request_id = save_telegram_message(body, uid)
+            send_message(f"KI-Zentrale: Auftrag gespeichert ({request_id[:8]}). Wartet auf Prüfung; nicht automatisch ausgeführt.")
+            _ack(uid)
+            return
         normalized = " ".join(text.strip().lower().split())
         cmd = normalized.lstrip("/")
         if cmd in {"help", "hilfe"}:
