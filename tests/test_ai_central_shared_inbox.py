@@ -1,7 +1,8 @@
 import io
+import json
 import unittest
 from datetime import datetime, timezone
-from scripts.ai_central_shared_inbox import parse_command, submit, recent, handle, start_reviewed
+from scripts.ai_central_shared_inbox import parse_command, submit, recent, handle, start_reviewed, result_summary
 
 class NotFound(Exception):
     response={"Error":{"Code":"404"}}
@@ -28,6 +29,7 @@ class FakeR2:
     def list_objects_v2(self,**kw):
         return {"Contents":[{"Key":k} for k in self.objects if k.startswith(kw["Prefix"])]}
     def get_object(self,**kw):
+        if kw["Key"] not in self.objects:raise NotFound()
         return {"Body":io.BytesIO(self.objects[kw["Key"]]),"ETag":self.etags[kw["Key"]]}
 class Inbox(unittest.TestCase):
     def setUp(self):self.r2=FakeR2()
@@ -36,6 +38,7 @@ class Inbox(unittest.TestCase):
         self.assertEqual(parse_command("/zentrale status"),("status",None))
         self.assertEqual(parse_command("zentrale auftrag OpenChatCut prüfen"),("auftrag","OpenChatCut prüfen"))
         self.assertEqual(parse_command("/zentrale starten 1234567890abcdef"),("starten","1234567890abcdef"))
+        self.assertEqual(parse_command("/zentrale ergebnis 1234567890abcdef"),("ergebnis","1234567890abcdef"))
         with self.assertRaises(ValueError):
             parse_command("/zentrale auftrag api_key=secret-secret")
     def test_telegram_web_schema_and_idempotent_retry(self):
@@ -102,6 +105,40 @@ class Inbox(unittest.TestCase):
         with self.assertRaises(Forbidden):
             submit(self.r2,"private",update_id=90,chat_id="123",message="Auftrag gültig")
         self.assertFalse(self.r2.objects)
+    def test_result_summary_real_r2_lifecycle_and_report(self):
+        task="1234567890abcdef"
+        run="12345678"
+        status_key=f"ai-central/v1/tasks/{task}/status.json"
+        report_key=f"ai-central/v1/tasks/{task}/runs/{run}/report.json"
+        self.assertIn("kein GitHub-Laufbericht",result_summary(self.r2,"private",task))
+        self.r2.put_object(Bucket="private",Key=status_key,Body=json.dumps({
+            "schema":"AI-CENTRAL-TASK-STATUS-V1","task_id":task,"github_run_id":run,
+            "status":"RUNNING"}).encode())
+        self.assertIn("RUNNING",handle(f"/zentrale ergebnis {task}",42,"123",client=self.r2,bucket="private"))
+        self.r2.put_object(Bucket="private",Key=status_key,Body=json.dumps({
+            "schema":"AI-CENTRAL-TASK-STATUS-V1","task_id":task,"github_run_id":run,
+            "status":"PENDING_REVIEW"}).encode())
+        self.r2.put_object(Bucket="private",Key=report_key,Body=json.dumps({
+            "schema":"CLOUD-AI-CENTRAL-V1","task_id":task,"run_id":run,
+            "status":"PENDING_REVIEW","results":[{"role":"research","status":"UNAVAILABLE"},
+            {"role":"challenge","status":"ANSWER","attempts":[{"text":"private analysis content"}]}]
+        }).encode())
+        outcome=result_summary(self.r2,"private",task)
+        self.assertIn("research: UNAVAILABLE",outcome)
+        self.assertIn("challenge: ANSWER",outcome)
+        self.assertIn("\n",outcome)
+        self.assertNotIn("private analysis content",outcome)
+        self.assertNotIn("Bearer",outcome)
+
+    def test_result_tampering_and_cross_task_is_denied(self):
+        task="1234567890abcdef";run="12345678"
+        key=f"ai-central/v1/tasks/{task}/status.json"
+        self.r2.put_object(Bucket="private",Key=key,Body=json.dumps({
+            "schema":"AI-CENTRAL-TASK-STATUS-V1","task_id":"different-123456",
+            "github_run_id":run,"status":"PENDING_REVIEW"}).encode())
+        with self.assertRaises(ValueError):result_summary(self.r2,"private",task)
+        with self.assertRaises(ValueError):result_summary(self.r2,"private","../../bad")
+        with self.assertRaises(ValueError):parse_command("/zentrale ergebnis")
     def test_help_is_storage_independent(self):
         self.assertIn("keine automatische",handle("/zentrale hilfe",8,"1"))
 if __name__=="__main__":unittest.main()

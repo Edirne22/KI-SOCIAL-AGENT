@@ -19,7 +19,7 @@ def parse_command(text: str):
     if not isinstance(text,str):
         return None
     normalized=text.strip()
-    match=re.fullmatch(r"/?zentrale\s+(status|hilfe|starten(?:\s+([a-zA-Z0-9_-]{10,64}))?|auftrag(?:\s+(.+))?)",normalized,re.I|re.S)
+    match=re.fullmatch(r"/?zentrale\s+(status|hilfe|starten(?:\s+([a-zA-Z0-9_-]{10,64}))?|ergebnis(?:\s+([a-zA-Z0-9_-]{10,64}))?|auftrag(?:\s+(.+))?)",normalized,re.I|re.S)
     if not match:
         return None
     name=match.group(1).split()[0].lower()
@@ -27,8 +27,12 @@ def parse_command(text: str):
         ident=match.group(2)
         if not ident:raise ValueError("Bitte /zentrale starten <Auftrags-ID> eingeben.")
         return "starten",ident
+    if name=="ergebnis":
+        ident=match.group(3)
+        if not ident:raise ValueError("Bitte /zentrale ergebnis <Auftrags-ID> eingeben.")
+        return "ergebnis",ident
     if name=="auftrag":
-        message=(match.group(3) or "").strip()
+        message=(match.group(4) or "").strip()
         if not 3<=len(message)<=MAX_MESSAGE or _BLOCKED.search(message) or any(ord(c)<32 and c not in "\n\t" for c in message):
             raise ValueError("Bitte einen Auftrag mit 3 bis 2500 Zeichen und ohne Zugangsdaten eingeben.")
         return "auftrag",message
@@ -141,15 +145,64 @@ def start_reviewed(client,bucket,task_id,token,post=requests.post):
         raise RuntimeError("GitHub lehnte den Start ab; Entwurf beibehalten.")
     return "Auftrag "+task_id+" von GitHub angenommen. Das ist noch kein fertiges Ergebnis. Bericht später im Dashboard prüfen."
 
+def result_summary(client,bucket,task_id):
+    """Authorized Telegram chat retrieves only bounded non-sensitive R2 report metadata."""
+    if not re.fullmatch(r"[a-zA-Z0-9_-]{10,64}",task_id):
+        raise ValueError("Ungültige Auftrags-ID.")
+    key=f"ai-central/v1/tasks/{task_id}/status.json"
+    try:
+        raw=client.get_object(Bucket=bucket,Key=key)["Body"].read(12000)
+        status=json.loads(raw)
+    except Exception as exc:
+        code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+        if code in ("404","NoSuchKey","NotFound"):
+            return "Noch kein GitHub-Laufbericht für diesen Auftrag. Der Entwurf bleibt im R2-Posteingang."
+        raise
+    if (status.get("schema")!="AI-CENTRAL-TASK-STATUS-V1"
+        or status.get("task_id")!=task_id or status.get("status") not in
+        ("RUNNING","PENDING_REVIEW","FAILED","BLOCKED_FREE_TIER")):
+        raise ValueError("R2-Ergebnisstatus ist ungültig.")
+    state=status["status"]
+    run=str(status.get("github_run_id",""))
+    if not re.fullmatch(r"[0-9]{1,18}",run):
+        raise ValueError("Ungültige GitHub-Run-ID.")
+    msg=f"KI-Zentrale · {task_id} · {state} · GitHub-Run {run}"
+    if state!="PENDING_REVIEW":
+        return msg+"\nNoch kein erfolgreich archivierter Prüfbericht."
+    # Stable exact report path: never scan another task's reports.
+    report_key=f"ai-central/v1/tasks/{task_id}/runs/{run}/report.json"
+    try:
+        raw=client.get_object(Bucket=bucket,Key=report_key)["Body"].read(110000)
+        report=json.loads(raw)
+    except Exception as exc:
+        code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+        if code in ("404","NoSuchKey","NotFound"):
+            return msg+"\nPrüfbericht derzeit noch nicht abrufbar."
+        raise
+    if (report.get("schema")!="CLOUD-AI-CENTRAL-V1" or report.get("task_id")!=task_id
+        or report.get("run_id")!=run or report.get("status")!="PENDING_REVIEW"):
+        raise ValueError("R2-Prüfbericht gehört nicht zu diesem Auftrag.")
+    summary=[]
+    for item in report.get("results",[])[:4]:
+        if not isinstance(item,dict):raise ValueError("Ungültiges Rollenformat.")
+        role=str(item.get("role",""))[:24]
+        state=str(item.get("status",""))[:24]
+        if not re.fullmatch(r"[a-zA-Z_-]{2,24}",role) or state not in ("ANSWER","UNAVAILABLE"):
+            raise ValueError("Ungültiges Rollenergebnis.")
+        summary.append(f"{role}: {state}")
+    return msg+"\n"+" · ".join(summary)+"\nAntworttexte nur im geschützten Dashboard: https://edirne22-ai-central-dashboard.butupeli.workers.dev"
+
 def handle(text,update_id,chat_id,*,client=None,bucket=None):
     parsed=parse_command(text)
     if parsed is None:return None
     op,message=parsed
     if op=="hilfe":
-        return "KI-Zentrale: /zentrale auftrag TEXT · /zentrale status · /zentrale starten AUFTRAGS-ID. keine automatische Ausführung ohne expliziten Start; kostenlose Modellroute."
+        return "KI-Zentrale: /zentrale auftrag TEXT · /zentrale status · /zentrale starten AUFTRAGS-ID. keine automatische Ausführung ohne expliziten Start; kostenlose Modellroute. /zentrale ergebnis AUFTRAGS-ID zeigt echten R2-Status."
     if client is None:
         client,bucket=client_from_env()
     if not bucket:raise ValueError("R2 bucket missing")
+    if op=="ergebnis":
+        return result_summary(client,bucket,message)
     if op=="starten":
         return start_reviewed(client,bucket,message,os.environ.get("GITHUB_TOKEN",""))
     if op=="status":

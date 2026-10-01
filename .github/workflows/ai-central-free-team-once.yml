@@ -1,0 +1,89 @@
+name: AI Central – NVIDIA free team and OmniRoute integration gate
+on:
+  pull_request:
+    paths:
+      - "scripts/cloud_ai_central.py"
+      - "tests/test_cloud_ai_central.py"
+      - "scripts/ai_central_shared_inbox.py"
+      - "tests/test_ai_central_shared_inbox.py"
+      - ".github/workflows/ai-central-free-team-once.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Syntax and contract regression
+        run: |
+          python -m compileall -q scripts/cloud_ai_central.py scripts/ai_central_shared_inbox.py
+          python -m unittest discover -s tests -p 'test_cloud_ai_central.py'
+          python -m unittest discover -s tests -p 'test_ai_central_shared_inbox.py'
+  # Separate opt-in feasibility probe: NOT a production prerequisite for direct free-provider team.
+  # Heavy Next.js/SQLite server takes multiple minutes on fresh runners; a version check alone is insufficient.
+  omniroute-ephemeral-smoke:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install independently version-pinned OmniRoute including required build scripts
+        env:
+          CI: "1"
+        run: npm install -g --allow-scripts=omniroute,@swc/core,esbuild omniroute@3.8.50
+      - name: Verify binary and bounded isolated router start, without keys or paid providers
+        shell: bash
+        run: |
+          set -euo pipefail
+          omniroute --version
+          (omniroute > "$RUNNER_TEMP/omniroute.log" 2>&1 & echo $! > "$RUNNER_TEMP/omniroute.pid")
+          trap 'kill "$(cat "$RUNNER_TEMP/omniroute.pid")" 2>/dev/null || true' EXIT
+          ready=0
+          for n in $(seq 1 45); do
+            if curl -sS --max-time 2 -o "$RUNNER_TEMP/catalog.json"                   -w '%{http_code}' http://127.0.0.1:20128/api/models/catalog 2>/dev/null | grep -qx 200; then
+              ready=1;break
+            fi
+            sleep 2
+          done
+          if test "$ready" != 1; then
+            echo 'OMNIROUTE_START_NOT_PROVEN'
+            if kill -0 "$(cat "$RUNNER_TEMP/omniroute.pid")" 2>/dev/null; then echo 'OMNIROUTE_PROCESS_RUNNING'; else echo 'OMNIROUTE_PROCESS_EXITED'; fi
+            grep -Eio 'ENOENT|MODULE_NOT_FOUND|EADDRINUSE|build failed|cannot find module|initial setup|missing build|no such file' "$RUNNER_TEMP/omniroute.log" | sort -u || true
+            exit 1
+          fi
+          node -e 'const fs=require("fs");const x=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+"/catalog.json"));if(!x||typeof x!=="object")process.exit(1);console.log("OMNIROUTE_EPHEMERAL_CATALOG_READY")'
+          # This is ONLY an isolated router/startup check, not an NVIDIA provider connection.
+  strictly-free-live-probe:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: [offline-contract]
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    env:
+      # Public NVIDIA Build model pages label these exact models Free Endpoint.
+      # Explicitly scoped trial probe only; do not infer unlimited account quota.
+      AI_NVIDIA_DEVELOPER_FREE_VERIFIED: "true"
+      AI_CENTRAL_FREE_TIER_VERIFIED: "true"
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Guard both free-only developer API routes
+        run: |
+          test -n "$NVIDIA_API_KEY" || { echo 'NVIDIA_KEY_MISSING';exit 1; }
+          test -n "$OPENROUTER_API_KEY" || { echo 'OPENROUTER_KEY_MISSING';exit 1; }
+      - name: Independent Nemotron + Kimi + OpenRouter free advice with no R2 private input
+        run: |
+          python scripts/cloud_ai_central.py             --task-file ai-central/tasks/openchatcut-stability.json --free-team
+          echo 'LIVE_TEAM_PROBE_COMPLETE: inspect roles and reported_model in private runner output; no public report uploaded.'
