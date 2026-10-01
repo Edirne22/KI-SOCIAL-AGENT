@@ -109,6 +109,29 @@ class Block6Tests(unittest.TestCase):
  def test_stale_revision_rejected(self):
   j=self.job(); p=MediaProductionPlanner().plan(j,brief()); j.revision+=1
   with self.assertRaises(MediaProductionError): MediaProductionRunner().execute(j,p,{})
+ def test_independent_ffmpeg_source_skips_unavailable_editors(self):
+  j=self.job(); j.media.append(ref("source"))
+  p=MediaProductionPlanner().plan(j,brief(),independent_ffmpeg=True)
+  self.assertEqual(("ffmpeg",),tuple(x.machine for x in p.steps))
+  self.assertEqual({"mode":"caption_audio","seconds":"15"},dict(p.steps[0].parameters))
+  self.assertEqual(("source",),p.steps[0].input_media_ids)
+ def test_independent_ffmpeg_source_less_retains_agnes(self):
+  j=self.job(); p=MediaProductionPlanner().plan(j,brief(),independent_ffmpeg=True)
+  self.assertEqual(("agnes_video","ffmpeg"),tuple(x.machine for x in p.steps))
+  self.assertEqual("caption_audio",dict(p.steps[-1].parameters)["mode"])
+ def test_independent_ffmpeg_rejects_unbounded_and_unknown_render(self):
+  with tempfile.TemporaryDirectory() as td:
+   a=FFmpegAdapter(LocalScratchStorage(Path(td)/"s"),Path(td)/"w")
+   j=self.job()
+   source=Path(td)/"source.mp4"; source.write_bytes(b"unverified fixture")
+   m=a.storage.put_file(source,provenance="test",mime_type="video/mp4")
+   from unittest.mock import patch
+   with patch("content_factory_media_production.shutil.which",return_value="/usr/bin/ffmpeg"):
+    for params in ({"mode":"caption_audio","seconds":"300"},
+                   {"mode":"caption_audio","seconds":"bad"},
+                   {"mode":"danger"}):
+     with self.subTest(params=params),self.assertRaises(MediaProductionError):
+      a.run(ToolTask(j.job_id,j.revision,"render",[m],params))
  def test_ffmpeg_requires_input(self):
   with tempfile.TemporaryDirectory() as td:
    a=FFmpegAdapter(LocalScratchStorage(Path(td)/"s"),Path(td)/"w")

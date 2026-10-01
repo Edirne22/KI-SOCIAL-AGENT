@@ -23,18 +23,18 @@ class MediaProductionPlan:
     job_id:str; revision:int; brief_id:str; steps:tuple[MediaStep,...]
 
 class MediaProductionPlanner:
-    def plan(self,job:ProductionJob,brief:CreativeBrief)->MediaProductionPlan:
+    def plan(self,job:ProductionJob,brief:CreativeBrief,*,independent_ffmpeg:bool=False)->MediaProductionPlan:
         if job.status not in (JobStatus.STORYBOARDING,JobStatus.RENDERING):
             raise MediaProductionError("media planning requires storyboard/render state")
         ids=tuple(m.media_id for m in job.media)
         steps=[]
         if brief.content_format in (ContentFormat.REEL,ContentFormat.VIDEO):
-            if ids: steps.append(MediaStep("clip","clip","supoclip",ids))
-            else:
+            if ids and not independent_ffmpeg: steps.append(MediaStep("clip","clip","supoclip",ids))
+            elif not ids:
                 prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
                 steps.append(MediaStep("generate","generate","agnes_video",(),(("prompt",prompt),("language",brief.language))))
-            steps.append(MediaStep("edit","edit","openchatcut",()))
-            steps.append(MediaStep("render","render","ffmpeg",()))
+            if not independent_ffmpeg: steps.append(MediaStep("edit","edit","openchatcut",()))
+            steps.append(MediaStep("render","render","ffmpeg",ids if independent_ffmpeg and ids else (), (("mode","caption_audio"),("seconds","15")) if independent_ffmpeg else ()))
         elif brief.content_format in (ContentFormat.IMAGE,ContentFormat.CAROUSEL):
             if not ids:
                 prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
@@ -113,10 +113,30 @@ class FFmpegAdapter:
         if shutil.which(self.ffmpeg_bin) is None: raise MediaProductionError("ffmpeg unavailable")
         src=self.storage.resolve_local(task.inputs[0]); self.workdir.mkdir(parents=True,exist_ok=True)
         out=self.workdir/f"{task.job_id}-{task.revision}-{task.task_id}.mp4"
-        cmd=[self.ffmpeg_bin,"-y","-i",str(src),"-map_metadata","-1","-c","copy",str(out)]
+        mode=task.parameters.get("mode","copy")
+        if mode=="caption_audio":
+            from scripts.block6_ffmpeg_r2_fallback import inspect_ffprobe
+            try:
+                seconds=int(task.parameters.get("seconds","15"))
+            except ValueError as exc:
+                raise MediaProductionError("invalid render duration") from exc
+            if seconds not in (7,15,30): raise MediaProductionError("unsupported render duration")
+            cmd=[self.ffmpeg_bin,"-hide_banner","-loglevel","error","-nostdin","-y",
+                "-stream_loop","-1","-i",str(src),
+                "-f","lavfi","-i","anullsrc=r=48000:cl=stereo",
+                "-map","0:v:0","-map","1:a:0",
+                "-vf","drawtext=text='EDIRNE 22 TEST':fontcolor=white:fontsize=36:x=(w-text_w)/2:y=h-90,scale=720:-2,setsar=1",
+                "-c:v","libx264","-preset","veryfast","-crf","27",
+                "-pix_fmt","yuv420p","-r","24","-c:a","aac","-b:a","96k",
+                "-t",str(seconds),"-movflags","+faststart",str(out)]
+        elif mode=="copy":
+            cmd=[self.ffmpeg_bin,"-y","-i",str(src),"-map_metadata","-1","-c","copy",str(out)]
+        else: raise MediaProductionError("unsupported ffmpeg mode")
         p=subprocess.run(cmd,capture_output=True,text=True,timeout=120,check=False)
         if p.returncode!=0: raise MediaProductionError("ffmpeg render failed")
-        ref=self.storage.put_file(out,provenance=f"ffmpeg:{task.task_id}",mime_type="video/mp4")
+        if mode=="caption_audio": inspect_ffprobe(out,seconds)
+        ref=self.storage.put_file(out,provenance=f"ffmpeg:{task.task_id}:r{task.revision}",mime_type="video/mp4")
+        if mode=="caption_audio": inspect_ffprobe(self.storage.resolve_local(ref),seconds)
         return ToolResult(task.job_id,task.revision,task.task_id,[ref],self.name)
 
 class MediaProductionRunner:
