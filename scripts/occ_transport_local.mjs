@@ -44,9 +44,29 @@ async function probe(label,headers){
  console.log("MCP_LOCAL",JSON.stringify({label,initialize:"ok",notification:notification.status,status:response.status,callOk:ok,sessionPersisted:sessions.has(id),events:[...events]}));
  return ok;
 }
+async function getAbortProbe(){
+ let r=await fetch(url,{method:"POST",headers:content,body:JSON.stringify(init)});
+ const sid=r.headers.get("mcp-session-id");await r.text();
+ if(!r.ok||!sid){console.log("MCP_GET_ABORT",{phase:"init-failed",code:r.status});return;}
+ const n=await fetch(url,{method:"POST",headers:{...content,"mcp-session-id":sid},
+  body:JSON.stringify({jsonrpc:"2.0",method:"notifications/initialized"})});
+ await n.text();
+ const controller=new AbortController();
+ const pending=fetch(url,{method:"GET",headers:{"accept":"text/event-stream","mcp-session-id":sid},signal:controller.signal});
+ await Promise.race([pending.catch(()=>undefined),new Promise(r=>setTimeout(r,300))]);
+ controller.abort();
+ await pending.catch(()=>undefined);
+ await new Promise(r=>setTimeout(r,100));
+ const r2=await fetch(url,{method:"POST",headers:{...content,"mcp-session-id":sid},
+  body:JSON.stringify({jsonrpc:"2.0",id:3,method:"tools/call",params:{name:"ping",arguments:{}}})});
+ const body=await r2.text();
+ console.log("MCP_GET_ABORT",JSON.stringify({afterGetAbortStatus:r2.status,callOk:r2.ok&&body.includes("pong"),
+  sessionPersisted:sessions.has(sid),events:[...events]}));
+}
 try{
  const keep=await probe("keepalive",{});
  const close=await probe("http_connection_close",{"connection":"close"});
+ await getAbortProbe();
  if(!keep||!close)process.exitCode=1;
 }catch(e){console.error("MCP_LOCAL_ERROR",String(e));process.exitCode=1;}
 finally{await new Promise(resolve=>srv.close(resolve));}
