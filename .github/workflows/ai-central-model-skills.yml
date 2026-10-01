@@ -9,6 +9,8 @@ on:
       - "config/ai_central_capabilities.json"
       - "tests/test_ai_central_skills.py"
       - "tests/test_ai_central_gemini_image.py"
+      - ".opencode/skills/**"
+      - "infra/ai-central-tools/**"
       - ".github/workflows/ai-central-model-skills.yml"
   workflow_dispatch:
     inputs:
@@ -52,6 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -60,8 +63,26 @@ jobs:
           npm install -g @opencode/cli
           command -v opencode
           opencode --version
-      - name: No AI inference, no credentials, no repository writes
-        run: echo "OpenCode installer smoke finished; model and coding permission deliberately not activated"
+      - name: Verify Claude model and deny rules plus five skills
+        run: |
+          node - <<'JS'
+          const fs=require("fs"),assert=require("assert");
+          const c=JSON.parse(fs.readFileSync("infra/ai-central-tools/claude-only/opencode.jsonc","utf8"));
+          assert.strictEqual(c.model,"openrouter/anthropic/claude-sonnet-4.5");
+          assert.deepStrictEqual(Object.keys(c.providers),["openrouter"]);
+          const p=c.experimental.policies;
+          for(const rule of ["shell:*","edit:*","subagent:*","webfetch:*"])
+            assert(p.some(x=>x.action==="permission" && x.resource===rule && x.effect==="deny"));
+          assert(p.some(x=>x.action==="provider.use" && x.resource==="*" && x.effect==="deny"));
+          assert(p.some(x=>x.action==="provider.use" && x.resource==="openrouter" && x.effect==="allow"));
+          for(const n of ["pdf-export","word-export","excel-export","media-processing","excel-safe-edit"]){
+            const body=fs.readFileSync(".opencode/skills/"+n+"/SKILL.md","utf8");
+            assert(body.startsWith("---\n") && body.includes("description:"));
+          }
+          console.log("Claude-only config and five skill files PASS");
+          JS
+      - name: No model inference in installation probe
+        run: echo "OpenCode CLI starts; billable model calls are intentionally not active"
   ffmpeg-media-tools-smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 5
