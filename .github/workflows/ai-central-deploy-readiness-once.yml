@@ -1,0 +1,26 @@
+name: KI Central private deploy readiness (presence only)
+on:
+  push:
+    branches: [feat/ai-central-e2e-controlled-runner]
+    paths: [".github/workflows/ai-central-deploy-readiness-once.yml"]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  secret-presence-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    env:
+      HAS_DASHBOARD: ${{ secrets.AI_DASHBOARD_TOKEN }}
+      HAS_DISPATCH: ${{ secrets.AI_GITHUB_DISPATCH_TOKEN }}
+      HAS_CLOUDFLARE: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      HAS_CLOUDFLARE_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      HAS_R2_BUCKET: ${{ secrets.R2_BUCKET_NAME }}
+      HAS_FREE_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      DEPLOY_FREE_FLAG: ${{ vars.AI_CENTRAL_FREE_TIER_VERIFIED }}
+    steps:
+      - name: Print ONLY presence booleans; never emit credentials or lengths
+        run: |
+          for n in HAS_DASHBOARD HAS_DISPATCH HAS_CLOUDFLARE HAS_CLOUDFLARE_ID HAS_R2_BUCKET HAS_FREE_KEY; do
+            if test -n "${!n}"; then echo "$n=CONFIGURED"; else echo "$n=MISSING"; fi
+          done
+          if test "$DEPLOY_FREE_FLAG" = "true"; then echo "FREE_GATE=CONFIGURED"; else echo "FREE_GATE=DISABLED"; fi
