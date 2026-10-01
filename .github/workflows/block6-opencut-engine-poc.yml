@@ -158,9 +158,9 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
-          import tempfile
+          import tempfile, os
           from media_storage import R2Storage
-          src=Path("/home/runner/work/_temp/opencut/out/factory-30s.mp4")
+          src=Path(os.environ["RUNNER_TEMP"])/"opencut/out/factory-30s.mp4"
           assert src.is_file() and src.stat().st_size > 0
           with tempfile.TemporaryDirectory() as td:
               store=R2Storage.from_env(cache_root=Path(td)/"cache")
