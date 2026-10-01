@@ -1,0 +1,32 @@
+name: AI Central Dashboard and Telegram Shared Inbox
+on:
+  pull_request:
+    paths:
+      - "infra/ai-central-dashboard/**"
+      - "scripts/ai_central_shared_inbox.py"
+      - "telegram_router.py"
+      - "tests/test_ai_central_shared_inbox.py"
+      - ".github/workflows/telegram-receive.yml"
+      - ".github/workflows/ai-central-dashboard-tests.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shared-inbox-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: 
+          python-version: "3.11"
+      - name: Syntax and imports
+        run: python -m py_compile telegram_router.py scripts/ai_central_shared_inbox.py tests/test_ai_central_shared_inbox.py
+      - name: Telegram shared inbox unit tests
+        run: python -m unittest discover -s tests -p 'test_ai_central_shared_inbox.py' -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Worker security and inbox contract tests
+        working-directory: infra/ai-central-dashboard
+        run: npm test
