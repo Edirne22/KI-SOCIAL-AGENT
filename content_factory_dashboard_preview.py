@@ -34,9 +34,9 @@ def register_verified_video_preview(job: ProductionJob, report: FinalQMReport, *
     if len(videos) != 1:
         raise ValueError("exactly one finalized MP4 video required")
     media = videos[0]
-    expected_prefix = f"r2://{storage.bucket}/content-factory/"
+    expected_prefix = f"r2://{storage.bucket}/media/{media.media_id}/"
     if not media.uri.startswith(expected_prefix):
-        raise ValueError("media is not in the dashboard's private content-factory prefix")
+        raise ValueError("media is not in the canonical private R2 media prefix")
     if media.size_bytes > MAX_DASHBOARD_VIDEO_BYTES:
         raise ValueError("dashboard MVP supports videos up to 32 MiB")
     # The verified gate re-downloads from private R2, recalculates size/hash
