@@ -35,7 +35,8 @@ jobs:
           python-version: "3.11"
       - run: python -m pip install requests
       - name: Fail-closed central control plane tests
-        run: python -m unittest discover -s tests -p 'test_cloud_ai_central.py' -v
+        run: |
+          python -m unittest discover -s tests -p 'test_cloud_ai_central.py' -v
           python -m unittest discover -s tests -p 'test_ai_central_ingress.py' -v
           python -m unittest discover -s tests -p 'test_ai_central_dashboard_view.py' -v
           python -m py_compile telegram_router.py ai_central_ingress.py ai_central_dashboard_view.py
