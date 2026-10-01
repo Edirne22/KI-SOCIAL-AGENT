@@ -6,6 +6,8 @@
 
 > Diese Datei ist bewusst kurz. Sie zeigt auf die verbindlichen Detail-Snapshots und Guardrails, statt alte Projektstände zu duplizieren.
 
+**Live-Übergabe 01.10.2026 (neu):** `snapshots/SNAPSHOT_2026-10-01_OPENCHATCUT_DEPLOY_67_HANDOVER.md`. Dieser Zeitpunkt-Snapshot dokumentiert PR #271, den grünen Check #65 und den zum Erstellungszeitpunkt laufenden echten Deploy #67. Bei Wiederaufnahme **erst** aktuelle GitHub-Jobs/HEAD prüfen; den älteren 30.09.-Snapshot als Architektur-/Meilensteinbasis zusätzlich lesen.
+
 ## 1. Aktueller Einstieg
 
 **Aktueller verbindlicher Arbeits-Snapshot:**
