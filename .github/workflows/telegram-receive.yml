@@ -32,10 +32,14 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install requests Pillow beautifulsoup4
+        run: pip install requests Pillow beautifulsoup4 boto3
 
       - name: Route Telegram command
         env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           APIFY_API_TOKEN: ${{ secrets.APIFY_API_TOKEN }}
