@@ -95,7 +95,7 @@ jobs:
         run: |
           set -euo pipefail
           cp acceptance/source.mp4 acceptance/work/source.mp4
-          python render_clips.py acceptance/work --aspect 9:16 --style podcast --out acceptance/clips
+          python render_clips.py acceptance/work --aspect 9:16 --style podcast --out "$PWD/acceptance/clips"
           count=$(find acceptance/clips -maxdepth 1 -name '*.mp4' -type f | wc -l)
           test "$count" -ge 1
 
