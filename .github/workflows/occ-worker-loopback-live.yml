@@ -1,8 +1,6 @@
 name: OpenChatCut Worker-only Loopback Diagnostic
 on:
-  push:
-    branches: [diag/openchatcut-in-container-port-inspection]
-    paths: ['.github/workflows/occ-worker-loopback-live.yml']
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
