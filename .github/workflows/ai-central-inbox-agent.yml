@@ -64,12 +64,6 @@ jobs:
           fi
           python -m pip install --disable-pip-version-check boto3 -q
           python scripts/ai_central_task_lifecycle.py --id "$INBOX_ID" --state "$state"
-      - uses: actions/upload-artifact@v4
+      - name: Private data never published as artifact from this public repository
         if: always()
-        with:
-          name: ai-central-inbox-report-${{ github.run_id }}
-          path: |
-            reviewed-central-meta.json
-            ai-central-report.json
-          retention-days: 2
-          if-no-files-found: ignore
+        run: echo 'User tasks and full model outputs are stored only in private R2, never in GitHub artifacts.'
