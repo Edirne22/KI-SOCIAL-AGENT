@@ -2,7 +2,7 @@ name: OpenChatCut Cloudflare PoC
 
 on:
   push:
-    branches: [main, diag/openchatcut-keepalive-live]
+    branches: [main, "diag/openchatcut-keepalive-live"]
     paths:
       - "infra/openchatcut-cloudflare/**"
       - ".github/workflows/openchatcut-cloudflare-poc.yml"
