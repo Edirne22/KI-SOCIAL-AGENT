@@ -1,0 +1,65 @@
+name: Block6 – Factory independent FFmpeg storage handoff
+on:
+  pull_request:
+    paths:
+      - "content_factory_media_production.py"
+      - "tests/test_content_factory_media_production.py"
+      - "scripts/block6_factory_ffmpeg_handoff.py"
+      - ".github/workflows/block6-factory-ffmpeg-handoff.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/block6-factory-ffmpeg-handoff.yml"
+permissions:
+  contents: read
+concurrency:
+  group: block6-factory-ffmpeg-handoff
+  cancel-in-progress: false
+jobs:
+  factory-offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install real FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+      - name: Python syntax and machine/plan regression
+        run: |
+          python -m compileall -q content_factory_media_production.py scripts/block6_factory_ffmpeg_handoff.py
+          python -m unittest -v tests.test_content_factory_media_production
+      - name: Real tracked fixture to Factory runner FFmpeg and local storage integrity
+        run: python -m scripts.block6_factory_ffmpeg_handoff
+  factory-live-private-r2:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: factory-offline
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install FFmpeg and boto3
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+          python -m pip install --disable-pip-version-check boto3
+      - name: Check private storage configuration (never print values)
+        shell: bash
+        run: |
+          set -euo pipefail
+          for k in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!k:-}" || { echo "MISSING_R2_CONFIGURATION=$k"; exit 1; }
+          done
+      - name: Actual Factory 15 second render and private R2 roundtrip
+        run: python -m scripts.block6_factory_ffmpeg_handoff --live-r2
