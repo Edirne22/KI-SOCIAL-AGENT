@@ -92,5 +92,5 @@ jobs:
           test -n "$OPENROUTER_API_KEY" || { echo 'OPENROUTER_KEY_MISSING';exit 1; }
       - name: Independent Nemotron + Kimi + OpenRouter free advice with no R2 private input
         run: |
-          python scripts/cloud_ai_central.py             --task-file ai-central/tasks/openchatcut-stability.json --free-team
+          python -m scripts.cloud_ai_central             --task-file ai-central/tasks/openchatcut-stability.json --free-team
           echo 'LIVE_TEAM_PROBE_COMPLETE: inspect roles and reported_model in private runner output; no public report uploaded.'
