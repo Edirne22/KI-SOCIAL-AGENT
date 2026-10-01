@@ -28,6 +28,17 @@ class Tests(unittest.TestCase):
         self.assertEqual([x["role"] for x in reviews],list(c.ROLES))
         self.assertEqual([a["provider"] for a in reviews[1]["attempts"]],["nvidia","openrouter"])
         self.assertTrue(all(x["status"]=="ANSWER" for x in reviews))
+    def test_free_review_scope_has_no_paid_provider_fallback(self):
+        self.assertEqual(set(c.FREE_ROLES),{"research","challenge"})
+        self.assertTrue(all(names==("openrouter",) for names in c.FREE_ROLES.values()))
+        used=[]
+        def fake(name,cfg,task,role):
+            used.append((name,cfg["models"]["default"]))
+            return {"role":role,"provider":name,"status":"ANSWER"}
+        cfg={"providers":{"openrouter":{"models":{"default":"openrouter/free"}}}}
+        result=c.dispatch(TASK,cfg,ask_fn=fake,roles=c.FREE_ROLES)
+        self.assertEqual(len(result),2)
+        self.assertEqual(used,[("openrouter","openrouter/free")]*2)
     def test_no_key_no_network(self):
         with patch.dict("os.environ",{},clear=True):
             result=c.ask("nvidia",CFG["providers"]["nvidia"],TASK,"diagnosis")
