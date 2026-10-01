@@ -7,7 +7,7 @@ SCHEMA="EDIRNE22-CONTROL-INBOX-V1"
 MAX_TEXT=2500
 def make_request(text, *, channel, source_id=None):
     if channel not in ("telegram","web"):raise ValueError("invalid channel")
-    if not isinstance(text,str) or not text.strip() or len(text)>MAX_TEXT or re.search(r"[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]",text):
+    if not isinstance(text,str) or not text.strip() or len(text)>MAX_TEXT or any(ord(ch) < 32 for ch in text):
         raise ValueError("invalid message")
     if source_id is not None and not re.fullmatch(r"[0-9]{1,18}",str(source_id)):
         raise ValueError("invalid source id")
