@@ -45,13 +45,13 @@ def choose(task_type, *, forced_provider=None, forced_model=None, available=None
             if not model:continue
         # This must be a measured probe result, not just a catalog listing.
         if available.get(provider,{}).get(model)!="INFERENCE_OK":
-            if forced_provider:
-                raise RoutingError("requested provider/model not live-verified; no fallback")
+            # Continue only within the locked Claude family, never into Gemini.
             continue
         if candidate["secret"]=="":
             raise RoutingError("invalid provider secret binding")
         return {"task":task_type,"provider":provider,"model":model,"secret_name":candidate["secret"],
                 "no_fallback":bool(forced_provider),"requires_user_approval":task.get("approval",True)}
+    if forced_provider:raise RoutingError("requested provider/model not live-verified; no fallback")
     raise RoutingError("no live-verified permitted provider; do not pretend task completed")
 
 def document_skill(output_format, requested_provider=None):
