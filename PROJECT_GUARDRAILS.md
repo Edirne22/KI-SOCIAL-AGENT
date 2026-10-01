@@ -564,3 +564,19 @@ ANALYSIEREN
 ---
 
 **Pflegeprinzip:** Neue dauerhaft relevante Fehlerklassen, Arbeitsregeln und Schutzmechanismen werden in dieser Datei ergänzt, damit sie unabhängig von einzelnen Chats und Handovers erhalten bleiben.
+
+## 14. FUNKTION VOR WERKZEUG – DAUERHAFTE BÜLENT-VISION (01.10.2026)
+
+**Verbindlicher Produktauftrag:** Bülent spricht natürlich mit der KI-Zentrale und/oder lädt eigene Bilder, Videos und andere Quellen hoch. Die Content-Fabrik übernimmt Aufnahme, Recherche mit belegbarer Herkunft, kreative Bearbeitung, Medienerstellung, technische/Fakten-QM und präsentiert fertige, tatsächlich überprüfbare Ergebnisse zur menschlichen Entscheidung. Bülent soll **keine Tools auswählen, starten oder Fehlversuche manuell dirigieren müssen**. Veröffentlichung bleibt ausschließlich an seine Human Authority nach Abschnitt 5 und 13 gebunden.
+
+**Grundsatz: Die Nutzerfunktion ist fest, die ausführenden Maschinen und Provider sind austauschbar.** Keine Architektur darf unnötig an einen bestimmten Editor, Anbieter, Container oder Modellnamen gekettet werden. Ersatz hinter stabilen Adaptern wählen und nur nach echten Capability-/Qualitäts-/Sicherheits- und E2E-Nachweisen aktivieren. Der Betriebsleiter trifft die technische Routing-/Fallback-Entscheidung; Bülent gibt Ziele, Material und Veröffentlichungsentscheidungen vor.
+
+**Proaktiver Blocker- und Ersatzprozess:**
+1. Vor jedem neuen Toolversuch bestehende Adapter, lokal und auf der vorgesehenen Runtime tatsächlich verfügbare Open-Source-/Free-Werkzeuge und die gepflegte Ideen-/Toolliste prüfen. Keine kostenpflichtige Infrastruktur ohne separate Erlaubnis.
+2. Einen konkreten Fehler mit Logs und Root Cause untersuchen. Nach höchstens zwei bis drei *sinnvoll unterschiedlichen*, begrenzten Versuchen mit gleichem externen Werkzeug bei weiterem externem Problem den funktionsfähigen Ersatzpfad priorisieren. Keine identischen Endlosläufe, keine Umgehung von QM oder Sicherheitsprüfungen. Ein sicherheitskritischer interner Fehler wird repariert und nicht durch Provider-Wechsel verdeckt.
+3. Kann ein alternativer Stack das **gleiche zugesagte Nutzerergebnis** liefern, anhand eines echten vollständigen Staffellaufs samt Negativkontrollen abnehmen und im produktiven Routing bevorzugen. Fehlgeschlagene Kandidaten und Ursache dokumentieren, später separat etwa auf einem x86-VPS evaluieren; keine ungeprüfte Behauptung, ein VPS löse das Problem.
+4. Statusmeldungen nennen erreichte **Funktionen und Nachweise**, nicht nur installierte Tools, grüne Einzeltests oder vermeintliche Autonomie. Scheitert ein Provider, darf nicht die gesamte Fabrik zum Stillstand kommen, wenn ein nachgewiesen sicherer Ersatz verfügbar ist.
+
+**Block 6 – priorisierte Arbeitsrichtung ab 01.10.2026:** FFmpeg als bereits nachgewiesener unabhängiger Video-Render-/Audio-/Caption-Pfad, Remotion als mögliche ergänzende Animationsstufe. Clip-Erstellung funktional über tatsächlich überprüfte Kandidaten abdecken: Chopify als Kandidat prüfen; ggf. PySceneDetect/Auto-Editor und FFmpeg nach echten Tests. **Chopify ist nicht allein aufgrund der Nennung LIVE oder integriert.** OpenChatCut und SupoClip sind für den derzeitigen Abschluss *keine zwingenden Abhängigkeiten*, bleiben separate spätere Evaluierungskandidaten, gegebenenfalls auf VPS. Privates R2 ist dauerhafter **Objektspeicher**, kein Ausführungsserver; tatsächlichen FFmpeg-Produktionsstandort separat nachweisen. OmniRoute bleibt bis zu neuer Entscheidung zurückgestellt.
+
+**Wiederaufnahme:** Diese Regel bei jedem neuen Chat, /BLOCKRUN, Projekt-Handover und vor neuer Werkzeugwahl zusammen mit dem jeweils **aktuellen** MASTER-SNAPSHOT lesen. Ältere Snapshots, Roadmaps und unverifizierte Toolnamen dürfen diese neuere Arbeitsentscheidung nicht überschreiben. Eine laufende Automation ersetzt keine dauerhafte interaktive Entwicklungs-/Rechnerausführung; tatsächlichen Status immer neu verifizieren.
