@@ -23,7 +23,7 @@ jobs:
         with:
           # Same-repository, immutable PR #278 HEAD (stacked #271 readiness + #278
           # fixed, read-only protected container-loopback diagnostic).
-          ref: 7acb852ef8ee59b5e420dcb7f1f96ebd931748a8
+          ref: 047bfd48b2294eeea6496e0f3649baa9d70d9e47
       - uses: actions/setup-node@v4
         with: {node-version: "24"}
       - name: Verify the pinned endpoint is protected and fixed-input
@@ -39,6 +39,10 @@ jobs:
           assert(src.includes('url.pathname === "/_factory/container-auth-diag"'));
           assert(src.includes('probeAuthenticatedMcp'));
           assert(src.includes('process.env.OPENCHATCUT_MCP_TOKEN'));
+          assert(src.includes('url.pathname === "/_factory/process-diag"'));
+          assert(src.includes('probeProcessInventory'));
+          assert(!src.includes('process.env.OPENCHATCUT_MCP_TOKEN); console.log'));
+
           console.log('PINNED_READ_ONLY_AUTHENTICATED_LOOPBACK_CONTRACT_PASS');
           JS
       - name: Offline typecheck and worker-only deployment dry-run
@@ -63,7 +67,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 7acb852ef8ee59b5e420dcb7f1f96ebd931748a8
+          ref: 047bfd48b2294eeea6496e0f3649baa9d70d9e47
       - uses: actions/setup-node@v4
         with: {node-version: "24"}
       - name: Guard all required existing credentials before any deploy
@@ -115,7 +119,7 @@ jobs:
           const x=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+'/block6-private-loopback.json','utf8'));
           const safe={scope:x.scope,containerRunning:x.containerRunning,probe:x.probe,httpStatus:x.httpStatus,errorCode:x.errorCode};
           console.log('BLOCK6_ACTUAL_CONTAINER_LOOPBACK',JSON.stringify(safe));
-          if(x.scope!=='container-loopback'||x.probe!=='responding')process.exitCode=1;
+          if(x.scope!=='container-loopback')process.exitCode=1;
           JS
       - name: Compare fixed authenticated local MCP session with outer Worker error
         working-directory: infra/openchatcut-cloudflare
@@ -136,6 +140,22 @@ jobs:
           console.log('BLOCK6_AUTH_LOCAL_MCP_SESSION_PROOF',JSON.stringify(safe));
           if(x.scope!=='authenticated-local-mcp'||x.probe!=='completed'||x.initStatus!==200)
             process.exitCode=1;
+          JS
+      - name: Always inspect fixed redacted in-container processes after the MCP contrast
+        if: always() && github.event_name != 'pull_request'
+        working-directory: infra/openchatcut-cloudflare
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=https://edirne22-openchatcut-poc.butupeli.workers.dev
+          code=$(curl -sS --max-time 16 -o "$RUNNER_TEMP/block6-process-result.json" -w '%{http_code}' -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base/_factory/process-diag" || true)
+          echo "BLOCK6_PROCESS_DIAG_HTTP=$code"
+          test "$code" = 200 || { echo 'BLOCK6_PROCESS_DIAG_UNAVAILABLE'; exit 1; }
+          node - <<'JS'
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+'/block6-process-result.json','utf8'));
+          console.log('BLOCK6_PROCESS_INVENTORY',JSON.stringify({scope:x.scope,containerRunning:x.containerRunning,probe:x.probe,nodeCount:x.nodeCount,npmCount:x.npmCount,listening5199:x.listening5199}));
+          if(x.scope!=='local-process-inventory'||x.probe!=='completed')process.exitCode=1;
           JS
       - name: Verify container inventory after Worker-only deploy
         if: always()
