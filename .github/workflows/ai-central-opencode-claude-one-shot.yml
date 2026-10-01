@@ -1,8 +1,5 @@
 name: OpenCode Real Claude One-Shot
 on:
-  push:
-    branches: [feat/ai-central-model-skills-opencode]
-    paths: ['.github/workflows/ai-central-opencode-claude-one-shot.yml']
   workflow_dispatch:
 permissions: {contents: read}
 jobs:
