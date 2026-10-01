@@ -324,6 +324,19 @@ ANALYSE DES GESAMTWEGS
 
 Ein grüner Einzeltest ersetzt **niemals** den Staffellauf. Ein simulierter Adaptertest darf **nicht** als echter Live-E2E-Test eines externen Tools ausgegeben werden.
 
+### 12.5 Maschinen-, API- und CLI-Untersuchung vor Einbau
+
+Vor dem Einbau oder der Integration einer neuen Maschine, API, CLI oder eines externen Services muss zuerst die offizielle Dokumentation in der genau verwendeten Version vollständig untersucht werden:
+- Prereqs & Systemanforderungen
+- Lifecycle & Boot-Verhalten
+- Port-Readiness & Probe-Mechanismen
+- Ressourcen & System-Limits
+- Persistenz & Session Storage
+- Rechte & Token/Auth-Modell
+- Deployment-, Container- & Rollout-Verhalten
+- Logging, Telemetrie & Exit-Codes
+- Recovery-, Disconnect- & Retry-Strategien
+
 
 
 ## 13. BLOCKRUN – verbindliche End-to-End-Durcharbeitung
