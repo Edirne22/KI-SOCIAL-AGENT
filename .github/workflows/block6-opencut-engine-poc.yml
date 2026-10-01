@@ -1,0 +1,171 @@
+name: Block 6 OpenCut Engine PoC
+
+on:
+  push:
+    branches: [feat/block6-opencut-engine-poc]
+    paths:
+      - ".github/workflows/block6-opencut-engine-poc.yml"
+      - "docs/BLOCK6_VIDEO_TOOL_BATTLE.md"
+  pull_request:
+    paths:
+      - ".github/workflows/block6-opencut-engine-poc.yml"
+      - "docs/BLOCK6_VIDEO_TOOL_BATTLE.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  opencut-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OPENCUT_REPO: https://github.com/floomhq/opencut.git
+      OPENCUT_COMMIT: 57dedbc606e17cc2013f2ca5fcbf8cc69266e488
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Checkout pinned OpenCut engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none "$OPENCUT_REPO" "$RUNNER_TEMP/opencut"
+          cd "$RUNNER_TEMP/opencut"
+          git checkout "$OPENCUT_COMMIT"
+          test "$(git rev-parse HEAD)" = "$OPENCUT_COMMIT"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install and verify host media tools
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          ffmpeg -version | head -1
+          ffprobe -version | head -1
+
+      - name: Install pinned engine
+        working-directory: /home/runner/work/_temp/opencut
+        run: npm install --no-audit --no-fund
+
+      - name: Upstream tests
+        working-directory: /home/runner/work/_temp/opencut
+        run: npm test
+
+      - name: Typecheck and build
+        working-directory: /home/runner/work/_temp/opencut
+        run: |
+          npm run typecheck
+          npm run build
+
+      - name: Build deterministic input fixture
+        working-directory: /home/runner/work/_temp/opencut
+        run: |
+          set -euo pipefail
+          mkdir -p public
+          ffmpeg -hide_banner -loglevel error -y \
+            -f lavfi -i "testsrc2=size=1280x720:rate=30" \
+            -f lavfi -i "sine=frequency=880:sample_rate=48000" \
+            -t 32 -c:v libx264 -pix_fmt yuv420p -c:a aac -shortest public/facecam.mp4
+          test -s public/facecam.mp4
+          ffprobe -v error -show_entries format=duration -of default=nw=1 public/facecam.mp4
+
+      - name: Prepare vertical caption acceptance composition
+        working-directory: /home/runner/work/_temp/opencut
+        shell: bash
+        run: |
+          set -euo pipefail
+          sed -i 's/width: 1920/width: 1080/' src/examples/quickstart/config.ts
+          sed -i 's/height: 1080/height: 1920/' src/examples/quickstart/config.ts
+          cat > src/examples/quickstart/timeline.ts <<'EOF'
+          import type { TimelineSegment } from "../../engine";
+          export const TIMELINE: TimelineSegment[] = [{
+            id: "factory-acceptance",
+            type: "facecam-full",
+            facecamStartSec: 0,
+            durationSec: 30,
+            faceBubble: "hidden",
+            showSubtitles: true,
+            showTitleCard: true,
+            showEndCard: true,
+            keywords: [{text:"EDIRNE 22",startSec:4,endSec:8}],
+          }];
+          EOF
+          cat > src/examples/quickstart/subtitles.ts <<'EOF'
+          import type { SubtitleSegment } from "../../engine";
+          export const SUBTITLE_SEGMENTS: SubtitleSegment[] = [
+            {start:0.5,end:4.5,text:"Block sechs echter Render Test",words:[
+              {word:"Block",start:0.5,end:1.2},{word:"sechs",start:1.2,end:2.0},
+              {word:"echter",start:2.0,end:2.8},{word:"Render",start:2.8,end:3.6},
+              {word:"Test",start:3.6,end:4.5}]},
+            {start:10,end:14,text:"Untertitel Audio Hochformat",words:[
+              {word:"Untertitel",start:10,end:11.3},{word:"Audio",start:11.3,end:12.5},
+              {word:"Hochformat",start:12.5,end:14}]}
+          ];
+          EOF
+
+      - name: Real 5s headless render
+        working-directory: /home/runner/work/_temp/opencut
+        run: npm run test-render
+
+      - name: Real 15s and 30s vertical renders
+        working-directory: /home/runner/work/_temp/opencut
+        run: |
+          set -euo pipefail
+          timeout 10m npx remotion render src/examples/quickstart/index.ts Quickstart --frames=0-449 out/factory-15s.mp4
+          timeout 10m npx remotion render src/examples/quickstart/index.ts Quickstart --frames=0-899 out/factory-30s.mp4
+
+      - name: Media acceptance
+        working-directory: /home/runner/work/_temp/opencut
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s out/quickstart-test-5s.mp4
+          ffprobe -v error -select_streams v:0             -show_entries stream=codec_name,width,height,duration             -of json out/quickstart-test-5s.mp4 | tee "$RUNNER_TEMP/opencut-ffprobe.json"
+          python3 - <<'PY'
+          import json, os
+          p=os.environ["RUNNER_TEMP"]+"/opencut-ffprobe.json"
+          d=json.load(open(p,encoding="utf-8"))
+          s=d["streams"][0]
+          assert s["codec_name"] in {"h264","vp9","av1","hevc"}, s
+          assert int(s["width"]) > 0 and int(s["height"]) > 0, s
+          assert float(s.get("duration") or 0) > 0, s
+          print("OPENCUT_REAL_RENDER_PASS", s)
+          PY
+
+      - uses: actions/setup-python@v5
+        if: github.event_name == 'push'
+        with:
+          python-version: "3.12"
+
+      - name: Install R2 client
+        if: github.event_name == 'push'
+        run: python -m pip install --disable-pip-version-check boto3
+
+      - name: Real OpenCut render to private R2 with SHA roundtrip
+        if: github.event_name == 'push'
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          PYTHONPATH: ${{ github.workspace }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import tempfile, os
+          from media_storage import R2Storage
+          src=Path(os.environ["RUNNER_TEMP"])/"opencut/out/factory-30s.mp4"
+          assert src.is_file() and src.stat().st_size > 0
+          with tempfile.TemporaryDirectory() as td:
+              store=R2Storage.from_env(cache_root=Path(td)/"cache")
+              ref=store.put_file(src,provenance="github-actions:block6-opencut-real-render",mime_type="video/mp4")
+              restored=store.resolve_local(ref)
+              assert restored.read_bytes()==src.read_bytes()
+              print("OPENCUT_R2_SHA_ROUNDTRIP_PASS",ref.media_id,ref.sha256,ref.size_bytes,ref.mime_type)
+          PY

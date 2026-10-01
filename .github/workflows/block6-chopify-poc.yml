@@ -1,0 +1,136 @@
+name: Block 6 Chopify PoC
+
+on:
+  push:
+    branches: [feat/block6-opencut-engine-poc]
+    paths:
+      - ".github/workflows/block6-chopify-poc.yml"
+      - "docs/BLOCK6_VIDEO_TOOL_BATTLE.md"
+      - "chopify_adapter.py"
+      - "scripts/chopify_local_bridge.py"
+      - "content_factory_media_production.py"
+      - "tests/test_chopify_adapter.py"
+      - "tests/test_content_factory_media_production.py"
+  pull_request:
+    paths:
+      - ".github/workflows/block6-chopify-poc.yml"
+      - "docs/BLOCK6_VIDEO_TOOL_BATTLE.md"
+      - "chopify_adapter.py"
+      - "scripts/chopify_local_bridge.py"
+      - "content_factory_media_production.py"
+      - "tests/test_chopify_adapter.py"
+      - "tests/test_content_factory_media_production.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  chopify-real:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CHOPIFY_REPO: https://github.com/mehbul/chopify.git
+      CHOPIFY_COMMIT: 99fa3e3d81be7ce35debf1e302a5c5da75f53f62
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+
+      - name: Factory syntax and Block 6 regression
+        run: |
+          python -m py_compile chopify_adapter.py scripts/chopify_local_bridge.py content_factory_media_production.py tests/test_chopify_adapter.py tests/test_content_factory_media_production.py
+          python -m unittest -v tests.test_chopify_adapter tests.test_content_factory_media_production
+
+      - name: Install system media tools
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg espeak-ng
+          ffmpeg -hide_banner -encoders 2>/dev/null | grep -q libx264
+          ffmpeg -hide_banner -encoders 2>/dev/null | grep -Eq '(^| )aac( |$)'
+
+      - name: Checkout pinned Chopify
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none "$CHOPIFY_REPO" "$RUNNER_TEMP/chopify"
+          cd "$RUNNER_TEMP/chopify"
+          git checkout "$CHOPIFY_COMMIT"
+          test "$(git rev-parse HEAD)" = "$CHOPIFY_COMMIT"
+
+      - name: Install Chopify
+        working-directory: /home/runner/work/_temp/chopify
+        run: |
+          python -m pip install --disable-pip-version-check -r requirements.txt pytest "av<19"
+
+      - name: Upstream regression
+        working-directory: /home/runner/work/_temp/chopify
+        run: pytest -q
+
+      - name: Chopify preflight
+        working-directory: /home/runner/work/_temp/chopify
+        run: |
+          python - <<'PY'
+          import chopify
+          problems=chopify.check_environment()
+          assert not problems, problems
+          print("CHOPIFY_PREFLIGHT_PASS")
+          PY
+
+      - name: Build deterministic spoken longform fixture
+        working-directory: /home/runner/work/_temp/chopify
+        run: |
+          set -euo pipefail
+          mkdir -p acceptance/work acceptance/clips
+          espeak-ng -s 145 -w acceptance/speech.wav "Here is the thing nobody tells you about building a motorcycle content channel. The secret is consistency, not luck. The biggest mistake is copying every viral video instead of building a repeatable system. First choose one strong story. Then explain why it matters. Finally end with one complete thought that the audience can remember."
+          ffmpeg -hide_banner -loglevel error -y \
+            -f lavfi -i "testsrc2=size=1280x720:rate=30" \
+            -stream_loop 8 -i acceptance/speech.wav \
+            -t 55 -c:v libx264 -pix_fmt yuv420p -c:a aac -shortest acceptance/source.mp4
+          ffprobe -v error -show_entries format=duration -of default=nw=1 acceptance/source.mp4
+
+      - name: Real local Whisper transcription
+        working-directory: /home/runner/work/_temp/chopify
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from download_and_transcribe import transcribe
+          src=Path("acceptance/source.mp4").resolve()
+          transcribe(src,Path("acceptance/work"),"tiny","cpu","int8")
+          PY
+
+      - name: Real heuristic clip selection
+        working-directory: /home/runner/work/_temp/chopify
+        run: |
+          python score_clips.py acceptance/work --max-clips 2 --min-len 8 --max-len 25
+          test -s acceptance/work/segments.json
+
+      - name: Real 9x16 face-reframe and caption render
+        working-directory: /home/runner/work/_temp/chopify
+        run: |
+          set -euo pipefail
+          cp acceptance/source.mp4 acceptance/work/source.mp4
+          python render_clips.py acceptance/work --aspect 9:16 --style podcast --out "$PWD/acceptance/clips"
+          count=$(find acceptance/clips -maxdepth 1 -name '*.mp4' -type f | wc -l)
+          test "$count" -ge 1
+
+      - name: Media acceptance
+        working-directory: /home/runner/work/_temp/chopify
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          clips=sorted(Path("acceptance/clips").glob("*.mp4"))
+          assert clips
+          for p in clips:
+              raw=subprocess.check_output(["ffprobe","-v","error","-show_entries","stream=codec_type,codec_name,width,height:format=duration","-of","json",str(p)],text=True)
+              d=json.loads(raw)
+              vids=[s for s in d["streams"] if s["codec_type"]=="video"]
+              aud=[s for s in d["streams"] if s["codec_type"]=="audio"]
+              assert vids and aud,(p,d)
+              assert (int(vids[0]["width"]),int(vids[0]["height"]))==(1080,1920),(p,vids[0])
+              assert float(d["format"]["duration"])>0,(p,d)
+              assert p.with_suffix(".meta.json").is_file(),p
+              assert p.with_suffix(".png").is_file(),p
+              print("CHOPIFY_REAL_CLIP_PASS",p.name,d["format"]["duration"])
+          PY

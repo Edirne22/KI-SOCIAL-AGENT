@@ -29,7 +29,7 @@ class MediaProductionPlanner:
         ids=tuple(m.media_id for m in job.media)
         steps=[]
         if brief.content_format in (ContentFormat.REEL,ContentFormat.VIDEO):
-            if ids: steps.append(MediaStep("clip","clip","supoclip",ids))
+            if ids: steps.append(MediaStep("clip","clip","chopify",ids,(("aspect","9:16"),("style","podcast"),("whisper_model","tiny"))))
             else:
                 prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
                 steps.append(MediaStep("generate","generate","agnes_video",(),(("prompt",prompt),("language",brief.language))))
