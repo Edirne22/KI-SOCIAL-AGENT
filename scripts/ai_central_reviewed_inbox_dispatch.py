@@ -40,7 +40,7 @@ def select_draft(client, bucket, *, date, task_id):
     if len(matches) != 1:
         raise ValueError("inbox task ID absent or ambiguous")
     key, draft = matches[0]
-    if draft.get("schema") != "AI-INBOX-V1" or draft.get("status") != "DRAFT_REQUIRES_REVIEW" or draft.get("auto_dispatch") is not False:
+    if draft.get("schema") != "AI-INBOX-V1" or draft.get("status") not in ("DRAFT_REQUIRES_REVIEW", "QUEUED_FREE_REVIEW") or draft.get("auto_dispatch") is not False:
         raise ValueError("draft not eligible for manual review")
     if draft.get("kind") != "message" or draft.get("channel") not in ("telegram", "web"):
         raise ValueError("only plain text drafts are eligible; file tasks need separate sandbox")
