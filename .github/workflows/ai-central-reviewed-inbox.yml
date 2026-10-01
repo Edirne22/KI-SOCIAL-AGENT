@@ -52,10 +52,5 @@ jobs:
           INBOX_DATE: ${{ inputs.inbox_date }}
           INBOX_ID: ${{ inputs.inbox_id }}
         run: python scripts/ai_central_reviewed_inbox_dispatch.py --date "$INBOX_DATE" --id "$INBOX_ID"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: inbox-review-private-${{ github.run_id }}
-          path: reviewed-central-task.json
-          retention-days: 1
       - name: Stop at user review gate
         run: echo "R2 inbox draft successfully transformed; NO automatic AI inference, code modifications or deployment."
