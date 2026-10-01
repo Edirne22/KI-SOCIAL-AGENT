@@ -1,0 +1,1 @@
+{"name":"edirne22-ai-central-dashboard","main":"src/index.js","compatibility_date":"2026-10-01","assets":{"directory":"./public","binding":"ASSETS"},"r2_buckets":[{"binding":"AI_CENTRAL_R2","bucket_name":"SET_PRIVATE_BUCKET_NAME_BEFORE_DEPLOY"}],"observability":{"enabled":true}}

@@ -1,0 +1,38 @@
+# Edirne 22 KI-Leitzentrale: gemeinsame Web-/Telegram-Vorschau
+
+**Status:** Erstes verdrahtetes MVP auf gestapeltem Draft-PR #281, baut auf #277. Kein Produktions-Deploy, kein Auto-Publishing und kein autonomer Coding-Agent durch diese Änderung.
+
+## Gemeinsame Datenquelle
+
+- Vorhandener Telegram-Eingang `telegram_router.py` bleibt **einziger Telegram-getUpdates-Verbraucher**. Nur die expliziten Zusatzbefehle `/zentrale status`, `/zentrale hilfe`, `/zentrale auftrag <Text>` sind neu.
+- Web und Telegram verwenden denselben privaten R2-Bucket und dieselbe Objektfamilie `ai-central/v1/inbox/YYYY-MM-DD/*.json`, Schema `AI-INBOX-V1`.
+- Nachrichten und hochgeladene Dateien erhalten Status `DRAFT_REQUIRES_REVIEW` und `auto_dispatch=false`. Ein Entwurf bewirkt **keinen Modellaufruf**, keine GitHub-Aktion und keine Content-Freigabe.
+- Telegram-Eingaben erhalten eine deterministische ID aus Chat/Update-ID, damit normale GitHub-Poller-Retries keine Duplikate erzeugen. Der vorhandene Telegram-Chat-ID-Check bleibt vorgelagert.
+- Vorhandene Instagram-/MotoGP- und Freigabekommandos bleiben unangetastet. `content_factory_control_center.py` bleibt die spätere Grenze für echte Freigaben; dieser PR erweitert sie nicht.
+- Web: passwortähnlicher privater API-Schlüssel, **nur im Tab-Speicher**, responsive Chat, bis zu 8 MB private Datei-/Audioaufnahme, gemeinsame Entwurfsliste und echte GitHub-Run-Zustände. Sprache wird zunächst als Audiodatei hochgeladen; **Transkription kommt später**. Status-Polling alle zehn Sekunden ist kein zeilengenaue Echtzeit-Konsole.
+- API-Upload/Messaging sind gegen fremde Origins, nicht unterstützte Formate, übergroße Nutzlasten und offensichtliche Schlüssel im Nachrichtentext abgesichert. Hochgeladene Inhalte sind weiter untrusted; kein automatisches Weiterreichen an Modelle.
+
+## Notwendige Konfiguration VOR privatem Live-Deploy
+
+1. Prüfe, dass #277 vor #281 geprüft/übernommen ist. Stacked-PR #281 basiert auf dessen Branch, **nicht** auf dem OpenChatCut-Container.
+2. Stelle sicher, dass `R2_BUCKET_NAME`, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN` als GitHub Secrets am richtigen Repo vorhanden sind. Die vorhandenen Live-Tests belegen R2-Schreibfunktion, nicht automatisch alle Cloudflare Worker-Berechtigungen.
+3. **Neu erforderlich:** einen mindestens 24 Zeichen langen zufälligen `AI_DASHBOARD_TOKEN` in GitHub Actions Secrets anlegen. **Keinen** API-Key im Chat oder als GitHub Commit teilen. Dieser erste einpersonige Token ist ein MVP, noch kein Cloudflare Access/SSO.
+4. Nach gesonderter Freigabe und Merge: GitHub Actions → `AI Central Dashboard – private manual Cloudflare deploy` → Run workflow. Das Deployment prüft vorher die Secrets und Worker-Tests, trägt den tatsächlichen Bucketnamen ein und setzt nach Deploy den privaten Worker Secret. Vor gesetztem Secret liefert die Dashboard-API HTTP 401. Worker Static Assets können technisch öffentlich abrufbar sein und enthalten keine internen Daten.
+5. Telegram-Poller erhält die vier bestehenden R2-Secrets erst nach Merge dieser Änderungen. Es gibt **keinen zweiten Poller**, kein neues Telegram Bot Token und keine parallelen `getUpdates`-Konsumenten.
+6. Danach mit falschem und richtigem Token testen: Status 401 vs. erfolgreiche Liste; im Browser eine harmlose Nachricht speichern und über `/zentrale status` sehen; `/zentrale auftrag Testauftrag` senden und im Dashboard kontrollieren. Keine sensiblen Testdaten.
+7. Erst anschließend Aufgaben-Freigabeschicht, GitHub Dispatch, echte redigierte Log-/Code-Ereignisse und STT in getrennten PRs ergänzen. Keine Freigaben durch Chatmodell-Selbstauskunft.
+
+## Grenzen und Ausweichlösung
+
+R2 ist **Speicher, kein ausführender Server**. Die statischen Dateien sind mit geringem Aufwand auch über einen VPS bereitzustellen; die Worker-API ist zunächst ein Cloudflare-Adapter. Ein VPS kann später dieselben Endpunkte und das S3-kompatible R2-Schema nutzen. Dashboard- und Telegram-Prüfungen sind rein offline und dürfen die instabilen OpenChatCut-Container nicht starten. R2-Listings dieses ersten MVP zeigen die letzten Einträge innerhalb der aktuell ersten 100 Treffer; für größeren Dauerbetrieb braucht es einen paginierten oder indexierten Verlauf.
+
+
+## Festgelegte Bedienung: KI-Mannschaft über Telegram und Dashboard (nächste, gesondert getestete Stufe)
+
+Bülents Anforderung vom 01.10.2026: **Bestehender Telegram-Bot, bestehende GitHub-Workflows und vorhandene Markdown-Memory bleiben unverändert funktionsfähig.** Die KI-Zentrale ist ein zusätzlicher expliziter Eingang, kein zweiter Telegram-Poller. Gewünschte Spracheingabe/Freitext läuft zunächst unter `/ki <deine Frage oder Auftrag>`; `/ki status` zeigt Auftrag und Laufzustand. Keine Überschneidung mit vorhandenen Racing-/Freigabekommandos. `/zentrale auftrag <Text>` bleibt bis zur Implementierung der Aktivierungs-/Freigabekette ausdrücklich nur ein R2-Entwurf, **kein automatischer Multi-Agentenlauf**. Vor tatsächlicher Aktivierung /ki durch echte End-to-End-Tests und Nutzerfreigabe absichern.
+
+Geplante asynchrone Kette: Der **bestehende** Telegram-Router nimmt nur explizite `/ki`-Befehle an, prüft die erlaubte Telegram-Chat-ID, protokolliert ein einzelnes dedupliziertes Auftragsticket in R2 und antwortet sofort mit einer Ticket-ID. Ein begrenzter, separat ausgelöster GitHub-Workflow liest nur validierte freigegebene Tickettypen; wählt anhand von Aufgabe/Kosten/Zeitlimit geeignete Provider (nicht alle verfügbaren Modelle blind), beauftragt mindestens zwei unabhängige Rollen, sammelt datierte Quellen/Ergebnisse und lässt eine Master-Synthese divergierende Aussagen markieren. Die finale Antwort erhält denselben Ticketbezug und wird in privatem R2 gespeichert. Ein genau ein einziges Delivery-Verfahren schreibt die fertige Zusammenfassung an dieselbe berechtigte Telegram-Chat-ID und stellt sie im Dashboard dar. Zustände explizit QUEUED, RUNNING, NEEDS_REVIEW, DONE, FAILED; Fehlschläge dürfen keine fiktive Erfolgsmeldung produzieren. Es gibt pro Ticket genau eine Telegram-Abschlussbenachrichtigung; Polling darf nicht mit neuem getUpdates konkurrieren. Keine eigenständigen Code-Merges, Publikationen oder Deploys durch Master-Modell: explizite Bülent-Freigabe bleibt zwingend.
+
+**Zugang:** Ein Web-Dashboard erfordert **keinen SSH-Zugang**. SSH ist Serveradministration und darf nicht als Browseranmeldung verwendet werden. Falls Bülent bereits Cloudflare Access aktiviert hat, in einer gesonderten Prüfung Worker/Route/Policy verifizieren und damit einen privaten Identitäts-Login einrichten (nach offiziellen Cloudflare-Dokumenten); der aktuell implementierte `AI_DASHBOARD_TOKEN` ist lediglich eine vorläufige geschützte API und ersetzt kein verifiziertes Access-Login. Keine Cloudflare Access-Konfiguration oder vorhandene Policies blind überschreiben; bei VPS-Wechsel API-/Session-Adapter austauschen, R2/GitHub-Workflow unverändert lassen.
+
+**Container-Wake-up:** Telegram-/Dashboard-/Agent-Zentrale läuft auf GitHub Actions + Standard-Worker + R2. Diese Strecke **braucht und weckt den instabilen OpenChatCut-Container nicht**. Nur ein ausdrücklich beauftragter Video-/OpenChatCut-Job darf nach bestandenem separaten Readiness-/Warm-up-Gate den Video-Container aufwecken. Cloudflare R2 selbst kann keine KI-Aufträge ausführen und hält kein Modell im Arbeitsspeicher.
