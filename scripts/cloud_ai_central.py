@@ -88,11 +88,25 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--task-file",required=True)
     parser.add_argument("--output",default="ai-central-report.json")
+    parser.add_argument("--inbox-task-id",default="")
+    parser.add_argument("--free-only",action="store_true")
     args=parser.parse_args()
     task=validate_task(json.loads(Path(args.task_file).read_text(encoding="utf-8")))
     config=json.loads(CONFIG.read_text(encoding="utf-8"))
+    if args.free_only:
+        # Explicitly isolated no-paid-routing scope; only verified free-tier account
+        # opt-in via job env permits inference. Never invoke Claude or billing fallback.
+        if os.getenv("AI_CENTRAL_FREE_TIER_VERIFIED") != "true":
+            raise SystemExit("FREE_TIER_NOT_VERIFIED: no model inference attempted")
+        config["providers"]={k:v for k,v in config["providers"].items() if k in ("groq",)}
     review=dispatch(task,config)
     payload=packet(task,review,os.environ.get("GITHUB_RUN_ID","0"))
+    if args.inbox_task_id:
+        if not re.fullmatch(r"[a-zA-Z0-9_-]{10,64}",args.inbox_task_id):
+            raise ValueError("invalid inbox task ID")
+        payload["inbox_id"]=args.inbox_task_id
+        # Reports are indexed under stable inbox ID for shared Dashboard / Telegram retrieval.
+        payload["task_id"]=args.inbox_task_id
     Path(args.output).write_text(json.dumps(payload,indent=2,ensure_ascii=False),encoding="utf-8")
     print(json.dumps({"schema":SCHEMA,"status":payload["status"],
          "roles":[{"role":x["role"],"status":x["status"],"providers_tried":[a["provider"] for a in x["attempts"]]} for x in review]}))
