@@ -1,5 +1,8 @@
 # MASTER-SNAPSHOT – KI-SOCIAL-AGENT
 
+> **AKTUELLER NEUER PROJEKT-INDEX V6 (01.10.2026, ca. 20:18 MESZ):** Neue Bülent-Vision „autonomes KI-Unternehmen“ und genauer Restart: `docs/PROJEKT_UEBERGABE_6_2026-10-01_KI_UNTERNEHMEN.md`. Kompakter Stand: `snapshots/SNAPSHOT_2026-10-01_KI_UNTERNEHMEN_PRE_STEP1_V6.md`; Sicherung: `docs/BACKUP_PROTOKOLL_2026-10-01_V6.md`; Code-Backup bei `e1ebc471f22b8ad1512ac42dd30080478590413c`: `backup/2026-10-01-ai-central-vision-pre-stage2-v6`. V5-Vollübergabe liegt noch in offenem DRAFT-PR #286 (nicht main). PR #287 wurde gemergt; Live-Lauf #36903543954: NVIDIA Nemotron+Kimi beantworteten Aufgaben, OpenRouter-Gegenprüfung nicht; separater OmniRoute-Test schlug fehl und OmniRoute ist zurückgestellt. Bülent hat **Schritt 1** gestartet: NVIDIA/Gemini/Groq als tatsächliches kostenkontrolliertes Team in bestehende Dashboard/Telegram/R2-Kette bringen; danach Produktionsleiter/Ressourcenmanager, Block 6, gemeinsamer Deep-Research/Dauerbetrieb. Bei Wiederaufnahme GitHub-HEAD/PRs/Actions neu prüfen und `PROJECT_GUARDRAILS.md` zuerst lesen. Diese Zeile ist Plan/Snapshot, KEINE Behauptung über noch nicht implementierte Funktionen.
+
+
 **Stand:** 30.09.2026, ca. 22:49 Europe/Berlin  
 **Repository:** `Edirne22/KI-SOCIAL-AGENT`  
 **Funktion dieser Datei:** zentraler Einstieg / Inhaltsverzeichnis für den aktuellen Projektstand.
