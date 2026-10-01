@@ -1,0 +1,15 @@
+# Edirne22 private Dashboard – integration slice
+
+Status: **Preview-only PR**, NOT DEPLOYED or publicly accessible. Both browser and existing Telegram commands write compatible `EDIRNE22-CONTROL-INBOX-V1` objects to the **same private existing R2 bucket**. This does not depend on OpenChatCut Containers or a laptop.
+
+## Runtime
+- Worker static assets: responsive mobile chat, file upload <=8 MiB, user-triggered microphone recorder, honest R2 inbox polling every 8 seconds. No fake code execution logs; real GitHub status stream and STT are separate next phases.
+- API `GET /api/ping`, `GET /api/tasks`, `POST /api/tasks`, `POST /api/uploads`. All API endpoints require **secret** `CONTROL_CENTER_TOKEN` via `x-control-center-token`, min 24 chars; same-origin browser policy, no public CORS. Token exists only in browser memory per tab, not localStorage or R2; browser UI cannot display keys in logs. **Important**: bearer token is only MVP access; before public deployment add Cloudflare Access or equivalent identity with rate limits + audit, then rotate the gateway token. Avoid shared secret in a public README, query string or mobile screenshot.
+- Configure `AI_CENTRAL_R2` binding in `wrangler.jsonc` to actual *existing private bucket*, never invent or publish its name. Use `wrangler secret put CONTROL_CENTER_TOKEN` for the new preview Worker in the correct account. Do not deploy without explicit permission and proper access controls.
+- Telegram ingress: existing `telegram_router.py` recognizes **only** explicit `/zentrale Text` or `zentrale Text` commands from the existing allowed chat, uses existing R2 GitHub Actions secrets, and only ACKs after a confirmed R2 write. Current Telegram polling cycle remains unchanged. The existing publishing/fact QM approval code is untouched.
+- Task schema and R2 prefixes: browser `ai-central/v1/inbox/<uuid>.json`; Telegram idempotent by update ID under `ai-central/v1/telegram-updates/<update-id>.json`. Both display as `PENDING_REVIEW` without execution or approval. Browser uploads under `ai-central/v1/uploads/<uuid>`; they are private pending data, not automatically passed to models.
+- Integration with #277 next: implement separate validated claim/approval/queue worker + GitHub Actions dispatch adapter; never execute raw chat text directly. Common status/report references can join on canonical request_id. R2 LIST is object storage, not a reliable queue. A production queue needs explicit acknowledgment and dedupe / D1 or Cloudflare Queues.
+- Portability: Keep frontend static and JSON transport simple to move gateway from Worker to Node on x86 VPS, while preserving R2 S3 keys. Auth implementation for VPS must be changed to a secure suitable backend, not copied blindly.
+- Security acceptance before deployment: auth on each API, origin, malformed/oversized payload, MIME allowlist, false approval, replay, Telegram duplicate update, empty secrets, and throttling. No public preview endpoint or upload without abuse-rate limits.
+
+This is the first **real wiring** of Telegram and browser into one R2 inbox, NOT a claim that a public URL, live GitHub codebox, STT, or push events already work.
