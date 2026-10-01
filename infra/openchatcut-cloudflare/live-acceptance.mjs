@@ -66,6 +66,15 @@ try {
   const recoveryClient=new Client({name:"edirne22-disconnect-recovery",version:"1.0.0"});
   await recoveryClient.connect(recoveryTransport);
   const recoveryCall=async(name,args={})=>{console.log("MCP RECOVERY",name);const x=await recoveryClient.callTool({name,arguments:args});if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x};
+  let recoveryTools=(await recoveryClient.listTools()).tools;
+  if(!recoveryTools.some(t=>t.name==="list_edit_sessions") || !recoveryTools.some(t=>t.name==="recover_edit_session")){
+    assert(recoveryTools.some(t=>t.name==="ToolSearch"),"recovery session exposes neither recovery tools nor ToolSearch");
+    const discovered=data(await recoveryCall("ToolSearch",{query:"list_edit_sessions recover_edit_session",limit:12}));
+    console.log("RECOVERY_TOOLSEARCH",JSON.stringify(discovered));
+    recoveryTools=(await recoveryClient.listTools()).tools;
+  }
+  assert(recoveryTools.some(t=>t.name==="list_edit_sessions"),"ToolSearch did not expose list_edit_sessions");
+  assert(recoveryTools.some(t=>t.name==="recover_edit_session"),"ToolSearch did not expose recover_edit_session");
   const listed=data(await recoveryCall("list_edit_sessions",{}));
   console.log("RECOVERY_SESSIONS",JSON.stringify(listed));
   const sessions=Array.isArray(listed)?listed:(listed.sessions||listed.items||listed.result||[]);
