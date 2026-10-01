@@ -47,6 +47,50 @@ export class OpenChatCutContainer extends Container {
   override onError(error: unknown): void {
     console.error(JSON.stringify({ event: "openchatcut_container_error", at: new Date().toISOString(), error: String(error) }));
   }
+  // Read-only internal network test: does not wake a stopped container or expose secrets.
+  async probeLoopback5199(): Promise<{
+    containerRunning: boolean;
+    probe: "not-running" | "responding" | "fetch-error" | "exec-error";
+    httpStatus?: number;
+    errorCode?: string;
+  }> {
+    if (!this.ctx.container.running) {
+      return { containerRunning: false, probe: "not-running" };
+    }
+    // Intentionally fixed command. User/model input never reaches exec().
+    const script = [
+      "const url='http://127.0.0.1:5199/api/external-mcp/mcp';",
+      "fetch(url,{method:'GET',signal:AbortSignal.timeout(1800)})",
+      ".then(r=>console.log(JSON.stringify({probe:'responding',httpStatus:r.status})))",
+      ".catch(e=>console.log(JSON.stringify({probe:'fetch-error',errorCode:String(e?.cause?.code||e?.name||'unknown').slice(0,40)})));"
+    ].join("");
+    try {
+      const process = await this.ctx.container.exec(["node", "-e", script]);
+      const output = await Promise.race([
+        process.output(),
+        new Promise<never>((_resolve, reject) =>
+          setTimeout(() => reject(new Error("probe_timeout")), 6500)
+        )
+      ]);
+      const value = JSON.parse(new TextDecoder().decode(output.stdout).trim()) as {
+        probe?: string; httpStatus?: number; errorCode?: string;
+      };
+      if (output.exitCode !== 0 || (value.probe !== "responding" && value.probe !== "fetch-error")) {
+        return { containerRunning: true, probe: "exec-error" };
+      }
+      if (value.probe === "responding" && Number.isInteger(value.httpStatus)) {
+        return { containerRunning: true, probe: "responding", httpStatus: value.httpStatus };
+      }
+      return {
+        containerRunning: true,
+        probe: "fetch-error",
+        errorCode: String(value.errorCode || "unknown").slice(0, 40)
+      };
+    } catch {
+      // Do not return exception messages: they can include internal infrastructure details.
+      return { containerRunning: true, probe: "exec-error" };
+    }
+  }
   envVars = {
     OPENCHATCUT_MCP_TOKEN: containerBindings.OPENCHATCUT_MCP_TOKEN,
     __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "edirne22-openchatcut-poc.butupeli.workers.dev",
@@ -77,6 +121,11 @@ export default {
     }
 
     const container = getContainer(e.OPENCHATCUT, "buelent-single-user");
+    if (url.pathname === "/_factory/container-diag") {
+      if (request.method !== "GET") return new Response("method not allowed", { status: 405 });
+      const diagnosis = await container.probeLoopback5199();
+      return Response.json({ service: "openchatcut", scope: "container-loopback", ...diagnosis });
+    }
     const sessionId = request.headers.get("mcp-session-id") || "";
     console.log(JSON.stringify({ event: "openchatcut_proxy", method: request.method, path: url.pathname, hasMcpSessionId: Boolean(sessionId), mcpSessionIdPrefix: sessionId.slice(0, 8), workerBootId: workerIdentity().workerBootId }));
     return container.fetch(request);
