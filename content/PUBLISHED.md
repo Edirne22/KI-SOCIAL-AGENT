@@ -613,8 +613,8 @@ https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yaris
 Quelle: https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor
 Link-Preview: offiziell
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-01 07:49 | ID: 18136148227731225]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-01-daily
 Telegram-Update-ID: 279361797
@@ -629,6 +629,7 @@ Wie schätzt ihr den Startvorsprung für 2027 ein?
 Quelle: https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-5-bulega-2027ye-rakipl-01.jpg
+Publish-Provenienz: {"creation_id": "18009514286971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-5-bulega-2027ye-rakipl-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18136148227731225", "published_media_id": "18136148227731225", "source_url": "https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
