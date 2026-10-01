@@ -9,6 +9,7 @@ from hashlib import sha256
 import json
 import os
 import re
+import requests
 
 PREFIX = "ai-central/v1/inbox/"
 MAX_MESSAGE = 2500
@@ -18,12 +19,16 @@ def parse_command(text: str):
     if not isinstance(text,str):
         return None
     normalized=text.strip()
-    match=re.fullmatch(r"/?zentrale\s+(status|hilfe|auftrag(?:\s+(.+))?)",normalized,re.I|re.S)
+    match=re.fullmatch(r"/?zentrale\s+(status|hilfe|starten(?:\s+([a-zA-Z0-9_-]{10,64}))?|auftrag(?:\s+(.+))?)",normalized,re.I|re.S)
     if not match:
         return None
     name=match.group(1).split()[0].lower()
+    if name=="starten":
+        ident=match.group(2)
+        if not ident:raise ValueError("Bitte /zentrale starten <Auftrags-ID> eingeben.")
+        return "starten",ident
     if name=="auftrag":
-        message=(match.group(2) or "").strip()
+        message=(match.group(3) or "").strip()
         if not 3<=len(message)<=MAX_MESSAGE or _BLOCKED.search(message) or any(ord(c)<32 and c not in "\n\t" for c in message):
             raise ValueError("Bitte einen Auftrag mit 3 bis 2500 Zeichen und ohne Zugangsdaten eingeben.")
         return "auftrag",message
@@ -73,15 +78,61 @@ def recent(client,bucket,limit=6):
         result.append({k:item.get(k) for k in ("id","created_at","channel","kind","status","message")})
     return result
 
+def start_reviewed(client,bucket,task_id,token,post=requests.post):
+    """Authorized existing Telegram chat explicitly starts ONE $0 reviewed workflow."""
+    if not re.fullmatch(r"[a-zA-Z0-9_-]{10,64}",task_id):
+        raise ValueError("Ungültige Auftrags-ID.")
+    if not token:
+        raise RuntimeError("GitHub-Startberechtigung noch nicht eingerichtet.")
+    objects=client.list_objects_v2(Bucket=bucket,Prefix=PREFIX,MaxKeys=100)
+    if objects.get("IsTruncated"):
+        raise RuntimeError("Zu viele Entwürfe; bitte Dashboard nutzen.")
+    found=[]
+    for entry in objects.get("Contents",[]):
+        key=entry.get("Key","")
+        if not key.endswith(".json"):
+            continue
+        value=json.loads(client.get_object(Bucket=bucket,Key=key)["Body"].read(10000))
+        if value.get("id")==task_id:
+            found.append((key,value))
+    if len(found)!=1:
+        raise ValueError("Auftrags-ID nicht gefunden oder doppelt vorhanden.")
+    key,entry=found[0]
+    if (entry.get("schema")!="AI-INBOX-V1" or entry.get("kind")!="message"
+        or entry.get("status")!="DRAFT_REQUIRES_REVIEW" or entry.get("auto_dispatch") is not False):
+        raise ValueError("Dieser Auftrag kann nicht gestartet werden.")
+    day=str(entry.get("created_at",""))[:10]
+    if not re.fullmatch(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}",day):
+        raise ValueError("Auftragsdatum ungültig.")
+    queued={**entry,"status":"QUEUED_FREE_REVIEW",
+        "approved_at":datetime.now(timezone.utc).isoformat(),
+        "dispatch_target":"ai-central-inbox-agent.yml","inference_scope":"openrouter/free"}
+    client.put_object(Bucket=bucket,Key=key,Body=json.dumps(queued,ensure_ascii=False).encode(),
+        ContentType="application/json")
+    try:
+        response=post("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/workflows/ai-central-inbox-agent.yml/dispatches",
+            headers={"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json",
+                "X-GitHub-Api-Version":"2022-11-28"},
+            json={"ref":"main","inputs":{"inbox_date":day,"inbox_id":task_id}},timeout=20)
+    except requests.RequestException:
+        client.put_object(Bucket=bucket,Key=key,Body=json.dumps(entry,ensure_ascii=False).encode(),ContentType="application/json")
+        raise RuntimeError("GitHub momentan nicht erreichbar; Entwurf beibehalten.")
+    if response.status_code!=204:
+        client.put_object(Bucket=bucket,Key=key,Body=json.dumps(entry,ensure_ascii=False).encode(),ContentType="application/json")
+        raise RuntimeError("GitHub hat den Start nicht bestätigt; Entwurf beibehalten.")
+    return "Auftrag "+task_id+" von GitHub angenommen. Das ist noch kein fertiges Ergebnis. Bericht später im Dashboard prüfen."
+
 def handle(text,update_id,chat_id,*,client=None,bucket=None):
     parsed=parse_command(text)
     if parsed is None:return None
     op,message=parsed
     if op=="hilfe":
-        return "KI-Zentrale: /zentrale status oder /zentrale auftrag DEIN TEXT. Erst Entwurf, keine automatische Ausführung."
+        return "KI-Zentrale: /zentrale auftrag TEXT · /zentrale status · /zentrale starten AUFTRAGS-ID. Nur explizite Freigabe; kostenlose Modellroute."
     if client is None:
         client,bucket=client_from_env()
     if not bucket:raise ValueError("R2 bucket missing")
+    if op=="starten":
+        return start_reviewed(client,bucket,message,os.environ.get("GITHUB_TOKEN",""))
     if op=="status":
         items=recent(client,bucket)
         if not items:return "KI-Zentrale: noch keine gemeinsamen Web-/Telegram-Entwürfe."
