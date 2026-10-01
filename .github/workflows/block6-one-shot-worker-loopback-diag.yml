@@ -36,6 +36,9 @@ jobs:
           assert(src.includes('request.method !== "GET"'));
           assert(src.includes("const url='http://127.0.0.1:5199/api/external-mcp/mcp'"));
           assert(src.includes('const runtime = this.ctx.container'));
+          assert(src.includes('url.pathname === "/_factory/container-auth-diag"'));
+          assert(src.includes('probeAuthenticatedMcp'));
+          assert(src.includes('process.env.OPENCHATCUT_MCP_TOKEN'));
           console.log('PINNED_READ_ONLY_AUTHENTICATED_LOOPBACK_CONTRACT_PASS');
           JS
       - name: Offline typecheck and worker-only deployment dry-run
@@ -120,8 +123,7 @@ jobs:
         run: |
           set -euo pipefail
           base=https://edirne22-openchatcut-poc.butupeli.workers.dev
-          code=$(curl -sS --max-time 27 -o "$RUNNER_TEMP/block6-auth-local-result.json" -w '%{http_code}' \\
-            -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base/_factory/container-auth-diag" || true)
+          code=$(curl -sS --max-time 27 -o "$RUNNER_TEMP/block6-auth-local-result.json" -w '%{http_code}' -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base/_factory/container-auth-diag" || true)
           echo "BLOCK6_AUTH_LOCAL_ENDPOINT_HTTP=$code"
           test "$code" = 200 || { echo 'BLOCK6_LOCAL_AUTH_PROBE_NOT_REACHABLE'; exit 1; }
           node - <<'JS'
