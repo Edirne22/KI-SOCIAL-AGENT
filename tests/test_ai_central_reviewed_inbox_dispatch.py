@@ -45,4 +45,33 @@ class ReviewBridgeTests(unittest.TestCase):
     def test_no_implicit_cross_date_scan(self):
         with self.assertRaises(ValueError):
             select_draft(FakeR2({KEY:draft()}),"private",date="2026-10-02",task_id=ID)
+
+    def test_execution_requires_explicit_queued_review_not_just_draft(self):
+        # Attack: guessing workflow_dispatch ID for a draft must not invoke a model.
+        with self.assertRaisesRegex(ValueError,"explicitly approved"):
+            select_draft(FakeR2({KEY:draft()}),"private",date=DAY,task_id=ID,require_queued=True)
+        approved=draft(status="QUEUED_FREE_REVIEW",approved_at="2026-10-01T12:05:00Z",
+            dispatch_target="ai-central-inbox-agent.yml",inference_scope="openrouter/free")
+        result=select_draft(FakeR2({KEY:approved}),"private",date=DAY,task_id=ID,require_queued=True)
+        self.assertEqual(result["inbox_id"],ID)
+        # Attack: mutate each approval field; execution must remain blocked.
+        for field,value in (("dispatch_target","rogue.yml"),("inference_scope","claude"),
+                            ("approved_at",None),("status","DRAFT_REQUIRES_REVIEW")):
+            with self.subTest(field=field),self.assertRaises(ValueError):
+                select_draft(FakeR2({KEY:{**approved,field:value}}),"private",date=DAY,
+                    task_id=ID,require_queued=True)
+
+
+    def test_production_workflow_validates_before_logging_or_inference(self):
+        from pathlib import Path
+        workflow=(Path(__file__).resolve().parents[1]/".github/workflows/ai-central-inbox-agent.yml").read_text()
+        gate=workflow.index("Validate exact explicitly approved R2 text task")
+        require=workflow.index("--require-queued")
+        status=workflow.index("Persist actual validated GitHub job start")
+        free=workflow.index("strictly openrouter/free")
+        self.assertLess(gate,require)
+        self.assertLess(require,status)
+        self.assertLess(status,free)
+        self.assertIn("if: always() && steps.inbox_gate.outcome == 'success'",workflow)
+
 if __name__=="__main__":unittest.main()

@@ -1,0 +1,29 @@
+name: KI Central cloud coding bench – OpenCode and OmniRoute install smoke
+on:
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  sandbox-install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - name: Install specific OSS coding tools on isolated cloud runner
+        env:
+          CI: "1"
+          OMNIROUTE_SKIP_POSTINSTALL: "1"
+        run: |
+          set -eu
+          npm install -g @opencode/cli@2.0.21 omniroute@3.8.50
+          opencode --version
+          omniroute --version
+      - name: Verify readonly Claude/OpenCode profile exists, but no model calls
+        run: |
+          node - <<'JS'
+          const fs=require('fs');const c=JSON.parse(fs.readFileSync('./infra/ai-central-tools/claude-only/opencode.jsonc','utf8'));
+          if(Object.keys(c.providers).join(',')!=='openrouter')process.exit(2);
+          if(c.providers.openrouter.models['anthropic/claude-sonnet-4.5']==null)process.exit(3);
+          console.log('cloud tool installation and Claude config PASS; no provider keys or inference used');
+          JS

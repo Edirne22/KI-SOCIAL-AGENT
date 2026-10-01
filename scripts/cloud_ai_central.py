@@ -19,6 +19,9 @@ ROOT=Path(__file__).resolve().parents[1]
 CONFIG=ROOT/"config"/"llm_providers.json"
 ROLES={"research":("google","nvidia"),"diagnosis":("nvidia","openrouter"),
        "challenge":("groq","google")}
+# Two independent task prompts, one documented $0 route; diversity of actual models is
+# measured from provider response, never claimed merely because roles differ.
+FREE_ROLES={"research":("openrouter",),"challenge":("openrouter",)}
 MAX_PROMPT=2500
 MAX_RESPONSE=5500
 SCHEMA="CLOUD-AI-CENTRAL-V1"
@@ -51,20 +54,24 @@ def ask(provider,cfg,task,role,transport=requests.post):
           ]},timeout=40)
         if response.status_code!=200:
             return {"role":role,"provider":provider,"model":model,"status":"HTTP_ERROR","http_status":response.status_code}
-        answer=response.json()["choices"][0]["message"]["content"]
+        body=response.json()
+        answer=body["choices"][0]["message"]["content"]
         if not isinstance(answer,str) or not answer.strip():raise ValueError("empty answer")
-        return {"role":role,"provider":provider,"model":model,"status":"ANSWER","text":safe_text(answer)}
+        return {"role":role,"provider":provider,"model":model,
+                "reported_model":safe_text(body.get("model",""))[:120],
+                "status":"ANSWER","text":safe_text(answer)}
     except (requests.RequestException,ValueError,KeyError,TypeError,IndexError) as exc:
         return {"role":role,"provider":provider,"model":model,"status":"ERROR","type":type(exc).__name__}
-def dispatch(task,config,ask_fn=ask):
+def dispatch(task,config,ask_fn=ask,roles=None):
     validate_task(task)
     providers=config["providers"]
-    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-        future_map={role:pool.submit(_role,role,providers,task,ask_fn) for role in ROLES}
-        return [future_map[role].result() for role in ROLES]
-def _role(role,providers,task,ask_fn):
+    roles=ROLES if roles is None else roles
+    with concurrent.futures.ThreadPoolExecutor(max_workers=min(3,len(roles))) as pool:
+        future_map={role:pool.submit(_role,role,roles[role],providers,task,ask_fn) for role in roles}
+        return [future_map[role].result() for role in roles]
+def _role(role,routes,providers,task,ask_fn):
     attempts=[]
-    for name in ROLES[role]:
+    for name in routes:
         if name not in providers:continue
         result=ask_fn(name,providers[name],task,role)
         attempts.append(result)
@@ -88,11 +95,30 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--task-file",required=True)
     parser.add_argument("--output",default="ai-central-report.json")
+    parser.add_argument("--inbox-task-id",default="")
+    parser.add_argument("--free-only",action="store_true")
     args=parser.parse_args()
     task=validate_task(json.loads(Path(args.task_file).read_text(encoding="utf-8")))
     config=json.loads(CONFIG.read_text(encoding="utf-8"))
-    review=dispatch(task,config)
+    if args.free_only:
+        # Strict zero-price OpenRouter route, independently confirmed live on
+        # 2026-10-01. NO Claude, Groq, Gemini or unspecified fallback.
+        # Paid OpenRouter balance cannot be accessed by this exact model ID.
+        if os.getenv("AI_CENTRAL_FREE_TIER_VERIFIED") != "true":
+            raise SystemExit("FREE_TIER_NOT_VERIFIED: no model inference attempted")
+        openrouter=config["providers"]["openrouter"].copy()
+        if openrouter.get("base_url") != "https://openrouter.ai/api/v1" or openrouter.get("api_key_env") != "OPENROUTER_API_KEY":
+            raise SystemExit("FREE_ROUTE_CONFIG_MISMATCH: no inference attempted")
+        openrouter["models"]={"default":"openrouter/free","reasoning":"openrouter/free"}
+        config["providers"]={"openrouter":openrouter}
+    review=dispatch(task,config,roles=FREE_ROLES if args.free_only else None)
     payload=packet(task,review,os.environ.get("GITHUB_RUN_ID","0"))
+    if args.inbox_task_id:
+        if not re.fullmatch(r"[a-zA-Z0-9_-]{10,64}",args.inbox_task_id):
+            raise ValueError("invalid inbox task ID")
+        payload["inbox_id"]=args.inbox_task_id
+        # Reports are indexed under stable inbox ID for shared Dashboard / Telegram retrieval.
+        payload["task_id"]=args.inbox_task_id
     Path(args.output).write_text(json.dumps(payload,indent=2,ensure_ascii=False),encoding="utf-8")
     print(json.dumps({"schema":SCHEMA,"status":payload["status"],
          "roles":[{"role":x["role"],"status":x["status"],"providers_tried":[a["provider"] for a in x["attempts"]]} for x in review]}))
