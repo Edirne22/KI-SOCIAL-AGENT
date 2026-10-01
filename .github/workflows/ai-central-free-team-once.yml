@@ -25,7 +25,10 @@ jobs:
           python -m compileall -q scripts/cloud_ai_central.py scripts/ai_central_shared_inbox.py
           python -m unittest discover -s tests -p 'test_cloud_ai_central.py'
           python -m unittest discover -s tests -p 'test_ai_central_shared_inbox.py'
+  # Separate opt-in feasibility probe: NOT a production prerequisite for direct free-provider team.
+  # Heavy Next.js/SQLite server takes multiple minutes on fresh runners; a version check alone is insufficient.
   omniroute-ephemeral-smoke:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -60,7 +63,7 @@ jobs:
           # This is ONLY an isolated router/startup check, not an NVIDIA provider connection.
   strictly-free-live-probe:
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
-    needs: [offline-contract, omniroute-ephemeral-smoke]
+    needs: [offline-contract]
     runs-on: ubuntu-latest
     timeout-minutes: 7
     env:
