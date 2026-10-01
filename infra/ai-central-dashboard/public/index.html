@@ -1,0 +1,39 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Edirne 22 – KI-Zentrale</title><style>
+:root{font:16px system-ui;color-scheme:dark;background:#111723;color:#f0f3f8}*{box-sizing:border-box}
+body{margin:0;padding:20px;max-width:1360px;margin:auto}h1{margin:.2em 0}small,.muted{color:#a3afc1}
+header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.panel{border:1px solid #354153;border-radius:14px;background:#1a2231;padding:18px}
+main{display:grid;grid-template-columns:1fr 1fr;gap:16px}input,textarea,button{font:inherit;border-radius:9px;padding:11px;background:#141e2e;color:white;border:1px solid #526177}
+textarea{width:100%;min-height:105px;resize:vertical}input[type=password]{max-width:250px}button{cursor:pointer;background:#244e88}button:hover{background:#3062a2}button:disabled{opacity:.4}
+.controls{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}.event{border-bottom:1px solid #344257;padding:10px 0;overflow-wrap:anywhere}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0d1520;padding:13px;border-radius:9px;min-height:180px;max-height:300px;overflow:auto}
+.status{font-size:.9em;color:#8fdeb2}.warning{color:#eccc83}#feed{max-height:440px;overflow:auto}
+@media(max-width:800px){body{padding:12px}main{grid-template-columns:1fr}.panel{padding:12px}}
+</style></head><body><header><div><h1>Edirne 22 · KI-Zentrale</h1><small>Geschützter Eingang · gemeinsames R2-Postfach mit Telegram</small></div><input type="password" id="secret" placeholder="Zugangsschlüssel" autocomplete="off"><button id="connect">Verbinden</button><span id="state" class="warning">Nicht verbunden</span></header>
+<main><section class="panel"><h2>Chat / Aufträge</h2><p class="muted">Aufträge werden gespeichert, aber noch nicht automatisch ausgeführt. Freigaben bleiben gesperrt.</p><textarea id="prompt" placeholder="Deinen Auftrag an die KI-Mannschaft eingeben …" maxlength="2500"></textarea><div class="controls"><button id="send">Auftrag speichern</button><input type="file" id="file" accept="image/png,image/jpeg,image/webp,audio/webm,audio/mp4,audio/mpeg,application/pdf,text/plain"><button id="upload">Datei hochladen</button><button id="mic">🎙 Aufnahme</button></div><p id="notice" aria-live="polite" class="muted">Bereit.</p><h3>Gemeinsames Postfach</h3><div id="feed" aria-live="polite"></div></section>
+<section class="panel"><h2>Live-Status</h2><p class="muted">Tatsächlicher R2-Eingangsstatus, alle 8 Sekunden aktualisiert. GitHub-Code- und Testlogs folgen in der nächsten Stufe.</p><pre id="log">Noch keine Verbindung.</pre><p class="status">Telegram: Sende <code>/zentrale Dein Auftrag</code> an deinen bestehenden Bot. Beide Eingänge erscheinen im gleichen Postfach.</p></section></main>
+<script>
+let token="",recorder,chunks=[],last="";
+const el=x=>document.getElementById(x),set=(v)=>el("notice").textContent=v;
+async function api(path,opt={}){if(!token)throw Error("Bitte zuerst verbinden.");
+const r=await fetch(path,{...opt,headers:{"x-control-center-token":token,...(opt.headers||{})},cache:"no-store"});
+const data=await r.json();if(!r.ok)throw Error(data.error||("HTTP "+r.status));return data}
+function log(s){el("log").textContent=new Date().toLocaleTimeString()+" · "+s+"\n"+el("log").textContent.slice(0,6000)}
+async function refresh(){if(!token)return;try{const d=await api("/api/tasks");const sig=JSON.stringify(d.items.map(x=>x.request_id+":"+x.status));if(sig!==last){last=sig;log("R2-Postfach aktualisiert: "+d.items.length+" Einträge");}
+el("feed").replaceChildren();for(const t of d.items){const div=document.createElement("div");div.className="event";
+const head=document.createElement("strong");head.textContent=t.channel==="telegram"?"Telegram":"Web";
+const body=document.createElement("div");body.textContent=t.text;
+const meta=document.createElement("small");meta.textContent=" "+t.status+" · "+new Date(t.created_at).toLocaleString();
+div.append(head,meta,body);el("feed").append(div)}
+}catch(e){el("state").textContent="Verbindung gestört";log("Abfragefehler: "+e.message)}}
+el("connect").onclick=async()=>{token=el("secret").value;try{await api("/api/ping");el("state").textContent="R2 verbunden";el("state").className="status";el("secret").value="";log("Geschützte Verbindung hergestellt");await refresh()}catch(e){token="";set(e.message)}};
+el("send").onclick=async()=>{try{const text=el("prompt").value.trim();const d=await api("/api/tasks",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({text})});set("Gespeichert: "+d.request_id.slice(0,8)+" · wartet auf Prüfung");el("prompt").value="";log("Web-Auftrag angenommen: "+d.request_id);await refresh()}catch(e){set(e.message)}};
+async function uploadFile(file){if(!file)return;if(file.size>8*1024*1024)throw Error("Maximal 8 MB");const d=await api("/api/uploads",{method:"POST",headers:{"content-type":file.type},body:file});set("Privat hochgeladen: "+d.file_id.slice(0,8)+" · "+d.status);log("Upload: "+d.file_id+" ("+d.type+")")}
+el("upload").onclick=async()=>{try{await uploadFile(el("file").files[0])}catch(e){set(e.message)}};
+el("mic").onclick=async()=>{try{if(recorder&&recorder.state==="recording"){recorder.stop();return}
+const stream=await navigator.mediaDevices.getUserMedia({audio:true});const type=MediaRecorder.isTypeSupported("audio/webm")?"audio/webm":"audio/mp4";chunks=[];
+recorder=new MediaRecorder(stream,{mimeType:type});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
+recorder.onstop=async()=>{stream.getTracks().forEach(t=>t.stop());el("mic").textContent="🎙 Aufnahme";try{await uploadFile(new File(chunks,"voice",{type}))}catch(e){set(e.message)}};
+recorder.start();el("mic").textContent="■ Stoppen";set("Aufnahme läuft. Zum Beenden erneut tippen.")}catch(e){set("Mikrofon: "+e.message)}};
+setInterval(refresh,8000);
+</script></body></html>
