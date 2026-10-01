@@ -2,10 +2,14 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import worker from "../src/index.js";
 const TOKEN="unit-test-long-dashboard-token-xyz";
-function storage(){const items=new Map();return {
- items,async put(k,v){items.set(k,typeof v==="string"?v:new Uint8Array(v))},
- async list({prefix}){return {objects:[...items.keys()].filter(k=>k.startsWith(prefix)).map(key=>({key}))}},
- async get(k){if(!items.has(k))return null;return {json:async()=>JSON.parse(items.get(k))}}}}
+function storage(){const items=new Map(),etags=new Map();let serial=0;return {
+ items,etags,async put(k,v,opts={}){
+   if(opts.onlyIf?.etagMatches && etags.get(k)!==opts.onlyIf.etagMatches)return null;
+   items.set(k,typeof v==="string"?v:new Uint8Array(v));
+   let etag="etag-"+(++serial);etags.set(k,etag);return {etag};
+ },
+ async list({prefix}){return {objects:[...items.keys()].filter(k=>k.startsWith(prefix)).map(key=>({key})),truncated:false}},
+ async get(k){if(!items.has(k))return null;return {etag:etags.get(k),json:async()=>JSON.parse(items.get(k))}}}}
 function env(){return {AI_DASHBOARD_TOKEN:TOKEN,AI_CENTRAL_R2:storage(),ASSETS:{fetch:async()=>new Response("ui")}}}
 function request(path,{method="GET",token=TOKEN,body,headers={}}={}){return new Request("https://dashboard.example"+path,{method,headers:{...(token?{authorization:"Bearer "+token}:{}),...headers},body})}
 test("unauthorized must not access R2 or GitHub",async()=>{
@@ -75,4 +79,32 @@ test("failed upstream dispatch restores the draft",async()=>{
   assert.equal(res.status,502);
   assert.equal(JSON.parse([...e.AI_CENTRAL_R2.items.values()][0]).status,"DRAFT_REQUIRES_REVIEW");
  }finally{globalThis.fetch=old}
+});
+
+
+test("simultaneous approval race permits exactly one GitHub dispatch",async()=>{
+  let e=env();e.AI_CENTRAL_FREE_TIER_VERIFIED="true";e.GITHUB_DISPATCH_TOKEN="fake";
+  const p=await worker.fetch(request("/api/inbox",{method:"POST",body:JSON.stringify({message:"Diagnose startup race"}),headers:{"content-type":"application/json"}}),e);
+  const id=(await p.json()).id,date=new Date().toISOString().slice(0,10);let calls=0;
+  const old=globalThis.fetch;
+  globalThis.fetch=async()=>{calls++;return {status:204}};
+  try{
+    let [a,b]=await Promise.all([1,2].map(()=>worker.fetch(request("/api/dispatch",{method:"POST",
+      body:JSON.stringify({id,date}),headers:{"content-type":"application/json"}}),e)));
+    assert.deepEqual([a.status,b.status].sort(),[202,409]);
+    assert.equal(calls,1);
+  }finally{globalThis.fetch=old}
+});
+test("ambiguous timeout keeps queued task to prevent duplicate charge or run",async()=>{
+  let e=env();e.AI_CENTRAL_FREE_TIER_VERIFIED="true";e.GITHUB_DISPATCH_TOKEN="fake";
+  const p=await worker.fetch(request("/api/inbox",{method:"POST",body:JSON.stringify({message:"Diagnose GitHub timeout"}),headers:{"content-type":"application/json"}}),e);
+  const id=(await p.json()).id,date=new Date().toISOString().slice(0,10);
+  const old=globalThis.fetch;
+  globalThis.fetch=async()=>{throw Error("transport reset after acceptance uncertain")};
+  try{
+    const response=await worker.fetch(request("/api/dispatch",{method:"POST",body:JSON.stringify({id,date}),headers:{"content-type":"application/json"}}),e);
+    assert.equal(response.status,502);
+    assert.equal((await response.json()).status,"DISPATCH_UNCERTAIN");
+    assert.equal(JSON.parse([...e.AI_CENTRAL_R2.items.values()][0]).status,"QUEUED_FREE_REVIEW");
+  }finally{globalThis.fetch=old}
 });
