@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch
 from scripts.ai_central_gemini_image import generate,image_from_response,ImageGenerationError
 
-PNG=b"\\x89PNG\\r\\n\\x1a\\n"+b"x"*120
+PNG=bytes([137,80,78,71,13,10,26,10])+b"x"*120
 class Response:
     status_code=200
     def json(self):return {"interaction":{"output_image":{"data":base64.b64encode(PNG).decode()}}}
