@@ -87,8 +87,13 @@ def notify_telegram(ident,statuses):
              "Gegenprüfung: "+str(statuses.get("challenge"))+". "
              "Telegram-Eingang jetzt mit /zentrale ergebnis "+ident+" prüfbar.")
     # Send only public synthetic result ID and role states; never private response text.
-    response=requests.post("https://api.telegram.org/bot"+token+"/sendMessage",
-        data={"chat_id":chat,"text":message},timeout=15)
+    try:
+        response=requests.post("https://api.telegram.org/bot"+token+"/sendMessage",
+            data={"chat_id":chat,"text":message},timeout=15)
+    except requests.RequestException:
+        # A network exception can embed the secret-bearing Telegram URL.
+        print("TELEGRAM_OUTBOUND_NETWORK_UNAVAILABLE_REDACTED",flush=True)
+        return
     if response.status_code!=200 or response.json().get("ok") is not True:
         print("TELEGRAM_OUTBOUND_NOT_VERIFIED_HTTP_"+str(response.status_code),flush=True)
         return
