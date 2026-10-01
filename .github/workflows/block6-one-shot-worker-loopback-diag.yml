@@ -23,7 +23,7 @@ jobs:
         with:
           # Same-repository, immutable PR #278 HEAD (stacked #271 readiness + #278
           # fixed, read-only protected container-loopback diagnostic).
-          ref: 73756825c8cd167e5997e24514e2c11e1170120b
+          ref: 7acb852ef8ee59b5e420dcb7f1f96ebd931748a8
       - uses: actions/setup-node@v4
         with: {node-version: "24"}
       - name: Verify the pinned endpoint is protected and fixed-input
@@ -60,7 +60,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 73756825c8cd167e5997e24514e2c11e1170120b
+          ref: 7acb852ef8ee59b5e420dcb7f1f96ebd931748a8
       - uses: actions/setup-node@v4
         with: {node-version: "24"}
       - name: Guard all required existing credentials before any deploy
@@ -113,6 +113,27 @@ jobs:
           const safe={scope:x.scope,containerRunning:x.containerRunning,probe:x.probe,httpStatus:x.httpStatus,errorCode:x.errorCode};
           console.log('BLOCK6_ACTUAL_CONTAINER_LOOPBACK',JSON.stringify(safe));
           if(x.scope!=='container-loopback'||x.probe!=='responding')process.exitCode=1;
+          JS
+      - name: Compare fixed authenticated local MCP session with outer Worker error
+        working-directory: infra/openchatcut-cloudflare
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=https://edirne22-openchatcut-poc.butupeli.workers.dev
+          code=$(curl -sS --max-time 27 -o "$RUNNER_TEMP/block6-auth-local-result.json" -w '%{http_code}' \\
+            -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" "$base/_factory/container-auth-diag" || true)
+          echo "BLOCK6_AUTH_LOCAL_ENDPOINT_HTTP=$code"
+          test "$code" = 200 || { echo 'BLOCK6_LOCAL_AUTH_PROBE_NOT_REACHABLE'; exit 1; }
+          node - <<'JS'
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+'/block6-auth-local-result.json','utf8'));
+          const safe={scope:x.scope,containerRunning:x.containerRunning,probe:x.probe,
+            initStatus:x.initStatus,sessionHeaderPresent:x.sessionHeaderPresent,
+            followupStatus:x.followupStatus,followupSessionLost:x.followupSessionLost,
+            errorCode:x.errorCode};
+          console.log('BLOCK6_AUTH_LOCAL_MCP_SESSION_PROOF',JSON.stringify(safe));
+          if(x.scope!=='authenticated-local-mcp'||x.probe!=='completed'||x.initStatus!==200)
+            process.exitCode=1;
           JS
       - name: Verify container inventory after Worker-only deploy
         if: always()
