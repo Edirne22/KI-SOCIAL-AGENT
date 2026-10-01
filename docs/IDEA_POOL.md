@@ -476,3 +476,12 @@ Instagram-Fund; Werbeaussagen **nicht als verifiziert übernehmen**. Vor Auswahl
 - [ ] geschützten Video-Preview für Bülent bauen; R2 bleibt privat.
 
 **Architektur-Ideen:** Cloudflare-Container und späterer x86-VPS bleiben hinter derselben Adaptergrenze austauschbar. Native/server-direct Wege vor Browser-Automation bevorzugen; Headless-Browser nur bei nachgewiesener Notwendigkeit. R2 bleibt System of Record. Benchmarkwerte später 1:1 mit x86-VPS vergleichen. Bei Architekturunsicherheit zweite KI als Cross-Check nutzen und Aussagen gegen gepinnten Quellcode/echte Logs prüfen.
+
+
+### Container-Warm-up als allgemeine Maschinenregel (01.10.2026)
+
+- [ ] Für jede einschlafende Container-Maschine (Cloudflare oder später VPS) vor produktiven Aufrufen einen begrenzten Wake-up/Readiness-Probe im jeweiligen Adapter vorsehen; nicht pauschal alle Tools aufwecken.
+- [ ] Erreichbarkeit und echte Schreib-/Funktionsbereitschaft getrennt prüfen; MCP initialize allein beweist `create_project` nicht.
+- [ ] Wiederholungen mit begrenztem Timeout/Backoff, eindeutigen Logs und sauberem Fehlerstatus; keine Endlosschleifen oder künstlichen PASS-Ergebnisse.
+- [ ] Falls möglich Warm-up während vorgelagerter Arbeit ausführen und die tatsächliche Readiness vor Übergabe an die nächste Maschine abwarten.
+- [ ] Restart, Kaltstart, OOM und Sessionverlust anhand echter Container-/MCP-Logs unterscheiden; erst nach OpenChatCut-LIVE-Abnahme verallgemeinern.
