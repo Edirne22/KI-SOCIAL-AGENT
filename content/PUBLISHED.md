@@ -593,9 +593,8 @@ Quelle: https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-moto
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-1-motogp-japonya-gp-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36833178374-1
+## Facebook [GEPOSTET 2026-10-01 07:56 | ID: 1285968257941776_122117654085469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-01-daily
 Telegram-Update-ID: 279361797
@@ -613,6 +612,7 @@ Was erwartet ihr von Toprak bei seinem Debüt-Rennen in Motegi?
 https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor
 Quelle: https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor", "media_status": "", "object_id": "1285968257941776_122117654085469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122117654085469415", "source_url": "https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor", "version": 1}
 
 ## Instagram [GEPOSTET 2026-10-01 07:49 | ID: 18136148227731225]
 Status: GEPOSTET
