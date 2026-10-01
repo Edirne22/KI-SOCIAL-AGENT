@@ -1,8 +1,5 @@
 name: KI Central one-shot zero-price OpenRouter verification
 on:
-  push:
-    branches: [feat/ai-central-e2e-controlled-runner]
-    paths: [".github/workflows/ai-central-free-router-probe.yml"]
   workflow_dispatch:
 permissions: {contents: read}
 jobs:
