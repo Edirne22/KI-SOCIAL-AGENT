@@ -1,4 +1,4 @@
-name: OpenChatCut Isolated MCP Transport Repro
+name: OpenChatCut Isolated MCP Transport Repro (GET abort)
 on:
   push:
     branches: [diag/openchatcut-ai-root-cause-jury]
