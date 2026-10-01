@@ -18,6 +18,7 @@ from pathlib import Path
 import requests
 
 from telegram_bot import get_chat_id, get_updates, send_message, send_photo
+from scripts.ai_central_shared_inbox import handle as handle_central_inbox, parse_command as parse_central_command
 from vision_router import VisionRouter
 import pending_instagram as pi
 import instagram_engagement as instagram_engagement
@@ -403,6 +404,16 @@ def main() -> None:
 
         normalized = " ".join(text.strip().lower().split())
         cmd = normalized.lstrip("/")
+        # Shared AI inbox commands are explicit and do not touch existing approval paths.
+        if parse_central_command(text) is not None:
+            try:
+                answer=handle_central_inbox(text,uid,chat)
+                send_message(answer)
+            except (ValueError,RuntimeError) as exc:
+                send_message(f"KI-Zentrale: {exc}")
+            # ACK only after successful R2 write/response. Transient errors stay retryable.
+            _ack(uid)
+            return
         if cmd in {"help", "hilfe"}:
             send_message(
                 "🤖 Verfügbare Kommandos:\n\n"
