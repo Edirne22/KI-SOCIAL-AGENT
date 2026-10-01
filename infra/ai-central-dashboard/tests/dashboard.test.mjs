@@ -108,3 +108,44 @@ test("ambiguous timeout keeps queued task to prevent duplicate charge or run",as
     assert.equal(JSON.parse([...e.AI_CENTRAL_R2.items.values()][0]).status,"QUEUED_FREE_REVIEW");
   }finally{globalThis.fetch=old}
 });
+
+
+test("retry with newer lifecycle must not leak previous run report",async()=>{
+ const e=env(),id="safe-retry-task-2026";
+ const oldKey="ai-central/v1/tasks/"+id+"/runs/100/report.json";
+ await e.AI_CENTRAL_R2.put(oldKey,JSON.stringify({schema:"CLOUD-AI-CENTRAL-V1",task_id:id,run_id:"100",status:"PENDING_REVIEW",
+    results:[{role:"diagnosis",status:"ANSWER",attempts:[{provider:"openrouter",text:"OUTDATED-ANSWER"}]}]}));
+ const lifecycleKey="ai-central/v1/tasks/"+id+"/status.json";
+ await e.AI_CENTRAL_R2.put(lifecycleKey,JSON.stringify({schema:"AI-CENTRAL-TASK-STATUS-V1",task_id:id,
+    github_run_id:"101",status:"RUNNING",updated_at:"2026-10-01T15:00:00Z"}));
+ let response=await worker.fetch(request("/api/task?id="+id),e);
+ assert.equal(response.status,200);
+ let body=await response.json();
+ assert.equal(body.status,"RUNNING");
+ assert.equal(body.run_id,"101");
+ assert.equal(body.roles,undefined);
+ assert.equal(body.truth,"R2_JOB_LIFECYCLE_NO_COMPLETED_REPORT");
+ await e.AI_CENTRAL_R2.put(lifecycleKey,JSON.stringify({schema:"AI-CENTRAL-TASK-STATUS-V1",task_id:id,
+    github_run_id:"101",status:"FAILED",updated_at:"2026-10-01T15:01:00Z"}));
+ response=await worker.fetch(request("/api/task?id="+id),e);
+ body=await response.json();
+ assert.equal(body.status,"FAILED");
+ assert.equal(body.roles,undefined);
+ await e.AI_CENTRAL_R2.put("ai-central/v1/tasks/"+id+"/runs/101/report.json",
+   JSON.stringify({schema:"CLOUD-AI-CENTRAL-V1",task_id:id,run_id:"101",status:"PENDING_REVIEW",
+   results:[{role:"research",status:"ANSWER",attempts:[]}]}));
+ response=await worker.fetch(request("/api/task?id="+id),e);
+ body=await response.json();
+ assert.equal(body.truth,"R2_ARCHIVED_REPORT");
+ assert.equal(body.run_id,"101");
+ assert.equal(body.roles.length,1);
+});
+test("reject task report with mismatched current run",async()=>{
+ const e=env(),id="safe-retry-task-2027",base="ai-central/v1/tasks/"+id+"/";
+ await e.AI_CENTRAL_R2.put(base+"status.json",JSON.stringify({
+   schema:"AI-CENTRAL-TASK-STATUS-V1",task_id:id,github_run_id:"101",status:"PENDING_REVIEW"}));
+ await e.AI_CENTRAL_R2.put(base+"runs/101/report.json",JSON.stringify({
+   schema:"CLOUD-AI-CENTRAL-V1",task_id:id,run_id:"999",results:[]}));
+ const response=await worker.fetch(request("/api/task?id="+id),e);
+ assert.equal(response.status,502);
+});
