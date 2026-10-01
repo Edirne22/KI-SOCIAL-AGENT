@@ -577,3 +577,75 @@ https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-b
 Quelle: https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar", "media_status": "", "object_id": "1285968257941776_122117167587469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122117167587469415", "source_url": "https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-01-daily
+Telegram-Update-ID: 279361797
+MotoGP-Auswahl: 1
+Titel: MotoGP Japonya GP 2026: Toprak Motegi'de İlk MotoGP Yarışına Çıkıyor
+Text:
+Toprak Razgatlıoğlu macht am Sonntag sein MotoGP‑Debüt auf dem Twin Ring Motegi – das erste Mal hier in der Königsklasse. Das Wochenende läuft vom 2. bis 4. Oktober, das Hauptrennen startet um 08:00 Uhr und das Wetter soll nass werden 🏍️. Wie schätzt ihr seinen Start bei Regen ein?
+
+#MotoGP #ToprakRazgatlioglu #Motegi #RacingLife #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-1-motogp-japonya-gp-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-01-daily
+Telegram-Update-ID: 279361797
+MotoGP-Auswahl: 1
+Titel: MotoGP Japonya GP 2026: Toprak Motegi'de İlk MotoGP Yarışına Çıkıyor
+Text:
+Toprak Razgatlıoğlu startet in Motegi in sein erstes MotoGP-Rennen auf dieser Strecke.
+
+Das MotoGP-Wochenende in Japan findet vom 2. bis 4. Oktober statt. Die Mainrace geht am Sonntag um 08.00 Uhr TSИ los, und laut Wettervorhersage soll es regen. Für Toprak ist das der erste Einsatz in der Königsklasse genau hier auf dem Twin Ring Motegi.
+
+Was erwartet ihr von Toprak bei seinem Debüt-Rennen in Motegi?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor
+Quelle: https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-01-daily
+Telegram-Update-ID: 279361797
+MotoGP-Auswahl: 5
+Titel: Bulega 2027’ye rakiplerinden önce hazırlanıyor: KTM avantajı kabul etti
+Text:
+Nicolo Bulega legt schon jetzt den Grundstein für 2027 – früher als die anderen. Er mixt seine Pirelli‑Know‑how mit Tests auf der 850 cc Ducati. KTM gibt zu, dass er mit nem kleinen Vorsprung starten könnte, meint aber, das hält nicht ewig. 🏍️  
+
+Wie schätzt ihr den Startvorsprung für 2027 ein?  
+
+#MotoGP #NicoloBulega #MotoRacing #RacingDE #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-5-bulega-2027ye-rakipl-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-01-daily
+Telegram-Update-ID: 279361797
+MotoGP-Auswahl: 5
+Titel: Bulega 2027’ye rakiplerinden önce hazırlanıyor: KTM avantajı kabul etti
+Text:
+Nicolo Bulega bereitet sich früher als seine Konkurrenten auf das MotoGP-Jahr 2027 vor.
+
+Er kombiniert seine Pirelli-Erfahrung mit Tests auf der 850cc-Ducati. Bei KTM räumt man ein, dass Bulega mit einem Vorteil in die Saison 2027 starten wird. Gleichzeitig geht KTM aber davon aus, dass dieser Unterschied nur von kurzer Dauer sein wird.
+
+Wie schätzt ihr die Situation für 2027 ein?
+
+#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti
+Quelle: https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti
+Link-Preview: offiziell
