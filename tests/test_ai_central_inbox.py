@@ -16,7 +16,7 @@ class InboxTests(unittest.TestCase):
         d=make_request("Prüfe meinen Bericht",channel="web")
         self.assertEqual(d["schema"],SCHEMA)
         self.assertEqual(d["status"],"PENDING_REVIEW")
-        for invalid in ("", "a"*2501, "hi\\x00"):
+        for invalid in ("", "a"*2501, "hi"+chr(0)):
             with self.assertRaises(ValueError):make_request(invalid,channel="telegram")
         with self.assertRaises(ValueError):make_request("good",channel="agent")
     def test_duplicate_telegram_id_no_second_write(self):
