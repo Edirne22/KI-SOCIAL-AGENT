@@ -102,89 +102,39 @@ jobs:
             > "$RUNNER_TEMP/openchatcut-secrets.json"
       - name: Deploy Worker, container and runtime secrets atomically
         working-directory: infra/openchatcut-cloudflare
-        shell: bash
-        run: |
-          set -euo pipefail
-          mcp_url="https://edirne22-openchatcut-poc.butupeli.workers.dev/api/external-mcp/mcp"
-
-          wake_once() {
-            local label="$1" body code
-            body="$(mktemp)"
-            code="$(curl --max-time 20 -sS -o "$body" -w '%{http_code}' \
-              -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" \
-              -H 'Content-Type: application/json' \
-              -H 'Accept: application/json, text/event-stream' \
-              --data '{"jsonrpc":"2.0","id":"deploy-keepalive","method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"edirne22-deploy-keepalive","version":"1.0.0"}}}' \
-              "$mcp_url" || true)"
-            if [ "$code" = "200" ] && grep -q '"protocolVersion"' "$body"; then
-              echo "$label: MCP ready (HTTP 200)"
-              rm -f "$body"
-              return 0
-            fi
-            echo "$label: MCP not ready (HTTP $code)"
-            rm -f "$body"
-            return 1
-          }
-
-          echo "Pre-deploy wake-up"
-          ready=0
-          for attempt in 1 2 3; do
-            if wake_once "pre-deploy attempt $attempt"; then
-              ready=1
-              break
-            fi
-            [ "$attempt" -lt 3 ] && sleep 5
-          done
-          if [ "$ready" -ne 1 ]; then
-            echo "::error::OpenChatCut MCP could not be woken before deploy"
-            exit 1
-          fi
-
-          (
-            tick=0
-            while true; do
-              sleep 180
-              tick=$((tick + 1))
-              wake_once "deploy keep-alive $tick" || true
-            done
-          ) &
-          keepalive_pid=$!
-          cleanup_keepalive() {
-            kill "$keepalive_pid" 2>/dev/null || true
-            wait "$keepalive_pid" 2>/dev/null || true
-          }
-          trap cleanup_keepalive EXIT
-
-          npx wrangler deploy --secrets-file "$RUNNER_TEMP/openchatcut-secrets.json"
+        run: npx wrangler deploy --secrets-file "$RUNNER_TEMP/openchatcut-secrets.json"
       - name: Remove temporary secret bundle
         if: always()
         run: rm -f "$RUNNER_TEMP/openchatcut-secrets.json"
       - name: Confirm deployed application exists
         working-directory: infra/openchatcut-cloudflare
         run: npx wrangler containers list
-      - name: Warm OpenChatCut container via protected MCP initialize
+      - name: Wait for post-deploy MCP stability
         shell: bash
         run: |
           set -euo pipefail
           url="https://edirne22-openchatcut-poc.butupeli.workers.dev/api/external-mcp/mcp"
-          for attempt in {1..12}; do
+          stable=0
+          for attempt in {1..18}; do
             body="$(mktemp)"
-            code="$(curl --max-time 20 -sS -o "$body" -w '%{http_code}' \
-              -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" \
-              -H 'Content-Type: application/json' \
-              -H 'Accept: application/json, text/event-stream' \
-              --data '{"jsonrpc":"2.0","id":"warmup","method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"edirne22-deploy-warmup","version":"1.0.0"}}}' \
-              "$url" || true)"
+            started="$(date +%s)"
+            code="$(curl --max-time 20 -sS -o "$body" -w '%{http_code}' -H "Authorization: Bearer $OPENCHATCUT_MCP_TOKEN" -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' --data '{"jsonrpc":"2.0","id":"post-deploy-readiness","method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"edirne22-post-deploy-readiness","version":"1.0.0"}}}' "$url" || true)"
+            duration=$(($(date +%s)-started))
             if [ "$code" = "200" ] && grep -q '"protocolVersion"' "$body"; then
-              echo "Container MCP initialized on attempt $attempt"
-              rm -f "$body"
+              stable=$((stable + 1))
+              echo "post-deploy readiness attempt $attempt: PASS HTTP 200 duration=${duration}s stable=$stable/3"
+            else
+              stable=0
+              echo "post-deploy readiness attempt $attempt: NOT READY HTTP $code duration=${duration}s"
+            fi
+            rm -f "$body"
+            if [ "$stable" -ge 3 ]; then
+              echo "Post-deploy MCP stable across 3 consecutive probes"
               exit 0
             fi
-            echo "MCP warm-up not ready: attempt $attempt HTTP $code"
-            rm -f "$body"
-            sleep 5
+            sleep 10
           done
-          echo "::error::OpenChatCut MCP not ready after deploy"
+          echo "::error::OpenChatCut MCP did not reach a stable post-deploy state"
           exit 1
 
 
