@@ -1,0 +1,61 @@
+name: AI Central – manual R2 inbox review
+on:
+  pull_request:
+    paths:
+      - "scripts/ai_central_reviewed_inbox_dispatch.py"
+      - "tests/test_ai_central_reviewed_inbox_dispatch.py"
+      - ".github/workflows/ai-central-reviewed-inbox.yml"
+  workflow_dispatch:
+    inputs:
+      inbox_date:
+        description: "ISO UTC date of existing R2 inbox draft, YYYY-MM-DD"
+        required: true
+        type: string
+      inbox_id:
+        description: "Exact existing inbox task ID; manual review only"
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  offline-review-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install requests
+      - name: Safe manual-only inbox bridge tests
+        run: |
+          python -m py_compile scripts/ai_central_reviewed_inbox_dispatch.py
+          python -m unittest discover -s tests -p test_ai_central_reviewed_inbox_dispatch.py -v
+  reviewed-export:
+    needs: offline-review-contract
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install requests boto3
+      - name: Retrieve exact draft without any model calls
+        env:
+          INBOX_DATE: ${{ inputs.inbox_date }}
+          INBOX_ID: ${{ inputs.inbox_id }}
+        run: python scripts/ai_central_reviewed_inbox_dispatch.py --date "$INBOX_DATE" --id "$INBOX_ID"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: inbox-review-private-${{ github.run_id }}
+          path: reviewed-central-task.json
+          retention-days: 1
+      - name: Stop at user review gate
+        run: echo "R2 inbox draft successfully transformed; NO automatic AI inference, code modifications or deployment."
