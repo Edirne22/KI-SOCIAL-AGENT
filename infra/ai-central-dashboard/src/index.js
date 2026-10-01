@@ -24,7 +24,7 @@ function sameOrigin(req){
   return !origin||origin===new URL(req.url).origin;
 }
 function validMessage(s){return typeof s==="string"&&s.trim().length>=3&&s.length<=MAX_MESSAGE&&!DENY.test(s)&&!/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(s)}
-function objectKey(){return PREFIX+new Date().toISOString().replace(/[:.]/g,"-")+"/"+crypto.randomUUID()+".json"}
+function objectKey(){const stamp=new Date().toISOString();return PREFIX+stamp.slice(0,10)+"/"+stamp.slice(11).replace(/[:.]/g,"-")+"-"+crypto.randomUUID()+".json"}
 async function inbox(req,env){
   if(req.method==="GET"){
     // Timestamp-prefixed keys; R2 lists lexicographically in most buckets.
@@ -81,6 +81,18 @@ export default {async fetch(req,env){
   try{
     if(path==="/api/inbox")return await inbox(req,env);
     if(path==="/api/upload")return await upload(req,env);
+    if(path==="/api/runs"){
+      const response=await fetch("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/runs?per_page=15",{
+        headers:{"accept":"application/vnd.github+json","user-agent":"Edirne22-AI-Central-Dashboard",
+          ...(env.GITHUB_STATUS_TOKEN?{"authorization":"Bearer "+env.GITHUB_STATUS_TOKEN}:{})}});
+      if(!response.ok)return json({error:"GitHub status unavailable",code:response.status},502);
+      const data=await response.json();
+      const allowed=["Cloud AI Central","OpenChatCut"];
+      const runs=(data.workflow_runs||[]).filter(r=>allowed.some(n=>(r.name||"").includes(n)))
+        .slice(0,8).map(r=>({id:r.id,name:r.name,status:r.status,conclusion:r.conclusion,
+          started_at:r.run_started_at,updated_at:r.updated_at,url:r.html_url}));
+      return json({truth:"GITHUB_RUN_STATUS",runs,logged_at:new Date().toISOString()});
+    }
     if(path==="/api/health")return json({ok:true,truth:"WORKER_AND_R2_BINDING_PRESENT",live_models:false});
     return json({error:"not found"},404);
   }catch(err){console.error("dashboard_api",err instanceof Error?err.name:"unknown");return json({error:"request failed"},500)}
