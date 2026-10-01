@@ -66,9 +66,9 @@ jobs:
           INBOX_ID: ${{ inputs.inbox_id }}
         run: |
           if test "$TEAM_MODE" = "free-team"; then
-            python scripts/cloud_ai_central.py --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-team
+            python -m scripts.cloud_ai_central --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-team
           else
-            python scripts/cloud_ai_central.py --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-only
+            python -m scripts.cloud_ai_central --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-only
           fi
       - name: Record final outcome only for a validated reviewed task
         if: always() && steps.inbox_gate.outcome == 'success'
