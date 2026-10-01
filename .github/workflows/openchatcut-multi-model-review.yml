@@ -1,5 +1,11 @@
 name: OpenChatCut Multi-Model Advisory Review
 on:
+  push:
+    branches: [diag/openchatcut-multi-model-review-bridge]
+    paths:
+      - "scripts/openchatcut_multi_model_review.py"
+      - "tests/test_openchatcut_multi_model_review.py"
+      - ".github/workflows/openchatcut-multi-model-review.yml"
   pull_request:
     paths:
       - "scripts/openchatcut_multi_model_review.py"
@@ -19,7 +25,7 @@ jobs:
       - run: python -m pip install requests
       - run: python -m unittest discover -s tests -p 'test_openchatcut_multi_model_review.py' -v
   advisory-live:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/diag/openchatcut-multi-model-review-bridge')
     needs: offline-contract
     runs-on: ubuntu-latest
     timeout-minutes: 5
