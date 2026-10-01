@@ -145,23 +145,38 @@ async function taskStatus(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
   const id=new URL(req.url).searchParams.get("id");
   if(!id||!/^[A-Za-z0-9_-]{10,64}$/.test(id))return json({error:"invalid task id"},400);
-  const prefix="ai-central/v1/tasks/"+id+"/runs/";
-  const objects=await env.AI_CENTRAL_R2.list({prefix,limit:100});
-  const keys=objects.objects.filter(x=>x.key.endsWith("/report.json")).map(x=>x.key).sort().reverse();
-  if(!keys.length){
-    const state=await env.AI_CENTRAL_R2.get("ai-central/v1/tasks/"+id+"/status.json");
-    if(state){
-      const item=await state.json();
-      if(item.schema==="AI-CENTRAL-TASK-STATUS-V1"&&item.task_id===id)
-        return json({id,status:item.status,truth:"R2_JOB_LIFECYCLE_NO_COMPLETED_REPORT",
-          run_id:item.github_run_id,updated_at:item.updated_at});
-    }
-    return json({id,status:"NO_REPORT_YET",truth:"R2_REPORT_NOT_FOUND"});
+  const base="ai-central/v1/tasks/"+id+"/";
+  const state=await env.AI_CENTRAL_R2.get(base+"status.json");
+  let current=null;
+  if(state){
+    const item=await state.json();
+    if(item.schema!=="AI-CENTRAL-TASK-STATUS-V1"||item.task_id!==id)
+      return json({error:"invalid lifecycle provenance"},502);
+    if(!/^[0-9]{1,18}$/.test(item.github_run_id||""))
+      return json({error:"invalid lifecycle run ID"},502);
+    current=item;
   }
-  const report=await env.AI_CENTRAL_R2.get(keys[0]);
-  if(!report)return json({id,status:"NO_REPORT_YET",truth:"R2_REPORT_NOT_FOUND"});
+  const prefix=base+"runs/";
+  const objects=await env.AI_CENTRAL_R2.list({prefix,limit:100});
+  if(objects.truncated)return json({error:"report index exceeds safe scan limit"},409);
+  // The lifecycle's run ID is authoritative for retry/resume. Never display
+  // an old run's AI answer while a newer execution is running or failed.
+  const keys=objects.objects.filter(x=>x.key.endsWith("/report.json")).map(x=>x.key);
+  const latest=current?base+"runs/"+current.github_run_id+"/report.json":keys.sort().reverse()[0];
+  if(!latest){
+    return json({id,status:current?.status||"NO_REPORT_YET",
+      truth:current?"R2_JOB_LIFECYCLE_NO_COMPLETED_REPORT":"R2_REPORT_NOT_FOUND",
+      ...(current?{run_id:current.github_run_id,updated_at:current.updated_at}:{})});
+  }
+  const report=await env.AI_CENTRAL_R2.get(latest);
+  if(!report){
+    return json({id,status:current?.status||"NO_REPORT_YET",
+      truth:current?"R2_JOB_LIFECYCLE_NO_COMPLETED_REPORT":"R2_REPORT_NOT_FOUND",
+      ...(current?{run_id:current.github_run_id,updated_at:current.updated_at}:{})});
+  }
   const data=await report.json();
-  if(data.schema!=="CLOUD-AI-CENTRAL-V1"||data.task_id!==id)
+  if(data.schema!=="CLOUD-AI-CENTRAL-V1"||data.task_id!==id||
+     (current&&String(data.run_id)!==current.github_run_id))
     return json({error:"invalid stored report"},502);
   // Avoid exposing other task messages; show only reviewed result states and sanitized AI text.
   return json({id,status:data.status,truth:"R2_ARCHIVED_REPORT",run_id:data.run_id,
