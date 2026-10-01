@@ -13,7 +13,6 @@ jobs:
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
       AI_DASHBOARD_TOKEN: ${{ secrets.AI_DASHBOARD_TOKEN }}
       AI_GITHUB_DISPATCH_TOKEN: ${{ secrets.AI_GITHUB_DISPATCH_TOKEN }}
-      AI_CENTRAL_FREE_TIER_VERIFIED: ${{ vars.AI_CENTRAL_FREE_TIER_VERIFIED }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -42,9 +41,5 @@ jobs:
         if: env.AI_GITHUB_DISPATCH_TOKEN != ''
         working-directory: infra/ai-central-dashboard
         run: printf '%s' "$AI_GITHUB_DISPATCH_TOKEN" | npx --yes wrangler@4 secret put GITHUB_DISPATCH_TOKEN --config wrangler.jsonc
-      - name: Activate free-tier dispatch only after independently verified account audit
-        if: env.AI_CENTRAL_FREE_TIER_VERIFIED == 'true' && env.AI_GITHUB_DISPATCH_TOKEN != ''
-        working-directory: infra/ai-central-dashboard
-        run: printf '%s' "true" | npx --yes wrangler@4 secret put AI_CENTRAL_FREE_TIER_VERIFIED --config wrangler.jsonc
       - name: Completion note
         run: echo "Dashboard deployed with private R2 binding and configured access token. Free-tier dispatch only if explicitly audited and credential configured."
