@@ -1,0 +1,56 @@
+name: AI Central – reviewed free-tier inbox agent
+on:
+  workflow_dispatch:
+    inputs:
+      inbox_date:
+        description: "Exact UTC date of reviewed R2 inbox task"
+        required: true
+        type: string
+      inbox_id:
+        description: "Exact user-approved text task ID"
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: ai-central-inbox-${{ inputs.inbox_id }}
+  cancel-in-progress: false
+jobs:
+  reviewed-free-tier-advice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      AI_CENTRAL_FREE_TIER_VERIFIED: ${{ vars.AI_CENTRAL_FREE_TIER_VERIFIED }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Block all inference unless separate free-tier audit authorizes it
+        run: |
+          test "$AI_CENTRAL_FREE_TIER_VERIFIED" = "true" || { echo "FREE_TIER_NOT_VERIFIED: no API called"; exit 1; }
+          test -n "$GROQ_API_KEY" || { echo "GROQ_API_KEY missing"; exit 1; }
+      - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Validate exact approved R2 text draft and prepare bounded advisory
+        env:
+          INBOX_DATE: ${{ inputs.inbox_date }}
+          INBOX_ID: ${{ inputs.inbox_id }}
+        run: python -m scripts.ai_central_reviewed_inbox_dispatch --date "$INBOX_DATE" --id "$INBOX_ID"
+      - name: Run existing guarded advice, Groq free-tier opt-in only
+        env:
+          INBOX_ID: ${{ inputs.inbox_id }}
+        run: python scripts/cloud_ai_central.py --task-file reviewed-central-task.json --inbox-task-id "$INBOX_ID" --free-only
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ai-central-inbox-report-${{ github.run_id }}
+          path: |
+            reviewed-central-meta.json
+            ai-central-report.json
+          retention-days: 2
+          if-no-files-found: ignore
