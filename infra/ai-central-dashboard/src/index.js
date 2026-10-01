@@ -64,18 +64,23 @@ export default {
     if (url.pathname==="/api/uploads" && request.method==="POST") {
       const limit=8*1024*1024;
       const len=Number(request.headers.get("content-length")||0);
-      if (len>limit || len<1)return respond({error:"file must be 1B–8MB"},413);
+      if (len>limit)return respond({error:"file must be at most 8MB"},413);
       const type=(request.headers.get("content-type")||"").split(";")[0].toLowerCase();
       const allow=["image/png","image/jpeg","image/webp","audio/webm","audio/mp4","audio/mpeg",
         "application/pdf","text/plain"];
       if(!allow.includes(type))return respond({error:"file type not allowed"},415);
-      const content=await request.arrayBuffer();
-      if(content.byteLength<1 || content.byteLength>limit)return respond({error:"invalid file size"},413);
+      // Read streaming, including chunked requests with no Content-Length; never buffer >8 MiB.
+      if(!request.body)return respond({error:"empty file"},400);
+      const reader=request.body.getReader();const chunks=[];let total=0;
+      while(true){const {done,value}=await reader.read();if(done)break;total+=value.byteLength;
+        if(total>limit){await reader.cancel();return respond({error:"file exceeds 8MB"},413)}chunks.push(value)}
+      if(total<1)return respond({error:"empty file"},400);
+      const content=new Uint8Array(total);let offset=0;for(const chunk of chunks){content.set(chunk,offset);offset+=chunk.byteLength}
       const file_id=crypto.randomUUID();
       const key=ROOT+"uploads/"+file_id;
       await env.AI_CENTRAL_R2.put(key,content,{httpMetadata:{contentType:type},
         customMetadata:{source:"web",review:"pending",created:new Date().toISOString()}});
-      return respond({file_id,size:content.byteLength,type,status:"PENDING_REVIEW",
+      return respond({file_id,size:total,type,status:"PENDING_REVIEW",
         note:"Private upload only; attach to a reviewed task separately."},201);
     }
     return respond({error:"not found"},404);
