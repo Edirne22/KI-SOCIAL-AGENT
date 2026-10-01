@@ -203,7 +203,7 @@ function validPreview(d,id){
     typeof d.caption==="string"&&d.caption.length<=2500&&
     m&&m.mime_type==="video/mp4"&&
     typeof m.media_id==="string"&&m.media_id.length>=10&&
-    typeof m.key==="string"&&m.key.startsWith("content-factory/")&&
+    typeof m.key==="string"&&(m.key.startsWith("content-factory/")||/^media\/[0-9a-f-]{36}\/[^/]+$/.test(m.key))&&
     !m.key.split("/").includes("..")&&!m.key.includes("\\")&&
     Number.isSafeInteger(m.size_bytes)&&m.size_bytes>0&&m.size_bytes<=MAX_PREVIEW_BYTES&&
     typeof m.sha256==="string"&&/^[a-f0-9]{64}$/.test(m.sha256);
