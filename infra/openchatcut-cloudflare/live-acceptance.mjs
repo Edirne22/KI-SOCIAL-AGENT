@@ -26,7 +26,27 @@ const sessionDiag=(phase)=>console.log("MCP_SESSION_DIAG",JSON.stringify({phase,
 let call=async(name,args={})=>{sessionDiag(`before:${name}`);console.log("MCP",name);try{const x=await client.callTool({name,arguments:args});sessionDiag(`after:${name}`);if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x}catch(error){sessionDiag(`error:${name}`);throw error}};
 const data=x=>x.structuredContent??Object.assign({},...(x.content||[]).filter(c=>c.type==="text").map(c=>{try{return JSON.parse(c.text)}catch{return {text:c.text}}}));
 const status=await call("openchatcut_status"); console.log("status",JSON.stringify(data(status)));
-const created=data(await call("create_project",{name:`Edirne22 LIVE acceptance ${new Date().toISOString()}`,compositionWidth:720,compositionHeight:1280,fps:30}));
+// Distinguish a timed-out state mutation from a dead MCP connection. A fresh
+// connection is used because the original transport may have a pending request.
+let created;
+try {
+  created=data(await call("create_project",{name:`Edirne22 LIVE acceptance ${new Date().toISOString()}`,compositionWidth:720,compositionHeight:1280,fps:30}));
+} catch (error) {
+  console.error("CREATE_PROJECT_FAILURE",JSON.stringify({message:String(error),at:new Date().toISOString(),sessionId:transport.sessionId||null}));
+  try {
+    const hr=await fetch(base+"/_factory/health",{headers:auth,signal:AbortSignal.timeout(10000)});
+    console.error("POST_WRITE_WORKER_HEALTH",JSON.stringify({http:hr.status,body:(await hr.text()).slice(0,1000)}));
+  } catch (healthError) {console.error("POST_WRITE_WORKER_HEALTH_ERROR",String(healthError));}
+  try {
+    const diagTransport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
+    const diagClient=new Client({name:"edirne22-write-timeout-diagnostic",version:"1.0.0"});
+    await diagClient.connect(diagTransport,{timeout:15000});
+    const diag=await diagClient.callTool({name:"openchatcut_status",arguments:{}},undefined,{timeout:15000});
+    console.error("POST_WRITE_FRESH_MCP_STATUS",JSON.stringify({sessionId:diagTransport.sessionId||null,status:data(diag)}));
+    await diagClient.close();
+  } catch (diagError) {console.error("POST_WRITE_FRESH_MCP_ERROR",String(diagError));}
+  throw error;
+}
 const projectId=created.id||created.projectId; assert(projectId,"create_project returned no id");
 await call("target_project",{projectId});
 let tools=(await client.listTools()).tools; console.log("tool count",tools.length);
