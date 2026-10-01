@@ -1,7 +1,7 @@
 name: Test Content Factory Block 8
 on:
  pull_request:
-  paths: ["content_factory_golden_tablet.py","tests/test_content_factory_golden_tablet.py",".github/workflows/test-content-factory-block8.yml"]
+  paths: ["content_factory_golden_tablet.py","content_factory_golden_media.py","tests/test_content_factory_golden_tablet.py","tests/test_content_factory_golden_media.py","media_storage.py",".github/workflows/test-content-factory-block8.yml"]
  workflow_dispatch:
 jobs:
  test:
@@ -12,7 +12,7 @@ jobs:
      with: {python-version: "3.11"}
    - run: python -m pip install --disable-pip-version-check requests
    - name: Syntax
-     run: python -m py_compile content_factory_golden_tablet.py tests/test_content_factory_golden_tablet.py
+     run: python -m py_compile content_factory_golden_tablet.py content_factory_golden_media.py tests/test_content_factory_golden_tablet.py tests/test_content_factory_golden_media.py
    - name: Blocks 1-2
      run: python -m unittest -v tests.test_content_factory_core tests.test_content_factory_persistence
    - name: Block 3
@@ -26,6 +26,6 @@ jobs:
    - name: Block 7
      run: python -m unittest -v tests.test_content_factory_av
    - name: Block 8
-     run: python -m unittest -v tests.test_content_factory_golden_tablet
+     run: python -m unittest -v tests.test_content_factory_golden_tablet tests.test_content_factory_golden_media
    - name: SOURCE-FACT
      run: python tests/test_source_fact_contract_v1.py
