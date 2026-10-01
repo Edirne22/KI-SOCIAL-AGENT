@@ -135,7 +135,16 @@ async function taskStatus(req,env){
   const prefix="ai-central/v1/tasks/"+id+"/runs/";
   const objects=await env.AI_CENTRAL_R2.list({prefix,limit:100});
   const keys=objects.objects.filter(x=>x.key.endsWith("/report.json")).map(x=>x.key).sort().reverse();
-  if(!keys.length)return json({id,status:"NO_REPORT_YET",truth:"R2_REPORT_NOT_FOUND"});
+  if(!keys.length){
+    const state=await env.AI_CENTRAL_R2.get("ai-central/v1/tasks/"+id+"/status.json");
+    if(state){
+      const item=await state.json();
+      if(item.schema==="AI-CENTRAL-TASK-STATUS-V1"&&item.task_id===id)
+        return json({id,status:item.status,truth:"R2_JOB_LIFECYCLE_NO_COMPLETED_REPORT",
+          run_id:item.github_run_id,updated_at:item.updated_at});
+    }
+    return json({id,status:"NO_REPORT_YET",truth:"R2_REPORT_NOT_FOUND"});
+  }
   const report=await env.AI_CENTRAL_R2.get(keys[0]);
   if(!report)return json({id,status:"NO_REPORT_YET",truth:"R2_REPORT_NOT_FOUND"});
   const data=await report.json();
