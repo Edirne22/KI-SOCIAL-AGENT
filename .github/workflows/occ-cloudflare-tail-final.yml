@@ -1,8 +1,6 @@
 name: OpenChatCut Edge Versus Container Isolation
 on:
-  push:
-    branches: [diag/openchatcut-ai-root-cause-jury]
-    paths: ['.github/workflows/occ-cloudflare-tail-final.yml']
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
