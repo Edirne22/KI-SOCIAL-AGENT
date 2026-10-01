@@ -20,6 +20,8 @@ type Env = {
   R2_BUCKET_NAME?: string;
 };
 
+const containerBindings = env as unknown as Pick<Env, "OPENCHATCUT_MCP_TOKEN" | "R2_ACCOUNT_ID" | "R2_ACCESS_KEY_ID" | "R2_SECRET_ACCESS_KEY" | "R2_BUCKET_NAME">;
+
 export class OpenChatCutContainer extends Container {
   defaultPort = 5199;
   requiredPorts = [5199];
@@ -46,12 +48,12 @@ export class OpenChatCutContainer extends Container {
     console.error(JSON.stringify({ event: "openchatcut_container_error", at: new Date().toISOString(), error: String(error) }));
   }
   envVars = {
-    OPENCHATCUT_MCP_TOKEN: env.OPENCHATCUT_MCP_TOKEN,
+    OPENCHATCUT_MCP_TOKEN: containerBindings.OPENCHATCUT_MCP_TOKEN,
     __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "edirne22-openchatcut-poc.butupeli.workers.dev",
-    R2_ACCOUNT_ID: env.R2_ACCOUNT_ID || "",
-    R2_ACCESS_KEY_ID: env.R2_ACCESS_KEY_ID || "",
-    R2_SECRET_ACCESS_KEY: env.R2_SECRET_ACCESS_KEY || "",
-    R2_BUCKET: env.R2_BUCKET_NAME || "",
+    R2_ACCOUNT_ID: containerBindings.R2_ACCOUNT_ID || "",
+    R2_ACCESS_KEY_ID: containerBindings.R2_ACCESS_KEY_ID || "",
+    R2_SECRET_ACCESS_KEY: containerBindings.R2_SECRET_ACCESS_KEY || "",
+    R2_BUCKET: containerBindings.R2_BUCKET_NAME || "",
     OPENCHATCUT_DISABLE_HARDWARE_ENCODING: "1",
     OPENCHATCUT_RENDER_CONCURRENCY: "50%",
     OPENCHATCUT_MAX_ACTIVE_EXPORTS: "1"
