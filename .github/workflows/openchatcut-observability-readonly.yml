@@ -40,7 +40,7 @@ jobs:
               const meta=e.$metadata||{}, raw=JSON.stringify(e);
               if(!interesting.test(raw))continue;
               const eventName=raw.match(/openchatcut_container_(?:start|stop|error)|openchatcut_readiness_(?:ready|wait)/)?.[0]||"matched"; const code=raw.match(/exitCode[^0-9]{1,12}(\\d+)/)?.[1]||null; const reason=raw.match(/reason[^a-zA-Z]{1,12}(runtime_signal|exit)/)?.[1]||null;
-              console.log("LIFECYCLE",JSON.stringify({window:name,time:meta.timestamp||meta.startTime||e.timestamp||null,event:eventName,exitCode:code,reason:reason,containsNotListening:raw.includes("not listening"),containsDisconnect:raw.includes("suddenly disconnected")}));
+              console.log("LIFECYCLE",JSON.stringify({window:name,time:meta.timestamp||meta.startTime||e.timestamp||null,event:eventName,exitCode:code,reason:reason,requestId:meta.requestId||null,traceId:meta.traceId||null,recordId:meta.id||null,logLevel:meta.level||null,containerError:eventName==="openchatcut_container_error"?String(meta.message||"").slice(0,500):null,containsNotListening:raw.includes("not listening"),containsDisconnect:raw.includes("suddenly disconnected")}));
             }
           }
           NODE
