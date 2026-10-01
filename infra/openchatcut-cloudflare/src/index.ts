@@ -150,6 +150,36 @@ export class OpenChatCutContainer extends Container {
       return { containerRunning: true, probe: "exec-error" };
     }
   }
+  // Read-only process/network inventory after intermittent ECONNREFUSED; do not
+  // reveal arguments, env vars, filesystem paths, request content or credentials.
+  async probeProcessInventory(): Promise<{
+    containerRunning: boolean; probe: "not-running" | "completed" | "exec-error";
+    nodeCount?: number; npmCount?: number; listening5199?: boolean;
+  }> {
+    const runtime = this.ctx.container;
+    if (!runtime?.running) return { containerRunning: false, probe: "not-running" };
+    const script = [
+      "const fs=require('node:fs');let nodeCount=0,npmCount=0;",
+      "for(const pid of fs.readdirSync('/proc').filter(x=>/^\\d+$/.test(x))){",
+      "try{const comm=fs.readFileSync('/proc/'+pid+'/comm','utf8').trim();",
+      "if(comm==='node')nodeCount++;if(comm==='npm run dev:sha'||comm==='npm'||comm==='npm run dev:shared')npmCount++;}catch{}}",
+      "const port=(p)=>{try{return fs.readFileSync(p,'utf8').split('\\n').slice(1).some(l=>{",
+      "const fields=l.trim().split(/\\s+/);return fields[1]?.split(':').pop()==='144F'&&fields[3]==='0A';});}catch{return false}};",
+      "console.log(JSON.stringify({nodeCount:Math.min(nodeCount,200),npmCount:Math.min(npmCount,200),",
+      "listening5199:port('/proc/net/tcp')||port('/proc/net/tcp6')}));"
+    ].join("");
+    try {
+      const process = await runtime.exec(["node","-e",script]);
+      const output = await Promise.race([process.output(),
+        new Promise<never>((_resolve,reject)=>setTimeout(()=>reject(new Error("inventory_timeout")),6000))]);
+      if (output.exitCode !== 0) return { containerRunning:true,probe:"exec-error" };
+      const v=JSON.parse(new TextDecoder().decode(output.stdout).trim());
+      if (!Number.isInteger(v.nodeCount)||!Number.isInteger(v.npmCount)||typeof v.listening5199!=="boolean")
+        return { containerRunning:true,probe:"exec-error" };
+      return { containerRunning:true,probe:"completed",nodeCount:v.nodeCount,
+        npmCount:v.npmCount,listening5199:v.listening5199 };
+    } catch { return { containerRunning:true,probe:"exec-error" }; }
+  }
   envVars = {
     OPENCHATCUT_MCP_TOKEN: containerBindings.OPENCHATCUT_MCP_TOKEN,
     __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "edirne22-openchatcut-poc.butupeli.workers.dev",
@@ -189,6 +219,11 @@ export default {
       if (request.method !== "GET") return new Response("method not allowed", { status: 405 });
       const diagnosis = await container.probeAuthenticatedMcp();
       return Response.json({ service: "openchatcut", scope: "authenticated-local-mcp", ...diagnosis });
+    }
+    if (url.pathname === "/_factory/process-diag") {
+      if (request.method !== "GET") return new Response("method not allowed", { status:405 });
+      const diagnosis = await container.probeProcessInventory();
+      return Response.json({ service:"openchatcut",scope:"local-process-inventory",...diagnosis });
     }
     const sessionId = request.headers.get("mcp-session-id") || "";
     console.log(JSON.stringify({ event: "openchatcut_proxy", method: request.method, path: url.pathname, hasMcpSessionId: Boolean(sessionId), mcpSessionIdPrefix: sessionId.slice(0, 8), workerBootId: workerIdentity().workerBootId }));
