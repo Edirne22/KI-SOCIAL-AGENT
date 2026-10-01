@@ -1,0 +1,39 @@
+name: OpenChatCut Independent Root-Cause Jury
+on:
+  push:
+    branches: [diag/openchatcut-ai-root-cause-jury]
+    paths:
+      - ".github/workflows/occ-root-cause-jury.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  jury:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: 
+          python-version: "3.11"
+      - run: python -m pip install requests boto3
+      - name: Validate Python source
+        run: python -m py_compile scripts/occ_root_cause_jury.py
+      - name: Three independent, bounded analyses with private prior evidence
+        run: python scripts/occ_root_cause_jury.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: occ-independent-jury-${{ github.run_id }}
+          path: openchatcut-root-cause-jury.json
+          retention-days: 14
+          if-no-files-found: warn
