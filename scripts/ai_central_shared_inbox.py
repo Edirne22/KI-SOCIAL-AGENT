@@ -92,12 +92,15 @@ def start_reviewed(client,bucket,task_id,token,post=requests.post):
         key=entry.get("Key","")
         if not key.endswith(".json"):
             continue
-        value=json.loads(client.get_object(Bucket=bucket,Key=key)["Body"].read(10000))
+        obj=client.get_object(Bucket=bucket,Key=key)
+        value=json.loads(obj["Body"].read(10000))
         if value.get("id")==task_id:
-            found.append((key,value))
+            found.append((key,value,obj.get("ETag")))
     if len(found)!=1:
         raise ValueError("Auftrags-ID nicht gefunden oder doppelt vorhanden.")
-    key,entry=found[0]
+    key,entry,etag=found[0]
+    if not isinstance(etag,str) or not etag:
+        raise RuntimeError("R2 ETag fehlt; parallelsicherer Start blockiert.")
     if (entry.get("schema")!="AI-INBOX-V1" or entry.get("kind")!="message"
         or entry.get("status")!="DRAFT_REQUIRES_REVIEW" or entry.get("auto_dispatch") is not False):
         raise ValueError("Dieser Auftrag kann nicht gestartet werden.")
@@ -107,19 +110,35 @@ def start_reviewed(client,bucket,task_id,token,post=requests.post):
     queued={**entry,"status":"QUEUED_FREE_REVIEW",
         "approved_at":datetime.now(timezone.utc).isoformat(),
         "dispatch_target":"ai-central-inbox-agent.yml","inference_scope":"openrouter/free"}
-    client.put_object(Bucket=bucket,Key=key,Body=json.dumps(queued,ensure_ascii=False).encode(),
-        ContentType="application/json")
+    try:
+        claimed=client.put_object(Bucket=bucket,Key=key,Body=json.dumps(queued,ensure_ascii=False).encode(),
+            ContentType="application/json",IfMatch=etag)
+    except Exception as exc:
+        # A second Telegram event or browser request might have won the lock.
+        code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+        if code in ("PreconditionFailed","412","ConditionalRequestConflict","409"):
+            raise ValueError("Der Auftrag wurde bereits anderweitig gestartet.") from exc
+        raise
+    claim_etag=claimed.get("ETag")
+    if not claim_etag:
+        raise RuntimeError("R2 hat kein Claim-ETag geliefert; GitHub-Start blockiert.")
     try:
         response=post("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/workflows/ai-central-inbox-agent.yml/dispatches",
             headers={"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json",
                 "X-GitHub-Api-Version":"2022-11-28"},
             json={"ref":"main","inputs":{"inbox_date":day,"inbox_id":task_id}},timeout=20)
     except requests.RequestException:
-        client.put_object(Bucket=bucket,Key=key,Body=json.dumps(entry,ensure_ascii=False).encode(),ContentType="application/json")
-        raise RuntimeError("GitHub momentan nicht erreichbar; Entwurf beibehalten.")
+        # An HTTP timeout is ambiguous: GitHub may already be running this job.
+        raise RuntimeError("GitHub-Start unklar. Auftrag bleibt gesperrt; GitHub prüfen statt erneut starten.")
     if response.status_code!=204:
-        client.put_object(Bucket=bucket,Key=key,Body=json.dumps(entry,ensure_ascii=False).encode(),ContentType="application/json")
-        raise RuntimeError("GitHub hat den Start nicht bestätigt; Entwurf beibehalten.")
+        if response.status_code>=500 or response.status_code==429:
+            raise RuntimeError("GitHub-Start unklar. Auftrag bleibt gesperrt; GitHub prüfen.")
+        try:
+            client.put_object(Bucket=bucket,Key=key,Body=json.dumps(entry,ensure_ascii=False).encode(),
+                ContentType="application/json",IfMatch=claim_etag)
+        except Exception:
+            raise RuntimeError("GitHub lehnte ab, aber R2 wurde parallel geändert; Status manuell prüfen.")
+        raise RuntimeError("GitHub lehnte den Start ab; Entwurf beibehalten.")
     return "Auftrag "+task_id+" von GitHub angenommen. Das ist noch kein fertiges Ergebnis. Bericht später im Dashboard prüfen."
 
 def handle(text,update_id,chat_id,*,client=None,bucket=None):
