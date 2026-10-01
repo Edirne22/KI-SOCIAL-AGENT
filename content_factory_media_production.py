@@ -34,7 +34,7 @@ class MediaProductionPlanner:
                 prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
                 steps.append(MediaStep("generate","generate","agnes_video",(),(("prompt",prompt),("language",brief.language))))
             if not independent_ffmpeg: steps.append(MediaStep("edit","edit","openchatcut",()))
-            steps.append(MediaStep("render","render","ffmpeg",(),(("mode","caption_audio"),("seconds","15")) if independent_ffmpeg else ()))
+            steps.append(MediaStep("render","render","ffmpeg",ids if independent_ffmpeg and ids else (), (("mode","caption_audio"),("seconds","15")) if independent_ffmpeg else ()))
         elif brief.content_format in (ContentFormat.IMAGE,ContentFormat.CAROUSEL):
             if not ids:
                 prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
