@@ -37,7 +37,7 @@ class CandidateAuditTests(unittest.TestCase):
                 self.assertEqual(seen[0][1]["json"]["model"],c["model"])
                 self.assertEqual(seen[0][1]["json"]["max_tokens"],40)
                 self.assertNotIn("test-secret",str(result))
-                self.assertNotIn("answer",str(result).lower())
+                self.assertNotIn("READY",str(result))
 
     def test_http_rate_limit_not_marked_success_or_retried(self):
         c=p.CANDIDATES["groq"]
