@@ -47,6 +47,141 @@ export class OpenChatCutContainer extends Container {
   override onError(error: unknown): void {
     console.error(JSON.stringify({ event: "openchatcut_container_error", at: new Date().toISOString(), error: String(error) }));
   }
+  // Read-only internal network test: does not wake a stopped container or expose secrets.
+  async probeLoopback5199(): Promise<{
+    containerRunning: boolean;
+    probe: "not-running" | "responding" | "fetch-error" | "exec-error";
+    httpStatus?: number;
+    errorCode?: string;
+  }> {
+    const runtime = this.ctx.container;
+    if (!runtime?.running) {
+      return { containerRunning: false, probe: "not-running" };
+    }
+    // Intentionally fixed command. User/model input never reaches exec().
+    const script = [
+      "const url='http://127.0.0.1:5199/api/external-mcp/mcp';",
+      "fetch(url,{method:'GET',signal:AbortSignal.timeout(1800)})",
+      ".then(r=>console.log(JSON.stringify({probe:'responding',httpStatus:r.status})))",
+      ".catch(e=>console.log(JSON.stringify({probe:'fetch-error',errorCode:String(e?.cause?.code||e?.name||'unknown').slice(0,40)})));"
+    ].join("");
+    try {
+      const process = await runtime.exec(["node", "-e", script]);
+      const output = await Promise.race([
+        process.output(),
+        new Promise<never>((_resolve, reject) =>
+          setTimeout(() => reject(new Error("probe_timeout")), 6500)
+        )
+      ]);
+      const value = JSON.parse(new TextDecoder().decode(output.stdout).trim()) as {
+        probe?: string; httpStatus?: number; errorCode?: string;
+      };
+      if (output.exitCode !== 0 || (value.probe !== "responding" && value.probe !== "fetch-error")) {
+        return { containerRunning: true, probe: "exec-error" };
+      }
+      if (value.probe === "responding" && Number.isInteger(value.httpStatus)) {
+        return { containerRunning: true, probe: "responding", httpStatus: value.httpStatus };
+      }
+      return {
+        containerRunning: true,
+        probe: "fetch-error",
+        errorCode: String(value.errorCode || "unknown").slice(0, 40)
+      };
+    } catch {
+      // Do not return exception messages: they can include internal infrastructure details.
+      return { containerRunning: true, probe: "exec-error" };
+    }
+  }
+  // Distinct, bounded follow-up to the read-only GET probe: test authenticated
+  // MCP session persistence INSIDE the existing container process only.
+  // Fixed commands/payloads; no external user input, secrets or response bodies leave it.
+  async probeAuthenticatedMcp(): Promise<{
+    containerRunning: boolean;
+    probe: "not-running" | "no-key" | "completed" | "fetch-error" | "exec-error";
+    initStatus?: number;
+    sessionHeaderPresent?: boolean;
+    followupStatus?: number;
+    followupSessionLost?: boolean;
+    errorCode?: string;
+  }> {
+    const runtime = this.ctx.container;
+    if (!runtime?.running) return { containerRunning: false, probe: "not-running" };
+    const script = [
+      "const token=process.env.OPENCHATCUT_MCP_TOKEN||'';",
+      "if(!token){console.log(JSON.stringify({probe:'no-key'}));process.exit(0)}",
+      "const url='http://127.0.0.1:5199/api/external-mcp/mcp';",
+      "const h={Authorization:'Bearer '+token,'Content-Type':'application/json',Accept:'application/json, text/event-stream','MCP-Protocol-Version':'2025-06-18'};",
+      "const post=(b,extra={})=>fetch(url,{method:'POST',headers:{...h,...extra},body:JSON.stringify(b),signal:AbortSignal.timeout(5000)});",
+      "async function run(){try{",
+      "const a=await post({jsonrpc:'2.0',id:1,method:'initialize',params:{protocolVersion:'2025-06-18',capabilities:{},clientInfo:{name:'bounded-local-diagnostic',version:'1'}}});",
+      "const sid=a.headers.get('mcp-session-id')||'';let next=0,lost=false;",
+      "if(sid&&a.ok){",
+      "await post({jsonrpc:'2.0',method:'notifications/initialized',params:{}},{'mcp-session-id':sid}).then(r=>r.body?.cancel().catch(()=>{})).catch(()=>{});",
+      "const b=await post({jsonrpc:'2.0',id:2,method:'tools/list',params:{}},{'mcp-session-id':sid});next=b.status;",
+      "if(b.status>=400){lost=(await b.text()).slice(0,5000).toLowerCase().includes('session not found');}else{await b.body?.cancel().catch(()=>{});}await a.body?.cancel().catch(()=>{});}",
+      "console.log(JSON.stringify({probe:'completed',initStatus:a.status,sessionHeaderPresent:!!sid,followupStatus:next,followupSessionLost:lost}));",
+      "}catch(e){console.log(JSON.stringify({probe:'fetch-error',errorCode:String(e?.cause?.code||e?.name||'unknown').slice(0,40)}));}}run();"
+    ].join("");
+    try {
+      const process = await runtime.exec(["node", "-e", script], {
+        env: { OPENCHATCUT_MCP_TOKEN: this.envVars.OPENCHATCUT_MCP_TOKEN }
+      });
+      const output = await Promise.race([
+        process.output(),
+        new Promise<never>((_resolve, reject) =>
+          setTimeout(() => reject(new Error("probe_timeout")), 18000)
+        )
+      ]);
+      const value = JSON.parse(new TextDecoder().decode(output.stdout).trim()) as {
+        probe?: string; initStatus?: number; sessionHeaderPresent?: boolean;
+        followupStatus?: number; followupSessionLost?: boolean; errorCode?: string;
+      };
+      if (output.exitCode !== 0) return { containerRunning: true, probe: "exec-error" };
+      if (value.probe === "no-key") return { containerRunning: true, probe: "no-key" };
+      if (value.probe === "fetch-error") return {
+        containerRunning: true, probe: "fetch-error", errorCode: String(value.errorCode || "unknown").slice(0, 40)
+      };
+      if (value.probe === "completed" && Number.isInteger(value.initStatus)) return {
+        containerRunning: true, probe: "completed", initStatus: value.initStatus,
+        sessionHeaderPresent: value.sessionHeaderPresent === true,
+        followupStatus: Number.isInteger(value.followupStatus) ? value.followupStatus : 0,
+        followupSessionLost: value.followupSessionLost === true
+      };
+      return { containerRunning: true, probe: "exec-error" };
+    } catch {
+      return { containerRunning: true, probe: "exec-error" };
+    }
+  }
+  // Read-only process/network inventory after intermittent ECONNREFUSED; do not
+  // reveal arguments, env vars, filesystem paths, request content or credentials.
+  async probeProcessInventory(): Promise<{
+    containerRunning: boolean; probe: "not-running" | "completed" | "exec-error";
+    nodeCount?: number; npmCount?: number; listening5199?: boolean;
+  }> {
+    const runtime = this.ctx.container;
+    if (!runtime?.running) return { containerRunning: false, probe: "not-running" };
+    const script = [
+      "const fs=require('node:fs');let nodeCount=0,npmCount=0;",
+      "for(const pid of fs.readdirSync('/proc').filter(x=>/^\\d+$/.test(x))){",
+      "try{const comm=fs.readFileSync('/proc/'+pid+'/comm','utf8').trim();",
+      "if(comm==='node')nodeCount++;if(comm==='npm run dev:sha'||comm==='npm'||comm==='npm run dev:shared')npmCount++;}catch{}}",
+      "const port=(p)=>{try{return fs.readFileSync(p,'utf8').split('\\n').slice(1).some(l=>{",
+      "const fields=l.trim().split(/\\s+/);return fields[1]?.split(':').pop()==='144F'&&fields[3]==='0A';});}catch{return false}};",
+      "console.log(JSON.stringify({nodeCount:Math.min(nodeCount,200),npmCount:Math.min(npmCount,200),",
+      "listening5199:port('/proc/net/tcp')||port('/proc/net/tcp6')}));"
+    ].join("");
+    try {
+      const process = await runtime.exec(["node","-e",script]);
+      const output = await Promise.race([process.output(),
+        new Promise<never>((_resolve,reject)=>setTimeout(()=>reject(new Error("inventory_timeout")),6000))]);
+      if (output.exitCode !== 0) return { containerRunning:true,probe:"exec-error" };
+      const v=JSON.parse(new TextDecoder().decode(output.stdout).trim());
+      if (!Number.isInteger(v.nodeCount)||!Number.isInteger(v.npmCount)||typeof v.listening5199!=="boolean")
+        return { containerRunning:true,probe:"exec-error" };
+      return { containerRunning:true,probe:"completed",nodeCount:v.nodeCount,
+        npmCount:v.npmCount,listening5199:v.listening5199 };
+    } catch { return { containerRunning:true,probe:"exec-error" }; }
+  }
   envVars = {
     OPENCHATCUT_MCP_TOKEN: containerBindings.OPENCHATCUT_MCP_TOKEN,
     __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "edirne22-openchatcut-poc.butupeli.workers.dev",
@@ -77,6 +212,21 @@ export default {
     }
 
     const container = getContainer(e.OPENCHATCUT, "buelent-single-user");
+    if (url.pathname === "/_factory/container-diag") {
+      if (request.method !== "GET") return new Response("method not allowed", { status: 405 });
+      const diagnosis = await container.probeLoopback5199();
+      return Response.json({ service: "openchatcut", scope: "container-loopback", ...diagnosis });
+    }
+    if (url.pathname === "/_factory/container-auth-diag") {
+      if (request.method !== "GET") return new Response("method not allowed", { status: 405 });
+      const diagnosis = await container.probeAuthenticatedMcp();
+      return Response.json({ service: "openchatcut", scope: "authenticated-local-mcp", ...diagnosis });
+    }
+    if (url.pathname === "/_factory/process-diag") {
+      if (request.method !== "GET") return new Response("method not allowed", { status:405 });
+      const diagnosis = await container.probeProcessInventory();
+      return Response.json({ service:"openchatcut",scope:"local-process-inventory",...diagnosis });
+    }
     const sessionId = request.headers.get("mcp-session-id") || "";
     console.log(JSON.stringify({ event: "openchatcut_proxy", method: request.method, path: url.pathname, hasMcpSessionId: Boolean(sessionId), mcpSessionIdPrefix: sessionId.slice(0, 8), workerBootId: workerIdentity().workerBootId }));
     return container.fetch(request);
