@@ -58,3 +58,11 @@ Konfiguration `wrangler.jsonc`: `instance_type = standard-2`, `max_instances = 1
 **Boot-ID-Herkunft:** `workerBootId` wird in `workerIdentity()` in unserem Cloudflare Worker-Modul (`src/index.ts`) erstellt, nicht im Containerprozess. Die Boot-ID ist daher kein Nachweis für einen Container-Restart.
 
 **Änderungsstopp:** keine weitere Runtime-Änderung, Instanzvergrößerung oder zusätzlichen Retries vor gesichteter Lifecycle-/Session-Evidenz.
+
+## NACHTRAG – Unabhängige Hypothese GET-Stream / SDK und verifizierte Upstream-Limits
+
+Exakt gepinnter Upstream `server/external-agent/mcp.ts`: `MCP_SESSION_IDLE_LIMIT_MS = 60 * 60 * 1000` (60 Minuten), `MCP_SESSION_COUNT_LIMIT = 64`. `transport.onclose` ruft unmittelbar `forgetSession(session, 'cancelled', ...)` auf; `forgetSession` entfernt die Session aus der Prozess-`Map` und storniert Editor-Calls. Bei bloß ca. 1 Sekunde zwischen MCP-Connect und `status` und etwa zehn erzeugten Probe-Sessions erklären Leerlauf-/Anzahl-Limits den beobachteten Verlust nicht plausibel.
+
+Neue **unbestätigte** Hypothese: SDK eröffnet nach Initialize eventuell langlebigen GET-Eventstream, und ein Proxy-/Stream-Abbruch könnte den Upstream-Transport schließen und `onclose` auslösen. Vor Schlussfolgerung SDK-/Upstream-Stream-Close-Verhalten prüfen, zusätzlich Lifecycle-Logs im Fenster 10:16–10:21 UTC auswerten.
+
+Gezielter diagnostischer Vergleich erst nach Ressourcen-/Logabgleich: begrenzte Roh-MCP-Folge (`initialize` → `tools/call openchatcut_status` mit derselben Session-ID, ohne SDK/GET) versus SDK-Folge mit GET-Stream; jeweils Status, Response-Header und redigierten Fehlerbody insbesondere bei HTTP 500 aufzeichnen. Nur synthetische Status-Calls, keine Medienjobs, keine Secrets oder Session-IDs in öffentlichen Logs veröffentlichen. Niemals allein durch Retry-Erfolg als LIVE bewerten.
