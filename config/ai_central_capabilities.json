@@ -6,11 +6,11 @@
       "secret": "GEMINI_API_KEY",
       "models": [
         "gemini-3.6-flash",
-        "gemini-3.1-flash-lite-image",
         "gemini-3.1-flash-image",
-        "gemini-3-pro-image"
+        "gemini-3-pro-image",
+        "veo-3.1-fast-generate-preview"
       ],
-      "state": "text-live-image-unproven"
+      "state": "text-live-image-catalog-confirmed-inference-unverified"
     },
     "nvidia": {
       "secret": "NVIDIA_API_KEY",
@@ -59,6 +59,14 @@
         "@cf/black-forest-labs/flux-1-schnell"
       ],
       "state": "repo-integrated-not-central-live"
+    },
+    "claude_openrouter": {
+      "secret": "OPENROUTER_API_KEY",
+      "models": [
+        "anthropic/claude-sonnet-4.5",
+        "anthropic/claude-sonnet-4.6"
+      ],
+      "state": "catalog-listed-inference-unverified-may-cost"
     }
   },
   "tasks": {
@@ -81,23 +89,27 @@
       "providers": [
         "openrouter",
         "nvidia",
-        "claude"
+        "claude",
+        "claude_openrouter"
       ],
       "model_by_provider": {
         "openrouter": "qwen/qwen3-coder:free",
         "nvidia": "nvidia/nemotron-3.5-lightning-30b-a3b",
-        "claude": "claude-sonnet-4-5"
+        "claude": "claude-sonnet-4-5",
+        "claude_openrouter": "anthropic/claude-sonnet-4.5"
       },
       "approval": true
     },
     "document_edit": {
       "providers": [
         "claude",
+        "claude_openrouter",
         "google"
       ],
       "model_by_provider": {
         "claude": "claude-sonnet-4-5",
-        "google": "gemini-3.6-flash"
+        "google": "gemini-3.6-flash",
+        "claude_openrouter": "anthropic/claude-sonnet-4.5"
       },
       "approval": true
     },
@@ -144,6 +156,7 @@
     "model_catalog_is_not_inference_tested": true,
     "forced_provider_must_never_fallback": true,
     "unverified_paid_inference_must_not_auto_run": true,
-    "generated_docs_require_validation": true
+    "generated_docs_require_validation": true,
+    "claude_only_may_use_exact_anthropic_model_on_openrouter_if_verified": true
   }
 }
