@@ -107,6 +107,8 @@ def main():
         if os.getenv("AI_CENTRAL_FREE_TIER_VERIFIED") != "true":
             raise SystemExit("FREE_TIER_NOT_VERIFIED: no model inference attempted")
         openrouter=config["providers"]["openrouter"].copy()
+        if openrouter.get("base_url") != "https://openrouter.ai/api/v1" or openrouter.get("api_key_env") != "OPENROUTER_API_KEY":
+            raise SystemExit("FREE_ROUTE_CONFIG_MISMATCH: no inference attempted")
         openrouter["models"]={"default":"openrouter/free","reasoning":"openrouter/free"}
         config["providers"]={"openrouter":openrouter}
     review=dispatch(task,config,roles=FREE_ROLES if args.free_only else None)
