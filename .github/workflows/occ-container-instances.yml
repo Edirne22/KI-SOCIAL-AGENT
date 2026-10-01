@@ -1,8 +1,6 @@
 name: OpenChatCut Read-only Container Instance Inventory
 on:
-  push:
-    branches: [diag/openchatcut-ai-root-cause-jury]
-    paths: ['.github/workflows/occ-container-instances.yml']
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
