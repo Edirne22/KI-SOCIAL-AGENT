@@ -124,6 +124,13 @@ function appendPrivateAttachment(root,entry){
   const label=document.createElement("div");label.className="smalltext";
   label.textContent=fileSummary(entry)+" · Status: privat gespeichert; KI-Verarbeitung nicht gestartet";
   box.append(label);
+  // Metadata-only for arbitrary document types. Never attempt a private
+  // preview fetch for a file type that the server deliberately disallows.
+  if(!["image/png","image/jpeg","video/mp4","audio/webm","audio/mp4","audio/ogg","application/pdf"].includes(entry.file.mime)){
+    const note=document.createElement("div");note.className="smalltext";
+    note.textContent="Keine integrierte Vorschau für diesen Dateityp. Datei bleibt privat gespeichert.";
+    box.append(note);root.append(box);return;
+  }
   const cached=previewCache.get(entry.id);
   if(!cached){const pending=document.createElement("div");pending.textContent="Lade private Dateivorschau …";box.append(pending);void loadPrivateAttachment(entry)}
   else if(cached.error){const note=document.createElement("div");note.textContent="Vorschau nicht verfügbar: "+cached.error;box.append(note)}
