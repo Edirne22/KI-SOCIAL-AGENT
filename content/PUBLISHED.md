@@ -614,8 +614,8 @@ Quelle: https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avan
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti", "media_status": "", "object_id": "1285968257941776_122117659527469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122117659527469415", "source_url": "https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-02 11:01 | ID: 17949945948052810]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-02-daily
 Telegram-Update-ID: 279361804
@@ -628,6 +628,7 @@ Deniz Öncü kam in Österreich auf Platz 9 – jetzt geht’s nach Motegi, wo
 Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-1-deniz-oncu-japonyada-01.jpg
+Publish-Provenienz: {"creation_id": "18009675098971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-1-deniz-oncu-japonyada-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "17949945948052810", "published_media_id": "17949945948052810", "source_url": "https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-02 10:55 | ID: 1285968257941776_122118157059469415]
 Status: GEPOSTET
