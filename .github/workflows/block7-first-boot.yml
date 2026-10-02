@@ -75,7 +75,7 @@ jobs:
           HF_HUB_DISABLE_TELEMETRY: '1'
         run: timeout 60s python -m scripts.block7_chatterbox_startup
       - name: Optional expensive cold-start with synthetic voice ONLY
-        if: github.event_name == 'workflow_dispatch' && inputs.full_chatterbox_model == true
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.full_chatterbox_model == true)
         env:
           HF_HUB_DISABLE_TELEMETRY: '1'
         run: |
