@@ -96,6 +96,15 @@ class AgencyRosterTests(unittest.TestCase):
         self.assertNotIn("100% efficiency", self.org.lower())
         self.assertIn("nicht", self.org.lower())
 
+    def test_agent_runtime_rules_reference_current_guardrails(self):
+        policy = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("PROJECT_GUARDRAILS.md", policy)
+        self.assertIn("docs/AGENCY_ORG_AND_HANDOFF.md", policy)
+        self.assertIn("OmniRoute", policy)
+        self.assertIn("PAUSED", policy)
+        self.assertNotIn("OmniRoute auf VPS als zentrales Gateway", policy)
+        self.assertNotIn("Bei Testfehlern: nur Analyse + Kommentar", policy)
+
 
 if __name__ == "__main__":
     unittest.main()
