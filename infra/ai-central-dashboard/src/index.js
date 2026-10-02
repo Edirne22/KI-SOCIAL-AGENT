@@ -192,12 +192,14 @@ async function taskStatus(req,env){
    manifests directly in R2, after media integrity + QM checks. The browser can
    only read authenticated previews, never specify arbitrary R2 keys. */
 const PREVIEW_PREFIX="ai-central/v1/previews/";
+const PREVIEW_STATE_PREFIX="ai-central/v1/preview-state/";
 const MAX_PREVIEW_BYTES=32*1024*1024;
 const PREVIEW_ID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 function validPreview(d,id){
   const m=d?.media;
   return d?.schema==="FACTORY-MEDIA-PREVIEW-V1"&&d?.preview_id===id&&
     d?.state==="READY_FOR_HUMAN"&&d?.qm_passed===true&&
+    typeof d.expires_at==="string"&&Number.isFinite(Date.parse(d.expires_at))&&Date.parse(d.expires_at)>Date.now()&&
     typeof d.job_id==="string"&&d.job_id.length>=10&&Number.isSafeInteger(d.revision)&&d.revision>0&&
     typeof d.manifest==="string"&&/^[a-f0-9]{64}$/.test(d.manifest)&&
     typeof d.caption==="string"&&d.caption.length<=2500&&
@@ -213,7 +215,17 @@ async function previewManifest(env,id){
   if(!obj)return null;
   let d;
   try{d=await obj.json()}catch{return null}
-  return validPreview(d,id)?d:null;
+    if(!validPreview(d,id))return null;
+  // An older preview index must not authorize video access after revision.
+  if(!PREVIEW_ID.test(d.job_id))return null;
+  const stateObj=await env.AI_CENTRAL_R2.get(PREVIEW_STATE_PREFIX+d.job_id+".json");
+  if(!stateObj)return null;
+  let current;
+  try{current=await stateObj.json()}catch{return null}
+  if(current?.schema!=="FACTORY-PREVIEW-STATE-V1"||current?.job_id!==d.job_id||
+     current?.preview_id!==id||current?.revision!==d.revision||
+     current?.manifest!==d.manifest||current?.state!=="READY_FOR_HUMAN")return null;
+  return d;
 }
 async function listPreviews(req,env){
   if(req.method!=="GET")return json({error:"method"},405);

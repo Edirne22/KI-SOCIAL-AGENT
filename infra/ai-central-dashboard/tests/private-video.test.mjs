@@ -27,10 +27,15 @@ function seed(e,options={}){
  const sha=createHash("sha256").update(bytes).digest("hex");
  const key="content-factory/"+randomUUID()+"/approved.mp4";
  const doc={schema:"FACTORY-MEDIA-PREVIEW-V1",preview_id:id,state:"READY_FOR_HUMAN",qm_passed:true,
+  expires_at:new Date(Date.now()+60*60*1000).toISOString(),
   job_id:randomUUID(),revision:1,manifest:"a".repeat(64),caption:"Buelent's private reel",
   media:{media_id:randomUUID(),key,mime_type:"video/mp4",size_bytes:bytes.length,sha256:sha},...options};
  e.AI_CENTRAL_R2.objects.set("ai-central/v1/previews/"+id+".json",item(JSON.stringify(doc)));
  e.AI_CENTRAL_R2.objects.set(key,item(bytes,{metadata:{sha256:sha}}));
+ e.AI_CENTRAL_R2.objects.set("ai-central/v1/preview-state/"+doc.job_id+".json",item(JSON.stringify({
+   schema:"FACTORY-PREVIEW-STATE-V1",job_id:doc.job_id,preview_id:id,
+   revision:doc.revision,manifest:doc.manifest,state:"READY_FOR_HUMAN"
+ })));
  return {id,doc,bytes,key};
 }
 test("anonymous cannot list or fetch private video",async()=>{
@@ -76,4 +81,32 @@ test("oversized or fake MIME manifest never appears",async()=>{
     item(JSON.stringify({...doc,media})));
   assert.equal((await (await worker.fetch(req("/api/previews"),e)).json()).items.length,0);
  }
+});
+
+test("revoked preview hidden and video cannot be replayed",async()=>{
+ const e=env(),{id,doc}=seed(e);
+ e.AI_CENTRAL_R2.objects.set("ai-central/v1/preview-state/"+doc.job_id+".json",item(JSON.stringify({
+   schema:"FACTORY-PREVIEW-STATE-V1",job_id:doc.job_id,preview_id:null,
+   revision:doc.revision,manifest:doc.manifest,state:"REVOKED"
+ })));
+ assert.equal((await (await worker.fetch(req("/api/previews"),e)).json()).items.length,0);
+ assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
+});
+test("superseded preview JSON cannot authorize an old video",async()=>{
+ const e=env(),{id,doc}=seed(e);
+ e.AI_CENTRAL_R2.objects.set("ai-central/v1/preview-state/"+doc.job_id+".json",item(JSON.stringify({
+   schema:"FACTORY-PREVIEW-STATE-V1",job_id:doc.job_id,preview_id:randomUUID(),
+   revision:doc.revision+1,manifest:"b".repeat(64),state:"READY_FOR_HUMAN"
+ })));
+ assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
+});
+test("expired and missing state pointers fail closed",async()=>{
+ const e=env(),{id,doc}=seed(e);
+ const path="ai-central/v1/previews/"+id+".json";
+ e.AI_CENTRAL_R2.objects.set(path,item(JSON.stringify({...doc,
+   expires_at:new Date(Date.now()-1000).toISOString()})));
+ assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
+ e.AI_CENTRAL_R2.objects.set(path,item(JSON.stringify(doc)));
+ e.AI_CENTRAL_R2.objects.delete("ai-central/v1/preview-state/"+doc.job_id+".json");
+ assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
 });

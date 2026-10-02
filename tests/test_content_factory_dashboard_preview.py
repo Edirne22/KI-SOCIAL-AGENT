@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 from content_factory_core import ProductionJob, JobStatus
-from content_factory_dashboard_preview import register_verified_video_preview, INDEX_PREFIX
+from content_factory_dashboard_preview import register_verified_video_preview, revoke_video_previews, INDEX_PREFIX, STATE_PREFIX
 from content_factory_golden_tablet import FinalQM, QMCheck
 from media_storage import R2Storage
 
@@ -47,6 +47,17 @@ class DashboardPreviewRegistration(unittest.TestCase):
         self.assertEqual(record["media"]["key"],"media/"+self.media.media_id+"/clip.mp4")
         self.assertEqual(record["manifest"],self.job.approval_manifest())
         self.assertEqual(JobStatus.READY_FOR_HUMAN,self.job.status)
+        state=self.client.index[(self.storage.bucket, STATE_PREFIX+self.job.job_id+".json")]
+        self.assertEqual(state["preview_id"],preview)
+        self.assertEqual(state["revision"],1)
+        self.assertIn("expires_at",record)
+    def test_revocation_clears_current_preview_pointer(self):
+        preview=register_verified_video_preview(self.job,self.report,storage=self.storage)
+        revoke_video_previews(self.job,storage=self.storage)
+        state=self.client.index[(self.storage.bucket,STATE_PREFIX+self.job.job_id+".json")]
+        self.assertIsNone(state["preview_id"])
+        self.assertEqual(state["state"],"REVOKED")
+
     def test_corrupt_media_not_indexed(self):
         k=("private-unit-test","media/"+self.media.media_id+"/clip.mp4")
         self.client.objects[k]=b"corrupted"

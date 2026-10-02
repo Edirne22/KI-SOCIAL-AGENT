@@ -1,24 +1,12 @@
 {
   "version": 1,
-  "created_at": 1790829868,
+  "created_at": 1790915981,
   "max_days": 10,
   "window_used_days": 10,
-  "count": 4,
+  "count": 1,
   "items": [
     {
       "n": 1,
-      "title": "Sporcumuz Oğuz Taşhan Avrupa Şampiyonu - TRmotosports",
-      "url": "https://www.trmotosports.com/sporcumuz-oguz-tashan-avrupa-sampiyonu",
-      "summary": "Sporcumuz Oğuz Taşhan Avrupa Şampiyonu - TRmotosports",
-      "preview": "https://www.trmotosports.com/wp-content/uploads/2026/09/54_tashan.jpeg",
-      "published_at": "2026-09-28T15:27:14+00:00",
-      "series": "European SSP300 Cup",
-      "source_series": "European SSP300 Cup",
-      "turkish_rider": "Oğuz Taşhan",
-      "kind": "news"
-    },
-    {
-      "n": 2,
       "title": "IAME Benelux Mariembourg Finali: Zayn Sofuoğlu Kazanmak İçin Piste Çıkıyor",
       "url": "https://motoetkinlik.com/iame-benelux-mariembourg-finali-zayn-sofuoglu-kazanmak-icin-piste-cikiyor",
       "summary": "IAME Benelux Mariembourg finali 27 Eylül Pazar. Zayn Sofuoğlu 724 puanla ikinci, lider Bal'a fark 42 puan. Mini Rookie seans saatleri TSİ ve güncel puan durumu.",
@@ -27,30 +15,6 @@
       "series": "Unsupported",
       "source_series": "Karting",
       "turkish_rider": "Zayn Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 3,
-      "title": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport’a Dönüyor!",
-      "url": "https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-dunya-supersporta-donuyor-yeni-adresi-qj-motor",
-      "summary": "Temsilcimiz Bahattin Sofuoğlu Dünya Supersport'a dönüyor! Motoxracing Yamaha WorldSBK sonrası yeni adresi QJ Motor oldu. Tüm detaylar haberimizde.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/bahattin-sofuoglu-QJ-Motor-worldssp.webp",
-      "published_at": "2026-09-21T15:21:06+03:00",
-      "series": "WorldSBK",
-      "source_series": "WorldSBK",
-      "turkish_rider": "Bahattin Sofuoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 4,
-      "title": "Bahattin Sofuoğlu, Dünya Supersport Şampiyonası'na geçiyor",
-      "url": "https://tr.motorsport.com/supersport/news/bahattin-sofuoglu-world-supersport-sampiyonasina-geciyor/10857707",
-      "summary": "Motoxracing Yamaha takımı, sürücü değişikliğine gittiğini doğruladı. Bahattin Sofuoğlu QJ Motor takımıyla WSSP'de yarışacak.",
-      "preview": "https://cdn-5.motorsport.com/images/amp/6x7LGrmY/s6/bahattin-sofuoglu.jpg",
-      "published_at": "2026-09-21T13:40:02Z",
-      "series": "WorldSSP",
-      "source_series": "WorldSSP",
-      "turkish_rider": "Bahattin Sofuoğlu",
       "kind": "news"
     }
   ]
