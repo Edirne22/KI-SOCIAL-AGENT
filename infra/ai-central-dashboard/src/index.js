@@ -225,6 +225,28 @@ async function previewManifest(env,id){
   if(current?.schema!=="FACTORY-PREVIEW-STATE-V1"||current?.job_id!==d.job_id||
      current?.preview_id!==id||current?.revision!==d.revision||
      current?.manifest!==d.manifest||current?.state!=="READY_FOR_HUMAN")return null;
+  // The independent preview pointer is not sufficient authority: the
+  // durable canonical job may have been revised, rejected, or superseded
+  // before an older pointer is revoked. Never show stale media in that case.
+  const canonicalObj=await env.AI_CENTRAL_R2.get("ai-central/v1/factory-jobs/"+d.job_id+".json");
+  if(!canonicalObj)return null;
+  let canonical;
+  try{canonical=await canonicalObj.json()}catch{return null}
+  const job=canonical?.job, media=job?.media;
+  if(canonical?.schema!=="FACTORY-CANONICAL-R2-JOB-V1"||
+     canonical.job_id!==d.job_id||!Number.isSafeInteger(canonical.store_version)||
+     canonical.store_version<1||job?.job_id!==d.job_id||
+     job.revision!==d.revision||job.status!=="ready_for_human"||
+     job?.publish_payload?.caption!==d.caption||
+     !Array.isArray(media)||media.length!==1||
+     media[0]?.media_id!==d.media.media_id||
+     media[0]?.sha256!==d.media.sha256||
+     media[0]?.size_bytes!==d.media.size_bytes||
+     media[0]?.mime_type!==d.media.mime_type||
+     typeof media[0]?.uri!=="string"||
+     !media[0].uri.startsWith("r2://")||
+     !media[0].uri.endsWith("/"+d.media.key))
+    return null;
   return d;
 }
 // Block 8: authenticated *review requests*, not a publisher or a forged
