@@ -16,11 +16,17 @@ function setup() {
    }
  };
  function seed(k,d){current.set(k,{etag:"v"+(++serial),json:async()=>d});}
- seed("ai-central/v1/previews/"+id+".json",{
+ const preview={
   schema:"FACTORY-MEDIA-PREVIEW-V1",preview_id:id,job_id:job,revision:1,manifest,
   expires_at:new Date(Date.now()+3600000).toISOString(),state:"READY_FOR_HUMAN",
   qm_passed:true,caption:"Test",media:{media_id:randomUUID(),key:"media/"+randomUUID()+"/video.mp4",
   size_bytes:19,mime_type:"video/mp4",sha256:"b".repeat(64)}
+ };
+ seed("ai-central/v1/previews/"+id+".json",preview);
+ seed("ai-central/v1/factory-jobs/"+job+".json",{
+   schema:"FACTORY-CANONICAL-R2-JOB-V1",job_id:job,store_version:1,
+   job:{job_id:job,revision:1,status:"ready_for_human",
+        media:[{...preview.media,uri:"r2://private-test/"+preview.media.key}]}
  });
  const stateKey="ai-central/v1/preview-state/"+job+".json";
  seed(stateKey,{schema:"FACTORY-PREVIEW-STATE-V1",job_id:job,preview_id:id,revision:1,manifest,state:"READY_FOR_HUMAN"});
