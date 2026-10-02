@@ -92,7 +92,7 @@ def derive_canonical_edit_request(job_id, *, storage, repository):
     if (type(prior) is not int or prior < 1 or
             type(ack_version) is not int or ack_version < 1 or
             not isinstance(text, str) or not text.strip() or
-            len(text) > 2000 or text != text.strip() or
+            len(text) > 2000 or
             review.get("job_id") != job_id or
             review.get("revision") != state.get("revision") or
             review.get("manifest") != state.get("manifest") or
@@ -112,7 +112,7 @@ def derive_canonical_edit_request(job_id, *, storage, repository):
             job.revision != prior + 1 or
             job.status != JobStatus.CHANGES_REQUESTED or
             job.metadata.get("dashboard_review:" + request_id) != expected or
-            job.metadata.get(f"human_change:r{prior}") != text or
+            job.metadata.get(f"human_change:r{prior}") != text.strip() or
             job.publish_handoff_key is not None or
             job.human_approved_revision is not None or
             job.human_approved_manifest is not None or
@@ -130,7 +130,7 @@ def derive_canonical_edit_request(job_id, *, storage, repository):
         "request_id": request_id,
         "preview_id": preview_id,
         "source_approval_manifest": review["manifest"],
-        "human_request": text,
+        "human_request": text.strip(),
         "source_media": {
             "media_id": original.media_id,
             "uri": original.uri,
