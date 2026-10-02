@@ -629,9 +629,8 @@ Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hede
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-1-deniz-oncu-japonyada-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 36998126464-1
+## Facebook [GEPOSTET 2026-10-02 10:55 | ID: 1285968257941776_122118157059469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-02-daily
 Telegram-Update-ID: 279361804
@@ -651,6 +650,7 @@ Was erwartet ihr von Deniz in Motegi?
 https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
 Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi", "media_status": "", "object_id": "1285968257941776_122118157059469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122118157059469415", "source_url": "https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi", "version": 1}
 
 ## Instagram [GEPOSTET 2026-10-02 10:51 | ID: 18029177738688616]
 Status: GEPOSTET
