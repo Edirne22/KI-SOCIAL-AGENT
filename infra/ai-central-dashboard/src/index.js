@@ -3,7 +3,7 @@
 const PREFIX="ai-central/v1/inbox/";
 const MAX_MESSAGE=2500;
 const MAX_FILE=8*1024*1024;
-const TYPES=new Set(["text/plain","text/markdown","application/json","image/png","image/jpeg","audio/webm","audio/mp4","audio/ogg"]);
+const TYPES=new Set(["text/plain","text/markdown","application/json","image/png","image/jpeg","audio/webm","audio/mp4","audio/ogg","application/pdf"]);
 const DENY=/(?:authorization\s*:\s*bearer|api[_-]?key\s*[=:]|secret\s*[=:]|password\s*[=:])\s*\S+/i;
 function json(body,status=200){return new Response(JSON.stringify(body),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"}})}
 function authenticated(req,env){
@@ -74,6 +74,133 @@ async function upload(req,env){
   return json({id,created_at,status:task.status,name},202);
 }
 
+// Private user-upload preview; the caller supplies only an opaque inbox UUID and
+// original UTC day. The R2 object path is NEVER accepted from a browser.
+const UPLOAD_ID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+const PREVIEW_MIME=new Set(["image/png","image/jpeg","video/mp4","audio/webm","audio/mp4","audio/ogg","application/pdf"]);
+async function privateUploadPreview(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const q=new URL(req.url).searchParams,id=q.get("id")||"",date=q.get("date")||"";
+  if(!UPLOAD_ID.test(id)||!/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(date)||
+    !Number.isFinite(Date.parse(date+"T00:00:00Z"))||
+    new Date(date+"T00:00:00Z").toISOString().slice(0,10)!==date)
+    return json({error:"invalid upload reference"},400);
+  const listing=await env.AI_CENTRAL_R2.list({prefix:PREFIX+date+"/",limit:100});
+  if(listing.truncated)return json({error:"inbox index exceeds safe scan limit"},409);
+  let match=null;
+  for(const item of listing.objects){
+    if(!item.key.endsWith(".json"))continue;
+    const raw=await env.AI_CENTRAL_R2.get(item.key);
+    if(!raw)continue;
+    let d;try{d=await raw.json()}catch{continue}
+    if(d.id!==id)continue;
+    if(match)return json({error:"ambiguous upload identity"},409);
+    match=d;
+  }
+  if(!match||match.kind!=="file"||match.channel!=="web"||
+    match.created_at?.slice(0,10)!==date||!match.file||
+    match.file.r2_key!=="ai-central/v1/uploads/"+id+"/data"||
+    !PREVIEW_MIME.has(match.file.mime)||!Number.isSafeInteger(match.file.size)||
+    match.file.size<1||match.file.size>MAX_FILE)
+    return json({error:"private preview unavailable"},404);
+  const file=await env.AI_CENTRAL_R2.get(match.file.r2_key);
+  if(!file)return json({error:"private bytes unavailable"},404);
+  if(file.size!==match.file.size||file.httpMetadata?.contentType!==match.file.mime)
+    return json({error:"file metadata mismatch"},409);
+  const bytes=await file.arrayBuffer();
+  if(bytes.byteLength!==match.file.size)return json({error:"file size mismatch"},409);
+  return new Response(bytes,{headers:{
+    "content-type":match.file.mime,"content-length":String(bytes.byteLength),
+    "cache-control":"private, no-store, max-age=0","x-content-type-options":"nosniff",
+    "content-security-policy":"default-src 'none'; sandbox",
+    "content-disposition":"inline"
+  }});
+}
+// R2 size is a bounded, manually invoked object inventory; not billing
+// GB-month telemetry. Refuse to show a fabricated complete total when truncated.
+async function passiveSystemMonitor(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const q=new URL(req.url).searchParams;
+  if(q.get("scope")!=="manual")return json({error:"manual measurement required"},400);
+  const measuredAt=new Date().toISOString();
+  let cursor,bytes=0,count=0,complete=false;
+  for(let page=0;page<10;page++){
+    const result=await env.AI_CENTRAL_R2.list({limit:1000,...(cursor?{cursor}:{})});
+    for(const item of result.objects){bytes+=item.size;count++}
+    if(!result.truncated){complete=true;break}
+    if(!result.cursor||result.cursor===cursor)break;
+    cursor=result.cursor;
+  }
+  // Quota reference must be explicitly and independently configured; an
+  // instantaneous bucket inventory cannot prove monthly billable GB-month.
+  const configured=Number(env.R2_FREE_STORAGE_GB);
+  const quota=typeof env.R2_FREE_STORAGE_GB==="string"&&
+    env.R2_FREE_STORAGE_GB.trim()!==""&&Number.isFinite(configured)&&
+    configured>0&&configured<=100000?configured:null;
+  const ratio=complete&&quota!==null?bytes/(1e9*quota):null;
+  return json({schema:"AI-CENTRAL-PASSIVE-MONITOR-V1",
+    r2:{measurement:complete?"COMPLETE_BUCKET_INVENTORY":"UNAVAILABLE_INCOMPLETE_SCAN",
+      occupied_bytes:complete?bytes:null,object_count:complete?count:null,
+      measured_at:complete?measuredAt:null,
+      allowance_reference_gb:quota,
+      allowance_kind:quota!==null?"CONFIGURED_GB_REFERENCE_NOT_ACTUAL_GB_MONTH":"UNCONFIGURED",
+      snapshot_ratio:ratio,
+      snapshot_warning:ratio!==null&&ratio>=0.85,
+      billing_usage_gb_month:null},
+    container:{status:"UNKNOWN_NO_PASSIVE_TELEMETRY",
+      measured_at:null,readiness_at:null,cpu_percent:null,memory_bytes:null,
+      note:"No passive container state or CPU/RAM binding configured; no wake/probe performed."}});
+}
+// Passive GET reads only our last successful manual test from private R2.
+// An explicit authenticated POST is the ONLY way this dashboard contacts the
+// administrator-configured readiness URL. A 200 never proves all internal tools.
+const CONTAINER_LAST_TEST="ai-central/v1/monitor/container-last-readiness.json";
+async function containerReadiness(req,env){
+  if(req.method==="GET"){
+    const obj=await env.AI_CENTRAL_R2.get(CONTAINER_LAST_TEST);
+    if(!obj)return json({state:"UNAVAILABLE",last_success_at:null,
+      truth:"NO_PERSISTED_MANUAL_HTTP_TEST",cpu_percent:null,memory_bytes:null});
+    let saved;try{saved=await obj.json()}catch{
+      return json({state:"UNAVAILABLE",last_success_at:null,
+        truth:"UNREADABLE_MONITOR_RECORD",cpu_percent:null,memory_bytes:null});
+    }
+    if(saved.schema!=="MANUAL-CONTAINER-HTTP-READINESS-V1"||
+      saved.state!=="HTTP_REACHABLE_ONLY"||!Number.isFinite(Date.parse(saved.last_success_at||"")))
+      return json({state:"UNAVAILABLE",last_success_at:null,
+        truth:"INVALID_MONITOR_RECORD",cpu_percent:null,memory_bytes:null});
+    return json({state:"LAST_KNOWN_HTTP_REACHABLE_NOT_CURRENT",
+      last_success_at:saved.last_success_at,truth:"PERSISTED_MANUAL_HTTP_TEST_ONLY",
+      cpu_percent:null,memory_bytes:null});
+  }
+  if(req.method!=="POST")return json({error:"method"},405);
+  if(!sameOrigin(req))return json({error:"origin rejected"},403);
+  const configured=env.AI_CONTAINER_READINESS_URL;
+  let url;
+  try{url=new URL(configured)}catch{return json({error:"readiness endpoint not configured"},503)}
+  if(url.protocol!=="https:"||url.username||url.password||url.port||
+    !url.hostname.endsWith(".workers.dev")||url.search||url.hash)
+    return json({error:"readiness endpoint not approved"},503);
+  try{
+    const r=await fetch(url.toString(),{
+      method:"GET",redirect:"error",headers:{"accept":"application/json"},
+      signal:AbortSignal.timeout(7000)});
+    if(!r.ok)return json({state:"HTTP_NOT_READY_OR_UNAVAILABLE",
+      http_status:r.status,last_success_at:null,
+      truth:"MANUAL_HTTP_CHECK_NOT_FULL_CONTAINER_STATUS"},200);
+    const last_success_at=new Date().toISOString();
+    const snapshot={schema:"MANUAL-CONTAINER-HTTP-READINESS-V1",
+      state:"HTTP_REACHABLE_ONLY",last_success_at};
+    await env.AI_CENTRAL_R2.put(CONTAINER_LAST_TEST,JSON.stringify(snapshot),{
+      httpMetadata:{contentType:"application/json"}});
+    return json({state:"HTTP_REACHABLE_ONLY",last_success_at,
+      truth:"MANUAL_HTTP_SUCCESS_NOT_INTERNAL_TOOL_READINESS",
+      cpu_percent:null,memory_bytes:null});
+  }catch{
+    return json({state:"HTTP_UNREACHABLE_OR_TIMED_OUT",
+      last_success_at:null,
+      truth:"CANNOT_DISTINGUISH_SLEEP_VS_ERROR",cpu_percent:null,memory_bytes:null});
+  }
+}
 // An explicit human click may queue ONE reviewed text task. No provider billing is
 // possible unless an independent admin has verified the free account/limit.
 async function queueReviewed(req,env){
@@ -439,6 +566,9 @@ export default {async fetch(req,env){
     if(path==="/api/preview-video")return await getPreviewVideo(req,env);
     if(path==="/api/inbox")return await inbox(req,env);
     if(path==="/api/upload")return await upload(req,env);
+    if(path==="/api/upload-preview")return await privateUploadPreview(req,env);
+    if(path==="/api/system-monitor")return await passiveSystemMonitor(req,env);
+    if(path==="/api/container-readiness")return await containerReadiness(req,env);
     if(path==="/api/dispatch")return await queueReviewed(req,env);
     if(path==="/api/task")return await taskStatus(req,env);
     if(path==="/api/runs"){
