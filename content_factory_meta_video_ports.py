@@ -122,14 +122,101 @@ class CanonicalPrivatePublisherBridge:
 
 
 class InstagramDeliveryNotYetVerified(ControlCenterError):
-    """Never substitute the private R2 URI for a Meta-fetchable video URL."""
+    """Missing verified capability delivery always fails before platform claim."""
 
 
 class ExistingInstagramReelPort:
-    name="instagram"
-    truth="NOT_CONFIGURED"
-    def preflight(self,job):
-        raise InstagramDeliveryNotYetVerified(
-            "Instagram requires a separately verified expiring private media delivery gateway")
-    def publish(self,job,platform,handoff_key):
-        raise InstagramDeliveryNotYetVerified("no safe Instagram private-R2 media delivery configured")
+    """Existing Graph API endpoints with new short-lived verified private R2 input.
+
+    No schedule or automatic caller. The bridge performs the FIRST-WRITER R2
+    publication claim before any Graph request. No irreversible Graph POST is
+    blindly retried on errors, timeouts or ambiguous responses.
+    """
+    name = "instagram"
+    truth = "LIVE"
+
+    def __init__(self, repository=None, storage=None, *,
+                 gateway_origin=None, issue_delivery=None):
+        self.repository = repository
+        self.storage = storage
+        self.gateway_origin = gateway_origin
+        self.issue_delivery = issue_delivery
+
+    def preflight(self, job):
+        _eligible(job)
+        if (not os.environ.get("INSTAGRAM_USER_ID") or
+            not os.environ.get("INSTAGRAM_ACCESS_TOKEN")):
+            raise InstagramDeliveryNotYetVerified("existing Instagram credentials missing")
+        if (not isinstance(self.repository, R2JobRepository) or
+            not isinstance(self.storage, R2Storage) or
+            not _nonempty(self.gateway_origin) or not callable(self.issue_delivery)):
+            raise InstagramDeliveryNotYetVerified("verified private signed R2 delivery not configured")
+        # Avoid creating an unrecoverable claim for missing private bytes.
+        self.storage.resolve_local(job.media[0])
+
+    def publish(self, job, platform, handoff_key):
+        if platform != "instagram" or job.publish_handoff_key != handoff_key:
+            raise ControlCenterError("wrong canonical Instagram handoff")
+        self.preflight(job)
+        # A high entropy URL only exists AFTER the bridge obtains the unique
+        # canonical per-platform R2 IN_FLIGHT first-writer claim.
+        url = self.issue_delivery(
+            self.repository, self.storage, job.job_id,
+            gateway_origin=self.gateway_origin, explicitly_approved=True)
+        from urllib.parse import urlsplit, parse_qs
+        from instagram_reels import GRAPH_API, wait_for_container
+        import requests
+        pieces = urlsplit(url)
+        if (pieces.scheme != "https" or
+            (pieces.scheme + "://" + pieces.netloc).rstrip("/") != self.gateway_origin.rstrip("/") or
+            pieces.path != "/api/meta-delivery" or
+            set(parse_qs(pieces.query)) != {"id", "token"}):
+            raise AmbiguousPublication("untrusted ephemeral media URL; reconcile R2 claim")
+        # Meta fetchability is checked using exactly this private capability.
+        try:
+            ready = requests.head(url, timeout=12, allow_redirects=False)
+        except requests.RequestException as exc:
+            raise AmbiguousPublication("private Meta delivery readiness uncertain") from exc
+        if (ready.status_code != 200 or
+            ready.headers.get("Content-Type", "").split(";")[0].strip().lower() != "video/mp4" or
+            ready.headers.get("Content-Length") != str(job.media[0].size_bytes)):
+            raise AmbiguousPublication("private Meta delivery HEAD failed, reconcile claim")
+
+        user_id = os.environ["INSTAGRAM_USER_ID"]
+        token = os.environ["INSTAGRAM_ACCESS_TOKEN"]
+        try:
+            created = requests.post(f"{GRAPH_API}/{user_id}/media",data={
+                "media_type": "REELS", "video_url": url,
+                "caption": job.publish_payload["caption"],
+                "share_to_feed": "true", "access_token": token,
+            }, timeout=65)
+        except requests.RequestException as exc:
+            raise AmbiguousPublication("Meta create-container outcome uncertain") from exc
+        if created.status_code != 200:
+            raise AmbiguousPublication("Meta did not accept canonical Reel media container")
+        try:
+            creation_id = created.json().get("id")
+        except ValueError as exc:
+            raise AmbiguousPublication("Meta create response invalid") from exc
+        if not _nonempty(creation_id):
+            raise AmbiguousPublication("Meta omitted creation ID; reconcile")
+        # Existing read-only polling may retry GET, but never repeats POST.
+        if not wait_for_container(str(creation_id), token):
+            raise AmbiguousPublication("Meta processing not verified; reconcile before publishing")
+        try:
+            posted = requests.post(f"{GRAPH_API}/{user_id}/media_publish",data={
+                "creation_id": str(creation_id), "access_token": token
+            },timeout=65)
+        except requests.RequestException as exc:
+            raise AmbiguousPublication("Meta publish outcome uncertain; never retry automatically") from exc
+        if posted.status_code != 200:
+            raise AmbiguousPublication("Meta publish returned a non-success; provider reconciliation required")
+        try:
+            external_id = posted.json().get("id")
+        except ValueError as exc:
+            raise AmbiguousPublication("Meta publish receipt unreadable") from exc
+        if not _nonempty(external_id):
+            raise AmbiguousPublication("Meta omitted final media ID; reconcile")
+        # A provider media ID is not proof that the Instagram post is publicly visible.
+        return PublishReceipt(handoff_key, "instagram", str(external_id),
+                              "META_GRAPH_REEL_ID_RECEIVED")
