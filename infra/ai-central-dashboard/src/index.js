@@ -151,6 +151,56 @@ async function passiveSystemMonitor(req,env){
       measured_at:null,readiness_at:null,cpu_percent:null,memory_bytes:null,
       note:"No passive container state or CPU/RAM binding configured; no wake/probe performed."}});
 }
+// Passive GET reads only our last successful manual test from private R2.
+// An explicit authenticated POST is the ONLY way this dashboard contacts the
+// administrator-configured readiness URL. A 200 never proves all internal tools.
+const CONTAINER_LAST_TEST="ai-central/v1/monitor/container-last-readiness.json";
+async function containerReadiness(req,env){
+  if(req.method==="GET"){
+    const obj=await env.AI_CENTRAL_R2.get(CONTAINER_LAST_TEST);
+    if(!obj)return json({state:"UNAVAILABLE",last_success_at:null,
+      truth:"NO_PERSISTED_MANUAL_HTTP_TEST",cpu_percent:null,memory_bytes:null});
+    let saved;try{saved=await obj.json()}catch{
+      return json({state:"UNAVAILABLE",last_success_at:null,
+        truth:"UNREADABLE_MONITOR_RECORD",cpu_percent:null,memory_bytes:null});
+    }
+    if(saved.schema!=="MANUAL-CONTAINER-HTTP-READINESS-V1"||
+      saved.state!=="HTTP_REACHABLE_ONLY"||!Number.isFinite(Date.parse(saved.last_success_at||"")))
+      return json({state:"UNAVAILABLE",last_success_at:null,
+        truth:"INVALID_MONITOR_RECORD",cpu_percent:null,memory_bytes:null});
+    return json({state:"LAST_KNOWN_HTTP_REACHABLE_NOT_CURRENT",
+      last_success_at:saved.last_success_at,truth:"PERSISTED_MANUAL_HTTP_TEST_ONLY",
+      cpu_percent:null,memory_bytes:null});
+  }
+  if(req.method!=="POST")return json({error:"method"},405);
+  if(!sameOrigin(req))return json({error:"origin rejected"},403);
+  const configured=env.AI_CONTAINER_READINESS_URL;
+  let url;
+  try{url=new URL(configured)}catch{return json({error:"readiness endpoint not configured"},503)}
+  if(url.protocol!=="https:"||url.username||url.password||url.port||
+    !url.hostname.endsWith(".workers.dev")||url.search||url.hash)
+    return json({error:"readiness endpoint not approved"},503);
+  try{
+    const r=await fetch(url.toString(),{
+      method:"GET",redirect:"error",headers:{"accept":"application/json"},
+      signal:AbortSignal.timeout(7000)});
+    if(!r.ok)return json({state:"HTTP_NOT_READY_OR_UNAVAILABLE",
+      http_status:r.status,last_success_at:null,
+      truth:"MANUAL_HTTP_CHECK_NOT_FULL_CONTAINER_STATUS"},200);
+    const last_success_at=new Date().toISOString();
+    const snapshot={schema:"MANUAL-CONTAINER-HTTP-READINESS-V1",
+      state:"HTTP_REACHABLE_ONLY",last_success_at};
+    await env.AI_CENTRAL_R2.put(CONTAINER_LAST_TEST,JSON.stringify(snapshot),{
+      httpMetadata:{contentType:"application/json"}});
+    return json({state:"HTTP_REACHABLE_ONLY",last_success_at,
+      truth:"MANUAL_HTTP_SUCCESS_NOT_INTERNAL_TOOL_READINESS",
+      cpu_percent:null,memory_bytes:null});
+  }catch{
+    return json({state:"HTTP_UNREACHABLE_OR_TIMED_OUT",
+      last_success_at:null,
+      truth:"CANNOT_DISTINGUISH_SLEEP_VS_ERROR",cpu_percent:null,memory_bytes:null});
+  }
+}
 // An explicit human click may queue ONE reviewed text task. No provider billing is
 // possible unless an independent admin has verified the free account/limit.
 async function queueReviewed(req,env){
@@ -518,6 +568,7 @@ export default {async fetch(req,env){
     if(path==="/api/upload")return await upload(req,env);
     if(path==="/api/upload-preview")return await privateUploadPreview(req,env);
     if(path==="/api/system-monitor")return await passiveSystemMonitor(req,env);
+    if(path==="/api/container-readiness")return await containerReadiness(req,env);
     if(path==="/api/dispatch")return await queueReviewed(req,env);
     if(path==="/api/task")return await taskStatus(req,env);
     if(path==="/api/runs"){
