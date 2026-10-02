@@ -25,7 +25,7 @@ function setup() {
  seed("ai-central/v1/previews/"+id+".json",preview);
  seed("ai-central/v1/factory-jobs/"+job+".json",{
    schema:"FACTORY-CANONICAL-R2-JOB-V1",job_id:job,store_version:1,
-   job:{job_id:job,revision:1,status:"ready_for_human",
+   job:{job_id:job,revision:1,status:"ready_for_human",publish_payload:{caption:preview.caption},
         media:[{...preview.media,uri:"r2://private-test/"+preview.media.key}]}
  });
  const stateKey="ai-central/v1/preview-state/"+job+".json";
