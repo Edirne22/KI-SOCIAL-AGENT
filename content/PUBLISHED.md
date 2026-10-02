@@ -613,3 +613,75 @@ https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kab
 Quelle: https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti", "media_status": "", "object_id": "1285968257941776_122117659527469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122117659527469415", "source_url": "https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-02-daily
+Telegram-Update-ID: 279361804
+MotoGP-Auswahl: 1
+Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
+Text:
+Deniz Öncü kam in Österreich auf Platz 9 – jetzt geht’s nach Motegi, wo er die Saison noch besser machen will. Ziel ist, endlich unter Top 10 zu landen. Was glaubt ihr, schafft er das in Japan? 🏍️
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife #Motegi
+Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-1-deniz-oncu-japonyada-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-02-daily
+Telegram-Update-ID: 279361804
+MotoGP-Auswahl: 1
+Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
+Text:
+Deniz Öncü hat in Österreich den neunten Platz belegt.
+
+Jetzt geht es bei der Moto2-Japan-GP in Motegi weiter – mit dem Ziel, die beste Saisonplatzierung zu erzielen.
+
+Ziel ist klar: Es soll besser als Platz 10 werden.
+
+Was erwartet ihr von Deniz in Motegi?
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
+Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-02-daily
+Telegram-Update-ID: 279361804
+MotoGP-Auswahl: 2
+Titel: MotoGP Japonya GP 1. antrenman: Yağmurla başlayan seansı Marc Marquez zirvede bitirdi, Toprak 15. sırada
+Text:
+Ey, beim ersten freien Training in Japan hat's gleich von Anfang an geregnet, aber Marquez hat trotzdem die Nase vorn – sitzt jetzt auf Platz 1. Toprak musste sich mit Platz 15 zufriedengeben. Wie schätzt ihr die Startsituation bei so ner nassen Bahn ein? 🏍️  
+
+#MotoGP #MarcMarquez #MotoGPJapan #Racing #BuelentsBikeLife
+Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-2-motogp-japonya-gp-1-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-02-daily
+Telegram-Update-ID: 279361804
+MotoGP-Auswahl: 2
+Titel: MotoGP Japonya GP 1. antrenman: Yağmurla başlayan seansı Marc Marquez zirvede bitirdi, Toprak 15. sırada
+Text:
+Marc Marquez hat beim ersten Training zum MotoGP-Grand-Prix von Japan die Nase vorne gehabt.
+
+Beim ersten freien Training in Japan fing es direkt mit Nässe an. Trotzdem war es Marquez, der am Ende des Sitzes auf der ersten Position stand. Toprak hat den Einstieg mit Platz 15 abgeschlossen.
+
+Wie bewertet ihr die Startsituation in der Regen-Kondition?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767
+Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767
+Link-Preview: offiziell
