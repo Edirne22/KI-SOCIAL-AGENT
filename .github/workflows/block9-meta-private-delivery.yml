@@ -1,0 +1,38 @@
+name: Block 9 expiring private R2 Meta delivery security and no-post regressions
+on:
+  pull_request:
+    paths:
+      - 'infra/ai-central-dashboard/src/meta-delivery.js'
+      - 'infra/ai-central-dashboard/src/index.js'
+      - 'infra/ai-central-dashboard/tests/meta-private-delivery.test.mjs'
+      - 'content_factory_meta_private_delivery.py'
+      - 'content_factory_meta_video_ports.py'
+      - 'tests/test_content_factory_meta_private_delivery.py'
+      - '.github/workflows/block9-meta-private-delivery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  private-delivery-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Dashboard worker syntax (new signed route and existing gate)
+        run: |
+          node --check infra/ai-central-dashboard/src/index.js
+          node --check infra/ai-central-dashboard/src/meta-delivery.js
+      - name: Real offline private-delivery and existing Dashboard security regressions
+        run: node --test infra/ai-central-dashboard/tests/*.test.mjs
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Existing Meta publisher HTTP test dependency only
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Syntax and original publisher/canonical/R2 security tests
+        run: |
+          python -m py_compile content_factory_meta_private_delivery.py content_factory_meta_video_ports.py content_factory_r2_publish_ledger.py
+          python -m unittest -v tests.test_content_factory_meta_private_delivery tests.test_content_factory_meta_video_ports tests.test_content_factory_r2_publish_ledger tests.test_content_factory_publish_ledger tests.test_content_factory_golden_tablet tests.test_content_factory_r2_job_repository
+      - name: Locked editorial source-fact rule remains hard
+        run: python tests/test_source_fact_contract_v1.py
