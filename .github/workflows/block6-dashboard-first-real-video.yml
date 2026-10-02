@@ -1,0 +1,77 @@
+name: Block 6 – actual FFmpeg video to private Dashboard preview
+on:
+  pull_request:
+    paths:
+      - "scripts/block6_factory_ffmpeg_handoff.py"
+      - "content_factory_dashboard_preview.py"
+      - ".github/workflows/block6-dashboard-first-real-video.yml"
+      - "tests/test_content_factory_dashboard_preview.py"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/block6-dashboard-first-real-video.yml"
+permissions:
+  contents: read
+concurrency:
+  group: block6-first-real-dashboard-video
+  cancel-in-progress: false
+jobs:
+  factory-offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Install existing dependencies and actual FFmpeg
+        run: |
+          python -m pip install --disable-pip-version-check boto3 requests
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            timeout 120s sudo apt-get update -qq
+            timeout 120s sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+          fi
+      - name: Syntax, existing factory, preview contracts and safety regressions
+        run: |
+          python -m py_compile scripts/block6_factory_ffmpeg_handoff.py content_factory_dashboard_preview.py
+          python -m unittest -v tests.test_content_factory_media_production tests.test_content_factory_dashboard_preview tests.test_content_factory_golden_media tests.test_content_factory_golden_tablet
+          python tests/test_source_fact_contract_v1.py
+      - name: Actual tracked source and 15s FFmpeg with private offline storage
+        run: python -m scripts.block6_factory_ffmpeg_handoff
+      - name: No misleading scratch preview index
+        run: |
+          if python -m scripts.block6_factory_ffmpeg_handoff --register-preview 2>&1 | grep -q 'dashboard registration requires real private R2'; then
+            echo "OFFLINE_PREVIEW_REGISTRATION_CORRECTLY_BLOCKED"
+          else
+            echo "OFFLINE_PREVIEW_GATE_FAILED"
+            exit 1
+          fi
+  factory-live-private-r2-dashboard:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: factory-offline
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Install FFmpeg and boto3
+        run: |
+          python -m pip install --disable-pip-version-check boto3 requests
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            timeout 120s sudo apt-get update -qq
+            timeout 120s sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+          fi
+      - name: Verify private R2 credentials configured without printing values
+        shell: bash
+        run: |
+          set -euo pipefail
+          for k in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!k:-}" || { echo "MISSING_R2_CONFIG=${k}"; exit 1; }
+          done
+      - name: Real Factory source to FFmpeg to R2 verified 15s video to private Dashboard index
+        run: python -m scripts.block6_factory_ffmpeg_handoff --live-r2 --register-preview
