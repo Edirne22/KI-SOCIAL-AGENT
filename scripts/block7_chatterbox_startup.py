@@ -21,7 +21,7 @@ def startup(*, load_model: bool=False) -> dict:
     model_type=multilingual.ChatterboxMultilingualTTS
     result={"engine":"ChatterboxMultilingualTTS","device":"cpu",
             "owner_voice_used":False,"runtime_import":"PASS",
-            "model_load":"NOT_RUN","speech_generation":"NOT_RUN",
+            "model_load":"NOT_RUN","checkpoint":"v3","speech_generation":"NOT_RUN",
             "user_voice_acceptance":"NOT_RUN"}
     if not load_model:
         return result
@@ -29,7 +29,7 @@ def startup(*, load_model: bool=False) -> dict:
     import torchaudio
     torch.set_num_threads(min(2,os.cpu_count() or 1))
     start=time.monotonic()
-    model=model_type.from_pretrained(device="cpu")
+    model=model_type.from_pretrained(device="cpu",t3_model="v3")
     result["model_load"]="PASS"
     result["load_s"]=round(time.monotonic()-start,2)
     with tempfile.TemporaryDirectory(prefix="block7-chatterbox-") as temp:
