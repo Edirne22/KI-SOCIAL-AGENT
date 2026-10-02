@@ -34,7 +34,7 @@ jobs:
           python -m py_compile scripts/block7_faster_whisper_startup.py scripts/block7_chatterbox_startup.py
           python -m unittest -v tests.test_block7_first_boot tests.test_content_factory_av
   actual-asr-cpu:
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
     needs: safety-contract
     runs-on: ubuntu-latest
     timeout-minutes: 13
@@ -59,7 +59,7 @@ jobs:
           retention-days: 1
           if-no-files-found: error
   actual-chatterbox-install:
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
     needs: safety-contract
     runs-on: ubuntu-latest
     timeout-minutes: 14
@@ -75,7 +75,7 @@ jobs:
           HF_HUB_DISABLE_TELEMETRY: '1'
         run: timeout 60s python -m scripts.block7_chatterbox_startup
       - name: Optional expensive cold-start with synthetic voice ONLY
-        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.full_chatterbox_model == true)
+        if: github.event_name == 'pull_request' || github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.full_chatterbox_model == true)
         env:
           HF_HUB_DISABLE_TELEMETRY: '1'
         run: |
