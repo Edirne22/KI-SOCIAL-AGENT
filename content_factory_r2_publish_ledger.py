@@ -11,6 +11,7 @@ from __future__ import annotations
 from dataclasses import asdict
 import hashlib
 import json
+import os
 
 from content_factory_control_center import ControlCenterError, PublishReceipt
 from content_factory_core import JobStatus, ProductionJob
@@ -18,6 +19,7 @@ from content_factory_publish_ledger import AmbiguousPublication
 
 
 PREFIX = "ai-central/v1/publish-ledger/"
+SMOKE_PREFIX = "ai-central/v1/publish-ledger-smoke/"
 MAX_LEDGER_RECORD = 8192
 
 
@@ -31,17 +33,22 @@ def _error_code(exc: Exception) -> str:
 class R2PublishLedger:
     """Shared, no-blind-retry ledger backed by conditional private R2 writes."""
 
-    def __init__(self, storage):
+    def __init__(self, storage, *, prefix=PREFIX):
         if not getattr(storage, "bucket", None) or not getattr(storage, "client", None):
             raise ControlCenterError("private R2 storage required")
+        if prefix not in (PREFIX, SMOKE_PREFIX):
+            raise ControlCenterError("unsupported private publication namespace")
+        if prefix == SMOKE_PREFIX and os.environ.get("BLOCK9_R2_SMOKE_APPROVED") != "true":
+            raise ControlCenterError("smoke namespace requires explicit gated test mode")
         self.storage = storage
+        self.prefix = prefix
 
     def _paths(self, handoff_key: str, platform: str):
         if not isinstance(handoff_key, str) or not handoff_key or platform not in ("instagram", "facebook"):
             raise ControlCenterError("valid canonical handoff and supported platform required")
         digest = hashlib.sha256(json.dumps([handoff_key, platform],
                               separators=(",", ":")).encode()).hexdigest()
-        prefix = PREFIX + digest + "/"
+        prefix = self.prefix + digest + "/"
         return prefix + "intent.json", prefix + "receipt.json"
 
     def _get(self, key):
