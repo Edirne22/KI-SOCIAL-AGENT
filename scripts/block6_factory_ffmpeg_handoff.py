@@ -54,6 +54,7 @@ def run(*, live_r2: bool, register_preview: bool = False):
             # the approval media set. Only the actual FFmpeg OUTPUT is shown.
             from content_factory_golden_tablet import FinalQM, QMCheck
             from content_factory_dashboard_preview import register_verified_video_preview
+            from content_factory_r2_job_repository import R2JobRepository
             job.metadata[f"input_source_provenance:r{job.revision}"] = {
                 "media_id": source.media_id, "sha256": source.sha256, "uri": source.uri
             }
@@ -75,7 +76,8 @@ def run(*, live_r2: bool, register_preview: bool = False):
             ])
             if not report.passed:
                 raise RuntimeError("SYNTHETIC_PREVIEW_QM_FAILED")
-            preview_id = register_verified_video_preview(job, report, storage=storage)
+            preview_id = register_verified_video_preview(job, report, storage=storage,
+                repository=R2JobRepository(storage))
             print(f"BLOCK6_DASHBOARD_PREVIEW_REGISTERED id={preview_id} job={job.job_id} "
                   f"revision={job.revision} synthetic_test_only=true")
         print(f"BLOCK6_FACTORY_FFMPEG_{'LIVE_R2' if live_r2 else 'LOCAL'}_PASS seconds={details['seconds']} tracks={','.join(details['tracks'])} sha256_prefix={digest[:12]}")
