@@ -13,6 +13,7 @@ from content_factory_dashboard_review_ack import (
     _read_state, acknowledge_persisted_review,
 )
 from content_factory_r2_job_repository import R2JobRepository
+from content_factory_revision_intake import derive_canonical_edit_request
 from media_storage import R2Storage
 
 
@@ -23,10 +24,16 @@ def run(job_id: str):
         state,_=_read_state(job_id,storage)
         if state.get("state")=="REVIEW_APPLIED":
             result=acknowledge_persisted_review(job_id,storage=storage,repository=repo)
+            if (state.get("review") or {}).get("action")=="change":
+                intake,_=derive_canonical_edit_request(job_id,storage=storage,repository=repo)
+                print("BLOCK8_EDIT_INTAKE_VERIFIED "+intake)
             print("BLOCK8_REVIEW_ALREADY_APPLIED_AND_VERIFIED "+result)
             return result
         result=apply_review_request(job_id,storage=storage,repository=repo)
         verified=acknowledge_persisted_review(job_id,storage=storage,repository=repo)
+        if result.decision=="change":
+            intake,_=derive_canonical_edit_request(job_id,storage=storage,repository=repo)
+            print("BLOCK8_EDIT_INTAKE_VERIFIED "+intake)
         print("BLOCK8_REVIEW_CANONICAL_APPLIED_AND_ACKNOWLEDGED "+
               f"job={job_id} request={result.request_id} action={result.decision} "+
               f"application={result.result} ack={verified}")
