@@ -1,0 +1,94 @@
+name: Agency Integration Engineer Interview
+on:
+  pull_request:
+    paths:
+      - 'agents/19_ki_integrationsingenieur.md'
+      - 'agents/AGENTS_INDEX.md'
+      - 'scripts/integration_engineer_trial.py'
+      - 'tests/test_integration_engineer_trial.py'
+      - 'infra/ai-central-tools/integration-engineer-interview/**'
+      - '.github/workflows/agency-integration-engineer-interview.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/integration_engineer_trial.py'
+      - 'tests/test_integration_engineer_trial.py'
+      - 'infra/ai-central-tools/integration-engineer-interview/**'
+      - '.github/workflows/agency-integration-engineer-interview.yml'
+permissions:
+  contents: read
+jobs:
+  offline-security-and-behavior:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and run positive, negative and malicious-source controls
+        run: |
+          python -m py_compile scripts/integration_engineer_trial.py tests/test_integration_engineer_trial.py
+          python -m unittest discover -s tests -p test_integration_engineer_trial.py -v
+  free-model-live-interview:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [offline-security-and-behavior]
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      OPENCODE_CONFIG: ${{ github.workspace }}/infra/ai-central-tools/integration-engineer-interview/opencode.jsonc
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Validate exact free-model allowlist and deny permissions
+        run: |
+          node - <<'JS'
+          const fs=require('fs'),assert=require('assert');
+          const c=JSON.parse(fs.readFileSync(process.env.OPENCODE_CONFIG,'utf8'));
+          assert.deepStrictEqual(Object.keys(c.providers),['openrouter']);
+          assert.strictEqual(c.model,'openrouter/qwen/qwen3.8-27b:free');
+          assert.deepStrictEqual(Object.keys(c.providers.openrouter.models),['qwen/qwen3.8-27b:free']);
+          assert.strictEqual(c.providers.openrouter.models['qwen/qwen3.8-27b:free'].capabilities.tools,false);
+          assert(c.providers.openrouter.models['qwen/qwen3.8-27b:free'].limit.output<=320);
+          assert(c.permissions.some(x=>x.action==='*'&&x.resource==='*'&&x.effect==='deny'));
+          for(const p of ['shell:*','edit:*'])
+            assert(c.experimental.policies.some(x=>x.action==='permission'&&x.resource===p&&x.effect==='deny'));
+          console.log('MODEL_ALLOWLIST_AND_DENY_POLICY_PASS');
+          JS
+      - name: Verify official current catalog prices are zero before model call
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          from decimal import Decimal, InvalidOperation
+          assert os.getenv("OPENROUTER_API_KEY"), "Existing API secret absent: trial blocked"
+          req=urllib.request.Request("https://openrouter.ai/api/v1/models",
+                                    headers={"Accept":"application/json","User-Agent":"Edirne22-Interview/1.0"})
+          with urllib.request.urlopen(req, timeout=15) as resp:
+              models=json.load(resp)["data"]
+          matches=[x for x in models if x.get("id")=="qwen/qwen3.8-27b:free"]
+          assert len(matches)==1, "Exact free model not currently listed"
+          pricing=matches[0].get("pricing") or {}
+          assert "prompt" in pricing and "completion" in pricing
+          for label,amount in pricing.items():
+              assert amount is not None and not isinstance(amount,(dict,list,bool)), "Unknown rate"
+              try:
+                  assert Decimal(str(amount))==0, "Nonzero rate for "+label
+              except InvalidOperation:
+                  raise AssertionError("Unknown pricing: "+label)
+          print("EXACT_FREE_MODEL_CURRENT_ZERO_PRICING_PASS")
+          PY
+      - name: Install OpenCode only on disposable CI runner
+        run: npm install --global @opencode/cli && opencode --version
+      - name: Real read-only coding interview (one response)
+        shell: bash
+        run: |
+          set +e
+          timeout 100s opencode run --model openrouter/qwen/qwen3.8-27b:free --format json \
+            "CODING INTERVIEW. Return only Python source; no prose, imports or calls. Implement exactly one function classify_machine(license_id, zero_cost, days_since_release) with exactly one return expression. Return BLOCKED for any license except MIT, Apache-2.0 or BSD-3-Clause, or when zero_cost is False or release age is negative. Otherwise return WATCH when release age exceeds 365, else ELIGIBLE. Do not claim testing yourself." \
+            > /tmp/engineer-model-events.jsonl 2> /tmp/engineer-model-err.txt
+          rc=$?
+          set -e
+          if [ "$rc" -ne 0 ]; then
+            echo "INTERVIEW_MODEL_ERROR: no evidence of success"
+            exit 1
+          fi
+          python scripts/integration_engineer_trial.py /tmp/engineer-model-events.jsonl
