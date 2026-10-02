@@ -92,7 +92,52 @@ async function loadPreviews(){
           player.load();
         }catch(e){$("previewNotice").textContent="Video gesperrt: "+e.message}finally{open.disabled=false}
       };
-      li.append(label,open);root.append(li);
+      // A review request is not a completed Factory edit/discard operation.
+      // Posting stays hidden until the canonical persisted Human Authority
+      // and durable Publisher handoff have both passed their live gates.
+      const controls=document.createElement("div");controls.className="bar";
+      const change=document.createElement("button");change.type="button";
+      change.className="ghost";change.textContent="✎ Änderung anfordern";
+      const discard=document.createElement("button");discard.type="button";
+      discard.className="ghost";discard.textContent="✕ Verwerfen anfordern";
+      async function requestReview(action,text){
+        change.disabled=true;discard.disabled=true;
+        $("previewNotice").textContent="Speichere deine Entscheidung sicher …";
+        try{
+          const result=await api("/api/preview-review",{method:"POST",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify({action,preview_id:item.id,request_id:crypto.randomUUID(),
+              manifest:item.manifest,revision:item.revision,text})});
+          if(result.status!=="PENDING_FACTORY_APPLICATION")
+            throw Error("Keine bestätigte Speicherung der Entscheidung");
+          clearPrivateVideo();await loadPreviews();
+          $("previewNotice").textContent="Dein Wunsch ist sicher vorgemerkt und die alte Vorschau gesperrt. "
+            +"Die Fabrik muss ihn noch anwenden; dies ist keine fertige Änderung oder Veröffentlichung.";
+        }catch(e){
+          $("previewNotice").textContent="Entscheidung nicht übernommen: "+e.message;
+          change.disabled=false;discard.disabled=false;
+        }
+      }
+      change.onclick=async()=>{
+        const text=window.prompt("Welche Änderung wünschst du für dieses Video?");
+        if(text===null)return;
+        if(!text.trim()||text.length>2000){
+          $("previewNotice").textContent="Bitte einen Änderungswunsch mit maximal 2000 Zeichen eingeben.";return;
+        }
+        if(!window.confirm("Änderungswunsch verbindlich vormerken? Die aktuelle Vorschau wird gesperrt."))
+          return;
+        await requestReview("change",text.trim());
+      };
+      discard.onclick=async()=>{
+        if(!window.confirm("Dieses Video wirklich zur Verwerfung vormerken und die Vorschau sofort sperren?"))
+          return;
+        await requestReview("discard","");
+      };
+      controls.append(change,discard);
+      const postInfo=document.createElement("div");postInfo.className="smalltext";
+      postInfo.textContent="Posten bleibt gesperrt, bis echte Fakten-QM, deine verbindliche Freigabe "
+        +"und die Publisher-Anbindung vollständig geprüft sind.";
+      li.append(label,open,controls,postInfo);root.append(li);
     }
   }catch(e){$("previewNotice").textContent="Keine geprüfte Vorschau verfügbar: "+e.message}
 }
