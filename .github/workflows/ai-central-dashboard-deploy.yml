@@ -1,6 +1,12 @@
-name: AI Central Dashboard – private manual Cloudflare deploy
+name: AI Central Dashboard – guarded Cloudflare deploy
+# Deploy once on this workflow's reviewed merge; future UI updates stay manual.
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ai-central-dashboard-deploy.yml'
+      - '.github/workflows/block6-dashboard-first-real-video.yml'
 permissions:
   contents: read
 jobs:
