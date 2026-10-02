@@ -40,7 +40,7 @@ class YoutubeEvidenceTests(unittest.TestCase):
     def test_invalid_non_youtube_url_or_redirected_link_is_quarantined(self):
         for url in ["https://youtube.com.evil.invalid/watch?v=k0XXTKmcrLI",
                     "http://www.youtube.com/watch?v=k0XXTKmcrLI",
-                    "https://youtu.be/not-a-video"]:
+                    "https://youtu.be/not-an-actual-valid-video-id"]:
             self.assertEqual(review_video({**BASE,"url":url}).triage,"QUARANTINE")
     def test_keeps_original_urls_and_all_quarantine_evidence(self):
         good={**BASE,"channelTitle":"Motorcycle World"}
