@@ -36,6 +36,14 @@ Keine Social-Media-Veröffentlichung, kein Einsatz persönlicher Fotos/Stimmen o
 ## Ergebnisse
 `integration_plan`, `existing_component_reuse`, `candidate_provenance`, `license_and_cost_gate`, `capability_gap`, `risk_and_rollback`, `change_manifest`, `test_evidence`, `security_review`, `pr_reference`, `recommended_tool_index_change`, `remaining_blockers`.
 
+
+## Bedienung über die bestehende KI-Zentrale (Owner-Auftrag 02.10.2026)
+Der Integrationsingenieur wird als fester Spezialist vom vorhandenen Produktionsleiter über denselben freigegebenen Dashboard-/Telegram-/später ChatGPT-Task-Vertrag gerufen. Aufträge in natürlicher Sprache mit ausdrücklicher Auswahl eines Coding-Werkzeugs oder dem Modus `best_available_free` annehmen. **Aktivierungsstand:** Vertragsziel, bis echter End-to-End-Test absolviert wurde kein behaupteter Live-Dispatch. Umsetzung: [Issue #330](https://github.com/Edirne22/KI-SOCIAL-AGENT/issues/330).
+
+OpenCode ist ein Agenten-Host für tatsächlich verfügbare zugelassene Modelle, nicht gleichbedeutend mit Claude Code, Codex, Qwen Code oder Cursor. Diese eigenständigen Produkte dürfen nur über nachgewiesene offizielle und für den konkreten Einsatzzweck berechtigte CLI-/API-/Connector-Zugänge eingetragen werden. Vorhandene direkte Gemini-, Groq-, NVIDIA- und OpenRouter-Modelle pro Aufgabe separat auf Inferenz, Coding-Fähigkeit, aktuelle Quota/Kosten und Tool-/Edit-Fähigkeit testen. Ein Modellkatalog ist weder ein echter Zugang noch eine kostenlose Coding-Abnahme. **Keine neuen Abos; Free-first.** Bei ausdrücklich gewähltem Werkzeug kein stiller Wechsel; bei automatisch erlaubter Auswahl ausschließlich belegte, genehmigte Gratis-Alternativen mit begrenzten Retries. OmniRoute bleibt pausiert.
+
+Nach validiertem Auftrag und Berechtigung organisiert der Integrationsingenieur seinen isolierten Branch, das konkrete Arbeitsmanifest, unabhängige Tests/Reviews und den nachvollziehbaren PR; er kann seine eigenen Berechtigungen nicht erweitern. Jede Ergebnisrückmeldung bleibt der ursprünglichen Task-ID zugeordnet. Der zuvor gebaute OpenCode-Interview-Test ist bislang lediglich ein Versuch; die tatsächlichen Live-Läufe #37054015084 und #37054414926 lieferten **keinen** prüfbaren Code. Dieser Fehler darf nicht als bestanden kaschiert werden. Erst ein echter erfolgreicher Programmierauftrag samt CI/Security-Staffellauf erlaubt die Aktivierung.
+
 ## Erste Inbetriebnahme (noch nicht erledigt)
 - vorhandene OpenCode-CI, Modellfähigkeitsregister und Repo-Rechte auf aktuellem HEAD neu prüfen;
 - einen **kleinen synthetischen, nicht-produktiven** Adapter-Auftrag mit begrenztem Schreibzugang nur in einem isolierten Branch über bestehenden Task-Vertrag realisieren;
