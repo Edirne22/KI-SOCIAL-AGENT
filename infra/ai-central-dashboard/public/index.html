@@ -58,7 +58,7 @@ li{border-color:rgba(112,157,205,.12)}.screen-toggle{display:flex;gap:8px;paddin
   <section class="system-card" aria-label="Cloudflare R2 Speicher"><div class="eyebrow">R2 · SPEICHER</div><strong id="r2Occupied">Nicht verfügbar – noch nicht gemessen</strong><div id="r2Quota" class="smalltext">Kostenloses Kontingent: Nicht verfügbar</div><meter id="r2Meter" min="0" max="100" value="0" hidden></meter><div id="r2Measured" class="smalltext">Letzte erfolgreiche Messung: Nicht verfügbar</div><div id="r2Warning" class="smalltext"></div></section>
   <section class="system-card" aria-label="Container Zustand"><div class="eyebrow">CONTAINER · PASSIV</div><strong id="containerState">Nicht verfügbar</strong><div id="containerDetail" class="smalltext">CPU und RAM: Nicht verfügbar. Kein automatisches Aufwecken.</div><div class="smalltext">Letzter Bereitschaftstest: Nicht verfügbar</div></section>
 </div>
-<div class="bar"><button id="measureSystem" type="button" class="ghost">↻ Systemwerte manuell messen</button></div>
+<div class="bar"><button id="measureSystem" type="button" class="ghost">↻ R2-Speicher manuell messen</button><button id="checkContainer" type="button" class="ghost">Container manuell prüfen (kann aufwecken)</button></div>
 <div class="muted">R2 zeigt nur eine gemessene Momentaufnahme des gebundenen Buckets, keine tatsächliche monatliche GB-Monatsabrechnung und keine technische Kapazitätsgrenze. Der Container wird nicht angepingt.</div>
 </div>
 <nav class="screen-toggle" aria-label="Dashboard Ansichten"><button id="tabChat" class="primary" type="button">⌘ Chat</button><button id="tabLive" class="ghost" type="button">▣ Live-Konsole</button><button id="tabStudio" class="ghost" type="button">▶ Videostudio</button></nav>
@@ -396,6 +396,32 @@ if(v.status==="DRAFT_REQUIRES_REVIEW"){const run=document.createElement("button"
 const check=document.createElement("button");check.type="button";check.className="ghost";
 check.textContent="▣ Ergebnis prüfen";check.onclick=()=>selectInboxTask(v);
 row.append(check);li.append(row)}root.append(li)}if(selectedTask?.kind==="message")await checkSelectedTask();try{const g=await api("/api/runs");const list=$("runs");list.replaceChildren();$("lineGit").textContent="Status synchronisiert · "+new Date(g.logged_at).toLocaleTimeString("de-DE");for(const v of g.runs){const item=document.createElement("li");const a=document.createElement("a");a.href=v.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=v.name+" · "+v.status+(v.conclusion?" · "+v.conclusion:"");a.style.color="#aacaff";item.append(a);list.append(item)}if(!g.runs.length){const li=document.createElement("li");li.textContent="Keine aktuellen Läufe im Suchfenster";list.append(li)}}catch(e){$("runs").textContent="GitHub derzeit nicht erreichbar: "+e.message}}catch(e){$("conn").textContent="Nicht verbunden";$("conn").classList.remove("connected");$("lineAuth").textContent="Anmeldung prüfen";$("lineStore").textContent="Keine Verbindung";status("Status: "+e.message)}}
+async function loadLastReadiness(){
+  if(!token)return;
+  try{
+    const state=await api("/api/container-readiness");
+    $("containerState").textContent=state.state==="LAST_KNOWN_HTTP_REACHABLE_NOT_CURRENT"?
+      "Letzter HTTP-Test erfolgreich · kein Live-Status":"Nicht verfügbar – kein gespeicherter Bereitschaftstest";
+    $("containerDetail").textContent=state.last_success_at?
+      "Letzter manueller HTTP-Test: "+new Date(state.last_success_at).toLocaleString("de-DE")+
+        ". CPU/RAM und interne Programme: nicht messbar.":
+      "CPU und RAM: Nicht verfügbar. Kein passives Telemetriesignal.";
+  }catch{$("containerState").textContent="Nicht verfügbar – passiver Statusabruf fehlgeschlagen"}
+}
+$("checkContainer").onclick=async()=>{
+  if(!token){status("Bitte zuerst mit deinem Dashboard-Zugangsschlüssel verbinden.");return}
+  if(!window.confirm("Container jetzt ausdrücklich manuell testen? Das kann einen schlafenden Container aufwecken und Laufzeit verursachen. Ein erfolgreicher HTTP-Test bestätigt NICHT sämtliche internen Programme."))return;
+  const button=$("checkContainer");button.disabled=true;
+  try{
+    const result=await api("/api/container-readiness",{method:"POST"});
+    if(result.state==="HTTP_REACHABLE_ONLY"){
+      $("containerState").textContent="HTTP erreichbar – interne Programme nicht geprüft";
+      await loadLastReadiness();
+    }else $("containerState").textContent="Nicht nachgewiesen: "+result.state+
+      " (Ruhemodus und technischer Fehler nicht unterscheidbar)";
+  }catch(e){$("containerState").textContent="Manueller Test nicht verfügbar: "+e.message}
+  finally{button.disabled=false}
+};
 $("measureSystem").onclick=async()=>{
   const button=$("measureSystem");button.disabled=true;$("r2Occupied").textContent="R2-Inventur läuft – keine Containerabfrage …";
   try{
@@ -419,12 +445,11 @@ $("measureSystem").onclick=async()=>{
       $("r2Warning").textContent=r.snapshot_warning?
         "Achtung: Bucketbestand liegt nahe/über der konfigurierten Referenz. Keine Aussage zu tatsächlichen Abrechnungskosten.":"";
     }
-    $("containerState").textContent="Nicht verfügbar – keine passive Laufzeit-Telemetrie";
-    $("containerDetail").textContent="CPU und RAM nicht verfügbar; kein HTTP-Probe, kein Aufwecken.";
+    await loadLastReadiness(); // reads only our last manual snapshot; never probes the container
   }catch(e){$("r2Occupied").textContent="Nicht verfügbar – "+e.message}
   finally{button.disabled=false}
 };
-$("connect").onclick=()=>{token=$("token").value;$("token").value="";selectedTask=null;selectedReport=null;selectedReportError="";clearAttachmentCache();studioBaseline=null;paintConversation();refresh();if($("workspace").dataset.tab==="studio")refreshStudio()};$("refresh").onclick=refresh;$("reload").onclick=refresh;
+$("connect").onclick=()=>{token=$("token").value;$("token").value="";selectedTask=null;selectedReport=null;selectedReportError="";clearAttachmentCache();studioBaseline=null;paintConversation();refresh();void loadLastReadiness();if($("workspace").dataset.tab==="studio")refreshStudio()};$("refresh").onclick=refresh;$("reload").onclick=refresh;
 $("send").onclick=async()=>{const content=$("message").value.trim();if(content.length<3)return status("Bitte mindestens drei Zeichen für den Auftrag eingeben.");const m="[WUNSCH-MODUS: "+$("taskMode").value+"; AUSGABE: "+$("outputMode").value+"]\n"+content;try{const data=await api("/api/inbox",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({message:m})});status("Entwurf gespeichert: "+data.id);$("message").value="";selectedTask={id:data.id,created_at:data.created_at,channel:"web",kind:"message",message:m,status:data.status};selectedReport=null;selectedReportError="";paintConversation();await refresh()}catch(e){status(e.message)}};
 async function upload(file){if(!file)return status("Bitte Datei auswählen");if(file.size>8*1024*1024)return status("Maximal 8 MB");try{let d=await api("/api/upload",{method:"POST",headers:{"content-type":file.type||"application/octet-stream","x-upload-name":file.name},body:file});status("Privat gespeichert: "+d.name+" · "+d.id);selectedTask={id:d.id,created_at:d.created_at,channel:"web",kind:"file",file:{name:d.name,size:file.size,mime:file.type},status:d.status};selectedReport=null;selectedReportError="";paintConversation();await refresh()}catch(e){status("Upload: "+e.message)}}
 $("upload").onclick=()=>upload($("file").files[0]);
