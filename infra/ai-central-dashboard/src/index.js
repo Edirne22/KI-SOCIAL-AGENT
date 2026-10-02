@@ -332,6 +332,41 @@ async function queuePreviewReview(req,env){
     job_id:d.job_id,status:"PENDING_FACTORY_APPLICATION",action:input.action,
     dispatch,truth:"REVIEW_INTENT_STORED_NOT_JOB_DECISION"},202);
 }
+// Persisted, authenticated read-only status across browser refreshes. Never
+// infer approval from a queued intent; only the canonical Factory ACK counts.
+async function listReviewStatuses(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const result=await env.AI_CENTRAL_R2.list({prefix:PREVIEW_STATE_PREFIX,limit:80});
+  if(result.truncated)return json({error:"review index too large; pagination required"},409);
+  const keys=result.objects.filter(o=>PREVIEW_ID.test(
+    o.key.slice(PREVIEW_STATE_PREFIX.length,-5))&&o.key.endsWith(".json")).slice(-60);
+  const items=[];
+  for(const entry of keys){
+    const job_id=entry.key.slice(PREVIEW_STATE_PREFIX.length,-5);
+    const object=await env.AI_CENTRAL_R2.get(entry.key);
+    if(!object)continue;
+    let state;
+    try{state=await object.json()}catch{continue}
+    const review=state?.review;
+    if(state?.schema!=="FACTORY-PREVIEW-STATE-V1"||state.job_id!==job_id||
+       !["REVIEW_REQUESTED","REVIEW_APPLIED"].includes(state.state)||
+       state.preview_id!==null||!review||
+       review.schema!=="FACTORY-REVIEW-INTENT-V1"||
+       review.job_id!==job_id||review.actor!=="authenticated_dashboard_owner"||
+       !PREVIEW_ID.test(review.request_id||"")||
+       !["change","discard"].includes(review.action)||
+       review.manifest!==state.manifest||review.revision!==state.revision||
+       !Number.isFinite(Date.parse(review.requested_at||"")))continue;
+    const applied=state.state==="REVIEW_APPLIED"&&review.status==="APPLIED_TO_FACTORY";
+    if(!applied&&!(state.state==="REVIEW_REQUESTED"&&
+       review.status==="PENDING_FACTORY_APPLICATION"))continue;
+    items.push({job_id,request_id:review.request_id,revision:review.revision,
+      action:review.action,status:applied?"APPLIED_TO_FACTORY":"PENDING_FACTORY_APPLICATION",
+      requested_at:review.requested_at});
+  }
+  items.sort((a,b)=>b.requested_at.localeCompare(a.requested_at));
+  return json({schema:"FACTORY-REVIEW-STATUS-LIST-V1",items:items.slice(0,30)});
+}
 async function reviewStatus(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
   const query=new URL(req.url).searchParams;
@@ -399,6 +434,7 @@ export default {async fetch(req,env){
   try{
     if(path==="/api/previews")return await listPreviews(req,env);
     if(path==="/api/preview-review")return await queuePreviewReview(req,env);
+    if(path==="/api/reviews")return await listReviewStatuses(req,env);
     if(path==="/api/review-status")return await reviewStatus(req,env);
     if(path==="/api/preview-video")return await getPreviewVideo(req,env);
     if(path==="/api/inbox")return await inbox(req,env);
