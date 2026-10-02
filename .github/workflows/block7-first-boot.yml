@@ -1,0 +1,85 @@
+name: Block 7 first boot - ASR and multilingual TTS
+on:
+  pull_request:
+    paths:
+      - scripts/block7_faster_whisper_startup.py
+      - scripts/block7_chatterbox_startup.py
+      - tests/test_block7_first_boot.py
+      - .github/workflows/block7-first-boot.yml
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/block7-first-boot.yml
+  workflow_dispatch:
+    inputs:
+      full_chatterbox_model:
+        description: "Explicit bounded synthetic DE/TR 500M CPU cold-start (may exceed runner budget)"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: block7-first-boot
+  # Supersede outdated PR model boots after corrections; save free Actions minutes.
+  cancel-in-progress: true
+jobs:
+  safety-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Validate startup scripts and security regression
+        run: |
+          python -m py_compile scripts/block7_faster_whisper_startup.py scripts/block7_chatterbox_startup.py
+          python -m unittest -v tests.test_block7_first_boot tests.test_content_factory_av
+  actual-asr-cpu:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: safety-contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install real CPU ASR and synthetic voice fixture generator
+        run: |
+          timeout 130s sudo apt-get update -qq
+          timeout 130s sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq espeak-ng ffmpeg
+          python -m pip install --disable-pip-version-check 'faster-whisper>=1.1,<2'
+      - name: Load multilingual model once; infer both DE and TR; require actual word timestamps
+        env:
+          HF_HUB_DISABLE_TELEMETRY: '1'
+        run: timeout 300s python -m scripts.block7_faster_whisper_startup --model tiny --out "${RUNNER_TEMP}/asr-output"
+      - name: Preserve only synthetic SRT evidence for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: block7-synthetic-de-tr-subtitles
+          path: ${{ runner.temp }}/asr-output/*.srt
+          retention-days: 1
+          if-no-files-found: error
+  actual-chatterbox-install:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: safety-contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install actual Chatterbox Multilingual Python runtime
+        run: |
+          python -m pip install --disable-pip-version-check 'git+https://github.com/resemble-ai/chatterbox.git@5de7a54aa4e5e2baadb0182dde554908b48b85c2#egg=chatterbox-tts'
+      - name: Load multilingual (NOT English-only turbo) inference entry point
+        env:
+          HF_HUB_DISABLE_TELEMETRY: '1'
+        run: timeout 60s python -m scripts.block7_chatterbox_startup
+      - name: Optional expensive cold-start with synthetic voice ONLY
+        if: github.event_name == 'pull_request' || github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.full_chatterbox_model == true)
+        env:
+          HF_HUB_DISABLE_TELEMETRY: '1'
+        run: |
+          timeout 360s sudo apt-get update -qq
+          timeout 120s sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq espeak-ng ffmpeg
+          timeout 480s python -m scripts.block7_chatterbox_startup --real-model
