@@ -103,6 +103,9 @@ class LocalResourceManager:
             raise AdmissionError("validated ResourceClaim required")
         key = (claim.job_id, claim.task_id)
         with self._lock:
+            for active in self._leases.values():
+                if active.claim.job_id == claim.job_id and active.claim.revision != claim.revision:
+                    raise AdmissionError("stale revision conflicts with active job reservation")
             previous = self._leases.get(key)
             if previous is not None:
                 if previous.claim != claim:
@@ -127,11 +130,29 @@ class LocalResourceManager:
         indexed = list(enumerate(claims))
         if any(not isinstance(claim, ResourceClaim) for _, claim in indexed):
             raise AdmissionError("all claims must be validated")
-        admitted, queued = [], []
-        for _, claim in sorted(indexed, key=lambda item: (item[1].priority, item[0])):
-            lease = self.reserve(claim)
-            (admitted if lease is not None else queued).append(lease or claim)
-        return admitted, queued
+        # Preflight ALL entries before allocating anything in this batch.
+        # Otherwise one late contradictory revision could leave partial leases.
+        with self._lock:
+            seen = {}
+            for _, claim in indexed:
+                key = (claim.job_id, claim.task_id)
+                previous = seen.get(key) or self._leases.get(key)
+                if previous is not None:
+                    old_claim = previous if isinstance(previous, ResourceClaim) else previous.claim
+                    if old_claim != claim:
+                        raise AdmissionError("contradictory duplicate batch claim")
+                for prior in seen.values():
+                    if prior.job_id == claim.job_id and prior.revision != claim.revision:
+                        raise AdmissionError("stale revision within batch")
+                for active in self._leases.values():
+                    if active.claim.job_id == claim.job_id and active.claim.revision != claim.revision:
+                        raise AdmissionError("stale revision conflicts with active reservation")
+                seen[key] = claim
+            admitted, queued = [], []
+            for _, claim in sorted(indexed, key=lambda item: (item[1].priority, item[0])):
+                lease = self.reserve(claim)
+                (admitted if lease is not None else queued).append(lease or claim)
+            return admitted, queued
 
     def release(self, lease: ResourceLease):
         if not isinstance(lease, ResourceLease):
