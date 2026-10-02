@@ -44,3 +44,10 @@ test("existing private videostudio and selected-task conversation remain intact"
   assert.match(html,/id="studioAutoRefresh"/);
   assert.match(html,/function paintConversation\(\)/);
 });
+test("10-second chat polling does not interrupt media when selected status is unchanged",()=>{
+  assert.match(html,/if\(oldStatus!==current\.status\)paintConversation\(\)/);
+  assert.match(html,/class="hero-layout"/);
+  assert.match(html,/class="mission-summary"/);
+  assert.match(html,/class="monitor-summary"/);
+  assert.match(html,/grid-template-columns:minmax\(0,1\.05fr\)/);
+});
