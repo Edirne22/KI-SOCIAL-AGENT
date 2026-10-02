@@ -1,86 +1,86 @@
 # Inspiration · YouTube Apify
 
-Suchzeitraum ab: 2026-09-23
+Suchzeitraum ab: 2026-09-25
 Suchbegriffe: MotoGP Highlights, Toprak Razgatlioglu, WorldSBK Highlights
 Videos: 10
 
 ### Datensatz 1
-- Titel: 2025 MotoGP Round 13 – Austrian Grand Prix | Sprint Race Highlights Explained by AI
-- Kanal: ばいくるまん
-- Datum: 2026-09-29T12:03:34Z
-- URL: https://www.youtube.com/watch?v=SAdHG46Iv_A
-- Views: 3
-- Likes: 1
+- Titel: Moto3 Practice Full Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights 2026
+- Kanal: مطبخ ام رسيم 
+- Datum: 2026-10-02T04:58:50Z
+- URL: https://www.youtube.com/watch?v=k0XXTKmcrLI
+- Views: 0
+- Likes: 0
 - Kommentare: 0
 ### Datensatz 2
-- Titel: 2025 MotoGP Round 13 – Austrian Grand Prix | Race Highlights Explained by AI
-- Kanal: ばいくるまん
-- Datum: 2026-09-29T11:42:34Z
-- URL: https://www.youtube.com/watch?v=ARwFhFy7pSE
-- Views: 2
-- Likes: 1
+- Titel: Moto3 Practice Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights 2026
+- Kanal: مطبخ ام رسيم 
+- Datum: 2026-10-02T04:42:02Z
+- URL: https://www.youtube.com/watch?v=p2CGRuL-JGo
+- Views: 6
+- Likes: 0
 - Kommentare: 0
 ### Datensatz 3
-- Titel: 2025 Moto2 Round 13 – Austrian Grand Prix | Race Highlights Explained by AI
-- Kanal: ばいくるまん
-- Datum: 2026-09-29T11:25:57Z
-- URL: https://www.youtube.com/watch?v=e8jpaGeJGrw
-- Views: 2
-- Likes: 1
+- Titel: MotoGp Fp1 Full Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights 2026
+- Kanal: مطبخ ام رسيم 
+- Datum: 2026-10-02T02:38:51Z
+- URL: https://www.youtube.com/watch?v=JpXf_UkHMco
+- Views: 1175
+- Likes: 27
 - Kommentare: 0
 ### Datensatz 4
-- Titel: 2025 Moto3 Round 13 – Austrian Grand Prix | Race Highlights Explained by AI
-- Kanal: ばいくるまん
-- Datum: 2026-09-29T10:56:28Z
-- URL: https://www.youtube.com/watch?v=uJlC4w5oq0Q
+- Titel: MotoGp Fp1 Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights 2026
+- Kanal: روتينات في الريف
+- Datum: 2026-10-02T02:25:39Z
+- URL: https://www.youtube.com/watch?v=NtP50Gv07DA
 - Views: 4
-- Likes: 1
+- Likes: 0
 - Kommentare: 0
 ### Datensatz 5
-- Titel: He Was About to Crash at 300 KM/H… Then THIS Happened 😱 #MotoGP #shorts #fyp
-- Kanal: JendelaGalvin
-- Datum: 2026-09-29T10:47:16Z
-- URL: https://www.youtube.com/watch?v=EAlhnExL0GM
-- Views: 1162
-- Likes: 19
-- Kommentare: 2
+- Titel: MotoGp Fp1 Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights 2026
+- Kanal: مطبخ ام رسيم 
+- Datum: 2026-10-02T02:13:22Z
+- URL: https://www.youtube.com/watch?v=3Yu6pb_cuRg
+- Views: 82
+- Likes: 1
+- Kommentare: 0
 ### Datensatz 6
-- Titel: marc marquez crashing highlights #racing #motorcycle #automobile #motogp
-- Kanal: SG
-- Datum: 2026-09-29T10:42:26Z
-- URL: https://www.youtube.com/watch?v=QqSEoiMEtDU
-- Views: 16357
-- Likes: nicht verfügbar
-- Kommentare: 4
+- Titel: Moto2 Fp1 Full Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights 2026
+- Kanal: مطبخ ام رسيم 
+- Datum: 2026-10-02T01:39:16Z
+- URL: https://www.youtube.com/watch?v=Owg5FoD8qlc
+- Views: 40
+- Likes: 0
+- Kommentare: 0
 ### Datensatz 7
-- Titel: Rossi vs Márquez 🔥 The Battle That Shook MotoGP #Shorts #rossi #bikeracing #viral #viralshort
-- Kanal: FAHHHH
-- Datum: 2026-09-29T07:07:08Z
-- URL: https://www.youtube.com/watch?v=CSYeCK-S64c
-- Views: 16
-- Likes: 4
+- Titel: Moto2 Fp1 Full Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights 2026
+- Kanal: روتينات في الريف
+- Datum: 2026-10-02T01:26:05Z
+- URL: https://www.youtube.com/watch?v=PNLvhxv7xJw
+- Views: 1
+- Likes: 0
 - Kommentare: 0
 ### Datensatz 8
-- Titel: Rossi Puji Veda, Soroti Kesalahan Steward MotoGP!
-- Kanal: Suhendri Wibowo
-- Datum: 2026-09-29T04:00:09Z
-- URL: https://www.youtube.com/watch?v=Sd1slLH2uY8
-- Views: 139540
-- Likes: 1509
-- Kommentare: 19
+- Titel: Moto2 Fp1 Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights 2026
+- Kanal: مطبخ ام رسيم 
+- Datum: 2026-10-02T01:19:04Z
+- URL: https://www.youtube.com/watch?v=cK6HK8N-_ZI
+- Views: 24
+- Likes: 1
+- Kommentare: 0
 ### Datensatz 9
-- Titel: From Brutal Crashes To Ultimate Glory! 🔥#motogp #crashes #comeback #aura #usa
-- Kanal: MotoCTRL
-- Datum: 2026-09-29T00:35:06Z
-- URL: https://www.youtube.com/watch?v=PMYDcelfg4c
-- Views: 27355
-- Likes: 958
-- Kommentare: 2
+- Titel: Moto3 Fp1 Full Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights 2026
+- Kanal: مطبخ ام رسيم 
+- Datum: 2026-10-02T00:44:54Z
+- URL: https://www.youtube.com/watch?v=HtA6GSCCerE
+- Views: 136
+- Likes: 5
+- Kommentare: 0
 ### Datensatz 10
-- Titel: Giro CBM 2026 - Edição 35
-- Kanal: CBM TV OFICIAL
-- Datum: 2026-09-28T21:00:23Z
-- URL: https://www.youtube.com/watch?v=qO8SAjQdjD4
-- Views: 92
-- Likes: 2
+- Titel: Moto3 Fp1 Highlights | 2026 Japanese Grand Prix Highlights | MotoGP Highlights
+- Kanal: روتينات في الريف
+- Datum: 2026-10-02T00:31:56Z
+- URL: https://www.youtube.com/watch?v=Di27gcxHtWc
+- Views: 3
+- Likes: 0
 - Kommentare: 0
