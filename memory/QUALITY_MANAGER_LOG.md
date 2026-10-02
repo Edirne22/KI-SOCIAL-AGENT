@@ -2520,3 +2520,39 @@ Story-Key: title:bulega-2027-ye-rakiplerinden-nce-haz-rlan-yor-ktm-avantaj-kabul
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-02 05:03 UTC | Motorcycle Racing | FAIL
+Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
+Story-Key: title:deniz-nc-japonya-da-daha-fazlas-n-istiyor-hedef-ilk-10-un-tesi
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-02 05:03 UTC | Motorcycle Racing | PASS
+Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
+Story-Key: title:deniz-nc-japonya-da-daha-fazlas-n-istiyor-hedef-ilk-10-un-tesi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-02 05:03 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Japonya GP 1. antrenman: Yağmurla başlayan seansı Marc Marquez zirvede bitirdi, Toprak 15. sırada
+Story-Key: motogp:10860767
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-02 05:03 UTC | Motorcycle Racing | PASS
+Titel: Bulega için asıl tehlike Pirelli değil: Ducati’de gizli 2027 farkı
+Story-Key: title:bulega-i-as-l-tehlike-pirelli-de-il-ducati-de-gizli-2027-fark
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-02 05:03 UTC | Motorcycle Racing | PASS
+Titel: Bulega 2027’ye rakiplerinden önce hazırlanıyor: KTM avantajı kabul etti
+Story-Key: title:bulega-2027-ye-rakiplerinden-nce-haz-rlan-yor-ktm-avantaj-kabul-etti
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-02 05:04 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

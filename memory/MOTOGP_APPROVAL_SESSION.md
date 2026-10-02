@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1790829868
+Session-Timestamp: 1790915981
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,27 +15,29 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
+Neufassungen: 0
 QM-Ruecklaeufe: 2
 Herkunft: Aktuell
 Artikelalter-Tage: 0.8
 Kategorie: Turkish Riders
-Serie: MotoGP
-Story-Key: title:motogp-japonya-gp-2026-toprak-motegi-de-i-lk-motogp-yar-na-k-yor
-Titel: MotoGP Japonya GP 2026: Toprak Motegi'de İlk MotoGP Yarışına Çıkıyor
-Quelle: https://motoetkinlik.com/motogp-japonya-gp-2026-toprak-motegide-ilk-motogp-yarisina-cikiyor
+Serie: Moto2
+Story-Key: title:deniz-nc-japonya-da-daha-fazlas-n-istiyor-hedef-ilk-10-un-tesi
+Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
+Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-1-motogp-japonya-gp-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/motogp-japonya-gp-motegi-pisti-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-1-deniz-oncu-japonyada-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/deniz-oncu-motegi-japonya-gp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu startet in Motegi in sein erstes MotoGP-Rennen auf dieser Strecke.
+Deniz Öncü hat in Österreich den neunten Platz belegt.
 
-Das MotoGP-Wochenende in Japan findet vom 2. bis 4. Oktober statt. Die Mainrace geht am Sonntag um 08.00 Uhr TSИ los, und laut Wettervorhersage soll es regen. Für Toprak ist das der erste Einsatz in der Königsklasse genau hier auf dem Twin Ring Motegi.
+Jetzt geht es bei der Moto2-Japan-GP in Motegi weiter – mit dem Ziel, die beste Saisonplatzierung zu erzielen.
 
-Was erwartet ihr von Toprak bei seinem Debüt-Rennen in Motegi?
+Ziel ist klar: Es soll besser als Platz 10 werden.
 
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Was erwartet ihr von Deniz in Motegi?
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -46,22 +48,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 1
 QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 2.0
+Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:quartararo-nun-honda-transferi-bir-d-nemi-bitiriyor-2019-dan-beri-s-ren-ortakl-k-sona-erecek
-Titel: Quartararo’nun Honda transferi bir dönemi bitiriyor: 2019’dan beri süren ortaklık sona erecek
-Quelle: https://motoetkinlik.com/fabio-quartararonun-honda-transferi-sponsor-degisikligini-de-beraberinde-getiriyor
+Story-Key: motogp:10860767
+Titel: MotoGP Japonya GP 1. antrenman: Yağmurla başlayan seansı Marc Marquez zirvede bitirdi, Toprak 15. sırada
+Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-2-quartararonun-honda-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/fabio-quartararo-honda-monster-energy-red-bull-2027-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-2-motogp-japonya-gp-1-01.jpg
+Quellen-Preview: https://cdn-2.motorsport.com/images/amp/6DGg79DY/s6/marc-marquez-ducati-team.jpg
 Plattformen: Instagram + Facebook
 Text:
-Bei Fabio Quartararo wird für 2027 ein Wechsel zu Honda erwartet. Damit soll die seit 2019 bestehende Partnerschaft mit Monster Energy enden und Quartararo zur Unterstützung von Red Bull wechseln.
+Marc Marquez hat beim ersten Training zum MotoGP-Grand-Prix von Japan die Nase vorne gehabt.
 
-Wie schätzt ihr die Situation ein?
+Beim ersten freien Training in Japan fing es direkt mit Nässe an. Trotzdem war es Marquez, der am Ende des Sitzes auf der ersten Position stand. Toprak hat den Einstieg mit Platz 15 abgeschlossen.
 
-#MotoGP #FabioQuartararo #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie bewertet ihr die Startsituation in der Regen-Kondition?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -69,25 +73,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.8
+Artikelalter-Tage: 0.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:motogp-de-ampiyonluk-sava-alevleniyor-motegi-de-hata-pay-kalmad
-Titel: MotoGP’de şampiyonluk savaşı alevleniyor: Motegi’de hata payı kalmadı
-Quelle: https://motoetkinlik.com/motogpde-sampiyonluk-savasi-alevleniyor-motegide-hata-payi-kalmadi
+Story-Key: title:bulega-i-as-l-tehlike-pirelli-de-il-ducati-de-gizli-2027-fark
+Titel: Bulega için asıl tehlike Pirelli değil: Ducati’de gizli 2027 farkı
+Quelle: https://motoetkinlik.com/buleganin-2027deki-gercek-riski-pirelli-degil-ducati-guncellemeleri-belirleyebilir
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-3-motogpde-sampiyonluk-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/poster-16x9-1-.webp
+Instagram-Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-3-bulega-icin-asil-teh-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/nicolo-bulega-vr46-ducati-2027-guncelleme-farki-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Der Titelkampf in der MotoGP spitzt sich zu. Vor dem Rennen in Motegi liegt Jorge Martin nur noch 12 Punkte vor Marc Marquez. Auch Bezzecchi und der aufstrebende Pedro Acosta sind mit im Battle. 🏍️💨
+Nicolo Bulega startet mit Pirelli-Erfahrung gut gewappnet in die MotoGP. Doch die eigentliche Baustelle lauert woanders: Der Update-Unterschied zwischen VR46 und den Werks-Ducatis könnte die Saison 2027 entscheiden.
 
-Wie schätzt ihr die Situation ein – kann Marquez die Führung noch drehen?
+Wie schätzt ihr den Unterschied zwischen VR46 und den Werks-Ducatis ein?
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife #PedroAcosta
+#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -95,25 +99,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 5.5
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
-Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
-Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
+Artikelalter-Tage: 3.0
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: title:bulega-2027-ye-rakiplerinden-nce-haz-rlan-yor-ktm-avantaj-kabul-etti
+Titel: Bulega 2027’ye rakiplerinden önce hazırlanıyor: KTM avantajı kabul etti
+Quelle: https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-4-can-oncu-cremonada-o-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-4-bulega-2027ye-rakipl-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/nicolo-bulega-ducati-850cc-motogp-avantaj-2027-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Can Öncü hat in Cremona die WorldSSP-Superpole auf Platz sechs abgeschlossen – nur 0,365 Sekunden fehlten ihm zum Pole. 🏍️💨
+KTM räumt ein, dass Nicolo Bulega durch seine Pirelli-Erfahrung und die Ducati-Tests mit dem 850cc-Bike mit einem Vorteil in die MotoGP-Saison 2027 starten wird. Bei KTM geht man allerdings davon aus, dass dieser Unterschied nicht lange anhalten wird.
 
-Wie seht ihr den sechsten Platz?
+Wie schätzt ihr diesen Vorsprung für 2027 ein?
 
-#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -121,27 +125,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.0
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: title:bulega-2027-ye-rakiplerinden-nce-haz-rlan-yor-ktm-avantaj-kabul-etti
-Titel: Bulega 2027’ye rakiplerinden önce hazırlanıyor: KTM avantajı kabul etti
-Quelle: https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti
+Artikelalter-Tage: 6.4
+Kategorie: Turkish Riders
+Serie: WorldSSP
+Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
+Titel: Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta
+Quelle: https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-01-racing-editorial-2026-10-01-5-bulega-2027ye-rakipl-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/nicolo-bulega-ducati-850cc-motogp-avantaj-2027-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-5-can-oncu-cremonada-o-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Nicolo Bulega bereitet sich früher als seine Konkurrenten auf das MotoGP-Jahr 2027 vor.
+Can Öncü hat in der Superpole von Cremona Platz sechs erreicht, nur 0,365 Sekunden hinter der Pole-Position. Das ist knapp. 🏍️
 
-Er kombiniert seine Pirelli-Erfahrung mit Tests auf der 850cc-Ducati. Bei KTM räumt man ein, dass Bulega mit einem Vorteil in die Saison 2027 starten wird. Gleichzeitig geht KTM aber davon aus, dass dieser Unterschied nur von kurzer Dauer sein wird.
+Wie schätzt ihr die Chancen für Can im Rennen ein?
 
-Wie schätzt ihr die Situation für 2027 ein?
-
-#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

@@ -744,3 +744,18 @@ Quelle: https://motoetkinlik.com/motogpde-sampiyonluk-savasi-alevleniyor-motegid
 Story-Key: title:bulega-2027-ye-rakiplerinden-nce-haz-rlan-yor-ktm-avantaj-kabul-etti
 Titel: Bulega 2027’ye rakiplerinden önce hazırlanıyor: KTM avantajı kabul etti
 Quelle: https://motoetkinlik.com/bulega-2027ye-bir-adim-onde-baslayacak-ktm-avantaji-kabul-etti
+
+## 2026-10-02 04:39 UTC – ANGEBOTEN
+Story-Key: title:deniz-nc-japonya-da-daha-fazlas-n-istiyor-hedef-ilk-10-un-tesi
+Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
+Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
+
+## 2026-10-02 04:39 UTC – ANGEBOTEN
+Story-Key: motogp:10860767
+Titel: MotoGP Japonya GP 1. antrenman: Yağmurla başlayan seansı Marc Marquez zirvede bitirdi, Toprak 15. sırada
+Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767
+
+## 2026-10-02 04:39 UTC – ANGEBOTEN
+Story-Key: title:bulega-i-as-l-tehlike-pirelli-de-il-ducati-de-gizli-2027-fark
+Titel: Bulega için asıl tehlike Pirelli değil: Ducati’de gizli 2027 farkı
+Quelle: https://motoetkinlik.com/buleganin-2027deki-gercek-riski-pirelli-degil-ducati-guncellemeleri-belirleyebilir
