@@ -32,6 +32,10 @@ function seed(e,options={}){
   media:{media_id:randomUUID(),key,mime_type:"video/mp4",size_bytes:bytes.length,sha256:sha},...options};
  e.AI_CENTRAL_R2.objects.set("ai-central/v1/previews/"+id+".json",item(JSON.stringify(doc)));
  e.AI_CENTRAL_R2.objects.set(key,item(bytes,{metadata:{sha256:sha}}));
+ e.AI_CENTRAL_R2.objects.set("ai-central/v1/factory-jobs/"+doc.job_id+".json",
+   item(JSON.stringify({schema:"FACTORY-CANONICAL-R2-JOB-V1",job_id:doc.job_id,store_version:1,
+     job:{job_id:doc.job_id,revision:doc.revision,status:"ready_for_human",
+       publish_payload:{caption:doc.caption},media:[{...doc.media,uri:"r2://private-test/"+doc.media.key}]}})));
  e.AI_CENTRAL_R2.objects.set("ai-central/v1/preview-state/"+doc.job_id+".json",item(JSON.stringify({
    schema:"FACTORY-PREVIEW-STATE-V1",job_id:doc.job_id,preview_id:id,
    revision:doc.revision,manifest:doc.manifest,state:"READY_FOR_HUMAN"
@@ -108,5 +112,37 @@ test("expired and missing state pointers fail closed",async()=>{
  assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
  e.AI_CENTRAL_R2.objects.set(path,item(JSON.stringify(doc)));
  e.AI_CENTRAL_R2.objects.delete("ai-central/v1/preview-state/"+doc.job_id+".json");
+ assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
+});
+
+test("canonical job disappears: old preview pointer cannot show stale video",async()=>{
+ const e=env(),{id,doc}=seed(e);
+ e.AI_CENTRAL_R2.objects.delete("ai-central/v1/factory-jobs/"+doc.job_id+".json");
+ assert.equal((await (await worker.fetch(req("/api/previews"),e)).json()).items.length,0);
+ assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
+});
+test("canonical job rejected or revised: stale pointer never authorizes media",async()=>{
+ const e=env(),{id,doc}=seed(e),key="ai-central/v1/factory-jobs/"+doc.job_id+".json";
+ const saved=await e.AI_CENTRAL_R2.objects.get(key).json();
+ for(const change of [{status:"rejected"},{revision:2}]){
+   e.AI_CENTRAL_R2.objects.set(key,item(JSON.stringify({...saved,job:{...saved.job,...change}})));
+   assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
+ }
+});
+test("canonical media SHA, caption or media ID mismatch fail closed",async()=>{
+ const e=env(),{id,doc}=seed(e),key="ai-central/v1/factory-jobs/"+doc.job_id+".json";
+ const saved=await e.AI_CENTRAL_R2.objects.get(key).json();
+ for(const change of [
+   {media:[{...saved.job.media[0],sha256:"f".repeat(64)}]},
+   {media:[{...saved.job.media[0],media_id:randomUUID()}]},
+   {publish_payload:{caption:"silently edited caption"}}
+ ]){
+   e.AI_CENTRAL_R2.objects.set(key,item(JSON.stringify({...saved,job:{...saved.job,...change}})));
+   assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
+ }
+});
+test("unreadable canonical job is never treated as an authorized preview",async()=>{
+ const e=env(),{id,doc}=seed(e);
+ e.AI_CENTRAL_R2.objects.set("ai-central/v1/factory-jobs/"+doc.job_id+".json",item("{broken json"));
  assert.equal((await worker.fetch(req("/api/preview-video?id="+id),e)).status,404);
 });
