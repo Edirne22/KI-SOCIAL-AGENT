@@ -21,7 +21,7 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 
 | [11_system_restart_agent.md](11_system_restart_agent.md) | Prüft sichere Workflow-Zustände und erstellt einen Betriebsstatus. | Täglich als Bericht oder manuell mit ausdrücklicher Freigabe für erlaubte Fehler-Neustarts. |
 | [12_music_agent.md](12_music_agent.md) | Wählt lizenzierte lokale Hintergrundmusik und mischt sie in freigegebene Reels und Stories. | Alle 15 Minuten bei `Musik: auto`; veröffentlicht selbst nie. |
-| [18_tour_ride_story_agent.md](18_tour_ride_story_agent.md) | Verwandelt BMW-/Calimoto-/Kurviger-/Motobit-Ridedaten plus Tourmedien in ein evidenzgebundenes Story-Paket. | Bei Motorradtouren, Ride-Screenshots/GPX sowie Foto-/Video-Tourmaterial; kein Publish. |
+| [19_ki_integrationsingenieur.md](19_ki_integrationsingenieur.md) | Plant und implementiert geprüfte, gezielt freigegebene Werkzeug-/API-Adapter mit vorhandener OpenCode-/GitHub-Infrastruktur; unabhängige Quality-Gates bleiben Pflicht. | Nach Scout-/Research-/Quality-Übergabe und Produktionsleiter-Auftrag; zunächst nur Rollenentwurf, kein autonomer Coding-Betrieb. |\n| [18_tour_ride_story_agent.md](18_tour_ride_story_agent.md) | Verwandelt BMW-/Calimoto-/Kurviger-/Motobit-Ridedaten plus Tourmedien in ein evidenzgebundenes Story-Paket. | Bei Motorradtouren, Ride-Screenshots/GPX sowie Foto-/Video-Tourmaterial; kein Publish. |
 
 ## Aktivierungs-Logik
 
@@ -34,7 +34,7 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 7. Jeder Agent liest vor der Arbeit mindestens die passenden Informationen aus `memory/`, `content/` und den Regeln unter `rules/`.
 8. Jeder Output ist ein Entwurf. Veröffentlichung, externe Kommunikation, Budgeteinsatz, Buchungen und Kontoveränderungen brauchen immer Bülents ausdrückliche Freigabe.
 
-## Empfohlene Reihenfolgen
+Für neue Maschinen/API-Integrationen gilt: Maschinen-Scout (Issue #327) → Research/Quellen-/Lizenz-/Kostenprüfung → Integrationsingenieur (Architektur und isolierter Build) → unabhängige Quality/Security-/CI-Prüfung → Produktionsleiter und erforderliche menschliche Freigabe. Die Rollenbeschreibung ist noch kein aktivierter automatischer Coding-Workflow.\n\n## Empfohlene Reihenfolgen
 
 - **Tägliche Idee:** Content Creator → optional Research Synthesist → Instagram Curator oder TikTok Strategist.
 - **Wochenplanung:** Social Media Strategist → Content Creator → jeweiliger Plattform-Agent.
@@ -47,4 +47,4 @@ Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/ms
 
 ## Technischer Status
 
-Die Rollen bleiben Arbeitsgrundlage. Der Qualitäts-Agent, der Follow-Analyse-Agent und der System-Neustart-Agent haben zusätzlich klar begrenzte GitHub-Workflows. Alle übrigen Rollen werden nicht automatisch durch `router.py` oder `llm_client.py` ausgeführt. Jede spätere Orchestrierung muss die Aktivierungs-Logik und die menschlichen Freigaben respektieren.
+Die Rollen bleiben Arbeitsgrundlage. Der Qualitäts-Agent, der Follow-Analyse-Agent und der System-Neustart-Agent haben zusätzlich klar begrenzte GitHub-Workflows. Die bloße Aufnahme des Integrationsingenieurs aktiviert keine automatische Coding-Ausführung. Alle übrigen Rollen werden nicht automatisch durch `router.py` oder `llm_client.py` ausgeführt. Jede spätere Orchestrierung muss die Aktivierungs-Logik und die menschlichen Freigaben respektieren.
