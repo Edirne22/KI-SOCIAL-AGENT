@@ -45,10 +45,10 @@ jobs:
           const fs=require('fs'),assert=require('assert');
           const c=JSON.parse(fs.readFileSync(process.env.OPENCODE_CONFIG,'utf8'));
           assert.deepStrictEqual(Object.keys(c.providers),['openrouter']);
-          assert.strictEqual(c.model,'openrouter/qwen/qwen3-coder:free');
-          assert.deepStrictEqual(Object.keys(c.providers.openrouter.models),['qwen/qwen3-coder:free']);
-          assert.strictEqual(c.providers.openrouter.models['qwen/qwen3-coder:free'].capabilities.tools,false);
-          assert(c.providers.openrouter.models['qwen/qwen3-coder:free'].limit.output<=320);
+          assert.strictEqual(c.model,'openrouter/qwen/qwen3.8-27b:free');
+          assert.deepStrictEqual(Object.keys(c.providers.openrouter.models),['qwen/qwen3.8-27b:free']);
+          assert.strictEqual(c.providers.openrouter.models['qwen/qwen3.8-27b:free'].capabilities.tools,false);
+          assert(c.providers.openrouter.models['qwen/qwen3.8-27b:free'].limit.output<=320);
           assert(c.permissions.some(x=>x.action==='*'&&x.resource==='*'&&x.effect==='deny'));
           for(const p of ['shell:*','edit:*'])
             assert(c.experimental.policies.some(x=>x.action==='permission'&&x.resource===p&&x.effect==='deny'));
@@ -64,7 +64,7 @@ jobs:
                                     headers={"Accept":"application/json","User-Agent":"Edirne22-Interview/1.0"})
           with urllib.request.urlopen(req, timeout=15) as resp:
               models=json.load(resp)["data"]
-          matches=[x for x in models if x.get("id")=="qwen/qwen3-coder:free"]
+          matches=[x for x in models if x.get("id")=="qwen/qwen3.8-27b:free"]
           assert len(matches)==1, "Exact free model not currently listed"
           pricing=matches[0].get("pricing") or {}
           assert "prompt" in pricing and "completion" in pricing
@@ -82,7 +82,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          timeout 100s opencode run --model openrouter/qwen/qwen3-coder:free --format json \
+          timeout 100s opencode run --model openrouter/qwen/qwen3.8-27b:free --format json \
             "CODING INTERVIEW. Return only Python source; no prose, imports or calls. Implement exactly one function classify_machine(license_id, zero_cost, days_since_release) with exactly one return expression. Return BLOCKED for any license except MIT, Apache-2.0 or BSD-3-Clause, or when zero_cost is False or release age is negative. Otherwise return WATCH when release age exceeds 365, else ELIGIBLE. Do not claim testing yourself." \
             > /tmp/engineer-model-events.jsonl 2> /tmp/engineer-model-err.txt
           rc=$?
