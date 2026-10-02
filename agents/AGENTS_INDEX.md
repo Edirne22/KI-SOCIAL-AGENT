@@ -1,50 +1,40 @@
-# Agenten-Bibliothek
+# Agenten-Bibliothek – Edirne 22
 
-Diese Bibliothek bündelt spezialisierte Arbeitsrollen für Bülents deutsch-türkische Motorrad- und Reise-Community. Die Rollen sind projektspezifisch formuliert und dienen als Arbeitsanweisung für künftige Automatisierungen oder manuelle Aufträge.
+Die Agenten sind Teil **einer** KI-Zentrale mit Content-Fabrik und universeller KI-Werkstatt. [Verbindliche Hierarchie und Übergaben](../docs/AGENCY_ORG_AND_HANDOFF.md). Eine Rollenbeschreibung ist keine nachgewiesene laufende Agenteninstanz; technische Laufzeit-, Zugangs- und Freigabestatus müssen pro Workflow aktuell überprüft werden.
 
-Die Struktur ist methodisch inspiriert von [Agency Agents](https://github.com/msitarzewski/agency-agents); das Referenzprojekt steht unter der [MIT-Lizenz](https://github.com/msitarzewski/agency-agents/blob/main/LICENSE).
+## Rollenverzeichnis
 
-## Agentenübersicht
-
-| Datei | Rolle | Aktivierung |
+| Datei | Fachrolle | Auftrag und Grenze |
 | --- | --- | --- |
-| [01_content_creator.md](01_content_creator.md) | Entwickelt neue Content-Ideen und produktionsreife Entwürfe. | Bei neuen Themen, täglichen Ideen und konkreten Beitragsentwürfen. |
-| [02_instagram_curator.md](02_instagram_curator.md) | Passt Inhalte für Reels, Carousels, Stories und Instagram-Captions an. | Wenn Instagram das Ziel ist oder ein Format gewählt werden muss. |
-| [03_tiktok_strategist.md](03_tiktok_strategist.md) | Entwickelt kurze TikTok-Konzepte mit Hook, Szenen und Untertiteln. | Bei TikTok-Ideen, Kurzvideo-Tests und vertikalen Storys. |
-| [04_social_media_strategist.md](04_social_media_strategist.md) | Plant Themen, Plattform-Mix und realistische Redaktionsschritte. | Bei Wochenplänen, Kampagnen und Priorisierungsfragen. |
-| [05_research_synthesist.md](05_research_synthesist.md) | Prüft Quellen und bereitet Fakten verständlich auf. | Vor externen Tatsachenbehauptungen, Reise-, Sicherheits- oder Plattforminformationen. |
-| [06_reddit_community_builder.md](06_reddit_community_builder.md) | Entwirft hilfreiche, regelkonforme Reddit-Beiträge und Antworten. | Bei Reddit-Recherche, Community-Gesprächen und Antwortentwürfen. |
-| [07_video_optimization.md](07_video_optimization.md) | Erstellt Schnitt-, Untertitel- und Produktionsbriefe für Kurzvideos. | Bei Reel-, TikTok-, Video- oder Agnes-Asset-Briefings. |
-| [08_paid_social_strategist.md](08_paid_social_strategist.md) | Entwirft vorsichtige Paid-Social-Kampagnen und Messpläne. | Nur bei ausdrücklich gewünschter, bezahlter Reichweite. |
-| [09_quality_agent.md](09_quality_agent.md) | Prüft Workflow-Ergebnisse, Datenqualität und Sicherheitswarnungen. | Täglich nach den Analyse-Workflows oder manuell vor größeren Änderungen. |
-| [10_follow_analysis_agent.md](10_follow_analysis_agent.md) | Erkennt aus freigegebenen öffentlichen Instagram-Profilen Formate, Themen und Hook-Muster. | Geplanter Analyse-Lauf oder Telegram: \`follow-analyse\`; kein Zugriff auf eine private Follow-Liste. |
+| [01_content_creator.md](01_content_creator.md) | Content Creator | Inhalte und Hooks aus belegten Fakten; niemals eigenständig veröffentlichen |
+| [02_instagram_curator.md](02_instagram_curator.md) | Instagram Curator | Format-/Plattformanpassung nach Redaktion |
+| [03_tiktok_strategist.md](03_tiktok_strategist.md) | TikTok Strategist | TikTok-/Shorts-Konzepte und plattformspezifische Varianten |
+| [04_social_media_strategist.md](04_social_media_strategist.md) | Social Media Strategist | Themen, Wochenplanung und Plattformmix; **keine** Rechen-/Job-Runtime-Steuerung |
+| [05_research_synthesist.md](05_research_synthesist.md) | Research Synthesist | Quellen recherchieren und verifizieren; Factory-Newsroom-Faktenvertrag verbindlich |
+| [06_reddit_community_builder.md](06_reddit_community_builder.md) | Reddit Community Builder | Community-Antwortentwürfe; keine automatische externe Kommunikation |
+| [07_video_optimization.md](07_video_optimization.md) | Video Optimization | Redaktioneller Schnitt-/Caption-Plan; rendert/publiziert nicht eigenmächtig |
+| [08_paid_social_strategist.md](08_paid_social_strategist.md) | Paid Social Strategist | Nur Kampagnenentwürfe, keine finanziellen Verpflichtungen |
+| [09_quality_agent.md](09_quality_agent.md) | Quality Agent | Workflow-/Systemstatus und Hinweise; ersetzt nie verpflichtende Source-Fact-/Final-/Security-Gates |
+| [10_follow_analysis_agent.md](10_follow_analysis_agent.md) | Follow Analysis | Nur zulässige öffentliche Format- und Community-Muster analysieren |
+| [11_system_restart_agent.md](11_system_restart_agent.md) | System Restart | Nur fest freigegebene wartende Analyse-/Wartungsflows, niemals Publisher oder Außenwirkung |
+| [12_music_agent.md](12_music_agent.md) | Music Agent | Nur autorisierte Musik und bereits freigegebene Medien nach Lizenzprüfung |
+| [14_memory_curator.md](14_memory_curator.md) | Memory Curator | Evidenzgebundenes Lernen und Regression; keine autonomen neuen Freigaben |
+| [15_finance_planner.md](15_finance_planner.md) | Finance Planner | Analyse/Planung; Geldentscheidungen bei Bülent |
+| [17_instagram_engagement_agent.md](17_instagram_engagement_agent.md) | Instagram Engagement | Klassifikation und Antwortvorschläge; echter Versand nur mit Einzelfreigabe |
+| [18_tour_ride_story_agent.md](18_tour_ride_story_agent.md) | Tour Ride Story | Aus eigenen Tourdaten privates, belegbares Story-Paket ohne Veröffentlichung |
+| [19_ki_integrationsingenieur.md](19_ki_integrationsingenieur.md) | KI-Integrationsingenieur | Geprüfte Maschinen über bestehende KI-/GitHub-Routen integrieren; isolierte Tests und unabhängige technische Abnahme |
+| [20_maschinen_scout.md](20_maschinen_scout.md) | Maschinen-Scout | Öffentliche Repos, Skills, APIs und Storage-/CPU-/GPU-Alternativen entdecken; vor Integration Research und Security |
 
-| [11_system_restart_agent.md](11_system_restart_agent.md) | Prüft sichere Workflow-Zustände und erstellt einen Betriebsstatus. | Täglich als Bericht oder manuell mit ausdrücklicher Freigabe für erlaubte Fehler-Neustarts. |
-| [12_music_agent.md](12_music_agent.md) | Wählt lizenzierte lokale Hintergrundmusik und mischt sie in freigegebene Reels und Stories. | Alle 15 Minuten bei `Musik: auto`; veröffentlicht selbst nie. |
-| [19_ki_integrationsingenieur.md](19_ki_integrationsingenieur.md) | Plant und implementiert geprüfte, gezielt freigegebene Werkzeug-/API-Adapter mit vorhandener OpenCode-/GitHub-Infrastruktur; unabhängige Quality-Gates bleiben Pflicht. | Nach Scout-/Research-/Quality-Übergabe und Produktionsleiter-Auftrag; zunächst nur Rollenentwurf, kein autonomer Coding-Betrieb. |\n| [18_tour_ride_story_agent.md](18_tour_ride_story_agent.md) | Verwandelt BMW-/Calimoto-/Kurviger-/Motobit-Ridedaten plus Tourmedien in ein evidenzgebundenes Story-Paket. | Bei Motorradtouren, Ride-Screenshots/GPX sowie Foto-/Video-Tourmaterial; kein Publish. |
+**Weitere tatsächliche Komponenten:** `facebook_engagement.py` ist eine separate historische Facebook-Engagement-Implementierung und gegenwärtig nicht als neu nummerierter Agent aktiv. `content_factory_newsroom.py`, `content_factory_creative.py`, `content_factory_media_production.py` und Human/Publisher-Verträge sind zentrale Module und nicht automatisch eigenständige 24/7-Prozesse.
 
-## Aktivierungs-Logik
+**ID-Konflikt:** Historische Übergaben bezeichnen den Facebook-Engagement-Agenten teilweise als „Agent 18“, während die aktuelle Datei `18_tour_ride_story_agent.md` den Tour-Agenten meint. Maschinelle Aufträge dürfen bis zu einer expliziten Alias-/Migration nur **eindeutige Role-IDs/Dateinamen**, niemals nackte alte Nummern, verwenden.
 
-1. Ordne den Auftrag zuerst einem Hauptagenten zu. Aktiviere nur einen zweiten Agenten, wenn dessen Fachwissen wirklich nötig ist.
-2. Bei neuen Beiträgen startet in der Regel der Content Creator. Danach übernimmt der Plattform-Spezialist oder Video-Optimization-Agent.
-3. Der Research Synthesist wird vor allen aktuellen, externen oder sicherheitsrelevanten Behauptungen eingesetzt.
-4. Der Social Media Strategist plant Reihenfolgen und Wochenziele; er ersetzt nicht die Erstellung einzelner Beiträge.
-5. Der Paid Social Strategist erstellt ausschließlich Entwürfe. Er startet weder Anzeigen noch Ausgaben.
-6. Der Reddit Community Builder erstellt nur Vorschläge. Beiträge, Kommentare und Nachrichten werden nie automatisch versendet.
-7. Jeder Agent liest vor der Arbeit mindestens die passenden Informationen aus `memory/`, `content/` und den Regeln unter `rules/`.
-8. Jeder Output ist ein Entwurf. Veröffentlichung, externe Kommunikation, Budgeteinsatz, Buchungen und Kontoveränderungen brauchen immer Bülents ausdrückliche Freigabe.
+## Hierarchie und Ausführung
 
-Für neue Maschinen/API-Integrationen gilt: Maschinen-Scout (Issue #327) → Research/Quellen-/Lizenz-/Kostenprüfung → Integrationsingenieur (Architektur und isolierter Build) → unabhängige Quality/Security-/CI-Prüfung → Produktionsleiter und erforderliche menschliche Freigabe. Die Rollenbeschreibung ist noch kein aktivierter automatischer Coding-Workflow.\n\n## Empfohlene Reihenfolgen
+Die menschliche Geschäftsführung autorisiert nur tatsächlich erlaubte Aufträge. Eine einzige zentrale Auftragsannahme über bestehendes Dashboard/Telegram reicht an den noch vollständig abzunehmenden deterministischen Produktionsleiter weiter; dieser aktiviert den passenden fachlichen Teamleiter und nur die nötigen Spezialrollen. Unabhängige Source-Fact-, Rights-, Security- und Final-Gates schützen die Ausgabe; ein fertig geprüftes Ergebnis kommt auf das Goldene Tablett. Externe Veröffentlichungen, Kosten und private Medien bleiben unter Bülents konkreten Freigaben.
 
-- **Tägliche Idee:** Content Creator → optional Research Synthesist → Instagram Curator oder TikTok Strategist.
-- **Wochenplanung:** Social Media Strategist → Content Creator → jeweiliger Plattform-Agent.
-- **Video:** Content Creator oder TikTok Strategist → Video Optimization → menschliche Freigabe.
-- **Recherche-Post:** Research Synthesist → Content Creator → Plattform-Agent.
-- **Follow-Analyse:** Follow-Analyse-Agent → Research Synthesist → Content Creator; Muster nur als Inspiration verwenden.
-- **Bezahlte Kampagne:** Paid Social Strategist → menschliche Freigabe → manuelle Einrichtung.
-- **Betrieb:** Qualitäts-Agent → System-Neustart-Agent → nur bei ausdrücklich aktiviertem Neustart erlaubte Analyse-Workflows.
-- **Video mit Musik:** Video Optimization → menschliche Freigabe → Musik-Agent → Publisher.
+Content: Strategie/Discovery → Research/Newsroom → Creative/Writing → plattformgerechter Plan → Media/Voice/Avatar je realer Fähigkeit → Source-/Media-Final-QM → Goldenes Tablett → Human Authority → bestehender Publisher.
 
-## Technischer Status
+Forschung und Weiterentwicklung: Scout → Research/Lizenz/Kostenprüfung → technischer Integrationsplan → isolierter Build → unabhängige Security/CI/QM → kontrollierte Freigabe → zentraler TOOL_INDEX und evidenzgebundenes Memory → erneute Scout-Recherche.
 
-Die Rollen bleiben Arbeitsgrundlage. Der Qualitäts-Agent, der Follow-Analyse-Agent und der System-Neustart-Agent haben zusätzlich klar begrenzte GitHub-Workflows. Die bloße Aufnahme des Integrationsingenieurs aktiviert keine automatische Coding-Ausführung. Alle übrigen Rollen werden nicht automatisch durch `router.py` oder `llm_client.py` ausgeführt. Jede spätere Orchestrierung muss die Aktivierungs-Logik und die menschlichen Freigaben respektieren.
+Ein `AGENTS_INDEX`-Eintrag ist keine produktive Freischaltung. Die separate stündliche Infrastruktur-Angebotsprüfung beweist nicht den vollständigen GitHub-Scout. Coding-Probeläufe beweisen nicht den vollständig schreibenden Programmierdispatcher. Fehlende Rückmeldungen/fehlende R2-Nachweise bedeuten **UNVERIFIED**, nicht PASS.
