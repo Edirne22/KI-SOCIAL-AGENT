@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Install existing Source-Fact test dependency
+        run: python -m pip install --disable-pip-version-check requests
       - name: Syntax and all relevant canonical persistence/Golden Tablet regressions
         run: |
           python -m py_compile content_factory_dashboard_review_applier.py content_factory_repository.py content_factory_golden_tablet.py
