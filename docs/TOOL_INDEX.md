@@ -41,6 +41,8 @@
 
 **Aktueller Fokus:** zuerst privater abspielbarer Video-Preview in Telegram/Dashboard inklusive Auftrag→Provenienz/technische-/Fakten-QM→Golden Tablet→Human Authority und Crash/Retry/Resume-Abnahme. Kein anderes Werkzeug darf Block 6 erneut zum Stillstand bringen.
 
+> **02.10.2026 / echte erste Inbetriebnahme auf kurzlebigem GitHub-Runner (PR #318, noch nicht gemergt):** PR-run `37010792705` `actual-asr-cpu` SUCCESS. Echtes `faster-whisper 1.2.1` Multilingual `tiny`, CPU/int8 Modellstart **1,57 s**, tatsächliche synthetische espeak-Nachvertonung Deutsch **0,45 s / 7 Wort-Timings**, Türkisch **1,35 s / 9 Wort-Timings**, erzeugte DE/TR-SRT-Testartefakte mit 1 Tag Aufbewahrung. `UNVERIFIED_SYNTHETIC_SPEAKER`: Weder Bülents Stimme noch Namens-/Transkriptqualität oder dauerhafter Cloudflare-Container sind dadurch abgenommen. `chatterbox-tts` Runtime-Install und echter 500M-CPU-Modellstart laufen getrennt; Ergebnis erst nach echten Logs als PASS/FAIL festschreiben. GitHub-Runner sind ephemer, keine dauerhafte Voice-Maschine und keine private Voice-/R2-Produktionsintegration. Neue Kosten weiterhin untersagt.
+
 ## 1a. Block 7 – vorausgewählte DE/TR-Stimme, Transkription und Untertitel (01.10.2026)
 
 **WICHTIGER STATUS:** Architektur-/Code-Verträge in `content_factory_av.py` und deren isolierte Contract-Tests existieren; `ContractAVAdapter.truth = SIMULATED`. Der aktuelle Block-7-Testworkflow installiert **keine** TTS-/ASR-Modelle, verwendet Test-`scratch://`-Referenzen und prüft **keinen** echten Voice→R2→Caption→geschützte-Vorschau-Durchlauf. Die Auswahl unten ist technische Vorauswahl anhand offizieller Projekte, **kein Container-Live-Beweis**.
