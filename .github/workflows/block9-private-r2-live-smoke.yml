@@ -1,0 +1,60 @@
+name: Block 9 isolated actual private R2 atomic claim and receipt smoke
+on:
+  pull_request:
+    paths:
+      - 'content_factory_r2_publish_ledger.py'
+      - 'scripts/block9_r2_atomic_claim_smoke.py'
+      - '.github/workflows/block9-private-r2-live-smoke.yml'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/block9-private-r2-live-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Local syntax and original Block9 red-team
+        run: |
+          python -m py_compile content_factory_r2_publish_ledger.py scripts/block9_r2_atomic_claim_smoke.py
+          python -m unittest -v tests.test_content_factory_r2_publish_ledger tests.test_content_factory_publish_ledger
+      - name: Unapproved smoke cannot access private R2
+        run: |
+          if python -m scripts.block9_r2_atomic_claim_smoke 2>&1 | grep -q REAL_PRIVATE_R2_SMOKE_NOT_APPROVED; then
+            echo SMOKE_WITHOUT_EXPLICIT_OPT_IN_CORRECTLY_BLOCKED
+          else
+            echo SMOKE_OPT_IN_GUARD_FAILED
+            exit 1
+          fi
+  live-private-r2:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: offline
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      BLOCK9_R2_SMOKE_APPROVED: 'true'
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Validate already-authorized private R2 binding
+        shell: bash
+        run: |
+          set -euo pipefail
+          for key in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!key:-}" || { echo "MISSING_PRIVATE_R2_CONFIG_${key}"; exit 1; }
+          done
+      - name: Install existing S3-compatible Python SDK
+        run: python -m pip install --disable-pip-version-check boto3
+      - name: Real cross-runner private R2 first-writer race and receipt recovery (NO social API)
+        run: python -m scripts.block9_r2_atomic_claim_smoke
