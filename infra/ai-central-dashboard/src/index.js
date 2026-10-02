@@ -227,6 +227,59 @@ async function previewManifest(env,id){
      current?.manifest!==d.manifest||current?.state!=="READY_FOR_HUMAN")return null;
   return d;
 }
+// Block 8: authenticated *review requests*, not a publisher or a forged
+// ProductionJob approval. R2 etag CAS prevents duplicate/change races.
+// The downstream canonical Factory must apply the request and perform its
+// own persisted job/revision/manifest revalidation before any real action.
+async function queuePreviewReview(req,env){
+  if(req.method!=="POST")return json({error:"method"},405);
+  if(!sameOrigin(req))return json({error:"origin rejected"},403);
+  if(Number(req.headers.get("content-length")||0)>4000)return json({error:"review request too large"},413);
+  let input;
+  try{input=await req.json()}catch{return json({error:"invalid JSON"},400)}
+  if(!input||Object.keys(input).sort().join(",")!=="action,manifest,preview_id,request_id,revision,text"||
+     !PREVIEW_ID.test(input.preview_id)||!PREVIEW_ID.test(input.request_id)||
+     !/^[a-f0-9]{64}$/.test(input.manifest)||!Number.isSafeInteger(input.revision)||
+     !["change","discard","post"].includes(input.action)||
+     typeof input.text!=="string"||input.text.length>2000||
+     (input.action==="change"&&!input.text.trim())||
+     (input.action!=="change"&&input.text!==""))
+    return json({error:"invalid review request"},400);
+  // Synthetic and unproven editorial jobs must never enter publish queue.
+  // Post stays disabled until a canonical authenticated approval adapter
+  // can prove real FINAL QM and restore the exact persisted ProductionJob.
+  if(input.action==="post")
+    return json({error:"canonical publishing approval not connected; post blocked"},409);
+  const d=await previewManifest(env,input.preview_id);
+  if(!d||d.manifest!==input.manifest||d.revision!==input.revision)
+    return json({error:"stale, expired or unavailable preview"},409);
+  const stateKey=PREVIEW_STATE_PREFIX+d.job_id+".json";
+  const currentObj=await env.AI_CENTRAL_R2.get(stateKey);
+  if(!currentObj?.etag)return json({error:"atomic state claim unavailable"},503);
+  let state;
+  try{state=await currentObj.json()}catch{return json({error:"invalid state"},502)}
+  if(state?.schema!=="FACTORY-PREVIEW-STATE-V1"||
+     state.job_id!==d.job_id||state.preview_id!==d.preview_id||
+     state.revision!==d.revision||state.manifest!==d.manifest||
+     state.state!=="READY_FOR_HUMAN")
+    return json({error:"preview state changed"},409);
+  // Do not mutate the canonical job. Persist immutable reviewer intent and
+  // revoke the preview atomically as ONE state object. A downstream consumer
+  // is responsible for job-state transitions and reporting actual completion.
+  const queued={...state,state:"REVIEW_REQUESTED",preview_id:null,
+    review:{schema:"FACTORY-REVIEW-INTENT-V1",request_id:input.request_id,
+      preview_id:d.preview_id,action:input.action,text:input.text.trim(),
+      actor:"authenticated_dashboard_owner",requested_at:new Date().toISOString(),
+      manifest:d.manifest,revision:d.revision,job_id:d.job_id,status:"PENDING_FACTORY_APPLICATION"}};
+  let claimed;
+  try{claimed=await env.AI_CENTRAL_R2.put(stateKey,JSON.stringify(queued),{
+    httpMetadata:{contentType:"application/json"},onlyIf:{etagMatches:currentObj.etag}});
+  }catch{return json({error:"review state storage failed"},503)}
+  if(!claimed)return json({error:"review request changed concurrently"},409);
+  return json({schema:"FACTORY-REVIEW-INTENT-V1",request_id:input.request_id,
+    status:"PENDING_FACTORY_APPLICATION",action:input.action,
+    truth:"REVIEW_INTENT_STORED_NOT_JOB_DECISION"},202);
+}
 async function listPreviews(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
   const result=await env.AI_CENTRAL_R2.list({prefix:PREVIEW_PREFIX,limit:80});
@@ -275,6 +328,7 @@ export default {async fetch(req,env){
   if(!authenticated(req,env))return json({error:"unauthorized"},401);
   try{
     if(path==="/api/previews")return await listPreviews(req,env);
+    if(path==="/api/preview-review")return await queuePreviewReview(req,env);
     if(path==="/api/preview-video")return await getPreviewVideo(req,env);
     if(path==="/api/inbox")return await inbox(req,env);
     if(path==="/api/upload")return await upload(req,env);
