@@ -1,0 +1,49 @@
+name: Integration Engineer Interview
+on:
+  pull_request:
+    paths:
+      - "agents/19_ki_integrationsingenieur.md"
+      - "agents/AGENTS_INDEX.md"
+      - "scripts/integration_engineer_*.py"
+      - "tests/test_integration_engineer_trial.py"
+      - ".github/workflows/integration-engineer-interview.yml"
+  push:
+    branches:
+      - "docs/agency-ki-integrationsingenieur"
+    paths:
+      - ".github/workflows/integration-engineer-interview.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-safety-interview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile interview code and run adversarial fixtures
+        run: |
+          python -m py_compile scripts/integration_engineer_trial.py scripts/integration_engineer_candidate_nvidia.py tests/test_integration_engineer_trial.py
+          python -m unittest discover -s tests -p test_integration_engineer_trial.py -v
+  live-free-model-interview:
+    if: github.event_name != 'pull_request'
+    needs: offline-safety-interview
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ask existing NVIDIA free-quota model for coding interview
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: python scripts/integration_engineer_candidate_nvidia.py
+      - name: Restrictive AST and functional interview
+        run: python scripts/integration_engineer_trial.py trial-model-text.jsonl
+      - name: Remove untrusted sample
+        if: always()
+        run: rm -f trial-model-text.jsonl
