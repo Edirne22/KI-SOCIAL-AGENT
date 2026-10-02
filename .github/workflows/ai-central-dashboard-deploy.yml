@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/ai-central-dashboard-deploy.yml'
+      - '.github/workflows/block6-dashboard-first-real-video.yml'
 permissions:
   contents: read
 jobs:
