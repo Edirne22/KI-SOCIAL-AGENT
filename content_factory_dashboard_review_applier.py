@@ -14,6 +14,7 @@ from uuid import UUID
 from content_factory_core import JobStatus
 from content_factory_golden_tablet import GoldenTablet, HumanDecisionService
 from content_factory_repository import ConcurrentUpdateError, SQLiteJobRepository
+from content_factory_r2_job_repository import R2JobRepository
 
 
 class ReviewApplyError(RuntimeError):
@@ -68,8 +69,8 @@ def apply_review_request(job_id: str, *, storage, repository: SQLiteJobRepositor
     cross-store completion receipt. Reconciliation/ack is a separate operation.
     """
     _uuid(job_id)
-    if not isinstance(repository, SQLiteJobRepository):
-        raise ReviewApplyError("durable canonical SQLite repository required")
+    if not isinstance(repository, (SQLiteJobRepository, R2JobRepository)):
+        raise ReviewApplyError("canonical durable Factory repository required")
     state = _load_json(storage, f"ai-central/v1/preview-state/{job_id}.json")
     review = state.get("review")
     if (state.get("schema") != "FACTORY-PREVIEW-STATE-V1" or
