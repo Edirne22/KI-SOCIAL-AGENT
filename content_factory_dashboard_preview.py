@@ -20,7 +20,7 @@ STATE_PREFIX = "ai-central/v1/preview-state/"
 MAX_DASHBOARD_VIDEO_BYTES = 32 * 1024 * 1024
 
 
-def register_verified_video_preview(job: ProductionJob, report: FinalQMReport, *, storage: R2Storage) -> str:
+def register_verified_video_preview(job: ProductionJob, report: FinalQMReport, *, storage: R2Storage, repository=None) -> str:
     """Write a backend-only preview index after independently verifying R2 bytes.
 
     Returns the opaque ID; does NOT send Telegram, approve, publish or
@@ -67,6 +67,13 @@ def register_verified_video_preview(job: ProductionJob, report: FinalQMReport, *
             "sha256": media.sha256,
         },
     }
+    # Persist the authoritative *same* verified READY job before making its
+    # index visible. No ephemeral runner disk or browser state is canonical.
+    if repository is not None:
+        from content_factory_r2_job_repository import R2JobRepository
+        if not isinstance(repository, R2JobRepository):
+            raise ValueError("only private R2 canonical job store supported here")
+        repository.register_job(job)
     # Created exclusively via private backend credentials; the public UI has
     # read-only endpoints, and the private R2 bucket remains inaccessible.
     storage.client.put_object(
