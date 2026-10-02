@@ -110,6 +110,19 @@ class ResourceAdmissionTests(unittest.TestCase):
             manager.reserve(claim(job=job, task="b", revision=2))
         manager.release(first)
 
+    def test_parallel_calls_cannot_overallocate(self):
+        from concurrent.futures import ThreadPoolExecutor
+        manager = LocalResourceManager(Capacity(2, 0, 0))
+        items = [claim(lane="workshop") for _ in range(12)]
+        with ThreadPoolExecutor(max_workers=12) as pool:
+            outcomes = list(pool.map(manager.reserve, items))
+        admitted = [lease for lease in outcomes if lease is not None]
+        self.assertEqual(len(admitted), 2)
+        self.assertEqual(manager.snapshot()["used"].cpu, 2)
+        for lease in admitted:
+            manager.release(lease)
+        self.assertEqual(manager.snapshot()["used"].cpu, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
