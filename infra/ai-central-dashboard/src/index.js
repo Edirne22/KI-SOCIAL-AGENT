@@ -82,6 +82,7 @@ async function privateUploadPreview(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
   const q=new URL(req.url).searchParams,id=q.get("id")||"",date=q.get("date")||"";
   if(!UPLOAD_ID.test(id)||!/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(date)||
+    !Number.isFinite(Date.parse(date+"T00:00:00Z"))||
     new Date(date+"T00:00:00Z").toISOString().slice(0,10)!==date)
     return json({error:"invalid upload reference"},400);
   const listing=await env.AI_CENTRAL_R2.list({prefix:PREFIX+date+"/",limit:100});
