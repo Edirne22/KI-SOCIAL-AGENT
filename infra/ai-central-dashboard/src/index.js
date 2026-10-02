@@ -81,7 +81,7 @@ const PREVIEW_MIME=new Set(["image/png","image/jpeg","video/mp4","audio/webm","a
 async function privateUploadPreview(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
   const q=new URL(req.url).searchParams,id=q.get("id")||"",date=q.get("date")||"";
-  if(!UPLOAD_ID.test(id)||!/^20\\d\\d-\\d\\d-\\d\\d$/.test(date)||
+  if(!UPLOAD_ID.test(id)||!/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(date)||
     new Date(date+"T00:00:00Z").toISOString().slice(0,10)!==date)
     return json({error:"invalid upload reference"},400);
   const listing=await env.AI_CENTRAL_R2.list({prefix:PREFIX+date+"/",limit:100});
@@ -112,7 +112,7 @@ async function privateUploadPreview(req,env){
     "content-type":match.file.mime,"content-length":String(bytes.byteLength),
     "cache-control":"private, no-store, max-age=0","x-content-type-options":"nosniff",
     "content-security-policy":"default-src 'none'; sandbox",
-    "content-disposition":"inline; filename=\\\"private-upload\\\""
+    "content-disposition":"inline"
   }});
 }
 // R2 size is a bounded, manually invoked object inventory; not billing
