@@ -513,6 +513,77 @@ async function reviewStatus(req,env){
       "APPLIED_TO_FACTORY":"PENDING_FACTORY_APPLICATION",
     action:review.action,truth:"READ_FROM_PRIVATE_R2_REVIEW_STATE"});
 }
+// Read-only truth endpoint: the human CHANGE ACK is NOT itself a render.
+// Cross-check R2 preview state, canonical job/revision and immutable edit ticket.
+// Never accept browser-supplied object paths or treat a ticket as new media.
+async function canonicalEditStatus(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const query=new URL(req.url).searchParams;
+  const jobId=query.get("job_id")||"",requestId=query.get("request_id")||"";
+  if(!PREVIEW_ID.test(jobId)||!PREVIEW_ID.test(requestId))
+    return json({error:"invalid edit reference"},400);
+  const stateObj=await env.AI_CENTRAL_R2.get(PREVIEW_STATE_PREFIX+jobId+".json");
+  if(!stateObj)return json({error:"no persisted review"},404);
+  let state;try{state=await stateObj.json()}catch{return json({error:"review state unreadable"},502)}
+  const review=state?.review;
+  if(state?.schema!=="FACTORY-PREVIEW-STATE-V1"||
+     state.job_id!==jobId||state.state!=="REVIEW_APPLIED"||
+     state.preview_id!==null||review?.schema!=="FACTORY-REVIEW-INTENT-V1"||
+     review.job_id!==jobId||review.request_id!==requestId||
+     review.action!=="change"||review.actor!=="authenticated_dashboard_owner"||
+     review.status!=="APPLIED_TO_FACTORY"||
+     review.revision!==state.revision||review.manifest!==state.manifest||
+     !Number.isSafeInteger(review.revision)||review.revision<1||
+     !Number.isSafeInteger(review.canonical_store_version)||
+     review.canonical_store_version<1||
+     !PREVIEW_ID.test(review.preview_id||"")||
+     !/^[a-f0-9]{64}$/.test(review.manifest||"")||
+     typeof review.text!=="string"||!review.text.trim()||review.text.length>2000)
+    return json({error:"no verified acknowledged change"},409);
+  const canonicalObj=await env.AI_CENTRAL_R2.get("ai-central/v1/factory-jobs/"+jobId+".json");
+  if(!canonicalObj)return json({error:"canonical job unavailable"},503);
+  let stored;try{stored=await canonicalObj.json()}catch{return json({error:"canonical job unreadable"},502)}
+  const job=stored?.job;
+  const expected={request_id:requestId,preview_id:review.preview_id,
+    job_id:jobId,revision:review.revision,manifest:review.manifest,
+    action:"change",text:review.text};
+  if(stored?.schema!=="FACTORY-CANONICAL-R2-JOB-V1"||stored.job_id!==jobId||
+     !Number.isSafeInteger(stored.store_version)||
+     stored.store_version<review.canonical_store_version||
+     job?.job_id!==jobId||job.revision!==review.revision+1||
+     job.status!=="changes_requested"||
+     JSON.stringify(job.metadata?.["dashboard_review:"+requestId])!==JSON.stringify(expected)||
+     job.metadata?.["human_change:r"+review.revision]!==review.text.trim()||
+     job.publish_handoff_key!==null||
+     job.human_approved_revision!==null||job.human_approved_manifest!==null||
+     !Array.isArray(job.media)||job.media.length!==1)
+    return json({error:"canonical revision no longer matches acknowledged change"},409);
+  const key="ai-central/v1/factory-edit-requests/"+jobId+"/r"+job.revision+"-"+requestId+".json";
+  const ticketObj=await env.AI_CENTRAL_R2.get(key);
+  if(!ticketObj)return json({schema:"FACTORY-EDIT-STATUS-V1",job_id:jobId,
+    request_id:requestId,revision:job.revision,status:"AWAITING_IMMUTABLE_TICKET",
+    render_completed:false,new_preview_verified:false,publishing_allowed:false,
+    truth:"CANONICAL_CHANGE_ACK_VERIFIED_BUT_TICKET_NOT_YET_OBSERVED"});
+  let ticket;try{ticket=await ticketObj.json()}catch{return json({error:"edit ticket unreadable"},502)}
+  const media=job.media[0],source=ticket?.source_media;
+  if(ticket?.schema!=="FACTORY-EDIT-INTAKE-V1"||
+     ticket.job_id!==jobId||ticket.revision!==job.revision||
+     ticket.source_revision!==review.revision||
+     ticket.request_id!==requestId||ticket.preview_id!==review.preview_id||
+     ticket.source_approval_manifest!==review.manifest||
+     ticket.human_request!==review.text.trim()||
+     ticket.state!=="AWAITING_CREATIVE_PLAN"||
+     ticket.render_approved!==false||ticket.publish_approved!==false||
+     source?.media_id!==media.media_id||source?.uri!==media.uri||
+     source?.sha256!==media.sha256||source?.size_bytes!==media.size_bytes||
+     source?.mime_type!==media.mime_type||
+     source?.version!==media.version||source?.provenance!==media.provenance)
+    return json({error:"edit ticket unverifiable or superseded"},409);
+  return json({schema:"FACTORY-EDIT-STATUS-V1",job_id:jobId,
+    request_id:requestId,revision:job.revision,status:"AWAITING_CREATIVE_PLAN",
+    render_completed:false,new_preview_verified:false,publishing_allowed:false,
+    truth:"PRIVATE_IMMUTABLE_TICKET_VERIFIED_NO_RENDER_EVIDENCE"});
+}
 async function listPreviews(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
   const result=await env.AI_CENTRAL_R2.list({prefix:PREVIEW_PREFIX,limit:80});
@@ -571,6 +642,7 @@ export default {async fetch(req,env){
     if(path==="/api/preview-review")return await queuePreviewReview(req,env);
     if(path==="/api/reviews")return await listReviewStatuses(req,env);
     if(path==="/api/review-status")return await reviewStatus(req,env);
+    if(path==="/api/edit-status")return await canonicalEditStatus(req,env);
     if(path==="/api/preview-video")return await getPreviewVideo(req,env);
     if(path==="/api/inbox")return await inbox(req,env);
     if(path==="/api/upload")return await upload(req,env);
