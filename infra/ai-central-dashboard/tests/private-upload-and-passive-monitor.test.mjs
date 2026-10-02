@@ -113,3 +113,48 @@ test("incomplete R2 inventory and unset monthly allowance refuse invented values
   assert.equal(d.r2.measured_at,null);
   assert.equal(d.container.readiness_at,null);
 });
+test("container passive GET never probes; manual POST explicitly checks configured approved URL",async()=>{
+ const e=env(),old=globalThis.fetch;
+ let calls=0;
+ globalThis.fetch=async()=>{calls++;return {ok:true,status:200}};
+ try{
+   let response=await worker.fetch(request("/api/container-readiness"),e);
+   assert.equal(response.status,200);
+   assert.equal((await response.json()).state,"UNAVAILABLE");
+   assert.equal(calls,0);
+   response=await worker.fetch(request("/api/container-readiness",{method:"POST",headers:{origin:ORIGIN}}),e);
+   assert.equal(response.status,503);assert.equal(calls,0);
+   e.AI_CONTAINER_READINESS_URL="http://external.invalid/health";
+   response=await worker.fetch(request("/api/container-readiness",{method:"POST",headers:{origin:ORIGIN}}),e);
+   assert.equal(response.status,503);assert.equal(calls,0);
+   e.AI_CONTAINER_READINESS_URL="https://approved.butupeli.workers.dev/health";
+   response=await worker.fetch(request("/api/container-readiness",{method:"POST",headers:{origin:"https://attacker.example"}}),e);
+   assert.equal(response.status,403);assert.equal(calls,0);
+   response=await worker.fetch(request("/api/container-readiness",{method:"POST",token:"invalid",headers:{origin:ORIGIN}}),e);
+   assert.equal(response.status,401);assert.equal(calls,0);
+   response=await worker.fetch(request("/api/container-readiness",{method:"POST",headers:{origin:ORIGIN}}),e);
+   assert.equal(response.status,200);assert.equal((await response.json()).state,"HTTP_REACHABLE_ONLY");
+   assert.equal(calls,1);
+   response=await worker.fetch(request("/api/container-readiness"),e);
+   const last=await response.json();
+   assert.equal(last.state,"LAST_KNOWN_HTTP_REACHABLE_NOT_CURRENT");
+   assert.ok(Number.isFinite(Date.parse(last.last_success_at)));
+   assert.equal(last.cpu_percent,null);
+   assert.equal(calls,1);
+ }finally{globalThis.fetch=old}
+});
+test("manual failure never overwrites previously successful last known status",async()=>{
+ const e=env(),old=globalThis.fetch;
+ e.AI_CONTAINER_READINESS_URL="https://approved.workers.dev/ready";
+ let succeed=true;
+ globalThis.fetch=async()=>succeed?{ok:true,status:200}:{ok:false,status:503};
+ try{
+   let response=await worker.fetch(request("/api/container-readiness",{method:"POST",headers:{origin:ORIGIN}}),e);
+   assert.equal((await response.json()).state,"HTTP_REACHABLE_ONLY");
+   succeed=false;
+   response=await worker.fetch(request("/api/container-readiness",{method:"POST",headers:{origin:ORIGIN}}),e);
+   assert.equal((await response.json()).state,"HTTP_NOT_READY_OR_UNAVAILABLE");
+   response=await worker.fetch(request("/api/container-readiness"),e);
+   assert.equal((await response.json()).state,"LAST_KNOWN_HTTP_REACHABLE_NOT_CURRENT");
+ }finally{globalThis.fetch=old}
+});
