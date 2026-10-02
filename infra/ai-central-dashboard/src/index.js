@@ -1,3 +1,4 @@
+import {serveMetaDelivery} from "./meta-delivery.js";
 // Cloudflare Worker gateway: R2-backed shared Telegram+Web inbox.
 // No provider credentials, workflow tokens, auto-dispatch or approvals in this slice.
 const PREFIX="ai-central/v1/inbox/";
@@ -556,6 +557,13 @@ async function getPreviewVideo(req,env){
 export default {async fetch(req,env){
   const path=new URL(req.url).pathname;
   if(!path.startsWith("/api/"))return env.ASSETS.fetch(req);
+  if(path==="/api/meta-delivery"){
+    if(!env.AI_CENTRAL_R2)return new Response(null,{status:503});
+    try{return await serveMetaDelivery(req,env)}catch(error){
+      console.error("private_meta_delivery_failed",error instanceof Error?error.name:"unknown");
+      return new Response(null,{status:503,headers:{"cache-control":"private, no-store"}});
+    }
+  }
   if(!env.AI_CENTRAL_R2)return json({error:"storage unavailable"},503);
   if(!authenticated(req,env))return json({error:"unauthorized"},401);
   try{
