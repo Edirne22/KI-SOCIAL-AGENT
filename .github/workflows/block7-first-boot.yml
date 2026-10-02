@@ -70,7 +70,7 @@ jobs:
         with: {python-version: '3.11'}
       - name: Install actual Chatterbox Multilingual Python runtime
         run: |
-          python -m pip install --disable-pip-version-check 'chatterbox-tts'
+          python -m pip install --disable-pip-version-check 'git+https://github.com/resemble-ai/chatterbox.git@5de7a54aa4e5e2baadb0182dde554908b48b85c2#egg=chatterbox-tts'
       - name: Load multilingual (NOT English-only turbo) inference entry point
         env:
           HF_HUB_DISABLE_TELEMETRY: '1'
