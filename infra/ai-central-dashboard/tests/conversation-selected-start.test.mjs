@@ -25,5 +25,7 @@ test("a draft does not auto-launch a model on send or when selecting",()=>{
 });
 test("inbox reconciliation updates only currently selected visible entry",()=>{
  assert.match(script,/const current=d\.items\.find\(v=>v\.id===selectedTask\?\.id\)/);
- assert.match(script,/if\(current\)\{selectedTask=current;paintConversation\(\)\}/);
+ assert.match(script,/if\(current\)\{const oldStatus=selectedTask\?\.status;selectedTask=current;if\(oldStatus!==current\.status\)paintConversation\(\)\}/);
+ // An unchanged selected file's video element must not be destroyed every 10s.
+ assert.doesNotMatch(script,/if\(current\)\{selectedTask=current;paintConversation\(\)\}/);
 });
