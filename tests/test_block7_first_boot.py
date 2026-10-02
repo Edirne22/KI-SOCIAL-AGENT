@@ -37,6 +37,8 @@ class BootGuardTests(unittest.TestCase):
         self.assertIn("timeout-minutes: 14",WORKFLOW)
         self.assertIn("actual-asr-cpu:",WORKFLOW)
         self.assertIn("actual-chatterbox-install:",WORKFLOW)
+        self.assertIn("5de7a54aa4e5e2baadb0182dde554908b48b85c2",WORKFLOW)
+        self.assertNotIn("pip install --disable-pip-version-check 'chatterbox-tts'",WORKFLOW)
         self.assertIn("HF_HUB_DISABLE_TELEMETRY",WORKFLOW)
         self.assertNotIn("R2_ACCESS_KEY",WORKFLOW)
         self.assertNotIn("GITHUB_TOKEN",WORKFLOW)
