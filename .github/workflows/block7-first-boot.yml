@@ -20,7 +20,8 @@ permissions:
   contents: read
 concurrency:
   group: block7-first-boot
-  cancel-in-progress: false
+  # Supersede outdated PR model boots after corrections; save free Actions minutes.
+  cancel-in-progress: true
 jobs:
   safety-contract:
     runs-on: ubuntu-latest
