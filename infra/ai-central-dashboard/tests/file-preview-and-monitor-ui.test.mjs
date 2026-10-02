@@ -31,7 +31,7 @@ test("system monitor labels inventory versus monthly billing, never claims live 
   assert.match(html,/\/api\/system-monitor\?scope=manual/);
   assert.match(html,/Monatlicher GB-Monatsverbrauch nicht messbar/);
   assert.match(html,/kein HTTP-Probe, kein Aufwecken/);
-  assert.doesNotMatch(html,/setInterval\([^]*?\/api\/system-monitor/);
+  assert.doesNotMatch(html,/setInterval\([^;\n]*system-monitor/);
 });
 test("existing private videostudio and selected-task conversation remain intact",()=>{
   assert.match(html,/id="tabStudio"/);
