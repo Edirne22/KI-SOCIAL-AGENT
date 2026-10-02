@@ -93,6 +93,23 @@ class ResourceAdmissionTests(unittest.TestCase):
         with self.assertRaises(AdmissionError):
             LocalResourceManager(Capacity(1, 0, 0), {"workshop": 0})
 
+    def test_batch_validation_is_atomic_before_any_allocation(self):
+        manager = LocalResourceManager(Capacity(2, 0, 0))
+        job = str(uuid4())
+        first = claim(job=job, task="research", revision=1)
+        stale = claim(job=job, task="render", revision=2)
+        with self.assertRaisesRegex(AdmissionError, "stale revision"):
+            manager.reserve_batch([first, stale])
+        self.assertEqual(manager.snapshot()["active"], 0)
+
+    def test_different_task_stale_revision_rejected(self):
+        manager = LocalResourceManager(Capacity(2, 0, 0))
+        job = str(uuid4())
+        first = manager.reserve(claim(job=job, task="a", revision=1))
+        with self.assertRaisesRegex(AdmissionError, "stale revision"):
+            manager.reserve(claim(job=job, task="b", revision=2))
+        manager.release(first)
+
 
 if __name__ == "__main__":
     unittest.main()
