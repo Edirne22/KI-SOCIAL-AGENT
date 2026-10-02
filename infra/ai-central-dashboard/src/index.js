@@ -253,6 +253,22 @@ async function queuePreviewReview(req,env){
   const d=await previewManifest(env,input.preview_id);
   if(!d||d.manifest!==input.manifest||d.revision!==input.revision)
     return json({error:"stale, expired or unavailable preview"},409);
+  // A preview generated on an ephemeral runner before canonical R2 job
+  // storage existed may remain playable, but is NOT an actionable review.
+  const canonicalObj=await env.AI_CENTRAL_R2.get("ai-central/v1/factory-jobs/"+d.job_id+".json");
+  if(!canonicalObj)return json({error:"canonical Factory job not yet persisted"},409);
+  let canonical;
+  try{canonical=await canonicalObj.json()}catch{return json({error:"canonical Factory job unavailable"},502)}
+  const job=canonical?.job;
+  const matchingMedia=job?.media?.length===1&&job.media[0]?.media_id===d.media.media_id&&
+      job.media[0]?.sha256===d.media.sha256&&job.media[0]?.size_bytes===d.media.size_bytes&&
+      job.media[0]?.mime_type===d.media.mime_type&&
+      job.media[0]?.uri?.endsWith("/"+d.media.key);
+  if(canonical?.schema!=="FACTORY-CANONICAL-R2-JOB-V1"||
+     canonical?.job_id!==d.job_id||!Number.isSafeInteger(canonical.store_version)||
+     canonical.store_version<1||job?.job_id!==d.job_id||job?.revision!==d.revision||
+     job?.status!=="ready_for_human"||!matchingMedia)
+    return json({error:"review not bound to current canonical Factory media"},409);
   const stateKey=PREVIEW_STATE_PREFIX+d.job_id+".json";
   const currentObj=await env.AI_CENTRAL_R2.get(stateKey);
   if(!currentObj?.etag)return json({error:"atomic state claim unavailable"},503);
@@ -276,9 +292,41 @@ async function queuePreviewReview(req,env){
     httpMetadata:{contentType:"application/json"},onlyIf:{etagMatches:currentObj.etag}});
   }catch{return json({error:"review state storage failed"},503)}
   if(!claimed)return json({error:"review request changed concurrently"},409);
+  // A real canonical review runs only after the R2 claim commits. A lost
+  // dispatch response cannot justify restoring the old preview or sending
+  // duplicate state transitions: the Factory deduplicates by request UUID.
+  let dispatch="NOT_CONFIGURED";
+  if(env.GITHUB_DISPATCH_TOKEN){
+    try{
+      const run=await fetch("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/workflows/block8-dashboard-review-consumer.yml/dispatches",{
+        method:"POST",headers:{"authorization":"Bearer "+env.GITHUB_DISPATCH_TOKEN,
+          "accept":"application/vnd.github+json","x-github-api-version":"2022-11-28",
+          "user-agent":"Edirne22-Private-Factory-Review"},
+        body:JSON.stringify({ref:"main",inputs:{job_id:d.job_id}})});
+      dispatch=run.status===204?"ACCEPTED":"PENDING_MANUAL_RECONCILIATION";
+    }catch{dispatch="PENDING_MANUAL_RECONCILIATION"}
+  }
   return json({schema:"FACTORY-REVIEW-INTENT-V1",request_id:input.request_id,
-    status:"PENDING_FACTORY_APPLICATION",action:input.action,
-    truth:"REVIEW_INTENT_STORED_NOT_JOB_DECISION"},202);
+    job_id:d.job_id,status:"PENDING_FACTORY_APPLICATION",action:input.action,
+    dispatch,truth:"REVIEW_INTENT_STORED_NOT_JOB_DECISION"},202);
+}
+async function reviewStatus(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const query=new URL(req.url).searchParams;
+  const job_id=query.get("job_id"),request_id=query.get("request_id");
+  if(!PREVIEW_ID.test(job_id||"")||!PREVIEW_ID.test(request_id||""))
+    return json({error:"invalid review reference"},400);
+  const object=await env.AI_CENTRAL_R2.get(PREVIEW_STATE_PREFIX+job_id+".json");
+  if(!object)return json({error:"review not found"},404);
+  let state;try{state=await object.json()}catch{return json({error:"review unavailable"},502)}
+  const review=state?.review;
+  if(state?.job_id!==job_id||review?.request_id!==request_id||
+     !["REVIEW_REQUESTED","REVIEW_APPLIED"].includes(state?.state))
+    return json({error:"review no longer current"},404);
+  return json({schema:"FACTORY-REVIEW-STATUS-V1",job_id,request_id,
+    status:state.state==="REVIEW_APPLIED"&&review.status==="APPLIED_TO_FACTORY"?
+      "APPLIED_TO_FACTORY":"PENDING_FACTORY_APPLICATION",
+    action:review.action,truth:"READ_FROM_PRIVATE_R2_REVIEW_STATE"});
 }
 async function listPreviews(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
@@ -329,6 +377,7 @@ export default {async fetch(req,env){
   try{
     if(path==="/api/previews")return await listPreviews(req,env);
     if(path==="/api/preview-review")return await queuePreviewReview(req,env);
+    if(path==="/api/review-status")return await reviewStatus(req,env);
     if(path==="/api/preview-video")return await getPreviewVideo(req,env);
     if(path==="/api/inbox")return await inbox(req,env);
     if(path==="/api/upload")return await upload(req,env);

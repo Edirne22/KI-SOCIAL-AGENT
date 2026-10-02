@@ -113,6 +113,25 @@ async function loadPreviews(){
           clearPrivateVideo();await loadPreviews();
           $("previewNotice").textContent="Dein Wunsch ist sicher vorgemerkt und die alte Vorschau gesperrt. "
             +"Die Fabrik muss ihn noch anwenden; dies ist keine fertige Änderung oder Veröffentlichung.";
+          const statusButton=document.createElement("button");
+          statusButton.type="button";statusButton.className="ghost";
+          statusButton.textContent="Bearbeitungsstatus prüfen";
+          statusButton.onclick=async()=>{
+            statusButton.disabled=true;
+            try{
+              const state=await api("/api/review-status?job_id="+encodeURIComponent(result.job_id)
+                +"&request_id="+encodeURIComponent(result.request_id));
+              $("previewNotice").textContent=state.status==="APPLIED_TO_FACTORY"?
+                "Dein Wunsch wurde im verbindlichen Fabrikauftrag verarbeitet. "
+                +"Eine erneute Vorschau folgt erst nach erneuter Produktion und Prüfung.":
+                "Dein Wunsch ist sicher gespeichert, aber die Fabrik hat ihn noch nicht angewendet.";
+              if(state.status!=="APPLIED_TO_FACTORY")$("previewNotice").append(statusButton);
+            }catch(e){
+              $("previewNotice").textContent="Bearbeitungsstatus derzeit nicht verifizierbar: "+e.message;
+              $("previewNotice").append(statusButton);
+            }finally{statusButton.disabled=false}
+          };
+          $("previewNotice").append(statusButton);
         }catch(e){
           $("previewNotice").textContent="Entscheidung nicht übernommen: "+e.message;
           change.disabled=false;discard.disabled=false;
