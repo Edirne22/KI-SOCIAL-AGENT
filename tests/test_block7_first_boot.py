@@ -26,6 +26,8 @@ class BootGuardTests(unittest.TestCase):
     def test_multilingual_not_english_turbo(self):
         self.assertIn("chatterbox.mtl_tts",TTS)
         self.assertIn("ChatterboxMultilingualTTS",TTS)
+        self.assertIn('from_pretrained(device="cpu",t3_model="v3")',TTS)
+        self.assertNotIn('from_pretrained(device="cpu")',TTS)
         self.assertNotIn("ChatterboxTurboTTS",TTS)
         self.assertIn("owner_voice_used\":False",TTS)
         self.assertIn("user_voice_acceptance\":\"NOT_RUN",TTS)
