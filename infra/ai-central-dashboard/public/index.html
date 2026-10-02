@@ -78,6 +78,32 @@ function paintConversation(){
   $("conversationHelp").textContent="Nur ausgewählter Eintrag · "+entry.id+" · "+new Date(entry.created_at).toLocaleString("de-DE");
   const question=entry.kind==="file"?"Private Datei: "+entry.file.name+" ("+entry.file.size+" Bytes)":entry.message;
   root.append(chatBubble("Du · "+entry.channel,question,"user"));
+  if(entry.kind==="message"&&entry.status==="DRAFT_REQUIRES_REVIEW"){
+    const start=document.createElement("button");start.type="button";start.className="primary";
+    start.textContent="▶ Diesen Auftrag mit der kostenlosen KI prüfen";
+    start.onclick=async()=>{
+      if(!window.confirm("Nur diesen ausgewählten Textauftrag ausdrücklich zur geprüften kostenlosen KI-Beratung freigeben? Keine automatische Veröffentlichung oder kostenpflichtige Claude-Abfrage."))return;
+      start.disabled=true;
+      try{
+        const date=entry.created_at.slice(0,10);
+        const queued=await api("/api/dispatch",{method:"POST",
+          headers:{"content-type":"application/json"},
+          body:JSON.stringify({id:entry.id,date})});
+        if(selectedTask?.id===entry.id){
+          selectedTask={...entry,status:queued.status};
+          selectedReport=null;selectedReportError="";
+          paintConversation();
+        }
+        status("Nur der ausgewählte Auftrag wurde angefordert: "+queued.id+
+               ". Ein geprüfter Bericht erscheint erst nach tatsächlichem KI-Lauf.");
+        await refresh();
+      }catch(e){
+        start.disabled=false;
+        status("KI-Lauf nicht gestartet: "+e.message);
+      }
+    };
+    root.append(start);
+  }
   if(entry.kind==="file"){
     root.append(chatBubble("Dateistatus","Privat als Datei im R2-Posteingang gespeichert. Hierfür wurde noch kein KI-Bericht erstellt; die spätere Datei-/Audioverarbeitung ist nicht automatisch gestartet.","bot"));
     return;
@@ -88,7 +114,7 @@ function paintConversation(){
   if(!selectedReport||!Array.isArray(selectedReport.roles)){
     const state=selectedReport?.status||entry.status;
     root.append(chatBubble("KI-Zentrale · "+state,
-      "Noch kein geprüfter KI-Bericht vorhanden. Ein gespeicherter Entwurf löst keinen Modelllauf aus. Starte einen zulässigen kostenlosen Lauf ausdrücklich beim ausgewählten Posteingangseintrag.","bot"));
+      "Noch kein geprüfter KI-Bericht vorhanden. Ein gespeicherter Entwurf löst keinen Modelllauf aus. Starte den kostenlosen KI-Lauf beim ausgewählten Entwurf ausdrücklich über die Schaltfläche im Gespräch.","bot"));
     return;
   }
   let answered=false;
@@ -253,7 +279,7 @@ async function loadReviewStatuses(){
 }
 $("loadReviews").onclick=loadReviewStatuses;
 
-async function refresh(){try{const d=await api("/api/inbox");$("conn").textContent="R2 verbunden";$("conn").classList.add("connected");$("lineAuth").textContent="Autorisierter Zugang";$("lineStore").textContent="Verbindung aktiv";const root=$("events");root.replaceChildren();if(!d.items.length){const li=document.createElement("li");li.textContent="Noch keine Nachrichten";root.append(li)}for(const v of d.items){const li=document.createElement("li");const time=document.createElement("div");time.className="stamp";time.textContent=new Date(v.created_at).toLocaleString("de-DE")+" · "+v.channel+" · "+v.status;const msg=document.createElement("div");msg.className="event";msg.textContent=v.kind==="file"?"Datei: "+v.file.name+" ("+v.file.size+" Bytes)":v.message;li.append(time,msg);if(selectedTask?.id===v.id)li.classList.add("selected-inbox");const select=document.createElement("button");select.type="button";select.className="event-select";select.textContent="↗ Im Gespräch öffnen";select.onclick=()=>selectInboxTask(v);li.append(select);if(v.kind==="message"){const row=document.createElement("div");row.className="bar";
+async function refresh(){try{const d=await api("/api/inbox");$("conn").textContent="R2 verbunden";$("conn").classList.add("connected");$("lineAuth").textContent="Autorisierter Zugang";$("lineStore").textContent="Verbindung aktiv";const root=$("events");root.replaceChildren();const current=d.items.find(v=>v.id===selectedTask?.id);if(current){selectedTask=current;paintConversation()}if(!d.items.length){const li=document.createElement("li");li.textContent="Noch keine Nachrichten";root.append(li)}for(const v of d.items){const li=document.createElement("li");const time=document.createElement("div");time.className="stamp";time.textContent=new Date(v.created_at).toLocaleString("de-DE")+" · "+v.channel+" · "+v.status;const msg=document.createElement("div");msg.className="event";msg.textContent=v.kind==="file"?"Datei: "+v.file.name+" ("+v.file.size+" Bytes)":v.message;li.append(time,msg);if(selectedTask?.id===v.id)li.classList.add("selected-inbox");const select=document.createElement("button");select.type="button";select.className="event-select";select.textContent="↗ Im Gespräch öffnen";select.onclick=()=>selectInboxTask(v);li.append(select);if(v.kind==="message"){const row=document.createElement("div");row.className="bar";
 if(v.status==="DRAFT_REQUIRES_REVIEW"){const run=document.createElement("button");run.type="button";run.textContent="▶ Kostenfreien KI-Lauf anfordern";run.className="ghost";run.onclick=async()=>{if(!window.confirm("Diesen Textauftrag wirklich zur geprüften kostenlosen KI-Beratung freigeben? Es wird kein Claude-Modell gestartet."))return;try{run.disabled=true;const date=v.created_at.slice(0,10);const result=await api("/api/dispatch",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({id:v.id,date})});status("GitHub hat den Auftrag angenommen. Das ist noch kein erfolgreicher KI-Lauf: "+result.id);await refresh()}catch(e){run.disabled=false;status("Start gesperrt: "+e.message)}};row.append(run);const team=document.createElement("button");team.type="button";team.textContent="▶ NVIDIA-Team starten (Nemotron + Kimi, Gegenprüfung ggf. nicht verfügbar)";team.className="ghost";team.onclick=async()=>{if(!window.confirm("Diesen Auftrag ausdrücklich an Nemotron + Kimi und die freie Gegenprüfung senden? Die zusätzlichen Antworten können bei Provider-Limits ausfallen. Keine Veröffentlichung."))return;try{team.disabled=true;const date=v.created_at.slice(0,10);const result=await api("/api/dispatch",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({id:v.id,date,mode:"free-team"})});status("NVIDIA-Team angefordert; echter Ergebnisstatus folgt nach dem Lauf: "+result.id);await refresh()}catch(e){team.disabled=false;status("NVIDIA-Team nicht gestartet: "+e.message)}};row.append(team)}
 const check=document.createElement("button");check.type="button";check.className="ghost";
 check.textContent="▣ Ergebnis prüfen";check.onclick=()=>selectInboxTask(v);
