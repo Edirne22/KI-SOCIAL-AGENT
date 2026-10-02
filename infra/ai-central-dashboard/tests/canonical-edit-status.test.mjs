@@ -32,11 +32,11 @@ function fixture(){
     job:{job_id:jobId,revision:2,status:"changes_requested",
       metadata:{["dashboard_review:"+requestId]:expected,"human_change:r1":text},
       human_approved_revision:null,human_approved_manifest:null,publish_handoff_key:null,
-      media:[media]}};
+      media:[structuredClone(media)]}};
   const ticket={schema:"FACTORY-EDIT-INTAKE-V1",job_id:jobId,revision:2,
     source_revision:1,request_id:requestId,preview_id:previewId,
     source_approval_manifest:manifest,human_request:text,
-    source_media:media,state:"AWAITING_CREATIVE_PLAN",render_approved:false,
+    source_media:structuredClone(media),state:"AWAITING_CREATIVE_PLAN",render_approved:false,
     publish_approved:false};
   const stateKey="ai-central/v1/preview-state/"+jobId+".json";
   const jobKey="ai-central/v1/factory-jobs/"+jobId+".json";
