@@ -1,0 +1,39 @@
+name: Block 8 private Dashboard canonical review consumer
+on:
+  workflow_dispatch:
+    inputs:
+      job_id:
+        description: 'Opaque canonical Factory job UUID with pending authenticated private R2 review'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: block8-review-${{ inputs.job_id }}
+  cancel-in-progress: false
+jobs:
+  apply-review:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate private R2 prerequisites
+        shell: bash
+        run: |
+          set -euo pipefail
+          for key in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!key:-}" || { echo "Missing configured R2 binding ${key}"; exit 1; }
+          done
+      - name: Install only existing R2 Python SDK
+        run: python -m pip install --disable-pip-version-check boto3
+      - name: Apply authenticated pending change/discard to canonical R2 Factory job and ACK
+        run: python -m scripts.block8_apply_dashboard_review --job-id "${{ inputs.job_id }}"
