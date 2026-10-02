@@ -671,3 +671,42 @@ Technische Protokolle der Deal-Hunter-Suchwege. Keine Preise oder Zugangsdaten s
 - Provider: Apify-Google-Suche
 - Live-Suche: ja
 - Hinweis: 10 öffentliche Treffer; Kostenlimit $0.010
+## 2026-10-02 06:09
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: Fallback: SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 403, detail={   "error": {     "type": "platform-feature-disabled",     "message": "Monthly usage hard limit exceeded"   } }
+## 2026-10-02 06:09
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: SearXNG
+- Hinweis: Nicht konfiguriert
+## 2026-10-02 06:09
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 1
+## 2026-10-02 06:09
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 2
+## 2026-10-02 06:10
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 3
+## 2026-10-02 06:12
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 4
+## 2026-10-02 06:12
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: SEARCH-FEHLER: provider=Gemini-Grounded, ursache=HTTP 429 Rate Limit, detail=Rate-Limit nach 3 Versuchen nicht behoben
+## 2026-10-02 06:12
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Fallback
+- Live-Suche: nein
+- Hinweis: Wissens-Fallback ohne Live-Websuche

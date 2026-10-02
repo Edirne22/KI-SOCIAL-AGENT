@@ -2791,3 +2791,33 @@ Quellen:
 - monatlich kündbar im Vodafone Netz – 35GB Allnet Flatrate nur 6.99 ...: https://handytariftipp.de/monatlich-kuendbar-im-vodafone-netz-35gb-allnet-flatrate-nur-6-99e-monatlich-0e-anschlusspreis/
 - Ohne Laufzeit im Vodafone Netz – 100GB Allnet Flatrate nur 11.99 ...: https://handytariftipp.de/ohne-laufzeit-im-vodafone-netz-100gb-allnet-flatrate-nur-11-99e-monatlich-0e-anschlusspreis/
 - Telekom Netz ohne Laufzeit – 30GB 5G Allnet Flat nur 10 Euro ...: https://handytariftipp.de/telekom-netz-ohne-laufzeit-30gb-5g-allnet-flat-nur-10-euro-monatlich-und-55gb-allnet-flatrate-nur-15-euro-monatlich/
+## Suche vom 2026-10-02 06:12
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine und zeitunabhängige Hinweise zur Orientierung bei der Suche nach einem passenden Mobilfunktarif im D1-Netz (Telekom):
+
+### Mögliche Händlerarten & Vertriebskanäle
+* **Mobilfunk-Discounter & Zweitmarken:** Anbieter, die das Telekom-Netz nutzen (MVNOs), bieten oft deutlich günstigere Konditionen als der Netzbetreiber selbst.
+* **Drittanbieter & Reseller:** Freie Händler verkaufen Verträge im D1-Netz häufig über Sonderaktionen, teilweise mit rechnerischen Rabatten oder Boni.
+* **Vergleichs- und Vermittlungsportale:** Über spezialisierte Plattformen lassen sich oft Angebote finden, bei denen der effektive Monatspreis durch Cashback oder Wechselprämien gesenkt wird.
+
+### Relevant Tarifkategorien (Produktfamilien)
+* **SIM-Only-Tarife:** Da kein neues Gerät mitfinanziert werden muss, bieten Tarife ohne Smartphone in der Regel das beste Preis-Leistungs-Verhältnis für hohes Datenvolumen.
+* **Verträge mit 24 Monaten Laufzeit:** Mindestvertragslaufzeiten enthalten häufig höhere Aktionsrabatte oder Startguthaben, die den Durchschnittspreis pro Monat drücken.
+* **Flex-Tarife (monatlich kündbar):** Bieten maximale Flexibilität, weisen jedoch oft etwas höhere Monats- oder Anschaltpreise auf.
+
+### Wichtige Auswahlkriterien
+* **Effektivpreis-Berechnung:** Prüfen Sie den rechnerischen Monatspreis. Dieser ergibt sich aus: *(Gesamte Grundgebühren + Anschlusspreis − Gutschriften/Wechselbonus) / Laufzeit in Monaten*.
+* **Geschwindigkeit & Netztechnik:** Achten Sie darauf, ob der Tarif 4G/LTE oder 5G beinhaltet und wo die maximale Bandbreite gedeckelt ist (z. B. bei 25, 50 oder 100 Mbit/s).
+* **Rufnummernmitnahme:** Viele Anbieter gewähren einen Bonus für die Portierung der bisherigen Rufnummer, was die Gesamtkosten reduziert.
+* **Zusatzfunktionen:** Stellen Sie sicher, dass wichtige Features wie VoLTE (Telefonie über LTE), WLAN-Call und EU-Roaming im Tarif enthalten sind.
+
+Bitte in 10 Minuten erneut versuchen.
