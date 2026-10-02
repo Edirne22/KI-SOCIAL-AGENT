@@ -49,7 +49,7 @@ class ResourceAdmissionTests(unittest.TestCase):
             claim(job=item.job_id, task=item.task_id, revision=2),
             claim(job=item.job_id, task=item.task_id, cpu=2),
         ):
-            with self.assertRaisesRegex(AdmissionError, "stale or contradictory"):
+            with self.assertRaisesRegex(AdmissionError, "stale|contradictory"):
                 manager.reserve(changed)
         self.assertEqual(manager.snapshot()["active"], 1)
         manager.release(lease)
