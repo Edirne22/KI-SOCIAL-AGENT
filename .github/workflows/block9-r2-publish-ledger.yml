@@ -1,0 +1,26 @@
+name: Block 9 cross-process R2 conditional publication ledger
+on:
+  pull_request:
+    paths:
+      - 'content_factory_r2_publish_ledger.py'
+      - 'tests/test_content_factory_r2_publish_ledger.py'
+      - '.github/workflows/block9-r2-publish-ledger.yml'
+permissions:
+  contents: read
+jobs:
+  atomic-claim-red-team:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Existing Source-Fact import prerequisite
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Syntax, all existing publisher guards and parallel R2 race/recovery tests
+        run: |
+          python -m py_compile content_factory_r2_publish_ledger.py content_factory_publish_ledger.py content_factory_control_center.py
+          python -m unittest -v tests.test_content_factory_r2_publish_ledger tests.test_content_factory_publish_ledger tests.test_content_factory_control_center tests.test_content_factory_golden_tablet
+      - name: Mandatory original source-fact regression unchanged
+        run: python tests/test_source_fact_contract_v1.py
