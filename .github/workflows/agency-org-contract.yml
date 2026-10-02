@@ -1,0 +1,31 @@
+name: Agency Organization Contract
+on:
+  pull_request:
+    paths:
+      - "agents/AGENTS_INDEX.md"
+      - "agents/20_maschinen_scout.md"
+      - "docs/AGENCY_ORG_AND_HANDOFF.md"
+      - "tests/test_agency_org_contract.py"
+      - ".github/workflows/agency-org-contract.yml"
+  push:
+    branches: [main]
+    paths:
+      - "agents/AGENTS_INDEX.md"
+      - "agents/20_maschinen_scout.md"
+      - "docs/AGENCY_ORG_AND_HANDOFF.md"
+      - "tests/test_agency_org_contract.py"
+permissions:
+  contents: read
+jobs:
+  roster-and-handoff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate syntax and positive/negative organization contracts
+        run: |
+          python -m py_compile tests/test_agency_org_contract.py
+          python -m unittest discover -s tests -p test_agency_org_contract.py -v
