@@ -8,6 +8,7 @@ on:
       - '.github/workflows/ai-central-dashboard-deploy.yml'
       - '.github/workflows/block6-dashboard-first-real-video.yml'
       - 'infra/ai-central-dashboard/public/index.html'
+      - 'infra/ai-central-dashboard/src/index.js'
 permissions:
   contents: read
 jobs:
