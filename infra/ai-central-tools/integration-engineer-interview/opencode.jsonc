@@ -1,15 +1,15 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "openrouter/qwen/qwen3-coder:free",
+  "model": "openrouter/qwen/qwen3.8-27b:free",
   "providers": {
     "openrouter": {
       "name": "Bounded integration engineer free-only interview",
       "env": ["OPENROUTER_API_KEY"],
       "package": "@opencode/ai/providers/openrouter",
       "models": {
-        "qwen/qwen3-coder:free": {
-          "name": "Qwen Coder free interview",
-          "modelID": "qwen/qwen3-coder:free",
+        "qwen/qwen3.8-27b:free": {
+          "name": "Qwen3.8 27B free interview",
+          "modelID": "qwen/qwen3.8-27b:free",
           "capabilities": {"tools": false, "input": ["text"], "output": ["text"]},
           "limit": {"context": 8192, "output": 320}
         }
