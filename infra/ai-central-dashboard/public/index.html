@@ -385,7 +385,31 @@ async function loadReviewStatuses(){
       date.textContent=new Date(item.requested_at).toLocaleString("de-DE")
         +" · "+action+" · Revision "+item.revision;
       const label=document.createElement("div");label.textContent=stage+" · Auftrag "+item.job_id;
-      li.append(date,label);root.append(li);
+      li.append(date,label);
+      if(item.action==="change"&&item.status==="APPLIED_TO_FACTORY"){
+        const ticketButton=document.createElement("button");
+        ticketButton.type="button";ticketButton.className="ghost";
+        ticketButton.textContent="Produktionsauftrag prüfen";
+        const ticketInfo=document.createElement("div");ticketInfo.className="smalltext";
+        ticketInfo.textContent="Bearbeitungsstatus noch nicht abgefragt – eine bestätigte Änderung ist kein fertiges Video.";
+        ticketButton.onclick=async()=>{
+          ticketButton.disabled=true;ticketInfo.textContent="Prüfe den echten privaten Fabrikauftrag …";
+          try{
+            const result=await api("/api/edit-status?job_id="+encodeURIComponent(item.job_id)+
+              "&request_id="+encodeURIComponent(item.request_id));
+            if(result.schema!=="FACTORY-EDIT-STATUS-V1")throw Error("Unbekannter Fabrikstatus");
+            if(result.status==="AWAITING_CREATIVE_PLAN")
+              ticketInfo.textContent="Revision "+result.revision+
+                ": Änderungsauftrag dauerhaft erstellt. Kreative Planung ausstehend; noch kein neues Video.";
+            else if(result.status==="AWAITING_IMMUTABLE_TICKET")
+              ticketInfo.textContent="Änderung verbindlich bestätigt; neuer Produktionsauftrag ist noch nicht nachgewiesen.";
+            else ticketInfo.textContent="Produktionsstatus unbekannt – noch kein neues Video bestätigt.";
+          }catch(e){ticketInfo.textContent="Produktionsstatus nicht verifizierbar: "+e.message}
+          finally{ticketButton.disabled=false}
+        };
+        li.append(ticketButton,ticketInfo);
+      }
+      root.append(li);
     }
   }catch(e){$("reviewListNotice").textContent="Entscheidungsstatus derzeit nicht abrufbar: "+e.message}
 }
