@@ -6,6 +6,8 @@ on:
       - "agents/20_maschinen_scout.md"
       - "docs/AGENCY_ORG_AND_HANDOFF.md"
       - "tests/test_agency_org_contract.py"
+      - "content_factory_local_resource_manager.py"
+      - "tests/test_content_factory_local_resource_manager.py"
       - ".github/workflows/agency-org-contract.yml"
   push:
     branches: [main]
@@ -14,6 +16,8 @@ on:
       - "agents/20_maschinen_scout.md"
       - "docs/AGENCY_ORG_AND_HANDOFF.md"
       - "tests/test_agency_org_contract.py"
+      - "content_factory_local_resource_manager.py"
+      - "tests/test_content_factory_local_resource_manager.py"
 permissions:
   contents: read
 jobs:
@@ -27,5 +31,6 @@ jobs:
           python-version: "3.12"
       - name: Validate syntax and positive/negative organization contracts
         run: |
-          python -m py_compile tests/test_agency_org_contract.py
+          python -m py_compile tests/test_agency_org_contract.py tests/test_content_factory_local_resource_manager.py content_factory_local_resource_manager.py
           python -m unittest discover -s tests -p test_agency_org_contract.py -v
+          python -m unittest discover -s tests -p test_content_factory_local_resource_manager.py -v
