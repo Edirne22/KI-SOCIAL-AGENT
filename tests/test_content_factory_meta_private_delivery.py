@@ -51,8 +51,9 @@ class TestBlock9PrivateDelivery(unittest.TestCase):
         self.repo.save_job(self.job,expected_store_version=1)
         self.creds={"INSTAGRAM_USER_ID":"offline","INSTAGRAM_ACCESS_TOKEN":"offline-token"}
     def grant(self,**kw):
+        origin=kw.pop("gateway_origin",ORIGIN)
         return issue_private_meta_delivery(self.repo,self.storage,self.job.job_id,
-            gateway_origin=ORIGIN,**kw)
+            gateway_origin=origin,**kw)
     def port(self,issuer=None):
         return ExistingInstagramReelPort(self.repo,self.storage,gateway_origin=ORIGIN,
            issue_delivery=issuer or issue_private_meta_delivery)
