@@ -30,7 +30,11 @@ test("system monitor labels inventory versus monthly billing, never claims live 
   assert.match(html,/id="measureSystem"/);
   assert.match(html,/\/api\/system-monitor\?scope=manual/);
   assert.match(html,/Monatlicher GB-Monatsverbrauch nicht messbar/);
-  assert.match(html,/kein HTTP-Probe, kein Aufwecken/);
+  assert.match(html,/Container wird nicht angepingt/);
+  assert.match(html,/id="checkContainer"/);
+  assert.match(html,/window.confirm\("Container jetzt ausdrücklich manuell testen/);
+  assert.match(html,/\/api\/container-readiness/);
+  assert.match(html,/loadLastReadiness\(\)/);
   assert.doesNotMatch(html,/setInterval\([^;\n]*system-monitor/);
 });
 test("existing private videostudio and selected-task conversation remain intact",()=>{
