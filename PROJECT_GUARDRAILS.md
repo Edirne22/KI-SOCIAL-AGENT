@@ -183,6 +183,14 @@ Analyse, Branches, Codeänderungen, Tests, Regressionen, CI-Analyse, sichere Fix
 
 **MERGE NUR NACH AUSDRÜCKLICHER FREIGABE VON BÜLENT.**
 
+### Ausdrückliche dauerhafte /BLOCKRUN-Freigabe von Bülent (02.10.2026, 19:26 MESZ)
+
+Bülent hat im laufenden Chat die zuvor erteilte **dauerhafte technische Merge-Vollmacht bis zur Fertigstellung von Block 9** erneut ausdrücklich bestätigt. Diese Erklärung erfüllt für die darunter fallenden PRs die erforderliche ausdrückliche Freigabe: Die bestehende projektbezogene Vollmacht muss nicht bei jedem technisch geprüften Teil-PR erneut eingeholt werden. Die autonome Freigabe deckt die Umsetzung, Reparatur, Tests, Red-Team/Sicherheitsprüfung, CI-Fixes, grünen Merge und bewachten Deploy von bereits beauftragten Block-6-bis-9-Teilarbeiten und dazugehörigen Dashboard-/Systemmonitor-Erweiterungen ab. Nach jedem Merge tatsächlichen Lauf/Deployment nachweisen, keinen fiktiven PASS melden, HEAD/Guardrails/Snapshot vor jedem Eingriff erneut prüfen und keine parallelen Branches erzeugen.
+
+**Ausnahmen und Grenzen:** Block 7 benötigt Bülents persönliche Einwilligung und Bereitstellung seiner **Fotos, Videos und eigenen Sprachaufnahmen**, bevor diese Dateien zur Avatar-/Stimmproduktion verarbeitet werden; rein synthetische technische Vorbereitungen bleiben möglich, ohne solche Daten vorauszusetzen. Keine kostenpflichtigen neuen Dienste/Hoster oder stillschweigende Kosten. **Keine Veröffentlichung echter Social-Media-Beiträge ohne Bülents konkrete Freigabe pro Beitrag**; technische Tests oder synthetische Vorschauen sind nie Veröffentlichungsautorität. Neue Aufgaben **außerhalb** dieser beauftragten Blöcke oder eine Erweiterung dieser Ausnahmen benötigen separate Rücksprache. Bewachte Deploys auf der bestehenden genehmigten Infrastruktur sind Teil der Freigabe; ein neuer Anbieter oder Vertragsabschluss ist es nicht.
+
+
+
 Beispiele für eine Freigabe:
 
 - „Merge 204“
