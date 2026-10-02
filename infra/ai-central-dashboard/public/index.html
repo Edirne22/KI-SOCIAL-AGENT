@@ -41,7 +41,7 @@ li{border-color:rgba(112,157,205,.12)}.screen-toggle{display:flex;gap:8px;paddin
 .screen-toggle button{min-width:130px}.panel.studio{display:none}
 .wrap[data-tab="studio"]{display:block}.wrap[data-tab="studio"] .panel.live,.wrap[data-tab="studio"] .panel.chat{display:none}
 .wrap[data-tab="studio"] .panel.studio{display:block}
-.video-studio-guide{border:1px solid #39526c;padding:12px;border-radius:10px;margin-bottom:14px;background:#112840}
+.system-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.system-card{border:1px solid var(--line);border-radius:12px;background:#10233d;padding:12px}.system-card strong{display:block;margin:4px 0;font-size:15px}.system-card meter{width:100%;height:12px;accent-color:#6acbec}.file-preview{margin-top:10px;max-width:100%}.file-preview img{width:min(100%,360px);max-height:220px;object-fit:contain;cursor:zoom-in;border-radius:10px}.file-preview video{width:min(100%,520px);max-height:350px;border-radius:10px}.file-preview iframe{width:min(100%,450px);height:240px;border:1px solid #385578;border-radius:10px}.image-dialog{border:1px solid #6acbec;border-radius:14px;background:#091627;color:white;max-width:95vw;max-height:95vh}.image-dialog img{max-width:90vw;max-height:80vh;object-fit:contain}@media(max-width:600px){.system-cards{grid-template-columns:1fr}}.video-studio-guide{border:1px solid #39526c;padding:12px;border-radius:10px;margin-bottom:14px;background:#112840}
 @media(min-width:841px){.wrap[data-tab="chat"] .panel.studio,.wrap[data-tab="live"] .panel.studio{display:none}}
 
 @media(max-width:840px){.wrap{grid-template-columns:1fr}.modegrid{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{min-height:0}.screen-toggle{padding:0 9px;max-width:700px}.screen-toggle button{flex:1}.wrap[data-tab="chat"] .panel.live{display:none}.wrap[data-tab="live"] .panel.chat{display:none}.wrap[data-tab="studio"] .panel.studio{display:block}}
@@ -53,11 +53,18 @@ li{border-color:rgba(112,157,205,.12)}.screen-toggle{display:flex;gap:8px;paddin
 <div class="modecard"><b>R2</b><small>DAUERHAFTES ARCHIV</small></div>
 <div class="modecard"><b>CLAUDE</b><small>OPENCODE LIVE GETESTET</small></div>
 <div class="modecard"><b>10s</b><small>STATUSABFRAGE-TAKT</small></div>
-</div></div>
+</div>
+<div class="system-cards" aria-label="Systemmonitor – ausschließlich echte Messungen">
+  <section class="system-card" aria-label="Cloudflare R2 Speicher"><div class="eyebrow">R2 · SPEICHER</div><strong id="r2Occupied">Nicht verfügbar – noch nicht gemessen</strong><div id="r2Quota" class="smalltext">Kostenloses Kontingent: Nicht verfügbar</div><meter id="r2Meter" min="0" max="100" value="0" hidden></meter><div id="r2Measured" class="smalltext">Letzte erfolgreiche Messung: Nicht verfügbar</div><div id="r2Warning" class="smalltext"></div></section>
+  <section class="system-card" aria-label="Container Zustand"><div class="eyebrow">CONTAINER · PASSIV</div><strong id="containerState">Nicht verfügbar</strong><div id="containerDetail" class="smalltext">CPU und RAM: Nicht verfügbar. Kein automatisches Aufwecken.</div><div class="smalltext">Letzter Bereitschaftstest: Nicht verfügbar</div></section>
+</div>
+<div class="bar"><button id="measureSystem" type="button" class="ghost">↻ Systemwerte manuell messen</button></div>
+<div class="muted">R2 zeigt nur eine gemessene Momentaufnahme des gebundenen Buckets, keine tatsächliche monatliche GB-Monatsabrechnung und keine technische Kapazitätsgrenze. Der Container wird nicht angepingt.</div>
+</div>
 <nav class="screen-toggle" aria-label="Dashboard Ansichten"><button id="tabChat" class="primary" type="button">⌘ Chat</button><button id="tabLive" class="ghost" type="button">▣ Live-Konsole</button><button id="tabStudio" class="ghost" type="button">▶ Videostudio</button></nav>
 <main class="wrap" id="workspace" data-tab="chat">
 <section class="panel chat"><div class="eyebrow">01 / COMMAND STATION</div><h2>Aufträge &amp; Assistenten</h2><p class="subtitle">Per Text, Datei oder Sprachaufnahme – alles landet zunächst als sicherer Entwurf.</p><div class="banners">Testphase: Der gewählte Modus wird als Wunsch gespeichert. Er startet noch keine KI und löst keine Kosten aus.</div><label for="token">Dashboard-Zugangsschlüssel (nur für diese Browsersitzung)</label><input type="password" id="token" autocomplete="off" placeholder="Zugangsschlüssel eingeben"><div class="bar"><button id="connect">Verbinden</button><button id="refresh">Aktualisieren</button></div>
-<div class="fieldpair"><div><label for="taskMode">Arbeitsmodus</label><select id="taskMode"><option value="Zentrale">KI-Zentrale</option><option value="Claude only">Claude · nur Claude</option><option value="Programmierung mit Claude">Claude · Programmierung</option><option value="Bildgenerierung">Bilder generieren</option><option value="Audioverarbeitung">Audio &amp; Transkription</option><option value="Videoverarbeitung">Video &amp; Reels</option><option value="PDF, Word oder Excel">PDF / Word / Excel</option></select></div><div><label for="outputMode">Ausgabeformat</label><select id="outputMode"><option value="Im Chat">Im Chat</option><option value="PDF">PDF</option><option value="DOCX">Word (.docx)</option><option value="XLSX">Excel (.xlsx)</option><option value="Bild">Bilddatei</option><option value="Video">Videodatei</option></select></div></div><label for="message">Dein Auftrag</label><textarea id="message" placeholder="Zum Beispiel: Prüfe den aktuellen OpenChatCut-Status …"></textarea><div class="bar"><button id="send" class="primary">↗ Auftrag vormerken</button><label><input id="file" type="file" accept=".txt,.md,.json,.png,.jpg,.jpeg,.webm,.mp4,.ogg" style="width:auto"> Datei</label><button id="upload">Hochladen</button><button id="dictate" type="button" class="ghost">🎙 Diktieren ins Auftragsfeld</button><button id="dictateStop" type="button" disabled>Diktat beenden</button><button id="mic" type="button" class="ghost">◉ Audiodatei aufnehmen</button><button id="stop" type="button" disabled>Audioaufnahme stoppen</button></div><div id="dictationHelp" class="muted">Diktieren: nur bei Browserunterstützung und nach deiner Zustimmung; je nach Browser kann Spracherkennung über den Browseranbieter erfolgen. Text wird ausschließlich zur Prüfung in „Dein Auftrag“ eingefügt, nicht automatisch versendet. Audioaufnahme: speichert dagegen eine Datei privat in R2, noch ohne faster-whisper-Transkription.</div><div id="dictationLive" class="smalltext" aria-live="polite"></div><section class="conversation" aria-label="Auftrag und zugehörige KI-Antwort"><div class="conversation-head"><h2>Dein Gespräch · ausgewählter Auftrag</h2><button type="button" id="clearSelection" class="ghost">Auswahl aufheben</button></div><div id="conversationHelp" class="conversation-note">Wähle rechts genau einen Auftrag aus dem R2-Posteingang oder sende links einen neuen. Die zugehörige KI-Antwort erscheint hier, sobald ein geprüfter Bericht vorliegt.</div><div id="conversationBody" aria-live="polite"></div></section>
+<div class="fieldpair"><div><label for="taskMode">Arbeitsmodus</label><select id="taskMode"><option value="Zentrale">KI-Zentrale</option><option value="Claude only">Claude · nur Claude</option><option value="Programmierung mit Claude">Claude · Programmierung</option><option value="Bildgenerierung">Bilder generieren</option><option value="Audioverarbeitung">Audio &amp; Transkription</option><option value="Videoverarbeitung">Video &amp; Reels</option><option value="PDF, Word oder Excel">PDF / Word / Excel</option></select></div><div><label for="outputMode">Ausgabeformat</label><select id="outputMode"><option value="Im Chat">Im Chat</option><option value="PDF">PDF</option><option value="DOCX">Word (.docx)</option><option value="XLSX">Excel (.xlsx)</option><option value="Bild">Bilddatei</option><option value="Video">Videodatei</option></select></div></div><label for="message">Dein Auftrag</label><textarea id="message" placeholder="Zum Beispiel: Prüfe den aktuellen OpenChatCut-Status …"></textarea><div class="bar"><button id="send" class="primary">↗ Auftrag vormerken</button><label><input id="file" type="file" accept=".txt,.md,.json,.png,.jpg,.jpeg,.webm,.mp4,.ogg,.pdf" style="width:auto"> Datei</label><button id="upload">Hochladen</button><button id="dictate" type="button" class="ghost">🎙 Diktieren ins Auftragsfeld</button><button id="dictateStop" type="button" disabled>Diktat beenden</button><button id="mic" type="button" class="ghost">◉ Audiodatei aufnehmen</button><button id="stop" type="button" disabled>Audioaufnahme stoppen</button></div><div id="dictationHelp" class="muted">Diktieren: nur bei Browserunterstützung und nach deiner Zustimmung; je nach Browser kann Spracherkennung über den Browseranbieter erfolgen. Text wird ausschließlich zur Prüfung in „Dein Auftrag“ eingefügt, nicht automatisch versendet. Audioaufnahme: speichert dagegen eine Datei privat in R2, noch ohne faster-whisper-Transkription.</div><div id="dictationLive" class="smalltext" aria-live="polite"></div><section class="conversation" aria-label="Auftrag und zugehörige KI-Antwort"><div class="conversation-head"><h2>Dein Gespräch · ausgewählter Auftrag</h2><button type="button" id="clearSelection" class="ghost">Auswahl aufheben</button></div><div id="conversationHelp" class="conversation-note">Wähle rechts genau einen Auftrag aus dem R2-Posteingang oder sende links einen neuen. Die zugehörige KI-Antwort erscheint hier, sobald ein geprüfter Bericht vorliegt.</div><div id="conversationBody" aria-live="polite"></div></section><dialog id="imageZoom" class="image-dialog" aria-label="Bild vergrößert"><button type="button" id="closeImageZoom">✕ Schließen</button><div><img id="zoomedImage" alt="Vergrößerte private Dateivorschau"></div></dialog>
 <div id="messageStatus" class="notice">Noch kein Auftrag versendet. Neue Eingaben werden zunächst als Entwurf gespeichert – kein automatischer KI-Start.</div><div class="skillbar"><span>◇ OpenCode</span><span>◈ Claude</span><span>⬡ Gemini</span><span>▣ GitHub</span><span>◉ Telegram</span><span>⇧ R2</span></div></section>
 <section class="panel live"><div class="eyebrow">02 / OPERATIONS STREAM</div><h2>Live-Telemetrie</h2><p class="subtitle">Echte Betriebsdaten; keine erfundenen Terminal-Ausgaben.</p><div class="console"><div class="consoleheader">● SYSTEMKONSOLE / EREIGNISSE</div><div class="consoleline"><em>GATE</em><b id="lineAuth" class="statewait">Warte auf Anmeldung</b></div><div class="consoleline"><em>R2</em><b id="lineStore" class="statewait">Nicht abgefragt</b></div><div class="consoleline"><em>GITHUB</em><b id="lineGit" class="statewait">Nicht abgefragt</b></div><div class="consoleline"><em>MODELL</em><b>Keine aktiven Modellläufe in dieser Vorschau</b></div></div><br><h2>Live-Status und Protokoll</h2><div class="muted">Echte GitHub-Laufzustände und R2-Eingangsereignisse alle 10 Sekunden. Einzelne Joblogs erscheinen erst nach gesicherter Anbindung.</div><div class="bar"><button id="reload">Ereignisse abrufen</button></div><h2>GitHub-Jobs (tatsächlicher Status)</h2><ul id="runs"><li>Wird nach Verbindung geladen.</li></ul><h2>Auftragsbericht aus R2</h2><div id="taskReport" class="console" aria-live="polite"><div class="smalltext">Auftrag auswählen, um den tatsächlichen Bericht abzurufen.</div></div><br><h2>Gemeinsamer R2-Posteingang</h2><div class="smalltext">Jeder Eintrag ist einzeln auswählbar. „Im Gespräch öffnen“ zeigt nur dessen Auftrag und Ergebnis links; „Ergebnis prüfen“ prüft ebenfalls ausschließlich diesen Eintrag.</div><ul id="events"><li>Mit Zugangsschlüssel verbinden, um den gemeinsamen Posteingang zu sehen.</li></ul><div class="muted">Die KI-Worker, GitHub-Jobs und Codeausgabe werden im nächsten Integrationsschritt angebunden. Diese Ansicht zeigt keine simulierten Ausgaben.</div></section>
 <section class="panel studio" aria-label="Privates Videostudio">
@@ -83,6 +90,61 @@ $("tabStudio").onclick=()=>setTab("studio");async function api(path,opts={}){if(
 // A selected R2 inbox entry is ONE conversation. Nothing in this panel
 // creates model output or starts inference without the separate approved click.
 let selectedTask=null,selectedReport=null,selectedReportError="";
+let previewCache=new Map();
+function clearAttachmentCache(){
+  for(const entry of previewCache.values())if(entry.url)URL.revokeObjectURL(entry.url);
+  previewCache.clear();
+}
+$("closeImageZoom").onclick=()=>$("imageZoom").close();
+$("imageZoom").addEventListener("close",()=>{$("zoomedImage").removeAttribute("src")});
+function fileSummary(entry){
+  const file=entry.file||{};
+  return file.name+" · "+new Intl.NumberFormat("de-DE").format(file.size||0)+" Bytes · "+(file.mime||"Typ unbekannt");
+}
+async function loadPrivateAttachment(entry){
+  if(previewCache.has(entry.id))return;
+  previewCache.set(entry.id,{loading:true});
+  const id=entry.id,date=entry.created_at.slice(0,10);
+  try{
+    const res=await fetch("/api/upload-preview?id="+encodeURIComponent(id)+"&date="+encodeURIComponent(date),{
+      headers:{"authorization":"Bearer "+token},cache:"no-store"});
+    if(!res.ok){const d=await res.json().catch(()=>({}));throw Error(d.error||String(res.status))}
+    const blob=await res.blob();
+    if(!["image/png","image/jpeg","video/mp4","audio/webm","audio/mp4","audio/ogg","application/pdf"].includes(blob.type)||
+      blob.size!==entry.file.size||blob.type!==entry.file.mime)
+      throw Error("Dateityp oder Größe entsprechen nicht dem gespeicherten Upload");
+    const url=URL.createObjectURL(blob);
+    if(selectedTask?.id!==id){URL.revokeObjectURL(url);previewCache.delete(id);return}
+    previewCache.set(id,{url,mime:blob.type});
+  }catch(e){previewCache.set(id,{error:e.message})}
+  if(selectedTask?.id===id)paintConversation();
+}
+function appendPrivateAttachment(root,entry){
+  const box=document.createElement("div");box.className="file-preview";
+  const label=document.createElement("div");label.className="smalltext";
+  label.textContent=fileSummary(entry)+" · Status: privat gespeichert; KI-Verarbeitung nicht gestartet";
+  box.append(label);
+  const cached=previewCache.get(entry.id);
+  if(!cached){const pending=document.createElement("div");pending.textContent="Lade private Dateivorschau …";box.append(pending);void loadPrivateAttachment(entry)}
+  else if(cached.error){const note=document.createElement("div");note.textContent="Vorschau nicht verfügbar: "+cached.error;box.append(note)}
+  else if(cached.url){
+    if(cached.mime.startsWith("image/")){
+      const img=document.createElement("img");img.src=cached.url;img.alt="Private Bildvorschau (zum Vergrößern anklicken)";
+      const zoom=document.createElement("button");zoom.className="ghost";zoom.type="button";zoom.textContent="Bild vergrößern";
+      zoom.onclick=()=>{$("zoomedImage").src=cached.url;$("imageZoom").showModal()};
+      box.append(img,zoom);
+    }else if(cached.mime==="video/mp4"||cached.mime.startsWith("audio/")){
+      const media=document.createElement(cached.mime==="video/mp4"?"video":"audio");media.src=cached.url;
+      media.controls=true;media.preload="metadata";media.setAttribute("aria-label","Private Mediendatei abspielen");box.append(media);
+      if(cached.mime==="video/mp4"){const note=document.createElement("div");note.className="smalltext";note.textContent="Der Browser zeigt nach Laden der Videometadaten gegebenenfalls das erste Bild als Vorschau.";box.append(note)}
+    }else if(cached.mime==="application/pdf"){
+      const frame=document.createElement("iframe");frame.title="Private PDF-Dateivorschau";frame.src=cached.url;box.append(frame);
+      const link=document.createElement("a");link.href=cached.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="PDF in neuer Ansicht öffnen";box.append(link);
+    }
+  }
+  root.append(box);
+}
+
 function chatBubble(label,body,kind){
   const node=document.createElement("div");node.className="conversation-msg "+kind;
   const caption=document.createElement("small");caption.textContent=label;
@@ -98,7 +160,9 @@ function paintConversation(){
   const entry=selectedTask;
   $("conversationHelp").textContent="Nur ausgewählter Eintrag · "+entry.id+" · "+new Date(entry.created_at).toLocaleString("de-DE");
   const question=entry.kind==="file"?"Private Datei: "+entry.file.name+" ("+entry.file.size+" Bytes)":entry.message;
-  root.append(chatBubble("Du · "+entry.channel,question,"user"));
+  const userBubble=chatBubble("Du · "+entry.channel,question,"user");
+  root.append(userBubble);
+  if(entry.kind==="file")appendPrivateAttachment(userBubble,entry);
   if(entry.kind==="message"&&entry.status==="DRAFT_REQUIRES_REVIEW"){
     const start=document.createElement("button");start.type="button";start.className="primary";
     start.textContent="▶ Diesen Auftrag mit der kostenlosen KI prüfen";
@@ -165,13 +229,14 @@ async function checkSelectedTask(){
   paintConversation();
 }
 function selectInboxTask(item){
+  if(selectedTask?.id!==item.id)clearAttachmentCache();
   selectedTask=item;selectedReport=null;selectedReportError="";
   paintConversation();setTab("chat");
   if(item.kind==="message")checkSelectedTask();
 }
 $("clearSelection").onclick=()=>{
   selectedTask=null;selectedReport=null;selectedReportError="";
-  paintConversation();
+  clearAttachmentCache();paintConversation();
 };
 function clearPrivateVideo(){
   const v=$("privatePlayer");v.pause();v.removeAttribute("src");v.load();v.classList.add("hidden");
@@ -324,7 +389,35 @@ if(v.status==="DRAFT_REQUIRES_REVIEW"){const run=document.createElement("button"
 const check=document.createElement("button");check.type="button";check.className="ghost";
 check.textContent="▣ Ergebnis prüfen";check.onclick=()=>selectInboxTask(v);
 row.append(check);li.append(row)}root.append(li)}if(selectedTask?.kind==="message")await checkSelectedTask();try{const g=await api("/api/runs");const list=$("runs");list.replaceChildren();$("lineGit").textContent="Status synchronisiert · "+new Date(g.logged_at).toLocaleTimeString("de-DE");for(const v of g.runs){const item=document.createElement("li");const a=document.createElement("a");a.href=v.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=v.name+" · "+v.status+(v.conclusion?" · "+v.conclusion:"");a.style.color="#aacaff";item.append(a);list.append(item)}if(!g.runs.length){const li=document.createElement("li");li.textContent="Keine aktuellen Läufe im Suchfenster";list.append(li)}}catch(e){$("runs").textContent="GitHub derzeit nicht erreichbar: "+e.message}}catch(e){$("conn").textContent="Nicht verbunden";$("conn").classList.remove("connected");$("lineAuth").textContent="Anmeldung prüfen";$("lineStore").textContent="Keine Verbindung";status("Status: "+e.message)}}
-$("connect").onclick=()=>{token=$("token").value;$("token").value="";selectedTask=null;selectedReport=null;selectedReportError="";studioBaseline=null;paintConversation();refresh();if($("workspace").dataset.tab==="studio")refreshStudio()};$("refresh").onclick=refresh;$("reload").onclick=refresh;
+$("measureSystem").onclick=async()=>{
+  const button=$("measureSystem");button.disabled=true;$("r2Occupied").textContent="R2-Inventur läuft – keine Containerabfrage …";
+  try{
+    const result=await api("/api/system-monitor?scope=manual");
+    const r=result.r2,c=result.container;
+    if(r.measurement==="COMPLETE_BUCKET_INVENTORY"){
+      const gb=(r.occupied_bytes/1e9).toLocaleString("de-DE",{maximumFractionDigits:3});
+      $("r2Occupied").textContent=gb+" GB belegt · "+r.object_count+" Objekte";
+      $("r2Measured").textContent="Letzte vollständige Messung: "+new Date(r.measured_at).toLocaleString("de-DE");
+    }else{
+      $("r2Occupied").textContent="Nicht verfügbar – R2-Inventur unvollständig";
+      $("r2Measured").textContent="Letzte erfolgreiche Messung: Nicht verfügbar";
+    }
+    if(r.allowance_reference_gb===null||r.snapshot_ratio===null){
+      $("r2Quota").textContent="Kostenloses Kontingent genutzt: Nicht verfügbar (keine verifizierte Monatsabrechnung)";
+      $("r2Meter").hidden=true;$("r2Warning").textContent="";
+    }else{
+      $("r2Quota").textContent="Momentaner Bucketbestand gegenüber konfigurierter "+r.allowance_reference_gb+
+        "-GB-Referenz: "+(r.snapshot_ratio*100).toFixed(1)+" %. Monatlicher GB-Monatsverbrauch nicht messbar.";
+      $("r2Meter").hidden=false;$("r2Meter").value=Math.min(100,r.snapshot_ratio*100);
+      $("r2Warning").textContent=r.snapshot_warning?
+        "Achtung: Bucketbestand liegt nahe/über der konfigurierten Referenz. Keine Aussage zu tatsächlichen Abrechnungskosten.":"";
+    }
+    $("containerState").textContent="Nicht verfügbar – keine passive Laufzeit-Telemetrie";
+    $("containerDetail").textContent="CPU und RAM nicht verfügbar; kein HTTP-Probe, kein Aufwecken.";
+  }catch(e){$("r2Occupied").textContent="Nicht verfügbar – "+e.message}
+  finally{button.disabled=false}
+};
+$("connect").onclick=()=>{token=$("token").value;$("token").value="";selectedTask=null;selectedReport=null;selectedReportError="";clearAttachmentCache();studioBaseline=null;paintConversation();refresh();if($("workspace").dataset.tab==="studio")refreshStudio()};$("refresh").onclick=refresh;$("reload").onclick=refresh;
 $("send").onclick=async()=>{const content=$("message").value.trim();if(content.length<3)return status("Bitte mindestens drei Zeichen für den Auftrag eingeben.");const m="[WUNSCH-MODUS: "+$("taskMode").value+"; AUSGABE: "+$("outputMode").value+"]\n"+content;try{const data=await api("/api/inbox",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({message:m})});status("Entwurf gespeichert: "+data.id);$("message").value="";selectedTask={id:data.id,created_at:data.created_at,channel:"web",kind:"message",message:m,status:data.status};selectedReport=null;selectedReportError="";paintConversation();await refresh()}catch(e){status(e.message)}};
 async function upload(file){if(!file)return status("Bitte Datei auswählen");if(file.size>8*1024*1024)return status("Maximal 8 MB");try{let d=await api("/api/upload",{method:"POST",headers:{"content-type":file.type||"application/octet-stream","x-upload-name":file.name},body:file});status("Privat gespeichert: "+d.name+" · "+d.id);selectedTask={id:d.id,created_at:d.created_at,channel:"web",kind:"file",file:{name:d.name,size:file.size,mime:file.type},status:d.status};selectedReport=null;selectedReportError="";paintConversation();await refresh()}catch(e){status("Upload: "+e.message)}}
 $("upload").onclick=()=>upload($("file").files[0]);
