@@ -651,8 +651,8 @@ https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10
 Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
 Link-Preview: offiziell
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-02 10:51 | ID: 18029177738688616]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-02-daily
 Telegram-Update-ID: 279361804
@@ -665,6 +665,7 @@ Ey, beim ersten freien Training in Japan hat's gleich von Anfang an geregnet, ab
 Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-2-motogp-japonya-gp-1-01.jpg
+Publish-Provenienz: {"creation_id": "18009673445971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-2-motogp-japonya-gp-1-01.jpg", "media_status": "EIGENE_KI_EDITORIALGRAFIK", "platform": "instagram", "post_id": "18029177738688616", "published_media_id": "18029177738688616", "source_url": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
