@@ -30,6 +30,18 @@ class EngineerInterviewTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "error"):
             extract_text(raw)
 
+    def test_session_error_event_fails_closed(self):
+        raw = json.dumps({"type": "session.error", "properties": {"error": {"message": "private"}}})
+        with self.assertRaisesRegex(ValueError, "session.error") as error:
+            extract_text(raw)
+        self.assertNotIn("private", str(error.exception))
+
+    def test_missing_text_diagnostics_are_bounded_to_types(self):
+        raw = json.dumps({"type": "step_start", "part": {"text": "secret should not print"}})
+        with self.assertRaisesRegex(ValueError, "step_start") as error:
+            extract_text(raw)
+        self.assertNotIn("secret should not print", str(error.exception))
+
     def test_import_prompt_injection_rejected(self):
         with self.assertRaises(ValueError):
             verify_source(VALID + "\nimport os\nos.system('echo hacked')\n")

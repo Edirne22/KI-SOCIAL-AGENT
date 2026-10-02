@@ -91,4 +91,13 @@ jobs:
             echo "INTERVIEW_MODEL_ERROR: no evidence of success"
             exit 1
           fi
-          python scripts/integration_engineer_trial.py /tmp/engineer-model-events.jsonl
+          if ! python scripts/integration_engineer_trial.py /tmp/engineer-model-events.jsonl; then
+            python - <<'PY'
+          import re
+          from pathlib import Path
+          msg=Path('/tmp/engineer-model-err.txt').read_text(errors='replace')
+          labels=re.findall(r'(?i)rate.?limit|quota|model.?not.?found|provider.?error|unauthorized|forbidden|timeout|authentication|invalid.?model|429|401|403|404|500|503',msg)
+          print('SAFE_STDERR_HINTS',sorted({x.lower() for x in labels})[:12], 'bytes', len(msg))
+          PY
+            exit 1
+          fi

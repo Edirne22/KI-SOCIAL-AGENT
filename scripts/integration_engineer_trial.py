@@ -19,6 +19,7 @@ ARGS = ["license_id", "zero_cost", "days_since_release"]
 
 def extract_text(raw):
     parts = []
+    event_types = {}
     for line in raw.splitlines():
         try:
             item = json.loads(line)
@@ -26,14 +27,18 @@ def extract_text(raw):
             continue
         if not isinstance(item, dict):
             continue
-        if item.get("type") == "error":
-            raise ValueError("Provider returned an error event")
+        kind = item.get("type")
+        if isinstance(kind, str) and re.fullmatch(r"[A-Za-z0-9_.-]{1,50}", kind):
+            event_types[kind] = event_types.get(kind, 0) + 1
+        if kind in ("error", "session.error"):
+            raise ValueError("Provider emitted an error event: " + str(kind))
         if item.get("type") == "text" and isinstance(item.get("part"), dict):
             text = item["part"].get("text")
             if isinstance(text, str):
                 parts.append(text)
     if not parts:
-        raise ValueError("No valid OpenCode text response")
+        raise ValueError("No valid OpenCode text response; safe event counts: "
+                         + json.dumps(event_types, sort_keys=True))
     result = "".join(parts).strip()
     # Optional single Markdown Python code fence, treated strictly as data.
     fenced = re.fullmatch(r"\x60{3}(?:python)?\s*\n(.*?)\n\x60{3}\s*", result, re.S)
