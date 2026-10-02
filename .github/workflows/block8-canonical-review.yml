@@ -4,6 +4,8 @@ on:
     paths:
       - 'content_factory_dashboard_review_applier.py'
       - 'content_factory_dashboard_review_ack.py'
+      - 'content_factory_revision_intake.py'
+      - 'tests/test_content_factory_revision_intake.py'
       - 'scripts/block8_apply_dashboard_review.py'
       - 'tests/test_content_factory_dashboard_review_ack.py'
       - '.github/workflows/block8-dashboard-review-consumer.yml'
@@ -28,7 +30,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check requests
       - name: Syntax and all relevant canonical persistence/Golden Tablet regressions
         run: |
-          python -m py_compile content_factory_dashboard_review_ack.py scripts/block8_apply_dashboard_review.py content_factory_dashboard_review_applier.py content_factory_repository.py content_factory_r2_job_repository.py content_factory_golden_tablet.py
-          python -m unittest -v tests.test_content_factory_dashboard_review_ack tests.test_content_factory_dashboard_review_applier tests.test_content_factory_r2_job_repository tests.test_content_factory_dashboard_preview tests.test_content_factory_persistence tests.test_content_factory_golden_tablet
+          python -m py_compile content_factory_dashboard_review_ack.py content_factory_revision_intake.py scripts/block8_apply_dashboard_review.py content_factory_dashboard_review_applier.py content_factory_repository.py content_factory_r2_job_repository.py content_factory_golden_tablet.py
+          python -m unittest -v tests.test_content_factory_dashboard_review_ack tests.test_content_factory_revision_intake tests.test_content_factory_dashboard_review_applier tests.test_content_factory_r2_job_repository tests.test_content_factory_dashboard_preview tests.test_content_factory_persistence tests.test_content_factory_golden_tablet
       - name: Source/fact contract unchanged
         run: python tests/test_source_fact_contract_v1.py
