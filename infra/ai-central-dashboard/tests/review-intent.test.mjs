@@ -37,7 +37,7 @@ function setup() {
    body:JSON.stringify({action:"change",preview_id:id,request_id:randomUUID(),
     manifest,revision:1,text:"Change caption please",...overrides})}),env);
  }
- return {submit,current,stateKey};
+ return {submit,current,stateKey,env,job};
 }
 test("owner change stages a review intent and revokes preview",async()=>{
  const t=setup(),res=await t.submit();assert.equal(res.status,202);
@@ -59,4 +59,52 @@ test("stale, invalid actor or tampered preview never mutates state",async()=>{
 test("concurrent decisions: exactly one recorded",async()=>{
  const t=setup(),results=await Promise.all([t.submit(),t.submit({action:"discard",text:""})]);
  assert.deepEqual(results.map(v=>v.status).sort(),[202,409]);
+});
+
+test("review status reports pending until the real Factory persists completion",async()=>{
+ const t=setup(),r=await t.submit();
+ assert.equal(r.status,202);
+ const result=await r.json();
+ const check=await worker.fetch(new Request(
+   "https://test.invalid/api/review-status?job_id="+result.job_id+"&request_id="+result.request_id,
+   {headers:{authorization:"Bearer "+token}}),t.env);
+ assert.equal(check.status,200);
+ assert.equal((await check.json()).status,"PENDING_FACTORY_APPLICATION");
+});
+test("review requires a matching canonical private R2 job",async()=>{
+ const t=setup();
+ t.current.delete("ai-central/v1/factory-jobs/"+t.job+".json");
+ assert.equal((await t.submit()).status,409);
+ assert.equal((await t.current.get(t.stateKey).json()).state,"READY_FOR_HUMAN");
+});
+test("authenticated click dispatches only the exact trusted review workflow",async()=>{
+ const t=setup();t.env.GITHUB_DISPATCH_TOKEN="test-dispatch-secret";
+ const previous=globalThis.fetch;
+ let requests=[];
+ globalThis.fetch=async(url,opts)=>{
+   requests.push({url,opts});
+   return new Response(null,{status:204});
+ };
+ try{
+   const res=await t.submit();
+   assert.equal(res.status,202);
+   assert.equal((await res.json()).dispatch,"ACCEPTED");
+   assert.equal(requests.length,1);
+   assert.match(requests[0].url,/block8-dashboard-review-consumer.yml\/dispatches$/);
+   const data=JSON.parse(requests[0].opts.body);
+   assert.equal(data.inputs.job_id,t.job);
+   assert.equal(data.ref,"main");
+ }finally{globalThis.fetch=previous}
+});
+test("lost GitHub dispatch result preserves private pending decision without double queue",async()=>{
+ const t=setup();t.env.GITHUB_DISPATCH_TOKEN="test-dispatch-secret";
+ const previous=globalThis.fetch;
+ globalThis.fetch=async()=>{throw new Error("network lost")};
+ try{
+   const res=await t.submit();
+   assert.equal(res.status,202);
+   assert.equal((await res.json()).dispatch,"PENDING_MANUAL_RECONCILIATION");
+   assert.equal((await t.current.get(t.stateKey).json()).state,"REVIEW_REQUESTED");
+   assert.equal((await t.submit()).status,409);
+ }finally{globalThis.fetch=previous}
 });
