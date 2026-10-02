@@ -1,0 +1,25 @@
+name: Block 8 canonical dashboard review application
+on:
+  pull_request:
+    paths:
+      - 'content_factory_dashboard_review_applier.py'
+      - 'tests/test_content_factory_dashboard_review_applier.py'
+      - 'content_factory_repository.py'
+      - '.github/workflows/block8-canonical-review.yml'
+permissions:
+  contents: read
+jobs:
+  offline-guardrails:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Syntax and all relevant canonical persistence/Golden Tablet regressions
+        run: |
+          python -m py_compile content_factory_dashboard_review_applier.py content_factory_repository.py content_factory_golden_tablet.py
+          python -m unittest -v tests.test_content_factory_dashboard_review_applier tests.test_content_factory_persistence tests.test_content_factory_golden_tablet
+      - name: Source/fact contract unchanged
+        run: python tests/test_source_fact_contract_v1.py
