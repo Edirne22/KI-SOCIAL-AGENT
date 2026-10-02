@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - "scripts/block6_factory_ffmpeg_handoff.py"
+      - "content_factory_r2_job_repository.py"
       - "content_factory_dashboard_preview.py"
       - ".github/workflows/block6-dashboard-first-real-video.yml"
       - "tests/test_content_factory_dashboard_preview.py"
@@ -10,6 +11,8 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/block6-dashboard-first-real-video.yml"
+      - "scripts/block6_factory_ffmpeg_handoff.py"
+      - "content_factory_r2_job_repository.py"
 permissions:
   contents: read
 concurrency:
@@ -32,8 +35,8 @@ jobs:
           fi
       - name: Syntax, existing factory, preview contracts and safety regressions
         run: |
-          python -m py_compile scripts/block6_factory_ffmpeg_handoff.py content_factory_dashboard_preview.py
-          python -m unittest -v tests.test_content_factory_media_production tests.test_content_factory_dashboard_preview tests.test_content_factory_golden_media tests.test_content_factory_golden_tablet
+          python -m py_compile scripts/block6_factory_ffmpeg_handoff.py content_factory_dashboard_preview.py content_factory_r2_job_repository.py
+          python -m unittest -v tests.test_content_factory_media_production tests.test_content_factory_r2_job_repository tests.test_content_factory_dashboard_preview tests.test_content_factory_golden_media tests.test_content_factory_golden_tablet
           python tests/test_source_fact_contract_v1.py
       - name: Actual tracked source and 15s FFmpeg with private offline storage
         run: python -m scripts.block6_factory_ffmpeg_handoff
