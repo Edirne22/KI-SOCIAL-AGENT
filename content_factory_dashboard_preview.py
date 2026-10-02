@@ -9,12 +9,14 @@ from __future__ import annotations
 import json
 from dataclasses import asdict
 from uuid import uuid4
+from datetime import datetime, timezone, timedelta
 from media_storage import R2Storage
 from content_factory_core import JobStatus, ProductionJob
 from content_factory_golden_tablet import FinalQMReport
 from content_factory_golden_media import present_verified_golden_tablet
 
 INDEX_PREFIX = "ai-central/v1/previews/"
+STATE_PREFIX = "ai-central/v1/preview-state/"
 MAX_DASHBOARD_VIDEO_BYTES = 32 * 1024 * 1024
 
 
@@ -46,11 +48,13 @@ def register_verified_video_preview(job: ProductionJob, report: FinalQMReport, *
         raise ValueError("video not part of human approval manifest")
     key = media.uri[len(f"r2://{storage.bucket}/"):]
     preview_id = str(uuid4())
+    expires_at = (datetime.now(timezone.utc) + timedelta(hours=2)).isoformat()
     record = {
         "schema": "FACTORY-MEDIA-PREVIEW-V1",
         "preview_id": preview_id,
         "state": JobStatus.READY_FOR_HUMAN.name,
         "qm_passed": True,
+        "expires_at": expires_at,
         "job_id": job.job_id,
         "revision": job.revision,
         "manifest": verified.tablet.manifest,
@@ -70,4 +74,34 @@ def register_verified_video_preview(job: ProductionJob, report: FinalQMReport, *
         Body=json.dumps(record, ensure_ascii=False, sort_keys=True).encode("utf-8"),
         ContentType="application/json",
     )
+    # Commit the current job/revision pointer last. An index without this
+    # independent pointer never becomes visible. A newer revision supersedes
+    # every old preview of the same job without listing/deleting old objects.
+    state = {"schema": "FACTORY-PREVIEW-STATE-V1", "job_id": job.job_id,
+             "preview_id": preview_id, "revision": job.revision,
+             "manifest": verified.tablet.manifest, "state": "READY_FOR_HUMAN"}
+    storage.client.put_object(
+        Bucket=storage.bucket, Key=STATE_PREFIX + job.job_id + ".json",
+        Body=json.dumps(state, sort_keys=True).encode("utf-8"),
+        ContentType="application/json",
+    )
     return preview_id
+
+
+def revoke_video_previews(job: ProductionJob, *, storage: R2Storage) -> None:
+    """Revoke every earlier dashboard preview before changing/rejecting a job.
+
+    Caller must durably sequence this call before mutating the canonical job
+    or expose controls that could make an earlier preview obsolete. A failure
+    must block further decisions (fail-closed orchestration).
+    """
+    if not isinstance(storage, R2Storage):
+        raise ValueError("private R2Storage required for revocation")
+    state = {"schema": "FACTORY-PREVIEW-STATE-V1", "job_id": job.job_id,
+             "preview_id": None, "revision": job.revision,
+             "manifest": job.approval_manifest(), "state": "REVOKED"}
+    storage.client.put_object(
+        Bucket=storage.bucket, Key=STATE_PREFIX + job.job_id + ".json",
+        Body=json.dumps(state, sort_keys=True).encode("utf-8"),
+        ContentType="application/json",
+    )
