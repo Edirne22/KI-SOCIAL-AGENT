@@ -1,5 +1,7 @@
 name: Block 6 – actual FFmpeg video to private Dashboard preview
 on:
+  # User-triggered refresh of a short-lived private synthetic Block8 test preview.
+  workflow_dispatch:
   pull_request:
     paths:
       - "scripts/block6_factory_ffmpeg_handoff.py"
@@ -49,7 +51,7 @@ jobs:
             exit 1
           fi
   factory-live-private-r2-dashboard:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
     needs: factory-offline
     runs-on: ubuntu-latest
     timeout-minutes: 12
