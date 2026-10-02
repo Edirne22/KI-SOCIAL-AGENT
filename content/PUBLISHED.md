@@ -631,6 +631,7 @@ Bild: assets/images/2026-10/2026-10-02-racing-editorial-2026-10-02-1-deniz-oncu-
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-02-daily
 Telegram-Update-ID: 279361804
