@@ -1,0 +1,30 @@
+{
+  "schema": "EDIRNE22-ASR-SYNTHETIC-CASES-V1",
+  "privacy": "Text-only synthetic fixtures; no personal voice or recordings",
+  "cases": [
+    {
+      "language": "de",
+      "text": "Servus, hier ist Bülent von Edirne 22. Heute fahren wir eine Motorradtour mit der BMW M 1000 R."
+    },
+    {
+      "language": "de",
+      "text": "Der Reifendruck stimmt, der Quickshifter funktioniert und auf der Landstraße achten wir auf die Schräglage."
+    },
+    {
+      "language": "de",
+      "text": "Toprak Razgatlıoğlu fährt in der WorldSBK. Can Öncü ist ebenfalls ein bekannter türkischer Fahrer."
+    },
+    {
+      "language": "tr",
+      "text": "Merhaba, ben Bülent. Edirne 22 ile motosiklet turuna çıkıyoruz."
+    },
+    {
+      "language": "tr",
+      "text": "Toprak Razgatlıoğlu ve Can Öncü hakkında konuşuyoruz. Lastik basıncı ve viraj önemli."
+    },
+    {
+      "language": "de",
+      "text": "Unicode-Test: Bülent, Öncü, Razgatlıoğlu, Ç, Ş, Ğ, ı und İ."
+    }
+  ]
+}
