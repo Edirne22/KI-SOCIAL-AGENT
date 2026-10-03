@@ -51,7 +51,18 @@ def append_asset(manifest, *, asset_id, filename, mime, payload, received_at=Non
 def store_original(client,bucket,manifest,*,asset_id,filename,mime,payload):
     """R2 first, manifest last. Never overwrite originals or acknowledge failed writes."""
     updated,key=append_asset(manifest,asset_id=asset_id,filename=filename,mime=mime,payload=payload)
-    client.put_object(Bucket=bucket,Key=key,Body=payload,ContentType=mime,IfNoneMatch="*")
+    try:
+        client.put_object(Bucket=bucket,Key=key,Body=payload,ContentType=mime,IfNoneMatch="*")
+    except Exception as exc:
+        # A previous attempt may have stored the immutable original before its
+        # manifest write failed. Never overwrite it: verify before recovery.
+        code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+        if code not in ("PreconditionFailed","412","ConditionalRequestConflict","409"):
+            raise
+        existing=client.get_object(Bucket=bucket,Key=key)["Body"].read()
+        if sha256(existing).digest()!=sha256(payload).digest() or len(existing)!=len(payload):
+            raise RuntimeError("immutable original collision or corrupt prior write") from exc
+
     # Verify the immutable object before making it visible in the manifest.
     stored=client.get_object(Bucket=bucket,Key=key)["Body"].read()
     if sha256(stored).digest()!=sha256(payload).digest():
