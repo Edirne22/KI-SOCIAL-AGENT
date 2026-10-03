@@ -15,3 +15,13 @@ Repairs: Python sorted JSON versus JS field-order comparison; MP4 offered but re
 Local tests before workspace reset: 64 Python, 90 Node, SOURCE-FACT PASS. Recovered code rechecked with actual FFmpeg revision tests and all 90 Node tests including real Python-produced canonical records. R2 transport is simulated locally. GitHub repeats the full suite with installed requests, then trusted main runs a synthetic-only real private R2 test. That test creates a NEW synthetic job, accepts no caller job ID, and uses generated video/tone. Simulated owner event is never claimed as real browser/human acceptance. Live/merge/deploy evidence remains pending until actual runs complete.
 
 Not completed by this scope: arbitrary creative object edits, private server Whisper transcription, actual microphone/desktop/mobile owner acceptance, Telegram notifications, expired-preview renewal, orphan-media cleanup. No private voice or actual social post used.
+
+## Verified final evidence (2026-10-03)
+
+PR337 merged f9d256760123acaa35acd677ebe937c06bd604b0 after five exact-head green workflows. Cloudflare guarded deploy 37102063107 SUCCESS. Initial live run 37102063087 failed at the strict unauthenticated HTTP control (Python-urllib received 403 / Cloudflare 1010); the private revision had already been created. No failed run was presented as complete.
+
+PR338 merged f8e06babaaed1966335c4b627102c79183dfa4d5 after CI 37102409338 SUCCESS. Existing requests dependency now carries an honest application User-Agent, disallows redirects and keeps exact 401 control, owner token and one-shot POST. No Cloudflare rule or auth gate weakened.
+
+Main run 37102493064 SUCCESS: 67 Python tests, 90 Node tests and SOURCE-FACT PASS. Live job 111144749416 logged BLOCK89_LIVE_DASHBOARD_STATUS_VIDEO_SHA_OLD_PREVIEW_REVOKED_MP4_UPLOAD_PASS. Real R2 and deployed Dashboard verified new revision, byte SHA, unauthenticated 401, old preview 404, new synthetic MP4 draft upload and identical private download. Job 2cd0a22f-4626-473f-b71a-560ea410ff83 revision 2, preview 10a7c569-4560-41fe-b578-db32a32087fd; replay leaves same store version/output. Human browser acceptance remains false; published=false. Only generated blue video and sine tone, no private speech.
+
+Final test-only tightening requires the expected missing-ACK exception AND asserts the renderer was never called; concurrent-CAS test requires ConcurrentUpdateError. No runtime change or additional live rerender is required for that test assertion change.

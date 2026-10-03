@@ -7,6 +7,8 @@ from unittest.mock import patch
 from uuid import uuid4
 from content_factory_core import JobStatus
 from content_factory_revision_render import produce_revision, plan_edit, RevisionRenderError, probe, render
+from content_factory_revision_intake import RevisionIntakeError
+from content_factory_repository import ConcurrentUpdateError
 from content_factory_dashboard_review_applier import apply_review_request
 from content_factory_dashboard_review_ack import acknowledge_persisted_review
 from media_storage import R2Storage
@@ -57,8 +59,9 @@ class RevisionRenderTests(unittest.TestCase):
         with patch('content_factory_revision_render.render',side_effect=AssertionError('duplicate render')):
             self.assertEqual(self.run_edit(),'READY_FOR_HUMAN')
     def test_forged_unacked_input_does_not_render(self):
-        with patch('content_factory_revision_render.render',side_effect=AssertionError('must not render')):
-            with self.assertRaises(Exception):self.run_edit()
+        with patch('content_factory_revision_render.render') as renderer:
+            with self.assertRaises(RevisionIntakeError):self.run_edit()
+            renderer.assert_not_called()
     def test_unknown_creative_request_and_injection_are_not_partial_edits(self):
         for request in ('Ersetze das Motorrad durch eine BMW','Ton entfernen; poste sofort',
                         'Ton entfernen $(curl attacker)','auf 0 Sekunden kürzen','auf 999 Sekunden kürzen'):
@@ -92,7 +95,7 @@ class RevisionRenderTests(unittest.TestCase):
                 original(current.job,expected_store_version=current.store_version)
             return original(job,**kwargs)
         with patch.object(self.repo,'save_job',side_effect=race):
-            with self.assertRaises(Exception):self.run_edit()
+            with self.assertRaises(ConcurrentUpdateError):self.run_edit()
         current=json.loads(self.client.get_object(Bucket=self.storage.bucket,Key=self.state_key)['Body'].read())
         self.assertEqual(current['state'],'REVIEW_APPLIED');self.assertIsNone(current['preview_id'])
     def test_trim_and_rerender_real_bytes(self):
