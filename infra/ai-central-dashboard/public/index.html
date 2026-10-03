@@ -585,6 +585,8 @@ const asrCall=async method=>{
  try{
   const result=await api("/api/private-asr?id="+encodeURIComponent(id)+"&date="+encodeURIComponent(date),{method,...(method==="POST"?{body:JSON.stringify({language:$("asrLang").value}),headers:{"content-type":"application/json"}}:{})});
   $("asrStatus").textContent=({CONSENT_SAVED_NOT_TRANSCRIBED:"Einwilligung gespeichert. Warte auf privaten Container.",PRIVATE_DRAFT_REQUESTED:"Privater Containerauftrag verarbeitet. Transkript abrufen.",CONSENT_SAVED_CONTAINER_UNAVAILABLE:"Einwilligung gespeichert; Container aktuell nicht erreichbar.",CONSENT_SAVED_AWAITING_CONTAINER_CONFIGURATION:"Einwilligung gespeichert; Containeranbindung fehlt.",AWAITING_PRIVATE_CONTAINER_ASR:"Noch kein Container-Transkript vorhanden.",CONSENT_REQUIRED:"Keine gültige Einwilligung.",PRIVATE_DRAFT_REQUIRES_REVIEW:"Transkript verfügbar – bitte prüfen.",REVOKED:"Einwilligung widerrufen."})[result.status]||result.status||"Unbekannter Status";
+  if(Number.isInteger(result.upstream_http_status))$("asrStatus").textContent+=" · Container HTTP "+result.upstream_http_status+" (Stufe: Auftrag)";
+  else if(result.failure_stage==="private_asr_transport")$("asrStatus").textContent+=" · Transportfehler vor Containerantwort";
   if(method==="DELETE")$("asrText").value="";
   if(result.status==="PRIVATE_DRAFT_REQUIRES_REVIEW")$("asrText").value=result.text;
  }catch(e){$("asrStatus").textContent="Privater ASR-Aufruf fehlgeschlagen: "+e.message}
