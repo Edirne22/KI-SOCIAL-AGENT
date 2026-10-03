@@ -17,5 +17,11 @@
   },
   "vars": {
     "AI_CENTRAL_FREE_TIER_VERIFIED": "true"
-  }
+  },
+  "services": [
+    {
+      "binding": "PRIVATE_ASR_SERVICE",
+      "service": "edirne22-private-asr"
+    }
+  ]
 }
