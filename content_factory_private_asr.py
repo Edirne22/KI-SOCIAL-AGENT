@@ -8,7 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import re
 
-_AUDIO_MIME = frozenset({"audio/webm", "audio/mp4", "audio/ogg"})
+_AUDIO_MIME = frozenset({"audio/webm", "audio/mp4", "audio/x-m4a", "audio/m4a", "audio/ogg"})
 _R2_KEY = re.compile(r"^ai-central/v1/uploads/[0-9a-f-]{36}/data$")
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _UUID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
