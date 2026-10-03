@@ -14,8 +14,15 @@ class R2:
         if Key not in self.data:raise Missing()
         return {"Body":io.BytesIO(self.data[Key]),"ETag":'"fake"'}
     def put_object(self,*,Bucket,Key,Body,**kw):
-        if kw.get("IfNoneMatch")=="*" and Key in self.data:raise ValueError("duplicate")
+        if kw.get("IfNoneMatch")=="*" and Key in self.data:
+            class Precondition(Exception):
+                response={"Error":{"Code":"PreconditionFailed"}}
+            raise Precondition()
         self.data[Key]=Body
+    def list_objects_v2(self,*,Bucket,Prefix,**kw):
+        return {"Contents":[{"Key":k} for k in self.data if k.startswith(Prefix)]}
+    def delete_object(self,*,Bucket,Key):
+        self.data.pop(Key,None)
 
 class Reply:
     def __init__(self,info=False):self.info=info
@@ -43,7 +50,8 @@ class AlbumTests(unittest.TestCase):
         b={"chat":{"id":42},"media_group_id":"abc123","date":1791059000,"photo":[{"file_id":"b"}]}
         reply=receive(b,update_id=201,token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
         self.assertIn("zurückgehalten",reply)
-        self.assertFalse(r2.data)
+        self.assertTrue(any("/quarantine/" in k for k in r2.data))
+        self.assertFalse(any(k.endswith("manifest.json") for k in r2.data))
     def test_out_of_order_album_item_requires_explicit_replay(self):
         r2=R2()
         base={"chat":{"id":42},"media_group_id":"abc123","date":1791059000}
@@ -51,7 +59,7 @@ class AlbumTests(unittest.TestCase):
         captioned={**base,"caption":"/privat","photo":[{"file_id":"a"}]}
         self.assertIn("zurückgehalten",receive(first,update_id=201,token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42))
         receive(captioned,update_id=200,token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
-        receive(first,update_id=201,token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
+        self.assertFalse(any("/quarantine/" in k for k in r2.data))
         manifests=[json.loads(v) for k,v in r2.data.items() if k.endswith("manifest.json")]
         self.assertEqual(len(manifests),1)
         self.assertEqual(len(manifests[0]["assets"]),2)
