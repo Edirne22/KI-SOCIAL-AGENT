@@ -1,0 +1,22 @@
+name: Qwen Code CLI offline smoke
+on:
+  push:
+    branches: [test/qwen-credential-probe]
+    paths: [.github/workflows/qwen-code-offline-smoke.yml]
+permissions:
+  contents: read
+jobs:
+  cli:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install official Qwen Code CLI and inspect interface offline
+        run: |
+          npm install --no-audit --no-fund -g @qwen-code/qwen-code
+          qwen --version
+          qwen --help > /tmp/qwen-help.txt
+          grep -q -- '--prompt' /tmp/qwen-help.txt
+          echo 'QWEN_CLI_INSTALL_AND_HEADLESS_INTERFACE=PASS; MODEL_AUTH_NOT_TESTED'
