@@ -62,6 +62,9 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--job-id", required=True)
     a = p.parse_args()
-    storage = R2Storage.from_env()
+    from pathlib import Path
+    import tempfile
+    tmp = tempfile.TemporaryDirectory(prefix='factory-notify-')
+    storage = R2Storage.from_env(cache_root=Path(tmp.name))
     print("BLOCK89_TELEGRAM_NOTICE " + notify_verified_revision(
         a.job_id, storage=storage, repository=R2JobRepository(storage)))
