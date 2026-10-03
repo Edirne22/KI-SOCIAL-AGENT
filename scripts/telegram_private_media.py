@@ -12,6 +12,9 @@ MAX_DOWNLOAD=19*1024*1024
 MAX_QUARANTINE_ITEMS=100
 ALLOWED={"image/jpeg":"jpg","image/png":"png","video/mp4":"mp4","video/quicktime":"mov"}
 
+class PermanentTelegramFileError(ValueError):
+    """This Telegram file can never be downloaded by retrying the same getFile."""
+
 def identify(message):
     caption=str(message.get("caption") or "").strip().lower()
     if caption not in ("/privat","/privat neu"):
@@ -28,24 +31,67 @@ def identify(message):
 def download(file_id,token,get=requests.get):
     if not token or not file_id:
         raise ValueError("Telegram-Datei fehlt")
-    info=get("https://api.telegram.org/bot"+token+"/getFile",params={"file_id":file_id},timeout=25)
-    info.raise_for_status()
-    obj=info.json()
+    try:
+        info=get("https://api.telegram.org/bot"+token+"/getFile",params={"file_id":file_id},timeout=25)
+    except requests.RequestException:
+        raise RuntimeError("Telegram-getFile Netzwerkfehler; erneuter Versuch erforderlich.") from None
+    # Telegram's public Bot API may reject oversized videos directly in
+    # getFile (HTTP 400) before returning file_size/file_path. Treat that as
+    # a permanent per-item error, not as a retryable outage that blocks
+    # every later update. Never log/propagate the raw requests URL: it
+    # contains the bot token and may include a private Telegram file ID.
+    status=getattr(info,"status_code",200)
+    try:
+        obj=info.json()
+    except (ValueError,TypeError):
+        obj={}
+    if not isinstance(obj,dict):
+        obj={}
+    error_code=obj.get("error_code")
+    if status in (400,413) or error_code in (400,413):
+        description=str(obj.get("description") or "").lower()
+        if (status==413 or error_code==413
+                or any(text in description for text in
+                       ("file is too big","file too big","file is too large",
+                        "file too large","request entity too large"))):
+            raise PermanentTelegramFileError("Telegram-Datei überschreitet das Bot-Downloadlimit; bitte Dashboard-Upload verwenden. Bereits gespeicherte Albumteile bleiben privat.")
+        raise PermanentTelegramFileError("Telegram kann diese Datei nicht bereitstellen; Datei erneut senden oder Dashboard-Upload verwenden.")
+    try:
+        info.raise_for_status()
+    except requests.HTTPError as exc:
+        response=getattr(exc,"response",None)
+        code=getattr(response,"status_code",status)
+        # A non-permanent API error remains retryable without acknowledging
+        # the update; bot token and file_id must never reach exception logs.
+        raise RuntimeError("Telegram-getFile vorübergehend nicht verfügbar (HTTP "+str(code)+"); erneuter Versuch erforderlich.") from None
     result=obj.get("result") or {}
     if not obj.get("ok") or not result.get("file_path"):
         raise RuntimeError("Telegram-Datei nicht verfügbar")
     if result.get("file_size",0)>MAX_DOWNLOAD:
-        raise ValueError("Datei zu groß für den Telegram-Bot-Download; Dashboard-Upload verwenden.")
+        raise PermanentTelegramFileError("Datei zu groß für den Telegram-Bot-Download; Dashboard-Upload verwenden.")
     path=result["file_path"]
     if not re.fullmatch(r"[a-zA-Z0-9_./-]{1,250}",path) or ".." in path.split("/"):
         raise ValueError("Ungültiger Telegram-Dateipfad")
-    response=get("https://api.telegram.org/file/bot"+token+"/"+path,timeout=90,stream=True)
-    response.raise_for_status()
+    try:
+        response=get("https://api.telegram.org/file/bot"+token+"/"+path,timeout=90,stream=True)
+    except requests.RequestException:
+        raise RuntimeError("Telegram-Dateidownload Netzwerkfehler; erneuter Versuch erforderlich.") from None
+    try:
+        response.raise_for_status()
+    except requests.HTTPError as exc:
+        res=getattr(exc,"response",None)
+        status=getattr(res,"status_code",getattr(response,"status_code","unknown"))
+        if status in (400,413):
+            raise PermanentTelegramFileError("Telegram-Datei über Bot nicht abrufbar; Dashboard-Upload verwenden.") from None
+        raise RuntimeError("Telegram-Dateidownload HTTP "+str(status)+"; erneuter Versuch erforderlich.") from None
     buf=bytearray()
-    for part in response.iter_content(chunk_size=65536):
-        buf.extend(part)
-        if len(buf)>MAX_DOWNLOAD:
-            raise ValueError("Datei zu groß; Dashboard-Upload verwenden.")
+    try:
+        for part in response.iter_content(chunk_size=65536):
+            buf.extend(part)
+            if len(buf)>MAX_DOWNLOAD:
+                raise PermanentTelegramFileError("Datei zu groß; Dashboard-Upload verwenden.")
+    except requests.RequestException:
+        raise RuntimeError("Telegram-Dateidownload unterbrochen; erneuter Versuch erforderlich.") from None
     return bytes(buf)
 
 def _missing(exc):
@@ -102,6 +148,24 @@ def _quarantine(client, bucket, manifest, message, update_id):
         if previous != item:
             raise RuntimeError("Quarantine collision")
     return "Album-Datei zurückgehalten und bis zur privaten Freigabe dauerhaft vorgemerkt."
+
+def _reject_permanent(client, bucket, manifest, update_id, file_id):
+    """Metadata-only audit marker. A failed Telegram download is NEVER an asset."""
+    key=(manifest["prefix"]+"rejected/"+_asset_id(update_id,file_id)+".json")
+    record={"schema":"PRIVATE-TELEGRAM-REJECTED-V1",
+            "update_id":update_id,"reason":"getfile-permanent-rejection"}
+    payload=json.dumps(record).encode("utf-8")
+    try:
+        client.put_object(Bucket=bucket,Key=key,Body=payload,
+                          ContentType="application/json",IfNoneMatch="*")
+    except Exception as exc:
+        code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+        if code not in ("PreconditionFailed","412"):
+            raise
+        stored=client.get_object(Bucket=bucket,Key=key)["Body"].read()
+        if stored!=payload:
+            raise RuntimeError("Rejected item audit record collision") from None
+
 
 def _commit(client, bucket, manifest, file_id, mime, update_id, token, get):
     asset_id = _asset_id(update_id, file_id)
@@ -199,9 +263,15 @@ def receive(message, *, update_id, token, client=None, bucket=None,
     previously = _read_manifest(client, bucket, key)
     duplicate = bool(previously and any(a["asset_id"] == _asset_id(update_id, file_id)
                                          for a in previously.get("assets", [])))
-    _commit(client, bucket, manifest, file_id, mime, update_id, token, get)
+    try:
+        _commit(client, bucket, manifest, file_id, mime, update_id, token, get)
+    except PermanentTelegramFileError:
+        if group:
+            _reject_permanent(client, bucket, manifest, update_id, file_id)
+        raise
     # Once owner explicitly authorizes the album, replay earlier uncaptioned items.
     # A failed replay leaves the durable record for a subsequent authorized retry.
+    rejected_count = 0
     if group:
         prefix = manifest["prefix"] + "quarantine/"
         marker = None
@@ -214,12 +284,23 @@ def receive(message, *, update_id, token, client=None, bucket=None,
                 item = json.loads(client.get_object(Bucket=bucket, Key=entry["Key"])["Body"].read())
                 if item["mime"] not in ALLOWED:
                     raise ValueError("Invalid quarantined MIME")
-                _commit(client, bucket, manifest, item["file_id"], item["mime"],
-                        item["update_id"], token, get)
+                try:
+                    _commit(client, bucket, manifest, item["file_id"], item["mime"],
+                            item["update_id"], token, get)
+                except PermanentTelegramFileError:
+                    # Preserve an audit marker but do not let one rejected
+                    # uncaptioned video poison every subsequent album item.
+                    _reject_permanent(client, bucket, manifest,
+                                      item["update_id"], item["file_id"])
+                    client.delete_object(Bucket=bucket, Key=entry["Key"])
+                    rejected_count += 1
+                    continue
                 client.delete_object(Bucket=bucket, Key=entry["Key"])
             marker = page.get("NextContinuationToken")
             if not marker:
                 break
+    warning = (" · "+str(rejected_count)+" frühere Albumdatei(en) von Telegram dauerhaft abgewiesen; separat über Dashboard hochladen."
+               if rejected_count else "")
     if duplicate:
-        return "Privater Upload bereits gespeichert · " + job_id
-    return "Privat in R2 gespeichert · " + job_id + " · Keine Veröffentlichung."
+        return "Privater Upload bereits gespeichert · " + job_id + warning
+    return "Privat in R2 gespeichert · " + job_id + " · Keine Veröffentlichung." + warning

@@ -45,7 +45,7 @@ Once one safe test environment is active:
 2. Press **Run workflow**, this time selecting **main**. Paste the exact `tgalbum...` ID from the owner's bot receipt into `album_job_id` and `3` (or the true album file count) into `expected_count`.
 3. Check ONLY the job `owner-album-metadata-readonly-after-deploy` for `REAL_TELEGRAM_R2_METADATA_PASS`. It validates the private index/manifest, expected count, distinct asset IDs, absence of quarantined remnants, R2 HEAD object existence, byte lengths and MIME. It DOES NOT download personal photo/video bytes into CI.
 4. A green metadata audit does **not** independently verify stored file SHA-256; real visual playback and checksum validation must happen in an owner-private runtime or UI. Do not print file names, object keys, private hashes, chat ID or original media in GitHub logs.
-5. If the expected asset count is wrong, a MIME/size differs, quarantine remains, or owner receipt is missing: **FAIL**; inspect the legitimate bot run and correct the root cause, then rerun the entire affected staffellauf.
+5. If the expected asset count is wrong, a MIME/size differs, quarantine or permanently rejected items remain, or owner receipt is missing: **FAIL**; inspect the legitimate bot run and correct the root cause, then rerun the entire affected staffellauf.
 
 ## Boundaries and known gaps
 
@@ -59,10 +59,12 @@ Once one safe test environment is active:
 
 | Stage | HEAD / Run | Result | Next action |
 |---|---|---|---|
-| Synthetic CI on final SHA | Pending latest regression | PENDING | Read test logs |
-| Phase A real R2 with synthetic Telegram | Not dispatched yet | PENDING | Manual branch run |
-| Phase B real owner Telegram | Not sent to deployed PR code | PENDING | Safe environment + owner album |
-| Phase C read-only metadata audit | No real receipt yet | PENDING | Manual main run with actual job ID |
-| Private UI playback and no-publication owner check | Not checked | PENDING | Owner inspection |
+| Initial merged PR #371 synthetic CI | 18/18 tests + eight green workflows on pre-merge tested head | PASS | New incident tests on PR #375 still required |
+| Phase A real R2 with synthetic Telegram | [Run 37161146956](https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/37161146956), PASS real private R2 5 assets and CAS concurrency | PASS | Preserve this evidence |
+| Phase B real owner Telegram | Two private R2 receipt messages with same album ID; [receiver run 37161753290](https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/37161753290) failed on subsequent Telegram getFile HTTP 400 | PARTIAL/FAIL | Deploy PR #375 fix, let queued event run once |
+| Phase C read-only metadata audit | Exact owner receipt now exists; no independent R2 metadata run yet | PENDING | After fix, dispatch metadata workflow on main with actual job ID and **full intended album file count** |
+| Private UI playback and no-publication owner check | Not checked | PENDING | Owner inspection, no social publication authorized |
+
+**Live incident root-cause scope (PR #375):** The production receiver treated Bot API `getFile` HTTP 400 as an unclassified retryable HTTP exception and aborted subsequent Telegram updates before ACK. The response body was not present in the recorded stack trace, so a file-size rejection is **plausible but not proven**. The fix safely recognizes permanent 400/413, reports a dashboard fallback without leaking bot token/file ID, records album rejections as metadata, and lets following authorized album items continue. Only permanent download failures are ACKed; 5xx/network/R2 errors remain retryable. The metadata verifier now **FAILS** if rejected items remain, even if the successfully stored subset matches an artificially reduced expected count. To verify a full three-item Telegram album, owner must use a video below the existing bot download limit; a dashboard upload is a separate private job, not a merge into this album.
 
 Full LIVE acceptance requires PASS on Phase A **and** Phase B **and** Phase C, plus appropriate privacy and preview scope evidence. Tests passing alone are not merge or publication authority.

@@ -62,6 +62,9 @@ def verify(client, bucket, *, job_id, expected_count):
     quarantine = client.list_objects_v2(Bucket=bucket, Prefix=prefix + "quarantine/", MaxKeys=1)
     if quarantine.get("Contents"):
         raise RuntimeError("LIVE_UNREPLAYED_QUARANTINE")
+    rejected = client.list_objects_v2(Bucket=bucket, Prefix=prefix+"rejected/", MaxKeys=1)
+    if rejected.get("Contents"):
+        raise RuntimeError("LIVE_ALBUM_HAS_REJECTED_FILE_USE_SMALLER_VIDEO")
     # No secrets, file names, album content, object keys or full chat IDs logged.
     print("REAL_TELEGRAM_R2_METADATA_PASS private=yes "
           "originals_present=" + str(expected_count)

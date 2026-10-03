@@ -330,6 +330,10 @@ class AlbumTests(unittest.TestCase):
         r2.data[actual["prefix"] + "quarantine/test.json"] = b'{}'
         with self.assertRaisesRegex(RuntimeError, "LIVE_UNREPLAYED_QUARANTINE"):
             verify(r2, "test", job_id=job_id, expected_count=2)
+        r2.data.pop(actual["prefix"] + "quarantine/test.json")
+        r2.data[actual["prefix"] + "rejected/filebad.json"] = b'{}'
+        with self.assertRaisesRegex(RuntimeError, "LIVE_ALBUM_HAS_REJECTED_FILE"):
+            verify(r2, "test", job_id=job_id, expected_count=2)
 
 
     def test_boto3_supports_conditional_manifest_writes(self):
@@ -402,5 +406,178 @@ class AlbumTests(unittest.TestCase):
         manifests = [json.loads(v) for k, v in fake.data.items()
                      if k.endswith("manifest.json")]
         self.assertEqual(len(manifests[0]["assets"]), 5)
+
+
+    def test_real_incident_getfile_http_400_oversize_is_permanent_and_private(self):
+        # Real incident: Bot API rejects getFile before returning file_size,
+        # despite two other private album files already being acknowledged.
+        import requests
+        class TooLarge:
+            status_code = 400
+            def json(self):
+                return {"ok": False, "error_code": 400,
+                        "description": "Bad Request: file is too big"}
+            def raise_for_status(self):
+                raise requests.HTTPError("https://api.telegram.org/botSECRET/getFile?file_id=PRIVATE")
+        from scripts.telegram_private_media import download
+        with self.assertRaises(ValueError) as cm:
+            download("PRIVATE", "SECRET", get=lambda *args,**kw:TooLarge())
+        self.assertIn("Dashboard-Upload", str(cm.exception))
+        self.assertNotIn("SECRET", str(cm.exception))
+        self.assertNotIn("PRIVATE", str(cm.exception))
+        r2 = R2()
+        base={"chat":{"id":42},"media_group_id":"size-incident","date":1791059000}
+        receive({**base,"caption":"/privat","photo":[{"file_id":"ok1"}]},
+                update_id=80, token="synthetic",client=r2,bucket="test",
+                get=get,authorized_chat=42)
+        with self.assertRaises(ValueError):
+            receive({**base,"video":{"file_id":"oversized","mime_type":"video/mp4"}},
+                    update_id=81,token="SECRET",client=r2,bucket="test",
+                    get=lambda *args,**kw:TooLarge(),authorized_chat=42)
+        receive({**base,"photo":[{"file_id":"ok2"}]},
+                update_id=82,token="synthetic",client=r2,bucket="test",
+                get=get,authorized_chat=42)
+        manifests=[json.loads(v) for k,v in r2.data.items() if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests),1)
+        self.assertEqual(len(manifests[0]["assets"]),2)
+        self.assertEqual(manifests[0]["lane"],"private")
+
+    def test_unknown_bot_getfile_400_cannot_poison_or_leak_credentials(self):
+        import requests
+        from scripts.telegram_private_media import download
+        class BadFile:
+            status_code=400
+            def json(self):
+                return {"ok":False,"error_code":400,"description":"Bad Request: wrong file identifier"}
+            def raise_for_status(self):
+                raise requests.HTTPError("botPRIVATE_TOKEN/getFile?file_id=PRIVATE_FILE")
+        with self.assertRaises(ValueError) as cm:
+            download("PRIVATE_FILE","PRIVATE_TOKEN",get=lambda *args,**kw:BadFile())
+        self.assertNotIn("PRIVATE_TOKEN",str(cm.exception))
+        self.assertNotIn("PRIVATE_FILE",str(cm.exception))
+
+    def test_transient_getfile_http_503_retryable_without_token_exposure(self):
+        import requests
+        from scripts.telegram_private_media import download
+        class ServerDown:
+            status_code=503
+            def json(self):
+                return {"ok":False,"error_code":503,"description":"temporarily unavailable"}
+            def raise_for_status(self):
+                raise requests.HTTPError("botSECRET/getFile?file_id=SENSITIVE")
+        with self.assertRaises(RuntimeError) as cm:
+            download("SENSITIVE","SECRET",get=lambda *args,**kw:ServerDown())
+        self.assertIn("erneuter Versuch",str(cm.exception))
+        self.assertNotIn("SECRET",str(cm.exception))
+        self.assertNotIn("SENSITIVE",str(cm.exception))
+
+    def test_router_acknowledges_permanent_file_error_and_processes_next_update(self):
+        import ast
+        from pathlib import Path
+        tree=ast.parse(Path("telegram_router.py").read_text())
+        main=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=="main")
+        ns={}
+        exec(compile(ast.Module(body=[main],type_ignores=[]),"telegram_router.py","exec"),ns)
+        handled=[]
+        acked=[]
+        replies=[]
+        updates=[
+            {"update_id":81,"message":{"chat":{"id":42},"media_group_id":"incident",
+                                        "date":1791059000,
+                                        "video":{"file_id":"too-big","mime_type":"video/mp4"}}},
+            {"update_id":82,"message":{"chat":{"id":42},"media_group_id":"incident",
+                                        "date":1791059000,
+                                        "photo":[{"file_id":"following"}]}}
+        ]
+        def fake_receive(msg,**kwargs):
+            handled.append(msg)
+            if msg.get("video"):
+                raise ValueError("Telegram-Datei überschreitet das Bot-Downloadlimit")
+            return "Privat in R2 gespeichert · synthetic"
+        ns.update({
+            "get_chat_id":lambda:42,
+            "_read_last_update_id":lambda:80,
+            "get_updates":lambda **kw:updates if kw.get("offset")==81 else [],
+            "_ack":lambda uid:acked.append(uid),
+            "receive_private_media":fake_receive,
+            "send_message":lambda msg:replies.append(msg),
+            "os":__import__("os"),
+        })
+        ns["main"]()
+        self.assertEqual(acked,[81,82])
+        self.assertEqual(len(handled),2)
+        self.assertIn("Bot-Downloadlimit",replies[0])
+        self.assertIn("Privat in R2 gespeichert",replies[1])
+
+
+    def test_oversized_pre_caption_video_is_durably_rejected_and_does_not_block_album(self):
+        # A pre-caption video quarantined before a small owner-captioned
+        # photo must not poison later photo processing if getFile returns 400.
+        import requests
+        class TooLarge:
+            status_code = 400
+            def json(self):
+                return {"ok":False,"error_code":400,
+                        "description":"Bad Request: file is too big"}
+            def raise_for_status(self):
+                raise requests.HTTPError("botSECRET/getFile?file_id=PRIVATE")
+        def fake_get(url, **kw):
+            if kw.get("params",{}).get("file_id") == "oversized":
+                return TooLarge()
+            return get(url,**kw)
+        r2=R2()
+        base={"chat":{"id":42},"media_group_id":"quarantine-large",
+              "date":1791059000}
+        self.assertIn("zurückgehalten",receive(
+            {**base,"video":{"file_id":"oversized","mime_type":"video/mp4"}},
+            update_id=201,token="synthetic",client=r2,bucket="test",
+            get=fake_get,authorized_chat=42))
+        result=receive(
+            {**base,"caption":"/privat","photo":[{"file_id":"owner-photo"}]},
+            update_id=202,token="synthetic",client=r2,bucket="test",
+            get=fake_get,authorized_chat=42)
+        self.assertIn("Privat in R2 gespeichert",result)
+        self.assertIn("dauerhaft abgewiesen",result)
+        next_result=receive(
+            {**base,"photo":[{"file_id":"second-photo"}]},
+            update_id=203,token="synthetic",client=r2,bucket="test",
+            get=fake_get,authorized_chat=42)
+        self.assertIn("Privat in R2 gespeichert",next_result)
+        self.assertEqual(len([k for k in r2.data if "/quarantine/" in k]),0)
+        self.assertEqual(len([k for k in r2.data if "/rejected/" in k]),1)
+        manifests=[json.loads(v) for k,v in r2.data.items()
+                   if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests),1)
+        self.assertEqual(len(manifests[0]["assets"]),2)
+        self.assertEqual(manifests[0]["lane"],"private")
+
+
+    def test_file_stream_http_failure_never_leaks_bot_token(self):
+        import requests
+        from scripts.telegram_private_media import download
+        class FileUnavailable:
+            status_code=503
+            def raise_for_status(self):
+                raise requests.HTTPError("https://api.telegram.org/file/botSECRET/privatepath")
+        def fake_get(url, **kwargs):
+            if url.endswith("/getFile"):
+                return Reply()
+            return FileUnavailable()
+        with self.assertRaises(RuntimeError) as cm:
+            download("FILEID","SECRET",get=fake_get)
+        self.assertNotIn("SECRET",str(cm.exception))
+        self.assertNotIn("privatepath",str(cm.exception))
+        self.assertIn("erneuter Versuch",str(cm.exception))
+
+    def test_getfile_network_failure_does_not_ack_or_log_token(self):
+        import requests
+        from scripts.telegram_private_media import download
+        def fake_get(url, **kwargs):
+            raise requests.ConnectionError("https://api.telegram.org/botSECRET/getFile")
+        with self.assertRaises(RuntimeError) as cm:
+            download("PRIVATE","SECRET",get=fake_get)
+        self.assertNotIn("SECRET",str(cm.exception))
+        self.assertNotIn("PRIVATE",str(cm.exception))
+        self.assertIn("erneuter Versuch",str(cm.exception))
 
 if __name__=="__main__":unittest.main()
