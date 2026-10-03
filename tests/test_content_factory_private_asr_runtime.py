@@ -24,6 +24,16 @@ def req(**kw):
 class RuntimeBoundaryTests(unittest.TestCase):
     def test_synthetic_model_positive(self):
         self.assertEqual(transcribe_private_audio(req(),AUDIO,model=FakeModel()).text,"Synthetic result")
+    def test_m4a_mime_variants_accepted_by_runtime(self):
+        # The Dashboard accepts both MIME variants; runtime must match.
+        class CheckM4AModel(FakeModel):
+            def transcribe(self, path, **kwargs):
+                assert path.endswith(".m4a")
+                return super().transcribe(path, **kwargs)
+        for mime in ("audio/mp4", "audio/x-m4a", "audio/m4a"):
+            with self.subTest(mime=mime):
+                result=transcribe_private_audio(req(mime=mime), AUDIO, model=CheckM4AModel())
+                self.assertEqual(result.text, "Synthetic result")
     def test_wrong_bytes_rejected_before_model(self):
         with self.assertRaises(PrivateASRError):
             transcribe_private_audio(req(),b"x"*len(AUDIO),model=FakeModel())
