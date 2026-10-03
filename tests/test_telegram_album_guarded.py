@@ -75,4 +75,48 @@ class AlbumTests(unittest.TestCase):
     def test_other_chat_rejected(self):
         with self.assertRaises(PermissionError):
             receive({"chat":{"id":99},"caption":"/privat","photo":[{"file_id":"a"}]},update_id=1,token="synthetic",authorized_chat=42)
+
+    def test_interrupted_original_write_recovers_without_overwrite(self):
+        from scripts.r2_media_warehouse import new_manifest, store_original
+        from datetime import datetime, timezone
+        class Precondition(Exception):
+            response={"Error":{"Code":"PreconditionFailed"}}
+        class StrictR2(R2):
+            def put_object(self,*,Bucket,Key,Body,**kw):
+                if kw.get("IfNoneMatch")=="*" and Key in self.data:
+                    raise Precondition()
+                super().put_object(Bucket=Bucket,Key=Key,Body=Body,**kw)
+        r2=StrictR2()
+        manifest=new_manifest(lane="private",title="test",job_id="recoverytest12345",
+                              created_at=datetime(2026,10,3,tzinfo=timezone.utc))
+        from scripts.r2_media_warehouse import append_asset
+        _,key=append_asset(manifest,asset_id="file1234567890",filename="a.jpg",
+                           mime="image/jpeg",payload=b"synthetic")
+        r2.data[key]=b"synthetic"  # Original persisted, manifest interrupted.
+        updated=store_original(r2,"test",manifest,asset_id="file1234567890",
+                               filename="a.jpg",mime="image/jpeg",payload=b"synthetic")
+        self.assertEqual(len(updated["assets"]),1)
+        self.assertEqual(r2.data[key],b"synthetic")
+
+    def test_interrupted_original_collision_fails_closed(self):
+        from scripts.r2_media_warehouse import new_manifest, store_original, append_asset
+        from datetime import datetime, timezone
+        class Precondition(Exception):
+            response={"Error":{"Code":"PreconditionFailed"}}
+        class StrictR2(R2):
+            def put_object(self,*,Bucket,Key,Body,**kw):
+                if kw.get("IfNoneMatch")=="*" and Key in self.data:
+                    raise Precondition()
+                super().put_object(Bucket=Bucket,Key=Key,Body=Body,**kw)
+        r2=StrictR2()
+        manifest=new_manifest(lane="private",title="test",job_id="recoverytest12345",
+                              created_at=datetime(2026,10,3,tzinfo=timezone.utc))
+        _,key=append_asset(manifest,asset_id="file1234567890",filename="a.jpg",
+                           mime="image/jpeg",payload=b"synthetic")
+        r2.data[key]=b"tampered"
+        with self.assertRaisesRegex(RuntimeError,"immutable original collision"):
+            store_original(r2,"test",manifest,asset_id="file1234567890",
+                           filename="a.jpg",mime="image/jpeg",payload=b"synthetic")
+        self.assertEqual(r2.data[key],b"tampered")
+
 if __name__=="__main__":unittest.main()
