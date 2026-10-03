@@ -52,5 +52,28 @@ def store_original(client,bucket,manifest,*,asset_id,filename,mime,payload):
     """R2 first, manifest last. Never overwrite originals or acknowledge failed writes."""
     updated,key=append_asset(manifest,asset_id=asset_id,filename=filename,mime=mime,payload=payload)
     client.put_object(Bucket=bucket,Key=key,Body=payload,ContentType=mime,IfNoneMatch="*")
-    # Manifest updates are compare-and-swap: never silently lose another upload.\n    manifest_key=manifest["prefix"]+"manifest.json"\n    try:\n        existing=client.get_object(Bucket=bucket,Key=manifest_key)\n    except Exception as exc:\n        code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))\n        if code not in ("404","NoSuchKey","NotFound"):\n            raise\n        existing=None\n    if existing is None:\n        if manifest["assets"]:\n            raise RuntimeError("manifest missing after previous upload; recovery required")\n        condition={"IfNoneMatch":"*"}\n    else:\n        previous=json.loads(existing["Body"].read())\n        if previous != manifest:\n            raise RuntimeError("manifest changed concurrently; reload before retry")\n        etag=existing.get("ETag")\n        if not etag:\n            raise RuntimeError("manifest ETag missing; unsafe update blocked")\n        condition={"IfMatch":etag}\n    client.put_object(Bucket=bucket,Key=manifest_key,\n                      Body=json.dumps(updated,ensure_ascii=False).encode("utf-8"),\n                      ContentType="application/json",**condition)
+    # Manifest updates are compare-and-swap: never silently lose another upload.
+    manifest_key=manifest["prefix"]+"manifest.json"
+    try:
+        existing=client.get_object(Bucket=bucket,Key=manifest_key)
+    except Exception as exc:
+        code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+        if code not in ("404","NoSuchKey","NotFound"):
+            raise
+        existing=None
+    if existing is None:
+        if manifest["assets"]:
+            raise RuntimeError("manifest missing after previous upload; recovery required")
+        condition={"IfNoneMatch":"*"}
+    else:
+        previous=json.loads(existing["Body"].read())
+        if previous != manifest:
+            raise RuntimeError("manifest changed concurrently; reload before retry")
+        etag=existing.get("ETag")
+        if not etag:
+            raise RuntimeError("manifest ETag missing; unsafe update blocked")
+        condition={"IfMatch":etag}
+    client.put_object(Bucket=bucket,Key=manifest_key,
+                      Body=json.dumps(updated,ensure_ascii=False).encode("utf-8"),
+                      ContentType="application/json",**condition)
     return updated
