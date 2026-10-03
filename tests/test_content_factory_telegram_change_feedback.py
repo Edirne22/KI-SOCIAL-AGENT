@@ -44,7 +44,7 @@ class FeedbackTests(unittest.TestCase):
         self.assertNotIn("publish", result)
     def test_control_characters_rejected(self):
         with self.assertRaises(ValueError):
-            prepare_change_text(self.ctx, **{**self.args, "text": "Ton entfernen\\x00"})
+            prepare_change_text(self.ctx, **{**self.args, "text": "Ton entfernen" + chr(0)})
     def test_credentials_blocked(self):
         with self.assertRaises(ValueError):
             prepare_change_text(self.ctx, **{**self.args, "text": "password=secret123"})
