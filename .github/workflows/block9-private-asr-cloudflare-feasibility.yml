@@ -34,7 +34,7 @@ jobs:
       - name: Build-time Wrangler syntax check for existing installation
         working-directory: infra/openchatcut-cloudflare
         run: |
-          npm ci
+          npm install --no-audit --no-fund
           npx wrangler deploy --dry-run --containers-rollout=none
       - name: Cost and model truth boundary
         run: echo "READ_ONLY_INVENTORY_ONLY. Existing OpenChatCut must not be overwritten. Separate ASR instance cannot be deployed until confirmed no extra charges and offline model provisioning."
