@@ -241,7 +241,7 @@ class AlbumTests(unittest.TestCase):
             "_ack":lambda uid:acked.append(uid),
             "receive_private_media":lambda msg,**kw:receive(msg,client=r2,bucket="test",get=get,**kw),
             "send_message":lambda msg:sent.append(msg),
-            "os":__import__("os"),
+            "os":type("FakeOS",(),{"environ":{"TELEGRAM_BOT_TOKEN":"synthetic"}})(),
         })
         namespace["main"]()
         manifests=[json.loads(v) for k,v in r2.data.items() if k.endswith("manifest.json")]
