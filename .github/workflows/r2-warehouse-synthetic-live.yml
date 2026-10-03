@@ -50,5 +50,10 @@ jobs:
           done
       - name: Install minimal dependency
         run: python -m pip install --disable-pip-version-check boto3 requests
+      - name: Install and verify FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version | head -n 1
       - name: Synthetic photo video private R2 live roundtrip
         run: python -m scripts.r2_warehouse_live_smoke
