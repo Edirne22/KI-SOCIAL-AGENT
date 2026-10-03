@@ -4,6 +4,7 @@ on:
     paths:
       - '.github/workflows/guarded-development-agent.yml'
       - 'scripts/guarded_development_agent.py'
+      - 'tests/test_guarded_development_agent.py'
   workflow_dispatch:
     inputs:
       issue_number:
@@ -64,11 +65,17 @@ jobs:
         env:
           ISSUE_NUMBER: ${{ inputs.issue_number || '369' }}
         run: python -m scripts.guarded_development_agent --issue "$ISSUE_NUMBER"
+      - name: Test development planner safeguards
+        run: python -m unittest discover -s tests -p 'test_guarded_development_agent.py' -v
       - name: Verify existing private media regression suite
         run: |
           python -m pip install --disable-pip-version-check requests boto3
           python -m unittest discover -s tests -p 'test_r2_media_warehouse.py' -v
-          python -m unittest discover -s tests -p 'test_telegram_private_media.py' -v
+          if test -f scripts/telegram_private_media.py; then
+            python -m unittest discover -s tests -p 'test_telegram_private_media.py' -v
+          else
+            echo 'BLOCKED_MISSING_SOURCE: private Telegram intake remains on separate unmerged branch'
+          fi
       - name: Upload non-sensitive development plan
         uses: actions/upload-artifact@v4
         with:
