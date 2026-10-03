@@ -32,6 +32,7 @@ jobs:
         working-directory: infra/private-asr-cloudflare
         run: |
           npm install --no-audit --no-fund
+          cp ../private-asr/Dockerfile ./Dockerfile
           npx wrangler types
           npx tsc --noEmit --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --lib es2022,dom --types @cloudflare/workers-types src/index.ts
       - name: Standalone offline model image build
