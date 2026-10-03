@@ -1,0 +1,58 @@
+name: Guarded Development Agent - Proposal Gate
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Explicit reviewed GitHub issue number"
+        required: true
+        type: string
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+concurrency:
+  group: guarded-dev-proposal-${{ inputs.issue_number }}
+  cancel-in-progress: false
+jobs:
+  verify-development-request:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify explicit issue and repository guardrails
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ inputs.issue_number }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import json, os, re, urllib.request
+          from pathlib import Path
+          number=os.environ["ISSUE_NUMBER"]
+          if not re.fullmatch(r"[1-9][0-9]{0,5}",number):
+              raise SystemExit("Invalid issue number")
+          for path in ("MASTER-SNAPSHOT.md","PROJECT_GUARDRAILS.md"):
+              if not Path(path).is_file() or not Path(path).read_text().strip():
+                  raise SystemExit("Missing mandatory guardrail: "+path)
+          url="https://api.github.com/repos/"+os.environ["REPOSITORY"]+"/issues/"+number
+          request=urllib.request.Request(url,headers={
+              "Authorization":"Bearer "+os.environ["GH_TOKEN"],
+              "Accept":"application/vnd.github+json",
+              "User-Agent":"Edirne22-Guarded-Development-Gate"})
+          with urllib.request.urlopen(request,timeout=20) as response:
+              issue=json.load(response)
+          if issue.get("state")!="open" or "pull_request" in issue:
+              raise SystemExit("Development issue must be open and not a PR")
+          body=issue.get("body") or ""
+          if not body.strip():
+              raise SystemExit("Empty development request")
+          print("Verified open development issue #"+number)
+          print("Mandatory repository guardrails present")
+          print("READ_ONLY_PROPOSAL_GATE_PASS")
+          print("NO_CODE_EXECUTION_NO_PUSH_NO_DEPLOY")
+          PY
