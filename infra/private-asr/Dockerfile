@@ -13,8 +13,7 @@ RUN HF_HUB_OFFLINE=0 python -c "from huggingface_hub import snapshot_download; s
  && test -s /opt/private-asr-model/model.bin \
  && test -s /opt/private-asr-model/config.json
 COPY content_factory_private_asr.py content_factory_private_asr_runtime.py content_factory_private_asr_r2_bridge.py /app/
-# The model must be mounted or pre-provisioned privately before runtime;
-# no remote download or GitHub personal voice artifacts.
+# Bundled model runs offline; never include personal audio in build or CI.
 COPY infra/private-asr/run_private_asr.py /app/
 RUN useradd --uid 10001 --create-home asr && chown -R asr:asr /app /opt/private-asr-model
 USER asr
