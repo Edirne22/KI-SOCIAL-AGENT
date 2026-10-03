@@ -34,7 +34,8 @@
   },
   "notes": [
     "Preserve Unicode diacritics, numbers, and model names",
-    "Vocabulary is a recognition hint, never a forced text replacement"
+    "Vocabulary is a recognition hint, never a forced text replacement",
+    "Third-party glossary definitions are not copied. Curated individual terms require review before use as ASR hints."
   ],
   "bilingual_technical_terms": [
     {
@@ -253,7 +254,97 @@
       "url": "https://www.f1tr.com/",
       "language": "tr",
       "role": "candidate only; not confirmed in active scout"
+    },
+    {
+      "name": "Motorcular Motorcu Sözlüğü",
+      "url": "https://new.motorcular.com/tr/motorcu-sozlugu",
+      "language": "tr",
+      "role": "candidate motorcycle glossary; page fetch timed out, verify later"
+    },
+    {
+      "name": "Motosiklet Defteri Sözlüğü",
+      "url": "https://www.motosikletdefteri.com/motosiklet-sozlugu",
+      "language": "tr",
+      "role": "Turkish motorcycle terminology; page accessible, 41 listed terms"
     }
   ],
-  "research_policy": "Registry mirrors sources found in existing Edirne22 scout and racing source code, plus requested F1TR. Entries are candidates, not claims that every site has been crawled. Extract only independently curated short terms and names; no article text or private recordings. Validate UTF-8 Turkish characters and spelling before prompting ASR."
+  "research_policy": "Registry mirrors sources found in existing Edirne22 scout and racing source code, plus requested F1TR. Entries are candidates, not claims that every site has been crawled. Extract only independently curated short terms and names; no article text or private recordings. Validate UTF-8 Turkish characters and spelling before prompting ASR.",
+  "additional_turkish_technical_terms": [
+    {
+      "tr": "amortisör",
+      "de": "Stoßdämpfer"
+    },
+    {
+      "tr": "artçı",
+      "de": "Sozius/Sozia"
+    },
+    {
+      "tr": "balata",
+      "de": "Bremsbelag"
+    },
+    {
+      "tr": "buji",
+      "de": "Zündkerze"
+    },
+    {
+      "tr": "conta",
+      "de": "Dichtung"
+    },
+    {
+      "tr": "dekompresyon",
+      "de": "Dekompression"
+    },
+    {
+      "tr": "dingil",
+      "de": "Achse"
+    },
+    {
+      "tr": "disk fren",
+      "de": "Scheibenbremse"
+    },
+    {
+      "tr": "enjeksiyon",
+      "de": "Einspritzung"
+    },
+    {
+      "tr": "gidon",
+      "de": "Lenker"
+    },
+    {
+      "tr": "hava filtresi",
+      "de": "Luftfilter"
+    },
+    {
+      "tr": "hızlı vites değiştirici",
+      "de": "Quickshifter"
+    },
+    {
+      "tr": "jant",
+      "de": "Felge"
+    },
+    {
+      "tr": "karbüratör",
+      "de": "Vergaser"
+    },
+    {
+      "tr": "radyatör",
+      "de": "Kühler"
+    },
+    {
+      "tr": "rodaj",
+      "de": "Einfahrphase"
+    },
+    {
+      "tr": "rölanti",
+      "de": "Leerlauf"
+    },
+    {
+      "tr": "yağ soğutucu",
+      "de": "Ölkühler"
+    },
+    {
+      "tr": "yakıt deposu",
+      "de": "Kraftstofftank"
+    }
+  ]
 }
