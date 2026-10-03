@@ -14,7 +14,7 @@ INBOX={"schema":"AI-INBOX-V1","id":ID,"kind":"file","channel":"web",
        "created_at":DAY+"T07:00:00Z","file":{"r2_key":f"ai-central/v1/uploads/{ID}/data",
        "mime":"audio/webm","size":len(AUDIO)}}
 CONSENT={"schema":"PRIVATE-ASR-CONSENT-V1","inbox_id":ID,
-         "source_sha256":SHA,"scope":"transcription","status":"granted"}
+         "source_sha256":SHA,"scope":"transcription","status":"granted","language":"de"}
 
 class FakeClient:
     def __init__(self,consent=True):
@@ -46,7 +46,7 @@ class BridgeTests(unittest.TestCase):
             verified_inbox(FakeClient(),"private","bad",DAY)
     def test_missing_consent(self):
         with self.assertRaises(PrivateASRError):
-            verified_consent(FakeClient(False),"private",ID,SHA)
+            verified_consent(FakeClient(False),"private",ID,SHA,"de")
     def test_synthetic_private_draft(self):
         from content_factory_private_asr import PrivateASRTranscript
         c=FakeClient()
