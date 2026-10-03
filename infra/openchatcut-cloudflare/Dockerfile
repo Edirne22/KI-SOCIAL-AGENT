@@ -22,4 +22,4 @@ ENV OPENCHATCUT_DISABLE_HARDWARE_ENCODING=1
 ENV OPENCHATCUT_RENDER_CONCURRENCY=50%
 ENV OPENCHATCUT_MAX_ACTIVE_EXPORTS=1
 EXPOSE 5199
-CMD ["npm","run","dev:shared","--","--host","0.0.0.0"]
+CMD ["/bin/sh","-c","/opt/private-asr-venv/bin/python /opt/private-asr/private_asr_server.py & exec npm run dev:shared -- --host 0.0.0.0"]
