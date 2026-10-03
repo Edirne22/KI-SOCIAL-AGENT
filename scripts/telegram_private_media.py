@@ -147,7 +147,7 @@ def _quarantine(client, bucket, manifest, message, update_id):
         previous = json.loads(client.get_object(Bucket=bucket, Key=key)["Body"].read())
         if previous != item:
             raise RuntimeError("Quarantine collision")
-    return ("Album-Datei bis zur privaten Freigabe vorgemerkt · "
+    return ("Album-Datei zurückgehalten und bis zur privaten Freigabe vorgemerkt · "
             + manifest["job_id"] + " · Keine Veröffentlichung.")
 
 def _reject_permanent(client, bucket, manifest, update_id, file_id):
