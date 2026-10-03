@@ -405,12 +405,22 @@ def main() -> None:
         normalized = " ".join(text.strip().lower().split())
         cmd = normalized.lstrip("/")
         # Shared AI inbox commands are explicit and do not touch existing approval paths.
-        if parse_central_command(text) is not None:
+        # Invalid explicit commands must not crash the entire polling batch.
+        # Transport/storage failures still propagate so Telegram can retry.
+        try:
+            central_command = parse_central_command(text)
+        except ValueError as exc:
+            send_message(f"KI-Zentrale: {exc}")
+            _ack(uid)
+            return
+        if central_command is not None:
             try:
                 answer=handle_central_inbox(text,uid,chat)
-                send_message(answer)
-            except (ValueError,RuntimeError) as exc:
+            except ValueError as exc:
                 send_message(f"KI-Zentrale: {exc}")
+                _ack(uid)
+                return
+            send_message(answer)
             # ACK only after successful R2 write/response. Transient errors stay retryable.
             _ack(uid)
             return
