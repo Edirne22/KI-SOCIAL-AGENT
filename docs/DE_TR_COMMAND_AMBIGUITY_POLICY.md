@@ -30,3 +30,15 @@ Werkzeugnamen und Schreibvarianten (z. B. ähnlich klingende Videoeditoren) **ni
 
 ## Ausbau
 Weitere Alternativbegriffe und individuelle Formulierungen nur mit Nutzerbestätigung aufnehmen. Wortkatalog und Audio-Testkatalog getrennt halten: Audio ausschließlich synthetisch oder ausdrücklich einzeln autorisiert und niemals in CI.
+
+
+## Voice-first acceptance requirements (owner expects ~90–95% Telegram audio)
+- Telegram voice notes (`voice`) and supported audio documents must be detected by the existing **single** Telegram router, never by a second getUpdates consumer.
+- **Do not download personal Telegram audio in GitHub Actions.** Existing scheduled router currently runs on GitHub Actions every 5 minutes, 06:00–21:59 UTC; audio needs a separately authenticated, private Telegram intake/relay and private R2 upload. Until that private route is verified, respond with an honest unsupported status rather than silently discarding audio. Do not claim 24/7 responsiveness from this schedule.
+- In private runtime: validate authorized chat, Telegram file size/MIME, file origin, private R2 canonical metadata, fresh consent, SHA256, language DE/TR; decode with ffmpeg and local faster-whisper. Avoid external browser speech providers by default.
+- A long voice note can contain multiple independent requests. Produce a numbered **draft** of the recognized transcript and proposed tasks. Do not split uncertain conjunctions into unintended actions. Request correction on uncertain words/targets and confirmation before any consequential action.
+- Allow simple corrections in DE/TR (e.g. 'Nein, ich meinte …' / 'Hayır, … demek istedim'), referencing one pending draft ticket. Do not auto-learn corrections as global synonyms.
+- Return status and final results to the same authorized Telegram chat and the shared dashboard using one deduplicated R2 ticket. No raw personal voice, transcript text, Telegram token or chat ID in CI logs, public previews or repository.
+- Spoken 'poste' is a request to **prepare a private preview**, not a publication authorization. The exact reviewed item needs its own explicit publication confirmation, tied to immutable item/revision identity. Ambiguous 'poste dies und das' must trigger clarification.
+- Run tests: Telegram voice, audio document, DE/TR/mixed language, background noise, long message, duplicate update, unauthorized chat, consent missing/revoked, malformed file, ambiguous tool name, transcript correction, multi-intent, item-specific publication approval and non-publish negatives. CI only synthetic audio; real owner's audio tested only in private runtime after existing consent.
+- Report actual word recognition quality based on measured DE/TR samples; no unsupported claim of 100% recognition. Never turn ASR confidence alone into authorization.
