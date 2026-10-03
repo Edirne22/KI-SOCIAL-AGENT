@@ -718,8 +718,8 @@ Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hede
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi", "media_status": "", "object_id": "1285968257941776_122118623217469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122118623217469415", "source_url": "https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-03 09:48 | ID: 18371055631210374]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-03-daily
 Telegram-Update-ID: 279361807
@@ -734,6 +734,7 @@ Was haltet ihr von Bezzecchis Tempo in Japan?
 Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-4-motogp-japonya-gp-2-01.jpg
+Publish-Provenienz: {"creation_id": "18009806372971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-4-motogp-japonya-gp-2-01.jpg", "media_status": "EIGENE_KI_EDITORIALGRAFIK", "platform": "instagram", "post_id": "18371055631210374", "published_media_id": "18371055631210374", "source_url": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
