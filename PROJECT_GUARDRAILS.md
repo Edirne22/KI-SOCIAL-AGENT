@@ -622,3 +622,27 @@ ANALYSIEREN
 - **Nur lesende Aktionen** wie „Transkript abrufen“ (R2-GET) dürfen keinen Container aufwecken. „Einwilligen“ darf nach expliziter Freigabe die Bereitschaft prüfen und den privaten ASR-Auftrag starten. Ein grüner Deploy oder HTTP-/health-200 allein beweist noch keinen erfolgreichen Transkriptionslauf.
 - Diagnose: sichere feste Fehlerstufe und numerischen HTTP-Status erfassen; **keine** Audiodaten, Transkripttexte, Owner-IDs, Tokens oder internen Upstream-Antwortkörper in Logs/CI. Private Medien niemals in GitHub-Runnern verarbeiten; für Ende-zu-Ende-Tests synthetische DE/TR-Dateien verwenden. Widerruf muss laufende und spätere Speicherung wirksam sperren.
 - Vor Integration anderer Container-Tools diese Regel erneut anwenden. Kostenkontingente prüfen; kein dauerhaftes Warmhalten, keine neuen kostenpflichtigen Ressourcen ohne Freigabe. Ein Architekturprinzip ist erst **implementiert**, wenn zugehörige Laufzeitintegration und Tests tatsächlich nachgewiesen sind.
+
+
+## Verbindliche Regel: Vollständige Abnahmematrix VOR dem ersten grünen Test (03.10.2026)
+
+**Keine Salamitaktik bei Tests und Freigaben.** Bei jedem neuen Feature oder Reparaturauftrag legt der ausführende Agent **vor dem ersten Implementierungs-Commit** eine endliche, prüfbare Abnahmematrix fest. Sie umfasst normale Nutzung, relevante Grenz- und Negativfälle, Wiederanlauf/Idempotenz, Parallelität/Reihenfolge, Datenschutz/Berechtigungen sowie die betroffenen Schnittstellen und End-to-End-Strecken. Nicht relevante Kategorien ausdrücklich mit Begründung als N/A markieren. Bereits bekannte Fehler und offene Anforderungen aus Issue, Snapshot, Guardrails und bestehender CI müssen vorher in dieser Matrix stehen.
+
+1. **Scope einfrieren:** Abnahmekriterien und explizite Nicht-Ziele im Issue oder PR dokumentieren. Nachträglich entdeckte Sicherheitslücken sofort beheben, aber keine stillen Funktionserweiterungen. Echte neue Anforderungen separat kennzeichnen.
+2. **Tests zusammen planen:** Für jedes Kriterium einen Test oder einen ausdrücklich ausgewiesenen manuellen Nachweis festlegen. Synthetische Tests und echte Integrations-/Live-Tests unterscheiden. Tests dürfen nicht als vollständig bezeichnet werden, wenn relevante Fälle fehlen.
+3. **Ein Abschlusslauf:** Nach Umsetzung sämtliche Kriterien auf dem finalen HEAD gemeinsam prüfen, einschließlich Regression, Red-Team, Positivkontrollen und betroffener Schnittstellen. Grün auf einem älteren Commit oder nur für einen Teil der Matrix ist keine Vollabnahme.
+4. **Ein Abschlussbericht:** Genau einmal eine Tabelle/Kurzbilanz mit PASS, FAIL, BLOCKED und N/A für sämtliche vereinbarten Kriterien sowie offenen Restrisiken und dem getesteten Commit vorlegen. Kein „fertig“ oder „letzter Test“, solange BLOCKED/FAIL im vereinbarten Scope stehen.
+5. **Kommunikation:** Bereits bekannte Restarbeiten **gebündelt vorab** nennen, nicht nach jedem grünen Einzeltest eine neue Überraschung präsentieren. Neue tatsächlich erst später entdeckte Defekte transparent als solche benennen, priorisieren und als Regression sichern.
+
+**Anlass/Regression:** Beim privaten Telegram-Mehrfachupload wurden Album-Reihenfolge, Wiederanlauf und automatische Nachholung erst nach mehreren grünen Einzeltests angesprochen. Künftig muss die vollständige Matrix vorab vorliegen; ein grüner Teillauf ist ausdrücklich nur Teilfortschritt. Die bestehenden Merge-, Kosten-, Datenschutz- und Veröffentlichungsregeln bleiben unverändert.
+
+
+## Verbindliche Arbeitsweise: Fakten, Tätigkeiten und kontinuierliche Ausführung (03.10.2026)
+
+- **Keine Nebendiskussionen:** Antworten und Statusberichte beschränken sich auf verifizierte Fakten, ausgeführte Tätigkeiten, konkrete Ergebnisse, echte Blocker und den unmittelbar nächsten Arbeitsschritt. Keine wiederholten Grundsatzdebatten, spekulativen Erfolgsmeldungen oder unnötigen Rückfragen.
+- **Statusmeldung ist kein Haltepunkt:** Nach jeder Statusmeldung im selben aktiven Arbeitsauftrag ohne erneute Aufforderung mit dem nächsten zulässigen Schritt fortfahren, bis die vereinbarten Abnahmekriterien erfüllt sind oder ein tatsächlicher Blocker vorliegt. Keine Hintergrundarbeit oder dauerhafte Überwachung behaupten, wenn dafür kein laufender Prozess bzw. keine Automation existiert.
+- **Freigaben effizient behandeln:** Bereits dokumentierte, gültige technische Vollmachten nicht erneut abfragen. Bestehende freigegebene Infrastruktur und synthetische Testdaten bevorzugen. Unkritische Teilaufgaben parallel zur Klärung eines echten Blockers fortsetzen, soweit technisch und sicher möglich.
+- **Urheberrecht, Persönlichkeitsrechte und private Daten:** Keine pauschale Umgehung von Rechts-, Datenschutz-, Plattform- oder Einwilligungsanforderungen. Vorhandene belegte Nutzungsrechte und ausdrücklich erteilte Einwilligungen wiederverwenden, statt dieselbe Frage unnötig zu wiederholen. Nur wenn für eine konkrete Verarbeitung tatsächlich Rechte, Einwilligung oder Befugnisse fehlen, diesen betroffenen Schritt begründet zurückstellen; alle davon unabhängigen zulässigen Arbeiten ohne Verzögerung fortführen. Persönliche Medien standardmäßig privat halten; keine ungefragte Veröffentlichung.
+- **Blocker-Meldung:** Nur konkrete Ursache, betroffene Aufgabe, mögliche sichere Alternative und notwendige Entscheidung nennen. Keine allgemeine rechtliche Diskussion ohne konkreten Bezug.
+
+Diese Arbeitsweise ändert **nicht** die ausdrücklichen Datenschutz-, Kosten-, Human-Approval-, Veröffentlichungs- und Merge-Grenzen dieser Datei.
