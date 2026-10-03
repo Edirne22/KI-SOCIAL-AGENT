@@ -31,12 +31,33 @@ export default {
     if ((url.pathname === "/health" && request.method !== "GET") ||
         (url.pathname === "/jobs" && request.method !== "POST"))
       return reply({error:"method"},405);
+    let jobBody: string | null = null;
     if (url.pathname === "/jobs") {
-      const size = Number(request.headers.get("content-length"));
-      if (!Number.isSafeInteger(size) || size < 1 || size > 1024)
-        return reply({error:"size"},413);
+      jobBody = await request.text();
+      const size = new TextEncoder().encode(jobBody).byteLength;
+      if (size < 1 || size > 1024) return reply({error:"size"},413);
     }
     const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr");
+    if (url.pathname === "/jobs") {
+      // Warm the same named container before sending a non-idempotent job.
+      // Never retry POST: duplicate transcription could overwrite private drafts.
+      let ready = false;
+      for (let attempt = 0; attempt < 4; attempt++) {
+        try {
+          const health = await instance.fetch(new Request("http://localhost:5200/health"));
+          if (health.ok && (await health.json() as {ready?: boolean}).ready === true) {
+            ready = true; break;
+          }
+        } catch { /* Container may still be starting. */ }
+        if (attempt < 3) await new Promise(resolve => setTimeout(resolve, 1500));
+      }
+      if (!ready) return reply({error:"container_not_ready"},503);
+      const headers = new Headers(request.headers);
+      headers.set("content-length", String(new TextEncoder().encode(jobBody!).byteLength));
+      return instance.fetch(new Request("http://localhost:5200/jobs", {
+        method:"POST", headers, body:jobBody!
+      }));
+    }
     return instance.fetch(new Request("http://localhost:5200" + url.pathname, request));
   }
 };
