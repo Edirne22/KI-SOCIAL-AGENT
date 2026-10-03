@@ -1,0 +1,79 @@
+name: Block9 synthetic Cloudflare ASR R2 Dashboard Telegram acceptance
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-private-e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      AI_DASHBOARD_TOKEN: ${{ secrets.AI_DASHBOARD_TOKEN }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      DASHBOARD_URL: https://edirne22-ai-central-dashboard.butupeli.workers.dev
+    steps:
+      - name: Validate credentials without printing them
+        run: |
+          set -euo pipefail
+          for key in AI_DASHBOARD_TOKEN TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
+            test -n "${!key:-}" || { echo "MISSING_$key"; exit 1; }
+          done
+      - name: Generate synthetic German spoken audio
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg
+          espeak-ng -v de -s 125 -w /tmp/synthetic.wav 'Dies ist ein technischer Test der Edirne zweiundzwanzig Fabrik.'
+          ffmpeg -nostdin -loglevel error -y -i /tmp/synthetic.wav -c:a libopus /tmp/synthetic.webm
+          test -s /tmp/synthetic.webm
+      - name: Real dashboard upload, private R2, consent, container transcription and draft read
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$DASHBOARD_URL"
+          curl --fail-with-body --silent --show-error --max-time 40 -X POST "$root/api/upload" \
+            -H "Authorization: Bearer $AI_DASHBOARD_TOKEN" \
+            -H "Origin: $root" -H 'Content-Type: audio/webm' \
+            -H 'x-upload-name: synthetic-ci-test.webm' \
+            --data-binary @/tmp/synthetic.webm > /tmp/upload.json
+          python3 - <<'PY'
+          import json,os
+          x=json.load(open('/tmp/upload.json'))
+          assert x['status']=='DRAFT_REQUIRES_REVIEW'
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              f.write('INBOX_ID='+x['id']+'\nINBOX_DATE='+x['created_at'][:10]+'\n')
+          PY
+          curl --silent --show-error --max-time 110 -X POST "$root/api/private-asr?id=$INBOX_ID&date=$INBOX_DATE" \
+            -H "Authorization: Bearer $AI_DASHBOARD_TOKEN" -H "Origin: $root" \
+            -H 'Content-Type: application/json' -d '{"language":"de"}' > /tmp/consent.json
+          python3 - <<'PY'
+          import json
+          x=json.load(open('/tmp/consent.json'))
+          assert x['status']=='PRIVATE_DRAFT_REQUESTED',x.get('status')
+          PY
+          for n in $(seq 1 12); do
+            curl --fail-with-body --silent --show-error --max-time 15 \
+              "$root/api/private-asr?id=$INBOX_ID&date=$INBOX_DATE" \
+              -H "Authorization: Bearer $AI_DASHBOARD_TOKEN" > /tmp/draft.json
+            if python3 - <<'PY'
+          import json
+          x=json.load(open('/tmp/draft.json'))
+          assert x['status']=='PRIVATE_DRAFT_REQUIRES_REVIEW'
+          assert len(x['text'].strip())>4
+          assert x['language']=='de'
+          PY
+            then echo SYNTHETIC_R2_DASHBOARD_WHISPER_OK; break; fi
+            test "$n" -lt 12 || exit 1
+            sleep 5
+          done
+          # Never print the private transcript or user data.
+      - name: Notify Telegram only after successful synthetic acceptance
+        run: |
+          python3 - <<'PY'
+          import os,urllib.parse,urllib.request
+          url='https://api.telegram.org/bot'+os.environ['TELEGRAM_BOT_TOKEN']+'/sendMessage'
+          payload=urllib.parse.urlencode({'chat_id':os.environ['TELEGRAM_CHAT_ID'],'text':'Edirne22 Block9: synthetischer Dashboard -> R2 -> Whisper -> privater Entwurf Test erfolgreich. Keine echten Sprachdaten verarbeitet.'}).encode()
+          with urllib.request.urlopen(urllib.request.Request(url,data=payload),timeout=20) as r:
+              assert r.status==200
+          print('SYNTHETIC_TELEGRAM_NOTIFICATION_OK')
+          PY
