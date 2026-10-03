@@ -32,6 +32,9 @@ def plan(issue: int) -> dict:
     if issue not in ALLOWED:
         raise ValueError("Development issue is not allowlisted")
     spec = ALLOWED[issue]
+    basics = Path("docs/GUARDED_DEVELOPMENT_AGENT_BASICS.md")
+    if not basics.is_file() or "Auftrag #369" not in basics.read_text(encoding="utf-8"):
+        raise ValueError("Missing mandatory development-agent basics")
     missing = [path for path in spec["paths"] if not Path(path).is_file()]
     return {
         "schema": "GUARDED-DEVELOPMENT-PLAN-V1",
@@ -39,6 +42,7 @@ def plan(issue: int) -> dict:
         **spec,
         "status": "BLOCKED_MISSING_SOURCE" if missing else "PLAN_ONLY_AWAITING_CODE_REVIEW",
         "missing_prerequisites": missing,
+        "mandatory_briefing": str(basics),
         "automatic_commit": False,
         "automatic_merge": False,
         "automatic_deploy": False,
