@@ -1,10 +1,22 @@
 name: R2 warehouse synthetic private live smoke
 on:
   workflow_dispatch:
+    inputs:
+      album_job_id:
+        description: 'Optional: tgalbum... receipt ID for POST-MERGE metadata-only live acceptance (no file download)'
+        required: false
+        type: string
+      expected_count:
+        description: 'Exact number of photos/videos actually sent by owner; required with album_job_id'
+        required: false
+        type: string
   pull_request:
     paths:
       - 'scripts/r2_media_warehouse.py'
       - 'scripts/r2_warehouse_live_smoke.py'
+      - 'scripts/telegram_private_album_real_r2_smoke.py'
+      - 'scripts/telegram_private_album_live_verify.py'
+      - 'scripts/telegram_private_media.py'
       - '.github/workflows/r2-warehouse-synthetic-live.yml'
 permissions:
   contents: read
@@ -18,7 +30,7 @@ jobs:
           python-version: '3.11'
       - name: Syntax and opt-in guard
         run: |
-          python -m py_compile scripts/r2_media_warehouse.py scripts/r2_warehouse_live_smoke.py
+          python -m py_compile scripts/r2_media_warehouse.py scripts/r2_warehouse_live_smoke.py scripts/telegram_private_album_real_r2_smoke.py scripts/telegram_private_album_live_verify.py
           python - <<'PY'
           from scripts.r2_media_warehouse import lane_for_upload
           assert lane_for_upload() == 'private'
@@ -26,7 +38,7 @@ jobs:
           print('OFFLINE_PRIVATE_GUARDS_PASS')
           PY
   live-synthetic-private:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && (github.event_name != 'workflow_dispatch' || inputs.album_job_id == '')
     needs: offline-safety
     runs-on: ubuntu-latest
     timeout-minutes: 8
@@ -57,3 +69,76 @@ jobs:
           ffmpeg -version | head -n 1
       - name: Synthetic photo video private R2 live roundtrip
         run: python -m scripts.r2_warehouse_live_smoke
+
+  telegram-album-real-r2-synthetic-telegram:
+    # Only an intentional manual dispatch on the exact PR branch can read
+    # existing R2 secrets. No polling Telegram or touching personal media.
+    if: ${{ github.event_name == 'workflow_dispatch' && github.repository == 'Edirne22/KI-SOCIAL-AGENT' && github.ref == 'refs/heads/feature/guarded-telegram-album-import' && inputs.album_job_id == '' }}
+    needs: offline-safety
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TELEGRAM_ALBUM_REAL_R2_SYNTHETIC_APPROVED: "true"
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Require existing private R2 credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          for key in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!key:-}" || { echo "MISSING_R2_BINDING_$key"; exit 1; }
+          done
+      - name: Install minimal R2 dependencies
+        run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Install and verify FFmpeg (fail closed)
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg
+          fi
+          command -v ffmpeg
+          ffmpeg -version >/dev/null
+      - name: Real private R2 album upload with synthetic Telegram requests only
+        run: python -m scripts.telegram_private_album_real_r2_smoke
+
+  owner-album-metadata-readonly-after-deploy:
+    # Real owner media must enter ONLY through the primary main Telegram
+    # poller after a guarded deployment. Never run two getUpdates consumers.
+    if: ${{ github.event_name == 'workflow_dispatch' && github.repository == 'Edirne22/KI-SOCIAL-AGENT' && github.ref == 'refs/heads/main' && inputs.album_job_id != '' }}
+    needs: offline-safety
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      ALBUM_JOB_ID: ${{ inputs.album_job_id }}
+      ALBUM_EXPECTED_COUNT: ${{ inputs.expected_count }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate exact owner input before R2 access
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$ALBUM_JOB_ID" =~ ^tgalbum[a-f0-9]{32}$ ]] || { echo INVALID_ALBUM_ID; exit 1; }
+          [[ "$ALBUM_EXPECTED_COUNT" =~ ^([1-9]|[1-9][0-9]|100)$ ]] || { echo INVALID_ASSET_COUNT; exit 1; }
+          for key in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!key:-}" || { echo "MISSING_R2_BINDING_$key"; exit 1; }
+          done
+      - name: Install read-only metadata verifier dependency
+        run: python -m pip install --disable-pip-version-check boto3 requests
+      - name: Verify owner album manifest and remote original HEAD metadata without downloading media
+        run: python -m scripts.telegram_private_album_live_verify --job-id "$ALBUM_JOB_ID" --expected-count "$ALBUM_EXPECTED_COUNT"
