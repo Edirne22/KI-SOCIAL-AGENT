@@ -390,6 +390,22 @@ def main() -> None:
         text = msg.get("text")
         if not isinstance(uid, int):
             continue
+        # Explicit private media intake precedes legacy Vision and video skip.
+        from scripts.telegram_private_media import identify as identify_private_media, receive as receive_private_media
+        if str(msg.get("caption") or "").strip().lower() in ("/privat", "/privat neu"):
+            if chat != allowed:
+                _ack(uid)
+                return
+            try:
+                answer=receive_private_media(msg,update_id=uid,token=os.environ.get("TELEGRAM_BOT_TOKEN",""))
+            except ValueError as exc:
+                send_message("Privater Medieneingang: "+str(exc))
+                _ack(uid)
+                return
+            # R2 or network errors propagate; update remains retryable.
+            send_message(answer)
+            _ack(uid)
+            return
         if _is_photo_message(upd):
             if chat != allowed:
                 _ack(uid)
@@ -405,12 +421,22 @@ def main() -> None:
         normalized = " ".join(text.strip().lower().split())
         cmd = normalized.lstrip("/")
         # Shared AI inbox commands are explicit and do not touch existing approval paths.
-        if parse_central_command(text) is not None:
+        # Invalid explicit commands must not crash the entire polling batch.
+        # Transport/storage failures still propagate so Telegram can retry.
+        try:
+            central_command = parse_central_command(text)
+        except ValueError as exc:
+            send_message(f"KI-Zentrale: {exc}")
+            _ack(uid)
+            return
+        if central_command is not None:
             try:
                 answer=handle_central_inbox(text,uid,chat)
-                send_message(answer)
-            except (ValueError,RuntimeError) as exc:
+            except ValueError as exc:
                 send_message(f"KI-Zentrale: {exc}")
+                _ack(uid)
+                return
+            send_message(answer)
             # ACK only after successful R2 write/response. Transient errors stay retryable.
             _ack(uid)
             return
@@ -561,6 +587,21 @@ def main() -> None:
             print(f"ROUTER: Allgemeines Update {uid} erfolgreich verarbeitet und bestätigt.")
             return
 
+        # Natural text is considered only after all existing racing/approval routes.
+        from scripts.ai_central_natural_text import classify_natural_text
+        natural = classify_natural_text(text)
+        if natural.kind == "draft":
+            try:
+                answer = handle_central_inbox("/zentrale auftrag " + natural.message, uid, chat)
+                send_message(answer)
+            except (ValueError, RuntimeError) as exc:
+                send_message(f"KI-Zentrale: {exc}")
+            _ack(uid)
+            return
+        if natural.kind == "clarify":
+            send_message("Unklarer Auftrag. Für einen privaten KI-Entwurf bitte mit KI: beginnen. Veröffentlichungen bleiben separat freigabepflichtig.")
+            _ack(uid)
+            return
         # FIX 3: freundliche Antwort statt stille Bestätigung
         print(f"ROUTER: Update {uid} unbekannt; sende freundliche Hilfe.")
         try:

@@ -4,8 +4,14 @@ on:
     paths:
       - "infra/ai-central-dashboard/**"
       - "scripts/ai_central_shared_inbox.py"
+      - "scripts/ai_central_natural_text.py"
+      - "scripts/r2_media_warehouse.py"
+      - "scripts/telegram_private_media.py"
       - "telegram_router.py"
       - "tests/test_ai_central_shared_inbox.py"
+      - "tests/test_ai_central_natural_text.py"
+      - "tests/test_r2_media_warehouse.py"
+      - "tests/test_telegram_private_media.py"
       - ".github/workflows/telegram-receive.yml"
       - ".github/workflows/ai-central-dashboard-tests.yml"
   workflow_dispatch:
@@ -23,9 +29,15 @@ jobs:
       - name: Install minimal shared inbox HTTP dependency
         run: python -m pip install --disable-pip-version-check requests
       - name: Syntax and imports
-        run: python -m py_compile telegram_router.py scripts/ai_central_shared_inbox.py tests/test_ai_central_shared_inbox.py
+        run: python -m py_compile telegram_router.py scripts/ai_central_shared_inbox.py tests/test_ai_central_shared_inbox.py scripts/r2_media_warehouse.py tests/test_r2_media_warehouse.py tests/test_ai_central_natural_text.py scripts/telegram_private_media.py tests/test_telegram_private_media.py
       - name: Telegram shared inbox unit tests
         run: python -m unittest discover -s tests -p 'test_ai_central_shared_inbox.py' -v
+      - name: Natural Telegram request regression
+        run: python -m unittest discover -s tests -p "test_ai_central_natural_text.py" -v
+      - name: R2 warehouse private/social synthetic media tests
+        run: python -m unittest discover -s tests -p "test_r2_media_warehouse.py" -v
+      - name: Private Telegram photo video regression
+        run: python -m unittest discover -s tests -p "test_telegram_private_media.py" -v
       - uses: actions/setup-node@v4
         with:
           node-version: "22"

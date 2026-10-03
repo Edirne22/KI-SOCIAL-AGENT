@@ -1,0 +1,31 @@
+name: R2 warehouse synthetic private live smoke
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live-synthetic-private:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      WAREHOUSE_SYNTHETIC_LIVE_APPROVED: "true"
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify existing private R2 binding
+        shell: bash
+        run: |
+          set -euo pipefail
+          for key in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
+            test -n "${!key:-}" || { echo "MISSING_R2_BINDING_$key"; exit 1; }
+          done
+      - name: Install minimal dependency
+        run: python -m pip install --disable-pip-version-check boto3 requests
+      - name: Synthetic photo video private R2 live roundtrip
+        run: python -m scripts.r2_warehouse_live_smoke
