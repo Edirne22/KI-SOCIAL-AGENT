@@ -47,6 +47,13 @@ jobs:
           npm install --no-audit --no-fund
           npx wrangler types
           npx tsc --noEmit --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --lib es2022,dom --types @cloudflare/workers-types src/index.ts
+      - name: Verify three tools in release image before deployment
+        shell: bash
+        working-directory: infra/private-asr-cloudflare
+        run: |
+          set -euo pipefail
+          docker build -t edirne22-media-tools:release .
+          docker run --rm --entrypoint python edirne22-media-tools:release -c 'import faster_whisper, scenedetect; import subprocess; subprocess.run(["ffmpeg", "-version"], check=True, stdout=subprocess.DEVNULL); print("WHISPER_FFMPEG_SCENEDETECT_OK")'
       - name: Deploy isolated private ASR worker and container
         working-directory: infra/private-asr-cloudflare
         run: npx wrangler deploy --config wrangler.jsonc
