@@ -123,3 +123,9 @@ test("browser selected-review status is truthful and old studio/preview surfaces
   assert.match(ui,/id="privatePlayer"/);
   assert.doesNotMatch(script,/\/api\/edit-status[^\n]*method:"POST"/);
 });
+test("Python sorted canonical JSON is semantically equal regardless of field order",async()=>{
+ const f=fixture(),key="dashboard_review:"+f.state.review.request_id;
+ f.stored.job.metadata[key]=Object.fromEntries(Object.entries(f.stored.job.metadata[key]).sort());
+ assert.equal((await f.fetchIt()).status,200);
+ f.stored.job.metadata[key].unexpected=true;assert.equal((await f.fetchIt()).status,409);
+});

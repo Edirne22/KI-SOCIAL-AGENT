@@ -168,3 +168,14 @@ test("NVIDIA free-team is explicitly selected and cannot be double-dispatched",a
   assert.equal(retry.status,409);assert.equal(calls.length,1);
  }finally{globalThis.fetch=old}
 });
+
+test("MP4 selected by the dashboard is accepted as a private draft",async()=>{
+ const e=env();const r=await worker.fetch(request("/api/upload",{method:"POST",body:new Uint8Array([0,0,0,24,102,116,121,112]),headers:{"content-type":"video/mp4","x-upload-name":"synthetic.mp4"}}),e);
+ assert.equal(r.status,202);assert.equal((await r.json()).status,"DRAFT_REQUIRES_REVIEW");
+ const entries=await (await worker.fetch(request("/api/inbox"),e)).json();assert.equal(entries.items[0].file.mime,"video/mp4");
+});
+test('inbox never labels a truncated old page as the latest jobs',async()=>{
+ const e=env();let limit;e.AI_CENTRAL_R2.list=async options=>{limit=options.limit;return {objects:[],truncated:true,cursor:'next'}};
+ const response=await worker.fetch(request('/api/inbox'),e);
+ assert.equal(response.status,409);assert.equal(limit,1000);assert.match((await response.json()).error,/no incomplete latest list/);
+});

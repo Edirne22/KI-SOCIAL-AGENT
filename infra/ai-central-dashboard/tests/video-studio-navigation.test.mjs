@@ -10,8 +10,10 @@ test("studio is explicit responsive area, no duplicate unsafe preview controls",
  assert.equal((html.match(/id="loadPreviews"/g)||[]).length,1);
  assert.match(html,/wrap\[data-tab="studio"\]/);
 });
-test("studio says no render/Telegram integration and never auto-posts",()=>{
- assert.match(html,/automatische Neuproduktion und Telegram-Fertigmeldung sind noch nicht angebunden/);
+test("studio bounds supported edits and does not promise Telegram or auto-posts",()=>{
+ assert.match(html,/Automatisch ausführbar/);
+ assert.match(html,/Andere kreative Änderungen bleiben zur Planung offen/);
+ assert.match(html,/Telegram-Fertigmeldung ist noch nicht angebunden/);
  assert.match(html,/Ein abgeschlossener Änderungsauftrag ist noch kein neues Video/);
  assert.match(html,/Keine neue geprüfte Vorschau seit der letzten Prüfung/);
 });
