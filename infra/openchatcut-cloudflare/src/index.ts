@@ -25,6 +25,15 @@ export class OpenChatCutContainer extends Container {
   defaultPort = 5199;
   sleepAfter = "5m";
   enableInternet = true;
+  override onStart() {
+    console.log(JSON.stringify({ event: "openchatcut_container_start", at: new Date().toISOString() }));
+  }
+  override onStop(stopParams: { exitCode: number; reason: string }) {
+    console.error(JSON.stringify({ event: "openchatcut_container_stop", at: new Date().toISOString(), exitCode: stopParams.exitCode, reason: stopParams.reason }));
+  }
+  override onError(error: unknown) {
+    console.error(JSON.stringify({ event: "openchatcut_container_error", at: new Date().toISOString(), message: String(error) }));
+  }
   async fetch(request: Request): Promise<Response> {
     this.renewActivityTimeout();
     return super.fetch(request);
