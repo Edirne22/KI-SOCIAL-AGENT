@@ -1,3 +1,4 @@
+import {privateASR} from "./private-asr.js";
 import {serveMetaDelivery} from "./meta-delivery.js";
 // Cloudflare Worker gateway: R2-backed shared Telegram+Web inbox.
 // No provider credentials, workflow tokens, auto-dispatch or approvals in this slice.
@@ -668,6 +669,7 @@ export default {async fetch(req,env){
     if(path==="/api/review-status")return await reviewStatus(req,env);
     if(path==="/api/edit-status")return await canonicalEditStatus(req,env);
     if(path==="/api/preview-video")return await getPreviewVideo(req,env);
+    if(path==="/api/private-asr")return await privateASR(req,env);
     if(path==="/api/inbox")return await inbox(req,env);
     if(path==="/api/upload")return await upload(req,env);
     if(path==="/api/upload-preview")return await privateUploadPreview(req,env);
