@@ -45,7 +45,7 @@ def prepare_change_text(context: PendingChange, *, chat_id: str, actor_id: str,
         raise ValueError("change feedback required (max 2000 chars)")
     if any(ord(char) < 32 and char not in "\n\t" for char in text):
         raise ValueError("invalid control character")
-    if re.search(r"(?i)(?:authorization\\s*:\\s*bearer|api[_-]?key\\s*[=:]|secret\\s*[=:]|password\\s*[=:])\\s*\\S+", text):
+    if re.search(r"(?i)(?:authorization\s*:\s*bearer|api[_-]?key\s*[=:]|secret\s*[=:]|password\s*[=:])\s*\S+", text):
         raise ValueError("possible credential in feedback")
     return {
         "schema": "FACTORY-REVIEW-INTENT-V1",
