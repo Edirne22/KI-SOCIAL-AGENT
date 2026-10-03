@@ -42,7 +42,7 @@ jobs:
           python -m pip install --disable-pip-version-check requests
       - name: Actual renderer integrity authority restart and canonical regression
         run: |
-          python -m unittest -v tests.test_content_factory_revision_render tests.test_content_factory_revision_intake tests.test_content_factory_dashboard_review_applier tests.test_content_factory_dashboard_review_ack tests.test_content_factory_r2_job_repository tests.test_content_factory_dashboard_preview tests.test_content_factory_golden_tablet tests.test_ai_central_shared_inbox
+          python -m unittest -v tests.test_block8_revision_http tests.test_content_factory_revision_render tests.test_content_factory_revision_intake tests.test_content_factory_dashboard_review_applier tests.test_content_factory_dashboard_review_ack tests.test_content_factory_r2_job_repository tests.test_content_factory_dashboard_preview tests.test_content_factory_golden_tablet tests.test_ai_central_shared_inbox
           python tests/test_source_fact_contract_v1.py
       - name: Actual FFmpeg synthetic input through Python canonical records into Worker
         env:
@@ -72,6 +72,6 @@ jobs:
             timeout 120s sudo apt-get update -qq
             timeout 120s sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
           fi
-          python -m pip install --disable-pip-version-check boto3
+          python -m pip install --disable-pip-version-check boto3 requests
       - name: New synthetic job only real private R2 bytes revision replay no social call
         run: python -m scripts.block8_revision_smoke --live-r2
