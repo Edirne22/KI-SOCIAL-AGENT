@@ -330,6 +330,10 @@ class AlbumTests(unittest.TestCase):
         r2.data[actual["prefix"] + "quarantine/test.json"] = b'{}'
         with self.assertRaisesRegex(RuntimeError, "LIVE_UNREPLAYED_QUARANTINE"):
             verify(r2, "test", job_id=job_id, expected_count=2)
+        r2.data.pop(actual["prefix"] + "quarantine/test.json")
+        r2.data[actual["prefix"] + "rejected/filebad.json"] = b'{}'
+        with self.assertRaisesRegex(RuntimeError, "LIVE_ALBUM_HAS_REJECTED_FILE"):
+            verify(r2, "test", job_id=job_id, expected_count=2)
 
 
     def test_boto3_supports_conditional_manifest_writes(self):
@@ -504,5 +508,47 @@ class AlbumTests(unittest.TestCase):
         self.assertEqual(len(handled),2)
         self.assertIn("Bot-Downloadlimit",replies[0])
         self.assertIn("Privat in R2 gespeichert",replies[1])
+
+
+    def test_oversized_pre_caption_video_is_durably_rejected_and_does_not_block_album(self):
+        # A pre-caption video quarantined before a small owner-captioned
+        # photo must not poison later photo processing if getFile returns 400.
+        import requests
+        class TooLarge:
+            status_code = 400
+            def json(self):
+                return {"ok":False,"error_code":400,
+                        "description":"Bad Request: file is too big"}
+            def raise_for_status(self):
+                raise requests.HTTPError("botSECRET/getFile?file_id=PRIVATE")
+        def fake_get(url, **kw):
+            if kw.get("params",{}).get("file_id") == "oversized":
+                return TooLarge()
+            return get(url,**kw)
+        r2=R2()
+        base={"chat":{"id":42},"media_group_id":"quarantine-large",
+              "date":1791059000}
+        self.assertIn("zurückgehalten",receive(
+            {**base,"video":{"file_id":"oversized","mime_type":"video/mp4"}},
+            update_id=201,token="synthetic",client=r2,bucket="test",
+            get=fake_get,authorized_chat=42))
+        result=receive(
+            {**base,"caption":"/privat","photo":[{"file_id":"owner-photo"}]},
+            update_id=202,token="synthetic",client=r2,bucket="test",
+            get=fake_get,authorized_chat=42)
+        self.assertIn("Privat in R2 gespeichert",result)
+        self.assertIn("dauerhaft abgewiesen",result)
+        next_result=receive(
+            {**base,"photo":[{"file_id":"second-photo"}]},
+            update_id=203,token="synthetic",client=r2,bucket="test",
+            get=fake_get,authorized_chat=42)
+        self.assertIn("Privat in R2 gespeichert",next_result)
+        self.assertEqual(len([k for k in r2.data if "/quarantine/" in k]),0)
+        self.assertEqual(len([k for k in r2.data if "/rejected/" in k]),1)
+        manifests=[json.loads(v) for k,v in r2.data.items()
+                   if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests),1)
+        self.assertEqual(len(manifests[0]["assets"]),2)
+        self.assertEqual(manifests[0]["lane"],"private")
 
 if __name__=="__main__":unittest.main()
