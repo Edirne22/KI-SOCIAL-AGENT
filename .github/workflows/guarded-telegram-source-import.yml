@@ -25,9 +25,15 @@ jobs:
           git show origin/feat/telegram-review-feedback-and-warmup-contract:scripts/telegram_private_media.py > scripts/telegram_private_media.py
           python -m py_compile scripts/telegram_private_media.py
           git add -N scripts/telegram_private_media.py
-          git diff --name-only | grep -Fx scripts/telegram_private_media.py
-          test "$(git diff --name-only | wc -l)" -eq 1
+          changed="$(git diff --name-only)"
+          if [ -n "$changed" ]; then
+            test "$changed" = scripts/telegram_private_media.py
+          fi
           git add scripts/telegram_private_media.py
+          if git diff --cached --quiet; then
+            echo 'Reviewed source already imported; no new commit required.'
+            exit 0
+          fi
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore: isolate existing private Telegram intake for guarded album development'
       - name: Push only isolated development branch
         env:
@@ -39,4 +45,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh pr view feature/guarded-telegram-album-import >/dev/null 2>&1 || gh pr create --draft --base main --head feature/guarded-telegram-album-import --title 'Block 9: isolated private Telegram intake baseline' --body 'Isolated existing source only. Not an album implementation. No automatic merge or deploy. Issue #369.'
+          if gh pr view feature/guarded-telegram-album-import >/dev/null 2>&1; then
+            echo 'Draft PR already exists.'
+          elif ! gh pr create --draft --base main --head feature/guarded-telegram-album-import --title 'Block 9: isolated private Telegram intake baseline' --body 'Isolated existing source only. Not an album implementation. No automatic merge or deploy. Issue #369.'; then
+            echo '::warning::GitHub Actions PR creation disabled. Branch pushed; PR must be opened using an authorized GitHub connector or enabled in repository Actions settings.'
+            echo "PR link: https://github.com/${GITHUB_REPOSITORY}/compare/main...feature/guarded-telegram-album-import?expand=1"
+          fi
