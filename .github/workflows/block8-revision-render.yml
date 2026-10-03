@@ -63,6 +63,8 @@ jobs:
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -76,4 +78,10 @@ jobs:
           fi
           python -m pip install --disable-pip-version-check boto3 requests
       - name: New synthetic job only real private R2 bytes revision replay no social call
-        run: python -m scripts.block8_revision_smoke --live-r2
+        run: |
+          if [[ "${{ github.event.head_commit.message }}" == *"telegram-proof"* ]]; then
+            test -n "${TELEGRAM_BOT_TOKEN:-}" && test -n "${TELEGRAM_CHAT_ID:-}" || { echo 'Missing Telegram secrets'; exit 1; }
+            python -m scripts.block8_revision_smoke --live-r2 --telegram-proof
+          else
+            python -m scripts.block8_revision_smoke --live-r2
+          fi

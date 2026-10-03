@@ -92,7 +92,7 @@ def prepare(storage,root):
         ContentType='application/json',IfMatch=old['ETag'])
     return job,repo,state,key
 
-def run(*,live=False,evidence=None):
+def run(*,live=False,evidence=None,telegram_proof=False):
     if live and (os.environ.get('GITHUB_REF')!='refs/heads/main' or
                  os.environ.get('GITHUB_EVENT_NAME') not in ('push','workflow_dispatch')):
         raise RuntimeError('live smoke requires trusted main')
@@ -119,6 +119,16 @@ def run(*,live=False,evidence=None):
         rendering=done.job.metadata['revision_render']
         if live:
             verify_dashboard(done.job,state['review']['request_id'],rendering['preview'],root/'synthetic.mp4',state['review']['preview_id'])
+        if telegram_proof:
+            if not live or os.environ.get("GITHUB_REF") != "refs/heads/main":
+                raise RuntimeError("Telegram proof requires trusted live main")
+            from scripts.block89_notify_revision_ready import notify_verified_revision
+            # Existing canonical private delivery gate is rechecked before sending.
+            # Exactly one synthetic-only test notice, never any publish call.
+            notice = notify_verified_revision(job.job_id,storage=storage,repository=repo)
+            if notice != "SENT":
+                raise RuntimeError("Telegram synthetic notice not sent: "+notice)
+            print("BLOCK89_SYNTHETIC_TELEGRAM_API_ACCEPTED job="+job.job_id)
         if evidence:
             keys=[repo._key(job.job_id),key,rendering['ticket_key'],
                   'ai-central/v1/previews/'+rendering['preview']['preview_id']+'.json']
@@ -130,4 +140,5 @@ def run(*,live=False,evidence=None):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--live-r2',action='store_true');p.add_argument('--evidence')
-    args=p.parse_args();run(live=args.live_r2,evidence=args.evidence)
+    p.add_argument('--telegram-proof',action='store_true')
+    args=p.parse_args();run(live=args.live_r2,evidence=args.evidence,telegram_proof=args.telegram_proof)
