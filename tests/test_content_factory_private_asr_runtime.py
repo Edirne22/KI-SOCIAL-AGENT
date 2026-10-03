@@ -16,6 +16,9 @@ class FakeModel:
         assert os.path.exists(path)
         assert path.endswith(".wav")
         assert kwargs["language"] == "de"
+        assert kwargs["beam_size"] == 5
+        assert "Bülent" in kwargs["initial_prompt"]
+        assert "Edirne 22" in kwargs["initial_prompt"]
         return [type("Segment", (), {"text":"Synthetic result"})()], type("Info", (), {"language":"de"})()
 
 def req(**kw):

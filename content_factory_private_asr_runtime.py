@@ -52,8 +52,14 @@ def transcribe_private_audio(request: PrivateASRRequest, audio: bytes, *,
             raise PrivateASRError("private audio decoding failed") from exc
         if not prepared.is_file() or prepared.stat().st_size < 44:
             raise PrivateASRError("private decoded audio unavailable")
+        # Context guides spelling of known names; actual audio remains authoritative.
+        vocabulary = {
+            "de": "Bülent. Edirne 22. BMW M 1000 R. Motorradtour.",
+            "tr": "Bülent. Edirne 22. BMW M 1000 R. Motosiklet turu.",
+        }
         segments, info = model.transcribe(str(prepared), language=request.language,
-                                          vad_filter=True, beam_size=1)
+                                          vad_filter=True, beam_size=5,
+                                          initial_prompt=vocabulary[request.language])
         if getattr(info, "language", None) not in (None, request.language):
             raise PrivateASRError("ASR returned different language")
         text = " ".join(s.text.strip() for s in segments).strip()
