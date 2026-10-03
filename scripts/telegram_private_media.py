@@ -53,9 +53,7 @@ def receive(message,*,update_id,token,client=None,bucket=None,get=requests.get,a
     if authorized_chat is not None and str(chat)!=str(authorized_chat):
         raise PermissionError("Unauthorized private media chat")
     identified=identify(message)
-    if identified is None:return None
-    file_id,mime,extension=identified
-    if not file_id:raise ValueError("Telegram-Datei-ID fehlt")
+    if identified is None and not group:return None
     if client is None:client,bucket=client_from_env()
     if not bucket:raise ValueError("R2-Bucket fehlt")
     # Stable job per Telegram update: a retried event cannot create a second job.
@@ -68,8 +66,19 @@ def receive(message,*,update_id,token,client=None,bucket=None,get=requests.get,a
     else:
         job_id="tg"+str(update_id).zfill(12)
         manifest=new_manifest(lane="private",title="Privater Telegram-Medieneingang",job_id=job_id)
-    payload=download(file_id,token,get=get)
     key=manifest["prefix"]+"manifest.json"
+    if identified is None:
+        try:
+            client.get_object(Bucket=bucket,Key=key)
+        except Exception:
+            return "Album-Datei ohne bestätigte private Freigabe zurückgehalten."
+        continuation=dict(message,caption="/privat")
+        identified=identify(continuation)
+        if identified is None:
+            raise ValueError("Unsupported album continuation")
+    file_id,mime,extension=identified
+    if not file_id:raise ValueError("Telegram-Datei-ID fehlt")
+    payload=download(file_id,token,get=get)
     # A retry must not duplicate or overwrite originals.
     asset_id="file"+uuid.uuid5(uuid.NAMESPACE_URL,str(update_id)+":"+file_id).hex
     try:
