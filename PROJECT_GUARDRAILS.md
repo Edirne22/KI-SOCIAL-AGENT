@@ -606,3 +606,10 @@ ANALYSIEREN
 - Bülent bestätigt: bestehender Cloudflare Workers/Containers Paid-Tarif kostet **5 USD pro Monat** und Containerzugriff ist bereits freigeschaltet. Für die beauftragte private Whisper-Installation darf die bestehende bezahlte Container-Infrastruktur verwendet werden; keine erneute Grundsatzfreigabe für diesen bereits bezahlten Zugang verlangen.
 - **Wichtig:** Die 5-USD-Grundgebühr belegt keine unbegrenzte Container-Laufzeit oder kostenfreie zusätzliche CPU-/RAM-Nutzung. Vor einem zusätzlichen Container/Rollout tatsächliche Kapazität, Abrechnungsmodell und mögliche Mehrkosten prüfen. Keine neuen kostenpflichtigen Ressourcen oder Tariferhöhungen ohne ausdrückliche Freigabe.
 - Bei Installations-Gates die bestehende Tarif-Freigabe von der separaten Prüfung möglicher Mehrkosten unterscheiden. Zugangsdaten niemals in Repository, Logs oder CI-Artefakte schreiben. Cloudflare-Deployment und erfolgreicher Live-Test separat nachweisen.
+
+### Verifizierte Tarifabgrenzung (Cloudflare-Dokumentation, 03.10.2026)
+
+- Workers Paid: 5 USD/Monat Grundgebühr, inkl. 25 GiB-h RAM, 375 vCPU-min aktive CPU, 200 GB-h Container-Disk, EU-Netzwerkausgang 1 TB; danach nutzungsabhängige Gebühren. Offizielle Quelle: https://developers.cloudflare.com/containers/platform/pricing/
+- Konfiguriertes Whisper `standard-2`: 1 vCPU, 6 GiB RAM, 12 GB temporäre Container-Disk; bei ununterbrochenem Betrieb wären bereits nach ca. 4 h 10 min die 25 GiB-h RAM-Inklusivmenge ausgeschöpft. **Kein 24/7-Betrieb** im Grundpreis; `sleepAfter=5m` nutzen, echte monatliche Gesamtnutzung aller Container kontrollieren.
+- Contabo Cloud VPS 6 ist ein *separates, derzeit nicht als gekauft bestätigtes* Angebot mit 6 vCPU, 12 GB RAM, 200 GB SSD; keinesfalls mit Cloudflare-Workers-Paid verwechseln. https://contabo.com/de/pricing/
+- `ASR_NO_EXTRA_COST_APPROVED` darf nur auf true gesetzt werden, wenn der konkrete Installations- und Testlauf anhand verfügbarer Inklusivkontingente/Abrechnung als ohne zusätzliche Kosten bestätigt ist. Die vorhandene 5-USD-Grundgebühr allein reicht dafür nicht aus.
