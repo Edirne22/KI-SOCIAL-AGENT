@@ -628,7 +628,43 @@ class AlbumTests(unittest.TestCase):
         answer=handle_private_command("/privat offene",chat=42,authorized_chat=42,
                                       token="synthetic",client=r2,bucket="test",
                                       get=get_mixed)
-        self.assertIn("Keine vorgemerkten",answer)
+        self.assertIn(job,answer)
+        self.assertIn("0 vorgemerkt, 1 abgewiesen",answer)
+
+
+    def test_leading_caption_oversize_replays_earlier_quarantined_small_photos(self):
+        from datetime import datetime, timezone
+        import requests
+        class TooLarge:
+            status_code = 400
+            def json(self):
+                return {"ok":False, "error_code":400,
+                        "description":"Bad Request: file is too big"}
+            def raise_for_status(self):
+                raise requests.HTTPError("botSECRET/getFile?file_id=PRIVATE")
+        def mixed(url,**kw):
+            if (kw.get("params") or {}).get("file_id") == "large":
+                return TooLarge()
+            return get(url,**kw)
+        r2=R2()
+        base={"chat":{"id":42},"media_group_id":"early-photos",
+              "date":int(datetime.now(timezone.utc).timestamp())}
+        receive({**base,"photo":[{"file_id":"early"}]},update_id=110,
+                token="synthetic",client=r2,bucket="test",get=mixed,authorized_chat=42)
+        self.assertFalse(any(k.endswith("manifest.json") for k in r2.data))
+        result=receive({**base,"caption":"/privat",
+                        "video":{"file_id":"large","mime_type":"video/mp4"}},
+                       update_id=111,token="synthetic",client=r2,bucket="test",
+                       get=mixed,authorized_chat=42)
+        self.assertIn("Downloadlimit",result)
+        self.assertIn("1 vorgemerkte Albumdatei(en) privat gespeichert",result)
+        self.assertEqual(len([k for k in r2.data if "/quarantine/" in k]),0)
+        self.assertEqual(len([k for k in r2.data if "/rejected/" in k]),1)
+        manifests=[json.loads(v) for k,v in r2.data.items()
+                   if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests),1)
+        self.assertEqual(len(manifests[0]["assets"]),1)
+        self.assertEqual(manifests[0]["lane"],"private")
 
     def test_owner_recovers_legacy_pre_caption_quarantine_without_resending(self):
         from scripts.telegram_private_media import handle_private_command
