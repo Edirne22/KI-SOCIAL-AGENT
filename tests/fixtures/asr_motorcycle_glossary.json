@@ -35,5 +35,66 @@
   "notes": [
     "Preserve Unicode diacritics, numbers, and model names",
     "Vocabulary is a recognition hint, never a forced text replacement"
+  ],
+  "bilingual_technical_terms": [
+    {
+      "de": "Motorrad",
+      "tr": "motosiklet"
+    },
+    {
+      "de": "Kurve",
+      "tr": "viraj"
+    },
+    {
+      "de": "Kupplung",
+      "tr": "debriyaj"
+    },
+    {
+      "de": "Gangschaltung",
+      "tr": "vites"
+    },
+    {
+      "de": "Reifendruck",
+      "tr": "lastik basıncı"
+    },
+    {
+      "de": "Bremse",
+      "tr": "fren"
+    },
+    {
+      "de": "Helm",
+      "tr": "kask"
+    },
+    {
+      "de": "Auspuff",
+      "tr": "egzoz"
+    },
+    {
+      "de": "Drehzahl",
+      "tr": "motor devri"
+    },
+    {
+      "de": "Kette",
+      "tr": "zincir"
+    },
+    {
+      "de": "Reifen",
+      "tr": "lastik"
+    },
+    {
+      "de": "Federung",
+      "tr": "süspansiyon"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Mozilla Common Voice",
+      "url": "https://commonvoice.mozilla.org/dav/datasets",
+      "use": "Separate licensed speech evaluation corpus, not copied dictionary"
+    },
+    {
+      "name": "Edirne 22 curated terminology",
+      "use": "Independently curated DE/TR motorcycle terms; review before ASR prompts"
+    }
   ]
 }
