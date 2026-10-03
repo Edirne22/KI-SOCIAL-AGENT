@@ -58,9 +58,11 @@ export async function privateASR(req,env){
         body:JSON.stringify({inbox_id:src.id,date:new URL(req.url).searchParams.get("date"),language:body.language})
       });
       if(dispatched.ok)return reply({status:"PRIVATE_DRAFT_REQUESTED",language:body.language},202);
-      return reply({status:dispatched.status===503?"CONSENT_SAVED_CONTAINER_NOT_READY":dispatched.status===409?"CONSENT_SAVED_CONTAINER_BUSY":"CONSENT_SAVED_CONTAINER_REJECTED",language:body.language},202);
+      const code=dispatched.status;
+      // Fixed stage and numeric status only: no private upstream body or credentials.
+      return reply({status:code===503?"CONSENT_SAVED_CONTAINER_NOT_READY":code===409?"CONSENT_SAVED_CONTAINER_BUSY":"CONSENT_SAVED_CONTAINER_REJECTED",language:body.language,upstream_http_status:code,failure_stage:"private_asr_job"},202);
     }catch{
-      return reply({status:"CONSENT_SAVED_CONTAINER_UNAVAILABLE",language:body.language},202);
+      return reply({status:"CONSENT_SAVED_CONTAINER_UNAVAILABLE",language:body.language,failure_stage:"private_asr_transport"},202);
     }
   }
   if(req.method==="DELETE"){
