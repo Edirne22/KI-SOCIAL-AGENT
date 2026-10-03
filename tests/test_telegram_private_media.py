@@ -44,6 +44,17 @@ class PrivateMediaTests(unittest.TestCase):
             self.assertIn("Privat in R2",reply)
             self.assertEqual(len(r2.objects),2)
             self.assertTrue(all(key.startswith("private/v1/") for key in r2.objects))
+    def test_album_multiple_files_same_private_job(self):
+        import json
+        r2=FakeR2()
+        base={"caption":"/privat","media_group_id":"123456789","date":1791059000}
+        photo={**base,"photo":[{"file_id":"synthetic-photo"}]}
+        video={**base,"video":{"file_id":"synthetic-video","mime_type":"video/mp4"}}
+        receive(photo,update_id=200,token="fake",client=r2,bucket="bucket",get=fake_get)
+        receive(video,update_id=201,token="fake",client=r2,bucket="bucket",get=fake_get)
+        manifests=[json.loads(value) for key,value in r2.objects.items() if key.endswith("/manifest.json")]
+        self.assertEqual(len(manifests),1,"Album files must share one private R2 job")
+        self.assertEqual(len(manifests[0]["assets"]),2)
     def test_oversized_rejected(self):
         def oversized(url,**kwargs):
             return Response({"ok":True,"result":{"file_path":"a.jpg","file_size":20*1024*1024}})
