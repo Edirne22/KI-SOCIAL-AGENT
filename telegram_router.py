@@ -395,14 +395,14 @@ def main() -> None:
         if msg.get("media_group_id") or str(msg.get("caption") or "").strip().lower() in ("/privat","/privat neu"):
             if chat != allowed:
                 _ack(uid)
-                return
+                continue
             try:
                 answer=receive_private_media(msg,update_id=uid,token=os.environ.get("TELEGRAM_BOT_TOKEN",""),authorized_chat=allowed)
                 if answer:send_message(answer)
             except (ValueError,RuntimeError,PermissionError) as exc:
                 send_message("Privater Medieneingang: "+str(exc))
             _ack(uid)
-            return
+            continue
         if _is_photo_message(upd):
             if chat != allowed:
                 _ack(uid)
