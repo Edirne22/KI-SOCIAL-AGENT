@@ -68,3 +68,26 @@ Once one safe test environment is active:
 **Live incident root-cause scope (PR #375):** The production receiver treated Bot API `getFile` HTTP 400 as an unclassified retryable HTTP exception and aborted subsequent Telegram updates before ACK. The response body was not present in the recorded stack trace, so a file-size rejection is **plausible but not proven**. The fix safely recognizes permanent 400/413, reports a dashboard fallback without leaking bot token/file ID, records album rejections as metadata, and lets following authorized album items continue. Only permanent download failures are ACKed; 5xx/network/R2 errors remain retryable. The metadata verifier now **FAILS** if rejected items remain, even if the successfully stored subset matches an artificially reduced expected count. To verify a full three-item Telegram album, owner must use a video below the existing bot download limit; a dashboard upload is a separate private job, not a merge into this album.
 
 Full LIVE acceptance requires PASS on Phase A **and** Phase B **and** Phase C, plus appropriate privacy and preview scope evidence. Tests passing alone are not merge or publication authority.
+
+
+## Owner live incident — retained quarantine recovery (PR #376)
+
+After #371 and #375 merged, the actual production [Telegram receive run 37162590320](https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/37162590320) succeeded. The owner received: an explicit **Bot API download limit** warning for a video, plus **three separate metadata-only quarantine acknowledgements**. This is **not** a three-file R2 storage receipt. The earlier two successful receipts identified a separate already stored album; do not silently combine counts or IDs.
+
+**Root cause:** before PR #376, authorization was inferred from the first successfully committed album manifest. If the first captioned item was rejected, owner consent was lost for later same-group messages and they remained in quarantine. Existing quarantine entries are durable metadata; no media bytes were downloaded before owner consent.
+
+**Repair:** for all future albums, write an immutable private `authorization.json` keyed to the sole authorized chat before downloading the explicitly captioned item. A permanently rejected video cannot revoke authorization for other small album members. The new commands run exclusively through the **existing** single owner Telegram poller:
+
+- `/privat offene` — list recent (last 72h) private album IDs containing metadata-only pending items or rejection markers. No private media bytes, filenames, chat ID or bot token are exposed in the listing.
+- `/privat freigeben tgalbum...` — explicit owner authorization and replay of exactly ONE listed pending album. Invalid, stale, wrong-chat or mismatched-index commands fail closed; replay retains transient failures for retries. Legacy indexed pending groups are recoverable under the previous sole-owner-bot invariant for 72 hours; newer indices also include a one-way owner hash.
+- The bot returns **stored count and total previously rejected count separately**. A rejected item is never marked successfully saved or turned into an asset. The metadata-only remote verifier still fails if *any* rejected file exists for the audited group.
+
+**Safe staged owner acceptance after CI green and reviewed guarded deployment:**
+
+1. Do **not** resend the big video or previously pending photos. Send the TEXT command `/privat offene` to the existing bot, then manually run [Telegram Receive Approval on main](https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/workflows/telegram-receive.yml) if outside its UTC scheduled window. Keep only the returned *album IDs and pending/rejected counts* as evidence.
+2. Explicitly send `/privat freigeben tgalbum...` for the entry with the expected pending photos, and run the **same** main receiver once again. Preserve the private bot reply. Do not authorize an unfamiliar album ID.
+3. Run the existing [main owner-album metadata-only workflow](https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/workflows/r2-warehouse-synthetic-live.yml) separately for the original stored album's known ID and its **actual** expected count. Do **not** audit a rejected/partial album as fully accepted.
+4. If a full three-item photo/video path is still desired, send **one new album** with two non-sensitive small test photos and a genuinely short video within the bot download limit (<19 MiB per item). Manually run the single main poller and then read-only metadata audit using that **new** group's ID and actual count. Do not put personal media in GitHub CI, and do not publish anything.
+5. Optional owner-private playback remains a separate independent proof. A metadata-only R2 audit establishes existence, length, MIME, count and privacy lane, **not** private video playability or content hash recomputation.
+
+A normal PR 'green' R2 workflow does not run the real R2 job. The earlier explicitly manual true-R2 synthetic [run 37161146956](https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/37161146956) did run and pass the previous code's storage path. New code requires its own final CI and recovery proof; no premature blanket LIVE E2E assertion.

@@ -1,7 +1,7 @@
 """Explicit /privat media intake; no vision inference or social dispatch."""
 import re
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from hashlib import sha256
 import uuid
 import requests
@@ -147,7 +147,8 @@ def _quarantine(client, bucket, manifest, message, update_id):
         previous = json.loads(client.get_object(Bucket=bucket, Key=key)["Body"].read())
         if previous != item:
             raise RuntimeError("Quarantine collision")
-    return "Album-Datei zurückgehalten und bis zur privaten Freigabe dauerhaft vorgemerkt."
+    return ("Album-Datei zurückgehalten und bis zur privaten Freigabe vorgemerkt · "
+            + manifest["job_id"] + " · Keine Veröffentlichung.")
 
 def _reject_permanent(client, bucket, manifest, update_id, file_id):
     """Metadata-only audit marker. A failed Telegram download is NEVER an asset."""
@@ -201,14 +202,17 @@ def _album_manifest(client, bucket, job_id, message):
         obj = None
     if obj is not None:
         saved = json.loads(obj["Body"].read())
-        if saved.get("job_id") != job_id or saved.get("lane") != "private":
+        owner_hash = sha256(str((message.get("chat") or {}).get("id")).encode()).hexdigest()
+        if (saved.get("job_id") != job_id or saved.get("lane") != "private"
+                or (saved.get("owner_hash") is not None and saved["owner_hash"] != owner_hash)):
             raise RuntimeError("Album index identity mismatch")
         return new_manifest(lane="private", title="Privates Telegram-Album",
                             job_id=job_id, created_at=datetime.fromisoformat(saved["created_at"]))
     created = datetime.fromtimestamp(int(message["date"]), timezone.utc)
     candidate = new_manifest(lane="private", title="Privates Telegram-Album",
                              job_id=job_id, created_at=created)
-    record = {"job_id": job_id, "lane": "private", "created_at": candidate["created_at"]}
+    record = {"job_id": job_id, "lane": "private", "created_at": candidate["created_at"],
+              "owner_hash": sha256(str((message.get("chat") or {}).get("id")).encode()).hexdigest()}
     try:
         client.put_object(Bucket=bucket, Key=index_key,
                           Body=json.dumps(record).encode("utf-8"),
@@ -218,11 +222,200 @@ def _album_manifest(client, bucket, job_id, message):
         if code not in ("PreconditionFailed", "412", "ConditionalRequestConflict", "409"):
             raise
         winner = json.loads(client.get_object(Bucket=bucket, Key=index_key)["Body"].read())
-        if winner.get("job_id") != job_id or winner.get("lane") != "private":
+        owner_hash = sha256(str((message.get("chat") or {}).get("id")).encode()).hexdigest()
+        if (winner.get("job_id") != job_id or winner.get("lane") != "private"
+                or (winner.get("owner_hash") is not None and winner["owner_hash"] != owner_hash)):
             raise RuntimeError("Album index collision")
         return new_manifest(lane="private", title="Privates Telegram-Album",
                             job_id=job_id, created_at=datetime.fromisoformat(winner["created_at"]))
     return candidate
+
+
+# A persisted authorization is distinct from the first media download. A
+# captioned video may be permanently rejected by Telegram before any manifest
+# exists; nevertheless the owner has explicitly authorized the *album*.
+def _authorization_key(manifest):
+    return manifest["prefix"] + "authorization.json"
+
+
+def _authorized(client, bucket, manifest, chat):
+    key = _authorization_key(manifest)
+    try:
+        obj = client.get_object(Bucket=bucket, Key=key)
+    except Exception as exc:
+        if not _missing(exc):
+            raise
+        # Backwards-compatible: pre-upgrade manifests were only created by
+        # successful owner-captioned media in the single authorized bot chat.
+        return _read_manifest(client, bucket, manifest["prefix"] + "manifest.json") is not None
+    record = json.loads(obj["Body"].read())
+    if (record.get("schema") != "PRIVATE-TELEGRAM-ALBUM-AUTH-V1"
+            or record.get("job_id") != manifest["job_id"]
+            or record.get("owner_hash") != sha256(str(chat).encode()).hexdigest()):
+        raise PermissionError("Album authorization identity mismatch")
+    return True
+
+
+def _authorize(client, bucket, manifest, chat):
+    record = {"schema": "PRIVATE-TELEGRAM-ALBUM-AUTH-V1",
+              "job_id": manifest["job_id"],
+              "owner_hash": sha256(str(chat).encode()).hexdigest()}
+    payload = json.dumps(record, sort_keys=True).encode("utf-8")
+    key = _authorization_key(manifest)
+    try:
+        client.put_object(Bucket=bucket, Key=key, Body=payload,
+                          ContentType="application/json", IfNoneMatch="*")
+    except Exception as exc:
+        code = str(getattr(exc, "response", {}).get("Error", {}).get("Code", ""))
+        if code not in ("PreconditionFailed", "412"):
+            raise
+        previous = client.get_object(Bucket=bucket, Key=key)["Body"].read()
+        if previous != payload:
+            raise PermissionError("Album authorization collision") from None
+
+
+def _replay(client, bucket, manifest, token, get):
+    """Replay only an explicitly authorized album; keep transient errors retryable."""
+    prefix = manifest["prefix"] + "quarantine/"
+    marker = None
+    stored_count = rejected_count = 0
+    while True:
+        args = {"Bucket": bucket, "Prefix": prefix}
+        if marker:
+            args["ContinuationToken"] = marker
+        page = client.list_objects_v2(**args)
+        for entry in page.get("Contents", []):
+            item = json.loads(client.get_object(
+                Bucket=bucket, Key=entry["Key"])["Body"].read())
+            if (not isinstance(item.get("update_id"), int)
+                    or not isinstance(item.get("file_id"), str)
+                    or item.get("mime") not in ALLOWED):
+                raise ValueError("Invalid quarantined album metadata")
+            try:
+                _commit(client, bucket, manifest, item["file_id"], item["mime"],
+                        item["update_id"], token, get)
+            except PermanentTelegramFileError:
+                _reject_permanent(client, bucket, manifest,
+                                  item["update_id"], item["file_id"])
+                client.delete_object(Bucket=bucket, Key=entry["Key"])
+                rejected_count += 1
+                continue
+            client.delete_object(Bucket=bucket, Key=entry["Key"])
+            stored_count += 1
+        marker = page.get("NextContinuationToken")
+        if not marker:
+            break
+    return stored_count, rejected_count
+
+
+def _rejected_count(client, bucket, manifest):
+    """Read metadata only, including rejections recorded by earlier retries."""
+    args = {"Bucket": bucket, "Prefix": manifest["prefix"] + "rejected/",
+            "MaxKeys": 1000}
+    page = client.list_objects_v2(**args)
+    if page.get("IsTruncated") or page.get("NextContinuationToken"):
+        raise RuntimeError("Zu viele abgewiesene Albumdateien; manuelle Prüfung erforderlich.")
+    return len(page.get("Contents", []))
+
+
+def _indexed_album(client, bucket, job_id, owner_chat):
+    if not re.fullmatch(r"tgalbum[a-f0-9]{32}", job_id):
+        raise ValueError("Ungültige private Album-ID.")
+    index_key = "private/v1/telegram-album-index/" + job_id + ".json"
+    try:
+        obj = client.get_object(Bucket=bucket, Key=index_key)
+    except Exception as exc:
+        if _missing(exc):
+            raise ValueError("Privates Album nicht gefunden.") from None
+        raise
+    item = json.loads(obj["Body"].read())
+    if (item.get("job_id") != job_id or item.get("lane") != "private"
+            or (item.get("owner_hash") is not None
+                and item["owner_hash"] != sha256(str(owner_chat).encode()).hexdigest())):
+        raise PermissionError("Privates Album nicht autorisiert.")
+    created = datetime.fromisoformat(item["created_at"])
+    if (created.tzinfo is None
+            or created < datetime.now(timezone.utc) - timedelta(days=3)
+            or created > datetime.now(timezone.utc) + timedelta(days=1)):
+        raise ValueError("Album außerhalb des 72-Stunden-Wiederherstellungsfensters.")
+    # Existing records without owner_hash originated in the earlier single
+    # authorized-chat router; allow explicit owner recovery only for 72 hours.
+    return new_manifest(lane="private", title="Privates Telegram-Album",
+                        job_id=job_id, created_at=created)
+
+
+def handle_private_command(text, *, chat, authorized_chat, token,
+                           client=None, bucket=None, get=requests.get):
+    """Owner-only explicit text commands; never publish or log media."""
+    if authorized_chat is None or str(chat) != str(authorized_chat):
+        raise PermissionError("Unauthorized private media chat")
+    normalized = " ".join(str(text).strip().lower().split())
+    if client is None:
+        client, bucket = client_from_env()
+    if not bucket:
+        raise ValueError("R2-Bucket fehlt")
+    if normalized == "/privat" or normalized == "/privat neu":
+        return ("Album mit /privat als Beschriftung senden. "
+                "Vorgemerkte Alben: /privat offene")
+    if normalized == "/privat offene":
+        prefix = "private/v1/telegram-album-index/"
+        results = []
+        marker = None
+        scanned = 0
+        while True:
+            args = {"Bucket": bucket, "Prefix": prefix, "MaxKeys": 1000}
+            if marker:
+                args["ContinuationToken"] = marker
+            page = client.list_objects_v2(**args)
+            for entry in page.get("Contents", []):
+                scanned += 1
+                if scanned > 5000:
+                    raise RuntimeError("Zu viele private Album-Indizes; manuelle Prüfung erforderlich.")
+                job_id = entry["Key"][len(prefix):].removesuffix(".json")
+                if not re.fullmatch(r"tgalbum[a-f0-9]{32}", job_id):
+                    continue
+                try:
+                    manifest = _indexed_album(client, bucket, job_id, chat)
+                except (ValueError, PermissionError):
+                    continue
+                pending = client.list_objects_v2(
+                    Bucket=bucket, Prefix=manifest["prefix"] + "quarantine/", MaxKeys=100)
+                count = len(pending.get("Contents", []))
+                rejected = _rejected_count(client, bucket, manifest)
+                if count or rejected:
+                    results.append((int(count > 0), manifest["created_at"],
+                                    job_id, count, rejected))
+            marker = page.get("NextContinuationToken")
+            if not marker:
+                break
+        if not results:
+            return "Keine vorgemerkten privaten Alben aus den letzten 72 Stunden."
+        results.sort(reverse=True)
+        selected = results[:5]
+        return ("Private Alben aus den letzten 72 Stunden (nur Metadaten):\\n"
+                + "\\n".join(job_id + " · " + str(count) + " vorgemerkt, "
+                            + str(rejected) + " abgewiesen"
+                            for _, _, job_id, count, rejected in selected)
+                + "\\nVorgemerkte Dateien gezielt freigeben: /privat freigeben tgalbum...")
+    match = re.fullmatch(r"/privat freigeben (tgalbum[a-f0-9]{32})", normalized)
+    if not match:
+        raise ValueError("Bitte /privat offene oder /privat freigeben tgalbum... verwenden.")
+    manifest = _indexed_album(client, bucket, match.group(1), chat)
+    pending = client.list_objects_v2(
+        Bucket=bucket, Prefix=manifest["prefix"] + "quarantine/", MaxKeys=1)
+    if not pending.get("Contents"):
+        return ("Keine vorgemerkten Dateien für " + manifest["job_id"]
+                + " vorhanden; " + str(_rejected_count(client, bucket, manifest))
+                + " Datei(en) von Telegram abgewiesen. "
+                + "Bereits gespeicherte Dateien bleiben privat.")
+    _authorize(client, bucket, manifest, chat)
+    stored, rejected = _replay(client, bucket, manifest, token, get)
+    return ("Privates Album " + manifest["job_id"] + ": "
+            + str(stored) + " vorgemerkte Datei(en) in R2 übernommen; "
+            + str(_rejected_count(client, bucket, manifest))
+            + " Datei(en) insgesamt von Telegram abgewiesen. "
+            + "Keine Veröffentlichung.")
+
 
 def receive(message, *, update_id, token, client=None, bucket=None,
             get=requests.get, authorized_chat=None):
@@ -252,8 +445,12 @@ def receive(message, *, update_id, token, client=None, bucket=None,
         manifest = new_manifest(lane="private", title="Privater Telegram-Medieneingang",
                                 job_id=job_id)
     key = manifest["prefix"] + "manifest.json"
+    if group and identified is not None:
+        # Persist the owner's explicit album authorization before attempting
+        # the leading download (which may fail on a large Telegram video).
+        _authorize(client, bucket, manifest, chat)
     if identified is None:
-        if not _read_manifest(client, bucket, key):
+        if not _authorized(client, bucket, manifest, chat):
             return _quarantine(client, bucket, manifest, message, update_id)
         continuation = dict(message, caption="/privat")
         identified = identify(continuation)
@@ -265,40 +462,19 @@ def receive(message, *, update_id, token, client=None, bucket=None,
                                          for a in previously.get("assets", [])))
     try:
         _commit(client, bucket, manifest, file_id, mime, update_id, token, get)
-    except PermanentTelegramFileError:
-        if group:
-            _reject_permanent(client, bucket, manifest, update_id, file_id)
-        raise
-    # Once owner explicitly authorizes the album, replay earlier uncaptioned items.
-    # A failed replay leaves the durable record for a subsequent authorized retry.
-    rejected_count = 0
-    if group:
-        prefix = manifest["prefix"] + "quarantine/"
-        marker = None
-        while True:
-            args = {"Bucket": bucket, "Prefix": prefix}
-            if marker:
-                args["ContinuationToken"] = marker
-            page = client.list_objects_v2(**args)
-            for entry in page.get("Contents", []):
-                item = json.loads(client.get_object(Bucket=bucket, Key=entry["Key"])["Body"].read())
-                if item["mime"] not in ALLOWED:
-                    raise ValueError("Invalid quarantined MIME")
-                try:
-                    _commit(client, bucket, manifest, item["file_id"], item["mime"],
-                            item["update_id"], token, get)
-                except PermanentTelegramFileError:
-                    # Preserve an audit marker but do not let one rejected
-                    # uncaptioned video poison every subsequent album item.
-                    _reject_permanent(client, bucket, manifest,
-                                      item["update_id"], item["file_id"])
-                    client.delete_object(Bucket=bucket, Key=entry["Key"])
-                    rejected_count += 1
-                    continue
-                client.delete_object(Bucket=bucket, Key=entry["Key"])
-            marker = page.get("NextContinuationToken")
-            if not marker:
-                break
+    except PermanentTelegramFileError as exc:
+        if not group:
+            raise
+        _reject_permanent(client, bucket, manifest, update_id, file_id)
+        # Although the captioned media itself was rejected, the owner already
+        # authorized the album. Salvage valid earlier quarantine items.
+        recovered, other_rejected = _replay(client, bucket, manifest, token, get)
+        return (str(exc) + " · " + str(recovered)
+                + " vorgemerkte Albumdatei(en) privat gespeichert; "
+                + str(other_rejected + 1) + " Datei(en) abgewiesen. "
+                + "Album-ID: " + job_id)
+    # Replay earlier metadata-only quarantine items after explicit authority.
+    recovered, rejected_count = _replay(client, bucket, manifest, token, get) if group else (0, 0)
     warning = (" · "+str(rejected_count)+" frühere Albumdatei(en) von Telegram dauerhaft abgewiesen; separat über Dashboard hochladen."
                if rejected_count else "")
     if duplicate:
