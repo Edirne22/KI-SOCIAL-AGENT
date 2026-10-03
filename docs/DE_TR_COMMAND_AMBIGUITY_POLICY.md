@@ -1,0 +1,70 @@
+# DE/TR Telegram + Dashboard: Befehls- und Mehrdeutigkeitsregel V1
+
+Status: verbindliche Entwurfsregel; Integration und Live-Abnahme separat nach CI. Gilt für getippte Nachrichten, Browser-Diktat und private Whisper-Transkripte gleichermaßen.
+
+## Nicht raten
+- Nur explizit freigegebene, eindeutig einem Intent zugeordnete Alternativbegriffe verwenden. Keine phonetische oder semantische Vermutung als Ausführungsgrund.
+- Bei unbekannten Begriffen, ähnlich klingenden Werkzeugnamen, unsicherem ASR-Text, mehreren passenden Intents, fehlendem Objekt oder fehlendem Ziel: **keine Aktion**, sondern genau eine konkrete Rückfrage mit den tatsächlich bekannten Alternativen und Option zur freien Korrektur.
+- Nie eine vermeintliche Nutzerkorrektur still übernehmen; vor Ausführung die bestätigte Interpretation verwenden. Nicht bestätigte ASR-Transkripte sind Entwürfe.
+- Niemals unbekannte Begriffe aus Gesprächen automatisch als verbindliche Synonyme lernen. Neue Varianten erst nach ausdrücklicher Bestätigung in den Katalog übernehmen; Herkunft und Datum dokumentieren.
+- Keine automatischen Publikationen, Kosten, Deployments, Merges, Voice-Clones oder Weitergabe persönlicher Audios aus mehrdeutigen oder bloß transkribierten Befehlen. Je Social-Post separate explizite menschliche Freigabe.
+- Private Audios verbleiben in privatem R2/privater Runtime; im Repository nur Textregeln und synthetische Testdaten.
+
+## Bestätigte Intents (Beispiele, nicht als bereits implementiert ausgeben)
+| Intent | DE eindeutig | TR eindeutig | Benötigtes Objekt |
+|---|---|---|---|
+| TRANSCRIBE | transkribieren; Transkript erstellen | yazıya dök; transkript oluştur | eindeutig ausgewählte private Aufnahme und ausdrückliche Einwilligung |
+| STATUS | Status anzeigen; Auftragsstatus | durumu göster; görev durumu | ggf. Auftrags-ID |
+| SHOW_RESULT | Ergebnis anzeigen; Ergebnis abrufen | sonucu göster; sonucu getir | Auftrags-ID |
+| VIDEO_RENDER | Video rendern; Video neu rendern | videoyu işle; videoyu yeniden oluştur | eindeutige Video-/Revisions-ID; keine Veröffentlichung |
+| HELP | Hilfe; Befehle anzeigen | yardım; komutları göster | keines |
+
+Werkzeugnamen und Schreibvarianten (z. B. ähnlich klingende Videoeditoren) **nicht** automatisch gleichsetzen. Vorschläge sind nur Rückfragen, niemals Routing.
+
+## Verarbeitung
+1. Telegram: bestehender einzelner getUpdates-Router, zugelassene Chat-ID. Web: bestehende Dashboard-Authentifizierung.
+2. Audio: erst sichere private Aufnahme + Einwilligung + lokales Whisper; Text nur als unbestätigter Entwurf.
+3. Intent aus freigegebenem Katalog exakt zuordnen. Bei 0 oder >1 Treffern oder unklarem Ziel: Rückfrage; keine Seiteneffekte.
+4. Erst nach bestätigtem Text und allen jeweiligen Sicherheits-/Freigabeprüfungen den bestehenden gemeinsamen Auftragseingang verwenden.
+5. Negativtests: erfundene Synonyme, undeutliche Aussprache, gemischtes DE/TR, falsche Objekt-ID, fremde Chat-ID, widerrufene Einwilligung, Veröffentlichung ohne Einzelfreigabe.
+
+## Ausbau
+Weitere Alternativbegriffe und individuelle Formulierungen nur mit Nutzerbestätigung aufnehmen. Wortkatalog und Audio-Testkatalog getrennt halten: Audio ausschließlich synthetisch oder ausdrücklich einzeln autorisiert und niemals in CI.
+
+
+## Voice-first acceptance requirements (owner expects ~90–95% Telegram audio)
+- Telegram voice notes (`voice`) and supported audio documents must be detected by the existing **single** Telegram router, never by a second getUpdates consumer.
+- **Do not download personal Telegram audio in GitHub Actions.** Existing scheduled router currently runs on GitHub Actions every 5 minutes, 06:00–21:59 UTC; audio needs a separately authenticated, private Telegram intake/relay and private R2 upload. Until that private route is verified, respond with an honest unsupported status rather than silently discarding audio. Do not claim 24/7 responsiveness from this schedule.
+- In private runtime: validate authorized chat, Telegram file size/MIME, file origin, private R2 canonical metadata, fresh consent, SHA256, language DE/TR; decode with ffmpeg and local faster-whisper. Avoid external browser speech providers by default.
+- A long voice note can contain multiple independent requests. Produce a numbered **draft** of the recognized transcript and proposed tasks. Do not split uncertain conjunctions into unintended actions. Request correction on uncertain words/targets and confirmation before any consequential action.
+- Allow simple corrections in DE/TR (e.g. 'Nein, ich meinte …' / 'Hayır, … demek istedim'), referencing one pending draft ticket. Do not auto-learn corrections as global synonyms.
+- Return status and final results to the same authorized Telegram chat and the shared dashboard using one deduplicated R2 ticket. No raw personal voice, transcript text, Telegram token or chat ID in CI logs, public previews or repository.
+- Spoken 'poste' is a request to **prepare a private preview**, not a publication authorization. The exact reviewed item needs its own explicit publication confirmation, tied to immutable item/revision identity. Ambiguous 'poste dies und das' must trigger clarification.
+- Run tests: Telegram voice, audio document, DE/TR/mixed language, background noise, long message, duplicate update, unauthorized chat, consent missing/revoked, malformed file, ambiguous tool name, transcript correction, multi-intent, item-specific publication approval and non-publish negatives. CI only synthetic audio; real owner's audio tested only in private runtime after existing consent.
+- Report actual word recognition quality based on measured DE/TR samples; no unsupported claim of 100% recognition. Never turn ASR confidence alone into authorization.
+
+
+## Autonomous execution contract — Telegram and web are equal control surfaces
+- A clearly understood, authorized command from either Telegram or the dashboard must enter the **same durable job queue** and automatically transition to execution. The private inbox is internal storage, never a manual owner 'transfer to jobs' step. The existing /zentrale auftrag draft-only implementation does **not** yet satisfy this contract; do not report it as complete.
+- A single coordinator assigns subtasks to appropriate agents, tracks dependencies, bounded retries, resource/cost limits, durable progress and restart recovery. Do not launch every model by default; no new paid resources without owner approval.
+- Default user interaction: one concise receipt with ticket ID, then **one completion/failure message to Telegram** (and matching dashboard result), not per-step approval requests. Notify mid-run only on genuine ambiguity, exhausted recovery, privacy/permission boundary, or material failure requiring owner action. Do not promise instant execution while the only Telegram poller is a five-minute scheduled GitHub Action.
+- A clear 'search' request is authorization to research and return findings, not authorization to publish. A clear 'create posts' request can draft and render previews without another approval; actual external publication requires explicit approval tied to the exact finished post/revision. Consent for private audio is a separate privacy gate and must not be inferred from a general spoken command.
+- Both entry points use one deduplicated R2 ticket/status model and return final output to Telegram, with dashboard reflecting the same status. Define safe idempotency for retry and Telegram update replay; never double-publish.
+- If input contains several clear tasks, execute them with dependencies, preserving one owner-facing parent ticket. Only unclear portions pause for clarification; independent safe subtasks can proceed.
+- Acceptance: prove Telegram text and Telegram voice and dashboard text and dashboard private audio each trigger the same automatic coordinator without manual inbox intervention; prove completion callback, restart, failure/retry, no duplicate notification, no publish without item approval, and correct privacy handling.
+
+
+## Autonomous technical maintenance / coding agent
+- The technical maintenance agent owns diagnosis, bounded repair, verification and recovery for runtime faults across the shared coordinator, Telegram, dashboard and private workers. It may consult already configured models and permitted documentation, without indiscriminate parallel calls or added spending.
+- On a failure, capture redacted error and affected ticket privately, inspect current main/guardrails/snapshot and running jobs, reproduce with synthetic or sanitized inputs, implement the smallest reversible fix, run focused tests plus CI/regression/red-team/positive verification, then deploy or merge **only within existing explicit technical authorization and guardrails**. Preserve a rollback and verify live health before declaring success.
+- Cap repeated identical failures at three attempts; then use an independently tested fallback or mark the ticket BLOCKED. No infinite retry, recursive self-modification, fake success, secret disclosure or bypass of approval gates. Never copy personal audio into GitHub Actions or third-party model prompts.
+- Keep normal troubleshooting internal. After a verified fix, send the owner one short Telegram completion notice explaining the incident and verified resolution. Escalate immediately only if a required owner decision, new cost, new access, privacy risk, or unrecoverable service outage prevents safe continuation.
+- A coding agent is not a substitute for independent CI, permissions, security boundaries or observed runtime health. Self-healing is an acceptance goal, not a claim that it is currently implemented or guaranteed.
+- Test scenarios: failed provider -> existing fallback; failed deployment -> rollback; repeated error -> bounded stop; worker restart -> resume without duplicate effects; incomplete fix -> no success notice; secret exposure attempt -> blocked; real owner approval needed -> stop/escalate; successful repair -> exactly one Telegram summary.
+
+
+## Existing model-provider expansion, after core block acceptance
+- Repository inventory 2026-10-03: config/llm_providers.json declares groq, google, openrouter, nvidia, cloudflare and claude_openrouter; config/ai_central_capabilities.json separately lists Agnes and an unavailable direct Anthropic key. A declared model/catalog ID is not a proven live integration, quota or free tier.
+- Before adding providers, reconcile both registries and perform one controlled, non-sensitive, budget-checked inference probe per desired model. Record model ID, supported task, latency, rate-limit behavior, privacy boundary, cost/free allowance, successful test run and tested fallback. Do not use new paid routes without owner approval.
+- Coordinator chooses the minimum sufficient role-based set (research, fact verification, coding/repair, media, DE/TR language) and retries via tested compatible alternatives; forced provider requests never silently fallback. No indiscriminate parallel multi-model calls.
+- Keep existing functioning providers and Blocks 6/8/9 stable. Expand only after their acceptance; independently gate the coding repair agent with tests, permissions, rollback and audit.
