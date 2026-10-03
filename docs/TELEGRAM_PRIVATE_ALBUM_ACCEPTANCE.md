@@ -23,7 +23,7 @@ Three separate proofs are required. Never label a green synthetic run as an actu
 1. Open [R2 warehouse synthetic private live smoke](https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/workflows/r2-warehouse-synthetic-live.yml).
 2. Press **Run workflow**. Choose **`feature/guarded-telegram-album-import`**. Leave `album_job_id` blank; it is ONLY for the later owner-album metadata audit on main.
 3. The job `telegram-album-real-r2-synthetic-telegram` runs only for an intentional manual dispatch on that exact feature branch. It uses EXISTING R2 repository secrets; no Telegram token or real photographs are provided to the job.
-4. Check the log for **`LIVE_R2_SYNTHETIC_TELEGRAM_ALBUM_PASS`** and for no error. The job tests immutable originals, actual R2 reads/SHA-256, out-of-order quarantine, the owner's synthetic authorization, video, idempotence and a UTC-midnight split.
+4. Check the log for **`LIVE_R2_SYNTHETIC_TELEGRAM_ALBUM_PASS`** and for no error. The job tests immutable originals, actual R2 reads/SHA-256, out-of-order quarantine, synthetic owner authorization, video, idempotence, UTC-midnight continuity and a forced **two-writer real-R2 compare-and-swap conflict**. The successful marker must include `cas_concurrency=yes`.
 5. A normal pull-request R2 workflow run **will show the live job as SKIPPED**. This is intentional. The entire run may show green despite no live work; do not count that as Phase A PASS. `MISSING_R2_BINDING_...` is a real configuration blocker, not a green test.
 
 ## Phase B — real owner Telegram end-to-end
