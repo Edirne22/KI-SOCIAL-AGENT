@@ -32,14 +32,13 @@ def plan(issue: int) -> dict:
     if issue not in ALLOWED:
         raise ValueError("Development issue is not allowlisted")
     spec = ALLOWED[issue]
-    for path in spec["paths"]:
-        if not Path(path).is_file():
-            raise ValueError("Required source missing: " + path)
+    missing = [path for path in spec["paths"] if not Path(path).is_file()]
     return {
         "schema": "GUARDED-DEVELOPMENT-PLAN-V1",
         "issue": issue,
         **spec,
-        "status": "PLAN_ONLY_AWAITING_CODE_REVIEW",
+        "status": "BLOCKED_MISSING_SOURCE" if missing else "PLAN_ONLY_AWAITING_CODE_REVIEW",
+        "missing_prerequisites": missing,
         "automatic_commit": False,
         "automatic_merge": False,
         "automatic_deploy": False,
