@@ -68,6 +68,18 @@ class WarehouseTests(unittest.TestCase):
             store_original(r2,"bucket",self.manifest,asset_id="asset87654321",filename="b.jpg",mime="image/jpeg",payload=b"second")
         self.assertEqual(len(json.loads(r2.objects[first["prefix"]+"manifest.json"])["assets"]),1)
 
+    def test_corrupt_readback_never_commits_manifest(self):
+        class CorruptR2(FakeR2):
+            def get_object(self,*,Bucket,Key):
+                result=super().get_object(Bucket=Bucket,Key=Key)
+                if "/originals/" in Key:
+                    result["Body"]=__import__("io").BytesIO(b"tampered")
+                return result
+        r2=CorruptR2()
+        with self.assertRaisesRegex(RuntimeError,"readback mismatch"):
+            store_original(r2,"bucket",self.manifest,asset_id="asset12345678",filename="a.jpg",mime="image/jpeg",payload=b"photo")
+        self.assertNotIn(self.manifest["prefix"]+"manifest.json",r2.objects)
+
     def test_write_original_then_manifest(self):
         r2=FakeR2()
         updated=store_original(r2,"bucket",self.manifest,asset_id="asset12345678",filename="a.jpg",mime="image/jpeg",payload=b"photo")
