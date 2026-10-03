@@ -47,52 +47,117 @@ def download(file_id,token,get=requests.get):
             raise ValueError("Datei zu groß; Dashboard-Upload verwenden.")
     return bytes(buf)
 
-def receive(message,*,update_id,token,client=None,bucket=None,get=requests.get,authorized_chat=None):
-    group=message.get("media_group_id")
-    chat=(message.get("chat") or {}).get("id")
-    if authorized_chat is not None and str(chat)!=str(authorized_chat):
-        raise PermissionError("Unauthorized private media chat")
-    identified=identify(message)
-    if identified is None and not group:return None
-    if client is None:client,bucket=client_from_env()
-    if not bucket:raise ValueError("R2-Bucket fehlt")
-    # Stable job per Telegram update: a retried event cannot create a second job.
-    if group:
-        if chat is None or not re.fullmatch(r"[A-Za-z0-9_-]{1,100}",str(group)):
-            raise ValueError("Invalid album identity")
-        job_id="tgalbum"+sha256((str(chat)+":"+str(group)).encode()).hexdigest()[:32]
-        created=datetime.fromtimestamp(int(message["date"]),timezone.utc)
-        manifest=new_manifest(lane="private",title="Privates Telegram-Album",job_id=job_id,created_at=created)
-    else:
-        job_id="tg"+str(update_id).zfill(12)
-        manifest=new_manifest(lane="private",title="Privater Telegram-Medieneingang",job_id=job_id)
-    key=manifest["prefix"]+"manifest.json"
-    if identified is None:
-        try:
-            client.get_object(Bucket=bucket,Key=key)
-        except Exception:
-            return "Album-Datei ohne bestätigte private Freigabe zurückgehalten."
-        continuation=dict(message,caption="/privat")
-        identified=identify(continuation)
-        if identified is None:
-            raise ValueError("Unsupported album continuation")
-    file_id,mime,extension=identified
-    if not file_id:raise ValueError("Telegram-Datei-ID fehlt")
-    payload=download(file_id,token,get=get)
-    # A retry must not duplicate or overwrite originals.
-    asset_id="file"+uuid.uuid5(uuid.NAMESPACE_URL,str(update_id)+":"+file_id).hex
+def _missing(exc):
+    return str(getattr(exc, "response", {}).get("Error", {}).get("Code", "")) in ("404", "NoSuchKey", "NotFound")
+
+def _asset_id(update_id, file_id):
+    return "file" + uuid.uuid5(uuid.NAMESPACE_URL, str(update_id) + ":" + file_id).hex
+
+def _read_manifest(client, bucket, key):
     try:
-        existing=client.get_object(Bucket=bucket,Key=key)
-        if existing:
-            saved=json.loads(existing["Body"].read())
-            if any(a["asset_id"]==asset_id for a in saved.get("assets",[])):
-                return "Privater Upload bereits gespeichert · "+job_id
-            if not group:
-                raise RuntimeError("Unexpected manifest collision")
-            manifest=saved
+        obj = client.get_object(Bucket=bucket, Key=key)
     except Exception as exc:
-        code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
-        if code not in ("404","NoSuchKey","NotFound"):raise
-    store_original(client,bucket,manifest,asset_id=asset_id,filename=asset_id+"."+extension,
-                   mime=mime,payload=payload)
-    return "Privat in R2 gespeichert · "+job_id+" · Noch keine Verarbeitung oder Veröffentlichung."
+        if _missing(exc):
+            return None
+        raise
+    return json.loads(obj["Body"].read())
+
+def _quarantine(client, bucket, manifest, message, update_id):
+    # Metadata only: no unauthorized media bytes and no token stored.
+    doc = message.get("document") or message.get("video") or {}
+    photos = message.get("photo") or []
+    file_id = photos[-1].get("file_id") if photos else doc.get("file_id")
+    mime = "image/jpeg" if photos else doc.get("mime_type")
+    if not file_id or mime not in ALLOWED:
+        raise ValueError("Unsupported uncaptioned album item")
+    key = manifest["prefix"] + "quarantine/" + _asset_id(update_id, file_id) + ".json"
+    item = {"update_id": update_id, "file_id": file_id, "mime": mime}
+    try:
+        client.put_object(Bucket=bucket, Key=key, Body=json.dumps(item).encode(),
+                          ContentType="application/json", IfNoneMatch="*")
+    except Exception as exc:
+        code = str(getattr(exc, "response", {}).get("Error", {}).get("Code", ""))
+        if code not in ("PreconditionFailed", "412"):
+            raise
+        previous = json.loads(client.get_object(Bucket=bucket, Key=key)["Body"].read())
+        if previous != item:
+            raise RuntimeError("Quarantine collision")
+    return "Album-Datei bis zur privaten Freigabe dauerhaft vorgemerkt."
+
+def _commit(client, bucket, manifest, file_id, mime, update_id, token, get):
+    asset_id = _asset_id(update_id, file_id)
+    key = manifest["prefix"] + "manifest.json"
+    for attempt in range(5):
+        saved = _read_manifest(client, bucket, key)
+        if saved:
+            if any(a["asset_id"] == asset_id for a in saved.get("assets", [])):
+                return saved
+            manifest = saved
+        payload = download(file_id, token, get=get)
+        try:
+            return store_original(client, bucket, manifest, asset_id=asset_id,
+                                  filename=asset_id + "." + ALLOWED[mime],
+                                  mime=mime, payload=payload)
+        except Exception as exc:
+            code = str(getattr(exc, "response", {}).get("Error", {}).get("Code", ""))
+            if code not in ("PreconditionFailed", "412", "ConditionalRequestConflict", "409"):
+                # The warehouse may reject stale manifests before conditional put.
+                if "manifest changed concurrently" not in str(exc):
+                    raise
+    raise RuntimeError("Concurrent album update; retry Telegram event")
+
+def receive(message, *, update_id, token, client=None, bucket=None,
+            get=requests.get, authorized_chat=None):
+    group = message.get("media_group_id")
+    chat = (message.get("chat") or {}).get("id")
+    if authorized_chat is not None and str(chat) != str(authorized_chat):
+        raise PermissionError("Unauthorized private media chat")
+    identified = identify(message)
+    if identified is None and not group:
+        return None
+    if client is None:
+        client, bucket = client_from_env()
+    if not bucket:
+        raise ValueError("R2-Bucket fehlt")
+    if group:
+        if chat is None or not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", str(group)):
+            raise ValueError("Invalid album identity")
+        job_id = "tgalbum" + sha256((str(chat) + ":" + str(group)).encode()).hexdigest()[:32]
+        created = datetime.fromtimestamp(int(message["date"]), timezone.utc)
+        manifest = new_manifest(lane="private", title="Privates Telegram-Album",
+                                job_id=job_id, created_at=created)
+    else:
+        job_id = "tg" + str(update_id).zfill(12)
+        manifest = new_manifest(lane="private", title="Privater Telegram-Medieneingang",
+                                job_id=job_id)
+    key = manifest["prefix"] + "manifest.json"
+    if identified is None:
+        if not _read_manifest(client, bucket, key):
+            return _quarantine(client, bucket, manifest, message, update_id)
+        continuation = dict(message, caption="/privat")
+        identified = identify(continuation)
+    file_id, mime, extension = identified
+    if not file_id:
+        raise ValueError("Telegram-Datei-ID fehlt")
+    _commit(client, bucket, manifest, file_id, mime, update_id, token, get)
+    # Once owner explicitly authorizes the album, replay earlier uncaptioned items.
+    # A failed replay leaves the durable record for a subsequent authorized retry.
+    if group:
+        prefix = manifest["prefix"] + "quarantine/"
+        marker = None
+        while True:
+            args = {"Bucket": bucket, "Prefix": prefix}
+            if marker:
+                args["ContinuationToken"] = marker
+            page = client.list_objects_v2(**args)
+            for entry in page.get("Contents", []):
+                item = json.loads(client.get_object(Bucket=bucket, Key=entry["Key"])["Body"].read())
+                if item["mime"] not in ALLOWED:
+                    raise ValueError("Invalid quarantined MIME")
+                _commit(client, bucket, manifest, item["file_id"], item["mime"],
+                        item["update_id"], token, get)
+                client.delete_object(Bucket=bucket, Key=entry["Key"])
+            marker = page.get("NextContinuationToken")
+            if not marker:
+                break
+    return "Privat in R2 gespeichert · " + job_id + " · Keine Veröffentlichung."
