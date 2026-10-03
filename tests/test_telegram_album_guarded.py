@@ -389,10 +389,12 @@ class AlbumTests(unittest.TestCase):
                              else b"synthetic-video")
 
         captured = io.StringIO()
-        with patch.object(smoke, "client_from_env", return_value=(fake, "offline")), \\
-             patch.object(smoke.subprocess, "run", side_effect=fake_ffmpeg), \\
-             patch.dict(os.environ, {"TELEGRAM_ALBUM_REAL_R2_SYNTHETIC_APPROVED": "true"}), \\
-             contextlib.redirect_stdout(captured):
+        with (
+            patch.object(smoke, "client_from_env", return_value=(fake, "offline")),
+            patch.object(smoke.subprocess, "run", side_effect=fake_ffmpeg),
+            patch.dict(os.environ, {"TELEGRAM_ALBUM_REAL_R2_SYNTHETIC_APPROVED": "true"}),
+            contextlib.redirect_stdout(captured),
+        ):
             smoke.main()
         self.assertIn("cas_concurrency=yes", captured.getvalue())
         self.assertEqual(
