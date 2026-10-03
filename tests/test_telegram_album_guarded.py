@@ -274,4 +274,19 @@ class AlbumTests(unittest.TestCase):
             ns["main"]()
         self.assertFalse(acked)
 
+
+    def test_album_crossing_utc_midnight_stays_single_job(self):
+        r2=R2()
+        from datetime import datetime,timezone
+        first=int(datetime(2026,10,3,23,59,59,tzinfo=timezone.utc).timestamp())
+        second=first+2
+        base={"chat":{"id":42},"media_group_id":"midnightalbum"}
+        receive({**base,"date":first,"caption":"/privat","photo":[{"file_id":"first"}]},
+                update_id=100,token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
+        receive({**base,"date":second,"photo":[{"file_id":"second"}]},
+                update_id=101,token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
+        manifests=[json.loads(v) for k,v in r2.data.items() if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests),1,"Same Telegram album must not split at midnight")
+        self.assertEqual(len(manifests[0]["assets"]),2)
+
 if __name__=="__main__":unittest.main()
