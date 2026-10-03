@@ -609,3 +609,180 @@ https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-bas
 Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767", "media_status": "", "object_id": "1285968257941776_122118161979469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122118161979469415", "source_url": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagmurla-baslayan-seansi-marc-marquez-zirvede-bitirdi-toprak-15-sirada/10860767", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 1
+Titel: David Alonso Motegi’de rekoru kırdı: İlk dört arasında sadece 0.093 saniye!
+Text:
+David Alonso hat den Motegi‑Pistrekord mit 1:47.508 geknackt – die ersten Vier lagen nur 0,093 Sekunden auseinander. Manuel Gonzalez holt den zweiten Platz, und Deniz Öncü ist ebenfalls in der Quali‑Spitzengruppe. 🏍️  
+
+Wie schätzt ihr die Lage im Moto2‑Klassement ein?
+
+#Moto2 #DenizOncu #DavidAlonso #ManuelGonzalez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-1-david-alonso-motegid-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 1
+Titel: David Alonso Motegi’de rekoru kırdı: İlk dört arasında sadece 0.093 saniye!
+Text:
+David Alonso hat den Motegi-Pistrekord geknackt – in 1:47.508. Knapp dahinter die ganze Spitzengruppe: Die ersten Vier lagen nur 0,093 Sekunden auseinander. Manuel Gonzalez wurde Zweiter, und Deniz Öncü hat es in die Qualifying-Spitzengruppe geschafft.
+
+Wie schätzt ihr die Lage im Moto2-Klassement ein?
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi
+Quelle: https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 2
+Titel: 2026 Japonya GP sıralama: Martin rekor turla pole’de, Toprak 22. sırada
+Text:
+Jorge Martin hat beim Quali zum Japan‑GP 2026 ne Rekordrunde rausgehauen und startet von der Pole. Im Zeittraining war er einfach der Schnellste, Toprak landete erst auf Platz 22. Was meint ihr, wie wirkt sich das auf das Rennen aus? 🏍️
+
+#MotoGP #JorgeMartin #Toprak #JapanGP #BuelentsBikeLife
+Quelle: https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-2-2026-japonya-gp-sira-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 2
+Titel: 2026 Japonya GP sıralama: Martin rekor turla pole’de, Toprak 22. sırada
+Text:
+Jorge Martin sichert sich mit einer Rekordrunde die Pole-Position beim Qualifying zum Japan-GP 2026.
+
+Im Zeittraining holte Martin die Bestzeit und steht damit auf dem ersten Startplatz. Toprak beendet das Qualifying auf dem 22. Platz.
+
+Wie schätzt ihr dieses Qualifying-Ergebnis ein?
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234
+Quelle: https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 3
+Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
+Text:
+Deniz Öncü hat in Österreich ne neunten Platz gekriegt – jetzt geht’s nach Motegi. In Japan will er nicht nur im Top‑10 landen, sondern das beste Saisonresultat holen 🏍️. Was meint ihr, wie stark kann er dort mitziehen?  
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-3-deniz-oncu-japonyada-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 3
+Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
+Text:
+Deniz Öncü will in Japan mehr als nur die ersten zehn Plätze
+
+In Österreich hat er den neunten Platz geholt. Jetzt geht's nach Motegi zur Moto2-Japan-GP, und Öncü will da richtig mitziehen – der beste Saisonresultat steht auf dem Programm.
+
+Was erwartet ihr von der Runde in Motegi?
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
+Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 4
+Titel: MotoGP Japonya GP 2. antrenman: Bezzecchi lider, Toprak 22. sırada
+Text:
+Beim MotoGP-Training in Japan führt Marco Bezzecchi die Zeitwerte an.
+
+Was haltet ihr von Bezzecchis Tempo in Japan?
+
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-4-motogp-japonya-gp-2-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 4
+Titel: MotoGP Japonya GP 2. antrenman: Bezzecchi lider, Toprak 22. sırada
+Text:
+Beim MotoGP-Training in Japan führt Marco Bezzecchi die Zeitwerte an.
+
+Was haltet ihr von Bezzecchis Tempo in Japan?
+
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225
+Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 5
+Titel: Jorge Martin: “Cuma Günü Her Seferinde Sıfırdan Başlamak Gibi”
+Text:
+Jorge Martin fährt beim Japan-GP in Motegi auf Platz acht – aber seine Worte nach dem ersten Tag sitzen: Am Freitag fängst du bei Aprilia im Grunde wieder komplett von null an. Die alten Setups aus der Vorsaison helfen da nicht weiter, das ist jedes Mal quasi wieder ein Neustart. 🏍️
+
+Wie schätzt ihr die Lage bei Aprilia im Vergleich zu den Konkurrenten ein?
+
+#MotoGP #JorgeMartin #JapanGP #Aprilia #MotorradRacing #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/jorge-martin-cuma-gunu-her-seferinde-sifirdan-baslamak-gibi
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-5-jorge-martin-cuma-gu-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-03-daily
+Telegram-Update-ID: 279361807
+MotoGP-Auswahl: 5
+Titel: Jorge Martin: “Cuma Günü Her Seferinde Sıfırdan Başlamak Gibi”
+Text:
+Cuma günü geçen sezonun ayarlarıyla adeta sıfırdan başlamak zorunda kaldıklarını söyledi
+
+Jorge Martin landete beim Japan GP in Motegi den achten Platz, aber seine Worte nach dem ersten Tag sind klarer als jede Position: Freitag ist bei Aprilia irgendwie von null wieder anzufangen. Alte Einstellungen aus der Vorsaison helfen da nicht weiter – jedes Mal quasi ein Neustart.
+
+Wie schätzt ihr die Lage bei Aprilia im Vergleich zu den Konkurrenten ein?
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/jorge-martin-cuma-gunu-her-seferinde-sifirdan-baslamak-gibi
+Quelle: https://motoetkinlik.com/jorge-martin-cuma-gunu-her-seferinde-sifirdan-baslamak-gibi
+Link-Preview: offiziell
