@@ -52,6 +52,10 @@ def store_original(client,bucket,manifest,*,asset_id,filename,mime,payload):
     """R2 first, manifest last. Never overwrite originals or acknowledge failed writes."""
     updated,key=append_asset(manifest,asset_id=asset_id,filename=filename,mime=mime,payload=payload)
     client.put_object(Bucket=bucket,Key=key,Body=payload,ContentType=mime,IfNoneMatch="*")
+    # Verify the immutable object before making it visible in the manifest.
+    stored=client.get_object(Bucket=bucket,Key=key)["Body"].read()
+    if sha256(stored).digest()!=sha256(payload).digest():
+        raise RuntimeError("R2 original readback mismatch; manifest not committed")
     # Manifest updates are compare-and-swap: never silently lose another upload.
     manifest_key=manifest["prefix"]+"manifest.json"
     try:
