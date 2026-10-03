@@ -1,0 +1,36 @@
+{
+  "schema": "EDIRNE22-ASR-TURKISH-RIDER-CANDIDATES-V1",
+  "purpose": "Historical rider identity recognition; do not infer current team, series or 2026/2027 participation",
+  "review_status": "secondary_source_candidates_verify_officially",
+  "sources": [
+    "https://www.wikidata.org/wiki/Q9238927",
+    "https://en.wikipedia.org/wiki/Category:Turkish_motorcycle_racers"
+  ],
+  "candidates": [
+    {
+      "name": "Tolga Uprak",
+      "source": "https://en.wikipedia.org/wiki/Tolga_Uprak"
+    },
+    {
+      "name": "Yunus Erçelik",
+      "source": "https://en.wikipedia.org/wiki/Yunus_Er%C3%A7elik"
+    },
+    {
+      "name": "Çağrı Coşkun",
+      "source": "https://en.wikipedia.org/wiki/%C3%87a%C4%9Fr%C4%B1_Co%C5%9Fkun"
+    },
+    {
+      "name": "Harun Çabuk",
+      "source": "https://en.wikipedia.org/wiki/Harun_%C3%87abuk"
+    },
+    {
+      "name": "Mert Aytuğ",
+      "source": "https://en.wikipedia.org/wiki/Mert_Aytu%C4%9F"
+    }
+  ],
+  "rules": [
+    "Match Unicode-aware name aliases; no automatic current team inference",
+    "Verify series, dates and active status against federation or championship sources",
+    "Wikipedia/Wikidata are discovery references, not automatic verified news facts"
+  ]
+}

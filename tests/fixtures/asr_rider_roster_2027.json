@@ -1,0 +1,170 @@
+{
+  "schema": "EDIRNE22-ASR-MOTOGP-2027-ROSTER-V1",
+  "as_of": "2026-10-03",
+  "source": "https://www.motogp.com/en/news/2026/09/16/motogp-2027-rider-line-up-the-official-announcements-so-far/1075037",
+  "policy": "Season-scoped names and team context; never overwrite 2026 or assert unconfirmed seats",
+  "confirmed": [
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Marc Márquez",
+      "team": "Ducati Lenovo Team",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Pedro Acosta",
+      "team": "Ducati Lenovo Team",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Marco Bezzecchi",
+      "team": "Aprilia Racing",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Francesco Bagnaia",
+      "team": "Aprilia Racing",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Jorge Martín",
+      "team": "Monster Energy Yamaha MotoGP",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Ai Ogura",
+      "team": "Monster Energy Yamaha MotoGP",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Joan Mir",
+      "team": "Gresini Racing",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Daniel Holgado",
+      "team": "Gresini Racing",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Álex Márquez",
+      "team": "Red Bull KTM Factory Racing",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Fabio Di Giannantonio",
+      "team": "Red Bull KTM Factory Racing",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Fabio Quartararo",
+      "team": "Honda HRC Castrol",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Johann Zarco",
+      "team": "LCR Honda",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Raúl Fernández",
+      "team": "Trackhouse MotoGP Team",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Enea Bastianini",
+      "team": "Trackhouse MotoGP Team",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Luca Marini",
+      "team": "Red Bull KTM Tech3",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Senna Agius",
+      "team": "Red Bull KTM Tech3",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Fermín Aldeguer",
+      "team": "VR46 Racing Team",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Nicolò Bulega",
+      "team": "VR46 Racing Team",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Toprak Razgatlıoğlu",
+      "team": "Prima Pramac Yamaha MotoGP",
+      "status": "officially_announced"
+    },
+    {
+      "series": "MotoGP",
+      "season": 2027,
+      "name": "Izan Guevara",
+      "team": "Prima Pramac Yamaha MotoGP",
+      "status": "officially_announced"
+    }
+  ],
+  "pending": [
+    {
+      "name": "David Alonso",
+      "season": 2027,
+      "team": null,
+      "possible_teams": [
+        "Honda HRC Castrol",
+        "LCR Honda"
+      ],
+      "status": "Honda signed, team seat unconfirmed"
+    },
+    {
+      "name": "Diogo Moreira",
+      "season": 2027,
+      "team": null,
+      "possible_teams": [
+        "Honda HRC Castrol",
+        "LCR Honda"
+      ],
+      "status": "Honda signed, team seat unconfirmed"
+    }
+  ]
+}

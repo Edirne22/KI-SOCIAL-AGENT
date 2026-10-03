@@ -1,0 +1,26 @@
+{
+  "schema": "EDIRNE22-ASR-PAIRED-RESULTS-V1",
+  "note": "ILLUSTRATIVE ONLY: fabricated transcripts for scorer tests; NOT real ASR results",
+  "cases": [
+    {
+      "language": "de",
+      "reference": "Bülent fährt mit der BMW M 1000 R.",
+      "baseline": "Bülent fährt mit der BMW M 1000 R Toprak.",
+      "candidate": "Bülent fährt mit der BMW M 1000 R.",
+      "names": [
+        "Bülent",
+        "Toprak"
+      ]
+    },
+    {
+      "language": "tr",
+      "reference": "Toprak Razgatlıoğlu viraj çıkışında hızlanıyor.",
+      "baseline": "Toprak Razgatlioglu viraj çıkışında hızlanıyor.",
+      "candidate": "Toprak Razgatlıoğlu viraj çıkışında hızlanıyor.",
+      "names": [
+        "Toprak Razgatlıoğlu",
+        "Can Öncü"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "schema": "EDIRNE22-ASR-GLOSSARY-V1",
+  "purpose": "Synthetic text-only test vocabulary; not model training data",
+  "languages": {
+    "de": [
+      "Bülent",
+      "Edirne 22",
+      "BMW M 1000 R",
+      "Motorradtour",
+      "Landstraße",
+      "Schräglage",
+      "Quickshifter",
+      "Drehmoment",
+      "Kettenblatt",
+      "Reifendruck",
+      "MotoGP",
+      "WorldSBK",
+      "Toprak Razgatlıoğlu",
+      "Can Öncü"
+    ],
+    "tr": [
+      "Bülent",
+      "Edirne 22",
+      "BMW M 1000 R",
+      "motosiklet",
+      "viraj",
+      "lastik basıncı",
+      "vites",
+      "MotoGP",
+      "Toprak Razgatlıoğlu",
+      "Can Öncü",
+      "Zayn Sofuoğlu"
+    ]
+  },
+  "notes": [
+    "Preserve Unicode diacritics, numbers, and model names",
+    "Vocabulary is a recognition hint, never a forced text replacement",
+    "Third-party glossary definitions are not copied. Curated individual terms require review before use as ASR hints."
+  ],
+  "bilingual_technical_terms": [
+    {
+      "de": "Motorrad",
+      "tr": "motosiklet"
+    },
+    {
+      "de": "Kurve",
+      "tr": "viraj"
+    },
+    {
+      "de": "Kupplung",
+      "tr": "debriyaj"
+    },
+    {
+      "de": "Gangschaltung",
+      "tr": "vites"
+    },
+    {
+      "de": "Reifendruck",
+      "tr": "lastik basıncı"
+    },
+    {
+      "de": "Bremse",
+      "tr": "fren"
+    },
+    {
+      "de": "Helm",
+      "tr": "kask"
+    },
+    {
+      "de": "Auspuff",
+      "tr": "egzoz"
+    },
+    {
+      "de": "Drehzahl",
+      "tr": "motor devri"
+    },
+    {
+      "de": "Kette",
+      "tr": "zincir"
+    },
+    {
+      "de": "Reifen",
+      "tr": "lastik"
+    },
+    {
+      "de": "Federung",
+      "tr": "süspansiyon"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Mozilla Common Voice",
+      "url": "https://commonvoice.mozilla.org/dav/datasets",
+      "use": "Separate licensed speech evaluation corpus, not copied dictionary"
+    },
+    {
+      "name": "Edirne 22 curated terminology",
+      "use": "Independently curated DE/TR motorcycle terms; review before ASR prompts"
+    },
+    {
+      "name": "Motoetkinlik technical articles",
+      "urls": [
+        "https://motoetkinlik.com/motogp-amerika-gp-onizleme-austinde-guc-dengesi-ve-frenleme-savasi/",
+        "https://motoetkinlik.com/motogp-macaristan-temsilcimiz-toprak-razgatlioglu-siralama-motivasyonunu-ve-hizlanma-sorunlarini-aktardi/",
+        "https://motoetkinlik.com/motogpde-telemetri-neden-her-seyi-cozemiyor/"
+      ],
+      "use": "Curated terms only, not article text"
+    },
+    {
+      "name": "F1TR",
+      "url": "https://www.f1tr.com/",
+      "use": "Secondary vocabulary reference; verify terminology"
+    }
+  ],
+  "turkish_racing_terms": [
+    {
+      "tr": "frenleme",
+      "de": "Bremsvorgang"
+    },
+    {
+      "tr": "sert frenleme",
+      "de": "starkes Bremsen"
+    },
+    {
+      "tr": "viraj girişi",
+      "de": "Kurveneingang"
+    },
+    {
+      "tr": "viraj çıkışı",
+      "de": "Kurvenausgang"
+    },
+    {
+      "tr": "ön lastik",
+      "de": "Vorderreifen"
+    },
+    {
+      "tr": "arka lastik",
+      "de": "Hinterreifen"
+    },
+    {
+      "tr": "lastik aşınması",
+      "de": "Reifenverschleiß"
+    },
+    {
+      "tr": "yol tutuş",
+      "de": "Grip"
+    },
+    {
+      "tr": "arka patinaj",
+      "de": "durchdrehendes Hinterrad"
+    },
+    {
+      "tr": "hızlanma",
+      "de": "Beschleunigung"
+    },
+    {
+      "tr": "sıralama turları",
+      "de": "Qualifying-Runden"
+    },
+    {
+      "tr": "sprint yarışı",
+      "de": "Sprintrennen"
+    },
+    {
+      "tr": "yarış temposu",
+      "de": "Renntempo"
+    },
+    {
+      "tr": "elektronik ayarlar",
+      "de": "Elektronikeinstellungen"
+    },
+    {
+      "tr": "telemetri",
+      "de": "Telemetrie"
+    },
+    {
+      "tr": "süspansiyon",
+      "de": "Federung"
+    },
+    {
+      "tr": "motor freni",
+      "de": "Motorbremse"
+    }
+  ],
+  "research_source_registry": [
+    {
+      "name": "Motoetkinlik",
+      "url": "https://motoetkinlik.com/",
+      "language": "tr",
+      "role": "specialist terms and names"
+    },
+    {
+      "name": "TMF",
+      "url": "https://www.tmf.org.tr/Haberler/",
+      "language": "tr",
+      "role": "official Turkish motorsport terminology"
+    },
+    {
+      "name": "Anadolu Ajansı",
+      "url": "https://www.aa.com.tr/tr/spor",
+      "language": "tr",
+      "role": "general Turkish sports terms"
+    },
+    {
+      "name": "Motoron",
+      "url": "https://www.motoron.com.tr/kategori/yarislar/",
+      "language": "tr",
+      "role": "motorcycle terminology"
+    },
+    {
+      "name": "Motorsport Türkiye",
+      "url": "https://tr.motorsport.com/",
+      "language": "tr",
+      "role": "race and paddock vocabulary"
+    },
+    {
+      "name": "TRMotoSports",
+      "url": "https://www.trmotosports.com/",
+      "language": "tr",
+      "role": "motorcycle racing vocabulary"
+    },
+    {
+      "name": "TRF1",
+      "url": "https://trf1.net/motor-sporlari/motogp/",
+      "language": "tr",
+      "role": "motorsport vocabulary"
+    },
+    {
+      "name": "MotoGP",
+      "url": "https://www.motogp.com/en/news",
+      "language": "en",
+      "role": "official rider/team/product spelling"
+    },
+    {
+      "name": "WorldSBK",
+      "url": "https://www.worldsbk.com/en/news",
+      "language": "en",
+      "role": "official rider/team/product spelling"
+    },
+    {
+      "name": "Motorsport Magazin",
+      "url": "https://www.motorsport-magazin.com/motogp/",
+      "language": "de",
+      "role": "German racing terminology"
+    },
+    {
+      "name": "ServusTV Sport",
+      "url": "https://www.servustv.com/sport/",
+      "language": "de",
+      "role": "German racing terminology"
+    },
+    {
+      "name": "F1TR",
+      "url": "https://www.f1tr.com/",
+      "language": "tr",
+      "role": "candidate only; not confirmed in active scout"
+    },
+    {
+      "name": "Motorcular Motorcu Sözlüğü",
+      "url": "https://new.motorcular.com/tr/motorcu-sozlugu",
+      "language": "tr",
+      "role": "candidate motorcycle glossary; page fetch timed out, verify later"
+    },
+    {
+      "name": "Motosiklet Defteri Sözlüğü",
+      "url": "https://www.motosikletdefteri.com/motosiklet-sozlugu",
+      "language": "tr",
+      "role": "Turkish motorcycle terminology; page accessible, 41 listed terms"
+    }
+  ],
+  "research_policy": "Registry mirrors sources found in existing Edirne22 scout and racing source code, plus requested F1TR. Entries are candidates, not claims that every site has been crawled. Extract only independently curated short terms and names; no article text or private recordings. Validate UTF-8 Turkish characters and spelling before prompting ASR.",
+  "additional_turkish_technical_terms": [
+    {
+      "tr": "amortisör",
+      "de": "Stoßdämpfer"
+    },
+    {
+      "tr": "artçı",
+      "de": "Sozius/Sozia"
+    },
+    {
+      "tr": "balata",
+      "de": "Bremsbelag"
+    },
+    {
+      "tr": "buji",
+      "de": "Zündkerze"
+    },
+    {
+      "tr": "conta",
+      "de": "Dichtung"
+    },
+    {
+      "tr": "dekompresyon",
+      "de": "Dekompression"
+    },
+    {
+      "tr": "dingil",
+      "de": "Achse"
+    },
+    {
+      "tr": "disk fren",
+      "de": "Scheibenbremse"
+    },
+    {
+      "tr": "enjeksiyon",
+      "de": "Einspritzung"
+    },
+    {
+      "tr": "gidon",
+      "de": "Lenker"
+    },
+    {
+      "tr": "hava filtresi",
+      "de": "Luftfilter"
+    },
+    {
+      "tr": "hızlı vites değiştirici",
+      "de": "Quickshifter"
+    },
+    {
+      "tr": "jant",
+      "de": "Felge"
+    },
+    {
+      "tr": "karbüratör",
+      "de": "Vergaser"
+    },
+    {
+      "tr": "radyatör",
+      "de": "Kühler"
+    },
+    {
+      "tr": "rodaj",
+      "de": "Einfahrphase"
+    },
+    {
+      "tr": "rölanti",
+      "de": "Leerlauf"
+    },
+    {
+      "tr": "yağ soğutucu",
+      "de": "Ölkühler"
+    },
+    {
+      "tr": "yakıt deposu",
+      "de": "Kraftstofftank"
+    }
+  ],
+  "review_status": "curated_draft_not_runtime_approved"
+}

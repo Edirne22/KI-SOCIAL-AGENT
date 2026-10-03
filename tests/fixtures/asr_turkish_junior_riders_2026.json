@@ -1,0 +1,107 @@
+{
+  "schema": "EDIRNE22-ASR-JUNIOR-TURKISH-RIDERS-V1",
+  "as_of": "2026-10-03",
+  "status": "source-linked identity candidates; participation season-specific",
+  "sources": [
+    {
+      "url": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/",
+      "category": "2026 ANLAS MiniGP 110 announced entrants"
+    },
+    {
+      "url": "https://www.tmf.org.tr/Haberler/oncu-ve-Sofuoglu-Dunya--Polat-Avrupa-Sinavinda/",
+      "category": "historical Turkish Supersport 300"
+    },
+    {
+      "url": "https://www.davranalp.com/",
+      "category": "junior rider self-description"
+    }
+  ],
+  "riders": [
+    {
+      "name": "Abdulhamid Bostanoğlu",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Almila Vartemel",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Alparslan Davran",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/",
+      "aliases": [
+        "Alpaslan Davran"
+      ],
+      "review": "User confirmed both spellings refer to the same rider; canonical spelling Alparslan provisional pending official spelling"
+    },
+    {
+      "name": "Duru Gören",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Emir Memişoğlu",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Pars Pehlivan",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Poyraz Efe Doğan",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Rüzgar Ceyhan",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Toprak Bezirgan",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Toprak Ceyhan",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Yiğit Alp Karabatak",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Zayn Sofuoğlu",
+      "category": "ANLAS MiniGP 110",
+      "season": 2026,
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+    },
+    {
+      "name": "Bahattin Sofuoğlu",
+      "category": "historical WorldSSP300",
+      "source": "https://www.tmf.org.tr/Haberler/oncu-ve-Sofuoglu-Dunya--Polat-Avrupa-Sinavinda/"
+    }
+  ],
+  "rules": [
+    "No junior rider performance ranking or unsupported future-career predictions",
+    "Do not confuse historic WorldSSP300 participation with 2026 category",
+    "Junior rider personal data limited to public competition names and categories"
+  ]
+}
