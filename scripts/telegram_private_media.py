@@ -29,8 +29,35 @@ def download(file_id,token,get=requests.get):
     if not token or not file_id:
         raise ValueError("Telegram-Datei fehlt")
     info=get("https://api.telegram.org/bot"+token+"/getFile",params={"file_id":file_id},timeout=25)
-    info.raise_for_status()
-    obj=info.json()
+    # Telegram's public Bot API may reject oversized videos directly in
+    # getFile (HTTP 400) before returning file_size/file_path. Treat that as
+    # a permanent per-item error, not as a retryable outage that blocks
+    # every later update. Never log/propagate the raw requests URL: it
+    # contains the bot token and may include a private Telegram file ID.
+    status=getattr(info,"status_code",200)
+    try:
+        obj=info.json()
+    except (ValueError,TypeError):
+        obj={}
+    if not isinstance(obj,dict):
+        obj={}
+    error_code=obj.get("error_code")
+    if status in (400,413) or error_code in (400,413):
+        description=str(obj.get("description") or "").lower()
+        if (status==413 or error_code==413
+                or any(text in description for text in
+                       ("file is too big","file too big","file is too large",
+                        "file too large","request entity too large"))):
+            raise ValueError("Telegram-Datei überschreitet das Bot-Downloadlimit; bitte Dashboard-Upload verwenden. Bereits gespeicherte Albumteile bleiben privat.")
+        raise ValueError("Telegram kann diese Datei nicht bereitstellen; Datei erneut senden oder Dashboard-Upload verwenden.")
+    try:
+        info.raise_for_status()
+    except requests.HTTPError as exc:
+        response=getattr(exc,"response",None)
+        code=getattr(response,"status_code",status)
+        # A non-permanent API error remains retryable without acknowledging
+        # the update; bot token and file_id must never reach exception logs.
+        raise RuntimeError("Telegram-getFile vorübergehend nicht verfügbar (HTTP "+str(code)+"); erneuter Versuch erforderlich.") from None
     result=obj.get("result") or {}
     if not obj.get("ok") or not result.get("file_path"):
         raise RuntimeError("Telegram-Datei nicht verfügbar")
