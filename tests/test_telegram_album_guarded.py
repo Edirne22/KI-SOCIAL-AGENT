@@ -430,10 +430,13 @@ class AlbumTests(unittest.TestCase):
         receive({**base,"caption":"/privat","photo":[{"file_id":"ok1"}]},
                 update_id=80, token="synthetic",client=r2,bucket="test",
                 get=get,authorized_chat=42)
-        with self.assertRaises(ValueError):
-            receive({**base,"video":{"file_id":"oversized","mime_type":"video/mp4"}},
-                    update_id=81,token="SECRET",client=r2,bucket="test",
-                    get=lambda *args,**kw:TooLarge(),authorized_chat=42)
+        response=receive({**base,"video":{"file_id":"oversized","mime_type":"video/mp4"}},
+                         update_id=81,token="SECRET",client=r2,bucket="test",
+                         get=lambda *args,**kw:TooLarge(),authorized_chat=42)
+        self.assertIn("Downloadlimit",response)
+        self.assertIn("1 Datei(en) abgewiesen",response)
+        self.assertNotIn("SECRET",response)
+        self.assertEqual(len([k for k in r2.data if "/rejected/" in k]),1)
         receive({**base,"photo":[{"file_id":"ok2"}]},
                 update_id=82,token="synthetic",client=r2,bucket="test",
                 get=get,authorized_chat=42)
@@ -752,6 +755,6 @@ class AlbumTests(unittest.TestCase):
         ns["main"]()
         self.assertEqual(acked,[100,101])
         self.assertEqual(len(calls),2)
-        self.assertTrue(all("Keine Veröffentlichung" in x for x in sent))
+        self.assertTrue(all("keine veröffentlichung" in x.lower() for x in sent))
 
 if __name__=="__main__":unittest.main()
