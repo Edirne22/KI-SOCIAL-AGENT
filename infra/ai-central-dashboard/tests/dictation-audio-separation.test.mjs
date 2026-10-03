@@ -24,7 +24,7 @@ test("no automatic submission or false whisper implementation",()=>{
   const section=html.slice(begin,end);
   assert.ok(begin>0&&end>begin);
   assert.doesNotMatch(section,/\/api\/inbox|\/api\/upload|faster_whisper|faster-whisper.*?\.transcribe\(/);
-  assert.match(html,/noch ohne faster-whisper-Transkription/);
+  assert.match(html,/mit privater faster-whisper-Transkription/);
   assert.match(html,/kein Textauftrag/);
 });
 test("unsupported browser gives an honest fallback",()=>{
