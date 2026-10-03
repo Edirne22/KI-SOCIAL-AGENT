@@ -15,6 +15,8 @@ from telegram_bot import send_message
 def notify_verified_revision(job_id, *, storage, repository, sender=send_message):
     UUID(job_id)
     state, _ = _read_state(job_id, storage)
+    if state.get("state") == "REVIEW_APPLIED" and (state.get("review") or {}).get("action") == "discard":
+        return "SKIPPED_DISCARDED"
     record = repository.get_job(job_id)
     job = record.job
     run = job.metadata.get("revision_render")
