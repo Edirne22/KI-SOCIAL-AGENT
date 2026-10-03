@@ -635,3 +635,14 @@ ANALYSIEREN
 5. **Kommunikation:** Bereits bekannte Restarbeiten **gebündelt vorab** nennen, nicht nach jedem grünen Einzeltest eine neue Überraschung präsentieren. Neue tatsächlich erst später entdeckte Defekte transparent als solche benennen, priorisieren und als Regression sichern.
 
 **Anlass/Regression:** Beim privaten Telegram-Mehrfachupload wurden Album-Reihenfolge, Wiederanlauf und automatische Nachholung erst nach mehreren grünen Einzeltests angesprochen. Künftig muss die vollständige Matrix vorab vorliegen; ein grüner Teillauf ist ausdrücklich nur Teilfortschritt. Die bestehenden Merge-, Kosten-, Datenschutz- und Veröffentlichungsregeln bleiben unverändert.
+
+
+## Verbindliche Arbeitsweise: Fakten, Tätigkeiten und kontinuierliche Ausführung (03.10.2026)
+
+- **Keine Nebendiskussionen:** Antworten und Statusberichte beschränken sich auf verifizierte Fakten, ausgeführte Tätigkeiten, konkrete Ergebnisse, echte Blocker und den unmittelbar nächsten Arbeitsschritt. Keine wiederholten Grundsatzdebatten, spekulativen Erfolgsmeldungen oder unnötigen Rückfragen.
+- **Statusmeldung ist kein Haltepunkt:** Nach jeder Statusmeldung im selben aktiven Arbeitsauftrag ohne erneute Aufforderung mit dem nächsten zulässigen Schritt fortfahren, bis die vereinbarten Abnahmekriterien erfüllt sind oder ein tatsächlicher Blocker vorliegt. Keine Hintergrundarbeit oder dauerhafte Überwachung behaupten, wenn dafür kein laufender Prozess bzw. keine Automation existiert.
+- **Freigaben effizient behandeln:** Bereits dokumentierte, gültige technische Vollmachten nicht erneut abfragen. Bestehende freigegebene Infrastruktur und synthetische Testdaten bevorzugen. Unkritische Teilaufgaben parallel zur Klärung eines echten Blockers fortsetzen, soweit technisch und sicher möglich.
+- **Urheberrecht, Persönlichkeitsrechte und private Daten:** Keine pauschale Umgehung von Rechts-, Datenschutz-, Plattform- oder Einwilligungsanforderungen. Vorhandene belegte Nutzungsrechte und ausdrücklich erteilte Einwilligungen wiederverwenden, statt dieselbe Frage unnötig zu wiederholen. Nur wenn für eine konkrete Verarbeitung tatsächlich Rechte, Einwilligung oder Befugnisse fehlen, diesen betroffenen Schritt begründet zurückstellen; alle davon unabhängigen zulässigen Arbeiten ohne Verzögerung fortführen. Persönliche Medien standardmäßig privat halten; keine ungefragte Veröffentlichung.
+- **Blocker-Meldung:** Nur konkrete Ursache, betroffene Aufgabe, mögliche sichere Alternative und notwendige Entscheidung nennen. Keine allgemeine rechtliche Diskussion ohne konkreten Bezug.
+
+Diese Arbeitsweise ändert **nicht** die ausdrücklichen Datenschutz-, Kosten-, Human-Approval-, Veröffentlichungs- und Merge-Grenzen dieser Datei.
