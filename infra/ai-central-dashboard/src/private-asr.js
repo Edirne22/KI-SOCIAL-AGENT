@@ -2,7 +2,7 @@
 // Route registration must remain BEHIND the existing bearer-auth gate.
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const SHA=/^[0-9a-f]{64}$/;
-const AUDIO=new Set(["audio/webm","audio/mp4","audio/ogg"]);
+const AUDIO=new Set(["audio/webm","audio/mp4","audio/x-m4a","audio/m4a","audio/ogg"]);
 const PREFIX="ai-central/v1/private-asr/";
 const MAX=8*1024*1024;
 const reply=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{"content-type":"application/json","cache-control":"private, no-store"}});
