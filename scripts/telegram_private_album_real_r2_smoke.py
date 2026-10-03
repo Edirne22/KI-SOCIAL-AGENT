@@ -164,14 +164,15 @@ def main():
                 self.thread_state = local()
             def __getattr__(self, name):
                 return getattr(self.original, name)
-            def get_object(self, *, Bucket, Key, **kw):
-                obj = self.original.get_object(Bucket=Bucket, Key=Key, **kw)
-                if Key == manifest_key:
-                    self.thread_state.manifest_reads = getattr(
-                        self.thread_state, "manifest_reads", 0) + 1
-                    if self.thread_state.manifest_reads == 4:
-                        barrier.wait(timeout=25)
-                return obj
+            def put_object(self, *, Bucket, Key, Body, **kw):
+                # Synchronize at the *actual conditional manifest write*, not
+                # at a brittle number of preliminary manifest readbacks.
+                if (Key == manifest_key and kw.get("IfMatch")
+                        and not getattr(self.thread_state, "raced", False)):
+                    self.thread_state.raced = True
+                    barrier.wait(timeout=25)
+                return self.original.put_object(Bucket=Bucket, Key=Key,
+                                                Body=Body, **kw)
 
         racing = RacingClient(client)
         concurrent_events = [
