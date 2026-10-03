@@ -1,5 +1,8 @@
 """Explicit /privat media intake; no vision inference or social dispatch."""
 import re
+import json
+from datetime import datetime, timezone
+from hashlib import sha256
 import uuid
 import requests
 from scripts.ai_central_shared_inbox import client_from_env
