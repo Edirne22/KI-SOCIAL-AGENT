@@ -25,6 +25,14 @@ console.log("MCP_CONNECT_OK",JSON.stringify({sessionId:transport.sessionId||null
 const sessionDiag=(phase)=>console.log("MCP_SESSION_DIAG",JSON.stringify({phase,sessionId:transport.sessionId||null}));
 let call=async(name,args={})=>{sessionDiag(`before:${name}`);console.log("MCP",name);try{const x=await client.callTool({name,arguments:args});sessionDiag(`after:${name}`);if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x}catch(error){sessionDiag(`error:${name}`);throw error}};
 const data=x=>x.structuredContent??Object.assign({},...(x.content||[]).filter(c=>c.type==="text").map(c=>{try{return JSON.parse(c.text)}catch{return {text:c.text}}}));
+// Session continuity probe: distinguish upstream process/session loss from project-tool failure.
+const probeRounds = Number(process.env.MCP_SESSION_PROBE_ROUNDS || "4");
+for (let i = 0; i < probeRounds; i++) {
+  const before = transport.sessionId;
+  const probe = await call("openchatcut_status");
+  assert(transport.sessionId === before, "MCP session ID changed during repeated status probe");
+  console.log("MCP_CONTINUITY_PASS", JSON.stringify({round:i+1,sessionId:before,status:data(probe)}));
+}
 const status=await call("openchatcut_status"); console.log("status",JSON.stringify(data(status)));
 const created=data(await call("create_project",{name:`Edirne22 LIVE acceptance ${new Date().toISOString()}`,compositionWidth:720,compositionHeight:1280,fps:30}));
 const projectId=created.id||created.projectId; assert(projectId,"create_project returned no id");
