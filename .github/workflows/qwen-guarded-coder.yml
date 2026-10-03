@@ -1,5 +1,8 @@
 name: Qwen Code guarded coding assistant
 on:
+  push:
+    branches: [test/qwen-credential-probe]
+    paths: [docs/QWEN_TELEGRAM_ASSIGNMENT.md]
   workflow_dispatch:
     inputs:
       task:
@@ -15,7 +18,7 @@ permissions:
   contents: read
 jobs:
   propose:
-    if: inputs.account_free_confirmed == true
+    if: github.event_name == 'push' || inputs.account_free_confirmed == true
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
@@ -30,6 +33,10 @@ jobs:
           node-version: '22'
       - name: Install Qwen Code
         run: npm install --no-audit --no-fund -g @qwen-code/qwen-code
+      - name: Fetch assigned Telegram branch for review
+        run: |
+          git fetch --depth=1 origin feature/guarded-telegram-album-import
+          git checkout FETCH_HEAD
       - name: Run bounded read-only coding analysis
         shell: bash
         run: |
@@ -40,7 +47,7 @@ jobs:
           export OPENAI_MODEL="openrouter/free"
           mkdir -p ~/.qwen
           printf '%s\n' '{"security":{"auth":{"selectedType":"openai"}},"model":{"name":"openrouter/free"}}' > ~/.qwen/settings.json
-          timeout 420 qwen --approval-mode plan --prompt "Read-only repository coding review. Do not edit files, run shell commands, access secrets, publish, deploy or open external URLs. Give a concise patch plan for this task: $TASK" > qwen-coding-review.txt 2>&1
+          timeout 420 qwen --approval-mode plan --prompt "Read-only repository coding review. Do not edit files, run shell commands, access secrets, publish, deploy or open external URLs. Give a precise patch plan and test plan for the Telegram album acceptance matrix in docs/TELEGRAM_PRIVATE_ALBUM_ACCEPTANCE.md. Inspect scripts/telegram_private_media.py, scripts/r2_media_warehouse.py, telegram_router.py and tests/test_telegram_album_guarded.py. Cover durable pre-caption quarantine and automatic replay, immutable original interrupted-write recovery, cross-midnight grouping, concurrency/CAS, negative and router E2E tests. Output actionable file-level fixes and tests. Do not change files." > qwen-coding-review.txt 2>&1
           test -s qwen-coding-review.txt
           sed -i -E 's/sk-[A-Za-z0-9_-]+/[REDACTED]/g' qwen-coding-review.txt
       - uses: actions/upload-artifact@v4
