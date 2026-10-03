@@ -17,3 +17,13 @@ test("consent button displays real dispatch status, GET remains read-only",()=>{
  assert.ok(ui.includes('asrConsent").onclick=()=>asrCall("POST")'));
  assert.ok(ui.includes('asrCheck").onclick=()=>asrCall("GET")'));
 });
+
+test("local transcript polish is opt-in and original is restorable",()=>{
+ assert.ok(ui.includes('id="asrPolish"'));
+ assert.ok(ui.includes('id="asrOriginal"'));
+ assert.ok(ui.includes('const polishTranscript=(raw,language)=>'));
+ assert.ok(ui.includes('asrOriginalText=result.text'));
+ assert.ok(ui.includes('$("asrText").value=asrOriginalText'));
+ assert.ok(ui.includes('asrOriginalText=""'));
+ assert.ok(!ui.includes('fetch("https://api.openai.com'));
+});
