@@ -378,7 +378,8 @@ async function loadPreviews(){
           return;
         await requestReview("discard","");
       };
-      controls.append(change,discard);\n      li.append(feedbackLabel);
+      controls.append(change,discard);
+      li.append(feedbackLabel);
       const postInfo=document.createElement("div");postInfo.className="smalltext";
       postInfo.textContent="Posten bleibt gesperrt, bis echte Fakten-QM, deine verbindliche Freigabe "
         +"und die Publisher-Anbindung vollständig geprüft sind.";
