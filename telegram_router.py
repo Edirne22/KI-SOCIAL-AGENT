@@ -399,8 +399,11 @@ def main() -> None:
             try:
                 answer=receive_private_media(msg,update_id=uid,token=os.environ.get("TELEGRAM_BOT_TOKEN",""),authorized_chat=allowed)
                 if answer:send_message(answer)
-            except (ValueError,RuntimeError,PermissionError) as exc:
+            except (ValueError,PermissionError) as exc:
                 send_message("Privater Medieneingang: "+str(exc))
+            except Exception:
+                # Transient Telegram/R2 failures must remain retryable: no ACK.
+                raise
             _ack(uid)
             continue
         if _is_photo_message(upd):
