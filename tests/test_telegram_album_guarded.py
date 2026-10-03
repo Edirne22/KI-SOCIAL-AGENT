@@ -127,4 +127,44 @@ class AlbumTests(unittest.TestCase):
                            filename="a.jpg",mime="image/jpeg",payload=b"synthetic")
         self.assertEqual(r2.data[key],b"tampered")
 
+
+    def test_quarantine_limit_rejects_new_item_but_allows_retry(self):
+        from scripts.telegram_private_media import MAX_QUARANTINE_ITEMS
+        r2=R2()
+        base={"chat":{"id":42},"media_group_id":"bounded","date":1791059000}
+        for i in range(MAX_QUARANTINE_ITEMS):
+            receive({**base,"photo":[{"file_id":str(i)}]},update_id=1000+i,
+                    token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
+        receive({**base,"photo":[{"file_id":"0"}]},update_id=1000,
+                token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
+        with self.assertRaisesRegex(ValueError,"quarantine limit"):
+            receive({**base,"photo":[{"file_id":"extra"}]},update_id=9999,
+                    token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
+        self.assertEqual(len([k for k in r2.data if "/quarantine/" in k]),MAX_QUARANTINE_ITEMS)
+
+    def test_invalid_group_and_unsupported_uncaptioned_mime_rejected(self):
+        r2=R2()
+        with self.assertRaises(ValueError):
+            receive({"chat":{"id":42},"media_group_id":"../bad","date":1791059000,
+                     "photo":[{"file_id":"x"}]},update_id=1,token="synthetic",
+                    client=r2,bucket="test",get=get,authorized_chat=42)
+        with self.assertRaises(ValueError):
+            receive({"chat":{"id":42},"media_group_id":"safe","date":1791059000,
+                     "document":{"file_id":"x","mime_type":"application/x-executable"}},
+                    update_id=2,token="synthetic",client=r2,bucket="test",
+                    get=get,authorized_chat=42)
+        self.assertFalse(r2.data)
+
+    def test_oversize_download_fails_without_manifest(self):
+        class Large(Reply):
+            def json(self):
+                return {"ok":True,"result":{"file_path":"photos/synthetic.jpg",
+                                              "file_size":20*1024*1024}}
+        r2=R2()
+        with self.assertRaisesRegex(ValueError,"zu groß"):
+            receive({"chat":{"id":42},"caption":"/privat","photo":[{"file_id":"x"}]},
+                    update_id=2,token="synthetic",client=r2,bucket="test",
+                    get=lambda *args,**kwargs:Large(),authorized_chat=42)
+        self.assertFalse(r2.data)
+
 if __name__=="__main__":unittest.main()
