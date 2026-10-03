@@ -36,6 +36,17 @@ jobs:
           npm install --no-audit --no-fund
           npx wrangler types
           npx tsc --noEmit --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --lib es2022,dom --types @cloudflare/workers-types src/index.ts
+      - name: Stage Docker build context for Wrangler
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=infra/private-asr-cloudflare
+          cp infra/private-asr/Dockerfile "$target/Dockerfile"
+          cp content_factory_private_asr.py content_factory_private_asr_runtime.py content_factory_private_asr_r2_bridge.py "$target/"
+          cp infra/private-asr/run_private_asr.py infra/private-asr/service.py "$target/"
+          sed -i 's@COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py /app/@COPY run_private_asr.py service.py /app/@' "$target/Dockerfile"
+          test -s "$target/service.py"
+          test -s "$target/content_factory_private_asr.py"
       - name: Deploy isolated private ASR worker and container
         working-directory: infra/private-asr-cloudflare
         run: npx wrangler deploy --config wrangler.jsonc
