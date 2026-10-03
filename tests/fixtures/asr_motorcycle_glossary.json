@@ -180,5 +180,80 @@
       "tr": "motor freni",
       "de": "Motorbremse"
     }
-  ]
+  ],
+  "research_source_registry": [
+    {
+      "name": "Motoetkinlik",
+      "url": "https://motoetkinlik.com/",
+      "language": "tr",
+      "role": "specialist terms and names"
+    },
+    {
+      "name": "TMF",
+      "url": "https://www.tmf.org.tr/Haberler/",
+      "language": "tr",
+      "role": "official Turkish motorsport terminology"
+    },
+    {
+      "name": "Anadolu Ajansı",
+      "url": "https://www.aa.com.tr/tr/spor",
+      "language": "tr",
+      "role": "general Turkish sports terms"
+    },
+    {
+      "name": "Motoron",
+      "url": "https://www.motoron.com.tr/kategori/yarislar/",
+      "language": "tr",
+      "role": "motorcycle terminology"
+    },
+    {
+      "name": "Motorsport Türkiye",
+      "url": "https://tr.motorsport.com/",
+      "language": "tr",
+      "role": "race and paddock vocabulary"
+    },
+    {
+      "name": "TRMotoSports",
+      "url": "https://www.trmotosports.com/",
+      "language": "tr",
+      "role": "motorcycle racing vocabulary"
+    },
+    {
+      "name": "TRF1",
+      "url": "https://trf1.net/motor-sporlari/motogp/",
+      "language": "tr",
+      "role": "motorsport vocabulary"
+    },
+    {
+      "name": "MotoGP",
+      "url": "https://www.motogp.com/en/news",
+      "language": "en",
+      "role": "official rider/team/product spelling"
+    },
+    {
+      "name": "WorldSBK",
+      "url": "https://www.worldsbk.com/en/news",
+      "language": "en",
+      "role": "official rider/team/product spelling"
+    },
+    {
+      "name": "Motorsport Magazin",
+      "url": "https://www.motorsport-magazin.com/motogp/",
+      "language": "de",
+      "role": "German racing terminology"
+    },
+    {
+      "name": "ServusTV Sport",
+      "url": "https://www.servustv.com/sport/",
+      "language": "de",
+      "role": "German racing terminology"
+    },
+    {
+      "name": "F1TR",
+      "url": "https://www.f1tr.com/",
+      "language": "tr",
+      "role": "candidate only; not confirmed in active scout"
+    }
+  ],
+  "research_policy": "Registry mirrors sources found in existing Edirne22 scout and racing source code, plus requested F1TR. Entries are candidates, not claims that every site has been crawled. Extract only independently curated short terms and names; no article text or private recordings. Validate UTF-8 Turkish characters and spelling before prompting ASR."
 }
