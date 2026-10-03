@@ -9,6 +9,8 @@ on:
       - '.github/workflows/block6-dashboard-first-real-video.yml'
       - 'infra/ai-central-dashboard/public/index.html'
       - 'infra/ai-central-dashboard/src/index.js'
+      - 'infra/ai-central-dashboard/src/private-asr.js'
+      - 'infra/ai-central-dashboard/wrangler.jsonc'
 permissions:
   contents: read
 jobs:
@@ -20,6 +22,7 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
       AI_DASHBOARD_TOKEN: ${{ secrets.AI_DASHBOARD_TOKEN }}
+      PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
       AI_GITHUB_DISPATCH_TOKEN: ${{ secrets.AI_GITHUB_DISPATCH_TOKEN }}
     steps:
       - uses: actions/checkout@v4
@@ -45,6 +48,11 @@ jobs:
       - name: Install required secret (API stays 401 while absent)
         working-directory: infra/ai-central-dashboard
         run: printf '%s' "$AI_DASHBOARD_TOKEN" | npx --yes wrangler@4 secret put AI_DASHBOARD_TOKEN --config wrangler.jsonc
+      - name: Install private ASR service credential
+        working-directory: infra/ai-central-dashboard
+        run: |
+          test -n "$PRIVATE_ASR_INTERNAL_TOKEN" || { echo 'PRIVATE_ASR_INTERNAL_TOKEN missing'; exit 1; }
+          printf '%s' "$PRIVATE_ASR_INTERNAL_TOKEN" | npx --yes wrangler@4 secret put PRIVATE_ASR_INTERNAL_TOKEN --config wrangler.jsonc
       - name: Install optional least-privileged dispatch credential
         if: env.AI_GITHUB_DISPATCH_TOKEN != ''
         working-directory: infra/ai-central-dashboard
