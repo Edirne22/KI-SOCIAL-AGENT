@@ -1,0 +1,41 @@
+name: Guarded Development - Import Reviewed Source
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: guarded-dev-source-import
+  cancel-in-progress: false
+jobs:
+  reviewed-source-import:
+    if: github.repository == 'Edirne22/KI-SOCIAL-AGENT'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Import only reviewed Telegram intake source
+        run: |
+          set -euo pipefail
+          git fetch origin main feat/telegram-review-feedback-and-warmup-contract
+          git switch -C feature/guarded-telegram-album-import origin/main
+          git show origin/feat/telegram-review-feedback-and-warmup-contract:scripts/telegram_private_media.py > scripts/telegram_private_media.py
+          python -m py_compile scripts/telegram_private_media.py
+          git diff --name-only | grep -Fx scripts/telegram_private_media.py
+          test "$(git diff --name-only | wc -l)" -eq 1
+          git add scripts/telegram_private_media.py
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore: isolate existing private Telegram intake for guarded album development'
+      - name: Push only isolated development branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)" push origin HEAD:refs/heads/feature/guarded-telegram-album-import
+      - name: Open draft PR for review
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr view feature/guarded-telegram-album-import >/dev/null 2>&1 || gh pr create --draft --base main --head feature/guarded-telegram-album-import --title 'Block 9: isolated private Telegram intake baseline' --body 'Isolated existing source only. Not an album implementation. No automatic merge or deploy. Issue #369.'
