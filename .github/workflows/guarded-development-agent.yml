@@ -1,5 +1,9 @@
 name: Guarded Development Agent - Proposal Gate
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/guarded-development-agent.yml'
+      - 'scripts/guarded_development_agent.py'
   workflow_dispatch:
     inputs:
       issue_number:
@@ -27,7 +31,7 @@ jobs:
       - name: Verify explicit issue and repository guardrails
         env:
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ inputs.issue_number }}
+          ISSUE_NUMBER: ${{ inputs.issue_number || '369' }}
           REPOSITORY: ${{ github.repository }}
         run: |
           python - <<'PY'
@@ -58,7 +62,7 @@ jobs:
           PY
       - name: Create allowlisted development plan
         env:
-          ISSUE_NUMBER: ${{ inputs.issue_number }}
+          ISSUE_NUMBER: ${{ inputs.issue_number || '369' }}
         run: python -m scripts.guarded_development_agent --issue "$ISSUE_NUMBER"
       - name: Verify existing private media regression suite
         run: |
