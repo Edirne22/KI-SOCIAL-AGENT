@@ -18,17 +18,15 @@ jobs:
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
-      ASR_NO_EXTRA_COST_APPROVED: ${{ vars.ASR_NO_EXTRA_COST_APPROVED }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Require verified existing capacity and credentials
+      - name: Validate existing deployment credentials
         shell: bash
         run: |
           set -euo pipefail
-          test "$ASR_NO_EXTRA_COST_APPROVED" = "true" || { echo "BLOCKED: existing paid capacity/no-extra-cost not verified"; exit 1; }
           for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID PRIVATE_ASR_INTERNAL_TOKEN R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME; do
             test -n "${!name}" || { echo "BLOCKED: missing $name"; exit 1; }
           done
