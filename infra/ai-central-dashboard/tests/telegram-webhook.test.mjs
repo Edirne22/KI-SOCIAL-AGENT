@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {telegramWebhook} from '../src/telegram-webhook.js';
+const secret='s'.repeat(32);
+const saved=[];
+const env={TELEGRAM_WEBHOOK_SECRET:secret,TELEGRAM_CHAT_ID:'123',TELEGRAM_WEBHOOK_INBOX:{put:async(k,v)=>saved.push([k,v])}};
+const req=(payload,token=secret)=>new Request('https://test.invalid/webhook',{method:'POST',headers:{'X-Telegram-Bot-Api-Secret-Token':token},body:JSON.stringify(payload)});
+test('authorized update reaches private durable inbox',async()=>{saved.length=0;assert.equal((await telegramWebhook(req({update_id:91,message:{chat:{id:123},text:'Hallo'}}),env)).status,200);assert.equal(saved.length,1);assert.equal(saved[0][0],'ai-central/v1/telegram-webhook/91.json')});
+test('wrong secret and foreign chat never write',async()=>{saved.length=0;assert.equal((await telegramWebhook(req({update_id:92,message:{chat:{id:123}}},'bad'),env)).status,403);assert.equal((await telegramWebhook(req({update_id:93,message:{chat:{id:999}}}),env)).status,200);assert.equal(saved.length,0)});
+test('storage failure does not acknowledge receipt',async()=>{const broken={...env,TELEGRAM_WEBHOOK_INBOX:{put:async()=>{throw Error('unavailable')}}};await assert.rejects(telegramWebhook(req({update_id:94,message:{chat:{id:123}}}),broken))});
+test('missing configuration fails closed',async()=>{assert.equal((await telegramWebhook(req({update_id:95,message:{chat:{id:123}}}),{...env,TELEGRAM_WEBHOOK_SECRET:''})).status,503)});
