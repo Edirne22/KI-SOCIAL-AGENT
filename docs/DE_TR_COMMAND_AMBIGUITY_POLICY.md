@@ -61,3 +61,10 @@ Weitere Alternativbegriffe und individuelle Formulierungen nur mit Nutzerbestät
 - Keep normal troubleshooting internal. After a verified fix, send the owner one short Telegram completion notice explaining the incident and verified resolution. Escalate immediately only if a required owner decision, new cost, new access, privacy risk, or unrecoverable service outage prevents safe continuation.
 - A coding agent is not a substitute for independent CI, permissions, security boundaries or observed runtime health. Self-healing is an acceptance goal, not a claim that it is currently implemented or guaranteed.
 - Test scenarios: failed provider -> existing fallback; failed deployment -> rollback; repeated error -> bounded stop; worker restart -> resume without duplicate effects; incomplete fix -> no success notice; secret exposure attempt -> blocked; real owner approval needed -> stop/escalate; successful repair -> exactly one Telegram summary.
+
+
+## Existing model-provider expansion, after core block acceptance
+- Repository inventory 2026-10-03: config/llm_providers.json declares groq, google, openrouter, nvidia, cloudflare and claude_openrouter; config/ai_central_capabilities.json separately lists Agnes and an unavailable direct Anthropic key. A declared model/catalog ID is not a proven live integration, quota or free tier.
+- Before adding providers, reconcile both registries and perform one controlled, non-sensitive, budget-checked inference probe per desired model. Record model ID, supported task, latency, rate-limit behavior, privacy boundary, cost/free allowance, successful test run and tested fallback. Do not use new paid routes without owner approval.
+- Coordinator chooses the minimum sufficient role-based set (research, fact verification, coding/repair, media, DE/TR language) and retries via tested compatible alternatives; forced provider requests never silently fallback. No indiscriminate parallel multi-model calls.
+- Keep existing functioning providers and Blocks 6/8/9 stable. Expand only after their acceptance; independently gate the coding repair agent with tests, permissions, rollback and audit.
