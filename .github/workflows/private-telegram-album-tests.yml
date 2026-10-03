@@ -1,0 +1,23 @@
+name: Private Telegram Album Regression
+on:
+  pull_request:
+    paths:
+      - 'scripts/telegram_private_media.py'
+      - 'telegram_router.py'
+      - 'tests/test_telegram_album_guarded.py'
+      - '.github/workflows/private-telegram-album-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-private-album:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests boto3
+      - run: python -m unittest discover -s tests -p 'test_telegram_album_guarded.py' -v
+      - run: python -m py_compile scripts/telegram_private_media.py telegram_router.py
