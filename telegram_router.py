@@ -18,7 +18,8 @@ from pathlib import Path
 import requests
 
 from telegram_bot import get_chat_id, get_updates, send_message, send_photo
-from scripts.telegram_private_media import receive as receive_private_media
+from scripts.telegram_private_media import (receive as receive_private_media,
+                                            handle_private_command)
 from scripts.ai_central_shared_inbox import handle as handle_central_inbox, parse_command as parse_central_command
 from vision_router import VisionRouter
 import pending_instagram as pi
@@ -390,6 +391,27 @@ def main() -> None:
         chat = str((msg.get("chat") or {}).get("id", ""))
         text = msg.get("text")
         if not isinstance(uid, int):
+            continue
+        # Explicit owner-only text recovery for previously quarantined albums.
+        # Never create a second polling consumer or infer approval from an
+        # ordinary media message without an explicit /privat caption/command.
+        private_text = " ".join(text.strip().lower().split()) if isinstance(text, str) else ""
+        if private_text in ("/privat", "/privat neu", "/privat offene") or private_text.startswith("/privat freigeben"):
+            if chat != allowed:
+                _ack(uid)
+                continue
+            try:
+                answer = handle_private_command(
+                    text, chat=chat, authorized_chat=allowed,
+                    token=os.environ.get("TELEGRAM_BOT_TOKEN", ""))
+                if answer:
+                    send_message(answer)
+            except (ValueError, PermissionError) as exc:
+                send_message("Privater Medieneingang: " + str(exc))
+            except Exception:
+                # A transient R2/Telegram fault is retryable: no ACK.
+                raise
+            _ack(uid)
             continue
         # Intercept albums before legacy Vision processing; unknown groups stay private.
         if msg.get("media_group_id") or str(msg.get("caption") or "").strip().lower() in ("/privat","/privat neu"):
