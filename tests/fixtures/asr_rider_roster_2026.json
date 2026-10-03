@@ -1,0 +1,465 @@
+{
+  "schema": "EDIRNE22-ASR-RIDER-NAMES-2026-V1",
+  "purpose": "Names for recognition hints; team assignments contextual and may change",
+  "source": "https://www.motogp.com/en/riders/",
+  "verified_at": "2026-10-03",
+  "review_status": "official_page_seed_verify_before_dynamic_use",
+  "riders": [
+    {
+      "series": "MotoGP",
+      "name": "Johann Zarco",
+      "team": "Honda LCR",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Toprak Razgatlıoğlu",
+      "team": "Prima Pramac Yamaha MotoGP",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Luca Marini",
+      "team": "Honda HRC Castrol",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Diogo Moreira",
+      "team": "Honda LCR",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Maverick Viñales",
+      "team": "Red Bull KTM Tech3",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Fabio Quartararo",
+      "team": "Monster Energy Yamaha MotoGP",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Franco Morbidelli",
+      "team": "Pertamina Enduro VR46 Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Enea Bastianini",
+      "team": "Red Bull KTM Tech3",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Raúl Fernández",
+      "team": "Trackhouse MotoGP Team",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Brad Binder",
+      "team": "Red Bull KTM Factory Racing",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Joan Mir",
+      "team": "Honda HRC Castrol",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Pedro Acosta",
+      "team": "Red Bull KTM Factory Racing",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Álex Rins",
+      "team": "Monster Energy Yamaha MotoGP",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Jack Miller",
+      "team": "Prima Pramac Yamaha MotoGP",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Fabio Di Giannantonio",
+      "team": "Pertamina Enduro VR46 Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Fermín Aldeguer",
+      "team": "Gresini Racing MotoGP",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Francesco Bagnaia",
+      "team": "Ducati Lenovo Team",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Marco Bezzecchi",
+      "team": "Aprilia Racing",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Álex Márquez",
+      "team": "Gresini Racing MotoGP",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Ai Ogura",
+      "team": "Trackhouse MotoGP Team",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Jorge Martín",
+      "team": "Aprilia Racing",
+      "aliases": []
+    },
+    {
+      "series": "MotoGP",
+      "name": "Marc Márquez",
+      "team": "Ducati Lenovo Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Sergio García",
+      "team": "Gresini Moto2",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Iván Ortolá",
+      "team": "MSI",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Barry Baltus",
+      "team": "Fantic Racing",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Álex Escrig",
+      "team": "KLINT Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Filip Salač",
+      "team": "American Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Celestino Vietti",
+      "team": "SpeedRS Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Tony Arbolino",
+      "team": "Fantic Racing",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Joe Roberts",
+      "team": "American Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Daniel Muñoz",
+      "team": "Italtrans Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Manuel González",
+      "team": "Intact GP",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Alonso López",
+      "team": "Gresini Moto2",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Izan Guevara",
+      "team": "Pramac Yamaha Moto2",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Luca Lunetta",
+      "team": "SpeedRS Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Ángel Piqueras",
+      "team": "MSI",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Arón Canet",
+      "team": "Marc VDS Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Deniz Öncü",
+      "team": "Marc VDS Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Alberto Ferrández",
+      "team": "Pramac Yamaha Moto2",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Mario Suryo Aji",
+      "team": "Honda Team Asia",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Ayumu Sasaki",
+      "team": "RW Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Taiyo Furusato",
+      "team": "Honda Team Asia",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "David Alonso",
+      "team": "Aspar Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Senna Agius",
+      "team": "Intact GP",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Zonta van den Goorbergh",
+      "team": "RW Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Xabi Zurutuza",
+      "team": "KLINT Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Collin Veijer",
+      "team": "Red Bull KTM Ajo",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Daniel Holgado",
+      "team": "Aspar Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "José Antonio Rueda",
+      "team": "Red Bull KTM Ajo",
+      "aliases": []
+    },
+    {
+      "series": "Moto2",
+      "name": "Adrián Huertas",
+      "team": "Italtrans Racing Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Leo Rammerstorfer",
+      "team": "SIC58 Squadra Corse",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Ryusei Yamanaka",
+      "team": "MT Helmets MSI",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Eddie O'Shea",
+      "team": "GRYD Racing",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Veda Pratama",
+      "team": "Honda Team Asia",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Nicola Carraro",
+      "team": "Snipers Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Adrián Cruces",
+      "team": "CIP Green Power",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Hakim Danish",
+      "team": "MT Helmets MSI",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Cormac Buchanan",
+      "team": "CODE Motorsports",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Matteo Bertelle",
+      "team": "MTA",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Scott Ogden",
+      "team": "CIP Green Power",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Ruche Moodley",
+      "team": "CODE Motorsports",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "David Almansa",
+      "team": "Intact GP",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Rico Salmela",
+      "team": "Red Bull KTM Tech3",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Máximo Quiles",
+      "team": "Aspar Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Adrián Fernández",
+      "team": "Leopard Racing",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Zen Mitani",
+      "team": "Honda Team Asia",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Brian Uriarte",
+      "team": "Red Bull KTM Ajo",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Jesús Ríos",
+      "team": "Snipers Team",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "David Muñoz",
+      "team": "Intact GP",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Joel Kelso",
+      "team": "GRYD Racing",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Casey O'Gorman",
+      "team": "SIC58 Squadra Corse",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Valentín Perrone",
+      "team": "Red Bull KTM Tech3",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Joel Esteban",
+      "team": "MTA",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Álvaro Carpe",
+      "team": "Red Bull KTM Ajo",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Guido Pini",
+      "team": "Leopard Racing",
+      "aliases": []
+    },
+    {
+      "series": "Moto3",
+      "name": "Marco Morelli",
+      "team": "Aspar Team",
+      "aliases": []
+    }
+  ]
+}
