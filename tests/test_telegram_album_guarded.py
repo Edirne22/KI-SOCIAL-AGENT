@@ -216,4 +216,62 @@ class AlbumTests(unittest.TestCase):
         self.assertEqual(len(manifests[0]["assets"]),3)
         self.assertIn("file_parallel",{a["asset_id"] for a in manifests[0]["assets"]})
 
+
+    def test_router_end_to_end_private_ack_after_r2_commit(self):
+        # Execute the real router main function with synthetic Telegram and R2.
+        import ast
+        from pathlib import Path
+        from scripts.telegram_private_media import receive
+        tree=ast.parse(Path("telegram_router.py").read_text())
+        main=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=="main")
+        namespace={}
+        exec(compile(ast.Module(body=[main],type_ignores=[]),"telegram_router.py","exec"),namespace)
+        r2=R2()
+        sent=[]
+        acked=[]
+        base={"chat":{"id":42},"media_group_id":"routere2e","date":1791059000}
+        updates=[
+            {"update_id":11,"message":{**base,"photo":[{"file_id":"first"}]}},
+            {"update_id":12,"message":{**base,"caption":"/privat","photo":[{"file_id":"second"}]}}
+        ]
+        namespace.update({
+            "get_chat_id":lambda:42,
+            "_read_last_update_id":lambda:10,
+            "get_updates":lambda **kw:updates if kw.get("offset")==11 else [],
+            "_ack":lambda uid:acked.append(uid),
+            "receive_private_media":lambda msg,**kw:receive(msg,client=r2,bucket="test",get=get,**kw),
+            "send_message":lambda msg:sent.append(msg),
+            "os":__import__("os"),
+        })
+        namespace["main"]()
+        manifests=[json.loads(v) for k,v in r2.data.items() if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests),1)
+        self.assertEqual(len(manifests[0]["assets"]),2)
+        self.assertEqual(acked,[11,12])
+        self.assertTrue(any("Privat in R2 gespeichert" in s for s in sent))
+        self.assertTrue(all(k.startswith("private/") for k in r2.data))
+
+    def test_router_does_not_ack_transient_r2_failure(self):
+        import ast
+        from pathlib import Path
+        tree=ast.parse(Path("telegram_router.py").read_text())
+        main=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=="main")
+        ns={}
+        exec(compile(ast.Module(body=[main],type_ignores=[]),"telegram_router.py","exec"),ns)
+        acked=[]
+        ns.update({
+            "get_chat_id":lambda:42,
+            "_read_last_update_id":lambda:10,
+            "get_updates":lambda **kw:[{"update_id":11,"message":{
+                "chat":{"id":42},"media_group_id":"fail","date":1791059000,
+                "caption":"/privat","photo":[{"file_id":"first"}]}}],
+            "_ack":lambda uid:acked.append(uid),
+            "receive_private_media":lambda *args,**kwargs:(_ for _ in ()).throw(RuntimeError("R2 offline")),
+            "send_message":lambda msg:None,
+            "os":__import__("os"),
+        })
+        with self.assertRaisesRegex(RuntimeError,"R2 offline"):
+            ns["main"]()
+        self.assertFalse(acked)
+
 if __name__=="__main__":unittest.main()
