@@ -65,7 +65,8 @@ jobs:
           url="https://edirne22-private-asr.butupeli.workers.dev/health"
           for n in $(seq 1 12); do
             code=$(curl -sS -o /tmp/asr-health -w '%{http_code}' --max-time 30 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
-            if [ "$code" = 200 ] && grep -q '"ready":true' /tmp/asr-health; then echo "PRIVATE_ASR_LIVE_HEALTH_OK"; exit 0; fi
+            if [ "$code" = 200 ] && python3 -c 'import json; assert json.load(open("/tmp/asr-health")).get("ready") is True' 2>/dev/null; then echo "PRIVATE_ASR_LIVE_HEALTH_OK"; exit 0; fi
+            echo "ASR health attempt $n: HTTP $code (body withheld)"
             sleep 10
           done
           echo "PRIVATE_ASR_LIVE_HEALTH_FAILED"; exit 1
