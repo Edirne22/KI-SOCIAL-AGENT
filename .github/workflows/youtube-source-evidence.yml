@@ -1,0 +1,28 @@
+name: YouTube source triage no-cost regressions
+on:
+  pull_request:
+    paths:
+      - 'inspiration/youtube_source_evidence.py'
+      - 'inspiration/youtube_apify_agent.py'
+      - 'tests/test_youtube_source_evidence.py'
+      - '.github/workflows/youtube-source-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  no-network-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Local syntax and import validation without Apify or external calls
+        run: |
+          python -m py_compile inspiration/youtube_source_evidence.py inspiration/youtube_apify_agent.py tests/test_youtube_source_evidence.py
+          python -m unittest -v tests.test_youtube_source_evidence
+          python - <<'PY'
+          from inspiration.youtube_source_evidence import filter_results
+          assert filter_results([])==([],[])
+          print("YOUTUBE_SOURCE_TRIAGE_NO_NETWORK_PASS")
+          PY
