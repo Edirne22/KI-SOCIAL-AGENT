@@ -2821,3 +2821,34 @@ Hier sind allgemeine und zeitunabhängige Hinweise zur Orientierung bei der Such
 * **Zusatzfunktionen:** Stellen Sie sicher, dass wichtige Features wie VoLTE (Telefonie über LTE), WLAN-Call und EU-Roaming im Tarif enthalten sind.
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-10-03 06:17
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem passenden Mobilfunktarif im D-Netz (Telekom/D1):
+
+### 1. Mögliche Händlerarten und Bezugsquellen
+* **Mobilfunk-Discounter & Drittanbieter:** Viele Anbieter nutzen das D1-Netz der Telekom, bieten aber eigene Tarife an. Diese sind oft deutlich günstiger als Direktverträge beim Netzbetreiber, verzichten dafür aber manchmal auf maximale Download-Geschwindigkeiten oder bestimmte Zusatzoptionen.
+* **Vermittlungs- und Vergleichsportale:** Unabhängige Tarifberater und Mobilfunk-Reseller bündeln Angebote verschiedener Provider. Hier gibt es häufig rechnerisch vergünstigte Aktionen durch Zugaben, Gutschriften oder Wechselboni.
+* **Netzbetreiber direkt (Telekom):** Direkt beim Netzbetreiber sind große Datenvolumina meist im höheren Preissegment angesiedelt. Ausnahmen gibt es häufig über Kombi-Vorteile (z. B. Bündelung von Festnetz/DSL und Mobilfunk) oder spezielle Tarife für junge Leute.
+
+### 2. Produktfamilien und Tarifstruktur
+* **Laufzeitverträge (24 Monate):** Bieten meist das beste Preis-Leistungs-Verhältnis bezogen auf das reine Datenvolumen, da Rabatte über die Vertragslaufzeit verteilt werden können.
+* **Monatlich kündbare Tarife (Flex-Tarife):** Bieten hohe Flexibilität, haben bei sehr hohem Datenvolumen jedoch oft eine etwas höhere Grundgebühr oder weniger Inklusiv-Volumen im Vergleich zu Laufzeitverträgen.
+* **Kombi-Tarife (Festnetz + Mobilfunk):** Wenn bereits ein Festnetzanschluss beim selben Anbieter besteht, schalten sogenannte „Family“- oder „Magneat“-Vorteile oft Zusatzvolumen oder Rabatte frei.
+
+### 3. Wichtige Auswahlkriterien
+* **Netz & Geschwindigkeit:** D1 garantiert die Nutzung des Telekom-Netzes. Zu beachten ist, ob der Tarif Zugang zum 5G-Netz beinhaltet und wie hoch die maximale Bandbreite (in Mbit/s) gedeckelt ist (z. B. 25, 50 oder 300 Mbit/s).
+* **Effektiver vs. nominaler Preis:** Achte darauf, ob ein niedriger Monatspreis durch einmaliges Startguthaben, Cashback oder einen Wechselbonus zustande kommt („rechnerischer Preis“) oder ob es sich um eine dauerhaft reduzierte Grundgebühr handelt.
+* **Preiserhöhung ab dem 25. Monat:** Viele Aktionspreise gelten nur für die ersten zwei Jahre. Es sollte geprüft werden, wie hoch die reguläre Gebühr nach Ablauf der Mindestvertragslaufzeit ausfällt.
+* **Anschlusspreis / Bereitstellungsgebühr:** Einmalige Gebühren zu Vertragsbeginn können den monatlichen Durchschnittspreis beeinflussen, werden bei Aktionen aber gelegentlich erlassen oder per App-Gutschrift erstattet.
+* **Rufnummernmitnahme (Portierung):** Für die Mitnahme der alten Rufnummer gibt es bei manchen Anbietern einen Wechselbonus, der die Gesamtkosten senken kann.
+
+Bitte in 10 Minuten erneut versuchen.
