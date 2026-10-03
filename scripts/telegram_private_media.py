@@ -9,6 +9,7 @@ from scripts.ai_central_shared_inbox import client_from_env
 from scripts.r2_media_warehouse import new_manifest,store_original
 
 MAX_DOWNLOAD=19*1024*1024
+MAX_QUARANTINE_ITEMS=100
 ALLOWED={"image/jpeg":"jpg","image/png":"png","video/mp4":"mp4","video/quicktime":"mov"}
 
 def identify(message):
@@ -70,7 +71,25 @@ def _quarantine(client, bucket, manifest, message, update_id):
     mime = "image/jpeg" if photos else doc.get("mime_type")
     if not file_id or mime not in ALLOWED:
         raise ValueError("Unsupported uncaptioned album item")
-    key = manifest["prefix"] + "quarantine/" + _asset_id(update_id, file_id) + ".json"
+    prefix = manifest["prefix"] + "quarantine/"
+    key = prefix + _asset_id(update_id, file_id) + ".json"
+    # Fail closed before creating unbounded pending album records.
+    count = 0
+    marker = None
+    already_present = False
+    while True:
+        args = {"Bucket": bucket, "Prefix": prefix}
+        if marker:
+            args["ContinuationToken"] = marker
+        page = client.list_objects_v2(**args)
+        for entry in page.get("Contents", []):
+            count += 1
+            already_present |= entry["Key"] == key
+        marker = page.get("NextContinuationToken")
+        if not marker:
+            break
+    if count >= MAX_QUARANTINE_ITEMS and not already_present:
+        raise ValueError("Album quarantine limit reached")
     item = {"update_id": update_id, "file_id": file_id, "mime": mime}
     try:
         client.put_object(Bucket=bucket, Key=key, Body=json.dumps(item).encode(),
