@@ -24,3 +24,12 @@ Status: HANDOVER / nicht als abgeschlossen markieren. Keine privaten Audiodaten 
 - Negativkontrollen: fremder Telegram-Absender, wiederholtes Update, unverständlicher oder mehrdeutiger Textauftrag, Quellvideo-ASR-Container schläft, Render-Timeout, ungesicherte Quelle und unerlaubtes Fremdvideo.
 - Kosten: free-first, keine neue kostenpflichtige Infrastruktur ohne Freigabe.
 - Zeitplan: kontinuierliche Recherche und bedarfsgerechte Auslieferung plus morgendlicher Überblick 07:00–08:00 Europe/Berlin; bestehende Trigger prüfen, keine Lieferung oder 24/7-LIVE zusagen, solange E2E- und Lasttests fehlen.
+
+## Bedienkonzept: Telegram-first, Dashboard als ergänzendes Studio
+- Zielverteilung der Bedienung: ca. 90 % Telegram, 10 % Web-Dashboard. Das ist eine UX-Vorgabe, kein gemessener Ist-Wert.
+- Nutzer diktiert mit dem Telefon, versendet normalen Telegram-TEXT; natürliche DE/TR-Aufträge ohne starre Befehlsform. Sofortige Eingangsbestätigung mit Job-ID, Status und bei Bedarf geschätzter Warteschlangenposition (keine erfundenen Fertigzeiten).
+- Ergebnislieferung primär als Telegram-Vorschau (soweit Telegram-Dateigrenzen, Rechte und Privatsphäre das zulassen), andernfalls als geschützter mobilfreundlicher Dashboard-Deep-Link mit eingebettetem Player.
+- Deep-Link öffnet einen authentifizierten Preview-Kontext (kein öffentliches R2-Objekt und kein langfristiges Geheimtoken in Telegram). Dort: Freigeben / Überarbeiten / Ablehnen. Telegram kann dieselben drei Aktionen über authentifizierte Callback-Buttons anbieten.
+- Beide Oberflächen nutzen EINEN revisionsgebundenen, unveränderlichen Freigabevorgang. Doppelklick, alte Revision, fremder Absender, abgelaufener Link und widersprüchliche Entscheidungen fail-closed behandeln; alle Entscheidungen auditieren. 'Überarbeiten' erfasst Änderungswunsch und erzeugt eine neue private Vorschau, keine automatische Publikation.
+- On-demand-Abfrage in Telegram liefert jederzeit READY-Entwürfe und aktuelle QUEUED/RUNNING-Status. Morgendliche Zusammenfassung ist zusätzlich, nicht exklusiv.
+- Implementierung erst nach Vergleich mit bestehendem Telegram-Approval und Dashboard-Preview; keine redundante zweite Freigabe-Logik bauen. Private Ende-zu-Ende-Abnahme auf echtem Mobilgerät erforderlich.
