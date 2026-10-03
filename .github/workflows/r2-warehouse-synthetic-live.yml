@@ -1,10 +1,33 @@
 name: R2 warehouse synthetic private live smoke
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/r2_media_warehouse.py'
+      - 'scripts/r2_warehouse_live_smoke.py'
+      - '.github/workflows/r2-warehouse-synthetic-live.yml'
 permissions:
   contents: read
 jobs:
+  offline-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax and opt-in guard
+        run: |
+          python -m py_compile scripts/r2_media_warehouse.py scripts/r2_warehouse_live_smoke.py
+          python - <<'PY'
+          from scripts.r2_media_warehouse import lane_for_upload
+          assert lane_for_upload() == 'private'
+          assert lane_for_upload(explicit_social=True, contains_children=True) == 'private'
+          print('OFFLINE_PRIVATE_GUARDS_PASS')
+          PY
   live-synthetic-private:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: offline-safety
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
