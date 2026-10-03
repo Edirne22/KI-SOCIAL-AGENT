@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-10-02 18:15
+Stand: 2026-10-03 22:17
 Gesamtstatus: **WARNUNG**
-- OK: 13
-- Warnungen: 5
+- OK: 12
+- Warnungen: 6
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -19,7 +19,7 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
 - ✅ **Secret-Prüfung**: Keine typischen Zugangsschlüssel in Projektdateien erkannt.
-- ✅ **Analytics Fetch**: Letzter Lauf erfolgreich.
+- ⚠️ **Analytics Fetch**: Kein letzter Lauf in der GitHub-Antwort gefunden.
 - ✅ **Analytics Report**: Letzter Lauf erfolgreich.
 - ⚠️ **Generate Daily Content Idea**: Kein letzter Lauf in der GitHub-Antwort gefunden.
 - ⚠️ **Inspiration Agent**: Kein letzter Lauf in der GitHub-Antwort gefunden.
