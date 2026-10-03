@@ -47,7 +47,11 @@ def download(file_id,token,get=requests.get):
             raise ValueError("Datei zu groß; Dashboard-Upload verwenden.")
     return bytes(buf)
 
-def receive(message,*,update_id,token,client=None,bucket=None,get=requests.get):
+def receive(message,*,update_id,token,client=None,bucket=None,get=requests.get,authorized_chat=None):
+    group=message.get("media_group_id")
+    chat=(message.get("chat") or {}).get("id")
+    if authorized_chat is not None and str(chat)!=str(authorized_chat):
+        raise PermissionError("Unauthorized private media chat")
     identified=identify(message)
     if identified is None:return None
     file_id,mime,extension=identified
@@ -55,19 +59,31 @@ def receive(message,*,update_id,token,client=None,bucket=None,get=requests.get):
     if client is None:client,bucket=client_from_env()
     if not bucket:raise ValueError("R2-Bucket fehlt")
     # Stable job per Telegram update: a retried event cannot create a second job.
-    job_id="tg"+str(update_id).zfill(12)
-    manifest=new_manifest(lane="private",title="Privater Telegram-Medieneingang",job_id=job_id)
+    if group:
+        if chat is None or not re.fullmatch(r"[A-Za-z0-9_-]{1,100}",str(group)):
+            raise ValueError("Invalid album identity")
+        job_id="tgalbum"+sha256((str(chat)+":"+str(group)).encode()).hexdigest()[:32]
+        created=datetime.fromtimestamp(int(message["date"]),timezone.utc)
+        manifest=new_manifest(lane="private",title="Privates Telegram-Album",job_id=job_id,created_at=created)
+    else:
+        job_id="tg"+str(update_id).zfill(12)
+        manifest=new_manifest(lane="private",title="Privater Telegram-Medieneingang",job_id=job_id)
     payload=download(file_id,token,get=get)
     key=manifest["prefix"]+"manifest.json"
     # A retry must not duplicate or overwrite originals.
+    asset_id="file"+uuid.uuid5(uuid.NAMESPACE_URL,str(update_id)+":"+file_id).hex
     try:
         existing=client.get_object(Bucket=bucket,Key=key)
         if existing:
-            return "Privater Upload bereits gespeichert · "+job_id
+            saved=json.loads(existing["Body"].read())
+            if any(a["asset_id"]==asset_id for a in saved.get("assets",[])):
+                return "Privater Upload bereits gespeichert · "+job_id
+            if not group:
+                raise RuntimeError("Unexpected manifest collision")
+            manifest=saved
     except Exception as exc:
         code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
         if code not in ("404","NoSuchKey","NotFound"):raise
-    asset_id="file"+uuid.uuid5(uuid.NAMESPACE_URL,str(update_id)+":"+file_id).hex
     store_original(client,bucket,manifest,asset_id=asset_id,filename=asset_id+"."+extension,
                    mime=mime,payload=payload)
     return "Privat in R2 gespeichert · "+job_id+" · Noch keine Verarbeitung oder Veröffentlichung."
