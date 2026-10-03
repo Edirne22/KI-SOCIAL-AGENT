@@ -8,6 +8,9 @@ import requests
 from scripts.ai_central_shared_inbox import client_from_env
 from scripts.r2_media_warehouse import new_manifest,store_original
 
+# Only file identifiers, never unapproved media bytes, are held in private quarantine.
+PENDING_LIMIT=20
+
 MAX_DOWNLOAD=19*1024*1024
 ALLOWED={"image/jpeg":"jpg","image/png":"png","video/mp4":"mp4","video/quicktime":"mov"}
 
@@ -67,11 +70,17 @@ def receive(message,*,update_id,token,client=None,bucket=None,get=requests.get,a
         job_id="tg"+str(update_id).zfill(12)
         manifest=new_manifest(lane="private",title="Privater Telegram-Medieneingang",job_id=job_id)
     key=manifest["prefix"]+"manifest.json"
+    pending_key=manifest["prefix"]+"pending/"+str(update_id)+".json"
     if identified is None:
         try:
             client.get_object(Bucket=bucket,Key=key)
-        except Exception:
-            return "Album-Datei ohne bestätigte private Freigabe zurückgehalten."
+        except Exception as exc:
+            code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+            if code not in ("404","NoSuchKey","NotFound"):raise
+            # A durable, private, bounded pointer permits recovery after restart.
+            pointer={"update_id":update_id,"message":{k:message[k] for k in ("chat","media_group_id","date","photo","video","document") if k in message}}
+            client.put_object(Bucket=bucket,Key=pending_key,Body=json.dumps(pointer).encode(),ContentType="application/json",IfNoneMatch="*")
+            return "Album-Datei privat vorgemerkt; wartet auf /privat."
         continuation=dict(message,caption="/privat")
         identified=identify(continuation)
         if identified is None:
@@ -93,6 +102,16 @@ def receive(message,*,update_id,token,client=None,bucket=None,get=requests.get,a
     except Exception as exc:
         code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
         if code not in ("404","NoSuchKey","NotFound"):raise
-    store_original(client,bucket,manifest,asset_id=asset_id,filename=asset_id+"."+extension,
-                   mime=mime,payload=payload)
+    for attempt in range(3):
+        try:
+            store_original(client,bucket,manifest,asset_id=asset_id,filename=asset_id+"."+extension,mime=mime,payload=payload)
+            break
+        except Exception:
+            if attempt==2:raise
+            try:
+                saved=client.get_object(Bucket=bucket,Key=key)
+                manifest=json.loads(saved["Body"].read())
+                if any(a["asset_id"]==asset_id for a in manifest["assets"]):break
+            except Exception:
+                if attempt==2:raise
     return "Privat in R2 gespeichert · "+job_id+" · Noch keine Verarbeitung oder Veröffentlichung."
