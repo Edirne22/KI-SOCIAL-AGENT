@@ -752,8 +752,8 @@ https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-li
 Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225
 Link-Preview: offiziell
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-03 09:35 | ID: 18135064771575053]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-03-daily
 Telegram-Update-ID: 279361807
@@ -768,6 +768,7 @@ Wie schätzt ihr die Lage bei Aprilia im Vergleich zu den Konkurrenten ein?
 Quelle: https://motoetkinlik.com/jorge-martin-cuma-gunu-her-seferinde-sifirdan-baslamak-gibi
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-5-jorge-martin-cuma-gu-01.jpg
+Publish-Provenienz: {"creation_id": "18009805259971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-5-jorge-martin-cuma-gu-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18135064771575053", "published_media_id": "18135064771575053", "source_url": "https://motoetkinlik.com/jorge-martin-cuma-gunu-her-seferinde-sifirdan-baslamak-gibi", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
