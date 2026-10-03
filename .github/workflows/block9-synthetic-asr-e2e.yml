@@ -26,6 +26,17 @@ jobs:
           espeak-ng -v de -s 125 -w /tmp/synthetic.wav 'Dies ist ein technischer Test der Edirne zweiundzwanzig Fabrik.'
           ffmpeg -nostdin -loglevel error -y -i /tmp/synthetic.wav -c:a libopus /tmp/synthetic.webm
           test -s /tmp/synthetic.webm
+      - name: Real open-source scene detection and FFmpeg synthetic regression
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check 'scenedetect[opencv-headless]==0.6.7'
+          ffmpeg -nostdin -loglevel error -y -f lavfi -i color=c=red:s=320x240:r=24:d=2 -f lavfi -i color=c=blue:s=320x240:r=24:d=2 -filter_complex '[0:v][1:v]concat=n=2:v=1:a=0' -c:v mpeg4 /tmp/scenes.mp4
+          python3 - <<'PY'
+          from scenedetect import detect,ContentDetector
+          scenes=detect('/tmp/scenes.mp4',ContentDetector(threshold=12))
+          assert len(scenes)>=2, 'synthetic hard scene transition not detected'
+          print('FFMPEG_SCENEDETECT_SYNTHETIC_OK')
+          PY
       - name: Real dashboard upload, private R2, consent, container transcription and draft read
         shell: bash
         run: |
