@@ -10,8 +10,6 @@ import os
 import subprocess
 import hashlib
 import time
-import urllib.request
-import urllib.error
 import urllib.parse
 from content_factory_core import ProductionJob, JobStatus
 from content_factory_golden_tablet import FinalQM, QMCheck
@@ -23,27 +21,28 @@ from content_factory_revision_render import produce_revision, probe
 from media_storage import R2Storage
 
 DASHBOARD="https://edirne22-ai-central-dashboard.butupeli.workers.dev"
-class NoRedirect(urllib.request.HTTPRedirectHandler):
-    def redirect_request(self,*args,**kwargs):return None
-
 def dashboard_request(path,token,*,body=None,mime=None):
-    headers={"Authorization":"Bearer "+token} if token else {}
+    import requests
+    # Use the project's existing HTTP client and an honest application identity.
+    # No browser impersonation, redirects or bypass of the owner-token gate.
+    headers={"User-Agent":"Edirne22-Synthetic-Acceptance/1.0"}
+    if token:headers["Authorization"]="Bearer "+token
     if mime:headers.update({"Content-Type":mime,"x-upload-name":"block89-synthetic.mp4"})
-    req=urllib.request.Request(DASHBOARD+path,headers=headers,data=body)
-    try:
-        response=urllib.request.build_opener(NoRedirect()).open(req,timeout=15)
-    except urllib.error.HTTPError as exc:
-        response=exc
-    with response:
-        data=response.read(32*1024*1024+1)
-        if len(data)>32*1024*1024:raise RuntimeError("dashboard response exceeds bound")
-        return response.code,data
+    method='POST' if body is not None else 'GET'
+    with requests.request(method,DASHBOARD+path,headers=headers,data=body,
+                          timeout=15,allow_redirects=False,stream=True) as response:
+        data=bytearray()
+        for chunk in response.iter_content(65536):
+            data.extend(chunk)
+            if len(data)>32*1024*1024:raise RuntimeError("dashboard response exceeds bound")
+        return response.status_code,bytes(data)
 
 def verify_dashboard(job,request_id,preview,source,old_preview):
     token=os.environ.get('AI_DASHBOARD_TOKEN','')
     if len(token)<24:raise RuntimeError('configured dashboard token missing')
     path='/api/edit-status?'+urllib.parse.urlencode({'job_id':job.job_id,'request_id':request_id})
-    if dashboard_request(path,'')[0]!=401:raise RuntimeError('dashboard unauthorized guard failed')
+    unauth=dashboard_request(path,'')[0]
+    if unauth!=401:raise RuntimeError('dashboard unauthorized guard failed HTTP_'+str(unauth))
     # Read-only bounded retries allow the separately guarded Worker deploy to
     # finish. POST below is issued once, never retried after ambiguous transport.
     for attempt in range(25):
