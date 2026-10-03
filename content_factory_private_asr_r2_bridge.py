@@ -82,7 +82,7 @@ def run_private_r2_asr(client, bucket, inbox_id, date, language, *, model=None, 
                                 language, consent_key)
     result = transcribe_private_audio(request, audio, model=model, model_dir=model_dir)
     # Re-read consent immediately before output; revocation wins.
-    verified_consent(client, bucket, inbox_id, digest)
+    verified_consent(client, bucket, inbox_id, digest, language)
     output_key = OUT + inbox_id + "/" + digest + "/" + language + ".json"
     payload = {"schema":"PRIVATE-ASR-TRANSCRIPT-V1","inbox_id":inbox_id,
                "source_sha256":digest,"language":language,"text":result.text,
