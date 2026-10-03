@@ -1,5 +1,8 @@
 name: Guarded Development - Import Reviewed Source
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/guarded-telegram-source-import.yml'
   workflow_dispatch:
 permissions:
   contents: write
@@ -9,7 +12,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   reviewed-source-import:
-    if: github.repository == 'Edirne22/KI-SOCIAL-AGENT'
+    if: github.event_name == 'workflow_dispatch' && github.repository == 'Edirne22/KI-SOCIAL-AGENT'
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -51,3 +54,24 @@ jobs:
             echo '::warning::GitHub Actions PR creation disabled. Branch pushed; PR must be opened using an authorized GitHub connector or enabled in repository Actions settings.'
             echo "PR link: https://github.com/${GITHUB_REPOSITORY}/compare/main...feature/guarded-telegram-album-import?expand=1"
           fi
+
+  validate-workflow:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate safe event separation and import contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source=Path('.github/workflows/guarded-telegram-source-import.yml').read_text()
+          required=("github.event_name == 'workflow_dispatch'", "github.event_name == 'pull_request'", "gh pr view feature/guarded-telegram-album-import", "git diff --name-only")
+          for fragment in required:
+              assert fragment in source, fragment
+          print('PASS: PR validates workflow without performing write or deployment')
+          PY
