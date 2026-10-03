@@ -56,3 +56,18 @@ jobs:
           print("READ_ONLY_PROPOSAL_GATE_PASS")
           print("NO_CODE_EXECUTION_NO_PUSH_NO_DEPLOY")
           PY
+      - name: Create allowlisted development plan
+        env:
+          ISSUE_NUMBER: ${{ inputs.issue_number }}
+        run: python -m scripts.guarded_development_agent --issue "$ISSUE_NUMBER"
+      - name: Verify existing private media regression suite
+        run: |
+          python -m pip install --disable-pip-version-check requests boto3
+          python -m unittest discover -s tests -p 'test_r2_media_warehouse.py' -v
+          python -m unittest discover -s tests -p 'test_telegram_private_media.py' -v
+      - name: Upload non-sensitive development plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: guarded-development-plan
+          path: guarded-development-plan.json
+          retention-days: 3
