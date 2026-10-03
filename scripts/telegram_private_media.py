@@ -176,6 +176,11 @@ def receive(message, *, update_id, token, client=None, bucket=None,
     if group:
         if chat is None or not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", str(group)):
             raise ValueError("Invalid album identity")
+        if identified is None:
+            doc = message.get("document") or message.get("video") or {}
+            photos = message.get("photo") or []
+            if not photos and (not doc.get("file_id") or doc.get("mime_type") not in ALLOWED):
+                raise ValueError("Unsupported uncaptioned album item")
         job_id = "tgalbum" + sha256((str(chat) + ":" + str(group)).encode()).hexdigest()[:32]
         manifest = _album_manifest(client, bucket, job_id, message)
     else:
