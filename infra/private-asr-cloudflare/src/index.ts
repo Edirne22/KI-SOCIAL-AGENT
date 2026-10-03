@@ -1,4 +1,5 @@
 import { Container, getContainer } from "@cloudflare/containers";
+import { env as workerEnv } from "cloudflare:workers";
 type Env = {
   PRIVATE_ASR: DurableObjectNamespace<PrivateASRContainer>;
   PRIVATE_ASR_INTERNAL_TOKEN: string;
@@ -9,11 +10,11 @@ export class PrivateASRContainer extends Container {
   defaultPort = 5200;
   sleepAfter = "5m";
   envVars = {
-    PRIVATE_ASR_INTERNAL_TOKEN: "",
-    R2_ACCOUNT_ID: "",
-    R2_ACCESS_KEY_ID: "",
-    R2_SECRET_ACCESS_KEY: "",
-    R2_BUCKET_NAME: ""
+    PRIVATE_ASR_INTERNAL_TOKEN: workerEnv.PRIVATE_ASR_INTERNAL_TOKEN,
+    R2_ACCOUNT_ID: workerEnv.R2_ACCOUNT_ID,
+    R2_ACCESS_KEY_ID: workerEnv.R2_ACCESS_KEY_ID,
+    R2_SECRET_ACCESS_KEY: workerEnv.R2_SECRET_ACCESS_KEY,
+    R2_BUCKET_NAME: workerEnv.R2_BUCKET_NAME
   };
 }
 const reply = (data: object, status: number) =>
