@@ -97,8 +97,16 @@ jobs:
           done
       - name: Install minimal R2 dependencies
         run: python -m pip install --disable-pip-version-check requests boto3
-      - name: Check FFmpeg available
-        run: ffmpeg -version | head -n 1
+      - name: Install and verify FFmpeg (fail closed)
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg
+          fi
+          command -v ffmpeg
+          ffmpeg -version >/dev/null
       - name: Real private R2 album upload with synthetic Telegram requests only
         run: python -m scripts.telegram_private_album_real_r2_smoke
 
