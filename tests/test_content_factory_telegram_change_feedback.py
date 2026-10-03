@@ -26,6 +26,25 @@ class FeedbackTests(unittest.TestCase):
         for text in (" ", "x"*2001):
             with self.subTest(textlen=len(text)), self.assertRaises(ValueError):
                 prepare_change_text(self.ctx, **{**self.args, "text": text})
+    def test_foreign_chat(self):
+        with self.assertRaises(PermissionError):
+            prepare_change_text(self.ctx, **{**self.args, "chat_id": "another_chat"})
+    def test_stale_job_and_manifest(self):
+        for changed in ({"current_job_id": str(uuid4())},
+                        {"current_manifest": "replaced-manifest"}):
+            with self.subTest(changed=changed), self.assertRaises(ValueError):
+                prepare_change_text(self.ctx, **{**self.args, **changed})
+    def test_telegram_transcript_is_plain_change_text(self):
+        transcript = "Bitte das Video auf 30 Sekunden kürzen und den Ton entfernen."
+        result = prepare_change_text(self.ctx, **{**self.args, "text": transcript})
+        self.assertEqual(result["text"], transcript)
+        self.assertEqual(result["job_id"], self.ctx.job_id)
+        self.assertEqual(result["preview_id"], self.ctx.preview_id)
+        self.assertEqual(result["request_id"], self.ctx.request_id)
+        self.assertNotIn("publish", result)
+    def test_control_characters_rejected(self):
+        with self.assertRaises(ValueError):
+            prepare_change_text(self.ctx, **{**self.args, "text": "Ton entfernen\\x00"})
     def test_credentials_blocked(self):
         with self.assertRaises(ValueError):
             prepare_change_text(self.ctx, **{**self.args, "text": "password=secret123"})
