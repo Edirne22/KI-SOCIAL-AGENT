@@ -49,7 +49,19 @@ export async function privateASR(req,env){
       scope:"transcription",status:"granted",language:body.language,
       granted_at:new Date().toISOString()
     }),{httpMetadata:{contentType:"application/json"}});
-    return reply({status:"CONSENT_SAVED_NOT_TRANSCRIBED",language:body.language},202);
+    // Dispatch only after explicit user consent. No audio or secrets enter GitHub.
+    if(!env.PRIVATE_ASR_SERVICE||!env.PRIVATE_ASR_INTERNAL_TOKEN)
+      return reply({status:"CONSENT_SAVED_AWAITING_CONTAINER_CONFIGURATION",language:body.language},202);
+    try {
+      const dispatched=await env.PRIVATE_ASR_SERVICE.fetch("https://edirne22-private-asr.internal/jobs",{
+        method:"POST",headers:{"Authorization":"Bearer "+env.PRIVATE_ASR_INTERNAL_TOKEN,"Content-Type":"application/json"},
+        body:JSON.stringify({inbox_id:src.id,date:new URL(req.url).searchParams.get("date"),language:body.language})
+      });
+      if(dispatched.ok)return reply({status:"PRIVATE_DRAFT_REQUESTED",language:body.language},202);
+      return reply({status:"CONSENT_SAVED_CONTAINER_UNAVAILABLE",language:body.language},202);
+    }catch{
+      return reply({status:"CONSENT_SAVED_CONTAINER_UNAVAILABLE",language:body.language},202);
+    }
   }
   if(req.method==="DELETE"){
     if(req.headers.get("origin")!==new URL(req.url).origin)return reply({error:"origin required"},403);
