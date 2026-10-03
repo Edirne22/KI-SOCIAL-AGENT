@@ -30,10 +30,14 @@
       "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
     },
     {
-      "name": "Alpaslan Davran",
+      "name": "Alparslan Davran",
       "category": "ANLAS MiniGP 110",
       "season": 2026,
-      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/"
+      "source": "https://turksporajansi.com/2026/04/15/anlas-minigp-110-serisi-basladi/",
+      "aliases": [
+        "Alpaslan Davran"
+      ],
+      "review": "User confirmed both spellings refer to the same rider; canonical spelling Alparslan provisional pending official spelling"
     },
     {
       "name": "Duru Gören",
@@ -93,17 +97,10 @@
       "name": "Bahattin Sofuoğlu",
       "category": "historical WorldSSP300",
       "source": "https://www.tmf.org.tr/Haberler/oncu-ve-Sofuoglu-Dunya--Polat-Avrupa-Sinavinda/"
-    },
-    {
-      "name": "Alparslan Davran",
-      "category": "MiniGP alternate spelling candidate",
-      "source": "https://www.davranalp.com/",
-      "review": "Confirm whether Alpaslan/Alparslan references same rider before merging identities"
     }
   ],
   "rules": [
     "No junior rider performance ranking or unsupported future-career predictions",
-    "Keep name variants separate until confirmed",
     "Do not confuse historic WorldSSP300 participation with 2026 category",
     "Junior rider personal data limited to public competition names and categories"
   ]
