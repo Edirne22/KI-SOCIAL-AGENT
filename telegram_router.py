@@ -561,6 +561,21 @@ def main() -> None:
             print(f"ROUTER: Allgemeines Update {uid} erfolgreich verarbeitet und bestätigt.")
             return
 
+        # Natural text is considered only after all existing racing/approval routes.
+        from scripts.ai_central_natural_text import classify_natural_text
+        natural = classify_natural_text(text)
+        if natural.kind == "draft":
+            try:
+                answer = handle_central_inbox("/zentrale auftrag " + natural.message, uid, chat)
+                send_message(answer)
+            except (ValueError, RuntimeError) as exc:
+                send_message(f"KI-Zentrale: {exc}")
+            _ack(uid)
+            return
+        if natural.kind == "clarify":
+            send_message("Unklarer Auftrag. Für einen privaten KI-Entwurf bitte mit KI: beginnen. Veröffentlichungen bleiben separat freigabepflichtig.")
+            _ack(uid)
+            return
         # FIX 3: freundliche Antwort statt stille Bestätigung
         print(f"ROUTER: Update {uid} unbekannt; sende freundliche Hilfe.")
         try:
