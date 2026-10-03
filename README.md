@@ -1,11 +1,11 @@
 # KI-SOCIAL-AGENT
 Persönlicher Cloud-KI-Agent für Social Media &amp; mehr
 
-## Aktueller Projektstand
+## Projekt-Navigation — aktueller Einstieg
 
-**Stand: 30.09.2026.** Für neue Sessions und Projektübergaben zuerst `MASTER-SNAPSHOT.md` lesen. Der aktuelle Detailstand liegt in `snapshots/SNAPSHOT_2026-09-30_CONTENT_FACTORY_LIVE_MEDIA_CLOUD_WORKBENCH.md`; verbindliche Entwicklungsregeln stehen in `PROJECT_GUARDRAILS.md`.
+**[Projektzentrale: anklickbarer Gesamtindex](INDEX.md)** · **[Systemarchitektur](docs/ARCHITEKTUR_INDEX.md)** · [aktueller Snapshot](MASTER-SNAPSHOT.md) · [aktuelle Übergabe](docs/PROJEKT_UEBERGABE_2026-10-03_BLOCK89.md) · [Guardrails](PROJECT_GUARDRAILS.md) · [Werkzeuge](docs/TOOL_INDEX.md).
 
-Aktuell verifiziert LIVE: Cloudflare R2 als privates Medienlager, ImageRouter → R2 und Agnes Video → R2. Nächster P1: OpenChatCut Cloudflare-Container-PoC, danach SupoClip-LIVE-Integration und vollständiger Video-Staffellauf. SIMULATED-Komponenten dürfen nicht als LIVE bezeichnet werden.
+Stand 03.10.2026: synthetischer FFmpeg→privates R2→Telegram-Livetest erfolgreich. Block9 reale Dashboard-/Mikrofon-/Auftrags-Abnahme noch offen; Block7 Audio/Avatar danach. OpenChatCut und SupoClip PAUSED; Chopify nur möglicher SupoClip-Ersatz. Historische OpenChatCut-/SupoClip-Roadmaps unten sind **nicht** mehr der aktuelle Arbeitsauftrag.
 
 ## Telegram-Bot einrichten
 
