@@ -1,0 +1,1 @@
+{"name":"edirne22-private-asr-cloudflare","private":true,"type":"module","scripts":{"check":"tsc --noEmit","deploy":"wrangler deploy"},"dependencies":{"@cloudflare/containers":"latest"},"devDependencies":{"typescript":"latest","wrangler":"latest","@cloudflare/workers-types":"latest"}}
