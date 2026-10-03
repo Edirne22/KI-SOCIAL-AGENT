@@ -5,7 +5,7 @@ import os
 import re
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from run_private_asr import main as transcribe
+import run_private_asr
 
 _lock = threading.Lock()
 _uuid = re.compile(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\Z")
@@ -63,7 +63,7 @@ class Handler(BaseHTTPRequestHandler):
                 os.environ.update(PRIVATE_ASR_INBOX_ID=data["inbox_id"],
                                   PRIVATE_ASR_INBOX_DATE=data["date"],
                                   PRIVATE_ASR_LANGUAGE=data["language"])
-                result = transcribe()
+                result = run_private_asr.main()
             finally:
                 for key, value in previous.items():
                     if value is None:
@@ -71,7 +71,8 @@ class Handler(BaseHTTPRequestHandler):
                     else:
                         os.environ[key] = value
             self.respond(200 if result == 0 else 422,
-                         {"status": "private_draft" if result == 0 else "rejected"})
+                         {"status": "private_draft" if result == 0 else "rejected",
+                          **({} if result == 0 else {"reason": run_private_asr.LAST_FAILURE})})
         finally:
             _lock.release()
 
