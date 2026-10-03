@@ -167,4 +167,53 @@ class AlbumTests(unittest.TestCase):
                     get=lambda *args,**kwargs:Large(),authorized_chat=42)
         self.assertFalse(r2.data)
 
+
+    def test_parallel_manifest_conflict_reloads_and_preserves_both(self):
+        from scripts.r2_media_warehouse import new_manifest, store_original
+        from datetime import datetime, timezone
+        from hashlib import sha256
+        class Conflict(Exception):
+            response={"Error":{"Code":"PreconditionFailed"}}
+        class RacingR2(R2):
+            def __init__(self):
+                super().__init__()
+                self.injected=False
+                self.manifest_key=None
+            def get_object(self,*,Bucket,Key):
+                result=super().get_object(Bucket=Bucket,Key=Key)
+                if Key.endswith("manifest.json"):
+                    result["ETag"]='"'+sha256(self.data[Key]).hexdigest()+'"'
+                return result
+            def put_object(self,*,Bucket,Key,Body,**kw):
+                if kw.get("IfMatch"):
+                    current='"'+sha256(self.data[Key]).hexdigest()+'"'
+                    if not self.injected:
+                        self.injected=True
+                        # Simulate another upload committing between read and CAS.
+                        previous=json.loads(self.data[Key])
+                        previous["assets"].append({"asset_id":"file_parallel","key":"synthetic"})
+                        self.data[Key]=json.dumps(previous).encode()
+                        current='"'+sha256(self.data[Key]).hexdigest()+'"'
+                    if kw["IfMatch"]!=current:
+                        raise Conflict()
+                return super().put_object(Bucket=Bucket,Key=Key,Body=Body,**kw)
+        r2=RacingR2()
+        manifest=new_manifest(lane="private",title="parallel",job_id="paralleltest12345",
+                              created_at=datetime(2026,10,3,tzinfo=timezone.utc))
+        store_original(r2,"test",manifest,asset_id="file_first12345",
+                       filename="first.jpg",mime="image/jpeg",payload=b"first")
+        msg={"chat":{"id":42},"media_group_id":"paralleltest",
+             "date":1791059000,"caption":"/privat","photo":[{"file_id":"second"}]}
+        # Use same manifest key as the Telegram album.
+        from scripts.telegram_private_media import receive
+        album={"chat":{"id":42},"media_group_id":"paralleltest",
+               "date":1791059000,"caption":"/privat","photo":[{"file_id":"first"}]}
+        r2=RacingR2()
+        receive(album,update_id=10,token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
+        receive(msg,update_id=11,token="synthetic",client=r2,bucket="test",get=get,authorized_chat=42)
+        manifests=[json.loads(v) for k,v in r2.data.items() if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests),1)
+        self.assertEqual(len(manifests[0]["assets"]),3)
+        self.assertIn("file_parallel",{a["asset_id"] for a in manifests[0]["assets"]})
+
 if __name__=="__main__":unittest.main()
