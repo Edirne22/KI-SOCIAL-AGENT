@@ -35,7 +35,7 @@ def transcribe_private_audio(request: PrivateASRRequest, audio: bytes, *,
     # even when decoder/model inference raises.
     with tempfile.TemporaryDirectory(prefix="edirne22-private-asr-") as folder:
         path = Path(folder) / ("input." + {"audio/webm":"webm",
-                "audio/mp4":"m4a", "audio/ogg":"ogg"}[request.mime])
+                "audio/mp4":"m4a", "audio/x-m4a":"m4a", "audio/m4a":"m4a", "audio/ogg":"ogg"}[request.mime])
         path.write_bytes(audio)
         segments, info = model.transcribe(str(path), language=request.language,
                                           vad_filter=True, beam_size=1)
