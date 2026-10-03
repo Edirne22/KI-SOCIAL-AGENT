@@ -600,3 +600,9 @@ ANALYSIEREN
 - Bleibt die Funktion defekt: Werkzeug **PAUSED**, Befunde dokumentieren, den **bereits verifizierten** Ersatz gemäß `docs/TOOL_INDEX.md` einsetzen und den beauftragten Block damit fortsetzen. Kein erneutes Experiment mit dem pausierten Tool ohne neue technische Erkenntnis; keine Kosten ohne Freigabe.
 - Der Wechsel darf niemals Wahrheits-/Sicherheits-/Rechteprüfungen, R2-Privatsphäre, Revisionsbindung, Human Approval oder CI/Red-Team umgehen. Funktionslücken des Ersatzes bleiben explizit offen.
 - Stand 03.10.: **Block 6 FFmpeg-first**, OpenChatCut **PAUSED**, SupoClip **PAUSED**. Block 8/9 auf vorhandenen FFmpeg-/R2-/Dashboard-Wegen abschließen; erfolgreiche Tests nicht erneut erfinden.
+
+## Cloudflare-Container: bestehender Tarif und Freigabe (03.10.2026)
+
+- Bülent bestätigt: bestehender Cloudflare Workers/Containers Paid-Tarif kostet **5 USD pro Monat** und Containerzugriff ist bereits freigeschaltet. Für die beauftragte private Whisper-Installation darf die bestehende bezahlte Container-Infrastruktur verwendet werden; keine erneute Grundsatzfreigabe für diesen bereits bezahlten Zugang verlangen.
+- **Wichtig:** Die 5-USD-Grundgebühr belegt keine unbegrenzte Container-Laufzeit oder kostenfreie zusätzliche CPU-/RAM-Nutzung. Vor einem zusätzlichen Container/Rollout tatsächliche Kapazität, Abrechnungsmodell und mögliche Mehrkosten prüfen. Keine neuen kostenpflichtigen Ressourcen oder Tariferhöhungen ohne ausdrückliche Freigabe.
+- Bei Installations-Gates die bestehende Tarif-Freigabe von der separaten Prüfung möglicher Mehrkosten unterscheiden. Zugangsdaten niemals in Repository, Logs oder CI-Artefakte schreiben. Cloudflare-Deployment und erfolgreicher Live-Test separat nachweisen.
