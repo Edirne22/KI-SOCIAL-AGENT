@@ -2,8 +2,6 @@
 import json
 import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from pathlib import Path
-from subprocess import run
 
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args): pass
@@ -17,7 +15,7 @@ class Handler(BaseHTTPRequestHandler):
             body=json.loads(self.rfile.read(length))
             if set(body)!={"id","date","language"}: raise ValueError()
             import re
-            if not re.fullmatch(r"[0-9a-f-]{36}",body["id"]) or not re.fullmatch(r"20\\d\\d-\\d\\d-\\d\\d",body["date"]) or body["language"] not in ("de","tr"): raise ValueError()
+            if not re.fullmatch(r"[0-9a-f-]{36}",body["id"]) or not re.fullmatch(r"20\d\d-\d\d-\d\d",body["date"]) or body["language"] not in ("de","tr"): raise ValueError()
             import boto3
             from content_factory_private_asr_r2_bridge import run_private_r2_asr
             client=boto3.client("s3",endpoint_url="https://"+os.environ["R2_ACCOUNT_ID"]+".r2.cloudflarestorage.com",aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],region_name="auto")
