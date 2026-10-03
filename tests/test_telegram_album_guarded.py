@@ -289,4 +289,46 @@ class AlbumTests(unittest.TestCase):
         self.assertEqual(len(manifests),1,"Same Telegram album must not split at midnight")
         self.assertEqual(len(manifests[0]["assets"]),2)
 
+
+    def test_live_metadata_verifier_positive_and_negative_guards(self):
+        from hashlib import sha256
+        from scripts.telegram_private_album_live_verify import verify
+
+        class MetadataR2(R2):
+            def __init__(self):
+                super().__init__()
+                self.mime = {}
+            def put_object(self, *, Bucket, Key, Body, **kw):
+                out = super().put_object(Bucket=Bucket, Key=Key, Body=Body, **kw)
+                self.mime[Key] = kw.get("ContentType")
+                return out
+            def head_object(self, *, Bucket, Key):
+                if Key not in self.data:
+                    raise Missing()
+                return {"ContentLength": len(self.data[Key]),
+                        "ContentType": self.mime.get(Key)}
+        r2 = MetadataR2()
+        base = {"chat": {"id": 42}, "media_group_id": "liveverifier",
+                "date": 1791059000}
+        for ident, uid, caption in (("first", 400, "/privat"),
+                                    ("second", 401, None)):
+            message = {**base, "photo": [{"file_id": ident}]}
+            if caption:
+                message["caption"] = caption
+            receive(message, update_id=uid, token="synthetic", client=r2,
+                    bucket="test", get=get, authorized_chat=42)
+        job_id = "tgalbum" + sha256(b"42:liveverifier").hexdigest()[:32]
+        actual = verify(r2, "test", job_id=job_id, expected_count=2)
+        self.assertEqual(len(actual["assets"]), 2)
+        with self.assertRaisesRegex(RuntimeError, "LIVE_ASSET_COUNT_MISMATCH"):
+            verify(r2, "test", job_id=job_id, expected_count=3)
+        first_key = actual["assets"][0]["key"]
+        r2.mime[first_key] = "text/plain"
+        with self.assertRaisesRegex(RuntimeError, "LIVE_ORIGINAL_HEAD_MISMATCH"):
+            verify(r2, "test", job_id=job_id, expected_count=2)
+        r2.mime[first_key] = "image/jpeg"
+        r2.data[actual["prefix"] + "quarantine/test.json"] = b'{}'
+        with self.assertRaisesRegex(RuntimeError, "LIVE_UNREPLAYED_QUARANTINE"):
+            verify(r2, "test", job_id=job_id, expected_count=2)
+
 if __name__=="__main__":unittest.main()
