@@ -238,6 +238,18 @@ async function checkSelectedTask(){
 function selectInboxTask(item){
   if(selectedTask?.id!==item.id)clearAttachmentCache();
   selectedTask=item;selectedReport=null;selectedReportError="";
+  // Only an explicitly selected private audio entry may prefill the ASR form.
+  // Selection never grants consent or starts transcription.
+  if(item.kind==="file"&&["audio/webm","audio/mp4","audio/ogg"].includes(item.file?.mime)&&
+     /^[0-9a-f-]{36}$/.test(item.id)&&/^20\d\d-\d\d-\d\d$/.test(item.created_at?.slice(0,10)||"")){
+    $("asrId").value=item.id;
+    $("asrDate").value=item.created_at.slice(0,10);
+    $("asrStatus").textContent="Private Aufnahme ausgewählt. Transkription nur nach ausdrücklicher Einwilligung.";
+  }else{
+    $("asrId").value="";$("asrDate").value="";
+    $("asrStatus").textContent="Keine private Audioaufnahme ausgewählt.";
+  }
+  $("asrText").value="";
   paintConversation();setTab("chat");
   if(item.kind==="message")checkSelectedTask();
 }
