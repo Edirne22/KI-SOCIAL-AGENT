@@ -331,4 +331,13 @@ class AlbumTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "LIVE_UNREPLAYED_QUARANTINE"):
             verify(r2, "test", job_id=job_id, expected_count=2)
 
+
+    def test_boto3_supports_conditional_manifest_writes(self):
+        # A fake R2 can support headers which the installed botocore lacks.
+        # Fail during premerge CI rather than only in the real R2 run.
+        from botocore.session import Session
+        members = Session().get_service_model("s3").operation_model("PutObject").input_shape.members
+        self.assertIn("IfNoneMatch", members)
+        self.assertIn("IfMatch", members)
+
 if __name__=="__main__":unittest.main()
