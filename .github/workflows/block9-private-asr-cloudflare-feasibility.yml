@@ -1,0 +1,40 @@
+name: Block 9 Cloudflare private ASR feasibility gate (read-only)
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/block9-private-asr-cloudflare-feasibility.yml"
+      - "infra/private-asr/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read-only-cloudflare-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check existing Cloudflare permissions without changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo "CF_TOKEN_UNAVAILABLE"; exit 1; }
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "CF_ACCOUNT_UNAVAILABLE"; exit 1; }
+          npx --yes wrangler@4 whoami
+      - name: Existing container inventory only (no create, deploy or secrets)
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 containers list
+      - name: Build-time Wrangler syntax check for existing installation
+        working-directory: infra/openchatcut-cloudflare
+        run: |
+          npm ci
+          npx wrangler deploy --dry-run --containers-rollout=none
+      - name: Cost and model truth boundary
+        run: echo "READ_ONLY_INVENTORY_ONLY. Existing OpenChatCut must not be overwritten. Separate ASR instance cannot be deployed until confirmed no extra charges and offline model provisioning."
