@@ -8,7 +8,7 @@ class DevelopmentPlanTests(unittest.TestCase):
             plan(999999)
 
     def test_missing_sources_reported_without_fake_success(self):
-        with patch("scripts.guarded_development_agent.Path.is_file",side_effect=lambda path: str(path)=="docs/GUARDED_DEVELOPMENT_AGENT_BASICS.md"), patch("scripts.guarded_development_agent.Path.read_text",return_value="Auftrag #369"):
+        with patch("scripts.guarded_development_agent.Path.is_file",autospec=True,side_effect=lambda path: str(path)=="docs/GUARDED_DEVELOPMENT_AGENT_BASICS.md"), patch("scripts.guarded_development_agent.Path.read_text",return_value="Auftrag #369"):
             result=plan(369)
         self.assertEqual(result["status"],"BLOCKED_MISSING_SOURCE")
         self.assertEqual(len(result["missing_prerequisites"]),5)
