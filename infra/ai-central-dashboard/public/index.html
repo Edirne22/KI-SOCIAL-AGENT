@@ -356,22 +356,29 @@ async function loadPreviews(){
           change.disabled=false;discard.disabled=false;
         }
       }
+      const feedbackLabel=document.createElement("label");
+      feedbackLabel.textContent="Was soll überarbeitet werden?";
+      const feedback=document.createElement("textarea");
+      feedback.placeholder="Zum Beispiel: Ton entfernen, Einstieg kürzen …";
+      feedback.maxLength=2000;feedback.rows=3;
+      feedback.setAttribute("aria-label","Änderungswunsch für diese Videovorschau");
+      feedbackLabel.append(feedback);
       change.onclick=async()=>{
-        const text=window.prompt("Welche Änderung wünschst du für dieses Video?");
-        if(text===null)return;
-        if(!text.trim()||text.length>2000){
-          $("previewNotice").textContent="Bitte einen Änderungswunsch mit maximal 2000 Zeichen eingeben.";return;
+        const text=feedback.value.trim();
+        if(!text||text.length>2000){
+          $("previewNotice").textContent="Bitte zuerst deinen Änderungswunsch (maximal 2000 Zeichen) eingeben.";
+          feedback.focus();return;
         }
         if(!window.confirm("Änderungswunsch verbindlich vormerken? Die aktuelle Vorschau wird gesperrt."))
           return;
-        await requestReview("change",text.trim());
+        await requestReview("change",text);
       };
       discard.onclick=async()=>{
         if(!window.confirm("Dieses Video wirklich zur Verwerfung vormerken und die Vorschau sofort sperren?"))
           return;
         await requestReview("discard","");
       };
-      controls.append(change,discard);
+      controls.append(change,discard);\n      li.append(feedbackLabel);
       const postInfo=document.createElement("div");postInfo.className="smalltext";
       postInfo.textContent="Posten bleibt gesperrt, bis echte Fakten-QM, deine verbindliche Freigabe "
         +"und die Publisher-Anbindung vollständig geprüft sind.";
