@@ -24,6 +24,7 @@ jobs:
           git switch -C feature/guarded-telegram-album-import origin/main
           git show origin/feat/telegram-review-feedback-and-warmup-contract:scripts/telegram_private_media.py > scripts/telegram_private_media.py
           python -m py_compile scripts/telegram_private_media.py
+          git add -N scripts/telegram_private_media.py
           git diff --name-only | grep -Fx scripts/telegram_private_media.py
           test "$(git diff --name-only | wc -l)" -eq 1
           git add scripts/telegram_private_media.py
