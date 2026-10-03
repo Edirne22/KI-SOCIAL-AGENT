@@ -2556,3 +2556,33 @@ Story-Key: title:can-nc-cremona-da-n-s-ralarda-pole-sadece-0-365-saniye-uzakta
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-03 04:54 UTC | Motorcycle Racing | PASS
+Titel: David Alonso Motegi’de rekoru kırdı: İlk dört arasında sadece 0.093 saniye!
+Story-Key: title:david-alonso-motegi-de-rekoru-k-rd-i-lk-d-rt-aras-nda-sadece-0-093-saniye
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-03 04:54 UTC | Motorcycle Racing | PASS
+Titel: 2026 Japonya GP sıralama: Martin rekor turla pole’de, Toprak 22. sırada
+Story-Key: motogp:10861234
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-03 04:54 UTC | Motorcycle Racing | PASS
+Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
+Story-Key: title:deniz-nc-japonya-da-daha-fazlas-n-istiyor-hedef-ilk-10-un-tesi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-03 04:54 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Japonya GP 2. antrenman: Bezzecchi lider, Toprak 22. sırada
+Story-Key: motogp:10861225
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-03 04:54 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin: “Cuma Günü Her Seferinde Sıfırdan Başlamak Gibi”
+Story-Key: title:jorge-martin-cuma-g-n-her-seferinde-s-f-rdan-ba-lamak-gibi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

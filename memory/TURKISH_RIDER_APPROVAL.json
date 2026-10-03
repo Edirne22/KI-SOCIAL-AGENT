@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "created_at": 1790915981,
+  "created_at": 1791002232,
   "max_days": 10,
   "window_used_days": 10,
-  "count": 1,
+  "count": 2,
   "items": [
     {
       "n": 1,
@@ -15,6 +15,18 @@
       "series": "Unsupported",
       "source_series": "Karting",
       "turkish_rider": "Zayn Sofuoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 2,
+      "title": "Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta",
+      "url": "https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu",
+      "summary": "Milli sporcumuz Can Öncü, Cremona WorldSSP Superpole seansını pole pozisyonunun sadece 0.365 saniye gerisinde altıncı tamamladı.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/can-oncu-cremona-worldssp-superpole-2026-1.webp",
+      "published_at": "2026-09-25T20:53:38+03:00",
+      "series": "WorldSSP",
+      "source_series": "WorldSSP",
+      "turkish_rider": "Can Öncü",
       "kind": "news"
     }
   ]

@@ -759,3 +759,23 @@ Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-1-antrenman-yagm
 Story-Key: title:bulega-i-as-l-tehlike-pirelli-de-il-ducati-de-gizli-2027-fark
 Titel: Bulega için asıl tehlike Pirelli değil: Ducati’de gizli 2027 farkı
 Quelle: https://motoetkinlik.com/buleganin-2027deki-gercek-riski-pirelli-degil-ducati-guncellemeleri-belirleyebilir
+
+## 2026-10-03 04:37 UTC – ANGEBOTEN
+Story-Key: title:david-alonso-motegi-de-rekoru-k-rd-i-lk-d-rt-aras-nda-sadece-0-093-saniye
+Titel: David Alonso Motegi’de rekoru kırdı: İlk dört arasında sadece 0.093 saniye!
+Quelle: https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi
+
+## 2026-10-03 04:37 UTC – ANGEBOTEN
+Story-Key: motogp:10861234
+Titel: 2026 Japonya GP sıralama: Martin rekor turla pole’de, Toprak 22. sırada
+Quelle: https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234
+
+## 2026-10-03 04:37 UTC – ANGEBOTEN
+Story-Key: motogp:10861225
+Titel: MotoGP Japonya GP 2. antrenman: Bezzecchi lider, Toprak 22. sırada
+Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225
+
+## 2026-10-03 04:37 UTC – ANGEBOTEN
+Story-Key: title:jorge-martin-cuma-g-n-her-seferinde-s-f-rdan-ba-lamak-gibi
+Titel: Jorge Martin: “Cuma Günü Her Seferinde Sıfırdan Başlamak Gibi”
+Quelle: https://motoetkinlik.com/jorge-martin-cuma-gunu-her-seferinde-sifirdan-baslamak-gibi
