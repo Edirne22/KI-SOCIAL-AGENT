@@ -30,6 +30,8 @@ Three separate proofs are required. Never label a green synthetic run as an actu
 
 **Deployment sequencing:** `telegram-receive.yml` checks out and updates **main** on the 5-minute schedule. Thus messages sent now go to existing main code, not the PR branch. **Do not send real private test media before the PR code is live.** Do not run branch Telegram polling in parallel or disable the production poller silently. There are two legitimate ways to test: (1) a separately provisioned staging bot and its own chat/token, explicitly configured without sharing production `getUpdates`, or (2) after Phase A and final code review, an explicitly approved, guarded merge/deploy to main, followed by owner participation. Without one of these, the Telegram→R2 segment remains UNTESTED and no full acceptance may be claimed.
 
+**Timing:** The existing production `telegram-receive.yml` schedule is every 5 minutes **only 06:00–21:59 UTC**. Outside that UTC window, manually dispatch the existing main `Telegram Receive Approval` workflow *after* the feature has been safely deployed; otherwise wait until the next scheduled window. A successful send to Telegram without a corresponding router run is NOT an intake PASS.
+
 Once one safe test environment is active:
 
 1. Owner sends a **small, non-sensitive test album** containing **2 test photos and 1 short test video**, in **one Telegram album** to the designated bot, caption `/privat` on the FIRST item. Do not send family/private/child photos for engineering tests. Telegram can deliver album items in non-caption order; this is supported by quarantine.
