@@ -8,6 +8,11 @@ import argparse
 import json
 import os
 import subprocess
+import hashlib
+import time
+import urllib.request
+import urllib.error
+import urllib.parse
 from content_factory_core import ProductionJob, JobStatus
 from content_factory_golden_tablet import FinalQM, QMCheck
 from content_factory_dashboard_preview import register_verified_video_preview, STATE_PREFIX
@@ -16,6 +21,50 @@ from content_factory_dashboard_review_applier import apply_review_request
 from content_factory_dashboard_review_ack import acknowledge_persisted_review
 from content_factory_revision_render import produce_revision, probe
 from media_storage import R2Storage
+
+DASHBOARD="https://edirne22-ai-central-dashboard.butupeli.workers.dev"
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self,*args,**kwargs):return None
+
+def dashboard_request(path,token,*,body=None,mime=None):
+    headers={"Authorization":"Bearer "+token} if token else {}
+    if mime:headers.update({"Content-Type":mime,"x-upload-name":"block89-synthetic.mp4"})
+    req=urllib.request.Request(DASHBOARD+path,headers=headers,data=body)
+    try:
+        response=urllib.request.build_opener(NoRedirect()).open(req,timeout=15)
+    except urllib.error.HTTPError as exc:
+        response=exc
+    with response:
+        data=response.read(32*1024*1024+1)
+        if len(data)>32*1024*1024:raise RuntimeError("dashboard response exceeds bound")
+        return response.code,data
+
+def verify_dashboard(job,request_id,preview,source,old_preview):
+    token=os.environ.get('AI_DASHBOARD_TOKEN','')
+    if len(token)<24:raise RuntimeError('configured dashboard token missing')
+    path='/api/edit-status?'+urllib.parse.urlencode({'job_id':job.job_id,'request_id':request_id})
+    if dashboard_request(path,'')[0]!=401:raise RuntimeError('dashboard unauthorized guard failed')
+    # Read-only bounded retries allow the separately guarded Worker deploy to
+    # finish. POST below is issued once, never retried after ambiguous transport.
+    for attempt in range(25):
+        code,raw=dashboard_request(path,token)
+        if code==200 and json.loads(raw).get('status')=='READY_FOR_HUMAN':break
+        if attempt==24:raise RuntimeError('deployed revision status not ready')
+        time.sleep(10)
+    if json.loads(raw).get('publishing_allowed') is not False:raise RuntimeError('unexpected publish authority')
+    code,video=dashboard_request('/api/preview-video?id='+preview['preview_id'],token)
+    if code!=200 or hashlib.sha256(video).hexdigest()!=job.media[0].sha256:
+        raise RuntimeError('live dashboard video SHA failed')
+    if dashboard_request('/api/preview-video?id='+old_preview,token)[0]!=404:
+        raise RuntimeError('obsolete preview is still available')
+    code,raw=dashboard_request('/api/upload',token,body=source.read_bytes(),mime='video/mp4')
+    if code!=202:raise RuntimeError('live synthetic MP4 upload failed')
+    uploaded=json.loads(raw)
+    if uploaded.get('status')!='DRAFT_REQUIRES_REVIEW':raise RuntimeError('upload auto-dispatched unexpectedly')
+    path='/api/upload-preview?'+urllib.parse.urlencode({'id':uploaded['id'],'date':uploaded['created_at'][:10]})
+    code,original=dashboard_request(path,token)
+    if code!=200 or original!=source.read_bytes():raise RuntimeError('live private upload roundtrip failed')
+    print('BLOCK89_LIVE_DASHBOARD_STATUS_VIDEO_SHA_OLD_PREVIEW_REVOKED_MP4_UPLOAD_PASS synthetic_only=true')
 
 def prepare(storage,root):
     source=root/'synthetic.mp4'
@@ -69,6 +118,8 @@ def run(*,live=False,evidence=None):
         if repeated!=result or repo.get_job(job.job_id).store_version!=done.store_version:
             raise RuntimeError('replay was not idempotent')
         rendering=done.job.metadata['revision_render']
+        if live:
+            verify_dashboard(done.job,state['review']['request_id'],rendering['preview'],root/'synthetic.mp4',state['review']['preview_id'])
         if evidence:
             keys=[repo._key(job.job_id),key,rendering['ticket_key'],
                   'ai-central/v1/previews/'+rendering['preview']['preview_id']+'.json']
