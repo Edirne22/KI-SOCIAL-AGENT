@@ -31,7 +31,10 @@ def identify(message):
 def download(file_id,token,get=requests.get):
     if not token or not file_id:
         raise ValueError("Telegram-Datei fehlt")
-    info=get("https://api.telegram.org/bot"+token+"/getFile",params={"file_id":file_id},timeout=25)
+    try:
+        info=get("https://api.telegram.org/bot"+token+"/getFile",params={"file_id":file_id},timeout=25)
+    except requests.RequestException:
+        raise RuntimeError("Telegram-getFile Netzwerkfehler; erneuter Versuch erforderlich.") from None
     # Telegram's public Bot API may reject oversized videos directly in
     # getFile (HTTP 400) before returning file_size/file_path. Treat that as
     # a permanent per-item error, not as a retryable outage that blocks
@@ -69,13 +72,26 @@ def download(file_id,token,get=requests.get):
     path=result["file_path"]
     if not re.fullmatch(r"[a-zA-Z0-9_./-]{1,250}",path) or ".." in path.split("/"):
         raise ValueError("Ungültiger Telegram-Dateipfad")
-    response=get("https://api.telegram.org/file/bot"+token+"/"+path,timeout=90,stream=True)
-    response.raise_for_status()
+    try:
+        response=get("https://api.telegram.org/file/bot"+token+"/"+path,timeout=90,stream=True)
+    except requests.RequestException:
+        raise RuntimeError("Telegram-Dateidownload Netzwerkfehler; erneuter Versuch erforderlich.") from None
+    try:
+        response.raise_for_status()
+    except requests.HTTPError as exc:
+        res=getattr(exc,"response",None)
+        status=getattr(res,"status_code",getattr(response,"status_code","unknown"))
+        if status in (400,413):
+            raise PermanentTelegramFileError("Telegram-Datei über Bot nicht abrufbar; Dashboard-Upload verwenden.") from None
+        raise RuntimeError("Telegram-Dateidownload HTTP "+str(status)+"; erneuter Versuch erforderlich.") from None
     buf=bytearray()
-    for part in response.iter_content(chunk_size=65536):
-        buf.extend(part)
-        if len(buf)>MAX_DOWNLOAD:
-            raise PermanentTelegramFileError("Datei zu groß; Dashboard-Upload verwenden.")
+    try:
+        for part in response.iter_content(chunk_size=65536):
+            buf.extend(part)
+            if len(buf)>MAX_DOWNLOAD:
+                raise PermanentTelegramFileError("Datei zu groß; Dashboard-Upload verwenden.")
+    except requests.RequestException:
+        raise RuntimeError("Telegram-Dateidownload unterbrochen; erneuter Versuch erforderlich.") from None
     return bytes(buf)
 
 def _missing(exc):
