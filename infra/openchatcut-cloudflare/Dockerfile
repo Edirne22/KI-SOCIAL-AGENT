@@ -15,7 +15,7 @@ RUN python3 -m venv /opt/private-asr-venv \
  && /opt/private-asr-venv/bin/python -c "from huggingface_hub import snapshot_download; snapshot_download('Systran/faster-whisper-tiny',local_dir='/opt/private-asr-model')" \
  && test -s /opt/private-asr-model/model.bin
 COPY content_factory_private_asr.py content_factory_private_asr_runtime.py content_factory_private_asr_r2_bridge.py /opt/private-asr/
-COPY infra/openchatcut-cloudflare/private_asr_server.py /opt/private-asr/
+COPY private_asr_server.py /opt/private-asr/
 ENV PYTHONPATH=/opt/private-asr EDIRNE22_LOCAL_WHISPER_MODEL=/opt/private-asr-model HF_HUB_OFFLINE=1
 ENV NODE_ENV=production
 ENV OPENCHATCUT_DISABLE_HARDWARE_ENCODING=1
