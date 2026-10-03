@@ -1,0 +1,50 @@
+name: Private ASR isolated build verification
+on:
+  pull_request:
+    paths:
+      - "infra/private-asr/**"
+      - "infra/private-asr-cloudflare/**"
+      - ".github/workflows/private-asr-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Python syntax and contract
+        run: |
+          python -m py_compile infra/private-asr/service.py infra/private-asr/healthcheck.py infra/private-asr/run_private_asr.py
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          code=Path("infra/private-asr/service.py").read_text()
+          ast.parse(code)
+          assert 'PRIVATE_ASR_INTERNAL_TOKEN' in code
+          assert '0.0.0.0' in code
+          PY
+      - name: Cloudflare Worker syntax
+        working-directory: infra/private-asr-cloudflare
+        run: |
+          npm install --no-audit --no-fund
+          npx wrangler types
+          npx tsc --noEmit --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --lib es2022,dom --types @cloudflare/workers-types src/index.ts
+      - name: Standalone offline model image build
+        run: docker build --progress=plain -f infra/private-asr/Dockerfile -t edirne22-private-asr:test .
+      - name: Start image and verify protected health
+        run: |
+          set -euo pipefail
+          docker run -d --name private-asr -p 127.0.0.1:5200:5200 -e PRIVATE_ASR_INTERNAL_TOKEN=synthetic-test-token edirne22-private-asr:test
+          trap 'docker logs private-asr | tail -25; docker rm -f private-asr >/dev/null' EXIT
+          for n in $(seq 1 30); do
+            if curl -fsS --max-time 3 http://127.0.0.1:5200/health | grep -q '"ready": true'; then break; fi
+            sleep 2
+          done
+          curl -fsS http://127.0.0.1:5200/health | grep -q '"ready": true'
+          test "$(curl -s -o /dev/null -w '%{http_code}' -X POST http://127.0.0.1:5200/jobs -H 'Content-Type: application/json' -d '{}')" = 401
+          test "$(curl -s -o /dev/null -w '%{http_code}' -X POST http://127.0.0.1:5200/jobs -H 'Authorization: Bearer synthetic-test-token' -H 'Content-Type: application/json' -d '{}')" = 400

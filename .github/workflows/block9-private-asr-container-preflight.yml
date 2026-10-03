@@ -21,8 +21,8 @@ jobs:
       - name: Build offline-capable private ASR image
         run: docker build -f infra/private-asr/Dockerfile -t edirne22-private-asr:preflight .
       - name: Verify imports as unprivileged runtime user
-        run: docker run --rm --network none edirne22-private-asr:preflight
+        run: timeout 90s docker run --rm --network none --entrypoint python edirne22-private-asr:preflight -c 'import faster_whisper, boto3, service; print("PRIVATE_ASR_IMPORT_OK")'
       - name: Python bridge regression and negative consent tests
         run: python -m unittest discover -s tests -p 'test_content_factory_private_asr*.py' -v
       - name: Truth boundary
-        run: echo "IMAGE_IMPORT_ONLY; NOT deployed; no R2 access; no personal audio; model provisioning still required"
+        run: echo "IMAGE_IMPORT_ONLY; NOT deployed; no R2 access; no personal audio"

@@ -1,0 +1,39 @@
+{
+  "name": "edirne22-private-asr",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-29",
+  "containers": [
+    {
+      "class_name": "PrivateASRContainer",
+      "image": "../private-asr/Dockerfile",
+      "max_instances": 1,
+      "instance_type": "standard-2",
+      "constraints": {
+        "regions": [
+          "WEUR",
+          "EEUR"
+        ],
+        "jurisdiction": "eu"
+      }
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "PRIVATE_ASR",
+        "class_name": "PrivateASRContainer"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "PrivateASRContainer"
+      ]
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
