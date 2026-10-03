@@ -308,6 +308,16 @@ def _replay(client, bucket, manifest, token, get):
     return stored_count, rejected_count
 
 
+def _rejected_count(client, bucket, manifest):
+    """Read metadata only, including rejections recorded by earlier retries."""
+    args = {"Bucket": bucket, "Prefix": manifest["prefix"] + "rejected/",
+            "MaxKeys": 1000}
+    page = client.list_objects_v2(**args)
+    if page.get("IsTruncated") or page.get("NextContinuationToken"):
+        raise RuntimeError("Zu viele abgewiesene Albumdateien; manuelle Prüfung erforderlich.")
+    return len(page.get("Contents", []))
+
+
 def _indexed_album(client, bucket, job_id, owner_chat):
     if not re.fullmatch(r"tgalbum[a-f0-9]{32}", job_id):
         raise ValueError("Ungültige private Album-ID.")
@@ -371,8 +381,10 @@ def handle_private_command(text, *, chat, authorized_chat, token,
                 pending = client.list_objects_v2(
                     Bucket=bucket, Prefix=manifest["prefix"] + "quarantine/", MaxKeys=100)
                 count = len(pending.get("Contents", []))
-                if count:
-                    results.append((manifest["created_at"], job_id, count))
+                rejected = _rejected_count(client, bucket, manifest)
+                if count or rejected:
+                    results.append((int(count > 0), manifest["created_at"],
+                                    job_id, count, rejected))
             marker = page.get("NextContinuationToken")
             if not marker:
                 break
@@ -380,10 +392,11 @@ def handle_private_command(text, *, chat, authorized_chat, token,
             return "Keine vorgemerkten privaten Alben aus den letzten 72 Stunden."
         results.sort(reverse=True)
         selected = results[:5]
-        return ("Private Alben mit vorgemerkten Dateien (noch nicht gespeichert):\\n"
-                + "\\n".join(job_id + " · " + str(count) + " vorgemerkt"
-                            for _, job_id, count in selected)
-                + "\\nGezielt freigeben: /privat freigeben tgalbum...")
+        return ("Private Alben aus den letzten 72 Stunden (nur Metadaten):\\n"
+                + "\\n".join(job_id + " · " + str(count) + " vorgemerkt, "
+                            + str(rejected) + " abgewiesen"
+                            for _, _, job_id, count, rejected in selected)
+                + "\\nVorgemerkte Dateien gezielt freigeben: /privat freigeben tgalbum...")
     match = re.fullmatch(r"/privat freigeben (tgalbum[a-f0-9]{32})", normalized)
     if not match:
         raise ValueError("Bitte /privat offene oder /privat freigeben tgalbum... verwenden.")
@@ -392,12 +405,15 @@ def handle_private_command(text, *, chat, authorized_chat, token,
         Bucket=bucket, Prefix=manifest["prefix"] + "quarantine/", MaxKeys=1)
     if not pending.get("Contents"):
         return ("Keine vorgemerkten Dateien für " + manifest["job_id"]
-                + " vorhanden; bereits gespeicherte Dateien bleiben privat.")
+                + " vorhanden; " + str(_rejected_count(client, bucket, manifest))
+                + " Datei(en) von Telegram abgewiesen. "
+                + "Bereits gespeicherte Dateien bleiben privat.")
     _authorize(client, bucket, manifest, chat)
     stored, rejected = _replay(client, bucket, manifest, token, get)
     return ("Privates Album " + manifest["job_id"] + ": "
             + str(stored) + " vorgemerkte Datei(en) in R2 übernommen; "
-            + str(rejected) + " Datei(en) von Telegram abgewiesen. "
+            + str(_rejected_count(client, bucket, manifest))
+            + " Datei(en) insgesamt von Telegram abgewiesen. "
             + "Keine Veröffentlichung.")
 
 
