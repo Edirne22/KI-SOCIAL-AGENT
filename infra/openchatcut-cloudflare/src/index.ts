@@ -3,6 +3,7 @@ import { env } from "cloudflare:workers";
 
 let workerBootId: string | undefined;
 let workerStartedAt: string | undefined;
+let workerRequestSeq = 0;
 function workerIdentity() {
   if (!workerBootId) {
     workerBootId = crypto.randomUUID();
@@ -79,7 +80,8 @@ export default {
       return container.getTcpPort(5200).fetch(privateRequest);
     }
     const sessionId = request.headers.get("mcp-session-id") || "";
-    console.log(JSON.stringify({ event: "openchatcut_proxy", method: request.method, path: url.pathname, hasMcpSessionId: Boolean(sessionId), mcpSessionIdPrefix: sessionId.slice(0, 8), workerBootId: workerIdentity().workerBootId }));
+    const requestSeq = ++workerRequestSeq;
+    console.log(JSON.stringify({ event: "openchatcut_proxy", method: request.method, path: url.pathname, hasMcpSessionId: Boolean(sessionId), mcpSessionIdPrefix: sessionId.slice(0, 8), workerBootId: workerIdentity().workerBootId, requestSeq }));
     return container.fetch(request);
   }
 };
