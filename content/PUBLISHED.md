@@ -627,9 +627,8 @@ Quelle: https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-sur
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-1-david-alonso-motegid-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37111538336-1
+## Facebook [GEPOSTET 2026-10-03 09:00 | ID: 1285968257941776_122118606963469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-03-daily
 Telegram-Update-ID: 279361807
@@ -645,6 +644,7 @@ Wie schätzt ihr die Lage im Moto2-Klassement ein?
 https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi
 Quelle: https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi", "media_status": "", "object_id": "1285968257941776_122118606963469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122118606963469415", "source_url": "https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
