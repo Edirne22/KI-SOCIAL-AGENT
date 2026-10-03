@@ -152,6 +152,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
+      MCP_DIAG_NO_STANDALONE_SSE: '1'
       OPENCHATCUT_BASE_URL: https://edirne22-openchatcut-poc.butupeli.workers.dev
       OPENCHATCUT_MCP_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
       R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}

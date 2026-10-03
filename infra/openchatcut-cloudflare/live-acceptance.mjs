@@ -17,7 +17,11 @@ r=await http("/_factory/health",auth); assert(r.ok,`health failed ${r.status}`);
 const upstreamProbe=await fetch(base+"/api/external-mcp/mcp",{method:"POST",headers:{...auth,"content-type":"application/json","accept":"application/json, text/event-stream"},body:JSON.stringify({jsonrpc:"2.0",id:"probe",method:"initialize",params:{protocolVersion:"2025-06-18",capabilities:{},clientInfo:{name:"edirne22-probe",version:"1.0.0"}}}),signal:AbortSignal.timeout(15000)}).catch(error=>({probeError:error}));
 if(upstreamProbe?.probeError) console.log("MCP_RAW_INITIALIZE_PROBE",JSON.stringify({ok:false,error:String(upstreamProbe.probeError)})); else console.log("MCP_RAW_INITIALIZE_PROBE",JSON.stringify({ok:upstreamProbe.ok,status:upstreamProbe.status,sessionId:upstreamProbe.headers.get("mcp-session-id"),contentType:upstreamProbe.headers.get("content-type"),body:(await upstreamProbe.text()).slice(0,1000)}));
 
-const transport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
+// Diagnostic A/B: suppress standalone GET/SSE while retaining POST response SSE.
+// Keep this opt-in: production behavior is unchanged unless explicitly enabled.
+const noStandaloneSse = process.env.MCP_DIAG_NO_STANDALONE_SSE === "1";
+console.log("MCP_DIAG_TRANSPORT",JSON.stringify({noStandaloneSse}));
+const transport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth},disableStandaloneSseStream:noStandaloneSse});
 let client=new Client({name:"edirne22-live-acceptance",version:"1.0.0"});
 console.log("MCP_CONNECT_BEGIN");
 await client.connect(transport);
@@ -25,6 +29,14 @@ console.log("MCP_CONNECT_OK",JSON.stringify({sessionId:transport.sessionId||null
 const sessionDiag=(phase)=>console.log("MCP_SESSION_DIAG",JSON.stringify({phase,sessionId:transport.sessionId||null}));
 let call=async(name,args={})=>{sessionDiag(`before:${name}`);console.log("MCP",name);try{const x=await client.callTool({name,arguments:args});sessionDiag(`after:${name}`);if(x.isError)throw new Error(`${name}: ${JSON.stringify(x.content)}`);return x}catch(error){sessionDiag(`error:${name}`);throw error}};
 const data=x=>x.structuredContent??Object.assign({},...(x.content||[]).filter(c=>c.type==="text").map(c=>{try{return JSON.parse(c.text)}catch{return {text:c.text}}}));
+// Session continuity probe: distinguish upstream process/session loss from project-tool failure.
+const probeRounds = Number(process.env.MCP_SESSION_PROBE_ROUNDS || "4");
+for (let i = 0; i < probeRounds; i++) {
+  const before = transport.sessionId;
+  const probe = await call("openchatcut_status");
+  assert(transport.sessionId === before, "MCP session ID changed during repeated status probe");
+  console.log("MCP_CONTINUITY_PASS", JSON.stringify({round:i+1,sessionId:before,status:data(probe)}));
+}
 const status=await call("openchatcut_status"); console.log("status",JSON.stringify(data(status)));
 const created=data(await call("create_project",{name:`Edirne22 LIVE acceptance ${new Date().toISOString()}`,compositionWidth:720,compositionHeight:1280,fps:30}));
 const projectId=created.id||created.projectId; assert(projectId,"create_project returned no id");
