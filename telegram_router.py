@@ -18,6 +18,7 @@ from pathlib import Path
 import requests
 
 from telegram_bot import get_chat_id, get_updates, send_message, send_photo
+from scripts.telegram_private_media import receive as receive_private_media
 from scripts.ai_central_shared_inbox import handle as handle_central_inbox, parse_command as parse_central_command
 from vision_router import VisionRouter
 import pending_instagram as pi
@@ -390,6 +391,18 @@ def main() -> None:
         text = msg.get("text")
         if not isinstance(uid, int):
             continue
+        # Intercept albums before legacy Vision processing; unknown groups stay private.
+        if msg.get("media_group_id") or str(msg.get("caption") or "").strip().lower() in ("/privat","/privat neu"):
+            if chat != allowed:
+                _ack(uid)
+                return
+            try:
+                answer=receive_private_media(msg,update_id=uid,token=os.environ.get("TELEGRAM_BOT_TOKEN",""),authorized_chat=allowed)
+                if answer:send_message(answer)
+            except (ValueError,RuntimeError,PermissionError) as exc:
+                send_message("Privater Medieneingang: "+str(exc))
+            _ack(uid)
+            return
         if _is_photo_message(upd):
             if chat != allowed:
                 _ack(uid)
