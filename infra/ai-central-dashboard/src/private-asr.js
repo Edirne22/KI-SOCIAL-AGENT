@@ -59,8 +59,19 @@ export async function privateASR(req,env){
       });
       if(dispatched.ok)return reply({status:"PRIVATE_DRAFT_REQUESTED",language:body.language},202);
       const code=dispatched.status;
+      // Accept only fixed diagnostic codes from the authenticated service binding.
+      const safeReasons=new Set(["runtime_configuration_missing","model_missing","inbox_verification_failed",
+        "r2_metadata_mismatch","consent_verification_failed","audio_format_rejected",
+        "audio_decode_failed","transcript_already_exists","private_processing_failed",
+        "r2_or_runtime_failure","unknown"]);
+      let reason="unknown";
+      if(code===422){
+        try { const diagnostic=await dispatched.json();
+          if(diagnostic&&safeReasons.has(diagnostic.reason))reason=diagnostic.reason;
+        } catch { /* No untrusted upstream error body is exposed. */ }
+      }
       // Fixed stage and numeric status only: no private upstream body or credentials.
-      return reply({status:code===503?"CONSENT_SAVED_CONTAINER_NOT_READY":code===409?"CONSENT_SAVED_CONTAINER_BUSY":"CONSENT_SAVED_CONTAINER_REJECTED",language:body.language,upstream_http_status:code,failure_stage:"private_asr_job"},202);
+      return reply({status:code===503?"CONSENT_SAVED_CONTAINER_NOT_READY":code===409?"CONSENT_SAVED_CONTAINER_BUSY":"CONSENT_SAVED_CONTAINER_REJECTED",language:body.language,upstream_http_status:code,failure_stage:"private_asr_job",failure_reason:reason},202);
     }catch{
       return reply({status:"CONSENT_SAVED_CONTAINER_UNAVAILABLE",language:body.language,failure_stage:"private_asr_transport"},202);
     }

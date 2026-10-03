@@ -586,6 +586,14 @@ const asrCall=async method=>{
   const result=await api("/api/private-asr?id="+encodeURIComponent(id)+"&date="+encodeURIComponent(date),{method,...(method==="POST"?{body:JSON.stringify({language:$("asrLang").value}),headers:{"content-type":"application/json"}}:{})});
   $("asrStatus").textContent=({CONSENT_SAVED_NOT_TRANSCRIBED:"Einwilligung gespeichert. Warte auf privaten Container.",PRIVATE_DRAFT_REQUESTED:"Privater Containerauftrag verarbeitet. Transkript abrufen.",CONSENT_SAVED_CONTAINER_UNAVAILABLE:"Einwilligung gespeichert; Container aktuell nicht erreichbar.",CONSENT_SAVED_AWAITING_CONTAINER_CONFIGURATION:"Einwilligung gespeichert; Containeranbindung fehlt.",AWAITING_PRIVATE_CONTAINER_ASR:"Noch kein Container-Transkript vorhanden.",CONSENT_REQUIRED:"Keine gültige Einwilligung.",PRIVATE_DRAFT_REQUIRES_REVIEW:"Transkript verfügbar – bitte prüfen.",REVOKED:"Einwilligung widerrufen."})[result.status]||result.status||"Unbekannter Status";
   if(Number.isInteger(result.upstream_http_status))$("asrStatus").textContent+=" · Container HTTP "+result.upstream_http_status+" (Stufe: Auftrag)";
+  if(result.failure_reason){
+    const reasons={runtime_configuration_missing:"Konfiguration fehlt",model_missing:"Lokales Modell fehlt",
+      inbox_verification_failed:"R2-Auftrag nicht eindeutig",r2_metadata_mismatch:"R2-Audiometadaten stimmen nicht überein",
+      consent_verification_failed:"Einwilligungsprüfung fehlgeschlagen",audio_format_rejected:"Audioformat abgelehnt",
+      audio_decode_failed:"FFmpeg-Dekodierung fehlgeschlagen",transcript_already_exists:"Privates Transkript bereits vorhanden",
+      private_processing_failed:"Interne Verarbeitung fehlgeschlagen",r2_or_runtime_failure:"R2- oder Laufzeitfehler",unknown:"Ursache noch unbekannt"};
+    if(Object.prototype.hasOwnProperty.call(reasons,result.failure_reason))$("asrStatus").textContent+=" · "+reasons[result.failure_reason];
+  }
   else if(result.failure_stage==="private_asr_transport")$("asrStatus").textContent+=" · Transportfehler vor Containerantwort";
   if(method==="DELETE")$("asrText").value="";
   if(result.status==="PRIVATE_DRAFT_REQUIRES_REVIEW")$("asrText").value=result.text;
