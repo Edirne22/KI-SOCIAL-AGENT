@@ -70,7 +70,7 @@ export default {
       const obj = input as Record<string, unknown>;
       if (Object.keys(obj).sort().join(",") !== "date,id,language" ||
           typeof obj.id !== "string" || !/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/.test(obj.id) ||
-          typeof obj.date !== "string" || !/^20\\d{2}-\\d{2}-\\d{2}$/.test(obj.date) ||
+          typeof obj.date !== "string" || !/^20\d{2}-\d{2}-\d{2}$/.test(obj.date) ||
           !["de","tr"].includes(String(obj.language))) return new Response("invalid input", { status: 400 });
       const privateRequest = new Request("http://localhost:5200/internal/private-asr", {
         method: "POST", headers: { "Content-Type": "application/json", "X-Internal-ASR-Token": expected },
