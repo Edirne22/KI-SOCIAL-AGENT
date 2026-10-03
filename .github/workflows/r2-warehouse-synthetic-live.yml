@@ -14,7 +14,8 @@ on:
     paths:
       - 'scripts/r2_media_warehouse.py'
       - 'scripts/r2_warehouse_live_smoke.py'
-      - 'scripts/telegram_private_album_real_r2_smoke.py scripts/telegram_private_album_live_verify.py'
+      - 'scripts/telegram_private_album_real_r2_smoke.py'
+      - 'scripts/telegram_private_album_live_verify.py'
       - 'scripts/telegram_private_media.py'
       - '.github/workflows/r2-warehouse-synthetic-live.yml'
 permissions:
@@ -29,7 +30,7 @@ jobs:
           python-version: '3.11'
       - name: Syntax and opt-in guard
         run: |
-          python -m py_compile scripts/r2_media_warehouse.py scripts/r2_warehouse_live_smoke.py scripts/telegram_private_album_real_r2_smoke.py
+          python -m py_compile scripts/r2_media_warehouse.py scripts/r2_warehouse_live_smoke.py scripts/telegram_private_album_real_r2_smoke.py scripts/telegram_private_album_live_verify.py
           python - <<'PY'
           from scripts.r2_media_warehouse import lane_for_upload
           assert lane_for_upload() == 'private'
