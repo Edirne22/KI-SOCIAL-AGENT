@@ -1,0 +1,39 @@
+{
+  "schema": "EDIRNE22-ASR-GLOSSARY-V1",
+  "purpose": "Synthetic text-only test vocabulary; not model training data",
+  "languages": {
+    "de": [
+      "Bülent",
+      "Edirne 22",
+      "BMW M 1000 R",
+      "Motorradtour",
+      "Landstraße",
+      "Schräglage",
+      "Quickshifter",
+      "Drehmoment",
+      "Kettenblatt",
+      "Reifendruck",
+      "MotoGP",
+      "WorldSBK",
+      "Toprak Razgatlıoğlu",
+      "Can Öncü"
+    ],
+    "tr": [
+      "Bülent",
+      "Edirne 22",
+      "BMW M 1000 R",
+      "motosiklet",
+      "viraj",
+      "lastik basıncı",
+      "vites",
+      "MotoGP",
+      "Toprak Razgatlıoğlu",
+      "Can Öncü",
+      "Zayn Sofuoğlu"
+    ]
+  },
+  "notes": [
+    "Preserve Unicode diacritics, numbers, and model names",
+    "Vocabulary is a recognition hint, never a forced text replacement"
+  ]
+}
