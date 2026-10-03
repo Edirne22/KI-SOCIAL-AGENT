@@ -9,9 +9,17 @@ from scripts.r2_media_warehouse import lane_for_upload, new_manifest, append_ass
 
 class FakeR2:
     def __init__(self): self.objects={}
+    def get_object(self,*,Bucket,Key):
+        if Key not in self.objects:
+            err=ValueError("not found")
+            err.response={"Error":{"Code":"NoSuchKey"}}
+            raise err
+        return {"Body":__import__("io").BytesIO(self.objects[Key]),"ETag":'"fake"'}
     def put_object(self,*,Bucket,Key,Body,**kwargs):
         if kwargs.get("IfNoneMatch")=="*" and Key in self.objects:
             raise ValueError("original already exists")
+        if kwargs.get("IfMatch") and Key not in self.objects:
+            raise ValueError("stale manifest")
         self.objects[Key]=Body
         return {"ETag":'"fake"'}
 
@@ -51,6 +59,14 @@ class WarehouseTests(unittest.TestCase):
             for asset in current["assets"]:
                 self.assertEqual(r2.objects[asset["key"]],(photo if asset["mime"]=="image/jpeg" else video).read_bytes())
             self.assertEqual(len(json.loads(r2.objects[current["prefix"]+"manifest.json"])["assets"]),2)
+
+    def test_stale_manifest_cannot_lose_other_upload(self):
+        r2=FakeR2()
+        first=store_original(r2,"bucket",self.manifest,asset_id="asset12345678",filename="a.jpg",mime="image/jpeg",payload=b"first")
+        self.assertEqual(len(first["assets"]),1)
+        with self.assertRaises(RuntimeError):
+            store_original(r2,"bucket",self.manifest,asset_id="asset87654321",filename="b.jpg",mime="image/jpeg",payload=b"second")
+        self.assertEqual(len(json.loads(r2.objects[first["prefix"]+"manifest.json"])["assets"]),1)
 
     def test_write_original_then_manifest(self):
         r2=FakeR2()
