@@ -37,10 +37,10 @@ jobs:
           export OPENAI_MODEL="openrouter/free"
           mkdir -p ~/.qwen
           printf '%s\n' '{"security":{"auth":{"selectedType":"openai"}},"model":{"name":"openrouter/free"}}' > ~/.qwen/settings.json
-          timeout 600 qwen --approval-mode auto_edit --prompt 'Implement ONLY the Telegram private album acceptance matrix in docs/TELEGRAM_PRIVATE_ALBUM_ACCEPTANCE.md. Prioritize durable pre-caption quarantine and automatic replay; interrupted immutable original recovery must never delete or overwrite originals. Add targeted synthetic regression tests for changed behavior. Do not read secrets, run external commands, publish, deploy, edit workflows, or touch other functionality. Do not claim completion for untested criteria.' > /tmp/qwen-run.log 2>&1 || echo 'QWEN_RUN_INCOMPLETE=true'
+          timeout 600 qwen --approval-mode auto-edit --prompt 'Implement ONLY the Telegram private album acceptance matrix in docs/TELEGRAM_PRIVATE_ALBUM_ACCEPTANCE.md. Prioritize durable pre-caption quarantine and automatic replay; interrupted immutable original recovery must never delete or overwrite originals. Add targeted synthetic regression tests for changed behavior. Do not read secrets, run external commands, publish, deploy, edit workflows, or touch other functionality. Do not claim completion for untested criteria.' > /tmp/qwen-run.log 2>&1
           git add -- scripts/telegram_private_media.py telegram_router.py tests/
           git diff --cached --binary > qwen-telegram.patch
-          if test -s qwen-telegram.patch; then echo 'PATCH_PRODUCED=true'; else echo 'PATCH_PRODUCED=false'; fi
+          if test -s qwen-telegram.patch; then echo 'PATCH_PRODUCED=true'; else echo 'FAIL: no code patch generated'; exit 1; fi
           sed -E 's/sk-[A-Za-z0-9_-]+/[REDACTED]/g' /tmp/qwen-run.log | tail -c 1500 > qwen-run-summary.txt
       - name: Upload proposed changes without merging
         uses: actions/upload-artifact@v4
