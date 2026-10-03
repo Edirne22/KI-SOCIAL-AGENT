@@ -65,6 +65,13 @@ class AlbumTests(unittest.TestCase):
         manifests=[json.loads(v) for k,v in r2.data.items() if k.endswith("manifest.json")]
         self.assertEqual(len(manifests[0]["assets"]),1)
 
+    def test_router_does_not_exit_after_first_album_item(self):
+        from pathlib import Path
+        router=Path("telegram_router.py").read_text()
+        section=router.split("# Intercept albums before legacy Vision processing;",1)[1].split("if _is_photo_message(upd):",1)[0]
+        self.assertNotIn("return",section)
+        self.assertGreaterEqual(section.count("continue"),2)
+
     def test_other_chat_rejected(self):
         with self.assertRaises(PermissionError):
             receive({"chat":{"id":99},"caption":"/privat","photo":[{"file_id":"a"}]},update_id=1,token="synthetic",authorized_chat=42)
