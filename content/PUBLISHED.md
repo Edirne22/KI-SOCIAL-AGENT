@@ -736,9 +736,8 @@ Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-4-motogp-japonya-gp-2-01.jpg
 Publish-Provenienz: {"creation_id": "18009806372971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-4-motogp-japonya-gp-2-01.jpg", "media_status": "EIGENE_KI_EDITORIALGRAFIK", "platform": "instagram", "post_id": "18371055631210374", "published_media_id": "18371055631210374", "source_url": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37114624624-1
+## Facebook [GEPOSTET 2026-10-03 09:55 | ID: 1285968257941776_122118628557469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-03-daily
 Telegram-Update-ID: 279361807
@@ -754,6 +753,7 @@ Was haltet ihr von Bezzecchis Tempo in Japan?
 https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225
 Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225", "media_status": "", "object_id": "1285968257941776_122118628557469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122118628557469415", "source_url": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225", "version": 1}
 
 ## Instagram [GEPOSTET 2026-10-03 09:35 | ID: 18135064771575053]
 Status: GEPOSTET
