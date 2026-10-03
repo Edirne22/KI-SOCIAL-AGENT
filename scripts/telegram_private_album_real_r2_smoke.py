@@ -144,6 +144,60 @@ def main():
             Bucket=bucket, Prefix=manifest["prefix"] + "quarantine/")
         assert not leftovers.get("Contents"), "Approved album has unreplayed quarantine"
 
+        # Force two actual R2 conditional manifest writes to race. Each
+        # worker waits after reading the same manifest ETag immediately before
+        # its first CAS. The loser must reload and preserve both uploads.
+        from concurrent.futures import ThreadPoolExecutor
+        from threading import Barrier, local
+        from scripts.telegram_private_media import _asset_id
+
+        parallel = {
+            "racephoto" + nonce: image_bytes,
+            "racevideo" + nonce: video_bytes,
+        }
+        files.update(parallel)
+        manifest_key = manifest["prefix"] + "manifest.json"
+        barrier = Barrier(2)
+        class RacingClient:
+            def __init__(self, original):
+                self.original = original
+                self.thread_state = local()
+            def __getattr__(self, name):
+                return getattr(self.original, name)
+            def get_object(self, *, Bucket, Key, **kw):
+                obj = self.original.get_object(Bucket=Bucket, Key=Key, **kw)
+                if Key == manifest_key:
+                    self.thread_state.manifest_reads = getattr(
+                        self.thread_state, "manifest_reads", 0) + 1
+                    if self.thread_state.manifest_reads == 3:
+                        barrier.wait(timeout=25)
+                return obj
+
+        racing = RacingClient(client)
+        concurrent_events = [
+            ({**base, "date": int((midnight + timedelta(seconds=3)).timestamp()),
+              "photo": [{"file_id": "racephoto" + nonce}]}, 103),
+            ({**base, "date": int((midnight + timedelta(seconds=4)).timestamp()),
+              "video": {"file_id": "racevideo" + nonce,
+                        "mime_type": "video/mp4"}}, 104),
+        ]
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            futures = [executor.submit(
+                receive, event, update_id=uid, token="synthetic",
+                client=racing, bucket=bucket, get=fake_get,
+                authorized_chat=chat) for event, uid in concurrent_events]
+            for future in futures:
+                assert "Privat in R2 gespeichert" in future.result(timeout=40)
+        final = _read_manifest(client, bucket, key)
+        assert len(final["assets"]) == 5, "Real-R2 concurrent CAS lost an album item"
+        asset_ids = {a["asset_id"] for a in final["assets"]}
+        for event, uid in concurrent_events:
+            document = event.get("video") or (event.get("photo") or [{}])[-1]
+            assert _asset_id(uid, document["file_id"]) in asset_ids
+        for asset in final["assets"]:
+            raw = client.get_object(Bucket=bucket, Key=asset["key"])["Body"].read()
+            assert len(raw) == asset["size"] and sha256(raw).hexdigest() == asset["sha256"]
+
         # Reject foreign chat before touching real R2.
         try:
             receive(authorized, update_id=103, token="synthetic",
@@ -152,9 +206,9 @@ def main():
             pass
         else:
             raise AssertionError("Unauthorized chat accepted")
-        print("LIVE_R2_SYNTHETIC_TELEGRAM_ALBUM_PASS assets=3 private=yes "
+        print("LIVE_R2_SYNTHETIC_TELEGRAM_ALBUM_PASS assets=5 private=yes "
               "cross_midnight=yes quarantine_replayed=yes duplicate_safe=yes "
-              "sha256_verified=yes no_real_telegram=yes no_publication=yes")
+              "sha256_verified=yes cas_concurrency=yes no_real_telegram=yes no_publication=yes")
 
 
 if __name__ == "__main__":
