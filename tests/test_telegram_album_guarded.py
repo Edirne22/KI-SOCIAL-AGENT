@@ -340,4 +340,65 @@ class AlbumTests(unittest.TestCase):
         self.assertIn("IfNoneMatch", members)
         self.assertIn("IfMatch", members)
 
+
+    def test_real_r2_script_offline_dry_run_not_live(self):
+        # Run the real acceptance script against a locking CAS fake. This
+        # detects broken orchestration before the opt-in LIVE run with secrets.
+        # Capture the LIVE success marker so fake success cannot appear in CI logs.
+        import contextlib
+        import os
+        import threading
+        from hashlib import sha256
+        from pathlib import Path
+        from scripts import telegram_private_album_real_r2_smoke as smoke
+
+        class Conflict(Exception):
+            response = {"Error": {"Code": "PreconditionFailed"}}
+
+        class StrictR2(R2):
+            def __init__(self):
+                super().__init__()
+                self.lock = threading.RLock()
+            def get_object(self, *, Bucket, Key):
+                with self.lock:
+                    obj = super().get_object(Bucket=Bucket, Key=Key)
+                    obj["ETag"] = '"' + sha256(self.data[Key]).hexdigest() + '"'
+                    return obj
+            def put_object(self, *, Bucket, Key, Body, **kw):
+                with self.lock:
+                    if (kw.get("IfNoneMatch") == "*" and Key in self.data):
+                        raise Conflict()
+                    if kw.get("IfMatch"):
+                        if Key not in self.data:
+                            raise Conflict()
+                        etag = '"' + sha256(self.data[Key]).hexdigest() + '"'
+                        if kw["IfMatch"] != etag:
+                            raise Conflict()
+                    self.data[Key] = bytes(Body)
+            def list_objects_v2(self, *, Bucket, Prefix, **kw):
+                with self.lock:
+                    return super().list_objects_v2(Bucket=Bucket, Prefix=Prefix, **kw)
+            def delete_object(self, *, Bucket, Key):
+                with self.lock:
+                    return super().delete_object(Bucket=Bucket, Key=Key)
+
+        fake = StrictR2()
+        def fake_ffmpeg(command, **kw):
+            name = Path(command[-1])
+            name.write_bytes(b"synthetic-image" if name.suffix == ".jpg"
+                             else b"synthetic-video")
+
+        captured = io.StringIO()
+        with patch.object(smoke, "client_from_env", return_value=(fake, "offline")), \\
+             patch.object(smoke.subprocess, "run", side_effect=fake_ffmpeg), \\
+             patch.dict(os.environ, {"TELEGRAM_ALBUM_REAL_R2_SYNTHETIC_APPROVED": "true"}), \\
+             contextlib.redirect_stdout(captured):
+            smoke.main()
+        self.assertIn("cas_concurrency=yes", captured.getvalue())
+        self.assertEqual(
+            len([k for k in fake.data if k.endswith("manifest.json")]), 1)
+        manifests = [json.loads(v) for k, v in fake.data.items()
+                     if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests[0]["assets"]), 5)
+
 if __name__=="__main__":unittest.main()
