@@ -169,7 +169,7 @@ def main():
                 if Key == manifest_key:
                     self.thread_state.manifest_reads = getattr(
                         self.thread_state, "manifest_reads", 0) + 1
-                    if self.thread_state.manifest_reads == 3:
+                    if self.thread_state.manifest_reads == 4:
                         barrier.wait(timeout=25)
                 return obj
 
