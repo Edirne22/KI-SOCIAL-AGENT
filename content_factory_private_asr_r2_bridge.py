@@ -47,7 +47,7 @@ def verified_inbox(client, bucket, inbox_id, date):
         raise PrivateASRError("not a canonical private audio upload")
     return f
 
-def verified_consent(client, bucket, inbox_id, audio_sha):
+def verified_consent(client, bucket, inbox_id, audio_sha, language):
     """Explicit per-record opt-in, stored separately from user-editable inbox.
 
     The authenticated dashboard consent endpoint must write this record only
@@ -60,7 +60,7 @@ def verified_consent(client, bucket, inbox_id, audio_sha):
         raise PrivateASRError("explicit current ASR consent not found") from exc
     expected = {"schema":"PRIVATE-ASR-CONSENT-V1","inbox_id":inbox_id,
                 "source_sha256":audio_sha,"scope":"transcription","status":"granted"}
-    if any(record.get(k) != v for k, v in expected.items()):
+    if any(record.get(k) != v for k, v in expected.items()) or record.get("language") != language:
         raise PrivateASRError("missing, revoked or mismatched consent")
     return key
 
@@ -77,7 +77,7 @@ def run_private_r2_asr(client, bucket, inbox_id, date, language, *, model=None, 
         raise PrivateASRError("invalid audio size")
     audio = obj["Body"].read(8*1024*1024 + 1)
     digest = sha256(audio).hexdigest()
-    consent_key = verified_consent(client, bucket, inbox_id, digest)
+    consent_key = verified_consent(client, bucket, inbox_id, digest, language)
     request = PrivateASRRequest(inbox_id, key, digest, len(audio), f["mime"],
                                 language, consent_key)
     result = transcribe_private_audio(request, audio, model=model, model_dir=model_dir)
