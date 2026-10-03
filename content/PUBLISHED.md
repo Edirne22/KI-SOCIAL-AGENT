@@ -661,9 +661,8 @@ Quelle: https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-re
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-2-2026-japonya-gp-sira-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37112684933-1
+## Facebook [GEPOSTET 2026-10-03 09:20 | ID: 1285968257941776_122118616341469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-03-daily
 Telegram-Update-ID: 279361807
@@ -681,6 +680,7 @@ Wie schätzt ihr dieses Qualifying-Ergebnis ein?
 https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234
 Quelle: https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234", "media_status": "", "object_id": "1285968257941776_122118616341469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122118616341469415", "source_url": "https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
