@@ -43,7 +43,7 @@ def verified_inbox(client, bucket, inbox_id, date):
     if (item.get("schema") != "AI-INBOX-V1" or item.get("kind") != "file" or
         item.get("channel") != "web" or item.get("created_at", "")[:10] != date or
         f.get("r2_key") != f"ai-central/v1/uploads/{inbox_id}/data" or
-        f.get("mime") not in ("audio/webm", "audio/mp4", "audio/ogg")):
+        f.get("mime") not in ("audio/webm", "audio/mp4", "audio/x-m4a", "audio/m4a", "audio/ogg")):
         raise PrivateASRError("not a canonical private audio upload")
     return f
 

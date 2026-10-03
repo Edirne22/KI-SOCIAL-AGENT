@@ -5,7 +5,7 @@ import {serveMetaDelivery} from "./meta-delivery.js";
 const PREFIX="ai-central/v1/inbox/";
 const MAX_MESSAGE=2500;
 const MAX_FILE=8*1024*1024;
-const TYPES=new Set(["text/plain","text/markdown","application/json","image/png","image/jpeg","video/mp4","audio/webm","audio/mp4","audio/ogg","application/pdf"]);
+const TYPES=new Set(["text/plain","text/markdown","application/json","image/png","image/jpeg","video/mp4","audio/webm","audio/mp4","audio/x-m4a","audio/m4a","audio/ogg","application/pdf"]);
 const DENY=/(?:authorization\s*:\s*bearer|api[_-]?key\s*[=:]|secret\s*[=:]|password\s*[=:])\s*\S+/i;
 function sameFlatRecord(actual,expected){
  return actual!==null&&typeof actual==="object"&&!Array.isArray(actual)&&Object.keys(actual).length===Object.keys(expected).length&&Object.entries(expected).every(([key,value])=>Object.hasOwn(actual,key)&&actual[key]===value);
@@ -83,7 +83,7 @@ async function upload(req,env){
 // Private user-upload preview; the caller supplies only an opaque inbox UUID and
 // original UTC day. The R2 object path is NEVER accepted from a browser.
 const UPLOAD_ID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
-const PREVIEW_MIME=new Set(["image/png","image/jpeg","video/mp4","audio/webm","audio/mp4","audio/ogg","application/pdf"]);
+const PREVIEW_MIME=new Set(["image/png","image/jpeg","video/mp4","audio/webm","audio/mp4","audio/x-m4a","audio/m4a","audio/ogg","application/pdf"]);
 async function privateUploadPreview(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
   const q=new URL(req.url).searchParams,id=q.get("id")||"",date=q.get("date")||"";

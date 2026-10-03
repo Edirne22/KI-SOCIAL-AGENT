@@ -38,7 +38,7 @@ test("selection works on responsive chat tab and stays separate from live operat
 });
 
 test("mobile private ASR form follows only the selected audio and never grants consent",()=>{
- assert.match(script,/item\.kind==="file"&&\["audio\/webm","audio\/mp4","audio\/ogg"\]\.includes\(item\.file\?\.mime\)/);
+ assert.match(script,/item\.kind==="file"&&\["audio\/webm","audio\/mp4","audio\/x-m4a","audio\/m4a","audio\/ogg"\]\.includes\(item\.file\?\.mime\)/);
  assert.match(script,/\$\("asrId"\)\.value=item\.id/);
  assert.match(script,/\$\("asrDate"\)\.value=item\.created_at\.slice\(0,10\)/);
  assert.match(script,/\$\("asrId"\)\.value="";\$\("asrDate"\)\.value=""/);
