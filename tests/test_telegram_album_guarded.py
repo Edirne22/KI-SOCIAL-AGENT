@@ -580,4 +580,178 @@ class AlbumTests(unittest.TestCase):
         self.assertNotIn("PRIVATE",str(cm.exception))
         self.assertIn("erneuter Versuch",str(cm.exception))
 
+
+    def test_oversized_caption_leaves_album_authorized_for_following_items(self):
+        # Previously the rejected leading video created no manifest, so all
+        # valid following members were permanently left in quarantine.
+        from scripts.telegram_private_media import handle_private_command
+        from hashlib import sha256
+        from datetime import datetime, timezone
+        import requests
+        class TooLarge:
+            status_code = 400
+            def json(self):
+                return {"ok":False, "error_code":400,
+                        "description":"Bad Request: file is too big"}
+            def raise_for_status(self):
+                raise requests.HTTPError("botSECRET/getFile")
+        def get_mixed(url, **kw):
+            if (kw.get("params") or {}).get("file_id") == "large-video":
+                return TooLarge()
+            return get(url, **kw)
+        r2=R2()
+        base={"chat":{"id":42},"media_group_id":"leading-oversized",
+              "date":int(datetime.now(timezone.utc).timestamp())}
+        lead={**base,"caption":"/privat",
+              "video":{"file_id":"large-video","mime_type":"video/mp4"}}
+        msg=receive(lead, update_id=100, token="synthetic",
+                    client=r2,bucket="test",get=get_mixed,authorized_chat=42)
+        self.assertIn("Downloadlimit",msg)
+        job="tgalbum"+sha256(b"42:leading-oversized").hexdigest()[:32]
+        self.assertIn(job,msg)
+        self.assertTrue(any(k.endswith("authorization.json") for k in r2.data))
+        self.assertFalse(any(k.endswith("manifest.json") for k in r2.data))
+        following={**base, "photo":[{"file_id":"small-photo"}]}
+        received=receive(following, update_id=101, token="synthetic",
+                         client=r2,bucket="test",get=get_mixed,authorized_chat=42)
+        self.assertIn("Privat in R2 gespeichert",received)
+        manifests=[json.loads(v) for k,v in r2.data.items()
+                   if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests),1)
+        self.assertEqual(len(manifests[0]["assets"]),1)
+        self.assertEqual(len([k for k in r2.data if "/rejected/" in k]),1)
+        self.assertEqual(len([k for k in r2.data if "/quarantine/" in k]),0)
+        # Do not offer already authorized/recovered albums as new pending.
+        answer=handle_private_command("/privat offene",chat=42,authorized_chat=42,
+                                      token="synthetic",client=r2,bucket="test",
+                                      get=get_mixed)
+        self.assertIn("Keine vorgemerkten",answer)
+
+    def test_owner_recovers_legacy_pre_caption_quarantine_without_resending(self):
+        from scripts.telegram_private_media import handle_private_command
+        from hashlib import sha256
+        from datetime import datetime, timezone
+        r2=R2()
+        base={"chat":{"id":42},"media_group_id":"legacy-pending",
+              "date":int(datetime.now(timezone.utc).timestamp())}
+        a={**base,"photo":[{"file_id":"first"}]}
+        b={**base,"photo":[{"file_id":"second"}]}
+        first=receive(a,update_id=200,token="synthetic",
+                      client=r2,bucket="test",get=get,authorized_chat=42)
+        receive(b,update_id=201,token="synthetic",
+                client=r2,bucket="test",get=get,authorized_chat=42)
+        job="tgalbum"+sha256(b"42:legacy-pending").hexdigest()[:32]
+        self.assertIn(job,first)
+        idx="private/v1/telegram-album-index/"+job+".json"
+        legacy=json.loads(r2.data[idx])
+        legacy.pop("owner_hash")
+        r2.data[idx]=json.dumps(legacy).encode()
+        self.assertFalse(any(k.endswith("manifest.json") for k in r2.data))
+        with self.assertRaises(PermissionError):
+            handle_private_command("/privat offene",chat=99,authorized_chat=42,
+                                   token="synthetic",client=r2,bucket="test",get=get)
+        pending=handle_private_command("/privat offene",chat=42,authorized_chat=42,
+                                       token="synthetic",client=r2,bucket="test",get=get)
+        self.assertIn(job,pending)
+        self.assertIn("2 vorgemerkt",pending)
+        with self.assertRaises(ValueError):
+            handle_private_command("/privat freigeben tgalbum"+"a"*32,
+                                   chat=42,authorized_chat=42,token="synthetic",
+                                   client=r2,bucket="test",get=get)
+        with self.assertRaises(PermissionError):
+            handle_private_command("/privat freigeben "+job,
+                                   chat=99,authorized_chat=42,token="synthetic",
+                                   client=r2,bucket="test",get=get)
+        result=handle_private_command("/privat freigeben "+job,
+                                      chat=42,authorized_chat=42,token="synthetic",
+                                      client=r2,bucket="test",get=get)
+        self.assertIn("2 vorgemerkte Datei(en) in R2 übernommen",result)
+        self.assertIn("Keine Veröffentlichung",result)
+        manifests=[json.loads(v) for k,v in r2.data.items()
+                   if k.endswith("manifest.json")]
+        self.assertEqual(len(manifests),1)
+        self.assertEqual(len(manifests[0]["assets"]),2)
+        self.assertTrue(any(k.endswith("authorization.json") for k in r2.data))
+        self.assertFalse(any("/quarantine/" in k for k in r2.data))
+        retry=handle_private_command("/privat freigeben "+job,chat=42,
+                                     authorized_chat=42,token="synthetic",
+                                     client=r2,bucket="test",get=get)
+        self.assertIn("Keine vorgemerkten",retry)
+
+    def test_owner_recovery_transient_failure_retains_quarantine_for_retry(self):
+        from scripts.telegram_private_media import handle_private_command
+        from hashlib import sha256
+        from datetime import datetime, timezone
+        r2=R2()
+        base={"chat":{"id":42},"media_group_id":"retry-pending",
+              "date":int(datetime.now(timezone.utc).timestamp()),
+              "photo":[{"file_id":"flaky"}]}
+        receive(base,update_id=300,token="synthetic",client=r2,
+                bucket="test",get=get,authorized_chat=42)
+        job="tgalbum"+sha256(b"42:retry-pending").hexdigest()[:32]
+        def broken_get(url,**kw):
+            raise __import__("requests").ConnectionError("SECRET")
+        with self.assertRaisesRegex(RuntimeError,"erneuter Versuch"):
+            handle_private_command("/privat freigeben "+job,
+                                   chat=42,authorized_chat=42,token="synthetic",
+                                   client=r2,bucket="test",get=broken_get)
+        self.assertEqual(len([k for k in r2.data if "/quarantine/" in k]),1)
+        done=handle_private_command("/privat freigeben "+job,
+                                    chat=42,authorized_chat=42,token="synthetic",
+                                    client=r2,bucket="test",get=get)
+        self.assertIn("1 vorgemerkte Datei(en)",done)
+        self.assertFalse(any("/quarantine/" in k for k in r2.data))
+
+    def test_owner_hash_blocks_album_index_cross_chat_recovery(self):
+        from scripts.telegram_private_media import handle_private_command
+        from datetime import datetime, timezone
+        r2=R2()
+        base={"chat":{"id":42},"media_group_id":"hash-guard",
+              "date":int(datetime.now(timezone.utc).timestamp()),
+              "photo":[{"file_id":"flaky"}]}
+        result=receive(base,update_id=800,token="synthetic",client=r2,
+                       bucket="test",get=get,authorized_chat=42)
+        job=result.split(" · ")[1]
+        idx="private/v1/telegram-album-index/"+job+".json"
+        index=json.loads(r2.data[idx])
+        index["owner_hash"]="0"*64
+        r2.data[idx]=json.dumps(index).encode()
+        with self.assertRaises(PermissionError):
+            handle_private_command("/privat freigeben "+job,chat=42,
+                                   authorized_chat=42,token="synthetic",
+                                   client=r2,bucket="test",get=get)
+        listing=handle_private_command("/privat offene",chat=42,
+                                       authorized_chat=42,token="synthetic",
+                                       client=r2,bucket="test",get=get)
+        self.assertNotIn(job,listing)
+        self.assertTrue(any("/quarantine/" in k for k in r2.data))
+
+    def test_router_private_owner_text_recovery_does_not_break_other_commands(self):
+        import ast
+        from pathlib import Path
+        tree=ast.parse(Path("telegram_router.py").read_text())
+        main=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=="main")
+        ns={}
+        exec(compile(ast.Module(body=[main],type_ignores=[]),"telegram_router.py","exec"),ns)
+        calls=[]
+        acked=[]
+        sent=[]
+        updates=[
+            {"update_id":100,"message":{"chat":{"id":42},"text":"/privat offene"}},
+            {"update_id":101,"message":{"chat":{"id":42},"text":"/privat freigeben tgalbum"+"a"*32}},
+        ]
+        ns.update({
+            "get_chat_id":lambda:42,
+            "_read_last_update_id":lambda:99,
+            "get_updates":lambda **kw:updates if kw.get("offset")==100 else [],
+            "_ack":lambda uid:acked.append(uid),
+            "send_message":lambda msg:sent.append(msg),
+            "handle_private_command":lambda txt,**kwargs:calls.append(txt) or "Privat, keine Veröffentlichung",
+            "os":__import__("os"),
+        })
+        ns["main"]()
+        self.assertEqual(acked,[100,101])
+        self.assertEqual(len(calls),2)
+        self.assertTrue(all("Keine Veröffentlichung" in x for x in sent))
+
 if __name__=="__main__":unittest.main()
