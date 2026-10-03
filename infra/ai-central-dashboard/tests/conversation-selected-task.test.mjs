@@ -36,3 +36,12 @@ test("selection works on responsive chat tab and stays separate from live operat
  assert.match(html,/id="taskReport"/);
  assert.match(html,/selected-inbox/);
 });
+
+test("mobile private ASR form follows only the selected audio and never grants consent",()=>{
+ assert.match(script,/item\.kind==="file"&&\["audio\/webm","audio\/mp4","audio\/ogg"\]\.includes\(item\.file\?\.mime\)/);
+ assert.match(script,/\$\("asrId"\)\.value=item\.id/);
+ assert.match(script,/\$\("asrDate"\)\.value=item\.created_at\.slice\(0,10\)/);
+ assert.match(script,/\$\("asrId"\)\.value="";\$\("asrDate"\)\.value=""/);
+ const select=script.slice(script.indexOf("function selectInboxTask("),script.indexOf('\n$("clearSelection").onclick'));
+ assert.doesNotMatch(select,/\/api\/private-asr|\/api\/asr|asrConsent\.click|fetch\(/);
+});
