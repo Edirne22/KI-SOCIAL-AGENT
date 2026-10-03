@@ -69,7 +69,7 @@ li{border-color:rgba(112,157,205,.12)}.screen-toggle{display:flex;gap:8px;paddin
 <section class="panel live"><div class="eyebrow">02 / OPERATIONS STREAM</div><h2>Live-Telemetrie</h2><p class="subtitle">Echte Betriebsdaten; keine erfundenen Terminal-Ausgaben.</p><div class="console"><div class="consoleheader">● SYSTEMKONSOLE / EREIGNISSE</div><div class="consoleline"><em>GATE</em><b id="lineAuth" class="statewait">Warte auf Anmeldung</b></div><div class="consoleline"><em>R2</em><b id="lineStore" class="statewait">Nicht abgefragt</b></div><div class="consoleline"><em>GITHUB</em><b id="lineGit" class="statewait">Nicht abgefragt</b></div><div class="consoleline"><em>MODELL</em><b>Keine aktiven Modellläufe in dieser Vorschau</b></div></div><br><h2>Live-Status und Protokoll</h2><div class="muted">Echte GitHub-Laufzustände und R2-Eingangsereignisse alle 10 Sekunden. Einzelne Joblogs erscheinen erst nach gesicherter Anbindung.</div><div class="bar"><button id="reload">Ereignisse abrufen</button></div><h2>GitHub-Jobs (tatsächlicher Status)</h2><ul id="runs"><li>Wird nach Verbindung geladen.</li></ul><h2>Auftragsbericht aus R2</h2><div id="taskReport" class="console" aria-live="polite"><div class="smalltext">Auftrag auswählen, um den tatsächlichen Bericht abzurufen.</div></div><br><h2>Gemeinsamer R2-Posteingang</h2><div class="smalltext">Jeder Eintrag ist einzeln auswählbar. „Im Gespräch öffnen“ zeigt nur dessen Auftrag und Ergebnis links; „Ergebnis prüfen“ prüft ebenfalls ausschließlich diesen Eintrag.</div><ul id="events"><li>Mit Zugangsschlüssel verbinden, um den gemeinsamen Posteingang zu sehen.</li></ul><div class="muted">Die KI-Worker, GitHub-Jobs und Codeausgabe werden im nächsten Integrationsschritt angebunden. Diese Ansicht zeigt keine simulierten Ausgaben.</div></section>
 <section class="panel studio" aria-label="Privates Videostudio">
 <div class="eyebrow">03 / VIDEO-WERKSTATT</div><h2>Dein Videostudio · Vorschauen &amp; Änderungen</h2>
-<div class="video-studio-guide" id="studioGuide">Hier erscheinen ausschließlich tatsächlich fertig produzierte und geprüfte private R2-Videos. Änderungswünsche werden als verbindlicher Fabrikauftrag gespeichert. <strong>Die automatische Neuproduktion und Telegram-Fertigmeldung sind noch nicht angebunden.</strong> Ein abgeschlossener Änderungsauftrag ist noch kein neues Video.</div>
+<div class="video-studio-guide" id="studioGuide">Hier erscheinen ausschließlich tatsächlich fertig produzierte und geprüfte private R2-Videos. Änderungswünsche werden als verbindlicher Fabrikauftrag gespeichert. <strong>Automatisch ausführbar: „Neu rendern“, „Ton entfernen“ oder „Auf 7 Sekunden kürzen“ (1–99 Sekunden, höchstens die Originallänge). Andere kreative Änderungen bleiben zur Planung offen. Telegram-Fertigmeldung ist noch nicht angebunden.</strong> Ein abgeschlossener Änderungsauftrag ist noch kein neues Video.</div>
 <div class="bar"><button id="studioRefresh" type="button" class="primary">↻ Videos &amp; Entscheidungen aktualisieren</button><label><input id="studioAutoRefresh" type="checkbox"> Alle 30 Sekunden automatisch prüfen (solange Videostudio geöffnet)</label></div>
 <div id="studioNewPreview" class="notice" aria-live="polite">Noch keine neuen Vorschauen seit Öffnen dieses Bereichs geprüft.</div>
 <h2>Private Video-Vorschau · Block 6</h2><div class="muted">Fertige Videos aus R2, unabhängig von den Telegram-Betriebszeiten. Nur nach technischer Prüfung; keine Veröffentlichung durch Abspielen.</div><div class="bar"><button type="button" id="loadPreviews">Videovorschauen prüfen</button></div><div id="previewNotice" class="notice">Mit dem Zugangsschlüssel verbinden, um freigegebene private Videos anzuzeigen.</div><ul id="previews"></ul><video id="privatePlayer" playsinline controls preload="none" class="hidden" style="width:100%;max-height:400px;border-radius:12px" aria-label="Private Vorschau des produzierten Videos"></video><div id="previewCaption" class="smalltext"></div><br><h2>Deine gespeicherten Entscheidungen · Block 8</h2><div class="muted">Sicher vorgemerkte Änderungs- und Verwerfungswünsche – auch nach dem Neuladen. Nur eine verbindliche Fabrikbestätigung gilt als verarbeitet.</div><div class="bar"><button type="button" id="loadReviews">Entscheidungen prüfen</button></div><div id="reviewListNotice" class="smalltext">Noch nicht abgefragt.</div><ul id="reviewList"></ul>
@@ -398,7 +398,14 @@ async function loadReviewStatuses(){
             const result=await api("/api/edit-status?job_id="+encodeURIComponent(item.job_id)+
               "&request_id="+encodeURIComponent(item.request_id));
             if(result.schema!=="FACTORY-EDIT-STATUS-V1")throw Error("Unbekannter Fabrikstatus");
-            if(result.status==="AWAITING_CREATIVE_PLAN")
+            if(result.status==="READY_FOR_HUMAN"){
+              ticketInfo.textContent="Neue Revision geprüft und als private Vorschau bereit. Keine Veröffentlichung.";
+              await loadPreviews();
+            }else if(result.status==="RENDERING")
+              ticketInfo.textContent="Renderauftrag verbindlich gestartet; noch keine neue geprüfte Vorschau.";
+            else if(result.status==="BLOCKED_UNSUPPORTED_EDIT")
+              ticketInfo.textContent="Dieser Änderungswunsch ist mit dem vorhandenen Renderpfad noch nicht ausführbar. Kein neues Video erzeugt. Möglich: Neu rendern, Ton entfernen, Auf 7 Sekunden kürzen.";
+            else if(result.status==="AWAITING_CREATIVE_PLAN")
               ticketInfo.textContent="Revision "+result.revision+
                 ": Änderungsauftrag dauerhaft erstellt. Kreative Planung ausstehend; noch kein neues Video.";
             else if(result.status==="AWAITING_IMMUTABLE_TICKET")
@@ -518,6 +525,42 @@ $("dictate").onclick=()=>{
   }
 };
 $("dictateStop").onclick=()=>{if(dictation&&dictating)dictation.stop()};
-$("mic").onclick=async()=>{try{if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder)throw Error("Mikrofon auf diesem Gerät nicht verfügbar");const stream=await navigator.mediaDevices.getUserMedia({audio:true});const supported=["audio/webm","audio/mp4","audio/ogg"].find(x=>MediaRecorder.isTypeSupported(x));if(!supported)throw Error("Kein unterstütztes Audio-Aufnahmeformat");chunks=[];recorder=new MediaRecorder(stream,{mimeType:supported});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};recorder.onstop=()=>{stream.getTracks().forEach(t=>t.stop());upload(new File(chunks,"aufnahme."+supported.split("/")[1],{type:supported}));$("stop").disabled=true;$("mic").disabled=false};recorder.start();$("stop").disabled=false;$("mic").disabled=true;status("Private Audioaufnahme läuft. Beim Stoppen wird nur die Audiodatei in R2 gespeichert; noch kein Transkript und kein Textauftrag.")}catch(e){status(e.message)}};$("stop").onclick=()=>recorder?.stop();
+let audioStarting=false;
+$("mic").onclick=async()=>{
+  if(audioStarting||recorder?.state==="recording")return;
+  audioStarting=true;$("mic").disabled=true;
+  let stream=null,active=null,failed=false,bytes=0,timer=null;
+  const parts=[];
+  const release=()=>{clearTimeout(timer);stream?.getTracks().forEach(t=>t.stop());
+    if(active&&recorder!==active)return;
+    if(recorder===active)recorder=null;audioStarting=false;
+    $("stop").disabled=true;$("mic").disabled=false};
+  try{
+    if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder)throw Error("Mikrofon auf diesem Gerät nicht verfügbar");
+    const supported=["audio/webm","audio/mp4","audio/ogg"].find(x=>MediaRecorder.isTypeSupported(x));
+    if(!supported)throw Error("Kein unterstütztes Audio-Aufnahmeformat");
+    stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    active=new MediaRecorder(stream,{mimeType:supported});recorder=active;
+    active.ondataavailable=e=>{
+      if(failed||!e.data.size)return;
+      bytes+=e.data.size;
+      if(bytes>8*1024*1024){failed=true;parts.length=0;
+        status("Aufnahme überschreitet 8 MB. Nicht hochgeladen.");
+        if(active.state!=="inactive")active.stop();release();return}
+      parts.push(e.data);
+    };
+    active.onerror=()=>{failed=true;parts.length=0;
+      try{if(active.state!=="inactive")active.stop()}finally{release()}
+      status("Audioaufnahme fehlgeschlagen. Nicht hochgeladen.")};
+    active.onstop=()=>{
+      release();
+      if(!failed&&bytes>0)upload(new File(parts,"aufnahme."+supported.split("/")[1],{type:supported}));
+    };
+    active.start(1000);audioStarting=false;$("stop").disabled=false;
+    timer=setTimeout(()=>{if(active.state==="recording")active.stop()},120000);
+    status("Private Audioaufnahme läuft, maximal zwei Minuten. Beim Stoppen wird nur die Audiodatei in R2 gespeichert; noch kein Transkript und kein Textauftrag.");
+  }catch(e){failed=true;release();status(e.message)}
+};
+$("stop").onclick=()=>{if(recorder?.state==="recording")recorder.stop()};
 setInterval(()=>{if(token)refresh()},10000);
 </script></body></html>

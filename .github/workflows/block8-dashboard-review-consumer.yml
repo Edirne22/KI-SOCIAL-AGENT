@@ -15,8 +15,9 @@ jobs:
   apply-review:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     env:
+      FACTORY_JOB_ID: ${{ inputs.job_id }}
       R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -35,5 +36,11 @@ jobs:
           done
       - name: Install only existing R2 Python SDK
         run: python -m pip install --disable-pip-version-check boto3
+      - name: Ensure existing FFmpeg runtime
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            timeout 120s sudo apt-get update -qq
+            timeout 120s sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+          fi
       - name: Apply authenticated pending change/discard to canonical R2 Factory job and ACK
-        run: python -m scripts.block8_apply_dashboard_review --job-id "${{ inputs.job_id }}"
+        run: python -m scripts.block8_apply_dashboard_review --job-id "$FACTORY_JOB_ID" --produce
