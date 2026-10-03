@@ -1,4 +1,9 @@
 import unittest
+import json
+import shutil
+import subprocess
+import tempfile
+from pathlib import Path
 from datetime import datetime, timezone
 from scripts.r2_media_warehouse import lane_for_upload, new_manifest, append_asset, store_original
 
@@ -28,6 +33,25 @@ class WarehouseTests(unittest.TestCase):
             append_asset(self.manifest,asset_id="asset12345678",filename="../secret",mime="video/mp4",payload=b"x")
         with self.assertRaises(ValueError):
             new_manifest(lane="../social",title="wrong")
+    @unittest.skipUnless(shutil.which("ffmpeg"), "ffmpeg unavailable")
+    def test_synthetic_photo_video_roundtrip(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            photo=Path(tmp)/"photo.jpg"
+            video=Path(tmp)/"video.mp4"
+            subprocess.run(["ffmpeg","-v","error","-f","lavfi","-i","color=c=blue:s=64x64:d=1","-frames:v","1","-y",str(photo)],check=True)
+            subprocess.run(["ffmpeg","-v","error","-f","lavfi","-i","color=c=red:s=64x64:r=5:d=1","-c:v","mpeg4","-y",str(video)],check=True)
+            self.assertTrue(photo.read_bytes().startswith(bytes.fromhex("ffd8")))
+            self.assertIn(b"ftyp",video.read_bytes()[:32])
+            r2=FakeR2()
+            current=self.manifest
+            for name,mime,ident,file in (("photo.jpg","image/jpeg","photo1234567890",photo),("video.mp4","video/mp4","video1234567890",video)):
+                current=store_original(r2,"bucket",current,asset_id=ident,filename=name,mime=mime,payload=file.read_bytes())
+            self.assertEqual(len(current["assets"]),2)
+            self.assertEqual(len(r2.objects),3)
+            for asset in current["assets"]:
+                self.assertEqual(r2.objects[asset["key"]],(photo if asset["mime"]=="image/jpeg" else video).read_bytes())
+            self.assertEqual(len(json.loads(r2.objects[current["prefix"]+"manifest.json"])["assets"]),2)
+
     def test_write_original_then_manifest(self):
         r2=FakeR2()
         updated=store_original(r2,"bucket",self.manifest,asset_id="asset12345678",filename="a.jpg",mime="image/jpeg",payload=b"photo")
