@@ -1,7 +1,20 @@
 import unittest
 from unittest.mock import patch
 from scripts.telegram_private_media import identify,download,receive
-from tests.test_r2_media_warehouse import FakeR2
+class FakeR2:
+    def __init__(self):self.objects={}
+    def get_object(self,*,Bucket,Key):
+        if Key not in self.objects:
+            err=ValueError("missing")
+            err.response={"Error":{"Code":"NoSuchKey"}}
+            raise err
+        import io
+        return {"Body":io.BytesIO(self.objects[Key]),"ETag":'"fake"'}
+    def put_object(self,*,Bucket,Key,Body,**kwargs):
+        if kwargs.get("IfNoneMatch")=="*" and Key in self.objects:
+            raise ValueError("duplicate")
+        self.objects[Key]=Body
+        return {"ETag":'"fake"'}
 
 class Response:
     def __init__(self,data=None,payload=b"synthetic"):
