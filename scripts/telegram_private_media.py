@@ -82,7 +82,7 @@ def _quarantine(client, bucket, manifest, message, update_id):
         previous = json.loads(client.get_object(Bucket=bucket, Key=key)["Body"].read())
         if previous != item:
             raise RuntimeError("Quarantine collision")
-    return "Album-Datei bis zur privaten Freigabe dauerhaft vorgemerkt."
+    return "Album-Datei zurückgehalten und bis zur privaten Freigabe dauerhaft vorgemerkt."
 
 def _commit(client, bucket, manifest, file_id, mime, update_id, token, get):
     asset_id = _asset_id(update_id, file_id)
@@ -139,6 +139,9 @@ def receive(message, *, update_id, token, client=None, bucket=None,
     file_id, mime, extension = identified
     if not file_id:
         raise ValueError("Telegram-Datei-ID fehlt")
+    previously = _read_manifest(client, bucket, key)
+    duplicate = bool(previously and any(a["asset_id"] == _asset_id(update_id, file_id)
+                                         for a in previously.get("assets", [])))
     _commit(client, bucket, manifest, file_id, mime, update_id, token, get)
     # Once owner explicitly authorizes the album, replay earlier uncaptioned items.
     # A failed replay leaves the durable record for a subsequent authorized retry.
@@ -160,4 +163,6 @@ def receive(message, *, update_id, token, client=None, bucket=None,
             marker = page.get("NextContinuationToken")
             if not marker:
                 break
+    if duplicate:
+        return "Privater Upload bereits gespeichert · " + job_id
     return "Privat in R2 gespeichert · " + job_id + " · Keine Veröffentlichung."
