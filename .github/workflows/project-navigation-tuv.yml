@@ -1,0 +1,43 @@
+name: Project navigation TÜV
+on:
+  pull_request:
+    paths:
+      - 'INDEX.md'
+      - 'docs/ARCHITEKTUR_INDEX.md'
+      - 'README.md'
+      - 'scripts/project_navigation_tuv.py'
+      - '.github/workflows/project-navigation-tuv.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'INDEX.md'
+      - 'docs/ARCHITEKTUR_INDEX.md'
+      - 'README.md'
+      - 'scripts/project_navigation_tuv.py'
+      - '.github/workflows/project-navigation-tuv.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile navigation checker
+        run: python -m py_compile scripts/project_navigation_tuv.py
+      - name: Verify clickable project navigation
+        run: python -m scripts.project_navigation_tuv
+      - name: Negative control (missing link must fail)
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from scripts.project_navigation_tuv import ROOT, inspect_link
+          page = ROOT / 'INDEX.md'
+          assert inspect_link(page, 'missing-navigation-target-should-not-exist.md').startswith('MISSING:')
+          assert inspect_link(page, '../outside-repo.md').startswith('ESCAPES_REPOSITORY:')
+          print('NAVIGATION_REDTEAM_MISSING_AND_ESCAPE_BLOCKED')
+          PY
