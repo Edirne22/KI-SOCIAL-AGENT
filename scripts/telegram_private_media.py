@@ -125,6 +125,41 @@ def _commit(client, bucket, manifest, file_id, mime, update_id, token, get):
                     raise
     raise RuntimeError("Concurrent album update; retry Telegram event")
 
+def _album_manifest(client, bucket, job_id, message):
+    # Stable index avoids splitting an album when Telegram items cross UTC midnight.
+    # Store only private job metadata; never put media or authorization in the index.
+    index_key = "private/v1/telegram-album-index/" + job_id + ".json"
+    try:
+        obj = client.get_object(Bucket=bucket, Key=index_key)
+    except Exception as exc:
+        if not _missing(exc):
+            raise
+        obj = None
+    if obj is not None:
+        saved = json.loads(obj["Body"].read())
+        if saved.get("job_id") != job_id or saved.get("lane") != "private":
+            raise RuntimeError("Album index identity mismatch")
+        return new_manifest(lane="private", title="Privates Telegram-Album",
+                            job_id=job_id, created_at=datetime.fromisoformat(saved["created_at"]))
+    created = datetime.fromtimestamp(int(message["date"]), timezone.utc)
+    candidate = new_manifest(lane="private", title="Privates Telegram-Album",
+                             job_id=job_id, created_at=created)
+    record = {"job_id": job_id, "lane": "private", "created_at": candidate["created_at"]}
+    try:
+        client.put_object(Bucket=bucket, Key=index_key,
+                          Body=json.dumps(record).encode("utf-8"),
+                          ContentType="application/json", IfNoneMatch="*")
+    except Exception as exc:
+        code = str(getattr(exc, "response", {}).get("Error", {}).get("Code", ""))
+        if code not in ("PreconditionFailed", "412", "ConditionalRequestConflict", "409"):
+            raise
+        winner = json.loads(client.get_object(Bucket=bucket, Key=index_key)["Body"].read())
+        if winner.get("job_id") != job_id or winner.get("lane") != "private":
+            raise RuntimeError("Album index collision")
+        return new_manifest(lane="private", title="Privates Telegram-Album",
+                            job_id=job_id, created_at=datetime.fromisoformat(winner["created_at"]))
+    return candidate
+
 def receive(message, *, update_id, token, client=None, bucket=None,
             get=requests.get, authorized_chat=None):
     group = message.get("media_group_id")
@@ -142,9 +177,7 @@ def receive(message, *, update_id, token, client=None, bucket=None,
         if chat is None or not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", str(group)):
             raise ValueError("Invalid album identity")
         job_id = "tgalbum" + sha256((str(chat) + ":" + str(group)).encode()).hexdigest()[:32]
-        created = datetime.fromtimestamp(int(message["date"]), timezone.utc)
-        manifest = new_manifest(lane="private", title="Privates Telegram-Album",
-                                job_id=job_id, created_at=created)
+        manifest = _album_manifest(client, bucket, job_id, message)
     else:
         job_id = "tg" + str(update_id).zfill(12)
         manifest = new_manifest(lane="private", title="Privater Telegram-Medieneingang",
