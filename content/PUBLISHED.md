@@ -192,30 +192,6 @@ Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehens
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-3-preview-1d-ago-sched-01.jpg
 
-## Facebook [GEPOSTET 2026-09-25 12:56 | ID: 1285968257941776_122114750907469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-09-25-manual-36126483733
-Telegram-Update-ID: 279361739
-MotoGP-Auswahl: 3
-Titel: PREVIEW 1d ago SCHEDULE: Cremona’s comprehensive timetable ahead of a critical Round 10 Nine rounds down, three to go, Cremona may play host to a new Champion being crowned at home WorldSBK
-Text:
-Die entscheidende Runde 10 der WorldSBK findet in Cremona statt.
-
-Nach neun Durchgängen stehen noch drei Runden aus.
-
-Cremona könnte zum Schauplatz werden, an dem ein neuer Meister gekrönt wird.
-
-Der komplette Zeitplan fürs Rennwochenende wurde veröffentlicht.
-
-Was erwartet ihr von der Runde in Cremona?
-
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
-Quelle: https://www.worldsbk.com/en/news/2026/09/21/schedule-cremonas-comprehensive-timetable-ahead-of-a-critical-round-10/1091355
-Link-Preview: offiziell
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -230,24 +206,6 @@ Runde 10 der WorldSBK 2026 rollt über die Cremona‑Strecke in Italien – 
 Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-2-news-6h-ago-what-can-01.jpg
-
-## Facebook [GEPOSTET 2026-09-25 17:26 | ID: 1285968257941776_122114853183469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-09-25-manual-36163516963
-Telegram-Update-ID: 279361742
-MotoGP-Auswahl: 2
-Titel: NEWS 6h ago What can be won at Cremona? Round 10 of 2026 is here and there are plenty of trophies up for grabs in Italy… WorldSBK
-Text:
-Runde 10 der WorldSBK-Saison 2026 steht an – und das auf der Strecke von Cremona in Italien. Bei diesem Rennwochenende gibt es gleich mehrere Trophäen zu gewinnen, nicht nur ein einziges Ergebnis zählt.
-
-Was erwartet ihr von der Runde in Cremona?
-
-#WorldSBK #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
-Quelle: https://www.worldsbk.com/en/news/2026/09/25/what-can-be-won-at-cremona/1095140
-Link-Preview: offiziell
 
 ## Instagram
 Status: BILD_GENERIERT
@@ -264,26 +222,6 @@ Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-motogp-news-motogp-c-01.jpg
 
-## Facebook [GEPOSTET 2026-09-25 18:29 | ID: 1285968257941776_122114881359469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-09-25-manual-36168455207
-Telegram-Update-ID: 279361743
-MotoGP-Auswahl: 1
-Titel: MotoGP™ News MotoGP confirms Valencia GP as 2027 season finale with full calendar set to be revealed on Friday Read Now
-Text:
-Valencia ist das Saisonfinale 2027.
-
-MotoGP hat bestätigt, dass der Große Preis von Valencia 2027 als letztes Rennen der Saison läuft. Der komplette Kalender kommt erst am Freitag. 🏍️💨
-
-Wie seht ihr das neue Finale?
-
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Quelle: https://www.motogp.com/en/news/2026/09/22/motogp-confirms-valencia-gp-as-2027-season-finale-with-full-calendar-set-to-be-revealed-on-friday/1091638
-Link-Preview: offiziell
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -298,24 +236,6 @@ Leute, kurz was: Bahattin Sofuoglu sagt Tschüss zu Motoxracing Yamaha und steig
 Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-25-racing-editorial-2026-09-25-1-smits-replaces-sofou-01.jpg
-
-## Facebook [GEPOSTET 2026-09-25 21:26 | ID: 1285968257941776_122114946951469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-09-25-manual-36190202175
-Telegram-Update-ID: 279361754
-MotoGP-Auswahl: 1
-Titel: Smits replaces Sofouglu at Motoxracing Yamaha, Turkish star joins QJMOTOR in WorldSSP
-Text:
-Hey ihr Lieben, ich hab was: Bahattin Sofuoglu wechselt zu QJMOTOR. Er verlässt Motoxracing Yamaha und startet für den chinesischen Hersteller in der WorldSSP. Und Twan Smits? Der zieht es ins WorldSBK-Paddock. 🏍️💨
-
-Wie seht ihr den Wechsel?
-
-#WorldSSP #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
-Quelle: https://www.worldsbk.com/en/news/2026/09/21/smits-replaces-sofouglu-at-motoxracing-yamaha-turkish-star-joins-qjmotor-in-worldssp/1091425
-Link-Preview: offiziell
 
 ## Instagram
 Status: BILD_GENERIERT
