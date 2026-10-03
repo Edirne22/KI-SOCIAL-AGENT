@@ -54,6 +54,9 @@ jobs:
           with open(os.environ['GITHUB_ENV'],'a') as f:
               f.write('INBOX_ID='+x['id']+'\nINBOX_DATE='+x['created_at'][:10]+'\n')
           PY
+          INBOX_ID="$(python3 -c "import json; print(json.load(open('/tmp/upload.json'))['id'])")"
+          INBOX_DATE="$(python3 -c "import json; print(json.load(open('/tmp/upload.json'))['created_at'][:10])")"
+          test -n "$INBOX_ID" && test -n "$INBOX_DATE"
           curl --silent --show-error --max-time 110 -X POST "$root/api/private-asr?id=$INBOX_ID&date=$INBOX_DATE" \
             -H "Authorization: Bearer $AI_DASHBOARD_TOKEN" -H "Origin: $root" \
             -H 'Content-Type: application/json' -d '{"language":"de"}' > /tmp/consent.json
