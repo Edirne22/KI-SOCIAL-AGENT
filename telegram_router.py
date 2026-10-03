@@ -390,6 +390,22 @@ def main() -> None:
         text = msg.get("text")
         if not isinstance(uid, int):
             continue
+        # Explicit private media intake precedes legacy Vision and video skip.
+        from scripts.telegram_private_media import identify as identify_private_media, receive as receive_private_media
+        if str(msg.get("caption") or "").strip().lower() in ("/privat", "/privat neu"):
+            if chat != allowed:
+                _ack(uid)
+                return
+            try:
+                answer=receive_private_media(msg,update_id=uid,token=os.environ.get("TELEGRAM_BOT_TOKEN",""))
+            except ValueError as exc:
+                send_message("Privater Medieneingang: "+str(exc))
+                _ack(uid)
+                return
+            # R2 or network errors propagate; update remains retryable.
+            send_message(answer)
+            _ack(uid)
+            return
         if _is_photo_message(upd):
             if chat != allowed:
                 _ack(uid)
