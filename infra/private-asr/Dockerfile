@@ -14,7 +14,8 @@ RUN HF_HUB_OFFLINE=0 python -c "from huggingface_hub import snapshot_download; s
  && test -s /opt/private-asr-model/config.json
 COPY content_factory_private_asr.py content_factory_private_asr_runtime.py content_factory_private_asr_r2_bridge.py /app/
 # Bundled model runs offline; never include personal audio in build or CI.
-COPY infra/private-asr/run_private_asr.py /app/
+COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py /app/
 RUN useradd --uid 10001 --create-home asr && chown -R asr:asr /app /opt/private-asr-model
 USER asr
-CMD ["python","-c","import os, faster_whisper, boto3, content_factory_private_asr_r2_bridge; assert os.path.isfile(os.path.join(os.environ[\'EDIRNE22_LOCAL_WHISPER_MODEL\'],\'model.bin\')); print(\'PRIVATE_ASR_IMAGE_READY_OFFLINE_MODEL_NO_AUDIO\')"]
+EXPOSE 5200
+CMD ["python", "/app/service.py"]
