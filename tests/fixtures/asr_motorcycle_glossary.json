@@ -95,6 +95,90 @@
     {
       "name": "Edirne 22 curated terminology",
       "use": "Independently curated DE/TR motorcycle terms; review before ASR prompts"
+    },
+    {
+      "name": "Motoetkinlik technical articles",
+      "urls": [
+        "https://motoetkinlik.com/motogp-amerika-gp-onizleme-austinde-guc-dengesi-ve-frenleme-savasi/",
+        "https://motoetkinlik.com/motogp-macaristan-temsilcimiz-toprak-razgatlioglu-siralama-motivasyonunu-ve-hizlanma-sorunlarini-aktardi/",
+        "https://motoetkinlik.com/motogpde-telemetri-neden-her-seyi-cozemiyor/"
+      ],
+      "use": "Curated terms only, not article text"
+    },
+    {
+      "name": "F1TR",
+      "url": "https://www.f1tr.com/",
+      "use": "Secondary vocabulary reference; verify terminology"
+    }
+  ],
+  "turkish_racing_terms": [
+    {
+      "tr": "frenleme",
+      "de": "Bremsvorgang"
+    },
+    {
+      "tr": "sert frenleme",
+      "de": "starkes Bremsen"
+    },
+    {
+      "tr": "viraj girişi",
+      "de": "Kurveneingang"
+    },
+    {
+      "tr": "viraj çıkışı",
+      "de": "Kurvenausgang"
+    },
+    {
+      "tr": "ön lastik",
+      "de": "Vorderreifen"
+    },
+    {
+      "tr": "arka lastik",
+      "de": "Hinterreifen"
+    },
+    {
+      "tr": "lastik aşınması",
+      "de": "Reifenverschleiß"
+    },
+    {
+      "tr": "yol tutuş",
+      "de": "Grip"
+    },
+    {
+      "tr": "arka patinaj",
+      "de": "durchdrehendes Hinterrad"
+    },
+    {
+      "tr": "hızlanma",
+      "de": "Beschleunigung"
+    },
+    {
+      "tr": "sıralama turları",
+      "de": "Qualifying-Runden"
+    },
+    {
+      "tr": "sprint yarışı",
+      "de": "Sprintrennen"
+    },
+    {
+      "tr": "yarış temposu",
+      "de": "Renntempo"
+    },
+    {
+      "tr": "elektronik ayarlar",
+      "de": "Elektronikeinstellungen"
+    },
+    {
+      "tr": "telemetri",
+      "de": "Telemetrie"
+    },
+    {
+      "tr": "süspansiyon",
+      "de": "Federung"
+    },
+    {
+      "tr": "motor freni",
+      "de": "Motorbremse"
     }
   ]
 }
