@@ -17,7 +17,11 @@ r=await http("/_factory/health",auth); assert(r.ok,`health failed ${r.status}`);
 const upstreamProbe=await fetch(base+"/api/external-mcp/mcp",{method:"POST",headers:{...auth,"content-type":"application/json","accept":"application/json, text/event-stream"},body:JSON.stringify({jsonrpc:"2.0",id:"probe",method:"initialize",params:{protocolVersion:"2025-06-18",capabilities:{},clientInfo:{name:"edirne22-probe",version:"1.0.0"}}}),signal:AbortSignal.timeout(15000)}).catch(error=>({probeError:error}));
 if(upstreamProbe?.probeError) console.log("MCP_RAW_INITIALIZE_PROBE",JSON.stringify({ok:false,error:String(upstreamProbe.probeError)})); else console.log("MCP_RAW_INITIALIZE_PROBE",JSON.stringify({ok:upstreamProbe.ok,status:upstreamProbe.status,sessionId:upstreamProbe.headers.get("mcp-session-id"),contentType:upstreamProbe.headers.get("content-type"),body:(await upstreamProbe.text()).slice(0,1000)}));
 
-const transport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth}});
+// Diagnostic A/B: suppress standalone GET/SSE while retaining POST response SSE.
+// Keep this opt-in: production behavior is unchanged unless explicitly enabled.
+const noStandaloneSse = process.env.MCP_DIAG_NO_STANDALONE_SSE === "1";
+console.log("MCP_DIAG_TRANSPORT",JSON.stringify({noStandaloneSse}));
+const transport=new StreamableHTTPClientTransport(new URL(base+"/api/external-mcp/mcp"),{requestInit:{headers:auth},disableStandaloneSseStream:noStandaloneSse});
 let client=new Client({name:"edirne22-live-acceptance",version:"1.0.0"});
 console.log("MCP_CONNECT_BEGIN");
 await client.connect(transport);
