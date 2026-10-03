@@ -551,4 +551,33 @@ class AlbumTests(unittest.TestCase):
         self.assertEqual(len(manifests[0]["assets"]),2)
         self.assertEqual(manifests[0]["lane"],"private")
 
+
+    def test_file_stream_http_failure_never_leaks_bot_token(self):
+        import requests
+        from scripts.telegram_private_media import download
+        class FileUnavailable:
+            status_code=503
+            def raise_for_status(self):
+                raise requests.HTTPError("https://api.telegram.org/file/botSECRET/privatepath")
+        def fake_get(url, **kwargs):
+            if url.endswith("/getFile"):
+                return Reply()
+            return FileUnavailable()
+        with self.assertRaises(RuntimeError) as cm:
+            download("FILEID","SECRET",get=fake_get)
+        self.assertNotIn("SECRET",str(cm.exception))
+        self.assertNotIn("privatepath",str(cm.exception))
+        self.assertIn("erneuter Versuch",str(cm.exception))
+
+    def test_getfile_network_failure_does_not_ack_or_log_token(self):
+        import requests
+        from scripts.telegram_private_media import download
+        def fake_get(url, **kwargs):
+            raise requests.ConnectionError("https://api.telegram.org/botSECRET/getFile")
+        with self.assertRaises(RuntimeError) as cm:
+            download("PRIVATE","SECRET",get=fake_get)
+        self.assertNotIn("SECRET",str(cm.exception))
+        self.assertNotIn("PRIVATE",str(cm.exception))
+        self.assertIn("erneuter Versuch",str(cm.exception))
+
 if __name__=="__main__":unittest.main()
