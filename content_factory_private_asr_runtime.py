@@ -10,6 +10,7 @@ from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
 import os
+import subprocess
 import tempfile
 from content_factory_private_asr import (
     MAX_AUDIO_BYTES, PrivateASRError, PrivateASRRequest,
@@ -34,10 +35,24 @@ def transcribe_private_audio(request: PrivateASRRequest, audio: bytes, *,
     # Temporary file stays inside private execution runtime and is removed
     # even when decoder/model inference raises.
     with tempfile.TemporaryDirectory(prefix="edirne22-private-asr-") as folder:
-        path = Path(folder) / ("input." + {"audio/webm":"webm",
-                "audio/mp4":"m4a", "audio/ogg":"ogg"}[request.mime])
-        path.write_bytes(audio)
-        segments, info = model.transcribe(str(path), language=request.language,
+        source = Path(folder) / ("input." + {"audio/webm":"webm",
+                "audio/mp4":"m4a", "audio/x-m4a":"m4a", "audio/m4a":"m4a",
+                "audio/ogg":"ogg"}[request.mime])
+        source.write_bytes(audio)
+        prepared = Path(folder) / "prepared.wav"
+        # Decode only after canonical R2 metadata, digest and consent validation.
+        # No shell, network or external converter; output stays ephemeral.
+        try:
+            subprocess.run(["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
+                            "-y", "-i", str(source), "-vn", "-ac", "1", "-ar", "16000",
+                            "-c:a", "pcm_s16le", str(prepared)],
+                           check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                           timeout=90)
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError) as exc:
+            raise PrivateASRError("private audio decoding failed") from exc
+        if not prepared.is_file() or prepared.stat().st_size < 44:
+            raise PrivateASRError("private decoded audio unavailable")
+        segments, info = model.transcribe(str(prepared), language=request.language,
                                           vad_filter=True, beam_size=1)
         if getattr(info, "language", None) not in (None, request.language):
             raise PrivateASRError("ASR returned different language")
