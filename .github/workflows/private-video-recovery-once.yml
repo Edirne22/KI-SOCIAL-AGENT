@@ -1,0 +1,81 @@
+name: One-time user-authorized private video recovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/private-video-recovery-once.yml"
+permissions:
+  contents: read
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
+      PRIVATE_MEDIA_RUNTIME_URL: https://edirne22-private-asr.butupeli.workers.dev/private-video/jobs
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check --quiet boto3 requests
+      - name: Recover exactly one current private video task
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone, timedelta
+          import boto3, requests
+          from scripts.ai_central_shared_inbox import PREFIX, _is_private_video_request
+          endpoint="https://"+os.environ["R2_ACCOUNT_ID"]+".r2.cloudflarestorage.com"
+          client=boto3.client("s3",endpoint_url=endpoint,
+              aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
+              aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],region_name="auto")
+          bucket=os.environ["R2_BUCKET_NAME"]; now=datetime.now(timezone.utc)
+          page=client.list_objects_v2(Bucket=bucket,Prefix=PREFIX,MaxKeys=100)
+          if page.get("IsTruncated"): raise SystemExit("RECOVERY_ABORT_INDEX_TRUNCATED")
+          matches=[]
+          for item in page.get("Contents",[]):
+              key=item.get("Key","")
+              if not key.endswith(".json"): continue
+              obj=client.get_object(Bucket=bucket,Key=key)
+              d=json.loads(obj["Body"].read(12000))
+              try: created=datetime.fromisoformat(str(d.get("created_at","")))
+              except ValueError: continue
+              if created.tzinfo is None or now-created>timedelta(hours=24) or created>now+timedelta(minutes=5): continue
+              if (d.get("schema")=="AI-INBOX-V1" and d.get("kind")=="message"
+                  and d.get("auto_dispatch") is False
+                  and d.get("status") in ("DRAFT_REQUIRES_REVIEW","QUEUED_FREE_REVIEW")
+                  and _is_private_video_request(d.get("message",""))):
+                  matches.append((key,d,obj.get("ETag")))
+          if len(matches)!=1:
+              raise SystemExit("RECOVERY_ABORT_MATCH_COUNT_"+str(len(matches)))
+          key,d,etag=matches[0]
+          status_key=f"ai-central/v1/private-video/{d['id']}/status.json"
+          try:
+              existing=json.loads(client.get_object(Bucket=bucket,Key=status_key)["Body"].read(4096))
+          except Exception as exc:
+              code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+              if code not in ("404","NoSuchKey","NotFound"): raise
+          else:
+              if existing.get("schema")=="PRIVATE-VIDEO-STATUS-V1":
+                  print("PRIVATE_VIDEO_RECOVERY_ALREADY_"+str(existing.get("status","UNKNOWN")))
+                  raise SystemExit(0)
+          queued={**d,"status":"QUEUED_PRIVATE_VIDEO","dispatch_target":"private-media-container",
+                  "inference_scope":"none-private-ffmpeg","approved_at":d.get("approved_at") or now.isoformat(),
+                  "approval_source":"one-time-user-authorized-recovery"}
+          claimed=client.put_object(Bucket=bucket,Key=key,
+              Body=json.dumps(queued,ensure_ascii=False).encode("utf-8"),
+              ContentType="application/json",IfMatch=etag)
+          if not claimed.get("ETag"): raise SystemExit("RECOVERY_ABORT_CLAIM_UNCERTAIN")
+          response=requests.post(os.environ["PRIVATE_MEDIA_RUNTIME_URL"],
+              headers={"Authorization":"Bearer "+os.environ["PRIVATE_ASR_INTERNAL_TOKEN"]},
+              json={"task_id":d["id"]},timeout=25)
+          if response.status_code not in (200,202):
+              raise SystemExit("RECOVERY_RUNTIME_HTTP_"+str(response.status_code))
+          print("PRIVATE_VIDEO_USER_AUTHORIZED_RECOVERY_ACCEPTED")
+          PY
