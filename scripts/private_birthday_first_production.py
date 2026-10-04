@@ -22,6 +22,14 @@ TARGET_SECONDS=300
 MUSIC=Path("assets/musik/chill/hypnotic-ambient.mp3")
 TITLE="Dünya – Level 12"
 
+def fftext(value):
+    value=str(value or "")[:160]
+    return value.replace("\\","\\\\").replace(":","\\:").replace("'","\\'")
+
+def segment_timeout(seconds, image=False):
+    factor=45 if image else 20
+    return max(180,min(420,int(max(1.0,float(seconds))*factor)))
+
 def recent_assets(client,bucket,now=None):
     # Bind to the latest private upload *session*, not the wall clock. The owner
     # may start rendering hours after upload; a 4h "now" cutoff must never force
@@ -57,10 +65,16 @@ def recent_assets(client,bucket,now=None):
 
 def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     client,bucket=client_from_env()
-    assets=recent_assets(client,bucket)
+    assets=assets_override or recent_assets(client,bucket)
+    plan=plan or {}
+    target_seconds=int(plan.get("target_seconds") or TARGET_SECONDS)
+    creative_plan=plan.get("creative") or {}
+    overlays=list(creative_plan.get("overlays") or [TITLE,"12 Jahre voller Erinnerungen","Alles Gute zum 12. Geburtstag, Dünya!"])
+    music_plan=plan.get("music_audio") or {}
+    music=Path(music_plan.get("path") or MUSIC)
     image_count=sum(1 for a in assets if a["mime"].startswith("image/"))
     video_count=len(assets)-image_count
-    image_seconds=max(1.35,(TARGET_SECONDS-(video_count*4))/image_count) if image_count else 1.35
+    image_seconds=max(1.35,(target_seconds-(video_count*4))/image_count) if image_count else 1.35
     token=os.environ["TELEGRAM_BOT_TOKEN"]; chat=os.environ["TELEGRAM_CHAT_ID"]
     with tempfile.TemporaryDirectory(prefix="duenya-private-") as td:
         root=Path(td); segments=[]
@@ -69,14 +83,14 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
             src=root/f"in-{i:03d}{suffix}"
             src.write_bytes(client.get_object(Bucket=bucket,Key=a["key"])["Body"].read())
             seg=root/f"seg-{i:03d}.mp4"
-            vf="scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1"
+            vf="scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,setsar=1"
             if a["mime"].startswith("image/"):
                 frames=max(24,int(image_seconds*24))
-                creative=vf+f",zoompan=z=min(zoom+0.00035\\,1.08):d={frames}:s=1080x1920:fps=24,fade=t=in:st=0:d=0.35,fade=t=out:st={max(0.0,image_seconds-0.45):.3f}:d=0.45"
+                creative=vf+f",zoompan=z=min(zoom+0.00035\\,1.08):d={frames}:s=720x1280:fps=24,scale=1080:1920:flags=fast_bilinear,fade=t=in:st=0:d=0.35,fade=t=out:st={max(0.0,image_seconds-0.45):.3f}:d=0.45"
                 cmd=["ffmpeg","-y","-loop","1","-t",f"{image_seconds:.3f}","-i",str(src),"-vf",creative,"-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
             else:
                 cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=24,fade=t=in:st=0:d=0.25,fade=t=out:st=3.55:d=0.45","-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
-            subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=120)
+            subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=segment_timeout(image_seconds if a["mime"].startswith("image/") else 4, image=a["mime"].startswith("image/")))
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
         rough=root/"rough.mp4"
