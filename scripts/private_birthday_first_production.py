@@ -75,14 +75,14 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
             src=root/f"in-{i:03d}{suffix}"
             src.write_bytes(client.get_object(Bucket=bucket,Key=a["key"])["Body"].read())
             seg=root/f"seg-{i:03d}.mp4"
-            vf="scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,setsar=1"
+            vf="scale=540:960:force_original_aspect_ratio=increase,crop=540:960,setsar=1"
             if a["mime"].startswith("image/"):
-                frames=max(15,int(image_seconds*15))
-                creative=vf+f",zoompan=z=min(zoom+0.00045\\,1.06):d={frames}:s=720x1280:fps=15,fade=t=in:st=0:d=0.35,fade=t=out:st={max(0.0,image_seconds-0.45):.3f}:d=0.45"
+                frames=max(10,int(image_seconds*10))
+                creative=vf+f",fps=10,fade=t=in:st=0:d=0.25,fade=t=out:st={max(0.0,image_seconds-0.35):.3f}:d=0.35"
                 cmd=["ffmpeg","-y","-loop","1","-t",f"{image_seconds:.3f}","-i",str(src),"-vf",creative,"-an","-c:v","libx264","-preset","ultrafast","-crf","28","-pix_fmt","yuv420p",str(seg)]
             else:
-                cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=24,fade=t=in:st=0:d=0.25,fade=t=out:st=3.55:d=0.45","-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
-            subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=max(180,min(420,int(image_seconds*30 if a["mime"].startswith("image/") else 180))))
+                cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=15,fade=t=in:st=0:d=0.25,fade=t=out:st=3.55:d=0.45","-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
+            subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=120)
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
         rough=root/"rough.mp4"
