@@ -41,7 +41,7 @@ export default {
       const size = new TextEncoder().encode(jobBody).byteLength;
       if (size < 1 || size > 1024) return reply({error:"size"},413);
     }
-    const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr");
+    const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v2");
     if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs") {
       // Warm the same named container before sending a non-idempotent job.
       // Never retry POST: duplicate transcription could overwrite private drafts.
