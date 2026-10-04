@@ -1,4 +1,4 @@
-"""Synthetic tests only: no real Telegram or private media."""
+"""Synthetic tests only: no real Telegram or private media.\n\nFinal Telegram acceptance touch: 2026-10-04.\n"""
 import io
 import json
 import unittest
