@@ -53,6 +53,8 @@ jobs:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
+          PRIVATE_MEDIA_RUNTIME_URL: https://edirne22-private-asr.butupeli.workers.dev/private-video/jobs
           GITHUB_TOKEN: ${{ github.token }}
         run: python -u telegram_router.py
 
