@@ -94,6 +94,11 @@ def recent(client,bucket,limit=6):
         result.append({k:item.get(k) for k in ("id","created_at","channel","kind","status","message")})
     return result
 
+def _is_private_video_request(message: str) -> bool:
+    text=(message or "").casefold()
+    return ("private videoproduktion" in text or "private video production" in text
+            or ("privat" in text and "video" in text and ("dünya" in text or "geburtstag" in text)))
+
 def start_reviewed(client,bucket,task_id,token,post=requests.post,mode="free-only"):
     """Authorized existing Telegram chat explicitly starts ONE $0 reviewed workflow."""
     if mode not in ("free-only", "free-team"):
@@ -125,10 +130,12 @@ def start_reviewed(client,bucket,task_id,token,post=requests.post,mode="free-onl
     day=str(entry.get("created_at",""))[:10]
     if not re.fullmatch(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}",day):
         raise ValueError("Auftragsdatum ungültig.")
-    queued={**entry,"status":"QUEUED_FREE_REVIEW",
+    private_video = mode=="free-only" and _is_private_video_request(entry.get("message",""))
+    queued={**entry,
+        "status":"QUEUED_PRIVATE_VIDEO" if private_video else "QUEUED_FREE_REVIEW",
         "approved_at":datetime.now(timezone.utc).isoformat(),
-        "dispatch_target":"ai-central-inbox-agent.yml",
-        "inference_scope":"nvidia/free-team" if mode=="free-team" else "openrouter/free"}
+        "dispatch_target":"private-media-container" if private_video else "ai-central-inbox-agent.yml",
+        "inference_scope":"none-private-ffmpeg" if private_video else ("nvidia/free-team" if mode=="free-team" else "openrouter/free")}
     try:
         claimed=client.put_object(Bucket=bucket,Key=key,Body=json.dumps(queued,ensure_ascii=False).encode(),
             ContentType="application/json",IfMatch=etag)
@@ -141,6 +148,32 @@ def start_reviewed(client,bucket,task_id,token,post=requests.post,mode="free-onl
     claim_etag=claimed.get("ETag")
     if not claim_etag:
         raise RuntimeError("R2 hat kein Claim-ETag geliefert; GitHub-Start blockiert.")
+    if private_video:
+        endpoint=os.environ.get("PRIVATE_MEDIA_RUNTIME_URL","").strip()
+        runtime_token=os.environ.get("PRIVATE_ASR_INTERNAL_TOKEN","").strip()
+        if not endpoint or not runtime_token:
+            try:
+                client.put_object(Bucket=bucket,Key=key,Body=json.dumps(entry,ensure_ascii=False).encode(),
+                    ContentType="application/json",IfMatch=claim_etag)
+            except Exception:
+                raise RuntimeError("Private Video-Runtime fehlt und R2 wurde parallel geändert; Status prüfen.")
+            raise RuntimeError("Private Video-Runtime noch nicht verdrahtet.")
+        try:
+            response=post(endpoint,headers={"Authorization":"Bearer "+runtime_token},
+                          json={"task_id":task_id},timeout=25)
+        except requests.RequestException:
+            raise RuntimeError("Private Video-Start unklar. Auftrag bleibt gesperrt; Runtime-Status prüfen statt erneut starten.")
+        if response.status_code not in (200,202):
+            if response.status_code>=500 or response.status_code==429:
+                raise RuntimeError("Private Video-Start unklar. Auftrag bleibt gesperrt; Runtime prüfen.")
+            try:
+                client.put_object(Bucket=bucket,Key=key,Body=json.dumps(entry,ensure_ascii=False).encode(),
+                    ContentType="application/json",IfMatch=claim_etag)
+            except Exception:
+                raise RuntimeError("Private Video-Runtime lehnte ab, aber R2 wurde parallel geändert; Status prüfen.")
+            raise RuntimeError("Private Video-Runtime lehnte den Start ab; Entwurf beibehalten.")
+        return "Private Videoproduktion "+task_id+" vom Container angenommen. Status mit /zentrale ergebnis "+task_id+" prüfen."
+
     try:
         response=post("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/workflows/ai-central-inbox-agent.yml/dispatches",
             headers={"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json",
@@ -165,6 +198,21 @@ def result_summary(client,bucket,task_id):
     """Authorized Telegram chat retrieves only bounded non-sensitive R2 report metadata."""
     if not re.fullmatch(r"[a-zA-Z0-9_-]{10,64}",task_id):
         raise ValueError("Ungültige Auftrags-ID.")
+    private_key=f"ai-central/v1/private-video/{task_id}/status.json"
+    try:
+        private_raw=client.get_object(Bucket=bucket,Key=private_key)["Body"].read(12000)
+        private_status=json.loads(private_raw)
+    except Exception as exc:
+        code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+        if code not in ("404","NoSuchKey","NotFound"):
+            raise
+    else:
+        if (private_status.get("schema")!="PRIVATE-VIDEO-STATUS-V1" or
+            private_status.get("task_id")!=task_id or private_status.get("status") not in
+            ("ACCEPTED","RUNNING","COMPLETED","FAILED")):
+            raise ValueError("Privater Video-Status ist ungültig.")
+        return f"Private Videoproduktion · {task_id} · {private_status['status']}"
+
     key=f"ai-central/v1/tasks/{task_id}/status.json"
     try:
         raw=client.get_object(Bucket=bucket,Key=key)["Body"].read(12000)
