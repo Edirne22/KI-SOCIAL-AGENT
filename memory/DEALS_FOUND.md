@@ -2852,3 +2852,14 @@ Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem passenden M
 * **Rufnummernmitnahme (Portierung):** Für die Mitnahme der alten Rufnummer gibt es bei manchen Anbietern einen Wechselbonus, der die Gesamtkosten senken kann.
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-10-04 11:21
+Anfrage: handyvertrag 80GB D1
+Provider: Keiner (Fehler)
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Suche derzeit nicht verfügbar für 'handyvertrag 80GB D1'.
+Ursache: ⏳ Suche derzeit nicht möglich – bitte in 10 Minuten erneut versuchen.
+SEARCH-FEHLER: provider=Alle, ursache=Alle Suchanbieter fehlgeschlagen, detail=SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 403, detail={   "error": {     "type": "platform-feature-disabled",     "message": "Monthly usage hard limit exceeded"   } } | SEARCH-FEHLER: provider=SearXNG, ursache=Nicht konfiguriert, detail=SEARXNG_URL fehlt
+Bitte später erneut versuchen.
