@@ -17,7 +17,9 @@ from scripts.r2_media_warehouse import job_prefix
 INDEX="private/v1/telegram-album-index/"
 WINDOW_HOURS=4
 MAX_ITEMS=80
-TARGET_SECONDS=300\nMUSIC=Path("assets/musik/chill/hypnotic-ambient.mp3")\nTITLE="Dünya – Level 12"
+TARGET_SECONDS=300
+MUSIC=Path("assets/musik/chill/hypnotic-ambient.mp3")
+TITLE="Dünya – Level 12"
 
 def recent_assets(client,bucket,now=None):
     now=now or datetime.now(timezone.utc); cutoff=now-timedelta(hours=WINDOW_HOURS)
