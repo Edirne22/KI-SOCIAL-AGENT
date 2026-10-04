@@ -354,6 +354,42 @@ def handle_private_command(text, *, chat, authorized_chat, token,
         client, bucket = client_from_env()
     if not bucket:
         raise ValueError("R2-Bucket fehlt")
+    if normalized == "/privat sammeln":
+        prefix = "private/v1/telegram-album-index/"
+        cutoff = datetime.now(timezone.utc) - timedelta(hours=6)
+        albums = []
+        page = client.list_objects_v2(Bucket=bucket, Prefix=prefix, MaxKeys=1000)
+        if page.get("IsTruncated"):
+            raise RuntimeError("Zu viele private Album-Indizes; Sammlung bitte manuell eingrenzen.")
+        for entry in page.get("Contents", []):
+            job_id = entry["Key"][len(prefix):].removesuffix(".json")
+            if not re.fullmatch(r"tgalbum[a-f0-9]{32}", job_id):
+                continue
+            try:
+                manifest = _indexed_album(client, bucket, job_id, chat)
+            except (ValueError, PermissionError):
+                continue
+            created = datetime.fromisoformat(manifest["created_at"])
+            stored = _read_manifest(client, bucket, manifest["prefix"] + "manifest.json")
+            if created >= cutoff and stored and stored.get("assets"):
+                albums.append({"job_id": job_id, "created_at": manifest["created_at"],
+                               "asset_count": len(stored["assets"]), "prefix": manifest["prefix"]})
+        if not albums:
+            return "Keine privaten Telegram-Alben der letzten 6 Stunden zum Sammeln gefunden."
+        albums.sort(key=lambda item: (item["created_at"], item["job_id"]))
+        digest = sha256("|".join(item["job_id"] for item in albums).encode()).hexdigest()[:24]
+        collection_id = "tgcollection" + digest
+        record = {"schema": "PRIVATE-TELEGRAM-COLLECTION-V1", "collection_id": collection_id,
+                  "lane": "private", "created_at": datetime.now(timezone.utc).isoformat(),
+                  "albums": albums, "asset_count": sum(item["asset_count"] for item in albums),
+                  "publish_allowed": False}
+        key = "private/v1/collections/" + collection_id + "/manifest.json"
+        client.put_object(Bucket=bucket, Key=key,
+                          Body=json.dumps(record, ensure_ascii=False).encode("utf-8"),
+                          ContentType="application/json")
+        return ("Private Sammlung erstellt · " + collection_id + " · "
+                + str(record["asset_count"]) + " Medien aus " + str(len(albums))
+                + " Alben · Keine Veröffentlichung.")
     if normalized == "/privat" or normalized == "/privat neu":
         return ("Album mit /privat als Beschriftung senden. "
                 "Vorgemerkte Alben: /privat offene")
