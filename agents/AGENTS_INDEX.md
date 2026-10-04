@@ -23,7 +23,7 @@ Die Agenten sind Teil **einer** KI-Zentrale mit Content-Fabrik und universeller 
 | [17_instagram_engagement_agent.md](17_instagram_engagement_agent.md) | Instagram Engagement | Klassifikation und Antwortvorschläge; echter Versand nur mit Einzelfreigabe |
 | [18_tour_ride_story_agent.md](18_tour_ride_story_agent.md) | Tour Ride Story | Aus eigenen Tourdaten privates, belegbares Story-Paket ohne Veröffentlichung |
 | [19_ki_integrationsingenieur.md](19_ki_integrationsingenieur.md) | KI-Integrationsingenieur | Geprüfte Maschinen über bestehende KI-/GitHub-Routen integrieren; isolierte Tests und unabhängige technische Abnahme |
-| [20_maschinen_scout.md](20_maschinen_scout.md) | Maschinen-Scout | Öffentliche Repos, Skills, APIs und Storage-/CPU-/GPU-Alternativen entdecken; vor Integration Research und Security |
+| [20_maschinen_scout.md](20_maschinen_scout.md) | Maschinen-Scout | Öffentliche Repos, Skills, APIs und Storage-/CPU-/GPU-Alternativen entdecken; vor Integration Research und Security |\n| [21_factory_maintenance_agent.md](21_factory_maintenance_agent.md) | Factory Maintenance / Instandhalter | Zentrale technische Störungsannahme: erst Diagnose/Recovery, bei reproduzierbarem Codefehler Coding Router → OpenCode/Claude; unveränderliches Repair-Log, Verify und begrenzter Retry |
 
 **Weitere tatsächliche Komponenten:** `facebook_engagement.py` ist eine separate historische Facebook-Engagement-Implementierung und gegenwärtig nicht als neu nummerierter Agent aktiv. `content_factory_newsroom.py`, `content_factory_creative.py`, `content_factory_media_production.py` und Human/Publisher-Verträge sind zentrale Module und nicht automatisch eigenständige 24/7-Prozesse.
 
