@@ -447,14 +447,14 @@ def main() -> None:
         if _is_photo_message(upd):
             if chat != allowed:
                 _ack(uid)
-                return
+                continue
             _handle_photo(upd, chat)
             _ack(uid)
-            return
+            continue
         if chat != allowed or not isinstance(text, str):
             print(f"ROUTER: Update {uid} nicht aus erlaubtem Text-Chat; bestätigt/übersprungen.")
             _ack(uid)
-            return
+            continue
 
         normalized = " ".join(text.strip().lower().split())
         cmd = normalized.lstrip("/")
