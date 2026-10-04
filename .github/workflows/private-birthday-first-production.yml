@@ -1,0 +1,59 @@
+name: Private birthday first production
+on:
+  pull_request:
+    paths:
+      - "scripts/private_birthday_first_production.py"
+      - ".github/workflows/private-birthday-first-production.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/private_birthday_first_production.py"
+      - ".github/workflows/private-birthday-first-production.yml"
+permissions:
+  contents: read
+concurrency:
+  group: private-birthday-first-production
+  cancel-in-progress: false
+jobs:
+  syntax-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m py_compile scripts/private_birthday_first_production.py
+      - run: grep -q 'No social publisher' scripts/private_birthday_first_production.py
+  render-private:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: syntax-safety
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install --disable-pip-version-check boto3 requests
+      - name: Verify required private runtime secrets without printing values
+        shell: bash
+        run: |
+          set -euo pipefail
+          for k in R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
+            test -n "${!k:-}" || { echo "MISSING_PRIVATE_CONFIG=${k}"; exit 1; }
+          done
+      - name: Install FFmpeg if needed
+        run: |
+          if ! command -v ffmpeg >/dev/null; then
+            timeout 120s sudo apt-get update -qq
+            timeout 120s sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+          fi
+      - name: Syntax gate
+        run: python -m py_compile scripts/private_birthday_first_production.py
+      - name: Render from recent private Telegram media, verify R2, deliver privately
+        run: python -m scripts.private_birthday_first_production
