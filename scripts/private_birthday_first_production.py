@@ -84,20 +84,23 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
                        check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=300)
         # Private creative lane: tasteful title/memory cards, then documented public-domain music.
         visual=root/"visual.mp4"
-        draw=("drawtext=text='Dünya – Level 12':fontcolor=white:fontsize=72:borderw=4:bordercolor=black:"
-              "x=(w-text_w)/2:y=h*0.12:enable='between(t,1,7)',"
-              "drawtext=text='12 Jahre voller Erinnerungen':fontcolor=white:fontsize=48:borderw=3:bordercolor=black:"
+        title_text=fftext(overlays[0] if overlays else TITLE)
+        mid_text=fftext(overlays[1] if len(overlays)>1 else "Unsere schönsten Erinnerungen")
+        end_text=fftext(overlays[2] if len(overlays)>2 else "Alles Gute!")
+        draw=(f"drawtext=text='{title_text}':fontcolor=white:fontsize=64:borderw=4:bordercolor=black:"
+              "x=(w-text_w)/2:y=h*0.78:enable='between(t,1,7)',"
+              f"drawtext=text='{mid_text}':fontcolor=white:fontsize=50:borderw=3:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.80:enable='between(t,105,112)',"
-              "drawtext=text='Alles Gute zum 12. Geburtstag, Dünya!':fontcolor=white:fontsize=48:borderw=3:bordercolor=black:"
+              f"drawtext=text='{end_text}':fontcolor=white:fontsize=48:borderw=3:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.80:enable='between(t,286,299)'")
         subprocess.run(["ffmpeg","-y","-i",str(rough),"-vf",draw,"-an","-c:v","libx264","-preset","veryfast",
                         "-b:v","850k","-maxrate","950k","-bufsize","1900k","-pix_fmt","yuv420p","-movflags","+faststart",str(visual)],
                        check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=600)
-        if not MUSIC.exists(): raise RuntimeError("PRIVATE_BIRTHDAY_MUSIC_MISSING")
+        if not music.exists(): raise RuntimeError("PRIVATE_BIRTHDAY_MUSIC_MISSING")
         out=root/"Duenya-Level-12-private.mp4"
         mix_music(visual,music,out)
         duration=probe_duration(out)
-        if not 285 <= duration <= 305: raise RuntimeError(f"PRIVATE_RENDER_DURATION_UNSAFE:{duration:.2f}")
+        if not max(1,target_seconds-15) <= duration <= target_seconds+5: raise RuntimeError(f"PRIVATE_RENDER_DURATION_UNSAFE:{duration:.2f}")
         if not output_is_valid(out): raise RuntimeError("PRIVATE_RENDER_STREAMS_INVALID")
         data=out.read_bytes()
         if not data or len(data)>49*1024*1024: raise RuntimeError("PRIVATE_RENDER_SIZE_UNSAFE")
@@ -112,5 +115,6 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
                 files={"video":("Duenya-Level-12-private.mp4",fh,"video/mp4")},timeout=120)
         if response.status_code!=200: raise RuntimeError("PRIVATE_TELEGRAM_DELIVERY_FAILED")
         print(f"PRIVATE_BIRTHDAY_PRODUCTION_PASS media_count={len(assets)} duration={duration:.2f}s audio=yes creative=yes sha256_prefix={digest[:12]} private=yes published=no")
+        return {"duration":duration,"has_audio":True,"has_video":True,"r2_key":key,"sha256":digest}
 
 if __name__=="__main__": run()
