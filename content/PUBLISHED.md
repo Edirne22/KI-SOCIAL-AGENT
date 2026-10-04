@@ -682,8 +682,8 @@ Quelle: https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-re
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234", "media_status": "", "object_id": "1285968257941776_122118616341469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122118616341469415", "source_url": "https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-04 09:25 | ID: 18128420326876506]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-03-daily
 Telegram-Update-ID: 279361807
@@ -696,6 +696,7 @@ Deniz Öncü hat in Österreich ne neunten Platz gekriegt – jetzt geht’s nac
 Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-3-deniz-oncu-japonyada-01.jpg
+Publish-Provenienz: {"creation_id": "18009951830971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-3-deniz-oncu-japonyada-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18128420326876506", "published_media_id": "18128420326876506", "source_url": "https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-03 09:41 | ID: 1285968257941776_122118623217469415]
 Status: GEPOSTET
