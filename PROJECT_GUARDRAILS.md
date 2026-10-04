@@ -646,3 +646,20 @@ ANALYSIEREN
 - **Blocker-Meldung:** Nur konkrete Ursache, betroffene Aufgabe, mögliche sichere Alternative und notwendige Entscheidung nennen. Keine allgemeine rechtliche Diskussion ohne konkreten Bezug.
 
 Diese Arbeitsweise ändert **nicht** die ausdrücklichen Datenschutz-, Kosten-, Human-Approval-, Veröffentlichungs- und Merge-Grenzen dieser Datei.
+
+
+## Coding-Disziplin: minimal, chirurgisch, verifizierbar (04.10.2026)
+
+Diese Regeln ergänzen die bestehende Abnahmematrix und gelten für Code-, Workflow- und Konfigurationsänderungen. Bei Konflikten haben Datenschutz-, Kosten-, Human-Approval-, Veröffentlichungs- und Sicherheitsgrenzen dieser Datei Vorrang.
+
+1. **Vor dem Codieren denken:** Annahmen, Mehrdeutigkeiten und relevante Trade-offs vor der Implementierung sichtbar machen. Bei echter Unklarheit nicht stillschweigend eine Interpretation wählen. Wenn eine einfachere Lösung denselben vereinbarten Zweck erfüllt, diese bevorzugen.
+2. **Minimaler Scope:** Nur Code schreiben, der direkt zur vereinbarten Anforderung oder zu ihrem notwendigen Test gehört. Keine spekulativen Features, unnötigen Abstraktionen, neuen Konfigurationsschichten oder „bei Gelegenheit“-Refactorings.
+3. **Chirurgische Änderungen:** Bestehenden Stil und vorhandene Architektur verwenden. Benachbarten Code, Kommentare oder Formatierung nicht ohne Anforderungsbezug ändern. Nur durch die eigene Änderung neu verwaiste Imports, Variablen oder Hilfsfunktionen entfernen; vorbestehenden Dead Code lediglich melden.
+4. **Jede geänderte Zeile muss begründbar sein:** Vor PR/Merge den Diff gegen den tatsächlichen Basis-HEAD prüfen. Jede geänderte Datei und jeder wesentliche Block muss auf Anforderung, Bug-Reproduktion, Test oder zwingende technische Folge zurückführbar sein.
+5. **Unerwartet großer Diff = STOP:** Wenn Dateigröße, Zeilenzahl, Dateianzahl oder Diff deutlich größer als für den Auftrag plausibel ist, nicht weiterpatchen und nicht mergen. Ursache feststellen. Im Zweifel die beabsichtigten kleinen Änderungen erneut aus sauberem aktuellem `main` aufbauen und den Diff nochmals prüfen.
+6. **Bugfix = Reproduktion → Fix → Regression:** Einen reproduzierbaren Fehler zuerst mit einem gezielten Test oder belastbaren Nachweis festhalten, dann minimal beheben, danach Regression, relevante Negativfälle und Positive Control auf finalem HEAD ausführen.
+7. **Erfolgskriterien vor Umsetzung:** Bei mehrstufigen Arbeiten kurz definieren, was konkret PASS bedeutet und wie jeder Schritt verifiziert wird. „Funktioniert“ ohne prüfbaren Nachweis ist kein Abschlusskriterium.
+8. **Keine stillen Nebenarbeiten:** Entdeckte, aber nicht zum Auftrag gehörende Probleme dokumentieren bzw. melden; nicht ungefragt in denselben Patch ziehen.
+9. **Finaler Scope-Check:** Vor Merge Basis-HEAD, Ahead/Behind, geänderte Dateien, Diff-Größe, Tests/CI und bekannte Restrisiken kontrollieren. Ein grüner Test rechtfertigt keinen sachfremden Diff.
+
+**Anlass/Regression 04.10.2026:** Beim Publisher-/Dedupe-Hardening für PR #378 entstand während eines ersten Patch-Versuchs unbeabsichtigt ein massiv aufgeblähter Diff mit mehrfach dupliziertem Dateiinhalt. Der verdächtige Stand wurde nicht gemergt. Die Änderung wurde aus sauberem `main` neu aufgebaut und auf den tatsächlich notwendigen Scope reduziert. Diese Regel soll verhindern, dass ein formal testbarer, aber strukturell falscher Groß-Diff weitergeschoben wird.
