@@ -294,6 +294,31 @@ async function startPrivateVideo(req,env){
  if(!response.ok)return json({error:"private media start rejected",code:response.status,detail:result?.error||null},response.status);
  return json({id,status:result?.status||"ACCEPTED",truth:"PRIVATE_MEDIA_CONTAINER_ACCEPTED"},202);
 }
+const PRIVATE_VIDEO_STAGES=["production_lead","creative_director","media_story","music_audio","video_editor_ffmpeg","qm","private_preview"];
+async function privateVideoStatus(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const id=new URL(req.url).searchParams.get("id")||"";
+  if(!/^[A-Za-z0-9_-]{10,64}$/.test(id))return json({error:"invalid task id"},400);
+  const base="ai-central/v1/private-video/"+id+"/";
+  const obj=await env.AI_CENTRAL_R2.get(base+"status.json");
+  if(!obj)return json({id,status:"NOT_STARTED",stage:null,updated_at:null,stalled:false,stages:[]});
+  let state;try{state=await obj.json()}catch{return json({error:"invalid private video status"},502)}
+  if(state?.schema!=="PRIVATE-VIDEO-STATUS-V1"||state.task_id!==id)return json({error:"invalid private video provenance"},502);
+  const updated=Date.parse(state.updated_at||"");
+  const stalled=["ACCEPTED","RUNNING"].includes(state.status)&&Number.isFinite(updated)&&Date.now()-updated>45000;
+  const stages=[];
+  for(const stage of PRIVATE_VIDEO_STAGES){
+    const s=await env.AI_CENTRAL_R2.get(base+"stages/"+stage+".json");
+    if(!s){stages.push({stage,status:"WAITING",updated_at:null});continue}
+    let d;try{d=await s.json()}catch{stages.push({stage,status:"UNKNOWN",updated_at:null});continue}
+    if(d?.schema!=="PRIVATE-VIDEO-STAGE-V1"||d.task_id!==id||d.stage!==stage){stages.push({stage,status:"UNKNOWN",updated_at:null});continue}
+    stages.push({stage,status:d.status,updated_at:d.updated_at||null,detail:typeof d.detail==="string"?d.detail.slice(0,160):undefined});
+  }
+  return json({schema:"PRIVATE-VIDEO-LIVE-V1",id,status:stalled?"STALLED":state.status,
+    stage:state.stage||null,updated_at:state.updated_at||null,stalled,
+    error_code:typeof state.error_code==="string"?state.error_code:undefined,
+    detail:typeof state.detail==="string"?state.detail.slice(0,300):undefined,stages});
+}
 async function taskStatus(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
   const id=new URL(req.url).searchParams.get("id");
@@ -695,6 +720,7 @@ export default {async fetch(req,env){
     if(path==="/api/container-readiness")return await containerReadiness(req,env);
     if(path==="/api/dispatch")return await queueReviewed(req,env);
     if(path==="/api/private-video-start")return await startPrivateVideo(req,env);
+    if(path==="/api/private-video-status")return await privateVideoStatus(req,env);
     if(path==="/api/task")return await taskStatus(req,env);
     if(path==="/api/runs"){
       const response=await fetch("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/runs?per_page=15",{
