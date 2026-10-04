@@ -89,7 +89,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
                 creative=vf+f",zoompan=z=min(zoom+0.00035\\,1.08):d={frames}:s=720x1280:fps=24,scale=1080:1920:flags=fast_bilinear,fade=t=in:st=0:d=0.35,fade=t=out:st={max(0.0,image_seconds-0.45):.3f}:d=0.45"
                 cmd=["ffmpeg","-y","-loop","1","-t",f"{image_seconds:.3f}","-i",str(src),"-vf",creative,"-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
             else:
-                cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=24,fade=t=in:st=0:d=0.25,fade=t=out:st=3.55:d=0.45","-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
+                cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=24,scale=1080:1920:flags=fast_bilinear,fade=t=in:st=0:d=0.25,fade=t=out:st=3.55:d=0.45","-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
             subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=segment_timeout(image_seconds if a["mime"].startswith("image/") else 4, image=a["mime"].startswith("image/")))
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
