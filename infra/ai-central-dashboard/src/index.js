@@ -276,6 +276,24 @@ async function queueReviewed(req,env){
   }
   return json({id,status:"QUEUED_FREE_REVIEW",truth:"GITHUB_DISPATCH_ACCEPTED_NOT_EXECUTION_PROOF"},202);
 }
+async function startPrivateVideo(req,env){
+ if(req.method!=="POST")return json({error:"method"},405);
+ if(!sameOrigin(req))return json({error:"origin rejected"},403);
+ if(!env.PRIVATE_ASR_SERVICE||!env.PRIVATE_ASR_INTERNAL_TOKEN)return json({error:"private media runtime unavailable"},503);
+ let body;try{body=await req.json()}catch{return json({error:"invalid json"},400)}
+ const id=body?.id,date=body?.date;
+ if(Object.keys(body||{}).sort().join(",")!=="date,id"||typeof id!=="string"||!/^[A-Za-z0-9_-]{10,64}$/.test(id)||typeof date!=="string"||!/^20\d{2}-\d\d-\d\d$/.test(date))return json({error:"invalid task reference"},400);
+ const listing=await env.AI_CENTRAL_R2.list({prefix:PREFIX+date+"/",limit:100});
+ if(listing.truncated)return json({error:"inbox scan limit reached"},409);
+ let found=null;
+ for(const entry of listing.objects){if(!entry.key.endsWith(".json"))continue;const obj=await env.AI_CENTRAL_R2.get(entry.key);if(!obj)continue;const v=await obj.json();if(v.id!==id)continue;if(found)return json({error:"ambiguous task reference"},409);found=v}
+ if(!found)return json({error:"unknown task"},404);
+ if(found.schema!=="AI-INBOX-V1"||found.kind!=="message"||found.status!=="QUEUED_PRIVATE_VIDEO"||found.dispatch_target!=="private-media-container"||found.auto_dispatch!==false)return json({error:"task is not an approved private video job"},409);
+ const response=await env.PRIVATE_ASR_SERVICE.fetch("https://private-asr/private-video/jobs",{method:"POST",headers:{"authorization":"Bearer "+env.PRIVATE_ASR_INTERNAL_TOKEN,"content-type":"application/json"},body:JSON.stringify({task_id:id})});
+ let result={};try{result=await response.json()}catch{}
+ if(!response.ok)return json({error:"private media start rejected",code:response.status,detail:result?.error||null},response.status);
+ return json({id,status:result?.status||"ACCEPTED",truth:"PRIVATE_MEDIA_CONTAINER_ACCEPTED"},202);
+}
 async function taskStatus(req,env){
   if(req.method!=="GET")return json({error:"method"},405);
   const id=new URL(req.url).searchParams.get("id");
@@ -676,6 +694,7 @@ export default {async fetch(req,env){
     if(path==="/api/system-monitor")return await passiveSystemMonitor(req,env);
     if(path==="/api/container-readiness")return await containerReadiness(req,env);
     if(path==="/api/dispatch")return await queueReviewed(req,env);
+    if(path==="/api/private-video-start")return await startPrivateVideo(req,env);
     if(path==="/api/task")return await taskStatus(req,env);
     if(path==="/api/runs"){
       const response=await fetch("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/runs?per_page=15",{
