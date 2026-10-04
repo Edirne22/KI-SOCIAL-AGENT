@@ -262,7 +262,7 @@ def handle_turkish_action(uid,chat,txt):
         if not source:continue
         result=turkish_lane.human_preview(source,n,agency);x=result.get('item') or source
         rows[n].update(text=x.get('caption',rows[n].get('text','')))
-        body=f'T{n} · ÜBERARBEITET · {x.get("turkish_rider","Turkish Rider")}\\n\\n{rows[n]["text"]}\\n\\nDanach: posten / überarbeiten / nicht posten'
+        body=f'T{n} · ÜBERARBEITET · {x.get("turkish_rider","Turkish Rider")}\\n\\n{rows[n]["text"]}\\n\\nDanach: T{n} posten / T{n} ändern / T{n} nicht posten'
         preview=rows[n].get('preview','')
         if not (preview and agency._send_turkish_source_photo(preview,body)):send_message(body)
     TURKISH_PREVIEWS.write_text(json.dumps({'created_at':int(time.time()),'items':{str(k):v for k,v in rows.items()}},ensure_ascii=False,indent=2),encoding='utf-8')
@@ -298,7 +298,7 @@ def handle_turkish(uid,chat,txt):
             for n,x,warnings in previews:
                 preview=x.get("preview","")
                 warn=("\n\n⚠️ Hinweise: "+"; ".join(warnings[:6])) if warnings else ""
-                body=f'T{n} · {x.get("turkish_rider","Turkish Rider")}\n\n{x.get("caption","(kein Text)")}{warn}\n\nDanach: posten / ändern / nicht posten'
+                body=f'T{n} · {x.get("turkish_rider","Turkish Rider")}\n\n{x.get("caption","(kein Text)")}{warn}\n\nDanach: T{n} posten / T{n} ändern / T{n} nicht posten'
                 if preview and agency._send_turkish_source_photo(preview,body):
                     continue
                 send_message(body+"\n\n🖼️ Quell-Vorschaubild nicht abrufbar.")
