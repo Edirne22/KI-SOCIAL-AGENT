@@ -68,5 +68,27 @@ class TelegramOffsetTests(unittest.TestCase):
             self.assertEqual(offset_file.read_text(encoding="utf-8").strip(), "43")
 
 
+    def test_skipped_foreign_update_does_not_drop_following_owner_update(self):
+        updates = [
+            {"update_id": 43, "message": {"chat": {"id": "999"}, "text": "posten"}},
+            {"update_id": 44, "message": {"chat": {"id": "1"}, "text": "T1,T3,T5 posten"}},
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            offset_file = Path(tmp) / "TELEGRAM_LAST_UPDATE_ID"
+            offset_file.write_text("42\n", encoding="utf-8")
+            def fake_get_updates(offset=None):
+                return updates if offset == 43 else []
+            completed = types.SimpleNamespace(returncode=0)
+            with patch.object(tr, "TELEGRAM_LAST_UPDATE_FILE", offset_file), \
+                 patch.object(tr, "get_chat_id", return_value="1"), \
+                 patch.object(tr, "get_updates", side_effect=fake_get_updates), \
+                 patch.object(tr.subprocess, "run", return_value=completed) as run:
+                tr.main()
+            self.assertTrue(run.called, "following owner update must still be routed")
+            self.assertEqual(run.call_args.args[0][-1], "T1,T3,T5 posten")
+            self.assertEqual(offset_file.read_text(encoding="utf-8").strip(), "44")
+
+
+
 if __name__ == "__main__":
     unittest.main()
