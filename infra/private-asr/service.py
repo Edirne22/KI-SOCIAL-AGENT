@@ -12,6 +12,28 @@ from scripts.ai_central_shared_inbox import client_from_env
 _lock = threading.Lock()
 _uuid = re.compile(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\Z")
 _date = re.compile(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}\Z")
+_task = re.compile(r"[A-Za-z0-9_-]{10,64}\Z")
+
+def _video_status(task_id, status):
+    client,bucket=client_from_env()
+    payload={"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":task_id,"status":status}
+    client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/status.json",
+                      Body=json.dumps(payload).encode("utf-8"),ContentType="application/json",
+                      CacheControl="private, no-store")
+
+def _run_video(task_id):
+    try:
+        _video_status(task_id,"RUNNING")
+        private_birthday.run()
+        _video_status(task_id,"COMPLETED")
+    except Exception:
+        try:
+            _video_status(task_id,"FAILED")
+        except Exception:
+            pass
+    finally:
+        _lock.release()
+
 
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args):
