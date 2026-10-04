@@ -409,3 +409,55 @@ Hier ist mein detaillierter 7-Tage-Content-Plan:
 ### **SAMSTAG, 02.10.2026**  
 **Thema:** Live-Update San Marino GP  
 **Plattform:** Instagram Story +
+
+
+# Wochenplan vom 2026-10-04 11:20:56
+# CONTENT-PLAN: WOCHE 41/2026 (MO 05.10. – SO 11.10.2026)
+
+**Stand:** 2026-10-04 06:12 UTC | **Qualität:** 5 MotoGP-Items Copy-QM PASS | **Turkish-Rider:** AKTIV  
+**Posting-Zeit:** Täglich 12:00–12:30 MESZ | **Freigabe:** Telegram vor Publication Pflicht
+
+---
+
+## MONTAG, 05.10.2026 – WOCHENSTART & TECH-FOKUS
+
+| Feld | Inhalt |
+|------|--------|
+| **Thema** | Ride With Me: Offline-Karten & SOS – warum das im Herbst überlebenswichtig wird |
+| **Plattform** | Instagram Reel + TikTok (identischer Cut, plattformgerechte Caption) |
+| **Fahrer-Fokus** | Kein spezifischer Fahrer – Produkt/Community-Nutzen |
+| **Hook** | „Letzte Woche im Schwarzwald: Netz weg, Nebel, 4 °C. Genau da hat mich die Offline-Karte nach Hause gebracht.“ |
+| **Beschreibung** | Kurzes Onboard-Video (POV): Handy am Lenker, Offline-Karte lädt, Abzweiger wird angezeigt, SOS-Button kurz eingeblendet. Kein Voiceover, nur Motorradsound + Texteinblendungen. Am Ende: „Welche App rettet dir den Arsch, wenn das Netz stirbt?“ |
+| **Hashtags IG** | #RideWithMe #OfflineKarten #MotorradNavigation #BikerSicherheit #HerbstTouren #BülentsBikeLife |
+| **Hashtags TT** | #motorrad #navigation #offlinekarten #bikersafety #herbsttour #bülentsbikelife |
+| **Visuelle Idee** | Split-Screen: Links Handy mit roter „Kein Netz“-Meldung, rechts Offline-Karte läuft flüssig. Overlay: „Funktioniert auch ohne Empfang.“ |
+| **Memory-Bezug** | Ride With Me max. 1×/Woche (Regel eingehalten); Hook neu, nicht aus Post-History recycelt; Du-Anrede, wenig Emojis, NRW-Tonfall („retten den Arsch“) |
+
+---
+
+## DIENSTAG, 06.10.2026 – TÜRKISCHE RACER: TOPRAK & PRAMAC YAMAHA
+
+| Feld | Inhalt |
+|------|--------|
+| **Thema** | Toprak bei Pramac Yamaha: Wie sich die Boxenatmosphäre vom WSBK-Team unterscheidet |
+| **Plattform** | Instagram Carousel (3 Slides) + Threads-Text |
+| **Fahrer-Fokus** | Toprak Razgatlıoğlu (#7, Prima Pramac Yamaha) |
+| **Hook** | „Toprak lacht in der Box anders als 2024. Weniger Druck, mehr Neugier – und Jack Miller bringt die australische Lockerheit mit rein.“ |
+| **Beschreibung** | Slide 1: Foto Toprak + Jack Miller lachend an der Boxenmauer (Offizielles Pramac-Media). Slide 2: Zitat Toprak aus offizieller Pressekonferenz (Quelle: motogp.com, 03.10.): „Ich lerne jeden Tag was Neues. Das Bike ist anders, die Reifen, die Elektronik – aber das Team gibt mir Raum.“ Slide 3: Technischer Vergleich WSBK vs. MotoGP Box (Reifenwärmer, Datentechniker, Funk). Caption fragt: „Was würdest du Toprak für seinen ersten vollen MotoGP-Jahr raten?“ |
+| **Hashtags IG** | #ToprakRazgatlioglu #PramacYamaha #MotoGP2026 #TurkishRider #Boxenluft #BülentsBikeLife |
+| **Hashtags TT** | #toprakrazgatlioglu #pramacyamaha #motogp #turkishrider #boxengasse #bülentsbikelife |
+| **Visuelle Idee** | Carousel mit cleanem Weißraum, türkise Akzentfarbe (Pramac), Slide 3 als Infografik: „WSBK Box vs. MotoGP Box – 3 Unterschiede“ |
+| **Memory-Bezug** | Offizielle Quelle (motogp.com) für Zitat; Toprak priorisiert bei echtem Anlass; keine erfundenen Details; Hook spezifisch auf Boxenatmosphäre, nicht generisch „Kampf“ |
+
+---
+
+## MITTWOCH, 07.10.2026 – COMMUNITY: T-BIKERS RUHRGEBIET NACHLESE
+
+| Feld | Inhalt |
+|------|--------|
+| **Thema** | T-Bikers Ruhrgebiet: 20 Jahre – was nach dem Jubiläum bleibt |
+| **Plattform** | Instagram Single Image + lange Caption (Storytelling) |
+| **Fahrer-Fokus** | Community / Kein Profi-Fahrer |
+| **Hook** | „20 Jahre T-Bikers. Die Party war groß, aber was mich beeindruckt: Am Montag früh stand wieder jemand vor der Garage und hat Kaffee gekocht.“ |
+| **Beschreibung** | Foto: Gruppe vor Clubheim, morgens 8 Uhr, Kaffeetassen, ein paar Motorräder im Hintergrund. Kein Event-Look, Alltag. Text: „Seit 1992. Nicht weil sie Events machen, sondern weil sie da sind. Wenn einer stürzt, kommen drei mit dem Anhänger. Wenn einer scheidet, fährt der Club zum Grab. Das ist kein Verein. Das ist Familie.“ Frage: „Was hält deinen Club zusammen, wenn keine Kamera läuft?“ |
+| **Hashtags IG** | #TBikersRu
