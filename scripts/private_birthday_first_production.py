@@ -17,7 +17,7 @@ from scripts.r2_media_warehouse import job_prefix
 INDEX="private/v1/telegram-album-index/"
 WINDOW_HOURS=4
 MAX_ITEMS=80
-TARGET_SECONDS=300
+TARGET_SECONDS=300\nMUSIC=Path("assets/musik/chill/hypnotic-ambient.mp3")\nTITLE="Dünya – Level 12"
 
 def recent_assets(client,bucket,now=None):
     now=now or datetime.now(timezone.utc); cutoff=now-timedelta(hours=WINDOW_HOURS)
@@ -53,17 +53,34 @@ def run():
             src=root/f"in-{i:03d}{suffix}"
             src.write_bytes(client.get_object(Bucket=bucket,Key=a["key"])["Body"].read())
             seg=root/f"seg-{i:03d}.mp4"
-            vf="scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1"
+            vf="scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1"
             if a["mime"].startswith("image/"):
-                cmd=["ffmpeg","-y","-loop","1","-t",f"{image_seconds:.3f}","-i",str(src),"-vf",vf+",fps=15","-an","-c:v","libx264","-preset","ultrafast","-tune","stillimage","-crf","27","-pix_fmt","yuv420p",str(seg)]
+                frames=max(24,int(image_seconds*24))\n                creative=vf+f",zoompan=z=min(zoom+0.00035\\,1.08):d={frames}:s=1080x1920:fps=24,fade=t=in:st=0:d=0.35,fade=t=out:st={max(0.0,image_seconds-0.45):.3f}:d=0.45"\n                cmd=["ffmpeg","-y","-loop","1","-t",f"{image_seconds:.3f}","-i",str(src),"-vf",creative,"-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
             else:
-                cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=24","-an","-c:v","libx264","-preset","ultrafast","-crf","27","-pix_fmt","yuv420p",str(seg)]
+                cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=24,fade=t=in:st=0:d=0.25,fade=t=out:st=3.55:d=0.45","-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
             subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=120)
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
-        out=root/"Duenya-Level-12-private.mp4"
-        subprocess.run(["ffmpeg","-y","-f","concat","-safe","0","-i",str(concat),"-c","copy","-movflags","+faststart",str(out)],
+        rough=root/"rough.mp4"
+        subprocess.run(["ffmpeg","-y","-f","concat","-safe","0","-i",str(concat),"-c","copy",str(rough)],
                        check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=300)
+        # Private creative lane: tasteful title/memory cards, then documented public-domain music.
+        visual=root/"visual.mp4"
+        draw=("drawtext=text='Dünya – Level 12':fontcolor=white:fontsize=72:borderw=4:bordercolor=black:"
+              "x=(w-text_w)/2:y=h*0.12:enable='between(t,1,7)',"
+              "drawtext=text='12 Jahre voller Erinnerungen':fontcolor=white:fontsize=48:borderw=3:bordercolor=black:"
+              "x=(w-text_w)/2:y=h*0.80:enable='between(t,105,112)',"
+              "drawtext=text='Alles Gute zum 12. Geburtstag, Dünya!':fontcolor=white:fontsize=48:borderw=3:bordercolor=black:"
+              "x=(w-text_w)/2:y=h*0.80:enable='between(t,286,299)'")
+        subprocess.run(["ffmpeg","-y","-i",str(rough),"-vf",draw,"-an","-c:v","libx264","-preset","veryfast",
+                        "-b:v","850k","-maxrate","950k","-bufsize","1900k","-pix_fmt","yuv420p","-movflags","+faststart",str(visual)],
+                       check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=600)
+        if not MUSIC.exists(): raise RuntimeError("PRIVATE_BIRTHDAY_MUSIC_MISSING")
+        out=root/"Duenya-Level-12-private.mp4"
+        mix_music(visual,MUSIC,out)
+        duration=probe_duration(out)
+        if not 285 <= duration <= 305: raise RuntimeError(f"PRIVATE_RENDER_DURATION_UNSAFE:{duration:.2f}")
+        if not output_is_valid(out): raise RuntimeError("PRIVATE_RENDER_STREAMS_INVALID")
         data=out.read_bytes()
         if not data or len(data)>49*1024*1024: raise RuntimeError("PRIVATE_RENDER_SIZE_UNSAFE")
         digest=sha256(data).hexdigest()
@@ -73,9 +90,9 @@ def run():
         if sha256(check).hexdigest()!=digest: raise RuntimeError("PRIVATE_R2_RENDER_VERIFY_FAILED")
         with out.open("rb") as fh:
             response=requests.post(f"https://api.telegram.org/bot{token}/sendVideo",
-                data={"chat_id":chat,"caption":"🎬 Dünya – Level 12 · PRIVATE Erstfassung\nKeine Veröffentlichung."},
+                data={"chat_id":chat,"caption":"🎬 Dünya – Level 12 · PRIVATE Kreativfassung\nMusik · Texte · Bewegungen · Übergänge\nKeine Veröffentlichung."},
                 files={"video":("Duenya-Level-12-private.mp4",fh,"video/mp4")},timeout=120)
         if response.status_code!=200: raise RuntimeError("PRIVATE_TELEGRAM_DELIVERY_FAILED")
-        print(f"PRIVATE_BIRTHDAY_PRODUCTION_PASS media_count={len(assets)} sha256_prefix={digest[:12]} private=yes published=no")
+        print(f"PRIVATE_BIRTHDAY_PRODUCTION_PASS media_count={len(assets)} duration={duration:.2f}s audio=yes creative=yes sha256_prefix={digest[:12]} private=yes published=no")
 
 if __name__=="__main__": run()
