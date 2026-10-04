@@ -12,6 +12,7 @@ import json, os, subprocess, tempfile
 from pathlib import Path
 import requests
 from scripts.ai_central_shared_inbox import client_from_env
+from scripts.r2_media_warehouse import job_prefix
 
 INDEX="private/v1/telegram-album-index/"
 WINDOW_HOURS=4
@@ -27,7 +28,8 @@ def recent_assets(client,bucket,now=None):
         if rec.get("lane")!="private": continue
         created=datetime.fromisoformat(rec["created_at"])
         if created<cutoff: continue
-        manifest=json.loads(client.get_object(Bucket=bucket,Key=rec["prefix"]+"manifest.json")["Body"].read(300000))
+        prefix=rec.get("prefix") or job_prefix("private",created,rec["job_id"])
+        manifest=json.loads(client.get_object(Bucket=bucket,Key=prefix+"manifest.json")["Body"].read(300000))
         if manifest.get("lane")!="private" or manifest.get("status")!="INTAKE": continue
         for asset in manifest.get("assets",[]):
             if asset.get("mime") in {"image/jpeg","image/png","video/mp4","video/quicktime"}:
