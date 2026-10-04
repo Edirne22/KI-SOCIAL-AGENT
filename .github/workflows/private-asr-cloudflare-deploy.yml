@@ -9,6 +9,7 @@ on:
       - "scripts/private_birthday_first_production.py"
       - "scripts/private_video_recovery_dispatch.py"
       - "music_agent.py"
+      - "content_factory_private_video_orchestrator.py"
       - "assets/musik/chill/hypnotic-ambient.mp3"
       - ".github/workflows/private-asr-cloudflare-deploy.yml"
 permissions:
@@ -50,7 +51,7 @@ jobs:
           target=infra/private-asr-cloudflare
           cp infra/private-asr/Dockerfile "$target/Dockerfile"
           cp content_factory_private_asr.py content_factory_private_asr_runtime.py content_factory_private_asr_r2_bridge.py "$target/"
-          cp music_agent.py "$target/"
+          cp music_agent.py content_factory_private_video_orchestrator.py "$target/"
           mkdir -p "$target/scripts" "$target/assets/musik/chill"
           cp scripts/private_birthday_first_production.py scripts/ai_central_shared_inbox.py scripts/r2_media_warehouse.py "$target/scripts/"
           cp assets/musik/chill/hypnotic-ambient.mp3 "$target/assets/musik/chill/"
