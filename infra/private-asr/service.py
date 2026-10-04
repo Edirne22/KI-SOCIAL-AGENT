@@ -10,7 +10,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import run_private_asr
 import scripts.private_birthday_first_production as private_birthday
 from scripts.ai_central_shared_inbox import client_from_env
-from content_factory_private_video_orchestrator import (
+from content_factory_maintenance import MaintenanceEvent, persist as persist_maintenance\nfrom content_factory_private_video_orchestrator import (
     STAGES, build_plan, load_private_prompt, persist_stage, PrivateQM,
 )
 
@@ -79,6 +79,12 @@ def _run_video(task_id):
         try:
             # Never persist the private prompt or secrets; only bounded exception diagnostics.
             _video_status(task_id,"FAILED",exc.__class__.__name__,str(exc),stage=current.get("stage"))
+            client,bucket=client_from_env()
+            persist_maintenance(client,bucket,MaintenanceEvent(
+                incident_id=f"pv-{task_id}-{int(time.time())}",
+                machine_id="private-media-container",state="FAILED",
+                error_class=exc.__class__.__name__,stage=current.get("stage",""),
+                task_id=task_id,detail=str(exc)[:300]))
         except Exception:
             pass
     finally:

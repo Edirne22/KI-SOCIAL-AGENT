@@ -693,6 +693,39 @@ async function getPreviewVideo(req,env){
   }});
 }
 
+const MAINT_PREFIX="ai-central/v1/maintenance/events/";
+async function maintenanceStatus(req,env){
+  if(req.method!=="GET")return json({error:"method"},405);
+  const listed=await env.AI_CENTRAL_R2.list({prefix:MAINT_PREFIX,limit:50});
+  if(listed.truncated)return json({error:"maintenance index too large"},409);
+  const keys=listed.objects.map(x=>x.key).filter(k=>k.endsWith(".json")).sort().reverse().slice(0,20);
+  const events=[];
+  for(const key of keys){
+    const obj=await env.AI_CENTRAL_R2.get(key); if(!obj)continue;
+    let d;try{d=await obj.json()}catch{continue}
+    if(d.schema!=="FACTORY-MAINTENANCE-EVENT-V1"||d.agent!=="21_factory_maintenance")continue;
+    events.push({incident_id:d.incident_id,machine_id:d.machine_id,state:d.state,
+      error_class:d.error_class,stage:d.stage||"",task_id:d.task_id||"",
+      decision:d.decision,created_at:d.created_at});
+  }
+  return json({schema:"FACTORY-MAINTENANCE-STATUS-V1",agent:"21_factory_maintenance",
+    truth:"R2_REPORTED_EVENTS_ONLY",events});
+}
+async function maintenanceCommand(req,env){
+  if(req.method!=="POST")return json({error:"method"},405);
+  if(!sameOrigin(req))return json({error:"origin rejected"},403);
+  let body;try{body=await req.json()}catch{return json({error:"invalid json"},400)}
+  if(!body||Object.keys(body).sort().join(",")!=="message"||!validMessage(body.message))
+    return json({error:"invalid maintenance command"},400);
+  const id=crypto.randomUUID(),created_at=new Date().toISOString();
+  const task={schema:"AI-INBOX-V1",id,created_at,channel:"dashboard-maintenance",kind:"message",
+    message:body.message.trim(),status:"DRAFT_REQUIRES_REVIEW",auto_dispatch:false,
+    dispatch_target:"21_factory_maintenance"};
+  await env.AI_CENTRAL_R2.put(objectKey(),JSON.stringify(task),{httpMetadata:{contentType:"application/json"}});
+  return json({id,created_at,status:task.status,dispatch_target:task.dispatch_target,
+    truth:"MAINTENANCE_COMMAND_RECORDED_NOT_AUTO_EXECUTED"},202);
+}
+
 export default {async fetch(req,env){
   const path=new URL(req.url).pathname;
   if(!path.startsWith("/api/"))return env.ASSETS.fetch(req);
@@ -720,7 +753,7 @@ export default {async fetch(req,env){
     if(path==="/api/container-readiness")return await containerReadiness(req,env);
     if(path==="/api/dispatch")return await queueReviewed(req,env);
     if(path==="/api/private-video-start")return await startPrivateVideo(req,env);
-    if(path==="/api/private-video-status")return await privateVideoStatus(req,env);
+    if(path==="/api/private-video-status")return await privateVideoStatus(req,env);\n    if(path==="/api/maintenance-status")return await maintenanceStatus(req,env);\n    if(path==="/api/maintenance-command")return await maintenanceCommand(req,env);
     if(path==="/api/task")return await taskStatus(req,env);
     if(path==="/api/runs"){
       const response=await fetch("https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT/actions/runs?per_page=15",{
