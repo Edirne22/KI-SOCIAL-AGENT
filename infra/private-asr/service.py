@@ -106,7 +106,12 @@ class Handler(BaseHTTPRequestHandler):
                     if code not in ("404","NoSuchKey","NotFound"): raise
                 else:
                     if existing.get("schema")=="PRIVATE-VIDEO-STATUS-V1" and existing.get("task_id")==data["task_id"]:
-                        return self.respond(200, {"status":existing.get("status","UNKNOWN"),"task_id":data["task_id"]})
+                        status=existing.get("status","UNKNOWN")
+                        if status!="FAILED":
+                            return self.respond(200, {"status":status,"task_id":data["task_id"]})
+                        # FAILED is terminal for automatic retries, but this endpoint is an
+                        # explicit authenticated human restart. Reuse the same task id/prompt.
+
                 if not _lock.acquire(False):
                     return self.respond(409, {"error":"busy"})
                 _video_status(data["task_id"],"ACCEPTED")
