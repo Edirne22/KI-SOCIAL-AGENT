@@ -7,6 +7,7 @@ on:
       - "infra/private-asr/**"
       - "infra/private-asr-cloudflare/**"
       - "scripts/private_birthday_first_production.py"
+      - "scripts/private_video_recovery_dispatch.py"
       - "music_agent.py"
       - "assets/musik/chill/hypnotic-ambient.mp3"
       - ".github/workflows/private-asr-cloudflare-deploy.yml"
@@ -29,6 +30,7 @@ jobs:
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      PRIVATE_MEDIA_RUNTIME_URL: https://edirne22-private-asr.butupeli.workers.dev/private-video/jobs
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -92,3 +94,9 @@ jobs:
             sleep 10
           done
           echo "PRIVATE_ASR_LIVE_HEALTH_FAILED"; exit 1
+      - name: Recover one already-approved private video task if it was previously misrouted
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check --quiet boto3 requests
+          python3 -m scripts.private_video_recovery_dispatch
