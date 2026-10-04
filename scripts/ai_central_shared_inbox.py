@@ -12,7 +12,7 @@ import re
 import requests
 
 PREFIX = "ai-central/v1/inbox/"
-MAX_MESSAGE = 2500
+MAX_MESSAGE = 4000
 _BLOCKED = re.compile(r"(?i)(?:authorization\s*:\s*bearer|api[_-]?key\s*[=:]|secret\s*[=:]|password\s*[=:])\s*\S+")
 
 def parse_command(text: str):
@@ -21,7 +21,15 @@ def parse_command(text: str):
     normalized=text.strip()
     match=re.fullmatch(r"/?zentrale\s+(status|hilfe|starten(?:\s+([a-zA-Z0-9_-]{10,64}))?|ergebnis(?:\s+([a-zA-Z0-9_-]{10,64}))?|auftrag(?:\s+(.+))?|team(?:\s+([a-zA-Z0-9_-]{10,64}))?)",normalized,re.I|re.S)
     if not match:
-        return None
+        # Explicit /zentrale free text belongs to AI Central and must never fall
+        # through into broad Racing keyword routing.
+        free=re.fullmatch(r"/?zentrale\s+(.+)",normalized,re.I|re.S)
+        if not free:
+            return None
+        message=free.group(1).strip()
+        if not 3<=len(message)<=MAX_MESSAGE or _BLOCKED.search(message) or any(ord(c)<32 and c not in "\n\t" for c in message):
+            raise ValueError(f"Bitte einen Auftrag mit 3 bis {MAX_MESSAGE} Zeichen und ohne Zugangsdaten eingeben.")
+        return "auftrag",message
     name=match.group(1).split()[0].lower()
     if name=="starten":
         ident=match.group(2)
@@ -38,7 +46,7 @@ def parse_command(text: str):
     if name=="auftrag":
         message=(match.group(4) or "").strip()
         if not 3<=len(message)<=MAX_MESSAGE or _BLOCKED.search(message) or any(ord(c)<32 and c not in "\n\t" for c in message):
-            raise ValueError("Bitte einen Auftrag mit 3 bis 2500 Zeichen und ohne Zugangsdaten eingeben.")
+            raise ValueError("Bitte einen Auftrag mit 3 bis 4000 Zeichen und ohne Zugangsdaten eingeben.")
         return "auftrag",message
     return name,None
 
