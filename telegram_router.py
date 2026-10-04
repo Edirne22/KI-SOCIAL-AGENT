@@ -523,13 +523,12 @@ def main() -> None:
             )
             _ack(uid)
             return
-        if pi.load_pending():
-            action = _get_bild_command_action(cmd)
-            if action:
-                print(f"ROUTER: Update {uid} -> kontextgebundene Instagram Bild-Freigabe ('{action}')")
-                _handle_bild_command(cmd)
-                _ack(uid)
-                return
+        action = _get_bild_command_action(cmd)
+        if action:
+            print(f"ROUTER: Update {uid} -> kontextgebundene Instagram Bild-Freigabe ('{action}')")
+            _handle_bild_command(cmd)
+            _ack(uid)
+            return
 
         if re.match(r"^(?:antwort|ändern|ignorieren|info|memory)\\s+ig-[a-f0-9]{8}(?:\\s+.*)?$", cmd, re.I):
             print(f"ROUTER: Update {uid} -> Instagram Engagement")
