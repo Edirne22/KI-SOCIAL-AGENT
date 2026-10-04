@@ -8,6 +8,7 @@ FactPackage. No social publisher is reachable from this module.
 from __future__ import annotations
 from dataclasses import dataclass, asdict
 import json, re
+from datetime import datetime, timezone
 from music_agent import load_library, choose_track
 
 STAGES=("production_lead","creative_director","media_story","music_audio","video_editor_ffmpeg","qm","private_preview")
@@ -75,7 +76,8 @@ def build_plan(task_id:str,prompt:str,assets:list[dict])->PrivateVideoPlan:
 
 def persist_stage(client,bucket,task_id,stage,status,detail=""):
     if stage not in STAGES: raise ValueError("unknown private production stage")
-    body={"schema":"PRIVATE-VIDEO-STAGE-V1","task_id":task_id,"stage":stage,"status":status}
+    body={"schema":"PRIVATE-VIDEO-STAGE-V1","task_id":task_id,"stage":stage,"status":status,
+          "updated_at":datetime.now(timezone.utc).isoformat()}
     if detail: body["detail"]=detail[:160]
     client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/stages/{stage}.json",
         Body=json.dumps(body,ensure_ascii=False).encode(),ContentType="application/json",CacheControl="private, no-store")

@@ -4,6 +4,8 @@ import json
 import os
 import re
 import threading
+import time
+from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import run_private_asr
 import scripts.private_birthday_first_production as private_birthday
@@ -17,9 +19,11 @@ _uuid = re.compile(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\Z")
 _date = re.compile(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}\Z")
 _task = re.compile(r"[A-Za-z0-9_-]{10,64}\Z")
 
-def _video_status(task_id, status, error_code=None, detail=None):
+def _video_status(task_id, status, error_code=None, detail=None, stage=None):
     client,bucket=client_from_env()
-    payload={"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":task_id,"status":status}
+    payload={"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":task_id,"status":status,
+             "updated_at":datetime.now(timezone.utc).isoformat()}
+    if stage: payload["stage"]=stage
     if error_code: payload["error_code"]=str(error_code)[:80]
     if detail: payload["detail"]=str(detail)[:300]
     client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/status.json",
@@ -27,40 +31,58 @@ def _video_status(task_id, status, error_code=None, detail=None):
                       CacheControl="private, no-store")
 
 def _run_video(task_id):
+    heartbeat_stop=threading.Event()
+    current={"stage":"production_lead"}
+    def heartbeat():
+        while not heartbeat_stop.wait(10):
+            try:
+                _video_status(task_id,"RUNNING",stage=current["stage"])
+            except Exception:
+                pass
+    heartbeat_thread=threading.Thread(target=heartbeat,daemon=True)
     try:
-        _video_status(task_id,"RUNNING")
+        _video_status(task_id,"RUNNING",stage=current["stage"])
+        heartbeat_thread.start()
         client,bucket=client_from_env()
         persist_stage(client,bucket,task_id,"production_lead","RUNNING")
         prompt=load_private_prompt(client,bucket,task_id)
         assets=private_birthday.recent_assets(client,bucket)
         persist_stage(client,bucket,task_id,"production_lead","COMPLETED","prompt resolved and job decomposed")
+        current["stage"]="creative_director"
         persist_stage(client,bucket,task_id,"creative_director","RUNNING")
+        current["stage"]="creative_director"
         plan=build_plan(task_id,prompt,assets)
         persist_stage(client,bucket,task_id,"creative_director","COMPLETED",plan.story_style)
+        current["stage"]="media_story"
         persist_stage(client,bucket,task_id,"media_story","COMPLETED",f"{len(assets)} private assets bound")
+        current["stage"]="music_audio"
         persist_stage(client,bucket,task_id,"music_audio","COMPLETED","documented track selected")
+        current["stage"]="video_editor_ffmpeg"
         persist_stage(client,bucket,task_id,"video_editor_ffmpeg","RUNNING")
         result=private_birthday.run(task_id=task_id,prompt=prompt,plan=plan,assets_override=assets)
         persist_stage(client,bucket,task_id,"video_editor_ffmpeg","COMPLETED")
+        current["stage"]="qm"
         persist_stage(client,bucket,task_id,"qm","RUNNING")
         qm=PrivateQM().checks(duration=result["duration"],has_audio=result["has_audio"],
                               has_video=result["has_video"],creative={"overlays":plan.overlays,"privacy":plan.privacy})
         if not qm["passed"]:
             raise RuntimeError("PRIVATE_AGENT_QM_FAILED")
         persist_stage(client,bucket,task_id,"qm","COMPLETED","duration/audio/video/creative/privacy passed")
+        current["stage"]="private_preview"
         preview={"schema":"PRIVATE-VIDEO-PREVIEW-V1","task_id":task_id,"state":"READY_FOR_HUMAN",
                  "r2_key":result["r2_key"],"sha256":result["sha256"],"private":True,"publishable":False}
         client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/preview.json",
             Body=json.dumps(preview).encode(),ContentType="application/json",CacheControl="private, no-store")
         persist_stage(client,bucket,task_id,"private_preview","COMPLETED","private R2/Telegram preview ready")
-        _video_status(task_id,"COMPLETED")
+        _video_status(task_id,"COMPLETED",stage="private_preview")
     except Exception as exc:
         try:
             # Never persist the private prompt or secrets; only bounded exception diagnostics.
-            _video_status(task_id,"FAILED",exc.__class__.__name__,str(exc))
+            _video_status(task_id,"FAILED",exc.__class__.__name__,str(exc),stage=current.get("stage"))
         except Exception:
             pass
     finally:
+        heartbeat_stop.set()
         _lock.release()
 
 
