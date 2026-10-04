@@ -1,5 +1,9 @@
 name: Private birthday first production
 on:
+  pull_request:
+    paths:
+      - "scripts/private_birthday_first_production.py"
+      - ".github/workflows/private-birthday-first-production.yml"
   push:
     branches: [main]
     paths:
@@ -11,7 +15,17 @@ concurrency:
   group: private-birthday-first-production
   cancel-in-progress: false
 jobs:
+  syntax-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m py_compile scripts/private_birthday_first_production.py
+      - run: grep -q 'No social publisher' scripts/private_birthday_first_production.py
   render-private:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: syntax-safety
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
