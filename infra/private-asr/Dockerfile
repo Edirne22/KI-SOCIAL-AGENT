@@ -13,7 +13,7 @@ RUN HF_HUB_OFFLINE=0 python -c "from huggingface_hub import snapshot_download; s
  && test -s /opt/private-asr-model/model.bin \
  && test -s /opt/private-asr-model/config.json
 COPY content_factory_private_asr.py content_factory_private_asr_runtime.py content_factory_private_asr_r2_bridge.py /app/
-COPY music_agent.py /app/
+COPY music_agent.py content_factory_private_video_orchestrator.py /app/
 COPY scripts/private_birthday_first_production.py scripts/ai_central_shared_inbox.py scripts/r2_media_warehouse.py /app/scripts/
 COPY assets/musik/chill/hypnotic-ambient.mp3 /app/assets/musik/chill/hypnotic-ambient.mp3
 # Bundled model runs offline; never include personal audio in build or CI.
