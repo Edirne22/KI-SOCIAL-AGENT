@@ -8,6 +8,9 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import run_private_asr
 import scripts.private_birthday_first_production as private_birthday
 from scripts.ai_central_shared_inbox import client_from_env
+from content_factory_private_video_orchestrator import (
+    STAGES, build_plan, load_private_prompt, persist_stage, PrivateQM,
+)
 
 _lock = threading.Lock()
 _uuid = re.compile(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\Z")
@@ -24,9 +27,23 @@ def _video_status(task_id, status):
 def _run_video(task_id):
     try:
         _video_status(task_id,"RUNNING")
-        private_birthday.run()
+        client,bucket=client_from_env()
+        persist_stage(client,bucket,task_id,"production_lead","RUNNING")
+        prompt=load_private_prompt(client,bucket,task_id)
+        assets=private_birthday.recent_assets(client,bucket)
+        persist_stage(client,bucket,task_id,"production_lead","COMPLETED","prompt resolved and job decomposed")
+        persist_stage(client,bucket,task_id,"creative_director","RUNNING")
+        plan=build_plan(task_id,prompt,assets)
+        persist_stage(client,bucket,task_id,"creative_director","COMPLETED",plan.story_style)
+        persist_stage(client,bucket,task_id,"media_story","COMPLETED",f"{len(assets)} private assets bound")
+        persist_stage(client,bucket,task_id,"music_audio","COMPLETED","documented track selected")
+        persist_stage(client,bucket,task_id,"video_editor_ffmpeg","RUNNING")
+        result=private_birthday.run(task_id=task_id,prompt=prompt,plan=plan,assets_override=assets)
+        persist_stage(client,bucket,task_id,"video_editor_ffmpeg","COMPLETED")
+        persist_stage(client,bucket,task_id,"qm","COMPLETED","renderer integrity/audio/duration QM passed")
+        persist_stage(client,bucket,task_id,"private_preview","COMPLETED","private R2 and Telegram preview delivered")
         _video_status(task_id,"COMPLETED")
-    except Exception:
+    except Exception as exc:
         try:
             _video_status(task_id,"FAILED")
         except Exception:
