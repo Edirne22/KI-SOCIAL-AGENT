@@ -16,6 +16,7 @@ COPY content_factory_private_asr.py content_factory_private_asr_runtime.py conte
 COPY music_agent.py content_factory_private_video_orchestrator.py /app/
 COPY scripts/private_birthday_first_production.py scripts/ai_central_shared_inbox.py scripts/r2_media_warehouse.py /app/scripts/
 COPY assets/musik/chill/hypnotic-ambient.mp3 /app/assets/musik/chill/hypnotic-ambient.mp3
+COPY config/MUSIC_LIBRARY.json /app/config/MUSIC_LIBRARY.json
 # Bundled model runs offline; never include personal audio in build or CI.
 COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py /app/
 RUN useradd --uid 10001 --create-home asr && chown -R asr:asr /app /opt/private-asr-model
