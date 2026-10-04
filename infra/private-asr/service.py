@@ -40,8 +40,17 @@ def _run_video(task_id):
         persist_stage(client,bucket,task_id,"video_editor_ffmpeg","RUNNING")
         result=private_birthday.run(task_id=task_id,prompt=prompt,plan=plan,assets_override=assets)
         persist_stage(client,bucket,task_id,"video_editor_ffmpeg","COMPLETED")
-        persist_stage(client,bucket,task_id,"qm","COMPLETED","renderer integrity/audio/duration QM passed")
-        persist_stage(client,bucket,task_id,"private_preview","COMPLETED","private R2 and Telegram preview delivered")
+        persist_stage(client,bucket,task_id,"qm","RUNNING")
+        qm=PrivateQM().checks(duration=result["duration"],has_audio=result["has_audio"],
+                              has_video=result["has_video"],creative={"overlays":plan.overlays,"privacy":plan.privacy})
+        if not qm["passed"]:
+            raise RuntimeError("PRIVATE_AGENT_QM_FAILED")
+        persist_stage(client,bucket,task_id,"qm","COMPLETED","duration/audio/video/creative/privacy passed")
+        preview={"schema":"PRIVATE-VIDEO-PREVIEW-V1","task_id":task_id,"state":"READY_FOR_HUMAN",
+                 "r2_key":result["r2_key"],"sha256":result["sha256"],"private":True,"publishable":False}
+        client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/preview.json",
+            Body=json.dumps(preview).encode(),ContentType="application/json",CacheControl="private, no-store")
+        persist_stage(client,bucket,task_id,"private_preview","COMPLETED","private R2/Telegram preview ready")
         _video_status(task_id,"COMPLETED")
     except Exception as exc:
         try:
