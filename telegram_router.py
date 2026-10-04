@@ -604,7 +604,7 @@ def main() -> None:
                 raise RuntimeError(f"MotoGP-Receiver fehlgeschlagen (Exit {result.returncode}); Update bleibt offen.")
             _ack(uid)
             print(f"ROUTER: MotoGP Update {uid} erfolgreich verarbeitet und bestätigt.")
-            return
+            continue
 
         if _is_general_command(text):
             print(f"ROUTER: Update {uid} -> allgemeiner Telegram Receiver")
@@ -620,7 +620,7 @@ def main() -> None:
                 raise RuntimeError(f"Allgemeiner Telegram-Receiver fehlgeschlagen (Exit {result.returncode}).")
             _ack(uid)
             print(f"ROUTER: Allgemeines Update {uid} erfolgreich verarbeitet und bestätigt.")
-            return
+            continue
 
         # FIX 3: freundliche Antwort statt stille Bestätigung
         print(f"ROUTER: Update {uid} unbekannt; sende freundliche Hilfe.")
@@ -632,7 +632,7 @@ def main() -> None:
         except Exception as e:
             print(f"ROUTER: Hilfe senden fehlgeschlagen: {e}")
         _ack(uid)
-        return
+        continue
 
     print("ROUTER: Kein verarbeitbares Update gefunden.")
 
