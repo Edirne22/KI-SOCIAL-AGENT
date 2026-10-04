@@ -36,6 +36,7 @@ class Inbox(unittest.TestCase):
     def test_commands_do_not_intercept_existing_router(self):
         self.assertIsNone(parse_command("T1,T3"))
         self.assertEqual(parse_command("/zentrale status"),("status",None))
+        self.assertEqual(parse_command("/zentrale SOFORTAUFTRAG – PRIVATE VIDEOPRODUKTION\nDünya wird 12 Jahre alt. Geburtstag im Trampolinpark."),("auftrag","SOFORTAUFTRAG – PRIVATE VIDEOPRODUKTION\nDünya wird 12 Jahre alt. Geburtstag im Trampolinpark."))
         self.assertEqual(parse_command("zentrale auftrag OpenChatCut prüfen"),("auftrag","OpenChatCut prüfen"))
         self.assertEqual(parse_command("/zentrale starten 1234567890abcdef"),("starten","1234567890abcdef"))
         self.assertEqual(parse_command("/zentrale ergebnis 1234567890abcdef"),("ergebnis","1234567890abcdef"))
