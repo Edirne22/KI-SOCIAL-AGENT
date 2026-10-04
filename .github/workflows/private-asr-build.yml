@@ -49,3 +49,4 @@ jobs:
           curl -fsS http://127.0.0.1:5200/health | grep -q '"ready": true'
           test "$(curl -s -o /dev/null -w '%{http_code}' -X POST http://127.0.0.1:5200/jobs -H 'Content-Type: application/json' -d '{}')" = 401
           test "$(curl -s -o /dev/null -w '%{http_code}' -X POST http://127.0.0.1:5200/jobs -H 'Authorization: Bearer synthetic-test-token' -H 'Content-Type: application/json' -d '{}')" = 400
+          test "$(curl -s -o /dev/null -w '%{http_code}' -X POST http://127.0.0.1:5200/private-video/jobs -H 'Authorization: Bearer synthetic-test-token' -H 'Content-Type: application/json' -d '{}')" = 400

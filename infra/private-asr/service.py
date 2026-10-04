@@ -6,10 +6,34 @@ import re
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import run_private_asr
+import scripts.private_birthday_first_production as private_birthday
+from scripts.ai_central_shared_inbox import client_from_env
 
 _lock = threading.Lock()
 _uuid = re.compile(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\Z")
 _date = re.compile(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}\Z")
+_task = re.compile(r"[A-Za-z0-9_-]{10,64}\Z")
+
+def _video_status(task_id, status):
+    client,bucket=client_from_env()
+    payload={"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":task_id,"status":status}
+    client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/status.json",
+                      Body=json.dumps(payload).encode("utf-8"),ContentType="application/json",
+                      CacheControl="private, no-store")
+
+def _run_video(task_id):
+    try:
+        _video_status(task_id,"RUNNING")
+        private_birthday.run()
+        _video_status(task_id,"COMPLETED")
+    except Exception:
+        try:
+            _video_status(task_id,"FAILED")
+        except Exception:
+            pass
+    finally:
+        _lock.release()
+
 
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args):
@@ -33,7 +57,7 @@ class Handler(BaseHTTPRequestHandler):
         self.respond(200 if ready else 503, {"ready": ready})
 
     def do_POST(self):
-        if self.path != "/jobs":
+        if self.path not in ("/jobs","/private-video/jobs"):
             return self.respond(404, {"error": "not_found"})
         expected = os.getenv("PRIVATE_ASR_INTERNAL_TOKEN", "")
         provided = self.headers.get("Authorization", "")
@@ -44,6 +68,24 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 1024:
                 return self.respond(413, {"error": "size"})
             data = json.loads(self.rfile.read(size))
+            if self.path == "/private-video/jobs":
+                if not isinstance(data, dict) or set(data) != {"task_id"} or not isinstance(data["task_id"],str) or not _task.fullmatch(data["task_id"]):
+                    raise ValueError()
+                client,bucket=client_from_env()
+                key=f"ai-central/v1/private-video/{data['task_id']}/status.json"
+                try:
+                    existing=json.loads(client.get_object(Bucket=bucket,Key=key)["Body"].read(4096))
+                except Exception as exc:
+                    code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+                    if code not in ("404","NoSuchKey","NotFound"): raise
+                else:
+                    if existing.get("schema")=="PRIVATE-VIDEO-STATUS-V1" and existing.get("task_id")==data["task_id"]:
+                        return self.respond(200, {"status":existing.get("status","UNKNOWN"),"task_id":data["task_id"]})
+                if not _lock.acquire(False):
+                    return self.respond(409, {"error":"busy"})
+                _video_status(data["task_id"],"ACCEPTED")
+                threading.Thread(target=_run_video,args=(data["task_id"],),daemon=True).start()
+                return self.respond(202, {"status":"ACCEPTED","task_id":data["task_id"]})
             if not isinstance(data, dict) or set(data) != {"inbox_id", "date", "language"}:
                 raise ValueError()
             if not isinstance(data["inbox_id"], str) or not _uuid.fullmatch(data["inbox_id"]):

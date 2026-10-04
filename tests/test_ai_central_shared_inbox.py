@@ -1,5 +1,6 @@
 import io
 import json
+import os
 import unittest
 from datetime import datetime, timezone
 from scripts.ai_central_shared_inbox import parse_command, submit, recent, handle, start_reviewed, result_summary
@@ -70,6 +71,38 @@ class Inbox(unittest.TestCase):
         with self.assertRaises(ValueError):
             start_reviewed(self.r2,"private",draft["id"],"fake-github-actions-token",post=fake_post)
         self.assertEqual(len(calls),1)
+    def test_private_video_start_routes_to_container_not_github(self):
+        now=datetime(2026,10,4,16,0,tzinfo=timezone.utc)
+        draft=submit(self.r2,"private",update_id=188,chat_id="123",
+            message="SOFORTAUFTRAG – PRIVATE VIDEOPRODUKTION\nDünya wird 12. Geburtstag im Trampolinpark.",now=now)
+        calls=[]
+        def fake_post(url,**kw):
+            calls.append((url,kw))
+            class Accepted:status_code=202
+            return Accepted()
+        old_url=os.environ.get("PRIVATE_MEDIA_RUNTIME_URL")
+        old_token=os.environ.get("PRIVATE_ASR_INTERNAL_TOKEN")
+        os.environ["PRIVATE_MEDIA_RUNTIME_URL"]="https://private-runtime.example/private-video/jobs"
+        os.environ["PRIVATE_ASR_INTERNAL_TOKEN"]="runtime-test-token"
+        try:
+            reply=start_reviewed(self.r2,"private",draft["id"],"github-token",post=fake_post)
+        finally:
+            if old_url is None:os.environ.pop("PRIVATE_MEDIA_RUNTIME_URL",None)
+            else:os.environ["PRIVATE_MEDIA_RUNTIME_URL"]=old_url
+            if old_token is None:os.environ.pop("PRIVATE_ASR_INTERNAL_TOKEN",None)
+            else:os.environ["PRIVATE_ASR_INTERNAL_TOKEN"]=old_token
+        self.assertIn("Container angenommen",reply)
+        self.assertEqual(len(calls),1)
+        self.assertEqual(calls[0][0],"https://private-runtime.example/private-video/jobs")
+        self.assertEqual(calls[0][1]["json"],{"task_id":draft["id"]})
+        key=next(k for k in self.r2.objects if k.startswith("ai-central/v1/inbox/"))
+        self.assertEqual(json.loads(self.r2.objects[key])["status"],"QUEUED_PRIVATE_VIDEO")
+        self.assertNotIn("api.github.com",calls[0][0])
+        status_key=f"ai-central/v1/private-video/{draft['id']}/status.json"
+        self.r2.put_object(Bucket="private",Key=status_key,Body=json.dumps({
+            "schema":"PRIVATE-VIDEO-STATUS-V1","task_id":draft["id"],"status":"RUNNING"}).encode())
+        self.assertIn("RUNNING",result_summary(self.r2,"private",draft["id"]))
+
     def test_failed_telegram_start_restores_draft(self):
         now=datetime(2026,10,1,12,0,tzinfo=timezone.utc)
         draft=submit(self.r2,"private",update_id=89,chat_id="123",message="Container untersuchen",now=now)

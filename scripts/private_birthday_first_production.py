@@ -11,32 +11,46 @@ from hashlib import sha256
 import json, os, subprocess, tempfile
 from pathlib import Path
 import requests
+from music_agent import mix_music, output_is_valid, probe_duration
 from scripts.ai_central_shared_inbox import client_from_env
 from scripts.r2_media_warehouse import job_prefix
 
 INDEX="private/v1/telegram-album-index/"
-WINDOW_HOURS=4
+SESSION_HOURS=3
 MAX_ITEMS=80
 TARGET_SECONDS=300
 MUSIC=Path("assets/musik/chill/hypnotic-ambient.mp3")
 TITLE="Dünya – Level 12"
 
 def recent_assets(client,bucket,now=None):
-    now=now or datetime.now(timezone.utc); cutoff=now-timedelta(hours=WINDOW_HOURS)
+    # Bind to the latest private upload *session*, not the wall clock. The owner
+    # may start rendering hours after upload; a 4h "now" cutoff must never force
+    # a re-upload. Multiple Telegram albums sent close together are one session.
     page=client.list_objects_v2(Bucket=bucket,Prefix=INDEX,MaxKeys=1000)
     if page.get("IsTruncated"): raise RuntimeError("PRIVATE_INDEX_TOO_LARGE")
-    rows=[]
+    albums=[]
     for entry in page.get("Contents",[]):
         rec=json.loads(client.get_object(Bucket=bucket,Key=entry["Key"])["Body"].read(4096))
         if rec.get("lane")!="private": continue
-        created=datetime.fromisoformat(rec["created_at"])
-        if created<cutoff: continue
+        try:
+            created=datetime.fromisoformat(rec["created_at"])
+        except (KeyError,TypeError,ValueError):
+            continue
+        if created.tzinfo is None: continue
         prefix=rec.get("prefix") or job_prefix("private",created,rec["job_id"])
         manifest=json.loads(client.get_object(Bucket=bucket,Key=prefix+"manifest.json")["Body"].read(300000))
         if manifest.get("lane")!="private" or manifest.get("status")!="INTAKE": continue
-        for asset in manifest.get("assets",[]):
-            if asset.get("mime") in {"image/jpeg","image/png","video/mp4","video/quicktime"}:
-                rows.append((asset.get("received_at",rec["created_at"]),asset))
+        assets=[a for a in manifest.get("assets",[])
+                if a.get("mime") in {"image/jpeg","image/png","video/mp4","video/quicktime"}]
+        if assets: albums.append((created,assets))
+    if not albums: raise RuntimeError("PRIVATE_INPUT_COUNT_UNSAFE")
+    newest=max(created for created,_ in albums)
+    cutoff=newest-timedelta(hours=SESSION_HOURS)
+    rows=[]
+    for created,assets in albums:
+        if created<cutoff: continue
+        for asset in assets:
+            rows.append((asset.get("received_at",created.isoformat()),asset))
     rows.sort(key=lambda x:x[0])
     if not rows or len(rows)>MAX_ITEMS: raise RuntimeError("PRIVATE_INPUT_COUNT_UNSAFE")
     return [x[1] for x in rows]
