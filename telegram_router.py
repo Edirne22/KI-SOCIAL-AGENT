@@ -467,7 +467,7 @@ def main() -> None:
                 send_message(f"KI-Zentrale: {exc}")
             # ACK only after successful R2 write/response. Transient errors stay retryable.
             _ack(uid)
-            return
+            continue
         if cmd in {"help", "hilfe"}:
             send_message(
                 "🤖 Verfügbare Kommandos:\n\n"
@@ -514,7 +514,7 @@ def main() -> None:
                 "/help – Diese Hilfe"
             )
             _ack(uid)
-            return
+            continue
         if cmd in AMBIGUOUS_HUMAN_ACTIONS:
             send_message(
                 "⛔ Nicht eindeutig – deshalb wurde nichts veröffentlicht. "
@@ -522,30 +522,30 @@ def main() -> None:
                 "Für ein Instagram-Bild: bild posten, bild neu oder bei mehreren bild 3 posten."
             )
             _ack(uid)
-            return
+            continue
         action = _get_bild_command_action(cmd)
         if action:
             print(f"ROUTER: Update {uid} -> kontextgebundene Instagram Bild-Freigabe ('{action}')")
             _handle_bild_command(cmd)
             _ack(uid)
-            return
+            continue
 
         if re.match(r"^(?:antwort|ändern|ignorieren|info|memory)\\s+ig-[a-f0-9]{8}(?:\\s+.*)?$", cmd, re.I):
             print(f"ROUTER: Update {uid} -> Instagram Engagement")
             send_message(instagram_engagement.telegram_command(text, run_id=os.environ.get("GITHUB_RUN_ID", "local")))
             _ack(uid)
-            return
+            continue
 
         if re.match(r"^(?:antwort|ändern|ignorieren|info|memory)\\s+fb-[a-f0-9]{8}(?:\\s+.*)?$", cmd, re.I):
             print(f"ROUTER: Update {uid} -> Facebook Engagement")
             send_message(facebook_engagement.telegram_command(text))
             _ack(uid)
-            return
+            continue
 
         if cmd in {"vision", "ocr", "omni"}:
             send_message("Bitte sende ein Bild mit dem Befehl /vision, /ocr oder /omni.")
             _ack(uid)
-            return
+            continue
         archive_select = bool(re.fullmatch(r"(?:t\\s*|poste\\s+|nimm\\s+)\\d+", cmd, re.I))
         archive_query = any(k in cmd for k in ("gestern","vorgestern","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig mir","zeig die","zeige mir","zeige die","liste","mehr","weiter","nächsten","naechsten","ungepostet","schon gepostet","türk","tuerk","turk","worldsbk","worldssp","moto2","moto3","ai ogura","marc marquez","marc márquez","jack miller","toprak","deniz öncü","deniz oncu","can öncü","can oncu"))
         if archive_select or archive_query:
@@ -561,12 +561,12 @@ def main() -> None:
                 approved = subprocess.run([sys.executable, "-u", "motogp_telegram_receive.py", str(uid), chat, normalized], check=False)
                 if approved.returncode not in (0,2):
                     raise RuntimeError(f"MotoGP-Receiver fehlgeschlagen (Exit {approved.returncode}); Update bleibt offen.")
-                _ack(uid); return
+                _ack(uid); continue
             if result.returncode not in (0, 1, 2):
                 raise RuntimeError(f"Racing Archiv fehlgeschlagen (Exit {result.returncode}).")
             if result.returncode != 2:
                 _ack(uid)
-                return
+                continue
 
         if re.match(r"^racing\s+(?:top10|top20|gestern|suche\s+.+|artikel\s+\d+|url\s+https?://\S+)$", cmd, re.I):
             print(f"ROUTER: Update {uid} -> manuelle Racing-Auswahl")
@@ -574,7 +574,7 @@ def main() -> None:
             if result.returncode not in (0, 1):
                 raise RuntimeError(f"Manuelle Racing-Auswahl fehlgeschlagen (Exit {result.returncode}).")
             _ack(uid)
-            return
+            continue
 
         is_turkish_approval = bool(
             re.fullmatch(r"turkish\s+(?:(?:t\s*)?[1-5](?:[\s,]+(?:t\s*)?[1-5])*|alle|nein|✅|❌)", cmd, re.I)
@@ -599,7 +599,7 @@ def main() -> None:
                 # Update trotzdem quittieren, damit es nicht in der Queue klebt.
                 print(f"ROUTER: MotoGP-Update {uid} unverarbeitet (Exit 2); quittiert.")
                 _ack(uid)
-                return
+                continue
             if result.returncode != 0:
                 raise RuntimeError(f"MotoGP-Receiver fehlgeschlagen (Exit {result.returncode}); Update bleibt offen.")
             _ack(uid)
@@ -615,7 +615,7 @@ def main() -> None:
             if result.returncode == 2:
                 print(f"ROUTER: Allgemeines Update {uid} unverarbeitet (Exit 2); quittiert.")
                 _ack(uid)
-                return
+                continue
             if result.returncode != 0:
                 raise RuntimeError(f"Allgemeiner Telegram-Receiver fehlgeschlagen (Exit {result.returncode}).")
             _ack(uid)
