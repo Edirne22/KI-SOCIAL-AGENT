@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -69,6 +69,28 @@ def get_latest_pending() -> dict[str, Any] | None:
     """Returns the newest pending item, matching the image most recently shown in Telegram."""
     items = load_pending()
     return items[-1] if items else None
+
+
+def get_recent_pending(max_age_seconds: int = 7200, now: datetime | None = None) -> list[dict[str, Any]]:
+    """Return only fresh image approvals; stale queue entries are never publish authority."""
+    if max_age_seconds < 1:
+        return []
+    now = now or datetime.now(timezone.utc)
+    out = []
+    for item in load_pending():
+        raw = item.get("erstellt")
+        if not isinstance(raw, str):
+            continue
+        try:
+            stamp = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if stamp.tzinfo is None:
+            continue
+        age = (now - stamp.astimezone(timezone.utc)).total_seconds()
+        if 0 <= age <= max_age_seconds:
+            out.append(item)
+    return out
 
 
 def remove_pending(batch_id: str, auswahl: int) -> dict[str, Any] | None:
