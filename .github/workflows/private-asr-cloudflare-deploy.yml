@@ -1,6 +1,15 @@
 name: Private ASR guarded Cloudflare deployment
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "infra/private-asr/**"
+      - "infra/private-asr-cloudflare/**"
+      - "scripts/private_birthday_first_production.py"
+      - "music_agent.py"
+      - "assets/musik/chill/hypnotic-ambient.mp3"
+      - ".github/workflows/private-asr-cloudflare-deploy.yml"
 permissions:
   contents: read
 concurrency:
