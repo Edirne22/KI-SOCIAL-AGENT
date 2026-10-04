@@ -1,0 +1,85 @@
+name: One-time private video retry after container rollout
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/private-video-rollout-retry-once.yml"
+permissions:
+  contents: read
+jobs:
+  retry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
+      PRIVATE_MEDIA_RUNTIME_URL: https://edirne22-private-asr.butupeli.workers.dev/private-video/jobs
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check --quiet boto3 requests
+      - name: Retry the already-claimed private video after image rollout
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, time
+          from datetime import datetime, timezone, timedelta
+          import boto3, requests
+          from scripts.ai_central_shared_inbox import PREFIX, _is_private_video_request
+          client=boto3.client("s3",
+              endpoint_url="https://"+os.environ["R2_ACCOUNT_ID"]+".r2.cloudflarestorage.com",
+              aws_access_key_id=os.environ["R2_ACCESS_KEY_ID"],
+              aws_secret_access_key=os.environ["R2_SECRET_ACCESS_KEY"],region_name="auto")
+          bucket=os.environ["R2_BUCKET_NAME"]; now=datetime.now(timezone.utc)
+          page=client.list_objects_v2(Bucket=bucket,Prefix=PREFIX,MaxKeys=100)
+          if page.get("IsTruncated"): raise SystemExit("ROLLOUT_RETRY_ABORT_INDEX_TRUNCATED")
+          matches=[]
+          for item in page.get("Contents",[]):
+              key=item.get("Key","")
+              if not key.endswith(".json"): continue
+              obj=client.get_object(Bucket=bucket,Key=key)
+              d=json.loads(obj["Body"].read(12000))
+              try: created=datetime.fromisoformat(str(d.get("created_at","")))
+              except ValueError: continue
+              if created.tzinfo is None or now-created>timedelta(hours=24): continue
+              if (d.get("schema")=="AI-INBOX-V1" and d.get("kind")=="message"
+                  and d.get("status")=="QUEUED_PRIVATE_VIDEO"
+                  and d.get("dispatch_target")=="private-media-container"
+                  and d.get("auto_dispatch") is False
+                  and _is_private_video_request(d.get("message",""))):
+                  matches.append(d)
+          if len(matches)!=1:
+              raise SystemExit("ROLLOUT_RETRY_ABORT_MATCH_COUNT_"+str(len(matches)))
+          d=matches[0]; status_key=f"ai-central/v1/private-video/{d['id']}/status.json"
+          for attempt in range(1,46):
+              try:
+                  current=json.loads(client.get_object(Bucket=bucket,Key=status_key)["Body"].read(4096))
+              except Exception as exc:
+                  code=str(getattr(exc,"response",{}).get("Error",{}).get("Code",""))
+                  if code not in ("404","NoSuchKey","NotFound"): raise
+              else:
+                  state=current.get("status")
+                  if current.get("schema")=="PRIVATE-VIDEO-STATUS-V1" and state in ("ACCEPTED","RUNNING","COMPLETED"):
+                      print("PRIVATE_VIDEO_ROLLOUT_RETRY_ALREADY_"+state)
+                      raise SystemExit(0)
+              try:
+                  response=requests.post(os.environ["PRIVATE_MEDIA_RUNTIME_URL"],
+                      headers={"Authorization":"Bearer "+os.environ["PRIVATE_ASR_INTERNAL_TOKEN"]},
+                      json={"task_id":d["id"]},timeout=25)
+                  code=response.status_code
+              except requests.RequestException:
+                  code=599
+              if code in (200,202):
+                  print("PRIVATE_VIDEO_ROLLOUT_RETRY_ACCEPTED")
+                  raise SystemExit(0)
+              if code not in (404,409,429,502,503,504,599):
+                  raise SystemExit("ROLLOUT_RETRY_FATAL_HTTP_"+str(code))
+              print("PRIVATE_VIDEO_ROLLOUT_WAIT_"+str(attempt)+"_HTTP_"+str(code))
+              time.sleep(20)
+          raise SystemExit("ROLLOUT_RETRY_TIMEOUT")
+          PY
