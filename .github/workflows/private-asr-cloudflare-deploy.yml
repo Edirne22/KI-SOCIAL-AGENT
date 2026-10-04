@@ -73,7 +73,7 @@ jobs:
         run: |
           set -euo pipefail
           docker build -t edirne22-media-tools:release .
-          docker run --rm --entrypoint python edirne22-media-tools:release -c 'import faster_whisper, scenedetect; import subprocess; subprocess.run(["ffmpeg", "-version"], check=True, stdout=subprocess.DEVNULL); print("WHISPER_FFMPEG_SCENEDETECT_OK")'
+          docker run --rm --entrypoint python edirne22-media-tools:release -c 'import faster_whisper, scenedetect; import subprocess; from music_agent import load_library; subprocess.run(["ffmpeg", "-version"], check=True, stdout=subprocess.DEVNULL); tracks=load_library(); assert tracks, "documented music library missing from release image"; print("WHISPER_FFMPEG_SCENEDETECT_MUSIC_OK")'
       - name: Deploy isolated private ASR worker and container
         working-directory: infra/private-asr-cloudflare
         run: npx wrangler deploy --config wrangler.jsonc
