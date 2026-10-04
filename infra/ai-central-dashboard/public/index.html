@@ -89,7 +89,7 @@ $("tabLive").onclick=()=>setTab("live");
 $("tabStudio").onclick=()=>setTab("studio");async function api(path,opts={}){if(!token)throw Error("Bitte zuerst verbinden");let r=await fetch(path,{...opts,headers:{"authorization":"Bearer "+token,...(opts.headers||{})},cache:"no-store"});let data=await r.json();if(!r.ok)throw Error(data.error||String(r.status));return data}
 // A selected R2 inbox entry is ONE conversation. Nothing in this panel
 // creates model output or starts inference without the separate approved click.
-let selectedTask=null,selectedReport=null,selectedReportError="";
+let selectedTask=null,selectedReport=null,selectedReportError="",selectedPrivateVideo=null;
 let previewCache=new Map();
 function clearAttachmentCache(){
   for(const entry of previewCache.values())if(entry.url)URL.revokeObjectURL(entry.url);
@@ -197,15 +197,28 @@ function paintConversation(){
     root.append(start);
   }
   if(entry.kind==="message"&&entry.status==="QUEUED_PRIVATE_VIDEO"){
+    const names={production_lead:"Produktionsleiter",creative_director:"Creative Director",media_story:"Medien/Story",music_audio:"Musik/Audio",video_editor_ffmpeg:"FFmpeg",qm:"QM",private_preview:"Private Vorschau"};
+    if(selectedPrivateVideo?.id===entry.id){
+      const p=selectedPrivateVideo;
+      const lines=(p.stages||[]).map(s=>(names[s.stage]||s.stage)+": "+s.status+(s.updated_at?" · "+new Date(s.updated_at).toLocaleTimeString("de-DE"):""));
+      let headline="FABRIK LIVE · "+p.status+(p.stage?" · "+(names[p.stage]||p.stage):"");
+      if(p.error_code)headline+=" · "+p.error_code;
+      const live=chatBubble(headline,lines.join("\n")+(p.detail?"\nFehler: "+p.detail:""),p.status==="FAILED"||p.status==="STALLED"?"bot error":"bot");
+      root.append(live);
+    }else root.append(chatBubble("FABRIK LIVE","Lade privaten Produktionsstatus aus R2 …","bot"));
+    const state=selectedPrivateVideo?.id===entry.id?selectedPrivateVideo.status:"UNKNOWN";
+    const canStart=["FAILED","NOT_STARTED","UNKNOWN"].includes(state);
     const startVideo=document.createElement("button");startVideo.type="button";startVideo.className="primary";
-    startVideo.textContent="▶ Private Videoproduktion starten";
+    startVideo.textContent=state==="FAILED"?"↻ Private Videoproduktion neu starten":"▶ Private Videoproduktion starten";
+    startVideo.disabled=!canStart;
     startVideo.onclick=async()=>{
       if(!window.confirm("Diesen bereits freigegebenen privaten Videoauftrag jetzt im Media-Container starten? Keine Veröffentlichung."))return;
       startVideo.disabled=true;
       try{
         const result=await api("/api/private-video-start",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({id:entry.id,date:entry.created_at.slice(0,10)})});
+        selectedPrivateVideo={id:entry.id,status:result.status,stage:"production_lead",stages:[]};
         status("Private Videoproduktion vom Container angenommen: "+result.id+" · "+result.status);
-        startVideo.textContent="✓ Vom Media-Container angenommen";
+        paintConversation();
       }catch(e){startVideo.disabled=false;status("Videoproduktion nicht gestartet: "+e.message)}
     };
     root.append(startVideo);
@@ -239,10 +252,17 @@ function paintConversation(){
 async function checkSelectedTask(){
   const item=selectedTask;if(!item||item.kind!=="message")return;
   try{
-    const result=await api("/api/task?id="+encodeURIComponent(item.id));
-    if(selectedTask?.id!==item.id)return;
-    if(result.id!==item.id)throw Error("Bericht gehört nicht zum ausgewählten Auftrag");
-    selectedReport=result;selectedReportError="";
+    if(item.status==="QUEUED_PRIVATE_VIDEO"){
+      const result=await api("/api/private-video-status?id="+encodeURIComponent(item.id));
+      if(selectedTask?.id!==item.id)return;
+      if(result.id!==item.id)throw Error("Status gehört nicht zum ausgewählten Auftrag");
+      selectedPrivateVideo=result;selectedReportError="";
+    }else{
+      const result=await api("/api/task?id="+encodeURIComponent(item.id));
+      if(selectedTask?.id!==item.id)return;
+      if(result.id!==item.id)throw Error("Bericht gehört nicht zum ausgewählten Auftrag");
+      selectedReport=result;selectedReportError="";
+    }
   }catch(e){
     if(selectedTask?.id!==item.id)return;
     selectedReportError="Ergebnisprüfung fehlgeschlagen: "+e.message;
@@ -251,7 +271,7 @@ async function checkSelectedTask(){
 }
 function selectInboxTask(item){
   if(selectedTask?.id!==item.id)clearAttachmentCache();
-  selectedTask=item;selectedReport=null;selectedReportError="";
+  selectedTask=item;selectedReport=null;selectedPrivateVideo=null;selectedReportError="";
   // Only an explicitly selected private audio entry may prefill the ASR form.
   // Selection never grants consent or starts transcription.
   if(item.kind==="file"&&["audio/webm","audio/mp4","audio/x-m4a","audio/m4a","audio/ogg"].includes(item.file?.mime)&&
@@ -268,7 +288,7 @@ function selectInboxTask(item){
   if(item.kind==="message")checkSelectedTask();
 }
 $("clearSelection").onclick=()=>{
-  selectedTask=null;selectedReport=null;selectedReportError="";
+  selectedTask=null;selectedReport=null;selectedPrivateVideo=null;selectedReportError="";
   clearAttachmentCache();paintConversation();
 };
 function clearPrivateVideo(){
