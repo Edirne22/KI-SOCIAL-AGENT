@@ -55,7 +55,7 @@ def recent_assets(client,bucket,now=None):
     if not rows or len(rows)>MAX_ITEMS: raise RuntimeError("PRIVATE_INPUT_COUNT_UNSAFE")
     return [x[1] for x in rows]
 
-def run():
+def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     client,bucket=client_from_env()
     assets=recent_assets(client,bucket)
     image_count=sum(1 for a in assets if a["mime"].startswith("image/"))
@@ -95,7 +95,7 @@ def run():
                        check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=600)
         if not MUSIC.exists(): raise RuntimeError("PRIVATE_BIRTHDAY_MUSIC_MISSING")
         out=root/"Duenya-Level-12-private.mp4"
-        mix_music(visual,MUSIC,out)
+        mix_music(visual,music,out)
         duration=probe_duration(out)
         if not 285 <= duration <= 305: raise RuntimeError(f"PRIVATE_RENDER_DURATION_UNSAFE:{duration:.2f}")
         if not output_is_valid(out): raise RuntimeError("PRIVATE_RENDER_STREAMS_INVALID")
