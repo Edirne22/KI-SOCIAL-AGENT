@@ -124,8 +124,13 @@ def start_reviewed(client,bucket,task_id,token,post=requests.post,mode="free-onl
     key,entry,etag=found[0]
     if not isinstance(etag,str) or not etag:
         raise RuntimeError("R2 ETag fehlt; parallelsicherer Start blockiert.")
+    recover_private = (entry.get("schema")=="AI-INBOX-V1" and entry.get("kind")=="message"
+        and entry.get("status")=="QUEUED_FREE_REVIEW" and entry.get("auto_dispatch") is False
+        and entry.get("dispatch_target")=="ai-central-inbox-agent.yml"
+        and _is_private_video_request(entry.get("message","")))
     if (entry.get("schema")!="AI-INBOX-V1" or entry.get("kind")!="message"
-        or entry.get("status")!="DRAFT_REQUIRES_REVIEW" or entry.get("auto_dispatch") is not False):
+        or entry.get("auto_dispatch") is not False
+        or (entry.get("status")!="DRAFT_REQUIRES_REVIEW" and not recover_private)):
         raise ValueError("Dieser Auftrag kann nicht gestartet werden.")
     day=str(entry.get("created_at",""))[:10]
     if not re.fullmatch(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}",day):
