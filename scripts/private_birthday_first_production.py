@@ -55,9 +55,9 @@ def run():
             seg=root/f"seg-{i:03d}.mp4"
             vf="scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1"
             if a["mime"].startswith("image/"):
-                cmd=["ffmpeg","-y","-loop","1","-t",f"{image_seconds:.3f}","-i",str(src),"-vf",vf+f",zoompan=z='min(zoom+0.0015,1.10)':d={max(1,int(image_seconds*30))}:s=1080x1920:fps=30","-an","-c:v","libx264","-preset","veryfast","-crf","24","-pix_fmt","yuv420p",str(seg)]
+                cmd=["ffmpeg","-y","-loop","1","-t",f"{image_seconds:.3f}","-i",str(src),"-vf",vf+",fps=15","-an","-c:v","libx264","-preset","ultrafast","-tune","stillimage","-crf","27","-pix_fmt","yuv420p",str(seg)]
             else:
-                cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=30","-an","-c:v","libx264","-pix_fmt","yuv420p",str(seg)]
+                cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=24","-an","-c:v","libx264","-preset","ultrafast","-crf","27","-pix_fmt","yuv420p",str(seg)]
             subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=120)
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
