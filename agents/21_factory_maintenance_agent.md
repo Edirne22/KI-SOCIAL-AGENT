@@ -20,7 +20,7 @@ Technische Stoerungen aus Fabrikmaschinen, Agenten, Dashboard/Telegram oder Watc
 Primaerer bereits vorhandener Coding-Weg:
 Factory Maintenance -> Coding Router -> OpenCode -> OpenRouter -> Claude Sonnet 4.5.
 Konfiguration: `infra/ai-central-tools/claude-only/opencode.jsonc`.
-OpenCode/Claude darf nicht unkontrolliert direkt auf main schreiben. Vorhandene alternative Coding-Modelle duerfen spaeter nur ueber denselben Vertrag hinzukommen. OmniRoute bleibt PAUSED.
+OpenCode/Claude erhaelt fuer Agent-21-Codefaelle Schreibzugriff im isolierten Arbeitszweig. Jeder Schreibvorgang muss vor/nachher dokumentiert werden: Anlass, Root Cause, Dateien, Diff/Commit, Tests und Ergebnis. Direkte unprotokollierte main-Aenderungen bleiben verboten. Vorhandene alternative Coding-Modelle duerfen spaeter nur ueber denselben Vertrag hinzukommen. OmniRoute bleibt PAUSED.
 
 ## Werkzeuge und Rollen
 - Agent 11 System Restart: begrenztes Restart-/Recovery-Werkzeug; bleibt eigenstaendig.
