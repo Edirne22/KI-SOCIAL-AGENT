@@ -17,6 +17,7 @@ from scripts.r2_media_warehouse import job_prefix
 INDEX="private/v1/telegram-album-index/"
 WINDOW_HOURS=4
 MAX_ITEMS=80
+TARGET_SECONDS=300
 
 def recent_assets(client,bucket,now=None):
     now=now or datetime.now(timezone.utc); cutoff=now-timedelta(hours=WINDOW_HOURS)
@@ -41,6 +42,9 @@ def recent_assets(client,bucket,now=None):
 def run():
     client,bucket=client_from_env()
     assets=recent_assets(client,bucket)
+    image_count=sum(1 for a in assets if a["mime"].startswith("image/"))
+    video_count=len(assets)-image_count
+    image_seconds=max(1.35,(TARGET_SECONDS-(video_count*4))/image_count) if image_count else 1.35
     token=os.environ["TELEGRAM_BOT_TOKEN"]; chat=os.environ["TELEGRAM_CHAT_ID"]
     with tempfile.TemporaryDirectory(prefix="duenya-private-") as td:
         root=Path(td); segments=[]
@@ -51,14 +55,14 @@ def run():
             seg=root/f"seg-{i:03d}.mp4"
             vf="scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1"
             if a["mime"].startswith("image/"):
-                cmd=["ffmpeg","-y","-loop","1","-t","1.35","-i",str(src),"-vf",vf+",zoompan=z='min(zoom+0.0015,1.10)':d=41:s=1080x1920:fps=30","-an","-c:v","libx264","-pix_fmt","yuv420p",str(seg)]
+                cmd=["ffmpeg","-y","-loop","1","-t",f"{image_seconds:.3f}","-i",str(src),"-vf",vf+f",zoompan=z='min(zoom+0.0015,1.10)':d={max(1,int(image_seconds*30))}:s=1080x1920:fps=30","-an","-c:v","libx264","-preset","veryfast","-crf","24","-pix_fmt","yuv420p",str(seg)]
             else:
                 cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=30","-an","-c:v","libx264","-pix_fmt","yuv420p",str(seg)]
             subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=120)
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
         out=root/"Duenya-Level-12-private.mp4"
-        subprocess.run(["ffmpeg","-y","-f","concat","-safe","0","-i",str(concat),"-c:v","libx264","-pix_fmt","yuv420p","-movflags","+faststart",str(out)],
+        subprocess.run(["ffmpeg","-y","-f","concat","-safe","0","-i",str(concat),"-c","copy","-movflags","+faststart",str(out)],
                        check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=300)
         data=out.read_bytes()
         if not data or len(data)>49*1024*1024: raise RuntimeError("PRIVATE_RENDER_SIZE_UNSAFE")
