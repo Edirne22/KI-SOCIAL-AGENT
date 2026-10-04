@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1791002232
+Session-Timestamp: 1791094361
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,25 +15,29 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
+Artikelalter-Tage: 0.5
 Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: title:david-alonso-motegi-de-rekoru-k-rd-i-lk-d-rt-aras-nda-sadece-0-093-saniye
-Titel: David Alonso Motegi’de rekoru kırdı: İlk dört arasında sadece 0.093 saniye!
-Quelle: https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi
+Serie: MotoGP
+Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
+Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-1-david-alonso-motegid-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/david-alonso-moto2-motegi-kapak-dar-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-1-toprak-motegide-sonu-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-motegi-motogp-frenleme-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-David Alonso hat den Motegi-Pistrekord geknackt – in 1:47.508. Knapp dahinter die ganze Spitzengruppe: Die ersten Vier lagen nur 0,093 Sekunden auseinander. Manuel Gonzalez wurde Zweiter, und Deniz Öncü hat es in die Qualifying-Spitzengruppe geschafft.
+Toprak Razgatlıoğlu beendete den MotoGP-Sprint in Japan auf dem 17. Platz.
 
-Wie schätzt ihr die Lage im Moto2-Klassement ein?
+Trotz des Resultats machte er bei der Kontrolle der Yamaha in der Bremsphase wichtige Fortschritte.
 
-#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Laut eigener Aussage hat er eine Lösung gefunden und versteht nun, wie er das Bike handhaben muss.
+
+Mal sehen, wie sich diese Fortschritte in den nächsten Sessions auf der Strecke bemerkbar machen.
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -44,24 +48,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10861234
-Titel: 2026 Japonya GP sıralama: Martin rekor turla pole’de, Toprak 22. sırada
-Quelle: https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-rekor-turla-polede-toprak-22-sirada/10861234
+Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
+Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
+Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-2-2026-japonya-gp-sira-01.jpg
-Quellen-Preview: https://cdn-2.motorsport.com/images/amp/0JXRMeBY/s6/jorge-martin-aprilia-racing-te.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-2-motegide-olayli-spri-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-motegi-sprint-moreira-motogp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin sichert sich mit einer Rekordrunde die Pole-Position beim Qualifying zum Japan-GP 2026.
+In Motegi hat Marc Marquez den Sprint gewonnen, Diogo Moreira holt sich mit einem historischen zweiten Platz einen tollen Pulk. Mehr dazu
 
-Im Zeittraining holte Martin die Bestzeit und steht damit auf dem ersten Startplatz. Toprak beendet das Qualifying auf dem 22. Platz.
+Wie seht ihr die beiden?
 
-Wie schätzt ihr dieses Qualifying-Ergebnis ein?
-
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -69,27 +71,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.8
-Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: title:deniz-nc-japonya-da-daha-fazlas-n-istiyor-hedef-ilk-10-un-tesi
-Titel: Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi
-Quelle: https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi
+Artikelalter-Tage: 1.0
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:10861300
+Titel: MotoGP Japonya GP sprint: Marc Marquez kazandı, cezaların ardından Moreira ikinci, Toprak 17. sırada
+Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-sprint-marc-marquez-kazandi-cezalarin-ardindan-moreira-ikinci-toprak-17-sirada/10861300
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-3-deniz-oncu-japonyada-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/deniz-oncu-motegi-japonya-gp-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-3-motogp-japonya-gp-sp-01.jpg
+Quellen-Preview: https://cdn-2.motorsport.com/images/amp/6AlvDl1Y/s6/marc-marquez-ducati-team-2.jpg
 Plattformen: Instagram + Facebook
 Text:
-Deniz Öncü will in Japan mehr als nur die ersten zehn Plätze
+Marc Marquez hat den Sprint im japonischen MotoGP-Wochenende gewonnen. Nach den Strafen kam Diogo Moreira auf den zweiten Platz, Toprak landete auf Platz 17. 🏍️
 
-In Österreich hat er den neunten Platz geholt. Jetzt geht's nach Motegi zur Moto2-Japan-GP, und Öncü will da richtig mitziehen – der beste Saisonresultat steht auf dem Programm.
+Was erwartet ihr von der Runde in Japan?
 
-Was erwartet ihr von der Runde in Motegi?
-
-#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -97,25 +97,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10861225
-Titel: MotoGP Japonya GP 2. antrenman: Bezzecchi lider, Toprak 22. sırada
-Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezzecchi-lider-toprak-22-sirada/10861225
+Story-Key: title:enea-bastianini-pist-limit-cezas-n-de-erlendirdi-bir-avantaj-elde-etti-imi-d-nm-yorum
+Titel: Enea Bastianini Pist Limit Cezasını Değerlendirdi: “Bir Avantaj Elde Ettiğimi Düşünmüyorum!”
+Quelle: https://motoetkinlik.com/enea-bastianini-pist-limit-cezasini-degerlendirdi-bir-avantaj-elde-ettigimi-dusunmuyorum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-4-motogp-japonya-gp-2-01.jpg
-Quellen-Preview: https://cdn-9.motorsport.com/images/amp/6grQOjjY/s6/marco-bezzecchi-aprilia-racing.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-4-enea-bastianini-pist-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/08/enea-bastianini-ktm-silverstone-motogp-sorunu-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Beim MotoGP-Training in Japan führt Marco Bezzecchi die Zeitwerte an.
+Enea Bastianini wertete den Track-Limit-Strafe im Japan-GP-Sprint.
 
-Was haltet ihr von Bezzecchis Tempo in Japan?
+Ein KTM-Fahrer gab zu, die grüne Zone zu berühren.
 
-#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Der Fahrer sagte, dieser Kontakt habe keinen Vorteil gebracht.
+
+Wie steht ihr zu dieser Einschätzung?
+
+#MotoGP #EneaBastianini #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -126,24 +130,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.5
+Artikelalter-Tage: 0.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:jorge-martin-cuma-g-n-her-seferinde-s-f-rdan-ba-lamak-gibi
-Titel: Jorge Martin: “Cuma Günü Her Seferinde Sıfırdan Başlamak Gibi”
-Quelle: https://motoetkinlik.com/jorge-martin-cuma-gunu-her-seferinde-sifirdan-baslamak-gibi
+Story-Key: title:jack-miller-yar-n-herkes-sert-lastikle-olacak-yamaha-20-daki-kalik-warm-up-i-sti-yor
+Titel: Jack Miller: “Yarın Herkes Sert Lastikle Olacak” – YAMAHA 20 DAKİKALIK WARM-UP İSTİYOR!
+Quelle: https://motoetkinlik.com/jack-miller-yarin-herkes-sert-lastikle-olacak-yamaha-20-dakikalik-warm-up-istiyor
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-5-jorge-martin-cuma-gu-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/07/Jorge-Martin-Daniele-Romagnoli.webp
+Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-5-jack-miller-yarin-he-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/jack-miller-katalonya-gp-cuma-gunu.webp
 Plattformen: Instagram + Facebook
 Text:
-Cuma günü geçen sezonun ayarlarıyla adeta sıfırdan başlamak zorunda kaldıklarını söyledi
+Er erwartet, dass jeder harte Reifen verwendet
 
-Jorge Martin landete beim Japan GP in Motegi den achten Platz, aber seine Worte nach dem ersten Tag sind klarer als jede Position: Freitag ist bei Aprilia irgendwie von null wieder anzufangen. Alte Einstellungen aus der Vorsaison helfen da nicht weiter – jedes Mal quasi ein Neustart.
+Jack Miller hat nach einem Reifenblistering im Motegi-Sprint erklärt, dass er erwarte, dass jeder harte Reifen benutzt. Yamaha fordert ein 20-minütiges Warm-up vor dem Japan-GP.
 
-Wie schätzt ihr die Lage bei Aprilia im Vergleich zu den Konkurrenten ein?
+Wie steht ihr zu Millers Aussage, dass jeder harte Reifen einsetzen soll?
 
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

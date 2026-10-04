@@ -2586,3 +2586,33 @@ Story-Key: title:jorge-martin-cuma-g-n-her-seferinde-s-f-rdan-ba-lamak-gibi
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-04 06:34 UTC | Motorcycle Racing | PASS
+Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
+Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-04 06:34 UTC | Motorcycle Racing | PASS
+Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
+Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-04 06:34 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Japonya GP sprint: Marc Marquez kazandı, cezaların ardından Moreira ikinci, Toprak 17. sırada
+Story-Key: motogp:10861300
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-04 06:34 UTC | Motorcycle Racing | PASS
+Titel: Enea Bastianini Pist Limit Cezasını Değerlendirdi: “Bir Avantaj Elde Ettiğimi Düşünmüyorum!”
+Story-Key: title:enea-bastianini-pist-limit-cezas-n-de-erlendirdi-bir-avantaj-elde-etti-imi-d-nm-yorum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-04 06:35 UTC | Motorcycle Racing | PASS
+Titel: Jack Miller: “Yarın Herkes Sert Lastikle Olacak” – YAMAHA 20 DAKİKALIK WARM-UP İSTİYOR!
+Story-Key: title:jack-miller-yar-n-herkes-sert-lastikle-olacak-yamaha-20-daki-kalik-warm-up-i-sti-yor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

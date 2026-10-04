@@ -779,3 +779,28 @@ Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-2-antrenman-bezz
 Story-Key: title:jorge-martin-cuma-g-n-her-seferinde-s-f-rdan-ba-lamak-gibi
 Titel: Jorge Martin: “Cuma Günü Her Seferinde Sıfırdan Başlamak Gibi”
 Quelle: https://motoetkinlik.com/jorge-martin-cuma-gunu-her-seferinde-sifirdan-baslamak-gibi
+
+## 2026-10-04 06:12 UTC – ANGEBOTEN
+Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
+Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim
+
+## 2026-10-04 06:12 UTC – ANGEBOTEN
+Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
+Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
+Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
+
+## 2026-10-04 06:12 UTC – ANGEBOTEN
+Story-Key: motogp:10861300
+Titel: MotoGP Japonya GP sprint: Marc Marquez kazandı, cezaların ardından Moreira ikinci, Toprak 17. sırada
+Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-sprint-marc-marquez-kazandi-cezalarin-ardindan-moreira-ikinci-toprak-17-sirada/10861300
+
+## 2026-10-04 06:12 UTC – ANGEBOTEN
+Story-Key: title:enea-bastianini-pist-limit-cezas-n-de-erlendirdi-bir-avantaj-elde-etti-imi-d-nm-yorum
+Titel: Enea Bastianini Pist Limit Cezasını Değerlendirdi: “Bir Avantaj Elde Ettiğimi Düşünmüyorum!”
+Quelle: https://motoetkinlik.com/enea-bastianini-pist-limit-cezasini-degerlendirdi-bir-avantaj-elde-ettigimi-dusunmuyorum
+
+## 2026-10-04 06:12 UTC – ANGEBOTEN
+Story-Key: title:jack-miller-yar-n-herkes-sert-lastikle-olacak-yamaha-20-daki-kalik-warm-up-i-sti-yor
+Titel: Jack Miller: “Yarın Herkes Sert Lastikle Olacak” – YAMAHA 20 DAKİKALIK WARM-UP İSTİYOR!
+Quelle: https://motoetkinlik.com/jack-miller-yarin-herkes-sert-lastikle-olacak-yamaha-20-dakikalik-warm-up-istiyor
