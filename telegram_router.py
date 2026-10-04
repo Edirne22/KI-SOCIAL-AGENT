@@ -291,53 +291,71 @@ def _publish_instagram_pending(item: dict) -> bool:
 
 INSTAGRAM_APPROVE_SYNONYMS = {
     "bild ✅",
-    "✅",
     "bild posten",
-    "posten",
-    "ok",
-    "freigegeben",
-    "freigeben zum posten",
-    "freigeben",
-    "ja",
+    "bild freigeben",
 }
 
 INSTAGRAM_REJECT_SYNONYMS = {
     "bild ❌",
-    "❌",
-    "ablehnen",
-    "neu",
-    "neu generieren",
-    "nein",
+    "bild neu",
+    "bild ablehnen",
+}
+
+AMBIGUOUS_HUMAN_ACTIONS = {
+    "posten", "ok", "freigegeben", "freigeben", "freigeben zum posten", "ja", "✅",
+    "ablehnen", "neu", "neu generieren", "nein", "❌", "ändern", "aendern",
 }
 
 
-def _get_bild_command_action(text: str) -> str | None:
+def _parse_bild_command(text: str):
     if not isinstance(text, str):
         return None
     n = " ".join(text.strip().lower().split()).lstrip("/")
     if n in INSTAGRAM_APPROVE_SYNONYMS:
-        return "✅"
+        return "✅", None
     if n in INSTAGRAM_REJECT_SYNONYMS:
-        return "❌"
-    return None
+        return "❌", None
+    m = re.fullmatch(r"bild\s+([1-9]|1\d|20)\s+(posten|freigeben|✅|neu|ablehnen|❌)", n)
+    if not m:
+        return None
+    action = "✅" if m.group(2) in ("posten", "freigeben", "✅") else "❌"
+    return action, int(m.group(1))
+
+
+def _get_bild_command_action(text: str) -> str | None:
+    parsed = _parse_bild_command(text)
+    return parsed[0] if parsed else None
 
 
 def _handle_bild_command(text_or_action: str) -> bool:
-    action = (
-        text_or_action
-        if text_or_action in {"✅", "❌"}
-        else _get_bild_command_action(text_or_action)
-    )
-    if not action:
+    parsed = (text_or_action, None) if text_or_action in {"✅", "❌"} else _parse_bild_command(text_or_action)
+    if not parsed:
         return False
+    action, selection = parsed
 
-    pending_item = pi.get_latest_pending()
-    if not pending_item:
-        send_message("ℹ️ Keine ausstehenden Instagram-Bilder zur Freigabe vorhanden.")
+    recent = pi.get_recent_pending(max_age_seconds=7200)
+    if selection is not None:
+        recent = [item for item in recent if item.get("auswahl") == selection]
+    if len(recent) != 1:
+        if not recent:
+            send_message(
+                "⛔ Keine aktuelle Instagram-Bildfreigabe gefunden. "
+                "Alte Pending-Einträge werden niemals automatisch gepostet. "
+                "Bitte Beitrag erneut auswählen."
+            )
+        else:
+            choices = ", ".join(
+                f"Bild {item.get('auswahl')} ({str(item.get('titel',''))[:45]})"
+                for item in recent[:5]
+            )
+            send_message(
+                "⛔ Mehrere aktuelle Instagram-Bilder warten. "
+                "Bitte eindeutig antworten, z. B. bild 3 posten oder bild 3 neu. "
+                "Offen: " + choices
+            )
         return True
 
-    batch_id = pending_item.get("batch_id")
-    auswahl = pending_item.get("auswahl")
+    pending_item = recent[0]
     titel = pending_item.get("titel", "")
     prompt = pending_item.get("prompt_fuer_agnes", "")
     img_path = pending_item.get("bild_pfad", "")
@@ -346,7 +364,6 @@ def _handle_bild_command(text_or_action: str) -> bool:
         _publish_instagram_pending(pending_item)
         return True
 
-    # action == "❌" -> Neu generieren
     print(f"ROUTER: Bild-Ablehnung ('❌') empfangen. Regeneriere Bild für {titel}...")
     try:
         new_bytes = agnes_generate_image(prompt)
@@ -358,7 +375,7 @@ def _handle_bild_command(text_or_action: str) -> bool:
 
     caption = (
         f"🔄 Neues Bild generiert für: {titel}\n"
-        "Antworte mit bild ✅ oder bild ❌ (oder ok/neu)"
+        "Antworte mit bild ✅ oder bild ❌"
     )
     try:
         send_photo(img_path, caption=caption)
@@ -366,7 +383,6 @@ def _handle_bild_command(text_or_action: str) -> bool:
         print(f"ROUTER: send_photo bei Neugenerierung fehlgeschlagen: {e}")
 
     return True
-
 
 def main() -> None:
     allowed = str(get_chat_id())
@@ -499,11 +515,19 @@ def main() -> None:
             )
             _ack(uid)
             return
-        if pi.get_latest_pending():
+        if cmd in AMBIGUOUS_HUMAN_ACTIONS:
+            send_message(
+                "⛔ Nicht eindeutig – deshalb wurde nichts veröffentlicht. "
+                "Für Turkish Rider: T1 posten, T1 ändern oder T1 nicht posten. "
+                "Für ein Instagram-Bild: bild posten, bild neu oder bei mehreren bild 3 posten."
+            )
+            _ack(uid)
+            return
+        if pi.load_pending():
             action = _get_bild_command_action(cmd)
             if action:
-                print(f"ROUTER: Update {uid} -> Instagram Bild-Freigabe ('{action}')")
-                _handle_bild_command(action)
+                print(f"ROUTER: Update {uid} -> kontextgebundene Instagram Bild-Freigabe ('{action}')")
+                _handle_bild_command(cmd)
                 _ack(uid)
                 return
 
