@@ -409,6 +409,46 @@ def test_latest_pending_targets_current_batch(monkeypatch, tmp_path):
     assert chosen["titel"] == "Current"
 
 
+def test_turkish_human_legacy_same_slot_different_story_is_not_migrated(tmp_path, monkeypatch):
+    """T1 from a new story must never mutate an older T1 block."""
+    test_published = tmp_path / "PUBLISHED.md"
+    test_json = tmp_path / "pending.json"
+    monkeypatch.setattr(approval, "PUBLISHED", test_published)
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    test_published.write_text(
+        "# Freigegebene Beiträge\n\n"
+        "## Instagram\nStatus: BILD_GENERIERT\nFreigabe: Telegram Racing\n"
+        "Racing-Batch-ID: old-TR-HUMAN\nTelegram-Update-ID: 1\nMotoGP-Auswahl: 1\n"
+        "Titel: Deniz Alt\nText:\nAlter Deniz-Text\nQuelle: https://example.com/news/deniz-old\n"
+        "Medienstatus: QUELLE_BESTÄTIGT\nBild: old.jpg\n\n"
+        "## Facebook\nStatus: FREIGEGEBEN\nRacing-Batch-ID: old-TR-HUMAN\n"
+        "MotoGP-Auswahl: 1\nTitel: Deniz Alt\nText:\nAlter Deniz-Text\n"
+        "Quelle: https://example.com/news/deniz-old\n",
+        encoding="utf-8",
+    )
+    asset = tmp_path / "toprak.jpg"
+    asset.write_bytes(b"jpeg")
+    posts = {1: {
+        "title": "Toprak Neu",
+        "source": "https://example.com/news/toprak-new",
+        "summary": "Toprak neuer Bericht",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "image": asset.as_posix(),
+        "text": "Neuer Toprak-Text",
+        "caption_final": True,
+        "human_final": True,
+    }}
+    monkeypatch.setattr(approval, "download_og_image_for_instagram", lambda source, target: target)
+    count = approval.publish(posts, [1], uid=333, batch="new-TR-HUMAN")
+    assert count == 2
+    content = test_published.read_text(encoding="utf-8")
+    assert content.count("## Instagram") == 2
+    assert "Titel: Deniz Alt" in content and "Status: BILD_GENERIERT" in content
+    assert "Titel: Toprak Neu" in content
+    assert "Telegram-Update-ID: 333" in content
+
+
 def test_turkish_human_legacy_block_is_migrated_not_deduped(tmp_path, monkeypatch):
     test_published = tmp_path / "PUBLISHED.md"
     test_json = tmp_path / "pending.json"

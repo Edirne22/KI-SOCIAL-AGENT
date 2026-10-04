@@ -131,6 +131,91 @@ class TestTelegramDedup(unittest.TestCase):
         self.assertIn("Telegram-Update-ID: 4001", content)
         self.assertIn("Telegram-Update-ID: 4002", content)
 
+    def test_motogp_v85_same_article_rewrite_rejected(self):
+        """Same article must not publish twice just because the caption was rewritten."""
+        posts_1 = {1: {
+            "title": "Toprak race report",
+            "source": "https://example.com/news/toprak-race?utm_source=first",
+            "image": "first.jpg",
+            "text": "Toprak steht im Mittelpunkt des Rennberichts.",
+            "human_final": True,
+            "caption_final": True,
+        }}
+        posts_2 = {1: {
+            "title": "Toprak: neuer Text zum selben Bericht",
+            "source": "https://example.com/news/toprak-race?utm_source=second",
+            "image": "second.jpg",
+            "text": "Neu formuliert, aber weiterhin derselbe Quellartikel.",
+            "human_final": True,
+            "caption_final": True,
+        }}
+        with patch.object(motogp_telegram_receive_v85, "download_og_image_for_instagram", side_effect=lambda source,target: target):
+            first = motogp_telegram_receive_v85.publish(posts_1, [1], uid=5101, batch="same-source-a")
+            second = motogp_telegram_receive_v85.publish(posts_2, [1], uid=5102, batch="same-source-b")
+        self.assertEqual(first, 2)
+        self.assertEqual(second, 0)
+        content = self.published_file.read_text(encoding="utf-8")
+        self.assertIn("Story-Key:", content)
+        self.assertNotIn("Telegram-Update-ID: 5102", content)
+
+    def test_motogp_v85_distinct_articles_positive_control(self):
+        """Different article identities remain publishable."""
+        posts_1 = {1: {
+            "title": "Toprak Friday practice",
+            "source": "https://example.com/news/toprak-friday",
+            "image": "one.jpg",
+            "text": "Freitagstraining mit Toprak.",
+            "human_final": True,
+            "caption_final": True,
+        }}
+        posts_2 = {1: {
+            "title": "Toprak Sunday race",
+            "source": "https://example.com/news/toprak-sunday",
+            "image": "two.jpg",
+            "text": "Sonntagsrennen mit Toprak.",
+            "human_final": True,
+            "caption_final": True,
+        }}
+        with patch.object(motogp_telegram_receive_v85, "download_og_image_for_instagram", side_effect=lambda source,target: target):
+            first = motogp_telegram_receive_v85.publish(posts_1, [1], uid=5201, batch="distinct-a")
+            second = motogp_telegram_receive_v85.publish(posts_2, [1], uid=5202, batch="distinct-b")
+        self.assertEqual(first, 2)
+        self.assertEqual(second, 2)
+        content = self.published_file.read_text(encoding="utf-8")
+        self.assertIn("Telegram-Update-ID: 5201", content)
+        self.assertIn("Telegram-Update-ID: 5202", content)
+
+    def test_turkish_post_action_same_update_id_is_idempotent(self):
+        """A redelivered Telegram T1 publish update must execute only once."""
+        state = Path(self.tmp_dir.name) / "MOTOGP_APPROVAL_STATE.md"
+        previews = Path(self.tmp_dir.name) / "TURKISH_RIDER_HUMAN_PREVIEWS.json"
+        previews.write_text(
+            '{"created_at": 9999999999, "items": {"1": {"n": 1, "title": "Toprak", '
+            '"source": "https://example.com/news/toprak", "summary": "Toprak race", '
+            '"series": "MotoGP", "source_series": "MotoGP", "rider": "Toprak Razgatlıoğlu", '
+            '"text": "Freigegebener Toprak-Text"}}}',
+            encoding="utf-8",
+        )
+        calls = []
+        with patch.object(motogp_telegram_receive_v85, "STATE", state), \
+             patch.object(motogp_telegram_receive_v85, "TURKISH_PREVIEWS", previews), \
+             patch.object(motogp_telegram_receive_v85, "get_chat_id", return_value="42"), \
+             patch.object(motogp_telegram_receive_v85, "_active_batch", return_value="race-batch"), \
+             patch.object(motogp_telegram_receive_v85, "publish", side_effect=lambda *a,**k: calls.append((a,k)) or 2), \
+             patch.object(motogp_telegram_receive_v85, "send_message"):
+            self.assertTrue(motogp_telegram_receive_v85.handle_turkish_action(5301, "42", "T1 posten"))
+            self.assertTrue(motogp_telegram_receive_v85.handle_turkish_action(5301, "42", "T1 posten"))
+        self.assertEqual(len(calls), 1)
+        self.assertIn("Update-ID: 5301", state.read_text(encoding="utf-8"))
+
+    def test_turkish_post_action_foreign_chat_is_fail_closed(self):
+        """A T-command from any non-owner chat must never reach publish()."""
+        calls = []
+        with patch.object(motogp_telegram_receive_v85, "get_chat_id", return_value="42"), \
+             patch.object(motogp_telegram_receive_v85, "publish", side_effect=lambda *a,**k: calls.append((a,k)) or 2):
+            self.assertTrue(motogp_telegram_receive_v85.handle_turkish_action(5401, "999", "T1 posten"))
+        self.assertEqual(calls, [])
+
     def test_motogp_v85_dedup(self):
         """Test motogp_telegram_receive_v85 publish deduplication."""
         posts_1 = {

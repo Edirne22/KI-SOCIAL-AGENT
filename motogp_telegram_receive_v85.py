@@ -9,6 +9,7 @@ from generate_agnes_media import agnes_generate_image, save_bytes
 from instagram_publish import download_og_image_for_instagram, generate_buelent_caption
 from pending_instagram import add_pending
 from asset_paths import get_image_path
+from motogp_content_agency import canonical_url, story_key
 SESSION=Path('memory/MOTOGP_APPROVAL_SESSION.md');TURKISH_SESSION=Path('memory/TURKISH_RIDER_APPROVAL.json');TURKISH_PREVIEWS=Path('memory/TURKISH_RIDER_HUMAN_PREVIEWS.json');STATE=Path('memory/MOTOGP_APPROVAL_STATE.md');PUBLISHED=Path('content/PUBLISHED.md')
 MIN_SESSION_VERSION=18;MAX_SESSION_AGE_SECONDS=24*3600
 RAW_BAD=('-->','by motogp.com','motogp-update:','eines der relevanten motogp-themen','die fakten stammen aus der offiziellen meldung')
@@ -223,14 +224,29 @@ def _load_turkish_previews():
         return {int(k):v for k,v in data.get('items',{}).items()}
     except Exception:return {}
 
-def handle_turkish_action(uid,chat,txt):
+def _record_processed(uid,txt,batch=''):
+    STATE.parent.mkdir(parents=True,exist_ok=True)
+    lines=[f'Update-ID: {uid}']
+    if batch:lines.append(f'Racing-Batch-ID: {batch}')
+    lines.append(f'Antwort: {txt}')
+    STATE.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+
+def handle_turkish_action(uid,chat,txt,_nested=False):
+    if not _nested:
+        if chat!=str(get_chat_id()):
+            print(f'TURKISH: Update {uid} aus fremdem Chat; keine Aktion.')
+            return True
+        if already(uid):
+            print(f'TURKISH: Update {uid} bereits verarbeitet; keine Doppelverarbeitung.')
+            return True
     cmds=turkish_actions(txt)
     if not cmds:return False
     if len(cmds)>1:
         ok=True
         for action,chosen in cmds:
             synthetic=' '.join('T'+str(n) for n in chosen)+' '+({'post':'posten','edit':'überarbeiten','drop':'nicht posten'}[action])
-            ok=handle_turkish_action(uid,chat,synthetic) and ok
+            ok=handle_turkish_action(uid,chat,synthetic,_nested=True) and ok
+        if not _nested:_record_processed(uid,txt)
         return ok
     action,chosen=cmds[0]
     order=[n for n in turkish_t_order(txt) if n in chosen]
@@ -239,21 +255,24 @@ def handle_turkish_action(uid,chat,txt):
     selected=[n for n in chosen if n in rows]
     if not selected:
         send_message('⛔ Keine passende aktuelle Turkish-Rider-Vorschau gefunden.')
+        if not _nested:_record_processed(uid,txt)
         return True
     if action=='post':
         posts={}
         for n in selected:
             p=rows[n]
-            posts[n]={'title':p.get('title',''),'source':p.get('source',''),'image':get_image_path(f'turkish-human-{n}-{p.get("rider","")}').as_posix(),'text':p.get('text',''),'caption_final':True,'human_final':True}
+            posts[n]={'title':p.get('title',''),'source':p.get('source',''),'summary':p.get('summary',''),'series':p.get('series',''),'source_series':p.get('source_series',''),'image':get_image_path(f'turkish-human-{n}-{p.get("rider","")}').as_posix(),'text':p.get('text',''),'caption_final':True,'human_final':True}
         batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR-HUMAN'
         count=publish(posts,selected,uid,batch)
         plan=' → '.join('T'+str(n) for n in selected)
         send_message(f'✅ Deine Freigabe-Reihenfolge: {plan} · exakt die gezeigten Texte · je Publisher-Rundlauf der nächste Beitrag · {count} Plattform-Blöcke vorbereitet.')
+        if not _nested:_record_processed(uid,txt,batch)
         return True
     if action=='drop':
         for n in selected: rows.pop(n,None)
         TURKISH_PREVIEWS.write_text(json.dumps({'created_at':int(time.time()),'items':{str(k):v for k,v in rows.items()}},ensure_ascii=False,indent=2),encoding='utf-8')
         send_message(f'❌ Nicht posten: {", ".join("T"+str(n) for n in selected)}.')
+        if not _nested:_record_processed(uid,txt)
         return True
     import motogp_content_agency_v2 as agency
     import turkish_editor_qm as turkish_lane
@@ -266,6 +285,7 @@ def handle_turkish_action(uid,chat,txt):
         preview=rows[n].get('preview','')
         if not (preview and agency._send_turkish_source_photo(preview,body)):send_message(body)
     TURKISH_PREVIEWS.write_text(json.dumps({'created_at':int(time.time()),'items':{str(k):v for k,v in rows.items()}},ensure_ascii=False,indent=2),encoding='utf-8')
+    if not _nested:_record_processed(uid,txt)
     return True
 
 def handle_turkish(uid,chat,txt):
@@ -304,7 +324,7 @@ def handle_turkish(uid,chat,txt):
                 send_message(body+"\n\n🖼️ Quell-Vorschaubild nicht abrufbar.")
             saved={"created_at":int(time.time()),"items":{}}
             for n,x,_ in previews:
-                saved["items"][str(n)]={"n":n,"title":x.get("title",""),"source":x.get("url",""),"preview":x.get("preview",""),"rider":x.get("turkish_rider",""),"text":x.get("caption","")}
+                saved["items"][str(n)]={"n":n,"title":x.get("title",""),"source":x.get("url",""),"summary":x.get("summary",""),"series":x.get("series",""),"source_series":x.get("source_series",""),"preview":x.get("preview",""),"rider":x.get("turkish_rider",""),"text":x.get("caption","")}
             TURKISH_PREVIEWS.parent.mkdir(parents=True,exist_ok=True)
             TURKISH_PREVIEWS.write_text(json.dumps(saved,ensure_ascii=False,indent=2),encoding="utf-8")
             for n,reasons in technical:
@@ -318,7 +338,7 @@ def get_existing_published_texts():
     texts=set();files=[PUBLISHED]
     archive_dir=PUBLISHED.parent/'archive'
     if archive_dir.exists():files.extend(archive_dir.glob('*.md'))
-    pattern=r'(?ms)^Text:\s*(.*?)(?=^(?:Quelle:|Bild:|Video:|Bilder:|Medienstatus:|Link-Preview:|Status:|Freigabe:|Telegram-Update-ID:|Racing-Batch-ID:|MotoGP-Auswahl:|Titel:|## |\Z))'
+    pattern=r'(?ms)^Text:\s*(.*?)(?=^(?:Quelle:|Bild:|Video:|Bilder:|Medienstatus:|Link-Preview:|Status:|Freigabe:|Telegram-Update-ID:|Racing-Batch-ID:|MotoGP-Auswahl:|Story-Key:|Event-Fingerprint:|Titel:|## |\Z))'
     for f in files:
         if not f.exists():continue
         content=f.read_text(encoding='utf-8')
@@ -326,11 +346,50 @@ def get_existing_published_texts():
             norm=_normalize_text(m)
             if norm:texts.add(norm)
     return texts
+
+def _article_source(url):
+    src=canonical_url(str(url or '').strip())
+    m=re.match(r'^https?://[^/]+(/.*)?$',src,re.I)
+    path=(m.group(1) or '') if m else ''
+    return src if path not in ('','/') else ''
+
+def _post_identity(p):
+    source=_article_source(p.get('source',''))
+    key=story_key(p.get('title',''),p.get('source','')) if (p.get('title') or p.get('source')) else ''
+    event=''
+    try:
+        import motogp_content_agency_v2 as agency
+        probe={'title':p.get('title',''),'summary':p.get('summary') or p.get('text',''),'url':p.get('source',''),'series':p.get('series') or p.get('source_series','')}
+        event=agency.event_fingerprint(probe)
+    except Exception:event=''
+    return source,key,event
+
+def get_existing_published_identities():
+    sources=set();keys=set();events=set();files=[PUBLISHED]
+    archive_dir=PUBLISHED.parent/'archive'
+    if archive_dir.exists():files.extend(archive_dir.glob('*.md'))
+    for f in files:
+        if not f.exists():continue
+        content=f.read_text(encoding='utf-8',errors='ignore')
+        for block in re.split(r'(?m)^## (?:Instagram|Facebook)\s*$',content):
+            title_m=re.search(r'(?m)^Titel:\s*(.*)$',block)
+            source_m=re.search(r'(?m)^Quelle:\s*(https?://\S+)\s*$',block)
+            key_m=re.search(r'(?m)^Story-Key:\s*(\S+)\s*$',block)
+            event_m=re.search(r'(?m)^Event-Fingerprint:\s*(.+?)\s*$',block)
+            title=title_m.group(1).strip() if title_m else ''
+            raw_source=source_m.group(1).strip() if source_m else ''
+            source=_article_source(raw_source)
+            if source:sources.add(source)
+            key=key_m.group(1).strip() if key_m else (story_key(title,raw_source) if (title or raw_source) else '')
+            if key:keys.add(key)
+            if event_m and event_m.group(1).strip() not in ('','-'):events.add(event_m.group(1).strip())
+    return sources,keys,events
 def _schedule_lines(schedule):
     return f'Geplant-fuer: {schedule}\n' if schedule else ''
 
 def _migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_status):
-    if not p.get('human_final'): return existing,False
+    if not p.get('human_final'):return existing,False
+    incoming_source,incoming_key,_=_post_identity(p)
     pos=0
     while True:
         start=existing.find('## Instagram\n',pos)
@@ -339,8 +398,16 @@ def _migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_stat
         end=len(existing) if next_header<0 else next_header+1
         block=existing[start:end]
         pos=end
-        if '-TR-HUMAN' not in block or 'Status: BILD_GENERIERT' not in block: continue
-        if f'MotoGP-Auswahl: {n}' not in block: continue
+        if '-TR-HUMAN' not in block or 'Status: BILD_GENERIERT' not in block:continue
+        if f'MotoGP-Auswahl: {n}' not in block:continue
+        old_source_m=re.search(r'(?m)^Quelle:\s*(https?://\S+)\s*$',block)
+        old_title_m=re.search(r'(?m)^Titel:\s*(.*)$',block)
+        old_source=old_source_m.group(1).strip() if old_source_m else ''
+        old_title=old_title_m.group(1).strip() if old_title_m else ''
+        old_article=_article_source(old_source)
+        old_key=story_key(old_title,old_source) if (old_title or old_source) else ''
+        if incoming_source and old_article and incoming_source!=old_article:continue
+        if incoming_key and old_key and incoming_key!=old_key:continue
         updated=block.replace('Status: BILD_GENERIERT','Status: FREIGEGEBEN',1)
         lines=[]
         for line in updated.splitlines():
@@ -356,13 +423,20 @@ def publish(posts,chosen,uid,batch,schedules=None):
     schedules=schedules or {}
     PUBLISHED.parent.mkdir(parents=True,exist_ok=True);existing=PUBLISHED.read_text(encoding='utf-8') if PUBLISHED.exists() else '# Freigegebene Beiträge\n';blocks=[]
     existing_texts=get_existing_published_texts()
+    existing_sources,existing_story_keys,existing_events=get_existing_published_identities()
     for n in chosen:
         p=posts.get(n)
         if not p:continue
         marker=f'Racing-Batch-ID: {batch}\nMotoGP-Auswahl: {n}'
         if marker in existing:continue
         norm_post_text=_normalize_text(p["text"])
-        is_existing_duplicate=bool(norm_post_text and norm_post_text in existing_texts)
+        source_id,story_id,event_id=_post_identity(p)
+        duplicate_reasons=[]
+        if norm_post_text and norm_post_text in existing_texts:duplicate_reasons.append('text')
+        if source_id and source_id in existing_sources:duplicate_reasons.append('source')
+        if story_id and story_id in existing_story_keys:duplicate_reasons.append('story')
+        if event_id and event_id in existing_events:duplicate_reasons.append('event')
+        is_existing_duplicate=bool(duplicate_reasons)
 
         prompt = f"Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: {p['text'][:180]}"
         img_path = p["image"]
@@ -388,9 +462,12 @@ def publish(posts,chosen,uid,batch,schedules=None):
             print(f"TURKISH HUMAN MIGRATION: bestehender Instagram-Block T{n} -> FREIGEGEBEN ({img_path})")
             continue
         if is_existing_duplicate:
-            print(f"DUPLIKAT ERKANNT: {p['title']} bereits vorhanden, übersprungen")
+            print(f"DUPLIKAT ERKANNT ({','.join(duplicate_reasons)}): {p['title']} bereits vorhanden, übersprungen")
             continue
         if norm_post_text:existing_texts.add(norm_post_text)
+        if source_id:existing_sources.add(source_id)
+        if story_id:existing_story_keys.add(story_id)
+        if event_id:existing_events.add(event_id)
 
         if not p.get('human_final'):
             add_pending(
@@ -404,8 +481,9 @@ def publish(posts,chosen,uid,batch,schedules=None):
 
         scheduled=_schedule_lines(schedules.get(n))
         ig_status = 'FREIGEGEBEN' if p.get('human_final') else 'BILD_GENERIERT'
-        common_ig = f'Status: {ig_status}\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
-        common_fb = f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\nTitel: {p["title"]}\n'
+        identity_lines=f'Story-Key: {story_id or "-"}\nEvent-Fingerprint: {event_id or "-"}\n'
+        common_ig = f'Status: {ig_status}\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\n{identity_lines}Titel: {p["title"]}\n'
+        common_fb = f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\n{identity_lines}Titel: {p["title"]}\n'
 
         blocks += [
             f'## Instagram\n{common_ig}Text:\n{instagram_text}\nQuelle: {p["source"]}\nMedienstatus: {media_status}\nBild: {img_path}\n',
