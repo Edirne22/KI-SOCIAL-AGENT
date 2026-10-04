@@ -202,8 +202,8 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     monkeypatch.setattr(tr, "send_photo", mock_send_photo)
     monkeypatch.setattr(tr, "agnes_generate_image", mock_agnes)
 
-    # 1. Test reject synonyms ("bild ❌", "❌", "ablehnen", "neu", "neu generieren", "nein")
-    reject_synonyms = ["bild ❌", "❌", "ablehnen", "neu", "neu generieren", "nein"]
+    # 1. Only explicitly image-bound commands may mutate an image approval.
+    reject_synonyms = ["bild ❌", "bild neu", "bild ablehnen"]
     for syn in reject_synonyms:
         mock_send_photo.reset_mock()
         assert tr._get_bild_command_action(syn) == "❌"
@@ -212,8 +212,8 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
         assert len(pi.load_pending()) == 1  # Still pending
         mock_send_photo.assert_called_once()
 
-    # 2. Test approve synonyms ("bild ✅", "✅", "bild posten", "posten", "ok", "freigegeben", "freigeben zum posten", "freigeben", "ja")
-    approve_synonyms = ["bild ✅", "✅", "bild posten", "posten", "ok", "freigegeben", "freigeben zum posten", "freigeben", "ja"]
+    # 2. Bare human words are intentionally ambiguous and must never publish.
+    approve_synonyms = ["bild ✅", "bild posten", "bild freigeben"]
     for syn in approve_synonyms:
         assert tr._get_bild_command_action(syn) == "✅"
 
@@ -234,7 +234,7 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     monkeypatch.setattr(tr, "ig_publish_container", lambda *args: "media-123")
 
     mock_send_message.reset_mock()
-    handled_accept = tr._handle_bild_command("freigeben zum posten")
+    handled_accept = tr._handle_bild_command("bild posten")
     assert handled_accept is True
     assert pi.load_pending() == []
 
@@ -295,12 +295,108 @@ def test_telegram_router_synonyms_without_pending(tmp_path, monkeypatch):
     # Ensure pending queue is empty
     assert pi.get_first_pending() is None
 
-    # Even though action parser returns action for "ok" or "✅",
-    # the pending check in main ensures it's not intercepted as Instagram approval.
-    assert tr._get_bild_command_action("ok") == "✅"
-    assert tr._get_bild_command_action("✅") == "✅"
-    assert tr._get_bild_command_action("nein") == "❌"
+    # Bare actions are not publication authority for any pending image.
+    for command in ("posten","ok","✅","freigeben","ja","neu","nein","❌","ändern"):
+        assert tr._get_bild_command_action(command) is None
+    assert tr._get_bild_command_action("bild posten") == "✅"
+    assert tr._get_bild_command_action("bild 3 posten") == "✅"
+    assert tr._get_bild_command_action("bild neu") == "❌"
+    assert tr._get_bild_command_action("bild 3 neu") == "❌"
     assert tr._get_bild_command_action("random command") is None
+
+
+def test_stale_deniz_pending_plus_bare_posten_never_publishes(monkeypatch, tmp_path):
+    """Regression for 2026-10-04: T1 Toprak preview + bare Posten published stale Deniz."""
+    from datetime import datetime, timedelta, timezone
+    test_json = tmp_path / "pending.json"
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    stale = (datetime.now(timezone.utc) - timedelta(hours=25)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    pi.add_pending(
+        "racing-2026-10-03-daily", 3,
+        "Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi",
+        "old", "old.jpg", "old prompt", erstellt=stale,
+    )
+    sent=[]; acked=[]
+    monkeypatch.setattr(tr, "get_chat_id", lambda: 42)
+    monkeypatch.setattr(tr, "_read_last_update_id", lambda: 10)
+    monkeypatch.setattr(tr, "get_updates", lambda **kw: [
+        {"update_id":11,"message":{"chat":{"id":42},"text":"Posten"}}
+    ] if kw.get("offset")==11 else [])
+    monkeypatch.setattr(tr, "_ack", lambda uid: acked.append(uid))
+    monkeypatch.setattr(tr, "send_message", lambda msg: sent.append(msg))
+    monkeypatch.setattr(tr, "_publish_instagram_pending",
+                        lambda item: (_ for _ in ()).throw(AssertionError("wrong item published")))
+    monkeypatch.setattr(tr.subprocess, "run",
+                        lambda *a,**kw: (_ for _ in ()).throw(AssertionError("ambiguous command dispatched")))
+    tr.main()
+    assert acked == [11]
+    assert any("Nicht eindeutig" in msg for msg in sent)
+    assert len(pi.load_pending()) == 1
+
+
+def test_explicit_t1_posten_routes_turkish_not_stale_image(monkeypatch, tmp_path):
+    from datetime import datetime, timedelta, timezone
+    test_json = tmp_path / "pending.json"
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    stale = (datetime.now(timezone.utc) - timedelta(hours=25)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    pi.add_pending("old-batch",3,"Deniz stale","old","old.jpg","old",erstellt=stale)
+    acked=[]; calls=[]
+    monkeypatch.setattr(tr, "get_chat_id", lambda: 42)
+    monkeypatch.setattr(tr, "_read_last_update_id", lambda: 20)
+    monkeypatch.setattr(tr, "get_updates", lambda **kw: [
+        {"update_id":21,"message":{"chat":{"id":42},"text":"T1 posten"}}
+    ] if kw.get("offset")==21 else [])
+    monkeypatch.setattr(tr, "_ack", lambda uid: acked.append(uid))
+    monkeypatch.setattr(tr, "send_message", lambda msg: None)
+    monkeypatch.setattr(tr, "_publish_instagram_pending",
+                        lambda item: (_ for _ in ()).throw(AssertionError("stale image published")))
+    class Result:
+        returncode=0
+    monkeypatch.setattr(tr.subprocess, "run", lambda args,check=False: calls.append(args) or Result())
+    tr.main()
+    assert acked == [21]
+    assert calls and calls[0][2].endswith("motogp_telegram_receive.py")
+    assert calls[0][-1] == "T1 posten"
+
+
+def test_image_publish_requires_recent_unique_context(monkeypatch, tmp_path):
+    from datetime import datetime, timedelta, timezone
+    test_json = tmp_path / "pending.json"
+    monkeypatch.setattr(pi, "PENDING_FILE", test_json)
+    stale=(datetime.now(timezone.utc)-timedelta(hours=25)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    now=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    pi.add_pending("old",3,"Old Deniz","old","old.jpg","old",erstellt=stale)
+    published=[]; sent=[]
+    monkeypatch.setattr(tr, "_publish_instagram_pending", lambda item: published.append(item) or True)
+    monkeypatch.setattr(tr, "send_message", lambda msg: sent.append(msg))
+    assert tr._handle_bild_command("bild posten") is True
+    assert published == []
+    assert any("Alte Pending-Einträge" in msg for msg in sent)
+
+    pi.add_pending("new",1,"Fresh Toprak","new","one.jpg","p",erstellt=now)
+    sent.clear()
+    assert tr._handle_bild_command("bild posten") is True
+    assert [x["titel"] for x in published] == ["Fresh Toprak"]
+
+    pi.add_pending("new",3,"Fresh Other","new","three.jpg","p",erstellt=now)
+    published.clear(); sent.clear()
+    assert tr._handle_bild_command("bild posten") is True
+    assert published == []
+    assert any("Mehrere aktuelle" in msg for msg in sent)
+    assert tr._handle_bild_command("bild 3 posten") is True
+    assert [x["titel"] for x in published] == ["Fresh Other"]
+
+
+def test_recent_pending_excludes_stale_records(monkeypatch, tmp_path):
+    from datetime import datetime, timedelta, timezone
+    monkeypatch.setattr(pi, "PENDING_FILE", tmp_path / "pending.json")
+    now=datetime(2026,10,4,9,30,tzinfo=timezone.utc)
+    pi.add_pending("old",1,"Old","x","x.jpg","p",
+                   erstellt=(now-timedelta(hours=3)).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    pi.add_pending("fresh",2,"Fresh","x","y.jpg","p",
+                   erstellt=(now-timedelta(minutes=5)).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    recent=pi.get_recent_pending(max_age_seconds=7200,now=now)
+    assert [x["titel"] for x in recent] == ["Fresh"]
 
 
 def test_latest_pending_targets_current_batch(monkeypatch, tmp_path):

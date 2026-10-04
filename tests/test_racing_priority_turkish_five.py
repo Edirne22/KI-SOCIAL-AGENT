@@ -475,7 +475,7 @@ def test_manual_turkish_selection_is_human_preview_not_qm_permission_loop():
  assert 'process_manual_selection(x,n,agency,max_attempts=3)' not in src
  assert 'publish(passed' not in src
  assert 'Kein QM kann diese Vorschau blockieren' in src
- assert 'posten / ändern / nicht posten' in src
+ assert 'T{n} posten / T{n} ändern / T{n} nicht posten' in src
 
 
 def test_turkish_natural_preview_action_variants():
