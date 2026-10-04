@@ -355,7 +355,7 @@ def test_explicit_t1_posten_routes_turkish_not_stale_image(monkeypatch, tmp_path
     monkeypatch.setattr(tr.subprocess, "run", lambda args,check=False: calls.append(args) or Result())
     tr.main()
     assert acked == [21]
-    assert calls and calls[0][1].endswith("motogp_telegram_receive.py")
+    assert calls and calls[0][2].endswith("motogp_telegram_receive.py")
     assert calls[0][-1] == "T1 posten"
 
 
