@@ -17,9 +17,11 @@ _uuid = re.compile(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\Z")
 _date = re.compile(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}\Z")
 _task = re.compile(r"[A-Za-z0-9_-]{10,64}\Z")
 
-def _video_status(task_id, status):
+def _video_status(task_id, status, error_code=None, detail=None):
     client,bucket=client_from_env()
     payload={"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":task_id,"status":status}
+    if error_code: payload["error_code"]=str(error_code)[:80]
+    if detail: payload["detail"]=str(detail)[:300]
     client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/status.json",
                       Body=json.dumps(payload).encode("utf-8"),ContentType="application/json",
                       CacheControl="private, no-store")
@@ -54,7 +56,8 @@ def _run_video(task_id):
         _video_status(task_id,"COMPLETED")
     except Exception as exc:
         try:
-            _video_status(task_id,"FAILED")
+            # Never persist the private prompt or secrets; only bounded exception diagnostics.
+            _video_status(task_id,"FAILED",exc.__class__.__name__,str(exc))
         except Exception:
             pass
     finally:

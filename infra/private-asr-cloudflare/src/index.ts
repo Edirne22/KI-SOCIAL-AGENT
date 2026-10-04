@@ -10,6 +10,7 @@ type Env = {
 };
 export class PrivateASRContainer extends Container {
   defaultPort = 5200;
+  requiredPorts = [5200];
   sleepAfter = "15m";
   envVars = {
     PRIVATE_ASR_INTERNAL_TOKEN: runtimeEnv.PRIVATE_ASR_INTERNAL_TOKEN,
@@ -44,6 +45,9 @@ export default {
     if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs") {
       // Warm the same named container before sending a non-idempotent job.
       // Never retry POST: duplicate transcription could overwrite private drafts.
+      // Native lifecycle gate: explicitly start/wake the named container and
+      // wait until its declared port is listening before probing application health.
+      await instance.startAndWaitForPorts();
       let ready = false;
       for (let attempt = 0; attempt < 4; attempt++) {
         try {
