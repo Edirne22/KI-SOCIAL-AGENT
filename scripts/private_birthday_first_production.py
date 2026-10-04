@@ -11,6 +11,7 @@ from hashlib import sha256
 import json, os, subprocess, tempfile
 from pathlib import Path
 import requests
+from music_agent import mix_music, output_is_valid, probe_duration
 from scripts.ai_central_shared_inbox import client_from_env
 from scripts.r2_media_warehouse import job_prefix
 
