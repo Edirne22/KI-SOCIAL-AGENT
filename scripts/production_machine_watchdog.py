@@ -46,3 +46,25 @@ def incident(sample:dict,reason:str)->dict:
       "last_heartbeat_at":sample["heartbeat_at"],"reason":reason,
       "route_to":"agent21","requested_action":"DIAGNOSE_ONLY"
     }
+
+
+def private_video_status_sample(state:dict,now:datetime|None=None,stall_after_seconds:int=45)->dict:
+    """Adapter for existing PRIVATE-VIDEO-STATUS-V1 R2 records."""
+    if not isinstance(state,dict) or state.get("schema")!="PRIVATE-VIDEO-STATUS-V1":
+        raise ValueError("WATCHDOG_PRIVATE_VIDEO_STATUS_INVALID")
+    task=state.get("task_id"); stage=state.get("stage") or "production_lead"
+    if not isinstance(task,str) or not ID.fullmatch(task):
+        raise ValueError("WATCHDOG_PRIVATE_VIDEO_TASK_INVALID")
+    if not isinstance(stage,str) or not ID.fullmatch(stage):
+        raise ValueError("WATCHDOG_PRIVATE_VIDEO_STAGE_INVALID")
+    stamp=state.get("updated_at")
+    try: hb=datetime.fromisoformat(str(stamp).replace("Z","+00:00"))
+    except Exception as exc: raise ValueError("WATCHDOG_PRIVATE_VIDEO_HEARTBEAT_INVALID") from exc
+    now=now or datetime.now(timezone.utc)
+    status=state.get("status")
+    if status in ("ACCEPTED","RUNNING") and (now-hb).total_seconds()>stall_after_seconds:
+        status="STALLED"
+    mapped={"ACCEPTED":"ACCEPTED","RUNNING":"RUNNING","COMPLETED":"COMPLETED","FAILED":"FAILED"}.get(status,status)
+    progress=100 if mapped=="COMPLETED" else 0
+    return {"job_id":task,"stage_id":stage,"machine":"private-media-container",
+            "checkpoint":stage,"status":mapped,"heartbeat_at":hb.isoformat(),"progress":progress}
