@@ -6,6 +6,7 @@ on:
       - 'agents/21_instandhaltungsagent.md'
       - 'agents/AGENTS_INDEX.md'
       - 'scripts/guarded_development_agent.py'
+      - 'scripts/agent21_trusted_writer.py'
       - 'tests/test_guarded_development_agent.py'
       - 'Claude-Instandhaltung/**'
   workflow_dispatch:
@@ -74,6 +75,39 @@ jobs:
           r=validate_agent21_write_contract(c)
           assert r["status"]=="WRITE_CONTRACT_VALIDATED"
           print("AGENT21_WRITE_CONTRACT_POSITIVE_CONTROL_PASS")
+          PY
+      - name: Agent 21 trusted writer end-to-end proof
+        run: |
+          python - <<'PY'
+          import tempfile
+          from pathlib import Path
+          from scripts.guarded_development_agent import AGENT21_ID
+          from scripts.agent21_trusted_writer import apply_changes, run_tests, write_repair_log
+          with tempfile.TemporaryDirectory() as td:
+              root=Path(td)
+              contract={
+                "schema":"AGENT21-REPAIR-PATCH-V1",
+                "agent":AGENT21_ID,
+                "branch":"repair/agent21-ci-e2e",
+                "machine":"synthetic-test-machine",
+                "stage":"trusted-writer-e2e",
+                "changes":[
+                  {"path":"scripts/repaired_component.py","content":"VALUE = 21\n"},
+                  {"path":"tests/test_synthetic_repair.py","content":"import unittest\nfrom scripts.repaired_component import VALUE\nclass Proof(unittest.TestCase):\n    def test_repair(self): self.assertEqual(VALUE,21)\n"}
+                ],
+                "tests":["python -m unittest tests.test_synthetic_repair -v"],
+              }
+              (root/"scripts").mkdir(); (root/"scripts/__init__.py").write_text("")
+              (root/"tests").mkdir(); (root/"tests/__init__.py").write_text("")
+              patched=apply_changes(root,contract)
+              tested=run_tests(root,patched["authorization"])
+              repair={"repair_id":"A21-CI-E2E-001","date":"2026-10-05","machine":"synthetic-test-machine","stage":"trusted-writer-e2e","root_cause":"synthetic component required controlled repair","evidence":"validated patch plus shell-false targeted unittest","end_state":"VERIFIED"}
+              logged=write_repair_log(root,repair)
+              assert patched["status"]=="PATCHED"
+              assert tested["status"]=="TESTED"
+              assert logged["status"]=="REPAIR_LOGGED"
+              assert (root/logged["path"]).is_file()
+              print("AGENT21_E2E_VERIFIED")
           PY
       - name: Verify existing private media regression suite
         run: |
