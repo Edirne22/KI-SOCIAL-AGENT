@@ -61,7 +61,6 @@ jobs:
           cp infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py "$target/"
           mkdir -p "$target/infra/ai-central-tools/claude-only"
           cp infra/ai-central-tools/claude-only/opencode.jsonc "$target/infra/ai-central-tools/claude-only/opencode.jsonc"
-          sed -i 's@COPY run_private_asr.py service.py verify_opencode_image.py /app/@COPY run_private_asr.py service.py /app/@' "$target/Dockerfile"
           test -s "$target/service.py"
           test -s "$target/content_factory_private_asr.py"
       - name: Build and typecheck isolated worker
