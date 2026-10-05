@@ -28,7 +28,7 @@ export async function loadSession(env,id,requiredMode){
   return s;
 }
 export async function appendChatMessage(env,id,role,text){
-  const s=await loadSession(env,id,"chat");
+  const s=await loadSession(env,id);
   if(!["user","assistant"].includes(role)||typeof text!=="string"||text.length<1||text.length>12000)
     throw new Error("SESSION_MESSAGE_INVALID");
   s.messages.push({role,text,at:new Date().toISOString()});
