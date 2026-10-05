@@ -40,7 +40,8 @@ export default {
     if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
       jobBody = await request.text();
       const size = new TextEncoder().encode(jobBody).byteLength;
-      if (size < 1 || size > 1024) return reply({error:"size"},413);
+      const limit = url.pathname === "/opencode/chat" ? 8192 : 1024;
+      if (size < 1 || size > limit) return reply({error:"size"},413);
     }
     const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v2");
     if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
