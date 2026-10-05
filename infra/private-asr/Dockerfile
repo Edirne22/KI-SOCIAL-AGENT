@@ -16,7 +16,7 @@ RUN npm install --global "@opencode/cli@${OPENCODE_VERSION}" \
 # Claude-only read-only config is immutable in the runtime image; no provider key is baked in.
 COPY infra/ai-central-tools/claude-only/opencode.jsonc /etc/opencode/opencode.json
 RUN chmod 0444 /etc/opencode/opencode.json \
- && sha256sum /etc/opencode/opencode.json | cut -d\' \' -f1 > /etc/opencode/opencode.json.sha256 \
+ && sha256sum /etc/opencode/opencode.json | cut -d' ' -f1 > /etc/opencode/opencode.json.sha256 \
  && chmod 0444 /etc/opencode/opencode.json.sha256
 RUN python -m pip install --no-cache-dir faster-whisper==1.2.1 boto3==1.40.56 requests==2.32.5 huggingface-hub==0.35.3 scenedetect[opencv-headless]==0.6.7
 # Fetch multilingual tiny model at IMAGE BUILD only. Runtime is offline; no user audio in image.
