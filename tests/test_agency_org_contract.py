@@ -19,12 +19,11 @@ REQUIRED_ROLES = {
     "12_music_agent.md", "14_memory_curator.md", "15_finance_planner.md",
     "17_instagram_engagement_agent.md", "18_tour_ride_story_agent.md",
     "19_ki_integrationsingenieur.md", "20_maschinen_scout.md",
+    "21_instandhaltungsagent.md",
 }
 ROW_RE = re.compile(r"^\| \[(\d{2}_[a-z0-9_]+\.md)\]\(\1\) \| [^|]+\| [^|]+\|$", re.M)
 
-
 def inspect_roster(content: str, exists=lambda name: True) -> set[str]:
-    # No escaped 'newline' token may conceal adjacent Markdown table rows.
     if r"\n|" in content:
         raise ValueError("literal escaped newline in agent table")
     role_rows = ROW_RE.findall(content)
@@ -43,7 +42,6 @@ def inspect_roster(content: str, exists=lambda name: True) -> set[str]:
         raise ValueError("no explicit authority boundary")
     return roles
 
-
 def inspect_handoffs(content: str) -> None:
     terms = (
         "Produktionsleiter", "Ressourcenmanager", "Research",
@@ -56,7 +54,6 @@ def inspect_handoffs(content: str) -> None:
     for required in ("kein", "Freigabe", "OPEN"):
         if required.lower() not in content.lower():
             raise ValueError("missing explicit uncertainty or human approval")
-
 
 class AgencyRosterTests(unittest.TestCase):
     @classmethod
@@ -104,7 +101,6 @@ class AgencyRosterTests(unittest.TestCase):
         self.assertIn("PAUSED", policy)
         self.assertNotIn("OmniRoute auf VPS als zentrales Gateway", policy)
         self.assertNotIn("Bei Testfehlern: nur Analyse + Kommentar", policy)
-
 
 if __name__ == "__main__":
     unittest.main()
