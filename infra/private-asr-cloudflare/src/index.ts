@@ -30,19 +30,20 @@ export default {
     if (!env.PRIVATE_ASR_INTERNAL_TOKEN || auth !== "Bearer " + env.PRIVATE_ASR_INTERNAL_TOKEN)
       return reply({error:"unauthorized"},401);
     const url = new URL(request.url);
-    if (url.pathname !== "/health" && url.pathname !== "/jobs" && url.pathname !== "/private-video/jobs")
+    if (url.pathname !== "/health" && url.pathname !== "/jobs" && url.pathname !== "/private-video/jobs" &&
+        url.pathname !== "/opencode/health" && url.pathname !== "/opencode/chat")
       return reply({error:"not_found"},404);
-    if ((url.pathname === "/health" && request.method !== "GET") ||
-        ((url.pathname === "/jobs" || url.pathname === "/private-video/jobs") && request.method !== "POST"))
+    if (((url.pathname === "/health" || url.pathname === "/opencode/health") && request.method !== "GET") ||
+        ((url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") && request.method !== "POST"))
       return reply({error:"method"},405);
     let jobBody: string | null = null;
-    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs") {
+    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
       jobBody = await request.text();
       const size = new TextEncoder().encode(jobBody).byteLength;
       if (size < 1 || size > 1024) return reply({error:"size"},413);
     }
     const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v2");
-    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs") {
+    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
       // Warm the same named container before sending a non-idempotent job.
       // Never retry POST: duplicate transcription could overwrite private drafts.
       // Native lifecycle gate: explicitly start/wake the named container and
@@ -51,7 +52,10 @@ export default {
       let ready = false;
       for (let attempt = 0; attempt < 4; attempt++) {
         try {
-          const health = await instance.fetch(new Request("http://localhost:5200/health"));
+          const healthPath = url.pathname === "/opencode/chat" ? "/opencode/health" : "/health";
+          const healthHeaders = new Headers();
+          if (healthPath === "/opencode/health") healthHeaders.set("authorization", auth);
+          const health = await instance.fetch(new Request("http://localhost:5200" + healthPath, {headers: healthHeaders}));
           if (health.ok && (await health.json() as {ready?: boolean}).ready === true) {
             ready = true; break;
           }
