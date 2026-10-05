@@ -9,10 +9,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg ca-certi
 WORKDIR /app
 # OpenCode is baked into the paid container image once; never install it per chat request.
 # Pinning prevents an upstream latest release from silently changing the production machine.
-ARG OPENCODE_VERSION=1.0.193
-RUN npm install --global "opencode-ai@${OPENCODE_VERSION}" \
- && opencode --version \
+ARG OPENCODE_VERSION=2.0.21
+RUN npm install --global "@opencode/cli@${OPENCODE_VERSION}" \
+ && opencode --version | grep -F "${OPENCODE_VERSION}" \
  && npm cache clean --force
+# Claude-only read-only config is immutable in the runtime image; no provider key is baked in.
+COPY infra/ai-central-tools/claude-only/opencode.jsonc /etc/opencode/opencode.json
+RUN chmod 0444 /etc/opencode/opencode.json \
+ && sha256sum /etc/opencode/opencode.json | cut -d' ' -f1 > /etc/opencode/opencode.json.sha256 \
+ && chmod 0444 /etc/opencode/opencode.json.sha256
 RUN python -m pip install --no-cache-dir faster-whisper==1.2.1 boto3==1.40.56 requests==2.32.5 huggingface-hub==0.35.3 scenedetect[opencv-headless]==0.6.7
 # Fetch multilingual tiny model at IMAGE BUILD only. Runtime is offline; no user audio in image.
 RUN HF_HUB_OFFLINE=0 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='Systran/faster-whisper-tiny', local_dir='/opt/private-asr-model', allow_patterns=['config.json','model.bin','tokenizer.json','vocabulary.*'])" \
@@ -24,8 +29,9 @@ COPY scripts/private_birthday_first_production.py scripts/ai_central_shared_inbo
 COPY assets/musik/chill/hypnotic-ambient.mp3 /app/assets/musik/chill/hypnotic-ambient.mp3
 COPY config/MUSIC_LIBRARY.json /app/config/MUSIC_LIBRARY.json
 # Bundled model runs offline; never include personal audio in build or CI.
-COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py /app/
+COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py /app/
 RUN useradd --uid 10001 --create-home asr && chown -R asr:asr /app /opt/private-asr-model
 USER asr
+RUN python /app/verify_opencode_image.py
 EXPOSE 5200
 CMD ["python", "/app/service.py"]

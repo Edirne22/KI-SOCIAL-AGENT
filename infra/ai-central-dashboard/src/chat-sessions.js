@@ -28,12 +28,26 @@ export async function loadSession(env,id,requiredMode){
   return s;
 }
 export async function appendChatMessage(env,id,role,text){
-  const s=await loadSession(env,id,"chat");
+  const s=await loadSession(env,id);
   if(!["user","assistant"].includes(role)||typeof text!=="string"||text.length<1||text.length>12000)
     throw new Error("SESSION_MESSAGE_INVALID");
   s.messages.push({role,text,at:new Date().toISOString()});
   if(s.messages.length>80)s.messages=s.messages.slice(-80);
   s.updated_at=new Date().toISOString();
+  await env.AI_CENTRAL_R2.put(key(id),JSON.stringify(s),{httpMetadata:{contentType:"application/json"}});
+  return s;
+}
+
+export async function appendChatExchange(env,id,userText,assistantText){
+  const s=await loadSession(env,id);
+  for(const text of [userText,assistantText]){
+    if(typeof text!=="string"||text.length<1||text.length>12000)
+      throw new Error("SESSION_MESSAGE_INVALID");
+  }
+  const now=new Date().toISOString();
+  s.messages.push({role:"user",text:userText,at:now},{role:"assistant",text:assistantText,at:now});
+  if(s.messages.length>80)s.messages=s.messages.slice(-80);
+  s.updated_at=now;
   await env.AI_CENTRAL_R2.put(key(id),JSON.stringify(s),{httpMetadata:{contentType:"application/json"}});
   return s;
 }

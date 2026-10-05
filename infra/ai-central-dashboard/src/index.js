@@ -1,6 +1,6 @@
 import {privateASR} from "./private-asr.js";
 import {serveMetaDelivery} from "./meta-delivery.js";
-import {createSession,loadSession,appendChatMessage} from "./chat-sessions.js";
+import {createSession,loadSession,appendChatMessage,appendChatExchange} from "./chat-sessions.js";
 // Cloudflare Worker gateway: R2-backed shared Telegram+Web inbox.
 // No provider credentials, workflow tokens, auto-dispatch or approvals in this slice.
 const PREFIX="ai-central/v1/inbox/";
@@ -698,14 +698,15 @@ async function chatSession(req,env){
   if(!sameOrigin(req))return json({error:"origin rejected"},403);
   if(req.method==="POST"){
     let body;try{body=await req.json()}catch{return json({error:"invalid json"},400)}
-    if(!sameFlatRecord(body,{mode:"chat"}))return json({error:"chat sessions must use chat mode"},400);
-    const s=await createSession(env,"chat");
+    if(!body||!["chat","code"].includes(body.mode)||!sameFlatRecord(body,{mode:body.mode}))
+      return json({error:"session mode must be chat or code"},400);
+    const s=await createSession(env,body.mode);
     return json({id:s.id,mode:s.mode,capabilities:s.capabilities,created_at:s.created_at},201);
   }
   if(req.method==="GET"){
     const id=new URL(req.url).searchParams.get("id")||"";
     try{
-      const s=await loadSession(env,id,"chat");
+      const s=await loadSession(env,id);
       return json({id:s.id,mode:s.mode,capabilities:s.capabilities,
         created_at:s.created_at,updated_at:s.updated_at,messages:s.messages});
     }catch(err){
@@ -722,16 +723,35 @@ async function chatMessage(req,env){
   if(!body||Object.keys(body).sort().join(",")!=="message,session_id"||
      !validMessage(body.message)||typeof body.session_id!=="string")
     return json({error:"invalid chat message"},400);
-  try{await loadSession(env,body.session_id,"chat")}catch(err){
+  try{await loadSession(env,body.session_id)}catch(err){
     return json({error:err instanceof Error?err.message:"SESSION_ERROR"},400);
   }
-  // Never bypass OpenCode with a direct provider call. Until the shared
-  // OpenCode transport is bound, keep the user message unsent.
-  if(!env.OPENCODE_CHAT_SERVICE)
-    return json({error:"OpenCode chat transport unavailable; message not sent",
+  // CODE sessions use the existing private container service binding only.
+  // No provider credential is exposed to the browser and no direct provider call is allowed.
+  const session=await loadSession(env,body.session_id);
+  if(session.mode!=="code")
+    return json({error:"chat transport is not enabled for this session mode",stored:false},409);
+  if(!env.PRIVATE_ASR_SERVICE||!env.PRIVATE_ASR_INTERNAL_TOKEN)
+    return json({error:"OpenCode runtime unavailable; message not sent",
       status:"TRANSPORT_UNAVAILABLE",stored:false},503);
-  return json({error:"OpenCode chat transport adapter not yet enabled",
-    status:"TRANSPORT_NOT_ENABLED",stored:false},503);
+  let response;
+  try{
+    response=await env.PRIVATE_ASR_SERVICE.fetch("https://private-asr/opencode/chat",{
+      method:"POST",
+      headers:{"authorization":"Bearer "+env.PRIVATE_ASR_INTERNAL_TOKEN,
+        "content-type":"application/json"},
+      body:JSON.stringify({message:body.message.trim()})
+    });
+  }catch{
+    return json({error:"OpenCode runtime unreachable; message not sent",
+      status:"TRANSPORT_UNREACHABLE",stored:false},503);
+  }
+  let result={};try{result=await response.json()}catch{}
+  if(!response.ok||typeof result?.text!=="string"||!result.text.trim())
+    return json({error:"OpenCode request failed; message not stored",
+      status:"MODEL_CALL_FAILED",code:response.status,stored:false},502);
+  await appendChatExchange(env,body.session_id,body.message.trim(),result.text.trim());
+  return json({session_id:body.session_id,text:result.text.trim(),stored:true},200);
 }
 
 export default {async fetch(req,env){
