@@ -3,6 +3,9 @@ import hmac
 import json
 import os
 import re
+import shutil
+import subprocess
+import tempfile
 import threading
 import time
 from datetime import datetime, timezone
@@ -18,6 +21,52 @@ _lock = threading.Lock()
 _uuid = re.compile(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\Z")
 _date = re.compile(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}\Z")
 _task = re.compile(r"[A-Za-z0-9_-]{10,64}\Z")
+
+
+def _authorized(headers):
+    expected = os.getenv("PRIVATE_ASR_INTERNAL_TOKEN", "")
+    provided = headers.get("Authorization", "")
+    return bool(expected and hmac.compare_digest(provided, "Bearer " + expected))
+
+def _opencode_health():
+    binary = shutil.which("opencode")
+    config = "/etc/opencode/opencode.json"
+    digest = config + ".sha256"
+    ready = bool(binary and os.path.isfile(config) and os.path.isfile(digest))
+    return ready, {"ready": ready, "service": "opencode", "model": _opencode_model if ready else None}
+
+def _run_opencode(message):
+    if not _lock.acquire(False):
+        return 409, {"error": "busy"}
+    try:
+        # Fixed argv only. User text is one argv element; no shell, model, path or agent is accepted.
+        clean_env = {
+            "PATH": "/usr/local/bin:/usr/bin:/bin",
+            "HOME": "/tmp",
+            "OPENCODE_CONFIG": "/etc/opencode/opencode.json",
+            "OPENCODE_DISABLE_AUTOUPDATE": "1",
+        }
+        provider_key = os.getenv("OPENROUTER_API_KEY", "")
+        if not provider_key:
+            return 503, {"error": "provider_unavailable"}
+        clean_env["OPENROUTER_API_KEY"] = provider_key
+        with tempfile.TemporaryDirectory(prefix="opencode-", dir="/tmp") as workdir:
+            try:
+                result = subprocess.run(
+                    ["opencode", "run", "--model", _opencode_model, "--format", "json", message],
+                    cwd=workdir, env=clean_env, stdin=subprocess.DEVNULL,
+                    capture_output=True, text=True, timeout=_opencode_timeout, check=False,
+                )
+            except subprocess.TimeoutExpired:
+                return 504, {"error": "timeout"}
+        output = (result.stdout or "").strip()
+        if len(output.encode("utf-8")) > _opencode_max_output:
+            return 502, {"error": "output_too_large"}
+        if result.returncode != 0:
+            return 502, {"error": "opencode_failed"}
+        return 200, {"text": output}
+    finally:
+        _lock.release()
 
 def _video_status(task_id, status, error_code=None, detail=None, stage=None):
     client,bucket=client_from_env()
@@ -100,6 +149,11 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
+        if self.path == "/opencode/health":
+            if not _authorized(self.headers):
+                return self.respond(401, {"error": "unauthorized"})
+            ready, payload = _opencode_health()
+            return self.respond(200 if ready else 503, payload)
         if self.path != "/health":
             return self.respond(404, {"error": "not_found"})
         root = os.getenv("EDIRNE22_LOCAL_WHISPER_MODEL", "")
@@ -108,17 +162,24 @@ class Handler(BaseHTTPRequestHandler):
         self.respond(200 if ready else 503, {"ready": ready})
 
     def do_POST(self):
-        if self.path not in ("/jobs","/private-video/jobs"):
+        if self.path not in ("/jobs","/private-video/jobs","/opencode/chat"):
             return self.respond(404, {"error": "not_found"})
-        expected = os.getenv("PRIVATE_ASR_INTERNAL_TOKEN", "")
-        provided = self.headers.get("Authorization", "")
-        if not expected or not hmac.compare_digest(provided, "Bearer " + expected):
+        if not _authorized(self.headers):
             return self.respond(401, {"error": "unauthorized"})
         try:
             size = int(self.headers.get("Content-Length", "-1"))
-            if not 0 < size <= 1024:
+            limit = 8192 if self.path == "/opencode/chat" else 1024
+            if not 0 < size <= limit:
                 return self.respond(413, {"error": "size"})
             data = json.loads(self.rfile.read(size))
+            if self.path == "/opencode/chat":
+                if not isinstance(data, dict) or set(data) != {"message"}:
+                    raise ValueError()
+                message = data.get("message")
+                if not isinstance(message, str) or not message.strip() or len(message) > 6000:
+                    raise ValueError()
+                status, payload = _run_opencode(message)
+                return self.respond(status, payload)
             if self.path == "/private-video/jobs":
                 if not isinstance(data, dict) or set(data) != {"task_id"} or not isinstance(data["task_id"],str) or not _task.fullmatch(data["task_id"]):
                     raise ValueError()
