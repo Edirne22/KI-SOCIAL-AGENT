@@ -23,6 +23,16 @@ class RecoveryContractTests(unittest.TestCase):
         h=handoff();h["machine"]="curl-evil-command"
         state={"job_id":"duenya-job-001","stage_id":"ffmpeg-render","checkpoint":"segment-012","status":"FAILED"}
         with self.assertRaises(ValueError): recovery_decision(h,state)
+    def test_extra_field_rejected(self):
+        h=handoff();h["command"]="rm-anything"
+        state={"job_id":"duenya-job-001","stage_id":"ffmpeg-render","checkpoint":"segment-012","status":"FAILED"}
+        with self.assertRaises(ValueError): recovery_decision(h,state)
+    def test_checkpoint_mismatch_rejected(self):
+        state={"job_id":"duenya-job-001","stage_id":"ffmpeg-render","checkpoint":"segment-999","status":"FAILED"}
+        with self.assertRaises(ValueError): recovery_decision(handoff(),state)
+    def test_cancelled_never_restarts(self):
+        state={"job_id":"duenya-job-001","stage_id":"ffmpeg-render","checkpoint":"segment-012","status":"CANCELLED"}
+        self.assertEqual(recovery_decision(handoff("RESTART_JOB"),state)["decision"],"NO_RESTART")
     def test_two_healthy_heartbeats_required(self):
         one=[{"container_ready":True,"machine_ready":True,"job_status":"RUNNING"}]
         two=one+one
