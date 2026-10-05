@@ -38,3 +38,11 @@ Die drei momentan höchsten Tagesgeld‑Zinsen laut Finanztip (09/2026) sind: Ch
 Quellen: Finanztip, Check24, Verivox, Biallo
 
 Die drei aktuell höchsten Tagesgeld‑Zinsen laut Finanztip (09/2026) sind: Chase 4,0 % p.a. für 4 Monate, Ayvens Bank 4,0 % p.a. für 3 Monate und Volkswagen Bank 3,5 % p.a. für 6 Monate. Dein vorhandenes Chase‑Konto liefert mit 4,0 % bis 26.12.2026 exakt den Spitzenzins und liegt damit auf Augenhöhe mit den beiden besten Aktionsangeboten. Ab dem 27.12.2026 fällt der Chase‑Satz auf 2,0 %, was unter den noch verfügbaren 4‑Monats‑ bzw. 6‑Monats‑Angeboten (Ayvens 4,0 % bzw. Volkswagen 3,5 %) liegt; ein unbefristetes Alternative‑Produkt wäre Yapi Kredi 2,4 % p.a. Für Bülent wäre es sinnvoll, das Chase‑Konto bis zum Ablauf zu nutzen und dann kurzfristig zu Ayvens Bank (oder alternativ Volkswagen Bank) zu wechseln, um den höheren Zinssatz zu sichern.
+## Lauf 2026-10-05 07:13 UTC
+
+Quellen: Finanztip, Check24, Verivox, Biallo
+
+1. Laut Finanztip (02.10.2026) bieten Chase, Openbank und Ayvens Bank jeweils 4,0 % p.a. Aktionszinsen für neue Einlagen (4 Monate bei Chase & Openbank, 3 Monate bei Ayvens).  
+2. Der aktuelle Chase‑Zins von 4,0 % gilt bis 26.12.2026, danach sinkt er auf 2,0 %.  
+3. Nach diesem Datum wäre ein Wechsel zu Openbank (4,0 % für weitere 4 Monate) oder – für ein unbefristetes Angebot – Instabank über Raisin (2,41 % p.a.) eine Option.  
+4. Für Bülent: Chase bleibt bis Jahresende 2026 konkurrenzfähig; danach lohnt sich ein kurzer Blick auf Openbank‑Aktionen oder ein dauerhaftes Tagesgeldkonto bei Instabank.
