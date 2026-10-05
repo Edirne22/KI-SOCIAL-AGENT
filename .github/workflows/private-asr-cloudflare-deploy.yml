@@ -59,6 +59,7 @@ jobs:
           cp assets/musik/chill/hypnotic-ambient.mp3 "$target/assets/musik/chill/"
           cp config/MUSIC_LIBRARY.json "$target/config/"
           cp infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py "$target/"
+          sed -i 's@COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py /app/@COPY run_private_asr.py service.py verify_opencode_image.py /app/@' "$target/Dockerfile"
           mkdir -p "$target/infra/ai-central-tools/claude-only"
           cp infra/ai-central-tools/claude-only/opencode.jsonc "$target/infra/ai-central-tools/claude-only/opencode.jsonc"
           test -s "$target/service.py"
