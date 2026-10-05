@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+"""Offline OpenCode image invariants. No provider key and no model call."""
+from __future__ import annotations
+import hashlib
+import json
+import os
+import pathlib
+import subprocess
+
+EXPECTED_VERSION = "2.0.21"
+EXPECTED_MODEL = "openrouter/anthropic/claude-sonnet-4.5"
+CONFIG = pathlib.Path("/etc/opencode/opencode.json")
+SHA_FILE = pathlib.Path("/etc/opencode/opencode.json.sha256")
+
+def main() -> int:
+    version = subprocess.run(
+        ["opencode", "--version"],
+        check=True,
+        capture_output=True,
+        text=True,
+        env={"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/tmp"},
+    ).stdout.strip()
+    assert EXPECTED_VERSION in version, version
+    raw = CONFIG.read_bytes()
+    expected_sha = SHA_FILE.read_text(encoding="utf-8").strip()
+    assert hashlib.sha256(raw).hexdigest() == expected_sha
+    cfg = json.loads(raw)
+    assert cfg.get("model") == EXPECTED_MODEL
+    providers = cfg.get("providers")
+    assert isinstance(providers, dict) and set(providers) == {"openrouter"}
+    openrouter = providers["openrouter"]
+    assert openrouter.get("env") == ["OPENROUTER_API_KEY"]
+    assert "OPENROUTER_API_KEY" not in raw.decode("utf-8")
+    assert not os.access(CONFIG, os.W_OK), "config unexpectedly writable by runtime user"
+    assert os.geteuid() != 0, "runtime user must not be root"
+    print("OPENCODE_IMAGE_INVARIANTS_OK")
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())
