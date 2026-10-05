@@ -35,27 +35,27 @@ export default {
       if (size < 1 || size > limit) return reply({error:"size"},413);
     }
     const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v3");
-    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
-      // Warm the same named container before sending a non-idempotent job.
-      // Never retry POST: duplicate transcription could overwrite private drafts.
-      // Native lifecycle gate: explicitly start/wake the named container and
-      // wait until its declared port is listening before probing application health.
-      await instance.startAndWaitForPorts({
-        ports: [5200],
-        startOptions: {
-          enableInternet: true,
-          envVars: {
-            PRIVATE_ASR_INTERNAL_TOKEN: env.PRIVATE_ASR_INTERNAL_TOKEN,
-            OPENROUTER_API_KEY: env.OPENROUTER_API_KEY,
-            R2_ACCOUNT_ID: env.R2_ACCOUNT_ID,
-            R2_ACCESS_KEY_ID: env.R2_ACCESS_KEY_ID,
-            R2_SECRET_ACCESS_KEY: env.R2_SECRET_ACCESS_KEY,
-            R2_BUCKET_NAME: env.R2_BUCKET_NAME,
-            TELEGRAM_BOT_TOKEN: env.TELEGRAM_BOT_TOKEN,
-            TELEGRAM_CHAT_ID: env.TELEGRAM_CHAT_ID
-          }
+    // Every route must enter through the same lifecycle gate. In particular, /health
+    // must not be allowed to cold-start the container without its runtime secrets.
+    await instance.startAndWaitForPorts({
+      ports: [5200],
+      startOptions: {
+        enableInternet: true,
+        envVars: {
+          PRIVATE_ASR_INTERNAL_TOKEN: env.PRIVATE_ASR_INTERNAL_TOKEN,
+          OPENROUTER_API_KEY: env.OPENROUTER_API_KEY,
+          R2_ACCOUNT_ID: env.R2_ACCOUNT_ID,
+          R2_ACCESS_KEY_ID: env.R2_ACCESS_KEY_ID,
+          R2_SECRET_ACCESS_KEY: env.R2_SECRET_ACCESS_KEY,
+          R2_BUCKET_NAME: env.R2_BUCKET_NAME,
+          TELEGRAM_BOT_TOKEN: env.TELEGRAM_BOT_TOKEN,
+          TELEGRAM_CHAT_ID: env.TELEGRAM_CHAT_ID
         }
-      });
+      }
+    });
+    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
+      // The container is already started/woken above. Never retry POST:
+      // duplicate transcription or private-video jobs could overwrite private drafts.
       let ready = false;
       for (let attempt = 0; attempt < 4; attempt++) {
         try {
