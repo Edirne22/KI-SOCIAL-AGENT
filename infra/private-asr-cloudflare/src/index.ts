@@ -4,6 +4,7 @@ const runtimeEnv = workerEnv as unknown as Record<string, string>;
 type Env = {
   PRIVATE_ASR: DurableObjectNamespace<PrivateASRContainer>;
   PRIVATE_ASR_INTERNAL_TOKEN: string;
+  OPENROUTER_API_KEY: string;
   R2_ACCOUNT_ID: string; R2_ACCESS_KEY_ID: string;
   R2_SECRET_ACCESS_KEY: string; R2_BUCKET_NAME: string;
   TELEGRAM_BOT_TOKEN: string; TELEGRAM_CHAT_ID: string;
@@ -14,6 +15,7 @@ export class PrivateASRContainer extends Container {
   sleepAfter = "15m";
   envVars = {
     PRIVATE_ASR_INTERNAL_TOKEN: runtimeEnv.PRIVATE_ASR_INTERNAL_TOKEN,
+    OPENROUTER_API_KEY: runtimeEnv.OPENROUTER_API_KEY,
     R2_ACCOUNT_ID: runtimeEnv.R2_ACCOUNT_ID,
     R2_ACCESS_KEY_ID: runtimeEnv.R2_ACCESS_KEY_ID,
     R2_SECRET_ACCESS_KEY: runtimeEnv.R2_SECRET_ACCESS_KEY,
