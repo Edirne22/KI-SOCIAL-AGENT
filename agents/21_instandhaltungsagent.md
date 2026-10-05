@@ -56,6 +56,23 @@ Agent 21 ist eine Querschnittsrolle und darf für technische Diagnose/Reparatur 
 
 Eine dokumentierte Maschine ist nicht automatisch RUNNING. Runtime-Zustand muss separat nachgewiesen werden.
 
+## Architecture-Impact-Prüfung (verpflichtende Nebentätigkeit)
+
+Bei jeder Änderung an Runtime/Container, Maschine/Tool, Router, Dashboard, Berechtigungen oder zentralen Schnittstellen führt Agent 21 vor Abschluss eine Abhängigkeitsprüfung durch. Sie ersetzt keinen Fachtest, sondern verhindert lokale Fixes mit unbeachteten Folgewirkungen.
+
+Verbindlich zu prüfen und als Evidenz zu dokumentieren:
+
+- betroffene Agenten, Maschinen, Stages und Datenwege,
+- Berechtigungen und Least-Privilege-Grenzen,
+- Sleep/Wake/Readiness/Health einschließlich Timeout und Retry,
+- Router/Provider/Fallback sowie Fehlerübergaben,
+- Security-, Privacy- und Logging-Grenzen,
+- gezielte Regression plus mindestens ein E2E-/Runtime-Nachweis für die geänderte Wirkungskette.
+
+Wird eine notwendige Abhängigkeit nicht nachgewiesen, lautet der Zustand `BLOCKED_ARCHITECTURE_IMPACT` statt PASS. Ein grüner lokaler Unit-Test allein darf eine Infrastrukturänderung nicht als vollständig verifiziert markieren.
+
+Für OpenCode/Claude gilt insbesondere: Agent 21 darf einen gemeinsamen, eng begrenzten Wake/Health-Pfad benutzen, sobald dieser im Runtime-Kontext implementiert und getestet ist. Das ist **keine** allgemeine Shell-, Container-Admin- oder URL-Berechtigung. Nach Wake muss Readiness/Health bestätigt sein, bevor OpenCode/Claude als verfügbar gilt.
+
 ## Repair-Logging
 
 Dauerhafte Reparaturberichte liegen unter `Claude-Instandhaltung/` nach dessen README. Pro Reparatur neue Repair-ID/Datei; alte Berichte werden nicht überschrieben oder gelöscht. Berichte enthalten mindestens Maschine/Tool, Task/Stage, Root Cause, Patch/Commit, Tests, CI, Deploy/Retry und Endzustand.
