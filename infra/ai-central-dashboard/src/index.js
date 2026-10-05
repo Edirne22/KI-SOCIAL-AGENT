@@ -1,5 +1,6 @@
 import {privateASR} from "./private-asr.js";
 import {serveMetaDelivery} from "./meta-delivery.js";
+import {createSession,loadSession,appendChatMessage} from "./chat-sessions.js";
 // Cloudflare Worker gateway: R2-backed shared Telegram+Web inbox.
 // No provider credentials, workflow tokens, auto-dispatch or approvals in this slice.
 const PREFIX="ai-central/v1/inbox/";
@@ -693,6 +694,46 @@ async function getPreviewVideo(req,env){
   }});
 }
 
+async function chatSession(req,env){
+  if(!sameOrigin(req))return json({error:"origin rejected"},403);
+  if(req.method==="POST"){
+    let body;try{body=await req.json()}catch{return json({error:"invalid json"},400)}
+    if(!sameFlatRecord(body,{mode:"chat"}))return json({error:"chat sessions must use chat mode"},400);
+    const s=await createSession(env,"chat");
+    return json({id:s.id,mode:s.mode,capabilities:s.capabilities,created_at:s.created_at},201);
+  }
+  if(req.method==="GET"){
+    const id=new URL(req.url).searchParams.get("id")||"";
+    try{
+      const s=await loadSession(env,id,"chat");
+      return json({id:s.id,mode:s.mode,capabilities:s.capabilities,
+        created_at:s.created_at,updated_at:s.updated_at,messages:s.messages});
+    }catch(err){
+      const code=err instanceof Error?err.message:"SESSION_ERROR";
+      return json({error:code},code==="SESSION_NOT_FOUND"?404:400);
+    }
+  }
+  return json({error:"method"},405);
+}
+async function chatMessage(req,env){
+  if(req.method!=="POST")return json({error:"method"},405);
+  if(!sameOrigin(req))return json({error:"origin rejected"},403);
+  let body;try{body=await req.json()}catch{return json({error:"invalid json"},400)}
+  if(!body||Object.keys(body).sort().join(",")!=="message,session_id"||
+     !validMessage(body.message)||typeof body.session_id!=="string")
+    return json({error:"invalid chat message"},400);
+  try{await loadSession(env,body.session_id,"chat")}catch(err){
+    return json({error:err instanceof Error?err.message:"SESSION_ERROR"},400);
+  }
+  // Never bypass OpenCode with a direct provider call. Until the shared
+  // OpenCode transport is bound, keep the user message unsent.
+  if(!env.OPENCODE_CHAT_SERVICE)
+    return json({error:"OpenCode chat transport unavailable; message not sent",
+      status:"TRANSPORT_UNAVAILABLE",stored:false},503);
+  return json({error:"OpenCode chat transport adapter not yet enabled",
+    status:"TRANSPORT_NOT_ENABLED",stored:false},503);
+}
+
 export default {async fetch(req,env){
   const path=new URL(req.url).pathname;
   if(!path.startsWith("/api/"))return env.ASSETS.fetch(req);
@@ -712,6 +753,8 @@ export default {async fetch(req,env){
     if(path==="/api/review-status")return await reviewStatus(req,env);
     if(path==="/api/edit-status")return await canonicalEditStatus(req,env);
     if(path==="/api/preview-video")return await getPreviewVideo(req,env);
+    if(path==="/api/chat/session")return await chatSession(req,env);
+    if(path==="/api/chat/message")return await chatMessage(req,env);
     if(path==="/api/private-asr")return await privateASR(req,env);
     if(path==="/api/inbox")return await inbox(req,env);
     if(path==="/api/upload")return await upload(req,env);
