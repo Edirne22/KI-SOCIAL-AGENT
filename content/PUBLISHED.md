@@ -911,9 +911,8 @@ Quelle: https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-l
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-2-marc-marquez-motegid-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37279497026-1
+## Facebook [GEPOSTET 2026-10-05 07:45 | ID: 1285968257941776_122119624035469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-05-daily
 Telegram-Update-ID: 279361913
@@ -935,6 +934,7 @@ Der Titelkampf ist wieder spannend.
 https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi
 Quelle: https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi", "media_status": "", "object_id": "1285968257941776_122119624035469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119624035469415", "source_url": "https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
