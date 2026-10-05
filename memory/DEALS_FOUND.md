@@ -2863,3 +2863,35 @@ Verifiziertes Angebot: nein
 Ursache: ⏳ Suche derzeit nicht möglich – bitte in 10 Minuten erneut versuchen.
 SEARCH-FEHLER: provider=Alle, ursache=Alle Suchanbieter fehlgeschlagen, detail=SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 403, detail={   "error": {     "type": "platform-feature-disabled",     "message": "Monthly usage hard limit exceeded"   } } | SEARCH-FEHLER: provider=SearXNG, ursache=Nicht konfiguriert, detail=SEARXNG_URL fehlt
 Bitte später erneut versuchen.
+## Suche vom 2026-10-05 06:16
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Allgemeine und zeitunabhängige Hinweise zur Suche nach einem Mobilfunktarif mit hohem Datenvolumen im Telekom-Netz (D1):
+
+### 1. Mögliche Händler- und Anbieterarten
+* **Netzbetreiber direkt:** Bietet die höchste Netzpriorität, ungedrosseltes 5G und vollen Serviceumfang. Liegt preislich regulär meist über dem Discount-Bereich, kann aber durch spezielle Rahmenverträge oder Kombi-Angebote attraktiv werden.
+* **Tochtermarken des Netzbetreibers:** Bieten eine hohe Zuverlässigkeit im selben Netz, jedoch häufig mit einer Geschwindigkeitsdeckelung (z. B. max. 25 bis 50 Mbit/s) und reduzierten Zusatzoptionen.
+* **Unabhängige Mobilfunk-Reseller & Discounter:** Nutzen das D1-Netz im Rahmen von Kontingenten. Hier finden sich häufig die rechnerisch günstigsten Angebote, insbesondere bei zeitlich begrenzten Aktionen.
+* **Online-Vergleichsportale und Vermittler:** Bieten oft eigene Cashbacks, Gutschriften oder Zugaben an, die den Effektivpreis pro Monat deutlich senken können.
+
+### 2. Typische Tarifstrukturen für sehr günstiges, hohes Datenvolumen
+Um im D1-Netz ein hohes Datenvolumen (wie 80 GB) zu einem sehr niedrigen monatlichen Preis (unter 13 €) zu erreichen, nutzen Verbraucher meist folgende Produktfamilien oder Optionen:
+* **Kombi-Tarife (Festnetz + Mobilfunk):** Wenn bereits ein Festnetz- oder Internetanschluss beim selben Anbieter besteht, gewähren viele Betreiber deutliche Rabatte oder verdoppeln das Datenvolumen.
+* **Junge-Leute- / Studententarife:** Für Personen unter 28 Jahren (oder Studierende) gibt es bei vielen Anbietern Zusatzvolumen oder reduzierte Grundgebühren.
+* **Rechnerische Effektivpreise (Bundle-Angebote):** Angebote, bei denen ein Smartphone enthalten ist, das nach dem Kauf weiterverkauft wird, um die monatliche Effektivgebühr durch den Verkaufserlös rechnerisch zu drücken.
+* **Aktionstarife mit Einmalzahlung/Cashback:** Tarife, bei denen durch ein Startguthaben oder eine Auszahlung der durchschnittliche Monatspreis über die Mindestlaufzeit sinkt.
+
+### 3. Wichtige Auswahlkriterien
+* **Netzstandard & Geschwindigkeit:** Prüfen, ob der Tarif Zugang zum 5G-Netz beinhaltet oder auf LTE (4G) beschränkt ist und wo das Geschwindigkeitslimit liegt.
+* **Vertragslaufzeit:** Laufzeiten von 24 Monaten bieten in der Regel die niedrigsten Effektivpreise, während monatlich kündbare Tarife mehr Flexibilität bieten, aber oft etwas teurer sind oder höhere Bereitstellungspreise haben.
+* **K
+
+Bitte in 10 Minuten erneut versuchen.
