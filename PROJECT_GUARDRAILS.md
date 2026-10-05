@@ -8,6 +8,29 @@
 >
 > Ein PROJECT_HANDOVER oder Snapshot darf diese Datei nicht ersetzen. Neue Erkenntnisse und dauerhaft geltende Regeln müssen hier ergänzt werden.
 
+## 0. Operativer Arbeitszyklus – dauerhaft verbindlich
+
+Diese Regeln gelten für jede interaktive Entwicklungs-, Diagnose-, Reparatur-, BLOCKRUN-, PR-, CI- und Deployment-Arbeit. Sie ergänzen alle späteren Abschnitte und dürfen durch Statusmeldungen, Toolwechsel oder lange Läufe nicht abgeschwächt werden.
+
+1. **Statusmeldung ist kein Ende.** Nach jeder Statusmeldung wird im selben Arbeitszug mit dem nächsten technisch möglichen Schritt fortgefahren. Angehalten wird nur, wenn die Aufgabe fertig ist oder eine echte Entscheidung bzw. Handlung von Bülent erforderlich ist.
+2. **Kein erfundenes „später“ oder „im Hintergrund“.** Ein Status wird jetzt geprüft oder es wird konkret angegeben, welche Handlung Bülent ausführen muss. Aussagen wie „ich warte noch“ oder „ich melde mich später“ sind ohne echte Automation unzulässig.
+3. **Nach jedem Push oder PR sofort verifizieren.** Commit-Stand, Checks und Actions-Lauf unmittelbar abfragen. Zeigt GitHub keinen neuen Commit/Lauf oder einen unerwarteten Nullstand, Datei, Branch und tatsächlichen HEAD erneut prüfen statt passiv abzuwarten.
+4. **Fehler, Abbruch oder Zweifel sofort melden.** Die Meldung enthält mindestens: was passiert ist, die konkrete Fehlermeldung soweit verfügbar, was bereits versucht wurde und den vorgeschlagenen nächsten Fix. Keine stillen Mehrfach-Retries vor der Fehlermeldung.
+5. **Keine Erfolgsmeldung ohne Beleg.** `committed`, `pushed`, `merged`, `deployed`, `LIVE`, `PASS` oder vergleichbare Zustände nur mit tatsächlichem Commit-Hash, PR-/Run-/Log-Beleg oder entsprechendem Runtime-Nachweis.
+6. **Nicht ausführbare Schritte sofort offenlegen.** Wenn die aktive Instanz einen notwendigen Schritt nicht selbst ausführen kann, wird dies sofort gesagt und – soweit sicher möglich – der exakte kopierbare Befehl bzw. die genaue Nutzeraktion angegeben.
+
+### 0.1 Guardrail-Re-Read ist Teil des Arbeitszyklus
+
+`PROJECT_GUARDRAILS.md` ist nicht nur bei Projektübergaben zu berücksichtigen, sondern aktiv erneut einzulesen:
+
+- am Beginn jeder neuen Entwicklungs-/Diagnose-/BLOCKRUN-Sitzung,
+- vor jeder größeren Code-, Workflow-, Runtime-, Container-, Berechtigungs- oder Architekturänderung,
+- nach einem längeren Status-/Chat-Unterbruch, bevor technische Arbeit fortgesetzt wird,
+- nach einem Fehler, Abbruch oder unerwarteten Zustand vor dem nächsten Reparaturpatch,
+- vor einem Push/PR/Merge/Deploy, wenn seit dem letzten Guardrail-Read der Scope oder die technische Richtung geändert wurde.
+
+Coding-/Agenteneinstiege wie `AGENTS.md`, `CLAUDE.md` und Agent-21-Abläufe müssen auf diese Pflicht verweisen. Ein Snapshot oder Chatgedächtnis ersetzt das aktuelle Einlesen der Guardrails nicht.
+
 ## 1. Pflicht-Abschlusskette
 
 Eine Funktion, ein Agent oder eine größere Änderung gilt nicht allein deshalb als fertig, weil die normale CI grün ist.
