@@ -1,10 +1,13 @@
-name: Guarded Development Agent - Proposal Gate
+name: Guarded Development Agent - Agent 21 Gate
 on:
   pull_request:
     paths:
       - '.github/workflows/guarded-development-agent.yml'
+      - 'agents/21_instandhaltungsagent.md'
+      - 'agents/AGENTS_INDEX.md'
       - 'scripts/guarded_development_agent.py'
       - 'tests/test_guarded_development_agent.py'
+      - 'Claude-Instandhaltung/**'
   workflow_dispatch:
     inputs:
       issue_number:
@@ -16,10 +19,10 @@ permissions:
   issues: read
   pull-requests: read
 concurrency:
-  group: guarded-dev-proposal-${{ inputs.issue_number }}
+  group: guarded-dev-agent21-${{ github.event.pull_request.number || inputs.issue_number || github.ref }}
   cancel-in-progress: false
 jobs:
-  verify-development-request:
+  verify-agent21-boundaries:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -29,44 +32,49 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Verify explicit issue and repository guardrails
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ inputs.issue_number || '369' }}
-          REPOSITORY: ${{ github.repository }}
+      - name: Verify repository guardrails exist
         run: |
           python - <<'PY'
-          import json, os, re, urllib.request
           from pathlib import Path
-          number=os.environ["ISSUE_NUMBER"]
-          if not re.fullmatch(r"[1-9][0-9]{0,5}",number):
-              raise SystemExit("Invalid issue number")
           for path in ("MASTER-SNAPSHOT.md","PROJECT_GUARDRAILS.md"):
               if not Path(path).is_file() or not Path(path).read_text().strip():
                   raise SystemExit("Missing mandatory guardrail: "+path)
-          url="https://api.github.com/repos/"+os.environ["REPOSITORY"]+"/issues/"+number
-          request=urllib.request.Request(url,headers={
-              "Authorization":"Bearer "+os.environ["GH_TOKEN"],
-              "Accept":"application/vnd.github+json",
-              "User-Agent":"Edirne22-Guarded-Development-Gate"})
-          with urllib.request.urlopen(request,timeout=20) as response:
-              issue=json.load(response)
-          if issue.get("state")!="open" or "pull_request" in issue:
-              raise SystemExit("Development issue must be open and not a PR")
-          body=issue.get("body") or ""
-          if not body.strip():
-              raise SystemExit("Empty development request")
-          print("Verified open development issue #"+number)
-          print("Mandatory repository guardrails present")
-          print("READ_ONLY_PROPOSAL_GATE_PASS")
-          print("NO_CODE_EXECUTION_NO_PUSH_NO_DEPLOY")
+          print("MANDATORY_GUARDRAILS_PRESENT")
           PY
-      - name: Create allowlisted development plan
-        env:
-          ISSUE_NUMBER: ${{ inputs.issue_number || '369' }}
-        run: python -m scripts.guarded_development_agent --issue "$ISSUE_NUMBER"
-      - name: Test development planner safeguards
+      - name: Test planner and Agent 21 write boundaries
         run: python -m unittest discover -s tests -p 'test_guarded_development_agent.py' -v
+      - name: Verify protected files remain outside Agent 21 write allowlist
+        run: |
+          python - <<'PY'
+          from scripts.guarded_development_agent import _safe_path
+          forbidden=[
+            "PROJECT_GUARDRAILS.md",
+            "MASTER-SNAPSHOT.md",
+            "CLAUDE.md",
+            "agents/11_system_restart_agent.md",
+            ".github/workflows/guarded-development-agent.yml",
+            "scripts/../PROJECT_GUARDRAILS.md",
+          ]
+          assert all(not _safe_path(p) for p in forbidden)
+          print("AGENT21_PROTECTED_PATH_ATTACK_PASS")
+          PY
+      - name: Positive control bounded repair contract
+        run: |
+          python - <<'PY'
+          from scripts.guarded_development_agent import AGENT21_ID, validate_agent21_write_contract
+          c={
+            "schema":"AGENT21-REPAIR-PATCH-V1",
+            "agent":AGENT21_ID,
+            "branch":"repair/agent21-positive-control",
+            "machine":"synthetic-test-machine",
+            "stage":"repair-contract",
+            "changes":[{"path":"tests/agent21_positive_control.txt","content":"safe\n"}],
+            "tests":["python -m unittest tests.test_guarded_development_agent -v"],
+          }
+          r=validate_agent21_write_contract(c)
+          assert r["status"]=="WRITE_CONTRACT_VALIDATED"
+          print("AGENT21_WRITE_CONTRACT_POSITIVE_CONTROL_PASS")
+          PY
       - name: Verify existing private media regression suite
         run: |
           python -m pip install --disable-pip-version-check requests boto3
@@ -76,9 +84,3 @@ jobs:
           else
             echo 'BLOCKED_MISSING_SOURCE: private Telegram intake remains on separate unmerged branch'
           fi
-      - name: Upload non-sensitive development plan
-        uses: actions/upload-artifact@v4
-        with:
-          name: guarded-development-plan
-          path: guarded-development-plan.json
-          retention-days: 3
