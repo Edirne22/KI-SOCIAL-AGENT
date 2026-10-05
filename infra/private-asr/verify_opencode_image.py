@@ -36,7 +36,8 @@ def main() -> int:
         timeout=30,
     )
     resolved = (debug.stdout or "") + "\n" + (debug.stderr or "")
-    assert EXPECTED_MODEL in resolved, "resolved config did not retain the fixed model"
+    if EXPECTED_MODEL not in resolved:
+        raise AssertionError("resolved config did not retain the fixed model; debug output=" + repr(resolved[:8000]))
     raw = CONFIG.read_bytes()
     expected_sha = SHA_FILE.read_text(encoding="utf-8").strip()
     assert hashlib.sha256(raw).hexdigest() == expected_sha
