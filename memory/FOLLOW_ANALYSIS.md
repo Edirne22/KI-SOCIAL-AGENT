@@ -1,5 +1,5 @@
 # Follow-Analyse
-Stand: 2026-10-04 13:12
+Stand: 2026-10-05 08:07
 
 ## Zusammenfassung
 - Analysierte Accounts: 8
@@ -8,14 +8,14 @@ Stand: 2026-10-04 13:12
 - Hinweis: Top-Posts stammen aus einer aktuellen, begrenzten öffentlichen Stichprobe.
 
 ## Verify-Ergebnisse
-- @pedroacosta37 → ⚠️ @pedroacosta37 | – | Bright Data HTTP 400
-- @fabioquartararo20 → ⚠️ @fabioquartararo20 | – | Bright Data HTTP 400
-- @alexrins → ⚠️ @alexrins | – | Bright Data HTTP 400
-- @joanmir36official → ⚠️ @joanmir36official | – | Bright Data HTTP 400
-- @lucamarini10 → ⚠️ @lucamarini10 | – | Bright Data HTTP 400
-- @alexmarquez73 → ⚠️ @alexmarquez73 | – | Bright Data HTTP 400
-- @ferminaldeguer_54 → ⚠️ @ferminaldeguer_54 | – | Bright Data HTTP 400
-- @fabiodiggia49 → ⚠️ @fabiodiggia49 | – | Bright Data HTTP 400
+- @aiogura79 → ⚠️ @aiogura79 | – | Bright Data HTTP 400
+- @johannzarco → ⚠️ @johannzarco | – | Bright Data HTTP 400
+- @diogomoreira11 → ⚠️ @diogomoreira11 | – | Bright Data HTTP 400
+- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
+- @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
+- @canoncu → ⚠️ @canoncu | – | Bright Data HTTP 400
+- @kenansofuoglu → ⚠️ @kenansofuoglu | – | Bright Data HTTP 400
+- @zaynsofuoglu → ⚠️ @zaynsofuoglu | – | Bright Data HTTP 400
 
 ## Account-Ergebnisse
 
