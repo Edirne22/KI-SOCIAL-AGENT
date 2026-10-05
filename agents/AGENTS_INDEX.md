@@ -24,6 +24,9 @@ Die Agenten sind Teil **einer** KI-Zentrale mit Content-Fabrik und universeller 
 | [18_tour_ride_story_agent.md](18_tour_ride_story_agent.md) | Tour Ride Story | Aus eigenen Tourdaten privates, belegbares Story-Paket ohne Veröffentlichung |
 | [19_ki_integrationsingenieur.md](19_ki_integrationsingenieur.md) | KI-Integrationsingenieur | Geprüfte Maschinen über bestehende KI-/GitHub-Routen integrieren; isolierte Tests und unabhängige technische Abnahme |
 | [20_maschinen_scout.md](20_maschinen_scout.md) | Maschinen-Scout | Öffentliche Repos, Skills, APIs und Storage-/CPU-/GPU-Alternativen entdecken; vor Integration Research und Security |
+| [21_instandhaltungsagent.md](21_instandhaltungsagent.md) | **Instandhaltungsagent** | Zentraler technischer Reparaturagent; darf über den kontrollierten OpenCode/Claude-Code-Weg selbstständig Code/Patches erzeugen, ändern und testen; Repair-Logging und Funktionsnachweis verpflichtend |
+
+**Agent 21 ist der Instandhaltungsagent.** Es existiert kein zweiter separater Instandhaltungsagent. Agent 11 bleibt unverändert der System-Restart-Agent.
 
 **Weitere tatsächliche Komponenten:** `facebook_engagement.py` ist eine separate historische Facebook-Engagement-Implementierung und gegenwärtig nicht als neu nummerierter Agent aktiv. `content_factory_newsroom.py`, `content_factory_creative.py`, `content_factory_media_production.py` und Human/Publisher-Verträge sind zentrale Module und nicht automatisch eigenständige 24/7-Prozesse.
 
@@ -32,6 +35,8 @@ Die Agenten sind Teil **einer** KI-Zentrale mit Content-Fabrik und universeller 
 ## Hierarchie und Ausführung
 
 Die menschliche Geschäftsführung autorisiert nur tatsächlich erlaubte Aufträge. Eine einzige zentrale Auftragsannahme über bestehendes Dashboard/Telegram reicht an den noch vollständig abzunehmenden deterministischen Produktionsleiter weiter; dieser aktiviert den passenden fachlichen Teamleiter und nur die nötigen Spezialrollen. Unabhängige Source-Fact-, Rights-, Security- und Final-Gates schützen die Ausgabe; ein fertig geprüftes Ergebnis kommt auf das Goldene Tablett. Externe Veröffentlichungen, Kosten und private Medien bleiben unter Bülents konkreten Freigaben.
+
+Technische Maschinenhierarchie: **Fabrik → Runtime/Container → Maschine/Tool → Agent/Stage.** Der Dashboard-CODE-Eingang für Bülent und automatische Reparaturaufträge von Agent 21 benutzen denselben kontrollierten Coding-Unterbau; es wird keine zweite Coding-Orchestrierung aufgebaut.
 
 Content: Strategie/Discovery → Research/Newsroom → Creative/Writing → plattformgerechter Plan → Media/Voice/Avatar je realer Fähigkeit → Source-/Media-Final-QM → Goldenes Tablett → Human Authority → bestehender Publisher.
 
