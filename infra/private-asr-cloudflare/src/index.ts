@@ -13,6 +13,7 @@ export class PrivateASRContainer extends Container {
   defaultPort = 5200;
   requiredPorts = [5200];
   sleepAfter = "15m";
+  enableInternet = true;
   envVars = {
     PRIVATE_ASR_INTERNAL_TOKEN: runtimeEnv.PRIVATE_ASR_INTERNAL_TOKEN,
     OPENROUTER_API_KEY: runtimeEnv.OPENROUTER_API_KEY,
@@ -45,7 +46,7 @@ export default {
       const limit = url.pathname === "/opencode/chat" ? 8192 : 1024;
       if (size < 1 || size > limit) return reply({error:"size"},413);
     }
-    const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v2");
+    const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v3");
     if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
       // Warm the same named container before sending a non-idempotent job.
       // Never retry POST: duplicate transcription could overwrite private drafts.
