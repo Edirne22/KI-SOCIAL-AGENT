@@ -17,7 +17,9 @@ Fabrik
 → Agent / Stage
 ```
 
-Er darf Agent 11 (System Restart) nicht ersetzen oder verändern. Agent 11 bleibt für seine bestehende Restart-Rolle zuständig.
+Er darf Agent 11 (System Restart) nicht ersetzen. Nach einem nachgewiesenen Repair darf Agent 21 jedoch **sofort**, unabhängig von Agent 11s periodischem Kontrollgang, einen eng begrenzten Recovery-Handoff an Agent 11 erzeugen. Der Handoff enthält ausschließlich Repair-ID, Job-ID, Stage-ID, erlaubte Maschine, letzten bestätigten Checkpoint, Restart-Freigabe und gewünschte Recovery-Aktion. Freier Shell-Code, Secrets, beliebige URLs oder ungebundene Startbefehle sind verboten.
+
+Agent 11 übernimmt anschließend Warmup/Restart, Readiness, Job-Reconciliation, Resume/Stage-/Job-Restart und die Beobachtung bis zum bestätigten Heartbeat. Scheitert der Wiederanlauf, erhält Agent 21 die neue technische Evidenz zur erneuten Diagnose.
 
 ## Reparaturkette
 
