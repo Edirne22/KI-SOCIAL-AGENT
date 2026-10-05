@@ -27,14 +27,15 @@ def main() -> int:
         "OPENCODE_CONFIG": str(CONFIG),
         "OPENCODE_DISABLE_AUTOUPDATE": "1",
     }
-    resolved = subprocess.run(
+    debug = subprocess.run(
         ["opencode", "debug", "config"],
         check=True,
         capture_output=True,
         text=True,
         env=debug_env,
         timeout=30,
-    ).stdout
+    )
+    resolved = (debug.stdout or "") + "\n" + (debug.stderr or "")
     assert EXPECTED_MODEL in resolved, "resolved config did not retain the fixed model"
     raw = CONFIG.read_bytes()
     expected_sha = SHA_FILE.read_text(encoding="utf-8").strip()
