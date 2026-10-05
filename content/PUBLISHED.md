@@ -791,9 +791,8 @@ Quelle: https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marqu
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-05-turkish-human-1-toprak-razgatlioglu-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37271651413-1
+## Facebook [GEPOSTET 2026-10-05 06:17 | ID: 1285968257941776_122119592487469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-05-daily-TR-HUMAN
 Telegram-Update-ID: 279361912
@@ -811,6 +810,7 @@ Quelle / weitere Infos: https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-pri
 https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367
 Quelle: https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367", "media_status": "", "object_id": "1285968257941776_122119592487469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119592487469415", "source_url": "https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367", "version": 1}
 
 ## Instagram
 Status: FREIGEGEBEN
