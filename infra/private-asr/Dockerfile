@@ -9,9 +9,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg ca-certi
 WORKDIR /app
 # OpenCode is baked into the paid container image once; never install it per chat request.
 # Pinning prevents an upstream latest release from silently changing the production machine.
-ARG OPENCODE_VERSION=1.0.193
-RUN npm install --global "opencode-ai@${OPENCODE_VERSION}" \
- && opencode --version \
+ARG OPENCODE_VERSION=2.0.21
+RUN npm install --global "@opencode/cli@${OPENCODE_VERSION}" \
+ && test "$(opencode --version)" = "${OPENCODE_VERSION}" \
  && npm cache clean --force
 RUN python -m pip install --no-cache-dir faster-whisper==1.2.1 boto3==1.40.56 requests==2.32.5 huggingface-hub==0.35.3 scenedetect[opencv-headless]==0.6.7
 # Fetch multilingual tiny model at IMAGE BUILD only. Runtime is offline; no user audio in image.
