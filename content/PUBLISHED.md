@@ -955,9 +955,8 @@ Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-more
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-4-motegide-olayli-spri-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37282290471-1
+## Facebook [GEPOSTET 2026-10-05 08:13 | ID: 1285968257941776_122119633101469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-05-daily
 Telegram-Update-ID: 279361913
@@ -979,3 +978,4 @@ Wie seht ihr Moreiras historischen zweiten Platz nach den Strafen?
 https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
 Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum", "media_status": "", "object_id": "1285968257941776_122119633101469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119633101469415", "source_url": "https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum", "version": 1}
