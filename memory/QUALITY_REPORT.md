@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-10-04 21:09
+Stand: 2026-10-05 18:15
 Gesamtstatus: **WARNUNG**
-- OK: 13
-- Warnungen: 5
+- OK: 9
+- Warnungen: 7
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -12,14 +12,12 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Bright-Data-Debug**: Datei vorhanden und nicht leer.
 - ⚠️ **Inspiration-Quellen**: Keine verlinkten Quellen im Report erkannt.
 - ⚠️ **Inspiration-Ideen**: Nur 0 konkrete Ideen erkannt.
-- ✅ **YouTube-Fallback**: 10 YouTube-Datensätze aus dem Apify-Fallback erkannt.
-- ✅ **YouTube-Duplikate**: Keine doppelten Video-URLs im Quellreport erkannt.
-- ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
-- ✅ **Datenalter**: 10 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-10-02 04:58 UTC).
+- ⚠️ **YouTube-Fallback**: Apify-Quellreport vorhanden, aber keine verwertbaren Video-Datensätze erkannt.
+- ⚠️ **Datenalter**: Keine auswertbaren Quelldaten gefunden.
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
 - ✅ **Secret-Prüfung**: Keine typischen Zugangsschlüssel in Projektdateien erkannt.
-- ✅ **Analytics Fetch**: Letzter Lauf erfolgreich.
+- ⚠️ **Analytics Fetch**: Kein letzter Lauf in der GitHub-Antwort gefunden.
 - ✅ **Analytics Report**: Letzter Lauf erfolgreich.
 - ⚠️ **Generate Daily Content Idea**: Kein letzter Lauf in der GitHub-Antwort gefunden.
 - ⚠️ **Inspiration Agent**: Kein letzter Lauf in der GitHub-Antwort gefunden.
