@@ -250,29 +250,6 @@ Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarism
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-09/2026-09-27-racing-editorial-2026-09-27-2-motogp-toprak-razgat-01.jpg
 
-## Facebook [GEPOSTET 2026-09-27 13:25 | ID: 1285968257941776_122115781401469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-09-27-manual-36318904621
-Telegram-Update-ID: 279361764
-MotoGP-Auswahl: 2
-Titel: MotoGP - Toprak Razgatlıoğlu: "2026’da Yarışmayı Bırakmayı Düşündüm"
-Text:
-Toprak Razgatlıoğlu fand seine erste MotoGP-Saison richtig hart.
-
-Sie erinnert ihn stark an seinen Start in der WorldSBK im Jahr 2018.
-
-In beiden Serien musste er in den Anfangsjahren um die vorderen Plätze kämpfen.
-
-Wie seht ihr den Vergleich zwischen den beiden Serien?
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150
-Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150", "media_status": "", "object_id": "1285968257941776_122115781401469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122115781401469415", "source_url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-2026da-yarismayi-birakmayi-dusundum/116150", "version": 1}
-
 ## Instagram [GEPOSTET 2026-09-29 17:29 | ID: 18119496034821702]
 Status: GEPOSTET
 Freigabe: Telegram Racing
