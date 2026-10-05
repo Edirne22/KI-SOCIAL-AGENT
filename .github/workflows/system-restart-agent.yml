@@ -34,7 +34,7 @@ jobs:
       - name: Agent-Syntax prüfen
         run: python -m py_compile system_restart_agent.py
       - name: Recovery-Vertrag und Agent-11-Integration testen
-        run: python -m unittest tests.test_production_recovery_contract tests.test_system_restart_recovery
+        run: python -m unittest tests.test_production_recovery_contract tests.test_system_restart_recovery tests.test_production_machine_watchdog
       - name: Systemstatus prüfen
         env:
           GITHUB_TOKEN: ${{ github.token }}
