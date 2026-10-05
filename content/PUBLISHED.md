@@ -913,7 +913,7 @@ Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-2-marc-marque
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 37279497026-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-05-daily
 Telegram-Update-ID: 279361913
