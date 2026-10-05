@@ -1,12 +1,24 @@
 {
   "version": 1,
-  "created_at": 1791094361,
+  "created_at": 1791175235,
   "max_days": 10,
   "window_used_days": 10,
-  "count": 6,
+  "count": 8,
   "items": [
     {
       "n": 1,
+      "title": "MotoGP'de Japonya Grand Prix'sini Marc Marquez kazandı",
+      "url": "https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367",
+      "summary": "Toprak Razgatlıoğlu, yarışı 17. sırada tamamladı. | Anadolu Ajansı",
+      "preview": "https://web-cdnprod.aa.com.tr/uploads/Contents/2026/10/04/thumbs_b_c_699b49a0daff8b5fea71c585cb24a9ea.jpg",
+      "published_at": "2026-10-04T09:56:35.847",
+      "series": "MotoGP",
+      "source_series": "MotoGP",
+      "turkish_rider": "Toprak Razgatlıoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 2,
       "title": "MotoGP Japonya GP: Marc Marquez kazandı, Aprilia podyumda, Toprak 17. sırada",
       "url": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737",
       "summary": "2026 MotoGP Japonya Grand Prix'sinin kazananı Marc Marquez oldu. Toprak Razgatlıoğlu yarışı 17. sırada tamamladı.",
@@ -18,7 +30,19 @@
       "kind": "news"
     },
     {
-      "n": 2,
+      "n": 3,
+      "title": "Milli motosikletçi Deniz Öncü, Japonya'da Moto2 Dünya Şampiyonası'nda 7. oldu",
+      "url": "https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-japonyada-moto2-dunya-sampiyonasinda-7-oldu-/4077374",
+      "summary": "Milli motosikletçi Deniz Öncü, Moto2 Dünya Şampiyonası'nın 16. ayağı Japonya Grand Prix'sini 7. tamamladı. | Anadolu Ajansı",
+      "preview": "https://web-cdnprod.aa.com.tr/uploads/Contents/2026/10/04/thumbs_b_c_31a6b317c9cfcd46d3bb31d628add05c.jpg",
+      "published_at": "2026-10-04T10:17:54.807",
+      "series": "Moto2",
+      "source_series": "Moto2",
+      "turkish_rider": "Deniz Öncü",
+      "kind": "news"
+    },
+    {
+      "n": 4,
       "title": "Moto2 Japonya GP sıralama: Motegi’de pole Izan Guevara’nın, Deniz Öncü 11.sırada",
       "url": "https://tr.motorsport.com/moto2/news/moto2-japonya-gp-siralama-motegide-pole-izan-guevaranin-deniz-oncu-11sirada/10861321",
       "summary": "Moto2 Dünya Şampiyonası’nın Japonya Grand Prix’sinde pole pozisyonunun sahibi 1:46.851’lik turuyla Izan Guevara oldu.",
@@ -30,7 +54,7 @@
       "kind": "news"
     },
     {
-      "n": 3,
+      "n": 5,
       "title": "David Alonso Motegi’de rekoru kırdı: İlk dört arasında sadece 0.093 saniye!",
       "url": "https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi",
       "summary": "David Alonso, Moto2 Japonya GP antrenmanında 1:47.508 ile Motegi pist rekorunu kırdı. Manuel Gonzalez ikinci olurken Deniz Öncü Q2’ye kaldı.",
@@ -42,7 +66,7 @@
       "kind": "news"
     },
     {
-      "n": 4,
+      "n": 6,
       "title": "Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi",
       "url": "https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi",
       "summary": "Avusturya’da dokuzuncu olan Deniz Öncü, Moto2 Japonya GP’sinde yükselişini sürdürmek ve Motegi’de sezonun en güçlü sonucunu almak istiyor.",
@@ -54,7 +78,7 @@
       "kind": "news"
     },
     {
-      "n": 5,
+      "n": 7,
       "title": "Can Öncü Cremona’da ön sıralarda! Pole sadece 0.365 saniye uzakta",
       "url": "https://motoetkinlik.com/can-oncu-cremona-worldssp-superpolede-6-oldu",
       "summary": "Milli sporcumuz Can Öncü, Cremona WorldSSP Superpole seansını pole pozisyonunun sadece 0.365 saniye gerisinde altıncı tamamladı.",
@@ -66,7 +90,7 @@
       "kind": "news"
     },
     {
-      "n": 6,
+      "n": 8,
       "title": "IAME Benelux Mariembourg Finali: Zayn Sofuoğlu Kazanmak İçin Piste Çıkıyor",
       "url": "https://motoetkinlik.com/iame-benelux-mariembourg-finali-zayn-sofuoglu-kazanmak-icin-piste-cikiyor",
       "summary": "IAME Benelux Mariembourg finali 27 Eylül Pazar. Zayn Sofuoğlu 724 puanla ikinci, lider Bal'a fark 42 puan. Mini Rookie seans saatleri TSİ ve güncel puan durumu.",

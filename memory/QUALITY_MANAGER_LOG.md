@@ -2616,3 +2616,33 @@ Story-Key: title:jack-miller-yar-n-herkes-sert-lastikle-olacak-yamaha-20-daki-ka
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-05 05:01 UTC | Motorcycle Racing | PASS
+Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
+Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-05 05:01 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez Motegi’de dubleyi yaptı: MotoGP’de fark sadece 2 puan!
+Story-Key: title:marc-marquez-motegi-de-dubleyi-yapt-motogp-de-fark-sadece-2-puan
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-05 05:01 UTC | Motorcycle Racing | PASS
+Titel: Rivola: “Jorge’nin Lastiği Bizi Korkuttu, Bu Yüzden Baskı Yaptık”
+Story-Key: title:rivola-jorge-nin-lasti-i-bizi-korkuttu-bu-y-zden-bask-yapt-k
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-05 05:02 UTC | Motorcycle Racing | PASS
+Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
+Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-05 05:02 UTC | Motorcycle Racing | PASS
+Titel: Alex Marquez, Motegi sprintindeki kazanın ardından ceza aldı
+Story-Key: motogp:10861336
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

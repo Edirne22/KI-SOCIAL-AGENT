@@ -804,3 +804,18 @@ Quelle: https://motoetkinlik.com/enea-bastianini-pist-limit-cezasini-degerlendir
 Story-Key: title:jack-miller-yar-n-herkes-sert-lastikle-olacak-yamaha-20-daki-kalik-warm-up-i-sti-yor
 Titel: Jack Miller: “Yarın Herkes Sert Lastikle Olacak” – YAMAHA 20 DAKİKALIK WARM-UP İSTİYOR!
 Quelle: https://motoetkinlik.com/jack-miller-yarin-herkes-sert-lastikle-olacak-yamaha-20-dakikalik-warm-up-istiyor
+
+## 2026-10-05 04:40 UTC – ANGEBOTEN
+Story-Key: title:marc-marquez-motegi-de-dubleyi-yapt-motogp-de-fark-sadece-2-puan
+Titel: Marc Marquez Motegi’de dubleyi yaptı: MotoGP’de fark sadece 2 puan!
+Quelle: https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi
+
+## 2026-10-05 04:40 UTC – ANGEBOTEN
+Story-Key: title:rivola-jorge-nin-lasti-i-bizi-korkuttu-bu-y-zden-bask-yapt-k
+Titel: Rivola: “Jorge’nin Lastiği Bizi Korkuttu, Bu Yüzden Baskı Yaptık”
+Quelle: https://motoetkinlik.com/rivola-jorgenin-lastigi-bizi-korkuttu-bu-yuzden-baski-yaptik
+
+## 2026-10-05 04:40 UTC – ANGEBOTEN
+Story-Key: motogp:10861336
+Titel: Alex Marquez, Motegi sprintindeki kazanın ardından ceza aldı
+Quelle: https://tr.motorsport.com/motogp/news/alex-marquez-motegi-sprintindeki-kazanin-ardindan-ceza-aldi/10861336

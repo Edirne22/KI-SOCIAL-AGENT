@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1791094361
+Session-Timestamp: 1791175235
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,27 +15,27 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 1
+Neufassungen: 2
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.5
+Artikelalter-Tage: 1.5
 Kategorie: Turkish Riders
 Serie: MotoGP
 Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
 Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
 Quelle: https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-1-toprak-motegide-sonu-01.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-1-toprak-motegide-sonu-01.jpg
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-motegi-motogp-frenleme-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu beendete den MotoGP-Sprint in Japan auf dem 17. Platz.
+Toprak Razgatlıoğlu beendete den MotoGP-Sprint in Motegi auf Platz 17.
 
-Trotz des Resultats machte er bei der Kontrolle der Yamaha in der Bremsphase wichtige Fortschritte.
+Trotz der Platzierung sah er deutliche Fortschritte bei der Beherrschung der Yamaha auf der Bremse.
 
-Laut eigener Aussage hat er eine Lösung gefunden und versteht nun, wie er das Bike handhaben muss.
+Für den Fahrer zählte in Japan vor allem der gefundene Lösungsweg beim Fahrverhalten und weniger das reine Resultat.
 
-Mal sehen, wie sich diese Fortschritte in den nächsten Sessions auf der Strecke bemerkbar machen.
+Schreibt eure Gedanken dazu gerne in die Kommentare.
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -45,25 +45,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 0.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
-Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
-Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
+Story-Key: title:marc-marquez-motegi-de-dubleyi-yapt-motogp-de-fark-sadece-2-puan
+Titel: Marc Marquez Motegi’de dubleyi yaptı: MotoGP’de fark sadece 2 puan!
+Quelle: https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-2-motegide-olayli-spri-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-motegi-sprint-moreira-motogp-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-2-marc-marquez-motegid-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-japonya-motogp-motegi-2026.avif
 Plattformen: Instagram + Facebook
 Text:
-In Motegi hat Marc Marquez den Sprint gewonnen, Diogo Moreira holt sich mit einem historischen zweiten Platz einen tollen Pulk. Mehr dazu
+Marc Marquez holte in Motegi den Dublett-Sieg: Sprint und Hauptrennen gewonnen.
 
-Wie seht ihr die beiden?
+Jorge Martin wurde Zweiter im Hauptrennen.
 
-#MotoGP #MarcMarquez #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Der Vorsprung im MotoGP-WM-Kampf ist jetzt nur noch 2 Punkte.
+
+Der Titelkampf ist wieder spannend.
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -72,24 +76,24 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 1
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
+Artikelalter-Tage: 0.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10861300
-Titel: MotoGP Japonya GP sprint: Marc Marquez kazandı, cezaların ardından Moreira ikinci, Toprak 17. sırada
-Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-sprint-marc-marquez-kazandi-cezalarin-ardindan-moreira-ikinci-toprak-17-sirada/10861300
+Story-Key: title:rivola-jorge-nin-lasti-i-bizi-korkuttu-bu-y-zden-bask-yapt-k
+Titel: Rivola: “Jorge’nin Lastiği Bizi Korkuttu, Bu Yüzden Baskı Yaptık”
+Quelle: https://motoetkinlik.com/rivola-jorgenin-lastigi-bizi-korkuttu-bu-yuzden-baski-yaptik
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-3-motogp-japonya-gp-sp-01.jpg
-Quellen-Preview: https://cdn-2.motorsport.com/images/amp/6AlvDl1Y/s6/marc-marquez-ducati-team-2.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-3-rivola-jorgenin-last-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/aprilia-rivola-marquez-avantaj-motogp-2026-2-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat den Sprint im japonischen MotoGP-Wochenende gewonnen. Nach den Strafen kam Diogo Moreira auf den zweiten Platz, Toprak landete auf Platz 17. 🏍️
+Martin hatte in Japan Reifenprobleme – Aprilias CEO Rivola hat daraufhin Druck gemacht. Wegen Sicherheitsbedenken forderte das Team härtere Reifen und ein verlängertes Warm-up für den Sprint.
 
-Was erwartet ihr von der Runde in Japan?
+Wie findet ihr die Entscheidung von Aprilia?
 
-#MotoGP #MarcMarquez #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -100,26 +104,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
+Artikelalter-Tage: 1.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:enea-bastianini-pist-limit-cezas-n-de-erlendirdi-bir-avantaj-elde-etti-imi-d-nm-yorum
-Titel: Enea Bastianini Pist Limit Cezasını Değerlendirdi: “Bir Avantaj Elde Ettiğimi Düşünmüyorum!”
-Quelle: https://motoetkinlik.com/enea-bastianini-pist-limit-cezasini-degerlendirdi-bir-avantaj-elde-ettigimi-dusunmuyorum
+Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
+Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
+Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-4-enea-bastianini-pist-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/08/enea-bastianini-ktm-silverstone-motogp-sorunu-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-4-motegide-olayli-spri-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-motegi-sprint-moreira-motogp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Enea Bastianini wertete den Track-Limit-Strafe im Japan-GP-Sprint.
+Marc Marquez hat das Sprintrennen in Motegi gewonnen.
 
-Ein KTM-Fahrer gab zu, die grüne Zone zu berühren.
+Diogo Moreira ist nach den Strafen für Martin und Bastianini auf Platz zwei gekommen – ein historisches Pódio für ihn.
 
-Der Fahrer sagte, dieser Kontakt habe keinen Vorteil gebracht.
+Jorge Martin und Enea Bastianini wurden im Sprint disqualifiziert bzw. bestraft, was Moreira die Aufstellung auf den zweiten Rang bescherte.
 
-Wie steht ihr zu dieser Einschätzung?
+Wie seht ihr Moreiras historischen zweiten Platz nach den Strafen?
 
-#MotoGP #EneaBastianini #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife #DiogoMoreira
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -130,24 +134,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
+Artikelalter-Tage: 1.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:jack-miller-yar-n-herkes-sert-lastikle-olacak-yamaha-20-daki-kalik-warm-up-i-sti-yor
-Titel: Jack Miller: “Yarın Herkes Sert Lastikle Olacak” – YAMAHA 20 DAKİKALIK WARM-UP İSTİYOR!
-Quelle: https://motoetkinlik.com/jack-miller-yarin-herkes-sert-lastikle-olacak-yamaha-20-dakikalik-warm-up-istiyor
+Story-Key: motogp:10861336
+Titel: Alex Marquez, Motegi sprintindeki kazanın ardından ceza aldı
+Quelle: https://tr.motorsport.com/motogp/news/alex-marquez-motegi-sprintindeki-kazanin-ardindan-ceza-aldi/10861336
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-04-racing-editorial-2026-10-04-5-jack-miller-yarin-he-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/jack-miller-katalonya-gp-cuma-gunu.webp
+Instagram-Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-5-alex-marquez-motegi-01.jpg
+Quellen-Preview: https://cdn-5.motorsport.com/images/amp/0rVPND70/s6/alex-marquez-gresini-racing.jpg
 Plattformen: Instagram + Facebook
 Text:
-Er erwartet, dass jeder harte Reifen verwendet
+Alex Marquez muss am Sonntag beim Japanking in Motegi zwei lange Runden Strafe absitzen.
 
-Jack Miller hat nach einem Reifenblistering im Motegi-Sprint erklärt, dass er erwarte, dass jeder harte Reifen benutzt. Yamaha fordert ein 20-minütiges Warm-up vor dem Japan-GP.
+Grund ist ein Unfall im ersten Tour des Sprints, bei dem mehrere Fahrer beteiligt waren.
 
-Wie steht ihr zu Millers Aussage, dass jeder harte Reifen einsetzen soll?
+Die Rennleitung warf Marquez vor, diesen Unfall verursacht zu haben.
 
-#MotoGP #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr die Strafe – zu hart oder völlig richtig?
+
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
