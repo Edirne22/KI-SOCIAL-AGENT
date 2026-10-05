@@ -22,6 +22,12 @@ _uuid = re.compile(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\Z")
 _date = re.compile(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}\Z")
 _task = re.compile(r"[A-Za-z0-9_-]{10,64}\Z")
 
+# Guarded OpenCode runtime contract. Keep these fixed in code: requests may not select
+# a provider/model or expand execution time/output beyond the reviewed boundary.
+_opencode_model = "openrouter/anthropic/claude-sonnet-4.5"
+_opencode_timeout = 90
+_opencode_max_output = 65536
+
 
 def _authorized(headers):
     expected = os.getenv("PRIVATE_ASR_INTERNAL_TOKEN", "")
