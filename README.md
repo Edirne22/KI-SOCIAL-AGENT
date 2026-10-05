@@ -3,9 +3,9 @@ Persönlicher Cloud-KI-Agent für Social Media &amp; mehr
 
 ## Projekt-Navigation — aktueller Einstieg
 
-**[Projektzentrale: anklickbarer Gesamtindex](INDEX.md)** · **[Systemarchitektur](docs/ARCHITEKTUR_INDEX.md)** · [aktueller Snapshot](MASTER-SNAPSHOT.md) · [aktuelle Übergabe](docs/PROJEKT_UEBERGABE_2026-10-03_BLOCK89.md) · [Guardrails](PROJECT_GUARDRAILS.md) · [Werkzeuge](docs/TOOL_INDEX.md).
+**[Projektzentrale: anklickbarer Gesamtindex](INDEX.md)** · **[Systemarchitektur](docs/ARCHITEKTUR_INDEX.md)** · [aktueller Snapshot](MASTER-SNAPSHOT.md) · [aktuelle Übergabe](docs/PROJEKT_UEBERGABE_2026-10-05_CLAUDE_AGENT21.md) · [Backup-Protokoll](docs/BACKUP_PROTOKOLL_2026-10-05_CLAUDE_AGENT21_PRE_LIVE.md) · [Guardrails](PROJECT_GUARDRAILS.md) · [Werkzeuge](docs/TOOL_INDEX.md).
 
-Stand 03.10.2026: synthetischer FFmpeg→privates R2→Telegram-Livetest erfolgreich. Block9 reale Dashboard-/Mikrofon-/Auftrags-Abnahme noch offen; Block7 Audio/Avatar danach. OpenChatCut und SupoClip PAUSED; Chopify nur möglicher SupoClip-Ersatz. Historische OpenChatCut-/SupoClip-Roadmaps unten sind **nicht** mehr der aktuelle Arbeitsauftrag.
+Stand 05.10.2026: PR #404 Claude/CODE-Dashboardtransport ist gemergt; Agent-21-Infrastruktur-Gate ist real grün. Zielweg: Dashboard → privater Cloudflare-Container → OpenCode → OpenRouter → Claude Sonnet 4.5. Der reale Claude-Live-Smoke ist noch nicht bestanden: letzter diagnostizierter Fehler Run #29 = HTTP 503 `container_not_ready`; Lifecycle-Fix liegt auf main, Run #31 war beim aktuellen Snapshot noch queued. Nach erfolgreichem Live-Smoke folgt Dashboard-CODE-E2E und anschließend der private Produktionsfall „Dünya – Level 12“. Keine automatische Modellumschaltung, keine privaten Medien-/Social-Veröffentlichungen ohne Human Authority.
 
 ## Telegram-Bot einrichten
 
