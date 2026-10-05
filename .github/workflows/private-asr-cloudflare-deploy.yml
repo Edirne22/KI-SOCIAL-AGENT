@@ -108,12 +108,7 @@ jobs:
           payload='{"message":"Do not call tools. Reply with the single text OPENCODE_CLAUDE_OK."}'
           code=$(curl -sS -o /tmp/opencode-live -w '%{http_code}' --max-time 120 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" -H 'Content-Type: application/json' --data "$payload" "$url" || true)
           if [ "$code" != 200 ]; then
-            error_code=$(python3 -c 'import json; import sys
-try:
- d=json.load(open("/tmp/opencode-live")); e=d.get("error","unknown_error")
- print(e if isinstance(e,str) and len(e) <= 80 else "invalid_error")
-except Exception:
- print("non_json_error")')
+            error_code=$(python3 -c 'import json; d=json.load(open("/tmp/opencode-live")); e=d.get("error","unknown_error"); print(e if isinstance(e,str) and len(e) <= 80 else "invalid_error")' 2>/dev/null || echo non_json_error)
             echo "OPENCODE_CLAUDE_LIVE_FAILED: HTTP $code error=$error_code (response body withheld)"
             exit 1
           fi
