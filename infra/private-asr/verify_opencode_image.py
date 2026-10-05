@@ -36,8 +36,8 @@ def main() -> int:
         timeout=30,
     )
     resolved = (debug.stdout or "") + "\n" + (debug.stderr or "")
-    if EXPECTED_MODEL not in resolved:
-        raise AssertionError("resolved config did not retain the fixed model; debug output=" + repr(resolved[:8000]))
+    assert '"providerID": "openrouter"' in resolved, "resolved config did not retain OpenRouter provider"
+    assert '"model": "anthropic/claude-sonnet-4.5"' in resolved, "resolved config did not retain fixed Claude model"
     raw = CONFIG.read_bytes()
     expected_sha = SHA_FILE.read_text(encoding="utf-8").strip()
     assert hashlib.sha256(raw).hexdigest() == expected_sha
