@@ -1,4 +1,8 @@
-"""Bounded development-agent planner. Never executes task text or modifies repository."""
+"""Guarded development and Agent-21 repair contracts.
+
+Task text is data, never shell. Repository writes are permitted only after a
+bounded path/branch/size validation and remain outside this validation module.
+"""
 from __future__ import annotations
 import argparse
 import json
@@ -28,6 +32,31 @@ ALLOWED = {
     }
 }
 
+AGENT21_ID = "agent-21-instandhaltungsagent"
+MAX_PATCH_BYTES = 96 * 1024
+FORBIDDEN_EXACT = {
+    "PROJECT_GUARDRAILS.md",
+    "MASTER-SNAPSHOT.md",
+    "CLAUDE.md",
+    "agents/11_system_restart_agent.md",
+}
+FORBIDDEN_PREFIXES = (
+    ".github/workflows/",
+    ".git/",
+    ".opencode/",
+    "secrets/",
+    ".env",
+)
+ALLOWED_PREFIXES = (
+    "agents/",
+    "scripts/",
+    "tests/",
+    "docs/",
+    "Claude-Instandhaltung/",
+    "infra/ai-central-dashboard/",
+    "infra/ai-central-tools/",
+)
+
 def plan(issue: int) -> dict:
     if issue not in ALLOWED:
         raise ValueError("Development issue is not allowlisted")
@@ -46,6 +75,66 @@ def plan(issue: int) -> dict:
         "automatic_commit": False,
         "automatic_merge": False,
         "automatic_deploy": False,
+    }
+
+def _safe_path(path: str) -> bool:
+    normalized = path.replace("\\", "/").lstrip("/")
+    if ".." in normalized.split("/"):
+        return False
+    if normalized in FORBIDDEN_EXACT:
+        return False
+    if normalized.startswith(FORBIDDEN_PREFIXES):
+        return False
+    return normalized.startswith(ALLOWED_PREFIXES)
+
+def validate_agent21_write_contract(contract: dict) -> dict:
+    """Validate a Claude/OpenCode repair contract before any repository write."""
+    if contract.get("schema") != "AGENT21-REPAIR-PATCH-V1":
+        raise ValueError("Invalid Agent 21 repair schema")
+    if contract.get("agent") != AGENT21_ID:
+        raise ValueError("Wrong repair agent")
+    branch = str(contract.get("branch") or "")
+    if not branch.startswith("repair/agent21-") or branch in {"main", "master"}:
+        raise ValueError("Agent 21 writes require a dedicated repair branch")
+    machine = contract.get("machine")
+    stage = contract.get("stage")
+    if not isinstance(machine, str) or not machine.strip():
+        raise ValueError("Machine is required")
+    if not isinstance(stage, str) or not stage.strip():
+        raise ValueError("Stage is required")
+    changes = contract.get("changes")
+    if not isinstance(changes, list) or not changes:
+        raise ValueError("At least one bounded change is required")
+    total = 0
+    checked = []
+    for change in changes:
+        path = str(change.get("path") or "")
+        content = change.get("content")
+        if not _safe_path(path):
+            raise ValueError("Forbidden repair path: " + path)
+        if not isinstance(content, str):
+            raise ValueError("Repair content must be UTF-8 text")
+        total += len(content.encode("utf-8"))
+        checked.append(path)
+    if total > MAX_PATCH_BYTES:
+        raise ValueError("Repair patch exceeds size limit")
+    tests = contract.get("tests")
+    if not isinstance(tests, list) or not tests:
+        raise ValueError("At least one targeted test is required")
+    if not all(isinstance(x, str) and x.startswith("python -m unittest ") for x in tests):
+        raise ValueError("Agent 21 tests must use the unittest allowlist")
+    return {
+        "schema": "AGENT21-WRITE-AUTHORIZATION-V1",
+        "agent": AGENT21_ID,
+        "branch": branch,
+        "machine": machine.strip(),
+        "stage": stage.strip(),
+        "paths": checked,
+        "bytes": total,
+        "tests": tests,
+        "automatic_merge": False,
+        "automatic_deploy": False,
+        "status": "WRITE_CONTRACT_VALIDATED",
     }
 
 def main():
