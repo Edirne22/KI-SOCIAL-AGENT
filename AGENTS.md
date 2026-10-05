@@ -2,6 +2,10 @@
 
 **Verbindliche Priorität:** [PROJECT_GUARDRAILS.md](PROJECT_GUARDRAILS.md), danach aktueller tatsächlicher Code, [MASTER-SNAPSHOT.md](MASTER-SNAPSHOT.md) und aktuell ausdrücklich erteilte Bereichsfreigaben. Historische Übergaben oder diese kurze Agentenhilfe dürfen gültige neuere Regeln nicht aufheben. [Rollen und Hierarchie](docs/AGENCY_ORG_AND_HANDOFF.md); [Agentenindex](agents/AGENTS_INDEX.md).
 
+## Pflicht-Read / Re-Read
+
+Vor technischer Arbeit `PROJECT_GUARDRAILS.md` aus dem aktuellen HEAD lesen. Während eines laufenden Auftrags gilt zusätzlich dessen Abschnitt **0.1 Guardrail-Re-Read**: erneut lesen nach längerer Status-/Chat-Unterbrechung, nach Fehler/Abbruch vor dem Reparaturpatch und bei Scope-/Richtungswechsel vor Push/PR/Merge/Deploy. Eine Statusmeldung beendet die Arbeit nicht.
+
 ## Ausgabe-Regeln (bestehende Arbeitspräferenz)
 
 1. Die nächste konkrete Aktion erkennbar machen.
