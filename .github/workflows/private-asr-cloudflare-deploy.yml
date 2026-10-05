@@ -64,6 +64,7 @@ jobs:
           cp infra/ai-central-tools/claude-only/opencode.jsonc "$target/infra/ai-central-tools/claude-only/opencode.jsonc"
           test -s "$target/service.py"
           test -s "$target/content_factory_private_asr.py"
+          python3 infra/private-asr/test_opencode_runtime_contract.py
       - name: Build and typecheck isolated worker
         working-directory: infra/private-asr-cloudflare
         run: |
