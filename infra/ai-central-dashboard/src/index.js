@@ -726,13 +726,33 @@ async function chatMessage(req,env){
   try{await loadSession(env,body.session_id)}catch(err){
     return json({error:err instanceof Error?err.message:"SESSION_ERROR"},400);
   }
-  // Never bypass OpenCode with a direct provider call. Until the shared
-  // OpenCode transport is bound, keep the user message unsent.
-  if(!env.OPENCODE_CHAT_SERVICE)
-    return json({error:"OpenCode chat transport unavailable; message not sent",
+  // CODE sessions use the existing private container service binding only.
+  // No provider credential is exposed to the browser and no direct provider call is allowed.
+  const session=await loadSession(env,body.session_id);
+  if(session.mode!=="code")
+    return json({error:"chat transport is not enabled for this session mode",stored:false},409);
+  if(!env.PRIVATE_ASR_SERVICE||!env.PRIVATE_ASR_INTERNAL_TOKEN)
+    return json({error:"OpenCode runtime unavailable; message not sent",
       status:"TRANSPORT_UNAVAILABLE",stored:false},503);
-  return json({error:"OpenCode chat transport adapter not yet enabled",
-    status:"TRANSPORT_NOT_ENABLED",stored:false},503);
+  let response;
+  try{
+    response=await env.PRIVATE_ASR_SERVICE.fetch("https://private-asr/opencode/chat",{
+      method:"POST",
+      headers:{"authorization":"Bearer "+env.PRIVATE_ASR_INTERNAL_TOKEN,
+        "content-type":"application/json"},
+      body:JSON.stringify({message:body.message.trim()})
+    });
+  }catch{
+    return json({error:"OpenCode runtime unreachable; message not sent",
+      status:"TRANSPORT_UNREACHABLE",stored:false},503);
+  }
+  let result={};try{result=await response.json()}catch{}
+  if(!response.ok||typeof result?.text!=="string"||!result.text.trim())
+    return json({error:"OpenCode request failed; message not stored",
+      status:"MODEL_CALL_FAILED",code:response.status,stored:false},502);
+  await appendChatMessage(env,body.session_id,"user",body.message.trim());
+  await appendChatMessage(env,body.session_id,"assistant",result.text.trim());
+  return json({session_id:body.session_id,text:result.text.trim(),stored:true},200);
 }
 
 export default {async fetch(req,env){
