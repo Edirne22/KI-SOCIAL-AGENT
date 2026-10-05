@@ -813,9 +813,8 @@ Quelle: https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marqu
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367", "media_status": "", "object_id": "1285968257941776_122119592487469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119592487469415", "source_url": "https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367", "version": 1}
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37274745824-1
+## Instagram [GEPOSTET 2026-10-05 06:54 | ID: 18410900191084091]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-05-daily-TR-HUMAN
 Telegram-Update-ID: 279361912
@@ -832,6 +831,7 @@ Quelle / weitere Infos: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-
 Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-10/2026-10-05-turkish-human-2-toprak-razgatlioglu-01.jpg
+Publish-Provenienz: {"creation_id": "18010090673971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-05-turkish-human-2-toprak-razgatlioglu-01.jpg", "media_status": "EIGENE_KI_EDITORIALGRAFIK", "platform": "instagram", "post_id": "18410900191084091", "published_media_id": "18410900191084091", "source_url": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-05 06:53 | ID: 1285968257941776_122119603827469415]
 Status: GEPOSTET
