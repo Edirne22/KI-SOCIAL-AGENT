@@ -100,6 +100,18 @@ jobs:
             sleep 10
           done
           echo "PRIVATE_ASR_LIVE_HEALTH_FAILED"; exit 1
+      - name: Authenticated OpenCode Claude live smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://edirne22-private-asr.butupeli.workers.dev/opencode/chat"
+          payload='{"message":"Do not call tools. Reply with the single text OPENCODE_CLAUDE_OK."}'
+          code=$(curl -sS -o /tmp/opencode-live -w '%{http_code}' --max-time 120 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" -H 'Content-Type: application/json' --data "$payload" "$url" || true)
+          if [ "$code" != 200 ]; then
+            echo "OPENCODE_CLAUDE_LIVE_FAILED: HTTP $code (body withheld)"
+            exit 1
+          fi
+          python3 -c 'import json; data=json.load(open("/tmp/opencode-live")); text=data.get("text","").strip(); assert text == "OPENCODE_CLAUDE_OK", repr(text[:120]); print("OPENCODE_CLAUDE_LIVE_OK")'
       - name: Recover one already-approved private video task if it was previously misrouted
         shell: bash
         run: |
