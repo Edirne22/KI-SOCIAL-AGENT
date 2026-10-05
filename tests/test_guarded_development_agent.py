@@ -1,6 +1,9 @@
 import unittest
+import tempfile
+from pathlib import Path
 from unittest.mock import patch
 from scripts.guarded_development_agent import AGENT21_ID, build_repair_record, plan, validate_agent21_write_contract
+from scripts.agent21_trusted_writer import apply_changes, write_repair_log
 
 class DevelopmentPlanTests(unittest.TestCase):
     def test_unapproved_issue_blocked(self):
@@ -71,5 +74,22 @@ class Agent21RepairLogTests(unittest.TestCase):
     def test_missing_evidence_is_rejected(self):
         x=self.repair(); x["evidence"]=""
         with self.assertRaises(ValueError): build_repair_record(x)
+
+class Agent21TrustedWriterTests(unittest.TestCase):
+    def contract(self,path="scripts/synthetic_repair.py"):
+        return {"schema":"AGENT21-REPAIR-PATCH-V1","agent":AGENT21_ID,"branch":"repair/agent21-e2e","machine":"synthetic-test-machine","stage":"writer-proof","changes":[{"path":path,"content":"VALUE = 21\n"}],"tests":["python -m unittest tests.test_guarded_development_agent -v"]}
+    def test_trusted_writer_applies_validated_patch(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); result=apply_changes(root,self.contract())
+            self.assertEqual(result["status"],"PATCHED"); self.assertEqual((root/"scripts/synthetic_repair.py").read_text(),"VALUE = 21\n")
+    def test_trusted_writer_blocks_symlink_escape(self):
+        with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as outside:
+            root=Path(td); (root/"scripts").symlink_to(Path(outside),target_is_directory=True)
+            with self.assertRaises(ValueError): apply_changes(root,self.contract())
+    def test_repair_log_is_exclusive(self):
+        repair={"repair_id":"A21-E2E-001","date":"2026-10-05","machine":"synthetic-test-machine","stage":"writer-proof","root_cause":"synthetic fault","evidence":"writer and regression proof","end_state":"TESTED"}
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); first=write_repair_log(root,repair); self.assertEqual(first["status"],"REPAIR_LOGGED")
+            with self.assertRaises(FileExistsError): write_repair_log(root,repair)
 
 if __name__=="__main__": unittest.main()
