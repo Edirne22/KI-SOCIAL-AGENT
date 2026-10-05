@@ -30,7 +30,8 @@ def main() -> int:
     assert isinstance(providers, dict) and set(providers) == {"openrouter"}
     openrouter = providers["openrouter"]
     assert openrouter.get("env") == ["OPENROUTER_API_KEY"]
-    assert "OPENROUTER_API_KEY" not in raw.decode("utf-8")
+    # The environment variable name is expected; a credential value must never be embedded.
+    assert "apiKey" not in openrouter and "api_key" not in openrouter and "key" not in openrouter
     assert not os.access(CONFIG, os.W_OK), "config unexpectedly writable by runtime user"
     assert os.geteuid() != 0, "runtime user must not be root"
     print("OPENCODE_IMAGE_INVARIANTS_OK")
