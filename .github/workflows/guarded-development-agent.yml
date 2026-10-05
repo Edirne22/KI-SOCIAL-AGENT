@@ -9,6 +9,10 @@ on:
       - 'scripts/agent21_trusted_writer.py'
       - 'tests/test_guarded_development_agent.py'
       - 'Claude-Instandhaltung/**'
+      - 'infra/ai-central-dashboard/**'
+      - 'infra/private-asr/**'
+      - 'infra/private-asr-cloudflare/**'
+      - 'infra/ai-central-tools/claude-only/**'
   workflow_dispatch:
     inputs:
       issue_number:
