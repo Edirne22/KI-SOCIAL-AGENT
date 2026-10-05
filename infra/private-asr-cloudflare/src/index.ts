@@ -1,6 +1,4 @@
 import { Container, getContainer } from "@cloudflare/containers";
-import { env as workerEnv } from "cloudflare:workers";
-const runtimeEnv = workerEnv as unknown as Record<string, string>;
 type Env = {
   PRIVATE_ASR: DurableObjectNamespace<PrivateASRContainer>;
   PRIVATE_ASR_INTERNAL_TOKEN: string;
@@ -14,16 +12,6 @@ export class PrivateASRContainer extends Container {
   requiredPorts = [5200];
   sleepAfter = "15m";
   enableInternet = true;
-  envVars = {
-    PRIVATE_ASR_INTERNAL_TOKEN: runtimeEnv.PRIVATE_ASR_INTERNAL_TOKEN,
-    OPENROUTER_API_KEY: runtimeEnv.OPENROUTER_API_KEY,
-    R2_ACCOUNT_ID: runtimeEnv.R2_ACCOUNT_ID,
-    R2_ACCESS_KEY_ID: runtimeEnv.R2_ACCESS_KEY_ID,
-    R2_SECRET_ACCESS_KEY: runtimeEnv.R2_SECRET_ACCESS_KEY,
-    R2_BUCKET_NAME: runtimeEnv.R2_BUCKET_NAME,
-    TELEGRAM_BOT_TOKEN: runtimeEnv.TELEGRAM_BOT_TOKEN,
-    TELEGRAM_CHAT_ID: runtimeEnv.TELEGRAM_CHAT_ID
-  };
 }
 const reply = (data: object, status: number) =>
   Response.json(data, {status, headers: {"cache-control": "no-store"}});
@@ -52,7 +40,22 @@ export default {
       // Never retry POST: duplicate transcription could overwrite private drafts.
       // Native lifecycle gate: explicitly start/wake the named container and
       // wait until its declared port is listening before probing application health.
-      await instance.startAndWaitForPorts();
+      await instance.startAndWaitForPorts({
+        ports: [5200],
+        startOptions: {
+          enableInternet: true,
+          envVars: {
+            PRIVATE_ASR_INTERNAL_TOKEN: env.PRIVATE_ASR_INTERNAL_TOKEN,
+            OPENROUTER_API_KEY: env.OPENROUTER_API_KEY,
+            R2_ACCOUNT_ID: env.R2_ACCOUNT_ID,
+            R2_ACCESS_KEY_ID: env.R2_ACCESS_KEY_ID,
+            R2_SECRET_ACCESS_KEY: env.R2_SECRET_ACCESS_KEY,
+            R2_BUCKET_NAME: env.R2_BUCKET_NAME,
+            TELEGRAM_BOT_TOKEN: env.TELEGRAM_BOT_TOKEN,
+            TELEGRAM_CHAT_ID: env.TELEGRAM_CHAT_ID
+          }
+        }
+      });
       let ready = false;
       for (let attempt = 0; attempt < 4; attempt++) {
         try {
