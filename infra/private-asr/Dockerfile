@@ -29,8 +29,9 @@ COPY scripts/private_birthday_first_production.py scripts/ai_central_shared_inbo
 COPY assets/musik/chill/hypnotic-ambient.mp3 /app/assets/musik/chill/hypnotic-ambient.mp3
 COPY config/MUSIC_LIBRARY.json /app/config/MUSIC_LIBRARY.json
 # Bundled model runs offline; never include personal audio in build or CI.
-COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py /app/
+COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py /app/
 RUN useradd --uid 10001 --create-home asr && chown -R asr:asr /app /opt/private-asr-model
 USER asr
+RUN python /app/verify_opencode_image.py
 EXPOSE 5200
 CMD ["python", "/app/service.py"]
