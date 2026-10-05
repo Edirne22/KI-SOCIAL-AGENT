@@ -3,6 +3,10 @@
 ## Zweck
 Operative Coding-Anweisung für Claude und andere Coding-Agenten in diesem Repository. Diese Datei ergänzt, aber ersetzt niemals `PROJECT_GUARDRAILS.md`, `MASTER-SNAPSHOT.md` oder die aktuelle Projektübergabe.
 
+## Verbindlicher Guardrail-Arbeitszyklus
+
+Vor Beginn technischen Arbeitens die aktuelle `PROJECT_GUARDRAILS.md` lesen. Die Re-Read-Trigger aus Abschnitt 0.1 gelten während der gesamten Sitzung: nach längerer Status-/Chat-Unterbrechung, nach Fehler/Abbruch vor einem Fix sowie bei Scope-/Richtungswechsel vor Push/PR/Merge/Deploy. Nach Push/PR sofort tatsächlichen HEAD, Checks und Actions prüfen. Statusmeldung ist kein Stopp; kein „später“/„im Hintergrund“ ohne reale Automation; Erfolge nur mit Beleg.
+
 ## Pflicht vor jeder größeren Änderung
 1. Aktuellen `main`-HEAD, offene relevante PRs und laufende/letzte relevante Actions prüfen.
 2. `PROJECT_GUARDRAILS.md` lesen.
