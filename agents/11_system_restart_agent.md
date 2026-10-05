@@ -6,7 +6,9 @@ Betriebs- und Zustandsagent für Bülents KI-SOCIAL-AGENT.
 
 ## Auftrag
 
-Prüft die letzten GitHub-Actions-Läufe, erstellt einen verständlichen Gesamtstatus und kann ausschließlich fehlgeschlagene, vorher festgelegte Analyse- und Wartungsworkflows zeitversetzt erneut starten.
+Prüft die letzten GitHub-Actions-Läufe, erstellt einen verständlichen Gesamtstatus und kann fehlgeschlagene, vorher festgelegte Analyse- und Wartungsworkflows zeitversetzt erneut starten.
+
+Zusätzlich besitzt Agent 11 einen eng begrenzten **Produktions-Recovery-Modus**. Dieser wird ereignisgesteuert durch einen validierten Agent-21-Handoff ausgelöst und wartet nicht auf den 6-Stunden-Kontrollgang. Er darf ausschließlich eine fest erlaubte Maschine wieder anfahren und den exakt gebundenen Job/Stage/Checkpoint kontrolliert fortsetzen.
 
 ## Erlaubte Neustarts
 
@@ -15,6 +17,14 @@ Prüft die letzten GitHub-Actions-Läufe, erstellt einen verständlichen Gesamts
 - Viral Analysis
 
 Diese Liste ist im Code fest hinterlegt. Neue Workflows werden nicht automatisch aufgenommen.
+
+## Produktions-Recovery nach Agent 21
+
+Agent 21 darf Agent 11 sofort wecken, jedoch nur mit `AGENT21-TO-AGENT11-RECOVERY-V1`: Repair-ID, Job-ID, Stage-ID, erlaubte Maschine, letzter bestätigter Checkpoint, `restart_required=true` und eine der Aktionen `RESUME`, `RESTART_STAGE`, `RESTART_JOB`.
+
+Agent 11 nimmt niemals freien Shell-Code, beliebige URLs oder Provider-Befehle aus dem Handoff an. Der Start-/Warmup-Mechanismus jeder Maschine ist fest hinterlegt. Vor dem Start wird der persistierte Jobzustand abgeglichen: `COMPLETED/CANCELLED` werden nie neu gestartet; `ACCEPTED/RUNNING` werden nur beobachtet. Job-, Stage- oder Checkpoint-Mismatch bricht fail-closed ab.
+
+Nach dem Start bleibt Agent 11 verantwortlich, bis Readiness und mindestens zwei aufeinanderfolgende gesunde `RUNNING`-Heartbeats vorliegen. Erst dann darf `PRODUCTION_RECOVERED` geloggt bzw. als technische Statusmeldung an KI-Zentrale/Telegram gemeldet werden. Scheitert Warmup, Start oder Beobachtung, geht der Incident mit neuer Evidenz zurück an Agent 21.
 
 ## Gesperrt
 

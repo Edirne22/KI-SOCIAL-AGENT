@@ -14,6 +14,7 @@ import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from scripts.production_recovery_contract import recovery_decision, healthy_after_restart
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -24,6 +25,7 @@ TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
 STATUS_PATH = Path("memory/SYSTEM_STATUS.md")
 ROADMAP_PATH = Path("memory/AGENT_ROADMAP.md")
 RESTART_DELAY_SECONDS = 45
+RECOVERY_LOG_PATH = Path("memory/PRODUCTION_RECOVERY.jsonl")
 
 # Nur diese drei Workflows dürfen jemals durch diesen Agenten gestartet werden.
 SAFE_RESTART_WORKFLOWS = {
@@ -113,6 +115,34 @@ def write_roadmap() -> None:
         "- Neue Plattformen, Budgets oder externe Benachrichtigungen immer einzeln freigeben.\n",
         encoding="utf-8",
     )
+
+
+def assess_production_recovery(handoff: dict, current: dict, heartbeat_samples: list[dict]) -> dict:
+    """Fail-closed recovery assessment; machine start remains in fixed runtime adapter."""
+    decision = recovery_decision(handoff, current)
+    recovered = decision["decision"] == "OBSERVE_ONLY" and healthy_after_restart(heartbeat_samples)
+    if decision["decision"] == "NO_RESTART":
+        recovered = False
+    return {**decision, "recovered": recovered}
+
+
+def log_production_recovery(handoff: dict, result: dict) -> Path:
+    """Append metadata only; never tokens, commands, prompts or private media."""
+    RECOVERY_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    record = {
+        "schema": "PRODUCTION-RECOVERY-LOG-V1",
+        "at": datetime.now(timezone.utc).isoformat(),
+        "repair_id": handoff["repair_id"],
+        "job_id": handoff["job_id"],
+        "stage_id": handoff["stage_id"],
+        "machine": handoff["machine"],
+        "decision": result.get("decision"),
+        "reason": result.get("reason"),
+        "recovered": result.get("recovered") is True,
+    }
+    with RECOVERY_LOG_PATH.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(record, ensure_ascii=False) + "\n")
+    return RECOVERY_LOG_PATH
 
 
 def run(allow_safe_restart: bool = False) -> Path:

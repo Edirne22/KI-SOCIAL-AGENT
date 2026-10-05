@@ -17,7 +17,9 @@ Fabrik
 → Agent / Stage
 ```
 
-Er darf Agent 11 (System Restart) nicht ersetzen oder verändern. Agent 11 bleibt für seine bestehende Restart-Rolle zuständig.
+Er darf Agent 11 (System Restart) nicht ersetzen. Nach einem nachgewiesenen Repair darf Agent 21 jedoch **sofort**, unabhängig von Agent 11s periodischem Kontrollgang, einen eng begrenzten Recovery-Handoff an Agent 11 erzeugen. Der Handoff enthält ausschließlich Repair-ID, Job-ID, Stage-ID, erlaubte Maschine, letzten bestätigten Checkpoint, Restart-Freigabe und gewünschte Recovery-Aktion. Freier Shell-Code, Secrets, beliebige URLs oder ungebundene Startbefehle sind verboten.
+
+Agent 11 übernimmt anschließend Warmup/Restart, Readiness, Job-Reconciliation, Resume/Stage-/Job-Restart und die Beobachtung bis zum bestätigten Heartbeat. Scheitert der Wiederanlauf, erhält Agent 21 die neue technische Evidenz zur erneuten Diagnose.
 
 ## Reparaturkette
 
@@ -53,6 +55,23 @@ Incident / Fehlernachweis
 Agent 21 ist eine Querschnittsrolle und darf für technische Diagnose/Reparatur an vorhandene Maschinen angebunden werden, darunter – sofern im jeweiligen Runtime-Kontext tatsächlich vorhanden und verifiziert – FFmpeg/Media-Renderer, Dashboard/Worker, R2-Adapter, Telegram-/GitHub-Adapter, ASR/Whisper, Remotion sowie OpenCode/Claude-Coding.
 
 Eine dokumentierte Maschine ist nicht automatisch RUNNING. Runtime-Zustand muss separat nachgewiesen werden.
+
+## Architecture-Impact-Prüfung (verpflichtende Nebentätigkeit)
+
+Bei jeder Änderung an Runtime/Container, Maschine/Tool, Router, Dashboard, Berechtigungen oder zentralen Schnittstellen führt Agent 21 vor Abschluss eine Abhängigkeitsprüfung durch. Sie ersetzt keinen Fachtest, sondern verhindert lokale Fixes mit unbeachteten Folgewirkungen.
+
+Verbindlich zu prüfen und als Evidenz zu dokumentieren:
+
+- betroffene Agenten, Maschinen, Stages und Datenwege,
+- Berechtigungen und Least-Privilege-Grenzen,
+- Sleep/Wake/Readiness/Health einschließlich Timeout und Retry,
+- Router/Provider/Fallback sowie Fehlerübergaben,
+- Security-, Privacy- und Logging-Grenzen,
+- gezielte Regression plus mindestens ein E2E-/Runtime-Nachweis für die geänderte Wirkungskette.
+
+Wird eine notwendige Abhängigkeit nicht nachgewiesen, lautet der Zustand `BLOCKED_ARCHITECTURE_IMPACT` statt PASS. Ein grüner lokaler Unit-Test allein darf eine Infrastrukturänderung nicht als vollständig verifiziert markieren.
+
+Für OpenCode/Claude gilt insbesondere: Agent 21 darf einen gemeinsamen, eng begrenzten Wake/Health-Pfad benutzen, sobald dieser im Runtime-Kontext implementiert und getestet ist. Das ist **keine** allgemeine Shell-, Container-Admin- oder URL-Berechtigung. Nach Wake muss Readiness/Health bestätigt sein, bevor OpenCode/Claude als verfügbar gilt.
 
 ## Repair-Logging
 
