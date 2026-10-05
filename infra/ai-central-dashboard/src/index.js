@@ -1,6 +1,6 @@
 import {privateASR} from "./private-asr.js";
 import {serveMetaDelivery} from "./meta-delivery.js";
-import {createSession,loadSession,appendChatMessage} from "./chat-sessions.js";
+import {createSession,loadSession,appendChatMessage,appendChatExchange} from "./chat-sessions.js";
 // Cloudflare Worker gateway: R2-backed shared Telegram+Web inbox.
 // No provider credentials, workflow tokens, auto-dispatch or approvals in this slice.
 const PREFIX="ai-central/v1/inbox/";
@@ -750,8 +750,7 @@ async function chatMessage(req,env){
   if(!response.ok||typeof result?.text!=="string"||!result.text.trim())
     return json({error:"OpenCode request failed; message not stored",
       status:"MODEL_CALL_FAILED",code:response.status,stored:false},502);
-  await appendChatMessage(env,body.session_id,"user",body.message.trim());
-  await appendChatMessage(env,body.session_id,"assistant",result.text.trim());
+  await appendChatExchange(env,body.session_id,body.message.trim(),result.text.trim());
   return json({session_id:body.session_id,text:result.text.trim(),stored:true},200);
 }
 
