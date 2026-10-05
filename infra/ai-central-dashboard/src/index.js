@@ -698,14 +698,15 @@ async function chatSession(req,env){
   if(!sameOrigin(req))return json({error:"origin rejected"},403);
   if(req.method==="POST"){
     let body;try{body=await req.json()}catch{return json({error:"invalid json"},400)}
-    if(!sameFlatRecord(body,{mode:"chat"}))return json({error:"chat sessions must use chat mode"},400);
-    const s=await createSession(env,"chat");
+    if(!body||!["chat","code"].includes(body.mode)||!sameFlatRecord(body,{mode:body.mode}))
+      return json({error:"session mode must be chat or code"},400);
+    const s=await createSession(env,body.mode);
     return json({id:s.id,mode:s.mode,capabilities:s.capabilities,created_at:s.created_at},201);
   }
   if(req.method==="GET"){
     const id=new URL(req.url).searchParams.get("id")||"";
     try{
-      const s=await loadSession(env,id,"chat");
+      const s=await loadSession(env,id);
       return json({id:s.id,mode:s.mode,capabilities:s.capabilities,
         created_at:s.created_at,updated_at:s.updated_at,messages:s.messages});
     }catch(err){
@@ -722,7 +723,7 @@ async function chatMessage(req,env){
   if(!body||Object.keys(body).sort().join(",")!=="message,session_id"||
      !validMessage(body.message)||typeof body.session_id!=="string")
     return json({error:"invalid chat message"},400);
-  try{await loadSession(env,body.session_id,"chat")}catch(err){
+  try{await loadSession(env,body.session_id)}catch(err){
     return json({error:err instanceof Error?err.message:"SESSION_ERROR"},400);
   }
   // Never bypass OpenCode with a direct provider call. Until the shared
