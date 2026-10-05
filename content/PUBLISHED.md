@@ -871,9 +871,8 @@ Quelle: https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-1-toprak-motegide-sonu-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37276764390-1
+## Facebook [GEPOSTET 2026-10-05 07:16 | ID: 1285968257941776_122119609167469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-05-daily
 Telegram-Update-ID: 279361913
@@ -895,6 +894,7 @@ Schreibt eure Gedanken dazu gerne in die Kommentare.
 https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim
 Quelle: https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim", "media_status": "", "object_id": "1285968257941776_122119609167469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119609167469415", "source_url": "https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
