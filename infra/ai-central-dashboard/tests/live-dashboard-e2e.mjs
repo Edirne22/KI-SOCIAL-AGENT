@@ -33,6 +33,27 @@ try{
   if(!claudeStatus?.includes("OpenCode -> OpenRouter -> Anthropic"))throw new Error("dashboard route marker missing");
   console.log("DASHBOARD_CLAUDE_VISIBLE_E2E_OK");
 
+  if(process.env.REQUIRE_CURRENT_DATE_TRUTH==="true"){
+    const expectedUtcDate=new Date().toISOString().slice(0,10);
+    await page.locator("#chatMessage").fill("Welches Datum ist heute? Suche im Web und nenne eine Quelle.");
+    const dateResponsePromise=page.waitForResponse(r=>r.url().endsWith("/api/chat/message")&&r.request().method()==="POST");
+    await page.locator("#chatSend").click();
+    const dateResponse=await dateResponsePromise;
+    if(!dateResponse.ok())throw new Error("dashboard current-date API response not OK");
+    const datePayload=await dateResponse.json();
+    const dateText=String(datePayload?.text||"");
+    if(!dateText.includes(expectedUtcDate))throw new Error("trusted current UTC date missing from dashboard answer");
+    if(/8\.\s*Mai\s*2026/i.test(dateText))throw new Error("stale May 8 2026 regression escaped");
+    if(datePayload?.research?.used!==true)throw new Error("dashboard current-date research not used");
+    if(datePayload?.research?.provider!=="Groq-BrowserSearch")throw new Error("dashboard current-date provider mismatch");
+    const dateSources=Array.isArray(datePayload?.research?.sources)?datePayload.research.sources:[];
+    if(!dateSources.some(x=>/^https?:\/\//.test(String(x?.url||""))))throw new Error("dashboard current-date source proof missing");
+    await page.waitForFunction(expected=>document.querySelector("#chatResult")?.value?.includes(expected),expectedUtcDate);
+    const dateStatus=await page.locator("#chatStatus").textContent();
+    if(!dateStatus?.includes("Web: USED:Groq-BrowserSearch"))throw new Error("dashboard current-date Groq UI marker missing");
+    console.log("DASHBOARD_CURRENT_DATE_TRUTH_E2E_OK "+expectedUtcDate);
+  }
+
   if(process.env.REQUIRE_DASHBOARD_RESEARCH==="false"){
     console.log("DASHBOARD_RESEARCH_POST_DEPLOY_REQUIRED");
   }else{
