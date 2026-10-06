@@ -737,8 +737,21 @@ async function chatMessage(req,env){
   try{await loadSession(env,body.session_id)}catch(err){
     return json({error:err instanceof Error?err.message:"SESSION_ERROR"},400);
   }
-  // CHAT and CODE sessions use the same existing private container service binding only.\n  // No provider credential is exposed to the browser and no direct provider call is allowed.
+  // CHAT remains conversational. CODE is explicitly identified as the guarded
+  // Agent-21 coding route; this metadata is evidence of routing intent, not proof
+  // that a write/test/PR occurred. Provider credentials never reach the browser.
   const session=await loadSession(env,body.session_id);
+  const route=session.mode==="code"?{
+    mode:"CODE",gate:"AGENT21_GUARDED",model:"Claude Sonnet 4.5",
+    provider_route:"OpenCode -> OpenRouter -> Anthropic",
+    tools:{opencode:true,agent21:true,github:"GATED",web_research:"NOT_YET_WIRED"},
+    execution:"READ_ONLY_UNTIL_GUARDED_ACTION"
+  }:{
+    mode:"CHAT",gate:"CONVERSATION",model:"Claude Sonnet 4.5",
+    provider_route:"OpenCode -> OpenRouter -> Anthropic",
+    tools:{opencode:true,agent21:false,github:false,web_research:"NOT_YET_WIRED"},
+    execution:"CONVERSATION"
+  };
   if(!["chat","code"].includes(session.mode))
     return json({error:"Claude transport is not enabled for this session mode",stored:false},409);
   if(!env.PRIVATE_ASR_SERVICE||!env.PRIVATE_ASR_INTERNAL_TOKEN)
@@ -761,7 +774,7 @@ async function chatMessage(req,env){
     return json({error:"OpenCode request failed; message not stored",
       status:"MODEL_CALL_FAILED",code:response.status,stored:false},502);
   await appendChatExchange(env,body.session_id,body.message.trim(),result.text.trim());
-  return json({session_id:body.session_id,text:result.text.trim(),stored:true},200);
+  return json({session_id:body.session_id,text:result.text.trim(),stored:true,route},200);
 }
 
 export default {async fetch(req,env){
