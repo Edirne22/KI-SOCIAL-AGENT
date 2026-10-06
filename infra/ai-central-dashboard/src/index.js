@@ -800,8 +800,9 @@ async function chatMessage(req,env){
   if(asksCurrentDate){
     const claimedDates=explicitCalendarDates(finalText);
     const hasTrustedDate=claimedDates.has(trustedUtcDate);
+    const hasTrustedIsoLiteral=finalText.includes(trustedUtcDate);
     const hasConflictingDate=[...claimedDates].some(x=>x!==trustedUtcDate);
-    if(!hasTrustedDate||hasConflictingDate){
+    if(!hasTrustedDate||!hasTrustedIsoLiteral||hasConflictingDate){
       const source=research?.results.find(x=>/^https?:\/\//.test(String(x?.url||"")))?.url;
       finalText="Aktuelles vertrauenswürdiges Systemdatum (UTC): "+trustedUtcDate+
         ". Widersprüchliche oder nicht verifizierte Web-Datumsangaben werden nicht als „heute“ übernommen."+
