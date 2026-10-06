@@ -222,14 +222,28 @@ test("CODE transport fails closed for auth origin missing runtime and malformed 
  s=await worker.fetch(request("/api/chat/session?id="+id),e);assert.equal((await s.json()).messages.length,0);
 });
 
-test("ordinary chat session cannot invoke CODE transport and secret-shaped prompt is rejected before service call",async()=>{
+test("CHAT session uses the same private Claude transport while secret-shaped prompts still fail closed",async()=>{
  const e=env(),origin={"content-type":"application/json","origin":"https://dashboard.example"};let calls=0;
- e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";e.PRIVATE_ASR_SERVICE={fetch:async()=>{calls++;return new Response(JSON.stringify({text:"must-not-run"}))}};
+ e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";e.PRIVATE_ASR_SERVICE={fetch:async()=>{calls++;return new Response(JSON.stringify({text:"CHAT_DASHBOARD_OK"}),{status:200,headers:{"content-type":"application/json"}})}};
  let created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"chat"}),headers:origin}),e);
  let id=(await created.json()).id;
  let r=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Hallo Claude"}),headers:origin}),e);
- assert.equal(r.status,409);assert.equal(calls,0);
+ assert.equal(r.status,200);assert.equal((await r.json()).text,"CHAT_DASHBOARD_OK");assert.equal(calls,1);
+ let saved=await worker.fetch(request("/api/chat/session?id="+id),e);assert.deepEqual((await saved.json()).messages.map(x=>[x.role,x.text]),[["user","Hallo Claude"],["assistant","CHAT_DASHBOARD_OK"]]);
  created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"code"}),headers:origin}),e);id=(await created.json()).id;
  r=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Authorization: Bearer should-never-leave-dashboard"}),headers:origin}),e);
- assert.equal(r.status,400);assert.equal(calls,0);
+ assert.equal(r.status,400);assert.equal(calls,1);
+});
+
+
+test("secure HttpOnly dashboard session survives refresh without resending bearer key",async()=>{
+ const e=env(),origin={"origin":"https://dashboard.example"};
+ const login=await worker.fetch(request("/api/auth/session",{method:"POST",headers:origin}),e);
+ assert.equal(login.status,200);const cookie=login.headers.get("set-cookie");
+ assert.match(cookie,/edirne22_session=/);assert.match(cookie,/HttpOnly/);assert.match(cookie,/Secure/);assert.match(cookie,/SameSite=Strict/);
+ const pair=cookie.split(";")[0];
+ const resumed=await worker.fetch(new Request("https://dashboard.example/api/inbox",{headers:{cookie:pair,origin:"https://dashboard.example"}}),e);
+ assert.equal(resumed.status,200);
+ const bad=await worker.fetch(new Request("https://dashboard.example/api/inbox",{headers:{cookie:"edirne22_session=invalid",origin:"https://dashboard.example"}}),e);
+ assert.equal(bad.status,401);
 });

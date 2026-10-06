@@ -69,18 +69,18 @@ li{border-color:rgba(112,157,205,.12)}.screen-toggle{display:flex;gap:8px;paddin
 <h2>Private Video-Vorschau · Block 6</h2><div class="muted">Fertige Videos aus R2, unabhängig von den Telegram-Betriebszeiten. Nur nach technischer Prüfung; keine Veröffentlichung durch Abspielen.</div><div class="bar"><button type="button" id="loadPreviews">Videovorschauen prüfen</button></div><div id="previewNotice" class="notice">Mit dem Zugangsschlüssel verbinden, um freigegebene private Videos anzuzeigen.</div><ul id="previews"></ul><video id="privatePlayer" playsinline controls preload="none" class="hidden" style="width:100%;max-height:400px;border-radius:12px" aria-label="Private Vorschau des produzierten Videos"></video><div id="previewCaption" class="smalltext"></div><br><h2>Deine gespeicherten Entscheidungen · Block 8</h2><div class="muted">Sicher vorgemerkte Änderungs- und Verwerfungswünsche – auch nach dem Neuladen. Nur eine verbindliche Fabrikbestätigung gilt als verarbeitet.</div><div class="bar"><button type="button" id="loadReviews">Entscheidungen prüfen</button></div><div id="reviewListNotice" class="smalltext">Noch nicht abgefragt.</div><ul id="reviewList"></ul>
 </section>
 </main><script>
-let token="", recorder=null, chunks=[],videoObjectUrl=null;const $=x=>document.getElementById(x);
+let token="",sessionAuthenticated=false, recorder=null, chunks=[],videoObjectUrl=null;const $=x=>document.getElementById(x);
 const status=s=>{$("messageStatus").textContent=s};
 const setTab=t=>{
   $("workspace").dataset.tab=t;
   $("tabChat").className=t==="chat"?"primary":"ghost";
   $("tabLive").className=t==="live"?"primary":"ghost";
   $("tabStudio").className=t==="studio"?"primary":"ghost";
-  if(t==="studio"&&token)refreshStudio();
+  if(t==="studio"&&(token||sessionAuthenticated))refreshStudio();
 };
 $("tabChat").onclick=()=>setTab("chat");
 $("tabLive").onclick=()=>setTab("live");
-$("tabStudio").onclick=()=>setTab("studio");async function api(path,opts={}){if(!token)throw Error("Bitte zuerst verbinden");let r=await fetch(path,{...opts,headers:{"authorization":"Bearer "+token,...(opts.headers||{})},cache:"no-store"});let data=await r.json();if(!r.ok)throw Error(data.error||String(r.status));return data}
+$("tabStudio").onclick=()=>setTab("studio");async function api(path,opts={}){if(!token&&!sessionAuthenticated)throw Error("Bitte zuerst verbinden");let r=await fetch(path,{...opts,headers:{...(token?{"authorization":"Bearer "+token}:{}),...(opts.headers||{})},credentials:"same-origin",cache:"no-store"});let data=await r.json();if(!r.ok)throw Error(data.error||String(r.status));return data}
 // A selected R2 inbox entry is ONE conversation. Nothing in this panel
 // creates model output or starts inference without the separate approved click.
 let selectedTask=null,selectedReport=null,selectedReportError="",selectedPrivateVideo=null;
@@ -467,7 +467,7 @@ if(v.status==="DRAFT_REQUIRES_REVIEW"){const run=document.createElement("button"
 const check=document.createElement("button");check.type="button";check.className="ghost";
 check.textContent="▣ Ergebnis prüfen";check.onclick=()=>selectInboxTask(v);
 row.append(check);li.append(row)}root.append(li)}if(selectedTask?.kind==="message")await checkSelectedTask();try{const g=await api("/api/runs");const list=$("runs");list.replaceChildren();$("lineGit").textContent="Status synchronisiert · "+new Date(g.logged_at).toLocaleTimeString("de-DE");for(const v of g.runs){const item=document.createElement("li");const a=document.createElement("a");a.href=v.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=v.name+" · "+v.status+(v.conclusion?" · "+v.conclusion:"");a.style.color="#aacaff";item.append(a);list.append(item)}if(!g.runs.length){const li=document.createElement("li");li.textContent="Keine aktuellen Läufe im Suchfenster";list.append(li)}}catch(e){$("runs").textContent="GitHub derzeit nicht erreichbar: "+e.message}}catch(e){$("conn").textContent="Nicht verbunden";$("conn").classList.remove("connected");$("lineAuth").textContent="Anmeldung prüfen";$("lineStore").textContent="Keine Verbindung";status("Status: "+e.message)}}
-$("connect").onclick=()=>{token=$("token").value;$("token").value="";selectedTask=null;selectedReport=null;selectedReportError="";clearAttachmentCache();studioBaseline=null;paintConversation();refresh();void restoreClaudeSessions();if($("workspace").dataset.tab==="studio")refreshStudio()};$("refresh").onclick=refresh;$("reload").onclick=refresh;
+$("connect").onclick=async()=>{token=$("token").value;$("token").value="";try{await api("/api/auth/session",{method:"POST"});sessionAuthenticated=true;token="";selectedTask=null;selectedReport=null;selectedReportError="";clearAttachmentCache();studioBaseline=null;paintConversation();await refresh();await restoreClaudeSessions();if($("workspace").dataset.tab==="studio")refreshStudio()}catch(e){sessionAuthenticated=false;token="";status("Anmeldung fehlgeschlagen: "+e.message)}};$("refresh").onclick=refresh;$("reload").onclick=refresh;
 $("send").onclick=async()=>{const content=$("message").value.trim();if(content.length<3)return status("Bitte mindestens drei Zeichen für den Auftrag eingeben.");const m="[WUNSCH-MODUS: "+$("taskMode").value+"; AUSGABE: "+$("outputMode").value+"]\n"+content;try{const data=await api("/api/inbox",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({message:m})});status("Entwurf gespeichert: "+data.id);$("message").value="";selectedTask={id:data.id,created_at:data.created_at,channel:"web",kind:"message",message:m,status:data.status};selectedReport=null;selectedReportError="";paintConversation();await refresh()}catch(e){status(e.message)}};
 async function upload(file){if(!file)return status("Bitte Datei auswählen");if(file.size>8*1024*1024)return status("Maximal 8 MB");try{let d=await api("/api/upload",{method:"POST",headers:{"content-type":/\.m4a$/i.test(file.name)&&(!file.type||file.type==="application/octet-stream")?"audio/mp4":file.type||"application/octet-stream","x-upload-name":file.name},body:file});status("Privat gespeichert: "+d.name+" · "+d.id);selectedTask={id:d.id,created_at:d.created_at,channel:"web",kind:"file",file:{name:d.name,size:file.size,mime:file.type},status:d.status};selectedReport=null;selectedReportError="";paintConversation();await refresh()}catch(e){status("Upload: "+e.message)}}
 $("upload").onclick=()=>upload($("file").files[0]);
@@ -620,4 +620,5 @@ const asrCall=async method=>{
  }catch(e){$("asrStatus").textContent="Privater ASR-Aufruf fehlgeschlagen: "+e.message}
 };
 $("asrConsent").onclick=()=>asrCall("POST");$("asrCheck").onclick=()=>asrCall("GET");$("asrRevoke").onclick=()=>asrCall("DELETE");
+void (async()=>{try{sessionAuthenticated=true;await refresh();await restoreClaudeSessions()}catch{sessionAuthenticated=false}})();
 </script></body></html>

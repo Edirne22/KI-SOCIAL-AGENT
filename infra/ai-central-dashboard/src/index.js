@@ -25,6 +25,17 @@ function authenticated(req,env){
   for(let i=0;i<n;i++)diff|=(a[i]||0)^(b[i]||0);
   return diff===0;
 }
+const WEB_SESSION_PREFIX="ai-central/v1/web-sessions/";
+const WEB_SESSION_TTL_MS=12*60*60*1000;
+function cookieValue(req,name){const raw=req.headers.get("cookie")||"";for(const part of raw.split(";")){const [k,...v]=part.trim().split("=");if(k===name)return v.join("=")}return ""}
+async function sessionKey(raw){const bytes=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(raw));return WEB_SESSION_PREFIX+[...new Uint8Array(bytes)].map(x=>x.toString(16).padStart(2,"0")).join("")+".json"}
+async function browserSessionAuthenticated(req,env){const raw=cookieValue(req,"edirne22_session");if(!/^[0-9a-f-]{36}$/.test(raw))return false;const obj=await env.AI_CENTRAL_R2.get(await sessionKey(raw));if(!obj)return false;let s;try{s=await obj.json()}catch{return false}return s?.schema==="DASHBOARD-WEB-SESSION-V1"&&typeof s.expires_at==="string"&&Date.parse(s.expires_at)>Date.now()}
+async function requestAuthenticated(req,env){return authenticated(req,env)||await browserSessionAuthenticated(req,env)}
+async function webLogin(req,env){
+ if(req.method!=="POST")return json({error:"method"},405);if(!sameOrigin(req))return json({error:"origin rejected"},403);if(!authenticated(req,env))return json({error:"unauthorized"},401);
+ const id=crypto.randomUUID(),expires_at=new Date(Date.now()+WEB_SESSION_TTL_MS).toISOString();await env.AI_CENTRAL_R2.put(await sessionKey(id),JSON.stringify({schema:"DASHBOARD-WEB-SESSION-V1",expires_at}),{httpMetadata:{contentType:"application/json"}});
+ return new Response(JSON.stringify({authenticated:true,expires_at}),{status:200,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff","set-cookie":`edirne22_session=${id}; Max-Age=43200; Path=/; HttpOnly; Secure; SameSite=Strict`}});
+}
 function sameOrigin(req){
   const origin=req.headers.get("origin");
   return !origin||origin===new URL(req.url).origin;
@@ -726,11 +737,10 @@ async function chatMessage(req,env){
   try{await loadSession(env,body.session_id)}catch(err){
     return json({error:err instanceof Error?err.message:"SESSION_ERROR"},400);
   }
-  // CODE sessions use the existing private container service binding only.
-  // No provider credential is exposed to the browser and no direct provider call is allowed.
+  // CHAT and CODE sessions use the same existing private container service binding only.\n  // No provider credential is exposed to the browser and no direct provider call is allowed.
   const session=await loadSession(env,body.session_id);
-  if(session.mode!=="code")
-    return json({error:"chat transport is not enabled for this session mode",stored:false},409);
+  if(!["chat","code"].includes(session.mode))
+    return json({error:"Claude transport is not enabled for this session mode",stored:false},409);
   if(!env.PRIVATE_ASR_SERVICE||!env.PRIVATE_ASR_INTERNAL_TOKEN)
     return json({error:"OpenCode runtime unavailable; message not sent",
       status:"TRANSPORT_UNAVAILABLE",stored:false},503);
@@ -765,7 +775,8 @@ export default {async fetch(req,env){
     }
   }
   if(!env.AI_CENTRAL_R2)return json({error:"storage unavailable"},503);
-  if(!authenticated(req,env))return json({error:"unauthorized"},401);
+  if(path==="/api/auth/session")return await webLogin(req,env);
+  if(!await requestAuthenticated(req,env))return json({error:"unauthorized"},401);
   try{
     if(path==="/api/previews")return await listPreviews(req,env);
     if(path==="/api/preview-review")return await queuePreviewReview(req,env);
