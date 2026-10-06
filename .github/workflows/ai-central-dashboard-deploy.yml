@@ -63,11 +63,12 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
           npx playwright install --with-deps chromium
-      - name: Real dashboard browser E2E - Claude and Groq research
+      - name: Real dashboard browser E2E - Claude CHAT and CODE
         working-directory: infra/ai-central-dashboard
         env:
           DASHBOARD_URL: https://edirne22-ai-central-dashboard.butupeli.workers.dev
           REQUIRE_DASHBOARD_RESEARCH: "false"
+          REQUIRE_DASHBOARD_CODE_EXECUTOR: "true"
         run: node tests/live-dashboard-e2e.mjs
       - name: Completion note
         run: echo "Dashboard deployed and real browser E2E completed without logging secrets or model response bodies."
