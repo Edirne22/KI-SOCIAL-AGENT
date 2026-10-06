@@ -30,4 +30,11 @@ except ValueError as exc:
 else:
     raise AssertionError("invalid NDJSON must fail closed")
 
+try:
+    parse('["not","an","event"]')
+except ValueError as exc:
+    assert str(exc) == "invalid_opencode_event"
+else:
+    raise AssertionError("non-object JSON event must fail closed")
+
 print("OPENCODE_JSON_EVENT_PARSE_OK")
