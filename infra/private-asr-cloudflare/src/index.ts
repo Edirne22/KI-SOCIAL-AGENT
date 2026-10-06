@@ -70,7 +70,7 @@ export default {
         }
       }
     });
-    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat" || url.pathname === "/research/search") {
+    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat" || url.pathname === "/opencode/code" || url.pathname === "/research/search") {
       // The container is already started/woken above. Never retry POST:
       // duplicate transcription or private-video jobs could overwrite private drafts.
       let ready = false;
