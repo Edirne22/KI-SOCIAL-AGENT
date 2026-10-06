@@ -39,7 +39,8 @@ def _opencode_health():
     config = "/etc/opencode/opencode.json"
     digest = config + ".sha256"
     ready = bool(binary and os.path.isfile(config) and os.path.isfile(digest))
-    return ready, {"ready": ready, "service": "opencode", "model": _opencode_model if ready else None,\n                   "response_contract": "text-v2" if ready else None}
+    return ready, {"ready": ready, "service": "opencode", "model": _opencode_model if ready else None,
+                   "response_contract": "text-v2" if ready else None}
 
 def _opencode_text(output):
     """Extract assistant text from OpenCode --format json NDJSON events."""
