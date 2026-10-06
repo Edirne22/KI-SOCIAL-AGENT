@@ -33,6 +33,29 @@ try{
   if(!claudeStatus?.includes("OpenCode -> OpenRouter -> Anthropic"))throw new Error("dashboard route marker missing");
   console.log("DASHBOARD_CLAUDE_VISIBLE_E2E_OK");
 
+  if(process.env.REQUIRE_DASHBOARD_CODE_EXECUTOR==="true"){
+    await page.locator("#codeStart").click();
+    await page.waitForFunction(()=>!document.querySelector("#codeSend")?.disabled);
+    console.log("DASHBOARD_CODE_SESSION_OK");
+    await page.locator("#codeMessage").fill("Use the native shell tool to run exactly git rev-parse HEAD. After the tool result, reply exactly DASHBOARD_CODE_EXEC_OK followed by one space and that 40-character SHA.");
+    const codeResponsePromise=page.waitForResponse(r=>r.url().endsWith("/api/chat/message")&&r.request().method()==="POST");
+    await page.locator("#codeSend").click();
+    const codeResponse=await codeResponsePromise;
+    if(!codeResponse.ok())throw new Error("dashboard CODE API response not OK");
+    const codePayload=await codeResponse.json();
+    const codeText=String(codePayload?.text||"").trim();
+    if(!/^DASHBOARD_CODE_EXEC_OK [0-9a-f]{40}$/.test(codeText))throw new Error("unexpected Dashboard CODE final response");
+    if(codeText.includes("<function_calls>")||codeText.includes("<invoke name="))throw new Error("pseudo tool call escaped to dashboard");
+    if(codePayload?.route?.mode!=="CODE")throw new Error("dashboard CODE route mode missing");
+    if(codePayload?.route?.tools?.github!=="READ_ONLY_PUBLIC_CLONE")throw new Error("dashboard CODE GitHub truth marker missing");
+    if(codePayload?.route?.tools?.shell!=="USED_READ_ONLY")throw new Error("dashboard CODE shell execution marker missing");
+    await page.waitForFunction(()=>/^DASHBOARD_CODE_EXEC_OK [0-9a-f]{40}$/.test(document.querySelector("#codeResult")?.value?.trim()||""));
+    const codeStatus=await page.locator("#codeStatus").textContent();
+    if(!codeStatus?.includes("GitHub: READ_ONLY_PUBLIC_CLONE"))throw new Error("dashboard CODE GitHub UI marker missing");
+    if(!codeStatus?.includes("Shell: USED_READ_ONLY"))throw new Error("dashboard CODE shell UI marker missing");
+    console.log("DASHBOARD_CODE_GIT_TOOL_E2E_OK "+codeText.slice(-40));
+  }
+
   if(process.env.REQUIRE_CURRENT_DATE_TRUTH==="true"){
     const expectedUtcDate=new Date().toISOString().slice(0,10);
     await page.locator("#chatMessage").fill("Welches Datum ist heute? Suche im Web und nenne eine Quelle.");
