@@ -49,6 +49,11 @@ class Router(unittest.TestCase):
             "nvidia":{"nvidia/nemotron-3.5-lightning-30b-a3b":"INFERENCE_OK"}},registry=self.registry)
         self.assertEqual(x["provider"],"nvidia")
         self.assertEqual(x["task"],"web_research")
+    def test_named_agents_may_dialog_but_status_still_needs_evidence(self):
+        for agent in ("09_quality_agent","17_instagram_engagement_agent","21_instandhaltungsagent"):
+            self.assertTrue(sr.agent_can(agent,"dialog_status",self.registry),agent)
+        self.assertTrue(self.registry["policies"]["agent_status_claims_require_evidence"])
+        self.assertIn("evidence_store",self.registry["tasks"]["dialog_status"]["requires"])
     def test_exporter_validation_and_formula_escape(self):
         data={"title":"Rezeptur Analyse","paragraphs":["Daten wurden geprüft"],
               "table":[["Rezept","Anteil"],["Mischung",50],["=HYPERLINK(\"http://bad\")","Ne"]]}
