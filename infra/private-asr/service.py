@@ -10,6 +10,8 @@ import threading
 import time
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 import run_private_asr
 import research_gateway
 import scripts.private_birthday_first_production as private_birthday
@@ -33,6 +35,7 @@ _code_workspace = "/tmp/edirne22-code-workspace"
 _code_repo = "https://github.com/Edirne22/KI-SOCIAL-AGENT.git"
 _code_executor_contract = "repo-readonly-v1"
 _research_runtime_revision = "block9-groq-429-fallback-v1"
+_private_runtime_origin = "https://edirne22-private-asr.butupeli.workers.dev"
 
 
 def _authorized(headers):
@@ -218,6 +221,25 @@ def _run_opencode_code(message):
     finally:
         _lock.release()
 
+def _renew_private_video_activity(opener=urlopen):
+    """Keep Cloudflare's container activity lease alive during background rendering.
+
+    The origin is fixed in code; no request input can select a URL. Failure is non-fatal
+    here because the R2 heartbeat still provides watchdog evidence and Agent 21 recovery.
+    """
+    token=os.getenv("PRIVATE_ASR_INTERNAL_TOKEN","")
+    if not token:
+        return False
+    request=Request(_private_runtime_origin+"/health",method="GET",headers={
+        "Authorization":"Bearer "+token,
+        "Accept":"application/json",
+    })
+    try:
+        with opener(request,timeout=8) as response:
+            return response.status==200
+    except (HTTPError,URLError,OSError,TimeoutError):
+        return False
+
 def _video_status(task_id, status, error_code=None, detail=None, stage=None):
     client,bucket=client_from_env()
     payload={"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":task_id,"status":status,
@@ -233,11 +255,17 @@ def _run_video(task_id):
     heartbeat_stop=threading.Event()
     current={"stage":"production_lead"}
     def heartbeat():
+        ticks=0
         while not heartbeat_stop.wait(10):
+            ticks+=1
             try:
                 _video_status(task_id,"RUNNING",stage=current["stage"])
             except Exception:
                 pass
+            # Cloudflare Container.sleepAfter counts incoming requests, not work done by
+            # this background thread. Renew activity every ~30s through the fixed Worker.
+            if ticks % 3 == 0:
+                _renew_private_video_activity()
     heartbeat_thread=threading.Thread(target=heartbeat,daemon=True)
     try:
         _video_status(task_id,"RUNNING",stage=current["stage"])
