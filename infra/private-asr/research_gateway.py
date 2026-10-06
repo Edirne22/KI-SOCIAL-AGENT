@@ -71,8 +71,8 @@ def _groq_browser_search(query: str,key: str) -> dict|None:
     except (ValueError,KeyError,IndexError,TypeError):
         return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],"warning":"GROQ_INVALID_RESPONSE"}
     urls=[]
-    for url in re.findall(r"https?://[^\\s)\\]}>\\"']+",content):
-        url=url.rstrip(".,;:")
+    for url in re.findall(r"https?://[^ )]+",content):
+        url=url.rstrip(".,;:)]}>")
         if url not in urls:
             urls.append(url)
     for item in (message.get("executed_tools") or []):
