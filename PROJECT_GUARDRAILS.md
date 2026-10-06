@@ -100,6 +100,7 @@ Bekannte Fallklassen umfassen u. a.:
 - erfundener Ort
 - erfundenes Team (z. B. Phoenix-Werksteam)
 - falsche Serie / falscher Serien-Hashtag
+- aktuelle Datums-/Zeitfrage: veraltete oder widersprüchliche Web-Research-Datumsangabe darf das vertrauenswürdige Runtime-Systemdatum nicht überschreiben; Konflikt muss geblockt bzw. deterministisch auf die vertrauenswürdige Zeitbasis zurückgeführt werden
 - Semantic-Ausfall + DEGRADED-PASS
 - Run #138: unsicherer Roh-Titel („starkes Signal“) darf durch ein generiertes Summary nicht zu „bestätigt“ hochgestuft werden
 - Run #138: Motorrad-Racing darf nicht „Werkswagen“ verwenden
