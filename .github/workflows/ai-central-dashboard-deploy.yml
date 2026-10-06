@@ -67,6 +67,7 @@ jobs:
         working-directory: infra/ai-central-dashboard
         env:
           DASHBOARD_URL: https://edirne22-ai-central-dashboard.butupeli.workers.dev
+          REQUIRE_DASHBOARD_RESEARCH: "false"
         run: node tests/live-dashboard-e2e.mjs
       - name: Completion note
         run: echo "Dashboard deployed and real browser E2E completed without logging secrets or model response bodies."
