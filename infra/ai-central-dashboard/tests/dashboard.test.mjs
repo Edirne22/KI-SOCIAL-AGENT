@@ -234,3 +234,16 @@ test("CHAT session uses the same private Claude transport while secret-shaped pr
  r=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Authorization: Bearer should-never-leave-dashboard"}),headers:origin}),e);
  assert.equal(r.status,400);assert.equal(calls,1);
 });
+
+
+test("secure HttpOnly dashboard session survives refresh without resending bearer key",async()=>{
+ const e=env(),origin={"origin":"https://dashboard.example"};
+ const login=await worker.fetch(request("/api/auth/session",{method:"POST",headers:origin}),e);
+ assert.equal(login.status,200);const cookie=login.headers.get("set-cookie");
+ assert.match(cookie,/edirne22_session=/);assert.match(cookie,/HttpOnly/);assert.match(cookie,/Secure/);assert.match(cookie,/SameSite=Strict/);
+ const pair=cookie.split(";")[0];
+ const resumed=await worker.fetch(new Request("https://dashboard.example/api/inbox",{headers:{cookie:pair,origin:"https://dashboard.example"}}),e);
+ assert.equal(resumed.status,200);
+ const bad=await worker.fetch(new Request("https://dashboard.example/api/inbox",{headers:{cookie:"edirne22_session=invalid",origin:"https://dashboard.example"}}),e);
+ assert.equal(bad.status,401);
+});
