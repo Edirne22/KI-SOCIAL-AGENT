@@ -11,6 +11,7 @@ import time
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import run_private_asr
+import research_gateway
 import scripts.private_birthday_first_production as private_birthday
 from scripts.ai_central_shared_inbox import client_from_env
 from content_factory_private_video_orchestrator import (
@@ -198,16 +199,26 @@ class Handler(BaseHTTPRequestHandler):
         self.respond(200 if ready else 503, {"ready": ready})
 
     def do_POST(self):
-        if self.path not in ("/jobs","/private-video/jobs","/opencode/chat"):
+        if self.path not in ("/jobs","/private-video/jobs","/opencode/chat","/research/search"):
             return self.respond(404, {"error": "not_found"})
         if not _authorized(self.headers):
             return self.respond(401, {"error": "unauthorized"})
         try:
             size = int(self.headers.get("Content-Length", "-1"))
-            limit = 8192 if self.path == "/opencode/chat" else 1024
+            limit = 8192 if self.path == "/opencode/chat" else (2048 if self.path == "/research/search" else 1024)
             if not 0 < size <= limit:
                 return self.respond(413, {"error": "size"})
             data = json.loads(self.rfile.read(size))
+            if self.path == "/research/search":
+                if not isinstance(data, dict) or set(data) != {"query"} or not isinstance(data.get("query"), str):
+                    raise ValueError()
+                try:
+                    result = research_gateway.research(data["query"])
+                except ValueError:
+                    raise
+                except Exception:
+                    return self.respond(502, {"error": "research_provider_failed"})
+                return self.respond(200, result)
             if self.path == "/opencode/chat":
                 if not isinstance(data, dict) or set(data) != {"message"}:
                     raise ValueError()

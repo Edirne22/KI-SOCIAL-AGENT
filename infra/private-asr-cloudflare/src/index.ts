@@ -3,6 +3,9 @@ type Env = {
   PRIVATE_ASR: DurableObjectNamespace<PrivateASRContainer>;
   PRIVATE_ASR_INTERNAL_TOKEN: string;
   OPENROUTER_API_KEY: string;
+  GEMINI_API_KEY: string;
+  NVIDIA_API_KEY?: string;
+  SEARXNG_URL?: string;
   R2_ACCOUNT_ID: string; R2_ACCESS_KEY_ID: string;
   R2_SECRET_ACCESS_KEY: string; R2_BUCKET_NAME: string;
   TELEGRAM_BOT_TOKEN: string; TELEGRAM_CHAT_ID: string;
@@ -29,10 +32,10 @@ export default {
       return reply({error:"unauthorized"},401);
     const url = new URL(request.url);
     if (url.pathname !== "/health" && url.pathname !== "/jobs" && url.pathname !== "/private-video/jobs" &&
-        url.pathname !== "/opencode/health" && url.pathname !== "/opencode/chat" && url.pathname !== "/admin/container-restart")
+        url.pathname !== "/opencode/health" && url.pathname !== "/opencode/chat" && url.pathname !== "/research/search" && url.pathname !== "/admin/container-restart")
       return reply({error:"not_found"},404);
     if (((url.pathname === "/health" || url.pathname === "/opencode/health") && request.method !== "GET") ||
-        ((url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat" || url.pathname === "/admin/container-restart") && request.method !== "POST"))
+        ((url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat" || url.pathname === "/research/search" || url.pathname === "/admin/container-restart") && request.method !== "POST"))
       return reply({error:"method"},405);
     const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v3");
     if (url.pathname === "/admin/container-restart") {
@@ -40,10 +43,10 @@ export default {
       return reply({status:"container_restart_requested"},202);
     }
     let jobBody: string | null = null;
-    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
+    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat" || url.pathname === "/research/search") {
       jobBody = await request.text();
       const size = new TextEncoder().encode(jobBody).byteLength;
-      const limit = url.pathname === "/opencode/chat" ? 8192 : 1024;
+      const limit = url.pathname === "/opencode/chat" ? 8192 : (url.pathname === "/research/search" ? 2048 : 1024);
       if (size < 1 || size > limit) return reply({error:"size"},413);
     }
     // Every route must enter through the same lifecycle gate. In particular, /health
@@ -55,6 +58,9 @@ export default {
         envVars: {
           PRIVATE_ASR_INTERNAL_TOKEN: env.PRIVATE_ASR_INTERNAL_TOKEN,
           OPENROUTER_API_KEY: env.OPENROUTER_API_KEY,
+          GEMINI_API_KEY: env.GEMINI_API_KEY,
+          ...(env.NVIDIA_API_KEY ? {NVIDIA_API_KEY: env.NVIDIA_API_KEY} : {}),
+          ...(env.SEARXNG_URL ? {SEARXNG_URL: env.SEARXNG_URL} : {}),
           R2_ACCOUNT_ID: env.R2_ACCOUNT_ID,
           R2_ACCESS_KEY_ID: env.R2_ACCESS_KEY_ID,
           R2_SECRET_ACCESS_KEY: env.R2_SECRET_ACCESS_KEY,
@@ -64,13 +70,13 @@ export default {
         }
       }
     });
-    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
+    if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat" || url.pathname === "/research/search") {
       // The container is already started/woken above. Never retry POST:
       // duplicate transcription or private-video jobs could overwrite private drafts.
       let ready = false;
       for (let attempt = 0; attempt < 4; attempt++) {
         try {
-          const healthPath = url.pathname === "/opencode/chat" ? "/opencode/health" : "/health";
+          const healthPath = (url.pathname === "/opencode/chat" || url.pathname === "/research/search") ? "/opencode/health" : "/health";
           const healthHeaders = new Headers();
           if (healthPath === "/opencode/health") healthHeaders.set("authorization", auth);
           const health = await instance.fetch(new Request("http://localhost:5200" + healthPath, {headers: healthHeaders}));
@@ -90,7 +96,7 @@ export default {
         // OpenCode is a JSON-only internal API. If the container/runtime emits an
         // HTML/plaintext 500, do not leak that body; convert it to a bounded JSON
         // diagnostic so Actions can identify the failing layer safely.
-        if (url.pathname === "/opencode/chat") {
+        if (url.pathname === "/opencode/chat" || url.pathname === "/research/search") {
           const contentType = upstream.headers.get("content-type") || "";
           if (!contentType.toLowerCase().includes("application/json")) {
             return Response.json(
@@ -101,7 +107,7 @@ export default {
         }
         return upstream;
       } catch (error) {
-        if (url.pathname !== "/opencode/chat") throw error;
+        if (url.pathname !== "/opencode/chat" && url.pathname !== "/research/search") throw error;
         const name = error instanceof Error ? error.name.slice(0,80) : "unknown";
         return Response.json(
           {error:"opencode_container_fetch_failed", exception:name},

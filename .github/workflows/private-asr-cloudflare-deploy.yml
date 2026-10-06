@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "infra/private-asr/**"
+      - "search_provider.py"
       - "infra/private-asr-cloudflare/**"
       - "scripts/private_birthday_first_production.py"
       - "scripts/private_video_recovery_dispatch.py"
@@ -27,6 +28,9 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      SEARXNG_URL: ${{ secrets.SEARXNG_URL }}
       R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -43,7 +47,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY GEMINI_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
             test -n "${!name}" || { echo "BLOCKED: missing $name"; exit 1; }
           done
       - name: Stage Docker build context for Wrangler
@@ -58,8 +62,10 @@ jobs:
           cp scripts/private_birthday_first_production.py scripts/ai_central_shared_inbox.py scripts/r2_media_warehouse.py "$target/scripts/"
           cp assets/musik/chill/hypnotic-ambient.mp3 "$target/assets/musik/chill/"
           cp config/MUSIC_LIBRARY.json "$target/config/"
+          cp search_provider.py "$target/search_provider.py"
+          cp infra/private-asr/research_gateway.py "$target/research_gateway.py"
           cp infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py "$target/"
-          sed -i 's@COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py /app/@COPY run_private_asr.py service.py verify_opencode_image.py /app/@' "$target/Dockerfile"
+          sed -i 's@COPY search_provider.py /app/search_provider.py@COPY search_provider.py /app/search_provider.py@; s@COPY infra/private-asr/research_gateway.py /app/research_gateway.py@COPY research_gateway.py /app/research_gateway.py@; s@COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py /app/@COPY run_private_asr.py service.py verify_opencode_image.py /app/@' "$target/Dockerfile"
           mkdir -p "$target/infra/ai-central-tools/claude-only"
           cp infra/ai-central-tools/claude-only/opencode.jsonc "$target/infra/ai-central-tools/claude-only/opencode.jsonc"
           test -s "$target/service.py"
@@ -86,7 +92,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for name in PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
+          for name in PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY GEMINI_API_KEY NVIDIA_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
             printf '%s' "${!name}" | npx wrangler secret put "$name" --config wrangler.jsonc
           done
       - name: Authenticated health check
