@@ -11,12 +11,13 @@ on:
       - 'infra/ai-central-dashboard/src/index.js'
       - 'infra/ai-central-dashboard/src/private-asr.js'
       - 'infra/ai-central-dashboard/wrangler.jsonc'
+      - 'infra/ai-central-dashboard/tests/live-dashboard-e2e.mjs'
 permissions:
   contents: read
 jobs:
   deploy-private-ui:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -57,5 +58,15 @@ jobs:
         if: env.AI_GITHUB_DISPATCH_TOKEN != ''
         working-directory: infra/ai-central-dashboard
         run: printf '%s' "$AI_GITHUB_DISPATCH_TOKEN" | npx --yes wrangler@4 secret put GITHUB_DISPATCH_TOKEN --config wrangler.jsonc
+      - name: Install browser harness for real dashboard E2E
+        working-directory: infra/ai-central-dashboard
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Real dashboard browser E2E - Claude and Groq research
+        working-directory: infra/ai-central-dashboard
+        env:
+          DASHBOARD_URL: https://edirne22-ai-central-dashboard.butupeli.workers.dev
+        run: node tests/live-dashboard-e2e.mjs
       - name: Completion note
-        run: echo "Dashboard deployed with private R2 binding and configured access token. Free-tier dispatch only if explicitly audited and credential configured."
+        run: echo "Dashboard deployed and real browser E2E completed without logging secrets or model response bodies."
