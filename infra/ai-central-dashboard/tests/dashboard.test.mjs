@@ -262,7 +262,7 @@ test("secure HttpOnly dashboard session survives refresh without resending beare
 });
 
 
-test("CHAT and CODE expose truthful fail-closed route metadata",async()=>{
+test("CHAT and universal CODE expose truthful fail-closed route metadata",async()=>{
   const e=env();
   e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
   e.PRIVATE_ASR_SERVICE={fetch:async()=>new Response(JSON.stringify({text:"ROUTE_OK"}),{status:200,headers:{"content-type":"application/json"}})};
@@ -276,8 +276,12 @@ test("CHAT and CODE expose truthful fail-closed route metadata",async()=>{
   assert.equal(c.route.mode,"CHAT");assert.equal(c.route.gate,"CONVERSATION");
   assert.equal(c.route.tools.agent21,false);assert.equal(c.route.tools.github,false);
   assert.equal(c.route.tools.web_research,"NOT_YET_WIRED");
-  assert.equal(d.route.mode,"CODE");assert.equal(d.route.gate,"AGENT21_GUARDED");
-  assert.equal(d.route.tools.agent21,true);assert.equal(d.route.tools.github,"GATED");
+  assert.equal(d.route.mode,"CODE");assert.equal(d.route.workspace,"UNIVERSAL");
+  assert.equal(d.route.gate,"DIRECT_DEVELOPMENT");
+  assert.equal(d.route.specialist_gate,"AGENT21_FOR_EDIRNE22_INTERNAL");
+  assert.equal(d.route.tools.agent21,"CONTEXTUAL");
+  assert.equal(d.route.tools.github,"NOT_YET_WIRED");
   assert.equal(d.route.tools.web_research,"NOT_YET_WIRED");
-  assert.equal(d.route.execution,"READ_ONLY_UNTIL_GUARDED_ACTION");
+  assert.equal(d.route.tools.r2_files,"UPLOAD_ONLY");
+  assert.equal(d.route.execution,"TEXT_ONLY_UNTIL_TOOL_GATE_WIRED");
 });
