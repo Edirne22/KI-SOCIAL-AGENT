@@ -96,6 +96,19 @@ jobs:
           for name in PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY GROQ_API_KEY GEMINI_API_KEY NVIDIA_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
             printf '%s' "${!name}" | npx wrangler secret put "$name" --config wrangler.jsonc
           done
+      - name: Restart existing container once after deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://edirne22-private-asr.butupeli.workers.dev/admin/container-restart"
+          code=$(curl -sS -o /tmp/container-restart -w '%{http_code}' --max-time 30 \
+            -X POST -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
+          if [ "$code" != 202 ]; then
+            echo "PRIVATE_ASR_DEPLOY_RESTART_FAILED: HTTP $code (body withheld)"
+            exit 1
+          fi
+          python3 -c 'import json; d=json.load(open("/tmp/container-restart")); assert d.get("status") == "container_restart_requested"'
+          echo "PRIVATE_ASR_DEPLOY_RESTART_REQUESTED"
       - name: Authenticated target-revision health check
         shell: bash
         run: |
