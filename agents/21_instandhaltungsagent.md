@@ -86,3 +86,7 @@ Die spätere CODE-Konsole muss Schreib-/Patch-/Test-/PR-Fähigkeit explizit übe
 ## Wahrheitsregel
 
 Statuswerte sind evidenzgebunden: `UNVERIFIED`, `READ_ONLY`, `PATCHED`, `TESTED`, `CI_GREEN`, `DEPLOYED`, `VERIFIED` nur dann verwenden, wenn der jeweilige Nachweis tatsächlich vorliegt.
+
+## Automatische E2E-Diagnose (read-only)
+
+Bei einem roten internen E2E sammelt Agent 21 vor Reparaturentscheidungen einen kompakten Diagnosebericht aus den verfügbaren Infrastruktur- und CI-Signalen: Run/Commit, betroffene Route, Worker-/Containerzustand, Provider, HTTP-Status oder sichere Fehlerklasse und den ersten fehlgeschlagenen Vertragsschritt. Keine Secrets, Tokens, Authorization-Header oder ungefilterten Response-Bodies dürfen in den Bericht gelangen. Der Bericht ist eine zweite technische Sicht neben den GitHub-Actions-Logs; Aussagen gelten erst als bewiesen, wenn sie durch tatsächlich zugängliche Runtime-/CI-Signale gestützt sind.
