@@ -510,7 +510,11 @@ async function sendClaude(mode){
   try{
     $(mode+"Send").disabled=true;$(mode+"Status").textContent="OpenCode fragt Claude Sonnet 4.5 …";$(mode+"Result").value="";
     const r=await api("/api/chat/message",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({session_id:id,message})});
-    $(mode+"Result").value=r.text;$(mode+"Status").textContent=r.stored?"Claude-Antwort erhalten und Sitzung gespeichert.":"Claude-Antwort erhalten.";
+    $(mode+"Result").value=r.text;
+    const route=r.route||{},tools=route.tools||{};
+    const used=["OpenCode",tools.agent21?"Agent 21":null,tools.github?("GitHub: "+tools.github):null,tools.web_research?("Web: "+tools.web_research):null].filter(Boolean).join(" · ");
+    $(mode+"Status").textContent=(r.stored?"Claude-Antwort erhalten und Sitzung gespeichert. ":"Claude-Antwort erhalten. ")+
+      (route.model?("Modell: "+route.model+" · Route: "+route.provider_route+" · Modus: "+route.mode+" · Gate: "+route.gate+" · Tools: "+used):"");
   }catch(e){$(mode+"Status").textContent="Claude-Aufruf fehlgeschlagen: "+e.message}
   finally{$(mode+"Send").disabled=false}
 }
