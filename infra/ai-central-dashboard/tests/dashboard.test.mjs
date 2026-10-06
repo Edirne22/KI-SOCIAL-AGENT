@@ -179,3 +179,57 @@ test('inbox never labels a truncated old page as the latest jobs',async()=>{
  const response=await worker.fetch(request('/api/inbox'),e);
  assert.equal(response.status,409);assert.equal(limit,1000);assert.match((await response.json()).error,/no incomplete latest list/);
 });
+
+
+test("CODE session routes one bounded message through private OpenCode service and stores exact exchange",async()=>{
+ const e=env(),calls=[];e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
+ e.PRIVATE_ASR_SERVICE={fetch:async(url,opts)=>{
+   calls.push({url:String(url),method:opts.method,authorization:opts.headers.authorization,body:JSON.parse(opts.body)});
+   return new Response(JSON.stringify({text:"OPENCODE_DASHBOARD_OK"}),{status:200,headers:{"content-type":"application/json"}});
+ }};
+ const origin={"content-type":"application/json","origin":"https://dashboard.example"};
+ const created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"code"}),headers:origin}),e);
+ assert.equal(created.status,201);const session=await created.json();assert.equal(session.mode,"code");
+ const response=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:session.id,message:"Hallo Claude"}),headers:origin}),e);
+ assert.equal(response.status,200);const result=await response.json();
+ assert.deepEqual({text:result.text,stored:result.stored},{text:"OPENCODE_DASHBOARD_OK",stored:true});
+ assert.equal(calls.length,1);assert.equal(calls[0].url,"https://private-asr/opencode/chat");
+ assert.equal(calls[0].method,"POST");assert.equal(calls[0].authorization,"Bearer internal-test-token");
+ assert.deepEqual(calls[0].body,{message:"Hallo Claude"});
+ const saved=await worker.fetch(request("/api/chat/session?id="+session.id),e);
+ const history=(await saved.json()).messages;
+ assert.deepEqual(history.map(x=>[x.role,x.text]),[["user","Hallo Claude"],["assistant","OPENCODE_DASHBOARD_OK"]]);
+});
+
+test("CODE transport fails closed for auth origin missing runtime and malformed upstream without storing messages",async()=>{
+ const origin={"content-type":"application/json","origin":"https://dashboard.example"};
+ const make=async e=>{
+   const r=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"code"}),headers:origin}),e);
+   assert.equal(r.status,201);return (await r.json()).id;
+ };
+ let e=env(),id=await make(e);
+ let r=await worker.fetch(request("/api/chat/message",{method:"POST",token:"wrong",body:JSON.stringify({session_id:id,message:"Hallo Claude"}),headers:origin}),e);
+ assert.equal(r.status,401);
+ r=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Hallo Claude"}),headers:{"content-type":"application/json","origin":"https://attacker.example"}}),e);
+ assert.equal(r.status,403);
+ r=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Hallo Claude"}),headers:origin}),e);
+ assert.equal(r.status,503);assert.equal((await r.json()).stored,false);
+ let s=await worker.fetch(request("/api/chat/session?id="+id),e);assert.equal((await s.json()).messages.length,0);
+ e=env();id=await make(e);e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
+ e.PRIVATE_ASR_SERVICE={fetch:async()=>new Response(JSON.stringify({unexpected:"raw-event"}),{status:200,headers:{"content-type":"application/json"}})};
+ r=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Hallo Claude"}),headers:origin}),e);
+ assert.equal(r.status,502);assert.equal((await r.json()).stored,false);
+ s=await worker.fetch(request("/api/chat/session?id="+id),e);assert.equal((await s.json()).messages.length,0);
+});
+
+test("ordinary chat session cannot invoke CODE transport and secret-shaped prompt is rejected before service call",async()=>{
+ const e=env(),origin={"content-type":"application/json","origin":"https://dashboard.example"};let calls=0;
+ e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";e.PRIVATE_ASR_SERVICE={fetch:async()=>{calls++;return new Response(JSON.stringify({text:"must-not-run"}))}};
+ let created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"chat"}),headers:origin}),e);
+ let id=(await created.json()).id;
+ let r=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Hallo Claude"}),headers:origin}),e);
+ assert.equal(r.status,409);assert.equal(calls,0);
+ created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"code"}),headers:origin}),e);id=(await created.json()).id;
+ r=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Authorization: Bearer should-never-leave-dashboard"}),headers:origin}),e);
+ assert.equal(r.status,400);assert.equal(calls,0);
+});
