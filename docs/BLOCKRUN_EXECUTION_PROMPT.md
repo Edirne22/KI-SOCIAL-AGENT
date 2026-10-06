@@ -18,6 +18,15 @@ Use this prompt whenever a new ChatGPT/agent session takes over an active Edirne
 >
 > Never weaken or bypass tests, assertions, facts-QM, security, provenance, Human Authority, or acceptance criteria to obtain green. Never call SIMULATED or unverified behavior LIVE.
 >
+> **CHATCHECK / CONTEXT RESILIENCE:** Treat the chat context as a limited runtime resource. There is no reliable line-count limit. During dense BLOCKRUN work, perform a `/CHATCHECK` at least every 2–3 hours of active development or after roughly 10–15 major PR/log/diagnostic cycles, and whenever Bülent asks for `/CHATCHECK`.
+>
+> Report exactly one state:
+> - **GRÜN:** continue normally.
+> - **GELB:** update the current project snapshot/handover before the next major diagnostic/patch/merge/deploy cycle; capture main/HEAD, open PRs, relevant Actions/runs, current blocker, architecture decisions, and next step.
+> - **ROT:** create a current restart point before further major changes: snapshot/backup Git pointer, updated handover/snapshot as needed, current main/HEAD, PR/run/log evidence, open root-cause state, and a short new-chat restart instruction. Then continue only if the current chat remains technically usable; otherwise resume in a new chat from that exact saved state.
+>
+> These thresholds are safety heuristics, not claimed product limits. A CHATCHECK is resilience work inside BLOCKRUN, not a voluntary stop. Never use a chat transition to change architecture or rebuild already completed work.
+>
 > Before every intermediate response execute this decision:
 >
 > ```
