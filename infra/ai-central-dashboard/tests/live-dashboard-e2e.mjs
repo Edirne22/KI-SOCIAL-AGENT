@@ -1,5 +1,6 @@
 import { chromium } from "playwright";
 
+// REQUIRE_DASHBOARD_RESEARCH=false proves the core Dashboard->Claude path; Groq source proof stays in the dedicated Block-9 gate.
 const dashboardUrl=process.env.DASHBOARD_URL;
 const token=process.env.AI_DASHBOARD_TOKEN;
 if(!dashboardUrl||!token)throw new Error("missing dashboard live-test configuration");
