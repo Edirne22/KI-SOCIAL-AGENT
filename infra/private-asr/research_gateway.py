@@ -10,7 +10,9 @@ MAX_RESULTS=6
 GEMINI_MODEL="gemini-3.8-flash"
 GEMINI_URL=f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 OPENROUTER_URL="https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_MODEL="anthropic/claude-sonnet-4.5"\nGROQ_URL="https://api.groq.com/openai/v1/chat/completions"\nGROQ_MODEL="openai/gpt-oss-20b"
+OPENROUTER_MODEL="anthropic/claude-sonnet-4.5"
+GROQ_URL="https://api.groq.com/openai/v1/chat/completions"
+GROQ_MODEL="openai/gpt-oss-20b"
 
 def research(query: str) -> dict:
     query=(query or "").strip()
