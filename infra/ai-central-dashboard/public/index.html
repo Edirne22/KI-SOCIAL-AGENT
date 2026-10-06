@@ -467,60 +467,7 @@ if(v.status==="DRAFT_REQUIRES_REVIEW"){const run=document.createElement("button"
 const check=document.createElement("button");check.type="button";check.className="ghost";
 check.textContent="▣ Ergebnis prüfen";check.onclick=()=>selectInboxTask(v);
 row.append(check);li.append(row)}root.append(li)}if(selectedTask?.kind==="message")await checkSelectedTask();try{const g=await api("/api/runs");const list=$("runs");list.replaceChildren();$("lineGit").textContent="Status synchronisiert · "+new Date(g.logged_at).toLocaleTimeString("de-DE");for(const v of g.runs){const item=document.createElement("li");const a=document.createElement("a");a.href=v.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=v.name+" · "+v.status+(v.conclusion?" · "+v.conclusion:"");a.style.color="#aacaff";item.append(a);list.append(item)}if(!g.runs.length){const li=document.createElement("li");li.textContent="Keine aktuellen Läufe im Suchfenster";list.append(li)}}catch(e){$("runs").textContent="GitHub derzeit nicht erreichbar: "+e.message}}catch(e){$("conn").textContent="Nicht verbunden";$("conn").classList.remove("connected");$("lineAuth").textContent="Anmeldung prüfen";$("lineStore").textContent="Keine Verbindung";status("Status: "+e.message)}}
-async function loadLastReadiness(){
-  if(!token)return;
-  try{
-    const state=await api("/api/container-readiness");
-    $("containerState").textContent=state.state==="LAST_KNOWN_HTTP_REACHABLE_NOT_CURRENT"?
-      "Letzter HTTP-Test erfolgreich · kein Live-Status":"Nicht verfügbar – kein gespeicherter Bereitschaftstest";
-    $("containerDetail").textContent=state.last_success_at?
-      "Letzter manueller HTTP-Test: "+new Date(state.last_success_at).toLocaleString("de-DE")+
-        ". CPU/RAM und interne Programme: nicht messbar.":
-      "CPU und RAM: Nicht verfügbar. Kein passives Telemetriesignal.";
-  }catch{$("containerState").textContent="Nicht verfügbar – passiver Statusabruf fehlgeschlagen"}
-}
-$("checkContainer").onclick=async()=>{
-  if(!token){status("Bitte zuerst mit deinem Dashboard-Zugangsschlüssel verbinden.");return}
-  if(!window.confirm("Container jetzt ausdrücklich manuell testen? Das kann einen schlafenden Container aufwecken und Laufzeit verursachen. Ein erfolgreicher HTTP-Test bestätigt NICHT sämtliche internen Programme."))return;
-  const button=$("checkContainer");button.disabled=true;
-  try{
-    const result=await api("/api/container-readiness",{method:"POST"});
-    if(result.state==="HTTP_REACHABLE_ONLY"){
-      $("containerState").textContent="HTTP erreichbar – interne Programme nicht geprüft";
-      await loadLastReadiness();
-    }else $("containerState").textContent="Nicht nachgewiesen: "+result.state+
-      " (Ruhemodus und technischer Fehler nicht unterscheidbar)";
-  }catch(e){$("containerState").textContent="Manueller Test nicht verfügbar: "+e.message}
-  finally{button.disabled=false}
-};
-$("measureSystem").onclick=async()=>{
-  const button=$("measureSystem");button.disabled=true;$("r2Occupied").textContent="R2-Inventur läuft – keine Containerabfrage …";
-  try{
-    const result=await api("/api/system-monitor?scope=manual");
-    const r=result.r2,c=result.container;
-    if(r.measurement==="COMPLETE_BUCKET_INVENTORY"){
-      const gb=(r.occupied_bytes/1e9).toLocaleString("de-DE",{maximumFractionDigits:3});
-      $("r2Occupied").textContent=gb+" GB belegt · "+r.object_count+" Objekte";
-      $("r2Measured").textContent="Letzte vollständige Messung: "+new Date(r.measured_at).toLocaleString("de-DE");
-    }else{
-      $("r2Occupied").textContent="Nicht verfügbar – R2-Inventur unvollständig";
-      $("r2Measured").textContent="Letzte erfolgreiche Messung: Nicht verfügbar";
-    }
-    if(r.allowance_reference_gb===null||r.snapshot_ratio===null){
-      $("r2Quota").textContent="Kostenloses Kontingent genutzt: Nicht verfügbar (keine verifizierte Monatsabrechnung)";
-      $("r2Meter").hidden=true;$("r2Warning").textContent="";
-    }else{
-      $("r2Quota").textContent="Momentaner Bucketbestand gegenüber konfigurierter "+r.allowance_reference_gb+
-        "-GB-Referenz: "+(r.snapshot_ratio*100).toFixed(1)+" %. Monatlicher GB-Monatsverbrauch nicht messbar.";
-      $("r2Meter").hidden=false;$("r2Meter").value=Math.min(100,r.snapshot_ratio*100);
-      $("r2Warning").textContent=r.snapshot_warning?
-        "Achtung: Bucketbestand liegt nahe/über der konfigurierten Referenz. Keine Aussage zu tatsächlichen Abrechnungskosten.":"";
-    }
-    await loadLastReadiness(); // reads only our last manual snapshot; never probes the container
-  }catch(e){$("r2Occupied").textContent="Nicht verfügbar – "+e.message}
-  finally{button.disabled=false}
-};
-$("connect").onclick=()=>{token=$("token").value;$("token").value="";selectedTask=null;selectedReport=null;selectedReportError="";clearAttachmentCache();studioBaseline=null;paintConversation();refresh();void loadLastReadiness();void restoreClaudeSessions();if($("workspace").dataset.tab==="studio")refreshStudio()};$("refresh").onclick=refresh;$("reload").onclick=refresh;
+$("connect").onclick=()=>{token=$("token").value;$("token").value="";selectedTask=null;selectedReport=null;selectedReportError="";clearAttachmentCache();studioBaseline=null;paintConversation();refresh();void restoreClaudeSessions();if($("workspace").dataset.tab==="studio")refreshStudio()};$("refresh").onclick=refresh;$("reload").onclick=refresh;
 $("send").onclick=async()=>{const content=$("message").value.trim();if(content.length<3)return status("Bitte mindestens drei Zeichen für den Auftrag eingeben.");const m="[WUNSCH-MODUS: "+$("taskMode").value+"; AUSGABE: "+$("outputMode").value+"]\n"+content;try{const data=await api("/api/inbox",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({message:m})});status("Entwurf gespeichert: "+data.id);$("message").value="";selectedTask={id:data.id,created_at:data.created_at,channel:"web",kind:"message",message:m,status:data.status};selectedReport=null;selectedReportError="";paintConversation();await refresh()}catch(e){status(e.message)}};
 async function upload(file){if(!file)return status("Bitte Datei auswählen");if(file.size>8*1024*1024)return status("Maximal 8 MB");try{let d=await api("/api/upload",{method:"POST",headers:{"content-type":/\.m4a$/i.test(file.name)&&(!file.type||file.type==="application/octet-stream")?"audio/mp4":file.type||"application/octet-stream","x-upload-name":file.name},body:file});status("Privat gespeichert: "+d.name+" · "+d.id);selectedTask={id:d.id,created_at:d.created_at,channel:"web",kind:"file",file:{name:d.name,size:file.size,mime:file.type},status:d.status};selectedReport=null;selectedReportError="";paintConversation();await refresh()}catch(e){status("Upload: "+e.message)}}
 $("upload").onclick=()=>upload($("file").files[0]);
