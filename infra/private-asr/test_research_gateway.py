@@ -56,6 +56,31 @@ class ResearchGatewayTests(unittest.TestCase):
         self.assertEqual(out["provider"],"Groq-BrowserSearch")
         self.assertEqual(out["results"][0]["url"],"https://example.com/current")
 
+    def test_groq_200_missing_sources_exposes_structure_only(self):
+        class GroqShapeResponse:
+            status_code=200
+            def json(self):
+                return {"choices":[{"message":{
+                    "role":"assistant",
+                    "content":"SECRET-CONTENT-MUST-NOT-LEAK",
+                    "reasoning":"PRIVATE-REASONING-MUST-NOT-LEAK",
+                    "citations":{"hidden":"https://private.invalid"},
+                    "annotations":[{"hidden":"value"}],
+                    "mystery_sources":[{"url":"not-inspected"}]
+                }}]}
+        with patch.object(rg.requests,"post",return_value=GroqShapeResponse()):
+            out=rg._groq_browser_search("current public fact","test-key")
+        warning=out["warning"]
+        self.assertTrue(warning.startswith("GROQ_200_NO_SOURCE_URLS:mk="))
+        self.assertLessEqual(len(warning),190)
+        self.assertIn("mystery_sources",warning)
+        self.assertIn("cit=dict:hidden",warning)
+        self.assertIn("ann=list1",warning)
+        self.assertNotIn("SECRET-CONTENT",warning)
+        self.assertNotIn("PRIVATE-REASONING",warning)
+        self.assertNotIn("private.invalid",warning)
+        self.assertNotIn("not-inspected",warning)
+
     def test_groq_400_exposes_bounded_provider_detail(self):
         class GroqErrorResponse:
             status_code=400
