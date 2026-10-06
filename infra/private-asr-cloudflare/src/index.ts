@@ -13,6 +13,10 @@ export class PrivateASRContainer extends Container {
   sleepAfter = "15m";
   enableInternet = true;
   async restartForDeployment(): Promise<void> {
+    const state = await this.getState();
+    if (state.status === "stopping" || state.status === "stopped" || state.status === "stopped_with_code") {
+      return;
+    }
     await this.stop();
   }
 }
