@@ -1,4 +1,5 @@
 import io,json,unittest
+from pathlib import Path
 from scripts.start_duenya_level12_exact import TASK_ID,start_exact
 
 class Missing(Exception):
@@ -48,4 +49,8 @@ class ExactStartTests(unittest.TestCase):
         x=task();x["auto_dispatch"]=True
         with self.assertRaisesRegex(RuntimeError,"NOT_AUTHORIZED"):
             start_exact(R2(x),"b","tok",post=lambda *a,**k:Resp(),sleeper=lambda _:None)
+    def test_workflow_invokes_start_as_module_regression(self):
+        text=Path(".github/workflows/start-duenya-level12-exact.yml").read_text(encoding="utf-8")
+        self.assertIn("python -m scripts.start_duenya_level12_exact",text)
+        self.assertNotIn("python scripts/start_duenya_level12_exact.py",text)
 if __name__=="__main__":unittest.main()
