@@ -750,7 +750,7 @@ async function chatMessage(req,env){
       method:"POST",
       headers:{"authorization":"Bearer "+env.PRIVATE_ASR_INTERNAL_TOKEN,
         "content-type":"application/json"},
-      body:JSON.stringify({message:body.message.trim()})
+      body:JSON.stringify({message:session.mode==="chat"?[...session.messages.slice(-20).map(m=>(m.role==="user"?"User: ":"Assistant: ")+m.text),"User: "+body.message.trim(),"Assistant:"].join("\\n\\n"):body.message.trim()})
     });
   }catch{
     return json({error:"OpenCode runtime unreachable; message not sent",

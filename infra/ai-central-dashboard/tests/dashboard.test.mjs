@@ -236,6 +236,19 @@ test("CHAT session uses the same private Claude transport while secret-shaped pr
 });
 
 
+test("CHAT replays bounded saved conversation context while CODE remains single-turn",async()=>{
+ const e=env(),origin={"content-type":"application/json","origin":"https://dashboard.example"},bodies=[];
+ e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";e.PRIVATE_ASR_SERVICE={fetch:async(_url,opts)=>{bodies.push(JSON.parse(opts.body));return new Response(JSON.stringify({text:bodies.length===1?"GEMERKT":"2210"}),{status:200,headers:{"content-type":"application/json"}})}};
+ let created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"chat"}),headers:origin}),e),id=(await created.json()).id;
+ await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Merke dir die Zahl 2210."}),headers:origin}),e);
+ await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Welche Zahl solltest du dir merken?"}),headers:origin}),e);
+ assert.equal(bodies[0].message,"User: Merke dir die Zahl 2210.\\n\\nAssistant:");
+ assert.match(bodies[1].message,/User: Merke dir die Zahl 2210\./);assert.match(bodies[1].message,/Assistant: GEMERKT/);assert.match(bodies[1].message,/User: Welche Zahl solltest du dir merken\?/);
+ created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"code"}),headers:origin}),e);id=(await created.json()).id;
+ await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"CODE_SINGLE_TURN"}),headers:origin}),e);
+ assert.equal(bodies.at(-1).message,"CODE_SINGLE_TURN");
+});
+
 test("secure HttpOnly dashboard session survives refresh without resending bearer key",async()=>{
  const e=env(),origin={"origin":"https://dashboard.example"};
  const login=await worker.fetch(request("/api/auth/session",{method:"POST",headers:origin}),e);
