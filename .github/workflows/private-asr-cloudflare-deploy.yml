@@ -80,7 +80,7 @@ jobs:
           docker run --rm --entrypoint python edirne22-media-tools:release -c 'import faster_whisper, scenedetect; import subprocess; from music_agent import load_library; subprocess.run(["ffmpeg", "-version"], check=True, stdout=subprocess.DEVNULL); tracks=load_library(); assert tracks, "documented music library missing from release image"; print("WHISPER_FFMPEG_SCENEDETECT_MUSIC_OK")'
       - name: Deploy isolated private ASR worker and container
         working-directory: infra/private-asr-cloudflare
-        run: npx wrangler deploy --config wrangler.jsonc
+        run: npx wrangler deploy --containers-rollout=immediate --config wrangler.jsonc
       - name: Install isolated ASR runtime secrets
         working-directory: infra/private-asr-cloudflare
         shell: bash
@@ -101,6 +101,22 @@ jobs:
             sleep 10
           done
           echo "PRIVATE_ASR_LIVE_HEALTH_FAILED"; exit 1
+      - name: Wait for target OpenCode container contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://edirne22-private-asr.butupeli.workers.dev/opencode/health"
+          for n in $(seq 1 30); do
+            code=$(curl -sS -o /tmp/opencode-health -w '%{http_code}' --max-time 30 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
+            if [ "$code" = 200 ] && python3 -c 'import json; d=json.load(open("/tmp/opencode-health")); assert d.get("ready") is True; assert d.get("response_contract") == "text-v2"' 2>/dev/null; then
+              echo "OPENCODE_TARGET_CONTRACT_LIVE_OK"
+              exit 0
+            fi
+            echo "OpenCode target contract attempt $n: HTTP $code (body withheld)"
+            sleep 10
+          done
+          echo "OPENCODE_TARGET_CONTRACT_LIVE_FAILED"
+          exit 1
       - name: Authenticated OpenCode Claude live smoke
         shell: bash
         run: |
