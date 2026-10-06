@@ -1,0 +1,78 @@
+name: Agent 11 private-video production recovery
+
+on:
+  pull_request:
+    paths:
+      - "scripts/agent11_private_video_recovery.py"
+      - "scripts/production_recovery_contract.py"
+      - "tests/test_agent11_private_video_recovery.py"
+      - ".github/workflows/agent11-private-video-recovery.yml"
+  workflow_dispatch:
+    inputs:
+      repair_id:
+        description: "Verified Agent 21 repair id"
+        required: true
+        type: string
+      job_id:
+        description: "Exact private video task id"
+        required: true
+        type: string
+      stage_id:
+        description: "Exact failed stage from PRIVATE-VIDEO-STATUS-V1"
+        required: true
+        type: string
+      checkpoint:
+        description: "Last confirmed checkpoint; current runtime uses exact stage id"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agent11-private-video-recovery-${{ inputs.job_id || github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Offline recovery regression and security controls
+        run: |
+          python -m pip install --disable-pip-version-check requests boto3
+          python -m unittest tests.test_production_recovery_contract tests.test_system_restart_recovery tests.test_production_machine_watchdog tests.test_agent11_private_video_recovery -v
+
+  recover:
+    if: github.event_name == 'workflow_dispatch'
+    needs: contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install existing R2 client dependencies
+        run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Validate exact Agent 21 handoff and execute Agent 11 recovery
+        run: |
+          python scripts/agent11_private_video_recovery.py \
+            --repair-id "${{ inputs.repair_id }}" \
+            --job-id "${{ inputs.job_id }}" \
+            --stage-id "${{ inputs.stage_id }}" \
+            --checkpoint "${{ inputs.checkpoint }}"
