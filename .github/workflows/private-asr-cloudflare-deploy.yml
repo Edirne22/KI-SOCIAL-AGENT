@@ -28,6 +28,7 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
       SEARXNG_URL: ${{ secrets.SEARXNG_URL }}
@@ -47,7 +48,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY GEMINI_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY GROQ_API_KEY GEMINI_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
             test -n "${!name}" || { echo "BLOCKED: missing $name"; exit 1; }
           done
       - name: Stage Docker build context for Wrangler
@@ -92,7 +93,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for name in PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY GEMINI_API_KEY NVIDIA_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
+          for name in PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY GROQ_API_KEY GEMINI_API_KEY NVIDIA_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
             printf '%s' "${!name}" | npx wrangler secret put "$name" --config wrangler.jsonc
           done
       - name: Authenticated health check
@@ -155,7 +156,13 @@ jobs:
           fi
           python3 - "$warning" <<'PY' | tee /tmp/agent21-runtime-diagnostic.json
           import json,sys,subprocess
-          payload={"run_id":"${{ github.run_id }}","commit":"${{ github.sha }}","machine":"private-asr-container","route":"/research/search","provider":"OpenRouter-Web","state":"failure","error_class":sys.argv[1],"container_health":"passed","opencode_health":"passed"}
+          provider="unknown"
+          if test -s /tmp/research-live; then
+            provider=$(python3 -c 'import json; d=json.load(open("/tmp/research-live")); print(str(d.get("provider") or "unknown")[:80])' 2>/dev/null || echo unknown)
+          fi
+          python3 - "$warning" "$provider" <<'PY' | tee /tmp/agent21-runtime-diagnostic.json
+          import json,sys,subprocess
+          payload={"run_id":"${{ github.run_id }}","commit":"${{ github.sha }}","machine":"private-asr-container","route":"/research/search","provider":sys.argv[2],"state":"failure","error_class":sys.argv[1],"container_health":"passed","opencode_health":"passed"}
           p=subprocess.run(["python3","scripts/agent21_runtime_diagnostics.py"],input=json.dumps(payload),text=True,capture_output=True,check=True)
           print(p.stdout.strip())
           PY
