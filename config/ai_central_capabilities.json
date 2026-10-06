@@ -145,6 +145,28 @@
         "nvidia": "nvidia/nemotron-ocr-v2"
       },
       "approval": false
+    },
+    "web_research": {
+      "providers": [
+        "google",
+        "openrouter",
+        "nvidia",
+        "groq",
+        "claude_openrouter"
+      ],
+      "model_by_provider": {
+        "google": "gemini-3.6-flash",
+        "openrouter": "openrouter/free",
+        "nvidia": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "groq": "openai/gpt-oss-120b",
+        "claude_openrouter": "anthropic/claude-sonnet-4.5"
+      },
+      "approval": false,
+      "requires": [
+        "internet_search",
+        "source_urls"
+      ],
+      "note": "Research-capable agents may use this lane only when both the model inference route and the shared web/search adapter are runtime-verified. A model's own prior knowledge is not Internet access."
     }
   },
   "document_skills": {
@@ -157,6 +179,35 @@
     "forced_provider_must_never_fallback": true,
     "unverified_paid_inference_must_not_auto_run": true,
     "generated_docs_require_validation": true,
-    "claude_only_may_use_exact_anthropic_model_on_openrouter_if_verified": true
+    "claude_only_may_use_exact_anthropic_model_on_openrouter_if_verified": true,
+    "research_agents_require_runtime_verified_web_adapter": true,
+    "agent_never_receives_provider_secret": true,
+    "web_sources_must_be_attributed": true,
+    "catalog_model_does_not_imply_web_access": true
+  },
+  "agent_capabilities": {
+    "05_research_synthesist": [
+      "web_research"
+    ],
+    "13_motogp_content_agency": [
+      "web_research"
+    ],
+    "16_turkish_riders_scout": [
+      "web_research"
+    ],
+    "18_tour_ride_story_agent": [
+      "web_research"
+    ],
+    "19_ki_integrationsingenieur": [
+      "web_research",
+      "coding"
+    ],
+    "20_maschinen_scout": [
+      "web_research"
+    ],
+    "21_instandhaltungsagent": [
+      "web_research",
+      "coding"
+    ]
   }
 }
