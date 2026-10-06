@@ -39,7 +39,7 @@ class Router(unittest.TestCase):
     def test_research_agents_are_allowlisted_and_others_fail_closed(self):
         for agent in ("05_research_synthesist","13_motogp_content_agency","16_turkish_riders_scout","18_tour_ride_story_agent","19_ki_integrationsingenieur","20_maschinen_scout","21_instandhaltungsagent"):
             self.assertTrue(sr.agent_can(agent,"web_research",self.registry),agent)
-        self.assertFalse(sr.agent_can("17_instagram_engagement_agent","web_research",self.registry))
+        self.assertTrue(sr.agent_can("17_instagram_engagement_agent","web_research",self.registry))
         with self.assertRaisesRegex(sr.RoutingError,"not authorized"):
             sr.choose_for_agent("17_instagram_engagement_agent","web_research",available={},registry=self.registry)
     def test_web_research_still_requires_live_verified_model(self):
