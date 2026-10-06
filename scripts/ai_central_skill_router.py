@@ -64,3 +64,17 @@ def document_skill(output_format, requested_provider=None):
         # Separate Claude review/edit must pass choose('document_edit',forced_provider='claude',...).
         return {"skill":skill,"ai_provider":"claude","requires_verified_anthropic_key":True}
     return {"skill":skill,"ai_provider":requested_provider,"requires_verified_anthropic_key":False}
+
+
+def agent_can(agent_id, capability, registry=None):
+    """Fail closed: an agent may request only centrally allowlisted capabilities."""
+    registry=registry or load_registry()
+    allowed=(registry.get("agent_capabilities") or {}).get(str(agent_id),[])
+    return capability in allowed
+
+def choose_for_agent(agent_id, task_type, **kwargs):
+    """Authorize the agent first, then apply the existing live-model gate."""
+    registry=kwargs.pop("registry",None) or load_registry()
+    if not agent_can(agent_id,task_type,registry):
+        raise RoutingError("agent is not authorized for requested capability")
+    return choose(task_type,registry=registry,**kwargs)
