@@ -260,3 +260,28 @@ test("secure HttpOnly dashboard session survives refresh without resending beare
  const bad=await worker.fetch(new Request("https://dashboard.example/api/inbox",{headers:{cookie:"edirne22_session=invalid",origin:"https://dashboard.example"}}),e);
  assert.equal(bad.status,401);
 });
+
+
+test("CHAT and universal CODE expose truthful fail-closed route metadata",async()=>{
+  const e=env();
+  e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
+  e.PRIVATE_ASR_SERVICE={fetch:async()=>new Response(JSON.stringify({text:"ROUTE_OK"}),{status:200,headers:{"content-type":"application/json"}})};
+  const origin={"content-type":"application/json","origin":"https://dashboard.example"};
+  const start=async mode=>await (await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode}),headers:origin}),e)).json();
+  const send=async(session_id,message)=>worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id,message}),headers:origin}),e);
+  const chat=await start("chat"),code=await start("code");
+  const cr=await send(chat.id,"normal conversation"),dr=await send(code.id,"inspect repository safely");
+  assert.equal(cr.status,200);assert.equal(dr.status,200);
+  const c=await cr.json(),d=await dr.json();
+  assert.equal(c.route.mode,"CHAT");assert.equal(c.route.gate,"CONVERSATION");
+  assert.equal(c.route.tools.agent21,false);assert.equal(c.route.tools.github,false);
+  assert.equal(c.route.tools.web_research,"NOT_YET_WIRED");
+  assert.equal(d.route.mode,"CODE");assert.equal(d.route.workspace,"UNIVERSAL");
+  assert.equal(d.route.gate,"DIRECT_DEVELOPMENT");
+  assert.equal(d.route.specialist_gate,"AGENT21_FOR_EDIRNE22_INTERNAL");
+  assert.equal(d.route.tools.agent21,"CONTEXTUAL");
+  assert.equal(d.route.tools.github,"NOT_YET_WIRED");
+  assert.equal(d.route.tools.web_research,"NOT_YET_WIRED");
+  assert.equal(d.route.tools.r2_files,"UPLOAD_ONLY");
+  assert.equal(d.route.execution,"TEXT_ONLY_UNTIL_TOOL_GATE_WIRED");
+});
