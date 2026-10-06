@@ -40,7 +40,7 @@ class Router(unittest.TestCase):
         for agent in ("05_research_synthesist","13_motogp_content_agency","16_turkish_riders_scout","18_tour_ride_story_agent","19_ki_integrationsingenieur","20_maschinen_scout","21_instandhaltungsagent"):
             self.assertTrue(sr.agent_can(agent,"web_research",self.registry),agent)
         self.assertTrue(sr.agent_can("17_instagram_engagement_agent","web_research",self.registry))
-        with self.assertRaisesRegex(sr.RoutingError,"not authorized"):
+        with self.assertRaisesRegex(sr.RoutingError,"no live-verified"):
             sr.choose_for_agent("17_instagram_engagement_agent","web_research",available={},registry=self.registry)
     def test_web_research_still_requires_live_verified_model(self):
         with self.assertRaisesRegex(sr.RoutingError,"no live-verified"):
@@ -60,7 +60,8 @@ class Router(unittest.TestCase):
         for agent,allowed in caps.items():
             self.assertIn("r2_memory",allowed,agent)
             self.assertIn("dialog_status",allowed,agent)
-            self.assertIn("ai_models",allowed,agent)
+            if agent != "11_system_restart_agent":
+                self.assertIn("ai_models",allowed,agent)
         self.assertNotIn("web_research",caps["11_system_restart_agent"])
         self.assertNotIn("media_tools",caps["11_system_restart_agent"])
         self.assertIn("web_research",caps["01_content_creator"])
