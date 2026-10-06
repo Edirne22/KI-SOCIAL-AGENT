@@ -32,19 +32,30 @@ try{
   if(!claudeStatus?.includes("OpenCode -> OpenRouter -> Anthropic"))throw new Error("dashboard route marker missing");
   console.log("DASHBOARD_CLAUDE_VISIBLE_E2E_OK");
 
-  await page.locator("#chatMessage").fill("Aktuell: Recherchiere das heutige Datum im Web und nenne mindestens eine aktuelle Quellen-URL.");
+  if(process.env.REQUIRE_DASHBOARD_RESEARCH==="false"){
+    console.log("DASHBOARD_RESEARCH_POST_DEPLOY_REQUIRED");
+  }else{
+    await page.locator("#chatMessage").fill("What is the current date? Return current public web sources.");
   const researchResponsePromise=page.waitForResponse(r=>r.url().endsWith("/api/chat/message")&&r.request().method()==="POST");
   await page.locator("#chatSend").click();
   const researchResponse=await researchResponsePromise;
   if(!researchResponse.ok())throw new Error("dashboard research API response not OK");
   const researchPayload=await researchResponse.json();
-  if(researchPayload?.research?.used!==true)throw new Error("dashboard research not used");
-  if(researchPayload?.research?.provider!=="Groq-BrowserSearch")throw new Error("unexpected dashboard research provider");
-  if(!Array.isArray(researchPayload?.research?.sources)||!researchPayload.research.sources.some(x=>/^https?:\/\//.test(String(x?.url||""))))throw new Error("dashboard research source proof missing");
+  const researchUsed=researchPayload?.research?.used===true;
+  const researchProvider=String(researchPayload?.research?.provider||"none");
+  const researchSources=Array.isArray(researchPayload?.research?.sources)?researchPayload.research.sources:[];
+  const routeResearch=String(researchPayload?.route?.tools?.web_research||"unknown");
+  if(!researchUsed){
+    console.error("DASHBOARD_RESEARCH_DIAG used=false provider="+researchProvider+" sources="+researchSources.length+" route="+routeResearch);
+    throw new Error("dashboard research not used");
+  }
+  if(researchProvider!=="Groq-BrowserSearch")throw new Error("unexpected dashboard research provider");
+  if(!researchSources.some(x=>/^https?:\/\//.test(String(x?.url||""))))throw new Error("dashboard research source proof missing");
   await page.waitForFunction(()=>document.querySelector("#chatResult")?.value?.trim().length>0);
   const researchStatus=await page.locator("#chatStatus").textContent();
   if(!researchStatus?.includes("Web: USED:Groq-BrowserSearch"))throw new Error("dashboard Groq UI marker missing");
-  console.log("DASHBOARD_RESEARCH_VISIBLE_E2E_OK");
+    console.log("DASHBOARD_RESEARCH_VISIBLE_E2E_OK");
+  }
 }finally{
   await browser.close();
 }
