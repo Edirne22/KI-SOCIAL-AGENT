@@ -65,6 +65,7 @@ dockerfile = (repo_root / "infra/private-asr/Dockerfile").read_text(encoding="ut
 code_config = (repo_root / "infra/ai-central-tools/claude-code-readonly/opencode.jsonc").read_text(encoding="utf-8")
 
 assert '"/opencode/code"' in service_text, "CODE endpoint missing from container service"
+assert worker.count('url.pathname === "/opencode/code"') >= 6, "CODE route must be wired through allow/method/body/readiness/health/proxy paths"
 assert "def _prepare_code_workspace" in service_text, "CODE workspace preparation missing"
 assert '"tools": true' in code_config, "CODE tools must be enabled"
 assert '"action":"edit","resource":"*","effect":"deny"' in code_config.replace(" ", ""), "CODE edits must stay denied"
