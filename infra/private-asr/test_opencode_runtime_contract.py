@@ -66,7 +66,6 @@ code_config = (repo_root / "infra/ai-central-tools/claude-code-readonly/opencode
 
 assert '"/opencode/code"' in service_text, "CODE endpoint missing from container service"
 assert "def _prepare_code_workspace" in service_text, "CODE workspace preparation missing"
-assert _code_marker if False else True
 assert '"tools": true' in code_config, "CODE tools must be enabled"
 assert '"action":"edit","resource":"*","effect":"deny"' in code_config.replace(" ", ""), "CODE edits must stay denied"
 assert '"action":"shell","resource":"git push*","effect":"deny"' in code_config.replace(" ", ""), "git push must stay denied"
