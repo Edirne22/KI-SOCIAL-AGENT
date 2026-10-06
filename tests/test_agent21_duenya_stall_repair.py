@@ -1,0 +1,82 @@
+import json
+import unittest
+from datetime import datetime,timezone
+
+from scripts.agent21_duenya_stall_repair import (
+    INCIDENT_KEY, REPAIR_ID, STAGE, STATUS_KEY, TASK_ID, reconcile,
+)
+
+
+class Body:
+    def __init__(self,value): self.value=value
+    def read(self,n=-1): return json.dumps(self.value).encode()
+
+
+class R2:
+    def __init__(self,state,incident):
+        self.state=state; self.incident=incident; self.writes=[]
+    def get_object(self,Bucket,Key):
+        if Key==STATUS_KEY: return {"Body":Body(self.state)}
+        if Key==INCIDENT_KEY: return {"Body":Body(self.incident)}
+        raise AssertionError(Key)
+    def put_object(self,**kw):
+        self.writes.append(kw)
+
+
+def incident():
+    return {
+      "schema":"MACHINE-WATCHDOG-INCIDENT-V1",
+      "incident_id":f"WD-{TASK_ID}-{STAGE}",
+      "job_id":TASK_ID,"stage_id":STAGE,"machine":"private-media-container",
+      "checkpoint":STAGE,"last_progress":0,
+      "last_heartbeat_at":"2026-10-06T21:00:00+00:00",
+      "reason":"MACHINE_REPORTED_STALLED","route_to":"agent21",
+      "requested_action":"DIAGNOSE_ONLY",
+    }
+
+
+def state(status="RUNNING",stamp="2026-10-06T21:00:00+00:00",stage=STAGE):
+    return {"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":TASK_ID,
+            "status":status,"stage":stage,"updated_at":stamp}
+
+
+class Tests(unittest.TestCase):
+    def test_stale_running_is_failed_for_guarded_agent11_handoff(self):
+        r=R2(state(),incident())
+        out=reconcile(r,"b",now=datetime(2026,10,6,21,2,0,tzinfo=timezone.utc))
+        self.assertEqual(out["action"],"HANDOFF_AGENT11")
+        self.assertEqual(out["repair_id"],REPAIR_ID)
+        self.assertEqual(len(r.writes),1)
+        body=json.loads(r.writes[0]["Body"])
+        self.assertEqual(body["status"],"FAILED")
+        self.assertEqual(body["error_code"],"AGENT21_CONFIRMED_STALLED")
+
+    def test_fresh_running_never_gets_restarted(self):
+        r=R2(state(stamp="2026-10-06T21:01:30+00:00"),incident())
+        out=reconcile(r,"b",now=datetime(2026,10,6,21,2,0,tzinfo=timezone.utc))
+        self.assertEqual(out["action"],"NO_RECOVERY")
+        self.assertEqual(r.writes,[])
+
+    def test_completed_never_gets_restarted(self):
+        r=R2(state(status="COMPLETED",stage="private_preview"),incident())
+        out=reconcile(r,"b",now=datetime(2026,10,6,21,2,0,tzinfo=timezone.utc))
+        self.assertEqual(out["action"],"NO_RECOVERY")
+        self.assertEqual(r.writes,[])
+
+    def test_wrong_incident_fails_closed(self):
+        bad=incident(); bad["job_id"]="other-task"
+        with self.assertRaisesRegex(RuntimeError,"INCIDENT_INVALID"):
+            reconcile(R2(state(),bad),"b",now=datetime(2026,10,6,21,2,0,tzinfo=timezone.utc))
+
+
+class SourceRegression(unittest.TestCase):
+    def test_service_renews_worker_activity_during_private_video_heartbeat(self):
+        text=open("infra/private-asr/service.py",encoding="utf-8").read()
+        self.assertIn('_private_runtime_origin = "https://edirne22-private-asr.butupeli.workers.dev"',text)
+        self.assertIn("def _renew_private_video_activity(",text)
+        self.assertIn("if ticks % 3 == 0:",text)
+        self.assertIn("_renew_private_video_activity()",text)
+        self.assertNotIn('PRIVATE_ASR_SELF_ORIGIN',text)
+
+
+if __name__=="__main__": unittest.main()

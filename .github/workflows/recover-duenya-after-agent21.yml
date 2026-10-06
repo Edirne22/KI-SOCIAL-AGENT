@@ -1,0 +1,50 @@
+name: Recover exact Dünya production after Agent 21 repair
+
+on:
+  workflow_run:
+    workflows: ["Private ASR guarded Cloudflare deployment"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: recover-duenya-level12-after-agent21
+  cancel-in-progress: false
+
+jobs:
+  recover:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install existing R2 client dependencies
+        run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Agent 21 validate incident and reconcile orphaned RUNNING state
+        id: agent21
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m scripts.agent21_duenya_stall_repair | tee /tmp/agent21-duenya.json
+          action=$(python -c 'import json; print(json.load(open("/tmp/agent21-duenya.json"))["action"])')
+          repair=$(python -c 'import json; print(json.load(open("/tmp/agent21-duenya.json"))["repair_id"])')
+          echo "action=$action" >> "$GITHUB_OUTPUT"
+          echo "repair_id=$repair" >> "$GITHUB_OUTPUT"
+          echo "AGENT21_DUENYA_DECISION=$action"
+      - name: Agent 11 guarded restart and resume
+        if: steps.agent21.outputs.action == 'HANDOFF_AGENT11'
+        run: |
+          python scripts/agent11_private_video_recovery.py             --repair-id "${{ steps.agent21.outputs.repair_id }}"             --job-id "f6f50c9f4c2690e4eb1fe978"             --stage-id "video_editor_ffmpeg"             --checkpoint "video_editor_ffmpeg"
