@@ -34,10 +34,8 @@ try{
 
   if(process.env.REQUIRE_DASHBOARD_RESEARCH==="false"){
     console.log("DASHBOARD_RESEARCH_POST_DEPLOY_REQUIRED");
-    return;
-  }
-
-  await page.locator("#chatMessage").fill("What is the current date? Return current public web sources.");
+  }else{
+    await page.locator("#chatMessage").fill("What is the current date? Return current public web sources.");
   const researchResponsePromise=page.waitForResponse(r=>r.url().endsWith("/api/chat/message")&&r.request().method()==="POST");
   await page.locator("#chatSend").click();
   const researchResponse=await researchResponsePromise;
@@ -56,7 +54,8 @@ try{
   await page.waitForFunction(()=>document.querySelector("#chatResult")?.value?.trim().length>0);
   const researchStatus=await page.locator("#chatStatus").textContent();
   if(!researchStatus?.includes("Web: USED:Groq-BrowserSearch"))throw new Error("dashboard Groq UI marker missing");
-  console.log("DASHBOARD_RESEARCH_VISIBLE_E2E_OK");
+    console.log("DASHBOARD_RESEARCH_VISIBLE_E2E_OK");
+  }
 }finally{
   await browser.close();
 }
