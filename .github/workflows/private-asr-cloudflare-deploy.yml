@@ -128,7 +128,7 @@ jobs:
         run: |
           set -euo pipefail
           url="https://edirne22-private-asr.butupeli.workers.dev/research/search"
-          payload='{"query":"What is today's date? Return current public web sources."}'
+          payload='{"query":"What is the current date? Return current public web sources."}'
           code=$(curl -sS -o /tmp/research-live -w '%{http_code}' --max-time 90 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" -H 'Content-Type: application/json' --data "$payload" "$url" || true)
           if [ "$code" != 200 ]; then
             echo "RESEARCH_LIVE_FAILED: HTTP $code (body withheld)"
