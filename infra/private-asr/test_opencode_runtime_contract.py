@@ -15,6 +15,7 @@ expected = {
     "_opencode_model": "openrouter/anthropic/claude-sonnet-4.5",
     "_opencode_timeout": 90,
     "_opencode_max_output": 65536,
+    "_code_executor_contract": "repo-readonly-v1",
     "_research_runtime_revision": "block9-groq-429-fallback-v1",
 }
 seen = {}
@@ -58,5 +59,20 @@ assert restart_path in worker, "worker restart route missing"
 assert "await instance.destroy()" in worker, "deploy restart must use documented direct container lifecycle destroy"
 assert "restartForDeployment()" not in worker, "legacy restart RPC wrapper must not remain"
 assert 'container_restart_failed' in worker, "restart failure must return bounded diagnostic"
+
+service_text = path.read_text(encoding="utf-8")
+dockerfile = (repo_root / "infra/private-asr/Dockerfile").read_text(encoding="utf-8")
+code_config = (repo_root / "infra/ai-central-tools/claude-code-readonly/opencode.jsonc").read_text(encoding="utf-8")
+
+assert '"/opencode/code"' in service_text, "CODE endpoint missing from container service"
+assert worker.count('url.pathname === "/opencode/code"') >= 6, "CODE route must be wired through allow/method/body/readiness/health/proxy paths"
+assert "def _prepare_code_workspace" in service_text, "CODE workspace preparation missing"
+assert '"tools": true' in code_config, "CODE tools must be enabled"
+assert '"action":"edit","resource":"*","effect":"deny"' in code_config.replace(" ", ""), "CODE edits must stay denied"
+assert '"action":"shell","resource":"git push*","effect":"deny"' in code_config.replace(" ", ""), "git push must stay denied"
+assert " git nodejs npm" in dockerfile, "git must be installed in CODE runtime image"
+assert "claude-code-readonly/opencode.jsonc" in dockerfile, "CODE policy must be copied into image"
+assert "OPENCODE_CODE_GIT_TOOL_LIVE_OK" in workflow, "real CODE git-tool live smoke missing"
+assert workflow.index("Authenticated OpenCode CODE git-tool live smoke") < workflow.index("Authenticated OpenCode Claude live smoke")
 
 print("OPENCODE_RUNTIME_CONSTANTS_OK")

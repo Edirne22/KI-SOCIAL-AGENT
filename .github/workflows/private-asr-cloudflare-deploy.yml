@@ -67,8 +67,9 @@ jobs:
           cp infra/private-asr/research_gateway.py "$target/research_gateway.py"
           cp infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py "$target/"
           sed -i 's@COPY search_provider.py /app/search_provider.py@COPY search_provider.py /app/search_provider.py@; s@COPY infra/private-asr/research_gateway.py /app/research_gateway.py@COPY research_gateway.py /app/research_gateway.py@; s@COPY infra/private-asr/run_private_asr.py infra/private-asr/service.py infra/private-asr/verify_opencode_image.py /app/@COPY run_private_asr.py service.py verify_opencode_image.py /app/@' "$target/Dockerfile"
-          mkdir -p "$target/infra/ai-central-tools/claude-only"
+          mkdir -p "$target/infra/ai-central-tools/claude-only" "$target/infra/ai-central-tools/claude-code-readonly"
           cp infra/ai-central-tools/claude-only/opencode.jsonc "$target/infra/ai-central-tools/claude-only/opencode.jsonc"
+          cp infra/ai-central-tools/claude-code-readonly/opencode.jsonc "$target/infra/ai-central-tools/claude-code-readonly/opencode.jsonc"
           test -s "$target/service.py"
           test -s "$target/content_factory_private_asr.py"
           python3 infra/private-asr/test_opencode_runtime_contract.py
@@ -138,7 +139,7 @@ jobs:
           url="https://edirne22-private-asr.butupeli.workers.dev/opencode/health"
           for n in $(seq 1 30); do
             code=$(curl -sS -o /tmp/opencode-health -w '%{http_code}' --max-time 30 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
-            if [ "$code" = 200 ] && python3 -c 'import json; d=json.load(open("/tmp/opencode-health")); assert d.get("ready") is True; assert d.get("response_contract") == "text-v2"' 2>/dev/null; then
+            if [ "$code" = 200 ] && python3 -c 'import json; d=json.load(open("/tmp/opencode-health")); assert d.get("ready") is True; assert d.get("response_contract") == "text-v2"; assert d.get("code_ready") is True; assert d.get("code_executor") == "repo-readonly-v1"' 2>/dev/null; then
               echo "OPENCODE_TARGET_CONTRACT_LIVE_OK"
               exit 0
             fi
@@ -186,6 +187,29 @@ jobs:
           print(p.stdout.strip())
           PY
           python3 -c 'import json; d=json.load(open("/tmp/agent21-runtime-diagnostic.json")); assert d["schema"]=="AGENT21-RUNTIME-DIAG-V1" and d["mode"]=="READ_ONLY" and d["secret_values_logged"] is False; print("AGENT21_RUNTIME_DIAGNOSTIC_READY error_class="+d["error_class"])'
+
+      - name: Authenticated OpenCode CODE git-tool live smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://edirne22-private-asr.butupeli.workers.dev/opencode/code"
+          payload='{"message":"Use the native shell tool to run exactly git rev-parse HEAD. After the tool result, reply exactly CODE_EXEC_OK followed by one space and that 40-character SHA."}'
+          code=$(curl -sS -o /tmp/opencode-code-live -w '%{http_code}' --max-time 180 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" -H 'Content-Type: application/json' --data "$payload" "$url" || true)
+          if [ "$code" != 200 ]; then
+            echo "OPENCODE_CODE_LIVE_FAILED: HTTP $code (body withheld)"
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json,re
+          d=json.load(open("/tmp/opencode-code-live"))
+          text=str(d.get("text") or "").strip()
+          tools=d.get("tools_used")
+          assert d.get("workspace") == "repo-readonly-v1"
+          assert isinstance(tools,list) and any(x in ("bash","shell") for x in tools), tools
+          assert re.fullmatch(r"CODE_EXEC_OK [0-9a-f]{40}",text), text[:120]
+          assert "<function_calls>" not in text and "<invoke name=" not in text
+          print("OPENCODE_CODE_GIT_TOOL_LIVE_OK")
+          PY
       - name: Authenticated OpenCode Claude live smoke
         shell: bash
         run: |
