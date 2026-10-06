@@ -28,6 +28,7 @@ _task = re.compile(r"[A-Za-z0-9_-]{10,64}\Z")
 _opencode_model = "openrouter/anthropic/claude-sonnet-4.5"
 _opencode_timeout = 90
 _opencode_max_output = 65536
+_research_runtime_revision = "block9-groq-429-fallback-v1"
 
 
 def _authorized(headers):
@@ -196,7 +197,8 @@ class Handler(BaseHTTPRequestHandler):
         root = os.getenv("EDIRNE22_LOCAL_WHISPER_MODEL", "")
         ready = bool(root and os.path.isfile(os.path.join(root, "model.bin"))
                      and os.path.isfile(os.path.join(root, "config.json")))
-        self.respond(200 if ready else 503, {"ready": ready})
+        self.respond(200 if ready else 503, {"ready": ready,
+                                                "research_runtime_revision": _research_runtime_revision})
 
     def do_POST(self):
         if self.path not in ("/jobs","/private-video/jobs","/opencode/chat","/research/search"):
