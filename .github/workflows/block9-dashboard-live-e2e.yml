@@ -1,0 +1,32 @@
+name: Block 9 dashboard live browser E2E gate
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/block9-dashboard-live-e2e.yml'
+      - 'infra/ai-central-dashboard/tests/live-dashboard-e2e.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live-dashboard-e2e:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      AI_DASHBOARD_TOKEN: ${{ secrets.AI_DASHBOARD_TOKEN }}
+      DASHBOARD_URL: https://edirne22-ai-central-dashboard.butupeli.workers.dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate protected browser-test credential
+        run: test "${#AI_DASHBOARD_TOKEN}" -ge 24 || { echo "AI_DASHBOARD_TOKEN unavailable"; exit 1; }
+      - name: Install browser harness
+        working-directory: infra/ai-central-dashboard
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Real production dashboard browser E2E
+        working-directory: infra/ai-central-dashboard
+        run: node tests/live-dashboard-e2e.mjs
