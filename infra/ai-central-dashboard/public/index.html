@@ -594,7 +594,7 @@ $("mic").onclick=async()=>{
   }catch(e){failed=true;release();status(e.message)}
 };
 $("stop").onclick=()=>{if(recorder?.state==="recording")recorder.stop()};
-setInterval(()=>{if(token)refresh()},10000);
+setInterval(()=>{if(token||sessionAuthenticated)refresh()},10000);
 
 // Explicit private ASR consent; never start automatically on page load.
 const asrCall=async method=>{
@@ -620,5 +620,5 @@ const asrCall=async method=>{
  }catch(e){$("asrStatus").textContent="Privater ASR-Aufruf fehlgeschlagen: "+e.message}
 };
 $("asrConsent").onclick=()=>asrCall("POST");$("asrCheck").onclick=()=>asrCall("GET");$("asrRevoke").onclick=()=>asrCall("DELETE");
-void (async()=>{try{sessionAuthenticated=true;await refresh();await restoreClaudeSessions()}catch{sessionAuthenticated=false}})();
+void (async()=>{try{const r=await fetch("/api/auth/status",{credentials:"same-origin",cache:"no-store"});if(!r.ok)throw Error("no session");sessionAuthenticated=true;await refresh();await restoreClaudeSessions()}catch{sessionAuthenticated=false}})();
 </script></body></html>
