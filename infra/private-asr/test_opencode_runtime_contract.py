@@ -36,4 +36,24 @@ for name, wanted in expected.items():
     assert value == wanted, f"{name} changed: {value!r}"
     assert line < first_function_line, f"{name} must exist before runtime functions"
 
+
+repo_root = Path(__file__).resolve().parents[2]
+workflow = (repo_root / ".github/workflows/private-asr-cloudflare-deploy.yml").read_text(encoding="utf-8")
+worker = (repo_root / "infra/private-asr-cloudflare/src/index.ts").read_text(encoding="utf-8")
+
+restart_name = "Restart existing container once after deployment"
+restart_path = "/admin/container-restart"
+revision_name = "Authenticated target-revision health check"
+research_name = "Authenticated live research smoke with source proof"
+claude_name = "Authenticated OpenCode Claude live smoke"
+
+assert restart_name in workflow, "deployment restart step missing"
+assert workflow.count('url="https://edirne22-private-asr.butupeli.workers.dev/admin/container-restart"') == 1, "restart POST must be single-shot"
+assert '-X POST -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN"' in workflow, "restart must be authenticated POST"
+assert 'if [ "$code" != 202 ]' in workflow, "restart must require HTTP 202"
+assert workflow.index(restart_name) < workflow.index(revision_name), "restart must precede revision gate"
+assert workflow.index(revision_name) < workflow.index(research_name), "revision gate must precede research smoke"
+assert workflow.index(revision_name) < workflow.index(claude_name), "revision gate must precede Claude smoke"
+assert restart_path in worker and "restartForDeployment()" in worker, "worker restart route/handler missing"
+
 print("OPENCODE_RUNTIME_CONSTANTS_OK")
