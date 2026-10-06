@@ -36,6 +36,41 @@ class Router(unittest.TestCase):
         x=sr.choose("reasoning",available={"openrouter":{"openrouter/free":"INFERENCE_OK"}},registry=self.registry)
         self.assertEqual(x["provider"],"openrouter")
         self.assertFalse(x["no_fallback"])
+    def test_research_agents_are_allowlisted_and_others_fail_closed(self):
+        for agent in ("05_research_synthesist","13_motogp_content_agency","16_turkish_riders_scout","18_tour_ride_story_agent","19_ki_integrationsingenieur","20_maschinen_scout","21_instandhaltungsagent"):
+            self.assertTrue(sr.agent_can(agent,"web_research",self.registry),agent)
+        self.assertTrue(sr.agent_can("17_instagram_engagement_agent","web_research",self.registry))
+        with self.assertRaisesRegex(sr.RoutingError,"no live-verified"):
+            sr.choose_for_agent("17_instagram_engagement_agent","web_research",available={},registry=self.registry)
+    def test_web_research_still_requires_live_verified_model(self):
+        with self.assertRaisesRegex(sr.RoutingError,"no live-verified"):
+            sr.choose_for_agent("05_research_synthesist","web_research",available={},registry=self.registry)
+        x=sr.choose_for_agent("05_research_synthesist","web_research",available={
+            "nvidia":{"nvidia/nemotron-3.5-lightning-30b-a3b":"INFERENCE_OK"}},registry=self.registry)
+        self.assertEqual(x["provider"],"nvidia")
+        self.assertEqual(x["task"],"web_research")
+    def test_named_agents_may_dialog_but_status_still_needs_evidence(self):
+        for agent in ("09_quality_agent","17_instagram_engagement_agent","21_instandhaltungsagent"):
+            self.assertTrue(sr.agent_can(agent,"dialog_status",self.registry),agent)
+        self.assertTrue(self.registry["policies"]["agent_status_claims_require_evidence"])
+        self.assertIn("evidence_store",self.registry["tasks"]["dialog_status"]["requires"])
+    def test_every_agent_has_operational_memory_and_dialogue(self):
+        caps=self.registry["agent_capabilities"]
+        self.assertGreaterEqual(len(caps),20)
+        for agent,allowed in caps.items():
+            self.assertIn("r2_memory",allowed,agent)
+            self.assertIn("dialog_status",allowed,agent)
+            if agent != "11_system_restart_agent":
+                self.assertIn("ai_models",allowed,agent)
+        self.assertNotIn("web_research",caps["11_system_restart_agent"])
+        self.assertNotIn("media_tools",caps["11_system_restart_agent"])
+        self.assertIn("web_research",caps["01_content_creator"])
+        self.assertIn("media_tools",caps["07_video_optimization"])
+        self.assertIn("github_development",caps["21_instandhaltungsagent"])
+    def test_existing_infrastructure_is_standing_authorized(self):
+        p=self.registry["policies"]
+        self.assertTrue(p["existing_infrastructure_is_standing_authorized"])
+        self.assertTrue(p["new_financial_commitment_requires_owner_approval"])
     def test_exporter_validation_and_formula_escape(self):
         data={"title":"Rezeptur Analyse","paragraphs":["Daten wurden geprüft"],
               "table":[["Rezept","Anteil"],["Mischung",50],["=HYPERLINK(\"http://bad\")","Ne"]]}

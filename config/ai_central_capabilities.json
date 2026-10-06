@@ -145,6 +145,50 @@
         "nvidia": "nvidia/nemotron-ocr-v2"
       },
       "approval": false
+    },
+    "web_research": {
+      "providers": [
+        "google",
+        "openrouter",
+        "nvidia",
+        "groq",
+        "claude_openrouter"
+      ],
+      "model_by_provider": {
+        "google": "gemini-3.6-flash",
+        "openrouter": "openrouter/free",
+        "nvidia": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "groq": "openai/gpt-oss-120b",
+        "claude_openrouter": "anthropic/claude-sonnet-4.5"
+      },
+      "approval": false,
+      "requires": [
+        "internet_search",
+        "source_urls"
+      ],
+      "note": "Research-capable agents may use this lane only when both the model inference route and the shared web/search adapter are runtime-verified. A model's own prior knowledge is not Internet access."
+    },
+    "dialog_status": {
+      "providers": [
+        "claude_openrouter",
+        "google",
+        "nvidia",
+        "groq",
+        "openrouter"
+      ],
+      "model_by_provider": {
+        "claude_openrouter": "anthropic/claude-sonnet-4.5",
+        "google": "gemini-3.6-flash",
+        "nvidia": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "groq": "openai/gpt-oss-120b",
+        "openrouter": "openrouter/free"
+      },
+      "approval": false,
+      "requires": [
+        "agent_identity",
+        "evidence_store"
+      ],
+      "note": "Direct CODE conversation with a named agent. Answers about work/status must be grounded in current job, run, log, R2 or GitHub evidence; no evidence means no activity may be claimed."
     }
   },
   "document_skills": {
@@ -157,6 +201,200 @@
     "forced_provider_must_never_fallback": true,
     "unverified_paid_inference_must_not_auto_run": true,
     "generated_docs_require_validation": true,
-    "claude_only_may_use_exact_anthropic_model_on_openrouter_if_verified": true
+    "claude_only_may_use_exact_anthropic_model_on_openrouter_if_verified": true,
+    "research_agents_require_runtime_verified_web_adapter": true,
+    "agent_never_receives_provider_secret": true,
+    "web_sources_must_be_attributed": true,
+    "catalog_model_does_not_imply_web_access": true,
+    "agent_dialog_must_resolve_unique_role": true,
+    "agent_status_claims_require_evidence": true,
+    "existing_infrastructure_is_standing_authorized": true,
+    "new_financial_commitment_requires_owner_approval": true
+  },
+  "agent_capabilities": {
+    "01_content_creator": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "02_instagram_curator": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "03_tiktok_strategist": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "04_social_media_strategist": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "05_research_synthesist": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "06_reddit_community_builder": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "07_video_optimization": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "media_tools",
+      "dialog_status"
+    ],
+    "08_paid_social_strategist": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "09_quality_agent": [
+      "web_research",
+      "github_read",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "10_follow_analysis_agent": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "11_system_restart_agent": [
+      "github_read",
+      "r2_memory",
+      "runtime_recovery",
+      "dialog_status"
+    ],
+    "12_music_agent": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "media_tools",
+      "dialog_status"
+    ],
+    "13_motogp_content_agency": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "media_tools",
+      "dialog_status"
+    ],
+    "14_memory_curator": [
+      "r2_memory",
+      "github_read",
+      "ai_models",
+      "dialog_status"
+    ],
+    "15_chief_quality_manager": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "15_finance_planner": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "16_turkish_riders_scout": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "17_instagram_engagement_agent": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "telegram",
+      "dialog_status"
+    ],
+    "18_tour_ride_story_agent": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "media_tools",
+      "dialog_status"
+    ],
+    "19_ki_integrationsingenieur": [
+      "web_research",
+      "github_read",
+      "github_development",
+      "r2_memory",
+      "ai_models",
+      "coding",
+      "dialog_status"
+    ],
+    "20_maschinen_scout": [
+      "web_research",
+      "github_read",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "21_instandhaltungsagent": [
+      "web_research",
+      "github_read",
+      "github_development",
+      "r2_memory",
+      "ai_models",
+      "coding",
+      "runtime_recovery",
+      "dialog_status"
+    ]
+  },
+  "infrastructure_capabilities": {
+    "web_research": {
+      "standing_authorization": true,
+      "scope": "public Internet/search/source retrieval through controlled shared adapter"
+    },
+    "r2_memory": {
+      "standing_authorization": true,
+      "scope": "private operational evidence, learning memory and authorized job assets"
+    },
+    "ai_models": {
+      "standing_authorization": true,
+      "scope": "existing configured and runtime-verified AI/provider routes; no secret disclosure"
+    },
+    "github_read": {
+      "standing_authorization": true,
+      "scope": "repository, issue, PR, Actions and documentation reading through controlled broker"
+    },
+    "github_development": {
+      "standing_authorization": true,
+      "scope": "branch/patch/test/PR operations only through role-specific controlled development path"
+    },
+    "telegram": {
+      "standing_authorization": true,
+      "scope": "existing Telegram infrastructure within role contract; external sends remain subject to message/publish authority"
+    },
+    "media_tools": {
+      "standing_authorization": true,
+      "scope": "existing approved media/download/render tools within rights, provenance and job constraints"
+    },
+    "runtime_recovery": {
+      "standing_authorization": true,
+      "scope": "only explicitly allowlisted recovery/warmup operations defined by the role contract"
+    },
+    "dialog_status": {
+      "standing_authorization": true,
+      "scope": "direct CODE dialogue grounded in job/run/log evidence"
+    }
   }
 }
