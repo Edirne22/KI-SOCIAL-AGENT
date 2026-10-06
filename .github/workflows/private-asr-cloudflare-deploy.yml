@@ -144,6 +144,22 @@ jobs:
           assert all(isinstance(x,dict) and str(x.get("url","")).startswith(("https://","http://")) for x in rows)
           print("RESEARCH_LIVE_SOURCE_PROOF_OK provider="+d["provider"])
           PY
+      - name: Agent 21 runtime diagnostic on research failure
+        if: failure()
+        shell: bash
+        run: |
+          set -euo pipefail
+          warning="unknown"
+          if test -s /tmp/research-live; then
+            warning=$(python3 -c 'import json; d=json.load(open("/tmp/research-live")); print(str(d.get("warning") or "unknown")[:120])' 2>/dev/null || echo NON_JSON_OR_MISSING_RESEARCH_RESULT)
+          fi
+          python3 - "$warning" <<'PY' | tee /tmp/agent21-runtime-diagnostic.json
+          import json,sys,subprocess
+          payload={"run_id":"${{ github.run_id }}","commit":"${{ github.sha }}","machine":"private-asr-container","route":"/research/search","provider":"OpenRouter-Web","state":"failure","error_class":sys.argv[1],"container_health":"passed","opencode_health":"passed"}
+          p=subprocess.run(["python3","scripts/agent21_runtime_diagnostics.py"],input=json.dumps(payload),text=True,capture_output=True,check=True)
+          print(p.stdout.strip())
+          PY
+          python3 -c 'import json; d=json.load(open("/tmp/agent21-runtime-diagnostic.json")); assert d["schema"]=="AGENT21-RUNTIME-DIAG-V1" and d["mode"]=="READ_ONLY" and d["secret_values_logged"] is False; print("AGENT21_RUNTIME_DIAGNOSTIC_READY error_class="+d["error_class"])'
       - name: Authenticated OpenCode Claude live smoke
         shell: bash
         run: |

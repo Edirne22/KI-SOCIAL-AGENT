@@ -48,6 +48,8 @@ jobs:
           PY
       - name: Test planner and Agent 21 write boundaries
         run: python -m unittest discover -s tests -p 'test_guarded_development_agent.py' -v
+      - name: Test Agent 21 read-only runtime diagnostics
+        run: python -m unittest tests.test_agent21_runtime_diagnostics -v
       - name: Verify protected files remain outside Agent 21 write allowlist
         run: |
           python - <<'PY'
