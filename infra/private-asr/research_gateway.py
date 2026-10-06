@@ -18,14 +18,6 @@ def research(query: str) -> dict:
     query=(query or "").strip()
     if not query or len(query)>MAX_QUERY:
         raise ValueError("invalid_query")
-    openrouter=os.getenv("OPENROUTER_API_KEY","").strip()
-    if openrouter:
-        result=_openrouter_search(query,openrouter)
-        if result and result.get("live_search"):
-            return result
-        openrouter_warning=(result or {}).get("warning")
-    else:
-        openrouter_warning=None
     groq=os.getenv("GROQ_API_KEY","").strip()
     if groq:
         result=_groq_browser_search(query,groq)
@@ -33,22 +25,14 @@ def research(query: str) -> dict:
             return result
         groq_warning=(result or {}).get("warning")
     else:
-        groq_warning=None
-    configured=os.getenv("SEARXNG_URL","").strip()
-    if configured:
-        base=_valid_searxng_url(configured)
-        if base:
-            try:
-                return _bounded(_search_searxng(query,base,MAX_RESULTS))
-            except RuntimeError:
-                pass
+        groq_warning="GROQ_KEY_MISSING"
     key=os.getenv("GEMINI_API_KEY","").strip()
     if key:
         result=_gemini_search(query,key)
         if result:
             return result
-    return {"live_search":False,"provider":None,"results":[],
-            "warning":groq_warning or openrouter_warning or "NO_LIVE_RESEARCH_PROVIDER_AVAILABLE"}
+    return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],
+            "warning":groq_warning or "NO_LIVE_RESEARCH_PROVIDER_AVAILABLE"}
 
 def _groq_browser_search(query: str,key: str) -> dict|None:
     prompt=("Search the live public web for this request. Give a concise factual synthesis and cite "
