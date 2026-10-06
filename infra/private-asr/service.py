@@ -41,6 +41,29 @@ def _opencode_health():
     ready = bool(binary and os.path.isfile(config) and os.path.isfile(digest))
     return ready, {"ready": ready, "service": "opencode", "model": _opencode_model if ready else None}
 
+def _opencode_text(output):
+    """Extract assistant text from OpenCode --format json NDJSON events."""
+    chunks = []
+    for raw_line in output.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ValueError("invalid_opencode_json") from exc
+        if event.get("type") != "text":
+            continue
+        part = event.get("part")
+        if isinstance(part, dict):
+            text = part.get("text")
+            if isinstance(text, str):
+                chunks.append(text)
+    if not chunks:
+        raise ValueError("missing_opencode_text")
+    return "".join(chunks).strip()
+
+
 def _run_opencode(message):
     if not _lock.acquire(False):
         return 409, {"error": "busy"}
