@@ -53,6 +53,8 @@ def _opencode_text(output):
             event = json.loads(line)
         except json.JSONDecodeError as exc:
             raise ValueError("invalid_opencode_json") from exc
+        if not isinstance(event, dict):
+            raise ValueError("invalid_opencode_event")
         if event.get("type") != "text":
             continue
         part = event.get("part")
@@ -94,7 +96,11 @@ def _run_opencode(message):
             return 502, {"error": "output_too_large"}
         if result.returncode != 0:
             return 502, {"error": "opencode_failed"}
-        return 200, {"text": output}
+        try:
+            text = _opencode_text(output)
+        except ValueError:
+            return 502, {"error": "invalid_opencode_output"}
+        return 200, {"text": text}
     finally:
         _lock.release()
 
