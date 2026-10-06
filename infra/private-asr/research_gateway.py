@@ -44,7 +44,7 @@ def _openrouter_search(query: str,key: str) -> dict|None:
         response=requests.post(OPENROUTER_URL,
             headers={"Authorization":"Bearer "+key,"Content-Type":"application/json"},
             json={"model":OPENROUTER_MODEL,"messages":[{"role":"user","content":prompt}],
-                  "plugins":[{"id":"web","max_results":MAX_RESULTS}]},timeout=60)
+                  "tools":[{"type":"openrouter:web_search","parameters":{"engine":"auto","max_results":MAX_RESULTS}}]},timeout=60)
     except requests.RequestException:
         return None
     if response.status_code!=200:
