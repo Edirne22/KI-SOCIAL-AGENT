@@ -96,18 +96,28 @@ jobs:
           for name in PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY GROQ_API_KEY GEMINI_API_KEY NVIDIA_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
             printf '%s' "${!name}" | npx wrangler secret put "$name" --config wrangler.jsonc
           done
-      - name: Authenticated health check
+      - name: Authenticated target-revision health check
         shell: bash
         run: |
           set -euo pipefail
           url="https://edirne22-private-asr.butupeli.workers.dev/health"
-          for n in $(seq 1 12); do
+          expected="block9-groq-429-fallback-v1"
+          for n in $(seq 1 30); do
             code=$(curl -sS -o /tmp/asr-health -w '%{http_code}' --max-time 30 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
-            if [ "$code" = 200 ] && python3 -c 'import json; assert json.load(open("/tmp/asr-health")).get("ready") is True' 2>/dev/null; then echo "PRIVATE_ASR_LIVE_HEALTH_OK"; exit 0; fi
-            echo "ASR health attempt $n: HTTP $code (body withheld)"
+            if [ "$code" = 200 ] && python3 - "$expected" <<'PY' 2>/dev/null
+          import json,sys
+          d=json.load(open("/tmp/asr-health"))
+          assert d.get("ready") is True
+          assert d.get("research_runtime_revision") == sys.argv[1]
+          PY
+            then
+              echo "PRIVATE_ASR_TARGET_REVISION_LIVE_OK"
+              exit 0
+            fi
+            echo "ASR target revision attempt $n: HTTP $code (body withheld)"
             sleep 10
           done
-          echo "PRIVATE_ASR_LIVE_HEALTH_FAILED"; exit 1
+          echo "PRIVATE_ASR_TARGET_REVISION_LIVE_FAILED"; exit 1
       - name: Wait for target OpenCode container contract
         shell: bash
         run: |
