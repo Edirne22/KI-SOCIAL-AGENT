@@ -207,83 +207,194 @@
     "web_sources_must_be_attributed": true,
     "catalog_model_does_not_imply_web_access": true,
     "agent_dialog_must_resolve_unique_role": true,
-    "agent_status_claims_require_evidence": true
+    "agent_status_claims_require_evidence": true,
+    "existing_infrastructure_is_standing_authorized": true,
+    "new_financial_commitment_requires_owner_approval": true
   },
   "agent_capabilities": {
+    "01_content_creator": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "02_instagram_curator": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "03_tiktok_strategist": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "04_social_media_strategist": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
     "05_research_synthesist": [
       "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "06_reddit_community_builder": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "07_video_optimization": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "media_tools",
+      "dialog_status"
+    ],
+    "08_paid_social_strategist": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "09_quality_agent": [
+      "web_research",
+      "github_read",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "10_follow_analysis_agent": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "11_system_restart_agent": [
+      "github_read",
+      "r2_memory",
+      "runtime_recovery",
+      "dialog_status"
+    ],
+    "12_music_agent": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "media_tools",
       "dialog_status"
     ],
     "13_motogp_content_agency": [
       "web_research",
+      "r2_memory",
+      "ai_models",
+      "media_tools",
+      "dialog_status"
+    ],
+    "14_memory_curator": [
+      "r2_memory",
+      "github_read",
+      "ai_models",
+      "dialog_status"
+    ],
+    "15_chief_quality_manager": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "15_finance_planner": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
       "dialog_status"
     ],
     "16_turkish_riders_scout": [
       "web_research",
+      "r2_memory",
+      "ai_models",
+      "dialog_status"
+    ],
+    "17_instagram_engagement_agent": [
+      "web_research",
+      "r2_memory",
+      "ai_models",
+      "telegram",
       "dialog_status"
     ],
     "18_tour_ride_story_agent": [
       "web_research",
+      "r2_memory",
+      "ai_models",
+      "media_tools",
       "dialog_status"
     ],
     "19_ki_integrationsingenieur": [
       "web_research",
+      "github_read",
+      "github_development",
+      "r2_memory",
+      "ai_models",
       "coding",
       "dialog_status"
     ],
     "20_maschinen_scout": [
       "web_research",
+      "github_read",
+      "r2_memory",
+      "ai_models",
       "dialog_status"
     ],
     "21_instandhaltungsagent": [
       "web_research",
+      "github_read",
+      "github_development",
+      "r2_memory",
+      "ai_models",
       "coding",
-      "dialog_status"
-    ],
-    "01_content_creator": [
-      "dialog_status"
-    ],
-    "02_instagram_curator": [
-      "dialog_status"
-    ],
-    "03_tiktok_strategist": [
-      "dialog_status"
-    ],
-    "04_social_media_strategist": [
-      "dialog_status"
-    ],
-    "06_reddit_community_builder": [
-      "dialog_status"
-    ],
-    "07_video_optimization": [
-      "dialog_status"
-    ],
-    "08_paid_social_strategist": [
-      "dialog_status"
-    ],
-    "09_quality_agent": [
-      "dialog_status"
-    ],
-    "10_follow_analysis_agent": [
-      "dialog_status"
-    ],
-    "11_system_restart_agent": [
-      "dialog_status"
-    ],
-    "12_music_agent": [
-      "dialog_status"
-    ],
-    "14_memory_curator": [
-      "dialog_status"
-    ],
-    "15_chief_quality_manager": [
-      "dialog_status"
-    ],
-    "15_finance_planner": [
-      "dialog_status"
-    ],
-    "17_instagram_engagement_agent": [
+      "runtime_recovery",
       "dialog_status"
     ]
+  },
+  "infrastructure_capabilities": {
+    "web_research": {
+      "standing_authorization": true,
+      "scope": "public Internet/search/source retrieval through controlled shared adapter"
+    },
+    "r2_memory": {
+      "standing_authorization": true,
+      "scope": "private operational evidence, learning memory and authorized job assets"
+    },
+    "ai_models": {
+      "standing_authorization": true,
+      "scope": "existing configured and runtime-verified AI/provider routes; no secret disclosure"
+    },
+    "github_read": {
+      "standing_authorization": true,
+      "scope": "repository, issue, PR, Actions and documentation reading through controlled broker"
+    },
+    "github_development": {
+      "standing_authorization": true,
+      "scope": "branch/patch/test/PR operations only through role-specific controlled development path"
+    },
+    "telegram": {
+      "standing_authorization": true,
+      "scope": "existing Telegram infrastructure within role contract; external sends remain subject to message/publish authority"
+    },
+    "media_tools": {
+      "standing_authorization": true,
+      "scope": "existing approved media/download/render tools within rights, provenance and job constraints"
+    },
+    "runtime_recovery": {
+      "standing_authorization": true,
+      "scope": "only explicitly allowlisted recovery/warmup operations defined by the role contract"
+    },
+    "dialog_status": {
+      "standing_authorization": true,
+      "scope": "direct CODE dialogue grounded in job/run/log evidence"
+    }
   }
 }
