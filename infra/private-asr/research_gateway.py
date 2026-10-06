@@ -48,14 +48,19 @@ def _groq_browser_search(query: str,key: str) -> dict|None:
     if response.status_code!=200:
         detail=""
         try:
-            err=response.json().get("error") or {}
-            detail=str(err.get("message") or err.get("code") or "")[:160]
-            detail=re.sub(r"[^A-Za-z0-9 _.,:;()/'-]","",detail)
+            data=response.json()
+            err=data.get("error") if isinstance(data,dict) else data
+            if isinstance(err,dict):
+                detail=str(err.get("message") or err.get("code") or err.get("type") or "")
+            elif err is not None:
+                detail=str(err)
         except (ValueError,AttributeError,TypeError):
-            pass
-        warning=f"GROQ_HTTP_{response.status_code}"
-        if detail:
-            warning += ":"+detail
+            detail=str(getattr(response,"text","") or "")
+        if not detail:
+            detail=str(getattr(response,"text","") or "")
+        detail=re.sub(r"[^A-Za-z0-9 _.,:;()/'-]"," ",detail)
+        detail=re.sub(r"\\s+"," ",detail).strip()[:160] or "NO_PROVIDER_DETAIL"
+        warning=f"GROQ_HTTP_{response.status_code}:{detail}"
         return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],"warning":warning}
     try:
         data=response.json()
