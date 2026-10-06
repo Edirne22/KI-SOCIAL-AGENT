@@ -11,6 +11,19 @@ class Response:
         ]}}]}
 
 class ResearchGatewayTests(unittest.TestCase):
+    def test_openrouter_uses_current_server_web_tool(self):
+        class ORResponse:
+            status_code=200
+            def json(self):
+                return {"choices":[{"message":{"content":"Current fact [source](https://example.com/live)"}}]}
+        env={"OPENROUTER_API_KEY":"test-or","GEMINI_API_KEY":"","SEARXNG_URL":""}
+        with patch.dict(os.environ,env,clear=False),patch.object(rg.requests,"post",return_value=ORResponse()) as post:
+            out=rg.research("current public fact")
+        self.assertTrue(out["live_search"]);self.assertEqual(out["provider"],"OpenRouter-Web")
+        payload=post.call_args.kwargs["json"]
+        self.assertEqual(payload["tools"][0]["type"],"openrouter:web_search")
+        self.assertNotIn("plugins",payload)
+
     def test_generic_gemini_grounding_returns_bounded_source(self):
         with patch.dict(os.environ,{"GEMINI_API_KEY":"test-key","SEARXNG_URL":""},clear=False),patch.object(rg.requests,"post",return_value=Response()) as post:
             out=rg.research("weather today in Schwelm")
