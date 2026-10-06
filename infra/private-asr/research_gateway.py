@@ -14,6 +14,7 @@ OPENROUTER_MODEL="anthropic/claude-sonnet-4.5"
 GROQ_URL="https://api.groq.com/openai/v1/chat/completions"
 GROQ_RESPONSES_URL="https://api.groq.com/openai/v1/responses"
 GROQ_MODEL="openai/gpt-oss-20b"
+GROQ_RATE_FALLBACK_MODEL="openai/gpt-oss-120b"
 
 def research(query: str) -> dict:
     query=(query or "").strip()
@@ -57,12 +58,12 @@ def _groq_message_shape(message: dict) -> str:
         f"ann={_safe_shape(message.get('annotations'))}"
     )[:160]
 
-def _groq_responses_search(prompt: str,key: str) -> dict|None:
+def _groq_responses_search(prompt: str,key: str,model: str=GROQ_MODEL) -> dict|None:
     try:
         response=requests.post(
             GROQ_RESPONSES_URL,
             headers={"Authorization":"Bearer "+key,"Content-Type":"application/json"},
-            json={"model":GROQ_MODEL,"input":prompt,"tool_choice":"required",
+            json={"model":model,"input":prompt,"tool_choice":"required",
                   "tools":[{"type":"browser_search"}]},
             timeout=60,
         )
@@ -96,18 +97,20 @@ def _groq_responses_search(prompt: str,key: str) -> dict|None:
     return _bounded({"provider":"Groq-BrowserSearch","live_search":True,
                      "results":rows,"warning":None})
 
-def _groq_browser_search(query: str,key: str) -> dict|None:
+def _groq_browser_search(query: str,key: str,model: str=GROQ_MODEL,allow_rate_fallback: bool=True) -> dict|None:
     prompt=("Search the live public web for this request. Give a concise factual synthesis and cite "
             "current claims with source URLs. Never invent facts or URLs. REQUEST:\n"+query)
     try:
         response=requests.post(GROQ_URL,
             headers={"Authorization":"Bearer "+key,"Content-Type":"application/json"},
-            json={"model":GROQ_MODEL,"messages":[{"role":"user","content":prompt}],
+            json={"model":model,"messages":[{"role":"user","content":prompt}],
                   "temperature":1,"max_completion_tokens":2048,"top_p":1,"stream":False,"stop":None,
                   "tool_choice":"required","tools":[{"type":"browser_search"}]},timeout=60)
     except requests.RequestException:
         return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],"warning":"GROQ_REQUEST_ERROR"}
     if response.status_code!=200:
+        if response.status_code==429 and allow_rate_fallback and model==GROQ_MODEL:
+            return _groq_browser_search(query,key,GROQ_RATE_FALLBACK_MODEL,False)
         detail=""
         try:
             data=response.json()
@@ -150,7 +153,7 @@ def _groq_browser_search(query: str,key: str) -> dict|None:
             if isinstance(url,str) and url.startswith(("https://","http://")) and url not in urls:
                 urls.append(url)
     if not urls:
-        fallback=_groq_responses_search(prompt,key)
+        fallback=_groq_responses_search(prompt,key,model)
         if fallback and fallback.get("live_search"):
             return fallback
         shape=_groq_message_shape(message)
