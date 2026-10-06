@@ -1,0 +1,30 @@
+import os,sys,unittest
+from unittest.mock import patch
+sys.path.insert(0,os.path.dirname(__file__))
+import research_gateway as rg
+
+class Response:
+    status_code=200
+    def json(self):
+        return {"candidates":[{"groundingMetadata":{"groundingChunks":[
+            {"web":{"title":"Current source","uri":"https://example.com/current"}}
+        ]}}]}
+
+class ResearchGatewayTests(unittest.TestCase):
+    def test_generic_gemini_grounding_returns_bounded_source(self):
+        with patch.dict(os.environ,{"GEMINI_API_KEY":"test-key","SEARXNG_URL":""},clear=False),patch.object(rg.requests,"post",return_value=Response()) as post:
+            out=rg.research("weather today in Schwelm")
+        self.assertTrue(out["live_search"]);self.assertEqual(out["provider"],"Gemini-Grounded")
+        self.assertEqual(out["results"][0]["url"],"https://example.com/current")
+        payload=post.call_args.kwargs["json"];prompt=payload["contents"][0]["parts"][0]["text"]
+        self.assertIn("weather today in Schwelm",prompt);self.assertNotIn("BESTES_ANGEBOT",prompt)
+
+    def test_no_provider_fails_closed(self):
+        with patch.dict(os.environ,{"GEMINI_API_KEY":"","SEARXNG_URL":""},clear=False):
+            out=rg.research("current news")
+        self.assertFalse(out["live_search"]);self.assertEqual(out["results"],[])
+
+    def test_query_is_bounded(self):
+        with self.assertRaises(ValueError): rg.research("x"*501)
+
+if __name__=="__main__": unittest.main()
