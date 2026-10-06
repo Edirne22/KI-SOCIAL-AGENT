@@ -40,6 +40,28 @@ class ResearchGatewayTests(unittest.TestCase):
     def test_query_is_bounded(self):
         with self.assertRaises(ValueError): rg.research("x"*501)
 
+    def test_groq_400_exposes_bounded_provider_detail(self):
+        class GroqErrorResponse:
+            status_code=400
+            text='{"error":{"message":"Tool browser_search is unavailable for this request"}}'
+            def json(self):
+                return {"error":{"message":"Tool browser_search is unavailable for this request"}}
+        with patch.object(rg.requests,"post",return_value=GroqErrorResponse()):
+            out=rg._groq_browser_search("current public fact","test-key")
+        self.assertFalse(out["live_search"])
+        self.assertEqual(out["provider"],"Groq-BrowserSearch")
+        self.assertEqual(out["warning"],"GROQ_HTTP_400:Tool browser_search is unavailable for this request")
+
+    def test_groq_400_marks_missing_provider_detail(self):
+        class GroqEmptyErrorResponse:
+            status_code=400
+            text=""
+            def json(self):
+                return {"error":{}}
+        with patch.object(rg.requests,"post",return_value=GroqEmptyErrorResponse()):
+            out=rg._groq_browser_search("current public fact","test-key")
+        self.assertEqual(out["warning"],"GROQ_HTTP_400:NO_PROVIDER_DETAIL")
+
 if __name__=="__main__": unittest.main()
 
 
