@@ -151,13 +151,9 @@ jobs:
         run: |
           set -euo pipefail
           warning="unknown"
-          if test -s /tmp/research-live; then
-            warning=$(python3 -c 'import json; d=json.load(open("/tmp/research-live")); print(str(d.get("warning") or "unknown")[:120])' 2>/dev/null || echo NON_JSON_OR_MISSING_RESEARCH_RESULT)
-          fi
-          python3 - "$warning" <<'PY' | tee /tmp/agent21-runtime-diagnostic.json
-          import json,sys,subprocess
           provider="unknown"
           if test -s /tmp/research-live; then
+            warning=$(python3 -c 'import json; d=json.load(open("/tmp/research-live")); print(str(d.get("warning") or "unknown")[:120])' 2>/dev/null || echo NON_JSON_OR_MISSING_RESEARCH_RESULT)
             provider=$(python3 -c 'import json; d=json.load(open("/tmp/research-live")); print(str(d.get("provider") or "unknown")[:80])' 2>/dev/null || echo unknown)
           fi
           python3 - "$warning" "$provider" <<'PY' | tee /tmp/agent21-runtime-diagnostic.json
