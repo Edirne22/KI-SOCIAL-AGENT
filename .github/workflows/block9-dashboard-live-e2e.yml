@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/block9-dashboard-live-e2e.yml'
+      - '.github/workflows/ai-central-dashboard-deploy.yml'
       - 'infra/ai-central-dashboard/tests/live-dashboard-e2e.mjs'
   workflow_dispatch:
 permissions:
