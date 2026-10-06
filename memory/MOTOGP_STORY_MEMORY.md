@@ -819,3 +819,13 @@ Quelle: https://motoetkinlik.com/rivola-jorgenin-lastigi-bizi-korkuttu-bu-yuzden
 Story-Key: motogp:10861336
 Titel: Alex Marquez, Motegi sprintindeki kazanın ardından ceza aldı
 Quelle: https://tr.motorsport.com/motogp/news/alex-marquez-motegi-sprintindeki-kazanin-ardindan-ceza-aldi/10861336
+
+## 2026-10-06 04:38 UTC – ANGEBOTEN
+Story-Key: title:diogo-moreia-dan-motogp-de-i-lk-podyum-bu-ger-ek-bir-sonu-de-il-ama-ok-e-lendim
+Titel: Diogo Moreia’dan MotoGP’de İlk Podyum: “Bu Gerçek Bir Sonuç Değil Ama Çok Eğlendim”
+Quelle: https://motoetkinlik.com/diogo-moreiadan-motogpde-ilk-podyum-bu-gercek-bir-sonuc-degil-ama-cok-eglendim
+
+## 2026-10-06 04:38 UTC – ANGEBOTEN
+Story-Key: motogp:10861321
+Titel: Moto2 Japonya GP sıralama: Motegi’de pole Izan Guevara’nın, Deniz Öncü 11.sırada
+Quelle: https://tr.motorsport.com/moto2/news/moto2-japonya-gp-siralama-motegide-pole-izan-guevaranin-deniz-oncu-11sirada/10861321
