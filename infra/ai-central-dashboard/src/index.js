@@ -726,11 +726,9 @@ async function chatMessage(req,env){
   try{await loadSession(env,body.session_id)}catch(err){
     return json({error:err instanceof Error?err.message:"SESSION_ERROR"},400);
   }
-  // CODE sessions use the existing private container service binding only.
-  // No provider credential is exposed to the browser and no direct provider call is allowed.
+  // CHAT and CODE sessions use the same existing private container service binding only.\n  // No provider credential is exposed to the browser and no direct provider call is allowed.
   const session=await loadSession(env,body.session_id);
-  if(session.mode!=="code")
-    return json({error:"chat transport is not enabled for this session mode",stored:false},409);
+  if(!["chat","code"].includes(session.mode))\n    return json({error:"Claude transport is not enabled for this session mode",stored:false},409);
   if(!env.PRIVATE_ASR_SERVICE||!env.PRIVATE_ASR_INTERNAL_TOKEN)
     return json({error:"OpenCode runtime unavailable; message not sent",
       status:"TRANSPORT_UNAVAILABLE",stored:false},503);
