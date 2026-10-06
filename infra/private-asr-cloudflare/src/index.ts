@@ -12,6 +12,9 @@ export class PrivateASRContainer extends Container {
   requiredPorts = [5200];
   sleepAfter = "15m";
   enableInternet = true;
+  async restartForDeployment(): Promise<void> {
+    await this.stop();
+  }
 }
 const reply = (data: object, status: number) =>
   Response.json(data, {status, headers: {"cache-control": "no-store"}});
@@ -22,11 +25,16 @@ export default {
       return reply({error:"unauthorized"},401);
     const url = new URL(request.url);
     if (url.pathname !== "/health" && url.pathname !== "/jobs" && url.pathname !== "/private-video/jobs" &&
-        url.pathname !== "/opencode/health" && url.pathname !== "/opencode/chat")
+        url.pathname !== "/opencode/health" && url.pathname !== "/opencode/chat" && url.pathname !== "/admin/container-restart")
       return reply({error:"not_found"},404);
     if (((url.pathname === "/health" || url.pathname === "/opencode/health") && request.method !== "GET") ||
-        ((url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") && request.method !== "POST"))
+        ((url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat" || url.pathname === "/admin/container-restart") && request.method !== "POST"))
       return reply({error:"method"},405);
+    const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v3");
+    if (url.pathname === "/admin/container-restart") {
+      await instance.restartForDeployment();
+      return reply({status:"container_restart_requested"},202);
+    }
     let jobBody: string | null = null;
     if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat") {
       jobBody = await request.text();
@@ -34,7 +42,6 @@ export default {
       const limit = url.pathname === "/opencode/chat" ? 8192 : 1024;
       if (size < 1 || size > limit) return reply({error:"size"},413);
     }
-    const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v3");
     // Every route must enter through the same lifecycle gate. In particular, /health
     // must not be allowed to cold-start the container without its runtime secrets.
     await instance.startAndWaitForPorts({
