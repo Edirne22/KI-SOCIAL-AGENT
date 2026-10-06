@@ -2895,3 +2895,32 @@ Um im D1-Netz ein hohes Datenvolumen (wie 80 GB) zu einem sehr niedrigen monatli
 * **K
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-10-06 06:13
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem Mobilfunktarif im Telekom-Netz (D1) mit hohem Datenvolumen zu einem günstigen Monatspreis:
+
+**Mögliche Händlerarten und Anbieter:**
+* **Drittanbieter und Discounter:** Provider wie congstar, fraenk, klarmobil oder freenet nutzen das D1-Netz. Sie bieten in der Regel deutlich günstigere Grundgebühren als der Netzbetreiber selbst.
+* **Vergleichs- und Deal-Portale:** Unabhängige Mobilfunkvermittler bieten häufig Sonderaktionen an, bei denen der rechnerische Monatspreis durch Einmalauszahlungen, Startguthaben oder Wechselboni gesenkt wird.
+* **Direkt beim Netzbetreiber:** Tarife direkt bei der Telekom sind meist hochpreisiger, können sich jedoch durch Kombi-Vorteile (z. B. Festnetz-Plus-Rabatte) oder Vorteilstarife für junge Leute lohnen.
+
+**Produktfamilien und Tarifstruktur:**
+* **24-Monats-Verträge:** Erreichen den niedrigsten rechnerischen Monatspreis meist durch Aktionsrabatte oder Gutschriften, die auf die Mindestvertragslaufzeit verteilt sind.
+* **Monatlich kündbare Tarife (Flex):** Bieten Flexibilität, fallen im Preis-Leistungs-Verhältnis bei sehr hohem Datenvolumen jedoch meist etwas teurer aus als Laufzeitverträge.
+
+**Wichtige Auswahlkriterien:**
+* **Effektivpreisberechnung:** Achte darauf, wie der Zielpreis zustande kommt (z. B. Abzug von Boni für die Rufnummernportierung, Verrechnung von Startguthaben) und wie viel der Tarif ab dem 25. Monat kostet.
+* **Geschwindigkeit & 5G:** Tarife von Drittanbietern im D1-Netz sind häufig auf bestimmte Maximalgeschwindigkeiten (z. B. 25 oder 50 Mbit/s) gedrosselt. Prüfe, ob 5G enthalten ist oder extra kostet.
+* **Anschlusspreis:** Einmalige Bereitstellungsgebühren sollten in die Gesamtkostenrechnung einbezogen werden.
+* **Datenautomatik:** Stelle sicher, ob nach Aufbrauchen des Volumens eine kostenpflichtige automatische Nachbuchung erfolgt und ob diese deaktivierbar ist.
+
+Bitte in 10 Minuten erneut versuchen.
