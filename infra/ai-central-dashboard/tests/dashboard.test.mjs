@@ -243,7 +243,7 @@ test("CHAT replays bounded saved conversation context while CODE remains single-
  await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Merke dir die Zahl 2210."}),headers:origin}),e);
  await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Welche Zahl solltest du dir merken?"}),headers:origin}),e);
  assert.equal(bodies[0].message,"User: Merke dir die Zahl 2210.\\n\\nAssistant:");
- assert.match(bodies[1].message,/User: Merke dir die Zahl 2210\\./);assert.match(bodies[1].message,/Assistant: GEMERKT/);assert.match(bodies[1].message,/User: Welche Zahl solltest du dir merken\\?/);
+ assert.match(bodies[1].message,/User: Merke dir die Zahl 2210\./);assert.match(bodies[1].message,/Assistant: GEMERKT/);assert.match(bodies[1].message,/User: Welche Zahl solltest du dir merken\?/);
  created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"code"}),headers:origin}),e);id=(await created.json()).id;
  await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"CODE_SINGLE_TURN"}),headers:origin}),e);
  assert.equal(bodies.at(-1).message,"CODE_SINGLE_TURN");
