@@ -1,5 +1,4 @@
 import io,json,unittest
-from unittest.mock import patch
 from scripts.start_duenya_level12_exact import TASK_ID,start_exact
 
 class Missing(Exception):
@@ -23,14 +22,16 @@ class R2:
     def get_object(self,Bucket,Key):
         if Key.endswith("/status.json"):
             if not self.runtime: raise Missing()
-            return {"Body":Body(self.runtime.pop(0))}
+            value=self.runtime.pop(0)
+            if value is None: raise Missing()
+            return {"Body":Body(value)}
         return {"Body":Body(self.t),"ETag":'"e1"'}
     def put_object(self,**kw): self.writes.append(kw);return {"ETag":'"e2"'}
 class Resp: status_code=202
 
 class ExactStartTests(unittest.TestCase):
     def test_exact_task_claims_and_starts(self):
-        r=R2(task(),[status("RUNNING")])
+        r=R2(task(),[None,status("RUNNING")])
         out=start_exact(r,"b","tok",post=lambda *a,**k:Resp(),sleeper=lambda _:None)
         self.assertEqual(out["result"],"START_RUNNING");self.assertEqual(len(r.writes),1)
         claimed=json.loads(r.writes[0]["Body"]);self.assertEqual(claimed["dispatch_target"],"private-media-container")
