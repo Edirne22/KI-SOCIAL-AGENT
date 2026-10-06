@@ -40,6 +40,22 @@ class ResearchGatewayTests(unittest.TestCase):
     def test_query_is_bounded(self):
         with self.assertRaises(ValueError): rg.research("x"*501)
 
+    def test_groq_200_reads_executed_tool_source_results(self):
+        class GroqSearchResponse:
+            status_code=200
+            def json(self):
+                return {"choices":[{"message":{
+                    "content":"Current date result with provider citations.",
+                    "executed_tools":[{"search_results":{"results":[
+                        {"title":"Current source","url":"https://example.com/current","content":"current"}
+                    ]}}]
+                }}]}
+        with patch.object(rg.requests,"post",return_value=GroqSearchResponse()):
+            out=rg._groq_browser_search("What is the current date?","test-key")
+        self.assertTrue(out["live_search"])
+        self.assertEqual(out["provider"],"Groq-BrowserSearch")
+        self.assertEqual(out["results"][0]["url"],"https://example.com/current")
+
     def test_groq_400_exposes_bounded_provider_detail(self):
         class GroqErrorResponse:
             status_code=400
