@@ -338,6 +338,28 @@ test("current-date truth guard rejects stale conflicting web date from Claude ou
  assert.doesNotMatch(history.at(-1).text,/8\. Mai 2026/);
 });
 
+
+test("current-date truth guard normalizes equivalent localized date to required ISO literal",async()=>{
+ const e=env();e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
+ const trusted=new Date().toISOString().slice(0,10);
+ const [year,month,day]=trusted.split("-").map(Number);
+ const months=["","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+ const localized="Heute ist der "+day+". "+months[month]+" "+year+". Quelle: https://example.com/current";
+ e.PRIVATE_ASR_SERVICE={fetch:async(url)=>{
+   if(String(url).endsWith("/research/search"))return new Response(JSON.stringify({
+     live_search:true,provider:"Groq-BrowserSearch",
+     results:[{title:"Current source",url:"https://example.com/current",snippet:"Current date reference"}]
+   }),{status:200,headers:{"content-type":"application/json"}});
+   return new Response(JSON.stringify({text:localized}),{status:200,headers:{"content-type":"application/json"}});
+ }};
+ const origin={"content-type":"application/json","origin":"https://dashboard.example"};
+ const created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"chat"}),headers:origin}),e),id=(await created.json()).id;
+ const response=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Welches Datum ist heute? Suche im Web."}),headers:origin}),e);
+ assert.equal(response.status,200);const out=await response.json();
+ assert.match(out.text,new RegExp(trusted.replaceAll("-","\\-")));
+ assert.match(out.text,/Aktuelles vertrauenswürdiges Systemdatum/);
+});
+
 test("current-date truth guard preserves a correct Claude date answer",async()=>{
  const e=env();e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
  const trusted=new Date().toISOString().slice(0,10);
