@@ -3,6 +3,7 @@ type Env = {
   PRIVATE_ASR: DurableObjectNamespace<PrivateASRContainer>;
   PRIVATE_ASR_INTERNAL_TOKEN: string;
   OPENROUTER_API_KEY: string;
+  GROQ_API_KEY: string;
   GEMINI_API_KEY: string;
   NVIDIA_API_KEY?: string;
   SEARXNG_URL?: string;
@@ -58,6 +59,7 @@ export default {
         envVars: {
           PRIVATE_ASR_INTERNAL_TOKEN: env.PRIVATE_ASR_INTERNAL_TOKEN,
           OPENROUTER_API_KEY: env.OPENROUTER_API_KEY,
+          GROQ_API_KEY: env.GROQ_API_KEY,
           GEMINI_API_KEY: env.GEMINI_API_KEY,
           ...(env.NVIDIA_API_KEY ? {NVIDIA_API_KEY: env.NVIDIA_API_KEY} : {}),
           ...(env.SEARXNG_URL ? {SEARXNG_URL: env.SEARXNG_URL} : {}),
