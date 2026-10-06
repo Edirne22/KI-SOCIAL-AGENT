@@ -407,6 +407,24 @@ STATUS MELDEN → WEITERARBEITEN
 
 Bei längerer aktiver Arbeit sollen kurze sichtbare Fortschrittsmeldungen nach dem Muster **Wo bin ich? → Was prüfe ich? → Was ist passiert? → Was mache ich jetzt?** gegeben werden. Die Fortschrittsmeldung beendet die Ausführung nicht.
 
+### 13.2a CHATCHECK / Kontext-Sicherungsregel
+
+Bei langen oder technisch dichten `/BLOCKRUN`-Sitzungen ist der Chatkontext selbst als begrenzte Arbeitsressource zu behandeln. Eine feste Zeilen- oder Nachrichtenanzahl ist **kein** belastbares Limit; entscheidend sind Umfang und Dichte von Nachrichten, Code, Logs, Tool-Ausgaben, Bildern und Übergaben.
+
+Der ausführende Agent bewertet deshalb den Kontextzustand regelmäßig und auf Bülents Befehl `/CHATCHECK` ausdrücklich als:
+
+- **GRÜN** – normal weiterarbeiten; ältere Entscheidungen und aktueller Arbeitsstand sind noch sicher verfügbar.
+- **GELB** – langer/dichter Verlauf; vor weiteren größeren Diagnose-, Patch-, Merge- oder Deploy-Zyklen den aktuellen technischen Stand in Snapshot/Handover nachziehen. Mindestens main/HEAD, offene PRs, relevante Actions/Runs, aktueller Blocker, Architekturentscheidungen und nächster Schritt sichern.
+- **ROT** – Kontextverlust oder baldiges Sitzungsende ist realistisch. Vor weiteren größeren Änderungen zuerst einen aktuellen Wiederanlaufpunkt erstellen: eindeutiger Snapshot-/Backup-Branch oder vergleichbarer Git-Pointer, aktualisierte Projektübergabe/Snapshot soweit erforderlich, aktueller main/HEAD, PR-/Run-/Log-Belege, offener Fehler/Root-Cause-Stand und eine kurze New-Chat-Anweisung. Danach neuen Chat verwenden und dort Guardrails + jüngsten Sicherungsstand erneut lesen.
+
+Zusätzliche operative Regeln:
+
+1. Bei intensivem `/BLOCKRUN` spätestens nach **2–3 Stunden aktiver Entwicklungsarbeit** oder ungefähr **10–15 größeren PR-/Log-/Diagnosezyklen** einen `/CHATCHECK` durchführen. Das sind Sicherheits-Schwellen, **keine behaupteten Produktlimits**.
+2. Wenn Bülent `/CHATCHECK` eingibt, zuerst **GRÜN / GELB / ROT** mit kurzer Begründung ausgeben und dann entsprechend handeln. Bei GELB/ROT nicht nur warnen, sondern die erforderliche Projektsicherung im technisch zulässigen Scope tatsächlich vorbereiten/erstellen.
+3. Ein Chatwechsel darf keinen Architekturwechsel auslösen. Der neue Chat setzt exakt am gesicherten Stand fort; keine bereits erledigte Arbeit doppelt bauen.
+4. Snapshot/Handover ersetzt nie `PROJECT_GUARDRAILS.md`. Im neuen Chat zuerst aktuellen HEAD, Guardrails, jüngsten Snapshot/Handover sowie PRs/Actions neu verifizieren.
+5. Die Kontext-Sicherung ist ein Resilience-Schritt innerhalb von `/BLOCKRUN`, **kein freiwilliger Arbeitsstopp**. Nach Sicherung wird im selben Turn weitergearbeitet, sofern der Chat technisch noch arbeitsfähig ist und kein echter externer Blocker besteht.
+
 ### 13.3 ROT erzwingt die Reparaturschleife
 
 Wird ein relevanter Test, Run oder CI-Lauf rot, gilt ohne erneute Freigabe:
