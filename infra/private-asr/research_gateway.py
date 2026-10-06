@@ -12,6 +12,7 @@ GEMINI_URL=f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MOD
 OPENROUTER_URL="https://openrouter.ai/api/v1/chat/completions"
 OPENROUTER_MODEL="anthropic/claude-sonnet-4.5"
 GROQ_URL="https://api.groq.com/openai/v1/chat/completions"
+GROQ_RESPONSES_URL="https://api.groq.com/openai/v1/responses"
 GROQ_MODEL="openai/gpt-oss-20b"
 
 def research(query: str) -> dict:
@@ -55,6 +56,45 @@ def _groq_message_shape(message: dict) -> str:
         f"mk={keys};et={executed_shape};cit={_safe_shape(message.get('citations'))};"
         f"ann={_safe_shape(message.get('annotations'))}"
     )[:160]
+
+def _groq_responses_search(prompt: str,key: str) -> dict|None:
+    try:
+        response=requests.post(
+            GROQ_RESPONSES_URL,
+            headers={"Authorization":"Bearer "+key,"Content-Type":"application/json"},
+            json={"model":GROQ_MODEL,"input":prompt,"tool_choice":"required",
+                  "tools":[{"type":"browser_search"}]},
+            timeout=60,
+        )
+    except requests.RequestException:
+        return None
+    if response.status_code!=200:
+        return None
+    try:
+        data=response.json()
+    except ValueError:
+        return None
+    rows=[]; texts=[]
+    for item in (data.get("output") or []):
+        if not isinstance(item,dict) or item.get("type")!="message":
+            continue
+        for part in (item.get("content") or []):
+            if not isinstance(part,dict) or part.get("type")!="output_text":
+                continue
+            text=str(part.get("text") or "")
+            if text:
+                texts.append(text)
+            for annotation in (part.get("annotations") or []):
+                if not isinstance(annotation,dict) or annotation.get("type")!="url_citation":
+                    continue
+                url=annotation.get("url")
+                if isinstance(url,str) and url.startswith(("https://","http://")):
+                    rows.append({"title":str(annotation.get("title") or url),
+                                 "url":url,"snippet":text[:800]})
+    if not rows:
+        return None
+    return _bounded({"provider":"Groq-BrowserSearch","live_search":True,
+                     "results":rows,"warning":None})
 
 def _groq_browser_search(query: str,key: str) -> dict|None:
     prompt=("Search the live public web for this request. Give a concise factual synthesis and cite "
@@ -110,6 +150,9 @@ def _groq_browser_search(query: str,key: str) -> dict|None:
             if isinstance(url,str) and url.startswith(("https://","http://")) and url not in urls:
                 urls.append(url)
     if not urls:
+        fallback=_groq_responses_search(prompt,key)
+        if fallback and fallback.get("live_search"):
+            return fallback
         shape=_groq_message_shape(message)
         return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],
                 "warning":"GROQ_200_NO_SOURCE_URLS:"+shape}

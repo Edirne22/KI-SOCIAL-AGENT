@@ -56,6 +56,32 @@ class ResearchGatewayTests(unittest.TestCase):
         self.assertEqual(out["provider"],"Groq-BrowserSearch")
         self.assertEqual(out["results"][0]["url"],"https://example.com/current")
 
+    def test_groq_200_without_urls_uses_responses_url_citations(self):
+        class ChatResponse:
+            status_code=200
+            def json(self):
+                return {"choices":[{"message":{"role":"assistant","content":"Current fact 〖1†L1-L2〗"}}]}
+        class ResponsesResponse:
+            status_code=200
+            def json(self):
+                return {"output":[{"type":"message","content":[{
+                    "type":"output_text",
+                    "text":"Current fact with cited source.",
+                    "annotations":[{"type":"url_citation","url":"https://example.com/current",
+                                    "title":"Current source","start_index":0,"end_index":12}]
+                }]}]}
+        with patch.object(rg.requests,"post",side_effect=[ChatResponse(),ResponsesResponse()]) as post:
+            out=rg._groq_browser_search("current public fact","test-key")
+        self.assertTrue(out["live_search"])
+        self.assertEqual(out["provider"],"Groq-BrowserSearch")
+        self.assertEqual(out["results"][0]["url"],"https://example.com/current")
+        self.assertEqual(post.call_count,2)
+        self.assertEqual(post.call_args_list[1].args[0],rg.GROQ_RESPONSES_URL)
+        payload=post.call_args_list[1].kwargs["json"]
+        self.assertEqual(payload["model"],rg.GROQ_MODEL)
+        self.assertEqual(payload["tools"],[{"type":"browser_search"}])
+        self.assertEqual(payload["tool_choice"],"required")
+
     def test_groq_200_missing_sources_exposes_structure_only(self):
         class GroqShapeResponse:
             status_code=200
