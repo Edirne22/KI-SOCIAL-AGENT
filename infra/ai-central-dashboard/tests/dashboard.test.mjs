@@ -305,9 +305,54 @@ test("current CHAT question uses bounded research before Claude and reports exac
 
 
 test("dashboard deploy gates core Claude E2E while research remains a separate live proof",()=>{
- const deploy=readFileSync("../../.github/workflows/ai-central-dashboard-deploy.yml","utf8");
- const researchGate=readFileSync("../../.github/workflows/block9-dashboard-live-e2e.yml","utf8");
+ const deploy=readFileSync(new URL("../../../.github/workflows/ai-central-dashboard-deploy.yml",import.meta.url),"utf8");
+ const researchGate=readFileSync(new URL("../../../.github/workflows/block9-dashboard-live-e2e.yml",import.meta.url),"utf8");
  assert.match(deploy,/REQUIRE_DASHBOARD_RESEARCH:\s*["']false["']/);
  assert.match(researchGate,/Live branch Groq browser-search gateway proof/);
  assert.match(researchGate,/BRANCH_GROQ_BROWSER_SEARCH_SOURCE_PROOF_OK/);
+});
+
+
+test("current-date truth guard rejects stale conflicting web date from Claude output",async()=>{
+ const e=env(),calls=[];e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
+ const trusted=new Date().toISOString().slice(0,10);
+ e.PRIVATE_ASR_SERVICE={fetch:async(url,opts)=>{calls.push({url:String(url),body:JSON.parse(opts.body)});
+   if(String(url).endsWith("/research/search"))return new Response(JSON.stringify({
+     live_search:true,provider:"Groq-BrowserSearch",
+     results:[{title:"Stale date source",url:"https://example.com/stale-date",snippet:"Heute ist Freitag, der 8. Mai 2026."}]
+   }),{status:200,headers:{"content-type":"application/json"}});
+   return new Response(JSON.stringify({text:"Basierend auf der Websuche ist heute Freitag, der 8. Mai 2026."}),{status:200,headers:{"content-type":"application/json"}});
+ }};
+ const origin={"content-type":"application/json","origin":"https://dashboard.example"};
+ const created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"chat"}),headers:origin}),e),id=(await created.json()).id;
+ const response=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Welches Datum ist heute? Suche im Web und nenne eine Quelle."}),headers:origin}),e);
+ assert.equal(response.status,200);const out=await response.json();
+ assert.match(calls[1].body.message,new RegExp("TRUSTED RUNTIME CURRENT DATE \\(UTC\\): "+trusted.replaceAll("-","\\-")));
+ assert.match(calls[1].body.message,new RegExp(trusted.replaceAll("-","\\-")));
+ assert.match(out.text,new RegExp(trusted.replaceAll("-","\\-")));
+ assert.doesNotMatch(out.text,/8\. Mai 2026/);
+ assert.match(out.text,/nicht als Datumsautorität verwendet/);
+ const saved=await worker.fetch(request("/api/chat/session?id="+id),e);
+ const history=(await saved.json()).messages;
+ assert.match(history.at(-1).text,new RegExp(trusted.replaceAll("-","\\-")));
+ assert.doesNotMatch(history.at(-1).text,/8\. Mai 2026/);
+});
+
+test("current-date truth guard preserves a correct Claude date answer",async()=>{
+ const e=env();e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
+ const trusted=new Date().toISOString().slice(0,10);
+ e.PRIVATE_ASR_SERVICE={fetch:async(url)=>{
+   if(String(url).endsWith("/research/search"))return new Response(JSON.stringify({
+     live_search:true,provider:"Groq-BrowserSearch",
+     results:[{title:"Current source",url:"https://example.com/current",snippet:"Current date reference"}]
+   }),{status:200,headers:{"content-type":"application/json"}});
+   return new Response(JSON.stringify({text:"Heute ist "+trusted+". Quelle: https://example.com/current"}),{status:200,headers:{"content-type":"application/json"}});
+ }};
+ const origin={"content-type":"application/json","origin":"https://dashboard.example"};
+ const created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"chat"}),headers:origin}),e),id=(await created.json()).id;
+ const response=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Welches Datum ist heute? Suche im Web."}),headers:origin}),e);
+ assert.equal(response.status,200);const out=await response.json();
+ assert.equal(out.text,"Heute ist "+trusted+". Quelle: https://example.com/current");
+ assert.equal(out.research.used,true);
+ assert.equal(out.research.provider,"Groq-BrowserSearch");
 });
