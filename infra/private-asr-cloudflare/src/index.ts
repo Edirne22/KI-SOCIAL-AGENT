@@ -72,9 +72,31 @@ export default {
       if (!ready) return reply({error:"container_not_ready"},503);
       const headers = new Headers(request.headers);
       headers.set("content-length", String(new TextEncoder().encode(jobBody!).byteLength));
-      return instance.fetch(new Request("http://localhost:5200" + url.pathname, {
-        method:"POST", headers, body:jobBody!
-      }));
+      try {
+        const upstream = await instance.fetch(new Request("http://localhost:5200" + url.pathname, {
+          method:"POST", headers, body:jobBody!
+        }));
+        // OpenCode is a JSON-only internal API. If the container/runtime emits an
+        // HTML/plaintext 500, do not leak that body; convert it to a bounded JSON
+        // diagnostic so Actions can identify the failing layer safely.
+        if (url.pathname === "/opencode/chat") {
+          const contentType = upstream.headers.get("content-type") || "";
+          if (!contentType.toLowerCase().includes("application/json")) {
+            return Response.json(
+              {error:"opencode_upstream_non_json", upstream_status:upstream.status},
+              {status:502, headers:{"cache-control":"no-store","x-edirne22-stage":"worker-opencode-proxy"}}
+            );
+          }
+        }
+        return upstream;
+      } catch (error) {
+        if (url.pathname !== "/opencode/chat") throw error;
+        const name = error instanceof Error ? error.name.slice(0,80) : "unknown";
+        return Response.json(
+          {error:"opencode_container_fetch_failed", exception:name},
+          {status:502, headers:{"cache-control":"no-store","x-edirne22-stage":"worker-opencode-fetch"}}
+        );
+      }
     }
     return instance.fetch(new Request("http://localhost:5200" + url.pathname, request));
   }
