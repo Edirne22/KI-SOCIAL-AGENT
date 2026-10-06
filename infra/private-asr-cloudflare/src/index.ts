@@ -16,13 +16,6 @@ export class PrivateASRContainer extends Container {
   requiredPorts = [5200];
   sleepAfter = "15m";
   enableInternet = true;
-  async restartForDeployment(): Promise<void> {
-    const state = await this.getState();
-    if (state.status === "stopping" || state.status === "stopped" || state.status === "stopped_with_code") {
-      return;
-    }
-    await this.stop();
-  }
 }
 const reply = (data: object, status: number) =>
   Response.json(data, {status, headers: {"cache-control": "no-store"}});
@@ -40,8 +33,13 @@ export default {
       return reply({error:"method"},405);
     const instance = getContainer(env.PRIVATE_ASR, "edirne22-private-asr-mobile-v3");
     if (url.pathname === "/admin/container-restart") {
-      await instance.restartForDeployment();
-      return reply({status:"container_restart_requested"},202);
+      try {
+        await instance.destroy();
+        return reply({status:"container_restart_requested"},202);
+      } catch (error) {
+        const name = error instanceof Error ? error.name.slice(0,80) : "unknown";
+        return reply({error:"container_restart_failed", exception:name},503);
+      }
     }
     let jobBody: string | null = null;
     if (url.pathname === "/jobs" || url.pathname === "/private-video/jobs" || url.pathname === "/opencode/chat" || url.pathname === "/research/search") {
