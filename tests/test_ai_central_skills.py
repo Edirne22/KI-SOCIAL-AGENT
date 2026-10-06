@@ -54,6 +54,22 @@ class Router(unittest.TestCase):
             self.assertTrue(sr.agent_can(agent,"dialog_status",self.registry),agent)
         self.assertTrue(self.registry["policies"]["agent_status_claims_require_evidence"])
         self.assertIn("evidence_store",self.registry["tasks"]["dialog_status"]["requires"])
+    def test_every_agent_has_operational_memory_and_dialogue(self):
+        caps=self.registry["agent_capabilities"]
+        self.assertGreaterEqual(len(caps),20)
+        for agent,allowed in caps.items():
+            self.assertIn("r2_memory",allowed,agent)
+            self.assertIn("dialog_status",allowed,agent)
+            self.assertIn("ai_models",allowed,agent)
+        self.assertNotIn("web_research",caps["11_system_restart_agent"])
+        self.assertNotIn("media_tools",caps["11_system_restart_agent"])
+        self.assertIn("web_research",caps["01_content_creator"])
+        self.assertIn("media_tools",caps["07_video_optimization"])
+        self.assertIn("github_development",caps["21_instandhaltungsagent"])
+    def test_existing_infrastructure_is_standing_authorized(self):
+        p=self.registry["policies"]
+        self.assertTrue(p["existing_infrastructure_is_standing_authorized"])
+        self.assertTrue(p["new_financial_commitment_requires_owner_approval"])
     def test_exporter_validation_and_formula_escape(self):
         data={"title":"Rezeptur Analyse","paragraphs":["Daten wurden geprüft"],
               "table":[["Rezept","Anteil"],["Mischung",50],["=HYPERLINK(\"http://bad\")","Ne"]]}
