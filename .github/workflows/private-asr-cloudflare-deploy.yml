@@ -137,7 +137,7 @@ jobs:
           python3 - <<'PY'
           import json
           d=json.load(open("/tmp/research-live"))
-          assert d.get("live_search") is True, d.get("warning")
+          assert d.get("live_search") is True, "research_warning="+str(d.get("warning"))
           assert isinstance(d.get("provider"),str) and d["provider"]
           rows=d.get("results")
           assert isinstance(rows,list) and rows
