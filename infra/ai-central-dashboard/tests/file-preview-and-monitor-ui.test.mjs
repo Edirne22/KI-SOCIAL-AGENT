@@ -21,21 +21,17 @@ test("image zoom, native media, PDF and metadata fallback are separate",()=>{
   assert.match(html,/Keine integrierte Vorschau für diesen Dateityp/);
   assert.match(html,/clearAttachmentCache\(\)/);
 });
-test("system monitor labels inventory versus monthly billing, never claims live container CPU",()=>{
-  assert.match(html,/id="r2Occupied"/);
-  assert.match(html,/id="r2Quota"/);
-  assert.match(html,/id="r2Meter"/);
-  assert.match(html,/id="r2Measured"/);
-  assert.match(html,/id="containerState"/);
-  assert.match(html,/id="measureSystem"/);
-  assert.match(html,/\/api\/system-monitor\?scope=manual/);
-  assert.match(html,/Monatlicher GB-Monatsverbrauch nicht messbar/);
-  assert.match(html,/Container wird nicht angepingt/);
-  assert.match(html,/id="checkContainer"/);
-  assert.match(html,/window.confirm\("Container jetzt ausdrücklich manuell testen/);
-  assert.match(html,/\/api\/container-readiness/);
-  assert.match(html,/loadLastReadiness\(\)/);
-  assert.doesNotMatch(html,/setInterval\([^;\n]*system-monitor/);
+test("dead telemetry cards are replaced by the persistent Claude CHAT surface",()=>{
+  assert.doesNotMatch(html,/id="r2Occupied"/);
+  assert.doesNotMatch(html,/id="containerState"/);
+  assert.doesNotMatch(html,/id="measureSystem"/);
+  assert.doesNotMatch(html,/id="checkContainer"/);
+  assert.match(html,/aria-label="Claude CHAT über OpenCode"/);
+  assert.match(html,/id="chatMessage"/);
+  assert.match(html,/id="chatSend"/);
+  assert.match(html,/id="chatResult"/);
+  assert.match(html,/SESSION_KEYS=\{chat:"edirne22\.claude\.chat\.session\.v1",code:"edirne22\.claude\.code\.session\.v1"\}/);
+  assert.match(html,/restoreClaudeSessions\(\)/);
 });
 test("existing private videostudio and selected-task conversation remain intact",()=>{
   assert.match(html,/id="tabStudio"/);
