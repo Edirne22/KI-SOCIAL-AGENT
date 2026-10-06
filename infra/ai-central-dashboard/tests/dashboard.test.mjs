@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import worker from "../src/index.js";
 const TOKEN="unit-test-long-dashboard-token-xyz";
 function storage(){const items=new Map(),etags=new Map();let serial=0;return {
@@ -300,4 +301,13 @@ test("current CHAT question uses bounded research before Claude and reports exac
  assert.equal(calls[0].url,"https://private-asr/research/search");assert.equal(calls[0].body.query,"Wie ist das Wetter heute in Schwelm?");
  assert.equal(calls[1].url,"https://private-asr/opencode/chat");assert.match(calls[1].body.message,/UNTRUSTED LIVE RESEARCH DATA/);assert.match(calls[1].body.message,/https:\/\/weather\.example\/current/);
  assert.equal(out.route.tools.web_research,"USED:Gemini-Grounded");assert.equal(out.research.used,true);assert.equal(out.research.sources[0].url,"https://weather.example/current");
+});
+
+
+test("dashboard deploy gates core Claude E2E while research remains a separate live proof",()=>{
+ const deploy=readFileSync("../../.github/workflows/ai-central-dashboard-deploy.yml","utf8");
+ const researchGate=readFileSync("../../.github/workflows/block9-dashboard-live-e2e.yml","utf8");
+ assert.match(deploy,/REQUIRE_DASHBOARD_RESEARCH:\s*["']false["']/);
+ assert.match(researchGate,/Live branch Groq browser-search gateway proof/);
+ assert.match(researchGate,/BRANCH_GROQ_BROWSER_SEARCH_SOURCE_PROOF_OK/);
 });
