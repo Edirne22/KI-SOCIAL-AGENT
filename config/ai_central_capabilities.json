@@ -167,6 +167,28 @@
         "source_urls"
       ],
       "note": "Research-capable agents may use this lane only when both the model inference route and the shared web/search adapter are runtime-verified. A model's own prior knowledge is not Internet access."
+    },
+    "dialog_status": {
+      "providers": [
+        "claude_openrouter",
+        "google",
+        "nvidia",
+        "groq",
+        "openrouter"
+      ],
+      "model_by_provider": {
+        "claude_openrouter": "anthropic/claude-sonnet-4.5",
+        "google": "gemini-3.6-flash",
+        "nvidia": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "groq": "openai/gpt-oss-120b",
+        "openrouter": "openrouter/free"
+      },
+      "approval": false,
+      "requires": [
+        "agent_identity",
+        "evidence_store"
+      ],
+      "note": "Direct CODE conversation with a named agent. Answers about work/status must be grounded in current job, run, log, R2 or GitHub evidence; no evidence means no activity may be claimed."
     }
   },
   "document_skills": {
@@ -183,31 +205,85 @@
     "research_agents_require_runtime_verified_web_adapter": true,
     "agent_never_receives_provider_secret": true,
     "web_sources_must_be_attributed": true,
-    "catalog_model_does_not_imply_web_access": true
+    "catalog_model_does_not_imply_web_access": true,
+    "agent_dialog_must_resolve_unique_role": true,
+    "agent_status_claims_require_evidence": true
   },
   "agent_capabilities": {
     "05_research_synthesist": [
-      "web_research"
+      "web_research",
+      "dialog_status"
     ],
     "13_motogp_content_agency": [
-      "web_research"
+      "web_research",
+      "dialog_status"
     ],
     "16_turkish_riders_scout": [
-      "web_research"
+      "web_research",
+      "dialog_status"
     ],
     "18_tour_ride_story_agent": [
-      "web_research"
+      "web_research",
+      "dialog_status"
     ],
     "19_ki_integrationsingenieur": [
       "web_research",
-      "coding"
+      "coding",
+      "dialog_status"
     ],
     "20_maschinen_scout": [
-      "web_research"
+      "web_research",
+      "dialog_status"
     ],
     "21_instandhaltungsagent": [
       "web_research",
-      "coding"
+      "coding",
+      "dialog_status"
+    ],
+    "01_content_creator": [
+      "dialog_status"
+    ],
+    "02_instagram_curator": [
+      "dialog_status"
+    ],
+    "03_tiktok_strategist": [
+      "dialog_status"
+    ],
+    "04_social_media_strategist": [
+      "dialog_status"
+    ],
+    "06_reddit_community_builder": [
+      "dialog_status"
+    ],
+    "07_video_optimization": [
+      "dialog_status"
+    ],
+    "08_paid_social_strategist": [
+      "dialog_status"
+    ],
+    "09_quality_agent": [
+      "dialog_status"
+    ],
+    "10_follow_analysis_agent": [
+      "dialog_status"
+    ],
+    "11_system_restart_agent": [
+      "dialog_status"
+    ],
+    "12_music_agent": [
+      "dialog_status"
+    ],
+    "14_memory_curator": [
+      "dialog_status"
+    ],
+    "15_chief_quality_manager": [
+      "dialog_status"
+    ],
+    "15_finance_planner": [
+      "dialog_status"
+    ],
+    "17_instagram_engagement_agent": [
+      "dialog_status"
     ]
   }
 }
