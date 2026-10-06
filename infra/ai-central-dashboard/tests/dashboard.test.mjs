@@ -275,13 +275,29 @@ test("CHAT and universal CODE expose truthful fail-closed route metadata",async(
   const c=await cr.json(),d=await dr.json();
   assert.equal(c.route.mode,"CHAT");assert.equal(c.route.gate,"CONVERSATION");
   assert.equal(c.route.tools.agent21,false);assert.equal(c.route.tools.github,false);
-  assert.equal(c.route.tools.web_research,"NOT_YET_WIRED");
+  assert.equal(c.route.tools.web_research,"AVAILABLE_ON_DEMAND");
   assert.equal(d.route.mode,"CODE");assert.equal(d.route.workspace,"UNIVERSAL");
   assert.equal(d.route.gate,"DIRECT_DEVELOPMENT");
   assert.equal(d.route.specialist_gate,"AGENT21_FOR_EDIRNE22_INTERNAL");
   assert.equal(d.route.tools.agent21,"CONTEXTUAL");
   assert.equal(d.route.tools.github,"NOT_YET_WIRED");
-  assert.equal(d.route.tools.web_research,"NOT_YET_WIRED");
+  assert.equal(d.route.tools.web_research,"AVAILABLE_ON_DEMAND");
   assert.equal(d.route.tools.r2_files,"UPLOAD_ONLY");
-  assert.equal(d.route.execution,"TEXT_ONLY_UNTIL_TOOL_GATE_WIRED");
+  assert.equal(d.route.execution,"TEXT_PLUS_BOUNDED_RESEARCH");
+});
+
+
+test("current CHAT question uses bounded research before Claude and reports exact provider",async()=>{
+ const e=env(),calls=[];e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
+ e.PRIVATE_ASR_SERVICE={fetch:async(url,opts)=>{calls.push({url:String(url),body:JSON.parse(opts.body)});
+   if(String(url).endsWith("/research/search"))return new Response(JSON.stringify({live_search:true,provider:"Gemini-Grounded",results:[{title:"Weather source",url:"https://weather.example/current",snippet:"Schwelm current conditions"}]}),{status:200,headers:{"content-type":"application/json"}});
+   return new Response(JSON.stringify({text:"SOURCED_CURRENT_ANSWER"}),{status:200,headers:{"content-type":"application/json"}});
+ }};
+ const origin={"content-type":"application/json","origin":"https://dashboard.example"};
+ const created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"chat"}),headers:origin}),e),id=(await created.json()).id;
+ const response=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Wie ist das Wetter heute in Schwelm?"}),headers:origin}),e);
+ assert.equal(response.status,200);const out=await response.json();assert.equal(calls.length,2);
+ assert.equal(calls[0].url,"https://private-asr/research/search");assert.equal(calls[0].body.query,"Wie ist das Wetter heute in Schwelm?");
+ assert.equal(calls[1].url,"https://private-asr/opencode/chat");assert.match(calls[1].body.message,/UNTRUSTED LIVE RESEARCH DATA/);assert.match(calls[1].body.message,/https:\/\/weather\.example\/current/);
+ assert.equal(out.route.tools.web_research,"USED:Gemini-Grounded");assert.equal(out.research.used,true);assert.equal(out.research.sources[0].url,"https://weather.example/current");
 });
