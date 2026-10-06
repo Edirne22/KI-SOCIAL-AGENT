@@ -1,0 +1,49 @@
+name: Start exact private Dünya Level 12 production
+on:
+  pull_request:
+    paths:
+      - "scripts/start_duenya_level12_exact.py"
+      - "tests/test_start_duenya_level12_exact.py"
+      - ".github/workflows/start-duenya-level12-exact.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/start_duenya_level12_exact.py"
+      - "tests/test_start_duenya_level12_exact.py"
+      - ".github/workflows/start-duenya-level12-exact.yml"
+permissions:
+  contents: read
+concurrency:
+  group: start-duenya-level12-exact
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Exact-task positive and negative controls
+        run: python -m unittest tests.test_start_duenya_level12_exact -v
+  start:
+    if: github.event_name == 'push'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Start only task f6f50c9f4c2690e4eb1fe978
+        run: python scripts/start_duenya_level12_exact.py
