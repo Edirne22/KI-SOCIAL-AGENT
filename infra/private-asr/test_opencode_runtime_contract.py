@@ -18,6 +18,7 @@ expected = {
     "_opencode_max_output": 65536,
     "_code_executor_contract": "repo-readonly-v1",
     "_research_runtime_revision": "block9-groq-429-fallback-v1",
+    "_private_video_runtime_revision": "duenya-ffmpeg-lease-renew-v1",
 }
 seen = {}
 first_function_line = min(
