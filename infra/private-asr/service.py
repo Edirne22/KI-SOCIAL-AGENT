@@ -28,6 +28,10 @@ _task = re.compile(r"[A-Za-z0-9_-]{10,64}\Z")
 _opencode_model = "openrouter/anthropic/claude-sonnet-4.5"
 _opencode_timeout = 90
 _opencode_max_output = 65536
+_opencode_code_config = "/etc/opencode/code.json"
+_code_workspace = "/tmp/edirne22-code-workspace"
+_code_repo = "https://github.com/Edirne22/KI-SOCIAL-AGENT.git"
+_code_executor_contract = "repo-readonly-v1"
 _research_runtime_revision = "block9-groq-429-fallback-v1"
 
 
@@ -38,15 +42,21 @@ def _authorized(headers):
 
 def _opencode_health():
     binary = shutil.which("opencode")
+    git_binary = shutil.which("git")
     config = "/etc/opencode/opencode.json"
     digest = config + ".sha256"
+    code_digest = _opencode_code_config + ".sha256"
     ready = bool(binary and os.path.isfile(config) and os.path.isfile(digest))
+    code_ready = bool(ready and git_binary and os.path.isfile(_opencode_code_config) and os.path.isfile(code_digest))
     return ready, {"ready": ready, "service": "opencode", "model": _opencode_model if ready else None,
-                   "response_contract": "text-v2" if ready else None}
+                   "response_contract": "text-v2" if ready else None,
+                   "code_ready": code_ready,
+                   "code_executor": _code_executor_contract if code_ready else None}
 
-def _opencode_text(output):
-    """Extract assistant text from OpenCode --format json NDJSON events."""
+def _opencode_result(output):
+    """Extract final assistant text plus completed tool names from OpenCode JSON events."""
     chunks = []
+    tools = []
     for raw_line in output.splitlines():
         line = raw_line.strip()
         if not line:
@@ -57,16 +67,69 @@ def _opencode_text(output):
             raise ValueError("invalid_opencode_json") from exc
         if not isinstance(event, dict):
             raise ValueError("invalid_opencode_event")
-        if event.get("type") != "text":
-            continue
         part = event.get("part")
-        if isinstance(part, dict):
+        if event.get("type") == "text" and isinstance(part, dict):
             text = part.get("text")
             if isinstance(text, str):
                 chunks.append(text)
+        elif event.get("type") == "tool_use" and isinstance(part, dict):
+            state = part.get("state")
+            tool = part.get("tool")
+            if isinstance(state, dict) and state.get("status") == "completed" and isinstance(tool, str):
+                tools.append(tool[:40])
     if not chunks:
         raise ValueError("missing_opencode_text")
-    return "".join(chunks).strip()
+    return "".join(chunks).strip(), list(dict.fromkeys(tools))
+
+
+def _prepare_code_workspace():
+    git = shutil.which("git")
+    if not git:
+        return False
+    git_dir = os.path.join(_code_workspace, ".git")
+    env = {"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/tmp", "GIT_TERMINAL_PROMPT": "0"}
+    try:
+        if not os.path.isdir(git_dir):
+            if os.path.exists(_code_workspace):
+                shutil.rmtree(_code_workspace)
+            clone = subprocess.run(
+                [git, "clone", "--depth", "1", "--filter=blob:none", "--sparse", "--branch", "main",
+                 "--single-branch", _code_repo, _code_workspace],
+                env=env, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=120, check=False,
+            )
+            if clone.returncode != 0:
+                return False
+            sparse = subprocess.run(
+                [git, "-C", _code_workspace, "sparse-checkout", "set",
+                 ".github", ".opencode", "Claude-Instandhaltung", "agents", "ai-central", "config",
+                 "docs", "infra", "memory", "profile", "race", "remotion", "rules", "scripts",
+                 "snapshots", "tests", "vision"],
+                env=env, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=90, check=False,
+            )
+            if sparse.returncode != 0:
+                return False
+        else:
+            fetch = subprocess.run(
+                [git, "-C", _code_workspace, "fetch", "--depth", "1", "origin", "main"],
+                env=env, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=90, check=False,
+            )
+            if fetch.returncode != 0:
+                return False
+            reset = subprocess.run(
+                [git, "-C", _code_workspace, "reset", "--hard", "FETCH_HEAD"],
+                env=env, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=30, check=False,
+            )
+            if reset.returncode != 0:
+                return False
+            clean = subprocess.run(
+                [git, "-C", _code_workspace, "clean", "-fdx"],
+                env=env, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=30, check=False,
+            )
+            if clean.returncode != 0:
+                return False
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    return True
 
 
 def _run_opencode(message):
@@ -99,10 +162,59 @@ def _run_opencode(message):
         if result.returncode != 0:
             return 502, {"error": "opencode_failed"}
         try:
-            text = _opencode_text(output)
+            text, _ = _opencode_result(output)
         except ValueError:
             return 502, {"error": "invalid_opencode_output"}
         return 200, {"text": text}
+    finally:
+        _lock.release()
+
+
+def _run_opencode_code(message):
+    if not _lock.acquire(False):
+        return 409, {"error": "busy"}
+    try:
+        if not _prepare_code_workspace():
+            return 503, {"error": "code_workspace_unavailable"}
+        provider_key = os.getenv("OPENROUTER_API_KEY", "")
+        if not provider_key:
+            return 503, {"error": "provider_unavailable"}
+        clean_env = {
+            "PATH": "/usr/local/bin:/usr/bin:/bin",
+            "HOME": "/tmp",
+            "GIT_TERMINAL_PROMPT": "0",
+            "OPENCODE_CONFIG": _opencode_code_config,
+            "OPENCODE_DISABLE_AUTOUPDATE": "1",
+            "OPENROUTER_API_KEY": provider_key,
+        }
+        guarded_prompt = (
+            "EDIRNE22 CODE EXECUTION CONTRACT:\n"
+            "You are inside a read-only sparse clone of the KI-SOCIAL-AGENT repository. "
+            "Use native OpenCode tools for repository facts. Do not emit XML or pseudo function_calls. "
+            "Shell is restricted to read-only git inspection and repository file discovery. "
+            "Do not claim commit, push or remote write access. Return a normal final answer only after tool results.\n\n"
+            "USER REQUEST:\n" + message
+        )
+        try:
+            result = subprocess.run(
+                ["opencode", "run", "--model", _opencode_model, "--format", "json", guarded_prompt],
+                cwd=_code_workspace, env=clean_env, stdin=subprocess.DEVNULL,
+                capture_output=True, text=True, timeout=120, check=False,
+            )
+        except subprocess.TimeoutExpired:
+            return 504, {"error": "timeout"}
+        output = (result.stdout or "").strip()
+        if len(output.encode("utf-8")) > _opencode_max_output:
+            return 502, {"error": "output_too_large"}
+        if result.returncode != 0:
+            return 502, {"error": "opencode_failed"}
+        try:
+            text, tools = _opencode_result(output)
+        except ValueError:
+            return 502, {"error": "invalid_opencode_output"}
+        if "<function_calls>" in text or "<invoke name=" in text:
+            return 502, {"error": "pseudo_tool_call_not_executed"}
+        return 200, {"text": text, "tools_used": tools, "workspace": _code_executor_contract}
     finally:
         _lock.release()
 
@@ -201,13 +313,13 @@ class Handler(BaseHTTPRequestHandler):
                                                 "research_runtime_revision": _research_runtime_revision})
 
     def do_POST(self):
-        if self.path not in ("/jobs","/private-video/jobs","/opencode/chat","/research/search"):
+        if self.path not in ("/jobs","/private-video/jobs","/opencode/chat","/opencode/code","/research/search"):
             return self.respond(404, {"error": "not_found"})
         if not _authorized(self.headers):
             return self.respond(401, {"error": "unauthorized"})
         try:
             size = int(self.headers.get("Content-Length", "-1"))
-            limit = 8192 if self.path == "/opencode/chat" else (2048 if self.path == "/research/search" else 1024)
+            limit = 8192 if self.path in ("/opencode/chat","/opencode/code") else (2048 if self.path == "/research/search" else 1024)
             if not 0 < size <= limit:
                 return self.respond(413, {"error": "size"})
             data = json.loads(self.rfile.read(size))
@@ -221,13 +333,13 @@ class Handler(BaseHTTPRequestHandler):
                 except Exception:
                     return self.respond(502, {"error": "research_provider_failed"})
                 return self.respond(200, result)
-            if self.path == "/opencode/chat":
+            if self.path in ("/opencode/chat","/opencode/code"):
                 if not isinstance(data, dict) or set(data) != {"message"}:
                     raise ValueError()
                 message = data.get("message")
                 if not isinstance(message, str) or not message.strip() or len(message) > 6000:
                     raise ValueError()
-                status, payload = _run_opencode(message)
+                status, payload = (_run_opencode_code(message) if self.path == "/opencode/code" else _run_opencode(message))
                 return self.respond(status, payload)
             if self.path == "/private-video/jobs":
                 if not isinstance(data, dict) or set(data) != {"task_id"} or not isinstance(data["task_id"],str) or not _task.fullmatch(data["task_id"]):
