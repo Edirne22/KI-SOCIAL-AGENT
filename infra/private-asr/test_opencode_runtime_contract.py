@@ -6,6 +6,7 @@ and external dependencies into CI. The test proves the three constants required 
 health/chat path exist exactly once, before either function can reference them.
 """
 import ast
+import json
 from pathlib import Path
 
 path = Path(__file__).with_name("service.py")
@@ -67,9 +68,14 @@ code_config = (repo_root / "infra/ai-central-tools/claude-code-readonly/opencode
 assert '"/opencode/code"' in service_text, "CODE endpoint missing from container service"
 assert worker.count('url.pathname === "/opencode/code"') >= 6, "CODE route must be wired through allow/method/body/readiness/health/proxy paths"
 assert "def _prepare_code_workspace" in service_text, "CODE workspace preparation missing"
-assert '"tools": true' in code_config, "CODE tools must be enabled"
-assert '"action":"edit","resource":"*","effect":"deny"' in code_config.replace(" ", ""), "CODE edits must stay denied"
-assert '"action":"shell","resource":"git push*","effect":"deny"' in code_config.replace(" ", ""), "git push must stay denied"
+code_cfg = json.loads(code_config)
+code_model = code_cfg["providers"]["openrouter"]["models"]["anthropic/claude-sonnet-4.5"]
+assert code_model["capabilities"]["tools"] is True, "CODE tools must be enabled"
+rules = code_cfg.get("permissions")
+assert isinstance(rules, list) and rules, "CODE permissions missing"
+assert {"action":"edit","resource":"*","effect":"deny"} in rules, "CODE edits must stay denied"
+assert {"action":"shell","resource":"git push*","effect":"deny"} in rules, "git push must stay denied"
+assert {"action":"shell","resource":"git rev-parse*","effect":"allow"} in rules, "read-only git inspection must stay allowed"
 assert " git nodejs npm" in dockerfile, "git must be installed in CODE runtime image"
 assert "claude-code-readonly/opencode.jsonc" in dockerfile, "CODE policy must be copied into image"
 assert "OPENCODE_CODE_GIT_TOOL_LIVE_OK" in workflow, "real CODE git-tool live smoke missing"
