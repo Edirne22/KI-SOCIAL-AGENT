@@ -4,6 +4,7 @@ type Env = {
   PRIVATE_ASR_INTERNAL_TOKEN: string;
   OPENROUTER_API_KEY: string;
   GEMINI_API_KEY: string;
+  NVIDIA_API_KEY?: string;
   SEARXNG_URL?: string;
   R2_ACCOUNT_ID: string; R2_ACCESS_KEY_ID: string;
   R2_SECRET_ACCESS_KEY: string; R2_BUCKET_NAME: string;
@@ -58,6 +59,7 @@ export default {
           PRIVATE_ASR_INTERNAL_TOKEN: env.PRIVATE_ASR_INTERNAL_TOKEN,
           OPENROUTER_API_KEY: env.OPENROUTER_API_KEY,
           GEMINI_API_KEY: env.GEMINI_API_KEY,
+          ...(env.NVIDIA_API_KEY ? {NVIDIA_API_KEY: env.NVIDIA_API_KEY} : {}),
           ...(env.SEARXNG_URL ? {SEARXNG_URL: env.SEARXNG_URL} : {}),
           R2_ACCOUNT_ID: env.R2_ACCOUNT_ID,
           R2_ACCESS_KEY_ID: env.R2_ACCESS_KEY_ID,
