@@ -89,6 +89,18 @@ jobs:
           for name in PRIVATE_ASR_INTERNAL_TOKEN OPENROUTER_API_KEY R2_ACCOUNT_ID R2_ACCESS_KEY_ID R2_SECRET_ACCESS_KEY R2_BUCKET_NAME TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID; do
             printf '%s' "${!name}" | npx wrangler secret put "$name" --config wrangler.jsonc
           done
+      - name: Restart named container onto deployed image
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://edirne22-private-asr.butupeli.workers.dev/admin/container-restart"
+          code=$(curl -sS -o /tmp/container-restart -w '%{http_code}' --max-time 30 -X POST -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
+          if [ "$code" != 202 ]; then
+            echo "CONTAINER_DEPLOYMENT_RESTART_FAILED: HTTP $code (body withheld)"
+            exit 1
+          fi
+          echo "CONTAINER_DEPLOYMENT_RESTART_REQUESTED"
+          sleep 5
       - name: Authenticated health check
         shell: bash
         run: |
@@ -132,9 +144,3 @@ jobs:
             exit 1
           fi
           python3 -c 'import json; data=json.load(open("/tmp/opencode-live")); text=data.get("text","").strip(); assert text == "OPENCODE_CLAUDE_OK", repr(text[:120]); print("OPENCODE_CLAUDE_LIVE_OK")'
-      - name: Recover one already-approved private video task if it was previously misrouted
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 -m pip install --disable-pip-version-check --quiet boto3 requests
-          python3 -m scripts.private_video_recovery_dispatch
