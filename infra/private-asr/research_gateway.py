@@ -34,6 +34,28 @@ def research(query: str) -> dict:
     return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],
             "warning":groq_warning or "NO_LIVE_RESEARCH_PROVIDER_AVAILABLE"}
 
+
+def _safe_shape(value) -> str:
+    if value is None:
+        return "none"
+    if isinstance(value,list):
+        return f"list{len(value)}"
+    if isinstance(value,dict):
+        return "dict:" + ",".join(sorted(str(k)[:24] for k in value.keys()))[:48]
+    return type(value).__name__[:16]
+
+def _groq_message_shape(message: dict) -> str:
+    keys=",".join(sorted(str(k)[:24] for k in message.keys()))[:58]
+    executed=message.get("executed_tools")
+    if isinstance(executed,list) and executed and isinstance(executed[0],dict):
+        executed_shape=f"list{len(executed)}:" + ",".join(sorted(str(k)[:20] for k in executed[0].keys()))[:32]
+    else:
+        executed_shape=_safe_shape(executed)
+    return (
+        f"mk={keys};et={executed_shape};cit={_safe_shape(message.get('citations'))};"
+        f"ann={_safe_shape(message.get('annotations'))}"
+    )[:160]
+
 def _groq_browser_search(query: str,key: str) -> dict|None:
     prompt=("Search the live public web for this request. Give a concise factual synthesis and cite "
             "current claims with source URLs. Never invent facts or URLs. REQUEST:\n"+query)
@@ -88,7 +110,9 @@ def _groq_browser_search(query: str,key: str) -> dict|None:
             if isinstance(url,str) and url.startswith(("https://","http://")) and url not in urls:
                 urls.append(url)
     if not urls:
-        return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],"warning":"GROQ_200_NO_SOURCE_URLS"}
+        shape=_groq_message_shape(message)
+        return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],
+                "warning":"GROQ_200_NO_SOURCE_URLS:"+shape}
     rows=[{"title":url.split("/")[2],"url":url,"snippet":content[:800]} for url in urls[:MAX_RESULTS]]
     return _bounded({"provider":"Groq-BrowserSearch","live_search":True,"results":rows,"warning":None})
 
