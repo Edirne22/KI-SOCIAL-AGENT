@@ -15,6 +15,8 @@ jobs:
     env:
       AI_DASHBOARD_TOKEN: ${{ secrets.AI_DASHBOARD_TOKEN }}
       PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      REQUIRE_DASHBOARD_RESEARCH: "false"
       DASHBOARD_URL: https://edirne22-ai-central-dashboard.butupeli.workers.dev
     steps:
       - uses: actions/checkout@v4
@@ -31,6 +33,22 @@ jobs:
       - name: Real production dashboard browser E2E
         working-directory: infra/ai-central-dashboard
         run: node tests/live-dashboard-e2e.mjs
+      - name: Live branch Groq browser-search gateway proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$GROQ_API_KEY" || { echo "GROQ_API_KEY unavailable"; exit 1; }
+          python3 -m pip install --quiet requests
+          PYTHONPATH=infra/private-asr python3 - <<'PY'
+          import os
+          import research_gateway as rg
+          out=rg._groq_browser_search("What is the current date? Return current public web sources.",os.environ["GROQ_API_KEY"])
+          assert out.get("live_search") is True, str(out.get("warning"))
+          assert out.get("provider")=="Groq-BrowserSearch"
+          rows=out.get("results") or []
+          assert rows and all(str(x.get("url","")).startswith(("https://","http://")) for x in rows)
+          print("BRANCH_GROQ_BROWSER_SEARCH_SOURCE_PROOF_OK")
+          PY
       - name: Agent 21 direct research diagnostic after E2E failure
         if: failure()
         shell: bash
