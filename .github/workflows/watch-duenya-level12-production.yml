@@ -1,0 +1,48 @@
+name: Watch exact private Dünya Level 12 production
+on:
+  pull_request:
+    paths:
+      - "scripts/watch_duenya_level12_production.py"
+      - "tests/test_watch_duenya_level12_production.py"
+      - ".github/workflows/watch-duenya-level12-production.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/watch_duenya_level12_production.py"
+      - "tests/test_watch_duenya_level12_production.py"
+      - ".github/workflows/watch-duenya-level12-production.yml"
+permissions:
+  contents: read
+concurrency:
+  group: watch-duenya-level12-production
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Watcher regressions
+        run: python -m unittest tests.test_watch_duenya_level12_production tests.test_production_machine_watchdog -v
+  watch:
+    if: github.event_name == 'push'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Watch exact private task until terminal state
+        run: python -m scripts.watch_duenya_level12_production
