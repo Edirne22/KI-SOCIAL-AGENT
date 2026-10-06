@@ -74,7 +74,16 @@ def _groq_browser_search(query: str,key: str) -> dict|None:
         if url not in urls:
             urls.append(url)
     for item in (message.get("executed_tools") or []):
-        for row in (item.get("search_results") or []):
+        if not isinstance(item,dict):
+            continue
+        search_results=item.get("search_results")
+        if isinstance(search_results,dict):
+            source_rows=search_results.get("results") or []
+        elif isinstance(search_results,list):
+            source_rows=search_results
+        else:
+            source_rows=[]
+        for row in source_rows:
             url=row.get("url") if isinstance(row,dict) else None
             if isinstance(url,str) and url.startswith(("https://","http://")) and url not in urls:
                 urls.append(url)
