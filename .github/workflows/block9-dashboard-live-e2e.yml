@@ -14,6 +14,7 @@ jobs:
     timeout-minutes: 12
     env:
       AI_DASHBOARD_TOKEN: ${{ secrets.AI_DASHBOARD_TOKEN }}
+      PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
       DASHBOARD_URL: https://edirne22-ai-central-dashboard.butupeli.workers.dev
     steps:
       - uses: actions/checkout@v4
@@ -30,3 +31,36 @@ jobs:
       - name: Real production dashboard browser E2E
         working-directory: infra/ai-central-dashboard
         run: node tests/live-dashboard-e2e.mjs
+      - name: Agent 21 direct research diagnostic after E2E failure
+        if: failure()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$PRIVATE_ASR_INTERNAL_TOKEN" || { echo "DIRECT_RESEARCH_DIAG token=missing"; exit 1; }
+          url="https://edirne22-private-asr.butupeli.workers.dev/research/search"
+          payload='{"query":"Aktuell: Recherchiere das heutige Datum im Web und nenne mindestens eine aktuelle Quellen-URL."}'
+          code=$(curl -sS -o /tmp/direct-research -w '%{http_code}' --max-time 90 \
+            -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" -H 'Content-Type: application/json' \
+            --data "$payload" "$url" || true)
+          python3 - "$code" <<'PY'
+          import json,re,sys,subprocess
+          code=sys.argv[1]
+          provider="unknown"; warning=f"DIRECT_RESEARCH_HTTP_{code}"; source_count=0; live=False
+          if code=="200":
+              try:
+                  d=json.load(open("/tmp/direct-research"))
+                  provider=str(d.get("provider") or "unknown")[:80]
+                  warning=str(d.get("warning") or "none")[:120]
+                  source_count=len(d.get("results") or [])
+                  live=d.get("live_search") is True
+              except Exception:
+                  warning="DIRECT_RESEARCH_NON_JSON"
+          safe_warning=re.sub(r"[^A-Za-z0-9 _.,:;()/\'-]"," ",warning)
+          safe_warning=re.sub(r"\\s+"," ",safe_warning).strip()[:120] or "unknown"
+          print(f"DIRECT_RESEARCH_DIAG live={str(live).lower()} provider={provider} sources={source_count} warning={safe_warning}")
+          payload={"run_id":"${{ github.run_id }}","commit":"${{ github.sha }}","machine":"private-asr-container",
+                   "route":"/research/search","provider":provider,"state":"success" if live else "failure",
+                   "error_class":safe_warning,"container_health":"not_rechecked","opencode_health":"dashboard_chat_passed"}
+          p=subprocess.run(["python3","scripts/agent21_runtime_diagnostics.py"],input=json.dumps(payload),text=True,capture_output=True,check=True)
+          print(p.stdout.strip())
+          PY
