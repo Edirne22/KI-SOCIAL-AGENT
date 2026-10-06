@@ -123,6 +123,27 @@ jobs:
           done
           echo "OPENCODE_TARGET_CONTRACT_LIVE_FAILED"
           exit 1
+      - name: Authenticated live research smoke with source proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://edirne22-private-asr.butupeli.workers.dev/research/search"
+          payload='{"query":"What is today's date? Return current public web sources."}'
+          code=$(curl -sS -o /tmp/research-live -w '%{http_code}' --max-time 90 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" -H 'Content-Type: application/json' --data "$payload" "$url" || true)
+          if [ "$code" != 200 ]; then
+            echo "RESEARCH_LIVE_FAILED: HTTP $code (body withheld)"
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json
+          d=json.load(open("/tmp/research-live"))
+          assert d.get("live_search") is True, d.get("warning")
+          assert isinstance(d.get("provider"),str) and d["provider"]
+          rows=d.get("results")
+          assert isinstance(rows,list) and rows
+          assert all(isinstance(x,dict) and str(x.get("url","")).startswith(("https://","http://")) for x in rows)
+          print("RESEARCH_LIVE_SOURCE_PROOF_OK provider="+d["provider"])
+          PY
       - name: Authenticated OpenCode Claude live smoke
         shell: bash
         run: |
