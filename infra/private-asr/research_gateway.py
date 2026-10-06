@@ -10,7 +10,7 @@ MAX_RESULTS=6
 GEMINI_MODEL="gemini-3.8-flash"
 GEMINI_URL=f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 OPENROUTER_URL="https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_MODEL="anthropic/claude-sonnet-4.5"
+OPENROUTER_MODEL="anthropic/claude-sonnet-4.5"\nGROQ_URL="https://api.groq.com/openai/v1/chat/completions"\nGROQ_MODEL="openai/gpt-oss-20b"
 
 def research(query: str) -> dict:
     query=(query or "").strip()
@@ -24,6 +24,14 @@ def research(query: str) -> dict:
         openrouter_warning=(result or {}).get("warning")
     else:
         openrouter_warning=None
+    groq=os.getenv("GROQ_API_KEY","").strip()
+    if groq:
+        result=_groq_browser_search(query,groq)
+        if result and result.get("live_search"):
+            return result
+        groq_warning=(result or {}).get("warning")
+    else:
+        groq_warning=None
     configured=os.getenv("SEARXNG_URL","").strip()
     if configured:
         base=_valid_searxng_url(configured)
@@ -38,7 +46,42 @@ def research(query: str) -> dict:
         if result:
             return result
     return {"live_search":False,"provider":None,"results":[],
-            "warning":openrouter_warning or "NO_LIVE_RESEARCH_PROVIDER_AVAILABLE"}
+            "warning":groq_warning or openrouter_warning or "NO_LIVE_RESEARCH_PROVIDER_AVAILABLE"}
+
+def _groq_browser_search(query: str,key: str) -> dict|None:
+    prompt=("Search the live public web for this request. Give a concise factual synthesis and cite "
+            "current claims with source URLs. Never invent facts or URLs. REQUEST:\n"+query)
+    try:
+        response=requests.post(GROQ_URL,
+            headers={"Authorization":"Bearer "+key,"Content-Type":"application/json"},
+            json={"model":GROQ_MODEL,"messages":[{"role":"user","content":prompt}],
+                  "tool_choice":"required","tools":[{"type":"browser_search"}],
+                  "citation_options":"enabled","max_completion_tokens":2048},timeout=60)
+    except requests.RequestException:
+        return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],"warning":"GROQ_REQUEST_ERROR"}
+    if response.status_code!=200:
+        return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],
+                "warning":f"GROQ_HTTP_{response.status_code}"}
+    try:
+        data=response.json()
+        message=data["choices"][0]["message"]
+        content=str(message.get("content") or "")
+    except (ValueError,KeyError,IndexError,TypeError):
+        return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],"warning":"GROQ_INVALID_RESPONSE"}
+    urls=[]
+    for url in re.findall(r"https?://[^\\s)\\]}>\\"']+",content):
+        url=url.rstrip(".,;:")
+        if url not in urls:
+            urls.append(url)
+    for item in (message.get("executed_tools") or []):
+        for row in (item.get("search_results") or []):
+            url=row.get("url") if isinstance(row,dict) else None
+            if isinstance(url,str) and url.startswith(("https://","http://")) and url not in urls:
+                urls.append(url)
+    if not urls:
+        return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],"warning":"GROQ_200_NO_SOURCE_URLS"}
+    rows=[{"title":url.split("/")[2],"url":url,"snippet":content[:800]} for url in urls[:MAX_RESULTS]]
+    return _bounded({"provider":"Groq-BrowserSearch","live_search":True,"results":rows,"warning":None})
 
 def _openrouter_search(query: str,key: str) -> dict|None:
     prompt=("Search the live public web for this request. Give a concise factual synthesis and cite "
