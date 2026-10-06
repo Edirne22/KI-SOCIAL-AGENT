@@ -776,6 +776,7 @@ export default {async fetch(req,env){
   }
   if(!env.AI_CENTRAL_R2)return json({error:"storage unavailable"},503);
   if(path==="/api/auth/session")return await webLogin(req,env);
+  if(path==="/api/auth/status")return await requestAuthenticated(req,env)?json({authenticated:true},200):json({authenticated:false},401);
   if(!await requestAuthenticated(req,env))return json({error:"unauthorized"},401);
   try{
     if(path==="/api/previews")return await listPreviews(req,env);
