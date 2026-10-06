@@ -49,7 +49,8 @@ def _openrouter_search(query: str,key: str) -> dict|None:
             json={"model":OPENROUTER_MODEL,"messages":[{"role":"user","content":prompt}],
                   "tools":[{"type":"openrouter:web_search","parameters":{"engine":"auto","max_results":MAX_RESULTS}}]},timeout=60)
     except requests.RequestException:
-        return None
+        return {"live_search":False,"provider":"OpenRouter-Web","results":[],
+                "warning":"OPENROUTER_REQUEST_EXCEPTION"}
     if response.status_code!=200:
         return {"live_search":False,"provider":"OpenRouter-Web","results":[],
                 "warning":f"OPENROUTER_HTTP_{response.status_code}"}
@@ -57,7 +58,8 @@ def _openrouter_search(query: str,key: str) -> dict|None:
         data=response.json()
         content=str(data["choices"][0]["message"]["content"])
     except (ValueError,KeyError,IndexError,TypeError):
-        return None
+        return {"live_search":False,"provider":"OpenRouter-Web","results":[],
+                "warning":"OPENROUTER_RESPONSE_PARSE_ERROR"}
     urls=[]
     for url in re.findall(r"https?://[^\\s)\\]}>\"']+",content):
         url=url.rstrip(".,;:")
