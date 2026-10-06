@@ -305,8 +305,8 @@ test("current CHAT question uses bounded research before Claude and reports exac
 
 
 test("dashboard deploy gates core Claude E2E while research remains a separate live proof",()=>{
- const deploy=readFileSync("../../.github/workflows/ai-central-dashboard-deploy.yml","utf8");
- const researchGate=readFileSync("../../.github/workflows/block9-dashboard-live-e2e.yml","utf8");
+ const deploy=readFileSync(new URL("../../../.github/workflows/ai-central-dashboard-deploy.yml",import.meta.url),"utf8");
+ const researchGate=readFileSync(new URL("../../../.github/workflows/block9-dashboard-live-e2e.yml",import.meta.url),"utf8");
  assert.match(deploy,/REQUIRE_DASHBOARD_RESEARCH:\s*["']false["']/);
  assert.match(researchGate,/Live branch Groq browser-search gateway proof/);
  assert.match(researchGate,/BRANCH_GROQ_BROWSER_SEARCH_SOURCE_PROOF_OK/);
