@@ -40,3 +40,26 @@ Content/Workflow → Telegram-Freigabe/Ablehnung → Publishing-Ergebnis → Ana
 
 ## Pflicht für Content-Agenten
 Vor Content-Erstellung, Wochenplanung, MotoGP-Auswahl und strategischer Priorisierung `memory/MEMORY_CONTEXT.md` lesen. Bei Konflikt gilt: Safety/Brand/Quellenregeln > direkte Nutzerkorrektur > kuratierte eigene Performance > externe Inspiration.
+
+## KI-Zentrale: R2-first operatives und lernendes Gedächtnis
+
+Für die universelle KI-Zentrale ist privates R2 der primäre persistente Speicher für operative Agenten-Evidenz und lernende Memory-Pakete. GitHub bleibt Code-, Guardrail- und freigegebener Kernregel-Speicher; hochfrequente Agentenläufe und Dialoge werden nicht als Git-Commit-Log missbraucht.
+
+Verbindlicher Datenfluss:
+
+```text
+Agent/Job/Dialog/Research
+→ private R2 append-only evidence
+→ Agent 14 kuratiert/dedupliziert/bewertet
+→ private R2 learned memory + bounded context packet
+→ nächster autorisierter Agentenlauf
+→ neue Evidenz
+```
+
+R2-Memory muss mindestens nach Agent, Job/Task, UTC-Zeit, Revision, Evidenztyp und Provenienz adressierbar sein. Antworten wie „Was hast du heute gemacht?“ dürfen nur aus diesen belegten Ereignissen bzw. verknüpfter GitHub-/Runtime-Evidenz erzeugt werden.
+
+### Autoritätsgrenze
+
+Lernen verbessert Fachwissen, Arbeitsmuster, Fehlervermeidung und Kontext. Es darf niemals selbstständig Guardrails, Sicherheitsregeln, Kostenfreigaben, Provider-/Secret-Rechte, Veröffentlichungsrechte oder Human Authority verändern. Solche Regeln bleiben außerhalb des lernenden R2-Memory autoritativ versioniert. Private Rohmedien, Secrets und unnötige personenbezogene Daten werden nicht in semantisches Memory kopiert; Memory speichert Referenz/Provenienz statt Geheimnisse oder unnötige Rohdaten.
+
+Der bestehende GitHub-Memory-Loop bleibt während der Migration als auditierbarer Fallback bestehen. Eine Abschaltung erfolgt erst nach R2-E2E-Abnahme, Backfill/Recovery-Test und nachgewiesener Context-Read-Funktion der Agenten.
