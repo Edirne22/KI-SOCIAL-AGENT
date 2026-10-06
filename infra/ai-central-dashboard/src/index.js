@@ -6,7 +6,7 @@ import {createSession,loadSession,appendChatMessage,appendChatExchange} from "./
 const PREFIX="ai-central/v1/inbox/";
 const MAX_MESSAGE=2500;
 const MAX_FILE=8*1024*1024;
-const TYPES=new Set(["text/plain","text/markdown","application/json","image/png","image/jpeg","video/mp4","audio/webm","audio/mp4","audio/x-m4a","audio/m4a","audio/ogg","application/pdf"]);
+const TYPES=new Set(["text/plain","text/markdown","text/csv","application/json","application/zip","application/x-zip-compressed","application/pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.presentationml.presentation","image/png","image/jpeg","video/mp4","audio/webm","audio/mp4","audio/x-m4a","audio/m4a","audio/ogg","application/octet-stream"]);
 const DENY=/(?:authorization\s*:\s*bearer|api[_-]?key\s*[=:]|secret\s*[=:]|password\s*[=:])\s*\S+/i;
 function sameFlatRecord(actual,expected){
  return actual!==null&&typeof actual==="object"&&!Array.isArray(actual)&&Object.keys(actual).length===Object.keys(expected).length&&Object.entries(expected).every(([key,value])=>Object.hasOwn(actual,key)&&actual[key]===value);
@@ -737,15 +737,16 @@ async function chatMessage(req,env){
   try{await loadSession(env,body.session_id)}catch(err){
     return json({error:err instanceof Error?err.message:"SESSION_ERROR"},400);
   }
-  // CHAT remains conversational. CODE is explicitly identified as the guarded
-  // Agent-21 coding route; this metadata is evidence of routing intent, not proof
-  // that a write/test/PR occurred. Provider credentials never reach the browser.
+  // CODE is the universal coding workspace. Agent 21 is an available specialist
+  // gate for Edirne22-internal infrastructure work, never the global CODE identity.
+  // Metadata is capability truth, not proof that a tool was used.
   const session=await loadSession(env,body.session_id);
   const route=session.mode==="code"?{
-    mode:"CODE",gate:"AGENT21_GUARDED",model:"Claude Sonnet 4.5",
+    mode:"CODE",workspace:"UNIVERSAL",gate:"DIRECT_DEVELOPMENT",
+    specialist_gate:"AGENT21_FOR_EDIRNE22_INTERNAL",model:"Claude Sonnet 4.5",
     provider_route:"OpenCode -> OpenRouter -> Anthropic",
-    tools:{opencode:true,agent21:true,github:"GATED",web_research:"NOT_YET_WIRED"},
-    execution:"READ_ONLY_UNTIL_GUARDED_ACTION"
+    tools:{opencode:true,agent21:"CONTEXTUAL",github:"NOT_YET_WIRED",web_research:"NOT_YET_WIRED",r2_files:"UPLOAD_ONLY"},
+    execution:"TEXT_ONLY_UNTIL_TOOL_GATE_WIRED"
   }:{
     mode:"CHAT",gate:"CONVERSATION",model:"Claude Sonnet 4.5",
     provider_route:"OpenCode -> OpenRouter -> Anthropic",
