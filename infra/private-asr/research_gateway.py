@@ -41,13 +41,22 @@ def _groq_browser_search(query: str,key: str) -> dict|None:
         response=requests.post(GROQ_URL,
             headers={"Authorization":"Bearer "+key,"Content-Type":"application/json"},
             json={"model":GROQ_MODEL,"messages":[{"role":"user","content":prompt}],
-                  "tool_choice":"required","tools":[{"type":"browser_search"}],
-                  "citation_options":"enabled","max_completion_tokens":2048},timeout=60)
+                  "temperature":1,"max_completion_tokens":2048,"top_p":1,"stream":False,"stop":None,
+                  "tool_choice":"required","tools":[{"type":"browser_search"}]},timeout=60)
     except requests.RequestException:
         return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],"warning":"GROQ_REQUEST_ERROR"}
     if response.status_code!=200:
-        return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],
-                "warning":f"GROQ_HTTP_{response.status_code}"}
+        detail=""
+        try:
+            err=response.json().get("error") or {}
+            detail=str(err.get("message") or err.get("code") or "")[:160]
+            detail=re.sub(r"[^A-Za-z0-9 _.,:;()/'-]","",detail)
+        except (ValueError,AttributeError,TypeError):
+            pass
+        warning=f"GROQ_HTTP_{response.status_code}"
+        if detail:
+            warning += ":"+detail
+        return {"live_search":False,"provider":"Groq-BrowserSearch","results":[],"warning":warning}
     try:
         data=response.json()
         message=data["choices"][0]["message"]
