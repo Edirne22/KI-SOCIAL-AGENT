@@ -54,6 +54,9 @@ assert 'if [ "$code" != 202 ]' in workflow, "restart must require HTTP 202"
 assert workflow.index(restart_name) < workflow.index(revision_name), "restart must precede revision gate"
 assert workflow.index(revision_name) < workflow.index(research_name), "revision gate must precede research smoke"
 assert workflow.index(revision_name) < workflow.index(claude_name), "revision gate must precede Claude smoke"
-assert restart_path in worker and "restartForDeployment()" in worker, "worker restart route/handler missing"
+assert restart_path in worker, "worker restart route missing"
+assert "await instance.destroy()" in worker, "deploy restart must use documented direct container lifecycle destroy"
+assert "restartForDeployment()" not in worker, "legacy restart RPC wrapper must not remain"
+assert 'container_restart_failed' in worker, "restart failure must return bounded diagnostic"
 
 print("OPENCODE_RUNTIME_CONSTANTS_OK")
