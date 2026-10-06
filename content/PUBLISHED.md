@@ -55,7 +55,7 @@ Medienstatus: HERSTELLER_PREVIEW
 Bild: assets/images/2026-09/2026-09-25-bike-ducati-panigale-v4.jpg
 
 ## Instagram
-Status: FREIGEGEBEN
+Status: VERWORFEN
 Publication-Claim: IN_BEARBEITUNG 35778886407-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-09-22-daily
