@@ -4,7 +4,7 @@
 FROM python:3.11-slim-bookworm
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1 \
     EDIRNE22_LOCAL_WHISPER_MODEL=/opt/private-asr-model
-RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg ca-certificates fonts-dejavu-core nodejs npm \
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg ca-certificates fonts-dejavu-core git nodejs npm \
  && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 # OpenCode is baked into the paid container image once; never install it per chat request.
@@ -15,9 +15,11 @@ RUN npm install --global "@opencode/cli@${OPENCODE_VERSION}" \
  && npm cache clean --force
 # Claude-only read-only config is immutable in the runtime image; no provider key is baked in.
 COPY infra/ai-central-tools/claude-only/opencode.jsonc /etc/opencode/opencode.json
-RUN chmod 0444 /etc/opencode/opencode.json \
+COPY infra/ai-central-tools/claude-code-readonly/opencode.jsonc /etc/opencode/code.json
+RUN chmod 0444 /etc/opencode/opencode.json /etc/opencode/code.json \
  && sha256sum /etc/opencode/opencode.json | cut -d' ' -f1 > /etc/opencode/opencode.json.sha256 \
- && chmod 0444 /etc/opencode/opencode.json.sha256
+ && sha256sum /etc/opencode/code.json | cut -d' ' -f1 > /etc/opencode/code.json.sha256 \
+ && chmod 0444 /etc/opencode/opencode.json.sha256 /etc/opencode/code.json.sha256
 RUN python -m pip install --no-cache-dir faster-whisper==1.2.1 boto3==1.40.56 requests==2.32.5 huggingface-hub==0.35.3 scenedetect[opencv-headless]==0.6.7
 # Fetch multilingual tiny model at IMAGE BUILD only. Runtime is offline; no user audio in image.
 RUN HF_HUB_OFFLINE=0 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='Systran/faster-whisper-tiny', local_dir='/opt/private-asr-model', allow_patterns=['config.json','model.bin','tokenizer.json','vocabulary.*'])" \
