@@ -107,6 +107,30 @@ class ResearchGatewayTests(unittest.TestCase):
         self.assertNotIn("private.invalid",warning)
         self.assertNotIn("not-inspected",warning)
 
+    def test_groq_429_uses_single_120b_browser_search_fallback(self):
+        class RateLimited:
+            status_code=429
+            text='{"error":{"message":"Rate limit reached"}}'
+            def json(self):
+                return {"error":{"message":"Rate limit reached"}}
+        class FallbackSuccess:
+            status_code=200
+            def json(self):
+                return {"choices":[{"message":{
+                    "content":"Current result.",
+                    "executed_tools":[{"search_results":{"results":[
+                        {"title":"Current source","url":"https://example.com/current"}
+                    ]}}]
+                }}]}
+        with patch.object(rg.requests,"post",side_effect=[RateLimited(),FallbackSuccess()]) as post:
+            out=rg._groq_browser_search("What is the current date?","test-key")
+        self.assertTrue(out["live_search"])
+        self.assertEqual(out["provider"],"Groq-BrowserSearch")
+        self.assertEqual(out["results"][0]["url"],"https://example.com/current")
+        self.assertEqual(post.call_count,2)
+        self.assertEqual(post.call_args_list[0].kwargs["json"]["model"],rg.GROQ_MODEL)
+        self.assertEqual(post.call_args_list[1].kwargs["json"]["model"],rg.GROQ_RATE_FALLBACK_MODEL)
+
     def test_groq_400_exposes_bounded_provider_detail(self):
         class GroqErrorResponse:
             status_code=400
