@@ -1,6 +1,7 @@
 """Provider-neutral bounded live-research gateway for Block 9."""
 from __future__ import annotations
 import os
+import re
 import requests
 from search_provider import _search_searxng, _valid_searxng_url
 
@@ -8,11 +9,18 @@ MAX_QUERY=500
 MAX_RESULTS=6
 GEMINI_MODEL="gemini-3.8-flash"
 GEMINI_URL=f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
+OPENROUTER_URL="https://openrouter.ai/api/v1/chat/completions"
+OPENROUTER_MODEL="anthropic/claude-sonnet-4.5"
 
 def research(query: str) -> dict:
     query=(query or "").strip()
     if not query or len(query)>MAX_QUERY:
         raise ValueError("invalid_query")
+    openrouter=os.getenv("OPENROUTER_API_KEY","").strip()
+    if openrouter:
+        result=_openrouter_search(query,openrouter)
+        if result:
+            return result
     configured=os.getenv("SEARXNG_URL","").strip()
     if configured:
         base=_valid_searxng_url(configured)
@@ -28,6 +36,33 @@ def research(query: str) -> dict:
             return result
     return {"live_search":False,"provider":None,"results":[],
             "warning":"NO_LIVE_RESEARCH_PROVIDER_AVAILABLE"}
+
+def _openrouter_search(query: str,key: str) -> dict|None:
+    prompt=("Search the live public web for this request. Give a concise factual synthesis and cite "
+            "every current claim with markdown source links. Never invent facts or URLs. REQUEST:\n"+query)
+    try:
+        response=requests.post(OPENROUTER_URL,
+            headers={"Authorization":"Bearer "+key,"Content-Type":"application/json"},
+            json={"model":OPENROUTER_MODEL,"messages":[{"role":"user","content":prompt}],
+                  "plugins":[{"id":"web","max_results":MAX_RESULTS}]},timeout=60)
+    except requests.RequestException:
+        return None
+    if response.status_code!=200:
+        return None
+    try:
+        data=response.json()
+        content=str(data["choices"][0]["message"]["content"])
+    except (ValueError,KeyError,IndexError,TypeError):
+        return None
+    urls=[]
+    for url in re.findall(r"https?://[^\\s)\\]}>\"']+",content):
+        url=url.rstrip(".,;:")
+        if url not in urls:
+            urls.append(url)
+    if not urls:
+        return None
+    rows=[{"title":url.split("/")[2],"url":url,"snippet":content[:800]} for url in urls[:MAX_RESULTS]]
+    return _bounded({"provider":"OpenRouter-Web","live_search":True,"results":rows,"warning":None})
 
 def _gemini_search(query: str,key: str) -> dict|None:
     prompt=("Search the live public web for the user's request below. Return a concise factual "
