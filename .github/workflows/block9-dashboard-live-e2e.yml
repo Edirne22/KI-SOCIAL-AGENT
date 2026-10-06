@@ -38,7 +38,7 @@ jobs:
           set -euo pipefail
           test -n "$PRIVATE_ASR_INTERNAL_TOKEN" || { echo "DIRECT_RESEARCH_DIAG token=missing"; exit 1; }
           url="https://edirne22-private-asr.butupeli.workers.dev/research/search"
-          payload='{"query":"Aktuell: Recherchiere das heutige Datum im Web und nenne mindestens eine aktuelle Quellen-URL."}'
+          payload='{"query":"What is the current date? Return current public web sources."}'
           code=$(curl -sS -o /tmp/direct-research -w '%{http_code}' --max-time 90 \
             -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" -H 'Content-Type: application/json' \
             --data "$payload" "$url" || true)
