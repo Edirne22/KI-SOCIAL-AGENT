@@ -19,8 +19,11 @@ def research(query: str) -> dict:
     openrouter=os.getenv("OPENROUTER_API_KEY","").strip()
     if openrouter:
         result=_openrouter_search(query,openrouter)
-        if result:
+        if result and result.get("live_search"):
             return result
+        openrouter_warning=(result or {}).get("warning")
+    else:
+        openrouter_warning=None
     configured=os.getenv("SEARXNG_URL","").strip()
     if configured:
         base=_valid_searxng_url(configured)
@@ -35,7 +38,7 @@ def research(query: str) -> dict:
         if result:
             return result
     return {"live_search":False,"provider":None,"results":[],
-            "warning":"NO_LIVE_RESEARCH_PROVIDER_AVAILABLE"}
+            "warning":openrouter_warning or "NO_LIVE_RESEARCH_PROVIDER_AVAILABLE"}
 
 def _openrouter_search(query: str,key: str) -> dict|None:
     prompt=("Search the live public web for this request. Give a concise factual synthesis and cite "
@@ -48,7 +51,8 @@ def _openrouter_search(query: str,key: str) -> dict|None:
     except requests.RequestException:
         return None
     if response.status_code!=200:
-        return None
+        return {"live_search":False,"provider":"OpenRouter-Web","results":[],
+                "warning":f"OPENROUTER_HTTP_{response.status_code}"}
     try:
         data=response.json()
         content=str(data["choices"][0]["message"]["content"])
@@ -60,7 +64,8 @@ def _openrouter_search(query: str,key: str) -> dict|None:
         if url not in urls:
             urls.append(url)
     if not urls:
-        return None
+        return {"live_search":False,"provider":"OpenRouter-Web","results":[],
+                "warning":"OPENROUTER_200_NO_SOURCE_URLS"}
     rows=[{"title":url.split("/")[2],"url":url,"snippet":content[:800]} for url in urls[:MAX_RESULTS]]
     return _bounded({"provider":"OpenRouter-Web","live_search":True,"results":rows,"warning":None})
 
