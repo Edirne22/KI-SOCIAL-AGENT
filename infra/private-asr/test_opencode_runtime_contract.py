@@ -15,6 +15,7 @@ expected = {
     "_opencode_model": "openrouter/anthropic/claude-sonnet-4.5",
     "_opencode_timeout": 90,
     "_opencode_max_output": 65536,
+    "_research_runtime_revision": "block9-groq-429-fallback-v1",
 }
 seen = {}
 first_function_line = min(
