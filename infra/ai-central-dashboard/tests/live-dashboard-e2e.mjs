@@ -32,7 +32,7 @@ try{
   if(!claudeStatus?.includes("OpenCode -> OpenRouter -> Anthropic"))throw new Error("dashboard route marker missing");
   console.log("DASHBOARD_CLAUDE_VISIBLE_E2E_OK");
 
-  await page.locator("#chatMessage").fill("Aktuell: Recherchiere das heutige Datum im Web und nenne mindestens eine aktuelle Quellen-URL.");
+  await page.locator("#chatMessage").fill("What is the current date? Return current public web sources.");
   const researchResponsePromise=page.waitForResponse(r=>r.url().endsWith("/api/chat/message")&&r.request().method()==="POST");
   await page.locator("#chatSend").click();
   const researchResponse=await researchResponsePromise;
