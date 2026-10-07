@@ -186,7 +186,7 @@ test("CODE session routes one bounded message through private OpenCode service a
  const e=env(),calls=[];e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
  e.PRIVATE_ASR_SERVICE={fetch:async(url,opts)=>{
    calls.push({url:String(url),method:opts.method,authorization:opts.headers.authorization,body:JSON.parse(opts.body)});
-   return new Response(JSON.stringify({text:"OPENCODE_DASHBOARD_OK"}),{status:200,headers:{"content-type":"application/json"}});
+   return new Response(JSON.stringify({text:"OPENCODE_DASHBOARD_OK",workspace:"repo-readonly-v1",tools_used:["bash"]}),{status:200,headers:{"content-type":"application/json"}});
  }};
  const origin={"content-type":"application/json","origin":"https://dashboard.example"};
  const created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"code"}),headers:origin}),e);
@@ -194,7 +194,7 @@ test("CODE session routes one bounded message through private OpenCode service a
  const response=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:session.id,message:"Hallo Claude"}),headers:origin}),e);
  assert.equal(response.status,200);const result=await response.json();
  assert.deepEqual({text:result.text,stored:result.stored},{text:"OPENCODE_DASHBOARD_OK",stored:true});
- assert.equal(calls.length,1);assert.equal(calls[0].url,"https://private-asr/opencode/chat");
+ assert.equal(calls.length,1);assert.equal(calls[0].url,"https://private-asr/opencode/code");
  assert.equal(calls[0].method,"POST");assert.equal(calls[0].authorization,"Bearer internal-test-token");
  assert.deepEqual(calls[0].body,{message:"Hallo Claude"});
  const saved=await worker.fetch(request("/api/chat/session?id="+session.id),e);
@@ -239,7 +239,7 @@ test("CHAT session uses the same private Claude transport while secret-shaped pr
 
 test("CHAT replays bounded saved conversation context while CODE remains single-turn",async()=>{
  const e=env(),origin={"content-type":"application/json","origin":"https://dashboard.example"},bodies=[];
- e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";e.PRIVATE_ASR_SERVICE={fetch:async(_url,opts)=>{bodies.push(JSON.parse(opts.body));return new Response(JSON.stringify({text:bodies.length===1?"GEMERKT":"2210"}),{status:200,headers:{"content-type":"application/json"}})}};
+ e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";e.PRIVATE_ASR_SERVICE={fetch:async(url,opts)=>{bodies.push(JSON.parse(opts.body));const isCode=String(url).endsWith("/opencode/code");return new Response(JSON.stringify({text:bodies.length===1?"GEMERKT":"2210",...(isCode?{workspace:"repo-readonly-v1",tools_used:[]}:{})}),{status:200,headers:{"content-type":"application/json"}})}};
  let created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"chat"}),headers:origin}),e),id=(await created.json()).id;
  await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Merke dir die Zahl 2210."}),headers:origin}),e);
  await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"Welche Zahl solltest du dir merken?"}),headers:origin}),e);
@@ -248,6 +248,22 @@ test("CHAT replays bounded saved conversation context while CODE remains single-
  created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"code"}),headers:origin}),e);id=(await created.json()).id;
  await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"CODE_SINGLE_TURN"}),headers:origin}),e);
  assert.equal(bodies.at(-1).message,"CODE_SINGLE_TURN");
+});
+
+
+
+test("CODE uses dedicated repo executor and fails closed without verified workspace contract",async()=>{
+ const e=env(),origin={"content-type":"application/json","origin":"https://dashboard.example"},urls=[];
+ e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
+ e.PRIVATE_ASR_SERVICE={fetch:async(url)=>{urls.push(String(url));return new Response(JSON.stringify({text:"UNVERIFIED_CODE"}),{status:200,headers:{"content-type":"application/json"}})}};
+ const created=await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode:"code"}),headers:origin}),e);
+ const id=(await created.json()).id;
+ const response=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:id,message:"inspect repo"}),headers:origin}),e);
+ assert.equal(response.status,502);const out=await response.json();
+ assert.equal(out.status,"CODE_WORKSPACE_UNVERIFIED");assert.equal(out.stored,false);
+ assert.deepEqual(urls,["https://private-asr/opencode/code"]);
+ const saved=await worker.fetch(request("/api/chat/session?id="+id),e);
+ assert.equal((await saved.json()).messages.length,0);
 });
 
 test("secure HttpOnly dashboard session survives refresh without resending bearer key",async()=>{
@@ -266,7 +282,7 @@ test("secure HttpOnly dashboard session survives refresh without resending beare
 test("CHAT and universal CODE expose truthful fail-closed route metadata",async()=>{
   const e=env();
   e.PRIVATE_ASR_INTERNAL_TOKEN="internal-test-token";
-  e.PRIVATE_ASR_SERVICE={fetch:async()=>new Response(JSON.stringify({text:"ROUTE_OK"}),{status:200,headers:{"content-type":"application/json"}})};
+  e.PRIVATE_ASR_SERVICE={fetch:async(url)=>new Response(JSON.stringify({text:"ROUTE_OK",...(String(url).endsWith("/opencode/code")?{workspace:"repo-readonly-v1",tools_used:["bash"]}:{})}),{status:200,headers:{"content-type":"application/json"}})};
   const origin={"content-type":"application/json","origin":"https://dashboard.example"};
   const start=async mode=>await (await worker.fetch(request("/api/chat/session",{method:"POST",body:JSON.stringify({mode}),headers:origin}),e)).json();
   const send=async(session_id,message)=>worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id,message}),headers:origin}),e);
@@ -277,14 +293,15 @@ test("CHAT and universal CODE expose truthful fail-closed route metadata",async(
   assert.equal(c.route.mode,"CHAT");assert.equal(c.route.gate,"CONVERSATION");
   assert.equal(c.route.tools.agent21,false);assert.equal(c.route.tools.github,false);
   assert.equal(c.route.tools.web_research,"AVAILABLE_ON_DEMAND");
-  assert.equal(d.route.mode,"CODE");assert.equal(d.route.workspace,"UNIVERSAL");
+  assert.equal(d.route.mode,"CODE");assert.equal(d.route.workspace,"REPO_CODE_SPARSE_READ_ONLY");
   assert.equal(d.route.gate,"DIRECT_DEVELOPMENT");
   assert.equal(d.route.specialist_gate,"AGENT21_FOR_EDIRNE22_INTERNAL");
   assert.equal(d.route.tools.agent21,"CONTEXTUAL");
-  assert.equal(d.route.tools.github,"NOT_YET_WIRED");
+  assert.equal(d.route.tools.github,"READ_ONLY_PUBLIC_CLONE");
+  assert.equal(d.route.tools.shell,"USED_READ_ONLY");
   assert.equal(d.route.tools.web_research,"AVAILABLE_ON_DEMAND");
   assert.equal(d.route.tools.r2_files,"UPLOAD_ONLY");
-  assert.equal(d.route.execution,"TEXT_PLUS_BOUNDED_RESEARCH");
+  assert.equal(d.route.execution,"OPENCODE_REPO_TOOL_EXECUTION");
 });
 
 

@@ -512,7 +512,7 @@ async function sendClaude(mode){
     const r=await api("/api/chat/message",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({session_id:id,message})});
     $(mode+"Result").value=r.text;
     const route=r.route||{},tools=route.tools||{};
-    const used=["OpenCode",tools.agent21?("Agent 21: "+tools.agent21):null,tools.github?("GitHub: "+tools.github):null,tools.web_research?("Web: "+tools.web_research):null,tools.r2_files?("R2-Dateien: "+tools.r2_files):null].filter(Boolean).join(" · ");
+    const used=["OpenCode",tools.agent21?("Agent 21: "+tools.agent21):null,tools.github?("GitHub: "+tools.github):null,tools.shell?("Shell: "+tools.shell):null,tools.web_research?("Web: "+tools.web_research):null,tools.r2_files?("R2-Dateien: "+tools.r2_files):null].filter(Boolean).join(" · ");
     $(mode+"Status").textContent=(r.stored?"Claude-Antwort erhalten und Sitzung gespeichert. ":"Claude-Antwort erhalten. ")+
       (route.model?("Modell: "+route.model+" · Route: "+route.provider_route+" · Modus: "+route.mode+" · Gate: "+route.gate+" · Tools: "+used):"");
   }catch(e){$(mode+"Status").textContent="Claude-Aufruf fehlgeschlagen: "+e.message}

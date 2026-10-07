@@ -783,9 +783,10 @@ async function chatMessage(req,env){
     (session.mode==="chat"?"\\n\\nAssistant:":""));
   const prompt=basePrompt+researchContext;
 
+  const opencodeEndpoint=session.mode==="code"?"https://private-asr/opencode/code":"https://private-asr/opencode/chat";
   let response;
   try{
-    response=await env.PRIVATE_ASR_SERVICE.fetch("https://private-asr/opencode/chat",{
+    response=await env.PRIVATE_ASR_SERVICE.fetch(opencodeEndpoint,{
       method:"POST",headers:{"authorization":"Bearer "+env.PRIVATE_ASR_INTERNAL_TOKEN,"content-type":"application/json"},
       body:JSON.stringify({message:prompt})
     });
@@ -795,6 +796,10 @@ async function chatMessage(req,env){
   let result={};try{result=await response.json()}catch{}
   if(!response.ok||typeof result?.text!=="string"||!result.text.trim())
     return json({error:"OpenCode request failed; message not stored",status:"MODEL_CALL_FAILED",code:response.status,stored:false},502);
+  const codeTools=session.mode==="code"&&Array.isArray(result?.tools_used)?
+    result.tools_used.filter(x=>typeof x==="string").map(x=>x.slice(0,40)).slice(0,8):[];
+  if(session.mode==="code"&&result?.workspace!=="repo-readonly-v1")
+    return json({error:"CODE workspace contract missing; message not stored",status:"CODE_WORKSPACE_UNVERIFIED",stored:false},502);
 
   let finalText=result.text.trim();
   if(asksCurrentDate){
@@ -811,12 +816,13 @@ async function chatMessage(req,env){
   }
 
   const route=session.mode==="code"?{
-    mode:"CODE",workspace:"UNIVERSAL",gate:"DIRECT_DEVELOPMENT",
+    mode:"CODE",workspace:"REPO_CODE_SPARSE_READ_ONLY",gate:"DIRECT_DEVELOPMENT",
     specialist_gate:"AGENT21_FOR_EDIRNE22_INTERNAL",model:"Claude Sonnet 4.5",
     provider_route:"OpenCode -> OpenRouter -> Anthropic",
-    tools:{opencode:true,agent21:"CONTEXTUAL",github:"NOT_YET_WIRED",
+    tools:{opencode:true,agent21:"CONTEXTUAL",github:"READ_ONLY_PUBLIC_CLONE",
+      shell:codeTools.some(x=>x==="bash"||x==="shell")?"USED_READ_ONLY":"AVAILABLE_READ_ONLY",
       web_research:research?("USED:"+research.provider):(wantsResearch?"UNAVAILABLE":"AVAILABLE_ON_DEMAND"),r2_files:"UPLOAD_ONLY"},
-    execution:"TEXT_PLUS_BOUNDED_RESEARCH"
+    execution:"OPENCODE_REPO_TOOL_EXECUTION"
   }:{
     mode:"CHAT",gate:"CONVERSATION",model:"Claude Sonnet 4.5",
     provider_route:"OpenCode -> OpenRouter -> Anthropic",
