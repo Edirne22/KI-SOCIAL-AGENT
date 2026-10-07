@@ -21,6 +21,8 @@ class PrivateVideoPlan:
     overlays:tuple[str,...]
     scene_plan:tuple[dict,...]
     asset_effects:tuple[str,...]
+    asset_transitions:tuple[str,...]
+    asset_pacing:tuple[float,...]
     creative_revision:str=CREATIVE_REVISION
     stages:tuple[str,...]=STAGES
 
@@ -43,12 +45,12 @@ class PrivateCreativeDirector:
         else:
             overlays=tuple(x.strip() for x in re.findall(r'["“]([^"”]{2,80})["”]',p)[:3])
         scenes=(
-            {"id":"intro","start":0.00,"end":0.10,"purpose":"opening-memory","effects":("zoom_in","pan_right"),"transition":"soft_fade"},
-            {"id":"build","start":0.10,"end":0.30,"purpose":"arrival-build-up","effects":("pan_left","zoom_in"),"transition":"soft_fade"},
-            {"id":"action","start":0.30,"end":0.62,"purpose":"birthday-action","effects":("zoom_in","pan_right","pan_left"),"transition":"quick_fade"},
-            {"id":"highlights","start":0.62,"end":0.78,"purpose":"people-highlights","effects":("zoom_out","pan_left"),"transition":"soft_fade"},
-            {"id":"home","start":0.78,"end":0.92,"purpose":"cake-emotion","effects":("zoom_out","pan_right"),"transition":"long_fade"},
-            {"id":"finale","start":0.92,"end":1.01,"purpose":"birthday-finale","effects":("zoom_in","zoom_out"),"transition":"long_fade"},
+            {"id":"intro","start":0.00,"end":0.10,"purpose":"opening-memory","effects":("zoom_in","pan_right"),"transition":"soft_fade","transition_seconds":0.65,"pace":1.12},
+            {"id":"build","start":0.10,"end":0.30,"purpose":"arrival-build-up","effects":("pan_left","zoom_in"),"transition":"soft_fade","transition_seconds":0.50,"pace":1.00},
+            {"id":"action","start":0.30,"end":0.62,"purpose":"birthday-action","effects":("zoom_in","pan_right","pan_left"),"transition":"quick_fade","transition_seconds":0.22,"pace":0.78},
+            {"id":"highlights","start":0.62,"end":0.78,"purpose":"people-highlights","effects":("zoom_out","pan_left"),"transition":"soft_fade","transition_seconds":0.45,"pace":0.92},
+            {"id":"home","start":0.78,"end":0.92,"purpose":"cake-emotion","effects":("zoom_out","pan_right"),"transition":"long_fade","transition_seconds":0.80,"pace":1.15},
+            {"id":"finale","start":0.92,"end":1.01,"purpose":"birthday-finale","effects":("zoom_in","zoom_out"),"transition":"long_fade","transition_seconds":0.90,"pace":1.20},
         )
         return {**spec,"story_style":"emotional-modern-memory-story","overlays":overlays,
                 "scene_plan":scenes,"creative_revision":CREATIVE_REVISION}
@@ -56,15 +58,18 @@ class PrivateCreativeDirector:
 class PrivateMediaStoryAgent:
     def bind(self,spec:dict,assets:list[dict])->dict:
         if not assets: raise ValueError("private media required")
-        scenes=spec["scene_plan"]; assignments=[]
+        scenes=spec["scene_plan"]; assignments=[]; transitions=[]; pacing=[]
         total=len(assets)
         for i,_asset in enumerate(assets):
             pos=(i+0.5)/total
             scene=next((s for s in scenes if s["start"]<=pos<s["end"]),scenes[-1])
             effects=scene["effects"]
             assignments.append(effects[i % len(effects)])
+            transitions.append((scene["transition"],float(scene["transition_seconds"])))
+            pacing.append(float(scene["pace"]))
         return {**spec,"asset_count":total,"selection":"best-owned-private-media",
-                "order":"chronological-story","asset_effects":tuple(assignments)}
+                "order":"chronological-story","asset_effects":tuple(assignments),
+                "asset_transitions":tuple(transitions),"asset_pacing":tuple(pacing)}
 
 class PrivateMusicAudioAgent:
     def select(self,spec:dict)->dict:
@@ -97,7 +102,8 @@ def build_plan(task_id:str,prompt:str,assets:list[dict])->PrivateVideoPlan:
     spec=PrivateMusicAudioAgent().select(spec)
     return PrivateVideoPlan(spec["task_id"],spec["title"],spec["duration_seconds"],spec["aspect_ratio"],
         spec["privacy"],spec["story_style"],spec["music_track"],tuple(spec["overlays"]),
-        tuple(spec["scene_plan"]),tuple(spec["asset_effects"]),spec["creative_revision"])
+        tuple(spec["scene_plan"]),tuple(spec["asset_effects"]),tuple(spec["asset_transitions"]),
+        tuple(spec["asset_pacing"]),spec["creative_revision"])
 
 def persist_stage(client,bucket,task_id,stage,status,detail=""):
     if stage not in STAGES: raise ValueError("unknown private production stage")
