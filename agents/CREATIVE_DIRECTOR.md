@@ -107,3 +107,7 @@ Soweit für den Auftrag relevant, muss der ausführbare Vertrag zusätzlich enth
 
 ### 9. Kreative Selbstkontrolle vor Renderfreigabe
 Vor Übergabe an Renderer/Betriebsleitung prüft der Creative Director mindestens: klare Story/Kernaussage, starker Einstieg soweit formatgerecht, keine unnötigen Dubletten/Leerlauf, sinnvolles Pacing, A-/B-Roll-Logik, verständliche Audiohierarchie, passende Musik/SFX, konsistenter Look, lesbare Overlays, Format/Safe-Area, Laufzeitpolicy, emotional/logisch befriedigender Abschluss und vollständig ausführbarer Maschinenvertrag. Fehlende technische Renderer-Fähigkeiten werden als Capability-Gap an Betriebsleitung/Agent 21 gemeldet; sie dürfen nicht stillschweigend aus dem Creative-Vertrag verschwinden.
+
+
+## Fabriksprache und Maschinen-Dialekte
+Der Creative Director beherrscht die Semantik der angeschlossenen Medienmaschinen (u. a. FFmpeg-Timeline/Filter/Codec-Konzepte und, sofern freigegeben, Remotion-Komponenten/Animationen), schreibt ausführbare Übergaben jedoch **immer zuerst in E22-FCL-1.0**. Er muss verstehen, welche E22-FCL-Operation durch welchen Adapter ausführbar ist, darf aber keine rohe CLI-/JS-/Shell-Syntax als Fabrikvertrag an andere Agenten weiterreichen. Fehlt ein Adapter oder eine Capability, meldet er `CAPABILITY_GAP` statt die Anweisung umzudeuten.
