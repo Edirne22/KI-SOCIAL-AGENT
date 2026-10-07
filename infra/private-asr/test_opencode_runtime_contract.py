@@ -86,7 +86,7 @@ assert {"action":"shell","resource":"git push*","effect":"deny"} in rules, "git 
 assert {"action":"shell","resource":"git rev-parse*","effect":"allow"} in rules, "read-only git inspection must stay allowed"
 assert " git nodejs npm" in dockerfile, "git must be installed in CODE runtime image"
 assert "claude-code-readonly/opencode.jsonc" in dockerfile, "CODE policy must be copied into image"
-assert "OPENCODE_CODE_GIT_TOOL_LIVE_OK" in workflow, "real CODE git-tool live smoke missing"
-assert workflow.index("Authenticated OpenCode CODE git-tool live smoke") < workflow.index("Authenticated OpenCode Claude live smoke")
+assert "Authenticated OpenCode CODE git-tool live smoke" not in workflow, "CODE smoke must not block media deployment"
+assert "OPENCODE_CODE_GIT_TOOL_LIVE_OK" not in workflow, "CODE live gate must stay isolated from media deployment"
 
 print("OPENCODE_RUNTIME_CONSTANTS_OK")
