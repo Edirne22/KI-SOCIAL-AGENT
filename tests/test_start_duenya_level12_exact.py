@@ -90,18 +90,18 @@ class V3StartTests(unittest.TestCase):
 
     def post(self,*a,**kw):
         self.calls.append(kw)
-        self.objects[self.root+"/revisions/v3/status.json"]={**status("RUNNING"),"production_revision":"v3","runtime_revision":self.runtime_revision}
-        return self.response({"status":"ACCEPTED","task_id":TASK_ID,"production_revision":"v3"},202)
+        self.objects[self.root+"/revisions/v4/status.json"]={**status("RUNNING"),"production_revision":"v4","runtime_revision":self.runtime_revision}
+        return self.response({"status":"ACCEPTED","task_id":TASK_ID,"production_revision":"v4"},202)
 
     def start(self,**kw):
-        return start_exact(self.store,"b","synthetic",production_revision="v3",get=kw.pop("get",self.health),
+        return start_exact(self.store,"b","synthetic",production_revision="v4",get=kw.pop("get",self.health),
                            post=kw.pop("post",self.post),sleeper=lambda _:None,**kw)
 
     def test_legacy_completed_cannot_hide_v3_start_and_manifests_are_preserved(self):
         old=dict(self.objects[self.root+"/status.json"])
         self.assertEqual(self.start()["result"],"START_RUNNING")
-        self.assertEqual(self.calls[0]["json"],{"task_id":TASK_ID,"production_revision":"v3"})
-        self.assertEqual(self.objects[self.root+"/revisions/legacy-before-v3/status.json"],old)
+        self.assertEqual(self.calls[0]["json"],{"task_id":TASK_ID,"production_revision":"v4"})
+        self.assertEqual(self.objects[self.root+"/revisions/legacy-before-v4/status.json"],old)
         self.assertEqual(self.objects[self.root+"/status.json"],old)
         self.assertTrue(all(w["IfNoneMatch"]=="*" for w in self.writes))
         self.assertEqual(len(self.calls),1)
@@ -116,21 +116,21 @@ class V3StartTests(unittest.TestCase):
         self.assertEqual(self.writes,[])
 
     def test_v3_running_is_not_duplicated(self):
-        self.objects[self.root+"/revisions/v3/status.json"]={**status("RUNNING"),"production_revision":"v3","runtime_revision":self.runtime_revision}
+        self.objects[self.root+"/revisions/v4/status.json"]={**status("RUNNING"),"production_revision":"v4","runtime_revision":self.runtime_revision}
         self.assertEqual(self.start()["result"],"ALREADY_RUNNING")
         self.assertEqual(self.calls,[])
         self.assertEqual(self.writes,[])
 
     def test_old_revision_in_v3_slot_is_rejected(self):
         for revision in (None,"v2"):
-            self.objects[self.root+"/revisions/v3/status.json"]={**status("COMPLETED"),"production_revision":revision,"runtime_revision":self.runtime_revision}
+            self.objects[self.root+"/revisions/v4/status.json"]={**status("COMPLETED"),"production_revision":revision,"runtime_revision":self.runtime_revision}
             with self.assertRaisesRegex(RuntimeError,"REVISION_MISMATCH"): self.start()
         self.assertEqual(self.calls,[])
 
     def test_acceptance_must_identify_exact_task_revision_and_active_status(self):
-        for body in ({"status":"COMPLETED","task_id":TASK_ID,"production_revision":"v3"},
+        for body in ({"status":"COMPLETED","task_id":TASK_ID,"production_revision":"v4"},
                      {"status":"ACCEPTED","task_id":TASK_ID,"production_revision":"v2"},
-                     {"status":"ACCEPTED","task_id":"another","production_revision":"v3"},
+                     {"status":"ACCEPTED","task_id":"another","production_revision":"v4"},
                      {"status":"ACCEPTED","task_id":TASK_ID},[]):
             with self.assertRaisesRegex(RuntimeError,"ACCEPTANCE_NOT_PROVEN"):
                 self.start(post=lambda *a,**k:self.response(body,202))

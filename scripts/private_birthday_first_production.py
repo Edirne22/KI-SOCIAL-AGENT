@@ -137,6 +137,12 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
             seg=root/f"seg-{i:03d}.mp4"
             is_image=a["mime"].startswith("image/")
             planned_seconds=planned_slots[i]
+            transition_id,transition_seconds=transitions[i]
+            print("DUENYA_FFMPEG_MACHINE_TRACE "+json.dumps({
+                "asset_index":i,"media_type":"image" if is_image else "video",
+                "slot_seconds":round(planned_seconds,3),"effect":effects[i],
+                "transition":transition_id,"transition_seconds":round(float(transition_seconds),3)
+            },separators=(",",":")),flush=True)
             render_segment(src,seg,is_image=is_image,seconds=planned_seconds,effect=effects[i],transition=transitions[i])
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))

@@ -12,7 +12,7 @@ from scripts.ai_central_shared_inbox import PREFIX, _is_private_video_request, c
 TASK_ID="f6f50c9f4c2690e4eb1fe978"
 RUNTIME_URL="https://edirne22-private-asr.butupeli.workers.dev/private-video/jobs"
 ACTIVE={"ACCEPTED","RUNNING","COMPLETED"}
-PRODUCTION_REVISION="v3"
+PRODUCTION_REVISION="v4"
 RUNTIME_REVISION="duenya-creative-chain-v3"
 
 def _code(exc):
@@ -47,7 +47,7 @@ def _archive_previous(client, bucket):
         if value.get("task_id") != TASK_ID:
             raise RuntimeError("EXACT_PRIVATE_VIDEO_ARCHIVE_TASK_MISMATCH")
         try:
-            client.put_object(Bucket=bucket,Key=f"{prefix}/revisions/legacy-before-v3/{name}",
+            client.put_object(Bucket=bucket,Key=f"{prefix}/revisions/legacy-before-v4/{name}",
                               Body=raw,ContentType="application/json",CacheControl="private, no-store",IfNoneMatch="*")
         except Exception as exc:
             if _code(exc) not in ("PreconditionFailed","412"): raise
