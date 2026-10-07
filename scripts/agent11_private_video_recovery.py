@@ -26,7 +26,7 @@ RECOVERY_SCHEMA = "PRODUCTION-RECOVERY-R2-V1"
 
 
 def _http_json(method: str, path: str, token: str, payload: dict | None = None) -> tuple[int, dict]:
-    if path not in {"/admin/container-restart", "/health", "/private-video/jobs"}:
+    if path not in {"/admin/container-restart", "/health", "/private-video/jobs", "/private-video/resume-duenya"}:
         raise ValueError("RECOVERY_HTTP_PATH_NOT_ALLOWED")
     body = json.dumps(payload).encode("utf-8") if payload is not None else None
     headers = {
@@ -131,7 +131,7 @@ def execute_recovery(
     # private-video runtime revision. Re-probing here created a second readiness
     # gate that can race Cloudflare sleep/wake and block the actual RESUME request.
     # The POST below is the bounded wake/resume operation for this exact task.
-    code, payload = http("POST", "/private-video/jobs", token, {"task_id": h["job_id"]})
+    code, payload = http("GET", "/private-video/resume-duenya", token, None)
     if code not in (200, 202) or payload.get("task_id") != h["job_id"]:
         raise RuntimeError(f"RECOVERY_RESUME_FAILED_HTTP_{code}")
 
