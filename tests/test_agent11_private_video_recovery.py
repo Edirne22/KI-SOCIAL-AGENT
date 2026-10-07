@@ -69,7 +69,7 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         self.assertTrue(result["recovered"])
         self.assertNotIn(("POST", "/admin/container-restart", None), calls)
         self.assertFalse(any(call[0:2] == ("GET", "/health") for call in calls[:1]))
-        self.assertIn(("POST", "/private-video/jobs", {"task_id": "f6f50c9f4c2690e4eb1fe978"}), calls)
+        self.assertIn(("GET", "/private-video/resume-duenya", None), calls)
         self.assertEqual(len(client.writes), 1)
         body = json.loads(client.writes[0]["Body"])
         self.assertEqual(body["schema"], "PRODUCTION-RECOVERY-R2-V1")
