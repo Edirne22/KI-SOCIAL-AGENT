@@ -102,6 +102,8 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     client,bucket=client_from_env()
     assets=assets_override or recent_assets(client,bucket)
     target_seconds=int(getattr(plan,"duration_seconds",TARGET_SECONDS) if plan else TARGET_SECONDS)
+    max_seconds=int(getattr(plan,"max_duration_seconds",target_seconds) if plan else target_seconds)
+    duration_policy=str(getattr(plan,"duration_policy","MAXIMUM") if plan else "MAXIMUM")
     overlays=list(getattr(plan,"overlays",[]) if plan else [TITLE,"12 Jahre voller Erinnerungen","Alles Gute zum 12. Geburtstag, Dünya! ❤️"])
     music=MUSIC
     effects=list(getattr(plan,"asset_effects",[]) if plan else [])
@@ -157,7 +159,11 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         out=root/"Duenya-Level-12-private.mp4"
         mix_music(visual,music,out)
         duration=probe_duration(out)
-        if not max(1,target_seconds-15) <= duration <= target_seconds+5: raise RuntimeError(f"PRIVATE_RENDER_DURATION_UNSAFE:{duration:.2f}")
+        if duration_policy=="EXACT":
+            duration_ok=max(1,target_seconds-2)<=duration<=target_seconds+2
+        else:
+            duration_ok=1<=duration<=max_seconds+1
+        if not duration_ok: raise RuntimeError(f"PRIVATE_RENDER_DURATION_UNSAFE:{duration:.2f}")
         if not output_is_valid(out): raise RuntimeError("PRIVATE_RENDER_STREAMS_INVALID")
         data=out.read_bytes()
         if not data or len(data)>49*1024*1024: raise RuntimeError("PRIVATE_RENDER_SIZE_UNSAFE")
@@ -173,6 +179,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         if response.status_code!=200: raise RuntimeError("PRIVATE_TELEGRAM_DELIVERY_FAILED")
         print(f"PRIVATE_BIRTHDAY_PRODUCTION_PASS media_count={len(assets)} duration={duration:.2f}s audio=yes creative=yes sha256_prefix={digest[:12]} private=yes published=no")
         evidence={"creative_revision":getattr(plan,"creative_revision","legacy"),
+                  "max_duration_seconds":max_seconds,"duration_policy":duration_policy,
                   "applied_effects":tuple(sorted(set(effects))),
                   "scene_count":len(getattr(plan,"scene_plan",())),
                   "applied_transitions":tuple(sorted(set(t[0] for t in transitions))),

@@ -14,6 +14,8 @@ class PrivateVideoPlan:
     task_id:str
     title:str
     duration_seconds:int
+    max_duration_seconds:int
+    duration_policy:str
     aspect_ratio:str
     privacy:str
     story_style:str
@@ -33,8 +35,8 @@ class PrivateProductionLead:
         duration=300
         ratio="9:16"
         title="Dünya – Level 12" if "dünya" in low and ("12" in low or "geburtstag" in low) else "Private Erinnerung"
-        return {"task_id":task_id,"prompt":prompt,"duration_seconds":duration,"aspect_ratio":ratio,
-                "title":title,"privacy":"private-only"}
+        return {"task_id":task_id,"prompt":prompt,"duration_seconds":duration,"max_duration_seconds":300,
+                "duration_policy":"MAXIMUM","aspect_ratio":ratio,"title":title,"privacy":"private-only"}
 
 class PrivateCreativeDirector:
     """Turns the owner's private brief into an executable, privacy-safe scene contract."""
@@ -83,7 +85,7 @@ class PrivateQM:
         expected=set(creative.get("expected_effects",()))
         applied=set(creative.get("applied_effects",()))
         checks={
-            "duration_285_305":285<=duration<=305,
+            "duration_within_contract":1<=duration<=float(creative.get("max_duration_seconds",300))+1.0,
             "audio":has_audio,
             "video":has_video,
             "scene_plan":creative.get("scene_count",0)>=4,
@@ -102,7 +104,7 @@ def build_plan(task_id:str,prompt:str,assets:list[dict])->PrivateVideoPlan:
     spec=PrivateCreativeDirector().create(spec)
     spec=PrivateMediaStoryAgent().bind(spec,assets)
     spec=PrivateMusicAudioAgent().select(spec)
-    return PrivateVideoPlan(spec["task_id"],spec["title"],spec["duration_seconds"],spec["aspect_ratio"],
+    return PrivateVideoPlan(spec["task_id"],spec["title"],spec["duration_seconds"],spec["max_duration_seconds"],spec["duration_policy"],spec["aspect_ratio"],
         spec["privacy"],spec["story_style"],spec["music_track"],tuple(spec["overlays"]),
         tuple(spec["scene_plan"]),tuple(spec["asset_effects"]),tuple(spec["asset_transitions"]),
         tuple(spec["asset_pacing"]),spec["creative_revision"])

@@ -49,3 +49,11 @@ Private Medien bleiben privat. Diese Rolle erteilt keine Social-Publishing-, Kos
 
 ## Abnahmeregel
 Ein Auftrag gilt kreativ **nicht** als umgesetzt, nur weil Text-Overlays, Musik oder irgendeine Bewegung vorhanden sind. PASS erfordert den nachgewiesenen Vollzug des konkreten Maschinenvertrags einschließlich Szenenstruktur, Timing/Pacing, Effekt-/Motion-Zuordnung, Transitions und der für den Auftrag verpflichtenden Overlays/Audio-Regeln.
+
+
+## Verbindliche Laufzeit-Autonomie
+- Eine vom Nutzer genannte Dauer wie „ca. 5 Minuten“ ist standardmäßig **kreativer Rahmen / Obergrenze**, kein erzwungenes Sollmaß. Nur wenn der Auftrag ausdrücklich eine exakte Laufzeit verlangt, ist sie exakt zu treffen.
+- Der Creative Director darf innerhalb der Obergrenze die Gesamtdauer selbst wählen und Szenen/Assets unterschiedlich gewichten. Starke Momente, Effekte, Konfetti, Titel oder emotionale Beats dürfen länger stehen; schwächere/redundante Assets dürfen kürzer sein oder entfallen.
+- Er verantwortet die globale Zeitbilanz. Eine einzelne Szenenentscheidung darf niemals den Auftrag blockieren, solange die Gesamtproduktion innerhalb der erlaubten Grenzen kreativ sinnvoll neu verteilt werden kann.
+- Der Maschinenvertrag muss dafür mindestens `duration_policy` (`MAXIMUM|EXACT|RANGE`), `max_duration_seconds`, optional `target_duration_seconds`, pro Szene/Asset geplante Dauer, Effekt, Transition, Audio-/Overlay-Cues sowie Revision enthalten.
+- Alle beteiligten Agenten und Maschinen sprechen denselben revisionsgebundenen Vertrag. Kein Agent darf Semantik durch eigene versteckte Defaults verändern. Änderungen werden als neue Vertragsrevision vollständig weitergegeben.
