@@ -49,7 +49,19 @@ export default {
     if (url.pathname === "/admin/container-restart") {
       try {
         await instance.destroy();
-        return reply({status:"container_restart_requested"},202);
+        await instance.startAndWaitForPorts({
+          ports: [5200],
+          startOptions: {enableInternet: true, envVars: {
+            PRIVATE_ASR_INTERNAL_TOKEN: env.PRIVATE_ASR_INTERNAL_TOKEN,
+            OPENROUTER_API_KEY: env.OPENROUTER_API_KEY, GROQ_API_KEY: env.GROQ_API_KEY,
+            GEMINI_API_KEY: env.GEMINI_API_KEY, ...(env.NVIDIA_API_KEY ? {NVIDIA_API_KEY: env.NVIDIA_API_KEY} : {}),
+            ...(env.SEARXNG_URL ? {SEARXNG_URL: env.SEARXNG_URL} : {}),
+            R2_ACCOUNT_ID: env.R2_ACCOUNT_ID, R2_ACCESS_KEY_ID: env.R2_ACCESS_KEY_ID,
+            R2_SECRET_ACCESS_KEY: env.R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME: env.R2_BUCKET_NAME,
+            TELEGRAM_BOT_TOKEN: env.TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID: env.TELEGRAM_CHAT_ID
+          }}
+        });
+        return reply({status:"container_restarted_ready"},202);
       } catch (error) {
         const name = error instanceof Error ? error.name.slice(0,80) : "unknown";
         return reply({error:"container_restart_failed", exception:name},503);
