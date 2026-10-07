@@ -51,6 +51,7 @@ export default {
         await instance.destroy();
         await instance.startAndWaitForPorts({
           ports: [5200],
+          cancellationOptions: {instanceGetTimeoutMS: 15000, portReadyTimeoutMS: 90000, waitInterval: 500},
           startOptions: {enableInternet: true, envVars: {
             PRIVATE_ASR_INTERNAL_TOKEN: env.PRIVATE_ASR_INTERNAL_TOKEN,
             OPENROUTER_API_KEY: env.OPENROUTER_API_KEY, GROQ_API_KEY: env.GROQ_API_KEY,
