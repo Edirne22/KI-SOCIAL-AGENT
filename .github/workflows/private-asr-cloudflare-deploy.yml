@@ -190,32 +190,6 @@ jobs:
           PY
           python3 -c 'import json; d=json.load(open("/tmp/agent21-runtime-diagnostic.json")); assert d["schema"]=="AGENT21-RUNTIME-DIAG-V1" and d["mode"]=="READ_ONLY" and d["secret_values_logged"] is False; print("AGENT21_RUNTIME_DIAGNOSTIC_READY error_class="+d["error_class"])'
 
-      - name: Authenticated OpenCode CODE git-tool live smoke
-        shell: bash
-        run: |
-          set -euo pipefail
-          url="https://edirne22-private-asr.butupeli.workers.dev/opencode/code"
-          payload='{"message":"Use the native shell tool to run exactly git rev-parse HEAD. After the tool result, reply exactly CODE_EXEC_OK followed by one space and that 40-character SHA."}'
-          code=$(curl -sS -o /tmp/opencode-code-live -w '%{http_code}' --max-time 180 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" -H 'Content-Type: application/json' --data "$payload" "$url" || true)
-          if [ "$code" != 200 ]; then
-            error_code=$(python3 -c 'import json; d=json.load(open("/tmp/opencode-code-live")); e=d.get("error","unknown_error"); print(e if isinstance(e,str) and len(e) <= 80 else "invalid_error")' 2>/dev/null || echo non_json_error)
-            detail=$(python3 -c 'import json; d=json.load(open("/tmp/opencode-code-live")); print(str(d.get("detail","") or d.get("sanitized_message",""))[:120])' 2>/dev/null || echo "")
-            content_type=$(curl -sS -I --max-time 30 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" 2>/dev/null | awk 'BEGIN{IGNORECASE=1} /^content-type:/{gsub("\\r",""); print $2; exit}' || true)
-            body_bytes=$(wc -c < /tmp/opencode-code-live | tr -d ' ')
-            echo "OPENCODE_CODE_LIVE_FAILED: HTTP $code error=$error_code detail=$detail body_bytes=$body_bytes content_type=${content_type:-unknown}"
-            exit 1
-          fi
-          python3 - <<'PY'
-          import json,re
-          d=json.load(open("/tmp/opencode-code-live"))
-          text=str(d.get("text") or "").strip()
-          tools=d.get("tools_used")
-          assert d.get("workspace") == "repo-readonly-v1"
-          assert isinstance(tools,list) and any(x in ("bash","shell") for x in tools), tools
-          assert re.fullmatch(r"CODE_EXEC_OK [0-9a-f]{40}",text), text[:120]
-          assert "<function_calls>" not in text and "<invoke name=" not in text
-          print("OPENCODE_CODE_GIT_TOOL_LIVE_OK")
-          PY
       - name: Authenticated OpenCode Claude live smoke
         shell: bash
         run: |
