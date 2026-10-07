@@ -116,7 +116,7 @@ jobs:
           set -euo pipefail
           url="https://edirne22-private-asr.butupeli.workers.dev/health"
           expected_research="block9-groq-429-fallback-v1"
-          expected_video="duenya-ffmpeg-timebase-v2"
+          expected_video="duenya-creative-chain-v3"
           for n in $(seq 1 30); do
             code=$(curl -sS -o /tmp/asr-health -w '%{http_code}' --max-time 30 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
             if [ "$code" = 200 ] && python3 - "$expected_research" "$expected_video" <<'PY' 2>/dev/null
