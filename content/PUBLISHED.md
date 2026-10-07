@@ -853,7 +853,7 @@ Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-5-honda-acikl
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 37629846548-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-07-manual-37590782230
 Telegram-Update-ID: 279361916
