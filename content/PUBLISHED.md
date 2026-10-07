@@ -831,3 +831,42 @@ https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-t
 Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum", "media_status": "", "object_id": "1285968257941776_122119633101469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119633101469415", "source_url": "https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-07-manual-37590782230
+Telegram-Update-ID: 279361916
+MotoGP-Auswahl: 5
+Story-Key: title:honda-klad-joan-mir-mandalika-da-yok-yerine-aleix-espargaro-yar-acak
+Event-Fingerprint: -
+Titel: Honda açıkladı: Joan Mir Mandalika’da yok, yerine Aleix Espargaro yarışacak
+Text:
+Honda hat’s bestätigt: Joan Mir muss beim Indonesia‑GP 2026 in Mandalika aussetzen, Testfahrer Aleix Espargaró springt für ihn ein. 🏍️  
+
+Wie bewertet ihr den Wechsel?  
+
+#MotoGP #JoanMir #AleixEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-5-honda-acikladi-joan-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-07-manual-37590782230
+Telegram-Update-ID: 279361916
+MotoGP-Auswahl: 5
+Story-Key: title:honda-klad-joan-mir-mandalika-da-yok-yerine-aleix-espargaro-yar-acak
+Event-Fingerprint: -
+Titel: Honda açıkladı: Joan Mir Mandalika’da yok, yerine Aleix Espargaro yarışacak
+Text:
+Honda bestätigt: Joan Mir fällt beim Indonesia MotoGP 2026 in Mandalika aus. Testfahrer Aleix Espargaro springt für ihn ein. 🏍️
+
+Wie seht ihr den Wechsel?
+
+#MotoGP #JoanMir #PolEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak
+Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak
+Link-Preview: offiziell
