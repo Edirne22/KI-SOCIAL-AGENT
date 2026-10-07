@@ -99,3 +99,7 @@ Für alle Medienproduktionen gilt: Eine ungefähre Nutzerlaufzeit ist ohne ausdr
 
 ## Globaler Container-Lifecycle-Handoff
 Alle Rollen dieser Organisation erben `agents/00_professional_standard.md`. Sobald ein Handoff Containerarbeit benötigt oder Containerverfügbarkeit bewertet, gilt organisationsweit: **Wake/Warmup → Port-Readiness → Dienst-/Zielrevisions-Health → genau eine Jobübergabe**. Betriebsleitung muss diesen Zustand vor Maschinenstart prüfen; ausführende Medien-/Audio-/Ingest-Rollen dürfen den Wake nicht umgehen; QM darf Container-/Runtime-PASS nur mit Wake-/Readiness-/Revisions-Evidence vergeben. Rollen ohne technische Startberechtigung eskalieren an den zentralen Lifecycle-/Agent-11-Pfad statt selbst freie Containerbefehle zu erzeugen.
+
+
+## Creative-Manager Capability Gate
+Der Produktionsleiter darf einen Video-/Vlog-Auftrag erst als kreativ vollständig markieren, wenn der Creative Director neben Szenen/Timing auch Materialrollen (A-/B-Roll etc.), Story-Beats/Hook/Payoff, Dialog-/Originaltonbehandlung, Audiohierarchie/Musik/SFX, visuelle Konsistenz/Overlays sowie erforderliche Zielvarianten bewertet hat. Nicht benötigte Dimensionen sind N/A. Wird eine kreativ geforderte Funktion vom aktuellen Renderer nicht unterstützt, bleibt sie als `CAPABILITY_GAP` sichtbar und geht an Betriebsleitung/Agent 21; der Vertrag darf sie nicht still entfernen. Finales Media-QM vergleicht diese Sollfelder mit Render-Evidence.
