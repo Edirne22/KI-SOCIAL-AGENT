@@ -91,3 +91,7 @@ Maschinen-Scout in der Bibliothek ist eine **Rollenbeschreibung** und sein eigen
 5. Berichte und ausgewertete Engpässe an Memory und Scout zurückführen, ohne Produktions- oder Nutzer-Freigaben selbstständig zu ändern.
 
 Keine 100-%-Effizienz ohne gemessene Baseline und Lasttests behaupten. Erfolg bedeutet reproduzierbares Routing und nachgewiesene Fähigkeit, Kosten/Kapazität/Recoveries belastbar zu messen.
+
+
+## Einheitlicher Medien-Maschinenvertrag – Laufzeitregel
+Für alle Medienproduktionen gilt: Eine ungefähre Nutzerlaufzeit ist ohne ausdrückliches `EXACT` eine Obergrenze. Beispiel „ca. 5 Minuten“ => `duration_policy=MAXIMUM`, `max_duration_seconds=300`; 3:00, 4:00 oder 4:30 sind zulässig, wenn der Creative Director dies aus Material, Dramaturgie, Effekten und Audio begründet. Produktionsleiter, Media/Story, Audio, Renderer und QM verwenden dieselbe Contract-Revision und dieselben Zeit-/Szenenfelder. QM prüft die Vertragsgrenze und kreative/technische Evidence, nicht eine erfundene Mindestlänge. Der Creative Director verteilt Zeit eigenständig zwischen Assets und Szenen; lokale Überlänge wird durch kreative Neuverteilung gelöst und ist kein Produktionsabbruchgrund.
