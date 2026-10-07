@@ -103,3 +103,7 @@ Alle Rollen dieser Organisation erben `agents/00_professional_standard.md`. Soba
 
 ## Creative-Manager Capability Gate
 Der Produktionsleiter darf einen Video-/Vlog-Auftrag erst als kreativ vollständig markieren, wenn der Creative Director neben Szenen/Timing auch Materialrollen (A-/B-Roll etc.), Story-Beats/Hook/Payoff, Dialog-/Originaltonbehandlung, Audiohierarchie/Musik/SFX, visuelle Konsistenz/Overlays sowie erforderliche Zielvarianten bewertet hat. Nicht benötigte Dimensionen sind N/A. Wird eine kreativ geforderte Funktion vom aktuellen Renderer nicht unterstützt, bleibt sie als `CAPABILITY_GAP` sichtbar und geht an Betriebsleitung/Agent 21; der Vertrag darf sie nicht still entfernen. Finales Media-QM vergleicht diese Sollfelder mit Render-Evidence.
+
+
+## Einheitliche ausführbare Sprache
+Die gesamte Organisation verwendet für ausführbare Handoffs `E22-FCL-1.0` gemäß `docs/E22_FACTORY_CONTRACT_LANGUAGE.md`. Produktionsleitung validiert Schema/Revision/Capability vor Dispatch. Fachrollen erzeugen fachliche E22-FCL-Operationen; Maschinenadapter übersetzen sie in Toolsyntax; QM prüft dieselbe Contract-Revision gegen Evidence. Dadurch darf kein Agent eine eigene inkompatible „Maschinensprache“ zwischen Stages etablieren.
