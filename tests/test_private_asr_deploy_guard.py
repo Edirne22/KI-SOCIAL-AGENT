@@ -1,5 +1,7 @@
 import ast
 import json
+import os
+import textwrap
 from pathlib import Path
 import subprocess
 import sys
@@ -64,6 +66,41 @@ class RevisionGuardTests(unittest.TestCase):
         self.assertIn('"container_health":"${{ steps.revision_health.outcome }}"', workflow)
         self.assertIn('"opencode_health":"${{ steps.opencode_health.outcome }}"', workflow)
         self.assertNotIn('"container_health":"passed"', workflow)
+
+
+class RestartHintTests(unittest.TestCase):
+    def run_step(self, code, body):
+        workflow = Path(".github/workflows/private-asr-cloudflare-deploy.yml").read_text()
+        step = workflow.split("      - name: Restart existing container once after deployment\n", 1)[1]
+        script = textwrap.dedent(step.split("        run: |\n", 1)[1].split("      - name:", 1)[0])
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            mock = root / "curl"
+            mock.write_text("#!/usr/bin/env python3\nimport os,sys\nfrom pathlib import Path\na=sys.argv\nPath(a[a.index('-o')+1]).write_text(os.environ['MOCK_BODY'])\nprint(os.environ['MOCK_CODE'],end='')\n")
+            mock.chmod(0o755)
+            script = script.replace("/tmp/container-restart", str(root / "response"))
+            return subprocess.run(["bash", "-c", script], capture_output=True, text=True,
+                                  env={**os.environ, "PATH": directory + os.pathsep + os.environ["PATH"],
+                                       "MOCK_CODE": code, "MOCK_BODY": body,
+                                       "PRIVATE_ASR_INTERNAL_TOKEN": "synthetic"})
+
+    def test_transient_503_defers_to_health_without_claiming_ready(self):
+        result = self.run_step("503", '{"error":"PRIVATE_SECRET"}')
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("PRIVATE_ASR_DEPLOY_RESTART_DEFERRED_TO_HEALTH", result.stdout)
+        self.assertNotIn("PRIVATE_SECRET", result.stdout + result.stderr)
+        self.assertNotIn("RESTARTED_AND_PORT_READY", result.stdout)
+
+    def test_202_requires_exact_ready_contract(self):
+        good = self.run_step("202", '{"status":"container_restarted_ready"}')
+        self.assertEqual(good.returncode, 0)
+        for body in ('{}', '<html>', '{"status":"pending"}'):
+            self.assertNotEqual(self.run_step("202", body).returncode, 0)
+
+    def test_auth_and_unexpected_status_fail_closed(self):
+        for code in ("401", "403", "404", "500", "200", "000"):
+            with self.subTest(code=code):
+                self.assertNotEqual(self.run_step(code, '{}').returncode, 0)
 
 
 if __name__ == "__main__":
