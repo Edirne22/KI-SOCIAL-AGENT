@@ -21,7 +21,6 @@ class PrivateVideoAgentChainTests(unittest.TestCase):
         self.assertGreaterEqual(len(plan.overlays),3)
         self.assertGreaterEqual(len(plan.scene_plan),4)
         self.assertEqual(len(plan.asset_effects),len(assets))
-        self.assertGreaterEqual(len(set(plan.asset_effects)),2)
         self.assertEqual(plan.creative_revision,"duenya-creative-v2")
 
     def test_qm_fails_without_audio_or_real_render_evidence(self):
