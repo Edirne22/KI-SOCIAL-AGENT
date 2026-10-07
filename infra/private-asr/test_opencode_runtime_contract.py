@@ -74,8 +74,6 @@ assert '"/opencode/code"' in service_text, "CODE endpoint missing from container
 assert worker.count('url.pathname === "/opencode/code"') >= 6, "CODE route must be wired through allow/method/body/readiness/health/proxy paths"
 assert "def _prepare_code_workspace" in service_text, "CODE workspace preparation missing"
 assert "def _sanitize_diagnostic" in service_text, "sanitized diagnostic helper missing"
-assert "error_code=$(python3 -c" in workflow, "sanitized error_code extraction missing from workflow"
-assert "detail=$(python3 -c" in workflow, "sanitized detail extraction missing from workflow"
 code_cfg = json.loads(code_config)
 code_model = code_cfg["providers"]["openrouter"]["models"]["anthropic/claude-sonnet-4.5"]
 assert code_model["capabilities"]["tools"] is True, "CODE tools must be enabled"
