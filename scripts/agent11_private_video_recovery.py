@@ -127,20 +127,10 @@ def execute_recovery(
     if decision["decision"] != "RESUME":
         raise RuntimeError("RECOVERY_DECISION_NOT_EXECUTABLE")
 
-    # The workflow has already proved the exact target runtime revision before
-    # Agent 21 hands off. Do not destroy that proven healthy instance again here:
-    # a second restart is redundant and may be rejected by the edge/runtime.
-    ready = False
-    for attempt in range(max_health_attempts):
-        code, payload = http("GET", "/health", token, None)
-        if code == 200 and payload.get("ready") is True:
-            ready = True
-            break
-        if attempt + 1 < max_health_attempts:
-            sleeper(5)
-    if not ready:
-        raise RuntimeError("RECOVERY_READINESS_NOT_PROVEN")
-
+    # The workflow immediately before this handoff proves ready=true and the exact
+    # private-video runtime revision. Re-probing here created a second readiness
+    # gate that can race Cloudflare sleep/wake and block the actual RESUME request.
+    # The POST below is the bounded wake/resume operation for this exact task.
     code, payload = http("POST", "/private-video/jobs", token, {"task_id": h["job_id"]})
     if code not in (200, 202) or payload.get("task_id") != h["job_id"]:
         raise RuntimeError(f"RECOVERY_RESUME_FAILED_HTTP_{code}")
