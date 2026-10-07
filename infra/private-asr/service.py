@@ -297,6 +297,12 @@ def _run_video(task_id, production_revision=None):
         persist_stage(client,bucket,task_id,"creative_director","RUNNING")
         current["stage"]="creative_director"
         plan=build_plan(task_id,prompt,assets)
+        trace={"revision":production_revision,"creative_revision":getattr(plan,"creative_revision","legacy"),
+               "story_style":plan.story_style,"scene_count":len(getattr(plan,"scene_plan",())),
+               "effects":list(dict.fromkeys(getattr(plan,"asset_effects",()))),
+               "transitions":list(dict.fromkeys(t[0] for t in getattr(plan,"asset_transitions",()))),
+               "pacing_profiles":sorted(set(getattr(plan,"asset_pacing",())))}
+        print("DUENYA_CREATIVE_PLAN_TRACE "+json.dumps(trace,separators=(",",":"),ensure_ascii=True),flush=True)
         persist_stage(client,bucket,task_id,"creative_director","COMPLETED",plan.story_style)
         current["stage"]="media_story"
         persist_stage(client,bucket,task_id,"media_story","COMPLETED",f"{len(assets)} private assets bound")
@@ -305,6 +311,7 @@ def _run_video(task_id, production_revision=None):
         current["stage"]="video_editor_ffmpeg"
         persist_stage(client,bucket,task_id,"video_editor_ffmpeg","RUNNING")
         result=private_birthday.run(task_id=task_id,prompt=prompt,plan=plan,assets_override=assets)
+        print("DUENYA_RENDER_EVIDENCE_TRACE "+json.dumps(result.get("creative_evidence",{}),separators=(",",":"),ensure_ascii=True),flush=True)
         persist_stage(client,bucket,task_id,"video_editor_ffmpeg","COMPLETED")
         current["stage"]="qm"
         persist_stage(client,bucket,task_id,"qm","RUNNING")
