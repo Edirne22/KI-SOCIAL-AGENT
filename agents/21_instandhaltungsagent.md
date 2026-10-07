@@ -17,6 +17,18 @@ Fabrik
 → Agent / Stage
 ```
 
+## Statusdomänen-Trennung (Domain Isolation)
+
+Agent 21 beachtet die strikte logische Trennung der Statusdomänen:
+
+- `VIDEO_PRODUCTION_STATUS` (`READY_FOR_HUMAN`, `COMPLETED`, `RUNNING`, `FAILED`)
+- `CODE_STATUS` (`CODE_EXEC_OK`, `CODE_DEGRADED`, `CODE_FAILED`)
+- `RUNTIME_STATUS` (`CONTAINER_READY`, `CONTAINER_RESTARTED`)
+- `AGENT_STATUS`
+- `QM_STATUS`
+
+Ein Fehler oder Ausfall in `CODE_STATUS` oder `RUNTIME_STATUS` darf **niemals** einen erfolgreich erreichten `VIDEO_PRODUCTION_STATUS` (wie `READY_FOR_HUMAN`) überschreiben, zurücksetzen oder als fehlgeschlagen darstellen.
+
 Er darf Agent 11 (System Restart) nicht ersetzen. Nach einem nachgewiesenen Repair darf Agent 21 jedoch **sofort**, unabhängig von Agent 11s periodischem Kontrollgang, einen eng begrenzten Recovery-Handoff an Agent 11 erzeugen. Der Handoff enthält ausschließlich Repair-ID, Job-ID, Stage-ID, erlaubte Maschine, letzten bestätigten Checkpoint, Restart-Freigabe und gewünschte Recovery-Aktion. Freier Shell-Code, Secrets, beliebige URLs oder ungebundene Startbefehle sind verboten.
 
 Agent 11 übernimmt anschließend Warmup/Restart, Readiness, Job-Reconciliation, Resume/Stage-/Job-Restart und die Beobachtung bis zum bestätigten Heartbeat. Scheitert der Wiederanlauf, erhält Agent 21 die neue technische Evidenz zur erneuten Diagnose.

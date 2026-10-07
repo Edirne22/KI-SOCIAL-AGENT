@@ -79,17 +79,18 @@ def parse_session():
 def selection(text):
     """Parse MotoGP approvals 1-5, including inclusive ranges."""
     v=re.sub(r'\s+',' ',str(text or '').strip().lower())
-    v=re.sub(r'^/\s*','',v)
-    m=re.fullmatch(r'motogp\s+(.+)',v)
-    if not m:return None
-    choice=m.group(1).strip()
+    if not re.search(r'\bmotogp\b', v):
+        return None
+    choice=re.sub(r'/?\bmotogp\b', '', v).strip()
     if choice in ('alle','✅'):return [1,2,3,4,5]
     if choice in ('nein','❌'):return []
     choice=re.sub(r'\s*[-–—]\s*','-',choice)
     choice=re.sub(r'\s*,\s*',',',choice)
+    choice=re.sub(r'\s+',',',choice)
     if not re.fullmatch(r'[1-5](?:-[1-5])?(?:,[1-5](?:-[1-5])?)*',choice):return None
     out=set()
     for part in choice.split(','):
+        if not part: continue
         if '-' in part:
             x,y=(int(n) for n in part.split('-',1))
             if x>y:return None

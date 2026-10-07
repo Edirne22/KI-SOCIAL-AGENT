@@ -22,6 +22,10 @@ Diese Liste ist im Code fest hinterlegt. Neue Workflows werden nicht automatisch
 
 Agent 21 darf Agent 11 sofort wecken, jedoch nur mit `AGENT21-TO-AGENT11-RECOVERY-V1`: Repair-ID, Job-ID, Stage-ID, erlaubte Maschine, letzter bestätigter Checkpoint, `restart_required=true` und eine der Aktionen `RESUME`, `RESTART_STAGE`, `RESTART_JOB`.
 
+### Statusdomänen-Isolierung
+
+Agent 11 respektiert die strikte Entkopplung der Statusdomänen (`VIDEO_PRODUCTION_STATUS`, `CODE_STATUS`, `RUNTIME_STATUS`, `AGENT_STATUS`, `QM_STATUS`). Ein Wiederanlauf, Container-Neustart oder Recovery-Schritt darf niemals einen bestehenden freigegebenen `VIDEO_PRODUCTION_STATUS = READY_FOR_HUMAN` überschreiben oder zurücksetzen.
+
 Agent 11 nimmt niemals freien Shell-Code, beliebige URLs oder Provider-Befehle aus dem Handoff an. Der Start-/Warmup-Mechanismus jeder Maschine ist fest hinterlegt. Vor dem Start wird der persistierte Jobzustand abgeglichen: `COMPLETED/CANCELLED` werden nie neu gestartet; `ACCEPTED/RUNNING` werden nur beobachtet. Job-, Stage- oder Checkpoint-Mismatch bricht fail-closed ab.
 
 Nach dem Start bleibt Agent 11 verantwortlich, bis Readiness und mindestens zwei aufeinanderfolgende gesunde `RUNNING`-Heartbeats vorliegen. Erst dann darf `PRODUCTION_RECOVERED` geloggt bzw. als technische Statusmeldung an KI-Zentrale/Telegram gemeldet werden. Scheitert Warmup, Start oder Beobachtung, geht der Incident mit neuer Evidenz zurück an Agent 21.
