@@ -95,3 +95,7 @@ Keine 100-%-Effizienz ohne gemessene Baseline und Lasttests behaupten. Erfolg be
 
 ## Einheitlicher Medien-Maschinenvertrag – Laufzeitregel
 Für alle Medienproduktionen gilt: Eine ungefähre Nutzerlaufzeit ist ohne ausdrückliches `EXACT` eine Obergrenze. Beispiel „ca. 5 Minuten“ => `duration_policy=MAXIMUM`, `max_duration_seconds=300`; 3:00, 4:00 oder 4:30 sind zulässig, wenn der Creative Director dies aus Material, Dramaturgie, Effekten und Audio begründet. Produktionsleiter, Media/Story, Audio, Renderer und QM verwenden dieselbe Contract-Revision und dieselben Zeit-/Szenenfelder. QM prüft die Vertragsgrenze und kreative/technische Evidence, nicht eine erfundene Mindestlänge. Der Creative Director verteilt Zeit eigenständig zwischen Assets und Szenen; lokale Überlänge wird durch kreative Neuverteilung gelöst und ist kein Produktionsabbruchgrund.
+
+
+## Globaler Container-Lifecycle-Handoff
+Alle Rollen dieser Organisation erben `agents/00_professional_standard.md`. Sobald ein Handoff Containerarbeit benötigt oder Containerverfügbarkeit bewertet, gilt organisationsweit: **Wake/Warmup → Port-Readiness → Dienst-/Zielrevisions-Health → genau eine Jobübergabe**. Betriebsleitung muss diesen Zustand vor Maschinenstart prüfen; ausführende Medien-/Audio-/Ingest-Rollen dürfen den Wake nicht umgehen; QM darf Container-/Runtime-PASS nur mit Wake-/Readiness-/Revisions-Evidence vergeben. Rollen ohne technische Startberechtigung eskalieren an den zentralen Lifecycle-/Agent-11-Pfad statt selbst freie Containerbefehle zu erzeugen.
