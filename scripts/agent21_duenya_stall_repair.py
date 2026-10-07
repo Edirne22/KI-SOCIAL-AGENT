@@ -14,7 +14,8 @@ from scripts.ai_central_shared_inbox import client_from_env
 TASK_ID="f6f50c9f4c2690e4eb1fe978"
 STAGE="video_editor_ffmpeg"
 REPAIR_ID="R21-DUENYA-FFMPEG-SLEEP-20261007"
-PRODUCTION_REVISION="v3"\nSTATUS_KEY=f"ai-central/v1/private-video/{TASK_ID}/revisions/{PRODUCTION_REVISION}/status.json"
+PRODUCTION_REVISION="v3"
+STATUS_KEY=f"ai-central/v1/private-video/{TASK_ID}/revisions/{PRODUCTION_REVISION}/status.json"
 INCIDENT_ID=f"WD-{TASK_ID}-{STAGE}"
 INCIDENT_KEY=f"ai-central/v1/maintenance/incidents/{INCIDENT_ID}.json"
 STALE_AFTER_SECONDS=75
