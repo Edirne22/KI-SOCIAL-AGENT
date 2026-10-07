@@ -108,8 +108,8 @@ jobs:
             echo "PRIVATE_ASR_DEPLOY_RESTART_FAILED: HTTP $code (body withheld)"
             exit 1
           fi
-          python3 -c 'import json; d=json.load(open("/tmp/container-restart")); assert d.get("status") == "container_restart_requested"'
-          echo "PRIVATE_ASR_DEPLOY_RESTART_REQUESTED"
+          python3 -c 'import json; d=json.load(open("/tmp/container-restart")); assert d.get("status") == "container_restarted_ready"'
+          echo "PRIVATE_ASR_DEPLOY_RESTARTED_AND_PORT_READY"
       - name: Authenticated target-revision health check
         shell: bash
         run: |
