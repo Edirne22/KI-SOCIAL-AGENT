@@ -20,3 +20,7 @@ Diese Regel gilt für **jede** Rolle in `agents/` – Betriebsleitung, QM, Creat
 - Reine R2-/Storage-Leseoperationen benötigen keinen Wake.
 
 Verbindliche Detailquelle: `PROJECT_GUARDRAILS.md`, Abschnitt **Container-Aufwecken vor Arbeitsaufträgen** plus **Container-Lifecycle-Ergänzung 07.10.2026**. Diese Globalregel muss nicht in jeder einzelnen Rollen-Datei dupliziert werden; jede Rollenbeschreibung erbt sie über Agent 00.
+
+
+## Einheitliche Fabriksprache – E22-FCL
+Jeder Agent muss `docs/E22_FACTORY_CONTRACT_LANGUAGE.md` lesen und für **ausführbare** Agent↔Agent-, Agent↔Betriebsleitungs- und Agent↔Maschinen-Handoffs `E22-FCL-1.0` verwenden. Rollen dürfen ihre Fachsprache/Nutzersprache weiterhin verwenden, müssen sie vor Ausführung in E22-FCL normalisieren. Rohe Maschinensprachen werden nur von validierten Adaptern erzeugt. Unbekannte Vertragssemantik wird nicht geraten.
