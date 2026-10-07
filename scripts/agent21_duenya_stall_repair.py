@@ -41,7 +41,9 @@ def reconcile(client,bucket,*,now=None):
         raise RuntimeError("AGENT21_DUENYA_INCIDENT_INVALID")
 
     state=_read_json(client,bucket,STATUS_KEY)
-    if (state.get("schema")!="PRIVATE-VIDEO-STATUS-V1" or state.get("task_id")!=TASK_ID\n        or state.get("production_revision")!=PRODUCTION_REVISION\n        or state.get("runtime_revision")!="duenya-creative-chain-v3"):
+    if (state.get("schema")!="PRIVATE-VIDEO-STATUS-V1" or state.get("task_id")!=TASK_ID
+        or state.get("production_revision")!=PRODUCTION_REVISION
+        or state.get("runtime_revision")!="duenya-creative-chain-v3"):
         raise RuntimeError("AGENT21_DUENYA_STATUS_INVALID")
     if state.get("status")=="COMPLETED":
         return {"action":"NO_RECOVERY","reason":"ALREADY_COMPLETED","repair_id":REPAIR_ID}
