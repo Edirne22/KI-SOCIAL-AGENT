@@ -115,14 +115,16 @@ jobs:
         run: |
           set -euo pipefail
           url="https://edirne22-private-asr.butupeli.workers.dev/health"
-          expected="block9-groq-429-fallback-v1"
+          expected_research="block9-groq-429-fallback-v1"
+          expected_video="duenya-ffmpeg-timebase-v2"
           for n in $(seq 1 30); do
             code=$(curl -sS -o /tmp/asr-health -w '%{http_code}' --max-time 30 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
-            if [ "$code" = 200 ] && python3 - "$expected" <<'PY' 2>/dev/null
+            if [ "$code" = 200 ] && python3 - "$expected_research" "$expected_video" <<'PY' 2>/dev/null
           import json,sys
           d=json.load(open("/tmp/asr-health"))
           assert d.get("ready") is True
           assert d.get("research_runtime_revision") == sys.argv[1]
+          assert d.get("private_video_runtime_revision") == sys.argv[2]
           PY
             then
               echo "PRIVATE_ASR_TARGET_REVISION_LIVE_OK"
