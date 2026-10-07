@@ -105,11 +105,11 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         title_text=fftext(overlays[0] if overlays else TITLE)
         mid_text=fftext(overlays[1] if len(overlays)>1 else "Unsere schönsten Erinnerungen")
         end_text=fftext(overlays[2] if len(overlays)>2 else "Alles Gute!")
-        draw=(f"drawtext=text='{title_text}':fontcolor=white:fontsize=64:borderw=4:bordercolor=black:"
+        draw=(f"drawtext=text='{title_text}':fontcolor=white:fontsize=44:borderw=4:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.78:enable='between(t,1,7)',"
-              f"drawtext=text='{mid_text}':fontcolor=white:fontsize=50:borderw=3:bordercolor=black:"
+              f"drawtext=text='{mid_text}':fontcolor=white:fontsize=30:borderw=3:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.80:enable='between(t,105,112)',"
-              f"drawtext=text='{end_text}':fontcolor=white:fontsize=48:borderw=3:bordercolor=black:"
+              f"drawtext=text='{end_text}':fontcolor=white:fontsize=24:borderw=3:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.80:enable='between(t,286,299)'")
         subprocess.run(["ffmpeg","-y","-i",str(rough),"-vf",draw,"-an","-c:v","libx264","-preset","veryfast",
                         "-b:v","850k","-maxrate","950k","-bufsize","1900k","-pix_fmt","yuv420p","-movflags","+faststart",str(visual)],
