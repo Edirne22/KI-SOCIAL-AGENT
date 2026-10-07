@@ -17,7 +17,7 @@ import research_gateway
 import scripts.private_birthday_first_production as private_birthday
 from scripts.ai_central_shared_inbox import client_from_env
 from content_factory_private_video_orchestrator import (
-    STAGES, build_plan, load_private_prompt, persist_stage, PrivateQM,
+    STAGES, CREATIVE_REVISION, MOTION_MODES, build_plan, load_private_prompt, persist_stage, PrivateQM,
 )
 
 _lock = threading.Lock()
@@ -35,7 +35,7 @@ _code_workspace = "/tmp/edirne22-code-workspace"
 _code_repo = "https://github.com/Edirne22/KI-SOCIAL-AGENT.git"
 _code_executor_contract = "repo-readonly-v1"
 _research_runtime_revision = "block9-groq-429-fallback-v1"
-_private_video_runtime_revision = "duenya-ffmpeg-timebase-v2"
+_private_video_runtime_revision = "duenya-creative-chain-v3"
 _private_runtime_origin = "https://edirne22-private-asr.butupeli.workers.dev"
 
 
@@ -244,6 +244,7 @@ def _renew_private_video_activity(opener=urlopen):
 def _video_status(task_id, status, error_code=None, detail=None, stage=None):
     client,bucket=client_from_env()
     payload={"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":task_id,"status":status,
+             "runtime_revision":_private_video_runtime_revision,
              "updated_at":datetime.now(timezone.utc).isoformat()}
     if stage: payload["stage"]=stage
     if error_code: payload["error_code"]=str(error_code)[:80]
@@ -291,11 +292,16 @@ def _run_video(task_id):
         persist_stage(client,bucket,task_id,"video_editor_ffmpeg","COMPLETED")
         current["stage"]="qm"
         persist_stage(client,bucket,task_id,"qm","RUNNING")
+        evidence=result.get("creative_evidence",{})
         qm=PrivateQM().checks(duration=result["duration"],has_audio=result["has_audio"],
-                              has_video=result["has_video"],creative={"overlays":plan.overlays,"privacy":plan.privacy})
+                              has_video=result["has_video"],creative={
+                                  **evidence,
+                                  "expected_effects":MOTION_MODES,
+                                  "privacy":plan.privacy,
+                              })
         if not qm["passed"]:
             raise RuntimeError("PRIVATE_AGENT_QM_FAILED")
-        persist_stage(client,bucket,task_id,"qm","COMPLETED","duration/audio/video/creative/privacy passed")
+        persist_stage(client,bucket,task_id,"qm","COMPLETED","technical + creative render evidence passed")
         current["stage"]="private_preview"
         preview={"schema":"PRIVATE-VIDEO-PREVIEW-V1","task_id":task_id,"state":"READY_FOR_HUMAN",
                  "r2_key":result["r2_key"],"sha256":result["sha256"],"private":True,"publishable":False}
@@ -384,8 +390,11 @@ class Handler(BaseHTTPRequestHandler):
                 else:
                     if existing.get("schema")=="PRIVATE-VIDEO-STATUS-V1" and existing.get("task_id")==data["task_id"]:
                         status=existing.get("status","UNKNOWN")
-                        if status!="FAILED":
+                        same_revision=existing.get("runtime_revision")==_private_video_runtime_revision
+                        if status!="FAILED" and same_revision:
                             return self.respond(200, {"status":status,"task_id":data["task_id"]})
+                        # A completed result from an older renderer revision is intentionally
+                        # eligible for one explicit authenticated V2 rerender.
                         # FAILED is terminal for automatic retries, but this endpoint is an
                         # explicit authenticated human restart. Reuse the same task id/prompt.
 
