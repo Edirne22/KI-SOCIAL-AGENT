@@ -110,7 +110,7 @@ def watch(
     stall_after_seconds: int = 75,
     production_revision=None,
 ) -> dict:
-    if production_revision not in (None, "v3"):
+    if production_revision not in (None, "v3", "v4"):
         raise ValueError("DUENYA_WATCH_REVISION_INVALID")
     if max_checks < 1 or interval_seconds < 0 or stall_after_seconds < 45:
         raise ValueError("DUENYA_WATCH_BOUNDS_INVALID")
