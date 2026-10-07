@@ -23,6 +23,15 @@ MUSIC=Path("assets/musik/chill/hypnotic-ambient.mp3")
 TITLE="Dünya – Level 12"
 FPS=25
 
+def run_ffmpeg(cmd, *, step, timeout):
+    """Run FFmpeg without leaking private paths/media into persistent diagnostics."""
+    try:
+        return subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=timeout)
+    except subprocess.CalledProcessError as exc:
+        raise RuntimeError(f"PRIVATE_FFMPEG_FAILED:{step}:exit_{exc.returncode}") from None
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(f"PRIVATE_FFMPEG_TIMEOUT:{step}") from None
+
 def render_segment(src, seg, *, is_image, seconds):
     # Concat demuxer stream-copy requires identical time bases. Previously photo
     # (10 fps) and video (15 fps) tracks stretched a 300s timeline to 324s.
@@ -38,7 +47,7 @@ def render_segment(src, seg, *, is_image, seconds):
     cmd += ["-i",str(src),"-t",f"{seconds:.3f}","-vf",vf,"-an",
             "-c:v","libx264","-preset","ultrafast","-crf","28",
             "-pix_fmt","yuv420p","-video_track_timescale","25000",str(seg)]
-    subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=120)
+    run_ffmpeg(cmd,step="segment",timeout=120)
 
 def fftext(value):
     return str(value).replace("\\", "\\\\").replace("'", "\\'").replace(":", "\\:").replace("%", "\\%")
@@ -98,8 +107,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
         rough=root/"rough.mp4"
-        subprocess.run(["ffmpeg","-y","-f","concat","-safe","0","-i",str(concat),"-c","copy",str(rough)],
-                       check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=300)
+        run_ffmpeg(["ffmpeg","-y","-f","concat","-safe","0","-i",str(concat),"-c","copy",str(rough)],step="concat",timeout=300)
         # Private creative lane: tasteful title/memory cards, then documented public-domain music.
         visual=root/"visual.mp4"
         title_text=fftext(overlays[0] if overlays else TITLE)
@@ -111,9 +119,8 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
               "x=(w-text_w)/2:y=h*0.80:enable='between(t,105,112)',"
               f"drawtext=text='{end_text}':fontcolor=white:fontsize=24:borderw=3:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.80:enable='between(t,286,299)'")
-        subprocess.run(["ffmpeg","-y","-i",str(rough),"-vf",draw,"-an","-c:v","libx264","-preset","veryfast",
-                        "-b:v","850k","-maxrate","950k","-bufsize","1900k","-pix_fmt","yuv420p","-movflags","+faststart",str(visual)],
-                       check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=600)
+        run_ffmpeg(["ffmpeg","-y","-i",str(rough),"-vf",draw,"-an","-c:v","libx264","-preset","veryfast",
+                        "-b:v","850k","-maxrate","950k","-bufsize","1900k","-pix_fmt","yuv420p","-movflags","+faststart",str(visual)],step="title_cards",timeout=600)
         if not music.exists(): raise RuntimeError("PRIVATE_BIRTHDAY_MUSIC_MISSING")
         out=root/"Duenya-Level-12-private.mp4"
         mix_music(visual,music,out)
