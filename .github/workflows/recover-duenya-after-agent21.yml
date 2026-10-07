@@ -64,24 +64,29 @@ jobs:
           echo "action=$action" >> "$GITHUB_OUTPUT"
           echo "repair_id=$repair" >> "$GITHUB_OUTPUT"
           echo "AGENT21_DUENYA_DECISION=$action"
-      - name: Direct exact Dünya resume while Agent 11 is bypassed
+      - name: Agent 11 recovery-mode exact Dünya resume
         if: steps.agent21.outputs.action == 'HANDOFF_AGENT11'
         shell: bash
         run: |
           set -euo pipefail
-          url="https://edirne22-private-asr.butupeli.workers.dev/health?recovery=duenya-level12"
+          url="https://edirne22-private-asr.butupeli.workers.dev/private-video/jobs"
+          payload='{"task_id":"f6f50c9f4c2690e4eb1fe978","production_revision":"v3"}'
           code=$(curl -sS -o /tmp/duenya-resume -w '%{http_code}' --max-time 45 \
-            -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
-          if [ "$code" != 200 ] && [ "$code" != 202 ]; then
-            echo "DUENYA_DIRECT_RESUME_FAILED_HTTP_$code"
+            -X POST \
+            -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data "$payload" "$url" || true)
+          if [ "$code" != 202 ]; then
+            echo "DUENYA_AGENT11_RESUME_FAILED_HTTP_$code"
             exit 1
           fi
           python - <<'PY'
           import json
           d=json.load(open("/tmp/duenya-resume"))
           assert d.get("task_id")=="f6f50c9f4c2690e4eb1fe978"
-          assert d.get("status") in ("ACCEPTED","RUNNING","COMPLETED")
-          print("DUENYA_DIRECT_RESUME_ACCEPTED")
+          assert d.get("production_revision")=="v3"
+          assert d.get("status")=="ACCEPTED"
+          print("DUENYA_AGENT11_RECOVERY_RESUME_ACCEPTED")
           PY
       - name: Continue exact production through QM and private preview
         run: python -m scripts.watch_duenya_level12_production
