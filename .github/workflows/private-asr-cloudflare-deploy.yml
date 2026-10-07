@@ -102,15 +102,17 @@ jobs:
         run: |
           set -euo pipefail
           url="https://edirne22-private-asr.butupeli.workers.dev/admin/container-restart"
-          code=$(curl -sS -o /tmp/container-restart -w '%{http_code}' --max-time 30 \
+          code=$(curl -sS -o /tmp/container-restart -w '%{http_code}' --max-time 110 \
             -X POST -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
           if [ "$code" != 202 ]; then
-            echo "PRIVATE_ASR_DEPLOY_RESTART_FAILED: HTTP $code (body withheld)"
+            reason=$(python3 -c 'import json; d=json.load(open("/tmp/container-restart")); print(str(d.get("error","unknown"))[:80]+":"+str(d.get("exception","unknown"))[:80])' 2>/dev/null || echo "non_json_response")
+            echo "PRIVATE_ASR_DEPLOY_RESTART_FAILED: HTTP $code reason=$reason"
             exit 1
           fi
           python3 -c 'import json; d=json.load(open("/tmp/container-restart")); assert d.get("status") == "container_restarted_ready"'
           echo "PRIVATE_ASR_DEPLOY_RESTARTED_AND_PORT_READY"
       - name: Authenticated target-revision health check
+        id: revision_health
         shell: bash
         run: |
           set -euo pipefail
@@ -119,14 +121,7 @@ jobs:
           expected_video="duenya-creative-chain-v3"
           for n in $(seq 1 30); do
             code=$(curl -sS -o /tmp/asr-health -w '%{http_code}' --max-time 30 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
-            if [ "$code" = 200 ] && python3 - "$expected_research" "$expected_video" <<'PY' 2>/dev/null
-          import json,sys
-          d=json.load(open("/tmp/asr-health"))
-          assert d.get("ready") is True
-          assert d.get("research_runtime_revision") == sys.argv[1]
-          assert d.get("private_video_runtime_revision") == sys.argv[2]
-          PY
-            then
+            if python3 scripts/private_asr_deploy_guard.py /tmp/asr-health "$code" "$expected_research" "$expected_video"; then
               echo "PRIVATE_ASR_TARGET_REVISION_LIVE_OK"
               exit 0
             fi
@@ -135,6 +130,7 @@ jobs:
           done
           echo "PRIVATE_ASR_TARGET_REVISION_LIVE_FAILED"; exit 1
       - name: Wait for target OpenCode container contract
+        id: opencode_health
         shell: bash
         run: |
           set -euo pipefail
@@ -184,7 +180,7 @@ jobs:
           fi
           python3 - "$warning" "$provider" <<'PY' | tee /tmp/agent21-runtime-diagnostic.json
           import json,sys,subprocess
-          payload={"run_id":"${{ github.run_id }}","commit":"${{ github.sha }}","machine":"private-asr-container","route":"/research/search","provider":sys.argv[2],"state":"failure","error_class":sys.argv[1],"container_health":"passed","opencode_health":"passed"}
+          payload={"run_id":"${{ github.run_id }}","commit":"${{ github.sha }}","machine":"private-asr-container","route":"/research/search","provider":sys.argv[2],"state":"failure","error_class":sys.argv[1],"container_health":"${{ steps.revision_health.outcome }}","opencode_health":"${{ steps.opencode_health.outcome }}"}
           p=subprocess.run(["python3","scripts/agent21_runtime_diagnostics.py"],input=json.dumps(payload),text=True,capture_output=True,check=True)
           print(p.stdout.strip())
           PY

@@ -5,6 +5,9 @@ on:
       - "infra/private-asr/**"
       - "infra/private-asr-cloudflare/**"
       - ".github/workflows/private-asr-build.yml"
+      - ".github/workflows/private-asr-cloudflare-deploy.yml"
+      - "scripts/private_asr_deploy_guard.py"
+      - "tests/test_private_asr_deploy_guard.py"
   workflow_dispatch:
 permissions:
   contents: read
@@ -28,6 +31,8 @@ jobs:
           assert 'PRIVATE_ASR_INTERNAL_TOKEN' in code
           assert '0.0.0.0' in code
           PY
+      - name: Target revision positive and negative controls
+        run: python -m unittest tests.test_private_asr_deploy_guard -v
       - name: Agent 21 -> Agent 11 stalled-video regression
         run: |
           python -m pip install --disable-pip-version-check requests boto3
