@@ -16,6 +16,26 @@ export class PrivateASRContainer extends Container {
   requiredPorts = [5200];
   sleepAfter = "15m";
   enableInternet = true;
+
+  // Cloudflare-native render lease: long background FFmpeg work does not create
+  // incoming requests, so explicitly renew the Container activity timer while a
+  // private render lease is armed. The lease is bounded; after it expires the
+  // normal 15m idle shutdown applies again.
+  async armPrivateRenderLease(remainingPulses = 240): Promise<void> {
+    this.renewActivityTimeout();
+    console.log("PRIVATE_MEDIA_LIFECYCLE_RENEW", {remainingPulses});
+    if (remainingPulses > 0) {
+      await this.schedule(30, "privateRenderLeasePulse", remainingPulses - 1);
+    }
+  }
+
+  async privateRenderLeasePulse(remainingPulses: number): Promise<void> {
+    this.renewActivityTimeout();
+    console.log("PRIVATE_MEDIA_LIFECYCLE_RENEW", {remainingPulses});
+    if (remainingPulses > 0) {
+      await this.schedule(30, "privateRenderLeasePulse", remainingPulses - 1);
+    }
+  }
 }
 const reply = (data: object, status: number) =>
   Response.json(data, {status, headers: {"cache-control": "no-store"}});
@@ -138,6 +158,11 @@ export default {
       const headers = new Headers(request.headers);
       headers.set("content-length", String(new TextEncoder().encode(jobBody!).byteLength));
       try {
+        if (url.pathname === "/private-video/jobs") {
+          // Arm a bounded two-hour native Cloudflare activity lease before the
+          // container acknowledges the background render job.
+          await instance.armPrivateRenderLease();
+        }
         const upstream = await instance.fetch(new Request("http://localhost:5200" + url.pathname, {
           method:"POST", headers, body:jobBody!
         }));
