@@ -88,13 +88,18 @@ class BirthdayTimelineTests(unittest.TestCase):
             # Real timeline alternates photo/video, including a short source clip.
             assets = [{"mime": "image/png", "key": "test-image"},
                       {"mime": "video/mp4", "key": "test-video"}] * 3
-            plan = SimpleNamespace(duration_seconds=300, overlays=("Synthetic", "Memory", "End"))
+            plan = SimpleNamespace(duration_seconds=300, overlays=("Synthetic", "Memory", "End"),
+                                   asset_effects=("zoom_in","pan_left","zoom_out","pan_right","zoom_in","pan_left"),
+                                   scene_plan=({"id":"a"},{"id":"b"},{"id":"c"},{"id":"d"}),
+                                   creative_revision="duenya-creative-v2")
             with patch.object(birthday, "client_from_env", return_value=(client, "test")), \
                  patch.dict(os.environ, TELEGRAM_BOT_TOKEN="synthetic", TELEGRAM_CHAT_ID="synthetic"), \
                  patch.object(birthday.requests, "post", return_value=SimpleNamespace(status_code=200)) as send:
                 result = birthday.run(task_id="synthetic", plan=plan, assets_override=assets)
             self.assertAlmostEqual(result["duration"], 300, delta=0.2)
             self.assertTrue(result["has_audio"] and result["has_video"])
+            self.assertGreaterEqual(len(result["creative_evidence"]["applied_effects"]),3)
+            self.assertEqual(result["creative_evidence"]["creative_revision"],"duenya-creative-v2")
             self.assertEqual(birthday.sha256(client.objects[result["r2_key"]]).hexdigest(), result["sha256"])
             send.assert_called_once()
             self.assertLess(len(client.objects[result["r2_key"]]), 49 * 1024 * 1024)
