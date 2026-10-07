@@ -127,10 +127,9 @@ def execute_recovery(
     if decision["decision"] != "RESUME":
         raise RuntimeError("RECOVERY_DECISION_NOT_EXECUTABLE")
 
-    code, payload = http("POST", "/admin/container-restart", token, None)
-    if code != 202 or payload.get("status") != "container_restart_requested":
-        raise RuntimeError(f"RECOVERY_RESTART_FAILED_HTTP_{code}")
-
+    # The workflow has already proved the exact target runtime revision before
+    # Agent 21 hands off. Do not destroy that proven healthy instance again here:
+    # a second restart is redundant and may be rejected by the edge/runtime.
     ready = False
     for attempt in range(max_health_attempts):
         code, payload = http("GET", "/health", token, None)
