@@ -706,3 +706,8 @@ Diese Regeln ergänzen die bestehende Abnahmematrix und gelten für Code-, Workf
 9. **Finaler Scope-Check:** Vor Merge Basis-HEAD, Ahead/Behind, geänderte Dateien, Diff-Größe, Tests/CI und bekannte Restrisiken kontrollieren. Ein grüner Test rechtfertigt keinen sachfremden Diff.
 
 **Anlass/Regression 04.10.2026:** Beim Publisher-/Dedupe-Hardening für PR #378 entstand während eines ersten Patch-Versuchs unbeabsichtigt ein massiv aufgeblähter Diff mit mehrfach dupliziertem Dateiinhalt. Der verdächtige Stand wurde nicht gemergt. Die Änderung wurde aus sauberem `main` neu aufgebaut und auf den tatsächlich notwendigen Scope reduziert. Diese Regel soll verhindern, dass ein formal testbarer, aber strukturell falscher Groß-Diff weitergeschoben wird.
+
+
+### Container-Lifecycle-Ergänzung 07.10.2026 – Restart ist erst nach Wake fertig
+
+Die bestehende Wake-Regel gilt ausdrücklich auch für Deploy-, Destroy- und Restart-Pfade. `destroy()` allein ist kein abgeschlossener Neustart. Verbindliche Reihenfolge: **alte Instanz kontrolliert beenden → dieselbe fest adressierte Instanz mit `startAndWaitForPorts()` und serverseitigen Runtime-Variablen starten → erforderlichen Port bestätigen → Dienst- und Zielrevision prüfen → erst danach Job/Stage genau einmal übergeben**. Jeder Worker/Agent, der Containerarbeit anstößt oder Containerverfügbarkeit diagnostiziert, muss diesen Ablauf verwenden bzw. nachweisen. „Nicht erreichbar“ ohne vorherigen Wake-/Readiness-Versuch ist kein zulässiger Endbefund. HTTP 200 ohne passende Zielrevision ist kein Deploy-PASS.

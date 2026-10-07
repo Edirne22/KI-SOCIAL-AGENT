@@ -86,3 +86,8 @@ Die spätere CODE-Konsole muss Schreib-/Patch-/Test-/PR-Fähigkeit explizit übe
 ## Wahrheitsregel
 
 Statuswerte sind evidenzgebunden: `UNVERIFIED`, `READ_ONLY`, `PATCHED`, `TESTED`, `CI_GREEN`, `DEPLOYED`, `VERIFIED` nur dann verwenden, wenn der jeweilige Nachweis tatsächlich vorliegt.
+
+
+## Verbindliche Wake-Prüfung bei Container-Incidents
+
+Agent 21 behandelt „Container nicht erreichbar“ nicht als Root Cause, bevor der zuständige feste Wake-/Warmup-Pfad nachgewiesen wurde. Bei Cloudflare Containers ist vor Diagnose eines Runtime-Ausfalls zu prüfen: adressierte Instanz → `startAndWaitForPorts()` auf den erforderlichen Ports → Dienst-/Revisions-Health. Nach Deploy/Destroy muss ein expliziter Wake folgen; ein HTTP-200 allein ersetzt den Revisionsnachweis nicht. Fehlt dieser Ablauf, ist zuerst die Lifecycle-Kette zu reparieren und erst danach Renderer/ASR/OpenCode zu verändern.
