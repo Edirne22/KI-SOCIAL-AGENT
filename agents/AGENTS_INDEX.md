@@ -45,3 +45,8 @@ Content: Strategie/Discovery → Research/Newsroom → Creative/Writing → plat
 Forschung und Weiterentwicklung: Scout → Research/Lizenz/Kostenprüfung → technischer Integrationsplan → isolierter Build → unabhängige Security/CI/QM → kontrollierte Freigabe → zentraler TOOL_INDEX und evidenzgebundenes Memory → erneute Scout-Recherche.
 
 Ein `AGENTS_INDEX`-Eintrag ist keine produktive Freischaltung. Die separate stündliche Infrastruktur-Angebotsprüfung beweist nicht den vollständigen GitHub-Scout. Coding-Probeläufe beweisen nicht den vollständig schreibenden Programmierdispatcher. Fehlende Rückmeldungen/fehlende R2-Nachweise bedeuten **UNVERIFIED**, nicht PASS.
+
+
+## Gemeinsame Container-Betriebsregel
+
+Alle Agenten und Worker, die Containerarbeit auslösen oder deren Verfügbarkeit bewerten, müssen den zentralen Lifecycle-Vertrag beachten: **Wake/Warmup → Port-Readiness → Dienst-/Revisions-Health → Auftrag genau einmal**. Nach Destroy/Deploy/Restart ist Wake erneut Pflicht. Ein Agent darf einen Container erst nach fehlgeschlagenem Wake-/Readiness-Nachweis als nicht erreichbar melden. Reine R2-Lesezugriffe wecken keinen Container.
