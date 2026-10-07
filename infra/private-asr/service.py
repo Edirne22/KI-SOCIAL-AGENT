@@ -136,6 +136,15 @@ def _prepare_code_workspace():
     return True
 
 
+def _sanitize_diagnostic(raw):
+    if not isinstance(raw, str) or not raw.strip():
+        return "none"
+    text = raw.strip()
+    text = re.sub(r"(?:sk-or-v1-[A-Za-z0-9_-]+|Bearer\s+[A-Za-z0-9._-]+|[a-zA-Z0-9_-]{32,})", "[REDACTED]", text)
+    clean = " ".join(text.splitlines())
+    return clean[:300]
+
+
 def _run_opencode(message):
     if not _lock.acquire(False):
         return 409, {"error": "busy"}
@@ -164,11 +173,12 @@ def _run_opencode(message):
         if len(output.encode("utf-8")) > _opencode_max_output:
             return 502, {"error": "output_too_large"}
         if result.returncode != 0:
-            return 502, {"error": "opencode_failed"}
+            detail = _sanitize_diagnostic(result.stderr or result.stdout)
+            return 502, {"error": "opencode_failed", "detail": detail}
         try:
             text, _ = _opencode_result(output)
-        except ValueError:
-            return 502, {"error": "invalid_opencode_output"}
+        except ValueError as exc:
+            return 502, {"error": "invalid_opencode_output", "detail": _sanitize_diagnostic(str(exc))}
         return 200, {"text": text}
     finally:
         _lock.release()
@@ -179,7 +189,7 @@ def _run_opencode_code(message):
         return 409, {"error": "busy"}
     try:
         if not _prepare_code_workspace():
-            return 503, {"error": "code_workspace_unavailable"}
+            return 503, {"error": "code_workspace_unavailable", "detail": "git workspace clone or fetch failed"}
         provider_key = os.getenv("OPENROUTER_API_KEY", "")
         if not provider_key:
             return 503, {"error": "provider_unavailable"}
@@ -211,11 +221,12 @@ def _run_opencode_code(message):
         if len(output.encode("utf-8")) > _opencode_max_output:
             return 502, {"error": "output_too_large"}
         if result.returncode != 0:
-            return 502, {"error": "opencode_failed"}
+            detail = _sanitize_diagnostic(result.stderr or result.stdout)
+            return 502, {"error": "opencode_failed", "detail": detail}
         try:
             text, tools = _opencode_result(output)
-        except ValueError:
-            return 502, {"error": "invalid_opencode_output"}
+        except ValueError as exc:
+            return 502, {"error": "invalid_opencode_output", "detail": _sanitize_diagnostic(str(exc))}
         if "<function_calls>" in text or "<invoke name=" in text:
             return 502, {"error": "pseudo_tool_call_not_executed"}
         return 200, {"text": text, "tools_used": tools, "workspace": _code_executor_contract}

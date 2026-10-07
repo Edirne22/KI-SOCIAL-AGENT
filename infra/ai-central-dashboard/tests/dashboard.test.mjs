@@ -194,7 +194,7 @@ test("CODE session routes one bounded message through private OpenCode service a
  const response=await worker.fetch(request("/api/chat/message",{method:"POST",body:JSON.stringify({session_id:session.id,message:"Hallo Claude"}),headers:origin}),e);
  assert.equal(response.status,200);const result=await response.json();
  assert.deepEqual({text:result.text,stored:result.stored},{text:"OPENCODE_DASHBOARD_OK",stored:true});
- assert.equal(calls.length,1);assert.equal(calls[0].url,"https://private-asr/opencode/chat");
+ assert.equal(calls.length,1);assert.equal(calls[0].url,"https://private-asr/opencode/code");
  assert.equal(calls[0].method,"POST");assert.equal(calls[0].authorization,"Bearer internal-test-token");
  assert.deepEqual(calls[0].body,{message:"Hallo Claude"});
  const saved=await worker.fetch(request("/api/chat/session?id="+session.id),e);

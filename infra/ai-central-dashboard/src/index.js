@@ -785,7 +785,8 @@ async function chatMessage(req,env){
 
   let response;
   try{
-    response=await env.PRIVATE_ASR_SERVICE.fetch("https://private-asr/opencode/chat",{
+    const targetEndpoint = session.mode === "code" ? "https://private-asr/opencode/code" : "https://private-asr/opencode/chat";
+    response=await env.PRIVATE_ASR_SERVICE.fetch(targetEndpoint,{
       method:"POST",headers:{"authorization":"Bearer "+env.PRIVATE_ASR_INTERNAL_TOKEN,"content-type":"application/json"},
       body:JSON.stringify({message:prompt})
     });

@@ -194,7 +194,11 @@ jobs:
           payload='{"message":"Use the native shell tool to run exactly git rev-parse HEAD. After the tool result, reply exactly CODE_EXEC_OK followed by one space and that 40-character SHA."}'
           code=$(curl -sS -o /tmp/opencode-code-live -w '%{http_code}' --max-time 180 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" -H 'Content-Type: application/json' --data "$payload" "$url" || true)
           if [ "$code" != 200 ]; then
-            echo "OPENCODE_CODE_LIVE_FAILED: HTTP $code (body withheld)"
+            error_code=$(python3 -c 'import json; d=json.load(open("/tmp/opencode-code-live")); e=d.get("error","unknown_error"); print(e if isinstance(e,str) and len(e) <= 80 else "invalid_error")' 2>/dev/null || echo non_json_error)
+            detail=$(python3 -c 'import json; d=json.load(open("/tmp/opencode-code-live")); print(str(d.get("detail","") or d.get("sanitized_message",""))[:120])' 2>/dev/null || echo "")
+            content_type=$(curl -sS -I --max-time 30 -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" 2>/dev/null | awk 'BEGIN{IGNORECASE=1} /^content-type:/{gsub("\\r",""); print $2; exit}' || true)
+            body_bytes=$(wc -c < /tmp/opencode-code-live | tr -d ' ')
+            echo "OPENCODE_CODE_LIVE_FAILED: HTTP $code error=$error_code detail=$detail body_bytes=$body_bytes content_type=${content_type:-unknown}"
             exit 1
           fi
           python3 - <<'PY'
