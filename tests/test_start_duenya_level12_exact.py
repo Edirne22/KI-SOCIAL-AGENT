@@ -53,4 +53,110 @@ class ExactStartTests(unittest.TestCase):
         text=Path(".github/workflows/start-duenya-level12-exact.yml").read_text(encoding="utf-8")
         self.assertIn("python -m scripts.start_duenya_level12_exact",text)
         self.assertNotIn("python scripts/start_duenya_level12_exact.py",text)
-if __name__=="__main__":unittest.main()
+
+class V3StartTests(unittest.TestCase):
+    def setUp(self):
+        from scripts.start_duenya_level12_exact import RUNTIME_REVISION
+        self.runtime_revision=RUNTIME_REVISION
+        self.calls=[]
+        self.reads=[]
+        self.objects={"ai-central/v1/inbox/x.json":task("QUEUED_PRIVATE_VIDEO")}
+        self.root=f"ai-central/v1/private-video/{TASK_ID}"
+        self.objects[self.root+"/status.json"]=status("COMPLETED")
+        self.objects[self.root+"/preview.json"]={"task_id":TASK_ID,"state":"READY_FOR_HUMAN","r2_key":"private/old.mp4"}
+        self.writes=[]
+        outer=self
+        class Store:
+            def get_paginator(self,n): return Pager()
+            def get_object(self,Bucket,Key):
+                outer.reads.append(Key)
+                if Key not in outer.objects: raise Missing()
+                return {"Body":Body(outer.objects[Key]),"ETag":'"old"'}
+            def put_object(self,**kw):
+                outer.writes.append(kw)
+                outer.objects[kw["Key"]]=json.loads(kw["Body"])
+                return {"ETag":'"saved"'}
+        self.store=Store()
+
+    def response(self, body, code=200):
+        class Response:
+            status_code=code
+            def json(self): return body
+        return Response()
+
+    def health(self,*a,**kw):
+        self.assertFalse(kw["allow_redirects"])
+        return self.response({"ready":True,"private_video_runtime_revision":self.runtime_revision})
+
+    def post(self,*a,**kw):
+        self.calls.append(kw)
+        self.objects[self.root+"/revisions/v3/status.json"]={**status("RUNNING"),"production_revision":"v3","runtime_revision":self.runtime_revision}
+        return self.response({"status":"ACCEPTED","task_id":TASK_ID,"production_revision":"v3"},202)
+
+    def start(self,**kw):
+        return start_exact(self.store,"b","synthetic",production_revision="v3",get=kw.pop("get",self.health),
+                           post=kw.pop("post",self.post),sleeper=lambda _:None,**kw)
+
+    def test_legacy_completed_cannot_hide_v3_start_and_manifests_are_preserved(self):
+        old=dict(self.objects[self.root+"/status.json"])
+        self.assertEqual(self.start()["result"],"START_RUNNING")
+        self.assertEqual(self.calls[0]["json"],{"task_id":TASK_ID,"production_revision":"v3"})
+        self.assertEqual(self.objects[self.root+"/revisions/legacy-before-v3/status.json"],old)
+        self.assertEqual(self.objects[self.root+"/status.json"],old)
+        self.assertTrue(all(w["IfNoneMatch"]=="*" for w in self.writes))
+        self.assertEqual(len(self.calls),1)
+
+    def test_wrong_health_revision_not_ready_or_auth_error_never_posts(self):
+        for body,code in (({"ready":True,"private_video_runtime_revision":"old"},200),
+                          ({"ready":False,"private_video_runtime_revision":self.runtime_revision},200),
+                          ({},401)):
+            with self.assertRaisesRegex(RuntimeError,"HEALTH_"):
+                self.start(get=lambda *a,**k:self.response(body,code))
+        self.assertEqual(self.calls,[])
+        self.assertEqual(self.writes,[])
+
+    def test_v3_running_is_not_duplicated(self):
+        self.objects[self.root+"/revisions/v3/status.json"]={**status("RUNNING"),"production_revision":"v3","runtime_revision":self.runtime_revision}
+        self.assertEqual(self.start()["result"],"ALREADY_RUNNING")
+        self.assertEqual(self.calls,[])
+        self.assertEqual(self.writes,[])
+
+    def test_old_revision_in_v3_slot_is_rejected(self):
+        for revision in (None,"v2"):
+            self.objects[self.root+"/revisions/v3/status.json"]={**status("COMPLETED"),"production_revision":revision,"runtime_revision":self.runtime_revision}
+            with self.assertRaisesRegex(RuntimeError,"REVISION_MISMATCH"): self.start()
+        self.assertEqual(self.calls,[])
+
+    def test_acceptance_must_identify_exact_task_revision_and_active_status(self):
+        for body in ({"status":"COMPLETED","task_id":TASK_ID,"production_revision":"v3"},
+                     {"status":"ACCEPTED","task_id":TASK_ID,"production_revision":"v2"},
+                     {"status":"ACCEPTED","task_id":"another","production_revision":"v3"},
+                     {"status":"ACCEPTED","task_id":TASK_ID},[]):
+            with self.assertRaisesRegex(RuntimeError,"ACCEPTANCE_NOT_PROVEN"):
+                self.start(post=lambda *a,**k:self.response(body,202))
+
+    def test_existing_archive_is_not_overwritten_and_failure_blocks_post(self):
+        from scripts.start_duenya_level12_exact import _archive_previous
+        class Exists(Exception):
+            response={"Error":{"Code":"PreconditionFailed"}}
+        old_write=self.store.put_object
+        def exists(**kw): raise Exists()
+        self.store.put_object=exists
+        _archive_previous(self.store,"b")
+        self.store.put_object=lambda **kw: (_ for _ in ()).throw(RuntimeError("storage unavailable"))
+        with self.assertRaisesRegex(RuntimeError,"storage unavailable"):
+            self.start()
+        self.assertEqual(self.calls,[])
+        self.store.put_object=old_write
+
+    def test_uncertain_post_is_never_retried(self):
+        import requests
+        def uncertain(*a,**kw):
+            self.calls.append(kw)
+            raise requests.Timeout()
+        with self.assertRaisesRegex(RuntimeError,"DISPATCH_UNCERTAIN"):
+            self.start(post=uncertain)
+        self.assertEqual(len(self.calls),1)
+
+
+if __name__ == "__main__": unittest.main()

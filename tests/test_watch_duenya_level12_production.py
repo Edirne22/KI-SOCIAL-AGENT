@@ -71,4 +71,32 @@ class WatchTests(unittest.TestCase):
         self.assertEqual(out["status"],"COMPLETED")
 
 
-if __name__=="__main__": unittest.main()
+
+class V3WatchTests(unittest.TestCase):
+    def test_v3_reads_only_its_own_status_and_preview(self):
+        value=status("COMPLETED","2026-10-06T21:58:00+00:00","private_preview",production_revision="v3",runtime_revision="duenya-creative-chain-v3")
+        r=R2([value],{**preview(),"production_revision":"v3"})
+        original=r.get_object
+        keys=[]
+        def read(**kw):
+            keys.append(kw["Key"])
+            return original(**kw)
+        r.get_object=read
+        result=watch(r,"b",production_revision="v3",max_checks=1,
+                     now_fn=lambda:datetime(2026,10,6,21,58,1,tzinfo=timezone.utc))
+        self.assertEqual(result["status"],"COMPLETED")
+        self.assertTrue(all("/revisions/v3/" in key for key in keys))
+
+    def test_legacy_completed_does_not_pass_as_v3(self):
+        r=R2([status("COMPLETED","2026-10-06T21:58:00+00:00")],preview())
+        with self.assertRaisesRegex(RuntimeError,"WATCH_REVISION_MISMATCH"):
+            watch(r,"b",production_revision="v3",max_checks=1)
+
+    def test_v2_preview_does_not_pass_as_v3(self):
+        from scripts.watch_duenya_level12_production import verify_preview
+        r=R2([],{**preview(),"production_revision":"v2"})
+        with self.assertRaisesRegex(RuntimeError,"PREVIEW_REVISION_MISMATCH"):
+            verify_preview(r,"b","v3")
+
+
+if __name__ == "__main__": unittest.main()

@@ -25,20 +25,28 @@ def _code(exc):
     return str(getattr(exc, "response", {}).get("Error", {}).get("Code", ""))
 
 
-def load_status(client, bucket: str) -> dict:
-    raw = client.get_object(Bucket=bucket, Key=STATUS_KEY)["Body"].read(12000)
+def load_status(client, bucket: str, production_revision=None) -> dict:
+    key = STATUS_KEY if not production_revision else STATUS_KEY.replace("/status.json", f"/revisions/{production_revision}/status.json")
+    raw = client.get_object(Bucket=bucket, Key=key)["Body"].read(12000)
     value = json.loads(raw)
     if value.get("schema") != "PRIVATE-VIDEO-STATUS-V1" or value.get("task_id") != TASK_ID:
         raise RuntimeError("DUENYA_WATCH_STATUS_INVALID")
     if value.get("status") not in {"ACCEPTED", "RUNNING", "COMPLETED", "FAILED"}:
         raise RuntimeError("DUENYA_WATCH_STATUS_VALUE_INVALID")
+    if production_revision and (value.get("production_revision") != production_revision or value.get("runtime_revision") != "duenya-creative-chain-v3"):
+        raise RuntimeError("DUENYA_WATCH_REVISION_MISMATCH")
     return value
 
 
-def verify_preview(client, bucket: str) -> dict:
-    raw = client.get_object(Bucket=bucket, Key=PREVIEW_KEY)["Body"].read(12000)
+def verify_preview(client, bucket: str, production_revision=None) -> dict:
+    key = PREVIEW_KEY if not production_revision else PREVIEW_KEY.replace("/preview.json", f"/revisions/{production_revision}/preview.json")
+    raw = client.get_object(Bucket=bucket, Key=key)["Body"].read(12000)
     value = json.loads(raw)
     required = {"schema", "task_id", "state", "r2_key", "sha256", "private", "publishable"}
+    if production_revision:
+        required.add("production_revision")
+        if value.get("production_revision") != production_revision:
+            raise RuntimeError("DUENYA_PREVIEW_REVISION_MISMATCH")
     if set(value) != required:
         raise RuntimeError("DUENYA_PREVIEW_SCHEMA_INVALID")
     if (
@@ -100,12 +108,15 @@ def watch(
     max_checks: int = 80,
     interval_seconds: int = 15,
     stall_after_seconds: int = 75,
+    production_revision=None,
 ) -> dict:
+    if production_revision not in (None, "v3"):
+        raise ValueError("DUENYA_WATCH_REVISION_INVALID")
     if max_checks < 1 or interval_seconds < 0 or stall_after_seconds < 45:
         raise ValueError("DUENYA_WATCH_BOUNDS_INVALID")
     last_stamp = None
     for n in range(max_checks):
-        status = load_status(client, bucket)
+        status = load_status(client, bucket, production_revision)
         sample = private_video_status_sample(status, now=now_fn(), stall_after_seconds=stall_after_seconds)
         decision = inspect(sample)
         state = sample["status"]
@@ -114,7 +125,7 @@ def watch(
             print("DUENYA_WATCH_HEARTBEAT status="+state+" stage="+sample["stage_id"])
             last_stamp = stamp
         if state == "COMPLETED":
-            preview = verify_preview(client, bucket)
+            preview = verify_preview(client, bucket, production_revision)
             print("DUENYA_WATCH_COMPLETED preview=READY_FOR_HUMAN private=yes published=no sha256_prefix="+preview["sha256_prefix"])
             return {"status": "COMPLETED", "preview": preview}
         if state in {"FAILED", "STALLED"}:
@@ -141,7 +152,7 @@ def watch(
 
 def main() -> int:
     client, bucket = client_from_env()
-    result = watch(client, bucket)
+    result = watch(client, bucket, production_revision=os.environ.get("DUENYA_PRODUCTION_REVISION") or None)
     if result["status"] == "COMPLETED":
         return 0
     raise RuntimeError(
