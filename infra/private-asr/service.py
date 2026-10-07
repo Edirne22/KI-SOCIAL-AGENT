@@ -24,6 +24,7 @@ _lock = threading.Lock()
 _uuid = re.compile(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\Z")
 _date = re.compile(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}\Z")
 _task = re.compile(r"[A-Za-z0-9_-]{10,64}\Z")
+_revision = re.compile(r"[A-Za-z0-9._-]{1,32}\Z")
 
 # Guarded OpenCode runtime contract. Keep these fixed in code: requests may not select
 # a provider/model or expand execution time/output beyond the reviewed boundary.
