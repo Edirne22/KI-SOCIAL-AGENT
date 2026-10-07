@@ -201,9 +201,9 @@ function paintConversation(){
       root.append(live);
     }else root.append(chatBubble("FABRIK LIVE","Lade privaten Produktionsstatus aus R2 …","bot"));
     const state=selectedPrivateVideo?.id===entry.id?selectedPrivateVideo.status:"UNKNOWN";
-    const canStart=["FAILED","STALLED","NOT_STARTED","UNKNOWN"].includes(state);
+    const canStart=["FAILED","STALLED","NOT_STARTED","UNKNOWN","COMPLETED","READY_FOR_HUMAN"].includes(state);
     const startVideo=document.createElement("button");startVideo.type="button";startVideo.className="primary";
-    startVideo.textContent=["FAILED","STALLED"].includes(state)?"↻ Private Videoproduktion neu starten":"▶ Private Videoproduktion starten";
+    startVideo.textContent=["FAILED","STALLED","COMPLETED","READY_FOR_HUMAN"].includes(state)?"↻ Neue private Videoversion rendern":"▶ Private Videoproduktion starten";
     startVideo.disabled=!canStart;
     startVideo.onclick=async()=>{
       if(!window.confirm("Diesen bereits freigegebenen privaten Videoauftrag jetzt im Media-Container starten? Keine Veröffentlichung."))return;
