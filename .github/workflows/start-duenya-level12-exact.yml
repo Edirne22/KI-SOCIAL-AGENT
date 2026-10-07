@@ -11,6 +11,7 @@ on:
       - "scripts/start_duenya_level12_exact.py"
       - "tests/test_start_duenya_level12_exact.py"
       - ".github/workflows/start-duenya-level12-exact.yml"
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -29,7 +30,7 @@ jobs:
       - name: Exact-task positive and negative controls
         run: python -m unittest tests.test_start_duenya_level12_exact tests.test_watch_duenya_level12_production -v
   start:
-    if: github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     needs: verify
     runs-on: ubuntu-latest
     timeout-minutes: 25
