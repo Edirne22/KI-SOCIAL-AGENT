@@ -41,6 +41,9 @@ gültiger Auftrag / zulässiger Discovery-Kandidat
 ```
 Im aktuellen Stand ist der echte revidierte Creative-Render nach gültigem CHANGE noch offen (Issue #326). Block9 benötigt echte sichere Publisher-E2E-Abnahme; **Tests mit synthetischen Daten dürfen niemals Plattformposts auslösen**.
 
+## Verbindlicher Format-/Stil-Preflight für Medienrollen
+Alle Rollen, die Medien konzipieren, formatieren, schneiden, vertonen, auswählen oder für eine Render-Maschine vorbereiten, müssen **vor Arbeitsbeginn** Zielmedium/Plattform, Format, Seitenverhältnis, Zieldauer, Stil/Tonalität, Creative-Revision sowie relevante Szenen-, Overlay- und Audio-Regeln aus dem aktuellen Auftrag prüfen. Widerspruch/Fehlen => `NOT_READY_FOR_MEDIA`; keine stillen Defaults und kein Maschinenstart. Diese Metadaten werden revisionsgebunden durch jede Übergabe mitgeführt.
+
 ## Verbindliche Creative→Maschine-Schnittstelle
 Die Stellenbeschreibung [Creative Director / Kreativmanager](../agents/CREATIVE_DIRECTOR.md) ist für alle Medienproduktionen verbindlich. Kreative Prosa ist nur Briefing. Der Creative Director muss sie in einen revisionsgebundenen ausführbaren Maschinenvertrag übersetzen. Der Produktionsleiter darf den Maschinenstart erst freigeben, wenn dieser Vertrag vollständig ist. Renderer geben Ist-Evidence zurück; finales Media-QM vergleicht Soll gegen Ist und schlägt bei fehlenden Pflichtfeldern fehl.
 
