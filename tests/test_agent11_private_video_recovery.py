@@ -67,7 +67,7 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         result = execute_recovery(client, "bucket", handoff(), "token",
                                   http=self.http_ok(calls), sleeper=lambda _: None)
         self.assertTrue(result["recovered"])
-        self.assertEqual(calls[0][:2], ("POST", "/admin/container-restart"))
+        self.assertNotIn(("POST", "/admin/container-restart", None), calls)
         self.assertIn(("POST", "/private-video/jobs", {"task_id": "f6f50c9f4c2690e4eb1fe978"}), calls)
         self.assertEqual(len(client.writes), 1)
         body = json.loads(client.writes[0]["Body"])
