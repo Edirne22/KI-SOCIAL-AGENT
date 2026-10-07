@@ -32,7 +32,7 @@ def run_ffmpeg(cmd, *, step, timeout):
     except subprocess.TimeoutExpired:
         raise RuntimeError(f"PRIVATE_FFMPEG_TIMEOUT:{step}") from None
 
-def render_segment(src, seg, *, is_image, seconds, effect="zoom_in"):
+def render_segment(src, seg, *, is_image, seconds, effect="zoom_in", transition=("soft_fade",0.35)):
     # Concat demuxer stream-copy requires identical time bases. Previously photo
     # (10 fps) and video (15 fps) tracks stretched a 300s timeline to 324s.
     # V2: execute the Creative/Media scene assignment instead of rendering every
@@ -50,7 +50,10 @@ def render_segment(src, seg, *, is_image, seconds, effect="zoom_in"):
     if not is_image:
         # Short clips occupy their planned slot without moving later story cards.
         vf+=f",tpad=stop_mode=clone:stop_duration={seconds:.3f}"
-    vf+=f",fade=t=in:st=0:d=0.25,fade=t=out:st={max(0.0,seconds-0.35):.3f}:d=0.35"
+    transition_id,fade_seconds=transition
+    if transition_id not in {"soft_fade","quick_fade","long_fade"}: raise ValueError("unknown private transition")
+    fade_seconds=max(0.12,min(float(fade_seconds),max(0.12,seconds/3)))
+    vf+=f",fade=t=in:st=0:d={fade_seconds:.3f},fade=t=out:st={max(0.0,seconds-fade_seconds):.3f}:d={fade_seconds:.3f}"
     cmd=["ffmpeg","-y"]
     if is_image:
         cmd += ["-loop","1","-framerate",str(FPS)]
@@ -107,9 +110,21 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     if not effects:
         effects=["zoom_in","pan_left","zoom_out","pan_right"][:len(assets)]
         while len(effects)<len(assets): effects.append(("zoom_in","pan_left","zoom_out","pan_right")[len(effects)%4])
+    transitions=list(getattr(plan,"asset_transitions",[]) if plan else [])
+    pacing=list(getattr(plan,"asset_pacing",[]) if plan else [])
+    if plan and (len(transitions)!=len(assets) or len(pacing)!=len(assets)):
+        raise RuntimeError("PRIVATE_CREATIVE_TIMING_ASSIGNMENT_MISMATCH")
+    if not transitions: transitions=[("soft_fade",0.35)]*len(assets)
+    if not pacing: pacing=[1.0]*len(assets)
     image_count=sum(1 for a in assets if a["mime"].startswith("image/"))
     video_count=len(assets)-image_count
     image_seconds=max(1.35,(target_seconds-(video_count*4))/image_count) if image_count else 1.35
+    # Pacing is relative creative timing, not permission to stretch the master.
+    # Normalize all planned slots back to the requested total duration.
+    base_slots=[image_seconds if a["mime"].startswith("image/") else 4 for a in assets]
+    weighted_slots=[max(1.0,base*pacing[i]) for i,base in enumerate(base_slots)]
+    timing_scale=target_seconds/sum(weighted_slots)
+    planned_slots=[slot*timing_scale for slot in weighted_slots]
     token=os.environ["TELEGRAM_BOT_TOKEN"]; chat=os.environ["TELEGRAM_CHAT_ID"]
     with tempfile.TemporaryDirectory(prefix="duenya-private-") as td:
         root=Path(td); segments=[]
@@ -119,7 +134,8 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
             src.write_bytes(client.get_object(Bucket=bucket,Key=a["key"])["Body"].read())
             seg=root/f"seg-{i:03d}.mp4"
             is_image=a["mime"].startswith("image/")
-            render_segment(src,seg,is_image=is_image,seconds=image_seconds if is_image else 4,effect=effects[i])
+            planned_seconds=planned_slots[i]
+            render_segment(src,seg,is_image=is_image,seconds=planned_seconds,effect=effects[i],transition=transitions[i])
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
         rough=root/"rough.mp4"
@@ -159,6 +175,8 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         evidence={"creative_revision":getattr(plan,"creative_revision","legacy"),
                   "applied_effects":tuple(sorted(set(effects))),
                   "scene_count":len(getattr(plan,"scene_plan",())),
+                  "applied_transitions":tuple(sorted(set(t[0] for t in transitions))),
+                  "pacing_applied":len(pacing)==len(assets) and len(set(pacing))>=2,
                   "overlays_rendered":min(3,len(overlays))}
         return {"duration":duration,"has_audio":True,"has_video":True,"r2_key":key,"sha256":digest,
                 "creative_evidence":evidence}

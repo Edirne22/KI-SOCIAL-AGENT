@@ -4,6 +4,8 @@ Die Agenten sind Teil **einer** KI-Zentrale mit Content-Fabrik und universeller 
 
 ## Rollenverzeichnis
 
+**Zentrale nicht nummerierte Leitungsrolle:** [Creative Director / Kreativmanager](CREATIVE_DIRECTOR.md) übersetzt jeden freigegebenen kreativen Auftrag aus Menschensprache in einen ausführbaren, revisionsgebundenen Maschinenvertrag. Szenen, Timing/Pacing, Asset-Slots, Effekt-/Motion-IDs, Transition-IDs/-Dauer, Overlay-/Audio-Regeln und Soll-Evidence sind Pflicht, soweit für den Auftrag relevant. Reine Kreativ-Prosa ist keine Maschinenübergabe. Der Produktionsleiter prüft diesen Vertrag vor Maschinenstart; Media-QM prüft Soll gegen Render-Evidence.
+
 | Datei | Fachrolle | Auftrag und Grenze |
 | --- | --- | --- |
 | [01_content_creator.md](01_content_creator.md) | Content Creator | Inhalte und Hooks aus belegten Fakten; niemals eigenständig veröffentlichen |

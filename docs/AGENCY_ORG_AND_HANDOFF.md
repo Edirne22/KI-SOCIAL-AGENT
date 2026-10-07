@@ -7,7 +7,7 @@
 | --- | --- | --- | --- |
 | Geschäftsführung | Bülent | Ziel, externe Publikation pro Beitrag, neue Ausgaben, Verträge, private Mediennutzung und wesentliche Regeländerungen | Keine implizite Freigabe durch KI-Vorschläge |
 | Zentrale Auftragsannahme | Bestehendes Dashboard, Telegram und validiertes R2-Inbox-Schema | Nutzeridentität, Task-ID/Revision, Berechtigungen, gewünschte Einzel-KI, Prüfgates, privates Ursprungsmaterial | Rohtexte/Modelloutput als Autorisierung behandeln |
-| Betriebsleitung | **Produktionsleiter** (vollständige zentralisierte Laufzeit erst nach Test) | DAG, Verantwortlicher, Priorität, Übergaben, Deadlines, Fehlerzustand, Retry/Resume und Abschlussbericht | Freigaben, Faktenbeweise oder Kostenentscheidungen ersetzen |
+| Betriebsleitung | **Produktionsleiter** (vollständige zentralisierte Laufzeit erst nach Test) | DAG, Verantwortlicher, Priorität, Übergaben, Deadlines, Fehlerzustand, Retry/Resume und Abschlussbericht; vor Maschinenstart Vollständigkeit des Creative-Maschinenvertrags prüfen | Freigaben, Faktenbeweise oder Kostenentscheidungen ersetzen; unvollständige Creative-Prosa als produktionsbereit markieren |
 | Technische Kapazität | **Deterministischer Ressourcenmanager** (gemeinsamer Dienst noch ausstehend) | Nachgewiesene API-Quoten, CPU/GPU/RAM/Container-Readiness, Storage-Limits, Lease-/Queue-Zustand und Kostenlimits | Aus fehlenden Messdaten vermeintliche Kapazität ableiten |
 | Redaktion und Facharbeit | Content-Strategie, Research/Newsroom, Creative/Bülent Writing, Formatagenten, Tour-Agent, Media-/AV-Maschinen | Revisionsgebundene evidenzbasierte Ergebnisse und klare Next-Hop-Übergaben | Fremde Fakten erfinden, eigene finale Publikationsautorität beanspruchen |
 | Technische Entwicklung | Maschinen-Scout (20), Research/Lizenz/Security, KI-Integrationsingenieur (19) | Maschinenfund → unabhängige Bewertung → isolierter Build/PR → kontrollierter Werkzeugindex | Funde eigenständig installieren, kostenpflichtig buchen oder Sicherheitsgates abschalten |
@@ -26,7 +26,9 @@ gültiger Auftrag / zulässiger Discovery-Kandidat
  -> Source Ingest / Transkript je tatsächlich vorhandener Fähigkeit
  -> Research / FACT PACKAGE / unabhängige Quellprüfung
  -> Creative Director + Bülent Writing
- -> nur nötige Plattform- und Video-/Musik-/Tour-Planung
+ -> verbindlicher Maschinenvertrag: Szenen + Timing/Pacing + Asset-Slots + Effekt-/Motion-IDs + Transition-IDs/-Dauer + Overlay-/Audio-Regeln + Soll-Evidence
+ -> Media/Story bindet autorisierte Assets an den Maschinenvertrag
+ -> nur nötige Plattform- und Video-/Musik-/Tour-Ausführung
  -> Media/Audio/Avatar-Adapter nur soweit isoliert technisch nachgewiesen
  -> Media-Manifest (R2 private, Hash, MIME, Revision)
  -> unabhängige finale Fact-/Media-/Rights-/Technical-QM
@@ -38,6 +40,12 @@ gültiger Auftrag / zulässiger Discovery-Kandidat
  -> belegbare Analytics/Korrekturen ins evidenzgebundene Memory
 ```
 Im aktuellen Stand ist der echte revidierte Creative-Render nach gültigem CHANGE noch offen (Issue #326). Block9 benötigt echte sichere Publisher-E2E-Abnahme; **Tests mit synthetischen Daten dürfen niemals Plattformposts auslösen**.
+
+## Verbindlicher Format-/Stil-Preflight für Medienrollen
+Alle Rollen, die Medien konzipieren, formatieren, schneiden, vertonen, auswählen oder für eine Render-Maschine vorbereiten, müssen **vor Arbeitsbeginn** Zielmedium/Plattform, Format, Seitenverhältnis, Zieldauer, Stil/Tonalität, Creative-Revision sowie relevante Szenen-, Overlay- und Audio-Regeln aus dem aktuellen Auftrag prüfen. Widerspruch/Fehlen => `NOT_READY_FOR_MEDIA`; keine stillen Defaults und kein Maschinenstart. Diese Metadaten werden revisionsgebunden durch jede Übergabe mitgeführt.
+
+## Verbindliche Creative→Maschine-Schnittstelle
+Die Stellenbeschreibung [Creative Director / Kreativmanager](../agents/CREATIVE_DIRECTOR.md) ist für alle Medienproduktionen verbindlich. Kreative Prosa ist nur Briefing. Der Creative Director muss sie in einen revisionsgebundenen ausführbaren Maschinenvertrag übersetzen. Der Produktionsleiter darf den Maschinenstart erst freigeben, wenn dieser Vertrag vollständig ist. Renderer geben Ist-Evidence zurück; finales Media-QM vergleicht Soll gegen Ist und schlägt bei fehlenden Pflichtfeldern fehl.
 
 ## Universelle KI-Werkstatt
 Ein Auftrag aus demselben Dashboard/Telegram-Eingang benötigt eigene Job-ID/Revision, Ressourcen- und Datengrenzen. Abhängig von benötigter Fähigkeit wählt der derzeit nur teilweise vorhandene Skill-/Provider-Router belegbar verfügbare Bild-/Voice-/Dokument-/Coding-/Recherche-Lanes. `forced_provider` oder ausdrückliche Toolwahl ist ein harter Lock ohne heimlichen Ersatz. Ein Katalogeintrag ist kein realer Berechtigungs- oder Kostenbeleg. Werkstatt und Content-Fabrik dürfen keine Job-/R2-Identitäten vermischen; selbst bei Ressourcenknappheit müssen Steuerung und menschliche Freigaben erreichbar bleiben.

@@ -39,7 +39,9 @@ class PrivateVideoAgentChainTests(unittest.TestCase):
         qm=PrivateQM().checks(duration=300,has_audio=True,has_video=True,
                               creative={"privacy":"private-only","scene_count":6,
                                         "overlays_rendered":3,"creative_revision":"duenya-creative-v2",
-                                        "expected_effects":effects,"applied_effects":effects})
+                                        "expected_effects":effects,"applied_effects":effects,
+                                        "applied_transitions":("soft_fade","quick_fade","long_fade"),
+                                        "pacing_applied":True})
         self.assertTrue(qm["passed"])
 
     def test_private_chain_contains_no_publish_stage(self):
