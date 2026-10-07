@@ -1,0 +1,43 @@
+name: Duenya read-only failure diagnosis
+on:
+  push:
+    branches: [fix/duenya-render-root-cause-20261007]
+    paths: [.github/workflows/duenya-readonly-diagnosis.yml]
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check requests boto3
+      - name: Read only exact job metadata and allowlisted failure code
+        run: |
+          python - <<'PY'
+          import json,re
+          from scripts.ai_central_shared_inbox import client_from_env
+          client,bucket=client_from_env()
+          task="f6f50c9f4c2690e4eb1fe978"
+          d=json.loads(client.get_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task}/status.json")["Body"].read(12000))
+          assert d.get("schema")=="PRIVATE-VIDEO-STATUS-V1" and d.get("task_id")==task
+          for k,allowed in {"status":{"RUNNING","FAILED","COMPLETED","ACCEPTED"},"stage":{"production_lead","creative_director","media_story","music_audio","video_editor_ffmpeg","qm","private_preview"},"error_code":{"RuntimeError","CalledProcessError","TimeoutExpired","KeyError","ValueError"}}.items():
+              v=d.get(k)
+              print(k+"="+(v if v in allowed else "OTHER_OR_ABSENT"))
+          detail=str(d.get("detail") or "")
+          allowed={"PRIVATE_BIRTHDAY_MUSIC_MISSING","PRIVATE_RENDER_STREAMS_INVALID","PRIVATE_RENDER_SIZE_UNSAFE","PRIVATE_R2_RENDER_VERIFY_FAILED","PRIVATE_TELEGRAM_DELIVERY_FAILED","PRIVATE_AGENT_QM_FAILED"}
+          if detail in allowed or re.fullmatch(r"PRIVATE_RENDER_DURATION_UNSAFE:[0-9]{1,6}\.[0-9]{2}",detail):
+              print("diagnosis="+detail)
+          else:
+              print("diagnosis=UNCLASSIFIED_WITHHELD")
+          PY
