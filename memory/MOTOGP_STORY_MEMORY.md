@@ -839,3 +839,13 @@ Quelle: https://tr.motorsport.com/motogp/news/toprak-fren-problemine-cozum-ariyo
 Story-Key: title:worldsbk-estoril-2026-can-nc-nc-l-k-bulega-rekor-pe-inde
 Titel: WorldSBK Estoril 2026: Can Öncü Üçüncülük, Bulega Rekor Peşinde
 Quelle: https://motoetkinlik.com/worldsbk-estoril-2026-can-oncu-ucunculuk-bulega-rekor-pesinde
+
+## 2026-10-07 08:10 UTC – ANGEBOTEN
+Story-Key: motogp:10862179
+Titel: Moto2 Japonya GP: Şampiyona mücadelesi tersine döndü, Guevara farkı 10,5 puana indirdi, Deniz Öncü 7. sırada!
+Quelle: https://tr.motorsport.com/moto2/news/moto2-japonya-gp-yaris-sampiyona-mucadelesi-tersine-dondu-guevara-farki-105-puana-indirdi-deniz-onc/10862179
+
+## 2026-10-07 08:10 UTC – ANGEBOTEN
+Story-Key: title:honda-klad-joan-mir-mandalika-da-yok-yerine-aleix-espargaro-yar-acak
+Titel: Honda açıkladı: Joan Mir Mandalika’da yok, yerine Aleix Espargaro yarışacak
+Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak

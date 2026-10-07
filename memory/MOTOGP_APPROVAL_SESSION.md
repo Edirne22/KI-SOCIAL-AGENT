@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1791348031
+Session-Timestamp: 1791360617
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,10 +15,10 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 3.5
+Artikelalter-Tage: 3.6
 Kategorie: Turkish Riders
 Serie: MotoGP
 Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
@@ -29,11 +29,9 @@ Instagram-Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-1-t
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-motegi-motogp-frenleme-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu ist in Japan mit Platz 17 im Sprint durchs Ziel gefahren – aber er nimmt was Besseres mit.
+Toprak Razgatlıoğlu ist im MotoGP-Sprint in Motegi als 17. durchs Ziel gefahren. Trotzdem ist er nicht unzufrieden – er hat gesagt, dass er bei der Yamaha im Bremsbereich einen richtigen Schub nach vorne erlebt hat. Dass ausgerechnet dort der Schlüssel liegt, wo es im Sprint oft über Positionen geht, muss er für sich verarbeitet haben.
 
-Bei Yamaha hat der Turbo nach eigenen Angaben große Fortschritte beim Bremsen gemacht. Er hat gesagt, dass er jetzt verstanden hat, wie man die Maschine in diesem Bereich richtig beherrscht. Das Ergebnis ist nicht das, was er wollte, aber das Feeling auf der Maschine stimmt langsam wieder.
-
-Was denkt ihr – ist das der richtige Weg für Toprak bei Yamaha?
+Denkt ihr, kann er sich auf der Strecke mit dieser Erkenntnis gleich wieder deutlich verbessern?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -43,31 +41,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.7
-Kategorie: Turkish Riders
+Artikelalter-Tage: 3.0
+Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10862442
-Titel: Toprak, fren problemine çözüm arıyor: "Adeta motosikletle savaşıyorum"
-Quelle: https://tr.motorsport.com/motogp/news/toprak-fren-problemine-cozum-ariyor-adeta-motosikletle-savasiyorum/10862442
+Story-Key: title:marc-marquez-motegi-de-dubleyi-yapt-motogp-de-fark-sadece-2-puan
+Titel: Marc Marquez Motegi’de dubleyi yaptı: MotoGP’de fark sadece 2 puan!
+Quelle: https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-2-toprak-fren-problemi-01.jpg
-Quellen-Preview: https://cdn-5.motorsport.com/images/amp/6b8Z9Ar2/s6/toprak-razgatlioglu-pramac-rac.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-2-marc-marquez-motegid-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-japonya-motogp-motegi-2026.avif
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu fährt für Pramac Yamaha.
+Marc Marquez hat in Japan den Doppelsieg geschafft – nach dem Sprint gewinnt er auch das Hauptrennen 🏁 Jorge Martin kommt auf Rang zwei, der Vorsprung im WM-Kampf schrumpft auf zwei Punkte.
 
-Beim Japan Grand Prix sagte er, er kämpfe praktisch mit dem Motorrad, um es zum Stehen zu bringen.
+Wie schätzt ihr die aktuelle Situation im Titelkampf ein?
 
-Sein genaues Wort: 'Adeta motosikletle savaşıyorum'.
-
-Das Bremsen bereitete ihm große Schwierigkeiten.
-
-Mal sehen, ob das Team die Bremse bald in den Griff bekommt.
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -78,22 +70,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.9
+Artikelalter-Tage: 4.0
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:marc-marquez-motegi-de-dubleyi-yapt-motogp-de-fark-sadece-2-puan
-Titel: Marc Marquez Motegi’de dubleyi yaptı: MotoGP’de fark sadece 2 puan!
-Quelle: https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi
+Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
+Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
+Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-3-marc-marquez-motegid-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-japonya-motogp-motegi-2026.avif
+Instagram-Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-3-motegide-olayli-spri-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-motegi-sprint-moreira-motogp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat in Motegi den Hattrick geschafft – Sprint und Hauptrennen gewinnt er nacheinander. 🏁 Jorge Martin muss sich mit Platz zwei zufriedengeben, der Vorsprung in der WM ist damit auf gerade mal zwei Punkte geschrumpft.
+Marquez gewinnt den Sprint in Motegi – und Moreira geht aufs Podium.
 
-Wie seht ihr das – ist Marquez jetzt wieder der Mann, den es zu schlagen gilt?
+Marc Marquez hat in Motegi den MotoGP-Sprint für sich entschieden. Diogo Moreira kam ursprünglich nicht auf die Podiumsplatzierungen, stieg aber nach Strafen gegen Jorge Martin und Enea Bastianini noch auf den zweiten Rang auf – ein historisches Ergebnis für ihn.
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie findet ihr, dass Moreira durch die Strafen aufs Podium kommt?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife #DiogoMoreira
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -104,22 +98,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 3.8
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
-Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
-Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
+Artikelalter-Tage: 3.2
+Kategorie: Turkish Riders
+Serie: Moto2
+Story-Key: motogp:10862179
+Titel: Moto2 Japonya GP: Şampiyona mücadelesi tersine döndü, Guevara farkı 10,5 puana indirdi, Deniz Öncü 7. sırada!
+Quelle: https://tr.motorsport.com/moto2/news/moto2-japonya-gp-yaris-sampiyona-mucadelesi-tersine-dondu-guevara-farki-105-puana-indirdi-deniz-onc/10862179
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-4-motegide-olayli-spri-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-motegi-sprint-moreira-motogp-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-4-moto2-japonya-gp-sam-01.jpg
+Quellen-Preview: https://cdn-5.motorsport.com/images/amp/YvKBK7G6/s6/izan-guevara-pramac-racing.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat den Sprint in Motegi gewonnen. Diogo Moreira landet mit Rang zwei auf dem Podest – historisch, denn er steig durch die Strafen gegen Martin und Bastianini auf den zweiten Platz. 🏁
+In der Moto2-Weltmeisterschaft hat der Rennlauf in Japan für ein paar Änderungen gesorgt. Der Titelkampf hat sich etwas geändert, der Vorsprung von Guevara ist jetzt nur noch 10,5 Punkte groß. Und Deniz Öncü ist mit einem siebten Platz ganz ordentlich durchs Ziel gekommen.
 
-Was haltet ihr von der Strafe für Martin und Bastianini?
+Wie schätzt ihr die Titelchancen jetzt ein?
 
-#MotoGP #MarcMarquez #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -127,25 +121,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.3
-Kategorie: Turkish Riders
-Serie: WorldSBK
-Story-Key: title:worldsbk-estoril-2026-can-nc-nc-l-k-bulega-rekor-pe-inde
-Titel: WorldSBK Estoril 2026: Can Öncü Üçüncülük, Bulega Rekor Peşinde
-Quelle: https://motoetkinlik.com/worldsbk-estoril-2026-can-oncu-ucunculuk-bulega-rekor-pesinde
+Artikelalter-Tage: 0.8
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: title:honda-klad-joan-mir-mandalika-da-yok-yerine-aleix-espargaro-yar-acak
+Titel: Honda açıkladı: Joan Mir Mandalika’da yok, yerine Aleix Espargaro yarışacak
+Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-5-worldsbk-estoril-202-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/2026_11_WSBK_Estoril-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-5-honda-acikladi-joan-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/aleix-espargaro-honda-mandalika-motogp-2026-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Die nächste WorldSBK-Runde findet am Estoril-Kurs vom 9. bis 11. Oktober 2026 statt. Can Öncü läuft um den dritten Platz in der Weltmeisterschaft, bei Nicolò Bulega kann die Entscheidung im Titelkampf fallen.
+Honda bestätigt: Joan Mir fällt beim Indonesia MotoGP 2026 in Mandalika aus. Testfahrer Aleix Espargaro springt für ihn ein. 🏍️
 
-Was erwartet ihr von der Runde in Estoril?
+Wie seht ihr den Wechsel?
 
-#WorldSBK #CanOncu #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #JoanMir #PolEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

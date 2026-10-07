@@ -1,20 +1,20 @@
 {
   "version": 1,
-  "created_at": 1791348031,
+  "created_at": 1791360617,
   "max_days": 10,
   "window_used_days": 10,
   "count": 3,
   "items": [
     {
       "n": 1,
-      "title": "Moto2 Japonya GP: Şampiyona mücadelesi tersine döndü, Guevara farkı 10,5 puana indirdi, Deniz Öncü 7. sırada!",
-      "url": "https://tr.motorsport.com/moto2/news/moto2-japonya-gp-yaris-sampiyona-mucadelesi-tersine-dondu-guevara-farki-105-puana-indirdi-deniz-onc/10862179",
-      "summary": "Moto2 Dünya Şampiyonası’nın Japonya Grand Prix’sinde şampiyonluk mücadelesinin dengeleri değişti.",
-      "preview": "https://cdn-5.motorsport.com/images/amp/YvKBK7G6/s6/izan-guevara-pramac-racing.jpg",
-      "published_at": "2026-10-04T04:30:00Z",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
+      "title": "WorldSBK Estoril 2026: Can Öncü Üçüncülük, Bulega Rekor Peşinde",
+      "url": "https://motoetkinlik.com/worldsbk-estoril-2026-can-oncu-ucunculuk-bulega-rekor-pesinde",
+      "summary": "WorldSBK Estoril 9-11 Ekim'de koşulacak. WorldSSP'de Arenas şampiyonluğu ilan edebilir, Can Öncü üçüncülük için yarışıyor. Program ve hava durumu haberimizde.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/2026_11_WSBK_Estoril-1.webp",
+      "published_at": "2026-10-06T23:16:46+03:00",
+      "series": "WorldSBK",
+      "source_series": "WorldSBK",
+      "turkish_rider": "Can Öncü",
       "kind": "news"
     },
     {
