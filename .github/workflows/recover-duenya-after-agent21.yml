@@ -64,24 +64,16 @@ jobs:
           echo "action=$action" >> "$GITHUB_OUTPUT"
           echo "repair_id=$repair" >> "$GITHUB_OUTPUT"
           echo "AGENT21_DUENYA_DECISION=$action"
-      - name: Direct exact Dünya resume while Agent 11 is bypassed
+      - name: Agent 11 recovery-mode exact Dünya resume
         if: steps.agent21.outputs.action == 'HANDOFF_AGENT11'
         shell: bash
         run: |
           set -euo pipefail
-          url="https://edirne22-private-asr.butupeli.workers.dev/health?recovery=duenya-level12"
-          code=$(curl -sS -o /tmp/duenya-resume -w '%{http_code}' --max-time 45 \
-            -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
-          if [ "$code" != 200 ] && [ "$code" != 202 ]; then
-            echo "DUENYA_DIRECT_RESUME_FAILED_HTTP_$code"
-            exit 1
-          fi
-          python - <<'PY'
-          import json
-          d=json.load(open("/tmp/duenya-resume"))
-          assert d.get("task_id")=="f6f50c9f4c2690e4eb1fe978"
-          assert d.get("status") in ("ACCEPTED","RUNNING","COMPLETED")
-          print("DUENYA_DIRECT_RESUME_ACCEPTED")
-          PY
+          python -m scripts.agent11_private_video_recovery \
+            --repair-id "${{ steps.agent21.outputs.repair_id }}" \
+            --job-id "f6f50c9f4c2690e4eb1fe978" \
+            --stage-id "video_editor_ffmpeg" \
+            --checkpoint "video_editor_ffmpeg"
+
       - name: Continue exact production through QM and private preview
         run: python -m scripts.watch_duenya_level12_production
