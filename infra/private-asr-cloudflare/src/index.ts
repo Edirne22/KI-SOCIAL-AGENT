@@ -25,6 +25,11 @@ export default {
     if (!env.PRIVATE_ASR_INTERNAL_TOKEN || auth !== "Bearer " + env.PRIVATE_ASR_INTERNAL_TOKEN)
       return reply({error:"unauthorized"},401);
     const url = new URL(request.url);
+    // POST /private-video/jobs is an internal authenticated control-plane call.
+    // A valid token already passed above; mark the request so Cloudflare's edge
+    // security layer can distinguish it from public form/browser traffic.
+    const internalControlHeaders = new Headers(request.headers);
+    if (url.pathname === "/private-video/jobs") internalControlHeaders.set("x-edirne22-internal-control", "private-video");
     if (url.pathname !== "/health" && url.pathname !== "/jobs" && url.pathname !== "/private-video/jobs" &&
         url.pathname !== "/opencode/health" && url.pathname !== "/opencode/chat" && url.pathname !== "/opencode/code" && url.pathname !== "/research/search" && url.pathname !== "/admin/container-restart")
       return reply({error:"not_found"},404);
@@ -87,7 +92,7 @@ export default {
         if (attempt < 3) await new Promise(resolve => setTimeout(resolve, 1500));
       }
       if (!ready) return reply({error:"container_not_ready"},503);
-      const headers = new Headers(request.headers);
+      const headers = new Headers(internalControlHeaders);
       headers.set("content-length", String(new TextEncoder().encode(jobBody!).byteLength));
       try {
         const upstream = await instance.fetch(new Request("http://localhost:5200" + url.pathname, {
