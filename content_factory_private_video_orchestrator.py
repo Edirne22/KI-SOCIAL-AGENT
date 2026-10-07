@@ -89,6 +89,8 @@ class PrivateQM:
             "scene_plan":creative.get("scene_count",0)>=4,
             "creative_effect_variety":len(applied)>=3,
             "creative_effects_executed":bool(expected) and expected.issubset(applied),
+            "transitions_executed":len(set(creative.get("applied_transitions",())))>=2,
+            "pacing_executed":creative.get("pacing_applied") is True,
             "overlays_rendered":creative.get("overlays_rendered",0)>=3,
             "creative_revision":creative.get("creative_revision")==CREATIVE_REVISION,
             "private_only":creative.get("privacy")=="private-only",
