@@ -23,6 +23,7 @@ jobs:
       - name: Python syntax and contract
         run: |
           python -m py_compile infra/private-asr/service.py infra/private-asr/healthcheck.py infra/private-asr/run_private_asr.py
+          python infra/private-asr/test_opencode_runtime_contract.py
           python - <<'PY'
           import ast
           from pathlib import Path
