@@ -131,3 +131,15 @@
 - HTTP-Status: 403
 - Verwertete Beiträge: 0
 - Hinweis: Actor lieferte HTTP 403.
+
+## Instagram (2026-10-07 05:04)
+- Actor: apify~instagram-profile-scraper
+- HTTP-Status: 403
+- Verwertete Beiträge: 0
+- Hinweis: Actor lieferte HTTP 403.
+
+## Facebook (2026-10-07 05:04)
+- Actor: khadinakbar~facebook-posts-scraper
+- HTTP-Status: 403
+- Verwertete Beiträge: 0
+- Hinweis: Actor lieferte HTTP 403.
