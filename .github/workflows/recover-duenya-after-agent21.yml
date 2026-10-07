@@ -1,6 +1,7 @@
 name: Recover exact Dünya production after Agent 21 repair
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Private ASR guarded Cloudflare deployment"]
     types: [completed]
