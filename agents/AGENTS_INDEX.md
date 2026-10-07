@@ -50,3 +50,7 @@ Ein `AGENTS_INDEX`-Eintrag ist keine produktive Freischaltung. Die separate stü
 ## Gemeinsame Container-Betriebsregel
 
 Alle Agenten und Worker, die Containerarbeit auslösen oder deren Verfügbarkeit bewerten, müssen den zentralen Lifecycle-Vertrag beachten: **Wake/Warmup → Port-Readiness → Dienst-/Revisions-Health → Auftrag genau einmal**. Nach Destroy/Deploy/Restart ist Wake erneut Pflicht. Ein Agent darf einen Container erst nach fehlgeschlagenem Wake-/Readiness-Nachweis als nicht erreichbar melden. Reine R2-Lesezugriffe wecken keinen Container.
+
+
+## Gemeinsame Fabriksprache
+Für alle Rollen ist `docs/E22_FACTORY_CONTRACT_LANGUAGE.md` verbindlich: **E22-FCL-1.0** ist die einzige ausführbare Agent-/Maschinen-Vertragssprache. Maschinenspezifische Syntax gehört in geprüfte Adapter. Agent 00 vererbt diese Pflicht an sämtliche Rollen.
