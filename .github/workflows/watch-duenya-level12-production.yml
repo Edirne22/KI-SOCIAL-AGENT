@@ -5,12 +5,7 @@ on:
       - "scripts/watch_duenya_level12_production.py"
       - "tests/test_watch_duenya_level12_production.py"
       - ".github/workflows/watch-duenya-level12-production.yml"
-  push:
-    branches: [main]
-    paths:
-      - "scripts/watch_duenya_level12_production.py"
-      - "tests/test_watch_duenya_level12_production.py"
-      - ".github/workflows/watch-duenya-level12-production.yml"
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -29,11 +24,12 @@ jobs:
       - name: Watcher regressions
         run: python -m unittest tests.test_watch_duenya_level12_production tests.test_production_machine_watchdog -v
   watch:
-    if: github.event_name == 'push'
+    if: github.event_name == 'workflow_dispatch'
     needs: verify
     runs-on: ubuntu-latest
     timeout-minutes: 22
     env:
+      DUENYA_PRODUCTION_REVISION: v3
       R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
