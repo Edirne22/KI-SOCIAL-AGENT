@@ -35,6 +35,7 @@ _code_workspace = "/tmp/edirne22-code-workspace"
 _code_repo = "https://github.com/Edirne22/KI-SOCIAL-AGENT.git"
 _code_executor_contract = "repo-readonly-v1"
 _research_runtime_revision = "block9-groq-429-fallback-v1"
+_private_video_runtime_revision = "duenya-ffmpeg-lease-renew-v1"
 _private_runtime_origin = "https://edirne22-private-asr.butupeli.workers.dev"
 
 
@@ -338,7 +339,8 @@ class Handler(BaseHTTPRequestHandler):
         ready = bool(root and os.path.isfile(os.path.join(root, "model.bin"))
                      and os.path.isfile(os.path.join(root, "config.json")))
         self.respond(200 if ready else 503, {"ready": ready,
-                                                "research_runtime_revision": _research_runtime_revision})
+                                                "research_runtime_revision": _research_runtime_revision,
+                                                "private_video_runtime_revision": _private_video_runtime_revision})
 
     def do_POST(self):
         if self.path not in ("/jobs","/private-video/jobs","/opencode/chat","/opencode/code","/research/search"):
