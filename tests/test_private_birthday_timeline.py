@@ -90,6 +90,8 @@ class BirthdayTimelineTests(unittest.TestCase):
                       {"mime": "video/mp4", "key": "test-video"}] * 3
             plan = SimpleNamespace(duration_seconds=300, overlays=("Synthetic", "Memory", "End"),
                                    asset_effects=("zoom_in","pan_left","zoom_out","pan_right","zoom_in","pan_left"),
+                                   asset_transitions=(("soft_fade",0.35),("soft_fade",0.35),("quick_fade",0.22),("quick_fade",0.22),("long_fade",0.80),("long_fade",0.80)),
+                                   asset_pacing=(1.12,1.0,0.78,0.92,1.15,1.20),
                                    scene_plan=({"id":"a"},{"id":"b"},{"id":"c"},{"id":"d"}),
                                    creative_revision="duenya-creative-v2")
             with patch.object(birthday, "client_from_env", return_value=(client, "test")), \
