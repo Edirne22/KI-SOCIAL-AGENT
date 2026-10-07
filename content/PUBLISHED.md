@@ -851,9 +851,8 @@ Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-miri
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-07-racing-editorial-2026-10-07-5-honda-acikladi-joan-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37629846548-1
+## Facebook [GEPOSTET 2026-10-07 13:37 | ID: 1285968257941776_122120772375469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-07-manual-37590782230
 Telegram-Update-ID: 279361916
@@ -871,3 +870,4 @@ Wie seht ihr den Wechsel?
 https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak
 Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak", "media_status": "", "object_id": "1285968257941776_122120772375469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122120772375469415", "source_url": "https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak", "version": 1}
