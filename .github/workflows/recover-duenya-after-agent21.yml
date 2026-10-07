@@ -39,7 +39,7 @@ jobs:
         run: |
           set -euo pipefail
           url="https://edirne22-private-asr.butupeli.workers.dev/health"
-          expected="duenya-ffmpeg-lease-renew-v1"
+          expected="duenya-ffmpeg-timebase-v2"
           code=$(curl -sS -o /tmp/private-video-health -w '%{http_code}' --max-time 30 \
             -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
           if [ "$code" != 200 ]; then

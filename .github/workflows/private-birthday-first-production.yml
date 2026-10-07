@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "scripts/private_birthday_first_production.py"
+      - "tests/test_private_birthday_timeline.py"
       - ".github/workflows/private-birthday-first-production.yml"
   workflow_dispatch:
 permissions:
@@ -20,6 +21,12 @@ jobs:
         with: {python-version: "3.11"}
       - run: python -m py_compile scripts/private_birthday_first_production.py
       - run: grep -q 'No social publisher' scripts/private_birthday_first_production.py
+      - name: Real synthetic mixed-media render and recovery regressions
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install --disable-pip-version-check requests boto3
+          python -m unittest tests.test_private_birthday_timeline tests.test_agent21_duenya_stall_repair tests.test_watch_duenya_level12_production tests.test_start_duenya_level12_exact tests.test_agent11_private_video_recovery tests.test_content_factory_private_video_orchestrator -v
   # Legacy GitHub rendering intentionally retired. Private video production is
   # dispatched only to the protected media container; this workflow remains
   # a syntax/safety gate and manual diagnostic entrypoint.

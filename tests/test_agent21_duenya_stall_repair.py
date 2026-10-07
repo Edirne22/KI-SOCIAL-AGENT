@@ -81,7 +81,7 @@ class SourceRegression(unittest.TestCase):
     def test_recovery_is_gated_by_media_revision_not_whole_deploy_conclusion(self):
         workflow=open(".github/workflows/recover-duenya-after-agent21.yml",encoding="utf-8").read()
         service=open("infra/private-asr/service.py",encoding="utf-8").read()
-        self.assertIn('_private_video_runtime_revision = "duenya-ffmpeg-lease-renew-v1"',service)
+        self.assertIn('_private_video_runtime_revision = "duenya-ffmpeg-timebase-v2"',service)
         self.assertIn('"private_video_runtime_revision": _private_video_runtime_revision',service)
         self.assertIn("github.event.workflow_run.head_branch == 'main'",workflow)
         self.assertNotIn("github.event.workflow_run.conclusion == 'success'",workflow)
