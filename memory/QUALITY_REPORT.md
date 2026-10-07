@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-10-06 18:13
+Stand: 2026-10-07 18:15
 Gesamtstatus: **WARNUNG**
-- OK: 10
-- Warnungen: 6
+- OK: 11
+- Warnungen: 5
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -11,7 +11,7 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Inspiration-Report**: Datei vorhanden und nicht leer.
 - ✅ **Bright-Data-Debug**: Datei vorhanden und nicht leer.
 - ⚠️ **Inspiration-Quellen**: Keine verlinkten Quellen im Report erkannt.
-- ⚠️ **Inspiration-Ideen**: Nur 0 konkrete Ideen erkannt.
+- ✅ **Inspiration-Ideen**: 3 konkrete Ideen erkannt.
 - ⚠️ **YouTube-Fallback**: Apify-Quellreport vorhanden, aber keine verwertbaren Video-Datensätze erkannt.
 - ⚠️ **Datenalter**: Keine auswertbaren Quelldaten gefunden.
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
