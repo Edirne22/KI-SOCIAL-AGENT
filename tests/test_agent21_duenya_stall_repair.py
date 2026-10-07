@@ -90,11 +90,13 @@ class SourceRegression(unittest.TestCase):
         self.assertIn("DUENYA_MEDIA_RUNTIME_REVISION_OK",workflow)
         self.assertLess(workflow.index("DUENYA_MEDIA_RUNTIME_REVISION_OK"),
                         workflow.index("Agent 21 validate incident"))
+        agent11=open("scripts/agent11_private_video_recovery.py",encoding="utf-8").read()
         self.assertIn("Agent 11 recovery-mode exact Dünya resume",workflow)
-        self.assertIn("/private-video/jobs",workflow)
-        self.assertIn("-X POST",workflow)
-        self.assertIn('"production_revision":"v3"',workflow)
+        self.assertIn("python -m scripts.agent11_private_video_recovery",workflow)
+        self.assertIn('http("POST", "/private-video/jobs", token, resume_payload)',agent11)
+        self.assertIn('"production_revision": "v3"',agent11)
         self.assertNotIn("/health?recovery=duenya-level12",workflow)
+        self.assertNotIn("/private-video/resume-duenya",agent11)
 
 
 if __name__=="__main__": unittest.main()
