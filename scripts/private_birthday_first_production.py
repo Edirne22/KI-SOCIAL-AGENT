@@ -119,6 +119,12 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     image_count=sum(1 for a in assets if a["mime"].startswith("image/"))
     video_count=len(assets)-image_count
     image_seconds=max(1.35,(target_seconds-(video_count*4))/image_count) if image_count else 1.35
+    # Pacing is relative creative timing, not permission to stretch the master.
+    # Normalize all planned slots back to the requested total duration.
+    base_slots=[image_seconds if a["mime"].startswith("image/") else 4 for a in assets]
+    weighted_slots=[max(1.0,base*pacing[i]) for i,base in enumerate(base_slots)]
+    timing_scale=target_seconds/sum(weighted_slots)
+    planned_slots=[slot*timing_scale for slot in weighted_slots]
     token=os.environ["TELEGRAM_BOT_TOKEN"]; chat=os.environ["TELEGRAM_CHAT_ID"]
     with tempfile.TemporaryDirectory(prefix="duenya-private-") as td:
         root=Path(td); segments=[]
@@ -128,8 +134,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
             src.write_bytes(client.get_object(Bucket=bucket,Key=a["key"])["Body"].read())
             seg=root/f"seg-{i:03d}.mp4"
             is_image=a["mime"].startswith("image/")
-            base_seconds=image_seconds if is_image else 4
-            planned_seconds=max(1.0,base_seconds*pacing[i])
+            planned_seconds=planned_slots[i]
             render_segment(src,seg,is_image=is_image,seconds=planned_seconds,effect=effects[i],transition=transitions[i])
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
