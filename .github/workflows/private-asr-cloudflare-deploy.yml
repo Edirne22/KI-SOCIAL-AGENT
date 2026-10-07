@@ -102,10 +102,11 @@ jobs:
         run: |
           set -euo pipefail
           url="https://edirne22-private-asr.butupeli.workers.dev/admin/container-restart"
-          code=$(curl -sS -o /tmp/container-restart -w '%{http_code}' --max-time 30 \
+          code=$(curl -sS -o /tmp/container-restart -w '%{http_code}' --max-time 110 \
             -X POST -H "Authorization: Bearer $PRIVATE_ASR_INTERNAL_TOKEN" "$url" || true)
           if [ "$code" != 202 ]; then
-            echo "PRIVATE_ASR_DEPLOY_RESTART_FAILED: HTTP $code (body withheld)"
+            reason=$(python3 -c 'import json; d=json.load(open("/tmp/container-restart")); print(str(d.get("error","unknown"))[:80]+":"+str(d.get("exception","unknown"))[:80])' 2>/dev/null || echo "non_json_response")
+            echo "PRIVATE_ASR_DEPLOY_RESTART_FAILED: HTTP $code reason=$reason"
             exit 1
           fi
           python3 -c 'import json; d=json.load(open("/tmp/container-restart")); assert d.get("status") == "container_restarted_ready"'
