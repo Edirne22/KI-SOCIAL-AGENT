@@ -21,6 +21,24 @@ MAX_ITEMS=80
 TARGET_SECONDS=300
 MUSIC=Path("assets/musik/chill/hypnotic-ambient.mp3")
 TITLE="Dünya – Level 12"
+FPS=25
+
+def render_segment(src, seg, *, is_image, seconds):
+    # Concat demuxer stream-copy requires identical time bases. Previously photo
+    # (10 fps) and video (15 fps) tracks stretched a 300s timeline to 324s.
+    vf="scale=540:960:force_original_aspect_ratio=increase,crop=540:960,setsar=1"
+    vf+=f",fps={FPS},setpts=PTS-STARTPTS"
+    if not is_image:
+        # Short clips occupy their planned slot without moving later story cards.
+        vf+=f",tpad=stop_mode=clone:stop_duration={seconds:.3f}"
+    vf+=f",fade=t=in:st=0:d=0.25,fade=t=out:st={max(0.0,seconds-0.35):.3f}:d=0.35"
+    cmd=["ffmpeg","-y"]
+    if is_image:
+        cmd += ["-loop","1","-framerate",str(FPS)]
+    cmd += ["-i",str(src),"-t",f"{seconds:.3f}","-vf",vf,"-an",
+            "-c:v","libx264","-preset","ultrafast","-crf","28",
+            "-pix_fmt","yuv420p","-video_track_timescale","25000",str(seg)]
+    subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=120)
 
 def fftext(value):
     return str(value).replace("\\", "\\\\").replace("'", "\\'").replace(":", "\\:").replace("%", "\\%")
@@ -61,7 +79,7 @@ def recent_assets(client,bucket,now=None):
 def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     client,bucket=client_from_env()
     assets=assets_override or recent_assets(client,bucket)
-    target_seconds=int(getattr(plan,"target_seconds",TARGET_SECONDS) if plan else TARGET_SECONDS)
+    target_seconds=int(getattr(plan,"duration_seconds",TARGET_SECONDS) if plan else TARGET_SECONDS)
     overlays=list(getattr(plan,"overlays",[]) if plan else [TITLE,"12 Jahre voller Erinnerungen","Alles Gute zum 12. Geburtstag, Dünya! ❤️"])
     music=MUSIC
     image_count=sum(1 for a in assets if a["mime"].startswith("image/"))
@@ -75,14 +93,8 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
             src=root/f"in-{i:03d}{suffix}"
             src.write_bytes(client.get_object(Bucket=bucket,Key=a["key"])["Body"].read())
             seg=root/f"seg-{i:03d}.mp4"
-            vf="scale=540:960:force_original_aspect_ratio=increase,crop=540:960,setsar=1"
-            if a["mime"].startswith("image/"):
-                frames=max(10,int(image_seconds*10))
-                creative=vf+f",fps=10,fade=t=in:st=0:d=0.25,fade=t=out:st={max(0.0,image_seconds-0.35):.3f}:d=0.35"
-                cmd=["ffmpeg","-y","-loop","1","-t",f"{image_seconds:.3f}","-i",str(src),"-vf",creative,"-an","-c:v","libx264","-preset","ultrafast","-crf","28","-pix_fmt","yuv420p",str(seg)]
-            else:
-                cmd=["ffmpeg","-y","-i",str(src),"-t","4","-vf",vf+",fps=15,fade=t=in:st=0:d=0.25,fade=t=out:st=3.55:d=0.45","-an","-c:v","libx264","-preset","veryfast","-crf","28","-pix_fmt","yuv420p",str(seg)]
-            subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=120)
+            is_image=a["mime"].startswith("image/")
+            render_segment(src,seg,is_image=is_image,seconds=image_seconds if is_image else 4)
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
         rough=root/"rough.mp4"
@@ -93,11 +105,11 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         title_text=fftext(overlays[0] if overlays else TITLE)
         mid_text=fftext(overlays[1] if len(overlays)>1 else "Unsere schönsten Erinnerungen")
         end_text=fftext(overlays[2] if len(overlays)>2 else "Alles Gute!")
-        draw=(f"drawtext=text='{title_text}':fontcolor=white:fontsize=64:borderw=4:bordercolor=black:"
+        draw=(f"drawtext=text='{title_text}':fontcolor=white:fontsize=44:borderw=4:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.78:enable='between(t,1,7)',"
-              f"drawtext=text='{mid_text}':fontcolor=white:fontsize=50:borderw=3:bordercolor=black:"
+              f"drawtext=text='{mid_text}':fontcolor=white:fontsize=30:borderw=3:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.80:enable='between(t,105,112)',"
-              f"drawtext=text='{end_text}':fontcolor=white:fontsize=48:borderw=3:bordercolor=black:"
+              f"drawtext=text='{end_text}':fontcolor=white:fontsize=24:borderw=3:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.80:enable='between(t,286,299)'")
         subprocess.run(["ffmpeg","-y","-i",str(rough),"-vf",draw,"-an","-c:v","libx264","-preset","veryfast",
                         "-b:v","850k","-maxrate","950k","-bufsize","1900k","-pix_fmt","yuv420p","-movflags","+faststart",str(visual)],
