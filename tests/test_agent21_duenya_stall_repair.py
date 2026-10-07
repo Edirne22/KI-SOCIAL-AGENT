@@ -37,7 +37,7 @@ def incident():
 
 def state(status="RUNNING",stamp="2026-10-06T21:00:00+00:00",stage=STAGE):
     return {"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":TASK_ID,
-            "status":status,"stage":stage,"updated_at":stamp}
+            "status":status,"stage":stage,"updated_at":stamp,"production_revision":"v3","runtime_revision":"duenya-creative-chain-v3"}
 
 
 class Tests(unittest.TestCase):
