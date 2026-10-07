@@ -62,3 +62,7 @@ Nach dem Start bleibt Agent 11 verantwortlich, bis Readiness und mindestens zwei
 - `.github/workflows/`
 - `rules/SAFETY_RULES.md`
 - `agents/AGENTS_INDEX.md`
+
+## Verbindlicher Container-Anlasser
+
+Vor jedem Zugriff auf eine schlafende oder neu ausgerollte Cloudflare-Container-Maschine muss Agent 11 zuerst den fest verdrahteten Wake-/Warmup-Pfad ausführen. Für den privaten Mediencontainer bedeutet das: `getContainer()` → `startAndWaitForPorts({ports:[5200], ...})` → Dienst-/Revisions-Readiness → erst danach Auftrag/Resume. Ein Destroy/Restart ist ohne anschließendes Wake + Port-Readiness **nicht abgeschlossen**. „Container nicht erreichbar“ darf erst nach nachgewiesenem Wake-Versuch und Readiness-Fehler gemeldet werden. Nicht-idempotente Produktions-POSTs werden dabei niemals blind wiederholt.
