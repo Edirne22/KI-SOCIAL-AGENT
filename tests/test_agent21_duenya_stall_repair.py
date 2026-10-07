@@ -50,6 +50,8 @@ class Tests(unittest.TestCase):
         body=json.loads(r.writes[0]["Body"])
         self.assertEqual(body["status"],"FAILED")
         self.assertEqual(body["error_code"],"AGENT21_CONFIRMED_STALLED")
+        self.assertEqual(body["production_revision"],"v3")
+        self.assertEqual(body["runtime_revision"],"duenya-creative-chain-v3")
 
     def test_fresh_running_never_gets_restarted(self):
         r=R2(state(stamp="2026-10-06T21:01:30+00:00"),incident())
@@ -88,6 +90,11 @@ class SourceRegression(unittest.TestCase):
         self.assertIn("DUENYA_MEDIA_RUNTIME_REVISION_OK",workflow)
         self.assertLess(workflow.index("DUENYA_MEDIA_RUNTIME_REVISION_OK"),
                         workflow.index("Agent 21 validate incident"))
+        self.assertIn("Agent 11 recovery-mode exact Dünya resume",workflow)
+        self.assertIn("/private-video/jobs",workflow)
+        self.assertIn("-X POST",workflow)
+        self.assertIn('"production_revision":"v3"',workflow)
+        self.assertNotIn("/health?recovery=duenya-level12",workflow)
 
 
 if __name__=="__main__": unittest.main()
