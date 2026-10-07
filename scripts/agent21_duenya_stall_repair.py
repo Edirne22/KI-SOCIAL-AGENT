@@ -69,6 +69,8 @@ def reconcile(client,bucket,*,now=None):
         "task_id":TASK_ID,
         "status":"FAILED",
         "stage":STAGE,
+        "production_revision":PRODUCTION_REVISION,
+        "runtime_revision":"duenya-creative-chain-v3",
         "updated_at":now.isoformat(),
         "error_code":"AGENT21_CONFIRMED_STALLED",
         "detail":"Stale FFmpeg heartbeat reconciled after container background-lifecycle repair.",
