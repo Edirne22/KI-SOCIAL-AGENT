@@ -252,19 +252,23 @@ def _renew_private_video_activity(opener=urlopen):
     except (HTTPError,URLError,OSError,TimeoutError):
         return False
 
-def _video_status(task_id, status, error_code=None, detail=None, stage=None):
+def _video_status(task_id, status, error_code=None, detail=None, stage=None, production_revision=None):
     client,bucket=client_from_env()
     payload={"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":task_id,"status":status,
              "runtime_revision":_private_video_runtime_revision,
              "updated_at":datetime.now(timezone.utc).isoformat()}
     if stage: payload["stage"]=stage
+    if production_revision: payload["production_revision"]=production_revision
     if error_code: payload["error_code"]=str(error_code)[:80]
     if detail: payload["detail"]=str(detail)[:300]
+    body=json.dumps(payload).encode("utf-8")
     client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/status.json",
-                      Body=json.dumps(payload).encode("utf-8"),ContentType="application/json",
-                      CacheControl="private, no-store")
+                      Body=body,ContentType="application/json",CacheControl="private, no-store")
+    if production_revision:
+        client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/revisions/{production_revision}/status.json",
+                          Body=body,ContentType="application/json",CacheControl="private, no-store")
 
-def _run_video(task_id):
+def _run_video(task_id, production_revision=None):
     heartbeat_stop=threading.Event()
     current={"stage":"production_lead"}
     def heartbeat():
@@ -272,7 +276,7 @@ def _run_video(task_id):
         while not heartbeat_stop.wait(10):
             ticks+=1
             try:
-                _video_status(task_id,"RUNNING",stage=current["stage"])
+                _video_status(task_id,"RUNNING",stage=current["stage"],production_revision=production_revision)
             except Exception:
                 pass
             # Cloudflare Container.sleepAfter counts incoming requests, not work done by
@@ -281,7 +285,7 @@ def _run_video(task_id):
                 _renew_private_video_activity()
     heartbeat_thread=threading.Thread(target=heartbeat,daemon=True)
     try:
-        _video_status(task_id,"RUNNING",stage=current["stage"])
+        _video_status(task_id,"RUNNING",stage=current["stage"],production_revision=production_revision)
         heartbeat_thread.start()
         client,bucket=client_from_env()
         persist_stage(client,bucket,task_id,"production_lead","RUNNING")
@@ -316,14 +320,19 @@ def _run_video(task_id):
         current["stage"]="private_preview"
         preview={"schema":"PRIVATE-VIDEO-PREVIEW-V1","task_id":task_id,"state":"READY_FOR_HUMAN",
                  "r2_key":result["r2_key"],"sha256":result["sha256"],"private":True,"publishable":False}
+        preview["production_revision"]=production_revision
+        preview_body=json.dumps(preview).encode()
         client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/preview.json",
-            Body=json.dumps(preview).encode(),ContentType="application/json",CacheControl="private, no-store")
+            Body=preview_body,ContentType="application/json",CacheControl="private, no-store")
+        if production_revision:
+            client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/revisions/{production_revision}/preview.json",
+                Body=preview_body,ContentType="application/json",CacheControl="private, no-store")
         persist_stage(client,bucket,task_id,"private_preview","COMPLETED","private R2/Telegram preview ready")
-        _video_status(task_id,"COMPLETED",stage="private_preview")
+        _video_status(task_id,"COMPLETED",stage="private_preview",production_revision=production_revision)
     except Exception as exc:
         try:
             # Never persist the private prompt or secrets; only bounded exception diagnostics.
-            _video_status(task_id,"FAILED",exc.__class__.__name__,str(exc),stage=current.get("stage"))
+            _video_status(task_id,"FAILED",exc.__class__.__name__,str(exc),stage=current.get("stage"),production_revision=production_revision)
         except Exception:
             pass
     finally:
@@ -389,10 +398,15 @@ class Handler(BaseHTTPRequestHandler):
                 status, payload = (_run_opencode_code(message) if self.path == "/opencode/code" else _run_opencode(message))
                 return self.respond(status, payload)
             if self.path == "/private-video/jobs":
-                if not isinstance(data, dict) or set(data) != {"task_id"} or not isinstance(data["task_id"],str) or not _task.fullmatch(data["task_id"]):
+                if (not isinstance(data, dict) or not set(data).issubset({"task_id","production_revision"})
+                    or "task_id" not in data or not isinstance(data["task_id"],str) or not _task.fullmatch(data["task_id"])):
+                    raise ValueError()
+                production_revision=data.get("production_revision")
+                if production_revision is not None and (not isinstance(production_revision,str) or not _revision.fullmatch(production_revision)):
                     raise ValueError()
                 client,bucket=client_from_env()
-                key=f"ai-central/v1/private-video/{data['task_id']}/status.json"
+                key=(f"ai-central/v1/private-video/{data['task_id']}/revisions/{production_revision}/status.json"
+                     if production_revision else f"ai-central/v1/private-video/{data['task_id']}/status.json")
                 try:
                     existing=json.loads(client.get_object(Bucket=bucket,Key=key)["Body"].read(4096))
                 except Exception as exc:
@@ -411,9 +425,9 @@ class Handler(BaseHTTPRequestHandler):
 
                 if not _lock.acquire(False):
                     return self.respond(409, {"error":"busy"})
-                _video_status(data["task_id"],"ACCEPTED")
-                threading.Thread(target=_run_video,args=(data["task_id"],),daemon=True).start()
-                return self.respond(202, {"status":"ACCEPTED","task_id":data["task_id"]})
+                _video_status(data["task_id"],"ACCEPTED",production_revision=production_revision)
+                threading.Thread(target=_run_video,args=(data["task_id"],production_revision),daemon=True).start()
+                return self.respond(202, {"status":"ACCEPTED","task_id":data["task_id"],"production_revision":production_revision})
             if not isinstance(data, dict) or set(data) != {"inbox_id", "date", "language"}:
                 raise ValueError()
             if not isinstance(data["inbox_id"], str) or not _uuid.fullmatch(data["inbox_id"]):
