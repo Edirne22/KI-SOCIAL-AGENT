@@ -2676,3 +2676,33 @@ Story-Key: motogp:10861321
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-07 05:07 UTC | Motorcycle Racing | PASS
+Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
+Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-07 05:07 UTC | Motorcycle Racing | PASS
+Titel: Toprak, fren problemine çözüm arıyor: "Adeta motosikletle savaşıyorum"
+Story-Key: motogp:10862442
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-07 05:07 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez Motegi’de dubleyi yaptı: MotoGP’de fark sadece 2 puan!
+Story-Key: title:marc-marquez-motegi-de-dubleyi-yapt-motogp-de-fark-sadece-2-puan
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-07 05:08 UTC | Motorcycle Racing | PASS
+Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
+Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-07 05:08 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK Estoril 2026: Can Öncü Üçüncülük, Bulega Rekor Peşinde
+Story-Key: title:worldsbk-estoril-2026-can-nc-nc-l-k-bulega-rekor-pe-inde
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

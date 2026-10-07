@@ -829,3 +829,13 @@ Quelle: https://motoetkinlik.com/diogo-moreiadan-motogpde-ilk-podyum-bu-gercek-b
 Story-Key: motogp:10861321
 Titel: Moto2 Japonya GP sıralama: Motegi’de pole Izan Guevara’nın, Deniz Öncü 11.sırada
 Quelle: https://tr.motorsport.com/moto2/news/moto2-japonya-gp-siralama-motegide-pole-izan-guevaranin-deniz-oncu-11sirada/10861321
+
+## 2026-10-07 04:40 UTC – ANGEBOTEN
+Story-Key: motogp:10862442
+Titel: Toprak, fren problemine çözüm arıyor: "Adeta motosikletle savaşıyorum"
+Quelle: https://tr.motorsport.com/motogp/news/toprak-fren-problemine-cozum-ariyor-adeta-motosikletle-savasiyorum/10862442
+
+## 2026-10-07 04:40 UTC – ANGEBOTEN
+Story-Key: title:worldsbk-estoril-2026-can-nc-nc-l-k-bulega-rekor-pe-inde
+Titel: WorldSBK Estoril 2026: Can Öncü Üçüncülük, Bulega Rekor Peşinde
+Quelle: https://motoetkinlik.com/worldsbk-estoril-2026-can-oncu-ucunculuk-bulega-rekor-pesinde

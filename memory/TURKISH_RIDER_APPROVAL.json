@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "created_at": 1791261487,
+  "created_at": 1791348031,
   "max_days": 10,
   "window_used_days": 10,
-  "count": 4,
+  "count": 3,
   "items": [
     {
       "n": 1,
@@ -39,18 +39,6 @@
       "series": "Moto2",
       "source_series": "Moto2",
       "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    },
-    {
-      "n": 4,
-      "title": "IAME Benelux Mariembourg Finali: Zayn Sofuoğlu Kazanmak İçin Piste Çıkıyor",
-      "url": "https://motoetkinlik.com/iame-benelux-mariembourg-finali-zayn-sofuoglu-kazanmak-icin-piste-cikiyor",
-      "summary": "IAME Benelux Mariembourg finali 27 Eylül Pazar. Zayn Sofuoğlu 724 puanla ikinci, lider Bal'a fark 42 puan. Mini Rookie seans saatleri TSİ ve güncel puan durumu.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/09/961_22082026070559-1.webp",
-      "published_at": "2026-09-26T21:57:33+03:00",
-      "series": "Unsupported",
-      "source_series": "Karting",
-      "turkish_rider": "Zayn Sofuoğlu",
       "kind": "news"
     }
   ]
