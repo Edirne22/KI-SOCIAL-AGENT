@@ -26,6 +26,10 @@ class PrivateVideoPlan:
     asset_transitions:tuple[str,...]
     asset_pacing:tuple[float,...]
     asset_order:tuple[int,...]=()
+    audio_cues:tuple[dict,...]=()
+    overlay_cues:tuple[dict,...]=()
+    transition_implementation:str=""
+    render_evidence_contract:str=""
     creative_revision:str=CREATIVE_REVISION
     stages:tuple[str,...]=STAGES
 
@@ -129,9 +133,9 @@ def preflight_private_machine_contract(plan: PrivateVideoPlan, assets: list[dict
         issues.append("AUDIO_CUES_NOT_MACHINE_BOUND")
     if not getattr(plan, "overlay_cues", None):
         issues.append("OVERLAY_CUES_NOT_MACHINE_BOUND")
-    if not getattr(plan, "transition_implementation", None):
+    if plan.transition_implementation != "ffmpeg-xfade-v1":
         issues.append("REAL_TRANSITION_ADAPTER_UNPROVEN")
-    if not getattr(plan, "render_evidence_contract", None):
+    if plan.render_evidence_contract != "private-qm-expected-actual-v1":
         issues.append("QM_EXPECTED_ACTUAL_CONTRACT_MISSING")
     return {"decision": "NOT_READY_FOR_MEDIA" if issues else "READY_FOR_MEDIA",
             "issues": issues, "asset_count": n, "creative_revision": plan.creative_revision}
@@ -171,7 +175,8 @@ def build_plan(task_id:str,prompt:str,assets:list[dict])->PrivateVideoPlan:
     return PrivateVideoPlan(spec["task_id"],spec["title"],spec["duration_seconds"],spec["max_duration_seconds"],spec["duration_policy"],spec["aspect_ratio"],
         spec["privacy"],spec["story_style"],spec["music_track"],tuple(spec["overlays"]),
         tuple(spec["scene_plan"]),tuple(spec["asset_effects"]),tuple(spec["asset_transitions"]),
-        tuple(spec["asset_pacing"]),tuple(spec["asset_order"]),spec["creative_revision"])
+        tuple(spec["asset_pacing"]),tuple(spec["asset_order"]),
+        ({"policy":"music-bed","track":spec["music_track"]},),\n        tuple({"text":t,"position":p} for p,t in zip(("intro","mid","finale"),spec["overlays"])),\n        "ffmpeg-xfade-v1","private-qm-expected-actual-v1",spec["creative_revision"])
 
 def persist_stage(client,bucket,task_id,stage,status,detail=""):
     if stage not in STAGES: raise ValueError("unknown private production stage")
