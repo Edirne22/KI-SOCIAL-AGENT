@@ -17,7 +17,7 @@ jobs:
   recover:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 25
     env:
       R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
@@ -54,7 +54,31 @@ jobs:
           assert d.get("private_video_runtime_revision") == sys.argv[1]
           print("DUENYA_MEDIA_RUNTIME_REVISION_OK")
           PY
+      - name: Persist exact V4 watchdog incident before Agent 21
+        id: watchdog
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os
+          from scripts.ai_central_shared_inbox import client_from_env
+          from scripts.watch_duenya_level12_production import watch
+
+          client, bucket = client_from_env()
+          result = watch(
+              client,
+              bucket,
+              production_revision=os.environ["DUENYA_PRODUCTION_REVISION"],
+              max_checks=1,
+              interval_seconds=0,
+              stall_after_seconds=75,
+          )
+          action = "HANDOFF_AGENT21" if result["status"] in {"FAILED", "STALLED"} else result["status"]
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"action={action}\\n")
+          print("DUENYA_PRE_RECOVERY_WATCH_ACTION=" + action)
+          PY
       - name: Agent 21 validate incident and reconcile orphaned RUNNING state
+        if: steps.watchdog.outputs.action == 'HANDOFF_AGENT21'
         id: agent21
         shell: bash
         run: |
@@ -78,4 +102,9 @@ jobs:
             --production-revision "$DUENYA_PRODUCTION_REVISION"
 
       - name: Continue exact production through QM and private preview
+        if: >-
+          steps.watchdog.outputs.action == 'ACCEPTED' ||
+          steps.watchdog.outputs.action == 'RUNNING' ||
+          steps.agent21.outputs.action == 'NO_RECOVERY' ||
+          steps.agent21.outputs.action == 'HANDOFF_AGENT11'
         run: python -m scripts.watch_duenya_level12_production
