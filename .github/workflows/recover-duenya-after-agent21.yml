@@ -74,7 +74,7 @@ jobs:
           )
           action = "HANDOFF_AGENT21" if result["status"] in {"FAILED", "STALLED"} else result["status"]
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
-              output.write(f"action={action}\\n")
+              output.write(f"action={action}\n")
           print("DUENYA_PRE_RECOVERY_WATCH_ACTION=" + action)
           PY
       - name: Agent 21 validate incident and reconcile orphaned RUNNING state
