@@ -93,6 +93,7 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
             code, _ = _http_json("POST", "/admin/container-restart", "token")
         request = opener.call_args.args[0]
         self.assertEqual(code, 202)
+        self.assertEqual(request.get_header("User-agent"), "Edirne22-Private-Video-Recovery/1.0")
         self.assertEqual(request.data, None)
         self.assertEqual(request.get_header("X-edirne22-recovery-action"), "resume_duenya_v4")
         self.assertIsNone(request.get_header("Content-type"))

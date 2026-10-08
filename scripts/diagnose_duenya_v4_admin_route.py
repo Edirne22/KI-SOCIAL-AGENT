@@ -6,7 +6,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 ORIGIN = "https://edirne22-private-asr.butupeli.workers.dev"
-CLIENTS = (("urllib-default", None), ("edirne22", "Edirne22-Runtime-Diagnostic/1.0"))
+CLIENTS = (("urllib-default", None), ("edirne22", "Edirne22-Private-Video-Recovery/1.0"))
 
 
 class NoRedirect(HTTPRedirectHandler):

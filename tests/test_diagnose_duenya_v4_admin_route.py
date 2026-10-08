@@ -36,7 +36,7 @@ class DiagnosticTests(unittest.TestCase):
         self.assertTrue(all(r.get_method()=="GET" and r.data is None for r in calls))
         self.assertEqual([r.full_url for r in calls], ["https://edirne22-private-asr.butupeli.workers.dev"+p for p in ("/health","/admin/container-restart")]*2)
         self.assertIsNone(calls[0].get_header("User-agent"))
-        self.assertEqual(calls[2].get_header("User-agent"),"Edirne22-Runtime-Diagnostic/1.0")
+        self.assertEqual(calls[2].get_header("User-agent"),"Edirne22-Private-Video-Recovery/1.0")
         return [json.loads(line) for line in output.getvalue().splitlines()]
 
     def test_expected_health_and_method_guard(self):

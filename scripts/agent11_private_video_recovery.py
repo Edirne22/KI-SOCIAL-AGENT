@@ -41,6 +41,8 @@ def _http_json(method: str, path: str, token: str, payload: dict | None = None) 
     headers = {
         "Authorization": "Bearer " + token,
         "Accept": "application/json",
+        # Explicit service identity: the default Python UA receives upstream 403.
+        "User-Agent": "Edirne22-Private-Video-Recovery/1.0",
     }
     if body is not None:
         headers["Content-Type"] = "application/json"
