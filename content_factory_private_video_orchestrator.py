@@ -32,7 +32,7 @@ class PrivateProductionLead:
     def decompose(self,task_id:str,prompt:str)->dict:
         if not prompt.strip(): raise ValueError("private video prompt required")
         low=prompt.casefold()
-        duration=300
+        duration=210
         ratio="9:16"
         title="Dünya – Level 12" if "dünya" in low and ("12" in low or "geburtstag" in low) else "Private Erinnerung"
         return {"task_id":task_id,"prompt":prompt,"duration_seconds":duration,"max_duration_seconds":300,
@@ -69,7 +69,7 @@ class PrivateMediaStoryAgent:
             assignments.append(effects[i % len(effects)])
             transitions.append((scene["transition"],float(scene["transition_seconds"])))
             pacing.append(float(scene["pace"]))
-        return {**spec,"asset_count":total,"selection":"best-owned-private-media",
+        return {**spec,"asset_count":total,"selection":"chronological-unclassified-pending-review",
                 "order":"chronological-story","asset_effects":tuple(assignments),
                 "asset_transitions":tuple(transitions),"asset_pacing":tuple(pacing)}
 
