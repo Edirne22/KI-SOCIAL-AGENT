@@ -95,6 +95,12 @@ class BirthdayTimelineTests(unittest.TestCase):
             self.assertIn("xfade=transition=smoothleft"," ".join(cmd))
             birthday.run_ffmpeg(cmd,step="synthetic_xfade",timeout=90)
             self.assertAlmostEqual(birthday.probe_duration(p/"xfade.mp4"),3.7,delta=0.15)
+            import numpy as np
+            pixels=subprocess.check_output(["ffmpeg","-v","error","-ss","1.85","-i",str(p/"xfade.mp4"),
+                "-frames:v","1","-f","rawvideo","-pix_fmt","rgb24","-"])
+            mean=np.frombuffer(pixels,dtype=np.uint8).reshape(-1,3).mean(axis=0)
+            self.assertGreater(mean[0],30)  # old red frame survives inside transition
+            self.assertGreater(mean[2],30)  # new blue frame appears; no black fade
 
     def test_mixed_order_and_short_clip_use_same_timebase(self):
         with tempfile.TemporaryDirectory() as td:

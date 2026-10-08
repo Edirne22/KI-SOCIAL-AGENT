@@ -47,3 +47,15 @@ class CreativeE2ETests(unittest.TestCase):
         self.assertTrue(qm['passed'],qm)
         evidence['asset_evidence'][0]['source_sha256']='0'*64
         self.assertFalse(verify_render_contract(plan,classified,evidence))
+
+    def test_uncertainty_duplicates_and_source_integrity(self):
+        from hashlib import sha256
+        buf=io.BytesIO();Image.new('RGB',(160,288),'blue').save(buf,format='PNG')
+        raw=buf.getvalue();client=MemoryR2({'a':raw,'b':raw})
+        assets=[{'key':x,'mime':'image/png'} for x in ('a','b')]
+        report=[]
+        result=analyze_private_media(client,'test',assets,infer=lambda _: {'accepted':False},report=report)
+        self.assertEqual(result,[])
+        self.assertEqual([x['decision'] for x in report],['uncertain-excluded','duplicate'])
+        with self.assertRaisesRegex(RuntimeError,'SOURCE_HASH_MISMATCH'):
+            analyze_private_media(client,'test',[{**assets[0],'sha256':'0'*64}],infer=lambda _: {})
