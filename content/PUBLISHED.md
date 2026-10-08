@@ -835,8 +835,8 @@ Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-miri
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak", "media_status": "", "object_id": "1285968257941776_122120772375469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122120772375469415", "source_url": "https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-08 06:37 | ID: 18482343001117770]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-08-daily
 Telegram-Update-ID: 279361920
@@ -851,6 +851,7 @@ Franco Morbidelli schmeißt 2027 die MotoGP und steigt bei Aruba.it Racing –
 Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-5-resmen-aciklandi-fra-01.jpg
+Publish-Provenienz: {"creation_id": "18010491665971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-5-resmen-aciklandi-fra-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18482343001117770", "published_media_id": "18482343001117770", "source_url": "https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-08 06:15 | ID: 1285968257941776_122121043089469415]
 Status: GEPOSTET
@@ -876,3 +877,42 @@ https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-
 Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde", "media_status": "", "object_id": "1285968257941776_122121043089469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122121043089469415", "source_url": "https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde", "version": 1}
+
+## Instagram
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: turkish-1791441440-TR-HUMAN
+Telegram-Update-ID: 279361922
+MotoGP-Auswahl: 1
+Story-Key: title:toprak-razgatl-o-lu-mandalika-ya-geri-d-nd-m-i-ok-mutluyum
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu: "Mandalika'ya Geri Döndüğüm İçin Çok Mutluyum"
+Text:
+Endlich wieder Mandalika – das ist das Stück Erde, wo ich meine allererste WorldSBK‑Meisterschaft gekrönt habe 🏆. Die Vorfreude ist riesig, ich bin sowas von happy, wieder im MotoGP‑Kader dort zu starten 🌊🔥. Wer von euch kann’s kaum erwarten, das nächste Kapitel in Indonesien zu sehen? 🤘
+
+#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-08-turkish-human-1-toprak-razgatlioglu-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: turkish-1791441440-TR-HUMAN
+Telegram-Update-ID: 279361922
+MotoGP-Auswahl: 1
+Story-Key: title:toprak-razgatl-o-lu-mandalika-ya-geri-d-nd-m-i-ok-mutluyum
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu: "Mandalika'ya Geri Döndüğüm İçin Çok Mutluyum"
+Text:
+Endlich wieder Mandalika – das ist das Stück Erde, wo ich meine allererste WorldSBK‑Meisterschaft gekrönt habe 🏆. Die Vorfreude ist riesig, ich bin sowas von happy, wieder im MotoGP‑Kader dort zu starten 🌊🔥. Wer von euch kann’s kaum erwarten, das nächste Kapitel in Indonesien zu sehen? 🤘
+
+#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum
+
+https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum
+Link-Preview: offiziell
