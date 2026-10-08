@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 from content_factory_private_video_orchestrator import (
-    STAGES, PrivateProductionLead, PrivateCreativeDirector, PrivateMediaStoryAgent,
+    STAGES, preflight_private_machine_contract, PrivateProductionLead, PrivateCreativeDirector, PrivateMediaStoryAgent,
     PrivateMusicAudioAgent, PrivateQM, build_plan,
 )
 
@@ -43,6 +43,29 @@ class PrivateVideoAgentChainTests(unittest.TestCase):
                                         "applied_transitions":("soft_fade","quick_fade","long_fade"),
                                         "pacing_applied":True})
         self.assertTrue(qm["passed"])
+
+    def test_preflight_blocks_current_slideshow_before_machine(self):
+        assets=[{"mime":"image/jpeg"},{"mime":"video/mp4"}]
+        tracks=[{"id":"x","title":"Ambient","category":"chill",
+                 "path":"assets/musik/chill/hypnotic-ambient.mp3","license":"PD","source_page":"local"}]
+        with patch("content_factory_private_video_orchestrator.load_library",return_value=tracks):
+            plan=build_plan("f6f50c9f4c2690e4eb1fe978","Dünya 12 Geburtstag",assets)
+        result=preflight_private_machine_contract(plan,assets)
+        self.assertEqual(result["decision"],"NOT_READY_FOR_MEDIA")
+        self.assertIn("ASSET_CONTENT_NOT_CLASSIFIED",result["issues"])
+        self.assertIn("REAL_TRANSITION_ADAPTER_UNPROVEN",result["issues"])
+        self.assertIn("QM_EXPECTED_ACTUAL_CONTRACT_MISSING",result["issues"])
+        self.assertIn("MAXIMUM_DURATION_FORCED_TO_CEILING",result["issues"])
+
+    def test_preflight_rejects_empty_or_unassigned_assets(self):
+        from dataclasses import replace
+        tracks=[{"id":"x","title":"Ambient","category":"chill",
+                 "path":"assets/musik/chill/hypnotic-ambient.mp3","license":"PD","source_page":"local"}]
+        with patch("content_factory_private_video_orchestrator.load_library",return_value=tracks):
+            plan=build_plan("f6f50c9f4c2690e4eb1fe978","Dünya 12 Geburtstag",[{"mime":"image/jpeg"}])
+        broken=replace(plan,asset_effects=())
+        result=preflight_private_machine_contract(broken,[{"mime":"image/jpeg"}])
+        self.assertIn("ASSET_ASSIGNMENT_INCOMPLETE",result["issues"])
 
     def test_private_chain_contains_no_publish_stage(self):
         self.assertNotIn("publish",STAGES)
