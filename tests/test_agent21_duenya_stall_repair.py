@@ -26,7 +26,7 @@ class R2:
 def incident():
     return {
       "schema":"MACHINE-WATCHDOG-INCIDENT-V1",
-      "incident_id":f"WD-{TASK_ID}-{STAGE}",
+      "incident_id":f"WD-{TASK_ID}-{STAGE}-v4",
       "job_id":TASK_ID,"stage_id":STAGE,"machine":"private-media-container",
       "checkpoint":STAGE,"last_progress":0,
       "last_heartbeat_at":"2026-10-06T21:00:00+00:00",
@@ -47,6 +47,8 @@ class Tests(unittest.TestCase):
         self.assertEqual(out["action"],"HANDOFF_AGENT11")
         self.assertEqual(out["repair_id"],REPAIR_ID)
         self.assertEqual(STATUS_KEY, f"ai-central/v1/private-video/{TASK_ID}/revisions/v4/status.json")
+        self.assertTrue(INCIDENT_KEY.endswith(f"WD-{TASK_ID}-{STAGE}-v4.json"))
+        self.assertIn("-V4", REPAIR_ID)
         self.assertEqual(len(r.writes),1)
         body=json.loads(r.writes[0]["Body"])
         self.assertEqual(body["status"],"FAILED")
