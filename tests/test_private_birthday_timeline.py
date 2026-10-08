@@ -70,6 +70,19 @@ class BirthdayTimelineTests(unittest.TestCase):
         self.assertFalse(birthday.build_original_audio_mix(
             [(Path("photo.jpg"),False)],[0.0],[3.0],Path("unused.m4a")))
 
+    def test_real_original_audio_ducking_synthetic(self):
+        from music_agent import mix_music, source_has_audio
+        with tempfile.TemporaryDirectory() as td:
+            p=Path(td)
+            video=p/"voice.mp4"; music=p/"music.wav"; output=p/"mixed.mp4"
+            ffmpeg("-f","lavfi","-i","color=c=black:s=160x288:r=25:d=2",
+                   "-f","lavfi","-i","sine=frequency=500:duration=2",
+                   "-c:v","libx264","-c:a","aac","-shortest",video)
+            ffmpeg("-f","lavfi","-i","sine=frequency=220:duration=2",music)
+            self.assertTrue(source_has_audio(video))
+            mix_music(video,music,output,duck_original=True)
+            self.assertTrue(birthday.output_is_valid(output))
+
     def test_real_xfade_between_synthetic_segments(self):
         with tempfile.TemporaryDirectory() as td:
             p=Path(td)
