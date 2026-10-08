@@ -74,7 +74,7 @@ jobs:
             --repair-id "${{ steps.agent21.outputs.repair_id }}" \
             --job-id "f6f50c9f4c2690e4eb1fe978" \
             --stage-id "video_editor_ffmpeg" \
-            --checkpoint "video_editor_ffmpeg" \\
+            --checkpoint "video_editor_ffmpeg" \
             --production-revision "$DUENYA_PRODUCTION_REVISION"
 
       - name: Continue exact production through QM and private preview
