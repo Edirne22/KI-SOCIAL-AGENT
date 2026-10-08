@@ -57,6 +57,19 @@ class BirthdayTimelineTests(unittest.TestCase):
                         birthday.run(assets_override=assets)
                 send.assert_not_called()
 
+    def test_real_xfade_between_synthetic_segments(self):
+        with tempfile.TemporaryDirectory() as td:
+            p=Path(td)
+            for name,color in (("first","red"),("second","blue")):
+                ffmpeg("-f","lavfi","-i",f"color=c={color}:s=540x960:r=25:d=2",
+                       "-c:v","libx264","-pix_fmt","yuv420p",p/(name+".mp4"))
+            cmd=birthday.build_xfade_command(
+                [p/"first.mp4",p/"second.mp4"],[2.0,2.0],
+                [("soft_fade",0.35),("quick_fade",0.30)],p/"xfade.mp4")
+            self.assertIn("xfade=transition=smoothleft"," ".join(cmd))
+            birthday.run_ffmpeg(cmd,step="synthetic_xfade",timeout=90)
+            self.assertAlmostEqual(birthday.probe_duration(p/"xfade.mp4"),3.7,delta=0.15)
+
     def test_mixed_order_and_short_clip_use_same_timebase(self):
         with tempfile.TemporaryDirectory() as td:
             p = Path(td)
