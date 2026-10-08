@@ -67,6 +67,16 @@ class PrivateVideoAgentChainTests(unittest.TestCase):
         result=preflight_private_machine_contract(broken,[{"mime":"image/jpeg"}])
         self.assertIn("ASSET_ASSIGNMENT_INCOMPLETE",result["issues"])
 
+    def test_runtime_preflight_is_before_ffmpeg_machine(self):
+        from pathlib import Path
+        service=Path("infra/private-asr/service.py").read_text(encoding="utf-8")
+        start=service.index('plan=build_plan(task_id,prompt,assets)')
+        gate=service.index('preflight_private_machine_contract(plan, assets)',start)
+        machine=service.index('private_birthday.run(task_id=task_id',start)
+        self.assertLess(start,gate)
+        self.assertLess(gate,machine)
+        self.assertIn('PRIVATE_CREATIVE_PREFLIGHT_NOT_READY',service[gate:machine])
+
     def test_private_chain_contains_no_publish_stage(self):
         self.assertNotIn("publish",STAGES)
         self.assertEqual(STAGES[-1],"private_preview")
