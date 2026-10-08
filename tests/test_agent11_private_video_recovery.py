@@ -23,8 +23,10 @@ class FakeClient:
         self.statuses = list(statuses)
         self.last = self.statuses[-1]
         self.writes = []
+        self.reads = []
 
     def get_object(self, Bucket, Key):
+        self.reads.append(Key)
         if self.statuses:
             self.last = self.statuses.pop(0)
         return {"Body": io.BytesIO(json.dumps(self.last).encode())}
@@ -41,6 +43,8 @@ def status(value, stamp, stage="video_editor_ffmpeg"):
         "status": value,
         "stage": stage,
         "updated_at": stamp,
+        "production_revision": "v4",
+        "runtime_revision": "duenya-creative-chain-v3",
     }
 
 
@@ -53,7 +57,7 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
             if path == "/health":
                 return 200, {"ready": True}
             if path == "/private-video/jobs":
-                return 202, {"status": "ACCEPTED", "task_id": "f6f50c9f4c2690e4eb1fe978", "production_revision": "v3"}
+                return 202, {"status": "ACCEPTED", "task_id": "f6f50c9f4c2690e4eb1fe978", "production_revision": "v4"}
             raise AssertionError(path)
         return call
 
@@ -67,13 +71,17 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         result = execute_recovery(client, "bucket", handoff(), "token",
                                   http=self.http_ok(calls), sleeper=lambda _: None)
         self.assertTrue(result["recovered"])
+        self.assertEqual(result["production_revision"], "v4")
+        self.assertTrue(client.reads)
+        self.assertTrue(all("/revisions/v4/status.json" in key for key in client.reads))
         self.assertNotIn(("POST", "/admin/container-restart", None), calls)
         self.assertFalse(any(call[0:2] == ("GET", "/health") for call in calls[:1]))
-        self.assertIn(("POST", "/private-video/jobs", {"task_id": "f6f50c9f4c2690e4eb1fe978", "production_revision": "v3"}), calls)
+        self.assertIn(("POST", "/private-video/jobs", {"task_id": "f6f50c9f4c2690e4eb1fe978", "production_revision": "v4"}), calls)
         self.assertEqual(len(client.writes), 1)
         body = json.loads(client.writes[0]["Body"])
         self.assertEqual(body["schema"], "PRODUCTION-RECOVERY-R2-V1")
         self.assertTrue(body["recovered"])
+        self.assertEqual(body["production_revision"], "v4")
         self.assertNotIn("token", json.dumps(body).lower())
 
     def test_same_running_record_twice_is_not_two_heartbeats(self):
@@ -103,6 +111,17 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "JOB_FAILED_AGAIN"):
             execute_recovery(client, "bucket", handoff(), "token",
                              http=self.http_ok([]), sleeper=lambda _: None)
+
+    def test_v3_status_is_rejected_before_runtime_resume(self):
+        client = FakeClient([{
+            **status("FAILED", "2026-10-06T21:00:00+00:00"),
+            "production_revision": "v3",
+        }])
+        calls = []
+        with self.assertRaisesRegex(RuntimeError, "STATUS_REVISION_MISMATCH"):
+            execute_recovery(client, "bucket", handoff(), "token",
+                             http=self.http_ok(calls), sleeper=lambda _: None)
+        self.assertEqual(calls, [])
 
     def test_arbitrary_machine_is_rejected_before_http(self):
         h = handoff()
