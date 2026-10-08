@@ -12,14 +12,16 @@ from datetime import datetime, timezone
 from scripts.ai_central_shared_inbox import client_from_env
 
 TASK_ID="f6f50c9f4c2690e4eb1fe978"
-STAGE="video_editor_ffmpeg"
-REPAIR_ID="R21-DUENYA-FFMPEG-SLEEP-20261007-V4"
+ALLOWED_STAGES={"production_lead","creative_director","media_story","music_audio","video_editor_ffmpeg","qm","private_preview"}
+REPAIR_ID="R21-DUENYA-STAGE-AWARE-20261008-V4"
 PRODUCTION_REVISION=os.environ.get("DUENYA_PRODUCTION_REVISION","v4")
 if PRODUCTION_REVISION not in {"v4","v4-creative1"}:
     raise RuntimeError("AGENT21_DUENYA_REVISION_INVALID")
 STATUS_KEY=f"ai-central/v1/private-video/{TASK_ID}/revisions/{PRODUCTION_REVISION}/status.json"
-INCIDENT_ID=f"WD-{TASK_ID}-{STAGE}-{PRODUCTION_REVISION}"
-INCIDENT_KEY=f"ai-central/v1/maintenance/incidents/{INCIDENT_ID}.json"
+# Resolve the stage from the authoritative revision status instead of hard-coding FFmpeg.
+# The watchdog incident must independently agree with that stage before recovery is allowed.
+def _incident_key(stage):
+    return f"ai-central/v1/maintenance/incidents/WD-{TASK_ID}-{stage}-{PRODUCTION_REVISION}.json"
 STALE_AFTER_SECONDS=75
 
 
@@ -29,20 +31,23 @@ def _read_json(client,bucket,key,limit=16384):
 
 def reconcile(client,bucket,*,now=None):
     now=now or datetime.now(timezone.utc)
-    incident=_read_json(client,bucket,INCIDENT_KEY)
+    state=_read_json(client,bucket,STATUS_KEY)
+    stage=state.get("stage")
+    if stage not in ALLOWED_STAGES:
+        raise RuntimeError("AGENT21_DUENYA_STAGE_INVALID")
+    incident_id=f"WD-{TASK_ID}-{stage}-{PRODUCTION_REVISION}"
+    incident=_read_json(client,bucket,_incident_key(stage))
     if (
         incident.get("schema")!="MACHINE-WATCHDOG-INCIDENT-V1"
-        or incident.get("incident_id")!=INCIDENT_ID
+        or incident.get("incident_id")!=incident_id
         or incident.get("job_id")!=TASK_ID
-        or incident.get("stage_id")!=STAGE
+        or incident.get("stage_id")!=stage
         or incident.get("machine")!="private-media-container"
         or incident.get("route_to")!="agent21"
         or incident.get("requested_action")!="DIAGNOSE_ONLY"
         or incident.get("reason")!="MACHINE_REPORTED_STALLED"
     ):
         raise RuntimeError("AGENT21_DUENYA_INCIDENT_INVALID")
-
-    state=_read_json(client,bucket,STATUS_KEY)
     if (state.get("schema")!="PRIVATE-VIDEO-STATUS-V1" or state.get("task_id")!=TASK_ID
         or state.get("production_revision")!=PRODUCTION_REVISION
         or state.get("runtime_revision")!="duenya-creative-chain-v3"):
@@ -50,10 +55,10 @@ def reconcile(client,bucket,*,now=None):
     if state.get("status")=="COMPLETED":
         return {"action":"NO_RECOVERY","reason":"ALREADY_COMPLETED","repair_id":REPAIR_ID}
     if state.get("status")=="FAILED":
-        if state.get("stage")!=STAGE:
+        if state.get("stage")!=stage:
             raise RuntimeError("AGENT21_DUENYA_FAILED_STAGE_MISMATCH")
         return {"action":"HANDOFF_AGENT11","reason":"ALREADY_FAILED","repair_id":REPAIR_ID}
-    if state.get("status")!="RUNNING" or state.get("stage")!=STAGE:
+    if state.get("status")!="RUNNING" or state.get("stage")!=stage:
         raise RuntimeError("AGENT21_DUENYA_STATE_NOT_RECONCILABLE")
 
     try:
@@ -70,12 +75,12 @@ def reconcile(client,bucket,*,now=None):
         "schema":"PRIVATE-VIDEO-STATUS-V1",
         "task_id":TASK_ID,
         "status":"FAILED",
-        "stage":STAGE,
+        "stage":stage,
         "production_revision":PRODUCTION_REVISION,
         "runtime_revision":"duenya-creative-chain-v3",
         "updated_at":now.isoformat(),
         "error_code":"AGENT21_CONFIRMED_STALLED",
-        "detail":"Stale FFmpeg heartbeat reconciled after container background-lifecycle repair.",
+        "detail":f"Agent 21 reconciled stale heartbeat at {stage}; original bounded error retained by runtime status.",
     }
     client.put_object(
         Bucket=bucket,Key=STATUS_KEY,
