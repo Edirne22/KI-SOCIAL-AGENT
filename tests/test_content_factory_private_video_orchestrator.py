@@ -110,6 +110,14 @@ class PrivateVideoAgentChainTests(unittest.TestCase):
         self.assertLess(gate,machine)
         self.assertIn('PRIVATE_CREATIVE_PREFLIGHT_NOT_READY',service[gate:machine])
 
+    def test_private_telegram_delivery_is_after_qm(self):
+        from pathlib import Path
+        renderer=Path("scripts/private_birthday_first_production.py").read_text(encoding="utf-8")
+        service=Path("infra/private-asr/service.py").read_text(encoding="utf-8")
+        self.assertNotIn('requests.post(f"https://api.telegram.org/bot{token}/sendVideo"',renderer)
+        self.assertLess(service.index('if not qm["passed"]:'),service.index('PRIVATE_QM_APPROVED_TELEGRAM_DELIVERY_FAILED'))
+        self.assertLess(service.index('PRIVATE_QM_APPROVED_TELEGRAM_DELIVERY_FAILED'),service.index('preview={"schema":"PRIVATE-VIDEO-PREVIEW-V1"'))
+
     def test_private_chain_contains_no_publish_stage(self):
         self.assertNotIn("publish",STAGES)
         self.assertEqual(STAGES[-1],"private_preview")
