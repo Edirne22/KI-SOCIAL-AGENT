@@ -11,7 +11,7 @@ from hashlib import sha256
 import json, os, subprocess, tempfile
 from pathlib import Path
 import requests
-from music_agent import mix_music, output_is_valid, probe_duration
+from music_agent import mix_music, output_is_valid, probe_duration, source_has_audio
 from scripts.ai_central_shared_inbox import client_from_env
 from scripts.r2_media_warehouse import job_prefix
 
@@ -83,6 +83,30 @@ def build_xfade_command(segments, durations, transitions, output):
         previous=out
     cmd.extend(["-filter_complex",";".join(filters),"-map",previous,"-an","-c:v","libx264","-preset","veryfast","-crf","26","-pix_fmt","yuv420p",str(output)])
     return cmd
+
+def build_original_audio_mix(video_sources, starts, durations, output):
+    """Create a quiet, time-aligned original-audio bed from video clips only.
+
+    Each source is a tuple(path, has_audio). Silence is intentional for photos
+    and videos without an audio stream. This never sends media off-container.
+    """
+    if len(video_sources)!=len(starts) or len(starts)!=len(durations):
+        raise ValueError("PRIVATE_AUDIO_TIMELINE_MISMATCH")
+    audible=[(src,float(starts[i]),float(durations[i])) for i,(src,has_audio) in enumerate(video_sources) if has_audio]
+    if not audible:
+        return False
+    cmd=["ffmpeg","-y"]
+    filters=[]
+    for i,(src,start,duration) in enumerate(audible):
+        cmd.extend(["-i",str(src)])
+        delay=max(0,int(round(start*1000)))
+        filters.append(f"[{i}:a:0]atrim=0:{duration:.3f},asetpts=PTS-STARTPTS,aresample=48000,adelay={delay}|{delay}[a{i}]")
+    labels="".join(f"[a{i}]" for i in range(len(audible)))
+    filters.append(f"{labels}amix=inputs={len(audible)}:duration=longest:normalize=0,volume=0.85[aout]")
+    cmd.extend(["-filter_complex",";".join(filters),"-map","[aout]","-c:a","aac",str(output)])
+    run_ffmpeg(cmd,step="original_audio",timeout=240)
+    return True
+
 
 def fftext(value):
     return str(value).replace("\\", "\\\\").replace("'", "\\'").replace(":", "\\:").replace("%", "\\%")
@@ -158,7 +182,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     planned_slots=[slot*timing_scale for slot in weighted_slots]
     token=os.environ["TELEGRAM_BOT_TOKEN"]; chat=os.environ["TELEGRAM_CHAT_ID"]
     with tempfile.TemporaryDirectory(prefix="duenya-private-") as td:
-        root=Path(td); segments=[]
+        root=Path(td); segments=[]; audio_sources=[]
         for i,a in enumerate(assets):
             suffix={ "image/jpeg":".jpg","image/png":".png","video/mp4":".mp4","video/quicktime":".mov"}[a["mime"]]
             src=root/f"in-{i:03d}{suffix}"
@@ -172,6 +196,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
                 "slot_seconds":round(planned_seconds,3),"effect":effects[i],
                 "transition":transition_id,"transition_seconds":round(float(transition_seconds),3)
             },separators=(",",":")),flush=True)
+            audio_sources.append((src,not is_image and source_has_audio(src)))
             render_segment(src,seg,is_image=is_image,seconds=planned_seconds,effect=effects[i],transition=transitions[i])
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
@@ -195,7 +220,19 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
                         "-b:v","850k","-maxrate","950k","-bufsize","1900k","-pix_fmt","yuv420p","-movflags","+faststart",str(visual)],step="title_cards",timeout=600)
         if not music.exists(): raise RuntimeError("PRIVATE_BIRTHDAY_MUSIC_MISSING")
         out=root/"Duenya-Level-12-private.mp4"
-        mix_music(visual,music,out)
+        audio_bed=root/"original-audio.m4a"
+        starts=[0.0]
+        for i in range(1,len(planned_slots)):
+            overlap=min(float(transitions[i][1]),float(planned_slots[i-1])/3,float(planned_slots[i])/3)
+            starts.append(starts[-1]+planned_slots[i-1]-overlap)
+        if build_original_audio_mix(audio_sources,starts,planned_slots,audio_bed):
+            with_original=root/"visual-with-original.mp4"
+            run_ffmpeg(["ffmpeg","-y","-i",str(visual),"-i",str(audio_bed),
+                        "-map","0:v:0","-map","1:a:0","-c:v","copy","-c:a","aac",
+                        "-shortest",str(with_original)],step="attach_original_audio",timeout=180)
+            mix_music(with_original,music,out)
+        else:
+            mix_music(visual,music,out)
         duration=probe_duration(out)
         if duration_policy=="EXACT":
             duration_ok=max(1,target_seconds-2)<=duration<=target_seconds+2
