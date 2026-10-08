@@ -23,6 +23,10 @@ class PrivateVideoAgentChainTests(unittest.TestCase):
         self.assertGreaterEqual(len(plan.scene_plan),4)
         self.assertEqual(len(plan.asset_effects),len(assets))
         self.assertEqual(plan.creative_revision,"duenya-creative-v2")
+        self.assertEqual(plan.transition_implementation,"ffmpeg-xfade-v1")
+        self.assertEqual(plan.render_evidence_contract,"private-qm-expected-actual-v1")
+        self.assertEqual(len(plan.overlay_cues),3)
+        self.assertEqual(plan.audio_cues[0]["track"],plan.music_track)
 
     def test_verified_visual_analysis_drives_storyboard_order(self):
         spec=PrivateCreativeDirector().create(PrivateProductionLead().decompose("private-task","Dünya 12 Geburtstag"))
@@ -82,8 +86,8 @@ class PrivateVideoAgentChainTests(unittest.TestCase):
         result=preflight_private_machine_contract(plan,assets)
         self.assertEqual(result["decision"],"NOT_READY_FOR_MEDIA")
         self.assertIn("ASSET_CONTENT_NOT_CLASSIFIED",result["issues"])
-        self.assertIn("REAL_TRANSITION_ADAPTER_UNPROVEN",result["issues"])
-        self.assertIn("QM_EXPECTED_ACTUAL_CONTRACT_MISSING",result["issues"])
+        self.assertNotIn("REAL_TRANSITION_ADAPTER_UNPROVEN",result["issues"])
+        self.assertNotIn("QM_EXPECTED_ACTUAL_CONTRACT_MISSING",result["issues"])
         self.assertIn("ASSET_CONTENT_NOT_CLASSIFIED",result["issues"])
 
     def test_preflight_rejects_empty_or_unassigned_assets(self):
