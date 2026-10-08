@@ -834,3 +834,44 @@ https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine
 Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak", "media_status": "", "object_id": "1285968257941776_122120772375469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122120772375469415", "source_url": "https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-08-daily
+Telegram-Update-ID: 279361920
+MotoGP-Auswahl: 5
+Story-Key: title:resmen-kland-franco-morbidelli-motogp-yi-b-rak-p-worldsbk-ye-ge-iyor
+Event-Fingerprint: -
+Titel: Resmen açıklandı: Franco Morbidelli MotoGP’yi bırakıp WorldSBK’ye geçiyor
+Text:
+Franco Morbidelli schmeißt 2027 die MotoGP und steigt bei Aruba.it Racing – Ducati in die WorldSBK um. Der Wechsel ist jetzt offiziell. Was meint ihr – frischer Start oder Abschied vom Rampenlicht? 🏍️  
+
+#WorldSBK #FrancoMorbidelli #MotoGP #Racing #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-5-resmen-aciklandi-fra-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-08-daily
+Telegram-Update-ID: 279361920
+MotoGP-Auswahl: 5
+Story-Key: title:resmen-kland-franco-morbidelli-motogp-yi-b-rak-p-worldsbk-ye-ge-iyor
+Event-Fingerprint: -
+Titel: Resmen açıklandı: Franco Morbidelli MotoGP’yi bırakıp WorldSBK’ye geçiyor
+Text:
+Franco Morbidelli verlässt 2027 die MotoGP.
+
+Er geht zu Aruba.it Racing – Ducati in die WorldSBK.
+
+Der Wechsel wurde offiziell bestätigt.
+
+Was haltet ihr von diesem Schritt – ein Neustart oder ein Abschied vom Licht? 🏍️
+
+#WorldSBK #FrancoMorbidelli #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
+Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
+Link-Preview: offiziell
