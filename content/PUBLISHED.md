@@ -854,7 +854,7 @@ Bild: assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-5-resmen-acik
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 37736541915-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-08-daily
 Telegram-Update-ID: 279361920
