@@ -58,9 +58,9 @@ export default {
       const commandText = await request.text();
       if (commandText.length > 128 || commandText) return reply({error:"invalid_restart_command"},400);
       const recoveryAction = request.headers.get("x-edirne22-recovery-action") || "";
-      if (recoveryAction && recoveryAction !== "resume_duenya_v4")
+      if (recoveryAction && recoveryAction !== "resume_duenya_v4" && recoveryAction !== "resume_duenya_v4_creative1")
         return reply({error:"invalid_restart_command"},400);
-      const resumeDuenyaV4 = recoveryAction === "resume_duenya_v4";
+      const resumeDuenyaV4 = recoveryAction === "resume_duenya_v4" || recoveryAction === "resume_duenya_v4_creative1";
       try {
         await instance.destroy();
         await instance.startAndWaitForPorts({
@@ -88,7 +88,7 @@ export default {
             if (attempt < 7) await new Promise(resolve => setTimeout(resolve, 1500));
           }
           if (!ready) return reply({error:"container_not_ready"},503);
-          const body = JSON.stringify({task_id:"f6f50c9f4c2690e4eb1fe978",production_revision:"v4"});
+          const body = JSON.stringify({task_id:"f6f50c9f4c2690e4eb1fe978",production_revision:recoveryAction === "resume_duenya_v4_creative1" ? "v4-creative1" : "v4"});
           const headers = new Headers({"authorization":auth,"content-type":"application/json","content-length":String(new TextEncoder().encode(body).byteLength)});
           await instance.armPrivateRenderLease();
           return instance.fetch(new Request("http://localhost:5200/private-video/jobs",{method:"POST",headers,body}));

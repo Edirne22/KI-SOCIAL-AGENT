@@ -132,9 +132,10 @@ def mix_music(video: Path, track: Path, output: Path, *, duck_original: bool = F
     if source_has_audio(video):
         if duck_original:
             filter_graph = (f"[1:a]{music_filter}[music];"
-                            "[music][0:a]sidechaincompress=threshold=0.035:ratio=8:"
+                            "[0:a]asplit=2[original][sidechain];"
+                            "[music][sidechain]sidechaincompress=threshold=0.035:ratio=8:"
                             "attack=15:release=450[ducked];"
-                            "[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2[aout]")
+                            "[original][ducked]amix=inputs=2:duration=first:normalize=0:dropout_transition=2,alimiter=limit=0.95:level=0[aout]")
         else:
             filter_graph = f"[1:a]{music_filter}[music];[0:a][music]amix=inputs=2:duration=first:dropout_transition=2[aout]"
         command = [

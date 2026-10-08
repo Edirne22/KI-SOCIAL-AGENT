@@ -82,7 +82,7 @@ def verified_visual_evidence(asset:dict)->bool:
     return all(isinstance(x,str) and 3<=len(x.strip())<=240 for x in evidence["observations"])
 
 
-def analyze_private_media(client, bucket: str, assets: list[dict], *, infer=None) -> list[dict]:
+def analyze_private_media(client, bucket: str, assets: list[dict], *, infer=None, report=None) -> list[dict]:
     """Analyze private R2 media via a local, caller-supplied vision inference function.
 
     infer(jpeg_bytes) must return {"story_beat": ..., "asset_role": ...,
@@ -95,32 +95,60 @@ def analyze_private_media(client, bucket: str, assets: list[dict], *, infer=None
     if infer is None:
         raise RuntimeError("PRIVATE_LOCAL_VISION_BACKEND_NOT_CONFIGURED")
     analyzed=[]
+    seen=set()
     for asset in assets:
         if asset.get("mime") not in {"image/jpeg","image/png","video/mp4","video/quicktime"}:
             raise RuntimeError("PRIVATE_VISION_UNSUPPORTED_MEDIA")
         with tempfile.TemporaryDirectory(prefix="private-vision-") as td:
             source=Path(td)/("source.mp4" if asset["mime"].startswith("video/") else "source.png")
-            source.write_bytes(client.get_object(Bucket=bucket,Key=asset["key"])["Body"].read())
-            frame=Path(td)/"frame.jpg"
-            cmd=["ffmpeg","-v","error","-y"]
+            raw=client.get_object(Bucket=bucket,Key=asset["key"])["Body"].read(100*1024*1024+1)
+            if len(raw)>100*1024*1024:
+                raise RuntimeError("PRIVATE_VISION_MEDIA_TOO_LARGE")
+            digest=hashlib.sha256(raw).hexdigest()
+            if asset.get("sha256") and asset["sha256"] != digest:
+                raise RuntimeError("PRIVATE_VISION_SOURCE_HASH_MISMATCH")
+            if digest in seen:
+                if report is not None: report.append({"source_sha256":digest,"decision":"duplicate"})
+                continue
+            seen.add(digest)
+            source.write_bytes(raw)
+            times=[0.0]
             if asset["mime"].startswith("video/"):
-                cmd+=["-ss","0.5"]
-            cmd+=["-i",str(source),"-frames:v","1","-vf","scale=512:-2",str(frame)]
-            result=subprocess.run(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
-            if result.returncode or not frame.exists():
-                raise RuntimeError("PRIVATE_VISION_FRAME_EXTRACTION_FAILED")
-            jpeg=frame.read_bytes()
-            verdict=infer(jpeg)
-            if not isinstance(verdict,dict):
-                raise RuntimeError("PRIVATE_VISION_INVALID_INFERENCE")
+                probe=subprocess.run(["ffprobe","-v","error","-show_entries","format=duration",
+                                      "-of","json",str(source)],capture_output=True,timeout=20,check=True)
+                duration=float(json.loads(probe.stdout)["format"]["duration"])
+                times=[duration*x for x in (0.15,0.50,0.85)]
+            frames=[]
+            for index,stamp in enumerate(times):
+                frame=Path(td)/f"frame-{index}.jpg"
+                cmd=["ffmpeg","-v","error","-y","-threads","1","-ss",str(stamp),
+                     "-i",str(source),"-frames:v","1","-vf","scale=512:-2","-threads","1",str(frame)]
+                result=subprocess.run(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
+                if result.returncode or not frame.exists():
+                    raise RuntimeError("PRIVATE_VISION_FRAME_EXTRACTION_FAILED")
+                jpeg=frame.read_bytes()
+                verdict=infer(jpeg)
+                if not isinstance(verdict,dict):
+                    raise RuntimeError("PRIVATE_VISION_INVALID_INFERENCE")
+                frames.append({"time_seconds":stamp,"frame_sha256":hashlib.sha256(jpeg).hexdigest(),**verdict})
+            candidates=[f for f in frames if f.get("accepted",True)]
+            if report is not None:
+                report.append({"source_sha256":digest,"frames":frames,
+                               "decision":"keep" if candidates else "uncertain-excluded"})
+            if not candidates:
+                continue
+            verdict=max(candidates,key=lambda f:f.get("score",1.0))
             enriched={**asset,"content_verified":True,
                       "story_beat":verdict.get("story_beat"),
                       "asset_role":verdict.get("asset_role"),
                       "visual_evidence":{"source":"private-frame-analysis-v1",
-                          "frame_sha256":hashlib.sha256(jpeg).hexdigest(),
+                          "frame_sha256":verdict["frame_sha256"],
+                          "source_sha256":digest,"frames":frames,
                           "observations":verdict.get("observations")}}
             if not verified_visual_evidence(enriched):
                 raise RuntimeError("PRIVATE_VISION_INVALID_INFERENCE")
+            enriched["source_sha256"]=digest
+            enriched["source_start_seconds"]=max(0.0,verdict["time_seconds"]-1.5) if len(times)>1 else 0.0
             analyzed.append(enriched)
     return analyzed
 
@@ -210,6 +238,23 @@ class PrivateQM:
         }
         return {"passed":all(checks.values()),"checks":checks}
 
+def verify_render_contract(plan, assets, evidence):
+    """Per-asset expected/actual evidence; never accepts aggregate effect names alone."""
+    rows=evidence.get("asset_evidence",[])
+    if len(rows)!=len(assets) or len(plan.asset_order)!=len(assets):
+        return False
+    for i,row in enumerate(rows):
+        asset=assets[plan.asset_order[i]]
+        if (row.get("asset_index")!=i or row.get("source_sha256")!=asset.get("source_sha256")
+            or not re.fullmatch(r"[0-9a-f]{64}",str(row.get("segment_sha256","")))
+            or row.get("effect")!=plan.asset_effects[i]
+            or row.get("transition")!=plan.asset_transitions[i][0]
+            or row.get("story_beat")!=asset.get("story_beat")
+            or row.get("source_start_seconds")!=asset.get("source_start_seconds",0.0)):
+            return False
+    return evidence.get("transition_adapter")=="ffmpeg-xfade-v1"
+
+
 def build_plan(task_id:str,prompt:str,assets:list[dict])->PrivateVideoPlan:
     spec=PrivateProductionLead().decompose(task_id,prompt)
     spec=PrivateCreativeDirector().create(spec)
@@ -219,7 +264,9 @@ def build_plan(task_id:str,prompt:str,assets:list[dict])->PrivateVideoPlan:
         spec["privacy"],spec["story_style"],spec["music_track"],tuple(spec["overlays"]),
         tuple(spec["scene_plan"]),tuple(spec["asset_effects"]),tuple(spec["asset_transitions"]),
         tuple(spec["asset_pacing"]),tuple(spec["asset_order"]),
-        ({"policy":"music-bed","track":spec["music_track"]},),\n        tuple({"text":t,"position":p} for p,t in zip(("intro","mid","finale"),spec["overlays"])),\n        "ffmpeg-xfade-v1","private-qm-expected-actual-v1",spec["creative_revision"])
+        ({"policy":"music-bed","track":spec["music_track"]},),
+        tuple({"text":t,"position":p} for p,t in zip(("intro","mid","finale"),spec["overlays"])),
+        "ffmpeg-xfade-v1","private-qm-expected-actual-v1",spec["creative_revision"])
 
 def persist_stage(client,bucket,task_id,stage,status,detail=""):
     if stage not in STAGES: raise ValueError("unknown private production stage")

@@ -22,3 +22,25 @@ Privater emotionaler Geburtstagsfilm; Material aus vorhandenem privatem R2, kein
 
 ## Ist-Stand 2026-10-08
 Die vorhandene Runtime hat keine nachgewiesene semantische Bildanalyse. Der bestehende Renderpfad nutzt Fade zu Schwarz, entfernt Video-Originalton mittels -an, setzt feste Text-Zeitpunkte und skaliert Slots auf 300 Sekunden. Diese Defizite sind nicht durch eine Stellenbeschreibung allein behoben. Der erste technische Preflight ist ein bewusst strenges Stop-Gate, keine kreative Endlösung. Produktionsstart nicht freigegeben.
+
+## Aktiver BLOCKRUN 08.10.2026, 19:42 MESZ
+Der Besitzer hat jetzt Implementierung, geprüften Merge/Deploy, den bestehenden
+privaten Produktionsauftrag und Zustellung an den konfigurierten privaten
+Telegram-Besitzer freigegeben. Frühere Park-/No-Production-Vermerke sind historisch.
+Endliche Abnahme auf dem finalen HEAD:
+- Offline CPU-Vision: festes CLIP-Modell, echte Gewichteladung/Inferenz; synthetische
+  Positiv-/Negativkontrollen und geschützte reale, gehashte Frame-Klassifikation.
+- Unsicherheit/Dubletten werden ausgewiesen, keine erfundenen Klassen; private
+  Analyse- und Schnittnachweise ausschließlich in privatem R2, keine Runner-Medien.
+- Storyboard bindet Klassifikation, Reihenfolge, Dauer, Motion/Übergänge und Ton.
+- Echte FFmpeg-Tests: Übergangsframes, variable Slots, Originalton nach Überlappung,
+  messbare Musikabsenkung bei Originalton und keine Kürzung bei spätem stummen Teil.
+- Gesamter synthetischer R2-Adapter → Analyse → Plan → Preflight → Render → QM;
+  Transport-Mocks klar als synthetisch markieren. Echter R2/Telegram-Nachweis erst live.
+- Negative Kontrollen: fehlendes Modell, unsichere Klasse, Hash-/Plan-Mismatch,
+  kaputter Ton/Render, Telegram-Ablehnung; kein READY_FOR_HUMAN vor Zustellbeleg.
+- Bestehende CI, Branch-Synchronisierung, finaler Diff, Merge, Zielrevision/Health.
+- Bestehender privater Task, neue getrennte Revision, 9:16, bevorzugt 210 s,
+  maximal 300 s; fertiges MP4, QM, R2-Hash und Telegram-Message-ID.
+- Keine Social-Veröffentlichung, externe Medienanalyse oder neue Dienste/Kosten.
+  Social-Publisher-Test N/A (nicht im privaten Pfad).

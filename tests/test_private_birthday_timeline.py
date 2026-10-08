@@ -148,3 +148,43 @@ class BirthdayTimelineTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+@unittest.skipUnless(shutil.which("ffmpeg"),"FFmpeg required")
+class MeasuredAudioTests(unittest.TestCase):
+    def test_ducking_reduces_music_and_preserves_time(self):
+        import numpy as np
+        from music_agent import mix_music
+        with tempfile.TemporaryDirectory() as td:
+            p=Path(td)
+            # Original sound only from t=2 to t=4; music occupies another frequency.
+            ffmpeg('-f','lavfi','-i','color=c=black:s=160x288:r=25:d=6',
+                   '-f','lavfi','-i',"aevalsrc=0.35*sin(2*PI*1000*t)*between(t\\,2\\,4):s=48000:d=6",
+                   '-c:v','libx264','-c:a','aac','-shortest',p/'voice.mp4')
+            ffmpeg('-f','lavfi','-i','sine=frequency=220:sample_rate=48000:duration=6',p/'music.wav')
+            mix_music(p/'voice.mp4',p/'music.wav',p/'mixed.mp4',duck_original=True)
+            raw=subprocess.check_output(['ffmpeg','-v','error','-i',str(p/'mixed.mp4'),'-f','f32le','-ac','1','-ar','48000','-'])
+            samples=np.frombuffer(raw,dtype='<f4')
+            def amplitude(freq,start):
+                part=samples[int(start*48000):int((start+0.4)*48000)]
+                t=np.arange(len(part))/48000
+                return abs(np.sum(part*np.exp(-2j*np.pi*freq*t)))*2/len(part)
+            before=amplitude(220,1.3);during=amplitude(220,2.6)
+            self.assertLess(during,before*0.65)
+            self.assertGreater(amplitude(1000,2.6),0.20)
+            self.assertLess(amplitude(1000,1.3),0.005)
+            self.assertAlmostEqual(birthday.probe_duration(p/'mixed.mp4'),6,delta=0.15)
+
+    def test_delayed_trimmed_original_bed_pads_silent_finale(self):
+        import numpy as np
+        with tempfile.TemporaryDirectory() as td:
+            p=Path(td)
+            ffmpeg('-f','lavfi','-i','sine=frequency=800:sample_rate=48000:duration=3',p/'source.wav')
+            birthday.build_original_audio_mix([(p/'source.wav',True)],[1.5],[1.0],p/'bed.m4a',
+                                              source_starts=[0.5],total_duration=6)
+            raw=subprocess.check_output(['ffmpeg','-v','error','-i',str(p/'bed.m4a'),'-f','f32le','-ac','1','-ar','48000','-'])
+            samples=np.frombuffer(raw,dtype='<f4')
+            rms=lambda a,b: float(np.sqrt(np.mean(samples[int(a*48000):int(b*48000)]**2)))
+            self.assertLess(rms(0.2,1.2),0.001)
+            self.assertGreater(rms(1.7,2.3),0.03)
+            self.assertLess(rms(3,5.8),0.001)
+            self.assertAlmostEqual(birthday.probe_duration(p/'bed.m4a'),6,delta=0.1)

@@ -32,7 +32,7 @@ def run_ffmpeg(cmd, *, step, timeout):
     except subprocess.TimeoutExpired:
         raise RuntimeError(f"PRIVATE_FFMPEG_TIMEOUT:{step}") from None
 
-def render_segment(src, seg, *, is_image, seconds, effect="zoom_in", transition=("soft_fade",0.35)):
+def render_segment(src, seg, *, is_image, seconds, effect="zoom_in", transition=("soft_fade",0.35), source_start=0.0):
     # Concat demuxer stream-copy requires identical time bases. Previously photo
     # (10 fps) and video (15 fps) tracks stretched a 300s timeline to 324s.
     # V2: execute the Creative/Media scene assignment instead of rendering every
@@ -45,7 +45,12 @@ def render_segment(src, seg, *, is_image, seconds, effect="zoom_in", transition=
         "pan_right":"crop=540:960:x='40+40*t/{seconds:.3f}':y=71",
     }.get(effect)
     if motion is None: raise ValueError("unknown private creative effect")
-    vf=base+","+motion.format(seconds=seconds)+",setsar=1"
+    if effect in {"zoom_in","zoom_out"}:
+        frames=max(1,round(seconds*FPS))
+        zoom=f"1+0.08*on/{frames}" if effect=="zoom_in" else f"1.08-0.08*on/{frames}"
+        vf=base+f",crop=540:960,zoompan=z='{zoom}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s=540x960:fps={FPS},setsar=1"
+    else:
+        vf=base+","+motion.format(seconds=seconds)+",setsar=1"
     vf+=f",fps={FPS},setpts=PTS-STARTPTS"
     if not is_image:
         # Short clips occupy their planned slot without moving later story cards.
@@ -57,8 +62,9 @@ def render_segment(src, seg, *, is_image, seconds, effect="zoom_in", transition=
     cmd=["ffmpeg","-y"]
     if is_image:
         cmd += ["-loop","1","-framerate",str(FPS)]
+    if not is_image: cmd += ["-ss",str(source_start)]
     cmd += ["-i",str(src),"-t",f"{seconds:.3f}","-vf",vf,"-an",
-            "-c:v","libx264","-preset","ultrafast","-crf","28",
+            "-threads","1","-filter_threads","1","-c:v","libx264","-preset","ultrafast","-crf","28",
             "-pix_fmt","yuv420p","-video_track_timescale","25000",str(seg)]
     run_ffmpeg(cmd,step="segment",timeout=120)
 
@@ -68,7 +74,7 @@ def build_xfade_command(segments, durations, transitions, output):
         raise ValueError("XFADES_CONTRACT_MISMATCH")
     if len(segments)==1:
         return ["ffmpeg","-y","-i",str(segments[0]),"-an","-c:v","libx264",str(output)]
-    cmd=["ffmpeg","-y"]
+    cmd=["ffmpeg","-y","-filter_complex_threads","1"]
     for segment in segments: cmd.extend(["-i",str(segment)])
     filters=[]; previous="[0:v]"; elapsed=float(durations[0])
     transition_map={"soft_fade":"fade","quick_fade":"smoothleft","long_fade":"fade"}
@@ -84,7 +90,22 @@ def build_xfade_command(segments, durations, transitions, output):
     cmd.extend(["-filter_complex",";".join(filters),"-map",previous,"-an","-c:v","libx264","-preset","veryfast","-crf","26","-pix_fmt","yuv420p",str(output)])
     return cmd
 
-def build_original_audio_mix(video_sources, starts, durations, output):
+def render_xfades(segments, durations, transitions, output):
+    """Bound decoder/filter memory on the existing 6-GiB container."""
+    if len(segments)<=8:
+        run_ffmpeg(build_xfade_command(segments,durations,transitions,output),step="xfade",timeout=900)
+        return
+    parts=[]; part_durations=[]; boundaries=[]
+    for start in range(0,len(segments),8):
+        end=min(start+8,len(segments))
+        part=Path(output).with_name(f"{Path(output).stem}-batch-{start}.mp4")
+        run_ffmpeg(build_xfade_command(segments[start:end],durations[start:end],transitions[start:end],part),
+                   step="xfade_batch",timeout=600)
+        parts.append(part); part_durations.append(probe_duration(part)); boundaries.append(transitions[start])
+    render_xfades(parts,part_durations,boundaries,output)
+
+
+def build_original_audio_mix(video_sources, starts, durations, output, *, source_starts=None, total_duration=None):
     """Create a quiet, time-aligned original-audio bed from video clips only.
 
     Each source is a tuple(path, has_audio). Silence is intentional for photos
@@ -92,17 +113,19 @@ def build_original_audio_mix(video_sources, starts, durations, output):
     """
     if len(video_sources)!=len(starts) or len(starts)!=len(durations):
         raise ValueError("PRIVATE_AUDIO_TIMELINE_MISMATCH")
-    audible=[(src,float(starts[i]),float(durations[i])) for i,(src,has_audio) in enumerate(video_sources) if has_audio]
+    source_starts=source_starts or [0.0]*len(video_sources)
+    audible=[(src,float(starts[i]),float(durations[i]),float(source_starts[i])) for i,(src,has_audio) in enumerate(video_sources) if has_audio]
     if not audible:
         return False
     cmd=["ffmpeg","-y"]
     filters=[]
-    for i,(src,start,duration) in enumerate(audible):
+    for i,(src,start,duration,trim_start) in enumerate(audible):
         cmd.extend(["-i",str(src)])
         delay=max(0,int(round(start*1000)))
-        filters.append(f"[{i}:a:0]atrim=0:{duration:.3f},asetpts=PTS-STARTPTS,aresample=48000,adelay={delay}|{delay}[a{i}]")
+        filters.append(f"[{i}:a:0]atrim=start={trim_start:.3f}:duration={duration:.3f},asetpts=PTS-STARTPTS,aresample=48000,adelay={delay}|{delay}[a{i}]")
     labels="".join(f"[a{i}]" for i in range(len(audible)))
-    filters.append(f"{labels}amix=inputs={len(audible)}:duration=longest:normalize=0,volume=0.85[aout]")
+    pad=f",apad,atrim=duration={total_duration:.3f}" if total_duration else ""
+    filters.append(f"{labels}amix=inputs={len(audible)}:duration=longest:normalize=0,asetpts=N/SR/TB,volume=0.85{pad}[aout]")
     cmd.extend(["-filter_complex",";".join(filters),"-map","[aout]","-c:a","aac",str(output)])
     run_ffmpeg(cmd,step="original_audio",timeout=240)
     return True
@@ -182,11 +205,13 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     planned_slots=[slot*timing_scale for slot in weighted_slots]
     token=os.environ["TELEGRAM_BOT_TOKEN"]; chat=os.environ["TELEGRAM_CHAT_ID"]
     with tempfile.TemporaryDirectory(prefix="duenya-private-") as td:
-        root=Path(td); segments=[]; audio_sources=[]
+        root=Path(td); segments=[]; audio_sources=[]; asset_evidence=[]
         for i,a in enumerate(assets):
             suffix={ "image/jpeg":".jpg","image/png":".png","video/mp4":".mp4","video/quicktime":".mov"}[a["mime"]]
             src=root/f"in-{i:03d}{suffix}"
             src.write_bytes(client.get_object(Bucket=bucket,Key=a["key"])["Body"].read())
+            if a.get("source_sha256") and sha256(src.read_bytes()).hexdigest()!=a["source_sha256"]:
+                raise RuntimeError("PRIVATE_RENDER_SOURCE_HASH_MISMATCH")
             seg=root/f"seg-{i:03d}.mp4"
             is_image=a["mime"].startswith("image/")
             planned_seconds=planned_slots[i]
@@ -197,11 +222,16 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
                 "transition":transition_id,"transition_seconds":round(float(transition_seconds),3)
             },separators=(",",":")),flush=True)
             audio_sources.append((src,not is_image and source_has_audio(src)))
-            render_segment(src,seg,is_image=is_image,seconds=planned_seconds,effect=effects[i],transition=transitions[i])
+            render_segment(src,seg,is_image=is_image,seconds=planned_seconds,effect=effects[i],transition=transitions[i],source_start=a.get("source_start_seconds",0.0))
             segments.append(seg)
+            asset_evidence.append({"asset_index":i,"source_sha256":sha256(src.read_bytes()).hexdigest(),
+                "segment_sha256":sha256(seg.read_bytes()).hexdigest() if seg.exists() else "","effect":effects[i],
+                "transition":transitions[i][0],"slot_seconds":planned_seconds,
+                "source_start_seconds":a.get("source_start_seconds",0.0),
+                "original_audio":audio_sources[-1][1],"story_beat":a.get("story_beat")})
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
         rough=root/"rough.mp4"
-        run_ffmpeg(build_xfade_command(segments,planned_slots,transitions,rough),step="xfade",timeout=900)
+        render_xfades(segments,planned_slots,transitions,rough)
         # Private creative lane: tasteful title/memory cards, then documented public-domain music.
         visual=root/"visual.mp4"
         title_text=fftext(overlays[0] if overlays else TITLE)
@@ -225,11 +255,13 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         for i in range(1,len(planned_slots)):
             overlap=min(float(transitions[i][1]),float(planned_slots[i-1])/3,float(planned_slots[i])/3)
             starts.append(starts[-1]+planned_slots[i-1]-overlap)
-        if build_original_audio_mix(audio_sources,starts,planned_slots,audio_bed):
+        if build_original_audio_mix(audio_sources,starts,planned_slots,audio_bed,
+                                    source_starts=[a.get("source_start_seconds",0.0) for a in assets],
+                                    total_duration=probe_duration(visual)):
             with_original=root/"visual-with-original.mp4"
             run_ffmpeg(["ffmpeg","-y","-i",str(visual),"-i",str(audio_bed),
                         "-map","0:v:0","-map","1:a:0","-c:v","copy","-c:a","aac",
-                        "-shortest",str(with_original)],step="attach_original_audio",timeout=180)
+                        "-t",str(probe_duration(visual)),str(with_original)],step="attach_original_audio",timeout=180)
             mix_music(with_original,music,out,duck_original=True)
         else:
             mix_music(visual,music,out)
@@ -251,6 +283,10 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         print(f"PRIVATE_BIRTHDAY_PRODUCTION_PASS media_count={len(assets)} duration={duration:.2f}s audio=yes creative=yes sha256_prefix={digest[:12]} private=yes published=no")
         evidence={"creative_revision":getattr(plan,"creative_revision","legacy"),
                   "max_duration_seconds":max_seconds,"duration_policy":duration_policy,
+                  "asset_evidence":asset_evidence,"rendered_asset_count":len(assets),
+                  "original_audio_count":sum(x[1] for x in audio_sources),
+                  "audio_ducking":any(x[1] for x in audio_sources),
+                  "transition_adapter":"ffmpeg-xfade-v1",
                   "applied_effects":tuple(sorted(set(effects))),
                   "scene_count":len(getattr(plan,"scene_plan",())),
                   "applied_transitions":tuple(sorted(set(t[0] for t in transitions))),

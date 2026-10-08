@@ -6,7 +6,7 @@ record into FAILED so Agent 11 can execute the existing guarded RESUME contract.
 """
 from __future__ import annotations
 
-import json
+import json, os
 from datetime import datetime, timezone
 
 from scripts.ai_central_shared_inbox import client_from_env
@@ -14,7 +14,9 @@ from scripts.ai_central_shared_inbox import client_from_env
 TASK_ID="f6f50c9f4c2690e4eb1fe978"
 STAGE="video_editor_ffmpeg"
 REPAIR_ID="R21-DUENYA-FFMPEG-SLEEP-20261007-V4"
-PRODUCTION_REVISION="v4"
+PRODUCTION_REVISION=os.environ.get("DUENYA_PRODUCTION_REVISION","v4")
+if PRODUCTION_REVISION not in {"v4","v4-creative1"}:
+    raise RuntimeError("AGENT21_DUENYA_REVISION_INVALID")
 STATUS_KEY=f"ai-central/v1/private-video/{TASK_ID}/revisions/{PRODUCTION_REVISION}/status.json"
 INCIDENT_ID=f"WD-{TASK_ID}-{STAGE}-{PRODUCTION_REVISION}"
 INCIDENT_KEY=f"ai-central/v1/maintenance/incidents/{INCIDENT_ID}.json"

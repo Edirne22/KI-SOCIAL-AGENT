@@ -47,6 +47,9 @@ jobs:
           npx tsc --noEmit --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --lib es2022,dom --types @cloudflare/workers-types src/index.ts
       - name: Standalone offline model image build
         run: docker build --progress=plain -f infra/private-asr/Dockerfile -t edirne22-private-asr:test .
+      - name: Actual offline vision weights and synthetic positive-negative controls
+        run: |
+          docker run --rm --network none -e PRIVATE_VISION_TEST_MODEL=/opt/private-vision-model -v "$PWD/tests:/app/tests:ro" edirne22-private-asr:test python -m unittest tests.test_private_local_vision -v
       - name: Start image and verify protected health
         run: |
           set -euo pipefail

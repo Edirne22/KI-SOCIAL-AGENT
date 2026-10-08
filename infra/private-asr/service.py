@@ -296,7 +296,20 @@ def _run_video(task_id, production_revision=None):
         current["stage"]="creative_director"
         persist_stage(client,bucket,task_id,"creative_director","RUNNING")
         current["stage"]="creative_director"
+        from content_factory_local_vision import LocalSceneVision
+        from content_factory_private_video_orchestrator import analyze_private_media
+        from dataclasses import asdict
+        analysis=[]
+        vision=LocalSceneVision()
+        assets=analyze_private_media(client,bucket,assets,infer=vision,report=analysis)
+        del vision
+        if len(assets)<8:
+            raise RuntimeError("PRIVATE_VISION_INSUFFICIENT_VERIFIED_MEDIA")
         plan=build_plan(task_id,prompt,assets)
+        evidence_prefix=f"ai-central/v1/private-video/{task_id}/revisions/{production_revision or 'legacy'}/"
+        client.put_object(Bucket=bucket,Key=evidence_prefix+"creative-analysis.json",
+            Body=json.dumps({"analysis":analysis,"assets":assets,"plan":asdict(plan)}).encode(),
+            ContentType="application/json",CacheControl="private, no-store")
         trace={"revision":production_revision,"creative_revision":getattr(plan,"creative_revision","legacy"),
                "story_style":plan.story_style,"scene_count":len(getattr(plan,"scene_plan",())),
                "effects":list(dict.fromkeys(getattr(plan,"asset_effects",()))),
@@ -325,9 +338,14 @@ def _run_video(task_id, production_revision=None):
         qm=PrivateQM().checks(duration=result["duration"],has_audio=result["has_audio"],
                               has_video=result["has_video"],creative={
                                   **evidence,
-                                  "expected_effects":MOTION_MODES,
+                                  "expected_effects":plan.asset_effects,
                                   "privacy":plan.privacy,
                               })
+        from content_factory_private_video_orchestrator import verify_render_contract
+        qm["checks"]["per_asset_contract"]=verify_render_contract(plan,assets,evidence)
+        qm["passed"]=all(qm["checks"].values())
+        client.put_object(Bucket=bucket,Key=evidence_prefix+"render-qm.json",
+            Body=json.dumps({"render":result,"qm":qm}).encode(),ContentType="application/json",CacheControl="private, no-store")
         if not qm["passed"]:
             raise RuntimeError("PRIVATE_AGENT_QM_FAILED")
         persist_stage(client,bucket,task_id,"qm","COMPLETED","technical + creative render evidence passed")
@@ -344,13 +362,15 @@ def _run_video(task_id, production_revision=None):
                   "caption":"Dünya – Level 12 · private QM-approved preview"},
             files={"video":("Duenya-Level-12-private.mp4",io.BytesIO(private_mp4),"video/mp4")},
             timeout=120)
-        if response.status_code!=200:
+        if response.status_code!=200 or response.json().get("ok") is not True or not response.json().get("result",{}).get("message_id"):
             raise RuntimeError("PRIVATE_QM_APPROVED_TELEGRAM_DELIVERY_FAILED")
 
         current["stage"]="private_preview"
         preview={"schema":"PRIVATE-VIDEO-PREVIEW-V1","task_id":task_id,"state":"READY_FOR_HUMAN",
                  "r2_key":result["r2_key"],"sha256":result["sha256"],"private":True,"publishable":False}
         preview["production_revision"]=production_revision
+        preview["telegram_message_id"]=response.json()["result"]["message_id"]
+        preview["qm"]=qm
         preview_body=json.dumps(preview).encode()
         client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/preview.json",
             Body=preview_body,ContentType="application/json",CacheControl="private, no-store")
@@ -396,7 +416,9 @@ class Handler(BaseHTTPRequestHandler):
                      and os.path.isfile(os.path.join(root, "config.json")))
         self.respond(200 if ready else 503, {"ready": ready,
                                                 "research_runtime_revision": _research_runtime_revision,
-                                                "private_video_runtime_revision": _private_video_runtime_revision})
+                                                "private_video_runtime_revision": _private_video_runtime_revision,
+                                                "creative_runtime_revision":"duenya-local-vision-v1",
+                                                "local_vision_ready":os.path.isfile("/opt/private-vision-model/model.safetensors")})
 
     def do_POST(self):
         if self.path not in ("/jobs","/private-video/jobs","/opencode/chat","/opencode/code","/research/search"):

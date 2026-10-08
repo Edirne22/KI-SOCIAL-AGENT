@@ -3,6 +3,7 @@
 # have been independently verified. No personal audio in build or CI.
 FROM python:3.11-slim-bookworm
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1 \
+    HF_HUB_DISABLE_TELEMETRY=1 TRANSFORMERS_OFFLINE=1 \
     EDIRNE22_LOCAL_WHISPER_MODEL=/opt/private-asr-model
 RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg ca-certificates fonts-dejavu-core git nodejs npm \
  && rm -rf /var/lib/apt/lists/*
@@ -25,6 +26,12 @@ RUN python -m pip install --no-cache-dir faster-whisper==1.2.1 boto3==1.40.56 re
 RUN HF_HUB_OFFLINE=0 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='Systran/faster-whisper-tiny', local_dir='/opt/private-asr-model', allow_patterns=['config.json','model.bin','tokenizer.json','vocabulary.*'])" \
  && test -s /opt/private-asr-model/model.bin \
  && test -s /opt/private-asr-model/config.json
+# Public model weights only at build time. Private frames never leave this image.
+RUN python -m pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.6.0 \
+ && python -m pip install --no-cache-dir transformers==4.49.0 safetensors==0.5.3 Pillow==11.1.0
+RUN HF_HUB_OFFLINE=0 TRANSFORMERS_OFFLINE=0 HF_HUB_DISABLE_XET=1 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='openai/clip-vit-base-patch32', revision='b527df4b30e5cc18bde1cc712833a741d2d8c362', local_dir='/opt/private-vision-model', allow_patterns=['*.json','merges.txt','vocab.json','model.safetensors'])" \
+ && test -s /opt/private-vision-model/model.safetensors
+COPY content_factory_local_vision.py /app/
 COPY content_factory_private_asr.py content_factory_private_asr_runtime.py content_factory_private_asr_r2_bridge.py /app/
 COPY music_agent.py content_factory_private_video_orchestrator.py /app/
 COPY scripts/private_birthday_first_production.py scripts/ai_central_shared_inbox.py scripts/r2_media_warehouse.py /app/scripts/
