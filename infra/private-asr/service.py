@@ -365,12 +365,19 @@ def _run_video(task_id, production_revision=None):
         if response.status_code!=200 or response.json().get("ok") is not True or not response.json().get("result",{}).get("message_id"):
             raise RuntimeError("PRIVATE_QM_APPROVED_TELEGRAM_DELIVERY_FAILED")
 
+        delivery=response.json()["result"]
+        if (str(delivery.get("chat",{}).get("id"))!=str(os.environ["TELEGRAM_CHAT_ID"])
+            or delivery.get("chat",{}).get("type")!="private"):
+            raise RuntimeError("PRIVATE_TELEGRAM_RECIPIENT_PROOF_INVALID")
         current["stage"]="private_preview"
         preview={"schema":"PRIVATE-VIDEO-PREVIEW-V1","task_id":task_id,"state":"READY_FOR_HUMAN",
                  "r2_key":result["r2_key"],"sha256":result["sha256"],"private":True,"publishable":False}
         preview["production_revision"]=production_revision
-        preview["telegram_message_id"]=response.json()["result"]["message_id"]
-        preview["qm"]=qm
+        if production_revision=="v4-creative1":
+            preview["telegram_message_id"]=response.json()["result"]["message_id"]
+            preview["qm"]=qm
+            preview["creative_proof"]={"model_revision":"b527df4b30e5cc18bde1cc712833a741d2d8c362",
+                "verified_assets":len(assets),"duration":result["duration"]}
         preview_body=json.dumps(preview).encode()
         client.put_object(Bucket=bucket,Key=f"ai-central/v1/private-video/{task_id}/preview.json",
             Body=preview_body,ContentType="application/json",CacheControl="private, no-store")
