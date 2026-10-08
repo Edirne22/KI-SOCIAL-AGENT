@@ -71,9 +71,11 @@ def verify_preview(client, bucket: str, production_revision=None) -> dict:
 
 
 def persist_incident(client, bucket: str, incident: dict, status: dict) -> str:
+    revision_suffix = str(status.get("production_revision") or "legacy")
+    incident_id = incident["incident_id"] + "-" + revision_suffix
     allowed = {
         "schema": "MACHINE-WATCHDOG-INCIDENT-V1",
-        "incident_id": incident["incident_id"],
+        "incident_id": incident_id,
         "job_id": incident["job_id"],
         "stage_id": incident["stage_id"],
         "machine": incident["machine"],
@@ -87,7 +89,7 @@ def persist_incident(client, bucket: str, incident: dict, status: dict) -> str:
         "detail": str(status.get("detail") or "")[:240],
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
-    key = INCIDENT_PREFIX + allowed["incident_id"] + ".json"
+    key = INCIDENT_PREFIX + incident_id + ".json"
     client.put_object(
         Bucket=bucket,
         Key=key,
