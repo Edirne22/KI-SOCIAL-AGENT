@@ -57,6 +57,13 @@ class BirthdayTimelineTests(unittest.TestCase):
                         birthday.run(assets_override=assets)
                 send.assert_not_called()
 
+    def test_renderer_uses_plan_music_and_dynamic_title_timing(self):
+        source=Path(birthday.__file__).read_text(encoding="utf-8")
+        self.assertIn('music=Path(getattr(plan,"music_track",MUSIC)',source)
+        self.assertIn('midpoint=max(8.0,target_seconds*0.50)',source)
+        self.assertIn('ending=max(midpoint+8.0,target_seconds-14.0)',source)
+        self.assertNotIn("between(t,286,299)",source)
+
     def test_real_xfade_between_synthetic_segments(self):
         with tempfile.TemporaryDirectory() as td:
             p=Path(td)
