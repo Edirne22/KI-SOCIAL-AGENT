@@ -58,6 +58,26 @@ class PrivateCreativeDirector:
         return {**spec,"story_style":"emotional-modern-memory-story","overlays":overlays,
                 "scene_plan":scenes,"creative_revision":CREATIVE_REVISION}
 
+def verified_visual_evidence(asset:dict)->bool:
+    """Require traceable frame-level evidence, not a self-asserted boolean."""
+    if asset.get("content_verified") is not True:
+        return False
+    if asset.get("story_beat") not in {"intro","build","action","highlights","home","finale"}:
+        return False
+    if not isinstance(asset.get("asset_role"),str) or not asset["asset_role"].strip():
+        return False
+    evidence=asset.get("visual_evidence")
+    if not isinstance(evidence,dict):
+        return False
+    if evidence.get("source") != "private-frame-analysis-v1":
+        return False
+    if not isinstance(evidence.get("frame_sha256"),str) or not re.fullmatch(r"[0-9a-f]{64}",evidence["frame_sha256"]):
+        return False
+    if not isinstance(evidence.get("observations"),list) or not evidence["observations"]:
+        return False
+    return all(isinstance(x,str) and 3<=len(x.strip())<=240 for x in evidence["observations"])
+
+
 class PrivateMediaStoryAgent:
     def bind(self,spec:dict,assets:list[dict])->dict:
         if not assets: raise ValueError("private media required")
@@ -65,9 +85,7 @@ class PrivateMediaStoryAgent:
         total=len(assets)
         # Only consume verified visual analysis. Filename, upload order and MIME
         # are not semantic evidence; fail closed until a private analyzer exists.
-        verified=all(a.get("content_verified") is True and
-                     a.get("story_beat") and a.get("asset_role") and
-                     a.get("analysis_source") for a in assets)
+        verified=all(verified_visual_evidence(a) for a in assets)
         scene_ids={s["id"]:s for s in scenes}
         story_order=("intro","build","action","highlights","home","finale")
         if verified:
@@ -103,7 +121,7 @@ def preflight_private_machine_contract(plan: PrivateVideoPlan, assets: list[dict
         issues.append("FORMAT_PRIVACY_MISMATCH")
     if plan.duration_policy == "MAXIMUM" and plan.duration_seconds >= plan.max_duration_seconds:
         issues.append("MAXIMUM_DURATION_FORCED_TO_CEILING")
-    if not all(a.get("story_beat") and a.get("asset_role") and a.get("content_verified") is True and a.get("analysis_source") for a in assets):
+    if not all(verified_visual_evidence(a) for a in assets):
         issues.append("ASSET_CONTENT_NOT_CLASSIFIED")
     if not all(isinstance(s, dict) and s.get("id") and s.get("purpose") for s in plan.scene_plan):
         issues.append("SCENE_CONTRACT_INCOMPLETE")
