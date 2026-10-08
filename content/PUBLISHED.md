@@ -852,9 +852,8 @@ Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ay
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-5-resmen-aciklandi-fra-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37736541915-1
+## Facebook [GEPOSTET 2026-10-08 06:15 | ID: 1285968257941776_122121043089469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-08-daily
 Telegram-Update-ID: 279361920
@@ -876,3 +875,4 @@ Was haltet ihr von diesem Schritt – ein Neustart oder ein Abschied vom Licht? 
 https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
 Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde", "media_status": "", "object_id": "1285968257941776_122121043089469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122121043089469415", "source_url": "https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde", "version": 1}
