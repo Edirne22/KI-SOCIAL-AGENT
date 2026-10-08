@@ -188,7 +188,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         draw=(f"drawtext=text='{title_text}':fontcolor=white:fontsize=44:borderw=4:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.78:enable='between(t,1,7)',"
               f"drawtext=text='{mid_text}':fontcolor=white:fontsize=30:borderw=3:bordercolor=black:"
-              "x=(w-text_w)/2:y=h*0.80:enable='between(t,105,112)',"
+              f"x=(w-text_w)/2:y=h*0.80:enable='between(t,{midpoint:.2f},{midpoint+7:.2f})'," 
               f"drawtext=text='{end_text}':fontcolor=white:fontsize=24:borderw=3:bordercolor=black:"
               f"x=(w-text_w)/2:y=h*0.80:enable='between(t,{ending:.2f},{target_seconds-1:.2f})'")
         run_ffmpeg(["ffmpeg","-y","-i",str(rough),"-vf",draw,"-an","-c:v","libx264","-preset","veryfast",
@@ -210,11 +210,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         client.put_object(Bucket=bucket,Key=key,Body=data,ContentType="video/mp4")
         check=client.get_object(Bucket=bucket,Key=key)["Body"].read()
         if sha256(check).hexdigest()!=digest: raise RuntimeError("PRIVATE_R2_RENDER_VERIFY_FAILED")
-        with out.open("rb") as fh:
-            response=requests.post(f"https://api.telegram.org/bot{token}/sendVideo",
-                data={"chat_id":chat,"caption":"🎬 Dünya – Level 12 · PRIVATE Kreativfassung\nMusik · Texte · Bewegungen · Übergänge\nKeine Veröffentlichung."},
-                files={"video":("Duenya-Level-12-private.mp4",fh,"video/mp4")},timeout=120)
-        if response.status_code!=200: raise RuntimeError("PRIVATE_TELEGRAM_DELIVERY_FAILED")
+        # Delivery belongs AFTER the independent QM acceptance gate.
         print(f"PRIVATE_BIRTHDAY_PRODUCTION_PASS media_count={len(assets)} duration={duration:.2f}s audio=yes creative=yes sha256_prefix={digest[:12]} private=yes published=no")
         evidence={"creative_revision":getattr(plan,"creative_revision","legacy"),
                   "max_duration_seconds":max_seconds,"duration_policy":duration_policy,
