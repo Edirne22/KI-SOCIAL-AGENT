@@ -28,7 +28,13 @@ RUNTIME_REVISION = "duenya-creative-chain-v3"
 
 
 def _http_json(method: str, path: str, token: str, payload: dict | None = None) -> tuple[int, dict]:
-    if path not in {"/admin/container-restart", "/health", "/private-video/jobs"}:
+    allowed = {
+        ("POST", "/admin/container-restart"),
+        ("GET", "/health"),
+        ("GET", "/private-video/resume-duenya"),
+        ("POST", "/private-video/jobs"),
+    }
+    if (method, path) not in allowed:
         raise ValueError("RECOVERY_HTTP_PATH_NOT_ALLOWED")
     body = json.dumps(payload).encode("utf-8") if payload is not None else None
     headers = {
@@ -136,11 +142,11 @@ def execute_recovery(
     if decision["decision"] != "RESUME":
         raise RuntimeError("RECOVERY_DECISION_NOT_EXECUTABLE")
 
-    # The workflow immediately before this handoff proves ready=true and the exact
-    # private-video runtime revision. Resume through the existing authenticated
-    # private-video job contract; do not invent a side-channel recovery endpoint.
-    resume_payload = {"task_id": h["job_id"], "production_revision": production_revision}
-    code, payload = http("POST", "/private-video/jobs", token, resume_payload)
+    # The exact-task Worker GET route starts the existing container and translates
+    # internally to its authenticated POST contract. GitHub-hosted POSTs to the
+    # public Worker were rejected by the edge with HTTP 403. The route pins this
+    # task and V4 revision; it cannot select another job.
+    code, payload = http("GET", "/private-video/resume-duenya", token, None)
     if (code != 202 or payload.get("task_id") != h["job_id"]
         or payload.get("production_revision") != production_revision or payload.get("status") != "ACCEPTED"):
         raise RuntimeError(f"RECOVERY_RESUME_FAILED_HTTP_{code}")

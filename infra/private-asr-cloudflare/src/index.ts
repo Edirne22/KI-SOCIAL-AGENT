@@ -105,8 +105,9 @@ export default {
           TELEGRAM_BOT_TOKEN: env.TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID: env.TELEGRAM_CHAT_ID
         }}
       });
-      const body = JSON.stringify({task_id:"f6f50c9f4c2690e4eb1fe978"});
+      const body = JSON.stringify({task_id:"f6f50c9f4c2690e4eb1fe978",production_revision:"v4"});
       const headers = new Headers({"authorization":auth,"content-type":"application/json","content-length":String(new TextEncoder().encode(body).byteLength)});
+      await instance.armPrivateRenderLease();
       return instance.fetch(new Request("http://localhost:5200/private-video/jobs",{method:"POST",headers,body}));
     }
     let jobBody: string | null = null;
