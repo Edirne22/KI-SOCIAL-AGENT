@@ -64,6 +64,12 @@ class BirthdayTimelineTests(unittest.TestCase):
         self.assertIn('ending=max(midpoint+8.0,target_seconds-14.0)',source)
         self.assertNotIn("between(t,286,299)",source)
 
+    def test_original_audio_timeline_contract(self):
+        with self.assertRaisesRegex(ValueError,"PRIVATE_AUDIO_TIMELINE_MISMATCH"):
+            birthday.build_original_audio_mix([(Path("a.mp4"),True)],[0.0,2.0],[2.0],Path("out.m4a"))
+        self.assertFalse(birthday.build_original_audio_mix(
+            [(Path("photo.jpg"),False)],[0.0],[3.0],Path("unused.m4a")))
+
     def test_real_xfade_between_synthetic_segments(self):
         with tempfile.TemporaryDirectory() as td:
             p=Path(td)
@@ -113,7 +119,7 @@ class BirthdayTimelineTests(unittest.TestCase):
                                    asset_transitions=(("soft_fade",0.35),("soft_fade",0.35),("quick_fade",0.22),("quick_fade",0.22),("long_fade",0.80),("long_fade",0.80)),
                                    asset_pacing=(1.12,1.0,0.78,0.92,1.15,1.20),
                                    scene_plan=({"id":"a"},{"id":"b"},{"id":"c"},{"id":"d"}),
-                                   creative_revision="duenya-creative-v2")
+                                   creative_revision="duenya-creative-v2",asset_order=tuple(range(6)))
             with patch.object(birthday, "client_from_env", return_value=(client, "test")), \
                  patch.dict(os.environ, TELEGRAM_BOT_TOKEN="synthetic", TELEGRAM_CHAT_ID="synthetic"), \
                  patch.object(birthday.requests, "post", return_value=SimpleNamespace(status_code=200)) as send:
@@ -123,7 +129,7 @@ class BirthdayTimelineTests(unittest.TestCase):
             self.assertGreaterEqual(len(result["creative_evidence"]["applied_effects"]),3)
             self.assertEqual(result["creative_evidence"]["creative_revision"],"duenya-creative-v2")
             self.assertEqual(birthday.sha256(client.objects[result["r2_key"]]).hexdigest(), result["sha256"])
-            send.assert_called_once()
+            send.assert_not_called()
             self.assertLess(len(client.objects[result["r2_key"]]), 49 * 1024 * 1024)
 
 
