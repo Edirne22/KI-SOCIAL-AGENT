@@ -123,6 +123,11 @@ def recent_assets(client,bucket,now=None):
 def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     client,bucket=client_from_env()
     assets=assets_override or recent_assets(client,bucket)
+    if plan:
+        order=tuple(getattr(plan,"asset_order",()))
+        if sorted(order)!=list(range(len(assets))):
+            raise RuntimeError("PRIVATE_STORYBOARD_ASSET_ORDER_INVALID")
+        assets=[assets[i] for i in order]
     target_seconds=int(getattr(plan,"duration_seconds",TARGET_SECONDS) if plan else TARGET_SECONDS)
     max_seconds=int(getattr(plan,"max_duration_seconds",target_seconds) if plan else target_seconds)
     duration_policy=str(getattr(plan,"duration_policy","MAXIMUM") if plan else "MAXIMUM")
