@@ -31,7 +31,7 @@ def _http_json(method: str, path: str, token: str, payload: dict | None = None) 
     allowed = {
         ("POST", "/admin/container-restart"),
         ("GET", "/health"),
-        ("GET", "/health?recovery=duenya-level12"),
+        ("POST", "/admin/container-restart"),
         ("POST", "/private-video/jobs"),
     }
     if (method, path) not in allowed:
@@ -142,13 +142,17 @@ def execute_recovery(
     if decision["decision"] != "RESUME":
         raise RuntimeError("RECOVERY_DECISION_NOT_EXECUTABLE")
 
-    # The Worker health-path recovery switch is pinned to this one task and V4.
-    # It avoids edge blocks on private-video route paths and translates internally
-    # to the existing authenticated container POST contract.
-    code, payload = http("GET", "/health?recovery=duenya-level12", token, None)
+    # The already-proven admin path performs one container restart and, only for
+    # this exact command, resumes the pinned Dünya V4 task through the internal
+    # authenticated container contract. Public private-video route paths return 403.
+    code, payload = http("POST", "/admin/container-restart", token, {"action": "resume_duenya_v4"})
     if (code != 202 or payload.get("task_id") != h["job_id"]
         or payload.get("production_revision") != production_revision or payload.get("status") != "ACCEPTED"):
-        raise RuntimeError(f"RECOVERY_RESUME_FAILED_HTTP_{code}")
+        safe_reason = payload.get("error")
+        if safe_reason not in {"unauthorized", "invalid_restart_command", "container_not_ready",
+                               "busy", "invalid_request", "non_json", "container_restart_failed"}:
+            safe_reason = "unclassified"
+        raise RuntimeError(f"RECOVERY_RESUME_FAILED_HTTP_{code}_REASON_{safe_reason}")
 
     samples = []
     last_stamp = None

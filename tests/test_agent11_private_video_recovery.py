@@ -53,11 +53,11 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         def call(method, path, token, payload=None):
             calls.append((method, path, payload))
             if path == "/admin/container-restart":
+                if payload == {"action": "resume_duenya_v4"}:
+                    return 202, {"status": "ACCEPTED", "task_id": "f6f50c9f4c2690e4eb1fe978", "production_revision": "v4"}
                 return 202, {"status": "container_restart_requested"}
             if path == "/health":
                 return 200, {"ready": True}
-            if path == "/health?recovery=duenya-level12":
-                return 202, {"status": "ACCEPTED", "task_id": "f6f50c9f4c2690e4eb1fe978", "production_revision": "v4"}
             raise AssertionError(path)
         return call
 
@@ -74,9 +74,8 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         self.assertEqual(result["production_revision"], "v4")
         self.assertTrue(client.reads)
         self.assertTrue(all("/revisions/v4/status.json" in key for key in client.reads))
-        self.assertNotIn(("POST", "/admin/container-restart", None), calls)
+        self.assertEqual(calls[0], ("POST", "/admin/container-restart", {"action": "resume_duenya_v4"}))
         self.assertFalse(any(call[0:2] == ("GET", "/health") for call in calls[:1]))
-        self.assertEqual(calls[0], ("GET", "/health?recovery=duenya-level12", None))
         self.assertFalse(any(call[0:2] == ("POST", "/private-video/jobs") for call in calls))
         self.assertEqual(len(client.writes), 1)
         body = json.loads(client.writes[0]["Body"])
@@ -85,9 +84,16 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         self.assertEqual(body["production_revision"], "v4")
         self.assertNotIn("token", json.dumps(body).lower())
 
-    def test_recovery_http_helper_rejects_post_to_get_only_resume_route(self):
+    def test_recovery_http_helper_rejects_get_to_post_only_restart_route(self):
         with self.assertRaisesRegex(ValueError, "HTTP_PATH_NOT_ALLOWED"):
-            _http_json("POST", "/health?recovery=duenya-level12", "token")
+            _http_json("GET", "/admin/container-restart", "token")
+
+    def test_resume_http_failure_records_only_allowlisted_reason(self):
+        client = FakeClient([status("FAILED", "2026-10-06T21:00:00+00:00")])
+        def forbidden(*_args, **_kwargs):
+            return 403, {"error": "non_json", "detail": "must not be exposed"}
+        with self.assertRaisesRegex(RuntimeError, "RESUME_FAILED_HTTP_403_REASON_non_json"):
+            execute_recovery(client, "bucket", handoff(), "token", http=forbidden)
 
     def test_same_running_record_twice_is_not_two_heartbeats(self):
         client = FakeClient([
