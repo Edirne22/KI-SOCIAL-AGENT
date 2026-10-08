@@ -24,6 +24,7 @@ jobs:
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
       PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
+      DUENYA_PRODUCTION_REVISION: v4
     steps:
       - uses: actions/checkout@v4
         with:
@@ -73,7 +74,8 @@ jobs:
             --repair-id "${{ steps.agent21.outputs.repair_id }}" \
             --job-id "f6f50c9f4c2690e4eb1fe978" \
             --stage-id "video_editor_ffmpeg" \
-            --checkpoint "video_editor_ffmpeg"
+            --checkpoint "video_editor_ffmpeg" \
+            --production-revision "$DUENYA_PRODUCTION_REVISION"
 
       - name: Continue exact production through QM and private preview
         run: python -m scripts.watch_duenya_level12_production
