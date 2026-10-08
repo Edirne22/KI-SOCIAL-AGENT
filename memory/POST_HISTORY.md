@@ -141,3 +141,9 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 2: 20 Jahre T‑Bikers – warum der Club im Ruhrgebiet nie aufhört zu fahren
 - Titel 3: Wenn das Netz im Nirgendwo weg ist – sicher mit Offline‑Karten
 - Hook 3: Wenn das Netz im Nirgendwo weg ist – wie du mit Offline‑Karten sicher bleibst
+
+### 2026-10-08 06:06 | Entwurf generiert
+- Titel 1: Topraks Anker-Bremse – Klappt die Stopper-Magie auch in der MotoGP?
+- Hook 1: Funktioniert Topraks extrem breite Spätbrems-Technik auch auf dem Prototypen?
+- Titel 2: Ruhumuz für die Straße – Türkische Biker-Kultur in Deutschland
+- Hook 2: Wir fahren nicht für den Lärm, sondern für unsere Seele.
