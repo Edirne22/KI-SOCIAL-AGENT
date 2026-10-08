@@ -147,7 +147,9 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     # Normalize all planned slots back to the requested total duration.
     base_slots=[image_seconds if a["mime"].startswith("image/") else 4 for a in assets]
     weighted_slots=[max(1.0,base*pacing[i]) for i,base in enumerate(base_slots)]
-    timing_scale=target_seconds/sum(weighted_slots)
+    # xfade overlaps subtract runtime; compensate slots so final duration matches the target.
+    overlaps=sum(min(float(transitions[i][1]), max(1.0, weighted_slots[i-1])/3, max(1.0, weighted_slots[i])/3) for i in range(1,len(assets)))
+    timing_scale=(target_seconds+overlaps)/sum(weighted_slots)
     planned_slots=[slot*timing_scale for slot in weighted_slots]
     token=os.environ["TELEGRAM_BOT_TOKEN"]; chat=os.environ["TELEGRAM_CHAT_ID"]
     with tempfile.TemporaryDirectory(prefix="duenya-private-") as td:
