@@ -127,7 +127,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
     max_seconds=int(getattr(plan,"max_duration_seconds",target_seconds) if plan else target_seconds)
     duration_policy=str(getattr(plan,"duration_policy","MAXIMUM") if plan else "MAXIMUM")
     overlays=list(getattr(plan,"overlays",[]) if plan else [TITLE,"12 Jahre voller Erinnerungen","Alles Gute zum 12. Geburtstag, Dünya! ❤️"])
-    music=MUSIC
+    music=Path(getattr(plan,"music_track",MUSIC) if plan else MUSIC)
     effects=list(getattr(plan,"asset_effects",[]) if plan else [])
     if plan and len(effects)!=len(assets):
         raise RuntimeError("PRIVATE_CREATIVE_ASSIGNMENT_MISMATCH")
@@ -177,12 +177,15 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
         title_text=fftext(overlays[0] if overlays else TITLE)
         mid_text=fftext(overlays[1] if len(overlays)>1 else "Unsere schönsten Erinnerungen")
         end_text=fftext(overlays[2] if len(overlays)>2 else "Alles Gute!")
+        # Place text relative to actual render duration, not a fixed five-minute clock.
+        midpoint=max(8.0,target_seconds*0.50)
+        ending=max(midpoint+8.0,target_seconds-14.0)
         draw=(f"drawtext=text='{title_text}':fontcolor=white:fontsize=44:borderw=4:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.78:enable='between(t,1,7)',"
               f"drawtext=text='{mid_text}':fontcolor=white:fontsize=30:borderw=3:bordercolor=black:"
               "x=(w-text_w)/2:y=h*0.80:enable='between(t,105,112)',"
               f"drawtext=text='{end_text}':fontcolor=white:fontsize=24:borderw=3:bordercolor=black:"
-              "x=(w-text_w)/2:y=h*0.80:enable='between(t,286,299)'")
+              f"x=(w-text_w)/2:y=h*0.80:enable='between(t,{ending:.2f},{target_seconds-1:.2f})'")
         run_ffmpeg(["ffmpeg","-y","-i",str(rough),"-vf",draw,"-an","-c:v","libx264","-preset","veryfast",
                         "-b:v","850k","-maxrate","950k","-bufsize","1900k","-pix_fmt","yuv420p","-movflags","+faststart",str(visual)],step="title_cards",timeout=600)
         if not music.exists(): raise RuntimeError("PRIVATE_BIRTHDAY_MUSIC_MISSING")
