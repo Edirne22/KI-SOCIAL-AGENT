@@ -6,6 +6,39 @@ from content_factory_private_video_orchestrator import (
 )
 
 class PrivateVideoAgentChainTests(unittest.TestCase):
+    def test_local_frame_inference_to_storyboard_with_synthetic_media(self):
+        import io
+        import json
+        import shutil
+        import subprocess
+        import tempfile
+        from pathlib import Path
+        from content_factory_private_video_orchestrator import analyze_private_media
+        if not shutil.which("ffmpeg"):
+            self.skipTest("FFmpeg unavailable")
+        with tempfile.TemporaryDirectory() as td:
+            img=Path(td)/"synthetic.png"
+            subprocess.run(["ffmpeg","-v","error","-y","-f","lavfi","-i",
+                            "color=c=blue:s=160x288","-frames:v","1",str(img)],check=True)
+            class R2:
+                def get_object(self,*,Bucket,Key):
+                    return {"Body":io.BytesIO(img.read_bytes())}
+            def local_inference(frame):
+                self.assertTrue(frame.startswith(bytes.fromhex("ffd8")))
+                return {"story_beat":"action","asset_role":"synthetic activity",
+                        "observations":["Synthetic blue frame for pipeline test"]}
+            rows=analyze_private_media(R2(),"test",[{"mime":"image/png","key":"private/test"}],
+                                       infer=local_inference)
+            self.assertEqual(rows[0]["story_beat"],"action")
+            self.assertEqual(PrivateMediaStoryAgent().bind(
+                PrivateCreativeDirector().create(PrivateProductionLead().decompose("test","Dünya 12")),
+                rows)["order"],"verified-story-beats")
+
+    def test_vision_backend_is_required(self):
+        from content_factory_private_video_orchestrator import analyze_private_media
+        with self.assertRaisesRegex(RuntimeError,"PRIVATE_LOCAL_VISION_BACKEND_NOT_CONFIGURED"):
+            analyze_private_media(None,"test",[])
+
     def test_private_prompt_is_decomposed_into_full_agent_chain(self):
         prompt="PRIVATE VIDEOPRODUKTION: Dünya wird 12. 5 min, 9:16, emotional, Musik, Texte und Übergänge."
         assets=[{"mime":"image/jpeg"},{"mime":"video/mp4"}]
