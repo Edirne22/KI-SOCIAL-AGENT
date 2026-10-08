@@ -900,7 +900,7 @@ Publish-Provenienz: {"creation_id": "18010492100971550", "media_kind": "image", 
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 37739156211-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: turkish-1791441440-TR-HUMAN
 Telegram-Update-ID: 279361922
