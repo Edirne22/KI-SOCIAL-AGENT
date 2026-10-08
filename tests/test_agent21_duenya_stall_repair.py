@@ -37,7 +37,7 @@ def incident():
 
 def state(status="RUNNING",stamp="2026-10-06T21:00:00+00:00",stage=STAGE):
     return {"schema":"PRIVATE-VIDEO-STATUS-V1","task_id":TASK_ID,
-            "status":status,"stage":stage,"updated_at":stamp,"production_revision":"v3","runtime_revision":"duenya-creative-chain-v3"}
+            "status":status,"stage":stage,"updated_at":stamp,"production_revision":"v4","runtime_revision":"duenya-creative-chain-v3"}
 
 
 class Tests(unittest.TestCase):
@@ -46,11 +46,12 @@ class Tests(unittest.TestCase):
         out=reconcile(r,"b",now=datetime(2026,10,6,21,2,0,tzinfo=timezone.utc))
         self.assertEqual(out["action"],"HANDOFF_AGENT11")
         self.assertEqual(out["repair_id"],REPAIR_ID)
+        self.assertEqual(STATUS_KEY, f"ai-central/v1/private-video/{TASK_ID}/revisions/v4/status.json")
         self.assertEqual(len(r.writes),1)
         body=json.loads(r.writes[0]["Body"])
         self.assertEqual(body["status"],"FAILED")
         self.assertEqual(body["error_code"],"AGENT21_CONFIRMED_STALLED")
-        self.assertEqual(body["production_revision"],"v3")
+        self.assertEqual(body["production_revision"],"v4")
         self.assertEqual(body["runtime_revision"],"duenya-creative-chain-v3")
 
     def test_fresh_running_never_gets_restarted(self):
@@ -94,7 +95,9 @@ class SourceRegression(unittest.TestCase):
         self.assertIn("Agent 11 recovery-mode exact Dünya resume",workflow)
         self.assertIn("python -m scripts.agent11_private_video_recovery",workflow)
         self.assertIn('http("POST", "/private-video/jobs", token, resume_payload)',agent11)
-        self.assertIn('"production_revision": "v3"',agent11)
+        self.assertIn('"production_revision": production_revision',agent11)
+        self.assertIn("DUENYA_PRODUCTION_REVISION: v4",workflow)
+        self.assertIn('--production-revision "$DUENYA_PRODUCTION_REVISION"',workflow)
         self.assertNotIn("/health?recovery=duenya-level12",workflow)
         self.assertNotIn("/private-video/resume-duenya",agent11)
 
