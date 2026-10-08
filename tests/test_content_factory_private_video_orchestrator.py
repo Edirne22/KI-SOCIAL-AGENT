@@ -24,6 +24,23 @@ class PrivateVideoAgentChainTests(unittest.TestCase):
         self.assertEqual(len(plan.asset_effects),len(assets))
         self.assertEqual(plan.creative_revision,"duenya-creative-v2")
 
+    def test_verified_visual_analysis_drives_storyboard_order(self):
+        spec=PrivateCreativeDirector().create(PrivateProductionLead().decompose("private-task","Dünya 12 Geburtstag"))
+        assets=[
+            {"mime":"image/jpeg","content_verified":True,"story_beat":"finale","asset_role":"portrait","analysis_source":"private-vision-v1"},
+            {"mime":"video/mp4","content_verified":True,"story_beat":"action","asset_role":"trampoline","analysis_source":"private-vision-v1"},
+            {"mime":"image/jpeg","content_verified":True,"story_beat":"intro","asset_role":"arrival","analysis_source":"private-vision-v1"},
+        ]
+        result=PrivateMediaStoryAgent().bind(spec,assets)
+        self.assertEqual(result["asset_order"],(2,1,0))
+        self.assertEqual(result["selection"],"verified-content-storyboard")
+        self.assertEqual(len(result["asset_effects"]),3)
+
+    def test_unverified_media_cannot_claim_visual_analysis(self):
+        spec=PrivateCreativeDirector().create(PrivateProductionLead().decompose("private-task","Dünya 12 Geburtstag"))
+        result=PrivateMediaStoryAgent().bind(spec,[{"mime":"image/jpeg","story_beat":"action"}])
+        self.assertEqual(result["selection"],"unclassified-blocked")
+
     def test_qm_fails_without_audio_or_real_render_evidence(self):
         qm=PrivateQM().checks(duration=300,has_audio=False,has_video=True,
                               creative={"privacy":"private-only","scene_count":6,
