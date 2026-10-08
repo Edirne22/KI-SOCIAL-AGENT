@@ -109,6 +109,52 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "RESUME_FAILED_HTTP_403_REASON_non_json"):
             execute_recovery(client, "bucket", handoff(), "token", http=forbidden)
 
+    def test_missing_stage_uses_only_matching_watchdog_provenance(self):
+        from scripts.agent11_private_video_recovery import _load_status
+        record = status("FAILED", "2026-10-08T12:04:00+00:00")
+        del record["stage"]
+        incident = {
+            "schema": "MACHINE-WATCHDOG-INCIDENT-V1",
+            "incident_id": "WD-f6f50c9f4c2690e4eb1fe978-video_editor_ffmpeg-v4",
+            "job_id": "f6f50c9f4c2690e4eb1fe978",
+            "stage_id": "video_editor_ffmpeg",
+            "checkpoint": "video_editor_ffmpeg",
+            "machine": "private-media-container",
+            "route_to": "agent21",
+            "requested_action": "DIAGNOSE_ONLY",
+            "reason": "MACHINE_REPORTED_STALLED",
+        }
+        class ProvenanceClient(FakeClient):
+            def get_object(self, Bucket, Key):
+                if "/maintenance/incidents/" in Key:
+                    return {"Body": io.BytesIO(json.dumps(incident).encode())}
+                return super().get_object(Bucket=Bucket, Key=Key)
+        client = ProvenanceClient([record])
+        state = _load_status(client, "bucket", handoff()["job_id"], "v4", "video_editor_ffmpeg")
+        self.assertEqual(state["stage_id"], "video_editor_ffmpeg")
+        incident["checkpoint"] = "untrusted_checkpoint"
+        with self.assertRaisesRegex(RuntimeError, "STAGE_PROVENANCE_INVALID"):
+            _load_status(ProvenanceClient([record]), "bucket", handoff()["job_id"], "v4", "video_editor_ffmpeg")
+
+    def test_missing_stage_running_never_guesses_from_incident(self):
+        from scripts.agent11_private_video_recovery import _load_status
+        record = status("RUNNING", "2026-10-08T12:04:00+00:00")
+        del record["stage"]
+        with self.assertRaisesRegex(RuntimeError, "STATUS_STAGE_MISSING"):
+            _load_status(FakeClient([record]), "bucket", handoff()["job_id"], "v4", "video_editor_ffmpeg")
+
+    def test_missing_stage_without_incident_fails_closed(self):
+        from scripts.agent11_private_video_recovery import _load_status
+        record = status("FAILED", "2026-10-08T12:04:00+00:00")
+        del record["stage"]
+        class NoIncidentClient(FakeClient):
+            def get_object(self, Bucket, Key):
+                if "/maintenance/incidents/" in Key:
+                    raise FileNotFoundError("incident absent")
+                return super().get_object(Bucket=Bucket, Key=Key)
+        with self.assertRaisesRegex(RuntimeError, "STAGE_PROVENANCE_MISSING"):
+            _load_status(NoIncidentClient([record]), "bucket", handoff()["job_id"], "v4", "video_editor_ffmpeg")
+
     def test_same_running_record_twice_is_not_two_heartbeats(self):
         client = FakeClient([
             status("FAILED", "2026-10-06T21:00:00+00:00"),
