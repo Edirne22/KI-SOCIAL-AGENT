@@ -303,6 +303,12 @@ def _run_video(task_id, production_revision=None):
                "transitions":list(dict.fromkeys(t[0] for t in getattr(plan,"asset_transitions",()))),
                "pacing_profiles":sorted(set(getattr(plan,"asset_pacing",())))}
         print("DUENYA_CREATIVE_PLAN_TRACE "+json.dumps(trace,separators=(",",":"),ensure_ascii=True),flush=True)
+        # Hard stop BEFORE the renderer: never send an unverified slideshow contract to FFmpeg.
+        from content_factory_private_video_orchestrator import preflight_private_machine_contract
+        preflight = preflight_private_machine_contract(plan, assets)
+        print("DUENYA_CREATIVE_PREFLIGHT " + json.dumps(preflight, separators=(",",":")), flush=True)
+        if preflight["decision"] != "READY_FOR_MEDIA":
+            raise RuntimeError("PRIVATE_CREATIVE_PREFLIGHT_NOT_READY:" + ",".join(preflight["issues"]))
         persist_stage(client,bucket,task_id,"creative_director","COMPLETED",plan.story_style)
         current["stage"]="media_story"
         persist_stage(client,bucket,task_id,"media_story","COMPLETED",f"{len(assets)} private assets bound")
