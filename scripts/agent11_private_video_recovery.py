@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import time
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
@@ -43,6 +44,8 @@ def _http_json(method: str, path: str, token: str, payload: dict | None = None) 
     }
     if body is not None:
         headers["Content-Type"] = "application/json"
+    if method == "POST" and path == "/admin/container-restart":
+        headers["X-Edirne22-Recovery-Action"] = "resume_duenya_v4"
     request = Request(RUNTIME_ORIGIN + path, data=body, method=method, headers=headers)
     try:
         with urlopen(request, timeout=35) as response:
@@ -142,16 +145,17 @@ def execute_recovery(
     if decision["decision"] != "RESUME":
         raise RuntimeError("RECOVERY_DECISION_NOT_EXECUTABLE")
 
-    # The already-proven admin path performs one container restart and, only for
-    # this exact command, resumes the pinned Dünya V4 task through the internal
-    # authenticated container contract. Public private-video route paths return 403.
-    code, payload = http("POST", "/admin/container-restart", token, {"action": "resume_duenya_v4"})
+    # The already-proven authenticated admin path performs one container restart.
+    # A fixed header selects only the pinned Dünya V4 resume; public private-video
+    # route paths and JSON-body commands returned HTTP 403 at the edge.
+    code, payload = http("POST", "/admin/container-restart", token, None)
     if (code != 202 or payload.get("task_id") != h["job_id"]
         or payload.get("production_revision") != production_revision or payload.get("status") != "ACCEPTED"):
         safe_reason = payload.get("error")
-        if safe_reason not in {"unauthorized", "invalid_restart_command", "container_not_ready",
-                               "busy", "invalid_request", "non_json", "container_restart_failed"}:
+        if not isinstance(safe_reason, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,48}", safe_reason):
             safe_reason = "unclassified"
+        else:
+            safe_reason = safe_reason.lower()
         raise RuntimeError(f"RECOVERY_RESUME_FAILED_HTTP_{code}_REASON_{safe_reason}")
 
     samples = []

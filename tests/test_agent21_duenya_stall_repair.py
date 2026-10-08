@@ -96,7 +96,7 @@ class SourceRegression(unittest.TestCase):
         agent11=open("scripts/agent11_private_video_recovery.py",encoding="utf-8").read()
         self.assertIn("Agent 11 recovery-mode exact Dünya resume",workflow)
         self.assertIn("python -m scripts.agent11_private_video_recovery",workflow)
-        self.assertIn('http("POST", "/admin/container-restart", token, {"action": "resume_duenya_v4"})',agent11)
+        self.assertIn('http("POST", "/admin/container-restart", token, None)',agent11)
         self.assertNotIn('http("POST", "/private-video/jobs", token, resume_payload)',agent11)
         self.assertIn('"production_revision": production_revision',agent11)
         self.assertIn("DUENYA_PRODUCTION_REVISION: v4",workflow)
@@ -106,6 +106,7 @@ class SourceRegression(unittest.TestCase):
         resume_start=worker.index('if (url.pathname === "/admin/container-restart") {')
         resume_end=worker.index("let jobBody: string | null = null;",resume_start)
         resume_route=worker[resume_start:resume_end]
+        self.assertIn('request.headers.get("x-edirne22-recovery-action")',resume_route)
         self.assertIn('"resume_duenya_v4"',resume_route)
         self.assertIn('JSON.stringify({task_id:"f6f50c9f4c2690e4eb1fe978",production_revision:"v4"})',resume_route)
         self.assertIn("await instance.armPrivateRenderLease()",resume_route)

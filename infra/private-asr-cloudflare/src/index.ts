@@ -56,17 +56,11 @@ export default {
       const declaredLength = Number(request.headers.get("content-length") || "0");
       if (declaredLength > 128) return reply({error:"invalid_restart_command"},413);
       const commandText = await request.text();
-      if (commandText.length > 128) return reply({error:"invalid_restart_command"},413);
-      let resumeDuenyaV4 = false;
-      if (commandText) {
-        let command: unknown;
-        try { command = JSON.parse(commandText); }
-        catch { return reply({error:"invalid_restart_command"},400); }
-        if (!command || typeof command !== "object" || Object.keys(command).length !== 1 ||
-            (command as {action?: unknown}).action !== "resume_duenya_v4")
-          return reply({error:"invalid_restart_command"},400);
-        resumeDuenyaV4 = true;
-      }
+      if (commandText.length > 128 || commandText) return reply({error:"invalid_restart_command"},400);
+      const recoveryAction = request.headers.get("x-edirne22-recovery-action") || "";
+      if (recoveryAction && recoveryAction !== "resume_duenya_v4")
+        return reply({error:"invalid_restart_command"},400);
+      const resumeDuenyaV4 = recoveryAction === "resume_duenya_v4";
       try {
         await instance.destroy();
         await instance.startAndWaitForPorts({

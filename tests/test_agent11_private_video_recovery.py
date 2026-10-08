@@ -1,6 +1,7 @@
 import io
 import json
 import unittest
+from unittest.mock import patch
 
 from scripts.agent11_private_video_recovery import _http_json, execute_recovery
 
@@ -53,9 +54,7 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         def call(method, path, token, payload=None):
             calls.append((method, path, payload))
             if path == "/admin/container-restart":
-                if payload == {"action": "resume_duenya_v4"}:
-                    return 202, {"status": "ACCEPTED", "task_id": "f6f50c9f4c2690e4eb1fe978", "production_revision": "v4"}
-                return 202, {"status": "container_restart_requested"}
+                return 202, {"status": "ACCEPTED", "task_id": "f6f50c9f4c2690e4eb1fe978", "production_revision": "v4"}
             if path == "/health":
                 return 200, {"ready": True}
             raise AssertionError(path)
@@ -74,7 +73,7 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         self.assertEqual(result["production_revision"], "v4")
         self.assertTrue(client.reads)
         self.assertTrue(all("/revisions/v4/status.json" in key for key in client.reads))
-        self.assertEqual(calls[0], ("POST", "/admin/container-restart", {"action": "resume_duenya_v4"}))
+        self.assertEqual(calls[0], ("POST", "/admin/container-restart", None))
         self.assertFalse(any(call[0:2] == ("GET", "/health") for call in calls[:1]))
         self.assertFalse(any(call[0:2] == ("POST", "/private-video/jobs") for call in calls))
         self.assertEqual(len(client.writes), 1)
@@ -83,6 +82,20 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         self.assertTrue(body["recovered"])
         self.assertEqual(body["production_revision"], "v4")
         self.assertNotIn("token", json.dumps(body).lower())
+
+    def test_recovery_http_helper_uses_fixed_header_without_body(self):
+        class Response:
+            status = 202
+            def __enter__(self): return self
+            def __exit__(self, *_args): return False
+            def read(self, _limit): return b'{"status":"ACCEPTED"}'
+        with patch("scripts.agent11_private_video_recovery.urlopen", return_value=Response()) as opener:
+            code, _ = _http_json("POST", "/admin/container-restart", "token")
+        request = opener.call_args.args[0]
+        self.assertEqual(code, 202)
+        self.assertEqual(request.data, None)
+        self.assertEqual(request.get_header("X-edirne22-recovery-action"), "resume_duenya_v4")
+        self.assertIsNone(request.get_header("Content-type"))
 
     def test_recovery_http_helper_rejects_get_to_post_only_restart_route(self):
         with self.assertRaisesRegex(ValueError, "HTTP_PATH_NOT_ALLOWED"):
