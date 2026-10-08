@@ -125,6 +125,21 @@ class V4WatchTests(unittest.TestCase):
         body=json.loads(r.writes[0]["Body"])
         self.assertTrue(body["incident_id"].endswith("-v4"))
 
+    def test_duplicate_v4_incident_returns_revision_scoped_key(self):
+        class PreconditionFailure(Exception):
+            response = {"Error": {"Code": "PreconditionFailed"}}
+
+        value=status("FAILED","2026-10-06T21:58:00+00:00",
+                     production_revision="v4",runtime_revision="duenya-creative-chain-v3")
+        r=R2([value])
+        def duplicate(**kwargs):
+            raise PreconditionFailure()
+        r.put_object=duplicate
+        out=watch(r,"b",production_revision="v4",max_checks=1,
+                  now_fn=lambda:datetime(2026,10,6,21,58,1,tzinfo=timezone.utc))
+        self.assertTrue(out["incident_key"].endswith(
+            f"WD-{TASK_ID}-video_editor_ffmpeg-v4.json"))
+
     def test_v3_status_cannot_pass_as_v4(self):
         value=status("COMPLETED","2026-10-06T21:58:00+00:00","private_preview",
                      production_revision="v3",runtime_revision="duenya-creative-chain-v3")
