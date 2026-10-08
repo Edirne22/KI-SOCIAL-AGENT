@@ -2736,3 +2736,45 @@ Story-Key: title:honda-klad-joan-mir-mandalika-da-yok-yerine-aleix-espargaro-yar
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-08 05:08 UTC | Motorcycle Racing | FAIL
+Titel: Toprak Razgatlıoğlu: "Mandalika'ya Geri Döndüğüm İçin Çok Mutluyum"
+Story-Key: title:toprak-razgatl-o-lu-mandalika-ya-geri-d-nd-m-i-ok-mutluyum
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-08 05:09 UTC | Motorcycle Racing | FAIL
+Titel: Toprak Razgatlıoğlu: "Mandalika'ya Geri Döndüğüm İçin Çok Mutluyum"
+Story-Key: title:toprak-razgatl-o-lu-mandalika-ya-geri-d-nd-m-i-ok-mutluyum
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-08 05:09 UTC | Motorcycle Racing | PASS
+Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
+Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-08 05:09 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin: “Söylediklerin Er Ya Da Geç Sana Geri Dönüyor!”
+Story-Key: title:jorge-martin-s-ylediklerin-er-ya-da-ge-sana-geri-d-n-yor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-08 05:09 UTC | Motorcycle Racing | PASS
+Titel: Honda açıkladı: Joan Mir Mandalika’da yok, yerine Aleix Espargaro yarışacak
+Story-Key: title:honda-klad-joan-mir-mandalika-da-yok-yerine-aleix-espargaro-yar-acak
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-08 05:09 UTC | Motorcycle Racing | PASS
+Titel: Resmi: Aleix Espargaro, Endonezya'da Joan Mir'in yerini alacak
+Story-Key: motogp:10862474
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-08 05:10 UTC | Motorcycle Racing | PASS
+Titel: Resmen açıklandı: Franco Morbidelli MotoGP’yi bırakıp WorldSBK’ye geçiyor
+Story-Key: title:resmen-kland-franco-morbidelli-motogp-yi-b-rak-p-worldsbk-ye-ge-iyor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

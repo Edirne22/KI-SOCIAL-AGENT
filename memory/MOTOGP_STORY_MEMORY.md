@@ -849,3 +849,18 @@ Quelle: https://tr.motorsport.com/moto2/news/moto2-japonya-gp-yaris-sampiyona-mu
 Story-Key: title:honda-klad-joan-mir-mandalika-da-yok-yerine-aleix-espargaro-yar-acak
 Titel: Honda açıkladı: Joan Mir Mandalika’da yok, yerine Aleix Espargaro yarışacak
 Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak
+
+## 2026-10-08 04:38 UTC – ANGEBOTEN
+Story-Key: title:jorge-martin-s-ylediklerin-er-ya-da-ge-sana-geri-d-n-yor
+Titel: Jorge Martin: “Söylediklerin Er Ya Da Geç Sana Geri Dönüyor!”
+Quelle: https://motoetkinlik.com/jorge-martin-soylediklerin-er-ya-da-gec-sana-geri-donuyor
+
+## 2026-10-08 04:38 UTC – ANGEBOTEN
+Story-Key: motogp:10862474
+Titel: Resmi: Aleix Espargaro, Endonezya'da Joan Mir'in yerini alacak
+Quelle: https://tr.motorsport.com/motogp/news/resmi-aleix-espargaro-endonezyada-joan-mirin-yerini-alacak/10862474
+
+## 2026-10-08 04:38 UTC – ANGEBOTEN
+Story-Key: title:resmen-kland-franco-morbidelli-motogp-yi-b-rak-p-worldsbk-ye-ge-iyor
+Titel: Resmen açıklandı: Franco Morbidelli MotoGP’yi bırakıp WorldSBK’ye geçiyor
+Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
