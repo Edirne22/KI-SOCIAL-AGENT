@@ -139,11 +139,13 @@ def watch(
                 if _code(exc) not in {"PreconditionFailed", "412", "ConditionalRequestConflict", "409"}:
                     raise
                 key = INCIDENT_PREFIX + decision["incident_id"] + ".json"
-            print("DUENYA_WATCH_AGENT21_INCIDENT status="+state+" stage="+sample["stage_id"]+" incident="+decision["incident_id"])
+            revision_suffix = str(status.get("production_revision") or "legacy")
+            incident_id = decision["incident_id"] + "-" + revision_suffix
+            print("DUENYA_WATCH_AGENT21_INCIDENT status="+state+" stage="+sample["stage_id"]+" incident="+incident_id)
             return {
                 "status": state,
                 "stage": sample["stage_id"],
-                "incident_id": decision["incident_id"],
+                "incident_id": incident_id,
                 "incident_key": key,
                 "error_code": str(status.get("error_code") or "")[:80],
             }
