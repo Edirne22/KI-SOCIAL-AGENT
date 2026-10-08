@@ -24,7 +24,7 @@ jobs:
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
       PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
-      DUENYA_PRODUCTION_REVISION: v4
+      DUENYA_PRODUCTION_REVISION: v4-creative1
     steps:
       - uses: actions/checkout@v4
         with:
@@ -51,8 +51,24 @@ jobs:
           import json,sys
           d=json.load(open("/tmp/private-video-health"))
           assert d.get("ready") is True
+          assert d.get("creative_runtime_revision") == "duenya-local-vision-v1"
+          assert d.get("local_vision_ready") is True
           assert d.get("private_video_runtime_revision") == sys.argv[1]
           print("DUENYA_MEDIA_RUNTIME_REVISION_OK")
+          PY
+      - name: Start authorized creative revision only if absent
+        run: |
+          python - <<'PY'
+          import os
+          from scripts.ai_central_shared_inbox import client_from_env
+          from scripts.start_duenya_level12_exact import _status, start_exact
+          client,bucket=client_from_env()
+          revision=os.environ["DUENYA_PRODUCTION_REVISION"]
+          if _status(client,bucket,revision) is None:
+              result=start_exact(client,bucket,os.environ["PRIVATE_ASR_INTERNAL_TOKEN"],production_revision=revision)
+              print("DUENYA_CREATIVE_START="+str(result.get("result")))
+          else:
+              print("DUENYA_CREATIVE_EXISTING_REVISION")
           PY
       - name: Persist exact V4 watchdog incident before Agent 21
         id: watchdog

@@ -47,6 +47,15 @@ def verify_preview(client, bucket: str, production_revision=None) -> dict:
         required.add("production_revision")
         if value.get("production_revision") != production_revision:
             raise RuntimeError("DUENYA_PREVIEW_REVISION_MISMATCH")
+    if production_revision=="v4-creative1":
+        required.update({"telegram_message_id","qm","creative_proof"})
+        proof=value.get("creative_proof",{})
+        checks=value.get("qm",{}).get("checks",{})
+        if (not isinstance(value.get("telegram_message_id"),int) or value["telegram_message_id"]<=0
+            or value.get("qm",{}).get("passed") is not True or not checks or not all(x is True for x in checks.values())
+            or proof.get("model_revision")!="b527df4b30e5cc18bde1cc712833a741d2d8c362"
+            or proof.get("verified_assets",0)<8 or not 1<=proof.get("duration",0)<=300):
+            raise RuntimeError("DUENYA_PREVIEW_CREATIVE_PROOF_INVALID")
     if set(value) != required:
         raise RuntimeError("DUENYA_PREVIEW_SCHEMA_INVALID")
     if (
@@ -61,6 +70,9 @@ def verify_preview(client, bucket: str, production_revision=None) -> dict:
         or len(value["sha256"]) != 64
     ):
         raise RuntimeError("DUENYA_PREVIEW_CONTRACT_INVALID")
+    if production_revision=="v4-creative1":
+        print("DUENYA_CREATIVE_PROOF_PASS verified_assets="+str(value["creative_proof"]["verified_assets"])
+              +" duration="+str(value["creative_proof"]["duration"])+" telegram_message_id="+str(value["telegram_message_id"]))
     return {
         "state": value["state"],
         "r2_key": value["r2_key"],
@@ -112,7 +124,7 @@ def watch(
     stall_after_seconds: int = 75,
     production_revision=None,
 ) -> dict:
-    if production_revision not in (None, "v3", "v4"):
+    if production_revision not in (None, "v3", "v4", "v4-creative1"):
         raise ValueError("DUENYA_WATCH_REVISION_INVALID")
     if max_checks < 1 or interval_seconds < 0 or stall_after_seconds < 45:
         raise ValueError("DUENYA_WATCH_BOUNDS_INVALID")

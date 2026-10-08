@@ -113,7 +113,7 @@ def output_is_valid(path: Path) -> bool:
     return video.returncode == 0 and "video" in video.stdout and audio.returncode == 0 and "audio" in audio.stdout
 
 
-def mix_music(video: Path, track: Path, output: Path) -> None:
+def mix_music(video: Path, track: Path, output: Path, *, duck_original: bool = False) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     if output_is_valid(output):
         return
@@ -130,7 +130,14 @@ def mix_music(video: Path, track: Path, output: Path) -> None:
     )
 
     if source_has_audio(video):
-        filter_graph = f"[1:a]{music_filter}[music];[0:a][music]amix=inputs=2:duration=first:dropout_transition=2[aout]"
+        if duck_original:
+            filter_graph = (f"[1:a]{music_filter}[music];"
+                            "[0:a]asplit=2[original][sidechain];"
+                            "[music][sidechain]sidechaincompress=threshold=0.035:ratio=8:"
+                            "attack=15:release=450[ducked];"
+                            "[original][ducked]amix=inputs=2:duration=first:normalize=0:dropout_transition=2,alimiter=limit=0.95:level=0[aout]")
+        else:
+            filter_graph = f"[1:a]{music_filter}[music];[0:a][music]amix=inputs=2:duration=first:dropout_transition=2[aout]"
         command = [
             "ffmpeg", "-y", "-i", str(video), "-stream_loop", "-1", "-i", str(track),
             "-filter_complex", filter_graph, "-map", "0:v:0", "-map", "[aout]",

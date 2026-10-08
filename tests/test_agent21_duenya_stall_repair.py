@@ -108,7 +108,8 @@ class SourceRegression(unittest.TestCase):
         resume_route=worker[resume_start:resume_end]
         self.assertIn('request.headers.get("x-edirne22-recovery-action")',resume_route)
         self.assertIn('"resume_duenya_v4"',resume_route)
-        self.assertIn('JSON.stringify({task_id:"f6f50c9f4c2690e4eb1fe978",production_revision:"v4"})',resume_route)
+        self.assertIn('production_revision:recoveryAction === "resume_duenya_v4_creative1" ? "v4-creative1" : "v4"',resume_route)
+        self.assertIn('task_id:"f6f50c9f4c2690e4eb1fe978"',resume_route)
         self.assertIn("await instance.armPrivateRenderLease()",resume_route)
         self.assertIn('if (!ready) return reply({error:"container_not_ready"},503)',resume_route)
         self.assertNotIn("/private-video/resume-duenya",worker)

@@ -150,3 +150,16 @@ class V4WatchTests(unittest.TestCase):
 
 
 if __name__ == "__main__": unittest.main()
+
+class CreativeProofTests(unittest.TestCase):
+    def test_delivery_and_model_proof_are_mandatory(self):
+        from scripts.watch_duenya_level12_production import verify_preview
+        value={**preview(),'production_revision':'v4-creative1','telegram_message_id':42,
+               'qm':{'passed':True,'checks':{'per_asset_contract':True}},
+               'creative_proof':{'model_revision':'b527df4b30e5cc18bde1cc712833a741d2d8c362',
+                                 'verified_assets':12,'duration':210.0}}
+        self.assertEqual(verify_preview(R2([],value),'test','v4-creative1')['state'],'READY_FOR_HUMAN')
+        for field in ('telegram_message_id','qm','creative_proof'):
+            broken={k:v for k,v in value.items() if k!=field}
+            with self.assertRaisesRegex(RuntimeError,'CREATIVE_PROOF_INVALID'):
+                verify_preview(R2([],broken),'test','v4-creative1')

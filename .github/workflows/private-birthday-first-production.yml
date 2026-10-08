@@ -25,8 +25,8 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg
-          python -m pip install --disable-pip-version-check requests boto3
-          python -m unittest tests.test_private_birthday_timeline tests.test_agent21_duenya_stall_repair tests.test_watch_duenya_level12_production tests.test_start_duenya_level12_exact tests.test_agent11_private_video_recovery tests.test_content_factory_private_video_orchestrator -v
+          python -m pip install --disable-pip-version-check requests boto3 numpy Pillow
+          python -m unittest tests.test_private_birthday_timeline tests.test_private_local_vision tests.test_private_creative_e2e tests.test_agent21_duenya_stall_repair tests.test_watch_duenya_level12_production tests.test_start_duenya_level12_exact tests.test_agent11_private_video_recovery tests.test_content_factory_private_video_orchestrator -v
   # Legacy GitHub rendering intentionally retired. Private video production is
   # dispatched only to the protected media container; this workflow remains
   # a syntax/safety gate and manual diagnostic entrypoint.

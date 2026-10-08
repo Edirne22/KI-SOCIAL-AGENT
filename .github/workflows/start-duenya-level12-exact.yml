@@ -5,12 +5,6 @@ on:
       - "scripts/start_duenya_level12_exact.py"
       - "tests/test_start_duenya_level12_exact.py"
       - ".github/workflows/start-duenya-level12-exact.yml"
-  push:
-    branches: [main]
-    paths:
-      - "scripts/start_duenya_level12_exact.py"
-      - "tests/test_start_duenya_level12_exact.py"
-      - ".github/workflows/start-duenya-level12-exact.yml"
   workflow_dispatch:
 permissions:
   contents: read
@@ -30,12 +24,12 @@ jobs:
       - name: Exact-task positive and negative controls
         run: python -m unittest tests.test_start_duenya_level12_exact tests.test_watch_duenya_level12_production -v
   start:
-    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
     needs: verify
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      DUENYA_PRODUCTION_REVISION: v4
+      DUENYA_PRODUCTION_REVISION: v4-creative1
       R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}

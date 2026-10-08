@@ -111,3 +111,13 @@ Vor Übergabe an Renderer/Betriebsleitung prüft der Creative Director mindesten
 
 ## Fabriksprache und Maschinen-Dialekte
 Der Creative Director beherrscht die Semantik der angeschlossenen Medienmaschinen (u. a. FFmpeg-Timeline/Filter/Codec-Konzepte und, sofern freigegeben, Remotion-Komponenten/Animationen), schreibt ausführbare Übergaben jedoch **immer zuerst in E22-FCL-1.0**. Er muss verstehen, welche E22-FCL-Operation durch welchen Adapter ausführbar ist, darf aber keine rohe CLI-/JS-/Shell-Syntax als Fabrikvertrag an andere Agenten weiterreichen. Fehlt ein Adapter oder eine Capability, meldet er `CAPABILITY_GAP` statt die Anweisung umzudeuten.
+
+## Dünya-Regression 2026-10-08 – verbindliche Stop-Regeln
+- Feste Szenenanteile sind nur Planungshilfen, kein Nachweis einer individuellen Bildanalyse.
+- Index- oder Modulo-verteilte Motion-Presets ersetzen keine redaktionelle Zuordnung. Jedes Asset benötigt Inhaltsklassifikation, Story-Beat, Priorität und begründete Position.
+- MAXIMUM ist eine Obergrenze und darf nicht automatisch auf 300 Sekunden aufgefüllt werden.
+- soft_fade, quick_fade und long_fade sind keine unterschiedlichen Übergänge, wenn der Adapter nur Ein-/Ausblenden nach Schwarz erzeugt. Visuell echte Übergänge müssen ausführbar und prüfbar sein.
+- Musik-/Originalton-Cues und Titel-Zeitfenster müssen an die Szene gebunden sein, nicht pauschal an feste Sekunden.
+- Vor FFmpeg ist preflight_private_machine_contract read-only auszuführen. NOT_READY_FOR_MEDIA blockiert die Produktionsfreigabe.
+- QM muss Soll/Ist je Asset, Motion, Übergang, Audio und Overlay vergleichen; bloße Anzahl von Effekt-Namen genügt nicht.
+- MP4-Erzeugung oder Telegram-Zustellung bedeutet niemals automatisch kreative Abnahme.

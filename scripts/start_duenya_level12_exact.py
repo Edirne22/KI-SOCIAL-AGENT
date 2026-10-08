@@ -55,7 +55,7 @@ def _archive_previous(client, bucket):
 
 def start_exact(client,bucket,token,post=requests.post,sleeper=time.sleep,*,production_revision=None,get=requests.get):
     if not token: raise RuntimeError("EXACT_PRIVATE_VIDEO_TOKEN_MISSING")
-    if production_revision not in (None, PRODUCTION_REVISION):
+    if production_revision not in (None, PRODUCTION_REVISION, "v4-creative1"):
         raise RuntimeError("EXACT_PRIVATE_VIDEO_REVISION_INVALID")
     if production_revision:
         response=get(RUNTIME_URL.rsplit("/private-video/jobs",1)[0]+"/health",
@@ -65,6 +65,8 @@ def start_exact(client,bucket,token,post=requests.post,sleeper=time.sleep,*,prod
         health=response.json()
         if not isinstance(health,dict) or health.get("ready") is not True or health.get("private_video_runtime_revision") != RUNTIME_REVISION:
             raise RuntimeError("EXACT_PRIVATE_VIDEO_HEALTH_REVISION_MISMATCH")
+        if production_revision=="v4-creative1" and (health.get("creative_runtime_revision")!="duenya-local-vision-v1" or health.get("local_vision_ready") is not True):
+            raise RuntimeError("EXACT_PRIVATE_VIDEO_VISION_REVISION_MISMATCH")
         print("DUENYA_MEDIA_RUNTIME_REVISION_OK revision="+RUNTIME_REVISION)
     matches=[]
     paginator=client.get_paginator("list_objects_v2")

@@ -47,7 +47,8 @@ def _http_json(method: str, path: str, token: str, payload: dict | None = None) 
     if body is not None:
         headers["Content-Type"] = "application/json"
     if method == "POST" and path == "/admin/container-restart":
-        headers["X-Edirne22-Recovery-Action"] = "resume_duenya_v4"
+        headers["X-Edirne22-Recovery-Action"] = ("resume_duenya_v4_creative1"
+            if os.environ.get("DUENYA_PRODUCTION_REVISION")=="v4-creative1" else "resume_duenya_v4")
     request = Request(RUNTIME_ORIGIN + path, data=body, method=method, headers=headers)
     try:
         with urlopen(request, timeout=35) as response:
@@ -129,7 +130,7 @@ def execute_recovery(
     production_revision: str = DEFAULT_PRODUCTION_REVISION,
 ) -> dict:
     h = validate_handoff(handoff)
-    if production_revision not in {"v3", "v4"}:
+    if production_revision not in {"v3", "v4", "v4-creative1"}:
         raise ValueError("RECOVERY_PRODUCTION_REVISION_INVALID")
     if h["machine"] != "private-media-container":
         raise ValueError("RECOVERY_MACHINE_NOT_EXECUTABLE")
@@ -193,7 +194,7 @@ def main() -> int:
     parser.add_argument("--job-id", required=True)
     parser.add_argument("--stage-id", required=True)
     parser.add_argument("--checkpoint", required=True)
-    parser.add_argument("--production-revision", choices=("v3", "v4"), default=DEFAULT_PRODUCTION_REVISION)
+    parser.add_argument("--production-revision", choices=("v3", "v4", "v4-creative1"), default=DEFAULT_PRODUCTION_REVISION)
     args = parser.parse_args()
     handoff = {
         "schema": "AGENT21-TO-AGENT11-RECOVERY-V1",
