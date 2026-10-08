@@ -73,6 +73,32 @@ class PrivateMediaStoryAgent:
                 "order":"chronological-story","asset_effects":tuple(assignments),
                 "asset_transitions":tuple(transitions),"asset_pacing":tuple(pacing)}
 
+def preflight_private_machine_contract(plan: PrivateVideoPlan, assets: list[dict]) -> dict:
+    """Read-only gate. Never downloads assets, invokes FFmpeg or starts production."""
+    issues = []
+    n = len(assets)
+    if not n or len(plan.asset_effects) != n or len(plan.asset_transitions) != n or len(plan.asset_pacing) != n:
+        issues.append("ASSET_ASSIGNMENT_INCOMPLETE")
+    if plan.privacy != "private-only" or plan.aspect_ratio != "9:16":
+        issues.append("FORMAT_PRIVACY_MISMATCH")
+    if plan.duration_policy == "MAXIMUM" and plan.duration_seconds >= plan.max_duration_seconds:
+        issues.append("MAXIMUM_DURATION_FORCED_TO_CEILING")
+    if not all(a.get("story_beat") and a.get("asset_role") and a.get("content_verified") is True for a in assets):
+        issues.append("ASSET_CONTENT_NOT_CLASSIFIED")
+    if not all(isinstance(s, dict) and s.get("id") and s.get("purpose") for s in plan.scene_plan):
+        issues.append("SCENE_CONTRACT_INCOMPLETE")
+    if not getattr(plan, "audio_cues", None):
+        issues.append("AUDIO_CUES_NOT_MACHINE_BOUND")
+    if not getattr(plan, "overlay_cues", None):
+        issues.append("OVERLAY_CUES_NOT_MACHINE_BOUND")
+    if not getattr(plan, "transition_implementation", None):
+        issues.append("REAL_TRANSITION_ADAPTER_UNPROVEN")
+    if not getattr(plan, "render_evidence_contract", None):
+        issues.append("QM_EXPECTED_ACTUAL_CONTRACT_MISSING")
+    return {"decision": "NOT_READY_FOR_MEDIA" if issues else "READY_FOR_MEDIA",
+            "issues": issues, "asset_count": n, "creative_revision": plan.creative_revision}
+
+
 class PrivateMusicAudioAgent:
     def select(self,spec:dict)->dict:
         tracks=load_library(); track=choose_track(spec["prompt"],tracks)
