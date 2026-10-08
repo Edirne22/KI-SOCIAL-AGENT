@@ -102,6 +102,12 @@ class SourceRegression(unittest.TestCase):
         self.assertIn('--production-revision "$DUENYA_PRODUCTION_REVISION"',workflow)
         self.assertNotIn("/health?recovery=duenya-level12",workflow)
         self.assertNotIn("/private-video/resume-duenya",agent11)
+        self.assertIn("Persist exact V4 watchdog incident before Agent 21",workflow)
+        self.assertLess(workflow.index("Persist exact V4 watchdog incident before Agent 21"),
+                        workflow.index("Agent 21 validate incident"))
+        self.assertIn("max_checks=1",workflow)
+        self.assertIn("timeout-minutes: 25",workflow)
+        self.assertIn("steps.watchdog.outputs.action == 'HANDOFF_AGENT21'",workflow)
 
 
 if __name__=="__main__": unittest.main()
