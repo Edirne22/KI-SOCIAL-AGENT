@@ -115,6 +115,16 @@ class V4WatchTests(unittest.TestCase):
         self.assertEqual(result["status"],"COMPLETED")
         self.assertTrue(all("/revisions/v4/" in key for key in keys))
 
+    def test_failed_v4_incident_uses_v4_namespace(self):
+        value=status("FAILED","2026-10-06T21:58:00+00:00",production_revision="v4",runtime_revision="duenya-creative-chain-v3")
+        r=R2([value])
+        out=watch(r,"b",production_revision="v4",max_checks=1,
+                  now_fn=lambda:datetime(2026,10,6,21,58,1,tzinfo=timezone.utc))
+        self.assertEqual(out["status"],"FAILED")
+        self.assertTrue(out["incident_id"].endswith("-v4"))
+        body=json.loads(r.writes[0]["Body"])
+        self.assertTrue(body["incident_id"].endswith("-v4"))
+
     def test_v3_status_cannot_pass_as_v4(self):
         value=status("COMPLETED","2026-10-06T21:58:00+00:00","private_preview",
                      production_revision="v3",runtime_revision="duenya-creative-chain-v3")
