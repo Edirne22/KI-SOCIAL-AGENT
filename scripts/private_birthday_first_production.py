@@ -53,7 +53,7 @@ def render_segment(src, seg, *, is_image, seconds, effect="zoom_in", transition=
     transition_id,fade_seconds=transition
     if transition_id not in {"soft_fade","quick_fade","long_fade"}: raise ValueError("unknown private transition")
     fade_seconds=max(0.12,min(float(fade_seconds),max(0.12,seconds/3)))
-    vf+=f",fade=t=in:st=0:d={fade_seconds:.3f},fade=t=out:st={max(0.0,seconds-fade_seconds):.3f}:d={fade_seconds:.3f}"
+    # Do not fade each segment to black; join segments with real xfade below.
     cmd=["ffmpeg","-y"]
     if is_image:
         cmd += ["-loop","1","-framerate",str(FPS)]
@@ -61,6 +61,28 @@ def render_segment(src, seg, *, is_image, seconds, effect="zoom_in", transition=
             "-c:v","libx264","-preset","ultrafast","-crf","28",
             "-pix_fmt","yuv420p","-video_track_timescale","25000",str(seg)]
     run_ffmpeg(cmd,step="segment",timeout=120)
+
+def build_xfade_command(segments, durations, transitions, output):
+    """Actual frame-to-frame transitions; rejects black-fade presets and invalid slots."""
+    if not segments or len(segments)!=len(durations) or len(transitions)!=len(segments):
+        raise ValueError("XFADES_CONTRACT_MISMATCH")
+    if len(segments)==1:
+        return ["ffmpeg","-y","-i",str(segments[0]),"-an","-c:v","libx264",str(output)]
+    cmd=["ffmpeg","-y"]
+    for segment in segments: cmd.extend(["-i",str(segment)])
+    filters=[]; previous="[0:v]"; elapsed=float(durations[0])
+    transition_map={"soft_fade":"fade","quick_fade":"smoothleft","long_fade":"fade"}
+    for i in range(1,len(segments)):
+        transition_id,requested=transitions[i]
+        if transition_id not in transition_map: raise ValueError("XFADES_UNKNOWN_TRANSITION")
+        seconds=min(float(requested),float(durations[i-1])/3,float(durations[i])/3)
+        if seconds<=0: raise ValueError("XFADES_INVALID_DURATION")
+        out=f"[v{i}]"
+        filters.append(f"{previous}[{i}:v]xfade=transition={transition_map[transition_id]}:duration={seconds:.3f}:offset={elapsed-seconds:.3f}{out}")
+        elapsed+=float(durations[i])-seconds
+        previous=out
+    cmd.extend(["-filter_complex",";".join(filters),"-map",previous,"-an","-c:v","libx264","-preset","veryfast","-crf","26","-pix_fmt","yuv420p",str(output)])
+    return cmd
 
 def fftext(value):
     return str(value).replace("\\", "\\\\").replace("'", "\\'").replace(":", "\\:").replace("%", "\\%")
@@ -147,7 +169,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
             segments.append(seg)
         concat=root/"concat.txt"; concat.write_text("".join("file '"+str(p).replace("'","'\\''")+"'\n" for p in segments))
         rough=root/"rough.mp4"
-        run_ffmpeg(["ffmpeg","-y","-f","concat","-safe","0","-i",str(concat),"-c","copy",str(rough)],step="concat",timeout=300)
+        run_ffmpeg(build_xfade_command(segments,planned_slots,transitions,rough),step="xfade",timeout=900)
         # Private creative lane: tasteful title/memory cards, then documented public-domain music.
         visual=root/"visual.mp4"
         title_text=fftext(overlays[0] if overlays else TITLE)
