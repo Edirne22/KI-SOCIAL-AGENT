@@ -82,6 +82,49 @@ def verified_visual_evidence(asset:dict)->bool:
     return all(isinstance(x,str) and 3<=len(x.strip())<=240 for x in evidence["observations"])
 
 
+def analyze_private_media(client, bucket: str, assets: list[dict], *, infer=None) -> list[dict]:
+    """Analyze private R2 media via a local, caller-supplied vision inference function.
+
+    infer(jpeg_bytes) must return {"story_beat": ..., "asset_role": ...,
+    "observations": [...]}. No private bytes leave the caller's container.
+    """
+    import hashlib
+    import subprocess
+    import tempfile
+    from pathlib import Path
+    if infer is None:
+        raise RuntimeError("PRIVATE_LOCAL_VISION_BACKEND_NOT_CONFIGURED")
+    analyzed=[]
+    for asset in assets:
+        if asset.get("mime") not in {"image/jpeg","image/png","video/mp4","video/quicktime"}:
+            raise RuntimeError("PRIVATE_VISION_UNSUPPORTED_MEDIA")
+        with tempfile.TemporaryDirectory(prefix="private-vision-") as td:
+            source=Path(td)/("source.mp4" if asset["mime"].startswith("video/") else "source.png")
+            source.write_bytes(client.get_object(Bucket=bucket,Key=asset["key"])["Body"].read())
+            frame=Path(td)/"frame.jpg"
+            cmd=["ffmpeg","-v","error","-y"]
+            if asset["mime"].startswith("video/"):
+                cmd+=["-ss","0.5"]
+            cmd+=["-i",str(source),"-frames:v","1","-vf","scale=512:-2",str(frame)]
+            result=subprocess.run(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
+            if result.returncode or not frame.exists():
+                raise RuntimeError("PRIVATE_VISION_FRAME_EXTRACTION_FAILED")
+            jpeg=frame.read_bytes()
+            verdict=infer(jpeg)
+            if not isinstance(verdict,dict):
+                raise RuntimeError("PRIVATE_VISION_INVALID_INFERENCE")
+            enriched={**asset,"content_verified":True,
+                      "story_beat":verdict.get("story_beat"),
+                      "asset_role":verdict.get("asset_role"),
+                      "visual_evidence":{"source":"private-frame-analysis-v1",
+                          "frame_sha256":hashlib.sha256(jpeg).hexdigest(),
+                          "observations":verdict.get("observations")}}
+            if not verified_visual_evidence(enriched):
+                raise RuntimeError("PRIVATE_VISION_INVALID_INFERENCE")
+            analyzed.append(enriched)
+    return analyzed
+
+
 class PrivateMediaStoryAgent:
     def bind(self,spec:dict,assets:list[dict])->dict:
         if not assets: raise ValueError("private media required")
