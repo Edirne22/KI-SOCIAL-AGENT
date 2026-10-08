@@ -880,7 +880,7 @@ Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.c
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 37738972081-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: turkish-1791441440-TR-HUMAN
 Telegram-Update-ID: 279361922
