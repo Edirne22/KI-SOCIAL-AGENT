@@ -1,5 +1,42 @@
 # Archiviert Beiträge 2026-09
 
+## Instagram [GEPOSTET 2026-09-30 07:58 | ID: 18112878152275052]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-30-daily
+Telegram-Update-ID: 279361793
+MotoGP-Auswahl: 1
+Titel: Pedro Acosta’da KTM’yi şaşırtan değişim: “Büyük sürücüler bunun için bir kışa ihtiyaç duyar”
+Text:
+Paul Trevathan hat’s gesagt: Während die meisten Top‑Fahrer ihre Sprünge über den Winter schieben, hat Pedro Acosta das Ganze in einer einzigen Sommersaison auf KTM erledigt. Das geht nicht ohne Tempo. 🏍️💨  
+
+Was meint ihr – pure Begabung oder die perfekte Entwicklungsumgebung?  
+
+#MotoGP #PedroAcosta #KTM #RacingDeutschland #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-1-pedro-acostada-ktmyi-01.jpg
+Publish-Provenienz: {"creation_id": "18009378836971550", "media_kind": "image", "media_path": "assets/images/2026-09/2026-09-30-racing-editorial-2026-09-30-1-pedro-acostada-ktmyi-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18112878152275052", "published_media_id": "18112878152275052", "source_url": "https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar", "version": 1}
+
+## Facebook [GEPOSTET 2026-09-30 07:44 | ID: 1285968257941776_122117167587469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-09-30-daily
+Telegram-Update-ID: 279361793
+MotoGP-Auswahl: 1
+Titel: Pedro Acosta’da KTM’yi şaşırtan değişim: “Büyük sürücüler bunun için bir kışa ihtiyaç duyar”
+Text:
+Paul Trevathan hat einen klaren Vergleich gezogen: Während andere Top-Fahrer ihre Sprünge üblicherweise über den Winter machen, hat Pedro Acosta genau das in nur einer Sommersaison auf KTM hingekriegt. Das ist Tempo, das normalerweise mehr Zeit braucht. 🏍️💨
+
+Wie seht ihr Acostas rasante Fortschritte – rein Talent oder die richtige Entwicklungsumgebung?
+
+#MotoGP #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
+Quelle: https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar", "media_status": "", "object_id": "1285968257941776_122117167587469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122117167587469415", "source_url": "https://motoetkinlik.com/pedro-acostada-ktmyi-sasirtan-degisim-buyuk-suruculer-bunun-icin-bir-kisa-ihtiyac-duyar", "version": 1}
+
 ## Instagram [GEPOSTET 2026-09-29 17:29 | ID: 18119496034821702]
 Status: GEPOSTET
 Freigabe: Telegram Racing
