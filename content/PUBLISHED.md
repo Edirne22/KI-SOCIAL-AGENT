@@ -878,9 +878,8 @@ Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ay
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde", "media_status": "", "object_id": "1285968257941776_122121043089469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122121043089469415", "source_url": "https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde", "version": 1}
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37738972081-1
+## Instagram [GEPOSTET 2026-10-08 06:41 | ID: 18128235143481384]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: turkish-1791441440-TR-HUMAN
 Telegram-Update-ID: 279361922
@@ -897,6 +896,7 @@ Quelle / weitere Infos: https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya
 Quelle: https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-08-turkish-human-1-toprak-razgatlioglu-01.jpg
+Publish-Provenienz: {"creation_id": "18010492100971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-08-turkish-human-1-toprak-razgatlioglu-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18128235143481384", "published_media_id": "18128235143481384", "source_url": "https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
