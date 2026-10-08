@@ -25,6 +25,7 @@ class PrivateVideoPlan:
     asset_effects:tuple[str,...]
     asset_transitions:tuple[str,...]
     asset_pacing:tuple[float,...]
+    asset_order:tuple[int,...]=()
     creative_revision:str=CREATIVE_REVISION
     stages:tuple[str,...]=STAGES
 
@@ -62,15 +63,34 @@ class PrivateMediaStoryAgent:
         if not assets: raise ValueError("private media required")
         scenes=spec["scene_plan"]; assignments=[]; transitions=[]; pacing=[]
         total=len(assets)
-        for i,_asset in enumerate(assets):
-            pos=(i+0.5)/total
-            scene=next((s for s in scenes if s["start"]<=pos<s["end"]),scenes[-1])
+        # Only consume verified visual analysis. Filename, upload order and MIME
+        # are not semantic evidence; fail closed until a private analyzer exists.
+        verified=all(a.get("content_verified") is True and
+                     a.get("story_beat") and a.get("asset_role") and
+                     a.get("analysis_source") for a in assets)
+        scene_ids={s["id"]:s for s in scenes}
+        story_order=("intro","build","action","highlights","home","finale")
+        if verified:
+            for asset in assets:
+                if asset["story_beat"] not in scene_ids:
+                    raise ValueError("PRIVATE_STORY_BEAT_UNKNOWN")
+            ordered=sorted(range(total),key=lambda i:(
+                story_order.index(assets[i]["story_beat"]),
+                assets[i].get("captured_at",""),i))
+        else:
+            ordered=list(range(total))
+        for i,idx in enumerate(ordered):
+            asset=assets[idx]
+            scene=scene_ids[asset["story_beat"]] if verified else scenes[min(len(scenes)-1,i*len(scenes)//total)]
             effects=scene["effects"]
             assignments.append(effects[i % len(effects)])
             transitions.append((scene["transition"],float(scene["transition_seconds"])))
             pacing.append(float(scene["pace"]))
-        return {**spec,"asset_count":total,"selection":"chronological-unclassified-pending-review",
-                "order":"chronological-story","asset_effects":tuple(assignments),
+        return {**spec,"asset_count":total,
+                "selection":"verified-content-storyboard" if verified else "unclassified-blocked",
+                "order":"verified-story-beats" if verified else "unclassified-blocked",
+                "asset_order":tuple(ordered),
+                "asset_effects":tuple(assignments),
                 "asset_transitions":tuple(transitions),"asset_pacing":tuple(pacing)}
 
 def preflight_private_machine_contract(plan: PrivateVideoPlan, assets: list[dict]) -> dict:
@@ -83,7 +103,7 @@ def preflight_private_machine_contract(plan: PrivateVideoPlan, assets: list[dict
         issues.append("FORMAT_PRIVACY_MISMATCH")
     if plan.duration_policy == "MAXIMUM" and plan.duration_seconds >= plan.max_duration_seconds:
         issues.append("MAXIMUM_DURATION_FORCED_TO_CEILING")
-    if not all(a.get("story_beat") and a.get("asset_role") and a.get("content_verified") is True for a in assets):
+    if not all(a.get("story_beat") and a.get("asset_role") and a.get("content_verified") is True and a.get("analysis_source") for a in assets):
         issues.append("ASSET_CONTENT_NOT_CLASSIFIED")
     if not all(isinstance(s, dict) and s.get("id") and s.get("purpose") for s in plan.scene_plan):
         issues.append("SCENE_CONTRACT_INCOMPLETE")
@@ -133,7 +153,7 @@ def build_plan(task_id:str,prompt:str,assets:list[dict])->PrivateVideoPlan:
     return PrivateVideoPlan(spec["task_id"],spec["title"],spec["duration_seconds"],spec["max_duration_seconds"],spec["duration_policy"],spec["aspect_ratio"],
         spec["privacy"],spec["story_style"],spec["music_track"],tuple(spec["overlays"]),
         tuple(spec["scene_plan"]),tuple(spec["asset_effects"]),tuple(spec["asset_transitions"]),
-        tuple(spec["asset_pacing"]),spec["creative_revision"])
+        tuple(spec["asset_pacing"]),tuple(spec["asset_order"]),spec["creative_revision"])
 
 def persist_stage(client,bucket,task_id,stage,status,detail=""):
     if stage not in STAGES: raise ValueError("unknown private production stage")
