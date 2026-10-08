@@ -31,10 +31,21 @@ class PrivateVideoAgentChainTests(unittest.TestCase):
             {"mime":"video/mp4","content_verified":True,"story_beat":"action","asset_role":"trampoline","analysis_source":"private-vision-v1"},
             {"mime":"image/jpeg","content_verified":True,"story_beat":"intro","asset_role":"arrival","analysis_source":"private-vision-v1"},
         ]
+        for asset in assets:
+            asset["visual_evidence"]={"source":"private-frame-analysis-v1","frame_sha256":"a"*64,"observations":["Visible birthday activity"]}
         result=PrivateMediaStoryAgent().bind(spec,assets)
         self.assertEqual(result["asset_order"],(2,1,0))
         self.assertEqual(result["selection"],"verified-content-storyboard")
         self.assertEqual(len(result["asset_effects"]),3)
+
+    def test_self_asserted_visual_labels_do_not_pass_preflight(self):
+        from content_factory_private_video_orchestrator import verified_visual_evidence
+        asset={"content_verified":True,"story_beat":"action","asset_role":"trampoline",
+               "analysis_source":"private-vision-v1"}
+        self.assertFalse(verified_visual_evidence(asset))
+        asset["visual_evidence"]={"source":"private-frame-analysis-v1",
+                                  "frame_sha256":"a"*64,"observations":["Visible trampoline jump"]}
+        self.assertTrue(verified_visual_evidence(asset))
 
     def test_unverified_media_cannot_claim_visual_analysis(self):
         spec=PrivateCreativeDirector().create(PrivateProductionLead().decompose("private-task","Dünya 12 Geburtstag"))
