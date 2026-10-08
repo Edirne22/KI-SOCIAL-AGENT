@@ -4,6 +4,8 @@ on:
     paths:
       - ".github/workflows/block9-private-asr-cloudflare-feasibility.yml"
       - "infra/private-asr/**"
+      - "scripts/diagnose_duenya_v4_admin_route.py"
+      - "tests/test_diagnose_duenya_v4_admin_route.py"
   workflow_dispatch:
 permissions:
   contents: read
@@ -38,3 +40,24 @@ jobs:
           npx wrangler deploy --dry-run --containers-rollout=none
       - name: Cost and model truth boundary
         run: echo "READ_ONLY_INVENTORY_ONLY. Existing OpenChatCut must not be overwritten. Separate ASR instance cannot be deployed until confirmed no extra charges and offline model provisioning."
+
+  diagnose-duenya-admin-route:
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.head_ref == 'fix/duenya-v4-admin-route-provenance-20261008'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Prove GET-only diagnostics and secret redaction offline
+        run: python -m unittest tests.test_diagnose_duenya_v4_admin_route -v
+      - name: Compare authenticated health and admin method guard without restart
+        env:
+          PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
+        run: python scripts/diagnose_duenya_v4_admin_route.py
