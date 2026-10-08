@@ -230,7 +230,7 @@ def run(*, task_id=None, prompt=None, plan=None, assets_override=None):
             run_ffmpeg(["ffmpeg","-y","-i",str(visual),"-i",str(audio_bed),
                         "-map","0:v:0","-map","1:a:0","-c:v","copy","-c:a","aac",
                         "-shortest",str(with_original)],step="attach_original_audio",timeout=180)
-            mix_music(with_original,music,out)
+            mix_music(with_original,music,out,duck_original=True)
         else:
             mix_music(visual,music,out)
         duration=probe_duration(out)
