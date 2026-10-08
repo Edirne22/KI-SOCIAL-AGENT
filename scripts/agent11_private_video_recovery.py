@@ -23,6 +23,8 @@ from scripts.production_recovery_contract import (
 RUNTIME_ORIGIN = "https://edirne22-private-asr.butupeli.workers.dev"
 STATUS_SCHEMA = "PRIVATE-VIDEO-STATUS-V1"
 RECOVERY_SCHEMA = "PRODUCTION-RECOVERY-R2-V1"
+DEFAULT_PRODUCTION_REVISION = "v4"
+RUNTIME_REVISION = "duenya-creative-chain-v3"
 
 
 def _http_json(method: str, path: str, token: str, payload: dict | None = None) -> tuple[int, dict]:
@@ -51,12 +53,15 @@ def _http_json(method: str, path: str, token: str, payload: dict | None = None) 
         raise RuntimeError("RECOVERY_RUNTIME_UNREACHABLE") from exc
 
 
-def _load_status(client, bucket: str, job_id: str) -> dict:
-    key = f"ai-central/v1/private-video/{job_id}/status.json"
+def _load_status(client, bucket: str, job_id: str, production_revision: str) -> dict:
+    key = f"ai-central/v1/private-video/{job_id}/revisions/{production_revision}/status.json"
     raw = client.get_object(Bucket=bucket, Key=key)["Body"].read(16384)
     value = json.loads(raw)
     if value.get("schema") != STATUS_SCHEMA or value.get("task_id") != job_id:
         raise RuntimeError("RECOVERY_STATUS_CONTRACT_INVALID")
+    if (value.get("production_revision") != production_revision
+        or value.get("runtime_revision") != RUNTIME_REVISION):
+        raise RuntimeError("RECOVERY_STATUS_REVISION_MISMATCH")
     stage = value.get("stage")
     status = value.get("status")
     updated_at = value.get("updated_at")
@@ -82,6 +87,7 @@ def _persist_recovery(client, bucket: str, handoff: dict, result: dict) -> None:
         "at": datetime.now(timezone.utc).isoformat(),
         "repair_id": handoff["repair_id"],
         "job_id": handoff["job_id"],
+        "production_revision": result.get("production_revision"),
         "stage_id": handoff["stage_id"],
         "machine": handoff["machine"],
         "requested_action": handoff["requested_action"],
@@ -109,8 +115,11 @@ def execute_recovery(
     sleeper=time.sleep,
     max_health_attempts: int = 8,
     max_heartbeat_attempts: int = 8,
+    production_revision: str = DEFAULT_PRODUCTION_REVISION,
 ) -> dict:
     h = validate_handoff(handoff)
+    if production_revision not in {"v3", "v4"}:
+        raise ValueError("RECOVERY_PRODUCTION_REVISION_INVALID")
     if h["machine"] != "private-media-container":
         raise ValueError("RECOVERY_MACHINE_NOT_EXECUTABLE")
     if h["requested_action"] != "RESUME":
@@ -118,10 +127,10 @@ def execute_recovery(
     if not token:
         raise RuntimeError("RECOVERY_RUNTIME_TOKEN_MISSING")
 
-    current = _load_status(client, bucket, h["job_id"])
+    current = _load_status(client, bucket, h["job_id"], production_revision)
     decision = recovery_decision(h, {k: current[k] for k in ("job_id", "stage_id", "checkpoint", "status")})
     if decision["decision"] in {"NO_RESTART", "OBSERVE_ONLY"}:
-        result = {**decision, "recovered": False}
+        result = {**decision, "recovered": False, "production_revision": production_revision}
         _persist_recovery(client, bucket, h, result)
         return result
     if decision["decision"] != "RESUME":
@@ -130,10 +139,10 @@ def execute_recovery(
     # The workflow immediately before this handoff proves ready=true and the exact
     # private-video runtime revision. Resume through the existing authenticated
     # private-video job contract; do not invent a side-channel recovery endpoint.
-    resume_payload = {"task_id": h["job_id"], "production_revision": "v3"}
+    resume_payload = {"task_id": h["job_id"], "production_revision": production_revision}
     code, payload = http("POST", "/private-video/jobs", token, resume_payload)
     if (code != 202 or payload.get("task_id") != h["job_id"]
-        or payload.get("production_revision") != "v3" or payload.get("status") != "ACCEPTED"):
+        or payload.get("production_revision") != production_revision or payload.get("status") != "ACCEPTED"):
         raise RuntimeError(f"RECOVERY_RESUME_FAILED_HTTP_{code}")
 
     samples = []
@@ -141,7 +150,7 @@ def execute_recovery(
     for attempt in range(max_heartbeat_attempts):
         if attempt:
             sleeper(10)
-        state = _load_status(client, bucket, h["job_id"])
+        state = _load_status(client, bucket, h["job_id"], production_revision)
         if state["status"] == "FAILED":
             raise RuntimeError("RECOVERY_JOB_FAILED_AGAIN")
         if state["status"] == "RUNNING" and state["updated_at"] != last_stamp:
@@ -153,7 +162,8 @@ def execute_recovery(
             })
             last_stamp = state["updated_at"]
             if healthy_after_restart(samples):
-                result = {"decision": "RESUME", "reason": "VALIDATED_RECOVERY", "recovered": True}
+                result = {"decision": "RESUME", "reason": "VALIDATED_RECOVERY", "recovered": True,
+                          "production_revision": production_revision}
                 _persist_recovery(client, bucket, h, result)
                 return result
         if state["status"] == "COMPLETED":
@@ -168,6 +178,7 @@ def main() -> int:
     parser.add_argument("--job-id", required=True)
     parser.add_argument("--stage-id", required=True)
     parser.add_argument("--checkpoint", required=True)
+    parser.add_argument("--production-revision", choices=("v3", "v4"), default=DEFAULT_PRODUCTION_REVISION)
     args = parser.parse_args()
     handoff = {
         "schema": "AGENT21-TO-AGENT11-RECOVERY-V1",
@@ -180,7 +191,8 @@ def main() -> int:
         "requested_action": "RESUME",
     }
     client, bucket = client_from_env()
-    result = execute_recovery(client, bucket, handoff, os.environ.get("PRIVATE_ASR_INTERNAL_TOKEN", ""))
+    result = execute_recovery(client, bucket, handoff, os.environ.get("PRIVATE_ASR_INTERNAL_TOKEN", ""),
+                              production_revision=args.production_revision)
     print("PRODUCTION_RECOVERED" if result.get("recovered") else "PRODUCTION_RECOVERY_NO_RESTART")
     return 0
 
