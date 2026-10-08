@@ -331,6 +331,22 @@ def _run_video(task_id, production_revision=None):
         if not qm["passed"]:
             raise RuntimeError("PRIVATE_AGENT_QM_FAILED")
         persist_stage(client,bucket,task_id,"qm","COMPLETED","technical + creative render evidence passed")
+        # Deliver only after QM has accepted the private R2 object.
+        import io
+        import hashlib
+        import requests
+        private_mp4=client.get_object(Bucket=bucket,Key=result["r2_key"])["Body"].read()
+        if hashlib.sha256(private_mp4).hexdigest()!=result["sha256"]:
+            raise RuntimeError("PRIVATE_QM_DELIVERY_HASH_MISMATCH")
+        response=requests.post(
+            "https://api.telegram.org/bot"+os.environ["TELEGRAM_BOT_TOKEN"]+"/sendVideo",
+            data={"chat_id":os.environ["TELEGRAM_CHAT_ID"],
+                  "caption":"Dünya – Level 12 · private QM-approved preview"},
+            files={"video":("Duenya-Level-12-private.mp4",io.BytesIO(private_mp4),"video/mp4")},
+            timeout=120)
+        if response.status_code!=200:
+            raise RuntimeError("PRIVATE_QM_APPROVED_TELEGRAM_DELIVERY_FAILED")
+
         current["stage"]="private_preview"
         preview={"schema":"PRIVATE-VIDEO-PREVIEW-V1","task_id":task_id,"state":"READY_FOR_HUMAN",
                  "r2_key":result["r2_key"],"sha256":result["sha256"],"private":True,"publishable":False}
