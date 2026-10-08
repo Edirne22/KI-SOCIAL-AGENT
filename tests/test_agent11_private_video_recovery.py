@@ -56,7 +56,7 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
                 return 202, {"status": "container_restart_requested"}
             if path == "/health":
                 return 200, {"ready": True}
-            if path == "/private-video/resume-duenya":
+            if path == "/health?recovery=duenya-level12":
                 return 202, {"status": "ACCEPTED", "task_id": "f6f50c9f4c2690e4eb1fe978", "production_revision": "v4"}
             raise AssertionError(path)
         return call
@@ -76,7 +76,7 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         self.assertTrue(all("/revisions/v4/status.json" in key for key in client.reads))
         self.assertNotIn(("POST", "/admin/container-restart", None), calls)
         self.assertFalse(any(call[0:2] == ("GET", "/health") for call in calls[:1]))
-        self.assertEqual(calls[0], ("GET", "/private-video/resume-duenya", None))
+        self.assertEqual(calls[0], ("GET", "/health?recovery=duenya-level12", None))
         self.assertFalse(any(call[0:2] == ("POST", "/private-video/jobs") for call in calls))
         self.assertEqual(len(client.writes), 1)
         body = json.loads(client.writes[0]["Body"])
@@ -87,7 +87,7 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
 
     def test_recovery_http_helper_rejects_post_to_get_only_resume_route(self):
         with self.assertRaisesRegex(ValueError, "HTTP_PATH_NOT_ALLOWED"):
-            _http_json("POST", "/private-video/resume-duenya", "token")
+            _http_json("POST", "/health?recovery=duenya-level12", "token")
 
     def test_same_running_record_twice_is_not_two_heartbeats(self):
         client = FakeClient([
