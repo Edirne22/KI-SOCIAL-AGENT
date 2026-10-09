@@ -1,41 +1,27 @@
 # Inspiration-Ideen
 
-# Community-Report: Bülents deutsch-türkische Motorrad-/Reise-Community
-**Zeitraum:** Letzte 7 Tage  
-**Datenbasis:** Keine strukturierten Beiträge vorhanden.
+**Report für Bülents deutsch‑türkische Motorrad-/Reise-Community**  
+*Stand: aktuell (keine strukturierten Beiträge der letzten 7 Tage verfügbar)*  
 
 ---
 
-## Top-5 Trending Themen (mit Belegen)
+### Top‑5 Trending Themen  
 **Report eingeschränkt – nur 0 belegte Themen gefunden.**  
-Es lagen keine strukturierten Social-Media- oder Suchdaten vor, um Trends, URLs, Daten oder Engagement-Zahlen zu belegen.
+Es liegen keine strukturierten Social‑Media‑ oder Suchbeiträge vor, aus denen belegte Themen mit Quelle, Datum und Begründung abgeleitet werden könnten. Daher können keine Trending‑Themen benannt werden.
 
 ---
 
-## 3 konkrete Content-Ideen für Bülent
+### 3 konkrete Content‑Ideen für Bülent  
+Da keine belegten Quellen vorliegen, dürfen keine Ideen mit erfundenen URLs, Hooks oder Begründungen erstellt werden. Alle drei Ideen werden daher als **nicht erstellt** gekennzeichnet.
 
-### Idee 1
-- **Titel:** nicht erstellt  
-- **Format:** –  
-- **Hook:** –  
-- **Inspirations-Quelle:** keine belegte Quelle verfügbar  
-- **Warum passend:** –
-
-### Idee 2
-- **Titel:** nicht erstellt  
-- **Format:** –  
-- **Hook:** –  
-- **Inspirations-Quelle:** keine belegte Quelle verfügbar  
-- **Warum passend:** –
-
-### Idee 3
-- **Titel:** nicht erstellt  
-- **Format:** –  
-- **Hook:** –  
-- **Inspirations-Quelle:** keine belegte Quelle verfügbar  
-- **Warum passend:** –
+| Idee | Titel | Format | Hook | Inspirations‑Quelle | Warum passend |
+|------|-------|--------|------|----------------------|---------------|
+| 1 | nicht erstellt | – | – | – | – |
+| 2 | nicht erstellt | – | – | – | – |
+| 3 | nicht erstellt | – | – | – | – |
 
 ---
 
-## Quellen
-Keine URLs in den strukturierten Daten vorhanden.
+### Quellen  
+Keine URLs wurden verwendet, da keine strukturierten Beiträge vorliegen.  
+**Liste der verwendeten Quellen:** *(keine)*
