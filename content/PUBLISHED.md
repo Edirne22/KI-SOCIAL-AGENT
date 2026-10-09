@@ -865,6 +865,7 @@ Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-4-franco-morb
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-09-daily
 Telegram-Update-ID: 279361923
