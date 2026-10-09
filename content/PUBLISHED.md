@@ -842,3 +842,47 @@ https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-
 Quelle: https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum", "media_status": "", "object_id": "1285968257941776_122121062913469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122121062913469415", "source_url": "https://motoetkinlik.com/toprak-razgatlioglu-mandalikaya-geri-dondugum-icin-cok-mutluyum", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-09-daily
+Telegram-Update-ID: 279361923
+MotoGP-Auswahl: 4
+Story-Key: title:franco-morbidelli-den-rtan-itiraf-ducati-nin-beni-se-mesi-kolay-de-ildi
+Event-Fingerprint: -
+Titel: Franco Morbidelli'den şaşırtan itiraf: “Ducati'nin beni seçmesi kolay değildi”
+Text:
+Franco Morbidelli macht 2027 den Sprung von der MotoGP zur Ducati in der WorldSBK 🏍️  
+Er sagt, Ducati musste echt schuften, um ihn an den Start zu kriegen.  
+Nach nem harten MotoGP‑Jahr will er wieder im Kampf um Siege stehen.  
+Was meint ihr, ist der Move nach Superbike für ihn der richtige Weg?  
+
+#WorldSBK #FrancoMorbidelli #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-4-franco-morbidelli-de-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-09-daily
+Telegram-Update-ID: 279361923
+MotoGP-Auswahl: 4
+Story-Key: title:franco-morbidelli-den-rtan-itiraf-ducati-nin-beni-se-mesi-kolay-de-ildi
+Event-Fingerprint: -
+Titel: Franco Morbidelli'den şaşırtan itiraf: “Ducati'nin beni seçmesi kolay değildi”
+Text:
+Franco Morbidelli wechselt 2027 von MotoGP zu Ducati in der WorldSBK.
+
+Er gibt zu, dass es für Ducati nicht einfach war, ihn zu verpflichten.
+
+Nach einem schwierigen MotoGP-Jahr will er zurück ins Kampfgeschehen um Siege.
+
+Wie findet ihr den Schritt von Morbidelli Richtung Superbike?
+
+#WorldSBK #FrancoMorbidelli #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
+Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
+Link-Preview: offiziell
