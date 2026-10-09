@@ -22,6 +22,8 @@ STATUS_KEY=f"ai-central/v1/private-video/{TASK_ID}/revisions/{PRODUCTION_REVISIO
 # The watchdog incident must independently agree with that stage before recovery is allowed.
 def _incident_key(stage):
     return f"ai-central/v1/maintenance/incidents/WD-{TASK_ID}-{stage}-{PRODUCTION_REVISION}.json"
+STAGE="video_editor_ffmpeg"  # Legacy compatibility for regression imports; runtime remains stage-aware.
+INCIDENT_KEY=_incident_key(STAGE)
 STALE_AFTER_SECONDS=75
 
 
@@ -35,6 +37,10 @@ def reconcile(client,bucket,*,now=None):
     stage=state.get("stage")
     if stage not in ALLOWED_STAGES:
         raise RuntimeError("AGENT21_DUENYA_STAGE_INVALID")
+    if (state.get("schema")=="PRIVATE-VIDEO-STATUS-V1" and state.get("task_id")==TASK_ID
+        and state.get("production_revision")==PRODUCTION_REVISION
+        and state.get("status")=="COMPLETED"):
+        return {"action":"NO_RECOVERY","reason":"ALREADY_COMPLETED","repair_id":REPAIR_ID}
     incident_id=f"WD-{TASK_ID}-{stage}-{PRODUCTION_REVISION}"
     incident=_read_json(client,bucket,_incident_key(stage))
     if (
@@ -45,7 +51,7 @@ def reconcile(client,bucket,*,now=None):
         or incident.get("machine")!="private-media-container"
         or incident.get("route_to")!="agent21"
         or incident.get("requested_action")!="DIAGNOSE_ONLY"
-        or incident.get("reason")!="MACHINE_REPORTED_STALLED"
+        or incident.get("reason") not in {"MACHINE_REPORTED_STALLED","MACHINE_REPORTED_FAILED"}
     ):
         raise RuntimeError("AGENT21_DUENYA_INCIDENT_INVALID")
     if (state.get("schema")!="PRIVATE-VIDEO-STATUS-V1" or state.get("task_id")!=TASK_ID
