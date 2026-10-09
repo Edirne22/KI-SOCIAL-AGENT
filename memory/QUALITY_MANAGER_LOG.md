@@ -2778,3 +2778,51 @@ Story-Key: title:resmen-kland-franco-morbidelli-motogp-yi-b-rak-p-worldsbk-ye-ge
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-09 05:04 UTC | Motorcycle Racing | FAIL
+Titel: Can Öncü: "Estoril'de Güçlü Bir Performans Gösterebiliriz"
+Story-Key: title:can-nc-estoril-de-g-l-bir-performans-g-sterebiliriz
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-09 05:04 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü: "Estoril'de Güçlü Bir Performans Gösterebiliriz"
+Story-Key: title:can-nc-estoril-de-g-l-bir-performans-g-sterebiliriz
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-09 05:04 UTC | Motorcycle Racing | PASS
+Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
+Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-09 05:04 UTC | Motorcycle Racing | PASS
+Titel: Aprilia'da takım emirleri tartışması! Fernandez ve Ogura kararını açıkladı
+Story-Key: title:aprilia-da-tak-m-emirleri-tart-mas-fernandez-ve-ogura-karar-n-klad
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-09 05:04 UTC | Motorcycle Racing | FAIL
+Titel: Aston Martin: "Alonso'nun farklı serilerde yarışmasını destekliyoruz" - TRmotosports
+Story-Key: title:aston-martin-alonso-nun-farkl-serilerde-yar-mas-n-destekliyoruz-trmotosports
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-10-09 05:05 UTC | Motorcycle Racing | FAIL
+Titel: Aston Martin: "Alonso'nun farklı serilerde yarışmasını destekliyoruz" - TRmotosports
+Story-Key: title:aston-martin-alonso-nun-farkl-serilerde-yar-mas-n-destekliyoruz-trmotosports
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-10-09 05:05 UTC | Motorcycle Racing | PASS
+Titel: Franco Morbidelli'den şaşırtan itiraf: “Ducati'nin beni seçmesi kolay değildi”
+Story-Key: title:franco-morbidelli-den-rtan-itiraf-ducati-nin-beni-se-mesi-kolay-de-ildi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-09 05:05 UTC | Motorcycle Racing | PASS
+Titel: Aprilia'dan Marquez ve Ducati itirafı: “En zor görevimiz”
+Story-Key: title:aprilia-dan-marquez-ve-ducati-itiraf-en-zor-g-revimiz
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

@@ -864,3 +864,23 @@ Quelle: https://tr.motorsport.com/motogp/news/resmi-aleix-espargaro-endonezyada-
 Story-Key: title:resmen-kland-franco-morbidelli-motogp-yi-b-rak-p-worldsbk-ye-ge-iyor
 Titel: Resmen açıklandı: Franco Morbidelli MotoGP’yi bırakıp WorldSBK’ye geçiyor
 Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
+
+## 2026-10-09 04:39 UTC – ANGEBOTEN
+Story-Key: title:can-nc-estoril-de-g-l-bir-performans-g-sterebiliriz
+Titel: Can Öncü: "Estoril'de Güçlü Bir Performans Gösterebiliriz"
+Quelle: https://motoetkinlik.com/can-oncu-estorilde-guclu-bir-performans-gosterebiliriz
+
+## 2026-10-09 04:39 UTC – ANGEBOTEN
+Story-Key: title:aprilia-da-tak-m-emirleri-tart-mas-fernandez-ve-ogura-karar-n-klad
+Titel: Aprilia'da takım emirleri tartışması! Fernandez ve Ogura kararını açıkladı
+Quelle: https://motoetkinlik.com/apriliada-sampiyonluk-gerilimi-trackhouse-suruculeri-takim-emirlerine-karsi-tavrini-acikladi
+
+## 2026-10-09 04:39 UTC – ANGEBOTEN
+Story-Key: title:franco-morbidelli-den-rtan-itiraf-ducati-nin-beni-se-mesi-kolay-de-ildi
+Titel: Franco Morbidelli'den şaşırtan itiraf: “Ducati'nin beni seçmesi kolay değildi”
+Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
+
+## 2026-10-09 04:39 UTC – ANGEBOTEN
+Story-Key: title:aprilia-dan-marquez-ve-ducati-itiraf-en-zor-g-revimiz
+Titel: Aprilia'dan Marquez ve Ducati itirafı: “En zor görevimiz”
+Quelle: https://motoetkinlik.com/apriliadan-carpici-marquez-itirafi-motogpde-daha-zor-bir-rakip-olamaz

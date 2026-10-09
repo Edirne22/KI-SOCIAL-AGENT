@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1791434308
+Session-Timestamp: 1791520776
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -16,24 +16,28 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 4.8
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
-Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
-Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
+Artikelalter-Tage: 0.3
+Kategorie: Turkish Riders
+Serie: WorldSSP
+Story-Key: title:can-nc-estoril-de-g-l-bir-performans-g-sterebiliriz
+Titel: Can Öncü: "Estoril'de Güçlü Bir Performans Gösterebiliriz"
+Quelle: https://motoetkinlik.com/can-oncu-estorilde-guclu-bir-performans-gosterebiliriz
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-1-motegide-olayli-spri-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-motegi-sprint-moreira-motogp-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-1-can-oncu-estoril-de-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/Can-Oncu-Pata-Yamaha-Ten-Kate-Racing-Yamaha-R9-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez gewinnt den Sprint in Motegi. Doch der eigentliche Moment geht an Diogo Moreira: Nach den Strafen gegen Jorge Martin und Enea Bastianini rückt der Portugiese auf den zweiten Platz vor – das ist sein erstes Podium in der Königsklasse. 🏍️💨
+Can Öncü geht in WorldSSP Estoril an den Start und will die Punkte hinter sich lassen.
 
-Wie schätzt ihr seine Chancen für das Hauptrennen ein?
+Im dritten Platz liegt er 8 Punkte hinter Masia.
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife #DiogoMoreira
+Zwei Siege in den beiden Rennen stehen auf dem Programm.
+
+Was erwartet ihr von Can in Estoril?
+
+#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -44,24 +48,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
-Kategorie: MotoGP
+Artikelalter-Tage: 5.5
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: title:jorge-martin-s-ylediklerin-er-ya-da-ge-sana-geri-d-n-yor
-Titel: Jorge Martin: “Söylediklerin Er Ya Da Geç Sana Geri Dönüyor!”
-Quelle: https://motoetkinlik.com/jorge-martin-soylediklerin-er-ya-da-gec-sana-geri-donuyor
+Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
+Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-2-jorge-martin-soeyled-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/01/jorge_martin.webp
+Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-2-toprak-motegide-sonu-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-motegi-motogp-frenleme-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Söylediklerin er ya da geç sana geri dönüyor. Was du sagst, kommt früher oder später zu dir zurück.
+Toprak Razgatlıoğlu wurde im Japana-Motegi-Sprint 17.
 
-Jorge Martin hat diesen Spruch gesagt — und er bezog sich auf sich selbst. Der Aprilia-Pilot erinnerte daran, dass er 2023 Marc Márquez öffentlich beschuldigt hatte. Und dann passierte genau das Gleiche mit Alex Márquez. Ein schöner Kreis sozusagen.
+Er hat aber gesagt, dass er bei der Yamaha im Bremsbereich richtig große Fortschritte gemacht hat.
 
-Wie findet ihr Martins Statement?
+Sein Fazit: Jetzt weiß er endlich, wie er das Rad dort fahren muss.
 
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr den Entwicklungsschritt von Toprak in Motegi?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -72,24 +78,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.6
+Artikelalter-Tage: 0.7
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:honda-klad-joan-mir-mandalika-da-yok-yerine-aleix-espargaro-yar-acak
-Titel: Honda açıkladı: Joan Mir Mandalika’da yok, yerine Aleix Espargaro yarışacak
-Quelle: https://motoetkinlik.com/hondadan-mandalika-icin-surpriz-karar-joan-mirin-yerine-aleix-espargaro-yarisacak
+Story-Key: title:aprilia-da-tak-m-emirleri-tart-mas-fernandez-ve-ogura-karar-n-klad
+Titel: Aprilia'da takım emirleri tartışması! Fernandez ve Ogura kararını açıkladı
+Quelle: https://motoetkinlik.com/apriliada-sampiyonluk-gerilimi-trackhouse-suruculeri-takim-emirlerine-karsi-tavrini-acikladi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-3-honda-acikladi-joan-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/aleix-espargaro-honda-mandalika-motogp-2026-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-3-aprilia-da-takim-emi-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/aprilia-trackhouse-raul-fernandez-ai-ogura-takim-emirleri-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Joan Mir fällt in Indonesien aus. Aleix Espargaro springt für ihn ein.
+Bei Aprilia steht das Thema Stallorder zur Diskussion.
 
-Honda hat bestätigt, dass Mir das MotoGP-Rennen in Mandalika 2026 verpasst. Testfahrer Aleix Espargaro übernimmt für ihn.
+Der Abstand zwischen Jorge Martin und Marc Marquez ist auf zwei Punkte geschrumpft. Die beiden Trackhouse-Piloten Raul Fernandez und Ai Ogura haben sich jetzt zu möglichen Teamanweisungen bei Aprilia geäußert und ihre Haltung dazu erklärt.
 
-Was erwartet ihr von Aleix Espargaro am Wochenende in Mandalika?
+Wie schätzt ihr die Situation ein?
 
-#MotoGP #JoanMir #PolEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -100,26 +106,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.7
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:10862474
-Titel: Resmi: Aleix Espargaro, Endonezya'da Joan Mir'in yerini alacak
-Quelle: https://tr.motorsport.com/motogp/news/resmi-aleix-espargaro-endonezyada-joan-mirin-yerini-alacak/10862474
+Artikelalter-Tage: 0.7
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: title:franco-morbidelli-den-rtan-itiraf-ducati-nin-beni-se-mesi-kolay-de-ildi
+Titel: Franco Morbidelli'den şaşırtan itiraf: “Ducati'nin beni seçmesi kolay değildi”
+Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-4-resmi-aleix-espargar-01.jpg
-Quellen-Preview: https://cdn-8.motorsport.com/images/amp/0Ld5vXN0/s6/aleix-espargaro-honda-hrc.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-4-franco-morbidelli-de-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/franco-morbidelli-ducati-worldsbk-transfer-aciklamasi-2027.webp
 Plattformen: Instagram + Facebook
 Text:
-Aleix Espargaro springt fuer Joan Mir beim Endonezya Grand Prix ein.
+Franco Morbidelli wechselt 2027 von MotoGP zu Ducati in der WorldSBK.
 
-Honda bestätigte offiziell, dass Joan Mir beim Endonezya Grand Prix dieses Wochenende nicht antritt.
+Er gibt zu, dass es für Ducati nicht einfach war, ihn zu verpflichten.
 
-Die Ankündigung erfolgte vor dem Rennwochenende in Endonezya.
+Nach einem schwierigen MotoGP-Jahr will er zurück ins Kampfgeschehen um Siege.
 
-Das Wochenende in Endonezya steht bevor.
+Wie findet ihr den Schritt von Morbidelli Richtung Superbike?
 
-#MotoGP #JoanMir #PolEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #FrancoMorbidelli #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -127,29 +133,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 2.5
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: title:resmen-kland-franco-morbidelli-motogp-yi-b-rak-p-worldsbk-ye-ge-iyor
-Titel: Resmen açıklandı: Franco Morbidelli MotoGP’yi bırakıp WorldSBK’ye geçiyor
-Quelle: https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde
+Artikelalter-Tage: 0.7
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: title:aprilia-dan-marquez-ve-ducati-itiraf-en-zor-g-revimiz
+Titel: Aprilia'dan Marquez ve Ducati itirafı: “En zor görevimiz”
+Quelle: https://motoetkinlik.com/apriliadan-carpici-marquez-itirafi-motogpde-daha-zor-bir-rakip-olamaz
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-08-racing-editorial-2026-10-08-5-resmen-aciklandi-fra-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/franco-morbidelli-ducati-worldsbk-transferi-2027.webp
+Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-5-aprilia-dan-marquez-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/aprilia-massimo-rivola-marc-marquez-ducati-2026-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Franco Morbidelli verlässt 2027 die MotoGP.
+Massimo Rivola ist der CEO von Aprilia Racing.
 
-Er geht zu Aruba.it Racing – Ducati in die WorldSBK.
+Rivola bezeichnet das Bezwingen von Marc Marquez und Ducati als die härteste Aufgabe.
 
-Der Wechsel wurde offiziell bestätigt.
+Im MotoGP-Titelkampf beträgt der Punktestand zwei Punkte Unterschied.
 
-Was haltet ihr von diesem Schritt – ein Neustart oder ein Abschied vom Licht? 🏍️
+Was erwartet ihr von Aprilia im Titelkampf?
 
-#WorldSBK #FrancoMorbidelli #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
