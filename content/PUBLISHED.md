@@ -863,9 +863,8 @@ Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-son
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-4-franco-morbidelli-de-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 37906897482-1
+## Facebook [GEPOSTET 2026-10-09 08:45 | ID: 1285968257941776_122121646071469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-09-daily
 Telegram-Update-ID: 279361923
@@ -887,3 +886,4 @@ Wie findet ihr den Schritt von Morbidelli Richtung Superbike?
 https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
 Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu", "media_status": "", "object_id": "1285968257941776_122121646071469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122121646071469415", "source_url": "https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu", "version": 1}
