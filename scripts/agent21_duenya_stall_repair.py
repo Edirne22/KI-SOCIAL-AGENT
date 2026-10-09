@@ -22,6 +22,10 @@ STATUS_KEY=f"ai-central/v1/private-video/{TASK_ID}/revisions/{PRODUCTION_REVISIO
 # The watchdog incident must independently agree with that stage before recovery is allowed.
 def _incident_key(stage):
     return f"ai-central/v1/maintenance/incidents/WD-{TASK_ID}-{stage}-{PRODUCTION_REVISION}.json"
+
+# Backward-compatible legacy FFmpeg incident constant retained for existing tests/tools.
+INCIDENT_ID=f"WD-{TASK_ID}-video_editor_ffmpeg-{PRODUCTION_REVISION}"
+INCIDENT_KEY=_incident_key("video_editor_ffmpeg")
 STALE_AFTER_SECONDS=75
 
 
