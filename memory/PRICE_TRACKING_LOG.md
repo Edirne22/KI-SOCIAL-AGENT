@@ -267,3 +267,7 @@
 ## 2026-10-08 06:13
 - Produkt: handyvertrag 80GB D1
 - Ergebnis: Kein verifiziertes Live-Angebot von Keiner (Fehler); nicht gespeichert.
+
+## 2026-10-09 06:14
+- Produkt: handyvertrag 80GB D1
+- Ergebnis: Kein verifiziertes Live-Angebot von Gemini-Fallback; nicht gespeichert.

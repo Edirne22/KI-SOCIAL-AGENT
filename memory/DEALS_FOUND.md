@@ -2946,3 +2946,35 @@ Verifiziertes Angebot: nein
 Ursache: ⏳ Suche derzeit nicht möglich – bitte in 10 Minuten erneut versuchen.
 SEARCH-FEHLER: provider=Alle, ursache=Alle Suchanbieter fehlgeschlagen, detail=SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 403, detail={   "error": {     "type": "platform-feature-disabled",     "message": "Monthly usage hard limit exceeded"   } } | SEARCH-FEHLER: provider=SearXNG, ursache=Nicht konfiguriert, detail=SEARXNG_URL fehlt
 Bitte später erneut versuchen.
+## Suche vom 2026-10-09 06:14
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem solchen Mobilfunktarif im D1-Netz (Deutsche Telekom):
+
+### 1. Mögliche Händlerarten und AnAlternate
+* **Netzbetreiber direkt:** Bietet oft die höchste Netzgeschwindigkeit (Max-Speed) und besten Service, liegt preislich bei hohem Datenvolumen jedoch meist über dem Budget von Drittanbietern.
+* **Tochtermarken & Discount-Anbieter im D1-Netz:** Marken wie Congstar oder fraenk nutzen das Telekom-Netz. Sie bieten oft flexiblere Laufzeiten, weisen jedoch meist Drosselungen bei der maximalen Surfgeschwindigkeit (z. B. 25 oder 50 MBit/s) auf.
+* **Unabhängige Provider / MVNOs:** Anbieter wie Klarmobil, freenet oder HIGH nutzen unter anderem das D1-Netz und bieten regelmäßig Aktionsangebote mit viel Datenvolumen an.
+* **Freie Händler & Vergleichsportal-Deals:** Portale wie Check24, Verivox oder spezialisierte Deal-Plattformen bieten oft Effektivpreis-Angebote an (z. B. durch Cashback, Wechselboni oder Bündelung mit Hardware).
+
+### 2. Produktfamilien und Tarifmodelle
+* **Sim-Only-Tarife:** Reine Tarifverträge ohne Smartphone. Hier lässt sich die monatliche Grundgebühr direkt beurteilen.
+* **Hardware-Bundles (Effektivpreis-Deals):** Tarife mit einem beiliegenden Smartphone. Wird das Gerät nicht benötigt und weiterverkauft, lässt sich der rechnerische Monatspreis („Effektivpreis“) deutlich senken.
+* **Junge-Leute- / Studententarife:** Viele Anbieter gewähren bei Identitätsnachweis extra Datenvolumen oder Rabatte auf die Grundgebühr.
+* **Monatlich kündbar vs. 24 Monate Laufzeit:** Verträge mit 24 Monaten Mindestlaufzeit bieten rechnerisch oft bessere Konditionen oder Rabatte im Vergleich zu flexibel kündbaren Varianten.
+
+### 3. Auswahl- und Vergleichskriterien
+* **Geschwindigkeit und 5G-Freischaltung:** Prüfen Sie, ob 5G enthalten ist und wie hoch die maximale Bandbreite begrenzt ist. Für alltägliche Anwendungen reichen 25–50 MBit/s meist vollkommen aus.
+* **Einmalige Kosten & Boni:** Berücksichtigen Sie Anschlusspreise, Versandkosten sowie mögliche Gutschriften für die Rufnummernmitnahme (Wechselbonus).
+* **Preisentwicklung ab dem 25. Monat:** Achten Sie darauf, ob sich die monatliche Gebühr nach Ablauf der Mindestvertragslaufzeit erhöht, um rechtzeitig zu kündigen oder zu wechseln.
+* **VoLTE und WLAN-Call:** Bei nahezu allen modernen D1-Tarifen Standard, sollte jedoch für optimale Sprachqualität bei Bedarf überprüft werden.
+
+Bitte in 10 Minuten erneut versuchen.
