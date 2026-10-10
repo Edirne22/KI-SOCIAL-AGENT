@@ -96,7 +96,7 @@ def _load_status(client, bucket: str, job_id: str, production_revision: str, exp
             and incident.get("machine") == "private-media-container"
             and incident.get("route_to") == "agent21"
             and incident.get("requested_action") == "DIAGNOSE_ONLY"
-            and incident.get("reason") == "MACHINE_REPORTED_STALLED"
+            and incident.get("reason") in {"MACHINE_REPORTED_STALLED", "MACHINE_REPORTED_FAILED"}
         ):
             raise RuntimeError("RECOVERY_STAGE_PROVENANCE_INVALID")
         stage = expected_stage
