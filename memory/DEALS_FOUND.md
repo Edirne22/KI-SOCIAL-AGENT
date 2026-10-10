@@ -2978,3 +2978,35 @@ Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem solchen Mob
 * **VoLTE und WLAN-Call:** Bei nahezu allen modernen D1-Tarifen Standard, sollte jedoch für optimale Sprachqualität bei Bedarf überprüft werden.
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-10-10 06:12
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine und zeitunabhängige Hinweise, die bei der Suche nach einem passenden Mobilfunkvertrag im D1-Netz (Telekom-Netz) helfen können:
+
+### Mögliche Händlerarten
+* **Direktanbieter / Netzbetreiber:** Die Telekom bietet Verträge direkt an. Diese liegen preislich oft höher, beinhalten jedoch häufig Premium-Optionen, volle 5G-Geschwindigkeit oder Kombi-Vorteile für Bestandskunden.
+* **Tochtermarken & Discounter im D1-Netz:** Anbieter wie Congstar, Fraenk oder Klarmobil nutzen das D1-Netz und bieten oft günstigere Konditionen mit abgespeckten Funktionen (z. B. gedeckelter Maximalgeschwindigkeit) an.
+* **Unabhängige Provider:** Unternehmen wie Freenet (ehemals Mobilcom-Debitel) oder HIGH Mobile vertreiben Verträge im D1-Netz, teilweise zu abweichenden Konditionen als der Netzbetreiber selbst.
+* **Online-Vertragsvermittler / Reseller:** Plattformen, die Verträge Dritter vermitteln. Hier entstehen oft günstige „Effektivpreise“ durch einmalige Auszahlungen, Cashbacks oder den Verkauf von Zugaben (z. B. Smartphones).
+
+### Relevant Produktfamilien & Tarifoptionen
+* **24-Monats-Verträge:** Weisen meist die niedrigsten monatlichen Durchschnittskosten auf, binden jedoch für zwei Jahre.
+* **Monatlich kündbare Tarife (Flex-Tarife):** Bieten maximale Flexibilität, können aber leicht höhere Grundgebühren oder Bereitstellungskosten haben.
+* **Junge-Leute- / Studententarife:** Viele Anbieter gewähren Personen unter 28 Jahren zusätzliches Datenvolumen oder Rabatte.
+* **Kombi-Angebote (Festnetz + Mobilfunk):** Wer bereits Internet/Festnetz beim selben Anbieter nutzt, erhält oft Boni wie Extra-Datenvolumen oder monatliche Preisnachlässe.
+
+### Wichtige Auswahl- und Vergleichskriterien
+* **Geschwindigkeit und 5G-Zugang:** Prüfen Sie, ob 5G enthalten ist und welche Maximalgeschwindigkeit (Mbit/s) der Tarif bietet.
+* **Effektivpreis-Berechnung:** Berücksichtigen Sie neben der Grundgebühr auch den einmaligen Anschlusspreis, Preiserhöhungen ab dem 25. Monat sowie eventuelle Gutschriften oder Wechselboni.
+* **Rufnummernmitnahme:** Einige Anbieter belohnen die Mitnahme der bisherigen Telefonnummer mit einer Gutschrift.
+* **Netzfunktionen:** Achten Sie auf die Unterstützung von VoLTE (Telefonie über LTE) und WiFi Calling (Telefonie über WLAN).
+
+Bitte in 10 Minuten erneut versuchen.
