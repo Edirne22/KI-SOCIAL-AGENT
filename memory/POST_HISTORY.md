@@ -147,3 +147,11 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 1: Funktioniert Topraks extrem breite Spätbrems-Technik auch auf dem Prototypen?
 - Titel 2: Ruhumuz für die Straße – Türkische Biker-Kultur in Deutschland
 - Hook 2: Wir fahren nicht für den Lärm, sondern für unsere Seele.
+
+### 2026-10-10 06:05 | Entwurf generiert
+- Titel 1: Topraks Bremspunkt auf der M1
+- Hook 1: Hast du dich auch gefragt, wie Toprak mit der Yamaha M1 in der Anbremszone den Unterschied macht?
+- Titel 2: Ruhumuz İçin – Community & Zusammenhalt
+- Hook 2: Was schweißt deutsch-türkische Biker-Clubs nach all den Jahren wirklich zusammen?
+- Titel 3: Kurvenjagd ohne Funkloch-Stress
+- Hook 3: –
