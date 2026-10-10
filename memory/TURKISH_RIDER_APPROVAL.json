@@ -1,12 +1,48 @@
 {
   "version": 1,
-  "created_at": 1791520776,
+  "created_at": 1791607069,
   "max_days": 10,
   "window_used_days": 10,
-  "count": 2,
+  "count": 5,
   "items": [
     {
       "n": 1,
+      "title": "MotoGP Endonezya GP ana antrenman: Kazalarla dolu seansta Fernandez lider, Toprak 16. sırada",
+      "url": "https://tr.motorsport.com/motogp/news/motogp-endonezya-gp-ana-antrenman-kazalarla-dolu-seansta-fernandez-lider-toprak-16-sirada/10863281",
+      "summary": "2026 MotoGP Endonezya Grand Prix'si ana antrenman seansını lider tamamlayan sürücü Raul Fernandez oldu. Toprak Razgatlıoğlu ise 16. sırayı aldı.",
+      "preview": "https://cdn-7.motorsport.com/images/amp/27NoRqE0/s6/raul-fernandez-trackhouse-raci.jpg",
+      "published_at": "2026-10-09T08:39:10Z",
+      "series": "MotoGP",
+      "source_series": "MotoGP",
+      "turkish_rider": "Toprak Razgatlıoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 2,
+      "title": "WorldSSP Estoril Round Serbest Antrenman: Can Zirvede, Bahattin 26. Sırada",
+      "url": "https://motoetkinlik.com/worldssp-estoril-round-serbest-antrenman-can-zirvede-bahattin-26-sirada",
+      "summary": "Can Öncü, WorldSSP Estoril serbest antrenmanında 1:39.084 ile zirvede. Mahias'ın 0,334 saniye önünde bitiren temsilcimizin yanında Bahattin Sofuoğlu 26. oldu.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/can-oncu-estoril-1.webp",
+      "published_at": "2026-10-09T17:00:19+03:00",
+      "series": "WorldSSP",
+      "source_series": "WorldSSP",
+      "turkish_rider": "Can Öncü",
+      "kind": "news"
+    },
+    {
+      "n": 3,
+      "title": "Moto2 Mandalika Antrenman: Rekor İzan Guevara’dan, Deniz Öncü Kaza Geçirdi!",
+      "url": "https://motoetkinlik.com/moto2-mandalika-antrenman-rekor-izan-guevaradan-deniz-oncu-kaza-gecirdi",
+      "summary": "Moto2 Endonezya GP ön sıralama seansında Izan Guevara, Mandalika tur rekorunu kırdı. Manuel Gonzalez dördüncü, Deniz Öncü ise kaza sonrası 26. oldu.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/Moto2-Deniz-Oncu-Motegi-1.webp",
+      "published_at": "2026-10-09T14:41:36+03:00",
+      "series": "Moto2",
+      "source_series": "Moto2",
+      "turkish_rider": "Deniz Öncü",
+      "kind": "news"
+    },
+    {
+      "n": 4,
       "title": "David Alonso Motegi’de rekoru kırdı: İlk dört arasında sadece 0.093 saniye!",
       "url": "https://motoetkinlik.com/david-alonsodan-motegide-rekor-tur-ilk-dort-surucu-0-093-saniyeye-sigdi",
       "summary": "David Alonso, Moto2 Japonya GP antrenmanında 1:47.508 ile Motegi pist rekorunu kırdı. Manuel Gonzalez ikinci olurken Deniz Öncü Q2’ye kaldı.",
@@ -18,7 +54,7 @@
       "kind": "news"
     },
     {
-      "n": 2,
+      "n": 5,
       "title": "Deniz Öncü Japonya’da daha fazlasını istiyor: Hedef ilk 10’un ötesi",
       "url": "https://motoetkinlik.com/deniz-oncu-japonyada-yeni-bir-cikis-ariyor-hedef-ilk-10un-otesi",
       "summary": "Avusturya’da dokuzuncu olan Deniz Öncü, Moto2 Japonya GP’sinde yükselişini sürdürmek ve Motegi’de sezonun en güçlü sonucunu almak istiyor.",

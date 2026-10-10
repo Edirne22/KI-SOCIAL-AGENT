@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1791520776
+Session-Timestamp: 1791607069
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -16,28 +16,26 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 2
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.3
+Artikelalter-Tage: 0.4
 Kategorie: Turkish Riders
 Serie: WorldSSP
-Story-Key: title:can-nc-estoril-de-g-l-bir-performans-g-sterebiliriz
-Titel: Can Öncü: "Estoril'de Güçlü Bir Performans Gösterebiliriz"
-Quelle: https://motoetkinlik.com/can-oncu-estorilde-guclu-bir-performans-gosterebiliriz
+Story-Key: title:worldssp-estoril-round-superpole-can-rekor-turla-pole-de-bahattin-26-s-rada
+Titel: WorldSSP Estoril Round Superpole: Can Rekor Turla Pole'de, Bahattin 26. Sırada
+Quelle: https://motoetkinlik.com/worldssp-estoril-round-superpole-can-rekor-turla-polede-bahattin-26-sirada
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-1-can-oncu-estoril-de-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/Can-Oncu-Pata-Yamaha-Ten-Kate-Racing-Yamaha-R9-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-10-racing-editorial-2026-10-10-1-worldssp-estoril-rou-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/11_Estoril_WorldSSP_2026_Can-Oncu-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Can Öncü geht in WorldSSP Estoril an den Start und will die Punkte hinter sich lassen.
+Starke Runde in Estoril: Can Öncü holt sich in der WorldSSP die Pole-Position mit Rekordzeit.
 
-Im dritten Platz liegt er 8 Punkte hinter Masia.
+In der Superpole setzte Öncü mit einer 1:39.011 die Bestzeit und sicherte sich Startplatz eins. Hinter ihm landeten Mahias auf dem zweiten und Booth-Amos auf dem dritten Rang. Bahattin Sofuoğlu kam in der Session auf den 26. Platz.
 
-Zwei Siege in den beiden Rennen stehen auf dem Programm.
+Was erwartet ihr von Can Öncü nach dieser Pole-Runde in Estoril?
 
-Was erwartet ihr von Can in Estoril?
-
-#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -48,26 +46,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 5.5
+Artikelalter-Tage: 0.1
 Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
-Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
-Quelle: https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim
+Story-Key: motogp:10863649
+Titel: MotoGP Endonezya GP 2. antrenman: Bezzecchi lider, Toprak sert bir kaza yaptı
+Quelle: https://tr.motorsport.com/motogp/news/motogp-endonezya-gp-2-antrenman-bezzecchi-lider-toprak-sert-bir-kaza-yapti/10863649
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-2-toprak-motegide-sonu-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-motegi-motogp-frenleme-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-10-racing-editorial-2026-10-10-2-motogp-endonezya-gp-01.jpg
+Quellen-Preview: https://cdn-6.motorsport.com/images/amp/6x7Ld74Y/s6/marco-bezzecchi-aprilia-racing.jpg
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu wurde im Japana-Motegi-Sprint 17.
+Im 2. Training zum MotoGP Grand Prix von Indonesien 2026 sicherte sich Marco Bezzecchi die Spitzenposition.
 
-Er hat aber gesagt, dass er bei der Yamaha im Bremsbereich richtig große Fortschritte gemacht hat.
+Toprak Razgatlıoğlu stürzte bereits in den ersten Minuten der Session.
 
-Sein Fazit: Jetzt weiß er endlich, wie er das Rad dort fahren muss.
+Bezzecchi beendete das 2. Training damit als Führender.
 
-Wie seht ihr den Entwicklungsschritt von Toprak in Motegi?
+Lasst eure Gedanken dazu in den Kommentaren da.
 
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -79,23 +77,23 @@ Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 0.7
-Kategorie: MotoGP
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: title:aprilia-da-tak-m-emirleri-tart-mas-fernandez-ve-ogura-karar-n-klad
-Titel: Aprilia'da takım emirleri tartışması! Fernandez ve Ogura kararını açıkladı
-Quelle: https://motoetkinlik.com/apriliada-sampiyonluk-gerilimi-trackhouse-suruculeri-takim-emirlerine-karsi-tavrini-acikladi
+Story-Key: title:motogp-mandalika-antrenman-aprilla-dan-l-zirve-fernandez-rekor-k-rd-toprak-tan-g-zel-ba-lang
+Titel: MotoGP Mandalika Antrenman Aprilla’dan Üçlü Zirve: Fernandez Rekor Kırdı, Toprak'tan Güzel Başlangıç!
+Quelle: https://motoetkinlik.com/motogp-mandalika-antrenman-aprilladan-uclu-zirve-fernandez-rekor-kirdi-topraktan-guzel-baslangic
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-3-aprilia-da-takim-emi-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/aprilia-trackhouse-raul-fernandez-ai-ogura-takim-emirleri-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-10-racing-editorial-2026-10-10-3-motogp-mandalika-ant-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-motegi-motogp-frenleme-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Bei Aprilia steht das Thema Stallorder zur Diskussion.
+Raul Fernandez hat den Mandalika-Pist-Rekord geknackt – im Qualifying zum Indonesien-GP. 🏍️
 
-Der Abstand zwischen Jorge Martin und Marc Marquez ist auf zwei Punkte geschrumpft. Die beiden Trackhouse-Piloten Raul Fernandez und Ai Ogura haben sich jetzt zu möglichen Teamanweisungen bei Aprilia geäußert und ihre Haltung dazu erklärt.
+Aprilia stellt mit den ersten drei Plätzen die effektivste.onStart-Position im Feld. Toprak Razgatlıoğlu landet auf Rang 16 und muss sich im Rennen nach vorne arbeiten.
 
-Wie schätzt ihr die Situation ein?
+Was erwartet ihr von den beiden Fahrern im Rennen?
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -103,29 +101,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 2
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 0.7
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: title:franco-morbidelli-den-rtan-itiraf-ducati-nin-beni-se-mesi-kolay-de-ildi
-Titel: Franco Morbidelli'den şaşırtan itiraf: “Ducati'nin beni seçmesi kolay değildi”
-Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
+Kategorie: Turkish Riders
+Serie: MotoGP
+Story-Key: title:toprak-razgatl-o-lu-endonezya-gp-cuma-antrenmanlar-n-de-erlendirdi-i-kinci-sekt-r-zersek-b-y-k-bir-ad-m-ataca-z
+Titel: Toprak Razgatlıoğlu Endonezya GP Cuma Antrenmanlarını Değerlendirdi: "İkinci Sektörü Çözersek Büyük Bir Adım Atacağız"
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-endonezya-gp-cuma-antrenmanlarini-degerlendirdi-ikinci-sektoru-cozersek-buyuk-bir-adim-atacagiz
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-4-franco-morbidelli-de-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/franco-morbidelli-ducati-worldsbk-transfer-aciklamasi-2027.webp
+Instagram-Bild: assets/images/2026-10/2026-10-10-racing-editorial-2026-10-10-4-toprak-razgatlioglu-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/Toprak-Razgatlioglu-Endonezya-GP-Mandalika-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Franco Morbidelli wechselt 2027 von MotoGP zu Ducati in der WorldSBK.
+Toprak Razgatlıoğlu hat nach den Freitagstrainings beim MotoGP Indonesien GP 2026 seine Eindrücke geschildert.
 
-Er gibt zu, dass es für Ducati nicht einfach war, ihn zu verpflichten.
+Dabei sprach er detailliert über die Zeitverluste im zweiten Streckenabschnitt und seine Ziele für das anstehende Qualifying.
 
-Nach einem schwierigen MotoGP-Jahr will er zurück ins Kampfgeschehen um Siege.
+Wenn die Schwierigkeiten im zweiten Streckenabschnitt gelöst werden, sieht er die Möglichkeit für einen großen Schritt nach vorn.
 
-Wie findet ihr den Schritt von Morbidelli Richtung Superbike?
+Wie schätzt ihr seine Ausgangslage für das Qualifying ein?
 
-#WorldSBK #FrancoMorbidelli #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -133,29 +131,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.7
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: title:aprilia-dan-marquez-ve-ducati-itiraf-en-zor-g-revimiz
-Titel: Aprilia'dan Marquez ve Ducati itirafı: “En zor görevimiz”
-Quelle: https://motoetkinlik.com/apriliadan-carpici-marquez-itirafi-motogpde-daha-zor-bir-rakip-olamaz
+Artikelalter-Tage: 0.5
+Kategorie: Turkish Riders
+Serie: WorldSSP
+Story-Key: motogp:10863574
+Titel: WSSP Portekiz Superpole: Can Öncü, Estoril’de rekor kırarak pole pozisyonunu kazandı, Lucas Mahias ikinci
+Quelle: https://tr.motorsport.com/supersport/news/wssp-portekiz-superpole-can-oncu-estorilde-rekor-kirarak-pole-pozisyonunu-kazandi-lucas-mahias-ikin/10863574
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-5-aprilia-dan-marquez-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/aprilia-massimo-rivola-marc-marquez-ducati-2026-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-10-racing-editorial-2026-10-10-5-wssp-portekiz-superp-01.jpg
+Quellen-Preview: https://cdn-3.motorsport.com/images/amp/0rVPvqm0/s6/can-oncu.jpg
 Plattformen: Instagram + Facebook
 Text:
-Massimo Rivola ist der CEO von Aprilia Racing.
+Can Öncü hat sich in der WorldSSP-Superpole in Estoril mit einem neuen Rekord die Pole-Position gesichert.
 
-Rivola bezeichnet das Bezwingen von Marc Marquez und Ducati als die härteste Aufgabe.
+Lucas Mahias belegte in der Superpole den zweiten Platz.
 
-Im MotoGP-Titelkampf beträgt der Punktestand zwei Punkte Unterschied.
+Das Event in Portugal bildet die 11. Saisonrunde der WorldSSP, womit vor dem Saisonabschluss nur noch ein weiteres Rennwochenende aussteht.
 
-Was erwartet ihr von Aprilia im Titelkampf?
+Schreibt eure Gedanken zur Superpole in Estoril gern in die Kommentare.
 
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

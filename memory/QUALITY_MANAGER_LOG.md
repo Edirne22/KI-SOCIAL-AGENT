@@ -2826,3 +2826,33 @@ Story-Key: title:aprilia-dan-marquez-ve-ducati-itiraf-en-zor-g-revimiz
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-10 05:04 UTC | Motorcycle Racing | PASS
+Titel: WorldSSP Estoril Round Superpole: Can Rekor Turla Pole'de, Bahattin 26. Sırada
+Story-Key: title:worldssp-estoril-round-superpole-can-rekor-turla-pole-de-bahattin-26-s-rada
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-10 05:05 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Endonezya GP 2. antrenman: Bezzecchi lider, Toprak sert bir kaza yaptı
+Story-Key: motogp:10863649
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-10 05:05 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Mandalika Antrenman Aprilla’dan Üçlü Zirve: Fernandez Rekor Kırdı, Toprak'tan Güzel Başlangıç!
+Story-Key: title:motogp-mandalika-antrenman-aprilla-dan-l-zirve-fernandez-rekor-k-rd-toprak-tan-g-zel-ba-lang
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-10 05:05 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu Endonezya GP Cuma Antrenmanlarını Değerlendirdi: "İkinci Sektörü Çözersek Büyük Bir Adım Atacağız"
+Story-Key: title:toprak-razgatl-o-lu-endonezya-gp-cuma-antrenmanlar-n-de-erlendirdi-i-kinci-sekt-r-zersek-b-y-k-bir-ad-m-ataca-z
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-10 05:05 UTC | Motorcycle Racing | PASS
+Titel: WSSP Portekiz Superpole: Can Öncü, Estoril’de rekor kırarak pole pozisyonunu kazandı, Lucas Mahias ikinci
+Story-Key: motogp:10863574
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

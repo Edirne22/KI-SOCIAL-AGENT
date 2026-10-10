@@ -884,3 +884,28 @@ Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-son
 Story-Key: title:aprilia-dan-marquez-ve-ducati-itiraf-en-zor-g-revimiz
 Titel: Aprilia'dan Marquez ve Ducati itirafı: “En zor görevimiz”
 Quelle: https://motoetkinlik.com/apriliadan-carpici-marquez-itirafi-motogpde-daha-zor-bir-rakip-olamaz
+
+## 2026-10-10 04:37 UTC – ANGEBOTEN
+Story-Key: title:worldssp-estoril-round-superpole-can-rekor-turla-pole-de-bahattin-26-s-rada
+Titel: WorldSSP Estoril Round Superpole: Can Rekor Turla Pole'de, Bahattin 26. Sırada
+Quelle: https://motoetkinlik.com/worldssp-estoril-round-superpole-can-rekor-turla-polede-bahattin-26-sirada
+
+## 2026-10-10 04:37 UTC – ANGEBOTEN
+Story-Key: motogp:10863649
+Titel: MotoGP Endonezya GP 2. antrenman: Bezzecchi lider, Toprak sert bir kaza yaptı
+Quelle: https://tr.motorsport.com/motogp/news/motogp-endonezya-gp-2-antrenman-bezzecchi-lider-toprak-sert-bir-kaza-yapti/10863649
+
+## 2026-10-10 04:37 UTC – ANGEBOTEN
+Story-Key: title:motogp-mandalika-antrenman-aprilla-dan-l-zirve-fernandez-rekor-k-rd-toprak-tan-g-zel-ba-lang
+Titel: MotoGP Mandalika Antrenman Aprilla’dan Üçlü Zirve: Fernandez Rekor Kırdı, Toprak'tan Güzel Başlangıç!
+Quelle: https://motoetkinlik.com/motogp-mandalika-antrenman-aprilladan-uclu-zirve-fernandez-rekor-kirdi-topraktan-guzel-baslangic
+
+## 2026-10-10 04:37 UTC – ANGEBOTEN
+Story-Key: title:toprak-razgatl-o-lu-endonezya-gp-cuma-antrenmanlar-n-de-erlendirdi-i-kinci-sekt-r-zersek-b-y-k-bir-ad-m-ataca-z
+Titel: Toprak Razgatlıoğlu Endonezya GP Cuma Antrenmanlarını Değerlendirdi: "İkinci Sektörü Çözersek Büyük Bir Adım Atacağız"
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-endonezya-gp-cuma-antrenmanlarini-degerlendirdi-ikinci-sektoru-cozersek-buyuk-bir-adim-atacagiz
+
+## 2026-10-10 04:37 UTC – ANGEBOTEN
+Story-Key: motogp:10863574
+Titel: WSSP Portekiz Superpole: Can Öncü, Estoril’de rekor kırarak pole pozisyonunu kazandı, Lucas Mahias ikinci
+Quelle: https://tr.motorsport.com/supersport/news/wssp-portekiz-superpole-can-oncu-estorilde-rekor-kirarak-pole-pozisyonunu-kazandi-lucas-mahias-ikin/10863574
