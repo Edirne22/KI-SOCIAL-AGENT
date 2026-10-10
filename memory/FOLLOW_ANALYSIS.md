@@ -1,5 +1,5 @@
 # Follow-Analyse
-Stand: 2026-10-09 08:06
+Stand: 2026-10-10 08:04
 
 ## Zusammenfassung
 - Analysierte Accounts: 8
@@ -14,8 +14,8 @@ Stand: 2026-10-09 08:06
 - @trr_2010_ → ⚠️ @trr_2010_ | – | Bright Data HTTP 400
 - @motoetkinlik → ⚠️ @motoetkinlik | – | Bright Data HTTP 400
 - @dominoracing → ⚠️ @dominoracing | – | Bright Data HTTP 400
-- @knieschleifer.aus.ueberzeugung → ⚠️ @knieschleifer.aus.ueberzeugung | – | Bright Data HTTP 400
-- @ks_ruhrpott → ⚠️ @ks_ruhrpott | – | Bright Data HTTP 400
+- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
+- @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
 
 ## Account-Ergebnisse
 
