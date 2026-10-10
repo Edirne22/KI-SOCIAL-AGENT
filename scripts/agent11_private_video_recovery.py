@@ -65,7 +65,7 @@ def _http_json(method: str, path: str, token: str, payload: dict | None = None) 
         raise RuntimeError("RECOVERY_RUNTIME_UNREACHABLE") from exc
 
 
-def _load_status(client, bucket: str, job_id: str, production_revision: str) -> dict:
+def _load_status(client, bucket: str, job_id: str, production_revision: str, expected_stage: str | None = None) -> dict:
     key = f"ai-central/v1/private-video/{job_id}/revisions/{production_revision}/status.json"
     raw = client.get_object(Bucket=bucket, Key=key)["Body"].read(16384)
     value = json.loads(raw)
@@ -78,7 +78,29 @@ def _load_status(client, bucket: str, job_id: str, production_revision: str) -> 
     status = value.get("status")
     updated_at = value.get("updated_at")
     if not isinstance(stage, str) or not stage:
-        raise RuntimeError("RECOVERY_STATUS_STAGE_MISSING")
+        # Fail closed unless an exact, previously validated Agent-21 incident
+        # independently proves the missing stage for this failed revision.
+        if status != "FAILED" or not expected_stage:
+            raise RuntimeError("RECOVERY_STATUS_STAGE_MISSING")
+        incident_id = f"WD-{job_id}-{expected_stage}-{production_revision}"
+        incident_key = f"ai-central/v1/maintenance/incidents/{incident_id}.json"
+        try:
+            incident = json.loads(client.get_object(Bucket=bucket, Key=incident_key)["Body"].read(16384))
+        except Exception as exc:
+            raise RuntimeError("RECOVERY_STAGE_PROVENANCE_MISSING") from exc
+        if not (
+            incident.get("schema") == "MACHINE-WATCHDOG-INCIDENT-V1"
+            and incident.get("incident_id") == incident_id
+            and incident.get("job_id") == job_id
+            and incident.get("stage_id") == expected_stage
+            and incident.get("checkpoint") == expected_stage
+            and incident.get("machine") == "private-media-container"
+            and incident.get("route_to") == "agent21"
+            and incident.get("requested_action") == "DIAGNOSE_ONLY"
+            and incident.get("reason") in {"MACHINE_REPORTED_STALLED", "MACHINE_REPORTED_FAILED"}
+        ):
+            raise RuntimeError("RECOVERY_STAGE_PROVENANCE_INVALID")
+        stage = expected_stage
     if status not in {"ACCEPTED", "RUNNING", "COMPLETED", "FAILED"}:
         raise RuntimeError("RECOVERY_STATUS_VALUE_INVALID")
     if not isinstance(updated_at, str) or not updated_at:
@@ -139,7 +161,7 @@ def execute_recovery(
     if not token:
         raise RuntimeError("RECOVERY_RUNTIME_TOKEN_MISSING")
 
-    current = _load_status(client, bucket, h["job_id"], production_revision)
+    current = _load_status(client, bucket, h["job_id"], production_revision, h["stage_id"])
     decision = recovery_decision(h, {k: current[k] for k in ("job_id", "stage_id", "checkpoint", "status")})
     if decision["decision"] in {"NO_RESTART", "OBSERVE_ONLY"}:
         result = {**decision, "recovered": False, "production_revision": production_revision}
@@ -166,7 +188,7 @@ def execute_recovery(
     for attempt in range(max_heartbeat_attempts):
         if attempt:
             sleeper(10)
-        state = _load_status(client, bucket, h["job_id"], production_revision)
+        state = _load_status(client, bucket, h["job_id"], production_revision, h["stage_id"])
         if state["status"] == "FAILED":
             raise RuntimeError("RECOVERY_JOB_FAILED_AGAIN")
         if state["status"] == "RUNNING" and state["updated_at"] != last_stamp:
