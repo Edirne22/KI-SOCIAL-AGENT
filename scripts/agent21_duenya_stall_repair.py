@@ -40,7 +40,7 @@ def reconcile(client,bucket,*,now=None):
     if (state.get("schema")=="PRIVATE-VIDEO-STATUS-V1" and state.get("task_id")==TASK_ID
         and state.get("production_revision")==PRODUCTION_REVISION
         and state.get("status")=="COMPLETED"):
-        return {"action":"NO_RECOVERY","reason":"ALREADY_COMPLETED","repair_id":REPAIR_ID}
+        return {"action":"NO_RECOVERY","reason":"ALREADY_COMPLETED","repair_id":REPAIR_ID,"stage_id":stage}
     incident_id=f"WD-{TASK_ID}-{stage}-{PRODUCTION_REVISION}"
     incident=_read_json(client,bucket,_incident_key(stage))
     if (
@@ -63,7 +63,7 @@ def reconcile(client,bucket,*,now=None):
     if state.get("status")=="FAILED":
         if state.get("stage")!=stage:
             raise RuntimeError("AGENT21_DUENYA_FAILED_STAGE_MISMATCH")
-        return {"action":"HANDOFF_AGENT11","reason":"ALREADY_FAILED","repair_id":REPAIR_ID}
+        return {"action":"HANDOFF_AGENT11","reason":"ALREADY_FAILED","repair_id":REPAIR_ID,"stage_id":stage}
     if state.get("status")!="RUNNING" or state.get("stage")!=stage:
         raise RuntimeError("AGENT21_DUENYA_STATE_NOT_RECONCILABLE")
 
@@ -75,7 +75,7 @@ def reconcile(client,bucket,*,now=None):
         raise RuntimeError("AGENT21_DUENYA_HEARTBEAT_INVALID")
     age=(now-heartbeat).total_seconds()
     if age<=STALE_AFTER_SECONDS:
-        return {"action":"NO_RECOVERY","reason":"HEARTBEAT_FRESH","repair_id":REPAIR_ID}
+        return {"action":"NO_RECOVERY","reason":"HEARTBEAT_FRESH","repair_id":REPAIR_ID,"stage_id":stage}
 
     payload={
         "schema":"PRIVATE-VIDEO-STATUS-V1",
@@ -97,6 +97,7 @@ def reconcile(client,bucket,*,now=None):
         "action":"HANDOFF_AGENT11",
         "reason":"STALE_RUNNING_RECONCILED",
         "repair_id":REPAIR_ID,
+        "stage_id":stage,
         "stale_seconds":int(age),
     }
 
