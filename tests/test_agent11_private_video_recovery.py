@@ -132,6 +132,13 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
         client = ProvenanceClient([record])
         state = _load_status(client, "bucket", handoff()["job_id"], "v4", "video_editor_ffmpeg")
         self.assertEqual(state["stage_id"], "video_editor_ffmpeg")
+        incident["reason"] = "MACHINE_REPORTED_FAILED"
+        failed_state = _load_status(ProvenanceClient([record]), "bucket", handoff()["job_id"], "v4", "video_editor_ffmpeg")
+        self.assertEqual(failed_state["stage_id"], "video_editor_ffmpeg")
+        incident["reason"] = "UNTRUSTED_REASON"
+        with self.assertRaisesRegex(RuntimeError, "STAGE_PROVENANCE_INVALID"):
+            _load_status(ProvenanceClient([record]), "bucket", handoff()["job_id"], "v4", "video_editor_ffmpeg")
+        incident["reason"] = "MACHINE_REPORTED_FAILED"
         incident["checkpoint"] = "untrusted_checkpoint"
         with self.assertRaisesRegex(RuntimeError, "STAGE_PROVENANCE_INVALID"):
             _load_status(ProvenanceClient([record]), "bucket", handoff()["job_id"], "v4", "video_editor_ffmpeg")
