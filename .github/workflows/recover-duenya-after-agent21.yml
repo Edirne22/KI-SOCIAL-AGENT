@@ -104,6 +104,11 @@ jobs:
           repair=$(python -c 'import json; print(json.load(open("/tmp/agent21-duenya.json"))["repair_id"])')
           echo "action=$action" >> "$GITHUB_OUTPUT"
           echo "repair_id=$repair" >> "$GITHUB_OUTPUT"
+          stage=$(python -c 'import json; print(json.load(open("/tmp/agent21-duenya.json")).get("stage_id",""))')
+          if [ "$action" = "HANDOFF_AGENT11" ]; then
+            case "$stage" in production_lead|creative_director|media_story|music_audio|video_editor_ffmpeg|qm|private_preview) ;; *) echo "AGENT21_HANDOFF_STAGE_INVALID"; exit 1;; esac
+          fi
+          echo "stage_id=$stage" >> "$GITHUB_OUTPUT"
           echo "AGENT21_DUENYA_DECISION=$action"
       - name: Agent 11 recovery-mode exact Dünya resume
         if: steps.agent21.outputs.action == 'HANDOFF_AGENT11'
@@ -113,8 +118,8 @@ jobs:
           python -m scripts.agent11_private_video_recovery \
             --repair-id "${{ steps.agent21.outputs.repair_id }}" \
             --job-id "f6f50c9f4c2690e4eb1fe978" \
-            --stage-id "video_editor_ffmpeg" \
-            --checkpoint "video_editor_ffmpeg" \
+            --stage-id "${{ steps.agent21.outputs.stage_id }}" \
+            --checkpoint "${{ steps.agent21.outputs.stage_id }}" \
             --production-revision "$DUENYA_PRODUCTION_REVISION"
 
       - name: Continue exact production through QM and private preview
