@@ -3,7 +3,7 @@ import json
 import unittest
 from unittest.mock import patch
 
-from scripts.agent11_private_video_recovery import _http_json, execute_recovery
+from scripts.agent11_private_video_recovery import _http_json, _load_status, execute_recovery
 
 
 def handoff():
@@ -59,6 +59,30 @@ class Agent11PrivateVideoRecoveryTests(unittest.TestCase):
                 return 200, {"ready": True}
             raise AssertionError(path)
         return call
+
+    def test_accepted_missing_stage_only_allowed_after_restart(self):
+        accepted = status("ACCEPTED", "2026-10-06T21:00:01+00:00")
+        accepted.pop("stage")
+        with self.assertRaisesRegex(RuntimeError, "RECOVERY_STATUS_STAGE_MISSING"):
+            _load_status(FakeClient([accepted]), "bucket", handoff()["job_id"], "v4", "video_editor_ffmpeg")
+        recovered = _load_status(FakeClient([accepted]), "bucket", handoff()["job_id"], "v4",
+                                 "video_editor_ffmpeg", allow_accepted_without_stage=True)
+        self.assertEqual(recovered["stage_id"], "video_editor_ffmpeg")
+        running = dict(accepted, status="RUNNING")
+        with self.assertRaisesRegex(RuntimeError, "RECOVERY_STATUS_STAGE_MISSING"):
+            _load_status(FakeClient([running]), "bucket", handoff()["job_id"], "v4",
+                         "video_editor_ffmpeg", allow_accepted_without_stage=True)
+
+    def test_recovery_accepts_stage_free_accepted_then_two_heartbeats(self):
+        accepted = status("ACCEPTED", "2026-10-06T21:00:01+00:00")
+        accepted.pop("stage")
+        client = FakeClient([status("FAILED", "2026-10-06T21:00:00+00:00"),
+                             accepted,
+                             status("RUNNING", "2026-10-06T21:01:00+00:00"),
+                             status("RUNNING", "2026-10-06T21:01:10+00:00")])
+        result = execute_recovery(client, "bucket", handoff(), "token",
+                                  http=self.http_ok([]), sleeper=lambda _: None)
+        self.assertTrue(result["recovered"])
 
     def test_failed_job_restarts_then_requires_two_distinct_running_heartbeats(self):
         client = FakeClient([
