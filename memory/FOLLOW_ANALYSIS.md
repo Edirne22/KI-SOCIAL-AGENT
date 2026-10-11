@@ -1,5 +1,5 @@
 # Follow-Analyse
-Stand: 2026-10-10 08:04
+Stand: 2026-10-11 13:44
 
 ## Zusammenfassung
 - Analysierte Accounts: 8
@@ -8,14 +8,14 @@ Stand: 2026-10-10 08:04
 - Hinweis: Top-Posts stammen aus einer aktuellen, begrenzten öffentlichen Stichprobe.
 
 ## Verify-Ergebnisse
-- @bike_society.united → ⚠️ @bike_society.united | – | Bright Data HTTP 400
-- @bike_society_bergisches_land → ⚠️ @bike_society_bergisches_land | – | Bright Data HTTP 400
-- @turkbirler → ⚠️ @turkbirler | – | Bright Data HTTP 400
-- @trr_2010_ → ⚠️ @trr_2010_ | – | Bright Data HTTP 400
-- @motoetkinlik → ⚠️ @motoetkinlik | – | Bright Data HTTP 400
-- @dominoracing → ⚠️ @dominoracing | – | Bright Data HTTP 400
-- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
-- @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
+- @canoncu → ⚠️ @canoncu | – | Bright Data HTTP 400
+- @kenansofuoglu → ⚠️ @kenansofuoglu | – | Bright Data HTTP 400
+- @zaynsofuoglu → ⚠️ @zaynsofuoglu | – | Bright Data HTTP 400
+- @bahattinsofuoglu → ⚠️ @bahattinsofuoglu | – | Bright Data HTTP 400
+- @jackmilleraus → ⚠️ @jackmilleraus | – | Bright Data HTTP 400
+- @pecco63 → ⚠️ @pecco63 | – | Bright Data HTTP 400
+- @marcmarquez93 → ⚠️ @marcmarquez93 | – | Bright Data HTTP 400
+- @89jorgemartin → ⚠️ @89jorgemartin | – | Bright Data HTTP 400
 
 ## Account-Ergebnisse
 
