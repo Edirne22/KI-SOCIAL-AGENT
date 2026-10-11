@@ -127,9 +127,14 @@ def analyze_private_media(client, bucket: str, assets: list[dict], *, infer=None
                 extracted=False
                 failure_reason="UNKNOWN"
                 for seek in attempts:
-                    cmd=["ffmpeg","-v","error","-y","-ss",str(seek),
-                         "-i",str(source),"-map","0:v:0","-an","-sn","-dn",
-                         "-frames:v","1","-vf","scale=512:-2","-threads","1","-update","1",str(frame)]
+                    if not asset["mime"].startswith("video/"):
+                        # Verified with two private R2 JPEGs in run 38177890849.
+                        cmd=["ffmpeg","-v","error","-y","-i",str(source),
+                             "-frames:v","1","-vf","scale=512:-2","-f","image2",str(frame)]
+                    else:
+                        cmd=["ffmpeg","-v","error","-y","-ss",str(seek),
+                             "-i",str(source),"-map","0:v:0","-an","-sn","-dn",
+                             "-frames:v","1","-vf","scale=512:-2","-threads","1","-update","1",str(frame)]
                     result=subprocess.run(cmd,stdout=subprocess.DEVNULL,
                                           stderr=subprocess.PIPE,timeout=40)
                     if result.returncode==0 and frame.exists() and frame.stat().st_size>2 and frame.read_bytes()[:3]==b"\xff\xd8\xff":
