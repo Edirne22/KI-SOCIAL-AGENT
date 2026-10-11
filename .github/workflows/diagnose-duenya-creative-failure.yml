@@ -1,0 +1,48 @@
+name: Diagnose private Dunia creative failure (no restart)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+      DUENYA_PRODUCTION_REVISION: v4-creative1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install existing R2 client
+        run: python -m pip install --disable-pip-version-check boto3
+      - name: Classify failure without exposing private payload
+        shell: bash
+        run: |
+          python - <<'PY'
+          import re
+          from scripts.ai_central_shared_inbox import client_from_env
+          from scripts.agent21_duenya_stall_repair import STATUS_KEY, TASK_ID, PRODUCTION_REVISION
+          client,bucket=client_from_env()
+          import json
+          status=json.loads(client.get_object(Bucket=bucket,Key=STATUS_KEY)["Body"].read(16384))
+          assert status.get("task_id")==TASK_ID and status.get("production_revision")==PRODUCTION_REVISION
+          print("DIAG_STAGE="+str(status.get("stage","UNKNOWN"))[:40])
+          print("DIAG_STATUS="+str(status.get("status","UNKNOWN"))[:40])
+          code=str(status.get("error_code") or "UNKNOWN")
+          print("DIAG_ERROR_CLASS="+(code if re.fullmatch(r"[A-Za-z0-9_]{1,80}",code) else "REDACTED"))
+          detail=str(status.get("detail") or "")
+          match=re.search(r"(PRIVATE_[A-Z0-9_]+|DUENYA_[A-Z0-9_]+)",detail)
+          print("DIAG_FAILURE_SIGNATURE="+(match.group(1)[:100] if match else "UNCLASSIFIED"))
+          print("DIAG_DETAIL_PRESENT="+str(bool(detail)).lower())
+          if status.get("status")=="FAILED" and status.get("stage")=="creative_director":
+              print("DIAG_ACTION=AGENT21_ROOT_CAUSE_REPAIR_REQUIRED")
+          else:
+              print("DIAG_ACTION=RECHECK_STATE_BEFORE_RECOVERY")
+          PY
