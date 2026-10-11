@@ -121,10 +121,20 @@ def analyze_private_media(client, bucket: str, assets: list[dict], *, infer=None
             frames=[]
             for index,stamp in enumerate(times):
                 frame=Path(td)/f"frame-{index}.jpg"
-                cmd=["ffmpeg","-v","error","-y","-threads","1","-ss",str(stamp),
-                     "-i",str(source),"-frames:v","1","-vf","scale=512:-2","-threads","1",str(frame)]
-                result=subprocess.run(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
-                if result.returncode or not frame.exists():
+                # A video may have no decodable frame at an exact seek position.
+                # Try the requested point, then a keyframe-safe start seek.
+                attempts=[stamp] if not asset["mime"].startswith("video/") else [stamp,0.0]
+                extracted=False
+                for seek in attempts:
+                    cmd=["ffmpeg","-v","error","-y","-ss",str(seek),
+                         "-i",str(source),"-map","0:v:0","-an","-sn","-dn",
+                         "-frames:v","1","-vf","scale=512:-2","-threads","1",str(frame)]
+                    result=subprocess.run(cmd,stdout=subprocess.DEVNULL,
+                                          stderr=subprocess.DEVNULL,timeout=40)
+                    if result.returncode==0 and frame.exists() and frame.stat().st_size>0:
+                        extracted=True
+                        break
+                if not extracted:
                     raise RuntimeError("PRIVATE_VISION_FRAME_EXTRACTION_FAILED")
                 jpeg=frame.read_bytes()
                 verdict=infer(jpeg)
