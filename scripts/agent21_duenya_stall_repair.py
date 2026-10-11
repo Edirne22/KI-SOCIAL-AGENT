@@ -85,6 +85,31 @@ def reconcile(client,bucket,*,now=None):
             ContentType="application/json",
             CacheControl="private, no-store",
         )
+        # Narrow, one-time recovery authorization for the independently diagnosed
+        # creative-director frame-extraction incident after operator-approved fix.
+        # Must be explicitly enabled by the trusted recovery workflow; all other
+        # failures continue to require diagnosis.
+        if (os.environ.get("DUENYA_FRAME_FIX_VERIFIED") == "true"
+            and stage == "creative_director"
+            and error_code == "RuntimeError"
+            and "PRIVATE_VISION_FRAME_EXTRACTION_FAILED" in detail
+            and incident.get("reason") == "MACHINE_REPORTED_FAILED"):
+            marker=f"ai-central/v1/maintenance/recovery-authorizations/{incident_id}-frame-fix-v1.json"
+            try:
+                client.put_object(
+                    Bucket=bucket, Key=marker, IfNoneMatch="*",
+                    Body=json.dumps({"incident_id":incident_id,
+                                     "fix":"PRIVATE_VISION_FRAME_EXTRACTION_FAILED",
+                                     "at":now.isoformat()}).encode("utf-8"),
+                    ContentType="application/json", CacheControl="private, no-store",
+                )
+            except Exception as exc:
+                # Existing authorization, unavailable R2, or failed CAS:
+                # never issue a second restart.
+                return {"action":"DIAGNOSE_REQUIRED","reason":"FRAME_RETRY_NOT_AUTHORIZED",
+                        "repair_id":REPAIR_ID,"stage_id":stage,"error_code":error_code}
+            return {"action":"HANDOFF_AGENT11","reason":"VERIFIED_FRAME_FIX_ONE_TIME",
+                    "repair_id":REPAIR_ID+"-FRAME-FIX-V1","stage_id":stage}
         return {"action":"DIAGNOSE_REQUIRED","reason":"FAILED_NEEDS_ROOT_CAUSE",
                 "repair_id":REPAIR_ID,"stage_id":stage,"error_code":error_code}
     if state.get("status")!="RUNNING" or state.get("stage")!=stage:
