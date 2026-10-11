@@ -1,7 +1,7 @@
 # Telegram-Freigabe-Sitzung
 
-Datum: 2026-10-10 06:35:04
-Session-Timestamp: 1791614104
+Datum: 2026-10-11 12:50:05
+Session-Timestamp: 1791723005
 Status: WARTET AUF ANTWORT
 Scope: GENERAL-NON-RACING
 
@@ -31,15 +31,3 @@ Inspirations-Plattform: Keine aktuelle externe Quelle verwendet.
 Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 ---
-
-## Beitrag 2
-Titel: Kurvenjagd ohne Funkloch-Stress
-Hook: –
-Plattform: Instagram / TikTok / Facebook
-Beschreibung: Ride With
-Quelle: –
-
-### Vollständiger Entwurf
-Titel: Kurvenjagd ohne Funkloch-Stress
-Plattform: Instagram / TikTok / Facebook
-Thema: Ride With
