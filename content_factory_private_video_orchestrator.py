@@ -143,7 +143,10 @@ def analyze_private_media(client, bucket: str, assets: list[dict], *, infer=None
                     else:
                         failure_reason="NO_VALID_JPEG"
                 if not extracted:
-                    raise RuntimeError("PRIVATE_VISION_FRAME_EXTRACTION_FAILED_"+failure_reason)
+                    # Keep the original privacy-safe failure category, never stderr or paths.
+                    # Include media type and attempted seek count to distinguish image vs video.
+                    media_kind = "VIDEO" if asset["mime"].startswith("video/") else "IMAGE"
+                    raise RuntimeError("PRIVATE_VISION_FRAME_EXTRACTION_FAILED_"+media_kind+"_"+failure_reason)
                 jpeg=frame.read_bytes()
                 verdict=infer(jpeg)
                 if not isinstance(verdict,dict):
