@@ -188,7 +188,7 @@ def execute_recovery(
     for attempt in range(max_heartbeat_attempts):
         if attempt:
             sleeper(10)
-        state = _load_status(client, bucket, h["job_id"], production_revision, h["stage_id"])
+        state = _load_status(client, bucket, h["job_id"], production_revision, h["stage_id"], allow_accepted_without_stage=True)
         if state["status"] == "FAILED":
             raise RuntimeError("RECOVERY_JOB_FAILED_AGAIN")
         if state["status"] == "RUNNING" and state["updated_at"] != last_stamp:
