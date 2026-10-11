@@ -50,6 +50,12 @@ jobs:
                       body=client.get_object(Bucket=bucket,Key=asset["key"])["Body"].read(100*1024*1024+1)
                       if len(body)>100*1024*1024: raise RuntimeError("SIZE_LIMIT")
                       source.write_bytes(body)
+                      if kind=="IMAGE":
+                          signature=("JPEG" if body.startswith(bytes.fromhex("ffd8ff")) else
+                                     "PNG" if body.startswith(bytes.fromhex("89504e470d0a1a0a")) else
+                                     "WEBP" if body.startswith(b"RIFF") and body[8:12]==b"WEBP" else
+                                     "HEIC" if len(body)>12 and body[4:8]==b"ftyp" else "OTHER")
+                          print("DIAG_ASSET_"+str(idx)+"_SOURCE_SIGNATURE="+signature)
                       stamps=[0.0]
                       if kind=="VIDEO":
                           p=subprocess.run(["ffprobe","-v","error","-show_entries","format=duration","-of","json",str(source)],stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,timeout=20)
@@ -63,7 +69,7 @@ jobs:
                               p=subprocess.run(["ffmpeg","-v","error","-y","-ss",str(seek),"-i",str(source),"-map","0:v:0","-an","-sn","-dn","-frames:v","1","-vf","scale=512:-2","-threads","1",str(frame)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
                               if p.returncode==0 and frame.exists() and frame.stat().st_size>2 and frame.read_bytes()[:3]==bytes.fromhex("ffd8ff"):
                                   ok=True;break
-                              reason="SIGNAL" if p.returncode<0 else ("EXIT_NONZERO" if p.returncode else "INVALID_JPEG")
+                              reason="SIGNAL" if p.returncode<0 else ("EXIT_NONZERO" if p.returncode else ("MISSING_FRAME" if not frame.exists() else ("EMPTY_FRAME" if frame.stat().st_size<=2 else "NON_JPEG_FRAME")))
                           if not ok: raise RuntimeError("FRAME_"+reason)
                   print("DIAG_ASSET_"+str(idx)+"="+kind+"_PASS")
               except subprocess.TimeoutExpired:
