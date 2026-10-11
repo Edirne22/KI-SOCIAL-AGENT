@@ -909,3 +909,28 @@ Quelle: https://motoetkinlik.com/toprak-razgatlioglu-endonezya-gp-cuma-antrenman
 Story-Key: motogp:10863574
 Titel: WSSP Portekiz Superpole: Can Öncü, Estoril’de rekor kırarak pole pozisyonunu kazandı, Lucas Mahias ikinci
 Quelle: https://tr.motorsport.com/supersport/news/wssp-portekiz-superpole-can-oncu-estorilde-rekor-kirarak-pole-pozisyonunu-kazandi-lucas-mahias-ikin/10863574
+
+## 2026-10-11 11:00 UTC – ANGEBOTEN
+Story-Key: title:motogp-endonezya-gp-sprint-marquez-kazand-ve-zirveye-y-kseldi-toprak-19
+Titel: MotoGP Endonezya GP Sprint: Marquez Kazandı ve Zirveye Yükseldi, Toprak 19.
+Quelle: https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19
+
+## 2026-10-11 11:00 UTC – ANGEBOTEN
+Story-Key: motogp:10863693
+Titel: MotoGP Endonezya GP sprint: Marc Marquez son turlarda zafere ulaştı, Toprak 19. sırada
+Quelle: https://tr.motorsport.com/motogp/news/motogp-endonezya-gp-sprint-marc-marquez-son-turlarda-zafere-ulasti-toprak-19-sirada/10863693
+
+## 2026-10-11 11:00 UTC – ANGEBOTEN
+Story-Key: motogp:10863710
+Titel: Trackhouse takım patronu: “Jorge ve Marc ilk virajda son derece agresifti”
+Quelle: https://tr.motorsport.com/motogp/news/brivio-jorge-ve-marc-ilk-virajda-son-derece-agresifti/10863710
+
+## 2026-10-11 11:00 UTC – ANGEBOTEN
+Story-Key: title:motogp-endonezya-gp-s-ralama-raul-fernandez-e-i-lk-pole-toprak-19-s-radan-ba-layacak
+Titel: MotoGP Endonezya GP Sıralama: Raul Fernandez'e İlk Pole, Toprak 19. Sıradan Başlayacak
+Quelle: https://motoetkinlik.com/motogp-endonezya-gp-siralama-raul-fernandeze-ilk-pole-toprak-19-siradan-baslayacak
+
+## 2026-10-11 11:00 UTC – ANGEBOTEN
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum

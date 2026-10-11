@@ -2856,3 +2856,33 @@ Story-Key: motogp:10863574
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-11 11:38 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Endonezya GP Sprint: Marquez Kazandı ve Zirveye Yükseldi, Toprak 19.
+Story-Key: title:motogp-endonezya-gp-sprint-marquez-kazand-ve-zirveye-y-kseldi-toprak-19
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-11 11:38 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Endonezya GP sprint: Marc Marquez son turlarda zafere ulaştı, Toprak 19. sırada
+Story-Key: motogp:10863693
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-11 11:38 UTC | Motorcycle Racing | PASS
+Titel: Trackhouse takım patronu: “Jorge ve Marc ilk virajda son derece agresifti”
+Story-Key: motogp:10863710
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-11 11:39 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Endonezya GP Sıralama: Raul Fernandez'e İlk Pole, Toprak 19. Sıradan Başlayacak
+Story-Key: title:motogp-endonezya-gp-s-ralama-raul-fernandez-e-i-lk-pole-toprak-19-s-radan-ba-layacak
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-11 11:39 UTC | Motorcycle Racing | PASS
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
