@@ -129,7 +129,7 @@ def analyze_private_media(client, bucket: str, assets: list[dict], *, infer=None
                 for seek in attempts:
                     cmd=["ffmpeg","-v","error","-y","-ss",str(seek),
                          "-i",str(source),"-map","0:v:0","-an","-sn","-dn",
-                         "-frames:v","1","-vf","scale=512:-2","-threads","1",str(frame)]
+                         "-frames:v","1","-vf","scale=512:-2","-threads","1","-update","1",str(frame)]
                     result=subprocess.run(cmd,stdout=subprocess.DEVNULL,
                                           stderr=subprocess.PIPE,timeout=40)
                     if result.returncode==0 and frame.exists() and frame.stat().st_size>2 and frame.read_bytes()[:3]==b"\xff\xd8\xff":
