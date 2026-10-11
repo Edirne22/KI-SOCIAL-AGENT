@@ -46,7 +46,7 @@ jobs:
               kind="VIDEO" if asset["mime"].startswith("video/") else "IMAGE"
               try:
                   with tempfile.TemporaryDirectory() as tmp:
-                      source=Path(tmp)/("source.mp4" if kind=="VIDEO" else "source.png")
+                      source=Path(tmp)/("source.mp4" if kind=="VIDEO" else "source.jpg")
                       body=client.get_object(Bucket=bucket,Key=asset["key"])["Body"].read(100*1024*1024+1)
                       if len(body)>100*1024*1024: raise RuntimeError("SIZE_LIMIT")
                       source.write_bytes(body)
@@ -77,7 +77,7 @@ jobs:
               except Exception as exc:
                   failures+=1
                   code=str(exc)
-                  if code not in ("SIZE_LIMIT","FFPROBE_NONZERO","FRAME_SIGNAL","FRAME_EXIT_NONZERO","FRAME_INVALID_JPEG"):
+                  if code not in ("SIZE_LIMIT","FFPROBE_NONZERO","FRAME_SIGNAL","FRAME_EXIT_NONZERO","FRAME_INVALID_JPEG","FRAME_MISSING_FRAME","FRAME_EMPTY_FRAME","FRAME_NON_JPEG_FRAME"):
                       code="UNCLASSIFIED"
                   print("DIAG_ASSET_"+str(idx)+"="+kind+"_"+code)
           print("DIAG_TESTED="+str(len(assets))+" FAILURES="+str(failures))
