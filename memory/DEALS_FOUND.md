@@ -3010,3 +3010,56 @@ Hier sind allgemeine und zeitunabhängige Hinweise, die bei der Suche nach einem
 * **Netzfunktionen:** Achten Sie auf die Unterstützung von VoLTE (Telefonie über LTE) und WiFi Calling (Telefonie über WLAN).
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-10-11 12:00
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem Mobilfunkvertrag mit hohem Datenvolumen im Telekom-Netz (D1) zu einem niedrigen Budget:
+
+### Mögliche Händlerarten
+
+1. **Drittanbieter und Mobilfunk-Discounter:**
+   * Nutzen das D1-Netz als Vorleister, bieten jedoch eigene Tarifstrukturen an.
+   * Preislich liegen diese Anbieter meist deutlich unter den Direktangeboten des Netzbetreibers, teilweise jedoch mit Einschränkungen bei Maximalgeschwindigkeit oder 5G-Zugang.
+
+2. **Vermittler- und Vergleichsportale:**
+   * Unabhängige Tarifvermittler bieten häufig Sonderkonditionen durch Einmalzahlungen, Cashbacks oder Gutscheine an, was den rechnerischen Monatspreis (Effektivpreis) senkt.
+
+3. **Direkter Netzbetreiber:**
+   * Die direkt beim Netzbetreiber angebotenen Tarife liegen im Regulärpreis meist höher, können aber durch Zusatzoptionen (z. B. Festnetz-Kombivorteile) attraktiv werden.
+
+---
+
+### Produktfamilien und Tarifarten
+
+* **SIM-Only-Tarife:** Reine Tarifverträge ohne Smartphone bieten das beste Preis-Leistungs-Verhältnis, wenn ein hohes Datenvolumen bei geringer Monatsgebühr gesucht wird.
+* **Tarife mit Hardware (Schubladenverträge / Resale):** Manchmal ergibt sich ein rechnerisch sehr niedriger Monatspreis, wenn ein Vertrag inklusive Smartphone abgeschlossen und das Gerät selbstständig verkauft wird.
+* **Junge-Leute- / Studententarife:** Für Personen unter einer bestimmten Altersgrenze (oft unter 28 Jahren) existieren häufig Angebote mit erhöhtem Datenvolumen oder Zusatzrabatten.
+* **Kombi-Angebote:** Kunden, die bereits einen Festnetz- oder Internetanschluss beim selben Anbieter nutzen, erhalten oft Rabatte oder doppeltes Datenvolumen.
+
+---
+
+### Wichtige Auswahlkriterien
+
+1. **Effektivpreis vs. Reguläre Grundgebühr:**
+   * Achte auf den Unterschied zwischen der dauerhaften Monatsgebühr ab dem 1. bzw. 25. Monat und dem rechnerischen Effektivpreis, der Boni, Anschlusspreise und Cashbacks einbezieht.
+
+2. **Geschwindigkeit und Netztechnik:**
+   * Überprüfe, ob der Tarif 5G enthält oder auf LTE/4G beschränkt ist.
+   * Achte auf die maximale Bandbreite (z. B. 25 Mbit/s, 50 Mbit/s oder ungedrosselt), da günstigere D1-Anbieter die Geschwindigkeit oft deckeln.
+
+3. **Vertragslaufzeit und Flexibilität:**
+   * Verträge mit 24 Monaten Laufzeit bieten meist die günstigsten rechnerischen Preise.
+   * Monatlich kündbare Tarife bieten mehr Flexibilität, haben aber oft höhere Monatsgebühren oder geringeres Datenvolumen.
+
+4. **Wechselbonus (Rufnummernmitnahme):**
+   * Ein Bonus für die Mitnahme der bisherigen Rufnummer kann die Gesamtkosten über die Vertragslaufzeit hinweg spürbar reduzieren.
+
+Bitte in 10 Minuten erneut versuchen.
