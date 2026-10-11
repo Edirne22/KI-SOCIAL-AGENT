@@ -461,3 +461,7 @@ Hier ist mein detaillierter 7-Tage-Content-Plan:
 | **Hook** | „20 Jahre T-Bikers. Die Party war groß, aber was mich beeindruckt: Am Montag früh stand wieder jemand vor der Garage und hat Kaffee gekocht.“ |
 | **Beschreibung** | Foto: Gruppe vor Clubheim, morgens 8 Uhr, Kaffeetassen, ein paar Motorräder im Hintergrund. Kein Event-Look, Alltag. Text: „Seit 1992. Nicht weil sie Events machen, sondern weil sie da sind. Wenn einer stürzt, kommen drei mit dem Anhänger. Wenn einer scheidet, fährt der Club zum Grab. Das ist kein Verein. Das ist Familie.“ Frage: „Was hält deinen Club zusammen, wenn keine Kamera läuft?“ |
 | **Hashtags IG** | #TBikersRu
+
+
+# Wochenplan vom 2026-10-11 06:14:20
+FEHLER: Alle verfügbaren KI-Anbieter fehlgeschlagen (Rate-Limits oder Keys fehlen).
