@@ -6,7 +6,7 @@ record into FAILED so Agent 11 can execute the existing guarded RESUME contract.
 """
 from __future__ import annotations
 
-import json, os
+import json, os, re
 from datetime import datetime, timezone
 
 from scripts.ai_central_shared_inbox import client_from_env
@@ -65,7 +65,9 @@ def reconcile(client,bucket,*,now=None):
             raise RuntimeError("AGENT21_DUENYA_FAILED_STAGE_MISMATCH")
         # Persist the exact bounded diagnostic before any restart.
         error_code = str(state.get("error_code") or "UNKNOWN")[:80]
-        detail = str(state.get("detail") or "")[:240]
+        raw_detail = str(state.get("detail") or "")
+        match = re.search(r"(PRIVATE_[A-Z0-9_]+|DUENYA_[A-Z0-9_]+)", raw_detail)
+        detail = match.group(1)[:100] if match else "UNCLASSIFIED_RUNTIME_FAILURE"
         diagnostic = {
             "schema": "PRIVATE-VIDEO-MAINTENANCE-HANDOFF-V1",
             "job_id": TASK_ID,
@@ -73,6 +75,8 @@ def reconcile(client,bucket,*,now=None):
             "stage_id": stage,
             "error_code": error_code,
             "detail": detail,
+            "diagnostic_source": "revision-status",
+            "repair_verified": False,
             "incident_id": incident_id,
             "route_to": "agent21",
             "requested_action": "DIAGNOSE_AND_REPAIR",
