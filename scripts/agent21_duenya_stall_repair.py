@@ -63,7 +63,30 @@ def reconcile(client,bucket,*,now=None):
     if state.get("status")=="FAILED":
         if state.get("stage")!=stage:
             raise RuntimeError("AGENT21_DUENYA_FAILED_STAGE_MISMATCH")
-        return {"action":"HANDOFF_AGENT11","reason":"ALREADY_FAILED","repair_id":REPAIR_ID,"stage_id":stage}
+        # Persist the exact bounded diagnostic before any restart.
+        error_code = str(state.get("error_code") or "UNKNOWN")[:80]
+        detail = str(state.get("detail") or "")[:240]
+        diagnostic = {
+            "schema": "PRIVATE-VIDEO-MAINTENANCE-HANDOFF-V1",
+            "job_id": TASK_ID,
+            "production_revision": PRODUCTION_REVISION,
+            "stage_id": stage,
+            "error_code": error_code,
+            "detail": detail,
+            "incident_id": incident_id,
+            "route_to": "agent21",
+            "requested_action": "DIAGNOSE_AND_REPAIR",
+            "created_at": now.isoformat(),
+        }
+        client.put_object(
+            Bucket=bucket,
+            Key=f"ai-central/v1/maintenance/handoffs/{incident_id}.json",
+            Body=json.dumps(diagnostic, ensure_ascii=False).encode("utf-8"),
+            ContentType="application/json",
+            CacheControl="private, no-store",
+        )
+        return {"action":"DIAGNOSE_REQUIRED","reason":"FAILED_NEEDS_ROOT_CAUSE",
+                "repair_id":REPAIR_ID,"stage_id":stage,"error_code":error_code}
     if state.get("status")!="RUNNING" or state.get("stage")!=stage:
         raise RuntimeError("AGENT21_DUENYA_STATE_NOT_RECONCILABLE")
 
