@@ -133,7 +133,8 @@ jobs:
             sleep 10
           done
           echo "PRIVATE_ASR_TARGET_REVISION_LIVE_FAILED"; exit 1
-      - name: Wait for target OpenCode container contract
+      - name: Wait for target OpenCode container contract (optional coding service)
+        continue-on-error: true
         id: opencode_health
         shell: bash
         run: |
@@ -190,7 +191,8 @@ jobs:
           PY
           python3 -c 'import json; d=json.load(open("/tmp/agent21-runtime-diagnostic.json")); assert d["schema"]=="AGENT21-RUNTIME-DIAG-V1" and d["mode"]=="READ_ONLY" and d["secret_values_logged"] is False; print("AGENT21_RUNTIME_DIAGNOSTIC_READY error_class="+d["error_class"])'
 
-      - name: Authenticated OpenCode Claude live smoke
+      - name: Authenticated OpenCode Claude live smoke (optional coding service)
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
