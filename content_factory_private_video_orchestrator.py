@@ -125,17 +125,25 @@ def analyze_private_media(client, bucket: str, assets: list[dict], *, infer=None
                 # Try the requested point, then a keyframe-safe start seek.
                 attempts=[stamp] if not asset["mime"].startswith("video/") else [stamp,0.0]
                 extracted=False
+                failure_reason="UNKNOWN"
                 for seek in attempts:
                     cmd=["ffmpeg","-v","error","-y","-ss",str(seek),
                          "-i",str(source),"-map","0:v:0","-an","-sn","-dn",
                          "-frames:v","1","-vf","scale=512:-2","-threads","1",str(frame)]
                     result=subprocess.run(cmd,stdout=subprocess.DEVNULL,
-                                          stderr=subprocess.DEVNULL,timeout=40)
-                    if result.returncode==0 and frame.exists() and frame.stat().st_size>0:
+                                          stderr=subprocess.PIPE,timeout=40)
+                    if result.returncode==0 and frame.exists() and frame.stat().st_size>2 and frame.read_bytes()[:3]==b"\xff\xd8\xff":
                         extracted=True
                         break
+                    # Never log private paths or raw stderr; expose only safe error categories.
+                    if result.returncode < 0:
+                        failure_reason="SIGNAL"
+                    elif result.returncode != 0:
+                        failure_reason="FFMPEG_EXIT_NONZERO"
+                    else:
+                        failure_reason="NO_VALID_JPEG"
                 if not extracted:
-                    raise RuntimeError("PRIVATE_VISION_FRAME_EXTRACTION_FAILED")
+                    raise RuntimeError("PRIVATE_VISION_FRAME_EXTRACTION_FAILED_"+failure_reason)
                 jpeg=frame.read_bytes()
                 verdict=infer(jpeg)
                 if not isinstance(verdict,dict):

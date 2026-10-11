@@ -59,3 +59,33 @@ class CreativeE2ETests(unittest.TestCase):
         self.assertEqual([x['decision'] for x in report],['uncertain-excluded','duplicate'])
         with self.assertRaisesRegex(RuntimeError,'SOURCE_HASH_MISMATCH'):
             analyze_private_media(client,'test',[{**assets[0],'sha256':'0'*64}],infer=lambda _: {})
+
+    def test_video_frame_failure_reports_safe_nonzero_exit(self):
+        import json
+        import subprocess
+        from unittest.mock import patch
+        client=MemoryR2({'private-video':b'not-a-real-video'})
+        asset={'key':'private-video','mime':'video/mp4'}
+        def fake_run(cmd,**kwargs):
+            if cmd[0]=='ffprobe':
+                return subprocess.CompletedProcess(cmd,0,stdout=json.dumps({'format':{'duration':'1.0'}}).encode())
+            return subprocess.CompletedProcess(cmd,1,stderr=b'/secret/private.mp4: sensitive failure')
+        with patch('subprocess.run',side_effect=fake_run):
+            with self.assertRaisesRegex(RuntimeError,'PRIVATE_VISION_FRAME_EXTRACTION_FAILED_FFMPEG_EXIT_NONZERO') as error:
+                analyze_private_media(client,'test',[asset],infer=lambda _: {})
+        self.assertNotIn('/secret/',str(error.exception))
+
+    def test_video_frame_failure_reports_invalid_jpeg(self):
+        import json
+        import subprocess
+        from unittest.mock import patch
+        client=MemoryR2({'private-video':b'not-a-real-video'})
+        asset={'key':'private-video','mime':'video/mp4'}
+        def fake_run(cmd,**kwargs):
+            if cmd[0]=='ffprobe':
+                return subprocess.CompletedProcess(cmd,0,stdout=json.dumps({'format':{'duration':'1.0'}}).encode())
+            Path(cmd[-1]).write_bytes(b'not a jpeg')
+            return subprocess.CompletedProcess(cmd,0,stderr=b'')
+        with patch('subprocess.run',side_effect=fake_run):
+            with self.assertRaisesRegex(RuntimeError,'PRIVATE_VISION_FRAME_EXTRACTION_FAILED_NO_VALID_JPEG'):
+                analyze_private_media(client,'test',[asset],infer=lambda _: {})
