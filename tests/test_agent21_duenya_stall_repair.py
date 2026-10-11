@@ -89,7 +89,7 @@ class SourceRegression(unittest.TestCase):
         self.assertIn('_private_video_runtime_revision = "duenya-creative-chain-v3"',service)
         self.assertIn('"private_video_runtime_revision": _private_video_runtime_revision',service)
         self.assertIn("github.event.workflow_run.head_branch == 'main'",workflow)
-        self.assertNotIn("github.event.workflow_run.conclusion == 'success'",workflow)
+        self.assertIn("github.event.workflow_run.conclusion == 'success'",workflow)
         self.assertIn("DUENYA_MEDIA_RUNTIME_REVISION_OK",workflow)
         self.assertLess(workflow.index("DUENYA_MEDIA_RUNTIME_REVISION_OK"),
                         workflow.index("Agent 21 validate incident"))
@@ -99,7 +99,8 @@ class SourceRegression(unittest.TestCase):
         self.assertIn('http("POST", "/admin/container-restart", token, None)',agent11)
         self.assertNotIn('http("POST", "/private-video/jobs", token, resume_payload)',agent11)
         self.assertIn('"production_revision": production_revision',agent11)
-        self.assertIn("DUENYA_PRODUCTION_REVISION: v4",workflow)
+        self.assertIn("DUENYA_PRODUCTION_REVISION: v4-creative1",workflow)
+        self.assertIn("DUENYA_FRAME_FIX_VERIFIED:",workflow)
         self.assertIn('--production-revision "$DUENYA_PRODUCTION_REVISION"',workflow)
         self.assertNotIn("/health?recovery=duenya-level12",workflow)
         worker=open("infra/private-asr-cloudflare/src/index.ts",encoding="utf-8").read()

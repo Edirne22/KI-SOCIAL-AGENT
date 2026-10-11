@@ -2,6 +2,12 @@ name: Recover exact Dünya production after Agent 21 repair
 
 on:
   workflow_dispatch:
+    inputs:
+      verified_frame_fix:
+        description: 'Confirm frame fix deployed and validated for one bounded recovery'
+        type: boolean
+        required: true
+        default: false
   workflow_run:
     workflows: ["Private ASR guarded Cloudflare deployment"]
     types: [completed]
@@ -15,7 +21,7 @@ concurrency:
 
 jobs:
   recover:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.head_branch == 'main'
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -25,6 +31,7 @@ jobs:
       R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
       PRIVATE_ASR_INTERNAL_TOKEN: ${{ secrets.PRIVATE_ASR_INTERNAL_TOKEN }}
       DUENYA_PRODUCTION_REVISION: v4-creative1
+      DUENYA_FRAME_FIX_VERIFIED: ${{ github.event_name == 'workflow_dispatch' && inputs.verified_frame_fix == true && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v4
         with:
