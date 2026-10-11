@@ -728,9 +728,8 @@ Quelle: https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-z
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-11-racing-editorial-2026-10-11-1-motogp-endonezya-gp-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38160673998-1
+## Facebook [GEPOSTET 2026-10-11 17:41 | ID: 1285968257941776_122122822023469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-11-daily
 Telegram-Update-ID: 279361929
@@ -748,3 +747,4 @@ Wie seht ihr Topraks Performance im Sprint?
 https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19
 Quelle: https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19", "media_status": "", "object_id": "1285968257941776_122122822023469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122122822023469415", "source_url": "https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19", "version": 1}
