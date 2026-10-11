@@ -41,45 +41,35 @@ jobs:
           for binary in ("ffprobe","ffmpeg"):
               result=subprocess.run([binary,"-version"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=10)
               if result.returncode: raise RuntimeError("DIAG_BINARY_UNAVAILABLE_"+binary.upper())
-          failures=0
+          # Focused read-only test: actual runner versions and two original R2 JPEGs.
+          for binary in ("ffmpeg","ffprobe"):
+              version=subprocess.run([binary,"-version"],capture_output=True,text=True,timeout=10,check=True)
+              print("DIAG_VERSION_"+binary.upper()+"="+version.stdout.splitlines()[0])
+          tested=0
           for idx,asset in enumerate(assets):
-              kind="VIDEO" if asset["mime"].startswith("video/") else "IMAGE"
-              try:
-                  with tempfile.TemporaryDirectory() as tmp:
-                      source=Path(tmp)/("source.mp4" if kind=="VIDEO" else "source.jpg")
-                      body=client.get_object(Bucket=bucket,Key=asset["key"])["Body"].read(100*1024*1024+1)
-                      if len(body)>100*1024*1024: raise RuntimeError("SIZE_LIMIT")
-                      source.write_bytes(body)
-                      if kind=="IMAGE":
-                          signature=("JPEG" if body.startswith(bytes.fromhex("ffd8ff")) else
-                                     "PNG" if body.startswith(bytes.fromhex("89504e470d0a1a0a")) else
-                                     "WEBP" if body.startswith(b"RIFF") and body[8:12]==b"WEBP" else
-                                     "HEIC" if len(body)>12 and body[4:8]==b"ftyp" else "OTHER")
-                          print("DIAG_ASSET_"+str(idx)+"_SOURCE_SIGNATURE="+signature)
-                      stamps=[0.0]
-                      if kind=="VIDEO":
-                          p=subprocess.run(["ffprobe","-v","error","-show_entries","format=duration","-of","json",str(source)],stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,timeout=20)
-                          if p.returncode: raise RuntimeError("FFPROBE_NONZERO")
-                          duration=float(json.loads(p.stdout)["format"]["duration"])
-                          stamps=[duration*x for x in (0.15,0.50,0.85)]
-                      for n,stamp in enumerate(stamps):
-                          frame=Path(tmp)/("frame-"+str(n)+".jpg")
-                          ok=False
-                          for seek in ([stamp,0.0] if kind=="VIDEO" else [stamp]):
-                              p=subprocess.run(["ffmpeg","-v","error","-y","-ss",str(seek),"-i",str(source),"-map","0:v:0","-an","-sn","-dn","-frames:v","1","-vf","scale=512:-2","-threads","1","-update","1",str(frame)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
-                              if p.returncode==0 and frame.exists() and frame.stat().st_size>2 and frame.read_bytes()[:3]==bytes.fromhex("ffd8ff"):
-                                  ok=True;break
-                              reason="SIGNAL" if p.returncode<0 else ("EXIT_NONZERO" if p.returncode else ("MISSING_FRAME" if not frame.exists() else ("EMPTY_FRAME" if frame.stat().st_size<=2 else "NON_JPEG_FRAME")))
-                          if not ok: raise RuntimeError("FRAME_"+reason)
-                  print("DIAG_ASSET_"+str(idx)+"="+kind+"_PASS")
-              except subprocess.TimeoutExpired:
-                  failures+=1;print("DIAG_ASSET_"+str(idx)+"="+kind+"_TIMEOUT")
-              except Exception as exc:
-                  failures+=1
-                  code=str(exc)
-                  if code not in ("SIZE_LIMIT","FFPROBE_NONZERO","FRAME_SIGNAL","FRAME_EXIT_NONZERO","FRAME_INVALID_JPEG","FRAME_MISSING_FRAME","FRAME_EMPTY_FRAME","FRAME_NON_JPEG_FRAME"):
-                      code="UNCLASSIFIED"
-                  print("DIAG_ASSET_"+str(idx)+"="+kind+"_"+code)
-          print("DIAG_TESTED="+str(len(assets))+" FAILURES="+str(failures))
-          if failures: raise RuntimeError("DIAG_REAL_FFMPEG_FAILURES_"+str(failures))
+              if not asset["mime"].startswith("image/"): continue
+              if tested>=2: break
+              tested+=1
+              with tempfile.TemporaryDirectory() as tmp:
+                  source=Path(tmp)/"original.jpg"
+                  raw=client.get_object(Bucket=bucket,Key=asset["key"])["Body"].read(100*1024*1024+1)
+                  if len(raw)>100*1024*1024: raise RuntimeError("DIAG_SAMPLE_SIZE_LIMIT")
+                  source.write_bytes(raw)
+                  probe=subprocess.run(["ffprobe","-v","error","-select_streams","v:0","-show_entries","stream=codec_name,width,height","-of","json",str(source)],capture_output=True,text=True,timeout=20)
+                  streams=json.loads(probe.stdout).get("streams",[]) if probe.returncode==0 else []
+                  details=streams[0] if streams else {}
+                  print("DIAG_SAMPLE_"+str(tested)+"_PROBE="+json.dumps({"status":"OK" if details else "FAILED","codec":details.get("codec_name","UNKNOWN"),"width":details.get("width",0),"height":details.get("height",0)}))
+                  variants=[
+                      ("simple",["ffmpeg","-v","error","-y","-i",str(source),"-frames:v","1","-f","image2"]),
+                      ("scaled",["ffmpeg","-v","error","-y","-i",str(source),"-frames:v","1","-vf","scale=512:-2","-f","image2"]),
+                      ("current",["ffmpeg","-v","error","-y","-ss","0","-i",str(source),"-map","0:v:0","-an","-sn","-dn","-frames:v","1","-vf","scale=512:-2","-threads","1","-update","1"])
+                  ]
+                  for name,args in variants:
+                      dest=Path(tmp)/(name+".jpg")
+                      result=subprocess.run(args+[str(dest)],capture_output=True,text=True,timeout=40)
+                      valid=dest.exists() and dest.stat().st_size>2 and dest.read_bytes().startswith(bytes.fromhex("ffd8ff"))
+                      # Error categories only: never print FFmpeg stderr or private media paths.
+                      print("DIAG_SAMPLE_"+str(tested)+"_"+name.upper()+"="+("PASS" if valid else ("EXIT_NONZERO" if result.returncode else "NO_FRAME")))
+          if tested!=2: raise RuntimeError("DIAG_NEED_TWO_JPEG_SAMPLES")
+          print("DIAG_TWO_JPEG_SAMPLES_COMPLETE")
           PY
