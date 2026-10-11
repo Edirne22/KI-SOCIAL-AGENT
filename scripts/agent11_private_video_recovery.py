@@ -65,7 +65,7 @@ def _http_json(method: str, path: str, token: str, payload: dict | None = None) 
         raise RuntimeError("RECOVERY_RUNTIME_UNREACHABLE") from exc
 
 
-def _load_status(client, bucket: str, job_id: str, production_revision: str, expected_stage: str | None = None) -> dict:
+def _load_status(client, bucket: str, job_id: str, production_revision: str, expected_stage: str | None = None, *, allow_accepted_without_stage: bool = False) -> dict:
     key = f"ai-central/v1/private-video/{job_id}/revisions/{production_revision}/status.json"
     raw = client.get_object(Bucket=bucket, Key=key)["Body"].read(16384)
     value = json.loads(raw)
@@ -80,26 +80,29 @@ def _load_status(client, bucket: str, job_id: str, production_revision: str, exp
     if not isinstance(stage, str) or not stage:
         # Fail closed unless an exact, previously validated Agent-21 incident
         # independently proves the missing stage for this failed revision.
-        if status != "FAILED" or not expected_stage:
+        if status == "ACCEPTED" and allow_accepted_without_stage and expected_stage:
+            stage = expected_stage
+        elif status != "FAILED" or not expected_stage:
             raise RuntimeError("RECOVERY_STATUS_STAGE_MISSING")
-        incident_id = f"WD-{job_id}-{expected_stage}-{production_revision}"
-        incident_key = f"ai-central/v1/maintenance/incidents/{incident_id}.json"
-        try:
-            incident = json.loads(client.get_object(Bucket=bucket, Key=incident_key)["Body"].read(16384))
-        except Exception as exc:
-            raise RuntimeError("RECOVERY_STAGE_PROVENANCE_MISSING") from exc
-        if not (
-            incident.get("schema") == "MACHINE-WATCHDOG-INCIDENT-V1"
-            and incident.get("incident_id") == incident_id
-            and incident.get("job_id") == job_id
-            and incident.get("stage_id") == expected_stage
-            and incident.get("checkpoint") == expected_stage
-            and incident.get("machine") == "private-media-container"
-            and incident.get("route_to") == "agent21"
-            and incident.get("requested_action") == "DIAGNOSE_ONLY"
-            and incident.get("reason") in {"MACHINE_REPORTED_STALLED", "MACHINE_REPORTED_FAILED"}
-        ):
-            raise RuntimeError("RECOVERY_STAGE_PROVENANCE_INVALID")
+        if status == "FAILED":
+            incident_id = f"WD-{job_id}-{expected_stage}-{production_revision}"
+            incident_key = f"ai-central/v1/maintenance/incidents/{incident_id}.json"
+            try:
+                incident = json.loads(client.get_object(Bucket=bucket, Key=incident_key)["Body"].read(16384))
+            except Exception as exc:
+                raise RuntimeError("RECOVERY_STAGE_PROVENANCE_MISSING") from exc
+            if not (
+                incident.get("schema") == "MACHINE-WATCHDOG-INCIDENT-V1"
+                and incident.get("incident_id") == incident_id
+                and incident.get("job_id") == job_id
+                and incident.get("stage_id") == expected_stage
+                and incident.get("checkpoint") == expected_stage
+                and incident.get("machine") == "private-media-container"
+                and incident.get("route_to") == "agent21"
+                and incident.get("requested_action") == "DIAGNOSE_ONLY"
+                and incident.get("reason") in {"MACHINE_REPORTED_STALLED", "MACHINE_REPORTED_FAILED"}
+            ):
+                raise RuntimeError("RECOVERY_STAGE_PROVENANCE_INVALID")
         stage = expected_stage
     if status not in {"ACCEPTED", "RUNNING", "COMPLETED", "FAILED"}:
         raise RuntimeError("RECOVERY_STATUS_VALUE_INVALID")
