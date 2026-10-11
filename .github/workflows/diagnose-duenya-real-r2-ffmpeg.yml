@@ -66,7 +66,7 @@ jobs:
                           frame=Path(tmp)/("frame-"+str(n)+".jpg")
                           ok=False
                           for seek in ([stamp,0.0] if kind=="VIDEO" else [stamp]):
-                              p=subprocess.run(["ffmpeg","-v","error","-y","-ss",str(seek),"-i",str(source),"-map","0:v:0","-an","-sn","-dn","-frames:v","1","-vf","scale=512:-2","-threads","1",str(frame)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
+                              p=subprocess.run(["ffmpeg","-v","error","-y","-ss",str(seek),"-i",str(source),"-map","0:v:0","-an","-sn","-dn","-frames:v","1","-vf","scale=512:-2","-threads","1","-update","1",str(frame)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
                               if p.returncode==0 and frame.exists() and frame.stat().st_size>2 and frame.read_bytes()[:3]==bytes.fromhex("ffd8ff"):
                                   ok=True;break
                               reason="SIGNAL" if p.returncode<0 else ("EXIT_NONZERO" if p.returncode else ("MISSING_FRAME" if not frame.exists() else ("EMPTY_FRAME" if frame.stat().st_size<=2 else "NON_JPEG_FRAME")))
