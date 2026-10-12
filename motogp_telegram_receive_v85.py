@@ -83,6 +83,10 @@ def selection(text):
     m=re.fullmatch(r'motogp\s+(.+)',v)
     if not m:return None
     choice=m.group(1).strip()
+    # Telegram dictation often repeats the command prefix for each number:
+    # "motogp 4, motogp 3," must mean the same as "motogp 4,3".
+    choice=re.sub(r',\\s*motogp\\s+', ',', choice)
+    choice=choice.rstrip(',').strip()
     if choice in ('alle','✅'):return [1,2,3,4,5]
     if choice in ('nein','❌'):return []
     choice=re.sub(r'\s*[-–—]\s*','-',choice)
