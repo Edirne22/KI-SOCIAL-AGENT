@@ -282,88 +282,6 @@ Quelle: https://tr.motorsport.com/motogp/news/2026-japonya-gp-siralama-martin-re
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-10/2026-10-03-racing-editorial-2026-10-03-2-2026-japonya-gp-sira-01.jpg
 
-## Instagram [GEPOSTET 2026-10-05 06:19 | ID: 18101984732028950]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-05-daily-TR-HUMAN
-Telegram-Update-ID: 279361912
-MotoGP-Auswahl: 1
-Story-Key: motogp:4077367
-Event-Fingerprint: -
-Titel: MotoGP'de Japonya Grand Prix'sini Marc Marquez kazandı
-Text:
-Der Japan‑GP war für Toprak leider nichts Besonderes – er landete 17. Platz. Nach so einem harten Rennen muss man sich erstmal sammeln, aber das Team arbeitet weiter an Verbesserungen. Wer glaubt, dass er beim nächsten Lauf wieder nach vorne drängen kann? 🏍️💨🤞
-
-#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
-
-Quelle / weitere Infos: https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367
-Quelle: https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367
-Medienstatus: QUELLE_BESTÄTIGT
-Bild: assets/images/2026-10/2026-10-05-turkish-human-1-toprak-razgatlioglu-01.jpg
-Publish-Provenienz: {"creation_id": "18010087673971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-05-turkish-human-1-toprak-razgatlioglu-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18101984732028950", "published_media_id": "18101984732028950", "source_url": "https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367", "version": 1}
-
-## Facebook [GEPOSTET 2026-10-05 06:17 | ID: 1285968257941776_122119592487469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-05-daily-TR-HUMAN
-Telegram-Update-ID: 279361912
-MotoGP-Auswahl: 1
-Story-Key: motogp:4077367
-Event-Fingerprint: -
-Titel: MotoGP'de Japonya Grand Prix'sini Marc Marquez kazandı
-Text:
-Der Japan‑GP war für Toprak leider nichts Besonderes – er landete 17. Platz. Nach so einem harten Rennen muss man sich erstmal sammeln, aber das Team arbeitet weiter an Verbesserungen. Wer glaubt, dass er beim nächsten Lauf wieder nach vorne drängen kann? 🏍️💨🤞
-
-#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
-
-Quelle / weitere Infos: https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367
-
-https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367
-Quelle: https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367", "media_status": "", "object_id": "1285968257941776_122119592487469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119592487469415", "source_url": "https://www.aa.com.tr/tr/spor/motogpde-japonya-grand-prixsini-marc-marquez-kazandi/4077367", "version": 1}
-
-## Instagram [GEPOSTET 2026-10-05 06:54 | ID: 18410900191084091]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-05-daily-TR-HUMAN
-Telegram-Update-ID: 279361912
-MotoGP-Auswahl: 2
-Story-Key: motogp:10861737
-Event-Fingerprint: -
-Titel: MotoGP Japonya GP: Marc Marquez kazandı, Aprilia podyumda, Toprak 17. sırada
-Text:
-Toprak Razgatlıoğlu hat das Japan‑GP mit einem 17. Platz beendet. Nach einem harten Lauf ist das Ergebnis zwar nicht das, was wir uns erhofft hatten, aber immerhin hat er das Ziel erreicht. Was meint ihr, welche Verbesserungen bringen uns das nächste Rennen? 🏍️💨🤔
-
-#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
-
-Quelle / weitere Infos: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737
-Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737
-Medienstatus: EIGENE_KI_EDITORIALGRAFIK
-Bild: assets/images/2026-10/2026-10-05-turkish-human-2-toprak-razgatlioglu-01.jpg
-Publish-Provenienz: {"creation_id": "18010090673971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-05-turkish-human-2-toprak-razgatlioglu-01.jpg", "media_status": "EIGENE_KI_EDITORIALGRAFIK", "platform": "instagram", "post_id": "18410900191084091", "published_media_id": "18410900191084091", "source_url": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737", "version": 1}
-
-## Facebook [GEPOSTET 2026-10-05 06:53 | ID: 1285968257941776_122119603827469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-05-daily-TR-HUMAN
-Telegram-Update-ID: 279361912
-MotoGP-Auswahl: 2
-Story-Key: motogp:10861737
-Event-Fingerprint: -
-Titel: MotoGP Japonya GP: Marc Marquez kazandı, Aprilia podyumda, Toprak 17. sırada
-Text:
-Toprak Razgatlıoğlu hat das Japan‑GP mit einem 17. Platz beendet. Nach einem harten Lauf ist das Ergebnis zwar nicht das, was wir uns erhofft hatten, aber immerhin hat er das Ziel erreicht. Was meint ihr, welche Verbesserungen bringen uns das nächste Rennen? 🏍️💨🤔
-
-#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
-
-Quelle / weitere Infos: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737
-
-https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737
-Quelle: https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737", "media_status": "", "object_id": "1285968257941776_122119603827469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119603827469415", "source_url": "https://tr.motorsport.com/motogp/news/motogp-japonya-gp-marc-marquez-kazandi-aprilia-podyumda-toprak-17-sirada/10861737", "version": 1}
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -381,31 +299,6 @@ Quelle: https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-1-toprak-motegide-sonu-01.jpg
 
-## Facebook [GEPOSTET 2026-10-05 07:16 | ID: 1285968257941776_122119609167469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-05-daily
-Telegram-Update-ID: 279361913
-MotoGP-Auswahl: 1
-Story-Key: title:toprak-motegi-de-sonucu-de-il-z-m-buldu-art-k-nas-l-yapaca-m-anl-yorum
-Event-Fingerprint: MotoGP|sprint|razgatlioglu|
-Titel: Toprak Motegi’de sonucu değil çözümü buldu: “Artık nasıl yapacağımı anlıyorum”
-Text:
-Toprak Razgatlıoğlu beendete den MotoGP-Sprint in Motegi auf Platz 17.
-
-Trotz der Platzierung sah er deutliche Fortschritte bei der Beherrschung der Yamaha auf der Bremse.
-
-Für den Fahrer zählte in Japan vor allem der gefundene Lösungsweg beim Fahrverhalten und weniger das reine Resultat.
-
-Schreibt eure Gedanken dazu gerne in die Kommentare.
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim
-Quelle: https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim", "media_status": "", "object_id": "1285968257941776_122119609167469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119609167469415", "source_url": "https://motoetkinlik.com/toprak-razgatlioglu-motegide-kritik-esigi-asti-frenlemeyi-nasil-yonetebilecegimi-anladim", "version": 1}
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -420,31 +313,6 @@ Marc Marquez hat in Motegi den Dublett geknackt – Sprint und Hauptrennen, beid
 Quelle: https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-2-marc-marquez-motegid-01.jpg
-
-## Facebook [GEPOSTET 2026-10-05 07:45 | ID: 1285968257941776_122119624035469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-05-daily
-Telegram-Update-ID: 279361913
-MotoGP-Auswahl: 2
-Story-Key: title:marc-marquez-motegi-de-dubleyi-yapt-motogp-de-fark-sadece-2-puan
-Event-Fingerprint: MotoGP|sprint|marquez,martin|
-Titel: Marc Marquez Motegi’de dubleyi yaptı: MotoGP’de fark sadece 2 puan!
-Text:
-Marc Marquez holte in Motegi den Dublett-Sieg: Sprint und Hauptrennen gewonnen.
-
-Jorge Martin wurde Zweiter im Hauptrennen.
-
-Der Vorsprung im MotoGP-WM-Kampf ist jetzt nur noch 2 Punkte.
-
-Der Titelkampf ist wieder spannend.
-
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi
-Quelle: https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi", "media_status": "", "object_id": "1285968257941776_122119624035469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119624035469415", "source_url": "https://motoetkinlik.com/marc-marquez-motegide-dubleyi-yapti-sampiyona-liderligiyle-arasinda-sadece-2-puan-kaldi", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
@@ -464,31 +332,6 @@ Wie wichtig ist dieser zweite Platz für Moreira aus eurer Sicht?
 Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-05-racing-editorial-2026-10-05-4-motegide-olayli-spri-01.jpg
-
-## Facebook [GEPOSTET 2026-10-05 08:13 | ID: 1285968257941776_122119633101469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-05-daily
-Telegram-Update-ID: 279361913
-MotoGP-Auswahl: 4
-Story-Key: title:motegi-de-olayl-sprint-marc-marquez-kazand-moreira-dan-tarihi-podyum
-Event-Fingerprint: MotoGP|sprint|bastianini,marquez,martin|
-Titel: Motegi’de olaylı Sprint: Marc Marquez kazandı, Moreira’dan tarihi podyum
-Text:
-Marc Marquez hat das Sprintrennen in Motegi gewonnen.
-
-Diogo Moreira ist nach den Strafen für Martin und Bastianini auf Platz zwei gekommen – ein historisches Pódio für ihn.
-
-Jorge Martin und Enea Bastianini wurden im Sprint disqualifiziert bzw. bestraft, was Moreira die Aufstellung auf den zweiten Rang bescherte.
-
-Wie seht ihr Moreiras historischen zweiten Platz nach den Strafen?
-
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife #DiogoMoreira
-
-https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
-Quelle: https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum", "media_status": "", "object_id": "1285968257941776_122119633101469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122119633101469415", "source_url": "https://motoetkinlik.com/marc-marquez-motegi-sprintte-kazandi-diogo-moreiradan-tarihi-podyum", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
