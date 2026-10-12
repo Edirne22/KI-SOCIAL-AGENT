@@ -2886,3 +2886,33 @@ Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-12 07:09 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK Estoril Superpole: Bulega Toprak'ın Rekorunu Kırarak Pole'ü Aldı
+Story-Key: title:worldsbk-estoril-superpole-bulega-toprak-n-rekorunu-k-rarak-pole-ald
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 07:09 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü, Supersport Estoril ayağının ikinci yarışında 4. oldu
+Story-Key: motogp:4085299
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 07:09 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Endonezya GP: Mandalika'da galibiyet Bezzecchi'nin, Aprilia ilk 4'ü kapattı, Toprak yarış dışı
+Story-Key: motogp:10864168
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 07:09 UTC | Motorcycle Racing | PASS
+Titel: Moto2 Endonezya GP Sıralama: Guevara Pole'de, Deniz Öncü 26. Sıradan Başlayacak
+Story-Key: title:moto2-endonezya-gp-s-ralama-guevara-pole-de-deniz-nc-26-s-radan-ba-layacak
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 07:10 UTC | Motorcycle Racing | PASS
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

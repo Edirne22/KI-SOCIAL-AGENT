@@ -934,3 +934,23 @@ Quelle: https://motoetkinlik.com/motogp-endonezya-gp-siralama-raul-fernandeze-il
 Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
 Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
 Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
+
+## 2026-10-12 06:41 UTC – ANGEBOTEN
+Story-Key: title:worldsbk-estoril-superpole-bulega-toprak-n-rekorunu-k-rarak-pole-ald
+Titel: WorldSBK Estoril Superpole: Bulega Toprak'ın Rekorunu Kırarak Pole'ü Aldı
+Quelle: https://motoetkinlik.com/worldsbk-estoril-superpole-bulega-toprakin-rekorunu-kirarak-poleu-aldi
+
+## 2026-10-12 06:41 UTC – ANGEBOTEN
+Story-Key: motogp:4085299
+Titel: Can Öncü, Supersport Estoril ayağının ikinci yarışında 4. oldu
+Quelle: https://www.aa.com.tr/tr/spor/can-oncu-supersport-estoril-ayaginin-ikinci-yarisinda-4-oldu/4085299
+
+## 2026-10-12 06:41 UTC – ANGEBOTEN
+Story-Key: motogp:10864168
+Titel: MotoGP Endonezya GP: Mandalika'da galibiyet Bezzecchi'nin, Aprilia ilk 4'ü kapattı, Toprak yarış dışı
+Quelle: https://tr.motorsport.com/motogp/news/motogp-endonezya-gp-mandalikada-galibiyet-bezzecchinin-aprilia-ilk-4u-kapatti-toprak-yaris-disi/10864168
+
+## 2026-10-12 06:41 UTC – ANGEBOTEN
+Story-Key: title:moto2-endonezya-gp-s-ralama-guevara-pole-de-deniz-nc-26-s-radan-ba-layacak
+Titel: Moto2 Endonezya GP Sıralama: Guevara Pole'de, Deniz Öncü 26. Sıradan Başlayacak
+Quelle: https://motoetkinlik.com/moto2-endonezya-gp-siralama-guevara-polede-deniz-oncu-26-siradan-baslayacak
