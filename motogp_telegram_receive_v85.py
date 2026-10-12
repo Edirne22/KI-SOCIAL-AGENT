@@ -457,10 +457,8 @@ def publish(posts,chosen,uid,batch,schedules=None):
 
         instagram_text = p["text"] if p.get("caption_final") else generate_buelent_caption(p["text"])
 
-        existing,migrated=_migrate_legacy_turkish_instagram(existing,p,n,uid,batch,img_path,media_status)
-        if migrated:
-            print(f"TURKISH HUMAN MIGRATION: bestehender Instagram-Block T{n} -> FREIGEGEBEN ({img_path})")
-            continue
+        # Do not migrate a prior Instagram image into an approved state:
+        # the owner must explicitly approve the new Telegram preview.
         if is_existing_duplicate:
             print(f"DUPLIKAT ERKANNT ({','.join(duplicate_reasons)}): {p['title']} bereits vorhanden, übersprungen")
             continue
@@ -469,18 +467,19 @@ def publish(posts,chosen,uid,batch,schedules=None):
         if story_id:existing_story_keys.add(story_id)
         if event_id:existing_events.add(event_id)
 
-        if not p.get('human_final'):
-            add_pending(
-                batch_id=batch,
-                auswahl=n,
-                titel=p["title"],
-                text=instagram_text,
-                bild_pfad=img_path,
-                prompt_fuer_agnes=prompt,
-            )
+        # Facebook is approved by the T-command; Instagram always requires
+        # a separate, explicit Telegram image approval.
+        add_pending(
+            batch_id=batch,
+            auswahl=n,
+            titel=p["title"],
+            text=instagram_text,
+            bild_pfad=img_path,
+            prompt_fuer_agnes=prompt,
+        )
 
         scheduled=_schedule_lines(schedules.get(n))
-        ig_status = 'FREIGEGEBEN' if p.get('human_final') else 'BILD_GENERIERT'
+        ig_status = 'BILD_GENERIERT'
         identity_lines=f'Story-Key: {story_id or "-"}\nEvent-Fingerprint: {event_id or "-"}\n'
         common_ig = f'Status: {ig_status}\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\n{identity_lines}Titel: {p["title"]}\n'
         common_fb = f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\n{identity_lines}Titel: {p["title"]}\n'
@@ -490,7 +489,7 @@ def publish(posts,chosen,uid,batch,schedules=None):
             f'## Facebook\n{common_fb}Text:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n'
         ]
 
-        if not p.get('human_final'):
+        if True:  # Telegram image preview is mandatory for every Instagram post
             caption = (
                 f"🖼️ Instagram-Bild bereit für: {p['title']}\n"
                 f"Auswahl: {n} (Batch: {batch})\n\n"
