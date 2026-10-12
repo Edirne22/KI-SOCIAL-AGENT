@@ -1,6 +1,6 @@
 # MotoGP Roster 2026
 
-**Automatisch verifiziert:** 2026-10-05 05:40 UTC
+**Automatisch verifiziert:** 2026-10-12 05:38 UTC
 
 **Status:** 22 Stammfahrer live gegen offizielle MotoGP-Seite + unabhängigen Crosscheck geprüft.
 
