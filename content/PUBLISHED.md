@@ -504,7 +504,7 @@ Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.c
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 38298523337-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361928
 Text:
