@@ -790,9 +790,8 @@ Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaj
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-3-jorge-martin-den-mar-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38315297767-1
+## Facebook [GEPOSTET 2026-10-12 22:12 | ID: 1285968257941776_122123368749469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-12-manual-38302594031
 Telegram-Update-ID: 279361946
@@ -810,6 +809,7 @@ Was erwartet ihr von Jorge Martin in den letzten fünf Rennen?
 https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
 Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum", "media_status": "", "object_id": "1285968257941776_122123368749469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123368749469415", "source_url": "https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
