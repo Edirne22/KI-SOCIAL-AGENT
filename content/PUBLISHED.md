@@ -746,6 +746,7 @@ Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-2-moto2-de-ma
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-12-manual-38302594031
 Telegram-Update-ID: 279361946
