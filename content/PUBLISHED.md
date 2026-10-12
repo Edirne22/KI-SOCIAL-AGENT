@@ -594,9 +594,8 @@ Quelle: https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-z
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19", "media_status": "", "object_id": "1285968257941776_122122822023469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122122822023469415", "source_url": "https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19", "version": 1}
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38298805946-1
+## Instagram [GEPOSTET 2026-10-12 19:37 | ID: 17910927429544398]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-12-daily-TR-HUMAN
 Telegram-Update-ID: 279361935
@@ -613,6 +612,7 @@ Quelle / weitere Infos: https://tr.motorsport.com/motogp/news/toprak-saglik-kont
 Quelle: https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-10/2026-10-12-turkish-human-1-toprak-razgatlioglu-01.jpg
+Publish-Provenienz: {"creation_id": "18011140946971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-12-turkish-human-1-toprak-razgatlioglu-01.jpg", "media_status": "EIGENE_KI_EDITORIALGRAFIK", "platform": "instagram", "post_id": "17910927429544398", "published_media_id": "17910927429544398", "source_url": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-12 19:34 | ID: 1285968257941776_122123321823469415]
 Status: GEPOSTET
