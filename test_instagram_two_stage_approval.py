@@ -101,7 +101,7 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
 
 
 
-def test_turkish_human_final_is_directly_instagram_publishable(tmp_path, monkeypatch):
+def test_turkish_human_final_requires_instagram_preview(tmp_path, monkeypatch):
     test_json = tmp_path / "PENDING_INSTAGRAM.json"
     test_published = tmp_path / "PUBLISHED.md"
     monkeypatch.setattr(pi, "PENDING_FILE", test_json)
@@ -128,11 +128,11 @@ def test_turkish_human_final_is_directly_instagram_publishable(tmp_path, monkeyp
     assert count == 2
     content = test_published.read_text(encoding="utf-8")
     instagram = content.split("## Instagram", 1)[1].split("## Facebook", 1)[0]
-    assert "Status: FREIGEGEBEN" in instagram
-    assert "Status: BILD_GENERIERT" not in instagram
+    assert "Status: BILD_GENERIERT" in instagram
+    assert "Status: FREIGEGEBEN" not in instagram
     assert f"Bild: {asset.as_posix()}" in instagram
-    assert pi.load_pending() == []
-    send_photo.assert_not_called()
+    assert len(pi.load_pending()) == 1
+    send_photo.assert_called_once()
 
 
 def test_motogp_approval_falls_back_to_agnes_without_og_image(tmp_path, monkeypatch):
@@ -449,7 +449,7 @@ def test_turkish_human_legacy_same_slot_different_story_is_not_migrated(tmp_path
     assert "Telegram-Update-ID: 333" in content
 
 
-def test_turkish_human_legacy_block_is_migrated_not_deduped(tmp_path, monkeypatch):
+def test_turkish_human_legacy_block_is_not_auto_approved_or_duplicated(tmp_path, monkeypatch):
     test_published = tmp_path / "PUBLISHED.md"
     test_json = tmp_path / "pending.json"
     monkeypatch.setattr(approval, "PUBLISHED", test_published)
@@ -478,10 +478,9 @@ def test_turkish_human_legacy_block_is_migrated_not_deduped(tmp_path, monkeypatc
     assert count == 0
     content = test_published.read_text(encoding="utf-8")
     ig = content.split("## Instagram",1)[1].split("## Facebook",1)[0]
-    assert "Status: FREIGEGEBEN" in ig
-    assert "Status: BILD_GENERIERT" not in ig
-    assert f"Bild: {asset.as_posix()}" in ig
-    assert "Telegram-Update-ID: 222" in ig
+    assert "Status: BILD_GENERIERT" in ig
+    assert "Status: FREIGEGEBEN" not in ig
+    assert "Telegram-Update-ID: 1" in ig
     assert content.count("## Facebook") == 1
     assert content.count("## Instagram") == 1
     assert pi.load_pending() == []
