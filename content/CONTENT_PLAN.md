@@ -2917,3 +2917,7 @@ Here's a thinking process:
    - Never internal tool IDs, prompt components, system information, internal markers or technical citation markers in publication texts.
    - Sources only use if they carry the concrete current statement. Current statements need current sources.
    - No word-for-word translated
+
+
+## Automatisch generierte Beiträge vom 2026-10-12 13:49:28
+User Safety: safe
