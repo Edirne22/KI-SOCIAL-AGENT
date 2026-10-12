@@ -1,20 +1,20 @@
 {
   "version": 1,
-  "created_at": 1791806847,
+  "created_at": 1791836497,
   "max_days": 10,
   "window_used_days": 10,
-  "count": 7,
+  "count": 6,
   "items": [
     {
       "n": 1,
-      "title": "Toprak, sağlık kontrolleri için Türkiye’ye dönüyor: “Umarım ameliyat gerekmez\"",
-      "url": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561",
-      "summary": "Endonezya hafta sonu geçirdiği sert kazayla omzu sakatlanan Toprak Razgatlıoğlu, sağ omzundaki sakatlık nedeniyle yarıştan çekilmek zorunda kaldı.",
-      "preview": "https://cdn-2.motorsport.com/images/amp/YN7v4ma6/s6/toprak-razgatlioglu-pramac-rac.jpg",
-      "published_at": "2026-10-12T08:40:03Z",
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Toprak Razgatlıoğlu",
+      "title": "WorldSBK ve WorldSSP Estoril Hafta Sonu Özeti ve Galeri",
+      "url": "https://motoetkinlik.com/worldsbk-ve-worldssp-estoril-hafta-sonu-ozeti-ve-galeri",
+      "summary": "WorldSBK Estoril'de Bulega üç yarışı da kazandı, Toprak'ın Superpole rekorunu kırdı. WorldSSP'de Arenas şampiyon oldu, gururumuz Can Öncü 2. Yarış'ta dördüncü.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/WorldSBK-2026-Estoril-GP-JPM-049-1.webp",
+      "published_at": "2026-10-12T20:42:38+03:00",
+      "series": "Moto2",
+      "source_series": "Moto2",
+      "turkish_rider": "Can Öncü",
       "kind": "news"
     },
     {
@@ -31,18 +31,6 @@
     },
     {
       "n": 3,
-      "title": "Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi",
-      "url": "https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi",
-      "summary": "Moto2 Endonezya GP'de Izan Guevara üst üste üçüncü zaferini kazandı. Gonzalez ikinci, Holgado üçüncü oldu. Deniz Öncü yarışı 22. sırada bitirdi.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/Moto2-Endonezya-GP-2026endonezya-gp-2026-izan-guevara-mandalika.webp",
-      "published_at": "2026-10-11T11:41:55+03:00",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    },
-    {
-      "n": 4,
       "title": "WSSP Portekiz 1. yarış: Arenas şampiyonluğa ulaştı, Can Öncü 21. sırada!",
       "url": "https://tr.motorsport.com/supersport/news/wssp-portekiz-1-yaris-arenas-sampiyonluga-ulasti-can-oncu-21-sirada/10863931",
       "summary": "2026 WSSP Estoril’de düzenlenen ilk yarışında Triumph pilotları Tom Booth-Amos ve Oli Bayliss ilk iki sırayı elde etti. Yarışı dördüncü sırada tamamlayan Yamaha sürücüsü Albert Arenas ise sezonun bitimine bir yarış kala dünya şampiyonluğunu ilan etti.",
@@ -54,7 +42,7 @@
       "kind": "news"
     },
     {
-      "n": 5,
+      "n": 4,
       "title": "MotoGP Endonezya GP ana antrenman: Kazalarla dolu seansta Fernandez lider, Toprak 16. sırada",
       "url": "https://tr.motorsport.com/motogp/news/motogp-endonezya-gp-ana-antrenman-kazalarla-dolu-seansta-fernandez-lider-toprak-16-sirada/10863281",
       "summary": "2026 MotoGP Endonezya Grand Prix'si ana antrenman seansını lider tamamlayan sürücü Raul Fernandez oldu. Toprak Razgatlıoğlu ise 16. sırayı aldı.",
@@ -66,7 +54,7 @@
       "kind": "news"
     },
     {
-      "n": 6,
+      "n": 5,
       "title": "WorldSSP Estoril Round Serbest Antrenman: Can Zirvede, Bahattin 26. Sırada",
       "url": "https://motoetkinlik.com/worldssp-estoril-round-serbest-antrenman-can-zirvede-bahattin-26-sirada",
       "summary": "Can Öncü, WorldSSP Estoril serbest antrenmanında 1:39.084 ile zirvede. Mahias'ın 0,334 saniye önünde bitiren temsilcimizin yanında Bahattin Sofuoğlu 26. oldu.",
@@ -78,7 +66,7 @@
       "kind": "news"
     },
     {
-      "n": 7,
+      "n": 6,
       "title": "Moto2 Mandalika Antrenman: Rekor İzan Guevara’dan, Deniz Öncü Kaza Geçirdi!",
       "url": "https://motoetkinlik.com/moto2-mandalika-antrenman-rekor-izan-guevaradan-deniz-oncu-kaza-gecirdi",
       "summary": "Moto2 Endonezya GP ön sıralama seansında Izan Guevara, Mandalika tur rekorunu kırdı. Manuel Gonzalez dördüncü, Deniz Öncü ise kaza sonrası 26. oldu.",

@@ -6932,6 +6932,19 @@
     ],
     "2026-10-12": [
       {
+        "story_key": "title:worldsbk-ve-worldssp-estoril-hafta-sonu-zeti-ve-galeri",
+        "title": "WorldSBK ve WorldSSP Estoril Hafta Sonu Özeti ve Galeri",
+        "url": "https://motoetkinlik.com/worldsbk-ve-worldssp-estoril-hafta-sonu-ozeti-ve-galeri",
+        "summary": "WorldSBK Estoril'de Bulega üç yarışı da kazandı, Toprak'ın Superpole rekorunu kırdı. WorldSSP'de Arenas şampiyon oldu, gururumuz Can Öncü 2. Yarış'ta dördüncü.",
+        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/WorldSBK-2026-Estoril-GP-JPM-049-1.webp",
+        "published_at": "2026-10-12T20:42:38+03:00",
+        "series": "Moto2",
+        "source_series": "Moto2",
+        "series_locked": true,
+        "turkish_rider": "Can Öncü",
+        "kind": "news"
+      },
+      {
         "story_key": "title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum",
         "title": "Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum",
         "url": "https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum",
@@ -6942,19 +6955,6 @@
         "source_series": "WorldSBK",
         "series_locked": true,
         "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "motogp:10864561",
-        "title": "Toprak, sağlık kontrolleri için Türkiye’ye dönüyor: “Umarım ameliyat gerekmez\"",
-        "url": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561",
-        "summary": "Endonezya hafta sonu geçirdiği sert kazayla omzu sakatlanan Toprak Razgatlıoğlu, sağ omzundaki sakatlık nedeniyle yarıştan çekilmek zorunda kaldı.",
-        "preview": "https://cdn-2.motorsport.com/images/amp/YN7v4ma6/s6/toprak-razgatlioglu-pramac-rac.jpg",
-        "published_at": "2026-10-12T08:40:03Z",
-        "series": "MotoGP",
-        "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "Toprak Razgatlıoğlu",
         "kind": "news"
       },
       {
@@ -6997,19 +6997,6 @@
         "kind": "news"
       },
       {
-        "story_key": "motogp:10863689",
-        "title": "Moto2 Endonezya sıralama: Guevara rekor turla pole'de, Escrig’den sürpriz performans, Deniz Öncü 25. sırada!",
-        "url": "https://tr.motorsport.com/moto2/news/moto2-endonezya-siralama-guevara-rekor-turla-polede-escrigden-surpriz-performans-deniz-oncu-25-sira/10863689",
-        "summary": "Moto2 Dünya Şampiyonası’nın Mandalika ayağında gerçekleştirilen sıralama seansında Izan Guevara, pist rekorunu kırarak pole pozisyonunun sahibi oldu. Alex Escrig ise seans boyunca sergilediği güçlü performansla ikinci sırayı aldı.",
-        "preview": "https://cdn-6.motorsport.com/images/amp/2y7Qv8X6/s6/izan-guevara.jpg",
-        "published_at": "2026-10-10T07:24:57Z",
-        "series": "Moto2",
-        "source_series": "Moto2",
-        "series_locked": true,
-        "turkish_rider": "Deniz Öncü",
-        "kind": "news"
-      },
-      {
         "story_key": "title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi",
         "title": "Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi",
         "url": "https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi",
@@ -7033,19 +7020,6 @@
         "source_series": "MotoGP",
         "series_locked": true,
         "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "title:motogp-endonezya-gp-2-antrenman-bezzecchi-zirvede-toprak-19-s-rada",
-        "title": "MotoGP Endonezya GP 2. Antrenman: Bezzecchi Zirvede, Toprak 19. Sırada",
-        "url": "https://motoetkinlik.com/motogp-endonezya-gp-2-antrenman-bezzecchi-zirvede-toprak-19-sirada",
-        "summary": "Marco Bezzecchi, MotoGP Endonezya 2. Antrenman'ı 1:29.560 ile zirvede bitirdi. Gururumuz Toprak Razgatlıoğlu, sağ omzunu çıkardığı seansı 19. sırada tamamladı.",
-        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/Toprak-Razgatlioglu-Prima-Pramac-Yamaha-Mandalika-1.webp",
-        "published_at": "2026-10-10T05:49:01+03:00",
-        "series": "MotoGP",
-        "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "Toprak Razgatlıoğlu",
         "kind": "news"
       },
       {
@@ -7166,19 +7140,6 @@
         "kind": "news"
       },
       {
-        "story_key": "motogp:10864269",
-        "title": "WSBK Estoril Superpole yarış: Bulega'dan rekor, 28. galibiyet",
-        "url": "https://tr.motorsport.com/wsbk/news/wsbk-estoril-superpole-yaris-bulegadan-rekor-28-galibiyet/10864269",
-        "summary": "Bulega, 2026 sezonundaki 28. zaferini alırken Surra, son turda Oliveira'yı geçerek podyumu tamamladı.",
-        "preview": "https://cdn-7.motorsport.com/images/amp/6zoJk4a0/s6/bulega-wsbk-australia.jpg",
-        "published_at": "2026-10-11T10:40:00Z",
-        "series": "MotoGP",
-        "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
         "story_key": "title:worldssp-estoril-round-serbest-antrenman-can-zirvede-bahattin-26-s-rada",
         "title": "WorldSSP Estoril Round Serbest Antrenman: Can Zirvede, Bahattin 26. Sırada",
         "url": "https://motoetkinlik.com/worldssp-estoril-round-serbest-antrenman-can-zirvede-bahattin-26-sirada",
@@ -7192,12 +7153,12 @@
         "kind": "news"
       },
       {
-        "story_key": "motogp:10864575",
-        "title": "MotoGP, 2027 takvimine eklenen Adelaide GP için Red Bull ile sponsorluk imzaladı",
-        "url": "https://tr.motorsport.com/motogp/news/motogp-takvime-eklenecek-adelaide-gp-icin-red-bull-ile-sponsorluk-imzaladi/10864575",
-        "summary": "MotoGP'nin gelecek sezondan itibaren Phillip Island'ın yerini alacak yeni Adelaide yarışı, 2027 ve 2028 yılları için Red Bull ile ana sponsorluk anlaşması imzaladı.",
-        "preview": "https://cdn-3.motorsport.com/images/amp/YpbAb1d0/s6/adelaide-circuit-overview.jpg",
-        "published_at": "2026-10-12T10:40:02Z",
+        "story_key": "motogp:10864269",
+        "title": "WSBK Estoril Superpole yarış: Bulega'dan rekor, 28. galibiyet",
+        "url": "https://tr.motorsport.com/wsbk/news/wsbk-estoril-superpole-yaris-bulegadan-rekor-28-galibiyet/10864269",
+        "summary": "Bulega, 2026 sezonundaki 28. zaferini alırken Surra, son turda Oliveira'yı geçerek podyumu tamamladı.",
+        "preview": "https://cdn-7.motorsport.com/images/amp/6zoJk4a0/s6/bulega-wsbk-australia.jpg",
+        "published_at": "2026-10-11T10:40:00Z",
         "series": "MotoGP",
         "source_series": "MotoGP",
         "series_locked": true,
@@ -7215,6 +7176,32 @@
         "source_series": "Moto2",
         "series_locked": true,
         "turkish_rider": "Deniz Öncü",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:10864584",
+        "title": "Aprilia’da şampiyonluk ikilemi: \"Net bir strateji belirlememiz gerekebilir\"",
+        "url": "https://tr.motorsport.com/motogp/news/apriliada-sampiyonluk-ikilemi-net-bir-takim-stratejisi-belirlememiz-gerekebilir/10864584",
+        "summary": "MotoGP'de sezonun son beş yarışına girilirken Aprilia, Jorge Martin'in şampiyonluk mücadelesine öncelik vermekle Bezzecchi’yi desteklemek arasında kaldı.",
+        "preview": "https://cdn-5.motorsport.com/images/amp/YXyKZ356/s6/marco-bezzecchi-aprilia-racing.jpg",
+        "published_at": "2026-10-12T12:00:04Z",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "motogp:10864575",
+        "title": "MotoGP, 2027 takvimine eklenen Adelaide GP için Red Bull ile sponsorluk imzaladı",
+        "url": "https://tr.motorsport.com/motogp/news/motogp-takvime-eklenecek-adelaide-gp-icin-red-bull-ile-sponsorluk-imzaladi/10864575",
+        "summary": "MotoGP'nin gelecek sezondan itibaren Phillip Island'ın yerini alacak yeni Adelaide yarışı, 2027 ve 2028 yılları için Red Bull ile ana sponsorluk anlaşması imzaladı.",
+        "preview": "https://cdn-3.motorsport.com/images/amp/YpbAb1d0/s6/adelaide-circuit-overview.jpg",
+        "published_at": "2026-10-12T10:40:02Z",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
+        "series_locked": true,
+        "turkish_rider": "",
         "kind": "news"
       },
       {
@@ -7322,12 +7309,12 @@
         "kind": "news"
       },
       {
-        "story_key": "motogp:10863654",
-        "title": "MotoGP Endonezya GP sıralama: Fernandez kariyerinin ilk pole’ünde, Toprak 19. sırada",
-        "url": "https://tr.motorsport.com/motogp/news/motogp-endonezya-siralama-fernandez-kariyerinin-ilk-poleunde-toprak/10863654",
-        "summary": "Endonezya GP hafta sonunun sıralama mücadelesinde pole pozisyonunu elde eden isim Raul Fernandez oldu. Temsilcimiz Toprak, 19. sırayı elde etti.",
-        "preview": "https://cdn-8.motorsport.com/images/amp/27NoRqE0/s6/raul-fernandez-trackhouse-raci.jpg",
-        "published_at": "2026-10-10T03:41:48Z",
+        "story_key": "motogp:10863846",
+        "title": "WSBK Portekiz Superpole: Bulega rekor turla pole'de, Lecuona 2., Lowes 3. sırada",
+        "url": "https://tr.motorsport.com/wsbk/news/wsbk-portekiz-superpole-bulega-rekor-turla-polede/10863846",
+        "summary": "Estoril’de düzenlenen Superpole seansında Nicolo Bulega, rekor tur zamanıyla pole derecesi elde etti.",
+        "preview": "https://cdn-4.motorsport.com/images/amp/YK13yNr0/s6/nicolo-bulega-portimao.jpg",
+        "published_at": "2026-10-10T11:10:26Z",
         "series": "MotoGP",
         "source_series": "MotoGP",
         "series_locked": true,
@@ -7335,12 +7322,12 @@
         "kind": "news"
       },
       {
-        "story_key": "title:2026-singapur-gp-verstappen-kariyerinin-ilk-singapur-zaferini-kazand-leclerc-2-antonelli-3-s-rada-trmotosports",
-        "title": "2026 Singapur GP: Verstappen kariyerinin ilk Singapur zaferini kazandı, Leclerc 2., Antonelli 3. sırada - TRmotosports",
-        "url": "https://www.trmotosports.com/2026-singapur-gp-verstappen-kariyerinin-ilk-singapur-zaferini-kazandi-leclerc-2-antonelli-3-sirada",
-        "summary": "2026 Singapur GP: Verstappen kariyerinin ilk Singapur zaferini kazandı, Leclerc 2., Antonelli 3. sırada - TRmotosports",
-        "preview": "https://www.trmotosports.com/wp-content/uploads/2026/10/2026_singapur_gp_verstappen_kariyerinin_ilk_singapur_zaferini_kazandi_leclerc_2_antonelli_3_sirada.jpg",
-        "published_at": "2026-10-11T19:18:35+00:00",
+        "story_key": "motogp:10863654",
+        "title": "MotoGP Endonezya GP sıralama: Fernandez kariyerinin ilk pole’ünde, Toprak 19. sırada",
+        "url": "https://tr.motorsport.com/motogp/news/motogp-endonezya-siralama-fernandez-kariyerinin-ilk-poleunde-toprak/10863654",
+        "summary": "Endonezya GP hafta sonunun sıralama mücadelesinde pole pozisyonunu elde eden isim Raul Fernandez oldu. Temsilcimiz Toprak, 19. sırayı elde etti.",
+        "preview": "https://cdn-8.motorsport.com/images/amp/27NoRqE0/s6/raul-fernandez-trackhouse-raci.jpg",
+        "published_at": "2026-10-10T03:41:48Z",
         "series": "MotoGP",
         "source_series": "MotoGP",
         "series_locked": true,
@@ -7361,14 +7348,14 @@
         "kind": "news"
       },
       {
-        "story_key": "motogp:10863846",
-        "title": "WSBK Portekiz Superpole: Bulega rekor turla pole'de, Lecuona 2., Lowes 3. sırada",
-        "url": "https://tr.motorsport.com/wsbk/news/wsbk-portekiz-superpole-bulega-rekor-turla-polede/10863846",
-        "summary": "Estoril’de düzenlenen Superpole seansında Nicolo Bulega, rekor tur zamanıyla pole derecesi elde etti.",
-        "preview": "https://cdn-4.motorsport.com/images/amp/YK13yNr0/s6/nicolo-bulega-portimao.jpg",
-        "published_at": "2026-10-10T11:10:26Z",
-        "series": "MotoGP",
-        "source_series": "MotoGP",
+        "story_key": "title:maximo-quiles-2026-moto3-d-nya-ampiyonu-tarihi-ba-ar",
+        "title": "Maximo Quiles, 2026 Moto3 Dünya Şampiyonu! Tarihi başarı",
+        "url": "https://motoetkinlik.com/maximo-quiles-2026-moto3-dunya-sampiyonu-mandalikada-tarihi-zafer",
+        "summary": "Maximo Quiles, Mandalika'da sezonun 10. zaferini kazanarak bitime beş yarış kala 2026 Moto3 Dünya Şampiyonu oldu. 18 yaşındaki sürücü tarihe geçti.",
+        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/maximo-quiles-2026-moto3-dunya-sampiyonu-mandalika.webp",
+        "published_at": "2026-10-11T11:36:21+03:00",
+        "series": "Moto3",
+        "source_series": "Moto3",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
@@ -7382,19 +7369,6 @@
         "published_at": "2026-10-11T10:49:55Z",
         "series": "MotoGP",
         "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "title:maximo-quiles-2026-moto3-d-nya-ampiyonu-tarihi-ba-ar",
-        "title": "Maximo Quiles, 2026 Moto3 Dünya Şampiyonu! Tarihi başarı",
-        "url": "https://motoetkinlik.com/maximo-quiles-2026-moto3-dunya-sampiyonu-mandalikada-tarihi-zafer",
-        "summary": "Maximo Quiles, Mandalika'da sezonun 10. zaferini kazanarak bitime beş yarış kala 2026 Moto3 Dünya Şampiyonu oldu. 18 yaşındaki sürücü tarihe geçti.",
-        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/maximo-quiles-2026-moto3-dunya-sampiyonu-mandalika.webp",
-        "published_at": "2026-10-11T11:36:21+03:00",
-        "series": "Moto3",
-        "source_series": "Moto3",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
@@ -7478,19 +7452,6 @@
         "kind": "news"
       },
       {
-        "story_key": "title:2026-motogp-endonezya-2-yar-sonu-lar-trmotosports",
-        "title": "2026 MotoGP Endonezya 2. Yarış Sonuçları - TRmotosports",
-        "url": "https://www.trmotosports.com/2026-motogp-endonezya-2-yaris-sonuclari",
-        "summary": "2026 MotoGP Endonezya 2. Yarış Sonuçları - TRmotosports",
-        "preview": "https://www.trmotosports.com/wp-content/uploads/2026/10/2026_motogp_endonezya_2_yaris_sonuclari.jpg",
-        "published_at": "2026-10-10T08:20:06+00:00",
-        "series": "MotoGP",
-        "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
         "story_key": "title:aprilia-pilotu-martin-raul-bir-ad-m-nde-ama-marc-da-hemen-orada",
         "title": "Aprilia Pilotu Martin: \"Raul Bir Adım Önde, Ama Marc da Hemen Orada\"",
         "url": "https://motoetkinlik.com/aprilia-pilotu-martin-raul-bir-adim-onde-ama-marc-da-hemen-orada",
@@ -7517,12 +7478,12 @@
         "kind": "news"
       },
       {
-        "story_key": "motogp:10863408",
-        "title": "Marquez: \"Ducati, Aprilia ile arasındaki yarım saniyelik farkı gizleyemez\"",
-        "url": "https://tr.motorsport.com/motogp/news/marquez-ducati-aprilia-ile-arasindaki-yarim-saniyelik-farki-gizleyemez/10863408",
-        "summary": "Marc Marquez, Endonezya Grand Prix'sinin antrenman seansında Ducati ile Aprilia arasında ortaya çıkan farkın gerçek olduğunu ve Borgo Panigale merkezli üreticinin tur başına en az yarım saniye geride kaldığını düşünüyor.",
-        "preview": "https://cdn-4.motorsport.com/images/amp/6x7LvPjY/s6/marc-marquez-ducati-team.jpg",
-        "published_at": "2026-10-09T12:20:02Z",
+        "story_key": "title:2026-motogp-endonezya-2-yar-sonu-lar-trmotosports",
+        "title": "2026 MotoGP Endonezya 2. Yarış Sonuçları - TRmotosports",
+        "url": "https://www.trmotosports.com/2026-motogp-endonezya-2-yaris-sonuclari",
+        "summary": "2026 MotoGP Endonezya 2. Yarış Sonuçları - TRmotosports",
+        "preview": "https://www.trmotosports.com/wp-content/uploads/2026/10/2026_motogp_endonezya_2_yaris_sonuclari.jpg",
+        "published_at": "2026-10-10T08:20:06+00:00",
         "series": "MotoGP",
         "source_series": "MotoGP",
         "series_locked": true,
@@ -7530,12 +7491,12 @@
         "kind": "news"
       },
       {
-        "story_key": "title:aprilia-da-tak-m-emirleri-tart-mas-fernandez-ve-ogura-karar-n-klad",
-        "title": "Aprilia'da takım emirleri tartışması! Fernandez ve Ogura kararını açıkladı",
-        "url": "https://motoetkinlik.com/apriliada-sampiyonluk-gerilimi-trackhouse-suruculeri-takim-emirlerine-karsi-tavrini-acikladi",
-        "summary": "Jorge Martin ile Marc Marquez arasındaki fark iki puana inerken Trackhouse sürücüleri Raul Fernandez ve Ai Ogura, Aprilia'nın olası takım emirleri hakkında konuştu.",
-        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/aprilia-trackhouse-raul-fernandez-ai-ogura-takim-emirleri-2026.webp",
-        "published_at": "2026-10-08T15:50:46+03:00",
+        "story_key": "motogp:10863408",
+        "title": "Marquez: \"Ducati, Aprilia ile arasındaki yarım saniyelik farkı gizleyemez\"",
+        "url": "https://tr.motorsport.com/motogp/news/marquez-ducati-aprilia-ile-arasindaki-yarim-saniyelik-farki-gizleyemez/10863408",
+        "summary": "Marc Marquez, Endonezya Grand Prix'sinin antrenman seansında Ducati ile Aprilia arasında ortaya çıkan farkın gerçek olduğunu ve Borgo Panigale merkezli üreticinin tur başına en az yarım saniye geride kaldığını düşünüyor.",
+        "preview": "https://cdn-4.motorsport.com/images/amp/6x7LvPjY/s6/marc-marquez-ducati-team.jpg",
+        "published_at": "2026-10-09T12:20:02Z",
         "series": "MotoGP",
         "source_series": "MotoGP",
         "series_locked": true,
@@ -7551,6 +7512,19 @@
         "published_at": "2026-10-09T19:12:10+03:00",
         "series": "WorldSBK",
         "source_series": "WorldSBK",
+        "series_locked": true,
+        "turkish_rider": "",
+        "kind": "news"
+      },
+      {
+        "story_key": "title:aprilia-da-tak-m-emirleri-tart-mas-fernandez-ve-ogura-karar-n-klad",
+        "title": "Aprilia'da takım emirleri tartışması! Fernandez ve Ogura kararını açıkladı",
+        "url": "https://motoetkinlik.com/apriliada-sampiyonluk-gerilimi-trackhouse-suruculeri-takim-emirlerine-karsi-tavrini-acikladi",
+        "summary": "Jorge Martin ile Marc Marquez arasındaki fark iki puana inerken Trackhouse sürücüleri Raul Fernandez ve Ai Ogura, Aprilia'nın olası takım emirleri hakkında konuştu.",
+        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/aprilia-trackhouse-raul-fernandez-ai-ogura-takim-emirleri-2026.webp",
+        "published_at": "2026-10-08T15:50:46+03:00",
+        "series": "MotoGP",
+        "source_series": "MotoGP",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"
@@ -7759,32 +7733,6 @@
         "published_at": "2026-10-06T15:43:44+03:00",
         "series": "MotoGP",
         "source_series": "MotoGP",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "title:resmen-kland-franco-morbidelli-motogp-yi-b-rak-p-worldsbk-ye-ge-iyor",
-        "title": "Resmen açıklandı: Franco Morbidelli MotoGP’yi bırakıp WorldSBK’ye geçiyor",
-        "url": "https://motoetkinlik.com/resmen-aciklandi-franco-morbidelli-motogpden-ayriliyor-2027de-ducati-ile-worldsbkde",
-        "summary": "Franco Morbidelli’nin 2027 sezonunda MotoGP’den ayrılarak Aruba.it Racing – Ducati ile WorldSBK’de yarışacağı resmen açıklandı.",
-        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/franco-morbidelli-ducati-worldsbk-transferi-2027.webp",
-        "published_at": "2026-10-05T19:27:07+03:00",
-        "series": "WorldSBK",
-        "source_series": "WorldSBK",
-        "series_locked": true,
-        "turkish_rider": "",
-        "kind": "news"
-      },
-      {
-        "story_key": "title:ducati-den-franco-morbidelli-ye-b-y-k-g-ven-son-derece-de-erli-olacak",
-        "title": "Ducati’den Franco Morbidelli’ye büyük güven: “Son derece değerli olacak”",
-        "url": "https://motoetkinlik.com/ducatiden-morbidelli-hamlesine-tam-destek-worldsbk-icin-son-derece-degerli-olacak",
-        "summary": "Gigi Dall’Igna, 2027’de Ducati ile WorldSBK’ye geçecek Franco Morbidelli’nin MotoGP ve Michelin deneyiminin takım için büyük değer taşıyacağını söyledi.",
-        "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/franco-morbidelli-ducati-worldsbk-2027.webp",
-        "published_at": "2026-10-05T19:21:37+03:00",
-        "series": "WorldSBK",
-        "source_series": "WorldSBK",
         "series_locked": true,
         "turkish_rider": "",
         "kind": "news"

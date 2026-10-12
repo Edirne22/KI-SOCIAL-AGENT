@@ -974,3 +974,13 @@ Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaj
 Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
 Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
 Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
+
+## 2026-10-12 20:21 UTC – ANGEBOTEN
+Story-Key: title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi
+Titel: Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi
+Quelle: https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
+
+## 2026-10-12 20:21 UTC – ANGEBOTEN
+Story-Key: title:pedro-acosta-dan-motogp-ye-sert-k-e-ek-gibi-g-r-nd-k
+Titel: Pedro Acosta'dan MotoGP'ye sert çıkış: “Eşek gibi göründük!”
+Quelle: https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk

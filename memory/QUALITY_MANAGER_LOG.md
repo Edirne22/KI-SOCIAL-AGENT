@@ -2958,3 +2958,33 @@ Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazan
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-12 20:48 UTC | Motorcycle Racing | PASS
+Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
+Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 20:49 UTC | Motorcycle Racing | PASS
+Titel: Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi
+Story-Key: title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 20:49 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
+Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 20:49 UTC | Motorcycle Racing | PASS
+Titel: Pedro Acosta'dan MotoGP'ye sert çıkış: “Eşek gibi göründük!”
+Story-Key: title:pedro-acosta-dan-motogp-ye-sert-k-e-ek-gibi-g-r-nd-k
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 20:49 UTC | Motorcycle Racing | PASS
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
