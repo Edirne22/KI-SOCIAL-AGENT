@@ -744,9 +744,8 @@ Quelle: https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferi
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-2-moto2-de-mandalika-d-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38308826569-1
+## Facebook [GEPOSTET 2026-10-12 21:09 | ID: 1285968257941776_122123352327469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-12-manual-38302594031
 Telegram-Update-ID: 279361946
@@ -770,6 +769,7 @@ Weiter geht es in der Moto2-Weltmeisterschaft.
 https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
 Quelle: https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi", "media_status": "", "object_id": "1285968257941776_122123352327469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123352327469415", "source_url": "https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
