@@ -46,3 +46,17 @@ Quellen: Finanztip, Check24, Verivox, Biallo
 2. Der aktuelle Chase‑Zins von 4,0 % gilt bis 26.12.2026, danach sinkt er auf 2,0 %.  
 3. Nach diesem Datum wäre ein Wechsel zu Openbank (4,0 % für weitere 4 Monate) oder – für ein unbefristetes Angebot – Instabank über Raisin (2,41 % p.a.) eine Option.  
 4. Für Bülent: Chase bleibt bis Jahresende 2026 konkurrenzfähig; danach lohnt sich ein kurzer Blick auf Openbank‑Aktionen oder ein dauerhaftes Tagesgeldkonto bei Instabank.
+## Lauf 2026-10-12 07:17 UTC
+
+Quellen: Finanztip, Check24, Verivox, Biallo
+
+**Beste aktuelle Tagesgeld‑Zinsen (Stand 10/2026):**  
+1. Chase – 4,0 % p.a. (4‑Monats‑Aktionszins, gültig bis 26.12.2026)  
+2. Openbank – 4,0 % p.a. (4‑Monats‑Aktionszins)  
+3. Ayvens Bank – 4,0 % p.a. (3‑Monats‑Aktionszins)  
+
+Dein derzeitiges Chase‑Konto liefert mit 4,0 % denselben Zinssatz wie die beiden anderen Top‑Angebote, liegt aber nach 26.12.2026 bei 2,0 % zurück.  
+
+Falls der Chase‑Zins nach diesem Datum schlechter bleibt, könntest du zu Openbank oder Ayvens Bank wechseln – beide bieten weiterhin kurzfristige Aktionszinsen von 4,0 % (sofern noch verfügbar).  
+
+Kurz gesagt: Bis 26.12.2026 ist dein Chase‑Konto konkurrenzfähig; danach lohnt sich ein Blick auf Openbank oder Ayvens Bank für gleichwertige Konditionen.
