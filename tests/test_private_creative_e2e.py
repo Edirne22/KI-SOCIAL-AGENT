@@ -71,7 +71,7 @@ class CreativeE2ETests(unittest.TestCase):
                 return subprocess.CompletedProcess(cmd,0,stdout=json.dumps({'format':{'duration':'1.0'}}).encode())
             return subprocess.CompletedProcess(cmd,1,stderr=b'/secret/private.mp4: sensitive failure')
         with patch('subprocess.run',side_effect=fake_run):
-            with self.assertRaisesRegex(RuntimeError,'PRIVATE_VISION_FRAME_EXTRACTION_FAILED_FFMPEG_EXIT_NONZERO') as error:
+            with self.assertRaisesRegex(RuntimeError,'PRIVATE_VISION_FRAME_EXTRACTION_FAILED_VIDEO_FFMPEG_EXIT_NONZERO') as error:
                 analyze_private_media(client,'test',[asset],infer=lambda _: {})
         self.assertNotIn('/secret/',str(error.exception))
 
@@ -87,5 +87,5 @@ class CreativeE2ETests(unittest.TestCase):
             Path(cmd[-1]).write_bytes(b'not a jpeg')
             return subprocess.CompletedProcess(cmd,0,stderr=b'')
         with patch('subprocess.run',side_effect=fake_run):
-            with self.assertRaisesRegex(RuntimeError,'PRIVATE_VISION_FRAME_EXTRACTION_FAILED_NO_VALID_JPEG'):
+            with self.assertRaisesRegex(RuntimeError,'PRIVATE_VISION_FRAME_EXTRACTION_FAILED_VIDEO_NO_VALID_JPEG'):
                 analyze_private_media(client,'test',[asset],infer=lambda _: {})
