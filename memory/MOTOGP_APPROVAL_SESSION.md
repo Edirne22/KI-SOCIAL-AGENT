@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1791787279
+Session-Timestamp: 1791806847
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,25 +15,25 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 2
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.7
+Artikelalter-Tage: 2.2
 Kategorie: Turkish Riders
-Serie: WorldSBK
-Story-Key: title:worldsbk-estoril-superpole-bulega-toprak-n-rekorunu-k-rarak-pole-ald
-Titel: WorldSBK Estoril Superpole: Bulega Toprak'ın Rekorunu Kırarak Pole'ü Aldı
-Quelle: https://motoetkinlik.com/worldsbk-estoril-superpole-bulega-toprakin-rekorunu-kirarak-poleu-aldi
+Serie: Moto2
+Story-Key: motogp:10863689
+Titel: Moto2 Endonezya sıralama: Guevara rekor turla pole'de, Escrig’den sürpriz performans, Deniz Öncü 25. sırada!
+Quelle: https://tr.motorsport.com/moto2/news/moto2-endonezya-siralama-guevara-rekor-turla-polede-escrigden-surpriz-performans-deniz-oncu-25-sira/10863689
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-1-worldsbk-estoril-sup-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/JPM_4976-Estoril2026-Bulega.webp
+Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-1-moto2-endonezya-sira-01.jpg
+Quellen-Preview: https://cdn-6.motorsport.com/images/amp/2y7Qv8X6/s6/izan-guevara.jpg
 Plattformen: Instagram + Facebook
 Text:
-In Estoril hat Nicolo Bulega die Superpole auf der Place für sich entschieden – mit 1:33.884 Minuten. Das ist 0,319 Sekunden schneller als der vorherige Rekord von Toprak Razgatlıoğlu. Toprak muss sich den neuerlichen Rekordgeschwindigkeiten geschlagen geben, aber er war in Estoril nah dran.
+In der Moto2-Qualifying-Session in Mandalika hat Izan Guevara mit einem neuen Streckenrekord die Pole Position geholt 🏁. Alex Escrig hat durchgehend stark gezeigt und sich den zweiten Startplatz gesichert. Bei unseren Jungs stand Deniz Öncü auf Platz 25.
 
-Was denkt ihr, wie eng die Duelle in der Superpole in diesem Jahr werden?
+Was denkt ihr, kann sich Öncü am Rennen noch nach vorne arbeiten?
 
-#WorldSBK #ToprakRazgatlioglu #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -41,25 +41,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.5
+Artikelalter-Tage: 2.4
 Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: motogp:4085299
-Titel: Can Öncü, Supersport Estoril ayağının ikinci yarışında 4. oldu
-Quelle: https://www.aa.com.tr/tr/spor/can-oncu-supersport-estoril-ayaginin-ikinci-yarisinda-4-oldu/4085299
+Serie: MotoGP
+Story-Key: title:motogp-endonezya-gp-2-antrenman-bezzecchi-zirvede-toprak-19-s-rada
+Titel: MotoGP Endonezya GP 2. Antrenman: Bezzecchi Zirvede, Toprak 19. Sırada
+Quelle: https://motoetkinlik.com/motogp-endonezya-gp-2-antrenman-bezzecchi-zirvede-toprak-19-sirada
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-2-can-oncu-supersport-01.jpg
-Quellen-Preview: https://web-cdnprod.aa.com.tr/uploads/Contents/2026/10/11/thumbs_b_c_f7d56e6aabe01f2a842b8a142f5fd627.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-2-motogp-endonezya-gp-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/Toprak-Razgatlioglu-Prima-Pramac-Yamaha-Mandalika-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Can Öncü ist beim zweiten Rennen der elften Runde in Estoril als Vierter über die Ziellinie gefahren. Die zweite Runde des Wochenendes endete für ihn auf Platz 4.
+Im 2. Training der MotoGP in Indonesien fuhr Marco Bezzecchi mit einer Zeit von 1:29.560 an die Spitze. Toprak Razgatlıoğlu renkte sich während der Session die rechte Schulter aus und beendete das Training auf Platz 19.
 
-Wie bewertest du Can Öncüs Ergebnis in Estoril?
+Wie schätzt ihr die Situation ein?
 
-#Moto2 #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,31 +67,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
-Kategorie: Turkish Riders
+Artikelalter-Tage: 0.1
+Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10864168
-Titel: MotoGP Endonezya GP: Mandalika'da galibiyet Bezzecchi'nin, Aprilia ilk 4'ü kapattı, Toprak yarış dışı
-Quelle: https://tr.motorsport.com/motogp/news/motogp-endonezya-gp-mandalikada-galibiyet-bezzecchinin-aprilia-ilk-4u-kapatti-toprak-yaris-disi/10864168
+Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
+Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
+Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-3-motogp-endonezya-gp-01.jpg
-Quellen-Preview: https://cdn-6.motorsport.com/images/amp/YE9E71DY/s6/marco-bezzecchi-aprilia-racing.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-3-jorge-martin-den-mar-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jorge-martin-mandalika-motogp-sampiyonluk-liderligi-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Marco Bezzecchi gewann das 2026er MotoGP-Rennen in Endonezya.
+Jorge Martin hat in Indonesien die Tabellenführung in der MotoGP übernommen – und das direkt von Marc Marquez. Der Aprilia-Pilot hat sich vor den fünf verbleibenden Rennen noch vorab bemerkbar gemacht. Keine leeren Worte, sondern klare Ansage.
 
-Toprak Razgatlıoğlu schied aufgrund eines mechanischen Problems aus.
+Wie seht ihr die Lage – ist Martin auf dem richtigen Weg, oder hat Marquez noch Karten auf den Tisch?
 
-Aprilia schaffte nicht den Sprung in die Top 4.
-
-Das Rennen fand auf der Strecke in Mandalika statt.
-
-Wie steht ihr zu Bezzecchis Sieg in Endonezya?
-
-#MotoGP #ToprakRazgatlioglu #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -103,23 +97,21 @@ Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 1.9
-Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: title:moto2-endonezya-gp-s-ralama-guevara-pole-de-deniz-nc-26-s-radan-ba-layacak
-Titel: Moto2 Endonezya GP Sıralama: Guevara Pole'de, Deniz Öncü 26. Sıradan Başlayacak
-Quelle: https://motoetkinlik.com/moto2-endonezya-gp-siralama-guevara-polede-deniz-oncu-26-siradan-baslayacak
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-4-moto2-endonezya-gp-s-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/Deniz-Oncu-Moto2-Endonezya-Gp-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-4-bulega-estoril-de-re-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/worldsbk-estoril-2026-race-1-nicolo-bulega-ducati.webp
 Plattformen: Instagram + Facebook
 Text:
-Guevara schießt die Pole, Deniz muss vom 26. ran.
+Bulega hat in Estoril die Marke von 27 Siegen geknackt und damit Bautistas Rekord gleichgezogen. Lecuona fuhr als Zweiter auf die Podiumsstufe, Surra gab mit Rang drei einen echten Überraschungsmoment ab – Ducati mit Doppelerfolg.
 
-Im Moto2-Qualifying zu Indonesien fuhr Izan Guevara mit 1:31.963 die Bestzeit. Deniz Öncü belegte in Q1 Platz 13 und startet damit auf Rang 26.
+Wer ist bei euch der Favorit für den Titel im Moment?
 
-Wie schätzt ihr seine Chancen vom 26. Startplatz ein?
-
-#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -127,27 +119,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.6
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
-Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
-Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
+Artikelalter-Tage: 0.9
+Kategorie: Turkish Riders
+Serie: WorldSSP
+Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
+Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
+Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-5-bulega-estoril-de-re-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/worldsbk-estoril-2026-race-1-nicolo-bulega-ducati.webp
+Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-5-estoril-worldssp-haf-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/can-oncu-cekya-yarisi-antreman-seansi-2026-scaled.webp
 Plattformen: Instagram + Facebook
 Text:
-Nicolo Bulega hat in Estoril gewonnen – sein 27. Sieg in dieser Saison.
+Das WorldSSP-Wochenende in Estoril ist durch. Zweites Rennen: Jeremy Alcoba gewinnt den Kampf nach dem Neustart hinter der roten Flagge. Can Öncü kommt auf Platz acht und rückt damit in der Gesamtwertung auf Platz drei vor. Bei Bahattin Sofuoğlu war leider Schluss — sein Unfall beendet das Rennen.
 
-Damit gleichstellt er den Rekord von Alvaro Bautista. Hinter ihm erreichten Iker Lecuona Platz zwei und Alberto Surra Platz drei.
+Was denkt ihr über die Aufholjagd von Can Öncü?
 
-Wie findet ihr, dass Bulega jetzt mit Bautista gleichzieht?
-
-#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
+#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

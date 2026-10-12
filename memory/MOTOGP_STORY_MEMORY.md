@@ -954,3 +954,23 @@ Quelle: https://tr.motorsport.com/motogp/news/motogp-endonezya-gp-mandalikada-ga
 Story-Key: title:moto2-endonezya-gp-s-ralama-guevara-pole-de-deniz-nc-26-s-radan-ba-layacak
 Titel: Moto2 Endonezya GP Sıralama: Guevara Pole'de, Deniz Öncü 26. Sıradan Başlayacak
 Quelle: https://motoetkinlik.com/moto2-endonezya-gp-siralama-guevara-polede-deniz-oncu-26-siradan-baslayacak
+
+## 2026-10-12 12:07 UTC – ANGEBOTEN
+Story-Key: motogp:10863689
+Titel: Moto2 Endonezya sıralama: Guevara rekor turla pole'de, Escrig’den sürpriz performans, Deniz Öncü 25. sırada!
+Quelle: https://tr.motorsport.com/moto2/news/moto2-endonezya-siralama-guevara-rekor-turla-polede-escrigden-surpriz-performans-deniz-oncu-25-sira/10863689
+
+## 2026-10-12 12:07 UTC – ANGEBOTEN
+Story-Key: title:motogp-endonezya-gp-2-antrenman-bezzecchi-zirvede-toprak-19-s-rada
+Titel: MotoGP Endonezya GP 2. Antrenman: Bezzecchi Zirvede, Toprak 19. Sırada
+Quelle: https://motoetkinlik.com/motogp-endonezya-gp-2-antrenman-bezzecchi-zirvede-toprak-19-sirada
+
+## 2026-10-12 12:07 UTC – ANGEBOTEN
+Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
+Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
+Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
+
+## 2026-10-12 12:07 UTC – ANGEBOTEN
+Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
+Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
+Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi

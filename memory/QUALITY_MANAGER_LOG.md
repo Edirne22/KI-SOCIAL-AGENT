@@ -2916,3 +2916,45 @@ Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-12 12:40 UTC | Motorcycle Racing | FAIL
+Titel: Toprak, sağlık kontrolleri için Türkiye’ye dönüyor: “Umarım ameliyat gerekmez"
+Story-Key: motogp:10864561
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 12:40 UTC | Motorcycle Racing | FAIL
+Titel: Toprak, sağlık kontrolleri için Türkiye’ye dönüyor: “Umarım ameliyat gerekmez"
+Story-Key: motogp:10864561
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 12:40 UTC | Motorcycle Racing | PASS
+Titel: Moto2 Endonezya sıralama: Guevara rekor turla pole'de, Escrig’den sürpriz performans, Deniz Öncü 25. sırada!
+Story-Key: motogp:10863689
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 12:40 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Endonezya GP 2. Antrenman: Bezzecchi Zirvede, Toprak 19. Sırada
+Story-Key: title:motogp-endonezya-gp-2-antrenman-bezzecchi-zirvede-toprak-19-s-rada
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 12:40 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
+Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 12:41 UTC | Motorcycle Racing | PASS
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-12 12:41 UTC | Motorcycle Racing | PASS
+Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
+Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
