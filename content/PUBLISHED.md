@@ -612,9 +612,8 @@ Quelle: https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-tur
 Medienstatus: EIGENE_KI_EDITORIALGRAFIK
 Bild: assets/images/2026-10/2026-10-12-turkish-human-1-toprak-razgatlioglu-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38298446353-1
+## Facebook [GEPOSTET 2026-10-12 19:34 | ID: 1285968257941776_122123321823469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-12-daily-TR-HUMAN
 Telegram-Update-ID: 279361935
@@ -632,6 +631,7 @@ Quelle / weitere Infos: https://tr.motorsport.com/motogp/news/toprak-saglik-kont
 https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561
 Quelle: https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561", "media_status": "", "object_id": "1285968257941776_122123321823469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123321823469415", "source_url": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561", "version": 1}
 
 ## Instagram
 Status: FREIGEGEBEN
