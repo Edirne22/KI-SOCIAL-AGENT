@@ -866,15 +866,24 @@
       "arch_version": "V8.5.5"
     },
     "racing-2026-10-12-manual-38302594031": {
-      "status": "READY_FOR_APPROVAL",
+      "status": "PUBLISHED",
       "started_at": "2026-10-12T20:13:13.974179+00:00",
-      "updated_at": "2026-10-12T20:49:46.342300+00:00",
+      "updated_at": "2026-10-12T21:01:23.958346+00:00",
       "event": "workflow_dispatch",
       "github_run_id": "38302594031",
-      "arch_version": "V8.5.5"
+      "arch_version": "V8.5.5",
+      "telegram_update_id": 279361946,
+      "selection": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "platform_blocks": 10
     }
   },
   "last_notification_at": 1791838186.3405151,
   "last_notification_fingerprint": "8446a800fc7cfcb8d1d4ab44e86d2ec91a6b105a7605a29193805b82e3302970",
-  "active_batch_id": "racing-2026-10-12-manual-38302594031"
+  "active_batch_id": ""
 }

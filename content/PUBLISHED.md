@@ -684,3 +684,204 @@ Inspirations-Plattform: Keine aktuelle externe Quelle verwendet.
 Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 ---
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 1
+Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
+Event-Fingerprint: -
+Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
+Text:
+Ey, Jeremy Alcoba hat das zweite Estoril‑Rennen für sich entschieden. Can Öncü kam nur Achter, kletterte aber damit auf Platz 3 in der Gesamtwertung. Ein Crash von Bahattin Sofuoğlu stoppte das Rennen 🏁.
+
+Wie schätzt ihr die Leistungen der Rider im zweiten Estoril‑Run ein?
+
+#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-1-estoril-worldssp-haf-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 1
+Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
+Event-Fingerprint: -
+Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
+Text:
+Jeremy Alcoba hat das zweite Weltmeisterschaftsrennen in Estoril gewonnen.
+
+Can Öncü wurde Achter und kletterte in der Gesamtwertung auf Platz drei.
+
+Bahattin Sofuoğlu hatte einen Unfall, der das Rennen stoppte.
+
+Was denkt ihr über die Leistungen im zweiten Estoril-Rennen?
+
+#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
+Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 2
+Story-Key: title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi
+Event-Fingerprint: -
+Titel: Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi
+Text:
+Ey, Izan Guevara hat in Mandalika das Moto2‑Rennen klar abgefahren – Sieg für ihn! Daniel Holgado holt den dritten Platz, während Deniz Öncü nach vorne kämpft und nur 22. rüberkommt. Der Abstand zum Meisterstand ist jetzt um 6,5 Punkte kleiner. Weiter geht’s in der Moto2‑Weltmeisterschaft, wer ist euer Favorit für das nächste Rennen? 🏍️ #Moto2 #IzanGuevara #DanielHolgado #DenizOncu #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-2-moto2-de-mandalika-d-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 2
+Story-Key: title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi
+Event-Fingerprint: -
+Titel: Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi
+Text:
+Izan Guevara gewann das Moto2-Rennen in Mandalika.
+
+Daniel Holgado wurde Dritter.
+
+Deniz Öncü beendete das Rennen auf Platz 22.
+
+Der Meisterschaftsrückstand verringerte sich um 6,5 Punkte.
+
+Weiter geht es in der Moto2-Weltmeisterschaft.
+
+#Moto2 #DenizOncu #DanielHolgado #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
+Quelle: https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 3
+Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
+Event-Fingerprint: -
+Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
+Text:
+Jorge Martin hat in Indonesien die MotoGP-Führung von Marc Marquez zurückgeholt. Noch fünf Rennen stehen aus, und Martin sagt klar, dass er nicht mehr nur hinten anhängen will.
+
+Was erwartet ihr von Jorge Martin in den letzten fünf Rennen?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-3-jorge-martin-den-mar-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 3
+Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
+Event-Fingerprint: -
+Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
+Text:
+Jorge Martin hat in Indonesien die MotoGP-Führung von Marc Marquez zurückgeholt. Noch fünf Rennen stehen aus, und Martin sagt klar, dass er nicht mehr nur hinten anhängen will.
+
+Was erwartet ihr von Jorge Martin in den letzten fünf Rennen?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
+Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 4
+Story-Key: title:pedro-acosta-dan-motogp-ye-sert-k-e-ek-gibi-g-r-nd-k
+Event-Fingerprint: -
+Titel: Pedro Acosta'dan MotoGP'ye sert çıkış: “Eşek gibi göründük!”
+Text:
+Acosta hat bei Mandalika ordentlich Dampf abgelassen. Wegen der Reifendruck-Probleme hat er Marc Marquez immer wieder aus dem Weg müssen und fordert jetzt eine klare Regeländerung. 🏍️💨
+
+Wie seht ihr das Ganze? Ist das fair, oder geht es hier um echte Sicherheitsrisiken auf der Strecke?
+
+Quelle: MotoGP.com
+
+#MotoGP #MarcMarquez #PedroAcosta #MotorradRacing #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-4-pedro-acosta-dan-mot-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 4
+Story-Key: title:pedro-acosta-dan-motogp-ye-sert-k-e-ek-gibi-g-r-nd-k
+Event-Fingerprint: -
+Titel: Pedro Acosta'dan MotoGP'ye sert çıkış: “Eşek gibi göründük!”
+Text:
+Eşek gibi göründük!
+
+Pedro Acosta hat bei der MotoGP in Mandalika klare Worte gefunden. Wegen Lastikdruckproblemen musste er Marc Marquez immer wieder den Weg freimachen – und fordert nun eine Regeländerung.
+
+Wie schätzt ihr die Situation ein?
+
+#MotoGP #MarcMarquez #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk
+Quelle: https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 5
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Event-Fingerprint: -
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Text:
+Nicolo Bulega hat in Estoril das WorldSBK‑Rennen 1 gewonnen – das ist schon sein 27. Sieg in dieser Saison und gleicht damit Alvaro Bautista’s Rekord. Auf dem Podium stehen Iker Lecuona (2.) und Alberto Surra (3.). Was meint ihr, bleibt Bulega noch lange vorne? 🏍️ #WorldSBK #NicoloBulega #AlvaroBautista #IkerLecuona #BuelentsBikeLife
+Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-5-bulega-estoril-de-re-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 5
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Event-Fingerprint: -
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Text:
+Nicolo Bulega hat in Estoril das WorldSBK-Rennen 1 gewonnen – und das ist bereits sein 27. Sieg in dieser Saison 🏍️💨 Damit stellt er den Rekord von Alvaro Bautista wieder equal. Auf dem Podest stehen außer ihm noch Iker Lecuona auf Platz zwei und Alberto Surra auf Rang drei.
+
+Wie seht ihr den Bulega-Rekord?
+
+#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
+
+https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
+Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
+Link-Preview: offiziell
