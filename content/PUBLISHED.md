@@ -526,7 +526,8 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 ---
 
-Bild: auto
+Bild: assets/images/2026-10/2026-10-12-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg
+Media-Provenienz: {"generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-12-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "real_racer_generation": false, "synthetic": true, "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
