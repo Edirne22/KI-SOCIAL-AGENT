@@ -704,9 +704,8 @@ Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-b
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-1-estoril-worldssp-haf-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38308455348-1
+## Facebook [GEPOSTET 2026-10-12 21:06 | ID: 1285968257941776_122123351295469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-12-manual-38302594031
 Telegram-Update-ID: 279361946
@@ -728,6 +727,7 @@ Was denkt ihr über die Leistungen im zweiten Estoril-Rennen?
 https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
 Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi", "media_status": "", "object_id": "1285968257941776_122123351295469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123351295469415", "source_url": "https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
