@@ -469,7 +469,9 @@ def publish(posts,chosen,uid,batch,schedules=None):
         if story_id:existing_story_keys.add(story_id)
         if event_id:existing_events.add(event_id)
 
-        if not p.get('human_final'):
+        # Facebook is approved by the T-command; Instagram always requires
+        # a separate, explicit Telegram image approval.
+        if True:
             add_pending(
                 batch_id=batch,
                 auswahl=n,
@@ -480,7 +482,7 @@ def publish(posts,chosen,uid,batch,schedules=None):
             )
 
         scheduled=_schedule_lines(schedules.get(n))
-        ig_status = 'FREIGEGEBEN' if p.get('human_final') else 'BILD_GENERIERT'
+        ig_status = 'BILD_GENERIERT'
         identity_lines=f'Story-Key: {story_id or "-"}\nEvent-Fingerprint: {event_id or "-"}\n'
         common_ig = f'Status: {ig_status}\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\n{identity_lines}Titel: {p["title"]}\n'
         common_fb = f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\n{identity_lines}Titel: {p["title"]}\n'
@@ -490,7 +492,7 @@ def publish(posts,chosen,uid,batch,schedules=None):
             f'## Facebook\n{common_fb}Text:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n'
         ]
 
-        if not p.get('human_final'):
+        if True:
             caption = (
                 f"🖼️ Instagram-Bild bereit für: {p['title']}\n"
                 f"Auswahl: {n} (Batch: {batch})\n\n"
