@@ -3063,3 +3063,35 @@ Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem Mobilfunkve
    * Ein Bonus für die Mitnahme der bisherigen Rufnummer kann die Gesamtkosten über die Vertragslaufzeit hinweg spürbar reduzieren.
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-10-12 14:12
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem Mobilfunkvertrag im Telekom-Netz (D1) mit hohem Datenvolumen und niedrigem Budget:
+
+### 1. Mögliche Händlerarten und Anbieter
+* **Original-Netzbetreiber:** Bietet direkten Zugang zum D1-Netz inklusive maximaler Geschwindigkeiten und vollem Serviceangebot, liegt preislich ohne Kombinationstarife (z. B. Festnetz-Bündelung) jedoch meist im höheren Segment.
+* **Tochtermarken & Spezialanbieter:** Marken, die direkt zum Netzbetreiber gehören oder eng mit ihm kooperieren. Sie bieten oft eine sehr gute Netzabdeckung zu günstigeren Konditionen, teilweise jedoch mit reduzierter Maximalgeschwindigkeit.
+* **Unabhängige Mobilfunkdiscounter & MVNOs:** Drittanbieter, die Kontingente im D1-Netz nutzen. Hier finden sich häufig Aktionsangebote mit viel Datenvolumen zu niedrigen Grundgebühren.
+* **Vergleichs- und Vermittlungsportale:** Unabhängige Reseller bieten häufig Sonderkonditionen wie Einmalboni oder Cashbacks an, die den rechnerischen Effektivpreis pro Monat senken.
+
+### 2. Relevant Tarifmodelle / Produktfamilien
+* **SIM-Only-Laufzeitverträge (24 Monate):** Bieten in der Regel das beste Preis-Leistungs-Verhältnis bezogen auf die monatliche Grundgebühr, da der Anbieter über zwei Jahre planen kann.
+* **Monatlich kündbare Tarife (Flex-Tarife):** Bieten maximale Flexibilität, sind rechnerisch bei sehr hohem Datenvolumen jedoch manchmal etwas teurer oder beinhalten eine höhere einmalige Anschlussgebühr.
+* **Hardware-Bundles (Vertrag mit Smartphone):** Bei solchen Angeboten kann der Effektivpreis für den Tarif durch den rechnerischen Gegenwert oder Weiterverkauf des enthaltenen Geräts stark sinken.
+* **Prepaid-Tarife:** Bieten vollen Kostenkontrolle, erreichen bei sehr großen Datenmengen (wie 80 GB) im D1-Netz aber selten extrem niedrige Monatspreise.
+
+### 3. Auswahlkriterien und Tarifdetails
+* **Effektivpreis berechnen:** Achte auf den Unterschied zwischen der regulären monatlichen Grundgebühr und dem Effektivpreis. Boni für die Rufnummernmitnahme, Startguthaben oder entfallende Anschlusspreise drücken die Kosten über die Mindestvertragslaufzeit.
+* **Kosten ab dem 25. Monat:** Viele stark rabattierte Tarife werden nach Ablauf der Erstlaufzeit deutlich teurer. Ein rechtzeitiger Wechsel oder eine Kündigung sollte eingeplant werden.
+* **Geschwindigkeit & Mobilfunkstandard:** Im D1-Netz unterscheiden sich Tarife oft stark bei der Maximalgeschwindigkeit (z. B. 25, 50 oder 300 Mbit/s) und darin, ob der 5G-Standard bereits freigeschaltet ist oder nur LTE/4G genutzt wird.
+* **Netzfunktionen:** Stelle sicher, dass grundlegende Funktionen wie VoLTE (Telefonieren über das LTE-Netz), WLAN-Call (Telefonieren über WLAN) sowie EU-Roaming ohne Zusatzkosten enthalten sind.
+
+Bitte in 10 Minuten erneut versuchen.
