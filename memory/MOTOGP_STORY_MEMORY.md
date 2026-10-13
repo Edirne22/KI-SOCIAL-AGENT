@@ -984,3 +984,13 @@ Quelle: https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferi
 Story-Key: title:pedro-acosta-dan-motogp-ye-sert-k-e-ek-gibi-g-r-nd-k
 Titel: Pedro Acosta'dan MotoGP'ye sert çıkış: “Eşek gibi göründük!”
 Quelle: https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk
+
+## 2026-10-13 11:55 UTC – ANGEBOTEN
+Story-Key: motogp:10864828
+Titel: Tardozzi: "Marquez'in motosikleti kendine göre geliştirdiği kesinlikle doğru değil"
+Quelle: https://tr.motorsport.com/motogp/news/tardozzi-marquezin-ducatiyi-kendine-gore-gelistirdigi-kesinlikle-dogru-degil/10864828
+
+## 2026-10-13 11:55 UTC – ANGEBOTEN
+Story-Key: motogp:10864355
+Titel: WSSP Portekiz 2. yarış: Kaos dolu yarışın galibi Alcoba, Can Öncü dördüncü sırada
+Quelle: https://tr.motorsport.com/supersport/news/wssp-portekiz-2-yaris-kaos-dolu-yarisin-galibi-alcoba-can-oncu-dorduncu-sirada-tamamladi/10864355

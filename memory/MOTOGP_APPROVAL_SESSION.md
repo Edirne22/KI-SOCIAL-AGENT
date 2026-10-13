@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1791836497
+Session-Timestamp: 1791892523
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,24 +18,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.2
+Artikelalter-Tage: 1.9
 Kategorie: Turkish Riders
 Serie: WorldSSP
 Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
 Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
 Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-1-estoril-worldssp-haf-01.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-1-estoril-worldssp-haf-01.jpg
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/can-oncu-cekya-yarisi-antreman-seansi-2026-scaled.webp
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat das zweite Weltmeisterschaftsrennen in Estoril gewonnen.
+Jeremy Alcoba gewinnt das zweite WorldSSP-Rennen in Estoril nach dem Neustart nach Rot.
 
-Can Öncü wurde Achter und kletterte in der Gesamtwertung auf Platz drei.
+Can Öncü wird Achter.
 
-Bahattin Sofuoğlu hatte einen Unfall, der das Rennen stoppte.
+Bahattin Sofuoğlu hat einen Unfall, der das Rennen stoppt.
 
-Was denkt ihr über die Leistungen im zweiten Estoril-Rennen?
+Ein starkes Wochenende für Alcoba – interessant zu sehen, wie er Punkte sammelt.
 
 #WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -45,31 +45,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.5
-Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi
-Titel: Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi
-Quelle: https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
+Artikelalter-Tage: 0.1
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:10864828
+Titel: Tardozzi: "Marquez'in motosikleti kendine göre geliştirdiği kesinlikle doğru değil"
+Quelle: https://tr.motorsport.com/motogp/news/tardozzi-marquezin-ducatiyi-kendine-gore-gelistirdigi-kesinlikle-dogru-degil/10864828
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-2-moto2-de-mandalika-d-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/Moto2-Endonezya-GP-2026endonezya-gp-2026-izan-guevara-mandalika.webp
+Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-2-tardozzi-marquez-in-01.jpg
+Quellen-Preview: https://cdn-5.motorsport.com/images/amp/6grQqbGY/s6/davide-tardozzi-team-manager-l.jpg
 Plattformen: Instagram + Facebook
 Text:
-Izan Guevara gewann das Moto2-Rennen in Mandalika.
+Davide Tardozzi weist die Gerüchte rund um die Entwicklung bei Ducati klar zurück.
 
-Daniel Holgado wurde Dritter.
+Zuletzt gab es Behauptungen, Marc Marquez würde die Entwicklung des Motorrads komplett nach seinem eigenen Fahrstil ausrichten und andere Ducati-Fahrer dadurch benachteiligen. Tardozzi stellte nun klar, dass an diesen Vorwürfen nichts dran ist. Laut ihm wird das Bike keineswegs einseitig für Marquez entwickelt oder zum Nachteil der anderen Piloten verändert.
 
-Deniz Öncü beendete das Rennen auf Platz 22.
+Wie schätzt ihr die Situation rund um die Entwicklung bei Ducati ein?
 
-Der Meisterschaftsrückstand verringerte sich um 6,5 Punkte.
-
-Weiter geht es in der Moto2-Weltmeisterschaft.
-
-#Moto2 #DenizOncu #DanielHolgado #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -77,23 +73,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.5
+Artikelalter-Tage: 1.1
 Kategorie: MotoGP
 Serie: MotoGP
 Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
 Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
 Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-3-jorge-martin-den-mar-01.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-3-jorge-martin-den-mar-01.jpg
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jorge-martin-mandalika-motogp-sampiyonluk-liderligi-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin hat in Indonesien die MotoGP-Führung von Marc Marquez zurückgeholt. Noch fünf Rennen stehen aus, und Martin sagt klar, dass er nicht mehr nur hinten anhängen will.
+In Indonesien hat Jorge Martin Marc Marquez die MotoGP-Spitze abgejagt.
 
-Was erwartet ihr von Jorge Martin in den letzten fünf Rennen?
+Jetzt stehen noch fünf Rennen bis zum Saisonfinale.
+
+Der Aprilia-Fahrer zeigt sich mit direkten Worten sehr selbstbewusst.
+
+Wie schätzt ihr die Situation mit den letzten fünf Rennen ein?
 
 #MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -103,27 +103,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 0.4
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: title:pedro-acosta-dan-motogp-ye-sert-k-e-ek-gibi-g-r-nd-k
-Titel: Pedro Acosta'dan MotoGP'ye sert çıkış: “Eşek gibi göründük!”
-Quelle: https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk
+Artikelalter-Tage: 2.9
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-4-pedro-acosta-dan-mot-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/pedro-acosta-motogp-mandalika-lastik-basinci-kurali-2026-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-4-bulega-estoril-de-re-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/worldsbk-estoril-2026-race-1-nicolo-bulega-ducati.webp
 Plattformen: Instagram + Facebook
 Text:
-Eşek gibi göründük!
+Nicolo Bulega schnappt sich in Estoril den Sieg in Race 1 der WorldSBK und stellt damit den Rekord von Bautista ein.
 
-Pedro Acosta hat bei der MotoGP in Mandalika klare Worte gefunden. Wegen Lastikdruckproblemen musste er Marc Marquez immer wieder den Weg freimachen – und fordert nun eine Regeländerung.
+Für Bulega ist es der 27. Saisonsieg, mit dem er die bisherige Bestmarke einstellt, während Ducati einen Doppelsieg feiert. Dahinter belegt Lecuona den zweiten Platz und Surra fährt auf Rang drei aufs Podium.
 
-Wie schätzt ihr die Situation ein?
+Wie bewertet ihr das Rennergebnis aus Estoril?
 
-#MotoGP #MarcMarquez #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -134,22 +134,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.2
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
-Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
-Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
+Artikelalter-Tage: 1.9
+Kategorie: Turkish Riders
+Serie: WorldSSP
+Story-Key: motogp:10864355
+Titel: WSSP Portekiz 2. yarış: Kaos dolu yarışın galibi Alcoba, Can Öncü dördüncü sırada
+Quelle: https://tr.motorsport.com/supersport/news/wssp-portekiz-2-yaris-kaos-dolu-yarisin-galibi-alcoba-can-oncu-dorduncu-sirada-tamamladi/10864355
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-5-bulega-estoril-de-re-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/worldsbk-estoril-2026-race-1-nicolo-bulega-ducati.webp
+Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-5-wssp-portekiz-2-yari-01.jpg
+Quellen-Preview: https://cdn-2.motorsport.com/images/amp/6DGgodGY/s6/alcoba.jpg
 Plattformen: Instagram + Facebook
 Text:
-Nicolo Bulega hat in Estoril das WorldSBK-Rennen 1 gewonnen – und das ist bereits sein 27. Sieg in dieser Saison 🏍️💨 Damit stellt er den Rekord von Alvaro Bautista wieder equal. Auf dem Podest stehen außer ihm noch Iker Lecuona auf Platz zwei und Alberto Surra auf Rang drei.
+Das zweite WorldSSP-Rennen 2026 in Estoril wurde wegen Stürzen und roter Flaggen unterbrochen. Am Ende holte sich Alcoba den Sieg, während Can Öncü auf Platz vier die Zielflagge sah.
 
-Wie seht ihr den Bulega-Rekord?
+Wie schätzt ihr das Ergebnis von Can Öncü ein?
 
-#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
+#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "created_at": 1791836497,
+  "created_at": 1791892523,
   "max_days": 10,
   "window_used_days": 10,
   "count": 6,
@@ -19,14 +19,14 @@
     },
     {
       "n": 2,
-      "title": "WSSP Portekiz 2. yarış: Kaos dolu yarışın galibi Alcoba, Can Öncü dördüncü sırada",
-      "url": "https://tr.motorsport.com/supersport/news/wssp-portekiz-2-yaris-kaos-dolu-yarisin-galibi-alcoba-can-oncu-dorduncu-sirada-tamamladi/10864355",
-      "summary": "2026 Dünya Supersport Şampiyonası’nın Estoril’deki ikinci yarışı, kırmızı bayraklar ve kazalar nedeniyle kesintiye uğrarken Alcoba zafere ulaştı. Temsilcimiz Can Öncü dördüncü sırada damalı bayrağı gördü.",
-      "preview": "https://cdn-2.motorsport.com/images/amp/6DGgodGY/s6/alcoba.jpg",
-      "published_at": "2026-10-11T14:30:00Z",
-      "series": "WorldSSP",
-      "source_series": "WorldSSP",
-      "turkish_rider": "Can Öncü",
+      "title": "Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi",
+      "url": "https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi",
+      "summary": "Moto2 Endonezya GP'de Izan Guevara üst üste üçüncü zaferini kazandı. Gonzalez ikinci, Holgado üçüncü oldu. Deniz Öncü yarışı 22. sırada bitirdi.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/Moto2-Endonezya-GP-2026endonezya-gp-2026-izan-guevara-mandalika.webp",
+      "published_at": "2026-10-11T11:41:55+03:00",
+      "series": "Moto2",
+      "source_series": "Moto2",
+      "turkish_rider": "Deniz Öncü",
       "kind": "news"
     },
     {

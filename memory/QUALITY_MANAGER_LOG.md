@@ -2988,3 +2988,45 @@ Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-13 12:30 UTC | Motorcycle Racing | PASS
+Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
+Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-13 12:30 UTC | Motorcycle Racing | FAIL
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-13 12:30 UTC | Motorcycle Racing | FAIL
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-13 12:31 UTC | Motorcycle Racing | PASS
+Titel: Tardozzi: "Marquez'in motosikleti kendine göre geliştirdiği kesinlikle doğru değil"
+Story-Key: motogp:10864828
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-13 12:31 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
+Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-13 12:31 UTC | Motorcycle Racing | PASS
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-13 12:31 UTC | Motorcycle Racing | PASS
+Titel: WSSP Portekiz 2. yarış: Kaos dolu yarışın galibi Alcoba, Can Öncü dördüncü sırada
+Story-Key: motogp:10864355
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
