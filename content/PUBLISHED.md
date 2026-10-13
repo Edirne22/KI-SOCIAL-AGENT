@@ -637,7 +637,7 @@ Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 38458935610-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361936
 Text:
