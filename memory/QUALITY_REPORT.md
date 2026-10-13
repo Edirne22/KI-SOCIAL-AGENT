@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-10-11 21:35
+Stand: 2026-10-13 00:13
 Gesamtstatus: **WARNUNG**
-- OK: 11
-- Warnungen: 5
+- OK: 13
+- Warnungen: 3
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -11,7 +11,7 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Inspiration-Report**: Datei vorhanden und nicht leer.
 - ✅ **Bright-Data-Debug**: Datei vorhanden und nicht leer.
 - ⚠️ **Inspiration-Quellen**: Keine verlinkten Quellen im Report erkannt.
-- ⚠️ **Inspiration-Ideen**: Nur 0 konkrete Ideen erkannt.
+- ✅ **Inspiration-Ideen**: 3 konkrete Ideen erkannt.
 - ⚠️ **YouTube-Fallback**: Apify-Quellreport vorhanden, aber keine verwertbaren Video-Datensätze erkannt.
 - ⚠️ **Datenalter**: Keine auswertbaren Quelldaten gefunden.
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
@@ -20,7 +20,7 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Analytics Fetch**: Letzter Lauf erfolgreich.
 - ✅ **Analytics Report**: Letzter Lauf erfolgreich.
 - ✅ **Generate Daily Content Idea**: Letzter Lauf erfolgreich.
-- ⚠️ **Inspiration Agent**: Kein letzter Lauf in der GitHub-Antwort gefunden.
+- ✅ **Inspiration Agent**: Letzter Lauf erfolgreich.
 - ✅ **Telegram Receive Approval**: Letzter Lauf erfolgreich.
 
 ## Sicherheitsregel
