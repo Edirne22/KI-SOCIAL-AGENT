@@ -635,9 +635,8 @@ Quelle: https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-tur
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561", "media_status": "", "object_id": "1285968257941776_122123321823469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123321823469415", "source_url": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561", "version": 1}
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38458935610-1
+## Instagram [GEPOSTET 2026-10-13 19:58 | ID: 18136338799711224]
+Status: GEPOSTET
 Freigabe: Telegram
 Telegram-Update-ID: 279361936
 Text:
@@ -662,6 +661,7 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 Bild: assets/images/2026-10/2026-10-13-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg
 Media-Provenienz: {"generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-13-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "real_racer_generation": false, "synthetic": true, "version": 1}
+Publish-Provenienz: {"creation_id": "18011281985971550", "generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-13-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "platform": "instagram", "post_id": "18136338799711224", "published_media_id": "18136338799711224", "real_racer_generation": false, "synthetic": true, "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
