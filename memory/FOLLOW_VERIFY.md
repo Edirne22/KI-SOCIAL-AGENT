@@ -1,11 +1,11 @@
 # Follow-Verify
-Stand: 2026-10-12 15:46
+Stand: 2026-10-13 15:07
 
-- @bahattinsofuoglu → ⚠️ @bahattinsofuoglu | – | Bright Data HTTP 400
-- @jackmilleraus → ⚠️ @jackmilleraus | – | Bright Data HTTP 400
-- @pecco63 → ⚠️ @pecco63 | – | Bright Data HTTP 400
-- @marcmarquez93 → ⚠️ @marcmarquez93 | – | Bright Data HTTP 400
-- @89jorgemartin → ⚠️ @89jorgemartin | – | Bright Data HTTP 400
 - @marcobez72 → ⚠️ @marcobez72 | – | Bright Data HTTP 400
 - @bradbinder → ⚠️ @bradbinder | – | Bright Data HTTP 400
 - @pedroacosta37 → ⚠️ @pedroacosta37 | – | Bright Data HTTP 400
+- @fabioquartararo20 → ⚠️ @fabioquartararo20 | – | Bright Data HTTP 400
+- @alexrins → ⚠️ @alexrins | – | Bright Data HTTP 400
+- @joanmir36official → ⚠️ @joanmir36official | – | Bright Data HTTP 400
+- @lucamarini10 → ⚠️ @lucamarini10 | – | Bright Data HTTP 400
+- @alexmarquez73 → ⚠️ @alexmarquez73 | – | Bright Data HTTP 400
