@@ -871,9 +871,8 @@ Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-s
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-5-bulega-estoril-de-re-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38458922998-1
+## Facebook [GEPOSTET 2026-10-13 19:57 | ID: 1285968257941776_122123780139469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-12-manual-38302594031
 Telegram-Update-ID: 279361946
@@ -891,3 +890,4 @@ Wie seht ihr den Bulega-Rekord?
 https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
 Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum", "media_status": "", "object_id": "1285968257941776_122123780139469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123780139469415", "source_url": "https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum", "version": 1}
