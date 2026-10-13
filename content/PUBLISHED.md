@@ -873,7 +873,7 @@ Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-5-bulega-esto
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 38458922998-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-12-manual-38302594031
 Telegram-Update-ID: 279361946
