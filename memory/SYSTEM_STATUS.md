@@ -1,5 +1,5 @@
 # Systemstatus
-Stand: 2026-10-13 11:26 UTC
+Stand: 2026-10-13 14:34 UTC
 
 ## Sichere Workflow-Prüfung
 - Qualitäts-Agent: OK – Letzter Lauf erfolgreich.
@@ -16,5 +16,5 @@ Stand: 2026-10-13 11:26 UTC
 - Migrationen, Deal-Hunter, Preis-Check und andere kosten- oder außenwirksame Workflows
 
 ## Modus
-- Freigegebene Fehler-Neustarts aktiv.
+- Nur Bericht; keine Neustarts ausgelöst.
 - Es werden keine Beiträge veröffentlicht, keine Telegram-Nachrichten verarbeitet und keine Medien erzeugt.
