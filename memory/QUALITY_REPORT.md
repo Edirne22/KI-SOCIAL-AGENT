@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-10-13 00:13
+Stand: 2026-10-13 22:21
 Gesamtstatus: **WARNUNG**
-- OK: 13
-- Warnungen: 3
+- OK: 12
+- Warnungen: 4
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -20,7 +20,7 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Analytics Fetch**: Letzter Lauf erfolgreich.
 - ✅ **Analytics Report**: Letzter Lauf erfolgreich.
 - ✅ **Generate Daily Content Idea**: Letzter Lauf erfolgreich.
-- ✅ **Inspiration Agent**: Letzter Lauf erfolgreich.
+- ⚠️ **Inspiration Agent**: Kein letzter Lauf in der GitHub-Antwort gefunden.
 - ✅ **Telegram Receive Approval**: Letzter Lauf erfolgreich.
 
 ## Sicherheitsregel
