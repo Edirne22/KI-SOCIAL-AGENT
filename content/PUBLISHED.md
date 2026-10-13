@@ -832,9 +832,8 @@ Quelle: https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kurali
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-4-pedro-acosta-dan-mot-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38406245436-1
+## Facebook [GEPOSTET 2026-10-13 13:36 | ID: 1285968257941776_122123693937469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-12-manual-38302594031
 Telegram-Update-ID: 279361946
@@ -854,6 +853,7 @@ Wie schätzt ihr die Situation ein?
 https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk
 Quelle: https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk", "media_status": "", "object_id": "1285968257941776_122123693937469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123693937469415", "source_url": "https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
