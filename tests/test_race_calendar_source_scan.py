@@ -27,7 +27,7 @@ def test_official_calendar_scanner_fetches_event_pages():
     calendar_url = "https://www.motogp.com/en/calendar"
     event_url = "https://www.motogp.com/en/calendar/2026/event/australia/abc"
     calendar = FakeResponse(
-        '<html><body>Australia 22 - 25 Oct 2026 '
+        '<html><body>Official Australia race calendar. Upcoming event dates and schedule details. Australia 22 - 25 Oct 2026 '
         f'<a href="{event_url}">Event schedule</a></body></html>'
     )
     event = FakeResponse("<html><body>FP1 09:00 Sprint 15:00 Race Sunday 14:00</body></html>")
@@ -47,7 +47,7 @@ def test_official_calendar_scanner_fetches_event_pages():
 def test_secondary_source_is_scanned_without_crawling_event_links():
     url = "https://trf1.net/motor-sporlari/motogp/"
     page = FakeResponse(
-        '<html><body>Upcoming MotoGP news '
+        '<html><body>Upcoming MotoGP news from the official racing information pages. Confirmed calendar updates and event news. '
         '<a href="https://www.motogp.com/en/calendar/2026/event/australia/abc">event</a>'
         '</body></html>'
     )
