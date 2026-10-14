@@ -1,3 +1,3 @@
-Update-ID: 279361950
-Racing-Batch-ID: 
-Antwort: motogp 3,4,5
+Update-ID: 279361955
+Racing-Batch-ID: racing-2026-10-14-manual-38591765219
+Antwort: motogp 4
