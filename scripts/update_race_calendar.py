@@ -329,7 +329,7 @@ Antworte NUR mit JSON:
 
 def _page_text(markup: str) -> str:
     """Extrahiert sichtbaren Seitentext; Skripte und Styles sind keine Fakten."""
-    markup = re.sub(r"(?is)<(script|style|noscript)\b.*?</\\1>", " ", markup or "")
+    markup = re.sub(r"(?is)<(script|style|noscript)\b.*?</\1>", " ", markup or "")
     markup = re.sub(r"(?s)<[^>]+>", " ", markup)
     return re.sub(r"\s+", " ", html.unescape(markup)).strip()
 
