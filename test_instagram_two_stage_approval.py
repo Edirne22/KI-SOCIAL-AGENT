@@ -218,20 +218,36 @@ def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     monkeypatch.setattr(tr, "send_photo", mock_send_photo)
     monkeypatch.setattr(tr, "agnes_generate_image", mock_agnes)
 
-    # 1. Only explicitly image-bound commands may mutate an image approval.
+    # Rejection discards only the Instagram draft and never creates a replacement.
     reject_synonyms = ["bild ❌", "bild neu", "bild ablehnen"]
     for syn in reject_synonyms:
+        if not pi.get_first_pending():
+            pi.add_pending(
+                batch_id="batch-123", auswahl=3, titel="Quiles Victory",
+                text="Great race", bild_pfad="assets/images/quiles.jpg",
+                prompt_fuer_agnes="Prompt 123",
+            )
         mock_send_photo.reset_mock()
+        mock_send_message.reset_mock()
         assert tr._get_bild_command_action(syn) == "❌"
         handled = tr._handle_bild_command(syn)
         assert handled is True
-        assert len(pi.load_pending()) == 1  # Still pending
-        mock_send_photo.assert_called_once()
+        assert pi.load_pending() == []
+        mock_send_photo.assert_not_called()
+        mock_agnes.assert_not_called()
+        mock_send_message.assert_called_once()
+        assert "Facebook bleibt unverändert" in mock_send_message.call_args.args[0]
 
     # 2. Bare human words are intentionally ambiguous and must never publish.
     approve_synonyms = ["bild ✅", "bild posten", "bild freigeben"]
     for syn in approve_synonyms:
         assert tr._get_bild_command_action(syn) == "✅"
+
+    # Restore a fresh source-image approval, then test publishing.
+    pi.add_pending(
+        batch_id="batch-123", auswahl=3, titel="Quiles Victory", text="Great race",
+        bild_pfad="assets/images/quiles.jpg", prompt_fuer_agnes="Prompt 123",
+    )
 
     # Execute approve with "freigeben zum posten" on a successful Meta publish.
     # The success-path test must provide a real media ID; failed publishes are
