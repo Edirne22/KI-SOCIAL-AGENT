@@ -7,6 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+import html
 import json
 import os
 import re
@@ -342,10 +343,13 @@ def _scan_source(url: str, role: str) -> dict:
     )
     response.raise_for_status()
     page = response.text
+    page_text = _page_text(page)
+    if len(page_text) < 100:
+        raise requests.RequestException("Seite enthält keinen verwertbaren Text")
     result = {
         "url": url,
         "role": role,
-        "text": _page_text(page)[:9000],
+        "text": page_text[:9000],
         "event_pages": [],
     }
     if role == "official":
@@ -523,7 +527,7 @@ ABGERUFENE QUELLEN UND SEITENINHALTE:
 
     output = {"updated_at": datetime.now().astimezone().isoformat(timespec="minutes"), "events": valid_events}
     CALENDAR_FILE.parent.mkdir(parents=True, exist_ok=True)
-    CALENDAR_FILE.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\\n", encoding="utf-8")
+    CALENDAR_FILE.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"[race-update] Erfolgreich {len(valid_events)} offiziell belegte Events gespeichert.")
 
 
