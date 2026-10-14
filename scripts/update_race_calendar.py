@@ -7,16 +7,19 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+import html
 import json
 import os
 import re
 import time
-from datetime import datetime
+from datetime import date, datetime, timedelta
+from urllib.parse import urljoin, urlsplit
+from zoneinfo import ZoneInfo
 
 import requests
 from PIL import Image
 
-from race.race_sources import ALLOWED_SERIES, is_allowed_series
+from race.race_sources import ALLOWED_SERIES, CALENDAR_SOURCES, is_allowed_series
 
 CALENDAR_FILE = Path("memory/RACE_CALENDAR.json")
 
@@ -325,73 +328,257 @@ Antworte NUR mit JSON:
     return bike_result
 
 
+def _page_text(markup: str) -> str:
+    """Extrahiert sichtbaren Text und eingebettete JSON-Daten, keine beliebigen Skripte."""
+    structured = []
+    for match in re.finditer(r"(?is)<script\b([^>]*)>(.*?)</script>", markup or ""):
+        attrs = match.group(1).lower()
+        if (
+            "application/ld+json" in attrs
+            or "application/json" in attrs
+            or "__next_data__" in attrs
+            or "__nuxt_data__" in attrs
+        ):
+            structured.append(match.group(2))
+    markup = re.sub(r"(?is)<script\b.*?</script>", " ", markup or "")
+    markup = re.sub(r"(?is)<(style|noscript)\b.*?</\1>", " ", markup)
+    markup = re.sub(r"(?s)<[^>]+>", " ", markup)
+    visible = re.sub(r"\s+", " ", html.unescape(markup)).strip()
+    data = re.sub(r"\s+", " ", html.unescape(" ".join(structured))).strip()
+    return (visible + " STRUCTURED_DATA: " + data).strip() if data else visible
+
+def _scan_source(url: str, role: str) -> dict:
+    """Ruft eine konfigurierte Kalender-/Nachrichtenseite direkt ab."""
+    response = requests.get(
+        url,
+        timeout=30,
+        headers={"User-Agent": "Mozilla/5.0 KI-SOCIAL-AGENT Race Calendar/1.0"},
+    )
+    response.raise_for_status()
+    page = response.text
+    page_text = _page_text(page)
+    if len(page_text) < 100:
+        raise requests.RequestException("Seite enthält keinen verwertbaren Text")
+    result = {
+        "url": url,
+        "role": role,
+        "text": page_text[:9000],
+        "event_pages": [],
+    }
+    if role == "official":
+        seen = set()
+        for href in re.findall(r"""href=["']([^"'#]+)["']""", page, flags=re.I):
+            candidate = urljoin(url, html.unescape(href))
+            parsed = urlsplit(candidate)
+            if parsed.scheme not in {"http", "https"}:
+                continue
+            if (parsed.hostname or "").lower() not in {
+                "motogp.com", "www.motogp.com", "worldsbk.com", "www.worldsbk.com"
+            }:
+                continue
+            if "/calendar/" not in parsed.path.lower() or "/event/" not in parsed.path.lower():
+                continue
+            candidate = candidate.split("#", 1)[0]
+            if candidate in seen:
+                continue
+            seen.add(candidate)
+            if len(seen) > 4:
+                break
+            try:
+                event_response = requests.get(
+                    candidate,
+                    timeout=25,
+                    headers={"User-Agent": "Mozilla/5.0 KI-SOCIAL-AGENT Race Calendar/1.0"},
+                )
+                event_response.raise_for_status()
+                result["event_pages"].append({
+                    "url": candidate,
+                    "text": _page_text(event_response.text)[:5000],
+                })
+            except requests.RequestException as error:
+                print(f"[race-update] Eventseite nicht abrufbar {candidate}: {error}")
+    return result
+
+
+def scan_calendar_sources() -> dict[str, list[dict]]:
+    """Liest offizielle Kalender und hinterlegte Sekundärquellen selbst aus."""
+    scanned: dict[str, list[dict]] = {}
+    for series, sources in CALENDAR_SOURCES.items():
+        rows = []
+        for source in sources:
+            try:
+                row = _scan_source(source["url"], source["role"])
+                rows.append(row)
+                print(
+                    f"[race-update] Quelle gescannt: {series} "
+                    f"{source['role']} {source['url']} "
+                    f"({len(row['text'])} Zeichen, {len(row['event_pages'])} Eventseiten)"
+                )
+            except requests.RequestException as error:
+                print(f"[race-update] Quelle nicht erreichbar {source['url']}: {error}")
+        scanned[series] = rows
+    return scanned
+
+
 def update_calendar() -> None:
     key = os.environ.get("AGNES_API_KEY")
     if not key:
-        print("[race-update] Warnung: AGNES_API_KEY fehlt - Kalender-Update nicht möglich.")
-        sys.exit(0)
+        raise RuntimeError("AGNES_API_KEY fehlt; Kalender bleibt unverändert.")
 
-    today_str = datetime.now().strftime("%Y-%m-%d")
-    prompt = f"""Heute ist {today_str}. Recherche die kommenden 4 Rennwochenenden von MotoGP, WorldSBK, WorldSSP oder WorldSPB.
+    scanned = scan_calendar_sources()
+    for series in ("MotoGP", "WorldSBK"):
+        if not any(item["role"] == "official" for item in scanned.get(series, [])):
+            raise RuntimeError(f"Offizielle Kalenderquelle für {series} konnte nicht gescannt werden.")
 
-Gib ausschließlich ein valides JSON-Objekt zurück, das exakt folgender Struktur entspricht:
+    berlin = ZoneInfo("Europe/Berlin")
+    today = datetime.now(berlin).date()
+    unique_pages = {}
+    source_groups = {}
+    for series, rows in scanned.items():
+        source_groups[series] = []
+        for row in rows:
+            source_groups[series].append({"role": row["role"], "url": row["url"]})
+            unique_pages[row["url"]] = row
+    evidence = json.dumps(
+        {"source_groups": source_groups, "scanned_pages": list(unique_pages.values())},
+        ensure_ascii=False,
+    )
+    prompt = f"""Heute ist {today.isoformat()} (Europe/Berlin).
+Du erhältst unten bereits vom Programm abgerufene Seiteninhalte. Recherchiere
+nicht aus deinem Gedächtnis und ergänze keine nicht belegten Angaben.
 
+Aufgabe:
+- Finde die kommenden Rennwochenenden der Serien MotoGP, WorldSBK, WorldSSP
+  und WorldSPB innerhalb der nächsten 60 Tage.
+- Lies Strecke/Ort und Datum aus den gescannten Kalenderseiten.
+- Nutze für Termine und Sessionzeiten ausschließlich die offizielle Kalender-
+  oder offizielle Eventseite der jeweiligen Serie. Sekundärquellen dürfen
+  Namen und Kontext gegenprüfen, aber keine abweichenden Termine festlegen.
+- Übernimm Sessions und lokale Uhrzeiten nur, wenn sie im abgerufenen Text
+  ausdrücklich stehen. Keine Uhrzeiten oder Sessions erfinden.
+- Wenn Sessionzeiten noch nicht veröffentlicht sind, gib für sessions eine
+  leere Liste zurück. Lass ein Event nicht weg, wenn Datum und Strecke offiziell
+  bestätigt sind.
+- source muss die konkrete offizielle URL sein, aus der Datum und Strecke
+  stammen. crosscheck_sources enthält nur tatsächlich abgerufene URLs.
+- Liefere höchstens die nächsten vier Events je Serie und sortiere aufsteigend.
+
+Gib nur dieses JSON-Schema zurück:
 {{
   "events": [
     {{
       "date_start": "YYYY-MM-DD",
       "date_end": "YYYY-MM-DD",
       "series": "MotoGP",
-      "track": "Streckenname · Ort",
-      "sessions": ["Fr: Freies Training", "Sa: Qualifying & Sprint", "So: Hauptrennen"],
-      "source": "https://www.motogp.com/en/calendar"
+      "track": "Strecke · Ort",
+      "sessions": ["Fr 09:00 FP1 (Ortszeit)", "Sa 14:00 Sprint (Ortszeit)"],
+      "source": "offizielle Event-URL",
+      "crosscheck_sources": ["abgerufene Sekundär-URL"],
+      "source_excerpt": "kurzes wörtliches Zitat von der offiziellen Event- oder Kalenderseite, das Termin und Strecke belegt"
     }}
   ]
 }}
 
-Regeln:
-- date_start und date_end müssen im Format YYYY-MM-DD sein.
-- series muss MotoGP, WorldSBK, WorldSSP oder WorldSPB sein.
-- track muss Name der Rennstrecke und Ort enthalten.
-- source muss eine valide, offizielle URL sein.
-- Falls du unsicher bist oder weniger Events findest, gib so viele fundierte kommende Events wie möglich an.
+ABGERUFENE QUELLEN UND SEITENINHALTE:
+{evidence}
 """
-
     data = call_agnes_json(prompt, key)
-    if not isinstance(data, dict) or "events" not in data or not isinstance(data["events"], list):
-        print("[race-update] Warnung: Agnes-Recherche fehlgeschlagen. memory/RACE_CALENDAR.json bleibt unverändert.")
-        sys.exit(0)
+    if not isinstance(data, dict) or not isinstance(data.get("events"), list):
+        raise RuntimeError("Kalenderauswertung lieferte kein gültiges events-JSON.")
 
-    # Validierung & Normalisierung
+    official_hosts = {
+        "MotoGP": {"motogp.com", "www.motogp.com"},
+        "WorldSBK": {"worldsbk.com", "www.worldsbk.com"},
+        "WorldSSP": {"worldsbk.com", "www.worldsbk.com"},
+        "WorldSPB": {"worldsbk.com", "www.worldsbk.com"},
+    }
     valid_events = []
+    cutoff = today + timedelta(days=60)
+    available_sources = set()
+    official_text_by_url = {}
+    for rows in scanned.values():
+        for row in rows:
+            available_sources.add(row["url"])
+            if row["role"] == "official":
+                official_text_by_url[row["url"]] = row["text"]
+                for event_page in row["event_pages"]:
+                    available_sources.add(event_page["url"])
+                    official_text_by_url[event_page["url"]] = event_page["text"]
     for event in data["events"]:
-        if isinstance(event, dict) and "date_start" in event and "series" in event and "track" in event:
-            series = str(event.get("series", "")).strip()
-            if not is_allowed_series(series):
+        if not isinstance(event, dict):
+            continue
+        series = str(event.get("series", "")).strip()
+        if not is_allowed_series(series):
+            continue
+        try:
+            start_date = datetime.strptime(str(event.get("date_start", "")), "%Y-%m-%d").date()
+            end_date = datetime.strptime(str(event.get("date_end", event.get("date_start", ""))), "%Y-%m-%d").date()
+        except ValueError:
+            print(f"[race-update] Ungültiges Datumsformat ignoriert: {event}")
+            continue
+        if start_date < today or start_date > cutoff or end_date < start_date:
+            continue
+        track = str(event.get("track", "")).strip()
+        source = str(event.get("source", "")).strip()
+        host = (urlsplit(source).hostname or "").lower()
+        sessions = event.get("sessions", [])
+        source_excerpt = str(event.get("source_excerpt", "")).strip()
+        source_text = official_text_by_url.get(source, "")
+        normalize = lambda value: re.sub(r"\s+", " ", html.unescape(str(value))).strip().casefold()
+        if (
+            not track
+            or host not in official_hosts.get(series, set())
+            or source not in official_text_by_url
+            or not source_excerpt
+            or normalize(source_excerpt) not in normalize(source_text)
+        ):
+            print(f"[race-update] Event ohne belegtes Zitat aus abgerufener offizieller Seite ignoriert: {event}")
+            continue
+        if not isinstance(sessions, list):
+            sessions = []
+        normalized_sessions = []
+        for item in sessions:
+            session = str(item).strip()
+            if not session:
                 continue
-            event_obj = {
-                "date_start": str(event.get("date_start", "")).strip(),
-                "date_end": str(event.get("date_end", event.get("date_start", ""))).strip(),
-                "series": str(event.get("series", "")).strip(),
-                "track": str(event.get("track", "")).strip(),
-                "sessions": event.get("sessions", []) if isinstance(event.get("sessions"), list) else [],
-                "source": str(event.get("source", "https://www.motogp.com/en/calendar")).strip(),
-            }
-            valid_events.append(event_obj)
+            times = re.findall(r"\b(?:[01]?\d|2[0-3]):[0-5]\d\b", session)
+            if times and not all(clock in source_text for clock in times):
+                print(f"[race-update] Sessionzeit nicht in offizieller Quelle belegt, verworfen: {session}")
+                continue
+            normalized_sessions.append(session)
+        crosschecks = [
+            str(url).strip()
+            for url in event.get("crosscheck_sources", [])
+            if str(url).strip() in available_sources
+        ] if isinstance(event.get("crosscheck_sources", []), list) else []
+        valid_events.append({
+            "date_start": start_date.isoformat(),
+            "date_end": end_date.isoformat(),
+            "series": series,
+            "track": track,
+            "sessions": normalized_sessions,
+            "source": source,
+            "crosscheck_sources": crosschecks,
+            "source_excerpt": source_excerpt,
+        })
 
-    # Sortieren nach Startdatum
-    valid_events.sort(key=lambda x: x["date_start"])
+    # Deduplizieren, ohne eine leere/fehlerhafte Recherche über den Bestand zu schreiben.
+    unique = {}
+    for event in valid_events:
+        unique[(event["series"], event["date_start"])] = event
+    valid_events = sorted(unique.values(), key=lambda row: (row["date_start"], row["series"]))
+    if not valid_events:
+        raise RuntimeError("Keine belegten kommenden Renntermine gefunden; vorhandener Kalender bleibt unverändert.")
 
-    # Nur für das erste (nächste) Event den Bike-Block erzeugen (FIX 5)
-    if valid_events:
-        bike = fetch_bike_of_weekend(valid_events[0], key)
-        if bike:
-            valid_events[0]["bike_of_weekend"] = bike
+    # Bike-Block nur dann anreichern, wenn eine bestätigte Veranstaltung vorliegt.
+    bike = fetch_bike_of_weekend(valid_events[0], key)
+    if bike:
+        valid_events[0]["bike_of_weekend"] = bike
 
-    output = {"events": valid_events}
+    output = {"updated_at": datetime.now(berlin).isoformat(timespec="minutes"), "events": valid_events}
     CALENDAR_FILE.parent.mkdir(parents=True, exist_ok=True)
     CALENDAR_FILE.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"[race-update] Erfolgreich {len(valid_events)} Events in {CALENDAR_FILE} geschrieben.")
+    print(f"[race-update] Erfolgreich {len(valid_events)} offiziell belegte Events gespeichert.")
 
 
 if __name__ == "__main__":

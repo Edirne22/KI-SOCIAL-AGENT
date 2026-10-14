@@ -1,7 +1,7 @@
 name: Race Calendar
 on:
   schedule:
-    - cron: "0 6 * * 4"
+    - cron: "0 6 * * 3" # Mittwoch: Rennwochenende rechtzeitig für Freitag bis Sonntag vorbereiten
   workflow_dispatch:
 permissions:
   contents: write
