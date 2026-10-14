@@ -2,7 +2,7 @@ name: Generate Weekly Content Plan
 
 on:
   schedule:
-    - cron: "0 6 * * 0"   # läuft sonntags um 08:00 deutscher Zeit (Sommer)
+    - cron: "0 6 * * 2"   # Dienstagmorgen: Wochenplan für den anstehenden Freitag bis Sonntag
   workflow_dispatch:
 
 permissions:
@@ -22,6 +22,11 @@ jobs:
 
       - name: Install dependencies
         run: pip install requests
+
+      - name: Wochenplan-Regressionen prüfen
+        run: |
+          python -m py_compile weekly_plan.py tests/test_weekly_plan_community_contract.py
+          python tests/test_weekly_plan_community_contract.py
 
       - name: Run weekly planner
         env:
