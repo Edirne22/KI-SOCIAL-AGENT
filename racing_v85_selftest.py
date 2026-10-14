@@ -6,6 +6,7 @@ import racing_run_controller as rc
 import motogp_telegram_receive_v85 as approval
 import turkish_riders_scout as scout
 import motogp_content_agency_v2 as agency
+import racing_telegram_commands as racing_cmds
 from racing_v855_hardening import install as install_v855_hardening
 
 # Production installs V8.5.5 hardening in racing_v85 before executing the agency.
@@ -34,6 +35,22 @@ def main():
             rc.STATE=Path(td)/'scheduled.json';os.environ['GITHUB_EVENT_NAME']='schedule';os.environ['GITHUB_RUN_ID']='200';os.environ.pop('INPUT_FORCE_NEW_RUN',None)
             ok4,daily,_=rc.begin(datetime(2026,9,16,6,0,tzinfo=timezone.utc));check(ok4 and daily=='racing-2026-09-16-daily','daily batch id not deterministic');rc.transition(daily,'READY_FOR_APPROVAL');ok5,_,_=rc.begin(datetime(2026,9,16,7,0,tzinfo=timezone.utc));check(not ok5,'terminal daily batch reran')
         check(approval.MIN_SESSION_VERSION==18,'approval session minimum must be 18');check(approval.MAX_SESSION_AGE_SECONDS==86400,'approval session age contract changed')
+        check(approval.selection('motogp 4, motogp 3,')==[3,4],'repeated MotoGP dictation prefix was rejected')
+        check(approval.selection('motogp 4,9') is None,'invalid MotoGP choice accepted')
+        check(approval.turkish_selection('T1,T3')==[1,3],'compact T1,T3 selection was rejected')
+        check(approval.turkish_selection('turkish 1-3')==[1,2,3],'Turkish rider range was rejected')
+        check(racing_cmds.is_turkish_approval('T1'),'T1 did not route to Turkish approval')
+        check(racing_cmds.is_turkish_approval('T1,T3'),'T1,T3 did not route to Turkish approval')
+        check(racing_cmds.is_turkish_approval('turkish 1-3'),'Turkish range did not route to approval')
+        check(not racing_cmds.is_archive_select('T1'),'T1 was incorrectly sent to racing archive')
+        check(racing_cmds.is_archive_select('poste 2'),'explicit archive selection was lost')
+        check(racing_cmds.is_turkish_human_action('T1 posten'),'Turkish post action was not routed')
+        check(not racing_cmds.is_turkish_human_action('T1'),'plain Turkish selection was misclassified as an action')
+        fresh={'title':'Can Oncu Estoril fresh report','url':'https://motoetkinlik.com/estoril-fresh','published_at':'2026-10-14T09:00:00Z','turkish_rider':'Can Öncü','kind':'news'}
+        offered={'title':'Can Oncu Estoril already offered','url':'https://motoetkinlik.com/estoril-offered','published_at':'2026-10-13T09:00:00Z','turkish_rider':'Can Öncü','kind':'news'}
+        stale={'title':'Can Oncu old report','url':'https://motoetkinlik.com/estoril-old','published_at':'2026-10-10T09:00:00Z','turkish_rider':'Can Öncü','kind':'news'}
+        not_repeated,_=agency.turkish_offer_candidates([fresh,offered,stale],datetime(2026,10,14,12,0,tzinfo=timezone.utc),3,offered_keys={agency.story_key(offered['title'],offered['url'])})
+        check([x['title'] for x in not_repeated]==[fresh['title']],'Turkish offers repeated a prior story or admitted a stale story')
         src=dict(scout.SOURCES);check(src.get('MotoGP')=='https://www.motogp.com/en/news','MotoGP official source missing');check(src.get('Moto2')=='https://www.motogp.com/en/news/Moto2','Moto2 reserve source missing');check(src.get('Moto3')=='https://www.motogp.com/en/news/Moto3','Moto3 reserve source missing');check(src.get('WorldSBK')=='https://www.worldsbk.com/en/news','WorldSBK official source missing');check(src.get('WorldSSP')=='https://www.worldsbk.com/en/news/ssp','WorldSSP official source missing')
         check(scout.classify_series('Moto2','Agius takes pole in Moto2','https://www.motogp.com/en/news/2026/09/12/x')=='Moto2','Moto2 collapsed');check(scout.classify_series('Moto3','Quiles wins Moto3 race','https://www.motogp.com/en/news/2026/09/13/y')=='Moto3','Moto3 collapsed');check(scout.classify_series('WorldSSP','Oncu wins WorldSSP race','https://www.worldsbk.com/en/news/2026/09/14/z')=='WorldSSP','WorldSSP classification regressed')
         # Exact live regression: generic MotoGP page metadata must never override a dedicated feed class.
