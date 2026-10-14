@@ -29,6 +29,8 @@ from generate_agnes_media import agnes_generate_image, save_bytes
 from instagram_publish import process_image_for_instagram, create_container, publish as ig_publish_container, wait as ig_wait
 from publish_provenance import append_publish_provenance
 from asset_paths import asset_url, RAW_BASE
+from racing_telegram_commands import (is_archive_select, is_turkish_approval as is_turkish_approval_command,
+                                      is_turkish_human_action as is_turkish_human_action_command)
 
 TELEGRAM_LAST_UPDATE_FILE = Path("memory/TELEGRAM_LAST_UPDATE_ID")
 
@@ -546,7 +548,7 @@ def main() -> None:
             send_message("Bitte sende ein Bild mit dem Befehl /vision, /ocr oder /omni.")
             _ack(uid)
             continue
-        archive_select = bool(re.fullmatch(r"(?:t\\s*|poste\\s+|nimm\\s+)\\d+", cmd, re.I))
+        archive_select = is_archive_select(cmd)
         archive_query = any(k in cmd for k in ("gestern","vorgestern","bericht","meldung","neuigkeit","was gab","gibt es","gib mir","zeig mir","zeig die","zeige mir","zeige die","liste","mehr","weiter","nächsten","naechsten","ungepostet","schon gepostet","türk","tuerk","turk","worldsbk","worldssp","moto2","moto3","ai ogura","marc marquez","marc márquez","jack miller","toprak","deniz öncü","deniz oncu","can öncü","can oncu"))
         if archive_select or archive_query:
             print(f"ROUTER: Update {uid} -> Racing Archiv/Manual")
@@ -576,17 +578,8 @@ def main() -> None:
             _ack(uid)
             continue
 
-        is_turkish_approval = bool(
-            re.fullmatch(r"turkish\s+(?:(?:t\s*)?(?:[1-9]|1\d|20)(?:[\s,]+(?:t\s*)?(?:[1-9]|1\d|20))*|alle|nein|✅|❌)", cmd, re.I)
-            or re.fullmatch(r"t\s*(?:(?:[1-9]|1\d|20)(?:[\s,]+(?:t\s*)?(?:[1-9]|1\d|20))*|alle|nein|✅|❌)", cmd, re.I)
-        )
-        is_turkish_human_action = bool(
-            re.search(r"(?i)(?:^|[^a-z0-9])(?:t\s*|turkish\s+(?:t\s*)?)(?:[1-9]|1\d|20)(?=$|[^0-9])", cmd)
-            and re.search(
-                r"(?i)\b(?:post(?:en|e|et)?|veröffentlichen|veroeffentlichen|freigeben|ändern|aendern|überarbeiten|ueberarbeiten|umschreiben|bearbeiten|verwerfen|löschen|loeschen)\b|nicht\s+(?:posten|veröffentlichen|veroeffentlichen)",
-                cmd,
-            )
-        )
+        is_turkish_approval = is_turkish_approval_command(cmd)
+        is_turkish_human_action = is_turkish_human_action_command(cmd)
         if "motogp" in cmd or is_turkish_approval or is_turkish_human_action:
             lane = "Turkish Rider" if is_turkish_approval else "MotoGP"
             print(f"ROUTER: Update {uid} -> {lane} Approval (atomare Übergabe)")
