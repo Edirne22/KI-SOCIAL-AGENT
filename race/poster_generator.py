@@ -1,4 +1,4 @@
-"""Erzeugt eigene Rennkalender-Grafiken mit optionalem abstraktem KI-Hintergrund."""
+"""Erzeugt eigene Rennkalender-Grafiken mit Event- und Sessionplan."""
 from __future__ import annotations
 
 import base64
@@ -90,20 +90,34 @@ def _draw_poster(series: str, details: str, size: tuple[int, int], background: I
     draw.rectangle((0, 0, width, int(height * 0.045)), fill=accent)
     draw.rectangle((int(width * 0.08), int(height * 0.19), int(width * 0.12), int(height * 0.76)), fill=accent)
     title_font = _font(max(28, width // 15), bold=True)
-    body_font = _font(max(20, width // 31), bold=False)
     small_font = _font(max(14, width // 48), bold=False)
 
-    draw.text((int(width * 0.18), int(height * 0.17)), "RENNWOCHENENDE", font=small_font, fill=(220, 220, 220))
-    draw.text((int(width * 0.18), int(height * 0.25)), series.upper(), font=title_font, fill="white")
+    draw.text((int(width * 0.18), int(height * 0.14)), "RENNWOCHENENDE", font=small_font, fill=(220, 220, 220))
+    draw.text((int(width * 0.18), int(height * 0.21)), series.upper(), font=title_font, fill="white")
 
-    y = int(height * 0.48)
-    for line in textwrap.wrap(details, width=28):
-        draw.text((int(width * 0.18), y), line, font=body_font, fill=(245, 245, 245))
-        y += int(body_font.size * 1.35)
+    # Sessionplan lesbar halten und Quellen-URL nicht in die Grafik quetschen.
+    display_details = "\\n".join(
+        line for line in details.splitlines()
+        if not line.strip().lower().startswith("quelle:")
+    )
+    lines = []
+    for paragraph in display_details.splitlines():
+        lines.extend(textwrap.wrap(paragraph, width=42) or [""])
+    if not lines:
+        lines = ["Termindetails folgen"]
+    available_height = int(height * 0.43)
+    font_size = min(max(16, width // 36), max(15, available_height // max(1, len(lines)) // 2))
+    body_font = _font(font_size, bold=False)
+
+    y = int(height * 0.36)
+    line_height = max(20, int(body_font.size * 1.3))
+    for line in lines:
+        draw.text((int(width * 0.12), y), line, font=body_font, fill=(245, 245, 245))
+        y += line_height
 
     draw.text(
-        (int(width * 0.18), int(height * 0.86)),
-        "Eigene Kalendergrafik · Fakten vor dem Posten offiziell prüfen",
+        (int(width * 0.12), int(height * 0.88)),
+        "Eigene Kalendergrafik · Zeiten laut verlinkter offizieller Quelle",
         font=small_font,
         fill=(200, 200, 200),
     )
