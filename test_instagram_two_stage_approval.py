@@ -89,12 +89,12 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
     facebook_block = published_content.split("## Facebook", 1)[1]
     assert f"Text:\n{shared_caption}\nQuelle:" in instagram_block
     assert f"Text:\n{shared_caption}\nQuelle:" in facebook_block
-    assert pending[0]["text"] == shared_caption
     assert f"Bild: {test_img}" in instagram_block and f"Bild: {test_img}" in facebook_block
     mock_caption.assert_not_called()
 
     pending = pi.load_pending()
     assert len(pending) == 1
+    assert pending[0]["text"] == shared_caption
     assert pending[0]["batch_id"] == "batch-123"
     assert pending[0]["auswahl"] == 3
 
