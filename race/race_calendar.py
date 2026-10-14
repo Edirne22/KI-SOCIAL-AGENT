@@ -87,10 +87,10 @@ def confirmed_weekend() -> tuple[str, str] | None:
                 sessions = event.get("sessions", [])
                 if not isinstance(sessions, list):
                     sessions = []
-                details = f"{track}\\n{start_str} bis {end_str}"
+                details = f"{track}\n{start_str} bis {end_str}"
                 if sessions:
-                    details += "\\n" + "\\n".join(str(item).strip() for item in sessions if str(item).strip())
-                details += f"\\nQuelle: {source}"
+                    details += "\n" + "\n".join(str(item).strip() for item in sessions if str(item).strip())
+                details += f"\nQuelle: {source}"
                 print(f"[race] Bestätigtes Rennwochenende aus JSON: {series} / {details}")
                 return series, details
         except (ValueError, TypeError):
