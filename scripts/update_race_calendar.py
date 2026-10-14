@@ -14,6 +14,7 @@ import re
 import time
 from datetime import date, datetime, timedelta
 from urllib.parse import urljoin, urlsplit
+from zoneinfo import ZoneInfo
 
 import requests
 from PIL import Image
@@ -429,7 +430,8 @@ def update_calendar() -> None:
         if not any(item["role"] == "official" for item in scanned.get(series, [])):
             raise RuntimeError(f"Offizielle Kalenderquelle für {series} konnte nicht gescannt werden.")
 
-    today = date.today()
+    berlin = ZoneInfo("Europe/Berlin")
+    today = datetime.now(berlin).date()
     evidence = json.dumps(scanned, ensure_ascii=False)
     prompt = f"""Heute ist {today.isoformat()} (Europe/Berlin).
 Du erhältst unten bereits vom Programm abgerufene Seiteninhalte. Recherchiere
@@ -461,7 +463,8 @@ Gib nur dieses JSON-Schema zurück:
       "track": "Strecke · Ort",
       "sessions": ["Fr 09:00 FP1 (Ortszeit)", "Sa 14:00 Sprint (Ortszeit)"],
       "source": "offizielle Event-URL",
-      "crosscheck_sources": ["abgerufene Sekundär-URL"]
+      "crosscheck_sources": ["abgerufene Sekundär-URL"],
+      "source_excerpt": "kurzes wörtliches Zitat von der offiziellen Event- oder Kalenderseite, das Termin und Strecke belegt"
     }}
   ]
 }}
@@ -509,16 +512,20 @@ ABGERUFENE QUELLEN UND SEITENINHALTE:
         source = str(event.get("source", "")).strip()
         host = (urlsplit(source).hostname or "").lower()
         sessions = event.get("sessions", [])
+        source_excerpt = str(event.get("source_excerpt", "")).strip()
+        source_text = official_text_by_url.get(source, "")
+        normalize = lambda value: re.sub(r"\s+", " ", html.unescape(str(value))).strip().casefold()
         if (
             not track
             or host not in official_hosts.get(series, set())
             or source not in official_text_by_url
+            or not source_excerpt
+            or normalize(source_excerpt) not in normalize(source_text)
         ):
-            print(f"[race-update] Event ohne abgerufene offizielle Terminquelle/Strecke ignoriert: {event}")
+            print(f"[race-update] Event ohne belegtes Zitat aus abgerufener offizieller Seite ignoriert: {event}")
             continue
         if not isinstance(sessions, list):
             sessions = []
-        source_text = official_text_by_url[source]
         normalized_sessions = []
         for item in sessions:
             session = str(item).strip()
@@ -542,6 +549,7 @@ ABGERUFENE QUELLEN UND SEITENINHALTE:
             "sessions": normalized_sessions,
             "source": source,
             "crosscheck_sources": crosschecks,
+            "source_excerpt": source_excerpt,
         })
 
     # Deduplizieren, ohne eine leere/fehlerhafte Recherche über den Bestand zu schreiben.
@@ -557,7 +565,7 @@ ABGERUFENE QUELLEN UND SEITENINHALTE:
     if bike:
         valid_events[0]["bike_of_weekend"] = bike
 
-    output = {"updated_at": datetime.now().astimezone().isoformat(timespec="minutes"), "events": valid_events}
+    output = {"updated_at": datetime.now(berlin).isoformat(timespec="minutes"), "events": valid_events}
     CALENDAR_FILE.parent.mkdir(parents=True, exist_ok=True)
     CALENDAR_FILE.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"[race-update] Erfolgreich {len(valid_events)} offiziell belegte Events gespeichert.")
