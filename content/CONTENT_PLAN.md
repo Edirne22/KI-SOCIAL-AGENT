@@ -2925,3 +2925,11 @@ User Safety: safe
 
 ## Automatisch generierte Beiträge vom 2026-10-13 13:08:28
 User Safety: safe
+
+
+## Automatisch generierte Beiträge vom 2026-10-14 10:49:42
+--- BEITRAG 1 ---
+Titel: Jorge Martíns Überholmanöver beim Indonesian GP – Zentimeterarbeit auf der Bremse
+Plattform: Instagram Reel / TikTok / Facebook
+Thema: MotoGP / Jorge Martín (#89, Aprilia Racing) & Renntechnik
+Hook: Hast du beim Anbremsen auf der Landstraße schon mal genau den
