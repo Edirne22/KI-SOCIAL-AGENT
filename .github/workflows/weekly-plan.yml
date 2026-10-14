@@ -26,7 +26,7 @@ jobs:
       - name: Wochenplan-Regressionen prüfen
         run: |
           python -m py_compile weekly_plan.py tests/test_weekly_plan_community_contract.py
-          python tests/test_weekly_plan_community_contract.py
+          PYTHONPATH=. python tests/test_weekly_plan_community_contract.py
 
       - name: Run weekly planner
         env:
