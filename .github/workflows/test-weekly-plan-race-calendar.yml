@@ -1,0 +1,37 @@
+name: TEST – Weekly Planner & Race Calendar
+
+on:
+  pull_request:
+    paths:
+      - "weekly_plan.py"
+      - "scripts/update_race_calendar.py"
+      - "race/race_sources.py"
+      - "race/race_calendar.py"
+      - "race/poster_generator.py"
+      - "tests/test_weekly_plan_community_contract.py"
+      - "tests/test_race_calendar_source_scan.py"
+      - ".github/workflows/weekly-plan.yml"
+      - ".github/workflows/race-calendar.yml"
+      - ".github/workflows/race-calendar-update.yml"
+      - ".github/workflows/test-weekly-plan-race-calendar.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install runtime dependencies
+        run: pip install requests pillow
+      - name: Compile changed workflow code
+        run: |
+          python -m py_compile weekly_plan.py scripts/update_race_calendar.py race/race_sources.py race/race_calendar.py race/poster_generator.py
+      - name: Run weekly planner regression
+        run: PYTHONPATH=. python tests/test_weekly_plan_community_contract.py
+      - name: Run calendar source-scan regression
+        run: PYTHONPATH=. python tests/test_race_calendar_source_scan.py
