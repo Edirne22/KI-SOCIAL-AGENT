@@ -328,11 +328,23 @@ Antworte NUR mit JSON:
 
 
 def _page_text(markup: str) -> str:
-    """Extrahiert sichtbaren Seitentext; Skripte und Styles sind keine Fakten."""
-    markup = re.sub(r"(?is)<(script|style|noscript)\b.*?</\1>", " ", markup or "")
+    """Extrahiert sichtbaren Text und eingebettete JSON-Daten, keine beliebigen Skripte."""
+    structured = []
+    for match in re.finditer(r"(?is)<script\b([^>]*)>(.*?)</script>", markup or ""):
+        attrs = match.group(1).lower()
+        if (
+            "application/ld+json" in attrs
+            or "application/json" in attrs
+            or "__next_data__" in attrs
+            or "__nuxt_data__" in attrs
+        ):
+            structured.append(match.group(2))
+    markup = re.sub(r"(?is)<script\b.*?</script>", " ", markup or "")
+    markup = re.sub(r"(?is)<(style|noscript)\b.*?</\1>", " ", markup)
     markup = re.sub(r"(?s)<[^>]+>", " ", markup)
-    return re.sub(r"\s+", " ", html.unescape(markup)).strip()
-
+    visible = re.sub(r"\s+", " ", html.unescape(markup)).strip()
+    data = re.sub(r"\s+", " ", html.unescape(" ".join(structured))).strip()
+    return (visible + " STRUCTURED_DATA: " + data).strip() if data else visible
 
 def _scan_source(url: str, role: str) -> dict:
     """Ruft eine konfigurierte Kalender-/Nachrichtenseite direkt ab."""
@@ -469,6 +481,16 @@ ABGERUFENE QUELLEN UND SEITENINHALTE:
     }
     valid_events = []
     cutoff = today + timedelta(days=60)
+    available_sources = set()
+    official_text_by_url = {}
+    for rows in scanned.values():
+        for row in rows:
+            available_sources.add(row["url"])
+            if row["role"] == "official":
+                official_text_by_url[row["url"]] = row["text"]
+                for event_page in row["event_pages"]:
+                    available_sources.add(event_page["url"])
+                    official_text_by_url[event_page["url"]] = event_page["text"]
     for event in data["events"]:
         if not isinstance(event, dict):
             continue
@@ -487,20 +509,30 @@ ABGERUFENE QUELLEN UND SEITENINHALTE:
         source = str(event.get("source", "")).strip()
         host = (urlsplit(source).hostname or "").lower()
         sessions = event.get("sessions", [])
-        if not track or host not in official_hosts.get(series, set()):
-            print(f"[race-update] Event ohne offizielle Terminquelle/Strecke ignoriert: {event}")
+        if (
+            not track
+            or host not in official_hosts.get(series, set())
+            or source not in official_text_by_url
+        ):
+            print(f"[race-update] Event ohne abgerufene offizielle Terminquelle/Strecke ignoriert: {event}")
             continue
         if not isinstance(sessions, list):
             sessions = []
-        normalized_sessions = [str(item).strip() for item in sessions if str(item).strip()]
+        source_text = official_text_by_url[source]
+        normalized_sessions = []
+        for item in sessions:
+            session = str(item).strip()
+            if not session:
+                continue
+            times = re.findall(r"\b(?:[01]?\d|2[0-3]):[0-5]\d\b", session)
+            if times and not all(clock in source_text for clock in times):
+                print(f"[race-update] Sessionzeit nicht in offizieller Quelle belegt, verworfen: {session}")
+                continue
+            normalized_sessions.append(session)
         crosschecks = [
             str(url).strip()
             for url in event.get("crosscheck_sources", [])
-            if str(url).strip() in {
-                source_row["url"]
-                for rows in scanned.values()
-                for source_row in rows
-            }
+            if str(url).strip() in available_sources
         ] if isinstance(event.get("crosscheck_sources", []), list) else []
         valid_events.append({
             "date_start": start_date.isoformat(),
