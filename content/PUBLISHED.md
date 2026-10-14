@@ -1044,6 +1044,7 @@ Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-14-manual-38591765219
 Telegram-Update-ID: 279361955
