@@ -459,46 +459,52 @@ def turkish_candidate_reason(x,now,max_days=10):
   if age>max_days:return 'older-than-window'
   return 'PASS'
 
-def turkish_five_preview(details,now,max_days=10,exclude_items=None):
-  # Keep up to 20 selectable history candidates, but show only T1-T5 by default.
-  # Cross-lane dedupe: stories already visible in the final Racing Top 5 must
-  # not consume a Turkish T1-T5 slot; the next eligible Turkish story moves up.
+def turkish_offer_candidates(details,now,max_days=3,exclude_items=None,offered_keys=None,limit=20):
+  """Return fresh Turkish-rider stories not already offered in an earlier Racing session."""
   exclude_items=exclude_items or []
   excluded_keys={story_key(x.get('title',''),x.get('url','')) for x in exclude_items}
   excluded_urls={canonical_url(x.get('url','')) for x in exclude_items if x.get('url')}
-  # This preserves the compact Telegram preview while enabling `turkish liste` + T6-T20.
-  candidates=[];seen=set();window_used=0;history_limit=20
-  # Deliberately widen only as needed: today -> 7 days -> 10 days.
-  # This prevents an older high-scoring story from displacing today's rider news.
-  for days in (1,7,max_days):
+  offered_keys=set(offered_keys if offered_keys is not None else known_story_keys())
+  candidates=[];seen=set();window_used=0
+  for days in tuple(dict.fromkeys((1,max_days))):
    window_used=days
    eligible=(y for y in details if turkish_candidate_gate(y,now,days))
    for x in sorted(eligible,key=lambda y:editorial_score(y,roster_names()),reverse=True):
     key=story_key(x.get('title',''),x.get('url',''))
-    if key in excluded_keys or canonical_url(x.get('url','')) in excluded_urls:continue
-    if key in seen:continue
+    url=canonical_url(x.get('url',''))
+    if key in excluded_keys or url in excluded_urls or key in offered_keys or key in seen:continue
     seen.add(key);candidates.append(x)
-    if len(candidates)>=history_limit:break
-   if len(candidates)>=history_limit:break
+    if len(candidates)>=limit:break
+   if len(candidates)>=limit:break
+  return candidates,window_used
+
+
+def turkish_five_preview(details,now,max_days=3,exclude_items=None):
+  # Save up to 20 selectable candidates, show T1-T5, and prevent previously
+  # offered stories from cycling back through either Racing lane.
+  candidates,window_used=turkish_offer_candidates(details,now,max_days,exclude_items)
   diag=[(y.get('turkish_rider') or detect_turkish_rider(y),y.get('title','')[:70],turkish_candidate_reason(y,now,max_days)) for y in details if is_turkish_focus(y)]
   print('TURKISH CANDIDATE-GATE DIAG '+json.dumps(diag,ensure_ascii=False))
   payload={'version':1,'created_at':int(now.timestamp()),'max_days':max_days,'window_used_days':window_used,'count':len(candidates),'items':[]}
   for i,x in enumerate(candidates,1):
    payload['items'].append({'n':i,'title':x.get('title',''),'url':x.get('url',''),'summary':x.get('summary',''),'preview':x.get('preview',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'series':series_for(x),'source_series':x.get('source_series') or series_for(x),'turkish_rider':x.get('turkish_rider') or detect_turkish_rider(x),'kind':x.get('kind','news')})
-  TURKISH_SESSION.parent.mkdir(parents=True,exist_ok=True);TURKISH_SESSION.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+  TURKISH_SESSION.parent.mkdir(parents=True,exist_ok=True);TURKISH_SESSION.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\\n',encoding='utf-8')
   visible=candidates[:5]
-  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche rückwärts bis maximal 10 Tage; bereits früher angebotene Stories dürfen erneut erscheinen.','',f'📚 Historie: {len(candidates)} auswählbare Kandidaten gespeichert. Für T6–T20: turkish liste','']
-  if len(candidates)<5:msg.append(f'⚠️ {len(candidates)} von 5 gefunden – Zeitraum heute → 7 → {max_days} Tage aus den registrierten offiziellen Fahrerquellen geprüft.')
-  else:msg.append('✅ 5 von 5 Kandidaten gefunden.')
-  send_message('\n'.join(msg)[:4000])
+  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche nur bis maximal 3 Tage zurück; bereits früher angebotene Stories werden nicht erneut vorgeschlagen.','',f'📚 Historie: {len(candidates)} neue auswählbare Kandidaten gespeichert. Für T6–T20: turkish liste','']
+  if len(candidates)<5:msg.append(f'⚠️ {len(candidates)} von 5 gefunden – Zeitraum heute → {max_days} Tage geprüft; ältere oder bereits angebotene Stories wurden ausgelassen.')
+  else:msg.append('✅ 5 von 5 neuen Kandidaten gefunden.')
+  send_message('\\n'.join(msg)[:4000])
   for i,x in enumerate(visible,1):
    title=f'T{i}️⃣ {x.get("turkish_rider") or "Turkish Rider"} | {x.get("title","")}'
    source=x.get('url','');og=extract_og_image_url(source) or x.get('preview','')
-   caption=f'{title}\n🔗 Quelle: {source}\nStatus: Scout-Vorschlag – Auswahl danach Priority-Repair + vollständiges Fakten-QM'
+   caption=f'{title}\\n🔗 Quelle: {source}\\nStatus: Scout-Vorschlag – Auswahl danach Priority-Repair + vollständiges Fakten-QM'
    if not _send_turkish_source_photo(og,caption):
     print(f'TURKISH-5 PREVIEW TEXT-ONLY T{i}: no deliverable source preview')
-    send_message(caption+'\n🖼️ Quell-Vorschaubild nicht abrufbar.')
-  send_message('Freigabe zur QM-Prüfung: turkish 1–5 / Kombination / turkish alle\nWeitere Kandidaten: turkish liste → danach z. B. turkish 12\nAblehnen: turkish nein')
+    send_message(caption+'\\n🖼️ Quell-Vorschaubild nicht abrufbar.')
+  # These candidates are now selectable from this Telegram offer and must not
+  # reappear tomorrow as if they were new.
+  remember_offered(candidates,now)
+  send_message('Freigabe zur QM-Prüfung: turkish 1–5 / Kombination / turkish alle\\nWeitere Kandidaten: turkish liste → danach z. B. turkish 12\\nAblehnen: turkish nein')
   print(f'TURKISH-5 PREVIEW sent={len(visible)} history={len(candidates)} window_used_days={window_used} max_days={max_days}')
   return visible
 
