@@ -23,11 +23,21 @@ def test_page_text_strips_executable_markup():
     assert ".x" not in text
 
 
+def test_page_text_keeps_calendar_json_but_drops_javascript():
+    text = updater._page_text(
+        '<script id="__NEXT_DATA__" type="application/json">{"session":"FP1 09:00"}</script>'
+        '<script>const secret = "noise";</script>'
+    )
+    assert "FP1 09:00" in text
+    assert "secret" not in text
+
+
 def test_official_calendar_scanner_fetches_event_pages():
     calendar_url = "https://www.motogp.com/en/calendar"
     event_url = "https://www.motogp.com/en/calendar/2026/event/australia/abc"
     calendar = FakeResponse(
-        '<html><body>Official Australia race calendar. Upcoming event dates and schedule details. Australia 22 - 25 Oct 2026 '
+        '<html><body>Official Australia race calendar. Upcoming event dates and schedule details. '
+        'Australia 22 - 25 Oct 2026 '
         f'<a href="{event_url}">Event schedule</a></body></html>'
     )
     event = FakeResponse("<html><body>FP1 09:00 Sprint 15:00 Race Sunday 14:00</body></html>")
@@ -47,7 +57,8 @@ def test_official_calendar_scanner_fetches_event_pages():
 def test_secondary_source_is_scanned_without_crawling_event_links():
     url = "https://trf1.net/motor-sporlari/motogp/"
     page = FakeResponse(
-        '<html><body>Upcoming MotoGP news from the official racing information pages. Confirmed calendar updates and event news. '
+        '<html><body>Upcoming MotoGP news from the official racing information pages. '
+        'Confirmed calendar updates and event news. '
         '<a href="https://www.motogp.com/en/calendar/2026/event/australia/abc">event</a>'
         '</body></html>'
     )
@@ -61,6 +72,7 @@ def test_secondary_source_is_scanned_without_crawling_event_links():
 
 if __name__ == "__main__":
     test_page_text_strips_executable_markup()
+    test_page_text_keeps_calendar_json_but_drops_javascript()
     test_official_calendar_scanner_fetches_event_pages()
     test_secondary_source_is_scanned_without_crawling_event_links()
     print("Race-calendar source scan tests: PASS")
