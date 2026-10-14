@@ -94,7 +94,7 @@ class LLMRouter:
         try:
             r = requests.post(url, headers=headers, json=payload, timeout=60)
         except requests.RequestException as e:
-            print(f"[router] {provider} Netzwerkfehler: {e}")
+            print(f"[router] {provider} Netzwerkfehler: {type(e).__name__}")
             return None
 
         if r.status_code == 429:
@@ -113,14 +113,18 @@ class LLMRouter:
             return None
 
         if r.status_code != 200:
-            print(f"[router] {provider} HTTP {r.status_code}: {r.text[:200]}")
+            print(f"[router] {provider} HTTP {r.status_code}")
             return None
 
         try:
             data = r.json()
-            return data["choices"][0]["message"]["content"]
-        except (KeyError, IndexError, json.JSONDecodeError) as e:
-            print(f"[router] {provider} Antwort-Parsing fehlgeschlagen: {e}")
+            text = data["choices"][0]["message"]["content"]
+            if not isinstance(text, str) or not text.strip():
+                print(f"[router] {provider} Antwort enthaelt keinen verwendbaren Text.")
+                return None
+            return text.strip()
+        except (KeyError, IndexError, TypeError, ValueError) as e:
+            print(f"[router] {provider} Antwort-Parsing fehlgeschlagen: {type(e).__name__}")
             return None
 
     def chat(
@@ -155,7 +159,7 @@ class LLMRouter:
                 return result
 
         raise RuntimeError(
-            "Alle verfügbaren KI-Anbieter fehlgeschlagen (Rate-Limits oder Keys fehlen)."
+            "Alle konfigurierten KI-Anbieter fehlgeschlagen; keine verwendbare Textantwort."
         )
 
 

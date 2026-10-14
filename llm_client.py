@@ -55,8 +55,10 @@ def _request_json(method,url,headers,payload,timeout,max_retries=1,provider_name
    last=e
    if attempt>=max_retries:raise RuntimeError(f'Provider-Anfrage nach {attempt+1} Versuchen fehlgeschlagen: {type(e).__name__}') from e
    time.sleep(min(12.0,2.0*(2**attempt)+random.uniform(0.0,0.5)));continue
-  if r.ok:return r.json()
-  last=RuntimeError(f"Provider-Anfrage fehlgeschlagen (HTTP {r.status_code}): {redact_secrets(r.text[:500])}")
+  if r.ok:
+   try:return r.json()
+   except ValueError as e:raise RuntimeError('Provider-Antwort ist kein gueltiges JSON.') from e
+  last=RuntimeError(f"Provider-Anfrage fehlgeschlagen (HTTP {r.status_code}).")
   if r.status_code==429 and provider_name:
    # Do not hammer a rate-limited provider. Mark it unavailable so generate()
    # can move to a configured fallback immediately.
@@ -69,21 +71,28 @@ def _request_json(method,url,headers,payload,timeout,max_retries=1,provider_name
   time.sleep(_retry_after_seconds(r,attempt))
  raise last or RuntimeError('Provider-Anfrage fehlgeschlagen')
 def _provider_request_retries(provider):return int(provider.get('request_max_retries',1))
+def _require_text(value):
+ if not isinstance(value,str) or not value.strip():raise RuntimeError('Provider-Antwort enthaelt keinen verwendbaren Text.')
+ return redact_secrets(value).strip()
+def _chat_response_text(data):
+ try:value=data['choices'][0]['message']['content']
+ except (KeyError,IndexError,TypeError) as e:raise RuntimeError('Provider-Antwort hat ein ungueltiges Chat-Schema.') from e
+ return _require_text(value)
 def _generate_gemini(prompt,provider,key):
  headers={'Content-Type':'application/json','X-goog-api-key':key};payload={'contents':[{'parts':[{'text':prompt}]}]};errors=[]
  for model in provider['text_models'][:int(provider.get('text_model_limit',len(provider['text_models'])))]:
   try:
-   data=_request_json('POST',f"{provider['base_url']}/models/{model}:generateContent",headers,payload,provider['timeout_seconds'],max_retries=_provider_request_retries(provider),provider_name='gemini');return redact_secrets(data['candidates'][0]['content']['parts'][0]['text']).strip()
+   data=_request_json('POST',f"{provider['base_url']}/models/{model}:generateContent",headers,payload,provider['timeout_seconds'],max_retries=_provider_request_retries(provider),provider_name='gemini');return _require_text(data['candidates'][0]['content']['parts'][0]['text'])
   except (KeyError,IndexError,TypeError) as e:errors.append(f'{model}: unvollstaendige Antwort ({e})')
   except RuntimeError as e:errors.append(f'{model}: {e}')
  raise RuntimeError('Kein Gemini-Modell konnte die Aufgabe ausfuehren. '+' | '.join(errors))
 def _generate_agnes_text(prompt,provider,key):
- data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds'],max_retries=_provider_request_retries(provider),provider_name='agnes');return redact_secrets(data['choices'][0]['message']['content']).strip()
+ data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds'],max_retries=_provider_request_retries(provider),provider_name='agnes');return _chat_response_text(data)
 def _generate_agnes_image(prompt,provider,key):return _request_json('POST',f"{provider['base_url']}/images/generations",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['image_model'],'prompt':prompt,'size':'1024x1024','n':1},provider['timeout_seconds'])
 def _start_agnes_video(prompt,provider,key):return _request_json('POST',f"{provider['base_url']}/videos",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['video_model'],'prompt':prompt,'duration':5,'size':'720x1280'},provider['timeout_seconds'])
 def _generate_openai_text(prompt,provider,key,provider_name):
  data=_request_json('POST',f"{provider['base_url']}/chat/completions",{'Authorization':f'Bearer {key}','Content-Type':'application/json'},{'model':provider['chat_model'],'messages':[{'role':'user','content':prompt}],'stream':False},provider['timeout_seconds'],max_retries=_provider_request_retries(provider),provider_name=provider_name)
- return redact_secrets(data['choices'][0]['message']['content']).strip()
+ return _chat_response_text(data)
 def _provider_key_if_available(provider_name):
  provider=get_provider_config(provider_name);env_name=provider.get('api_key_env')
  return os.environ.get(env_name) if env_name else None
