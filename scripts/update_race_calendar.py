@@ -432,7 +432,17 @@ def update_calendar() -> None:
 
     berlin = ZoneInfo("Europe/Berlin")
     today = datetime.now(berlin).date()
-    evidence = json.dumps(scanned, ensure_ascii=False)
+    unique_pages = {}
+    source_groups = {}
+    for series, rows in scanned.items():
+        source_groups[series] = []
+        for row in rows:
+            source_groups[series].append({"role": row["role"], "url": row["url"]})
+            unique_pages[row["url"]] = row
+    evidence = json.dumps(
+        {"source_groups": source_groups, "scanned_pages": list(unique_pages.values())},
+        ensure_ascii=False,
+    )
     prompt = f"""Heute ist {today.isoformat()} (Europe/Berlin).
 Du erhältst unten bereits vom Programm abgerufene Seiteninhalte. Recherchiere
 nicht aus deinem Gedächtnis und ergänze keine nicht belegten Angaben.
