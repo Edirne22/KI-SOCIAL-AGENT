@@ -509,7 +509,7 @@ def publish(posts,chosen,uid,batch,schedules=None):
         # and caption as the separately approved Instagram draft. Without an
         # image, Facebook falls back to the official source link preview.
         fb_media = f'Bild: {img_path}\n' if instagram_ready else ''
-        fb_preview = '' if instagram_ready else 'Link-Preview: offiziell\n'
+        fb_preview = 'Link-Preview: offiziell\n'
         blocks.append(
             f'## Facebook\n{common_fb}Text:\n{instagram_text}\n'
             f'Quelle: {p["source"]}\n{fb_media}{fb_preview}'
