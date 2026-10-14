@@ -84,11 +84,11 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
     assert "## Facebook" in published_content
     assert "Status: FREIGEGEBEN" in published_content
     assert "Medienstatus: QUELLE_BESTÄTIGT" in published_content
-    shared_caption = "Great race in Austria!\\n\\n🔗 Quelle: https://motogp.com/news/1"
+    shared_caption = "Great race in Austria!\n\n🔗 Quelle: https://motogp.com/news/1"
     instagram_block = published_content.split("## Instagram", 1)[1].split("## Facebook", 1)[0]
     facebook_block = published_content.split("## Facebook", 1)[1]
-    assert f"Text:\\n{shared_caption}\\nQuelle:" in instagram_block
-    assert f"Text:\\n{shared_caption}\\nQuelle:" in facebook_block
+    assert f"Text:\n{shared_caption}\nQuelle:" in instagram_block
+    assert f"Text:\n{shared_caption}\nQuelle:" in facebook_block
     assert pending[0]["text"] == shared_caption
     assert f"Bild: {test_img}" in instagram_block and f"Bild: {test_img}" in facebook_block
     mock_caption.assert_not_called()
