@@ -892,3 +892,27 @@ https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-
 Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum", "media_status": "", "object_id": "1285968257941776_122123780139469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123780139469415", "source_url": "https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum", "version": 1}
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-10-22
+Titel: 🏍️ Bike of the Race Weekend: Yamaha YZF-R1M
+Text:
+Yamaha ist in Australien wie zu Hause – die Blue Slides sind hier Kult, und Phillip Island ist seit Jahrzehnten ein Stammtisch der Yamaha-Fahrer. Das schnelle, fließende Layout belohnt den präzisen Stil, mit dem die Marlin-Bikes dort traditionell stark waren.
+
+#RacingCalendar #BikeOfTheWeekend #Yamaha #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-10/2026-10-22-bike-yamaha-yzf-r1m.jpg
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-10-22
+Titel: 🏍️ Bike of the Race Weekend: Yamaha YZF-R1M
+Text:
+Yamaha ist in Australien wie zu Hause – die Blue Slides sind hier Kult, und Phillip Island ist seit Jahrzehnten ein Stammtisch der Yamaha-Fahrer. Das schnelle, fließende Layout belohnt den präzisen Stil, mit dem die Marlin-Bikes dort traditionell stark waren.
+
+#RacingCalendar #BikeOfTheWeekend #Yamaha #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-10/2026-10-22-bike-yamaha-yzf-r1m.jpg

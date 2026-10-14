@@ -1,3 +1,62 @@
 {
-  "events": []
+  "updated_at": "2026-10-14T15:56+02:00",
+  "events": [
+    {
+      "date_start": "2026-10-22",
+      "date_end": "2026-10-25",
+      "series": "MotoGP",
+      "track": "Phillip Island · Australia",
+      "sessions": [],
+      "source": "https://www.motogp.com/en/calendar",
+      "crosscheck_sources": [
+        "https://motoetkinlik.com/motogp-yaris-takvimi/"
+      ],
+      "source_excerpt": "AUSTRALIA 22 - 25 Oct 2026",
+      "bike_of_weekend": {
+        "brand": "Yamaha",
+        "model": "YZF-R1M",
+        "category": "Rennsport oder Straße",
+        "story": "Yamaha ist in Australien wie zu Hause – die Blue Slides sind hier Kult, und Phillip Island ist seit Jahrzehnten ein Stammtisch der Yamaha-Fahrer. Das schnelle, fließende Layout belohnt den präzisen Stil, mit dem die Marlin-Bikes dort traditionell stark waren.",
+        "source_url": "https://r1m.yamaha-motor.eu",
+        "image_local": "assets/images/2026-10/2026-10-22-bike-yamaha-yzf-r1m.jpg",
+        "image_source": "agnes"
+      }
+    },
+    {
+      "date_start": "2026-10-30",
+      "date_end": "2026-11-01",
+      "series": "MotoGP",
+      "track": "Sepang International Circuit · Malaysia",
+      "sessions": [],
+      "source": "https://www.motogp.com/en/calendar",
+      "crosscheck_sources": [
+        "https://motoetkinlik.com/motogp-yaris-takvimi/"
+      ],
+      "source_excerpt": "MALAYSIA 30 Oct - 1 Nov 2026"
+    },
+    {
+      "date_start": "2026-11-06",
+      "date_end": "2026-11-08",
+      "series": "MotoGP",
+      "track": "Lusail International Circuit · Qatar",
+      "sessions": [],
+      "source": "https://www.motogp.com/en/calendar",
+      "crosscheck_sources": [
+        "https://motoetkinlik.com/motogp-yaris-takvimi/"
+      ],
+      "source_excerpt": "QATAR 6 - 8 Nov 2026"
+    },
+    {
+      "date_start": "2026-11-20",
+      "date_end": "2026-11-22",
+      "series": "MotoGP",
+      "track": "Autódromo do Algarve · Portimão, Portugal",
+      "sessions": [],
+      "source": "https://www.motogp.com/en/calendar",
+      "crosscheck_sources": [
+        "https://motoetkinlik.com/motogp-yaris-takvimi/"
+      ],
+      "source_excerpt": "PORTUGAL 20 - 22 Nov 2026"
+    }
+  ]
 }
