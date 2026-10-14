@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1791892523
+Session-Timestamp: 1791970713
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,29 +15,25 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 4
+QM-Ruecklaeufe: 4
 Herkunft: Aktuell
-Artikelalter-Tage: 1.9
+Artikelalter-Tage: 0.5
 Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
-Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
-Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
+Serie: Moto2
+Story-Key: title:i-ddia-ten-kate-qjmotor-ge-iyor-temsilcimiz-can-nc-de-ten-kate-de-kal-yor
+Titel: İddia: Ten Kate QJMOTOR'a Geçiyor, Temsilcimiz Can Öncü de Ten Kate'de Kalıyor
+Quelle: https://motoetkinlik.com/iddia-ten-kate-qjmotora-geciyor-temsilcimiz-can-oncu-de-ten-katede-kaliyor
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-1-estoril-worldssp-haf-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/can-oncu-cekya-yarisi-antreman-seansi-2026-scaled.webp
+Instagram-Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-1-iddia-ten-kate-qjmot-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/WorldSBK-2026-Estoril-GP-JPM-084-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba gewinnt das zweite WorldSSP-Rennen in Estoril nach dem Neustart nach Rot.
+Laut aktuellen Berichten steht bei Ten Kate für 2027 ein Wechsel zu QJMOTOR im Raum, womit sich die niederländische Mannschaft von Yamaha trennen würde. Can Öncü soll demnach bei Ten Kate bleiben und der erste Fahrer der chinesischen Marke werden.
 
-Can Öncü wird Achter.
+Wie seht ihr diesen möglichen Wechsel?
 
-Bahattin Sofuoğlu hat einen Unfall, der das Rennen stoppt.
-
-Ein starkes Wochenende für Alcoba – interessant zu sehen, wie er Punkte sammelt.
-
-#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -45,27 +41,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:10864828
-Titel: Tardozzi: "Marquez'in motosikleti kendine göre geliştirdiği kesinlikle doğru değil"
-Quelle: https://tr.motorsport.com/motogp/news/tardozzi-marquezin-ducatiyi-kendine-gore-gelistirdigi-kesinlikle-dogru-degil/10864828
+Artikelalter-Tage: 1.7
+Kategorie: Turkish Riders
+Serie: Moto2
+Story-Key: title:worldsbk-ve-worldssp-estoril-hafta-sonu-zeti-ve-galeri
+Titel: WorldSBK ve WorldSSP Estoril Hafta Sonu Özeti ve Galeri
+Quelle: https://motoetkinlik.com/worldsbk-ve-worldssp-estoril-hafta-sonu-ozeti-ve-galeri
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-2-tardozzi-marquez-in-01.jpg
-Quellen-Preview: https://cdn-5.motorsport.com/images/amp/6grQqbGY/s6/davide-tardozzi-team-manager-l.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-2-worldsbk-ve-worldssp-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/WorldSBK-2026-Estoril-GP-JPM-049-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Davide Tardozzi weist die Gerüchte rund um die Entwicklung bei Ducati klar zurück.
+In Estoril fuhr Can Öncü in Rennen 2 auf den vierten Platz. Nicolo Bulega konnte sich an diesem Rennwochenende in Estoril ebenfalls in die Siegerliste eintragen.
 
-Zuletzt gab es Behauptungen, Marc Marquez würde die Entwicklung des Motorrads komplett nach seinem eigenen Fahrstil ausrichten und andere Ducati-Fahrer dadurch benachteiligen. Tardozzi stellte nun klar, dass an diesen Vorwürfen nichts dran ist. Laut ihm wird das Bike keineswegs einseitig für Marquez entwickelt oder zum Nachteil der anderen Piloten verändert.
+Wie schätzt ihr das Ergebnis von Can Öncü in Rennen 2 ein?
 
-Wie schätzt ihr die Situation rund um die Entwicklung bei Ducati ein?
-
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #CanOncu #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -73,29 +67,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 2
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 1.1
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
-Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
-Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
+Artikelalter-Tage: 3.0
+Kategorie: Turkish Riders
+Serie: Moto2
+Story-Key: title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi
+Titel: Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi
+Quelle: https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-3-jorge-martin-den-mar-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jorge-martin-mandalika-motogp-sampiyonluk-liderligi-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-3-moto2-de-mandalika-d-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/Moto2-Endonezya-GP-2026endonezya-gp-2026-izan-guevara-mandalika.webp
 Plattformen: Instagram + Facebook
 Text:
-In Indonesien hat Jorge Martin Marc Marquez die MotoGP-Spitze abgejagt.
+Beim Moto2-Rennen in Mandalika holte sich Izan Guevara seinen dritten Sieg hintereinander. Gonzalez sicherte sich den zweiten Platz und Holgado fuhr auf Rang drei ins Ziel. Deniz Öncü beendete das Rennen auf Position 22, während der Abstand in der Meisterschaft auf 6,5 Punkte geschrumpft ist.
 
-Jetzt stehen noch fünf Rennen bis zum Saisonfinale.
+Was traut ihr Guevara nach diesem Ergebnis im Meisterschaftskampf noch zu?
 
-Der Aprilia-Fahrer zeigt sich mit direkten Worten sehr selbstbewusst.
-
-Wie schätzt ihr die Situation mit den letzten fünf Rennen ein?
-
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #DenizOncu #DanielHolgado #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -103,27 +93,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
+Neufassungen: 1
 QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 2.9
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
-Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
-Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
+Artikelalter-Tage: 1.0
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Quelle: https://motoetkinlik.com/bagnaiadan-ducatiye-sert-elestiri-son-iki-yilda-geriye-gittik
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-4-bulega-estoril-de-re-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/worldsbk-estoril-2026-race-1-nicolo-bulega-ducati.webp
+Instagram-Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-bagnaia-dan-ducati-y-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/pecco-bagnaia-ducati-mandalika-kaza-motogp-2026.avif
 Plattformen: Instagram + Facebook
 Text:
-Nicolo Bulega schnappt sich in Estoril den Sieg in Race 1 der WorldSBK und stellt damit den Rekord von Bautista ein.
+Son iki yılda geriye gittik
 
-Für Bulega ist es der 27. Saisonsieg, mit dem er die bisherige Bestmarke einstellt, während Ducati einen Doppelsieg feiert. Dahinter belegt Lecuona den zweiten Platz und Surra fährt auf Rang drei aufs Podium.
+Pecco Bagnaia ließ nach seinem Sturz beim Indonesia GP keinen Zweifel: Die Ducati sei in den letzten zwei Jahren zurückgegangen – bei der Haftung auf der Straße wie auch beim Gasantwortverhalten. Dass er mit dem Problem bekannt war, zeigte er, indem ihn die Abstürze nicht überraschten.
 
-Wie bewertet ihr das Rennergebnis aus Estoril?
+Wie schätzt ihr die Situation bei Ducati ein?
 
-#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
+#MotoGP #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -131,25 +121,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 2
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.9
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: motogp:10864355
-Titel: WSSP Portekiz 2. yarış: Kaos dolu yarışın galibi Alcoba, Can Öncü dördüncü sırada
-Quelle: https://tr.motorsport.com/supersport/news/wssp-portekiz-2-yaris-kaos-dolu-yarisin-galibi-alcoba-can-oncu-dorduncu-sirada-tamamladi/10864355
+Artikelalter-Tage: 3.8
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-13-racing-editorial-2026-10-13-5-wssp-portekiz-2-yari-01.jpg
-Quellen-Preview: https://cdn-2.motorsport.com/images/amp/6DGgodGY/s6/alcoba.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-5-bulega-estoril-de-re-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/worldsbk-estoril-2026-race-1-nicolo-bulega-ducati.webp
 Plattformen: Instagram + Facebook
 Text:
-Das zweite WorldSSP-Rennen 2026 in Estoril wurde wegen Stürzen und roter Flaggen unterbrochen. Am Ende holte sich Alcoba den Sieg, während Can Öncü auf Platz vier die Zielflagge sah.
+Bulega hat Bautistas Rekord erreicht – mit dem 27. Sieg in dieser Saison.
 
-Wie schätzt ihr das Ergebnis von Can Öncü ein?
+In Estoril setzte er sich im Race 1 durch und ebn damit den Weg zu einem gleichwertigen Ergebnis wie der früher amtierende Weltmeister Bautista. Ducati schaffte den Dublett-Erfolg, und beim Überraschungs-Podium landete Surra auf Platz drei. Lecuona fuhr dazwischen als Zweiter auf die Podest-Box. 🏁
 
-#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wer von den beiden – Bulega oder Bautista – habt ihr mehr im Kasten für langfristige Titelchancen?
+
+#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

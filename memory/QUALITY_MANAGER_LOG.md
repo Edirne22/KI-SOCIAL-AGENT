@@ -3030,3 +3030,39 @@ Story-Key: motogp:10864355
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-14 10:00 UTC | Motorcycle Racing | PASS
+Titel: İddia: Ten Kate QJMOTOR'a Geçiyor, Temsilcimiz Can Öncü de Ten Kate'de Kalıyor
+Story-Key: title:i-ddia-ten-kate-qjmotor-ge-iyor-temsilcimiz-can-nc-de-ten-kate-de-kal-yor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 10:00 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK ve WorldSSP Estoril Hafta Sonu Özeti ve Galeri
+Story-Key: title:worldsbk-ve-worldssp-estoril-hafta-sonu-zeti-ve-galeri
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 10:00 UTC | Motorcycle Racing | PASS
+Titel: Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi
+Story-Key: title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 10:00 UTC | Motorcycle Racing | FAIL
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 10:01 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 10:01 UTC | Motorcycle Racing | PASS
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

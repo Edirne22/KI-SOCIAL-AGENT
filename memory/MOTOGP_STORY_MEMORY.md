@@ -994,3 +994,18 @@ Quelle: https://tr.motorsport.com/motogp/news/tardozzi-marquezin-ducatiyi-kendin
 Story-Key: motogp:10864355
 Titel: WSSP Portekiz 2. yarış: Kaos dolu yarışın galibi Alcoba, Can Öncü dördüncü sırada
 Quelle: https://tr.motorsport.com/supersport/news/wssp-portekiz-2-yaris-kaos-dolu-yarisin-galibi-alcoba-can-oncu-dorduncu-sirada-tamamladi/10864355
+
+## 2026-10-14 09:38 UTC – ANGEBOTEN
+Story-Key: title:i-ddia-ten-kate-qjmotor-ge-iyor-temsilcimiz-can-nc-de-ten-kate-de-kal-yor
+Titel: İddia: Ten Kate QJMOTOR'a Geçiyor, Temsilcimiz Can Öncü de Ten Kate'de Kalıyor
+Quelle: https://motoetkinlik.com/iddia-ten-kate-qjmotora-geciyor-temsilcimiz-can-oncu-de-ten-katede-kaliyor
+
+## 2026-10-14 09:38 UTC – ANGEBOTEN
+Story-Key: title:worldsbk-ve-worldssp-estoril-hafta-sonu-zeti-ve-galeri
+Titel: WorldSBK ve WorldSSP Estoril Hafta Sonu Özeti ve Galeri
+Quelle: https://motoetkinlik.com/worldsbk-ve-worldssp-estoril-hafta-sonu-ozeti-ve-galeri
+
+## 2026-10-14 09:38 UTC – ANGEBOTEN
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Quelle: https://motoetkinlik.com/bagnaiadan-ducatiye-sert-elestiri-son-iki-yilda-geriye-gittik
