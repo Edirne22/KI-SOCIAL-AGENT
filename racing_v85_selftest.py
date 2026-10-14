@@ -49,8 +49,15 @@ def main():
         fresh={'title':'Can Oncu Estoril fresh report','url':'https://motoetkinlik.com/estoril-fresh','published_at':'2026-10-14T09:00:00Z','turkish_rider':'Can Öncü','kind':'news'}
         offered={'title':'Can Oncu Estoril already offered','url':'https://motoetkinlik.com/estoril-offered','published_at':'2026-10-13T09:00:00Z','turkish_rider':'Can Öncü','kind':'news'}
         stale={'title':'Can Oncu old report','url':'https://motoetkinlik.com/estoril-old','published_at':'2026-10-10T09:00:00Z','turkish_rider':'Can Öncü','kind':'news'}
-        not_repeated,_=agency.turkish_offer_candidates([fresh,offered,stale],datetime(2026,10,14,12,0,tzinfo=timezone.utc),3,offered_keys={agency.story_key(offered['title'],offered['url'])})
-        check([x['title'] for x in not_repeated]==[fresh['title']],'Turkish offers repeated a prior story or admitted a stale story')
+        old_turkish_session=agency.TURKISH_SESSION
+        try:
+            with tempfile.TemporaryDirectory() as td:
+                agency.TURKISH_SESSION=Path(td)/'turkish.json'
+                agency.TURKISH_SESSION.write_text('{"items":[{"title":"Can Oncu Estoril already offered","url":"https://motoetkinlik.com/estoril-offered"}]}',encoding='utf-8')
+                not_repeated,_=agency.turkish_offer_candidates([fresh,offered,stale],datetime(2026,10,14,12,0,tzinfo=timezone.utc),3,offered_keys=set())
+                check([x['title'] for x in not_repeated]==[fresh['title']],'Turkish offers repeated the prior session or admitted a stale story')
+        finally:
+            agency.TURKISH_SESSION=old_turkish_session
         src=dict(scout.SOURCES);check(src.get('MotoGP')=='https://www.motogp.com/en/news','MotoGP official source missing');check(src.get('Moto2')=='https://www.motogp.com/en/news/Moto2','Moto2 reserve source missing');check(src.get('Moto3')=='https://www.motogp.com/en/news/Moto3','Moto3 reserve source missing');check(src.get('WorldSBK')=='https://www.worldsbk.com/en/news','WorldSBK official source missing');check(src.get('WorldSSP')=='https://www.worldsbk.com/en/news/ssp','WorldSSP official source missing')
         check(scout.classify_series('Moto2','Agius takes pole in Moto2','https://www.motogp.com/en/news/2026/09/12/x')=='Moto2','Moto2 collapsed');check(scout.classify_series('Moto3','Quiles wins Moto3 race','https://www.motogp.com/en/news/2026/09/13/y')=='Moto3','Moto3 collapsed');check(scout.classify_series('WorldSSP','Oncu wins WorldSSP race','https://www.worldsbk.com/en/news/2026/09/14/z')=='WorldSSP','WorldSSP classification regressed')
         # Exact live regression: generic MotoGP page metadata must never override a dedicated feed class.
