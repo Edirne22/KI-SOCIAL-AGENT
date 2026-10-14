@@ -492,7 +492,8 @@ def publish(posts,chosen,uid,batch,schedules=None):
                         f"🖼️ Instagram-Bild bereit für: {p['title']}\n"
                         f"Auswahl: {n} (Batch: {batch})\n\n"
                         "Antworte mit:\n"
-                        "- bild ✅ – posten"
+                        "- bild ✅ – posten\\n"
+                        "- bild ❌ – Instagram verwerfen"
                     ),
                 )
             except Exception as e:
