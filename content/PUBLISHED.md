@@ -1042,9 +1042,8 @@ Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosikle
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller-dan-yama-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38632895181-1
+## Facebook [GEPOSTET 2026-10-14 20:32 | ID: 122124154737469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-14-manual-38591765219
 Telegram-Update-ID: 279361955
@@ -1067,3 +1066,4 @@ Wie seht ihr die Lage bei Yamaha – liegt das Problem am Bike oder an der Einst
 Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde
 Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller-dan-yama-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller-dan-yama-01.jpg", "media_status": "", "object_id": "122124154737469415", "object_type": "bild", "platform": "facebook", "post_id": "122124154737469415", "source_url": "https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde", "version": 1}
