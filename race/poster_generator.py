@@ -96,7 +96,7 @@ def _draw_poster(series: str, details: str, size: tuple[int, int], background: I
     draw.text((int(width * 0.18), int(height * 0.21)), series.upper(), font=title_font, fill="white")
 
     # Sessionplan lesbar halten und Quellen-URL nicht in die Grafik quetschen.
-    display_details = "\\n".join(
+    display_details = "\n".join(
         line for line in details.splitlines()
         if not line.strip().lower().startswith("quelle:")
     )
