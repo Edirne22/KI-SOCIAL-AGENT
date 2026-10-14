@@ -525,6 +525,7 @@ def test_turkish_post_path_uses_existing_publisher_fifo():
 
 def _run_racing_platform_publish_contract(tmp_path, source_image_available):
  import os
+ import re
  from pathlib import Path
  source='https://example.test/article'
  calls={'pending':[],'photos':[],'messages':[],'generated':0,'caption_rewrite':0}
