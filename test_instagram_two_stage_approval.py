@@ -71,7 +71,8 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
 
     monkeypatch.setattr(approval, "agnes_generate_image", mock_agnes)
     monkeypatch.setattr(approval, "download_og_image_for_instagram", lambda source, target: str(test_img))
-    monkeypatch.setattr(approval, "generate_buelent_caption", lambda text: "Bülent: " + text)
+    mock_caption = MagicMock(return_value="rewritten copy")
+    monkeypatch.setattr(approval, "generate_buelent_caption", mock_caption)
     monkeypatch.setattr(approval, "send_photo", mock_send_photo)
 
     count = approval.publish(posts, [3], uid=1001, batch="batch-123")
@@ -83,10 +84,17 @@ def test_motogp_approval_publish_two_stage(tmp_path, monkeypatch):
     assert "## Facebook" in published_content
     assert "Status: FREIGEGEBEN" in published_content
     assert "Medienstatus: QUELLE_BESTÄTIGT" in published_content
-    assert "Bülent: Great race in Austria!" in published_content
+    shared_caption = "Great race in Austria!\n\n🔗 Quelle: https://motogp.com/news/1"
+    instagram_block = published_content.split("## Instagram", 1)[1].split("## Facebook", 1)[0]
+    facebook_block = published_content.split("## Facebook", 1)[1]
+    assert f"Text:\n{shared_caption}\nQuelle:" in instagram_block
+    assert f"Text:\n{shared_caption}\nQuelle:" in facebook_block
+    assert f"Bild: {test_img}" in instagram_block and f"Bild: {test_img}" in facebook_block
+    mock_caption.assert_not_called()
 
     pending = pi.load_pending()
     assert len(pending) == 1
+    assert pending[0]["text"] == shared_caption
     assert pending[0]["batch_id"] == "batch-123"
     assert pending[0]["auswahl"] == 3
 
@@ -135,17 +143,17 @@ def test_turkish_human_final_requires_instagram_preview(tmp_path, monkeypatch):
     send_photo.assert_called_once()
 
 
-def test_motogp_approval_falls_back_to_agnes_without_og_image(tmp_path, monkeypatch):
+def test_motogp_approval_skips_instagram_without_source_image(tmp_path, monkeypatch):
     test_json = tmp_path / "PENDING_INSTAGRAM.json"
     test_published = tmp_path / "PUBLISHED.md"
     monkeypatch.setattr(pi, "PENDING_FILE", test_json)
     monkeypatch.setattr(approval, "PUBLISHED", test_published)
 
     test_img = tmp_path / "fallback.jpg"
-    test_img.write_bytes(b"old")
+    test_img.write_bytes(b"old generated image")
     posts = {
         1: {
-            "title": "Fallback Test",
+            "title": "No source image",
             "source": "https://example.com/no-og",
             "image": str(test_img),
             "text": "Facebook Basistext",
@@ -154,18 +162,26 @@ def test_motogp_approval_falls_back_to_agnes_without_og_image(tmp_path, monkeypa
 
     mock_agnes = MagicMock(return_value=b"agnes bytes")
     mock_save = MagicMock()
+    mock_send_photo = MagicMock()
+    mock_send_message = MagicMock()
     monkeypatch.setattr(approval, "download_og_image_for_instagram", lambda source, target: None)
-    monkeypatch.setattr(approval, "generate_buelent_caption", lambda text: text)
     monkeypatch.setattr(approval, "agnes_generate_image", mock_agnes)
     monkeypatch.setattr(approval, "save_bytes", mock_save)
-    monkeypatch.setattr(approval, "send_photo", MagicMock())
+    monkeypatch.setattr(approval, "send_photo", mock_send_photo)
+    monkeypatch.setattr(approval, "send_message", mock_send_message)
 
-    approval.publish(posts, [1], uid=1002, batch="batch-fallback")
-    mock_agnes.assert_called_once()
-    mock_save.assert_called_once()
+    count = approval.publish(posts, [1], uid=1002, batch="batch-no-og")
+    assert count == 1
+    mock_agnes.assert_not_called()
+    mock_save.assert_not_called()
+    mock_send_photo.assert_not_called()
+    assert pi.load_pending() == []
+    assert mock_send_message.called
     published_content = test_published.read_text(encoding="utf-8")
-    assert "Medienstatus: EIGENE_KI_EDITORIALGRAFIK" in published_content
-
+    assert "## Instagram" not in published_content
+    assert "## Facebook" in published_content
+    assert "Link-Preview: offiziell" in published_content
+    assert "Medienstatus: EIGENE_KI_EDITORIALGRAFIK" not in published_content
 
 def test_telegram_router_bild_commands(tmp_path, monkeypatch):
     test_json = tmp_path / "PENDING_INSTAGRAM.json"

@@ -522,9 +522,96 @@ def test_turkish_post_path_uses_existing_publisher_fifo():
  assert 'schedules=' not in post
  assert "plan=' → '.join" in post
 
+
+def _run_racing_platform_publish_contract(tmp_path, source_image_available):
+ import os
+ import re
+ from pathlib import Path
+ source='https://example.test/article'
+ calls={'pending':[],'photos':[],'messages':[],'generated':0,'caption_rewrite':0}
+ old={
+  'PUBLISHED':recv.PUBLISHED,
+  'get_existing_published_texts':recv.get_existing_published_texts,
+  'get_existing_published_identities':recv.get_existing_published_identities,
+  '_post_identity':recv._post_identity,
+  'download_og_image_for_instagram':recv.download_og_image_for_instagram,
+  'add_pending':recv.add_pending,
+  'send_photo':recv.send_photo,
+  'send_message':recv.send_message,
+  'agnes_generate_image':recv.agnes_generate_image,
+  'generate_buelent_caption':recv.generate_buelent_caption,
+ }
+ old_claim=os.environ.get('PUBLICATION_CLAIM_TOKEN')
+ try:
+  recv.PUBLISHED=tmp_path/'PUBLISHED.md'
+  recv.get_existing_published_texts=lambda:set()
+  recv.get_existing_published_identities=lambda:(set(),set(),set())
+  recv._post_identity=lambda post:('https://example.test/article','story-1','event-1')
+  def source_download(url, output_path):
+   assert url==source
+   if not source_image_available:return None
+   target=Path(output_path)
+   target.parent.mkdir(parents=True,exist_ok=True)
+   target.write_bytes(b'original source image')
+   return target.as_posix()
+  recv.download_og_image_for_instagram=source_download
+  recv.add_pending=lambda **item:calls['pending'].append(item)
+  recv.send_photo=lambda image,caption='':calls['photos'].append((str(image),caption))
+  recv.send_message=lambda message:calls['messages'].append(message)
+  recv.agnes_generate_image=lambda *args,**kwargs:(calls.__setitem__('generated',calls['generated']+1) or b'generated')
+  recv.generate_buelent_caption=lambda *args,**kwargs:(calls.__setitem__('caption_rewrite',calls['caption_rewrite']+1) or 'rewritten copy')
+  post={'title':'Source story','source':source,'image':str(tmp_path/'generated-fallback.jpg'),
+        'text':'Approved Facebook copy','summary':'Source summary','series':'MotoGP',
+        'source_series':'MotoGP','caption_final':False}
+  count=recv.publish({1:post},[1],771,'racing-test-batch')
+  content=recv.PUBLISHED.read_text(encoding='utf-8')
+  assert '## Facebook' in content
+  assert calls['generated']==0
+  assert calls['caption_rewrite']==0
+  if not source_image_available:
+   assert count==1
+   assert '## Instagram' not in content
+   assert not calls['pending'] and not calls['photos']
+   assert any('kein verwendbares Originalbild' in m for m in calls['messages'])
+   return
+  assert count==2
+  assert len(calls['pending'])==1 and len(calls['photos'])==1
+  ig_image=re.search(r'(?m)^Bild: (.+)$',content.split('## Instagram',1)[1].split('## Facebook',1)[0]).group(1)
+  fb_image=re.search(r'(?m)^Bild: (.+)$',content.split('## Facebook',1)[1]).group(1)
+  expected='Approved Facebook copy\n\n🔗 Quelle: '+source
+  assert ig_image==fb_image==calls['pending'][0]['bild_pfad']==calls['photos'][0][0]
+  assert calls['pending'][0]['text']==expected
+  ig_text=re.search(r'(?ms)^## Instagram\n.*?^Text:\n(.*?)\nQuelle:',content).group(1)
+  fb_text=re.search(r'(?ms)^## Facebook\n.*?^Text:\n(.*?)\nQuelle:',content).group(1)
+  assert ig_text==fb_text==expected
+  import facebook_publish
+  claimed=content.replace('Status: FREIGEGEBEN\n','Status: FREIGEGEBEN\nPublication-Claim: IN_BEARBEITUNG test-token\n')
+  os.environ['PUBLICATION_CLAIM_TOKEN']='test-token'
+  fb_caption,fb_file,_,_,_=facebook_publish.find_facebook_block(claimed)
+  assert fb_caption==calls['pending'][0]['text']==expected
+  assert fb_file==calls['pending'][0]['bild_pfad']
+ finally:
+  for name,value in old.items():setattr(recv,name,value)
+  if old_claim is None:os.environ.pop('PUBLICATION_CLAIM_TOKEN',None)
+  else:os.environ['PUBLICATION_CLAIM_TOKEN']=old_claim
+
+
+def test_racing_instagram_preview_matches_facebook_source_image_and_caption():
+ import tempfile
+ from pathlib import Path
+ with tempfile.TemporaryDirectory() as td:
+  _run_racing_platform_publish_contract(Path(td),True)
+
+
+def test_racing_missing_source_image_never_generates_instagram_fallback():
+ import tempfile
+ from pathlib import Path
+ with tempfile.TemporaryDirectory() as td:
+  _run_racing_platform_publish_contract(Path(td),False)
+
 if __name__=='__main__':
  test_turkish_range_dispatches_all_selected_items();test_turkish_visible_five_dedupes_racing_top5_and_backfills()
- test_manual_turkish_redteam_never_promotes_fake_fact_to_pass();test_manual_turkish_positive_control_can_reach_chief();test_turkish_target_lock_blocks_other_rider_in_real_toprak_pattern();test_racing_number_guard_does_not_extract_numeric_suffix_from_alphanumeric_token();test_source_entity_guard_does_not_treat_aktion_as_place();test_turkish_german_place_alias_and_fuer_idiom_do_not_false_block();test_turkish_language_failure_always_has_actionable_reason();test_motogp_geo_lexicon_keeps_austria_and_australia_distinct();test_turkish_preview_uses_saved_preview_when_live_og_missing();test_live_turkish_bad_copy_patterns_are_forbidden_by_editor_contract();test_escalated_turkish_items_have_per_item_source_preview_path();test_turkish_empty_semantic_language_diagnostic_is_not_valid_language_feedback();test_escalated_preview_uses_url_download_helper_not_local_path_send();test_manual_turkish_selection_is_human_preview_not_qm_permission_loop();test_turkish_natural_preview_action_variants();test_turkish_post_action_uses_saved_preview_without_editor_or_qm();test_turkish_mixed_actions_are_scoped_per_t_number();test_turkish_mixed_action_conflict_fails_closed();test_turkish_staggered_publish_grammar_and_order();test_turkish_post_path_uses_existing_publisher_fifo();test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
+ test_manual_turkish_redteam_never_promotes_fake_fact_to_pass();test_manual_turkish_positive_control_can_reach_chief();test_turkish_target_lock_blocks_other_rider_in_real_toprak_pattern();test_racing_number_guard_does_not_extract_numeric_suffix_from_alphanumeric_token();test_source_entity_guard_does_not_treat_aktion_as_place();test_turkish_german_place_alias_and_fuer_idiom_do_not_false_block();test_turkish_language_failure_always_has_actionable_reason();test_motogp_geo_lexicon_keeps_austria_and_australia_distinct();test_turkish_preview_uses_saved_preview_when_live_og_missing();test_live_turkish_bad_copy_patterns_are_forbidden_by_editor_contract();test_escalated_turkish_items_have_per_item_source_preview_path();test_turkish_empty_semantic_language_diagnostic_is_not_valid_language_feedback();test_escalated_preview_uses_url_download_helper_not_local_path_send();test_manual_turkish_selection_is_human_preview_not_qm_permission_loop();test_turkish_natural_preview_action_variants();test_turkish_post_action_uses_saved_preview_without_editor_or_qm();test_turkish_mixed_actions_are_scoped_per_t_number();test_turkish_mixed_action_conflict_fails_closed();test_turkish_staggered_publish_grammar_and_order();test_turkish_post_path_uses_existing_publisher_fifo();test_priority_marking_and_order();test_top20_priority();test_central_turkish_rider_source_registry();test_surname_only_turkish_riders_use_series_context();test_rider_centered_scout_uses_registered_official_sources();test_tmf_haberler_links_are_discovered_and_generic_titles_are_not_people();test_turkish_discovery_memory_does_not_auto_promote();test_turkish_candidate_is_independent_and_deduplicated();test_turkish_preview_is_separate_and_limited();test_turkish_ten_day_window_and_selection_parser();test_racing_instagram_preview_matches_facebook_source_image_and_caption();test_racing_missing_source_image_never_generates_instagram_fallback();test_turkish_lane_owns_relevance_but_keeps_truth_guard();test_turkish_top20_history_keeps_preview_compact()
  print('RACING PRIORITY + TURKISH FIVE REGRESSION: PASS')
 
 
