@@ -442,24 +442,18 @@ def publish(posts,chosen,uid,batch,schedules=None):
         if event_id and event_id in existing_events:duplicate_reasons.append('event')
         is_existing_duplicate=bool(duplicate_reasons)
 
-        prompt = f"Vertical 4:5 premium motorcycle racing editorial background, empty circuit, dramatic light, NO people, NO riders, NO motorcycles, NO logos, NO brands, NO text, NO watermark. Mood: {p['text'][:180]}"
-        img_path = p["image"]
-        media_status = "QUELLE_BESTÄTIGT"
-        og_path = download_og_image_for_instagram(p["source"], img_path)
-        if og_path:
-            img_path = og_path
-            print(f"MOTOGP: og:image der Quelle verwendet für Auswahl {n}: {img_path}")
+        prompt = f"Instagram nur mit dem Original-Quellbild vorbereiten. Quelle: {p['source']}"
+        source_image_path = download_og_image_for_instagram(p["source"], p["image"])
+        instagram_ready = bool(source_image_path)
+        media_status = "QUELLE_BESTÄTIGT" if instagram_ready else "QUELLBILD_FEHLT"
+        img_path = source_image_path or ""
+        if instagram_ready:
+            print(f"MOTOGP: Original-Quellbild für Facebook und Instagram: {img_path}")
         else:
-            media_status = "EIGENE_KI_EDITORIALGRAFIK"
-            try:
-                img_bytes = agnes_generate_image(prompt)
-                if img_bytes:
-                    save_bytes(img_bytes, img_path)
-                    print(f"MOTOGP: Kein og:image – Agnes-Fallback für Auswahl {n}: {img_path}")
-            except Exception as e:
-                print(f"MOTOGP: Agnes Bild-Generierung übersprungen / fehlgeschlagen: {e}")
-
-        instagram_text = p["text"] if p.get("caption_final") else generate_buelent_caption(p["text"])
+            print(f"MOTOGP: Kein Quellbild für Auswahl {n}; Instagram wird ausgelassen, Facebook bleibt freigegeben.")
+        # Both platforms must receive the same approved copy. Keep the article
+        # source visible in the shared caption and use the same source image.
+        instagram_text = f"{p['text'].strip()}\n\n🔗 Quelle: {p['source']}"
 
         # Do not migrate a prior Instagram image into an approved state:
         # the owner must explicitly approve the new Telegram preview.
@@ -471,41 +465,55 @@ def publish(posts,chosen,uid,batch,schedules=None):
         if story_id:existing_story_keys.add(story_id)
         if event_id:existing_events.add(event_id)
 
-        # Facebook is approved by the T-command; Instagram always requires
-        # a separate, explicit Telegram image approval.
-        add_pending(
-            batch_id=batch,
-            auswahl=n,
-            titel=p["title"],
-            text=instagram_text,
-            bild_pfad=img_path,
-            prompt_fuer_agnes=prompt,
-        )
-
         scheduled=_schedule_lines(schedules.get(n))
-        ig_status = 'BILD_GENERIERT'
         identity_lines=f'Story-Key: {story_id or "-"}\nEvent-Fingerprint: {event_id or "-"}\n'
-        common_ig = f'Status: {ig_status}\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\n{identity_lines}Titel: {p["title"]}\n'
         common_fb = f'Status: FREIGEGEBEN\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\n{identity_lines}Titel: {p["title"]}\n'
 
-        blocks += [
-            f'## Instagram\n{common_ig}Text:\n{instagram_text}\nQuelle: {p["source"]}\nMedienstatus: {media_status}\nBild: {img_path}\n',
-            f'## Facebook\n{common_fb}Text:\n{p["text"]}\n\n{p["source"]}\nQuelle: {p["source"]}\nLink-Preview: offiziell\n'
-        ]
-
-        if True:  # Telegram image preview is mandatory for every Instagram post
-            caption = (
-                f"🖼️ Instagram-Bild bereit für: {p['title']}\n"
-                f"Auswahl: {n} (Batch: {batch})\n\n"
-                f"Antworte mit:\n"
-                f"- bild ✅ – posten\n"
-                f"- bild ❌ – neu generieren"
+        if instagram_ready:
+            # The T-command approves Facebook; Instagram waits for a separate
+            # bild ✅. Both publishers consume this same source image and caption.
+            add_pending(
+                batch_id=batch,
+                auswahl=n,
+                titel=p["title"],
+                text=instagram_text,
+                bild_pfad=img_path,
+                prompt_fuer_agnes=prompt,
+            )
+            ig_status = 'BILD_GENERIERT'
+            common_ig = f'Status: {ig_status}\nFreigabe: Telegram Racing\n{scheduled}Racing-Batch-ID: {batch}\nTelegram-Update-ID: {uid}\nMotoGP-Auswahl: {n}\n{identity_lines}Titel: {p["title"]}\n'
+            blocks.append(
+                f'## Instagram\n{common_ig}Text:\n{instagram_text}\nQuelle: {p["source"]}\nMedienstatus: {media_status}\nBild: {img_path}\n'
             )
             try:
-                send_photo(img_path, caption=caption)
+                send_photo(
+                    img_path,
+                    caption=(
+                        f"🖼️ Instagram-Bild bereit für: {p['title']}\n"
+                        f"Auswahl: {n} (Batch: {batch})\n\n"
+                        "Antworte mit:\n"
+                        "- bild ✅ – posten"
+                    ),
+                )
             except Exception as e:
                 print(f"MOTOGP: send_photo fehlgeschlagen: {e}")
+        else:
+            send_message(
+                f"⚠️ Instagram für {p['title']} nicht vorbereitet: "
+                "Die Quelle liefert kein verwendbares Originalbild. "
+                "Facebook wird mit dem offiziellen Quellen-Link freigegeben; "
+                "es wird kein Ersatzbild erzeugt."
+            )
 
+        # When the source image exists, Facebook gets the identical image file
+        # and caption as the separately approved Instagram draft. Without an
+        # image, Facebook falls back to the official source link preview.
+        fb_media = f'Bild: {img_path}\n' if instagram_ready else ''
+        fb_preview = '' if instagram_ready else 'Link-Preview: offiziell\n'
+        blocks.append(
+            f'## Facebook\n{common_fb}Text:\n{instagram_text}\n'
+            f'Quelle: {p["source"]}\n{fb_media}{fb_preview}'
+        )
     original=PUBLISHED.read_text(encoding='utf-8') if PUBLISHED.exists() else '# Freigegebene Beiträge\n'
     if blocks:PUBLISHED.write_text(existing.rstrip()+'\n\n'+'\n'.join(blocks).rstrip()+'\n',encoding='utf-8')
     elif existing != original:PUBLISHED.write_text(existing,encoding='utf-8')
