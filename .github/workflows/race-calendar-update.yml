@@ -32,7 +32,7 @@ jobs:
       - name: Quellen-Scan Regression prüfen
         run: |
           python -m py_compile scripts/update_race_calendar.py race/race_sources.py tests/test_race_calendar_source_scan.py
-          python tests/test_race_calendar_source_scan.py
+          PYTHONPATH=. python tests/test_race_calendar_source_scan.py
 
       - env:
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
