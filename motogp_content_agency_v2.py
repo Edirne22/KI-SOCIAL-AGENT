@@ -465,6 +465,12 @@ def turkish_offer_candidates(details,now,max_days=3,exclude_items=None,offered_k
   excluded_keys={story_key(x.get('title',''),x.get('url','')) for x in exclude_items}
   excluded_urls={canonical_url(x.get('url','')) for x in exclude_items if x.get('url')}
   offered_keys=set(offered_keys if offered_keys is not None else known_story_keys())
+  # Backfill the latest independent Turkish offer as well as normal Racing memory.
+  try:
+   prior=json.loads(TURKISH_SESSION.read_text(encoding='utf-8'))
+   offered_keys.update(story_key(x.get('title',''),x.get('url','')) for x in prior.get('items',[]) if x.get('url'))
+  except (OSError,ValueError,TypeError):
+   pass
   candidates=[];seen=set();window_used=0
   for days in tuple(dict.fromkeys((1,max_days))):
    window_used=days
