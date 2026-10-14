@@ -352,38 +352,27 @@ def _handle_bild_command(text_or_action: str) -> bool:
             )
             send_message(
                 "⛔ Mehrere aktuelle Instagram-Bilder warten. "
-                "Bitte eindeutig antworten, z. B. bild 3 posten oder bild 3 neu. "
+                "Bitte eindeutig antworten, z. B. bild 3 posten oder bild 3 verwerfen. "
                 "Offen: " + choices
             )
         return True
 
     pending_item = recent[0]
     titel = pending_item.get("titel", "")
-    prompt = pending_item.get("prompt_fuer_agnes", "")
-    img_path = pending_item.get("bild_pfad", "")
 
     if action == "✅":
         _publish_instagram_pending(pending_item)
         return True
 
-    print(f"ROUTER: Bild-Ablehnung ('❌') empfangen. Regeneriere Bild für {titel}...")
-    try:
-        new_bytes = agnes_generate_image(prompt)
-        if new_bytes:
-            save_bytes(new_bytes, img_path)
-            print(f"ROUTER: Neues Agnes-Bild gespeichert unter {img_path}")
-    except Exception as e:
-        print(f"ROUTER: Agnes Neugenerierung Exception: {e}")
-
-    caption = (
-        f"🔄 Neues Bild generiert für: {titel}\n"
-        "Antworte mit bild ✅ oder bild ❌"
+    pi.remove_pending(
+        str(pending_item.get("batch_id", "")),
+        int(pending_item.get("auswahl", 0)),
     )
-    try:
-        send_photo(img_path, caption=caption)
-    except Exception as e:
-        print(f"ROUTER: send_photo bei Neugenerierung fehlgeschlagen: {e}")
-
+    print(f"ROUTER: Instagram-Bild abgelehnt; kein Ersatzbild für {titel} wird generiert.")
+    send_message(
+        f"❌ Instagram verworfen: {titel}. "
+        "Es wird kein neues Bild generiert; Facebook bleibt unverändert."
+    )
     return True
 
 def main() -> None:
