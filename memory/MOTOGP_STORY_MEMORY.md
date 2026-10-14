@@ -1009,3 +1009,13 @@ Quelle: https://motoetkinlik.com/worldsbk-ve-worldssp-estoril-hafta-sonu-ozeti-v
 Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
 Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
 Quelle: https://motoetkinlik.com/bagnaiadan-ducatiye-sert-elestiri-son-iki-yilda-geriye-gittik
+
+## 2026-10-14 15:52 UTC – ANGEBOTEN
+Story-Key: title:worldsbk-jerez-2026-sezon-finalinde-can-nc-nc-l-k-pe-inde
+Titel: WorldSBK Jerez 2026: Sezon Finalinde Can Öncü Üçüncülük Peşinde
+Quelle: https://motoetkinlik.com/worldsbk-jerez-2026-sezon-finalinde-can-oncu-ucunculuk-pesinde
+
+## 2026-10-14 15:52 UTC – ANGEBOTEN
+Story-Key: title:jack-miller-dan-yamaha-ya-alarm-motosiklet-s-r-lemez-halde
+Titel: Jack Miller'dan Yamaha'ya alarm: “Motosiklet sürülemez halde!”
+Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde

@@ -3066,3 +3066,39 @@ Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-14 16:26 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK Jerez 2026: Sezon Finalinde Can Öncü Üçüncülük Peşinde
+Story-Key: title:worldsbk-jerez-2026-sezon-finalinde-can-nc-nc-l-k-pe-inde
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 16:26 UTC | Motorcycle Racing | PASS
+Titel: Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi
+Story-Key: title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 16:26 UTC | Motorcycle Racing | FAIL
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 16:26 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 16:26 UTC | Motorcycle Racing | PASS
+Titel: Jack Miller'dan Yamaha'ya alarm: “Motosiklet sürülemez halde!”
+Story-Key: title:jack-miller-dan-yamaha-ya-alarm-motosiklet-s-r-lemez-halde
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-14 16:27 UTC | Motorcycle Racing | PASS
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

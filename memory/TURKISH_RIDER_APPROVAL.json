@@ -1,69 +1,8 @@
 {
   "version": 1,
-  "created_at": 1791970713,
-  "max_days": 10,
-  "window_used_days": 10,
-  "count": 5,
-  "items": [
-    {
-      "n": 1,
-      "title": "Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!",
-      "url": "https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi",
-      "summary": "WorldSSP Estoril ikinci yarışında Jeremy Alcoba, kırmızı bayrak sonrası yeniden başlayan mücadeleyi kazandı. Can Öncü sekizinci olurken Bahattin Sofuoğlu’nun kazası yarışı durdurdu.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/05/can-oncu-cekya-yarisi-antreman-seansi-2026-scaled.webp",
-      "published_at": "2026-10-11T17:45:17+03:00",
-      "series": "WorldSSP",
-      "source_series": "WorldSSP",
-      "turkish_rider": "Can Öncü",
-      "kind": "news"
-    },
-    {
-      "n": 2,
-      "title": "WSSP Portekiz 1. yarış: Arenas şampiyonluğa ulaştı, Can Öncü 21. sırada!",
-      "url": "https://tr.motorsport.com/supersport/news/wssp-portekiz-1-yaris-arenas-sampiyonluga-ulasti-can-oncu-21-sirada/10863931",
-      "summary": "2026 WSSP Estoril’de düzenlenen ilk yarışında Triumph pilotları Tom Booth-Amos ve Oli Bayliss ilk iki sırayı elde etti. Yarışı dördüncü sırada tamamlayan Yamaha sürücüsü Albert Arenas ise sezonun bitimine bir yarış kala dünya şampiyonluğunu ilan etti.",
-      "preview": "https://cdn-8.motorsport.com/images/amp/0R7BNaV2/s6/albert-arenas-champ.jpg",
-      "published_at": "2026-10-10T14:25:50Z",
-      "series": "WorldSSP",
-      "source_series": "WorldSSP",
-      "turkish_rider": "Can Öncü",
-      "kind": "news"
-    },
-    {
-      "n": 3,
-      "title": "MotoGP Endonezya GP ana antrenman: Kazalarla dolu seansta Fernandez lider, Toprak 16. sırada",
-      "url": "https://tr.motorsport.com/motogp/news/motogp-endonezya-gp-ana-antrenman-kazalarla-dolu-seansta-fernandez-lider-toprak-16-sirada/10863281",
-      "summary": "2026 MotoGP Endonezya Grand Prix'si ana antrenman seansını lider tamamlayan sürücü Raul Fernandez oldu. Toprak Razgatlıoğlu ise 16. sırayı aldı.",
-      "preview": "https://cdn-8.motorsport.com/images/amp/27NoRqE0/s6/raul-fernandez-trackhouse-raci.jpg",
-      "published_at": "2026-10-09T08:39:10Z",
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Toprak Razgatlıoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 4,
-      "title": "WorldSSP Estoril Round Serbest Antrenman: Can Zirvede, Bahattin 26. Sırada",
-      "url": "https://motoetkinlik.com/worldssp-estoril-round-serbest-antrenman-can-zirvede-bahattin-26-sirada",
-      "summary": "Can Öncü, WorldSSP Estoril serbest antrenmanında 1:39.084 ile zirvede. Mahias'ın 0,334 saniye önünde bitiren temsilcimizin yanında Bahattin Sofuoğlu 26. oldu.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/can-oncu-estoril-1.webp",
-      "published_at": "2026-10-09T17:00:19+03:00",
-      "series": "WorldSSP",
-      "source_series": "WorldSSP",
-      "turkish_rider": "Can Öncü",
-      "kind": "news"
-    },
-    {
-      "n": 5,
-      "title": "Moto2 Mandalika Antrenman: Rekor İzan Guevara’dan, Deniz Öncü Kaza Geçirdi!",
-      "url": "https://motoetkinlik.com/moto2-mandalika-antrenman-rekor-izan-guevaradan-deniz-oncu-kaza-gecirdi",
-      "summary": "Moto2 Endonezya GP ön sıralama seansında Izan Guevara, Mandalika tur rekorunu kırdı. Manuel Gonzalez dördüncü, Deniz Öncü ise kaza sonrası 26. oldu.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/Moto2-Deniz-Oncu-Motegi-1.webp",
-      "published_at": "2026-10-09T14:41:36+03:00",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    }
-  ]
+  "created_at": 1791993173,
+  "max_days": 3,
+  "window_used_days": 3,
+  "count": 0,
+  "items": []
 }
