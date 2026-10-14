@@ -2,7 +2,7 @@ name: Update Race Calendar
 
 on:
   schedule:
-    - cron: "0 6 1 * *"
+    - cron: "0 6 * * 2" # Dienstag: Kalenderseiten für das kommende Wochenende live scannen
   workflow_dispatch:
 
 permissions:
@@ -29,6 +29,11 @@ jobs:
 
       - run: pip install requests pillow
 
+      - name: Quellen-Scan Regression prüfen
+        run: |
+          python -m py_compile scripts/update_race_calendar.py race/race_sources.py tests/test_race_calendar_source_scan.py
+          python tests/test_race_calendar_source_scan.py
+
       - env:
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
         run: python scripts/update_race_calendar.py
@@ -41,6 +46,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add memory/RACE_CALENDAR.json assets/images content/PUBLISHED.md 2>/dev/null || true
-          git commit -m "feat(race): monatlicher Update-Workflow für RACE_CALENDAR.json" || echo "Keine Änderungen"
+          git commit -m "feat(race): wöchentlicher Live-Scan der Kalenderquellen" || echo "Keine Änderungen"
           git pull --rebase origin main
           git push
