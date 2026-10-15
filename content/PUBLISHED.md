@@ -814,7 +814,7 @@ Bild: assets/images/2026-10/2026-10-22-bike-yamaha-yzf-r1m.jpg
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 38760929304-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361952
 Text:
