@@ -7,7 +7,7 @@
         "fast": "llama-3.1-8b-instant",
         "default": "openai/gpt-oss-120b",
         "reasoning": "llama-3.3-70b-versatile",
-        "weekly_plan": "llama-3.3-70b-versatile"
+        "weekly_plan": "openai/gpt-oss-120b"
       },
       "rate_limits": {
         "rpm": 30,

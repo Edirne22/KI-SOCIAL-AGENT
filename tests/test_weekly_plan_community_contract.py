@@ -59,7 +59,7 @@ def test_weekly_route_uses_existing_groq_model_first():
         assert router.chat([{"role": "user", "content": "fixture"}], task_type="weekly_plan") == "synthetic weekly plan"
     post.assert_called_once()
     assert post.call_args.args[0] == "https://api.groq.com/openai/v1/chat/completions"
-    assert post.call_args.kwargs["json"]["model"] == router.config["providers"]["groq"]["models"]["reasoning"]
+    assert post.call_args.kwargs["json"]["model"] == "openai/gpt-oss-120b"
 
 
 def test_weekly_route_is_bounded_and_preserves_other_routes():
@@ -68,7 +68,7 @@ def test_weekly_route_is_bounded_and_preserves_other_routes():
     assert router.config["task_routing"]["weekly_plan"] == ["groq", "openrouter", "google", "nvidia"]
     for name in router.config["task_routing"]["weekly_plan"]:
         models = router.config["providers"][name]["models"]
-        assert models["weekly_plan"] == models.get("reasoning", models["default"])
+        assert models["weekly_plan"] == (models["default"] if name == "groq" else models.get("reasoning", models["default"]))
     keys = {router.config["providers"][name]["api_key_env"]: "fixture"
             for name in router.config["task_routing"]["weekly_plan"]}
     response = Mock(status_code=503)
