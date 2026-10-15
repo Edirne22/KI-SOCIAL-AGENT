@@ -8,11 +8,12 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from urllib.parse import urlsplit
 
 import requests
 
 from .poster_generator import create_poster
-from .race_sources import SOURCES
+from .race_sources import SOURCES, CALENDAR_SOURCES
 
 OUT = Path("memory/RACE_WEEKEND.md")
 PUBLISHED = Path("content/PUBLISHED.md")
@@ -64,17 +65,33 @@ def confirmed_weekend() -> tuple[str, str] | None:
 
     try:
         data = json.loads(CALENDAR_FILE.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            raise ValueError("invalid calendar envelope")
+        stamp = datetime.fromisoformat(data["updated_at"])
+        if stamp.tzinfo is None or not 0 <= (datetime.now(ZoneInfo("Europe/Berlin")) - stamp).total_seconds() <= 8 * 86400:
+            raise ValueError("stale calendar")
         events = data.get("events", [])
         if not isinstance(events, list) or not events:
             print("RACE-CALENDAR: keine Daten in memory/RACE_CALENDAR.json")
             raise RuntimeError("Rennkalender fehlt, ist leer oder ungültig; zuerst Update Race Calendar ausführen.")
-    except (OSError, json.JSONDecodeError, ValueError):
+    except (OSError, ValueError, TypeError, KeyError):
         print("RACE-CALENDAR: keine Daten in memory/RACE_CALENDAR.json")
         raise RuntimeError("Rennkalender fehlt, ist leer oder ungültig; zuerst Update Race Calendar ausführen.")
 
     today = datetime.now(ZoneInfo("Europe/Berlin")).date()
     for event in events:
+        if not isinstance(event, dict):
+            continue
         try:
+            if not all(isinstance(event.get(key), str) and event[key].strip()
+                       for key in ("series", "track", "source", "source_excerpt")):
+                continue
+            official_hosts = {(urlsplit(item["url"]).hostname or "").removeprefix("www.")
+                              for item in CALENDAR_SOURCES.get(event["series"], [])
+                              if item["role"] == "official"}
+            parsed_source = urlsplit(event["source"])
+            if parsed_source.scheme != "https" or (parsed_source.hostname or "").removeprefix("www.") not in official_hosts:
+                continue
             start_str = event.get("date_start", "")
             if not start_str:
                 continue

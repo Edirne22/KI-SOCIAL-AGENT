@@ -120,9 +120,10 @@ Wenn eine Bedingung nicht erfüllt ist, überarbeite den Plan vor der Ausgabe.
         f"AUFGABE:\n{raw_prompt}"
     )
 
-    text = quick_chat(prompt, task_type="reasoning").strip()
-    if not text:
+    text = quick_chat(prompt, task_type="reasoning")
+    if not isinstance(text, str) or not text.strip():
         raise RuntimeError("Wochenplan-Anbieter lieferte eine leere Antwort.")
+    text = text.strip()
     if text.upper().startswith("FEHLER:"):
         raise RuntimeError(text)
 
