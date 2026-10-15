@@ -70,9 +70,48 @@ def test_secondary_source_is_scanned_without_crawling_event_links():
     assert get.call_count == 1
 
 
+def test_late_season_event_pages_are_included_with_bounded_deduplication():
+    base = "https://www.worldsbk.com"
+    links = [f"/en/calendar/event/2026-{i:02}" for i in range(30)]
+    markup = "Official calendar source " * 6 + "".join(f'<a href="{p}">Round</a>' for p in links)
+    markup += f'<a href="{links[0]}">Duplicate</a><a href="https://evil.invalid/calendar/event/x">Bad</a>'
+    calls = []
+    def get(url, **kwargs):
+        calls.append(url)
+        return FakeResponse(markup if url == base + "/en/calendar" else "Official schedule")
+    with patch.object(updater.requests, "get", side_effect=get):
+        result = updater._scan_source(base + "/en/calendar", "official")
+    assert base + links[11] in [p["url"] for p in result["event_pages"]]
+    assert len(result["event_pages"]) == 24
+    assert len(calls) == 25 and len(set(calls)) == 25
+
+
+def test_shared_calendar_is_fetched_once_and_reused_for_each_series():
+    url = "https://www.worldsbk.com/en/calendar"
+    sources = {s: [{"url": url, "role": "official"}] for s in ("WorldSBK", "WorldSSP", "WorldSPB")}
+    row = {"url": url, "role": "official", "text": "Official fixture", "event_pages": []}
+    with patch.object(updater, "CALENDAR_SOURCES", sources), patch.object(updater, "_scan_source", return_value=row) as scan:
+        result = updater.scan_calendar_sources()
+    scan.assert_called_once_with(url, "official")
+    assert all(result[s] == [row] for s in sources)
+
+
+def test_shared_unavailable_source_has_no_silent_repeated_attempts():
+    url = "https://www.worldsbk.com/en/calendar"
+    sources = {s: [{"url": url, "role": "official"}] for s in ("WorldSBK", "WorldSSP")}
+    with patch.object(updater, "CALENDAR_SOURCES", sources), \
+         patch.object(updater, "_scan_source", side_effect=updater.requests.Timeout("fixture")) as scan:
+        result = updater.scan_calendar_sources()
+    scan.assert_called_once_with(url, "official")
+    assert result == {s: [] for s in sources}
+
+
 if __name__ == "__main__":
     test_page_text_strips_executable_markup()
     test_page_text_keeps_calendar_json_but_drops_javascript()
     test_official_calendar_scanner_fetches_event_pages()
     test_secondary_source_is_scanned_without_crawling_event_links()
+    test_late_season_event_pages_are_included_with_bounded_deduplication()
+    test_shared_calendar_is_fetched_once_and_reused_for_each_series()
+    test_shared_unavailable_source_has_no_silent_repeated_attempts()
     print("Race-calendar source scan tests: PASS")

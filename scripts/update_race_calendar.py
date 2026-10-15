@@ -382,7 +382,9 @@ def _scan_source(url: str, role: str) -> dict:
             if candidate in seen:
                 continue
             seen.add(candidate)
-            if len(seen) > 4:
+            # A season calendar is chronological: the first four rounds can all
+            # be over. Cover a bounded full season, including late-year events.
+            if len(seen) > 24:
                 break
             try:
                 event_response = requests.get(
@@ -403,11 +405,18 @@ def _scan_source(url: str, role: str) -> dict:
 def scan_calendar_sources() -> dict[str, list[dict]]:
     """Liest offizielle Kalender und hinterlegte Sekundärquellen selbst aus."""
     scanned: dict[str, list[dict]] = {}
+    cache = {}
     for series, sources in CALENDAR_SOURCES.items():
         rows = []
         for source in sources:
+            cache_key = (source["url"], source["role"])
+            if cache_key in cache:
+                if cache[cache_key] is not None:
+                    rows.append(cache[cache_key])
+                continue
             try:
                 row = _scan_source(source["url"], source["role"])
+                cache[cache_key] = row
                 rows.append(row)
                 print(
                     f"[race-update] Quelle gescannt: {series} "
@@ -415,6 +424,7 @@ def scan_calendar_sources() -> dict[str, list[dict]]:
                     f"({len(row['text'])} Zeichen, {len(row['event_pages'])} Eventseiten)"
                 )
             except requests.RequestException as error:
+                cache[cache_key] = None
                 print(f"[race-update] Quelle nicht erreichbar {source['url']}: {error}")
         scanned[series] = rows
     return scanned
