@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "weekly_plan.py"
+      - "config/llm_providers.json"
       - "tests/test_calendar_planner_handoff.py"
       - "tests/test_calendar_recovery_contract.py"
       - "scripts/update_race_calendar.py"
