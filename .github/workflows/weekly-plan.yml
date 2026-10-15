@@ -1,19 +1,29 @@
 name: Generate Weekly Content Plan
 
 on:
-  schedule:
-    - cron: "0 6 * * 2"   # Dienstagmorgen: Wochenplan für den anstehenden Freitag bis Sonntag
+  workflow_run:
+    workflows: ["Update Race Calendar"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: weekly-plan
+  cancel-in-progress: false
+
 jobs:
   generate:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5

@@ -2,6 +2,10 @@ name: Race Calendar
 on:
   schedule:
     - cron: "0 6 * * 3" # Mittwoch: Rennwochenende rechtzeitig für Freitag bis Sonntag vorbereiten
+  workflow_run:
+    workflows: ["Update Race Calendar"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: write
@@ -10,6 +14,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   run:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

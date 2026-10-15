@@ -1,5 +1,7 @@
 """Regression tests for weekly community planning and provider failures."""
 from unittest.mock import patch
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import weekly_plan
 
@@ -14,9 +16,10 @@ def test_weekly_prompt_reads_community_and_requires_a_group_post():
 
     response = "\n".join(
         f"{day}: Motorradthema. Community-Beitrag über Turkbirler."
-        for day in ("Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag")
+        for day in ((datetime.now(ZoneInfo("Europe/Berlin")).date() + timedelta(days=i)).isoformat() for i in range(7))
     )
-    with patch.object(weekly_plan, "read", side_effect=fake_read), \
+    with patch.object(weekly_plan, "calendar_context", return_value="calendar fixture"), \
+         patch.object(weekly_plan, "read", side_effect=fake_read), \
          patch.object(weekly_plan, "get_context", return_value="memory"), \
          patch.object(weekly_plan, "global_professional_context", return_value="standard"), \
          patch.object(weekly_plan, "quick_chat", return_value=response) as chat:
@@ -30,7 +33,8 @@ def test_weekly_prompt_reads_community_and_requires_a_group_post():
 
 
 def test_provider_failure_is_not_saved_as_a_successful_plan():
-    with patch.object(weekly_plan, "read", return_value="repo context"), \
+    with patch.object(weekly_plan, "calendar_context", return_value="calendar fixture"), \
+         patch.object(weekly_plan, "read", return_value="repo context"), \
          patch.object(weekly_plan, "get_context", return_value="memory"), \
          patch.object(weekly_plan, "global_professional_context", return_value="standard"), \
          patch.object(weekly_plan, "quick_chat", side_effect=RuntimeError("provider down")):
