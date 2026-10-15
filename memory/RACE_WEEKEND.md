@@ -1,17 +1,18 @@
 # Nächstes Rennwochenende
-Geprüft: 2026-09-24 06:20
+Geprüft: 2026-10-15 12:35
 
 > Zeiten bitte vor Veröffentlichung an der Originalquelle prüfen.
 
 ## MotoGP
-- Öffentliche Quellen erreichbar: 2
+- Öffentliche Quellen erreichbar: 4
 
 ## WorldSBK
+- Öffentliche Quellen erreichbar: 3
+
+## WorldSSP
 - Öffentliche Quellen erreichbar: 2
 
-## Formel 1
+## WorldSPB
 - Öffentliche Quellen erreichbar: 2
 
-Bestätigt: Formel 1
-Details: Shanghai International Circuit · Shanghai — 2026-09-25 bis 2026-09-27 | Quelle: https://www.formula1.com/en/calendar.html
-Poster-Entwürfe: 3
+Kein eindeutig bestätigtes Rennwochenende gefunden; kein Poster-Entwurf erzeugt.
