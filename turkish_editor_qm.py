@@ -58,11 +58,20 @@ TURKISH_RIDER: {rider}
 Antworte nur als JSON: {{"caption":"..."}}"""
 
 def edit(x,agency,reasons=None):
-    raw=quick_chat(_prompt(x,agency,reasons),task_type="final_captions").strip()
+    try:
+        raw=quick_chat(_prompt(x,agency,reasons),task_type="final_captions")
+    except RuntimeError:
+        print("TURKISH EDITOR: Provider nicht verfügbar; kein neuer Text.")
+        return ""
+    if not isinstance(raw,str) or not raw.strip():return ""
+    raw=raw.strip()
     raw=re.sub(r"^\x60\x60\x60(?:json)?\s*|\s*\x60\x60\x60$","",raw,flags=re.I|re.S)
-    try:caption=str(json.loads(raw).get("caption","")).strip()
-    except Exception:return ""
-    if not caption:return ""
+    try:
+        data=json.loads(raw)
+        caption=data.get("caption") if isinstance(data,dict) else None
+    except (ValueError,TypeError):return ""
+    if not isinstance(caption,str) or not caption.strip():return ""
+    caption=caption.strip()
     caption=re.sub(r"(?m)^\s*#[^\n]*$","",caption).strip()
     x["structure_variant"]=None
     source=str(x.get("url","")).strip()
