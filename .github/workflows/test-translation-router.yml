@@ -1,9 +1,17 @@
 name: Test Translation Router
 on:
+  pull_request:
+    paths:
+      - 'translation_router.py'
+      - 'turkish_editor_qm.py'
+      - 'test_translation_router.py'
+      - 'tests/test_language_response_contract.py'
+      - '.github/workflows/test-translation-router.yml'
   workflow_dispatch:
 
 jobs:
   test:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -36,3 +44,16 @@ jobs:
 
           print('OK')
           "
+
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests pillow beautifulsoup4 pytest
+      - name: Translation and editorial failure contracts
+        run: python -m pytest -q test_translation_router.py tests/test_language_response_contract.py
+      - name: Existing German and source-series controls
+        run: PYTHONPATH=. python tests/test_turkish_series_language_hardening.py

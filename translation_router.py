@@ -35,6 +35,9 @@ class TranslationRouter:
         if source == target:
             raise ValueError("Source and target languages must differ.")
 
+        if not isinstance(text, str) or not text.strip():
+            raise ValueError("Translation input must be non-empty text.")
+
         source_name = LANGUAGE_NAMES[source]
         target_name = LANGUAGE_NAMES[target]
 
@@ -96,9 +99,12 @@ class TranslationRouter:
             logger.info("translation_router: NVIDIA_API_KEY missing.")
 
         logger.info("translation_router: Using llm_router fallback.")
-        return llm_router.quick_chat(
+        translated = llm_router.quick_chat(
             f"Translate the following text from {source_name} to {target_name}. "
             f"Output ONLY the translation in {target_name}. "
             f"Do not use any other language. Do not add explanations.\n\n"
             f"{text}"
         )
+        if not isinstance(translated, str) or not translated.strip():
+            raise RuntimeError("Translation fallback returned no usable text.")
+        return translated.strip()
