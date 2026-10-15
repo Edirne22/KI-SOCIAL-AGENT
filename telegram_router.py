@@ -329,13 +329,55 @@ def _get_bild_command_action(text: str) -> str | None:
     return parsed[0] if parsed else None
 
 
-def _handle_bild_command(text_or_action: str) -> bool:
+def _pending_from_preview_reply(message: dict) -> dict | None:
+    """Bind an explicit owner reply to the exact bot preview, not the latest item."""
+    reply = message.get("reply_to_message") or {}
+    sender = reply.get("from") or {}
+    bot_id = os.environ.get("TELEGRAM_BOT_TOKEN", "").partition(":")[0]
+    if (not bot_id.isdigit() or sender.get("is_bot") is not True
+            or str(sender.get("id", "")) != bot_id
+            or str((reply.get("chat") or {}).get("id", "")) != str(get_chat_id())
+            or not reply.get("photo") or reply.get("forward_origin")
+            or reply.get("forward_date")):
+        return None
+    caption = reply.get("caption")
+    if not isinstance(caption, str):
+        return None
+    match = re.match(
+        r"^🖼️ Instagram-Bild bereit für: (.+)\nAuswahl: (\d+) \(Batch: ([^\n)]+)\)\n",
+        caption,
+    )
+    if not match:
+        return None
+    title, selection, batch = match.groups()
+    matches = []
+    for item in pi.load_pending():
+        if (item.get("batch_id") != batch or str(item.get("auswahl")) != selection
+                or item.get("titel") != title):
+            continue
+        try:
+            created = datetime.fromisoformat(item["erstellt"].replace("Z", "+00:00"))
+            # The original preview must belong to this version of the queue item.
+            sent = datetime.fromtimestamp(reply["date"], timezone.utc)
+            if created.tzinfo is None or not 0 <= (sent - created).total_seconds() <= 300:
+                continue
+        except (KeyError, TypeError, ValueError, OverflowError, OSError):
+            continue
+        matches.append(item)
+    return matches[0] if len(matches) == 1 else None
+
+
+def _handle_bild_command(text_or_action: str, message: dict | None = None) -> bool:
     parsed = (text_or_action, None) if text_or_action in {"✅", "❌"} else _parse_bild_command(text_or_action)
     if not parsed:
         return False
     action, selection = parsed
 
-    recent = pi.get_recent_pending(max_age_seconds=7200)
+    if message and message.get("reply_to_message"):
+        bound = _pending_from_preview_reply(message)
+        recent = [bound] if bound else []
+    else:
+        recent = pi.get_recent_pending(max_age_seconds=7200)
     if selection is not None:
         recent = [item for item in recent if item.get("auswahl") == selection]
     if len(recent) != 1:
@@ -504,6 +546,17 @@ def main() -> None:
                 "SYSTEM:\n"
                 "/help – Diese Hilfe"
             )
+            _ack(uid)
+            continue
+        # A reply to an authenticated image preview identifies the exact target.
+        reply_action = _get_bild_command_action(cmd)
+        if cmd in {"posten", "freigeben", "freigeben zum posten", "✅"}:
+            reply_action = "✅"
+        elif cmd in {"ablehnen", "verwerfen", "nicht posten", "❌"}:
+            reply_action = "❌"
+        if msg.get("reply_to_message") and reply_action:
+            reply_command = cmd if _parse_bild_command(cmd) else "bild " + reply_action
+            _handle_bild_command(reply_command, message=msg)
             _ack(uid)
             continue
         if cmd in AMBIGUOUS_HUMAN_ACTIONS:

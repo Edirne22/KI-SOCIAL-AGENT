@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - "telegram_router.py"
+      - "test_instagram_preview_reply.py"
+      - ".github/workflows/telegram-receive.yml"
       - "test_instagram_two_stage_approval.py"
       - ".github/workflows/instagram-false-success-hotfix-test.yml"
   workflow_dispatch:
@@ -20,4 +22,4 @@ jobs:
       - name: Compile
         run: python -m py_compile telegram_router.py test_instagram_two_stage_approval.py
       - name: Regression tests
-        run: pytest -q test_instagram_two_stage_approval.py
+        run: python -m pytest -q test_instagram_two_stage_approval.py test_instagram_preview_reply.py
