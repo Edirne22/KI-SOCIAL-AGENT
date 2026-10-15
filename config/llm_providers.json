@@ -6,7 +6,8 @@
       "models": {
         "fast": "llama-3.1-8b-instant",
         "default": "openai/gpt-oss-120b",
-        "reasoning": "llama-3.3-70b-versatile"
+        "reasoning": "llama-3.3-70b-versatile",
+        "weekly_plan": "llama-3.3-70b-versatile"
       },
       "rate_limits": {
         "rpm": 30,
@@ -19,7 +20,8 @@
       "api_key_env": "GEMINI_API_KEY",
       "models": {
         "fast": "gemini-3.1-flash-lite",
-        "default": "gemini-3.6-flash"
+        "default": "gemini-3.6-flash",
+        "weekly_plan": "gemini-3.6-flash"
       },
       "rate_limits": {
         "rpm": 15,
@@ -33,7 +35,8 @@
       "models": {
         "default": "openrouter/free",
         "reasoning": "openrouter/free",
-        "coding": "qwen/qwen3-coder:free"
+        "coding": "qwen/qwen3-coder:free",
+        "weekly_plan": "openrouter/free"
       },
       "rate_limits": {
         "rpm": 20,
@@ -50,7 +53,8 @@
         "coding": "moonshotai/kimi-k3",
         "long_context": "moonshotai/kimi-k3",
         "multimodal": "moonshotai/kimi-k3",
-        "ocr": "nvidia/nemotron-ocr-v2"
+        "ocr": "nvidia/nemotron-ocr-v2",
+        "weekly_plan": "moonshotai/kimi-k3"
       },
       "rate_limits": {
         "rpm": 40,
@@ -124,6 +128,12 @@
     ],
     "claude_only": [
       "claude_openrouter"
+    ],
+    "weekly_plan": [
+      "groq",
+      "openrouter",
+      "google",
+      "nvidia"
     ]
   }
 }
