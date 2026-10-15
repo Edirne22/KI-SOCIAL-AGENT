@@ -812,9 +812,8 @@ Yamaha ist in Australien wie zu Hause – die Blue Slides sind hier Kult, und Ph
 Medienstatus: HERSTELLER_PREVIEW
 Bild: assets/images/2026-10/2026-10-22-bike-yamaha-yzf-r1m.jpg
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38760929304-1
+## Instagram [GEPOSTET 2026-10-15 15:31 | ID: 18157578274516007]
+Status: GEPOSTET
 Freigabe: Telegram
 Telegram-Update-ID: 279361952
 Text:
@@ -839,6 +838,7 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 Bild: assets/images/2026-10/2026-10-15-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg
 Media-Provenienz: {"generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-15-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "real_racer_generation": false, "synthetic": true, "version": 1}
+Publish-Provenienz: {"creation_id": "18011530538971550", "generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-15-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "platform": "instagram", "post_id": "18157578274516007", "published_media_id": "18157578274516007", "real_racer_generation": false, "synthetic": true, "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
