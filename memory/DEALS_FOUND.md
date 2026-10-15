@@ -3145,3 +3145,22 @@ Direkte Treffer (antippbar):
 Quellen:
 - monatlich kündbar im o2 Netz - 80GB Allnet Flat nur 9.99 Euro und ...: https://handytariftipp.de/monatlich-kuendbar-im-o2-netz-80gb-allnet-flat-nur-9-99-euro-und-100gb-allnet-flat-nur-11-99-euro-monatlich/
 - Die besten Handyverträge zum Black Friday 2025 - HandyTarifTipp.de: https://handytariftipp.de/die-besten-handyvertraege-zum-black-friday-2025/
+## Suche vom 2026-10-15 10:43
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. monatlich kündbar im o2 Netz - 80GB Allnet Flat nur 9.99 Euro und ...
+   https://handytariftipp.de/monatlich-kuendbar-im-o2-netz-80gb-allnet-flat-nur-9-99-euro-und-100gb-allnet-flat-nur-11-99-euro-monatlich/ – 28.11.2025 ... Anschlusspreis: Der Anschlusspreis beträgt € 19,99. Aktionsbedingt entfällt die Anschlussgebühr bei Vertragsabschluss im Aktionszeitraum von ...
+2. Die besten Handyverträge zum Black Friday 2025 - HandyTarifTipp.de
+   https://handytariftipp.de/die-besten-handyvertraege-zum-black-friday-2025/ – 31.10.2025 ... Finde täglich aktualisierte Black-Friday-Handyverträge 2025 mit Top-Smartphones & SIM-Only-Deals im Telekom-, Vodafone- & O₂-Netz!
+
+Quellen:
+- monatlich kündbar im o2 Netz - 80GB Allnet Flat nur 9.99 Euro und ...: https://handytariftipp.de/monatlich-kuendbar-im-o2-netz-80gb-allnet-flat-nur-9-99-euro-und-100gb-allnet-flat-nur-11-99-euro-monatlich/
+- Die besten Handyverträge zum Black Friday 2025 - HandyTarifTipp.de: https://handytariftipp.de/die-besten-handyvertraege-zum-black-friday-2025/
