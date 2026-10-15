@@ -7,6 +7,7 @@ import os
 import sys
 from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -59,19 +60,19 @@ def confirmed_weekend() -> tuple[str, str] | None:
     """
     if not CALENDAR_FILE.exists():
         print("RACE-CALENDAR: keine Daten in memory/RACE_CALENDAR.json")
-        sys.exit(0)
+        raise RuntimeError("Rennkalender fehlt, ist leer oder ungültig; zuerst Update Race Calendar ausführen.")
 
     try:
         data = json.loads(CALENDAR_FILE.read_text(encoding="utf-8"))
         events = data.get("events", [])
         if not isinstance(events, list) or not events:
             print("RACE-CALENDAR: keine Daten in memory/RACE_CALENDAR.json")
-            sys.exit(0)
+            raise RuntimeError("Rennkalender fehlt, ist leer oder ungültig; zuerst Update Race Calendar ausführen.")
     except (OSError, json.JSONDecodeError, ValueError):
         print("RACE-CALENDAR: keine Daten in memory/RACE_CALENDAR.json")
-        sys.exit(0)
+        raise RuntimeError("Rennkalender fehlt, ist leer oder ungültig; zuerst Update Race Calendar ausführen.")
 
-    today = datetime.now().date()
+    today = datetime.now(ZoneInfo("Europe/Berlin")).date()
     for event in events:
         try:
             start_str = event.get("date_start", "")
@@ -79,7 +80,8 @@ def confirmed_weekend() -> tuple[str, str] | None:
                 continue
             start_date = datetime.strptime(start_str, "%Y-%m-%d").date()
             delta = (start_date - today).days
-            if 0 <= delta <= 3:
+            end_date = datetime.strptime(event.get("date_end", start_str), "%Y-%m-%d").date()
+            if start_date <= end_date and end_date >= today and delta <= 3:
                 series = event.get("series", "MotoGP").strip()
                 track = event.get("track", "").strip()
                 end_str = event.get("date_end", start_str).strip()
@@ -123,6 +125,7 @@ def append_draft(series: str, details: str, posters: list[Path]) -> None:
 
 
 def main() -> None:
+    OUT.parent.mkdir(parents=True, exist_ok=True)
     sources = collect()
     found = confirmed_override() or confirmed_weekend()
     lines = ["# Nächstes Rennwochenende", f"Geprüft: {datetime.now():%Y-%m-%d %H:%M}", "", "> Zeiten bitte vor Veröffentlichung an der Originalquelle prüfen."]

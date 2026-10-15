@@ -1,8 +1,10 @@
 """Erstellt den Wochenplan mit Racing-, Community- und Veröffentlichungshistorie."""
 
 import os
+import json
 import re
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 from memory_engine import get_context
 from llm_client import global_professional_context
@@ -17,15 +19,45 @@ def read(path, max_chars=10000):
         return ""
 
 
+def calendar_context(today):
+    """Use the current scanner output; never silently fall back to static dates."""
+    raw = read("memory/RACE_CALENDAR.json", 100000)
+    try:
+        data = json.loads(raw)
+        stamp = datetime.fromisoformat(data["updated_at"])
+        if stamp.tzinfo is None or not 0 <= (datetime.now(ZoneInfo("Europe/Berlin")) - stamp).total_seconds() <= 8 * 86400:
+            raise ValueError("stale calendar")
+        events = data["events"]
+        if not isinstance(events, list):
+            raise ValueError("invalid events")
+    except (ValueError, KeyError, TypeError):
+        raise RuntimeError("Aktueller Rennkalender fehlt oder ist älter als acht Tage; zuerst Update Race Calendar ausführen.")
+    selected = []
+    for event in events:
+        try:
+            start = date.fromisoformat(event["date_start"])
+            end = date.fromisoformat(event["date_end"])
+            if end < start or not event.get("source") or not event.get("source_excerpt"):
+                continue
+            if end >= today and start <= today + timedelta(days=6):
+                selected.append({key: event.get(key) for key in (
+                    "series", "track", "date_start", "date_end", "sessions", "source", "source_excerpt")})
+        except (ValueError, KeyError, TypeError):
+            continue
+    return json.dumps({"updated_at": data["updated_at"], "events": selected,
+                       "note": "Nur erfasste Termine; fehlende Serien bedeuten nicht rennfrei."},
+                      ensure_ascii=False)
+
+
 def generate_weekly_plan():
-    today = date.today()
+    today = datetime.now(ZoneInfo("Europe/Berlin")).date()
     end_date = today + timedelta(days=6)
     roster = read("content/MOTOGP_ROSTER.md")
     history = read("memory/POST_HISTORY.md", 7000)
     recent_plans = read("content/WOCHENPLAN.md", 9000)
     viral = read("memory/VIRAL_PATTERNS.md", 5000)
     motogp_daily = read("memory/MOTOGP_DAILY_CONTENT.md", 7000)
-    calendar = read("content/MOTOGP_CALENDAR.md", 6000)
+    calendar = calendar_context(today)
     biker_community = read("content/TURKISH_BIKER_COMMUNITY.md", 7000)
     followed_accounts = read("config/followed_accounts.md", 7000)
     community_rotation = read("memory/COMMUNITY_ROTATION.json", 3000)
@@ -105,6 +137,10 @@ Wenn eine Bedingung nicht erfüllt ist, überarbeite den Plan vor der Ausgabe.
 
     if not re.search(r"community|club|gruppe|biker|turkbirler|t-bikers|bike society", text, re.I):
         raise RuntimeError("Wochenplan enthält keinen erkennbaren Biker-Community-Beitrag.")
+    missing = [(today + timedelta(days=i)).isoformat() for i in range(7)
+               if (today + timedelta(days=i)).isoformat() not in text]
+    if missing:
+        raise RuntimeError("Wochenplan ist unvollständig; fehlende Tagesdaten: " + ", ".join(missing))
     return text
 
 
