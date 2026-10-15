@@ -5,6 +5,7 @@ on:
     paths:
       - "weekly_plan.py"
       - "tests/test_calendar_planner_handoff.py"
+      - "tests/test_calendar_recovery_contract.py"
       - "scripts/update_race_calendar.py"
       - "race/race_sources.py"
       - "race/race_calendar.py"
@@ -37,4 +38,4 @@ jobs:
       - name: Run calendar source-scan regression
         run: PYTHONPATH=. python tests/test_race_calendar_source_scan.py
       - name: Verify current calendar to complete weekly plan
-        run: python -m pytest -q tests/test_calendar_planner_handoff.py tests/test_weekly_plan_community_contract.py tests/test_race_calendar_source_scan.py
+        run: python -m pytest -q tests/test_calendar_planner_handoff.py tests/test_calendar_recovery_contract.py tests/test_weekly_plan_community_contract.py tests/test_race_calendar_source_scan.py

@@ -516,7 +516,7 @@ ABGERUFENE QUELLEN UND SEITENINHALTE:
         except ValueError:
             print(f"[race-update] Ungültiges Datumsformat ignoriert: {event}")
             continue
-        if start_date < today or start_date > cutoff or end_date < start_date:
+        if end_date < today or start_date > cutoff or end_date < start_date:
             continue
         track = str(event.get("track", "")).strip()
         source = str(event.get("source", "")).strip()

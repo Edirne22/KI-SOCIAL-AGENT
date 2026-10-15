@@ -39,7 +39,8 @@ def test_running_weekend_is_included(tmp_path):
     path=tmp_path/"calendar.json"
     path.write_text(calendar([{"date_start":(today-timedelta(days=1)).isoformat(),
                               "date_end":(today+timedelta(days=1)).isoformat(),
-                              "series":"WorldSBK","track":"Fixture","source":"https://www.worldsbk.com/en/calendar"}]))
+                              "series":"WorldSBK","track":"Fixture","source":"https://www.worldsbk.com/en/calendar",
+                              "source_excerpt":"Fixture official schedule"}]))
     with patch.object(rc,"CALENDAR_FILE",path):
         result=rc.confirmed_weekend()
     assert result[0]=="WorldSBK"
