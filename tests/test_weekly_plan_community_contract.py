@@ -1,6 +1,8 @@
 """Regression tests for weekly community planning and provider failures."""
 from unittest.mock import patch, Mock
 import os
+import json
+import pytest
 import llm_router
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -20,7 +22,7 @@ def test_weekly_prompt_reads_community_and_requires_a_group_post():
         f"{day}: Motorradthema. Community-Beitrag über Turkbirler."
         for day in ((datetime.now(ZoneInfo("Europe/Berlin")).date() + timedelta(days=i)).isoformat() for i in range(7))
     )
-    with patch.object(weekly_plan, "calendar_context", return_value="calendar fixture"), \
+    with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
          patch.object(weekly_plan, "read", side_effect=fake_read), \
          patch.object(weekly_plan, "get_context", return_value="memory"), \
          patch.object(weekly_plan, "global_professional_context", return_value="standard"), \
@@ -36,7 +38,7 @@ def test_weekly_prompt_reads_community_and_requires_a_group_post():
 
 
 def test_provider_failure_is_not_saved_as_a_successful_plan():
-    with patch.object(weekly_plan, "calendar_context", return_value="calendar fixture"), \
+    with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
          patch.object(weekly_plan, "read", return_value="repo context"), \
          patch.object(weekly_plan, "get_context", return_value="memory"), \
          patch.object(weekly_plan, "global_professional_context", return_value="standard"), \
@@ -81,6 +83,53 @@ def test_weekly_route_is_bounded_and_preserves_other_routes():
         else:
             raise AssertionError("Outage must not produce a successful plan")
     assert post.call_count == 4
+
+def complete_plan():
+    today = datetime.now(ZoneInfo("Europe/Berlin")).date()
+    return "\n".join(f"{today + timedelta(days=i)}: Community Club-Porträt." for i in range(7))
+
+
+def test_large_history_is_bounded_but_calendar_and_standards_survive():
+    today = datetime.now(ZoneInfo("Europe/Berlin")).date()
+    calendar = json.dumps({"events": [{"series": "MotoGP", "track": "Fixture Track",
+        "date_start": today.isoformat(), "date_end": today.isoformat(),
+        "sessions": [], "source": "https://www.motogp.com/en/calendar",
+        "source_excerpt": "exact source evidence"}]})
+    standard = weekly_plan.global_professional_context()
+    with patch.object(weekly_plan, "calendar_context", return_value=calendar), \
+         patch.object(weekly_plan, "read", side_effect=lambda path, max_chars=10000: ("history " * 10000)[-max_chars:]), \
+         patch.object(weekly_plan, "get_context", side_effect=lambda size: ("memory " * 10000)[-size:]), \
+         patch.object(weekly_plan, "quick_chat", return_value=complete_plan()) as chat:
+        weekly_plan.generate_weekly_plan()
+    prompt = chat.call_args.args[0]
+    assert len(prompt.encode("utf-8")) <= weekly_plan.MAX_PROMPT_BYTES
+    assert calendar in prompt and standard in prompt
+    chat.assert_called_once()
+
+
+def test_oversized_required_context_stops_before_network():
+    with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
+         patch.object(weekly_plan, "read", return_value=""), \
+         patch.object(weekly_plan, "get_context", return_value=""), \
+         patch.object(weekly_plan, "global_professional_context", return_value="X" * 21000), \
+         patch.object(weekly_plan, "quick_chat") as chat, \
+         pytest.raises(RuntimeError, match="Kontext zu groß"):
+        weekly_plan.generate_weekly_plan()
+    chat.assert_not_called()
+
+
+@pytest.mark.parametrize("claim", [" Rennen 2099-12-31", " Rennen 31.12.2099", " Sprint 14:00", " Start 14 Uhr"])
+def test_unproven_calendar_claims_are_rejected(claim):
+    today = datetime.now(ZoneInfo("Europe/Berlin")).date()
+    with pytest.raises(RuntimeError):
+        weekly_plan.validate_calendar_claims(complete_plan() + claim, '{"events": []}', today)
+
+
+def test_calendar_dates_and_missing_session_notice_are_accepted():
+    today = datetime.now(ZoneInfo("Europe/Berlin")).date()
+    calendar = json.dumps({"events": [{"date_start": today.isoformat(), "date_end": (today + timedelta(days=8)).isoformat()}]})
+    weekly_plan.validate_calendar_claims(complete_plan() + f" Rennen bis {today + timedelta(days=8)}; Sessionzeiten fehlen.", calendar, today)
+
 
 if __name__ == "__main__":
     test_weekly_prompt_reads_community_and_requires_a_group_post()
