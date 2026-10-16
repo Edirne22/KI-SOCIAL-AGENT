@@ -127,8 +127,14 @@ Wenn eine Bedingung nicht erfüllt ist, überarbeite den Plan vor der Ausgabe.
         f"GLOBALER VERBINDLICHER STANDARD:\n{global_professional_context()}\n\n"
         f"AUFGABE:\n{raw_prompt}"
     )
-    days = "\n".join(f"## {(today + timedelta(days=i)).isoformat()}" for i in range(7))
-    prompt += f"\nAUSGABEFORMAT: Verwende exakt diese sieben Tagesüberschriften:\n{days}\nDarunter jeweils Thema, Plattform, Hook, Beitrag, Hashtags, Bildidee. Nur den fertigen Plan ausgeben."
+    catalog = editorial_catalog(biker_community)
+    prompt += ("\nAUSGABEVERTRAG (ersetzt alle früheren Formatvorgaben): "
+               "Wähle sieben unterschiedliche IDs aus dem folgenden Katalog in Tagesreihenfolge. "
+               "Genau eine community_-ID und die ID kalender sind Pflicht. "
+               "Gib ausschließlich ein JSON-Array aus sieben ID-Strings aus; keine Texte, "
+               "Datumsangaben, Fakten oder zusätzlichen Felder. Die Anwendung setzt Quellen "
+               "und Beitragstexte unverändert ein. KATALOG:\n"
+               + json.dumps({key: value[0] for key, value in catalog.items()}, ensure_ascii=False))
 
     prompt_bytes = len(prompt.encode("utf-8"))
     if prompt_bytes > MAX_PROMPT_BYTES:
@@ -137,27 +143,82 @@ Wenn eine Bedingung nicht erfüllt ist, überarbeite den Plan vor der Ausgabe.
     text = quick_chat(prompt, task_type="weekly_plan")
     if not isinstance(text, str) or not text.strip():
         raise RuntimeError("Wochenplan-Anbieter lieferte eine leere Antwort.")
-    text = text.strip()
-    if text.upper().startswith("FEHLER:"):
-        raise RuntimeError(text)
+    try:
+        selected = json.loads(text)
+    except (ValueError, TypeError):
+        raise RuntimeError("Wochenplan-Auswahl ungültig; keine freien Fakten gespeichert.") from None
+    if (not isinstance(selected, list) or len(selected) != 7
+            or any(not isinstance(key, str) or key not in catalog for key in selected)
+            or len(set(selected)) != 7 or "kalender" not in selected
+            or sum(key.startswith("community_") for key in selected) != 1):
+        raise RuntimeError("Wochenplan-Auswahl unvollständig oder nicht quellengebunden.")
+    sections = ["Status: ENTWURF – Quellengebundene Themenplanung; keine Veröffentlichung."]
+    for index, key in enumerate(selected):
+        topic, hook, body, visual = catalog[key]
+        day = today + timedelta(days=index)
+        sections.append(f"## {day.isoformat()}\nThema: {topic}\nPlattform: Instagram / Facebook"
+                        f"\nHook: {hook}\nBeitrag: {body}\nHashtags: #Motorrad #BikerCommunity"
+                        f"\nBildidee: {visual}")
+    sections.append("## Kalenderbasis (kein Rennresultat, kein Session-Zeitplan)")
+    for event in json.loads(calendar)["events"]:
+        sections.append(f"- {event['series']} – {event['track']}: "
+                        f"{event['date_start']} bis {event['date_end']} (Veranstaltungszeitraum). "
+                        f"Quelle: {event['source']}. Beleg: {event['source_excerpt']}")
+    sections.append("Einzelne Renntage, Sessionzeiten, Startaufstellungen und Ergebnisse "
+                    "werden hier nicht behauptet. Fehlende Serien bedeuten nicht rennfrei.")
+    # Dates in source excerpts may use the source's original format; validate the
+    # rendered editorial plan separately from the explicitly labelled evidence.
+    result = "\n\n".join(sections)
+    validate_calendar_claims(result.split("## Kalenderbasis")[0], calendar, today)
+    print("Wochenplan: sieben quellengebundene Tagesentwürfe geprüft.")
+    return result
 
-    # Schutz vor versehentlich ausgegebenen API-Schlüsseln.
-    for pattern in (
-        r"AIza[0-9A-Za-z_\-]{35}",
-        r"AQ\.[A-Za-z0-9_\-]{40,}",
-        r"sk-[A-Za-z0-9]{20,}",
-        r"\b[A-Za-z0-9_\-]{50,}\b",
-    ):
-        text = re.sub(pattern, "[ENTFERNT]", text)
 
-    if not re.search(r"community|club|gruppe|biker|turkbirler|t-bikers|bike society", text, re.I):
-        raise RuntimeError("Wochenplan enthält keinen erkennbaren Biker-Community-Beitrag.")
-    missing = [(today + timedelta(days=i)).isoformat() for i in range(7)
-               if (today + timedelta(days=i)).isoformat() not in text]
-    if missing:
-        raise RuntimeError("Wochenplan ist unvollständig; fehlende Tagesdaten: " + ", ".join(missing))
-    validate_calendar_claims(text, calendar, today)
-    return text
+def editorial_catalog(community):
+    """Only reviewed editorial copy can become output; model selects order only."""
+    catalog = {
+        "kalender": ("Racing-Kalender im Blick", "Was steht im belegten Kalender?",
+                     "Die vorhandenen Veranstaltungszeiträume stehen in der Kalenderbasis unten. "
+                     "Für einzelne Sessions und Ergebnisse fehlen hier freigegebene Angaben.",
+                     "Eigene Kalenderkarte mit den belegten Veranstaltungszeiträumen."),
+        "tour": ("Deine nächste Tour", "Wohin zieht es dich mit dem Bike?",
+                 "Erzähl uns von deiner Wunschroute. Was macht die Strecke für dich besonders?",
+                 "Eigenes Motorradfoto, ohne erfundene Ortsangabe."),
+        "pause": ("Pause unterwegs", "Was gehört für dich zu einem guten Tourstopp?",
+                  "Kaffee, Aussicht oder einfach kurz durchatmen? Schreib uns, worauf du dich unterwegs freust.",
+                  "Eigenes Foto einer Pause, nur mit Einwilligung erkennbarer Personen."),
+        "ausruestung": ("Deine Tourausrüstung", "Was packst du immer ein?",
+                        "Welcher Gegenstand gehört für dich auf jede Tour? Teile deine persönliche Erfahrung.",
+                        "Eigene Aufnahme der tatsächlich vorhandenen Ausrüstung."),
+        "gemeinschaft": ("Gemeinsam fahren", "Was macht eine gute Ausfahrt für dich aus?",
+                         "Wie stimmt ihr euch in der Gruppe ab? Erzähl uns, was bei euch gut funktioniert.",
+                         "Eigene Illustration einer Motorradgruppe."),
+        "erinnerung": ("Dein Motorradmoment", "Welche Ausfahrt ist dir im Kopf geblieben?",
+                       "Erzähl uns von deinem schönsten Moment auf zwei Rädern. Was hat ihn besonders gemacht?",
+                       "Eigenes Archivfoto, ausdrücklich als Erinnerung gekennzeichnet."),
+        "technik": ("Technik im Alltag", "Welche Motorradfunktion nutzt du am liebsten?",
+                    "Was hilft dir im Alltag wirklich? Teile deine Erfahrung, ohne Produktversprechen.",
+                    "Eigenes Detailfoto am Motorrad."),
+        "saison": ("Deine Motorradpläne", "Was möchtest du als Nächstes erleben?",
+                   "Eine neue Strecke oder eine kleine Feierabendrunde? Schreib uns deinen nächsten Wunsch.",
+                   "Eigene Illustration eines Motorrads und einer offenen Route."),
+    }
+    # Only names under the repository's approved club section, never the ban list,
+    # dates, member counts, stale activities or generated historical posts.
+    approved = (community.split("## Seriöse Clubs & Gruppen", 1)[1].split("## Wichtig:", 1)[0]
+                if "## Seriöse Clubs & Gruppen" in community else "")
+    names = re.findall(r"^### ([^\n]+)$", approved, re.M)
+    for index, name in enumerate(names):
+        if not re.fullmatch(r"[\wÀ-ž ()&’-]{2,80}", name):
+            continue
+        catalog[f"community_{index}"] = (
+            f"Community-Porträt: {name}", f"Kennst du {name}?",
+            f"Unsere Community-Sammlung nennt {name}. Was bedeutet dir der Austausch unter Bikern? "
+            "Quelle: content/TURKISH_BIKER_COMMUNITY.md; keine aktuelle Club-Aktivität behauptet.",
+            "Eigene neutrale Motorradillustration; keine fingierten Clubfotos.")
+    if not any(key.startswith("community_") for key in catalog):
+        raise RuntimeError("Wochenplan: freigegebene Community-Quelle fehlt.")
+    return catalog
 
 
 def validate_calendar_claims(text, calendar, today):
