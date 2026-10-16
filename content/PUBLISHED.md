@@ -893,8 +893,8 @@ Media-Provenienz: {"generator": "generate_agnes_media.py", "media_kind": "image"
 Publish-Provenienz: {"creation_id": "18011665406971550", "generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-16-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "platform": "instagram", "post_id": "17993005944103572", "published_media_id": "17993005944103572", "real_racer_generation": false, "synthetic": true, "version": 1}
 
 ## Facebook
-Status: FREIGEGEBEN
-Freigabe: Telegram
+Status: Gepostet
+reigabe: Telegram
 Telegram-Update-ID: 279361953
 Text:
 Titel: Ruhumuz İçin – Community & Zusammenhalt
