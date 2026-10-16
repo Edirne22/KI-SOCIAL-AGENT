@@ -465,3 +465,73 @@ Hier ist mein detaillierter 7-Tage-Content-Plan:
 
 # Wochenplan vom 2026-10-11 06:14:20
 FEHLER: Alle verfügbaren KI-Anbieter fehlgeschlagen (Rate-Limits oder Keys fehlen).
+
+
+# Wochenplan vom 2026-10-16 12:59:10
+## 2026-10-16  
+**Thema:** MotoGP‑Quali in Malaysia – Bagnaia holt Pole  
+**Plattform:** Instagram / TikTok  
+**Hook:** „Bagnaia knackt in Sepang die Pole, und das mit über 1 Sekunde Vorsprung.“  
+**Beitrag:** „Franz („Pecco“) Bagnaia fährt in der Quali von Sepang die schnellste Runde und steht mit 1,02 s Vorsprung vor Quartararo – ein klarer Hinweis, dass er das Rennen im Blick hat. Was glaubst du, kann er das jetzt auch im Endspurt halten?“  
+**Hashtags:** #MotoGP #Bagnaia #Sepang #Quali #BikerLifeDE #TürkischBiker  
+**Bildidee:** Close‑up von Bagnaias Helm, im Hintergrund das Sepang‑Motorsport‑Banner.
+
+---
+
+## 2026-10-17  
+**Thema:** Club‑Spotlight – Türkish Bikers Club Stuttgart  
+**Plattform:** Facebook  
+**Hook:** „Seit 1992 verbindet der Türkish Bikers Club Stuttgart Generationen von Biker‑Freunden.“  
+**Beitrag:** „Der 34‑jährige Club aus Stuttgart feiert seine langjährige Gemeinschaft – von wöchentlichen Stammtouren bis zum jährlichen Grill‑Meet‑up. Welche Tradition hält bei euch im Club am besten zusammen?“  
+**Hashtags:** #TürkischBikers #Stuttgart #BikerCommunity #BikeFamily #MotorradLiebe  
+**Bildidee:** Gruppenfoto beim Grillen, im Vordergrund ein roter Honda CB500.
+
+---
+
+## 2026-10-18  
+**Thema:** Moto2‑Rennen in Barcelona – Rookies im Fokus  
+**Plattform:** Instagram Stories  
+**Hook:** „Rookie‑Talente Álex Río und Kaito Matsumoto überraschen in Barcelona.“  
+**Beitrag:** „Beide Neuankömmlinge kämpfen im letzten Drittel um Top‑5‑Platz und zeigen, dass sie das Feld aufmischen können. Wer von den beiden könnte deiner Meinung nach bald in die MotoGP aufsteigen?“  
+**Hashtags:** #Moto2 #BarcelonaGP #Rookies #BikerTalk #TürkischRider  
+**Bildidee:** Action‑Shot von beiden Bikes im Kurvenrausch, überlagert mit einem kurzen Timer‑Overlay.
+
+---
+
+## 2026-10-19  
+**Thema:** Community‑Umfrage – Lieblingsstrecke im Ruhrpott  
+**Plattform:** Instagram Post  
+**Hook:** „Welche Strecke im Ruhrgebiet lässt dein Herz schneller schlagen?“  
+**Beitrag:** „Ob die kurvige Route um den Baldeneysee oder die schnellen Geraden bei der Zeche Zollverein – wir wollen eure Top‑Strecke wissen! Schreib in die Kommentare, wo du am liebsten mit der Maschine unterwegs bist.“  
+**Hashtags:** #RuhrpottBiker #Streckenliebe #BikeTour #BülentsBikeLife #MotorradCommunity  
+**Bildidee:** Collage aus zwei Landschaftsaufnahmen: Baldeneysee‑Kurve und Zeche‑Zollverein‑Gerade.
+
+---
+
+## 2026-10-20  
+**Thema:** MotoGP‑Rennen in Phillip Island – Start‑Grid‑Vorschau  
+**Plattform:** Twitter  
+**Hook:** „Phillip Island steht vor der Tür – wer startet von der Pole Position?“  
+**Beitrag:** „Die offizielle Startaufstellung zeigt Bagnaia an vorderster Front, gefolgt von Quartararo und Martin. Welcher Fahrer deiner Meinung nach wird die ersten Runden dominieren?“  
+**Hashtags:** #PhillipIsland #MotoGP2026 #StartGrid #BikerTalkDE #TürkischFans  
+**Bildidee:** Grafik des Start‑Grids mit Team‑Logos.
+
+---
+
+## 2026-10-21  
+**Thema:** Club‑Aktion – Türkisch‑Sultans in Hamburg beim Intermot‑Stand  
+**Plattform:** Instagram Reel  
+**Hook:** „Die Türkisch‑Sultans rocken den Intermot‑Stand in Hamburg.“  
+**Beitrag:** „Mit über 300 Mitgliedern präsentieren die Sultans ihre neue Custom‑Bike‑Kollektion und laden zum Probefahrt‑Tag ein – ein echtes Highlight für alle Biker aus Norddeutschland. Was würdet ihr beim nächsten Stand unbedingt sehen wollen?“  
+**Hashtags:** #TürkischSultans #Intermot2026 #HamburgBiker #BikeShow #CommunityPower  
+**Bildidee:** Dynamisches Reel von dem Stand, Nahaufnahmen von glänzenden Custom‑Bikes, Fans im Hintergrund.
+
+---
+
+## 2026-10-22  
+**Thema:** MotoGP‑Start in Phillip Island – Live‑Update  
+**Plattform:** Instagram Live‑Story  
+**Hook:** „Startschuss in Phillip Island – das Rennen ist los!“  
+**Beitrag:** „Bagnaia startet von der Pole, aber schon nach der ersten Kurve drängt sich Martin an die Spitze – das wird ein enges Duell. Wer glaubt, dass die Türkisch‑Riders‑Fans heute besonders laut anfeuern?“  
+**Hashtags:** #PhillipIslandLive #MotoGP #RaceStart #BikerFamily #TürkischRider  
+**Bildidee:** Live‑Bild vom Startfeld, mit eingeblendeten Namen der Top‑3‑Fahrer.
