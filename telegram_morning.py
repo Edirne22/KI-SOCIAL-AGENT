@@ -2,7 +2,7 @@
 Racing-News duerfen nicht mehr ueber diese schwachere Legacy-Kette freigegeben werden.
 """
 from __future__ import annotations
-import re,time
+import re,time,hashlib,json
 from datetime import datetime
 from pathlib import Path
 from telegram_bot import send_message
@@ -33,13 +33,26 @@ def build_message(posts):
  for p in posts:lines += ['',f"{p['number']}. {p['title']}",f"Hook: {p['hook']}",f"Plattform: {p['platform']}",f"Kurz: {p['description']}"]
  lines += ['','Racing-News (MotoGP/Moto2/Moto3/WorldSBK/WorldSSP) werden ausschließlich über die Racing-Profi-QM freigegeben.','Antworte mit den Nummern, mit alle oder ✅ für alle, oder mit nein bzw. ❌ für keine Freigabe.','Eine Freigabe trägt Beiträge nur in PUBLISHED.md ein; veröffentlicht wird nichts automatisch.']
  return '\n'.join(lines)
+def plan_fingerprint(posts):
+ return hashlib.sha256(json.dumps(posts,ensure_ascii=False,sort_keys=True).encode('utf-8')).hexdigest()
+def already_sent(posts):
+ if not SESSION_FILE.is_file():return False
+ session=SESSION_FILE.read_text(encoding='utf-8')
+ marker=re.search(r'^Plan-Fingerprint: ([0-9a-f]{64})$',session,re.M)
+ if marker:return marker.group(1)==plan_fingerprint(posts)
+ # Existing sessions were written only after a successful send. Migrate without
+ # resending identical drafts when the first producer-triggered run arrives.
+ blocks=re.findall(r'### Vollständiger Entwurf\n(.*?)(?=\n## Beitrag |\Z)',session,re.S)
+ return [b.strip() for b in blocks]==[p['full_text'].strip() for p in posts]
 def save_session(posts):
- SESSION_FILE.parent.mkdir(parents=True,exist_ok=True);now=datetime.now().strftime('%Y-%m-%d %H:%M:%S');timestamp=int(time.time());lines=['# Telegram-Freigabe-Sitzung','',f'Datum: {now}',f'Session-Timestamp: {timestamp}','Status: WARTET AUF ANTWORT','Scope: GENERAL-NON-RACING','']
+ SESSION_FILE.parent.mkdir(parents=True,exist_ok=True);now=datetime.now().strftime('%Y-%m-%d %H:%M:%S');timestamp=int(time.time());lines=['# Telegram-Freigabe-Sitzung','',f'Datum: {now}',f'Session-Timestamp: {timestamp}',f'Plan-Fingerprint: {plan_fingerprint(posts)}','Status: WARTET AUF ANTWORT','Scope: GENERAL-NON-RACING','']
  for p in posts:lines += [f"## Beitrag {p['number']}",f"Titel: {p['title']}",f"Hook: {p['hook']}",f"Plattform: {p['platform']}",f"Beschreibung: {p['description']}",f"Quelle: {p['source']}",'','### Vollständiger Entwurf',p['full_text'],'']
  SESSION_FILE.write_text('\n'.join(lines).rstrip()+'\n',encoding='utf-8')
 def main():
  posts=load_latest_posts()
  if not posts:
   print('Keine allgemeinen Non-Racing-Beiträge zur Freigabe; Telegram wird nicht mit ungeprüften Racing-Entwürfen befüllt.');return
+ if already_sent(posts):
+  print('Morgenanfrage für diesen Content-Plan bereits gesendet; kein Doppelversand.');return
  send_message(build_message(posts));save_session(posts);print('Telegram-Freigabeanfrage erfolgreich gesendet.')
 if __name__=='__main__':main()

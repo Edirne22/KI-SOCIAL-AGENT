@@ -1,0 +1,24 @@
+name: TEST – Telegram schedule recovery
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/telegram-receive.yml'
+      - '.github/workflows/telegram-morning.yml'
+      - '.github/workflows/test-telegram-schedule-recovery.yml'
+      - 'telegram_morning.py'
+      - 'telegram_bot.py'
+      - 'tests/test_telegram_schedule_recovery.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests PyYAML
+      - run: PYTHONPATH=. python tests/test_telegram_schedule_recovery.py
