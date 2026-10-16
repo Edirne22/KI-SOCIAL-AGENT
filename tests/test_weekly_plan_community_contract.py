@@ -13,15 +13,12 @@ import weekly_plan
 def test_weekly_prompt_reads_community_and_requires_a_group_post():
     def fake_read(path, max_chars=10000):
         return {
-            "content/TURKISH_BIKER_COMMUNITY.md": "Turkbirler public club profile",
+            "content/TURKISH_BIKER_COMMUNITY.md": "## Seriöse Clubs & Gruppen\n### Turkbirler\npublic club profile\n## Wichtig: Nicht verwenden\n### Forbidden Club",
             "config/followed_accounts.md": "bike_society_hagen",
             "memory/COMMUNITY_ROTATION.json": '"last_community": "bike_society_bergisches_land"',
         }.get(path, "repo context")
 
-    response = "\n".join(
-        f"{day}: Motorradthema. Community-Beitrag über Turkbirler."
-        for day in ((datetime.now(ZoneInfo("Europe/Berlin")).date() + timedelta(days=i)).isoformat() for i in range(7))
-    )
+    response = selection()
     with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
          patch.object(weekly_plan, "read", side_effect=fake_read), \
          patch.object(weekly_plan, "get_context", return_value="memory"), \
@@ -31,7 +28,7 @@ def test_weekly_prompt_reads_community_and_requires_a_group_post():
 
     assert chat.call_args.kwargs["task_type"] == "weekly_plan"
     prompt = chat.call_args.args[0]
-    assert "Turkbirler public club profile" in prompt
+    assert "## Seriöse Clubs & Gruppen\n### Turkbirler\npublic club profile\n## Wichtig: Nicht verwenden\n### Forbidden Club" in prompt
     assert "bike_society_hagen" in prompt
     assert "LETZTE COMMUNITY-ROTATION" in prompt
     assert "Turkbirler" in result
@@ -39,7 +36,7 @@ def test_weekly_prompt_reads_community_and_requires_a_group_post():
 
 def test_provider_failure_is_not_saved_as_a_successful_plan():
     with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
-         patch.object(weekly_plan, "read", return_value="repo context"), \
+         patch.object(weekly_plan, "read", return_value="## Seriöse Clubs & Gruppen\n### Turkbirler"), \
          patch.object(weekly_plan, "get_context", return_value="memory"), \
          patch.object(weekly_plan, "global_professional_context", return_value="standard"), \
          patch.object(weekly_plan, "quick_chat", side_effect=RuntimeError("provider down")):
@@ -123,9 +120,9 @@ def test_large_history_is_bounded_but_calendar_and_standards_survive():
         "source_excerpt": "exact source evidence"}]})
     standard = weekly_plan.global_professional_context()
     with patch.object(weekly_plan, "calendar_context", return_value=calendar), \
-         patch.object(weekly_plan, "read", side_effect=lambda path, max_chars=10000: ("history " * 10000)[-max_chars:]), \
+         patch.object(weekly_plan, "read", side_effect=lambda path, max_chars=10000: ("## Seriöse Clubs & Gruppen\n### Turkbirler" if path.endswith("TURKISH_BIKER_COMMUNITY.md") else ("history " * 10000)[-max_chars:])), \
          patch.object(weekly_plan, "get_context", side_effect=lambda size: ("memory " * 10000)[-size:]), \
-         patch.object(weekly_plan, "quick_chat", return_value=complete_plan()) as chat:
+         patch.object(weekly_plan, "quick_chat", return_value=selection()) as chat:
         weekly_plan.generate_weekly_plan()
     prompt = chat.call_args.args[0]
     assert len(prompt.encode("utf-8")) <= weekly_plan.MAX_PROMPT_BYTES
@@ -135,7 +132,7 @@ def test_large_history_is_bounded_but_calendar_and_standards_survive():
 
 def test_oversized_required_context_stops_before_network():
     with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
-         patch.object(weekly_plan, "read", return_value=""), \
+         patch.object(weekly_plan, "read", return_value="## Seriöse Clubs & Gruppen\n### Turkbirler"), \
          patch.object(weekly_plan, "get_context", return_value=""), \
          patch.object(weekly_plan, "global_professional_context", return_value="X" * 21000), \
          patch.object(weekly_plan, "quick_chat") as chat, \
@@ -147,7 +144,7 @@ def test_oversized_required_context_stops_before_network():
 @pytest.mark.parametrize("claim", [" Rennen 2099-12-31", " Rennen 31.12.2099", " Sprint 14:00", " Start 14 Uhr"])
 def test_unproven_calendar_claims_block_save(claim):
     with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
-         patch.object(weekly_plan, "read", return_value=""), \
+         patch.object(weekly_plan, "read", return_value="## Seriöse Clubs & Gruppen\n### Turkbirler"), \
          patch.object(weekly_plan, "get_context", return_value=""), \
          patch.object(weekly_plan, "global_professional_context", return_value=""), \
          patch.object(weekly_plan, "quick_chat", return_value=complete_plan() + claim), \
@@ -161,6 +158,62 @@ def test_calendar_dates_and_missing_session_notice_are_accepted():
     today = datetime.now(ZoneInfo("Europe/Berlin")).date()
     calendar = json.dumps({"events": [{"date_start": today.isoformat(), "date_end": (today + timedelta(days=8)).isoformat()}]})
     weekly_plan.validate_calendar_claims(complete_plan() + f" Rennen bis {today + timedelta(days=8)}; Sessionzeiten fehlen.", calendar, today)
+
+
+
+
+def selection():
+    return json.dumps(["community_0", "tour", "pause", "kalender", "ausruestung", "gemeinschaft", "technik"])
+
+
+@pytest.mark.parametrize("response", [
+    "Bagnaia holt in Sepang Pole; Moto2 Barcelona: Álex Río und Kaito Matsumoto.",
+    json.dumps(["community_0", "tour", "pause", "kalender", "ausruestung", "gemeinschaft", "Bagnaia Pole"]),
+    json.dumps({"days": json.loads(selection()), "result": "Bagnaia holt Pole"}),
+    json.dumps(["community_0", "tour", "pause", "kalender", "ausruestung", "gemeinschaft", {"technik": "14:00"}]),
+    json.dumps(["community_0", "tour", "pause", "kalender", "ausruestung", "gemeinschaft", "tour"]),
+    json.dumps(["community_0", "tour", "pause", "erinnerung", "ausruestung", "gemeinschaft", "technik"]),
+    selection() + " Startaufstellung steht fest.",
+    "null", "[]", "{}",
+])
+def test_free_facts_and_invalid_selection_never_reach_save(response):
+    with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
+         patch.object(weekly_plan, "read", return_value="## Seriöse Clubs & Gruppen\n### Turkbirler"), \
+         patch.object(weekly_plan, "get_context", return_value=""), \
+         patch.object(weekly_plan, "global_professional_context", return_value=""), \
+         patch.object(weekly_plan, "quick_chat", return_value=response), \
+         patch.object(weekly_plan, "save_weekly_plan") as save, \
+         pytest.raises(RuntimeError):
+        weekly_plan.save_weekly_plan(weekly_plan.generate_weekly_plan())
+    save.assert_not_called()
+
+
+def test_sourced_calendar_reaches_saved_plan_without_generated_results(tmp_path, monkeypatch):
+    today = datetime.now(ZoneInfo("Europe/Berlin")).date()
+    calendar = json.dumps({"events": [{"series": "MotoGP", "track": "Phillip Island",
+        "date_start": today.isoformat(), "date_end": (today + timedelta(days=3)).isoformat(),
+        "source": "https://www.motogp.com/en/calendar", "source_excerpt": "Australia source excerpt", "sessions": []}]})
+    monkeypatch.chdir(tmp_path)
+    with patch.object(weekly_plan, "calendar_context", return_value=calendar), \
+         patch.object(weekly_plan, "read", return_value="## Seriöse Clubs & Gruppen\n### Turkbirler"), \
+         patch.object(weekly_plan, "get_context", return_value="Bagnaia holt Pole in Sepang"), \
+         patch.object(weekly_plan, "global_professional_context", return_value=""), \
+         patch.object(weekly_plan, "quick_chat", return_value=selection()):
+        weekly_plan.save_weekly_plan(weekly_plan.generate_weekly_plan())
+    saved = (tmp_path / "content/WOCHENPLAN.md").read_text()
+    assert "Phillip Island" in saved and "Australia source excerpt" in saved
+    assert str(today + timedelta(days=3)) in saved
+    assert "Bagnaia" not in saved and "Sepang" not in saved and "14:00" not in saved
+    assert saved.count("\n## 20") == 7 and "ENTWURF" in saved
+    assert "Sessionzeiten" in saved and "nicht rennfrei" in saved
+
+
+def test_unapproved_or_missing_clubs_cannot_be_selected():
+    with pytest.raises(RuntimeError):
+        weekly_plan.editorial_catalog("## Wichtig: Nicht verwenden\n### Forbidden Club")
+    catalog = weekly_plan.editorial_catalog("## Seriöse Clubs & Gruppen\n### Turkbirler\n## Wichtig: Nicht verwenden\n### Forbidden Club")
+    assert len([key for key in catalog if key.startswith("community_")]) == 1
+    assert "Forbidden" not in str(catalog)
 
 
 if __name__ == "__main__":
