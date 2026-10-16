@@ -2,8 +2,18 @@ name: Telegram Receive Approval
 
 on:
   schedule:
-    - cron: "*/5 * * * *" # zentraler Telegram-Poller
+    - cron: "2-57/5 * * * *" # gleiche Frequenz, außerhalb der vollen Stunde
+  workflow_run:
+    workflows: ["Telegram Morning Approval", "MotoGP Content Agency", "Daily Telegram Digest"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
+    inputs:
+      diagnose_only:
+        description: "Nur Telegram-Verbindung prüfen; keine Nachrichten lesen/verarbeiten/senden"
+        type: boolean
+        default: false
+        required: false
 
 permissions:
   contents: write
@@ -17,12 +27,19 @@ concurrency:
   cancel-in-progress: false
 jobs:
   receive-approval:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
       - name: Aktualisiere Arbeitsstand
         run: git pull --rebase origin main
 
@@ -34,7 +51,25 @@ jobs:
       - name: Install dependencies
         run: pip install requests Pillow beautifulsoup4 boto3
 
+      - name: Telegram-Verbindung ohne Nachrichtenverarbeitung prüfen
+        if: github.event_name == 'workflow_dispatch' && inputs.diagnose_only
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          python - <<'PYTHON'
+          from telegram_bot import _request
+          try:
+              _request("getMe")
+              info = _request("getWebhookInfo").get("result", {})
+          except Exception:
+              raise SystemExit("Telegram-Verbindungsprüfung fehlgeschlagen; Zugang oder API prüfen.") from None
+          if info.get("url"):
+              raise SystemExit("Telegram-Webhook aktiv; Polling-Konflikt. Keine automatische Änderung.")
+          print("Telegram API erreichbar; Polling-Modus bestätigt. Keine Updates konsumiert oder Nachrichten gesendet.")
+          PYTHON
+
       - name: Route Telegram command
+        if: github.event_name != 'workflow_dispatch' || !inputs.diagnose_only
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -59,6 +94,7 @@ jobs:
         run: python -u telegram_router.py
 
       - name: Commit Telegram results
+        if: github.event_name != 'workflow_dispatch' || !inputs.diagnose_only
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"

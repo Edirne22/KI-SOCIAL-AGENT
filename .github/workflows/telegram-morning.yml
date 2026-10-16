@@ -3,17 +3,34 @@ name: Telegram Morning Approval
 on:
   schedule:
     - cron: "15 6 * * *" # 08:15 Uhr in Deutschland während der Sommerzeit
+  workflow_run:
+    workflows: ["Generate Daily Content Idea"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: telegram-morning
+  cancel-in-progress: false
+
 jobs:
   send-approval-request:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
