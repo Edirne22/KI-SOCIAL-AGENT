@@ -3164,3 +3164,19 @@ Direkte Treffer (antippbar):
 Quellen:
 - monatlich kündbar im o2 Netz - 80GB Allnet Flat nur 9.99 Euro und ...: https://handytariftipp.de/monatlich-kuendbar-im-o2-netz-80gb-allnet-flat-nur-9-99-euro-und-100gb-allnet-flat-nur-11-99-euro-monatlich/
 - Die besten Handyverträge zum Black Friday 2025 - HandyTarifTipp.de: https://handytariftipp.de/die-besten-handyvertraege-zum-black-friday-2025/
+## Suche vom 2026-10-16 10:30
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. unlimited 5G Internet-Flat mit 15 Mbit/s nur 19.99 Euro monatlich
+   https://handytariftipp.de/monatlich-kuendbar-unlimited-5g-internet-flat-mit-15-mbit-s-nur-19-99-euro-monatlich-anschlusspreis-19-99-euro/ – 25.11.2024 ... monatlich kündbar – unlimited 5G Internet-Flat mit 15 Mbit/s nur 19.99 Euro monatlich – Anschlusspreis 19.99 Euro.
+
+Quellen:
+- unlimited 5G Internet-Flat mit 15 Mbit/s nur 19.99 Euro monatlich: https://handytariftipp.de/monatlich-kuendbar-unlimited-5g-internet-flat-mit-15-mbit-s-nur-19-99-euro-monatlich-anschlusspreis-19-99-euro/
