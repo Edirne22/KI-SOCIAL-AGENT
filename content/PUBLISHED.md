@@ -991,9 +991,8 @@ Quelle: https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-m
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-2-alex-marquez-den-mar-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38909882420-1
+## Facebook [GEPOSTET 2026-10-16 13:42 | ID: 122124844437469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-16-daily
 Telegram-Update-ID: 279361959
@@ -1014,3 +1013,4 @@ Was haltet ihr von der Situation zwischen den beiden Brüdern?
 Quelle: https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-marcin-sihirbazligini-konusturmasi-gerekecek
 Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-2-alex-marquez-den-mar-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-2-alex-marquez-den-mar-01.jpg", "media_status": "", "object_id": "122124844437469415", "object_type": "bild", "platform": "facebook", "post_id": "122124844437469415", "source_url": "https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-marcin-sihirbazligini-konusturmasi-gerekecek", "version": 1}
