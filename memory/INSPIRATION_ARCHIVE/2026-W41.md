@@ -1,63 +1,137 @@
 # Inspiration-Ideen
+Stand: 2026-10-16 09:23
 
----
+## Datenstatus
+- Konkrete öffentliche Datensätze: 30
+- Apify: konkrete Daten vorhanden
+- YouTube Apify: konkrete Daten vorhanden
+- Bright Data: keine konkreten Daten
+- Crawlbase: keine konkreten Daten
 
-## **Top-5 Trending Themen (mit Belegen)**  
-1. **Name**: "The title fight is still RED-HOT 🥵"  
-   - **Quelle**: [Instagram-Link](https://www.instagram.com/p/DeWPK1iI6cN/)  
-   - **Datum**: 2026-10-11  
-   - **Warum trending**: Hohe Emotionalisierung ("RED-HOT") und Fokus auf den Titelkampf, der für Moto-Racing-Fans spannend ist. Engagement: 61.371.  
+## Report
+Strukturierte Rohdaten liegen vor. Für die detaillierte Auswertung ist Gemini-Zusammenfassung vorgesehen.
 
-2. **Name**: "Just #Moto3 at its finest and THIS MOVE by @veda_54 🔥"  
-   - **Quelle**: [Instagram-Link](https://www.instagram.com/p/DeboE2UIPe5/)  
-   - **Datum**: 2026-10-13  
-   - **Warum trending**: Hervorhebung eines atemberaubenden Moves in der Moto3-Kategorie, was Fan-Engagement und Interaktivität (Tag @veda_54) anzieht. Engagement: 38.541.  
+## Gemini-Status
+Gemini nicht verfügbar – Rohdaten der wichtigsten Beiträge folgen.
 
-3. **Name**: "You've voted for the key move in the title fight 📩 @89jorgemartin wins the Best Overtake of the #IndonesianGP 🇮🇩🦾"  
-   - **Quelle**: [Instagram-Link](https://www.instagram.com/p/Debi7cmDwcb/)  
-   - **Datum**: 2026-10-13  
-   - **Warum trending**: Einbindung der Community in Abstimmungen und Ehrung von Jorge Martín für einen entscheidenden Zweikampzug. Engagement: 33.091.  
-
-4. **Name**: "One day makes all the difference 🥹From Saturday struggles to Sunday glory for @marcobez72 and @raulfernandez_25 💪"  
-   - **Quelle**: [Instagram-Link](https://www.instagram.com/p/DebVINRBYVF/)  
-   - **Datum**: 2026-10-13  
-   - **Warum trending**: Emotionale Erzählung über den Weg von Schwäche zu Stärke, was Identifikation und Mitgefühl bei Fans hervorruft. Engagement: 27.114.  
-
-5. **Name**: "These were the main talking points after an intense #IndonesianGP 🇮🇩 👀"  
-   - **Quelle**: [Instagram-Link](https://www.instagram.com/p/DeZaz5biE7L/)  
-   - **Datum**: 2026-10-12  
-   - **Warum trending**: Analyse der wichtigsten Aspekte eines GP-Events, was Diskussionen und Rückblicke anregt. Engagement: 25.574.  
-
----
-
-## **3 konkrete Content-Ideen für Bülent**  
-1. **Titel**: "DIE atemberaubende Overtake von Jorge Martín – Warum er der Beste der #IndonesianGP ist! 🏆"  
-   - **Format**: Reel  
-   - **Hook**: "Jorge Martín hat den Titelkampf mit einem ONE-HAND-MANEUVER entschieden – und du wirst sehen, warum das VIDEO viral gehen wird! 🔥"  
-   - **Inspirations-Quelle**: [Instagram-Link](https://www.instagram.com/p/Debi7cmDwcb/)  
-   - **Warum passend**: Hohe Engagement-Zahl (33.091) und Fokus auf einen ikonischen Moment, der türkisch-deutsche Motoristen begeistert.  
-
-2. **Titel**: "Von der Nase unten zum Sieg – Marco Bezzecchi’s Wunderwoche! 💪"  
-   - **Format**: Post  
-   - **Hook**: "Nach 10 Grand Prix-Fahrten endet die Qual-Suche – Bezzecchi feiert den Triumph, der alle Träume erfüllt! 🏆"  
-   - **Inspirations-Quelle**: [Instagram-Link](https://www.instagram.com/p/DecMF4ClDm2/)  
-   - **Warum passend**: Emotionale Story über Durchhaltevermögen, die Reisende und Motorradfahrer motiviert.  
-
-3. **Titel**: "Moto3-Fan? Dieser Move von Veda 54 wird dich zum Lachen bringen! 😂🔥"  
-   - **Format**: Story  
-   - **Hook**: "Veda 54 hat in Moto3 einen Move geschickt, der wie aus einem Actionfilm aussieht – hier ist der CLIP, den du SHAREN MUSST! 👇"  
-   - **Inspirations-Quelle**: [Instagram-Link](https://www.instagram.com/p/DeboE2UIPe5/)  
-   - **Warum passend**: Viraler Charakter und humorvolle Note, perfekt für eine türkisch-deutsche Community, die Spaß an Action und Technik liebt.  
-
----
-
-## **Quellen**  
-1. [Instagram-Link](https://www.instagram.com/p/DeWPK1iI6cN/)  
-2. [Instagram-Link](https://www.instagram.com/p/DeboE2UIPe5/)  
-3. [Instagram-Link](https://www.instagram.com/p/Debi7cmDwcb/)  
-4. [Instagram-Link](https://www.instagram.com/p/DebVINRBYVF/)  
-5. [Instagram-Link](https://www.instagram.com/p/DeZaz5biE7L/)  
-6. [Instagram-Link](https://www.instagram.com/p/DecMF4ClDm2/)  
-7. [YouTube-Link](https://www.youtube.com/watch?v=tQPqRD5JZKE)  
-8. [Instagram-Link](https://www.instagram.com/p/DedzI1ADBh5/)  
-9. [Instagram-Link](https://www.instagram.com/p/DeY69wG
+## Rohdaten
+### Datensatz 1
+- Plattform: Apify
+- Titel: Indonesia 🇮🇩 Mandalika
+- Datum: 2026-10-06T11:52:35.000Z
+- URL: https://www.instagram.com/p/DeJuG_HD0NF/
+- Engagement: 138773
+### Datensatz 2
+- Plattform: Apify
+- Titel: Biig Stoprak at the line 😮‍💨
+- Datum: 2026-10-09T04:44:36.000Z
+- URL: https://www.instagram.com/p/DeQqn0iIZr3/
+- Engagement: 63581
+### Datensatz 3
+- Plattform: Apify
+- Titel: @toprakrazgatlioglu7 - P17 💬
+- Datum: 2026-10-04T09:23:58.000Z
+- URL: https://www.instagram.com/p/DeETgu8iKvZ/
+- Engagement: 49258
+### Datensatz 4
+- Plattform: Apify
+- Titel: Thanks for the ride @alexrins 🤙🏻
+- Datum: 2026-10-02T01:50:31.000Z
+- URL: https://www.instagram.com/p/Dd-UhUkJQ_1/
+- Engagement: 47848
+### Datensatz 5
+- Plattform: Apify
+- Titel: @toprakrazgatlioglu7 - P19 💬
+- Datum: 2026-10-10T13:59:12.000Z
+- URL: https://www.instagram.com/p/DeUPxyXCDPy/
+- Engagement: 20258
+### Datensatz 6
+- Plattform: Apify
+- Titel: Stil biraz da detay meselesi.😎 Philips OneBlade ile kısalt, tıraş et, stilinle şekillendir! 💚 #işbirliği #StilinleŞekillendir #OneBlade @philipsturkiye
+- Datum: 2026-09-24T16:10:37.000Z
+- URL: https://www.instagram.com/p/DdrSGTciFNr/
+- Engagement: 19792
+### Datensatz 7
+- Plattform: Apify
+- Titel: We are ready for Twin Ring Motegi  I’m happy to be racing on this track for the first time @pramacracing let’s do this👊
+- Datum: 2026-10-01T12:00:31.000Z
+- URL: https://www.instagram.com/p/Dd83CqLjzua/
+- Engagement: 18667
+### Datensatz 8
+- Plattform: Apify
+- Titel: @toprakrazgatlioglu7 - P16 💬
+- Datum: 2026-10-09T12:18:20.000Z
+- URL: https://www.instagram.com/p/DeRfcK-iLXX/
+- Engagement: 13273
+### Datensatz 9
+- Plattform: Apify
+- Titel: @toprakrazgatlioglu7 - P21 💬
+- Datum: 2026-10-02T11:52:14.000Z
+- URL: https://www.instagram.com/p/Dd_a43BiOOe/
+- Engagement: 10964
+### Datensatz 10
+- Plattform: Apify
+- Titel: @toprakrazgatlioglu7 - DNF 💬
+- Datum: 2026-10-11T11:21:08.000Z
+- URL: https://www.instagram.com/p/DeWie_xCCgU/
+- Engagement: 10565
+### Datensatz 11
+- Plattform: YouTube Apify
+- Titel: MotoGP Race Highlights #motogp #racing #motorcycle
+- Datum: 2026-10-15T13:00:16Z
+- URL: https://www.youtube.com/watch?v=kNDtX9a7rhQ
+- Engagement: 8621
+### Datensatz 12
+- Plattform: YouTube Apify
+- Titel: MotoGP Race Highlights # #motogp #racing #motorcycle
+- Datum: 2026-10-15T05:16:15Z
+- URL: https://www.youtube.com/watch?v=4gSrUnwW9FY
+- Engagement: 3711
+### Datensatz 13
+- Plattform: YouTube Apify
+- Titel: Why is Jorge Martin Lying on the Track? 😳 MotoGP Mystery!
+- Datum: 2026-10-15T21:15:36Z
+- URL: https://www.youtube.com/watch?v=7iSHPaTNum4
+- Engagement: 1586
+### Datensatz 14
+- Plattform: YouTube Apify
+- Titel: biker #birds #bike #rider #usa #edit #art #aesthetic #bts #shorts #viral #trending #viralshorts #yt
+- Datum: 2026-10-15T03:47:17Z
+- URL: https://www.youtube.com/watch?v=3aiVXpKS_S0
+- Engagement: 1452
+### Datensatz 15
+- Plattform: YouTube Apify
+- Titel: All the Thrills of MotoGP Mandalika bersama Bank Mandiri
+- Datum: 2026-10-15T08:22:04Z
+- URL: https://www.youtube.com/watch?v=XStqida3Ouk
+- Engagement: 1421
+### Datensatz 16
+- Plattform: YouTube Apify
+- Titel: Nobody could stop him today! #motogp #marcmarquez #motegi
+- Datum: 2026-10-16T04:52:01Z
+- URL: https://www.youtube.com/watch?v=l5cumaiRh2c
+- Engagement: 878
+### Datensatz 17
+- Plattform: YouTube Apify
+- Titel: 15 Min of Pure Australia MotoGP Chaos
+- Datum: 2026-10-15T14:00:38Z
+- URL: https://www.youtube.com/watch?v=I5A9YpbSV_I
+- Engagement: 704
+### Datensatz 18
+- Plattform: YouTube Apify
+- Titel: The Craziest MotoGP Moments You'll Ever See 🤯 | Red Bull
+- Datum: 2026-10-15T18:16:28Z
+- URL: https://www.youtube.com/watch?v=kg9-9dekg7s
+- Engagement: 71
+### Datensatz 19
+- Plattform: YouTube Apify
+- Titel: MotoGP racing highlights #motogp #highlights
+- Datum: 2026-10-15T07:37:18Z
+- URL: https://www.youtube.com/watch?v=Y3OPrcO5tv0
+- Engagement: 34
+### Datensatz 20
+- Plattform: YouTube Apify
+- Titel: MotoGP Racing Gameplay #motogp #highlights #motogp25
+- Datum: 2026-10-15T07:32:55Z
+- URL: https://www.youtube.com/watch?v=RFg1kF2QFVg
+- Engagement: 6
