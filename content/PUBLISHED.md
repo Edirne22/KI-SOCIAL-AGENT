@@ -864,9 +864,8 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 ---
 
-## Instagram
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 38909273016-1
+## Instagram [GEPOSTET 2026-10-16 13:38 | ID: 17993005944103572]
+Status: GEPOSTET
 Freigabe: Telegram
 Telegram-Update-ID: 279361953
 Text:
@@ -891,6 +890,7 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 Bild: assets/images/2026-10/2026-10-16-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg
 Media-Provenienz: {"generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-16-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "real_racer_generation": false, "synthetic": true, "version": 1}
+Publish-Provenienz: {"creation_id": "18011665406971550", "generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-16-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "platform": "instagram", "post_id": "17993005944103572", "published_media_id": "17993005944103572", "real_racer_generation": false, "synthetic": true, "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
