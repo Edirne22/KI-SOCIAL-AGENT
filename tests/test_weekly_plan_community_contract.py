@@ -62,6 +62,9 @@ def test_weekly_route_uses_existing_groq_model_first():
     post.assert_called_once()
     assert post.call_args.args[0] == "https://api.groq.com/openai/v1/chat/completions"
     assert post.call_args.kwargs["json"]["model"] == "openai/gpt-oss-120b"
+    assert post.call_args.kwargs["json"]["reasoning_effort"] == "low"
+    assert post.call_args.kwargs["json"]["include_reasoning"] is False
+    assert post.call_args.kwargs["json"]["max_tokens"] == 2000
 
 
 def test_weekly_route_is_bounded_and_preserves_other_routes():
@@ -87,6 +90,29 @@ def test_weekly_route_is_bounded_and_preserves_other_routes():
 def complete_plan():
     today = datetime.now(ZoneInfo("Europe/Berlin")).date()
     return "\n".join(f"{today + timedelta(days=i)}: Community Club-Porträt." for i in range(7))
+
+
+def test_weekly_truncated_response_is_rejected_without_exposing_text(capsys):
+    router = llm_router.LLMRouter()
+    response = Mock(status_code=200)
+    response.json.return_value = {"choices": [{"finish_reason": "length", "message": {"content": "PRIVATE_RESPONSE"}}]}
+    cfg = router.config["providers"]["groq"]
+    with patch.dict(os.environ, {"GROQ_API_KEY": "fixture"}, clear=True), \
+         patch.object(llm_router.requests, "post", return_value=response):
+        assert router._call_provider("groq", cfg, [], "weekly_plan") is None
+    logs = capsys.readouterr().out
+    assert "Tokenlimit" in logs and "PRIVATE_RESPONSE" not in logs
+
+
+def test_other_routes_keep_existing_payload():
+    router = llm_router.LLMRouter()
+    response = Mock(status_code=200)
+    response.json.return_value = {"choices": [{"message": {"content": "ok"}}]}
+    with patch.dict(os.environ, {"GROQ_API_KEY": "fixture"}, clear=True), \
+         patch.object(llm_router.requests, "post", return_value=response) as post:
+        assert router.chat([], task_type="default") == "ok"
+    assert "reasoning_effort" not in post.call_args.kwargs["json"]
+    assert "include_reasoning" not in post.call_args.kwargs["json"]
 
 
 def test_large_history_is_bounded_but_calendar_and_standards_survive():
@@ -119,10 +145,16 @@ def test_oversized_required_context_stops_before_network():
 
 
 @pytest.mark.parametrize("claim", [" Rennen 2099-12-31", " Rennen 31.12.2099", " Sprint 14:00", " Start 14 Uhr"])
-def test_unproven_calendar_claims_are_rejected(claim):
-    today = datetime.now(ZoneInfo("Europe/Berlin")).date()
-    with pytest.raises(RuntimeError):
-        weekly_plan.validate_calendar_claims(complete_plan() + claim, '{"events": []}', today)
+def test_unproven_calendar_claims_block_save(claim):
+    with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
+         patch.object(weekly_plan, "read", return_value=""), \
+         patch.object(weekly_plan, "get_context", return_value=""), \
+         patch.object(weekly_plan, "global_professional_context", return_value=""), \
+         patch.object(weekly_plan, "quick_chat", return_value=complete_plan() + claim), \
+         patch.object(weekly_plan, "save_weekly_plan") as save, \
+         pytest.raises(RuntimeError):
+        weekly_plan.save_weekly_plan(weekly_plan.generate_weekly_plan())
+    save.assert_not_called()
 
 
 def test_calendar_dates_and_missing_session_notice_are_accepted():

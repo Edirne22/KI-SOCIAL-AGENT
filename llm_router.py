@@ -90,6 +90,9 @@ class LLMRouter:
             "temperature": 0.7,
             "max_tokens": min(MAX_TOKENS, 256) if provider == "claude_openrouter" else MAX_TOKENS,
         }
+        if task_type == "weekly_plan" and provider == "groq" and model == "openai/gpt-oss-120b":
+            # Reserve the existing bounded output for the plan, not visible reasoning.
+            payload.update(reasoning_effort="low", include_reasoning=False)
 
         try:
             r = requests.post(url, headers=headers, json=payload, timeout=60)
@@ -118,6 +121,15 @@ class LLMRouter:
 
         try:
             data = r.json()
+            if task_type == "weekly_plan":
+                if not isinstance(data["choices"][0], dict):
+                    print("[router] Wochenplan-Antwortschema ungültig.")
+                    return None
+                finish = data["choices"][0].get("finish_reason")
+                print(f"[router] Wochenplan via {provider}, Modell {model}, Abschluss {finish}.")
+                if finish == "length":
+                    print("[router] Wochenplan am Tokenlimit abgebrochen; Antwort verworfen.")
+                    return None
             text = data["choices"][0]["message"]["content"]
             if not isinstance(text, str) or not text.strip():
                 print(f"[router] {provider} Antwort enthaelt keinen verwendbaren Text.")

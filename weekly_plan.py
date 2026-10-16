@@ -127,6 +127,8 @@ Wenn eine Bedingung nicht erfüllt ist, überarbeite den Plan vor der Ausgabe.
         f"GLOBALER VERBINDLICHER STANDARD:\n{global_professional_context()}\n\n"
         f"AUFGABE:\n{raw_prompt}"
     )
+    days = "\n".join(f"## {(today + timedelta(days=i)).isoformat()}" for i in range(7))
+    prompt += f"\nAUSGABEFORMAT: Verwende exakt diese sieben Tagesüberschriften:\n{days}\nDarunter jeweils Thema, Plattform, Hook, Beitrag, Hashtags, Bildidee. Nur den fertigen Plan ausgeben."
 
     prompt_bytes = len(prompt.encode("utf-8"))
     if prompt_bytes > MAX_PROMPT_BYTES:
