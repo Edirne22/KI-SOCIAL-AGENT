@@ -966,3 +966,49 @@ Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosikle
 Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller-dan-yama-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller-dan-yama-01.jpg", "media_status": "", "object_id": "122124154737469415", "object_type": "bild", "platform": "facebook", "post_id": "122124154737469415", "source_url": "https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-16-daily
+Telegram-Update-ID: 279361959
+MotoGP-Auswahl: 2
+Story-Key: title:alex-marquez-den-marc-uyar-pistte-sihirbazl-n-konu-turmal
+Event-Fingerprint: -
+Titel: Alex Marquez'den Marc'a uyarı! “Üç pistte sihirbazlığını konuşturmalı”
+Text:
+Alex Marquez gibt Marc Marquez eine klare Warnung – vor drei harten Rennen.
+
+Der BMW-Werksfahrer sagt, sein Bruder könnte in Australien, Katar und Portimao richtig ins Schwitzen kommen. Und er bewertet dabei auch die Teamorder-Strategie von Ducati. Zwei Marquez im Titelkampf – das wird spannend. 🏍️💨
+
+Was haltet ihr von der Situation zwischen den beiden Brüdern?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-marcin-sihirbazligini-konusturmasi-gerekecek
+Quelle: https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-marcin-sihirbazligini-konusturmasi-gerekecek
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-2-alex-marquez-den-mar-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-16-daily
+Telegram-Update-ID: 279361959
+MotoGP-Auswahl: 2
+Story-Key: title:alex-marquez-den-marc-uyar-pistte-sihirbazl-n-konu-turmal
+Event-Fingerprint: -
+Titel: Alex Marquez'den Marc'a uyarı! “Üç pistte sihirbazlığını konuşturmalı”
+Text:
+Alex Marquez gibt Marc Marquez eine klare Warnung – vor drei harten Rennen.
+
+Der BMW-Werksfahrer sagt, sein Bruder könnte in Australien, Katar und Portimao richtig ins Schwitzen kommen. Und er bewertet dabei auch die Teamorder-Strategie von Ducati. Zwei Marquez im Titelkampf – das wird spannend. 🏍️💨
+
+Was haltet ihr von der Situation zwischen den beiden Brüdern?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-marcin-sihirbazligini-konusturmasi-gerekecek
+Quelle: https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-marcin-sihirbazligini-konusturmasi-gerekecek
+Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-2-alex-marquez-den-mar-01.jpg
+Link-Preview: offiziell
