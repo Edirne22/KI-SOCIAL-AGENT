@@ -10,6 +10,9 @@ from memory_engine import get_context
 from llm_client import global_professional_context
 from llm_router import quick_chat
 
+# Bound optional history before sending it; preserve standards and calendar whole.
+MAX_PROMPT_BYTES = 20000
+
 
 def read(path, max_chars=10000):
     try:
@@ -52,21 +55,22 @@ def calendar_context(today):
 def generate_weekly_plan():
     today = datetime.now(ZoneInfo("Europe/Berlin")).date()
     end_date = today + timedelta(days=6)
-    roster = read("content/MOTOGP_ROSTER.md")
-    history = read("memory/POST_HISTORY.md", 7000)
-    recent_plans = read("content/WOCHENPLAN.md", 9000)
-    viral = read("memory/VIRAL_PATTERNS.md", 5000)
-    motogp_daily = read("memory/MOTOGP_DAILY_CONTENT.md", 7000)
+    roster = read("content/MOTOGP_ROSTER.md", 400)
+    history = read("memory/POST_HISTORY.md", 400)
+    recent_plans = read("content/WOCHENPLAN.md", 400)
+    viral = read("memory/VIRAL_PATTERNS.md", 200)
+    motogp_daily = read("memory/MOTOGP_DAILY_CONTENT.md", 400)
     calendar = calendar_context(today)
-    biker_community = read("content/TURKISH_BIKER_COMMUNITY.md", 7000)
-    followed_accounts = read("config/followed_accounts.md", 7000)
-    community_rotation = read("memory/COMMUNITY_ROTATION.json", 3000)
-    learned = get_context(9000)
+    biker_community = read("content/TURKISH_BIKER_COMMUNITY.md", 1800)
+    followed_accounts = read("config/followed_accounts.md", 400)
+    community_rotation = read("memory/COMMUNITY_ROTATION.json", 300)
+    learned = get_context(600)
 
     raw_prompt = f"""Erstelle einen konkreten Content-Plan für die nächsten sieben Tage
 ({today.isoformat()} bis {end_date.isoformat()}) für Bülents deutsch-türkische
 Motorrad-Community. Plane für jeden Tag Thema, Plattform, Hook, ausformulierten
-Beitrag, Hashtags und visuelle Idee.
+Beitrag, Hashtags und visuelle Idee. Insgesamt höchstens 450 Wörter,
+alle sieben Tage vollständig; je Tag zwei kurze Beitragssätze.
 
 MEMORY:
 {learned}
@@ -106,6 +110,10 @@ Verbindliche Regeln:
 - Schreibe natürlich auf Deutsch; keine englischen Rohtexte und keine
   Satz-für-Satz-Übersetzungen.
 - Gib klar an, wenn ein Fakt oder eine Sessionzeit in den Quellen fehlt.
+- Datumsangaben ausschließlich als YYYY-MM-DD. Im redaktionellen Plan keine
+  Uhrzeiten nennen; Sessionzeiten bleiben im belegten Rennkalender.
+- Historienauszüge sind gekürzt und keine Quelle für aktuelle Renntermine.
+  Renntermine ausschließlich aus dem aktuellen Kalender übernehmen.
 - Markiere jeden Tag mit Datum und Wochentag. Keine Veröffentlichung auslösen;
   der Wochenplan ist ein Vorschlag zur Freigabe.
 
@@ -120,6 +128,10 @@ Wenn eine Bedingung nicht erfüllt ist, überarbeite den Plan vor der Ausgabe.
         f"AUFGABE:\n{raw_prompt}"
     )
 
+    prompt_bytes = len(prompt.encode("utf-8"))
+    if prompt_bytes > MAX_PROMPT_BYTES:
+        raise RuntimeError(f"Wochenplan-Kontext zu groß: {prompt_bytes} Bytes; Limit {MAX_PROMPT_BYTES}. Kein Modellaufruf.")
+    print(f"Wochenplan: Anfrage {prompt_bytes} Bytes; Kalender unverändert übernommen.")
     text = quick_chat(prompt, task_type="weekly_plan")
     if not isinstance(text, str) or not text.strip():
         raise RuntimeError("Wochenplan-Anbieter lieferte eine leere Antwort.")
@@ -142,7 +154,24 @@ Wenn eine Bedingung nicht erfüllt ist, überarbeite den Plan vor der Ausgabe.
                if (today + timedelta(days=i)).isoformat() not in text]
     if missing:
         raise RuntimeError("Wochenplan ist unvollständig; fehlende Tagesdaten: " + ", ".join(missing))
+    validate_calendar_claims(text, calendar, today)
     return text
+
+
+def validate_calendar_claims(text, calendar, today):
+    """Reject unsupported numeric dates/times; this is not semantic fact checking."""
+    data = json.loads(calendar)
+    events = data.get("events", []) if isinstance(data, dict) else []
+    allowed_dates = {(today + timedelta(days=i)).isoformat() for i in range(7)}
+    for event in events:
+        allowed_dates.update(event[key] for key in ("date_start", "date_end") if key in event)
+    if set(re.findall(r"\b\d{4}-\d{2}-\d{2}\b", text)) - allowed_dates:
+        raise RuntimeError("Wochenplan enthält ein nicht belegtes Datum.")
+    if re.search(r"\b\d{1,2}\.\d{1,2}\.(?:\d{2,4})?", text):
+        raise RuntimeError("Wochenplan-Datumsformat nicht prüfbar; YYYY-MM-DD erforderlich.")
+    # Session times belong to the sourced calendar, not free-text editorial ideas.
+    if re.search(r"\b\d{1,2}[:.]\d{2}\b|\b\d{1,2}\s*Uhr\b", text, re.I):
+        raise RuntimeError("Wochenplan enthält eine Uhrzeit; Sessionzeiten nur im belegten Kalender nachsehen.")
 
 
 def save_weekly_plan(content):
