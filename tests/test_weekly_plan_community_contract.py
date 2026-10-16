@@ -145,11 +145,16 @@ def test_oversized_required_context_stops_before_network():
 
 
 @pytest.mark.parametrize("claim", [" Rennen 2099-12-31", " Rennen 31.12.2099", " Sprint 14:00", " Start 14 Uhr"])
-def test_unproven_calendar_claims_block_save(claim, tmp_path):
-    today = datetime.now(ZoneInfo("Europe/Berlin")).date()
-    with pytest.raises(RuntimeError):
-        weekly_plan.validate_calendar_claims(complete_plan() + claim, '{"events": []}', today)
-    assert not (tmp_path / "WOCHENPLAN.md").exists()
+def test_unproven_calendar_claims_block_save(claim):
+    with patch.object(weekly_plan, "calendar_context", return_value='{"events": []}'), \
+         patch.object(weekly_plan, "read", return_value=""), \
+         patch.object(weekly_plan, "get_context", return_value=""), \
+         patch.object(weekly_plan, "global_professional_context", return_value=""), \
+         patch.object(weekly_plan, "quick_chat", return_value=complete_plan() + claim), \
+         patch.object(weekly_plan, "save_weekly_plan") as save, \
+         pytest.raises(RuntimeError):
+        weekly_plan.save_weekly_plan(weekly_plan.generate_weekly_plan())
+    save.assert_not_called()
 
 
 def test_calendar_dates_and_missing_session_notice_are_accepted():
