@@ -28,11 +28,12 @@ def test_missing_or_stale_calendar_fails(raw):
         wp.calendar_context(datetime.now().date())
 
 def test_partial_plan_not_accepted():
-    with patch.object(wp,"calendar_context",return_value="[]"), patch.object(wp,"read",return_value=""), \
+    with patch.object(wp,"calendar_context",return_value='{"events": []}'), patch.object(wp,"read",return_value="## Seriöse Clubs & Gruppen\n### Turkbirler"), \
          patch.object(wp,"get_context",return_value=""), patch.object(wp,"global_professional_context",return_value=""), \
-         patch.object(wp,"quick_chat",return_value="Community club portrait, only one day"):
+         patch.object(wp,"quick_chat",return_value='["community_0"]') as chat:
         with pytest.raises(RuntimeError,match="unvollständig"):
             wp.generate_weekly_plan()
+    chat.assert_called_once()
 
 def test_running_weekend_is_included(tmp_path):
     today=datetime.now(ZoneInfo("Europe/Berlin")).date()
