@@ -159,3 +159,9 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 ### 2026-10-14 10:49 | Entwurf generiert
 - Titel 1: Jorge Martíns Überholmanöver beim Indonesian GP – Zentimeterarbeit auf der Bremse
 - Hook 1: Hast du beim Anbremsen auf der Landstraße schon mal genau den
+
+### 2026-10-16 10:19 | Entwurf generiert
+- Titel 1: ** Can Öncü's Magny-Cours-Sieg – der Beweis, dass die Öncü-Brüder nicht zu stoppen sind
+- Hook 1: ** "Can Öncü hat in Magny-Cours just bewiesen: Wenn die Brüder Öncü ins Rennen gehen, gibt es nur einen Platz – ganz oben. 🏆"
+- Titel 2: ** Turkbirler – Die Stimme der türkischen Biker in Deutschland: "Wir fahren nicht für den Lärm, sondern für unsere Seele"
+- Hook 2: ** "Sie nennen
