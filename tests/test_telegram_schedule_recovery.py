@@ -116,4 +116,24 @@ class LiveDiagnosticContract(unittest.TestCase):
         self.assertNotIn('PRIVATE_TOKEN', str(caught.exception))
         self.assertTrue(caught.exception.__suppress_context__)
 
+class ExistingApprovalRegression(unittest.TestCase):
+    def selection(self):
+        # Isolate the actual pure parser, without importing publishing adapters.
+        tree = ast.parse((ROOT / 'motogp_telegram_receive_v85.py').read_text())
+        node = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'selection')
+        import re
+        scope = {'re': re}
+        exec(compile(ast.Module(body=[node], type_ignores=[]), '<selection>', 'exec'), scope)
+        return scope['selection']
+    def test_explicit_repeated_commands(self):
+        parse = self.selection()
+        for command in ['motogp 1 motogp 2', '/motogp 1, /motogp 2', 'MotoGP 1, MotoGP 2']:
+            with self.subTest(command=command): self.assertEqual(parse(command), [1, 2])
+    def test_negation_foreign_text_and_out_of_range_stay_blocked(self):
+        parse = self.selection()
+        for command in ['motogp 1 nicht motogp 2', 'motogp 1, löschen motogp 2',
+                        'motogp 1 motogp 6', 'motogp 1 2', 'motogp 1 motogp alle',
+                        'motogp 1 /facebook 2', 'motogp 1 motogp 2 ignorieren']:
+            with self.subTest(command=command): self.assertIsNone(parse(command))
+
 if __name__ == '__main__': unittest.main()

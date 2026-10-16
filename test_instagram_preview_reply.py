@@ -85,4 +85,12 @@ def test_no_reply_preserves_stale_item_guard(context):
 
 def test_poller_covers_night():
     from pathlib import Path
-    assert 'cron: "*/5 * * * *"' in Path(".github/workflows/telegram-receive.yml").read_text()
+    import re
+    cron = re.search(r'cron:\s*"([^"]+)"', Path(".github/workflows/telegram-receive.yml").read_text()).group(1).split()
+    assert cron[1:] == ["*", "*", "*", "*"]  # all hours, including night
+    match = re.fullmatch(r'(?:\*|(\d+)-(\d+))/(\d+)', cron[0])
+    assert match is not None
+    start, end, step = match.groups()
+    minutes = list(range(int(start or 0), int(end or 59) + 1, int(step)))
+    assert len(minutes) == 12
+    assert all((minutes[(i + 1) % 12] - minutes[i]) % 60 == 5 for i in range(12))
