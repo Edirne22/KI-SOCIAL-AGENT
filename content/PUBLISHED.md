@@ -866,7 +866,7 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 ## Instagram
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 38909273016-1
 Freigabe: Telegram
 Telegram-Update-ID: 279361953
 Text:
