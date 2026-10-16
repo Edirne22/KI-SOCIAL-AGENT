@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1792052733
+Session-Timestamp: 1792138732
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,22 +18,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.9
+Artikelalter-Tage: 1.0
 Kategorie: Turkish Riders
-Serie: WorldSBK
-Story-Key: title:worldsbk-jerez-2026-sezon-finalinde-can-nc-nc-l-k-pe-inde
-Titel: WorldSBK Jerez 2026: Sezon Finalinde Can Öncü Üçüncülük Peşinde
-Quelle: https://motoetkinlik.com/worldsbk-jerez-2026-sezon-finalinde-can-oncu-ucunculuk-pesinde
+Serie: WorldSSP
+Story-Key: motogp:10865310
+Titel: Can Öncü, WSSP finalinde 3.'lük için mücadele edecek!
+Quelle: https://tr.motorsport.com/supersport/news/can-öncü-wssp-finalinde-3lük-için-mücadele-edecek/10865310
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-15-racing-editorial-2026-10-15-1-worldsbk-jerez-2026-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/WorldSBK-2026-Estoril-GP-JPM-045-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-1-can-oncu-wssp-finali-01.jpg
+Quellen-Preview: https://cdn-1.motorsport.com/images/amp/2y7Qw4g6/s6/52023-jdr-r02-2026-action-full-2.jpg
 Plattformen: Instagram + Facebook
 Text:
-Can Öncü startet beim Saisonfinale in Jerez mit einem knappen Dre-Punkte-Vorsprung auf Masia und Alcoba und streitet um den dritten Platz in der WM. Bei Nicolo Bulega läuft es ebenfalls – er möchte den Rekord knacken. Am Sonntag wird Regen erwartet 🏍️💨
+şampiyona üçüncülüğündeki pozisyonunu korumak için mücadele edecek
 
-Wer kommt eurer Meinung nach am nächsten an den Rekord heran?
+Can Öncü geht am Sonntag in Jerez als Dritter in die Saisonwertung – und er will die Position verteidigen. Das Saisonfinale der WorldSSP steht an.
 
-#WorldSBK #CanOncu #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die Lage ein?
+
+#WorldSSP #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -41,27 +43,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.1
+Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:jack-miller-dan-yamaha-ya-alarm-motosiklet-s-r-lemez-halde
-Titel: Jack Miller'dan Yamaha'ya alarm: “Motosiklet sürülemez halde!”
-Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde
+Story-Key: title:alex-marquez-den-marc-uyar-pistte-sihirbazl-n-konu-turmal
+Titel: Alex Marquez'den Marc'a uyarı! “Üç pistte sihirbazlığını konuşturmalı”
+Quelle: https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-marcin-sihirbazligini-konusturmasi-gerekecek
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-15-racing-editorial-2026-10-15-2-jack-miller-dan-yama-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jack-miller-yamaha-motor-sorunu-mandalika-motogp-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-2-alex-marquez-den-mar-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-alex-marquez-motogp-sampiyonluk-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Am Endonezya GP hat Jack Miller Yamaha ein klares Wort geredet: Das Motorradverhalten sei aktuell unvorhersehbar.
+Alex Marquez gibt Marc Marquez eine klare Warnung – vor drei harten Rennen.
 
-Jack Miller erklärte am Endonezya GP, dass das Motorradverhalten von Yamaha derzeit unvorhersehbar sei. Seitdem bleibt Pramac Yamaha vier Rennen am Stück ohne Punkte.
+Der BMW-Werksfahrer sagt, sein Bruder könnte in Australien, Katar und Portimao richtig ins Schwitzen kommen. Und er bewertet dabei auch die Teamorder-Strategie von Ducati. Zwei Marquez im Titelkampf – das wird spannend. 🏍️💨
 
-Wie findet ihr es, wenn ein Pilot seine Yamaha offen als unvorhersehbar bezeichnet?
+Was haltet ihr von der Situation zwischen den beiden Brüdern?
 
-#MotoGP #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -69,25 +71,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
+Neufassungen: 1
 QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 3.0
+Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
-Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
-Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
+Story-Key: title:motogp-de-son-5-yar-n-g-dengesi-aprilia-3-pistte-avantajl
+Titel: MotoGP'de son 5 yarışın güç dengesi! Aprilia 3 pistte avantajlı
+Quelle: https://motoetkinlik.com/motogpde-sampiyonlugun-kaderini-belirleyecek-5-pist-aprilia-mi-ducati-mi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-15-racing-editorial-2026-10-15-3-jorge-martin-den-mar-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jorge-martin-mandalika-motogp-sampiyonluk-liderligi-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-3-motogp-de-son-5-yari-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/motogp-2026-son-bes-yaris-ducati-aprilia-sampiyonluk-analizi-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin hat in Indonesien den MotoGP-Liderchaft von Marc Marquez übernommen. Der Aprilia-Fahrer gibt sich vor den letzten fünf Rennen deutlich selbstsicherer.
+Jorge Martin führt die MotoGP-Wertung mit 2 Punkten Vorsprung an. Die letzten fünf Rennen zeigen: Aprilia hatte auf drei Strecken die Nase vorn, Ducati auf zwei – eine Analyse von MotoEtkinlik. 🏍️
 
-Wie schätzt ihr die Lage im Titelkampf ein?
+Wie seht ihr die Lage für den letzten Saisonabschnitt?
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -98,20 +100,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 4.7
+Artikelalter-Tage: 5.7
 Kategorie: WorldSBK
 Serie: WorldSBK
 Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
 Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
 Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-15-racing-editorial-2026-10-15-4-bulega-estoril-de-re-01.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-4-bulega-estoril-de-re-01.jpg
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/worldsbk-estoril-2026-race-1-nicolo-bulega-ducati.webp
 Plattformen: Instagram + Facebook
 Text:
-Bulega hat in Estoril zugeschlagen – sein 27. Sieg dieser Saison, und damit ist er auf Augenhöhe mit Bautista! 🏍️💨 Lecuona kam als Zweiter ins Ziel, und der echte Überraschungsgast war Alberto Surra auf dem Podium.
+Nicolo Bulega hat bei Race 1 in Estoril seinen 27. Saisonsieg geholt und damit Bautistas Rekord égaliert.
 
-Wer wird da wohl den Rekord knacken?
+Ducati hat einen Dubbel-Erfolg gefeiert – Iker Lecuona wurde Zweiter.
+
+Alberto Surra hat mit Platz drei für ein echtes Überraschungspodium gesorgt.
+
+Wie seht ihr die Form von Bulega in dieser Saison? 🏍️💨
 
 #WorldSBK #NicoloBulega #AlbertoSurra #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
 
@@ -121,27 +127,23 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 3.7
+Artikelalter-Tage: 4.7
 Kategorie: Turkish Riders
 Serie: WorldSSP
 Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
 Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
 Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-15-racing-editorial-2026-10-15-5-estoril-worldssp-haf-01.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-5-estoril-worldssp-haf-01.jpg
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/05/can-oncu-cekya-yarisi-antreman-seansi-2026-scaled.webp
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat das zweite WorldSSP-Rennen in Estoril gewonnen – nach einem Neustart unter Rot-Flag-Bedingungen.
+Jeremy Alcoba hat den zweiten Lauf bei WorldSSP Estoril gewonnen – nach dem roten Fahnen-Ausfall ging es neu los und Alcoba war der Schnellste. Can Öncü kam als Achter ins Ziel und klettert in der Gesamtwertung auf Platz drei.
 
-Can Öncü kam im zweiten Lauf auf Platz acht, konnte damit aber in der Gesamtwertung auf Rang drei vorrücken.
-
-Bahattin Sofuoğlus Unfall hatte den Rennabbruch und den anschließenden Neustart verursacht.
-
-Wie schätzt ihr Can Öncüs Chancen auf den Titel ein?
+Wie schätzt ihr die Lage im WM-Kampf jetzt ein?
 
 #WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 

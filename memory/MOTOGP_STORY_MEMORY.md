@@ -1019,3 +1019,18 @@ Quelle: https://motoetkinlik.com/worldsbk-jerez-2026-sezon-finalinde-can-oncu-uc
 Story-Key: title:jack-miller-dan-yamaha-ya-alarm-motosiklet-s-r-lemez-halde
 Titel: Jack Miller'dan Yamaha'ya alarm: “Motosiklet sürülemez halde!”
 Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde
+
+## 2026-10-16 08:18 UTC – ANGEBOTEN
+Story-Key: motogp:10865310
+Titel: Can Öncü, WSSP finalinde 3.'lük için mücadele edecek!
+Quelle: https://tr.motorsport.com/supersport/news/can-öncü-wssp-finalinde-3lük-için-mücadele-edecek/10865310
+
+## 2026-10-16 08:18 UTC – ANGEBOTEN
+Story-Key: title:alex-marquez-den-marc-uyar-pistte-sihirbazl-n-konu-turmal
+Titel: Alex Marquez'den Marc'a uyarı! “Üç pistte sihirbazlığını konuşturmalı”
+Quelle: https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-marcin-sihirbazligini-konusturmasi-gerekecek
+
+## 2026-10-16 08:18 UTC – ANGEBOTEN
+Story-Key: title:motogp-de-son-5-yar-n-g-dengesi-aprilia-3-pistte-avantajl
+Titel: MotoGP'de son 5 yarışın güç dengesi! Aprilia 3 pistte avantajlı
+Quelle: https://motoetkinlik.com/motogpde-sampiyonlugun-kaderini-belirleyecek-5-pist-aprilia-mi-ducati-mi

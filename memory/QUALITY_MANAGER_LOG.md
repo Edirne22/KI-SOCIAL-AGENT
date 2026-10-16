@@ -3144,3 +3144,57 @@ Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazan
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-16 08:47 UTC | Motorcycle Racing | PASS
+Titel: Can Öncü, WSSP finalinde 3.'lük için mücadele edecek!
+Story-Key: motogp:10865310
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-16 08:47 UTC | Motorcycle Racing | PASS
+Titel: Alex Marquez'den Marc'a uyarı! “Üç pistte sihirbazlığını konuşturmalı”
+Story-Key: title:alex-marquez-den-marc-uyar-pistte-sihirbazl-n-konu-turmal
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-16 08:47 UTC | Motorcycle Racing | PASS
+Titel: MotoGP'de son 5 yarışın güç dengesi! Aprilia 3 pistte avantajlı
+Story-Key: title:motogp-de-son-5-yar-n-g-dengesi-aprilia-3-pistte-avantajl
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-16 08:47 UTC | Motorcycle Racing | FAIL
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-16 08:49 UTC | Motorcycle Racing | FAIL
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-16 08:49 UTC | Motorcycle Racing | FAIL
+Titel: Rossi'nin WorldSBK şampiyonu Bulega'ya söylediği ilk söz ortaya çıktı!
+Story-Key: title:rossi-nin-worldsbk-ampiyonu-bulega-ya-s-yledi-i-ilk-s-z-ortaya-kt
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-16 08:49 UTC | Motorcycle Racing | FAIL
+Titel: Rossi'nin WorldSBK şampiyonu Bulega'ya söylediği ilk söz ortaya çıktı!
+Story-Key: title:rossi-nin-worldsbk-ampiyonu-bulega-ya-s-yledi-i-ilk-s-z-ortaya-kt
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-16 08:49 UTC | Motorcycle Racing | PASS
+Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
+Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-16 08:49 UTC | Motorcycle Racing | PASS
+Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
+Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
