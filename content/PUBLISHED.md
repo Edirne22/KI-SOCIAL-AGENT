@@ -1014,9 +1014,8 @@ Quelle: https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39035795724-1
+## Facebook [GEPOSTET 2026-10-17 13:15 | ID: 122125149417469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-17-daily
 Telegram-Update-ID: 279361963
@@ -1037,3 +1036,4 @@ Wie schätzt ihr die Chancen für Can bei dieser Startposition ein?
 Quelle: https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28
 Bild: assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg", "media_status": "", "object_id": "122125149417469415", "object_type": "bild", "platform": "facebook", "post_id": "122125149417469415", "source_url": "https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28", "version": 1}
