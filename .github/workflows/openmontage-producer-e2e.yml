@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'scripts/openmontage_producer.py'
+      - 'scripts/openmontage_creative_preview.py'
       - 'tests/test_openmontage_producer.py'
       - '.github/workflows/openmontage-producer-e2e.yml'
   workflow_dispatch:
@@ -36,10 +37,16 @@ jobs:
           python scripts/openmontage_producer.py /tmp/om-e2e/job.json /tmp/om-e2e/output.mp4
           test -s /tmp/om-e2e/output.mp4
           ffprobe -v error -show_entries stream=codec_type,width,height -of json /tmp/om-e2e/output.mp4
+      - name: Render animated three-scene creative preview
+        run: |
+          python scripts/openmontage_creative_preview.py /tmp/om-e2e/creative-preview.mp4
+          test -s /tmp/om-e2e/creative-preview.mp4
       - name: Upload synthetic test video for review
         uses: actions/upload-artifact@v4
         with:
           name: openmontage-producer-e2e
-          path: /tmp/om-e2e/output.mp4
+          path: |
+            /tmp/om-e2e/output.mp4
+            /tmp/om-e2e/creative-preview.mp4
           retention-days: 3
           if-no-files-found: error
