@@ -50,10 +50,23 @@ def render(manifest: Path, output: Path) -> dict:
             command = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-nostdin", "-y"]
             if is_image:
                 command += ["-loop", "1", "-framerate", "30"]
-            command += ["-i", str(source), "-t", str(duration), "-vf",
-                        "scale=1080:1920:force_original_aspect_ratio=decrease,"
-                        "pad=1080:1920:(ow-iw)/2:(oh-ih)/2,"
-                        "fps=30,format=yuv420p",
+            if is_image:
+                # Slow push-in for photographs; no static slideshow frames.
+                frames = round(duration * 30)
+                visual = (
+                    "scale=1200:2134:force_original_aspect_ratio=increase,"
+                    "crop=1200:2134,"
+                    "zoompan=z='min(zoom+0.0007,1.10)':"
+                    "x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+                    f"d={frames}:s=1080x1920:fps=30,"
+                    "format=yuv420p"
+                )
+            else:
+                visual = (
+                    "scale=1080:1920:force_original_aspect_ratio=increase,"
+                    "crop=1080:1920,fps=30,format=yuv420p"
+                )
+            command += ["-i", str(source), "-t", str(duration), "-vf", visual,
                         "-an", "-c:v", "libx264", "-preset", "veryfast",
                         "-movflags", "+faststart", str(part)]
             subprocess.run(command, check=True, timeout=180)
