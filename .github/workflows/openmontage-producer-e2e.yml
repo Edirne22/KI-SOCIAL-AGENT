@@ -37,6 +37,16 @@ jobs:
           python scripts/openmontage_producer.py /tmp/om-e2e/job.json /tmp/om-e2e/output.mp4
           test -s /tmp/om-e2e/output.mp4
           ffprobe -v error -show_entries stream=codec_type,width,height -of json /tmp/om-e2e/output.mp4
+      - name: Render supplied-photo motion test
+        run: |
+          ffmpeg -hide_banner -loglevel error -y -f lavfi -i 'testsrc2=size=900x600:rate=1' -frames:v 1 /tmp/om-e2e/photo.png
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          Path('/tmp/om-e2e/photo-job.json').write_text(json.dumps({'clips':[{'path':'photo.png','seconds':2}]}))
+          PY
+          python scripts/openmontage_producer.py /tmp/om-e2e/photo-job.json /tmp/om-e2e/photo-motion.mp4
+          test -s /tmp/om-e2e/photo-motion.mp4
       - name: Render animated three-scene creative preview
         run: |
           python scripts/openmontage_creative_preview.py /tmp/om-e2e/creative-preview.mp4
@@ -48,5 +58,6 @@ jobs:
           path: |
             /tmp/om-e2e/output.mp4
             /tmp/om-e2e/creative-preview.mp4
+            /tmp/om-e2e/photo-motion.mp4
           retention-days: 3
           if-no-files-found: error
