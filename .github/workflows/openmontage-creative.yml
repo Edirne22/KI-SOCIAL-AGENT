@@ -1,0 +1,47 @@
+name: OpenMontage V2 Creative Render
+on:
+  workflow_dispatch:
+  workflow_call:
+  pull_request:
+    paths:
+      - 'integrations/openmontage/creative_renderer.py'
+      - 'tests/test_openmontage_creative.py'
+      - '.github/workflows/openmontage-creative.yml'
+permissions:
+  contents: read
+concurrency:
+  group: openmontage-creative-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  synthetic-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install offline render tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Positive and negative controls
+        run: python -m unittest discover -s tests -p test_openmontage_creative.py -v
+      - name: Render and verify actual synthetic MP4
+        run: python integrations/openmontage/creative_renderer.py --output /tmp/openmontage-creative
+      - name: Record measured evidence
+        run: |
+          echo '### Actual synthetic render and ffprobe verification' >> "$GITHUB_STEP_SUMMARY"
+          echo "Commit: $GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/openmontage-creative/report.json >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: openmontage-v2-synthetic-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            /tmp/openmontage-creative/creative-demo.mp4
+            /tmp/openmontage-creative/report.json
+            /tmp/openmontage-creative/ffprobe.json

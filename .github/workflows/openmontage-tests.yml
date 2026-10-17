@@ -59,3 +59,7 @@ jobs:
           from pathlib import Path
           Path('/tmp/om-e2e/job.json').write_text(json.dumps({'clips':[{'path':'source.mp4','seconds':2}]}))
           PY
+
+  creative-manual:
+    if: github.event_name == 'workflow_dispatch'
+    uses: ./.github/workflows/openmontage-creative.yml
