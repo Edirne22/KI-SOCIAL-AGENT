@@ -4,6 +4,11 @@ on:
     paths:
       - 'integrations/openmontage/**'
       - 'scripts/openmontage_control.py'
+      - 'scripts/openmontage_review.py'
+      - 'tests/test_openmontage_review.py'
+      - 'scripts/openmontage_quality_gate.py'
+      - 'tests/test_openmontage_quality_gate.py'
+      - 'scripts/openmontage_publish_preview.py'
       - 'scripts/openmontage_r2.py'
       - 'media_storage.py'
       - 'tests/test_openmontage_r2.py'
@@ -35,6 +40,8 @@ jobs:
           .test-venv/bin/python -m unittest discover -s tests -p test_openmontage.py -v
           .test-venv/bin/python -m unittest discover -s tests -p test_openmontage_r2.py -v
           .test-venv/bin/python -m unittest discover -s tests -p test_openmontage_telegram_preview.py -v
+          .test-venv/bin/python -m unittest discover -s tests -p test_openmontage_review.py -v
+          .test-venv/bin/python -m unittest discover -s tests -p test_openmontage_quality_gate.py -v
           .test-venv/bin/python -m unittest test_telegram_router -v
           .test-venv/bin/python -m unittest discover -s tests -p test_telegram_schedule_recovery.py -v
 
