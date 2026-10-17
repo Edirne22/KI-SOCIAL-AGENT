@@ -5,7 +5,7 @@ from pathlib import Path
 from unittest.mock import Mock
 
 from media_storage import R2Storage
-from scripts.openmontage_r2 import upload_private_preview
+from scripts.openmontage_r2 import upload_private_preview, renew_private_preview
 
 
 class PrivatePreviewTests(unittest.TestCase):
@@ -26,7 +26,7 @@ class PrivatePreviewTests(unittest.TestCase):
 
     def test_private_upload_and_short_lived_link(self):
         result = upload_private_preview(self.file, storage=self.storage)
-        self.assertEqual(result["expires_seconds"], 900)
+        self.assertEqual(result["expires_seconds"], 86400)
         self.assertTrue(result["r2_uri"].startswith("r2://private-bucket/media/"))
         args, kwargs = self.client.upload_file.call_args
         self.assertEqual(args[1], "private-bucket")
@@ -34,7 +34,7 @@ class PrivatePreviewTests(unittest.TestCase):
         self.assertNotIn("ACL", kwargs["ExtraArgs"])
         signed = self.client.generate_presigned_url.call_args
         self.assertEqual(signed.args[0], "get_object")
-        self.assertEqual(signed.kwargs["ExpiresIn"], 900)
+        self.assertEqual(signed.kwargs["ExpiresIn"], 86400)
         self.assertEqual(signed.kwargs["HttpMethod"], "GET")
         self.assertEqual(signed.kwargs["Params"]["Key"], args[2])
 
@@ -44,6 +44,24 @@ class PrivatePreviewTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     upload_private_preview(self.file, storage=self.storage, expires_seconds=invalid)
         self.client.upload_file.assert_not_called()
+
+    def test_renew_existing_private_media(self):
+        media_id = "4b3e8b9c-4449-4586-a048-0e6f77f41813"
+        key = f"media/{media_id}/preview.mp4"
+        self.client.list_objects_v2.return_value = {"Contents": [{"Key": key}]}
+        self.client.head_object.return_value = {"Metadata": {"media-id": media_id}}
+        result = renew_private_preview(media_id, storage=self.storage)
+        self.assertEqual(result["expires_seconds"], 86400)
+        self.assertEqual(result["media_id"], media_id)
+        self.client.upload_file.assert_not_called()
+        self.client.generate_presigned_url.assert_called_once()
+
+    def test_renew_rejects_missing_or_wrong_object(self):
+        media_id = "4b3e8b9c-4449-4586-a048-0e6f77f41813"
+        self.client.list_objects_v2.return_value = {"Contents": []}
+        with self.assertRaises(ValueError):
+            renew_private_preview(media_id, storage=self.storage)
+        self.client.generate_presigned_url.assert_not_called()
 
     def test_invalid_file_rejected_before_upload(self):
         for filename, data in (("bad.jpg", b"x"), ("empty.mp4", b"")):
