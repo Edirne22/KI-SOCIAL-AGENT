@@ -1034,3 +1034,18 @@ Quelle: https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-m
 Story-Key: title:motogp-de-son-5-yar-n-g-dengesi-aprilia-3-pistte-avantajl
 Titel: MotoGP'de son 5 yarışın güç dengesi! Aprilia 3 pistte avantajlı
 Quelle: https://motoetkinlik.com/motogpde-sampiyonlugun-kaderini-belirleyecek-5-pist-aprilia-mi-ducati-mi
+
+## 2026-10-17 07:55 UTC – ANGEBOTEN
+Story-Key: title:worldssp-spanish-round-superpole-arenas-pole-de-can-n-s-rada-bahattin-28
+Titel: WorldSSP Spanish Round Superpole: Arenas Pole'de, Can Ön Sırada, Bahattin 28.
+Quelle: https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28
+
+## 2026-10-17 07:55 UTC – ANGEBOTEN
+Story-Key: motogp:10865531
+Titel: Alex Marquez: "Marc’ın özel numaralarını sergilemesi gerekecek"
+Quelle: https://tr.motorsport.com/motogp/news/alex-marquez-marcin-ozel-numaralarini-sergilemesi-gerekecek/10865531
+
+## 2026-10-17 07:55 UTC – ANGEBOTEN
+Story-Key: motogp:10865686
+Titel: WSSP İspanya Superpole: Jerez’de Arenas rekoru yeniledi, Can Öncü ilk çizgide!
+Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-superpole-jerezde-albert-arenas-rekoru-yeniledi-can-oncu-ilk-cizgide/10865686

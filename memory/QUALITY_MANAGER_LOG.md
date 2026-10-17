@@ -3198,3 +3198,33 @@ Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazan
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-17 08:22 UTC | Motorcycle Racing | PASS
+Titel: WorldSSP Spanish Round Superpole: Arenas Pole'de, Can Ön Sırada, Bahattin 28.
+Story-Key: title:worldssp-spanish-round-superpole-arenas-pole-de-can-n-s-rada-bahattin-28
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-17 08:22 UTC | Motorcycle Racing | PASS
+Titel: Alex Marquez: "Marc’ın özel numaralarını sergilemesi gerekecek"
+Story-Key: motogp:10865531
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-17 08:23 UTC | Motorcycle Racing | PASS
+Titel: Alex Marquez'den Marc'a uyarı! “Üç pistte sihirbazlığını konuşturmalı”
+Story-Key: title:alex-marquez-den-marc-uyar-pistte-sihirbazl-n-konu-turmal
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-17 08:23 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia'dan Ducati'yi sarsacak sözler: “Son iki yılda geriye gittik!”
+Story-Key: title:bagnaia-dan-ducati-yi-sarsacak-s-zler-son-iki-y-lda-geriye-gittik
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-17 08:23 UTC | Motorcycle Racing | PASS
+Titel: WSSP İspanya Superpole: Jerez’de Arenas rekoru yeniledi, Can Öncü ilk çizgide!
+Story-Key: motogp:10865686
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
