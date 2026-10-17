@@ -491,6 +491,17 @@ def main() -> None:
 
         normalized = " ".join(text.strip().lower().split())
         cmd = normalized.lstrip("/")
+        # Owner-only OpenMontage commands precede the generic command fallback.
+        from scripts import openmontage_control
+        if openmontage_control.is_command(text):
+            try:
+                answer = openmontage_control.handle(text, uid, chat, allowed)
+                if answer:
+                    send_message(answer)
+            except (ValueError, PermissionError, RuntimeError) as exc:
+                send_message(f"OpenMontage: {exc}")
+            _ack(uid)
+            continue
         # Shared AI inbox commands are explicit and do not touch existing approval paths.
         if parse_central_command(text) is not None:
             try:
