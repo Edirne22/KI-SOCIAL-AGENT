@@ -991,8 +991,8 @@ Bild: assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-2-alex-marque
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-16-racing-editorial-2026-10-16-2-alex-marquez-den-mar-01.jpg", "media_status": "", "object_id": "122124844437469415", "object_type": "bild", "platform": "facebook", "post_id": "122124844437469415", "source_url": "https://motoetkinlik.com/alex-marquezden-agabeyine-sampiyonluk-uyarisi-marcin-sihirbazligini-konusturmasi-gerekecek", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-17 13:53 | ID: 18229317814330679]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-17-daily
 Telegram-Update-ID: 279361963
@@ -1013,6 +1013,7 @@ Wie schätzt ihr die Chancen für Can bei dieser Startposition ein?
 Quelle: https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg
+Publish-Provenienz: {"creation_id": "18011827181971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18229317814330679", "published_media_id": "18229317814330679", "source_url": "https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-17 13:15 | ID: 122125149417469415]
 Status: GEPOSTET
