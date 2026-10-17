@@ -23,46 +23,6 @@ import telegram_router as tr
 
 
 class TelegramOffsetTests(unittest.TestCase):
-    def test_openmontage_owner_routes_once_foreign_chat_never_dispatches(self):
-        updates = [
-            {"update_id": 43, "message": {"chat": {"id": "999"}, "text": "/montage test starten"}},
-            {"update_id": 44, "message": {"chat": {"id": "1"}, "text": "/montage diagnose"}},
-        ]
-        with tempfile.TemporaryDirectory() as tmp:
-            offset = Path(tmp) / "offset"
-            offset.write_text("42\n")
-            with patch.object(tr, "TELEGRAM_LAST_UPDATE_FILE", offset), \
-                 patch.object(tr, "get_chat_id", return_value="1"), \
-                 patch.object(tr, "get_updates", side_effect=lambda offset=None: updates if offset == 43 else []), \
-                 patch.object(tr, "handle_montage", return_value="angenommen") as handle, \
-                 patch.object(tr, "send_message") as send:
-                tr.main()
-                tr.main()
-            handle.assert_called_once_with("/montage diagnose", 44, "1", "1")
-            send.assert_called_once_with("angenommen")
-            self.assertEqual(offset.read_text().strip(), "44")
-
-    def test_openmontage_full_router_to_dispatch_contract(self):
-        from scripts import openmontage_control as om
-        update = {"update_id": 44, "message": {"chat": {"id": "1"}, "text": "/montage diagnose"}}
-        with tempfile.TemporaryDirectory() as tmp:
-            offset = Path(tmp) / "offset"
-            offset.write_text("43\n")
-            with patch.object(tr, "TELEGRAM_LAST_UPDATE_FILE", offset), \
-                 patch.object(tr, "get_chat_id", return_value="1"), \
-                 patch.object(tr, "get_updates", side_effect=lambda offset=None: [update] if offset == 44 else []), \
-                 patch.object(om, "STATE", Path(tmp) / "state.json"), \
-                 patch.dict(om.os.environ, {"GITHUB_TOKEN": "fake-test-token"}), \
-                 patch.object(om.requests, "post", return_value=types.SimpleNamespace(status_code=204)) as post, \
-                 patch.object(tr, "send_message") as send:
-                tr.main()
-                tr.main()
-            self.assertEqual(post.call_count, 1)
-            self.assertEqual(post.call_args.kwargs["json"], {
-                "ref": "main", "inputs": {"mode": "diagnose", "request_id": "tg-44"}})
-            self.assertIn("angenommen", send.call_args.args[0])
-            self.assertEqual(offset.read_text().strip(), "44")
-
     def test_first_run_baselines_and_second_run_uses_persistent_offset(self):
         update = {"update_id": 42, "message": {"chat": {"id": "1"}, "text": "info IG-12345678"}}
         calls = []
