@@ -165,3 +165,7 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 1: ** "Can Öncü hat in Magny-Cours just bewiesen: Wenn die Brüder Öncü ins Rennen gehen, gibt es nur einen Platz – ganz oben. 🏆"
 - Titel 2: ** Turkbirler – Die Stimme der türkischen Biker in Deutschland: "Wir fahren nicht für den Lärm, sondern für unsere Seele"
 - Hook 2: ** "Sie nennen
+
+### 2026-10-17 09:55 | Entwurf generiert
+- Titel 1: ... Plattform: ... Thema: ... Hook: ... Instagram-Caption: ... Facebook-Post: ... TikTok-Skript: ... Visuelle Idee: ... Medienvorschlag: ... Hashtags Instagram: ... Hashtags TikTok: ... Trend-Bezug: ... Viral-Score: X/10 Inspirations-Plattform: ... Inspirations-Quelle: ..."
+- Hook 1: ... Instagram-Caption: ... Facebook-Post: ... TikTok-Skript: ... Visuelle Idee: ... Medienvorschlag: ... Hashtags Instagram: ... Hashtags TikTok: ... Trend-Bezug: ... Viral-Score: X/10 Inspirations-Plattform: ... Inspirations-Quelle: ..."
