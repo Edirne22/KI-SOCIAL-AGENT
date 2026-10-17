@@ -23,6 +23,22 @@ import telegram_router as tr
 
 
 class TelegramOffsetTests(unittest.TestCase):
+    def test_openmontage_link_renew_routes_to_owner_handler(self):
+        command = "/montage link neu 4b3e8b9c-4449-4586-a048-0e6f77f41813"
+        update = {"update_id": 43, "message": {"chat": {"id": "1"}, "text": command}}
+        with tempfile.TemporaryDirectory() as tmp:
+            offset_file = Path(tmp) / "TELEGRAM_LAST_UPDATE_ID"
+            offset_file.write_text("42\n", encoding="utf-8")
+            with patch.object(tr, "TELEGRAM_LAST_UPDATE_FILE", offset_file), \
+                 patch.object(tr, "get_chat_id", return_value="1"), \
+                 patch.object(tr, "get_updates", side_effect=lambda offset=None: [update] if offset == 43 else []), \
+                 patch("scripts.openmontage_control.handle", return_value="Link angefordert") as handle, \
+                 patch.object(tr, "send_message") as send:
+                tr.main()
+            handle.assert_called_once_with(command, 43, "1", "1")
+            send.assert_called_once_with("Link angefordert")
+            self.assertEqual(offset_file.read_text().strip(), "43")
+
     def test_first_run_baselines_and_second_run_uses_persistent_offset(self):
         update = {"update_id": 42, "message": {"chat": {"id": "1"}, "text": "info IG-12345678"}}
         calls = []
