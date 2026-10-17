@@ -4,8 +4,10 @@ on:
     paths:
       - 'integrations/openmontage/**'
       - 'scripts/openmontage_control.py'
+      - 'scripts/openmontage_producer.py'
       - 'telegram_router.py'
       - 'tests/test_openmontage.py'
+      - 'tests/test_openmontage_producer.py'
       - 'test_telegram_router.py'
       - '.github/workflows/openmontage*.yml'
       - 'docs/OPENMONTAGE_FAQ.md'
@@ -26,5 +28,6 @@ jobs:
           .test-venv/bin/pip install --no-cache-dir requests pyyaml Pillow beautifulsoup4 boto3
       - run: |
           .test-venv/bin/python -m unittest discover -s tests -p test_openmontage.py -v
+          .test-venv/bin/python -m unittest discover -s tests -p test_openmontage_producer.py -v
           .test-venv/bin/python -m unittest test_telegram_router -v
           .test-venv/bin/python -m unittest discover -s tests -p test_telegram_schedule_recovery.py -v
