@@ -103,7 +103,7 @@ def synthetic_image(path, scene):
     path.write_bytes(f'P6\n{w} {h}\n255\n'.encode() + pixels)
 
 
-def filter_graph(scenes=None):
+def filter_graph(scenes=None, music=False):
     scenes = normalize_scenes(scenes)
     duration, frames = timeline(scenes)
     filters = []
@@ -134,7 +134,8 @@ def filter_graph(scenes=None):
         previous = label
     filters.append(f'[{previous}]trim=end_frame={frames},setpts=PTS-STARTPTS,'
                    f'fade=t=out:st={duration-0.5}:d=0.5[v]')
-    filters.append(f'[{len(scenes)}:a]atrim=duration={duration},afade=t=in:d=0.1,'
+    filters.append(f'[{len(scenes)}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,'
+                   f'volume={0.7 if music else 1},afade=t=in:d=0.15,'
                    f'afade=t=out:st={duration-0.6}:d=0.6[a]')
     return ';\n'.join(filters)
 
@@ -167,9 +168,13 @@ def verify(movie, scenes=None):
     return data
 
 
-def render(output, scenes=None):
+def render(output, scenes=None, music=None):
     scenes = normalize_scenes(scenes)
     duration, frames = timeline(scenes)
+    if music is not None:
+        music = Path(music).resolve(strict=True)
+        if not music.is_file() or music.suffix.lower() != '.wav' or music.stat().st_size > 30 * 1024 * 1024:
+            raise ValueError('Music must be a local WAV file up to 30 MiB')
     output = Path(output).absolute()
     # Refuse overwrite, including stale output directories from interrupted runs.
     output.mkdir(parents=True, exist_ok=False)
@@ -188,9 +193,12 @@ def render(output, scenes=None):
         # Original, deterministic 100-BPM pulse and chord bed; no copyrighted audio.
         sound = ('0.12*sin(2*PI*65*t)*exp(-12*mod(t,0.6))+'
                  '0.035*(sin(2*PI*220*t)+sin(2*PI*277.1826*t)+sin(2*PI*329.6276*t))')
-        args += ['-f', 'lavfi', '-i', f"aevalsrc='{sound}':s=48000:d={duration}"]
+        if music is None:
+            args += ['-f', 'lavfi', '-i', f"aevalsrc='{sound}':s=48000:d={duration}"]
+        else:
+            args += ['-stream_loop', '-1', '-i', str(music)]
         graph = work / 'filters.txt'
-        graph.write_text(filter_graph(scenes))
+        graph.write_text(filter_graph(scenes, music=music is not None))
         partial = output / 'rendering.mp4'
         args += ['-filter_complex_script', str(graph), '-map', '[v]', '-map', '[a]',
                  '-c:v', 'libx264', '-threads', '2', '-preset', 'veryfast', '-crf', '23',
@@ -207,6 +215,7 @@ def render(output, scenes=None):
     elapsed = round(time.monotonic() - started, 3)
     report = {'status': 'verified', 'synthetic_only': True, 'publish': False,
               'render_and_validation_seconds': elapsed, 'duration': duration,
+              'music_source': 'local_wav' if music is not None else 'synthetic',
               'width': WIDTH, 'height': HEIGHT, 'fps': FPS, 'frames': frames,
               'transitions': [s['transition'] for s in scenes[:-1]], 'scene_count': len(scenes), 'sha256': hashlib.sha256(movie.read_bytes()).hexdigest(),
               'bytes': movie.stat().st_size,
@@ -222,5 +231,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True, help='New output directory (must not exist)')
     parser.add_argument('--scenes', type=Path, help='UTF-8 JSON list of scenes; omitted = original demo')
+    parser.add_argument('--music', type=Path, help='Optional authorized local WAV soundtrack (no downloads)')
     args = parser.parse_args()
-    print(json.dumps(render(args.output, load_scenes(args.scenes) if args.scenes else None), indent=2))
+    print(json.dumps(render(args.output, load_scenes(args.scenes) if args.scenes else None, music=args.music), indent=2))

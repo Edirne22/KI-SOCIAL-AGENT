@@ -90,6 +90,34 @@ class CreativeTests(unittest.TestCase):
         self.assertIn('uses: ./.github/workflows/openmontage-creative.yml', bridge)
         self.assertNotIn('secrets', bridge)
 
+    def test_music_graph_has_bounded_gain_and_fades(self):
+        graph = renderer.filter_graph(music=True)
+        self.assertIn('volume=0.7', graph)
+        self.assertIn('afade=t=in:d=0.15', graph)
+        self.assertIn('afade=t=out:', graph)
+        self.assertIn('[4:a]', graph)
+
+    def test_reject_non_wav_music_before_creating_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / 'audio.mp3'
+            source.write_bytes(b'not audio')
+            output = Path(tmp) / 'render'
+            with self.assertRaises(ValueError):
+                renderer.render(output, music=source)
+            self.assertFalse(output.exists())
+
+    @unittest.skipUnless(os.environ.get('OPENMONTAGE_MUSIC_E2E') == '1', 'explicit soundtrack render only')
+    def test_real_local_wav_music_and_full_decode(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            music = Path(tmp) / 'authorized-test.wav'
+            subprocess.run(['ffmpeg', '-v', 'error', '-f', 'lavfi', '-i',
+                            'sine=frequency=440:sample_rate=48000:duration=2',
+                            '-c:a', 'pcm_s16le', str(music)], check=True, timeout=30)
+            out = Path(tmp) / 'result'
+            report = renderer.render(out, music=music)
+            self.assertEqual(report['music_source'], 'local_wav')
+            renderer.verify(out / 'creative-demo.mp4')
+
     def test_default_scene_contract_is_preserved(self):
         scenes = renderer.normalize_scenes()
         self.assertEqual([s['title'] for s in scenes], list(renderer.TITLES))
