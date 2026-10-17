@@ -1,0 +1,30 @@
+name: OpenMontage Integration Tests
+on:
+  pull_request:
+    paths:
+      - 'integrations/openmontage/**'
+      - 'scripts/openmontage_control.py'
+      - 'telegram_router.py'
+      - 'tests/test_openmontage.py'
+      - 'test_telegram_router.py'
+      - '.github/workflows/openmontage*.yml'
+      - 'docs/OPENMONTAGE_FAQ.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python -m venv .test-venv
+          .test-venv/bin/pip install --no-cache-dir requests pyyaml Pillow beautifulsoup4 boto3
+      - run: |
+          .test-venv/bin/python -m unittest discover -s tests -p test_openmontage.py -v
+          .test-venv/bin/python -m unittest test_telegram_router -v
+          .test-venv/bin/python -m unittest discover -s tests -p test_telegram_schedule_recovery.py -v
