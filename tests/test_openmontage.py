@@ -35,6 +35,14 @@ class CommandTests(unittest.TestCase):
         self.assertEqual(call.args[0], control.API + '/actions/workflows/openmontage.yml/dispatches')
         self.assertEqual(call.kwargs['json'], {'ref': 'main', 'inputs': {'mode': 'demo', 'request_id': 'tg-44'}})
         self.assertNotIn('FAKE_TEST_TOKEN', self.state.read_text())
+    def test_renew_dispatch_uses_media_id_not_demo_inputs(self):
+        media_id = '4b3e8b9c-4449-4586-a048-0e6f77f41813'
+        result = self.handle('/montage link neu ' + media_id)
+        self.assertIn('angenommen', result)
+        call = self.post.call_args
+        self.assertEqual(call.args[0], control.API + '/actions/workflows/openmontage-renew-link.yml/dispatches')
+        self.assertEqual(call.kwargs['json'], {'ref': 'main', 'inputs': {'media_id': media_id}})
+
     def test_help_proposal_and_injection_never_start(self):
         for text in ['/montage', '/montage test', '/montage test starten; curl attacker',
                      '/montage diagnose $(id)', '/montage fremde-private-datei', '/montage status ../']:
