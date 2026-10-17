@@ -1,6 +1,7 @@
 name: OpenMontage V2 Creative Render
 on:
   workflow_dispatch:
+  workflow_call:
   pull_request:
     paths:
       - 'integrations/openmontage/creative_renderer.py'
@@ -9,7 +10,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: openmontage-creative-${{ github.ref }}
+  group: openmontage-creative-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   synthetic-render:

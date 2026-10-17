@@ -44,7 +44,7 @@ FFmpeg 6.1.1, vier geometrische PPM-Motive, H.264/yuv420p, AAC stereo,
 Render inklusive Synthese und Validierung: **9,662 Sekunden**.
 SHA-256: `fe55d56bd1f0fbf33514f15ae67a2ea8fd401354657a449e34e36d1804f0d41c`.
 Vollständiger Decode erfolgreich. Bildstichproben bei den Szenen/Übergängen geprüft.
-7 neue Tests inklusive echtem Zweitrender bestanden; 29 bestehende OpenMontage-
+8 neue Tests inklusive echtem Zweitrender bestanden; 29 bestehende OpenMontage-
 Vertragstests bestanden. CI-Nachweise stehen im PR; ein gestarteter Run ist kein PASS.
 
 ## GitHub Actions / Download
@@ -52,9 +52,11 @@ Vertragstests bestanden. CI-Nachweise stehen im PR; ein gestarteter Run ist kein
 Workflow **OpenMontage V2 Creative Render**. PR-Läufe rendern tatsächlich, ohne Secrets.
 Nach erfolgreichem Lauf enthält das Artefakt `openmontage-v2-synthetic-<sha>` ausschließlich
 MP4 und zwei Prüfberichte (7 Tage Aufbewahrung). Kein R2- oder Social-Upload.
-`workflow_dispatch` ist vorbereitet; eine neue Workflow-Datei wird auf GitHub erst nach
-Aufnahme auf dem Default-Branch regulär manuell angeboten. Vor Merge daher PR-Render
-verwenden; ein manueller Lauf darf nicht ohne Run-Beleg behauptet werden.
+Vor Merge: bestehenden Workflow **OpenMontage Integration Tests** manuell auf dem
+Branch `feat/openmontage-v2-creative-renderer` starten. Er ruft nur bei
+`workflow_dispatch` den kreativen Renderer als lokalen wiederverwendbaren Workflow auf.
+Der neue eigenständige Workflow hat vor Aufnahme auf Main noch keinen Startknopf.
+Manuelle Ergebnisse werden separat im PR mit Run-Link nachgewiesen.
 
 ## Block 2 – offen
 

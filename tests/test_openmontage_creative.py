@@ -77,6 +77,19 @@ class CreativeTests(unittest.TestCase):
         self.assertIn('offset=10.200', graph)
         self.assertEqual(graph.count('zoompan='), 4)
 
+    def test_workflow_is_secret_free_and_manual_bridge_is_gated(self):
+        root = Path(__file__).resolve().parents[1]
+        workflow = (root / '.github/workflows/openmontage-creative.yml').read_text()
+        for trigger in ('pull_request:', 'workflow_dispatch:', 'workflow_call:'):
+            self.assertIn(trigger, workflow)
+        self.assertIn('permissions:\n  contents: read', workflow)
+        self.assertNotIn('secrets.', json.dumps(workflow))
+        self.assertNotIn('pull_request_target', workflow)
+        bridge = (root / '.github/workflows/openmontage-tests.yml').read_text().split('  creative-manual:')[1]
+        self.assertIn("if: github.event_name == 'workflow_dispatch'", bridge)
+        self.assertIn('uses: ./.github/workflows/openmontage-creative.yml', bridge)
+        self.assertNotIn('secrets', bridge)
+
     @unittest.skipUnless(os.environ.get('OPENMONTAGE_RENDER_E2E') == '1', 'explicit real render only')
     def test_real_synthetic_movie_audio_and_full_decode(self):
         with tempfile.TemporaryDirectory() as tmp:
