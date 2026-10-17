@@ -491,6 +491,25 @@ def main() -> None:
 
         normalized = " ".join(text.strip().lower().split())
         cmd = normalized.lstrip("/")
+        # Editorial-only OpenMontage review; never invokes social publishing.
+        review_match = re.fullmatch(
+            r"/montage (freigeben|ablehnen) ([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})",
+            normalized,
+        )
+        if review_match:
+            from scripts.openmontage_review import record_review
+            decision = "approve" if review_match.group(1) == "freigeben" else "reject"
+            try:
+                outcome = record_review(
+                    review_match.group(2), decision, chat_id=chat,
+                    authorized_chat_id=allowed,
+                    state_path=Path("memory/OPENMONTAGE_REVIEWS.json"),
+                )
+                send_message(f"OpenMontage Sichtung: {decision} ({outcome}). Keine Veröffentlichung.")
+            except (ValueError, PermissionError) as exc:
+                send_message(f"OpenMontage Sichtung abgelehnt: {exc}")
+            _ack(uid)
+            continue
         # Owner-only OpenMontage commands precede the generic command fallback.
         from scripts import openmontage_control
         if openmontage_control.is_command(text):
