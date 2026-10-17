@@ -1,0 +1,117 @@
+name: OpenMontage
+run-name: OpenMontage ${{ inputs.mode }} ${{ inputs.request_id || github.run_id }}
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'diagnose = Setup/Secret-Namen prüfen; demo = ausdrücklich Demo ohne Keys rendern'
+        required: true
+        type: choice
+        options: [diagnose, demo]
+        default: diagnose
+      request_id:
+        description: 'Telegram-Auftrags-ID; bei manuellem Start leer lassen'
+        required: false
+        type: string
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: openmontage-runtime
+  cancel-in-progress: false
+jobs:
+  run:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write # Atomic request claim, no main-branch writes.
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Lokale Steuerungsumgebung
+        run: |
+          python3 -m venv integrations/openmontage/.runtime/control
+          integrations/openmontage/.runtime/control/bin/python -m pip install --no-cache-dir requests
+      - name: Auftrag einmalig reservieren
+        id: claim
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REQUEST_ID: ${{ inputs.request_id }}
+          MODE: ${{ inputs.mode }}
+        run: |
+          integrations/openmontage/.runtime/control/bin/python - <<'PY'
+          import os
+          from scripts.openmontage_control import claim_request
+          if os.environ['MODE'] not in ('diagnose', 'demo'):
+              raise SystemExit('Unzulässiger Modus')
+          request_id = os.environ['REQUEST_ID'] or ('manual-' + os.environ['GITHUB_RUN_ID'])
+          claimed = claim_request(request_id, os.environ['GITHUB_TOKEN'], os.environ['GITHUB_SHA'])
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('claimed=' + str(claimed).lower() + '\n')
+          if not claimed:
+              raise SystemExit('Auftrags-ID bereits reserviert oder ungültig. Kein doppelter Renderstart. Für einen bewussten Neustart neuen Befehl senden.')
+          PY
+      - name: OpenMontage im Unterordner auschecken
+        uses: actions/checkout@v4
+        with:
+          repository: calesthio/OpenMontage
+          ref: c8066452325cb57c8fc1ba8c2a71b6e8842e6b65
+          path: integrations/openmontage/upstream
+          persist-credentials: false
+      - name: Quick Start im Projektordner
+        run: python3 integrations/openmontage/runtime.py setup
+      - name: Secret-Verfügbarkeit prüfen (keine Werte oder API-Aufrufe)
+        if: inputs.mode == 'diagnose'
+        env:
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          ATLASCLOUD_API_KEY: ${{ secrets.ATLASCLOUD_API_KEY }}
+          KLING_API_KEY: ${{ secrets.KLING_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          SUNO_API_KEY: ${{ secrets.SUNO_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY || secrets.GEMINI_API_KEY }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
+          RUNWAY_API_KEY: ${{ secrets.RUNWAY_API_KEY }}
+        run: python3 integrations/openmontage/runtime.py diagnose
+      - name: Freigegebene Demo ohne API-Keys
+        if: inputs.mode == 'demo'
+        run: python3 integrations/openmontage/runtime.py demo
+      - name: Diagnose oder synthetischen Film bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: openmontage-${{ github.run_id }}
+          path: |
+            integrations/openmontage/.runtime/diagnose.json
+            integrations/openmontage/upstream/projects/demos/renders/code-to-screen.mp4
+          if-no-files-found: error
+          retention-days: 7
+      - name: Ergebnis in Telegram melden
+        if: always() && steps.claim.outputs.claimed == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          integrations/openmontage/.runtime/control/bin/python - <<'PY'
+          import os
+          from telegram_bot import send_message
+          url = 'https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/' + os.environ['GITHUB_RUN_ID']
+          text = 'OpenMontage: ' + os.environ['JOB_STATUS'] + '\nErgebnis/Download: ' + url
+          try:
+              send_message(text)
+          except Exception:
+              raise SystemExit('Telegram-Ergebnismeldung fehlgeschlagen; Ergebnis im Actions-Lauf prüfen.') from None
+          PY
