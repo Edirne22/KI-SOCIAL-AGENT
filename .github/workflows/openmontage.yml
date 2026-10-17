@@ -89,6 +89,19 @@ jobs:
       - name: Freigegebene Demo ohne API-Keys
         if: inputs.mode == 'demo'
         run: python3 integrations/openmontage/runtime.py demo
+      - name: Private R2-Vorschau nur nach erfolgreichem Demo-Render
+        if: inputs.mode == 'demo'
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          OPENMONTAGE_VIDEO_PATH: integrations/openmontage/upstream/projects/demos/renders/code-to-screen.mp4
+        run: |
+          integrations/openmontage/.runtime/control/bin/python -m pip install --disable-pip-version-check boto3
+          integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_publish_preview
       - name: Diagnose oder synthetischen Film bereitstellen
         uses: actions/upload-artifact@v4
         with:
