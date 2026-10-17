@@ -112,8 +112,7 @@ def handle(text, update_id, chat, authorized_chat, *, state=None, post=None, get
     save("dispatching")
     try:
         r = (post or requests.post)(f"{API}/actions/workflows/{workflow}/dispatches",
-                                   headers=auth, json={"ref": "main", "inputs": {
-                                       "mode": action, "request_id": request_id}}, timeout=20)
+                                   headers=auth, json={"ref": "main", "inputs": inputs}, timeout=20)
     except requests.RequestException:
         save("uncertain")
         return (f"Auftrag {request_id}: GitHub-Antwort ausgeblieben; Annahme unklar. "
