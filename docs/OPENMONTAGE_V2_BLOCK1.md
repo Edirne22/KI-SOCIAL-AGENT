@@ -66,3 +66,46 @@ Manuelle Ergebnisse werden separat im PR mit Run-Link nachgewiesen.
 - Neuen Renderer an bestehende Telegram-Aufträge und private R2-Vorschau anschließen.
 - Echten Befehl → Renderer → privates R2 → Telegram-Nachweis gesondert abnehmen.
 - Keine automatische Veröffentlichung; Merge dieses PR nur nach Bülents Freigabe.
+
+## Block 2A – flexible Szenen (synthetische Motive)
+
+Optional `--scenes scenes.json`; ohne diese Option bleibt die Vier-Szenen-Demo
+mit 14,2 Sekunden erhalten. Python-Aufruf: `render(output, scenes=None)`.
+
+```json
+[
+  {"title":"Auftakt", "duration":2, "zoom":"in", "motion":"right", "transition":"wipeleft"},
+  {"title":"Neue Perspektive", "duration":3, "zoom":"out", "motion":"left", "transition":"circleopen"},
+  {"title":"Finale", "duration":2, "zoom":"none", "motion":"none"}
+]
+```
+
+```bash
+python integrations/openmontage/creative_renderer.py --scenes scenes.json --output /tmp/om-flex-neu
+OPENMONTAGE_RENDER_E2E=1 OPENMONTAGE_SCENES_E2E=1 python -m unittest discover -s tests -p test_openmontage_creative.py -v
+```
+
+Vertrag: 1–8 Szenen; Titel 1–40 druckbare Zeichen; Dauer je Szene 1,5–15 s
+auf dem 30-fps-Raster; fertiger Film höchstens 60 s. JSON höchstens 32 KiB.
+`title` und `duration` sind Pflicht. Unbekannte Felder werden abgewiesen.
+`zoom`: `in`, `out`, `none`; `motion`: `left`, `right`, `none`.
+Ohne Zoom, aber mit Bewegung wird ein fester 1,2-facher Ausschnitt geschwenkt.
+Ohne Zoom und Bewegung bleibt das Bild statisch.
+Der Übergang gehört zur ausgehenden Szene: `fade`, `wipeleft`, `circleopen`;
+Überlappung weiterhin 0,6 s. Die letzte Szene hat keinen Übergang (weglassen
+oder `null`). Ohne Effektangaben gelten die bisherigen alternierenden Defaults.
+Titel gelangen über UTF-8-Textdateien mit deaktivierter Expansion zu FFmpeg,
+nie als Filtercode. Auflösung, Codecs, synthetischer Ton und Sicherheitsprüfungen
+bleiben bestehen; Framezahl und Dauer werden aus der Liste berechnet.
+
+Abnahmematrix 2A: bisherige Tests; Standarddemo; variable Szene-/Framezahlen;
+Einzelszene; alle Zoom-/Bewegungswerte; literal behandelte Sonderzeichen;
+ungültige/überlange Eingaben, NaN/Infinity, unbekannte Felder und Filterinjektion
+vor Dateierstellung; echter CLI-Render von fünf Szenen und einer Einzelszene
+mit ffprobe und vollständigem Decode. Die CI aktiviert die neuen echten
+Szenentests und rendert anschließend wie bisher die Standarddemo.
+Keine neue externe Schnittstelle: Telegram/R2/Publisher und Medien-Intake N/A.
+
+Offen für Block 2B (separat beauftragen): echte autorisierte Medien als Quellen,
+Musik/Beat-Erkennung sowie spätere Telegram-/R2-Anbindung. Block 2A akzeptiert
+bewusst keine Medienpfade oder URLs. CI-Ergebnisse und genauer Commit im PR.

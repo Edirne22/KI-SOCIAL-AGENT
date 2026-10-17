@@ -90,6 +90,96 @@ class CreativeTests(unittest.TestCase):
         self.assertIn('uses: ./.github/workflows/openmontage-creative.yml', bridge)
         self.assertNotIn('secrets', bridge)
 
+    def test_default_scene_contract_is_preserved(self):
+        scenes = renderer.normalize_scenes()
+        self.assertEqual([s['title'] for s in scenes], list(renderer.TITLES))
+        self.assertEqual(renderer.timeline(scenes), (14.2, 426))
+        self.assertEqual([s['transition'] for s in scenes[:-1]], list(renderer.TRANSITIONS))
+
+    def test_variable_lengths_and_single_scene_timeline(self):
+        scenes = [{'title': 'A', 'duration': 2, 'transition': 'circleopen'},
+                  {'title': 'B', 'duration': 3, 'transition': 'wipeleft'},
+                  {'title': 'C', 'duration': 4}]
+        self.assertEqual(renderer.timeline(renderer.normalize_scenes(scenes)), (7.8, 234))
+        graph = renderer.filter_graph(scenes)
+        self.assertIn('offset=1.400', graph)
+        self.assertIn('offset=3.800', graph)
+        self.assertIn('[3:a]', graph)
+        self.assertNotIn('xfade=', renderer.filter_graph(scenes[-1:]))
+        self.assertEqual(renderer.timeline(renderer.normalize_scenes(scenes[-1:])), (4, 120))
+
+    def test_title_is_literal_not_filter_code(self):
+        title = "Bülent: 100% ' [%{pts}] \\"
+        graph = renderer.filter_graph([{'title': title, 'duration': 2}])
+        self.assertNotIn(title, graph)
+        self.assertIn('textfile=title-0.txt:expansion=none', graph)
+
+    def test_reject_invalid_config_before_output_or_process(self):
+        good = {'title': 'Test', 'duration': 2}
+        bad = [[], {}, [good] * 9, [dict(good, duration=15)] * 8]
+        for key, value in [('duration', True), ('duration', 0), ('duration', 1.49),
+                           ('duration', 16), ('duration', 2.01), ('duration', float('nan')),
+                           ('duration', float('inf')), ('duration', 10**400),
+                           ('title', ''), ('title', 'x'*41), ('title', 'a\nb'),
+                           ('title', '\x00'), ('zoom', 'evil'), ('motion', '$(id)'),
+                           ('transition', 'fade'), ('path', '/private/photo.jpg')]:
+            bad.append([dict(good, **{key: value})])
+        bad.append([dict(good, transition='movie=/etc/passwd'), good])
+        with tempfile.TemporaryDirectory() as tmp, patch.object(renderer, 'run') as run:
+            out = Path(tmp) / 'unused'
+            for scenes in bad:
+                with self.subTest(scenes=scenes), self.assertRaises(ValueError):
+                    renderer.render(out, scenes)
+                self.assertFalse(out.exists())
+            run.assert_not_called()
+
+    def test_all_motion_modes_and_frame_boundary(self):
+        for zoom in ('in', 'out', 'none'):
+            for motion in ('left', 'right', 'none'):
+                scenes = [{'title': 'OK', 'duration': 46/30, 'zoom': zoom, 'motion': motion}]
+                self.assertEqual(renderer.timeline(renderer.normalize_scenes(scenes)), (46/30, 46))
+                self.assertIn('trim=end_frame=46', renderer.filter_graph(scenes))
+
+    def test_json_loading_is_bounded_and_strict(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'scenes.json'
+            for content in ('null', '{}', '{broken', ' ' * 32769):
+                path.write_text(content)
+                with self.assertRaises(ValueError):
+                    renderer.load_scenes(path)
+            path.write_text('[{"title":"Dünya", "duration":2}]', encoding='utf-8')
+            self.assertEqual(renderer.load_scenes(path)[0]['title'], 'Dünya')
+
+    def test_probe_uses_configured_duration_and_frames(self):
+        scenes = [{'title': 'Single', 'duration': 2}]
+        probe = self.valid_probe()
+        with self.assertRaises(ValueError):
+            renderer.validate_probe(probe, scenes)
+        probe['format']['duration'] = '2.0'
+        probe['streams'][0]['nb_read_frames'] = '60'
+        renderer.validate_probe(probe, scenes)
+
+    @unittest.skipUnless(os.environ.get('OPENMONTAGE_SCENES_E2E') == '1', 'explicit flexible render only')
+    def test_real_custom_and_single_scene_movies(self):
+        scenes = [{'title': "Bülent: 100% ' [%{pts}]", 'duration': 1.5 + i/10,
+                   'zoom': ('none', 'in', 'out')[i % 3],
+                   'motion': ('none', 'left', 'right')[i % 3],
+                   'transition': renderer.TRANSITIONS[i % 3] if i < 4 else None}
+                  for i in range(5)]
+        with tempfile.TemporaryDirectory() as tmp:
+            for count, config in ((5, scenes), (1, [dict(scenes[0], transition=None)])):
+                out = Path(tmp) / str(count)
+                path = Path(tmp) / f'{count}.json'
+                path.write_text(json.dumps(config), encoding='utf-8')
+                # End-to-end CLI -> JSON -> renderer -> ffprobe, including literal special characters.
+                import sys
+                subprocess.run([sys.executable, str(Path(renderer.__file__)), '--scenes', str(path),
+                                '--output', str(out)], check=True, capture_output=True, timeout=120)
+                report = json.loads((out / 'report.json').read_text())
+                self.assertEqual(report['scene_count'], count)
+                self.assertEqual(report['frames'], 183 if count == 5 else 45)
+                renderer.validate_probe(json.loads((out / 'ffprobe.json').read_text()), config)
+
     @unittest.skipUnless(os.environ.get('OPENMONTAGE_RENDER_E2E') == '1', 'explicit real render only')
     def test_real_synthetic_movie_audio_and_full_decode(self):
         with tempfile.TemporaryDirectory() as tmp:
