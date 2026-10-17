@@ -28,7 +28,7 @@ class TelegramOffsetTests(unittest.TestCase):
         update = {"update_id": 43, "message": {"chat": {"id": "1"}, "text": command}}
         with tempfile.TemporaryDirectory() as tmp:
             offset_file = Path(tmp) / "TELEGRAM_LAST_UPDATE_ID"
-            offset_file.write_text("42\\n", encoding="utf-8")
+            offset_file.write_text("42\n", encoding="utf-8")
             with patch.object(tr, "TELEGRAM_LAST_UPDATE_FILE", offset_file), \
                  patch.object(tr, "get_chat_id", return_value="1"), \
                  patch.object(tr, "get_updates", side_effect=lambda offset=None: [update] if offset == 43 else []), \
