@@ -7,6 +7,9 @@ on:
       - 'scripts/openmontage_r2.py'
       - 'media_storage.py'
       - 'tests/test_openmontage_r2.py'
+      - 'scripts/openmontage_telegram_preview.py'
+      - 'scripts/openmontage_send_private_preview.py'
+      - 'tests/test_openmontage_telegram_preview.py'
       - 'telegram_router.py'
       - 'tests/test_openmontage.py'
       - 'test_telegram_router.py'
@@ -30,6 +33,7 @@ jobs:
       - run: |
           .test-venv/bin/python -m unittest discover -s tests -p test_openmontage.py -v
           .test-venv/bin/python -m unittest discover -s tests -p test_openmontage_r2.py -v
+          .test-venv/bin/python -m unittest discover -s tests -p test_openmontage_telegram_preview.py -v
           .test-venv/bin/python -m unittest test_telegram_router -v
           .test-venv/bin/python -m unittest discover -s tests -p test_telegram_schedule_recovery.py -v
 
