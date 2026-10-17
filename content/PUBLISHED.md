@@ -372,31 +372,6 @@ Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-son
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-09-racing-editorial-2026-10-09-4-franco-morbidelli-de-01.jpg
 
-## Facebook [GEPOSTET 2026-10-09 08:45 | ID: 1285968257941776_122121646071469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-09-daily
-Telegram-Update-ID: 279361923
-MotoGP-Auswahl: 4
-Story-Key: title:franco-morbidelli-den-rtan-itiraf-ducati-nin-beni-se-mesi-kolay-de-ildi
-Event-Fingerprint: -
-Titel: Franco Morbidelli'den şaşırtan itiraf: “Ducati'nin beni seçmesi kolay değildi”
-Text:
-Franco Morbidelli wechselt 2027 von MotoGP zu Ducati in der WorldSBK.
-
-Er gibt zu, dass es für Ducati nicht einfach war, ihn zu verpflichten.
-
-Nach einem schwierigen MotoGP-Jahr will er zurück ins Kampfgeschehen um Siege.
-
-Wie findet ihr den Schritt von Morbidelli Richtung Superbike?
-
-#WorldSBK #FrancoMorbidelli #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
-Quelle: https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu", "media_status": "", "object_id": "1285968257941776_122121646071469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122121646071469415", "source_url": "https://motoetkinlik.com/franco-morbidelli-ducati-worldsbk-transferi-sonrasi-sessizligini-bozdu", "version": 1}
-
 ## Instagram [GEPOSTET 2026-10-12 19:35 | ID: 18085670366319205]
 Status: GEPOSTET
 Freigabe: Telegram
