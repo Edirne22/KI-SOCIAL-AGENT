@@ -9,6 +9,7 @@ on:
       - 'tests/test_openmontage_r2.py'
       - 'scripts/openmontage_telegram_preview.py'
       - 'scripts/openmontage_send_private_preview.py'
+      - 'scripts/openmontage_renew_link.py'
       - 'tests/test_openmontage_telegram_preview.py'
       - 'telegram_router.py'
       - 'tests/test_openmontage.py'
