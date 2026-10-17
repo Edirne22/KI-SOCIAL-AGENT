@@ -7,7 +7,7 @@ import argparse
 from pathlib import Path
 import subprocess
 import tempfile
-from scripts.openmontage_producer import probe
+from openmontage_producer import probe
 
 SCENES = [
     ("RACE WEEKEND", "MOTORSPORT // PREVIEW", "0x19243a"),
@@ -28,7 +28,7 @@ def make_preview(output: Path) -> dict:
             # Animated diagonal grid + prominent typography and fades.
             filters = (
                 "drawgrid=w=100:h=100:t=3:c=white@0.13,"
-                "drawbox=x=0:y=1150:w=iw:h=440:color=black@0.55:t=fill,"
+                f"drawbox=x=0:y=1150:w=iw:h=440:color={background}@0.85:t=fill,"
                 f"drawtext=text='{title}':fontcolor=white:fontsize=92:"
                 "x=(w-text_w)/2:y=1230,"
                 f"drawtext=text='{subtitle}':fontcolor=yellow:fontsize=39:"
