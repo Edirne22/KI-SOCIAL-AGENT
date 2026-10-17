@@ -17,7 +17,7 @@ HELP = (
     "/montage test – Testbeschreibung, startet nichts\n"
     "/montage test starten – ausdrücklich eine synthetische Remotion-Demo ohne Keys rendern\n"
     "/montage status – letzte GitHub-Läufe und Downloadlinks\n"
-    "/montage link neu <Video-ID> – privaten Download-Link für 24 Stunden erneuern\\n"
+    "/montage link neu <Video-ID> – privaten Download-Link für 24 Stunden erneuern\n"
     "FAQ: https://github.com/Edirne22/KI-SOCIAL-AGENT/blob/main/docs/OPENMONTAGE_FAQ.md\n"
     "Freie Filmaufträge brauchen weiterhin einen Coding-Agenten. Kein Social-Publishing."
 )
