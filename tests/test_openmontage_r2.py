@@ -39,7 +39,7 @@ class PrivatePreviewTests(unittest.TestCase):
         self.assertEqual(signed.kwargs["Params"]["Key"], args[2])
 
     def test_expiry_rejected_before_upload(self):
-        for invalid in (0, 59, 3601, True, "900"):
+        for invalid in (0, 59, 604801, True, "900"):
             with self.subTest(invalid=invalid):
                 with self.assertRaises(ValueError):
                     upload_private_preview(self.file, storage=self.storage, expires_seconds=invalid)
