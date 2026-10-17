@@ -59,7 +59,7 @@ def render(manifest: Path, output: Path) -> dict:
             subprocess.run(command, check=True, timeout=180)
             parts.append(part)
         concat = Path(tmp) / "concat.txt"
-        concat.write_text("".join(f"file '{p.as_posix()}'\\n" for p in parts), encoding="utf-8")
+        concat.write_text("".join(f"file '{p.as_posix()}'\n" for p in parts), encoding="utf-8")
         subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-nostdin",
                         "-y", "-f", "concat", "-safe", "0", "-i", str(concat),
                         "-c", "copy", "-movflags", "+faststart", str(output)],
