@@ -17,7 +17,7 @@ HELP = (
     "/montage test – Testbeschreibung, startet nichts\n"
     "/montage test starten – ausdrücklich eine synthetische Remotion-Demo ohne Keys rendern\n"
     "/montage status – letzte GitHub-Läufe und Downloadlinks\n"
-    "FAQ: https://github.com/Edirne22/KI-SOCIAL-AGENT/blob/main/docs/OPENMONTAGE_FAQ.md\n"
+    "/montage link neu <Video-ID> – privaten Download-Link für 24 Stunden erneuern\\n"\n    "FAQ: https://github.com/Edirne22/KI-SOCIAL-AGENT/blob/main/docs/OPENMONTAGE_FAQ.md\n"
     "Freie Filmaufträge brauchen weiterhin einen Coding-Agenten. Kein Social-Publishing."
 )
 
@@ -30,7 +30,7 @@ def parse_command(text):
     if not is_command(text):
         return None
     args = " ".join(text.strip().split()[1:]).lower()
-    return {"": "help", "hilfe": "help", "help": "help", "diagnose": "diagnose",
+    if args == "link neu":\n        return "renew_missing"\n    match = re.fullmatch(r"link neu ([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})", args)\n    if match:\n        return "renew:" + match.group(1)\n    return {"": "help", "hilfe": "help", "help": "help", "diagnose": "diagnose",
             "test": "proposal", "test starten": "demo", "status": "status"}.get(args, "invalid")
 
 
@@ -69,7 +69,7 @@ def handle(text, update_id, chat, authorized_chat, *, state=None, post=None, get
         return None
     if action in ("help", "invalid"):
         return HELP
-    if action == "proposal":
+    if action == "renew_missing":\n        return "Bitte Video-ID angeben: /montage link neu <Video-ID>"\n    if action == "proposal":
         return ("Testvorschlag: die mitgelieferte OpenMontage-Demo 'code-to-screen' "
                 "mit animierten Texten und Diagrammen. Ohne Stimme, Archivmaterial, Musik "
                 "oder API-Keys. Das ist ein Techniktest, nicht der vorgeschlagene NASA-Film. "
@@ -79,7 +79,7 @@ def handle(text, update_id, chat, authorized_chat, *, state=None, post=None, get
         return recent_runs(token, get)
     if type(update_id) is not int or update_id < 0:
         raise ValueError("Ungültige Telegram-Update-ID.")
-    auth = headers(token)
+    auth = headers(token)\n    if action.startswith("renew:"):\n        media_id = action.partition(":")[2]\n        workflow = "openmontage-renew-link.yml"\n        inputs = {"media_id": media_id}\n    else:\n        workflow = WORKFLOW\n        inputs = {"mode": action, "request_id": f"tg-{update_id}"}
     state = Path(state) if state is not None else STATE
     ledger = json.loads(state.read_text()) if state.exists() else {}
     request_id = f"tg-{update_id}"
@@ -96,7 +96,7 @@ def handle(text, update_id, chat, authorized_chat, *, state=None, post=None, get
     # Persist intent before dispatch. A timeout must never silently trigger a retry.
     save("dispatching")
     try:
-        r = (post or requests.post)(f"{API}/actions/workflows/{WORKFLOW}/dispatches",
+        r = (post or requests.post)(f"{API}/actions/workflows/{workflow}/dispatches",
                                    headers=auth, json={"ref": "main", "inputs": {
                                        "mode": action, "request_id": request_id}}, timeout=20)
     except requests.RequestException:
