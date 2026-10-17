@@ -28,7 +28,17 @@ def run_ffmpeg(cmd, *, step, timeout):
     try:
         return subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=timeout)
     except subprocess.CalledProcessError as exc:
-        raise RuntimeError(f"PRIVATE_FFMPEG_FAILED:{step}:exit_{exc.returncode}") from None
+        # Classify stderr in memory only; never persist stderr, private paths or media.
+        err=(exc.stderr or b"").decode("utf-8","replace").lower()
+        if "no space left on device" in err: category="DISK_FULL"
+        elif "cannot allocate memory" in err or "out of memory" in err: category="OUT_OF_MEMORY"
+        elif "error initializing output stream" in err or "error while opening encoder" in err: category="ENCODER_INIT"
+        elif "no such filter" in err or "error initializing complex filters" in err: category="FILTER_GRAPH"
+        elif "invalid argument" in err: category="INVALID_ARGUMENT"
+        elif "conversion failed" in err: category="CONVERSION_FAILED"
+        elif "permission denied" in err: category="PERMISSION"
+        else: category="UNCLASSIFIED"
+        raise RuntimeError(f"PRIVATE_FFMPEG_FAILED:{step}:exit_{exc.returncode}:{category}") from None
     except subprocess.TimeoutExpired:
         raise RuntimeError(f"PRIVATE_FFMPEG_TIMEOUT:{step}") from None
 
