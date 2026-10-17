@@ -66,6 +66,11 @@ jobs:
           ref: c8066452325cb57c8fc1ba8c2a71b6e8842e6b65
           path: integrations/openmontage/upstream
           persist-credentials: false
+      - name: FFmpeg auf GitHub-Runner bereitstellen
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
       - name: Quick Start im Projektordner
         run: python3 integrations/openmontage/runtime.py setup
       - name: Secret-Verfügbarkeit prüfen (keine Werte oder API-Aufrufe)
