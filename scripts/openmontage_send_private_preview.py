@@ -14,7 +14,7 @@ def main() -> None:
     source = Path(os.environ["OPENMONTAGE_MP4"])
     with TemporaryDirectory(prefix="om-r2-cache-") as cache:
         storage = R2Storage.from_env(cache_root=Path(cache))
-        result = upload_private_preview(source, storage=storage, expires_seconds=900)
+        result = upload_private_preview(source, storage=storage, expires_seconds=86400)
         send_owner_preview(result)
         # Intentionally do not print the bearer URL or full signed request.
         print(json.dumps({"status": "sent_to_owner", "media_id": result["media_id"],

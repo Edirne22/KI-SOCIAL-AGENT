@@ -19,7 +19,8 @@ def preview_message(preview: dict) -> str:
         "🎬 OpenMontage – PRIVATE VORSCHAU\n"
         f"Video herunterladen (Link {seconds // 60} Minuten gültig):\n{url}\n\n"
         "Nur Sichtung, keine Veröffentlichung.\n"
-        "Noch keine Freigabe-Kommandos aktiv. Keine Veröffentlichung."
+        f"Neuen Link: /montage link neu {preview['media_id']}\n"
+        "Keine Veröffentlichung."
     )
 
 
