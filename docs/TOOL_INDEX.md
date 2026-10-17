@@ -25,6 +25,20 @@
 
 **Aus der AKTIVEN kostenfreien Alternativenliste aussortieren und nur im historischen Register belassen:** Hailuo, Sora-Webdienst, Kling AI, Artflow, Adobe Firefly, Canva AI, Suno, proprietäre Angebote und externe Anbieter mit möglichen Abo-/API-Kosten; ebenso GPU-intensive Modellprojekte, solange der Betrieb auf vorhandener Hardware ohne Kauf nicht nachgewiesen ist. Auch geschlossene „kostenlose“ Angebote sind keine Open-Source-Alternative. Bestehender Agnes-/ImageRouter-/Provider-Betrieb wird als separate vorhandene Infrastruktur dokumentiert, **nicht** fälschlich als allgemein freie Open-Source-Alternative eingestuft.
 
+### OpenMontage – ausdrücklich beauftragte Integration vom 17.10.2026
+
+Bülent hat die Integration in KI-SOCIAL-AGENT einschließlich Telegram und FAQ
+beauftragt. Adapter: `integrations/openmontage/`, Workflow: `openmontage.yml`,
+Bedienung: [OPENMONTAGE_FAQ.md](OPENMONTAGE_FAQ.md).
+Der alte Status LICENSE_REVIEW_ONLY bleibt historisch; dieser konkrete neue
+Scope ist **INTEGRATION_PREPARED, NICHT LIVE_E2E**: gepinnter unveränderter
+AGPL-3.0-Upstream, vorhandene GitHub-Runtime, eigene Remotion-Lizenz für den
+persönlichen/Evaluierungsfall anhand der Originalquelle geprüft (Links in FAQ).
+Kein kostenpflichtiger Provider-Aufruf, keine privaten Medien, kein Publishing.
+Diagnose und ausdrücklich freigegebene Standarddemo sind getrennt. Offene
+Live-Abnahmen: GitHub-Setup/Secret-Präsenz und vom Besitzer gestarteter Demo-Render.
+Dies aktiviert OpenMontage nicht als automatischen Fabrik-Fallback.
+
 ## 1. Schnelle Fallback-Matrix – vor jedem erneuten Fehlerlauf
 
 | Benötigte Funktion | Erste Route und Belegstatus | Zweite Route: erst Fähigkeit/Lizenz/Runtime prüfen | Weitere Reserve oder Ausschluss |

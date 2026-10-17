@@ -21,6 +21,7 @@ from telegram_bot import get_chat_id, get_updates, send_message, send_photo
 from scripts.telegram_private_media import (receive as receive_private_media,
                                             handle_private_command)
 from scripts.ai_central_shared_inbox import handle as handle_central_inbox, parse_command as parse_central_command
+from scripts.openmontage_control import is_command as is_montage_command, handle as handle_montage
 from vision_router import VisionRouter
 import pending_instagram as pi
 import instagram_engagement as instagram_engagement
@@ -491,6 +492,14 @@ def main() -> None:
 
         normalized = " ".join(text.strip().lower().split())
         cmd = normalized.lstrip("/")
+        if is_montage_command(text):
+            try:
+                answer = handle_montage(text, uid, chat, allowed)
+            except (ValueError, PermissionError):
+                answer = "OpenMontage: Konfiguration oder Auftragsstatus ungültig; kein Start."
+            send_message(answer)
+            _ack(uid)
+            continue
         # Shared AI inbox commands are explicit and do not touch existing approval paths.
         if parse_central_command(text) is not None:
             try:
@@ -543,6 +552,8 @@ def main() -> None:
                 "info IG-XXXXXXXX – Details\n"
                 "memory IG-XXXXXXXX – Interaktionshistorie\n"
                 "antwort/ändern/ignorieren/info/memory FB-XXXXXXXX – Facebook\n\n"
+                "OPENMONTAGE:\n"
+                "/montage – Diagnose, Teststart, Status und FAQ\n\n"
                 "SYSTEM:\n"
                 "/help – Diese Hilfe"
             )
