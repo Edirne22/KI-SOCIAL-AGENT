@@ -172,34 +172,6 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
         save_job_entry(job_id, {**existing, "status": "REJECTED", "editorial_decision": "ABLEHNEN"}, jobs_state)
         return f"❌ OpenMontage V3 Video {video_id} ABGELEHNT."
 
-    if isinstance(action, dict) and action.get("action") in ("erstellen", "planen"):
-        action_name = action["action"]
-        prompt_text = action["prompt"]
-        job_id = f"job_{update_id}"
-
-        save_job_entry(job_id, {
-            "job_id": job_id,
-            "request_id": f"tg-{update_id}",
-            "action": action_name,
-            "prompt": prompt_text,
-            "status": "QUEUED",
-        }, jobs_state)
-
-        if token:
-            try:
-                auth = headers(token)
-                (post or requests.post)(
-                    f"{API}/actions/workflows/{WORKFLOW}/dispatches",
-                    headers=auth,
-                    json={"ref": "main", "inputs": {"mode": action_name, "request_id": f"tg-{update_id}"}},
-                    timeout=20,
-                )
-            except Exception:
-                pass
-
-        return (f"🎬 OpenMontage V3 Auftrag erfasst [{job_id}]: '{prompt_text}'\n"
-                f"Status: QUEUED. Workflow wurde angestoßen.\n{URL}")
-
     # Legacy workflow dispatch logic for diagnose, demo, renew:...
     if type(update_id) is not int or update_id < 0:
         raise ValueError("Ungültige Telegram-Update-ID.")
