@@ -1,0 +1,19 @@
+name: OpenMontage Motorsport Knowledge Sources
+on:
+  pull_request:
+    paths:
+      - "integrations/openmontage/motorsport_source_catalog.py"
+      - "integrations/openmontage/research_memory_playbook.py"
+      - "tests/test_openmontage_motorsport_source_catalog.py"
+      - ".github/workflows/openmontage-knowledge-sources.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest -v tests.test_openmontage_motorsport_source_catalog tests.test_openmontage_research_memory_playbook
