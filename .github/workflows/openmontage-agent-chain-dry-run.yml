@@ -1,0 +1,39 @@
+name: OpenMontage Agent Chain Dry Run
+on:
+  pull_request:
+    paths:
+      - 'scripts/openmontage_agent_chain_audit.py'
+      - 'tests/test_openmontage_agent_chain_audit.py'
+      - '.github/workflows/openmontage-agent-chain-dry-run.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quickshifter-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Agent handoff regression tests
+        run: python -m unittest -v tests.test_openmontage_agent_chain_audit
+      - name: Quickshifter dry run (stop before rendering)
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.openmontage_quickshifter_research import quickshifter_research
+          from scripts.openmontage_agent_chain_audit import audit_agent_chain
+          result = audit_agent_chain(quickshifter_research())
+          Path('quickshifter-agent-audit.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+          print(json.dumps({'status': result['status'], 'trace': result['trace'], 'missing_media': result.get('missing_media', []), 'production_started': result['production_started']}, ensure_ascii=False))
+          assert result['status'] == 'BLOCKED_MEDIA_MISSING'
+          assert result['production_started'] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: quickshifter-agent-audit
+          path: quickshifter-agent-audit.json
+          retention-days: 7
