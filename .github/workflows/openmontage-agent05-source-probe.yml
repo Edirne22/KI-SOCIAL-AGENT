@@ -1,0 +1,39 @@
+name: OpenMontage Agent05 Source Probe
+on:
+  pull_request:
+    paths:
+      - 'scripts/openmontage_agent05_live_sources.py'
+      - 'tests/test_openmontage_agent05_live_sources.py'
+      - '.github/workflows/openmontage-agent05-source-probe.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests
+      - name: Test source parser and evidence handling
+        run: python -m unittest -v tests.test_openmontage_agent05_live_sources
+      - name: Live manufacturer retrieval (no rendering)
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.openmontage_agent05_live_sources import fetch_primary_sources
+          result = fetch_primary_sources("Wie funktioniert ein Quickshifter?")
+          Path("agent05-live-evidence.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+          print(json.dumps({"status": result["status"], "sources": [x["url"] for x in result["evidence"]], "errors": result["errors"]}, ensure_ascii=False))
+          assert result["status"] == "EVIDENCE_COLLECTED", "No primary source retrieved; review evidence artifact"
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agent05-live-evidence
+          path: agent05-live-evidence.json
+          retention-days: 7
