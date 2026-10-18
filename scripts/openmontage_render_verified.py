@@ -21,7 +21,18 @@ def render_verified_research(research: dict, output_dir: Path, *,
     manifest = build_media_manifest(storyboard)
     if not manifest["all_rights_verified"]:
         raise ValueError("Media rights verification failed")
-    return produce_video(verified, storyboard, manifest, output_dir)
+    result = produce_video(verified, storyboard, manifest, output_dir)
+    # Technical render success is not editorial acceptance of a real-media film.
+    if result.get("source_media_included") is not True:
+        result["creative_acceptance"] = "BLOCKED_NO_REAL_MEDIA"
+        result["creative_issues"] = ["MEDIA_RESEARCH_INCOMPLETE", "SOURCE_MEDIA_NOT_RENDERED"]
+    elif result.get("subtitles_and_audio", {}).get("spoken_voice_present") is not True:
+        result["creative_acceptance"] = "BLOCKED_NO_NARRATION"
+        result["creative_issues"] = ["SPOKEN_VOICE_MISSING"]
+    else:
+        result["creative_acceptance"] = "REQUIRES_OWNER_REVIEW"
+        result["creative_issues"] = []
+    return result
 
 
 def main() -> None:
@@ -37,7 +48,9 @@ def main() -> None:
     print(json.dumps({"status": result["status"],
                       "video_file": result["video_file"],
                       "duration_seconds": result["duration_seconds"],
-                      "synthetic_only": True}))
+                      "synthetic_only": result.get("source_media_included") is not True,
+                      "creative_acceptance": result["creative_acceptance"],
+                      "creative_issues": result["creative_issues"]}))
 
 
 if __name__ == "__main__":
