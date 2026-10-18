@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Protocol
 
 from content_factory_core import JobStatus, MediaRef, ProductionJob
+from scripts.ai_central_skill_router import agent_can, resolve_agent_role, RoutingError
 
 
 @dataclass(frozen=True)
@@ -75,3 +76,26 @@ def run_machine(job: ProductionJob, machine: FactoryMachine, task: ToolTask) -> 
             job.media.append(media)
             canonical[media.media_id] = media
     return result
+
+
+def run_authorized_agent_machine(
+    job: ProductionJob,
+    machine: FactoryMachine,
+    task: ToolTask,
+    *,
+    agent_role_id: str,
+    required_capability: str,
+) -> ToolResult:
+    """Authorized agent-to-machine entry point.
+
+    Keep legacy run_machine for existing callers; new agent dispatchers must
+    use this function to bind a unique role to an allowlisted capability.
+    No model or publisher invocation occurs here.
+    """
+    try:
+        role_id = resolve_agent_role(agent_role_id)
+    except RoutingError as exc:
+        raise HandoffError("unknown or ambiguous agent identity") from exc
+    if not agent_can(role_id, required_capability):
+        raise HandoffError("agent capability denied")
+    return run_machine(job, machine, task)
