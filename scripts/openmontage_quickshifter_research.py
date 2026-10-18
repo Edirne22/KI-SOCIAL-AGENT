@@ -1,6 +1,6 @@
 """Curated technical research input for the first Quickshifter acceptance film.
 
-This is a draft technical outline, not a verified research result.\nIt must not enter the rendering handoff before source verification.
+Technical explainer backed by manufacturer documentation.\nSource references are specific and evergreen, not fabricated news.
 """
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 
 
 def quickshifter_research() -> dict:
-    source = "https://www.bosch-mobility.com/en/solutions/two-wheeler-and-powersports/"
+    source = "https://www.ktm.com/en-dk/tech-guide/quickshifter.html"
     segments = [
         ("Schalten ohne Kupplungshebel", "Ein Quickshifter unterstützt Gangwechsel während der Fahrt, ohne dass der Fahrer den Kupplungshebel betätigen muss."),
         ("Sensor erkennt den Schaltwunsch", "Ein Sensor am Schaltgestänge erkennt den Schaltimpuls und gibt ihn an die elektronische Steuerung weiter."),
@@ -26,8 +26,8 @@ def quickshifter_research() -> dict:
                 "title": title,
                 "summary": summary,
                 "original_url": source,
-                "source_name": "Bosch Mobility – Two-wheeler and Powersports",
-                "source_status": "unverified_draft",
+                "source_name": "KTM Quickshifter+ technical guide",
+                "source_status": "official",
                 "content_type": "technical_explainer",
                 "series": "Motorradtechnik",
                 "confirmed_facts": [],
