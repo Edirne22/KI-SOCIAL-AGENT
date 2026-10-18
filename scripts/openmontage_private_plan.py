@@ -41,7 +41,7 @@ def main():
     plan["agent_memory_context"] = memory_context
     plan["output_profile"] = {"name": "Instagram Reels", "width": 1080,
                               "height": 1920, "aspect_ratio": "9:16",
-                              "target_duration_seconds": 30, "language": "de"}
+                              "preferred_duration_seconds": 30, "duration_policy": "editorial_flexible", "language": "de"}
     # Owner authorizes private production without intermediate approval.
     # This is a planning policy, not evidence of completed production.
     plan["approval_gates"] = {
@@ -67,8 +67,17 @@ def main():
             if story["source_status"] == "official" and story["original_url"] in verified_urls
         ]
         if verified_stories:
+            # Editorial runtime follows verified information density, not a fixed 30s slot.
+            information_units = sum(
+                1 + (len(str(story.get("summary") or "").split()) // 45)
+                for story in verified_stories[:8]
+            )
+            editorial_duration = min(90, max(15, information_units * 8))
+            plan["output_profile"]["selected_duration_seconds"] = editorial_duration
             storyboard = build_storyboard(
-                {"stories": verified_stories}, target_duration=60, aspect_ratio="9:16",
+                {"stories": verified_stories},
+                target_duration=editorial_duration,
+                aspect_ratio=plan["output_profile"]["aspect_ratio"],
                 agent_memory=memory_context,
                 language="tr" if any(word in request["prompt"].casefold() for word in ("türk", "turkish", "türkçe")) else "de",
             )
