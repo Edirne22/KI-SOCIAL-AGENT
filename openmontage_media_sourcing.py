@@ -48,8 +48,10 @@ def evaluate_media_item(
     elif url:
         license_status = "unverified_third_party"
         allowed_usage = "restricted"
-        rights_ok = False
-        verification = "FAIL: Third-party media without explicit license; domain whitelist alone is not a license. Trigger synthetic fallback."
+        # The external URL is rejected, but the replacement is an internally
+        # generated synthetic scene with no third-party media usage.
+        rights_ok = True
+        verification = "FALLBACK: Unlicensed third-party URL rejected; synthetic scene selected."
         selected_format = "synthetic_fallback"
     else:
         license_status = "synthetic_generated"
@@ -59,7 +61,7 @@ def evaluate_media_item(
         selected_format = "synthetic_graphic"
 
     # Select non-infringing visual fallback asset if unverified
-    if not rights_ok or selected_format == "synthetic_graphic":
+    if selected_format in ("synthetic_fallback", "synthetic_graphic"):
         if riders:
             asset_type = "driver_info_card"
             fallback_details = f"Synthetic Driver Card for {', '.join(riders)}"
@@ -76,12 +78,15 @@ def evaluate_media_item(
     return {
         "scene_number": scene_number,
         "media_request": media_req,
-        "media_url": url,
+        # Never pass a rejected URL to a downloader or renderer.
+        "media_url": url if selected_format == "licensed_external_media" else "",
+        "rejected_media_url": url if selected_format == "synthetic_fallback" else "",
         "media_source": origin,
         "media_license": media_license or "none",
         "license_status": license_status,
         "allowed_usage": allowed_usage,
         "rights_verified": rights_ok,
+        "external_media_accepted": selected_format == "licensed_external_media",
         "verification_result": verification,
         "selected_asset_type": asset_type,
         "fallback_details": fallback_details,
