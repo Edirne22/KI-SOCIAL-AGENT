@@ -15,13 +15,22 @@ def preview_message(preview: dict, social_copy: dict | None = None) -> str:
         raise ValueError("HTTPS preview link required")
     if not isinstance(seconds, int) or seconds < 60:
         raise ValueError("Invalid link lifetime")
-    return (
+    message = (
         "🎬 OpenMontage – PRIVATE VORSCHAU\n"
         f"Video herunterladen (Link {seconds // 60} Minuten gültig):\n{url}\n\n"
         "Nur Sichtung, keine Veröffentlichung.\n"
         f"Neuen Link: /montage link neu {preview['media_id']}\n"
         "Keine Veröffentlichung."
     )
+    if social_copy is not None:
+        if social_copy.get("publication_authorized") is not False:
+            raise ValueError("Captions must remain review-only")
+        for platform in ("instagram", "facebook"):
+            caption = social_copy.get(platform, {}).get("caption", "")
+            if not isinstance(caption, str) or not caption.strip():
+                raise ValueError("Missing social caption")
+            message += f"\n\n{platform.upper()} – TEXTENTWURF:\n{caption}"
+    return message
 
 
 def send_owner_preview(preview: dict, *, token: str | None = None,
