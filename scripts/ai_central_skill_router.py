@@ -66,10 +66,25 @@ def document_skill(output_format, requested_provider=None):
     return {"skill":skill,"ai_provider":requested_provider,"requires_verified_anthropic_key":False}
 
 
+def resolve_agent_role(agent_id, registry=None):
+    """Resolve only canonical role IDs; bare numeric IDs fail closed.
+
+    Legacy numbers are ambiguous (notably 15: finance vs chief QM and
+    18: tour vs historical Facebook). Never guess an agent identity.
+    """
+    registry = registry or load_registry()
+    role_id = str(agent_id)
+    if role_id.isdecimal():
+        raise RoutingError("bare numeric agent ID is ambiguous; use canonical role ID")
+    if role_id not in (registry.get("agent_capabilities") or {}):
+        raise RoutingError("unknown agent role ID")
+    return role_id
+
+
 def agent_can(agent_id, capability, registry=None):
     """Fail closed: an agent may request only centrally allowlisted capabilities."""
     registry=registry or load_registry()
-    allowed=(registry.get("agent_capabilities") or {}).get(str(agent_id),[])
+    try:\n        role_id = resolve_agent_role(agent_id, registry)\n    except RoutingError:\n        return False\n    allowed=(registry.get("agent_capabilities") or {}).get(role_id,[])
     return capability in allowed
 
 def choose_for_agent(agent_id, task_type, **kwargs):
