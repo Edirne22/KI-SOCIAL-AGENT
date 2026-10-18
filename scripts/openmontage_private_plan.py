@@ -54,6 +54,19 @@ def main():
         "publication": "AWAITING_APPROVAL",
     }
     from openmontage_research import build_research
+    # Agent 05 must attempt topic-specific live discovery, not only static scouts.
+    # Discovery is recorded privately but never promoted to verified facts.
+    from scripts.openmontage_agent05_oncu_live import run as agent05_live
+    live_report = agent05_live(queries=(request["prompt"],))
+    plan["agent05_live_status"] = live_report["status"]
+    plan["agent05_live_attempts"] = live_report["attempts"]
+    plan["agent05_live_finding_count"] = len(live_report["findings"])
+    plan["agent05_media_candidate_count"] = len(live_report["media_candidates"])
+    storage.put_object(
+        Key=f"openmontage/research-discovery/{request_id}.json",
+        Body=(json.dumps(live_report, ensure_ascii=False) + "\\n").encode("utf-8"),
+        ContentType="application/json",
+    )
     if "quickshifter" in request["prompt"].casefold() or "schaltassistent" in request["prompt"].casefold():
         from scripts.openmontage_quickshifter_research import quickshifter_research
         research = quickshifter_research()
