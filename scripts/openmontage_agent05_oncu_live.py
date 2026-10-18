@@ -21,9 +21,9 @@ QUERIES = (
     "Can Öncü 2027 team transfer official announcement",
 )
 
-def run(search=research):
+def run(search=research, queries=QUERIES):
     attempts, findings, seen = [], [], set()
-    for query in QUERIES:
+    for query in queries:
         try:
             response = search(query)
             rows = response.get("results") or []
@@ -31,6 +31,9 @@ def run(search=research):
                        "live_search": response.get("live_search") is True,
                        "warning": response.get("warning"), "result_count": len(rows)}
             attempts.append(attempt)
+            if "429" in str(attempt["warning"] or ""):
+                # Stop instead of hammering an exhausted free-tier quota.
+                break
             if not attempt["live_search"]:
                 continue
             for row in rows:
@@ -57,7 +60,7 @@ def run(search=research):
             })
     return {"media_candidates": media_candidates,
             "media_status": "CANDIDATES_UNLICENSED" if media_candidates else "NO_MEDIA_CANDIDATES",
-            "agent": "05_research_synthesist", "topic": "Deniz Öncü und Can Öncü",
+            "agent": "05_research_synthesist", "topic": " | ".join(queries),
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),
             "status": "DISCOVERY_COMPLETE_UNVERIFIED" if findings else "BLOCKED_NO_LIVE_SEARCH",
             "attempts": attempts, "findings": findings,
