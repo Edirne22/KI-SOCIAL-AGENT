@@ -26,6 +26,7 @@ class OpenMontageBridgeTests(unittest.TestCase):
         def producer(**kwargs):
             calls.append(kwargs)
             movie = kwargs["output_dir"] / "creative-demo.mp4"
+            movie.parent.mkdir(parents=True, exist_ok=False)
             movie.write_bytes(b"verified-fixture-mp4")
             return {"status": "COMPLETED", "video_file": str(movie)}
         with tempfile.TemporaryDirectory() as tmp:

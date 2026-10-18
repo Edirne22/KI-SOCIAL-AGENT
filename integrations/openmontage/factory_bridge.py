@@ -36,7 +36,7 @@ class OpenMontageFactoryAdapter:
         if not all(isinstance(payload.get(key), dict) for key in ("research", "storyboard", "media_manifest")):
             raise MediaProductionError("OpenMontage research/storyboard/media manifest required")
         with tempfile.TemporaryDirectory(prefix="factory-openmontage-") as temp:
-            output = Path(temp)
+            output = Path(temp) / "render"
             report = self.producer(
                 research_data=payload["research"],
                 storyboard_data=payload["storyboard"],
