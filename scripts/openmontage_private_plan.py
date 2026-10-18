@@ -53,9 +53,19 @@ def main():
     }
     from openmontage_research import build_research
     research = build_research(request["prompt"])
+    from openmontage_fact_checker import verify_research_payload
+    checked_research = verify_research_payload(research)
+    plan["fact_checked_item_count"] = checked_research["verified_item_count"]
+    plan["needs_date_verification_count"] = checked_research["needs_date_verification_count"]
+    if checked_research["verified_item_count"]:
+        storage.put_object(
+            Key=f"openmontage/research/{request_id}.json",
+            Body=(json.dumps(checked_research, ensure_ascii=False) + "\n").encode("utf-8"),
+            ContentType="application/json",
+        )
     plan["verified_sources"] = [
         {"title": story["title"], "url": story["original_url"], "source_status": story["source_status"]}
-        for story in research["stories"] if story["source_status"] == "official"
+        for story in checked_research["stories"] if story["source_status"] == "official"
     ]
     plan["status"] = "RESEARCH_READY" if plan["verified_sources"] else "NEEDS_RESEARCH"
     plan["research_item_count"] = research["item_count"]
@@ -63,7 +73,7 @@ def main():
         from openmontage_storyboard import build_storyboard
         verified_urls = {source["url"] for source in plan["verified_sources"]}
         verified_stories = [
-            story for story in research["stories"]
+            story for story in checked_research["stories"]
             if story["source_status"] == "official" and story["original_url"] in verified_urls
         ]
         if verified_stories:
