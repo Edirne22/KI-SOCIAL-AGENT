@@ -4,6 +4,8 @@ No synthetic stories, no publication, and search URLs are not verified claims.
 """
 from __future__ import annotations
 import json
+import os
+import requests
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -21,7 +23,34 @@ QUERIES = (
     "Can Öncü 2027 team transfer official announcement",
 )
 
-def run(search=research, queries=QUERIES):
+def _nemotron_assess(findings):
+    """Analyze discovery candidates, never certify claims from model output."""
+    key = os.getenv("NVIDIA_API_KEY", "").strip()
+    if not key:
+        return {"status": "NVIDIA_KEY_MISSING"}
+    if not findings:
+        return {"status": "NO_SOURCES_TO_ASSESS"}
+    payload = [{"title": x["title"], "url": x["url"]} for x in findings[:8]]
+    try:
+        response = requests.post(
+            "https://integrate.api.nvidia.com/v1/chat/completions",
+            headers={"Authorization": "Bearer " + key, "Content-Type": "application/json"},
+            json={"model": os.getenv("NVIDIA_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b"),
+                  "messages": [{"role": "user", "content":
+                    "Assess relevance and identify which original sources require reading. "
+                    "Do not claim any source was verified. Candidate URLs: " + json.dumps(payload)}],
+                  "max_tokens": 600, "temperature": 0.2, "stream": False},
+            timeout=(20, 120),
+        )
+        if response.status_code != 200:
+            return {"status": "NVIDIA_HTTP_" + str(response.status_code)}
+        content = response.json()["choices"][0]["message"]["content"]
+        return {"status": "ASSESSMENT_UNVERIFIED", "summary": str(content)[:2500]}
+    except (requests.RequestException, ValueError, KeyError, IndexError, TypeError):
+        return {"status": "NVIDIA_REQUEST_FAILED"}
+
+
+def run(search=research, queries=QUERIES, assess=_nemotron_assess):
     attempts, findings, seen = [], [], set()
     for query in queries:
         try:
@@ -58,7 +87,8 @@ def run(search=research, queries=QUERIES):
                 "direct_media_url": None, "media_rights_verified": False,
                 "usage": "discovery_only", "needs_license_review": True,
             })
-    return {"media_candidates": media_candidates,
+    assessment = assess(findings)
+    return {"nvidia_assessment": assessment, "media_candidates": media_candidates,
             "media_status": "CANDIDATES_UNLICENSED" if media_candidates else "NO_MEDIA_CANDIDATES",
             "agent": "05_research_synthesist", "topic": " | ".join(queries),
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),
