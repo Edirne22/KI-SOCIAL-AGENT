@@ -35,6 +35,20 @@ jobs:
               except Exception as exc:
                   raise SystemExit(f"{name}: upstream unavailable ({type(exc).__name__})")
           PY
+      - name: Install upstream tools in isolated runner (no secrets)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/NousResearch/hermes-agent.git /tmp/hermes-agent
+          git clone --depth 1 https://github.com/Panniantong/Agent-Reach.git /tmp/agent-reach
+          echo "Hermes checkout: $(git -C /tmp/hermes-agent rev-parse --short HEAD)"
+          echo "Agent Reach checkout: $(git -C /tmp/agent-reach rev-parse --short HEAD)"
+          python -m venv /tmp/agent-reach-venv
+          /tmp/agent-reach-venv/bin/python -m pip install --disable-pip-version-check /tmp/agent-reach
+          /tmp/agent-reach-venv/bin/python -m pip show agent-reach
+          test -f /tmp/hermes-agent/cli.py
+          python /tmp/hermes-agent/cli.py --help > /tmp/hermes-cli-help.txt || true
+          head -c 1200 /tmp/hermes-cli-help.txt
       - name: Execute isolated Toprak source discovery
         shell: bash
         run: |
