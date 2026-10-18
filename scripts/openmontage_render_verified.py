@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from openmontage_fact_checker import verify_research_payload
+from openmontage_media_contract import validate_scene_media
 from openmontage_media_sourcing import build_media_manifest
 from openmontage_production import produce_video
 from openmontage_storyboard import build_storyboard
@@ -21,14 +22,10 @@ def render_verified_research(research: dict, output_dir: Path, *,
     manifest = build_media_manifest(storyboard)
     if not manifest["all_rights_verified"]:
         raise ValueError("Media rights verification failed")
-    # Production requires actual media assets, not just a rights-safe synthetic fallback.
-    # The current synthetic-only renderer cannot consume external clips; block
-    # rather than misrepresent the result as a finished motorcycle film.
-    items = manifest.get("manifest", [])
-    if not items or any(not item.get("external_media_accepted") or not item.get("media_url") for item in items):
-        raise RuntimeError("MEDIA_RESEARCH_INCOMPLETE: real scene assets missing")
+    # Validate the scene-to-media contract before any production side effect.
+    validate_scene_media(storyboard, manifest)
+    # No external-media adapter exists yet; do not mislabel synthetic video.
     raise RuntimeError("SOURCE_MEDIA_RENDERER_NOT_CONNECTED: real clips cannot yet be rendered")
-
 
 
 def main() -> None:
