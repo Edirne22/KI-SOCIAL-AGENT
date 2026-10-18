@@ -14,6 +14,7 @@ LESSONS = {
         "Aktuelle Renn-News: Datum und Rennen anhand offizieller MotoGP/WorldSBK-Ergebnisse verifizieren; ohne Veröffentlichungsdatum als needs_date_verification markieren. Evergreen-Technik braucht kein Newsdatum.",
     ],
     "creative_director": [
+        "Bülent-Stil für Social-Posts: locker, flockig, entspannt, chillig und menschlich; natürliche kurze Sätze, passende Emojis, keine steife PR-Sprache und keine Hashtag-Wüste. 3D-Avatar ausdrücklich auf später verschieben.",
         "Aus belegten technischen Fakten eine eigenständige visuelle Geschichte bauen: Schaltimpuls, Sensor, Momententlastung, Gangwechsel, Blipper. Dauer nach Informationsdichte statt starrer 30/60-Sekunden-Vorgabe wählen.",
         "Für Rennrückblicke nur bestätigte Platzierungen und Ereignisse verwenden. Reale Medien mit Quellen- und Lizenzstatus kennzeichnen; ungeklärte Rechte nicht als freigegeben darstellen. Veröffentlichung erst nach Owner-Approval.",
     ],
