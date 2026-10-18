@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'diagnose = Setup/Secret-Namen prüfen; demo = ausdrücklich Demo ohne Keys rendern'
+        description: 'diagnose = Setup/Secret-Namen prüfen; demo = ausdrücklich Demo ohne Keys; erstellen = Film erzeugen; planen = Storyboard planen'
         required: true
         type: choice
-        options: [diagnose, demo]
+        options: [diagnose, demo, erstellen, planen]
         default: diagnose
       request_id:
         description: 'Telegram-Auftrags-ID; bei manuellem Start leer lassen'
@@ -50,7 +50,7 @@ jobs:
           integrations/openmontage/.runtime/control/bin/python - <<'PY'
           import os
           from scripts.openmontage_control import claim_request
-          if os.environ['MODE'] not in ('diagnose', 'demo'):
+          if os.environ['MODE'] not in ('diagnose', 'demo', 'erstellen', 'planen'):
               raise SystemExit('Unzulässiger Modus')
           request_id = os.environ['REQUEST_ID'] or ('manual-' + os.environ['GITHUB_RUN_ID'])
           claimed = claim_request(request_id, os.environ['GITHUB_TOKEN'], os.environ['GITHUB_SHA'])

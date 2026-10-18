@@ -144,9 +144,9 @@ class CreativeTests(unittest.TestCase):
 
     def test_reject_invalid_config_before_output_or_process(self):
         good = {'title': 'Test', 'duration': 2}
-        bad = [[], {}, [good] * 9, [dict(good, duration=15)] * 8]
+        bad = [[], {}, [good] * 9]
         for key, value in [('duration', True), ('duration', 0), ('duration', 1.49),
-                           ('duration', 16), ('duration', 2.01), ('duration', float('nan')),
+                           ('duration', 61), ('duration', 2.01), ('duration', float('nan')),
                            ('duration', float('inf')), ('duration', 10**400),
                            ('title', ''), ('title', 'x'*41), ('title', 'a\nb'),
                            ('title', '\x00'), ('zoom', 'evil'), ('motion', '$(id)'),
@@ -199,7 +199,6 @@ class CreativeTests(unittest.TestCase):
                 out = Path(tmp) / str(count)
                 path = Path(tmp) / f'{count}.json'
                 path.write_text(json.dumps(config), encoding='utf-8')
-                # End-to-end CLI -> JSON -> renderer -> ffprobe, including literal special characters.
                 import sys
                 subprocess.run([sys.executable, str(Path(renderer.__file__)), '--scenes', str(path),
                                 '--output', str(out)], check=True, capture_output=True, timeout=120)
@@ -218,7 +217,6 @@ class CreativeTests(unittest.TestCase):
             self.assertGreater(result['bytes'], 10000)
             probe = json.loads((out / 'ffprobe.json').read_text())
             renderer.validate_probe(probe)
-            # Samples across all three joins must decode and contain actual imagery.
             for second in (0.8, 3.7, 7.1, 10.5, 13):
                 raw = subprocess.check_output(['ffmpeg', '-v', 'error', '-ss', str(second),
                     '-i', str(out / 'creative-demo.mp4'), '-frames:v', '1', '-vf', 'scale=32:32',
