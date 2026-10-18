@@ -39,6 +39,25 @@ def main():
     ]
     plan["status"] = "RESEARCH_READY" if plan["verified_sources"] else "NEEDS_RESEARCH"
     plan["research_item_count"] = research["item_count"]
+    if plan["verified_sources"]:
+        from openmontage_storyboard import build_storyboard
+        verified_urls = {source["url"] for source in plan["verified_sources"]}
+        verified_stories = [
+            story for story in research["stories"]
+            if story["source_status"] == "official" and story["original_url"] in verified_urls
+        ]
+        if verified_stories:
+            storyboard = build_storyboard(
+                {"stories": verified_stories}, target_duration=60, aspect_ratio="9:16",
+                language="tr" if any(word in request["prompt"].casefold() for word in ("türk", "turkish", "türkçe")) else "de",
+            )
+            plan["storyboard"] = storyboard["scenes"]
+            plan["storyboard_metadata"] = {
+                "duration_seconds": storyboard["actual_duration_seconds"],
+                "aspect_ratio": storyboard["aspect_ratio"],
+                "language": storyboard["language"],
+            }
+            plan["status"] = "STORYBOARD_DRAFT"
     # Topic is private. Store plan only in the private R2 bucket, not public Actions artifacts.
     import io
     storage = from_environment()
