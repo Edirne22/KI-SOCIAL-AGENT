@@ -150,7 +150,7 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
     if isinstance(action, dict) and action.get("action") in ("erstellen", "planen"):
         if request_storage is None:
             return ("OpenMontage: Filmauftrag/Planung derzeit NICHT AUSFÜHRBAR. "
-                    "Privater Auftragsspeicher nicht verbunden; kein Job gestartet.")
+                    "Privater Auftragsspeicher nicht verbunden; Kein Job wurde gestartet.")
         if type(update_id) is not int or update_id < 0:
             raise ValueError("Ungültige Telegram-Update-ID.")
         from integrations.openmontage.private_request_store import put_request
