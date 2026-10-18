@@ -1,0 +1,18 @@
+name: OpenMontage R2 Client
+on:
+  pull_request:
+    paths:
+      - "integrations/openmontage/r2_client.py"
+      - "tests/test_openmontage_r2_client.py"
+      - ".github/workflows/openmontage-r2-client.yml"
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest -v tests.test_openmontage_r2_client
