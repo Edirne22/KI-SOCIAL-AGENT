@@ -1,4 +1,4 @@
-"""Regression: a synthetic video must not pass the real-media creative gate."""
+"""Regression: synthetic video is rejected before reaching the production renderer."""
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -13,13 +13,12 @@ class CreativeGateTests(unittest.TestCase):
     def test_synthetic_video_is_not_creatively_accepted(self, verify, storyboard, manifest, produce):
         verify.return_value = {"verified_item_count": 1, "stories": [{"title": "Quickshifter"}]}
         storyboard.return_value = {"scenes": [{"title": "Quickshifter"}]}
-        manifest.return_value = {"all_rights_verified": True}
-        produce.return_value = {"status": "COMPLETED", "source_media_included": False,
-                                "subtitles_and_audio": {"spoken_voice_present": False}}
-        result = render_verified_research({"stories": []}, Path("unused"))
-        self.assertEqual(result["status"], "COMPLETED")
-        self.assertEqual(result["creative_acceptance"], "BLOCKED_NO_REAL_MEDIA")
-        self.assertIn("MEDIA_RESEARCH_INCOMPLETE", result["creative_issues"])
+        manifest.return_value = {"all_rights_verified": True, "manifest": [
+            {"external_media_accepted": False, "media_url": ""}
+        ]}
+        with self.assertRaisesRegex(RuntimeError, "MEDIA_RESEARCH_INCOMPLETE"):
+            render_verified_research({"stories": []}, Path("unused"))
+        produce.assert_not_called()
 
 
 if __name__ == "__main__":
