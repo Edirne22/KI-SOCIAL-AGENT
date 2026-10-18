@@ -142,7 +142,7 @@ jobs:
               'request_id': os.environ.get('REQUEST_ID') or 'manual-' + os.environ['GITHUB_RUN_ID'],
               'status': 'NEEDS_RESEARCH',
               'message': 'Keine bestätigte Recherche oder Szenen ohne geprüfte Quellen erzeugt.'
-          }, ensure_ascii=False, indent=2) + '\\n', encoding='utf-8')
+          }, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           PY
       - name: Diagnose oder synthetischen Film bereitstellen
         uses: actions/upload-artifact@v4
