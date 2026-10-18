@@ -1,0 +1,33 @@
+name: Hermes Agent Reach Runtime Smoke
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Agent Reach in isolated runner (safe)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --user --no-input https://github.com/Panniantong/agent-reach/archive/main.zip
+          export PATH="$HOME/.local/bin:$PATH"
+          agent-reach install --env=auto --safe
+          agent-reach doctor || true
+      - name: Install Hermes CLI without gateway
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://hermes-agent.nousresearch.com/install.sh -o /tmp/hermes-install.sh
+          bash /tmp/hermes-install.sh --skip-browser
+          export PATH="$HOME/.local/bin:$PATH"
+          command -v hermes
+          hermes --help
+      - name: Contract checks
+        run: python -m unittest -v tests.test_hermes_coordinator
