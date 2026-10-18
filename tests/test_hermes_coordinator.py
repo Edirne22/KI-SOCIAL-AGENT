@@ -10,8 +10,8 @@ class CoordinatorTests(unittest.TestCase):
     def test_empty_fact_evidence_blocks(self):
         workers = {
             "research_discovery": lambda s: {"candidates": ["https://example.org/article"]},
-            "source_reader": lambda s: {"documents": ["article text"]},
-            "nemotron_analyst": lambda s: {"claims": ["GP V1"]},
+            "source_reader": lambda s: {"documents": [{"url": "https://example.org/article", "text": "article text"}]},
+            "nemotron_analyst": lambda s: {"claims": [{"source_url": "https://example.org/article", "claim": "GP V1"}]},
             "fact_checker": lambda s: {"verified_claims": [{"source_url": "https://example.org/article"}]},
             "handoff": lambda s: {"report": "ready"},
         }
@@ -21,8 +21,8 @@ class CoordinatorTests(unittest.TestCase):
     def test_complete_evidence_handoff(self):
         workers = {
             "research_discovery": lambda s: {"candidates": ["https://example.org/article"]},
-            "source_reader": lambda s: {"documents": ["article text"]},
-            "nemotron_analyst": lambda s: {"claims": ["GP V1"]},
+            "source_reader": lambda s: {"documents": [{"url": "https://example.org/article", "text": "article text"}]},
+            "nemotron_analyst": lambda s: {"claims": [{"source_url": "https://example.org/article", "claim": "GP V1"}]},
             "fact_checker": lambda s: {"verified_claims": [{"source_url": "https://example.org/article", "evidence_excerpt": "GP V1"}]},
             "handoff": lambda s: {"report": "ready"},
         }
