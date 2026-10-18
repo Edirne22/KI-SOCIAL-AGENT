@@ -1,0 +1,22 @@
+name: OpenMontage Explicit Album Dispatch
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/openmontage.yml"
+      - ".github/workflows/openmontage-explicit-album-dispatch.yml"
+      - "scripts/openmontage_load_album_selection.py"
+      - "tests/test_openmontage_load_album_selection.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install requests
+      - run: python -m unittest -v tests.test_openmontage_load_album_selection tests.test_openmontage_render_owner_album
