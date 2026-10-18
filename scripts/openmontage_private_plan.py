@@ -64,7 +64,7 @@ def main():
     plan["agent05_media_candidate_count"] = len(live_report["media_candidates"])
     storage.put_object(
         Key=f"openmontage/research-discovery/{request_id}.json",
-        Body=(json.dumps(live_report, ensure_ascii=False) + "\\n").encode("utf-8"),
+        Body=(json.dumps(live_report, ensure_ascii=False) + "\n").encode("utf-8"),
         ContentType="application/json",
     )
     if "quickshifter" in request["prompt"].casefold() or "schaltassistent" in request["prompt"].casefold():
