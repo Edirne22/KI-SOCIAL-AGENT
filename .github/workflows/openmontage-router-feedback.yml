@@ -1,0 +1,18 @@
+name: OpenMontage Router Feedback Wiring
+on:
+  pull_request:
+    paths:
+      - "telegram_router.py"
+      - "tests/test_openmontage_router_feedback_wiring.py"
+      - ".github/workflows/openmontage-router-feedback.yml"
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest -v tests.test_openmontage_router_feedback_wiring
