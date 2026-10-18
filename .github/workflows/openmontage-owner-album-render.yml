@@ -1,0 +1,20 @@
+name: OpenMontage Owner Album Renderer
+on:
+  pull_request:
+    paths:
+      - "scripts/openmontage_render_owner_album.py"
+      - "tests/test_openmontage_render_owner_album.py"
+      - ".github/workflows/openmontage-owner-album-render.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest -v tests.test_openmontage_render_owner_album tests.test_openmontage_owner_album_handoff
