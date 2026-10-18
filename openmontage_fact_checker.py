@@ -42,13 +42,23 @@ def verify_story_facts(story: Dict[str, Any]) -> Dict[str, Any]:
     summary = story.get("summary", "")
     text = f"{title} {summary}".strip()
 
-    is_fresh, freshness_msg = check_recency(story.get("published_at", ""), max_days=7)
+    # Evergreen technical explainers do not require a recent news timestamp.
+    # Explicit classification is required: missing dates still reject news.
+    content_type = story.get("content_type", "news")
+    evergreen = content_type in ("technical_explainer", "product_explainer")
+    is_fresh, freshness_msg = (
+        (True, "Evergreen technical explanation; news recency not applicable")
+        if evergreen else check_recency(story.get("published_at", ""), max_days=7)
+    )
 
     errors = []
     warnings = []
 
     if not is_fresh:
         errors.append(freshness_msg)
+
+    if evergreen and story.get("source_status") != "official":
+        errors.append("Evergreen explanation requires an official source")
 
     # Check promotional or marketing content
     if any(p in text.casefold() for p in fg.PROMO):

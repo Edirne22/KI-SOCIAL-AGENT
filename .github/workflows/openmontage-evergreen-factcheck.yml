@@ -1,0 +1,19 @@
+name: OpenMontage Evergreen Factcheck
+on:
+  pull_request:
+    paths:
+      - "openmontage_fact_checker.py"
+      - "tests/test_openmontage_evergreen_factcheck.py"
+      - ".github/workflows/openmontage-evergreen-factcheck.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest requests
+      - run: python -m pytest -q tests/test_openmontage_fact_checker.py tests/test_openmontage_evergreen_factcheck.py
