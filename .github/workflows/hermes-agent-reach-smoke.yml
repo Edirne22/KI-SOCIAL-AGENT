@@ -22,12 +22,13 @@ jobs:
         run: |
           set -euo pipefail
           curl -fsSL https://hermes-agent.nousresearch.com/install.sh -o /tmp/hermes-install.sh
-          CI=1 bash /tmp/hermes-install.sh --non-interactive
+          CI=1 bash /tmp/hermes-install.sh --non-interactive --skip-browser --skip-computer-use --verbose
           export PATH="$HOME/.local/bin:$PATH"
           command -v hermes
-          hermes --help
-          echo 'Hermes CLI installed and starts successfully'
-          hermes doctor || echo 'Hermes doctor reports missing optional configuration (diagnostic only)'
+          hermes --version
+          hermes doctor
+          echo 'Starting actual Hermes agent turn'
+          timeout 90s hermes chat -q 'Reply with the single word READY.'
       - name: Install Agent Reach using upstream instructions
         shell: bash
         run: |
