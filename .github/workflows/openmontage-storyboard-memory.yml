@@ -1,0 +1,19 @@
+name: OpenMontage Storyboard Memory
+on:
+  pull_request:
+    paths:
+      - "openmontage_storyboard.py"
+      - "scripts/openmontage_private_plan.py"
+      - "tests/test_openmontage_storyboard_memory.py"
+      - ".github/workflows/openmontage-storyboard-memory.yml"
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest -v tests.test_openmontage_storyboard_memory

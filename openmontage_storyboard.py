@@ -32,6 +32,7 @@ def build_storyboard(
     aspect_ratio: str = "9:16",
     language: str = "de",
     film_type: str = "news",
+    agent_memory: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     """Builds a structured storyboard.json payload from verified research. Raises ValueError if research is empty."""
     stories = research_data.get("stories", [])
@@ -51,6 +52,31 @@ def build_storyboard(
 
     if film_type not in FILM_TYPES:
         film_type = "news"
+
+    # Apply only reviewed, explicitly supported creative preferences.
+    # Memory never changes source verification or publishing authorization.
+    preferred_transition = None
+    if isinstance(agent_memory, dict):
+        for role in ("creative_director", "07_video_optimization"):
+            role_context = agent_memory.get(role, {})
+            if not isinstance(role_context, dict):
+                continue
+            for entry in reversed(role_context.get("personal", []) + role_context.get("shared", [])):
+                if not isinstance(entry, dict) or entry.get("reviewed") is not True:
+                    continue
+                if entry.get("kind") != "preference":
+                    continue
+                summary = entry.get("summary", "")
+                if not isinstance(summary, str):
+                    continue
+                for candidate in TRANSITIONS:
+                    if summary.strip().lower() == f"transition:{candidate}":
+                        preferred_transition = candidate
+                        break
+                if preferred_transition:
+                    break
+            if preferred_transition:
+                break
 
     # Max duration for creative_renderer single-pass rendering is 300s
     render_max_duration = min(300, target_duration)
@@ -92,7 +118,7 @@ def build_storyboard(
 
         zoom = "in" if i % 2 == 0 else "out"
         motion = "right" if i % 2 == 0 else "left"
-        transition = TRANSITIONS[i % len(TRANSITIONS)] if not is_last else None
+        transition = (preferred_transition or TRANSITIONS[i % len(TRANSITIONS)]) if not is_last else None
 
         media_req = "driver_info_card" if riders else "racing_action_clip"
 

@@ -57,6 +57,7 @@ def main():
         if verified_stories:
             storyboard = build_storyboard(
                 {"stories": verified_stories}, target_duration=60, aspect_ratio="9:16",
+                agent_memory=memory_context,
                 language="tr" if any(word in request["prompt"].casefold() for word in ("türk", "turkish", "türkçe")) else "de",
             )
             plan["storyboard"] = storyboard["scenes"]
