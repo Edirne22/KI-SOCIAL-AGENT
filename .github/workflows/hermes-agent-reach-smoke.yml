@@ -35,5 +35,16 @@ jobs:
               except Exception as exc:
                   raise SystemExit(f"{name}: upstream unavailable ({type(exc).__name__})")
           PY
+      - name: Execute isolated Toprak source discovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/hermes_toprak_dryrun.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hermes-toprak-research
+          path: artifacts/hermes-toprak-research.json
+          retention-days: 3
       - name: Verify coordinator contracts
         run: python -m unittest -v tests.test_hermes_coordinator
