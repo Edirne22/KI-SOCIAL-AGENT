@@ -52,7 +52,11 @@ def main():
         "publication": "AWAITING_APPROVAL",
     }
     from openmontage_research import build_research
-    research = build_research(request["prompt"])
+    if "quickshifter" in request["prompt"].casefold() or "schaltassistent" in request["prompt"].casefold():
+        from scripts.openmontage_quickshifter_research import quickshifter_research
+        research = quickshifter_research()
+    else:
+        research = build_research(request["prompt"])
     from openmontage_fact_checker import verify_research_payload
     checked_research = verify_research_payload(research)
     plan["fact_checked_item_count"] = checked_research["verified_item_count"]
