@@ -147,6 +147,10 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
                 "Start nur mit /montage test starten.")
 
     token = os.environ.get("GITHUB_TOKEN", "")
+    if isinstance(action, dict) and action.get("action") in ("erstellen", "planen"):
+        return ("OpenMontage: Filmauftrag/Planung derzeit NICHT AUSFÜHRBAR. "
+                "Der GitHub-Workflow besitzt für diese Modi noch keinen echten Produktionsschritt. "
+                "Kein Job wurde angenommen oder gestartet. Bitte /montage status für bestehende Läufe nutzen.")
     if action == "status":
         return recent_runs(token, get)
 
