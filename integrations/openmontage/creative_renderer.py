@@ -171,6 +171,7 @@ def filter_graph(scenes=None, music=False, local_media=False):
     scenes = normalize_scenes(scenes)
     duration, frames = timeline(scenes)
     filters = []
+    watermark = 'LOKALE LIZENZMEDIEN' if local_media else 'SYNTHETISCHER TEST'
     for i, scene in enumerate(scenes):
         count = round(scene['duration'] * FPS)
         zoom = {'in': f'1+0.192*on/{count}', 'out': f'1.2-0.192*on/{count}',
@@ -186,7 +187,7 @@ def filter_graph(scenes=None, music=False, local_media=False):
             f'drawtext=fontfile={FONT}:textfile=title-{i}.txt:expansion=none:fontsize={size}:fontcolor=white:'
             "x='(w-text_w)/2+80*max(0,1-t/0.7)':y=680:alpha='min(1,t/0.5)',"
             f"drawtext=fontfile={FONT}:text='{i+1:02} / {len(scenes):02}':fontsize=24:fontcolor=0xffcc55:x=50:y=810,"
-            f"drawtext=fontfile={FONT}:text='{"LOKALE LIZENZMEDIEN" if local_media else "SYNTHETISCHER TEST"}':fontsize=18:fontcolor=white@0.6:x=50:y=1150[s{i}]"
+            f"drawtext=fontfile={FONT}:text='{watermark}':fontsize=18:fontcolor=white@0.6:x=50:y=1150[s{i}]"
         )
     previous = 's0'
     elapsed_frames = 0
