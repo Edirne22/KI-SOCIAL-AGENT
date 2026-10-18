@@ -1062,9 +1062,8 @@ Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-pole
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39119168152-1
+## Facebook [GEPOSTET 2026-10-18 10:25 | ID: 122125443483469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-18-daily
 Telegram-Update-ID: 279361973
@@ -1085,3 +1084,4 @@ Wer von den Dreien hat bei euch die Nase vorn für den Rennenstag?
 Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci
 Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg", "media_status": "", "object_id": "122125443483469415", "object_type": "bild", "platform": "facebook", "post_id": "122125443483469415", "source_url": "https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci", "version": 1}
