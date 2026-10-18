@@ -129,7 +129,7 @@ def recent_runs(token: str, get=None) -> str:
         return f"Statusabfrage fehlgeschlagen; keine Zugangsdaten ausgegeben. {URL}"
 
 
-def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=None, jobs_state=None, post=None, get=None) -> str:
+def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=None, jobs_state=None, post=None, get=None, request_storage=None) -> str:
     if not authorized_chat or str(chat) != str(authorized_chat):
         raise PermissionError("OpenMontage ist nur im freigegebenen Chat verfügbar.")
 
@@ -148,9 +148,21 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
 
     token = os.environ.get("GITHUB_TOKEN", "")
     if isinstance(action, dict) and action.get("action") in ("erstellen", "planen"):
-        return ("OpenMontage: Filmauftrag/Planung derzeit NICHT AUSFÜHRBAR. "
-                "Der GitHub-Workflow besitzt für diese Modi noch keinen echten Produktionsschritt. "
-                "Kein Job wurde angenommen oder gestartet. Bitte /montage status für bestehende Läufe nutzen.")
+        if request_storage is None:
+            return ("OpenMontage: Filmauftrag/Planung derzeit NICHT AUSFÜHRBAR. "
+                    "Privater Auftragsspeicher nicht verbunden; Kein Job wurde gestartet.")
+        if type(update_id) is not int or update_id < 0:
+            raise ValueError("Ungültige Telegram-Update-ID.")
+        from integrations.openmontage.private_request_store import put_request
+        request_id = f"tg-{update_id}"
+        try:
+            put_request(request_storage, request_id=request_id,
+                        prompt=action["prompt"], owner_chat=str(chat))
+        except Exception:
+            return ("OpenMontage: Private Speicherung fehlgeschlagen. "
+                    "Kein Auftrag angenommen und kein Workflow gestartet.")
+        return (f"OpenMontage: Auftrag {request_id} privat gespeichert, aber NICHT gestartet. "
+                "Der Produktionsworkflow ist noch nicht freigeschaltet.")
     if action == "status":
         return recent_runs(token, get)
 
