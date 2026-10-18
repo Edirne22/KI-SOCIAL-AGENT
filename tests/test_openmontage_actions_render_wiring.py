@@ -8,7 +8,7 @@ class ActionsRenderWiringTests(unittest.TestCase):
         self.assertIn("scripts.openmontage_render_verified", workflow)
         self.assertIn("scripts.openmontage_publish_preview", workflow)
         self.assertIn("rendered/creative-demo.mp4", workflow)
-        self.assertIn("rendered/production_summary.json", workflow)
+        self.assertNotIn("            integrations/openmontage/.runtime/rendered/creative-demo.mp4\\n", workflow.split("path: |")[-1])
 
     def test_private_research_loader_is_fail_closed(self):
         loader = Path("scripts/openmontage_load_verified_research.py").read_text(encoding="utf-8")
