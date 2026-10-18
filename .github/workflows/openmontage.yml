@@ -107,12 +107,28 @@ jobs:
         run: |
           integrations/openmontage/.runtime/control/bin/python -m pip install --disable-pip-version-check boto3
           integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_publish_preview
+      - name: OpenMontage Planungsstatus ohne fingierte Recherche
+        if: inputs.mode == 'planen'
+        env:
+          REQUEST_ID: ${{ inputs.request_id }}
+        run: |
+          mkdir -p integrations/openmontage/.runtime
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path('integrations/openmontage/.runtime/plan.json').write_text(json.dumps({
+              'request_id': os.environ.get('REQUEST_ID') or 'manual-' + os.environ['GITHUB_RUN_ID'],
+              'status': 'NEEDS_RESEARCH',
+              'message': 'Keine bestätigte Recherche oder Szenen ohne geprüfte Quellen erzeugt.'
+          }, ensure_ascii=False, indent=2) + '\\n', encoding='utf-8')
+          PY
       - name: Diagnose oder synthetischen Film bereitstellen
         uses: actions/upload-artifact@v4
         with:
           name: openmontage-${{ github.run_id }}
           path: |
             integrations/openmontage/.runtime/diagnose.json
+            integrations/openmontage/.runtime/plan.json
             integrations/openmontage/upstream/projects/demos/renders/code-to-screen.mp4
           if-no-files-found: error
           retention-days: 7
