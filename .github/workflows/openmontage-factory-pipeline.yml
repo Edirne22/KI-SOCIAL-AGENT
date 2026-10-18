@@ -1,0 +1,20 @@
+name: OpenMontage Verified Factory Pipeline
+on:
+  pull_request:
+    paths:
+      - "integrations/openmontage/factory_pipeline.py"
+      - "tests/test_openmontage_factory_pipeline.py"
+      - ".github/workflows/openmontage-factory-pipeline.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install requests
+      - run: python -m unittest -v tests.test_openmontage_factory_pipeline tests.test_openmontage_factory_dispatch
