@@ -19,3 +19,18 @@ class Agent05OncuTests(unittest.TestCase):
         result = run(search=lambda q: {"live_search": False, "results": [], "warning": "NO_PROVIDER"})
         self.assertEqual(result["status"], "BLOCKED_NO_LIVE_SEARCH")
         self.assertEqual(result["findings"], [])
+
+    def test_rate_limit_stops_further_requests(self):
+        calls = []
+        def fake(query):
+            calls.append(query)
+            return {"live_search": False, "warning": "GROQ_HTTP_429", "results": []}
+        result = run(search=fake)
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(result["status"], "BLOCKED_NO_LIVE_SEARCH")
+
+    def test_custom_topic_queries(self):
+        result = run(search=lambda q: {"live_search": False, "results": []},
+                     queries=("BMW Motorrad official updates",))
+        self.assertEqual(len(result["attempts"]), 1)
+        self.assertEqual(result["topic"], "BMW Motorrad official updates")
