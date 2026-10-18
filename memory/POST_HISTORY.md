@@ -169,3 +169,11 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 ### 2026-10-17 09:55 | Entwurf generiert
 - Titel 1: ... Plattform: ... Thema: ... Hook: ... Instagram-Caption: ... Facebook-Post: ... TikTok-Skript: ... Visuelle Idee: ... Medienvorschlag: ... Hashtags Instagram: ... Hashtags TikTok: ... Trend-Bezug: ... Viral-Score: X/10 Inspirations-Plattform: ... Inspirations-Quelle: ..."
 - Hook 1: ... Instagram-Caption: ... Facebook-Post: ... TikTok-Skript: ... Visuelle Idee: ... Medienvorschlag: ... Hashtags Instagram: ... Hashtags TikTok: ... Trend-Bezug: ... Viral-Score: X/10 Inspirations-Plattform: ... Inspirations-Quelle: ..."
+
+### 2026-10-18 10:07 | Entwurf generiert
+- Titel 1: Toprak Razgatlıoğlu plant sein Comeback am Sachsenring
+- Hook 1: Nach dem Misano‑Crash: Toprak Razgatlıoğlu plant sein Comeback am Sachsenring
+- Titel 2: Can Öncü triumphiert in Magny‑Cours – die Öncü‑Brüder zeigen, dass sie noch immer die Besten sind
+- Hook 2: Can Öncü triumphiert in Magny‑Cours – die Öncü‑Brüder zeigen, dass sie noch immer die Besten sind
+- Titel 3: Deniz Öncü jagt im Assen‑Sprint nach dem ersten Podium – kann er die Öncü‑Tradition fortsetzen?
+- Hook 3: Deniz Öncü jagt im Assen‑Sprint nach dem ersten Podium – kann er die Öncü‑Tradition fortsetzen?
