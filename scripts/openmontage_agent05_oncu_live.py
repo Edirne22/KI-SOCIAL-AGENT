@@ -177,7 +177,8 @@ def run(search=research, queries=QUERIES, assess=_nemotron_assess):
             "publication_authorized": False}
 
 if __name__ == "__main__":
-    output = run()
+    topic = os.getenv("AGENT05_DRY_RUN_TOPIC", "").strip()
+    output = run(queries=(topic,)) if topic else run()
     Path("agent05-oncu-report.json").write_text(
         json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"status": output["status"], "attempts": output["attempts"],
