@@ -9,6 +9,8 @@ on:
       - "tests/test_agency_org_contract.py"
       - "tests/test_nervous_system_agent_identity.py"
       - "scripts/ai_central_skill_router.py"
+      - "content_factory_handoff.py"
+      - "tests/test_nervous_system_agent_handoff.py"
       - "content_factory_local_resource_manager.py"
       - "tests/test_content_factory_local_resource_manager.py"
       - ".github/workflows/agency-org-contract.yml"
@@ -21,6 +23,8 @@ on:
       - "tests/test_agency_org_contract.py"
       - "tests/test_nervous_system_agent_identity.py"
       - "scripts/ai_central_skill_router.py"
+      - "content_factory_handoff.py"
+      - "tests/test_nervous_system_agent_handoff.py"
       - "content_factory_local_resource_manager.py"
       - "tests/test_content_factory_local_resource_manager.py"
 permissions:
@@ -39,4 +43,5 @@ jobs:
           python -m py_compile tests/test_agency_org_contract.py tests/test_content_factory_local_resource_manager.py content_factory_local_resource_manager.py
           python -m unittest discover -s tests -p test_agency_org_contract.py -v
           python -m unittest discover -s tests -p test_nervous_system_agent_identity.py -v
+          python -m unittest discover -s tests -p test_nervous_system_agent_handoff.py -v
           python -m unittest discover -s tests -p test_content_factory_local_resource_manager.py -v
