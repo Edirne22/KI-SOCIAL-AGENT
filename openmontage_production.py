@@ -33,6 +33,16 @@ def produce_video(
     if not media_manifest_data or not isinstance(media_manifest_data, dict) or "manifest" not in media_manifest_data:
         raise ValueError("Video production failed: Invalid or missing media manifest data")
 
+    # Current renderer creates synthetic posters; never claim source clips.
+    manifest_items = media_manifest_data["manifest"]
+    if not isinstance(manifest_items, list) or not manifest_items:
+        raise ValueError("Video production failed: Empty media manifest")
+    if not media_manifest_data.get("all_rights_verified") or any(
+        not isinstance(item, dict) or not item.get("rights_verified")
+        for item in manifest_items
+    ):
+        raise ValueError("Video production failed: Unverified media rights")
+
     # Step 3: Prepare scenes for creative_renderer
     sb_scenes = storyboard_data.get("scenes", [])
     if not sb_scenes:
@@ -86,8 +96,11 @@ def produce_video(
         "duration_seconds": render_report.get("duration", 0.0),
         "sha256": render_report.get("sha256", ""),
         "bytes": render_report.get("bytes", 0),
+        "media_mode": "synthetic_only",
+        "source_media_included": False,
         "subtitles_and_audio": {
-            "subtitles_burned_in": True,
+            "subtitles_burned_in": False,
+            "spoken_voice_present": False,
             "audio_track_present": True,
             "audio_codec": "aac",
         },

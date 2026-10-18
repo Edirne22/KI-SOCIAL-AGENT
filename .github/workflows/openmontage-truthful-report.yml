@@ -1,0 +1,18 @@
+name: OpenMontage Truthful Report
+on:
+  pull_request:
+    paths:
+      - "openmontage_production.py"
+      - "tests/test_openmontage_truthful_render_report.py"
+      - ".github/workflows/openmontage-truthful-report.yml"
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest -v tests.test_openmontage_truthful_render_report
