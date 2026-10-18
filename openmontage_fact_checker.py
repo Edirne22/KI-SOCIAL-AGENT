@@ -111,4 +111,18 @@ def verify_research_payload(research_data: Dict[str, Any]) -> Dict[str, Any]:
     res["rejected_item_count"] = len(rejected_stories)
     res["stories"] = verified_stories
     res["rejected_stories"] = rejected_stories
+    # Keep undated news as private research leads, not as publishable facts.
+    # Downstream production sees only verified res["stories"].
+    res["needs_date_verification"] = [
+        {
+            "story_id": story.get("story_id"),
+            "title": story.get("title"),
+            "original_url": story.get("original_url"),
+            "reason": "Publication date missing; cross-check required",
+        }
+        for story in rejected_stories
+        if not story.get("published_at")
+        and story.get("content_type", "news") not in ("technical_explainer", "product_explainer")
+    ]
+    res["needs_date_verification_count"] = len(res["needs_date_verification"])
     return res
