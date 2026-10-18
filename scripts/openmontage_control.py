@@ -157,13 +157,19 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
     if isinstance(action, str) and action.startswith("approve:"):
         video_id = action.partition(":")[2]
         job_id = f"job_{video_id[:8]}"
-        save_job_entry(job_id, {"video_id": video_id, "status": "APPROVED", "editorial_decision": "FREIGEGEBEN"}, jobs_state)
+        existing = load_jobs_ledger(jobs_state).get(job_id)
+        if not isinstance(existing, dict) or existing.get("video_id") != video_id or existing.get("status") != "READY_FOR_APPROVAL":
+            return f"OpenMontage: Video {video_id} nicht zur Freigabe bereit oder unbekannt. Keine Freigabe gespeichert."
+        save_job_entry(job_id, {**existing, "status": "APPROVED", "editorial_decision": "FREIGEGEBEN"}, jobs_state)
         return f"✅ OpenMontage V3 Video {video_id} redaktionell FREIGEGEBEN (Kein automatisches Social-Posting)."
 
     if isinstance(action, str) and action.startswith("reject:"):
         video_id = action.partition(":")[2]
         job_id = f"job_{video_id[:8]}"
-        save_job_entry(job_id, {"video_id": video_id, "status": "REJECTED", "editorial_decision": "ABLEHNEN"}, jobs_state)
+        existing = load_jobs_ledger(jobs_state).get(job_id)
+        if not isinstance(existing, dict) or existing.get("video_id") != video_id or existing.get("status") != "READY_FOR_APPROVAL":
+            return f"OpenMontage: Video {video_id} nicht zur Ablehnung bereit oder unbekannt. Keine Ablehnung gespeichert."
+        save_job_entry(job_id, {**existing, "status": "REJECTED", "editorial_decision": "ABLEHNEN"}, jobs_state)
         return f"❌ OpenMontage V3 Video {video_id} ABGELEHNT."
 
     if isinstance(action, dict) and action.get("action") in ("erstellen", "planen"):
