@@ -33,6 +33,8 @@ def main():
         raise SystemExit("Unauthorized planning request")
     storage = from_environment()
     # Read each role's R2 memory before research and storyboard planning.
+    from integrations.openmontage.research_memory_playbook import ensure_research_playbook
+    ensure_research_playbook(storage)
     memory_context = {}
     for role in ("05_research_synthesist", "creative_director", "07_video_optimization"):
         prepared = prepare_agent_context(storage, agent_id=role, job={"job_id": request_id})
