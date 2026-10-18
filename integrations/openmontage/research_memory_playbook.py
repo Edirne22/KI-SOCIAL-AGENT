@@ -5,6 +5,7 @@ Methodology is durable; facts and URLs must still be checked for each job.
 from __future__ import annotations
 
 from integrations.agent_memory import append_experience, load_context
+from integrations.openmontage.motorsport_source_catalog import source_catalog_memory_lesson
 
 LESSONS = {
     "05_research_synthesist": [
@@ -26,6 +27,7 @@ def ensure_research_playbook(storage) -> dict:
     """Idempotently seed reviewed methodology in each role's R2 memory."""
     counts = {}
     for role, lessons in LESSONS.items():
+        lessons = [*lessons, source_catalog_memory_lesson()] if role == "05_research_synthesist" else lessons
         existing = load_context(storage, role, limit=100)
         summaries = {entry.get("summary") for entry in existing["personal"] if entry.get("reviewed") is True}
         added = 0
