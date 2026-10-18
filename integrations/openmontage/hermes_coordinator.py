@@ -24,6 +24,8 @@ class Result:
 
 def run_research(topic: str, workers: dict[str, Callable], *, max_retries: int = 1) -> dict:
     """Dispatch strict dependency chain, stop at first unfulfilled contract."""
+    if max_retries < 0 or max_retries > 2:
+        raise ValueError("max_retries must be 0..2")
     if not topic.strip():
         raise ValueError("topic required")
     state = {"topic": topic, "research_only": True, "production_started": False,
@@ -39,6 +41,14 @@ def run_research(topic: str, workers: dict[str, Callable], *, max_retries: int =
                 if not isinstance(output, dict):
                     raise ValueError("INVALID_WORKER_OUTPUT")
                 missing = [field for field in REQUIRED[role] if not output.get(field)]
+                if role == "source_reader":
+                    documents = output.get("documents") or []
+                    if not all(isinstance(d, dict) and d.get("url") and d.get("text") for d in documents):
+                        missing.append("DOCUMENT_PROVENANCE")
+                if role == "nemotron_analyst":
+                    claims = output.get("claims") or []
+                    if not all(isinstance(c, dict) and c.get("source_url") and c.get("claim") for c in claims):
+                        missing.append("CLAIM_PROVENANCE")
                 if role == "fact_checker":
                     verified = output.get("verified_claims") or []
                     if not all(isinstance(c, dict) and c.get("source_url") and
