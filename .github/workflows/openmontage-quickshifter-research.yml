@@ -1,0 +1,20 @@
+name: OpenMontage Quickshifter Research
+on:
+  pull_request:
+    paths:
+      - "scripts/openmontage_quickshifter_research.py"
+      - "scripts/openmontage_private_plan.py"
+      - "tests/test_openmontage_quickshifter_research.py"
+      - ".github/workflows/openmontage-quickshifter-research.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install requests
+      - run: python -m unittest -v tests.test_openmontage_quickshifter_research
