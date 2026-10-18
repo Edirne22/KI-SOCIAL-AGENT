@@ -25,12 +25,14 @@ def build_social_copy(verified_research: dict, *, language: str = "de") -> dict:
     summary = re.sub(r"\\s+", " ", str(first.get("summary") or "")).strip()
     if not summary:
         raise ValueError("Missing verified summary")
-    intro = f"{title} – einfach erklärt! 🏍️" if technical else f"{title} 🏁"
+    intro = f"{title} 🏍️⚙️" if technical else f"{title} 🏁🔥"
     return {
         "status": "DRAFT_AWAITING_OWNER_APPROVAL",
-        "instagram": {"caption": f"{intro}\\n{summary}\\n\\nWas meinst du dazu? 👇\\n" + " ".join(hashtags),
+        "voice_profile": "buelent_locker_flockig_chillig_v1",
+        "avatar_ready_future": False,
+        "instagram": {"caption": f"{intro}\\n{summary}\\n\\nSchon mal ausprobiert? Schreib mal, wie du das siehst! 😎👇\\n" + " ".join(hashtags),
                       "hashtags": hashtags},
-        "facebook": {"caption": f"{title}\\n\\n{summary}\\n\\nWie siehst du das? Schreib es in die Kommentare!\\n" + " ".join(hashtags[:3]),
+        "facebook": {"caption": f"{title} 🏍️\\n\\n{summary}\\n\\nWie läuft das bei euch? Bin gespannt auf eure Erfahrungen! 😎\\n" + " ".join(hashtags[:3]),
                      "hashtags": hashtags[:3]},
         "publication_authorized": False,
     }
