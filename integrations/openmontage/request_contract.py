@@ -33,9 +33,10 @@ def load_request(data: bytes, *, expected_request_id: str) -> dict:
         raise MontageRequestError("request correlation mismatch")
     if request.get("state") != "PENDING":
         raise MontageRequestError("request not pending")
-    build_request(request_id=expected_request_id, prompt=request.get("prompt"),
-                  owner_chat=request.get("owner_chat_sha256", ""))
-    if not re.fullmatch(r"[0-9a-f]{64}", request.get("owner_chat_sha256", "")):
+    if not isinstance(request.get("prompt"), str) or not request["prompt"].strip() or len(request["prompt"]) > 2000:
+        raise MontageRequestError("invalid request prompt")
+    fingerprint = request.get("owner_chat_sha256")
+    if not isinstance(fingerprint, str) or not re.fullmatch(r"[0-9a-f]{64}", fingerprint):
         raise MontageRequestError("invalid owner fingerprint")
     return request
 
