@@ -8,7 +8,7 @@ from typing import Protocol
 
 from content_factory_core import MediaRef, ProductionJob, JobStatus
 from content_factory_creative import CreativeBrief, ContentFormat
-from content_factory_handoff import ToolTask, ToolResult, run_machine, HandoffError
+from content_factory_handoff import ToolTask, ToolResult, run_machine, run_authorized_agent_machine, HandoffError
 from media_storage import MediaStorageAdapter
 
 class MediaProductionError(RuntimeError): pass
@@ -140,7 +140,7 @@ class FFmpegAdapter:
         return ToolResult(task.job_id,task.revision,task.task_id,[ref],self.name)
 
 class MediaProductionRunner:
-    def execute(self,job:ProductionJob,plan:MediaProductionPlan,machines:dict[str,ExternalMediaPort]):
+    def execute(self,job:ProductionJob,plan:MediaProductionPlan,machines:dict[str,ExternalMediaPort],*,agent_role_id=None):
         if plan.job_id!=job.job_id or plan.revision!=job.revision: raise MediaProductionError("stale/cross-job media plan")
         results=[]; last=[]
         for step in plan.steps:
@@ -153,7 +153,13 @@ class MediaProductionRunner:
                 if mid not in canonical: raise MediaProductionError("media plan references foreign input")
                 inputs.append(canonical[mid])
             task=ToolTask(job.job_id,job.revision,step.step_id,inputs,dict(step.parameters))
-            result=run_machine(job,machine,task); results.append(result); last=result.outputs
+            if agent_role_id is None:
+                result=run_machine(job,machine,task)
+            else:
+                result=run_authorized_agent_machine(
+                    job,machine,task,agent_role_id=agent_role_id,
+                    required_capability="media_tools")
+            results.append(result); last=result.outputs
         return tuple(results)
 
 def attach_media_plan(job:ProductionJob,plan:MediaProductionPlan):
