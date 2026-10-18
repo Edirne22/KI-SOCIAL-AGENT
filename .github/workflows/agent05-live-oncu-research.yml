@@ -24,6 +24,11 @@ jobs:
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         run: python scripts/openmontage_agent05_oncu_live.py
+      - name: Michelin Power GP V1 research dry run (no video)
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          AGENT05_DRY_RUN_TOPIC: "Michelin Power GP first generation 2020 motorcycle tire original model not GP2 official specifications tire technology grip wet dry pressure road track"
+        run: python scripts/openmontage_agent05_oncu_live.py
       - name: Preserve research report even on failure
         if: always()
         uses: actions/upload-artifact@v4
