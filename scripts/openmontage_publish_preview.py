@@ -1,5 +1,6 @@
 """Upload a completed synthetic MP4 privately; notify owner, never social publish."""
 import os
+import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -15,7 +16,12 @@ def main():
     with TemporaryDirectory(prefix="om-preview-") as cache:
         storage = R2Storage.from_env(cache_root=Path(cache))
         preview = upload_private_preview(video, storage=storage)
-        send_owner_preview(preview)
+        research_path = Path("integrations/openmontage/.runtime/verified_research.json")
+        if not research_path.is_file():
+            raise ValueError("Verified research required for social preview")
+        from scripts.openmontage_social_copy import build_social_copy
+        social_copy = build_social_copy(json.loads(research_path.read_text(encoding="utf-8")))
+        send_owner_preview(preview, social_copy=social_copy)
     print("Private preview uploaded and owner notified; signed URL withheld.")
 
 
