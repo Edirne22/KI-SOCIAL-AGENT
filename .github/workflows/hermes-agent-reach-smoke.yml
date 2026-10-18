@@ -50,8 +50,9 @@ jobs:
             echo "::warning::Agent Reach is not a pip-installable package at repository root"
           fi
           if test -f /tmp/hermes-agent/cli.py; then
-            /tmp/agent-reach-venv/bin/python /tmp/hermes-agent/cli.py --help > /tmp/hermes-cli-help.txt 2>&1 || true
-            head -c 1200 /tmp/hermes-cli-help.txt
+            /tmp/agent-reach-venv/bin/python -m pip install --disable-pip-version-check -r /tmp/hermes-agent/requirements.txt
+          /tmp/agent-reach-venv/bin/python /tmp/hermes-agent/cli.py --help > /tmp/hermes-cli-help.txt 2>&1
+            sed -n '1,25p' /tmp/hermes-cli-help.txt
           else
             echo "::warning::Hermes cli.py not found at repository root; inspect upstream entrypoint"
           fi
