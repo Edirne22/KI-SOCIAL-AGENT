@@ -16,6 +16,14 @@ class OpenMontageSourceBoundaryTests(unittest.TestCase):
             with self.subTest(url=url):
                 self.assertEqual(_detect_source_status(url, "result"), "journalistic")
 
+    def test_url_credentials_and_non_https_are_not_official(self):
+        for url in ("http://motogp.com/news",
+                    "https://user@motogp.com/news",
+                    "https://user:password@motogp.com/news",
+                    "https://evil.example@motogp.com/news"):
+            with self.subTest(url=url):
+                self.assertEqual(_detect_source_status(url, "result"), "journalistic")
+
     def test_rumor_even_on_official_host(self):
         self.assertEqual(_detect_source_status("https://motogp.com/news", "rumor"), "rumor")
 

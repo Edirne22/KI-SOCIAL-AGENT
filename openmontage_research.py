@@ -59,7 +59,9 @@ def _detect_source_status(url: str, text: str) -> str:
     domain = ""
     if url:
         try:
-            domain = urlparse(url).netloc.casefold()
+            parsed = urlparse(url)
+            if parsed.scheme == "https" and not parsed.username and not parsed.password:
+                domain = (parsed.hostname or "").casefold()
         except Exception as e:
             logger.warning("Failed to parse URL domain for %s: %s", url, e)
 
