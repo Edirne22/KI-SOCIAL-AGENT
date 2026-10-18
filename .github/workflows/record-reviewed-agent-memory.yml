@@ -1,0 +1,68 @@
+name: Record Reviewed Agent Memory
+on:
+  workflow_dispatch:
+    inputs:
+      agent_id:
+        description: "Agent ID (e.g. creative_director)"
+        required: true
+        type: string
+      job_id:
+        description: "Completed job reference"
+        required: true
+        type: string
+      outcome:
+        description: "Reviewed experience category"
+        required: true
+        type: choice
+        options:
+          - lesson
+          - success
+          - failure
+          - preference
+      lesson:
+        description: "Reviewed lesson (no secrets or private user data)"
+        required: true
+        type: string
+      share:
+        description: "Also add to shared agent memory"
+        required: true
+        default: false
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: agent-memory-reviewed-writeback
+  cancel-in-progress: false
+jobs:
+  writeback:
+    runs-on: ubuntu-latest
+    environment: agent-memory-review
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install boto3
+      - name: Persist reviewed lesson
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          AGENT_ID: ${{ inputs.agent_id }}
+          JOB_ID: ${{ inputs.job_id }}
+          OUTCOME: ${{ inputs.outcome }}
+          LESSON: ${{ inputs.lesson }}
+          SHARE: ${{ inputs.share }}
+        run: |
+          python - <<'PY'
+          import os
+          from scripts.record_reviewed_agent_memory import main
+          args = ["--agent-id", os.environ["AGENT_ID"],
+                  "--job-id", os.environ["JOB_ID"],
+                  "--outcome", os.environ["OUTCOME"],
+                  "--lesson", os.environ["LESSON"]]
+          if os.environ["SHARE"].lower() == "true":
+              args.append("--share")
+          main(args)
+          PY
