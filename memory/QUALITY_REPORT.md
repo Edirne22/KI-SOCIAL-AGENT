@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-10-17 20:13
+Stand: 2026-10-18 20:11
 Gesamtstatus: **WARNUNG**
-- OK: 14
-- Warnungen: 6
+- OK: 15
+- Warnungen: 5
 - Kritisch: 0
 
 ## Prüfergebnisse
@@ -17,11 +17,11 @@ Gesamtstatus: **WARNUNG**
 - ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
 - ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
 - ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
-- ⚠️ **Datenalter**: 9 Quelle(n) sind älter als 7 Tage.
+- ⚠️ **Datenalter**: 10 Quelle(n) sind älter als 7 Tage.
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
 - ✅ **Secret-Prüfung**: Keine typischen Zugangsschlüssel in Projektdateien erkannt.
-- ⚠️ **Analytics Fetch**: Kein letzter Lauf in der GitHub-Antwort gefunden.
+- ✅ **Analytics Fetch**: Letzter Lauf erfolgreich.
 - ✅ **Analytics Report**: Letzter Lauf erfolgreich.
 - ⚠️ **Generate Daily Content Idea**: Kein letzter Lauf in der GitHub-Antwort gefunden.
 - ⚠️ **Inspiration Agent**: Kein letzter Lauf in der GitHub-Antwort gefunden.
