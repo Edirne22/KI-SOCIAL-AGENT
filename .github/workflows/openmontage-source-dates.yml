@@ -1,0 +1,18 @@
+name: OpenMontage Source Dates
+on:
+  pull_request:
+    paths:
+      - "scripts/openmontage_source_dates.py"
+      - "tests/test_openmontage_source_dates.py"
+      - ".github/workflows/openmontage-source-dates.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest -v tests.test_openmontage_source_dates
