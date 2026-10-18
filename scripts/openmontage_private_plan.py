@@ -39,15 +39,21 @@ def main():
         memory_context[role] = require_agent_memory(prepared)["memory"]
     plan = build_plan(request)
     plan["agent_memory_context"] = memory_context
+    plan["output_profile"] = {"name": "Instagram Reels", "width": 1080,
+                              "height": 1920, "aspect_ratio": "9:16",
+                              "target_duration_seconds": 30, "language": "de"}
+    plan["approval_gates"] = {"proposal": "AWAITING_APPROVAL",
+                              "script": "BLOCKED", "storyboard": "BLOCKED",
+                              "assets": "BLOCKED", "publication": "BLOCKED"}
     from openmontage_research import build_research
     research = build_research(request["prompt"])
     plan["verified_sources"] = [
         {"title": story["title"], "url": story["original_url"], "source_status": story["source_status"]}
         for story in research["stories"] if story["source_status"] == "official"
     ]
-    plan["status"] = "RESEARCH_READY" if plan["verified_sources"] else "NEEDS_RESEARCH"
+    plan["status"] = "PROPOSAL_AWAITING_APPROVAL" if plan["verified_sources"] else "NEEDS_RESEARCH"
     plan["research_item_count"] = research["item_count"]
-    if plan["verified_sources"]:
+    if plan["verified_sources"] and plan["approval_gates"]["proposal"] == "APPROVED":
         from openmontage_storyboard import build_storyboard
         verified_urls = {source["url"] for source in plan["verified_sources"]}
         verified_stories = [
@@ -74,7 +80,7 @@ def main():
         Body=(json.dumps(plan, ensure_ascii=False) + "\n").encode("utf-8"),
         ContentType="application/json",
     )
-    print("Private planning record saved; verified sources: 0")
+    print("Private proposal saved; storyboard blocked pending explicit approval")
 
 
 if __name__ == "__main__":
