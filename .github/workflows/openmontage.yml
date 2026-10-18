@@ -52,7 +52,7 @@ jobs:
           from scripts.openmontage_control import claim_request
           if os.environ['MODE'] not in ('diagnose', 'demo', 'erstellen', 'planen'):
               raise SystemExit('Unzulässiger Modus')
-          request_id = os.environ['REQUEST_ID'] or ('manual-' + os.environ['GITHUB_RUN_ID'])
+          if os.environ['MODE'] in ('erstellen', 'planen') and not os.environ['REQUEST_ID']:\n              raise SystemExit('Privater Produktionsauftrag benötigt eine Telegram request_id')\n          request_id = os.environ['REQUEST_ID'] or ('manual-' + os.environ['GITHUB_RUN_ID'])
           claimed = claim_request(request_id, os.environ['GITHUB_TOKEN'], os.environ['GITHUB_SHA'])
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
               f.write('claimed=' + str(claimed).lower() + '\n')
@@ -120,7 +120,7 @@ jobs:
           integrations/openmontage/.runtime/control/bin/python -m pip install --disable-pip-version-check boto3
           integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_load_private_request
       - name: Privaten Plan zum Telegram-Auftrag in R2 speichern
-        if: inputs.mode == 'planen' && inputs.request_id != ''
+        if: (inputs.mode == 'planen' || inputs.mode == 'erstellen') && inputs.request_id != ''
         env:
           REQUEST_ID: ${{ inputs.request_id }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
