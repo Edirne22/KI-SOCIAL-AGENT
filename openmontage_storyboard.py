@@ -146,6 +146,7 @@ def build_storyboard(
             "media_url": story.get("media_url"),
             "media_source": story.get("media_source"),
             "media_license": story.get("media_license"),
+            "media_candidates": story.get("media_candidates", []),
             # Future avatar pointing anchors; not yet used by renderer.
             "visual_target": story.get("visual_target"),
             "visual_anchor": story.get("visual_anchor"),
