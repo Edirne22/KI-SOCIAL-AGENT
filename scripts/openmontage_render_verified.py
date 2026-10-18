@@ -21,18 +21,14 @@ def render_verified_research(research: dict, output_dir: Path, *,
     manifest = build_media_manifest(storyboard)
     if not manifest["all_rights_verified"]:
         raise ValueError("Media rights verification failed")
-    # Production requires actual media assets, not just a rights-safe synthetic fallback.\n    # The current synthetic-only renderer cannot consume external clips; block\n    # rather than misrepresent the result as a finished motorcycle film.\n    items = manifest.get("manifest", [])\n    if not items or any(not item.get("external_media_accepted") or not item.get("media_url") for item in items):\n        raise RuntimeError("MEDIA_RESEARCH_INCOMPLETE: real scene assets missing")\n    raise RuntimeError("SOURCE_MEDIA_RENDERER_NOT_CONNECTED: real clips cannot yet be rendered")
-    # Technical render success is not editorial acceptance of a real-media film.
-    if result.get("source_media_included") is not True:
-        result["creative_acceptance"] = "BLOCKED_NO_REAL_MEDIA"
-        result["creative_issues"] = ["MEDIA_RESEARCH_INCOMPLETE", "SOURCE_MEDIA_NOT_RENDERED"]
-    elif result.get("subtitles_and_audio", {}).get("spoken_voice_present") is not True:
-        result["creative_acceptance"] = "BLOCKED_NO_NARRATION"
-        result["creative_issues"] = ["SPOKEN_VOICE_MISSING"]
-    else:
-        result["creative_acceptance"] = "REQUIRES_OWNER_REVIEW"
-        result["creative_issues"] = []
-    return result
+    # Production requires actual media assets, not just a rights-safe synthetic fallback.
+    # The current synthetic-only renderer cannot consume external clips; block
+    # rather than misrepresent the result as a finished motorcycle film.
+    items = manifest.get("manifest", [])
+    if not items or any(not item.get("external_media_accepted") or not item.get("media_url") for item in items):
+        raise RuntimeError("MEDIA_RESEARCH_INCOMPLETE: real scene assets missing")
+    raise RuntimeError("SOURCE_MEDIA_RENDERER_NOT_CONNECTED: real clips cannot yet be rendered")
+
 
 
 def main() -> None:
