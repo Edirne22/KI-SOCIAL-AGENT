@@ -14,7 +14,18 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "infra" / "private-asr"))
-from research_gateway import research
+from research_gateway import _gemini_search
+
+
+def research(query):
+    # Agent05 uses grounded web search, not Groq. NVIDIA handles assessment.
+    key = os.getenv('GEMINI_API_KEY', '').strip()
+    if not key:
+        return {'live_search': False, 'provider': 'Gemini-Grounded',
+                'results': [], 'warning': 'GEMINI_KEY_MISSING'}
+    return _gemini_search(query, key) or {
+        'live_search': False, 'provider': 'Gemini-Grounded',
+        'results': [], 'warning': 'GEMINI_SEARCH_UNAVAILABLE'}
 
 QUERIES = (
     "Deniz Öncü latest Moto2 news October 2026 official MotoGP team",
