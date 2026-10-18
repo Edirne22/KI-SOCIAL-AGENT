@@ -7,6 +7,7 @@ import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -43,7 +44,20 @@ def run(search=research):
         except Exception as exc:
             attempts.append({"query": query, "live_search": False,
                              "warning": type(exc).__name__, "result_count": 0})
-    return {"agent": "05_research_synthesist", "topic": "Deniz Öncü und Can Öncü",
+    # Candidate discovery only: linked pages are not licensed downloadable assets.
+    media_candidates = []
+    for item in findings:
+        host = (urlsplit(item["url"]).hostname or "").lower()
+        if any(domain in host for domain in ("worldsbk.com", "motogp.com", "yamaha-racing.com", "marcvds.com")):
+            media_candidates.append({
+                "source_url": item["url"], "title": item["title"],
+                "media_type": "video_page" if "/video" in urlsplit(item["url"]).path else "editorial_page",
+                "direct_media_url": None, "media_rights_verified": False,
+                "usage": "discovery_only", "needs_license_review": True,
+            })
+    return {"media_candidates": media_candidates,
+            "media_status": "CANDIDATES_UNLICENSED" if media_candidates else "NO_MEDIA_CANDIDATES",
+            "agent": "05_research_synthesist", "topic": "Deniz Öncü und Can Öncü",
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),
             "status": "DISCOVERY_COMPLETE_UNVERIFIED" if findings else "BLOCKED_NO_LIVE_SEARCH",
             "attempts": attempts, "findings": findings,
