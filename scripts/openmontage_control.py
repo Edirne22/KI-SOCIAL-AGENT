@@ -129,7 +129,7 @@ def recent_runs(token: str, get=None) -> str:
         return f"Statusabfrage fehlgeschlagen; keine Zugangsdaten ausgegeben. {URL}"
 
 
-def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=None, jobs_state=None, post=None, get=None, request_storage=None) -> str:
+def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=None, jobs_state=None, post=None, get=None, request_storage=None, feedback_storage=None) -> str:
     if not authorized_chat or str(chat) != str(authorized_chat):
         raise PermissionError("OpenMontage ist nur im freigegebenen Chat verfügbar.")
 
@@ -173,6 +173,14 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
         if not isinstance(existing, dict) or existing.get("video_id") != video_id or existing.get("status") != "READY_FOR_APPROVAL":
             return f"OpenMontage: Video {video_id} nicht zur Freigabe bereit oder unbekannt. Keine Freigabe gespeichert."
         save_job_entry(job_id, {**existing, "status": "APPROVED", "editorial_decision": "FREIGEGEBEN"}, jobs_state)
+        if feedback_storage is not None:
+            from integrations.openmontage.learning_memory_r2 import persist_feedback
+            try:
+                persist_feedback(feedback_storage, video_id=video_id, decision="approved",
+                                 style=existing.get("style") if isinstance(existing.get("style"), dict) else {})
+            except Exception:
+                return "OpenMontage: Redaktionelle Entscheidung gespeichert, aber Lernspeicher konnte nicht aktualisiert werden."
+
         return f"✅ OpenMontage V3 Video {video_id} redaktionell FREIGEGEBEN (Kein automatisches Social-Posting)."
 
     if isinstance(action, str) and action.startswith("reject:"):
@@ -182,6 +190,14 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
         if not isinstance(existing, dict) or existing.get("video_id") != video_id or existing.get("status") != "READY_FOR_APPROVAL":
             return f"OpenMontage: Video {video_id} nicht zur Ablehnung bereit oder unbekannt. Keine Ablehnung gespeichert."
         save_job_entry(job_id, {**existing, "status": "REJECTED", "editorial_decision": "ABLEHNEN"}, jobs_state)
+        if feedback_storage is not None:
+            from integrations.openmontage.learning_memory_r2 import persist_feedback
+            try:
+                persist_feedback(feedback_storage, video_id=video_id, decision="rejected",
+                                 style=existing.get("style") if isinstance(existing.get("style"), dict) else {})
+            except Exception:
+                return "OpenMontage: Redaktionelle Entscheidung gespeichert, aber Lernspeicher konnte nicht aktualisiert werden."
+
         return f"❌ OpenMontage V3 Video {video_id} ABGELEHNT."
 
     # Legacy workflow dispatch logic for diagnose, demo, renew:...
