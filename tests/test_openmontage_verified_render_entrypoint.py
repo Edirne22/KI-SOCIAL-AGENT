@@ -17,7 +17,7 @@ class VerifiedRenderTests(unittest.TestCase):
         with patch("scripts.openmontage_render_verified.verify_research_payload",
                    return_value=verified) as facts, patch(
                    "scripts.openmontage_render_verified.build_storyboard",
-                   return_value={"scenes": [{"title": "Test"}]}) as board, patch(
+                   return_value={"scenes": [{"scene_number": 1, "title": "Test"}]}) as board, patch(
                    "scripts.openmontage_render_verified.build_media_manifest",
                    return_value={"all_rights_verified": True, "manifest": []}) as media, patch(
                    "scripts.openmontage_render_verified.produce_video") as render:
@@ -34,10 +34,10 @@ class VerifiedRenderTests(unittest.TestCase):
         with patch("scripts.openmontage_render_verified.verify_research_payload",
                    return_value={"verified_item_count": 1}), patch(
                    "scripts.openmontage_render_verified.build_storyboard",
-                   return_value={"scenes": [{"title": "Test"}]}), patch(
+                   return_value={"scenes": [{"scene_number": 1, "title": "Test"}]}), patch(
                    "scripts.openmontage_render_verified.build_media_manifest",
                    return_value={"all_rights_verified": True, "manifest": [
-                       {"external_media_accepted": True, "media_url": "https://example.org/owned.mp4"}
+                       {"scene_number": 1, "external_media_accepted": True, "rights_verified": True, "media_license": "owned_content", "media_url": "https://example.org/owned.mp4"}
                    ]}), patch("scripts.openmontage_render_verified.produce_video") as render:
             with self.assertRaisesRegex(RuntimeError, "SOURCE_MEDIA_RENDERER_NOT_CONNECTED"):
                 render_verified_research({}, Path("/tmp/mock"))
