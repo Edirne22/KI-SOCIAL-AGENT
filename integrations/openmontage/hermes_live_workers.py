@@ -13,10 +13,14 @@ from integrations.openmontage.agent_reach_adapter import discover as research, r
 from openmontage_fact_checker import check_recency, verify_research_payload
 
 
+def _topic_terms(topic):
+    return [word for word in re.findall(r'[^\W_]{3,}', topic.casefold())
+            if word not in {'aktuelle', 'überprüfbare', 'news', 'deutsch', 'motorrad', 'und', 'der', 'die', 'das', 'über'}]
+
+
 def _discovery(state):
     result = research(state['topic'])
-    terms = [word for word in re.findall(r'[^\W_]{3,}', state['topic'].casefold())
-             if word not in {'aktuelle', 'überprüfbare', 'news', 'deutsch', 'motorrad', 'und', 'der', 'die', 'das', 'über'}]
+    terms = _topic_terms(state['topic'])
     candidates = [r for r in result.get('results', []) if r.get('topical') or
                   any(t in (r.get('title', '') + r.get('url', '')).casefold() for t in terms)]
     # Official general news can contain Toprak within the article, not its title.
@@ -37,6 +41,7 @@ def publication_date(document):
 
 def _reader(state):
     documents, errors = [], []
+    terms = _topic_terms(state['topic'])
     for candidate in state['research_discovery']['candidates'][:12]:
         try:
             doc = read_web(candidate['url'])
