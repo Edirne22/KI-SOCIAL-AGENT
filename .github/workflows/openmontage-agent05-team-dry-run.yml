@@ -1,0 +1,41 @@
+name: OpenMontage Agent05 Team Dry Run
+on:
+  pull_request:
+    paths:
+      - 'scripts/openmontage_agent05_team_dry_run.py'
+      - 'tests/test_openmontage_agent05_team_dry_run.py'
+      - '.github/workflows/openmontage-agent05-team-dry-run.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  team-handoff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests
+      - name: Team handoff regression tests
+        run: python -m unittest -v tests.test_openmontage_agent05_team_dry_run
+      - name: Live Agent05 to team pre-render handoff
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.openmontage_agent05_team_dry_run import run_quickshifter_team_dry_run
+          result = run_quickshifter_team_dry_run()
+          Path("agent05-team-handoff.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+          print(json.dumps({"status": result["status"], "trace": result["trace"], "production_started": result["production_started"]}, ensure_ascii=False))
+          assert result["status"] == "BLOCKED_CLAIM_VERIFICATION_AND_MEDIA"
+          assert result["trace"][0]["source_count"] >= 1
+          assert result["production_started"] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agent05-team-handoff
+          path: agent05-team-handoff.json
+          retention-days: 7
