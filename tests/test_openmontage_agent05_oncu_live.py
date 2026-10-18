@@ -11,6 +11,7 @@ class Agent05OncuTests(unittest.TestCase):
         self.assertEqual(len(result["attempts"]), 4)
         self.assertEqual(len(result["findings"]), 1)
         self.assertFalse(result["findings"][0]["claim_verified"])
+        self.assertEqual(result["media_status"], "NO_MEDIA_CANDIDATES")
         self.assertFalse(result["production_started"])
         self.assertFalse(result["publication_authorized"])
 
