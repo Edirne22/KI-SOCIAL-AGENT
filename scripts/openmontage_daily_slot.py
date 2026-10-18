@@ -16,5 +16,5 @@ if __name__ == "__main__":
     local = datetime.now(timezone.utc).astimezone(ZoneInfo("Europe/Berlin"))
     allowed = is_berlin_daily_slot(datetime.now(timezone.utc))
     with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
-        out.write(f"due={str(allowed).lower()}\\n")
+        out.write(f"due={str(allowed).lower()}\n")
     print(f"Berlin local time: {local.isoformat()}; scheduled slot: {allowed}")
