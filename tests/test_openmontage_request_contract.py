@@ -9,6 +9,13 @@ class MontageRequestContractTests(unittest.TestCase):
         self.assertEqual(load_request(json.dumps(payload).encode(), expected_request_id="tg-42"), payload)
         self.assertNotIn('"owner_chat":', json.dumps(payload))
 
+    def test_malformed_owner_fingerprint_rejected(self):
+        for value in (None, 123, "", "g" * 64, "0" * 63):
+            payload = build_request(request_id="tg-42", prompt="MotoGP", owner_chat="owner")
+            payload["owner_chat_sha256"] = value
+            with self.subTest(value=value), self.assertRaises(MontageRequestError):
+                load_request(json.dumps(payload).encode(), expected_request_id="tg-42")
+
     def test_wrong_request_id(self):
         payload = build_request(request_id="tg-42", prompt="MotoGP", owner_chat="owner")
         with self.assertRaises(MontageRequestError):
