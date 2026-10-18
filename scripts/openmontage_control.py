@@ -154,18 +154,15 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
         if type(update_id) is not int or update_id < 0:
             raise ValueError("Ungültige Telegram-Update-ID.")
         from integrations.openmontage.private_request_store import put_request
-        from integrations.openmontage.request_contract import MontageRequestError
         request_id = f"tg-{update_id}"
         try:
             put_request(request_storage, request_id=request_id,
                         prompt=action["prompt"], owner_chat=str(chat))
-        except (MontageRequestError, Exception):
+        except Exception:
             return ("OpenMontage: Private Speicherung fehlgeschlagen. "
                     "Kein Auftrag angenommen und kein Workflow gestartet.")
         return (f"OpenMontage: Auftrag {request_id} privat gespeichert, aber NICHT gestartet. "
                 "Der Produktionsworkflow ist noch nicht freigeschaltet.")
-    # Explicit staging API: no dispatch until the production workflow actually supports it.
-    # Never claim a film was queued merely because a private request was saved.
     if action == "status":
         return recent_runs(token, get)
 
