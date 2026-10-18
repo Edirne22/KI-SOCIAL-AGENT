@@ -64,10 +64,10 @@ def test_media(board, root):
     return {'manifest': items, 'all_rights_verified': True}
 
 
-def execute(output):
+def execute(output, topic):
     output = output.resolve()
     output.mkdir(parents=True, exist_ok=False)  # duplicate/restart cannot reuse stale success
-    state = research(TOPIC)
+    state = research(topic)
     save(output / 'research-handoff.json', state)
     if state['status'] != 'RESEARCH_READY':
         raise ValueError('RESEARCH_BLOCKED: ' + json.dumps(state['history'][-1], ensure_ascii=False))
@@ -88,7 +88,7 @@ def execute(output):
     validate_video(Path(result['video_file']))
     trace.append({'role': 'mp4_quality_gate', 'verdict': 'PASS'})
     save(output / 'production-receipt.json', {
-        'status': 'PREVIEW_READY', 'topic': TOPIC, 'created_at': datetime.now(timezone.utc).isoformat(),
+        'status': 'PREVIEW_READY', 'topic': topic, 'created_at': datetime.now(timezone.utc).isoformat(),
         'commit': os.environ.get('GITHUB_SHA', 'local'), 'run_id': os.environ.get('GITHUB_RUN_ID', 'local'),
         'publication_authorized': False, 'synthetic_test_media': True,
         'research_sha256': hashlib.sha256((output / 'research-handoff.json').read_bytes()).hexdigest(),
@@ -137,5 +137,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--verify', action='store_true')
+    parser.add_argument('--topic', default=TOPIC, help='Requested news topic; no publication')
     args = parser.parse_args()
-    verify(args.output) if args.verify else execute(args.output)
+    verify(args.output) if args.verify else execute(args.output, args.topic)
