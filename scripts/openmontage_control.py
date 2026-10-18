@@ -129,7 +129,7 @@ def recent_runs(token: str, get=None) -> str:
         return f"Statusabfrage fehlgeschlagen; keine Zugangsdaten ausgegeben. {URL}"
 
 
-def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=None, jobs_state=None, post=None, get=None) -> str:
+def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=None, jobs_state=None, post=None, get=None, request_storage=None) -> str:
     if not authorized_chat or str(chat) != str(authorized_chat):
         raise PermissionError("OpenMontage ist nur im freigegebenen Chat verfügbar.")
 
@@ -151,6 +151,8 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
         return ("OpenMontage: Filmauftrag/Planung derzeit NICHT AUSFÜHRBAR. "
                 "Der GitHub-Workflow besitzt für diese Modi noch keinen echten Produktionsschritt. "
                 "Kein Job wurde angenommen oder gestartet. Bitte /montage status für bestehende Läufe nutzen.")
+    # Explicit staging API: no dispatch until the production workflow actually supports it.
+    # Never claim a film was queued merely because a private request was saved.
     if action == "status":
         return recent_runs(token, get)
 
