@@ -12,6 +12,7 @@ from typing import Any, Dict, Optional
 
 from integrations.openmontage import creative_renderer
 import openmontage_fact_checker as fc
+from scripts.openmontage_media_contract import validate_local_scene_media
 
 logger = logging.getLogger(__name__)
 
@@ -22,8 +23,9 @@ def produce_video(
     media_manifest_data: Dict[str, Any],
     output_dir: Path,
     music_file: Optional[Path] = None,
+    *, media_root: Optional[Path] = None,
 ) -> Dict[str, Any]:
-    """Produces synthetic MP4 video and validates output specs."""
+    """Render demo or licensed local media; media_root explicitly enables local mode."""
     # Step 1: Verify fact checks on research
     verified_research = fc.verify_research_payload(research_data)
     if verified_research.get("verified_item_count", 0) == 0:
@@ -33,7 +35,7 @@ def produce_video(
     if not media_manifest_data or not isinstance(media_manifest_data, dict) or "manifest" not in media_manifest_data:
         raise ValueError("Video production failed: Invalid or missing media manifest data")
 
-    # Current renderer creates synthetic posters; never claim source clips.
+    # Rights gates apply to both demo and local mode.
     manifest_items = media_manifest_data["manifest"]
     if not isinstance(manifest_items, list) or not manifest_items:
         raise ValueError("Video production failed: Empty media manifest")
@@ -71,12 +73,19 @@ def produce_video(
     if render_scenes:
         render_scenes[-1]["transition"] = None
 
+    local_mode = media_root is not None or any('local_path' in item for item in manifest_items)
+    local_options = {}
+    if local_mode:
+        local_options = {'media': validate_local_scene_media(storyboard_data, media_manifest_data),
+                         'media_root': media_root}
+
     # Step 4: Trigger creative_renderer
     out_path = Path(output_dir).absolute()
     render_report = creative_renderer.render(
         output=out_path,
         scenes=render_scenes,
         music=music_file,
+        **local_options,
     )
 
     movie_file = out_path / "creative-demo.mp4"
@@ -96,8 +105,8 @@ def produce_video(
         "duration_seconds": render_report.get("duration", 0.0),
         "sha256": render_report.get("sha256", ""),
         "bytes": render_report.get("bytes", 0),
-        "media_mode": "synthetic_only",
-        "source_media_included": False,
+        "media_mode": "licensed_local" if local_mode else "synthetic_only",
+        "source_media_included": render_report.get("source_media_included", False),
         "subtitles_and_audio": {
             "subtitles_burned_in": False,
             "spoken_voice_present": False,

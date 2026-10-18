@@ -41,3 +41,21 @@ def validate_scene_media(storyboard: dict, media_manifest: dict) -> list[dict]:
         accepted.append({"scene_number": index, "media_url": url,
                          "media_license": license_name, "media_source": item.get("media_source", "")})
     return accepted
+
+
+def validate_local_scene_media(storyboard: dict, media_manifest: dict) -> list[dict]:
+    """Local handoff; remote metadata contract remains unchanged."""
+    scenes = storyboard.get('scenes', [])
+    items = media_manifest.get('manifest', [])
+    if (not isinstance(scenes, list) or not scenes or not isinstance(items, list)
+            or len(scenes) != len(items) or media_manifest.get('all_rights_verified') is not True):
+        raise MediaContractError('LOCAL_MEDIA_INVALID: scene/media count or rights mismatch')
+    for index, (scene, item) in enumerate(zip(scenes, items), 1):
+        if (not isinstance(scene, dict) or not isinstance(item, dict)
+                or scene.get('scene_number') != index or item.get('scene_number') != index
+                or item.get('rights_verified') is not True
+                or item.get('media_license') not in
+                {'owned_content', 'cc0', 'public_domain', 'explicit_permission_granted'}
+                or not item.get('local_path')):
+            raise MediaContractError(f'LOCAL_MEDIA_INVALID: licensed local media missing for scene {index}')
+    return items
