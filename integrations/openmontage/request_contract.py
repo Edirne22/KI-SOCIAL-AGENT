@@ -43,4 +43,4 @@ def load_request(data: bytes, *, expected_request_id: str) -> dict:
 def serialize_request(*, request_id: str, prompt: str, owner_chat: str) -> bytes:
     """Serialize owner-validated request; never put the prompt in Actions inputs."""
     request = build_request(request_id=request_id, prompt=prompt, owner_chat=owner_chat)
-    return (json.dumps(request, ensure_ascii=False, sort_keys=True) + "\\n").encode("utf-8")
+    return (json.dumps(request, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
