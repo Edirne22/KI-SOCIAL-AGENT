@@ -111,6 +111,7 @@ jobs:
         if: (inputs.mode == 'planen' || inputs.mode == 'erstellen') && inputs.request_id != ''
         env:
           REQUEST_ID: ${{ inputs.request_id }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
