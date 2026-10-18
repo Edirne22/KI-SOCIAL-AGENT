@@ -31,6 +31,14 @@ def main():
     ):
         raise SystemExit("Unauthorized planning request")
     plan = build_plan(request)
+    from openmontage_research import build_research
+    research = build_research(request["prompt"])
+    plan["verified_sources"] = [
+        {"title": story["title"], "url": story["original_url"], "source_status": story["source_status"]}
+        for story in research["stories"] if story["source_status"] == "official"
+    ]
+    plan["status"] = "RESEARCH_READY" if plan["verified_sources"] else "NEEDS_RESEARCH"
+    plan["research_item_count"] = research["item_count"]
     # Topic is private. Store plan only in the private R2 bucket, not public Actions artifacts.
     import io
     storage = from_environment()
