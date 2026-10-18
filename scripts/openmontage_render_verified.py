@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 from openmontage_fact_checker import verify_research_payload
 from scripts.openmontage_media_contract import validate_scene_media, validate_local_scene_media
@@ -35,8 +36,17 @@ def render_verified_research(research: dict, output_dir: Path, *,
         raise ValueError("Media rights verification failed")
     # Validate the scene-to-media contract before any production side effect.
     validate_scene_media(storyboard, manifest)
-    # No external-media adapter exists yet; do not mislabel synthetic video.
-    raise RuntimeError("SOURCE_MEDIA_RENDERER_NOT_CONNECTED: real clips cannot yet be rendered")
+    # Only explicitly licensed direct media enters the remote intake.
+    if any(item.get("external_media_accepted") is not True for item in manifest["manifest"]):
+        raise RuntimeError("SOURCE_MEDIA_NOT_LICENSED: approved real media required for every scene")
+    from scripts.openmontage_licensed_media_intake import download_licensed_scenes
+    with TemporaryDirectory(prefix="openmontage-licensed-") as temp:
+        media_root_path = Path(temp) / "media"
+        local_config = download_licensed_scenes(manifest["manifest"], media_root_path)
+        local_manifest = {"manifest": local_config["scenes"], "all_rights_verified": True}
+        validate_local_scene_media(storyboard, local_manifest)
+        return produce_video(verified, storyboard, local_manifest, output_dir,
+                             media_root=media_root_path)
 
 
 def main() -> None:
