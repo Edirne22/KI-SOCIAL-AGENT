@@ -26,8 +26,6 @@ def audit():
         errors.append("TELEGRAM_JOB_NOT_DISPATCHED")
     if '"proposal": "AWAITING_APPROVAL"' in plan and '"storyboard": "BLOCKED"' in plan:
         errors.append("PRIVATE_PLAN_STORYBOARD_GATE")
-    if ' + \'\\\\n\'' in workflow:
-        errors.append("LITERAL_BACKSLASH_N_IN_PLAN_JSON")
     return errors
 
 class WiringAuditTests(unittest.TestCase):
@@ -38,7 +36,6 @@ class WiringAuditTests(unittest.TestCase):
             "DAILY_ONLY_READINESS",
             "TELEGRAM_JOB_NOT_DISPATCHED",
             "PRIVATE_PLAN_STORYBOARD_GATE",
-            "LITERAL_BACKSLASH_N_IN_PLAN_JSON",
         })
 
     def test_no_crlf_or_escaped_newline_in_workflow_output(self):
