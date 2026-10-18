@@ -63,7 +63,7 @@ def _fetch_official_source(source):
                 continue
             if not any(word in (title + " " + parts.path).casefold() for word in
                        ("race", "rider", "motogp", "moto2", "moto3", "worldsbk",
-                        "supersport", "oncu", "öncü", "news", "result", "championship")):
+                        "supersport", "oncu", "öncü", "news", "result", "championship", "power", "reifen", "tyre", "tire", "michelin")):
                 continue
             seen.add(url)
             results.append({"title": title[:200], "url": url,
@@ -78,13 +78,15 @@ def _fetch_official_source(source):
 def research(query):
     """Fetch registered official motorsport sources, with no LLM search quota."""
     key = query.casefold()
-    if any(word in key for word in ("deniz", "can öncü", "oncu", "moto2", "motogp")):
+    if "michelin" in key or "power gp" in key:
+        names = {"Michelin"}
+    elif any(word in key for word in ("deniz", "can öncü", "oncu", "moto2", "motogp")):
         names = {"MotoGP", "MotoGP results", "WorldSBK", "FIM"}
     elif any(word in key for word in ("worldssp", "worldsbk", "superbike")):
         names = {"WorldSBK", "FIM", "Turkish Motorcycle Federation"}
     else:
         names = {"MotoGP", "WorldSBK", "FIM", "Turkish Motorcycle Federation"}
-    selected = [source for source in SOURCES if source["tier"] == "official" and source["name"] in names]
+    selected = [source for source in SOURCES if source["tier"] in ("official", "manufacturer") and source["name"] in names]
     with ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(_fetch_official_source, selected))
     rows = [item for group in results for item in group]
