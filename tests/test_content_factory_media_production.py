@@ -13,9 +13,15 @@ def ref(mid,data=b"x"):
 class Block6Tests(unittest.TestCase):
  def job(self):
   j=ProductionJob("media"); j.transition(JobStatus.INGESTING); j.transition(JobStatus.RESEARCHING); j.transition(JobStatus.WRITING); j.transition(JobStatus.STORYBOARDING); return j
- def test_video_plan_prefers_supoclip_edit_ffmpeg(self):
+ def test_video_plan_uses_ffmpeg_without_legacy_editors(self):
   j=self.job(); j.media.append(ref("source")); p=MediaProductionPlanner().plan(j,brief())
-  self.assertEqual(("supoclip","openchatcut","ffmpeg"),tuple(x.machine for x in p.steps))
+  self.assertEqual(("ffmpeg",),tuple(x.machine for x in p.steps))
+ def test_default_and_compatibility_flag_have_same_safe_plan(self):
+  j=self.job(); j.media.append(ref("source"))
+  default=MediaProductionPlanner().plan(j,brief())
+  compat=MediaProductionPlanner().plan(j,brief(),independent_ffmpeg=True)
+  self.assertEqual(default,compat)
+  self.assertFalse({"supoclip","openchatcut"} & {s.machine for s in default.steps})
  def test_video_without_source_uses_live_agnes(self):
   p=MediaProductionPlanner().plan(self.job(),brief()); self.assertEqual("agnes_video",p.steps[0].machine)
   self.assertEqual("hook | angle | visual",dict(p.steps[0].parameters)["prompt"])
@@ -89,7 +95,7 @@ class Block6Tests(unittest.TestCase):
   p=MediaProductionPlan(j.job_id,j.revision,"b",(MediaStep("x",MediaStage.EDIT,"m",()),))
   with self.assertRaises(HandoffError): MediaProductionRunner().execute(j,p,{"m":ContractMediaAdapter("m",ref("same",b"b"))})
  def test_simulated_adapter_truth_is_explicit(self):
-  self.assertEqual(ExecutionTruth.SIMULATED,ContractMediaAdapter("supoclip",ref("x")).truth)
+  self.assertEqual(ExecutionTruth.SIMULATED,ContractMediaAdapter("ffmpeg",ref("x")).truth)
  def test_attach_plan_immutable(self):
   j=self.job(); p=MediaProductionPlanner().plan(j,brief(ContentFormat.POST)); attach_media_plan(j,p); attach_media_plan(j,p)
   q=MediaProductionPlan(j.job_id,j.revision,"other",())
@@ -100,12 +106,10 @@ class Block6Tests(unittest.TestCase):
  def test_contract_staffellauf_outputs_chain(self):
   j=self.job(); j.media.append(ref("source"))
   p=MediaProductionPlanner().plan(j,brief())
-  machines={"supoclip":ContractMediaAdapter("supoclip",ref("clip")),
-            "openchatcut":ContractMediaAdapter("openchatcut",ref("master")),
-            "ffmpeg":ContractMediaAdapter("ffmpeg",ref("render"))}
+  machines={"ffmpeg":ContractMediaAdapter("ffmpeg",ref("render"))}
   out=MediaProductionRunner().execute(j,p,machines)
-  self.assertEqual(("clip","master","render"),tuple(r.outputs[0].media_id for r in out))
-  self.assertEqual(4,len(j.media))
+  self.assertEqual(("render",),tuple(r.outputs[0].media_id for r in out))
+  self.assertEqual(2,len(j.media))
  def test_stale_revision_rejected(self):
   j=self.job(); p=MediaProductionPlanner().plan(j,brief()); j.revision+=1
   with self.assertRaises(MediaProductionError): MediaProductionRunner().execute(j,p,{})
