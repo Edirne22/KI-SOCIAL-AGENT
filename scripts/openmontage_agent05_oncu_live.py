@@ -82,30 +82,35 @@ def _nemotron_assess(findings):
 
 def run(search=research, queries=QUERIES, assess=_nemotron_assess):
     attempts, findings, seen = [], [], set()
-    for query in queries:
-        try:
-            response = search(query)
-            rows = response.get("results") or []
-            attempt = {"query": query, "provider": response.get("provider"),
-                       "live_search": response.get("live_search") is True,
-                       "warning": response.get("warning"), "result_count": len(rows)}
-            attempts.append(attempt)
-            if "429" in str(attempt["warning"] or ""):
-                # Stop instead of hammering an exhausted free-tier quota.
-                break
-            if not attempt["live_search"]:
-                continue
-            for row in rows:
-                url = str(row.get("url") or "")
-                if not url.startswith("https://") or url in seen:
+    assessment_future = None
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        for query in queries:
+            try:
+                response = search(query)
+                rows = response.get("results") or []
+                attempt = {"query": query, "provider": response.get("provider"),
+                           "live_search": response.get("live_search") is True,
+                           "warning": response.get("warning"), "result_count": len(rows)}
+                attempts.append(attempt)
+                if "429" in str(attempt["warning"] or ""):
+                    # Stop instead of hammering an exhausted free-tier quota.
+                    break
+                if not attempt["live_search"]:
                     continue
-                seen.add(url)
-                findings.append({"query": query, "title": row.get("title"),
-                                 "url": url, "snippet": row.get("snippet"),
-                                 "claim_verified": False, "media_rights_verified": False})
-        except Exception as exc:
-            attempts.append({"query": query, "live_search": False,
-                             "warning": type(exc).__name__, "result_count": 0})
+                for row in rows:
+                    url = str(row.get("url") or "")
+                    if not url.startswith("https://") or url in seen:
+                        continue
+                    seen.add(url)
+                    findings.append({"query": query, "title": row.get("title"),
+                                     "url": url, "snippet": row.get("snippet"),
+                                     "claim_verified": False, "media_rights_verified": False})
+                if findings and assessment_future is None:
+                    assessment_future = pool.submit(assess, list(findings))
+            except Exception as exc:
+                attempts.append({"query": query, "live_search": False,
+                                 "warning": type(exc).__name__, "result_count": 0})
+        assessment = assessment_future.result() if assessment_future else assess([])
     # Candidate discovery only: linked pages are not licensed downloadable assets.
     media_candidates = []
     for item in findings:
@@ -117,7 +122,6 @@ def run(search=research, queries=QUERIES, assess=_nemotron_assess):
                 "direct_media_url": None, "media_rights_verified": False,
                 "usage": "discovery_only", "needs_license_review": True,
             })
-    assessment = assess(findings)
     return {"nvidia_assessment": assessment, "media_candidates": media_candidates,
             "media_status": "CANDIDATES_UNLICENSED" if media_candidates else "NO_MEDIA_CANDIDATES",
             "agent": "05_research_synthesist", "topic": " | ".join(queries),
