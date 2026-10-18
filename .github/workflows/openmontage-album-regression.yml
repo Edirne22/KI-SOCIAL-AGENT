@@ -1,0 +1,20 @@
+name: OpenMontage Album Workflow Regression
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/openmontage.yml"
+      - ".github/workflows/openmontage-album-regression.yml"
+      - "tests/test_openmontage_album_workflow_regression.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest -v tests.test_openmontage_album_workflow_regression
