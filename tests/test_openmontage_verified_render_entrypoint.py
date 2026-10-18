@@ -30,18 +30,34 @@ class VerifiedRenderTests(unittest.TestCase):
         render.assert_not_called()
         self.assertEqual(board.call_args.kwargs["target_duration"], 35)
 
-    def test_licensed_media_without_renderer_adapter_blocks_render(self):
-        with patch("scripts.openmontage_render_verified.verify_research_payload",
-                   return_value={"verified_item_count": 1}), patch(
-                   "scripts.openmontage_render_verified.build_storyboard",
-                   return_value={"scenes": [{"scene_number": 1, "title": "Test"}]}), patch(
-                   "scripts.openmontage_render_verified.build_media_manifest",
-                   return_value={"all_rights_verified": True, "manifest": [
-                       {"scene_number": 1, "external_media_accepted": True, "rights_verified": True, "media_license": "owned_content", "media_url": "https://example.org/owned.mp4"}
-                   ]}), patch("scripts.openmontage_render_verified.produce_video") as render:
-            with self.assertRaisesRegex(RuntimeError, "SOURCE_MEDIA_RENDERER_NOT_CONNECTED"):
-                render_verified_research({}, Path("/tmp/mock"))
-            render.assert_not_called()
+    def test_licensed_media_reaches_existing_renderer(self):
+        import tempfile
+        from tests.test_openmontage_local_media import make_media
+        with tempfile.TemporaryDirectory() as tmp:
+            from pathlib import Path
+            from scripts.openmontage_licensed_media_intake import download_licensed_scenes
+            root = Path(tmp)
+            make_media(root / "fixture.png")
+            with patch("scripts.openmontage_render_verified.verify_research_payload",
+                       return_value={"verified_item_count": 1}), patch(
+                       "scripts.openmontage_render_verified.build_storyboard",
+                       return_value={"scenes": [{"scene_number": 1, "title": "Test"}]}), patch(
+                       "scripts.openmontage_render_verified.build_media_manifest",
+                       return_value={"all_rights_verified": True, "manifest": [
+                           {"scene_number": 1, "external_media_accepted": True, "rights_verified": True,
+                            "media_license": "owned_content", "media_url": "https://example.org/owned.png"}
+                       ]}), patch(
+                       "scripts.openmontage_licensed_media_intake.download_licensed_scenes",
+                       return_value={"all_rights_verified": True, "scenes": [
+                           {"scene_number": 1, "local_path": "scene-1.png",
+                            "rights_verified": True, "media_license": "owned_content"}
+                       ]}) as intake, patch(
+                       "scripts.openmontage_render_verified.produce_video",
+                       return_value={"status": "verified", "source_media_included": True}) as render:
+                result = render_verified_research({}, root / "out")
+                intake.assert_called_once()
+                render.assert_called_once()
+                self.assertTrue(result["source_media_included"])
 
 
 class LocalIntakeTests(unittest.TestCase):
