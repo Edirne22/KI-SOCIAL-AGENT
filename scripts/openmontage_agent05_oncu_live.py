@@ -14,22 +14,31 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "infra" / "private-asr"))
-from search_provider import _search_searxng, _valid_searxng_url
+from urllib.parse import quote_plus
+from xml.etree import ElementTree
 
 
 def research(query):
-    base = _valid_searxng_url(os.getenv("SEARXNG_URL", "")) if os.getenv("SEARXNG_URL") else None
-    if not base:
-        return {"live_search": False, "provider": "SearXNG", "results": [],
-                "warning": "SEARXNG_URL_MISSING"}
+    """Discover public news links from a no-key RSS endpoint; no claims verified."""
+    url = "https://www.google.com/search?tbm=nws&output=rss&q=" + quote_plus(query)
     try:
-        result = _search_searxng(query, base, 6)
-        return {"live_search": bool(result.get("live_search")) and bool(result.get("results")),
-                "provider": "SearXNG", "results": result.get("results", []),
-                "warning": result.get("warning")}
-    except (RuntimeError, requests.RequestException):
-        return {"live_search": False, "provider": "SearXNG", "results": [],
-                "warning": "SEARXNG_SEARCH_UNAVAILABLE"}
+        response = requests.get(url, timeout=(10, 25), headers={
+            "User-Agent": "Mozilla/5.0 (compatible; Agent05Research/1.0)"})
+        if response.status_code != 200:
+            return {"live_search": False, "provider": "PublicNewsRSS", "results": [],
+                    "warning": "RSS_HTTP_" + str(response.status_code)}
+        root = ElementTree.fromstring(response.content)
+        rows = []
+        for item in root.findall(".//channel/item")[:6]:
+            link = (item.findtext("link") or "").strip()
+            title = (item.findtext("title") or "").strip()
+            if link.startswith("https://") and title:
+                rows.append({"title": title, "url": link, "snippet": ""})
+        return {"live_search": bool(rows), "provider": "PublicNewsRSS",
+                "results": rows, "warning": None if rows else "RSS_EMPTY_OR_UNSUPPORTED"}
+    except (requests.RequestException, ElementTree.ParseError):
+        return {"live_search": False, "provider": "PublicNewsRSS", "results": [],
+                "warning": "RSS_REQUEST_FAILED"}
 
 QUERIES = (
     "Deniz Öncü latest Moto2 news October 2026 official MotoGP team",
