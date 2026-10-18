@@ -8,7 +8,7 @@ import re
 import requests
 
 
-def preview_message(preview: dict) -> str:
+def preview_message(preview: dict, social_copy: dict | None = None) -> str:
     url = preview["download_url"]
     seconds = preview["expires_seconds"]
     if not isinstance(url, str) or not url.startswith("https://"):
@@ -25,7 +25,7 @@ def preview_message(preview: dict) -> str:
 
 
 def send_owner_preview(preview: dict, *, token: str | None = None,
-                       chat_id: str | None = None, post=None) -> None:
+                       chat_id: str | None = None, post=None, social_copy: dict | None = None) -> None:
     token = token if token is not None else os.getenv("TELEGRAM_BOT_TOKEN", "")
     chat_id = chat_id if chat_id is not None else os.getenv("TELEGRAM_CHAT_ID", "")
     if not token or not re.fullmatch(r"-?[0-9]{1,20}", str(chat_id)):
@@ -33,7 +33,7 @@ def send_owner_preview(preview: dict, *, token: str | None = None,
     sender = post or requests.post
     response = sender(
         f"https://api.telegram.org/bot{token}/sendMessage",
-        json={"chat_id": str(chat_id), "text": preview_message(preview),
+        json={"chat_id": str(chat_id), "text": preview_message(preview, social_copy=social_copy),
               "disable_web_page_preview": True},
         timeout=20,
     )
