@@ -7,6 +7,7 @@ from pathlib import Path
 
 from integrations.openmontage.private_request_store import get_request
 from integrations.openmontage.r2_client import from_environment
+from integrations.agent_memory_preflight import prepare_agent_context, require_agent_memory
 
 
 def build_plan(request: dict) -> dict:
@@ -30,7 +31,14 @@ def main():
         request["owner_chat_sha256"], hashlib.sha256(chat.encode()).hexdigest()
     ):
         raise SystemExit("Unauthorized planning request")
+    storage = from_environment()
+    # Read each role's R2 memory before research and storyboard planning.
+    memory_context = {}
+    for role in ("05_research_synthesist", "creative_director", "07_video_optimization"):
+        prepared = prepare_agent_context(storage, agent_id=role, job={"job_id": request_id})
+        memory_context[role] = require_agent_memory(prepared)["memory"]
     plan = build_plan(request)
+    plan["agent_memory_context"] = memory_context
     from openmontage_research import build_research
     research = build_research(request["prompt"])
     plan["verified_sources"] = [
@@ -60,7 +68,6 @@ def main():
             plan["status"] = "STORYBOARD_DRAFT"
     # Topic is private. Store plan only in the private R2 bucket, not public Actions artifacts.
     import io
-    storage = from_environment()
     storage.put_object(
         Key=f"openmontage/plans/{request_id}.json",
         Body=(json.dumps(plan, ensure_ascii=False) + "\n").encode("utf-8"),
