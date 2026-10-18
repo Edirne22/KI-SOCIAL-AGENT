@@ -161,8 +161,21 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
         except Exception:
             return ("OpenMontage: Private Speicherung fehlgeschlagen. "
                     "Kein Auftrag angenommen und kein Workflow gestartet.")
-        return (f"OpenMontage: Auftrag {request_id} privat gespeichert, aber NICHT gestartet. "
-                "Der Produktionsworkflow ist noch nicht freigeschaltet.")
+        try:
+            response = (post or requests.post)(
+                f"{API}/actions/workflows/{WORKFLOW}/dispatches",
+                headers=headers(token),
+                json={"ref": "main", "inputs": {"mode": action["action"], "request_id": request_id}},
+                timeout=20,
+            )
+        except (requests.RequestException, ValueError):
+            return (f"OpenMontage: Auftrag {request_id} privat gespeichert. "
+                    "GitHub-Start unklar oder nicht möglich; kein automatischer Doppelstart. /montage status")
+        if response.status_code != 204:
+            return (f"OpenMontage: Auftrag {request_id} privat gespeichert, aber GitHub-Start "
+                    f"abgelehnt (HTTP {response.status_code}). Workflow-Berechtigung prüfen.")
+        return (f"OpenMontage: GitHub hat den privaten Auftrag {request_id} angenommen. "
+                "Produktion noch nicht bestätigt. /montage status")
     if action == "status":
         return recent_runs(token, get)
 

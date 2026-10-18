@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import Mock
 from scripts.openmontage_control import handle
 
 
@@ -11,12 +12,19 @@ class Storage:
 
 
 class TelegramPrivateStagingTests(unittest.TestCase):
-    def test_stage_without_dispatch(self):
+    def test_stage_then_dispatch(self):
         storage = Storage()
-        result = handle("/montage planen MotoGP Türkçe", 42, "owner", "owner",
-                        request_storage=storage,
-                        post=lambda *a, **kw: self.fail("must not dispatch"))
-        self.assertIn("NICHT gestartet", result)
+        sent = []
+        def dispatch(url, **kwargs):
+            self.assertIn("openmontage.yml/dispatches", url)
+            self.assertIn("openmontage/requests/tg-42.json", storage.data)
+            self.assertEqual(kwargs["json"]["inputs"], {"mode": "planen", "request_id": "tg-42"})
+            sent.append(True)
+            return Mock(status_code=204)
+        with unittest.mock.patch.dict("os.environ", {"GITHUB_TOKEN": "test-token"}):
+            result = handle("/montage planen MotoGP Türkçe", 42, "owner", "owner", request_storage=storage, post=dispatch)
+        self.assertIn("angenommen", result)
+        self.assertEqual(sent, [True])
         self.assertIn("tg-42", result)
         self.assertIn("openmontage/requests/tg-42.json", storage.data)
 
