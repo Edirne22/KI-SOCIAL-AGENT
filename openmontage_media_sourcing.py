@@ -50,14 +50,14 @@ def evaluate_media_item(
         allowed_usage = "restricted"
         # The external URL is rejected, but the replacement is an internally
         # generated synthetic scene with no third-party media usage.
-        rights_ok = True
-        verification = "FALLBACK: Unlicensed third-party URL rejected; synthetic scene selected."
+        rights_ok = False
+        verification = "MEDIA_RESEARCH_INCOMPLETE: third-party media not approved for rendering."
         selected_format = "synthetic_fallback"
     else:
         license_status = "synthetic_generated"
         allowed_usage = "unrestricted"
-        rights_ok = True
-        verification = "PASS: Non-infringing synthetic graphics fallback"
+        rights_ok = False
+        verification = "MEDIA_RESEARCH_INCOMPLETE: no real media provided for scene"
         selected_format = "synthetic_graphic"
 
     # Select non-infringing visual fallback asset if unverified
