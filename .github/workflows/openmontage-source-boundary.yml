@@ -1,0 +1,20 @@
+name: OpenMontage Source Trust Boundary
+on:
+  pull_request:
+    paths:
+      - "openmontage_research.py"
+      - "tests/test_openmontage_source_boundary.py"
+      - ".github/workflows/openmontage-source-boundary.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install requests
+      - run: python -m unittest -v tests.test_openmontage_source_boundary
