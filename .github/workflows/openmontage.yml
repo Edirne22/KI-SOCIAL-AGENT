@@ -9,6 +9,11 @@ on:
         type: choice
         options: [diagnose, demo, erstellen, planen]
         default: diagnose
+      album_job_id:
+        description: 'Explicit owner-owned Telegram album id (optional, only erstellen)'
+        required: false
+        type: string
+        default: ''
       request_id:
         description: 'Telegram-Auftrags-ID; bei manuellem Start leer lassen'
         required: false
@@ -142,8 +147,33 @@ jobs:
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
         run: |
           integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_load_verified_research
+      - name: Explicit private album selection from R2
+        if: inputs.mode == 'erstellen' && inputs.request_id != '' && inputs.album_job_id != ''
+        env:
+          REQUEST_ID: ${{ inputs.request_id }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+        run: integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_load_album_selection
+      - name: Verified research and explicitly selected real album render
+        if: inputs.mode == 'erstellen' && inputs.request_id != '' && inputs.album_job_id != ''
+        env:
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          ALBUM_JOB_ID: ${{ inputs.album_job_id }}
+        run: |
+          integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_render_owner_album \\
+            --job-id "$ALBUM_JOB_ID" \\
+            --selections integrations/openmontage/.runtime/album_selection.json \\
+            --research integrations/openmontage/.runtime/verified_research.json \\
+            --output integrations/openmontage/.runtime/rendered
       - name: Freigegebene Recherche als synthetisches MP4 rendern
-        if: inputs.mode == 'erstellen' && inputs.request_id != ''
+        if: inputs.mode == 'erstellen' && inputs.request_id != '' && inputs.album_job_id == ''
         run: |
           integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_render_verified \
             --research integrations/openmontage/.runtime/verified_research.json \
