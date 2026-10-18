@@ -1,0 +1,21 @@
+name: OpenMontage Owner Album End To End
+on:
+  pull_request:
+    paths:
+      - "tests/test_openmontage_owner_album_e2e.py"
+      - ".github/workflows/openmontage-owner-album-e2e.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - run: python -m unittest -v tests.test_openmontage_owner_album_e2e
