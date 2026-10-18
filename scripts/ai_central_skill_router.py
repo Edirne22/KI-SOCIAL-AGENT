@@ -84,7 +84,11 @@ def resolve_agent_role(agent_id, registry=None):
 def agent_can(agent_id, capability, registry=None):
     """Fail closed: an agent may request only centrally allowlisted capabilities."""
     registry=registry or load_registry()
-    try:\n        role_id = resolve_agent_role(agent_id, registry)\n    except RoutingError:\n        return False\n    allowed=(registry.get("agent_capabilities") or {}).get(role_id,[])
+    try:
+        role_id = resolve_agent_role(agent_id, registry)
+    except RoutingError:
+        return False
+    allowed=(registry.get("agent_capabilities") or {}).get(role_id,[])
     return capability in allowed
 
 def choose_for_agent(agent_id, task_type, **kwargs):
