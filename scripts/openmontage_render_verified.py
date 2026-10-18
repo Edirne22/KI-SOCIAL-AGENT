@@ -33,7 +33,7 @@ def render_verified_research(research: dict, output_dir: Path, *,
         return produce_video(verified, storyboard, manifest, output_dir, media_root=media_root)
     manifest = build_media_manifest(storyboard)
     if not manifest["all_rights_verified"]:
-        raise ValueError("Media rights verification failed")
+        raise ValueError("MEDIA_RESEARCH_INCOMPLETE: verified licensed scene media missing")
     # Validate the scene-to-media contract before any production side effect.
     validate_scene_media(storyboard, manifest)
     # Only explicitly licensed direct media enters the remote intake.
