@@ -21,6 +21,8 @@ FILM_TYPES = (
     "weekly_review",
     "technical_report",
     "turkish_news",
+    "technology_news",
+    "product_explainer",
 )
 
 TRANSITIONS = ("fade", "wipeleft", "circleopen")
@@ -41,8 +43,8 @@ def build_storyboard(
     if not stories:
         raise ValueError("Storyboard creation aborted: Research payload contains no verified stories (empty research).")
 
-    if target_duration not in SUPPORTED_DURATIONS:
-        target_duration = min(SUPPORTED_DURATIONS, key=lambda x: abs(x - target_duration))
+    if type(target_duration) is not int or not 15 <= target_duration <= 300:
+        raise ValueError("Target duration must be a whole number from 15 to 300 seconds")
 
     if aspect_ratio not in SUPPORTED_FORMATS:
         aspect_ratio = "9:16"
@@ -115,6 +117,10 @@ def build_storyboard(
             speaker_text = f"Meldung {scene_num}: {story.get('summary', title)}"
             overlay = f"{series}: {title}"
             audio_hint = "Dynamischer Motorsport-Soundtrack"
+            if film_type in ("technology_news", "product_explainer"):
+                speaker_text = str(story.get("summary") or title)
+                overlay = title
+                audio_hint = "Dynamischer, thematisch passender Soundtrack"
 
         zoom = "in" if i % 2 == 0 else "out"
         motion = "right" if i % 2 == 0 else "left"
