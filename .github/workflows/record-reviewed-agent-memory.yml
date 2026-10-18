@@ -36,7 +36,6 @@ concurrency:
 jobs:
   writeback:
     runs-on: ubuntu-latest
-    environment: agent-memory-review
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
