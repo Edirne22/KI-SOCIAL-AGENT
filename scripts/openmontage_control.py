@@ -19,6 +19,7 @@ HELP = (
     "OpenMontage V3 – Motorsport Video Factory\n"
     "/montage erstellen <Auftrag> – Filmauftrag ausführen (z.B. /montage erstellen MotoGP News, 90 Sek, Deutsch, 9:16)\n"
     "/montage planen <Thema> – Recherche & Storyboard planen\n"
+    "/montage album <tgalbum-ID> <Auftrag> – Eigentümeralbum für Film auswählen (nur mit separater Rechteauswahl)\n"
     "/montage status – Aktueller Job- & Build-Status\n"
     "/montage freigeben <Video-ID> – Redaktionelle Videofreigabe (ohne Social Publishing)\n"
     "/montage ablehnen <Video-ID> – Redaktionell ablehnen\n"
@@ -65,6 +66,11 @@ def parse_command(text: str) -> Any:
     m_reject = re.fullmatch(r"ablehnen ([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})", args_low)
     if m_reject:
         return f"reject:{m_reject.group(1)}"
+
+    album = re.fullmatch(r"album (tgalbum[a-f0-9]{32}) (.{3,4000})", raw, re.I | re.S)
+    if album:
+        return {"action": "erstellen", "prompt": album.group(2).strip(),
+                "album_job_id": album.group(1).lower()}
 
     if args_low.startswith("erstellen "):
         prompt = raw[10:].strip()
@@ -165,7 +171,10 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
             response = (post or requests.post)(
                 f"{API}/actions/workflows/{WORKFLOW}/dispatches",
                 headers=headers(token),
-                json={"ref": "main", "inputs": {"mode": action["action"], "request_id": request_id}},
+                json={"ref": "main", "inputs": {
+                    "mode": action["action"], "request_id": request_id,
+                    **({"album_job_id": action["album_job_id"]}
+                       if action.get("album_job_id") else {})}},
                 timeout=20,
             )
         except (requests.RequestException, ValueError):
