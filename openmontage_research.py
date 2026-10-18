@@ -63,7 +63,7 @@ def _detect_source_status(url: str, text: str) -> str:
         except Exception as e:
             logger.warning("Failed to parse URL domain for %s: %s", url, e)
 
-    is_official_domain = any(off_domain in domain for off_domain in OFFICIAL_DOMAINS)
+    is_official_domain = any(domain == off_domain or domain.endswith("." + off_domain) for off_domain in OFFICIAL_DOMAINS)
 
     rumor_words = ["gerücht", "rumor", "spekulation", "angeblich", "soll angeblich", "köpfe rollen", "gerüchten zufolge"]
     is_rumor = any(w in text.casefold() for w in rumor_words)
