@@ -69,6 +69,9 @@ def main():
             Body=(json.dumps(checked_research, ensure_ascii=False) + "\n").encode("utf-8"),
             ContentType="application/json",
         )
+    if checked_research["verified_item_count"]:
+        from scripts.openmontage_social_copy import build_social_copy
+        plan["social_copy_draft"] = build_social_copy(checked_research)
     plan["verified_sources"] = [
         {"title": story["title"], "url": story["original_url"], "source_status": story["source_status"]}
         for story in checked_research["stories"] if story["source_status"] == "official"

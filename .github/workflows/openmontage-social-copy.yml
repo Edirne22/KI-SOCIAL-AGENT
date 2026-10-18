@@ -1,0 +1,19 @@
+name: OpenMontage Social Copy
+on:
+  pull_request:
+    paths:
+      - "scripts/openmontage_social_copy.py"
+      - "scripts/openmontage_private_plan.py"
+      - "tests/test_openmontage_social_copy.py"
+      - ".github/workflows/openmontage-social-copy.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest -v tests.test_openmontage_social_copy
