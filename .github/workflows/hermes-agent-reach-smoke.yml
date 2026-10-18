@@ -1,5 +1,5 @@
 name: Hermes Agent Reach Runtime Smoke
-# Full rerun after Nemotron 120-second timeout adjustment.
+# Full rerun with bounded Nemotron context and 120-second per-request timeout.
 on:
   workflow_dispatch:
   push:
