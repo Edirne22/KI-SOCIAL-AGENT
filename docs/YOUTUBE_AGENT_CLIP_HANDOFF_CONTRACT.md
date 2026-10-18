@@ -6,7 +6,7 @@ Status: **Anforderung / nicht als LIVE nachgewiesen**. Gilt für die geplante In
 
 1. Eine Videoquelle und vorhandene Metadaten/Untertitel untersuchen; für echte visuelle Ereignisse Frames/Videoanalyse einsetzen. Niemals visuelle Treffer allein aus Untertiteln behaupten.
 2. Geeignete, nachvollziehbar begründete Zeitfenster mit Start-/Endzeit, Konfidenz, Quelle und Szenenbeschreibung auswählen. Überlappungen und Duplikate erkennen.
-3. **Automatische Clip-Extraktion ohne separate Schnitt-Einzelfreigabe** für eigenes, lizenziertes oder anderweitig zur Verarbeitung berechtigtes Quellmaterial. Downloads nur über zulässige Zugangswege; keine Umgehung von DRM, Zugangssperren oder Plattformschutz.
+3. **Automatische Clip-Extraktion ohne separate Schnitt-Einzelfreigabe** für eigenes, lizenziertes oder anderweitig zur Verarbeitung berechtigtes Quellmaterial. Der Auftraggeber bestätigt ausdrücklich, dass er für die von ihm für Aufträge benannten fremden Videos die erforderlichen Nutzungsrechte besitzt; dies gilt als auftragsbezogene Rechteerklärung, nicht als pauschale Freigabe aller beliebigen YouTube-Videos. Downloads nur über zulässige Zugangswege; keine Umgehung von DRM, Zugangssperren oder Plattformschutz.
 4. An den bestehenden FFmpeg-/OpenMontage-Eingang übergeben; keine zweite Schnitt-/Publisher-Orchestrierung und keine OpenChatCut-/SupoClip-Abhängigkeit.
 5. Clip-Outputs mit Job-ID, Revision, SHA-256, Zeitfenstern, Quellen-URL, Lizenz-/Rechtebeleg und Tool-Evidence registrieren. Kein fremder Job, keine veraltete Revision, keine unbekannte Agentenrolle.
 6. Unabhängiges Fakten-/Medien-/Rechte-QM vor jeder externen Veröffentlichung. Bei unklaren Rechten: keine Freigabe für Publikation, stattdessen belegte alternative Medien oder Platzhalter.
@@ -50,4 +50,4 @@ Beispielwerte sind **keine** echten erkannten Szenen. Der neue Rollenname ist re
 - Test: keine automatische Veröffentlichung ohne explizite menschliche Freigabe.
 - Externer YouTube-Agent wird vor Integration auf Code, Lizenz, Netz-/Dateizugriffe, Kosten und tatsächliche Funktionen geprüft.
 
-Die vom Auftraggeber erteilte Freigabe zur **automatischen technischen Clipauswahl und -bearbeitung** gilt innerhalb dieser Grenzen und ersetzt weder Plattform-/Urheberrechte noch die gesonderte Veröffentlichungsfreigabe.
+Die vom Auftraggeber erteilte Freigabe zur **automatischen technischen Clipauswahl und -bearbeitung** und seine Rechtebestätigung für die von ihm benannten fremden Videos gelten innerhalb dieser Grenzen und ersetzt weder Plattform-/Urheberrechte noch die gesonderte Veröffentlichungsfreigabe.
