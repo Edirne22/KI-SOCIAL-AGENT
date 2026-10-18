@@ -9,6 +9,11 @@ on:
         type: choice
         options: [diagnose, demo, erstellen, planen]
         default: diagnose
+      prompt:
+        description: 'Filmthema für planen; nicht für geheime Daten verwenden'
+        required: false
+        type: string
+        default: ''
       request_id:
         description: 'Telegram-Auftrags-ID; bei manuellem Start leer lassen'
         required: false
@@ -94,6 +99,12 @@ jobs:
       - name: Freigegebene Demo ohne API-Keys
         if: inputs.mode == 'demo'
         run: python3 integrations/openmontage/runtime.py demo
+      - name: Faktengeprüften Filmplan erzeugen
+        if: inputs.mode == 'planen'
+        env:
+          FILM_PROMPT: ${{ inputs.prompt }}
+        run: |
+          integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_plan_job --prompt "$FILM_PROMPT" --output integrations/openmontage/.runtime/plan
       - name: Private R2-Vorschau nur nach erfolgreichem Demo-Render
         if: inputs.mode == 'demo'
         env:
@@ -113,6 +124,7 @@ jobs:
           name: openmontage-${{ github.run_id }}
           path: |
             integrations/openmontage/.runtime/diagnose.json
+            integrations/openmontage/.runtime/plan/*.json
             integrations/openmontage/upstream/projects/demos/renders/code-to-screen.mp4
           if-no-files-found: error
           retention-days: 7
