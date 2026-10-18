@@ -119,6 +119,16 @@ jobs:
         run: |
           integrations/openmontage/.runtime/control/bin/python -m pip install --disable-pip-version-check boto3
           integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_load_private_request
+      - name: Privaten Plan zum Telegram-Auftrag in R2 speichern
+        if: inputs.mode == 'planen' && inputs.request_id != ''
+        env:
+          REQUEST_ID: ${{ inputs.request_id }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+        run: integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_private_plan
       - name: OpenMontage Planungsstatus ohne fingierte Recherche
         if: inputs.mode == 'planen'
         env:
