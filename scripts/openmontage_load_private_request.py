@@ -1,6 +1,8 @@
 """Load a private Telegram film request on a GitHub runner without logging prompt."""
 from __future__ import annotations
 
+import hashlib
+import hmac
 import json
 import os
 from pathlib import Path
@@ -27,6 +29,12 @@ def main():
         def get_object(self, *, Key):
             return storage.get_object(Bucket=os.environ["R2_BUCKET_NAME"], Key=Key)
     request = get_request(BucketClient(), request_id=request_id)
+    authorized_chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    if not authorized_chat:
+        raise SystemExit("Authorized Telegram chat not configured")
+    expected_owner = hashlib.sha256(authorized_chat.encode()).hexdigest()
+    if not hmac.compare_digest(request["owner_chat_sha256"], expected_owner):
+        raise SystemExit("Private request owner mismatch; processing blocked")
     # Do not write the prompt into a GitHub artifact, step output or log.
     result = {"request_id": request["request_id"], "status": "REQUEST_VALIDATED",
               "prompt_characters": len(request["prompt"])}
