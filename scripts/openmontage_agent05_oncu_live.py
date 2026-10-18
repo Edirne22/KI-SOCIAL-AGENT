@@ -14,31 +14,37 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "infra" / "private-asr"))
-from urllib.parse import quote_plus
-from xml.etree import ElementTree
+from concurrent.futures import ThreadPoolExecutor
+from integrations.openmontage.motorsport_source_catalog import SOURCES
+
+
+def _fetch_official_source(source):
+    try:
+        response = requests.get(source["url"], timeout=(8, 20), headers={
+            "User-Agent": "Mozilla/5.0 (compatible; Agent05Research/1.0)"})
+        if response.status_code != 200:
+            return None
+        return {"title": source["name"] + " (official source entry)",
+                "url": source["url"], "snippet": "", "source_checked_http": 200}
+    except requests.RequestException:
+        return None
 
 
 def research(query):
-    """Discover public news links from a no-key RSS endpoint; no claims verified."""
-    url = "https://www.google.com/search?tbm=nws&output=rss&q=" + quote_plus(query)
-    try:
-        response = requests.get(url, timeout=(10, 25), headers={
-            "User-Agent": "Mozilla/5.0 (compatible; Agent05Research/1.0)"})
-        if response.status_code != 200:
-            return {"live_search": False, "provider": "PublicNewsRSS", "results": [],
-                    "warning": "RSS_HTTP_" + str(response.status_code)}
-        root = ElementTree.fromstring(response.content)
-        rows = []
-        for item in root.findall(".//channel/item")[:6]:
-            link = (item.findtext("link") or "").strip()
-            title = (item.findtext("title") or "").strip()
-            if link.startswith("https://") and title:
-                rows.append({"title": title, "url": link, "snippet": ""})
-        return {"live_search": bool(rows), "provider": "PublicNewsRSS",
-                "results": rows, "warning": None if rows else "RSS_EMPTY_OR_UNSUPPORTED"}
-    except (requests.RequestException, ElementTree.ParseError):
-        return {"live_search": False, "provider": "PublicNewsRSS", "results": [],
-                "warning": "RSS_REQUEST_FAILED"}
+    """Fetch registered official motorsport sources, with no LLM search quota."""
+    key = query.casefold()
+    if any(word in key for word in ("deniz", "can öncü", "oncu", "moto2", "motogp")):
+        names = {"MotoGP", "MotoGP results", "WorldSBK", "FIM"}
+    elif any(word in key for word in ("worldssp", "worldsbk", "superbike")):
+        names = {"WorldSBK", "FIM", "Turkish Motorcycle Federation"}
+    else:
+        names = {"MotoGP", "WorldSBK", "FIM", "Turkish Motorcycle Federation"}
+    selected = [source for source in SOURCES if source["tier"] == "official" and source["name"] in names]
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        results = list(pool.map(_fetch_official_source, selected))
+    rows = [item for item in results if item]
+    return {"live_search": bool(rows), "provider": "OfficialSourceDirect",
+            "results": rows, "warning": None if rows else "OFFICIAL_SOURCES_UNREACHABLE"}
 
 QUERIES = (
     "Deniz Öncü latest Moto2 news October 2026 official MotoGP team",
