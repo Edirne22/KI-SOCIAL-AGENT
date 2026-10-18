@@ -25,7 +25,7 @@ def _fetch_official_source(source):
         if response.status_code != 200:
             return None
         return {"title": source["name"] + " (official source entry)",
-                "url": source["url"], "snippet": "", "source_checked_http": 200}
+                "url": source["url"], "snippet": "", "source_checked_http": 200, "source_kind": "homepage_only"}
     except requests.RequestException:
         return None
 
