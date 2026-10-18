@@ -1,6 +1,11 @@
 name: Hermes Agent Reach Runtime Smoke
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - feature/hermes-coordination-contract
+    paths:
+      - '.github/workflows/hermes-agent-reach-smoke.yml'
 permissions:
   contents: read
 jobs:
