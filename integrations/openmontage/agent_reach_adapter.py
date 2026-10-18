@@ -62,7 +62,9 @@ def discover(topic):
                     validate_news_url(link)
                 except ValueError:
                     continue
-                topical = bool(re.search(r'toprak|razgat', label + link, re.I))
+                subject_terms = [w for w in re.findall(r'[^\W_]{3,}', topic.casefold())
+                                 if w not in {'aktuelle', 'überprüfbare', 'news', 'deutsch', 'motorrad', 'und', 'der', 'die', 'das', 'über'}]
+                topical = any(w in (label + ' ' + link).casefold() for w in subject_terms)
                 official_article = '/en/news/20' in link
                 if topical or official_article:
                     if any(s in link for s in ('/uploads/', '/riders/', '/tag/')):
