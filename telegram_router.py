@@ -514,7 +514,17 @@ def main() -> None:
         from scripts import openmontage_control
         if openmontage_control.is_command(text):
             try:
-                answer = openmontage_control.handle(text, uid, chat, allowed)
+                parsed_montage = openmontage_control.parse_command(text)
+                if isinstance(parsed_montage, dict) and parsed_montage.get("action") in ("planen", "erstellen"):
+                    from integrations.openmontage.r2_client import from_environment, PrivateStorageUnavailable
+                    try:
+                        private_storage = from_environment()
+                    except PrivateStorageUnavailable:
+                        private_storage = None
+                    answer = openmontage_control.handle(
+                        text, uid, chat, allowed, request_storage=private_storage)
+                else:
+                    answer = openmontage_control.handle(text, uid, chat, allowed)
                 if answer:
                     send_message(answer)
             except (ValueError, PermissionError, RuntimeError) as exc:
