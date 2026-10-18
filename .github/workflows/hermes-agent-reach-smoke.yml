@@ -50,15 +50,15 @@ jobs:
             echo "::warning::Agent Reach is not a pip-installable package at repository root"
           fi
           if test -f /tmp/hermes-agent/cli.py; then
-            python /tmp/hermes-agent/cli.py --help > /tmp/hermes-cli-help.txt 2>&1 || true
+            /tmp/agent-reach-venv/bin/python /tmp/hermes-agent/cli.py --help > /tmp/hermes-cli-help.txt 2>&1 || true
             head -c 1200 /tmp/hermes-cli-help.txt
           else
             echo "::warning::Hermes cli.py not found at repository root; inspect upstream entrypoint"
           fi
           echo "Hermes files:"
-          ls -la /tmp/hermes-agent | head -35
+          ls -la /tmp/hermes-agent | sed -n '1,35p'
           echo "Agent Reach files:"
-          ls -la /tmp/agent-reach | head -35
+          ls -la /tmp/agent-reach | sed -n '1,35p'
       - name: Execute isolated Toprak source discovery
         shell: bash
         run: |
