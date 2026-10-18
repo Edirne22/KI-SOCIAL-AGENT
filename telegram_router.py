@@ -523,6 +523,14 @@ def main() -> None:
                         private_storage = None
                     answer = openmontage_control.handle(
                         text, uid, chat, allowed, request_storage=private_storage)
+                elif isinstance(parsed_montage, str) and parsed_montage.startswith(("approve:", "reject:")):
+                    from integrations.openmontage.r2_client import from_environment, PrivateStorageUnavailable
+                    try:
+                        feedback_storage = from_environment()
+                    except PrivateStorageUnavailable:
+                        feedback_storage = None
+                    answer = openmontage_control.handle(
+                        text, uid, chat, allowed, feedback_storage=feedback_storage)
                 else:
                     answer = openmontage_control.handle(text, uid, chat, allowed)
                 if answer:
