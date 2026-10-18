@@ -183,6 +183,7 @@ def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = Non
             "media_url": item.get("media_url"),
             "media_source": item.get("media_source"),
             "media_license": item.get("media_license"),
+            "media_candidates": item.get("media_candidates", []),
             "visual_target": item.get("visual_target"),
             "visual_anchor": item.get("visual_anchor"),
             "retrieved_at": retrieved_at_iso,
