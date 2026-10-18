@@ -21,7 +21,7 @@ def render_verified_research(research: dict, output_dir: Path, *,
     manifest = build_media_manifest(storyboard)
     if not manifest["all_rights_verified"]:
         raise ValueError("Media rights verification failed")
-    result = produce_video(verified, storyboard, manifest, output_dir)
+    # Production requires actual media assets, not just a rights-safe synthetic fallback.\n    # The current synthetic-only renderer cannot consume external clips; block\n    # rather than misrepresent the result as a finished motorcycle film.\n    items = manifest.get("manifest", [])\n    if not items or any(not item.get("external_media_accepted") or not item.get("media_url") for item in items):\n        raise RuntimeError("MEDIA_RESEARCH_INCOMPLETE: real scene assets missing")\n    raise RuntimeError("SOURCE_MEDIA_RENDERER_NOT_CONNECTED: real clips cannot yet be rendered")
     # Technical render success is not editorial acceptance of a real-media film.
     if result.get("source_media_included") is not True:
         result["creative_acceptance"] = "BLOCKED_NO_REAL_MEDIA"
