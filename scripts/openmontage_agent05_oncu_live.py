@@ -14,18 +14,22 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "infra" / "private-asr"))
-from research_gateway import _gemini_search
+from search_provider import _search_searxng, _valid_searxng_url
 
 
 def research(query):
-    # Agent05 uses grounded web search, not Groq. NVIDIA handles assessment.
-    key = os.getenv('GEMINI_API_KEY', '').strip()
-    if not key:
-        return {'live_search': False, 'provider': 'Gemini-Grounded',
-                'results': [], 'warning': 'GEMINI_KEY_MISSING'}
-    return _gemini_search(query, key) or {
-        'live_search': False, 'provider': 'Gemini-Grounded',
-        'results': [], 'warning': 'GEMINI_SEARCH_UNAVAILABLE'}
+    base = _valid_searxng_url(os.getenv("SEARXNG_URL", "")) if os.getenv("SEARXNG_URL") else None
+    if not base:
+        return {"live_search": False, "provider": "SearXNG", "results": [],
+                "warning": "SEARXNG_URL_MISSING"}
+    try:
+        result = _search_searxng(query, base, 6)
+        return {"live_search": bool(result.get("live_search")) and bool(result.get("results")),
+                "provider": "SearXNG", "results": result.get("results", []),
+                "warning": result.get("warning")}
+    except (RuntimeError, requests.RequestException):
+        return {"live_search": False, "provider": "SearXNG", "results": [],
+                "warning": "SEARXNG_SEARCH_UNAVAILABLE"}
 
 QUERIES = (
     "Deniz Öncü latest Moto2 news October 2026 official MotoGP team",
