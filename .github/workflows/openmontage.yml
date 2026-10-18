@@ -167,10 +167,10 @@ jobs:
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
           ALBUM_JOB_ID: ${{ inputs.album_job_id }}
         run: |
-          integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_render_owner_album \\
-            --job-id "$ALBUM_JOB_ID" \\
-            --selections integrations/openmontage/.runtime/album_selection.json \\
-            --research integrations/openmontage/.runtime/verified_research.json \\
+          integrations/openmontage/.runtime/control/bin/python -m scripts.openmontage_render_owner_album \
+            --job-id "$ALBUM_JOB_ID" \
+            --selections integrations/openmontage/.runtime/album_selection.json \
+            --research integrations/openmontage/.runtime/verified_research.json \
             --output integrations/openmontage/.runtime/rendered
       - name: Freigegebene Recherche als synthetisches MP4 rendern
         if: inputs.mode == 'erstellen' && inputs.request_id != '' && inputs.album_job_id == ''
