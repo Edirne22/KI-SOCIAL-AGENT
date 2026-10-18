@@ -29,12 +29,10 @@ class MediaProductionPlanner:
         ids=tuple(m.media_id for m in job.media)
         steps=[]
         if brief.content_format in (ContentFormat.REEL,ContentFormat.VIDEO):
-            if ids and not independent_ffmpeg: steps.append(MediaStep("clip","clip","supoclip",ids))
-            elif not ids:
+            if not ids:
                 prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
                 steps.append(MediaStep("generate","generate","agnes_video",(),(("prompt",prompt),("language",brief.language))))
-            if not independent_ffmpeg: steps.append(MediaStep("edit","edit","openchatcut",()))
-            steps.append(MediaStep("render","render","ffmpeg",ids if independent_ffmpeg and ids else (), (("mode","caption_audio"),("seconds","15")) if independent_ffmpeg else ()))
+            steps.append(MediaStep("render","render","ffmpeg",ids, (("mode","caption_audio"),("seconds","15"))))
         elif brief.content_format in (ContentFormat.IMAGE,ContentFormat.CAROUSEL):
             if not ids:
                 prompt=" | ".join(x for x in (brief.hook,brief.angle,*[b.visual_intent for b in brief.beats]) if str(x).strip())
