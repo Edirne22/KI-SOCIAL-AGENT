@@ -1039,8 +1039,8 @@ Bild: assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-sp
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg", "media_status": "", "object_id": "122125149417469415", "object_type": "bild", "platform": "facebook", "post_id": "122125149417469415", "source_url": "https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-18 11:05 | ID: 18126728425853668]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-18-daily
 Telegram-Update-ID: 279361973
@@ -1061,6 +1061,7 @@ Wer von den Dreien hat bei euch die Nase vorn für den Rennenstag?
 Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg
+Publish-Provenienz: {"creation_id": "18011986937971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18126728425853668", "published_media_id": "18126728425853668", "source_url": "https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-18 10:25 | ID: 122125443483469415]
 Status: GEPOSTET
