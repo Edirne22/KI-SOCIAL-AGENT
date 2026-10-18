@@ -42,18 +42,24 @@ def main():
     plan["output_profile"] = {"name": "Instagram Reels", "width": 1080,
                               "height": 1920, "aspect_ratio": "9:16",
                               "target_duration_seconds": 30, "language": "de"}
-    plan["approval_gates"] = {"proposal": "AWAITING_APPROVAL",
-                              "script": "BLOCKED", "storyboard": "BLOCKED",
-                              "assets": "BLOCKED", "publication": "BLOCKED"}
+    # Owner authorizes private production without intermediate approval.
+    # This is a planning policy, not evidence of completed production.
+    plan["approval_gates"] = {
+        "proposal": "AUTO_AUTHORIZED", "script": "AUTO_AUTHORIZED",
+        "storyboard": "AUTO_AUTHORIZED", "assets": "AUTO_AUTHORIZED",
+        "render": "AUTO_AUTHORIZED", "quality_check": "AUTO_AUTHORIZED",
+        "private_preview": "AUTO_AUTHORIZED",
+        "publication": "AWAITING_APPROVAL",
+    }
     from openmontage_research import build_research
     research = build_research(request["prompt"])
     plan["verified_sources"] = [
         {"title": story["title"], "url": story["original_url"], "source_status": story["source_status"]}
         for story in research["stories"] if story["source_status"] == "official"
     ]
-    plan["status"] = "PROPOSAL_AWAITING_APPROVAL" if plan["verified_sources"] else "NEEDS_RESEARCH"
+    plan["status"] = "RESEARCH_READY" if plan["verified_sources"] else "NEEDS_RESEARCH"
     plan["research_item_count"] = research["item_count"]
-    if plan["verified_sources"] and plan["approval_gates"]["proposal"] == "APPROVED":
+    if plan["verified_sources"] and plan["approval_gates"]["proposal"] == "AUTO_AUTHORIZED":
         from openmontage_storyboard import build_storyboard
         verified_urls = {source["url"] for source in plan["verified_sources"]}
         verified_stories = [
@@ -80,7 +86,7 @@ def main():
         Body=(json.dumps(plan, ensure_ascii=False) + "\n").encode("utf-8"),
         ContentType="application/json",
     )
-    print("Private proposal saved; storyboard blocked pending explicit approval")
+    print("Private planning saved; publication still requires owner approval")
 
 
 if __name__ == "__main__":
