@@ -11,77 +11,31 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Audit upstream installers (no unreviewed execution)
+      - name: Install Hermes using official installer
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
-          import urllib.request
-          urls = {
-              "agent_reach": "https://raw.githubusercontent.com/Panniantong/Agent-Reach/main/README.md",
-              "hermes": "https://raw.githubusercontent.com/NousResearch/hermes-agent/main/README.md",
-          }
-          for name, url in urls.items():
-              try:
-                  with urllib.request.urlopen(url, timeout=15) as response:
-                      body = response.read(200000)
-                  print(f"{name}: reachable; bytes={len(body)}")
-              except Exception as exc:
-                  raise SystemExit(f"{name}: upstream unavailable ({type(exc).__name__})")
-          PY
-      - name: Install upstream tools in isolated runner (no secrets)
-        shell: bash
-        run: |
-          set -euo pipefail
-          git clone --depth 1 https://github.com/NousResearch/hermes-agent.git /tmp/hermes-agent
-          git clone --depth 1 https://github.com/Panniantong/Agent-Reach.git /tmp/agent-reach
-          echo "Hermes checkout: $(git -C /tmp/hermes-agent rev-parse --short HEAD)"
-          echo "Agent Reach checkout: $(git -C /tmp/agent-reach rev-parse --short HEAD)"
-          python -m venv /tmp/agent-reach-venv
-          if test -f /tmp/agent-reach/pyproject.toml || test -f /tmp/agent-reach/setup.py; then
-            /tmp/agent-reach-venv/bin/python -m pip install --disable-pip-version-check /tmp/agent-reach
-          else
-            echo "::warning::Agent Reach is not a pip-installable package at repository root"
-          fi
-          if test -f /tmp/hermes-agent/cli.py; then
-            /tmp/agent-reach-venv/bin/python -m pip install --disable-pip-version-check -r /tmp/hermes-agent/requirements.txt
-          /tmp/agent-reach-venv/bin/python /tmp/hermes-agent/cli.py --help > /tmp/hermes-cli-help.txt 2>&1
-            sed -n '1,25p' /tmp/hermes-cli-help.txt
-          else
-            echo "::warning::Hermes cli.py not found at repository root; inspect upstream entrypoint"
-          fi
-          echo "Hermes files:"
-          ls -la /tmp/hermes-agent | sed -n '1,35p'
-          echo "Agent Reach files:"
-          ls -la /tmp/agent-reach | sed -n '1,35p'
-      - name: Execute isolated Toprak source discovery
-        shell: bash
-        run: |
-          set -euo pipefail
-          python scripts/hermes_toprak_dryrun.py
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: hermes-toprak-research
-          path: artifacts/hermes-toprak-research.json
-          retention-days: 3
-      - name: Verify coordinator contracts
-        run: python -m unittest -v tests.test_hermes_coordinator          echo "Installing Hermes via official non-interactive installer"
-          curl -fsSL https://hermes-agent.nousresearch.com/install.sh -o /tmp/hermes-official-install.sh
-          CI=1 bash /tmp/hermes-official-install.sh --non-interactive --skip-browser --skip-computer-use
+          curl -fsSL https://hermes-agent.nousresearch.com/install.sh -o /tmp/hermes-install.sh
+          CI=1 bash /tmp/hermes-install.sh --non-interactive --skip-browser --skip-computer-use
           export PATH="$HOME/.local/bin:$PATH"
           command -v hermes
           hermes --help
-          echo "Hermes files:"
-          ls -la /tmp/hermes-agent | sed -n '1,35p'
-          echo "Agent Reach files:"
-          ls -la /tmp/agent-reach | sed -n '1,35p'
+          hermes doctor
+      - name: Install Agent Reach using upstream instructions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m venv /tmp/agent-reach-venv
+          /tmp/agent-reach-venv/bin/python -m pip install --disable-pip-version-check 'https://github.com/Panniantong/agent-reach/archive/main.zip'
+          /tmp/agent-reach-venv/bin/agent-reach --help
+          /tmp/agent-reach-venv/bin/agent-reach install --env=auto --safe
+          /tmp/agent-reach-venv/bin/agent-reach doctor
       - name: Execute isolated Toprak source discovery
         shell: bash
         run: |
