@@ -26,7 +26,7 @@ class OwnerAlbumHandoffTests(unittest.TestCase):
         self.payload = b"sample"
         self.asset = "file00000001"
         self.objects = {
-            "private/v1/telegram-album-index/" + self.job:
+            "private/v1/telegram-album-index/" + self.job + ".json":
                 json.dumps({"job_id": self.job, "lane": "private",
                             "owner_hash": hashlib.sha256(b"123").hexdigest(),
                             "created_at": "2026-10-18T18:00:00+00:00"}).encode(),
@@ -64,7 +64,7 @@ class OwnerAlbumHandoffTests(unittest.TestCase):
     def test_index_owner_mismatch_rejected(self):
         with TemporaryDirectory() as tmp:
             client = FakeR2(self.objects)
-            self.objects["private/v1/telegram-album-index/" + self.job] = b'{"job_id":"bad"}'
+            self.objects["private/v1/telegram-album-index/" + self.job + ".json"] = b'{"job_id":"bad"}'
             with self.assertRaises(PermissionError):
                 self.stage(client, Path(tmp) / "stage")
             self.assertEqual(len(client.keys), 1)
