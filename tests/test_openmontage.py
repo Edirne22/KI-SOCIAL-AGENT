@@ -143,6 +143,7 @@ class WorkflowTests(unittest.TestCase):
         upload = next(s for s in steps if s.get('uses', '').startswith('actions/upload-artifact'))
         self.assertEqual(upload['with']['path'].splitlines(), [
             'integrations/openmontage/.runtime/diagnose.json',
+            'integrations/openmontage/.runtime/plan.json',
             'integrations/openmontage/upstream/projects/demos/renders/code-to-screen.mp4'])
     def test_diagnose_workflow_never_runs_demo_implicitly(self):
         step = next(s for s in self.doc()['jobs']['run']['steps'] if s.get('run', '').endswith('runtime.py demo'))
