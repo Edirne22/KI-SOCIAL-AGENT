@@ -21,6 +21,8 @@ def render_verified_research(research: dict, output_dir: Path, *,
     manifest = build_media_manifest(storyboard)
     if not manifest["all_rights_verified"]:
         raise ValueError("Media rights verification failed")
+    from scripts.openmontage_agent_handoff import require_handoff
+    require_handoff(verified, storyboard, manifest)
     result = produce_video(verified, storyboard, manifest, output_dir)
     # Technical render success is not editorial acceptance of a real-media film.
     if result.get("source_media_included") is not True:
