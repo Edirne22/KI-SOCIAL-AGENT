@@ -72,4 +72,26 @@ jobs:
           path: artifacts/hermes-toprak-research.json
           retention-days: 3
       - name: Verify coordinator contracts
+        run: python -m unittest -v tests.test_hermes_coordinator          echo "Installing Hermes via official non-interactive installer"
+          curl -fsSL https://hermes-agent.nousresearch.com/install.sh -o /tmp/hermes-official-install.sh
+          CI=1 bash /tmp/hermes-official-install.sh --non-interactive --skip-browser --skip-computer-use
+          export PATH="$HOME/.local/bin:$PATH"
+          command -v hermes
+          hermes --help
+          echo "Hermes files:"
+          ls -la /tmp/hermes-agent | sed -n '1,35p'
+          echo "Agent Reach files:"
+          ls -la /tmp/agent-reach | sed -n '1,35p'
+      - name: Execute isolated Toprak source discovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/hermes_toprak_dryrun.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hermes-toprak-research
+          path: artifacts/hermes-toprak-research.json
+          retention-days: 3
+      - name: Verify coordinator contracts
         run: python -m unittest -v tests.test_hermes_coordinator
