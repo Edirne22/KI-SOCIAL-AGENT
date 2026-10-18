@@ -42,3 +42,61 @@ class VerifiedRenderTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "SOURCE_MEDIA_RENDERER_NOT_CONNECTED"):
                 render_verified_research({}, Path("/tmp/mock"))
             render.assert_not_called()
+
+
+class LocalIntakeTests(unittest.TestCase):
+    def config(self, path='fixture.png'):
+        return {'all_rights_verified': True, 'scenes': [{
+            'scene_number': 1, 'local_path': path, 'rights_verified': True,
+            'media_license': 'cc0'}]}
+
+    def invoke(self, root, config):
+        with patch('scripts.openmontage_render_verified.verify_research_payload',
+                   return_value={'verified_item_count': 1}), patch(
+                   'openmontage_production.fc.verify_research_payload',
+                   return_value={'verified_item_count': 1}), patch(
+                   'scripts.openmontage_render_verified.build_storyboard',
+                   return_value={'scenes': [{'scene_number': 1, 'title': 'Verified', 'duration': 1.5}]}), patch(
+                   'scripts.openmontage_render_verified.build_media_manifest',
+                   side_effect=AssertionError('No remote sourcing in local mode')):
+            return render_verified_research({}, root / 'out', scene_config=config, media_root=root)
+
+    def test_local_config_renders_actual_file(self):
+        import tempfile
+        from tests.test_openmontage_local_media import make_media
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            make_media(root / 'fixture.png')
+            report = self.invoke(root, self.config())
+            self.assertTrue(report['source_media_included'])
+            self.assertEqual(report['media_mode'], 'licensed_local')
+            self.assertTrue(Path(report['video_file']).is_file())
+
+    def test_invalid_paths_reach_existing_b71_guard(self):
+        import tempfile
+        for name in ('missing.png', 'https://example.org/a.png', '../escape.png'):
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                with self.assertRaisesRegex(ValueError, 'LOCAL_MEDIA_INVALID'):
+                    self.invoke(root, self.config(name))
+                self.assertFalse((root / 'out').exists())
+
+    def test_rights_and_scene_identity_remain_required(self):
+        import tempfile
+        for key, value in (('rights_verified', False), ('scene_number', 2), ('media_license', 'unknown')):
+            config = self.config()
+            config['scenes'][0][key] = value
+            with self.subTest(key=key), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                with self.assertRaisesRegex(RuntimeError, 'LOCAL_MEDIA_INVALID'):
+                    self.invoke(root, config)
+                self.assertFalse((root / 'out').exists())
+
+    def test_local_intake_still_requires_verified_research(self):
+        with patch('scripts.openmontage_render_verified.verify_research_payload',
+                   return_value={'verified_item_count': 0}), patch(
+                   'scripts.openmontage_render_verified.produce_video') as produce:
+            with self.assertRaisesRegex(ValueError, 'No verified research'):
+                render_verified_research({}, Path('/tmp/unused-b72a'),
+                                         scene_config=self.config(), media_root=Path('/tmp'))
+            produce.assert_not_called()

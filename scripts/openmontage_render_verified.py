@@ -6,19 +6,30 @@ import json
 from pathlib import Path
 
 from openmontage_fact_checker import verify_research_payload
-from scripts.openmontage_media_contract import validate_scene_media
+from scripts.openmontage_media_contract import validate_scene_media, validate_local_scene_media
 from openmontage_media_sourcing import build_media_manifest
 from openmontage_production import produce_video
 from openmontage_storyboard import build_storyboard
 
 
 def render_verified_research(research: dict, output_dir: Path, *,
-                             duration: int = 35, language: str = "de") -> dict:
+                             duration: int = 35, language: str = "de",
+                             scene_config: dict | None = None,
+                             media_root: Path | None = None) -> dict:
     verified = verify_research_payload(research)
     if not verified["verified_item_count"]:
         raise ValueError("No verified research stories; render refused")
     storyboard = build_storyboard(verified, target_duration=duration,
                                   aspect_ratio="9:16", language=language)
+    # Local configuration supplies media only; verified editorial scenes stay intact.
+    if scene_config is not None or media_root is not None:
+        if not isinstance(scene_config, dict) or media_root is None:
+            raise ValueError("LOCAL_MEDIA_INVALID: scene_config and media_root required together")
+        manifest = {"manifest": scene_config.get("scenes"),
+                    "all_rights_verified": scene_config.get("all_rights_verified")}
+        validate_local_scene_media(storyboard, manifest)
+        # B71 performs path/format/size/full decoding checks before creating output.
+        return produce_video(verified, storyboard, manifest, output_dir, media_root=media_root)
     manifest = build_media_manifest(storyboard)
     if not manifest["all_rights_verified"]:
         raise ValueError("Media rights verification failed")
@@ -34,16 +45,27 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--duration", type=int, default=35)
     parser.add_argument("--language", choices=("de", "tr"), default="de")
+    parser.add_argument("--scene-config", type=Path,
+                        help="Local media JSON: scenes with scene_number/local_path/license/rights")
+    parser.add_argument("--media-root", type=Path, help="Operator-controlled local media directory")
     args = parser.parse_args()
+    scene_config = None
+    if args.scene_config is not None:
+        with args.scene_config.open('rb') as source:
+            payload = source.read(32769)
+        if len(payload) > 32768:
+            raise ValueError("LOCAL_MEDIA_INVALID: scene configuration exceeds 32 KiB")
+        scene_config = json.loads(payload.decode('utf-8'))
     research = json.loads(args.research.read_text(encoding="utf-8"))
     result = render_verified_research(research, args.output,
-                                      duration=args.duration, language=args.language)
+                                      duration=args.duration, language=args.language,
+                                      scene_config=scene_config, media_root=args.media_root)
     print(json.dumps({"status": result["status"],
                       "video_file": result["video_file"],
                       "duration_seconds": result["duration_seconds"],
                       "synthetic_only": result.get("source_media_included") is not True,
-                      "creative_acceptance": result["creative_acceptance"],
-                      "creative_issues": result["creative_issues"]}))
+                      "creative_acceptance": result.get("creative_acceptance", "NOT_EVALUATED"),
+                      "creative_issues": result.get("creative_issues", [])}))
 
 
 if __name__ == "__main__":
