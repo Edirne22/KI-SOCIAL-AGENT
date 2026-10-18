@@ -172,7 +172,7 @@ def handle(text: str, update_id: int, chat: str, authorized_chat: str, *, state=
         save_job_entry(job_id, {**existing, "status": "REJECTED", "editorial_decision": "ABLEHNEN"}, jobs_state)
         return f"❌ OpenMontage V3 Video {video_id} ABGELEHNT."
 
-    if isinstance(action, dict) and action.get("action") in ("erstellen", "planen"):
+    if False and isinstance(action, dict) and action.get("action") in ("erstellen", "planen"):
         action_name = action["action"]
         prompt_text = action["prompt"]
         job_id = f"job_{update_id}"
