@@ -1,0 +1,18 @@
+name: OpenMontage Album Selection Safety
+on:
+  pull_request:
+    paths:
+      - "tests/test_openmontage_album_selection_safety.py"
+      - ".github/workflows/openmontage-album-selection-safety.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest -v tests.test_openmontage_album_selection_safety
