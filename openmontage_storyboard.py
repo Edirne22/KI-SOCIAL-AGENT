@@ -126,7 +126,10 @@ def build_storyboard(
         motion = "right" if i % 2 == 0 else "left"
         transition = (preferred_transition or TRANSITIONS[i % len(TRANSITIONS)]) if not is_last else None
 
-        media_req = "driver_info_card" if riders else "racing_action_clip"
+        media_req = (
+            "technical_detail_clip" if film_type in ("product_explainer", "technology_news")
+            else "driver_info_card" if riders else "racing_action_clip"
+        )
 
         scene_frames = base_frames_per_scene + (1 if i < extra_frames else 0)
         scene_duration = scene_frames / 30.0
@@ -139,6 +142,13 @@ def build_storyboard(
             "speaker_text": speaker_text,
             "text_overlay": overlay,
             "media_request": media_req,
+            # Media metadata is passed through, never inferred from news source.
+            "media_url": story.get("media_url"),
+            "media_source": story.get("media_source"),
+            "media_license": story.get("media_license"),
+            # Future avatar pointing anchors; not yet used by renderer.
+            "visual_target": story.get("visual_target"),
+            "visual_anchor": story.get("visual_anchor"),
             "zoom": zoom,
             "motion": motion,
             "transition": transition,
