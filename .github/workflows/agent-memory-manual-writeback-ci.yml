@@ -1,0 +1,19 @@
+name: Agent Memory Manual Writeback CI
+on:
+  pull_request:
+    paths:
+      - "scripts/record_reviewed_agent_memory.py"
+      - ".github/workflows/record-reviewed-agent-memory.yml"
+      - ".github/workflows/agent-memory-manual-writeback-ci.yml"
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/record_reviewed_agent_memory.py
+      - run: python -m unittest -v tests.test_agent_memory_feedback tests.test_agent_memory
