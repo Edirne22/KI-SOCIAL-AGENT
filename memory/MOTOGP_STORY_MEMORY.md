@@ -1049,3 +1049,28 @@ Quelle: https://tr.motorsport.com/motogp/news/alex-marquez-marcin-ozel-numaralar
 Story-Key: motogp:10865686
 Titel: WSSP İspanya Superpole: Jerez’de Arenas rekoru yeniledi, Can Öncü ilk çizgide!
 Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-superpole-jerezde-albert-arenas-rekoru-yeniledi-can-oncu-ilk-cizgide/10865686
+
+## 2026-10-18 08:09 UTC – ANGEBOTEN
+Story-Key: title:bmw-chris-gonschor-motosikletimiz-stoner-n-ducati-si-gibi-de-il-toprak-tek-h-zl-s-r-c-de-ildi
+Titel: BMW Chris Gonschor: “Motosikletimiz Stoner’ın Ducati’si Gibi Değil, Toprak Tek Hızlı Sürücü Değildi!”
+Quelle: https://motoetkinlik.com/bmw-motosikletimiz-stonerin-ducatisi-gibi-degil-toprak-tek-hizli-surucu-degildi
+
+## 2026-10-18 08:09 UTC – ANGEBOTEN
+Story-Key: motogp:10865930
+Titel: WSSP İspanya 1. yarış: Arenas kazandı, Alcoba evinde ikinci, Can Öncü podyumun son basamağında!
+Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-1-yaris-arenas-kazandi-alcoba-evinde-ikinci-can-oncu-podyumun-son-basamaginda/10865930
+
+## 2026-10-18 08:09 UTC – ANGEBOTEN
+Story-Key: title:worldssp-jerez-1-yar-arenas-kazand-can-podyumda-bahattin-23-s-rada
+Titel: WorldSSP Jerez 1. Yarış: Arenas Kazandı, Can Podyumda, Bahattin 23. Sırada
+Quelle: https://motoetkinlik.com/worldssp-jerez-1-yaris-arenas-kazandi-can-podyumda-bahattin-23-sirada
+
+## 2026-10-18 08:09 UTC – ANGEBOTEN
+Story-Key: title:worldsbk-jerez-1-yar-bulega-pole-den-kazand-sam-lowes-i-kinci
+Titel: WorldSBK Jerez 1. Yarış: Bulega Pole'den Kazandı, Sam Lowes İkinci
+Quelle: https://motoetkinlik.com/worldsbk-jerez-1-yaris-bulega-poleden-kazandi-sam-lowes-ikinci
+
+## 2026-10-18 08:09 UTC – ANGEBOTEN
+Story-Key: title:worldsbk-jerez-superpole-bulega-sezonun-11-pole-n-ald-sam-lowes-i-kinci
+Titel: WorldSBK Jerez Superpole: Bulega Sezonun 11. Pole'ünü Aldı, Sam Lowes İkinci
+Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci

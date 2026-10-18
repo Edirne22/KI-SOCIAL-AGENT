@@ -3228,3 +3228,63 @@ Story-Key: motogp:10865686
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-18 08:32 UTC | Motorcycle Racing | PASS
+Titel: BMW Chris Gonschor: “Motosikletimiz Stoner’ın Ducati’si Gibi Değil, Toprak Tek Hızlı Sürücü Değildi!”
+Story-Key: title:bmw-chris-gonschor-motosikletimiz-stoner-n-ducati-si-gibi-de-il-toprak-tek-h-zl-s-r-c-de-ildi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-18 08:33 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Jerez superpole: Bulega sezonun 11. pole'ünü aldı, Sam Lowes ikinci
+Story-Key: motogp:10865807
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-10-18 08:33 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Jerez superpole: Bulega sezonun 11. pole'ünü aldı, Sam Lowes ikinci
+Story-Key: motogp:10865807
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-10-18 08:33 UTC | Motorcycle Racing | FAIL
+Titel: GT World Challenge yarışçılarından Verstappen’e övgü: “Jenerasyonun en iyisi”
+Story-Key: motogp:10865997
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-10-18 08:34 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Jerez 1. yarış: Bulega, 50. zaferini kazandı
+Story-Key: motogp:10865942
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-10-18 08:34 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Jerez 1. yarış: Bulega, 50. zaferini kazandı
+Story-Key: motogp:10865942
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-10-18 08:34 UTC | Motorcycle Racing | PASS
+Titel: WSSP İspanya 1. yarış: Arenas kazandı, Alcoba evinde ikinci, Can Öncü podyumun son basamağında!
+Story-Key: motogp:10865930
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-18 08:35 UTC | Motorcycle Racing | PASS
+Titel: WorldSSP Jerez 1. Yarış: Arenas Kazandı, Can Podyumda, Bahattin 23. Sırada
+Story-Key: title:worldssp-jerez-1-yar-arenas-kazand-can-podyumda-bahattin-23-s-rada
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-18 08:35 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK Jerez 1. Yarış: Bulega Pole'den Kazandı, Sam Lowes İkinci
+Story-Key: title:worldsbk-jerez-1-yar-bulega-pole-den-kazand-sam-lowes-i-kinci
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-18 08:35 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK Jerez Superpole: Bulega Sezonun 11. Pole'ünü Aldı, Sam Lowes İkinci
+Story-Key: title:worldsbk-jerez-superpole-bulega-sezonun-11-pole-n-ald-sam-lowes-i-kinci
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
