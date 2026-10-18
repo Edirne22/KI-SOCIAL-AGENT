@@ -1,0 +1,18 @@
+name: OpenMontage Wiring Contract
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/openmontage.yml"
+      - ".github/workflows/openmontage-wiring-contract.yml"
+      - "tests/test_openmontage_wiring_contract.py"
+permissions:
+  contents: read
+jobs:
+  wiring:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest -v tests.test_openmontage_wiring_contract
