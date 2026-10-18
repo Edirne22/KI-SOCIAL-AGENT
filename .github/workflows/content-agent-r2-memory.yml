@@ -1,0 +1,18 @@
+name: Content Agent R2 Memory
+on:
+  pull_request:
+    paths:
+      - "generate_ideas.py"
+      - ".github/workflows/content-agent-r2-memory.yml"
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile generate_ideas.py integrations/agent_memory.py integrations/agent_memory_preflight.py
+      - run: python -m unittest -v tests.test_agent_memory tests.test_agent_memory_preflight
