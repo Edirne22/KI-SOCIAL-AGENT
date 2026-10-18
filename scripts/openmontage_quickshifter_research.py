@@ -1,7 +1,6 @@
 """Curated technical research input for the first Quickshifter acceptance film.
 
-The source is explicit; publication recency is not required for evergreen
-technical explanations. Do not claim the source page was fetched live.
+This is a draft technical outline, not a verified research result.\nIt must not enter the rendering handoff before source verification.
 """
 from __future__ import annotations
 
@@ -28,7 +27,7 @@ def quickshifter_research() -> dict:
                 "summary": summary,
                 "original_url": source,
                 "source_name": "Bosch Mobility – Two-wheeler and Powersports",
-                "source_status": "official",
+                "source_status": "unverified_draft",
                 "content_type": "technical_explainer",
                 "series": "Motorradtechnik",
                 "confirmed_facts": [],
