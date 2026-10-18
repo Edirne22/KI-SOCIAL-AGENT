@@ -19,15 +19,60 @@ from integrations.openmontage.motorsport_source_catalog import SOURCES
 
 
 def _fetch_official_source(source):
+    """Collect linked article candidates from official sites; no claim validation."""
+    from html.parser import HTMLParser
+    from urllib.parse import urljoin
+
+    class Links(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.links = []
+            self.href = None
+            self.parts = []
+        def handle_starttag(self, tag, attrs):
+            if tag == "a":
+                self.href = dict(attrs).get("href")
+                self.parts = []
+        def handle_data(self, data):
+            if self.href is not None:
+                self.parts.append(data)
+        def handle_endtag(self, tag):
+            if tag == "a" and self.href:
+                self.links.append((self.href, " ".join(self.parts).strip()))
+                self.href = None
+                self.parts = []
+
     try:
         response = requests.get(source["url"], timeout=(8, 20), headers={
             "User-Agent": "Mozilla/5.0 (compatible; Agent05Research/1.0)"})
         if response.status_code != 200:
-            return None
-        return {"title": source["name"] + " (official source entry)",
-                "url": source["url"], "snippet": "", "source_checked_http": 200, "source_kind": "homepage_only"}
-    except requests.RequestException:
-        return None
+            return []
+        from urllib.parse import urlsplit
+        base_host = (urlsplit(source["url"]).hostname or "").removeprefix("www.")
+        parser = Links()
+        parser.feed(response.text[:500000])
+        results = []
+        seen = set()
+        for href, title in parser.links:
+            url = urljoin(response.url, href)
+            parts = urlsplit(url)
+            host = (parts.hostname or "").removeprefix("www.")
+            if parts.scheme != "https" or host != base_host or url in seen:
+                continue
+            if len(title) < 15 or len(parts.path.strip("/")) < 12:
+                continue
+            if not any(word in (title + " " + parts.path).casefold() for word in
+                       ("race", "rider", "motogp", "moto2", "moto3", "worldsbk",
+                        "supersport", "oncu", "öncü", "news", "result", "championship")):
+                continue
+            seen.add(url)
+            results.append({"title": title[:200], "url": url,
+                            "snippet": "", "source_kind": "article_candidate_unverified"})
+            if len(results) >= 6:
+                break
+        return results
+    except (requests.RequestException, ValueError):
+        return []
 
 
 def research(query):
@@ -42,7 +87,7 @@ def research(query):
     selected = [source for source in SOURCES if source["tier"] == "official" and source["name"] in names]
     with ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(_fetch_official_source, selected))
-    rows = [item for item in results if item]
+    rows = [item for group in results for item in group]
     return {"live_search": bool(rows), "provider": "OfficialSourceDirect",
             "results": rows, "warning": None if rows else "OFFICIAL_SOURCES_UNREACHABLE"}
 
