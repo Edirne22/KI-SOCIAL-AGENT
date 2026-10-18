@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 from openmontage_fact_checker import verify_research_payload
-from openmontage_media_contract import validate_scene_media
+from scripts.openmontage_media_contract import validate_scene_media
 from openmontage_media_sourcing import build_media_manifest
 from openmontage_production import produce_video
 from openmontage_storyboard import build_storyboard
