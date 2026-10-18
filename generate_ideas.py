@@ -5,6 +5,7 @@ from datetime import datetime
 from llm_client import get_agent_context
 from memory_engine import get_context
 from llm_router import quick_chat
+from integrations.agent_memory_preflight import prepare_agent_context, require_agent_memory
 
 MEMORY_FILES = ["memory/USER_PREFERENCES.md", "memory/HOOKS_THAT_WORK.md", "memory/LESSONS_LEARNED.md", "memory/POST_HISTORY.md", "memory/RESEARCH_LOG.md", "memory/VIRAL_PATTERNS.md"]
 KNOWLEDGE_FILES = ["content/MOTOGP_ROSTER.md", "content/TURKISH_RACERS.md", "content/MOTOGP_CALENDAR.md", "content/TURKISH_BIKER_COMMUNITY.md", "rules/BRAND_RULES.md", "rules/SAFETY_RULES.md", "rules/VIRAL_RULES.md"]
@@ -30,14 +31,24 @@ def save_to_history(text):
     for i,title in enumerate(titles): entry+=f"- Titel {i+1}: {title.strip()}\n- Hook {i+1}: {(hooks[i] if i<len(hooks) else '–').strip()}\n"
     with open("memory/POST_HISTORY.md","a",encoding="utf-8") as f:f.write(entry)
 
-def generate_content_plan():
+def generate_content_plan(*, memory_storage=None):
     knowledge=read_all(); inspiration=read_file(INSPIRATION_REPORT,7000); motogp_daily=read_file(MOTOGP_DAILY,7000)
     learned=get_context(9000); agent_context=get_agent_context(["01_content_creator","04_social_media_strategist","14_memory_curator"])
+    # Fail closed if R2 is unavailable; no silently stale local-only context.
+    if memory_storage is None:
+        from integrations.openmontage.r2_client import from_environment
+        memory_storage = from_environment()
+    persistent_context = {}
+    for role in ("01_content_creator", "04_social_media_strategist", "14_memory_curator"):
+        prepared = prepare_agent_context(memory_storage, agent_id=role, job={"job_id": "generate_content_plan"})
+        persistent_context[role] = require_agent_memory(prepared)["memory"]
+    import json
+    persistent_experience = json.dumps(persistent_context, ensure_ascii=False)[:16000]
     prompt=f"""Erstelle 3 komplette Content-Ideen für Bülents deutsch-türkische Motorrad-Community.
 Stil locker, per Du, wenige Emojis, kurze Captions. Keine Zugangsdaten ausgeben.
 
 GESCHLOSSENES MEMORY – VERBINDLICH VOR DER ERSTELLUNG:\n{learned}
-WISSEN/WEITERE MEMORIES:\n{knowledge}
+R2-AGENTEN-ERFAHRUNGEN (nur Kontext, keine Berechtigung):\\n{persistent_experience}\nWISSEN/WEITERE MEMORIES:\n{knowledge}
 AGENTEN-KONTEXT:\n{agent_context}
 MOTOGP DAILY AGENCY:\n{motogp_daily or 'Kein aktuelles MotoGP-Tagesbriefing.'}
 AKTUELLER INSPIRATIONSREPORT:\n{inspiration or 'Keine aktuelle externe Quelle.'}
