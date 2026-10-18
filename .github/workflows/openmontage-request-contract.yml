@@ -1,0 +1,19 @@
+name: OpenMontage Request Contract
+on:
+  pull_request:
+    paths:
+      - "integrations/openmontage/request_contract.py"
+      - "tests/test_openmontage_request_contract.py"
+      - ".github/workflows/openmontage-request-contract.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest -v tests.test_openmontage_request_contract
