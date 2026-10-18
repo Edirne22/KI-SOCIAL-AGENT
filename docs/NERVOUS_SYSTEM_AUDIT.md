@@ -71,3 +71,21 @@ Alle **19** im verbindlichen Rollenindex genannten nummerierten Agenten-Dateien 
 - Medienrollen `01/02/03/07/12/18` haben einen Format-/Stil-Preflight; dessen tatsächliche Durchsetzung ist separat zu testen.
 
 **Status:** 19/19 Rollenverträge einzeln gelesen; **0/19** allein dadurch als LIVE verifiziert. Nächste Teilprüfung: `.github/workflows`-Trigger und reale Python-Einstiegspunkte, dann gerichtet erlaubte Kommunikationskanten und Testbelege. Keine produktive Verdrahtung geändert.
+
+## Block A.2 – zusätzliche reale Rollen und erste Workflow-Kanten
+
+**Wichtige Inventurkorrektur:** Die 19 Einträge in `agents/AGENTS_INDEX.md` sind **nicht alle Agenten-Dateien**. Zusätzlich wurden die tatsächlichen Dateien `agents/13_motogp_content_agency.md`, `agents/15_chief_quality_manager.md` und `agents/16_turkish_riders_scout.md` gefunden und gelesen.
+
+- **13 Racing Content Agency:** explizite Research → Domain-QM → Semantic-QM → Chief-QM → Telegram → Human Approval → Publisher-Kette. Keine alte QM-Freigabe nach Rewrite wiederverwenden.
+- **15 Chief Quality Manager:** kollidiert numerisch mit `15_finance_planner.md`! Zwei verschiedene Rollen verwenden dieselbe Agentennummer. **P0: niemals nach Nummer 15 allein routen**; stabile Rollen-IDs/kompatible Aliasse festlegen und testen.
+- **16 Turkish Riders Scout:** spezialisierte türkische Racing-Recherche mit Unicode-/ASCII-Namensnormalisierung; im aktuellen Rollenindex nicht geführt. Vor Live-Dispatch registrieren und autorisieren.
+
+**Damit mindestens 22 nummerierte Rollen-Dateien geprüft** (19 Indexeinträge + 3 zusätzliche), und mindestens eine bisher nicht erfasste Nummernkollision. Es können weitere Dateien existieren; kein Anspruch auf vollständiges Verzeichnis.
+
+**Erste tatsächliche Workflow-Trigger (Dateien einzeln gelesen):**
+- `.github/workflows/telegram-receive.yml`: Cron `2-57/5 * * * *`, `workflow_run`-Abhängigkeiten von Morning/MotoGP/Digest, `workflow_dispatch`, eigene Concurrency `telegram-receive`; GitHub-Scheduler-Liveness und echte Zustellung noch nicht gemessen.
+- `.github/workflows/openmontage.yml`: `workflow_dispatch` mit `diagnose/demo/erstellen/planen`, Main-Branch-Gate, Concurrency `openmontage-runtime`, Job benötigt `contents: write` für Request-Claim; prüfen, ob der Telegram-Router sämtliche Produktionsmodi wirklich ansteuert.
+- `.github/workflows/openmontage-creative.yml`: synthetischer Render-Test mit FFmpeg und ffprobe, `pull_request`/manueller/`workflow_call`-Trigger; kein Nachweis eines echten Telegram-News-Produktionsauftrags.
+- `.github/workflows/agency-org-contract.yml`: statische Tests für Rollen/Organisation/Ressourcenmanager, nur auf festgelegte Pfadänderungen; `docs/NERVOUS_SYSTEM_AUDIT.md` triggert diesen Workflow nicht automatisch.
+
+**Sofortige Sicherheitsforderung für Block B:** kanonische, eindeutige Rollen-IDs unabhängig von historischen Nummern; ID 15 und 18 dürfen nicht unqualifiziert dispatchen. Rollenindex und Allowlist auf reale Module abgleichen, nicht bloß Dokumentation zählen.
