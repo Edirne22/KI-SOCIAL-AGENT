@@ -20,9 +20,9 @@ jobs:
       - run: python -m pip install requests
       - name: Run agent05 regression
         run: python -m unittest -v tests.test_openmontage_agent05_oncu_live
-      - name: Agent05 live discovery (Gemini grounded search; NVIDIA analysis configured)
+      - name: Agent05 SearXNG discovery and NVIDIA analysis
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SEARXNG_URL: ${{ vars.SEARXNG_URL }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         run: python scripts/openmontage_agent05_oncu_live.py
       - name: Preserve research report even on failure
