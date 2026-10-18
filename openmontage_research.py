@@ -1,19 +1,31 @@
 """Shared Research Adapter for OpenMontage V3.
 
 Converts natural film prompts into structured news items (research.json)
-using existing motorsport scouts, rosters, and source registries.
+using existing motorsport scouts, rosters, and source registries with strict
+source-url validation and fact/rumor separation.
 """
 from __future__ import annotations
 
 from datetime import datetime, timezone
 import hashlib
+import logging
 import re
 from typing import Any, Dict, List, Optional
+from urllib.parse import urlparse
 
 import content_factory_discovery as cfd
 import motogp_quality_manager as gq
 import turkish_rider_names as trn
 from turkish_riders_scout_adapter import racing_editorial_scout, turkish_web_scout
+
+logger = logging.getLogger(__name__)
+
+OFFICIAL_DOMAINS = (
+    "motogp.com",
+    "worldsbk.com",
+    "tmf.org.tr",
+    "fim-moto.com",
+)
 
 
 def _calculate_story_id(url: str, title: str) -> str:
@@ -42,23 +54,30 @@ def _detect_series(text: str, default_series: str = "") -> str:
     return default_series or "Motorsport"
 
 
-def _detect_source_status(source_name: str, text: str) -> str:
-    low_src = source_name.casefold()
-    low_text = text.casefold()
+def _detect_source_status(url: str, text: str) -> str:
+    """Evaluates source status strictly based on URL domain and text markers."""
+    domain = ""
+    if url:
+        try:
+            domain = urlparse(url).netloc.casefold()
+        except Exception as e:
+            logger.warning("Failed to parse URL domain for %s: %s", url, e)
 
-    if any(official in low_src for official in ["motogp.com", "worldsbk.com", "tmf.org.tr"]):
-        return "official"
+    is_official_domain = any(off_domain in domain for off_domain in OFFICIAL_DOMAINS)
 
     rumor_words = ["gerücht", "rumor", "spekulation", "angeblich", "soll angeblich", "köpfe rollen", "gerüchten zufolge"]
-    if any(w in low_text for w in rumor_words):
-        return "rumor"
+    is_rumor = any(w in text.casefold() for w in rumor_words)
 
+    if is_rumor:
+        return "rumor"
+    if is_official_domain:
+        return "official"
     return "journalistic"
 
 
 def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
-    """Generates structured research payload (research.json representation) from prompt."""
-    now_iso = datetime.now(timezone.utc).isoformat()
+    """Generates structured research payload from prompt with strict source verification."""
+    retrieved_at_iso = datetime.now(timezone.utc).isoformat()
     prompt_low = prompt.casefold()
 
     filter_series = None
@@ -67,11 +86,10 @@ def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = Non
             filter_series = series_name
             break
 
-    candidates = []
+    raw_items = []
     if mock_items is not None:
         raw_items = mock_items
     else:
-        raw_items = []
         # Query editorial scout
         try:
             editorial_rows = racing_editorial_scout(limit_per_source=30)
@@ -83,8 +101,8 @@ def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = Non
                     "source": source_name,
                     "summary": title,
                 })
-        except Exception:
-            pass
+        except Exception as exc:
+            logger.error("Error fetching editorial scout items: %s", exc)
 
         # Query Turkish scout
         try:
@@ -97,8 +115,8 @@ def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = Non
                     "source": "TurkishWebScout",
                     "summary": f"{title} ({rider})",
                 })
-        except Exception:
-            pass
+        except Exception as exc:
+            logger.error("Error fetching Turkish scout items: %s", exc)
 
     seen_dedup = set()
     stories = []
@@ -106,17 +124,18 @@ def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = Non
     for item in raw_items:
         title = (item.get("title") or "").strip()
         url = (item.get("url") or item.get("original_url") or "").strip()
-        summary = (item.get("summary") or title).strip()
+        summary = (item.get("summary") or "").strip()
         source_name = (item.get("source") or item.get("source_name") or "MotorsportSource").strip()
 
         if not title or not url:
+            logger.warning("Skipping research item missing title or URL: %s", item)
             continue
 
         series = _detect_series(f"{title} {summary}", item.get("series", ""))
         if filter_series and series != filter_series and series != "Motorsport":
             continue
 
-        dedup_hash = _calculate_dedup_hash(title, summary)
+        dedup_hash = _calculate_dedup_hash(title, summary or title)
         if dedup_hash in seen_dedup:
             continue
         seen_dedup.add(dedup_hash)
@@ -126,25 +145,37 @@ def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = Non
         if turkish_rider and turkish_rider not in matched_riders:
             matched_riders.append(turkish_rider)
 
-        status = _detect_source_status(source_name, f"{title} {summary}")
+        status = _detect_source_status(url, f"{title} {summary}")
 
+        # P0-A: Do not classify headline/summary as confirmed facts automatically for journalistic sources
         confirmed_facts = []
         unconfirmed_statements = []
-        if status == "rumor":
-            unconfirmed_statements.append(title)
-        else:
+
+        if status == "official":
             confirmed_facts.append(title)
+            if summary and summary != title:
+                confirmed_facts.append(summary)
+        elif status == "rumor":
+            unconfirmed_statements.append(title)
+            if summary and summary != title:
+                unconfirmed_statements.append(summary)
+        else:
+            # Journalistic source
+            unconfirmed_statements.append(f"Journalistischer Bericht: {title}")
+
+        # P0-A: Keep published_at empty/None if not explicitly provided; do NOT set to retrieved_at
+        published_at = item.get("published_at") or item.get("published_at_iso") or ""
 
         story_id = item.get("story_id") or _calculate_story_id(url, title)
 
         stories.append({
             "story_id": story_id,
             "title": title,
-            "summary": summary,
+            "summary": summary or title,
             "original_url": url,
             "source_name": source_name,
-            "published_at": item.get("published_at") or now_iso,
-            "retrieved_at": now_iso,
+            "published_at": published_at,
+            "retrieved_at": retrieved_at_iso,
             "series": series,
             "riders": matched_riders,
             "teams": item.get("teams", []),
@@ -158,7 +189,7 @@ def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = Non
 
     return {
         "prompt": prompt,
-        "created_at": now_iso,
+        "created_at": retrieved_at_iso,
         "item_count": len(stories),
         "stories": stories,
     }

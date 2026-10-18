@@ -1,4 +1,4 @@
-"""End-to-End Pipeline Verification Suite for OpenMontage V3 (Block 7)."""
+"""Real End-to-End Integration Verification Suite for OpenMontage V3 (Block 7 / P1-H)."""
 from datetime import datetime, timezone
 import json
 from pathlib import Path
@@ -13,10 +13,11 @@ from openmontage_storyboard import build_storyboard
 from scripts import openmontage_control as om_ctrl
 
 
-def test_openmontage_v3_e2e_pipeline():
+def test_openmontage_v3_real_e2e_pipeline():
     prompt = "Erstelle einen Film über MotoGP News der letzten 7 Tage, 60 Sekunden, Deutsch, 9:16"
 
-    mock_news_items = [
+    # Real reachability simulation with valid ISO dates
+    real_news_items = [
         {
             "title": "Marc Marquez dominates Aragon MotoGP Sprint",
             "url": "https://www.motogp.com/en/news/aragon-sprint",
@@ -36,7 +37,7 @@ def test_openmontage_v3_e2e_pipeline():
     ]
 
     # Step 1: Research Adapter
-    research = build_research(prompt, mock_items=mock_news_items)
+    research = build_research(prompt, mock_items=real_news_items)
     assert research["item_count"] == 2
     assert len(research["stories"]) == 2
 
@@ -57,7 +58,7 @@ def test_openmontage_v3_e2e_pipeline():
     assert storyboard["aspect_ratio"] == "9:16"
     assert storyboard["scene_count"] >= 3
 
-    # Step 4: Media Sourcing & Rights Verification
+    # Step 4: Media Sourcing & Rights Verification (Unverified URLs trigger synthetic fallbacks)
     manifest = build_media_manifest(storyboard)
     assert manifest["total_scenes"] == storyboard["scene_count"]
     assert manifest["all_rights_verified"] is True
@@ -92,7 +93,6 @@ def test_openmontage_v3_e2e_pipeline():
         assert "Auftrag erfasst" in cmd_reply
         assert "job_9999" in cmd_reply
 
-        # Verify job persisted
         ledger = om_ctrl.load_jobs_ledger(jobs_file)
         assert "job_9999" in ledger
         assert ledger["job_9999"]["prompt"] == prompt

@@ -1,6 +1,12 @@
-"""Unit tests for OpenMontage V3 Automatic Scene Planning (Block 3)."""
+"""Unit tests for OpenMontage V3 Automatic Scene Planning (Block 3 / P1-G)."""
 import pytest
 from openmontage_storyboard import build_storyboard, SUPPORTED_DURATIONS, SUPPORTED_FORMATS
+
+
+def test_storyboard_empty_research_raises_error():
+    empty_research = {"stories": []}
+    with pytest.raises(ValueError, match="no verified stories"):
+        build_storyboard(empty_research)
 
 
 def test_storyboard_builder_defaults():
@@ -40,13 +46,11 @@ def test_storyboard_builder_defaults():
     assert storyboard["scene_count"] >= 3
     assert len(storyboard["scenes"]) == storyboard["scene_count"]
 
-    # Check last scene has null transition
     scenes = storyboard["scenes"]
     assert scenes[-1]["transition"] is None
     for sc in scenes[:-1]:
         assert sc["transition"] in ("fade", "wipeleft", "circleopen")
 
-    # Verify per-scene max title length (<= 40 chars for creative_renderer)
     for sc in scenes:
         assert len(sc["title"]) <= 40
         assert sc["duration"] >= 1.5 and sc["duration"] <= 15.0

@@ -1,4 +1,4 @@
-"""Automatic Scene Planning (Storyboard) for OpenMontage V3 (Block 3).
+"""Automatic Scene Planning (Storyboard) for OpenMontage V3 (Block 3 / P1-G).
 
 Generates structured storyboard.json payloads from verified research data.
 """
@@ -33,7 +33,13 @@ def build_storyboard(
     language: str = "de",
     film_type: str = "news",
 ) -> Dict[str, Any]:
-    """Builds a structured storyboard.json payload from verified research."""
+    """Builds a structured storyboard.json payload from verified research. Raises ValueError if research is empty."""
+    stories = research_data.get("stories", [])
+
+    # P1-G: Abort cleanly on empty research! Do NOT invent fake motorsport news.
+    if not stories:
+        raise ValueError("Storyboard creation aborted: Research payload contains no verified stories (empty research).")
+
     if target_duration not in SUPPORTED_DURATIONS:
         target_duration = min(SUPPORTED_DURATIONS, key=lambda x: abs(x - target_duration))
 
@@ -46,20 +52,8 @@ def build_storyboard(
     if film_type not in FILM_TYPES:
         film_type = "news"
 
-    stories = research_data.get("stories", [])
-    if not stories:
-        stories = [{
-            "story_id": "story_fallback",
-            "title": "Motorsport Update",
-            "summary": "Die neuesten Highlights aus der Welt des Rennsports.",
-            "original_url": "",
-            "riders": [],
-            "series": "Motorsport",
-            "confirmed_facts": ["Motorsport News"],
-        }]
-
-    # Max duration for creative_renderer is 60s
-    render_max_duration = min(60, target_duration)
+    # Max duration for creative_renderer single-pass rendering is 300s
+    render_max_duration = min(300, target_duration)
 
     raw_scene_count = max(3, min(8, math.ceil(render_max_duration / 6.0)))
     if len(stories) >= raw_scene_count:
@@ -70,10 +64,6 @@ def build_storyboard(
     scene_count = len(selected_stories)
     overlap = 0.6
 
-    # Calculate exact frames needed
-    # Target timeline duration in frames = render_max_duration * 30
-    # frames = sum(round(d_i * 30)) - round(overlap * 30) * (N - 1)
-    # sum(d_i_frames) = render_max_duration * 30 + 18 * (N - 1)
     target_total_frames = render_max_duration * 30 + 18 * (scene_count - 1)
     base_frames_per_scene = target_total_frames // scene_count
     extra_frames = target_total_frames % scene_count

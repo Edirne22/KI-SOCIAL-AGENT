@@ -1,32 +1,23 @@
-"""Automatic Media Sourcing & Rights Verification for OpenMontage V3 (Block 4).
+"""Automatic Media Sourcing & Rights Verification for OpenMontage V3 (Block 4 / P0-C).
 
 Generates structured media_manifest.json payloads with strict license/rights verification
 and non-infringing visual fallbacks.
+
+Key Requirement (P0-C): Trusted domain whitelists (e.g. motogp.com, worldsbk.com) are news
+sources and NEVER constitute media publishing licenses. Third-party videos/images without explicit
+rights are always rejected and replaced with non-infringing synthetic graphics.
 """
 from __future__ import annotations
 
 from datetime import datetime, timezone
 import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import media_policy
 
-TRUSTED_SOURCES_PATH = Path("config/TRUSTED_MEDIA_SOURCES.json")
-
-
-def load_trusted_sources() -> List[str]:
-    defaults = ["motogp.com", "worldsbk.com", "tmf.org.tr", "motoetkinlik.com", "motoetkinlik"]
-    if TRUSTED_SOURCES_PATH.is_file():
-        try:
-            data = json.loads(TRUSTED_SOURCES_PATH.read_text(encoding="utf-8"))
-            if isinstance(data, dict):
-                return list(data.keys()) + defaults
-            elif isinstance(data, list):
-                return data + defaults
-        except Exception:
-            pass
-    return defaults
+logger = logging.getLogger(__name__)
 
 
 def evaluate_media_item(
@@ -34,33 +25,31 @@ def evaluate_media_item(
     media_req: str,
     media_url: Optional[str] = None,
     media_source: Optional[str] = None,
+    media_license: Optional[str] = None,
     riders: Optional[List[str]] = None,
     series: Optional[str] = None,
 ) -> Dict[str, Any]:
-    """Evaluates media rights and assigns safe visual fallback if rights are unconfirmed."""
-    trusted_sources = load_trusted_sources()
+    """Evaluates media rights strictly based on explicit license verification."""
     riders = riders or []
-
     origin = media_source or "OpenMontage-Synthetic"
     url = media_url or ""
+    lic = (media_license or "").casefold().strip()
 
-    url_low = url.casefold()
-    source_low = origin.casefold()
+    # P0-C: A domain whitelist is NEVER automatically a media license.
+    # Only explicitly confirmed owned assets or verified public/creative-commons licenses qualify.
+    is_explicitly_licensed = lic in ("owned_content", "cc0", "public_domain", "explicit_permission_granted")
 
-    is_trusted = any(domain.casefold() in url_low or domain.casefold() in source_low for domain in trusted_sources)
-
-    # Check if external URL is provided
-    if url and is_trusted:
-        license_status = "trusted_official"
-        allowed_usage = "editorial_reference"
+    if url and is_explicitly_licensed:
+        license_status = "explicitly_licensed"
+        allowed_usage = "unrestricted"
         rights_ok = True
-        verification = "PASS: Official trusted source metadata reference"
-        selected_format = "external_reference"
+        verification = f"PASS: Verified explicit license ({lic})"
+        selected_format = "licensed_external_media"
     elif url:
         license_status = "unverified_third_party"
         allowed_usage = "restricted"
         rights_ok = False
-        verification = "FAIL: Third-party race video without explicit licensing; trigger fallback"
+        verification = "FAIL: Third-party media without explicit license; domain whitelist alone is not a license. Trigger synthetic fallback."
         selected_format = "synthetic_fallback"
     else:
         license_status = "synthetic_generated"
@@ -69,7 +58,7 @@ def evaluate_media_item(
         verification = "PASS: Non-infringing synthetic graphics fallback"
         selected_format = "synthetic_graphic"
 
-    # Select fallback asset if unverified
+    # Select non-infringing visual fallback asset if unverified
     if not rights_ok or selected_format == "synthetic_graphic":
         if riders:
             asset_type = "driver_info_card"
@@ -89,6 +78,7 @@ def evaluate_media_item(
         "media_request": media_req,
         "media_url": url,
         "media_source": origin,
+        "media_license": media_license or "none",
         "license_status": license_status,
         "allowed_usage": allowed_usage,
         "rights_verified": rights_ok,
@@ -109,6 +99,7 @@ def build_media_manifest(storyboard_data: Dict[str, Any]) -> Dict[str, Any]:
             media_req=sc.get("media_request", "synthetic_graphic"),
             media_url=sc.get("media_url"),
             media_source=sc.get("media_source"),
+            media_license=sc.get("media_license"),
             riders=sc.get("riders"),
             series=sc.get("series"),
         )

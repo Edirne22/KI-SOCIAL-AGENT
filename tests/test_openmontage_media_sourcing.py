@@ -1,33 +1,37 @@
-"""Unit tests for OpenMontage V3 Media Sourcing (Block 4)."""
+"""Unit tests for OpenMontage V3 Media Sourcing (Block 4 / P0-C)."""
 import pytest
 from openmontage_media_sourcing import evaluate_media_item, build_media_manifest
 
 
-def test_evaluate_trusted_official_media():
+def test_trusted_domain_without_explicit_license_triggers_fallback():
+    # P0-C: motogp.com / worldsbk.com URL without explicit license must fail rights_verified and trigger fallback!
     item = evaluate_media_item(
         scene_number=1,
         media_req="race_highlight",
         media_url="https://www.motogp.com/en/news/2026/highlight.mp4",
         media_source="motogp.com",
-    )
-    assert item["rights_verified"] is True
-    assert item["license_status"] == "trusted_official"
-
-
-def test_evaluate_unverified_third_party_triggers_fallback():
-    item = evaluate_media_item(
-        scene_number=2,
-        media_req="race_highlight",
-        media_url="https://www.youtube.com/watch?v=unauthorized_race_video",
-        media_source="random_yt_channel",
+        media_license=None,  # No explicit license
         riders=["Marc Marquez"],
     )
     assert item["rights_verified"] is False
+    assert item["license_status"] == "unverified_third_party"
     assert item["selected_asset_type"] == "driver_info_card"
     assert "Marc Marquez" in item["fallback_details"]
 
 
-def test_build_media_manifest():
+def test_explicitly_licensed_media_approved():
+    item = evaluate_media_item(
+        scene_number=1,
+        media_req="race_highlight",
+        media_url="https://assets.mybrand.com/video1.mp4",
+        media_source="Owned Archive",
+        media_license="owned_content",
+    )
+    assert item["rights_verified"] is True
+    assert item["license_status"] == "explicitly_licensed"
+
+
+def test_build_media_manifest_synthetic_graphics():
     storyboard = {
         "scenes": [
             {

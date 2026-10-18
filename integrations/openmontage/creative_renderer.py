@@ -42,9 +42,9 @@ def normalize_scenes(scenes=None):
         title, seconds = scene.get('title'), scene.get('duration')
         if not isinstance(title, str) or not title.strip() or len(title) > 40 or not title.isprintable():
             raise ValueError('Title must contain 1 to 40 printable characters')
-        if (type(seconds) not in (int, float) or not 1.5 <= seconds <= 15
+        if (type(seconds) not in (int, float) or not 1.5 <= seconds <= 60
                 or not math.isfinite(seconds) or abs(seconds * FPS - round(seconds * FPS)) > 1e-7):
-            raise ValueError('Duration must be 1.5 to 15 seconds on the 30-fps frame grid')
+            raise ValueError('Duration must be 1.5 to 60 seconds on the 30-fps frame grid')
         zoom = scene.get('zoom', 'in' if i % 2 == 0 else 'out')
         motion = scene.get('motion', 'right' if i % 2 == 0 else 'left')
         transition = scene.get('transition', TRANSITIONS[i % 3] if i < len(scenes) - 1 else None)
@@ -54,8 +54,9 @@ def normalize_scenes(scenes=None):
             raise ValueError('Unsupported transition (last scene must have null transition)')
         result.append({'title': title, 'duration': round(seconds * FPS) / FPS,
                        'zoom': zoom, 'motion': motion, 'transition': transition})
-    if timeline(result)[0] > 60:
-        raise ValueError('Movie exceeds 60 seconds')
+    # P1-E: Allow movie renders up to 300 seconds (5 minutes)
+    if timeline(result)[0] > 300:
+        raise ValueError('Movie exceeds 300 seconds')
     return result
 
 
@@ -76,11 +77,9 @@ def load_scenes(path):
 
 
 def run(args, timeout=240, cwd=None):
-    # Render children do not inherit GitHub, R2, Telegram or provider credentials.
     env = {k: os.environ[k] for k in ('PATH', 'LANG', 'LC_ALL', 'SYSTEMROOT') if k in os.environ}
     result = subprocess.run(args, env=env, capture_output=True, text=True, timeout=timeout, cwd=cwd)
     if result.returncode:
-        # Only fixed local sources/filters are accepted; no remote response body.
         raise RuntimeError(f'{args[0]} failed: {result.stderr[-2000:]}')
     return result.stdout
 
@@ -152,7 +151,7 @@ def validate_probe(data, scenes=None):
                  and (v['width'], v['height']) == (WIDTH, HEIGHT)
                  and v['avg_frame_rate'] == '30/1' and int(v['nb_read_frames']) == expected_frames
                  and abs(duration - expected_duration) < 0.08 and audio[0]['codec_name'] == 'aac'
-                 and 0 < int(data['format']['size']) < 30 * 1024 * 1024)
+                 and 0 < int(data['format']['size']) < 100 * 1024 * 1024)
     except (KeyError, ValueError, TypeError, IndexError):
         valid = False
     if not valid:
@@ -176,7 +175,6 @@ def render(output, scenes=None, music=None):
         if not music.is_file() or music.suffix.lower() != '.wav' or music.stat().st_size > 30 * 1024 * 1024:
             raise ValueError('Music must be a local WAV file up to 30 MiB')
     output = Path(output).absolute()
-    # Refuse overwrite, including stale output directories from interrupted runs.
     output.mkdir(parents=True, exist_ok=False)
     if not FONT.is_file():
         raise RuntimeError('DejaVu Sans Bold font missing')
@@ -190,7 +188,6 @@ def render(output, scenes=None, music=None):
             synthetic_image(source, i)
             (work / f'title-{i}.txt').write_text(scene['title'], encoding='utf-8')
             args += ['-loop', '1', '-framerate', str(FPS), '-t', str(scene['duration']), '-i', str(source)]
-        # Original, deterministic 100-BPM pulse and chord bed; no copyrighted audio.
         sound = ('0.12*sin(2*PI*65*t)*exp(-12*mod(t,0.6))+'
                  '0.035*(sin(2*PI*220*t)+sin(2*PI*277.1826*t)+sin(2*PI*329.6276*t))')
         if music is None:
@@ -220,7 +217,6 @@ def render(output, scenes=None, music=None):
               'transitions': [s['transition'] for s in scenes[:-1]], 'scene_count': len(scenes), 'sha256': hashlib.sha256(movie.read_bytes()).hexdigest(),
               'bytes': movie.stat().st_size,
               'ffmpeg': run(['ffmpeg', '-version']).splitlines()[0]}
-    # Remove machine-specific temporary filenames from the public ffprobe evidence.
     probe['format']['filename'] = movie.name
     (output / 'ffprobe.json').write_text(json.dumps(probe, indent=2) + '\n')
     (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
