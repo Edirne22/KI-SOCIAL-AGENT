@@ -180,8 +180,6 @@ jobs:
             integrations/openmontage/.runtime/diagnose.json
             integrations/openmontage/.runtime/plan.json
             integrations/openmontage/.runtime/request_status.json
-            integrations/openmontage/.runtime/rendered/creative-demo.mp4
-            integrations/openmontage/.runtime/rendered/production_summary.json
             integrations/openmontage/upstream/projects/demos/renders/code-to-screen.mp4
           if-no-files-found: error
           retention-days: 7
