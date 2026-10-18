@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from integrations.openmontage import creative_renderer as renderer
+from tests.test_openmontage_local_media import LocalMediaTests  # B71 CI entrypoint
 
 
 class CreativeTests(unittest.TestCase):
