@@ -52,7 +52,8 @@ jobs:
           from scripts.openmontage_control import claim_request
           if os.environ['MODE'] not in ('diagnose', 'demo', 'erstellen', 'planen'):
               raise SystemExit('Unzulässiger Modus')
-          if os.environ['MODE'] in ('erstellen', 'planen') and not os.environ['REQUEST_ID']:\n              raise SystemExit('Privater Produktionsauftrag benötigt eine Telegram request_id')
+          if os.environ['MODE'] in ('erstellen', 'planen') and not os.environ['REQUEST_ID']:
+              raise SystemExit('Privater Produktionsauftrag benötigt eine Telegram request_id')
           request_id = os.environ['REQUEST_ID'] or ('manual-' + os.environ['GITHUB_RUN_ID'])
           claimed = claim_request(request_id, os.environ['GITHUB_TOKEN'], os.environ['GITHUB_SHA'])
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
