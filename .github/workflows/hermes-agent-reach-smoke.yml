@@ -79,11 +79,12 @@ jobs:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         run: |
           set -euo pipefail
-          python - <<'PY'
+          PYTHONPATH="$GITHUB_WORKSPACE" /tmp/agent-reach-venv/bin/python - <<'PY'
           from integrations.openmontage.hermes_live_workers import run
           result = run('Toprak Razgatlioglu MotoGP October 2026 latest verified news')
           for item in result.get('history', []):
               print('STAGE:', item['role'], item['verdict'], item.get('reason',''), flush=True)
+          print('DISCOVERY_ERRORS:', result.get('research_discovery', {}).get('errors', []), flush=True)
           print('FINAL_STATUS:', result.get('status'), flush=True)
           if result.get('status') != 'RESEARCH_READY':
               raise SystemExit('Real research handoff blocked')
