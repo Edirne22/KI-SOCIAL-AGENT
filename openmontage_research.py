@@ -177,6 +177,14 @@ def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = Non
             "original_url": url,
             "source_name": source_name,
             "published_at": published_at,
+            # Preserve provenance and content classification from the source
+            # adapter; never infer ownership or evergreen status from URL.
+            "content_type": item.get("content_type", "news"),
+            "media_url": item.get("media_url"),
+            "media_source": item.get("media_source"),
+            "media_license": item.get("media_license"),
+            "visual_target": item.get("visual_target"),
+            "visual_anchor": item.get("visual_anchor"),
             "retrieved_at": retrieved_at_iso,
             "series": series,
             "riders": matched_riders,
