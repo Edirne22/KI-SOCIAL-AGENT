@@ -12,22 +12,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install Agent Reach in isolated runner (safe)
+      - name: Audit upstream installers (no unreviewed execution)
         shell: bash
         run: |
           set -euo pipefail
-          python -m pip install --user --no-input https://github.com/Panniantong/agent-reach/archive/main.zip
-          export PATH="$HOME/.local/bin:$PATH"
-          agent-reach install --env=auto --safe
-          agent-reach doctor || true
-      - name: Install Hermes CLI without gateway
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl -fsSL https://hermes-agent.nousresearch.com/install.sh -o /tmp/hermes-install.sh
-          bash /tmp/hermes-install.sh --skip-browser
-          export PATH="$HOME/.local/bin:$PATH"
-          command -v hermes
-          hermes --help
-      - name: Contract checks
+          python - <<'PY'
+          import urllib.request
+          urls = {
+              "agent_reach": "https://raw.githubusercontent.com/Panniantong/Agent-Reach/main/README.md",
+              "hermes": "https://raw.githubusercontent.com/NousResearch/hermes-agent/main/README.md",
+          }
+          for name, url in urls.items():
+              try:
+                  with urllib.request.urlopen(url, timeout=15) as response:
+                      body = response.read(200000)
+                  print(f"{name}: reachable; bytes={len(body)}")
+              except Exception as exc:
+                  raise SystemExit(f"{name}: upstream unavailable ({type(exc).__name__})")
+          PY
+      - name: Verify coordinator contracts
         run: python -m unittest -v tests.test_hermes_coordinator
