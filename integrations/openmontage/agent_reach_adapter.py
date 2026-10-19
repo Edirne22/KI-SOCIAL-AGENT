@@ -47,9 +47,22 @@ def read_web(url):
             'sha256': hashlib.sha256(raw).hexdigest()}
 
 
+def topic_terms(topic):
+    """Find meaningful subject words; ignore generic production instructions."""
+    stop = {'aktuelle', 'aktuell', 'überprüfbare', 'nachrichten', 'news',
+            'deutsch', 'deutsche', 'motorrad', 'film', 'video', 'erstelle',
+            'erstellen', 'bitte', 'über', 'und', 'der', 'die', 'das', 'für',
+            'eine', 'einen', 'sekunden', 'reels', 'szene', 'szenen'}
+    return [word for word in re.findall(r'[^\\W_]{3,}', topic.casefold())
+            if word not in stop][:6]
+
+
 def discover(topic):
     """Live catalog discovery, never a fixed article or a search snippet as proof."""
-    listings = ['https://trf1.net/?s=' + quote(topic),
+    terms = topic_terms(topic)
+    if not terms:
+        return {'results': [], 'errors': [{'error': 'NO_SEARCH_SUBJECT'}]}
+    listings = ['https://trf1.net/?s=' + quote(' '.join(terms[:3])),
                 'https://www.motogp.com/en/news',
                 'https://www.worldsbk.com/en/news']
     candidates, errors = {}, []
