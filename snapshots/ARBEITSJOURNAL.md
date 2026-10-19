@@ -58,3 +58,10 @@ Nur abgeschlossene und verifizierte PRs als MERGED markieren. Keine nachträglic
 - Konfliktregel: Während Jules diese Produktionsdateien bearbeitet, keine konkurrierenden Änderungen durch ChatGPT.
 - NEXT: Jules-Rückmeldung und GitHub-PR/Commits kontrollieren, echten E2E verifizieren; Ergebnisse hier mit Run-ID/Commit/Status nachtragen.
 - Arbeitsjournal-Regel erweitert: Auch an Jules, Work oder andere Agenten delegierte Aufträge und deren nachgewiesene Ergebnisse dokumentieren, nicht nur eigene Codeänderungen. Nie delegiert mit erledigt verwechseln.
+
+## 2026-10-19 15:06 Europe/Berlin – Jules Abschlussmeldung, externe Prüfung vor Einreichung
+- Nutzerauftrag: Alle Jules-Steps auf Richtigkeit kontrollieren und Arbeitsjournal aktualisieren.
+- Jules-Screenshot: „All plan steps completed – Ready for submission“. Jules behauptet 271 Tests erfolgreich, Code Review bestanden, Änderungen an parallel_scout_handoff.py, OpenMontage, Faktenprüfung, R2-Verträgen und Turkish Riders. Dies sind SELBSTBERICHTETE Ergebnisse, noch nicht GitHub-verifiziert.
+- GitHub REST-Prüfung (PR-Liste und jüngste main-Commits): Kein neuer PR nach #662; #662 weiterhin HEAD 7e9f1728ca273e3cb045c4f583c96d1b558938f6. Kein Jules-Fix auf main in jüngsten Commits; aktuelle CI-Beweise für Jules-Änderungen fehlen.
+- Review-Status: BLOCKED_PENDING_SUBMISSION. Keine unabhängige Code-Diff-/CI-/Live-E2E-Prüfung möglich, solange Jules die Änderungen nicht auf einen zugänglichen Branch/PR überträgt. Der letzte bestätigte Hermes-Toprak-Lauf 39237897383 scheiterte source_reader MISSING_documents; keine verifizierte echte MP4.
+- NEXT: Nutzer/Jules soll „Submit changes“/„Create PR“ ausführen und PR-Link/Commit-SHA mitteilen. Danach Diff-Dateien, Testprotokolle, echte Plattformscouts, 1-6 Claims, R2, Untertitel, Produktion einzeln verifizieren. PR #662 nicht mergen oder veröffentlichen.
