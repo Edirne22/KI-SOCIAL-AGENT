@@ -1074,3 +1074,23 @@ Quelle: https://motoetkinlik.com/worldsbk-jerez-1-yaris-bulega-poleden-kazandi-s
 Story-Key: title:worldsbk-jerez-superpole-bulega-sezonun-11-pole-n-ald-sam-lowes-i-kinci
 Titel: WorldSBK Jerez Superpole: Bulega Sezonun 11. Pole'ünü Aldı, Sam Lowes İkinci
 Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci
+
+## 2026-10-19 09:01 UTC – ANGEBOTEN
+Story-Key: motogp:10866092
+Titel: WSSP İspanya 2. yarış: Alcoba liderliğinde Kawasaki’den çifte podyum, Can Öncü sezonu dördüncü sırada tamamladı!
+Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092
+
+## 2026-10-19 09:01 UTC – ANGEBOTEN
+Story-Key: title:gigi-dall-igna-endonezya-gp-sonu-lar-nda-marc-marquez-dehas-var
+Titel: Gigi Dall’Igna: “Endonezya GP Sonuçlarında Marc Marquez’in Dehası Var!”
+Quelle: https://motoetkinlik.com/gigi-dalligna-endonezya-gp-sonuclarinda-marc-marquezin-dehasi-var
+
+## 2026-10-19 09:01 UTC – ANGEBOTEN
+Story-Key: motogp:10866177
+Titel: Quartararo’nun Honda'daki takım arkadaşı kim olacak?
+Quelle: https://tr.motorsport.com/motogp/news/quartararonun-hondadaki-takim-arkadasi-kim-olacak/10866177
+
+## 2026-10-19 09:01 UTC – ANGEBOTEN
+Story-Key: title:worldssp-jerez-2-yar-alcoba-kazand-can-sezonu-4-bitirdi-bahattin-16
+Titel: WorldSSP Jerez 2. Yarış: Alcoba Kazandı, Can Sezonu 4. Bitirdi, Bahattin 16.
+Quelle: https://motoetkinlik.com/worldssp-jerez-2-yaris-alcoba-kazandi-can-sezonu-4-bitirdi-bahattin-16

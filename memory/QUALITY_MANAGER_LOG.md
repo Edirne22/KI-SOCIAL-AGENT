@@ -3288,3 +3288,45 @@ Story-Key: title:worldsbk-jerez-superpole-bulega-sezonun-11-pole-n-ald-sam-lowes
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-19 09:36 UTC | Motorcycle Racing | PASS
+Titel: WSSP İspanya 2. yarış: Alcoba liderliğinde Kawasaki’den çifte podyum, Can Öncü sezonu dördüncü sırada tamamladı!
+Story-Key: motogp:10866092
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-19 09:36 UTC | Motorcycle Racing | PASS
+Titel: Gigi Dall’Igna: “Endonezya GP Sonuçlarında Marc Marquez’in Dehası Var!”
+Story-Key: title:gigi-dall-igna-endonezya-gp-sonu-lar-nda-marc-marquez-dehas-var
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-19 09:36 UTC | Motorcycle Racing | PASS
+Titel: Quartararo’nun Honda'daki takım arkadaşı kim olacak?
+Story-Key: motogp:10866177
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-19 09:36 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Jerez Superpole yarış: Bulega kazandı, Lecuona ikinci sırada
+Story-Key: motogp:10866029
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-10-19 09:37 UTC | Motorcycle Racing | FAIL
+Titel: WSBK Jerez Superpole yarış: Bulega kazandı, Lecuona ikinci sırada
+Story-Key: motogp:10866029
+Gründe: Final-Guard: falscher Serienhashtag #motogp
+Human-Writing-Protocol: V1.0
+
+## 2026-10-19 09:37 UTC | Motorcycle Racing | PASS
+Titel: WorldSSP Jerez 2. Yarış: Alcoba Kazandı, Can Sezonu 4. Bitirdi, Bahattin 16.
+Story-Key: title:worldssp-jerez-2-yar-alcoba-kazand-can-sezonu-4-bitirdi-bahattin-16
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-19 09:37 UTC | Motorcycle Racing | PASS
+Titel: WorldSBK Jerez 1. Yarış: Bulega Pole'den Kazandı, Sam Lowes İkinci
+Story-Key: title:worldsbk-jerez-1-yar-bulega-pole-den-kazand-sam-lowes-i-kinci
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1792310998
+Session-Timestamp: 1792400463
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -16,24 +16,24 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 1
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.7
+Artikelalter-Tage: 0.8
 Kategorie: Turkish Riders
-Serie: MotoGP
-Story-Key: title:bmw-chris-gonschor-motosikletimiz-stoner-n-ducati-si-gibi-de-il-toprak-tek-h-zl-s-r-c-de-ildi
-Titel: BMW Chris Gonschor: “Motosikletimiz Stoner’ın Ducati’si Gibi Değil, Toprak Tek Hızlı Sürücü Değildi!”
-Quelle: https://motoetkinlik.com/bmw-motosikletimiz-stonerin-ducatisi-gibi-degil-toprak-tek-hizli-surucu-degildi
+Serie: WorldSSP
+Story-Key: motogp:10866092
+Titel: WSSP İspanya 2. yarış: Alcoba liderliğinde Kawasaki’den çifte podyum, Can Öncü sezonu dördüncü sırada tamamladı!
+Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-1-bmw-chris-gonschor-m-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/03/bmw-technikdirektor-chris-gonschor-scaled.webp
+Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-1-wssp-ispanya-2-yaris-01.jpg
+Quellen-Preview: https://cdn-1.motorsport.com/images/amp/0rVPogP0/s6/alcoba.jpg
 Plattformen: Instagram + Facebook
 Text:
-BMW-Projektverantwortlicher Chris Gonschor hat klar Stellung bezogen: Toprak Razgatlıoğlu ist nicht der einzige schnelle BMW-Pilot. Gonschor warf den Vergleich mit Stoners Ducati zurück und betonte, dass das Bike keineswegs nur auf einen Fahrertyp zugeschnitten ist. Stattdessen will der deutsche Hersteller die Maschine für 2027 so weiterentwickeln, dass sie besser zu unterschiedlichen Fahrstilen passt. Da geht also noch was bei der Baustelle 🔧🏍️
+Das Saisonfinale der 2026 FIM Supersport-WM in Jerez endete vorzeitig durch die rote Fahne – Jeremy Alcoba ging trotzdem als Sieger von der Strecke. Bei Kawasaki landeten gleich zwei Fahrer auf dem Podium. Can Öncü schloss die Saison an vierter Stelle ab.
 
-Wie schätzt ihr die Situation bei BMW ein?
+Wie seht ihr den Saisonabschluss für die Kawasaki-Piloten?
 
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -41,25 +41,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: motogp:10865930
-Titel: WSSP İspanya 1. yarış: Arenas kazandı, Alcoba evinde ikinci, Can Öncü podyumun son basamağında!
-Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-1-yaris-arenas-kazandi-alcoba-evinde-ikinci-can-oncu-podyumun-son-basamaginda/10865930
+Artikelalter-Tage: 4.5
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: title:gigi-dall-igna-endonezya-gp-sonu-lar-nda-marc-marquez-dehas-var
+Titel: Gigi Dall’Igna: “Endonezya GP Sonuçlarında Marc Marquez’in Dehası Var!”
+Quelle: https://motoetkinlik.com/gigi-dalligna-endonezya-gp-sonuclarinda-marc-marquezin-dehasi-var
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-2-wssp-ispanya-1-yaris-01.jpg
-Quellen-Preview: https://cdn-3.motorsport.com/images/amp/0arE7op2/s6/arenas-net-2.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-2-gigi-dalligna-endone-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/07/Ducati-Gigi-DallIgna.webp
 Plattformen: Instagram + Facebook
 Text:
-Albert Arenas hat das erste Rennen in Jerez gewonnen. Jeremy Alcoba kam als Zweiter ins Ziel, Can Öncü wurde Dritter.
+Gigi Dall’Igna lobt die Vorstellung von Marc Marquez beim Indonesien-GP.
 
-Wie seht ihr die Aufstellung auf dem Podium?
+Ducati-General-Manager Gigi Dall’Igna hebt die Leistung von Marc Marquez in Indonesien hervor. Der Sprintsieg und der sechste Platz brachten Ducati wichtige Punkte im Titelkampf.
 
-#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die Leistung von Marc Marquez in Indonesien ein?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,31 +69,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 2
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:worldssp-jerez-1-yar-arenas-kazand-can-podyumda-bahattin-23-s-rada
-Titel: WorldSSP Jerez 1. Yarış: Arenas Kazandı, Can Podyumda, Bahattin 23. Sırada
-Quelle: https://motoetkinlik.com/worldssp-jerez-1-yaris-arenas-kazandi-can-podyumda-bahattin-23-sirada
+Artikelalter-Tage: 0.0
+Kategorie: Moto2
+Serie: Moto2
+Story-Key: motogp:10866177
+Titel: Quartararo’nun Honda'daki takım arkadaşı kim olacak?
+Quelle: https://tr.motorsport.com/motogp/news/quartararonun-hondadaki-takim-arkadasi-kim-olacak/10866177
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-3-worldssp-jerez-1-yar-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/can-oncu-jerez-spanish-round-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-3-quartararonun-honda-01.jpg
+Quellen-Preview: https://cdn-4.motorsport.com/images/amp/0mXyKPg6/s6/fabio-quartararo-yamaha-factor.jpg
 Plattformen: Instagram + Facebook
 Text:
-Bei der WorldSSP in Jerez ging das erste Rennen an Arenas.
+Für 2027 sieht es bei Honda nach und nach klarer aus: Quartararo bleibt im Werksteam, an seiner Seite sitzt Moreira. Alonso hingegen geht in die Satellitenmannschaft. So steht's aktuell.
 
-Can Öncü fuhr auf Platz drei und sicherte sich einen Podiumsplatz.
+Wie schätzt ihr die Aufstellung ein?
 
-Damit führt Can nun die Fahrerwertung mit einem einzigen Punkt Vorsprung vor Alcoba.
-
-Bahattin Sofuoğlu zog als 23. durchs Ziel.
-
-Die Meisterschaft entscheidet sich schnell. Wir sind dran.
-
-#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #FabioQuartararo #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -102,24 +98,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.7
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: title:worldsbk-jerez-1-yar-bulega-pole-den-kazand-sam-lowes-i-kinci
-Titel: WorldSBK Jerez 1. Yarış: Bulega Pole'den Kazandı, Sam Lowes İkinci
-Quelle: https://motoetkinlik.com/worldsbk-jerez-1-yaris-bulega-poleden-kazandi-sam-lowes-ikinci
+Artikelalter-Tage: 0.8
+Kategorie: Turkish Riders
+Serie: WorldSSP
+Story-Key: title:worldssp-jerez-2-yar-alcoba-kazand-can-sezonu-4-bitirdi-bahattin-16
+Titel: WorldSSP Jerez 2. Yarış: Alcoba Kazandı, Can Sezonu 4. Bitirdi, Bahattin 16.
+Quelle: https://motoetkinlik.com/worldssp-jerez-2-yaris-alcoba-kazandi-can-sezonu-4-bitirdi-bahattin-16
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-4-worldsbk-jerez-1-yar-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/04/bulega-assen-worldsbk-2026-strateji-galibiyet.webp
+Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-4-worldssp-jerez-2-yar-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/12_Jerez_WorldSSP_2026_Can_Oncu-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Pole'den kazanmak en tatmin eden şey
+Nach dem Roten Fahne-Rennen in Jerez ging der Sieg an Jeremy Alcoba.
 
-Bulega hat's Jerez Race 1 von der Pole position gewonnen, Sam Lowes landet auf dem zweiten Platz. Ducati belegt die ersten sieben Ränge komplett selbst, Álvaro Bautista schließt als Vierter ab.
+Can Öncü fuhr die schnellste Rennrunde und landete am Ende auf Platz 4.
 
-Wie seht ihr den Ducati-Läuferstreik in Jerez?
+Bahattin Sofuoğlu kam auf Rang 16 ins Ziel.
 
-#WorldSBK #SamLowes #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wer hat den Saisonabschluss der beiden für euch besser gemacht?
+
+#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -130,24 +128,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.9
+Artikelalter-Tage: 1.8
 Kategorie: WorldSBK
 Serie: WorldSBK
-Story-Key: title:worldsbk-jerez-superpole-bulega-sezonun-11-pole-n-ald-sam-lowes-i-kinci
-Titel: WorldSBK Jerez Superpole: Bulega Sezonun 11. Pole'ünü Aldı, Sam Lowes İkinci
-Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci
+Story-Key: title:worldsbk-jerez-1-yar-bulega-pole-den-kazand-sam-lowes-i-kinci
+Titel: WorldSBK Jerez 1. Yarış: Bulega Pole'den Kazandı, Sam Lowes İkinci
+Quelle: https://motoetkinlik.com/worldsbk-jerez-1-yaris-bulega-poleden-kazandi-sam-lowes-ikinci
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/Nicolo-Bulega-Jerez-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-5-worldsbk-jerez-1-yar-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/04/bulega-assen-worldsbk-2026-strateji-galibiyet.webp
 Plattformen: Instagram + Facebook
 Text:
-In Jerez steht Bulega auf Platz eins – mit 1:36,643 die beste Superpole-Zeit der Saison.
+Ducati hat in Jerez die Frontreihe komplett übernommen.
 
-Die 1:36,643 von Nicolò Bulega waren im Superpole-Training in Jerez die schnellste Runde – sein elfter Pole dieser Saison. Damit ist er gleichauf mit Maxime Spies, der ebenfalls elfmal die beste Saisonzeit fuhr. Sam Lowes rutschte auf Platz zwei, und Iker Lecuona zog als Dritter noch einmal neben ihn auf das Podium der Superpole.
+Nicolò Bulega startete von der Pole und gewann das erste Rennen. Sam Lowes wurde Zweiter. Die ersten sieben Plätze gingen an Ducati, Álvaro Bautista landete nach starkem Finish auf Platz vier.
 
-Wer von den Dreien hat bei euch die Nase vorn für den Rennenstag?
+Wie seht ihr die Ducati-Herrschaft in Jerez?
 
-#WorldSBK #IkerLecuona #SamLowes #MotorradRacing #RacingDeutschland #BuelentsBikeLife #NicoloBulega
+#WorldSBK #SamLowes #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
