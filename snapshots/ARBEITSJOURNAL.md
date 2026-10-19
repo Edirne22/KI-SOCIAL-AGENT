@@ -28,3 +28,11 @@ Nur abgeschlossene und verifizierte PRs als MERGED markieren. Keine nachträglic
 - Commit auf main: 7a1360709bda091624cc6ad5b4832ac26c84ef2c
 - Status: COMMITTED.
 - NEXT: Bei Chatwechsel zuerst neuestes Journal + neuester Snapshot, dann tatsächliche GitHub-Stände prüfen.
+
+## Journal-Rotation – verbindliche Regel (2026-10-19)
+- Wenn diese Datei zu groß oder unübersichtlich wird, niemals alte Einträge überschreiben oder löschen.
+- Am Ende der aktuellen Datei einen Verweis auf die Fortsetzung setzen: `snapshots/ARBEITSJOURNAL_2.md`.
+- Die neue Datei beginnt mit einem Rückverweis auf die vorherige und dem letzten offenen Arbeitsschritt, Branch/PR/Commit sowie dem aktuellen NEXT.
+- Danach fortlaufend `ARBEITSJOURNAL_3.md`, `ARBEITSJOURNAL_4.md` usw. ohne feste Obergrenze.
+- Beim Neustart stets der Vorwärts-Verweiskette bis zum neuesten Journal folgen, zusätzlich den neuesten datierten Snapshot lesen.
+- Jede Rotation ist selbst ein dokumentierter GitHub-Commit; keine unbestätigten Ergebnisse als abgeschlossen markieren.
