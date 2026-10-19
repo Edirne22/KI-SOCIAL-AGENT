@@ -105,7 +105,16 @@ def claims_from_evidence(claims, catalog):
         evidence_id = claim.get('evidence_id')
         if evidence_id not in catalog:
             raise ValueError('Unknown evidence ID from analyst')
-        result.append({'title': claim.get('title', ''), 'claim': claim.get('claim', ''),
+        title, sentence = claim.get('title', ''), claim.get('claim', '')
+        # Discard malformed model suggestions; never truncate text or fabricate evidence.
+        # Remaining claims still undergo independent contextual fact-checking.
+        if not isinstance(title, str) or not isinstance(sentence, str):
+            continue
+        if not (1 <= len(title) <= 38 and title.isprintable() and 10 <= len(sentence) <= 190):
+            continue
+        if any(item['title'] == title for item in result):
+            continue
+        result.append({'title': title, 'claim': sentence,
                        'evidence_id': evidence_id, **catalog[evidence_id]})
     return result
 
