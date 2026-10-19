@@ -71,6 +71,7 @@ def model_json(system, payload):
             'messages': [{'role': 'system', 'content': system},
                          {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}],
             'temperature': 0.1, 'max_tokens': 2400,
+            'response_format': {'type': 'json_object'},
             'chat_template_kwargs': {'enable_thinking': False}}
     req = Request('https://integrate.api.nvidia.com/v1/chat/completions',
                   data=json.dumps(data).encode(), headers={'Authorization': 'Bearer ' + key,

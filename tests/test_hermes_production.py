@@ -96,6 +96,8 @@ class DiscoveryRegressionTests(unittest.TestCase):
         request = send.call_args.args[0]
         self.assertEqual(request.get_header('Authorization'), 'Bearer unit-test-sentinel')
         self.assertNotIn('unit-test-sentinel', request.data.decode())
+        import json
+        self.assertEqual(json.loads(request.data)['response_format'], {'type': 'json_object'})
         self.assertEqual(send.call_args.kwargs['timeout'], 240)
 
 class EvidenceIdRegressionTests(unittest.TestCase):
