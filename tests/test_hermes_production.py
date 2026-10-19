@@ -97,3 +97,20 @@ class DiscoveryRegressionTests(unittest.TestCase):
         self.assertEqual(request.get_header('Authorization'), 'Bearer unit-test-sentinel')
         self.assertNotIn('unit-test-sentinel', request.data.decode())
         self.assertEqual(send.call_args.kwargs['timeout'], 240)
+
+class EvidenceIdRegressionTests(unittest.TestCase):
+    def test_model_selects_source_span_without_retyping_quote(self):
+        from integrations.openmontage.hermes_live_workers import evidence_catalog, claims_from_evidence, validate_claims
+        doc = {'url': 'https://trf1.net/story/', 'published_at': datetime.now(timezone.utc).isoformat(),
+               'text': 'Der Fahrer sagte: „Ich hoffe auf eine baldige Rückkehr.“ Die Entscheidung bleibt offen.'}
+        catalog = evidence_catalog([doc])
+        claims = claims_from_evidence([{'title': 'Rückkehr bleibt offen',
+                                       'claim': 'Der Fahrer hoffte auf eine baldige Rückkehr.',
+                                       'evidence_id': 'e0', 'evidence_excerpt': 'invented replacement'}], catalog)
+        self.assertEqual(claims[0]['evidence_excerpt'], doc['text'])
+        self.assertEqual(len(validate_claims(claims, [doc])), 1)
+
+    def test_unknown_evidence_id_fails_closed(self):
+        from integrations.openmontage.hermes_live_workers import claims_from_evidence
+        with self.assertRaisesRegex(ValueError, 'Unknown evidence ID'):
+            claims_from_evidence([{'evidence_id': 'invented'}], {})
