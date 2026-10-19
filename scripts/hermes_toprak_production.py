@@ -70,7 +70,14 @@ def execute(output, topic):
     state = research(topic)
     save(output / 'research-handoff.json', state)
     if state['status'] != 'RESEARCH_READY':
-        raise ValueError('RESEARCH_BLOCKED: ' + json.dumps(state['history'][-1], ensure_ascii=False))
+        # Include bounded rejection diagnostics without promoting rejected claims.
+        blocked = state.get('blocked_outputs', {}).get('fact_checker', {})
+        rejections = blocked.get('rejections', []) if isinstance(blocked, dict) else []
+        diagnostic = {'failure': state['history'][-1],
+                      'candidate_claims': len(state.get('nemotron_analyst', {}).get('claims', [])),
+                      'rejections': [{'index': r.get('index'), 'reason': str(r.get('reason', ''))[:180]}
+                                     for r in rejections[:12] if isinstance(r, dict)]}
+        raise ValueError('RESEARCH_BLOCKED: ' + json.dumps(diagnostic, ensure_ascii=False))
     checked = state['handoff']['report']
     # Six editorially distinct scenes; never pad missing facts with invented news.
     if len(checked['stories']) < 6:
