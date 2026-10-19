@@ -3212,3 +3212,19 @@ Direkte Treffer (antippbar):
 
 Quellen:
 - unlimited 5G Internet-Flat mit 15 Mbit/s nur 19.99 Euro monatlich: https://handytariftipp.de/monatlich-kuendbar-unlimited-5g-internet-flat-mit-15-mbit-s-nur-19-99-euro-monatlich-anschlusspreis-19-99-euro/
+## Suche vom 2026-10-19 11:50
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. unlimited 5G Internet-Flat mit 15 Mbit/s nur 19.99 Euro monatlich
+   https://handytariftipp.de/monatlich-kuendbar-unlimited-5g-internet-flat-mit-15-mbit-s-nur-19-99-euro-monatlich-anschlusspreis-19-99-euro/ – 25.11.2024 ... monatlich kündbar – unlimited 5G Internet-Flat mit 15 Mbit/s nur 19.99 Euro monatlich – Anschlusspreis 19.99 Euro.
+
+Quellen:
+- unlimited 5G Internet-Flat mit 15 Mbit/s nur 19.99 Euro monatlich: https://handytariftipp.de/monatlich-kuendbar-unlimited-5g-internet-flat-mit-15-mbit-s-nur-19-99-euro-monatlich-anschlusspreis-19-99-euro/
