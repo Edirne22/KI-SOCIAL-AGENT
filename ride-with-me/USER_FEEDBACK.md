@@ -494,3 +494,25 @@ Die Ideen richten sich an die Zielgruppe der deutsch-türkischen Motorradfahrer 
 *   **Duet-Challenge: "Zeig uns deine Lieblingskurve!"** – Eine Challenge, bei der Nutzer ein kurzes Video von ihrer Lieblingskurve posten und in der App die Route teilen. Fördert die virale Verbreitung.
 
 **Wichtiger Hinweis:** Dies sind Ideen zur Content-Gestaltung. Die konkrete Umsetzung hängt von den jeweiligen Plattform-Regeln und dem Corporate Design ab. Die Texte müssen immer im Einklang mit den offiziellen App-Beschreibungen stehen und keine versprochenen Funktionen darstellen, die nicht existieren.
+
+
+## Automatische Analyse
+### App-Zusammenfassung (Belegte Funktionen)
+
+Die App **Ride With Me** (ridewithme.app) richtet sich an Motorradfahrer und deckt nach offiziellen Angaben im Google Play Store sowie der Produktwebsite folgende Kernfunktionen ab:
+
+* **Routenplanung:** Erstellung von Motorradrouten mit Fokus auf kurvige Abschnitte, Vermeidung von Autobahnen sowie Planung von Rundtouren über Zwischenziele.
+* **Navigation:** Turn-by-Turn-Navigation mit Sprachausgabe und Kartenanzeige. Nutzung von Offline-Karten für Gebiete ohne Mobilfunkempfang.
+* **GPS-Tracking:** Aufzeichnung gefahrener Strecken inklusive Telemetriedaten wie Distanz, Dauer und Verlauf.
+* **Community und Sharing:** Teilen eigener Touren mit anderen Nutzern, Erkunden von Routen aus der Community und Organisation gemeinsamer Gruppenfahrten.
+* **GPX-Datenaustausch:** Import und Export von GPX-Dateien zur Verwendung auf externen Navigationsgeräten oder in anderen Systemen.
+* **Unfallerkennung:** Integrierte Sicherheitsfunktion, die bei Stürzen automatische Notfallbenachrichtigungen an hinterlegte Kontakte sendet.
+
+---
+
+### Mögliche Nutzerbedürfnisse
+
+Motorradfahrer und Reisebegeisterte haben spezifische Anforderungen an Planungs- und Navigationssoftware, die sich aus dem Fahrverhalten und den Umgebungsbedingungen ergeben:
+
+1. **Zuverlässige Navigation abseits von Ballungsräumen:** In Passregionen oder ländlichen Gebieten bricht das Mobilfunknetz häufig ab. Nutzer benötigen funktionierende Offline-Karten ohne Unterbrechungen.
+2. **Effiziente Entdeckung kurvenreicher Strecken:** Die direkte Verbindung von A nach B ist für Tourenfahrer
