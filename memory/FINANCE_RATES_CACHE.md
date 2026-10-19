@@ -60,3 +60,11 @@ Dein derzeitiges Chase‑Konto liefert mit 4,0 % denselben Zinssatz wie die 
 Falls der Chase‑Zins nach diesem Datum schlechter bleibt, könntest du zu Openbank oder Ayvens Bank wechseln – beide bieten weiterhin kurzfristige Aktionszinsen von 4,0 % (sofern noch verfügbar).  
 
 Kurz gesagt: Bis 26.12.2026 ist dein Chase‑Konto konkurrenzfähig; danach lohnt sich ein Blick auf Openbank oder Ayvens Bank für gleichwertige Konditionen.
+## Lauf 2026-10-19 14:16 UTC
+
+Quellen: Finanztip, Check24, Verivox, Biallo
+
+**Top‑Tagesgeld‑Zinsen (Stand Oktober 2026):** Advanzia 4,1 % p.a. (3‑Monats‑Aktion), Chase 4,0 % p.a. (4‑Monats‑Aktion) und Openbank 4,0 % p.a. (4‑Monats‑Aktion) – Check24 listet ebenfalls ein Höchstangebot von 4,07 % p.a.   
+**Vergleich:** Dein aktuelles Chase‑Konto liefert 4,0 % p.a. bis 26.12.2026; danach fällt der Zinssatz auf 2,0 % p.a.   
+**Alternative (nach 26.12.2026):** Advanzia bietet mit 4,1 % p.a. ein etwas höheres Aktionszins‑Angebot (3‑Monate).  
+**Kurz‑Hinweis für Bülent:** Bis Ende 2026 kannst du das Chase‑Tagesgeld mit 4,0 % weiter nutzen; wenn der Zinssatz danach sinkt, lohnt sich ein Blick auf das Advanzia‑Angebot für ein leicht besseres Kurzzeit‑Zinsniveau.
