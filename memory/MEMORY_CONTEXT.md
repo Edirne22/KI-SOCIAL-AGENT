@@ -1,6 +1,6 @@
 # Memory Context Packet
 
-**Erzeugt:** 2026-10-18 19:41 UTC
+**Erzeugt:** 2026-10-19 21:45 UTC
 **Verwendung:** vor Content-Erstellung/Planung lesen; Regeln sind stärker als lose Beobachtungen.
 
 ## Aktive Lernregeln
@@ -47,6 +47,6 @@ Speichert, was Bülent mag und was nicht – basierend auf Freigaben, Ablehnunge
 
 ## Datenlage
 - Performance-Snapshots mit echter Reichweite: 0
-- Audit-Events: 134
+- Audit-Events: 135
 - Fehlende Kennzahlen werden nicht geschätzt.
 - Externe Trenddaten sind Inspiration; eigene Performance + Nutzerfeedback haben Vorrang.
