@@ -1066,9 +1066,8 @@ Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-je
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg", "media_status": "", "object_id": "122125443483469415", "object_type": "bild", "platform": "facebook", "post_id": "122125443483469415", "source_url": "https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39249963144-1
+## Facebook [GEPOSTET 2026-10-19 12:10 | ID: 1285968257941776_122125797057469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-19-daily
 Telegram-Update-ID: 279361978
@@ -1086,3 +1085,4 @@ Wie seht ihr den Saisonabschluss für die Kawasaki-Piloten?
 🔗 Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092
 Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092", "media_status": "", "object_id": "1285968257941776_122125797057469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122125797057469415", "source_url": "https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092", "version": 1}
