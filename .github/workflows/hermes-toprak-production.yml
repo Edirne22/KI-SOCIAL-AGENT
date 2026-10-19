@@ -43,6 +43,7 @@ jobs:
           mkdir -p "$HOME/.hermes/skills/content-factory-coordinator"
           cp skills/content-factory-coordinator/SKILL.md "$HOME/.hermes/skills/content-factory-coordinator/SKILL.md"
       - name: Hermes coordinates real research and preview production
+        continue-on-error: true
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         run: |
