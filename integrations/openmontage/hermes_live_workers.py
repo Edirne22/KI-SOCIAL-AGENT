@@ -80,7 +80,7 @@ def model_json(system, payload):
     req = Request('https://integrate.api.nvidia.com/v1/chat/completions',
                   data=json.dumps(data).encode(), headers={'Authorization': 'Bearer ' + key,
                                                           'Content-Type': 'application/json'})
-    with urlopen(req, timeout=120) as response:
+    with urlopen(req, timeout=240) as response:
         result = json.load(response)
     choice = result['choices'][0]
     if choice.get('finish_reason') != 'stop':
