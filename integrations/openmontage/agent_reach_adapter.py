@@ -53,7 +53,7 @@ def topic_terms(topic):
             'deutsch', 'deutsche', 'motorrad', 'film', 'video', 'erstelle',
             'erstellen', 'bitte', 'über', 'und', 'der', 'die', 'das', 'für',
             'eine', 'einen', 'sekunden', 'reels', 'szene', 'szenen'}
-    return [word for word in re.findall(r'[^\\W_]{3,}', topic.casefold())
+    return [word for word in re.findall(r'[^\W_]{3,}', topic.casefold())
             if word not in stop][:6]
 
 
