@@ -53,6 +53,19 @@ jobs:
             --model nvidia/nemotron-3.5-lightning-30b-a3b --toolsets terminal --max-turns 12 --quiet \
             -q "Du koordinierst den ausdrücklich beauftragten Produktionslauf. Recherchiere aktuelle überprüfbare Informationen über Toprak Razgatlioglu und produziere daraus einen deutschen Motorrad-News-Clip. Nutze dafür die bestehende Agentenkette: Der folgende geprüfte Einstieg verwendet Agent Reach/Jina, Quellenleser, Nemotron, Faktenprüfung, Storyboard und OpenMontage. Führe mit dem Terminal-Werkzeug genau diesen Befehl im aktuellen Repository aus: $GITHUB_WORKSPACE/.runtime/bin/python -m scripts.hermes_toprak_production --output $GITHUB_WORKSPACE/artifacts/toprak-production . Warte auf das tatsächliche Prozessende (lange Laufzeit möglich, bei Hintergrundausführung Status abfragen). Keine eigenen Dateien, keine Codeänderungen, keine erfundenen Rechercheergebnisse, keine Veröffentlichung. Bei Fehler den Fehler melden; niemals Daten oder Prüfungen verändern. Erfolg erst bei HERMES_PRODUCTION_PREVIEW_READY melden." \
             | tee artifacts/hermes-transcript.txt
+      - name: Run production in trusted runner environment if Hermes tool did not inherit key
+        if: success()
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$NVIDIA_API_KEY"
+          if [ ! -f artifacts/toprak-production/production-receipt.json ]; then
+            if [ -d artifacts/toprak-production ]; then
+              mv artifacts/toprak-production "artifacts/incomplete-${GITHUB_RUN_ID}"
+            fi
+            .runtime/bin/python -m scripts.hermes_toprak_production --output artifacts/toprak-production
+          fi
       - name: Independently verify produced MP4 and receipt
         run: .runtime/bin/python -m scripts.hermes_toprak_production --verify --output artifacts/toprak-production
       - name: Upload actual film and production evidence
