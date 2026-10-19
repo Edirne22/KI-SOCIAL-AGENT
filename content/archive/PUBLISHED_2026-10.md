@@ -1,5 +1,26 @@
 # Archiviert Beiträge 2026-10
 
+## Facebook [GEPOSTET 2026-10-11 17:41 | ID: 1285968257941776_122122822023469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-11-daily
+Telegram-Update-ID: 279361929
+MotoGP-Auswahl: 1
+Story-Key: title:motogp-endonezya-gp-sprint-marquez-kazand-ve-zirveye-y-kseldi-toprak-19
+Event-Fingerprint: MotoGP|sprint|marquez,martin,razgatlioglu|
+Titel: MotoGP Endonezya GP Sprint: Marquez Kazandı ve Zirveye Yükseldi, Toprak 19.
+Text:
+Marc Marquez hat den Sprint in Indonesien gewonnen und führt jetzt die Weltmeisterschaft mit vier Punkten Vorsprung an. Jorge Martin landete auf Platz vier. Toprak Razgatlıoğlu ging für uns mit Rang 19 durchs Ziel 🏁
+
+Wie seht ihr Topraks Performance im Sprint?
+
+#MotoGP #ToprakRazgatlioglu #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19
+Quelle: https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19", "media_status": "", "object_id": "1285968257941776_122122822023469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122122822023469415", "source_url": "https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-zirveye-yukseldi-toprak-19", "version": 1}
+
 ## Facebook [GEPOSTET 2026-10-09 08:45 | ID: 1285968257941776_122121646071469415]
 Status: GEPOSTET
 Freigabe: Telegram Racing
