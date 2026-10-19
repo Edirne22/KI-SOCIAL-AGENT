@@ -58,3 +58,42 @@ class ProductionEvidenceTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+class DiscoveryRegressionTests(unittest.TestCase):
+    @patch('integrations.openmontage.agent_reach_adapter.read_web')
+    def test_subject_search_excludes_instruction_words_and_navigation(self, read):
+        from integrations.openmontage.agent_reach_adapter import discover, topic_terms
+        topic = 'Toprak Razgatlioglu – aktuelle überprüfbare Motorrad-News auf Deutsch'
+        self.assertEqual(topic_terms(topic), ['toprak', 'razgatlioglu'])
+        stale = 'https://trf1.net/motor-sporlari/toprak-2025/1/'
+        fresh = 'https://trf1.net/motor-sporlari/toprak-update/2/'
+        read.side_effect = lambda url: {'text': f'[Toprak 2025]({stale})\n### [Toprak Update]({fresh})'} if '?s=' in url else {'text': ''}
+        result = discover(topic)
+        self.assertEqual([c['url'] for c in result['results']], [fresh])
+        self.assertEqual(read.call_args_list[0].args[0], 'https://trf1.net/?s=toprak')
+
+    def test_blocked_checker_diagnostics_survive_without_advancing(self):
+        from integrations.openmontage.hermes_coordinator import run_research
+        workers = {
+            'research_discovery': lambda s: {'candidates': ['source']},
+            'source_reader': lambda s: {'documents': [{'url': 'source', 'text': 'evidence'}]},
+            'nemotron_analyst': lambda s: {'claims': [{'source_url': 'source', 'claim': 'candidate'}]},
+            'fact_checker': lambda s: {'verified_claims': [], 'rejections': [{'index': 0, 'reason': 'wrong attribution'}]},
+            'handoff': lambda s: self.fail('Rejected facts must not advance'),
+        }
+        result = run_research('Toprak', workers, max_retries=0)
+        self.assertEqual(result['status'], 'BLOCKED')
+        self.assertNotIn('fact_checker', result)
+        self.assertEqual(result['blocked_outputs']['fact_checker']['rejections'][0]['reason'], 'wrong attribution')
+
+    @patch.dict('os.environ', {'NVIDIA_API_KEY': 'unit-test-sentinel'})
+    @patch('integrations.openmontage.hermes_live_workers.urlopen')
+    def test_key_reaches_only_provider_request_and_timeout_is_preserved(self, send):
+        from integrations.openmontage.hermes_live_workers import model_json
+        import io
+        send.return_value.__enter__.return_value = io.StringIO('{"choices":[{"finish_reason":"stop","message":{"content":"{}"}}]}')
+        self.assertEqual(model_json('test', {}), {})
+        request = send.call_args.args[0]
+        self.assertEqual(request.get_header('Authorization'), 'Bearer unit-test-sentinel')
+        self.assertNotIn('unit-test-sentinel', request.data.decode())
+        self.assertEqual(send.call_args.kwargs['timeout'], 240)

@@ -55,6 +55,8 @@ def run_research(topic: str, workers: dict[str, Callable], *, max_retries: int =
                                c.get("evidence_excerpt") for c in verified):
                         missing.append("CLAIM_EVIDENCE")
                 if missing:
+                    # Retain rejected output for diagnosis, never as a passed role handoff.
+                    state.setdefault("blocked_outputs", {})[role] = output
                     raise ValueError("MISSING_" + "_".join(missing))
                 state[role] = output
                 state["history"].append(asdict(Result(role, "PASS", {"count": len(output)}, "")))

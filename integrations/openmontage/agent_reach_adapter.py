@@ -52,7 +52,7 @@ def topic_terms(topic):
     stop = {'aktuelle', 'aktuell', 'überprüfbare', 'nachrichten', 'news',
             'deutsch', 'deutsche', 'motorrad', 'film', 'video', 'erstelle',
             'erstellen', 'bitte', 'über', 'und', 'der', 'die', 'das', 'für',
-            'eine', 'einen', 'sekunden', 'reels', 'szene', 'szenen'}
+            'auf', 'mit', 'zum', 'eine', 'einen', 'sekunden', 'reels', 'szene', 'szenen'}
     return [word for word in re.findall(r'[^\W_]{3,}', topic.casefold())
             if word not in stop][:6]
 
@@ -62,22 +62,24 @@ def discover(topic):
     terms = topic_terms(topic)
     if not terms:
         return {'results': [], 'errors': [{'error': 'NO_SEARCH_SUBJECT'}]}
-    listings = ['https://trf1.net/?s=' + quote(' '.join(terms[:3])),
+    listings = ['https://trf1.net/?s=' + quote(terms[0]),
                 'https://www.motogp.com/en/news',
                 'https://www.worldsbk.com/en/news']
     candidates, errors = {}, []
     for url in listings:
         try:
             page = read_web(url)
-            for label, link in re.findall(r'\[([^\]\n]+)\]\((https://[^\s)]+)', page['text']):
+            # Search-page navigation contains stale featured articles. Only result headings
+            # are discovery candidates; use one subject term to tolerate Turkish spelling.
+            pattern = (r'^### \[([^\]\n]+)\]\((https://[^\s)]+)'
+                       if '?s=' in url else r'\[([^\]\n]+)\]\((https://[^\s)]+)')
+            for label, link in re.findall(pattern, page['text'], re.M):
                 link = link.rstrip('"')
                 try:
                     validate_news_url(link)
                 except ValueError:
                     continue
-                subject_terms = [w for w in re.findall(r'[^\W_]{3,}', topic.casefold())
-                                 if w not in {'aktuelle', 'überprüfbare', 'news', 'deutsch', 'motorrad', 'und', 'der', 'die', 'das', 'über'}]
-                topical = any(w in (label + ' ' + link).casefold() for w in subject_terms)
+                topical = any(w in (label + ' ' + link).casefold() for w in terms)
                 official_article = '/en/news/20' in link
                 if topical or official_article:
                     if any(s in link for s in ('/uploads/', '/riders/', '/tag/')):
@@ -90,7 +92,7 @@ def discover(topic):
     selected, counts = [], {}
     for candidate in ranked:
         host = urlsplit(candidate['url']).hostname
-        limit = 6 if host == 'www.motogp.com' else 3
+        limit = 6 if host in ('www.motogp.com', 'trf1.net') else 3
         if counts.get(host, 0) < limit:
             selected.append(candidate)
             counts[host] = counts.get(host, 0) + 1
