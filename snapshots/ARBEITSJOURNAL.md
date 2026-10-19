@@ -74,3 +74,9 @@ Nur abgeschlossene und verifizierte PRs als MERGED markieren. Keine nachträglic
 - Offene Abweichungen: parallel_scout_handoff.py nutzt injizierte Callables und behauptet selbst KEINE konfigurierte YouTube-/Instagram-Live-API. hermes_toprak_production.py erzeugt ausdrücklich synthetische TESTGRAFIK statt echter Rennmedien; kein Telegram-/R2-Publishing in diesem Entry-Point; verify-Ausgabe enthält noch festes 'scenes':6. Diese Teile sind NICHT als vollständige Produktionskette abzunehmen.
 - ZIP enthält umfangreiche memory/content-Dateien, die als Laufzeitdaten geschützt und vor einem PR sorgfältig ausgeschlossen/verglichen werden müssen. Jules-UI meldete +2155/-27729 Zeilen, Ursache noch nicht vollständig geprüft. Kein blindes Aufspielen des ZIP.
 - Status: RECOVERY_ZIP_AVAILABLE / REVIEW_IN_PROGRESS / PR_NOT_PUBLISHED. NEXT: gezielte Diff-Prüfung gegen PR #662 und main, Schutz vor Datenverlust, Tests und sauberer Review-PR; keine Merges.
+
+## 2026-10-19 – /BLOCKRUN ZIP nach GitHub gestartet
+- Nutzer hat Übertragung des Jules-ZIP autorisiert. Jules-Original: jules_session_13004600992812297242.zip; bereinigtes Review-Paket vorhanden.
+- GitHub-Recovery-Branch `recovery/jules-hermes-20261019` erfolgreich von PR #662 Commit `7e9f1728ca273e3cb045c4f583c96d1b558938f6` angelegt. Kein Merge.
+- Sichere Übertragung der ZIP-Inhalte und unabhängiger Diff-/CI-Test sind noch OFFEN; Branch-Erstellung allein ist kein Code-Fix. Keine Behauptung eines PRs oder grüner Tests.
+- NEXT: Nur die tatsächlich geänderten Dateien aus dem ZIP auf Recovery-Branch übertragen, gegen PR #662 diffen, insbesondere -27729 UI-Löschungen prüfen, Tests/CI, dann Review-PR. Bestehendes Arbeitsjournal nicht durch ältere ZIP-Version ersetzen.
