@@ -4,7 +4,10 @@ cd /workspaces/KI-SOCIAL-AGENT 2>/dev/null || cd "$(dirname "$0")/.."
 echo "=== KI-SOCIAL-AGENT: Codespaces Selbsttest ==="
 echo "Branch: $(git branch --show-current)"
 python --version || exit 2
-if ! command -v ffmpeg >/dev/null 2>&1; then echo "FEHLT: FFmpeg (Container-Setup prüfen)"; exit 2; fi
+if ! command -v ffmpeg >/dev/null 2>&1; then
+  echo "FFmpeg fehlt – installiere automatisch (nur Codespace)."
+  sudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg || { echo "FFmpeg-Installation fehlgeschlagen"; exit 2; }
+fi
 ffmpeg -version | head -n 1
 if ! python -m pytest --version; then echo "FEHLT: pytest"; exit 2; fi
 mkdir -p /tmp/ki-social-testreports
