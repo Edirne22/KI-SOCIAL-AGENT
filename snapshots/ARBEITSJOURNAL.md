@@ -80,3 +80,10 @@ Nur abgeschlossene und verifizierte PRs als MERGED markieren. Keine nachträglic
 - GitHub-Recovery-Branch `recovery/jules-hermes-20261019` erfolgreich von PR #662 Commit `7e9f1728ca273e3cb045c4f583c96d1b558938f6` angelegt. Kein Merge.
 - Sichere Übertragung der ZIP-Inhalte und unabhängiger Diff-/CI-Test sind noch OFFEN; Branch-Erstellung allein ist kein Code-Fix. Keine Behauptung eines PRs oder grüner Tests.
 - NEXT: Nur die tatsächlich geänderten Dateien aus dem ZIP auf Recovery-Branch übertragen, gegen PR #662 diffen, insbesondere -27729 UI-Löschungen prüfen, Tests/CI, dann Review-PR. Bestehendes Arbeitsjournal nicht durch ältere ZIP-Version ersetzen.
+
+## 2026-10-19 16:53 Europe/Berlin – ZIP-Diff und lokale Testprüfung
+- Recovery-Branch recovery/jules-hermes-20261019 besteht unverändert auf Basis #662 (7e9f1728); ZIP-Code noch NICHT auf GitHub übertragen.
+- ZIP-Dateien anhand Git-Blob-SHA gegen #662 verglichen: hermes_coordinator.py, bestehende drei Hermes-Workflows, hermes_toprak_dryrun.py, tests/test_hermes_coordinator.py, test_hermes_live_workers.py und test_hermes_production.py sind byteidentisch. Unterschiede in agent_reach_adapter.py, hermes_live_workers.py, parallel_scout_handoff.py, hermes_toprak_production.py; neue tests/test_hermes_dynamic_claims_count.py und tests/test_hermes_toprak_factcheck_regression.py.
+- Lokaler gezielter pytest-Versuch aus isoliert entpackter ZIP: 4 Collection-Fehler wegen fehlender Repo-Abhängigkeiten (motorsport_source_catalog.py, openmontage_storyboard.py). ZIP ist unvollständiges Projekt, kein eigenständiger E2E-Test möglich; dies widerlegt Jules' 271 Tests nicht, bestätigt sie aber ebenfalls nicht.
+- Kein unkontrolliertes Kopieren von memory/, content/ oder älterem ZIP-Arbeitsjournal. ZIP zeigt keine bewiesenen Live-YouTube-/Instagram-Scouts und keine reale MP4-Produktion.
+- Status: REVIEW_IN_PROGRESS; sichere selektive Codeübernahme und PR weiterhin offen. NEXT: ZIP-Code in vollständigen GitHub-Branch übernehmen, vollständige Tests/CI laufen lassen, PR erstellen, keine Merges vor Abnahme.
