@@ -142,6 +142,11 @@ def _checker(state):
         {'claims': claims, 'documents': [dict(url=d['url'], published_at=d['published_at'], text=d['text'][:8500])
                                         for d in documents], 'now_utc': datetime.now(timezone.utc).isoformat()})
     indices = verdict.get('accepted_indices', [])
+    if not indices:
+        reasons = verdict.get('rejections', [])
+        raise ValueError('NO_VERIFIED_CLAIMS: ' + json.dumps({
+            'submitted_claims': len(claims), 'rejections': reasons[:6]
+        }, ensure_ascii=False)[:900])
     if any(type(i) is not int or i < 0 or i >= len(claims) for i in indices):
         raise ValueError('Invalid checker verdict')
     return {'verified_claims': [claims[i] for i in sorted(set(indices))],
