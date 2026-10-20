@@ -19,26 +19,38 @@ MOTOGP_VOICE_RULES = Path("memory/MOTOGP_VOICE_RULES.md")
 
 
 def extract_og_image_url(source_url):
-    """Liest og:image aus der Quellseite. Fehler liefern None, damit Agnes übernehmen kann."""
+    """Find the original article image from standard social-preview metadata."""
     if not source_url or not source_url.startswith(("http://", "https://")):
         return None
     try:
         response = requests.get(
             source_url,
             timeout=30,
-            headers={"User-Agent": "Mozilla/5.0 KI-SOCIAL-AGENT/1.0"},
+            headers={
+                "User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot)",
+                "Accept": "text/html,application/xhtml+xml",
+            },
         )
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
-        tag = soup.find("meta", attrs={"property": "og:image"})
-        if not tag:
-            tag = soup.find("meta", attrs={"name": "og:image"})
-        value = (tag.get("content") or "").strip() if tag else ""
-        return urljoin(source_url, value) if value else None
+        for attributes in (
+            {"property": "og:image:secure_url"},
+            {"property": "og:image"},
+            {"name": "og:image"},
+            {"name": "twitter:image"},
+            {"property": "twitter:image"},
+        ):
+            tag = soup.find("meta", attrs=attributes)
+            value = (tag.get("content") or "").strip() if tag else ""
+            if value:
+                candidate = urljoin(response.url, value)
+                if candidate.startswith(("https://", "http://")):
+                    return candidate
+        print(f"INSTAGRAM OG IMAGE: Keine Bild-Metadaten auf {response.url}")
+        return None
     except (requests.RequestException, ValueError, TypeError) as exc:
         print(f"INSTAGRAM OG IMAGE: Quelle nicht lesbar: {exc}")
         return None
-
 
 def download_og_image_for_instagram(source_url, output_path):
     """Lädt og:image und schreibt es ohne Crop als 1080x1350 JPEG mit schwarzem Padding."""
