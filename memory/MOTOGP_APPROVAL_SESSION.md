@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1792400463
+Session-Timestamp: 1792485741
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,25 +15,29 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
+Artikelalter-Tage: 0.0
 Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: motogp:10866092
-Titel: WSSP İspanya 2. yarış: Alcoba liderliğinde Kawasaki’den çifte podyum, Can Öncü sezonu dördüncü sırada tamamladı!
-Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092
+Serie: MotoGP
+Story-Key: motogp:10866431
+Titel: Resmi: Toprak Razgatlıoğlu, 2026 MotoGP sezonunun kalanında yarışamayacak!
+Quelle: https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-1-wssp-ispanya-2-yaris-01.jpg
-Quellen-Preview: https://cdn-1.motorsport.com/images/amp/0rVPogP0/s6/alcoba.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-1-resmi-toprak-razgatl-01.jpg
+Quellen-Preview: https://cdn-7.motorsport.com/images/amp/YP74m4j2/s6/toprak-razgatlioglu-pramac-rac.jpg
 Plattformen: Instagram + Facebook
 Text:
-Das Saisonfinale der 2026 FIM Supersport-WM in Jerez endete vorzeitig durch die rote Fahne – Jeremy Alcoba ging trotzdem als Sieger von der Strecke. Bei Kawasaki landeten gleich zwei Fahrer auf dem Podium. Can Öncü schloss die Saison an vierter Stelle ab.
+Toprak Razgatlıoğlu hat sich beim Großen Preis von Indonesien am Schulter verletzen müssen.
 
-Wie seht ihr den Saisonabschluss für die Kawasaki-Piloten?
+Die Verletzung erfordert eine Operation.
 
-#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Der türkische Fahrer fällt für den Rest der MotoGP-Saison 2026 aus.
+
+Gute Besserung, Toprak – wir zählen die Tage bis deiner Rückkehr auf die Strecke. 🏍️💙
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -41,27 +45,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 2
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 4.5
-Kategorie: MotoGP
+Artikelalter-Tage: 0.0
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: title:gigi-dall-igna-endonezya-gp-sonu-lar-nda-marc-marquez-dehas-var
-Titel: Gigi Dall’Igna: “Endonezya GP Sonuçlarında Marc Marquez’in Dehası Var!”
-Quelle: https://motoetkinlik.com/gigi-dalligna-endonezya-gp-sonuclarinda-marc-marquezin-dehasi-var
+Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
+Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
+Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-2-gigi-dalligna-endone-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/07/Ducati-Gigi-DallIgna.webp
+Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-2-toprak-razgatlioglu-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-motogp-2026-ameliyat-sezonu-kapatti-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Gigi Dall’Igna lobt die Vorstellung von Marc Marquez beim Indonesien-GP.
+Bittere Nachrichten für Toprak Razgatlıoğlu: Wegen einer Schulterverletzung muss er am 26. Oktober operiert werden. Pramac Yamaha hat mitgeteilt, dass seine MotoGP-Saison 2026 damit vorzeitig beendet ist.
 
-Ducati-General-Manager Gigi Dall’Igna hebt die Leistung von Marc Marquez in Indonesien hervor. Der Sprintsieg und der sechste Platz brachten Ducati wichtige Punkte im Titelkampf.
+Wie schätzt ihr die Situation ein?
 
-Wie schätzt ihr die Leistung von Marc Marquez in Indonesien ein?
-
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -69,25 +71,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 2
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
-Kategorie: Moto2
-Serie: Moto2
-Story-Key: motogp:10866177
-Titel: Quartararo’nun Honda'daki takım arkadaşı kim olacak?
-Quelle: https://tr.motorsport.com/motogp/news/quartararonun-hondadaki-takim-arkadasi-kim-olacak/10866177
+Artikelalter-Tage: 0.1
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:10866411
+Titel: Resmi: Diogo Moreira, LCR Honda'dan ayrılıyor
+Quelle: https://tr.motorsport.com/motogp/news/resmi-diogo-moreira-lcr-hondadan-ayriliyor/10866411
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-3-quartararonun-honda-01.jpg
-Quellen-Preview: https://cdn-4.motorsport.com/images/amp/0mXyKPg6/s6/fabio-quartararo-yamaha-factor.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-3-resmi-diogo-moreira-01.jpg
+Quellen-Preview: https://cdn-8.motorsport.com/images/amp/6O7zBEW6/s6/diogo-moreira-team-lcr-honda.jpg
 Plattformen: Instagram + Facebook
 Text:
-Für 2027 sieht es bei Honda nach und nach klarer aus: Quartararo bleibt im Werksteam, an seiner Seite sitzt Moreira. Alonso hingegen geht in die Satellitenmannschaft. So steht's aktuell.
+LCR Honda hat bestätigt: Diogo Moreira wechselt zum Ende der 2026 MotoGP-Saison das Team. Der Rookie macht also nicht weiter bei den Hondas aus der Schweiz 🏍️💨
 
-Wie schätzt ihr die Aufstellung ein?
+Was haltet ihr von dieser Entscheidung?
 
-#Moto2 #FabioQuartararo #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -98,24 +100,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
+Artikelalter-Tage: 1.8
 Kategorie: Turkish Riders
 Serie: WorldSSP
 Story-Key: title:worldssp-jerez-2-yar-alcoba-kazand-can-sezonu-4-bitirdi-bahattin-16
 Titel: WorldSSP Jerez 2. Yarış: Alcoba Kazandı, Can Sezonu 4. Bitirdi, Bahattin 16.
 Quelle: https://motoetkinlik.com/worldssp-jerez-2-yaris-alcoba-kazandi-can-sezonu-4-bitirdi-bahattin-16
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-4-worldssp-jerez-2-yar-01.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-4-worldssp-jerez-2-yar-01.jpg
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/12_Jerez_WorldSSP_2026_Can_Oncu-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Nach dem Roten Fahne-Rennen in Jerez ging der Sieg an Jeremy Alcoba.
+Jeremy Alcoba hat das zweite Rennen in Jerez nach dem Roten Flagge für sich entschieden.
 
-Can Öncü fuhr die schnellste Rennrunde und landete am Ende auf Platz 4.
+Can Öncü drehte die schnellste Runde und landet damit als Vierter in der Gesamtwertung der Saison.
 
-Bahattin Sofuoğlu kam auf Rang 16 ins Ziel.
+Bahattin Sofuoğlu beendet das Rennen auf Platz 16.
 
-Wer hat den Saisonabschluss der beiden für euch besser gemacht?
+Wie seht ihr die Saisonbilanz von Can?
 
 #WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -128,24 +130,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.8
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: title:worldsbk-jerez-1-yar-bulega-pole-den-kazand-sam-lowes-i-kinci
-Titel: WorldSBK Jerez 1. Yarış: Bulega Pole'den Kazandı, Sam Lowes İkinci
-Quelle: https://motoetkinlik.com/worldsbk-jerez-1-yaris-bulega-poleden-kazandi-sam-lowes-ikinci
+Artikelalter-Tage: 0.9
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:10866213
+Titel: Aldeguer, Avustralya GP'de yarışamayacak, yerine Lecuona geçecek
+Quelle: https://tr.motorsport.com/motogp/news/aldeguer-avustralya-gpde-yarisamayacak-yerine-lecuona-gececek/10866213
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-19-racing-editorial-2026-10-19-5-worldsbk-jerez-1-yar-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/04/bulega-assen-worldsbk-2026-strateji-galibiyet.webp
+Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-5-aldeguer-avustralya-01.jpg
+Quellen-Preview: https://cdn-7.motorsport.com/images/amp/Y9lNoyZ2/s6/iker-lecuona-gresini-racing.jpg
 Plattformen: Instagram + Facebook
 Text:
-Ducati hat in Jerez die Frontreihe komplett übernommen.
+Fermin Aldeguer fällt dieses Wochenende in Australien aus – nach dem Unfall in Indonesien hat er sich verletzt und kann nicht mehr ans Bike. Bei Gresini Ducati springt Iker Lecuona für ihn ein. 🏍️💨
 
-Nicolò Bulega startete von der Pole und gewann das erste Rennen. Sam Lowes wurde Zweiter. Die ersten sieben Plätze gingen an Ducati, Álvaro Bautista landete nach starkem Finish auf Platz vier.
+Was erwartet ihr von Lecuona bei seinem Comeback in der MotoGP?
 
-Wie seht ihr die Ducati-Herrschaft in Jerez?
-
-#WorldSBK #SamLowes #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #FerminAldeguer #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

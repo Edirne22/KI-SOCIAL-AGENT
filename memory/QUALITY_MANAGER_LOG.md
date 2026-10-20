@@ -3330,3 +3330,45 @@ Story-Key: title:worldsbk-jerez-1-yar-bulega-pole-den-kazand-sam-lowes-i-kinci
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-20 09:04 UTC | Motorcycle Racing | PASS
+Titel: Resmi: Toprak Razgatlıoğlu, 2026 MotoGP sezonunun kalanında yarışamayacak!
+Story-Key: motogp:10866431
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-20 09:04 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
+Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-20 09:04 UTC | Motorcycle Racing | PASS
+Titel: Resmi: Diogo Moreira, LCR Honda'dan ayrılıyor
+Story-Key: motogp:10866411
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-20 09:05 UTC | Motorcycle Racing | FAIL
+Titel: Gresini Ducati'de sürpriz değişiklik! WorldSBK dünya ikincisi MotoGP'ye dönüyor
+Story-Key: title:gresini-ducati-de-s-rpriz-de-i-iklik-worldsbk-d-nya-ikincisi-motogp-ye-d-n-yor
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-20 09:05 UTC | Motorcycle Racing | FAIL
+Titel: Gresini Ducati'de sürpriz değişiklik! WorldSBK dünya ikincisi MotoGP'ye dönüyor
+Story-Key: title:gresini-ducati-de-s-rpriz-de-i-iklik-worldsbk-d-nya-ikincisi-motogp-ye-d-n-yor
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-20 09:05 UTC | Motorcycle Racing | PASS
+Titel: WorldSSP Jerez 2. Yarış: Alcoba Kazandı, Can Sezonu 4. Bitirdi, Bahattin 16.
+Story-Key: title:worldssp-jerez-2-yar-alcoba-kazand-can-sezonu-4-bitirdi-bahattin-16
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-20 09:05 UTC | Motorcycle Racing | PASS
+Titel: Aldeguer, Avustralya GP'de yarışamayacak, yerine Lecuona geçecek
+Story-Key: motogp:10866213
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

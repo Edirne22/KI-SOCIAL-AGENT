@@ -1094,3 +1094,23 @@ Quelle: https://tr.motorsport.com/motogp/news/quartararonun-hondadaki-takim-arka
 Story-Key: title:worldssp-jerez-2-yar-alcoba-kazand-can-sezonu-4-bitirdi-bahattin-16
 Titel: WorldSSP Jerez 2. Yarış: Alcoba Kazandı, Can Sezonu 4. Bitirdi, Bahattin 16.
 Quelle: https://motoetkinlik.com/worldssp-jerez-2-yaris-alcoba-kazandi-can-sezonu-4-bitirdi-bahattin-16
+
+## 2026-10-20 08:42 UTC – ANGEBOTEN
+Story-Key: motogp:10866431
+Titel: Resmi: Toprak Razgatlıoğlu, 2026 MotoGP sezonunun kalanında yarışamayacak!
+Quelle: https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431
+
+## 2026-10-20 08:42 UTC – ANGEBOTEN
+Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
+Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
+Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
+
+## 2026-10-20 08:42 UTC – ANGEBOTEN
+Story-Key: motogp:10866411
+Titel: Resmi: Diogo Moreira, LCR Honda'dan ayrılıyor
+Quelle: https://tr.motorsport.com/motogp/news/resmi-diogo-moreira-lcr-hondadan-ayriliyor/10866411
+
+## 2026-10-20 08:42 UTC – ANGEBOTEN
+Story-Key: motogp:10866213
+Titel: Aldeguer, Avustralya GP'de yarışamayacak, yerine Lecuona geçecek
+Quelle: https://tr.motorsport.com/motogp/news/aldeguer-avustralya-gpde-yarisamayacak-yerine-lecuona-gececek/10866213
