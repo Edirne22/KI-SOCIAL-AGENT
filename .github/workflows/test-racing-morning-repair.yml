@@ -1,0 +1,32 @@
+name: TEST – Racing Morning Freshness Repair
+on:
+  pull_request:
+    paths:
+      - 'motogp_content_agency.py'
+      - 'motogp_content_agency_v2.py'
+      - 'motogp_telegram_receive_v85.py'
+      - 'racing_run_controller.py'
+      - 'tests/test_racing_morning_repair.py'
+      - '.github/workflows/motogp-content-agency.yml'
+      - '.github/workflows/test-racing-morning-repair.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests Pillow beautifulsoup4 PyYAML
+      - run: |
+          PYTHONPATH=. python tests/test_racing_morning_repair.py
+          PYTHONPATH=. python tests/test_racing_manual_rerun.py
+          PYTHONPATH=. python tests/test_turkish_candidate_gate.py
+          PYTHONPATH=. python tests/test_telegram_schedule_recovery.py
+          PYTHONPATH=. python tests/test_source_fact_contract_v1.py
+          python racing_final_guard_selftest.py
+          python racing_v85_selftest.py

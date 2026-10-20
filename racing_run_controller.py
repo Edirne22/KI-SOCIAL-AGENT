@@ -3,6 +3,7 @@ Deterministic orchestration state: duplicate protection, persistent batch identi
 """
 from pathlib import Path
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 import hashlib,json,os,time
 STATE=Path('memory/RACING_RUN_STATE.json');ARCH_VERSION='V8.5.5';TERMINAL={'BLOCKED','READY_FOR_APPROVAL','FREIGEGEBEN','APPROVED','PUBLISHED','CLOSED'};DUPLICATE_WINDOW_SECONDS=30*60
 def _now():return datetime.now(timezone.utc)
@@ -31,9 +32,18 @@ def force_new():
  return False
 def batch_id(now=None):
  now=now or _now();event=event_name()
- if event=='schedule':return f'racing-{now.date().isoformat()}-daily'
+ if event=='schedule':return f'racing-{now.astimezone(ZoneInfo("Europe/Berlin")).date().isoformat()}-daily'
  if event=='workflow_dispatch':return f'racing-{now.date().isoformat()}-manual-{github_run_id()}'
  return f'racing-{now.date().isoformat()}-{event}-{github_run_id()}'
+def morning_due(now=None):
+ now=now or _now()
+ if event_name()!='schedule':return True
+ local=now.astimezone(ZoneInfo('Europe/Berlin'))
+ if not 8<=local.hour<12:return False
+ run=_load().get('runs',{}).get(batch_id(now),{})
+ if not run:return True
+ return run.get('status') in {'FAILED','BLOCKED'}
+
 def begin(now=None):
  now=now or _now();data=_load();bid=batch_id(now);existing=data['runs'].get(bid)
  # Every workflow_dispatch has its own GitHub run id and is an intentional manual E2E run.

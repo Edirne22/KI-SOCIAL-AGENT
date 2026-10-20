@@ -212,6 +212,9 @@ def handle_turkish_list(uid,chat):
         cur+=add
     if cur:chunks.append(cur.rstrip())
     for chunk in chunks:send_message(chunk)
+    from motogp_content_agency import remember_offered
+    from datetime import datetime, timezone
+    remember_offered(list(rows.values()),datetime.now(timezone.utc))
     return True
 
 def parse_turkish_session():

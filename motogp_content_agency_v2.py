@@ -308,9 +308,9 @@ def mark_priority(x,reason=None):
  if reasons:x['priority_repair']=True;x['priority_reasons']=reasons
  return x
 def yesterday_raw(now,current_urls):
- rows=load_pool().get('days',{}).get((now.date()-timedelta(days=1)).isoformat(),[]);pub=published_keys();out=[]
+ rows=load_pool().get('days',{}).get((now.date()-timedelta(days=1)).isoformat(),[]);pub=published_keys() | known_story_keys();out=[]
  for r in rows:
-  if r.get('url') in current_urls or r.get('story_key') in pub:continue
+  if r.get('url') in current_urls or already_offered(r,pub):continue
   x=enrich_turkish(dict(r));lock_source_series(x,r.get('source_series') or r.get('series'));x['fallback_yesterday']=True;mark_priority(x,'TOP20')
   if current_news(x,now,7) and racing_relevant(x):out.append(x)
  return out
@@ -334,9 +334,26 @@ def event_fingerprint(x):
  venues=[v for v in ('cremona','estoril','aragon','valencia','mugello','misano','jerez','assen','le mans','sachsenring') if v in text]
  if not event or not (riders or venues):return ''
  return '|'.join([series,event,','.join(riders),','.join(venues)])
+def already_offered(x,known=None):
+ known=known if known is not None else known_story_keys()
+ if story_key(x.get('title',''),x.get('url','')) in known:return True
+ # Source titles can change after publication; the canonical URL stays stable.
+ return 'url:'+canonical_url(x.get('url','')) in known
+
+def fetch_details(raw,meta,max_workers=6):
+ """Fetch every discovered candidate; one large portal must not starve later sources."""
+ def fetch(row):
+  title,url=row;x=article_info(title,url);m=meta.get(url,{})
+  x.update(m);lock_source_series(x,m.get('source_series'))
+  return enrich_turkish(x)
+ # map preserves discovery order despite parallel I/O. Article requests have timeouts.
+ with ThreadPoolExecutor(max_workers=max_workers) as executor:
+  return list(executor.map(fetch,raw))
+
 def select_and_finish(qualified,names):
- picks=[];seen_fp=set();seen_events=set()
+ picks=[];seen_fp=set();seen_events=set();known=known_story_keys()
  for x in ordered_pool(qualified,names):
+  if already_offered(x,known):continue
   if len(picks)>=5:break
   s=series_for(x)
   if s not in VALID_SERIES:continue
@@ -459,7 +476,7 @@ def turkish_candidate_reason(x,now,max_days=10):
   if age>max_days:return 'older-than-window'
   return 'PASS'
 
-def turkish_offer_candidates(details,now,max_days=3,exclude_items=None,offered_keys=None,limit=20):
+def turkish_offer_candidates(details,now,max_days=7,exclude_items=None,offered_keys=None,limit=20):
   """Return fresh Turkish-rider stories not already offered in an earlier Racing session."""
   exclude_items=exclude_items or []
   excluded_keys={story_key(x.get('title',''),x.get('url','')) for x in exclude_items}
@@ -468,7 +485,7 @@ def turkish_offer_candidates(details,now,max_days=3,exclude_items=None,offered_k
   # Backfill the latest independent Turkish offer as well as normal Racing memory.
   try:
    prior=json.loads(TURKISH_SESSION.read_text(encoding='utf-8'))
-   offered_keys.update(story_key(x.get('title',''),x.get('url','')) for x in prior.get('items',[]) if x.get('url'))
+   offered_keys.update(story_key(x.get('title',''),x.get('url','')) for x in prior.get('items',[])[:prior.get('visible_count',len(prior.get('items',[])))] if x.get('url'))
   except (OSError,ValueError,TypeError):
    pass
   candidates=[];seen=set();window_used=0
@@ -478,25 +495,25 @@ def turkish_offer_candidates(details,now,max_days=3,exclude_items=None,offered_k
    for x in sorted(eligible,key=lambda y:editorial_score(y,roster_names()),reverse=True):
     key=story_key(x.get('title',''),x.get('url',''))
     url=canonical_url(x.get('url',''))
-    if key in excluded_keys or url in excluded_urls or key in offered_keys or key in seen:continue
+    if key in excluded_keys or url in excluded_urls or already_offered(x,offered_keys) or key in seen:continue
     seen.add(key);candidates.append(x)
     if len(candidates)>=limit:break
    if len(candidates)>=limit:break
   return candidates,window_used
 
 
-def turkish_five_preview(details,now,max_days=3,exclude_items=None):
+def turkish_five_preview(details,now,max_days=7,exclude_items=None):
   # Save up to 20 selectable candidates, show T1-T5, and prevent previously
   # offered stories from cycling back through either Racing lane.
   candidates,window_used=turkish_offer_candidates(details,now,max_days,exclude_items)
   diag=[(y.get('turkish_rider') or detect_turkish_rider(y),y.get('title','')[:70],turkish_candidate_reason(y,now,max_days)) for y in details if is_turkish_focus(y)]
   print('TURKISH CANDIDATE-GATE DIAG '+json.dumps(diag,ensure_ascii=False))
-  payload={'version':1,'created_at':int(now.timestamp()),'max_days':max_days,'window_used_days':window_used,'count':len(candidates),'items':[]}
+  payload={'version':1,'created_at':int(now.timestamp()),'max_days':max_days,'window_used_days':window_used,'count':len(candidates),'visible_count':min(5,len(candidates)),'items':[]}
   for i,x in enumerate(candidates,1):
    payload['items'].append({'n':i,'title':x.get('title',''),'url':x.get('url',''),'summary':x.get('summary',''),'preview':x.get('preview',''),'published_at':x.get('published_at') or x.get('published') or x.get('date') or x.get('pub_date'),'series':series_for(x),'source_series':x.get('source_series') or series_for(x),'turkish_rider':x.get('turkish_rider') or detect_turkish_rider(x),'kind':x.get('kind','news')})
   TURKISH_SESSION.parent.mkdir(parents=True,exist_ok=True);TURKISH_SESSION.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
   visible=candidates[:5]
-  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL','Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche nur bis maximal 3 Tage zurück; bereits früher angebotene Stories werden nicht erneut vorgeschlagen.','',f'📚 Historie: {len(candidates)} neue auswählbare Kandidaten gespeichert. Für T6–T20: turkish liste','']
+  msg=['🇹🇷 TURKISH RIDER – EIGENE T1–T5 AUSWAHL',f'Unabhängig von den normalen Racing Top 5. Scout-Vorschläge – NICHT automatisch freigegeben. Suche bis maximal {max_days} Tage zurück; bereits früher angebotene Stories werden nicht erneut vorgeschlagen.','',f'📚 Historie: {len(candidates)} neue auswählbare Kandidaten gespeichert. Für T6–T20: turkish liste','']
   if len(candidates)<5:msg.append(f'⚠️ {len(candidates)} von 5 gefunden – Zeitraum heute → {max_days} Tage geprüft; ältere oder bereits angebotene Stories wurden ausgelassen.')
   else:msg.append('✅ 5 von 5 neuen Kandidaten gefunden.')
   send_message('\n'.join(msg)[:4000])
@@ -509,7 +526,7 @@ def turkish_five_preview(details,now,max_days=3,exclude_items=None):
     send_message(caption+'\n🖼️ Quell-Vorschaubild nicht abrufbar.')
   # These candidates are now selectable from this Telegram offer and must not
   # reappear tomorrow as if they were new.
-  remember_offered(candidates,now)
+  remember_offered(visible,now)
   send_message('Freigabe zur QM-Prüfung: turkish 1–5 / Kombination / turkish alle\nWeitere Kandidaten: turkish liste → danach z. B. turkish 12\nAblehnen: turkish nein')
   print(f'TURKISH-5 PREVIEW sent={len(visible)} history={len(candidates)} window_used_days={window_used} max_days={max_days}')
   return visible
@@ -623,13 +640,9 @@ def run_v8():
   if reason:pre_counts[reason]+=1;continue
   prefiltered.append((t,u))
  print('EARLY-PREFILTER '+json.dumps(dict(pre_counts),sort_keys=True)+f' kept={len(prefiltered)} raw={len(raw)}')
- details=[]
- for idx,(t,u) in enumerate(prefiltered[:320],1):
-  fetch_started=time.monotonic();x=article_info(t,u);elapsed=time.monotonic()-fetch_started
-  if elapsed>=5:print(f'ARTICLE-INFO SLOW seconds={elapsed:.3f} index={idx} url={u}')
-  m=meta.get(u,{});x.update(m);lock_source_series(x,m.get('source_series'));details.append(enrich_turkish(x))
+ details=fetch_details(prefiltered,meta)
  print(f'PHASE-TIME article_info_seconds={time.monotonic()-phase_started:.3f} details={len(details)}')
- phase_started=time.monotonic();diag,_=freshness_diagnostics(details,now);fresh=[mark_priority(x) for x in details if freshness_reason(x,now)=='fresh'];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
+ phase_started=time.monotonic();diag,_=freshness_diagnostics(details,now);fresh=[mark_priority(x) for x in details if freshness_reason(x,now)=='fresh' and not already_offered(x,known)];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
  print(f'PHASE-TIME freshness_seconds={time.monotonic()-phase_started:.3f} fresh={len(fresh)}')
  phase_started=time.monotonic();current_q=qualify_parallel(fresh[:60],3);fallback_raw=yesterday_raw(now,{x.get('url') for x in current_q});fallback_q=qualify_parallel(fallback_raw[:20],3) if len(current_q)<15 else [];qualified=current_q+[x for x in fallback_q if x.get('url') not in {y.get('url') for y in current_q}];qualified.sort(key=lambda x:editorial_score(x,names),reverse=True)
  print(f'PHASE-TIME editor_qm_seconds={time.monotonic()-phase_started:.3f} current_q={len(current_q)} fallback_q={len(fallback_q)}')
