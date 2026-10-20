@@ -947,7 +947,7 @@ Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 39411501396-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-20-daily
 Telegram-Update-ID: 279361979
