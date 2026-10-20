@@ -1,50 +1,38 @@
 {
-  "updated_at": "2026-10-15T14:34+02:00",
+  "updated_at": "2026-10-20T13:08+02:00",
   "events": [
-    {
-      "date_start": "2026-10-22",
-      "date_end": "2026-10-25",
-      "series": "MotoGP",
-      "track": "Phillip Island Grand Prix Circuit · Phillip Island, Australia",
-      "sessions": [],
-      "source": "https://www.motogp.com/en/calendar",
-      "crosscheck_sources": [
-        "https://motoetkinlik.com/motogp-yaris-takvimi/"
-      ],
-      "source_excerpt": "AUSTRALIA 22 - 25 Oct 2026 Tickets Packages --> Buy Now",
-      "bike_of_weekend": {
-        "brand": "KTM",
-        "model": "1290 Super Duke R",
-        "category": "Rennsport oder Straße",
-        "story": "Phillip Island belohnt Mut und direkt agilen Stil – genau wie KTM. Die schnellen Geraden und aggressiven Kurvenkombinationen passen zur rauhen, nicht überfeilten Fahrkultur der Österreicher, die nie um den heißen Brei herumfahren.",
-        "source_url": "https://www.ktm.com/de-de/models/naked-bikes/1290-super-duke-r.html",
-        "image_local": "assets/images/2026-10/2026-10-22-bike-ktm-1290-super-duke-r.jpg",
-        "image_source": "og:street"
-      }
-    },
     {
       "date_start": "2026-10-30",
       "date_end": "2026-11-01",
       "series": "MotoGP",
-      "track": "Sepang International Circuit · Sepang, Malaysia",
+      "track": "Sepang International Circuit · Malaysia",
       "sessions": [],
       "source": "https://www.motogp.com/en/calendar",
       "crosscheck_sources": [
         "https://motoetkinlik.com/motogp-yaris-takvimi/"
       ],
-      "source_excerpt": "MALAYSIA 30 Oct - 1 Nov 2026 Tickets Packages --> Buy Now"
+      "source_excerpt": "MALAYSIA 30 Oct - 1 Nov 2026",
+      "bike_of_weekend": {
+        "brand": "KTM",
+        "model": "1290 Super Duke R",
+        "category": "Rennsport oder Straße",
+        "story": "KTM steht für Pure Racing und passt perfekt zu Sepang, wo es auf der langen Geraden und im heißen Klima um jeden Zehntelsekunde geht. Die österreichische Marke lebt vom Underdog-Spirit, den die Fans im MotoGP-Klassentreiben besonders schätzen.",
+        "source_url": "https://www.ktm.com/de-de/models/naked-bikes/1290-super-duke-r.html",
+        "image_local": "assets/images/2026-10/2026-10-30-bike-ktm-1290-super-duke-r.jpg",
+        "image_source": "og:street"
+      }
     },
     {
       "date_start": "2026-11-06",
       "date_end": "2026-11-08",
       "series": "MotoGP",
-      "track": "Lusail International Circuit · Lusail, Qatar",
+      "track": "Lusail International Circuit · Qatar",
       "sessions": [],
       "source": "https://www.motogp.com/en/calendar",
       "crosscheck_sources": [
         "https://motoetkinlik.com/motogp-yaris-takvimi/"
       ],
-      "source_excerpt": "QATAR 6 - 8 Nov 2026 Ticket Packages --> Buy Now"
+      "source_excerpt": "QATAR 6 - 8 Nov 2026"
     },
     {
       "date_start": "2026-11-20",
@@ -53,10 +41,20 @@
       "track": "Autódromo do Algarve · Portimão, Portugal",
       "sessions": [],
       "source": "https://www.motogp.com/en/calendar",
+      "crosscheck_sources": [],
+      "source_excerpt": "PORTUGAL 20 - 22 Nov 2026"
+    },
+    {
+      "date_start": "2026-11-27",
+      "date_end": "2026-11-29",
+      "series": "MotoGP",
+      "track": "Circuit Ricardo Tormo · Valencia, Spain",
+      "sessions": [],
+      "source": "https://www.motogp.com/en/calendar",
       "crosscheck_sources": [
         "https://motoetkinlik.com/motogp-yaris-takvimi/"
       ],
-      "source_excerpt": "PORTUGAL 20 - 22 Nov 2026 Tickets Packages --> Buy Now"
+      "source_excerpt": "VALENCIA 27 - 29 Nov 2026"
     }
   ]
 }

@@ -969,3 +969,27 @@ Gute Besserung, Toprak – wir zählen die Tage bis deiner Rückkehr auf die Str
 Quelle: https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431", "media_status": "", "object_id": "1285968257941776_122126094627469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122126094627469415", "source_url": "https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431", "version": 1}
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-10-30
+Titel: 🏍️ Bike of the Race Weekend: KTM 1290 Super Duke R
+Text:
+KTM steht für Pure Racing und passt perfekt zu Sepang, wo es auf der langen Geraden und im heißen Klima um jeden Zehntelsekunde geht. Die österreichische Marke lebt vom Underdog-Spirit, den die Fans im MotoGP-Klassentreiben besonders schätzen.
+
+#RacingCalendar #BikeOfTheWeekend #KTM #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-10/2026-10-30-bike-ktm-1290-super-duke-r.jpg
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-10-30
+Titel: 🏍️ Bike of the Race Weekend: KTM 1290 Super Duke R
+Text:
+KTM steht für Pure Racing und passt perfekt zu Sepang, wo es auf der langen Geraden und im heißen Klima um jeden Zehntelsekunde geht. Die österreichische Marke lebt vom Underdog-Spirit, den die Fans im MotoGP-Klassentreiben besonders schätzen.
+
+#RacingCalendar #BikeOfTheWeekend #KTM #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-10/2026-10-30-bike-ktm-1290-super-duke-r.jpg
