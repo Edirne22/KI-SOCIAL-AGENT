@@ -11,7 +11,7 @@ Basis: 20a80d72bff88bb164baa405262f5a1b2c37ab14.
 
 ## Änderung
 
-GitHub-Wakeups alle 20 Minuten im UTC-Morgenfenster; Europe/Berlin-Gate erlaubt Verarbeitung ab 08:00 bis vor 12:00, Sommer/Winter automatisch. Nach erfolgreichem Tagesbatch kein erneuter teurer Lauf. Manuelle Starts bleiben möglich. Ein GitHub-Schedule ist keine garantierte 08:00-Zustellung; die Redaktion braucht zusätzlich Laufzeit.
+Genau ein täglicher GitHub-Zeitplan: `cron: "0 8 * * *"`, `timezone: "Europe/Berlin"`. Native Zeitzonenplanung berücksichtigt Sommer-/Winterzeit ohne zusätzliche Aufweckläufe. Das vorhandene Europe/Berlin-Gate erlaubt Verarbeitung ab 08:00 bis vor 12:00. Nach erfolgreichem Tagesbatch kein erneuter teurer Lauf. Manuelle Starts bleiben möglich. Ein GitHub-Schedule ist keine garantierte 08:00-Zustellung; die Redaktion braucht zusätzlich Laufzeit.
 
 Alle entdeckten vorgefilterten Artikel werden mit maximal sechs gleichzeitigen Abrufen verarbeitet. Gemeinsame Titel-/URL-Dedupe vor Redaktion, Vortagesfallback und finaler Auswahl. Turkish sucht bis sieben Tage, markiert zunächst nur die sichtbaren fünf; explizites `turkish liste` markiert die tatsächlich gesendete Liste. Quellen-/Fakten-QM und Publishing-Freigaben unverändert.
 
@@ -25,3 +25,11 @@ Alle entdeckten vorgefilterten Artikel werden mit maximal sechs gleichzeitigen A
 - N/A: neue Infrastruktur, Kosten, Social-Publishing, private Medien. Keine Änderungen an bestehenden Memory-/Content-Dateien.
 
 Keine Garantie für täglich fünf neue reale Meldungen. Fehlende belegte Nachrichten dürfen nicht durch erfundene Nachrichten ersetzt werden.
+
+## Kontingentkorrektur nach Nutzerhinweis
+
+Bülent meldet am 20.10. ein ausgeschöpftes 2000-Minuten-Kontingent. Der Kontostand wurde nicht unabhängig abgerufen; die verspäteten Logs allein beweisen keine Kontingentursache. Zusätzliche Startversuche beheben eine Kontingentsperre nicht und wurden aus diesem PR entfernt. Statt bis zu 15 geplanten Auslösungen pro Tag enthält der Workflow jetzt eine. Keine Änderung an anderen Workflows oder vorhandenen Qualitätsgates.
+
+Syntaxreferenz: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onschedule
+
+Der Folgecommit spart CI-Ausführungen mit `[skip ci]` und bleibt ungemergt. Die 16 erfolgreichen CI-Läufe gehören ausschließlich zum vorherigen Commit `77d7db62096e8d6e5424b28428af3bb691c483de`. Für den neuen Stand wurden Zeitplan und angepasste Testassertion statisch geprüft, aber keine Python-Tests ausgeführt, da die lokale Ausführungsumgebung nicht erreichbar ist. Vor Merge gezielt `PYTHONPATH=. python tests/test_racing_morning_repair.py` mit den Projektabhängigkeiten ausführen und erforderliche CI nachholen.

@@ -102,7 +102,7 @@ class Repair(unittest.TestCase):
     def test_workflow_gates_expensive_steps_and_serializes(self):
         import yaml
         doc=yaml.load(Path('.github/workflows/motogp-content-agency.yml').read_text(),Loader=yaml.BaseLoader)
-        self.assertEqual(doc['on']['schedule'],[{'cron':'0,20,40 6-10 * * *'}])
+        self.assertEqual(doc['on']['schedule'],[{'cron':'0 8 * * *','timezone':'Europe/Berlin'}])
         self.assertEqual(doc['concurrency']['cancel-in-progress'],'false')
         steps=doc['jobs']['collect']['steps']
         gate=next(i for i,x in enumerate(steps) if x.get('id')=='morning')

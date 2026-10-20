@@ -1,9 +1,10 @@
 name: MotoGP Content Agency
 on:
   schedule:
-    # UTC wakeups cover 08:00 Europe/Berlin in summer AND winter.
+    # One daily start; native timezone handles summer/winter without extra runs.
     # Lightweight gate suppresses completed days before dependencies/preflight.
-    - cron: "0,20,40 6-10 * * *"
+    - cron: "0 8 * * *"
+      timezone: "Europe/Berlin"
   workflow_dispatch:
     inputs:
       force_new_run:
