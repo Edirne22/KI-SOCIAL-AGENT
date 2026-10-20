@@ -945,9 +945,8 @@ Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakid
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092", "media_status": "", "object_id": "1285968257941776_122125797057469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122125797057469415", "source_url": "https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39411501396-1
+## Facebook [GEPOSTET 2026-10-20 10:57 | ID: 1285968257941776_122126094627469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-20-daily
 Telegram-Update-ID: 279361979
@@ -969,3 +968,4 @@ Gute Besserung, Toprak – wir zählen die Tage bis deiner Rückkehr auf die Str
 🔗 Quelle: https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431
 Quelle: https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431", "media_status": "", "object_id": "1285968257941776_122126094627469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122126094627469415", "source_url": "https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431", "version": 1}
