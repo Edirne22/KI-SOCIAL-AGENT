@@ -1,5 +1,147 @@
 # Archiviert Beiträge 2026-10
 
+## Instagram [GEPOSTET 2026-10-12 19:35 | ID: 18085670366319205]
+Status: GEPOSTET
+Freigabe: Telegram
+Telegram-Update-ID: 279361928
+Text:
+Titel: Ruhumuz İçin – Community & Zusammenhalt
+Plattform: Instagram / TikTok / Facebook
+Thema: Deutsch-türkische Biker-Kultur & Ausfahrten
+Hook: Was schweißt deutsch-türkische Biker-Clubs nach all den Jahren wirklich zusammen?
+Instagram-Caption: Es geht nicht um den Lärm in der Stadt, sondern um das Gefühl auf der Straße. Biz motoru gürültü için değil, ruhumuz için süreriz. Egal ob im Ruhrgebiet, in Stuttgart oder in Berlin: Am Treffpunkt zählt nur die Leidenschaft fürs Fahren. Mit wem drehst du dieses Wochenende deine Runde?
+Facebook-Post: Zusammenfahren, gemeinsam schrauben und nach der Tour bei einem Tee quatschen. Deutsch-türkische Biker-Clubs zeigen seit Jahrzehnten, was echte Community bedeutet. Wir fahren nicht für Show oder Krach, sondern für den Kopf und die Seele. Welche Hausstrecke fährst du mit deiner Truppe am liebsten?
+TikTok-Skript: Text-Overlay: Warum wir wirklich fahren. 
+Sprecher/Text: Nicht für den Lärm. Nicht für Blicke. Ruhumuz için – für unsere Seele. Biker-Community bedeutet Zusammenhalt. Markiere deine Tour-Truppe!
+Visuelle Idee: Gruppe von Sportbikes und Naked Bikes bei Sonnenuntergang an einem bekannten Biker-Treffpunkt, entspannte Atmosphäre.
+Medienvorschlag: KI_ERLAUBT
+Hashtags Instagram: #tbikers #turkbirler #bikercommunity #motorradliebe #motorraddeutschland #ruhumuziçin
+Hashtags TikTok: #bikerculture #motorrad #biker #community #ausfahrt
+Trend-Bezug: Deutsch-türkische Biker-Kultur und Community-Zusammenhalt.
+Viral-Score: 8/10
+Inspirations-Plattform: Keine aktuelle externe Quelle verwendet.
+Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
+
+---
+
+Bild: assets/images/2026-10/2026-10-12-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg
+Media-Provenienz: {"generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-12-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "real_racer_generation": false, "synthetic": true, "version": 1}
+Publish-Provenienz: {"creation_id": "18011140481971550", "generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-12-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "platform": "instagram", "post_id": "18085670366319205", "published_media_id": "18085670366319205", "real_racer_generation": false, "synthetic": true, "version": 1}
+
+## Instagram [GEPOSTET 2026-10-12 19:37 | ID: 17910927429544398]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-daily-TR-HUMAN
+Telegram-Update-ID: 279361935
+MotoGP-Auswahl: 1
+Story-Key: motogp:10864561
+Event-Fingerprint: -
+Titel: Toprak, sağlık kontrolleri için Türkiye’ye dönüyor: “Umarım ameliyat gerekmez"
+Text:
+Toprak muss nach dem harten Sturz in Indonesien wegen einer verletzten rechten Schulter nach Hause fliegen. Jetzt lässt er in der Türkei die Checks machen und hofft, dass kein Skalpell zum Einsatz kommt 🤞🏍️. Wir drücken die Daumen, dass er bald wieder auf dem Bike sitzt – wie lange glaubt ihr, braucht er dafür? 🇹🇷
+
+#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561
+Quelle: https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561
+Medienstatus: EIGENE_KI_EDITORIALGRAFIK
+Bild: assets/images/2026-10/2026-10-12-turkish-human-1-toprak-razgatlioglu-01.jpg
+Publish-Provenienz: {"creation_id": "18011140946971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-12-turkish-human-1-toprak-razgatlioglu-01.jpg", "media_status": "EIGENE_KI_EDITORIALGRAFIK", "platform": "instagram", "post_id": "17910927429544398", "published_media_id": "17910927429544398", "source_url": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561", "version": 1}
+
+## Facebook [GEPOSTET 2026-10-12 19:34 | ID: 1285968257941776_122123321823469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-daily-TR-HUMAN
+Telegram-Update-ID: 279361935
+MotoGP-Auswahl: 1
+Story-Key: motogp:10864561
+Event-Fingerprint: -
+Titel: Toprak, sağlık kontrolleri için Türkiye’ye dönüyor: “Umarım ameliyat gerekmez"
+Text:
+Toprak muss nach dem harten Sturz in Indonesien wegen einer verletzten rechten Schulter nach Hause fliegen. Jetzt lässt er in der Türkei die Checks machen und hofft, dass kein Skalpell zum Einsatz kommt 🤞🏍️. Wir drücken die Daumen, dass er bald wieder auf dem Bike sitzt – wie lange glaubt ihr, braucht er dafür? 🇹🇷
+
+#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561
+
+https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561
+Quelle: https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561", "media_status": "", "object_id": "1285968257941776_122123321823469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123321823469415", "source_url": "https://tr.motorsport.com/motogp/news/toprak-saglik-kontrolleri-icin-turkiyeye-donuyor-umarim-ameliyat-gerekmez/10864561", "version": 1}
+
+## Facebook [GEPOSTET 2026-10-12 21:06 | ID: 1285968257941776_122123351295469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 1
+Story-Key: title:estoril-worldssp-hafta-sonu-tamamland-alcoba-bir-kez-daha-kazand-can-nc-genel-s-ralamada-nc-s-raya-y-kseldi
+Event-Fingerprint: -
+Titel: Estoril WorldSSP Hafta Sonu Tamamlandı: Alcoba Bir Kez Daha Kazandı, Can Öncü Genel Sıralamada Üçüncü Sıraya Yükseldi!
+Text:
+Jeremy Alcoba hat das zweite Weltmeisterschaftsrennen in Estoril gewonnen.
+
+Can Öncü wurde Achter und kletterte in der Gesamtwertung auf Platz drei.
+
+Bahattin Sofuoğlu hatte einen Unfall, der das Rennen stoppte.
+
+Was denkt ihr über die Leistungen im zweiten Estoril-Rennen?
+
+#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
+Quelle: https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi", "media_status": "", "object_id": "1285968257941776_122123351295469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123351295469415", "source_url": "https://motoetkinlik.com/estoril-worldssp-hafta-sonu-tamamlandi-alcoba-bir-kez-daha-kazandi-can-oncu-genel-siralamada-3-unculuge-yukseldi", "version": 1}
+
+## Facebook [GEPOSTET 2026-10-12 21:09 | ID: 1285968257941776_122123352327469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 2
+Story-Key: title:moto2-de-mandalika-dram-guevara-kazand-ampiyonluk-fark-6-5-puana-indi
+Event-Fingerprint: -
+Titel: Moto2'de Mandalika dramı! Guevara kazandı, şampiyonluk farkı 6,5 puana indi
+Text:
+Izan Guevara gewann das Moto2-Rennen in Mandalika.
+
+Daniel Holgado wurde Dritter.
+
+Deniz Öncü beendete das Rennen auf Platz 22.
+
+Der Meisterschaftsrückstand verringerte sich um 6,5 Punkte.
+
+Weiter geht es in der Moto2-Weltmeisterschaft.
+
+#Moto2 #DenizOncu #DanielHolgado #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
+Quelle: https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi", "media_status": "", "object_id": "1285968257941776_122123352327469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123352327469415", "source_url": "https://motoetkinlik.com/izan-guevara-mandalikada-ust-uste-ucuncu-zaferini-kazandi", "version": 1}
+
+## Facebook [GEPOSTET 2026-10-12 22:12 | ID: 1285968257941776_122123368749469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-12-manual-38302594031
+Telegram-Update-ID: 279361946
+MotoGP-Auswahl: 3
+Story-Key: title:jorge-martin-den-marquez-e-g-zda-art-k-zorlanmayaca-m
+Event-Fingerprint: -
+Titel: Jorge Martin'den Marquez'e gözdağı: “Artık zorlanmayacağım!”
+Text:
+Jorge Martin hat in Indonesien die MotoGP-Führung von Marc Marquez zurückgeholt. Noch fünf Rennen stehen aus, und Martin sagt klar, dass er nicht mehr nur hinten anhängen will.
+
+Was erwartet ihr von Jorge Martin in den letzten fünf Rennen?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
+Quelle: https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum", "media_status": "", "object_id": "1285968257941776_122123368749469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123368749469415", "source_url": "https://motoetkinlik.com/jorge-martinden-marc-marqueze-sampiyonluk-mesaji-artik-zorlanacagimi-dusunmuyorum", "version": 1}
+
 ## Facebook [GEPOSTET 2026-10-11 17:41 | ID: 1285968257941776_122122822023469415]
 Status: GEPOSTET
 Freigabe: Telegram Racing
