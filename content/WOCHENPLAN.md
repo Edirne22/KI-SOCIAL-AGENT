@@ -531,3 +531,67 @@ Bildidee: Eigene neutrale Motorradillustration; keine fingierten Clubfotos.
 - MotoGP – Phillip Island Grand Prix Circuit · Phillip Island, Australia: 2026-10-22 bis 2026-10-25 (Veranstaltungszeitraum). Quelle: https://www.motogp.com/en/calendar. Beleg: AUSTRALIA 22 - 25 Oct 2026 Tickets Packages --> Buy Now
 
 Einzelne Renntage, Sessionzeiten, Startaufstellungen und Ergebnisse werden hier nicht behauptet. Fehlende Serien bedeuten nicht rennfrei.
+
+
+# Wochenplan vom 2026-10-20 11:08:39
+Status: ENTWURF – Quellengebundene Themenplanung; keine Veröffentlichung.
+
+## 2026-10-20
+Thema: Racing-Kalender im Blick
+Plattform: Instagram / Facebook
+Hook: Was steht im belegten Kalender?
+Beitrag: Die vorhandenen Veranstaltungszeiträume stehen in der Kalenderbasis unten. Für einzelne Sessions und Ergebnisse fehlen hier freigegebene Angaben.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigene Kalenderkarte mit den belegten Veranstaltungszeiträumen.
+
+## 2026-10-21
+Thema: Community-Porträt: Türkisch Sultans
+Plattform: Instagram / Facebook
+Hook: Kennst du Türkisch Sultans?
+Beitrag: Unsere Community-Sammlung nennt Türkisch Sultans. Was bedeutet dir der Austausch unter Bikern? Quelle: content/TURKISH_BIKER_COMMUNITY.md; keine aktuelle Club-Aktivität behauptet.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigene neutrale Motorradillustration; keine fingierten Clubfotos.
+
+## 2026-10-22
+Thema: Deine nächste Tour
+Plattform: Instagram / Facebook
+Hook: Wohin zieht es dich mit dem Bike?
+Beitrag: Erzähl uns von deiner Wunschroute. Was macht die Strecke für dich besonders?
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigenes Motorradfoto, ohne erfundene Ortsangabe.
+
+## 2026-10-23
+Thema: Deine Tourausrüstung
+Plattform: Instagram / Facebook
+Hook: Was packst du immer ein?
+Beitrag: Welcher Gegenstand gehört für dich auf jede Tour? Teile deine persönliche Erfahrung.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigene Aufnahme der tatsächlich vorhandenen Ausrüstung.
+
+## 2026-10-24
+Thema: Gemeinsam fahren
+Plattform: Instagram / Facebook
+Hook: Was macht eine gute Ausfahrt für dich aus?
+Beitrag: Wie stimmt ihr euch in der Gruppe ab? Erzähl uns, was bei euch gut funktioniert.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigene Illustration einer Motorradgruppe.
+
+## 2026-10-25
+Thema: Technik im Alltag
+Plattform: Instagram / Facebook
+Hook: Welche Motorradfunktion nutzt du am liebsten?
+Beitrag: Was hilft dir im Alltag wirklich? Teile deine Erfahrung, ohne Produktversprechen.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigenes Detailfoto am Motorrad.
+
+## 2026-10-26
+Thema: Pause unterwegs
+Plattform: Instagram / Facebook
+Hook: Was gehört für dich zu einem guten Tourstopp?
+Beitrag: Kaffee, Aussicht oder einfach kurz durchatmen? Schreib uns, worauf du dich unterwegs freust.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigenes Foto einer Pause, nur mit Einwilligung erkennbarer Personen.
+
+## Kalenderbasis (kein Rennresultat, kein Session-Zeitplan)
+
+Einzelne Renntage, Sessionzeiten, Startaufstellungen und Ergebnisse werden hier nicht behauptet. Fehlende Serien bedeuten nicht rennfrei.
