@@ -921,3 +921,225 @@ KTM steht für Pure Racing und passt perfekt zu Sepang, wo es auf der langen Ger
 #RacingCalendar #BikeOfTheWeekend #KTM #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 Medienstatus: HERSTELLER_PREVIEW
 Bild: assets/images/2026-10/2026-10-30-bike-ktm-1290-super-duke-r.jpg
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 1
+Story-Key: title:motogp-2027-gridinde-deprem-11-tak-m-n-22-s-r-c-s-kesinle-ti
+Event-Fingerprint: -
+Titel: MotoGP 2027 gridinde deprem! 11 takımın 22 sürücüsü kesinleşti
+Text:
+MotoGP 2027 sürücü kadrosu tamamlandı
+
+Die MotoGP-Welt hat gerade die Grid für 2027 fixiert. Elf Teams mit 22 Fahrern stehen fest – alles klar, nichts mehr offen. Marc Marquez, Jorge Martin, Pedro Acosta, Francesco Bagnaia und Toprak Razgatlıoğlu sind unter den bestätigten Piloten. Die großen Namen haben ihre Plätze an der Startlinie.
+
+Auf wen freut ihr euch am meisten in der MotoGP-Saison 2027?
+
+#MotoGP #ToprakRazgatlioglu #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler
+Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 1
+Story-Key: title:motogp-2027-gridinde-deprem-11-tak-m-n-22-s-r-c-s-kesinle-ti
+Event-Fingerprint: -
+Titel: MotoGP 2027 gridinde deprem! 11 takımın 22 sürücüsü kesinleşti
+Text:
+MotoGP 2027 sürücü kadrosu tamamlandı
+
+Die MotoGP-Welt hat gerade die Grid für 2027 fixiert. Elf Teams mit 22 Fahrern stehen fest – alles klar, nichts mehr offen. Marc Marquez, Jorge Martin, Pedro Acosta, Francesco Bagnaia und Toprak Razgatlıoğlu sind unter den bestätigten Piloten. Die großen Namen haben ihre Plätze an der Startlinie.
+
+Auf wen freut ihr euch am meisten in der MotoGP-Saison 2027?
+
+#MotoGP #ToprakRazgatlioglu #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler
+Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 2
+Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
+Text:
+Toprak Razgatlıoğlu muss die Saison 2026 vorzeitig beenden. Der türkische MotoGP-Fahrer muss sich am 26. Oktober einer Schulter-OP unterziehen – das hat Pramac Yamaha bestätigt. Die 2026er-Saison ist damit für den Nationalspieler durch. 🏍️
+
+Wie schätzt ihr die Genesungsdauer und die Chancen auf ein Comeback für Toprak ein?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
+Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 2
+Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
+Text:
+Toprak Razgatlıoğlu muss die Saison 2026 vorzeitig beenden. Der türkische MotoGP-Fahrer muss sich am 26. Oktober einer Schulter-OP unterziehen – das hat Pramac Yamaha bestätigt. Die 2026er-Saison ist damit für den Nationalspieler durch. 🏍️
+
+Wie schätzt ihr die Genesungsdauer und die Chancen auf ein Comeback für Toprak ein?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
+Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 3
+Story-Key: title:jorge-martin-den-ampiyonluk-k-art-k-ki-ilik-bir-sava
+Event-Fingerprint: -
+Titel: Jorge Martin'den şampiyonluk çıkışı: “Artık üç kişilik bir savaş!”
+Text:
+Jorge Martin sieht die Titeljagd als Dreikampf.
+
+Vor dem Lauf auf Phillip Island hat er klargemacht: In der MotoGP-Saison 2026 geht es jetzt um ihn, Marc Marquez und Marco Bezzecchi. Martin beschreibt die Meisterschaft als Dreierduell um die Krone.
+
+Wie schätzt ihr die Lage für Phillip Island ein?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas
+Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 3
+Story-Key: title:jorge-martin-den-ampiyonluk-k-art-k-ki-ilik-bir-sava
+Event-Fingerprint: -
+Titel: Jorge Martin'den şampiyonluk çıkışı: “Artık üç kişilik bir savaş!”
+Text:
+Jorge Martin sieht die Titeljagd als Dreikampf.
+
+Vor dem Lauf auf Phillip Island hat er klargemacht: In der MotoGP-Saison 2026 geht es jetzt um ihn, Marc Marquez und Marco Bezzecchi. Martin beschreibt die Meisterschaft als Dreierduell um die Krone.
+
+Wie schätzt ihr die Lage für Phillip Island ein?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas
+Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 4
+Story-Key: title:honda-da-yeni-d-nem-diogo-moreira-dan-iddial-ilk-mesaj
+Event-Fingerprint: -
+Titel: Honda'da yeni dönem! Diogo Moreira'dan iddialı ilk mesaj
+Text:
+Honda HRC hat für 2027 einen neuen Fahrer bekannt gegeben: Diogo Moreira kommt ins Team und wird dort Fabio Quartararos teammate. Der Brasilianer will mit dem japanischen Großserialisten zurück an die Spitze — und startet damit ein neues Kapitel bei Honda.
+
+Wie seht ihr Moreira als Quartararos Teamkollegen bei Honda?
+
+#Moto2 #FabioQuartararo #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz
+Quelle: https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-4-honda-da-yeni-doenem-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 4
+Story-Key: title:honda-da-yeni-d-nem-diogo-moreira-dan-iddial-ilk-mesaj
+Event-Fingerprint: -
+Titel: Honda'da yeni dönem! Diogo Moreira'dan iddialı ilk mesaj
+Text:
+Honda HRC hat für 2027 einen neuen Fahrer bekannt gegeben: Diogo Moreira kommt ins Team und wird dort Fabio Quartararos teammate. Der Brasilianer will mit dem japanischen Großserialisten zurück an die Spitze — und startet damit ein neues Kapitel bei Honda.
+
+Wie seht ihr Moreira als Quartararos Teamkollegen bei Honda?
+
+#Moto2 #FabioQuartararo #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz
+Quelle: https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-4-honda-da-yeni-doenem-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 5
+Story-Key: title:david-alonso-nun-motogp-tak-m-belli-oldu-hayalim-ger-ek-oluyor
+Event-Fingerprint: -
+Titel: David Alonso'nun MotoGP takımı belli oldu! “Hayalim gerçek oluyor”
+Text:
+David Alonso hat seinen MotoGP-Platz für 2027 gefunden.
+
+Der junge Fahrer wechselt zu LCR Honda und fährt dort an der Seite von Johann Zarco. Seine erste Stellungnahme dazu ist jetzt da: Die Entscheidung ist offiziell, der Traum wird Wirklichkeit.
+
+Wie seht ihr den Wechsel?
+
+#MotoGP #JohannZarco #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor
+Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-5-david-alonso-nun-mot-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-21-daily
+Telegram-Update-ID: 279361983
+MotoGP-Auswahl: 5
+Story-Key: title:david-alonso-nun-motogp-tak-m-belli-oldu-hayalim-ger-ek-oluyor
+Event-Fingerprint: -
+Titel: David Alonso'nun MotoGP takımı belli oldu! “Hayalim gerçek oluyor”
+Text:
+David Alonso hat seinen MotoGP-Platz für 2027 gefunden.
+
+Der junge Fahrer wechselt zu LCR Honda und fährt dort an der Seite von Johann Zarco. Seine erste Stellungnahme dazu ist jetzt da: Die Entscheidung ist offiziell, der Traum wird Wirklichkeit.
+
+Wie seht ihr den Wechsel?
+
+#MotoGP #JohannZarco #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor
+Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor
+Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-5-david-alonso-nun-mot-01.jpg
+Link-Preview: offiziell
