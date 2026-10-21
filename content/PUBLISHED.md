@@ -992,9 +992,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg
 Publish-Provenienz: {"creation_id": "18012470816971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18647410447015132", "published_media_id": "18647410447015132", "source_url": "https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39630430473-1
+## Facebook [GEPOSTET 2026-10-21 15:58 | ID: 122126522505469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-21-daily
 Telegram-Update-ID: 279361983
@@ -1013,6 +1012,7 @@ Wie schätzt ihr die Genesungsdauer und die Chancen auf ein Comeback für Toprak
 Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg", "media_status": "", "object_id": "122126522505469415", "object_type": "bild", "platform": "facebook", "post_id": "122126522505469415", "source_url": "https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi", "version": 1}
 
 ## Instagram [GEPOSTET 2026-10-21 10:28 | ID: 18116734871012050]
 Status: GEPOSTET
