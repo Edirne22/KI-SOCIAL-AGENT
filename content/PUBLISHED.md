@@ -1084,9 +1084,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-4-honda-da-yeni-doenem-01.jpg
 Publish-Provenienz: {"creation_id": "18012470870971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-4-honda-da-yeni-doenem-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18119226223951394", "published_media_id": "18119226223951394", "source_url": "https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39691652060-1
+## Facebook [GEPOSTET 2026-10-21 23:10 | ID: 122126597175469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-21-daily
 Telegram-Update-ID: 279361983
@@ -1105,6 +1104,7 @@ Wie seht ihr Moreira als Quartararos Teamkollegen bei Honda?
 Quelle: https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-4-honda-da-yeni-doenem-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-4-honda-da-yeni-doenem-01.jpg", "media_status": "", "object_id": "122126597175469415", "object_type": "bild", "platform": "facebook", "post_id": "122126597175469415", "source_url": "https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
