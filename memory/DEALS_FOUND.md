@@ -3244,3 +3244,32 @@ Direkte Treffer (antippbar):
 
 Quellen:
 - unlimited 5G Internet-Flat mit 15 Mbit/s nur 19.99 Euro monatlich: https://handytariftipp.de/monatlich-kuendbar-unlimited-5g-internet-flat-mit-15-mbit-s-nur-19-99-euro-monatlich-anschlusspreis-19-99-euro/
+## Suche vom 2026-10-21 11:05
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem Mobilfunkvertrag mit hohem Datenvolumen im D1-Netz (Telekom-Netz):
+
+### 1. Mögliche Händlerarten und Anbieter
+* **Mobilfunk-Discounter & Drittanbieter:** Original-Tarife direkt vom Netzbetreiber sind bei sehr hohem Datenvolumen meist höherpreisig angesiedelt. Günstigere Alternativen im D1-Netz finden sich häufig bei Tochtermarken oder unabhängigen Discountern (z. B. Congstar, Fraenk, Klarmobil, Freenet oder High Mobile).
+* **Reseller und Vermittlungsportale:** Unabhängige Mobilfunk-Händler und Vergleichsportale bündeln häufig Sonderaktionen. Dort werden Tarife oft über rechnerische Rabatte (z. B. Guthaben, Auszahlungen oder entfallende Anschlusspreise) günstiger angeboten als direkt beim Anbieter.
+
+### 2. Produktfamilien und Tarifmodelle
+* **SIM-Only mit 24 Monaten Laufzeit:** Verträge mit 24 Monaten Mindestlaufzeit bieten bei Aktionsangeboten meist das beste Verhältnis aus hohem Datenvolumen und niedrigem monatlichen Preis, da Rabatte über die Laufzeit kalkuliert werden.
+* **Monatlich kündbare Tarife (Flex-Varianten):** Bieten maximale Flexibilität, sind im Hinblick auf das Preis-Pro-Gigabyte-Verhältnis bei sehr großen Datenpaketen jedoch seltener im Niedrigpreissegment zu finden.
+* **Aktionstarife mit Daten-Upgrades:** Viele Händler nutzen temporäre Aktionen, bei denen das Datenvolumen bestehender Standardtarife verdoppelt oder vervielfacht wird, während der Grundpreis niedrig bleibt.
+
+### 3. Wichtige Auswahlkriterien
+* **Übertragungsgeschwindigkeit & 5G:** Tarife von Drittanbietern im D1-Netz sind häufig auf bestimmte Maximalgeschwindigkeiten (z. B. 25 Mbit/s oder 50 Mbit/s) gedrosselt. Für normales Videostreaming und Surfen ist dies meist ausreichend, sollte aber vor Abschluss geprüft werden.
+* **Effektivpreis-Berechnung:** Achte auf Nebenkosten wie den einmaligen Anschlusspreis oder Versandkosten. Zudem steigt der monatliche Preis bei vielen Angeboten nach Ablauf der Mindestvertragslaufzeit (ab dem 25. Monat) an.
+* **Wechselbonus / Rufnummernmitnahme:** Viele Anbieter gewähren eine Gutschrift, wenn die bisherige Rufnummer mitgenommen wird. Dies kann die rechnerische Monatsgebühr über die Erstlaufzeit spürbar senken.
+* **Drosselung vs. Datenautomatik:** Es sollte sichergestellt sein, dass nach Verbrauch des Inklusivvolumens kostenfrei gedrosselt wird und keine kostenpflichtige Datenautomatik greift.
+
+Bitte in 10 Minuten erneut versuchen.
