@@ -415,34 +415,6 @@ Quelle: https://motoetkinlik.com/motogp-endonezya-gp-sprint-marquez-kazandi-ve-z
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-11-racing-editorial-2026-10-11-1-motogp-endonezya-gp-01.jpg
 
-## Instagram [GEPOSTET 2026-10-13 19:58 | ID: 18136338799711224]
-Status: GEPOSTET
-Freigabe: Telegram
-Telegram-Update-ID: 279361936
-Text:
-Titel: Ruhumuz İçin – Community & Zusammenhalt
-Plattform: Instagram / TikTok / Facebook
-Thema: Deutsch-türkische Biker-Kultur & Ausfahrten
-Hook: Was schweißt deutsch-türkische Biker-Clubs nach all den Jahren wirklich zusammen?
-Instagram-Caption: Es geht nicht um den Lärm in der Stadt, sondern um das Gefühl auf der Straße. Biz motoru gürültü için değil, ruhumuz için süreriz. Egal ob im Ruhrgebiet, in Stuttgart oder in Berlin: Am Treffpunkt zählt nur die Leidenschaft fürs Fahren. Mit wem drehst du dieses Wochenende deine Runde?
-Facebook-Post: Zusammenfahren, gemeinsam schrauben und nach der Tour bei einem Tee quatschen. Deutsch-türkische Biker-Clubs zeigen seit Jahrzehnten, was echte Community bedeutet. Wir fahren nicht für Show oder Krach, sondern für den Kopf und die Seele. Welche Hausstrecke fährst du mit deiner Truppe am liebsten?
-TikTok-Skript: Text-Overlay: Warum wir wirklich fahren. 
-Sprecher/Text: Nicht für den Lärm. Nicht für Blicke. Ruhumuz için – für unsere Seele. Biker-Community bedeutet Zusammenhalt. Markiere deine Tour-Truppe!
-Visuelle Idee: Gruppe von Sportbikes und Naked Bikes bei Sonnenuntergang an einem bekannten Biker-Treffpunkt, entspannte Atmosphäre.
-Medienvorschlag: KI_ERLAUBT
-Hashtags Instagram: #tbikers #turkbirler #bikercommunity #motorradliebe #motorraddeutschland #ruhumuziçin
-Hashtags TikTok: #bikerculture #motorrad #biker #community #ausfahrt
-Trend-Bezug: Deutsch-türkische Biker-Kultur und Community-Zusammenhalt.
-Viral-Score: 8/10
-Inspirations-Plattform: Keine aktuelle externe Quelle verwendet.
-Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
-
----
-
-Bild: assets/images/2026-10/2026-10-13-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg
-Media-Provenienz: {"generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-13-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "real_racer_generation": false, "synthetic": true, "version": 1}
-Publish-Provenienz: {"creation_id": "18011281985971550", "generator": "generate_agnes_media.py", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-13-titel-ruhumuz-icin-community-zusammenhalt-plattfor-01.jpg", "model": "agnes-image-2.1-flash", "origin": "agnes-ai", "platform": "instagram", "post_id": "18136338799711224", "published_media_id": "18136338799711224", "real_racer_generation": false, "synthetic": true, "version": 1}
-
 ## Facebook
 Status: FREIGEGEBEN
 Freigabe: Telegram
@@ -541,29 +513,6 @@ Quelle: https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kurali
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-4-pedro-acosta-dan-mot-01.jpg
 
-## Facebook [GEPOSTET 2026-10-13 13:36 | ID: 1285968257941776_122123693937469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-12-manual-38302594031
-Telegram-Update-ID: 279361946
-MotoGP-Auswahl: 4
-Story-Key: title:pedro-acosta-dan-motogp-ye-sert-k-e-ek-gibi-g-r-nd-k
-Event-Fingerprint: -
-Titel: Pedro Acosta'dan MotoGP'ye sert çıkış: “Eşek gibi göründük!”
-Text:
-Eşek gibi göründük!
-
-Pedro Acosta hat bei der MotoGP in Mandalika klare Worte gefunden. Wegen Lastikdruckproblemen musste er Marc Marquez immer wieder den Weg freimachen – und fordert nun eine Regeländerung.
-
-Wie schätzt ihr die Situation ein?
-
-#MotoGP #MarcMarquez #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk
-Quelle: https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk", "media_status": "", "object_id": "1285968257941776_122123693937469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123693937469415", "source_url": "https://motoetkinlik.com/pedro-acostadan-motogpnin-lastik-basinci-kuralina-sert-tepki-esek-gibi-gorunduk", "version": 1}
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -578,27 +527,6 @@ Nicolo Bulega hat in Estoril das WorldSBK‑Rennen 1 gewonnen – das ist scho
 Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-12-racing-editorial-2026-10-12-5-bulega-estoril-de-re-01.jpg
-
-## Facebook [GEPOSTET 2026-10-13 19:57 | ID: 1285968257941776_122123780139469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-12-manual-38302594031
-Telegram-Update-ID: 279361946
-MotoGP-Auswahl: 5
-Story-Key: title:bulega-estoril-de-rekor-k-rd-ducati-dublesi-ve-s-rpriz-podyum
-Event-Fingerprint: -
-Titel: Bulega Estoril'de rekor kırdı! Ducati dublesi ve sürpriz podyum
-Text:
-Nicolo Bulega hat in Estoril das WorldSBK-Rennen 1 gewonnen – und das ist bereits sein 27. Sieg in dieser Saison 🏍️💨 Damit stellt er den Rekord von Alvaro Bautista wieder equal. Auf dem Podest stehen außer ihm noch Iker Lecuona auf Platz zwei und Alberto Surra auf Rang drei.
-
-Wie seht ihr den Bulega-Rekord?
-
-#WorldSBK #NicoloBulega #AlvaroBautista #MotorradRacing #RacingDeutschland #BuelentsBikeLife #IkerLecuona
-
-https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
-Quelle: https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum", "media_status": "", "object_id": "1285968257941776_122123780139469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122123780139469415", "source_url": "https://motoetkinlik.com/bulega-estorilde-durdurulamadi-ducati-dublesi-surradan-surpriz-podyum", "version": 1}
 
 ## Instagram
 Status: ENTWURF
