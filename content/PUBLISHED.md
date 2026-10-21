@@ -922,8 +922,8 @@ KTM steht für Pure Racing und passt perfekt zu Sepang, wo es auf der langen Ger
 Medienstatus: HERSTELLER_PREVIEW
 Bild: assets/images/2026-10/2026-10-30-bike-ktm-1290-super-duke-r.jpg
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-21 10:28 | ID: 18218571322356489]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-21-daily
 Telegram-Update-ID: 279361983
@@ -944,6 +944,7 @@ Auf wen freut ihr euch am meisten in der MotoGP-Saison 2027?
 Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg
+Publish-Provenienz: {"creation_id": "18012470783971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18218571322356489", "published_media_id": "18218571322356489", "source_url": "https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
@@ -968,8 +969,8 @@ Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-is
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg
 Link-Preview: offiziell
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-21 10:28 | ID: 18647410447015132]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-21-daily
 Telegram-Update-ID: 279361983
@@ -988,6 +989,7 @@ Wie schätzt ihr die Genesungsdauer und die Chancen auf ein Comeback für Toprak
 Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg
+Publish-Provenienz: {"creation_id": "18012470816971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18647410447015132", "published_media_id": "18647410447015132", "source_url": "https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
@@ -1010,8 +1012,8 @@ Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg
 Link-Preview: offiziell
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-21 10:28 | ID: 18116734871012050]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-21-daily
 Telegram-Update-ID: 279361983
@@ -1032,6 +1034,7 @@ Wie schätzt ihr die Lage für Phillip Island ein?
 Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg
+Publish-Provenienz: {"creation_id": "18012470849971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18116734871012050", "published_media_id": "18116734871012050", "source_url": "https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
@@ -1056,8 +1059,8 @@ Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg
 Link-Preview: offiziell
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-21 10:28 | ID: 18119226223951394]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-21-daily
 Telegram-Update-ID: 279361983
@@ -1076,6 +1079,7 @@ Wie seht ihr Moreira als Quartararos Teamkollegen bei Honda?
 Quelle: https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-4-honda-da-yeni-doenem-01.jpg
+Publish-Provenienz: {"creation_id": "18012470870971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-4-honda-da-yeni-doenem-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18119226223951394", "published_media_id": "18119226223951394", "source_url": "https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
