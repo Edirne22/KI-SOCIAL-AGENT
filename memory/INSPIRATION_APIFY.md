@@ -5,186 +5,121 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: Set your alarms for the action Down Under! ⏰
-
-#AustralianGP 🇦🇺 #MotoGP
-- Datum: 2026-10-19T06:09:21.000Z
-- URL: https://www.instagram.com/p/DeqlFEAIdHy/
-- Likes: 10502
-- Kommentare: 21
+- Titel: THE 2027 CALENDAR IS HERE! 🗓️🇨🇳 China joins the #WorldSBK calendar for the first time, while Valencia makes its return 🚥
+- Datum: 2026-10-01T07:02:38.000Z
+- URL: https://www.instagram.com/p/Dd8UBwFOgKg/
+- Likes: 11143
+- Kommentare: 298
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: Aussie, Aussie, Aussie! 🌏 A special one awaits at Phillip Island! 
+- Titel: 👑 @nicolo_bulega11 is the 2026 #WorldSBK CHAMPION! 🇮🇹🏆 A season of perfection, records and redemption ⭐️
 
-#AustralianGP 🇦🇺 #MotoGP
-- Datum: 2026-10-19T03:57:26.000Z
-- URL: https://www.instagram.com/p/DeqVz_Lop8J/
-- Likes: 23984
-- Kommentare: 93
+#Bu1egacy #ItalianWorldSBK 🇮🇹
+- Datum: 2026-09-27T14:04:47.000Z
+- URL: https://www.instagram.com/p/DdyxftRuz2K/
+- Likes: 28380
+- Kommentare: 434
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Only one word to describe Stoner Corner: ICONIC ✨ 🔥
-
-#AustralianGP 🇦🇺 #MotoGP
-- Datum: 2026-10-19T09:06:59.000Z
-- URL: https://www.instagram.com/p/Deq5UnLo0e0/
-- Likes: 8075
-- Kommentare: 91
+- Titel: From chasing a dream to becoming a two-time World Champion, what a journey it’s been, @jeffrey_buis! 🏆 Thank you for the unforgettable memories and for everything you’ve given to #WorldSBK 🙌
+- Datum: 2026-10-21T08:49:19.000Z
+- URL: https://www.instagram.com/p/DewBD0SjvLf/
+- Likes: 676
+- Kommentare: 9
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: BREAKING: @ikerlecuona_27 will replace @ferminaldeguer_54 at the #AustralianGP 🇦🇺 as the @gresiniracing rider eyes Malaysia return 🚨
+- Titel: One last race in blue 💙 before the start of a new chapter ✨
 
-#MotoGP
-- Datum: 2026-10-19T07:55:12.000Z
-- URL: https://www.instagram.com/p/DeqxN17IZnw/
-- Likes: 15024
-- Kommentare: 61
+#SpanishWorldSBK 🇪🇸 #WorldSBK
+- Datum: 2026-10-21T08:33:44.000Z
+- URL: https://www.instagram.com/p/Dev_MQxuoxA/
+- Likes: 369
+- Kommentare: 4
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: Two years ago, it was @89jorgemartin vs @marcmarquez93 at The Island... and the story looks set to continue ⚔️🔥
+- Titel: The final 2026 #WorldSSP Riders’ Championship top 10! 📊
 
-#AustralianGP 🇦🇺 #MotoGP
-- Datum: 2026-10-19T07:22:35.000Z
-- URL: https://www.instagram.com/p/DeqtWnwoWki/
-- Likes: 21794
-- Kommentare: 137
+#SpanishWorldSBK 🇪🇸
+- Datum: 2026-10-21T07:52:48.000Z
+- URL: https://www.instagram.com/p/Dev6gSOujD7/
+- Likes: 1278
+- Kommentare: 4
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: The pressure is rising as the battle heads down under 👀🇦🇺
+- Titel: Farewells, wins and all the hottest talking points 🔥✨ Catch up with all the hot headlines of the last round of the season on WorldSBK.com! 🍿
 
-#AustralianGP🇦🇺 #MotoGP
-- Datum: 2026-10-19T05:00:06.000Z
-- URL: https://www.instagram.com/p/DeqdUSLBWgP/
-- Likes: 6691
-- Kommentare: 14
+#SpanishWorldSBK 🇪🇸 #WorldSBK
+- Datum: 2026-10-20T15:06:30.000Z
+- URL: https://www.instagram.com/p/DeuHbfoDtfP/
+- Likes: 5706
+- Kommentare: 25
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: There are many differences between #Moto3 and #Moto2 bikes but there’s one thing they have in common, teams of both categories rely on @repsol.lubricants 🤝
-- Datum: 2026-10-18T13:00:05.000Z
-- URL: https://www.instagram.com/p/DeovebIhTNk/
-- Likes: 30800
-- Kommentare: 86
+- Titel: Six years, countless memories ✨ Thank you, @mgm_racing_performance, for being part of the #WorldSBK family! 🩵
+- Datum: 2026-10-20T14:52:45.000Z
+- URL: https://www.instagram.com/p/DeuF0ZhuAtp/
+- Likes: 1488
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: A little too much power behind those taps, @toprakrazgatlioglu7 👀😂
+- Titel: Overtakes worth watching on repeat!🔥⚔️ Which move stole the spotlight at Jerez in the #SpanishWorldSBK round? 🇪🇸 You decide! 🗳️⬇️
 
-#MotoGP #JackMiller #ToprakRazgatlıoğlu
-- Datum: 2026-10-18T10:00:09.000Z
-- URL: https://www.instagram.com/p/Deoa3ifBKuK/
-- Likes: 4687
-- Kommentare: 58
+#WorldSBK
+- Datum: 2026-10-20T14:06:18.000Z
+- URL: https://www.instagram.com/p/DeuAij2jssb/
+- Likes: 958
+- Kommentare: 6
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: When you experience #MotoGP trackside for the first time you might get emotional and be speechless like this Motul Superfan at Motegi 🥹🫢
+- Titel: One last moment in the box ✨ Grazie, Danilo 🥹🫶
 
-#PoweredByMotul
-- Datum: 2026-10-18T08:00:13.000Z
-- URL: https://www.instagram.com/p/DeoNCxXh_85/
-- Likes: 5857
-- Kommentare: 89
+#SpanishWorldSBK 🇪🇸 #WorldSBK
+- Datum: 2026-10-20T13:30:46.000Z
+- URL: https://www.instagram.com/p/Det8as-jed6/
+- Likes: 2252
+- Kommentare: 24
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: The mind-reading skills are a work in progress ⏳👀
-
-#MotoGP #JohannZarco #DiogoMoreira
-- Datum: 2026-10-18T07:00:15.000Z
-- URL: https://www.instagram.com/p/DeoGPKtBz0f/
-- Likes: 5094
-- Kommentare: 18
+- Titel: What a journey, @petrux9. You’ll be missed! 🥹 Thanks for all the memories you’ve shared with the entire #WorldSBK paddock❤️
+- Datum: 2026-10-20T13:12:57.000Z
+- URL: https://www.instagram.com/p/Det6CCKueKj/
+- Likes: 7826
+- Kommentare: 275
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: Last year's race at Phillip Island was simply UNPREDICTABLE 🤯
+- Titel: From the mesmerising Stoner Corner, iconic title fights and much more 🔥
 
-Here are the moments that made it one to remember! 🔥
+This is what makes #MotoGP in Australia iconic ✨
 
 #AustralianGP 🇦🇺
-- Datum: 2026-10-19T10:03:03.000Z
+- Datum: 2026-10-21T09:00:39.000Z
 - URL: nicht verfügbar
-- Likes: 92
-- Kommentare: 1
+- Likes: 196
+- Kommentare: 4
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: A new Australian home hero arrives in #MotoGP in 2027: Senna Agius 🇦🇺
+- Titel: It's been ten years since this absolute #AustralianGP 🇦🇺 belter 😎
 
-From racing bikes overseas between school days to chasing his dream on the world stage, Senna reflects on the moment he fell in love with road racing and the sacrifices that helped him get to where he is today 🗣️
-
-#MotoGP  #WiredDifferent
-- Datum: 2026-10-19T09:37:13.000Z
-- URL: nicht verfügbar
-- Likes: 94
-- Kommentare: 1
-- Shares: nicht verfügbar
-### Datensatz 3
-- Titel: Only one word to describe Stoner Corner: ICONIC ✨ 🔥
-
-#AustralianGP 🇦🇺 #MotoGP
-- Datum: 2026-10-19T09:07:17.000Z
-- URL: nicht verfügbar
-- Likes: 580
-- Kommentare: 24
-- Shares: nicht verfügbar
-### Datensatz 4
-- Titel: Here's a little recap of the time schedule this weekend in case you need it 😉
-
-#AustralianGP 🇦🇺
-- Datum: 2026-10-19T08:40:58.000Z
-- URL: nicht verfügbar
-- Likes: 100
-- Kommentare: 0
-- Shares: nicht verfügbar
-### Datensatz 5
-- Titel: BREAKING: Iker Lecuona will replace Fermin Aldeguer 54 at the #AustralianGP 🇦🇺 as the BK8 Gresini Racing MotoGP rider eyes Malaysia return 🚨
+Enjoy the 2016 race at Phillip Island in full 🎥
 
 #MotoGP
-- Datum: 2026-10-19T07:55:24.000Z
+- Datum: 2026-10-21T08:00:12.000Z
 - URL: nicht verfügbar
-- Likes: 1377
-- Kommentare: 25
+- Likes: 2392
+- Kommentare: 131
 - Shares: nicht verfügbar
-### Datensatz 6
-- Titel: Two years ago, it was @89jorgemartin vs @marcmarquez93 at The Island... and the story looks set to continue ⚔️🔥
+### Datensatz 3
+- Titel: Who wanted it more? 🤩
 
-#AustralianGP 🇦🇺 #MotoGP
-- Datum: 2026-10-19T07:22:51.000Z
-- URL: nicht verfügbar
-- Likes: 1607
-- Kommentare: 14
-- Shares: nicht verfügbar
-### Datensatz 7
-- Titel: Set your alarms for the action Down Under! ⏰
+The 2017 race was #MotoGP at its finest! ✨
 
-#AustralianGP 🇦🇺 #MotoGP
-- Datum: 2026-10-19T06:09:31.000Z
+#AustralianGP 🇦🇺
+- Datum: 2026-10-21T07:01:08.000Z
 - URL: nicht verfügbar
-- Likes: 1525
-- Kommentare: 31
+- Likes: 754
+- Kommentare: 20
 - Shares: nicht verfügbar
-### Datensatz 8
-- Titel: The pressure is rising as the battle heads down under 👀🇦🇺
-
-#AustralianGP🇦🇺 #MotoGP
-- Datum: 2026-10-19T05:00:18.000Z
-- URL: nicht verfügbar
-- Likes: 406
-- Kommentare: 6
-- Shares: nicht verfügbar
-### Datensatz 9
-- Titel: Aussie, Aussie, Aussie! 🌏 A special one awaits at Phillip Island! 
-
-#AustralianGP 🇦🇺 #MotoGP
-- Datum: 2026-10-19T03:57:35.000Z
-- URL: nicht verfügbar
-- Likes: 2335
-- Kommentare: 60
-- Shares: nicht verfügbar
-### Datensatz 10
-- Titel: There are many differences between #Moto3 and #Moto2 bikes but there’s one thing they have in common, teams of both categories rely on @repsol.lubricants 🤝
-- Datum: 2026-10-18T13:00:21.000Z
-- URL: nicht verfügbar
-- Likes: 3765
-- Kommentare: 31
-- Shares: nicht verfügbar
-- Status: 10 öffentliche Beiträge verfügbar.
+- Status: 3 öffentliche Beiträge verfügbar.
