@@ -946,9 +946,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg
 Publish-Provenienz: {"creation_id": "18012470783971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18218571322356489", "published_media_id": "18218571322356489", "source_url": "https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39590169662-1
+## Facebook [GEPOSTET 2026-10-21 11:12 | ID: 122126444253469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-21-daily
 Telegram-Update-ID: 279361983
@@ -969,6 +968,7 @@ Auf wen freut ihr euch am meisten in der MotoGP-Saison 2027?
 Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg", "media_status": "", "object_id": "122126444253469415", "object_type": "bild", "platform": "facebook", "post_id": "122126444253469415", "source_url": "https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler", "version": 1}
 
 ## Instagram [GEPOSTET 2026-10-21 10:28 | ID: 18647410447015132]
 Status: GEPOSTET
