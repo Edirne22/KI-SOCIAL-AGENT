@@ -1038,9 +1038,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg
 Publish-Provenienz: {"creation_id": "18012470849971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18116734871012050", "published_media_id": "18116734871012050", "source_url": "https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39666417452-1
+## Facebook [GEPOSTET 2026-10-21 20:00 | ID: 122126568993469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-21-daily
 Telegram-Update-ID: 279361983
@@ -1061,6 +1060,7 @@ Wie schätzt ihr die Lage für Phillip Island ein?
 Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg", "media_status": "", "object_id": "122126568993469415", "object_type": "bild", "platform": "facebook", "post_id": "122126568993469415", "source_url": "https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas", "version": 1}
 
 ## Instagram [GEPOSTET 2026-10-21 10:28 | ID: 18119226223951394]
 Status: GEPOSTET
