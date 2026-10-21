@@ -3372,3 +3372,45 @@ Story-Key: motogp:10866213
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-21 09:03 UTC | Motorcycle Racing | PASS
+Titel: MotoGP 2027 gridinde deprem! 11 takımın 22 sürücüsü kesinleşti
+Story-Key: title:motogp-2027-gridinde-deprem-11-tak-m-n-22-s-r-c-s-kesinle-ti
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-21 09:04 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
+Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-21 09:04 UTC | Motorcycle Racing | FAIL
+Titel: Jorge Martin'den şampiyonluk çıkışı: “Artık üç kişilik bir savaş!”
+Story-Key: title:jorge-martin-den-ampiyonluk-k-art-k-ki-ilik-bir-sava
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-21 09:05 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin'den şampiyonluk çıkışı: “Artık üç kişilik bir savaş!”
+Story-Key: title:jorge-martin-den-ampiyonluk-k-art-k-ki-ilik-bir-sava
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-21 09:05 UTC | Motorcycle Racing | PASS
+Titel: Honda'da yeni dönem! Diogo Moreira'dan iddialı ilk mesaj
+Story-Key: title:honda-da-yeni-d-nem-diogo-moreira-dan-iddial-ilk-mesaj
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-21 09:05 UTC | Motorcycle Racing | FAIL
+Titel: David Alonso'nun MotoGP takımı belli oldu! “Hayalim gerçek oluyor”
+Story-Key: title:david-alonso-nun-motogp-tak-m-belli-oldu-hayalim-ger-ek-oluyor
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-21 09:05 UTC | Motorcycle Racing | PASS
+Titel: David Alonso'nun MotoGP takımı belli oldu! “Hayalim gerçek oluyor”
+Story-Key: title:david-alonso-nun-motogp-tak-m-belli-oldu-hayalim-ger-ek-oluyor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

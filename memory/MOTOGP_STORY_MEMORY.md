@@ -1114,3 +1114,23 @@ Quelle: https://tr.motorsport.com/motogp/news/resmi-diogo-moreira-lcr-hondadan-a
 Story-Key: motogp:10866213
 Titel: Aldeguer, Avustralya GP'de yarışamayacak, yerine Lecuona geçecek
 Quelle: https://tr.motorsport.com/motogp/news/aldeguer-avustralya-gpde-yarisamayacak-yerine-lecuona-gececek/10866213
+
+## 2026-10-21 08:42 UTC – ANGEBOTEN
+Story-Key: title:motogp-2027-gridinde-deprem-11-tak-m-n-22-s-r-c-s-kesinle-ti
+Titel: MotoGP 2027 gridinde deprem! 11 takımın 22 sürücüsü kesinleşti
+Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler
+
+## 2026-10-21 08:42 UTC – ANGEBOTEN
+Story-Key: title:jorge-martin-den-ampiyonluk-k-art-k-ki-ilik-bir-sava
+Titel: Jorge Martin'den şampiyonluk çıkışı: “Artık üç kişilik bir savaş!”
+Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas
+
+## 2026-10-21 08:42 UTC – ANGEBOTEN
+Story-Key: title:honda-da-yeni-d-nem-diogo-moreira-dan-iddial-ilk-mesaj
+Titel: Honda'da yeni dönem! Diogo Moreira'dan iddialı ilk mesaj
+Quelle: https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz
+
+## 2026-10-21 08:42 UTC – ANGEBOTEN
+Story-Key: title:david-alonso-nun-motogp-tak-m-belli-oldu-hayalim-ger-ek-oluyor
+Titel: David Alonso'nun MotoGP takımı belli oldu! “Hayalim gerçek oluyor”
+Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor

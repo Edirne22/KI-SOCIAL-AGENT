@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1792485741
+Session-Timestamp: 1792572143
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,26 +18,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
+Artikelalter-Tage: 1.0
 Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: motogp:10866431
-Titel: Resmi: Toprak Razgatlıoğlu, 2026 MotoGP sezonunun kalanında yarışamayacak!
-Quelle: https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431
+Story-Key: title:motogp-2027-gridinde-deprem-11-tak-m-n-22-s-r-c-s-kesinle-ti
+Titel: MotoGP 2027 gridinde deprem! 11 takımın 22 sürücüsü kesinleşti
+Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-1-resmi-toprak-razgatl-01.jpg
-Quellen-Preview: https://cdn-7.motorsport.com/images/amp/YP74m4j2/s6/toprak-razgatlioglu-pramac-rac.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-1-motogp-2027-gridinde-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/HVDv7qHWEAEZDWM-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu hat sich beim Großen Preis von Indonesien am Schulter verletzen müssen.
+MotoGP 2027 sürücü kadrosu tamamlandı
 
-Die Verletzung erfordert eine Operation.
+Die MotoGP-Welt hat gerade die Grid für 2027 fixiert. Elf Teams mit 22 Fahrern stehen fest – alles klar, nichts mehr offen. Marc Marquez, Jorge Martin, Pedro Acosta, Francesco Bagnaia und Toprak Razgatlıoğlu sind unter den bestätigten Piloten. Die großen Namen haben ihre Plätze an der Startlinie.
 
-Der türkische Fahrer fällt für den Rest der MotoGP-Saison 2026 aus.
+Auf wen freut ihr euch am meisten in der MotoGP-Saison 2027?
 
-Gute Besserung, Toprak – wir zählen die Tage bis deiner Rückkehr auf die Strecke. 🏍️💙
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -48,20 +46,20 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
+Artikelalter-Tage: 1.0
 Kategorie: Turkish Riders
 Serie: MotoGP
 Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
 Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
 Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-2-toprak-razgatlioglu-01.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-2-toprak-razgatlioglu-01.jpg
 Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-motogp-2026-ameliyat-sezonu-kapatti-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Bittere Nachrichten für Toprak Razgatlıoğlu: Wegen einer Schulterverletzung muss er am 26. Oktober operiert werden. Pramac Yamaha hat mitgeteilt, dass seine MotoGP-Saison 2026 damit vorzeitig beendet ist.
+Toprak Razgatlıoğlu muss die Saison 2026 vorzeitig beenden. Der türkische MotoGP-Fahrer muss sich am 26. Oktober einer Schulter-OP unterziehen – das hat Pramac Yamaha bestätigt. Die 2026er-Saison ist damit für den Nationalspieler durch. 🏍️
 
-Wie schätzt ihr die Situation ein?
+Wie schätzt ihr die Genesungsdauer und die Chancen auf ein Comeback für Toprak ein?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -72,24 +70,26 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 1
-QM-Ruecklaeufe: 1
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
 Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10866411
-Titel: Resmi: Diogo Moreira, LCR Honda'dan ayrılıyor
-Quelle: https://tr.motorsport.com/motogp/news/resmi-diogo-moreira-lcr-hondadan-ayriliyor/10866411
+Story-Key: title:jorge-martin-den-ampiyonluk-k-art-k-ki-ilik-bir-sava
+Titel: Jorge Martin'den şampiyonluk çıkışı: “Artık üç kişilik bir savaş!”
+Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-3-resmi-diogo-moreira-01.jpg
-Quellen-Preview: https://cdn-8.motorsport.com/images/amp/6O7zBEW6/s6/diogo-moreira-team-lcr-honda.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-3-jorge-martin-den-sam-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jorge-martin-marc-marquez-marco-bezzecchi-motogp-2026-1-1.webp
 Plattformen: Instagram + Facebook
 Text:
-LCR Honda hat bestätigt: Diogo Moreira wechselt zum Ende der 2026 MotoGP-Saison das Team. Der Rookie macht also nicht weiter bei den Hondas aus der Schweiz 🏍️💨
+Jorge Martin sieht die Titeljagd als Dreikampf.
 
-Was haltet ihr von dieser Entscheidung?
+Vor dem Lauf auf Phillip Island hat er klargemacht: In der MotoGP-Saison 2026 geht es jetzt um ihn, Marc Marquez und Marco Bezzecchi. Martin beschreibt die Meisterschaft als Dreierduell um die Krone.
 
-#MotoGP #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die Lage für Phillip Island ein?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -100,26 +100,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.8
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:worldssp-jerez-2-yar-alcoba-kazand-can-sezonu-4-bitirdi-bahattin-16
-Titel: WorldSSP Jerez 2. Yarış: Alcoba Kazandı, Can Sezonu 4. Bitirdi, Bahattin 16.
-Quelle: https://motoetkinlik.com/worldssp-jerez-2-yaris-alcoba-kazandi-can-sezonu-4-bitirdi-bahattin-16
+Artikelalter-Tage: 0.1
+Kategorie: Moto2
+Serie: Moto2
+Story-Key: title:honda-da-yeni-d-nem-diogo-moreira-dan-iddial-ilk-mesaj
+Titel: Honda'da yeni dönem! Diogo Moreira'dan iddialı ilk mesaj
+Quelle: https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gereken-yere-donecegiz
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-4-worldssp-jerez-2-yar-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/12_Jerez_WorldSSP_2026_Can_Oncu-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-4-honda-da-yeni-doenem-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/diogo-moreira-honda-hrc-motogp-2027-transfer.webp
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba hat das zweite Rennen in Jerez nach dem Roten Flagge für sich entschieden.
+Honda HRC hat für 2027 einen neuen Fahrer bekannt gegeben: Diogo Moreira kommt ins Team und wird dort Fabio Quartararos teammate. Der Brasilianer will mit dem japanischen Großserialisten zurück an die Spitze — und startet damit ein neues Kapitel bei Honda.
 
-Can Öncü drehte die schnellste Runde und landet damit als Vierter in der Gesamtwertung der Saison.
+Wie seht ihr Moreira als Quartararos Teamkollegen bei Honda?
 
-Bahattin Sofuoğlu beendet das Rennen auf Platz 16.
-
-Wie seht ihr die Saisonbilanz von Can?
-
-#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #FabioQuartararo #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -128,24 +124,26 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 0.9
+Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10866213
-Titel: Aldeguer, Avustralya GP'de yarışamayacak, yerine Lecuona geçecek
-Quelle: https://tr.motorsport.com/motogp/news/aldeguer-avustralya-gpde-yarisamayacak-yerine-lecuona-gececek/10866213
+Story-Key: title:david-alonso-nun-motogp-tak-m-belli-oldu-hayalim-ger-ek-oluyor
+Titel: David Alonso'nun MotoGP takımı belli oldu! “Hayalim gerçek oluyor”
+Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-20-racing-editorial-2026-10-20-5-aldeguer-avustralya-01.jpg
-Quellen-Preview: https://cdn-7.motorsport.com/images/amp/Y9lNoyZ2/s6/iker-lecuona-gresini-racing.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-5-david-alonso-nun-mot-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/david-alonso-lcr-honda-motogp-2027-transfer.avif
 Plattformen: Instagram + Facebook
 Text:
-Fermin Aldeguer fällt dieses Wochenende in Australien aus – nach dem Unfall in Indonesien hat er sich verletzt und kann nicht mehr ans Bike. Bei Gresini Ducati springt Iker Lecuona für ihn ein. 🏍️💨
+David Alonso hat seinen MotoGP-Platz für 2027 gefunden.
 
-Was erwartet ihr von Lecuona bei seinem Comeback in der MotoGP?
+Der junge Fahrer wechselt zu LCR Honda und fährt dort an der Seite von Johann Zarco. Seine erste Stellungnahme dazu ist jetzt da: Die Entscheidung ist offiziell, der Traum wird Wirklichkeit.
 
-#MotoGP #FerminAldeguer #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr den Wechsel?
+
+#MotoGP #JohannZarco #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
