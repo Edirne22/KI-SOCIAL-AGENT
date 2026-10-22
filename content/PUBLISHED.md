@@ -1077,9 +1077,8 @@ Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-ol
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-5-david-alonso-nun-mot-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39768609082-1
+## Facebook [GEPOSTET 2026-10-22 11:11 | ID: 122126738289469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-21-daily
 Telegram-Update-ID: 279361983
@@ -1100,6 +1099,7 @@ Wie seht ihr den Wechsel?
 Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-5-david-alonso-nun-mot-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-5-david-alonso-nun-mot-01.jpg", "media_status": "", "object_id": "122126738289469415", "object_type": "bild", "platform": "facebook", "post_id": "122126738289469415", "source_url": "https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
