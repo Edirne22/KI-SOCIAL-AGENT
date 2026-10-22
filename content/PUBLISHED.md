@@ -1101,8 +1101,8 @@ Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-5-david-alons
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-5-david-alonso-nun-mot-01.jpg", "media_status": "", "object_id": "122126738289469415", "object_type": "bild", "platform": "facebook", "post_id": "122126738289469415", "source_url": "https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-22 11:53 | ID: 18133915483782961]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-22-daily
 Telegram-Update-ID: 279361989
@@ -1123,6 +1123,7 @@ Wie bewertet ihr die Genesungsbotschaft an Toprak Razgatlıoğlu?
 Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg
+Publish-Provenienz: {"creation_id": "18012627470971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18133915483782961", "published_media_id": "18133915483782961", "source_url": "https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
