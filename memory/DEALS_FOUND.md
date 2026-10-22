@@ -3273,3 +3273,19 @@ Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem Mobilfunkve
 * **Drosselung vs. Datenautomatik:** Es sollte sichergestellt sein, dass nach Verbrauch des Inklusivvolumens kostenfrei gedrosselt wird und keine kostenpflichtige Datenautomatik greift.
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-10-22 11:01
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. KAUFLAND MOBIL Prepaid eSIM Starterpaket mit 5G im besten
+   https://www.kaufland.de/product/475008971/ – 9 Cent/Min bzw. 9 Cent/SMS in alle dt. Netze (60/60-Takt), wenn keine Minuten-/ SMS-Option gewählt wird. Preise für Sonder ...
+
+Quellen:
+- KAUFLAND MOBIL Prepaid eSIM Starterpaket mit 5G im besten: https://www.kaufland.de/product/475008971/
