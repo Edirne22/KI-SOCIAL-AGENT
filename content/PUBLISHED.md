@@ -1099,3 +1099,49 @@ Wie seht ihr den Wechsel?
 Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor
 Bild: assets/images/2026-10/2026-10-21-racing-editorial-2026-10-21-5-david-alonso-nun-mot-01.jpg
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-22-daily
+Telegram-Update-ID: 279361989
+MotoGP-Auswahl: 1
+Story-Key: title:miller-ve-fernandez-den-toprak-ge-mi-olsun-mesaj
+Event-Fingerprint: -
+Titel: Miller ve Fernandez'den Toprak'a Geçmiş Olsun Mesajı
+Text:
+Jack Miller und Augusto Fernandez wünschen Toprak Razgatlıoğlu gute Besserung
+
+Jack Miller und Augusto Fernandez sagen Toprak Razgatlıoğlu gute Besserung. Der 26. Oktober ist der Termin für die geplante OP. Borsoi hofft, dass Toprak bald wieder auf dem Motorrad sitzt.
+
+Wie bewertet ihr die Genesungsbotschaft an Toprak Razgatlıoğlu?
+
+#MotoGP #ToprakRazgatlioglu #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife #RaulFernandez
+
+🔗 Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji
+Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-22-daily
+Telegram-Update-ID: 279361989
+MotoGP-Auswahl: 1
+Story-Key: title:miller-ve-fernandez-den-toprak-ge-mi-olsun-mesaj
+Event-Fingerprint: -
+Titel: Miller ve Fernandez'den Toprak'a Geçmiş Olsun Mesajı
+Text:
+Jack Miller und Augusto Fernandez wünschen Toprak Razgatlıoğlu gute Besserung
+
+Jack Miller und Augusto Fernandez sagen Toprak Razgatlıoğlu gute Besserung. Der 26. Oktober ist der Termin für die geplante OP. Borsoi hofft, dass Toprak bald wieder auf dem Motorrad sitzt.
+
+Wie bewertet ihr die Genesungsbotschaft an Toprak Razgatlıoğlu?
+
+#MotoGP #ToprakRazgatlioglu #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife #RaulFernandez
+
+🔗 Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji
+Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji
+Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg
+Link-Preview: offiziell
