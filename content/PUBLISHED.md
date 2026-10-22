@@ -656,58 +656,6 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 ---
 
-## Instagram [GEPOSTET 2026-10-15 03:24 | ID: 17907923913664862]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-14-manual-38591765219
-Telegram-Update-ID: 279361955
-MotoGP-Auswahl: 4
-Story-Key: title:jack-miller-dan-yamaha-ya-alarm-motosiklet-s-r-lemez-halde
-Event-Fingerprint: -
-Titel: Jack Miller'dan Yamaha'ya alarm: “Motosiklet sürülemez halde!”
-Text:
-Jack Miller hat nach dem Indonesia GP deutlich gesprochen: Das Motor-Verhalten der Yamaha ist für ihn nicht konsistent genug.
-
-Dafür, dass das Motorrad nicht zuverlässig läuft, zahlt Miller direkt mit Nullen – sein Team pramac Yamaha hat bereits zum vierten Mal hintereinander ein Rennwochenende ohne Punkte beendet.
-
-Das ist nicht die Menge an Ergebnissen, die sich das Team von der Maschine erhofft hat.
-
-Wie seht ihr die Lage bei Yamaha – liegt das Problem am Bike oder an der Einstellung?
-
-#MotoGP #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde
-Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde
-Medienstatus: QUELLE_BESTÄTIGT
-Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller-dan-yama-01.jpg
-Publish-Provenienz: {"creation_id": "18011454593971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller-dan-yama-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "17907923913664862", "published_media_id": "17907923913664862", "source_url": "https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde", "version": 1}
-
-## Facebook [GEPOSTET 2026-10-14 20:32 | ID: 122124154737469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-14-manual-38591765219
-Telegram-Update-ID: 279361955
-MotoGP-Auswahl: 4
-Story-Key: title:jack-miller-dan-yamaha-ya-alarm-motosiklet-s-r-lemez-halde
-Event-Fingerprint: -
-Titel: Jack Miller'dan Yamaha'ya alarm: “Motosiklet sürülemez halde!”
-Text:
-Jack Miller hat nach dem Indonesia GP deutlich gesprochen: Das Motor-Verhalten der Yamaha ist für ihn nicht konsistent genug.
-
-Dafür, dass das Motorrad nicht zuverlässig läuft, zahlt Miller direkt mit Nullen – sein Team pramac Yamaha hat bereits zum vierten Mal hintereinander ein Rennwochenende ohne Punkte beendet.
-
-Das ist nicht die Menge an Ergebnissen, die sich das Team von der Maschine erhofft hat.
-
-Wie seht ihr die Lage bei Yamaha – liegt das Problem am Bike oder an der Einstellung?
-
-#MotoGP #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde
-Quelle: https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde
-Bild: assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller-dan-yama-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-14-racing-editorial-2026-10-14-4-jack-miller-dan-yama-01.jpg", "media_status": "", "object_id": "122124154737469415", "object_type": "bild", "platform": "facebook", "post_id": "122124154737469415", "source_url": "https://motoetkinlik.com/jack-millerdan-yamahaya-motor-uyarisi-motosiklet-neredeyse-surulemez-halde", "version": 1}
-
 ## Instagram [GEPOSTET 2026-10-16 15:21 | ID: 18117676343000202]
 Status: GEPOSTET
 Freigabe: Telegram Racing
