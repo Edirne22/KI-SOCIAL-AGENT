@@ -1127,6 +1127,7 @@ Publish-Provenienz: {"creation_id": "18012627470971550", "media_kind": "image", 
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-22-daily
 Telegram-Update-ID: 279361989
