@@ -1134,3 +1134,23 @@ Quelle: https://motoetkinlik.com/diogo-moreiradan-hondaya-ilk-mesaj-olmamiz-gere
 Story-Key: title:david-alonso-nun-motogp-tak-m-belli-oldu-hayalim-ger-ek-oluyor
 Titel: David Alonso'nun MotoGP takımı belli oldu! “Hayalim gerçek oluyor”
 Quelle: https://motoetkinlik.com/david-alonsonun-motogpdeki-yeni-adresi-belli-oldu-hayalim-gercek-oluyor
+
+## 2026-10-22 08:44 UTC – ANGEBOTEN
+Story-Key: title:motoxracing-yamaha-2027-kadrosunu-klad-smits-ve-rato-tak-mda-kal-yor
+Titel: Motoxracing Yamaha 2027 Kadrosunu Açıkladı: Smits ve Rato Takımda Kalıyor
+Quelle: https://motoetkinlik.com/motoxracing-yamaha-2027-kadrosunu-acikladi-smits-ve-rato-takimda-kaliyor
+
+## 2026-10-22 08:44 UTC – ANGEBOTEN
+Story-Key: title:resm-can-nc-n-n-tak-m-ten-kate-ile-yamaha-yollar-n-ay-rd
+Titel: Resmî: Can Öncü'nün Takımı Ten Kate ile Yamaha Yollarını Ayırdı
+Quelle: https://motoetkinlik.com/resmi-can-oncunun-takimi-ten-kate-ile-yamaha-yollarini-ayirdi
+
+## 2026-10-22 08:44 UTC – ANGEBOTEN
+Story-Key: title:miller-ve-fernandez-den-toprak-ge-mi-olsun-mesaj
+Titel: Miller ve Fernandez'den Toprak'a Geçmiş Olsun Mesajı
+Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji
+
+## 2026-10-22 08:44 UTC – ANGEBOTEN
+Story-Key: title:alcoba-2027-de-ampiyon-tak-m-as-blu-cru-ya-ge-iyor
+Titel: Alcoba 2027'de Şampiyon Takım AS BLU CRU'ya Geçiyor
+Quelle: https://motoetkinlik.com/alcoba-2027de-sampiyon-takim-as-blu-cruya-geciyor

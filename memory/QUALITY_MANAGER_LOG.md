@@ -3414,3 +3414,45 @@ Story-Key: title:david-alonso-nun-motogp-tak-m-belli-oldu-hayalim-ger-ek-oluyor
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-22 09:09 UTC | Motorcycle Racing | PASS
+Titel: Miller ve Fernandez'den Toprak'a Geçmiş Olsun Mesajı
+Story-Key: title:miller-ve-fernandez-den-toprak-ge-mi-olsun-mesaj
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-22 09:09 UTC | Motorcycle Racing | PASS
+Titel: MotoGP 2027 gridinde deprem! 11 takımın 22 sürücüsü kesinleşti
+Story-Key: title:motogp-2027-gridinde-deprem-11-tak-m-n-22-s-r-c-s-kesinle-ti
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-22 09:10 UTC | Motorcycle Racing | FAIL
+Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
+Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-22 09:10 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
+Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-22 09:10 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin'den şampiyonluk çıkışı: “Artık üç kişilik bir savaş!”
+Story-Key: title:jorge-martin-den-ampiyonluk-k-art-k-ki-ilik-bir-sava
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-22 09:10 UTC | Motorcycle Racing | FAIL
+Titel: Alcoba 2027'de Şampiyon Takım AS BLU CRU'ya Geçiyor
+Story-Key: title:alcoba-2027-de-ampiyon-tak-m-as-blu-cru-ya-ge-iyor
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-22 09:10 UTC | Motorcycle Racing | PASS
+Titel: Alcoba 2027'de Şampiyon Takım AS BLU CRU'ya Geçiyor
+Story-Key: title:alcoba-2027-de-ampiyon-tak-m-as-blu-cru-ya-ge-iyor
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

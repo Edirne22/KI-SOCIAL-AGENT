@@ -1,8 +1,33 @@
 {
   "version": 1,
-  "created_at": 1792572143,
+  "created_at": 1792658693,
   "max_days": 3,
   "window_used_days": 3,
-  "count": 0,
-  "items": []
+  "count": 2,
+  "items": [
+    {
+      "n": 1,
+      "title": "Motoxracing Yamaha 2027 Kadrosunu Açıkladı: Smits ve Rato Takımda Kalıyor",
+      "url": "https://motoetkinlik.com/motoxracing-yamaha-2027-kadrosunu-acikladi-smits-ve-rato-takimda-kaliyor",
+      "summary": "Motoxracing Yamaha 2027 WorldSBK kadrosunu açıkladı: Rato ve Smits kalıyor. Smits, temsilcimiz Bahattin Sofuoğlu'nun yerine gelmişti. Takım yeni R1 alacak.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/motoxracing-Yamaha-2027-pilotlari.webp",
+      "published_at": "2026-10-21T17:43:31+03:00",
+      "series": "WorldSBK",
+      "source_series": "WorldSBK",
+      "turkish_rider": "Bahattin Sofuoğlu",
+      "kind": "news"
+    },
+    {
+      "n": 2,
+      "title": "Resmî: Can Öncü'nün Takımı Ten Kate ile Yamaha Yollarını Ayırdı",
+      "url": "https://motoetkinlik.com/resmi-can-oncunun-takimi-ten-kate-ile-yamaha-yollarini-ayirdi",
+      "summary": "Ten Kate Racing ile Yamaha'nın 2019'da başlayan ortaklığı resmen sona erdi. Üç WorldSSP şampiyonluğu getiren birliktelikte Can Öncü 2026'da 8 podyum aldı.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/10/can-oncu-jerez-spanish-round-1.webp",
+      "published_at": "2026-10-21T17:58:55+03:00",
+      "series": "WorldSSP",
+      "source_series": "WorldSSP",
+      "turkish_rider": "Can Öncü",
+      "kind": "news"
+    }
+  ]
 }
