@@ -1125,9 +1125,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg
 Publish-Provenienz: {"creation_id": "18012627470971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18133915483782961", "published_media_id": "18133915483782961", "source_url": "https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39867415640-1
+## Facebook [GEPOSTET 2026-10-22 22:47 | ID: 122126925807469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-22-daily
 Telegram-Update-ID: 279361989
@@ -1148,3 +1147,4 @@ Wie bewertet ihr die Genesungsbotschaft an Toprak Razgatlıoğlu?
 Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji
 Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg", "media_status": "", "object_id": "122126925807469415", "object_type": "bild", "platform": "facebook", "post_id": "122126925807469415", "source_url": "https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji", "version": 1}
