@@ -177,3 +177,7 @@ Chronologische Liste aller veröffentlichten Beiträge. Wird automatisch vom Age
 - Hook 2: Can Öncü triumphiert in Magny‑Cours – die Öncü‑Brüder zeigen, dass sie noch immer die Besten sind
 - Titel 3: Deniz Öncü jagt im Assen‑Sprint nach dem ersten Podium – kann er die Öncü‑Tradition fortsetzen?
 - Hook 3: Deniz Öncü jagt im Assen‑Sprint nach dem ersten Podium – kann er die Öncü‑Tradition fortsetzen?
+
+### 2026-10-23 08:13 | Entwurf generiert
+- Titel 1: Ruhumuz İçin – Was die deutsch-türkische Biker-Community verbindet
+- Hook 1: –
