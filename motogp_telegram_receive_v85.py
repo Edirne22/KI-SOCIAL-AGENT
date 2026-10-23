@@ -583,9 +583,8 @@ def handle_one(uid, chat, txt):
                 )
 
                 msg = (
-                    f'✅ Racing {batch}: {len(valid_chosen)} '
-                    f'Content-Paket(e) freigegeben. '
-                    f'{count} Plattform-Blöcke wurden übergeben.'
+                    f'Racing {batch}: Auswahl {", ".join(map(str, valid_chosen))} verarbeitet. '
+                    f'{count} neue Plattform-Blöcke wurden vorbereitet.'
                 )
                 if missing_chosen:
                     msg += f'\n\n⚠️ Übersprungen: {", ".join(map(str, missing_chosen))}'

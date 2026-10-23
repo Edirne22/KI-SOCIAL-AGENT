@@ -121,6 +121,9 @@ class LLMRouter:
 
         try:
             data = r.json()
+            if task_type == "daily_ideas" and data["choices"][0].get("finish_reason") == "length":
+                print("[router] Daily-Ideas-Antwort abgeschnitten; naechsten Anbieter versuchen.")
+                return None
             if task_type == "weekly_plan":
                 if not isinstance(data["choices"][0], dict):
                     print("[router] Wochenplan-Antwortschema ungültig.")

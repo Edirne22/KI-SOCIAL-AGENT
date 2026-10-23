@@ -222,6 +222,33 @@ def _publish_instagram_pending(item: dict) -> bool:
     published_file = Path("content/PUBLISHED.md")
     content = published_file.read_text(encoding="utf-8") if published_file.exists() else ""
 
+    # Bind publish authority to exactly the persisted draft shown to the owner.
+    matches = []
+    for match in re.finditer(r"(?ms)^## Instagram[ \t]*\n(.*?)(?=^## |\Z)", content):
+        body = match.group(1)
+        def field(name):
+            values = re.findall(rf"(?m)^{re.escape(name)}:[ \t]*(.*)$", body)
+            return values[0].strip() if len(values) == 1 else None
+        if (field("Racing-Batch-ID") == str(batch_id)
+                and field("MotoGP-Auswahl") == str(auswahl)):
+            matches.append((match.group(0), body, {
+                name: field(name) for name in
+                ("Status", "Bild", "Titel", "Publication-Claim")
+            }))
+    if len(matches) != 1:
+        send_message("⛔ Instagram nicht veröffentlicht: kein eindeutiger aktueller Entwurf zur Bildfreigabe.")
+        return False
+    matched_block, body, fields = matches[0]
+    copy_match = re.search(
+        r"(?ms)^Text:[ \t]*\n(.*?)(?=^(?:Quelle|Medienstatus|Bild):|\Z)", body
+    )
+    if (fields["Status"] not in {"BILD_GENERIERT", "FREIGEGEBEN"}
+            or re.search(r"(?mi)^Publication-Claim:", body)
+            or fields["Bild"] != image_file or fields["Titel"] != titel
+            or not copy_match or copy_match.group(1).strip() != text.strip()):
+        send_message("⛔ Instagram nicht veröffentlicht: Entwurf geändert oder bereits reserviert. Bitte aktuelle Vorschau prüfen.")
+        return False
+
     post_id = None
     if ig_user_id and token and image_file and Path(image_file).exists():
         try:
