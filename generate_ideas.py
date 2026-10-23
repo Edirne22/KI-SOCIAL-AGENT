@@ -83,18 +83,19 @@ Viral-Score: X/10
 Inspirations-Plattform: ...
 Inspirations-Quelle: vollständige URL oder Keine aktuelle externe Quelle verwendet.
 """
-    try:
-        text=quick_chat(prompt, task_type="reasoning").strip()
-        for pattern in (r'AIza[0-9A-Za-z_\-]{35}',r'AQ\.[A-Za-z0-9_\-]{40,}',r'sk-[A-Za-z0-9]{20,}',r'\b[A-Za-z0-9_\-]{50,}\b'):
-            text=re.sub(pattern,'[ENTFERNT]',text)
-        return text
-    except RuntimeError as error:
-        return f"FEHLER: {error}"
+    text=quick_chat(prompt, task_type="daily_ideas").strip()
+    if not text or text.startswith("FEHLER"):
+        raise RuntimeError("Daily Content: keine verwendbaren Ideen erhalten")
+    for pattern in (r'AIza[0-9A-Za-z_\-]{35}',r'AQ\.[A-Za-z0-9_\-]{40,}',r'sk-[A-Za-z0-9]{20,}',r'\b[A-Za-z0-9_\-]{50,}\b'):
+        text=re.sub(pattern,'[ENTFERNT]',text)
+    return text
 
 def save_content_plan(content):
     os.makedirs("content",exist_ok=True)
     with open("content/CONTENT_PLAN.md","a",encoding="utf-8") as f:f.write(f"\n\n## Automatisch generierte Beiträge vom {datetime.now():%Y-%m-%d %H:%M:%S}\n{content}\n")
 
 if __name__=="__main__":
-    content=generate_content_plan(); save_content_plan(content)
-    if not content.startswith("FEHLER"):save_to_history(content)
+    # Provider failures must fail the job before either output file is changed.
+    content=generate_content_plan()
+    save_content_plan(content)
+    save_to_history(content)
