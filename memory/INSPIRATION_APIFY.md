@@ -8,8 +8,8 @@
 - Titel: THE 2027 CALENDAR IS HERE! 🗓️🇨🇳 China joins the #WorldSBK calendar for the first time, while Valencia makes its return 🚥
 - Datum: 2026-10-01T07:02:38.000Z
 - URL: https://www.instagram.com/p/Dd8UBwFOgKg/
-- Likes: 11143
-- Kommentare: 298
+- Likes: 11195
+- Kommentare: 301
 - Shares: nicht verfügbar
 ### Datensatz 2
 - Titel: 👑 @nicolo_bulega11 is the 2026 #WorldSBK CHAMPION! 🇮🇹🏆 A season of perfection, records and redemption ⭐️
@@ -17,109 +17,174 @@
 #Bu1egacy #ItalianWorldSBK 🇮🇹
 - Datum: 2026-09-27T14:04:47.000Z
 - URL: https://www.instagram.com/p/DdyxftRuz2K/
-- Likes: 28380
+- Likes: 28445
 - Kommentare: 434
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: From chasing a dream to becoming a two-time World Champion, what a journey it’s been, @jeffrey_buis! 🏆 Thank you for the unforgettable memories and for everything you’ve given to #WorldSBK 🙌
-- Datum: 2026-10-21T08:49:19.000Z
-- URL: https://www.instagram.com/p/DewBD0SjvLf/
-- Likes: 676
-- Kommentare: 9
+- Titel: What a battle 🔥 Race 2 was the definition of pure racing ⚔️
+
+#SpanishWorldSBK 🇪🇸 #WorldSBK
+- Datum: 2026-10-23T08:08:17.000Z
+- URL: https://www.instagram.com/p/De1F3d_Or5n/
+- Likes: 346
+- Kommentare: 0
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: One last race in blue 💙 before the start of a new chapter ✨
+- Titel: Media day done, race weekend mode: ON 🔥🇦🇺 @ikerlecuona_27 is back on track this weekend at the #AustralianGP 💪
 
-#SpanishWorldSBK 🇪🇸 #WorldSBK
-- Datum: 2026-10-21T08:33:44.000Z
-- URL: https://www.instagram.com/p/Dev_MQxuoxA/
-- Likes: 369
-- Kommentare: 4
+#WorldSBK #MotoGP
+- Datum: 2026-10-22T18:18:48.000Z
+- URL: https://www.instagram.com/p/DeznBuLDh6a/
+- Likes: 750
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: The final 2026 #WorldSSP Riders’ Championship top 10! 📊
-
-#SpanishWorldSBK 🇪🇸
-- Datum: 2026-10-21T07:52:48.000Z
-- URL: https://www.instagram.com/p/Dev6gSOujD7/
-- Likes: 1278
-- Kommentare: 4
-- Shares: nicht verfügbar
-### Datensatz 6
-- Titel: Farewells, wins and all the hottest talking points 🔥✨ Catch up with all the hot headlines of the last round of the season on WorldSBK.com! 🍿
-
-#SpanishWorldSBK 🇪🇸 #WorldSBK
-- Datum: 2026-10-20T15:06:30.000Z
-- URL: https://www.instagram.com/p/DeuHbfoDtfP/
-- Likes: 5706
-- Kommentare: 25
-- Shares: nicht verfügbar
-### Datensatz 7
-- Titel: Six years, countless memories ✨ Thank you, @mgm_racing_performance, for being part of the #WorldSBK family! 🩵
-- Datum: 2026-10-20T14:52:45.000Z
-- URL: https://www.instagram.com/p/DeuF0ZhuAtp/
-- Likes: 1488
-- Kommentare: 8
-- Shares: nicht verfügbar
-### Datensatz 8
-- Titel: Overtakes worth watching on repeat!🔥⚔️ Which move stole the spotlight at Jerez in the #SpanishWorldSBK round? 🇪🇸 You decide! 🗳️⬇️
+- Titel: The results from the first day of testing at Jerez are in! 🛠️
 
 #WorldSBK
-- Datum: 2026-10-20T14:06:18.000Z
-- URL: https://www.instagram.com/p/DeuAij2jssb/
-- Likes: 958
+- Datum: 2026-10-22T16:56:28.000Z
+- URL: https://www.instagram.com/p/DezdmCkOIoC/
+- Likes: 2118
+- Kommentare: 15
+- Shares: nicht verfügbar
+### Datensatz 6
+- Titel: @sam.lowes22, @88migueloliveira and @jonathan_rea are the fastest riders from day one of testing at Jerez! 🚀
+
+#WorldSBK
+- Datum: 2026-10-22T16:29:30.000Z
+- URL: https://www.instagram.com/p/DezahHPDqDK/
+- Likes: 2818
 - Kommentare: 6
 - Shares: nicht verfügbar
-### Datensatz 9
-- Titel: One last moment in the box ✨ Grazie, Danilo 🥹🫶
+### Datensatz 7
+- Titel: Three podiums and a P2 start means only one thing: best weekend of the season unlocked ✅
 
 #SpanishWorldSBK 🇪🇸 #WorldSBK
-- Datum: 2026-10-20T13:30:46.000Z
-- URL: https://www.instagram.com/p/Det8as-jed6/
-- Likes: 2252
-- Kommentare: 24
+- Datum: 2026-10-22T13:53:33.000Z
+- URL: https://www.instagram.com/p/DezIlJsO57p/
+- Likes: 618
+- Kommentare: 1
+- Shares: nicht verfügbar
+### Datensatz 8
+- Titel: New colours yesterday, first laps today 🔵 2027 preparations are underway! 🔥
+
+#WorldSBK
+- Datum: 2026-10-22T13:32:03.000Z
+- URL: https://www.instagram.com/p/DezGNd9Di-7/
+- Likes: 3635
+- Kommentare: 25
+- Shares: nicht verfügbar
+### Datensatz 9
+- Titel: Testing mode: ON 🛠️ Black & white, looking sharp! 🖤🤍🔥
+
+#WorldSBK
+- Datum: 2026-10-22T12:28:42.000Z
+- URL: https://www.instagram.com/p/Dey-9btjnvU/
+- Likes: 16400
+- Kommentare: 83
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: What a journey, @petrux9. You’ll be missed! 🥹 Thanks for all the memories you’ve shared with the entire #WorldSBK paddock❤️
-- Datum: 2026-10-20T13:12:57.000Z
-- URL: https://www.instagram.com/p/Det6CCKueKj/
-- Likes: 7826
-- Kommentare: 275
+- Titel: From @nicolo_bulega11’s dominance to @88migueloliveira’s podium battle and record-breaking moments, Estoril had it all! 👑🏁 Relive the best of #EstorilWorldSBK on our YouTube channel! 👀🇵🇹
+
+#WorldSBK
+- Datum: 2026-10-22T10:01:31.000Z
+- URL: https://www.instagram.com/p/DeyuDUJCKGO/
+- Likes: 1508
+- Kommentare: 3
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: From the mesmerising Stoner Corner, iconic title fights and much more 🔥
-
-This is what makes #MotoGP in Australia iconic ✨
+- Titel: A great first day for Marco Bezzecchi but he's looking for more improvements 🎯
 
 #AustralianGP 🇦🇺
-- Datum: 2026-10-21T09:00:39.000Z
+- Datum: 2026-10-23T09:15:04.000Z
 - URL: nicht verfügbar
-- Likes: 196
-- Kommentare: 4
+- Likes: 64
+- Kommentare: 0
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: It's been ten years since this absolute #AustralianGP 🇦🇺 belter 😎
+- Titel: It was a beautiful day at Phillip Island and we saw Marc Marquez be in an Aprilia sandwich ⚔️
 
-Enjoy the 2016 race at Phillip Island in full 🎥
-
-#MotoGP
-- Datum: 2026-10-21T08:00:12.000Z
-- URL: nicht verfügbar
-- Likes: 2392
-- Kommentare: 131
-- Shares: nicht verfügbar
-### Datensatz 3
-- Titel: Who wanted it more? 🤩
-
-The 2017 race was #MotoGP at its finest! ✨
+Go through everything else that happened today Down Under! 😎
 
 #AustralianGP 🇦🇺
-- Datum: 2026-10-21T07:01:08.000Z
+- Datum: 2026-10-23T09:00:26.000Z
 - URL: nicht verfügbar
-- Likes: 754
-- Kommentare: 20
+- Likes: 675
+- Kommentare: 22
 - Shares: nicht verfügbar
-- Status: 3 öffentliche Beiträge verfügbar.
+### Datensatz 3
+- Titel: The birthday didn't start great but Raul Fernandez turned it around in style 🎂
+
+#AustralianGP 🇦🇺
+- Datum: 2026-10-23T08:50:03.000Z
+- URL: nicht verfügbar
+- Likes: 56
+- Kommentare: 0
+- Shares: nicht verfügbar
+### Datensatz 4
+- Titel: A fresh aero update for Ducati 👀
+
+#AustralianGP🇦🇺 #MotoGP
+- Datum: 2026-10-23T08:34:46.000Z
+- URL: nicht verfügbar
+- Likes: 1597
+- Kommentare: 52
+- Shares: nicht verfügbar
+### Datensatz 5
+- Titel: Martinator felt very well despite this being his first ride at Phillip Island on the Aprilia 😅
+
+#AustralianGP 🇦🇺
+- Datum: 2026-10-23T08:26:55.000Z
+- URL: nicht verfügbar
+- Likes: 110
+- Kommentare: 2
+- Shares: nicht verfügbar
+### Datensatz 6
+- Titel: Going full green and gold for the last #MotoGP race at home 💚💛🥹 
+
+#AustralianGP 🇦🇺
+- Datum: 2026-10-23T08:06:58.000Z
+- URL: nicht verfügbar
+- Likes: 3402
+- Kommentare: 88
+- Shares: nicht verfügbar
+### Datensatz 7
+- Titel: For Marc Marquez the target are the Aprilias but he's feeling good 💪
+
+#AustralianGP 🇦🇺
+- Datum: 2026-10-23T07:48:04.000Z
+- URL: nicht verfügbar
+- Likes: 459
+- Kommentare: 29
+- Shares: nicht verfügbar
+### Datensatz 8
+- Titel: Ducati Corse's Davide Tardozzi responds to Aprilia on the team orders debate 🗣️
+
+#AustralianGP 🇦🇺
+- Datum: 2026-10-23T06:44:09.000Z
+- URL: nicht verfügbar
+- Likes: 263
+- Kommentare: 21
+- Shares: nicht verfügbar
+### Datensatz 9
+- Titel: The new leathers ritual took an unexpected turn 😅😂
+
+#AustralianGP🇦🇺 #MotoGP
+- Datum: 2026-10-23T06:20:25.000Z
+- URL: nicht verfügbar
+- Likes: 1388
+- Kommentare: 9
+- Shares: nicht verfügbar
+### Datensatz 10
+- Titel: Marco Bezzecchi sends a statement at Phillip Island 🔥
+
+#AustralianGP 🇦🇺
+- Datum: 2026-10-23T06:03:39.000Z
+- URL: nicht verfügbar
+- Likes: 181
+- Kommentare: 3
+- Shares: nicht verfügbar
+- Status: 10 öffentliche Beiträge verfügbar.
