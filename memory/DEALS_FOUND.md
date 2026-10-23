@@ -3289,3 +3289,19 @@ Direkte Treffer (antippbar):
 
 Quellen:
 - KAUFLAND MOBIL Prepaid eSIM Starterpaket mit 5G im besten: https://www.kaufland.de/product/475008971/
+## Suche vom 2026-10-23 10:54
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Kein Treffer belegt Preis und alle Suchkriterien gleichzeitig – Links bitte direkt prüfen.
+
+Direkte Treffer (antippbar):
+1. KAUFLAND MOBIL Prepaid eSIM Starterpaket mit 5G im besten
+   https://www.kaufland.de/product/475008971/ – Produktbeschreibung · Surfen & telefonieren im besten 5G D-Netz · Keine Vertragsbindung – volle Flexibilität dank Prepaid · 10 € Startguthaben¹ im Starterpaket ...
+
+Quellen:
+- KAUFLAND MOBIL Prepaid eSIM Starterpaket mit 5G im besten: https://www.kaufland.de/product/475008971/
