@@ -1120,3 +1120,103 @@ Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mes
 Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg", "media_status": "", "object_id": "122126925807469415", "object_type": "bild", "platform": "facebook", "post_id": "122126925807469415", "source_url": "https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-23-daily
+Telegram-Update-ID: 279361991
+MotoGP-Auswahl: 1
+Story-Key: motogp:121866
+Event-Fingerprint: MotoGP|qualifying|razgatlioglu|
+Titel: MotoGP - Pramac: Toprak Razgatlıoğlu’nu sezonu bitirip ameliyat olmaya ikna etmek “çok zordu”
+Text:
+Toprak Razgatlıoğlu musste seine erste MotoGP-Saison vorzeitig beenden – und Pramac sagt, das Überzeugen war nicht leicht.
+
+Pramac Yamaha hat erklärt, dass es nötig war, den dreifachen WorldSBK-Champion davon abzuhalten, weiterzufahren, nachdem er sich in Mandalika die rechte Schulter ausgekugelt hatte. Trotz der Verletzung nahm er am Qualifying und Sprint teil, zog sich aber im Grand Prix früh zurück. Nach der Rückkehr nach Europa zeigte die Untersuchung: Die Schulterverletzung war schwerwiegender als zunächst gedacht.
+
+Ist eurer Meinung nach der frühe Saisonabbruch mit der bevorstehenden Operation der richtige Weg für Toprak?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ameliyat-olmaya-ikna-etmek-cok-zordu/121866
+Quelle: https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ameliyat-olmaya-ikna-etmek-cok-zordu/121866
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-1-motogp-pramac-toprak-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-23-daily
+Telegram-Update-ID: 279361991
+MotoGP-Auswahl: 1
+Story-Key: motogp:121866
+Event-Fingerprint: MotoGP|qualifying|razgatlioglu|
+Titel: MotoGP - Pramac: Toprak Razgatlıoğlu’nu sezonu bitirip ameliyat olmaya ikna etmek “çok zordu”
+Text:
+Toprak Razgatlıoğlu musste seine erste MotoGP-Saison vorzeitig beenden – und Pramac sagt, das Überzeugen war nicht leicht.
+
+Pramac Yamaha hat erklärt, dass es nötig war, den dreifachen WorldSBK-Champion davon abzuhalten, weiterzufahren, nachdem er sich in Mandalika die rechte Schulter ausgekugelt hatte. Trotz der Verletzung nahm er am Qualifying und Sprint teil, zog sich aber im Grand Prix früh zurück. Nach der Rückkehr nach Europa zeigte die Untersuchung: Die Schulterverletzung war schwerwiegender als zunächst gedacht.
+
+Ist eurer Meinung nach der frühe Saisonabbruch mit der bevorstehenden Operation der richtige Weg für Toprak?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ameliyat-olmaya-ikna-etmek-cok-zordu/121866
+Quelle: https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ameliyat-olmaya-ikna-etmek-cok-zordu/121866
+Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-1-motogp-pramac-toprak-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-23-daily
+Telegram-Update-ID: 279361992
+MotoGP-Auswahl: 5
+Story-Key: motogp:121887
+Event-Fingerprint: -
+Titel: MotoGP - Bezzecchi, kırmızı bayraklı Phillip Island antrenmanında lider: Marquez üçüncü
+Text:
+Bezzecchi hat das Friday-Training in Phillip Island angeführt – und das, nachdem er mit Alex Marquez kollidiert war.
+
+Marc Marquez landete beim selben Session auf Platz drei.
+
+Zweimal musste die Rote Fahne wegen jeweils separater Vorfälle eingeworfen werden.
+
+Die 60-minütige Sessions am Freitag endete damit vorzeitig nach zwei roten Flaggen.
+
+Wie steht ihr zu Bezzecchis Performance nach dem Kontakt mit Alex?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-23-daily
+Telegram-Update-ID: 279361992
+MotoGP-Auswahl: 5
+Story-Key: motogp:121887
+Event-Fingerprint: -
+Titel: MotoGP - Bezzecchi, kırmızı bayraklı Phillip Island antrenmanında lider: Marquez üçüncü
+Text:
+Bezzecchi hat das Friday-Training in Phillip Island angeführt – und das, nachdem er mit Alex Marquez kollidiert war.
+
+Marc Marquez landete beim selben Session auf Platz drei.
+
+Zweimal musste die Rote Fahne wegen jeweils separater Vorfälle eingeworfen werden.
+
+Die 60-minütige Sessions am Freitag endete damit vorzeitig nach zwei roten Flaggen.
+
+Wie steht ihr zu Bezzecchis Performance nach dem Kontakt mit Alex?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887
+Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg
+Link-Preview: offiziell
