@@ -1,10 +1,10 @@
 name: MotoGP Content Agency
 on:
   schedule:
-    # Run before the 08:00 Berlin morning window; the second slot is a
-    # same-day recovery opportunity if GitHub delays or drops the first event.
-    - cron: "17 3 * * *"
-    - cron: "37 4 * * *"
+    # One daily start; native timezone handles summer/winter without extra runs.
+    # Lightweight gate suppresses completed days before dependencies/preflight.
+    - cron: "0 8 * * *"
+      timezone: "Europe/Berlin"
   workflow_dispatch:
     inputs:
       force_new_run:
@@ -20,17 +20,32 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           # Reruns of an older Actions run must execute against the current production branch.
           ref: main
+      - name: Berlin morning gate
+        id: morning
+        run: |
+          python3 - <<'PY'
+          import os
+          from racing_run_controller import morning_due
+          due = morning_due()
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f"due={str(due).lower()}\n")
+          print(f"Racing morning due: {due}")
+          PY
       - uses: actions/setup-python@v5
+        if: steps.morning.outputs.due == 'true'
         with:
           python-version: "3.10"
-      - run: pip install requests Pillow beautifulsoup4 yt-dlp openai-whisper
-      - name: Preflight – V8.5 Orchestrator + komplette Racing-Kette
+      - if: steps.morning.outputs.due == 'true'
+        run: pip install requests Pillow beautifulsoup4 yt-dlp openai-whisper
+      - if: steps.morning.outputs.due == 'true'
+        name: Preflight – V8.5 Orchestrator + komplette Racing-Kette
         run: |
           python -m py_compile racing_telegram_commands.py motoparktv_video_ingest.py motoparktv_runtime.py racing_v85.py racing_flush_notifications.py racing_v855_hardening.py racing_run_controller.py racing_v85_selftest.py motogp_content_agency_v2.py motogp_content_agency.py racing_pipeline_selftest.py racing_semantic_qm.py turkish_riders_scout.py motogp_quality_manager.py chief_quality_manager.py motogp_telegram_receive.py motogp_telegram_receive_v85.py llm_client.py router.py telegram_bot.py memory_engine.py generate_agnes_media.py asset_paths.py media_policy.py
           python racing_final_guard_selftest.py
@@ -64,7 +79,8 @@ jobs:
           if 'PROFESSIONAL AGENT STANDARD' not in ctx or 'HUMAN WRITING PROTOCOL' not in ctx: raise SystemExit('global professional context missing')
           print('V8.5.5 preflight: immutable series + source-fact whitelist + technical QM retry: PASS')
           PY
-      - name: V8.5 Run Controller → Research → Redaktion → QM → Media → Human Approval Gate
+      - if: steps.morning.outputs.due == 'true'
+        name: V8.5 Run Controller → Research → Redaktion → QM → Media → Human Approval Gate
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -78,10 +94,10 @@ jobs:
           echo "force_new_run resolved=${INPUT_FORCE_NEW_RUN}"
           python -u racing_v85.py
       - name: V8.5 State, Memory, QM-Audit, Medien und Session persistent speichern
-        if: always()
+        if: always() && steps.morning.outputs.due == 'true'
         run: bash scripts/persist_racing_state.sh
       - name: Telegram-Freigabe erst nach erfolgreicher Persistenz senden
-        if: success()
+        if: success() && steps.morning.outputs.due == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

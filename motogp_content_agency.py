@@ -29,6 +29,7 @@ def known_story_keys():
  raw=story_memory_text();keys=set()
  for u in re.findall(r'https?://[^\s)]+',raw):
   u=u.rstrip('.,;`>')
+  keys.add('url:'+canonical_url(u))
   if 'motogp.com/' in u:keys.add(story_key('',u))
  for k in re.findall(r'(?m)^Story-Key:\s*(\S+)\s*$',raw):keys.add(k.strip())
  return keys
