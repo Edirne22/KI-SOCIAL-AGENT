@@ -72,7 +72,7 @@ class Repair(unittest.TestCase):
         self.assertEqual(rows,[item(2)])
     def test_morning_summer_winter_and_no_midnight_run(self):
         with patch.dict('os.environ',{'GITHUB_EVENT_NAME':'schedule'}):
-            for stamp,expected in [('2026-07-01T05:59:00+00:00',False),('2026-07-01T06:00:00+00:00',True),('2026-12-01T06:59:00+00:00',False),('2026-12-01T07:00:00+00:00',True),('2026-12-01T11:00:00+00:00',False)]:
+            for stamp,expected in [('2026-07-01T05:59:00+00:00',False),('2026-07-01T06:00:00+00:00',True),('2026-12-01T06:59:00+00:00',False),('2026-12-01T07:00:00+00:00',True),('2026-12-01T11:00:00+00:00',True)]:
                 self.assertEqual(rc.morning_due(datetime.fromisoformat(stamp)),expected,stamp)
     def test_recovery_once_per_day_and_manual_override(self):
         with patch.dict('os.environ',{'GITHUB_EVENT_NAME':'schedule'}):

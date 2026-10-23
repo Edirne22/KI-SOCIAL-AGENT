@@ -11,7 +11,7 @@ Basis: 20a80d72bff88bb164baa405262f5a1b2c37ab14.
 
 ## Änderung
 
-Genau ein täglicher GitHub-Zeitplan: `cron: "0 8 * * *"`, `timezone: "Europe/Berlin"`. Native Zeitzonenplanung berücksichtigt Sommer-/Winterzeit ohne zusätzliche Aufweckläufe. Das vorhandene Europe/Berlin-Gate erlaubt Verarbeitung ab 08:00 bis vor 12:00. Nach erfolgreichem Tagesbatch kein erneuter teurer Lauf. Manuelle Starts bleiben möglich. Ein GitHub-Schedule ist keine garantierte 08:00-Zustellung; die Redaktion braucht zusätzlich Laufzeit.
+Genau ein täglicher GitHub-Zeitplan: `cron: "0 8 * * *"`, `timezone: "Europe/Berlin"`. Native Zeitzonenplanung berücksichtigt Sommer-/Winterzeit ohne zusätzliche Aufweckläufe. Das vorhandene Europe/Berlin-Gate erlaubt Verarbeitung ab 08:00 auch bei verspätetem Start nach 12:00. Nach erfolgreichem Tagesbatch kein erneuter teurer Lauf. Manuelle Starts bleiben möglich. Ein GitHub-Schedule ist keine garantierte 08:00-Zustellung; die Redaktion braucht zusätzlich Laufzeit.
 
 Alle entdeckten vorgefilterten Artikel werden mit maximal sechs gleichzeitigen Abrufen verarbeitet. Gemeinsame Titel-/URL-Dedupe vor Redaktion, Vortagesfallback und finaler Auswahl. Turkish sucht bis sieben Tage, markiert zunächst nur die sichtbaren fünf; explizites `turkish liste` markiert die tatsächlich gesendete Liste. Quellen-/Fakten-QM und Publishing-Freigaben unverändert.
 
@@ -33,3 +33,9 @@ Bülent meldet am 20.10. ein ausgeschöpftes 2000-Minuten-Kontingent. Der Kontos
 Syntaxreferenz: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onschedule
 
 Der Folgecommit spart CI-Ausführungen mit `[skip ci]` und bleibt ungemergt. Die 16 erfolgreichen CI-Läufe gehören ausschließlich zum vorherigen Commit `77d7db62096e8d6e5424b28428af3bb691c483de`. Für den neuen Stand wurden Zeitplan und angepasste Testassertion statisch geprüft, aber keine Python-Tests ausgeführt, da die lokale Ausführungsumgebung nicht erreichbar ist. Vor Merge gezielt `PYTHONPATH=. python tests/test_racing_morning_repair.py` mit den Projektabhängigkeiten ausführen und erforderliche CI nachholen.
+
+## Produktionsbefund 23.10.2026
+
+Run 39925177391: 440 vorgefilterte Artikel, nur 320 abgerufen. Turkish-Diagnose enthält drei PASS-Einträge, zahlreiche older-than-window und am Ende sent=0, history=0, max_days=3. Die Auswahl wird zusätzlich durch bereits angebotene bzw. normale Racing-Picks eingeschränkt; aus diesen Logs allein ist die genaue Aufteilung dieser Ausschlüsse nicht ablesbar. Der bisherige Fix war noch nicht auf main.
+
+Das Morgen-Gate lehnt verspätete Starts nach Mittag nicht mehr ab. Tages-Duplikatschutz bleibt bestehen. Die bestehende Zeit-Assertion wurde angepasst, aber auf ausdrücklichen Nutzerwunsch kein Test und keine CI gestartet. Die aktuellen Instagram-/Freigabe-Fixes aus PR 666 und Daily-Ideas-Fixes aus PR 667 liegen auf main; PR 664 ist laut GitHub konfliktfrei damit zusammenführbar. Keine Garantie für fünf täglich neue belegte Meldungen.
