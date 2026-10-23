@@ -90,7 +90,36 @@ Inspirations-Quelle: vollständige URL oder Keine aktuelle externe Quelle verwen
         text=re.sub(pattern,'[ENTFERNT]',text)
     return text
 
+
+def validate_content_plan(content):
+    """Reject incomplete provider output before it can replace a usable draft."""
+    blocks = list(re.finditer(
+        r"(?ms)^--- BEITRAG[ \t]+(\d+)[ \t]+---[ \t]*\n(.*?)(?=^--- BEITRAG|\Z)",
+        content,
+    ))
+    if [m.group(1) for m in blocks] != ["1", "2", "3"]:
+        raise RuntimeError("Daily Content: erwartet werden genau drei Beiträge (1, 2, 3)")
+    required = (
+        "Titel", "Plattform", "Thema", "Hook", "Instagram-Caption", "Facebook-Post",
+        "TikTok-Skript", "Visuelle Idee", "Medienvorschlag", "Hashtags Instagram",
+        "Hashtags TikTok", "Trend-Bezug", "Viral-Score", "Inspirations-Plattform",
+        "Inspirations-Quelle",
+    )
+    labels = "|".join(re.escape(name) for name in required)
+    for block in blocks:
+        fields = {}
+        for field in re.finditer(
+            rf"(?ms)^({labels}):[ \t]*(.*?)(?=^(?:{labels}):|\Z)", block.group(2)
+        ):
+            name, value = field.group(1), field.group(2).strip()
+            if name in fields:
+                raise RuntimeError("Daily Content: doppelte Felder im Entwurf")
+            fields[name] = value
+        if any(not fields.get(name) or fields[name] in {"...", "…"} for name in required):
+            raise RuntimeError(f"Daily Content: Beitrag {block.group(1)} ist unvollständig")
+
 def save_content_plan(content):
+    validate_content_plan(content)
     os.makedirs("content",exist_ok=True)
     with open("content/CONTENT_PLAN.md","a",encoding="utf-8") as f:f.write(f"\n\n## Automatisch generierte Beiträge vom {datetime.now():%Y-%m-%d %H:%M:%S}\n{content}\n")
 
