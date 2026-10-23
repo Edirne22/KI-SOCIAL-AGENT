@@ -1154,3 +1154,28 @@ Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mes
 Story-Key: title:alcoba-2027-de-ampiyon-tak-m-as-blu-cru-ya-ge-iyor
 Titel: Alcoba 2027'de Şampiyon Takım AS BLU CRU'ya Geçiyor
 Quelle: https://motoetkinlik.com/alcoba-2027de-sampiyon-takim-as-blu-cruya-geciyor
+
+## 2026-10-23 08:37 UTC – ANGEBOTEN
+Story-Key: motogp:121866
+Titel: MotoGP - Pramac: Toprak Razgatlıoğlu’nu sezonu bitirip ameliyat olmaya ikna etmek “çok zordu”
+Quelle: https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ameliyat-olmaya-ikna-etmek-cok-zordu/121866
+
+## 2026-10-23 08:37 UTC – ANGEBOTEN
+Story-Key: motogp:121781
+Titel: MotoGP - Alex Marquez’den sprint çağrısı: “En azından yarıya indirilmeli”
+Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquezden-sprint-cagrisi-en-azindan-yariya-indirilmeli/121781
+
+## 2026-10-23 08:37 UTC – ANGEBOTEN
+Story-Key: motogp:4096740
+Titel: Milli motosikletçi Deniz Öncü, Avustralya'da piste çıkacak
+Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-avustralyada-piste-cikacak/4096740
+
+## 2026-10-23 08:37 UTC – ANGEBOTEN
+Story-Key: motogp:121581
+Titel: Editörün Seçimi - Toprak Razgatlıoğlu’nun MotoGP’deki ilk sezonu: 18 puanın ardındaki hikâye
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglunun-motogpdeki-ilk-sezonu-18-puanin-ardindaki-hikaye/121581
+
+## 2026-10-23 08:37 UTC – ANGEBOTEN
+Story-Key: motogp:121887
+Titel: MotoGP - Bezzecchi, kırmızı bayraklı Phillip Island antrenmanında lider: Marquez üçüncü
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887

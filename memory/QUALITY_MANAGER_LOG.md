@@ -3456,3 +3456,45 @@ Story-Key: title:alcoba-2027-de-ampiyon-tak-m-as-blu-cru-ya-ge-iyor
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-23 09:10 UTC | Motorcycle Racing | PASS
+Titel: MotoGP - Pramac: Toprak Razgatlıoğlu’nu sezonu bitirip ameliyat olmaya ikna etmek “çok zordu”
+Story-Key: motogp:121866
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-23 09:10 UTC | Motorcycle Racing | PASS
+Titel: MotoGP - Alex Marquez’den sprint çağrısı: “En azından yarıya indirilmeli”
+Story-Key: motogp:121781
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-23 09:11 UTC | Motorcycle Racing | FAIL
+Titel: MotoGP - Marini hastalık nedeniyle Phillip Island’da öğleden sonra antrenmanına çıkmayacak
+Story-Key: motogp:121876
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-23 09:11 UTC | Motorcycle Racing | FAIL
+Titel: MotoGP - Marini hastalık nedeniyle Phillip Island’da öğleden sonra antrenmanına çıkmayacak
+Story-Key: motogp:121876
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-23 09:11 UTC | Motorcycle Racing | PASS
+Titel: Milli motosikletçi Deniz Öncü, Avustralya'da piste çıkacak
+Story-Key: motogp:4096740
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-23 09:12 UTC | Motorcycle Racing | PASS
+Titel: Editörün Seçimi - Toprak Razgatlıoğlu’nun MotoGP’deki ilk sezonu: 18 puanın ardındaki hikâye
+Story-Key: motogp:121581
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-23 09:12 UTC | Motorcycle Racing | PASS
+Titel: MotoGP - Bezzecchi, kırmızı bayraklı Phillip Island antrenmanında lider: Marquez üçüncü
+Story-Key: motogp:121887
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

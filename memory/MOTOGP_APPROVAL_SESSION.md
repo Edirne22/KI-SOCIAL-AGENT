@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1792658693
+Session-Timestamp: 1792744657
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,27 +15,27 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.7
+Artikelalter-Tage: 0.2
 Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: title:miller-ve-fernandez-den-toprak-ge-mi-olsun-mesaj
-Titel: Miller ve Fernandez'den Toprak'a Geçmiş Olsun Mesajı
-Quelle: https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji
+Story-Key: motogp:121866
+Titel: MotoGP - Pramac: Toprak Razgatlıoğlu’nu sezonu bitirip ameliyat olmaya ikna etmek “çok zordu”
+Quelle: https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ameliyat-olmaya-ikna-etmek-cok-zordu/121866
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jack-miller-toprak-gecmis-olsun-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-1-motogp-pramac-toprak-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1352668_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jack Miller und Augusto Fernandez wünschen Toprak Razgatlıoğlu gute Besserung
+Toprak Razgatlıoğlu musste seine erste MotoGP-Saison vorzeitig beenden – und Pramac sagt, das Überzeugen war nicht leicht.
 
-Jack Miller und Augusto Fernandez sagen Toprak Razgatlıoğlu gute Besserung. Der 26. Oktober ist der Termin für die geplante OP. Borsoi hofft, dass Toprak bald wieder auf dem Motorrad sitzt.
+Pramac Yamaha hat erklärt, dass es nötig war, den dreifachen WorldSBK-Champion davon abzuhalten, weiterzufahren, nachdem er sich in Mandalika die rechte Schulter ausgekugelt hatte. Trotz der Verletzung nahm er am Qualifying und Sprint teil, zog sich aber im Grand Prix früh zurück. Nach der Rückkehr nach Europa zeigte die Untersuchung: Die Schulterverletzung war schwerwiegender als zunächst gedacht.
 
-Wie bewertet ihr die Genesungsbotschaft an Toprak Razgatlıoğlu?
+Ist eurer Meinung nach der frühe Saisonabbruch mit der bevorstehenden Operation der richtige Weg für Toprak?
 
-#MotoGP #ToprakRazgatlioglu #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife #RaulFernandez
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -46,24 +46,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.0
-Kategorie: Turkish Riders
+Artikelalter-Tage: 1.0
+Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:motogp-2027-gridinde-deprem-11-tak-m-n-22-s-r-c-s-kesinle-ti
-Titel: MotoGP 2027 gridinde deprem! 11 takımın 22 sürücüsü kesinleşti
-Quelle: https://motoetkinlik.com/motogp-2027-surucu-kadrosu-resmen-tamamlandi-iste-11-takim-22-surucu-ve-buyuk-transferler
+Story-Key: motogp:121781
+Titel: MotoGP - Alex Marquez’den sprint çağrısı: “En azından yarıya indirilmeli”
+Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquezden-sprint-cagrisi-en-azindan-yariya-indirilmeli/121781
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-2-motogp-2027-gridinde-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/HVDv7qHWEAEZDWM-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-2-motogp-alex-marquezd-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1355432_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-MotoGP 2027: Der Ridergrid ist komplett.
+Alex Marquez hat gesprochen — und er will, dass MotoGP die Sprint-Rennen pro Saison mindestens halbiert. Der Gresini-Pilot sagt, das Ziel sei einfach: junge Fahrer in einem immer dichteren Programm schützen. Seit 2023 gibt es bei jedem Rennenwochenende einen Sprint, ähnlich wie F1 schon Jahre zuvor eingeschlagen hatte — nur dass MotoGP den Weg gehen wollte, Sprint in jedes Wochenende zu packen. Jetzt kommt einer aus den eigenen Reihen und sagt: Stop.
 
-Marc Marquez, Pedro Acosta, Francesco Bagnaia, Jorge Martin und Toprak Razgatlıoğlu gehören zum MotoGP 2027 Kader. Mit 11 Teams und 22 Fahrern ist der Grid endgültig abgeschlossen.
+Wie seht ihr das — ist Marquez mit seinem Vorschlag auf der richtigen Linie, oder wäre weniger Action einfach der falsche Weg?
 
-Wie seht ihr die finalen MotoGP 2027 Rider-Kombination?
-
-#MotoGP #ToprakRazgatlioglu #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -71,27 +69,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 2
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 2.0
+Artikelalter-Tage: 0.9
 Kategorie: Turkish Riders
-Serie: MotoGP
-Story-Key: title:toprak-razgatl-o-lu-ndan-k-t-haber-motogp-sezonu-sona-erdi
-Titel: Toprak Razgatlıoğlu'ndan kötü haber! MotoGP sezonu sona erdi
-Quelle: https://motoetkinlik.com/toprak-razgatlioglunun-motogp-sezonu-sona-erdi-ameliyat-karari-aciklandi
+Serie: Moto2
+Story-Key: motogp:4096740
+Titel: Milli motosikletçi Deniz Öncü, Avustralya'da piste çıkacak
+Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-avustralyada-piste-cikacak/4096740
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-3-toprak-razgatlioglu-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-motogp-2026-ameliyat-sezonu-kapatti-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-3-milli-motosikletci-d-01.jpg
+Quellen-Preview: https://web-cdnprod.aa.com.tr/uploads/Contents/2026/10/22/thumbs_b_c_b9c90d5d5d17a336acdd70919e623f56.jpg
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu muss 26. Oktober operiert werden. Die MotoGP-Saison 2026 ist für ihn damit beendet.
+Deniz Öncü steht beim nächsten Lauf der Welt-Moto2-Meisterschaft in Australien am Start. Der türkische Fahrer geht bei der Avustralya-Runde auf die Piste – seine Fans im Heimatland dürfen sich also wieder über einen eigenen Fahrer im Feld freuen.
 
-Die Nachricht von Pramac Yamaha ist klar: Schulterverletzung, OP am 26. Oktober, Saisonpass. Toprak Razgatlıoğlu kann 2026 nicht mehr an den Start gehen. 🏍️
+Was erwartet ihr von Öncü in Australien?
 
-Wie seht ihr die Situation für Toprak?
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -99,25 +95,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 2
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
 Artikelalter-Tage: 1.1
-Kategorie: MotoGP
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: title:jorge-martin-den-ampiyonluk-k-art-k-ki-ilik-bir-sava
-Titel: Jorge Martin'den şampiyonluk çıkışı: “Artık üç kişilik bir savaş!”
-Quelle: https://motoetkinlik.com/jorge-martinden-motogp-sampiyonlugu-aciklamasi-artik-uc-kisilik-bir-savas
+Story-Key: motogp:121581
+Titel: Editörün Seçimi - Toprak Razgatlıoğlu’nun MotoGP’deki ilk sezonu: 18 puanın ardındaki hikâye
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglunun-motogpdeki-ilk-sezonu-18-puanin-ardindaki-hikaye/121581
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-4-jorge-martin-den-sam-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jorge-martin-marc-marquez-marco-bezzecchi-motogp-2026-1-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-4-editoeruen-secimi-to-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/toprak-razgatlioglu-mandalika-scaled.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin stellt die 2026er MotoGP-Saison um: Er sagt offen, dass es jetzt nicht mehr Zweikampf ist, sondern ein richtiger Dreikampf – mit ihm, Marc Marquez und Marco Bezzecchi. Das kommt kurz vor dem Rennen auf Phillip Island, die Punkteverteilung ist noch offen und alles kann passieren. Kein einzelner Fahrer hat bereits die Nase vorne, das macht die Sache richtig interessant.
+Toprak Razgatlıoğlus MotoGP-Debüt-Saison hat ein frühes Ende gefunden. Nach einer Schulterverletzung in Mandalika und der Operation am 26. Oktober muss der dreifache WSBK-Weltmeister Phillip Island und den Rest der Saison pausieren. Augusto Fernandez, Yamaha-Testfahrer, übernimmt für ihn. Toprak bleibt mit 18 Punkten in seinem ersten MotoGP-Jahr nach 17 Rennwochenenden.
 
-Wer hat bei diesem Dreikampf eurem Gefühl nach die besseren Karten für Phillip Island?
+Wie schätzt ihr die Situation für Toprak ein?
 
-#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+#MotoGP #ToprakRazgatlioglu #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -126,28 +122,30 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 2
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.7
-Kategorie: Turkish Riders
-Serie: WorldSSP
-Story-Key: title:alcoba-2027-de-ampiyon-tak-m-as-blu-cru-ya-ge-iyor
-Titel: Alcoba 2027'de Şampiyon Takım AS BLU CRU'ya Geçiyor
-Quelle: https://motoetkinlik.com/alcoba-2027de-sampiyon-takim-as-blu-cruya-geciyor
+Artikelalter-Tage: 0.1
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:121887
+Titel: MotoGP - Bezzecchi, kırmızı bayraklı Phillip Island antrenmanında lider: Marquez üçüncü
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-5-alcoba-2027-de-sampi-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/WorldSSP-2027-Alcoba-As-Blu-Cru-Yamaha.webp
+Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1355807_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jeremy Alcoba wechselt 2027 zu AS BLU CRU Racing Team und fährt dort die Yamaha R9.
+Bezzecchi hat das Friday-Training in Phillip Island angeführt – und das, nachdem er mit Alex Marquez kollidiert war.
 
-Bei den letzten sechs Rennen hat er vier Siege geholt.
+Marc Marquez landete beim selben Session auf Platz drei.
 
-Damit hat er sich in der Weltmeisterschaft auf Platz drei gesetzt, knapp vor Can Öncü.
+Zweimal musste die Rote Fahne wegen jeweils separater Vorfälle eingeworfen werden.
 
-Wie seht ihr den Wechsel zu AS BLU CRU? Passt das Team für ihn, oder hättet ihr eine andere Empfehlung?
+Die 60-minütige Sessions am Freitag endete damit vorzeitig nach zwei roten Flaggen.
 
-#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie steht ihr zu Bezzecchis Performance nach dem Kontakt mit Alex?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
