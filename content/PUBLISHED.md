@@ -1121,8 +1121,8 @@ Bild: assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-f
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-22-racing-editorial-2026-10-22-1-miller-ve-fernandez-01.jpg", "media_status": "", "object_id": "122126925807469415", "object_type": "bild", "platform": "facebook", "post_id": "122126925807469415", "source_url": "https://motoetkinlik.com/miller-ve-fernandezden-topraka-gecmis-olsun-mesaji", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-23 10:42 | ID: 18434788576183197]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-23-daily
 Telegram-Update-ID: 279361991
@@ -1143,6 +1143,7 @@ Ist eurer Meinung nach der frühe Saisonabbruch mit der bevorstehenden Operation
 Quelle: https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ameliyat-olmaya-ikna-etmek-cok-zordu/121866
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-1-motogp-pramac-toprak-01.jpg
+Publish-Provenienz: {"creation_id": "18012764393971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-1-motogp-pramac-toprak-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18434788576183197", "published_media_id": "18434788576183197", "source_url": "https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ameliyat-olmaya-ikna-etmek-cok-zordu/121866", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
@@ -1167,8 +1168,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ame
 Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-1-motogp-pramac-toprak-01.jpg
 Link-Preview: offiziell
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-23 10:43 | ID: 18066006104514085]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-23-daily
 Telegram-Update-ID: 279361992
@@ -1193,6 +1194,7 @@ Wie steht ihr zu Bezzecchis Performance nach dem Kontakt mit Alex?
 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg
+Publish-Provenienz: {"creation_id": "18012764414971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18066006104514085", "published_media_id": "18066006104514085", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
