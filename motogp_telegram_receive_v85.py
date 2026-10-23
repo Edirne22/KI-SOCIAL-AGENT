@@ -44,7 +44,7 @@ def parse_session():
             x = re.search(rf'(?m)^{re.escape(name)}:\s*(.*)$', sec)
             return x.group(1).strip() if x else ''
         tx = re.search(r'(?ms)^Text:\s*(.*?)(?=^\s*Rechte-Gate:)', sec)
-        post = {'title': f('Titel'), 'source': f('Quelle'), 'image': f('Instagram-Bild'), 'text': tx.group(1).strip() if tx else ''}
+        post = {'title': f('Titel'), 'source': f('Quelle'), 'preview': f('Quellen-Preview'), 'image': f('Instagram-Bild'), 'text': tx.group(1).strip() if tx else ''}
 
         # (a) QM-Gates
         failed_gate = next((g for g in ('QM', 'Racing-QM', 'Semantic-Fakten-QM')
@@ -265,7 +265,7 @@ def handle_turkish_action(uid,chat,txt,_nested=False):
         posts={}
         for n in selected:
             p=rows[n]
-            posts[n]={'title':p.get('title',''),'source':p.get('source',''),'summary':p.get('summary',''),'series':p.get('series',''),'source_series':p.get('source_series',''),'image':get_image_path(f'turkish-human-{n}-{p.get("rider","")}').as_posix(),'text':p.get('text',''),'caption_final':True,'human_final':True}
+            posts[n]={'title':p.get('title',''),'source':p.get('source',''),'preview':p.get('preview',''),'summary':p.get('summary',''),'series':p.get('series',''),'source_series':p.get('source_series',''),'image':get_image_path(f'turkish-human-{n}-{p.get("rider","")}').as_posix(),'text':p.get('text',''),'caption_final':True,'human_final':True}
         batch=(_active_batch() or f'turkish-{int(time.time())}')+'-TR-HUMAN'
         count=publish(posts,selected,uid,batch)
         plan=' → '.join('T'+str(n) for n in selected)
@@ -443,7 +443,9 @@ def publish(posts,chosen,uid,batch,schedules=None):
         is_existing_duplicate=bool(duplicate_reasons)
 
         prompt = f"Instagram nur mit dem Original-Quellbild vorbereiten. Quelle: {p['source']}"
-        source_image_path = download_og_image_for_instagram(p["source"], p["image"])
+        source_image_path = download_og_image_for_instagram(
+            p["source"], p["image"], source_image_url=p.get("preview")
+        )
         instagram_ready = bool(source_image_path)
         media_status = "QUELLE_BESTÄTIGT" if instagram_ready else "QUELLBILD_FEHLT"
         img_path = source_image_path or ""
@@ -568,12 +570,14 @@ def handle_one(uid, chat, txt):
                     lines.append(f'• Beitrag {n}: {problems.get(n, "unbekannt")}')
                 send_message('\n'.join(lines))
             else:
-                rc.transition(
-                    batch, 'APPROVED',
-                    telegram_update_id=uid, selection=valid_chosen
-                )
                 count = publish(posts, valid_chosen, uid, batch)
-                rc.transition(batch, 'PUBLISHED', platform_blocks=count)
+                # Queueing selected posts does not finish the daily batch.
+                # Keep later individual approvals available until session expiry.
+                rc.transition(
+                    batch, 'FREIGEGEBEN', telegram_update_id=uid,
+                    selection=sorted(set(run.get('selection') or []) | set(valid_chosen)),
+                    platform_blocks=int(run.get('platform_blocks') or 0) + count,
+                )
 
                 msg = (
                     f'✅ Racing {batch}: {len(valid_chosen)} '

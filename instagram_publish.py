@@ -52,37 +52,44 @@ def extract_og_image_url(source_url):
         print(f"INSTAGRAM OG IMAGE: Quelle nicht lesbar: {exc}")
         return None
 
-def download_og_image_for_instagram(source_url, output_path):
-    """Lädt og:image und schreibt es ohne Crop als 1080x1350 JPEG mit schwarzem Padding."""
-    image_url = extract_og_image_url(source_url)
-    if not image_url:
+def download_og_image_for_instagram(source_url, output_path, source_image_url=None):
+    """Prefer the saved article preview; rediscover metadata only as fallback."""
+    if not source_url or not source_url.startswith(("http://", "https://")):
         return None
-    try:
-        response = requests.get(
-            image_url,
-            timeout=60,
-            headers={"User-Agent": "Mozilla/5.0 KI-SOCIAL-AGENT/1.0"},
-        )
-        response.raise_for_status()
-        with Image.open(BytesIO(response.content)) as source:
-            source.load()
-            image = source.convert("RGB")
-        image.thumbnail((1080, 1350), Image.Resampling.LANCZOS)
-        canvas = Image.new("RGB", (1080, 1350), "black")
-        x = (1080 - image.width) // 2
-        y = (1350 - image.height) // 2
-        canvas.paste(image, (x, y))
+    saved_url = str(source_image_url or "").strip()
+    attempted = set()
+    # Resolve metadata lazily: a working saved preview needs no article refetch.
+    for candidate in (saved_url, None):
+        image_url = candidate if candidate is not None else extract_og_image_url(source_url)
+        if not image_url or not image_url.startswith(("http://", "https://")) or image_url in attempted:
+            continue
+        attempted.add(image_url)
+        try:
+            response = requests.get(
+                image_url,
+                timeout=60,
+                headers={"User-Agent": "Mozilla/5.0 KI-SOCIAL-AGENT/1.0", "Referer": source_url},
+            )
+            response.raise_for_status()
+            with Image.open(BytesIO(response.content)) as source:
+                source.load()
+                image = source.convert("RGB")
+            image.thumbnail((1080, 1350), Image.Resampling.LANCZOS)
+            canvas = Image.new("RGB", (1080, 1350), "black")
+            x = (1080 - image.width) // 2
+            y = (1350 - image.height) // 2
+            canvas.paste(image, (x, y))
 
-        target = Path(output_path)
-        target.parent.mkdir(parents=True, exist_ok=True)
-        if target.suffix.lower() not in {".jpg", ".jpeg"}:
-            target = target.with_suffix(".jpg")
-        canvas.save(target, "JPEG", quality=92, optimize=True)
-        print(f"INSTAGRAM OG IMAGE: {image_url} -> {target} (1080x1350, Padding)")
-        return target.as_posix()
-    except (requests.RequestException, OSError, ValueError) as exc:
-        print(f"INSTAGRAM OG IMAGE: Download/Formatierung fehlgeschlagen: {exc}")
-        return None
+            target = Path(output_path)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            if target.suffix.lower() not in {".jpg", ".jpeg"}:
+                target = target.with_suffix(".jpg")
+            canvas.save(target, "JPEG", quality=92, optimize=True)
+            print(f"INSTAGRAM OG IMAGE: {image_url} -> {target} (1080x1350, Padding)")
+            return target.as_posix()
+        except (requests.RequestException, OSError, ValueError) as exc:
+            print(f"INSTAGRAM OG IMAGE: Download/Formatierung fehlgeschlagen: {exc}")
+    return None
 
 
 def generate_buelent_caption(facebook_caption):
