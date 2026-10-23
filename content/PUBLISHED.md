@@ -1197,9 +1197,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg
 Publish-Provenienz: {"creation_id": "18012764414971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18066006104514085", "published_media_id": "18066006104514085", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 39980896428-1
+## Facebook [GEPOSTET 2026-10-23 15:45 | ID: 122127162819469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-23-daily
 Telegram-Update-ID: 279361992
@@ -1224,3 +1223,4 @@ Wie steht ihr zu Bezzecchis Performance nach dem Kontakt mit Alex?
 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887
 Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg", "media_status": "", "object_id": "122127162819469415", "object_type": "bild", "platform": "facebook", "post_id": "122127162819469415", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887", "version": 1}
