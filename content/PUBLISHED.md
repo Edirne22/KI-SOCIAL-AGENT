@@ -1170,9 +1170,8 @@ Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernand
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40100893510-1
+## Facebook [GEPOSTET 2026-10-24 14:05 | ID: 122127463101469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-24-daily
 Telegram-Update-ID: 279361996
@@ -1191,6 +1190,7 @@ Was denkt ihr – wer wird die Lücken der beiden im Feld füllen?
 Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
 Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg", "media_status": "", "object_id": "122127463101469415", "object_type": "bild", "platform": "facebook", "post_id": "122127463101469415", "source_url": "https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
