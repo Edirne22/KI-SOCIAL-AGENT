@@ -3498,3 +3498,33 @@ Story-Key: motogp:121887
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-24 10:35 UTC | Motorcycle Racing | PASS
+Titel: Arenas: “Standing on the podium in front of a home crowd is very nice”
+Story-Key: motogp:1179257
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-24 10:35 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez takes title lead with Sprint win, Martin crashes out of epic battle
+Story-Key: motogp:1179521
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-24 10:35 UTC | Motorcycle Racing | PASS
+Titel: Bezzecchi’den Martin’e mesaj: Henüz bitmedi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122340
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-24 10:35 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia, sprintte neden çekildiğini açıklamadı: Küçük bir sorun yaşadım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122329
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-24 10:35 UTC | Motorcycle Racing | PASS
+Titel: Martín ve Fernandez, Avustralya GP mücadelesinde yer almayacak!
+Story-Key: motogp:10867741
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

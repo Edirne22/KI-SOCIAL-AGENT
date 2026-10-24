@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1792744657
+Session-Timestamp: 1792836349
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,24 +18,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 4.4
 Kategorie: Turkish Riders
-Serie: MotoGP
-Story-Key: motogp:121866
-Titel: MotoGP - Pramac: Toprak Razgatlıoğlu’nu sezonu bitirip ameliyat olmaya ikna etmek “çok zordu”
-Quelle: https://trf1.net/motor-sporlari/motogp/pramac-topraki-sezonu-bitirip-ameliyat-olmaya-ikna-etmek-cok-zordu/121866
+Serie: Moto2
+Story-Key: motogp:1179257
+Titel: Arenas: “Standing on the podium in front of a home crowd is very nice”
+Quelle: https://www.worldsbk.com/en/news/2026/10/20/arenas-standing-on-the-podium-in-front-of-a-home-crowd-is-very-nice/1179257
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-1-motogp-pramac-toprak-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1352668_hires_1600x900.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-1-arenas-standing-on-t-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/10/17/06386cd8-8e85-4d04-9809-1a92d3cd6257/53705_JDR_R12_2026_Ambience.jpg
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu musste seine erste MotoGP-Saison vorzeitig beenden – und Pramac sagt, das Überzeugen war nicht leicht.
+Arenas hat Race 1 in Jerez gewonnen, Can Öncü musste sich geschlagen geben. Der 2026er Champion steht auf dem Podest – und sagt, vor heimischem Publikum ist das besonders schön. 🏍️
 
-Pramac Yamaha hat erklärt, dass es nötig war, den dreifachen WorldSBK-Champion davon abzuhalten, weiterzufahren, nachdem er sich in Mandalika die rechte Schulter ausgekugelt hatte. Trotz der Verletzung nahm er am Qualifying und Sprint teil, zog sich aber im Grand Prix früh zurück. Nach der Rückkehr nach Europa zeigte die Untersuchung: Die Schulterverletzung war schwerwiegender als zunächst gedacht.
+Was denkt ihr, ist das der motivierendste Moment seiner Titelgeschichte?
 
-Ist eurer Meinung nach der frühe Saisonabbruch mit der bevorstehenden Operation der richtige Weg für Toprak?
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -46,22 +44,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
+Artikelalter-Tage: 0.4
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:121781
-Titel: MotoGP - Alex Marquez’den sprint çağrısı: “En azından yarıya indirilmeli”
-Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquezden-sprint-cagrisi-en-azindan-yariya-indirilmeli/121781
+Story-Key: motogp:1179521
+Titel: Marc Marquez takes title lead with Sprint win, Martin crashes out of epic battle
+Quelle: https://www.motogp.com/en/news/2026/10/24/marc-marquez-takes-title-lead-with-sprint-win-martin-crashes-out-of-epic-battle/1179521
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-2-motogp-alex-marquezd-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1355432_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-2-marc-marquez-takes-t-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/24/eaa12a2a-14eb-44c6-8e7f-d08ca1bdec63/Report-MGP-SPR-AUS-TOP.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Alex Marquez hat gesprochen — und er will, dass MotoGP die Sprint-Rennen pro Saison mindestens halbiert. Der Gresini-Pilot sagt, das Ziel sei einfach: junge Fahrer in einem immer dichteren Programm schützen. Seit 2023 gibt es bei jedem Rennenwochenende einen Sprint, ähnlich wie F1 schon Jahre zuvor eingeschlagen hatte — nur dass MotoGP den Weg gehen wollte, Sprint in jedes Wochenende zu packen. Jetzt kommt einer aus den eigenen Reihen und sagt: Stop.
+Marquez holt sich die Führung in der WM – mit einem Sprint-Sieg. Martin war noch auf P2 dabei, dann: Crash nach sieben runden, das Wochenende ist vorbei und er zieht sich eine Verletzung zu.
 
-Wie seht ihr das — ist Marquez mit seinem Vorschlag auf der richtigen Linie, oder wäre weniger Action einfach der falsche Weg?
+Wie schätzt ihr die Situation ein?
 
-#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -70,24 +68,26 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 1
-QM-Ruecklaeufe: 1
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.9
-Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: motogp:4096740
-Titel: Milli motosikletçi Deniz Öncü, Avustralya'da piste çıkacak
-Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-avustralyada-piste-cikacak/4096740
+Artikelalter-Tage: 0.0
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:122340
+Titel: Bezzecchi’den Martin’e mesaj: Henüz bitmedi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-3-milli-motosikletci-d-01.jpg
-Quellen-Preview: https://web-cdnprod.aa.com.tr/uploads/Contents/2026/10/22/thumbs_b_c_b9c90d5d5d17a336acdd70919e623f56.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357388_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Deniz Öncü steht beim nächsten Lauf der Welt-Moto2-Meisterschaft in Australien am Start. Der türkische Fahrer geht bei der Avustralya-Runde auf die Piste – seine Fans im Heimatland dürfen sich also wieder über einen eigenen Fahrer im Feld freuen.
+Marco Bezzecchi sieht seinen Aprilia-Teamkollegen Jorge Martin trotz der Verletzung noch nicht komplett aus dem Rennen.
 
-Was erwartet ihr von Öncü in Australien?
+Jorge Martin kann wegen einer Verletzung nicht am GP von Australien auf Phillip Island teilnehmen. Obwohl der Ausfall ein Rückschlag für die Titelchancen ist, glaubt Bezzecchi weiter an Martin. Der Weltmeister von 2024 war mit zwei Punkten Vorsprung in der Wertung nach Australien gereist.
 
-#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die Situation im Titelkampf ein?
+
+#MotoGP #MarcoBezzecchi #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -95,25 +95,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 2
+Neufassungen: 1
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.1
-Kategorie: Turkish Riders
+Artikelalter-Tage: 0.1
+Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:121581
-Titel: Editörün Seçimi - Toprak Razgatlıoğlu’nun MotoGP’deki ilk sezonu: 18 puanın ardındaki hikâye
-Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglunun-motogpdeki-ilk-sezonu-18-puanin-ardindaki-hikaye/121581
+Story-Key: motogp:122329
+Titel: Bagnaia, sprintte neden çekildiğini açıklamadı: Küçük bir sorun yaşadım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-sprintte-neden-cekildigini-aciklamadi-kucuk-bir-sorun-yasadim/122329
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-4-editoeruen-secimi-to-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/toprak-razgatlioglu-mandalika-scaled.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-4-bagnaia-sprintte-ned-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357390_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlus MotoGP-Debüt-Saison hat ein frühes Ende gefunden. Nach einer Schulterverletzung in Mandalika und der Operation am 26. Oktober muss der dreifache WSBK-Weltmeister Phillip Island und den Rest der Saison pausieren. Augusto Fernandez, Yamaha-Testfahrer, übernimmt für ihn. Toprak bleibt mit 18 Punkten in seinem ersten MotoGP-Jahr nach 17 Rennwochenenden.
+Ein kleines Problem hatte ich mit der Ducati.
 
-Wie schätzt ihr die Situation für Toprak ein?
+Pecco Bagnaia ist im Australian Sprint zurückgestiegen und will nicht genau erklären, warum. Er spricht nur von einem Problem. Für den zweifachen Weltmeister läuft die Saison 2026 bisher nicht rund. Schon am Freitag hat er am Phillip Island das Q2 verpasst, und auch im Qualifying am Samstag reichte es nur für Platz 16 unter wechselhaften Bedingungen.
 
-#MotoGP #ToprakRazgatlioglu #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr die Laune im Team nach diesem Wochenende?
+
+#MotoGP #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -127,25 +129,19 @@ Herkunft: Aktuell
 Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:121887
-Titel: MotoGP - Bezzecchi, kırmızı bayraklı Phillip Island antrenmanında lider: Marquez üçüncü
-Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887
+Story-Key: motogp:10867741
+Titel: Martín ve Fernandez, Avustralya GP mücadelesinde yer almayacak!
+Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1355807_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg
+Quellen-Preview: https://cdn-6.motorsport.com/images/amp/63QaL5l2/s6/jorge-martin-aprilia-racing-te.jpg
 Plattformen: Instagram + Facebook
 Text:
-Bezzecchi hat das Friday-Training in Phillip Island angeführt – und das, nachdem er mit Alex Marquez kollidiert war.
+Keine gute Woche für zwei Riders beim Australien-Grand-Prix in Phillip Island. Jorge Martín hat sich im Sprint einen Bruch am Handgelenk zugezogen und für das Hauptrennen als nicht startfähig gemeldet. Raul Fernandez muss ebenfalls passen – bei ihm steckt ein Fingerproblem dahinter. Beide fallen damit aus dem Rennen heraus. 🏍️💨
 
-Marc Marquez landete beim selben Session auf Platz drei.
+Was denkt ihr – wer wird die Lücken der beiden im Feld füllen?
 
-Zweimal musste die Rote Fahne wegen jeweils separater Vorfälle eingeworfen werden.
-
-Die 60-minütige Sessions am Freitag endete damit vorzeitig nach zwei roten Flaggen.
-
-Wie steht ihr zu Bezzecchis Performance nach dem Kontakt mit Alex?
-
-#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

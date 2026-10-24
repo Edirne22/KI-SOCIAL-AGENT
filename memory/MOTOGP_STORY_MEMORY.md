@@ -1179,3 +1179,53 @@ Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglunun-motogpdeki
 Story-Key: motogp:121887
 Titel: MotoGP - Bezzecchi, kırmızı bayraklı Phillip Island antrenmanında lider: Marquez üçüncü
 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:10867690
+Titel: Moto2 Avustralya sıralama: Pole pozisyonu Manuel Gonzalez’in, Deniz Öncü 25. sırada!
+Quelle: https://tr.motorsport.com/moto2/news/moto2-avustralya-siralama-pole-pozisyonu-manuel-gonzalezin-deniz-oncu-25-sirada/10867690
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:122285
+Titel: Toprak Razgatlıoğlu Avustralya MotoGP’de neden yok? - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-avustralya-motogpde-neden-yok/122285
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:1179262
+Titel: Razgatlioglu to miss remainder of the 2026 season The Prima Pramac rider will undergo surgery and be replaced by test rider Augusto Fernandez 20 Oct 2026 By Prima Pramac Yamaha MotoGP
+Quelle: https://www.motogp.com/en/news/2026/10/20/toprak-razgatloglu-to-miss-phillip-island-and-remainder-of-the-2026-season/1179262
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:121454
+Titel: Toprak Razgatlıoğlu sezonun kalanını kaçıracak, ameliyat olacak - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-sezonun-kalanini-kaciracak-ameliyat-olacak/121454
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:121362
+Titel: Toprak Razgatlıoğlu’nun omzu ne durumda, Phillip Island’da yarışabilecek mi? - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglunun-omzu-ne-durumda-phillip-islandda-yarisabilecek-mi/121362
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:1179257
+Titel: Arenas: “Standing on the podium in front of a home crowd is very nice”
+Quelle: https://www.worldsbk.com/en/news/2026/10/20/arenas-standing-on-the-podium-in-front-of-a-home-crowd-is-very-nice/1179257
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:1179521
+Titel: Marc Marquez takes title lead with Sprint win, Martin crashes out of epic battle
+Quelle: https://www.motogp.com/en/news/2026/10/24/marc-marquez-takes-title-lead-with-sprint-win-martin-crashes-out-of-epic-battle/1179521
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:122340
+Titel: Bezzecchi’den Martin’e mesaj: Henüz bitmedi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:122329
+Titel: Bagnaia, sprintte neden çekildiğini açıklamadı: Küçük bir sorun yaşadım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-sprintte-neden-cekildigini-aciklamadi-kucuk-bir-sorun-yasadim/122329
+
+## 2026-10-24 10:05 UTC – ANGEBOTEN
+Story-Key: motogp:10867741
+Titel: Martín ve Fernandez, Avustralya GP mücadelesinde yer almayacak!
+Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
