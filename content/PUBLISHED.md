@@ -1149,8 +1149,8 @@ Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezz
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg", "media_status": "", "object_id": "122127162819469415", "object_type": "bild", "platform": "facebook", "post_id": "122127162819469415", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-24 14:39 | ID: 18104652272014100]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-24-daily
 Telegram-Update-ID: 279361996
@@ -1169,6 +1169,7 @@ Was denkt ihr – wer wird die Lücken der beiden im Feld füllen?
 Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg
+Publish-Provenienz: {"creation_id": "18012962897971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18104652272014100", "published_media_id": "18104652272014100", "source_url": "https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-24 14:05 | ID: 122127463101469415]
 Status: GEPOSTET
@@ -1192,8 +1193,8 @@ Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-f
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg", "media_status": "", "object_id": "122127463101469415", "object_type": "bild", "platform": "facebook", "post_id": "122127463101469415", "source_url": "https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-24 14:39 | ID: 18125385376867262]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-24-daily
 Telegram-Update-ID: 279361997
@@ -1214,6 +1215,7 @@ Wie schätzt ihr die Situation im Titelkampf ein?
 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg
+Publish-Provenienz: {"creation_id": "18012962771971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18125385376867262", "published_media_id": "18125385376867262", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
