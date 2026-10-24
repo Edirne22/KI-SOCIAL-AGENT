@@ -1219,7 +1219,7 @@ Publish-Provenienz: {"creation_id": "18012962771971550", "media_kind": "image", 
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 40116167861-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-24-daily
 Telegram-Update-ID: 279361997
