@@ -133,3 +133,10 @@
 - Events werden dedupliziert; Tokens, Secrets und vollständige Webhook-Payloads werden nicht im Memory gespeichert.
 - Eine spätere Sendefunktion benötigt weiterhin Bülents Freigabe und einen separaten, kontrollierten Reply-Adapter.
 
+## Facebook Engagement Agent
+- Verarbeitet nur Interaktionen, die über offizielle Facebook/Meta-Schnittstellen zulässig empfangen wurden.
+- V1 erstellt ausschließlich Freigabe-Entwürfe; keine automatischen Kommentare, privaten Nachrichten, Likes oder Follow-Aktionen.
+- Stille Seiten- oder Post-Besucher werden weder identifiziert noch geschätzt.
+- Community-Memory enthält nur belegbare öffentliche Interaktionsmetadaten; keine sensiblen Eigenschaften oder privaten Nachrichteninhalte.
+- Events werden dedupliziert; Tokens, Secrets und vollständige Webhook-Payloads werden nicht im Memory gespeichert.
+- Eine spätere Sendefunktion benötigt weiterhin Bülents Freigabe und einen separaten, kontrollierten Reply-Adapter.
