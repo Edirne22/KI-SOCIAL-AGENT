@@ -1,13 +1,13 @@
 # Memory Health
 
-**Stand:** 2026-10-23 20:39 UTC
+**Stand:** 2026-10-24 19:49 UTC
 
-- Neue Events in diesem Lauf: 5
-- Events gesamt: 151
+- Neue Events in diesem Lauf: 4
+- Events gesamt: 155
 - Aktive Regeln: 7
 - Eigene Performance-Datensätze: 0
 - Mit Reichweite > 0: 0
-- Quality-Status zuletzt: siehe QUALITY_REPORT
+- Quality-Status zuletzt: WARNUNG
 - Schutz: keine Secrets, keine privaten Chats, keine automatische Freigabe, keine erfundenen Metriken.
 - Promotion: direkte Nutzerkorrektur/harte Systemregel sofort; Performance-Muster erst mit ausreichender Stichprobe.
 - Konflikte werden nicht still überschrieben; harte Sicherheits-/Freigaberegeln gewinnen.
