@@ -1,0 +1,30 @@
+name: OpenChatCut MCP Session Diagnostic
+on:
+  pull_request:
+    paths:
+      - "infra/openchatcut-cloudflare/mcp-session-diagnostic.mjs"
+      - ".github/workflows/openchatcut-mcp-session-diagnostic.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare-transports:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      OPENCHATCUT_BASE_URL: https://edirne22-openchatcut-poc.butupeli.workers.dev
+      OPENCHATCUT_MCP_TOKEN: ${{ secrets.OPENCHATCUT_MCP_TOKEN }}
+      DIAG_PAIRS: "6"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Guard credential
+        run: test -n "$OPENCHATCUT_MCP_TOKEN"
+      - name: Install diagnostic dependency
+        working-directory: infra/openchatcut-cloudflare
+        run: npm install --no-save @modelcontextprotocol/sdk
+      - name: Compare raw MCP and SDK transport (read-only)
+        working-directory: infra/openchatcut-cloudflare
+        run: node mcp-session-diagnostic.mjs
