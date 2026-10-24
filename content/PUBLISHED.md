@@ -1148,3 +1148,91 @@ Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-philli
 Bild: assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-23-racing-editorial-2026-10-23-5-motogp-bezzecchi-kir-01.jpg", "media_status": "", "object_id": "122127162819469415", "object_type": "bild", "platform": "facebook", "post_id": "122127162819469415", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchi-kirmizi-bayrakli-phillip-island-antrenmaninda-lider-marquez-ucuncu/121887", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-24-daily
+Telegram-Update-ID: 279361996
+MotoGP-Auswahl: 5
+Story-Key: motogp:10867741
+Event-Fingerprint: MotoGP|sprint|fernandez|assen
+Titel: Martín ve Fernandez, Avustralya GP mücadelesinde yer almayacak!
+Text:
+Keine gute Woche für zwei Riders beim Australien-Grand-Prix in Phillip Island. Jorge Martín hat sich im Sprint einen Bruch am Handgelenk zugezogen und für das Hauptrennen als nicht startfähig gemeldet. Raul Fernandez muss ebenfalls passen – bei ihm steckt ein Fingerproblem dahinter. Beide fallen damit aus dem Rennen heraus. 🏍️💨
+
+Was denkt ihr – wer wird die Lücken der beiden im Feld füllen?
+
+#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
+Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-24-daily
+Telegram-Update-ID: 279361996
+MotoGP-Auswahl: 5
+Story-Key: motogp:10867741
+Event-Fingerprint: MotoGP|sprint|fernandez|assen
+Titel: Martín ve Fernandez, Avustralya GP mücadelesinde yer almayacak!
+Text:
+Keine gute Woche für zwei Riders beim Australien-Grand-Prix in Phillip Island. Jorge Martín hat sich im Sprint einen Bruch am Handgelenk zugezogen und für das Hauptrennen als nicht startfähig gemeldet. Raul Fernandez muss ebenfalls passen – bei ihm steckt ein Fingerproblem dahinter. Beide fallen damit aus dem Rennen heraus. 🏍️💨
+
+Was denkt ihr – wer wird die Lücken der beiden im Feld füllen?
+
+#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
+Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
+Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-24-daily
+Telegram-Update-ID: 279361997
+MotoGP-Auswahl: 3
+Story-Key: motogp:122340
+Event-Fingerprint: -
+Titel: Bezzecchi’den Martin’e mesaj: Henüz bitmedi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marco Bezzecchi sieht seinen Aprilia-Teamkollegen Jorge Martin trotz der Verletzung noch nicht komplett aus dem Rennen.
+
+Jorge Martin kann wegen einer Verletzung nicht am GP von Australien auf Phillip Island teilnehmen. Obwohl der Ausfall ein Rückschlag für die Titelchancen ist, glaubt Bezzecchi weiter an Martin. Der Weltmeister von 2024 war mit zwei Punkten Vorsprung in der Wertung nach Australien gereist.
+
+Wie schätzt ihr die Situation im Titelkampf ein?
+
+#MotoGP #MarcoBezzecchi #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-24-daily
+Telegram-Update-ID: 279361997
+MotoGP-Auswahl: 3
+Story-Key: motogp:122340
+Event-Fingerprint: -
+Titel: Bezzecchi’den Martin’e mesaj: Henüz bitmedi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marco Bezzecchi sieht seinen Aprilia-Teamkollegen Jorge Martin trotz der Verletzung noch nicht komplett aus dem Rennen.
+
+Jorge Martin kann wegen einer Verletzung nicht am GP von Australien auf Phillip Island teilnehmen. Obwohl der Ausfall ein Rückschlag für die Titelchancen ist, glaubt Bezzecchi weiter an Martin. Der Weltmeister von 2024 war mit zwei Punkten Vorsprung in der Wertung nach Australien gereist.
+
+Wie schätzt ihr die Situation im Titelkampf ein?
+
+#MotoGP #MarcoBezzecchi #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340
+Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg
+Link-Preview: offiziell
