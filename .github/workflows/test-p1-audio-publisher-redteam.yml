@@ -1,0 +1,19 @@
+name: P1 Audio Publisher Red-Team Harness
+on:
+  pull_request:
+    paths:
+      - tests/test_p1_audio_publisher_redteam_harness.py
+      - .github/workflows/test-p1-audio-publisher-redteam.yml
+  workflow_dispatch:
+jobs:
+  isolated-redteam:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax
+        run: python -m py_compile tests/test_p1_audio_publisher_redteam_harness.py
+      - name: Isolated P1 red-team simulation
+        run: PYTHONPATH=. python tests/test_p1_audio_publisher_redteam_harness.py
