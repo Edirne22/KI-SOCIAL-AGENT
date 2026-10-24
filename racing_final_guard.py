@@ -16,7 +16,7 @@ SERIES_PATTERNS=(
  ('Moto4',r'\bmoto4\b'),
  ('WorldSSP300',r'\bworldssp\s*300\b|\bwssp\s*300\b'),
  ('WorldSSP',r'\bworldssp\b(?!\s*300)|\bworld supersport\b(?!\s*300)|\bwssp\b(?!\s*300)'),
- ('WorldSBK',r'\bworldsbk\b|\bworld superbike\b'),
+ ('WorldSBK',r'\bworldsbk\b|\bworld superbike\b|\bwsbk\b'),
  ('Moto3',r'\bmoto3\b'),('Moto2',r'\bmoto2\b'),('MotoGP',r'\bmotogp\b'))
 
 def _detect_explicit_series(text):
