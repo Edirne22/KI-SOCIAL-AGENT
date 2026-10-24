@@ -1204,3 +1204,42 @@ Technische Protokolle der Deal-Hunter-Suchwege. Keine Preise oder Zugangsdaten s
 - Provider: Apify-Google-Suche
 - Live-Suche: ja
 - Hinweis: 1 öffentliche Treffer; Kostenlimit $0.010
+## 2026-10-24 10:08
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: Fallback: SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 400, detail={   "error": {     "type": "run-failed",     "message": "Actor run did not succeed (run ID: Ld4hUQddbW4cPJVds, status: FAILED)."   } }
+## 2026-10-24 10:08
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: SearXNG
+- Hinweis: Nicht konfiguriert
+## 2026-10-24 10:08
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 1
+## 2026-10-24 10:08
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 2
+## 2026-10-24 10:09
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 3
+## 2026-10-24 10:11
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 4
+## 2026-10-24 10:11
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: SEARCH-FEHLER: provider=Gemini-Grounded, ursache=HTTP 429 Rate Limit, detail=Rate-Limit nach 3 Versuchen nicht behoben
+## 2026-10-24 10:11
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Fallback
+- Live-Suche: nein
+- Hinweis: Wissens-Fallback ohne Live-Websuche

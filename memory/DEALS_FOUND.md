@@ -3305,3 +3305,32 @@ Direkte Treffer (antippbar):
 
 Quellen:
 - KAUFLAND MOBIL Prepaid eSIM Starterpaket mit 5G im besten: https://www.kaufland.de/product/475008971/
+## Suche vom 2026-10-24 10:11
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine, zeitunabhängige Hinweise zu Händlerarten, Tarifstrukturen und Auswahlkriterien, die bei der Suche nach einem solchen Mobilfunkvertrag im Telekom-Netz (D1) hilfreich sind:
+
+### 1. Mögliche Händlerarten
+* **Freie Händler & Vergleichsportal-Sonderaktionen:** Sehr hohe Datenvolumen zu sehr geringen Effektivpreisen werden meist von freien Mobilfunkvermittlern angeboten. Diese nutzen oft Einmal-Auszahlungen, Cashbacks oder Boni, um den rechnerischen Monatspreis zu senken.
+* **Service-Provider:** Drittanbieter, die Kapazitäten im D1-Netz einkaufen, bieten oft günstigere Tarife als der Netzbetreiber selbst an, manchmal jedoch mit Einschränkungen bei der Maximalgeschwindigkeit.
+* **Zweitmarken & Discounter:** Marken der Provider-Töchter oder Supermarkt-Discounter im D1-Netz bieten hohe Transparenz und flexible Laufzeiten, erreichen extrem hohe Datenvolumina im untersten Preissegment jedoch meist nur im Rahmen von Aktionswochen.
+* **Direkt beim Netzbetreiber:** Die Hauptmarke ist regulär meist hochpreisiger, bietet aber die besten Konditionen bei Zusatzoptionen (z. B. Familienkarten, Kombi-Rabatte).
+
+### 2. Produktfamilien & Vertragsarten
+* **SIM-Only-Verträge (24 Monate Laufzeit):** Um das beste Verhältnis aus hohem Datenvolumen und niedrigem Preis zu erzielen, sind reine SIM-Only-Tarife mit 24 Monaten Bindung meist die beste Wahl, da hier die höchsten Rabatte gewährt werden.
+* **Kombi-Angebote (Festnetz + Mobilfunk):** Wer bereits einen Festnetz-/Breitbandanschluss beim Netzbetreiber besitzt, kann über Bündelvorteile oft doppeltes Datenvolumen oder monatliche Preisnachlässe freischalten.
+* **Junge-Leute- / Studententarife:** Für Personen unter einem bestimmten Alter (oft unter 28 Jahren) gibt es in fast allen Produktfamilien Sonderkonditionen mit mehr Datenvolumen.
+
+### 3. Wichtige Auswahlkriterien
+* **Effektivpreis-Berechnung:** Achten Sie auf die Gesamtkosten über 24 Monate. Der Effektivpreis setzt sich aus der monatlichen Grundgebühr, dem Anschlusspreis und eventuellen Gutschriften (z. B. Wechselbonus für die Rufnummernmitnahme oder Cashback) zusammen.
+* **Geschwindigkeit & 5G:** Prüfen Sie, ob 5G enthalten ist und auf wie viel Mbit/s die Geschwindigkeit gedrosselt ist (z. B. 25 Mbit/s, 50 Mbit/s oder max. verfügbar). Für die alltägliche Nutzung reichen 2
+
+Bitte in 10 Minuten erneut versuchen.
