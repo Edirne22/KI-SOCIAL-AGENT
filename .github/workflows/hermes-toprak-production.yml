@@ -1,0 +1,84 @@
+name: Hermes Toprak OpenMontage Production
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/hermes-coordination-contract]
+    paths:
+      - '.github/workflows/hermes-toprak-production.yml'
+      - 'scripts/hermes_toprak_production.py'
+      - 'integrations/openmontage/hermes_live_workers.py'
+      - 'integrations/openmontage/agent_reach_adapter.py'
+      - 'tests/test_hermes_production.py'
+permissions:
+  contents: read
+concurrency:
+  group: hermes-toprak-production-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare existing production dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+          python -m venv .runtime
+          .runtime/bin/python -m pip install --disable-pip-version-check 'https://github.com/Panniantong/agent-reach/archive/main.zip'
+          echo "$GITHUB_WORKSPACE/.runtime/bin" >> "$GITHUB_PATH"
+      - name: Evidence and handoff regressions
+        run: .runtime/bin/python -m unittest -v tests.test_hermes_coordinator tests.test_hermes_live_workers tests.test_hermes_production
+      - name: Provision Hermes on the fresh production runner
+        run: |
+          set -euo pipefail
+          curl -fsSL https://hermes-agent.nousresearch.com/install.sh -o /tmp/hermes-install.sh
+          CI=1 bash /tmp/hermes-install.sh --non-interactive --skip-browser --skip-computer-use
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          mkdir -p "$HOME/.hermes/skills/content-factory-coordinator"
+          cp skills/content-factory-coordinator/SKILL.md "$HOME/.hermes/skills/content-factory-coordinator/SKILL.md"
+      - name: Hermes coordinates real research and preview production
+        continue-on-error: true
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$NVIDIA_API_KEY"
+          mkdir -p artifacts
+          timeout 1200s hermes chat --provider nvidia \
+            --model nvidia/nemotron-3.5-lightning-30b-a3b --toolsets terminal --max-turns 12 --quiet \
+            -q "Du koordinierst den ausdrücklich beauftragten Produktionslauf. Recherchiere aktuelle überprüfbare Informationen über Toprak Razgatlioglu und produziere daraus einen deutschen Motorrad-News-Clip. Nutze dafür die bestehende Agentenkette: Der folgende geprüfte Einstieg verwendet Agent Reach/Jina, Quellenleser, Nemotron, Faktenprüfung, Storyboard und OpenMontage. Führe mit dem Terminal-Werkzeug genau diesen Befehl im aktuellen Repository aus: $GITHUB_WORKSPACE/.runtime/bin/python -m scripts.hermes_toprak_production --output $GITHUB_WORKSPACE/artifacts/toprak-production . Warte auf das tatsächliche Prozessende (lange Laufzeit möglich, bei Hintergrundausführung Status abfragen). Keine eigenen Dateien, keine Codeänderungen, keine erfundenen Rechercheergebnisse, keine Veröffentlichung. Bei Fehler den Fehler melden; niemals Daten oder Prüfungen verändern. Erfolg erst bei HERMES_PRODUCTION_PREVIEW_READY melden." \
+            | tee artifacts/hermes-transcript.txt
+      - name: Run production in trusted runner environment if Hermes tool did not inherit key
+        if: success()
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$NVIDIA_API_KEY"
+          if [ ! -f artifacts/toprak-production/production-receipt.json ]; then
+            if [ -d artifacts/toprak-production ]; then
+              mv artifacts/toprak-production "artifacts/incomplete-${GITHUB_RUN_ID}"
+            fi
+            .runtime/bin/python -m scripts.hermes_toprak_production --output artifacts/toprak-production
+          fi
+      - name: Independently verify produced MP4 and receipt
+        run: .runtime/bin/python -m scripts.hermes_toprak_production --verify --output artifacts/toprak-production
+      - name: Upload actual film and production evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: toprak-news-preview-${{ github.run_id }}
+          path: |
+            artifacts/hermes-transcript.txt
+            artifacts/toprak-production/*.json
+            artifacts/toprak-production/contact-sheet.jpg
+            artifacts/toprak-production/film/*.mp4
+            artifacts/toprak-production/film/*.json
+          if-no-files-found: error
+          retention-days: 7
