@@ -12,6 +12,7 @@ from pathlib import Path
 import requests
 
 from .search_config import YOUTUBE_MAX_ITEMS, YOUTUBE_SEARCH_QUERIES
+from .youtube_source_evidence import filter_results
 
 OUT = Path("memory/INSPIRATION_YOUTUBE_APIFY.md")
 DEBUG = Path("memory/INSPIRATION_YOUTUBE_APIFY_DEBUG.md")
@@ -100,11 +101,16 @@ def run() -> str:
         if url in urls and url not in {row["url"] for row in merged}:
             merged.append({**search, **details_by_url.get(url, {})})
 
-    lines = ["# Inspiration · YouTube Apify", "", f"Suchzeitraum ab: {published_after}", f"Suchbegriffe: {', '.join(YOUTUBE_SEARCH_QUERIES[:3])}", f"Videos: {len(merged)}", ""]
-    for index, item in enumerate(merged, 1):
+    reviewed, quarantined = filter_results(merged)
+    lines = ["# Inspiration · YouTube Apify", "", f"Suchzeitraum ab: {published_after}", f"Suchbegriffe: {', '.join(YOUTUBE_SEARCH_QUERIES[:3])}", f"Videos gesamt: {len(merged)}", f"Metadaten-Recherche (nicht unabhängig verifiziert): {len(reviewed)}", f"Quarantäne / manuelle Prüfung: {len(quarantined)}", "", "**Wichtig:** Suchtreffer, Kanalname und Videometadaten belegen kein gelesenes Transkript, tatsächlich angesehenes Video, Nutzungsrecht oder geprüfte Aussage.", ""]
+    for index, (item, evidence) in enumerate(reviewed, 1):
         lines += [
             f"### Datensatz {index}",
             f"- Titel: {_value(item, 'title')[:300]}",
+            f"- Quellenstatus: {evidence.triage}",
+            f"- Kanalidentität: {evidence.channel_verification}",
+            f"- Medienabdeckung: {evidence.coverage}",
+            f"- Einordnung: {evidence.reason}",
             f"- Kanal: {_value(item, 'channelTitle')[:200]}",
             f"- Datum: {_value(item, 'publishedAt')}",
             f"- URL: {_value(item, 'url')}",
@@ -112,6 +118,15 @@ def run() -> str:
             f"- Likes: {_value(item, 'likeCount')}",
             f"- Kommentare: {_value(item, 'commentCount')}",
         ]
+    if quarantined:
+        lines += ["", "## Quarantäne: auffällige Kanal-/Titel-Widersprüche",
+                  "Nur zur manuellen Prüfung. Nicht automatisch als offizielle Highlights oder Faktenquelle verwenden.", ""]
+        for item, evidence in quarantined:
+            lines += [f"- Titel: {_value(item, 'title')[:300]}",
+                      f"  - Original-URL: {_value(item, 'url')}",
+                      f"  - Angegebener Kanal: {_value(item, 'channelTitle')[:200]}",
+                      f"  - Grund: {evidence.reason}",
+                      f"  - Medienabdeckung: {evidence.coverage}"]
     text = "\n".join(lines) + "\n"
     OUT.write_text(text, encoding="utf-8")
     return text
