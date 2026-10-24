@@ -1,0 +1,52 @@
+name: Qwen Telegram isolated coding
+on:
+  push:
+    branches: [test/qwen-credential-probe]
+    paths: [docs/QWEN_TELEGRAM_CODING_TASK.md]
+permissions:
+  contents: read
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Qwen Code
+        run: npm install --no-audit --no-fund -g @qwen-code/qwen-code
+      - name: Check out isolated Telegram branch
+        run: |
+          git fetch --depth=1 origin feature/guarded-telegram-album-import
+          git checkout --detach FETCH_HEAD
+          git config user.name "Qwen isolated CI"
+          git config user.email "qwen-ci@users.noreply.github.com"
+      - name: Code in isolated copy; no push credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$OPENROUTER_API_KEY"
+          export OPENAI_API_KEY="$OPENROUTER_API_KEY"
+          export OPENAI_BASE_URL="https://openrouter.ai/api/v1"
+          export OPENAI_MODEL="openrouter/free"
+          mkdir -p ~/.qwen
+          printf '%s\n' '{"security":{"auth":{"selectedType":"openai"}},"model":{"name":"openrouter/free"}}' > ~/.qwen/settings.json
+          timeout 600 qwen --approval-mode auto-edit --prompt 'Implement ONLY the Telegram private album acceptance matrix in docs/TELEGRAM_PRIVATE_ALBUM_ACCEPTANCE.md. Prioritize durable pre-caption quarantine and automatic replay; interrupted immutable original recovery must never delete or overwrite originals. Add targeted synthetic regression tests for changed behavior. Do not read secrets, run external commands, publish, deploy, edit workflows, or touch other functionality. Do not claim completion for untested criteria.' > /tmp/qwen-run.log 2>&1
+          git add -- scripts/telegram_private_media.py telegram_router.py tests/
+          git diff --cached --binary > qwen-telegram.patch
+          if test -s qwen-telegram.patch; then echo 'PATCH_PRODUCED=true'; else echo 'FAIL: no code patch generated'; exit 1; fi
+          sed -E 's/sk-[A-Za-z0-9_-]+/[REDACTED]/g' /tmp/qwen-run.log | tail -c 1500 > qwen-run-summary.txt
+      - name: Upload proposed changes without merging
+        uses: actions/upload-artifact@v4
+        with:
+          name: qwen-telegram-proposed-patch
+          path: |
+            qwen-telegram.patch
+            qwen-run-summary.txt
+          retention-days: 2
