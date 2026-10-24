@@ -1217,9 +1217,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg
 Publish-Provenienz: {"creation_id": "18012962771971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18125385376867262", "published_media_id": "18125385376867262", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40116167861-1
+## Facebook [GEPOSTET 2026-10-24 17:27 | ID: 122127547449469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-24-daily
 Telegram-Update-ID: 279361997
@@ -1240,3 +1239,4 @@ Wie schätzt ihr die Situation im Titelkampf ein?
 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340
 Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg", "media_status": "", "object_id": "122127547449469415", "object_type": "bild", "platform": "facebook", "post_id": "122127547449469415", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340", "version": 1}
