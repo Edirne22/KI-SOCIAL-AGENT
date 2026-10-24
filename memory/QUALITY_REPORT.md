@@ -1,9 +1,9 @@
 # Qualitätsreport
-Stand: 2026-10-23 21:04
-Gesamtstatus: **WARNUNG**
-- OK: 19
-- Warnungen: 2
-- Kritisch: 0
+Stand: 2026-10-24 20:20
+Gesamtstatus: **KRITISCH**
+- OK: 17
+- Warnungen: 3
+- Kritisch: 1
 
 ## Prüfergebnisse
 - ✅ **Content-Plan**: Datei vorhanden und nicht leer.
@@ -24,8 +24,8 @@ Gesamtstatus: **WARNUNG**
 - ✅ **Secret-Prüfung**: Keine typischen Zugangsschlüssel in Projektdateien erkannt.
 - ✅ **Analytics Fetch**: Letzter Lauf erfolgreich.
 - ✅ **Analytics Report**: Letzter Lauf erfolgreich.
-- ✅ **Generate Daily Content Idea**: Letzter Lauf erfolgreich.
-- ✅ **Inspiration Agent**: Letzter Lauf erfolgreich.
+- ❌ **Generate Daily Content Idea**: Letzter Lauf fehlgeschlagen.
+- ⚠️ **Inspiration Agent**: Kein letzter Lauf in der GitHub-Antwort gefunden.
 - ✅ **Telegram Receive Approval**: Letzter Lauf erfolgreich.
 
 ## Sicherheitsregel
