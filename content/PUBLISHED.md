@@ -1241,9 +1241,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-motogpsin-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40219792295-1
+## Facebook [GEPOSTET 2026-10-25 18:08 | ID: 122127860211469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-25-daily
 Telegram-Update-ID: 279362000
@@ -1264,6 +1263,7 @@ Wie schätzt ihr die Situation ein – startet das Rennen am Sonntag oder schieb
 Quelle: https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425
 Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-motogpsin-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-motogpsin-01.jpg", "media_status": "", "object_id": "122127860211469415", "object_type": "bild", "platform": "facebook", "post_id": "122127860211469415", "source_url": "https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
