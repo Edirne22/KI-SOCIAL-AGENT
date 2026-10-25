@@ -83,7 +83,7 @@ Viral-Score: X/10
 Inspirations-Plattform: ...
 Inspirations-Quelle: vollständige URL oder Keine aktuelle externe Quelle verwendet.
 """
-    text=quick_chat(prompt, task_type="daily_ideas").strip()
+    text=quick_chat(prompt, task_type="daily_ideas", response_validator=validate_content_plan).strip()
     if not text or text.startswith("FEHLER"):
         raise RuntimeError("Daily Content: keine verwendbaren Ideen erhalten")
     for pattern in (r'AIza[0-9A-Za-z_\-]{35}',r'AQ\.[A-Za-z0-9_\-]{40,}',r'sk-[A-Za-z0-9]{20,}',r'\b[A-Za-z0-9_\-]{50,}\b'):

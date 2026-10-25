@@ -6,6 +6,7 @@ import json
 import os
 import time
 from pathlib import Path
+from typing import Callable
 
 import requests
 
@@ -147,6 +148,7 @@ class LLMRouter:
         messages: list[dict],
         task_type: str = "default",
         model_override: str | None = None,
+        response_validator: Callable[[str], None] | None = None,
     ) -> str:
         # Claude-only is a verified model-family lock, never a generic provider fallback.
         if task_type == "claude_only":
@@ -170,6 +172,13 @@ class LLMRouter:
             print(f"[router] Versuch: {provider}")
             result = self._call_provider(provider, cfg, messages, task_type, model_override)
             if result:
+                if response_validator is not None:
+                    try:
+                        response_validator(result)
+                    except (ValueError, RuntimeError):
+                        # Never log model output or context; try each provider only once.
+                        print(f"[router] {provider}: Antwortvalidierung fehlgeschlagen; nächster Anbieter.")
+                        continue
                 print(f"[router] Erfolg via {provider}")
                 return result
 
@@ -188,8 +197,10 @@ def get_router() -> LLMRouter:
     return _router
 
 
-def quick_chat(prompt: str, task_type: str = "default") -> str:
+def quick_chat(prompt: str, task_type: str = "default", *,
+               response_validator: Callable[[str], None] | None = None) -> str:
     return get_router().chat(
         messages=[{"role": "user", "content": prompt}],
         task_type=task_type,
+        response_validator=response_validator,
     )
