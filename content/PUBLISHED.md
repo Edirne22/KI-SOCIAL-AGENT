@@ -1192,3 +1192,139 @@ Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-
 Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg", "media_status": "", "object_id": "122127547449469415", "object_type": "bild", "platform": "facebook", "post_id": "122127547449469415", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340", "version": 1}
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-25-daily
+Telegram-Update-ID: 279362000
+MotoGP-Auswahl: 2
+Story-Key: title:jack-miller-sprint-yar-nda-puan-almak-i-steyebilece-imizden-fazlas
+Event-Fingerprint: MotoGP|sprint|miller|
+Titel: Jack Miller: “Sprint Yarışında Puan Almak İsteyebileceğimizden Fazlası”
+Text:
+Jack Miller beendete den MotoGP-Sprint auf Phillip Island auf dem achten Platz.
+
+Damit holte der Yamaha-Pilot seine ersten Sprint-Punkte der Saison.
+
+Er bewertete seine Leistung auf trockener Piste und blickte auf den Rennsonntag.
+
+Mal sehen, wie es für ihn am Sonntag läuft.
+
+#MotoGP #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi
+Quelle: https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-25-daily
+Telegram-Update-ID: 279362000
+MotoGP-Auswahl: 3
+Story-Key: motogp:122425
+Event-Fingerprint: MotoGP|sprint|marquez|
+Titel: Avustralya MotoGP’sinde pazar günü programı kötü hava nedeniyle gecikecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez hat den Sprint gewonnen – doch am Sonntag gibt es Verzögerungen.
+
+Auf Phillip Island muss der Sonntag im australischen MotoGP-Wochenende warten. Die Pist-Aktivitäten wurden verschoben, weil die Sicht zu schlecht war und das medizinische Helikopter nicht starten konnte. Der Samstagmorgen war richtig nass, aber zum Sprint hat es dann trocken genug gewesen. Marquez geht als Sieger des Sprints in den Hauptrennen-Tag. Die Frage ist nur, wann es überhaupt losgeht 🏍️
+
+Wie schätzt ihr die Situation ein – startet das Rennen am Sonntag oder schiebt man weiter?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425
+Quelle: https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-motogpsin-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-25-daily
+Telegram-Update-ID: 279362000
+MotoGP-Auswahl: 3
+Story-Key: motogp:122425
+Event-Fingerprint: MotoGP|sprint|marquez|
+Titel: Avustralya MotoGP’sinde pazar günü programı kötü hava nedeniyle gecikecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez hat den Sprint gewonnen – doch am Sonntag gibt es Verzögerungen.
+
+Auf Phillip Island muss der Sonntag im australischen MotoGP-Wochenende warten. Die Pist-Aktivitäten wurden verschoben, weil die Sicht zu schlecht war und das medizinische Helikopter nicht starten konnte. Der Samstagmorgen war richtig nass, aber zum Sprint hat es dann trocken genug gewesen. Marquez geht als Sieger des Sprints in den Hauptrennen-Tag. Die Frage ist nur, wann es überhaupt losgeht 🏍️
+
+Wie schätzt ihr die Situation ein – startet das Rennen am Sonntag oder schiebt man weiter?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425
+Quelle: https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425
+Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-motogpsin-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-25-daily
+Telegram-Update-ID: 279362000
+MotoGP-Auswahl: 4
+Story-Key: motogp:122346
+Event-Fingerprint: Moto2|sprint|giannantonio,moreira|
+Titel: Di Giannantonio, sprintte rüzgâra yakalandı: Neredeyse kendimi öldürüyordum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Fabio Di Giannantonio hat beim Sprint zum Australischen GP im Moto2 einen schmalen Grat erlebt. Nach dem Start ging's bei der VR46 Academy zunächst bergab – ein böer Windstoß im ersten Durchgang warf ihn zurück. Aber er hat sich wieder gefangen und den dritten Platz geholt. Direkt vor ihm am Schluss lag der Nachwuchsfahrer von LCR Honda, Diogo Moreira. Und die Podiumsplätze gingen komplett an Ducati. 1-2-3, wie man sagt 🏍️
+
+Wie seht ihr Di Giannantonios Comeback nach dem Startproblem?
+
+#Moto2 #FabioDiGiannantonio #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-4-di-giannantonio-spri-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-25-daily
+Telegram-Update-ID: 279362000
+MotoGP-Auswahl: 4
+Story-Key: motogp:122346
+Event-Fingerprint: Moto2|sprint|giannantonio,moreira|
+Titel: Di Giannantonio, sprintte rüzgâra yakalandı: Neredeyse kendimi öldürüyordum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Fabio Di Giannantonio hat beim Sprint zum Australischen GP im Moto2 einen schmalen Grat erlebt. Nach dem Start ging's bei der VR46 Academy zunächst bergab – ein böer Windstoß im ersten Durchgang warf ihn zurück. Aber er hat sich wieder gefangen und den dritten Platz geholt. Direkt vor ihm am Schluss lag der Nachwuchsfahrer von LCR Honda, Diogo Moreira. Und die Podiumsplätze gingen komplett an Ducati. 1-2-3, wie man sagt 🏍️
+
+Wie seht ihr Di Giannantonios Comeback nach dem Startproblem?
+
+#Moto2 #FabioDiGiannantonio #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346
+Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-4-di-giannantonio-spri-01.jpg
+Link-Preview: offiziell
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-25-daily
+Telegram-Update-ID: 279362000
+MotoGP-Auswahl: 5
+Story-Key: title:jorge-martin-den-k-t-haber-kolunda-k-r-k-tespit-edildi
+Event-Fingerprint: MotoGP|sprint|martin|
+Titel: Jorge Martin'den kötü haber! Kolunda kırık tespit edildi
+Text:
+Jorge Martin ist im Sprint-Rennen zum GP von Australien gestürzt.
+
+Bei dem Aprilia-Fahrer wurde anschließend ein Bruch der Speiche im Arm festgestellt.
+
+Er kann dadurch am MotoGP-Rennen am Sonntag nicht teilnehmen.
+
+Gute Besserung und schnelle Genesung an Jorge Martin!
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak
+Quelle: https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak
+Link-Preview: offiziell
