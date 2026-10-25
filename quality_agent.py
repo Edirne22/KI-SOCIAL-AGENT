@@ -27,6 +27,13 @@ WORKFLOW_MAX_AGE_HOURS = {
     "Analytics Report": 36,
     "Telegram Receive Approval": 36,
 }
+WORKFLOW_FILES = {
+    "Generate Daily Content Idea": "daily-ideas.yml",
+    "Inspiration Agent": "inspiration-agent.yml",
+    "Analytics Fetch": "analytics-fetch.yml",
+    "Analytics Report": "analytics-report.yml",
+    "Telegram Receive Approval": "telegram-receive.yml",
+}
 MAX_INSPIRATION_AGE_DAYS = 7
 RECOGNIZED_SOURCE_HOSTS = (
     "instagram.com",
@@ -176,8 +183,16 @@ def check_source_quality() -> list[dict[str, str]]:
         return []
 
     results = []
-    normalized = [url.lower() for url in urls]
-    duplicate_count = len(normalized) - len(set(normalized))
+    # Citations in prose/ideas deliberately repeat the bibliography. Only repeated
+    # entries within one source section are duplicate records, not those citations.
+    source_sections = re.findall(
+        r"(?ms)^## Quellen[^\n]*\n(.*?)(?=^## |\Z)", text
+    )
+    duplicate_count = sum(
+        len(section_urls) - len(set(section_urls))
+        for section in source_sections
+        for section_urls in [_urls(section)]
+    )
     if duplicate_count:
         results.append(_result("WARNUNG", "Inspiration-Duplikate", f"{duplicate_count} wiederholte Quellen-URL(s) im Report erkannt."))
     else:
@@ -284,20 +299,20 @@ def check_workflows() -> list[dict[str, str]]:
     repository = os.environ.get("GITHUB_REPOSITORY", "").strip()
     if not token or not repository:
         return [_result("WARNUNG", "Workflow-Status", "GitHub-Statusprüfung übersprungen: Token oder Repository fehlt.")]
-    try:
-        response = requests.get(
-            f"{GITHUB_API}/repos/{repository}/actions/runs",
-            headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"},
-            params={"per_page": 100},
-            timeout=30,
-        )
-        response.raise_for_status()
-    except requests.RequestException as error:
-        return [_result("WARNUNG", "Workflow-Status", f"GitHub-Statusprüfung nicht möglich: {type(error).__name__}.")]
-    runs = response.json().get("workflow_runs", [])
     results: list[dict[str, str]] = []
     for name in sorted(WORKFLOW_MAX_AGE_HOURS):
-        matching = [run for run in runs if run.get("name") == name]
+        try:
+            response = requests.get(
+                f"{GITHUB_API}/repos/{repository}/actions/workflows/{WORKFLOW_FILES[name]}/runs",
+                headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"},
+                params={"per_page": 1, "branch": "main"},
+                timeout=30,
+            )
+            response.raise_for_status()
+            matching = response.json().get("workflow_runs", [])
+        except (requests.RequestException, ValueError) as error:
+            results.append(_result("WARNUNG", name, f"GitHub-Statusprüfung nicht möglich: {type(error).__name__}."))
+            continue
         if not matching:
             results.append(_result("WARNUNG", name, "Kein letzter Lauf in der GitHub-Antwort gefunden."))
             continue
@@ -306,16 +321,19 @@ def check_workflows() -> list[dict[str, str]]:
         try:
             cutoff = _now() - timedelta(hours=WORKFLOW_MAX_AGE_HOURS[name])
             recent = datetime.fromisoformat(created.replace("Z", "+00:00")) >= cutoff
-        except ValueError:
-            recent = True
+        except (ValueError, TypeError):
+            results.append(_result("WARNUNG", name, "Zeitpunkt des letzten Laufs nicht auswertbar."))
+            continue
         conclusion = latest.get("conclusion")
         status = latest.get("status")
         if recent and conclusion == "failure":
             results.append(_result("KRITISCH", name, "Letzter Lauf fehlgeschlagen."))
-        elif recent and status == "in_progress":
+        elif recent and status in {"in_progress", "queued", "waiting", "pending", "requested"}:
             results.append(_result("WARNUNG", name, "Läuft noch."))
         elif recent and conclusion == "success":
             results.append(_result("OK", name, "Letzter Lauf erfolgreich."))
+        elif recent:
+            results.append(_result("WARNUNG", name, f"Letzter Lauf nicht erfolgreich abgeschlossen: {conclusion or status}."))
         else:
             results.append(_result("WARNUNG", name, f"Letzter Lauf ist älter als {WORKFLOW_MAX_AGE_HOURS[name]} Stunden."))
     return results
@@ -356,7 +374,10 @@ def notify(report: str) -> None:
     try:
         from telegram_bot import send_message
         summary = "\n".join(line for line in report.splitlines() if line.startswith(("Gesamtstatus:", "- OK:", "- Warnungen:", "- Kritisch:")))
-        send_message("🔎 Qualitäts-Agent\n" + summary)
+        findings = [line.replace("**", "") for line in report.splitlines()
+                    if line.startswith(("- ⚠️", "- ❌"))]
+        summary = summary.replace("**", "")
+        send_message("🔎 Qualitäts-Agent\n" + summary + ("\n\n" + "\n".join(findings) if findings else ""))
     except Exception as error:
         print(f"Telegram-Qualitätsmeldung übersprungen: {type(error).__name__}")
 
