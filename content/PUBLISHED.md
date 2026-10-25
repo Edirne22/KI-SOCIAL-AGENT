@@ -600,54 +600,6 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 ---
 
-## Instagram [GEPOSTET 2026-10-17 13:53 | ID: 18229317814330679]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-17-daily
-Telegram-Update-ID: 279361963
-MotoGP-Auswahl: 1
-Story-Key: title:worldssp-spanish-round-superpole-arenas-pole-de-can-n-s-rada-bahattin-28
-Event-Fingerprint: WorldSSP|superpole|oncu,sofuoglu|jerez
-Titel: WorldSSP Spanish Round Superpole: Arenas Pole'de, Can Ön Sırada, Bahattin 28.
-Text:
-Can Öncü üçüncü olarak ön sıradan başlayacak
-
-Can Öncü startet bei der WorldSSP-Superpole in Jerez von der dritten Startreihe. Arenas sicherte sich den Pole, Navarro ging als Zweiter durch. Für Bahattin Sofuoğlu wurde es eine lange Arbeit – er landet auf Platz 28. 🏍️
-
-Wie schätzt ihr die Chancen für Can bei dieser Startposition ein?
-
-#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28
-Quelle: https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28
-Medienstatus: QUELLE_BESTÄTIGT
-Bild: assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg
-Publish-Provenienz: {"creation_id": "18011827181971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18229317814330679", "published_media_id": "18229317814330679", "source_url": "https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28", "version": 1}
-
-## Facebook [GEPOSTET 2026-10-17 13:15 | ID: 122125149417469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-17-daily
-Telegram-Update-ID: 279361963
-MotoGP-Auswahl: 1
-Story-Key: title:worldssp-spanish-round-superpole-arenas-pole-de-can-n-s-rada-bahattin-28
-Event-Fingerprint: WorldSSP|superpole|oncu,sofuoglu|jerez
-Titel: WorldSSP Spanish Round Superpole: Arenas Pole'de, Can Ön Sırada, Bahattin 28.
-Text:
-Can Öncü üçüncü olarak ön sıradan başlayacak
-
-Can Öncü startet bei der WorldSSP-Superpole in Jerez von der dritten Startreihe. Arenas sicherte sich den Pole, Navarro ging als Zweiter durch. Für Bahattin Sofuoğlu wurde es eine lange Arbeit – er landet auf Platz 28. 🏍️
-
-Wie schätzt ihr die Chancen für Can bei dieser Startposition ein?
-
-#WorldSSP #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28
-Quelle: https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28
-Bild: assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-17-racing-editorial-2026-10-17-1-worldssp-spanish-rou-01.jpg", "media_status": "", "object_id": "122125149417469415", "object_type": "bild", "platform": "facebook", "post_id": "122125149417469415", "source_url": "https://motoetkinlik.com/worldssp-spanish-round-superpole-arenas-polede-can-on-sirada-bahattin-28", "version": 1}
-
 ## Instagram [GEPOSTET 2026-10-18 11:05 | ID: 18126728425853668]
 Status: GEPOSTET
 Freigabe: Telegram Racing
