@@ -1286,9 +1286,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-4-di-giannantonio-spri-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40232602998-1
+## Facebook [GEPOSTET 2026-10-25 20:50 | ID: 122127894903469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-25-daily
 Telegram-Update-ID: 279362000
@@ -1307,6 +1306,7 @@ Wie seht ihr Di Giannantonios Comeback nach dem Startproblem?
 Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346
 Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-4-di-giannantonio-spri-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-4-di-giannantonio-spri-01.jpg", "media_status": "", "object_id": "122127894903469415", "object_type": "bild", "platform": "facebook", "post_id": "122127894903469415", "source_url": "https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
