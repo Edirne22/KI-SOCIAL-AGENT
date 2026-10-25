@@ -3334,3 +3334,12 @@ Hier sind allgemeine, zeitunabhängige Hinweise zu Händlerarten, Tarifstrukture
 * **Geschwindigkeit & 5G:** Prüfen Sie, ob 5G enthalten ist und auf wie viel Mbit/s die Geschwindigkeit gedrosselt ist (z. B. 25 Mbit/s, 50 Mbit/s oder max. verfügbar). Für die alltägliche Nutzung reichen 2
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-10-25 10:33
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Keine Suchtreffer für 'handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12' gefunden.

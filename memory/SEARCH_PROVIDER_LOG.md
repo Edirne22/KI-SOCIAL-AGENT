@@ -1243,3 +1243,13 @@ Technische Protokolle der Deal-Hunter-Suchwege. Keine Preise oder Zugangsdaten s
 - Provider: Gemini-Fallback
 - Live-Suche: nein
 - Hinweis: Wissens-Fallback ohne Live-Websuche
+## 2026-10-25 10:33
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: 0 Ergebnisse
+## 2026-10-25 10:33
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: 0 öffentliche Treffer; Kostenlimit $0.010
