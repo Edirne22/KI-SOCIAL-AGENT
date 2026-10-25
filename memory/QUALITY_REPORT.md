@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-10-24 20:20
+Stand: 2026-10-25 20:28
 Gesamtstatus: **KRITISCH**
-- OK: 17
-- Warnungen: 3
+- OK: 19
+- Warnungen: 1
 - Kritisch: 1
 
 ## Prüfergebnisse
@@ -15,7 +15,7 @@ Gesamtstatus: **KRITISCH**
 - ✅ **YouTube-Fallback**: 10 YouTube-Datensätze aus dem Apify-Fallback erkannt.
 - ✅ **YouTube-Duplikate**: Keine doppelten Video-URLs im Quellreport erkannt.
 - ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
-- ⚠️ **Inspiration-Duplikate**: 10 wiederholte Quellen-URL(s) im Report erkannt.
+- ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
 - ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
 - ✅ **Ideen-Belege**: Alle 3 Ideenquellen sind in der Quellenliste dokumentiert.
 - ✅ **Datenalter**: 10 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-10-23 05:21 UTC).
@@ -25,7 +25,7 @@ Gesamtstatus: **KRITISCH**
 - ✅ **Analytics Fetch**: Letzter Lauf erfolgreich.
 - ✅ **Analytics Report**: Letzter Lauf erfolgreich.
 - ❌ **Generate Daily Content Idea**: Letzter Lauf fehlgeschlagen.
-- ⚠️ **Inspiration Agent**: Kein letzter Lauf in der GitHub-Antwort gefunden.
+- ✅ **Inspiration Agent**: Letzter Lauf erfolgreich.
 - ✅ **Telegram Receive Approval**: Letzter Lauf erfolgreich.
 
 ## Sicherheitsregel
