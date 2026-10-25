@@ -1,70 +1,9 @@
 {
   "version": 1,
-  "created_at": 1792836349,
+  "created_at": 1792930974,
   "max_days": 7,
   "window_used_days": 7,
-  "count": 5,
-  "visible_count": 5,
-  "items": [
-    {
-      "n": 1,
-      "title": "Moto2 Avustralya sıralama: Pole pozisyonu Manuel Gonzalez’in, Deniz Öncü 25. sırada!",
-      "url": "https://tr.motorsport.com/moto2/news/moto2-avustralya-siralama-pole-pozisyonu-manuel-gonzalezin-deniz-oncu-25-sirada/10867690",
-      "summary": "Moto2 Dünya Şampiyonası’nın Phillip Island ayağında pole pozisyonunu, 1:30.122’lik derecesiyle şampiyona lideri Manuel Gonzalez kazandı.",
-      "preview": "https://cdn-7.motorsport.com/images/amp/6O7zAnP6/s6/gonzalez-phillip-island.jpg",
-      "published_at": "2026-10-24T04:15:00Z",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    },
-    {
-      "n": 2,
-      "title": "Toprak Razgatlıoğlu Avustralya MotoGP’de neden yok? - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri",
-      "url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-avustralya-motogpde-neden-yok/122285",
-      "summary": "Toprak Razgatlıoğlu bu hafta sonu Phillip Island'daki Avustralya MotoGP'de pistte değil. Pramac Yamaha pilotu, Endonezya Grand Prix'sinde yaşadığı omuz sakatlığı nedeniyle 26 Ekim Pazartesi günü Milano'da ameliyat olacak ve 2026 sezonunun kalan beş yarışını kaçıracak. Ne olmuştu? Razgatlıoğlu, Mandalika'da cumartesi sabahı ikinci serbest antrenmanda yüksek hızlı bir kazada sağ omzunu çıkardı. Sıralama turlarına çıktı ve",
-      "preview": "https://trf1.net/wp-content/uploads/2026/05/SI202605100959-scaled.jpg",
-      "published_at": "2026-10-24T05:41:02+00:00",
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Toprak Razgatlıoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 3,
-      "title": "Razgatlioglu to miss remainder of the 2026 season The Prima Pramac rider will undergo surgery and be replaced by test rider Augusto Fernandez 20 Oct 2026 By Prima Pramac Yamaha MotoGP",
-      "url": "https://www.motogp.com/en/news/2026/10/20/toprak-razgatloglu-to-miss-phillip-island-and-remainder-of-the-2026-season/1179262",
-      "summary": "",
-      "preview": "",
-      "published_at": null,
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Toprak Razgatlıoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 4,
-      "title": "Toprak Razgatlıoğlu sezonun kalanını kaçıracak, ameliyat olacak - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri",
-      "url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-sezonun-kalanini-kaciracak-ameliyat-olacak/121454",
-      "summary": "Toprak Razgatlıoğlu, Endonezya Grand Prix’sinin antrenmanlarında yaşadığı omuz çıkığının ardından 2026 MotoGP sezonunun geri kalanını kaçıracak ve ameliyat olacak. Razgatlıoğlu kıran kırana geçen sıralama turlarına çıkmış ve Sprint yarışını tamamlamıştı. Ancak ana yarışın ilk turlarında omzundaki güç eksikliğini gerekçe göstererek yarıştan çekilmişti. Mandalika’dan döndükten sonra yapılan tıbbi kontroller, sakatlığın “başta düşündüğümüzden daha ciddi” olduğunu ortaya",
-      "preview": "https://trf1.net/wp-content/uploads/2026/10/gng_1354415_hires_1600x900_0.jpg",
-      "published_at": "2026-10-20T08:13:55+00:00",
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Toprak Razgatlıoğlu",
-      "kind": "news"
-    },
-    {
-      "n": 5,
-      "title": "Toprak Razgatlıoğlu’nun omzu ne durumda, Phillip Island’da yarışabilecek mi? - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri",
-      "url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglunun-omzu-ne-durumda-phillip-islandda-yarisabilecek-mi/121362",
-      "summary": "Toprak Razgatlıoğlu, Endonezya MotoGP hafta sonunda yaşadığı omuz çıkığının ardından Phillip Island'a hazırlanıyor. Ancak 23-25 Ekim'deki Avustralya Grand Prix'sine çıkıp çıkamayacağı, 19 Ekim itibarıyla incelediğimiz kaynaklarda kesinleşmiş değil. Mandalika'da ne olmuştu? Razgatlıoğlu, cumartesi sabahı ikinci serbest antrenmanda yüksek hızlı bir kazada sağ omzunu çıkardı. Pist kenarında omzunu kendi eliyle yerine oturtan pilot, buna rağmen sıralama",
-      "preview": "https://trf1.net/wp-content/uploads/2026/10/gng_1354415_hires_1600x900-1.jpg",
-      "published_at": "2026-10-19T17:58:56+00:00",
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Toprak Razgatlıoğlu",
-      "kind": "news"
-    }
-  ]
+  "count": 0,
+  "visible_count": 0,
+  "items": []
 }

@@ -1229,3 +1229,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-sprintte-neden-cekildigin
 Story-Key: motogp:10867741
 Titel: Martín ve Fernandez, Avustralya GP mücadelesinde yer almayacak!
 Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
+
+## 2026-10-25 12:22 UTC – ANGEBOTEN
+Story-Key: motogp:122503
+Titel: Aprilia patronu Rivola: Yarışın iptali Martin için iyi mi, bilmiyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-patronu-rivola-yarisin-iptali-martin-icin-iyi-mi-bilmiyorum/122503
+
+## 2026-10-25 12:22 UTC – ANGEBOTEN
+Story-Key: title:jack-miller-sprint-yar-nda-puan-almak-i-steyebilece-imizden-fazlas
+Titel: Jack Miller: “Sprint Yarışında Puan Almak İsteyebileceğimizden Fazlası”
+Quelle: https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi
+
+## 2026-10-25 12:22 UTC – ANGEBOTEN
+Story-Key: motogp:122425
+Titel: Avustralya MotoGP’sinde pazar günü programı kötü hava nedeniyle gecikecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425
+
+## 2026-10-25 12:22 UTC – ANGEBOTEN
+Story-Key: motogp:122346
+Titel: Di Giannantonio, sprintte rüzgâra yakalandı: Neredeyse kendimi öldürüyordum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346
+
+## 2026-10-25 12:22 UTC – ANGEBOTEN
+Story-Key: title:jorge-martin-den-k-t-haber-kolunda-k-r-k-tespit-edildi
+Titel: Jorge Martin'den kötü haber! Kolunda kırık tespit edildi
+Quelle: https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak

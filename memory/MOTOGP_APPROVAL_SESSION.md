@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1792836349
+Session-Timestamp: 1792930974
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,22 +18,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 4.4
-Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: motogp:1179257
-Titel: Arenas: “Standing on the podium in front of a home crowd is very nice”
-Quelle: https://www.worldsbk.com/en/news/2026/10/20/arenas-standing-on-the-podium-in-front-of-a-home-crowd-is-very-nice/1179257
+Artikelalter-Tage: 0.2
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:122503
+Titel: Aprilia patronu Rivola: Yarışın iptali Martin için iyi mi, bilmiyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-patronu-rivola-yarisin-iptali-martin-icin-iyi-mi-bilmiyorum/122503
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-1-arenas-standing-on-t-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/10/17/06386cd8-8e85-4d04-9809-1a92d3cd6257/53705_JDR_R12_2026_Ambience.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-1-aprilia-patronu-rivo-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1356774_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Arenas hat Race 1 in Jerez gewonnen, Can Öncü musste sich geschlagen geben. Der 2026er Champion steht auf dem Podest – und sagt, vor heimischem Publikum ist das besonders schön. 🏍️
+Aprilia-CEO Massimo Rivola bezweifelt, dass das ausgefallene Australian GP Jorge Martin im Titelkampf wirklich weiterhilft.
 
-Was denkt ihr, ist das der motivierendste Moment seiner Titelgeschichte?
+Das Rennen auf Phillip Island wurde wegen Regen und schlechter Sicht abgebrochen.
 
-#Moto2 #CanOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Trotzdem liegt Martin nach dem Sprint am Samstag nur 10 Punkte hinter Marc Marquez – und Martin hat sich das Handgelenk gebrochen.
+
+Glaubt ihr auch, dass das Nicht-Rennen für Martin eher ein Nachteil ist?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -41,25 +45,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.4
+Artikelalter-Tage: 0.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1179521
-Titel: Marc Marquez takes title lead with Sprint win, Martin crashes out of epic battle
-Quelle: https://www.motogp.com/en/news/2026/10/24/marc-marquez-takes-title-lead-with-sprint-win-martin-crashes-out-of-epic-battle/1179521
+Story-Key: title:jack-miller-sprint-yar-nda-puan-almak-i-steyebilece-imizden-fazlas
+Titel: Jack Miller: “Sprint Yarışında Puan Almak İsteyebileceğimizden Fazlası”
+Quelle: https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-2-marc-marquez-takes-t-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/24/eaa12a2a-14eb-44c6-8e7f-d08ca1bdec63/Report-MGP-SPR-AUS-TOP.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-2-jack-miller-sprint-y-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jack-miller-yamaha-motor-sorunu-mandalika-motogp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Marquez holt sich die Führung in der WM – mit einem Sprint-Sieg. Martin war noch auf P2 dabei, dann: Crash nach sieben runden, das Wochenende ist vorbei und er zieht sich eine Verletzung zu.
+Jack Miller beendete den MotoGP-Sprint auf Phillip Island auf dem achten Platz.
 
-Wie schätzt ihr die Situation ein?
+Damit holte der Yamaha-Pilot seine ersten Sprint-Punkte der Saison.
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Er bewertete seine Leistung auf trockener Piste und blickte auf den Rennsonntag.
+
+Mal sehen, wie es für ihn am Sonntag läuft.
+
+#MotoGP #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,27 +75,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
+Artikelalter-Tage: 0.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:122340
-Titel: Bezzecchi’den Martin’e mesaj: Henüz bitmedi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340
+Story-Key: motogp:122425
+Titel: Avustralya MotoGP’sinde pazar günü programı kötü hava nedeniyle gecikecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357388_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-motogpsin-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357329_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marco Bezzecchi sieht seinen Aprilia-Teamkollegen Jorge Martin trotz der Verletzung noch nicht komplett aus dem Rennen.
+Marc Marquez hat den Sprint gewonnen – doch am Sonntag gibt es Verzögerungen.
 
-Jorge Martin kann wegen einer Verletzung nicht am GP von Australien auf Phillip Island teilnehmen. Obwohl der Ausfall ein Rückschlag für die Titelchancen ist, glaubt Bezzecchi weiter an Martin. Der Weltmeister von 2024 war mit zwei Punkten Vorsprung in der Wertung nach Australien gereist.
+Auf Phillip Island muss der Sonntag im australischen MotoGP-Wochenende warten. Die Pist-Aktivitäten wurden verschoben, weil die Sicht zu schlecht war und das medizinische Helikopter nicht starten konnte. Der Samstagmorgen war richtig nass, aber zum Sprint hat es dann trocken genug gewesen. Marquez geht als Sieger des Sprints in den Hauptrennen-Tag. Die Frage ist nur, wann es überhaupt losgeht 🏍️
 
-Wie schätzt ihr die Situation im Titelkampf ein?
+Wie schätzt ihr die Situation ein – startet das Rennen am Sonntag oder schiebt man weiter?
 
-#MotoGP #MarcoBezzecchi #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -98,24 +106,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:122329
-Titel: Bagnaia, sprintte neden çekildiğini açıklamadı: Küçük bir sorun yaşadım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-sprintte-neden-cekildigini-aciklamadi-kucuk-bir-sorun-yasadim/122329
+Artikelalter-Tage: 1.1
+Kategorie: Moto2
+Serie: Moto2
+Story-Key: motogp:122346
+Titel: Di Giannantonio, sprintte rüzgâra yakalandı: Neredeyse kendimi öldürüyordum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-4-bagnaia-sprintte-ned-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357390_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-4-di-giannantonio-spri-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357318_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Ein kleines Problem hatte ich mit der Ducati.
+Fabio Di Giannantonio hat beim Sprint zum Australischen GP im Moto2 einen schmalen Grat erlebt. Nach dem Start ging's bei der VR46 Academy zunächst bergab – ein böer Windstoß im ersten Durchgang warf ihn zurück. Aber er hat sich wieder gefangen und den dritten Platz geholt. Direkt vor ihm am Schluss lag der Nachwuchsfahrer von LCR Honda, Diogo Moreira. Und die Podiumsplätze gingen komplett an Ducati. 1-2-3, wie man sagt 🏍️
 
-Pecco Bagnaia ist im Australian Sprint zurückgestiegen und will nicht genau erklären, warum. Er spricht nur von einem Problem. Für den zweifachen Weltmeister läuft die Saison 2026 bisher nicht rund. Schon am Freitag hat er am Phillip Island das Q2 verpasst, und auch im Qualifying am Samstag reichte es nur für Platz 16 unter wechselhaften Bedingungen.
+Wie seht ihr Di Giannantonios Comeback nach dem Startproblem?
 
-Wie seht ihr die Laune im Team nach diesem Wochenende?
-
-#MotoGP #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #FabioDiGiannantonio #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -126,22 +132,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 1.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10867741
-Titel: Martín ve Fernandez, Avustralya GP mücadelesinde yer almayacak!
-Quelle: https://tr.motorsport.com/motogp/news/sampiyona-lideri-martin-ve-fernandez-avustralya-gpye-katilmayacak/10867741
+Story-Key: title:jorge-martin-den-k-t-haber-kolunda-k-r-k-tespit-edildi
+Titel: Jorge Martin'den kötü haber! Kolunda kırık tespit edildi
+Quelle: https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-5-martin-ve-fernandez-01.jpg
-Quellen-Preview: https://cdn-6.motorsport.com/images/amp/63QaL5l2/s6/jorge-martin-aprilia-racing-te.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-5-jorge-martin-den-koe-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/jorge-martin-avustralya-gp-2026-kol-kirigi.webp
 Plattformen: Instagram + Facebook
 Text:
-Keine gute Woche für zwei Riders beim Australien-Grand-Prix in Phillip Island. Jorge Martín hat sich im Sprint einen Bruch am Handgelenk zugezogen und für das Hauptrennen als nicht startfähig gemeldet. Raul Fernandez muss ebenfalls passen – bei ihm steckt ein Fingerproblem dahinter. Beide fallen damit aus dem Rennen heraus. 🏍️💨
+Jorge Martin ist im Sprint-Rennen zum GP von Australien gestürzt.
 
-Was denkt ihr – wer wird die Lücken der beiden im Feld füllen?
+Bei dem Aprilia-Fahrer wurde anschließend ein Bruch der Speiche im Arm festgestellt.
 
-#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Er kann dadurch am MotoGP-Rennen am Sonntag nicht teilnehmen.
+
+Gute Besserung und schnelle Genesung an Jorge Martin!
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

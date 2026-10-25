@@ -3528,3 +3528,33 @@ Story-Key: motogp:10867741
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-25 13:02 UTC | Motorcycle Racing | PASS
+Titel: Aprilia patronu Rivola: Yarışın iptali Martin için iyi mi, bilmiyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122503
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-25 13:03 UTC | Motorcycle Racing | PASS
+Titel: Jack Miller: “Sprint Yarışında Puan Almak İsteyebileceğimizden Fazlası”
+Story-Key: title:jack-miller-sprint-yar-nda-puan-almak-i-steyebilece-imizden-fazlas
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-25 13:03 UTC | Motorcycle Racing | PASS
+Titel: Avustralya MotoGP’sinde pazar günü programı kötü hava nedeniyle gecikecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122425
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-25 13:03 UTC | Motorcycle Racing | PASS
+Titel: Di Giannantonio, sprintte rüzgâra yakalandı: Neredeyse kendimi öldürüyordum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122346
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-25 13:03 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin'den kötü haber! Kolunda kırık tespit edildi
+Story-Key: title:jorge-martin-den-k-t-haber-kolunda-k-r-k-tespit-edildi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
