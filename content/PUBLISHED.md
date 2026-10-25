@@ -1193,9 +1193,8 @@ Bild: assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchide
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-24-racing-editorial-2026-10-24-3-bezzecchiden-martine-01.jpg", "media_status": "", "object_id": "122127547449469415", "object_type": "bild", "platform": "facebook", "post_id": "122127547449469415", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchiden-martine-mesaj-henuz-bitmedi/122340", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40206398073-1
+## Facebook [GEPOSTET 2026-10-25 15:20 | ID: 1285968257941776_122127824385469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-25-daily
 Telegram-Update-ID: 279362000
@@ -1217,6 +1216,7 @@ Mal sehen, wie es für ihn am Sonntag läuft.
 🔗 Quelle: https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi
 Quelle: https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi", "media_status": "", "object_id": "1285968257941776_122127824385469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122127824385469415", "source_url": "https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
