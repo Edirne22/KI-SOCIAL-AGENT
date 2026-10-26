@@ -1308,9 +1308,8 @@ Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-an
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40380877272-1
+## Facebook [GEPOSTET 2026-10-26 18:48 | ID: 122128176045469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-26-daily
 Telegram-Update-ID: 279362003
@@ -1329,6 +1328,7 @@ Wer ist nach dem ersten freien Training eurer Meinung nach der favorisierte Fahr
 Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
 Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg", "media_status": "", "object_id": "122128176045469415", "object_type": "bild", "platform": "facebook", "post_id": "122128176045469415", "source_url": "https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
