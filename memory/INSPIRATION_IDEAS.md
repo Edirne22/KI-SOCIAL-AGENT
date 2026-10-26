@@ -1,93 +1,137 @@
 # Inspiration-Ideen
+Stand: 2026-10-26 10:38
 
-# Social-Media-Trend-Report für Bülents deutsch-türkische Motorrad-/Reise-Community
-**Auswertungszeitraum:** Letzte 7 Tage (Datenstand: 22.10. – 27.09.2026)  
-**Datenbasis:** 20 öffentliche Beiträge (Instagram & YouTube) via Apify  
-**Erstellt am:** 23.10.2026
+## Datenstatus
+- Konkrete öffentliche Datensätze: 30
+- Apify: konkrete Daten vorhanden
+- YouTube Apify: konkrete Daten vorhanden
+- Bright Data: keine konkreten Daten
+- Crawlbase: keine konkreten Daten
 
----
+## Report
+Strukturierte Rohdaten liegen vor. Für die detaillierte Auswertung ist Gemini-Zusammenfassung vorgesehen.
 
-## Top-5 Trending Themen (mit Belegen)
+## Gemini-Status
+Gemini nicht verfügbar – Rohdaten der wichtigsten Beiträge folgen.
 
-### 1. Nicolò Bulega krönt sich zum WorldSBK-Champion 2026
-- **Quelle:** https://www.instagram.com/p/DdyxftRuz2K/
-- **Datum:** 27.09.2026
-- **Engagement:** 28.879
-- **Warum es trendet:** Offizieller Champion-Post von WorldSBK mit Rekord-Engagement im Datensatz. Saisonabschluss mit „Perfection, records and redemption“ – starkes emotionales Narrativ für Saison-Reviews.
-
-### 2. MotoGP Australien 2026 – Practice-Highlights (Hauptklasse)
-- **Quelle:** https://www.youtube.com/watch?v=GvECJ3mgEkQ
-- **Datum:** 23.10.2026
-- **Engagement:** 22.162
-- **Warum es trendet:** Erste Sessions des Australien-GP (Phillip Island) generieren hohes Suchvolumen; mehrere Kanäle laden parallel Highlights hoch.
-
-### 3. WorldSBK Kalender 2027: China-Neuzugang & Valencia-Rückkehr
-- **Quelle:** https://www.instagram.com/p/Dd8UBwFOgKg/
-- **Datum:** 01.10.2026
-- **Engagement:** 11.496
-- **Warum es trendet:** Erster China-Lauf der WorldSBK-Geschichte + Traditionsstrecke Valencia – große Planungsrelevanz für Reise-Communitys.
-
-### 4. Moto3 Australien 2026 – Practice-Highlights
-- **Quelle:** https://www.youtube.com/watch?v=fQ0VhPeTczk
-- **Datum:** 23.10.2026
-- **Engagement:** 12.076
-- **Warum es trendet:** Nachwuchsklasse zieht starkes Engagement auf YouTube; Phillip Island bekannt für enge Moto3-Rennen.
-
-### 5. WorldSBK Jerez-Test 2026: Erste Fahrertage & 2027-Vorbereitungen
-- **Quellen (kombiniert):**  
-  - https://www.instagram.com/p/DezahHPDqDK/ (22.10.2026, 2.824 Engagement)  
-  - https://www.instagram.com/p/DezdmCkOIoC/ (22.10.2026, 2.133 Engagement)  
-  - https://www.instagram.com/p/DezGNd9Di-7/ (22.10.2026, 3.660 Engagement)
-- **Datum:** 22.10.2026
-- **Engagement:** kumuliert ca. 8.600 über drei Posts
-- **Warum es trendet:** Offizieller Teststart für 2027 mit Top-Namen (Lowes, Oliveira, Rea) + neue Lackierungen – direkter Einblick in Fahrerwechsel & Bike-Entwicklung.
-
----
-
-## 3 konkrete Content-Ideen für Bülent
-
-### Idee 1: „Vom Champion zum Reiseziel: Bulegas Italien-Route“
-- **Format:** Reel (90 Sek., Musik unterlegt)
-- **Hook:** „Nicolò Bulega ist WorldSBK-Champ 2026 – ich zeige euch die perfekte Motorrad-Route durch seine italienische Heimat!“
-- **Inspirations-Quelle:** https://www.instagram.com/p/DdyxftRuz2K/
-- **Warum passend:** Verknüpft aktuelles Champion-Thema (höchstes Engagement) mit Bülents Kernkompetenz: Motorrad-Reiserouten in Italien. Deutsch-türkische Community liebt „Heimat“-Bezüge.
-
-### Idee 2: „WorldSBK 2027: China & Valencia – lohnt sich die Reise?“
-- **Format:** Post (Karussell: 5 Slides + Caption)
-- **Hook:** „Neuer Kalender draußen: China-Premiere & Valencia-Comeback – ich checke für euch Anreise, Kosten & Strecken-Highlights.“
-- **Inspirations-Quelle:** https://www.instagram.com/p/Dd8UBwFOgKg/
-- **Warum passend:** Direkter Nutzwert für Reise-Community; Kalender-Thema hat 11k+ Engagement. Bülent kann Visa-Tipps (China) & Europa-Logistik (Valencia) liefern.
-
-### Idee 3: „Jerez-Test 2027: Was die neuen Bikes für Trackday-Fahrer bedeuten“
-- **Format:** Story-Serie (5-7 Parts, interaktiv mit Umfragen)
-- **Hook:** „Lowes, Oliveira & Rea testen schon die 2027er – ich übersetze die Tech-News für euren nächsten Trackday in Jerez.“
-- **Inspirations-Quelle:** https://www.instagram.com/p/DezahHPDqDK/
-- **Warum passend:** Test-Content ist tagesaktuell (22.10.), Jerez ist Top-Trackday-Ziel für Deutsche/Türken. Bülent kann Tech-Infos in „Was bringt mir das?“ übersetzen.
-
----
-
-## Quellenverzeichnis (nur URLs aus den Rohdaten)
-
-1. https://www.instagram.com/p/DdyxftRuz2K/  
-2. https://www.youtube.com/watch?v=GvECJ3mgEkQ  
-3. https://www.instagram.com/p/Dey-9btjnvU/  
-4. https://www.youtube.com/watch?v=fQ0VhPeTczk  
-5. https://www.instagram.com/p/Dd8UBwFOgKg/  
-6. https://www.instagram.com/p/DezGNd9Di-7/  
-7. https://www.instagram.com/p/DezahHPDqDK/  
-8. https://www.instagram.com/p/DezdmCkOIoC/  
-9. https://www.instagram.com/p/DeyuDUJCKGO/  
-10. https://www.youtube.com/watch?v=wZGwkG7lb-M  
-11. https://www.instagram.com/p/DeznBuLDh6a/  
-12. https://www.instagram.com/p/DezIlJsO57p/  
-13. https://www.instagram.com/p/De1F3d_Or5n/  
-14. https://www.youtube.com/watch?v=1hD1Ai3VNnU  
-15. https://www.youtube.com/watch?v=3AGHFxw9TB0  
-16. https://www.youtube.com/watch?v=GcV4k5P7Rbw  
-17. https://www.youtube.com/watch?v=2pOejmd4Q94  
-18. https://www.youtube.com/watch?v=lCjDfqxrQ-8  
-19. https://www.youtube.com/watch?v=tu_Sk5LdVeE  
-20. https://www.youtube.com/watch?v=9PAVrqKslyA  
-
----  
-*Report basiert ausschließlich auf den bereitgestellten strukturierten Daten. Keine externen Informationen hinzugefügt.*
+## Rohdaten
+### Datensatz 1
+- Plattform: YouTube Apify
+- Titel: Hasil Moto3 Hari ini - Hasil Race Moto3 Australia 2026 - Klasemen Moto3 Veda Ega Pratama 2026
+- Datum: 2026-10-25T20:16:06Z
+- URL: https://www.youtube.com/watch?v=bm9kgCVFkE0
+- Engagement: 68811
+### Datensatz 2
+- Plattform: Apify
+- Titel: A big swing in the standings after the #AustralianGP but there are a lot of points still on the table ⚔️
+- Datum: 2026-10-25T08:46:44.000Z
+- URL: https://www.instagram.com/p/De6T4n6IzZS/
+- Engagement: 52678
+### Datensatz 3
+- Plattform: Apify
+- Titel: Two Spaniards and one Aussie on the top step in 1989... And also, in 2025 🇪🇸 🇪🇸 🇦🇺 A coincidence that brings it all full circle for Phillip Island 💫
+- Datum: 2026-10-26T05:00:00.000Z
+- URL: https://www.instagram.com/p/De6S8j0Iaup/
+- Engagement: 23314
+### Datensatz 4
+- Plattform: Apify
+- Titel: Brought the noise over to the @williamsf1team box.
+- Datum: 2026-10-25T22:10:19.000Z
+- URL: https://www.instagram.com/p/De7vxO-yxHC/
+- Engagement: 13255
+### Datensatz 5
+- Plattform: Apify
+- Titel: Boots on, helmet ready, COTA calling 🤠🇺🇸
+- Datum: 2026-10-25T11:00:19.000Z
+- URL: https://www.instagram.com/p/De6jRIHBf1i/
+- Engagement: 13227
+### Datensatz 6
+- Plattform: Apify
+- Titel: Not your usual #MotoGP ride at COTA 😂🎢 Keeping a straight face was impossible!
+- Datum: 2026-10-25T22:12:12.000Z
+- URL: https://www.instagram.com/p/De7vefEza-L/
+- Engagement: 11936
+### Datensatz 7
+- Plattform: YouTube Apify
+- Titel: This Is What Happens When You Challenge Marc Márquez 😈 |  #motogp2026 #motogp
+- Datum: 2026-10-25T17:03:20Z
+- URL: https://www.youtube.com/watch?v=XouU2Beh5vs
+- Engagement: 11273
+### Datensatz 8
+- Plattform: Apify
+- Titel: Still can’t get over these scenes at COTA 🤩
+- Datum: 2026-10-26T03:51:43.000Z
+- URL: https://www.instagram.com/p/De8WgSsxnJm/
+- Engagement: 10355
+### Datensatz 9
+- Plattform: Apify
+- Titel: A lot of love from the riders after their Phillip Island farewell 🥹🫶
+- Datum: 2026-10-26T08:03:52.000Z
+- URL: https://www.instagram.com/p/De8z1T_iJ-V/
+- Engagement: 8524
+### Datensatz 10
+- Plattform: Apify
+- Titel: A new chapter Down Under 🤝 Adelaide, we’re coming for you! 👊
+- Datum: 2026-10-26T07:00:14.000Z
+- URL: https://www.instagram.com/p/De8soh-BfL5/
+- Engagement: 6664
+### Datensatz 11
+- Plattform: Apify
+- Titel: A Sprint win worth raising a glass to 🍾🏆
+- Datum: 2026-10-26T08:58:15.000Z
+- URL: https://www.instagram.com/p/De85272I4Uh/
+- Engagement: 3453
+### Datensatz 12
+- Plattform: Apify
+- Titel: From Borgo Panigale to the #USGP 🏎️🛞🇺🇸
+- Datum: 2026-10-25T21:40:58.000Z
+- URL: https://www.instagram.com/p/De7sUuPzLXe/
+- Engagement: 2381
+### Datensatz 13
+- Plattform: YouTube Apify
+- Titel: coolest MotoGP moments  #shorts #motogp
+- Datum: 2026-10-25T22:00:37Z
+- URL: https://www.youtube.com/watch?v=FZ2A2xuwDo0
+- Engagement: 1542
+### Datensatz 14
+- Plattform: YouTube Apify
+- Titel: The Most INTENSE MotoGP Rivalries Ever! 😳
+- Datum: 2026-10-25T18:50:50Z
+- URL: https://www.youtube.com/watch?v=S1p8_Ea81hs
+- Engagement: 1493
+### Datensatz 15
+- Plattform: YouTube Apify
+- Titel: Motogp News Jack Miller  🚀
+- Datum: 2026-10-25T19:00:02Z
+- URL: https://www.youtube.com/watch?v=Bb63_m5hbOk
+- Engagement: 1350
+### Datensatz 16
+- Plattform: YouTube Apify
+- Titel: He Refused To Give Up! 🤯 #motogp #aragon #racing
+- Datum: 2026-10-25T17:00:41Z
+- URL: https://www.youtube.com/watch?v=XVBhP16AiCc
+- Engagement: 1194
+### Datensatz 17
+- Plattform: YouTube Apify
+- Titel: 🔥 MotoGP INSANITY! 🏁 High-Speed Battles, Epic Overtakes & Racing Highlights#shorts #sports #racing
+- Datum: 2026-10-25T15:48:20Z
+- URL: https://www.youtube.com/watch?v=cC657B8h6ys
+- Engagement: 213
+### Datensatz 18
+- Plattform: YouTube Apify
+- Titel: OFFICIAL HIGHLIGHTS - PERTAMINA GRAND PRIX OF INDONESIA 9-11 OCTOBER 2026 / MOTOGP MANDALIKA #motogp
+- Datum: 2026-10-26T09:44:18Z
+- URL: https://www.youtube.com/watch?v=rZLjsFizKpg
+- Engagement: 0
+### Datensatz 19
+- Plattform: YouTube Apify
+- Titel: XCC RACING: MotoGP USA Race Highlights!
+- Datum: 2026-10-26T01:32:32Z
+- URL: https://www.youtube.com/watch?v=zspfbj9Pv0Q
+- Engagement: 0
+### Datensatz 20
+- Plattform: YouTube Apify
+- Titel: XCC RACING: MotoGP USA Qualifying & Sprint Race Highlights!
+- Datum: 2026-10-26T01:30:52Z
+- URL: https://www.youtube.com/watch?v=Q0usxCFAdT8
+- Engagement: 0

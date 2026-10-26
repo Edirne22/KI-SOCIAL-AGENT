@@ -5,186 +5,190 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: THE 2027 CALENDAR IS HERE! 🗓️🇨🇳 China joins the #WorldSBK calendar for the first time, while Valencia makes its return 🚥
-- Datum: 2026-10-01T07:02:38.000Z
-- URL: https://www.instagram.com/p/Dd8UBwFOgKg/
-- Likes: 11195
-- Kommentare: 301
+- Titel: A big swing in the standings after the #AustralianGP but there are a lot of points still on the table ⚔️
+
+#MotoGP
+- Datum: 2026-10-25T08:46:44.000Z
+- URL: https://www.instagram.com/p/De6T4n6IzZS/
+- Likes: 51952
+- Kommentare: 726
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: 👑 @nicolo_bulega11 is the 2026 #WorldSBK CHAMPION! 🇮🇹🏆 A season of perfection, records and redemption ⭐️
+- Titel: A Sprint win worth raising a glass to 🍾🏆
 
-#Bu1egacy #ItalianWorldSBK 🇮🇹
-- Datum: 2026-09-27T14:04:47.000Z
-- URL: https://www.instagram.com/p/DdyxftRuz2K/
-- Likes: 28445
-- Kommentare: 434
+#AustralianGP #MotoGP #ProseccoDOC
+- Datum: 2026-10-26T08:58:15.000Z
+- URL: https://www.instagram.com/p/De85272I4Uh/
+- Likes: 3433
+- Kommentare: 20
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: What a battle 🔥 Race 2 was the definition of pure racing ⚔️
+- Titel: A lot of love from the riders after their Phillip Island farewell 🥹🫶
 
-#SpanishWorldSBK 🇪🇸 #WorldSBK
-- Datum: 2026-10-23T08:08:17.000Z
-- URL: https://www.instagram.com/p/De1F3d_Or5n/
-- Likes: 346
-- Kommentare: 0
+#AustralianGP 🇦🇺 #MotoGP
+- Datum: 2026-10-26T08:03:52.000Z
+- URL: https://www.instagram.com/p/De8z1T_iJ-V/
+- Likes: 8483
+- Kommentare: 41
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: Media day done, race weekend mode: ON 🔥🇦🇺 @ikerlecuona_27 is back on track this weekend at the #AustralianGP 💪
+- Titel: A new chapter Down Under 🤝 Adelaide, we’re coming for you! 👊
 
-#WorldSBK #MotoGP
-- Datum: 2026-10-22T18:18:48.000Z
-- URL: https://www.instagram.com/p/DeznBuLDh6a/
-- Likes: 750
-- Kommentare: 3
+#AustralianGP🇦🇺 #MotoGP
+- Datum: 2026-10-26T07:00:14.000Z
+- URL: https://www.instagram.com/p/De8soh-BfL5/
+- Likes: 6363
+- Kommentare: 301
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: The results from the first day of testing at Jerez are in! 🛠️
+- Titel: Two Spaniards and one Aussie on the top step in 1989... And also, in 2025 🇪🇸 🇪🇸 🇦🇺 A coincidence that brings it all full circle for Phillip Island 💫
 
-#WorldSBK
-- Datum: 2026-10-22T16:56:28.000Z
-- URL: https://www.instagram.com/p/DezdmCkOIoC/
-- Likes: 2118
-- Kommentare: 15
+#AustralianGP 🇦🇺 #MotoGP
+- Datum: 2026-10-26T05:00:00.000Z
+- URL: https://www.instagram.com/p/De6S8j0Iaup/
+- Likes: 23235
+- Kommentare: 79
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: @sam.lowes22, @88migueloliveira and @jonathan_rea are the fastest riders from day one of testing at Jerez! 🚀
+- Titel: Still can’t get over these scenes at COTA 🤩
 
-#WorldSBK
-- Datum: 2026-10-22T16:29:30.000Z
-- URL: https://www.instagram.com/p/DezahHPDqDK/
-- Likes: 2818
-- Kommentare: 6
+#MotoGP #SpeedLapsUSA
+- Datum: 2026-10-26T03:51:43.000Z
+- URL: https://www.instagram.com/p/De8WgSsxnJm/
+- Likes: 10289
+- Kommentare: 66
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: Three podiums and a P2 start means only one thing: best weekend of the season unlocked ✅
+- Titel: Not your usual #MotoGP ride at COTA 😂🎢 Keeping a straight face was impossible! 
 
-#SpanishWorldSBK 🇪🇸 #WorldSBK
-- Datum: 2026-10-22T13:53:33.000Z
-- URL: https://www.instagram.com/p/DezIlJsO57p/
-- Likes: 618
-- Kommentare: 1
+#SpeedLapsUSA
+- Datum: 2026-10-25T22:12:12.000Z
+- URL: https://www.instagram.com/p/De7vefEza-L/
+- Likes: 11821
+- Kommentare: 115
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: New colours yesterday, first laps today 🔵 2027 preparations are underway! 🔥
+- Titel: Brought the noise over to the @williamsf1team box. 
 
-#WorldSBK
-- Datum: 2026-10-22T13:32:03.000Z
-- URL: https://www.instagram.com/p/DezGNd9Di-7/
-- Likes: 3635
-- Kommentare: 25
+#Trackhouse #MotoGP #USGP #F1 #SpeedLapsUSA
+- Datum: 2026-10-25T22:10:19.000Z
+- URL: https://www.instagram.com/p/De7vxO-yxHC/
+- Likes: 13243
+- Kommentare: 12
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: Testing mode: ON 🛠️ Black & white, looking sharp! 🖤🤍🔥
+- Titel: From Borgo Panigale to the #USGP 🏎️🛞🇺🇸
 
-#WorldSBK
-- Datum: 2026-10-22T12:28:42.000Z
-- URL: https://www.instagram.com/p/Dey-9btjnvU/
-- Likes: 16400
-- Kommentare: 83
+When you live for racing, it doesn’t matter if you’re on two wheels or four. It’s all about pushing the limits, and the thrill of the track 💥🔥
+
+#SpeedLapsUSA #f1
+- Datum: 2026-10-25T21:40:58.000Z
+- URL: https://www.instagram.com/p/De7sUuPzLXe/
+- Likes: 2373
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: From @nicolo_bulega11’s dominance to @88migueloliveira’s podium battle and record-breaking moments, Estoril had it all! 👑🏁 Relive the best of #EstorilWorldSBK on our YouTube channel! 👀🇵🇹
+- Titel: Boots on, helmet ready, COTA calling 🤠🇺🇸
 
-#WorldSBK
-- Datum: 2026-10-22T10:01:31.000Z
-- URL: https://www.instagram.com/p/DeyuDUJCKGO/
-- Likes: 1508
-- Kommentare: 3
+#MotoGP #SpeedLapsUSA
+- Datum: 2026-10-25T11:00:19.000Z
+- URL: https://www.instagram.com/p/De6jRIHBf1i/
+- Likes: 13136
+- Kommentare: 91
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: A great first day for Marco Bezzecchi but he's looking for more improvements 🎯
+- Titel: A Sprint win worth raising a glass to 🍾 🏆
 
-#AustralianGP 🇦🇺
-- Datum: 2026-10-23T09:15:04.000Z
+#AustralianGP 🇦🇺 #MotoGP #ProseccoDOC
+- Datum: 2026-10-26T09:12:36.000Z
 - URL: nicht verfügbar
-- Likes: 64
-- Kommentare: 0
+- Likes: 352
+- Kommentare: 5
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: It was a beautiful day at Phillip Island and we saw Marc Marquez be in an Aprilia sandwich ⚔️
+- Titel: A lot of love from the riders after their Phillip Island farewell 🥹🫶
 
-Go through everything else that happened today Down Under! 😎
-
-#AustralianGP 🇦🇺
-- Datum: 2026-10-23T09:00:26.000Z
+#AustralianGP 🇦🇺 #MotoGP
+- Datum: 2026-10-26T08:04:20.000Z
 - URL: nicht verfügbar
-- Likes: 675
-- Kommentare: 22
+- Likes: 670
+- Kommentare: 16
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: The birthday didn't start great but Raul Fernandez turned it around in style 🎂
+- Titel: A new chapter Down Under 🤝 Adelaide, we’re coming for you! 👊
 
-#AustralianGP 🇦🇺
-- Datum: 2026-10-23T08:50:03.000Z
+#AustralianGP🇦🇺 #MotoGP
+- Datum: 2026-10-26T07:00:26.000Z
 - URL: nicht verfügbar
-- Likes: 56
-- Kommentare: 0
+- Likes: 577
+- Kommentare: 136
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: A fresh aero update for Ducati 👀
+- Titel: Two Spaniards and one Aussie on the top step in 1989... And also, in 2025 🇪🇸 🇪🇸 🇦🇺
 
-#AustralianGP🇦🇺 #MotoGP
-- Datum: 2026-10-23T08:34:46.000Z
+A coincidence that brings it all full circle for Phillip Island 💫
+
+#AustralianGP 🇦🇺
+- Datum: 2026-10-26T05:00:19.000Z
 - URL: nicht verfügbar
-- Likes: 1597
-- Kommentare: 52
+- Likes: 919
+- Kommentare: 23
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: Martinator felt very well despite this being his first ride at Phillip Island on the Aprilia 😅
+- Titel: Still can’t get over these scenes at COTA 🤩
 
-#AustralianGP 🇦🇺
-- Datum: 2026-10-23T08:26:55.000Z
+#MotoGP #SpeedLapsUSA
+- Datum: 2026-10-26T03:51:55.000Z
 - URL: nicht verfügbar
-- Likes: 110
-- Kommentare: 2
+- Likes: 667
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: Going full green and gold for the last #MotoGP race at home 💚💛🥹 
+- Titel: Not your usual #MotoGP ride at COTA 😂🎢 Keeping a straight face was impossible! 
 
-#AustralianGP 🇦🇺
-- Datum: 2026-10-23T08:06:58.000Z
+#SpeedLapsUSA
+- Datum: 2026-10-25T22:12:27.000Z
 - URL: nicht verfügbar
-- Likes: 3402
-- Kommentare: 88
+- Likes: 598
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: For Marc Marquez the target are the Aprilias but he's feeling good 💪
+- Titel: Boots on, helmet ready, COTA calling 🤠🇺🇸
 
-#AustralianGP 🇦🇺
-- Datum: 2026-10-23T07:48:04.000Z
+#MotoGP #SpeedLapsUSA
+- Datum: 2026-10-25T11:00:32.000Z
 - URL: nicht verfügbar
-- Likes: 459
-- Kommentare: 29
+- Likes: 1963
+- Kommentare: 15
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: Ducati Corse's Davide Tardozzi responds to Aprilia on the team orders debate 🗣️
+- Titel: The crowd that made it all so special 🥹 Thank you 🫶
 
-#AustralianGP 🇦🇺
-- Datum: 2026-10-23T06:44:09.000Z
+#AustralianGP #MotoGP
+- Datum: 2026-10-25T09:00:13.000Z
 - URL: nicht verfügbar
-- Likes: 263
-- Kommentare: 21
+- Likes: 2927
+- Kommentare: 73
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: The new leathers ritual took an unexpected turn 😅😂
-
-#AustralianGP🇦🇺 #MotoGP
-- Datum: 2026-10-23T06:20:25.000Z
-- URL: nicht verfügbar
-- Likes: 1388
-- Kommentare: 9
-- Shares: nicht verfügbar
-### Datensatz 10
-- Titel: Marco Bezzecchi sends a statement at Phillip Island 🔥
+- Titel: MotoGP CEO Carmelo Ezpeleta signs off from the iconic Phillip Island venue with a thank you to fans 🫶
 
 #AustralianGP 🇦🇺
-- Datum: 2026-10-23T06:03:39.000Z
+- Datum: 2026-10-25T08:50:04.000Z
 - URL: nicht verfügbar
-- Likes: 181
-- Kommentare: 3
+- Likes: 462
+- Kommentare: 88
+- Shares: nicht verfügbar
+### Datensatz 10
+- Titel: A big swing in the standings after the #AustralianGP but there are a lot of points still on the table ⚔️
+
+#MotoGP
+- Datum: 2026-10-25T08:45:41.000Z
+- URL: nicht verfügbar
+- Likes: 4677
+- Kommentare: 244
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
