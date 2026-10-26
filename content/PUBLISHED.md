@@ -1357,9 +1357,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
 Publish-Provenienz: {"creation_id": "18013378040971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18131418121793727", "published_media_id": "18131418121793727", "source_url": "https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40416742818-1
+## Facebook [GEPOSTET 2026-10-26 23:01 | ID: 122128240401469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-26-daily
 Telegram-Update-ID: 279362004
@@ -1382,3 +1381,4 @@ Was denkt ihr – zu viele Sprints oder richtig so?
 Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
 Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg", "media_status": "", "object_id": "122128240401469415", "object_type": "bild", "platform": "facebook", "post_id": "122128240401469415", "source_url": "https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli", "version": 1}
