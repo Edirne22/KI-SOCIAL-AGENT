@@ -1287,8 +1287,8 @@ Quelle: https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avus
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak", "media_status": "", "object_id": "1285968257941776_122127916611469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122127916611469415", "source_url": "https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-26 19:51 | ID: 18343784848285666]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-26-daily
 Telegram-Update-ID: 279362003
@@ -1307,6 +1307,7 @@ Wer ist nach dem ersten freien Training eurer Meinung nach der favorisierte Fahr
 Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg
+Publish-Provenienz: {"creation_id": "18013377992971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18343784848285666", "published_media_id": "18343784848285666", "source_url": "https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-26 18:48 | ID: 122128176045469415]
 Status: GEPOSTET
@@ -1330,8 +1331,8 @@ Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marque
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg", "media_status": "", "object_id": "122128176045469415", "object_type": "bild", "platform": "facebook", "post_id": "122128176045469415", "source_url": "https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-26 19:52 | ID: 18131418121793727]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-26-daily
 Telegram-Update-ID: 279362004
@@ -1354,6 +1355,7 @@ Was denkt ihr – zu viele Sprints oder richtig so?
 Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
+Publish-Provenienz: {"creation_id": "18013378040971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18131418121793727", "published_media_id": "18131418121793727", "source_url": "https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
