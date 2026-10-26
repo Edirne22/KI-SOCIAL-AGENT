@@ -1,5 +1,5 @@
 # Follow-Analyse
-Stand: 2026-10-25 11:21
+Stand: 2026-10-26 12:47
 
 ## Zusammenfassung
 - Analysierte Accounts: 8
@@ -8,14 +8,14 @@ Stand: 2026-10-25 11:21
 - Hinweis: Top-Posts stammen aus einer aktuellen, begrenzten öffentlichen Stichprobe.
 
 ## Verify-Ergebnisse
+- @bestia23 → ⚠️ @bestia23 | – | Bright Data HTTP 400
+- @maverick12official → ⚠️ @maverick12official | – | Bright Data HTTP 400
+- @raulfernandez_25 → ⚠️ @raulfernandez_25 | – | Bright Data HTTP 400
 - @aiogura79 → ⚠️ @aiogura79 | – | Bright Data HTTP 400
 - @johannzarco → ⚠️ @johannzarco | – | Bright Data HTTP 400
 - @diogomoreira11 → ⚠️ @diogomoreira11 | – | Bright Data HTTP 400
-- @motogp → ⚠️ @motogp | – | Bright Data HTTP 400
-- @worldsbk → ⚠️ @worldsbk | – | Bright Data HTTP 400
-- @pramacracing → ⚠️ @pramacracing | – | Bright Data HTTP 400
-- @f1 → ⚠️ @f1 | – | Bright Data HTTP 400
-- @turkiye.motogp → ⚠️ @turkiye.motogp | – | Bright Data HTTP 400
+- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
+- @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
 
 ## Account-Ergebnisse
 
