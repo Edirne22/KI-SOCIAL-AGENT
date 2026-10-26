@@ -1218,8 +1218,8 @@ Quelle: https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyeb
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi", "media_status": "", "object_id": "1285968257941776_122127824385469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122127824385469415", "source_url": "https://motoetkinlik.com/jack-miller-sprint-yarisinda-puan-almak-isteyebilecegimizden-de-fazlasi", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-26 07:00 | ID: 17897979405674678]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-25-daily
 Telegram-Update-ID: 279362000
@@ -1240,6 +1240,7 @@ Wie schätzt ihr die Situation ein – startet das Rennen am Sonntag oder schieb
 Quelle: https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-motogpsin-01.jpg
+Publish-Provenienz: {"creation_id": "18013269233971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-motogpsin-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "17897979405674678", "published_media_id": "17897979405674678", "source_url": "https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-25 18:08 | ID: 122127860211469415]
 Status: GEPOSTET
@@ -1265,8 +1266,8 @@ Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-3-avustralya-motogpsin-01.jpg", "media_status": "", "object_id": "122127860211469415", "object_type": "bild", "platform": "facebook", "post_id": "122127860211469415", "source_url": "https://trf1.net/motor-sporlari/motogp/avustralya-motogpsinde-pazar-gunu-programi-kotu-hava-nedeniyle-gecikecek/122425", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-26 07:00 | ID: 18118477180997330]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-25-daily
 Telegram-Update-ID: 279362000
@@ -1285,6 +1286,7 @@ Wie seht ihr Di Giannantonios Comeback nach dem Startproblem?
 Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-4-di-giannantonio-spri-01.jpg
+Publish-Provenienz: {"creation_id": "18013269257971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-25-racing-editorial-2026-10-25-4-di-giannantonio-spri-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18118477180997330", "published_media_id": "18118477180997330", "source_url": "https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-yakalandi-neredeyse-kendimi-olduruyordum/122346", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-25 20:50 | ID: 122127894903469415]
 Status: GEPOSTET
