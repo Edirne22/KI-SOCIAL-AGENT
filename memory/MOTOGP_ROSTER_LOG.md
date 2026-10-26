@@ -6,3 +6,4 @@
 - 2026-10-05 05:40 UTC | Saison 2026 | AKTUALISIERT | 22 Fahrer live verifiziert; Gemini nicht benötigt
 - 2026-10-12 05:38 UTC | Saison 2026 | AKTUALISIERT | 22 Fahrer live verifiziert; Gemini nicht benötigt
 - 2026-10-19 10:54 UTC | Saison 2026 | AKTUALISIERT | 22 Fahrer live verifiziert; Gemini nicht benötigt
+- 2026-10-26 11:15 UTC | Saison 2026 | AKTUALISIERT | 22 Fahrer live verifiziert; Gemini nicht benötigt
