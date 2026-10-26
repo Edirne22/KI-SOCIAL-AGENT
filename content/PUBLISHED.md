@@ -600,54 +600,6 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 ---
 
-## Instagram [GEPOSTET 2026-10-18 11:05 | ID: 18126728425853668]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-18-daily
-Telegram-Update-ID: 279361973
-MotoGP-Auswahl: 5
-Story-Key: title:worldsbk-jerez-superpole-bulega-sezonun-11-pole-n-ald-sam-lowes-i-kinci
-Event-Fingerprint: WorldSBK|superpole|bulega,lecuona,lowes|jerez
-Titel: WorldSBK Jerez Superpole: Bulega Sezonun 11. Pole'ünü Aldı, Sam Lowes İkinci
-Text:
-In Jerez steht Bulega auf Platz eins – mit 1:36,643 die beste Superpole-Zeit der Saison.
-
-Die 1:36,643 von Nicolò Bulega waren im Superpole-Training in Jerez die schnellste Runde – sein elfter Pole dieser Saison. Damit ist er gleichauf mit Maxime Spies, der ebenfalls elfmal die beste Saisonzeit fuhr. Sam Lowes rutschte auf Platz zwei, und Iker Lecuona zog als Dritter noch einmal neben ihn auf das Podium der Superpole.
-
-Wer von den Dreien hat bei euch die Nase vorn für den Rennenstag?
-
-#WorldSBK #IkerLecuona #SamLowes #MotorradRacing #RacingDeutschland #BuelentsBikeLife #NicoloBulega
-
-🔗 Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci
-Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci
-Medienstatus: QUELLE_BESTÄTIGT
-Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg
-Publish-Provenienz: {"creation_id": "18011986937971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18126728425853668", "published_media_id": "18126728425853668", "source_url": "https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci", "version": 1}
-
-## Facebook [GEPOSTET 2026-10-18 10:25 | ID: 122125443483469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-18-daily
-Telegram-Update-ID: 279361973
-MotoGP-Auswahl: 5
-Story-Key: title:worldsbk-jerez-superpole-bulega-sezonun-11-pole-n-ald-sam-lowes-i-kinci
-Event-Fingerprint: WorldSBK|superpole|bulega,lecuona,lowes|jerez
-Titel: WorldSBK Jerez Superpole: Bulega Sezonun 11. Pole'ünü Aldı, Sam Lowes İkinci
-Text:
-In Jerez steht Bulega auf Platz eins – mit 1:36,643 die beste Superpole-Zeit der Saison.
-
-Die 1:36,643 von Nicolò Bulega waren im Superpole-Training in Jerez die schnellste Runde – sein elfter Pole dieser Saison. Damit ist er gleichauf mit Maxime Spies, der ebenfalls elfmal die beste Saisonzeit fuhr. Sam Lowes rutschte auf Platz zwei, und Iker Lecuona zog als Dritter noch einmal neben ihn auf das Podium der Superpole.
-
-Wer von den Dreien hat bei euch die Nase vorn für den Rennenstag?
-
-#WorldSBK #IkerLecuona #SamLowes #MotorradRacing #RacingDeutschland #BuelentsBikeLife #NicoloBulega
-
-🔗 Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci
-Quelle: https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci
-Bild: assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-18-racing-editorial-2026-10-18-5-worldsbk-jerez-super-01.jpg", "media_status": "", "object_id": "122125443483469415", "object_type": "bild", "platform": "facebook", "post_id": "122125443483469415", "source_url": "https://motoetkinlik.com/worldsbk-jerez-superpole-bulega-sezonun-11-poleunu-aldi-sam-lowes-ikinci", "version": 1}
-
 ## Facebook [GEPOSTET 2026-10-19 12:10 | ID: 1285968257941776_122125797057469415]
 Status: GEPOSTET
 Freigabe: Telegram Racing
