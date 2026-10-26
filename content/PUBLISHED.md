@@ -1286,3 +1286,95 @@ Gute Besserung und schnelle Genesung an Jorge Martin!
 Quelle: https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "link", "media_path": "https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak", "media_status": "", "object_id": "1285968257941776_122127916611469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122127916611469415", "source_url": "https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-26-daily
+Telegram-Update-ID: 279362003
+MotoGP-Auswahl: 4
+Story-Key: motogp:1179518
+Event-Fingerprint: MotoGP|fp1|fernandez,marquez,miller|
+Titel: Marc Marquez pips Fernandez and home hero Miller to FP1 top spot
+Text:
+Marc Marquez hat im FP1 in Australien die Bestzeit gesetzt. Der amtierende Weltmeister führte nach dem ersten Durchgang die Zeitwertung an – direkt hinter sich lässt er Raul Fernandez und Jack Miller. Beide gehören hier zu den schnellen Fahrern.
+
+Wer ist nach dem ersten freien Training eurer Meinung nach der favorisierte Fahrer für den Rest des Wochenendes?
+
+#MotoGP #MarcMarquez #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife #RaulFernandez
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-26-daily
+Telegram-Update-ID: 279362003
+MotoGP-Auswahl: 4
+Story-Key: motogp:1179518
+Event-Fingerprint: MotoGP|fp1|fernandez,marquez,miller|
+Titel: Marc Marquez pips Fernandez and home hero Miller to FP1 top spot
+Text:
+Marc Marquez hat im FP1 in Australien die Bestzeit gesetzt. Der amtierende Weltmeister führte nach dem ersten Durchgang die Zeitwertung an – direkt hinter sich lässt er Raul Fernandez und Jack Miller. Beide gehören hier zu den schnellen Fahrern.
+
+Wer ist nach dem ersten freien Training eurer Meinung nach der favorisierte Fahrer für den Rest des Wochenendes?
+
+#MotoGP #MarcMarquez #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife #RaulFernandez
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-26-daily
+Telegram-Update-ID: 279362004
+MotoGP-Auswahl: 5
+Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
+Event-Fingerprint: MotoGP|sprint|marquez|
+Titel: Gresini Pilotu Alex Marquez: "Sprintler En Az Yarıya İnmeli"
+Text:
+Alex Marquez möchte, dass die Sprint-Rennen in der MotoGP halbiert werden.
+
+Der Gresini-Pilot hält sechs oder sieben Sprints für die ideale Anzahl.
+
+Marquez wies dabei auf die jungen Fahrer hin.
+
+Was denkt ihr – zu viele Sprints oder richtig so?
+
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-26-daily
+Telegram-Update-ID: 279362004
+MotoGP-Auswahl: 5
+Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
+Event-Fingerprint: MotoGP|sprint|marquez|
+Titel: Gresini Pilotu Alex Marquez: "Sprintler En Az Yarıya İnmeli"
+Text:
+Alex Marquez möchte, dass die Sprint-Rennen in der MotoGP halbiert werden.
+
+Der Gresini-Pilot hält sechs oder sieben Sprints für die ideale Anzahl.
+
+Marquez wies dabei auf die jungen Fahrer hin.
+
+Was denkt ihr – zu viele Sprints oder richtig so?
+
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
+Link-Preview: offiziell
