@@ -1254,3 +1254,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-sprintte-ruzgara-
 Story-Key: title:jorge-martin-den-k-t-haber-kolunda-k-r-k-tespit-edildi
 Titel: Jorge Martin'den kötü haber! Kolunda kırık tespit edildi
 Quelle: https://motoetkinlik.com/jorge-martinin-kolunda-kirik-tespit-edildi-avustralya-gpde-yarisamayacak
+
+## 2026-10-26 10:38 UTC – ANGEBOTEN
+Story-Key: motogp:122686
+Titel: Martin’in asıl sorunu bilek değil: Phillip Island sprinti Marquez’e psikolojik üstünlük verdi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/martinin-asil-sorunu-bilek-degil-phillip-island-sprinti-marqueze-psikolojik-ustunluk-verdi/122686
+
+## 2026-10-26 10:38 UTC – ANGEBOTEN
+Story-Key: motogp:10868182
+Titel: Jorge Martin, sakatlığının ardından Malezya GP'de geri dönmeyi planlıyor
+Quelle: https://tr.motorsport.com/motogp/news/jorge-martin-malezya-gpde-motogpye-donmeyi-planliyor/10868182
+
+## 2026-10-26 10:38 UTC – ANGEBOTEN
+Story-Key: motogp:122355
+Titel: Miller, son MotoGP Avustralya GP’sinde sezonun ilk sprint puanlarını aldı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/miller-son-motogp-avustralya-gpsinde-sezonun-ilk-sprint-puanlarini-aldi/122355
+
+## 2026-10-26 10:38 UTC – ANGEBOTEN
+Story-Key: motogp:122280
+Titel: Raul Fernandez, parmak sakatlığı nedeniyle sprinti yarıda bıraktı: Avustralya GP’si şüpheli - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmak-sakatligi-nedeniyle-sprinti-yarida-birakti-avustralya-gpsi-supheli/122280
+
+## 2026-10-26 10:38 UTC – ANGEBOTEN
+Story-Key: motogp:1180944
+Titel: Martin update: 2024 Champion won’t return to Spain for treatment
+Quelle: https://www.motogp.com/en/news/2026/10/24/martin-update-2024-champion-wont-return-to-spain-for-treatment/1180944

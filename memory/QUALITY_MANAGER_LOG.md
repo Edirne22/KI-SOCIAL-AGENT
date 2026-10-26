@@ -3558,3 +3558,33 @@ Story-Key: title:jorge-martin-den-k-t-haber-kolunda-k-r-k-tespit-edildi
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-26 11:12 UTC | Motorcycle Racing | PASS
+Titel: Martin’in asıl sorunu bilek değil: Phillip Island sprinti Marquez’e psikolojik üstünlük verdi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122686
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 11:13 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin, sakatlığının ardından Malezya GP'de geri dönmeyi planlıyor
+Story-Key: motogp:10868182
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 11:13 UTC | Motorcycle Racing | PASS
+Titel: Miller, son MotoGP Avustralya GP’sinde sezonun ilk sprint puanlarını aldı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122355
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 11:13 UTC | Motorcycle Racing | PASS
+Titel: Raul Fernandez, parmak sakatlığı nedeniyle sprinti yarıda bıraktı: Avustralya GP’si şüpheli - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122280
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 11:13 UTC | Motorcycle Racing | PASS
+Titel: Martin update: 2024 Champion won’t return to Spain for treatment
+Story-Key: motogp:1180944
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
