@@ -1279,3 +1279,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmak-sakatligi-n
 Story-Key: motogp:1180944
 Titel: Martin update: 2024 Champion won’t return to Spain for treatment
 Quelle: https://www.motogp.com/en/news/2026/10/24/martin-update-2024-champion-wont-return-to-spain-for-treatment/1180944
+
+## 2026-10-26 13:55 UTC – ANGEBOTEN
+Story-Key: motogp:1181062
+Titel: Lecuona impresses in MotoGP replacement duty with points-scoring weekend at Phillip Island
+Quelle: https://www.worldsbk.com/en/news/2026/10/26/lecuona-impresses-in-motogp-replacement-duty-with-points-scoring-weekend-at-phillip-island/1181062
+
+## 2026-10-26 13:55 UTC – ANGEBOTEN
+Story-Key: title:motogp-de-dengeler-de-i-ti-marquez-lider-martin-gelece-i-belirsiz
+Titel: MotoGP'de dengeler değişti! Marquez lider, Martin'in geleceği belirsiz
+Quelle: https://motoetkinlik.com/marc-marquez-sampiyonlukta-avantaji-kapti-jorge-martin-icin-kritik-surec
+
+## 2026-10-26 13:55 UTC – ANGEBOTEN
+Story-Key: motogp:1180521
+Titel: Jorge Martin ruled out of Australian GP after Sprint crash
+Quelle: https://www.motogp.com/en/news/2026/10/24/jorge-martin-ruled-out-of-australian-gp-after-sprint-crash/1180521
+
+## 2026-10-26 13:55 UTC – ANGEBOTEN
+Story-Key: motogp:1179518
+Titel: Marc Marquez pips Fernandez and home hero Miller to FP1 top spot
+Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+
+## 2026-10-26 13:55 UTC – ANGEBOTEN
+Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
+Titel: Gresini Pilotu Alex Marquez: "Sprintler En Az Yarıya İnmeli"
+Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli

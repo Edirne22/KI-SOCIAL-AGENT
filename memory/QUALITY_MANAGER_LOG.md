@@ -3588,3 +3588,51 @@ Story-Key: motogp:1180944
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-26 14:29 UTC | Motorcycle Racing | FAIL
+Titel: Lecuona impresses in MotoGP replacement duty with points-scoring weekend at Phillip Island
+Story-Key: motogp:1181062
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 14:29 UTC | Motorcycle Racing | PASS
+Titel: Lecuona impresses in MotoGP replacement duty with points-scoring weekend at Phillip Island
+Story-Key: motogp:1181062
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 14:29 UTC | Motorcycle Racing | PASS
+Titel: MotoGP'de dengeler değişti! Marquez lider, Martin'in geleceği belirsiz
+Story-Key: title:motogp-de-dengeler-de-i-ti-marquez-lider-martin-gelece-i-belirsiz
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 14:29 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin ruled out of Australian GP after Sprint crash
+Story-Key: motogp:1180521
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 14:30 UTC | Motorcycle Racing | FAIL
+Titel: Aldeguer out of Malaysian GP
+Story-Key: motogp:1180945
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 14:30 UTC | Motorcycle Racing | FAIL
+Titel: Aldeguer out of Malaysian GP
+Story-Key: motogp:1180945
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 14:30 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez pips Fernandez and home hero Miller to FP1 top spot
+Story-Key: motogp:1179518
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-26 14:30 UTC | Motorcycle Racing | PASS
+Titel: Gresini Pilotu Alex Marquez: "Sprintler En Az Yarıya İnmeli"
+Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

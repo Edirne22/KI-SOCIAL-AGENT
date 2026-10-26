@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793011111
+Session-Timestamp: 1793022906
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -16,26 +16,26 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
+Artikelalter-Tage: 0.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:122686
-Titel: Martin’in asıl sorunu bilek değil: Phillip Island sprinti Marquez’e psikolojik üstünlük verdi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/martinin-asil-sorunu-bilek-degil-phillip-island-sprinti-marqueze-psikolojik-ustunluk-verdi/122686
+Story-Key: motogp:1181062
+Titel: Lecuona impresses in MotoGP replacement duty with points-scoring weekend at Phillip Island
+Quelle: https://www.worldsbk.com/en/news/2026/10/26/lecuona-impresses-in-motogp-replacement-duty-with-points-scoring-weekend-at-phillip-island/1181062
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-1-martinin-asil-sorunu-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1355542_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-1-lecuona-impresses-in-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/10/26/32dd6d54-d4c2-4d61-880d-61a93bd0afe6/LG9_3117.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat im Sprint von Phillip Island mit dem größten Rückstand des Saisonkampfes gewonnen – und Jorge Martin könnte beim nächsten Lauf fehlen.
+Lecuona hat das MotoGP-Rennwochenende auf Phillip Island mit Punkten abgeschlossen — und das als Ersatzfahrer für den verletzten Aldeguer. Die Handverletzung von Fermin Aldeguer hält an, daher muss Lecuona nun auch in Sepang wieder einspringen und für ihn durchs Wochenende fahren.
 
-Martin fällt möglicherweise wegen seiner gebrochenen Hand in Malezya aus. Doch der eigentliche Knackpunkt ist etwas anderes: Crash.net stellt fest, dass ihm vor allem die psychologische Überlegenheit abhandengekommen ist, die er vor dem Sprint im Rücken hatte. Phillip Island verabschiedet sich mit einem Wochenende, das den Abschied würdig begibt.
+🏍️
 
-Wie seht ihr die Lage bei Martin – reicht die Verletzung als Ausrede oder ist das Hauptproblem wirklich der Kopf?
+Wie schätzt ihr die Situation ein — kann Lecuona in Sepang ähnlich gut punkten?
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #FerminAldeguer #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -43,29 +43,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 3
+Neufassungen: 2
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.9
+Artikelalter-Tage: 0.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10868182
-Titel: Jorge Martin, sakatlığının ardından Malezya GP'de geri dönmeyi planlıyor
-Quelle: https://tr.motorsport.com/motogp/news/jorge-martin-malezya-gpde-motogpye-donmeyi-planliyor/10868182
+Story-Key: title:motogp-de-dengeler-de-i-ti-marquez-lider-martin-gelece-i-belirsiz
+Titel: MotoGP'de dengeler değişti! Marquez lider, Martin'in geleceği belirsiz
+Quelle: https://motoetkinlik.com/marc-marquez-sampiyonlukta-avantaji-kapti-jorge-martin-icin-kritik-surec
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-2-jorge-martin-sakatli-01.jpg
-Quellen-Preview: https://cdn-3.motorsport.com/images/amp/0Zq8d846/s6/jorge-martin-aprilia-racing-te.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-2-motogp-de-dengeler-d-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-jorge-martin-motogp-2026-sampiyonluk-mucadelesi-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin hat sich bei einem Sturz im Sprintrennen des AustraliensGP den rechten Arm gebrochen.
+Marc Marquez hat den Sprint in Australien gewonnen und übernimmt damit die Führung in der MotoGP-Wertung. Das Hauptrennen wurde abgesagt, während über Jorge Martins Start beim nächsten Lauf in Malaysia noch Ungewissheit herrscht.
 
-Er plant seine Rückkehr für das Malaysia GP am Wochenende danach.
+Wie seht ihr die Situation um Jorge Martin für das nächste Rennen?
 
-Das Team setzt nun auf den spanischen MotoGP-Piloten, wenn die Genesung mitmacht.
-
-Was denkt ihr, schafft er den Sprung zurück aufs Podium in Malaysia?
-
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -76,22 +72,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.0
+Artikelalter-Tage: 2.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:122355
-Titel: Miller, son MotoGP Avustralya GP’sinde sezonun ilk sprint puanlarını aldı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/miller-son-motogp-avustralya-gpsinde-sezonun-ilk-sprint-puanlarini-aldi/122355
+Story-Key: motogp:1180521
+Titel: Jorge Martin ruled out of Australian GP after Sprint crash
+Quelle: https://www.motogp.com/en/news/2026/10/24/jorge-martin-ruled-out-of-australian-gp-after-sprint-crash/1180521
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-3-miller-son-motogp-av-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1356759_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-3-jorge-martin-ruled-o-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/24/a3bef971-6f46-4b4d-bde7-67506e620ff5/LGZ_1468.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Miller hat in Australien erstmalig in dieser Saison Sprintpunkte geholt. Auf Phillip Island wurde er Siebter – bei gemischtem Wetter und vom fünften Platz auf dem Yamaha M1 gestartet.
+Jorge Martin fliegt aus dem Australian GP aus.
 
-Wie findet ihr Millers Einstand mit den ersten Saisonsprintpunkten?
+Der Aprilia-Rider musste nach dem Sprint abstehen und ist nun offiziell als verletzungsbedingt für das Rennen am Sonntag nicht startbereit gemeldet. Das bringt die Aprilia-Pyramide kräftig durcheinander – für den Ersatzfahrer ist noch nichts bekannt.
 
-#MotoGP #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die Auswirkungen für Martin und das Team ein?
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -102,22 +100,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 1
 QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 2.2
+Artikelalter-Tage: 3.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:122280
-Titel: Raul Fernandez, parmak sakatlığı nedeniyle sprinti yarıda bıraktı: Avustralya GP’si şüpheli - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmak-sakatligi-nedeniyle-sprinti-yarida-birakti-avustralya-gpsi-supheli/122280
+Story-Key: motogp:1179518
+Titel: Marc Marquez pips Fernandez and home hero Miller to FP1 top spot
+Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-raul-fernandez-parma-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1355978_hires-1.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/23/7f3907c1-f7f4-4498-a2fe-f608d2d86673/Report-M3-FP1-AUS.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Raul Fernandez musste beim Australien-Grand-Prix den Sprint aufgrund von Handproblemen frühzeitig beenden. Bereits zwei Wochen zuvor hatte er ähnliche gesundheitliche Probleme beim Indonesien-Sprint. Vor dem Rennen hatte er im Training die sechste Position erreicht und vor einem Jahr den Australia-Sieg gefeiert.
+Marc Marquez hat im FP1 in Australien die Bestzeit gesetzt. Der amtierende Weltmeister führte nach dem ersten Durchgang die Zeitwertung an – direkt hinter sich lässt er Raul Fernandez und Jack Miller. Beide gehören hier zu den schnellen Fahrern.
 
-Was haltet ihr vom vorzeitigen Sprint-Ausstieg von Raul Fernandez in Australien?
+Wer ist nach dem ersten freien Training eurer Meinung nach der favorisierte Fahrer für den Rest des Wochenendes?
 
-#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife #RaulFernandez
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -125,27 +123,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 2.4
+Artikelalter-Tage: 4.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1180944
-Titel: Martin update: 2024 Champion won’t return to Spain for treatment
-Quelle: https://www.motogp.com/en/news/2026/10/24/martin-update-2024-champion-wont-return-to-spain-for-treatment/1180944
+Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
+Titel: Gresini Pilotu Alex Marquez: "Sprintler En Az Yarıya İnmeli"
+Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-martin-update-2024-c-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/24/ecab111f-bdd2-4e75-9eab-c68582a57d0a/JorgeM.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/alex-marquez-gresini-motogp.webp
 Plattformen: Instagram + Facebook
 Text:
-Aprilia-Update: Martin fährt nach Behandlung nicht nach Spanien
+Alex Marquez möchte, dass die Sprint-Rennen in der MotoGP halbiert werden.
 
-Aprilia hat am Sonntag bekannt gegeben, dass Martin seine Behandlung nicht nach Spanien fortsetzt. Trotzdem bleibt die Tür für seine Rückkehr offen.
+Der Gresini-Pilot hält sechs oder sieben Sprints für die ideale Anzahl.
 
-Wie schätzt ihr die Situation ein?
+Marquez wies dabei auf die jungen Fahrer hin.
 
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Was denkt ihr – zu viele Sprints oder richtig so?
+
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
