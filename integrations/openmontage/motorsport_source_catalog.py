@@ -11,6 +11,7 @@ SOURCES = (
     {"name": "WorldSBK", "url": "https://www.worldsbk.com/", "series": "WorldSBK", "topics": ("calendar", "riders", "teams", "results", "circuits", "WorldSSP"), "tier": "official"},
     {"name": "FIM", "url": "https://www.fim-moto.com/", "series": "all", "topics": ("regulations", "championships"), "tier": "official"},
     {"name": "Turkish Motorcycle Federation", "url": "https://www.tmf.org.tr/", "series": "Turkish racing", "topics": ("riders", "calendar", "results"), "tier": "official"},
+    {"name": "Michelin", "url": "https://www.michelin.de/motorbike/", "series": "technical", "topics": ("tyres", "reifen", "power gp", "tire technology"), "tier": "manufacturer"},
     {"name": "BMW Motorrad", "url": "https://www.bmw-motorrad.com/", "series": "technical", "topics": ("motorcycle technology", "quickshifter"), "tier": "manufacturer"},
     {"name": "KTM", "url": "https://www.ktm.com/", "series": "technical", "topics": ("motorcycle technology", "quickshifter"), "tier": "manufacturer"},
     {"name": "Honda", "url": "https://global.honda/en/motorcycle/", "series": "technical", "topics": ("motorcycle technology",), "tier": "manufacturer"},
