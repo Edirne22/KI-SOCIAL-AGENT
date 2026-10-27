@@ -1,5 +1,26 @@
 # Archiviert Beiträge 2026-10
 
+## Facebook [GEPOSTET 2026-10-19 12:10 | ID: 1285968257941776_122125797057469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-19-daily
+Telegram-Update-ID: 279361978
+MotoGP-Auswahl: 1
+Story-Key: motogp:10866092
+Event-Fingerprint: -
+Titel: WSSP İspanya 2. yarış: Alcoba liderliğinde Kawasaki’den çifte podyum, Can Öncü sezonu dördüncü sırada tamamladı!
+Text:
+Das Saisonfinale der 2026 FIM Supersport-WM in Jerez endete vorzeitig durch die rote Fahne – Jeremy Alcoba ging trotzdem als Sieger von der Strecke. Bei Kawasaki landeten gleich zwei Fahrer auf dem Podium. Can Öncü schloss die Saison an vierter Stelle ab.
+
+Wie seht ihr den Saisonabschluss für die Kawasaki-Piloten?
+
+#WorldSSP #CanOncu #JeremyAlcoba #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092
+Quelle: https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092", "media_status": "", "object_id": "1285968257941776_122125797057469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122125797057469415", "source_url": "https://tr.motorsport.com/supersport/news/wssp-ispanya-2-yaris-kawasakiden-cifte-podyum-alcoba-kazandi-can-oncu-sezonu-dorduncu-sirada-tamaml/10866092", "version": 1}
+
 ## Instagram [GEPOSTET 2026-10-18 11:05 | ID: 18126728425853668]
 Status: GEPOSTET
 Freigabe: Telegram Racing
