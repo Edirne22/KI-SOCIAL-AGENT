@@ -1,0 +1,70 @@
+name: Free GitHub Scheduler
+on:
+  pull_request:
+    paths: ['infra/github-scheduler/**', '.github/workflows/github-scheduler.yml']
+  push:
+    branches: [main]
+    paths: ['infra/github-scheduler/**', '.github/workflows/github-scheduler.yml']
+  workflow_dispatch:
+    inputs:
+      enabled:
+        description: Scheduler aktivieren (false stoppt nur diesen Worker)
+        type: boolean
+        default: true
+permissions:
+  contents: read
+concurrency:
+  group: github-scheduler-deploy
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test infra/github-scheduler/worker.test.mjs
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      GITHUB_DISPATCH_TOKEN: ${{ secrets.AI_GITHUB_DISPATCH_TOKEN }}
+    defaults:
+      run:
+        working-directory: infra/github-scheduler
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check existing credentials and public repository (read-only)
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo 'Cloudflare credential missing'; exit 1; }
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo 'Cloudflare account missing'; exit 1; }
+          test -n "$GITHUB_DISPATCH_TOKEN" || { echo 'GitHub dispatch credential missing'; exit 1; }
+          node --input-type=module <<'JS'
+          const headers = {Authorization: `Bearer ${process.env.GITHUB_DISPATCH_TOKEN}`, Accept: 'application/vnd.github+json'};
+          const base = 'https://api.github.com/repos/Edirne22/KI-SOCIAL-AGENT';
+          const r = await fetch(base, {headers, redirect:'error'});
+          if (!r.ok) throw Error(`Repository preflight HTTP ${r.status}`);
+          const repo = await r.json();
+          if (repo.private !== false || repo.default_branch !== 'main') throw Error('Public main repository required for free standard runners');
+          for (const name of ['telegram-receive.yml','facebook-publish.yml','instagram-publish.yml']) {
+            const r = await fetch(`${base}/actions/workflows/${name}`, {headers, redirect:'error'});
+            if (!r.ok) throw Error(`Workflow preflight HTTP ${r.status}`);
+            if ((await r.json()).state !== 'active') throw Error('Required workflow inactive');
+          }
+          console.log('Public repository and active workflows confirmed; no workflow dispatched.');
+          JS
+      - name: Deploy isolated worker disabled (no container or storage binding)
+        run: npx --yes wrangler@4 deploy --config wrangler.jsonc
+      - name: Install existing dispatch secret without logging it
+        run: printf '%s' "$GITHUB_DISPATCH_TOKEN" | npx --yes wrangler@4 secret put GITHUB_DISPATCH_TOKEN --config wrangler.jsonc
+      - name: Activate scheduled clock
+        if: github.event_name != 'workflow_dispatch' || inputs.enabled
+        run: npx --yes wrangler@4 deploy --config wrangler.jsonc --var SCHEDULER_ENABLED:true
