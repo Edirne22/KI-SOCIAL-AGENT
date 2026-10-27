@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T13:08+02:00",
+  "updated_at": "2026-10-27T12:48+01:00",
   "events": [
     {
       "date_start": "2026-10-30",
@@ -13,13 +13,13 @@
       ],
       "source_excerpt": "MALAYSIA 30 Oct - 1 Nov 2026",
       "bike_of_weekend": {
-        "brand": "KTM",
-        "model": "1290 Super Duke R",
+        "brand": "Honda",
+        "model": "CBR1000RR-R Fireblade SP",
         "category": "Rennsport oder Straße",
-        "story": "KTM steht für Pure Racing und passt perfekt zu Sepang, wo es auf der langen Geraden und im heißen Klima um jeden Zehntelsekunde geht. Die österreichische Marke lebt vom Underdog-Spirit, den die Fans im MotoGP-Klassentreiben besonders schätzen.",
-        "source_url": "https://www.ktm.com/de-de/models/naked-bikes/1290-super-duke-r.html",
-        "image_local": "assets/images/2026-10/2026-10-30-bike-ktm-1290-super-duke-r.jpg",
-        "image_source": "og:street"
+        "story": "Honda genießt in Malaysia die größte Fangemeinde — der Sepang Circuit ist so etwas wie ein zweites Zuhause für RC213V-Fahrer wie Marc Márquez und Pol Espargaró. Nach den Höhen und Tiefen der letzten Jahre kommt die Marke mit einer stärkeren Basis zurück, und das schafft einen echten Community-Momend, bei dem jedes Rundenupdate gefeiert wird.",
+        "source_url": "https://powersports.honda.com/motorcycle/supersport/cbr1000rr-r-fireblade-sp/2026/cbr1000rr-r-fireblade-sp",
+        "image_local": "assets/images/2026-10/2026-10-30-bike-honda-cbr1000rr-r-fireblade-sp.jpg",
+        "image_source": "wikimedia"
       }
     },
     {
@@ -41,7 +41,9 @@
       "track": "Autódromo do Algarve · Portimão, Portugal",
       "sessions": [],
       "source": "https://www.motogp.com/en/calendar",
-      "crosscheck_sources": [],
+      "crosscheck_sources": [
+        "https://motoetkinlik.com/motogp-yaris-takvimi/"
+      ],
       "source_excerpt": "PORTUGAL 20 - 22 Nov 2026"
     },
     {
