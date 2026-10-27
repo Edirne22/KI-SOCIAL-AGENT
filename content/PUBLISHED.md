@@ -1398,8 +1398,8 @@ Quelle: https://www.motogp.com/en/calendar
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W44-motogp-facebook.jpg
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-10-27 21:58 | ID: 18347418679254436]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-27-daily
 Telegram-Update-ID: 279362009
@@ -1418,6 +1418,7 @@ Wie schätzt du die Situation ein?
 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
+Publish-Provenienz: {"creation_id": "18013557626971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18347418679254436", "published_media_id": "18347418679254436", "source_url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903", "version": 1}
 
 ## Facebook [GEPOSTET 2026-10-27 21:07 | ID: 122128548159469415]
 Status: GEPOSTET
