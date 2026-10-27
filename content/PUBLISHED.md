@@ -1419,9 +1419,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonr
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40584015044-1
+## Facebook [GEPOSTET 2026-10-27 21:07 | ID: 122128548159469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-27-daily
 Telegram-Update-ID: 279362009
@@ -1440,3 +1439,4 @@ Wie schätzt du die Situation ein?
 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
 Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg", "media_status": "", "object_id": "122128548159469415", "object_type": "bild", "platform": "facebook", "post_id": "122128548159469415", "source_url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903", "version": 1}
