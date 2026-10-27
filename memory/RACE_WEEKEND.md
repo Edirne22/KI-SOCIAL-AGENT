@@ -1,5 +1,5 @@
 # Nächstes Rennwochenende
-Geprüft: 2026-10-21 11:02
+Geprüft: 2026-10-27 11:48
 
 > Zeiten bitte vor Veröffentlichung an der Originalquelle prüfen.
 
@@ -15,4 +15,8 @@ Geprüft: 2026-10-21 11:02
 ## WorldSPB
 - Öffentliche Quellen erreichbar: 2
 
-Kein eindeutig bestätigtes Rennwochenende gefunden; kein Poster-Entwurf erzeugt.
+Bestätigt: MotoGP
+Details: Sepang International Circuit · Malaysia
+2026-10-30 bis 2026-11-01
+Quelle: https://www.motogp.com/en/calendar
+Poster-Entwürfe: 3

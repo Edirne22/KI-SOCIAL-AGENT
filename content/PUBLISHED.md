@@ -1361,3 +1361,39 @@ Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yar
 Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg", "media_status": "", "object_id": "122128240401469415", "object_type": "bild", "platform": "facebook", "post_id": "122128240401469415", "source_url": "https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli", "version": 1}
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: 2026-W43-MotoGP
+Titel: 🏁 MotoGP – Rennwochenende
+Text: Sepang International Circuit · Malaysia
+2026-10-30 bis 2026-11-01
+Quelle: https://www.motogp.com/en/calendar
+Quelle: https://www.motogp.com/en/calendar
+Medienstatus: EIGENES_MATERIAL
+Bild: assets/race-posters/2026-W44-motogp-feed.jpg
+
+## Story
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: 2026-W43-MotoGP
+Titel: 🏁 MotoGP – Rennwochenende
+Text: Sepang International Circuit · Malaysia
+2026-10-30 bis 2026-11-01
+Quelle: https://www.motogp.com/en/calendar
+Quelle: https://www.motogp.com/en/calendar
+Medienstatus: EIGENES_MATERIAL
+Bild: assets/race-posters/2026-W44-motogp-story.jpg
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: 2026-W43-MotoGP
+Titel: 🏁 MotoGP – Rennwochenende
+Text: Sepang International Circuit · Malaysia
+2026-10-30 bis 2026-11-01
+Quelle: https://www.motogp.com/en/calendar
+Quelle: https://www.motogp.com/en/calendar
+Medienstatus: EIGENES_MATERIAL
+Bild: assets/race-posters/2026-W44-motogp-facebook.jpg
