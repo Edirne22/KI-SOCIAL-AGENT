@@ -595,3 +595,69 @@ Bildidee: Eigenes Foto einer Pause, nur mit Einwilligung erkennbarer Personen.
 ## Kalenderbasis (kein Rennresultat, kein Session-Zeitplan)
 
 Einzelne Renntage, Sessionzeiten, Startaufstellungen und Ergebnisse werden hier nicht behauptet. Fehlende Serien bedeuten nicht rennfrei.
+
+
+# Wochenplan vom 2026-10-27 11:48:45
+Status: ENTWURF – Quellengebundene Themenplanung; keine Veröffentlichung.
+
+## 2026-10-27
+Thema: Racing-Kalender im Blick
+Plattform: Instagram / Facebook
+Hook: Was steht im belegten Kalender?
+Beitrag: Die vorhandenen Veranstaltungszeiträume stehen in der Kalenderbasis unten. Für einzelne Sessions und Ergebnisse fehlen hier freigegebene Angaben.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigene Kalenderkarte mit den belegten Veranstaltungszeiträumen.
+
+## 2026-10-28
+Thema: Deine nächste Tour
+Plattform: Instagram / Facebook
+Hook: Wohin zieht es dich mit dem Bike?
+Beitrag: Erzähl uns von deiner Wunschroute. Was macht die Strecke für dich besonders?
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigenes Motorradfoto, ohne erfundene Ortsangabe.
+
+## 2026-10-29
+Thema: Pause unterwegs
+Plattform: Instagram / Facebook
+Hook: Was gehört für dich zu einem guten Tourstopp?
+Beitrag: Kaffee, Aussicht oder einfach kurz durchatmen? Schreib uns, worauf du dich unterwegs freust.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigenes Foto einer Pause, nur mit Einwilligung erkennbarer Personen.
+
+## 2026-10-30
+Thema: Deine Tourausrüstung
+Plattform: Instagram / Facebook
+Hook: Was packst du immer ein?
+Beitrag: Welcher Gegenstand gehört für dich auf jede Tour? Teile deine persönliche Erfahrung.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigene Aufnahme der tatsächlich vorhandenen Ausrüstung.
+
+## 2026-10-31
+Thema: Gemeinsam fahren
+Plattform: Instagram / Facebook
+Hook: Was macht eine gute Ausfahrt für dich aus?
+Beitrag: Wie stimmt ihr euch in der Gruppe ab? Erzähl uns, was bei euch gut funktioniert.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigene Illustration einer Motorradgruppe.
+
+## 2026-11-01
+Thema: Technik im Alltag
+Plattform: Instagram / Facebook
+Hook: Welche Motorradfunktion nutzt du am liebsten?
+Beitrag: Was hilft dir im Alltag wirklich? Teile deine Erfahrung, ohne Produktversprechen.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigenes Detailfoto am Motorrad.
+
+## 2026-11-02
+Thema: Community-Porträt: Türkish Bikers Club Stuttgart
+Plattform: Instagram / Facebook
+Hook: Kennst du Türkish Bikers Club Stuttgart?
+Beitrag: Unsere Community-Sammlung nennt Türkish Bikers Club Stuttgart. Was bedeutet dir der Austausch unter Bikern? Quelle: content/TURKISH_BIKER_COMMUNITY.md; keine aktuelle Club-Aktivität behauptet.
+Hashtags: #Motorrad #BikerCommunity
+Bildidee: Eigene neutrale Motorradillustration; keine fingierten Clubfotos.
+
+## Kalenderbasis (kein Rennresultat, kein Session-Zeitplan)
+
+- MotoGP – Sepang International Circuit · Malaysia: 2026-10-30 bis 2026-11-01 (Veranstaltungszeitraum). Quelle: https://www.motogp.com/en/calendar. Beleg: MALAYSIA 30 Oct - 1 Nov 2026
+
+Einzelne Renntage, Sessionzeiten, Startaufstellungen und Ergebnisse werden hier nicht behauptet. Fehlende Serien bedeuten nicht rennfrei.
