@@ -1421,6 +1421,7 @@ Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razg
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-27-daily
 Telegram-Update-ID: 279362009
