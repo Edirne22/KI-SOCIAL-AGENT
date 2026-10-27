@@ -1397,3 +1397,45 @@ Quelle: https://www.motogp.com/en/calendar
 Quelle: https://www.motogp.com/en/calendar
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W44-motogp-facebook.jpg
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-27-daily
+Telegram-Update-ID: 279362009
+MotoGP-Auswahl: 3
+Story-Key: motogp:122903
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu ameliyat sonrası ilk paylaşımını yaptı: Omzumu hareket ettirmeye başladım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Toprak Razgatlıoğlu hat nach seiner Schulteroperation erstmalig auf Instagram gepostet. Auf dem Foto liegt er im Krankenhausbett, die Bandage am Oberkörper, und lächelt – daneben zeigen zwei Personen hoch. Er musste sein erstes MotoGP-Jahr in Mandalika wegen der Schulterverletzung früh beenden. Jetzt steht die Genesung im Fokus.
+
+Wie schätzt du die Situation ein?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-27-daily
+Telegram-Update-ID: 279362009
+MotoGP-Auswahl: 3
+Story-Key: motogp:122903
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu ameliyat sonrası ilk paylaşımını yaptı: Omzumu hareket ettirmeye başladım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Toprak Razgatlıoğlu hat nach seiner Schulteroperation erstmalig auf Instagram gepostet. Auf dem Foto liegt er im Krankenhausbett, die Bandage am Oberkörper, und lächelt – daneben zeigen zwei Personen hoch. Er musste sein erstes MotoGP-Jahr in Mandalika wegen der Schulterverletzung früh beenden. Jetzt steht die Genesung im Fokus.
+
+Wie schätzt du die Situation ein?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
+Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
+Link-Preview: offiziell
