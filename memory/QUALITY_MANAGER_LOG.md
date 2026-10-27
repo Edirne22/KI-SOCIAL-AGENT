@@ -3636,3 +3636,45 @@ Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-27 13:35 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu, Endonezya'daki sakatlığının ardından ameliyat oldu!
+Story-Key: motogp:10868787
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-27 13:35 UTC | Motorcycle Racing | PASS
+Titel: Aprilia doğruladı: Martin kırık bileğine rağmen Malezya MotoGP’sinde yarışmayı deneyecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122886
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-27 13:35 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu ameliyat sonrası ilk paylaşımını yaptı: Omzumu hareket ettirmeye başladım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122903
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-27 13:35 UTC | Motorcycle Racing | PASS
+Titel: Fernandez: Yamaha’nın 2027 motosikleti neredeyse marka değiştirmek gibi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:122711
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-27 13:36 UTC | Motorcycle Racing | FAIL
+Titel: Aldeguer out of Malaysian GP
+Story-Key: motogp:1180945
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-27 13:36 UTC | Motorcycle Racing | FAIL
+Titel: Aldeguer out of Malaysian GP
+Story-Key: motogp:1180945
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-27 13:36 UTC | Motorcycle Racing | PASS
+Titel: Aprilia'da ilginç ikilem! Bezzecchi kızgın, Jorge Martin mutlu
+Story-Key: title:aprilia-da-ilgin-ikilem-bezzecchi-k-zg-n-jorge-martin-mutlu
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793022906
+Session-Timestamp: 1793106123
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -16,26 +16,26 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 2
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.6
-Kategorie: MotoGP
+Artikelalter-Tage: 0.1
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: motogp:1181062
-Titel: Lecuona impresses in MotoGP replacement duty with points-scoring weekend at Phillip Island
-Quelle: https://www.worldsbk.com/en/news/2026/10/26/lecuona-impresses-in-motogp-replacement-duty-with-points-scoring-weekend-at-phillip-island/1181062
+Story-Key: motogp:10868787
+Titel: Toprak Razgatlıoğlu, Endonezya'daki sakatlığının ardından ameliyat oldu!
+Quelle: https://tr.motorsport.com/motogp/news/toprak-razgatlioglu-endonezyadaki-sakatliginin-ardindan-ameliyat-oldu/10868787
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-1-lecuona-impresses-in-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/10/26/32dd6d54-d4c2-4d61-880d-61a93bd0afe6/LG9_3117.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-1-toprak-razgatlioglu-01.jpg
+Quellen-Preview: https://cdn-6.motorsport.com/images/amp/01QNkJm0/s6/toprak-razgatlioglu-pramac-rac.jpg
 Plattformen: Instagram + Facebook
 Text:
-Lecuona hat das MotoGP-Rennwochenende auf Phillip Island mit Punkten abgeschlossen — und das als Ersatzfahrer für den verletzten Aldeguer. Die Handverletzung von Fermin Aldeguer hält an, daher muss Lecuona nun auch in Sepang wieder einspringen und für ihn durchs Wochenende fahren.
+Toprak, Indonesia GP'de geçirdiği kaza sonrası omuzundan sakatlandı ve başarılı bir ameliyat geçirdi.
 
-🏍️
+Nach dem Sturz bei der Indonesien-Grand-Prix hat unser Toprak Razgatlıoğlu eine Operation am verletzten Schulterbereich hinter sich – und die verlief erfolgreich. Die Nachrichtenlage ist klar: Er stand nach dem Unfall nicht mehr auf den Beinen, doch jetzt steht die Chirurgie als erledigt da. Was kommt als Nächstes? Mal sehen, wie sich die Genesung gestaltet.
 
-Wie schätzt ihr die Situation ein — kann Lecuona in Sepang ähnlich gut punkten?
+Wie schätzt ihr die Situation für seine Rückkehr ein?
 
-#MotoGP #FerminAldeguer #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -43,23 +43,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 2
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:motogp-de-dengeler-de-i-ti-marquez-lider-martin-gelece-i-belirsiz
-Titel: MotoGP'de dengeler değişti! Marquez lider, Martin'in geleceği belirsiz
-Quelle: https://motoetkinlik.com/marc-marquez-sampiyonlukta-avantaji-kapti-jorge-martin-icin-kritik-surec
+Story-Key: motogp:122886
+Titel: Aprilia doğruladı: Martin kırık bileğine rağmen Malezya MotoGP’sinde yarışmayı deneyecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-dogruladi-martin-kirik-bilegine-ragmen-malezya-motogpsinde-yarismayi-deneyecek/122886
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-2-motogp-de-dengeler-d-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-jorge-martin-motogp-2026-sampiyonluk-mucadelesi-1.webp
+Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-2-aprilia-dogruladi-ma-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357396_hires_1600x900-2.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat den Sprint in Australien gewonnen und übernimmt damit die Führung in der MotoGP-Wertung. Das Hauptrennen wurde abgesagt, während über Jorge Martins Start beim nächsten Lauf in Malaysia noch Ungewissheit herrscht.
+Jorge Martin startet in Malezya mit gebrochenem Handgelenk – Aprilia lässt ihn gewähren.
 
-Wie seht ihr die Situation um Jorge Martin für das nächste Rennen?
+Aprilia hat bestätigt, dass der 2024-Weltmeister am Wochenende in Malezya erneut an den Start gehen will. Bei der Sprintwertung in Australien hatte er sich das Handgelenk gebrochen, während er mit Marc Marquez um den Sieg kämpfte. Der Hauptkurs fiel wegen schlechten Wetters aus, sodass Martin nun doch noch eine Chance bekommt.
+
+Was denkt ihr: Kann Martin mit dem gebrochenen Handgelenk in Malezya punkten?
 
 #MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -69,27 +71,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 2.6
-Kategorie: MotoGP
+Artikelalter-Tage: 0.1
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: motogp:1180521
-Titel: Jorge Martin ruled out of Australian GP after Sprint crash
-Quelle: https://www.motogp.com/en/news/2026/10/24/jorge-martin-ruled-out-of-australian-gp-after-sprint-crash/1180521
+Story-Key: motogp:122903
+Titel: Toprak Razgatlıoğlu ameliyat sonrası ilk paylaşımını yaptı: Omzumu hareket ettirmeye başladım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-3-jorge-martin-ruled-o-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/24/a3bef971-6f46-4b4d-bde7-67506e620ff5/LGZ_1468.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/toprak-razgatlioglu-ameliyat-sonrasi-hastane.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin fliegt aus dem Australian GP aus.
+Toprak Razgatlıoğlu hat nach seiner Schulteroperation erstmalig auf Instagram gepostet. Auf dem Foto liegt er im Krankenhausbett, die Bandage am Oberkörper, und lächelt – daneben zeigen zwei Personen hoch. Er musste sein erstes MotoGP-Jahr in Mandalika wegen der Schulterverletzung früh beenden. Jetzt steht die Genesung im Fokus.
 
-Der Aprilia-Rider musste nach dem Sprint abstehen und ist nun offiziell als verletzungsbedingt für das Rennen am Sonntag nicht startbereit gemeldet. Das bringt die Aprilia-Pyramide kräftig durcheinander – für den Ersatzfahrer ist noch nichts bekannt.
+Wie schätzt du die Situation ein?
 
-Wie schätzt ihr die Auswirkungen für Martin und das Team ein?
-
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -97,25 +97,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 3.6
-Kategorie: MotoGP
+Artikelalter-Tage: 1.0
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: motogp:1179518
-Titel: Marc Marquez pips Fernandez and home hero Miller to FP1 top spot
-Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+Story-Key: motogp:122711
+Titel: Fernandez: Yamaha’nın 2027 motosikleti neredeyse marka değiştirmek gibi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/fernandez-yamahanin-2027-motosikleti-neredeyse-marka-degistirmek-gibi/122711
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/23/7f3907c1-f7f4-4498-a2fe-f608d2d86673/Report-M3-FP1-AUS.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-4-fernandez-yamahanin-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1356276_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat im FP1 in Australien die Bestzeit gesetzt. Der amtierende Weltmeister führte nach dem ersten Durchgang die Zeitwertung an – direkt hinter sich lässt er Raul Fernandez und Jack Miller. Beide gehören hier zu den schnellen Fahrern.
+Augusto Fernandez vergleicht Yamahas neuen 850cc-Prototypen für 2027 mit einem echten Markenwechsel.
 
-Wer ist nach dem ersten freien Training eurer Meinung nach der favorisierte Fahrer für den Rest des Wochenendes?
+Der spanische Pilot übernimmt für den Rest der Saison den Platz von Toprak Razgatlıoğlu bei Pramac Yamaha, weil dieser an der Schulter operiert werden muss. Bei den Tests mit den neuen Bikes und Pirelli-Reifen fiel Fernandez auf, wie extrem sich das zukünftige MotoGP-Motorrad von der aktuellen V4-Maschine unterscheidet.
 
-#MotoGP #MarcMarquez #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife #RaulFernandez
+Was erwartet ihr von den neuen 850cc-Maschinen ab 2027?
+
+#MotoGP #ToprakRazgatlioglu #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -123,29 +125,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 4.2
+Artikelalter-Tage: 1.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
-Titel: Gresini Pilotu Alex Marquez: "Sprintler En Az Yarıya İnmeli"
-Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+Story-Key: title:aprilia-da-ilgin-ikilem-bezzecchi-k-zg-n-jorge-martin-mutlu
+Titel: Aprilia'da ilginç ikilem! Bezzecchi kızgın, Jorge Martin mutlu
+Quelle: https://motoetkinlik.com/apriliada-avustralya-gp-ikilemi-bezzecchi-uzgun-jorge-martin-rahatladi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/alex-marquez-gresini-motogp.webp
+Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-5-aprilia-da-ilginc-ik-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/aprilia-massimo-rivola-bezzecchi-martin-avustralya-gp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Alex Marquez möchte, dass die Sprint-Rennen in der MotoGP halbiert werden.
+Marco Bezzecchi
 
-Der Gresini-Pilot hält sechs oder sieben Sprints für die ideale Anzahl.
+Avustralya GP hat bei Aprilia für ein seltsames Duell gesorgt.Marco Bezzecchi hat den Absage auf die eine Art geschluckt,jetzt muss er wohl neu planen.Jorge Martin sieht das ganz anders – und ist glücklich drüber.Massimo Rivola hat sich beide Reaktionen angesehen.
 
-Marquez wies dabei auf die jungen Fahrer hin.
+Wer von beiden liegt euch näher?
 
-Was denkt ihr – zu viele Sprints oder richtig so?
-
-#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcoBezzecchi #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

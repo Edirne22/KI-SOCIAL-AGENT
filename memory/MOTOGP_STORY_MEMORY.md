@@ -1304,3 +1304,28 @@ Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-an
 Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
 Titel: Gresini Pilotu Alex Marquez: "Sprintler En Az Yarıya İnmeli"
 Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+
+## 2026-10-27 13:02 UTC – ANGEBOTEN
+Story-Key: motogp:10868787
+Titel: Toprak Razgatlıoğlu, Endonezya'daki sakatlığının ardından ameliyat oldu!
+Quelle: https://tr.motorsport.com/motogp/news/toprak-razgatlioglu-endonezyadaki-sakatliginin-ardindan-ameliyat-oldu/10868787
+
+## 2026-10-27 13:02 UTC – ANGEBOTEN
+Story-Key: motogp:122886
+Titel: Aprilia doğruladı: Martin kırık bileğine rağmen Malezya MotoGP’sinde yarışmayı deneyecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-dogruladi-martin-kirik-bilegine-ragmen-malezya-motogpsinde-yarismayi-deneyecek/122886
+
+## 2026-10-27 13:02 UTC – ANGEBOTEN
+Story-Key: motogp:122903
+Titel: Toprak Razgatlıoğlu ameliyat sonrası ilk paylaşımını yaptı: Omzumu hareket ettirmeye başladım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
+
+## 2026-10-27 13:02 UTC – ANGEBOTEN
+Story-Key: motogp:122711
+Titel: Fernandez: Yamaha’nın 2027 motosikleti neredeyse marka değiştirmek gibi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/fernandez-yamahanin-2027-motosikleti-neredeyse-marka-degistirmek-gibi/122711
+
+## 2026-10-27 13:02 UTC – ANGEBOTEN
+Story-Key: title:aprilia-da-ilgin-ikilem-bezzecchi-k-zg-n-jorge-martin-mutlu
+Titel: Aprilia'da ilginç ikilem! Bezzecchi kızgın, Jorge Martin mutlu
+Quelle: https://motoetkinlik.com/apriliada-avustralya-gp-ikilemi-bezzecchi-uzgun-jorge-martin-rahatladi
