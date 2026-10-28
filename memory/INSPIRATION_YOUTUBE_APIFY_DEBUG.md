@@ -227,3 +227,15 @@
 - HTTP-Status: 201
 - Ergebniszeilen: 10
 - Details: erfolgreich
+## YouTube Apify (2026-10-28 10:53)
+- Actor: trysmartapi~youtube-scraper
+- Operation: search_videos
+- HTTP-Status: 201
+- Ergebniszeilen: 28
+- Details: erfolgreich
+## YouTube Apify (2026-10-28 10:53)
+- Actor: trysmartapi~youtube-scraper
+- Operation: video_details
+- HTTP-Status: 201
+- Ergebniszeilen: 10
+- Details: erfolgreich
