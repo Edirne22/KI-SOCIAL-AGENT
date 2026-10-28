@@ -1354,3 +1354,28 @@ Quelle: https://motoetkinlik.com/marc-marquez-martin-olmasaydi-bu-kadar-mucadele
 Story-Key: motogp:1181207
 Titel: TIME SCHEDULE: Petronas Grand Prix of Malaysia
 Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
+
+## 2026-10-28 14:09 UTC – ANGEBOTEN
+Story-Key: title:jorge-martin-k-r-k-bilekle-malezya-gp-de-yar-may-deneyecek
+Titel: Jorge Martin Kırık Bilekle Malezya GP'de Yarışmayı Deneyecek
+Quelle: https://motoetkinlik.com/resmi-jorge-martin-malezya-gpde-yarismayi-deneyecek
+
+## 2026-10-28 14:09 UTC – ANGEBOTEN
+Story-Key: motogp:10867777
+Titel: Marc Marquez: "Martin daha hızlıydı ancak sınırlarını çok zorladı"
+Quelle: https://tr.motorsport.com/motogp/news/marc-marquez-martin-daha-hizliydi-ancak-sinirlarini-cok-zorladi/10867777
+
+## 2026-10-28 14:09 UTC – ANGEBOTEN
+Story-Key: motogp:123007
+Titel: Joan Mir’in menajerinden hastalık haberlerine tepki: “Mahremiyet hakkı var” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/joan-mirin-menajerinden-hastalik-haberlerine-tepki-mahremiyet-hakki-var/123007
+
+## 2026-10-28 14:09 UTC – ANGEBOTEN
+Story-Key: motogp:123030
+Titel: Marc Marquez ilk kez konuştu: “Üç yıl içinde emekli olma ihtimalim yüzde 70” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-ilk-kez-konustu-uc-yil-icinde-emekli-olma-ihtimalim-yuzde-70/123030
+
+## 2026-10-28 14:09 UTC – ANGEBOTEN
+Story-Key: motogp:10868835
+Titel: Aprilia doğruladı: Jorge Martin, Malezya'da yarışmayı deneyecek
+Quelle: https://tr.motorsport.com/motogp/news/aprilia-dogruladi-jorge-martin-malezyada-yarismayi-deneyecek/10868835

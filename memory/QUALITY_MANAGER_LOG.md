@@ -3720,3 +3720,63 @@ Story-Key: motogp:1181207
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-28 14:51 UTC | Motorcycle Racing | FAIL
+Titel: Jorge Martin Kırık Bilekle Malezya GP'de Yarışmayı Deneyecek
+Story-Key: title:jorge-martin-k-r-k-bilekle-malezya-gp-de-yar-may-deneyecek
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 14:51 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin Kırık Bilekle Malezya GP'de Yarışmayı Deneyecek
+Story-Key: title:jorge-martin-k-r-k-bilekle-malezya-gp-de-yar-may-deneyecek
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 14:51 UTC | Motorcycle Racing | FAIL
+Titel: Marc Marquez: "Martin daha hızlıydı ancak sınırlarını çok zorladı"
+Story-Key: motogp:10867777
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 14:51 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez: "Martin daha hızlıydı ancak sınırlarını çok zorladı"
+Story-Key: motogp:10867777
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 14:52 UTC | Motorcycle Racing | FAIL
+Titel: Aldeguer out of Malaysian GP
+Story-Key: motogp:1180945
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 14:52 UTC | Motorcycle Racing | FAIL
+Titel: Aldeguer out of Malaysian GP
+Story-Key: motogp:1180945
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 14:52 UTC | Motorcycle Racing | PASS
+Titel: Joan Mir’in menajerinden hastalık haberlerine tepki: “Mahremiyet hakkı var” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123007
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 14:52 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez ilk kez konuştu: “Üç yıl içinde emekli olma ihtimalim yüzde 70” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123030
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 14:52 UTC | Motorcycle Racing | FAIL
+Titel: Aprilia doğruladı: Jorge Martin, Malezya'da yarışmayı deneyecek
+Story-Key: motogp:10868835
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 14:52 UTC | Motorcycle Racing | PASS
+Titel: Aprilia doğruladı: Jorge Martin, Malezya'da yarışmayı deneyecek
+Story-Key: motogp:10868835
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
