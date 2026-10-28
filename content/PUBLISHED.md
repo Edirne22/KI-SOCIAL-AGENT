@@ -1440,7 +1440,7 @@ Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedu
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 40685433569-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-28-manual-40673050395
 Telegram-Update-ID: 279362011
