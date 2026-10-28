@@ -1416,3 +1416,45 @@ Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonr
 Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg", "media_status": "", "object_id": "122128548159469415", "object_type": "bild", "platform": "facebook", "post_id": "122128548159469415", "source_url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-28-manual-40673050395
+Telegram-Update-ID: 279362011
+MotoGP-Auswahl: 5
+Story-Key: motogp:1181207
+Event-Fingerprint: -
+Titel: TIME SCHEDULE: Petronas Grand Prix of Malaysia
+Text:
+Das Petronas Grand Prix of Malaysia steht an – die MotoGP dreht wieder ihre Runden auf dem Sepang International Circuit. Ein Wochenende mit Titelambitionen und der typischen Unwägbarkeit, die das Renngeschehen immer wieder spannend macht. Die wichtigsten Zeiten für die Session-Termine gibt's ab jetzt.
+
+Wie seht ihr die Ausgangslage für das Wochenende in Sepang?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
+Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-28-manual-40673050395
+Telegram-Update-ID: 279362011
+MotoGP-Auswahl: 5
+Story-Key: motogp:1181207
+Event-Fingerprint: -
+Titel: TIME SCHEDULE: Petronas Grand Prix of Malaysia
+Text:
+Das Petronas Grand Prix of Malaysia steht an – die MotoGP dreht wieder ihre Runden auf dem Sepang International Circuit. Ein Wochenende mit Titelambitionen und der typischen Unwägbarkeit, die das Renngeschehen immer wieder spannend macht. Die wichtigsten Zeiten für die Session-Termine gibt's ab jetzt.
+
+Wie seht ihr die Ausgangslage für das Wochenende in Sepang?
+
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
+Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
+Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg
+Link-Preview: offiziell
