@@ -1438,9 +1438,8 @@ Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-p
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40685433569-1
+## Facebook [GEPOSTET 2026-10-28 12:09 | ID: 122128736817469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-28-manual-40673050395
 Telegram-Update-ID: 279362011
@@ -1459,3 +1458,4 @@ Wie seht ihr die Ausgangslage für das Wochenende in Sepang?
 Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
 Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg", "media_status": "", "object_id": "122128736817469415", "object_type": "bild", "platform": "facebook", "post_id": "122128736817469415", "source_url": "https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207", "version": 1}
