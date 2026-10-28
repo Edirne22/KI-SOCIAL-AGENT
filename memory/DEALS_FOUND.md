@@ -3361,3 +3361,12 @@ Verifiziertes Angebot: nein
 
 Live-Suche über Apify (öffentliche Google-Treffer):
 Keine Suchtreffer für 'handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12' gefunden.
+## Suche vom 2026-10-28 11:59
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Keine Suchtreffer für 'handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12' gefunden.
