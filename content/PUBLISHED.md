@@ -600,31 +600,6 @@ Inspirations-Quelle: Keine aktuelle externe Quelle verwendet.
 
 ---
 
-## Facebook [GEPOSTET 2026-10-20 10:57 | ID: 1285968257941776_122126094627469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-20-daily
-Telegram-Update-ID: 279361979
-MotoGP-Auswahl: 1
-Story-Key: motogp:10866431
-Event-Fingerprint: -
-Titel: Resmi: Toprak Razgatlıoğlu, 2026 MotoGP sezonunun kalanında yarışamayacak!
-Text:
-Toprak Razgatlıoğlu hat sich beim Großen Preis von Indonesien am Schulter verletzen müssen.
-
-Die Verletzung erfordert eine Operation.
-
-Der türkische Fahrer fällt für den Rest der MotoGP-Saison 2026 aus.
-
-Gute Besserung, Toprak – wir zählen die Tage bis deiner Rückkehr auf die Strecke. 🏍️💙
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431
-Quelle: https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "link", "media_path": "https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431", "media_status": "", "object_id": "1285968257941776_122126094627469415", "object_type": "link", "platform": "facebook", "post_id": "1285968257941776_122126094627469415", "source_url": "https://tr.motorsport.com/motogp/news/resmi-toprak-razgatlioglu-2026-motogp-sezonunun-kalaninda-yarisamayacak/10866431", "version": 1}
-
 ## Instagram
 Status: ENTWURF
 Freigabe: Rennkalender
