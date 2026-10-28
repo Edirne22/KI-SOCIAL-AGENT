@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793106123
+Session-Timestamp: 1793184166
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,27 +15,27 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.6
 Kategorie: Turkish Riders
-Serie: MotoGP
-Story-Key: motogp:10868787
-Titel: Toprak Razgatlıoğlu, Endonezya'daki sakatlığının ardından ameliyat oldu!
-Quelle: https://tr.motorsport.com/motogp/news/toprak-razgatlioglu-endonezyadaki-sakatliginin-ardindan-ameliyat-oldu/10868787
+Serie: Moto2
+Story-Key: title:temsilcimiz-bahattin-sofuo-lu-seneye-qjmotor-la-devam-etmeyece-iz
+Titel: Temsilcimiz Bahattin Sofuoğlu: "Seneye QJMOTOR'la Devam Etmeyeceğiz"
+Quelle: https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-seneye-qjmotorla-devam-etmeyecegiz
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-1-toprak-razgatlioglu-01.jpg
-Quellen-Preview: https://cdn-6.motorsport.com/images/amp/01QNkJm0/s6/toprak-razgatlioglu-pramac-rac.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-1-temsilcimiz-bahattin-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/JPM_9945-Motoetkinlik-Bahattin.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak, Indonesia GP'de geçirdiği kaza sonrası omuzundan sakatlandı ve başarılı bir ameliyat geçirdi.
+Seneye QJMOTOR'la Devam Etmeyeceğiz
 
-Nach dem Sturz bei der Indonesien-Grand-Prix hat unser Toprak Razgatlıoğlu eine Operation am verletzten Schulterbereich hinter sich – und die verlief erfolgreich. Die Nachrichtenlage ist klar: Er stand nach dem Unfall nicht mehr auf den Beinen, doch jetzt steht die Chirurgie als erledigt da. Was kommt als Nächstes? Mal sehen, wie sich die Genesung gestaltet.
+Bahattin Sofuoğlu hat klar gesagt: Im nächsten Jahr fährt er nicht mehr für QJMOTOR. Das Team hat bereits einen anderen Fahrer verpflichtet. Parallel dazu steht Ten Kate Racing vor dem Yamaha-Aus, und Can Öncü könnte dabei ins Spiel kommen.
 
-Wie schätzt ihr die Situation für seine Rückkehr ein?
+Was haltet ihr von Sofuoğlus Entscheidung und der möglichen Ten Kate-Rückkehr mit Öncü?
 
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #CanOncu #BahattinSofuoglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -46,24 +46,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 1.4
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:122886
-Titel: Aprilia doğruladı: Martin kırık bileğine rağmen Malezya MotoGP’sinde yarışmayı deneyecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-dogruladi-martin-kirik-bilegine-ragmen-malezya-motogpsinde-yarismayi-deneyecek/122886
+Story-Key: motogp:1181027
+Titel: Tardozzi assesses 2026 title fight: He always surprises us
+Quelle: https://www.motogp.com/en/news/2026/10/27/tardozzi-assesses-2026-title-fight-he-always-surprises-us/1181027
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-2-aprilia-dogruladi-ma-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357396_hires_1600x900-2.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-2-tardozzi-assesses-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/27/ea837fe6-befd-4173-8d14-696f4c7a8273/LG9_5197.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin startet in Malezya mit gebrochenem Handgelenk – Aprilia lässt ihn gewähren.
+Davide Tardozzi spricht über die 2026er Titelkämpfe – und da ist jemand, der immer wieder für Überraschung sorgt.
 
-Aprilia hat bestätigt, dass der 2024-Weltmeister am Wochenende in Malezya erneut an den Start gehen will. Bei der Sprintwertung in Australien hatte er sich das Handgelenk gebrochen, während er mit Marc Marquez um den Sieg kämpfte. Der Hauptkurs fiel wegen schlechten Wetters aus, sodass Martin nun doch noch eine Chance bekommt.
+Vor dem Rennen in Malaysia hat er sich zum Championship-Picture geäußert. Unknowns, Mentalität und Teamwork – das sind die Stichworte, die er genannt hat. Der Mann, um den es geht, scheint nach seiner Einschätzung einfach immer wieder für Uneinigkeit zu sorgen. Wer das meint, wird man bei den Fakten sehen.
 
-Was denkt ihr: Kann Martin mit dem gebrochenen Handgelenk in Malezya punkten?
+Was denkt ihr – wer ist derjenige, der nach Tardozzis Worten immer wieder überrascht?
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -71,23 +71,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 2
+Neufassungen: 1
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.9
 Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: motogp:122903
-Titel: Toprak Razgatlıoğlu ameliyat sonrası ilk paylaşımını yaptı: Omzumu hareket ettirmeye başladım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
+Story-Key: title:toprak-razgatl-o-lu-ameliyat-oldu-yar-lar-televizyondan-i-zlemek-ok-garip
+Titel: Toprak Razgatlıoğlu Ameliyat Oldu: "Yarışları Televizyondan İzlemek Çok Garip"
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ameliyat-oldu-yarislari-televizyondan-izlemek-cok-garip
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/toprak-razgatlioglu-ameliyat-sonrasi-hastane.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-3-toprak-razgatlioglu-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/toprak-razgatlioglu-italya-ameliyat.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu hat nach seiner Schulteroperation erstmalig auf Instagram gepostet. Auf dem Foto liegt er im Krankenhausbett, die Bandage am Oberkörper, und lächelt – daneben zeigen zwei Personen hoch. Er musste sein erstes MotoGP-Jahr in Mandalika wegen der Schulterverletzung früh beenden. Jetzt steht die Genesung im Fokus.
+Nach seiner Schulter-OP beschreibt Toprak Razgatlıoğlu auf Instagram, dass es sich sehr merkwürdig anfühlt, die Rennen im Fernsehen zu verfolgen.
 
-Wie schätzt du die Situation ein?
+Toprak Razgatlıoğlu wurde wegen seiner beim Indonesien-GP erlittenen Schulterverletzung operiert. Über Instagram meldete er sich nach dem Eingriff erstmals wieder zu Wort.
+
+Wie schätzt ihr die Situation ein?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -100,24 +102,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
-Kategorie: Turkish Riders
+Artikelalter-Tage: 3.5
+Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:122711
-Titel: Fernandez: Yamaha’nın 2027 motosikleti neredeyse marka değiştirmek gibi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/fernandez-yamahanin-2027-motosikleti-neredeyse-marka-degistirmek-gibi/122711
+Story-Key: title:marc-marquez-martin-olmasayd-bu-kadar-m-cadele-etmezdim
+Titel: Marc Marquez: "Martin Olmasaydı Bu Kadar Mücadele Etmezdim!"
+Quelle: https://motoetkinlik.com/marc-marquez-martin-olmasaydi-bu-kadar-mucadele-etmezdim
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-4-fernandez-yamahanin-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1356276_hires_1600x900.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-4-marc-marquez-martin-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/marc-marquez-motegi-sprint-moreira-motogp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Augusto Fernandez vergleicht Yamahas neuen 850cc-Prototypen für 2027 mit einem echten Markenwechsel.
+Marc Marquez hat nach dem Sprint in Phillip Island direkt über sein Duell mit Jorge Martin berichtet und dabei auch auf die Pace von Alex Márquez sowie die Regen-Chancen am Sonntag hingewiesen. Er sprach die Situationen klar und direkt an, ohne zusätzliche Erfindungen oder Füllsätze.
 
-Der spanische Pilot übernimmt für den Rest der Saison den Platz von Toprak Razgatlıoğlu bei Pramac Yamaha, weil dieser an der Schulter operiert werden muss. Bei den Tests mit den neuen Bikes und Pirelli-Reifen fiel Fernandez auf, wie extrem sich das zukünftige MotoGP-Motorrad von der aktuellen V4-Maschine unterscheidet.
+Wie bewertet ihr Marc Marquez' Einschätzung zu seinem Duell mit Jorge Martin und den Faktoren Alex Márquez sowie Regen?
 
-Was erwartet ihr von den neuen 850cc-Maschinen ab 2027?
-
-#MotoGP #ToprakRazgatlioglu #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -128,24 +128,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.1
+Artikelalter-Tage: 0.4
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:aprilia-da-ilgin-ikilem-bezzecchi-k-zg-n-jorge-martin-mutlu
-Titel: Aprilia'da ilginç ikilem! Bezzecchi kızgın, Jorge Martin mutlu
-Quelle: https://motoetkinlik.com/apriliada-avustralya-gp-ikilemi-bezzecchi-uzgun-jorge-martin-rahatladi
+Story-Key: motogp:1181207
+Titel: TIME SCHEDULE: Petronas Grand Prix of Malaysia
+Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-5-aprilia-da-ilginc-ik-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/10/aprilia-massimo-rivola-bezzecchi-martin-avustralya-gp-2026.webp
+Instagram-Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/27/f7df91ec-d659-40b5-9dbf-cce0ee71afc8/GP-TIME-MALAYSIA.png?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Marco Bezzecchi
+Das Petronas Grand Prix of Malaysia steht an – die MotoGP dreht wieder ihre Runden auf dem Sepang International Circuit. Ein Wochenende mit Titelambitionen und der typischen Unwägbarkeit, die das Renngeschehen immer wieder spannend macht. Die wichtigsten Zeiten für die Session-Termine gibt's ab jetzt.
 
-Avustralya GP hat bei Aprilia für ein seltsames Duell gesorgt.Marco Bezzecchi hat den Absage auf die eine Art geschluckt,jetzt muss er wohl neu planen.Jorge Martin sieht das ganz anders – und ist glücklich drüber.Massimo Rivola hat sich beide Reaktionen angesehen.
+Wie seht ihr die Ausgangslage für das Wochenende in Sepang?
 
-Wer von beiden liegt euch näher?
-
-#MotoGP #MarcoBezzecchi #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

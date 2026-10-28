@@ -1329,3 +1329,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/fernandez-yamahanin-2027-motosikl
 Story-Key: title:aprilia-da-ilgin-ikilem-bezzecchi-k-zg-n-jorge-martin-mutlu
 Titel: Aprilia'da ilginç ikilem! Bezzecchi kızgın, Jorge Martin mutlu
 Quelle: https://motoetkinlik.com/apriliada-avustralya-gp-ikilemi-bezzecchi-uzgun-jorge-martin-rahatladi
+
+## 2026-10-28 10:42 UTC – ANGEBOTEN
+Story-Key: title:temsilcimiz-bahattin-sofuo-lu-seneye-qjmotor-la-devam-etmeyece-iz
+Titel: Temsilcimiz Bahattin Sofuoğlu: "Seneye QJMOTOR'la Devam Etmeyeceğiz"
+Quelle: https://motoetkinlik.com/temsilcimiz-bahattin-sofuoglu-seneye-qjmotorla-devam-etmeyecegiz
+
+## 2026-10-28 10:42 UTC – ANGEBOTEN
+Story-Key: motogp:1181027
+Titel: Tardozzi assesses 2026 title fight: He always surprises us
+Quelle: https://www.motogp.com/en/news/2026/10/27/tardozzi-assesses-2026-title-fight-he-always-surprises-us/1181027
+
+## 2026-10-28 10:42 UTC – ANGEBOTEN
+Story-Key: title:toprak-razgatl-o-lu-ameliyat-oldu-yar-lar-televizyondan-i-zlemek-ok-garip
+Titel: Toprak Razgatlıoğlu Ameliyat Oldu: "Yarışları Televizyondan İzlemek Çok Garip"
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ameliyat-oldu-yarislari-televizyondan-izlemek-cok-garip
+
+## 2026-10-28 10:42 UTC – ANGEBOTEN
+Story-Key: title:marc-marquez-martin-olmasayd-bu-kadar-m-cadele-etmezdim
+Titel: Marc Marquez: "Martin Olmasaydı Bu Kadar Mücadele Etmezdim!"
+Quelle: https://motoetkinlik.com/marc-marquez-martin-olmasaydi-bu-kadar-mucadele-etmezdim
+
+## 2026-10-28 10:42 UTC – ANGEBOTEN
+Story-Key: motogp:1181207
+Titel: TIME SCHEDULE: Petronas Grand Prix of Malaysia
+Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207

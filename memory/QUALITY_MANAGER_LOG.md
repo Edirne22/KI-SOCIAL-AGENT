@@ -3678,3 +3678,45 @@ Story-Key: title:aprilia-da-ilgin-ikilem-bezzecchi-k-zg-n-jorge-martin-mutlu
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-28 11:17 UTC | Motorcycle Racing | PASS
+Titel: Temsilcimiz Bahattin Sofuoğlu: "Seneye QJMOTOR'la Devam Etmeyeceğiz"
+Story-Key: title:temsilcimiz-bahattin-sofuo-lu-seneye-qjmotor-la-devam-etmeyece-iz
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 11:18 UTC | Motorcycle Racing | PASS
+Titel: Tardozzi assesses 2026 title fight: He always surprises us
+Story-Key: motogp:1181027
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 11:18 UTC | Motorcycle Racing | FAIL
+Titel: Jorge Martin Kırık Bilekle Malezya GP'de Yarışmayı Deneyecek
+Story-Key: title:jorge-martin-k-r-k-bilekle-malezya-gp-de-yar-may-deneyecek
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 11:18 UTC | Motorcycle Racing | FAIL
+Titel: Jorge Martin Kırık Bilekle Malezya GP'de Yarışmayı Deneyecek
+Story-Key: title:jorge-martin-k-r-k-bilekle-malezya-gp-de-yar-may-deneyecek
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 11:18 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu Ameliyat Oldu: "Yarışları Televizyondan İzlemek Çok Garip"
+Story-Key: title:toprak-razgatl-o-lu-ameliyat-oldu-yar-lar-televizyondan-i-zlemek-ok-garip
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 11:18 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez: "Martin Olmasaydı Bu Kadar Mücadele Etmezdim!"
+Story-Key: title:marc-marquez-martin-olmasayd-bu-kadar-m-cadele-etmezdim
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-28 11:19 UTC | Motorcycle Racing | PASS
+Titel: TIME SCHEDULE: Petronas Grand Prix of Malaysia
+Story-Key: motogp:1181207
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
