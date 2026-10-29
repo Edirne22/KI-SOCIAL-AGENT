@@ -1,8 +1,11 @@
 # Follow-Verify
-Stand: 2026-10-28 12:48
+Stand: 2026-10-29 12:56
 
-- @motogp → ⚠️ @motogp | – | Bright Data HTTP 400
-- @worldsbk → ⚠️ @worldsbk | – | Bright Data HTTP 400
-- @pramacracing → ⚠️ @pramacracing | – | Bright Data HTTP 400
-- @f1 → ⚠️ @f1 | – | Bright Data HTTP 400
-- @turkiye.motogp → ⚠️ @turkiye.motogp | – | Bright Data HTTP 400
+- @motoetkinlik → ⚠️ @motoetkinlik | – | Bright Data HTTP 400
+- @dominoracing → ⚠️ @dominoracing | – | Bright Data HTTP 400
+- @toprakrazgatlioglu7 → ⚠️ @toprakrazgatlioglu7 | – | Bright Data HTTP 400
+- @denizoncu → ⚠️ @denizoncu | – | Bright Data HTTP 400
+- @canoncu → ⚠️ @canoncu | – | Bright Data HTTP 400
+- @kenansofuoglu → ⚠️ @kenansofuoglu | – | Bright Data HTTP 400
+- @zaynsofuoglu → ⚠️ @zaynsofuoglu | – | Bright Data HTTP 400
+- @bahattinsofuoglu → ⚠️ @bahattinsofuoglu | – | Bright Data HTTP 400
