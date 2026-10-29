@@ -1,9 +1,22 @@
 {
   "version": 1,
-  "created_at": 1793196592,
+  "created_at": 1793282791,
   "max_days": 7,
   "window_used_days": 7,
-  "count": 0,
-  "visible_count": 0,
-  "items": []
+  "count": 1,
+  "visible_count": 1,
+  "items": [
+    {
+      "n": 1,
+      "title": "Dovizioso: \"Toprak, Endonezya'daki kazasından önce de sakatlık yaşıyordu\"",
+      "url": "https://tr.motorsport.com/motogp/news/dovizioso-toprak-endonezyadaki-kazasindan-once-de-sakatlik-yasiyordu/10869021",
+      "summary": "Andrea Dovizioso, omzundan ameliyat olan Toprak Razgatlıoğlu'nun Endonezya GP'sindeki kazadan önce de bazı fiziksel sorunlar yaşadığını açıkladı.",
+      "preview": "https://cdn-6.motorsport.com/images/amp/27NoRNO0/s6/toprak-razgatlioglu-pramac-rac.jpg",
+      "published_at": "2026-10-28T14:10:02Z",
+      "series": "MotoGP",
+      "source_series": "MotoGP",
+      "turkish_rider": "Toprak Razgatlıoğlu",
+      "kind": "news"
+    }
+  ]
 }

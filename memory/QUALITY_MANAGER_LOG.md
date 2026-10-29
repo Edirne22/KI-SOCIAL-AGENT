@@ -3780,3 +3780,39 @@ Story-Key: motogp:10868835
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-29 14:46 UTC | Motorcycle Racing | PASS
+Titel: Milli motosikletçi Deniz Öncü, Dünya Moto2 Şampiyonası'nın Malezya ayağında yarışacak
+Story-Key: motogp:4104558
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-29 14:47 UTC | Motorcycle Racing | PASS
+Titel: Mir & Marini both fit to race
+Story-Key: motogp:1181611
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-29 14:47 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia ve Di Giannantonio takım emrine karşı: Pilotlar kendileri için yarışmakta özgür olmalı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123152
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-29 14:47 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez’den Ducati takım emirleri sorusuna esrarengiz yanıt: “Herkes ne yapması gerektiğini biliyor” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123121
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-29 14:48 UTC | Motorcycle Racing | FAIL
+Titel: Raul Fernandez: Parmaklarımı kırdığım zamankinden daha kötü hissediyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123140
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-29 14:48 UTC | Motorcycle Racing | PASS
+Titel: Raul Fernandez: Parmaklarımı kırdığım zamankinden daha kötü hissediyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123140
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

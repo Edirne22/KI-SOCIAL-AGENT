@@ -1379,3 +1379,33 @@ Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-ilk-kez-konustu-uc-y
 Story-Key: motogp:10868835
 Titel: Aprilia doğruladı: Jorge Martin, Malezya'da yarışmayı deneyecek
 Quelle: https://tr.motorsport.com/motogp/news/aprilia-dogruladi-jorge-martin-malezyada-yarismayi-deneyecek/10868835
+
+## 2026-10-29 14:06 UTC – ANGEBOTEN
+Story-Key: motogp:10869021
+Titel: Dovizioso: "Toprak, Endonezya'daki kazasından önce de sakatlık yaşıyordu"
+Quelle: https://tr.motorsport.com/motogp/news/dovizioso-toprak-endonezyadaki-kazasindan-once-de-sakatlik-yasiyordu/10869021
+
+## 2026-10-29 14:06 UTC – ANGEBOTEN
+Story-Key: motogp:4104558
+Titel: Milli motosikletçi Deniz Öncü, Dünya Moto2 Şampiyonası'nın Malezya ayağında yarışacak
+Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayaginda-yarisacak/4104558
+
+## 2026-10-29 14:06 UTC – ANGEBOTEN
+Story-Key: motogp:1181611
+Titel: Mir & Marini both fit to race
+Quelle: https://www.motogp.com/en/news/2026/10/29/mir-and-marini-fit-for-sepang/1181611
+
+## 2026-10-29 14:06 UTC – ANGEBOTEN
+Story-Key: motogp:123152
+Titel: Bagnaia ve Di Giannantonio takım emrine karşı: Pilotlar kendileri için yarışmakta özgür olmalı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-ve-di-giannantonio-takim-emrine-karsi-pilotlar-kendileri-icin-yarismakta-ozgur-olmali/123152
+
+## 2026-10-29 14:06 UTC – ANGEBOTEN
+Story-Key: motogp:123121
+Titel: Marc Marquez’den Ducati takım emirleri sorusuna esrarengiz yanıt: “Herkes ne yapması gerektiğini biliyor” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquezden-ducati-takim-emirleri-sorusuna-esrarengiz-yanit-herkes-ne-yapmasi-gerektigini-biliyor/123121
+
+## 2026-10-29 14:06 UTC – ANGEBOTEN
+Story-Key: motogp:123140
+Titel: Raul Fernandez: Parmaklarımı kırdığım zamankinden daha kötü hissediyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmaklarimi-kirdigim-zamankinden-daha-kotu-hissediyorum/123140
