@@ -1301,6 +1301,7 @@ Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-1-milli-motos
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-29-daily
 Telegram-Update-ID: 279362012
