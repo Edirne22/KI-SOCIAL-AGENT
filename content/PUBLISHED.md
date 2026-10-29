@@ -1275,3 +1275,95 @@ Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-p
 Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg", "media_status": "", "object_id": "122128736817469415", "object_type": "bild", "platform": "facebook", "post_id": "122128736817469415", "source_url": "https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-29-daily
+Telegram-Update-ID: 279362012
+MotoGP-Auswahl: 1
+Story-Key: motogp:4104558
+Event-Fingerprint: -
+Titel: Milli motosikletçi Deniz Öncü, Dünya Moto2 Şampiyonası'nın Malezya ayağında yarışacak
+Text:
+Deniz Öncü nimmt am Rennen teil
+
+Deniz Öncü fährt beim Malaysia-GP auf – für ihn beginnt die 19. Runde der Moto2-Saison. Am Wochenende geht es auf der Strecke in Malezya weiter, und er ist dabei.
+
+Was erwartet ihr von Deniz Öncü in der 19. Moto2-Runde in Malezya?
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayaginda-yarisacak/4104558
+Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayaginda-yarisacak/4104558
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-1-milli-motosikletci-d-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-29-daily
+Telegram-Update-ID: 279362012
+MotoGP-Auswahl: 1
+Story-Key: motogp:4104558
+Event-Fingerprint: -
+Titel: Milli motosikletçi Deniz Öncü, Dünya Moto2 Şampiyonası'nın Malezya ayağında yarışacak
+Text:
+Deniz Öncü nimmt am Rennen teil
+
+Deniz Öncü fährt beim Malaysia-GP auf – für ihn beginnt die 19. Runde der Moto2-Saison. Am Wochenende geht es auf der Strecke in Malezya weiter, und er ist dabei.
+
+Was erwartet ihr von Deniz Öncü in der 19. Moto2-Runde in Malezya?
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayaginda-yarisacak/4104558
+Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayaginda-yarisacak/4104558
+Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-1-milli-motosikletci-d-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-29-daily
+Telegram-Update-ID: 279362013
+MotoGP-Auswahl: 5
+Story-Key: motogp:123140
+Event-Fingerprint: MotoGP|sprint|fernandez|
+Titel: Raul Fernandez: Parmaklarımı kırdığım zamankinden daha kötü hissediyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Raul Fernandez fühlt sich vor dem MotoGP-Rennen in Malaysia schlechter als noch vor drei Wochen, als er sich die Finger brach.
+
+Bei der Sprint-Qualifikation in Indonesien ging es in der ersten Kurve schief. Trotzdem startete er einen Tag später, fuhr auf Platz zwei ins Ziel und gab erst danach zu, dass er zwei Finger gebrochen hatte – vorher hatte er nur einen gemeldet. Zwei Wochen später bei Phillip Island zog er dann komplett vom Grand Prix zurück. Und jetzt sagt er: Es fühlt sich alles wieder schlimmer an als beim ersten Mal.
+
+Wie seht ihr seine Chancenaussichten für Malaysia mit der Verletzung?
+
+#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmaklarimi-kirdigim-zamankinden-daha-kotu-hissediyorum/123140
+Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmaklarimi-kirdigim-zamankinden-daha-kotu-hissediyorum/123140
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-5-raul-fernandez-parma-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-29-daily
+Telegram-Update-ID: 279362013
+MotoGP-Auswahl: 5
+Story-Key: motogp:123140
+Event-Fingerprint: MotoGP|sprint|fernandez|
+Titel: Raul Fernandez: Parmaklarımı kırdığım zamankinden daha kötü hissediyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Raul Fernandez fühlt sich vor dem MotoGP-Rennen in Malaysia schlechter als noch vor drei Wochen, als er sich die Finger brach.
+
+Bei der Sprint-Qualifikation in Indonesien ging es in der ersten Kurve schief. Trotzdem startete er einen Tag später, fuhr auf Platz zwei ins Ziel und gab erst danach zu, dass er zwei Finger gebrochen hatte – vorher hatte er nur einen gemeldet. Zwei Wochen später bei Phillip Island zog er dann komplett vom Grand Prix zurück. Und jetzt sagt er: Es fühlt sich alles wieder schlimmer an als beim ersten Mal.
+
+Wie seht ihr seine Chancenaussichten für Malaysia mit der Verletzung?
+
+#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmaklarimi-kirdigim-zamankinden-daha-kotu-hissediyorum/123140
+Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmaklarimi-kirdigim-zamankinden-daha-kotu-hissediyorum/123140
+Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-5-raul-fernandez-parma-01.jpg
+Link-Preview: offiziell

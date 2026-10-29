@@ -1,3 +1,3 @@
-Update-ID: 279362011
-Racing-Batch-ID: racing-2026-10-28-manual-40673050395
+Update-ID: 279362013
+Racing-Batch-ID: racing-2026-10-29-daily
 Antwort: Motogp 5
