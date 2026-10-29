@@ -122,3 +122,5 @@ Was der Agent aus Fehlern und Erfahrungen gelernt hat.
 - 2026-10-27: Viral-, Funnel- und Experiment-Learning aktualisiert.
 
 - 2026-10-28: Viral-, Funnel- und Experiment-Learning aktualisiert.
+
+- 2026-10-29: Viral-, Funnel- und Experiment-Learning aktualisiert.
