@@ -1299,9 +1299,8 @@ Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-dunya-moto2-
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-1-milli-motosikletci-d-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 40932294129-1
+## Facebook [GEPOSTET 2026-10-29 18:36 | ID: 122129151495469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-29-daily
 Telegram-Update-ID: 279362012
@@ -1322,6 +1321,7 @@ Was erwartet ihr von Deniz Öncü in der 19. Moto2-Runde in Malezya?
 Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayaginda-yarisacak/4104558
 Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-1-milli-motosikletci-d-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-1-milli-motosikletci-d-01.jpg", "media_status": "", "object_id": "122129151495469415", "object_type": "bild", "platform": "facebook", "post_id": "122129151495469415", "source_url": "https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayaginda-yarisacak/4104558", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
