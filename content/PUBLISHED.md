@@ -1348,7 +1348,7 @@ Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-5-raul-fernan
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 40969806557-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-10-29-daily
 Telegram-Update-ID: 279362013
