@@ -1409,3 +1409,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquezden-ducati-takim-emir
 Story-Key: motogp:123140
 Titel: Raul Fernandez: Parmaklarımı kırdığım zamankinden daha kötü hissediyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmaklarimi-kirdigim-zamankinden-daha-kotu-hissediyorum/123140
+
+## 2026-10-30 13:52 UTC – ANGEBOTEN
+Story-Key: motogp:123286
+Titel: Marquez, Martin’in sakatlığı hakkında konuştu: Umursamıyorum, şampiyonluk kendi elimde - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-martinin-sakatligi-hakkinda-konustu-umursamiyorum-sampiyonluk-kendi-elimde/123286
+
+## 2026-10-30 13:52 UTC – ANGEBOTEN
+Story-Key: motogp:123277
+Titel: Aprilia, Martin’i antrenmandan neden çektiğini açıkladı: Gücü yönetmesi zor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-martini-antrenmandan-neden-cektigini-acikladi-gucu-yonetmesi-zor/123277
+
+## 2026-10-30 13:52 UTC – ANGEBOTEN
+Story-Key: motogp:1181918
+Titel: The fight goes on: Martin officially fit to race in Malaysia
+Quelle: https://www.motogp.com/en/news/2026/10/30/the-fight-goes-on-martin-officially-fit-to-race-in-malaysia/1181918
+
+## 2026-10-30 13:52 UTC – ANGEBOTEN
+Story-Key: motogp:1181618
+Titel: MEDIA DAY DISPATCH: MotoGP opens with a bang at Sepang
+Quelle: https://www.motogp.com/en/news/2026/10/29/media-day-dispatch-motogp-opens-with-a-bang-at-sepang/1181618
+
+## 2026-10-30 13:52 UTC – ANGEBOTEN
+Story-Key: motogp:123260
+Titel: Malezya MotoGP Antrenman: Marquez lider, Martin seanstan çekildi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/malezya-motogp-practice-marquez-lider-martin-seanstan-cekildi/123260

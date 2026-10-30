@@ -3816,3 +3816,39 @@ Story-Key: motogp:123140
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-30 14:31 UTC | Motorcycle Racing | FAIL
+Titel: Marquez, Martin’in sakatlığı hakkında konuştu: Umursamıyorum, şampiyonluk kendi elimde - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123286
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-30 14:31 UTC | Motorcycle Racing | PASS
+Titel: Marquez, Martin’in sakatlığı hakkında konuştu: Umursamıyorum, şampiyonluk kendi elimde - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123286
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-30 14:31 UTC | Motorcycle Racing | PASS
+Titel: Aprilia, Martin’i antrenmandan neden çektiğini açıkladı: Gücü yönetmesi zor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123277
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-30 14:32 UTC | Motorcycle Racing | PASS
+Titel: The fight goes on: Martin officially fit to race in Malaysia
+Story-Key: motogp:1181918
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-30 14:32 UTC | Motorcycle Racing | PASS
+Titel: MEDIA DAY DISPATCH: MotoGP opens with a bang at Sepang
+Story-Key: motogp:1181618
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-30 14:32 UTC | Motorcycle Racing | PASS
+Titel: Malezya MotoGP Antrenman: Marquez lider, Martin seanstan çekildi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123260
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

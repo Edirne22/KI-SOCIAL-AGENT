@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793282791
+Session-Timestamp: 1793368339
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,31 +15,55 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
 Artikelalter-Tage: 0.1
-Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: motogp:4104558
-Titel: Milli motosikletçi Deniz Öncü, Dünya Moto2 Şampiyonası'nın Malezya ayağında yarışacak
-Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayaginda-yarisacak/4104558
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:123286
+Titel: Marquez, Martin’in sakatlığı hakkında konuştu: Umursamıyorum, şampiyonluk kendi elimde - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-martinin-sakatligi-hakkinda-konustu-umursamiyorum-sampiyonluk-kendi-elimde/123286
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-1-milli-motosikletci-d-01.jpg
-Quellen-Preview: https://web-cdnprod.aa.com.tr/uploads/Contents/2026/10/29/thumbs_b_c_1d88b3a0fec870a369f8a41a732c942a.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-1-marquez-martinin-sak-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357941_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Deniz Öncü nimmt am Rennen teil
+Marc Marquez lässt Jorge Martins Verletzung einfach mal passieren. Der MotoGP-Führende hat nach dem Sprintrennen in Australien erklärt, dass er sich nicht um den gebrochenen Handgelenk des Aprilia-Piloten kümmert – seine Augen sind auf die 2026er Titeljagd gerichtet. Martin hatte im Sprintrennen noch mit um den Sieg mitgekämpft, als er stürzte. Marquez zieht dadurch zwei Zähler in der WM an – aber auch das reicht ihm noch nicht.
 
-Deniz Öncü fährt beim Malaysia-GP auf – für ihn beginnt die 19. Runde der Moto2-Saison. Am Wochenende geht es auf der Strecke in Malezya weiter, und er ist dabei.
+Was haltet ihr davon, dass Marquez so offen über Martins Verletzung spricht?
 
-Was erwartet ihr von Deniz Öncü in der 19. Moto2-Runde in Malezya?
-
-#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
 ## Beitrag 2
+QM: PASS
+Racing-QM: PASS
+Semantic-Fakten-QM: PASS
+Neufassungen: 1
+QM-Ruecklaeufe: 0
+Herkunft: Aktuell
+Artikelalter-Tage: 0.2
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:123277
+Titel: Aprilia, Martin’i antrenmandan neden çektiğini açıkladı: Gücü yönetmesi zor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-martini-antrenmandan-neden-cektigini-acikladi-gucu-yonetmesi-zor/123277
+Quellen-Lineage: {}
+Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-2-aprilia-martini-antr-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357718_hires.jpg
+Plattformen: Instagram + Facebook
+Text:
+Aprilia hat Jorge Martin beim Malaysia Grand Prix schon nach wenigen Minuten aus dem Training genommen. Der Weltmeister von 2024 kämpft weiter mit seinem gebrochenen rechten Handgelenk aus dem Sturz im Australien-Sprint, weshalb sich die Power der Maschine kaum bändigen ließ. Am Donnerstag hatte Martin in Sepang zwar noch grünes Licht für den Einsatz bekommen, doch auf dem Bike ging es einfach nicht mehr weiter.
+
+Was haltet ihr von dieser Entscheidung?
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
+
+## Beitrag 3
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
@@ -49,49 +73,19 @@ Herkunft: Aktuell
 Artikelalter-Tage: 0.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1181611
-Titel: Mir & Marini both fit to race
-Quelle: https://www.motogp.com/en/news/2026/10/29/mir-and-marini-fit-for-sepang/1181611
+Story-Key: motogp:1181918
+Titel: The fight goes on: Martin officially fit to race in Malaysia
+Quelle: https://www.motogp.com/en/news/2026/10/30/the-fight-goes-on-martin-officially-fit-to-race-in-malaysia/1181918
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-2-mir-marini-both-fit-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/29/00d7c154-1b2d-4b97-8aca-a68d4d7ceb20/DS_06286.JPG?width=1200&height=630
+Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-3-the-fight-goes-on-ma-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/30/e19a38c1-496e-43e8-933f-1f2548458ec5/LGZ_1910.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Mir und Marini beide fit für den Start – was für eine Erleichterung beim Castrol Honda Team.
+Jorge Martin hat nach der Untersuchung am Freitagmorgen die offizielle Freigabe erhalten. Die Startnummer 89 wurde für das MotoGP-Wochenende in Sepang fit erklärt und kann in Malaysia an den Start gehen.
 
-Nach längerer Verletzungspause startet #36 wieder im Sattel, und auch #10 – Luca Marini, der das Rennen in Australien verpasst hatte – ist zurück am Start. Die Rückkehr beider Fahrer ist ein echter Aufwind für Honda HRC Castrol.
+Was erwartet ihr von Martin in Sepang?
 
-Wer von beiden freut euch am meisten auf das kommende Wochenende?
-
-#MotoGP #LucaMarini #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
-
-## Beitrag 3
-QM: PASS
-Racing-QM: PASS
-Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 2
-Herkunft: Aktuell
-Artikelalter-Tage: 0.1
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:123152
-Titel: Bagnaia ve Di Giannantonio takım emrine karşı: Pilotlar kendileri için yarışmakta özgür olmalı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-ve-di-giannantonio-takim-emrine-karsi-pilotlar-kendileri-icin-yarismakta-ozgur-olmali/123152
-Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-3-bagnaia-ve-di-gianna-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1345263_hires.jpg
-Plattformen: Instagram + Facebook
-Text:
-Bagnaia und Di Giannantonio sagen Nein – kein Teamorder für Marquez' achten Titel.
-
-Die beiden Ducati-Piloten lassen sich nicht instrumentalisieren, um Marc Marquez zu helfen. Marquez sitzt nach Phillip Island mit einem Plus von zehn Punkten vor Jorge Martin in der WM, doch im Sprint musste er mit gebrochenem Handgelenk hinter sich lassen. In Sepang startet er weiterhin mit dem gleichen Verletzung am Handgelenk.
-
-Wie seht ihr das – soll Ducati Marquez unterstützen oder jeder für sich fahren?
-
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -99,29 +93,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 1.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123121
-Titel: Marc Marquez’den Ducati takım emirleri sorusuna esrarengiz yanıt: “Herkes ne yapması gerektiğini biliyor” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquezden-ducati-takim-emirleri-sorusuna-esrarengiz-yanit-herkes-ne-yapmasi-gerektigini-biliyor/123121
+Story-Key: motogp:1181618
+Titel: MEDIA DAY DISPATCH: MotoGP opens with a bang at Sepang
+Quelle: https://www.motogp.com/en/news/2026/10/29/media-day-dispatch-motogp-opens-with-a-bang-at-sepang/1181618
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-4-marc-marquezden-duca-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357676_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-4-media-day-dispatch-m-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/29/43ccf52e-28d1-48a4-95a0-d7fdf2f891f6/LG9_8815.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez reist nach seinem Sprint-Sieg auf Phillip Island mit 10 Punkten Vorsprung als WM-Führender zum Rennen nach Sepang.
+Jorge Martin ist auf dem Media Day in Sepang gestürzt.
 
-Auf das Thema einer möglichen Ducati-Stallorder reagierte Marquez vor dem GP in Malaysia bedeckt.
+Das WM-Feld rückt weiter zusammen und die Reihenfolgen verschieben sich.
 
-Zusätzlich haben sich seine Aussichten im Titelkampf verbessert, nachdem sich Jorge Martin bei einem Sturz das rechte Handgelenk gebrochen hat.
+Das Wetter in Malaysia ist unberechenbar wie eh und je.
 
-Wie schätzt ihr die Situation vor der Runde in Sepang ein?
+Was denkt ihr – bringt das Regenwetter am Wochenende noch zusätzliche Unruhe ins Geschehen?
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -129,27 +123,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 2
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 0.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123140
-Titel: Raul Fernandez: Parmaklarımı kırdığım zamankinden daha kötü hissediyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmaklarimi-kirdigim-zamankinden-daha-kotu-hissediyorum/123140
+Story-Key: motogp:123260
+Titel: Malezya MotoGP Antrenman: Marquez lider, Martin seanstan çekildi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/malezya-motogp-practice-marquez-lider-martin-seanstan-cekildi/123260
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-5-raul-fernandez-parma-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357713_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-5-malezya-motogp-antre-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357988_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Raul Fernandez fühlt sich vor dem MotoGP-Rennen in Malaysia schlechter als noch vor drei Wochen, als er sich die Finger brach.
+Marc Marquez ist im FP1 in Sepang trotz eines frühen Sturzes schnellste Zeit gefahren – der MotoGP-Titelverteidiger führt die Wertung.
 
-Bei der Sprint-Qualifikation in Indonesien ging es in der ersten Kurve schief. Trotzdem startete er einen Tag später, fuhr auf Platz zwei ins Ziel und gab erst danach zu, dass er zwei Finger gebrochen hatte – vorher hatte er nur einen gemeldet. Zwei Wochen später bei Phillip Island zog er dann komplett vom Grand Prix zurück. Und jetzt sagt er: Es fühlt sich alles wieder schlimmer an als beim ersten Mal.
+Jorge Martin hat das Training nach einem Durchgang abgebrochen und ist aus derSession gegangen.
 
-Wie seht ihr seine Chancenaussichten für Malaysia mit der Verletzung?
+Der Aprilia-Pilot hatte sich auf Phillip Island das Handgelenk gebrochen, erhielt am Donnerstag in Sepang Fahrfreigabe, absolvierte Freitagmorgen das FP1 und wurde daraufhin wieder als renntauglich eingestuft – bevor er jetzt doch auszog.
 
-#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Was denkt ihr – ist das ein Zeichen für die Crew oder zeigt Martin hier einfach nur, wo die Grenze liegt?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
