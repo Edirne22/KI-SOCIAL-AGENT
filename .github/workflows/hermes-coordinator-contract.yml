@@ -1,0 +1,27 @@
+name: Hermes Coordinator Contract
+on:
+  push:
+    paths:
+      - 'integrations/openmontage/hermes_coordinator.py'
+      - 'integrations/openmontage/agent_reach_adapter.py'
+      - 'tests/test_hermes_coordinator.py'
+      - 'skills/content-factory-coordinator/**'
+      - '.github/workflows/hermes-coordinator-contract.yml'
+  pull_request:
+    paths:
+      - 'integrations/openmontage/hermes_coordinator.py'
+      - 'integrations/openmontage/agent_reach_adapter.py'
+      - 'tests/test_hermes_coordinator.py'
+      - 'skills/content-factory-coordinator/**'
+      - '.github/workflows/hermes-coordinator-contract.yml'
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify fail-closed agent coordination
+        run: python -m unittest -v tests.test_hermes_coordinator
