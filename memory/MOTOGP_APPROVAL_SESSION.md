@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793368339
+Session-Timestamp: 1793453251
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,25 +15,25 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 2
+Neufassungen: 3
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123286
-Titel: Marquez, Martin’in sakatlığı hakkında konuştu: Umursamıyorum, şampiyonluk kendi elimde - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/marquez-martinin-sakatligi-hakkinda-konustu-umursamiyorum-sampiyonluk-kendi-elimde/123286
+Story-Key: motogp:123478
+Titel: Malezya MotoGP sprint: Yağmurlu yarışı Acosta kazandı, Alex Marquez liderken düştü - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/malezya-motogp-sprint-pedro-acosta-kazandi-marc-marquez-ikinci-oldu/123478
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-1-marquez-martinin-sak-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357941_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-1-malezya-motogp-sprin-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358664_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez lässt Jorge Martins Verletzung einfach mal passieren. Der MotoGP-Führende hat nach dem Sprintrennen in Australien erklärt, dass er sich nicht um den gebrochenen Handgelenk des Aprilia-Piloten kümmert – seine Augen sind auf die 2026er Titeljagd gerichtet. Martin hatte im Sprintrennen noch mit um den Sieg mitgekämpft, als er stürzte. Marquez zieht dadurch zwei Zähler in der WM an – aber auch das reicht ihm noch nicht.
+Am Sepang hat Pedro Acosta den Sprint gewonnen. Alex Marquez hatte von der Pole geführt, ist aber gestürzt, während Marc Marquez mit 0,578 Sekunden Rückstand Zweiter wurde. Jorge Martin fiel krankheitsbedingt aus und verpasste das Wochenende ganz.
 
-Was haltet ihr davon, dass Marquez so offen über Martins Verletzung spricht?
+Wie stehst du auf Acostas Sieg bei nassen Bedingungen?
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -42,24 +42,26 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 1
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123277
-Titel: Aprilia, Martin’i antrenmandan neden çektiğini açıkladı: Gücü yönetmesi zor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-martini-antrenmandan-neden-cektigini-acikladi-gucu-yonetmesi-zor/123277
+Story-Key: motogp:123533
+Titel: Acosta sprint zaferini anlattı: “Saldırma anım bu” dedim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/acosta-sprint-zaferini-anlatti-saldirma-anim-bu-dedim/123533
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-2-aprilia-martini-antr-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357718_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-2-acosta-sprint-zaferi-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358837_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Aprilia hat Jorge Martin beim Malaysia Grand Prix schon nach wenigen Minuten aus dem Training genommen. Der Weltmeister von 2024 kämpft weiter mit seinem gebrochenen rechten Handgelenk aus dem Sturz im Australien-Sprint, weshalb sich die Power der Maschine kaum bändigen ließ. Am Donnerstag hatte Martin in Sepang zwar noch grünes Licht für den Einsatz bekommen, doch auf dem Bike ging es einfach nicht mehr weiter.
+Acosta hat in Sepang einen Sprint gewonnen, den kaum einer auf dem Schirm hatte.
 
-Was haltet ihr von dieser Entscheidung?
+Pedro Acosta hat in Malaysia überraschend den Sprint für sich entschieden. Er ging am Ende an Ai Ogura vorbei, der eigentlich die Führung hielt. Davor war Acosta lange auf Platz drei gefahren, hinter Alex Marquez und dem angreifenden Ogura. Alex Marquez ging im dritten Umlauf dran – und damit brach die Spitze auf. Marc Marquez und Marco Bezzecchi waren ebenfalls mit im Vorderfeld.
 
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wer hat bei dem Sprint am meisten überrascht?
+
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,25 +69,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.6
+Artikelalter-Tage: 0.3
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1181918
-Titel: The fight goes on: Martin officially fit to race in Malaysia
-Quelle: https://www.motogp.com/en/news/2026/10/30/the-fight-goes-on-martin-officially-fit-to-race-in-malaysia/1181918
+Story-Key: motogp:10869990
+Titel: 2026 MotoGP Malezya GP sprint: Acosta kazandı, lider giden Alex Marquez kaza yaptı!
+Quelle: https://tr.motorsport.com/motogp/news/2026-motogp-malezya-gp-sprint-acosta-kazandi-lider-giden-alex-marquez-kaza-yapti/10869990
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-3-the-fight-goes-on-ma-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/30/e19a38c1-496e-43e8-933f-1f2548458ec5/LGZ_1910.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-3-2026-motogp-malezya-01.jpg
+Quellen-Preview: https://cdn-5.motorsport.com/images/amp/2wlKOkeY/s6/pedro-acosta-red-bull-ktm-fact.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin hat nach der Untersuchung am Freitagmorgen die offizielle Freigabe erhalten. Die Startnummer 89 wurde für das MotoGP-Wochenende in Sepang fit erklärt und kann in Malaysia an den Start gehen.
+Pedro Acosta hat den Sprint beim MotoGP-Grand-Prix in Malaysia gewonnen. Alex Marquez war zuvor führender Fahrer, musste aber einen Unfall hinnehmen. 🏍️💨
 
-Was erwartet ihr von Martin in Sepang?
+Wie schätzt ihr die aktuelle Situation im Sprint ein?
 
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #AlexMarquez #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -96,26 +98,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.6
+Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1181618
-Titel: MEDIA DAY DISPATCH: MotoGP opens with a bang at Sepang
-Quelle: https://www.motogp.com/en/news/2026/10/29/media-day-dispatch-motogp-opens-with-a-bang-at-sepang/1181618
+Story-Key: motogp:123526
+Titel: Bagnaia sprintta yağmurla şanslıydı: Arka lastik üç turda bitti - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-sprintta-yagmurla-sansliydi-arka-lastik-uc-turda-bitti/123526
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-4-media-day-dispatch-m-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/29/43ccf52e-28d1-48a4-95a0-d7fdf2f891f6/LG9_8815.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-4-bagnaia-sprintta-yag-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358819_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin ist auf dem Media Day in Sepang gestürzt.
+Bagnaia sagte, der Regen zum Start habe ihn Glück gebracht, da der Verschleiß des Ducati-Hinterreifens extrem schlecht sei. Er ist zweimaliger Weltmeister und hatte sich basierend auf Sepang ein stärkeres Wochenende erwartet, wurde nach Q1 aber nur Zehnter auf dem Grid. Im 10-Runden-Sprint fehlte ihm am Ende 8,3 Sekunden zum Sieger.
 
-Das WM-Feld rückt weiter zusammen und die Reihenfolgen verschieben sich.
+Wie bewertet ihr Bagnaias Aussage, dass der Regen beim Reifenverschleiß Glück gebracht habe?
 
-Das Wetter in Malaysia ist unberechenbar wie eh und je.
-
-Was denkt ihr – bringt das Regenwetter am Wochenende noch zusätzliche Unruhe ins Geschehen?
-
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -126,24 +124,20 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123260
-Titel: Malezya MotoGP Antrenman: Marquez lider, Martin seanstan çekildi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/malezya-motogp-practice-marquez-lider-martin-seanstan-cekildi/123260
+Story-Key: motogp:123535
+Titel: Marc Marquez sprintta neden risk almadı: “Asla yarışa liderlik etme” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-sprintta-neden-risk-almadi-asla-yarisa-liderlik-etme/123535
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-30-racing-editorial-2026-10-30-5-malezya-motogp-antre-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1357988_hires.jpg
+Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-5-marc-marquez-sprintt-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358863_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez ist im FP1 in Sepang trotz eines frühen Sturzes schnellste Zeit gefahren – der MotoGP-Titelverteidiger führt die Wertung.
+Marc Marquez hat bei seinem Sprint in Sepang auf Risk alles gesetzt – und zwar auf keins. Der Grund: Sein nächster Verfolger im Titelkampf, Jorge Martín, musste wegen einer beim letzten Rennen in Australien gebrochenen Hand das Weekend meiden. Marquez wusste, dass er Martins Punkte nicht mehr gefährden kann, und fuhr den Sprint ganz im Management-Modus. Mit der Strategie ging er nicht nur seinem 25. Sprint-Sieg sicher aus dem Weg – auch seinen Schritt Richtung neuem Zehnten Weltmeistertitel hat er damit fest im Griff. 🏁
 
-Jorge Martin hat das Training nach einem Durchgang abgebrochen und ist aus derSession gegangen.
-
-Der Aprilia-Pilot hatte sich auf Phillip Island das Handgelenk gebrochen, erhielt am Donnerstag in Sepang Fahrfreigabe, absolvierte Freitagmorgen das FP1 und wurde daraufhin wieder als renntauglich eingestuft – bevor er jetzt doch auszog.
-
-Was denkt ihr – ist das ein Zeichen für die Crew oder zeigt Martin hier einfach nur, wo die Grenze liegt?
+Wie schätzt ihr ein, ob es eine gute Idee war, im Sprint auf Risiko zu verzichten?
 
 #MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 

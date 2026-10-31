@@ -1,9 +1,22 @@
 {
   "version": 1,
-  "created_at": 1793368339,
+  "created_at": 1793453251,
   "max_days": 7,
   "window_used_days": 7,
-  "count": 0,
-  "visible_count": 0,
-  "items": []
+  "count": 1,
+  "visible_count": 1,
+  "items": [
+    {
+      "n": 1,
+      "title": "Moto2 Malezya sıralama: Sepang'da Holgado pole'de, Deniz Öncü 25. sırada!",
+      "url": "https://tr.motorsport.com/moto2/news/moto2-malezya-siralama-sepangda-holgadodan-govde-gosterisi-deniz-oncu-25-sirada/10870016",
+      "summary": "Daniel Holgado, Sepang Uluslararası pistinde gerçekleştirilen Moto2 sıralama seansında rakiplerine büyük fark atarak pole pozisyonunu elde etti.",
+      "preview": "https://cdn-2.motorsport.com/images/amp/2y7Qpwo6/s6/dani-holgado-malezya.jpg",
+      "published_at": "2026-10-31T07:10:00Z",
+      "series": "Moto2",
+      "source_series": "Moto2",
+      "turkish_rider": "Deniz Öncü",
+      "kind": "news"
+    }
+  ]
 }

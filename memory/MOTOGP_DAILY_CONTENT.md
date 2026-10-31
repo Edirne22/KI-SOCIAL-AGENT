@@ -1,11 +1,11 @@
 # Motorcycle Racing Daily Agency V8.5.5
 
-Stand: 2026-10-30 13:52 UTC
-Rohkandidaten: 703
-Aktuelle Racing-News <=7 Tage: 101
-Freshness missing-date: 55
-Freshness >7 Tage: 518
-Freshness Promo/irrelevant: 18
+Stand: 2026-10-31 13:27 UTC
+Rohkandidaten: 508
+Aktuelle Racing-News <=7 Tage: 81
+Freshness missing-date: 82
+Freshness >7 Tage: 326
+Freshness Promo/irrelevant: 15
 Aktuell voll Copy-QM qualifiziert: 52
 Vortag voll Copy-QM qualifiziert: 0
 Gesamtpool nach Racing+Semantic-QM: 52

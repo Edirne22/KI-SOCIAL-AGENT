@@ -3852,3 +3852,57 @@ Story-Key: motogp:123260
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-10-31 14:08 UTC | Motorcycle Racing | FAIL
+Titel: Moto2 Malezya sıralama: Sepang'da Holgado pole'de, Deniz Öncü 25. sırada!
+Story-Key: motogp:10870016
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-31 14:08 UTC | Motorcycle Racing | FAIL
+Titel: Moto2 Malezya sıralama: Sepang'da Holgado pole'de, Deniz Öncü 25. sırada!
+Story-Key: motogp:10870016
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-31 14:08 UTC | Motorcycle Racing | PASS
+Titel: Malezya MotoGP sprint: Yağmurlu yarışı Acosta kazandı, Alex Marquez liderken düştü - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123478
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-31 14:09 UTC | Motorcycle Racing | PASS
+Titel: Acosta sprint zaferini anlattı: “Saldırma anım bu” dedim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123533
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-31 14:09 UTC | Motorcycle Racing | PASS
+Titel: 2026 MotoGP Malezya GP sprint: Acosta kazandı, lider giden Alex Marquez kaza yaptı!
+Story-Key: motogp:10869990
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-31 14:09 UTC | Motorcycle Racing | FAIL
+Titel: Bezzecchi şampiyonluktan vazgeçmedi: Aksi halde yarışlara gelmenin anlamı olmazdı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123537
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-31 14:09 UTC | Motorcycle Racing | FAIL
+Titel: Bezzecchi şampiyonluktan vazgeçmedi: Aksi halde yarışlara gelmenin anlamı olmazdı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123537
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-10-31 14:10 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia sprintta yağmurla şanslıydı: Arka lastik üç turda bitti - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123526
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-10-31 14:10 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez sprintta neden risk almadı: “Asla yarışa liderlik etme” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123535
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

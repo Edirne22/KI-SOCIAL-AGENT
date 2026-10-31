@@ -1434,3 +1434,33 @@ Quelle: https://www.motogp.com/en/news/2026/10/29/media-day-dispatch-motogp-open
 Story-Key: motogp:123260
 Titel: Malezya MotoGP Antrenman: Marquez lider, Martin seanstan çekildi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/malezya-motogp-practice-marquez-lider-martin-seanstan-cekildi/123260
+
+## 2026-10-31 13:27 UTC – ANGEBOTEN
+Story-Key: motogp:10870016
+Titel: Moto2 Malezya sıralama: Sepang'da Holgado pole'de, Deniz Öncü 25. sırada!
+Quelle: https://tr.motorsport.com/moto2/news/moto2-malezya-siralama-sepangda-holgadodan-govde-gosterisi-deniz-oncu-25-sirada/10870016
+
+## 2026-10-31 13:27 UTC – ANGEBOTEN
+Story-Key: motogp:123478
+Titel: Malezya MotoGP sprint: Yağmurlu yarışı Acosta kazandı, Alex Marquez liderken düştü - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/malezya-motogp-sprint-pedro-acosta-kazandi-marc-marquez-ikinci-oldu/123478
+
+## 2026-10-31 13:27 UTC – ANGEBOTEN
+Story-Key: motogp:123533
+Titel: Acosta sprint zaferini anlattı: “Saldırma anım bu” dedim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/acosta-sprint-zaferini-anlatti-saldirma-anim-bu-dedim/123533
+
+## 2026-10-31 13:27 UTC – ANGEBOTEN
+Story-Key: motogp:10869990
+Titel: 2026 MotoGP Malezya GP sprint: Acosta kazandı, lider giden Alex Marquez kaza yaptı!
+Quelle: https://tr.motorsport.com/motogp/news/2026-motogp-malezya-gp-sprint-acosta-kazandi-lider-giden-alex-marquez-kaza-yapti/10869990
+
+## 2026-10-31 13:27 UTC – ANGEBOTEN
+Story-Key: motogp:123526
+Titel: Bagnaia sprintta yağmurla şanslıydı: Arka lastik üç turda bitti - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-sprintta-yagmurla-sansliydi-arka-lastik-uc-turda-bitti/123526
+
+## 2026-10-31 13:27 UTC – ANGEBOTEN
+Story-Key: motogp:123535
+Titel: Marc Marquez sprintta neden risk almadı: “Asla yarışa liderlik etme” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-sprintta-neden-risk-almadi-asla-yarisa-liderlik-etme/123535
