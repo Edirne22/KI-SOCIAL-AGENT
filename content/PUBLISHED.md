@@ -1123,9 +1123,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannant
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoeneticisi-nie-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 41334957247-1
+## Facebook [GEPOSTET 2026-11-01 18:08 | ID: 122130140757469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-01-daily
 Telegram-Update-ID: 279362014
@@ -1144,6 +1143,7 @@ Wie schätzt ihr das Topspeed-Problem bei Di Giannantonio ein?
 Quelle: https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannantonionun-sepang-sorununu-acikladi-duzluklerde-saatte-7-8-km-kaybediyoruz/123670
 Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoeneticisi-nie-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoeneticisi-nie-01.jpg", "media_status": "", "object_id": "122130140757469415", "object_type": "bild", "platform": "facebook", "post_id": "122130140757469415", "source_url": "https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannantonionun-sepang-sorununu-acikladi-duzluklerde-saatte-7-8-km-kaybediyoruz/123670", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
