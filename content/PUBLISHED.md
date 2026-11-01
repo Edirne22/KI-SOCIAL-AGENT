@@ -1102,8 +1102,8 @@ Bild: assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-5-raul-fernan
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-29-racing-editorial-2026-10-29-5-raul-fernandez-parma-01.jpg", "media_status": "", "object_id": "122129196531469415", "object_type": "bild", "platform": "facebook", "post_id": "122129196531469415", "source_url": "https://trf1.net/motor-sporlari/motogp/raul-fernandez-parmaklarimi-kirdigim-zamankinden-daha-kotu-hissediyorum/123140", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-11-01 21:23 | ID: 18108576326290368]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-01-daily
 Telegram-Update-ID: 279362014
@@ -1122,6 +1122,7 @@ Wie schätzt ihr das Topspeed-Problem bei Di Giannantonio ein?
 Quelle: https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannantonionun-sepang-sorununu-acikladi-duzluklerde-saatte-7-8-km-kaybediyoruz/123670
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoeneticisi-nie-01.jpg
+Publish-Provenienz: {"creation_id": "18014388236971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoeneticisi-nie-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18108576326290368", "published_media_id": "18108576326290368", "source_url": "https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannantonionun-sepang-sorununu-acikladi-duzluklerde-saatte-7-8-km-kaybediyoruz/123670", "version": 1}
 
 ## Facebook [GEPOSTET 2026-11-01 18:08 | ID: 122130140757469415]
 Status: GEPOSTET
@@ -1145,8 +1146,8 @@ Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoenet
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoeneticisi-nie-01.jpg", "media_status": "", "object_id": "122130140757469415", "object_type": "bild", "platform": "facebook", "post_id": "122130140757469415", "source_url": "https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannantonionun-sepang-sorununu-acikladi-duzluklerde-saatte-7-8-km-kaybediyoruz/123670", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-11-01 21:23 | ID: 18348514879268775]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-01-daily
 Telegram-Update-ID: 279362016
@@ -1167,6 +1168,7 @@ Wie schätzt ihr die Situation zwischen Gonzalez und Guevara bei nur noch 3,5 Pu
 Quelle: https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-indi-deniz-yaris-disi
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg
+Publish-Provenienz: {"creation_id": "18014388257971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18348514879268775", "published_media_id": "18348514879268775", "source_url": "https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-indi-deniz-yaris-disi", "version": 1}
 
 ## Facebook
 Status: FREIGEGEBEN
