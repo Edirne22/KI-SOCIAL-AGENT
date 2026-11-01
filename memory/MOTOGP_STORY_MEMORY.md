@@ -1464,3 +1464,38 @@ Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-sprintta-yagmurla-sansliy
 Story-Key: motogp:123535
 Titel: Marc Marquez sprintta neden risk almadı: “Asla yarışa liderlik etme” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-sprintta-neden-risk-almadi-asla-yarisa-liderlik-etme/123535
+
+## 2026-11-01 14:04 UTC – ANGEBOTEN
+Story-Key: motogp:4107743
+Titel: Deniz Öncü, Dünya Moto2 Şampiyonası'nın Malezya ayağını tamamlayamadı
+Quelle: https://www.aa.com.tr/tr/spor/deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayagini-tamamlayamadi/4107743
+
+## 2026-11-01 14:04 UTC – ANGEBOTEN
+Story-Key: motogp:10870460
+Titel: Moto2 Malezya yarış: David Alonso kazandı, Deniz öncü kaza yüzünden yarış dışı
+Quelle: https://tr.motorsport.com/moto2/news/moto2-malezya-yaris-david-alonso-kazandi-guevara-sampiyonluk-yarisinda-gonzaleze-yaklasti/10870460
+
+## 2026-11-01 14:04 UTC – ANGEBOTEN
+Story-Key: title:moto2-malezya-gp-alonso-kazand-deniz-nc-yar-d
+Titel: Moto2 Malezya GP: Alonso Kazandı, Deniz Öncü Yarış Dışı
+Quelle: https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-indi-deniz-yaris-disi
+
+## 2026-11-01 14:04 UTC – ANGEBOTEN
+Story-Key: motogp:1179524
+Titel: Masterclass: Marc Marquez marches to Malaysia victory to earn 2026 match point
+Quelle: https://www.motogp.com/en/news/2026/11/01/masterclass-marc-marquez-marches-to-malaysia-victory-to-earn-2026-match-point/1179524
+
+## 2026-11-01 14:04 UTC – ANGEBOTEN
+Story-Key: motogp:123581
+Titel: Alex Marquez düşüşünü anlattı: Yağmur yüzünden değil, kalbimle yarıştım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquez-dususunu-anlatti-yagmur-yuzunden-degil-kalbimle-yaristim/123581
+
+## 2026-11-01 14:04 UTC – ANGEBOTEN
+Story-Key: motogp:123697
+Titel: Marc Marquez Katar’da şampiyon olmak için ne yapmalı? - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-katarda-sampiyon-olmak-icin-ne-yapmali/123697
+
+## 2026-11-01 14:04 UTC – ANGEBOTEN
+Story-Key: motogp:123670
+Titel: VR46 yöneticisi Nieto, Di Giannantonio’nun Sepang sorununu açıkladı: Düzlüklerde saatte 7-8 km kaybediyoruz - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannantonionun-sepang-sorununu-acikladi-duzluklerde-saatte-7-8-km-kaybediyoruz/123670

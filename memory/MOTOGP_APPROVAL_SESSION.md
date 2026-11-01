@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793453251
+Session-Timestamp: 1793541840
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,25 +15,27 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 3
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:123478
-Titel: Malezya MotoGP sprint: Yağmurlu yarışı Acosta kazandı, Alex Marquez liderken düştü - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/malezya-motogp-sprint-pedro-acosta-kazandi-marc-marquez-ikinci-oldu/123478
+Artikelalter-Tage: 0.0
+Kategorie: Turkish Riders
+Serie: Moto2
+Story-Key: title:moto2-malezya-gp-alonso-kazand-deniz-nc-yar-d
+Titel: Moto2 Malezya GP: Alonso Kazandı, Deniz Öncü Yarış Dışı
+Quelle: https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-indi-deniz-yaris-disi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-1-malezya-motogp-sprin-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358664_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/01/david-alonso-1-1.webp
 Plattformen: Instagram + Facebook
 Text:
-Am Sepang hat Pedro Acosta den Sprint gewonnen. Alex Marquez hatte von der Pole geführt, ist aber gestürzt, während Marc Marquez mit 0,578 Sekunden Rückstand Zweiter wurde. Jorge Martin fiel krankheitsbedingt aus und verpasste das Wochenende ganz.
+Deniz Öncü stürzte in der dritten Runde und schied beim Malaysia GP aus.
 
-Wie stehst du auf Acostas Sieg bei nassen Bedingungen?
+David Alonso hat das Moto2-Rennen in Malaysia für sich entschieden. Gleichzeitig ist der Abstand zwischen Gonzalez und Guevara auf 3,5 Punkte geschrumpft.
 
-#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die Situation zwischen Gonzalez und Guevara bei nur noch 3,5 Punkten Abstand ein?
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -41,25 +43,23 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123533
-Titel: Acosta sprint zaferini anlattı: “Saldırma anım bu” dedim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/acosta-sprint-zaferini-anlatti-saldirma-anim-bu-dedim/123533
+Story-Key: motogp:1179524
+Titel: Masterclass: Marc Marquez marches to Malaysia victory to earn 2026 match point
+Quelle: https://www.motogp.com/en/news/2026/11/01/masterclass-marc-marquez-marches-to-malaysia-victory-to-earn-2026-match-point/1179524
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-2-acosta-sprint-zaferi-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358837_hires_1600x900.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-2-masterclass-marc-mar-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/01/e9d2a2f1-1829-4699-821b-12cc56ed2c92/Report-MGP-GP-MAL-TOP.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Acosta hat in Sepang einen Sprint gewonnen, den kaum einer auf dem Schirm hatte.
+Marc Marquez (#93) hat in Malaysia klar gemacht – ohne Martin geht er mit einem Riesenschritt Richtung Titel. Auf dem Podium komplettieren Acosta und Alex Marquez das Sepang-Dreigestirn 🏍️🏁
 
-Pedro Acosta hat in Malaysia überraschend den Sprint für sich entschieden. Er ging am Ende an Ai Ogura vorbei, der eigentlich die Führung hielt. Davor war Acosta lange auf Platz drei gefahren, hinter Alex Marquez und dem angreifenden Ogura. Alex Marquez ging im dritten Umlauf dran – und damit brach die Spitze auf. Marc Marquez und Marco Bezzecchi waren ebenfalls mit im Vorderfeld.
-
-Wer hat bei dem Sprint am meisten überrascht?
+Wer schafft den Titel in der aktuellen Lage?
 
 #MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -72,22 +72,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 1
 QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.3
+Artikelalter-Tage: 1.0
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10869990
-Titel: 2026 MotoGP Malezya GP sprint: Acosta kazandı, lider giden Alex Marquez kaza yaptı!
-Quelle: https://tr.motorsport.com/motogp/news/2026-motogp-malezya-gp-sprint-acosta-kazandi-lider-giden-alex-marquez-kaza-yapti/10869990
+Story-Key: motogp:123581
+Titel: Alex Marquez düşüşünü anlattı: Yağmur yüzünden değil, kalbimle yarıştım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquez-dususunu-anlatti-yagmur-yuzunden-degil-kalbimle-yaristim/123581
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-3-2026-motogp-malezya-01.jpg
-Quellen-Preview: https://cdn-5.motorsport.com/images/amp/2wlKOkeY/s6/pedro-acosta-red-bull-ktm-fact.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-3-alex-marquez-duesues-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358822_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Pedro Acosta hat den Sprint beim MotoGP-Grand-Prix in Malaysia gewonnen. Alex Marquez war zuvor führender Fahrer, musste aber einen Unfall hinnehmen. 🏍️💨
+Yağmur yüzünden değil, kalbimle yarıştım
 
-Wie schätzt ihr die aktuelle Situation im Sprint ein?
+Alex Marquez musste im MotoGP-Sprint in Sepang früh absteigen. Er führte nach dem Pole-Start vor Ai Ogura, ehe er in der zweiten Runde über Kurve 13 legte. Regen fiel zwar, doch der Grund für den Sturz war laut Marquez nicht die Nässe – er gab zu, mit vollem Herzen gefahren zu sein.
 
-#MotoGP #AlexMarquez #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Was haltet ihr davon, dass Marquez mit vollem Herzen fuhr, statt aufs Risiko zu achten?
+
+#MotoGP #AlexMarquez #AiOgura #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -95,25 +97,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123526
-Titel: Bagnaia sprintta yağmurla şanslıydı: Arka lastik üç turda bitti - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-sprintta-yagmurla-sansliydi-arka-lastik-uc-turda-bitti/123526
+Story-Key: motogp:123697
+Titel: Marc Marquez Katar’da şampiyon olmak için ne yapmalı? - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-katarda-sampiyon-olmak-icin-ne-yapmali/123697
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-4-bagnaia-sprintta-yag-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358819_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-4-marc-marquez-katarda-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1358884_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Bagnaia sagte, der Regen zum Start habe ihn Glück gebracht, da der Verschleiß des Ducati-Hinterreifens extrem schlecht sei. Er ist zweimaliger Weltmeister und hatte sich basierend auf Sepang ein stärkeres Wochenende erwartet, wurde nach Q1 aber nur Zehnter auf dem Grid. Im 10-Runden-Sprint fehlte ihm am Ende 8,3 Sekunden zum Sieger.
+Marc Marquez hat den Maleysia GP gewonnen und könnte mit diesem Erfolg bei der folgenden Veranstaltung in Katar erstmals die Titelentscheidung feiern.
 
-Wie bewertet ihr Bagnaias Aussage, dass der Regen beim Reifenverschleiß Glück gebracht habe?
+Der Ducati-Werksfahrer steht damit vor der Möglichkeit, seinen achten Premier-Class-Weltmeistertitel zu holen.
 
-#MotoGP #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Nachdem er den Sprint in Australien gewonnen hatte und sich Hauptrivale Jorge Martin bei Phillip Island verletzt hatte und in Sepang ausgefallen war, beträgt der Vorsprung mittlerweile 19 Punkte.
+
+Wie schätzt ihr die Lage für das Finale in Katar ein?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -124,22 +130,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.4
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123535
-Titel: Marc Marquez sprintta neden risk almadı: “Asla yarışa liderlik etme” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-sprintta-neden-risk-almadi-asla-yarisa-liderlik-etme/123535
+Story-Key: motogp:123670
+Titel: VR46 yöneticisi Nieto, Di Giannantonio’nun Sepang sorununu açıkladı: Düzlüklerde saatte 7-8 km kaybediyoruz - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannantonionun-sepang-sorununu-acikladi-duzluklerde-saatte-7-8-km-kaybediyoruz/123670
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-10/2026-10-31-racing-editorial-2026-10-31-5-marc-marquez-sprintt-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358863_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoeneticisi-nie-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1358917_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat bei seinem Sprint in Sepang auf Risk alles gesetzt – und zwar auf keins. Der Grund: Sein nächster Verfolger im Titelkampf, Jorge Martín, musste wegen einer beim letzten Rennen in Australien gebrochenen Hand das Weekend meiden. Marquez wusste, dass er Martins Punkte nicht mehr gefährden kann, und fuhr den Sprint ganz im Management-Modus. Mit der Strategie ging er nicht nur seinem 25. Sprint-Sieg sicher aus dem Weg – auch seinen Schritt Richtung neuem Zehnten Weltmeistertitel hat er damit fest im Griff. 🏁
+Nach Platz fünf im Sepang-Sprint sprach Fabio Di Giannantonio davon, dass noch etwas das volle Potenzial seiner VR46 ausbremst. Teammanager Pablo Nieto hat die Ursache jetzt bestätigt: Auf den Geraden fehlen Di Giannantonio 7 bis 8 km/h an Topspeed.
 
-Wie schätzt ihr ein, ob es eine gute Idee war, im Sprint auf Risiko zu verzichten?
+Wie schätzt ihr das Topspeed-Problem bei Di Giannantonio ein?
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #FabioDiGiannantonio #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

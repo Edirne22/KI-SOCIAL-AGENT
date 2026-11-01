@@ -3906,3 +3906,33 @@ Story-Key: motogp:123535
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-01 14:38 UTC | Motorcycle Racing | PASS
+Titel: Moto2 Malezya GP: Alonso Kazandı, Deniz Öncü Yarış Dışı
+Story-Key: title:moto2-malezya-gp-alonso-kazand-deniz-nc-yar-d
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-01 14:38 UTC | Motorcycle Racing | PASS
+Titel: Masterclass: Marc Marquez marches to Malaysia victory to earn 2026 match point
+Story-Key: motogp:1179524
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-01 14:38 UTC | Motorcycle Racing | PASS
+Titel: Alex Marquez düşüşünü anlattı: Yağmur yüzünden değil, kalbimle yarıştım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123581
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-01 14:39 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez Katar’da şampiyon olmak için ne yapmalı? - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123697
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-01 14:39 UTC | Motorcycle Racing | PASS
+Titel: VR46 yöneticisi Nieto, Di Giannantonio’nun Sepang sorununu açıkladı: Düzlüklerde saatte 7-8 km kaybediyoruz - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123670
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
