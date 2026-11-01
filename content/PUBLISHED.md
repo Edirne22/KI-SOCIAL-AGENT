@@ -1125,6 +1125,7 @@ Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoenet
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-01-daily
 Telegram-Update-ID: 279362014
