@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-10-31 21:05
+Stand: 2026-11-01 21:45
 Gesamtstatus: **KRITISCH**
-- OK: 17
-- Warnungen: 2
+- OK: 16
+- Warnungen: 3
 - Kritisch: 1
 
 ## Prüfergebnisse
@@ -17,7 +17,7 @@ Gesamtstatus: **KRITISCH**
 - ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
 - ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
 - ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
-- ✅ **Datenalter**: 30 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-10-30 10:59 UTC).
+- ⚠️ **Datenalter**: 1 Quelle(n) sind älter als 7 Tage.
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
 - ✅ **Secret-Prüfung**: Keine typischen Zugangsschlüssel in Projektdateien erkannt.
