@@ -1170,9 +1170,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg
 Publish-Provenienz: {"creation_id": "18014388257971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18348514879268775", "published_media_id": "18348514879268775", "source_url": "https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-indi-deniz-yaris-disi", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 41354906634-1
+## Facebook [GEPOSTET 2026-11-01 22:01 | ID: 122130177747469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-01-daily
 Telegram-Update-ID: 279362016
@@ -1193,3 +1192,4 @@ Wie schätzt ihr die Situation zwischen Gonzalez und Guevara bei nur noch 3,5 Pu
 Quelle: https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-indi-deniz-yaris-disi
 Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg", "media_status": "", "object_id": "122130177747469415", "object_type": "bild", "platform": "facebook", "post_id": "122130177747469415", "source_url": "https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-indi-deniz-yaris-disi", "version": 1}
