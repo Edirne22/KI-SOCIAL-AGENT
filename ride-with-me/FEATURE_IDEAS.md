@@ -520,3 +520,12 @@ Motorradfahrer und Reisebegeisterte haben spezifische Anforderungen an Planungs-
 
 # Ride With Me Analyse vom 2026-10-26 10:56:56
 User Safety: safe
+
+
+# Ride With Me Analyse vom 2026-11-02 13:21:15
+## 1. App-Zusammenfassung (Ride With Me)
+
+Die folgenden Angaben basieren ausschließlich auf den öffentlich zugänglichen Informationen der Website (`ridewithme.app`) und dem offiziellen Play-Store-Eintrag.
+
+**Belegte Kernfunktionen:**
+* **GPS-Tracking:** Aufzeichnen gefahrener Routen mit Erfassung von Streckendaten wie Dist

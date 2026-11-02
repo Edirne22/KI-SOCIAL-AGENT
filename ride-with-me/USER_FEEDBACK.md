@@ -520,3 +520,12 @@ Motorradfahrer und Reisebegeisterte haben spezifische Anforderungen an Planungs-
 
 ## Automatische Analyse
 User Safety: safe
+
+
+## Automatische Analyse
+## 1. App-Zusammenfassung (Ride With Me)
+
+Die folgenden Angaben basieren ausschließlich auf den öffentlich zugänglichen Informationen der Website (`ridewithme.app`) und dem offiziellen Play-Store-Eintrag.
+
+**Belegte Kernfunktionen:**
+* **GPS-Tracking:** Aufzeichnen gefahrener Routen mit Erfassung von Streckendaten wie Dist
