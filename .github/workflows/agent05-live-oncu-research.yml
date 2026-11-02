@@ -1,0 +1,38 @@
+name: Agent05 Live Oncu Research
+on:
+  pull_request:
+    paths:
+      - 'scripts/openmontage_agent05_oncu_live.py'
+      - 'tests/test_openmontage_agent05_oncu_live.py'
+      - '.github/workflows/agent05-live-oncu-research.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  agent05:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests
+      - name: Run agent05 regression
+        run: python -m unittest -v tests.test_openmontage_agent05_oncu_live
+      - name: Agent05 public news RSS discovery and NVIDIA analysis
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: python scripts/openmontage_agent05_oncu_live.py
+      - name: Michelin Power GP V1 research dry run (no video)
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          AGENT05_DRY_RUN_TOPIC: "Michelin Power GP first generation 2020 motorcycle tire original model not GP2 official specifications tire technology grip wet dry pressure road track"
+        run: python scripts/openmontage_agent05_oncu_live.py
+      - name: Preserve research report even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent05-oncu-live-research
+          path: agent05-oncu-report.json
+          retention-days: 7

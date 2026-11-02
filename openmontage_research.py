@@ -154,9 +154,10 @@ def build_research(prompt: str, mock_items: Optional[List[Dict[str, Any]]] = Non
         unconfirmed_statements = []
 
         if status == "official":
-            confirmed_facts.append(title)
+            # Official publisher identity is not proof that article claims were read and checked.
+            unconfirmed_statements.append(title)
             if summary and summary != title:
-                confirmed_facts.append(summary)
+                unconfirmed_statements.append(summary)
         elif status == "rumor":
             unconfirmed_statements.append(title)
             if summary and summary != title:
