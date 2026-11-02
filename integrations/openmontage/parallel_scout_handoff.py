@@ -33,7 +33,9 @@ def collect_parallel_research(*, agent05, youtube, instagram, timeout=15, limit=
     """
     if not 1 <= timeout <= 60 or not 1 <= limit <= 50:
         raise ValueError("Invalid discovery bounds")
-    with ThreadPoolExecutor(max_workers=3) as pool:
+
+    pool = ThreadPoolExecutor(max_workers=3)
+    try:
         jobs = {"agent05": pool.submit(agent05),
                 "youtube": pool.submit(youtube),
                 "instagram": pool.submit(instagram)}
@@ -43,6 +45,9 @@ def collect_parallel_research(*, agent05, youtube, instagram, timeout=15, limit=
                 output[lane] = _clean(future.result(timeout=timeout), lane, limit)
             except Exception:
                 output[lane] = []
+    finally:
+        pool.shutdown(wait=False, cancel_futures=True)
+
     return {"agent05": output["agent05"], "supplemental": (
         output["youtube"] + output["instagram"]),
         "scout_status": {lane: bool(output[lane]) for lane in jobs}}

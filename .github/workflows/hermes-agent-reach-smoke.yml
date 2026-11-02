@@ -1,0 +1,105 @@
+name: Hermes Agent Reach Runtime Smoke
+# Full rerun with bounded Nemotron context and 120-second per-request timeout.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/hermes-coordination-contract
+    paths:
+      - '.github/workflows/hermes-agent-reach-smoke.yml'
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Hermes using official installer
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://hermes-agent.nousresearch.com/install.sh -o /tmp/hermes-install.sh
+          CI=1 bash /tmp/hermes-install.sh --non-interactive --skip-browser --skip-computer-use --verbose
+          export PATH="$HOME/.local/bin:$PATH"
+          command -v hermes
+          hermes --version
+      - name: Execute and verify actual Hermes task
+        shell: bash
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.local/bin:$PATH"
+          if [ -z "$NVIDIA_API_KEY" ]; then
+            echo "::error::NVIDIA_API_KEY is unavailable; Hermes needs the existing NVIDIA provider."
+            exit 1
+          fi
+          # Use the existing NVIDIA route explicitly; never fall back to a paid provider.
+          mkdir -p "$RUNNER_TEMP/hermes-smoke"
+          cd "$RUNNER_TEMP/hermes-smoke"
+          timeout 120s hermes chat --provider nvidia \
+            --model nvidia/nemotron-3.5-lightning-30b-a3b --max-turns 2 --quiet \
+            -q 'Calculate 19 + 23. Reply with exactly HERMES_RESULT=42 and nothing else.' \
+            | tee "$RUNNER_TEMP/hermes-result.txt"
+          grep -Fxq 'HERMES_RESULT=42' "$RUNNER_TEMP/hermes-result.txt"
+          echo "Hermes real task: PASS"
+  agent-reach:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Agent Reach using upstream instructions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m venv /tmp/agent-reach-venv
+          /tmp/agent-reach-venv/bin/python -m pip install --disable-pip-version-check 'https://github.com/Panniantong/agent-reach/archive/main.zip'
+          /tmp/agent-reach-venv/bin/agent-reach --help
+          /tmp/agent-reach-venv/bin/agent-reach install --env=auto --safe
+          /tmp/agent-reach-venv/bin/agent-reach doctor
+      - name: Verify real internet retrieval through Agent Reach web backend
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Upstream Agent Reach documents direct curl + Jina Reader for its Web channel.
+          curl --fail --show-error --silent --location --max-time 60 \
+            'https://r.jina.ai/https://example.com' -o "$RUNNER_TEMP/agent-reach-web.txt"
+          grep -Fq 'Example Domain' "$RUNNER_TEMP/agent-reach-web.txt"
+          grep -Fq 'https://example.com' "$RUNNER_TEMP/agent-reach-web.txt"
+          echo "Agent Reach Web/Jina real retrieval: PASS"
+      - name: Execute real research handoff and report exact stage
+        shell: bash
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          set -euo pipefail
+          PYTHONPATH="$GITHUB_WORKSPACE" /tmp/agent-reach-venv/bin/python - <<'PY'
+          from integrations.openmontage.hermes_live_workers import run
+          result = run('Toprak Razgatlioglu MotoGP October 2026 latest verified news')
+          for item in result.get('history', []):
+              print('STAGE:', item['role'], item['verdict'], item.get('reason',''), flush=True)
+          print('DISCOVERY_ERRORS:', result.get('research_discovery', {}).get('errors', []), flush=True)
+          print('FINAL_STATUS:', result.get('status'), flush=True)
+          if result.get('status') != 'RESEARCH_READY':
+              raise SystemExit('Real research handoff blocked')
+          PY
+      - name: Execute isolated Toprak source discovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/hermes_toprak_dryrun.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hermes-toprak-research
+          path: artifacts/hermes-toprak-research.json
+          retention-days: 3
+      - name: Verify coordinator contracts
+        run: python -m unittest -v tests.test_hermes_coordinator
