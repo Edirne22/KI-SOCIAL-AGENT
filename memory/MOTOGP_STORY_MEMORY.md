@@ -1499,3 +1499,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-katarda-sampiyon-olm
 Story-Key: motogp:123670
 Titel: VR46 yöneticisi Nieto, Di Giannantonio’nun Sepang sorununu açıkladı: Düzlüklerde saatte 7-8 km kaybediyoruz - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannantonionun-sepang-sorununu-acikladi-duzluklerde-saatte-7-8-km-kaybediyoruz/123670
+
+## 2026-11-02 16:50 UTC – ANGEBOTEN
+Story-Key: motogp:123796
+Titel: Toprak Razgatlıoğlu ameliyat yarasını paylaştı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-yarasini-paylasti/123796
+
+## 2026-11-02 16:50 UTC – ANGEBOTEN
+Story-Key: motogp:123902
+Titel: Bagnaia’dan esrarengiz Ducati açıklaması: “Artık o şey yok” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bagnaiadan-esrarengiz-ducati-aciklamasi-artik-o-sey-yok/123902
+
+## 2026-11-02 16:50 UTC – ANGEBOTEN
+Story-Key: motogp:123975
+Titel: Aprilia patronu Rivola, Marquez’e yanıt verdi: “Onlar evde takım oyunu oynuyor” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-patronu-rivola-marqueze-yanit-verdi-onlar-evde-takim-oyunu-oynuyor/123975
+
+## 2026-11-02 16:50 UTC – ANGEBOTEN
+Story-Key: motogp:123918
+Titel: Mir’in dönüşü baş dönmesiyle yarım kaldı: Sepang’da yarıştan çekildi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/mirin-donusu-bas-donmesiyle-yarim-kaldi-sepangda-yaristan-cekildi/123918
+
+## 2026-11-02 16:50 UTC – ANGEBOTEN
+Story-Key: motogp:123573
+Titel: Mir: Marc Marquez’in rakipleri onun baskısına dayanamıyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/mir-marc-marquezin-rakipleri-onun-baskisina-dayanamiyor/123573

@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793541840
+Session-Timestamp: 1793638256
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,24 +18,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
+Artikelalter-Tage: 0.9
 Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: title:moto2-malezya-gp-alonso-kazand-deniz-nc-yar-d
-Titel: Moto2 Malezya GP: Alonso Kazandı, Deniz Öncü Yarış Dışı
-Quelle: https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-indi-deniz-yaris-disi
+Serie: MotoGP
+Story-Key: motogp:123796
+Titel: Toprak Razgatlıoğlu ameliyat yarasını paylaştı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-yarasini-paylasti/123796
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/01/david-alonso-1-1.webp
+Instagram-Bild: assets/images/2026-11/2026-11-02-racing-editorial-2026-11-02-1-toprak-razgatlioglu-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/toprak-razgatlioglu-omuz-ameliyat-izi.jpg
 Plattformen: Instagram + Facebook
 Text:
-Deniz Öncü stürzte in der dritten Runde und schied beim Malaysia GP aus.
+Toprak Razgatlıoğlu hat sein neues Foto geteilt – und zeigt dabei die OP-Wunde an seiner rechten Schulter. Der Schnitt zieht sich vom Schulterbereich zum Schlüsselbein, die Stiche sind noch zu sehen. Der Pramac-Yamaha-Pilot hatte sich das beim MotoGP-Debüt in Mandalika beim Sprint-Zweiter-Free-Practice-Sturz zugezogenen ausgekugelt, ist aber trotzdem durch die Quali und den Sprint gegangen – mit Platz 19.
 
-David Alonso hat das Moto2-Rennen in Malaysia für sich entschieden. Gleichzeitig ist der Abstand zwischen Gonzalez und Guevara auf 3,5 Punkte geschrumpft.
+Wie seht ihr die Entscheidung, gleich nach der Verletzung weiterzumachen?
 
-Wie schätzt ihr die Situation zwischen Gonzalez und Guevara bei nur noch 3,5 Punkten Abstand ein?
-
-#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -43,25 +41,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.6
+Artikelalter-Tage: 0.5
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1179524
-Titel: Masterclass: Marc Marquez marches to Malaysia victory to earn 2026 match point
-Quelle: https://www.motogp.com/en/news/2026/11/01/masterclass-marc-marquez-marches-to-malaysia-victory-to-earn-2026-match-point/1179524
+Story-Key: motogp:123902
+Titel: Bagnaia’dan esrarengiz Ducati açıklaması: “Artık o şey yok” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bagnaiadan-esrarengiz-ducati-aciklamasi-artik-o-sey-yok/123902
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-2-masterclass-marc-mar-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/01/e9d2a2f1-1829-4699-821b-12cc56ed2c92/Report-MGP-GP-MAL-TOP.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-02-racing-editorial-2026-11-02-2-bagnaiadan-esrarengi-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1359631_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez (#93) hat in Malaysia klar gemacht – ohne Martin geht er mit einem Riesenschritt Richtung Titel. Auf dem Podium komplettieren Acosta und Alex Marquez das Sepang-Dreigestirn 🏍️🏁
+Rätsel um Pecco Bagnaia nach einem schwierigen Rennen in Sepang.
 
-Wer schafft den Titel in der aktuellen Lage?
+Der Ducati-Pilot kam in Malaysia nur auf dem 13. Platz ins Ziel, mit 32,9 Sekunden Rückstand auf seinen siegreichen Teamkollegen Marc Marquez. Die letzte Runde absolvierte Bagnaia sogar langsamer als die Moto2-Klasse. Im Vorjahr stand er in Sepang noch auf der Pole-Position und gewann den Sprint. Nach dem Rennwochenende machte Bagnaia eine rätselhafte Aussage zu seiner Ducati.
 
-#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die aktuelle Situation bei Bagnaia und Ducati ein?
+
+#MotoGP #MarcMarquez #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -69,27 +69,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 2
 QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
+Artikelalter-Tage: 0.0
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123581
-Titel: Alex Marquez düşüşünü anlattı: Yağmur yüzünden değil, kalbimle yarıştım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquez-dususunu-anlatti-yagmur-yuzunden-degil-kalbimle-yaristim/123581
+Story-Key: motogp:123975
+Titel: Aprilia patronu Rivola, Marquez’e yanıt verdi: “Onlar evde takım oyunu oynuyor” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/aprilia-patronu-rivola-marqueze-yanit-verdi-onlar-evde-takim-oyunu-oynuyor/123975
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-3-alex-marquez-duesues-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358822_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-02-racing-editorial-2026-11-02-3-aprilia-patronu-rivo-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1359678_hires_0.jpg
 Plattformen: Instagram + Facebook
 Text:
-Yağmur yüzünden değil, kalbimle yarıştım
+Aprilia-CEO Massimo Rivola reagierte auf Aussagen von Marc Marquez zum Thema Stallorder und warf Marquez sowie Ducati vor, ein eigenes Teamspiel zu spielen.
 
-Alex Marquez musste im MotoGP-Sprint in Sepang früh absteigen. Er führte nach dem Pole-Start vor Ai Ogura, ehe er in der zweiten Runde über Kurve 13 legte. Regen fiel zwar, doch der Grund für den Sturz war laut Marquez nicht die Nässe – er gab zu, mit vollem Herzen gefahren zu sein.
+Auf dem Weg zum angestrebten ersten MotoGP-Titel sieht sich Aprilia seit Wochen mit Fragen zu Stallordern konfrontiert.
 
-Was haltet ihr davon, dass Marquez mit vollem Herzen fuhr, statt aufs Risiko zu achten?
+Die Diskussion wurde erneut entfacht, nachdem Marco Bezzecchi im Sprint kurz vor Schluss Ai Ogura überholte und sich den dritten Platz sicherte.
 
-#MotoGP #AlexMarquez #AiOgura #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr die Diskussion rund um die Stallorder?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -97,29 +99,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 2
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 0.4
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123697
-Titel: Marc Marquez Katar’da şampiyon olmak için ne yapmalı? - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-katarda-sampiyon-olmak-icin-ne-yapmali/123697
+Story-Key: motogp:123918
+Titel: Mir’in dönüşü baş dönmesiyle yarım kaldı: Sepang’da yarıştan çekildi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/mirin-donusu-bas-donmesiyle-yarim-kaldi-sepangda-yaristan-cekildi/123918
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-4-marc-marquez-katarda-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1358884_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-02-racing-editorial-2026-11-02-4-mirin-doenuesue-bas-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1358687_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat den Maleysia GP gewonnen und könnte mit diesem Erfolg bei der folgenden Veranstaltung in Katar erstmals die Titelentscheidung feiern.
+Joan Mir ist am Freitag direkt an die zweite Reihe gegangen, doch beim Sepang-Rennen hat ihn das gleiche Problem ereilt: Immer wieder ist das Vorderrad weggerutscht, er musste das Rennen frühzeitig abkürzen. Als Honda-HRC-Fahrer hatte er wegen Erschöpfung Sehprobleme und vier Rennen verpasst, sich dann aber schnell wieder an die alte Pace herangekämpft.
 
-Der Ducati-Werksfahrer steht damit vor der Möglichkeit, seinen achten Premier-Class-Weltmeistertitel zu holen.
+Wie beurteilt ihr Joan Mirs Rückkehr nach der Pause und das frühe Ausscheiden in Sepang?
 
-Nachdem er den Sprint in Australien gewonnen hatte und sich Hauptrivale Jorge Martin bei Phillip Island verletzt hatte und in Sepang ausgefallen war, beträgt der Vorsprung mittlerweile 19 Punkte.
-
-Wie schätzt ihr die Lage für das Finale in Katar ein?
-
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #JoanMir #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -128,24 +126,24 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.4
+Artikelalter-Tage: 2.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:123670
-Titel: VR46 yöneticisi Nieto, Di Giannantonio’nun Sepang sorununu açıkladı: Düzlüklerde saatte 7-8 km kaybediyoruz - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/vr46-yoneticisi-nieto-di-giannantonionun-sepang-sorununu-acikladi-duzluklerde-saatte-7-8-km-kaybediyoruz/123670
+Story-Key: motogp:123573
+Titel: Mir: Marc Marquez’in rakipleri onun baskısına dayanamıyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/mir-marc-marquezin-rakipleri-onun-baskisina-dayanamiyor/123573
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-5-vr46-yoeneticisi-nie-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1358917_hires_1600x900.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-02-racing-editorial-2026-11-02-5-mir-marc-marquezin-r-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358838_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Nach Platz fünf im Sepang-Sprint sprach Fabio Di Giannantonio davon, dass noch etwas das volle Potenzial seiner VR46 ausbremst. Teammanager Pablo Nieto hat die Ursache jetzt bestätigt: Auf den Geraden fehlen Di Giannantonio 7 bis 8 km/h an Topspeed.
+Joan Mir hat Marc Marquez' aktuelle Dominanz analysiert – und dabei genau hingeschaut. Der 2020er Champion sagt: Die Konkurrenz hält dem Druck von Marquez nicht stand. Dummerweise für die Anderen: Mir hat recht. Nach dem Italien-GP im Frühjahr lag Marquez über 100 Punkte zurück – heute sieht die Tabelle ganz anders aus. Der spanische Pilot jagt seinen zehnten WM-Titel, achtein Mal in der MotoGP. Und am Wochenende in Malaysia zeigte er wieder, wovon er spricht: Platz zwei im Sprint, vier Punkte Vorsprung auf Marco Bezzecchi direkt hinter sich.
 
-Wie schätzt ihr das Topspeed-Problem bei Di Giannantonio ein?
+Wie sieht ihr die Lage – ist Marquez schon nicht mehr zu halten oder gibt es noch eine Chance für die Verfolger?
 
-#MotoGP #FabioDiGiannantonio #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

@@ -3936,3 +3936,39 @@ Story-Key: motogp:123670
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-02 17:27 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu ameliyat yarasını paylaştı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123796
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-02 17:27 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia’dan esrarengiz Ducati açıklaması: “Artık o şey yok” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123902
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-02 17:27 UTC | Motorcycle Racing | PASS
+Titel: Aprilia patronu Rivola, Marquez’e yanıt verdi: “Onlar evde takım oyunu oynuyor” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123975
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-02 17:28 UTC | Motorcycle Racing | PASS
+Titel: Mir’in dönüşü baş dönmesiyle yarım kaldı: Sepang’da yarıştan çekildi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123918
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-02 17:28 UTC | Motorcycle Racing | FAIL
+Titel: Mir: Marc Marquez’in rakipleri onun baskısına dayanamıyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123573
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-02 17:28 UTC | Motorcycle Racing | PASS
+Titel: Mir: Marc Marquez’in rakipleri onun baskısına dayanamıyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123573
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

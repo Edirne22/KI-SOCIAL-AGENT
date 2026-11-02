@@ -1,34 +1,9 @@
 {
   "version": 1,
-  "created_at": 1793541840,
+  "created_at": 1793638256,
   "max_days": 7,
   "window_used_days": 7,
-  "count": 2,
-  "visible_count": 2,
-  "items": [
-    {
-      "n": 1,
-      "title": "Deniz Öncü, Dünya Moto2 Şampiyonası'nın Malezya ayağını tamamlayamadı",
-      "url": "https://www.aa.com.tr/tr/spor/deniz-oncu-dunya-moto2-sampiyonasinin-malezya-ayagini-tamamlayamadi/4107743",
-      "summary": "Milli motosikletçi Deniz Öncü, Dünya Moto2 Şampiyonası'nın Malezya ayağında kaza yaparak yarış dışı kaldı. | Anadolu Ajansı",
-      "preview": "https://web-cdnprod.aa.com.tr/uploads/Contents/2026/11/01/thumbs_b_c_b9794281f248a0e3fc2237f23aca8593.jpg",
-      "published_at": "2026-11-01T10:00:46.163",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    },
-    {
-      "n": 2,
-      "title": "Moto2 Malezya yarış: David Alonso kazandı, Deniz öncü kaza yüzünden yarış dışı",
-      "url": "https://tr.motorsport.com/moto2/news/moto2-malezya-yaris-david-alonso-kazandi-guevara-sampiyonluk-yarisinda-gonzaleze-yaklasti/10870460",
-      "summary": "Moto2 Dünya Şampiyonası’nın Malezya ayağında yarışı David Alonso kazandı. Aspar takım arkadaşı Daniel Holgado ikinci sırada finiş görürken, Angel Piqueras podyumun son basamağını tamamladı.",
-      "preview": "https://cdn-2.motorsport.com/images/amp/YMXb5kn2/s6/david-alonso.jpg",
-      "published_at": "2026-11-01T06:45:27Z",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    }
-  ]
+  "count": 0,
+  "visible_count": 0,
+  "items": []
 }
