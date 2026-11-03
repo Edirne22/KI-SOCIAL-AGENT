@@ -39,7 +39,7 @@ def run():
   now=datetime(2026,9,28,tzinfo=timezone.utc)
   assert agency.cheap_prefilter_reason('Formula 1 paddock update','https://example.test/f1',now)=='unsupported-discipline'
   assert agency.cheap_prefilter_reason('MotoGP rider meets F1 driver','https://example.test/motogp-f1',now)==''
-  assert agency.cheap_prefilter_reason('Old MotoGP report','https://example.test/2026/09/01/old',now)=='old-url-date'
+  assert agency.cheap_prefilter_reason('Old MotoGP report','https://example.test/2026/08/01/old',now)=='old-url-date'
   assert agency.cheap_prefilter_reason('Fresh MotoGP report','https://example.test/2026/09/28/new',now)==''
 
   cfg=get_task_config('racing_semantic_qm')
