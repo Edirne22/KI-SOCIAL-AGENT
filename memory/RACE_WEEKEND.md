@@ -1,5 +1,5 @@
 # Nächstes Rennwochenende
-Geprüft: 2026-10-28 11:59
+Geprüft: 2026-11-03 13:51
 
 > Zeiten bitte vor Veröffentlichung an der Originalquelle prüfen.
 
@@ -16,7 +16,7 @@ Geprüft: 2026-10-28 11:59
 - Öffentliche Quellen erreichbar: 2
 
 Bestätigt: MotoGP
-Details: Sepang International Circuit · Malaysia
-2026-10-30 bis 2026-11-01
+Details: Lusail International Circuit · Katar
+2026-11-06 bis 2026-11-08
 Quelle: https://www.motogp.com/en/calendar
 Poster-Entwürfe: 3

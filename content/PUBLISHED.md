@@ -979,3 +979,39 @@ KTM hat in Lusail gezeigt, dass es auch nachts bei extremen Temperaturen mithäl
 #RacingCalendar #BikeOfTheWeekend #KTM #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 Medienstatus: HERSTELLER_PREVIEW
 Bild: assets/images/2026-11/2026-11-06-bike-ktm-1290-super-duke-r.jpg
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: 2026-W44-MotoGP
+Titel: 🏁 MotoGP – Rennwochenende
+Text: Lusail International Circuit · Katar
+2026-11-06 bis 2026-11-08
+Quelle: https://www.motogp.com/en/calendar
+Quelle: https://www.motogp.com/en/calendar
+Medienstatus: EIGENES_MATERIAL
+Bild: assets/race-posters/2026-W45-motogp-feed.jpg
+
+## Story
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: 2026-W44-MotoGP
+Titel: 🏁 MotoGP – Rennwochenende
+Text: Lusail International Circuit · Katar
+2026-11-06 bis 2026-11-08
+Quelle: https://www.motogp.com/en/calendar
+Quelle: https://www.motogp.com/en/calendar
+Medienstatus: EIGENES_MATERIAL
+Bild: assets/race-posters/2026-W45-motogp-story.jpg
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: 2026-W44-MotoGP
+Titel: 🏁 MotoGP – Rennwochenende
+Text: Lusail International Circuit · Katar
+2026-11-06 bis 2026-11-08
+Quelle: https://www.motogp.com/en/calendar
+Quelle: https://www.motogp.com/en/calendar
+Medienstatus: EIGENES_MATERIAL
+Bild: assets/race-posters/2026-W45-motogp-facebook.jpg

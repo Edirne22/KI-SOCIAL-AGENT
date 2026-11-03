@@ -20,4 +20,7 @@
 ## 2026-10-28 11:59 – MotoGP
 - Nur abstrakte Inspiration, kein Fremdmaterial.
 - Brief: Dunkler ruhiger Hintergrund, ein klarer Akzentstreifen, große Serienbezeichnung, viel freier Raum und gut lesbare Kalenderdaten. Keine Logos, keine Fahrerbilder.
+## 2026-11-03 13:51 – MotoGP
+- Nur abstrakte Inspiration, kein Fremdmaterial.
+- Brief: Dunkler ruhiger Hintergrund, ein klarer Akzentstreifen, große Serienbezeichnung, viel freier Raum und gut lesbare Kalenderdaten. Keine Logos, keine Fahrerbilder.
 
