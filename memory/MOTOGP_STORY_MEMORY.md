@@ -1524,3 +1524,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/mirin-donusu-bas-donmesiyle-yarim
 Story-Key: motogp:123573
 Titel: Mir: Marc Marquez’in rakipleri onun baskısına dayanamıyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/mir-marc-marquezin-rakipleri-onun-baskisina-dayanamiyor/123573
+
+## 2026-11-03 14:55 UTC – ANGEBOTEN
+Story-Key: motogp:124051
+Titel: Raul Fernandez, Katar’da parmak sakatlığıyla dönmeyi deneyecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-katarda-parmak-sakatligiyla-donmeyi-deneyecek/124051
+
+## 2026-11-03 14:55 UTC – ANGEBOTEN
+Story-Key: motogp:1183579
+Titel: Lecuona lands in the points at Sepang in MotoGP replacement duty weekend
+Quelle: https://www.worldsbk.com/en/news/2026/11/02/lecuona-lands-in-the-points-at-sepang-in-motogp-replacement-duty-weekend/1183579
+
+## 2026-11-03 14:55 UTC – ANGEBOTEN
+Story-Key: title:pedro-acosta-ogura-n-n-bu-kadar-h-zl-olmas-n-beklemiyordum
+Titel: Pedro Acosta: “Ogura’nın Bu Kadar Hızlı Olmasını Beklemiyordum”
+Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
+
+## 2026-11-03 14:55 UTC – ANGEBOTEN
+Story-Key: motogp:123583
+Titel: Bastianini sprinti “felaket” olarak niteledi: İlk turdan itibaren tutuşum yoktu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bastianini-sprinti-felaket-olarak-niteledi-ilk-turdan-itibaren-tutusum-yoktu/123583
+
+## 2026-11-03 14:55 UTC – ANGEBOTEN
+Story-Key: motogp:123556
+Titel: Viñales Sepang sprintinde aslında durmayı planlıyordu: Islak motosikleti görünce fikrimi değiştirdim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/vinales-sepang-sprintinde-aslinda-durmayi-planliyordu-islak-motosikleti-gorunce-fikrimi-degistirdim/123556

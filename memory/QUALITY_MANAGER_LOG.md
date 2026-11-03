@@ -3972,3 +3972,33 @@ Story-Key: motogp:123573
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-03 15:32 UTC | Motorcycle Racing | PASS
+Titel: Raul Fernandez, Katar’da parmak sakatlığıyla dönmeyi deneyecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124051
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-03 15:32 UTC | Motorcycle Racing | PASS
+Titel: Lecuona lands in the points at Sepang in MotoGP replacement duty weekend
+Story-Key: motogp:1183579
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-03 15:33 UTC | Motorcycle Racing | PASS
+Titel: Pedro Acosta: “Ogura’nın Bu Kadar Hızlı Olmasını Beklemiyordum”
+Story-Key: title:pedro-acosta-ogura-n-n-bu-kadar-h-zl-olmas-n-beklemiyordum
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-03 15:33 UTC | Motorcycle Racing | PASS
+Titel: Bastianini sprinti “felaket” olarak niteledi: İlk turdan itibaren tutuşum yoktu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123583
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-03 15:33 UTC | Motorcycle Racing | PASS
+Titel: Viñales Sepang sprintinde aslında durmayı planlıyordu: Islak motosikleti görünce fikrimi değiştirdim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:123556
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
