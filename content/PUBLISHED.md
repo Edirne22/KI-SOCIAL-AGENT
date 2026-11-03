@@ -1037,9 +1037,8 @@ Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-b
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 41711129561-1
+## Facebook [GEPOSTET 2026-11-03 20:22 | ID: 122130780357469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-03-daily
 Telegram-Update-ID: 279362019
@@ -1058,3 +1057,4 @@ Wie steht ihr zu Acostas Einschätzung zum Reifenmanagement im Hauptrennen?
 Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
 Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg", "media_status": "", "object_id": "122130780357469415", "object_type": "bild", "platform": "facebook", "post_id": "122130780357469415", "source_url": "https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum", "version": 1}
