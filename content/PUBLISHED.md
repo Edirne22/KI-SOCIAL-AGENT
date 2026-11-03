@@ -1016,8 +1016,8 @@ Quelle: https://www.motogp.com/en/calendar
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W45-motogp-facebook.jpg
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-11-03 23:41 | ID: 18647436874047927]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-03-daily
 Telegram-Update-ID: 279362019
@@ -1036,6 +1036,7 @@ Wie steht ihr zu Acostas Einschätzung zum Reifenmanagement im Hauptrennen?
 Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg
+Publish-Provenienz: {"creation_id": "18014667575971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18647436874047927", "published_media_id": "18647436874047927", "source_url": "https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum", "version": 1}
 
 ## Facebook [GEPOSTET 2026-11-03 20:22 | ID: 122130780357469415]
 Status: GEPOSTET
