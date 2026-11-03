@@ -955,3 +955,27 @@ Quelle: https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-i
 Bild: assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-01-racing-editorial-2026-11-01-1-moto2-malezya-gp-alo-01.jpg", "media_status": "", "object_id": "122130177747469415", "object_type": "bild", "platform": "facebook", "post_id": "122130177747469415", "source_url": "https://motoetkinlik.com/moto2-malezya-gp-alonso-kazandi-fark-35-puana-indi-deniz-yaris-disi", "version": 1}
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-11-06
+Titel: 🏍️ Bike of the Race Weekend: KTM 1290 Super Duke R
+Text:
+KTM hat in Lusail gezeigt, dass es auch nachts bei extremen Temperaturen mithält – Brad Binders Siege dort sind kein Zufall, sondern Ergebnis harter Arbeit im Sand. Die Community feiert diese Hartnäckigkeit, weil sie authentisch ist und nicht aus glatten Werbeversprechen besteht.
+
+#RacingCalendar #BikeOfTheWeekend #KTM #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-11/2026-11-06-bike-ktm-1290-super-duke-r.jpg
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-11-06
+Titel: 🏍️ Bike of the Race Weekend: KTM 1290 Super Duke R
+Text:
+KTM hat in Lusail gezeigt, dass es auch nachts bei extremen Temperaturen mithält – Brad Binders Siege dort sind kein Zufall, sondern Ergebnis harter Arbeit im Sand. Die Community feiert diese Hartnäckigkeit, weil sie authentisch ist und nicht aus glatten Werbeversprechen besteht.
+
+#RacingCalendar #BikeOfTheWeekend #KTM #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-11/2026-11-06-bike-ktm-1290-super-duke-r.jpg

@@ -1,38 +1,27 @@
 {
-  "updated_at": "2026-10-27T12:48+01:00",
+  "updated_at": "2026-11-03T14:50+01:00",
   "events": [
-    {
-      "date_start": "2026-10-30",
-      "date_end": "2026-11-01",
-      "series": "MotoGP",
-      "track": "Sepang International Circuit · Malaysia",
-      "sessions": [],
-      "source": "https://www.motogp.com/en/calendar",
-      "crosscheck_sources": [
-        "https://motoetkinlik.com/motogp-yaris-takvimi/"
-      ],
-      "source_excerpt": "MALAYSIA 30 Oct - 1 Nov 2026",
-      "bike_of_weekend": {
-        "brand": "Honda",
-        "model": "CBR1000RR-R Fireblade SP",
-        "category": "Rennsport oder Straße",
-        "story": "Honda genießt in Malaysia die größte Fangemeinde — der Sepang Circuit ist so etwas wie ein zweites Zuhause für RC213V-Fahrer wie Marc Márquez und Pol Espargaró. Nach den Höhen und Tiefen der letzten Jahre kommt die Marke mit einer stärkeren Basis zurück, und das schafft einen echten Community-Momend, bei dem jedes Rundenupdate gefeiert wird.",
-        "source_url": "https://powersports.honda.com/motorcycle/supersport/cbr1000rr-r-fireblade-sp/2026/cbr1000rr-r-fireblade-sp",
-        "image_local": "assets/images/2026-10/2026-10-30-bike-honda-cbr1000rr-r-fireblade-sp.jpg",
-        "image_source": "wikimedia"
-      }
-    },
     {
       "date_start": "2026-11-06",
       "date_end": "2026-11-08",
       "series": "MotoGP",
-      "track": "Lusail International Circuit · Qatar",
+      "track": "Lusail International Circuit · Katar",
       "sessions": [],
       "source": "https://www.motogp.com/en/calendar",
       "crosscheck_sources": [
-        "https://motoetkinlik.com/motogp-yaris-takvimi/"
+        "https://motoetkinlik.com/motogp-yaris-takvimi/",
+        "https://trf1.net/motor-sporlari/motogp/"
       ],
-      "source_excerpt": "QATAR 6 - 8 Nov 2026"
+      "source_excerpt": "QATAR 6 - 8 Nov 2026",
+      "bike_of_weekend": {
+        "brand": "KTM",
+        "model": "1290 Super Duke R",
+        "category": "Rennsport oder Straße",
+        "story": "KTM hat in Lusail gezeigt, dass es auch nachts bei extremen Temperaturen mithält – Brad Binders Siege dort sind kein Zufall, sondern Ergebnis harter Arbeit im Sand. Die Community feiert diese Hartnäckigkeit, weil sie authentisch ist und nicht aus glatten Werbeversprechen besteht.",
+        "source_url": "https://www.ktm.com/de-de/models/naked-bikes/1290-super-duke-r.html",
+        "image_local": "assets/images/2026-11/2026-11-06-bike-ktm-1290-super-duke-r.jpg",
+        "image_source": "og:street"
+      }
     },
     {
       "date_start": "2026-11-20",
@@ -50,7 +39,7 @@
       "date_start": "2026-11-27",
       "date_end": "2026-11-29",
       "series": "MotoGP",
-      "track": "Circuit Ricardo Tormo · Valencia, Spain",
+      "track": "Circuit Ricardo Tormo · València, Spanien",
       "sessions": [],
       "source": "https://www.motogp.com/en/calendar",
       "crosscheck_sources": [
