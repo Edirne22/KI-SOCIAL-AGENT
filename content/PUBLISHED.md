@@ -1015,3 +1015,45 @@ Quelle: https://www.motogp.com/en/calendar
 Quelle: https://www.motogp.com/en/calendar
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W45-motogp-facebook.jpg
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-03-daily
+Telegram-Update-ID: 279362019
+MotoGP-Auswahl: 3
+Story-Key: title:pedro-acosta-ogura-n-n-bu-kadar-h-zl-olmas-n-beklemiyordum
+Event-Fingerprint: MotoGP|sprint|acosta,ogura|
+Titel: Pedro Acosta: “Ogura’nın Bu Kadar Hızlı Olmasını Beklemiyordum”
+Text:
+Pedro Acosta hat beim MotoGP-Sprint in Malaysia Ai Ogura überholt und gewonnen. Als KTM-Fahrer betonte er seine Überraschung über Oguras Geschwindigkeit und die Bedeutung des Reifenmanagements für das Hauptrennen.
+
+Wie steht ihr zu Acostas Einschätzung zum Reifenmanagement im Hauptrennen?
+
+#MotoGP #PedroAcosta #AiOgura #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
+Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-03-daily
+Telegram-Update-ID: 279362019
+MotoGP-Auswahl: 3
+Story-Key: title:pedro-acosta-ogura-n-n-bu-kadar-h-zl-olmas-n-beklemiyordum
+Event-Fingerprint: MotoGP|sprint|acosta,ogura|
+Titel: Pedro Acosta: “Ogura’nın Bu Kadar Hızlı Olmasını Beklemiyordum”
+Text:
+Pedro Acosta hat beim MotoGP-Sprint in Malaysia Ai Ogura überholt und gewonnen. Als KTM-Fahrer betonte er seine Überraschung über Oguras Geschwindigkeit und die Bedeutung des Reifenmanagements für das Hauptrennen.
+
+Wie steht ihr zu Acostas Einschätzung zum Reifenmanagement im Hauptrennen?
+
+#MotoGP #PedroAcosta #AiOgura #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
+Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
+Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg
+Link-Preview: offiziell
