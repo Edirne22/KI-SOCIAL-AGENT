@@ -489,7 +489,7 @@ def turkish_offer_candidates(details,now,max_days=30,exclude_items=None,offered_
   except (OSError,ValueError,TypeError):
    pass
   candidates=[];seen=set();window_used=0
-  for days in tuple(dict.fromkeys((1,7,14,max_days))):
+  for days in tuple(dict.fromkeys(d for d in (1,7,14,max_days) if d<=max_days)):
    window_used=days
    eligible=(y for y in details if turkish_candidate_gate(y,now,days))
    for x in sorted(eligible,key=lambda y:editorial_score(y,roster_names()),reverse=True):
