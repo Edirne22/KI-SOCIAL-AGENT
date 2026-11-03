@@ -122,3 +122,5 @@ Sammlung von Hooks und Formulierungen, die nachweislich funktionieren.
 - 2026-11-01: Viral-, Funnel- und Experiment-Learning aktualisiert.
 
 - 2026-11-02: Viral-, Funnel- und Experiment-Learning aktualisiert.
+
+- 2026-11-03: Viral-, Funnel- und Experiment-Learning aktualisiert.
