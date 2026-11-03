@@ -1,7 +1,7 @@
 # Qualitätsreport
-Stand: 2026-11-01 21:45
+Stand: 2026-11-03 00:37
 Gesamtstatus: **KRITISCH**
-- OK: 16
+- OK: 14
 - Warnungen: 3
 - Kritisch: 1
 
@@ -10,14 +10,12 @@ Gesamtstatus: **KRITISCH**
 - ✅ **Freigabeplan**: Datei vorhanden und nicht leer.
 - ✅ **Inspiration-Report**: Datei vorhanden und nicht leer.
 - ✅ **Bright-Data-Debug**: Datei vorhanden und nicht leer.
-- ✅ **Inspiration-Quellen**: 20 verlinkte Quellen im Report erkannt.
-- ⚠️ **Inspiration-Ideen**: Gemini war nicht verfügbar; der Rohdaten-Fallback ist aktiv.
+- ⚠️ **Inspiration-Quellen**: Keine verlinkten Quellen im Report erkannt.
+- ⚠️ **Inspiration-Ideen**: Nur 0 konkrete Ideen erkannt.
 - ✅ **YouTube-Fallback**: 10 YouTube-Datensätze aus dem Apify-Fallback erkannt.
 - ✅ **YouTube-Duplikate**: Keine doppelten Video-URLs im Quellreport erkannt.
 - ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
-- ✅ **Inspiration-Duplikate**: Keine doppelten Quellen-URLs im Report erkannt.
-- ✅ **Quellenformat**: Alle Quellen stammen von erwarteten Social- oder Video-Plattformen.
-- ⚠️ **Datenalter**: 1 Quelle(n) sind älter als 7 Tage.
+- ✅ **Datenalter**: 10 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-11-02 12:00 UTC).
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
 - ✅ **Secret-Prüfung**: Keine typischen Zugangsschlüssel in Projektdateien erkannt.
