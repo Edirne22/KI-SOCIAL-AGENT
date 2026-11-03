@@ -1,5 +1,101 @@
 # Archiviert Beiträge 2026-10
 
+## Instagram [GEPOSTET 2026-10-26 19:51 | ID: 18343784848285666]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-26-daily
+Telegram-Update-ID: 279362003
+MotoGP-Auswahl: 4
+Story-Key: motogp:1179518
+Event-Fingerprint: MotoGP|fp1|fernandez,marquez,miller|
+Titel: Marc Marquez pips Fernandez and home hero Miller to FP1 top spot
+Text:
+Marc Marquez hat im FP1 in Australien die Bestzeit gesetzt. Der amtierende Weltmeister führte nach dem ersten Durchgang die Zeitwertung an – direkt hinter sich lässt er Raul Fernandez und Jack Miller. Beide gehören hier zu den schnellen Fahrern.
+
+Wer ist nach dem ersten freien Training eurer Meinung nach der favorisierte Fahrer für den Rest des Wochenendes?
+
+#MotoGP #MarcMarquez #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife #RaulFernandez
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg
+Publish-Provenienz: {"creation_id": "18013377992971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18343784848285666", "published_media_id": "18343784848285666", "source_url": "https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518", "version": 1}
+
+## Facebook [GEPOSTET 2026-10-26 18:48 | ID: 122128176045469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-26-daily
+Telegram-Update-ID: 279362003
+MotoGP-Auswahl: 4
+Story-Key: motogp:1179518
+Event-Fingerprint: MotoGP|fp1|fernandez,marquez,miller|
+Titel: Marc Marquez pips Fernandez and home hero Miller to FP1 top spot
+Text:
+Marc Marquez hat im FP1 in Australien die Bestzeit gesetzt. Der amtierende Weltmeister führte nach dem ersten Durchgang die Zeitwertung an – direkt hinter sich lässt er Raul Fernandez und Jack Miller. Beide gehören hier zu den schnellen Fahrern.
+
+Wer ist nach dem ersten freien Training eurer Meinung nach der favorisierte Fahrer für den Rest des Wochenendes?
+
+#MotoGP #MarcMarquez #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife #RaulFernandez
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+Quelle: https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518
+Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-4-marc-marquez-pips-fe-01.jpg", "media_status": "", "object_id": "122128176045469415", "object_type": "bild", "platform": "facebook", "post_id": "122128176045469415", "source_url": "https://www.motogp.com/en/news/2026/10/23/marc-marquez-pips-fernandez-and-home-hero-miller-to-fp1-top-spot/1179518", "version": 1}
+
+## Instagram [GEPOSTET 2026-10-26 19:52 | ID: 18131418121793727]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-26-daily
+Telegram-Update-ID: 279362004
+MotoGP-Auswahl: 5
+Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
+Event-Fingerprint: MotoGP|sprint|marquez|
+Titel: Gresini Pilotu Alex Marquez: "Sprintler En Az Yarıya İnmeli"
+Text:
+Alex Marquez möchte, dass die Sprint-Rennen in der MotoGP halbiert werden.
+
+Der Gresini-Pilot hält sechs oder sieben Sprints für die ideale Anzahl.
+
+Marquez wies dabei auf die jungen Fahrer hin.
+
+Was denkt ihr – zu viele Sprints oder richtig so?
+
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
+Publish-Provenienz: {"creation_id": "18013378040971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18131418121793727", "published_media_id": "18131418121793727", "source_url": "https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli", "version": 1}
+
+## Facebook [GEPOSTET 2026-10-26 23:01 | ID: 122128240401469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-10-26-daily
+Telegram-Update-ID: 279362004
+MotoGP-Auswahl: 5
+Story-Key: title:gresini-pilotu-alex-marquez-sprintler-en-az-yar-ya-i-nmeli
+Event-Fingerprint: MotoGP|sprint|marquez|
+Titel: Gresini Pilotu Alex Marquez: "Sprintler En Az Yarıya İnmeli"
+Text:
+Alex Marquez möchte, dass die Sprint-Rennen in der MotoGP halbiert werden.
+
+Der Gresini-Pilot hält sechs oder sieben Sprints für die ideale Anzahl.
+
+Marquez wies dabei auf die jungen Fahrer hin.
+
+Was denkt ihr – zu viele Sprints oder richtig so?
+
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+Quelle: https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli
+Bild: assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-26-racing-editorial-2026-10-26-5-gresini-pilotu-alex-01.jpg", "media_status": "", "object_id": "122128240401469415", "object_type": "bild", "platform": "facebook", "post_id": "122128240401469415", "source_url": "https://motoetkinlik.com/gresini-pilotu-alex-marquez-sprintler-en-az-yariya-inmeli", "version": 1}
+
 ## Facebook [GEPOSTET 2026-10-25 15:20 | ID: 1285968257941776_122127824385469415]
 Status: GEPOSTET
 Freigabe: Telegram Racing
