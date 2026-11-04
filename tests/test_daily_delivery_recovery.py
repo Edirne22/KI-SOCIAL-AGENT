@@ -50,10 +50,14 @@ def test_repository_context_fails_closed(tmp_path, damage):
         prepare_repository_agent_context(agent_id=role, job={'job_id': 'test'}, root=tmp_path)
 
 
-def test_generator_uses_explicit_repository_without_r2(tmp_path, monkeypatch):
+@pytest.mark.parametrize('backend', ['repository', None])
+def test_generator_uses_explicit_repository_without_r2(tmp_path, monkeypatch, backend):
     repository(tmp_path)
     monkeypatch.chdir(tmp_path)
-    monkeypatch.setenv('DAILY_IDEAS_MEMORY_BACKEND', 'repository')
+    if backend is None:
+        monkeypatch.delenv('DAILY_IDEAS_MEMORY_BACKEND', raising=False)
+    else:
+        monkeypatch.setenv('DAILY_IDEAS_MEMORY_BACKEND', backend)
     with patch.object(ideas, 'quick_chat', return_value='draft') as llm, \
          patch.object(ideas, 'get_context', return_value='memory'), \
          patch('integrations.openmontage.r2_client.from_environment') as r2:

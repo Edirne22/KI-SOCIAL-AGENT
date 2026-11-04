@@ -35,7 +35,7 @@ def generate_content_plan(*, memory_storage=None):
     knowledge=read_all(); inspiration=read_file(INSPIRATION_REPORT,7000); motogp_daily=read_file(MOTOGP_DAILY,7000)
     learned=get_context(9000); agent_context=get_agent_context(["01_content_creator","04_social_media_strategist","14_memory_curator"])
     # Backend selection is explicit. R2 errors must never silently change it.
-    backend = 'r2' if memory_storage is not None else os.getenv('DAILY_IDEAS_MEMORY_BACKEND', 'r2')
+    backend = 'r2' if memory_storage is not None else os.getenv('DAILY_IDEAS_MEMORY_BACKEND', 'repository')
     if backend not in ('r2', 'repository'):
         raise ValueError('Unknown daily ideas memory backend')
     if backend == 'r2' and memory_storage is None:
