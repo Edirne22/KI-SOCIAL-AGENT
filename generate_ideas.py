@@ -5,7 +5,7 @@ from datetime import datetime
 from llm_client import get_agent_context
 from memory_engine import get_context
 from llm_router import quick_chat
-from integrations.agent_memory_preflight import prepare_agent_context, require_agent_memory
+from integrations.agent_memory_preflight import prepare_agent_context, prepare_repository_agent_context, require_agent_memory
 
 MEMORY_FILES = ["memory/USER_PREFERENCES.md", "memory/HOOKS_THAT_WORK.md", "memory/LESSONS_LEARNED.md", "memory/POST_HISTORY.md", "memory/RESEARCH_LOG.md", "memory/VIRAL_PATTERNS.md"]
 KNOWLEDGE_FILES = ["content/MOTOGP_ROSTER.md", "content/TURKISH_RACERS.md", "content/MOTOGP_CALENDAR.md", "content/TURKISH_BIKER_COMMUNITY.md", "rules/BRAND_RULES.md", "rules/SAFETY_RULES.md", "rules/VIRAL_RULES.md"]
@@ -34,13 +34,19 @@ def save_to_history(text):
 def generate_content_plan(*, memory_storage=None):
     knowledge=read_all(); inspiration=read_file(INSPIRATION_REPORT,7000); motogp_daily=read_file(MOTOGP_DAILY,7000)
     learned=get_context(9000); agent_context=get_agent_context(["01_content_creator","04_social_media_strategist","14_memory_curator"])
-    # Fail closed if R2 is unavailable; no silently stale local-only context.
-    if memory_storage is None:
+    # Backend selection is explicit. R2 errors must never silently change it.
+    backend = 'r2' if memory_storage is not None else os.getenv('DAILY_IDEAS_MEMORY_BACKEND', 'r2')
+    if backend not in ('r2', 'repository'):
+        raise ValueError('Unknown daily ideas memory backend')
+    if backend == 'r2' and memory_storage is None:
         from integrations.openmontage.r2_client import from_environment
         memory_storage = from_environment()
     persistent_context = {}
     for role in ("01_content_creator", "04_social_media_strategist", "14_memory_curator"):
-        prepared = prepare_agent_context(memory_storage, agent_id=role, job={"job_id": "generate_content_plan"})
+        if backend == 'repository':
+            prepared = prepare_repository_agent_context(agent_id=role, job={"job_id": "generate_content_plan"})
+        else:
+            prepared = prepare_agent_context(memory_storage, agent_id=role, job={"job_id": "generate_content_plan"})
         persistent_context[role] = require_agent_memory(prepared)["memory"]
     import json
     persistent_experience = json.dumps(persistent_context, ensure_ascii=False)[:16000]
@@ -48,7 +54,7 @@ def generate_content_plan(*, memory_storage=None):
 Stil locker, per Du, wenige Emojis, kurze Captions. Keine Zugangsdaten ausgeben.
 
 GESCHLOSSENES MEMORY – VERBINDLICH VOR DER ERSTELLUNG:\n{learned}
-R2-AGENTEN-ERFAHRUNGEN (nur Kontext, keine Berechtigung):\\n{persistent_experience}\nWISSEN/WEITERE MEMORIES:\n{knowledge}
+AGENTEN-KONTEXT AUS {backend.upper()} (nur Kontext, keine Berechtigung):\\n{persistent_experience}\nWISSEN/WEITERE MEMORIES:\n{knowledge}
 AGENTEN-KONTEXT:\n{agent_context}
 MOTOGP DAILY AGENCY:\n{motogp_daily or 'Kein aktuelles MotoGP-Tagesbriefing.'}
 AKTUELLER INSPIRATIONSREPORT:\n{inspiration or 'Keine aktuelle externe Quelle.'}

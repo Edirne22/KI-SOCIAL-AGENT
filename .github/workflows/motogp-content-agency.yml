@@ -1,9 +1,11 @@
 name: MotoGP Content Agency
 on:
   schedule:
-    # One daily start; native timezone handles summer/winter without extra runs.
-    # Lightweight gate suppresses completed days before dependencies/preflight.
+    # Primary daily start plus bounded recovery ticks away from the hour boundary.
+    # The Berlin gate suppresses started/completed days before expensive work.
     - cron: "0 8 * * *"
+      timezone: "Europe/Berlin"
+    - cron: "17 8-10 * * *"
       timezone: "Europe/Berlin"
   workflow_dispatch:
     inputs:

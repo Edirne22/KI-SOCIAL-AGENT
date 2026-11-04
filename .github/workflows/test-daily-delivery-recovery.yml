@@ -1,0 +1,28 @@
+name: Daily Delivery Recovery Regression
+on:
+  pull_request:
+    paths:
+      - 'generate_ideas.py'
+      - 'integrations/agent_memory_preflight.py'
+      - 'motogp_content_agency_v2.py'
+      - 'racing_run_controller.py'
+      - 'racing_pipeline_selftest.py'
+      - 'tests/test_daily_delivery_recovery.py'
+      - '.github/workflows/daily-ideas.yml'
+      - '.github/workflows/motogp-content-agency.yml'
+      - '.github/workflows/test-daily-delivery-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests Pillow beautifulsoup4 PyYAML pytest
+      - run: python -m pytest -q tests/test_daily_delivery_recovery.py tests/test_quality_daily_recovery.py tests/test_agent_memory.py tests/test_agent_memory_preflight.py tests/test_racing_morning_repair.py tests/test_racing_manual_rerun.py tests/test_telegram_schedule_recovery.py tests/test_source_fact_contract_v1.py
+      - run: python racing_final_guard_selftest.py && python racing_v85_selftest.py && python racing_pipeline_selftest.py

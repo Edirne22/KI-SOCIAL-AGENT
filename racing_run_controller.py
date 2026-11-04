@@ -35,6 +35,14 @@ def batch_id(now=None):
  if event=='schedule':return f'racing-{now.astimezone(ZoneInfo("Europe/Berlin")).date().isoformat()}-daily'
  if event=='workflow_dispatch':return f'racing-{now.date().isoformat()}-manual-{github_run_id()}'
  return f'racing-{now.date().isoformat()}-{event}-{github_run_id()}'
+def retryable(run,now):
+ if run.get('status') in {'FAILED','BLOCKED'}:return True
+ # The workflow serializes runs and has a 90-minute timeout. A persisted
+ # STARTED record from a killed runner must not suppress the entire day.
+ if run.get('status')=='STARTED':
+  try:return (now-datetime.fromisoformat(run['started_at'])).total_seconds()>=90*60
+  except (KeyError,TypeError,ValueError):return False
+ return False
 def morning_due(now=None):
  now=now or _now()
  if event_name()!='schedule':return True
@@ -43,14 +51,14 @@ def morning_due(now=None):
  if local.hour<8:return False
  run=_load().get('runs',{}).get(batch_id(now),{})
  if not run:return True
- return run.get('status') in {'FAILED','BLOCKED'}
+ return retryable(run,now)
 
 def begin(now=None):
  now=now or _now();data=_load();bid=batch_id(now);existing=data['runs'].get(bid)
  # Every workflow_dispatch has its own GitHub run id and is an intentional manual E2E run.
  # Do not suppress it merely because another Racing run happened within 30 minutes.
  # Scheduled runs keep their stable daily batch id and are still protected below.
- if existing and existing.get('status') not in {'FAILED','BLOCKED'} and not force_new():return False,bid,'duplicate batch'
+ if existing and not retryable(existing,now) and not force_new():return False,bid,'duplicate batch'
  stamp=now.isoformat();data['runs'][bid]={'status':'STARTED','started_at':stamp,'updated_at':stamp,'event':event_name(),'github_run_id':github_run_id(),'arch_version':ARCH_VERSION};data['active_batch_id']=bid;_save(data);return True,bid,'started'
 def transition(bid,status,error='',**kwargs):
  data=_load();run=data['runs'].setdefault(bid,{});run['status']=status;run['updated_at']=_now().isoformat()
