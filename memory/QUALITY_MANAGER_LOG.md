@@ -4002,3 +4002,39 @@ Story-Key: motogp:123556
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-04 15:48 UTC | Motorcycle Racing | PASS
+Titel: Aldeguer set for return as Lecuona replaces Alex Marquez in Qatar
+Story-Key: motogp:1183958
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-04 15:48 UTC | Motorcycle Racing | PASS
+Titel: Mir Katar’da yok: Honda, yerine Jake Dixon’u çağırıyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124085
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-04 15:48 UTC | Motorcycle Racing | PASS
+Titel: Bezzecchi: “Marc’a 30 Metrelik Boşluk Kalınca Hızı Ortaya Çıktı”
+Story-Key: title:bezzecchi-marc-30-metrelik-bo-luk-kal-nca-h-z-ortaya-kt
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-04 15:48 UTC | Motorcycle Racing | PASS
+Titel: The goal is to win the Championship” – ZXMOTO with their eyes on the WorldSSP throne in 2027
+Story-Key: motogp:1184019
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-04 15:49 UTC | Motorcycle Racing | FAIL
+Titel: Lecuona set to replace injured Alex Marquez at Qatar GP
+Story-Key: motogp:1184015
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-04 15:49 UTC | Motorcycle Racing | PASS
+Titel: Lecuona set to replace injured Alex Marquez at Qatar GP
+Story-Key: motogp:1184015
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

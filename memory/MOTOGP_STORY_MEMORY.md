@@ -1549,3 +1549,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/bastianini-sprinti-felaket-olarak
 Story-Key: motogp:123556
 Titel: Viñales Sepang sprintinde aslında durmayı planlıyordu: Islak motosikleti görünce fikrimi değiştirdim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/vinales-sepang-sprintinde-aslinda-durmayi-planliyordu-islak-motosikleti-gorunce-fikrimi-degistirdim/123556
+
+## 2026-11-04 15:07 UTC – ANGEBOTEN
+Story-Key: motogp:1183958
+Titel: Aldeguer set for return as Lecuona replaces Alex Marquez in Qatar
+Quelle: https://www.motogp.com/en/news/2026/11/03/aldeguer-set-for-return-as-lecuona-replaces-alex-marquez-in-qatar/1183958
+
+## 2026-11-04 15:07 UTC – ANGEBOTEN
+Story-Key: motogp:124085
+Titel: Mir Katar’da yok: Honda, yerine Jake Dixon’u çağırıyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/mir-katarda-yok-honda-yerine-jake-dixonu-cagiriyor/124085
+
+## 2026-11-04 15:07 UTC – ANGEBOTEN
+Story-Key: title:bezzecchi-marc-30-metrelik-bo-luk-kal-nca-h-z-ortaya-kt
+Titel: Bezzecchi: “Marc’a 30 Metrelik Boşluk Kalınca Hızı Ortaya Çıktı”
+Quelle: https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti
+
+## 2026-11-04 15:07 UTC – ANGEBOTEN
+Story-Key: motogp:1184019
+Titel: The goal is to win the Championship” – ZXMOTO with their eyes on the WorldSSP throne in 2027
+Quelle: https://www.worldsbk.com/en/news/2026/11/04/the-goal-is-to-win-the-championship-zxmoto-with-their-eyes-on-the-worldssp-throne-in-2027/1184019
+
+## 2026-11-04 15:07 UTC – ANGEBOTEN
+Story-Key: motogp:1184015
+Titel: Lecuona set to replace injured Alex Marquez at Qatar GP
+Quelle: https://www.worldsbk.com/en/news/2026/11/04/lecuona-set-to-replace-injured-alex-marquez-at-qatar-gp/1184015

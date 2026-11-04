@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793717757
+Session-Timestamp: 1793804856
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,22 +18,23 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 1.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:124051
-Titel: Raul Fernandez, Katar’da parmak sakatlığıyla dönmeyi deneyecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/raul-fernandez-katarda-parmak-sakatligiyla-donmeyi-deneyecek/124051
+Story-Key: motogp:1183958
+Titel: Aldeguer set for return as Lecuona replaces Alex Marquez in Qatar
+Quelle: https://www.motogp.com/en/news/2026/11/03/aldeguer-set-for-return-as-lecuona-replaces-alex-marquez-in-qatar/1183958
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-1-raul-fernandez-katar-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1357656_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-1-aldeguer-set-for-ret-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/04/9cb078f0-e782-45da-bb7c-d6b074a86b7c/LGZ_2531.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Raul Fernandez versucht diese Woche in Katar wieder durchzustarten. Der Trackhouse-Pilot fehlte bei den letzten beiden Rennen, weil er sich zwei Finger im Sprint in Indonesien gebrochen hatte. Dass er danach trotzdem Zweiter wurde, zeigt, wie hart im Nehmen er ist – doch die folgenden Rennen in Australien und Malezya ließ er dann aus. Er ist jetzt wieder in Spanien, wo das Team intensiv an der Genesung arbeitet.
+Fermin Aldeguer steht am Wochenende in Qatar wieder im MotoGP-Kader – dafür rückt Iker Lecuona für Alex Marquez zu BK8 Gresini Racing nach. ⚡
+Die beiden Fahrer wechseln bei Gresini die Plätze, Aldeguer kehr zurück, Lecuona übernimmt.
 
-Wie schätzt ihr seine Chancen für Katar ein?
+Was denkt ihr von dem Wechsel bei Gresini – gute Entscheidung oder Risk?
 
-#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #AlexMarquez #FerminAldeguer #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -41,25 +42,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 1.6
+Artikelalter-Tage: 0.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1183579
-Titel: Lecuona lands in the points at Sepang in MotoGP replacement duty weekend
-Quelle: https://www.worldsbk.com/en/news/2026/11/02/lecuona-lands-in-the-points-at-sepang-in-motogp-replacement-duty-weekend/1183579
+Story-Key: motogp:124085
+Titel: Mir Katar’da yok: Honda, yerine Jake Dixon’u çağırıyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/mir-katarda-yok-honda-yerine-jake-dixonu-cagiriyor/124085
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-2-lecuona-lands-in-the-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/11/02/2bbd47f0-4a73-4efb-a338-b7eed2ed3a60/LG9_3809.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-2-mir-katarda-yok-hond-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1358687_hires_1600x900-1.jpg
 Plattformen: Instagram + Facebook
 Text:
-Iker Lecuona hat mit der Nr. 7 für BK8 Gresini Racing in Sepang einen Meisterschaftspunkt geholt – und das gleich als Ersatzfahrer in der MotoGP. Die Bedingungen auf der Strecke waren richtig hart, und er hat sich bis zum Schluss durchgekämpft 🏍️💨
+Jake Dixon springt für Joan Mir ein
 
-Wie seht ihr den Einsatz von Iker in Sepang?
+Joan Mir kann wegen Sehproblemen nicht am Katar-Wochenende teilnehmen. Jake Dixon springt für ihn ein. Mir berichtete nach seiner Rückkehr aus Malaysia von anhaltenden Sehproblemen und verpasste vier Rennen nacheinander.
 
-#MotoGP #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr den Wechsel?
+
+#MotoGP #JoanMir #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,25 +70,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 3.1
+Artikelalter-Tage: 4.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:pedro-acosta-ogura-n-n-bu-kadar-h-zl-olmas-n-beklemiyordum
-Titel: Pedro Acosta: “Ogura’nın Bu Kadar Hızlı Olmasını Beklemiyordum”
-Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
+Story-Key: title:bezzecchi-marc-30-metrelik-bo-luk-kal-nca-h-z-ortaya-kt
+Titel: Bezzecchi: “Marc’a 30 Metrelik Boşluk Kalınca Hızı Ortaya Çıktı”
+Quelle: https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/09/pedro-acosta-ktm-aragon-motogp-2026.webp
+Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-3-bezzecchi-marca-30-m-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/07/marco-bezzecchi-aprilia-almanya-gp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Pedro Acosta hat beim MotoGP-Sprint in Malaysia Ai Ogura überholt und gewonnen. Als KTM-Fahrer betonte er seine Überraschung über Oguras Geschwindigkeit und die Bedeutung des Reifenmanagements für das Hauptrennen.
+Bezzecchi nach dem Sprint: 30 Meter zu Márquez – die Geschwindigkeit wurde sichtbar
 
-Wie steht ihr zu Acostas Einschätzung zum Reifenmanagement im Hauptrennen?
+Beim Malaysia-Sprint hat Marco Bezzecchi seine Begegnung mit Marc Márquez analysiert. Er betont, dass Reifenmanagement den Rennverlauf beeinflusst.
 
-#MotoGP #PedroAcosta #AiOgura #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die Situation ein?
+
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -93,25 +98,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 3.0
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:123583
-Titel: Bastianini sprinti “felaket” olarak niteledi: İlk turdan itibaren tutuşum yoktu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/bastianini-sprinti-felaket-olarak-niteledi-ilk-turdan-itibaren-tutusum-yoktu/123583
+Artikelalter-Tage: 0.6
+Kategorie: WorldSSP
+Serie: WorldSSP
+Story-Key: motogp:1184019
+Titel: The goal is to win the Championship” – ZXMOTO with their eyes on the WorldSSP throne in 2027
+Quelle: https://www.worldsbk.com/en/news/2026/11/04/the-goal-is-to-win-the-championship-zxmoto-with-their-eyes-on-the-worldssp-throne-in-2027/1184019
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-4-bastianini-sprinti-f-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358688_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-4-the-goal-is-to-win-t-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/11/03/c4c8125b-a480-422a-b0cc-8b32c33037ae/5GG07023.jpg
 Plattformen: Instagram + Facebook
 Text:
-Enea Bastianini hat den Sprint in Sepang richtig hart auf den Zahn gefühlt – bei ihm war die Sache schon von der ersten Runde an Schicht im Schacht. Kein Grip, keine Chance auf die Spitzenreiter, klar gemacht hat er es direkt. Auch Maverick Viñales hatte mit den veränderten Bedingungen am Sonntag seine Mühe, ein Stint für Regenreifen war wohl nicht der richtige Timing-Treff. Aber der echte Kontrast kam von Brad Binder: Der KTM-Pilot, der ins Sprintrennen musste, weil er sich fürs Qualifying nicht für Q2 qualifizieren konnte, zeigte, was geht. Siebter – und damit deutlich vor Bastianini und Viñales am Zielstrich. 💨
+ZXMOTO war auf der EICMA mit ihrem Rider-Duo und blickt auf den Erfolg von 2026. Es gibt Pläne für ein neues Bike für 2027 in der WorldSSP.
 
-Wie eingeschätzt – ist das für KTM ein Warnschuss oder eher ein typisches Weekend, wo einfach die Balance gefehlt hat?
+Was haltet ihr von ZXMOTOs Plan für ein neues Bike in der WorldSSP 2027?
 
-#MotoGP #BradBinder #MaverickViales #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -119,25 +124,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 2
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 3.1
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:123556
-Titel: Viñales Sepang sprintinde aslında durmayı planlıyordu: Islak motosikleti görünce fikrimi değiştirdim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/vinales-sepang-sprintinde-aslinda-durmayi-planliyordu-islak-motosikleti-gorunce-fikrimi-degistirdim/123556
+Artikelalter-Tage: 0.6
+Kategorie: WorldSBK
+Serie: WorldSBK
+Story-Key: motogp:1184015
+Titel: Lecuona set to replace injured Alex Marquez at Qatar GP
+Quelle: https://www.worldsbk.com/en/news/2026/11/04/lecuona-set-to-replace-injured-alex-marquez-at-qatar-gp/1184015
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-5-vinales-sepang-sprin-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/10/gng_1358801_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-5-lecuona-set-to-repla-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/11/04/b7370950-f948-47dc-9302-c3f87206bf16/LGZ_8179.jpg
 Plattformen: Instagram + Facebook
 Text:
-Viñales hatte den Sepang-Sprint eigentlich nur wegen Energie-Sparens fallengelassen – und wollte sich fürs Sonntagrennen frisch halten. Im Pit-Lane sah er dann das für nasse Bedingungen vorbereitete Ersatzmotorrad und dachte sich seinen Plan schnell wieder anders.
+Iker Lecuona muss beim Qatar GP für den verletzten Alex Marquez einspringen. Die Nummer 7 saßt schon wieder auf der Gresini Ducati – duty calls, wie es scheint 🏍️
 
-Hättet ihr den Sprint fallen lassen und auf das Sonntagrennen gesetzt, wenn ihr Viñales wärt?
+Wie schätzt ihr die Situation für Lecuona ein?
 
-#MotoGP #MaverickViales #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#WorldSBK #AlexMarquez #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
