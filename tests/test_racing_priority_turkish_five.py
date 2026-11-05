@@ -547,7 +547,7 @@ def _run_racing_platform_publish_contract(tmp_path, source_image_available):
   recv.get_existing_published_texts=lambda:set()
   recv.get_existing_published_identities=lambda:(set(),set(),set())
   recv._post_identity=lambda post:('https://example.test/article','story-1','event-1')
-  def source_download(url, output_path):
+  def source_download(url, output_path, source_image_url=None):
    assert url==source
    if not source_image_available:return None
    target=Path(output_path)
