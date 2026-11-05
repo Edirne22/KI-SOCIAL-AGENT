@@ -683,50 +683,6 @@ Quelle: https://www.motogp.com/en/calendar
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W44-motogp-facebook.jpg
 
-## Instagram [GEPOSTET 2026-10-27 21:58 | ID: 18347418679254436]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-27-daily
-Telegram-Update-ID: 279362009
-MotoGP-Auswahl: 3
-Story-Key: motogp:122903
-Event-Fingerprint: -
-Titel: Toprak Razgatlıoğlu ameliyat sonrası ilk paylaşımını yaptı: Omzumu hareket ettirmeye başladım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Text:
-Toprak Razgatlıoğlu hat nach seiner Schulteroperation erstmalig auf Instagram gepostet. Auf dem Foto liegt er im Krankenhausbett, die Bandage am Oberkörper, und lächelt – daneben zeigen zwei Personen hoch. Er musste sein erstes MotoGP-Jahr in Mandalika wegen der Schulterverletzung früh beenden. Jetzt steht die Genesung im Fokus.
-
-Wie schätzt du die Situation ein?
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
-Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
-Medienstatus: QUELLE_BESTÄTIGT
-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
-Publish-Provenienz: {"creation_id": "18013557626971550", "media_kind": "image", "media_path": "assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18347418679254436", "published_media_id": "18347418679254436", "source_url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903", "version": 1}
-
-## Facebook [GEPOSTET 2026-10-27 21:07 | ID: 122128548159469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-27-daily
-Telegram-Update-ID: 279362009
-MotoGP-Auswahl: 3
-Story-Key: motogp:122903
-Event-Fingerprint: -
-Titel: Toprak Razgatlıoğlu ameliyat sonrası ilk paylaşımını yaptı: Omzumu hareket ettirmeye başladım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Text:
-Toprak Razgatlıoğlu hat nach seiner Schulteroperation erstmalig auf Instagram gepostet. Auf dem Foto liegt er im Krankenhausbett, die Bandage am Oberkörper, und lächelt – daneben zeigen zwei Personen hoch. Er musste sein erstes MotoGP-Jahr in Mandalika wegen der Schulterverletzung früh beenden. Jetzt steht die Genesung im Fokus.
-
-Wie schätzt du die Situation ein?
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
-Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903
-Bild: assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-27-racing-editorial-2026-10-27-3-toprak-razgatlioglu-01.jpg", "media_status": "", "object_id": "122128548159469415", "object_type": "bild", "platform": "facebook", "post_id": "122128548159469415", "source_url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-ameliyat-sonrasi-ilk-paylasimini-yapti-antrenmana-basladim/122903", "version": 1}
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -747,28 +703,6 @@ Wie seht ihr die Ausgangslage für das Wochenende in Sepang?
 Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg
-
-## Facebook [GEPOSTET 2026-10-28 12:09 | ID: 122128736817469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-10-28-manual-40673050395
-Telegram-Update-ID: 279362011
-MotoGP-Auswahl: 5
-Story-Key: motogp:1181207
-Event-Fingerprint: -
-Titel: TIME SCHEDULE: Petronas Grand Prix of Malaysia
-Text:
-Das Petronas Grand Prix of Malaysia steht an – die MotoGP dreht wieder ihre Runden auf dem Sepang International Circuit. Ein Wochenende mit Titelambitionen und der typischen Unwägbarkeit, die das Renngeschehen immer wieder spannend macht. Die wichtigsten Zeiten für die Session-Termine gibt's ab jetzt.
-
-Wie seht ihr die Ausgangslage für das Wochenende in Sepang?
-
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
-Quelle: https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207
-Bild: assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-10/2026-10-28-racing-editorial-2026-10-28-5-time-schedule-petron-01.jpg", "media_status": "", "object_id": "122128736817469415", "object_type": "bild", "platform": "facebook", "post_id": "122128736817469415", "source_url": "https://www.motogp.com/en/news/2026/10/28/time-schedule-petronas-grand-prix-of-malaysia/1181207", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
