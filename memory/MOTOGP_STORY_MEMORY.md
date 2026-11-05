@@ -1574,3 +1574,28 @@ Quelle: https://www.worldsbk.com/en/news/2026/11/04/the-goal-is-to-win-the-champ
 Story-Key: motogp:1184015
 Titel: Lecuona set to replace injured Alex Marquez at Qatar GP
 Quelle: https://www.worldsbk.com/en/news/2026/11/04/lecuona-set-to-replace-injured-alex-marquez-at-qatar-gp/1184015
+
+## 2026-11-05 15:14 UTC – ANGEBOTEN
+Story-Key: motogp:4112203
+Titel: Milli motosikletçi Deniz Öncü, Katar Grand Prix'sinde yarışacak
+Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-katar-grand-prixsinde-yarisacak/4112203
+
+## 2026-11-05 15:14 UTC – ANGEBOTEN
+Story-Key: motogp:124194
+Titel: Marquez Katar’a şampiyonluk şansıyla gidiyor: “Strateji değişmeyecek” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-katara-sampiyonluk-sansiyla-gidiyor-strateji-degismeyecek/124194
+
+## 2026-11-05 15:14 UTC – ANGEBOTEN
+Story-Key: motogp:1181622
+Titel: Acosta denies Marc Marquez and Bezzecchi in tense Sprint showdown at Sepang Gold goes to the Shark as wet-dry conditions in Malaysia see the front group get their elbows out – and Ogura just lose out
+Quelle: https://www.motogp.com/en/news/2026/10/31/acosta-denies-marc-marquez-and-bezzecchi-in-tense-sprint-showdown-at-sepang/1181622
+
+## 2026-11-05 15:14 UTC – ANGEBOTEN
+Story-Key: motogp:10871604
+Titel: Marquez: "Şampiyonluk ihtimaline rağmen Katar'da stratejimiz değişmeyecek"
+Quelle: https://tr.motorsport.com/motogp/news/marquez-sampiyonluk-ihtimaline-ragmen-katardaki-stratejimiz-degismeyecek/10871604
+
+## 2026-11-05 15:14 UTC – ANGEBOTEN
+Story-Key: motogp:124248
+Titel: Acosta Ducati’ye geçerken sponsorunu da değiştiriyor: Red Bull gidiyor, Monster geliyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/acosta-ducatiye-gecerken-sponsorunu-da-degistiriyor-red-bull-gidiyor-monster-geliyor/124248

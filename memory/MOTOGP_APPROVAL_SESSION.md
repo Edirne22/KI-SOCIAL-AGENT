@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793804856
+Session-Timestamp: 1793891651
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,23 +18,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.6
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:1183958
-Titel: Aldeguer set for return as Lecuona replaces Alex Marquez in Qatar
-Quelle: https://www.motogp.com/en/news/2026/11/03/aldeguer-set-for-return-as-lecuona-replaces-alex-marquez-in-qatar/1183958
+Artikelalter-Tage: 0.2
+Kategorie: Turkish Riders
+Serie: Moto2
+Story-Key: motogp:4112203
+Titel: Milli motosikletçi Deniz Öncü, Katar Grand Prix'sinde yarışacak
+Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-katar-grand-prixsinde-yarisacak/4112203
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-1-aldeguer-set-for-ret-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/04/9cb078f0-e782-45da-bb7c-d6b074a86b7c/LGZ_2531.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-1-milli-motosikletci-d-01.jpg
+Quellen-Preview: https://web-cdnprod.aa.com.tr/uploads/Contents/2026/11/05/thumbs_b_c_12f0e39a1204e7f162cce3caf13fb2d7.jpg
 Plattformen: Instagram + Facebook
 Text:
-Fermin Aldeguer steht am Wochenende in Qatar wieder im MotoGP-Kader – dafür rückt Iker Lecuona für Alex Marquez zu BK8 Gresini Racing nach. ⚡
-Die beiden Fahrer wechseln bei Gresini die Plätze, Aldeguer kehr zurück, Lecuona übernimmt.
+Deniz Öncü startet in der Moto2-Klasse beim Großen Preis von Katar. Der türkische Rennfahrer zeigt sich bereit für die nächste Challenge auf der Strecke. 🇹🇷🏍️
 
-Was denkt ihr von dem Wechsel bei Gresini – gute Entscheidung oder Risk?
+Was erwartet ihr von Deniz bei seinem Auftritt in Katar?
 
-#MotoGP #AlexMarquez #FerminAldeguer #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -42,27 +41,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 0.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:124085
-Titel: Mir Katar’da yok: Honda, yerine Jake Dixon’u çağırıyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/mir-katarda-yok-honda-yerine-jake-dixonu-cagiriyor/124085
+Story-Key: motogp:124194
+Titel: Marquez Katar’a şampiyonluk şansıyla gidiyor: “Strateji değişmeyecek” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-katara-sampiyonluk-sansiyla-gidiyor-strateji-degismeyecek/124194
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-2-mir-katarda-yok-hond-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1358687_hires_1600x900-1.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-2-marquez-katara-sampi-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1359553_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jake Dixon springt für Joan Mir ein
+Marc Marquez hat in Sepang seinen siebten Sieg gefeiert und geht mit 44 Punkten Vorsprung in den Titelkampf nach Katar. In der Saison 2026 fuhr er den Großteil der Zeit quasi im Management-Modus – erst ab Malaysia wollte er von FP1 an richtig gas geben. In seinem 20. Rennen dieser Saison kann er mit dem richtigen Sonntag Pate seinen achten MotoGP-Titel holen.
 
-Joan Mir kann wegen Sehproblemen nicht am Katar-Wochenende teilnehmen. Jake Dixon springt für ihn ein. Mir berichtete nach seiner Rückkehr aus Malaysia von anhaltenden Sehproblemen und verpasste vier Rennen nacheinander.
+Was glaubt ihr: Was kann er in Katar erreichen, wenn er ab da richtig voll durchdreht?
 
-Wie seht ihr den Wechsel?
-
-#MotoGP #JoanMir #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -70,27 +67,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 4.1
+Artikelalter-Tage: 5.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:bezzecchi-marc-30-metrelik-bo-luk-kal-nca-h-z-ortaya-kt
-Titel: Bezzecchi: “Marc’a 30 Metrelik Boşluk Kalınca Hızı Ortaya Çıktı”
-Quelle: https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti
+Story-Key: motogp:1181622
+Titel: Acosta denies Marc Marquez and Bezzecchi in tense Sprint showdown at Sepang Gold goes to the Shark as wet-dry conditions in Malaysia see the front group get their elbows out – and Ogura just lose out
+Quelle: https://www.motogp.com/en/news/2026/10/31/acosta-denies-marc-marquez-and-bezzecchi-in-tense-sprint-showdown-at-sepang/1181622
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-3-bezzecchi-marca-30-m-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/07/marco-bezzecchi-aprilia-almanya-gp-2026.webp
+Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-3-acosta-denies-marc-m-01.jpg
+Quellen-Preview: Zielseite/Plattform
 Plattformen: Instagram + Facebook
 Text:
-Bezzecchi nach dem Sprint: 30 Meter zu Márquez – die Geschwindigkeit wurde sichtbar
+Pedro Acosta hat den Sprint in Sepang gewonnen und sich dabei gegen Marc Marquez sowie Bezzecchi durchgesetzt.
 
-Beim Malaysia-Sprint hat Marco Bezzecchi seine Begegnung mit Marc Márquez analysiert. Er betont, dass Reifenmanagement den Rennverlauf beeinflusst.
+Die Bedingungen in Malaysia waren typisch Mixed-Wetter – mal nass, mal trocken – was die Spitze richtig gefordert hat.
 
-Wie schätzt ihr die Situation ein?
+Ai Ogura hat knapp den Anschluss an die Spitze verloren.
 
-#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wer war für euch der Highlight des Sprint-Rennens?
+
+#MotoGP #MarcMarquez #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -98,25 +97,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 0
+Neufassungen: 0
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.6
-Kategorie: WorldSSP
-Serie: WorldSSP
-Story-Key: motogp:1184019
-Titel: The goal is to win the Championship” – ZXMOTO with their eyes on the WorldSSP throne in 2027
-Quelle: https://www.worldsbk.com/en/news/2026/11/04/the-goal-is-to-win-the-championship-zxmoto-with-their-eyes-on-the-worldssp-throne-in-2027/1184019
+Artikelalter-Tage: 0.1
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:10871604
+Titel: Marquez: "Şampiyonluk ihtimaline rağmen Katar'da stratejimiz değişmeyecek"
+Quelle: https://tr.motorsport.com/motogp/news/marquez-sampiyonluk-ihtimaline-ragmen-katardaki-stratejimiz-degismeyecek/10871604
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-4-the-goal-is-to-win-t-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/11/03/c4c8125b-a480-422a-b0cc-8b32c33037ae/5GG07023.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-4-marquez-sampiyonluk-01.jpg
+Quellen-Preview: https://cdn-6.motorsport.com/images/amp/0rVPj4d0/s6/marc-marquez-ducati-team.jpg
 Plattformen: Instagram + Facebook
 Text:
-ZXMOTO war auf der EICMA mit ihrem Rider-Duo und blickt auf den Erfolg von 2026. Es gibt Pläne für ein neues Bike für 2027 in der WorldSSP.
+Marc Marquez gewinnt in Sepang und fliegt direkt mit möglicher Titelkrone nach Katar.
 
-Was haltet ihr von ZXMOTOs Plan für ein neues Bike in der WorldSSP 2027?
+Dabei will der MotoGP-Pilot aber an seiner Herangehensweise nichts ändern. Er sagt selbst, dass sich seine Strategie für das nächste Rennen in Katar nicht wandeln wird. Also auch nicht, wenn die Meisterschaft dort bereits erledigt sein könnte.
 
-#WorldSSP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr ein, ob er trotz möglichem Titelanspruch in Katar normal herangeht oder anders ranfährt?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -124,25 +125,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 3
+Neufassungen: 0
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.6
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1184015
-Titel: Lecuona set to replace injured Alex Marquez at Qatar GP
-Quelle: https://www.worldsbk.com/en/news/2026/11/04/lecuona-set-to-replace-injured-alex-marquez-at-qatar-gp/1184015
+Artikelalter-Tage: 0.2
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:124248
+Titel: Acosta Ducati’ye geçerken sponsorunu da değiştiriyor: Red Bull gidiyor, Monster geliyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/acosta-ducatiye-gecerken-sponsorunu-da-degistiriyor-red-bull-gidiyor-monster-geliyor/124248
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-5-lecuona-set-to-repla-01.jpg
-Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/11/04/b7370950-f948-47dc-9302-c3f87206bf16/LGZ_8179.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-5-acosta-ducatiye-gece-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1359660_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Iker Lecuona muss beim Qatar GP für den verletzten Alex Marquez einspringen. Die Nummer 7 saßt schon wieder auf der Gresini Ducati – duty calls, wie es scheint 🏍️
+Pedro Acosta wechselt von KTM zu Ducati.
 
-Wie schätzt ihr die Situation für Lecuona ein?
+Mit dem Teamwechsel gibt er seinen Hauptsponsor Red Bull auf und wechselt zu Monster Energy.
 
-#WorldSBK #AlexMarquez #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Hintergrund ist ein bestehender Vertrag zwischen Ducati und Monster Energy.
+
+Mal sehen, wie sich das auf die Strecke auswirkt.
+
+#MotoGP #MarcMarquez #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

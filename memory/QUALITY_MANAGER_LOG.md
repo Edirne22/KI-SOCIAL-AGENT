@@ -4038,3 +4038,45 @@ Story-Key: motogp:1184015
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-05 15:43 UTC | Motorcycle Racing | PASS
+Titel: Milli motosikletçi Deniz Öncü, Katar Grand Prix'sinde yarışacak
+Story-Key: motogp:4112203
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-05 15:43 UTC | Motorcycle Racing | PASS
+Titel: Marquez Katar’a şampiyonluk şansıyla gidiyor: “Strateji değişmeyecek” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124194
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-05 15:44 UTC | Motorcycle Racing | PASS
+Titel: Acosta denies Marc Marquez and Bezzecchi in tense Sprint showdown at Sepang Gold goes to the Shark as wet-dry conditions in Malaysia see the front group get their elbows out – and Ogura just lose out
+Story-Key: motogp:1181622
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-05 15:44 UTC | Motorcycle Racing | FAIL
+Titel: Marquez: "Şampiyonluk ihtimaline rağmen Katar'da stratejimiz değişmeyecek"
+Story-Key: motogp:10871604
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-05 15:44 UTC | Motorcycle Racing | PASS
+Titel: Marquez: "Şampiyonluk ihtimaline rağmen Katar'da stratejimiz değişmeyecek"
+Story-Key: motogp:10871604
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-05 15:44 UTC | Motorcycle Racing | FAIL
+Titel: Acosta Ducati’ye geçerken sponsorunu da değiştiriyor: Red Bull gidiyor, Monster geliyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124248
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-05 15:44 UTC | Motorcycle Racing | PASS
+Titel: Acosta Ducati’ye geçerken sponsorunu da değiştiriyor: Red Bull gidiyor, Monster geliyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124248
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
