@@ -5,188 +5,192 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: @ikerlecuona_27 is back in #MotoGP! 🔙 He’ll step in for the @gresiniracing team at the #QatarGP as @alexmarquez73 recovers from surgery
-
-#QatarGP 🇶🇦 #WorldSBK
-- Datum: 2026-11-04T08:33:22.000Z
-- URL: https://www.instagram.com/p/DfUCU2ZOzFT/
-- Likes: 3163
-- Kommentare: 5
-- Shares: nicht verfügbar
-### Datensatz 2
-- Titel: The battle was ON 🔛 What a fierce battle between this two ⚔️
-
-#SpanishWorldSBK 🇪🇸 #WorldSBK
-- Datum: 2026-11-04T08:15:52.000Z
-- URL: https://www.instagram.com/p/DfUARQauxJ5/
-- Likes: 992
-- Kommentare: 3
-- Shares: nicht verfügbar
-### Datensatz 3
-- Titel: Looking forward to a new chapter with Honda's 2027 Fireblade HRC Works Edition! 🏍️🔥 Hear what he had to say on our YouTube channel 🔊
+- Titel: Fans make the difference and Andrea Locatelli knows it! 🙌 🫶 Watch the full interview on WorldSBK.com 🎥
 
 #WorldSBK
-- Datum: 2026-11-03T15:15:26.000Z
-- URL: https://www.instagram.com/p/DfSLheKgCWy/
-- Likes: 2246
+- Datum: 2026-11-06T11:14:41.000Z
+- URL: https://www.instagram.com/p/DfZeV4zkRH4/
+- Likes: 231
+- Kommentare: 2
+- Shares: nicht verfügbar
+### Datensatz 2
+- Titel: When you forget you’re at EICMA, not at the racetrack… 😂
+
+#WorldSBK #EICMA2026
+- Datum: 2026-11-06T08:59:01.000Z
+- URL: https://www.instagram.com/p/DfZOyiEIpXd/
+- Likes: 5155
+- Kommentare: 14
+- Shares: nicht verfügbar
+### Datensatz 3
+- Titel: It’s celebration time! 🥳 Join us in wishing @7balda a fantastic 30th birthday 🎂🎉
+
+#WorldSBK
+- Datum: 2026-11-06T06:41:57.000Z
+- URL: https://www.instagram.com/p/DfY_HBoOxIt/
+- Likes: 1032
 - Kommentare: 17
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: Get a closer look at the new CBR1000RR-R Fireblade HRC WORKS EDITION 📸🔴
+- Titel: The passion for two wheels is everywhere at EICMA! 🏍️ Great bikes, familiar faces and plenty of #WorldSBK spirit 🔥
 
-#WorldSBK
-- Datum: 2026-11-03T12:27:33.000Z
-- URL: https://www.instagram.com/p/DfR4XkNjh_o/
-- Likes: 16049
-- Kommentare: 43
+#EICMA2026
+- Datum: 2026-11-05T16:24:18.000Z
+- URL: https://www.instagram.com/p/DfXdDQ4l7KL/
+- Likes: 4226
+- Kommentare: 6
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: Ready to turn the page 🔥 At EICMA, the #96 shared his first impressions of the new machine and what lies ahead 👀 Read it all on WorldSBK.com
+- Titel: What a season ✨ Reflecting on his rookie campaign triumph and looking forward to the future 🔜
 
 #WorldSBK
-- Datum: 2026-11-03T12:20:31.000Z
-- URL: https://www.instagram.com/p/DfR3hRCObhS/
-- Likes: 2785
-- Kommentare: 17
+- Datum: 2026-11-05T16:11:46.000Z
+- URL: https://www.instagram.com/p/DfXbj22H23E/
+- Likes: 669
+- Kommentare: 7
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: Every detail matters in the 2027 CFMOTO 675SR-R! ✨🔍
+- Titel: The 2026 #WorldSSP Champion’s bike in its stunning special livery! ⭐️
 
-#WorldWCR
-- Datum: 2026-11-03T11:51:56.000Z
-- URL: https://www.instagram.com/p/DfR0SumjmTy/
-- Likes: 10039
-- Kommentare: 46
+#WorldSBK
+- Datum: 2026-11-05T15:43:45.000Z
+- URL: https://www.instagram.com/p/DfXYaSgl3O-/
+- Likes: 5476
+- Kommentare: 16
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: What a start! 🔥 From P6 to P3 💪
+- Titel: A new story awaits 🔵 Watch the full interview on WorldSBK.com 🎙️
 
-#SpanishWorldSBK 🇪🇸 #WorldSBK
-- Datum: 2026-11-03T10:21:45.000Z
-- URL: https://www.instagram.com/p/DfRp5GAIJN8/
-- Likes: 1923
-- Kommentare: 12
+#WorldSBK
+- Datum: 2026-11-05T15:32:11.000Z
+- URL: https://www.instagram.com/p/DfXW-j9I_zg/
+- Likes: 554
+- Kommentare: 5
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: A record-breaking season for #WorldSSP! 🔥 15 different riders stepped onto the podium throughout the 2026 campaign 🏆
+- Titel: One more chapter in green 🟢 And as the reigning #WorldSPB Champion, the goal is clear 🎯🏆
 
 #WorldSBK
-- Datum: 2026-11-03T08:27:02.000Z
-- URL: https://www.instagram.com/p/DfRcWMkucA8/
-- Likes: 3234
-- Kommentare: 44
+- Datum: 2026-11-05T14:38:49.000Z
+- URL: https://www.instagram.com/p/DfXQ4k2uYzi/
+- Likes: 595
+- Kommentare: 12
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: There’s only one question left for the 2027 grid... 💭 Who’s joining @7balda in yellow next season? 🟡 Drop your guesses below!👇
+- Titel: Same bike. Same team. Same goal. 
 
-#WorldSBK
-- Datum: 2026-11-02T15:54:56.000Z
-- URL: https://www.instagram.com/p/DfPrLr7OFEO/
-- Likes: 2360
-- Kommentare: 214
+The World Champion stays. 
+
+Let’s go 2027 💚
+- Datum: 2026-11-05T14:01:39.000Z
+- URL: https://www.instagram.com/p/DfXMmrTskEz/
+- Likes: 2236
+- Kommentare: 27
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Bold moves and breathtaking battles ⚔️ It’s time to choose the best overtake of the 2026 season 🏆 Which move gets your vote? 🗳️
+- Titel: Ladies and gentleman... the 10 podium finishers of the 2026 season 🏆🤩
 
 #WorldSBK
-- Datum: 2026-11-02T14:50:43.000Z
-- URL: https://www.instagram.com/p/DfPj9QgDhfP/
-- Likes: 1598
+- Datum: 2026-11-05T09:15:14.000Z
+- URL: https://www.instagram.com/p/DfWr2Thom41/
+- Likes: 913
 - Kommentare: 6
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: Unseen moments from Marc Márquez's #MalaysianGP celebrations 👀🏆
-
-#MotoGP
-- Datum: 2026-11-04T12:19:05.000Z
-- URL: nicht verfügbar
-- Likes: 205
-- Kommentare: 7
-- Shares: nicht verfügbar
-### Datensatz 2
-- Titel: A special night under the lights🌌 @bestia23 first #MotoGP win in Qatar 2022! 🏆
+- Titel: A far from ideal #MotoGP return for @jakedixonracing 😱
 
 #QatarGP🇶🇦
-- Datum: 2026-11-04T12:00:19.000Z
+- Datum: 2026-11-06T12:09:24.000Z
 - URL: nicht verfügbar
-- Likes: 254
-- Kommentare: 5
+- Likes: 610
+- Kommentare: 14
+- Shares: nicht verfügbar
+### Datensatz 2
+- Titel: Mind games at play already 👀🌶
+
+#QatarGP 🇶🇦
+- Datum: 2026-11-06T12:06:02.000Z
+- URL: nicht verfügbar
+- Likes: 2750
+- Kommentare: 114
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Check out the #QatarGP 🇶🇦 schedule so you can plan your weekend accordingly  👀🤝
+- Titel: "They're the only ones who could lose it" 🗣️ Marc Márquez answers back at Jorge Martín 🔥
 
-#MotoGP
-- Datum: 2026-11-04T11:29:08.000Z
+#QatarGP🇶🇦 #MotoGP
+- Datum: 2026-11-06T11:40:20.000Z
 - URL: nicht verfügbar
-- Likes: 383
-- Kommentare: 25
+- Likes: 1024
+- Kommentare: 49
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: Making headlines and taking over timelines! 🔥👀
+- Titel: The session for the premier class is about to get underway 💨
 
-A look back at the moments that went viral at the #QatarGP 🇶🇦
-
-#MotoGP
-- Datum: 2026-11-04T11:01:08.000Z
+#QatarGP 🇶🇦
+- Datum: 2026-11-06T11:35:34.000Z
 - URL: nicht verfügbar
-- Likes: 617
-- Kommentare: 11
+- Likes: 1159
+- Kommentare: 75
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: @jackmilleraus’s 2019 #QatarGP took an unexpected turn when his seat detached on lap 2 🫣
+- Titel: Do you agree with Marc Marquez?  🔎
 
-#MotoGP
-- Datum: 2026-11-04T10:00:17.000Z
+Make sure you pick your #MotoGPFantasy team this weekend 🔮 https://motogp.io/3V5GlnW
+
+#QatarGP 🇶🇦
+- Datum: 2026-11-06T09:48:57.000Z
 - URL: nicht verfügbar
-- Likes: 2499
-- Kommentare: 31
+- Likes: 305
+- Kommentare: 6
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: 8 Rounds. 16 Races. 3 New Tracks to Discover 🔥📅 
+- Titel: 2026’s final chapter is still yet to be written ✍️ 👑
 
-A new chapter starts here!
-
-#BaggerWorldCup #HarleyDavidson
-- Datum: 2026-11-04T08:39:47.000Z
+#MotoGP
+- Datum: 2026-11-05T22:00:09.000Z
 - URL: nicht verfügbar
-- Likes: 243
-- Kommentare: 19
+- Likes: 2921
+- Kommentare: 91
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: Qatar, it’s all to play for 👀
-
-#QatarGP🇶🇦 #MotoGP
-- Datum: 2026-11-04T08:30:02.000Z
-- URL: nicht verfügbar
-- Likes: 1327
-- Kommentare: 80
-- Shares: nicht verfügbar
-### Datensatz 8
-- Titel: Facebook-Beitrag
-- Datum: 2026-11-04T08:05:43.000Z
-- URL: nicht verfügbar
-- Likes: 111
-- Kommentare: 1
-- Shares: nicht verfügbar
-### Datensatz 9
-- Titel: First match point. It's game on. 🤩
+- Titel: Another crossover in the books! 🎾 x 🏍️
 
 #QatarGP 🇶🇦 #MotoGP
-- Datum: 2026-11-04T08:01:14.000Z
+- Datum: 2026-11-05T20:30:55.000Z
 - URL: nicht verfügbar
-- Likes: 1230
-- Kommentare: 37
+- Likes: 612
+- Kommentare: 1
 - Shares: nicht verfügbar
-### Datensatz 10
-- Titel: Night racing returns to Qatar 🌙
+### Datensatz 8
+- Titel: Will Marc Marquez seal the deal at Lusail? 👑 
+
+#MotoGP riders have their say 👀
+
+#QatarGP 🇶🇦
+- Datum: 2026-11-05T19:53:35.000Z
+- URL: nicht verfügbar
+- Likes: 2033
+- Kommentare: 38
+- Shares: nicht verfügbar
+### Datensatz 9
+- Titel: Young but gold 👑 Nothing but admiration and high praise from @marcmarquez93 to @kimi.antonelli 👏
 
 #QatarGP🇶🇦 #MotoGP
-- Datum: 2026-11-04T07:00:16.000Z
+- Datum: 2026-11-05T19:13:09.000Z
 - URL: nicht verfügbar
-- Likes: 1940
-- Kommentare: 180
+- Likes: 3012
+- Kommentare: 25
+- Shares: nicht verfügbar
+### Datensatz 10
+- Titel: @marcmarquez93 keeps his feet on the ground ahead of his first match point 👀
+
+#QatarGP 🇶🇦 #MotoGP #MarcMarquez
+- Datum: 2026-11-05T18:51:23.000Z
+- URL: nicht verfügbar
+- Likes: 3310
+- Kommentare: 43
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.

@@ -287,3 +287,15 @@
 - HTTP-Status: 201
 - Verwertete Beiträge: 10
 - Hinweis: Apify ist Hauptquelle; Actor-Limit: maximal 10 Facebook-Beiträge pro Lauf.
+
+## Instagram (2026-11-06 12:34)
+- Actor: apify~instagram-profile-scraper
+- HTTP-Status: 201
+- Verwertete Beiträge: 10
+- Hinweis: Apify ist Hauptquelle; Bright Data wird nur bei fehlenden Datensätzen genutzt.
+
+## Facebook (2026-11-06 12:35)
+- Actor: khadinakbar~facebook-posts-scraper
+- HTTP-Status: 201
+- Verwertete Beiträge: 10
+- Hinweis: Apify ist Hauptquelle; Actor-Limit: maximal 10 Facebook-Beiträge pro Lauf.

@@ -1,8 +1,5 @@
 # Inspiration-Ideen
 
--Community auf hohes Interesse.
-    *   Idea 3:
-        *   Titel: Marc Márquez' Legenden-Moment & Aufholjagden
-        *   Format: Story
-        *   Hook: „Was war für dich die spektakulärste Aufholjagd in der Geschichte der MotoGP?“
-        *   Inspirations-Quelle: https://
+Hier sind die 5 Top-Trends der Woche!“
+      - Inspirations-Quelle: https://www.instagram.com/p/DfZOyiEIpXd/
+      - Warum passend: Greift den Humor und die Begeisterung der Messe-Stimmung auf und lässt sich super auf Bülents Reise- und Bike-Erlebnisse übertragen.
