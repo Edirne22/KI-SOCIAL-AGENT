@@ -1,6 +1,6 @@
 # Memory Context Packet
 
-**Erzeugt:** 2026-11-05 22:53 UTC
+**Erzeugt:** 2026-11-06 22:25 UTC
 **Verwendung:** vor Content-Erstellung/Planung lesen; Regeln sind stärker als lose Beobachtungen.
 
 ## Aktive Lernregeln
