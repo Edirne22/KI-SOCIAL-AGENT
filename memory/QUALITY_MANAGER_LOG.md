@@ -4080,3 +4080,33 @@ Story-Key: motogp:124248
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-06 15:22 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Katar GP 2026 Saat Kaçta, Hangi Kanalda?
+Story-Key: title:motogp-katar-gp-2026-saat-ka-ta-hangi-kanalda
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-06 15:22 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez fastest from Bezzecchi, Martin P5 in Qatar FP1
+Story-Key: motogp:1184247
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-06 15:22 UTC | Motorcycle Racing | PASS
+Titel: Martin, Katar’daki sağlık kontrolünden geçti: Bileğiyle yarışacak - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124397
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-06 15:23 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez: Alex riskli sollama yapsaydı “kötü bir kardeş” olurdu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124428
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-06 15:23 UTC | Motorcycle Racing | PASS
+Titel: Katar MotoGP 1. antrenman: Marquez lider, Martin beşinci - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124422
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

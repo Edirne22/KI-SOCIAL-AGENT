@@ -1599,3 +1599,28 @@ Quelle: https://tr.motorsport.com/motogp/news/marquez-sampiyonluk-ihtimaline-rag
 Story-Key: motogp:124248
 Titel: Acosta Ducati’ye geçerken sponsorunu da değiştiriyor: Red Bull gidiyor, Monster geliyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/acosta-ducatiye-gecerken-sponsorunu-da-degistiriyor-red-bull-gidiyor-monster-geliyor/124248
+
+## 2026-11-06 14:51 UTC – ANGEBOTEN
+Story-Key: title:motogp-katar-gp-2026-saat-ka-ta-hangi-kanalda
+Titel: MotoGP Katar GP 2026 Saat Kaçta, Hangi Kanalda?
+Quelle: https://motoetkinlik.com/motogp-katar-gp-2026-marc-marquez-icin-ilk-sampiyonluk-firsati-yamaha-yok
+
+## 2026-11-06 14:51 UTC – ANGEBOTEN
+Story-Key: motogp:1184247
+Titel: Marc Marquez fastest from Bezzecchi, Martin P5 in Qatar FP1
+Quelle: https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247
+
+## 2026-11-06 14:51 UTC – ANGEBOTEN
+Story-Key: motogp:124397
+Titel: Martin, Katar’daki sağlık kontrolünden geçti: Bileğiyle yarışacak - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/martin-katardaki-saglik-kontrolunden-gecti-bilegiyle-yarisacak/124397
+
+## 2026-11-06 14:51 UTC – ANGEBOTEN
+Story-Key: motogp:124428
+Titel: Marc Marquez: Alex riskli sollama yapsaydı “kötü bir kardeş” olurdu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-alex-riskli-sollama-yapsaydi-kotu-bir-kardes-olurdu/124428
+
+## 2026-11-06 14:51 UTC – ANGEBOTEN
+Story-Key: motogp:124422
+Titel: Katar MotoGP 1. antrenman: Marquez lider, Martin beşinci - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/katar-motogp-1-antrenman-marquez-lider-martin-besinci/124422

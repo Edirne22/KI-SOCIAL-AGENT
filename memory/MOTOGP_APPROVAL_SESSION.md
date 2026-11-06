@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1793891651
+Session-Timestamp: 1793976675
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,22 +18,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 0.7
 Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: motogp:4112203
-Titel: Milli motosikletçi Deniz Öncü, Katar Grand Prix'sinde yarışacak
-Quelle: https://www.aa.com.tr/tr/spor/milli-motosikletci-deniz-oncu-katar-grand-prixsinde-yarisacak/4112203
+Serie: MotoGP
+Story-Key: title:motogp-katar-gp-2026-saat-ka-ta-hangi-kanalda
+Titel: MotoGP Katar GP 2026 Saat Kaçta, Hangi Kanalda?
+Quelle: https://motoetkinlik.com/motogp-katar-gp-2026-marc-marquez-icin-ilk-sampiyonluk-firsati-yamaha-yok
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-1-milli-motosikletci-d-01.jpg
-Quellen-Preview: https://web-cdnprod.aa.com.tr/uploads/Contents/2026/11/05/thumbs_b_c_12f0e39a1204e7f162cce3caf13fb2d7.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-1-motogp-katar-gp-2026-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/11/Lusail-International-Circuit-MotoGP.webp
 Plattformen: Instagram + Facebook
 Text:
-Deniz Öncü startet in der Moto2-Klasse beim Großen Preis von Katar. Der türkische Rennfahrer zeigt sich bereit für die nächste Challenge auf der Strecke. 🇹🇷🏍️
+Das MotoGP-Saisonfinale steht an: Am 6. bis 8. November geht es in Lusail um die Krone. Für Marc Marquez ist das der erste echte Titelkampf im laufenden Saisonverlauf – hier kann er den Tisch umwerfen. Und dann noch eine kleine Überraschung: Yamaha ist komplett abwesend. Wer mitliest, findet hier auch die genauen Zeiten für die Sessions sowie den passenden Sender – und natürlich: Deniz Öncü startet wieder.
 
-Was erwartet ihr von Deniz bei seinem Auftritt in Katar?
+Was erwartet ihr von Deniz Öncü beim Finale in Lusail?
 
-#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #DenizOncu #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -41,25 +41,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.9
+Artikelalter-Tage: 0.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:124194
-Titel: Marquez Katar’a şampiyonluk şansıyla gidiyor: “Strateji değişmeyecek” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/marquez-katara-sampiyonluk-sansiyla-gidiyor-strateji-degismeyecek/124194
+Story-Key: motogp:1184247
+Titel: Marc Marquez fastest from Bezzecchi, Martin P5 in Qatar FP1
+Quelle: https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-2-marquez-katara-sampi-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1359553_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/06/e52c4b0e-0c8e-4054-8ccf-45f2c508c01c/Report-MGP-FP1-QAT.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat in Sepang seinen siebten Sieg gefeiert und geht mit 44 Punkten Vorsprung in den Titelkampf nach Katar. In der Saison 2026 fuhr er den Großteil der Zeit quasi im Management-Modus – erst ab Malaysia wollte er von FP1 an richtig gas geben. In seinem 20. Rennen dieser Saison kann er mit dem richtigen Sonntag Pate seinen achten MotoGP-Titel holen.
+Marquez steht in Qatar nach dem ersten Freien Training ganz oben – vor Bezzecchi. Martin liegt mit Platz fünf auf der fünften Spur. Der Meisterschaftsführende startet also gut in das Wochenende, und für seinen engsten Verfolger im Titelkampf sieht es nach Lusail auch nicht schlecht aus.
 
-Was glaubt ihr: Was kann er in Katar erreichen, wenn er ab da richtig voll durchdreht?
+Was erwartet ihr von der Runde in Qatar?
 
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,29 +67,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 5.6
+Artikelalter-Tage: 0.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1181622
-Titel: Acosta denies Marc Marquez and Bezzecchi in tense Sprint showdown at Sepang Gold goes to the Shark as wet-dry conditions in Malaysia see the front group get their elbows out – and Ogura just lose out
-Quelle: https://www.motogp.com/en/news/2026/10/31/acosta-denies-marc-marquez-and-bezzecchi-in-tense-sprint-showdown-at-sepang/1181622
+Story-Key: motogp:124397
+Titel: Martin, Katar’daki sağlık kontrolünden geçti: Bileğiyle yarışacak - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/martin-katardaki-saglik-kontrolunden-gecti-bilegiyle-yarisacak/124397
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-3-acosta-denies-marc-m-01.jpg
-Quellen-Preview: Zielseite/Plattform
+Instagram-Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-3-martin-katardaki-sag-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1359953_hires_1600x900_0.jpg
 Plattformen: Instagram + Facebook
 Text:
-Pedro Acosta hat den Sprint in Sepang gewonnen und sich dabei gegen Marc Marquez sowie Bezzecchi durchgesetzt.
+Jorge Martin ist zurück im Rennen. Der Aprilia-Werksfahrer hat die ärztliche Freigabe für Katar erhalten – zwei Wochen, nachdem er sich beim Sprint in Phillip Island den rechten Unterarm gebrochen hatte. Die Saison-Top-Figur darf wieder an den Start.
 
-Die Bedingungen in Malaysia waren typisch Mixed-Wetter – mal nass, mal trocken – was die Spitze richtig gefordert hat.
+Wie schätzt ihr seine Chancen im ersten Rennen nach der Pause ein?
 
-Ai Ogura hat knapp den Anschluss an die Spitze verloren.
-
-Wer war für euch der Highlight des Sprint-Rennens?
-
-#MotoGP #MarcMarquez #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -97,27 +93,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 2
+Neufassungen: 1
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10871604
-Titel: Marquez: "Şampiyonluk ihtimaline rağmen Katar'da stratejimiz değişmeyecek"
-Quelle: https://tr.motorsport.com/motogp/news/marquez-sampiyonluk-ihtimaline-ragmen-katardaki-stratejimiz-degismeyecek/10871604
+Story-Key: motogp:124428
+Titel: Marc Marquez: Alex riskli sollama yapsaydı “kötü bir kardeş” olurdu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-alex-riskli-sollama-yapsaydi-kotu-bir-kardes-olurdu/124428
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-4-marquez-sampiyonluk-01.jpg
-Quellen-Preview: https://cdn-6.motorsport.com/images/amp/0rVPj4d0/s6/marc-marquez-ducati-team.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-4-marc-marquez-alex-ri-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1359671_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez gewinnt in Sepang und fliegt direkt mit möglicher Titelkrone nach Katar.
+Marc Marquez geht nach seinem Sieg in Malaysia als achter Bewerber um die MotoGP-Weltmeisterschaft nach Katar. Im Malaysia-Rennen lieferten sich Marc und Alex Marquez am Start ein Bruderduell. Marc Marquez startete von der zweiten Reihe und überholte Alex Marquez in der ersten Kurve, der von der Poleposition gekommen war. Später wurde Alex Marquez von Pedro Acosta und Ai Ogura überholt, was Platz drei bedeutete.
 
-Dabei will der MotoGP-Pilot aber an seiner Herangehensweise nichts ändern. Er sagt selbst, dass sich seine Strategie für das nächste Rennen in Katar nicht wandeln wird. Also auch nicht, wenn die Meisterschaft dort bereits erledigt sein könnte.
+Wie bewertest du Marc Marquez' Position in der WM nach dem Malaysia-Rennen?
 
-Wie schätzt ihr ein, ob er trotz möglichem Titelanspruch in Katar normal herangeht oder anders ranfährt?
-
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -125,29 +119,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 2
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:124248
-Titel: Acosta Ducati’ye geçerken sponsorunu da değiştiriyor: Red Bull gidiyor, Monster geliyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/acosta-ducatiye-gecerken-sponsorunu-da-degistiriyor-red-bull-gidiyor-monster-geliyor/124248
+Story-Key: motogp:124422
+Titel: Katar MotoGP 1. antrenman: Marquez lider, Martin beşinci - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/katar-motogp-1-antrenman-marquez-lider-martin-besinci/124422
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-05-racing-editorial-2026-11-05-5-acosta-ducatiye-gece-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1359660_hires_1600x900.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-5-katar-motogp-1-antre-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1360176_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Pedro Acosta wechselt von KTM zu Ducati.
+Marquez führt das Training an
 
-Mit dem Teamwechsel gibt er seinen Hauptsponsor Red Bull auf und wechselt zu Monster Energy.
+Marc Marquez hat das erste Training in Katar angeführt und Marco Bezzecchi hinter sich gelassen. Mit 45 Minuten und 44 Punkten führt Marquez die Weltmeisterschaft an. Jorge Martin liegt 30 Punkte zurück.
 
-Hintergrund ist ein bestehender Vertrag zwischen Ducati und Monster Energy.
+Wie geht Marc Marquez mit seinem 30-Punkte-Vorsprung in das Qatar-Wochenende?
 
-Mal sehen, wie sich das auf die Strecke auswirkt.
-
-#MotoGP #MarcMarquez #PedroAcosta #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
