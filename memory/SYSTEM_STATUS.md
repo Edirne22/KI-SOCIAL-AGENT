@@ -1,13 +1,13 @@
 # Systemstatus
-Stand: 2026-11-07 13:31 UTC
+Stand: 2026-11-07 22:16 UTC
 
 ## Sichere Workflow-Prüfung
 - Qualitäts-Agent: OK – Letzter Lauf erfolgreich.
-  - Lauf: https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/42307200337
+  - Lauf: https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/42416123403
 - Analytics Fetch: OK – Letzter Lauf erfolgreich.
-  - Lauf: https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/42300716439
+  - Lauf: https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/42412107290
 - Viral Analysis: OK – Letzter Lauf erfolgreich.
-  - Lauf: https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/42300014314
+  - Lauf: https://github.com/Edirne22/KI-SOCIAL-AGENT/actions/runs/42411793906
 
 ## Technisch gesperrt
 - Publisher: Instagram, Facebook, Reels, Stories und Karussells
