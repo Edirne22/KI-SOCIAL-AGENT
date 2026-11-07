@@ -1060,9 +1060,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg
 Publish-Provenienz: {"creation_id": "18015140714971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18131256649803706", "published_media_id": "18131256649803706", "source_url": "https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 42415955626-1
+## Facebook [GEPOSTET 2026-11-07 21:28 | ID: 122132125089469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-06-daily
 Telegram-Update-ID: 279362024
@@ -1081,3 +1080,4 @@ Was erwartet ihr von der Runde in Qatar?
 Quelle: https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247
 Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg", "media_status": "", "object_id": "122132125089469415", "object_type": "bild", "platform": "facebook", "post_id": "122132125089469415", "source_url": "https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247", "version": 1}
