@@ -1016,9 +1016,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-3-martin-katardaki-sag-01.jpg
 Publish-Provenienz: {"creation_id": "18015140669971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-3-martin-katardaki-sag-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18133751281801270", "published_media_id": "18133751281801270", "source_url": "https://trf1.net/motor-sporlari/motogp/martin-katardaki-saglik-kontrolunden-gecti-bilegiyle-yarisacak/124397", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 42398253886-1
+## Facebook [GEPOSTET 2026-11-07 17:51 | ID: 122132078163469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-06-daily
 Telegram-Update-ID: 279362023
@@ -1037,6 +1036,7 @@ Wie schätzt ihr seine Chancen im ersten Rennen nach der Pause ein?
 Quelle: https://trf1.net/motor-sporlari/motogp/martin-katardaki-saglik-kontrolunden-gecti-bilegiyle-yarisacak/124397
 Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-3-martin-katardaki-sag-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-3-martin-katardaki-sag-01.jpg", "media_status": "", "object_id": "122132078163469415", "object_type": "bild", "platform": "facebook", "post_id": "122132078163469415", "source_url": "https://trf1.net/motor-sporlari/motogp/martin-katardaki-saglik-kontrolunden-gecti-bilegiyle-yarisacak/124397", "version": 1}
 
 ## Instagram [GEPOSTET 2026-11-07 14:23 | ID: 18131256649803706]
 Status: GEPOSTET
