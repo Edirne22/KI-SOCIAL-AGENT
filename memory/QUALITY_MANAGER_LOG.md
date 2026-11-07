@@ -4110,3 +4110,33 @@ Story-Key: motogp:124422
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-07 14:21 UTC | Motorcycle Racing | PASS
+Titel: Katar MotoGP sıralama: Bezzecchi rekor turla pole pozisyonunda - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124581
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-07 14:21 UTC | Motorcycle Racing | PASS
+Titel: Di Giannantonio P1 under the lights at Lusail, Marquez and Martin in Q2
+Story-Key: motogp:1184250
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-07 14:21 UTC | Motorcycle Racing | PASS
+Titel: Katar'da Bezzecchi'den rekor! Marc Marquez ikinci, Martin geride kaldı
+Story-Key: title:katar-da-bezzecchi-den-rekor-marc-marquez-ikinci-martin-geride-kald
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-07 14:22 UTC | Motorcycle Racing | PASS
+Titel: 2026 MotoGP Katar GP sıralama turları: Bezzecchi rekor turla pole'de, Marquez ikinci sırada
+Story-Key: motogp:10872473
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-07 14:22 UTC | Motorcycle Racing | PASS
+Titel: Alonso fends off Holgado to clinch classy Sepang victory
+Story-Key: motogp:1181638
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

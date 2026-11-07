@@ -1215,9 +1215,17 @@
         3
       ],
       "platform_blocks": 4
+    },
+    "racing-2026-11-07-daily": {
+      "status": "READY_FOR_APPROVAL",
+      "started_at": "2026-11-07T13:40:11.094538+00:00",
+      "updated_at": "2026-11-07T14:22:14.001863+00:00",
+      "event": "schedule",
+      "github_run_id": "42377891843",
+      "arch_version": "V8.5.5"
     }
   },
-  "last_notification_at": 1793978598.0578046,
+  "last_notification_at": 1794061333.9995344,
   "last_notification_fingerprint": "8446a800fc7cfcb8d1d4ab44e86d2ec91a6b105a7605a29193805b82e3302970",
-  "active_batch_id": "racing-2026-11-06-daily"
+  "active_batch_id": "racing-2026-11-07-daily"
 }

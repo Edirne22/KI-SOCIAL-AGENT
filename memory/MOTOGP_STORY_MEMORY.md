@@ -1624,3 +1624,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-alex-riskli-sollama-
 Story-Key: motogp:124422
 Titel: Katar MotoGP 1. antrenman: Marquez lider, Martin beşinci - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/katar-motogp-1-antrenman-marquez-lider-martin-besinci/124422
+
+## 2026-11-07 13:50 UTC – ANGEBOTEN
+Story-Key: motogp:124581
+Titel: Katar MotoGP sıralama: Bezzecchi rekor turla pole pozisyonunda - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/katar-motogp-siralama-bezzecchi-rekor-turla-pole-pozisyonunda/124581
+
+## 2026-11-07 13:50 UTC – ANGEBOTEN
+Story-Key: motogp:1184250
+Titel: Di Giannantonio P1 under the lights at Lusail, Marquez and Martin in Q2
+Quelle: https://www.motogp.com/en/news/2026/11/06/di-giannantonio-p1-under-the-lights-at-lusail-marquez-and-martin-in-q2/1184250
+
+## 2026-11-07 13:50 UTC – ANGEBOTEN
+Story-Key: title:katar-da-bezzecchi-den-rekor-marc-marquez-ikinci-martin-geride-kald
+Titel: Katar'da Bezzecchi'den rekor! Marc Marquez ikinci, Martin geride kaldı
+Quelle: https://motoetkinlik.com/motogp-katar-gp-bezzecchi-den-rekorla-pole
+
+## 2026-11-07 13:50 UTC – ANGEBOTEN
+Story-Key: motogp:10872473
+Titel: 2026 MotoGP Katar GP sıralama turları: Bezzecchi rekor turla pole'de, Marquez ikinci sırada
+Quelle: https://tr.motorsport.com/motogp/news/2026-motogp-katar-gp-siralama-turlari-bezzecchi-rekor-turla-polede-marquez-ikinci-sirada/10872473
+
+## 2026-11-07 13:50 UTC – ANGEBOTEN
+Story-Key: motogp:1181638
+Titel: Alonso fends off Holgado to clinch classy Sepang victory
+Quelle: https://www.motogp.com/en/news/2026/11/01/alonso-fends-off-holgado-to-clinch-classy-sepang-victory/1181638
