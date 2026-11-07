@@ -993,3 +993,87 @@ Quelle: https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi
 Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-3-bezzecchi-marca-30-m-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-3-bezzecchi-marca-30-m-01.jpg", "media_status": "", "object_id": "122131068207469415", "object_type": "bild", "platform": "facebook", "post_id": "122131068207469415", "source_url": "https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-06-daily
+Telegram-Update-ID: 279362023
+MotoGP-Auswahl: 3
+Story-Key: motogp:124397
+Event-Fingerprint: MotoGP|sprint|martin|
+Titel: Martin, Katar’daki sağlık kontrolünden geçti: Bileğiyle yarışacak - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Jorge Martin ist zurück im Rennen. Der Aprilia-Werksfahrer hat die ärztliche Freigabe für Katar erhalten – zwei Wochen, nachdem er sich beim Sprint in Phillip Island den rechten Unterarm gebrochen hatte. Die Saison-Top-Figur darf wieder an den Start.
+
+Wie schätzt ihr seine Chancen im ersten Rennen nach der Pause ein?
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/martin-katardaki-saglik-kontrolunden-gecti-bilegiyle-yarisacak/124397
+Quelle: https://trf1.net/motor-sporlari/motogp/martin-katardaki-saglik-kontrolunden-gecti-bilegiyle-yarisacak/124397
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-3-martin-katardaki-sag-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-06-daily
+Telegram-Update-ID: 279362023
+MotoGP-Auswahl: 3
+Story-Key: motogp:124397
+Event-Fingerprint: MotoGP|sprint|martin|
+Titel: Martin, Katar’daki sağlık kontrolünden geçti: Bileğiyle yarışacak - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Jorge Martin ist zurück im Rennen. Der Aprilia-Werksfahrer hat die ärztliche Freigabe für Katar erhalten – zwei Wochen, nachdem er sich beim Sprint in Phillip Island den rechten Unterarm gebrochen hatte. Die Saison-Top-Figur darf wieder an den Start.
+
+Wie schätzt ihr seine Chancen im ersten Rennen nach der Pause ein?
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/martin-katardaki-saglik-kontrolunden-gecti-bilegiyle-yarisacak/124397
+Quelle: https://trf1.net/motor-sporlari/motogp/martin-katardaki-saglik-kontrolunden-gecti-bilegiyle-yarisacak/124397
+Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-3-martin-katardaki-sag-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-06-daily
+Telegram-Update-ID: 279362024
+MotoGP-Auswahl: 2
+Story-Key: motogp:1184247
+Event-Fingerprint: MotoGP|fp1|bezzecchi,marquez,martin|
+Titel: Marc Marquez fastest from Bezzecchi, Martin P5 in Qatar FP1
+Text:
+Marquez steht in Qatar nach dem ersten Freien Training ganz oben – vor Bezzecchi. Martin liegt mit Platz fünf auf der fünften Spur. Der Meisterschaftsführende startet also gut in das Wochenende, und für seinen engsten Verfolger im Titelkampf sieht es nach Lusail auch nicht schlecht aus.
+
+Was erwartet ihr von der Runde in Qatar?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247
+Quelle: https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-06-daily
+Telegram-Update-ID: 279362024
+MotoGP-Auswahl: 2
+Story-Key: motogp:1184247
+Event-Fingerprint: MotoGP|fp1|bezzecchi,marquez,martin|
+Titel: Marc Marquez fastest from Bezzecchi, Martin P5 in Qatar FP1
+Text:
+Marquez steht in Qatar nach dem ersten Freien Training ganz oben – vor Bezzecchi. Martin liegt mit Platz fünf auf der fünften Spur. Der Meisterschaftsführende startet also gut in das Wochenende, und für seinen engsten Verfolger im Titelkampf sieht es nach Lusail auch nicht schlecht aus.
+
+Was erwartet ihr von der Runde in Qatar?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247
+Quelle: https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247
+Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg
+Link-Preview: offiziell
