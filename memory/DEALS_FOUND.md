@@ -3451,3 +3451,36 @@ Verifiziertes Angebot: nein
 
 Live-Suche über Apify (öffentliche Google-Treffer):
 Keine Suchtreffer für 'handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12' gefunden.
+## Suche vom 2026-11-07 12:20
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem solchen Mobilfunktarif:
+
+### 1. Mögliche Händlerarten und Anbieter im D1-Netz (Telekom-Netz)
+* **Netzbetreiber (Direktanbieter):** Tarife direkt beim Netzbetreiber bieten meist die höchste Maximalgeschwindigkeit (5G) und Premium-Service, liegen preislich bei hohem Datenvolumen jedoch meist über dem Discount-Bereich.
+* **Zweitmarken & Tochtergesellschaften:** Anbietermarken aus dem Konzernumfeld des Netzbetreibers bieten oft ein gutes Preis-Leistungs-Verhältnis im selben Netz, teils mit reduzierter Maximalgeschwindigkeit.
+* **Unabhängige MVNOs & Mobilfunk-Discounter:** Drittanbieter nutzen das D1-Netz und bieten häufig sehr günstige Datentarife an.
+* **Freie Händler & Vergleichsportal-Reseller:** Vermittler bieten oft Bündelangebote oder Sonderkonditionen (z. B. Wechselboni oder Einmalzahlungen), die den monatlichen *Effektivpreis* rechnerisch stark senken können.
+
+### 2. Produktfamilien und Tarifarten
+* **24-Monats-Verträge:** Bieten rechnerisch oft die günstigsten Monatspreise, da Einrichtungsgebühren oder Boni auf die Mindestvertragslaufzeit umgelegt werden.
+* **Monatlich kündbare Tarife (Flex-Tarife):** Bieten maximale Flexibilität, haben bei sehr hohem Datenvolumen (wie 80 GB) aber teilweise höhere Grundgebühren oder Anschlusskosten.
+* **Junge-Leute- / Young-Tarife:** Falls ein entsprechendes Alter vorliegt, bieten viele Marken Zusatzvolumen oder Rabatte auf die Grundgebühr.
+* **Tarife mit Rufnummernmitnahme-Bonus:** Oft lässt sich der rechnerische Monatspreis drücken, wenn ein Bonus für das Mitbringen der alten Rufnummer gewährt wird.
+
+### 3. Wichtige Auswahlkriterien für dieses Anforderungsprofil
+* **Rechnerischer Effektivpreis vs. Grundgebühr:** Um ein hohes Volumen im D-Netz im niedrigen Preissegment zu erreichen, muss oft der Effektivpreis (inklusive Rabatte, Boni und Anschlussgebühren verteilt auf 24 Monate) betrachtet werden.
+* **Geschwindigkeitsbegrenzung (Mbit/s):** Bei günstigen Tarifen im D1-Netz ist die Download-Geschwindigkeit oft auf 25 oder 50 Mbit/s gedrosselt. Für normales Streaming und Surfen reicht dies in der Regel völlig aus.
+* **5G-Freischaltung:** Prüfen, ob 5G im Tarif enthalten ist oder ob es sich um reinen LTE/4G-Zugang handelt.
+* **Datenautomatik:** Achten Sie darauf, ob nach Verbrauch der 80 GB kostenpflichtig Datenvolumen nachgebucht wird (Datenautomatik) oder ob lediglich die Geschwindigkeit gedrosselt wird (ideal: kostenlose Drosselung).
+* **VoLTE und WiFi Calling:** Sollte für moderne HD-Telefonie und besseren Empfang in Gebäuden im Tarif enthalten sein.
+
+Bitte in 10 Minuten erneut versuchen.
