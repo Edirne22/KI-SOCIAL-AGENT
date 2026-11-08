@@ -1107,9 +1107,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-an
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 42528924558-1
+## Facebook [GEPOSTET 2026-11-08 22:11 | ID: 122132500989469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-08-daily
 Telegram-Update-ID: 279362028
@@ -1132,3 +1131,4 @@ Was haltet ihr von diesem Vorfall – reines Renngeschäft oder mehr Disput?
 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654
 Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg", "media_status": "", "object_id": "122132500989469415", "object_type": "bild", "platform": "facebook", "post_id": "122132500989469415", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654", "version": 1}
