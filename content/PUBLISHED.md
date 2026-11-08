@@ -1081,3 +1081,53 @@ Quelle: https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezz
 Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg", "media_status": "", "object_id": "122132125089469415", "object_type": "bild", "platform": "facebook", "post_id": "122132125089469415", "source_url": "https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-08-daily
+Telegram-Update-ID: 279362028
+MotoGP-Auswahl: 2
+Story-Key: motogp:124654
+Event-Fingerprint: MotoGP|sprint|bezzecchi,marquez|
+Titel: Bezzecchi, Marquez’le çarpışmayı anlattı: Çizgimi korumaya çalıştım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marco Bezzecchi startete mit der Pole-Position und galt als klarer Favorit zum Sprintrennen in Katar.
+
+In der vierten Runde führte ein Kontakt mit Marc Marquez dazu, dass Bezzecchi ausbrach und die Hoffnung auf den Sieg schnell verpuffte.
+
+Bei dem Aufprall ging Marc Marquez' Airbag los, während der Weltmeisterschaftsführende auf der Ducati sitzen blieb.
+
+Was haltet ihr von diesem Vorfall – reines Renngeschäft oder mehr Disput?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-08-daily
+Telegram-Update-ID: 279362028
+MotoGP-Auswahl: 2
+Story-Key: motogp:124654
+Event-Fingerprint: MotoGP|sprint|bezzecchi,marquez|
+Titel: Bezzecchi, Marquez’le çarpışmayı anlattı: Çizgimi korumaya çalıştım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marco Bezzecchi startete mit der Pole-Position und galt als klarer Favorit zum Sprintrennen in Katar.
+
+In der vierten Runde führte ein Kontakt mit Marc Marquez dazu, dass Bezzecchi ausbrach und die Hoffnung auf den Sieg schnell verpuffte.
+
+Bei dem Aufprall ging Marc Marquez' Airbag los, während der Weltmeisterschaftsführende auf der Ducati sitzen blieb.
+
+Was haltet ihr von diesem Vorfall – reines Renngeschäft oder mehr Disput?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654
+Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg
+Link-Preview: offiziell

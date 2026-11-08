@@ -1225,12 +1225,17 @@
       "arch_version": "V8.5.5"
     },
     "racing-2026-11-08-daily": {
-      "status": "READY_FOR_APPROVAL",
+      "status": "FREIGEGEBEN",
       "started_at": "2026-11-08T13:59:22.360042+00:00",
-      "updated_at": "2026-11-08T14:46:34.609136+00:00",
+      "updated_at": "2026-11-08T18:36:19.803455+00:00",
       "event": "schedule",
       "github_run_id": "42487407700",
-      "arch_version": "V8.5.5"
+      "arch_version": "V8.5.5",
+      "telegram_update_id": 279362028,
+      "selection": [
+        2
+      ],
+      "platform_blocks": 2
     }
   },
   "last_notification_at": 1794149194.606681,
