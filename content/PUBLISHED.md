@@ -1082,8 +1082,8 @@ Bild: assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marque
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-06-racing-editorial-2026-11-06-2-marc-marquez-fastest-01.jpg", "media_status": "", "object_id": "122132125089469415", "object_type": "bild", "platform": "facebook", "post_id": "122132125089469415", "source_url": "https://www.motogp.com/en/news/2026/11/06/marc-marquez-fastest-from-bezzecchi-martin-p5-in-qatar-fp1/1184247", "version": 1}
 
-## Instagram
-Status: BILD_GENERIERT
+## Instagram [GEPOSTET 2026-11-08 22:26 | ID: 18415529473091110]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-08-daily
 Telegram-Update-ID: 279362028
@@ -1106,6 +1106,7 @@ Was haltet ihr von diesem Vorfall – reines Renngeschäft oder mehr Disput?
 Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg
+Publish-Provenienz: {"creation_id": "18015352979971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18415529473091110", "published_media_id": "18415529473091110", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654", "version": 1}
 
 ## Facebook [GEPOSTET 2026-11-08 22:11 | ID: 122132500989469415]
 Status: GEPOSTET
@@ -1132,3 +1133,53 @@ Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-an
 Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg", "media_status": "", "object_id": "122132500989469415", "object_type": "bild", "platform": "facebook", "post_id": "122132500989469415", "source_url": "https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-08-daily
+Telegram-Update-ID: 279362030
+MotoGP-Auswahl: 4
+Story-Key: motogp:124730
+Event-Fingerprint: MotoGP|sprint|bezzecchi,giannantonio,marquez|
+Titel: Marquez ile Di Giannantonio arasında Bezzecchi çarpışması gerilimi: Bakman gerekiyordu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez und Fabio Di Giannantonio hatten bei der Kamera hinter den Kulissen einen hitzigen Wortwechsel — ausgerechnet wegen Marco Bezzecchis Kollision im Sprint von Katar.
+
+Bezzecchi muss im MotoGP-Wochenende in Katar mindestens acht Punkte mehr als Marquez holen, nur dann bleiben seine Titelhoffnungen am Leben.
+
+Mit dem Sieg oder einem guten Ergebnis könnte er den Druck auf Marquez nehmen und die Sache bis zum nächsten Lauf nach Portugal offen halten.
+
+Wie seht ihr die Situation — macht Bezzecchi noch mit oder ist der Rückstand schon zu groß?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-08-daily
+Telegram-Update-ID: 279362030
+MotoGP-Auswahl: 4
+Story-Key: motogp:124730
+Event-Fingerprint: MotoGP|sprint|bezzecchi,giannantonio,marquez|
+Titel: Marquez ile Di Giannantonio arasında Bezzecchi çarpışması gerilimi: Bakman gerekiyordu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez und Fabio Di Giannantonio hatten bei der Kamera hinter den Kulissen einen hitzigen Wortwechsel — ausgerechnet wegen Marco Bezzecchis Kollision im Sprint von Katar.
+
+Bezzecchi muss im MotoGP-Wochenende in Katar mindestens acht Punkte mehr als Marquez holen, nur dann bleiben seine Titelhoffnungen am Leben.
+
+Mit dem Sieg oder einem guten Ergebnis könnte er den Druck auf Marquez nehmen und die Sache bis zum nächsten Lauf nach Portugal offen halten.
+
+Wie seht ihr die Situation — macht Bezzecchi noch mit oder ist der Rückstand schon zu groß?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730
+Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg
+Link-Preview: offiziell

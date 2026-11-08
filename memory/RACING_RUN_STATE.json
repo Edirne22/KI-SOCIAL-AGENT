@@ -1227,15 +1227,16 @@
     "racing-2026-11-08-daily": {
       "status": "FREIGEGEBEN",
       "started_at": "2026-11-08T13:59:22.360042+00:00",
-      "updated_at": "2026-11-08T18:36:19.803455+00:00",
+      "updated_at": "2026-11-08T22:26:57.858145+00:00",
       "event": "schedule",
       "github_run_id": "42487407700",
       "arch_version": "V8.5.5",
-      "telegram_update_id": 279362028,
+      "telegram_update_id": 279362030,
       "selection": [
-        2
+        2,
+        4
       ],
-      "platform_blocks": 2
+      "platform_blocks": 4
     }
   },
   "last_notification_at": 1794149194.606681,
