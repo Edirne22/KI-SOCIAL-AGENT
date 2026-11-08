@@ -1412,3 +1412,42 @@ Technische Protokolle der Deal-Hunter-Suchwege. Keine Preise oder Zugangsdaten s
 - Provider: Gemini-Fallback
 - Live-Suche: nein
 - Hinweis: Wissens-Fallback ohne Live-Websuche
+## 2026-11-08 12:36
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Apify-Google-Suche
+- Live-Suche: ja
+- Hinweis: Fallback: SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 403, detail={   "error": {     "type": "platform-feature-disabled",     "message": "You've used the $5.00 of monthly usage included in the Free plan, so Actor runs and other Apify services are blocked until your
+## 2026-11-08 12:36
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: SearXNG
+- Hinweis: Nicht konfiguriert
+## 2026-11-08 12:36
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 1
+## 2026-11-08 12:37
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 2
+## 2026-11-08 12:38
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 3
+## 2026-11-08 12:40
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: Rate-Limit HTTP 429, Versuch 4
+## 2026-11-08 12:40
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Grounded
+- Live-Suche: ja
+- Hinweis: SEARCH-FEHLER: provider=Gemini-Grounded, ursache=HTTP 429 Rate Limit, detail=Rate-Limit nach 3 Versuchen nicht behoben
+## 2026-11-08 12:40
+- Anfrage: handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+- Provider: Gemini-Fallback
+- Live-Suche: nein
+- Hinweis: Wissens-Fallback ohne Live-Websuche

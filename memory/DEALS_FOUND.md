@@ -3484,3 +3484,31 @@ Hier sind allgemeine, zeitunabhängige Hinweise zur Suche nach einem solchen Mob
 * **VoLTE und WiFi Calling:** Sollte für moderne HD-Telefonie und besseren Empfang in Gebäuden im Tarif enthalten sein.
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-11-08 12:40
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine und zeitunabhängige Hinweise zur Suche nach einem passenden Mobilfunktarif mit hohem Datenvolumen im Telekom-Netz (D1):
+
+### 1. Mögliche Händlerarten und Anbieterstrukturen
+* **Netzbetreiber-Zweitmarken & MVNOs:** Direkt beim Netzbetreiber sind sehr hohe Datenvolumina zu niedrigen Preisen selten. Günstigere D1-Tarife finden sich häufig bei Discount-Töchtern, unabhängigen Mobilfunk-Discountern oder Service-Providern.
+* **Online-Vergleichsportale & freie Händler:** Freie Vermittler bieten oft Sonderaktionen an, bei denen der rechnerische Preis durch Cashback, Einmalauszahlungen oder Händler-Rabatte gesenkt wird.
+* **Kombinationsangebote (Festnetz & Mobilfunk):** Falls bereits ein Festnetzanschluss beim Netzbetreiber besteht, bieten sogenannte „Kombi-Vorteile“ oft erheblich mehr Datenvolumen oder monatliche Preisnachlässe.
+
+### 2. Produktfamilien und Tarifkonzepte
+* **SIM-Only-Tarife:** Reine Tarifverträge ohne Smartphone bieten in der Regel die beste Grundgebühr, wenn kein neues Gerät benötigt wird.
+* **Hardware-Bundles (Resale-Modell):** Gelegentlich ist ein Tarif rechnerisch günstiger, wenn er zusammen mit einem Smartphone abgeschlossen wird. Durch den Verkauf des Geräts lässt sich der Effektivpreis des Tarifs pro Monat drastisch senken.
+* **Monatlich kündbar vs. 24 Monate Laufzeit:** Tarife mit 24 Monaten Mindestvertragslaufzeit enthalten meist stärkere Neukundenrabatte oder höhere Datenvolumina als flexibel kündbare Varianten.
+* **Junge-Leute- & Zusatzkarten-Tarife:** Für Personen unter einem bestimmten Alter oder als Zweitkarte zu einem bestehenden Hauptvertrag gibt es oft Sonderkonditionen mit mehr Datenvolumen.
+
+### 3. Wichtige Auswahl- und Vergleichskriterien
+* **Geschwindigkeit (Mbit/s) und 5G:** Im D1-Netz
+
+Bitte in 10 Minuten erneut versuchen.
