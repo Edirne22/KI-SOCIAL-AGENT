@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1794059425
+Session-Timestamp: 1794147007
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,29 +15,27 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 4
-QM-Ruecklaeufe: 4
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: motogp:124581
-Titel: Katar MotoGP sıralama: Bezzecchi rekor turla pole pozisyonunda - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/katar-motogp-siralama-bezzecchi-rekor-turla-pole-pozisyonunda/124581
+Artikelalter-Tage: 0.9
+Kategorie: Turkish Riders
+Serie: Moto2
+Story-Key: motogp:10872612
+Titel: 2026 Moto2 Katar sıralama: Escrig’den sürpriz pole, Gonzalez ikinci sırada, Deniz Öncü 26. sırada
+Quelle: https://tr.motorsport.com/moto2/news/2026-moto2-katar-siralama-escrigden-surpriz-pole-gonzalez-ikinci-sirada-deniz-oncu-26-sirada/10872612
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-07-racing-editorial-2026-11-07-1-katar-motogp-siralam-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1360095_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-1-2026-moto2-katar-sir-01.jpg
+Quellen-Preview: https://cdn-6.motorsport.com/images/amp/2wlKMEpY/s6/escrig.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marco Bezzecchi sicherte sich im Qualifying zum Katar-GP in Lusail mit einer Rekordzeit von 1:50.028 Minuten die Pole-Position.
+Sitzung vorbei, Ergebnis steht: Alex Escrig hat sich in Katar die Pole gesichert.
 
-Der Aprilia-Fahrer verwies den WM-Führenden Marc Marquez um 0,266 Sekunden auf den zweiten Platz.
+Bei den Trainings zur Moto2-WM in Katar ging der Pole an Alex Escrig. Das Titelblatt des Resultats nennt es eine Überraschung. Auf Rang zwei folgt Gonzalez, Deniz Öncü landet mit Platz 26 am anderen Ende des Feldes.
 
-Für Bezzecchi war es die fünfte Pole-Position der laufenden Saison.
+Wie schätzt ihr die Ausgangslage für das Rennen ein?
 
-Mal sehen, wie sich das am Wochenende auf der Strecke entwickelt.
-
-#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -45,29 +43,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.6
+Artikelalter-Tage: 0.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1184250
-Titel: Di Giannantonio P1 under the lights at Lusail, Marquez and Martin in Q2
-Quelle: https://www.motogp.com/en/news/2026/11/06/di-giannantonio-p1-under-the-lights-at-lusail-marquez-and-martin-in-q2/1184250
+Story-Key: motogp:124654
+Titel: Bezzecchi, Marquez’le çarpışmayı anlattı: Çizgimi korumaya çalıştım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-07-racing-editorial-2026-11-07-2-di-giannantonio-p1-u-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/06/66933c22-67ff-4e6c-a8f1-01d1ee3c2e04/Report-MGP-PR-QAT.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-2-bezzecchi-marquezle-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1361369_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Di Giannantonio hat bei den Trainings under the lights in Lusail die Bestzeit aufgestellt und einen neuen Rundenrekord aufgestellt 🏍️
+Marco Bezzecchi startete mit der Pole-Position und galt als klarer Favorit zum Sprintrennen in Katar.
 
-Martin steht zusammen mit den beiden Spitzenreitern der Meisterschaft in Q2.
+In der vierten Runde führte ein Kontakt mit Marc Marquez dazu, dass Bezzecchi ausbrach und die Hoffnung auf den Sieg schnell verpuffte.
 
-Samstag geht es dann im Titelkampf direct head-to-head weiter.
+Bei dem Aufprall ging Marc Marquez' Airbag los, während der Weltmeisterschaftsführende auf der Ducati sitzen blieb.
 
-Was erwartet ihr von dem Weekend in Lusail? 👀
+Was haltet ihr von diesem Vorfall – reines Renngeschäft oder mehr Disput?
 
-#MotoGP #JorgeMartin #FabioDiGiannantonio #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -76,28 +74,26 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 0
+QM-Ruecklaeufe: 3
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
+Artikelalter-Tage: 0.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:katar-da-bezzecchi-den-rekor-marc-marquez-ikinci-martin-geride-kald
-Titel: Katar'da Bezzecchi'den rekor! Marc Marquez ikinci, Martin geride kaldı
-Quelle: https://motoetkinlik.com/motogp-katar-gp-bezzecchi-den-rekorla-pole
+Story-Key: motogp:124617
+Titel: Katar MotoGP sprint kırmızı bayrakla durdu: Aldeguer, Bagnaia’ya çarptı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/katar-motogp-sprint-kirmizi-bayrakla-durdu-aldeguer-bagnaiaya-carpti/124617
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-07-racing-editorial-2026-11-07-3-katar-da-bezzecchi-d-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/11/marco-bezzecchi-motogp-katar-gp-2026-pole-rekoru.webp
+Instagram-Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-3-katar-motogp-sprint-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1361210_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marco Bezzecchi hat beim MotoGP-Qualifying in Katar den Streckenrekord mit 1:50.028 aufgestellt.
+Katar MotoGP Sprint schon nach einer Runde vorbei 🚩
 
-Marc Marquez landete auf Platz zwei, Di Giannantonio wurde Dritter.
+Der Sprintlauf in Katar endete abrupt durch eine rote Flagge, nachdem Pecco Bagnaia in der ersten Kurve schwer zu Sturz kam. Fermin Aldeguer war am Unfall beteiligt. Vor dem Zwischenfall hatte sich Bagnaia sogar noch auf den dritten Platz gearbeitet. In der folgenden Zeit verlor er aber wieder an Di Giannantonio und Fernandez an Boden.
 
-Jorge Martin musste mit Startplatz elf zufriedengeben.
+Was haltet ihr von der Situation um den Sprint - war derabbruch vertretbar?
 
-Was haltet ihr von den Leistungen der Ducati-Piloten?
-
-#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -105,25 +101,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 0.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10872473
-Titel: 2026 MotoGP Katar GP sıralama turları: Bezzecchi rekor turla pole'de, Marquez ikinci sırada
-Quelle: https://tr.motorsport.com/motogp/news/2026-motogp-katar-gp-siralama-turlari-bezzecchi-rekor-turla-polede-marquez-ikinci-sirada/10872473
+Story-Key: motogp:124730
+Titel: Marquez ile Di Giannantonio arasında Bezzecchi çarpışması gerilimi: Bakman gerekiyordu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-07-racing-editorial-2026-11-07-4-2026-motogp-katar-gp-01.jpg
-Quellen-Preview: https://cdn-8.motorsport.com/images/amp/Y9lNZjP2/s6/marco-bezzecchi-aprilia-racing.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1361414_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marco Bezzecchi hat sich im Qualifying zum Katar GP 2026 durchgesetzt. Mit einer Rekordrunde sicherte er sich in der Session die Pole-Position. 🏁
+Marc Marquez und Fabio Di Giannantonio hatten bei der Kamera hinter den Kulissen einen hitzigen Wortwechsel — ausgerechnet wegen Marco Bezzecchis Kollision im Sprint von Katar.
 
-Was traut ihr Marco Bezzecchi nach dieser Pole-Position im Rennen zu?
+Bezzecchi muss im MotoGP-Wochenende in Katar mindestens acht Punkte mehr als Marquez holen, nur dann bleiben seine Titelhoffnungen am Leben.
 
-#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Mit dem Sieg oder einem guten Ergebnis könnte er den Druck auf Marquez nehmen und die Sache bis zum nächsten Lauf nach Portugal offen halten.
+
+Wie seht ihr die Situation — macht Bezzecchi noch mit oder ist der Rückstand schon zu groß?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -132,24 +132,24 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 1
-QM-Ruecklaeufe: 1
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 6.6
-Kategorie: Moto2
-Serie: Moto2
-Story-Key: motogp:1181638
-Titel: Alonso fends off Holgado to clinch classy Sepang victory
-Quelle: https://www.motogp.com/en/news/2026/11/01/alonso-fends-off-holgado-to-clinch-classy-sepang-victory/1181638
+Artikelalter-Tage: 0.0
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:10872857
+Titel: Aldeguer, Bagnaia kazasını açıkladı: "O kadar da riskli bir hamle değildi"
+Quelle: https://tr.motorsport.com/motogp/news/aldeguer-bagnaiadan-ozur-diledigini-acikladi-o-kadar-da-riskli-bir-hamle-degildi/10872857
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-07-racing-editorial-2026-11-07-5-alonso-fends-off-hol-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/01/0144bdc3-ee47-405e-8b2e-9d2ea486e02b/Report-M2-RACE-MAL.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-5-aldeguer-bagnaia-kaz-01.jpg
+Quellen-Preview: https://cdn-8.motorsport.com/images/amp/6zoDN1P0/s6/fermin-aldeguer-gresini-racing.jpg
 Plattformen: Instagram + Facebook
 Text:
-Bei Alonso hat Holgado richtig gedrückts – und trotzdem reichts für den Sieg bei Sepang. Fürs Aspar Team wars ne klare 1-2, dazu Piqueras aufm Podium, sei erste überhaupt im Moto2. Und in der Meisterschaft? Der Abstand zwischen Gonzalez und Guevara wird wieder knapper. 🏍️💨
+Fermin Aldeguer vom Team Gresini ist im Katar-Sprint gestürzt und hat Pecco Bagnaia zum Sturz gebracht. Aldeguer gab daraufhin zu, die Kontrolle zu verlieren, und entschuldigte sich. Der Vorfall ereignete sich beim MotoGP-Sprint in Katar.
 
-Wie seht ihr die Titelkämpfe nach dieser Runde?
+Was haltet ihr von Aldegüers Eingeständnis nach dem Sturz mit Bagnaia?
 
-#Moto2 #DanielHolgado #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #FerminAldeguer #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

@@ -1649,3 +1649,28 @@ Quelle: https://tr.motorsport.com/motogp/news/2026-motogp-katar-gp-siralama-turl
 Story-Key: motogp:1181638
 Titel: Alonso fends off Holgado to clinch classy Sepang victory
 Quelle: https://www.motogp.com/en/news/2026/11/01/alonso-fends-off-holgado-to-clinch-classy-sepang-victory/1181638
+
+## 2026-11-08 14:10 UTC – ANGEBOTEN
+Story-Key: motogp:10872612
+Titel: 2026 Moto2 Katar sıralama: Escrig’den sürpriz pole, Gonzalez ikinci sırada, Deniz Öncü 26. sırada
+Quelle: https://tr.motorsport.com/moto2/news/2026-moto2-katar-siralama-escrigden-surpriz-pole-gonzalez-ikinci-sirada-deniz-oncu-26-sirada/10872612
+
+## 2026-11-08 14:10 UTC – ANGEBOTEN
+Story-Key: motogp:124654
+Titel: Bezzecchi, Marquez’le çarpışmayı anlattı: Çizgimi korumaya çalıştım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-marquezle-carpismayi-anlatti-cizgimi-korumaya-calistim/124654
+
+## 2026-11-08 14:10 UTC – ANGEBOTEN
+Story-Key: motogp:124617
+Titel: Katar MotoGP sprint kırmızı bayrakla durdu: Aldeguer, Bagnaia’ya çarptı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/katar-motogp-sprint-kirmizi-bayrakla-durdu-aldeguer-bagnaiaya-carpti/124617
+
+## 2026-11-08 14:10 UTC – ANGEBOTEN
+Story-Key: motogp:124730
+Titel: Marquez ile Di Giannantonio arasında Bezzecchi çarpışması gerilimi: Bakman gerekiyordu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730
+
+## 2026-11-08 14:10 UTC – ANGEBOTEN
+Story-Key: motogp:10872857
+Titel: Aldeguer, Bagnaia kazasını açıkladı: "O kadar da riskli bir hamle değildi"
+Quelle: https://tr.motorsport.com/motogp/news/aldeguer-bagnaiadan-ozur-diledigini-acikladi-o-kadar-da-riskli-bir-hamle-degildi/10872857

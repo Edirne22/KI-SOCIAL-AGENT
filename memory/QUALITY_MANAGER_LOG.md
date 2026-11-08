@@ -4140,3 +4140,39 @@ Story-Key: motogp:1181638
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-08 14:45 UTC | Motorcycle Racing | PASS
+Titel: 2026 Moto2 Katar sıralama: Escrig’den sürpriz pole, Gonzalez ikinci sırada, Deniz Öncü 26. sırada
+Story-Key: motogp:10872612
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-08 14:45 UTC | Motorcycle Racing | PASS
+Titel: Bezzecchi, Marquez’le çarpışmayı anlattı: Çizgimi korumaya çalıştım - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124654
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-08 14:46 UTC | Motorcycle Racing | FAIL
+Titel: Katar MotoGP sprint kırmızı bayrakla durdu: Aldeguer, Bagnaia’ya çarptı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124617
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-08 14:46 UTC | Motorcycle Racing | PASS
+Titel: Katar MotoGP sprint kırmızı bayrakla durdu: Aldeguer, Bagnaia’ya çarptı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124617
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-08 14:46 UTC | Motorcycle Racing | PASS
+Titel: Marquez ile Di Giannantonio arasında Bezzecchi çarpışması gerilimi: Bakman gerekiyordu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124730
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-08 14:46 UTC | Motorcycle Racing | PASS
+Titel: Aldeguer, Bagnaia kazasını açıkladı: "O kadar da riskli bir hamle değildi"
+Story-Key: motogp:10872857
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
