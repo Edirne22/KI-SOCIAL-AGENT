@@ -529,3 +529,27 @@ Die folgenden Angaben basieren ausschließlich auf den öffentlich zugänglichen
 
 **Belegte Kernfunktionen:**
 * **GPS-Tracking:** Aufzeichnen gefahrener Routen mit Erfassung von Streckendaten wie Dist
+
+
+# Ride With Me Analyse vom 2026-11-09 13:46:39
+# Produkt- und Community-Analyse: Ride With Me
+
+## 1. App-Zusammenfassung (Öffentlich belegte Funktionen)
+
+Die Datenbasis dieser Zusammenfassung basiert ausschließlich auf den öffentlich zugänglichen Angaben der offiziellen Website (`ridewithme.app`) sowie dem Eintrag im Google Play Store.
+
+* **GPS-Routenaufzeichnung:** Erfassung von gefahrenen Strecken, Höhenprofilen und Fahrdaten während der Tour.
+* **Tourenplanung & Entdeckung:** Erstellen eigener Routen oder Suchen nach vorhandenen Strecken in der Umgebung. Unterstützung für GPX-Import und -Export zur Nutzung mit externen Navigationsgeräten.
+* **Community- & Gruppenfunktion:** Finden von Fahrern in der Nähe, Erstellen von spontanen Ausfahrten und öffentlichen oder privaten Gruppenfahrten.
+* **Sicherheits- & Notfall-Features:** SOS-Funktion bzw. Notfall-Benachrichtigung zur Standortübermittlung bei Zwischenfällen während der Fahrt.
+* **Kartenmaterial:** Nutzung von Kartenansichten für die Navigation und Streckenauswahl, inklusive Offline-Optionen je nach Konto-Typ.
+
+---
+
+## 2. Mögliche Nutzerbedürfnisse
+
+Diese Punkte stellen allgemeine Anforderungen von Motorradfahrerinnen und -fahrern dar. Sie sind bewusst von den bestehenden App-Funktionen getrennt, um Potenziale und Markterwartungen aufzuzeigen.
+
+* **Effiziente Gruppenorganisation:** Vermeidung von unübersichtlichen Absprachen in klassischen Messengerdiensten bei der Planung von Feierabendrunden oder Tagestouren.
+* **Sicherheit bei Einzelfahrten:** Absicherung durch automatisierte Notfallsignale oder Standortfreigaben, da viele Biker regelmäßig allein auf abgelegenen Strecken unterwegs sind.
+* **Relevante Streckeninformationen:** Nachfrage nach kurvenreichen, gut asphaltierten Routen abseits viel befahrenener Bundesstraßen inklusive Warnungen vor aktuellen Gef
