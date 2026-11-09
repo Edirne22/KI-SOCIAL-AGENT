@@ -1068,9 +1068,8 @@ Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg
 Publish-Provenienz: {"creation_id": "18015366215971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "17931407511182279", "published_media_id": "17931407511182279", "source_url": "https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730", "version": 1}
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 42642439058-1
+## Facebook [GEPOSTET 2026-11-09 15:13 | ID: 122132719443469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-08-daily
 Telegram-Update-ID: 279362030
@@ -1093,3 +1092,4 @@ Wie seht ihr die Situation — macht Bezzecchi noch mit oder ist der Rückstand 
 Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730
 Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg", "media_status": "", "object_id": "122132719443469415", "object_type": "bild", "platform": "facebook", "post_id": "122132719443469415", "source_url": "https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730", "version": 1}
