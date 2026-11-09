@@ -3512,3 +3512,14 @@ Hier sind allgemeine und zeitunabhängige Hinweise zur Suche nach einem passende
 * **Geschwindigkeit (Mbit/s) und 5G:** Im D1-Netz
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-11-09 14:58
+Anfrage: handyvertrag 80GB D1
+Provider: Keiner (Fehler)
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Suche derzeit nicht verfügbar für 'handyvertrag 80GB D1'.
+Ursache: ⏳ Suche derzeit nicht möglich – bitte in 10 Minuten erneut versuchen.
+SEARCH-FEHLER: provider=Alle, ursache=Alle Suchanbieter fehlgeschlagen, detail=SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 403, detail={   "error": {     "type": "platform-feature-disabled",     "message": "You've used the $5.00 of monthly usage included in the Free plan, so Actor runs and other Apify services are blocked until your | SEARCH-FEHLER: provider=SearXNG, ursache=Nicht konfiguriert, detail=SEARXNG_URL fehlt
+Bitte später erneut versuchen.
