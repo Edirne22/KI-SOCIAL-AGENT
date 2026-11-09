@@ -287,3 +287,9 @@
 - HTTP-Status: 201
 - Ergebniszeilen: 10
 - Details: erfolgreich
+## YouTube Apify (2026-11-09 13:26)
+- Actor: trysmartapi~youtube-scraper
+- Operation: search_videos
+- HTTP-Status: 403
+- Ergebniszeilen: 0
+- Details: Actor-Aufruf fehlgeschlagen
