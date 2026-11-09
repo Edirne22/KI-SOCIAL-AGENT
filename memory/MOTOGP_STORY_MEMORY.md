@@ -1674,3 +1674,33 @@ Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasi
 Story-Key: motogp:10872857
 Titel: Aldeguer, Bagnaia kazasını açıkladı: "O kadar da riskli bir hamle değildi"
 Quelle: https://tr.motorsport.com/motogp/news/aldeguer-bagnaiadan-ozur-diledigini-acikladi-o-kadar-da-riskli-bir-hamle-degildi/10872857
+
+## 2026-11-09 17:07 UTC – ANGEBOTEN
+Story-Key: title:moto2-katar-gp-holgado-kazand-guevara-tamamlayamad-deniz-21-s-rada
+Titel: Moto2 Katar GP: Holgado Kazandı, Guevara Tamamlayamadı, Deniz 21. Sırada
+Quelle: https://motoetkinlik.com/moto2-katar-gp-holgado-kazandi-guevara-tamamlayamadi-deniz-21-sirada
+
+## 2026-11-09 17:07 UTC – ANGEBOTEN
+Story-Key: motogp:10872994
+Titel: Moto2 Katar yarış: Daniel Holgado zafere ulaştı, Deniz Öncü 21.sırada tamamladı
+Quelle: https://tr.motorsport.com/moto2/news/moto2-katar-yaris-daniel-holgado-zafere-ulasti-deniz-oncu-21sirada-tamamladi/10872994
+
+## 2026-11-09 17:07 UTC – ANGEBOTEN
+Story-Key: motogp:124895
+Titel: Marquez’in şampiyonluğunu geciktirmek haklıydı: Katar’da Bezzecchi ve Martin’in hak ettiği sahne - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquezin-sampiyonlugunu-geciktirmek-hakliydi-katarda-bezzecchi-ve-martinin-hak-ettigi-sahne/124895
+
+## 2026-11-09 17:07 UTC – ANGEBOTEN
+Story-Key: motogp:1184244
+Titel: Escrig untouchable as Gonzalez wins battle of wits with Guevara
+Quelle: https://www.motogp.com/en/news/2026/11/07/escrig-untouchable-as-gonzalez-wins-battle-of-wits-with-guevara/1184244
+
+## 2026-11-09 17:07 UTC – ANGEBOTEN
+Story-Key: motogp:124765
+Titel: Rivola, Marquez-Bezzecchi kazasının ardından yarış yönetimini eleştirdi: 24 saat sonra da fikrim aynı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/rivola-marquez-bezzecchi-kazasinin-ardindan-yaris-yonetimini-elestirdi-24-saat-sonra-da-fikrim-ayni/124765
+
+## 2026-11-09 17:07 UTC – ANGEBOTEN
+Story-Key: motogp:124826
+Titel: Martin, Katar’a gelmekte tereddüt ettiğini itiraf etti: Şu anda şampiyonluğu pek umursamıyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/martin-katara-gelmekte-tereddut-ettigini-itiraf-etti-su-anda-sampiyonlugu-pek-umursamiyorum/124826

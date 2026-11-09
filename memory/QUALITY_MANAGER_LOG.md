@@ -4176,3 +4176,33 @@ Story-Key: motogp:10872857
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-09 17:39 UTC | Motorcycle Racing | PASS
+Titel: Moto2 Katar yarış: Daniel Holgado zafere ulaştı, Deniz Öncü 21.sırada tamamladı
+Story-Key: motogp:10872994
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-09 17:39 UTC | Motorcycle Racing | PASS
+Titel: Marquez’in şampiyonluğunu geciktirmek haklıydı: Katar’da Bezzecchi ve Martin’in hak ettiği sahne - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124895
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-09 17:39 UTC | Motorcycle Racing | PASS
+Titel: Escrig untouchable as Gonzalez wins battle of wits with Guevara
+Story-Key: motogp:1184244
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-09 17:39 UTC | Motorcycle Racing | PASS
+Titel: Rivola, Marquez-Bezzecchi kazasının ardından yarış yönetimini eleştirdi: 24 saat sonra da fikrim aynı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124765
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-09 17:40 UTC | Motorcycle Racing | PASS
+Titel: Martin, Katar’a gelmekte tereddüt ettiğini itiraf etti: Şu anda şampiyonluğu pek umursamıyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124826
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
