@@ -1093,3 +1093,27 @@ Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasi
 Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg", "media_status": "", "object_id": "122132719443469415", "object_type": "bild", "platform": "facebook", "post_id": "122132719443469415", "source_url": "https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730", "version": 1}
+
+## Instagram
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-11-27
+Titel: 🏍️ Bike of the Race Weekend: Honda CBR1000RR-R Fireblade SP
+Text:
+Honda hat durch jahrzehntelange Präsenz in der MotoGP eine breite Community aus Fans, Fahrern und Crewmitgliedern verbunden. In Valencia, dem traditionellen Saisonfinale, trifft diese Gemeinschaft auf die emotionale Endphase-Rhetorik des Sports – unabhängig von Podiumsplätzen zählt hier der kollektive Rückblick.
+
+#RacingCalendar #BikeOfTheWeekend #Honda #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-11/2026-11-27-bike-honda-cbr1000rr-r-fireblade-sp.jpg
+
+## Facebook
+Status: ENTWURF
+Freigabe: Rennkalender
+Rennkalender: motogp-2026-11-27
+Titel: 🏍️ Bike of the Race Weekend: Honda CBR1000RR-R Fireblade SP
+Text:
+Honda hat durch jahrzehntelange Präsenz in der MotoGP eine breite Community aus Fans, Fahrern und Crewmitgliedern verbunden. In Valencia, dem traditionellen Saisonfinale, trifft diese Gemeinschaft auf die emotionale Endphase-Rhetorik des Sports – unabhängig von Podiumsplätzen zählt hier der kollektive Rückblick.
+
+#RacingCalendar #BikeOfTheWeekend #Honda #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Medienstatus: HERSTELLER_PREVIEW
+Bild: assets/images/2026-11/2026-11-27-bike-honda-cbr1000rr-r-fireblade-sp.jpg
