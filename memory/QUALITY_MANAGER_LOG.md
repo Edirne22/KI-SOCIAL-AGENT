@@ -4206,3 +4206,45 @@ Story-Key: motogp:124826
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-10 16:00 UTC | Motorcycle Racing | PASS
+Titel: Bulega: "Toprak, MotoGP'ye damga vuracağını düşünmüştüm"
+Story-Key: motogp:10873604
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-10 16:00 UTC | Motorcycle Racing | PASS
+Titel: Rivola şampiyonluk yarışında Marquez’i övdü: Fark yarattı, tesadüf değil - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124918
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-10 16:00 UTC | Motorcycle Racing | PASS
+Titel: Match point Sunday: Marquez wins dramatic Qatar Sprint, Martin heroic for P3, Bezzecchi crashes
+Story-Key: motogp:1184253
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-10 16:01 UTC | Motorcycle Racing | FAIL
+Titel: Acosta, Bagnaia’nın Katar kazası için konuştu: Uzun zamandır bu kadar kötüsünü görmemiştim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124738
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-10 16:01 UTC | Motorcycle Racing | FAIL
+Titel: Acosta, Bagnaia’nın Katar kazası için konuştu: Uzun zamandır bu kadar kötüsünü görmemiştim - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124738
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-10 16:01 UTC | Motorcycle Racing | PASS
+Titel: Tardozzi: Marquez’in Bezzecchi çarpışmasında ceza alması için bir neden yok - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124744
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-10 16:01 UTC | Motorcycle Racing | PASS
+Titel: Lecuona rounds off five consecutive weekends of racing with points in both races at Qatar GP: “I’m physically done”
+Story-Key: motogp:1184923
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

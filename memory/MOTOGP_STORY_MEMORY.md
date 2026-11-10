@@ -1704,3 +1704,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/rivola-marquez-bezzecchi-kazasini
 Story-Key: motogp:124826
 Titel: Martin, Katar’a gelmekte tereddüt ettiğini itiraf etti: Şu anda şampiyonluğu pek umursamıyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/martin-katara-gelmekte-tereddut-ettigini-itiraf-etti-su-anda-sampiyonlugu-pek-umursamiyorum/124826
+
+## 2026-11-10 15:28 UTC – ANGEBOTEN
+Story-Key: motogp:10873604
+Titel: Bulega: "Toprak, MotoGP'ye damga vuracağını düşünmüştüm"
+Quelle: https://tr.motorsport.com/motogp/news/bulega-toprak-motogpye-damga-vuracagini-dusunmustum/10873604
+
+## 2026-11-10 15:28 UTC – ANGEBOTEN
+Story-Key: motogp:124918
+Titel: Rivola şampiyonluk yarışında Marquez’i övdü: Fark yarattı, tesadüf değil - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/rivola-sampiyonluk-yarisinda-marquezi-ovdu-fark-yaratti-tesaduf-degil/124918
+
+## 2026-11-10 15:28 UTC – ANGEBOTEN
+Story-Key: motogp:1184253
+Titel: Match point Sunday: Marquez wins dramatic Qatar Sprint, Martin heroic for P3, Bezzecchi crashes
+Quelle: https://www.motogp.com/en/news/2026/11/07/match-point-sunday-marquez-wins-dramatic-qatar-sprint-martin-produces-heroics-bezzecchi-crashes/1184253
+
+## 2026-11-10 15:28 UTC – ANGEBOTEN
+Story-Key: motogp:124744
+Titel: Tardozzi: Marquez’in Bezzecchi çarpışmasında ceza alması için bir neden yok - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquezin-bezzecchi-carpismasinda-ceza-almasi-icin-bir-neden-yok/124744
+
+## 2026-11-10 15:28 UTC – ANGEBOTEN
+Story-Key: motogp:1184923
+Titel: Lecuona rounds off five consecutive weekends of racing with points in both races at Qatar GP: “I’m physically done”
+Quelle: https://www.worldsbk.com/en/news/2026/11/09/lecuona-takes-points-in-both-races-at-qatar-these-last-two-weekends-ive-come-to-understand-the-tyres/1184923

@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1794244030
+Session-Timestamp: 1794324499
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,25 +15,25 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
+Artikelalter-Tage: 0.1
 Kategorie: Turkish Riders
-Serie: Moto2
-Story-Key: motogp:10872994
-Titel: Moto2 Katar yarış: Daniel Holgado zafere ulaştı, Deniz Öncü 21.sırada tamamladı
-Quelle: https://tr.motorsport.com/moto2/news/moto2-katar-yaris-daniel-holgado-zafere-ulasti-deniz-oncu-21sirada-tamamladi/10872994
+Serie: MotoGP
+Story-Key: motogp:10873604
+Titel: Bulega: "Toprak, MotoGP'ye damga vuracağını düşünmüştüm"
+Quelle: https://tr.motorsport.com/motogp/news/bulega-toprak-motogpye-damga-vuracagini-dusunmustum/10873604
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-09-racing-editorial-2026-11-09-1-moto2-katar-yaris-da-01.jpg
-Quellen-Preview: https://cdn-4.motorsport.com/images/amp/6VyK944Y/s6/img-5932-1793430658.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-1-bulega-toprak-motogp-01.jpg
+Quellen-Preview: https://cdn-4.motorsport.com/images/amp/2eZxq9PY/s6/toprak-razgatlioglu-pramac-rac.jpg
 Plattformen: Instagram + Facebook
 Text:
-Holgado hat in Katar gesiegt, und unser Deniz Öncü kam als 21. ins Ziel. So sieht das Ergebnis aus.
+Nicolo Bulega dominiert die WorldSBK-Saison 2026 und wechselt im nächsten Jahr in die MotoGP. Zu Toprak Razgatlıoğlu erklärte er nun, dass seine Erwartungen an dessen erste Saison in der MotoGP ursprünglich höher waren.
 
-Wie findet ihr Holgados Sieg und Öncüs 21. Platz in Katar?
+Wie schätzt ihr diese Aussage von Nicolo Bulega ein?
 
-#Moto2 #DenizOncu #DanielHolgado #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -44,24 +44,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.3
+Artikelalter-Tage: 1.0
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:124895
-Titel: Marquez’in şampiyonluğunu geciktirmek haklıydı: Katar’da Bezzecchi ve Martin’in hak ettiği sahne - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/marquezin-sampiyonlugunu-geciktirmek-hakliydi-katarda-bezzecchi-ve-martinin-hak-ettigi-sahne/124895
+Story-Key: motogp:124918
+Titel: Rivola şampiyonluk yarışında Marquez’i övdü: Fark yarattı, tesadüf değil - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/rivola-sampiyonluk-yarisinda-marquezi-ovdu-fark-yaratti-tesaduf-degil/124918
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-09-racing-editorial-2026-11-09-2-marquezin-sampiyonlu-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1361405_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-2-rivola-sampiyonluk-y-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362553_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez holt sich wahrscheinlich schon in Portimao die 2026er MotoGP-WM – nach Sprint-Sieg und zweitem Platz in Katar liegt er mit 60 Punkten vorn.
+Marc Marquez hat beim Katar GP mehr Punkte gesammelt als Jorge Martin und Teamkollege Marco Bezzecchi – und damit den ersten Schritt zur Titelverteidigung gemacht.
 
-Ein weiterer Sprint-Sieg am Samstag würde die Meisterschaft vorzeitig besiegeln.
+Marquez konnte den Titel zwar noch nicht offiziell sichern, zog aber im Punktestand deutlich davon. Rivola erklärte dahinter: Der Unterschied sei kein Zufall, sondern die Folge konsequenter Arbeit.
 
-Selbst wenn er nur punktet: Je nachdem, wie die Aprilias abschneiden, reicht eine Führung von über 37 Punkten für den Titel eine Runde vor Saisonende.
+Im Sprint kam es zu einer Berührung zwischen Marquez und Bezzecchi – Bezzecchi ging drauf, was die Lage im Championat zusätzlich zugespitzt hat.
 
-Wie schätzt ihr die Chancen für Portimao ein?
+Was denkt ihr: Hat Marquez jetzt die Kontrolle über die Meisterschaft oder läuft Martin noch gefährlich?
 
 #MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
 
@@ -71,25 +71,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 2.7
-Kategorie: Moto2
-Serie: Moto2
-Story-Key: motogp:1184244
-Titel: Escrig untouchable as Gonzalez wins battle of wits with Guevara
-Quelle: https://www.motogp.com/en/news/2026/11/07/escrig-untouchable-as-gonzalez-wins-battle-of-wits-with-guevara/1184244
+Artikelalter-Tage: 3.6
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: motogp:1184253
+Titel: Match point Sunday: Marquez wins dramatic Qatar Sprint, Martin heroic for P3, Bezzecchi crashes
+Quelle: https://www.motogp.com/en/news/2026/11/07/match-point-sunday-marquez-wins-dramatic-qatar-sprint-martin-produces-heroics-bezzecchi-crashes/1184253
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-09-racing-editorial-2026-11-09-3-escrig-untouchable-a-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/07/fb364644-e5f4-4a0b-9a2e-1b84bd073f35/Report-M2-QP-QAT.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-3-match-point-sunday-m-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/08/4f74ae07-a59a-4146-ba59-4c14d61227a0/Report-MGP-SPR-QAT.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Die FPQ in Qatar war eindeutig die Show von Escrig – der KLINT-Racing-Pilot hat das Feld komplett dominiert. Doch wer am Ende den größeren Hebel gesetzt hat, war ein anderer: Gonzalez hat mit einer cleveren Spätcipher einen von diesen Momenten hingelegt, die in der WM einfach mehr zählen. Der Kampf um die Punkte gewinnt.
+In Qatar war am Samstag richtig was los beim Sprint.
 
-Wie seht ihr das – wer macht bei so einem Duell den besseren Job am Limit?
+Dramatischer Verlauf mit vielen Actions. Jorge Martin konnte sich mit einer tollen Leistung Platz drei sichern. Bei Marco Bezzecchi sah es leider anders aus – er ging an die Wand. Sonntag wird dann noch mal richtig interessant.
 
-#Moto2 #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie findet ihr die Aufstellung für das Main Race? 🏁
+
+#MotoGP #MarcoBezzecchi #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -100,24 +102,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
+Artikelalter-Tage: 2.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:124765
-Titel: Rivola, Marquez-Bezzecchi kazasının ardından yarış yönetimini eleştirdi: 24 saat sonra da fikrim aynı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/rivola-marquez-bezzecchi-kazasinin-ardindan-yaris-yonetimini-elestirdi-24-saat-sonra-da-fikrim-ayni/124765
+Story-Key: motogp:124744
+Titel: Tardozzi: Marquez’in Bezzecchi çarpışmasında ceza alması için bir neden yok - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquezin-bezzecchi-carpismasinda-ceza-almasi-icin-bir-neden-yok/124744
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-09-racing-editorial-2026-11-09-4-rivola-marquez-bezze-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1361938_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-4-tardozzi-marquezin-b-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1361364_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Massimo Rivola, Chef von Aprilia, bleibt auch 24 Stunden nach dem Sturz bei Marc Marquez und Marco Bezzecchi im Katar-Sprint bei seiner Kritik an der Rennleitung.
+Ducati-Teamboss Davide Tardozzi vindt dat er geen reden was om Marc Marquez na de Katar-Sprint te straffen voor de aanrijding met Marco Bezzecchi.
 
-Die beiden streiteten sich in Runde vier um die Spitze, karambolierten in der ersten Kurve und Bezzecchi war danach direkt raus.
+Bezzecchi probeerde de leider Marquez in de eerste bocht van binnen te passeren en ging daardoor zelf tegen de grond.
 
-Marquez blieb an Bord, gewann den Sprint aufs Ducati und startet mit dieser Pointe in die Titelentscheidung am Sonntag.
+Marquez hield zijn moto onder controle ondanks dat zijn airbag uitplofte; de FIM heeft geen verdere stappen ondernomen.
 
-Wie seht ihr die Bewertung der Rennleitung bei so einer Situation?
+Wat vinden jullie ervan dat de FIM niet ingreep?
 
 #MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -130,24 +132,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 2
 QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.9
+Artikelalter-Tage: 1.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:124826
-Titel: Martin, Katar’a gelmekte tereddüt ettiğini itiraf etti: Şu anda şampiyonluğu pek umursamıyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/martin-katara-gelmekte-tereddut-ettigini-itiraf-etti-su-anda-sampiyonlugu-pek-umursamiyorum/124826
+Story-Key: motogp:1184923
+Titel: Lecuona rounds off five consecutive weekends of racing with points in both races at Qatar GP: “I’m physically done”
+Quelle: https://www.worldsbk.com/en/news/2026/11/09/lecuona-takes-points-in-both-races-at-qatar-these-last-two-weekends-ive-come-to-understand-the-tyres/1184923
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-09-racing-editorial-2026-11-09-5-martin-katara-gelmek-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362711_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-5-lecuona-rounds-off-f-01.jpg
+Quellen-Preview: https://resources.wsbk.pulselive.com/wsbk/photo/2026/11/09/086de49e-4fbc-4689-8346-e11aa90fc2c6/LGZ_0549.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin hat offen zugegeben, dass er nach seinem Unfall in Phillip Island ernsthaft darüber nachgedacht hat, ob er überhaupt nach Katar reist.
+Iker Lecuona hat fünf Rennwochenenden am Stück hinter sich gebracht und beim Qatar GP in beiden Rennen Punkte mitgenommen. Die Nummer 7 aus der WorldSBK war damit wieder im MotoGP-Paddock unterwegs, zieht spürbaren Nutzen daraus und will die gesammelten Erfahrungen für 2027 nutzen. Nach dem Dauereinsatz gab er ehrlich zu, dass er körperlich erst mal völlig fertig ist.
 
-Der Aprilia-Pilot und 2024er Weltmeister brach sich beim Sprint auf dem australischen Circuit das rechte Handgelenk. Durch die Verletzung fiel er bei den beiden Rennwochenenden in Malaysia aus – was Marc Marquez einen wichtigen Punkt in der Meisterschaft bescherte. Nun steht Martin wieder am Start, gibt aber zu, dass er die aktuelle Titelkämpfe gerade nicht im Fokus hat.
+Was traut ihr Lecuona mit Blick auf 2027 in der MotoGP zu?
 
-Denkt ihr, dass diese mentale Einstellung ihm hilft oder eher schadet, den Titel zu verteidigen?
-
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

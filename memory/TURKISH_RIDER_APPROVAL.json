@@ -1,22 +1,9 @@
 {
   "version": 1,
-  "created_at": 1794244030,
+  "created_at": 1794324499,
   "max_days": 7,
   "window_used_days": 7,
-  "count": 1,
-  "visible_count": 1,
-  "items": [
-    {
-      "n": 1,
-      "title": "Moto2 Katar GP: Holgado Kazandı, Guevara Tamamlayamadı, Deniz 21. Sırada",
-      "url": "https://motoetkinlik.com/moto2-katar-gp-holgado-kazandi-guevara-tamamlayamadi-deniz-21-sirada",
-      "summary": "Moto2 Katar GP'yi Daniel Holgado kazandı. Izan Guevara teknik sorunla yarışı tamamlayamadı, Gonzalez farkı 13,5 puana çıkardı. Deniz Öncü yarışı 21. bitirdi.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/11/2026_Losail_Moto2_Deniz_Oncu-1.webp",
-      "published_at": "2026-11-08T18:26:33+03:00",
-      "series": "Moto2",
-      "source_series": "Moto2",
-      "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    }
-  ]
+  "count": 0,
+  "visible_count": 0,
+  "items": []
 }
