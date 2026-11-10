@@ -3523,3 +3523,33 @@ Verifiziertes Angebot: nein
 Ursache: ⏳ Suche derzeit nicht möglich – bitte in 10 Minuten erneut versuchen.
 SEARCH-FEHLER: provider=Alle, ursache=Alle Suchanbieter fehlgeschlagen, detail=SEARCH-FEHLER: provider=Apify-Google-Suche, ursache=HTTP 403, detail={   "error": {     "type": "platform-feature-disabled",     "message": "You've used the $5.00 of monthly usage included in the Free plan, so Actor runs and other Apify services are blocked until your | SEARCH-FEHLER: provider=SearXNG, ursache=Nicht konfiguriert, detail=SEARXNG_URL fehlt
 Bitte später erneut versuchen.
+## Suche vom 2026-11-10 14:11
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Für die Suche nach einem Mobilfunkvertrag im Telekom-Netz (D1) mit hohem Datenvolumen (ab 80 GB) zu einem sehr günstigen Preis sind folgende allgemeine und zeitunabhängige Hinweise hilfreich:
+
+### 1. Händlerarten und Anbietertypen
+* **Reseller und Drittanbieter (MVNOs):** Anbieter wie *freenet*, *Klarmobil*, *HIGH Mobile* oder *Congstar* nutzen das Telekom-Netz, bieten Tarife aber oft zu deutlich niedrigeren Preisen an als der Netzbetreiber direkt.
+* **Vermittlungs- und Vergleichsportale:** Über unabhängige Tarifmakler und Vermittlerseiten lassen sich häufig Sonderkonditionen finden, die durch Einmalgutschriften oder Cashbacks den monatlichen Effektivpreis senken.
+* **App-basierte Tarife / Zweitmarken:** Einigo moderne Tarifmodelle bieten flexible Buchungen per App, bieten jedoch meist festgelegte Volumengrenzen.
+
+### 2. Tarifstrukturen und Produktfamilien
+* **SIM-Only-Tarife:** Wenn kein neues Smartphone benötigt wird, bieten reine Tarifverträge das beste Preis-Leistungs-Verhältnis für reine Datenvolumina.
+* **Effektivpreis durch Bundle-Angebote:** Um ein sehr hohes Datenvolumen (wie 80 GB) rechnerisch unter die gewünschte Preisgrenze zu drücken, werden oft Verträge mit Beigaben (z. B. Smartphones oder Zugaben) abgeschlossen, deren Weiterverkauf die monatlichen Kosten rechnerisch ausgleicht.
+* **Laufzeitverträge (24 Monate) vs. Flex-Tarife:** Die höchsten Rabatte, Wechselboni (bei Rufnummernmitnahme) und Aktions-Volumina werden in der Regel bei Verträgen mit 24-monatiger Mindestvertragslaufzeit gewährt.
+
+### 3. Wichtige Auswahlkriterien im D1-Netz
+* **Effektive Monatskosten berechnen:** Achten Sie auf Einmalzahlungen wie den Anschlusspreis sowie auf Gutschriften oder Wechselboni. Teilen Sie die Gesamtkosten über 24 Monate durch 24, um den tatsächlichen Preis zu ermitteln.
+* **5G vs. LTE & Datenrate:** Günstige D1-Tarife bei Drittanbietern nutzen oft LTE mit einer Deckelung der Datenrate (z. B. 25 oder 50 Mbit/s). Prüfen Sie, ob 5G enthalten ist und welche Maximalgeschwindigkeit geboten wird.
+* **Kosten nach der Mindestlaufzeit:** Viele Rabatte gelten nur in den ersten 24 Monaten. Ein rechtzeitiger Anbieterwechsel verhindert höhere Standardgebühren ab dem 25. Monat.
+* **Netzfunktionen:** Features wie VoLTE (Telefonie über LTE) und Wi-Fi Calling gehören mittlerweile zum Standard, sollten aber bei Discount-Tarifen kurz überprüft werden.
+
+Bitte in 10 Minuten erneut versuchen.
