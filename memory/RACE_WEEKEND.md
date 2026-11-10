@@ -1,5 +1,5 @@
 # Nächstes Rennwochenende
-Geprüft: 2026-11-04 13:40
+Geprüft: 2026-11-10 14:34
 
 > Zeiten bitte vor Veröffentlichung an der Originalquelle prüfen.
 
@@ -15,8 +15,4 @@ Geprüft: 2026-11-04 13:40
 ## WorldSPB
 - Öffentliche Quellen erreichbar: 2
 
-Bestätigt: MotoGP
-Details: Lusail International Circuit · Katar
-2026-11-06 bis 2026-11-08
-Quelle: https://www.motogp.com/en/calendar
-Poster-Entwürfe: 3
+Kein eindeutig bestätigtes Rennwochenende gefunden; kein Poster-Entwurf erzeugt.
