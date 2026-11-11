@@ -3553,3 +3553,37 @@ Für die Suche nach einem Mobilfunkvertrag im Telekom-Netz (D1) mit hohem Datenv
 * **Netzfunktionen:** Features wie VoLTE (Telefonie über LTE) und Wi-Fi Calling gehören mittlerweile zum Standard, sollten aber bei Discount-Tarifen kurz überprüft werden.
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-11-11 13:27
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine und zeitunabhängige Hinweise zur Orientierung bei der Suche nach einem Mobilfunktarif im D1-Netz (Telekom-Netz) mit hohem Datenvolumen:
+
+### 1. Händlerarten und Anbietertypen im D1-Netz
+* **Direkter Netzbetreiber (Telekom):** Bietet Original-Tarife mit voller 5G-Geschwindigkeit und Zusatzoptionen (z. B. MultiSIM, Premium-Service), liegt preislich im regulären Segment jedoch meist höher.
+* **Tochtermarken & Discount-Marken:** Anbieter wie Congstar oder fraenk nutzen das D1-Netz direkt über den Netzbetreiber. Sie bieten oft eine solide Netzabdeckung, schränken aber teilweise die maximale Bandbreite (z. B. auf 25–50 Mbit/s) oder bestimmte Features ein.
+* **Unabhängige Provider & Reseller:** Anbieter wie freenet, Klarmobil oder HIGH Mobile kaufen Kontingente im D1-Netz ein und vermarkten diese unter eigenem Namen. Hier finden sich häufig temporäre Aktionsangebote.
+* **Online-Fachhändler & Vergleichsportale:** Vermittler (z. B. Sparhandy, DeinHandy, Check24, Verivox) bündeln Angebote verschiedener Provider und gewähren häufig zusätzliche Boni oder Cashback.
+
+### 2. Tarifformen und Preismodelle für hohe Datenmengen
+* **SIM-Only vs. Bündelangebot mit Hardware:** 
+  * Sehr hohe Datenvolumina zu günstigen rechnerischen Monatspreisen werden häufig über sogenannte **Effektivpreis-Angebote** realisiert. Dabei wird ein Vertrag inklusive eines hochwertigen Smartphones abgeschlossen. Wird das Gerät nicht benötigt und weiterverkauft, drückt der Erlös rechnerisch die monatlichen Kosten für den rein mathematisch betrachteten Tarif deutlich nach unten.
+* **Laufzeit-Tarife (24 Monate):** Bieten in der Regel die höchsten Wechselboni, Rabatte auf die Grundgebühr oder rechnerischen Ersparnisse.
+* **Monatlich kündbare Tarife (Flex-Tarife):** Bieten maximale Flexibilität, weisen jedoch selten extrem hohe Datenvolumina zum Tiefpreis auf.
+
+### 3. Wichtige Auswahlkriterien
+* **Geschwindigkeit & 5G-Freischaltung:** Überprüfen Sie, ob 5G enthalten ist und bis zu welcher maximalen Bandbreite (Download/Upload) gefahren werden kann. Für alltägliche Anwendungen (Streaming, Social Media) reichen oft bereits 25 bis 50 Mbit/s aus.
+* **Bereitstellungspreis & Boni:** Achten Sie auf Einmalgebühren (Anschlusspreis) sowie mögliche Gutschriften (z. B. Wechselbonus bei Rufnummernmitnahme).
+* **Kombi-Vorteile & Zielgruppenrabatte:** 
+  * Bei einigen Anbietern lässt sich das Datenvolumen verdoppeln oder der Preis senken, wenn bereits ein Festnetzanschluss beim selben Anbieter besteht (Kombivorteil).
+  * Für Personen unter einem bestimmten Alter (z. B. unter 28 Jahren) oder Studierende gibt es oft spezielle Boni oder Extra-Datenvolumen.
+* **Optionen nach Ablauf der Mindestvertragslaufzeit:** Rabatte gelten häufig nur in den ersten 24 Monaten. Ein rechtzeitiger Wechsel oder eine Kündigung verhindert Preissteigerungen ab dem 25. Monat.
+
+Bitte in 10 Minuten erneut versuchen.
