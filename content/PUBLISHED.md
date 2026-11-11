@@ -810,50 +810,6 @@ Quelle: https://www.motogp.com/en/calendar
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W45-motogp-facebook.jpg
 
-## Instagram [GEPOSTET 2026-11-03 23:41 | ID: 18647436874047927]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-03-daily
-Telegram-Update-ID: 279362019
-MotoGP-Auswahl: 3
-Story-Key: title:pedro-acosta-ogura-n-n-bu-kadar-h-zl-olmas-n-beklemiyordum
-Event-Fingerprint: MotoGP|sprint|acosta,ogura|
-Titel: Pedro Acosta: “Ogura’nın Bu Kadar Hızlı Olmasını Beklemiyordum”
-Text:
-Pedro Acosta hat beim MotoGP-Sprint in Malaysia Ai Ogura überholt und gewonnen. Als KTM-Fahrer betonte er seine Überraschung über Oguras Geschwindigkeit und die Bedeutung des Reifenmanagements für das Hauptrennen.
-
-Wie steht ihr zu Acostas Einschätzung zum Reifenmanagement im Hauptrennen?
-
-#MotoGP #PedroAcosta #AiOgura #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
-Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
-Medienstatus: QUELLE_BESTÄTIGT
-Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg
-Publish-Provenienz: {"creation_id": "18014667575971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18647436874047927", "published_media_id": "18647436874047927", "source_url": "https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum", "version": 1}
-
-## Facebook [GEPOSTET 2026-11-03 20:22 | ID: 122130780357469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-03-daily
-Telegram-Update-ID: 279362019
-MotoGP-Auswahl: 3
-Story-Key: title:pedro-acosta-ogura-n-n-bu-kadar-h-zl-olmas-n-beklemiyordum
-Event-Fingerprint: MotoGP|sprint|acosta,ogura|
-Titel: Pedro Acosta: “Ogura’nın Bu Kadar Hızlı Olmasını Beklemiyordum”
-Text:
-Pedro Acosta hat beim MotoGP-Sprint in Malaysia Ai Ogura überholt und gewonnen. Als KTM-Fahrer betonte er seine Überraschung über Oguras Geschwindigkeit und die Bedeutung des Reifenmanagements für das Hauptrennen.
-
-Wie steht ihr zu Acostas Einschätzung zum Reifenmanagement im Hauptrennen?
-
-#MotoGP #PedroAcosta #AiOgura #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
-Quelle: https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum
-Bild: assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-03-racing-editorial-2026-11-03-3-pedro-acosta-ogurani-01.jpg", "media_status": "", "object_id": "122130780357469415", "object_type": "bild", "platform": "facebook", "post_id": "122130780357469415", "source_url": "https://motoetkinlik.com/pedro-acosta-oguranin-bu-kadar-hizli-olmasini-beklemiyordum", "version": 1}
-
 ## Instagram [GEPOSTET 2026-11-04 23:54 | ID: 18114359578877386]
 Status: GEPOSTET
 Freigabe: Telegram Racing
