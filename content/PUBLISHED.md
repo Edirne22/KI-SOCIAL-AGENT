@@ -1095,9 +1095,8 @@ Quelle: https://tr.motorsport.com/motogp/news/bulega-toprak-motogpye-damga-vurac
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-1-bulega-toprak-motogp-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43030465328-1
+## Facebook [GEPOSTET 2026-11-11 13:35 | ID: 122133445563469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-10-daily
 Telegram-Update-ID: 279362033
@@ -1116,6 +1115,7 @@ Wie schätzt ihr diese Aussage von Nicolo Bulega ein?
 Quelle: https://tr.motorsport.com/motogp/news/bulega-toprak-motogpye-damga-vuracagini-dusunmustum/10873604
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-1-bulega-toprak-motogp-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-1-bulega-toprak-motogp-01.jpg", "media_status": "", "object_id": "122133445563469415", "object_type": "bild", "platform": "facebook", "post_id": "122133445563469415", "source_url": "https://tr.motorsport.com/motogp/news/bulega-toprak-motogpye-damga-vuracagini-dusunmustum/10873604", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
