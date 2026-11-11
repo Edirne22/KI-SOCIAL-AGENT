@@ -1,11 +1,8 @@
 # Follow-Verify
-Stand: 2026-11-10 14:53
+Stand: 2026-11-11 14:06
 
-- @pedroacosta37 → ⚠️ @pedroacosta37 | – | Bright Data HTTP 400
-- @fabioquartararo20 → ⚠️ @fabioquartararo20 | – | Bright Data HTTP 400
-- @alexrins → ⚠️ @alexrins | – | Bright Data HTTP 400
-- @joanmir36official → ⚠️ @joanmir36official | – | Bright Data HTTP 400
-- @lucamarini10 → ⚠️ @lucamarini10 | – | Bright Data HTTP 400
-- @alexmarquez73 → ⚠️ @alexmarquez73 | – | Bright Data HTTP 400
-- @ferminaldeguer_54 → ⚠️ @ferminaldeguer_54 | – | Bright Data HTTP 400
-- @fabiodiggia49 → ⚠️ @fabiodiggia49 | – | Bright Data HTTP 400
+- @motogp → ⚠️ @motogp | – | Bright Data HTTP 400
+- @worldsbk → ⚠️ @worldsbk | – | Bright Data HTTP 400
+- @pramacracing → ⚠️ @pramacracing | – | Bright Data HTTP 400
+- @f1 → ⚠️ @f1 | – | Bright Data HTTP 400
+- @turkiye.motogp → ⚠️ @turkiye.motogp | – | Bright Data HTTP 400
