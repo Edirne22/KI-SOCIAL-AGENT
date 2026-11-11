@@ -1729,3 +1729,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquezin-bezzecchi-carp
 Story-Key: motogp:1184923
 Titel: Lecuona rounds off five consecutive weekends of racing with points in both races at Qatar GP: “I’m physically done”
 Quelle: https://www.worldsbk.com/en/news/2026/11/09/lecuona-takes-points-in-both-races-at-qatar-these-last-two-weekends-ive-come-to-understand-the-tyres/1184923
+
+## 2026-11-11 14:58 UTC – ANGEBOTEN
+Story-Key: motogp:1184256
+Titel: Bezzecchi bounces back with Qatar victory as Marquez extends championship lead
+Quelle: https://www.motogp.com/en/news/2026/11/08/bezzecchi-bounces-back-with-qatar-victory-as-marquez-extends-championship-lead/1184256
+
+## 2026-11-11 14:58 UTC – ANGEBOTEN
+Story-Key: motogp:10873766
+Titel: Ducati, Bagnaia’nın güncel sağlık durumunu açıkladı: Ameliyat tamamlandı
+Quelle: https://tr.motorsport.com/motogp/news/ducati-bagnaianin-guncel-saglik-durumunu-acikladi/10873766
+
+## 2026-11-11 14:58 UTC – ANGEBOTEN
+Story-Key: motogp:125079
+Titel: Lorenzo: Marquez şampiyon olursa Rossi, “en büyük kim” tartışmasının dışında kalır - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/lorenzo-marquez-sampiyon-olursa-rossi-en-buyuk-kim-tartismasinin-disinda-kalir/125079
+
+## 2026-11-11 14:58 UTC – ANGEBOTEN
+Story-Key: title:bagnaia-torino-da-ameliyat-oldu-portim-o-ve-valencia-belirsiz-motoron-dergisi
+Titel: Bagnaia Torino’da ameliyat oldu: Portimão ve Valencia belirsiz | Motoron Dergisi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-oldu-portimao-ve-valencia-belirsiz
+
+## 2026-11-11 14:58 UTC – ANGEBOTEN
+Story-Key: motogp:125097
+Titel: Dall’Igna: Katar 2026 şampiyonluğunun dönüm noktasıydı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/dalligna-katar-2026-sampiyonlugunun-donum-noktasiydi/125097

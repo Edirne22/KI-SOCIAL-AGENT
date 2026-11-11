@@ -4248,3 +4248,39 @@ Story-Key: motogp:1184923
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-11 15:36 UTC | Motorcycle Racing | PASS
+Titel: Bezzecchi bounces back with Qatar victory as Marquez extends championship lead
+Story-Key: motogp:1184256
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-11 15:36 UTC | Motorcycle Racing | PASS
+Titel: Ducati, Bagnaia’nın güncel sağlık durumunu açıkladı: Ameliyat tamamlandı
+Story-Key: motogp:10873766
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-11 15:36 UTC | Motorcycle Racing | FAIL
+Titel: Lorenzo: Marquez şampiyon olursa Rossi, “en büyük kim” tartışmasının dışında kalır - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125079
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-11 15:36 UTC | Motorcycle Racing | PASS
+Titel: Lorenzo: Marquez şampiyon olursa Rossi, “en büyük kim” tartışmasının dışında kalır - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125079
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-11 15:37 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia Torino’da ameliyat oldu: Portimão ve Valencia belirsiz | Motoron Dergisi
+Story-Key: title:bagnaia-torino-da-ameliyat-oldu-portim-o-ve-valencia-belirsiz-motoron-dergisi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-11 15:37 UTC | Motorcycle Racing | PASS
+Titel: Dall’Igna: Katar 2026 şampiyonluğunun dönüm noktasıydı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125097
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
