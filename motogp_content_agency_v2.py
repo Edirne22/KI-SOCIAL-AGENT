@@ -350,9 +350,12 @@ def fetch_details(raw,meta,max_workers=6):
  with ThreadPoolExecutor(max_workers=max_workers) as executor:
   return list(executor.map(fetch,raw))
 
-def select_and_finish(qualified,names):
- picks=[];seen_fp=set();seen_events=set();known=known_story_keys()
+def select_and_finish(qualified,names,existing=None):
+ picks=list(existing or []);known=known_story_keys()
+ seen_fp={re.sub(r'\s+',' ',re.sub(r'#[^\s]+','',fold(x.get('caption','')))).strip() for x in picks}
+ seen_events={event_fingerprint(x) for x in picks if event_fingerprint(x)}
  for x in ordered_pool(qualified,names):
+  if any(canonical_url(x.get('url',''))==canonical_url(y.get('url','')) for y in picks):continue
   if already_offered(x,known):continue
   if len(picks)>=5:break
   s=series_for(x)
@@ -366,6 +369,20 @@ def select_and_finish(qualified,names):
    picks.append(x);seen_fp.add(fp)
    if event_fp:seen_events.add(event_fp)
  return picks
+
+def qualify_daily_picks(fresh,names,now):
+ """Stop expensive editorial work after five fully finished, checked packages."""
+ current_q=[];fallback_q=[];picks=[]
+ for fallback in (False,True):
+  if len(picks)>=5:break
+  candidates=yesterday_raw(now,{x.get('url') for x in fresh})[:20] if fallback else fresh[:60]
+  candidates=ordered_pool(candidates,names)
+  for offset in range(0,len(candidates),5):
+   qualified=qualify_parallel(candidates[offset:offset+5],3)
+   (fallback_q if fallback else current_q).extend(qualified)
+   picks=select_and_finish(qualified,names,existing=picks)
+   if len(picks)>=5:break
+ return current_q,fallback_q,picks
 def write_session(items,now):
  lines=['# Motorcycle Racing Telegram Approval Session','Session-Version: 18',f'Agency-Version: {VERSION}','Approval-Status: READY','Professional-Agent-Standard: V1.0','Human-Writing-Protocol: V1.0','Buelents-Bike-Life-Voice: VERBINDLICH','QM: PASS',f'Racing-Lexikon-Version: {racing_lexicon_version()}',f'Session-Timestamp: {int(now.timestamp())}','','Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.','']
  for i,x in enumerate(items,1):
@@ -644,9 +661,9 @@ def run_v8():
  print(f'PHASE-TIME article_info_seconds={time.monotonic()-phase_started:.3f} details={len(details)}')
  phase_started=time.monotonic();diag,_=freshness_diagnostics(details,now);fresh=[mark_priority(x) for x in details if freshness_reason(x,now)=='fresh' and not already_offered(x,known)];fresh.sort(key=lambda z:editorial_score(z,names),reverse=True)
  print(f'PHASE-TIME freshness_seconds={time.monotonic()-phase_started:.3f} fresh={len(fresh)}')
- phase_started=time.monotonic();current_q=qualify_parallel(fresh[:60],3);fallback_raw=yesterday_raw(now,{x.get('url') for x in current_q});fallback_q=qualify_parallel(fallback_raw[:20],3) if len(current_q)<15 else [];qualified=current_q+[x for x in fallback_q if x.get('url') not in {y.get('url') for y in current_q}];qualified.sort(key=lambda x:editorial_score(x,names),reverse=True)
+ phase_started=time.monotonic();current_q,fallback_q,picks=qualify_daily_picks(fresh,names,now);qualified=current_q+fallback_q;qualified.sort(key=lambda x:editorial_score(x,names),reverse=True)
  print(f'PHASE-TIME editor_qm_seconds={time.monotonic()-phase_started:.3f} current_q={len(current_q)} fallback_q={len(fallback_q)}')
- phase_started=time.monotonic();save_top10(fresh,now);picks=select_and_finish(qualified,names);turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in VALID_SERIES}
+ phase_started=time.monotonic();save_top10(fresh,now);turk=any(is_turkish_focus(x) for x in picks);mix={s:sum(series_for(x)==s for x in picks) for s in VALID_SERIES}
  print(f'PHASE-TIME final_selection_media_seconds={time.monotonic()-phase_started:.3f} picks={len(picks)}')
  if callable(globals().get('semantic_runtime_summary')):semantic_runtime_summary()
  print(f'PHASE-TIME run_total_seconds={time.monotonic()-run_started:.3f}')
