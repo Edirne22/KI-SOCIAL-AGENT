@@ -1754,3 +1754,28 @@ Quelle: https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-ol
 Story-Key: motogp:125097
 Titel: Dall’Igna: Katar 2026 şampiyonluğunun dönüm noktasıydı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/dalligna-katar-2026-sampiyonlugunun-donum-noktasiydi/125097
+
+## 2026-11-12 15:48 UTC – ANGEBOTEN
+Story-Key: motogp:125115
+Titel: Bezzecchi: Sprintler benim zayıf halkam oldu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-sprintler-benim-zayif-halkam-oldu/125115
+
+## 2026-11-12 15:48 UTC – ANGEBOTEN
+Story-Key: motogp:1184971
+Titel: Ducati confirm successful surgery for Bagnaia
+Quelle: https://www.motogp.com/en/news/2026/11/11/ducati-confirm-successful-surgery-for-bagnaia/1184971
+
+## 2026-11-12 15:48 UTC – ANGEBOTEN
+Story-Key: motogp:125040
+Titel: Bagnaia ayağından ameliyat edildi: Ducati dönüş için tarih vermedi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-ayagindan-ameliyat-edildi-ducati-donus-icin-tarih-vermedi/125040
+
+## 2026-11-12 15:48 UTC – ANGEBOTEN
+Story-Key: motogp:125020
+Titel: Moreira, Katar’daki yarış dışı kalmasını eski Moto2 sakatlığına bağladı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/moreira-katardaki-yaris-disi-kalmasini-eski-moto2-sakatligina-bagladi/125020
+
+## 2026-11-12 15:48 UTC – ANGEBOTEN
+Story-Key: motogp:125022
+Titel: Rivola’dan Martin’e övgü: Sprintte yaptığı bir tür mucizeydi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/rivoladan-martine-ovgu-sprintte-yaptigi-bir-tur-mucizeydi/125022

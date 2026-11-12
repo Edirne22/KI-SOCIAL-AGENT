@@ -4284,3 +4284,33 @@ Story-Key: motogp:125097
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-12 16:20 UTC | Motorcycle Racing | PASS
+Titel: Bezzecchi: Sprintler benim zayıf halkam oldu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125115
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-12 16:20 UTC | Motorcycle Racing | PASS
+Titel: Ducati confirm successful surgery for Bagnaia
+Story-Key: motogp:1184971
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-12 16:20 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia ayağından ameliyat edildi: Ducati dönüş için tarih vermedi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125040
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-12 16:20 UTC | Motorcycle Racing | PASS
+Titel: Moreira, Katar’daki yarış dışı kalmasını eski Moto2 sakatlığına bağladı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125020
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-12 16:21 UTC | Motorcycle Racing | PASS
+Titel: Rivola’dan Martin’e övgü: Sprintte yaptığı bir tür mucizeydi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125022
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
