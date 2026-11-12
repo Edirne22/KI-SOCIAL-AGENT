@@ -1145,6 +1145,7 @@ Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-3-match-point
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-10-daily
 Telegram-Update-ID: 279362033
