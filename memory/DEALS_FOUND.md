@@ -3587,3 +3587,34 @@ Hier sind allgemeine und zeitunabhängige Hinweise zur Orientierung bei der Such
 * **Optionen nach Ablauf der Mindestvertragslaufzeit:** Rabatte gelten häufig nur in den ersten 24 Monaten. Ein rechtzeitiger Wechsel oder eine Kündigung verhindert Preissteigerungen ab dem 25. Monat.
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-11-12 14:31
+Anfrage: handyvertrag 80GB D1
+Provider: Gemini-Fallback
+Live-Suche: nein
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+⚠️ Keine Live-Websuche verfügbar. Preise, Codes und Verfügbarkeit bitte selbst prüfen.
+
+Keine Live-Websuche verfügbar.
+
+Hier sind allgemeine und zeitunabhängige Hinweise, wie Sie nach einem passenden Mobilfunktarif im D1-Netz (Telekom) mit hohem Datenvolumen suchen können:
+
+### 1. Mögliche Händlerarten und Anbieter im Telekom-Netz (D1)
+* **Unabhängige Mobilfunk-Provider & Reseller:** Anbieter wie *Freenet*, *Klarmobil* oder *Crash Tarife* bieten regelmäßig Aktionstarife im D-Netz an. Diese sind oft deutlich günstiger als die Originaltarife des Netzbetreibers.
+* **Discount-Zweitmarken:** Marken wie *Congstar*, *fraenk* oder *High Mobile* nutzen ebenfalls das Telekom-Netz. Sie zeichnen sich meist durch transparente Strukturen aus, bieten hohe Datenvolumina zu niedrigen Preisen jedoch meist im Rahmen von befristeten Sonderaktionen an.
+* **Tarif- und Vermittlungsportale:** Plattformen wie *Check24*, *Verivox* sowie spezialisierte Deal-Seiten listen häufig exklusive Promos (SIM-Only) von Drittanbietern.
+
+### 2. Typische Kriterien & worauf Sie achten sollten
+* **Effektivpreis berechnen:** Ein sehr hohes Datenvolumen (ab 80 GB) für unter 13 € monatlich ist im D1-Netz meist nur über spezielle Aktionen realisierbar. Achten Sie auf die Gesamtkosten über 24 Monate:
+  * Berücksichtigen Sie den einmaligen **Anschlusspreis** (der oft per App-Rückerstattung entfällt).
+  * Rechnen Sie etwaige **Wechselboni** (für die Rufnummernmitnahme) oder **Cashback-Zahlungen** mit ein.
+* **Netzstandard und Geschwindigkeit:**
+  * Prüfen Sie, ob **5G** im Tarif enthalten ist oder nur **LTE/4G**.
+  * Achten Sie auf die max. Bandbreite (z. B. 25 Mbit/s, 50 Mbit/s oder ungedrosseltes 5G). Für normales Streaming und Surfen reichen 25 bis 50 Mbit/s in der Regel völlig aus.
+* **Vertragslaufzeit:**
+  * **24 Monate Laufzeit:** Bietet rechnerisch meist den günstigsten Monatspreis, da Rabatte auf die volle Laufzeit verteilt werden.
+  * **Monatlich kündbar:** Bietet Flexibilität, geht aber selten mit extrem hohen Datenmengen zum Tiefpreis einher.
+* **Aktionszeiträume nutzen:** Tarife mit ungewöhnlich starkem Preis-Leistungs-Verhältnis erscheinen häufig gebündelt zu bekannten Aktionszeiten (z. B. Black Friday, Cyber Week, Oster- oder Sommer-Deals).
+
+Bitte in 10 Minuten erneut versuchen.
