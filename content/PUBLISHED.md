@@ -1142,9 +1142,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/rivola-sampiyonluk-yarisinda-marq
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-2-rivola-sampiyonluk-y-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43138298147-1
+## Facebook [GEPOSTET 2026-11-12 02:00 | ID: 122133637491469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-10-daily
 Telegram-Update-ID: 279362033
@@ -1167,6 +1166,7 @@ Was denkt ihr: Hat Marquez jetzt die Kontrolle über die Meisterschaft oder läu
 Quelle: https://trf1.net/motor-sporlari/motogp/rivola-sampiyonluk-yarisinda-marquezi-ovdu-fark-yaratti-tesaduf-degil/124918
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-2-rivola-sampiyonluk-y-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-2-rivola-sampiyonluk-y-01.jpg", "media_status": "", "object_id": "122133637491469415", "object_type": "bild", "platform": "facebook", "post_id": "122133637491469415", "source_url": "https://trf1.net/motor-sporlari/motogp/rivola-sampiyonluk-yarisinda-marquezi-ovdu-fark-yaratti-tesaduf-degil/124918", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
