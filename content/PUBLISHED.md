@@ -1192,9 +1192,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquezin-bezzecchi-carp
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-4-tardozzi-marquezin-b-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43311876772-1
+## Facebook [GEPOSTET 2026-11-12 21:37 | ID: 122134001379469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-10-daily
 Telegram-Update-ID: 279362033
@@ -1217,6 +1216,7 @@ Wat vinden jullie ervan dat de FIM niet ingreep?
 Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquezin-bezzecchi-carpismasinda-ceza-almasi-icin-bir-neden-yok/124744
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-4-tardozzi-marquezin-b-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-4-tardozzi-marquezin-b-01.jpg", "media_status": "", "object_id": "122134001379469415", "object_type": "bild", "platform": "facebook", "post_id": "122134001379469415", "source_url": "https://trf1.net/motor-sporlari/motogp/tardozzi-marquezin-bezzecchi-carpismasinda-ceza-almasi-icin-bir-neden-yok/124744", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
