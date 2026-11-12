@@ -1143,9 +1143,8 @@ Quelle: https://www.motogp.com/en/news/2026/11/07/match-point-sunday-marquez-win
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-3-match-point-sunday-m-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43239349123-1
+## Facebook [GEPOSTET 2026-11-12 14:39 | ID: 122133946335469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-10-daily
 Telegram-Update-ID: 279362033
@@ -1166,6 +1165,7 @@ Wie findet ihr die Aufstellung für das Main Race? 🏁
 Quelle: https://www.motogp.com/en/news/2026/11/07/match-point-sunday-marquez-wins-dramatic-qatar-sprint-martin-produces-heroics-bezzecchi-crashes/1184253
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-3-match-point-sunday-m-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-3-match-point-sunday-m-01.jpg", "media_status": "", "object_id": "122133946335469415", "object_type": "bild", "platform": "facebook", "post_id": "122133946335469415", "source_url": "https://www.motogp.com/en/news/2026/11/07/match-point-sunday-marquez-wins-dramatic-qatar-sprint-martin-produces-heroics-bezzecchi-crashes/1184253", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
