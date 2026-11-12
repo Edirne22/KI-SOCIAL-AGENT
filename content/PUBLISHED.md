@@ -810,54 +810,6 @@ Quelle: https://www.motogp.com/en/calendar
 Medienstatus: EIGENES_MATERIAL
 Bild: assets/race-posters/2026-W45-motogp-facebook.jpg
 
-## Instagram [GEPOSTET 2026-11-04 23:54 | ID: 18114359578877386]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-04-daily
-Telegram-Update-ID: 279362021
-MotoGP-Auswahl: 3
-Story-Key: title:bezzecchi-marc-30-metrelik-bo-luk-kal-nca-h-z-ortaya-kt
-Event-Fingerprint: MotoGP|sprint|bezzecchi|
-Titel: Bezzecchi: “Marc’a 30 Metrelik Boşluk Kalınca Hızı Ortaya Çıktı”
-Text:
-Bezzecchi nach dem Sprint: 30 Meter zu Márquez – die Geschwindigkeit wurde sichtbar
-
-Beim Malaysia-Sprint hat Marco Bezzecchi seine Begegnung mit Marc Márquez analysiert. Er betont, dass Reifenmanagement den Rennverlauf beeinflusst.
-
-Wie schätzt ihr die Situation ein?
-
-#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti
-Quelle: https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti
-Medienstatus: QUELLE_BESTÄTIGT
-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-3-bezzecchi-marca-30-m-01.jpg
-Publish-Provenienz: {"creation_id": "18014802164971550", "media_kind": "image", "media_path": "assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-3-bezzecchi-marca-30-m-01.jpg", "media_status": "QUELLE_BESTÄTIGT", "platform": "instagram", "post_id": "18114359578877386", "published_media_id": "18114359578877386", "source_url": "https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti", "version": 1}
-
-## Facebook [GEPOSTET 2026-11-04 20:40 | ID: 122131068207469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-04-daily
-Telegram-Update-ID: 279362021
-MotoGP-Auswahl: 3
-Story-Key: title:bezzecchi-marc-30-metrelik-bo-luk-kal-nca-h-z-ortaya-kt
-Event-Fingerprint: MotoGP|sprint|bezzecchi|
-Titel: Bezzecchi: “Marc’a 30 Metrelik Boşluk Kalınca Hızı Ortaya Çıktı”
-Text:
-Bezzecchi nach dem Sprint: 30 Meter zu Márquez – die Geschwindigkeit wurde sichtbar
-
-Beim Malaysia-Sprint hat Marco Bezzecchi seine Begegnung mit Marc Márquez analysiert. Er betont, dass Reifenmanagement den Rennverlauf beeinflusst.
-
-Wie schätzt ihr die Situation ein?
-
-#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti
-Quelle: https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti
-Bild: assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-3-bezzecchi-marca-30-m-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-04-racing-editorial-2026-11-04-3-bezzecchi-marca-30-m-01.jpg", "media_status": "", "object_id": "122131068207469415", "object_type": "bild", "platform": "facebook", "post_id": "122131068207469415", "source_url": "https://motoetkinlik.com/bezzecchi-marca-30-metrelik-bosluk-kalinca-hizi-ortaya-cikti", "version": 1}
-
 ## Instagram [GEPOSTET 2026-11-07 14:23 | ID: 18133751281801270]
 Status: GEPOSTET
 Freigabe: Telegram Racing
