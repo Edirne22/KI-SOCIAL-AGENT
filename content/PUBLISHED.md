@@ -1144,6 +1144,7 @@ Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-2-rivola-samp
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-10-daily
 Telegram-Update-ID: 279362033
