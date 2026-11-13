@@ -1239,9 +1239,8 @@ Quelle: https://www.worldsbk.com/en/news/2026/11/09/lecuona-takes-points-in-both
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-5-lecuona-rounds-off-f-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43349992523-1
+## Facebook [GEPOSTET 2026-11-13 02:09 | ID: 122134060827469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-10-daily
 Telegram-Update-ID: 279362033
@@ -1260,6 +1259,7 @@ Was traut ihr Lecuona mit Blick auf 2027 in der MotoGP zu?
 Quelle: https://www.worldsbk.com/en/news/2026/11/09/lecuona-takes-points-in-both-races-at-qatar-these-last-two-weekends-ive-come-to-understand-the-tyres/1184923
 Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-5-lecuona-rounds-off-f-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-5-lecuona-rounds-off-f-01.jpg", "media_status": "", "object_id": "122134060827469415", "object_type": "bild", "platform": "facebook", "post_id": "122134060827469415", "source_url": "https://www.worldsbk.com/en/news/2026/11/09/lecuona-takes-points-in-both-races-at-qatar-these-last-two-weekends-ive-come-to-understand-the-tyres/1184923", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
