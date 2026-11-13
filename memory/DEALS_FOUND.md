@@ -3618,3 +3618,12 @@ Hier sind allgemeine und zeitunabhängige Hinweise, wie Sie nach einem passenden
 * **Aktionszeiträume nutzen:** Tarife mit ungewöhnlich starkem Preis-Leistungs-Verhältnis erscheinen häufig gebündelt zu bekannten Aktionszeiten (z. B. Black Friday, Cyber Week, Oster- oder Sommer-Deals).
 
 Bitte in 10 Minuten erneut versuchen.
+## Suche vom 2026-11-13 13:47
+Anfrage: handyvertrag 80GB D1
+Provider: Apify-Google-Suche
+Live-Suche: ja
+Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12
+Verifiziertes Angebot: nein
+
+Live-Suche über Apify (öffentliche Google-Treffer):
+Keine Suchtreffer für 'handyvertrag 80GB D1 | Kriterien: max: 13 € | min: 80 GB | Netz: D1 | seit 2026-09-12' gefunden.

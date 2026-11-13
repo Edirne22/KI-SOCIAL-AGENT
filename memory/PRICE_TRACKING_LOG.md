@@ -407,3 +407,7 @@
 ## 2026-11-12 14:31
 - Produkt: handyvertrag 80GB D1
 - Ergebnis: Kein verifiziertes Live-Angebot von Gemini-Fallback; nicht gespeichert.
+
+## 2026-11-13 13:47
+- Produkt: handyvertrag 80GB D1
+- Ergebnis: Kein verifiziertes Live-Angebot von Apify-Google-Suche; nicht gespeichert.
