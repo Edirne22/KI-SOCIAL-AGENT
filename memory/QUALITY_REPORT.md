@@ -1,8 +1,8 @@
 # Qualitätsreport
-Stand: 2026-11-12 23:16
+Stand: 2026-11-13 23:18
 Gesamtstatus: **KRITISCH**
-- OK: 11
-- Warnungen: 4
+- OK: 14
+- Warnungen: 3
 - Kritisch: 1
 
 ## Prüfergebnisse
@@ -12,8 +12,10 @@ Gesamtstatus: **KRITISCH**
 - ✅ **Bright-Data-Debug**: Datei vorhanden und nicht leer.
 - ⚠️ **Inspiration-Quellen**: Keine verlinkten Quellen im Report erkannt.
 - ⚠️ **Inspiration-Ideen**: Nur 0 konkrete Ideen erkannt.
-- ⚠️ **YouTube-Fallback**: Apify-Quellreport vorhanden, aber keine verwertbaren Video-Datensätze erkannt.
-- ⚠️ **Datenalter**: Keine auswertbaren Quelldaten gefunden.
+- ✅ **YouTube-Fallback**: 10 YouTube-Datensätze aus dem Apify-Fallback erkannt.
+- ✅ **YouTube-Duplikate**: Keine doppelten Video-URLs im Quellreport erkannt.
+- ⚠️ **YouTube-Quellenmix**: Keine bekannten Primärkanäle erkannt. Die Ideen sind nutzbar, Quellen vor einer Veröffentlichung aber manuell prüfen.
+- ✅ **Datenalter**: 10 Quelldaten geprüft; alle innerhalb von 7 Tagen (neueste: 2026-11-13 10:34 UTC).
 - ✅ **Bright Data Zugang**: Keine aktuellen Zugriffsfehler erkannt.
 - ✅ **Gemini**: Letzte Zusammenfassung war erfolgreich.
 - ✅ **Secret-Prüfung**: Keine typischen Zugangsschlüssel in Projektdateien erkannt.
