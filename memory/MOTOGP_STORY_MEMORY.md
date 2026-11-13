@@ -1779,3 +1779,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/moreira-katardaki-yaris-disi-kalm
 Story-Key: motogp:125022
 Titel: Rivola’dan Martin’e övgü: Sprintte yaptığı bir tür mucizeydi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/rivoladan-martine-ovgu-sprintte-yaptigi-bir-tur-mucizeydi/125022
+
+## 2026-11-13 15:08 UTC – ANGEBOTEN
+Story-Key: title:toprak-razgatl-o-lu-valencia-testine-yeti-ecek-mi-motoron
+Titel: Toprak Razgatlıoğlu Valencia testine yetişecek mi? | Motoron
+Quelle: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-araliktaki-valencia-testine-yetisecek-mi
+
+## 2026-11-13 15:08 UTC – ANGEBOTEN
+Story-Key: title:marquez-bezzecchi-kazas-nda-kim-hatal-dovizioso-g-r-nt-lerdeki-kritik-ayr-nt-y-klad
+Titel: Marquez-Bezzecchi kazasında kim hatalı? Dovizioso görüntülerdeki kritik ayrıntıyı açıkladı
+Quelle: https://motoetkinlik.com/dovizioso-marquez-ile-bezzecchi-arasindaki-kazayi-analiz-etti-daha-buyuk-riski-marco-aldi
+
+## 2026-11-13 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:1185103
+Titel: How can Martin stay in Championship contention?
+Quelle: https://www.motogp.com/en/news/2026/11/12/how-can-martin-stay-in-championship-contention/1185103
+
+## 2026-11-13 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:1185285
+Titel: MotoGP and ESPN announce multi-year broadcast agreement across the United States and Latin America
+Quelle: https://www.motogp.com/en/news/2026/11/12/motogp-and-espn-announce-multi-year-broadcast-agreement-across-the-united-states-and-latin-america/1185285
+
+## 2026-11-13 15:08 UTC – ANGEBOTEN
+Story-Key: title:pecco-bagnaia-ameliyat-oldu-sa-aya-na-plaka-tak-ld
+Titel: Pecco Bagnaia Ameliyat Oldu: Sağ Ayağına Plaka Takıldı
+Quelle: https://motoetkinlik.com/pecco-bagnaia-ameliyat-oldu-sag-ayagina-plaka-takildi

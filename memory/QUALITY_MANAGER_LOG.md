@@ -4314,3 +4314,45 @@ Story-Key: motogp:125022
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-13 15:32 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu Valencia testine yetişecek mi? | Motoron
+Story-Key: title:toprak-razgatl-o-lu-valencia-testine-yeti-ecek-mi-motoron
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-13 15:33 UTC | Motorcycle Racing | PASS
+Titel: Marquez-Bezzecchi kazasında kim hatalı? Dovizioso görüntülerdeki kritik ayrıntıyı açıkladı
+Story-Key: title:marquez-bezzecchi-kazas-nda-kim-hatal-dovizioso-g-r-nt-lerdeki-kritik-ayr-nt-y-klad
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-13 15:33 UTC | Motorcycle Racing | PASS
+Titel: How can Martin stay in Championship contention?
+Story-Key: motogp:1185103
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-13 15:33 UTC | Motorcycle Racing | FAIL
+Titel: Bastianini, KTM’den ayrılmadan önceki son hedefini açıkladı: Podyum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125230
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-13 15:34 UTC | Motorcycle Racing | FAIL
+Titel: Bastianini, KTM’den ayrılmadan önceki son hedefini açıkladı: Podyum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125230
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-13 15:34 UTC | Motorcycle Racing | PASS
+Titel: MotoGP and ESPN announce multi-year broadcast agreement across the United States and Latin America
+Story-Key: motogp:1185285
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-13 15:34 UTC | Motorcycle Racing | PASS
+Titel: Pecco Bagnaia Ameliyat Oldu: Sağ Ayağına Plaka Takıldı
+Story-Key: title:pecco-bagnaia-ameliyat-oldu-sa-aya-na-plaka-tak-ld
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
