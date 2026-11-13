@@ -1335,9 +1335,8 @@ Quelle: https://tr.motorsport.com/motogp/news/ducati-bagnaianin-guncel-saglik-du
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-2-ducati-bagnaianin-gu-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43504751198-1
+## Facebook [GEPOSTET 2026-11-13 20:47 | ID: 122134330005469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-11-daily
 Telegram-Update-ID: 279362034
@@ -1358,6 +1357,7 @@ Wie schätzt ihr seine Rückkehr ein?
 Quelle: https://tr.motorsport.com/motogp/news/ducati-bagnaianin-guncel-saglik-durumunu-acikladi/10873766
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-2-ducati-bagnaianin-gu-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-2-ducati-bagnaianin-gu-01.jpg", "media_status": "", "object_id": "122134330005469415", "object_type": "bild", "platform": "facebook", "post_id": "122134330005469415", "source_url": "https://tr.motorsport.com/motogp/news/ducati-bagnaianin-guncel-saglik-durumunu-acikladi/10873766", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
