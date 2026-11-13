@@ -323,3 +323,15 @@
 - HTTP-Status: 403
 - Verwertete Beiträge: 0
 - Hinweis: Actor lieferte HTTP 403.
+
+## Instagram (2026-11-13 12:42)
+- Actor: apify~instagram-profile-scraper
+- HTTP-Status: 201
+- Verwertete Beiträge: 10
+- Hinweis: Apify ist Hauptquelle; Bright Data wird nur bei fehlenden Datensätzen genutzt.
+
+## Facebook (2026-11-13 12:42)
+- Actor: khadinakbar~facebook-posts-scraper
+- HTTP-Status: 201
+- Verwertete Beiträge: 10
+- Hinweis: Apify ist Hauptquelle; Actor-Limit: maximal 10 Facebook-Beiträge pro Lauf.
