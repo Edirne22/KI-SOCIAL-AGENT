@@ -1480,9 +1480,8 @@ Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezd
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-1-martin-in-sampiyonlu-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43628021602-1
+## Facebook [GEPOSTET 2026-11-14 18:42 | ID: 122134623375469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-14-daily
 Telegram-Update-ID: 279362038
@@ -1507,6 +1506,7 @@ Teilt eure Einschätzung zu Martins Möglichkeiten – wir schauen mit euch auf 
 Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
 Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-1-martin-in-sampiyonlu-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-1-martin-in-sampiyonlu-01.jpg", "media_status": "", "object_id": "122134623375469415", "object_type": "bild", "platform": "facebook", "post_id": "122134623375469415", "source_url": "https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
