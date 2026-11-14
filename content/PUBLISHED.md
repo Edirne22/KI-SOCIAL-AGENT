@@ -1529,9 +1529,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-d
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-3-tardozzi-marquez-yal-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43649697051-1
+## Facebook [GEPOSTET 2026-11-14 22:45 | ID: 122134652235469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-14-daily
 Telegram-Update-ID: 279362038
@@ -1550,6 +1549,7 @@ Wie seht ihr das – ist das Strategie oder einfach der bessere Kopf im rennen?
 Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
 Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-3-tardozzi-marquez-yal-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-3-tardozzi-marquez-yal-01.jpg", "media_status": "", "object_id": "122134652235469415", "object_type": "bild", "platform": "facebook", "post_id": "122134652235469415", "source_url": "https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
