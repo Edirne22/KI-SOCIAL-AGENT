@@ -1382,6 +1382,7 @@ Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-3-lorenzo-mar
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-11-daily
 Telegram-Update-ID: 279362034
