@@ -1427,9 +1427,8 @@ Quelle: https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-ol
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-4-bagnaia-torinoda-ame-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43597404539-1
+## Facebook [GEPOSTET 2026-11-14 12:59 | ID: 122134563123469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-11-daily
 Telegram-Update-ID: 279362034
@@ -1452,3 +1451,4 @@ Hoffen wir auf eine schnelle Genesung für die letzten Rennen der Saison.
 Quelle: https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-oldu-portimao-ve-valencia-belirsiz
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-4-bagnaia-torinoda-ame-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-4-bagnaia-torinoda-ame-01.jpg", "media_status": "", "object_id": "122134563123469415", "object_type": "bild", "platform": "facebook", "post_id": "122134563123469415", "source_url": "https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-oldu-portimao-ve-valencia-belirsiz", "version": 1}
