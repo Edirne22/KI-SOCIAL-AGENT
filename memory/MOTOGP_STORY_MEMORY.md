@@ -1804,3 +1804,28 @@ Quelle: https://www.motogp.com/en/news/2026/11/12/motogp-and-espn-announce-multi
 Story-Key: title:pecco-bagnaia-ameliyat-oldu-sa-aya-na-plaka-tak-ld
 Titel: Pecco Bagnaia Ameliyat Oldu: Sağ Ayağına Plaka Takıldı
 Quelle: https://motoetkinlik.com/pecco-bagnaia-ameliyat-oldu-sag-ayagina-plaka-takildi
+
+## 2026-11-14 13:59 UTC – ANGEBOTEN
+Story-Key: title:martin-ampiyonluk-hesab-portimao-da-marquez-den-24-puan-fazla-almal
+Titel: Martin'in Şampiyonluk Hesabı: Portimao'da Marquez'den 24 Puan Fazla Almalı
+Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
+
+## 2026-11-14 13:59 UTC – ANGEBOTEN
+Story-Key: motogp:125195
+Titel: Dovizioso, Marquez ve Bezzecchi’nin Katar Sprint çatışmasını pilot gözüyle anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/dovizioso-marquez-ve-bezzecchinin-katar-sprint-catismasini-pilot-gozuyle-anlatti/125195
+
+## 2026-11-14 13:59 UTC – ANGEBOTEN
+Story-Key: motogp:125024
+Titel: Tardozzi: Marquez yalnızca hızlı değil, akıllı bir pilot - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
+
+## 2026-11-14 13:59 UTC – ANGEBOTEN
+Story-Key: motogp:124931
+Titel: Di Giannantonio Katar’da neden yavaşladı: Büyük titreşimler yüzünden motosiklet yatırılamaz hale geldi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yavasladi-buyuk-titresimler-yuzunden-motosiklet-yatirilamaz-hale-geldi/124931
+
+## 2026-11-14 13:59 UTC – ANGEBOTEN
+Story-Key: motogp:125341
+Titel: Rossi, yeni kitabında da Sepang’daki tekmeyi reddetti: “Tekme hiç var olmadı” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdaki-tekmeyi-reddetti-tekme-hic-var-olmadi/125341

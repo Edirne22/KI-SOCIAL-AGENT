@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1794582501
+Session-Timestamp: 1794664773
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,29 +15,31 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
-Artikelalter-Tage: 0.3
-Kategorie: Turkish Riders
+Artikelalter-Tage: 0.6
+Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:toprak-razgatl-o-lu-valencia-testine-yeti-ecek-mi-motoron
-Titel: Toprak Razgatlıoğlu Valencia testine yetişecek mi? | Motoron
-Quelle: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-araliktaki-valencia-testine-yetisecek-mi
+Story-Key: title:martin-ampiyonluk-hesab-portimao-da-marquez-den-24-puan-fazla-almal
+Titel: Martin'in Şampiyonluk Hesabı: Portimao'da Marquez'den 24 Puan Fazla Almalı
+Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-13-racing-editorial-2026-11-13-1-toprak-razgatlioglu-01.jpg
-Quellen-Preview: https://www.motoron.com.tr/wp-content/uploads/2026/11/toprak-razgatlioglu-prima-pramac-yamaha-motogp-2026.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-1-martin-in-sampiyonlu-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/11/martin-marquez-sampiyonluk-hesabi.webp
 Plattformen: Instagram + Facebook
 Text:
-Toprak Razgatlıoğlu hat eine Schulter-OP hinter sich.
+Jorge Martin muss in Portimão im Titelkampf mindestens 24 Punkte Vorsprung vor seinem direkten Verfolger herausfahren.
 
-Sein Ziel ist der Test in Valencia am 1. Dezember.
+Nur wenn diese Punktedifferenz erreicht wird, bleibt die MotoGP-WM noch für das Saisonfinale in Valencia offen.
 
-Vorher nahm er bereits am 850er-Test in Jerez teil, um seinen aktuellen Zustand prüfen zu lassen.
+Die benötigte Bilanz setzt sich aus beiden Rennwochenenden – Sprint und Hauptrennen – zusammen.
 
-Wie seht ihr seine Chancen für Valencia?
+Erst mit diesem Rückstand in der Gesamtwertung würde die Meisterschaft nicht bereits in Portugal entschieden.
 
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Teilt eure Einschätzung zu Martins Möglichkeiten – wir schauen mit euch auf die Punktebilanz.
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -45,27 +47,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 3
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.4
+Artikelalter-Tage: 2.1
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:marquez-bezzecchi-kazas-nda-kim-hatal-dovizioso-g-r-nt-lerdeki-kritik-ayr-nt-y-klad
-Titel: Marquez-Bezzecchi kazasında kim hatalı? Dovizioso görüntülerdeki kritik ayrıntıyı açıkladı
-Quelle: https://motoetkinlik.com/dovizioso-marquez-ile-bezzecchi-arasindaki-kazayi-analiz-etti-daha-buyuk-riski-marco-aldi
+Story-Key: motogp:125195
+Titel: Dovizioso, Marquez ve Bezzecchi’nin Katar Sprint çatışmasını pilot gözüyle anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/dovizioso-marquez-ve-bezzecchinin-katar-sprint-catismasini-pilot-gozuyle-anlatti/125195
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-13-racing-editorial-2026-11-13-2-marquez-bezzecchi-ka-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/11/marc-marquez-marco-bezzecchi-katar-motogp-sprint-kazasi-2026-1.webp
+Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-2-dovizioso-marquez-ve-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1361364_hires_1600x900-1.jpg
 Plattformen: Instagram + Facebook
 Text:
-Andrea Dovizioso hat den Kontakt zwischen Marc Marquez und Marco Bezzecchi im Katar-MotoGP-Sprint analysiert.
+Kaskın içinde, motosiklette. Marc’ın yaşadığı şeyi, Bez’in yaşadığı şeyi hisletmek, yarışmamış biri için hayal edilemeyecek
 
-Der frühere Ducati-Pilot zeigte auf die riskante Überholaktion.
+Dovizioso hat sich zum Katar-Sprint geäußert – und da ging’s entre Marquez und Bezzecchi zur Sache. Der ehemalige Vizeweltmeister von 2017 bis 2019, heute Yamaha-Testfahrer, lieferte seine Analyse im eigenen Podcast 04 Bar. Für ihn ist klar: Wer nicht selbst im Sattel sitzt, kann kaum nachvollziehen, was die beiden da erlebt haben.
 
-In den Bildern hat er zusätzlich ein kritisches Detail offengelegt.
-
-Zum Video:
+Wie siehst du die Szene aus Katar?
 
 #MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -78,22 +78,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.6
+Artikelalter-Tage: 3.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1185103
-Titel: How can Martin stay in Championship contention?
-Quelle: https://www.motogp.com/en/news/2026/11/12/how-can-martin-stay-in-championship-contention/1185103
+Story-Key: motogp:125024
+Titel: Tardozzi: Marquez yalnızca hızlı değil, akıllı bir pilot - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-13-racing-editorial-2026-11-13-3-how-can-martin-stay-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/09/5a2aef29-1497-4681-8be0-4b02b2aad5e5/GAL-Moto-GP-Qatar-DM-1920x1080-04.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-3-tardozzi-marquez-yal-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362718_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin steht bei der portugiesischen MotoGP am Start, wenn es darum geht, im Titelkampf vorne mitzumischen. Was er genau braucht, um das Rennen für sich und die Meisterschaft zu drehen, kannst du in unserem Artikel nachlesen.
+Marc Marquez hat sich mit einem zweiten Platz in Katar wieder einmal als kluger Schachspieler auf der Strecke bewiesen. Der Titelgewinn stand auf dem Spiel, aber er konnte nicht selbst entscheiden, ob Bezzecchi oder Martin genug Punkte abgeben würden. Stattdessen ging er pragmatisch ran, sammelte punkteefficient ein und holte am Ende die meisten Punkte – trotz favorisiertem Ruf aus den Freundschaftsrennen. Zehn Jahre Erfahrung zeigen: Manchmal gewinnt man eine Saison nicht mit Tempo allein.
 
-Wie schätzt ihr Martins Chancen ein?
+Wie seht ihr das – ist das Strategie oder einfach der bessere Kopf im rennen?
 
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -101,25 +101,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.6
+Artikelalter-Tage: 4.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1185285
-Titel: MotoGP and ESPN announce multi-year broadcast agreement across the United States and Latin America
-Quelle: https://www.motogp.com/en/news/2026/11/12/motogp-and-espn-announce-multi-year-broadcast-agreement-across-the-united-states-and-latin-america/1185285
+Story-Key: motogp:124931
+Titel: Di Giannantonio Katar’da neden yavaşladı: Büyük titreşimler yüzünden motosiklet yatırılamaz hale geldi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yavasladi-buyuk-titresimler-yuzunden-motosiklet-yatirilamaz-hale-geldi/124931
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-13-racing-editorial-2026-11-13-4-motogp-and-espn-anno-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/12/78fc3e13-995a-4537-b28a-340de57a3c62/RD3_Austin_Marini_2026-07731-2-.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-4-di-giannantonio-kata-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362665_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-MotoGP hat eine neue Zweijahres-Mediatransfervereinbarung mit ESPN geschlossen. Ab 2027 und 2028 zeigt der Sender die Rennen in den Vereinigten Staaten und Lateinamerika.
+Di Giannantonio sagte, die VR46-Ducati habe sich in den Islandtours am besten angefühlt, die großen Vibrationen hätten das Motorrad im Rennen aber zum Lenken unbrauchbar gemacht – zeitweise war er sogar der langsameste Ducati.
 
-Wie seht ihr die neue ESPN-Übertragung für MotoGP in den Vereinigten Staaten und Lateinamerika?
+Fabio Di Giannantonio startete in Katar vom zweiten Platz und führte sogar in den Islandtours, doch dann kamen die Vibrationen. Die Ducati ließ sich kaum noch lenken, einzelne Rennabschnitte fuhr er langsamer als jeder andere Ducati-Pilot. Seine Hoffnung auf einen Repeat seines Sieges von 2023 war damit schnell vorbei.
 
-#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+@fabiodigiannantonio hat sein Team alles gegeben, aber die Maschine hat ihm einfach die Grundlage genommen.
+
+Wie seht ihr das – technisches Pech oder reicht das Setup nicht?
+
+#MotoGP #FabioDiGiannantonio #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -130,26 +134,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.7
+Artikelalter-Tage: 0.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:pecco-bagnaia-ameliyat-oldu-sa-aya-na-plaka-tak-ld
-Titel: Pecco Bagnaia Ameliyat Oldu: Sağ Ayağına Plaka Takıldı
-Quelle: https://motoetkinlik.com/pecco-bagnaia-ameliyat-oldu-sag-ayagina-plaka-takildi
+Story-Key: motogp:125341
+Titel: Rossi, yeni kitabında da Sepang’daki tekmeyi reddetti: “Tekme hiç var olmadı” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdaki-tekmeyi-reddetti-tekme-hic-var-olmadi/125341
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-13-racing-editorial-2026-11-13-5-pecco-bagnaia-ameliy-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/08/pecco-bagnaia-ducati-aprilia-aragon-motogp-2026.webp
+Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-5-rossi-yeni-kitabinda-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_589064_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Francesco Bagnaia musste sich nach dem Sturz im Sprint-Rennen vom Katar GP einer Operation am rechten Fuß unterziehen.
+Valentino Rossi kommt mit seiner Autobiografie 'La Mia Storia' heraus, die viele MotoGP-Erinnerungen neu beleuchtet.
 
-Der Eingriff war erfolgreich – am vierten Mittelfußknochen wurde eine Platte eingesetzt.
+Darina hält Rossi fest: Beim Streitrennen in Sepang 2015 hat er Marc Marquez nicht getreten.
 
-Für den World Champion bedeutet das einepause auf der Rennstrecke.
+Bereits vor dem Start hatte Rossi Marquez vorgeworfen, seinem Yamaha-Rivalen Jorge Lorenzo zur Titelhilfe zu verhelfen.
 
-Wie seht ihr die Situation für Pecco?
+Ein klares Statement – gut, dass Rossis Sicht jetzt schriftlich festgehalten ist.
 
-#MotoGP #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

@@ -4356,3 +4356,45 @@ Story-Key: title:pecco-bagnaia-ameliyat-oldu-sa-aya-na-plaka-tak-ld
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-14 14:32 UTC | Motorcycle Racing | PASS
+Titel: Martin'in Şampiyonluk Hesabı: Portimao'da Marquez'den 24 Puan Fazla Almalı
+Story-Key: title:martin-ampiyonluk-hesab-portimao-da-marquez-den-24-puan-fazla-almal
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-14 14:32 UTC | Motorcycle Racing | PASS
+Titel: Dovizioso, Marquez ve Bezzecchi’nin Katar Sprint çatışmasını pilot gözüyle anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125195
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-14 14:32 UTC | Motorcycle Racing | FAIL
+Titel: Bastianini, KTM’den ayrılmadan önceki son hedefini açıkladı: Podyum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125230
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-14 14:32 UTC | Motorcycle Racing | FAIL
+Titel: Bastianini, KTM’den ayrılmadan önceki son hedefini açıkladı: Podyum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125230
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-14 14:33 UTC | Motorcycle Racing | PASS
+Titel: Tardozzi: Marquez yalnızca hızlı değil, akıllı bir pilot - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125024
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-14 14:33 UTC | Motorcycle Racing | PASS
+Titel: Di Giannantonio Katar’da neden yavaşladı: Büyük titreşimler yüzünden motosiklet yatırılamaz hale geldi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:124931
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-14 14:33 UTC | Motorcycle Racing | PASS
+Titel: Rossi, yeni kitabında da Sepang’daki tekmeyi reddetti: “Tekme hiç var olmadı” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125341
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

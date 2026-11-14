@@ -1306,9 +1306,17 @@
       "event": "schedule",
       "github_run_id": "43447873983",
       "arch_version": "V8.5.5"
+    },
+    "racing-2026-11-14-daily": {
+      "status": "READY_FOR_APPROVAL",
+      "started_at": "2026-11-14T13:52:34.130997+00:00",
+      "updated_at": "2026-11-14T14:33:27.818362+00:00",
+      "event": "schedule",
+      "github_run_id": "43601813512",
+      "arch_version": "V8.5.5"
     }
   },
-  "last_notification_at": 1794584067.7682924,
+  "last_notification_at": 1794666807.815886,
   "last_notification_fingerprint": "8446a800fc7cfcb8d1d4ab44e86d2ec91a6b105a7605a29193805b82e3302970",
-  "active_batch_id": "racing-2026-11-13-daily"
+  "active_batch_id": "racing-2026-11-14-daily"
 }
