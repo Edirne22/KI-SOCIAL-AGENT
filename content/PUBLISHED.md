@@ -1452,3 +1452,199 @@ Quelle: https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-ol
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-4-bagnaia-torinoda-ame-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-4-bagnaia-torinoda-ame-01.jpg", "media_status": "", "object_id": "122134563123469415", "object_type": "bild", "platform": "facebook", "post_id": "122134563123469415", "source_url": "https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-oldu-portimao-ve-valencia-belirsiz", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 1
+Story-Key: title:martin-ampiyonluk-hesab-portimao-da-marquez-den-24-puan-fazla-almal
+Event-Fingerprint: MotoGP|sprint|martin|valencia
+Titel: Martin'in Şampiyonluk Hesabı: Portimao'da Marquez'den 24 Puan Fazla Almalı
+Text:
+Jorge Martin muss in Portimão im Titelkampf mindestens 24 Punkte Vorsprung vor seinem direkten Verfolger herausfahren.
+
+Nur wenn diese Punktedifferenz erreicht wird, bleibt die MotoGP-WM noch für das Saisonfinale in Valencia offen.
+
+Die benötigte Bilanz setzt sich aus beiden Rennwochenenden – Sprint und Hauptrennen – zusammen.
+
+Erst mit diesem Rückstand in der Gesamtwertung würde die Meisterschaft nicht bereits in Portugal entschieden.
+
+Teilt eure Einschätzung zu Martins Möglichkeiten – wir schauen mit euch auf die Punktebilanz.
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
+Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-1-martin-in-sampiyonlu-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 1
+Story-Key: title:martin-ampiyonluk-hesab-portimao-da-marquez-den-24-puan-fazla-almal
+Event-Fingerprint: MotoGP|sprint|martin|valencia
+Titel: Martin'in Şampiyonluk Hesabı: Portimao'da Marquez'den 24 Puan Fazla Almalı
+Text:
+Jorge Martin muss in Portimão im Titelkampf mindestens 24 Punkte Vorsprung vor seinem direkten Verfolger herausfahren.
+
+Nur wenn diese Punktedifferenz erreicht wird, bleibt die MotoGP-WM noch für das Saisonfinale in Valencia offen.
+
+Die benötigte Bilanz setzt sich aus beiden Rennwochenenden – Sprint und Hauptrennen – zusammen.
+
+Erst mit diesem Rückstand in der Gesamtwertung würde die Meisterschaft nicht bereits in Portugal entschieden.
+
+Teilt eure Einschätzung zu Martins Möglichkeiten – wir schauen mit euch auf die Punktebilanz.
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
+Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-1-martin-in-sampiyonlu-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 3
+Story-Key: motogp:125024
+Event-Fingerprint: -
+Titel: Tardozzi: Marquez yalnızca hızlı değil, akıllı bir pilot - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez hat sich mit einem zweiten Platz in Katar wieder einmal als kluger Schachspieler auf der Strecke bewiesen. Der Titelgewinn stand auf dem Spiel, aber er konnte nicht selbst entscheiden, ob Bezzecchi oder Martin genug Punkte abgeben würden. Stattdessen ging er pragmatisch ran, sammelte punkteefficient ein und holte am Ende die meisten Punkte – trotz favorisiertem Ruf aus den Freundschaftsrennen. Zehn Jahre Erfahrung zeigen: Manchmal gewinnt man eine Saison nicht mit Tempo allein.
+
+Wie seht ihr das – ist das Strategie oder einfach der bessere Kopf im rennen?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
+Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-3-tardozzi-marquez-yal-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 3
+Story-Key: motogp:125024
+Event-Fingerprint: -
+Titel: Tardozzi: Marquez yalnızca hızlı değil, akıllı bir pilot - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez hat sich mit einem zweiten Platz in Katar wieder einmal als kluger Schachspieler auf der Strecke bewiesen. Der Titelgewinn stand auf dem Spiel, aber er konnte nicht selbst entscheiden, ob Bezzecchi oder Martin genug Punkte abgeben würden. Stattdessen ging er pragmatisch ran, sammelte punkteefficient ein und holte am Ende die meisten Punkte – trotz favorisiertem Ruf aus den Freundschaftsrennen. Zehn Jahre Erfahrung zeigen: Manchmal gewinnt man eine Saison nicht mit Tempo allein.
+
+Wie seht ihr das – ist das Strategie oder einfach der bessere Kopf im rennen?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
+Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-3-tardozzi-marquez-yal-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 4
+Story-Key: motogp:124931
+Event-Fingerprint: -
+Titel: Di Giannantonio Katar’da neden yavaşladı: Büyük titreşimler yüzünden motosiklet yatırılamaz hale geldi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Di Giannantonio sagte, die VR46-Ducati habe sich in den Islandtours am besten angefühlt, die großen Vibrationen hätten das Motorrad im Rennen aber zum Lenken unbrauchbar gemacht – zeitweise war er sogar der langsameste Ducati.
+
+Fabio Di Giannantonio startete in Katar vom zweiten Platz und führte sogar in den Islandtours, doch dann kamen die Vibrationen. Die Ducati ließ sich kaum noch lenken, einzelne Rennabschnitte fuhr er langsamer als jeder andere Ducati-Pilot. Seine Hoffnung auf einen Repeat seines Sieges von 2023 war damit schnell vorbei.
+
+@fabiodigiannantonio hat sein Team alles gegeben, aber die Maschine hat ihm einfach die Grundlage genommen.
+
+Wie seht ihr das – technisches Pech oder reicht das Setup nicht?
+
+#MotoGP #FabioDiGiannantonio #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yavasladi-buyuk-titresimler-yuzunden-motosiklet-yatirilamaz-hale-geldi/124931
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yavasladi-buyuk-titresimler-yuzunden-motosiklet-yatirilamaz-hale-geldi/124931
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-4-di-giannantonio-kata-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 4
+Story-Key: motogp:124931
+Event-Fingerprint: -
+Titel: Di Giannantonio Katar’da neden yavaşladı: Büyük titreşimler yüzünden motosiklet yatırılamaz hale geldi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Di Giannantonio sagte, die VR46-Ducati habe sich in den Islandtours am besten angefühlt, die großen Vibrationen hätten das Motorrad im Rennen aber zum Lenken unbrauchbar gemacht – zeitweise war er sogar der langsameste Ducati.
+
+Fabio Di Giannantonio startete in Katar vom zweiten Platz und führte sogar in den Islandtours, doch dann kamen die Vibrationen. Die Ducati ließ sich kaum noch lenken, einzelne Rennabschnitte fuhr er langsamer als jeder andere Ducati-Pilot. Seine Hoffnung auf einen Repeat seines Sieges von 2023 war damit schnell vorbei.
+
+@fabiodigiannantonio hat sein Team alles gegeben, aber die Maschine hat ihm einfach die Grundlage genommen.
+
+Wie seht ihr das – technisches Pech oder reicht das Setup nicht?
+
+#MotoGP #FabioDiGiannantonio #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yavasladi-buyuk-titresimler-yuzunden-motosiklet-yatirilamaz-hale-geldi/124931
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yavasladi-buyuk-titresimler-yuzunden-motosiklet-yatirilamaz-hale-geldi/124931
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-4-di-giannantonio-kata-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 5
+Story-Key: motogp:125341
+Event-Fingerprint: -
+Titel: Rossi, yeni kitabında da Sepang’daki tekmeyi reddetti: “Tekme hiç var olmadı” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Valentino Rossi kommt mit seiner Autobiografie 'La Mia Storia' heraus, die viele MotoGP-Erinnerungen neu beleuchtet.
+
+Darina hält Rossi fest: Beim Streitrennen in Sepang 2015 hat er Marc Marquez nicht getreten.
+
+Bereits vor dem Start hatte Rossi Marquez vorgeworfen, seinem Yamaha-Rivalen Jorge Lorenzo zur Titelhilfe zu verhelfen.
+
+Ein klares Statement – gut, dass Rossis Sicht jetzt schriftlich festgehalten ist.
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdaki-tekmeyi-reddetti-tekme-hic-var-olmadi/125341
+Quelle: https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdaki-tekmeyi-reddetti-tekme-hic-var-olmadi/125341
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-5-rossi-yeni-kitabinda-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 5
+Story-Key: motogp:125341
+Event-Fingerprint: -
+Titel: Rossi, yeni kitabında da Sepang’daki tekmeyi reddetti: “Tekme hiç var olmadı” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Valentino Rossi kommt mit seiner Autobiografie 'La Mia Storia' heraus, die viele MotoGP-Erinnerungen neu beleuchtet.
+
+Darina hält Rossi fest: Beim Streitrennen in Sepang 2015 hat er Marc Marquez nicht getreten.
+
+Bereits vor dem Start hatte Rossi Marquez vorgeworfen, seinem Yamaha-Rivalen Jorge Lorenzo zur Titelhilfe zu verhelfen.
+
+Ein klares Statement – gut, dass Rossis Sicht jetzt schriftlich festgehalten ist.
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdaki-tekmeyi-reddetti-tekme-hic-var-olmadi/125341
+Quelle: https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdaki-tekmeyi-reddetti-tekme-hic-var-olmadi/125341
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-5-rossi-yeni-kitabinda-01.jpg
+Link-Preview: offiziell
