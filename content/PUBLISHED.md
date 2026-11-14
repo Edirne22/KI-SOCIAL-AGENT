@@ -1380,9 +1380,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/lorenzo-marquez-sampiyon-olursa-r
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-3-lorenzo-marquez-samp-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43539658796-1
+## Facebook [GEPOSTET 2026-11-14 01:17 | ID: 122134370997469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-11-daily
 Telegram-Update-ID: 279362034
@@ -1401,6 +1400,7 @@ Wie schätzt ihr das ein?
 Quelle: https://trf1.net/motor-sporlari/motogp/lorenzo-marquez-sampiyon-olursa-rossi-en-buyuk-kim-tartismasinin-disinda-kalir/125079
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-3-lorenzo-marquez-samp-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-3-lorenzo-marquez-samp-01.jpg", "media_status": "", "object_id": "122134370997469415", "object_type": "bild", "platform": "facebook", "post_id": "122134370997469415", "source_url": "https://trf1.net/motor-sporlari/motogp/lorenzo-marquez-sampiyon-olursa-rossi-en-buyuk-kim-tartismasinin-disinda-kalir/125079", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
