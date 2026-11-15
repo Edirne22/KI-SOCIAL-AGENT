@@ -1590,9 +1590,8 @@ Quelle: https://tr.motorsport.com/motogp/news/bradl-toprak-ducati-veya-aprilia-i
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-1-bradl-toprak-ducati-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43774952585-1
+## Facebook [GEPOSTET 2026-11-15 23:28 | ID: 122135007633469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-15-daily
 Telegram-Update-ID: 279362043
@@ -1615,6 +1614,7 @@ Wie seht ihr das — ist Toprak einfach nicht der Yamahatyp?
 Quelle: https://tr.motorsport.com/motogp/news/bradl-toprak-ducati-veya-aprilia-ile-cok-daha-rekabetci-olurdu/10874593
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-1-bradl-toprak-ducati-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-1-bradl-toprak-ducati-01.jpg", "media_status": "", "object_id": "122135007633469415", "object_type": "bild", "platform": "facebook", "post_id": "122135007633469415", "source_url": "https://tr.motorsport.com/motogp/news/bradl-toprak-ducati-veya-aprilia-ile-cok-daha-rekabetci-olurdu/10874593", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
