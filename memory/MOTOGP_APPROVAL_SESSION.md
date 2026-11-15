@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1794664773
+Session-Timestamp: 1794753314
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,31 +15,29 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 2
+Neufassungen: 2
+QM-Ruecklaeufe: 6
 Herkunft: Aktuell
-Artikelalter-Tage: 0.6
-Kategorie: MotoGP
+Artikelalter-Tage: 0.1
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: title:martin-ampiyonluk-hesab-portimao-da-marquez-den-24-puan-fazla-almal
-Titel: Martin'in Şampiyonluk Hesabı: Portimao'da Marquez'den 24 Puan Fazla Almalı
-Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
+Story-Key: motogp:10874593
+Titel: Bradl: "Toprak, Ducati veya Aprilia ile çok daha rekabetçi olurdu"
+Quelle: https://tr.motorsport.com/motogp/news/bradl-toprak-ducati-veya-aprilia-ile-cok-daha-rekabetci-olurdu/10874593
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-1-martin-in-sampiyonlu-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/11/martin-marquez-sampiyonluk-hesabi.webp
+Instagram-Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-1-bradl-toprak-ducati-01.jpg
+Quellen-Preview: https://cdn-7.motorsport.com/images/amp/YK151zw0/s6/toprak-razgatlioglu-pramac-rac.jpg
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin muss in Portimão im Titelkampf mindestens 24 Punkte Vorsprung vor seinem direkten Verfolger herausfahren.
+Stefan Bradl, ehemaliger MotoGP-Pilot, findet: Toprak Razgatlıoğlu hat mit der Yamaha Probleme.
 
-Nur wenn diese Punktedifferenz erreicht wird, bleibt die MotoGP-WM noch für das Saisonfinale in Valencia offen.
+Seiner Meinung nach kommt Toprak auf dem italienischen Bike nicht mit der Maschine klar.
 
-Die benötigte Bilanz setzt sich aus beiden Rennwochenenden – Sprint und Hauptrennen – zusammen.
+Mit einem Ducati oder einer Aprilia hätte er laut Bradl deutlich bessere Ergebnisse möglich.
 
-Erst mit diesem Rückstand in der Gesamtwertung würde die Meisterschaft nicht bereits in Portugal entschieden.
+Wie seht ihr das — ist Toprak einfach nicht der Yamahatyp?
 
-Teilt eure Einschätzung zu Martins Möglichkeiten – wir schauen mit euch auf die Punktebilanz.
-
-#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -47,27 +45,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 2.1
+Artikelalter-Tage: 1.3
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:125195
-Titel: Dovizioso, Marquez ve Bezzecchi’nin Katar Sprint çatışmasını pilot gözüyle anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/dovizioso-marquez-ve-bezzecchinin-katar-sprint-catismasini-pilot-gozuyle-anlatti/125195
+Story-Key: title:portim-o-da-ampiyonluk-puan-m-rquez-10-ampiyonluk-hesab-motoron-dergisi
+Titel: Portimão'da şampiyonluk puanı: Márquez'in 10. şampiyonluk hesabı | Motoron Dergisi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/portimao-marquez-10-sampiyonluk-hesabi-2026
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-2-dovizioso-marquez-ve-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1361364_hires_1600x900-1.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-2-portimao-da-sampiyon-01.jpg
+Quellen-Preview: https://www.motoron.com.tr/wp-content/uploads/2026/11/marc-marquez-katar-2026-motogp.jpg
 Plattformen: Instagram + Facebook
 Text:
-Kaskın içinde, motosiklette. Marc’ın yaşadığı şeyi, Bez’in yaşadığı şeyi hisletmek, yarışmamış biri için hayal edilemeyecek
+Marc Márquez kann mit einem Sprint-Sieg in Portimão seinen 10. WM-Titel feiern.
 
-Dovizioso hat sich zum Katar-Sprint geäußert – und da ging’s entre Marquez und Bezzecchi zur Sache. Der ehemalige Vizeweltmeister von 2017 bis 2019, heute Yamaha-Testfahrer, lieferte seine Analyse im eigenen Podcast 04 Bar. Für ihn ist klar: Wer nicht selbst im Sattel sitzt, kann kaum nachvollziehen, was die beiden da erlebt haben.
+Jorge Martin muss in Valencia noch Chancen wahren — die Situation ist offen.
 
-Wie siehst du die Szene aus Katar?
+Für Martins Weg ins Saisonfinale gibt es verschiedene Szenarien.
 
-#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie schätzt ihr die Lage vor dem Sprint ein?
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -78,22 +78,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 3.9
+Artikelalter-Tage: 0.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:125024
-Titel: Tardozzi: Marquez yalnızca hızlı değil, akıllı bir pilot - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
+Story-Key: motogp:125406
+Titel: Chico Lorenzo, Marquez’in büyüklüğünün ardındaki teoriyi anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-3-tardozzi-marquez-yal-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362718_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-3-chico-lorenzo-marque-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_570234_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez hat sich mit einem zweiten Platz in Katar wieder einmal als kluger Schachspieler auf der Strecke bewiesen. Der Titelgewinn stand auf dem Spiel, aber er konnte nicht selbst entscheiden, ob Bezzecchi oder Martin genug Punkte abgeben würden. Stattdessen ging er pragmatisch ran, sammelte punkteefficient ein und holte am Ende die meisten Punkte – trotz favorisiertem Ruf aus den Freundschaftsrennen. Zehn Jahre Erfahrung zeigen: Manchmal gewinnt man eine Saison nicht mit Tempo allein.
+Marc Marquez steht kurz vor seinem achten Titel in der Königsklasse.
 
-Wie seht ihr das – ist das Strategie oder einfach der bessere Kopf im rennen?
+Chico Lorenzo, Vater und Trainer von Jorge Lorenzo, hat die Faktoren hinter den Erfolgen des Ducati-Fahrers bewertet.
 
-#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+Jorge Lorenzo war zwischen 2013 und 2019 der einzige andere Pilot mit einem MotoGP-Titel, bevor Marquez nach seinen Armverletzungen 2020 in Jerez vorübergehend ausfiel.
+
+Teilt eure Gedanken dazu gerne in den Kommentaren.
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -101,29 +105,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 4.9
+Artikelalter-Tage: 1.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:124931
-Titel: Di Giannantonio Katar’da neden yavaşladı: Büyük titreşimler yüzünden motosiklet yatırılamaz hale geldi - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yavasladi-buyuk-titresimler-yuzunden-motosiklet-yatirilamaz-hale-geldi/124931
+Story-Key: motogp:10874266
+Titel: Antonelli’den Bezzecchi’ye destek mesajı: "Dünya şampiyonluğunu hak ediyor"
+Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-4-di-giannantonio-kata-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362665_hires_1600x900.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-4-antonelliden-bezzecc-01.jpg
+Quellen-Preview: https://cdn-2.motorsport.com/images/amp/6x7LzO5Y/s6/antonelli-jpg.jpg
 Plattformen: Instagram + Facebook
 Text:
-Di Giannantonio sagte, die VR46-Ducati habe sich in den Islandtours am besten angefühlt, die großen Vibrationen hätten das Motorrad im Rennen aber zum Lenken unbrauchbar gemacht – zeitweise war er sogar der langsameste Ducati.
+Kimi Antonelli hat Marco Bezzecchi eine deutliche Empfehlung gegeben – und die gilt zukünftig.
 
-Fabio Di Giannantonio startete in Katar vom zweiten Platz und führte sogar in den Islandtours, doch dann kamen die Vibrationen. Die Ducati ließ sich kaum noch lenken, einzelne Rennabschnitte fuhr er langsamer als jeder andere Ducati-Pilot. Seine Hoffnung auf einen Repeat seines Sieges von 2023 war damit schnell vorbei.
+Der italienische MotoGP-Fahrer sieht seinen engsten Freund als einen der stärksten Anwärter auf die Weltmeisterschaft im nächsten Jahr. Antonelli steht fest hinter Bezzecchi und setzt damit klare Signale im Fahrerlager.
 
-@fabiodigiannantonio hat sein Team alles gegeben, aber die Maschine hat ihm einfach die Grundlage genommen.
+Wie schätzt ihr Bezzecchis Titelchancen für kommende Saison ein?
 
-Wie seht ihr das – technisches Pech oder reicht das Setup nicht?
-
-#MotoGP #FabioDiGiannantonio #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -131,29 +133,31 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 1.9
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:125341
-Titel: Rossi, yeni kitabında da Sepang’daki tekmeyi reddetti: “Tekme hiç var olmadı” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdaki-tekmeyi-reddetti-tekme-hic-var-olmadi/125341
+Story-Key: motogp:10874274
+Titel: Bulega, Jerez'deki 850cc MotoGP testinde zirvede!
+Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-5-rossi-yeni-kitabinda-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_589064_hires_1600x900.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg
+Quellen-Preview: https://cdn-6.motorsport.com/images/amp/YP7r4332/s6/nicolo-bulega-ducati-jerez-tes.jpg
 Plattformen: Instagram + Facebook
 Text:
-Valentino Rossi kommt mit seiner Autobiografie 'La Mia Storia' heraus, die viele MotoGP-Erinnerungen neu beleuchtet.
+Nicolo Bulega hat im Jerez-Spezialtest den schnellsten Rundenzeit gefahren 🏁
 
-Darina hält Rossi fest: Beim Streitrennen in Sepang 2015 hat er Marc Marquez nicht getreten.
+Bei dem Test auf dem Circuit Jerez ging es um die Entwicklung der neuen 850-cm³-MotoGP-Bikes für 2027 – gestartet von Ducati, Aprilia und KTM.
 
-Bereits vor dem Start hatte Rossi Marquez vorgeworfen, seinem Yamaha-Rivalen Jorge Lorenzo zur Titelhilfe zu verhelfen.
+Das war der letzte Tage des besonderen Testevents.
 
-Ein klares Statement – gut, dass Rossis Sicht jetzt schriftlich festgehalten ist.
+Die Marke MotoGP steht im Fokus, wenn das neue Reglement näher rückt.
 
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Was denkt ihr über die 850-cm³-Wende?Kommt mir dann noch mehr Action auf der Strecke?
+
+#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

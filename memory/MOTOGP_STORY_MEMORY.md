@@ -1829,3 +1829,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yav
 Story-Key: motogp:125341
 Titel: Rossi, yeni kitabında da Sepang’daki tekmeyi reddetti: “Tekme hiç var olmadı” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdaki-tekmeyi-reddetti-tekme-hic-var-olmadi/125341
+
+## 2026-11-15 14:35 UTC – ANGEBOTEN
+Story-Key: motogp:10874593
+Titel: Bradl: "Toprak, Ducati veya Aprilia ile çok daha rekabetçi olurdu"
+Quelle: https://tr.motorsport.com/motogp/news/bradl-toprak-ducati-veya-aprilia-ile-cok-daha-rekabetci-olurdu/10874593
+
+## 2026-11-15 14:35 UTC – ANGEBOTEN
+Story-Key: title:portim-o-da-ampiyonluk-puan-m-rquez-10-ampiyonluk-hesab-motoron-dergisi
+Titel: Portimão'da şampiyonluk puanı: Márquez'in 10. şampiyonluk hesabı | Motoron Dergisi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/portimao-marquez-10-sampiyonluk-hesabi-2026
+
+## 2026-11-15 14:35 UTC – ANGEBOTEN
+Story-Key: motogp:125406
+Titel: Chico Lorenzo, Marquez’in büyüklüğünün ardındaki teoriyi anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406
+
+## 2026-11-15 14:35 UTC – ANGEBOTEN
+Story-Key: motogp:10874266
+Titel: Antonelli’den Bezzecchi’ye destek mesajı: "Dünya şampiyonluğunu hak ediyor"
+Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266
+
+## 2026-11-15 14:35 UTC – ANGEBOTEN
+Story-Key: motogp:10874274
+Titel: Bulega, Jerez'deki 850cc MotoGP testinde zirvede!
+Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274

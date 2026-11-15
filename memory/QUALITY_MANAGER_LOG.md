@@ -4398,3 +4398,39 @@ Story-Key: motogp:125341
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-15 14:59 UTC | Motorcycle Racing | FAIL
+Titel: Bradl: "Toprak, Ducati veya Aprilia ile çok daha rekabetçi olurdu"
+Story-Key: motogp:10874593
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-15 14:59 UTC | Motorcycle Racing | PASS
+Titel: Bradl: "Toprak, Ducati veya Aprilia ile çok daha rekabetçi olurdu"
+Story-Key: motogp:10874593
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-15 14:59 UTC | Motorcycle Racing | PASS
+Titel: Portimão'da şampiyonluk puanı: Márquez'in 10. şampiyonluk hesabı | Motoron Dergisi
+Story-Key: title:portim-o-da-ampiyonluk-puan-m-rquez-10-ampiyonluk-hesab-motoron-dergisi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-15 15:00 UTC | Motorcycle Racing | PASS
+Titel: Chico Lorenzo, Marquez’in büyüklüğünün ardındaki teoriyi anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125406
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-15 15:00 UTC | Motorcycle Racing | PASS
+Titel: Antonelli’den Bezzecchi’ye destek mesajı: "Dünya şampiyonluğunu hak ediyor"
+Story-Key: motogp:10874266
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-15 15:00 UTC | Motorcycle Racing | PASS
+Titel: Bulega, Jerez'deki 850cc MotoGP testinde zirvede!
+Story-Key: motogp:10874274
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
