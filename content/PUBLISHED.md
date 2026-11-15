@@ -1490,6 +1490,7 @@ Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-4-di-giannant
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-14-daily
 Telegram-Update-ID: 279362038
