@@ -1564,3 +1564,203 @@ Quelle: https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdak
 Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-5-rossi-yeni-kitabinda-01.jpg
 Link-Preview: offiziell
 Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-5-rossi-yeni-kitabinda-01.jpg", "media_status": "", "object_id": "122134955121469415", "object_type": "bild", "platform": "facebook", "post_id": "122134955121469415", "source_url": "https://trf1.net/motor-sporlari/motogp/rossi-yeni-kitabinda-da-sepangdaki-tekmeyi-reddetti-tekme-hic-var-olmadi/125341", "version": 1}
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 1
+Story-Key: motogp:10874593
+Event-Fingerprint: -
+Titel: Bradl: "Toprak, Ducati veya Aprilia ile çok daha rekabetçi olurdu"
+Text:
+Stefan Bradl, ehemaliger MotoGP-Pilot, findet: Toprak Razgatlıoğlu hat mit der Yamaha Probleme.
+
+Seiner Meinung nach kommt Toprak auf dem italienischen Bike nicht mit der Maschine klar.
+
+Mit einem Ducati oder einer Aprilia hätte er laut Bradl deutlich bessere Ergebnisse möglich.
+
+Wie seht ihr das — ist Toprak einfach nicht der Yamahatyp?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/bradl-toprak-ducati-veya-aprilia-ile-cok-daha-rekabetci-olurdu/10874593
+Quelle: https://tr.motorsport.com/motogp/news/bradl-toprak-ducati-veya-aprilia-ile-cok-daha-rekabetci-olurdu/10874593
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-1-bradl-toprak-ducati-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 1
+Story-Key: motogp:10874593
+Event-Fingerprint: -
+Titel: Bradl: "Toprak, Ducati veya Aprilia ile çok daha rekabetçi olurdu"
+Text:
+Stefan Bradl, ehemaliger MotoGP-Pilot, findet: Toprak Razgatlıoğlu hat mit der Yamaha Probleme.
+
+Seiner Meinung nach kommt Toprak auf dem italienischen Bike nicht mit der Maschine klar.
+
+Mit einem Ducati oder einer Aprilia hätte er laut Bradl deutlich bessere Ergebnisse möglich.
+
+Wie seht ihr das — ist Toprak einfach nicht der Yamahatyp?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/bradl-toprak-ducati-veya-aprilia-ile-cok-daha-rekabetci-olurdu/10874593
+Quelle: https://tr.motorsport.com/motogp/news/bradl-toprak-ducati-veya-aprilia-ile-cok-daha-rekabetci-olurdu/10874593
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-1-bradl-toprak-ducati-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 3
+Story-Key: motogp:125406
+Event-Fingerprint: -
+Titel: Chico Lorenzo, Marquez’in büyüklüğünün ardındaki teoriyi anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez steht kurz vor seinem achten Titel in der Königsklasse.
+
+Chico Lorenzo, Vater und Trainer von Jorge Lorenzo, hat die Faktoren hinter den Erfolgen des Ducati-Fahrers bewertet.
+
+Jorge Lorenzo war zwischen 2013 und 2019 der einzige andere Pilot mit einem MotoGP-Titel, bevor Marquez nach seinen Armverletzungen 2020 in Jerez vorübergehend ausfiel.
+
+Teilt eure Gedanken dazu gerne in den Kommentaren.
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406
+Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-3-chico-lorenzo-marque-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 3
+Story-Key: motogp:125406
+Event-Fingerprint: -
+Titel: Chico Lorenzo, Marquez’in büyüklüğünün ardındaki teoriyi anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez steht kurz vor seinem achten Titel in der Königsklasse.
+
+Chico Lorenzo, Vater und Trainer von Jorge Lorenzo, hat die Faktoren hinter den Erfolgen des Ducati-Fahrers bewertet.
+
+Jorge Lorenzo war zwischen 2013 und 2019 der einzige andere Pilot mit einem MotoGP-Titel, bevor Marquez nach seinen Armverletzungen 2020 in Jerez vorübergehend ausfiel.
+
+Teilt eure Gedanken dazu gerne in den Kommentaren.
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406
+Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-3-chico-lorenzo-marque-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 4
+Story-Key: motogp:10874266
+Event-Fingerprint: -
+Titel: Antonelli’den Bezzecchi’ye destek mesajı: "Dünya şampiyonluğunu hak ediyor"
+Text:
+Kimi Antonelli hat Marco Bezzecchi eine deutliche Empfehlung gegeben – und die gilt zukünftig.
+
+Der italienische MotoGP-Fahrer sieht seinen engsten Freund als einen der stärksten Anwärter auf die Weltmeisterschaft im nächsten Jahr. Antonelli steht fest hinter Bezzecchi und setzt damit klare Signale im Fahrerlager.
+
+Wie schätzt ihr Bezzecchis Titelchancen für kommende Saison ein?
+
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266
+Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-4-antonelliden-bezzecc-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 4
+Story-Key: motogp:10874266
+Event-Fingerprint: -
+Titel: Antonelli’den Bezzecchi’ye destek mesajı: "Dünya şampiyonluğunu hak ediyor"
+Text:
+Kimi Antonelli hat Marco Bezzecchi eine deutliche Empfehlung gegeben – und die gilt zukünftig.
+
+Der italienische MotoGP-Fahrer sieht seinen engsten Freund als einen der stärksten Anwärter auf die Weltmeisterschaft im nächsten Jahr. Antonelli steht fest hinter Bezzecchi und setzt damit klare Signale im Fahrerlager.
+
+Wie schätzt ihr Bezzecchis Titelchancen für kommende Saison ein?
+
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266
+Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-4-antonelliden-bezzecc-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 5
+Story-Key: motogp:10874274
+Event-Fingerprint: -
+Titel: Bulega, Jerez'deki 850cc MotoGP testinde zirvede!
+Text:
+Nicolo Bulega hat im Jerez-Spezialtest den schnellsten Rundenzeit gefahren 🏁
+
+Bei dem Test auf dem Circuit Jerez ging es um die Entwicklung der neuen 850-cm³-MotoGP-Bikes für 2027 – gestartet von Ducati, Aprilia und KTM.
+
+Das war der letzte Tage des besonderen Testevents.
+
+Die Marke MotoGP steht im Fokus, wenn das neue Reglement näher rückt.
+
+Was denkt ihr über die 850-cm³-Wende?Kommt mir dann noch mehr Action auf der Strecke?
+
+#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
+Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 5
+Story-Key: motogp:10874274
+Event-Fingerprint: -
+Titel: Bulega, Jerez'deki 850cc MotoGP testinde zirvede!
+Text:
+Nicolo Bulega hat im Jerez-Spezialtest den schnellsten Rundenzeit gefahren 🏁
+
+Bei dem Test auf dem Circuit Jerez ging es um die Entwicklung der neuen 850-cm³-MotoGP-Bikes für 2027 – gestartet von Ducati, Aprilia und KTM.
+
+Das war der letzte Tage des besonderen Testevents.
+
+Die Marke MotoGP steht im Fokus, wenn das neue Reglement näher rückt.
+
+Was denkt ihr über die 850-cm³-Wende?Kommt mir dann noch mehr Action auf der Strecke?
+
+#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
+Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg
+Link-Preview: offiziell
