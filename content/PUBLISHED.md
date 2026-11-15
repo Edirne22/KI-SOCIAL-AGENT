@@ -1488,9 +1488,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yav
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-4-di-giannantonio-kata-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43719067401-1
+## Facebook [GEPOSTET 2026-11-15 13:27 | ID: 122134873461469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-14-daily
 Telegram-Update-ID: 279362038
@@ -1513,6 +1512,7 @@ Wie seht ihr das – technisches Pech oder reicht das Setup nicht?
 Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yavasladi-buyuk-titresimler-yuzunden-motosiklet-yatirilamaz-hale-geldi/124931
 Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-4-di-giannantonio-kata-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-4-di-giannantonio-kata-01.jpg", "media_status": "", "object_id": "122134873461469415", "object_type": "bild", "platform": "facebook", "post_id": "122134873461469415", "source_url": "https://trf1.net/motor-sporlari/motogp/di-giannantonio-katarda-neden-yavasladi-buyuk-titresimler-yuzunden-motosiklet-yatirilamaz-hale-geldi/124931", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
