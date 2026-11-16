@@ -4434,3 +4434,33 @@ Story-Key: motogp:10874274
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-16 17:07 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Pilotları Ne Kadar Kazanıyor: İşte En Çok Kazanan İsimler!
+Story-Key: title:motogp-pilotlar-ne-kadar-kazan-yor-i-te-en-ok-kazanan-i-simler
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-16 17:07 UTC | Motorcycle Racing | PASS
+Titel: Bagnaia Portekiz MotoGP’sini kaçıracak: Ducati yerine Iker Lecuona’yı açıkladı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125504
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-16 17:07 UTC | Motorcycle Racing | PASS
+Titel: HOT HEADLINES: match point Marquez as MotoGP straps in for the rollercoaster
+Story-Key: motogp:1185225
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-16 17:07 UTC | Motorcycle Racing | PASS
+Titel: Acosta: Marquez’in son takım arkadaşlarından biri olmak büyük şans - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125487
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-16 17:08 UTC | Motorcycle Racing | PASS
+Titel: 2026 IN NUMBERS: Key stats and tallies after a WorldSBK campaign like none other
+Story-Key: motogp:1185322
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

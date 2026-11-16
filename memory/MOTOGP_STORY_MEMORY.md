@@ -1854,3 +1854,28 @@ Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-me
 Story-Key: motogp:10874274
 Titel: Bulega, Jerez'deki 850cc MotoGP testinde zirvede!
 Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
+
+## 2026-11-16 16:46 UTC – ANGEBOTEN
+Story-Key: title:motogp-pilotlar-ne-kadar-kazan-yor-i-te-en-ok-kazanan-i-simler
+Titel: MotoGP Pilotları Ne Kadar Kazanıyor: İşte En Çok Kazanan İsimler!
+Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
+
+## 2026-11-16 16:46 UTC – ANGEBOTEN
+Story-Key: motogp:125504
+Titel: Bagnaia Portekiz MotoGP’sini kaçıracak: Ducati yerine Iker Lecuona’yı açıkladı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bagnaia-portekiz-motogpsini-kaciracak-ducati-yerine-iker-lecuonayi-acikladi/125504
+
+## 2026-11-16 16:46 UTC – ANGEBOTEN
+Story-Key: motogp:1185225
+Titel: HOT HEADLINES: match point Marquez as MotoGP straps in for the rollercoaster
+Quelle: https://www.motogp.com/en/news/2026/11/16/hot-headlines-match-point-marquez-as-motogp-straps-in-for-the-rollercoaster/1185225
+
+## 2026-11-16 16:46 UTC – ANGEBOTEN
+Story-Key: motogp:125487
+Titel: Acosta: Marquez’in son takım arkadaşlarından biri olmak büyük şans - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/acosta-marquezin-son-takim-arkadaslarindan-biri-olmak-buyuk-sans/125487
+
+## 2026-11-16 16:46 UTC – ANGEBOTEN
+Story-Key: motogp:1185322
+Titel: 2026 IN NUMBERS: Key stats and tallies after a WorldSBK campaign like none other
+Quelle: https://www.worldsbk.com/en/news/2026/11/13/2026-in-numbers-key-stats-and-tallies-after-a-worldsbk-campaign-like-none-other/1185322
