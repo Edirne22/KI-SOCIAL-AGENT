@@ -1565,7 +1565,7 @@ Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-3-chico-loren
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 43889890288-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-15-daily
 Telegram-Update-ID: 279362043
