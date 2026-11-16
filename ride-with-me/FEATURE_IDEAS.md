@@ -553,3 +553,12 @@ Diese Punkte stellen allgemeine Anforderungen von Motorradfahrerinnen und -fahre
 * **Effiziente Gruppenorganisation:** Vermeidung von unübersichtlichen Absprachen in klassischen Messengerdiensten bei der Planung von Feierabendrunden oder Tagestouren.
 * **Sicherheit bei Einzelfahrten:** Absicherung durch automatisierte Notfallsignale oder Standortfreigaben, da viele Biker regelmäßig allein auf abgelegenen Strecken unterwegs sind.
 * **Relevante Streckeninformationen:** Nachfrage nach kurvenreichen, gut asphaltierten Routen abseits viel befahrenener Bundesstraßen inklusive Warnungen vor aktuellen Gef
+
+
+# Ride With Me Analyse vom 2026-11-16 13:30:43
+## 1. App-Zusammenfassung (Öffentlich belegte Funktionen)
+
+Die Angaben basieren auf den offiziellen Informationen der Website `ridewithme.app` sowie dem Google Play Store-Eintrag.
+
+* **Routenplanung & Navigation:** Erstellung von Motorradrouten mit Ausrichtung auf kurvenreiche Strecken abseits von Hauptverkehrsstraßen. Abbiegehinweise (Turn-by-Turn-Navigation) während der Fahrt.
+* **GPS-Aufzeichnung:** Aufzeichnen gefahrener Tou
