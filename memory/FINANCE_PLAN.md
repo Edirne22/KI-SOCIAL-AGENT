@@ -1,6 +1,6 @@
 # Finanzplan
 
-Stand: 2026-11-09
+Stand: 2026-11-16
 
 ## Investierbar
 - 20000 € bei Chase
@@ -18,4 +18,4 @@ Stand: 2026-11-09
 - Cash 5.000 € wird NICHT getrackt.
 
 ## Nächste Prüfung
-- 2026-11-16T17:04:40+00:00
+- 2026-11-23T16:41:45+00:00

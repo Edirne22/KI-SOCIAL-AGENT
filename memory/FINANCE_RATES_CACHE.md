@@ -83,3 +83,14 @@ Die drei besten Tagesgeldzinsen laut Finanztip (Stand 02. Nov 2026) sind A
 Quellen: Finanztip, Check24, Verivox, Biallo
 
 Die drei derzeit höchsten Tagesgeldzinsen (Finanztip 11/2026) sind Advanzia 4,1 % p.a. (3 Monate), Chase 4,0 % p.a. (4 Monate) und Openbank 4,0 % p.a. (4 Monate); Check24 nennt sogar bis 4,22 % p.a. bei nicht namentlich genannten Angeboten. Dein Chase‑Konto liefert bis 26.12.2026 noch 4,0 % und fällt danach auf 2,0 % – damit liegt es jetzt knapp hinter Advanzia, aber nach dem Stichtag schlechter als die anderen genannten Optionen. Solltest du nach dem 26.12.2026 einen höheren Zinssatz behalten wollen, wäre ein Wechsel zu Advanzia (4,1 % für 3 Monate) oder Openbank (4,0 % für 4 Monate) zu prüfen. Das Chase‑Zins‑Fenster endet am 26.12.2026; danach bieten Advanzia und Openbank weiterhin Zinsen über 4 %, was für Bülent interessant sein dürfte.
+## Lauf 2026-11-16 16:41 UTC
+
+Quellen: Finanztip, Check24, Verivox, Biallo
+
+**Top‑Tagesgeld‑Zinsen (Stand Nov 2026):** Advanzia 4,1 % p.a. (3 Monate), Chase 4,0 % p.a. (4 Monate) und Openbank 4,0 % p.a. (4 Monate) laut Finanztip; Check24 weist sogar ein Angebot von 4,12 % p.a. (Provider im Auszug nicht genannt).  
+
+Dein aktuelles Chase‑Konto liefert 4,0 % p.a. bis 26.12.2026 – damit liegt es exakt auf dem Niveau des zweit‑besten Angebots und knapp unter dem Spitzenwert von Advanzia.  
+
+Sollte der Chase‑Zinssatz nach 26.12.2026 auf 2,0 % fallen, wäre Advanzia mit 4,1 % p.a. (kurzfristig 3 Monate) bzw. Openbank mit 4,0 % p.a. (4 Monate) eine klare Alternative.  
+
+Kurz für Bülent: Dein Chase‑Konto ist derzeit konkurrenzfähig, aber ein Blick auf Advanzia (oder Openbank) lohnt sich, falls der Chase‑Zins nach Dez 2026 nach unten korrigiert wird.
