@@ -5,206 +5,190 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: Sometimes unexpected things can happen. I’m going through a difficult time because for the first time in my racing career, I had to end the season early. Watching the races on television is a very strange feeling. I had shoulder surgery to be able to come back stronger and I’ve already started training. I hope we’ll be back on the motorcycle as soon as possible.
-Many thanks to Yamaha family My team and the doctor Minola🥰
-I would also like to thank all of you who supported me and didn’t leave me 
-- Datum: 2026-10-27T09:34:29.000Z
-- URL: https://www.instagram.com/p/De_i_4MjdMG/
-- Likes: 176905
-- Kommentare: 6338
+- Titel: Estoril through our lens! 📸❤️
+
+#EstorilWorldSBK 🇵🇹 #WorldSBK
+- Datum: 2026-11-16T12:39:38.000Z
+- URL: https://www.instagram.com/p/DfzYFYjiOa3/
+- Likes: 220
+- Kommentare: 0
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: @toprakrazgatlioglu7 best of luck with your surgery and get well soon! 
-We’re waiting for you! ❤️👀
+- Titel: @ikerlecuona_27 is back in #MotoGP! 🚨 He’ll step in for the Ducati Lenovo Team at the #PortgueseGP as @pecco63 recovers from surgery 🎯
 
-#primapramacyamaha #motogp
-- Datum: 2026-10-25T01:48:34.000Z
-- URL: https://www.instagram.com/p/De5kAPxprCa/
-- Likes: 9408
-- Kommentare: 122
+#WorldSBK
+- Datum: 2026-11-16T11:16:32.000Z
+- URL: https://www.instagram.com/p/DfzOh_KIsLw/
+- Likes: 2548
+- Kommentare: 31
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Toprak Razgatlıoğlu to miss Phillip Island and remainder of the 2026 season
+- Titel: From @nicolo_bulega11’s dominance to @88migueloliveira’s podium battle and record-breaking moments, Estoril had it all! 👑 Relive the best of #EstorilWorldSBK! 👀🇵🇹
 
-@toprakrazgatlioglu7 - “I’m extremely disappointed to miss the Australian Grand Prix. Phillip Island is one of my favourite circuits and a place where I’ve enjoyed some very special moments during my Superbike career. I was excited about the opportunity to race here on the MotoGP bike, which makes this situation even harder to accept.
-
-After further medical assessments following the crash in Mandalika, it became clear t
-- Datum: 2026-10-20T07:45:17.000Z
-- URL: https://www.instagram.com/p/DetU74Yiboe/
-- Likes: 23387
-- Kommentare: 292
+#WorldSBK
+- Datum: 2026-11-16T09:34:10.000Z
+- URL: https://www.instagram.com/p/DfzCoo6oQB6/
+- Likes: 1403
+- Kommentare: 5
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: @toprakrazgatlioglu7 - DNF 💬
-#IndonesianGP - RACE 🇮🇩
+- Titel: WHAT. A. WEEKEND 🥹🏆 Bulega's coronation, Lecuona's maiden hat-trick and first podiums ⭐️ Relive on YouTube all the emotions from an incredible Italian Round! ⏮️
 
-Today, my biggest problem was my shoulder, not the bike. Yesterday, after the Sprint, it was not feeling too bad, but when I woke up this morning, the pain was much worse and I had less movement. I took painkillers, but the main issue was the lack of strength, especially under braking. With every lap, it became more difficult to manage the bike, particularly through the right-hand corners and the changes of direction.
-
-Before the race, I spok
-- Datum: 2026-10-11T11:21:08.000Z
-- URL: https://www.instagram.com/p/DeWie_xCCgU/
-- Likes: 12791
-- Kommentare: 139
+#ItalianWorldSBK 🇮🇹 #WorldSBK
+- Datum: 2026-11-15T11:01:36.000Z
+- URL: https://www.instagram.com/p/Dfwn_xNgeZY/
+- Likes: 2078
+- Kommentare: 12
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: @toprakrazgatlioglu7 - P19 💬
-#IndonesianGP - SPRINT 🇮🇩
+- Titel: Drama, history and plenty of unforgettable moments! ⭐️ Relive the action from a record-breaking Round 9 at Magny-Cours on our YouTube channel 🔥
 
-Before qualifying, I had a big crash and dislocated my shoulder. We put it back into place, but I‘m still feeling the pain, which is normal. I could also feel that my right shoulder had less strength during the Sprint, but I tried my best to manage the situation and finish the race.
-
-On the bike, we still need to improve a few things, particularly with the electronics in some corners. I‘m also losing quite a lot of time in Sector 2, and if 
-- Datum: 2026-10-10T13:59:12.000Z
-- URL: https://www.instagram.com/p/DeUPxyXCDPy/
-- Likes: 21446
-- Kommentare: 322
+#FrenchWorldSBK 🇫🇷 #WorldSBK
+- Datum: 2026-11-14T11:00:55.000Z
+- URL: https://www.instagram.com/p/DfuDIMOjWBF/
+- Likes: 4842
+- Kommentare: 4
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: @toprakrazgatlioglu7 - P16 💬
-#IndonesianGP - PRACTICE 🇮🇩
+- Titel: Every legend has a beginning. From a bold dream to an eye-opening debut, discover how @jonathan_rea’s #WorldSBK journey began 🚥  Watch the docuseries on WorldSBK.com 📺
 
-Today was not bad, much better than Japan and the last four rounds. I also improved my lap time towards the end, although a yellow flag in the last sector meant I had to close the throttle and lose the lap. We are still outside the top 10, but I feel more positive and I‘m finally starting to enjoy riding again.
-
-We are working on the engine braking, and we have made some small changes that are helping me feel more comfortable. The braking
-- Datum: 2026-10-09T12:18:20.000Z
-- URL: https://www.instagram.com/p/DeRfcK-iLXX/
-- Likes: 14518
-- Kommentare: 127
+#WorldSBK #thegREAtest
+- Datum: 2026-11-13T12:30:33.000Z
+- URL: https://www.instagram.com/p/DfrohClOPaN/
+- Likes: 3025
+- Kommentare: 29
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: Biig Stoprak at the line 😮‍💨
+- Titel: Too good to leave in the camera roll! 📸✨
 
-#IndonesianGP 🇮🇩 #MotoGP #ToprakRazgatlioglu
-- Datum: 2026-10-09T04:44:36.000Z
-- URL: https://www.instagram.com/p/DeQqn0iIZr3/
-- Likes: 78918
-- Kommentare: 266
+#SpanishWorldSBK 🇪🇸 #WorldSBK
+- Datum: 2026-11-13T11:39:34.000Z
+- URL: https://www.instagram.com/p/Dfri05hjuY5/
+- Likes: 2965
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: Indonesia 🇮🇩 Mandalika 
-I am in the place where I have my fondest memories 2021❤️
-- Datum: 2026-10-06T11:52:35.000Z
-- URL: https://www.instagram.com/p/DeJuG_HD0NF/
-- Likes: 141652
-- Kommentare: 1127
+- Titel: One last burnout to seal the deal after an epic season? That’s all the #FridayFeeling we need! 💨 🤝
+
+#SpanishWorldSBK 🇪🇸 #WorldSBK
+- Datum: 2026-11-13T10:19:49.000Z
+- URL: https://www.instagram.com/p/DfrZl9Rulkf/
+- Likes: 3015
+- Kommentare: 9
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: @toprakrazgatlioglu7 - P17 💬
-#JapaneseGP - RACE 🇯🇵
+- Titel: WorldSSP featured 8 different manufacturers in 2026! 🏁 Here’s how the standings finished 🟢
 
-I had the same problem again with the tyres and with stopping the bike. In the first six laps I was struggling a lot, but then I found a better rhythm and started to do 1:44s. The pace was much better, but it was still difficult because I was always riding close to the limit and pushing hard to stop the bike.
-
-I can see that Fabio is able to stop the bike more easily because he has much more experience with the Yamaha. I‘m still learning how to
-- Datum: 2026-10-04T09:23:58.000Z
-- URL: https://www.instagram.com/p/DeETgu8iKvZ/
-- Likes: 50034
-- Kommentare: 182
+#WorldSBK
+- Datum: 2026-11-12T16:45:48.000Z
+- URL: https://www.instagram.com/p/DfphAP1OIDm/
+- Likes: 8258
+- Kommentare: 70
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: @toprakrazgatlioglu7 - P21 💬
-#JapaneseGP - PRACTICE 🇯🇵
+- Titel: Take us back! 🥹
 
-I learned a lot more about the track today and I really like Motegi, but we still have the same problem with the soft tyre. When I put the new soft tyre on, I lose a lot of time under braking because I still cannot stop the bike in the way I want. This is the biggest area where I need to improve.
-
-With the medium tyre, even a used one, my lap time was quite similar to what I could do with the new soft, so our race pace is not so bad. But wh
-- Datum: 2026-10-02T11:52:14.000Z
-- URL: https://www.instagram.com/p/Dd_a43BiOOe/
-- Likes: 11137
-- Kommentare: 75
+#WorldSBK #Bu1egacy
+- Datum: 2026-11-12T13:11:24.000Z
+- URL: https://www.instagram.com/p/DfpIih7DgrW/
+- Likes: 9314
+- Kommentare: 35
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: The first year in #MotoGP is not easy, even for the three-time #WorldSBK World Champion! 👑👑👑
+- Titel: Marc Márquez arrives in Portimao this year as championship leader and just one step away from the #MotoGP title 🙌
 
-Toprak had to change his riding style, learn new tracks and adapt to the Michelin tyres! Check out his learning process! 👀
+But his last visit here made headlines for a very different reason after a clash with Pecco Bagnaia 👀
 
-#MichelinMotoGP
-- Datum: 2026-11-13T11:22:21.000Z
+#PortugueseGP 🇵🇹
+- Datum: 2026-11-16T13:01:14.000Z
 - URL: nicht verfügbar
-- Likes: 177
-- Kommentare: 3
+- Likes: 180
+- Kommentare: 11
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: One very special day for one very special fan 🥹
+- Titel: New look. Elevated experiences. More access⚡
 
-#MotoGP
-- Datum: 2026-11-13T09:00:34.000Z
+👀 Check out the next evolution of #MotoGPPremier and live #MotoGP like never before ➞ bit.ly/48eqI0A
+- Datum: 2026-11-16T12:30:48.000Z
 - URL: nicht verfügbar
-- Likes: 320
-- Kommentare: 3
+- Likes: 99
+- Kommentare: 0
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Bringing #MotoGP closer to fans across the United States and Latin America 🤩🔜 
-Looking forward to 2027! ESPN
-- Datum: 2026-11-12T17:16:52.000Z
+- Titel: An important weekend awaits, so be sure to pin the schedule and be ready! 📌🗓️
+
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-16T12:10:13.000Z
 - URL: nicht verfügbar
-- Likes: 2036
-- Kommentare: 13
+- Likes: 596
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: BREAKING: ESPN and #MotoGP announce a multi-year broadcast agreement across the United States and Latin America 🆕
+- Titel: We're back at the rollercoaster for what could be a title-clinching weekend in more ways than one 🎢👀
 
-👉 https://motogp.io/48eLWeK
-- Datum: 2026-11-12T17:03:20.000Z
+#PortugueseGP🇵🇹
+- Datum: 2026-11-16T11:40:29.000Z
 - URL: nicht verfügbar
-- Likes: 7535
-- Kommentare: 552
+- Likes: 98
+- Kommentare: 1
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: Practice does not always make perfect! 😬
+- Titel: BREAKING: Iker Lecuona will step in for Pecco Bagnaia at the #PortugueseGP🇵🇹 as he continues his recovery following surgery on his right foot 🚨
 
 #MotoGP
-- Datum: 2026-11-12T15:00:46.000Z
+- Datum: 2026-11-16T11:06:48.000Z
 - URL: nicht verfügbar
-- Likes: 357
-- Kommentare: 16
+- Likes: 2217
+- Kommentare: 77
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: This is what Jorge Martín Almoguera needs to do to take the title fight to Sunday and beyond! 👀🏆
+- Titel: Last time out the podium fight was absolutely fierce 🔥⚔️
 
-#MotoGP
-- Datum: 2026-11-12T11:47:07.000Z
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-16T11:01:46.000Z
 - URL: nicht verfügbar
-- Likes: 365
-- Kommentare: 52
+- Likes: 2397
+- Kommentare: 14
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: Triple header pics too good to leave unposted 📸✨
+- Titel: This is Pedro Acosta. The Shark. Raw, unfiltered, straight to the point. 🦈
 
-#MotoGP
-- Datum: 2026-11-12T10:00:10.000Z
+Get to know the rider behind the helmet, from the lessons passed down by his fisherman father to overcoming setbacks, his #MotoGP mindset and what lies ahead.🔥
+
+#WiredDifferent
+- Datum: 2026-11-16T10:09:24.000Z
 - URL: nicht verfügbar
-- Likes: 1968
-- Kommentare: 24
+- Likes: 352
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: Never forget to call your mum after a race 📲❤️
+- Titel: The pressure is on as the title fight heads to Portugal 💪👑
 
-#QatarGP🇶🇦 #MotoGP
-- Datum: 2026-11-12T08:00:19.000Z
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-16T08:00:21.000Z
 - URL: nicht verfügbar
-- Likes: 7184
-- Kommentare: 50
+- Likes: 663
+- Kommentare: 12
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: Tanti auguri a te! 🎉 Wishing the Bezt to Marco Bezzecchi on his 28th birthday! 🎂🦂
+- Titel: The Algarve is calling 📞👀
 
-#MotoGP
-- Datum: 2026-11-12T07:00:14.000Z
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-16T07:00:10.000Z
 - URL: nicht verfügbar
-- Likes: 9281
-- Kommentare: 992
+- Likes: 2919
+- Kommentare: 74
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Bring the racing look to your wardrobe with the Honda Replica Collection 😮‍💨
+- Titel: Marco Bezzecchi 🤝 Alexander Zverev 🏍️🎾
 
-Get yours here 👉 https://motogp.io/4fshnGb 🛍️
-
-#MotoGP
-- Datum: 2026-11-11T15:46:43.000Z
+#MotoGP | ATP Tour
+- Datum: 2026-11-15T17:31:43.000Z
 - URL: nicht verfügbar
-- Likes: 500
-- Kommentare: 9
+- Likes: 1778
+- Kommentare: 28
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
