@@ -1563,9 +1563,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugu
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-3-chico-lorenzo-marque-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43889890288-1
+## Facebook [GEPOSTET 2026-11-16 14:50 | ID: 122135253693469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-15-daily
 Telegram-Update-ID: 279362043
@@ -1588,6 +1587,7 @@ Teilt eure Gedanken dazu gerne in den Kommentaren.
 Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-3-chico-lorenzo-marque-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-3-chico-lorenzo-marque-01.jpg", "media_status": "", "object_id": "122135253693469415", "object_type": "bild", "platform": "facebook", "post_id": "122135253693469415", "source_url": "https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
