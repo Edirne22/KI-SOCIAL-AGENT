@@ -1,5 +1,31 @@
 # Archiviert Beiträge 2026-11
 
+## Facebook [GEPOSTET 2026-11-09 15:13 | ID: 122132719443469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-08-daily
+Telegram-Update-ID: 279362030
+MotoGP-Auswahl: 4
+Story-Key: motogp:124730
+Event-Fingerprint: MotoGP|sprint|bezzecchi,giannantonio,marquez|
+Titel: Marquez ile Di Giannantonio arasında Bezzecchi çarpışması gerilimi: Bakman gerekiyordu - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez und Fabio Di Giannantonio hatten bei der Kamera hinter den Kulissen einen hitzigen Wortwechsel — ausgerechnet wegen Marco Bezzecchis Kollision im Sprint von Katar.
+
+Bezzecchi muss im MotoGP-Wochenende in Katar mindestens acht Punkte mehr als Marquez holen, nur dann bleiben seine Titelhoffnungen am Leben.
+
+Mit dem Sieg oder einem guten Ergebnis könnte er den Druck auf Marquez nehmen und die Sache bis zum nächsten Lauf nach Portugal offen halten.
+
+Wie seht ihr die Situation — macht Bezzecchi noch mit oder ist der Rückstand schon zu groß?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730
+Bild: assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-08-racing-editorial-2026-11-08-4-marquez-ile-di-giann-01.jpg", "media_status": "", "object_id": "122132719443469415", "object_type": "bild", "platform": "facebook", "post_id": "122132719443469415", "source_url": "https://trf1.net/motor-sporlari/motogp/marquez-ile-di-giannantonio-arasinda-bezzecchi-carpismasi-gerilimi-bakman-gerekiyordu/124730", "version": 1}
+
 ## Instagram [GEPOSTET 2026-11-08 22:26 | ID: 18415529473091110]
 Status: GEPOSTET
 Freigabe: Telegram Racing
