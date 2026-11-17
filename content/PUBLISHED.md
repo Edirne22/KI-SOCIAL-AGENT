@@ -1689,3 +1689,45 @@ Was denkt ihr über die 850-cm³-Wende?Kommt mir dann noch mehr Action auf der S
 Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-16-daily
+Telegram-Update-ID: 279362049
+MotoGP-Auswahl: 1
+Story-Key: title:motogp-pilotlar-ne-kadar-kazan-yor-i-te-en-ok-kazanan-i-simler
+Event-Fingerprint: -
+Titel: MotoGP Pilotları Ne Kadar Kazanıyor: İşte En Çok Kazanan İsimler!
+Text:
+Die Geldbeutel der MotoGP-Piloten sind im Rennsport ja immer ein großes Thema. Für die Saison 2026 wurden jetzt erste Schätzungen zu den jährlichen Einkommen veröffentlicht – und dabei stechen vor allem Marc Márquez, Fabio Quartararo und Toprak Razgatlıoğlu als eine der auffälligsten Namen heraus.
+
+Wie haltet ihr das mit dem Thema Gehalt in der MotoGP, ist das für euch relevant oder schaut ihr eher auf die Leistung?
+
+#MotoGP #ToprakRazgatlioglu #FabioQuartararo #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
+Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-16-racing-editorial-2026-11-16-1-motogp-pilotlari-ne-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-16-daily
+Telegram-Update-ID: 279362049
+MotoGP-Auswahl: 1
+Story-Key: title:motogp-pilotlar-ne-kadar-kazan-yor-i-te-en-ok-kazanan-i-simler
+Event-Fingerprint: -
+Titel: MotoGP Pilotları Ne Kadar Kazanıyor: İşte En Çok Kazanan İsimler!
+Text:
+Die Geldbeutel der MotoGP-Piloten sind im Rennsport ja immer ein großes Thema. Für die Saison 2026 wurden jetzt erste Schätzungen zu den jährlichen Einkommen veröffentlicht – und dabei stechen vor allem Marc Márquez, Fabio Quartararo und Toprak Razgatlıoğlu als eine der auffälligsten Namen heraus.
+
+Wie haltet ihr das mit dem Thema Gehalt in der MotoGP, ist das für euch relevant oder schaut ihr eher auf die Leistung?
+
+#MotoGP #ToprakRazgatlioglu #FabioQuartararo #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
+Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
+Bild: assets/images/2026-11/2026-11-16-racing-editorial-2026-11-16-1-motogp-pilotlari-ne-01.jpg
+Link-Preview: offiziell
