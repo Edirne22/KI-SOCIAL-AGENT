@@ -1706,3 +1706,179 @@ Wie haltet ihr das mit dem Thema Gehalt in der MotoGP, ist das für euch relevan
 Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
 Bild: assets/images/2026-11/2026-11-16-racing-editorial-2026-11-16-1-motogp-pilotlari-ne-01.jpg
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-17-daily
+Telegram-Update-ID: 279362051
+MotoGP-Auswahl: 1
+Story-Key: title:toprak-razgatl-o-lu-ve-motogp-ekip-efi-aylak-sezonunun-zorluklar-n-anlatt
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu ve MotoGP: Ekip Şefi Çaylak Sezonunun Zorluklarını Anlattı
+Text:
+Pramacs Mannschaftsleiter Alberto Giribuola hat berichtet, woran Toprak Razgatlıoğlu in seiner Debütsaison auf der Yamaha M1 noch arbeitet – Bremsen und Reifen zum perfekten Zusammenspiel zu bringen. 🏍️💨
+
+Wie seht ihr die Entwicklung von Toprak bisher?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-1-toprak-razgatlioglu-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-17-daily
+Telegram-Update-ID: 279362051
+MotoGP-Auswahl: 1
+Story-Key: title:toprak-razgatl-o-lu-ve-motogp-ekip-efi-aylak-sezonunun-zorluklar-n-anlatt
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu ve MotoGP: Ekip Şefi Çaylak Sezonunun Zorluklarını Anlattı
+Text:
+Pramacs Mannschaftsleiter Alberto Giribuola hat berichtet, woran Toprak Razgatlıoğlu in seiner Debütsaison auf der Yamaha M1 noch arbeitet – Bremsen und Reifen zum perfekten Zusammenspiel zu bringen. 🏍️💨
+
+Wie seht ihr die Entwicklung von Toprak bisher?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti
+Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-1-toprak-razgatlioglu-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-17-daily
+Telegram-Update-ID: 279362051
+MotoGP-Auswahl: 2
+Story-Key: motogp:1185531
+Event-Fingerprint: -
+Titel: Alex Marquez set for Portuguese GP return
+Text:
+Alex Marquez steht in Portugal wieder am Start. Der #73 vom BK8 Gresini Racing MotoGP Team gibt nach seiner jüngsten Operation sein Comeback.
+
+Was haltet ihr von der Rückkehr nach der OP?
+
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
+Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marquez-set-for-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-17-daily
+Telegram-Update-ID: 279362051
+MotoGP-Auswahl: 2
+Story-Key: motogp:1185531
+Event-Fingerprint: -
+Titel: Alex Marquez set for Portuguese GP return
+Text:
+Alex Marquez steht in Portugal wieder am Start. Der #73 vom BK8 Gresini Racing MotoGP Team gibt nach seiner jüngsten Operation sein Comeback.
+
+Was haltet ihr von der Rückkehr nach der OP?
+
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
+Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
+Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marquez-set-for-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-17-daily
+Telegram-Update-ID: 279362051
+MotoGP-Auswahl: 3
+Story-Key: motogp:125614
+Event-Fingerprint: MotoGP|sprint|martin|
+Titel: Martin: Portimao’ya fiziksel olarak çok daha iyi durumda geliyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Jorge Martin kommt mit gebrochenem Handgelenk nach Portimao – und behauptet, körperlich deutlich besser da zu stehen.
+
+Nach der Verletzung auf Phillip Island verpasste er Sepang, showed aber in Katar wieder Leistung: Dritter im Sprint, Siebter im Grand Prix. Der Rückstand auf Marquez beträgt jetzt 16 Punkte.
+
+Wie seht ihr Martins Chancen im Titelkampf?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/martin-portimaoya-fiziksel-olarak-daha-iyi-geliyor-sampiyonlugu-valenciaya-tasimak-icin-24-puan-farki-gerekiyor/125614
+Quelle: https://trf1.net/motor-sporlari/motogp/martin-portimaoya-fiziksel-olarak-daha-iyi-geliyor-sampiyonlugu-valenciaya-tasimak-icin-24-puan-farki-gerekiyor/125614
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-3-martin-portimaoya-fi-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-17-daily
+Telegram-Update-ID: 279362051
+MotoGP-Auswahl: 3
+Story-Key: motogp:125614
+Event-Fingerprint: MotoGP|sprint|martin|
+Titel: Martin: Portimao’ya fiziksel olarak çok daha iyi durumda geliyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Jorge Martin kommt mit gebrochenem Handgelenk nach Portimao – und behauptet, körperlich deutlich besser da zu stehen.
+
+Nach der Verletzung auf Phillip Island verpasste er Sepang, showed aber in Katar wieder Leistung: Dritter im Sprint, Siebter im Grand Prix. Der Rückstand auf Marquez beträgt jetzt 16 Punkte.
+
+Wie seht ihr Martins Chancen im Titelkampf?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/martin-portimaoya-fiziksel-olarak-daha-iyi-geliyor-sampiyonlugu-valenciaya-tasimak-icin-24-puan-farki-gerekiyor/125614
+Quelle: https://trf1.net/motor-sporlari/motogp/martin-portimaoya-fiziksel-olarak-daha-iyi-geliyor-sampiyonlugu-valenciaya-tasimak-icin-24-puan-farki-gerekiyor/125614
+Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-3-martin-portimaoya-fi-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-17-daily
+Telegram-Update-ID: 279362051
+MotoGP-Auswahl: 5
+Story-Key: motogp:1185545
+Event-Fingerprint: -
+Titel: How can Marc Marquez be crowned World Champion in Portugal?
+Text:
+Find out what Marc Marquez needs to do to clinch the 2026 MotoGP World Championship in Portugal!
+
+Marc Marquez steht vor der Aufgabe, sich in Portugal den 2026er MotoGP-Weltmeistertitel zu sichern. Was genau dafür nötig ist – darauf weist die offizielle MotoGP-Meldung hin.
+
+Wie seht ihr die Chancen von Marquez in Portugal?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/17/how-can-marc-marquez-be-crowned-world-champion-in-portugal/1185545
+Quelle: https://www.motogp.com/en/news/2026/11/17/how-can-marc-marquez-be-crowned-world-champion-in-portugal/1185545
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-5-how-can-marc-marquez-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-17-daily
+Telegram-Update-ID: 279362051
+MotoGP-Auswahl: 5
+Story-Key: motogp:1185545
+Event-Fingerprint: -
+Titel: How can Marc Marquez be crowned World Champion in Portugal?
+Text:
+Find out what Marc Marquez needs to do to clinch the 2026 MotoGP World Championship in Portugal!
+
+Marc Marquez steht vor der Aufgabe, sich in Portugal den 2026er MotoGP-Weltmeistertitel zu sichern. Was genau dafür nötig ist – darauf weist die offizielle MotoGP-Meldung hin.
+
+Wie seht ihr die Chancen von Marquez in Portugal?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/17/how-can-marc-marquez-be-crowned-world-champion-in-portugal/1185545
+Quelle: https://www.motogp.com/en/news/2026/11/17/how-can-marc-marquez-be-crowned-world-champion-in-portugal/1185545
+Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-5-how-can-marc-marquez-01.jpg
+Link-Preview: offiziell
