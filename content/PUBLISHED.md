@@ -1686,9 +1686,8 @@ Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-16-racing-editorial-2026-11-16-1-motogp-pilotlari-ne-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 44196846632-1
+## Facebook [GEPOSTET 2026-11-17 23:10 | ID: 122135735637469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-16-daily
 Telegram-Update-ID: 279362049
@@ -1707,6 +1706,7 @@ Wie haltet ihr das mit dem Thema Gehalt in der MotoGP, ist das für euch relevan
 Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
 Bild: assets/images/2026-11/2026-11-16-racing-editorial-2026-11-16-1-motogp-pilotlari-ne-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-16-racing-editorial-2026-11-16-1-motogp-pilotlari-ne-01.jpg", "media_status": "", "object_id": "122135735637469415", "object_type": "bild", "platform": "facebook", "post_id": "122135735637469415", "source_url": "https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
