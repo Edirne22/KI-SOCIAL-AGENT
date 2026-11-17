@@ -1879,3 +1879,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/acosta-marquezin-son-takim-arkada
 Story-Key: motogp:1185322
 Titel: 2026 IN NUMBERS: Key stats and tallies after a WorldSBK campaign like none other
 Quelle: https://www.worldsbk.com/en/news/2026/11/13/2026-in-numbers-key-stats-and-tallies-after-a-worldsbk-campaign-like-none-other/1185322
+
+## 2026-11-17 16:43 UTC – ANGEBOTEN
+Story-Key: title:toprak-razgatl-o-lu-ve-motogp-ekip-efi-aylak-sezonunun-zorluklar-n-anlatt
+Titel: Toprak Razgatlıoğlu ve MotoGP: Ekip Şefi Çaylak Sezonunun Zorluklarını Anlattı
+Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti
+
+## 2026-11-17 16:43 UTC – ANGEBOTEN
+Story-Key: motogp:1185531
+Titel: Alex Marquez set for Portuguese GP return
+Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
+
+## 2026-11-17 16:43 UTC – ANGEBOTEN
+Story-Key: motogp:125614
+Titel: Martin: Portimao’ya fiziksel olarak çok daha iyi durumda geliyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/martin-portimaoya-fiziksel-olarak-daha-iyi-geliyor-sampiyonlugu-valenciaya-tasimak-icin-24-puan-farki-gerekiyor/125614
+
+## 2026-11-17 16:43 UTC – ANGEBOTEN
+Story-Key: motogp:125618
+Titel: Fernandez, Katar atılımının ardından Portimao’da “hikâyeyi değiştirmek” istiyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/fernandez-katar-atiliminin-ardindan-portimaoda-hikayeyi-degistirmek-istiyor/125618
+
+## 2026-11-17 16:43 UTC – ANGEBOTEN
+Story-Key: motogp:1185545
+Titel: How can Marc Marquez be crowned World Champion in Portugal?
+Quelle: https://www.motogp.com/en/news/2026/11/17/how-can-marc-marquez-be-crowned-world-champion-in-portugal/1185545

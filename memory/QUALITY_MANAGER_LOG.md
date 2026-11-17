@@ -4464,3 +4464,39 @@ Story-Key: motogp:1185322
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-17 17:18 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu ve MotoGP: Ekip Şefi Çaylak Sezonunun Zorluklarını Anlattı
+Story-Key: title:toprak-razgatl-o-lu-ve-motogp-ekip-efi-aylak-sezonunun-zorluklar-n-anlatt
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-17 17:19 UTC | Motorcycle Racing | PASS
+Titel: Alex Marquez set for Portuguese GP return
+Story-Key: motogp:1185531
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-17 17:19 UTC | Motorcycle Racing | PASS
+Titel: Martin: Portimao’ya fiziksel olarak çok daha iyi durumda geliyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125614
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-17 17:19 UTC | Motorcycle Racing | FAIL
+Titel: Fernandez, Katar atılımının ardından Portimao’da “hikâyeyi değiştirmek” istiyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125618
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-17 17:21 UTC | Motorcycle Racing | PASS
+Titel: Fernandez, Katar atılımının ardından Portimao’da “hikâyeyi değiştirmek” istiyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125618
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-17 17:21 UTC | Motorcycle Racing | PASS
+Titel: How can Marc Marquez be crowned World Champion in Portugal?
+Story-Key: motogp:1185545
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
