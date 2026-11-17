@@ -1637,9 +1637,8 @@ Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-test
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 44115083639-1
+## Facebook [GEPOSTET 2026-11-17 15:31 | ID: 122135658417469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-15-daily
 Telegram-Update-ID: 279362043
@@ -1664,6 +1663,7 @@ Was denkt ihr über die 850-cm³-Wende?Kommt mir dann noch mehr Action auf der S
 Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg", "media_status": "", "object_id": "122135658417469415", "object_type": "bild", "platform": "facebook", "post_id": "122135658417469415", "source_url": "https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
