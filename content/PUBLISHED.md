@@ -1612,9 +1612,8 @@ Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-me
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-4-antonelliden-bezzecc-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 43981001077-1
+## Facebook [GEPOSTET 2026-11-17 00:15 | ID: 122135411505469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-15-daily
 Telegram-Update-ID: 279362043
@@ -1635,6 +1634,7 @@ Wie schätzt ihr Bezzecchis Titelchancen für kommende Saison ein?
 Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-4-antonelliden-bezzecc-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-4-antonelliden-bezzecc-01.jpg", "media_status": "", "object_id": "122135411505469415", "object_type": "bild", "platform": "facebook", "post_id": "122135411505469415", "source_url": "https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
