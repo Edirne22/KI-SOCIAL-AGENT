@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1794933828
+Session-Timestamp: 1795018306
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -18,20 +18,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.9
+Artikelalter-Tage: 0.7
 Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: title:toprak-razgatl-o-lu-ve-motogp-ekip-efi-aylak-sezonunun-zorluklar-n-anlatt
-Titel: Toprak Razgatlıoğlu ve MotoGP: Ekip Şefi Çaylak Sezonunun Zorluklarını Anlattı
-Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti
+Story-Key: motogp:1185673
+Titel: Razgatlioglu to miss the Valencia Test
+Quelle: https://www.motogp.com/en/news/2026/11/18/razgatlioglu-to-miss-the-valencia-test/1185673
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-1-toprak-razgatlioglu-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/11/toprak-razgatlioglu-alberto-giribuola-2026.webp
+Instagram-Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-1-razgatlioglu-to-miss-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/18/10c39e57-f644-4d44-b207-7f2d42f2a2d7/LG9_8783.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Pramacs Mannschaftsleiter Alberto Giribuola hat berichtet, woran Toprak Razgatlıoğlu in seiner Debütsaison auf der Yamaha M1 noch arbeitet – Bremsen und Reifen zum perfekten Zusammenspiel zu bringen. 🏍️💨
+Toprak Razgatlıoğlu muss pausieren – die Schulterverletzung zieht ihm das Saisonfinale und den Valencia-Test durch.
 
-Wie seht ihr die Entwicklung von Toprak bisher?
+Der prima-pramac-Pilot wird die letzten beiden Rennen 2026 sowie den anschließenden Test in Valencia fehlen lassen. Er arbeitet gerade an der Genesung. Schade fürs Team und für ihn persönlich – zwei Rennwochenenden gehen so einfach verloren.
+
+Was denkt ihr – welche Auswirkungen hat sein Fehlen auf die WM-Situation?
 
 #MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -41,25 +43,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 1
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.7
+Artikelalter-Tage: 2.0
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1185531
-Titel: Alex Marquez set for Portuguese GP return
-Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
+Story-Key: motogp:125537
+Titel: Marquez, Portimao’da sprintte şampiyon olursa MotoGP tarihine geçecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-portimaoda-sprintte-sampiyon-olursa-motogp-tarihine-gececek/125537
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marquez-set-for-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/31/5a43648b-2ddc-4584-96a4-0eb921743958/_DSC5563.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-2-marquez-portimaoda-s-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_4891_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Alex Marquez steht in Portugal wieder am Start. Der #73 vom BK8 Gresini Racing MotoGP Team gibt nach seiner jüngsten Operation sein Comeback.
+Wenn Marc Marquez in Portimao den Sprint gewinnt, schreibt er Geschichte – erster MotoGP-Weltmeister, dessen Titel über eine Sprint-Veranstaltung gefallen wäre. Die Sprint-Rennen gibt's ja erst seit 2023, also eigentlich keine Überraschung. Der letzte Samstag-Titel in der Königsklasse stammt übrigens noch von Valentino Rossi aus dem Jahr 2002.
 
-Was haltet ihr von der Rückkehr nach der OP?
+Hältst du das Sprint-Format für einen passenden Weg, den Meistertag zu krönen?
 
-#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -67,27 +69,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 1.7
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:125614
-Titel: Martin: Portimao’ya fiziksel olarak çok daha iyi durumda geliyorum - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/martin-portimaoya-fiziksel-olarak-daha-iyi-geliyor-sampiyonlugu-valenciaya-tasimak-icin-24-puan-farki-gerekiyor/125614
+Story-Key: motogp:762445
+Titel: Photo finishes and fairytales: the best of the Portuguese GP
+Quelle: https://www.motogp.com/en/news/2026/11/17/photo-finishes-and-fairytales-the-best-of-the-portuguese-gp/762445
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-3-martin-portimaoya-fi-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1361367_hires_1600x900_0.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-3-photo-finishes-and-f-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2025/11/04/2e1bac9c-47d2-446d-aba7-faf0631aab53/111.JPG?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Jorge Martin kommt mit gebrochenem Handgelenk nach Portimao – und behauptet, körperlich deutlich besser da zu stehen.
+Photo finishes und Märchen – genau das steht in Portugal mal wieder auf dem Programm.
 
-Nach der Verletzung auf Phillip Island verpasste er Sepang, showed aber in Katar wieder Leistung: Dritter im Sprint, Siebter im Grand Prix. Der Rückstand auf Marquez beträgt jetzt 16 Punkte.
+Vor einem entscheidenden Wochenende im WM-Kalender geht die Zeitreise zurück zu einigen der besten Duelle beim Portugiesischen Grand Prix. Wenn man sich durch diese Close-Finishes durchklickt, versteht man sofort, warum die Strecke bei den Fans so beliebt ist. Es gibt kaum eine Rennstrecke, wo die Grenzen zwischen Sieg und Niederlage an der Ziellinie so dünn sind.
 
-Wie seht ihr Martins Chancen im Titelkampf?
+Was war für euch dasHighlight der portugiesischen Rennen, die ihr gesehen habt?
 
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -96,28 +98,24 @@ QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
 Neufassungen: 0
-QM-Ruecklaeufe: 3
+QM-Ruecklaeufe: 2
 Herkunft: Aktuell
 Artikelalter-Tage: 0.2
-Kategorie: MotoGP
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: motogp:125618
-Titel: Fernandez, Katar atılımının ardından Portimao’da “hikâyeyi değiştirmek” istiyor - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/fernandez-katar-atiliminin-ardindan-portimaoda-hikayeyi-degistirmek-istiyor/125618
+Story-Key: motogp:10875248
+Titel: Resmi: Sakatlığı devam eden Toprak, Valensiya’daki 850cc MotoGP testini kaçıracak
+Quelle: https://tr.motorsport.com/motogp/news/resmi-sakatligi-devam-eden-toprak-valensiyadaki-850cc-motogp-testini-kaciracak/10875248
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-4-fernandez-katar-atil-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362534_hires_1600x900-1.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-4-resmi-sakatligi-deva-01.jpg
+Quellen-Preview: https://cdn-8.motorsport.com/images/amp/6b8Z9Ar2/s6/toprak-razgatlioglu-pramac-rac.jpg
 Plattformen: Instagram + Facebook
 Text:
-Raul Fernandez erzielte in vier vorherigen MotoGP-Rennen in Katar keine Punkte.
+Toprak Razgatlıoğlu fällt auch der Test am 1. Dezember in Valencia aus – nach seiner Schulteroperation ist er noch immer nicht fit genug für die 850cc-Probenfahrten.
 
-Raul Fernandez will nach seinem Katar-Durchbruch beim Portimao-Wochenende die Geschichte ändern.
+Wie lange denkt ihr, wird er noch brauchen, bis er wieder am Start steht?
 
-Im Portimao-Sprint dieses Jahr belegte Raul Fernandez den dritten Platz, trotz Schmerzen bei einer Fingerverletzung.
-
-Das Portimao-Wochenende steht bevor.
-
-#MotoGP #RaulFernandez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -128,24 +126,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.7
-Kategorie: MotoGP
+Artikelalter-Tage: 0.2
+Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: motogp:1185545
-Titel: How can Marc Marquez be crowned World Champion in Portugal?
-Quelle: https://www.motogp.com/en/news/2026/11/17/how-can-marc-marquez-be-crowned-world-champion-in-portugal/1185545
+Story-Key: motogp:125677
+Titel: Toprak Razgatlıoğlu Valencia testini de kaçıracak: Yamaha açıkladı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-valencia-testini-de-kaciracak-yamaha-acikladi/125677
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-5-how-can-marc-marquez-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/10/04/68eb35d4-f584-4bde-9972-ddc0455215c2/LG9_4423-2.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-5-toprak-razgatlioglu-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1352484_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Find out what Marc Marquez needs to do to clinch the 2026 MotoGP World Championship in Portugal!
+Yamaha gab bekannt dass Razgatlıoğlu nicht am Valencia-Test teilnimmt
 
-Marc Marquez steht vor der Aufgabe, sich in Portugal den 2026er MotoGP-Weltmeistertitel zu sichern. Was genau dafür nötig ist – darauf weist die offizielle MotoGP-Meldung hin.
+Yamaha hat bestätigt, dass Toprak Razgatlıoğlu den Valencia-Test nicht bestreitet. Seit seinem Sturz im Oktober beim Endonezya-GP-Training fällt er im MotoGP aus und wurde am Hals operiert. Er fehlt damit den beiden letzten Saisonspielen und dem Saisonabschlusstest in Valencia.
 
-Wie seht ihr die Chancen von Marquez in Portugal?
+Wie seht ihr die Entscheidung, dass Razgatlıoğlu den Test auslässt, nach seinem Sturz?
 
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

@@ -1904,3 +1904,33 @@ Quelle: https://trf1.net/motor-sporlari/motogp/fernandez-katar-atiliminin-ardind
 Story-Key: motogp:1185545
 Titel: How can Marc Marquez be crowned World Champion in Portugal?
 Quelle: https://www.motogp.com/en/news/2026/11/17/how-can-marc-marquez-be-crowned-world-champion-in-portugal/1185545
+
+## 2026-11-18 16:11 UTC – ANGEBOTEN
+Story-Key: title:toprak-razgatl-o-lu-valencia-testini-de-ka-racak-d-n-2027-de-motoron-dergisi
+Titel: Toprak Razgatlıoğlu Valencia testini de kaçıracak: Dönüş 2027'de | Motoron Dergisi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-valencia-testini-de-kaciracak-donus-2027de
+
+## 2026-11-18 16:11 UTC – ANGEBOTEN
+Story-Key: motogp:1185673
+Titel: Razgatlioglu to miss the Valencia Test
+Quelle: https://www.motogp.com/en/news/2026/11/18/razgatlioglu-to-miss-the-valencia-test/1185673
+
+## 2026-11-18 16:11 UTC – ANGEBOTEN
+Story-Key: motogp:125537
+Titel: Marquez, Portimao’da sprintte şampiyon olursa MotoGP tarihine geçecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-portimaoda-sprintte-sampiyon-olursa-motogp-tarihine-gececek/125537
+
+## 2026-11-18 16:11 UTC – ANGEBOTEN
+Story-Key: motogp:762445
+Titel: Photo finishes and fairytales: the best of the Portuguese GP
+Quelle: https://www.motogp.com/en/news/2026/11/17/photo-finishes-and-fairytales-the-best-of-the-portuguese-gp/762445
+
+## 2026-11-18 16:11 UTC – ANGEBOTEN
+Story-Key: motogp:10875248
+Titel: Resmi: Sakatlığı devam eden Toprak, Valensiya’daki 850cc MotoGP testini kaçıracak
+Quelle: https://tr.motorsport.com/motogp/news/resmi-sakatligi-devam-eden-toprak-valensiyadaki-850cc-motogp-testini-kaciracak/10875248
+
+## 2026-11-18 16:11 UTC – ANGEBOTEN
+Story-Key: motogp:125677
+Titel: Toprak Razgatlıoğlu Valencia testini de kaçıracak: Yamaha açıkladı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-valencia-testini-de-kaciracak-yamaha-acikladi/125677

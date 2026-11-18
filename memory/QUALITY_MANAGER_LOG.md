@@ -4500,3 +4500,39 @@ Story-Key: motogp:1185545
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-18 16:38 UTC | Motorcycle Racing | PASS
+Titel: Razgatlioglu to miss the Valencia Test
+Story-Key: motogp:1185673
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-18 16:39 UTC | Motorcycle Racing | PASS
+Titel: Marquez, Portimao’da sprintte şampiyon olursa MotoGP tarihine geçecek - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125537
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-18 16:39 UTC | Motorcycle Racing | PASS
+Titel: Photo finishes and fairytales: the best of the Portuguese GP
+Story-Key: motogp:762445
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-18 16:39 UTC | Motorcycle Racing | FAIL
+Titel: Resmi: Sakatlığı devam eden Toprak, Valensiya’daki 850cc MotoGP testini kaçıracak
+Story-Key: motogp:10875248
+Gründe: Final-Guard: Nationalitaet turke nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-18 16:39 UTC | Motorcycle Racing | PASS
+Titel: Resmi: Sakatlığı devam eden Toprak, Valensiya’daki 850cc MotoGP testini kaçıracak
+Story-Key: motogp:10875248
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-18 16:39 UTC | Motorcycle Racing | PASS
+Titel: Toprak Razgatlıoğlu Valencia testini de kaçıracak: Yamaha açıkladı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125677
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
