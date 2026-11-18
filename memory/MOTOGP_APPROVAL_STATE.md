@@ -1,3 +1,3 @@
-Update-ID: 279362051
-Racing-Batch-ID: racing-2026-11-17-daily
-Antwort: Motogp alle
+Update-ID: 279362058
+Racing-Batch-ID: racing-2026-11-18-daily
+Antwort: Motogp 5
