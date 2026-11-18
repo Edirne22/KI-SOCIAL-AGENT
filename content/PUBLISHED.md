@@ -1772,9 +1772,8 @@ Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portugues
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marquez-set-for-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 44412996808-1
+## Facebook [GEPOSTET 2026-11-18 22:35 | ID: 122136092325469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-17-daily
 Telegram-Update-ID: 279362051
@@ -1793,6 +1792,7 @@ Was haltet ihr von der Rückkehr nach der OP?
 Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
 Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marquez-set-for-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marquez-set-for-01.jpg", "media_status": "", "object_id": "122136092325469415", "object_type": "bild", "platform": "facebook", "post_id": "122136092325469415", "source_url": "https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
