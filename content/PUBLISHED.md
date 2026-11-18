@@ -1729,9 +1729,8 @@ Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-1-toprak-razgatlioglu-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 44331983616-1
+## Facebook [GEPOSTET 2026-11-18 15:08 | ID: 122136008415469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-17-daily
 Telegram-Update-ID: 279362051
@@ -1750,6 +1749,7 @@ Wie seht ihr die Entwicklung von Toprak bisher?
 Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti
 Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-1-toprak-razgatlioglu-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-1-toprak-razgatlioglu-01.jpg", "media_status": "", "object_id": "122136008415469415", "object_type": "bild", "platform": "facebook", "post_id": "122136008415469415", "source_url": "https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
