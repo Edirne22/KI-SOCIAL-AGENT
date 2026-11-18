@@ -1774,6 +1774,7 @@ Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marque
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-17-daily
 Telegram-Update-ID: 279362051
