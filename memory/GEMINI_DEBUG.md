@@ -185,3 +185,9 @@
 - Payload-Größe: 6.1 KB
 - Verarbeitete Posts: 20
 - Versuche: 1
+## Gemini-Zusammenfassung (2026-11-18 13:33)
+- HTTP-Status: RuntimeError
+- Fehler: Alle konfigurierten KI-Anbieter fehlgeschlagen; keine verwendbare Textantwort.
+- Payload-Größe: 5.9 KB
+- Verarbeitete Posts: 20
+- Versuche: 1

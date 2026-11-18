@@ -5,190 +5,192 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: Estoril through our lens! 📸❤️
+- Titel: Down before the lights went out, first across the line 😮‍💨🏆
 
-#EstorilWorldSBK 🇵🇹 #WorldSBK
-- Datum: 2026-11-16T12:39:38.000Z
-- URL: https://www.instagram.com/p/DfzYFYjiOa3/
-- Likes: 220
-- Kommentare: 0
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-18T13:00:13.000Z
+- URL: https://www.instagram.com/p/Df4kD4DhkGx/
+- Likes: 4953
+- Kommentare: 39
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: @ikerlecuona_27 is back in #MotoGP! 🚨 He’ll step in for the Ducati Lenovo Team at the #PortgueseGP as @pecco63 recovers from surgery 🎯
+- Titel: Still in it. Will the Aprilia duo shake up the championship fight in Portimao? ⚔️ 👑
 
-#WorldSBK
-- Datum: 2026-11-16T11:16:32.000Z
-- URL: https://www.instagram.com/p/DfzOh_KIsLw/
-- Likes: 2548
-- Kommentare: 31
+#MotoGP #JorgeMartin #MarcoBezzecchi
+- Datum: 2026-11-18T12:00:02.000Z
+- URL: https://www.instagram.com/p/Df4dO6CCCnZ/
+- Likes: 22608
+- Kommentare: 403
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: From @nicolo_bulega11’s dominance to @88migueloliveira’s podium battle and record-breaking moments, Estoril had it all! 👑 Relive the best of #EstorilWorldSBK! 👀🇵🇹
+- Titel: It doesn't get any closer than this 🥵 @tonielias24 got his maiden #MotoGP win in one of the most dramatic races ever! 🏆
 
-#WorldSBK
-- Datum: 2026-11-16T09:34:10.000Z
-- URL: https://www.instagram.com/p/DfzCoo6oQB6/
-- Likes: 1403
-- Kommentare: 5
+#PortugueseGP🇵🇹 #MichelinMotoGP
+- Datum: 2026-11-18T11:30:02.000Z
+- URL: https://www.instagram.com/p/Df4WVHoh11o/
+- Likes: 9195
+- Kommentare: 88
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: WHAT. A. WEEKEND 🥹🏆 Bulega's coronation, Lecuona's maiden hat-trick and first podiums ⭐️ Relive on YouTube all the emotions from an incredible Italian Round! ⏮️
+- Titel: @jakedixonracing will step in for @joanmir36official at the #PortugueseGP 🇵🇹 
 
-#ItalianWorldSBK 🇮🇹 #WorldSBK
-- Datum: 2026-11-15T11:01:36.000Z
-- URL: https://www.instagram.com/p/Dfwn_xNgeZY/
-- Likes: 2078
-- Kommentare: 12
+#MotoGP #JakeDixon #JoanMir
+- Datum: 2026-11-18T11:01:20.000Z
+- URL: https://www.instagram.com/p/Df4WNaioRVc/
+- Likes: 13377
+- Kommentare: 44
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: Drama, history and plenty of unforgettable moments! ⭐️ Relive the action from a record-breaking Round 9 at Magny-Cours on our YouTube channel 🔥
+- Titel: Different designs, same @akrapovic world-class performance 💯 
 
-#FrenchWorldSBK 🇫🇷 #WorldSBK
-- Datum: 2026-11-14T11:00:55.000Z
-- URL: https://www.instagram.com/p/DfuDIMOjWBF/
-- Likes: 4842
-- Kommentare: 4
+#MotoGP
+- Datum: 2026-11-18T10:00:00.000Z
+- URL: https://www.instagram.com/p/Df4PNpCIIpp/
+- Likes: 5820
+- Kommentare: 12
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: Every legend has a beginning. From a bold dream to an eye-opening debut, discover how @jonathan_rea’s #WorldSBK journey began 🚥  Watch the docuseries on WorldSBK.com 📺
+- Titel: Black Friday is coming! 📆⏳ Don’t buy anything…yet! 🔜 23-29 November 
 
-#WorldSBK #thegREAtest
-- Datum: 2026-11-13T12:30:33.000Z
-- URL: https://www.instagram.com/p/DfrohClOPaN/
-- Likes: 3025
-- Kommentare: 29
+#MotoGP
+- Datum: 2026-11-18T09:35:30.000Z
+- URL: https://www.instagram.com/p/Df4L8ilIAta/
+- Likes: 2897
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: Too good to leave in the camera roll! 📸✨
+- Titel: Taking a debut #MotoGP podium in his second Grand Prix! ✅ @37pedroacosta was called the rookie sensation for a reason! 😎
 
-#SpanishWorldSBK 🇪🇸 #WorldSBK
-- Datum: 2026-11-13T11:39:34.000Z
-- URL: https://www.instagram.com/p/Dfri05hjuY5/
-- Likes: 2965
-- Kommentare: 3
+#PortugueseGP🇵🇹 #MotoGP #PedroAcosta
+- Datum: 2026-11-18T08:00:10.000Z
+- URL: https://www.instagram.com/p/Df4Bvd5hjph/
+- Likes: 26360
+- Kommentare: 67
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: One last burnout to seal the deal after an epic season? That’s all the #FridayFeeling we need! 💨 🤝
+- Titel: "I'm not ice like everybody thinks" says the Iceman 😅🥶
 
-#SpanishWorldSBK 🇪🇸 #WorldSBK
-- Datum: 2026-11-13T10:19:49.000Z
-- URL: https://www.instagram.com/p/DfrZl9Rulkf/
-- Likes: 3015
-- Kommentare: 9
+#MotoGP #AiOgura
+- Datum: 2026-11-18T05:00:06.000Z
+- URL: https://www.instagram.com/p/Df3tIbHh4Ou/
+- Likes: 9301
+- Kommentare: 84
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: WorldSSP featured 8 different manufacturers in 2026! 🏁 Here’s how the standings finished 🟢
+- Titel: Revealing some first times while others remain a secret 🔒
 
-#WorldSBK
-- Datum: 2026-11-12T16:45:48.000Z
-- URL: https://www.instagram.com/p/DfphAP1OIDm/
-- Likes: 8258
-- Kommentare: 70
+#MotoGP #AiOgura
+- Datum: 2026-11-17T18:00:16.000Z
+- URL: https://www.instagram.com/p/Df2hnSKBhOP/
+- Likes: 6801
+- Kommentare: 40
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Take us back! 🥹
+- Titel: Tensions were running high between Marco Simoncelli and Jorge Lorenzo at the 2011 press conference 😅
 
-#WorldSBK #Bu1egacy
-- Datum: 2026-11-12T13:11:24.000Z
-- URL: https://www.instagram.com/p/DfpIih7DgrW/
-- Likes: 9314
-- Kommentare: 35
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-17T16:00:16.000Z
+- URL: https://www.instagram.com/p/Df2Tz61BdoJ/
+- Likes: 42271
+- Kommentare: 1308
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: Marc Márquez arrives in Portimao this year as championship leader and just one step away from the #MotoGP title 🙌
+- Titel: Down before the lights went out, first across the line 😮‍💨🏆
 
-But his last visit here made headlines for a very different reason after a clash with Pecco Bagnaia 👀
-
-#PortugueseGP 🇵🇹
-- Datum: 2026-11-16T13:01:14.000Z
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-18T13:00:26.000Z
 - URL: nicht verfügbar
-- Likes: 180
-- Kommentare: 11
+- Likes: 398
+- Kommentare: 13
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: New look. Elevated experiences. More access⚡
+- Titel: Still in it. Will the Aprilia duo shake up the championship fight in Portimao? ⚔️ 👑
 
-👀 Check out the next evolution of #MotoGPPremier and live #MotoGP like never before ➞ bit.ly/48eqI0A
-- Datum: 2026-11-16T12:30:48.000Z
+#MotoGP #JorgeMartin #MarcoBezzecchi
+- Datum: 2026-11-18T12:00:11.000Z
 - URL: nicht verfügbar
-- Likes: 99
-- Kommentare: 0
+- Likes: 556
+- Kommentare: 107
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: An important weekend awaits, so be sure to pin the schedule and be ready! 📌🗓️
+- Titel: Jake Dixon will step in for Joan Mir at the #PortugueseGP 🇵🇹 
 
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-16T12:10:13.000Z
+#MotoGP #JakeDixon #JoanMir
+- Datum: 2026-11-18T11:01:25.000Z
 - URL: nicht verfügbar
-- Likes: 596
-- Kommentare: 8
+- Likes: 1783
+- Kommentare: 87
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: We're back at the rollercoaster for what could be a title-clinching weekend in more ways than one 🎢👀
-
-#PortugueseGP🇵🇹
-- Datum: 2026-11-16T11:40:29.000Z
-- URL: nicht verfügbar
-- Likes: 98
-- Kommentare: 1
-- Shares: nicht verfügbar
-### Datensatz 5
-- Titel: BREAKING: Iker Lecuona will step in for Pecco Bagnaia at the #PortugueseGP🇵🇹 as he continues his recovery following surgery on his right foot 🚨
+- Titel: Yamaha confirms Toprak Razgatlıoglu will miss the #ValenciaTest in December as he continues his recovery ❤️‍🩹
 
 #MotoGP
-- Datum: 2026-11-16T11:06:48.000Z
+- Datum: 2026-11-18T09:50:17.000Z
 - URL: nicht verfügbar
-- Likes: 2217
-- Kommentare: 77
+- Likes: 298
+- Kommentare: 24
+- Shares: nicht verfügbar
+### Datensatz 5
+- Titel: Black Friday is coming! 📆⏳ Don’t buy anything…yet! 🔜 23-29 November 
+
+👉 https://motogp.io/BF26F
+
+#MotoGP
+- Datum: 2026-11-18T09:35:47.000Z
+- URL: nicht verfügbar
+- Likes: 218
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: Last time out the podium fight was absolutely fierce 🔥⚔️
+- Titel: Taking a debut #MotoGP podium in his second Grand Prix! ✅ @37pedroacosta was called the rookie sensation for a reason! 😎
 
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-16T11:01:46.000Z
+#PortugueseGP🇵🇹 #MotoGP #PedroAcosta
+- Datum: 2026-11-18T08:00:23.000Z
 - URL: nicht verfügbar
-- Likes: 2397
-- Kommentare: 14
+- Likes: 2018
+- Kommentare: 22
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: This is Pedro Acosta. The Shark. Raw, unfiltered, straight to the point. 🦈
+- Titel: This is Ai Ogura. Some call him the Iceman, but he reckons he's just being himself. 🥶
 
-Get to know the rider behind the helmet, from the lessons passed down by his fisherman father to overcoming setbacks, his #MotoGP mindset and what lies ahead.🔥
+Meet the Japanese star, helmets off, as he opens up about his family, the feeling of winning and the responsibility of representing his country in #MotoGP 🌟🇯🇵
 
-#WiredDifferent
-- Datum: 2026-11-16T10:09:24.000Z
+#WiredDiffferent #AiOgura
+- Datum: 2026-11-18T05:00:25.000Z
 - URL: nicht verfügbar
-- Likes: 352
-- Kommentare: 8
+- Likes: 1062
+- Kommentare: 38
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: The pressure is on as the title fight heads to Portugal 💪👑
+- Titel: Revealing some first times will others remain a secret 🔒
 
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-16T08:00:21.000Z
+#MotoGP #AiOgura
+- Datum: 2026-11-17T18:00:39.000Z
 - URL: nicht verfügbar
-- Likes: 663
-- Kommentare: 12
+- Likes: 592
+- Kommentare: 18
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: The Algarve is calling 📞👀
+- Titel: Tensions were running high between Marco Simoncelli and Jorge Lorenzo at the 2011 press conference 😅
 
 #PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-16T07:00:10.000Z
+- Datum: 2026-11-17T16:00:28.000Z
 - URL: nicht verfügbar
-- Likes: 2919
-- Kommentare: 74
+- Likes: 3422
+- Kommentare: 641
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Marco Bezzecchi 🤝 Alexander Zverev 🏍️🎾
+- Titel: Classic battles and unbelievable moments, the #PortugueseGP🇵🇹 has given us all!
 
-#MotoGP | ATP Tour
-- Datum: 2026-11-15T17:31:43.000Z
+Take a look at some of those iconic bits in history ✨
+
+#MotoGP
+- Datum: 2026-11-17T15:00:41.000Z
 - URL: nicht verfügbar
-- Likes: 1778
-- Kommentare: 28
+- Likes: 2027
+- Kommentare: 30
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
