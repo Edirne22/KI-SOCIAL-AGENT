@@ -1769,9 +1769,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/martin-portimaoya-fiziksel-olarak
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-3-martin-portimaoya-fi-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 44552936457-1
+## Facebook [GEPOSTET 2026-11-19 15:17 | ID: 122136363207469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-17-daily
 Telegram-Update-ID: 279362051
@@ -1792,6 +1791,7 @@ Wie seht ihr Martins Chancen im Titelkampf?
 Quelle: https://trf1.net/motor-sporlari/motogp/martin-portimaoya-fiziksel-olarak-daha-iyi-geliyor-sampiyonlugu-valenciaya-tasimak-icin-24-puan-farki-gerekiyor/125614
 Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-3-martin-portimaoya-fi-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-3-martin-portimaoya-fi-01.jpg", "media_status": "", "object_id": "122136363207469415", "object_type": "bild", "platform": "facebook", "post_id": "122136363207469415", "source_url": "https://trf1.net/motor-sporlari/motogp/martin-portimaoya-fiziksel-olarak-daha-iyi-geliyor-sampiyonlugu-valenciaya-tasimak-icin-24-puan-farki-gerekiyor/125614", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
