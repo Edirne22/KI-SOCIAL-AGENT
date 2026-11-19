@@ -1386,12 +1386,21 @@
       "platform_blocks": 6
     },
     "racing-2026-11-19-daily": {
-      "status": "READY_FOR_APPROVAL",
+      "status": "FREIGEGEBEN",
       "started_at": "2026-11-19T16:10:56.242388+00:00",
-      "updated_at": "2026-11-19T16:47:37.970439+00:00",
+      "updated_at": "2026-11-19T21:48:15.662379+00:00",
       "event": "schedule",
       "github_run_id": "44562852066",
-      "arch_version": "V8.5.5"
+      "arch_version": "V8.5.5",
+      "telegram_update_id": 279362065,
+      "selection": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "platform_blocks": 10
     }
   },
   "last_notification_at": 1795106857.9686637,

@@ -2014,3 +2014,237 @@ Quelle / weitere Infos: https://www.motoron.com.tr/motosiklet-haber/toprak-razga
 Quelle: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-valencia-testini-de-kaciracak-donus-2027de
 Bild: assets/images/2026-11/2026-11-19-turkish-human-1-toprak-razgatlioglu-01.jpg
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 1
+Story-Key: motogp:10875531
+Event-Fingerprint: -
+Titel: Checa: “Toprak Razgatlıoğlu MotoGP’ye bir yıl erken geçti”
+Text:
+Carlos Checa meckert: Razgatlıoğlu ist ein Jahr zu früh in der MotoGP.
+
+Der ehemalige MotoGP-Pilot hat klare Worte gefunden. Checa findet, Toprak Razgatlıoğlu ist einem Jahr vor dem empfohlenen Zeitpunkt in die Weltspitze gewechselt – und das sehe er jetzt als Fehler. Die Frage ist nur: Ist Checas Kritik gerechtfertigt oder hat er das Timing falsch eingeschätzt?
+
+Was denkt ihr: Hat Checa recht mit seiner Kritik?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/checa-toprak-razgatlioglu-motogpye-bir-yil-erken-gecti/10875531
+Quelle: https://tr.motorsport.com/motogp/news/checa-toprak-razgatlioglu-motogpye-bir-yil-erken-gecti/10875531
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-1-checa-toprak-razgatl-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 1
+Story-Key: motogp:10875531
+Event-Fingerprint: -
+Titel: Checa: “Toprak Razgatlıoğlu MotoGP’ye bir yıl erken geçti”
+Text:
+Carlos Checa meckert: Razgatlıoğlu ist ein Jahr zu früh in der MotoGP.
+
+Der ehemalige MotoGP-Pilot hat klare Worte gefunden. Checa findet, Toprak Razgatlıoğlu ist einem Jahr vor dem empfohlenen Zeitpunkt in die Weltspitze gewechselt – und das sehe er jetzt als Fehler. Die Frage ist nur: Ist Checas Kritik gerechtfertigt oder hat er das Timing falsch eingeschätzt?
+
+Was denkt ihr: Hat Checa recht mit seiner Kritik?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/checa-toprak-razgatlioglu-motogpye-bir-yil-erken-gecti/10875531
+Quelle: https://tr.motorsport.com/motogp/news/checa-toprak-razgatlioglu-motogpye-bir-yil-erken-gecti/10875531
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-1-checa-toprak-razgatl-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 2
+Story-Key: motogp:10875517
+Event-Fingerprint: -
+Titel: Redding, Toprak Razgatlıoğlu’nun verilerini görünce şaşkına dönmüş: “Bunu nasıl yapabiliyor?”
+Text:
+Wie kann er das machen?
+
+Scott Redding hat bei BMW die Telemetriedaten von Toprak Razgatlıoğlu analysiert. Dabei ist ihm aufgefallen, dass er selbst die Fahrweise seines Teamkollegen nicht in seinen eigenen Stil übernehmen konnte.
+
+Was denkt ihr, warum schafft das Redding nicht?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/redding-toprak-razgatlioglunun-verilerini-gorunce-saskina-donmus-bunu-nasil-yapabiliyor/10875517
+Quelle: https://tr.motorsport.com/motogp/news/redding-toprak-razgatlioglunun-verilerini-gorunce-saskina-donmus-bunu-nasil-yapabiliyor/10875517
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-2-redding-toprak-razga-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 2
+Story-Key: motogp:10875517
+Event-Fingerprint: -
+Titel: Redding, Toprak Razgatlıoğlu’nun verilerini görünce şaşkına dönmüş: “Bunu nasıl yapabiliyor?”
+Text:
+Wie kann er das machen?
+
+Scott Redding hat bei BMW die Telemetriedaten von Toprak Razgatlıoğlu analysiert. Dabei ist ihm aufgefallen, dass er selbst die Fahrweise seines Teamkollegen nicht in seinen eigenen Stil übernehmen konnte.
+
+Was denkt ihr, warum schafft das Redding nicht?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/redding-toprak-razgatlioglunun-verilerini-gorunce-saskina-donmus-bunu-nasil-yapabiliyor/10875517
+Quelle: https://tr.motorsport.com/motogp/news/redding-toprak-razgatlioglunun-verilerini-gorunce-saskina-donmus-bunu-nasil-yapabiliyor/10875517
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-2-redding-toprak-razga-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 3
+Story-Key: motogp:125705
+Event-Fingerprint: -
+Titel: Marquez şampiyonluk için Portimao’da: “Burada pek şansım yaver gitmedi” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Hier war mein Glück einfach nicht dabei
+
+Die Algarve-Strecke ist technisch einer der härtesten Parks im MotoGP-Kalender — viele Kurven, hoch runter, alles andere als plain. Und Marc Marquez? Kein Sieg dort trotz alles Möglichen. Aber dieses Wochenende kann er seinen achten Premier-Class-Titel feiern. 2023 holte er hier schon die Pole, und bisweilen sah man ihn richtig perfekt drauf.
+
+Glaubt ihr wirklich, dass er den Titel jetzt holen kann?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/marquez-sampiyonluk-icin-portimaoda-burada-pek-sansim-yaver-gitmedi/125705
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-sampiyonluk-icin-portimaoda-burada-pek-sansim-yaver-gitmedi/125705
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-3-marquez-sampiyonluk-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 3
+Story-Key: motogp:125705
+Event-Fingerprint: -
+Titel: Marquez şampiyonluk için Portimao’da: “Burada pek şansım yaver gitmedi” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Hier war mein Glück einfach nicht dabei
+
+Die Algarve-Strecke ist technisch einer der härtesten Parks im MotoGP-Kalender — viele Kurven, hoch runter, alles andere als plain. Und Marc Marquez? Kein Sieg dort trotz alles Möglichen. Aber dieses Wochenende kann er seinen achten Premier-Class-Titel feiern. 2023 holte er hier schon die Pole, und bisweilen sah man ihn richtig perfekt drauf.
+
+Glaubt ihr wirklich, dass er den Titel jetzt holen kann?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/marquez-sampiyonluk-icin-portimaoda-burada-pek-sansim-yaver-gitmedi/125705
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-sampiyonluk-icin-portimaoda-burada-pek-sansim-yaver-gitmedi/125705
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-3-marquez-sampiyonluk-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 4
+Story-Key: motogp:125814
+Event-Fingerprint: -
+Titel: Lorenzo’dan Marquez övgüsü: “Tüm zamanların en büyüğü” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Jorge Lorenzo hält Marc Marquez für den besten Motorradrennfahrer aller Zeiten. Das sagt der spanische Ex-Weltmeister über seinen alten Kontrahenten.
+
+Und die Zahlen untermauern das. Zwischen 2013 und 2019 holte Marquez sechs Weltmeistertitel – Lorenzo war in diesem Zeitraum der Einzige, der ihn stoppen konnte. Sein letzter Titel kam 2015, danach gab es keinen anderen Serien-Sieger mehr.
+
+Marquez hat in seiner Karriere mehrfach Pech mit Verletzungen gehabt. Einzig in der Saison 2024 bei Gresini Ducati, einem Satellitenteam, konnte er den Titel nicht holen – und das trotz verpasster Rennen durch Blessuren.
+
+Was haltet ihr von Lorenzos Statement – ist Marquez wirklich der G.O.A.T.?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zamanlarin-en-buyugu/125814
+Quelle: https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zamanlarin-en-buyugu/125814
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-4-lorenzodan-marquez-o-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 4
+Story-Key: motogp:125814
+Event-Fingerprint: -
+Titel: Lorenzo’dan Marquez övgüsü: “Tüm zamanların en büyüğü” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Jorge Lorenzo hält Marc Marquez für den besten Motorradrennfahrer aller Zeiten. Das sagt der spanische Ex-Weltmeister über seinen alten Kontrahenten.
+
+Und die Zahlen untermauern das. Zwischen 2013 und 2019 holte Marquez sechs Weltmeistertitel – Lorenzo war in diesem Zeitraum der Einzige, der ihn stoppen konnte. Sein letzter Titel kam 2015, danach gab es keinen anderen Serien-Sieger mehr.
+
+Marquez hat in seiner Karriere mehrfach Pech mit Verletzungen gehabt. Einzig in der Saison 2024 bei Gresini Ducati, einem Satellitenteam, konnte er den Titel nicht holen – und das trotz verpasster Rennen durch Blessuren.
+
+Was haltet ihr von Lorenzos Statement – ist Marquez wirklich der G.O.A.T.?
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zamanlarin-en-buyugu/125814
+Quelle: https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zamanlarin-en-buyugu/125814
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-4-lorenzodan-marquez-o-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 5
+Story-Key: motogp:1185683
+Event-Fingerprint: -
+Titel: Dixon replaces Mir at the Portuguese GP
+Text:
+Dixon steht in Portugal für Mir am Start 🏍️
+
+Josh Ainslie Dixon übernimmt bei der Weltmeisterschafts-Runde in Portugal das Bike – Joan Mir läuft noch nicht vollständig fit. Der Australier teilt sich dabei den Kasten mit Luca Marini, während Mir weiter an seiner Genesung arbeitet.
+
+Was erwartet ihr von Dixon im Sattel des Pata Yamaha?
+
+#WorldSBK #JoanMir #LucaMarini #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/18/dixon-replaces-mir-at-the-portuguese-gp/1185683
+Quelle: https://www.motogp.com/en/news/2026/11/18/dixon-replaces-mir-at-the-portuguese-gp/1185683
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-5-dixon-replaces-mir-a-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-19-daily
+Telegram-Update-ID: 279362065
+MotoGP-Auswahl: 5
+Story-Key: motogp:1185683
+Event-Fingerprint: -
+Titel: Dixon replaces Mir at the Portuguese GP
+Text:
+Dixon steht in Portugal für Mir am Start 🏍️
+
+Josh Ainslie Dixon übernimmt bei der Weltmeisterschafts-Runde in Portugal das Bike – Joan Mir läuft noch nicht vollständig fit. Der Australier teilt sich dabei den Kasten mit Luca Marini, während Mir weiter an seiner Genesung arbeitet.
+
+Was erwartet ihr von Dixon im Sattel des Pata Yamaha?
+
+#WorldSBK #JoanMir #LucaMarini #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/18/dixon-replaces-mir-at-the-portuguese-gp/1185683
+Quelle: https://www.motogp.com/en/news/2026/11/18/dixon-replaces-mir-at-the-portuguese-gp/1185683
+Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-5-dixon-replaces-mir-a-01.jpg
+Link-Preview: offiziell
