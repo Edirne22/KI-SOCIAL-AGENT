@@ -1934,3 +1934,33 @@ Quelle: https://tr.motorsport.com/motogp/news/resmi-sakatligi-devam-eden-toprak-
 Story-Key: motogp:125677
 Titel: Toprak Razgatlıoğlu Valencia testini de kaçıracak: Yamaha açıkladı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-valencia-testini-de-kaciracak-yamaha-acikladi/125677
+
+## 2026-11-19 16:18 UTC – ANGEBOTEN
+Story-Key: title:motogp-portekiz-gp-2026-marc-marquez-portimao-da-ampiyonluk-pe-inde
+Titel: MotoGP Portekiz GP 2026: Marc Marquez Portimao'da Şampiyonluk Peşinde
+Quelle: https://motoetkinlik.com/motogp-portekiz-gp-2026-marc-marquez-portimaoda-sampiyonluk-pesinde
+
+## 2026-11-19 16:18 UTC – ANGEBOTEN
+Story-Key: motogp:10875531
+Titel: Checa: “Toprak Razgatlıoğlu MotoGP’ye bir yıl erken geçti”
+Quelle: https://tr.motorsport.com/motogp/news/checa-toprak-razgatlioglu-motogpye-bir-yil-erken-gecti/10875531
+
+## 2026-11-19 16:18 UTC – ANGEBOTEN
+Story-Key: motogp:10875517
+Titel: Redding, Toprak Razgatlıoğlu’nun verilerini görünce şaşkına dönmüş: “Bunu nasıl yapabiliyor?”
+Quelle: https://tr.motorsport.com/motogp/news/redding-toprak-razgatlioglunun-verilerini-gorunce-saskina-donmus-bunu-nasil-yapabiliyor/10875517
+
+## 2026-11-19 16:18 UTC – ANGEBOTEN
+Story-Key: motogp:125705
+Titel: Marquez şampiyonluk için Portimao’da: “Burada pek şansım yaver gitmedi” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marquez-sampiyonluk-icin-portimaoda-burada-pek-sansim-yaver-gitmedi/125705
+
+## 2026-11-19 16:18 UTC – ANGEBOTEN
+Story-Key: motogp:125814
+Titel: Lorenzo’dan Marquez övgüsü: “Tüm zamanların en büyüğü” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zamanlarin-en-buyugu/125814
+
+## 2026-11-19 16:18 UTC – ANGEBOTEN
+Story-Key: motogp:1185683
+Titel: Dixon replaces Mir at the Portuguese GP
+Quelle: https://www.motogp.com/en/news/2026/11/18/dixon-replaces-mir-at-the-portuguese-gp/1185683

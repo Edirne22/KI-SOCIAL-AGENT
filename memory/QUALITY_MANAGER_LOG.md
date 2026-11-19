@@ -4536,3 +4536,39 @@ Story-Key: motogp:125677
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-19 16:46 UTC | Motorcycle Racing | PASS
+Titel: Checa: “Toprak Razgatlıoğlu MotoGP’ye bir yıl erken geçti”
+Story-Key: motogp:10875531
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-19 16:46 UTC | Motorcycle Racing | PASS
+Titel: Redding, Toprak Razgatlıoğlu’nun verilerini görünce şaşkına dönmüş: “Bunu nasıl yapabiliyor?”
+Story-Key: motogp:10875517
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-19 16:46 UTC | Motorcycle Racing | PASS
+Titel: Marquez şampiyonluk için Portimao’da: “Burada pek şansım yaver gitmedi” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125705
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-19 16:46 UTC | Motorcycle Racing | FAIL
+Titel: Lorenzo’dan Marquez övgüsü: “Tüm zamanların en büyüğü” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125814
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-19 16:47 UTC | Motorcycle Racing | PASS
+Titel: Lorenzo’dan Marquez övgüsü: “Tüm zamanların en büyüğü” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125814
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-19 16:47 UTC | Motorcycle Racing | PASS
+Titel: Dixon replaces Mir at the Portuguese GP
+Story-Key: motogp:1185683
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
