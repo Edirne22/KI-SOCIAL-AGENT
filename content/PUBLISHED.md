@@ -1971,3 +1971,45 @@ Wie seht ihr die Entscheidung, dass Razgatlıoğlu den Test auslässt, nach sein
 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-valencia-testini-de-kaciracak-yamaha-acikladi/125677
 Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-5-toprak-razgatlioglu-01.jpg
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-18-daily-TR-HUMAN
+Telegram-Update-ID: 279362059
+MotoGP-Auswahl: 1
+Story-Key: title:toprak-razgatl-o-lu-valencia-testini-de-ka-racak-d-n-2027-de-motoron-dergisi
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu Valencia testini de kaçıracak: Dönüş 2027'de | Motoron Dergisi
+Text:
+Toprak Razgatlıoğlu hat nach seiner Schulter‑OP den Valencia‑Test am 1. Dezember verpasst. 🏍️ Der nächste Auftritt auf der Rennstrecke wird erst 2027 beim Sepang‑Test erwartet – das ist ein echter Rückschlag. 😔 Hoffe, dass er bis dahin wieder voll durchstarten kann. 🤞
+
+#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-valencia-testini-de-kaciracak-donus-2027de
+
+🔗 Quelle: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-valencia-testini-de-kaciracak-donus-2027de
+Quelle: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-valencia-testini-de-kaciracak-donus-2027de
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-19-turkish-human-1-toprak-razgatlioglu-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-18-daily-TR-HUMAN
+Telegram-Update-ID: 279362059
+MotoGP-Auswahl: 1
+Story-Key: title:toprak-razgatl-o-lu-valencia-testini-de-ka-racak-d-n-2027-de-motoron-dergisi
+Event-Fingerprint: -
+Titel: Toprak Razgatlıoğlu Valencia testini de kaçıracak: Dönüş 2027'de | Motoron Dergisi
+Text:
+Toprak Razgatlıoğlu hat nach seiner Schulter‑OP den Valencia‑Test am 1. Dezember verpasst. 🏍️ Der nächste Auftritt auf der Rennstrecke wird erst 2027 beim Sepang‑Test erwartet – das ist ein echter Rückschlag. 😔 Hoffe, dass er bis dahin wieder voll durchstarten kann. 🤞
+
+#MotoGP #ToprakRazgatlioglu #BuelentsBikeLife #MotorradRacing #RacingDeutschland
+
+Quelle / weitere Infos: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-valencia-testini-de-kaciracak-donus-2027de
+
+🔗 Quelle: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-valencia-testini-de-kaciracak-donus-2027de
+Quelle: https://www.motoron.com.tr/motosiklet-haber/toprak-razgatlioglu-valencia-testini-de-kaciracak-donus-2027de
+Bild: assets/images/2026-11/2026-11-19-turkish-human-1-toprak-razgatlioglu-01.jpg
+Link-Preview: offiziell
