@@ -1,5 +1,53 @@
 # Archiviert Beiträge 2026-11
 
+## Facebook [GEPOSTET 2026-11-11 13:35 | ID: 122133445563469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-10-daily
+Telegram-Update-ID: 279362033
+MotoGP-Auswahl: 1
+Story-Key: motogp:10873604
+Event-Fingerprint: -
+Titel: Bulega: "Toprak, MotoGP'ye damga vuracağını düşünmüştüm"
+Text:
+Nicolo Bulega dominiert die WorldSBK-Saison 2026 und wechselt im nächsten Jahr in die MotoGP. Zu Toprak Razgatlıoğlu erklärte er nun, dass seine Erwartungen an dessen erste Saison in der MotoGP ursprünglich höher waren.
+
+Wie schätzt ihr diese Aussage von Nicolo Bulega ein?
+
+#MotoGP #ToprakRazgatlioglu #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/bulega-toprak-motogpye-damga-vuracagini-dusunmustum/10873604
+Quelle: https://tr.motorsport.com/motogp/news/bulega-toprak-motogpye-damga-vuracagini-dusunmustum/10873604
+Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-1-bulega-toprak-motogp-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-1-bulega-toprak-motogp-01.jpg", "media_status": "", "object_id": "122133445563469415", "object_type": "bild", "platform": "facebook", "post_id": "122133445563469415", "source_url": "https://tr.motorsport.com/motogp/news/bulega-toprak-motogpye-damga-vuracagini-dusunmustum/10873604", "version": 1}
+
+## Facebook [GEPOSTET 2026-11-12 02:00 | ID: 122133637491469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-10-daily
+Telegram-Update-ID: 279362033
+MotoGP-Auswahl: 2
+Story-Key: motogp:124918
+Event-Fingerprint: MotoGP|sprint|bezzecchi,marquez,martin|
+Titel: Rivola şampiyonluk yarışında Marquez’i övdü: Fark yarattı, tesadüf değil - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez hat beim Katar GP mehr Punkte gesammelt als Jorge Martin und Teamkollege Marco Bezzecchi – und damit den ersten Schritt zur Titelverteidigung gemacht.
+
+Marquez konnte den Titel zwar noch nicht offiziell sichern, zog aber im Punktestand deutlich davon. Rivola erklärte dahinter: Der Unterschied sei kein Zufall, sondern die Folge konsequenter Arbeit.
+
+Im Sprint kam es zu einer Berührung zwischen Marquez und Bezzecchi – Bezzecchi ging drauf, was die Lage im Championat zusätzlich zugespitzt hat.
+
+Was denkt ihr: Hat Marquez jetzt die Kontrolle über die Meisterschaft oder läuft Martin noch gefährlich?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/rivola-sampiyonluk-yarisinda-marquezi-ovdu-fark-yaratti-tesaduf-degil/124918
+Quelle: https://trf1.net/motor-sporlari/motogp/rivola-sampiyonluk-yarisinda-marquezi-ovdu-fark-yaratti-tesaduf-degil/124918
+Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-2-rivola-sampiyonluk-y-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-2-rivola-sampiyonluk-y-01.jpg", "media_status": "", "object_id": "122133637491469415", "object_type": "bild", "platform": "facebook", "post_id": "122133637491469415", "source_url": "https://trf1.net/motor-sporlari/motogp/rivola-sampiyonluk-yarisinda-marquezi-ovdu-fark-yaratti-tesaduf-degil/124918", "version": 1}
+
 ## Facebook [GEPOSTET 2026-11-09 15:13 | ID: 122132719443469415]
 Status: GEPOSTET
 Freigabe: Telegram Racing
