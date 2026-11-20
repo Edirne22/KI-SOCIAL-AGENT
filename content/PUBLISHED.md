@@ -1789,9 +1789,8 @@ Quelle: https://tr.motorsport.com/motogp/news/resmi-sakatligi-devam-eden-toprak-
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-4-resmi-sakatligi-deva-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 44757936962-1
+## Facebook [GEPOSTET 2026-11-20 14:54 | ID: 122136763317469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-18-daily
 Telegram-Update-ID: 279362056
@@ -1810,6 +1809,7 @@ Wie lange denkt ihr, wird er noch brauchen, bis er wieder am Start steht?
 Quelle: https://tr.motorsport.com/motogp/news/resmi-sakatligi-devam-eden-toprak-valensiyadaki-850cc-motogp-testini-kaciracak/10875248
 Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-4-resmi-sakatligi-deva-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-4-resmi-sakatligi-deva-01.jpg", "media_status": "", "object_id": "122136763317469415", "object_type": "bild", "platform": "facebook", "post_id": "122136763317469415", "source_url": "https://tr.motorsport.com/motogp/news/resmi-sakatligi-devam-eden-toprak-valensiyadaki-850cc-motogp-testini-kaciracak/10875248", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
