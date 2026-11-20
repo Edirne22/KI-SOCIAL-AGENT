@@ -1,5 +1,77 @@
 # Archiviert Beiträge 2026-11
 
+## Facebook [GEPOSTET 2026-11-12 14:39 | ID: 122133946335469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-10-daily
+Telegram-Update-ID: 279362033
+MotoGP-Auswahl: 3
+Story-Key: motogp:1184253
+Event-Fingerprint: MotoGP|sprint|bezzecchi,martin|
+Titel: Match point Sunday: Marquez wins dramatic Qatar Sprint, Martin heroic for P3, Bezzecchi crashes
+Text:
+In Qatar war am Samstag richtig was los beim Sprint.
+
+Dramatischer Verlauf mit vielen Actions. Jorge Martin konnte sich mit einer tollen Leistung Platz drei sichern. Bei Marco Bezzecchi sah es leider anders aus – er ging an die Wand. Sonntag wird dann noch mal richtig interessant.
+
+Wie findet ihr die Aufstellung für das Main Race? 🏁
+
+#MotoGP #MarcoBezzecchi #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/07/match-point-sunday-marquez-wins-dramatic-qatar-sprint-martin-produces-heroics-bezzecchi-crashes/1184253
+Quelle: https://www.motogp.com/en/news/2026/11/07/match-point-sunday-marquez-wins-dramatic-qatar-sprint-martin-produces-heroics-bezzecchi-crashes/1184253
+Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-3-match-point-sunday-m-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-3-match-point-sunday-m-01.jpg", "media_status": "", "object_id": "122133946335469415", "object_type": "bild", "platform": "facebook", "post_id": "122133946335469415", "source_url": "https://www.motogp.com/en/news/2026/11/07/match-point-sunday-marquez-wins-dramatic-qatar-sprint-martin-produces-heroics-bezzecchi-crashes/1184253", "version": 1}
+
+## Facebook [GEPOSTET 2026-11-12 21:37 | ID: 122134001379469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-10-daily
+Telegram-Update-ID: 279362033
+MotoGP-Auswahl: 4
+Story-Key: motogp:124744
+Event-Fingerprint: MotoGP|sprint|bezzecchi,marquez|
+Titel: Tardozzi: Marquez’in Bezzecchi çarpışmasında ceza alması için bir neden yok - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Ducati-Teamboss Davide Tardozzi vindt dat er geen reden was om Marc Marquez na de Katar-Sprint te straffen voor de aanrijding met Marco Bezzecchi.
+
+Bezzecchi probeerde de leider Marquez in de eerste bocht van binnen te passeren en ging daardoor zelf tegen de grond.
+
+Marquez hield zijn moto onder controle ondanks dat zijn airbag uitplofte; de FIM heeft geen verdere stappen ondernomen.
+
+Wat vinden jullie ervan dat de FIM niet ingreep?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquezin-bezzecchi-carpismasinda-ceza-almasi-icin-bir-neden-yok/124744
+Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquezin-bezzecchi-carpismasinda-ceza-almasi-icin-bir-neden-yok/124744
+Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-4-tardozzi-marquezin-b-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-4-tardozzi-marquezin-b-01.jpg", "media_status": "", "object_id": "122134001379469415", "object_type": "bild", "platform": "facebook", "post_id": "122134001379469415", "source_url": "https://trf1.net/motor-sporlari/motogp/tardozzi-marquezin-bezzecchi-carpismasinda-ceza-almasi-icin-bir-neden-yok/124744", "version": 1}
+
+## Facebook [GEPOSTET 2026-11-13 02:09 | ID: 122134060827469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-10-daily
+Telegram-Update-ID: 279362033
+MotoGP-Auswahl: 5
+Story-Key: motogp:1184923
+Event-Fingerprint: -
+Titel: Lecuona rounds off five consecutive weekends of racing with points in both races at Qatar GP: “I’m physically done”
+Text:
+Iker Lecuona hat fünf Rennwochenenden am Stück hinter sich gebracht und beim Qatar GP in beiden Rennen Punkte mitgenommen. Die Nummer 7 aus der WorldSBK war damit wieder im MotoGP-Paddock unterwegs, zieht spürbaren Nutzen daraus und will die gesammelten Erfahrungen für 2027 nutzen. Nach dem Dauereinsatz gab er ehrlich zu, dass er körperlich erst mal völlig fertig ist.
+
+Was traut ihr Lecuona mit Blick auf 2027 in der MotoGP zu?
+
+#MotoGP #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.worldsbk.com/en/news/2026/11/09/lecuona-takes-points-in-both-races-at-qatar-these-last-two-weekends-ive-come-to-understand-the-tyres/1184923
+Quelle: https://www.worldsbk.com/en/news/2026/11/09/lecuona-takes-points-in-both-races-at-qatar-these-last-two-weekends-ive-come-to-understand-the-tyres/1184923
+Bild: assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-5-lecuona-rounds-off-f-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-10-racing-editorial-2026-11-10-5-lecuona-rounds-off-f-01.jpg", "media_status": "", "object_id": "122134060827469415", "object_type": "bild", "platform": "facebook", "post_id": "122134060827469415", "source_url": "https://www.worldsbk.com/en/news/2026/11/09/lecuona-takes-points-in-both-races-at-qatar-these-last-two-weekends-ive-come-to-understand-the-tyres/1184923", "version": 1}
+
 ## Facebook [GEPOSTET 2026-11-11 13:35 | ID: 122133445563469415]
 Status: GEPOSTET
 Freigabe: Telegram Racing
