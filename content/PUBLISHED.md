@@ -1834,9 +1834,8 @@ Quelle: https://www.motogp.com/en/news/2026/11/18/razgatlioglu-to-miss-the-valen
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-1-razgatlioglu-to-miss-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 44826184598-1
+## Facebook [GEPOSTET 2026-11-20 22:07 | ID: 122136829569469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-18-daily
 Telegram-Update-ID: 279362057
@@ -1857,6 +1856,7 @@ Was denkt ihr – welche Auswirkungen hat sein Fehlen auf die WM-Situation?
 Quelle: https://www.motogp.com/en/news/2026/11/18/razgatlioglu-to-miss-the-valencia-test/1185673
 Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-1-razgatlioglu-to-miss-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-1-razgatlioglu-to-miss-01.jpg", "media_status": "", "object_id": "122136829569469415", "object_type": "bild", "platform": "facebook", "post_id": "122136829569469415", "source_url": "https://www.motogp.com/en/news/2026/11/18/razgatlioglu-to-miss-the-valencia-test/1185673", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
