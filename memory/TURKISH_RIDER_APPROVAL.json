@@ -1,22 +1,9 @@
 {
   "version": 1,
-  "created_at": 1795105132,
+  "created_at": 1795190283,
   "max_days": 7,
   "window_used_days": 7,
-  "count": 1,
-  "visible_count": 1,
-  "items": [
-    {
-      "n": 1,
-      "title": "MotoGP Portekiz GP 2026: Marc Marquez Portimao'da Şampiyonluk Peşinde",
-      "url": "https://motoetkinlik.com/motogp-portekiz-gp-2026-marc-marquez-portimaoda-sampiyonluk-pesinde",
-      "summary": "MotoGP Portekiz GP 2026 Portimao'da: Marc Marquez sprinti kazanırsa şampiyon. Yarış Pazar 16.00 TSİ'de S Sport'ta. Deniz Öncü Moto2'de, tüm seans saatleri.",
-      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/11/motogp-portekiz-gp-2026-Portimao.webp",
-      "published_at": "2026-11-18T23:20:23+03:00",
-      "series": "MotoGP",
-      "source_series": "MotoGP",
-      "turkish_rider": "Deniz Öncü",
-      "kind": "news"
-    }
-  ]
+  "count": 0,
+  "visible_count": 0,
+  "items": []
 }

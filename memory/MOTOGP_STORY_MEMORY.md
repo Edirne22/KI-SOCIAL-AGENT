@@ -1964,3 +1964,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zam
 Story-Key: motogp:1185683
 Titel: Dixon replaces Mir at the Portuguese GP
 Quelle: https://www.motogp.com/en/news/2026/11/18/dixon-replaces-mir-at-the-portuguese-gp/1185683
+
+## 2026-11-20 15:58 UTC – ANGEBOTEN
+Story-Key: title:yamaha-n-n-1000cc-v4-projesinde-yolun-sonu-toprak-razgatl-o-lu-ndan-da-k-t-haber
+Titel: Yamaha'nın 1000cc V4 projesinde yolun sonu! Toprak Razgatlıoğlu'ndan da kötü haber
+Quelle: https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-pramac-portekiz-gp-oncesi-zorluklari-kabul-etti
+
+## 2026-11-20 15:58 UTC – ANGEBOTEN
+Story-Key: motogp:125980
+Titel: Portekiz GP 1. antrenman: Bezzecchi lider, Aprilia 1-2 - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/portekiz-gp-1-antrenman-bezzecchi-lider-aprilia-1-2/125980
+
+## 2026-11-20 15:58 UTC – ANGEBOTEN
+Story-Key: motogp:125838
+Titel: Di Giannantonio, Marquez’e Katar’daki eleştirisini açıkladı: “Kimseyi suçlamıyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-marqueze-katardaki-elestirisini-acikladi-kimseyi-suclamiyorum/125838
+
+## 2026-11-20 15:58 UTC – ANGEBOTEN
+Story-Key: motogp:1234388
+Titel: Bezzecchi and Martin hand Aprilia 1-2 in FP1, Marc Marquez fourth fastest
+Quelle: https://www.motogp.com/en/news/2026/11/20/bezzecchi-and-martin-hand-aprilia-1-2-in-fp1-marc-marquez-fourth-fastest/1234388
+
+## 2026-11-20 15:58 UTC – ANGEBOTEN
+Story-Key: title:motogp-portimao-fp1-aprilia-g-l-ba-lad-marquez-d-rd-nc-s-rada
+Titel: MotoGP Portimao FP1: Aprilia Güçlü Başladı, Marquez Dördüncü Sırada!
+Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada

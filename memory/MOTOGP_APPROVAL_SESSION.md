@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1795105132
+Session-Timestamp: 1795190283
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -21,21 +21,21 @@ Herkunft: Aktuell
 Artikelalter-Tage: 0.4
 Kategorie: Turkish Riders
 Serie: MotoGP
-Story-Key: motogp:10875531
-Titel: Checa: “Toprak Razgatlıoğlu MotoGP’ye bir yıl erken geçti”
-Quelle: https://tr.motorsport.com/motogp/news/checa-toprak-razgatlioglu-motogpye-bir-yil-erken-gecti/10875531
+Story-Key: title:yamaha-n-n-1000cc-v4-projesinde-yolun-sonu-toprak-razgatl-o-lu-ndan-da-k-t-haber
+Titel: Yamaha'nın 1000cc V4 projesinde yolun sonu! Toprak Razgatlıoğlu'ndan da kötü haber
+Quelle: https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-pramac-portekiz-gp-oncesi-zorluklari-kabul-etti
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-1-checa-toprak-razgatl-01.jpg
-Quellen-Preview: https://cdn-1.motorsport.com/images/amp/YE9wWN1Y/s6/toprak-razgatlioglu-pramac-rac.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-1-yamaha-nin-1000cc-v4-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/11/yamaha-1000cc-v4-pramac-motogp-portekiz-gp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Carlos Checa meckert: Razgatlıoğlu ist ein Jahr zu früh in der MotoGP.
+Die gute Nachricht gibt's erst mal nicht – Pramac Yamaha hat bestätigt, dass das 1000cc-V4-Projekt damit sein Ende findet. Die Sache ist einfach: während die Konkurrenz mit der Vierteiler-Technologie weiterzieht, hat Yamaha beschlossen, die Entwicklung zu stoppen und setzt auf einen anderen Weg.
 
-Der ehemalige MotoGP-Pilot hat klare Worte gefunden. Checa findet, Toprak Razgatlıoğlu ist einem Jahr vor dem empfohlenen Zeitpunkt in die Weltspitze gewechselt – und das sehe er jetzt als Fehler. Die Frage ist nur: Ist Checas Kritik gerechtfertigt oder hat er das Timing falsch eingeschätzt?
+Zur gleichen Zeit läuft bei den Fahrern einiges ab: Jack Miller bereitet sich auf seine letzten Rennen vor, und Toprak Razgatlıoğlu hat die Saison bereits abgeschlossen.
 
-Was denkt ihr: Hat Checa recht mit seiner Kritik?
+Wie seht ihr Yamahas Entscheidung – richtig oder verpasste Chance?
 
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #ToprakRazgatlioglu #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -46,24 +46,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.4
-Kategorie: Turkish Riders
+Artikelalter-Tage: 0.1
+Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:10875517
-Titel: Redding, Toprak Razgatlıoğlu’nun verilerini görünce şaşkına dönmüş: “Bunu nasıl yapabiliyor?”
-Quelle: https://tr.motorsport.com/motogp/news/redding-toprak-razgatlioglunun-verilerini-gorunce-saskina-donmus-bunu-nasil-yapabiliyor/10875517
+Story-Key: motogp:125980
+Titel: Portekiz GP 1. antrenman: Bezzecchi lider, Aprilia 1-2 - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/portekiz-gp-1-antrenman-bezzecchi-lider-aprilia-1-2/125980
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-2-redding-toprak-razga-01.jpg
-Quellen-Preview: https://cdn-1.motorsport.com/images/amp/6grBlVjY/s6/toprak-razgatlioglu-pramac-rac.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-2-portekiz-gp-1-antren-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1363016_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Wie kann er das machen?
+Marco Bezzecchi steht nach dem ersten Training in Portimao ganz oben – und hat Aprilia damit auf die ersten beiden Plätze geschoben. Das ist für das italienische Team der Schlüssel, um Marc Marquez den achten WM-Titel zu verwehren. Der Ducati-Pilot kommt mit 60 Punkten Vorsprung auf Jorge Martin ins Saisonendspurt. In diesem Sprint könnte er sich den Titel schon am Samstag sichern, muss Martin aber mindestens zwei Punkte vorgehen.
 
-Scott Redding hat bei BMW die Telemetriedaten von Toprak Razgatlıoğlu analysiert. Dabei ist ihm aufgefallen, dass er selbst die Fahrweise seines Teamkollegen nicht in seinen eigenen Stil übernehmen konnte.
+Wer hat euren_tipf_fuer_die_Titelentscheidung?
 
-Was denkt ihr, warum schafft das Redding nicht?
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -71,27 +69,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
+Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
 Artikelalter-Tage: 1.0
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:125705
-Titel: Marquez şampiyonluk için Portimao’da: “Burada pek şansım yaver gitmedi” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/marquez-sampiyonluk-icin-portimaoda-burada-pek-sansim-yaver-gitmedi/125705
+Story-Key: motogp:125838
+Titel: Di Giannantonio, Marquez’e Katar’daki eleştirisini açıkladı: “Kimseyi suçlamıyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-marqueze-katardaki-elestirisini-acikladi-kimseyi-suclamiyorum/125838
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-3-marquez-sampiyonluk-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362546_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-3-di-giannantonio-marq-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362830_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Hier war mein Glück einfach nicht dabei
+Fabio Di Giannantonio hat nach dem Sprint-Rennen in Katar zum ersten Mal erklärt, was hinter seinem Kritikclip zu Marc Marquez stand.
 
-Die Algarve-Strecke ist technisch einer der härtesten Parks im MotoGP-Kalender — viele Kurven, hoch runter, alles andere als plain. Und Marc Marquez? Kein Sieg dort trotz alles Möglichen. Aber dieses Wochenende kann er seinen achten Premier-Class-Titel feiern. 2023 holte er hier schon die Pole, und bisweilen sah man ihn richtig perfekt drauf.
+Beim Duell um die Führung in den ersten Runden gingen Marquez und Marco Bezzecchi an der 1. Kurve hart nebeneinander durch.
 
-Glaubt ihr wirklich, dass er den Titel jetzt holen kann?
+Die FIM-Sportkommissare haben die Kollision als normalen Rennunfall abgehakt.
 
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr das – war das sauber durchgebrochen oder zu dicht?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -99,29 +99,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 3
-QM-Ruecklaeufe: 6
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.2
+Artikelalter-Tage: 0.7
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:125814
-Titel: Lorenzo’dan Marquez övgüsü: “Tüm zamanların en büyüğü” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zamanlarin-en-buyugu/125814
+Story-Key: motogp:1234388
+Titel: Bezzecchi and Martin hand Aprilia 1-2 in FP1, Marc Marquez fourth fastest
+Quelle: https://www.motogp.com/en/news/2026/11/20/bezzecchi-and-martin-hand-aprilia-1-2-in-fp1-marc-marquez-fourth-fastest/1234388
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-4-lorenzodan-marquez-o-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_614098_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-4-bezzecchi-and-martin-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/20/4612e12a-bee6-442d-9b51-3a6f5443943d/Report-MGP-FP1-PT.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Jorge Lorenzo hält Marc Marquez für den besten Motorradrennfahrer aller Zeiten. Das sagt der spanische Ex-Weltmeister über seinen alten Kontrahenten.
+Aprilias Bezzecchi und Martin legen mit einem 1-2 bei FP1 in Portugal vor.
 
-Und die Zahlen untermauern das. Zwischen 2013 und 2019 holte Marquez sechs Weltmeistertitel – Lorenzo war in diesem Zeitraum der Einzige, der ihn stoppen konnte. Sein letzter Titel kam 2015, danach gab es keinen anderen Serien-Sieger mehr.
+Marc Marquez landet als Vierter direkt dahinter.
 
-Marquez hat in seiner Karriere mehrfach Pech mit Verletzungen gehabt. Einzig in der Saison 2024 bei Gresini Ducati, einem Satellitenteam, konnte er den Titel nicht holen – und das trotz verpasster Rennen durch Blessuren.
+Die Marquez-Brüder sind das naheste Feld hinter den Aprilias.
 
-Was haltet ihr von Lorenzos Statement – ist Marquez wirklich der G.O.A.T.?
+Wie schätzt ihr die Aufstellung für das Wochenende ein?
 
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -129,27 +129,29 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 2
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 1.7
-Kategorie: WorldSBK
-Serie: WorldSBK
-Story-Key: motogp:1185683
-Titel: Dixon replaces Mir at the Portuguese GP
-Quelle: https://www.motogp.com/en/news/2026/11/18/dixon-replaces-mir-at-the-portuguese-gp/1185683
+Artikelalter-Tage: 0.1
+Kategorie: MotoGP
+Serie: MotoGP
+Story-Key: title:motogp-portimao-fp1-aprilia-g-l-ba-lad-marquez-d-rd-nc-s-rada
+Titel: MotoGP Portimao FP1: Aprilia Güçlü Başladı, Marquez Dördüncü Sırada!
+Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-5-dixon-replaces-mir-a-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/18/a007f85a-9684-4f70-90dd-3fd51a2ed9ac/_DSC3819.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-5-motogp-portimao-fp1-01.jpg
+Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/08/marco-bezzecchi-silverstone-motogp-2026.webp
 Plattformen: Instagram + Facebook
 Text:
-Dixon steht in Portugal für Mir am Start 🏍️
+Marco Bezzecchi hat das FP1 am Circuit de Portimao mit 1:39.002 Minuten angeführt.
 
-Josh Ainslie Dixon übernimmt bei der Weltmeisterschafts-Runde in Portugal das Bike – Joan Mir läuft noch nicht vollständig fit. Der Australier teilt sich dabei den Kasten mit Luca Marini, während Mir weiter an seiner Genesung arbeitet.
+Aprilia belegte die ersten zwei Plätze – Jorge Martín folgte auf Rang zwei.
 
-Was erwartet ihr von Dixon im Sattel des Pata Yamaha?
+Marc Márquez landete bei diesem Trainingstraining auf Platz vier.
 
-#WorldSBK #JoanMir #LucaMarini #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr den Start der Portugiesen-Runde?
+
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

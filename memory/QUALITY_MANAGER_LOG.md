@@ -4572,3 +4572,45 @@ Story-Key: motogp:1185683
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-20 16:25 UTC | Motorcycle Racing | PASS
+Titel: Yamaha'nın 1000cc V4 projesinde yolun sonu! Toprak Razgatlıoğlu'ndan da kötü haber
+Story-Key: title:yamaha-n-n-1000cc-v4-projesinde-yolun-sonu-toprak-razgatl-o-lu-ndan-da-k-t-haber
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-20 16:25 UTC | Motorcycle Racing | FAIL
+Titel: Marquez'e söyledikleri olay olmuştu! Di Giannantonio sessizliğini bozdu
+Story-Key: title:marquez-e-s-yledikleri-olay-olmu-tu-di-giannantonio-sessizli-ini-bozdu
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-20 16:25 UTC | Motorcycle Racing | FAIL
+Titel: Marquez'e söyledikleri olay olmuştu! Di Giannantonio sessizliğini bozdu
+Story-Key: title:marquez-e-s-yledikleri-olay-olmu-tu-di-giannantonio-sessizli-ini-bozdu
+Gründe: Final-Guard: Nationalitaet italiener nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-20 16:25 UTC | Motorcycle Racing | PASS
+Titel: Portekiz GP 1. antrenman: Bezzecchi lider, Aprilia 1-2 - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125980
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-20 16:25 UTC | Motorcycle Racing | PASS
+Titel: Di Giannantonio, Marquez’e Katar’daki eleştirisini açıkladı: “Kimseyi suçlamıyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:125838
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-20 16:26 UTC | Motorcycle Racing | PASS
+Titel: Bezzecchi and Martin hand Aprilia 1-2 in FP1, Marc Marquez fourth fastest
+Story-Key: motogp:1234388
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-20 16:26 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Portimao FP1: Aprilia Güçlü Başladı, Marquez Dördüncü Sırada!
+Story-Key: title:motogp-portimao-fp1-aprilia-g-l-ba-lad-marquez-d-rd-nc-s-rada
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
