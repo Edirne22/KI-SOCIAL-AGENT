@@ -5,192 +5,188 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: Down before the lights went out, first across the line 😮‍💨🏆
+- Titel: The “27” is back on a @ducaticorse 🔴
 
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-18T13:00:13.000Z
-- URL: https://www.instagram.com/p/Df4kD4DhkGx/
-- Likes: 4953
-- Kommentare: 39
+#PortugueseGP🇵🇹 #MotoGP #CaseyStoner #IkerLecuona
+- Datum: 2026-11-20T13:19:05.000Z
+- URL: https://www.instagram.com/p/Df9veG8IvTO/
+- Likes: 2874
+- Kommentare: 10
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: Still in it. Will the Aprilia duo shake up the championship fight in Portimao? ⚔️ 👑
+- Titel: We’ll see plenty of the 93 after 2026 😎
 
-#MotoGP #JorgeMartin #MarcoBezzecchi
-- Datum: 2026-11-18T12:00:02.000Z
-- URL: https://www.instagram.com/p/Df4dO6CCCnZ/
-- Likes: 22608
-- Kommentare: 403
+#PortugueseGP 🇵🇹
+- Datum: 2026-11-20T13:00:00.000Z
+- URL: https://www.instagram.com/p/Df9rGQgIWaP/
+- Likes: 10876
+- Kommentare: 36
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: It doesn't get any closer than this 🥵 @tonielias24 got his maiden #MotoGP win in one of the most dramatic races ever! 🏆
+- Titel: Wheels 🆙 We’re SO back at the rollercoaster! 🎢 
 
-#PortugueseGP🇵🇹 #MichelinMotoGP
-- Datum: 2026-11-18T11:30:02.000Z
-- URL: https://www.instagram.com/p/Df4WVHoh11o/
-- Likes: 9195
-- Kommentare: 88
+#PortugueseGP 🇵🇹 #MotoGP
+- Datum: 2026-11-20T12:42:12.000Z
+- URL: https://www.instagram.com/p/Df9rjw_iE-d/
+- Likes: 7054
+- Kommentare: 15
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: @jakedixonracing will step in for @joanmir36official at the #PortugueseGP 🇵🇹 
-
-#MotoGP #JakeDixon #JoanMir
-- Datum: 2026-11-18T11:01:20.000Z
-- URL: https://www.instagram.com/p/Df4WNaioRVc/
-- Likes: 13377
-- Kommentare: 44
-- Shares: nicht verfügbar
-### Datensatz 5
-- Titel: Different designs, same @akrapovic world-class performance 💯 
-
-#MotoGP
-- Datum: 2026-11-18T10:00:00.000Z
-- URL: https://www.instagram.com/p/Df4PNpCIIpp/
-- Likes: 5820
-- Kommentare: 12
-- Shares: nicht verfügbar
-### Datensatz 6
-- Titel: Black Friday is coming! 📆⏳ Don’t buy anything…yet! 🔜 23-29 November 
-
-#MotoGP
-- Datum: 2026-11-18T09:35:30.000Z
-- URL: https://www.instagram.com/p/Df4L8ilIAta/
-- Likes: 2897
-- Kommentare: 8
-- Shares: nicht verfügbar
-### Datensatz 7
-- Titel: Taking a debut #MotoGP podium in his second Grand Prix! ✅ @37pedroacosta was called the rookie sensation for a reason! 😎
-
-#PortugueseGP🇵🇹 #MotoGP #PedroAcosta
-- Datum: 2026-11-18T08:00:10.000Z
-- URL: https://www.instagram.com/p/Df4Bvd5hjph/
-- Likes: 26360
-- Kommentare: 67
-- Shares: nicht verfügbar
-### Datensatz 8
-- Titel: "I'm not ice like everybody thinks" says the Iceman 😅🥶
-
-#MotoGP #AiOgura
-- Datum: 2026-11-18T05:00:06.000Z
-- URL: https://www.instagram.com/p/Df3tIbHh4Ou/
-- Likes: 9301
-- Kommentare: 84
-- Shares: nicht verfügbar
-### Datensatz 9
-- Titel: Revealing some first times while others remain a secret 🔒
-
-#MotoGP #AiOgura
-- Datum: 2026-11-17T18:00:16.000Z
-- URL: https://www.instagram.com/p/Df2hnSKBhOP/
-- Likes: 6801
-- Kommentare: 40
-- Shares: nicht verfügbar
-### Datensatz 10
-- Titel: Tensions were running high between Marco Simoncelli and Jorge Lorenzo at the 2011 press conference 😅
+- Titel: @marcobez72 getting a front-row seat to @marcmarquez93 practice start 👀
 
 #PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-17T16:00:16.000Z
-- URL: https://www.instagram.com/p/Df2Tz61BdoJ/
-- Likes: 42271
-- Kommentare: 1308
+- Datum: 2026-11-20T12:30:04.000Z
+- URL: https://www.instagram.com/p/Df9qQ2zBS7B/
+- Likes: 42064
+- Kommentare: 401
+- Shares: nicht verfügbar
+### Datensatz 5
+- Titel: It’s not properly a #PortugueseGP until we see a Miller Airlines takeoff ✈️✈️✈️
+
+#MotoGP #JackMiller
+- Datum: 2026-11-20T12:05:42.000Z
+- URL: https://www.instagram.com/p/Df9nOegoMDP/
+- Likes: 11735
+- Kommentare: 90
+- Shares: nicht verfügbar
+### Datensatz 6
+- Titel: @89jorgemartin taking a moment to stretch out that shoulder 😯
+
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-20T11:47:32.000Z
+- URL: https://www.instagram.com/p/Df9lM-doykv/
+- Likes: 28906
+- Kommentare: 162
+- Shares: nicht verfügbar
+### Datensatz 7
+- Titel: Full commitment from the get-go to top FP1 🚀
+
+#PortugueseGP 🇵🇹 #MichelinMotoGP #MotoGP
+- Datum: 2026-11-20T11:36:21.000Z
+- URL: https://www.instagram.com/p/Df9jfqAoGsH/
+- Likes: 18519
+- Kommentare: 75
+- Shares: nicht verfügbar
+### Datensatz 8
+- Titel: It’s been a fast FP1 for @alexmarquez73 so far but not without discomfort 👀
+
+#PortugueseGP 🇵🇹 #MotoGP #AlexMarquez
+- Datum: 2026-11-20T11:17:03.000Z
+- URL: https://www.instagram.com/p/Df9hvEDI9vk/
+- Likes: 10810
+- Kommentare: 29
+- Shares: nicht verfügbar
+### Datensatz 9
+- Titel: Friday bad news: this beauty won’t hit the track until Sunday. Worth the wait, don’t you think? 👀
+
+#Gresini30Seasons
+- Datum: 2026-11-20T09:23:53.000Z
+- URL: https://www.instagram.com/p/Df9U3JNjEJC/
+- Likes: 39893
+- Kommentare: 384
+- Shares: nicht verfügbar
+### Datensatz 10
+- Titel: Did you know that #Moto2 bikes need to be built up every GP in just one day? 👀 These are all the steps the mechanics follow to fine-tune the bikes! 🔧👌
+
+#MotoGP @repsol.lubricants
+- Datum: 2026-11-20T07:00:05.000Z
+- URL: https://www.instagram.com/p/Df9EgUXB70y/
+- Likes: 14914
+- Kommentare: 88
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: Down before the lights went out, first across the line 😮‍💨🏆
+- Titel: The “27” is back on a Ducati Corse 🔴
 
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-18T13:00:26.000Z
+#PortugueseGP🇵🇹 #MotoGP #CaseyStoner #IkerLecuona
+- Datum: 2026-11-20T13:19:10.000Z
 - URL: nicht verfügbar
-- Likes: 398
-- Kommentare: 13
+- Likes: 305
+- Kommentare: 4
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: Still in it. Will the Aprilia duo shake up the championship fight in Portimao? ⚔️ 👑
+- Titel: We'll see plenty of the 93 after 2026 😎
 
-#MotoGP #JorgeMartin #MarcoBezzecchi
-- Datum: 2026-11-18T12:00:11.000Z
+#PortugueseGP 🇵🇹
+- Datum: 2026-11-20T13:00:04.000Z
 - URL: nicht verfügbar
-- Likes: 556
-- Kommentare: 107
+- Likes: 822
+- Kommentare: 23
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Jake Dixon will step in for Joan Mir at the #PortugueseGP 🇵🇹 
+- Titel: Davide Tardozzi fully confirms that Marc is not going anywhere after 2026 🐜
 
-#MotoGP #JakeDixon #JoanMir
-- Datum: 2026-11-18T11:01:25.000Z
+#PortugueseGP 🇵🇹
+- Datum: 2026-11-20T12:51:02.000Z
 - URL: nicht verfügbar
-- Likes: 1783
-- Kommentare: 87
+- Likes: 267
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: Yamaha confirms Toprak Razgatlıoglu will miss the #ValenciaTest in December as he continues his recovery ❤️‍🩹
+- Titel: Wheels 🆙 We’re SO back at the rollercoaster! 🎢 
 
-#MotoGP
-- Datum: 2026-11-18T09:50:17.000Z
+#PortugueseGP 🇵🇹 #MotoGP
+- Datum: 2026-11-20T12:42:35.000Z
 - URL: nicht verfügbar
-- Likes: 298
-- Kommentare: 24
+- Likes: 525
+- Kommentare: 8
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: Black Friday is coming! 📆⏳ Don’t buy anything…yet! 🔜 23-29 November 
-
-👉 https://motogp.io/BF26F
-
-#MotoGP
-- Datum: 2026-11-18T09:35:47.000Z
-- URL: nicht verfügbar
-- Likes: 218
-- Kommentare: 3
-- Shares: nicht verfügbar
-### Datensatz 6
-- Titel: Taking a debut #MotoGP podium in his second Grand Prix! ✅ @37pedroacosta was called the rookie sensation for a reason! 😎
-
-#PortugueseGP🇵🇹 #MotoGP #PedroAcosta
-- Datum: 2026-11-18T08:00:23.000Z
-- URL: nicht verfügbar
-- Likes: 2018
-- Kommentare: 22
-- Shares: nicht verfügbar
-### Datensatz 7
-- Titel: This is Ai Ogura. Some call him the Iceman, but he reckons he's just being himself. 🥶
-
-Meet the Japanese star, helmets off, as he opens up about his family, the feeling of winning and the responsibility of representing his country in #MotoGP 🌟🇯🇵
-
-#WiredDiffferent #AiOgura
-- Datum: 2026-11-18T05:00:25.000Z
-- URL: nicht verfügbar
-- Likes: 1062
-- Kommentare: 38
-- Shares: nicht verfügbar
-### Datensatz 8
-- Titel: Revealing some first times will others remain a secret 🔒
-
-#MotoGP #AiOgura
-- Datum: 2026-11-17T18:00:39.000Z
-- URL: nicht verfügbar
-- Likes: 592
-- Kommentare: 18
-- Shares: nicht verfügbar
-### Datensatz 9
-- Titel: Tensions were running high between Marco Simoncelli and Jorge Lorenzo at the 2011 press conference 😅
+- Titel: @marcobez72 getting a front-row seat to @marcmarquez93 practice start 👀
 
 #PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-17T16:00:28.000Z
+- Datum: 2026-11-20T12:30:22.000Z
 - URL: nicht verfügbar
-- Likes: 3422
-- Kommentare: 641
+- Likes: 6364
+- Kommentare: 186
+- Shares: nicht verfügbar
+### Datensatz 6
+- Titel: Aprilia are doing what they have to as they go 1-2 in FP1 🤝
+
+#PortugueseGP 🇵🇹
+- Datum: 2026-11-20T12:26:13.000Z
+- URL: nicht verfügbar
+- Likes: 221
+- Kommentare: 47
+- Shares: nicht verfügbar
+### Datensatz 7
+- Titel: It’s not properly a #PortugueseGP until we see a Miller Airlines takeoff ✈️✈️✈️
+
+#MotoGP #JackMiller
+- Datum: 2026-11-20T12:09:44.000Z
+- URL: nicht verfügbar
+- Likes: 2452
+- Kommentare: 21
+- Shares: nicht verfügbar
+### Datensatz 8
+- Titel: Morning from the rollercoaster! 🎢
+
+Join Inside the Paddock for a post FP1 analysis! 
+
+#PortugueseGP 🇵🇹
+- Datum: 2026-11-20T12:00:10.000Z
+- URL: nicht verfügbar
+- Likes: 688
+- Kommentare: 40
+- Shares: nicht verfügbar
+### Datensatz 9
+- Titel: Full commitment from the get-go by Bez to top FP1 🚀
+
+#PortugueseGP 🇵🇹
+- Datum: 2026-11-20T11:55:43.000Z
+- URL: nicht verfügbar
+- Likes: 680
+- Kommentare: 27
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Classic battles and unbelievable moments, the #PortugueseGP🇵🇹 has given us all!
+- Titel: The effects of @89jorgemartin’s injury still visible out on track 😬
 
-Take a look at some of those iconic bits in history ✨
-
-#MotoGP
-- Datum: 2026-11-17T15:00:41.000Z
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-20T11:47:54.000Z
 - URL: nicht verfügbar
-- Likes: 2027
-- Kommentare: 30
+- Likes: 2117
+- Kommentare: 64
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.

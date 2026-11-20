@@ -1,5 +1,5 @@
 # Inspiration-Ideen
-Stand: 2026-11-18 13:33
+Stand: 2026-11-20 13:42
 
 ## Datenstatus
 - Konkrete öffentliche Datensätze: 30
@@ -17,121 +17,121 @@ Gemini nicht verfügbar – Rohdaten der wichtigsten Beiträge folgen.
 ## Rohdaten
 ### Datensatz 1
 - Plattform: Apify
-- Titel: Tensions were running high between Marco Simoncelli and Jorge Lorenzo at the 2011 press conference 😅
-- Datum: 2026-11-17T16:00:16.000Z
-- URL: https://www.instagram.com/p/Df2Tz61BdoJ/
-- Engagement: 43579
+- Titel: @marcobez72 getting a front-row seat to @marcmarquez93 practice start 👀
+- Datum: 2026-11-20T12:30:04.000Z
+- URL: https://www.instagram.com/p/Df9qQ2zBS7B/
+- Engagement: 42465
 ### Datensatz 2
-- Plattform: YouTube Apify
-- Titel: VEDA EGA PRATAMA JADI MAGNET UANG MOTOGP! Moto3 Kini Lebih Ramai dari MotoGP?
-- Datum: 2026-11-18T05:02:31Z
-- URL: https://www.youtube.com/watch?v=SAEOOxkX02Q
-- Engagement: 28631
+- Plattform: Apify
+- Titel: Friday bad news: this beauty won’t hit the track until Sunday. Worth the wait, don’t you think? 👀
+- Datum: 2026-11-20T09:23:53.000Z
+- URL: https://www.instagram.com/p/Df9U3JNjEJC/
+- Engagement: 40277
 ### Datensatz 3
 - Plattform: Apify
-- Titel: Taking a debut #MotoGP podium in his second Grand Prix! ✅ @37pedroacosta was called the rookie sensation for a reason! 😎
-- Datum: 2026-11-18T08:00:10.000Z
-- URL: https://www.instagram.com/p/Df4Bvd5hjph/
-- Engagement: 26427
+- Titel: @89jorgemartin taking a moment to stretch out that shoulder 😯
+- Datum: 2026-11-20T11:47:32.000Z
+- URL: https://www.instagram.com/p/Df9lM-doykv/
+- Engagement: 29068
 ### Datensatz 4
 - Plattform: Apify
-- Titel: Still in it. Will the Aprilia duo shake up the championship fight in Portimao? ⚔️ 👑
-- Datum: 2026-11-18T12:00:02.000Z
-- URL: https://www.instagram.com/p/Df4dO6CCCnZ/
-- Engagement: 23011
+- Titel: Full commitment from the get-go to top FP1 🚀
+- Datum: 2026-11-20T11:36:21.000Z
+- URL: https://www.instagram.com/p/Df9jfqAoGsH/
+- Engagement: 18594
 ### Datensatz 5
-- Plattform: YouTube Apify
-- Titel: MotoGP Race Highlights #motogp #racing #motorcycle
-- Datum: 2026-11-18T01:08:26Z
-- URL: https://www.youtube.com/watch?v=Azx3Inpjnr8
-- Engagement: 21321
+- Plattform: Apify
+- Titel: Did you know that #Moto2 bikes need to be built up every GP in just one day? 👀 These are all the steps the mechanics follow to fine-tune the bikes! 🔧👌
+- Datum: 2026-11-20T07:00:05.000Z
+- URL: https://www.instagram.com/p/Df9EgUXB70y/
+- Engagement: 15002
 ### Datensatz 6
 - Plattform: Apify
-- Titel: @jakedixonracing will step in for @joanmir36official at the #PortugueseGP 🇵🇹
-- Datum: 2026-11-18T11:01:20.000Z
-- URL: https://www.instagram.com/p/Df4WNaioRVc/
-- Engagement: 13421
+- Titel: It’s not properly a #PortugueseGP until we see a Miller Airlines takeoff ✈️✈️✈️
+- Datum: 2026-11-20T12:05:42.000Z
+- URL: https://www.instagram.com/p/Df9nOegoMDP/
+- Engagement: 11825
 ### Datensatz 7
 - Plattform: Apify
-- Titel: "I'm not ice like everybody thinks" says the Iceman 😅🥶
-- Datum: 2026-11-18T05:00:06.000Z
-- URL: https://www.instagram.com/p/Df3tIbHh4Ou/
-- Engagement: 9385
+- Titel: We’ll see plenty of the 93 after 2026 😎
+- Datum: 2026-11-20T13:00:00.000Z
+- URL: https://www.instagram.com/p/Df9rGQgIWaP/
+- Engagement: 10912
 ### Datensatz 8
 - Plattform: Apify
-- Titel: It doesn't get any closer than this 🥵 @tonielias24 got his maiden #MotoGP win in one of the most dramatic races ever! 🏆
-- Datum: 2026-11-18T11:30:02.000Z
-- URL: https://www.instagram.com/p/Df4WVHoh11o/
-- Engagement: 9283
+- Titel: It’s been a fast FP1 for @alexmarquez73 so far but not without discomfort 👀
+- Datum: 2026-11-20T11:17:03.000Z
+- URL: https://www.instagram.com/p/Df9hvEDI9vk/
+- Engagement: 10839
 ### Datensatz 9
 - Plattform: Apify
-- Titel: Revealing some first times while others remain a secret 🔒
-- Datum: 2026-11-17T18:00:16.000Z
-- URL: https://www.instagram.com/p/Df2hnSKBhOP/
-- Engagement: 6841
+- Titel: Wheels 🆙 We’re SO back at the rollercoaster! 🎢
+- Datum: 2026-11-20T12:42:12.000Z
+- URL: https://www.instagram.com/p/Df9rjw_iE-d/
+- Engagement: 7069
 ### Datensatz 10
-- Plattform: Apify
-- Titel: Different designs, same @akrapovic world-class performance 💯
-- Datum: 2026-11-18T10:00:00.000Z
-- URL: https://www.instagram.com/p/Df4PNpCIIpp/
-- Engagement: 5832
+- Plattform: YouTube Apify
+- Titel: MotoGp Fp1 Highlights | 2026 Portuguese Grand Prix | MotoGp Highlights
+- Datum: 2026-11-20T11:13:37Z
+- URL: https://www.youtube.com/watch?v=zX_EIuRtzRQ
+- Engagement: 5212
 ### Datensatz 11
 - Plattform: Apify
-- Titel: Down before the lights went out, first across the line 😮‍💨🏆
-- Datum: 2026-11-18T13:00:13.000Z
-- URL: https://www.instagram.com/p/Df4kD4DhkGx/
-- Engagement: 4992
+- Titel: The “27” is back on a @ducaticorse 🔴
+- Datum: 2026-11-20T13:19:05.000Z
+- URL: https://www.instagram.com/p/Df9veG8IvTO/
+- Engagement: 2884
 ### Datensatz 12
 - Plattform: YouTube Apify
-- Titel: VEDA EGA SIAP LIBAS SIRKUIT MENANTANG PORTUGAL #motogp #shorts #treding #viral
-- Datum: 2026-11-18T01:32:53Z
-- URL: https://www.youtube.com/watch?v=9JHKhR1IjR8
-- Engagement: 4774
+- Titel: MotoGp Fp1 Full Highlights | 2026 Portuguese Grand Prix | MotoGp Highlights
+- Datum: 2026-11-20T11:54:21Z
+- URL: https://www.youtube.com/watch?v=nQT_Re434oE
+- Engagement: 2167
 ### Datensatz 13
-- Plattform: Apify
-- Titel: Black Friday is coming! 📆⏳ Don’t buy anything…yet! 🔜 23-29 November
-- Datum: 2026-11-18T09:35:30.000Z
-- URL: https://www.instagram.com/p/Df4L8ilIAta/
-- Engagement: 2905
+- Plattform: YouTube Apify
+- Titel: Bicycle Highlights#automobile #racing #motorcycle #motogp
+- Datum: 2026-11-20T10:22:26Z
+- URL: https://www.youtube.com/watch?v=Hc_auLY6PfQ
+- Engagement: 1261
 ### Datensatz 14
 - Plattform: YouTube Apify
-- Titel: HONDA PUSAT SIAP TURUN TANGAN DEMI VEDA EGA ‼️#motogp #shorts #trending
-- Datum: 2026-11-18T10:14:40Z
-- URL: https://www.youtube.com/watch?v=BGvNvz4o9go
-- Engagement: 2006
+- Titel: motoGp😱🔥 #fyp #viral #highlights #motovlog
+- Datum: 2026-11-20T10:40:17Z
+- URL: https://www.youtube.com/watch?v=1T5-3Uyp0Cs
+- Engagement: 1084
 ### Datensatz 15
 - Plattform: YouTube Apify
-- Titel: 1st Place BATTLE 🔥 CARPE vs VEDA | Moto3 Moment
-- Datum: 2026-11-18T04:20:02Z
-- URL: https://www.youtube.com/watch?v=lie0LVkwTJY
-- Engagement: 1582
+- Titel: Moto3 Fp1 Full Highlights | 2026 Portuguese Grand Prix | MotoGp Highlights 2026
+- Datum: 2026-11-20T09:42:57Z
+- URL: https://www.youtube.com/watch?v=m3eY1BdOfkY
+- Engagement: 614
 ### Datensatz 16
 - Plattform: YouTube Apify
-- Titel: MotoGP Race Highlights #motogp #racing #motorcycle
-- Datum: 2026-11-18T00:56:18Z
-- URL: https://www.youtube.com/watch?v=C5ecdxDpnZg
-- Engagement: 1375
+- Titel: MotoGP Best Moments 🏁🔥 | Incredible Racing Skills & Victory Celebrations!#Shorts #Motorsport #Racing
+- Datum: 2026-11-20T10:22:31Z
+- URL: https://www.youtube.com/watch?v=1W6m3ai5ySo
+- Engagement: 411
 ### Datensatz 17
 - Plattform: YouTube Apify
-- Titel: MARC MARQUEZ JUGA MILIKI SIFAT BURUK❗️DIA SENGAJA NABRAK ROSSI❗️#valentinorossi #highlights #motogp
-- Datum: 2026-11-18T12:22:59Z
-- URL: https://www.youtube.com/watch?v=27_kq5kqyWY
-- Engagement: 984
+- Titel: Moto2 Fp1 Full Highlights | 2026 Portuguese Grand Prix | MotoGp Highlights
+- Datum: 2026-11-20T10:38:20Z
+- URL: https://www.youtube.com/watch?v=P6Vy__ZA3wI
+- Engagement: 235
 ### Datensatz 18
 - Plattform: YouTube Apify
-- Titel: 2026 SEASON REVIEW: The season that changed the record books 💥 | 2025 #WorldSBK
-- Datum: 2026-11-18T10:28:19Z
-- URL: https://www.youtube.com/watch?v=YkVyfCNJBrE
-- Engagement: 559
+- Titel: Marc Marquez's INSANE Comeback Story in MotoGP 2026!
+- Datum: 2026-11-20T10:00:35Z
+- URL: https://www.youtube.com/watch?v=6nAcocODVOs
+- Engagement: 139
 ### Datensatz 19
 - Plattform: YouTube Apify
-- Titel: Marc Marquez vs Bezzecchi was PERSONAL 😱 #MotoGP #Shorts
-- Datum: 2026-11-18T04:09:21Z
-- URL: https://www.youtube.com/watch?v=rTDejw1q5YI
-- Engagement: 30
+- Titel: 2026 MotoGP
+- Datum: 2026-11-20T07:27:37Z
+- URL: https://www.youtube.com/watch?v=bdEAxO6lxjE
+- Engagement: 5
 ### Datensatz 20
 - Plattform: YouTube Apify
-- Titel: DEKENGAN PUSAT‼️Bos Besar Honda Turun Tangan Bantu VEDA EGA #veda #motogp #news
-- Datum: 2026-11-18T11:45:31Z
-- URL: https://www.youtube.com/watch?v=0hAsgXfE7XY
-- Engagement: 6
+- Titel: 🏍️ 2026 Motogp Portuguese GP FP1 Results - Free Practice | 2026 Portuguese GP | Portimão
+- Datum: 2026-11-20T11:55:53Z
+- URL: https://www.youtube.com/watch?v=ispj93FGgqI
+- Engagement: 3
