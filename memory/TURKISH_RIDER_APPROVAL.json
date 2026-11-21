@@ -1,9 +1,22 @@
 {
   "version": 1,
-  "created_at": 1795190283,
+  "created_at": 1795273728,
   "max_days": 7,
   "window_used_days": 7,
-  "count": 0,
-  "visible_count": 0,
-  "items": []
+  "count": 1,
+  "visible_count": 1,
+  "items": [
+    {
+      "n": 1,
+      "title": "Portimão’da cuma: Alex Márquez dönüşünde lider, Martín sınırda | Motoron Dergisi",
+      "url": "https://www.motoron.com.tr/motosiklet-haber/portimao-cuma-alex-marquez-donusunde-lider-martin-sinirda",
+      "summary": "Portekiz GP cuma antrenmanında dönüş yapan Alex Márquez lider. Marc Márquez 6., Martín Q2’ye son sıradan girdi; Deniz Öncü Moto2’de 16.",
+      "preview": "https://www.motoron.com.tr/wp-content/uploads/2026/11/alex-marquez-portimao-2026-cuma-antrenman.jpg",
+      "published_at": "2026-11-21T06:45:08+00:00",
+      "series": "Moto2",
+      "source_series": "Moto2",
+      "turkish_rider": "Deniz Öncü",
+      "kind": "news"
+    }
+  ]
 }

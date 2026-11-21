@@ -1989,3 +1989,33 @@ Quelle: https://www.motogp.com/en/news/2026/11/20/bezzecchi-and-martin-hand-apri
 Story-Key: title:motogp-portimao-fp1-aprilia-g-l-ba-lad-marquez-d-rd-nc-s-rada
 Titel: MotoGP Portimao FP1: Aprilia Güçlü Başladı, Marquez Dördüncü Sırada!
 Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada
+
+## 2026-11-21 15:08 UTC – ANGEBOTEN
+Story-Key: title:portim-o-da-cuma-alex-m-rquez-d-n-nde-lider-mart-n-s-n-rda-motoron-dergisi
+Titel: Portimão’da cuma: Alex Márquez dönüşünde lider, Martín sınırda | Motoron Dergisi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/portimao-cuma-alex-marquez-donusunde-lider-martin-sinirda
+
+## 2026-11-21 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:10876545
+Titel: Moto2 Portekiz sıralama: Senna Agius pole'de, Deniz Öncü 21. sırada
+Quelle: https://tr.motorsport.com/moto2/news/moto2-portekiz-siralama-senna-agius-polede-deniz-oncu-21-sirada/10876545
+
+## 2026-11-21 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:1186064
+Titel: Alex Marquez shines to top Practice on return, Martin scrapes into Q2
+Quelle: https://www.motogp.com/en/news/2026/11/20/alex-marquez-shines-to-top-practice-on-return-martin-scrapes-into-q2/1186064
+
+## 2026-11-21 15:08 UTC – ANGEBOTEN
+Story-Key: title:motogp-portekiz-sprint-sonu-lar-m-rquez-d-t-bezzecchi-kazand-motoron
+Titel: MotoGP Portekiz Sprint sonuçları: Márquez düştü, Bezzecchi kazandı | Motoron
+Quelle: https://www.motoron.com.tr/motosiklet-haber/portimao-sprint-marquez-dustu-bezzecchi-kazandi
+
+## 2026-11-21 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:126047
+Titel: Alex Marquez zirvedeki zamanı “gerçekçi değil” buldu: “Yarış temposunda çok zorlandık” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquez-zirvedeki-zamani-gercekci-degil-buldu-yaris-temposunda-cok-zorlandik/126047
+
+## 2026-11-21 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:126041
+Titel: Marc Marquez Portimao’da riskten endişeli: “Hızdan ya da sonuçtan değil, riskten korkuyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-portimaoda-riskten-endiseli-hizdan-ya-da-sonuctan-degil-riskten-korkuyorum/126041

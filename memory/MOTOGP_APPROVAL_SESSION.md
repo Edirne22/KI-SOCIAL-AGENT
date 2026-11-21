@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1795190283
+Session-Timestamp: 1795273728
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,27 +15,25 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.4
+Artikelalter-Tage: 0.0
 Kategorie: Turkish Riders
-Serie: MotoGP
-Story-Key: title:yamaha-n-n-1000cc-v4-projesinde-yolun-sonu-toprak-razgatl-o-lu-ndan-da-k-t-haber
-Titel: Yamaha'nın 1000cc V4 projesinde yolun sonu! Toprak Razgatlıoğlu'ndan da kötü haber
-Quelle: https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-pramac-portekiz-gp-oncesi-zorluklari-kabul-etti
+Serie: Moto2
+Story-Key: motogp:10876545
+Titel: Moto2 Portekiz sıralama: Senna Agius pole'de, Deniz Öncü 21. sırada
+Quelle: https://tr.motorsport.com/moto2/news/moto2-portekiz-siralama-senna-agius-polede-deniz-oncu-21-sirada/10876545
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-1-yamaha-nin-1000cc-v4-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/11/yamaha-1000cc-v4-pramac-motogp-portekiz-gp-2026.webp
+Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-1-moto2-portekiz-siral-01.jpg
+Quellen-Preview: https://cdn-1.motorsport.com/images/amp/0rVxqjO0/s6/senna-agius-tailandia.jpg
 Plattformen: Instagram + Facebook
 Text:
-Die gute Nachricht gibt's erst mal nicht – Pramac Yamaha hat bestätigt, dass das 1000cc-V4-Projekt damit sein Ende findet. Die Sache ist einfach: während die Konkurrenz mit der Vierteiler-Technologie weiterzieht, hat Yamaha beschlossen, die Entwicklung zu stoppen und setzt auf einen anderen Weg.
+Senna Agius hat sich im Moto2-Qualifying zum Grand Prix von Portugal die Pole-Position gesichert. Bei den türkischen Fahrern landete Deniz Öncü auf Platz 21.
 
-Zur gleichen Zeit läuft bei den Fahrern einiges ab: Jack Miller bereitet sich auf seine letzten Rennen vor, und Toprak Razgatlıoğlu hat die Saison bereits abgeschlossen.
+Wie seht ihr die Chancen für das Rennen am Sonntag?
 
-Wie seht ihr Yamahas Entscheidung – richtig oder verpasste Chance?
-
-#MotoGP #ToprakRazgatlioglu #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -46,22 +44,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 1.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:125980
-Titel: Portekiz GP 1. antrenman: Bezzecchi lider, Aprilia 1-2 - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/portekiz-gp-1-antrenman-bezzecchi-lider-aprilia-1-2/125980
+Story-Key: motogp:1186064
+Titel: Alex Marquez shines to top Practice on return, Martin scrapes into Q2
+Quelle: https://www.motogp.com/en/news/2026/11/20/alex-marquez-shines-to-top-practice-on-return-martin-scrapes-into-q2/1186064
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-2-portekiz-gp-1-antren-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1363016_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-2-alex-marquez-shines-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/20/533240e2-8e98-4acf-8cff-a44ea1eedc5b/Report-MGP-PR-PT.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Marco Bezzecchi steht nach dem ersten Training in Portimao ganz oben – und hat Aprilia damit auf die ersten beiden Plätze geschoben. Das ist für das italienische Team der Schlüssel, um Marc Marquez den achten WM-Titel zu verwehren. Der Ducati-Pilot kommt mit 60 Punkten Vorsprung auf Jorge Martin ins Saisonendspurt. In diesem Sprint könnte er sich den Titel schon am Samstag sichern, muss Martin aber mindestens zwei Punkte vorgehen.
+Der #73 ist zurück und zeigt sofort Spitze.
 
-Wer hat euren_tipf_fuer_die_Titelentscheidung?
+Alex Marquez hat nach seiner Verletzungspause beim ersten Training die Bestzeit gemacht. Bei Jorge Martin sah es im qualifying erst knapp aus, aber er hat es gerade noch ins Q2 geschafft.
 
-#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+Wie findet ihr das Comeback von Marquez?
+
+#MotoGP #AlexMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -72,26 +72,24 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 1.0
+Artikelalter-Tage: 0.0
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:125838
-Titel: Di Giannantonio, Marquez’e Katar’daki eleştirisini açıkladı: “Kimseyi suçlamıyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-marqueze-katardaki-elestirisini-acikladi-kimseyi-suclamiyorum/125838
+Story-Key: title:motogp-portekiz-sprint-sonu-lar-m-rquez-d-t-bezzecchi-kazand-motoron
+Titel: MotoGP Portekiz Sprint sonuçları: Márquez düştü, Bezzecchi kazandı | Motoron
+Quelle: https://www.motoron.com.tr/motosiklet-haber/portimao-sprint-marquez-dustu-bezzecchi-kazandi
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-3-di-giannantonio-marq-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1362830_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-3-motogp-portekiz-spri-01.jpg
+Quellen-Preview: https://www.motoron.com.tr/wp-content/uploads/2026/11/bezzecchi-portimao-sprint-2026.jpg
 Plattformen: Instagram + Facebook
 Text:
-Fabio Di Giannantonio hat nach dem Sprint-Rennen in Katar zum ersten Mal erklärt, was hinter seinem Kritikclip zu Marc Marquez stand.
+Márquez şampiyonluğa iki tur kala düştü
 
-Beim Duell um die Führung in den ersten Runden gingen Marquez und Marco Bezzecchi an der 1. Kurve hart nebeneinander durch.
+Bezzecchi hat den Sprint in Portimao gewonnen – und Márquez ist mit zwei Runden zu Ende noch gestürzt. Das treibt die Titelkampf-Dynamik weiter voran. Martín landete auf Platz fünf, der Rückstand im WM-Klassement liegt jetzt bei 55 Punkten.
 
-Die FIM-Sportkommissare haben die Kollision als normalen Rennunfall abgehakt.
+Wie schätzt ihr die Situation für Márquez mit nur noch wenigen Rennen zu gehen ein?
 
-Wie seht ihr das – war das sauber durchgebrochen oder zu dicht?
-
-#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -102,26 +100,26 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.7
+Artikelalter-Tage: 0.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1234388
-Titel: Bezzecchi and Martin hand Aprilia 1-2 in FP1, Marc Marquez fourth fastest
-Quelle: https://www.motogp.com/en/news/2026/11/20/bezzecchi-and-martin-hand-aprilia-1-2-in-fp1-marc-marquez-fourth-fastest/1234388
+Story-Key: motogp:126047
+Titel: Alex Marquez zirvedeki zamanı “gerçekçi değil” buldu: “Yarış temposunda çok zorlandık” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquez-zirvedeki-zamani-gercekci-degil-buldu-yaris-temposunda-cok-zorlandik/126047
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-4-bezzecchi-and-martin-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/20/4612e12a-bee6-442d-9b51-3a6f5443943d/Report-MGP-FP1-PT.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-4-alex-marquez-zirvede-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1363073_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Aprilias Bezzecchi und Martin legen mit einem 1-2 bei FP1 in Portugal vor.
+Alex Marquez stand nach seiner zweiten Operation dieses Jahres – wegen Schulter und Hand aus Katalonien – zum ersten Mal wieder auf dem Motorrad in Portimão.
 
-Marc Marquez landet als Vierter direkt dahinter.
+Morgens war er zwei Mal schnellerster Pilot, am Nachmittag schob er seine Bestzeit erst in den letzten Minuten raus.
 
-Die Marquez-Brüder sind das naheste Feld hinter den Aprilias.
+Trotz der Top-Zeiten merkte er deutlich, dass das Renn Tempo noch nicht da ist.
 
-Wie schätzt ihr die Aufstellung für das Wochenende ein?
+Wie schätzt ihr seine Rückkehr ein – kann er mit den Verletzungen schon voll durchziehen?
 
-#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -129,29 +127,31 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 2
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.1
+Artikelalter-Tage: 0.8
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: title:motogp-portimao-fp1-aprilia-g-l-ba-lad-marquez-d-rd-nc-s-rada
-Titel: MotoGP Portimao FP1: Aprilia Güçlü Başladı, Marquez Dördüncü Sırada!
-Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada
+Story-Key: motogp:126041
+Titel: Marc Marquez Portimao’da riskten endişeli: “Hızdan ya da sonuçtan değil, riskten korkuyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-portimaoda-riskten-endiseli-hizdan-ya-da-sonuctan-degil-riskten-korkuyorum/126041
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-5-motogp-portimao-fp1-01.jpg
-Quellen-Preview: https://motoetkinlik.com/wp-content/uploads/2026/08/marco-bezzecchi-silverstone-motogp-2026.webp
+Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-5-marc-marquez-portima-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1363246_hires.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marco Bezzecchi hat das FP1 am Circuit de Portimao mit 1:39.002 Minuten angeführt.
+Marc Marquez steht kurz davor, seinen achten MotoGP-WM-Titel zu holen – nur ein einziger Sprint-Sieg über Jorge Martin reicht noch.
 
-Aprilia belegte die ersten zwei Plätze – Jorge Martín folgte auf Rang zwei.
+Dennoch macht er keine Hehl daraus: Ihm ist bewusst, wie sehr sein Schicksal von einer einzigen Runde abhängt.
 
-Marc Márquez landete bei diesem Trainingstraining auf Platz vier.
+In den freien Übungen am Freitag pendelte er sich nur auf Rang sechs ein – nichts deutet darauf hin, dass bei Ducati alles reibungslos läuft.
 
-Wie seht ihr den Start der Portugiesen-Runde?
+Genauso wenig gibt es Anzeichen dafür, dass Marquez die Situation völlig entspannt sieht.
 
-#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr die Lage bei Marc?
+
+#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

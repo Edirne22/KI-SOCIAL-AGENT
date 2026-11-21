@@ -4614,3 +4614,33 @@ Story-Key: title:motogp-portimao-fp1-aprilia-g-l-ba-lad-marquez-d-rd-nc-s-rada
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-21 15:34 UTC | Motorcycle Racing | PASS
+Titel: Moto2 Portekiz sıralama: Senna Agius pole'de, Deniz Öncü 21. sırada
+Story-Key: motogp:10876545
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-21 15:34 UTC | Motorcycle Racing | PASS
+Titel: Alex Marquez shines to top Practice on return, Martin scrapes into Q2
+Story-Key: motogp:1186064
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-21 15:34 UTC | Motorcycle Racing | PASS
+Titel: MotoGP Portekiz Sprint sonuçları: Márquez düştü, Bezzecchi kazandı | Motoron
+Story-Key: title:motogp-portekiz-sprint-sonu-lar-m-rquez-d-t-bezzecchi-kazand-motoron
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-21 15:34 UTC | Motorcycle Racing | PASS
+Titel: Alex Marquez zirvedeki zamanı “gerçekçi değil” buldu: “Yarış temposunda çok zorlandık” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:126047
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-21 15:34 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez Portimao’da riskten endişeli: “Hızdan ya da sonuçtan değil, riskten korkuyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:126041
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
