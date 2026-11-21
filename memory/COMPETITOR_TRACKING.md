@@ -1,6 +1,6 @@
 # Wettbewerber-Tracking
 
-Stand: 2026-11-20 22:51
+Stand: 2026-11-21 21:57
 
 ## Öffentliche Beobachtung
 - Es liegen öffentliche Recherche-Reports vor. Ausgewertet werden nur wiederkehrende Themen, Video-Formate und Interaktionsmuster.
