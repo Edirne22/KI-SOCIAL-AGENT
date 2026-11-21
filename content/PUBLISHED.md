@@ -2179,3 +2179,199 @@ Was erwartet ihr von Dixon im Sattel des Pata Yamaha?
 Quelle: https://www.motogp.com/en/news/2026/11/18/dixon-replaces-mir-at-the-portuguese-gp/1185683
 Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-5-dixon-replaces-mir-a-01.jpg
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-20-daily
+Telegram-Update-ID: 279362071
+MotoGP-Auswahl: 1
+Story-Key: title:yamaha-n-n-1000cc-v4-projesinde-yolun-sonu-toprak-razgatl-o-lu-ndan-da-k-t-haber
+Event-Fingerprint: -
+Titel: Yamaha'nın 1000cc V4 projesinde yolun sonu! Toprak Razgatlıoğlu'ndan da kötü haber
+Text:
+Die gute Nachricht gibt's erst mal nicht – Pramac Yamaha hat bestätigt, dass das 1000cc-V4-Projekt damit sein Ende findet. Die Sache ist einfach: während die Konkurrenz mit der Vierteiler-Technologie weiterzieht, hat Yamaha beschlossen, die Entwicklung zu stoppen und setzt auf einen anderen Weg.
+
+Zur gleichen Zeit läuft bei den Fahrern einiges ab: Jack Miller bereitet sich auf seine letzten Rennen vor, und Toprak Razgatlıoğlu hat die Saison bereits abgeschlossen.
+
+Wie seht ihr Yamahas Entscheidung – richtig oder verpasste Chance?
+
+#MotoGP #ToprakRazgatlioglu #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-pramac-portekiz-gp-oncesi-zorluklari-kabul-etti
+Quelle: https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-pramac-portekiz-gp-oncesi-zorluklari-kabul-etti
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-1-yamaha-nin-1000cc-v4-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-20-daily
+Telegram-Update-ID: 279362071
+MotoGP-Auswahl: 1
+Story-Key: title:yamaha-n-n-1000cc-v4-projesinde-yolun-sonu-toprak-razgatl-o-lu-ndan-da-k-t-haber
+Event-Fingerprint: -
+Titel: Yamaha'nın 1000cc V4 projesinde yolun sonu! Toprak Razgatlıoğlu'ndan da kötü haber
+Text:
+Die gute Nachricht gibt's erst mal nicht – Pramac Yamaha hat bestätigt, dass das 1000cc-V4-Projekt damit sein Ende findet. Die Sache ist einfach: während die Konkurrenz mit der Vierteiler-Technologie weiterzieht, hat Yamaha beschlossen, die Entwicklung zu stoppen und setzt auf einen anderen Weg.
+
+Zur gleichen Zeit läuft bei den Fahrern einiges ab: Jack Miller bereitet sich auf seine letzten Rennen vor, und Toprak Razgatlıoğlu hat die Saison bereits abgeschlossen.
+
+Wie seht ihr Yamahas Entscheidung – richtig oder verpasste Chance?
+
+#MotoGP #ToprakRazgatlioglu #JackMiller #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-pramac-portekiz-gp-oncesi-zorluklari-kabul-etti
+Quelle: https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-pramac-portekiz-gp-oncesi-zorluklari-kabul-etti
+Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-1-yamaha-nin-1000cc-v4-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-20-daily
+Telegram-Update-ID: 279362071
+MotoGP-Auswahl: 3
+Story-Key: motogp:125838
+Event-Fingerprint: MotoGP|sprint|bezzecchi,giannantonio,marquez|
+Titel: Di Giannantonio, Marquez’e Katar’daki eleştirisini açıkladı: “Kimseyi suçlamıyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Fabio Di Giannantonio hat nach dem Sprint-Rennen in Katar zum ersten Mal erklärt, was hinter seinem Kritikclip zu Marc Marquez stand.
+
+Beim Duell um die Führung in den ersten Runden gingen Marquez und Marco Bezzecchi an der 1. Kurve hart nebeneinander durch.
+
+Die FIM-Sportkommissare haben die Kollision als normalen Rennunfall abgehakt.
+
+Wie seht ihr das – war das sauber durchgebrochen oder zu dicht?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-marqueze-katardaki-elestirisini-acikladi-kimseyi-suclamiyorum/125838
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-marqueze-katardaki-elestirisini-acikladi-kimseyi-suclamiyorum/125838
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-3-di-giannantonio-marq-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-20-daily
+Telegram-Update-ID: 279362071
+MotoGP-Auswahl: 3
+Story-Key: motogp:125838
+Event-Fingerprint: MotoGP|sprint|bezzecchi,giannantonio,marquez|
+Titel: Di Giannantonio, Marquez’e Katar’daki eleştirisini açıkladı: “Kimseyi suçlamıyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Fabio Di Giannantonio hat nach dem Sprint-Rennen in Katar zum ersten Mal erklärt, was hinter seinem Kritikclip zu Marc Marquez stand.
+
+Beim Duell um die Führung in den ersten Runden gingen Marquez und Marco Bezzecchi an der 1. Kurve hart nebeneinander durch.
+
+Die FIM-Sportkommissare haben die Kollision als normalen Rennunfall abgehakt.
+
+Wie seht ihr das – war das sauber durchgebrochen oder zu dicht?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-marqueze-katardaki-elestirisini-acikladi-kimseyi-suclamiyorum/125838
+Quelle: https://trf1.net/motor-sporlari/motogp/di-giannantonio-marqueze-katardaki-elestirisini-acikladi-kimseyi-suclamiyorum/125838
+Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-3-di-giannantonio-marq-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-20-daily
+Telegram-Update-ID: 279362071
+MotoGP-Auswahl: 4
+Story-Key: motogp:1234388
+Event-Fingerprint: MotoGP|fp1|bezzecchi,marquez,martin|
+Titel: Bezzecchi and Martin hand Aprilia 1-2 in FP1, Marc Marquez fourth fastest
+Text:
+Aprilias Bezzecchi und Martin legen mit einem 1-2 bei FP1 in Portugal vor.
+
+Marc Marquez landet als Vierter direkt dahinter.
+
+Die Marquez-Brüder sind das naheste Feld hinter den Aprilias.
+
+Wie schätzt ihr die Aufstellung für das Wochenende ein?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/20/bezzecchi-and-martin-hand-aprilia-1-2-in-fp1-marc-marquez-fourth-fastest/1234388
+Quelle: https://www.motogp.com/en/news/2026/11/20/bezzecchi-and-martin-hand-aprilia-1-2-in-fp1-marc-marquez-fourth-fastest/1234388
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-4-bezzecchi-and-martin-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-20-daily
+Telegram-Update-ID: 279362071
+MotoGP-Auswahl: 4
+Story-Key: motogp:1234388
+Event-Fingerprint: MotoGP|fp1|bezzecchi,marquez,martin|
+Titel: Bezzecchi and Martin hand Aprilia 1-2 in FP1, Marc Marquez fourth fastest
+Text:
+Aprilias Bezzecchi und Martin legen mit einem 1-2 bei FP1 in Portugal vor.
+
+Marc Marquez landet als Vierter direkt dahinter.
+
+Die Marquez-Brüder sind das naheste Feld hinter den Aprilias.
+
+Wie schätzt ihr die Aufstellung für das Wochenende ein?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/20/bezzecchi-and-martin-hand-aprilia-1-2-in-fp1-marc-marquez-fourth-fastest/1234388
+Quelle: https://www.motogp.com/en/news/2026/11/20/bezzecchi-and-martin-hand-aprilia-1-2-in-fp1-marc-marquez-fourth-fastest/1234388
+Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-4-bezzecchi-and-martin-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-20-daily
+Telegram-Update-ID: 279362071
+MotoGP-Auswahl: 5
+Story-Key: title:motogp-portimao-fp1-aprilia-g-l-ba-lad-marquez-d-rd-nc-s-rada
+Event-Fingerprint: MotoGP|fp1|bezzecchi|
+Titel: MotoGP Portimao FP1: Aprilia Güçlü Başladı, Marquez Dördüncü Sırada!
+Text:
+Marco Bezzecchi hat das FP1 am Circuit de Portimao mit 1:39.002 Minuten angeführt.
+
+Aprilia belegte die ersten zwei Plätze – Jorge Martín folgte auf Rang zwei.
+
+Marc Márquez landete bei diesem Trainingstraining auf Platz vier.
+
+Wie seht ihr den Start der Portugiesen-Runde?
+
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada
+Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-5-motogp-portimao-fp1-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-20-daily
+Telegram-Update-ID: 279362071
+MotoGP-Auswahl: 5
+Story-Key: title:motogp-portimao-fp1-aprilia-g-l-ba-lad-marquez-d-rd-nc-s-rada
+Event-Fingerprint: MotoGP|fp1|bezzecchi|
+Titel: MotoGP Portimao FP1: Aprilia Güçlü Başladı, Marquez Dördüncü Sırada!
+Text:
+Marco Bezzecchi hat das FP1 am Circuit de Portimao mit 1:39.002 Minuten angeführt.
+
+Aprilia belegte die ersten zwei Plätze – Jorge Martín folgte auf Rang zwei.
+
+Marc Márquez landete bei diesem Trainingstraining auf Platz vier.
+
+Wie seht ihr den Start der Portugiesen-Runde?
+
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada
+Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada
+Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-5-motogp-portimao-fp1-01.jpg
+Link-Preview: offiziell
