@@ -974,32 +974,6 @@ Quelle: https://www.motogp.com/en/news/2026/11/08/bezzecchi-bounces-back-with-qa
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-1-bezzecchi-bounces-ba-01.jpg
 
-## Facebook [GEPOSTET 2026-11-13 13:57 | ID: 122134241643469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-11-daily
-Telegram-Update-ID: 279362034
-MotoGP-Auswahl: 1
-Story-Key: motogp:1184256
-Event-Fingerprint: -
-Titel: Bezzecchi bounces back with Qatar victory as Marquez extends championship lead
-Text:
-Marco Bezzecchi gewinnt das MotoGP-Rennen in Qatar und hält damit seinen Titelkampf am Leben.
-
-Der Fahrer mit der Startnummer 93 wird Zweiter vor Raul Fernandez.
-
-Jorge Martin rettet sich in das Ziel auf Rang sieben.
-
-Wie schätzt ihr die Situation im Titelkampf jetzt ein?
-
-#MotoGP #MarcoBezzecchi #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://www.motogp.com/en/news/2026/11/08/bezzecchi-bounces-back-with-qatar-victory-as-marquez-extends-championship-lead/1184256
-Quelle: https://www.motogp.com/en/news/2026/11/08/bezzecchi-bounces-back-with-qatar-victory-as-marquez-extends-championship-lead/1184256
-Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-1-bezzecchi-bounces-ba-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-1-bezzecchi-bounces-ba-01.jpg", "media_status": "", "object_id": "122134241643469415", "object_type": "bild", "platform": "facebook", "post_id": "122134241643469415", "source_url": "https://www.motogp.com/en/news/2026/11/08/bezzecchi-bounces-back-with-qatar-victory-as-marquez-extends-championship-lead/1184256", "version": 1}
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -1023,30 +997,6 @@ Quelle: https://tr.motorsport.com/motogp/news/ducati-bagnaianin-guncel-saglik-du
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-2-ducati-bagnaianin-gu-01.jpg
 
-## Facebook [GEPOSTET 2026-11-13 20:47 | ID: 122134330005469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-11-daily
-Telegram-Update-ID: 279362034
-MotoGP-Auswahl: 2
-Story-Key: motogp:10873766
-Event-Fingerprint: MotoGP|sprint|bagnaia|
-Titel: Ducati, Bagnaia’nın güncel sağlık durumunu açıkladı: Ameliyat tamamlandı
-Text:
-Ducati teilt mit, dass die OP erfolgreich war.
-
-Pecco Bagnaia hat nach dem harten Sturz beim Sprint in Katar Brüche im rechten Fuß erlitten und musste operiert werden. Ducati hat bestätigt: Die OP ist jetzt überstanden und verlief erfolgreich. Wann Pecco wieder am Start stehen kann, steht noch nicht fest.
-
-Wie schätzt ihr seine Rückkehr ein?
-
-#MotoGP #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://tr.motorsport.com/motogp/news/ducati-bagnaianin-guncel-saglik-durumunu-acikladi/10873766
-Quelle: https://tr.motorsport.com/motogp/news/ducati-bagnaianin-guncel-saglik-durumunu-acikladi/10873766
-Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-2-ducati-bagnaianin-gu-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-2-ducati-bagnaianin-gu-01.jpg", "media_status": "", "object_id": "122134330005469415", "object_type": "bild", "platform": "facebook", "post_id": "122134330005469415", "source_url": "https://tr.motorsport.com/motogp/news/ducati-bagnaianin-guncel-saglik-durumunu-acikladi/10873766", "version": 1}
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -1067,28 +1017,6 @@ Wie schätzt ihr das ein?
 Quelle: https://trf1.net/motor-sporlari/motogp/lorenzo-marquez-sampiyon-olursa-rossi-en-buyuk-kim-tartismasinin-disinda-kalir/125079
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-3-lorenzo-marquez-samp-01.jpg
-
-## Facebook [GEPOSTET 2026-11-14 01:17 | ID: 122134370997469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-11-daily
-Telegram-Update-ID: 279362034
-MotoGP-Auswahl: 3
-Story-Key: motogp:125079
-Event-Fingerprint: MotoGP|sprint|marquez|
-Titel: Lorenzo: Marquez şampiyon olursa Rossi, “en büyük kim” tartışmasının dışında kalır - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Text:
-Marc Marquez kann seinen achten MotoGP-Titel bereits beim Sprint in Portugal holen – er hat nach dem Double aus Katar sechs Dinger Vorsprung. Doch Jorge Lorenzo meckert gleich mit: Sollte Rossi nicht mehr mitreden, sei Marquez aus der GOAT-Diskussion raus.
-
-Wie schätzt ihr das ein?
-
-#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://trf1.net/motor-sporlari/motogp/lorenzo-marquez-sampiyon-olursa-rossi-en-buyuk-kim-tartismasinin-disinda-kalir/125079
-Quelle: https://trf1.net/motor-sporlari/motogp/lorenzo-marquez-sampiyon-olursa-rossi-en-buyuk-kim-tartismasinin-disinda-kalir/125079
-Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-3-lorenzo-marquez-samp-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-3-lorenzo-marquez-samp-01.jpg", "media_status": "", "object_id": "122134370997469415", "object_type": "bild", "platform": "facebook", "post_id": "122134370997469415", "source_url": "https://trf1.net/motor-sporlari/motogp/lorenzo-marquez-sampiyon-olursa-rossi-en-buyuk-kim-tartismasinin-disinda-kalir/125079", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
