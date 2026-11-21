@@ -1856,6 +1856,7 @@ Bild: assets/images/2026-11/2026-11-19-turkish-human-1-toprak-razgatlioglu-01.jp
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-18-daily-TR-HUMAN
 Telegram-Update-ID: 279362059
