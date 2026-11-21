@@ -1809,9 +1809,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-valencia-test
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-5-toprak-razgatlioglu-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 44912835225-1
+## Facebook [GEPOSTET 2026-11-21 14:14 | ID: 122137037859469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-18-daily
 Telegram-Update-ID: 279362058
@@ -1832,6 +1831,7 @@ Wie seht ihr die Entscheidung, dass Razgatlıoğlu den Test auslässt, nach sein
 Quelle: https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-valencia-testini-de-kaciracak-yamaha-acikladi/125677
 Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-5-toprak-razgatlioglu-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-5-toprak-razgatlioglu-01.jpg", "media_status": "", "object_id": "122137037859469415", "object_type": "bild", "platform": "facebook", "post_id": "122137037859469415", "source_url": "https://trf1.net/motor-sporlari/motogp/toprak-razgatlioglu-valencia-testini-de-kaciracak-yamaha-acikladi/125677", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
