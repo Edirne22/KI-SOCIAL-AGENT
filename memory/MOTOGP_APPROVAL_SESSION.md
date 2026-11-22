@@ -7,7 +7,7 @@ Human-Writing-Protocol: V1.0
 Buelents-Bike-Life-Voice: VERBINDLICH
 QM: PASS
 Racing-Lexikon-Version: 41d761aa4815
-Session-Timestamp: 1795273728
+Session-Timestamp: 1795360112
 
 Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 
@@ -15,23 +15,23 @@ Antwort: `motogp 1` bis `motogp 5`, Kombinationen oder `motogp alle`.
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 1
-QM-Ruecklaeufe: 1
+Neufassungen: 0
+QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
+Artikelalter-Tage: 0.3
 Kategorie: Turkish Riders
 Serie: Moto2
-Story-Key: motogp:10876545
-Titel: Moto2 Portekiz sıralama: Senna Agius pole'de, Deniz Öncü 21. sırada
-Quelle: https://tr.motorsport.com/moto2/news/moto2-portekiz-siralama-senna-agius-polede-deniz-oncu-21-sirada/10876545
+Story-Key: title:moto2-portim-o-guevara-n-s-rada-lider-gonz-lez-10-deniz-nc-21-motoron-dergisi
+Titel: Moto2 Portimão: Guevara ön sırada, lider González 10., Deniz Öncü 21. | Motoron Dergisi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-siralama-guevara-gonzalez-deniz-oncu
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-1-moto2-portekiz-siral-01.jpg
-Quellen-Preview: https://cdn-1.motorsport.com/images/amp/0rVxqjO0/s6/senna-agius-tailandia.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-22-racing-editorial-2026-11-22-1-moto2-portimao-gueva-01.jpg
+Quellen-Preview: https://www.motoron.com.tr/wp-content/uploads/2026/11/moto2-portimao-siralama-agius-holgado-guevara.jpg
 Plattformen: Instagram + Facebook
 Text:
-Senna Agius hat sich im Moto2-Qualifying zum Grand Prix von Portugal die Pole-Position gesichert. Bei den türkischen Fahrern landete Deniz Öncü auf Platz 21.
+In Portimão hat Agius mit einem Rundenrekord die Pole geholt, Guevara hängt direkt auf der ersten Reihe dran. Der aktuelle Titelverteidiger González liegt nach dem Quali nur auf Rang 10, und Deniz Öncü muss seine Runde vom 21. Platz angehen.
 
-Wie seht ihr die Chancen für das Rennen am Sonntag?
+Wie seht ihr die Chancen von Deniz beim Startplatz 21?
 
 #Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
@@ -47,21 +47,23 @@ Herkunft: Aktuell
 Artikelalter-Tage: 1.6
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:1186064
-Titel: Alex Marquez shines to top Practice on return, Martin scrapes into Q2
-Quelle: https://www.motogp.com/en/news/2026/11/20/alex-marquez-shines-to-top-practice-on-return-martin-scrapes-into-q2/1186064
+Story-Key: motogp:1186072
+Titel: Bezzecchi victorious as Marc Marquez crashes in dramatic Portugal Sprint
+Quelle: https://www.motogp.com/en/news/2026/11/21/bezzecchi-victorious-as-marc-marquez-crashes-in-dramatic-portugal-sprint/1186072
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-2-alex-marquez-shines-01.jpg
-Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/20/533240e2-8e98-4acf-8cff-a44ea1eedc5b/Report-MGP-PR-PT.jpg?width=1200&height=630
+Instagram-Bild: assets/images/2026-11/2026-11-22-racing-editorial-2026-11-22-2-bezzecchi-victorious-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/21/1d0e187f-3b3a-482c-b544-2601976b02ee/Report-MGP-SPR-PT.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Der #73 ist zurück und zeigt sofort Spitze.
+Bezzecchi hat den Sprint in Portugal gewonnen.
 
-Alex Marquez hat nach seiner Verletzungspause beim ersten Training die Bestzeit gemacht. Bei Jorge Martin sah es im qualifying erst knapp aus, aber er hat es gerade noch ins Q2 geschafft.
+Marc Marquez (#93) ist mit anderthalb Runden vor Schluss ausgefallen.
 
-Wie findet ihr das Comeback von Marquez?
+Der Titelkampf geht damit sonntagabend in die entscheidende Runde – und das 2026 ist noch offen.
 
-#MotoGP #AlexMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+Wie seht ihr die Situation für Marquez vor dem Hauptrennen?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -69,27 +71,27 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
+Neufassungen: 3
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.0
-Kategorie: MotoGP
-Serie: MotoGP
-Story-Key: title:motogp-portekiz-sprint-sonu-lar-m-rquez-d-t-bezzecchi-kazand-motoron
-Titel: MotoGP Portekiz Sprint sonuçları: Márquez düştü, Bezzecchi kazandı | Motoron
-Quelle: https://www.motoron.com.tr/motosiklet-haber/portimao-sprint-marquez-dustu-bezzecchi-kazandi
+Artikelalter-Tage: 0.6
+Kategorie: Moto2
+Serie: Moto2
+Story-Key: motogp:1186103
+Titel: Muñoz wins wild Portimao battle as championship leader Gonzalez crashes
+Quelle: https://www.motogp.com/en/news/2026/11/19/munoz-wins-wild-portimao-battle-as-championship-leader-gonzalez-crashes/1186103
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-3-motogp-portekiz-spri-01.jpg
-Quellen-Preview: https://www.motoron.com.tr/wp-content/uploads/2026/11/bezzecchi-portimao-sprint-2026.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-22-racing-editorial-2026-11-22-3-munoz-wins-wild-port-01.jpg
+Quellen-Preview: https://resources.motogp.pulselive.com/photo-resources/2026/11/22/a0f7512c-f4b3-4398-95f7-d813f3a43b1b/M2-RACE-PT.jpg?width=1200&height=630
 Plattformen: Instagram + Facebook
 Text:
-Márquez şampiyonluğa iki tur kala düştü
+MuñozsiegtimMoto2-RennenvonPortimao
 
-Bezzecchi hat den Sprint in Portimao gewonnen – und Márquez ist mit zwei Runden zu Ende noch gestürzt. Das treibt die Titelkampf-Dynamik weiter voran. Martín landete auf Platz fünf, der Rückstand im WM-Klassement liegt jetzt bei 55 Punkten.
+Im Moto2-Rennen von Portimao siegte Muñoz. Gonzalez, der Meisterschaftsführer, stürzte während des Rennens. Die Titeljagd geht nun nach Valencia.
 
-Wie schätzt ihr die Situation für Márquez mit nur noch wenigen Rennen zu gehen ein?
+Was erwartet ihr vom Titelkampf in Valencia?
 
-#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#Moto2 #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -100,26 +102,22 @@ Semantic-Fakten-QM: PASS
 Neufassungen: 0
 QM-Ruecklaeufe: 0
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
+Artikelalter-Tage: 0.3
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:126047
-Titel: Alex Marquez zirvedeki zamanı “gerçekçi değil” buldu: “Yarış temposunda çok zorlandık” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquez-zirvedeki-zamani-gercekci-degil-buldu-yaris-temposunda-cok-zorlandik/126047
+Story-Key: motogp:126284
+Titel: Portekiz MotoGP’de start sırası belli oldu: Bezzecchi pole’da, Marc Marquez ikinci sırada - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/portekiz-motogpde-start-sirasi-belli-oldu-bezzecchi-poleda-marc-marquez-ikinci-sirada/126284
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-4-alex-marquez-zirvede-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1363073_hires_1600x900.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-22-racing-editorial-2026-11-22-4-portekiz-motogpde-st-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1364081_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Alex Marquez stand nach seiner zweiten Operation dieses Jahres – wegen Schulter und Hand aus Katalonien – zum ersten Mal wieder auf dem Motorrad in Portimão.
+Marco Bezzecchi steht in Portimão vorne, der Ducati-Star gewinnt den Sprint und darf vom Pole starten. Bei Marc Marquez schaut jeder hin – nach seinem frühen Rutsch im Sprint kam er nur als Dritter durch, damit war die Chance auf den zehnten Titel etwas verbogen. Aber der Vorsprung sitzt immer noch, und er braucht Jorge Martin maximal 18 Punkte einzusammeln. Dann bleibt Marquez vor dem Saisonfinale in Valencia Weltmeister. 🏁
 
-Morgens war er zwei Mal schnellerster Pilot, am Nachmittag schob er seine Bestzeit erst in den letzten Minuten raus.
+Was erwartet ihr von Marquez in Portimão?
 
-Trotz der Top-Zeiten merkte er deutlich, dass das Renn Tempo noch nicht da ist.
-
-Wie schätzt ihr seine Rückkehr ein – kann er mit den Verletzungen schon voll durchziehen?
-
-#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 
@@ -127,31 +125,25 @@ Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizi
 QM: PASS
 Racing-QM: PASS
 Semantic-Fakten-QM: PASS
-Neufassungen: 0
-QM-Ruecklaeufe: 0
+Neufassungen: 1
+QM-Ruecklaeufe: 1
 Herkunft: Aktuell
-Artikelalter-Tage: 0.8
+Artikelalter-Tage: 0.2
 Kategorie: MotoGP
 Serie: MotoGP
-Story-Key: motogp:126041
-Titel: Marc Marquez Portimao’da riskten endişeli: “Hızdan ya da sonuçtan değil, riskten korkuyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
-Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-portimaoda-riskten-endiseli-hizdan-ya-da-sonuctan-degil-riskten-korkuyorum/126041
+Story-Key: motogp:126309
+Titel: Marc Marquez Portimao’da şampiyonluk şansı için “öncelik”i açıkladı: “Asıl öncelik yarışı bitirmek” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-portimaoda-sampiyonluk-sansi-icin-onceliki-acikladi-asil-oncelik-yarisi-bitirmek/126309
 Quellen-Lineage: {}
-Instagram-Bild: assets/images/2026-11/2026-11-21-racing-editorial-2026-11-21-5-marc-marquez-portima-01.jpg
-Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1363246_hires.jpg
+Instagram-Bild: assets/images/2026-11/2026-11-22-racing-editorial-2026-11-22-5-marc-marquez-portima-01.jpg
+Quellen-Preview: https://trf1.net/wp-content/uploads/2026/11/gng_1364816_hires_1600x900.jpg
 Plattformen: Instagram + Facebook
 Text:
-Marc Marquez steht kurz davor, seinen achten MotoGP-WM-Titel zu holen – nur ein einziger Sprint-Sieg über Jorge Martin reicht noch.
+Marc Marquez hat in Portimao vor Augen, den 2026er MotoGP-Titel zu sichern — und er nennt seine Priorität ganz klar: Zuerst ans Ziel kommen. Beim Sprint am Samstag ging ihm kurz vor Schluss der Riß aus — bei dritter Position, mit einsetzendem Regen, auf dem Weg zu seinem achten Premier-Class-Titel.
 
-Dennoch macht er keine Hehl daraus: Ihm ist bewusst, wie sehr sein Schicksal von einer einzigen Runde abhängt.
+Wie seht ihr die Situation bei Marc in Portimao?
 
-In den freien Übungen am Freitag pendelte er sich nur auf Rang sechs ein – nichts deutet darauf hin, dass bei Ducati alles reibungslos läuft.
-
-Genauso wenig gibt es Anzeichen dafür, dass Marquez die Situation völlig entspannt sieht.
-
-Wie seht ihr die Lage bei Marc?
-
-#MotoGP #MarcMarquez #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
 
 Rechte-Gate: eigene generische Instagram-Editorial-Grafik; Facebook nutzt offizielle Quellen-Linkvorschau.
 

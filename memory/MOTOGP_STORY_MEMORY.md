@@ -2019,3 +2019,28 @@ Quelle: https://trf1.net/motor-sporlari/motogp/alex-marquez-zirvedeki-zamani-ger
 Story-Key: motogp:126041
 Titel: Marc Marquez Portimao’da riskten endişeli: “Hızdan ya da sonuçtan değil, riskten korkuyorum” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-portimaoda-riskten-endiseli-hizdan-ya-da-sonuctan-degil-riskten-korkuyorum/126041
+
+## 2026-11-22 15:08 UTC – ANGEBOTEN
+Story-Key: title:moto2-portim-o-guevara-n-s-rada-lider-gonz-lez-10-deniz-nc-21-motoron-dergisi
+Titel: Moto2 Portimão: Guevara ön sırada, lider González 10., Deniz Öncü 21. | Motoron Dergisi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-siralama-guevara-gonzalez-deniz-oncu
+
+## 2026-11-22 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:1186072
+Titel: Bezzecchi victorious as Marc Marquez crashes in dramatic Portugal Sprint
+Quelle: https://www.motogp.com/en/news/2026/11/21/bezzecchi-victorious-as-marc-marquez-crashes-in-dramatic-portugal-sprint/1186072
+
+## 2026-11-22 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:1186103
+Titel: Muñoz wins wild Portimao battle as championship leader Gonzalez crashes
+Quelle: https://www.motogp.com/en/news/2026/11/19/munoz-wins-wild-portimao-battle-as-championship-leader-gonzalez-crashes/1186103
+
+## 2026-11-22 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:126284
+Titel: Portekiz MotoGP’de start sırası belli oldu: Bezzecchi pole’da, Marc Marquez ikinci sırada - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/portekiz-motogpde-start-sirasi-belli-oldu-bezzecchi-poleda-marc-marquez-ikinci-sirada/126284
+
+## 2026-11-22 15:08 UTC – ANGEBOTEN
+Story-Key: motogp:126309
+Titel: Marc Marquez Portimao’da şampiyonluk şansı için “öncelik”i açıkladı: “Asıl öncelik yarışı bitirmek” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-portimaoda-sampiyonluk-sansi-icin-onceliki-acikladi-asil-oncelik-yarisi-bitirmek/126309

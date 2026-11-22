@@ -4644,3 +4644,33 @@ Story-Key: motogp:126041
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-22 15:34 UTC | Motorcycle Racing | PASS
+Titel: Moto2 Portimão: Guevara ön sırada, lider González 10., Deniz Öncü 21. | Motoron Dergisi
+Story-Key: title:moto2-portim-o-guevara-n-s-rada-lider-gonz-lez-10-deniz-nc-21-motoron-dergisi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-22 15:34 UTC | Motorcycle Racing | PASS
+Titel: Bezzecchi victorious as Marc Marquez crashes in dramatic Portugal Sprint
+Story-Key: motogp:1186072
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-22 15:34 UTC | Motorcycle Racing | PASS
+Titel: Muñoz wins wild Portimao battle as championship leader Gonzalez crashes
+Story-Key: motogp:1186103
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-22 15:35 UTC | Motorcycle Racing | PASS
+Titel: Portekiz MotoGP’de start sırası belli oldu: Bezzecchi pole’da, Marc Marquez ikinci sırada - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:126284
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-22 15:35 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez Portimao’da şampiyonluk şansı için “öncelik”i açıkladı: “Asıl öncelik yarışı bitirmek” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:126309
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
