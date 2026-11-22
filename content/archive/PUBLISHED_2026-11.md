@@ -1,5 +1,81 @@
 # Archiviert Beiträge 2026-11
 
+## Facebook [GEPOSTET 2026-11-14 12:59 | ID: 122134563123469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-11-daily
+Telegram-Update-ID: 279362034
+MotoGP-Auswahl: 4
+Story-Key: title:bagnaia-torino-da-ameliyat-oldu-portim-o-ve-valencia-belirsiz-motoron-dergisi
+Event-Fingerprint: MotoGP|sprint|bagnaia|valencia
+Titel: Bagnaia Torino’da ameliyat oldu: Portimão ve Valencia belirsiz | Motoron Dergisi
+Text:
+Francesco Bagnaia hat sich beim Katar-Sprint den Fuß gebrochen.
+
+Der Ducati-Fahrer wurde nach der Verletzung operiert.
+
+Seine letzten beiden Rennen für Ducati in Portimão und Valencia sind derzeit ungewiss.
+
+Hoffen wir auf eine schnelle Genesung für die letzten Rennen der Saison.
+
+#MotoGP #FrancescoBagnaia #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-oldu-portimao-ve-valencia-belirsiz
+Quelle: https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-oldu-portimao-ve-valencia-belirsiz
+Bild: assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-4-bagnaia-torinoda-ame-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-11-racing-editorial-2026-11-11-4-bagnaia-torinoda-ame-01.jpg", "media_status": "", "object_id": "122134563123469415", "object_type": "bild", "platform": "facebook", "post_id": "122134563123469415", "source_url": "https://www.motoron.com.tr/motosiklet-haber/bagnaia-torinoda-ameliyat-oldu-portimao-ve-valencia-belirsiz", "version": 1}
+
+## Facebook [GEPOSTET 2026-11-14 18:42 | ID: 122134623375469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 1
+Story-Key: title:martin-ampiyonluk-hesab-portimao-da-marquez-den-24-puan-fazla-almal
+Event-Fingerprint: MotoGP|sprint|martin|valencia
+Titel: Martin'in Şampiyonluk Hesabı: Portimao'da Marquez'den 24 Puan Fazla Almalı
+Text:
+Jorge Martin muss in Portimão im Titelkampf mindestens 24 Punkte Vorsprung vor seinem direkten Verfolger herausfahren.
+
+Nur wenn diese Punktedifferenz erreicht wird, bleibt die MotoGP-WM noch für das Saisonfinale in Valencia offen.
+
+Die benötigte Bilanz setzt sich aus beiden Rennwochenenden – Sprint und Hauptrennen – zusammen.
+
+Erst mit diesem Rückstand in der Gesamtwertung würde die Meisterschaft nicht bereits in Portugal entschieden.
+
+Teilt eure Einschätzung zu Martins Möglichkeiten – wir schauen mit euch auf die Punktebilanz.
+
+#MotoGP #JorgeMartin #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
+Quelle: https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-1-martin-in-sampiyonlu-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-1-martin-in-sampiyonlu-01.jpg", "media_status": "", "object_id": "122134623375469415", "object_type": "bild", "platform": "facebook", "post_id": "122134623375469415", "source_url": "https://motoetkinlik.com/martinin-sampiyonluk-hesabi-portimaoda-marquezden-24-puan-fazla-almali", "version": 1}
+
+## Facebook [GEPOSTET 2026-11-14 22:45 | ID: 122134652235469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-14-daily
+Telegram-Update-ID: 279362038
+MotoGP-Auswahl: 3
+Story-Key: motogp:125024
+Event-Fingerprint: -
+Titel: Tardozzi: Marquez yalnızca hızlı değil, akıllı bir pilot - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez hat sich mit einem zweiten Platz in Katar wieder einmal als kluger Schachspieler auf der Strecke bewiesen. Der Titelgewinn stand auf dem Spiel, aber er konnte nicht selbst entscheiden, ob Bezzecchi oder Martin genug Punkte abgeben würden. Stattdessen ging er pragmatisch ran, sammelte punkteefficient ein und holte am Ende die meisten Punkte – trotz favorisiertem Ruf aus den Freundschaftsrennen. Zehn Jahre Erfahrung zeigen: Manchmal gewinnt man eine Saison nicht mit Tempo allein.
+
+Wie seht ihr das – ist das Strategie oder einfach der bessere Kopf im rennen?
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife #JorgeMartin
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
+Quelle: https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024
+Bild: assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-3-tardozzi-marquez-yal-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-14-racing-editorial-2026-11-14-3-tardozzi-marquez-yal-01.jpg", "media_status": "", "object_id": "122134652235469415", "object_type": "bild", "platform": "facebook", "post_id": "122134652235469415", "source_url": "https://trf1.net/motor-sporlari/motogp/tardozzi-marquez-yalnizca-hizli-degil-akilli-bir-pilot/125024", "version": 1}
+
 ## Facebook [GEPOSTET 2026-11-13 13:57 | ID: 122134241643469415]
 Status: GEPOSTET
 Freigabe: Telegram Racing
