@@ -1870,9 +1870,8 @@ Quelle: https://tr.motorsport.com/motogp/news/redding-toprak-razgatlioglunun-ver
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-2-redding-toprak-razga-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 45030760537-1
+## Facebook [GEPOSTET 2026-11-22 14:04 | ID: 122137346853469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-19-daily
 Telegram-Update-ID: 279362065
@@ -1893,6 +1892,7 @@ Was denkt ihr, warum schafft das Redding nicht?
 Quelle: https://tr.motorsport.com/motogp/news/redding-toprak-razgatlioglunun-verilerini-gorunce-saskina-donmus-bunu-nasil-yapabiliyor/10875517
 Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-2-redding-toprak-razga-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-2-redding-toprak-razga-01.jpg", "media_status": "", "object_id": "122137346853469415", "object_type": "bild", "platform": "facebook", "post_id": "122137346853469415", "source_url": "https://tr.motorsport.com/motogp/news/redding-toprak-razgatlioglunun-verilerini-gorunce-saskina-donmus-bunu-nasil-yapabiliyor/10875517", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
