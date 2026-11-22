@@ -1917,9 +1917,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/marquez-sampiyonluk-icin-portimao
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-3-marquez-sampiyonluk-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 45068034812-1
+## Facebook [GEPOSTET 2026-11-22 20:44 | ID: 122137433049469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-19-daily
 Telegram-Update-ID: 279362065
@@ -1940,6 +1939,7 @@ Glaubt ihr wirklich, dass er den Titel jetzt holen kann?
 Quelle: https://trf1.net/motor-sporlari/motogp/marquez-sampiyonluk-icin-portimaoda-burada-pek-sansim-yaver-gitmedi/125705
 Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-3-marquez-sampiyonluk-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-3-marquez-sampiyonluk-01.jpg", "media_status": "", "object_id": "122137433049469415", "object_type": "bild", "platform": "facebook", "post_id": "122137433049469415", "source_url": "https://trf1.net/motor-sporlari/motogp/marquez-sampiyonluk-icin-portimaoda-burada-pek-sansim-yaver-gitmedi/125705", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
