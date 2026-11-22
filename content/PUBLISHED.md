@@ -1901,7 +1901,7 @@ Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-1-checa-topra
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 44967797981-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-19-daily
 Telegram-Update-ID: 279362065
