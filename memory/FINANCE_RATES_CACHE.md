@@ -94,3 +94,8 @@ Dein aktuelles Chase‑Konto liefert 4,0 % p.a. bis 26.12.2026 – dam
 Sollte der Chase‑Zinssatz nach 26.12.2026 auf 2,0 % fallen, wäre Advanzia mit 4,1 % p.a. (kurzfristig 3 Monate) bzw. Openbank mit 4,0 % p.a. (4 Monate) eine klare Alternative.  
 
 Kurz für Bülent: Dein Chase‑Konto ist derzeit konkurrenzfähig, aber ein Blick auf Advanzia (oder Openbank) lohnt sich, falls der Chase‑Zins nach Dez 2026 nach unten korrigiert wird.
+## Lauf 2026-11-23 18:55 UTC
+
+Quellen: Finanztip, Check24, Verivox, Biallo
+
+Die drei momentan höchsten Tagesgeld‑Zinsen laut den öffentlichen Übersichten sind: Advanzia 4,1 % p.a. (3‑Monats‑Aktion), Chase 4,0 % p.a. (4‑Monats‑Aktion) und Openbank 4,0 % p.a. (ebenfalls 4‑Monats‑Aktion). Ihr bestehendes Chase‑Konto liefert bis 26.12.2026 4,0 % und fällt danach auf 2,0 %, womit es nach diesem Datum hinter Advanzia und dem gleichwertigen Openbank‑Angebot zurückbleibt. Als Alternative für die Zeit nach dem Zinswechsel eignen sich insbesondere Advanzia (4,1 % für 3 Monate) oder Openbank (4,0 % für 4 Monate). Kurz: Behalten Sie das Chase‑Konto bis zum 26.12.2026 und prüfen Sie dann kurzfristig einen Wechsel zu Advanzia oder Openbank, um die Zinsvorteile zu wahren.
