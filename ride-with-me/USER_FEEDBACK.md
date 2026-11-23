@@ -562,3 +562,7 @@ Die Angaben basieren auf den offiziellen Informationen der Website `ridewithme.a
 
 * **Routenplanung & Navigation:** Erstellung von Motorradrouten mit Ausrichtung auf kurvenreiche Strecken abseits von Hauptverkehrsstraßen. Abbiegehinweise (Turn-by-Turn-Navigation) während der Fahrt.
 * **GPS-Aufzeichnung:** Aufzeichnen gefahrener Tou
+
+
+## Automatische Analyse
+FEHLER: Alle konfigurierten KI-Anbieter fehlgeschlagen; keine verwendbare Textantwort.
