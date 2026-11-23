@@ -5,188 +5,207 @@
 
 ## Instagram
 ### Datensatz 1
-- Titel: The “27” is back on a @ducaticorse 🔴
-
-#PortugueseGP🇵🇹 #MotoGP #CaseyStoner #IkerLecuona
-- Datum: 2026-11-20T13:19:05.000Z
-- URL: https://www.instagram.com/p/Df9veG8IvTO/
-- Likes: 2874
-- Kommentare: 10
+- Titel: Sometimes unexpected things can happen. I’m going through a difficult time because for the first time in my racing career, I had to end the season early. Watching the races on television is a very strange feeling. I had shoulder surgery to be able to come back stronger and I’ve already started training. I hope we’ll be back on the motorcycle as soon as possible.
+Many thanks to Yamaha family My team and the doctor Minola🥰
+I would also like to thank all of you who supported me and didn’t leave me 
+- Datum: 2026-10-27T09:34:29.000Z
+- URL: https://www.instagram.com/p/De_i_4MjdMG/
+- Likes: 179019
+- Kommentare: 6392
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: We’ll see plenty of the 93 after 2026 😎
+- Titel: @toprakrazgatlioglu7 best of luck with your surgery and get well soon! 
+We’re waiting for you! ❤️👀
 
-#PortugueseGP 🇵🇹
-- Datum: 2026-11-20T13:00:00.000Z
-- URL: https://www.instagram.com/p/Df9rGQgIWaP/
-- Likes: 10876
-- Kommentare: 36
+#primapramacyamaha #motogp
+- Datum: 2026-10-25T01:48:34.000Z
+- URL: https://www.instagram.com/p/De5kAPxprCa/
+- Likes: 9717
+- Kommentare: 123
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Wheels 🆙 We’re SO back at the rollercoaster! 🎢 
+- Titel: Toprak Razgatlıoğlu to miss Phillip Island and remainder of the 2026 season
 
-#PortugueseGP 🇵🇹 #MotoGP
-- Datum: 2026-11-20T12:42:12.000Z
-- URL: https://www.instagram.com/p/Df9rjw_iE-d/
-- Likes: 7054
-- Kommentare: 15
+@toprakrazgatlioglu7 - “I’m extremely disappointed to miss the Australian Grand Prix. Phillip Island is one of my favourite circuits and a place where I’ve enjoyed some very special moments during my Superbike career. I was excited about the opportunity to race here on the MotoGP bike, which makes this situation even harder to accept.
+
+After further medical assessments following the crash in Mandalika, it became clear t
+- Datum: 2026-10-20T07:45:17.000Z
+- URL: https://www.instagram.com/p/DetU74Yiboe/
+- Likes: 23673
+- Kommentare: 294
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: @marcobez72 getting a front-row seat to @marcmarquez93 practice start 👀
+- Titel: @toprakrazgatlioglu7 - DNF 💬
+#IndonesianGP - RACE 🇮🇩
 
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-20T12:30:04.000Z
-- URL: https://www.instagram.com/p/Df9qQ2zBS7B/
-- Likes: 42064
-- Kommentare: 401
+Today, my biggest problem was my shoulder, not the bike. Yesterday, after the Sprint, it was not feeling too bad, but when I woke up this morning, the pain was much worse and I had less movement. I took painkillers, but the main issue was the lack of strength, especially under braking. With every lap, it became more difficult to manage the bike, particularly through the right-hand corners and the changes of direction.
+
+Before the race, I spok
+- Datum: 2026-10-11T11:21:08.000Z
+- URL: https://www.instagram.com/p/DeWie_xCCgU/
+- Likes: 13037
+- Kommentare: 140
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: It’s not properly a #PortugueseGP until we see a Miller Airlines takeoff ✈️✈️✈️
+- Titel: @toprakrazgatlioglu7 - P19 💬
+#IndonesianGP - SPRINT 🇮🇩
 
-#MotoGP #JackMiller
-- Datum: 2026-11-20T12:05:42.000Z
-- URL: https://www.instagram.com/p/Df9nOegoMDP/
-- Likes: 11735
-- Kommentare: 90
+Before qualifying, I had a big crash and dislocated my shoulder. We put it back into place, but I‘m still feeling the pain, which is normal. I could also feel that my right shoulder had less strength during the Sprint, but I tried my best to manage the situation and finish the race.
+
+On the bike, we still need to improve a few things, particularly with the electronics in some corners. I‘m also losing quite a lot of time in Sector 2, and if 
+- Datum: 2026-10-10T13:59:12.000Z
+- URL: https://www.instagram.com/p/DeUPxyXCDPy/
+- Likes: 21649
+- Kommentare: 322
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: @89jorgemartin taking a moment to stretch out that shoulder 😯
+- Titel: @toprakrazgatlioglu7 - P16 💬
+#IndonesianGP - PRACTICE 🇮🇩
 
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-20T11:47:32.000Z
-- URL: https://www.instagram.com/p/Df9lM-doykv/
-- Likes: 28906
-- Kommentare: 162
+Today was not bad, much better than Japan and the last four rounds. I also improved my lap time towards the end, although a yellow flag in the last sector meant I had to close the throttle and lose the lap. We are still outside the top 10, but I feel more positive and I‘m finally starting to enjoy riding again.
+
+We are working on the engine braking, and we have made some small changes that are helping me feel more comfortable. The braking
+- Datum: 2026-10-09T12:18:20.000Z
+- URL: https://www.instagram.com/p/DeRfcK-iLXX/
+- Likes: 14678
+- Kommentare: 127
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: Full commitment from the get-go to top FP1 🚀
+- Titel: Biig Stoprak at the line 😮‍💨
 
-#PortugueseGP 🇵🇹 #MichelinMotoGP #MotoGP
-- Datum: 2026-11-20T11:36:21.000Z
-- URL: https://www.instagram.com/p/Df9jfqAoGsH/
-- Likes: 18519
-- Kommentare: 75
+#IndonesianGP 🇮🇩 #MotoGP #ToprakRazgatlioglu
+- Datum: 2026-10-09T04:44:36.000Z
+- URL: https://www.instagram.com/p/DeQqn0iIZr3/
+- Likes: 79039
+- Kommentare: 265
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: It’s been a fast FP1 for @alexmarquez73 so far but not without discomfort 👀
-
-#PortugueseGP 🇵🇹 #MotoGP #AlexMarquez
-- Datum: 2026-11-20T11:17:03.000Z
-- URL: https://www.instagram.com/p/Df9hvEDI9vk/
-- Likes: 10810
-- Kommentare: 29
+- Titel: Indonesia 🇮🇩 Mandalika 
+I am in the place where I have my fondest memories 2021❤️
+- Datum: 2026-10-06T11:52:35.000Z
+- URL: https://www.instagram.com/p/DeJuG_HD0NF/
+- Likes: 141663
+- Kommentare: 1127
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: Friday bad news: this beauty won’t hit the track until Sunday. Worth the wait, don’t you think? 👀
+- Titel: @toprakrazgatlioglu7 - P17 💬
+#JapaneseGP - RACE 🇯🇵
 
-#Gresini30Seasons
-- Datum: 2026-11-20T09:23:53.000Z
-- URL: https://www.instagram.com/p/Df9U3JNjEJC/
-- Likes: 39893
-- Kommentare: 384
+I had the same problem again with the tyres and with stopping the bike. In the first six laps I was struggling a lot, but then I found a better rhythm and started to do 1:44s. The pace was much better, but it was still difficult because I was always riding close to the limit and pushing hard to stop the bike.
+
+I can see that Fabio is able to stop the bike more easily because he has much more experience with the Yamaha. I‘m still learning how to
+- Datum: 2026-10-04T09:23:58.000Z
+- URL: https://www.instagram.com/p/DeETgu8iKvZ/
+- Likes: 50114
+- Kommentare: 182
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: Did you know that #Moto2 bikes need to be built up every GP in just one day? 👀 These are all the steps the mechanics follow to fine-tune the bikes! 🔧👌
+- Titel: @toprakrazgatlioglu7 - P21 💬
+#JapaneseGP - PRACTICE 🇯🇵
 
-#MotoGP @repsol.lubricants
-- Datum: 2026-11-20T07:00:05.000Z
-- URL: https://www.instagram.com/p/Df9EgUXB70y/
-- Likes: 14914
-- Kommentare: 88
+I learned a lot more about the track today and I really like Motegi, but we still have the same problem with the soft tyre. When I put the new soft tyre on, I lose a lot of time under braking because I still cannot stop the bike in the way I want. This is the biggest area where I need to improve.
+
+With the medium tyre, even a used one, my lap time was quite similar to what I could do with the new soft, so our race pace is not so bad. But wh
+- Datum: 2026-10-02T11:52:14.000Z
+- URL: https://www.instagram.com/p/Dd_a43BiOOe/
+- Likes: 11220
+- Kommentare: 75
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: The “27” is back on a Ducati Corse 🔴
+- Titel: A #MotoGP World Championship that got the world's stars talking 👏🌍
 
-#PortugueseGP🇵🇹 #MotoGP #CaseyStoner #IkerLecuona
-- Datum: 2026-11-20T13:19:10.000Z
+#MARCmade #H1STORY
+- Datum: 2026-11-23T15:15:17.000Z
 - URL: nicht verfügbar
-- Likes: 305
-- Kommentare: 4
+- Likes: 517
+- Kommentare: 14
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: We'll see plenty of the 93 after 2026 😎
+- Titel: Letting it all sink in 🥹
 
-#PortugueseGP 🇵🇹
-- Datum: 2026-11-20T13:00:04.000Z
+#PortugueseGP🇵🇹 #MotoGP
+- Datum: 2026-11-23T15:05:33.000Z
 - URL: nicht verfügbar
-- Likes: 822
-- Kommentare: 23
+- Likes: 641
+- Kommentare: 26
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Davide Tardozzi fully confirms that Marc is not going anywhere after 2026 🐜
+- Titel: Mindset. Ambition. Resilience. CHAMPION. 🏆
 
-#PortugueseGP 🇵🇹
-- Datum: 2026-11-20T12:51:02.000Z
+#MARCmade #H1STORY
+- Datum: 2026-11-23T14:30:30.000Z
 - URL: nicht verfügbar
-- Likes: 267
-- Kommentare: 8
+- Likes: 318
+- Kommentare: 14
 - Shares: nicht verfügbar
 ### Datensatz 4
-- Titel: Wheels 🆙 We’re SO back at the rollercoaster! 🎢 
+- Titel: Raw emotions after @marcmarquez93's World Champion coronation 🗣️🔥
 
-#PortugueseGP 🇵🇹 #MotoGP
-- Datum: 2026-11-20T12:42:35.000Z
+#MARCmade #H1STORY
+- Datum: 2026-11-23T13:36:55.000Z
 - URL: nicht verfügbar
-- Likes: 525
-- Kommentare: 8
+- Likes: 2008
+- Kommentare: 42
 - Shares: nicht verfügbar
 ### Datensatz 5
-- Titel: @marcobez72 getting a front-row seat to @marcmarquez93 practice start 👀
+- Titel: A retro look that never gets old 😮‍💨 Celebrating 30 years of @gresiniracing with a nod to @tonielias24 2006 Portugal win 🫶
 
 #PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-20T12:30:22.000Z
+- Datum: 2026-11-23T12:30:23.000Z
 - URL: nicht verfügbar
-- Likes: 6364
-- Kommentare: 186
+- Likes: 703
+- Kommentare: 2
 - Shares: nicht verfügbar
 ### Datensatz 6
-- Titel: Aprilia are doing what they have to as they go 1-2 in FP1 🤝
+- Titel: Smooth operator 😮‍💨 @brianuriarte51 nailed that start 👀
 
-#PortugueseGP 🇵🇹
-- Datum: 2026-11-20T12:26:13.000Z
+#PortugueseGP🇵🇹 #Moto3 @repsol.lubricants
+- Datum: 2026-11-23T12:00:25.000Z
 - URL: nicht verfügbar
-- Likes: 221
-- Kommentare: 47
+- Likes: 565
+- Kommentare: 3
 - Shares: nicht verfügbar
 ### Datensatz 7
-- Titel: It’s not properly a #PortugueseGP until we see a Miller Airlines takeoff ✈️✈️✈️
+- Titel: A few words for the newly crowned champion 🤝
 
-#MotoGP #JackMiller
-- Datum: 2026-11-20T12:09:44.000Z
+#PortugueseGP🇵🇹
+- Datum: 2026-11-23T10:00:21.000Z
 - URL: nicht verfügbar
-- Likes: 2452
-- Kommentare: 21
+- Likes: 2984
+- Kommentare: 63
 - Shares: nicht verfügbar
 ### Datensatz 8
-- Titel: Morning from the rollercoaster! 🎢
+- Titel: BLACK FRIDAY HAS ENTERED THE CHAT 🏁
 
-Join Inside the Paddock for a post FP1 analysis! 
+Your screen. Your wardrobe. Your entire personality. 👀
 
-#PortugueseGP 🇵🇹
-- Datum: 2026-11-20T12:00:10.000Z
+It's time to shop the deals 🛍️👉 https://motogp.io/4CfUsru
+
+#MotoGP
+- Datum: 2026-11-23T09:54:43.000Z
 - URL: nicht verfügbar
-- Likes: 688
-- Kommentare: 40
+- Likes: 323
+- Kommentare: 12
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: Full commitment from the get-go by Bez to top FP1 🚀
+- Titel: The GOLDEN AGE 😉🏆 
 
-#PortugueseGP 🇵🇹
-- Datum: 2026-11-20T11:55:43.000Z
+#MARCmade #H1STORY
+- Datum: 2026-11-23T08:00:03.000Z
 - URL: nicht verfügbar
-- Likes: 680
-- Kommentare: 27
+- Likes: 7359
+- Kommentare: 201
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: The effects of @89jorgemartin’s injury still visible out on track 😬
+- Titel: “Thanks for giving me this bike” 🥹 🏍️
 
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-20T11:47:54.000Z
+#MARCmade #H1STORY
+- Datum: 2026-11-23T07:00:32.000Z
 - URL: nicht verfügbar
-- Likes: 2117
-- Kommentare: 64
+- Likes: 22331
+- Kommentare: 408
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.

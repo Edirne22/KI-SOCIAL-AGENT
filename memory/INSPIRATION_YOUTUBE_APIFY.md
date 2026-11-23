@@ -1,86 +1,86 @@
 # Inspiration · YouTube Apify
 
-Suchzeitraum ab: 2026-11-13
+Suchzeitraum ab: 2026-11-16
 Suchbegriffe: MotoGP Highlights, Toprak Razgatlioglu, WorldSBK Highlights
 Videos: 10
 
 ### Datensatz 1
-- Titel: 🏍️ 2026 Motogp Portuguese GP FP1 Results - Free Practice | 2026 Portuguese GP | Portimão
-- Kanal: Xtubefy | formula 1 & MotoGP
-- Datum: 2026-11-20T11:55:53Z
-- URL: https://www.youtube.com/watch?v=ispj93FGgqI
-- Views: 3
-- Likes: 0
+- Titel: Bezzecchi vince, Marquez scrive la storia 🎞️ #motogp #shorts #highlights
+- Kanal: GAS A MARTELLO 
+- Datum: 2026-11-23T14:54:34Z
+- URL: https://www.youtube.com/watch?v=RVhZ2qY2yPk
+- Views: 190
+- Likes: 4
 - Kommentare: 0
 ### Datensatz 2
-- Titel: MotoGp Fp1 Full Highlights | 2026 Portuguese Grand Prix | MotoGp Highlights
-- Kanal: مطبخ أم عبدو و العالمية 
-- Datum: 2026-11-20T11:54:21Z
-- URL: https://www.youtube.com/watch?v=nQT_Re434oE
-- Views: 2132
-- Likes: 33
-- Kommentare: 2
+- Titel: Marc Márquez Makes HISTORY! 🏆 8 Premier-Class Titles! 🔥 #MotoGP
+- Kanal: Kandola’s AutoLab
+- Datum: 2026-11-23T12:34:06Z
+- URL: https://www.youtube.com/watch?v=tf2CagyQ4Nc
+- Views: 803
+- Likes: 31
+- Kommentare: 1
 ### Datensatz 3
-- Titel: MotoGp Fp1 Highlights | 2026 Portuguese Grand Prix | MotoGp Highlights
-- Kanal: مطبخ أم عبدو و العالمية 
-- Datum: 2026-11-20T11:13:37Z
-- URL: https://www.youtube.com/watch?v=zX_EIuRtzRQ
-- Views: 5086
-- Likes: 122
-- Kommentare: 4
+- Titel: Best MotoGP moments 🏍️💨 #motogp #racing #shorts #bmw #viral #automotive
+- Kanal: Vedantab176
+- Datum: 2026-11-23T11:10:13Z
+- URL: https://www.youtube.com/watch?v=3f-Kz0R4-WU
+- Views: 110
+- Likes: nicht verfügbar
+- Kommentare: 1
 ### Datensatz 4
-- Titel: motoGp😱🔥 #fyp #viral #highlights #motovlog
-- Kanal: SAPA MOTOVLOG
-- Datum: 2026-11-20T10:40:17Z
-- URL: https://www.youtube.com/watch?v=1T5-3Uyp0Cs
-- Views: 1081
-- Likes: 3
+- Titel: Resumo | MotoGP Portugal 2026
+- Kanal: sport tv
+- Datum: 2026-11-23T10:31:58Z
+- URL: https://www.youtube.com/watch?v=9atCAb2ZMgQ
+- Views: 1432
+- Likes: 47
 - Kommentare: 0
 ### Datensatz 5
-- Titel: Moto2 Fp1 Full Highlights | 2026 Portuguese Grand Prix | MotoGp Highlights
-- Kanal: مطبخ أم عبدو و العالمية 
-- Datum: 2026-11-20T10:38:20Z
-- URL: https://www.youtube.com/watch?v=P6Vy__ZA3wI
-- Views: 235
-- Likes: 0
+- Titel: Marc Marquez Officially the GOAT? 🐐🏆 #motogp  #mm93
+- Kanal: Unknown Mate
+- Datum: 2026-11-23T09:56:30Z
+- URL: https://www.youtube.com/watch?v=rAhUlzAqz2s
+- Views: 12
+- Likes: 5
 - Kommentare: 0
 ### Datensatz 6
-- Titel: MotoGP Best Moments 🏁🔥 | Incredible Racing Skills & Victory Celebrations!#Shorts #Motorsport #Racing
-- Kanal: mr. Aura Rule
-- Datum: 2026-11-20T10:22:31Z
-- URL: https://www.youtube.com/watch?v=1W6m3ai5ySo
-- Views: 411
-- Likes: nicht verfügbar
-- Kommentare: 0
+- Titel: 【年間王者が決定！】決勝ハイライト｜MotoGP™︎2026第21戦ポルトガルGP
+- Kanal: 日テレスポーツ【公式】
+- Datum: 2026-11-23T07:18:47Z
+- URL: https://www.youtube.com/watch?v=afjZnY8VJCk
+- Views: 41160
+- Likes: 210
+- Kommentare: 24
 ### Datensatz 7
-- Titel: Bicycle Highlights#automobile #racing #motorcycle #motogp
-- Kanal: HillClimbRush
-- Datum: 2026-11-20T10:22:26Z
-- URL: https://www.youtube.com/watch?v=Hc_auLY6PfQ
-- Views: 1244
-- Likes: 17
-- Kommentare: 0
+- Titel: Marc Márquez. World Champion. The GOAT. 🏆🐐🔥 #motogp  #marcmarquez  #motogpshorts
+- Kanal: AutoStorix
+- Datum: 2026-11-23T06:33:59Z
+- URL: https://www.youtube.com/watch?v=SKCUFcmCav0
+- Views: 2615
+- Likes: 45
+- Kommentare: 4
 ### Datensatz 8
-- Titel: Marc Marquez's INSANE Comeback Story in MotoGP 2026!
-- Kanal: Tutachia
-- Datum: 2026-11-20T10:00:35Z
-- URL: https://www.youtube.com/watch?v=6nAcocODVOs
-- Views: 136
-- Likes: 3
-- Kommentare: 0
+- Titel: AURA OF FORMULA 1 & MOTOGP DRIVERS ☠️🔥 | Speed Has No Limits 👑 | #formula1 #motogp #shorts #trending
+- Kanal: Ardan editzz
+- Datum: 2026-11-23T05:30:36Z
+- URL: https://www.youtube.com/watch?v=hHsBKIjf5-4
+- Views: 19586
+- Likes: 1461
+- Kommentare: 20
 ### Datensatz 9
-- Titel: Moto3 Fp1 Full Highlights | 2026 Portuguese Grand Prix | MotoGp Highlights 2026
-- Kanal: مطبخ أم عبدو و العالمية 
-- Datum: 2026-11-20T09:42:57Z
-- URL: https://www.youtube.com/watch?v=m3eY1BdOfkY
-- Views: 608
-- Likes: 6
+- Titel: Marc Márquez The Goat of MotoGP! 🐐 #motogp #racing #marcmarquez
+- Kanal: Coba Coba
+- Datum: 2026-11-23T04:24:01Z
+- URL: https://www.youtube.com/watch?v=wq3_IaUgIho
+- Views: 1244
+- Likes: 26
 - Kommentare: 0
 ### Datensatz 10
-- Titel: 2026 MotoGP
-- Kanal: Yamaha Motor Malaysia
-- Datum: 2026-11-20T07:27:37Z
-- URL: https://www.youtube.com/watch?v=bdEAxO6lxjE
-- Views: 4
-- Likes: 1
-- Kommentare: 0
+- Titel: Penyebab Veda Ega Crahs di portugal
+- Kanal: HIGHLIGT SPORT
+- Datum: 2026-11-23T03:49:21Z
+- URL: https://www.youtube.com/watch?v=R38U5oS3HAk
+- Views: 10417
+- Likes: 172
+- Kommentare: 10
