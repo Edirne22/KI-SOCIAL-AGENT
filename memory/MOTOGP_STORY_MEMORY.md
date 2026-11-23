@@ -2044,3 +2044,38 @@ Quelle: https://trf1.net/motor-sporlari/motogp/portekiz-motogpde-start-sirasi-be
 Story-Key: motogp:126309
 Titel: Marc Marquez Portimao’da şampiyonluk şansı için “öncelik”i açıkladı: “Asıl öncelik yarışı bitirmek” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-portimaoda-sampiyonluk-sansi-icin-onceliki-acikladi-asil-oncelik-yarisi-bitirmek/126309
+
+## 2026-11-23 19:01 UTC – ANGEBOTEN
+Story-Key: title:moto2-portekiz-gp-munoz-kazand-ampiyonluk-valencia-ya-kald-deniz-16-oldu
+Titel: Moto2 Portekiz GP: Munoz Kazandı, Şampiyonluk Valencia'ya Kaldı, Deniz 16. Oldu
+Quelle: https://motoetkinlik.com/moto2-portekiz-gp-munoz-kazandi-sampiyonluk-valenciaya-kaldi-deniz-16-oldu
+
+## 2026-11-23 19:01 UTC – ANGEBOTEN
+Story-Key: motogp:10877152
+Titel: Moto2 Portekiz GP: Munoz kazandı, Gonzalez yarış dışı kaldı, Deniz Öncü 16. sırada
+Quelle: https://tr.motorsport.com/moto2/news/moto2-portekiz-gp-munoz-kazandi-gonzalez-yaris-disi-kaldi-deniz-oncu-16-sirada/10877152
+
+## 2026-11-23 19:01 UTC – ANGEBOTEN
+Story-Key: title:moto2-portim-o-mu-oz-dan-ilk-zafer-ampiyonluk-valencia-ya-kald-motoron-dergisi
+Titel: Moto2 Portimão: Muñoz'dan ilk zafer, şampiyonluk Valencia'ya kaldı | Motoron Dergisi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-munozdan-ilk-zafer-sampiyonluk-valenciaya-kaldi
+
+## 2026-11-23 19:01 UTC – ANGEBOTEN
+Story-Key: motogp:126883
+Titel: Marc Marquez rahatlamayı anlattı: “Bir hafta daha böyle olsa ömrümden 10 yıl giderdi” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/marc-marquez-rahatlamayi-anlatti-bir-hafta-daha-boyle-olsa-omrumden-10-yil-giderdi/126883
+
+## 2026-11-23 19:01 UTC – ANGEBOTEN
+Story-Key: motogp:126881
+Titel: Valencia MotoGP seans saatleri (Türkiye saati): 1000 cc dönemin son yarışı 27-29 Kasım’da - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/valencia-motogp-seans-saatleri-turkiye-saati-1000-cc-donemin-son-yarisi-27-29-kasimda/126881
+
+## 2026-11-23 19:01 UTC – ANGEBOTEN
+Story-Key: motogp:126190
+Titel: Bezzecchi sprint zaferinde neden “biraz korktuğunu” anlattı: “Yağmur geri geldi” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-sprint-zaferinde-neden-biraz-korktugunu-anlatti-yagmur-geri-geldi/126190
+
+## 2026-11-23 19:01 UTC – ANGEBOTEN
+Story-Key: motogp:126188
+Titel: Jorge Martin: Sprintteki şoka rağmen şampiyonluk “hâlâ Marc Marquez’in elinde” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Quelle: https://trf1.net/motor-sporlari/motogp/jorge-martin-sprintteki-soka-ragmen-sampiyonluk-hala-marc-marquezin-elinde/126188

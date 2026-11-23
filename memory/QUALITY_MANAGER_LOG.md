@@ -4674,3 +4674,39 @@ Story-Key: motogp:126309
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-23 19:22 UTC | Motorcycle Racing | FAIL
+Titel: Moto2 Portimão: Muñoz'dan ilk zafer, şampiyonluk Valencia'ya kaldı | Motoron Dergisi
+Story-Key: title:moto2-portim-o-mu-oz-dan-ilk-zafer-ampiyonluk-valencia-ya-kald-motoron-dergisi
+Gründe: Final-Guard: Nationalitaet spanier nicht in Quellenfakten
+Human-Writing-Protocol: V1.0
+
+## 2026-11-23 19:22 UTC | Motorcycle Racing | PASS
+Titel: Moto2 Portimão: Muñoz'dan ilk zafer, şampiyonluk Valencia'ya kaldı | Motoron Dergisi
+Story-Key: title:moto2-portim-o-mu-oz-dan-ilk-zafer-ampiyonluk-valencia-ya-kald-motoron-dergisi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-23 19:23 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez rahatlamayı anlattı: “Bir hafta daha böyle olsa ömrümden 10 yıl giderdi” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:126883
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-23 19:23 UTC | Motorcycle Racing | PASS
+Titel: Valencia MotoGP seans saatleri (Türkiye saati): 1000 cc dönemin son yarışı 27-29 Kasım’da - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:126881
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-23 19:23 UTC | Motorcycle Racing | PASS
+Titel: Bezzecchi sprint zaferinde neden “biraz korktuğunu” anlattı: “Yağmur geri geldi” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:126190
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-23 19:23 UTC | Motorcycle Racing | PASS
+Titel: Jorge Martin: Sprintteki şoka rağmen şampiyonluk “hâlâ Marc Marquez’in elinde” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Story-Key: motogp:126188
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+

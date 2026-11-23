@@ -1,9 +1,34 @@
 {
   "version": 1,
-  "created_at": 1795360112,
+  "created_at": 1795460489,
   "max_days": 7,
   "window_used_days": 7,
-  "count": 0,
-  "visible_count": 0,
-  "items": []
+  "count": 2,
+  "visible_count": 2,
+  "items": [
+    {
+      "n": 1,
+      "title": "Moto2 Portekiz GP: Munoz Kazandı, Şampiyonluk Valencia'ya Kaldı, Deniz 16. Oldu",
+      "url": "https://motoetkinlik.com/moto2-portekiz-gp-munoz-kazandi-sampiyonluk-valenciaya-kaldi-deniz-16-oldu",
+      "summary": "Moto2 Portekiz GP'yi Daniel Munoz kazandı. Gonzalez kırmızı bayrak sonrası yeniden starta çıkamadı, fark 4,5 puana indi. Deniz Öncü yarışı 16. bitirdi.",
+      "preview": "https://motoetkinlik.com/wp-content/uploads/2026/11/2026_Round21_Portimao_Moto2_Sunday_Oncu-1.webp",
+      "published_at": "2026-11-22T20:00:18+03:00",
+      "series": "Moto2",
+      "source_series": "Moto2",
+      "turkish_rider": "Deniz Öncü",
+      "kind": "news"
+    },
+    {
+      "n": 2,
+      "title": "Moto2 Portekiz GP: Munoz kazandı, Gonzalez yarış dışı kaldı, Deniz Öncü 16. sırada",
+      "url": "https://tr.motorsport.com/moto2/news/moto2-portekiz-gp-munoz-kazandi-gonzalez-yaris-disi-kaldi-deniz-oncu-16-sirada/10877152",
+      "summary": "2026 Moto2 Dünya Şampiyonası’nın Portekiz Grand Prix’sini kazanan isim Daniel Munoz oldu.",
+      "preview": "https://cdn-1.motorsport.com/images/amp/0rVPeo70/s6/moto2-portekiz.jpg",
+      "published_at": "2026-11-22T12:40:00Z",
+      "series": "Moto2",
+      "source_series": "Moto2",
+      "turkish_rider": "Deniz Öncü",
+      "kind": "news"
+    }
+  ]
 }
