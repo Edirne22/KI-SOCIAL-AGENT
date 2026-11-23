@@ -1966,9 +1966,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zam
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-4-lorenzodan-marquez-o-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 45092865110-1
+## Facebook [GEPOSTET 2026-11-23 01:09 | ID: 122137495599469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-19-daily
 Telegram-Update-ID: 279362065
@@ -1991,6 +1990,7 @@ Was haltet ihr von Lorenzos Statement – ist Marquez wirklich der G.O.A.T.?
 Quelle: https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zamanlarin-en-buyugu/125814
 Bild: assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-4-lorenzodan-marquez-o-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-19-racing-editorial-2026-11-19-4-lorenzodan-marquez-o-01.jpg", "media_status": "", "object_id": "122137495599469415", "object_type": "bild", "platform": "facebook", "post_id": "122137495599469415", "source_url": "https://trf1.net/motor-sporlari/motogp/lorenzodan-marquez-ovgusu-tum-zamanlarin-en-buyugu/125814", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
