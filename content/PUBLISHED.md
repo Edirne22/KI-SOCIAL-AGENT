@@ -2156,3 +2156,87 @@ Wie seht ihr den Start der Portugiesen-Runde?
 Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada
 Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-5-motogp-portimao-fp1-01.jpg
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-23-daily
+Telegram-Update-ID: 279362072
+MotoGP-Auswahl: 1
+Story-Key: title:moto2-portim-o-mu-oz-dan-ilk-zafer-ampiyonluk-valencia-ya-kald-motoron-dergisi
+Event-Fingerprint: -
+Titel: Moto2 Portimão: Muñoz'dan ilk zafer, şampiyonluk Valencia'ya kaldı | Motoron Dergisi
+Text:
+Daniel Muñoz hat beim Moto2-Rennen in Portimão seinen ersten Sieg gefeiert – und das bei einem Rennen mit roter Flagge. Die Sache hat es in sich: González blieb ohne Punkte, der Rückstand im Titelkampf schrumpft auf gerade einmal 4,5 Zähler. Und für uns alle hier – Deniz Öncü landete auf Platz 16. Die Meisterschaft entscheidet sich jetzt erst in Valencia, da kann noch alles passieren. 🏁
+
+Was denkt ihr: Kann Muñoz den Titel holen oder reicht der Vorsprung fürs Saisonfinale?
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-munozdan-ilk-zafer-sampiyonluk-valenciaya-kaldi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-munozdan-ilk-zafer-sampiyonluk-valenciaya-kaldi
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-1-moto2-portimao-munoz-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-23-daily
+Telegram-Update-ID: 279362072
+MotoGP-Auswahl: 1
+Story-Key: title:moto2-portim-o-mu-oz-dan-ilk-zafer-ampiyonluk-valencia-ya-kald-motoron-dergisi
+Event-Fingerprint: -
+Titel: Moto2 Portimão: Muñoz'dan ilk zafer, şampiyonluk Valencia'ya kaldı | Motoron Dergisi
+Text:
+Daniel Muñoz hat beim Moto2-Rennen in Portimão seinen ersten Sieg gefeiert – und das bei einem Rennen mit roter Flagge. Die Sache hat es in sich: González blieb ohne Punkte, der Rückstand im Titelkampf schrumpft auf gerade einmal 4,5 Zähler. Und für uns alle hier – Deniz Öncü landete auf Platz 16. Die Meisterschaft entscheidet sich jetzt erst in Valencia, da kann noch alles passieren. 🏁
+
+Was denkt ihr: Kann Muñoz den Titel holen oder reicht der Vorsprung fürs Saisonfinale?
+
+#Moto2 #DenizOncu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-munozdan-ilk-zafer-sampiyonluk-valenciaya-kaldi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-munozdan-ilk-zafer-sampiyonluk-valenciaya-kaldi
+Bild: assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-1-moto2-portimao-munoz-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-23-daily
+Telegram-Update-ID: 279362072
+MotoGP-Auswahl: 3
+Story-Key: motogp:126881
+Event-Fingerprint: MotoGP|sprint|bezzecchi,marquez|valencia
+Titel: Valencia MotoGP seans saatleri (Türkiye saati): 1000 cc dönemin son yarışı 27-29 Kasım’da - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Am 27. bis 29. November startet in Valencia das Saisonfinale der MotoGP – und das markiert das Ende einer Ära: Es ist der letzte Lauf im 1000-cc- und Michelin-Zeitalter. Marc Marquez kommt nach dem Sieg in Portimao als achtmaliger Champion ins Rennen, während Marco Bezzecchi als erster Fahrer in einer Rennwoche sowohl Sprint als auch Grand Prix gewann und Aprilia damit den Teamtitel sicherte.
+
+Wie seht ihr das Ende dieser Ära? 🏁
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/valencia-motogp-seans-saatleri-turkiye-saati-1000-cc-donemin-son-yarisi-27-29-kasimda/126881
+Quelle: https://trf1.net/motor-sporlari/motogp/valencia-motogp-seans-saatleri-turkiye-saati-1000-cc-donemin-son-yarisi-27-29-kasimda/126881
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-3-valencia-motogp-sean-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-23-daily
+Telegram-Update-ID: 279362072
+MotoGP-Auswahl: 3
+Story-Key: motogp:126881
+Event-Fingerprint: MotoGP|sprint|bezzecchi,marquez|valencia
+Titel: Valencia MotoGP seans saatleri (Türkiye saati): 1000 cc dönemin son yarışı 27-29 Kasım’da - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Am 27. bis 29. November startet in Valencia das Saisonfinale der MotoGP – und das markiert das Ende einer Ära: Es ist der letzte Lauf im 1000-cc- und Michelin-Zeitalter. Marc Marquez kommt nach dem Sieg in Portimao als achtmaliger Champion ins Rennen, während Marco Bezzecchi als erster Fahrer in einer Rennwoche sowohl Sprint als auch Grand Prix gewann und Aprilia damit den Teamtitel sicherte.
+
+Wie seht ihr das Ende dieser Ära? 🏁
+
+#MotoGP #MarcMarquez #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/valencia-motogp-seans-saatleri-turkiye-saati-1000-cc-donemin-son-yarisi-27-29-kasimda/126881
+Quelle: https://trf1.net/motor-sporlari/motogp/valencia-motogp-seans-saatleri-turkiye-saati-1000-cc-donemin-son-yarisi-27-29-kasimda/126881
+Bild: assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-3-valencia-motogp-sean-01.jpg
+Link-Preview: offiziell
