@@ -2079,3 +2079,33 @@ Quelle: https://trf1.net/motor-sporlari/motogp/bezzecchi-sprint-zaferinde-neden-
 Story-Key: motogp:126188
 Titel: Jorge Martin: Sprintteki şoka rağmen şampiyonluk “hâlâ Marc Marquez’in elinde” - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
 Quelle: https://trf1.net/motor-sporlari/motogp/jorge-martin-sprintteki-soka-ragmen-sampiyonluk-hala-marc-marquezin-elinde/126188
+
+## 2026-11-24 18:40 UTC – ANGEBOTEN
+Story-Key: title:fim-motomini-d-nya-finali-d-rt-temsilcimiz-valencia-da-piste-k-yor
+Titel: FIM MotoMini Dünya Finali: Dört Temsilcimiz Valencia'da Piste Çıkıyor
+Quelle: https://motoetkinlik.com/fim-motomini-dunya-finali-dort-temsilcimiz-valenciada-piste-cikiyor
+
+## 2026-11-24 18:40 UTC – ANGEBOTEN
+Story-Key: title:motogp-de-y-l-n-ayla-diogo-moreira-toprak-ikinci-s-rada-motoron-dergisi
+Titel: MotoGP'de Yılın Çaylağı Diogo Moreira: Toprak ikinci sırada | Motoron Dergisi
+Quelle: https://www.motoron.com.tr/motosiklet-haber/motogp-2026-yilin-caylagi-diogo-moreira-toprak-ikinci
+
+## 2026-11-24 18:40 UTC – ANGEBOTEN
+Story-Key: motogp:1268080
+Titel: Red Bull KTM Tech3 confirm Pol Espargaro to replace Viñales at Valencia
+Quelle: https://www.motogp.com/en/news/2026/11/24/red-bull-ktm-tech3-confirm-pol-espargaro-to-replace-vinales-at-valencia/1268080
+
+## 2026-11-24 18:40 UTC – ANGEBOTEN
+Story-Key: title:bezzecchi-den-marc-marquez-kazas-na-yorum-onun-hata-yapmas-her-zaman-rt-c
+Titel: Bezzecchi’den Marc Marquez’in Kazasına Yorum: “Onun Hata Yapması Her Zaman Şaşırtıcı”
+Quelle: https://motoetkinlik.com/bezzecchiden-marc-marquezin-kazasina-yorum-onun-hata-yapmasi-her-zaman-sasirtici
+
+## 2026-11-24 18:40 UTC – ANGEBOTEN
+Story-Key: motogp:1267971
+Titel: Lecuona and Dixon carry the WorldSBK banner high in MotoGP replacement duty at Portimao
+Quelle: https://www.worldsbk.com/en/news/2026/11/23/lecuona-and-dixon-carry-the-worldsbk-banner-high-in-motogp-replacement-duty-at-portimao/1267971
+
+## 2026-11-24 18:40 UTC – ANGEBOTEN
+Story-Key: title:marc-marquez-aptalca-bir-hata-de-ildi-90-dakikada-gol-yemek-gibiydi
+Titel: Marc Marquez: “Aptalca Bir Hata Değildi, 90. Dakikada Gol Yemek Gibiydi!”
+Quelle: https://motoetkinlik.com/marc-marquez-aptalca-bir-hata-degildi-90-dakikada-gol-yemek-gibiydi

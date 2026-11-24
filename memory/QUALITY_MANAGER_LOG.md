@@ -4710,3 +4710,33 @@ Story-Key: motogp:126188
 Gründe: alle Gates bestanden
 Human-Writing-Protocol: V1.0
 
+## 2026-11-24 19:04 UTC | Motorcycle Racing | PASS
+Titel: MotoGP'de Yılın Çaylağı Diogo Moreira: Toprak ikinci sırada | Motoron Dergisi
+Story-Key: title:motogp-de-y-l-n-ayla-diogo-moreira-toprak-ikinci-s-rada-motoron-dergisi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-24 19:04 UTC | Motorcycle Racing | PASS
+Titel: Red Bull KTM Tech3 confirm Pol Espargaro to replace Viñales at Valencia
+Story-Key: motogp:1268080
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-24 19:04 UTC | Motorcycle Racing | PASS
+Titel: Bezzecchi’den Marc Marquez’in Kazasına Yorum: “Onun Hata Yapması Her Zaman Şaşırtıcı”
+Story-Key: title:bezzecchi-den-marc-marquez-kazas-na-yorum-onun-hata-yapmas-her-zaman-rt-c
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-24 19:04 UTC | Motorcycle Racing | PASS
+Titel: Lecuona and Dixon carry the WorldSBK banner high in MotoGP replacement duty at Portimao
+Story-Key: motogp:1267971
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
+## 2026-11-24 19:04 UTC | Motorcycle Racing | PASS
+Titel: Marc Marquez: “Aptalca Bir Hata Değildi, 90. Dakikada Gol Yemek Gibiydi!”
+Story-Key: title:marc-marquez-aptalca-bir-hata-de-ildi-90-dakikada-gol-yemek-gibiydi
+Gründe: alle Gates bestanden
+Human-Writing-Protocol: V1.0
+
