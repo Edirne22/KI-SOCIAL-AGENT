@@ -1984,9 +1984,8 @@ Quelle: https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-prama
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-1-yamaha-nin-1000cc-v4-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 45319391068-1
+## Facebook [GEPOSTET 2026-11-24 03:25 | ID: 122137758801469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-20-daily
 Telegram-Update-ID: 279362071
@@ -2007,6 +2006,7 @@ Wie seht ihr Yamahas Entscheidung – richtig oder verpasste Chance?
 Quelle: https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-pramac-portekiz-gp-oncesi-zorluklari-kabul-etti
 Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-1-yamaha-nin-1000cc-v4-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-1-yamaha-nin-1000cc-v4-01.jpg", "media_status": "", "object_id": "122137758801469415", "object_type": "bild", "platform": "facebook", "post_id": "122137758801469415", "source_url": "https://motoetkinlik.com/yamahanin-1000cc-v4-projesinde-yolun-sonu-pramac-portekiz-gp-oncesi-zorluklari-kabul-etti", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
