@@ -1,5 +1,55 @@
 # Archiviert Beiträge 2026-11
 
+## Facebook [GEPOSTET 2026-11-16 14:50 | ID: 122135253693469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 3
+Story-Key: motogp:125406
+Event-Fingerprint: -
+Titel: Chico Lorenzo, Marquez’in büyüklüğünün ardındaki teoriyi anlattı - TRF1.net - Türkçe F1, Formula 1 ve Motor Sporları Haberleri
+Text:
+Marc Marquez steht kurz vor seinem achten Titel in der Königsklasse.
+
+Chico Lorenzo, Vater und Trainer von Jorge Lorenzo, hat die Faktoren hinter den Erfolgen des Ducati-Fahrers bewertet.
+
+Jorge Lorenzo war zwischen 2013 und 2019 der einzige andere Pilot mit einem MotoGP-Titel, bevor Marquez nach seinen Armverletzungen 2020 in Jerez vorübergehend ausfiel.
+
+Teilt eure Gedanken dazu gerne in den Kommentaren.
+
+#MotoGP #MarcMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406
+Quelle: https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-3-chico-lorenzo-marque-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-3-chico-lorenzo-marque-01.jpg", "media_status": "", "object_id": "122135253693469415", "object_type": "bild", "platform": "facebook", "post_id": "122135253693469415", "source_url": "https://trf1.net/motor-sporlari/motogp/chico-lorenzo-marquezin-buyuklugunun-ardindaki-teoriyi-anlatti/125406", "version": 1}
+
+## Facebook [GEPOSTET 2026-11-17 00:15 | ID: 122135411505469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-15-daily
+Telegram-Update-ID: 279362043
+MotoGP-Auswahl: 4
+Story-Key: motogp:10874266
+Event-Fingerprint: -
+Titel: Antonelli’den Bezzecchi’ye destek mesajı: "Dünya şampiyonluğunu hak ediyor"
+Text:
+Kimi Antonelli hat Marco Bezzecchi eine deutliche Empfehlung gegeben – und die gilt zukünftig.
+
+Der italienische MotoGP-Fahrer sieht seinen engsten Freund als einen der stärksten Anwärter auf die Weltmeisterschaft im nächsten Jahr. Antonelli steht fest hinter Bezzecchi und setzt damit klare Signale im Fahrerlager.
+
+Wie schätzt ihr Bezzecchis Titelchancen für kommende Saison ein?
+
+#MotoGP #MarcoBezzecchi #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266
+Quelle: https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266
+Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-4-antonelliden-bezzecc-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-4-antonelliden-bezzecc-01.jpg", "media_status": "", "object_id": "122135411505469415", "object_type": "bild", "platform": "facebook", "post_id": "122135411505469415", "source_url": "https://tr.motorsport.com/motogp/news/antonelliden-bezzecchiye-destek-mesaji-dunya-sampiyonlugunu-hak-ediyor/10874266", "version": 1}
+
 ## Facebook [GEPOSTET 2026-11-15 13:27 | ID: 122134873461469415]
 Status: GEPOSTET
 Freigabe: Telegram Racing
