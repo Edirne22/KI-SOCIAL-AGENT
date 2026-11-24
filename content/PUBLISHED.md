@@ -1986,7 +1986,7 @@ Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-1-yamaha-nin-
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 45319391068-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-20-daily
 Telegram-Update-ID: 279362071
