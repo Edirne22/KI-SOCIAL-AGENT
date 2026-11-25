@@ -51,13 +51,13 @@ class Repair(unittest.TestCase):
         self.assertEqual(len(result),400)
         self.assertEqual(result[-1]['title'],'399')
         self.assertEqual(result[-1]['turkish_rider'],'Can Öncü')
-    def test_turkish_week_window_no_future_undated_or_stale(self):
+    def test_turkish_month_window_no_future_undated_or_stale(self):
         rows=[item(1,4),item(2,8),item(3,-1),item(4)]
         rows[-1]['published_at']=''
         with patch.object(a,'roster_names',return_value=[]):
             result,window=a.turkish_offer_candidates(rows,NOW)
-        self.assertEqual(result,[rows[0]])
-        self.assertEqual(window,7)
+        self.assertEqual(result,rows[:2])
+        self.assertEqual(window,30)
     def test_hidden_turkish_candidates_not_burned(self):
         rows=[item(i) for i in range(10)]
         with patch.object(a,'send_message'), patch.object(a,'_send_turkish_source_photo',return_value=False), patch.object(a,'extract_og_image_url',return_value=''), patch.object(a,'roster_names',return_value=[]):

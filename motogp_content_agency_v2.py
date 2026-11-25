@@ -476,7 +476,7 @@ def turkish_candidate_reason(x,now,max_days=10):
   if age>max_days:return 'older-than-window'
   return 'PASS'
 
-def turkish_offer_candidates(details,now,max_days=7,exclude_items=None,offered_keys=None,limit=20):
+def turkish_offer_candidates(details,now,max_days=30,exclude_items=None,offered_keys=None,limit=20):
   """Return fresh Turkish-rider stories not already offered in an earlier Racing session."""
   exclude_items=exclude_items or []
   excluded_keys={story_key(x.get('title',''),x.get('url','')) for x in exclude_items}
@@ -489,7 +489,7 @@ def turkish_offer_candidates(details,now,max_days=7,exclude_items=None,offered_k
   except (OSError,ValueError,TypeError):
    pass
   candidates=[];seen=set();window_used=0
-  for days in tuple(dict.fromkeys((1,max_days))):
+  for days in tuple(dict.fromkeys(d for d in (1,7,14,max_days) if d<=max_days)):
    window_used=days
    eligible=(y for y in details if turkish_candidate_gate(y,now,days))
    for x in sorted(eligible,key=lambda y:editorial_score(y,roster_names()),reverse=True):
@@ -502,7 +502,7 @@ def turkish_offer_candidates(details,now,max_days=7,exclude_items=None,offered_k
   return candidates,window_used
 
 
-def turkish_five_preview(details,now,max_days=7,exclude_items=None):
+def turkish_five_preview(details,now,max_days=30,exclude_items=None):
   # Save up to 20 selectable candidates, show T1-T5, and prevent previously
   # offered stories from cycling back through either Racing lane.
   candidates,window_used=turkish_offer_candidates(details,now,max_days,exclude_items)
@@ -570,7 +570,7 @@ def cheap_prefilter_reason(title,url,now):
  if m:
   try:
    d=dt(int(m.group(1)),int(m.group(2)),int(m.group(3)),tzinfo=timezone.utc)
-   if (now-d).total_seconds()>7*86400:return 'old-url-date'
+   if (now-d).total_seconds()>30*86400:return 'old-url-date'
   except ValueError:pass
  return ''
 
