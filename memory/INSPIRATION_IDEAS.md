@@ -1,7 +1,9 @@
 # Inspiration-Ideen
 
-, Engagement: 23967)
-    - Why trending: Offizielle Bestätigung, dass Razgatlıoğlu das Rennen auf Phillip Island und den Rest der Saison 2026 verpasst (23.967 Engagement).
+Hier ist der maßgeschneiderte Social-Media-Report für Bülents deutsch-türkische Motorrad- und Reise-Community, basierend auf den vorliegenden Echtdaten.
 
-    Topic 5: Marc Márquez sichert sich den Weltmeistertitel („GOAT“-Status)
-    - Source:
+---
+
+## Top-5 Trending Themen (mit Belegen)
+
+1. **Toprak Razgatlıoğlu: Schulter-OP und vorzeitiges Saisonende 2026

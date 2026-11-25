@@ -5,25 +5,33 @@
 
 ## Instagram
 ### Datensatz 1
+- Titel: Öğretmenler Günümüz Kutlu Olsun 🥳
+Babam bana motordan daha büyük birşey öğretti Saygı Sevgi Güler Yüz ve Mütavazi Olmak hiçbir zaman değişmeyecek inşallah. Bu uzun yolculukta çok güzel anılar ve şampiyonluklar biriktirdik inşallah daha nicelerine herşey için teşekkür ederim ögretmenlerim #tektekerarif @kenansofuoglu ❤️
+- Datum: 2026-11-24T07:42:19.000Z
+- URL: https://www.instagram.com/p/DgHca2pDU3Y/
+- Likes: 108252
+- Kommentare: 588
+- Shares: nicht verfügbar
+### Datensatz 2
 - Titel: Sometimes unexpected things can happen. I’m going through a difficult time because for the first time in my racing career, I had to end the season early. Watching the races on television is a very strange feeling. I had shoulder surgery to be able to come back stronger and I’ve already started training. I hope we’ll be back on the motorcycle as soon as possible.
 Many thanks to Yamaha family My team and the doctor Minola🥰
 I would also like to thank all of you who supported me and didn’t leave me 
 - Datum: 2026-10-27T09:34:29.000Z
 - URL: https://www.instagram.com/p/De_i_4MjdMG/
-- Likes: 179019
-- Kommentare: 6392
+- Likes: 179132
+- Kommentare: 6394
 - Shares: nicht verfügbar
-### Datensatz 2
+### Datensatz 3
 - Titel: @toprakrazgatlioglu7 best of luck with your surgery and get well soon! 
 We’re waiting for you! ❤️👀
 
 #primapramacyamaha #motogp
 - Datum: 2026-10-25T01:48:34.000Z
 - URL: https://www.instagram.com/p/De5kAPxprCa/
-- Likes: 9717
-- Kommentare: 123
+- Likes: 9760
+- Kommentare: 124
 - Shares: nicht verfügbar
-### Datensatz 3
+### Datensatz 4
 - Titel: Toprak Razgatlıoğlu to miss Phillip Island and remainder of the 2026 season
 
 @toprakrazgatlioglu7 - “I’m extremely disappointed to miss the Australian Grand Prix. Phillip Island is one of my favourite circuits and a place where I’ve enjoyed some very special moments during my Superbike career. I was excited about the opportunity to race here on the MotoGP bike, which makes this situation even harder to accept.
@@ -31,10 +39,10 @@ We’re waiting for you! ❤️👀
 After further medical assessments following the crash in Mandalika, it became clear t
 - Datum: 2026-10-20T07:45:17.000Z
 - URL: https://www.instagram.com/p/DetU74Yiboe/
-- Likes: 23673
+- Likes: 23705
 - Kommentare: 294
 - Shares: nicht verfügbar
-### Datensatz 4
+### Datensatz 5
 - Titel: @toprakrazgatlioglu7 - DNF 💬
 #IndonesianGP - RACE 🇮🇩
 
@@ -43,10 +51,10 @@ Today, my biggest problem was my shoulder, not the bike. Yesterday, after the Sp
 Before the race, I spok
 - Datum: 2026-10-11T11:21:08.000Z
 - URL: https://www.instagram.com/p/DeWie_xCCgU/
-- Likes: 13037
+- Likes: 13075
 - Kommentare: 140
 - Shares: nicht verfügbar
-### Datensatz 5
+### Datensatz 6
 - Titel: @toprakrazgatlioglu7 - P19 💬
 #IndonesianGP - SPRINT 🇮🇩
 
@@ -55,10 +63,10 @@ Before qualifying, I had a big crash and dislocated my shoulder. We put it back 
 On the bike, we still need to improve a few things, particularly with the electronics in some corners. I‘m also losing quite a lot of time in Sector 2, and if 
 - Datum: 2026-10-10T13:59:12.000Z
 - URL: https://www.instagram.com/p/DeUPxyXCDPy/
-- Likes: 21649
+- Likes: 21682
 - Kommentare: 322
 - Shares: nicht verfügbar
-### Datensatz 6
+### Datensatz 7
 - Titel: @toprakrazgatlioglu7 - P16 💬
 #IndonesianGP - PRACTICE 🇮🇩
 
@@ -67,19 +75,19 @@ Today was not bad, much better than Japan and the last four rounds. I also impro
 We are working on the engine braking, and we have made some small changes that are helping me feel more comfortable. The braking
 - Datum: 2026-10-09T12:18:20.000Z
 - URL: https://www.instagram.com/p/DeRfcK-iLXX/
-- Likes: 14678
+- Likes: 14698
 - Kommentare: 127
 - Shares: nicht verfügbar
-### Datensatz 7
+### Datensatz 8
 - Titel: Biig Stoprak at the line 😮‍💨
 
 #IndonesianGP 🇮🇩 #MotoGP #ToprakRazgatlioglu
 - Datum: 2026-10-09T04:44:36.000Z
 - URL: https://www.instagram.com/p/DeQqn0iIZr3/
-- Likes: 79039
+- Likes: 79055
 - Kommentare: 265
 - Shares: nicht verfügbar
-### Datensatz 8
+### Datensatz 9
 - Titel: Indonesia 🇮🇩 Mandalika 
 I am in the place where I have my fondest memories 2021❤️
 - Datum: 2026-10-06T11:52:35.000Z
@@ -87,7 +95,7 @@ I am in the place where I have my fondest memories 2021❤️
 - Likes: 141663
 - Kommentare: 1127
 - Shares: nicht verfügbar
-### Datensatz 9
+### Datensatz 10
 - Titel: @toprakrazgatlioglu7 - P17 💬
 #JapaneseGP - RACE 🇯🇵
 
@@ -96,116 +104,106 @@ I had the same problem again with the tyres and with stopping the bike. In the f
 I can see that Fabio is able to stop the bike more easily because he has much more experience with the Yamaha. I‘m still learning how to
 - Datum: 2026-10-04T09:23:58.000Z
 - URL: https://www.instagram.com/p/DeETgu8iKvZ/
-- Likes: 50114
+- Likes: 50132
 - Kommentare: 182
-- Shares: nicht verfügbar
-### Datensatz 10
-- Titel: @toprakrazgatlioglu7 - P21 💬
-#JapaneseGP - PRACTICE 🇯🇵
-
-I learned a lot more about the track today and I really like Motegi, but we still have the same problem with the soft tyre. When I put the new soft tyre on, I lose a lot of time under braking because I still cannot stop the bike in the way I want. This is the biggest area where I need to improve.
-
-With the medium tyre, even a used one, my lap time was quite similar to what I could do with the new soft, so our race pace is not so bad. But wh
-- Datum: 2026-10-02T11:52:14.000Z
-- URL: https://www.instagram.com/p/Dd_a43BiOOe/
-- Likes: 11220
-- Kommentare: 75
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
 
 ## Facebook
 ### Datensatz 1
-- Titel: A #MotoGP World Championship that got the world's stars talking 👏🌍
+- Titel: Mullets, bellyslides, pranks and pure paddock chaos 😂
 
-#MARCmade #H1STORY
-- Datum: 2026-11-23T15:15:17.000Z
+#MotoGP is going to miss you, Jack! ❤️
+- Datum: 2026-11-25T14:31:27.000Z
 - URL: nicht verfügbar
-- Likes: 517
-- Kommentare: 14
+- Likes: 595
+- Kommentare: 9
 - Shares: nicht verfügbar
 ### Datensatz 2
-- Titel: Letting it all sink in 🥹
+- Titel: Pedrosa and Lorenzo going all out in Valencia 😮‍💨
 
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-23T15:05:33.000Z
+#ValenciaGP🏁 #MotoGP
+- Datum: 2026-11-25T13:48:41.000Z
 - URL: nicht verfügbar
-- Likes: 641
-- Kommentare: 26
+- Likes: 2119
+- Kommentare: 45
 - Shares: nicht verfügbar
 ### Datensatz 3
-- Titel: Mindset. Ambition. Resilience. CHAMPION. 🏆
-
-#MARCmade #H1STORY
-- Datum: 2026-11-23T14:30:30.000Z
+- Titel: Three #MotoGP life lessons, with a kind soul ❤️
+- Datum: 2026-11-25T13:01:54.000Z
 - URL: nicht verfügbar
-- Likes: 318
-- Kommentare: 14
-- Shares: nicht verfügbar
-### Datensatz 4
-- Titel: Raw emotions after @marcmarquez93's World Champion coronation 🗣️🔥
-
-#MARCmade #H1STORY
-- Datum: 2026-11-23T13:36:55.000Z
-- URL: nicht verfügbar
-- Likes: 2008
-- Kommentare: 42
-- Shares: nicht verfügbar
-### Datensatz 5
-- Titel: A retro look that never gets old 😮‍💨 Celebrating 30 years of @gresiniracing with a nod to @tonielias24 2006 Portugal win 🫶
-
-#PortugueseGP🇵🇹 #MotoGP
-- Datum: 2026-11-23T12:30:23.000Z
-- URL: nicht verfügbar
-- Likes: 703
-- Kommentare: 2
-- Shares: nicht verfügbar
-### Datensatz 6
-- Titel: Smooth operator 😮‍💨 @brianuriarte51 nailed that start 👀
-
-#PortugueseGP🇵🇹 #Moto3 @repsol.lubricants
-- Datum: 2026-11-23T12:00:25.000Z
-- URL: nicht verfügbar
-- Likes: 565
+- Likes: 116
 - Kommentare: 3
 - Shares: nicht verfügbar
-### Datensatz 7
-- Titel: A few words for the newly crowned champion 🤝
+### Datensatz 4
+- Titel: Three #MotoGP life lessons, from a kind soul 🫶
 
-#PortugueseGP🇵🇹
-- Datum: 2026-11-23T10:00:21.000Z
+#FrancoMorbidelli
+- Datum: 2026-11-25T13:00:22.000Z
 - URL: nicht verfügbar
-- Likes: 2984
-- Kommentare: 63
+- Likes: 97
+- Kommentare: 2
 - Shares: nicht verfügbar
-### Datensatz 8
-- Titel: BLACK FRIDAY HAS ENTERED THE CHAT 🏁
+### Datensatz 5
+- Titel: Your must-read ahead of the final round of 2026! 👀
 
-Your screen. Your wardrobe. Your entire personality. 👀
-
-It's time to shop the deals 🛍️👉 https://motogp.io/4CfUsru
+Check out the Official programme of the #ValenciaGP 👉 https://joom.ag/M4hd
 
 #MotoGP
-- Datum: 2026-11-23T09:54:43.000Z
+- Datum: 2026-11-25T12:14:16.000Z
 - URL: nicht verfügbar
-- Likes: 323
-- Kommentare: 12
+- Likes: 243
+- Kommentare: 7
+- Shares: nicht verfügbar
+### Datensatz 6
+- Titel: Valencia, land of exciting season finales and...VIRAL MOMENTS! 📱🤯
+
+We broke the internet quite a few times through plot twists, funny moments and incredible saves over the years! 
+
+#ValenciaGP 🏁 | #MotoGP
+- Datum: 2026-11-25T12:01:17.000Z
+- URL: nicht verfügbar
+- Likes: 1156
+- Kommentare: 11
+- Shares: nicht verfügbar
+### Datensatz 7
+- Titel: From early drama to a late battle for 3rd 😱⚔️
+
+Relive the key moments from last year's nail-biting #TissotSprint! 👀
+
+#ValenciaGP 🏁
+- Datum: 2026-11-25T10:30:35.000Z
+- URL: nicht verfügbar
+- Likes: 974
+- Kommentare: 5
+- Shares: nicht verfügbar
+### Datensatz 8
+- Titel: Battles everywhere you look from the get-go! 🔥
+
+Let's have one last look at the start from the hottest seats in the house at Portimao  🚀 
+
+#PortugueseGP 🇵🇹 | #SendIt
+- Datum: 2026-11-25T09:29:50.000Z
+- URL: nicht verfügbar
+- Likes: 1347
+- Kommentare: 9
 - Shares: nicht verfügbar
 ### Datensatz 9
-- Titel: The GOLDEN AGE 😉🏆 
+- Titel: Don’t miss a minute of the season finale 🙌 Here’s your #ValenciaGP timetable 🏁
 
-#MARCmade #H1STORY
-- Datum: 2026-11-23T08:00:03.000Z
+#MotoGP
+- Datum: 2026-11-25T09:00:10.000Z
 - URL: nicht verfügbar
-- Likes: 7359
-- Kommentare: 201
+- Likes: 922
+- Kommentare: 14
 - Shares: nicht verfügbar
 ### Datensatz 10
-- Titel: “Thanks for giving me this bike” 🥹 🏍️
+- Titel: All eyes on Valencia for one last showdown! 👀
 
-#MARCmade #H1STORY
-- Datum: 2026-11-23T07:00:32.000Z
+#ValenciaGP🏁 #MotoGP
+- Datum: 2026-11-25T08:00:23.000Z
 - URL: nicht verfügbar
-- Likes: 22331
-- Kommentare: 408
+- Likes: 367
+- Kommentare: 10
 - Shares: nicht verfügbar
 - Status: 10 öffentliche Beiträge verfügbar.
