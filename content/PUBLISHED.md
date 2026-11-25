@@ -2192,3 +2192,133 @@ Wie seht ihr das Ende dieser Ära? 🏁
 Quelle: https://trf1.net/motor-sporlari/motogp/valencia-motogp-seans-saatleri-turkiye-saati-1000-cc-donemin-son-yarisi-27-29-kasimda/126881
 Bild: assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-3-valencia-motogp-sean-01.jpg
 Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-24-daily
+Telegram-Update-ID: 279362075
+MotoGP-Auswahl: 1
+Story-Key: title:motogp-de-y-l-n-ayla-diogo-moreira-toprak-ikinci-s-rada-motoron-dergisi
+Event-Fingerprint: -
+Titel: MotoGP'de Yılın Çaylağı Diogo Moreira: Toprak ikinci sırada | Motoron Dergisi
+Text:
+Diogo Moreira ist der MotoGP-Rookie des Jahres 2026. 78 Punkte reichen dafür.
+
+Mit 78 Punkten hat er sich die Auszeichnung gesichert. Auf dem zweiten Platz landet Toprak Razgatlıoğlu mit 18 Punkten – sein Jahr endete vorzeitig wegen einer Schulterverletzung. Das ist erstmal ordentlich Respekt, selbst unter diesen Umständen.
+
+Wie seht ihr die Verteilung der Punkte zwischen den beiden?
+
+#MotoGP #ToprakRazgatlioglu #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motoron.com.tr/motosiklet-haber/motogp-2026-yilin-caylagi-diogo-moreira-toprak-ikinci
+Quelle: https://www.motoron.com.tr/motosiklet-haber/motogp-2026-yilin-caylagi-diogo-moreira-toprak-ikinci
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-1-motogp-de-yilin-cayl-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-24-daily
+Telegram-Update-ID: 279362075
+MotoGP-Auswahl: 1
+Story-Key: title:motogp-de-y-l-n-ayla-diogo-moreira-toprak-ikinci-s-rada-motoron-dergisi
+Event-Fingerprint: -
+Titel: MotoGP'de Yılın Çaylağı Diogo Moreira: Toprak ikinci sırada | Motoron Dergisi
+Text:
+Diogo Moreira ist der MotoGP-Rookie des Jahres 2026. 78 Punkte reichen dafür.
+
+Mit 78 Punkten hat er sich die Auszeichnung gesichert. Auf dem zweiten Platz landet Toprak Razgatlıoğlu mit 18 Punkten – sein Jahr endete vorzeitig wegen einer Schulterverletzung. Das ist erstmal ordentlich Respekt, selbst unter diesen Umständen.
+
+Wie seht ihr die Verteilung der Punkte zwischen den beiden?
+
+#MotoGP #ToprakRazgatlioglu #DiogoMoreira #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motoron.com.tr/motosiklet-haber/motogp-2026-yilin-caylagi-diogo-moreira-toprak-ikinci
+Quelle: https://www.motoron.com.tr/motosiklet-haber/motogp-2026-yilin-caylagi-diogo-moreira-toprak-ikinci
+Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-1-motogp-de-yilin-cayl-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-24-daily
+Telegram-Update-ID: 279362075
+MotoGP-Auswahl: 2
+Story-Key: motogp:1268080
+Event-Fingerprint: -
+Titel: Red Bull KTM Tech3 confirm Pol Espargaro to replace Viñales at Valencia
+Text:
+Pol Espargaro springt für den genesenden Maverick Viñales beim Saisonfinale in Valencia an den Start. Der Red Bull KTM Testfahrer übernimmt bei Tech3 für die letzte Runde der MotoGP-Saison 🏍️
+
+Was denkt ihr über diesen Wechsel?
+
+#MotoGP #MaverickViales #PolEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/24/red-bull-ktm-tech3-confirm-pol-espargaro-to-replace-vinales-at-valencia/1268080
+Quelle: https://www.motogp.com/en/news/2026/11/24/red-bull-ktm-tech3-confirm-pol-espargaro-to-replace-vinales-at-valencia/1268080
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-2-red-bull-ktm-tech3-c-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-24-daily
+Telegram-Update-ID: 279362075
+MotoGP-Auswahl: 2
+Story-Key: motogp:1268080
+Event-Fingerprint: -
+Titel: Red Bull KTM Tech3 confirm Pol Espargaro to replace Viñales at Valencia
+Text:
+Pol Espargaro springt für den genesenden Maverick Viñales beim Saisonfinale in Valencia an den Start. Der Red Bull KTM Testfahrer übernimmt bei Tech3 für die letzte Runde der MotoGP-Saison 🏍️
+
+Was denkt ihr über diesen Wechsel?
+
+#MotoGP #MaverickViales #PolEspargaro #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/24/red-bull-ktm-tech3-confirm-pol-espargaro-to-replace-vinales-at-valencia/1268080
+Quelle: https://www.motogp.com/en/news/2026/11/24/red-bull-ktm-tech3-confirm-pol-espargaro-to-replace-vinales-at-valencia/1268080
+Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-2-red-bull-ktm-tech3-c-01.jpg
+Link-Preview: offiziell
+
+## Instagram
+Status: BILD_GENERIERT
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-24-daily
+Telegram-Update-ID: 279362075
+MotoGP-Auswahl: 4
+Story-Key: motogp:1267971
+Event-Fingerprint: -
+Titel: Lecuona and Dixon carry the WorldSBK banner high in MotoGP replacement duty at Portimao
+Text:
+Lecuona und Dixon sind in Portimao für MotoGP eingesprungen – und haben die Weltmeisterschaft würdig vertreten. Lecuona auf der Ducati mit der #7 und Dixon auf der Honda mit der #96 haben bei dem Kletter-Jojo-Kurs richtig gut mitgekämpft.
+
+Was denkt ihr von den beiden Ersatzfahrtern?
+
+#WorldSBK #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.worldsbk.com/en/news/2026/11/23/lecuona-and-dixon-carry-the-worldsbk-banner-high-in-motogp-replacement-duty-at-portimao/1267971
+Quelle: https://www.worldsbk.com/en/news/2026/11/23/lecuona-and-dixon-carry-the-worldsbk-banner-high-in-motogp-replacement-duty-at-portimao/1267971
+Medienstatus: QUELLE_BESTÄTIGT
+Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-4-lecuona-and-dixon-ca-01.jpg
+
+## Facebook
+Status: FREIGEGEBEN
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-24-daily
+Telegram-Update-ID: 279362075
+MotoGP-Auswahl: 4
+Story-Key: motogp:1267971
+Event-Fingerprint: -
+Titel: Lecuona and Dixon carry the WorldSBK banner high in MotoGP replacement duty at Portimao
+Text:
+Lecuona und Dixon sind in Portimao für MotoGP eingesprungen – und haben die Weltmeisterschaft würdig vertreten. Lecuona auf der Ducati mit der #7 und Dixon auf der Honda mit der #96 haben bei dem Kletter-Jojo-Kurs richtig gut mitgekämpft.
+
+Was denkt ihr von den beiden Ersatzfahrtern?
+
+#WorldSBK #IkerLecuona #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.worldsbk.com/en/news/2026/11/23/lecuona-and-dixon-carry-the-worldsbk-banner-high-in-motogp-replacement-duty-at-portimao/1267971
+Quelle: https://www.worldsbk.com/en/news/2026/11/23/lecuona-and-dixon-carry-the-worldsbk-banner-high-in-motogp-replacement-duty-at-portimao/1267971
+Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-4-lecuona-and-dixon-ca-01.jpg
+Link-Preview: offiziell
