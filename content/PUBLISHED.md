@@ -1241,34 +1241,6 @@ Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-test
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg
 
-## Facebook [GEPOSTET 2026-11-17 15:31 | ID: 122135658417469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-15-daily
-Telegram-Update-ID: 279362043
-MotoGP-Auswahl: 5
-Story-Key: motogp:10874274
-Event-Fingerprint: -
-Titel: Bulega, Jerez'deki 850cc MotoGP testinde zirvede!
-Text:
-Nicolo Bulega hat im Jerez-Spezialtest den schnellsten Rundenzeit gefahren 🏁
-
-Bei dem Test auf dem Circuit Jerez ging es um die Entwicklung der neuen 850-cm³-MotoGP-Bikes für 2027 – gestartet von Ducati, Aprilia und KTM.
-
-Das war der letzte Tage des besonderen Testevents.
-
-Die Marke MotoGP steht im Fokus, wenn das neue Reglement näher rückt.
-
-Was denkt ihr über die 850-cm³-Wende?Kommt mir dann noch mehr Action auf der Strecke?
-
-#MotoGP #NicoloBulega #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
-Quelle: https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274
-Bild: assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-15-racing-editorial-2026-11-15-5-bulega-jerez-deki-01.jpg", "media_status": "", "object_id": "122135658417469415", "object_type": "bild", "platform": "facebook", "post_id": "122135658417469415", "source_url": "https://tr.motorsport.com/motogp/news/bulega-jerezdeki-850cc-motogp-testinde-zirvede/10874274", "version": 1}
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -1289,28 +1261,6 @@ Wie haltet ihr das mit dem Thema Gehalt in der MotoGP, ist das für euch relevan
 Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-16-racing-editorial-2026-11-16-1-motogp-pilotlari-ne-01.jpg
-
-## Facebook [GEPOSTET 2026-11-17 23:10 | ID: 122135735637469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-16-daily
-Telegram-Update-ID: 279362049
-MotoGP-Auswahl: 1
-Story-Key: title:motogp-pilotlar-ne-kadar-kazan-yor-i-te-en-ok-kazanan-i-simler
-Event-Fingerprint: -
-Titel: MotoGP Pilotları Ne Kadar Kazanıyor: İşte En Çok Kazanan İsimler!
-Text:
-Die Geldbeutel der MotoGP-Piloten sind im Rennsport ja immer ein großes Thema. Für die Saison 2026 wurden jetzt erste Schätzungen zu den jährlichen Einkommen veröffentlicht – und dabei stechen vor allem Marc Márquez, Fabio Quartararo und Toprak Razgatlıoğlu als eine der auffälligsten Namen heraus.
-
-Wie haltet ihr das mit dem Thema Gehalt in der MotoGP, ist das für euch relevant oder schaut ihr eher auf die Leistung?
-
-#MotoGP #ToprakRazgatlioglu #FabioQuartararo #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
-Quelle: https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler
-Bild: assets/images/2026-11/2026-11-16-racing-editorial-2026-11-16-1-motogp-pilotlari-ne-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-16-racing-editorial-2026-11-16-1-motogp-pilotlari-ne-01.jpg", "media_status": "", "object_id": "122135735637469415", "object_type": "bild", "platform": "facebook", "post_id": "122135735637469415", "source_url": "https://motoetkinlik.com/motogp-pilotlari-ne-kadar-kazaniyor-iste-en-cok-kazanan-isimler", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
