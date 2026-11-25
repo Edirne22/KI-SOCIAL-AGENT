@@ -1,9 +1,9 @@
 name: MotoGP Content Agency
 on:
   schedule:
-    # One daily start; native timezone handles summer/winter without extra runs.
+    # Start at 08:17 Berlin time (off the busy top-of-hour); native timezone handles DST.
     # Lightweight gate suppresses completed days before dependencies/preflight.
-    - cron: "0 8 * * *"
+    - cron: "17 8 * * *"
       timezone: "Europe/Berlin"
   workflow_dispatch:
     inputs:
