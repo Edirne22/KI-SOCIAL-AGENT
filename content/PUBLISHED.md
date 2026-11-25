@@ -2035,9 +2035,8 @@ Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marqu
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-5-motogp-portimao-fp1-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 45657928153-1
+## Facebook [GEPOSTET 2026-11-25 16:49 | ID: 122138178549469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-20-daily
 Telegram-Update-ID: 279362071
@@ -2060,6 +2059,7 @@ Wie seht ihr den Start der Portugiesen-Runde?
 Quelle: https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada
 Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-5-motogp-portimao-fp1-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-5-motogp-portimao-fp1-01.jpg", "media_status": "", "object_id": "122138178549469415", "object_type": "bild", "platform": "facebook", "post_id": "122138178549469415", "source_url": "https://motoetkinlik.com/motogp-portimao-fp1-aprilia-guclu-basladi-marquez-dorduncu-sirada", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
