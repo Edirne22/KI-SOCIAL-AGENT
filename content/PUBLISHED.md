@@ -2036,6 +2036,7 @@ Bild: assets/images/2026-11/2026-11-20-racing-editorial-2026-11-20-4-bezzecchi-a
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-20-daily
 Telegram-Update-ID: 279362071
