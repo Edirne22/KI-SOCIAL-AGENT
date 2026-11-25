@@ -39,8 +39,9 @@ def morning_due(now=None):
  now=now or _now()
  if event_name()!='schedule':return True
  local=now.astimezone(ZoneInfo('Europe/Berlin'))
- # Delayed GitHub schedules must still deliver today's candidates after noon.
- if local.hour<8:return False
+ # A delayed schedule must never send the morning digest in the evening.
+ # Only process the daily batch between 08:00 and 11:59 Berlin time.
+ if local.hour<8 or local.hour>=12:return False
  run=_load().get('runs',{}).get(batch_id(now),{})
  if not run:return True
  return run.get('status') in {'FAILED','BLOCKED'}
