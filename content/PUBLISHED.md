@@ -2082,9 +2082,8 @@ Quelle: https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-munozdan-ilk-
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-1-moto2-portimao-munoz-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 45731526502-1
+## Facebook [GEPOSTET 2026-11-26 00:50 | ID: 122138244507469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-23-daily
 Telegram-Update-ID: 279362072
@@ -2103,6 +2102,7 @@ Was denkt ihr: Kann Muñoz den Titel holen oder reicht der Vorsprung fürs Saiso
 Quelle: https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-munozdan-ilk-zafer-sampiyonluk-valenciaya-kaldi
 Bild: assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-1-moto2-portimao-munoz-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-1-moto2-portimao-munoz-01.jpg", "media_status": "", "object_id": "122138244507469415", "object_type": "bild", "platform": "facebook", "post_id": "122138244507469415", "source_url": "https://www.motoron.com.tr/motosiklet-haber/moto2-portimao-munozdan-ilk-zafer-sampiyonluk-valenciaya-kaldi", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
