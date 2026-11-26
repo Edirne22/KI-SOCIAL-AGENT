@@ -1283,28 +1283,6 @@ Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-1-toprak-razgatlioglu-01.jpg
 
-## Facebook [GEPOSTET 2026-11-18 15:08 | ID: 122136008415469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-17-daily
-Telegram-Update-ID: 279362051
-MotoGP-Auswahl: 1
-Story-Key: title:toprak-razgatl-o-lu-ve-motogp-ekip-efi-aylak-sezonunun-zorluklar-n-anlatt
-Event-Fingerprint: -
-Titel: Toprak Razgatlıoğlu ve MotoGP: Ekip Şefi Çaylak Sezonunun Zorluklarını Anlattı
-Text:
-Pramacs Mannschaftsleiter Alberto Giribuola hat berichtet, woran Toprak Razgatlıoğlu in seiner Debütsaison auf der Yamaha M1 noch arbeitet – Bremsen und Reifen zum perfekten Zusammenspiel zu bringen. 🏍️💨
-
-Wie seht ihr die Entwicklung von Toprak bisher?
-
-#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti
-Quelle: https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti
-Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-1-toprak-razgatlioglu-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-1-toprak-razgatlioglu-01.jpg", "media_status": "", "object_id": "122136008415469415", "object_type": "bild", "platform": "facebook", "post_id": "122136008415469415", "source_url": "https://motoetkinlik.com/toprak-razgatlioglu-ve-motogp-ekip-sefi-caylak-sezonunun-zorluklarini-anlatti", "version": 1}
-
 ## Instagram
 Status: BILD_GENERIERT
 Freigabe: Telegram Racing
@@ -1325,28 +1303,6 @@ Was haltet ihr von der Rückkehr nach der OP?
 Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marquez-set-for-01.jpg
-
-## Facebook [GEPOSTET 2026-11-18 22:35 | ID: 122136092325469415]
-Status: GEPOSTET
-Freigabe: Telegram Racing
-Racing-Batch-ID: racing-2026-11-17-daily
-Telegram-Update-ID: 279362051
-MotoGP-Auswahl: 2
-Story-Key: motogp:1185531
-Event-Fingerprint: -
-Titel: Alex Marquez set for Portuguese GP return
-Text:
-Alex Marquez steht in Portugal wieder am Start. Der #73 vom BK8 Gresini Racing MotoGP Team gibt nach seiner jüngsten Operation sein Comeback.
-
-Was haltet ihr von der Rückkehr nach der OP?
-
-#MotoGP #AlexMarquez #MotorradRacing #RacingDeutschland #BuelentsBikeLife
-
-🔗 Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
-Quelle: https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531
-Bild: assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marquez-set-for-01.jpg
-Link-Preview: offiziell
-Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-17-racing-editorial-2026-11-17-2-alex-marquez-set-for-01.jpg", "media_status": "", "object_id": "122136092325469415", "object_type": "bild", "platform": "facebook", "post_id": "122136092325469415", "source_url": "https://www.motogp.com/en/news/2026/11/17/alex-marquez-set-for-portuguese-gp-return/1185531", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
