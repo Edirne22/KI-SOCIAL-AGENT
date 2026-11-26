@@ -2081,9 +2081,8 @@ Quelle: https://trf1.net/motor-sporlari/motogp/valencia-motogp-seans-saatleri-tu
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-3-valencia-motogp-sean-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 45858557303-1
+## Facebook [GEPOSTET 2026-11-26 16:25 | ID: 122138516655469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-23-daily
 Telegram-Update-ID: 279362072
@@ -2102,6 +2101,7 @@ Wie seht ihr das Ende dieser Ära? 🏁
 Quelle: https://trf1.net/motor-sporlari/motogp/valencia-motogp-seans-saatleri-turkiye-saati-1000-cc-donemin-son-yarisi-27-29-kasimda/126881
 Bild: assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-3-valencia-motogp-sean-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-23-racing-editorial-2026-11-23-3-valencia-motogp-sean-01.jpg", "media_status": "", "object_id": "122138516655469415", "object_type": "bild", "platform": "facebook", "post_id": "122138516655469415", "source_url": "https://trf1.net/motor-sporlari/motogp/valencia-motogp-seans-saatleri-turkiye-saati-1000-cc-donemin-son-yarisi-27-29-kasimda/126881", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
