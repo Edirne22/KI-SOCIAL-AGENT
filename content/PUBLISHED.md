@@ -2128,6 +2128,7 @@ Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-1-motogp-de-y
 
 ## Facebook
 Status: FREIGEGEBEN
+Publication-Claim: BEREIT
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-24-daily
 Telegram-Update-ID: 279362075
