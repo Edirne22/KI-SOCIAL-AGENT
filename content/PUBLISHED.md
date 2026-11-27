@@ -2123,9 +2123,8 @@ Quelle: https://www.motogp.com/en/news/2026/11/24/red-bull-ktm-tech3-confirm-pol
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-2-red-bull-ktm-tech3-c-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 46031238560-1
+## Facebook [GEPOSTET 2026-11-27 16:10 | ID: 122138755947469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-24-daily
 Telegram-Update-ID: 279362075
@@ -2144,6 +2143,7 @@ Was denkt ihr über diesen Wechsel?
 Quelle: https://www.motogp.com/en/news/2026/11/24/red-bull-ktm-tech3-confirm-pol-espargaro-to-replace-vinales-at-valencia/1268080
 Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-2-red-bull-ktm-tech3-c-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-2-red-bull-ktm-tech3-c-01.jpg", "media_status": "", "object_id": "122138755947469415", "object_type": "bild", "platform": "facebook", "post_id": "122138755947469415", "source_url": "https://www.motogp.com/en/news/2026/11/24/red-bull-ktm-tech3-confirm-pol-espargaro-to-replace-vinales-at-valencia/1268080", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
