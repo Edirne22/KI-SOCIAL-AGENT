@@ -1,6 +1,6 @@
 # Conversion-Funnel
 
-Stand: 2026-11-26 00:46
+Stand: 2026-11-27 00:52
 
 ## Letzte 7 Tage
 
