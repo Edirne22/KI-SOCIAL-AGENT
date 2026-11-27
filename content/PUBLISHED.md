@@ -2126,9 +2126,8 @@ Quelle: https://www.motoron.com.tr/motosiklet-haber/motogp-2026-yilin-caylagi-di
 Medienstatus: QUELLE_BESTÄTIGT
 Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-1-motogp-de-yilin-cayl-01.jpg
 
-## Facebook
-Status: FREIGEGEBEN
-Publication-Claim: IN_BEARBEITUNG 45918338527-1
+## Facebook [GEPOSTET 2026-11-27 00:43 | ID: 122138590395469415]
+Status: GEPOSTET
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-24-daily
 Telegram-Update-ID: 279362075
@@ -2149,6 +2148,7 @@ Wie seht ihr die Verteilung der Punkte zwischen den beiden?
 Quelle: https://www.motoron.com.tr/motosiklet-haber/motogp-2026-yilin-caylagi-diogo-moreira-toprak-ikinci
 Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-1-motogp-de-yilin-cayl-01.jpg
 Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-1-motogp-de-yilin-cayl-01.jpg", "media_status": "", "object_id": "122138590395469415", "object_type": "bild", "platform": "facebook", "post_id": "122138590395469415", "source_url": "https://www.motoron.com.tr/motosiklet-haber/motogp-2026-yilin-caylagi-diogo-moreira-toprak-ikinci", "version": 1}
 
 ## Instagram
 Status: BILD_GENERIERT
