@@ -2125,7 +2125,7 @@ Bild: assets/images/2026-11/2026-11-24-racing-editorial-2026-11-24-2-red-bull-kt
 
 ## Facebook
 Status: FREIGEGEBEN
-Publication-Claim: BEREIT
+Publication-Claim: IN_BEARBEITUNG 46031238560-1
 Freigabe: Telegram Racing
 Racing-Batch-ID: racing-2026-11-24-daily
 Telegram-Update-ID: 279362075
