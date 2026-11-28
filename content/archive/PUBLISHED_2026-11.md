@@ -1,5 +1,51 @@
 # Archiviert Beiträge 2026-11
 
+## Facebook [GEPOSTET 2026-11-20 14:54 | ID: 122136763317469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-18-daily
+Telegram-Update-ID: 279362056
+MotoGP-Auswahl: 4
+Story-Key: motogp:10875248
+Event-Fingerprint: -
+Titel: Resmi: Sakatlığı devam eden Toprak, Valensiya’daki 850cc MotoGP testini kaçıracak
+Text:
+Toprak Razgatlıoğlu fällt auch der Test am 1. Dezember in Valencia aus – nach seiner Schulteroperation ist er noch immer nicht fit genug für die 850cc-Probenfahrten.
+
+Wie lange denkt ihr, wird er noch brauchen, bis er wieder am Start steht?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://tr.motorsport.com/motogp/news/resmi-sakatligi-devam-eden-toprak-valensiyadaki-850cc-motogp-testini-kaciracak/10875248
+Quelle: https://tr.motorsport.com/motogp/news/resmi-sakatligi-devam-eden-toprak-valensiyadaki-850cc-motogp-testini-kaciracak/10875248
+Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-4-resmi-sakatligi-deva-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-4-resmi-sakatligi-deva-01.jpg", "media_status": "", "object_id": "122136763317469415", "object_type": "bild", "platform": "facebook", "post_id": "122136763317469415", "source_url": "https://tr.motorsport.com/motogp/news/resmi-sakatligi-devam-eden-toprak-valensiyadaki-850cc-motogp-testini-kaciracak/10875248", "version": 1}
+
+## Facebook [GEPOSTET 2026-11-20 22:07 | ID: 122136829569469415]
+Status: GEPOSTET
+Freigabe: Telegram Racing
+Racing-Batch-ID: racing-2026-11-18-daily
+Telegram-Update-ID: 279362057
+MotoGP-Auswahl: 1
+Story-Key: motogp:1185673
+Event-Fingerprint: -
+Titel: Razgatlioglu to miss the Valencia Test
+Text:
+Toprak Razgatlıoğlu muss pausieren – die Schulterverletzung zieht ihm das Saisonfinale und den Valencia-Test durch.
+
+Der prima-pramac-Pilot wird die letzten beiden Rennen 2026 sowie den anschließenden Test in Valencia fehlen lassen. Er arbeitet gerade an der Genesung. Schade fürs Team und für ihn persönlich – zwei Rennwochenenden gehen so einfach verloren.
+
+Was denkt ihr – welche Auswirkungen hat sein Fehlen auf die WM-Situation?
+
+#MotoGP #ToprakRazgatlioglu #MotorradRacing #RacingDeutschland #BuelentsBikeLife
+
+🔗 Quelle: https://www.motogp.com/en/news/2026/11/18/razgatlioglu-to-miss-the-valencia-test/1185673
+Quelle: https://www.motogp.com/en/news/2026/11/18/razgatlioglu-to-miss-the-valencia-test/1185673
+Bild: assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-1-razgatlioglu-to-miss-01.jpg
+Link-Preview: offiziell
+Publish-Provenienz: {"media_kind": "image", "media_path": "assets/images/2026-11/2026-11-18-racing-editorial-2026-11-18-1-razgatlioglu-to-miss-01.jpg", "media_status": "", "object_id": "122136829569469415", "object_type": "bild", "platform": "facebook", "post_id": "122136829569469415", "source_url": "https://www.motogp.com/en/news/2026/11/18/razgatlioglu-to-miss-the-valencia-test/1185673", "version": 1}
+
 ## Facebook [GEPOSTET 2026-11-19 15:17 | ID: 122136363207469415]
 Status: GEPOSTET
 Freigabe: Telegram Racing
